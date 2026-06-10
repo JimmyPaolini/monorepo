@@ -55,8 +55,6 @@ export class LiteratureCommand extends CommandRunner {
   private readonly priorityProviders = [
     "perseus",
     "corpus-scriptorum-ecclesiasticorum-latinorum",
-    "musisque-deoque",
-    "open-greek-and-latin",
     "thelatinlibrary",
     "epigraphik-datenbank-clauss-slaby",
   ];
@@ -110,12 +108,12 @@ export class LiteratureCommand extends CommandRunner {
 
   private async getWordsCache(): Promise<Map<string, string>> {
     if (!this.wordsCache) {
-      this.logger.log("Caching dictionary words for token mapping...");
+      this.logger.log("📖 Caching dictionary words for token mapping...");
       const words = await this.wordRepository.find({
         select: { id: true, word: true },
       });
       this.wordsCache = new Map(words.map((w) => [w.word, w.id]));
-      this.logger.log(`Cached ${this.wordsCache.size} words.`);
+      this.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
     }
     return this.wordsCache;
   }
@@ -131,7 +129,7 @@ export class LiteratureCommand extends CommandRunner {
     );
 
     if (paragraphs.length === 0) {
-      this.logger.log(`NO LINES in ${text.slug}`);
+      this.logger.warn(`⚠️ NO LINES in ${text.slug}`);
     }
 
     const lineEntities = paragraphs.map((para, index) => {
@@ -531,10 +529,11 @@ export class LiteratureCommand extends CommandRunner {
   /** Runs the literature ingestion pipeline. */
   async run(_args: string[], options: LiteratureCommandOptions): Promise<void> {
     this.logger.log(`📚 Starting literature ingestion...`);
+    const startTime = performance.now();
 
     const library = await this.scanLibrary();
     if (library.length === 0) {
-      this.logger.warn(`No texts found in data/library directory.`);
+      this.logger.warn(`⚠️ No texts found in data/library directory.`);
       return;
     }
 
@@ -589,13 +588,19 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const textsToIngest = [...textMap.values()];
-    this.logger.log(`Selected ${textsToIngest.length} texts for ingestion.`);
+    this.logger.log(`📚 Selected ${textsToIngest.length} texts for ingestion.`);
 
     // Group by author
     const grouped = _.groupBy(textsToIngest, "authorSlug");
+    const authors = Object.entries(grouped);
 
-    for (const [authorSlug, texts] of Object.entries(grouped)) {
-      this.logger.log(`👤 Ingesting author: ${authorSlug}`);
+    let currentAuthor = 0;
+    const totalAuthors = authors.length;
+
+    for (const [authorSlug, texts] of authors) {
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
+      this.logger.log(`👤 Ingesting author: ${authorSlug}${authorProgress}`);
 
       await this.authorRepository.upsert(
         {
@@ -611,7 +616,13 @@ export class LiteratureCommand extends CommandRunner {
 
       const parentTexts = new Map<string, Text>();
 
+      let currentText = 0;
+      const totalTexts = texts.length;
+
       for (const t of texts) {
+        currentText++;
+        const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+
         let parentText: Text | undefined = undefined;
 
         // Ensure all intermediate directories exist as Text entities
@@ -648,7 +659,7 @@ export class LiteratureCommand extends CommandRunner {
           ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
           : "";
         this.logger.log(
-          `  -> Ingesting: ${hierarchy}${t.title} (from ${t.provider})`,
+          `  📜 Ingesting: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
         );
 
         await this.ingestText(
@@ -661,6 +672,8 @@ export class LiteratureCommand extends CommandRunner {
       }
     }
 
-    this.logger.log("📚 Literature ingestion complete");
+    const endTime = performance.now();
+    const duration = ((endTime - startTime) / 1000).toFixed(2);
+    this.logger.log(`📚 Literature ingestion complete in ${duration} seconds`);
   }
 }

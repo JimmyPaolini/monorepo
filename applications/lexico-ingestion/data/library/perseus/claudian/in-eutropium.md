@@ -1698,7 +1698,7 @@ title: In Eutropium
 
 **330** in Phrygiam primum laxavit murmura vocem.
 
-**331** Hic cecidit Libycis iactata paludibus olim 255
+**331** Hic cecidit Libycis iactata paludibus olim
 
 **332** tibia, foedatam cum reddidit umbra Minervam,
 

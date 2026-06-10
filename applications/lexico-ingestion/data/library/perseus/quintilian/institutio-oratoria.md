@@ -61,7 +61,7 @@ nam est certe aliquid consummata eloquentia, neque ad eam pervenire natura human
 
 quo magis impetranda erit venia, si ne minora quidem illa, verum operi, quod instituimus, necessaria praeteribo. nam liber primus ea, quae sunt ante officium rhetoris, continebit. secundo prima apud rhetorem elementa et quae de ipsa rhetorices substantia quaeruntur tractabimus.
 
-quinque deinceps inventioni (nam huic et dispositio subiungitur), quattuor elocutioni, in cuius partem memoria ac pronuntiatio veniunt, dabuntur. unus accedet, in quo nobis orator ipse informandus est, ubi, ubi.. disseremus, Spalding : ut... disseramus, MSS. qui mores eius, quae in suscipiendis, discendis, agendis causis ratio, quod eloquentiae genus, quis agendi debeat esse finis, quae post fine studia, quantum nostra valebit infirmitas, disseremus.
+quinque deinceps inventioni (nam huic et dispositio subiungitur), quattuor elocutioni, in cuius partem memoria ac pronuntiatio veniunt, dabuntur. unus accedet, in quo nobis orator ipse informandus est, ubi, qui mores eius, quae in suscipiendis, discendis, agendis causis ratio, quod eloquentiae genus, quis agendi debeat esse finis, quae post fine studia, quantum nostra valebit infirmitas, disseremus.
 
 his omnibus admiscebitur, ut quisque locus postulabit, docendi ratio, quae non eorum modo scientia, quibus solis quidam nomen artis dederunt, studiosos instruat et (ut sic dixerim) ius ipsum rhetorices interpretetur, sed alere facundiam, vires augere eloquentiae possit.
 
@@ -123,7 +123,7 @@ fingamus igitur Alexandrum dari nobis impositum gremio, dignum tanta cura infant
 
 obstat hoc agnitioni earum non intendentibus mox animum ad ipsos ductus, dum antecedentem memoriam sequuntur. quae causa est praecipientibus, ut etiam, cum satis adfixisse eas pueris recto illo quo primum scribi solent contextu videntur, retro agant rursus et varia permutatione turbent, donec litteras qui instituuntur facie norint non ordine. quapropter optime sicut hominum pariter et habitus et nomina edocebuntur.
 
-sed quod in litteris obest, in syllabis non nocebit. non excludo autem, id quod est inventum inventum, Heindorf: notum, MSS. irritandae ad discendum infantiae gratia eburneas etiam litterarum formas in lusum offerre; vel si quid aliud, quo magis illa aetas gaudeat, inveniri potest, quod tractare, intueri, nominare iucundum sit.
+sed quod in litteris obest, in syllabis non nocebit. non excludo autem, id quod est inventum irritandae ad discendum infantiae gratia eburneas etiam litterarum formas in lusum offerre; vel si quid aliud, quo magis illa aetas gaudeat, inveniri potest, quod tractare, intueri, nominare iucundum sit.
 
 cum vero iam ductus sequi coeperit, non inutile erit eas tabellae quam optime insculpi, ut per illos velut sulcos ducatur stilus. nam neque errabit, quemadmodum in ceris (continebitur enim utrinque marginibus neque extra praescriptum egredi poterit) et celerius ac saepius sequendo certa vestigia firmabit articulos, neque egebit adiutorio manum suam manu superimposita regentis.
 
@@ -265,7 +265,7 @@ in Latinis, ut in his seruus et uulgus Aeolicum digammon desideratur, et medius 
 
 an rursus aliae redundent, praeter notam aspirationis, (quae si necessaria est, etiam contrariam sibi poscit) ut K, quae et ipsa quorundam nominum nota est, et Q, cuius similis effectu specieque, nisi quod paulum a nostris obliquatur, Coppa apud Graecos nunc tantum in numero manet, et nostrarum ultima, qua tam carere potuimus quam ψ non quaerimus?
 
-atque etiam in ipsis vocalibus grammatici est videre, an aliquas pro consonantibus usus acceperit, quia iam sicut etiam scribitur et nos ut luos. etiam ... uos.. tuos, Ritschl: tam ... quos... cos, MSS. At quae ut vocales iunguntur aut unam longam faciunt, ut veteres scripserunt qui geminatione earum velut apice utebantur, aut duas; nisi quis putat etiam ex tribus vocalibus syllabam fieri, si non aliquae officio consonantium fungantur.
+atque etiam in ipsis vocalibus grammatici est videre, an aliquas pro consonantibus usus acceperit, quia iam sicut etiam scribitur et nos ut luos. At quae ut vocales iunguntur aut unam longam faciunt, ut veteres scripserunt qui geminatione earum velut apice utebantur, aut duas; nisi quis putat etiam ex tribus vocalibus syllabam fieri, si non aliquae officio consonantium fungantur.
 
 quaeret hoc etiam, quomodo duabus demum vocalibus in se ipsas coeundi natura sit, cum consonantium nulla nisi alteram frangat. atqui littera I sibi insidit, coniicit enim est ab illo iacit, et V, quomodo nunc scribitur uulgus et seruus. sciat etiam Ciceroni placuisse aiio Maiiamque geminata I scribere; quod si est, etiam iungetur ut consonans.
 
@@ -325,7 +325,7 @@ tertium est illud vitium barbarismi, cuius exempla vulgo sunt plurima, sibi etia
 
 sed quidam fere in iactationem eruditionis sumere illa ex poetis solent et auctores quos praelegunt criminantur. scire autem debet puer, haec apud scriptores carminum aut venia digna aut etiam laude duci, potiusque illa docendi erunt minus vulgata.
 
-nam duos in uno nomine faciebat barbarismos Tinga Placentinus (si reprehendenti Hortensio credimus) preculam pro pergula dicens, et immutatione cum c pro g uteretur, et transmutatione cum r praeponeret e antecedenti. at in eiusdem vitii geminatione Mettoeoque Fufetioeo Mettocoque Fufetioeo, Skuttsch: mettioeo et furetioeo, A, the other MSS. giving similar corruptions. dicens Ennius poetico iure defenditur.
+nam duos in uno nomine faciebat barbarismos Tinga Placentinus (si reprehendenti Hortensio credimus) preculam pro pergula dicens, et immutatione cum c pro g uteretur, et transmutatione cum r praeponeret e antecedenti. at in eiusdem vitii geminatione Mettoeoque Fufetioeo dicens Ennius poetico iure defenditur.
 
 sed in prosa quoque est quaedam iam recepta immutatio. nam Cicero Canopitarum exercitum dicit, ipsi Canobon vocant; et Trasumennum pro Tarsumenno multi auctores, etiamsi est in eo transmutatio, vindicaverunt. similiter alia; nam sive est adsentior, Sisenna dixit adsentio multique et hunc et analogian secuti, sive illud verum est, haec quoque pars consensu defenditur.
 
@@ -347,7 +347,7 @@ inde durat ad nos usque vehementer et comprehendere et mihi, nam mehe quoque pro
 
 adhuc difficilior observatio est per tenores (quos quidem ab antiquis dictos tonores comperi videlicet declinato a Graecis verbo, qui τόνους dicunt), vel adcentus, quas Graeci προσῳδίας vocant, cum acuta et gravis alia pro alia ponuntur, ut in hoc Camillus, si acuitur prima:
 
-aut gravis pro flexa, ut Cethegus , et hic prima acuta (nam sic media mutatur); aut flexa pro gravi, ut Appi aut Appi, Spalding : aut apice, A: ut, B. circumducta sequenti, quam ex duabus syllabis in unam cogentes et deinde flectentes dupliciter peccant.
+aut gravis pro flexa, ut Cethegus , et hic prima acuta (nam sic media mutatur); aut flexa pro gravi, ut Appi circumducta sequenti, quam ex duabus syllabis in unam cogentes et deinde flectentes dupliciter peccant.
 
 sed id saepius in Graecis nominibus accidit, ut Atreus, quem nobis iuvenibus doctissimi senes acuta prima dicere solebant, ut necessario secunda gravis esset, item Nerei Tereique. haec de accentibus tradita.
 
@@ -941,7 +941,7 @@ at si tam negligens ei stilus fuerit, ut emendationem non recipiat; expertus sum
 
 aliter autem alia aetas emendanda est, et pro modo virium et exigendum et corrigendum opus. solebam ego dicere pueris aliquid ausis licentius aut laetius, laudare illud me adhuc, venturum tempus, quo idem non permitterem; ita et ingenio gaudebant et iudicio non fallebantur.
 
-sed ut eo revertar, unde sum digressus: narrationes stilo componi quanta maxima possit adhibita diligentia volo. nam ut primo, cum sermo instituitur, dicere quae audierint utile est pueris ad loquendi facultatem, ideoque et retro agere expositionem et a media in utramque partem discurrere sane merito cogantur, sed ad gremium praeceptoris, et dum aliud aliud, added by Ed. Gryphiana. non possunt et dum res ac verba connectere incipiunt, ut protinus memoriam firment: ita cum iam formam rectae atque emendatae orationis accipient, extemporalis garrulitas nec exspectata cogitatio et vix surgendi mora circulatoriae vere iactationis est.
+sed ut eo revertar, unde sum digressus: narrationes stilo componi quanta maxima possit adhibita diligentia volo. nam ut primo, cum sermo instituitur, dicere quae audierint utile est pueris ad loquendi facultatem, ideoque et retro agere expositionem et a media in utramque partem discurrere sane merito cogantur, sed ad gremium praeceptoris, et dum aliud non possunt et dum res ac verba connectere incipiunt, ut protinus memoriam firment: ita cum iam formam rectae atque emendatae orationis accipient, extemporalis garrulitas nec exspectata cogitatio et vix surgendi mora circulatoriae vere iactationis est.
 
 hinc parentium imperitorum inane gaudium, ipsis vero contemptus operis et inverecunda frons et consuetudo pessime dicendi et malorum exercitatio et, quae magnos quoque profectus frequenter perdidit, arrogans de se persuasio innascitur.
 
@@ -1251,7 +1251,7 @@ Hermagorae , qui finem eius esse ait persuasibiliter dicere, et aliis, qui eande
 
 addita sunt his alia varie. quidam enim circa res omnes, quidam circa civiles modo versari rhetoricen putaverunt; quorum verius utrum sit, in eo loco, qui huius quaestionis proprius est, dicam.
 
-omnia subiecisse oratori videtur Aristoteles, cum dixit vim esse videndi, quid in quaque re possit esse persuasibile. et Patrocles, latrocles, B. Iatrocles, Radermacher . qui non quidem adiicit in quaque re, sed nihil excipiendo idem ostendit; vim enim vocat inveniendi, quod sit in oratione persuasibile; qui fines et ipsi solam complectuntur inventionem. quod vitium fugiens Theodorus vim putat inveniendi et eloquendi cum ornatu credibilia in omni oratione.
+omnia subiecisse oratori videtur Aristoteles, cum dixit vim esse videndi, quid in quaque re possit esse persuasibile. et Patrocles, qui non quidem adiicit in quaque re, sed nihil excipiendo idem ostendit; vim enim vocat inveniendi, quod sit in oratione persuasibile; qui fines et ipsi solam complectuntur inventionem. quod vitium fugiens Theodorus vim putat inveniendi et eloquendi cum ornatu credibilia in omni oratione.
 
 sed cum eodem modo credibilia quo persuasibilia etiam non orator inveniat, adiiciendo in omni oratione magis quam superiores concedit scelera quoque suadentibus pulcherrimae rei nomen.
 
@@ -1511,13 +1511,13 @@ nec sum ignarus, hoc a me praecipue, quod hic liber inchoat, opus studiosos eius
 
 in ceteris enim admiscere temptauimus aliquid nitoris, non iactandi ingenii gratia (namque in id eligi materia poterat uberior), sed ut hoc ipso adliceremus magis iuventutem ad cognitionem eorum, quae necessaria studiis arbitrabamur, si ducti iucunditate aliqua lectionis libentius discerent ea, quorum ne ieiuna atque arida traditio averteret animos et aures praesertim tam delicatas raderet uerebamur.
 
-qua ratione se Lucretius dicit praecepta philosophiae carmine esse complexum; namque hac, ut est notum, similitudine utitur: ac veluti pueris absinthia taetra medentes cum dare conantur, prius oras pocula circum aspirant inspirant A adspirant, B: contingunt, MISS. of Lucretius. mellis dulci flauoque liquore, et quae sequuntur.
+qua ratione se Lucretius dicit praecepta philosophiae carmine esse complexum; namque hac, ut est notum, similitudine utitur: ac veluti pueris absinthia taetra medentes cum dare conantur, prius oras pocula circum aspirant mellis dulci flauoque liquore, et quae sequuntur.
 
 ac veluti pueris absinthia taetra medentes
 
 cum dare conantur, prius oras pocula circum
 
-aspirant inspirant A adspirant, B: contingunt, MISS. of Lucretius. mellis dulci flauoque liquore,
+aspirant mellis dulci flauoque liquore,
 
 sed nos ueremur, ne parum hic liber mellis et absinthi multum habere videatur, sitque salubrior studiis quam dulcior. quin etiam hoc timeo, ne ex eo minorem gratiam ineat, quod pleraque non inventa per me sed ab aliis tradita continebit, habeat etiam quosdam, qui contra sentiant et adversentur, propterea quod plurimi auctores, quamvis eodem tenderent, diversas tamen vias muniverunt atque in suam quisque induxit sequentes.
 
@@ -1575,7 +1575,7 @@ his adiecerunt quidam sextam partem, ita ut inventioni iudicium subnecterent, qu
 
 et Cicero quidem in Rhetoricis iudicium subiecit invention; mihi autem adeo tribus primis partibus videtur esse permixtum (nam neque dispositio sine eo neque elocutio fuerit), ut pronuntiationem quoque vel plurimum ex eo mutuari putem.
 
-quod hoc audacius dixerim, quod in Partitionibus oratoriis ad easdem, de quibus supra dictum est, quinque pervenit partes. nam cum dupliciter primum divisisset in inventionem atque elocutionem, res ac dispositionem inventioni, verba et pronuntiationem elocutioni dedit quintamque constituit, communem ac velut custodem omnium, memoriam. idem in in libris de Oratore, Spalding ( sc. I. xxxi. 142). Oratore quinque rebus constare eloquentiam dicit, in quibus postea scriptis certior eius sententia est.
+quod hoc audacius dixerim, quod in Partitionibus oratoriis ad easdem, de quibus supra dictum est, quinque pervenit partes. nam cum dupliciter primum divisisset in inventionem atque elocutionem, res ac dispositionem inventioni, verba et pronuntiationem elocutioni dedit quintamque constituit, communem ac velut custodem omnium, memoriam. idem in Oratore quinque rebus constare eloquentiam dicit, in quibus postea scriptis certior eius sententia est.
 
 non minus mihi cupidi novitatis alicuius videntur fuisse, qui adiecerunt ordinem, cum dispositionem dixissent, quasi aliud sit dispositio quam rerum ordine quam optimo collocatio. Dion inventionem modo et dispositionem tradidit sed utramque duplicem, rerum et verborum, ut sit elocutio inventionis, pronuntiatio dispositionis, his quinta pars memoriae, accedat. Theodorei fere inventionem duplicem, rerum atque elocutionis, deinde tris ceteras partes.
 
@@ -1683,7 +1683,7 @@ quod ut brevissimo pateat exemplo: cum dicit reus, etiamsi feci, recte feci, qua
 
 recte igitur est appellata causarum prima conflictio non quaestionum. nam et pro Rabirio Postumo Cicero prima parte orationis in hoc intendit, ut actionem competere in equitem Romanum neget; secunda, nullam ad eum pecuniam pervenisse confirmat. statum tamen in eo dicam fuisse, quod est potentius.
 
-nec in causa Milonis circa primas quaestiones After quaestiones the MISS. continue quae sunt ante prooemium positae. the words as they stand are absurd. Halm therefore brackets the whole sentence as interpolated. the alternative is to read post (Regius) or ants pro prooemio (Baden), for which cp. IV. ii. 25 sq., where Quintilian states that these primae quaestiones have the force of an exordium ( vim prooemii ). iudicabo conflixisse causam, sed ubi totis viribus insidiator Clodius ideoque iure interfectus ostenditur. et hoc est, quod ante omnia constituere in animo suo debeat orator, etiamsi pro causa plura dicturus est, quid maxime liquere iudici velit. quod tamen ut primum cogitandum, ita non utique primum dicendum erit.
+nec in causa Milonis circa primas quaestiones iudicabo conflixisse causam, sed ubi totis viribus insidiator Clodius ideoque iure interfectus ostenditur. et hoc est, quod ante omnia constituere in animo suo debeat orator, etiamsi pro causa plura dicturus est, quid maxime liquere iudici velit. quod tamen ut primum cogitandum, ita non utique primum dicendum erit.
 
 alii statum crediderunt primam eius, cum quo ageretur, deprecationem. quam sententiam his verbis Cicero complectitur: in quo primum insistit quasi ad repugnandum congressa defensio. unde rursus alia quaestio, an eum semper is faciat qui respondet. cui rei praecipue repugnat Cornelius Celsus dicens non a depulsione sumi, sed ab eo qui propositionem suam confirmet; ut, si hominem occisum reus negat, status ab accusatore nascatur, quia is velit probare; si iure occisum reus dicit, translata probationis necessitate idem a reo fiat, et sit eius intentio.
 
@@ -1749,7 +1749,7 @@ quin et contrariae leges et ratiocinativus status, id est syllogismos, et plerum
 
 A plurimis tres sunt facti generales status, quibus et Cicero in Oratore utitur, et omnia, quae aut in controversiam aut in contentionem veniant, contineri putat, Sitne? quid sit? quale sit? quorum nomina apertiora sunt, quam ut dicenda sint.
 
-idem Iatrocles, B. Patrocles sentit. tres fecit et M. Antonius his quidem verbis: paucae res sunt, quibus ex rebus omnes orationes nascuntur, factum non factum, ius iniuria, bonum malum. sed quoniam, quod iure dicimur fecisse, non hunc solum intellectum habet, ut lege, sed illum quoque, ut iuste fecisse videamur, secuti Antonium apertius voluerunt eosdem status distinguere. itaque dixerunt coniecturalem, legalem, iuridicialem; qui et Verginio placent.
+idem Patrocles sentit. tres fecit et M. Antonius his quidem verbis: paucae res sunt, quibus ex rebus omnes orationes nascuntur, factum non factum, ius iniuria, bonum malum. sed quoniam, quod iure dicimur fecisse, non hunc solum intellectum habet, ut lege, sed illum quoque, ut iuste fecisse videamur, secuti Antonium apertius voluerunt eosdem status distinguere. itaque dixerunt coniecturalem, legalem, iuridicialem; qui et Verginio placent.
 
 horum deinde fecerunt species, ita ut legali subiicerent finitionem et alios, qui ex scripto ducuntur, legum contrariarum, quae ἀντινομία dicitur, et scripti et sententiae vel voluntatis, id est κατὰ ῥητὸν καὶ διάνοιαν et μετάλημψιν, quam nos varie translativam, transumptivam, transpositivam vocamus, συλλογισμόν quem accipimus ratiocinativum vel collectivum, ambiguitatis, quae ἀμφιβολία nominatur; quos posui, quia et ipsi a plerisque status appellantur, cum quibusdam legales potius quaestiones eas dici placuerit.
 
@@ -2077,7 +2077,7 @@ verum ex his quas constitui partibus non, ut quidque primum dicendum, ita primum
 
 expositio enim probationum est praeparatio, nec esse utilis potest, nisi prius constiterit, quid debeat de probatione promittere. postremo intuendum, quemadmodum iudex sit conciliandus. neque enim nisi totius causae partibus diligenter inspectis scire possumus, qualem nobis facere animum cognoscentis expediat, severum an mitem, concitatum an remissum, adversum gratiae an obnoxium.
 
-neque ideo tamen eos probaverim, qui scribendum quoque prooemium novissime putant. nam ut conferri materiam omnem et, quid quoque loco quoque loco, Requis: quoilue, MSS. sit opus, constare decet, antequam dicere aut scribere ordiamur, ita incipiendum ab iis, quae prima sunt.
+neque ideo tamen eos probaverim, qui scribendum quoque prooemium novissime putant. nam ut conferri materiam omnem et, quid quoque loco sit opus, constare decet, antequam dicere aut scribere ordiamur, ita incipiendum ab iis, quae prima sunt.
 
 nam nec pingere quisquam aut fingere coepit a pedibus, nec denique ars ulla consummatur ibi, unde ordiendum est. quid fiet alioqui, si spatium componendi orationem stilo non fuerit? nonne nos haec inversa consuetudo deceperit? inspicienda igitur materia est, quo praecepimus ordine, scribenda, quo dicemus.
 
@@ -2123,11 +2123,11 @@ alterius etiam status quaestionem, alterius iudicationem putant. quaestio qualit
 
 iudicatio coniecturalis, an Clodius insidias fecerit. ponunt et illud, saepe causam in aliquam rem dimitti, quae non sit propria quaestionis, et de ea iudicati. A quibus multum dissentio. nam et illa quaestio, an omnes, qui paterna bona consumpserint, contione sint prohibendi, habeat oportet suam iudicationem. ergo non alia quaestio alia iudicatio erit, sed plures quaestiones et plures iudicationes.
 
-quid ? non in causa Milonis ipsa coniectura refertur ad qualitatem? nam si est insidiatus Clodius, sequitur, ut recte sit occisus. cum vero in aliquam rem missa causa recessum est a quaestione, quae erat, et hic constituta quaestio, ubi iudicatio est. causa est recessum est a quaestione quae erat et hic constituta quaestio iudicatio et, A: causa est recessum et a quaestione quae erat hic constituta quaestio ubi iudicatio est, B. The reading and meaning are very uncertain.
+quid ? non in causa Milonis ipsa coniectura refertur ad qualitatem? nam si est insidiatus Clodius, sequitur, ut recte sit occisus. cum vero in aliquam rem missa causa recessum est a quaestione, quae erat, et hic constituta quaestio, ubi iudicatio est.
 
 paulum in his secum etiam Cicero dissentit. nam in Rhetoricis (quemadmodum supra dixi) Hermagoran est secutus; in Topicis ex statu effectam contentionem κρινόμενον existimat, idque Trebatio, qui iuris erat consultus, adludens qua de re agitur appellat; quibus id contineatur, continentia, quasi firmamenta defensionis, quibus sublatis defensio nulla sit;
 
-at in Partitionibus oratoriis firmamentum, quod opponitur defensioni, quia continens, quod primum sit, ab accusatore dicatur, ratio a reo, ex rationis et firmamenti quaestione disceptatio sit iudicationum. verius igitur et brevius ii, qui statum et continens et iudicationem idem idem, added by Regius. esse voluerunt; continens autem id esse, quo sublato lis esse non possit.
+at in Partitionibus oratoriis firmamentum, quod opponitur defensioni, quia continens, quod primum sit, ab accusatore dicatur, ratio a reo, ex rationis et firmamenti quaestione disceptatio sit iudicationum. verius igitur et brevius ii, qui statum et continens et iudicationem idem esse voluerunt; continens autem id esse, quo sublato lis esse non possit.
 
 hoc mihi videntur utramque causam complexi, et quod Orestes matrem et quod Clytaemnestra Agamemnonem occiderit. iidem iudicationem et statum consentire semper existimarunt, neque enim aliud eorum rationi conveniens fuisset.
 
@@ -2181,7 +2181,7 @@ est enim naturalis favor pro laborantibus, et iudex religiosus libentissime patr
 
 vitandum etiam, ne contumeliosi, maligni, superbi, maledici in quemquam hominem ordinemve videamur praecipueque eorum, qui laedi nisi adversa iudicum voluntate non possunt.
 
-nam in iudicem ne quid dicatur non modo palam sed quod omnino intelligi possit, stultum erat monere, nisi fieret. etiam partis adversae patronus dabit exordio materiam, interim cum honore, si eloquentiam eius et gratiam nos timere fingendo, ut ea suspecta sint iudici, fecerimus, interim per contumeliam, sed hoc perquam raro, ut Asinius pro Urbiniae cp. VII. ii. 4 and 26. heredibus Labienum adversarii patronum inter argumenta causae malae posuit. Negat haec esse prooemia Cornelius Celsus, quia sint extra litem.
+nam in iudicem ne quid dicatur non modo palam sed quod omnino intelligi possit, stultum erat monere, nisi fieret. etiam partis adversae patronus dabit exordio materiam, interim cum honore, si eloquentiam eius et gratiam nos timere fingendo, ut ea suspecta sint iudici, fecerimus, interim per contumeliam, sed hoc perquam raro, ut Asinius pro Urbiniae heredibus Labienum adversarii patronum inter argumenta causae malae posuit. Negat haec esse prooemia Cornelius Celsus, quia sint extra litem.
 
 sed ego cum auctoritate summorum oratorum magis ducor, tum pertinere ad causam puto quidquid ad dicentem pertinet, cum sit naturale, ut iudices iis, quos libentius audiunt, etiam facilius credant.
 
@@ -2603,7 +2603,7 @@ item fieri non inutiliter potest ut, si merita in adversarium aliqua exposueris,
 
 verum haec breviter omnia. iudex enim ordine audito festinat ad probationem et quam primum certus esse sententiae cupit. praeterea cavendum est, ne ipsa expositio vanescat, aversis in aliud animis et inani mora fatigatis.
 
-sed ut non semper est necessaria post narrationem illa procursio, ita frequenter utilis ante quaestionem praeparatio, utique si prima specie minus erit favorabilis, si legem asperam ac poenarias actiones tuebimur. est hic locus velut sequentis exordii exordii, B: exordium, A and Victor. ad conciliandum probationibus nostris iudicem, mitigandum, concitandum. mitigandum, concitandum omitted by B. Quod liberius hic et vehementius fieri potest, quia iudici nota iam causa est.
+sed ut non semper est necessaria post narrationem illa procursio, ita frequenter utilis ante quaestionem praeparatio, utique si prima specie minus erit favorabilis, si legem asperam ac poenarias actiones tuebimur. est hic locus velut sequentis exordii ad conciliandum probationibus nostris iudicem, mitigandum, concitandum. Quod liberius hic et vehementius fieri potest, quia iudici nota iam causa est.
 
 his igitur velut fomentis, si quid erit asperum, praemolliemus, quo facilius aures iudicum quae post dicturi erimus admittant, ne ius nostrum oderint. nihil enim facile persuadetur invitis.
 
@@ -2615,7 +2615,7 @@ quo ex genere est in orationibus contra Verrem compositis Siciliae laus, Proserp
 
 Παρέκβασις est, ut mea quidem fert opinio, alicuius rei, sed ad utilitatem causae pertinentis extra ordinem excurrens tractatio. quapropter non video cur hunc ei potissimum locum adsignent, qui rerum ordinem sequitur, non magis quam illud, cur hoc nomen ita demum proprium putent, si aliquid in digressu sit exponendum, cum tot modis a recto itinere declinet oratio.
 
-nam quidquid dicitur praeter illas quinque quas fecimus partes, egressio est, indignatio, miseratio, invidia, convicium, excusatio, conciliatio, maledictorum refutatio. similia his, quae non sunt in quaestione, omnis amplificatio, minutio, omne adfectus genus, et quae et quae, Spailding: atque ea, MSS. maxime iucundam et ornatam faciunt orationem, de luxuria, de avaritia, religione, officiis; quae cum sint argumentis subiecta similium rerum, quia cohaerent, egredi non videntur.
+nam quidquid dicitur praeter illas quinque quas fecimus partes, egressio est, indignatio, miseratio, invidia, convicium, excusatio, conciliatio, maledictorum refutatio. similia his, quae non sunt in quaestione, omnis amplificatio, minutio, omne adfectus genus, et quae maxime iucundam et ornatam faciunt orationem, de luxuria, de avaritia, religione, officiis; quae cum sint argumentis subiecta similium rerum, quia cohaerent, egredi non videntur.
 
 sed plurima sunt, quae rebus nihil secum cohaerentibus inseruntur, quibus iudex reficitur, admonetur, placatur, rogatur, laudatur. innumerabilia sunt haec, quorum alia sic praeparata adferimus, quaedam ex occasione vel necessitate ducimus, si quid nobis agentibus novi accidit, interpellatio, interventus alicuius, tumultus.
 
@@ -2681,7 +2681,7 @@ quaedam interim nos invitis litigatoribus simulandum est dicere, quod Cicero pro
 
 quae cum receperit, etiam verecundiae defensioni facilior erit. sic utraque res invicem iuvabit, eritque iudex circa ius nostrum spe modestiae attentior, circa modestiam iuris probatione proclivior.
 
-sed ut non semper necessaria aut utilis est partitio, utilis est partitio, Victor : utilis etiam partitio est, A: etiam supervacua partitio est, B. ita opportune adhibita plurimum orationi lucis et gratiae confert. neque enim solum id efficit, ut clariora fiant, quae dicuntur, rebus velut ex turba extractis et in conspectu iudicum positis; sed reficit quoque audientem certo singularum partium fine, non aliter quam facientibus iter multum detrahunt fatigationis notata inscriptis lapidibus spatia.
+sed ut non semper necessaria aut utilis est partitio, ita opportune adhibita plurimum orationi lucis et gratiae confert. neque enim solum id efficit, ut clariora fiant, quae dicuntur, rebus velut ex turba extractis et in conspectu iudicum positis; sed reficit quoque audientem certo singularum partium fine, non aliter quam facientibus iter multum detrahunt fatigationis notata inscriptis lapidibus spatia.
 
 nam et exhausti laboris nosse mensuram voluptati est, et hortatur ad reliqua fortius exsequenda scire quantum supersit. nihil enim longum videri necesse est, in quo, quid ultimum sit, certum est.
 
@@ -2715,7 +2715,7 @@ iam praeiudiciorum vis omnis tribus in generibus versatur: rebus, quae aliquando
 
 confirmantur praecipue duobus: auctoritate eorum, qui pronuntiaverunt, et similitudine rerum, de quibus quaeritur; refelluntur autem raro per contumeliam iudicum, nisi forte manifesta in iis culpa erit. vult enim cognoscentium quisque firmam esse alterius sententiam, et ipse pronuntiaturus, nec libenter exemplum, quod in se fortasse recidat, facit.
 
-confugiendum ergo est in duobus superioribus, si res feret, ad aliquam dissimilitudinem causae; vix autem ulla est per omnia alteri similis. si id non continget aut eadem causa erit, actionum incusanda negligentia aut de infirmitate personarum querendum, contra quas erit iudicatum, aut de gratia, quae testes corruperit, aut de invidia aut de ignorantia, aut videndum, quid videndum quid, Victor : inveniendum quod, MSS. causae postea accesserit. quorum si nihil erit, licet tamen dicere multos iudiciorum casus ad inique pronuntiandum valere ideoque damnatum Rutilium, absolutos Clodium atque Catilinam. rogandi etiam iudices, ut rem potius intueantur ipsam, quam iuri iurando alieno suum donent.
+confugiendum ergo est in duobus superioribus, si res feret, ad aliquam dissimilitudinem causae; vix autem ulla est per omnia alteri similis. si id non continget aut eadem causa erit, actionum incusanda negligentia aut de infirmitate personarum querendum, contra quas erit iudicatum, aut de gratia, quae testes corruperit, aut de invidia aut de ignorantia, aut videndum, quid causae postea accesserit. quorum si nihil erit, licet tamen dicere multos iudiciorum casus ad inique pronuntiandum valere ideoque damnatum Rutilium, absolutos Clodium atque Catilinam. rogandi etiam iudices, ut rem potius intueantur ipsam, quam iuri iurando alieno suum donent.
 
 adversus consulta autem senatus et decreta principum vel magistratuum remedium nullum est, nisi aut inventa quantulacunque causae differentia aut aliqua vel eorundem vel eiusdem potestatis hominum posterior constitutio, quae sit priori contraria; quae si deerunt, lis non erit.
 
@@ -2781,7 +2781,7 @@ id si non contingit, reliquum erit, ut eum nolle dicere manifestum sit, protrahe
 
 at si (quod secundo loco diximus) nesciet actor, quid propositi testis attulerit, paulatim et, ut dicitur, pedetentim interrogando experietur animum eius et ad id responsum quod eliciendum erit per gradus ducet.
 
-sed , quia nonnunquam sunt hae quoque testium artes, ut primo ad voluntatem respondeant, quo maiore fide diversa postea dicant, est actoris actoris, Regius ; oratoris, MSS. suspectum testem, dum prodest, dimittere.
+sed , quia nonnunquam sunt hae quoque testium artes, ut primo ad voluntatem respondeant, quo maiore fide diversa postea dicant, est actoris suspectum testem, dum prodest, dimittere.
 
 patronorum in parte expeditior, in parte difficilior interrogatio est. difficilior hoc, quod raro unquam possunt ante indicium scire, quid testis dicturus sit; expeditior, quod, cum interrogandus est, sciunt quid dixerit.
 
@@ -2789,7 +2789,7 @@ itaque , quod in eo incertum est, cura et inquisitione opus est, quis reum prema
 
 plus tamen proderit causas, propter quas reum laedant, exponere; quae sunt variae et pro condicione cuiusque litis aut litigatoris. nam contra illa, quae supra diximus, simili ratione responderi locis communibus solet, quia ut in paucis atque humilibus accusator simplicitate gloriari potest, quod neminem praeter eos, qui possint scire, quaesierit et multos atque honestos commendare aliquanto est facilius.
 
-verum interim et singulos ut exornare, ita destruere contingit, aut recitatis in actione testimoniis testimoniis added by Ialm, some such word having been omitted by the MSS. aut testibus nominatis. quod iis temporibus, quibus testis non post finitas actiones rogabatur, et facilius et frequentius fuit. quid autem in quemque testium dicendum sit, sumi nisi ex ipsorum personis non potest.
+verum interim et singulos ut exornare, ita destruere contingit, aut recitatis in actione testimoniis aut testibus nominatis. quod iis temporibus, quibus testis non post finitas actiones rogabatur, et facilius et frequentius fuit. quid autem in quemque testium dicendum sit, sumi nisi ex ipsorum personis non potest.
 
 reliquae interrogandi sunt partes. qua in re primum est nosse testem. nam timidus terreri, stultus decipi, iracundus concitari, ambitiosus inflari potest; prudens vero et constans vel tanquam inimicus et pervicax dimittendus statim vel non interrogatione, sed brevi interlocutione patroni refutandus est aut aliquo, si continget, urbane dicto refrigerandus aut, si quid in eius vitam dici poterit, infamia criminum destruendus.
 
@@ -2833,7 +2833,7 @@ omnis igitur probatio artificialis constat aut signis aut argumentis aut exempli
 
 altera, quod signa, sive indubitata sunt, non sunt argumenta, quia, ubi ilia sunt, quaestio non est, argumento autem nisi in re controversa locus esse non potest; sive dubia, non sunt argumenta sed ipsa argumentis egent.
 
-dividuntur autem in has duas primas species, quod eorum alia sunt, ut dixi, quae necessaria sunt, alia quae non necessaria. sunt. . non necessaria added by Regius, Priora illa sunt quae aliter habere se non possunt, quae Graeci vocant τεκμήρια, quia sunt ἄλυτα σημεῖα, quae mihi vix pertinere ad praecepta artis videntur; nam ubi est signum insolubile, ibi ne lis quidem est.
+dividuntur autem in has duas primas species, quod eorum alia sunt, ut dixi, quae necessaria sunt, alia quae non necessaria. Priora illa sunt quae aliter habere se non possunt, quae Graeci vocant τεκμήρια, quia sunt ἄλυτα σημεῖα, quae mihi vix pertinere ad praecepta artis videntur; nam ubi est signum insolubile, ibi ne lis quidem est.
 
 id autem accidit, cum quid aut necesse est fieri factumve esse aut omnino non potest fieri vel esse factum; quo in causis posito non est lis facti. hoc genus per omnia tempora perpendi solet.
 
@@ -2879,7 +2879,7 @@ utrumque autem quanquam diversi auctores eodem modo finiunt, ut sit ratio per ea
 
 nam et fabulae ad actum scenarum compositae argumenta dicuntur, et orationum Ciceronis velut thema ipse exponens Pedianus, argumentum , inquit, tale est; et ipse Cicero ad Brutum ita scribit: ueritus fortasse, ne nos in Catonem nostrum transferremus illinc aliquid, etsi argumentum simile non erat. quo apparet omnem ad scribendum destinatam materiam ita appellari.
 
-nec mirum, cum id inter opifices quoque vulgatum sit, unde Vergilius, argumentum ingens; vulgoque paulo numerosius opus dicitur argumentosum. sed nunc de eo dicendum argumento est, quod probationem praestat. Celsus quidem probationem, praestat probationem, added by Meister. indicium, fidem, adgressionem eiusdem rei nomina facit, parum distincte, ut arbitror.
+nec mirum, cum id inter opifices quoque vulgatum sit, unde Vergilius, argumentum ingens; vulgoque paulo numerosius opus dicitur argumentosum. sed nunc de eo dicendum argumento est, quod probationem praestat. Celsus quidem probationem, indicium, fidem, adgressionem eiusdem rei nomina facit, parum distincte, ut arbitror.
 
 nam probatio et fides efficitur non tantum per haec quae sunt rationis, sed etiam per inartificialia. signum autem, quod ille indicium vocat, ab argumentis iam separavi. ergo , cum sit argumentum ratio probationem praestans, qua colligitur aliud per aliud, et quae quod est dubium per id quod dubium non est confirmat, necesse est esse aliquid in causa, quod probatione non egeat.
 
@@ -2887,7 +2887,7 @@ alioqui nihil erit quo probemus, nisi fuerit quod aut sit verum aut videatur, ex
 
 praestandam pietatem parentibus; praeterea, quae legibus cauta sunt, quae persuasione etiamsi non omnium hominum, eius tamen civitatis aut gentis, in qua res agitur, in mores recepta sunt, ut pleraque in iure non legibus sed moribus constant; si quid inter utramque partem convenit, si quid probatum est, denique cuicunque adversarius non contradicit. sic enim fiet argumentum,
 
-cum providentia mundus regatur, administranda respublica est est resapablica, added by Halm after Regius. ; sequitur ut administranda respublica sit, si liquebit mundum prouidentia regi.
+cum providentia mundus regatur, administranda respublica est ; sequitur ut administranda respublica sit, si liquebit mundum prouidentia regi.
 
 debet etiam nota esse recte argumenta tractaturo vis et natura omnium rerum, et quid quaeque earum plerumque efficiat; hinc enim sunt, quae εἰκότα dicuntur.
 
@@ -2927,7 +2927,7 @@ nunc ad res transeo, in quibus maxime sunt personis iuncta, quae agimus, ideoque
 
 ducuntur igitur argumenta ex causis factorum vel futurorum; quarum materiam, quam quidam ὕλην, alii δύναμιν nominaverunt, in duo genera, sed quaternas utriusque dividunt species. nam fere versatur ratio faciendi circa bonorum adeptionem, incrementum, conservationem, usum, aut malorum evitationem, liberationem, imminutionem, tolerantiam;
 
-quae et in deliberando plurimum valent. sed honestas honestas W. Meyer: has B: haec A, causas habent recta, prava contra ex falsis opinionibus veniunt. nam est his initium ex iis, quae credunt bona aut mala; inde errores existunt et pessimi adfectus, in quibus sunt ira, odium, invidia, cupiditas, spes, ambitus, audacia, metus, cetera generis eiusdem. accedunt aliquando fortuita, ebrietas, ignorantia, quae interim ad veniam valent, interim ad probationem criminis, ut si quis, dum alii insidiatur, alium dicitur interemisse.
+quae et in deliberando plurimum valent. sed honestas causas habent recta, prava contra ex falsis opinionibus veniunt. nam est his initium ex iis, quae credunt bona aut mala; inde errores existunt et pessimi adfectus, in quibus sunt ira, odium, invidia, cupiditas, spes, ambitus, audacia, metus, cetera generis eiusdem. accedunt aliquando fortuita, ebrietas, ignorantia, quae interim ad veniam valent, interim ad probationem criminis, ut si quis, dum alii insidiatur, alium dicitur interemisse.
 
 causae porro non ad convincendum modo, quod obiicitur, sed ad defendendum quoque excuti solent, cum quis se recte fecisse, id est honesta causa, contendit; qua de re latius in tertio libro dictum est.
 
@@ -2969,11 +2969,11 @@ de quarum vi ac natura quaeritur, quasque etiam citra complexum personarum ceter
 
 ducuntur ergo argumenta ex finitione seu fine; nam utroque modo traditur. eius duplex ratio est; aut enim simpliciter quaeritur, sitne hoc virtus; aut praecedente finitione, quid sit virtus. id aut universum verbis complectimur, ut rhetorice est bene dicendi scientia; aut per partes, ut rhetorice est inveniendi recte et disponendi et eloquendi cum, firma memoria et cum dignitate actionis scientia.
 
-praeterea finimus aut vi, sicut superiora, aut ἐτυμολογίᾳ, ut si assiduum ab asse asse, Regius : acre, MSS. dando, et locupletem a locorum, pecuniosum a pecorum copia. finitioni subiecta maxime videntur genus, species, differens,
+praeterea finimus aut vi, sicut superiora, aut ἐτυμολογίᾳ, ut si assiduum ab asse dando, et locupletem a locorum, pecuniosum a pecorum copia. finitioni subiecta maxime videntur genus, species, differens,
 
-proprium; ex iis omnibus argumenta ducuntur. genus ad probandam speciem minimum valet, plurimum ad refellendam. itaque non, quia est arbor, platanus est, at quod non est arbor, utique platanus non est; nec quod virtus est, utique iustitia est, at quod non est virtus, utique non potest esse iustitia. quod virtu at, ommitted by B: iustitia est est virtus, omitted by A: the missing words are supplied by Victor. Itaque a genere perveniendum ad ultimam species: ut homo est animal non est satis, id enim genus est; mortale, etiamsi est species, cum aliis tamen communis finitio; rationale, nihil supererit ad demonstrandum id quod velis. contra species firmam probationem habet generis,
+proprium; ex iis omnibus argumenta ducuntur. genus ad probandam speciem minimum valet, plurimum ad refellendam. itaque non, quia est arbor, platanus est, at quod non est arbor, utique platanus non est; nec quod virtus est, utique iustitia est, at quod non est virtus, utique non potest esse iustitia. Itaque a genere perveniendum ad ultimam species: ut homo est animal non est satis, id enim genus est; mortale, etiamsi est species, cum aliis tamen communis finitio; rationale, nihil supererit ad demonstrandum id quod velis. contra species firmam probationem habet generis,
 
-infirmam refutationem. nam , quod iustitia est, utique virtus est; quod non est iustitia, potest esse virtus, si est fortitudo, constantia, continentia. nunquam itaque tolletur a specie genus, nisi ut omnes species, quae sunt generi subiectae, removeantur, hoc modo, quod nec rationale nec morale est neque animal, homo non est. quod neque immortale nec mortale est animal non est ( and the like ) MSS.: the text gives the conjecture of Halm.
+infirmam refutationem. nam , quod iustitia est, utique virtus est; quod non est iustitia, potest esse virtus, si est fortitudo, constantia, continentia. nunquam itaque tolletur a specie genus, nisi ut omnes species, quae sunt generi subiectae, removeantur, hoc modo, quod nec rationale nec morale est neque animal, homo non est.
 
 his adiiciunt propria et differentia. propriis confirmatur finitio, differentibus solvitur Proprium autem est aut quod soli accidit, ut homini sermo, risus; aut quidquid utique accidit sed non soli, ut igni calfacere. et sunt eiusdem rei plura propria, ut ipsius ignis lucere, calere. itaque , quodcunque proprium deerit, solvit finitionem; non utique, quodcunque erit, confirmat.
 
@@ -2987,7 +2987,7 @@ Cicero genus et speciem, quam eandem formam vocat, a finitione deducit et iis, q
 
 division autem adiuvari finitionem docet, eamque differre a partitione, quod haec sit totius in partes, illa generis in formas; partes incertas esse, ut Quibus constet respublica; formas certas, ut Quot sint species rerum publicarum, quas tris accepimus, quae populi, quae paucorum, quae unius potestate regerentur.
 
-et ille quidem non iis exemplis utitur, quia scribens ad Trebatium ex iure ducere ea maluit; ego apertiora posui. propria vero ad coniecturae quoque pertinent partem: ut, quia proprium est boni recte facere, iracundi verbis aut manu male facere, facta haec ab ipsis male facere, facta haec ab ipsis, supplied by Halm and Kayser. esse credantur aut contra. nam ut quaedam in quibusdam utique sunt, ita quaedam in quibusdam utique sunt, ita quaedam in quibusdam, Iulius Victor: omitted by MSS. utique non sunt: et ratio, quamvis sit ex diverso, eadem est.
+et ille quidem non iis exemplis utitur, quia scribens ad Trebatium ex iure ducere ea maluit; ego apertiora posui. propria vero ad coniecturae quoque pertinent partem: ut, quia proprium est boni recte facere, iracundi verbis aut manu male facere, facta haec ab ipsis esse credantur aut contra. nam ut quaedam in quibusdam utique sunt, ita quaedam in quibusdam utique non sunt: et ratio, quamvis sit ex diverso, eadem est.
 
 divisio et ad probandum simili via valet et ad refellendum. probationi interim satis est unum habere, hoc modo, ut sit civis, aut natus sit oportet aut factus; utrumque tollendum est, nec natus nec factus est.
 
@@ -3001,7 +3001,7 @@ fit etiam ex duobus, quorum necesse est alterum verum, eligendi adversario potes
 
 interim duo ita proponuntur, ut utrumlibet electum idem efficiat, quale est, philosophandum est, etiamsi non est philosophandum. et illud vulgatum, quo schema, si intelligitur? quo, si non intelligitur? et , mentietur in tormentis, qui dolorem pati potest; mentietur, qui non potest.
 
-ut sunt autem tria tempora, ita ordo rerum tribus momentis consertus est; habent enim omnia initium, incrementum, summam, ut iurgium deinde pugna, tum pugna, tum, supplied by Halm. caedes. est ergo hic quoque argumentorum locus invicem probantium. nam et ex initiis summa colligitur, quale est, non possum togam praetextam sperare, cum exordium pullum videam; et contra, non dominationis causa Sullam arma sumpsisse,argumentum est dictatura deposita.
+ut sunt autem tria tempora, ita ordo rerum tribus momentis consertus est; habent enim omnia initium, incrementum, summam, ut iurgium deinde pugna, tum caedes. est ergo hic quoque argumentorum locus invicem probantium. nam et ex initiis summa colligitur, quale est, non possum togam praetextam sperare, cum exordium pullum videam; et contra, non dominationis causa Sullam arma sumpsisse,argumentum est dictatura deposita.
 
 similiter ex incremento in utramque partem ducitur rei ratio cum in coniectura tum etiam in tractatu aequitatis, an ad initium summa referenda sit, id est, an ei caedes imputanda sit, a quo iurgium coepit.
 
@@ -3011,7 +3011,7 @@ ex pugnantibus: qui est sapiens, stultus non est. ex consequentibus sive adiunct
 
 sed haec consequentia dico, ἀκόλουθα; est enim consequens sapientiae bonitas; illa insequentia, παρεπόμενα, quae postea facta sunt aut futura. nec sum de nominibus anxius; vocet enim, ut voluerit quisque, dum vis rerum ipsa manifesta sit, appareatque hoc temporis, illud esse natura.
 
-itaque non dubito haec quoque vocare vocare, added by Spalding. consequentia, quamvis ex prioribus dent argumentum ad ea quae sequuntur, quorum duas quidam species esse voluerunt: actionis, ut pro Oppio, quos educere inuitos in provinciam non potuit, eos invitos retinere qui potuit? temporis, in Verrem, Si finem praetoris edicto adferunt Kalendae Ian., cur non initium quoque edicti nascatur a Kalendis Ian.?
+itaque non dubito haec quoque vocare consequentia, quamvis ex prioribus dent argumentum ad ea quae sequuntur, quorum duas quidam species esse voluerunt: actionis, ut pro Oppio, quos educere inuitos in provinciam non potuit, eos invitos retinere qui potuit? temporis, in Verrem, Si finem praetoris edicto adferunt Kalendae Ian., cur non initium quoque edicti nascatur a Kalendis Ian.?
 
 quod utrumque exemplum tale est, ut idem in diversum, si retro agas, valeat. consequens enim est, eos, qui inviti duci non potuerint, invitos non potuisse retineri.
 
@@ -3037,7 +3037,7 @@ probant. confirmatur coniectura ex maiore, si quis sacrilegium facit, faciet et 
 
 iuris confirmatio huiusmodi est: ex maiore, si adulterum occidere licet, et loris caedere; ex minore, si furem nocturnum occidere licet, quid latronem? ex pari, quae poena adversus interfectorem patris iusta est, eadem adversus matris; quorum omnium tractatus versatur in syllogismis.
 
-ilia magis finitionibus aut qualitatibus prosunt, si robur corporibus bonum est, non minus sanitas; Si furtum scelus, magis sacrilegium; Si abstinentia virus, et continentia; Si mundus providentia regitur, administranda respublica; Si domus aedificari sine ratione non potest, quid urbs agenda? si agenda est urbs universa? si agenda est, Radermacher: agenda si, B: agendas, A. navalium cura, et armorum. ac mihi quidem sufficeret hoc genus,
+ilia magis finitionibus aut qualitatibus prosunt, si robur corporibus bonum est, non minus sanitas; Si furtum scelus, magis sacrilegium; Si abstinentia virus, et continentia; Si mundus providentia regitur, administranda respublica; Si domus aedificari sine ratione non potest, quid urbs agenda? si agenda est navalium cura, et armorum. ac mihi quidem sufficeret hoc genus,
 
 sed in species secatur. nam ex pluribus ad unum et ex uno ad plura (unde est quod semel, et saepius ),et ex parte ad totum et ex genere ad speciem, et ex eo quod continet ad id quod continetur, aut ex difficilioribus ad faciliora et ex longe positis ad propiora et ad omnia, quae contra haec sunt, eadem ratione argumenta ducuntur.
 
@@ -3073,7 +3073,7 @@ et illa, in qua lata lex est, ut argentarii dimidium ex eo quod debebant solvere
 
 cum multa autem novantur in omni genere materiae tum praecipue in iis quaestionibus, quae scripto constant, quia vocum est in singulis ambiguitas frequens et adhuc in coniunctis magis.
 
-et haec ipsa plurium legum aliorumve scriptorum vel congruentium vel repugnantium complexu varientur necesse est, cum res rei aut ius iuris quasi signum est. non debui tibi pecuniam; nunquam me appellasti, usuram non accepisti, ultro a me mutuatus es. lex est, qui patri proditionis reo non adfuerit, exheres sit. negat filius, filius, Spalding : fit, MSS. nisi si pater absolutus sit. quid signi? lex altera, proditionis damnatus cum advocato exulet.
+et haec ipsa plurium legum aliorumve scriptorum vel congruentium vel repugnantium complexu varientur necesse est, cum res rei aut ius iuris quasi signum est. non debui tibi pecuniam; nunquam me appellasti, usuram non accepisti, ultro a me mutuatus es. lex est, qui patri proditionis reo non adfuerit, exheres sit. negat filius, nisi si pater absolutus sit. quid signi? lex altera, proditionis damnatus cum advocato exulet.
 
 Cicero pro Cluentio Publium Popilium et Tiberium Guttam dicit non iudicii corrupti sed ambitus esse damnatos. quid signi? quod accusatores eorum, qui erant ipsi ambitus damnati, e lege sint post hanc victoriam restituti.
 
@@ -3101,25 +3101,25 @@ haec non idcirco dico, quod inutilem horum locorum, ex quibus argumenta ducuntur
 
 neque enim artibus editis factum est, ut argumenta inveniremus, sed dicta sunt omnia, antequam praeciperentur, mox ea scriptores observata et collecta ediderunt. cuius rei probatio est, quod exemplis eorum veteribus utuntur et ab oratoribus ilia repetunt, ipsi nullum novum et quod dictum non sit inveniunt.
 
-artifices ergo illi qui dixerunt; sed habenda his quoque gratia est, per quos labor nobis est detractus. nam , quae priores beneficio ingenii singula invenerunt, nobis et non sunt requirenda et notata notata, Guelferbytanus: notat, B: notant, A. sunt omnia. sed non magis hoc sat est quam palaestram didicisse, nisi corpus exercitatione, continentia, cibis, ante omnia natura iuvatur, sicut contra ne illa quidem satis sine arte profuerint.
+artifices ergo illi qui dixerunt; sed habenda his quoque gratia est, per quos labor nobis est detractus. nam , quae priores beneficio ingenii singula invenerunt, nobis et non sunt requirenda et notata sunt omnia. sed non magis hoc sat est quam palaestram didicisse, nisi corpus exercitatione, continentia, cibis, ante omnia natura iuvatur, sicut contra ne illa quidem satis sine arte profuerint.
 
-illud quoque studiosi eloquentiae cogitent, neque omnibus in causis, quae demonstravimus, cuncta posse reperiri; neque, cum proposita fuerit materia dicendi, scrutanda singula et velut ostiatim pulsandum, pulsandum, Francius: pulsanda, MSS. ut sciant, an ad probandum id, quod intendimus, forte respondeant, nisi cum discunt et adhuc usu carent.
+illud quoque studiosi eloquentiae cogitent, neque omnibus in causis, quae demonstravimus, cuncta posse reperiri; neque, cum proposita fuerit materia dicendi, scrutanda singula et velut ostiatim pulsandum, ut sciant, an ad probandum id, quod intendimus, forte respondeant, nisi cum discunt et adhuc usu carent.
 
 infinitam enim faciat ista res dicendi tarditatem, si semper necesse sit, ut temptantes unumquodque eorum, quod sit aptum atque conveniens, experiendo noscamus; nescio an etiam impedimento futura sint, nisi et animi quaedam ingenita natura et studio exercitata velocitas recta nos ad ea, quae conveniunt causae, ferant. nam ,
 
 ut cantus vocis plurimum iuvat sociata nervorum concordia, si tamen tardior manus nisi inspectis demensisque singulis, quibus quaeque vox fidibus iungenda sit, dubitet, potius fuerit esse contentum eo, quod simplex canendi natura tulerit, ita huiusmodi praeceptis debet quidem aptata esse et citharae modo intenta ratio doctrinae;
 
-sed hoc exercitatione multa consequendum, ut, quemadmodum illorum artificum, etiamsi alio spectant, manus tamen ipsa consuetudine ad graves, acutos, medios nervorum nervorum, Gertz : horum, MSS. sonos fertur, sic oratoris cognitionem nihil moretur haec varietas argumentorum et copia, sed quasi offerat se et occurrat, et, ut litterae syllabaeque scribentium cogitationem non exigunt, sic rationem sponte quadam sequantur.
+sed hoc exercitatione multa consequendum, ut, quemadmodum illorum artificum, etiamsi alio spectant, manus tamen ipsa consuetudine ad graves, acutos, medios nervorum sonos fertur, sic oratoris cognitionem nihil moretur haec varietas argumentorum et copia, sed quasi offerat se et occurrat, et, ut litterae syllabaeque scribentium cogitationem non exigunt, sic rationem sponte quadam sequantur.
 
 tertium genus ex iis, quae extrinsecus adducuntur in causam, Graeci vacant παράδειγμα, quo nomine et generaliter usi sunt in omni similium adpositione et specialiter in iis, quae rerum gestarum auctoritate nituntur. nostri fere similitudinem vocari maluerunt, quod ab illis παραβολὴ dicitur, alterum exemplum, quanquam et hoc simile est et illud exemplum.
 
 nos , quo facilius propositum explicemus, utrumque παράδειγμα esse credamus, et ipsi appellemus exemplum. nec vereor, ne videar repugnare Ciceroni, quanquam collationem separat ab exemplo. nam idem omnem argumentationem dividit in duas partes, inductionem et ratiocinationem, ut plerique Graecorum in παραδείγματα et ἐπιχειρήματα dixeruntque παράδειγμα ῥητορικὴν ἐπαγωγήν.
 
-nam illa, qua plurimum est Socrates usus, hanc habuit viam, ut cum plura interrogasset, quae fateri adversario necesse esset, novissime id, de quo quaerebatur, inferret, ut simile concessis. concessis, Törnebladh: concessisse, MSS. Id est inductio. hoc in oratione fieri non potest; sed, quod illic interrogatur, hic fere sumitur.
+nam illa, qua plurimum est Socrates usus, hanc habuit viam, ut cum plura interrogasset, quae fateri adversario necesse esset, novissime id, de quo quaerebatur, inferret, ut simile concessis. Id est inductio. hoc in oratione fieri non potest; sed, quod illic interrogatur, hic fere sumitur.
 
 sit igitur illa interrogatio talis: quod est pomum generosissimum? nonne quod optimum? concedetur. quid equus? qui generosissimus? nonne qui optimus? et plura in eundem modum. deinde , cuius rei gratia rogatum est, quid homo? nonne is generosissimus, qui optimus? fatendum erit.
 
-hoc in testium interrogatione valet plurimum, in oratione perpetua dissimile est; aut enim sibi ipse respondet orator aut quod illic interrogatur, hic fere sumitur. aut quod sumitur, supplied by Meister. some such phrase must have been lost, but there can he no certainty either as regards the exact words or their precise place. quod pomum generosissimum? puto, quod optimum; et equus? qui velocissimus: ita hominum, non qui claritate nascendi sed qui uirtute maxime excellet. omnia igitur ex hoc genere sumpta necesse est aut similia esse aut dissimilia aut contraria. similitudo adsumitur interim et ad orationis ornatum; sed illa, cum res exiget, nunc ea, quae ad probationem pertinent, exsequar.
+hoc in testium interrogatione valet plurimum, in oratione perpetua dissimile est; aut enim sibi ipse respondet orator aut quod illic interrogatur, hic fere sumitur. quod pomum generosissimum? puto, quod optimum; et equus? qui velocissimus: ita hominum, non qui claritate nascendi sed qui uirtute maxime excellet. omnia igitur ex hoc genere sumpta necesse est aut similia esse aut dissimilia aut contraria. similitudo adsumitur interim et ad orationis ornatum; sed illa, cum res exiget, nunc ea, quae ad probationem pertinent, exsequar.
 
 potentissimum autem est inter ea quae sunt huius generis, quod proprie vocamus exemplum, id est rei gestae aut ut gestae utilis ad persuadendum id quod intenderis commemoratio. intuendum igitur est, totum simile sit an ex parte, ut aut omnia ex eo sumamus aut quae utilia sunt. simile est, iure occisus est Saturninus sicut Gracchi. dissimile ,
 
@@ -3159,13 +3159,13 @@ cui confine est παροιμίας genus illud, quod est velut fabella brevior e
 
 proximas exempli vires habet similitudo, praecipue illa, quae ducitur citra ullam translationum mixturam ex rebus paene paribus: ut , qui accipere in Campo consuerunt, iis candidatis, quorum nummos suppressos esse putant, inimicissimi solent esse, sic eiusmodi indices infesti tum reo venerunt.
 
-nam παραβολή quam Cicero collationem vocat, longius res quae comparentur repetere solet. neque hominum modo inter se opera similia spectantur, ut Cicero pro Murena facit: quodsi e portu solventibus, qui iam in portum ex alto invehuntur, praecipere summo studio solent et tempestatum rationem et praedonum et locorum (quod natura adfert, ut iis faveamus, qui eadem pericula, quibus nos perfuncti sumus, ingrediantur), quo me tandem animo esse oportet, prope iam ex magna iactatione terram videntem, in hunc, cui video maximas tempestates esse subeundas? sed et a mutis atque etiam inanimis interim simile simile, added by Halm. huiusmodi ducitur.
+nam παραβολή quam Cicero collationem vocat, longius res quae comparentur repetere solet. neque hominum modo inter se opera similia spectantur, ut Cicero pro Murena facit: quodsi e portu solventibus, qui iam in portum ex alto invehuntur, praecipere summo studio solent et tempestatum rationem et praedonum et locorum (quod natura adfert, ut iis faveamus, qui eadem pericula, quibus nos perfuncti sumus, ingrediantur), quo me tandem animo esse oportet, prope iam ex magna iactatione terram videntem, in hunc, cui video maximas tempestates esse subeundas? sed et a mutis atque etiam inanimis interim simile huiusmodi ducitur.
 
 et quoniam similium alia facies in alia ratione, admonendum est rarius esse in oratione illud genus, quod εἰκόνα Graeci vocant (quo exprimitur rerum aut personarum imago, ut Cassius: quis istam faciem planipedis senis torquens? ) quam id, quo probabilius fit quod intendimus: ut, si animum dicas excolendum, similitudine utaris terrae, quae neglecta spinas ac dumos, culta fructus creat; aut si ad curam rei publicae horteris, ostendas apes etiam formicasque, non modo muta, sed etiam parva animalia, in commune tamen laborare.
 
 ex hoc genere dictum illud est Ciceronis: ut corpora nostra sine mente, ita civitas sine lege suis partibus, ut nervis ac sanguine et membris, uti non potest. sed ut hac corporis humani pro Cluentio, ita pro Cornelio equorum, pro Archia saxorum quoque usus est similitudine.
 
-illa (ut dixi) propiora: ut remiges sine gubernatore, sic milites sine imperatore nihil valere. solent tamen fallere similitudinum species, ideoque adhibendum est iis iudicium. neque enim, ut navis utilior nova quam vetus, sic amicitia; vel, ut laudanda, quae pecuniam suam pluribus largitur, ita, quae formam. verba sunt in his similia uetustatis et largitionis, vis quidem longe diversa navis et amicitiae, navis et amicitiae, added by Spalding. pecuniae et pudicitiae.
+illa (ut dixi) propiora: ut remiges sine gubernatore, sic milites sine imperatore nihil valere. solent tamen fallere similitudinum species, ideoque adhibendum est iis iudicium. neque enim, ut navis utilior nova quam vetus, sic amicitia; vel, ut laudanda, quae pecuniam suam pluribus largitur, ita, quae formam. verba sunt in his similia uetustatis et largitionis, vis quidem longe diversa navis et amicitiae, pecuniae et pudicitiae.
 
 itaque in hoc genere maxime quaeritur, an simile sit, quod infertur. etiam in illis interrogationibus Socratis, quarum paulo ante feci mentionem, cavendum, ne incaute respondeas; ut apud Aeschinen Socraticum male respondit Aspasiae Xenophontis uxor, quod Cicero his verbis transfert: Dic mihi,
 
@@ -3181,7 +3181,7 @@ argumenta duci ex iure simili: ut Cicero in Topicis, eum , cui domus usus fructu
 
 ut , si qui me exire domo coegisset armis, haberem actionem, si qui introire prohibuisset, non haberem? dissimilia sic deprehenduntur, Non si, qui argentum omne legarit, videri potest signatam quoque pecuniam reliquisse, ideo etiam, quod est in nominibus, dari voluisse creditur.
 
-Ἀναλογίαν quidam a simili separaverunt, nos eam subiectam huic generi putamus. nam , ut unum ad decem, ita ita, Spalding : et, MSS. decem ad centum simile certe est; et ut hostis, sic malus civis. quanquam haec ulterius quoque procedere solent: si turpis dominae consuetudo cum servo, turpis domino cum ancilla; si mutis animalibus finis voluptas, idem homini.
+Ἀναλογίαν quidam a simili separaverunt, nos eam subiectam huic generi putamus. nam , ut unum ad decem, ita decem ad centum simile certe est; et ut hostis, sic malus civis. quanquam haec ulterius quoque procedere solent: si turpis dominae consuetudo cum servo, turpis domino cum ancilla; si mutis animalibus finis voluptas, idem homini.
 
 cui rei facillime occurrit ex dissimilibus argumentatio: non idem est dominum cum ancilla coisse, quod dominam cum servo; nec, si mutis finis voluptas, rationalibus quoque; immo ex contrario: quia mutis, ideo non rationalibus.
 
@@ -3229,7 +3229,7 @@ altera ex adfirmatione probatio est: ego hoc feci; Tu mihi hoc dixisti; et O fac
 
 quae credibilem rationem subiectam habeant: ut vulneratus aut filio orbatus non fuerit alium accusaturus quam nocentem, quando, si negotium innocenti facit, liberet eum noxa qui admiserit. hinc et patres adversus liberos et adversus suos quisque necessarios auctoritatem petunt.
 
-quaesitum etiam, potentissima argumenta primone ponenda sint loco, ut occupent animos, an summo, ut inde dimittant, an partita primo summoque, quod Homerica dispositione in medio sint infirma, ut ab aliis ab aliis, Butler : aut animis, MSS. crescant? quae prout ratio causae cuiusque postulabit, ordinabuntur, uno, ut ego censeo, excepto, ne a potentissimis ad levissima decrescat oratio.
+quaesitum etiam, potentissima argumenta primone ponenda sint loco, ut occupent animos, an summo, ut inde dimittant, an partita primo summoque, quod Homerica dispositione in medio sint infirma, ut ab aliis crescant? quae prout ratio causae cuiusque postulabit, ordinabuntur, uno, ut ego censeo, excepto, ne a potentissimis ad levissima decrescat oratio.
 
 ego haec breviter demonstrasse contentus ita posui, ut locos ipsos et genera quam possem apertissime ostenderem. quidam exsecuti sunt verbosius, quibus placuit,proposita locorum communium materia, quo quaeque res modo dici posset, ostendere; sed mihi supervacuum videbatur.
 
@@ -3253,7 +3253,7 @@ adfectus plerumque haec pars mitiores habet. non sine causa tamen difficilius se
 
 tum accusator praemeditata pleraque domo adfert, patronus etiam inopinatis frequenter occurrit. accusator dat testem, patronus ex re ipsa refellit. accusator e criminum invidia, etsi falsa sit, materiam dicendi trahit, de parricidio, sacrilegio, maiestate; quae patrono tantum neganda sunt. ideoque accusationibus etiam mediocres in dicendo suffecerunt; bonus defensor nemo nisi qui eloquentissimus fuit. quanquam ut, quod sentio, semel finiam, tanto est accusare quam defendere, quanto facere quam sanare vulnera, facilius.
 
-plurimum autem refert, et quid proposuerit proposuerit, Meiter: profucrit, AB. adversarius et quomodo. primum igitur intuendum est, id, cui responsuri sumus, proprium sit eius iudicii an ad causam extra arcessitum. nam si est proprium, aut negandum aut defendendum aut transferendum; extra haec in iudiciis fere nihil est.
+plurimum autem refert, et quid proposuerit adversarius et quomodo. primum igitur intuendum est, id, cui responsuri sumus, proprium sit eius iudicii an ad causam extra arcessitum. nam si est proprium, aut negandum aut defendendum aut transferendum; extra haec in iudiciis fere nihil est.
 
 deprecatio quidem, quae est sine ulla specie defensionis, rara admodum et apud eos solos indices, qui nulla certa pronuntiandi forma tenentur. quamquam illae quoque apud C. Caesarem et triumuiros pro diuersarum partium hominibus actiones, etiamsi precibus utuntur, adhibent tamen patrocinia; nisi hoc non fortissime defendentis est dicere, quid aliud egimus, Tubero, nisi ut,
 
@@ -3263,7 +3263,7 @@ apud indices quidem secundum legem dicturos sententiam de confessis praecipere r
 
 testes erunt, multa in eos dicere licet; chirographum, de similitudine litterarum disseremus. utique nihil erit peius quam confessio. ultima est actionis controversia, cum defendendi negandive non est locus,
 
-id est translatio. translatio, Regius : relatio, MSS. Atqui quaedam sunt, quae neque negari neque defendi neque transferri possunt. adulterii rea est quae, cum anno vidua fuisset, enixa est; lis non erit. quare illud stultissime praecipitur, quod defendi non possit, silentio dissimulandum: siquidem est id, de quo iudex pronuntiaturus est.
+id est translatio. Atqui quaedam sunt, quae neque negari neque defendi neque transferri possunt. adulterii rea est quae, cum anno vidua fuisset, enixa est; lis non erit. quare illud stultissime praecipitur, quod defendi non possit, silentio dissimulandum: siquidem est id, de quo iudex pronuntiaturus est.
 
 at si extra causam sit adductum et tantum coniunctum, malim quidem dicere, nihil id ad quaestionem nec esse in iis morandum et minus esse quam adversarius dicat; tamen velut huic simulationi oblivionis ignoscam. debet enim bonus advocatus pro rei salute brevem negligentiae reprehensionem non pertimescere. videndum etiam,
 
@@ -3273,7 +3273,7 @@ si resolvere ex parte diversa dicta difficilius erit, nostra argumenta cum adver
 
 urgent universa; at si singula quaeque dissolveris, iam illa flamma, quae magna congerie convaluerat, diductis quibus alebatur, concidet, ut, si vel maxima flumina in rivos diducantur, qualibet transitum praebent. itaque propositio quoque secundum hanc utilitatem accommodabitur, ut ea nunc singula ostendamus, nunc complectamur universa.
 
-nam interim quod pluribus collegit adversarius, sat est semel proponere; ut, si multas causas faciendi, quod arguit, reo dicet accusator fuisse, nos, non enumeratis singulis, semel hoc in totum hoc in totum, Becher : hoc inltuernlumn, MSS. negemus, quia non, quisquis causam faciendi sceleris habuit, et fecerit.
+nam interim quod pluribus collegit adversarius, sat est semel proponere; ut, si multas causas faciendi, quod arguit, reo dicet accusator fuisse, nos, non enumeratis singulis, semel hoc in totum negemus, quia non, quisquis causam faciendi sceleris habuit, et fecerit.
 
 saepius tamen accusatori congerere argumenta, reo dissolvere expediet. id autem, quod erit ab aduersario dictum, quomodo refutari debeat, intuendum est. nam si erit palam falsum, negare satis est, ut pro Cluentio Cicero eum, quem dixerat accusator epoto poculo concidisse, negat eodem die mortuum.
 
@@ -3301,7 +3301,7 @@ et protinus cum quadam defensione, ut, si pro luxurioso dicendum sit, obiecta es
 
 utique committendum nunquam est, ut adversariorum dicta cum sua confirmation reteramus, aut etiam loci alicuius exsecutione adiuvemus, nisi cum eludenda erunt: apud exercitum mihi fueris, inquit; tot annis forum non attigeris, ab fueris tamdiu et, cum tam longo intervallo veneris, cum his, qui in foro habitarunt,
 
-de dignitate contendas Praeterea in contradictione interim totum crimen exponitur, ut Cicero pro Scauro circa Bostarem facit veluti orationem diversae partis imitatus, aut pluribus propositionibus iunctis, ut pro Vareno, cum iter per agros et loca sola faceret cum Pompuleno, in familiam Ancharianam incidisse dixerunt, deinde Pompulenum occisum esse, illico eo fieri vellet. quod est utile, utile, Badius : utique, MSS. si erit incredibilis rei ordo et ipsa expositione fidem perditurus. interim per partes dissolvitur, quod contextu nocet; et plerumque id est tutius. quaedam contradictiones natura sunt singulae; id exemplis non eget.
+de dignitate contendas Praeterea in contradictione interim totum crimen exponitur, ut Cicero pro Scauro circa Bostarem facit veluti orationem diversae partis imitatus, aut pluribus propositionibus iunctis, ut pro Vareno, cum iter per agros et loca sola faceret cum Pompuleno, in familiam Ancharianam incidisse dixerunt, deinde Pompulenum occisum esse, illico eo fieri vellet. quod est utile, si erit incredibilis rei ordo et ipsa expositione fidem perditurus. interim per partes dissolvitur, quod contextu nocet; et plerumque id est tutius. quaedam contradictiones natura sunt singulae; id exemplis non eget.
 
 communia bene apprehenduntur non tantum, quia utriusque sunt partis, sed quia plus prosunt respondenti. neque enim pigebit, quod saepe monui, referre; commune qui prior dicit, contrarium facit. est enim contrarium, quo adversarius bene uti potest:
 
@@ -3319,7 +3319,7 @@ hominum vitia rebus adsignent, ut, si quis decemviratum accuset non Appium; mani
 
 eadem adversus contradictiones nobis oppositas praecepta sunt, hoc tamen amplius, quod circa eas multi duobus vitiis diversis laborant. nam quidam etiam in foro tanquam rem molestam et odiosam praetereunt, et iis plerumque, quae composita domo attulerunt, contenti sine adversario dicunt; et scilicet multo magis in scholis, in quibus non solum contradictiones omittuntur, verum etiam materiae ipsae sic plerumque finguntur, ut nihil dici pro parte altera possit.
 
-alii diligentia lapsi verbis etiam uel sententiolis omnibus respondendum putant, quod est et infinitum et supervacuum; non enim causa reprehenditur sed actor; quem ego semper videri malim disertum, ut, si dixerit quod rei prosit, ingenii credatur laus esse non causae; si forte laedat, non laedat, MSS, corrected by Becher. causae non ingenii culpa.
+alii diligentia lapsi verbis etiam uel sententiolis omnibus respondendum putant, quod est et infinitum et supervacuum; non enim causa reprehenditur sed actor; quem ego semper videri malim disertum, ut, si dixerit quod rei prosit, ingenii credatur laus esse non causae; si forte laedat, causae non ingenii culpa.
 
 itaque illae reprehensiones aut obscuritatis, qualis in Rullum est, aut infantiae in dicendo, qualis in Pisonem, aut inscitiae rerum verborumque et insulsitatis etiam, qualis in Antonium est, animo dantur et iustis odiis, suntque utiles ad conciliandum iis, quos invisos facere volueris, odium.
 
@@ -3347,7 +3347,7 @@ at quidam contradictione non contenti totos etiam locos explicant: scire se hoc 
 
 nonnunquam tamen aliquid simile contradictioni poni potest, si quid ab adversario testationibus comprehensum in advocationibus iactatum sit; respondebimus enim rei ab illis dictae, non a nobis excogitatae; aut, si id genus erit causae, ut proponere possimus certa, extra quae dici nihil possit: ut, cum res furtiva in domo deprehensa sit, dicat necesse est reus aut se ignorante illatam aut depositam apud se aut donatam sibi; quibus omnibus, etiamsi proposita non sunt, responderi potest.
 
-at in scholis recte et propositionibus propositionibus, added by Badius. see note prefixed to Index. et contradictionibus occurremus, ut in utrumque locum, id est primum et secundum, simul plurimum exerceamur. quod nisi fecerimus, nunquam utemur contradictione; non enim erit, cui respondeamus.
+at in scholis recte et propositionibus et contradictionibus occurremus, ut in utrumque locum, id est primum et secundum, simul plurimum exerceamur. quod nisi fecerimus, nunquam utemur contradictione; non enim erit, cui respondeamus.
 
 est et illud vitium nimium sollicite et circa omnia momenta luctantis; suspectam enim facit iudici causam, et frequenter, quae statim dicta omnem dubitationem sustulissent, dilata ipsis praeparationibus fidem perdunt, quia patronus et aliis crediderit opus fuisse. fiduciam igitur orator prae se ferat semperque ita dicat, tanquam de causa optime sentiat;
 
@@ -3359,7 +3359,7 @@ prius incipiendum est a refutatione. nascuntur autem ex his, quae contradictioni
 
 sed illam etiam, quam supra ostendi, simplicem ex adfectibus atque ex adfirmatione sola probationem recipit refutatio, qualis est illa Scauri, de qua supra dixi; quin nescio an etiam frequentior, ubi quid negatur. videndum praecipue utrique parti, ubi sit rei summa. nam fere accidit, ut in causis multa dicantur, de paucis iudicetur.
 
-in his probandi refutandique ratio est, sed adiuvanda viribus dicentis et ornanda. quamlibet enim sint ad dicendum, quod volumus, accommodata. ieiuna ieiuna, Bonnell: pecunia, A: omitted by B. tamen erunt et infirma, nisi maiore quodam oratoris spiritu implentur.
+in his probandi refutandique ratio est, sed adiuvanda viribus dicentis et ornanda. quamlibet enim sint ad dicendum, quod volumus, accommodata. ieiuna tamen erunt et infirma, nisi maiore quodam oratoris spiritu implentur.
 
 quare et illi communes loci de testibus, de tabulis, de argumentis aliisque similibus magnam vim animis iudicum adferunt, et hi proprii, quibus factum quodque laudamus aut contra, iustum vel iniustum docemus, maius aut minus, asperius aut mitius. ex iis autem alii ad comparationem singulorum argumentorum faciunt, alii ad plurium, alii ad totius causae inclinationem.
 
@@ -3391,7 +3391,7 @@ in tribus autem, quas fecimus, partibus non est forma semper eadem, sed una, in 
 
 nam et hae primam habent propositionem: sacrilegium commisisti; Non, quisquis hominem occidit, caedis tenetur, deinde rationem; (sed haec est in causis et quaestione longior quam in singulis argumentis) et plerumque summa complexione, vel per enumerationem vel per brevem conclusionem, testantur, quid effecerint. in hoc genere propositio dubia est, de hac enim quaeritur.
 
-altera est complexio non par intentioni sed vim habens parem: mors nihil ad nos, nam quod est dissolutum, sensu caret; quod autem sensu caret, nihil ad nos. in alio genere non eadem propositio est quae connexio: omnia animalia meliora sunt quam inanima, nihil autent melius est mundo, mundus igitur animal. hic potest videri deesse intentio. deesse, Madvig: de re, MSS.: intentio, Spalding : contentio, MSS. Potuit enim sic constitui ratiocinatio: animal est mundus, omnia enim animalia meliora sunt quam inanima et cetera.
+altera est complexio non par intentioni sed vim habens parem: mors nihil ad nos, nam quod est dissolutum, sensu caret; quod autem sensu caret, nihil ad nos. in alio genere non eadem propositio est quae connexio: omnia animalia meliora sunt quam inanima, nihil autent melius est mundo, mundus igitur animal. hic potest videri deesse intentio. Potuit enim sic constitui ratiocinatio: animal est mundus, omnia enim animalia meliora sunt quam inanima et cetera.
 
 haec propositio aut confessa est ut proxima, aut probanda ut, qui beatam vitam vivere volet, philosophetur oportet, non enim conceditur; cetera sequi nisi confirmata prima parte non possunt. item adsumptio interim confessa est ut, omnes autem volunt beatam vitam vivere; interim probanda ut illa, quod est dissolutum, sensu caret; cum, soluta corpore anima an sit immortalis vel ad tempus certe maneat, sit in dubio. quam adsumptionem alii, rationem alii vocant.
 
@@ -3405,11 +3405,11 @@ sed tum est necessaria illa summa connexio, cum intervenit ratio longior; alioqu
 
 et a ratione incipere fas est, deinde concludere, ut ibidem: quodsi duodecim tabulae nocturnum furem quoquo modo, diurnum autem, si se telo defenderet, interfici impune voluerunt, quis est qui, quoquo modo quis interfectus sit, puniendum putet? variavit hic adhuc et rursus rationem tertio loco posuit, cum videat aliquando gladium nobis ab ipsis porrigi legibus.
 
-Ppr constantem per constantem, Radermacher: prioris autem, MSS. partis duxit ordinem: insidiatori vero et latroni quae potest inferri iniusta nex? hoc intentio; quid comitatus nostri, quid gladii volunt? hoc ratio; quos habere certe non liceret, si uti illis nullo pacto liceret, hoc ex ratione et intentione connexio.
+Ppr constantem partis duxit ordinem: insidiatori vero et latroni quae potest inferri iniusta nex? hoc intentio; quid comitatus nostri, quid gladii volunt? hoc ratio; quos habere certe non liceret, si uti illis nullo pacto liceret, hoc ex ratione et intentione connexio.
 
 huic generi probationis tribus occurritur modis, id est per omnes partes. aut enim expugnatur intentio aut adsumptio aut conclusio, nonnunquam omnia. intentio expugnatur: iure occidi eum, qui insidiatus sit. nam prima statim quaestio pro Milone est, an ei fas sit lucem intueri qui a se hominem necatum esse fateatur.
 
-expugnatur adsumptio omnibus iis quae de refutatione diximus. et ratio quidem nonnunquam nonnunquam, MSS.: nunquam, Victor . est vera, cum eius propositio vera non sit; interim verae propositionis falsa ratio est. virtus bonum est, verum est; si quis rationem subiiciat, quod ea locupletes faciat, verae intentionis falsa sit ratio. conclusio autem aut vera negatur,
+expugnatur adsumptio omnibus iis quae de refutatione diximus. et ratio quidem nonnunquam est vera, cum eius propositio vera non sit; interim verae propositionis falsa ratio est. virtus bonum est, verum est; si quis rationem subiiciat, quod ea locupletes faciat, verae intentionis falsa sit ratio. conclusio autem aut vera negatur,
 
 cum aliud colligit quam id quod ex prioribus efficitur, aut nihil ad quaestionem dicitur pertinere. non est vera sic: insidiator iure occiditur; nam cum vitae vim adferat ut hostis, debet etiam repelli ut hostis; recte igitur Clodius ut hostis occiditur est; non utique, nondum enim Clodium insidiatorem ostendimus. sed fit vera connexio, recte igitur insidiator ut hostis occiditur; nihil ad nos, nondum enim Clodius insidiator apparet.
 
@@ -3431,11 +3431,11 @@ locuples et speciosa et imperiosa vult esse eloquentia; quorum nihil consequetur
 
 feratur ergo non semitis sed campis, non uti fontes angustis fistulis colliguntur sed ut beatissimi amnes totis vallibus fluunt, ac sibi viam, si quando non acceperit, faciat. nam quid illa miserius lege velut praeformatas infantibus litteras persequentium et, ut Graeci dicere solent, quem mater amictum dedit, sollicite custodientium: propositio ac conclusio ex consequentibus et repugnantibus?
 
-non inspiret? non augeat? non mille figuris variet ac verset? ut ea nasci et ipsa provenire natura, non manu facta et arte suspecta magistrum fateri ubique videantur? quis unquam sic dixit orator? nonne apud ipsum Demosthenen paucissima huius generis generis, Zumpt: veris, A: veris vel artis, G. reperiuntur? quae apprehensa Graeci magis (nam hoc solum peius faciunt) in catenas ligant et inexplicabili serie connectunt, et indubitata colligunt et probant confessa et se antiquis per hoc similes vocant, deinde interrogati nunquam respondebunt, quem imitentur. sed de figuris alio loco.
+non inspiret? non augeat? non mille figuris variet ac verset? ut ea nasci et ipsa provenire natura, non manu facta et arte suspecta magistrum fateri ubique videantur? quis unquam sic dixit orator? nonne apud ipsum Demosthenen paucissima huius generis reperiuntur? quae apprehensa Graeci magis (nam hoc solum peius faciunt) in catenas ligant et inexplicabili serie connectunt, et indubitata colligunt et probant confessa et se antiquis per hoc similes vocant, deinde interrogati nunquam respondebunt, quem imitentur. sed de figuris alio loco.
 
 nunc illud adiiciendum, ne iis quidem consentire me, qui semper argumenta sermone puro et dilucido et distincto ceterum minime elato ornatoque putant esse dicenda. namque ea distincta quidem ac perspicua debere esse confiteor, in rebus vero minoribus etiam sermone ac verbis quam maxime propriis et ex usu;
 
-at si maior erit materia, nullum iis ornatum, qui modo non obscuret, subtrahendum puto. nam et saepe plurimum lucis adfert ipsa translatio, cum etiam iuris consulti, quorum summus circa verborum proprietatem labor est, litus esse audeant dicere, qua fluctus eludit. elidit, valla .
+at si maior erit materia, nullum iis ornatum, qui modo non obscuret, subtrahendum puto. nam et saepe plurimum lucis adfert ipsa translatio, cum etiam iuris consulti, quorum summus circa verborum proprietatem labor est, litus esse audeant dicere, qua fluctus eludit.
 
 quoque quid est natura magis asperum, hoc pluribus condiendum est voluptatibus; et minus suspecta argumentatio dissimulatione, et multum ad fidem adiuvat audientis voluptas. nisi forte existimamus Ciceronem haec ipsa mala in argumentatione dixisse, silere leges inter arma, et gladium nobis interim ab ipsis porrigi legibus. hic tamen habendus istis modus, ut sint ornamento non impedimento.
 
@@ -3463,7 +3463,7 @@ etiam illa fortuita aderant omnia, vocis iucunditas claritasque, oris suavitas e
 
 tuosne ego, o meae spes inanes, labentes oculos, tuum fugientem spiritum vidi? tuum corpus frigidum exsangue complexus animam recipere auramque communem haurire amplius potui, dignus his cruciatibus, quos fero,
 
-dignus his cogitationibus? tene consulari nuper adoptione ad omnium spes honorum prius admotum, te avunculo praetori generum destinatum, te omnium spes avitae eloquentiae candidatum, superstes parens tantum ad poenas, amisi omnium spes, brarkcted by Spalding. avitae, Erasmus: acutis or acutae, MSS.: ad poenas amisi, Regius : poenas, MSS. ? Et si non cupido lucis, certe patientia vindicet te reliqua mea aetate. nam frustra mala omnia ad crimen fortunate relegamus.
+dignus his cogitationibus? tene consulari nuper adoptione ad omnium spes honorum prius admotum, te avunculo praetori generum destinatum, te omnium spes avitae eloquentiae candidatum, superstes parens tantum ad poenas, amisi ? Et si non cupido lucis, certe patientia vindicet te reliqua mea aetate. nam frustra mala omnia ad crimen fortunate relegamus.
 
 nemo nisi sua culpa diu dolet. sed vivimus, et aliqua vivendi ratio quaerenda est, credendumque doctissimis hominibus, qui unicum adversorum solacium litteras putaverunt. si quando tamen ita resederit praesens impetus, ut aliqua tot luctibus alia cogitatio inseri possit, non iniuste petierim morae veniam. quis enim dilata studia miretur, quae potius non abrupta esse mirandum est? tum , si qua fuerint minus effecta iis,
 
@@ -3475,7 +3475,7 @@ peroratio sequebatur, quam cumulum quidam, conclusionem alii vocant. eius duplex
 
 in hac, quae repetemus, quam brevissime dicenda sunt et, quod Graeco verbo patet, decurrendum per capita. nam , si morabimur, non iam enumeratio sed quasi altera fiet oratio. quae autem enumeranda videntur, cum pondere aliquo dicenda sunt et aptis excitanda sententiis et figuris utique varianda; alioqui nihil est odiosius recta illa repetitione velut memoriae iudicum diffidentis.
 
-sunt autem innumerabiles species, species, added by Halm. optimeque ira Verrem Cicero: si pater ipse iudicaret, quid diceret, cum haec probarentur? et deinde subiecit enumerationem; aut cum idem ira eundem per invocationem deorum spoliata a praetore templa dinumerat. licet et dubitare, num quid nos fugerit, et quid responsurus sit adversarius his et his, aut quam spem accusator habeat omnibus ita defensis.
+sunt autem innumerabiles species, optimeque ira Verrem Cicero: si pater ipse iudicaret, quid diceret, cum haec probarentur? et deinde subiecit enumerationem; aut cum idem ira eundem per invocationem deorum spoliata a praetore templa dinumerat. licet et dubitare, num quid nos fugerit, et quid responsurus sit adversarius his et his, aut quam spem accusator habeat omnibus ita defensis.
 
 illa vero iucundissima, si contingat aliquod ex adversario ducere argumentum, ut si dicas: reliquit hanc partem causae, aut inuidia premere maluit, aut ad preces confugit merito, cum sciret haec et haec.
 
@@ -3533,7 +3533,7 @@ non solum autem dicendo sed etiam faciendo quaedam lacrimas mouemus, unde et pro
 
 quarum rerum ingens plerumque vis est velut ira rem praesentem animos hominum ducentium, ut populum Romanum egit ira furorem praetexta C. Caesaris praelata ira funere cruenta. sciebat interfectum eum, corpus denique ipsum impositum lecto erat, at vestis tamen illa sanguine madens ita repraesentavit imaginem sceleris, ut non occisus esse Caesar sed tum maxime occidi videretur.
 
-sed non ideo probaverim, quod factum et lego et ipse aliquando vidi, depictam ira tabula sipariove sipariove, F. C. Cotlradus: supra Iovem, MSS. imaginem rei, cuius atrocitate iudex erat commovendus. quae enim est actoris infantia, qui mutam illam effigiem magis quam orationem pro se putet locuturam?
+sed non ideo probaverim, quod factum et lego et ipse aliquando vidi, depictam ira tabula sipariove imaginem rei, cuius atrocitate iudex erat commovendus. quae enim est actoris infantia, qui mutam illam effigiem magis quam orationem pro se putet locuturam?
 
 at sordes et squalorem et propinquorum quoque similem habitum scio profuisse, et magnum ad salutem momentum preces attulisse. quare et obsecratio illa iudicum per carissima pignora, utique si et reo sint liberi, coniux, parentes, utilis erit;
 
@@ -3545,11 +3545,11 @@ de accusatoribus et reis sum locutus, quia ira periculis maxime versatur adfectu
 
 ne illud quidem indignum est admonitione, ingens ira epilogis meo iudicio verti discrimen, quomodo se dicenti, qui excitatur, accommodet. nam et imperitia et rusticitas et rigor et deformitas adferunt interim frigus, diligenterque sunt haec actori providenda.
 
-equidem repugnantes eos patrono et nihil vultu commotos et intempestive renidentes renidentes, Spalding : residentes, AG. et facto aliquo vel ipso vultu risum etiam moventes saepe vidi; praecipue vero cum aliqua velut scenice fiunt, alio cadunt. alio, Halm : aliam, alia, alias, MSS
+equidem repugnantes eos patrono et nihil vultu commotos et intempestive renidentes et facto aliquo vel ipso vultu risum etiam moventes saepe vidi; praecipue vero cum aliqua velut scenice fiunt, alio cadunt.
 
 transtulit aliquando patronus puellam, quae soror esse adversarii dicebatur (nam de hoc lis erat), ira adversa subsellia, tanquam ira gremio fratris relicturus, at is a nobis praemonitus discesserat. tum ille, alioqui vir facundus, inopinatae rei casu obmutuit et infantem suam frigidissime reportavit.
 
-alius imaginem mariti pro rea proferre magni putavit, et ea saepius risum fecit. nam et ii, quorum officium erat ut traderent eam, ignari, qui esset epilogus, quotiens respexisset patronus, offerebant palam, et prolata novissime deformitate ipsa (nam senis cadaveri cera cadaveri cera, Halm : caduca veri, AG. erat infusa) praeteritam quoque orationis gratiam perdidit.
+alius imaginem mariti pro rea proferre magni putavit, et ea saepius risum fecit. nam et ii, quorum officium erat ut traderent eam, ignari, qui esset epilogus, quotiens respexisset patronus, offerebant palam, et prolata novissime deformitate ipsa (nam senis cadaveri cera erat infusa) praeteritam quoque orationis gratiam perdidit.
 
 nec ignotum, quid Glyconi, cui Spiridion fuit cognomen, accident. huic puer, quem is productum quid fleret interrogabat, a paedagogo se vellicari respondit. sed nihil illa circa Caepasios Ciceronis fabula efficacius ad pericula epilogorum.
 
@@ -3571,7 +3571,7 @@ discutiendae tamen oratione eiusmodi scenae, egregieque Cicero, qui contra imagi
 
 sunt et illi leniores epilogi, quibus adversario satisfacimus, si forte sit eius persona talis, ut illi debeatur reverentia, aut cum amice aliquid commonemus et ad concordiam hortamur. quod est genus egregie tractatum a Passieno, cum Domitiae uxoris suae pecuniaria lite adversus fratrem eius Ahenobarbum ageret; nam, cum de necessitudine multa dixisset, de fortuna quoque, qua uterque abundabat, adiecit: nihil vobis minus deest, quam de quo contenditis.
 
-omnes autem hos adfectus, etiamsi quibusdam videntur ira prooemio atque ira epilogo sedem habere, ira quibus sane sint frequentissimi, tamen aliae quoque partes recipiunt, sed breviores, ut cum ex iis plurima sint reservanda. sint reservanda, early editor: sit res eruenda, MSS. At hic, si usquam, totos eloquentiae aperire fontes licet.
+omnes autem hos adfectus, etiamsi quibusdam videntur ira prooemio atque ira epilogo sedem habere, ira quibus sane sint frequentissimi, tamen aliae quoque partes recipiunt, sed breviores, ut cum ex iis plurima sint reservanda. At hic, si usquam, totos eloquentiae aperire fontes licet.
 
 nam et, si bene diximus reliqua, possidebimus iam iudicum animos, et e confragosis atque asperis evecti tota pandere possumus vela, et, cum sit maxima pars epilogi amplificatio, verbis atque sententiis uti licet magnificis et ornatis. tum est commovendum theatrum. cum ventum est ad ipsum illud, quo veteres tragoediae comoediaeque cluduntur, plodite .
 
@@ -3585,9 +3585,9 @@ quamvis autem pars haec iudicialium causarum summe praecipueque constet adfectib
 
 quae postulabat materia, sic attigi, ut magis quid oporteret fieri quam quo id modo consequi possemus, ostenderem. nunc altius omnis rei repetenda ratio est. nam et per totam, ut diximus, causam locus est adfectibus. et eorum non simplex natura nec in transitu tractanda, quo nihil adferre maius vis orandi potest.
 
-nam cetera forsitan tenuis quoque et angusta ingenii vena, si modo vel doctrina vel usu sit adiuta, generare atque ad frugem aliquam perducere queat; certe sunt semperque fuerunt non parum multi, qui satis perite, quae essent probationibus utilia, reperirent; quos equidem non contemno, sed hactenus utiles credo, ne quid per eos iudici sit ignotum, atque (ut dicam, quod sentio) dignos, a quibus causam diserti docerentur. qui vero iudicem rapere et, in quem vellet habitum animi, posset perducere, quo dicente dicente, Spalding : dicto, MSS. flendum irascendumve esset, rarus fuit.
+nam cetera forsitan tenuis quoque et angusta ingenii vena, si modo vel doctrina vel usu sit adiuta, generare atque ad frugem aliquam perducere queat; certe sunt semperque fuerunt non parum multi, qui satis perite, quae essent probationibus utilia, reperirent; quos equidem non contemno, sed hactenus utiles credo, ne quid per eos iudici sit ignotum, atque (ut dicam, quod sentio) dignos, a quibus causam diserti docerentur. qui vero iudicem rapere et, in quem vellet habitum animi, posset perducere, quo dicente flendum irascendumve esset, rarus fuit.
 
-atqui hoc est quod dominetur in iudiciis, haec eloquentia regnat. eloquentia regnat, Halm : eloquentiam regunt, MSS. Namque argumenta plerumque nascuntur ex causa, et pro meliore parte plura sunt semper, ut, qui per haec vicit, tantum non defuisse sibi advocatum sciat.
+atqui hoc est quod dominetur in iudiciis, haec eloquentia regnat. Namque argumenta plerumque nascuntur ex causa, et pro meliore parte plura sunt semper, ut, qui per haec vicit, tantum non defuisse sibi advocatum sciat.
 
 ubi vero animis iudicum vis adferenda est et ab ipsa veri contemplatione abducenda mens, ibi proprium oratoris opus est. hoc non docet litigator, hoc causarum libellis non continetur. probationes enim efficiant sane ut causam nostram meliorem esse iudices putent, adfectus praestant ut etiam velint; sed id quod volunt credunt quoque.
 
@@ -3597,9 +3597,9 @@ ita argumenta ac testes quid egerint, pronuntiatio ostendit; commotus autem ab o
 
 sicut antiquitus traditum accepimus, duae sunt species: alteram Graeci πάθος vocant, quod nos vertentes recte ac proprie adfectum dicimus, alteram Ἦθος cuius nomine, ut ego quidem sentio, caret sermo Romanus; mores appellantur, atque inde pars quoque illa philosophiae ἠθική moralis est dicta.
 
-sed ipsam rei naturam spectanti mihi non tam mores significari videntur quam morum quaedam proprietas; nam ipsis quidem omnis habitus mentis continetur. cautiores voluntatem complecti quam nomina interpretari maluerunt. adfectus igitur πάθος concitatos, Ἦθος πάθος. ... Ἦθος excerpts of Cassiodorus with slight alteration of order: hos. . illos, MSS. mites atque compositos esse dixerunt; in altero vehementer commotos, in altero lenes; denique hos imperare, illos persuadere; hos ad perturbationem, illos ad benivolentiam praevalere. adiiciunt quidam? Ἦθος perpetuum, Ἦθος perpetuum, excerpts of Cassiodorus: hoc pertuum, A: aut pertumn, G; peritorum, codd. dett. πάθος temporale esse. quod ut accidere frequentius fateor, ita nonnullas credo esse materias, quae continuum desiderent adfectum. nec tamen minus artis aut usus hi leniores habent, virium atque impetus non tantundem exigunt. in causis vero etiam pluribus versantur, immo secundum quendam intellectum in omnibus.
+sed ipsam rei naturam spectanti mihi non tam mores significari videntur quam morum quaedam proprietas; nam ipsis quidem omnis habitus mentis continetur. cautiores voluntatem complecti quam nomina interpretari maluerunt. adfectus igitur πάθος concitatos, Ἦθος mites atque compositos esse dixerunt; in altero vehementer commotos, in altero lenes; denique hos imperare, illos persuadere; hos ad perturbationem, illos ad benivolentiam praevalere. adiiciunt quidam? Ἦθος perpetuum, πάθος temporale esse. quod ut accidere frequentius fateor, ita nonnullas credo esse materias, quae continuum desiderent adfectum. nec tamen minus artis aut usus hi leniores habent, virium atque impetus non tantundem exigunt. in causis vero etiam pluribus versantur, immo secundum quendam intellectum in omnibus.
 
-nam cum ex illo ethico ethico, Halm : et hoc, MSS. loco nihil non ab oratore tractetur, quidquid de honestis et utilibus, denique faciendis et non faciendis dicitur, Ἦθος vocari potest. quidam commendationem atque excusationem propria huius officii putauerunt, nec abnuo esse ista in hac parte; sed non concedo ut sola sint. quin illud adhuc adiicio,
+nam cum ex illo ethico loco nihil non ab oratore tractetur, quidquid de honestis et utilibus, denique faciendis et non faciendis dicitur, Ἦθος vocari potest. quidam commendationem atque excusationem propria huius officii putauerunt, nec abnuo esse ista in hac parte; sed non concedo ut sola sint. quin illud adhuc adiicio,
 
 πάθος atque Ἦθος esse interim ex eadem natura, ita ut illud maius sit, hoc minus, ut amor πάθος caritas Ἦθος interdum diversa inter se, sicut in epilogis, nam quae πάθος concitavit, Ἦθος solet mitigare. proprie tamen mihi huius nominis exprimenda natura est, quatenus appellatione ipsa non satis significari videtur.
 
@@ -3613,7 +3613,7 @@ hinc etiam ille maior ad concitandum odium nasci adfectus solet, cum hoc ipso, q
 
 ille iam paene medius adfectus est ex amoribus et ex desideriis amicorum et necessariorum, nam et hoc maior est et illo minor. non parum significanter etiam illa in scholis ἤθη dixerimus, quibus plerumque rusticos, superstitiosos, avaros, timidos secundum condicionem propositionum effingimus. nam si ἤθη mores sunt cum hos imitamur, ex his ducimus orationem.
 
-denique Ἦθος Ἦθος, Meistr: hoc MSS. omne bonum et comem virum poscit. quas virtutes cum etiam in litigatore debeat orator, si fieri potest, approbare, utique ipse aut habeat aut habere credatur. sic proderit plurimum causis, quibus ex sua bonitate faciet fidem. nam qui, dum dicit, malus videtur, utique male dicit; non enim videtur iusta dicere, alioqui Ἦθος videretur.
+denique Ἦθος omne bonum et comem virum poscit. quas virtutes cum etiam in litigatore debeat orator, si fieri potest, approbare, utique ipse aut habeat aut habere credatur. sic proderit plurimum causis, quibus ex sua bonitate faciet fidem. nam qui, dum dicit, malus videtur, utique male dicit; non enim videtur iusta dicere, alioqui Ἦθος videretur.
 
 quare ipsum etiam dicendi genus in hoc placidum debet esse ac mite; nihil superbum, nihil elatum saltem ac sublime desiderat; proprie, iucunde, credibiliter dicere sat est, ideoque et medius ille orationis modus maxime convenit.
 
@@ -3629,7 +3629,7 @@ hostilem ad tumulum Troiae sub moenibus altis
 
 iussa mori—
 
-aut cum ita exaggeramus iniuriam nostram, ut etiam quae multo minora sunt intoleranda dicamus: si pulsasses, defendi non poteras; vulnerasti. sed haec diligentius, cum de amplificatione dicemus. de amplificatione dicemus, Halm : ad eam amplificationem dicemus, AG: ad eam amplificationem venerimus, dicemus, vulgo. Interim notasse contentus sum, non id solum agere adfectus, ut, quae sunt, ostendantur acerba ac luctuosa, sed etiam ut, quae toleranda haberi solent, gravia videantur: ut cum in maledicto plus iniuriae quam in manu, in infamia plus poenae dicimus quam in morte.
+aut cum ita exaggeramus iniuriam nostram, ut etiam quae multo minora sunt intoleranda dicamus: si pulsasses, defendi non poteras; vulnerasti. sed haec diligentius, cum de amplificatione dicemus. Interim notasse contentus sum, non id solum agere adfectus, ut, quae sunt, ostendantur acerba ac luctuosa, sed etiam ut, quae toleranda haberi solent, gravia videantur: ut cum in maledicto plus iniuriae quam in manu, in infamia plus poenae dicimus quam in morte.
 
 namque in hoc eloquentiae vis est, ut iudicem non in id tantum compellat, in quod ipsa rei natura ducetur, sed aut, qui non est, aut maiorem quam est, faciat adfectum. haec est illa, quae δείνωσις vocatur, rebus indignis, asperis, invidiosis addens vim oratio; qua virtute praeter alias plurimum Demosthenes valuit.
 
@@ -3643,13 +3643,13 @@ nec incendit nisi ignis nec madescimus nisi humore nec res ulla dat alteri color
 
 at quomodo fiet, ut adficiamur? neque enim sunt motus in nostra potestate. temptabo etiam de hoc dicere. quas φαντασίας Graeci vocant, nos sane visiones appellemus, per quas imagines rerum absentium ita repraesentantur animo, ut eas cernere oculis ac praesentes habere videamur.
 
-has quisquis bene conceperit, is erit in adfectibus potentissimus. hunc quidam dicunt εὐφαντασίωτον, qui sibi res, voces, actus secundum verum optime finget; quod quidem nobis volentibus facile continget. nisi nisi, Törinebladh: nihil, AG. vero inter otia animorum et spes inanes et velut somnia quaedam vigilantium ita nos hae de quibus loquor imagines prosequuntur, ut peregrinari, navigare, proeliari, populos alloqui, divitiarum, quas non habemus, usum videamur disponere, nec cogitare sed facere: hoc animi vitium ad utilitatem non transferemus?
+has quisquis bene conceperit, is erit in adfectibus potentissimus. hunc quidam dicunt εὐφαντασίωτον, qui sibi res, voces, actus secundum verum optime finget; quod quidem nobis volentibus facile continget. nisi vero inter otia animorum et spes inanes et velut somnia quaedam vigilantium ita nos hae de quibus loquor imagines prosequuntur, ut peregrinari, navigare, proeliari, populos alloqui, divitiarum, quas non habemus, usum videamur disponere, nec cogitare sed facere: hoc animi vitium ad utilitatem non transferemus?
 
 at hominem occisum queror; non omnia, quae in re praesenti accidisse credibile est, in oculis habebo? non percussor ille subitus erumpet? non expavescet circumventus? exclamabit vel rogabit vel fugiet? non ferientem, non concidentem videbo? non animo sanguis et pallor et gemitus extremus, denique exspirantis hiatus insidet?
 
 insequitur ἐνάργεια, quae a Cicerone illustratio et evidentia nominatur, quae non tam dicere videtur quam ostendere; et adfectus non aliter, quam si rebus ipsis intersimus, sequentur. an non ex his visionibus illa sunt; excussi manibus radii, revolutaque pensa? — levique patens in pectore vulnus? equus ille in funere Pallantis,—positis insignibus? quid ? non idem poeta penitus ultimi fati concepit imaginem, ut diceret:
 
-et dulces moriens reminiscitur Argos? ubi vero miseratione opus erit, nobis ea, de quibus queremur, accidisse credamus atque id animo nostro persuadeamus. nos illi simus, quos gravia, indigna, tristia passos queremur, nec agamus rem quasi alienam, sed adsumamus parumper illum dolorem. ita dicemus, quae in nostro simili casu dicturi fuissemus. fuissenus, Halm : vidissemus, AG.
+et dulces moriens reminiscitur Argos? ubi vero miseratione opus erit, nobis ea, de quibus queremur, accidisse credamus atque id animo nostro persuadeamus. nos illi simus, quos gravia, indigna, tristia passos queremur, nec agamus rem quasi alienam, sed adsumamus parumper illum dolorem. ita dicemus, quae in nostro simili casu dicturi fuissemus.
 
 vidi ego saepe histriones atque comoedos, cum ex aliquo graviore actu personam deposuissent, flentes adhuc egredi. quodsi in alienis scriptis sola pronuntiatio ita falsis accendit adfectibus, quid nos faciemus, qui ilia cogitare debemus ut moveri periclitantium vice possimus?
 
@@ -3679,7 +3679,7 @@ verum hoc, quidquid est, ut non ausim dicere carere omnino arte, quia nonnullam 
 
 porro natura non tantum in hoc valet, ut acutior quis atque habilior sit ad inveniendum (nam id sane doctrina possit augeri), sed inest proprius quibusdam decor in habitu ac vultu, ut eadem illa minus alio dicente urbana esse videantur.
 
-occasio vero et in rebus est cuius est cuius est, added by Halm following Spalding. tanta vis, ut saepe adiuti ea non indocti modo, sed etiam rustici salse dicant, et in eo cum quis aliquid dixerit prior. sunt enim longe venustiora omnia in respondendo quam in provocando.
+occasio vero et in rebus est cuius est tanta vis, ut saepe adiuti ea non indocti modo, sed etiam rustici salse dicant, et in eo cum quis aliquid dixerit prior. sunt enim longe venustiora omnia in respondendo quam in provocando.
 
 accedit difficultati, quod eius rei nulla exercitatio est, nulli praeceptores. itaque in conviviis et sermonibus multi dicaces, quia in hoc usu cotidiano proficimus. oratoria urbanitas rara nec ex arte propria sed ad hanc consuetudinem commodata.
 
@@ -3691,11 +3691,11 @@ pluribus autem nominibus in eadem re vulgo utimur; quae tamen si diducas, suam q
 
 quod cum gratia quadam et venere dicatur, apparet. salsum in consuetudine pro ridiculo tantum accipimus; natura non utique hoc est, quanquam et ridicula oporteat esse salsa. nam et Cicero omne, quod salsum sit, ait esse Atticorum, non quia sunt maxime ad risum compositi; et Catullus, cum dicit, nulla est in corpore mica salis, non hoc dicit, nihil in corpore eius esse ridiculum.
 
-salsum igitur erit, quod non erit insulsum, velut quoddam simplex orationis condimentum, quod sentitur latente iudicio velut palato, excitatque et a taedio defendit orationem. sales enim, sales enim, Spalding : sane tamen, MSS. ut ille in cibis paulo liberalius aspersus, si tamen non sit immodicus, adfert aliquid propriae voluptatis, ita hi quoque in dicendo habent quiddam, quod nobis faciat audiendi sitim. facetum quoque non tantum circa ridicula opinor consistere.
+salsum igitur erit, quod non erit insulsum, velut quoddam simplex orationis condimentum, quod sentitur latente iudicio velut palato, excitatque et a taedio defendit orationem. sales enim, ut ille in cibis paulo liberalius aspersus, si tamen non sit immodicus, adfert aliquid propriae voluptatis, ita hi quoque in dicendo habent quiddam, quod nobis faciat audiendi sitim. facetum quoque non tantum circa ridicula opinor consistere.
 
 neque enim diceret Horatius, facetum carminis genus natura concessum esse Vergilio. decoris hanc magis et excultae cuiusdam elegantiae appellationem puto. ideoque in epistolis Cicero haec Bruti refert verba: ne illi sunt pedes faceti ac delicatius ingredienti molles. quod convenit cum illo Horatiano, molle atque facetum Vergilio locum vero accipimus, quod est contrarium serio.
 
-sed hoc nimis angustum, sed hoc nimis angustum, added by Halm. nam et fingere et terrere et promittere interim iocus est. dicacitas sine dubio a dicendo, quod est omni generi commune, ducta est, proprie tamen significat sermonem cum risu aliquos incessentem. ideo Demosthenen urbanum fuisse dicunt, dicacem negant.
+sed hoc nimis angustum, nam et fingere et terrere et promittere interim iocus est. dicacitas sine dubio a dicendo, quod est omni generi commune, ducta est, proprie tamen significat sermonem cum risu aliquos incessentem. ideo Demosthenen urbanum fuisse dicunt, dicacem negant.
 
 proprium autem materiae, de qua nunc loquimur, est ridiculum, ideoque haec tota disputatio a Graecis περὶ γελοίου inscribitur. eius prima divisio traditur eadem, quae est omnis orationis, ut sit positum in rebus aut in verbis.
 
@@ -3705,11 +3705,11 @@ venusta creduntur. tertium est genus, ut idem dicit, in decipiendis exspectation
 
 item ridicula aut facimus aut dicimus. facto risus conciliatur interim admixta gravitate: ut M. Caelius praetor, cum sellam eius curulem consul Isauricus fregisset, alteram posuit loris intentam; dicebatur autem consul a patre flagris aliquando caesus; interim sine respectu pudoris, ut in illa pyxide Caeliana, quod neque oratori neque ulli viro gravi conveniat.
 
-idem autem de vultu gestuque ridiculo dictum sit; in quibus est quidem summa gratia, sed maior, cum captare risum non videntur; nihil enim est iis, quae sicut salsa sicut, Gesner: dūt, G: dicenti, A. dicuntur, insulsius. quanquam autem gratiae plurimum dicentis severitas adfert, fitque ridiculum id ipsum, quod qui dicit illa non ridet, est tamen interim et aspectus et habitus oris et gestus non inurbanus,
+idem autem de vultu gestuque ridiculo dictum sit; in quibus est quidem summa gratia, sed maior, cum captare risum non videntur; nihil enim est iis, quae sicut salsa dicuntur, insulsius. quanquam autem gratiae plurimum dicentis severitas adfert, fitque ridiculum id ipsum, quod qui dicit illa non ridet, est tamen interim et aspectus et habitus oris et gestus non inurbanus,
 
 cum iis modus contingit. id porro, quod dicitur, aut est lascivum et hilare, qualia A. Galbae pleraque, aut contumeliosum, qualia nuper Iuni Bassi, aut asperum, qualia Cassii Severi, aut lene, qualia Domitii Afri.
 
-refert , his ubi quis utatur. nam in convictibus et cotidiano sermone lasciva humilibus, hilaria omnibus convenient. laedere nunquam velimus, longeque absit propositum illud potius amicum quam dictum perdendi. in hac quidem pugna forensi malim mihi lenibus uti licere; quanquam quanquam, Regius : nonnunquam, MSS. et contumeliose et aspere dicere in adversarios permissum est, cum accusare etiam palam et caput alterius iuste petere concessum sit. sed hic quoque tamen inhumana videri solet fortunae insectatio, vel quod culpa caret vel quod recidere etiam in ipsos, qui obiecerunt, potest. primum itaque considerandum est, et quis et in qua causa et apud quem et in quem et quid dicat.
+refert , his ubi quis utatur. nam in convictibus et cotidiano sermone lasciva humilibus, hilaria omnibus convenient. laedere nunquam velimus, longeque absit propositum illud potius amicum quam dictum perdendi. in hac quidem pugna forensi malim mihi lenibus uti licere; quanquam et contumeliose et aspere dicere in adversarios permissum est, cum accusare etiam palam et caput alterius iuste petere concessum sit. sed hic quoque tamen inhumana videri solet fortunae insectatio, vel quod culpa caret vel quod recidere etiam in ipsos, qui obiecerunt, potest. primum itaque considerandum est, et quis et in qua causa et apud quem et in quem et quid dicat.
 
 oratori minime convenit distortus vultus gestusque, quae in mimis rideri solent. dicacitas etiam scurrilis et scenica huic personae alienissima est. obscenitas vero non a verbis tantum abesse debet, sed etiam a significatione. nam si quando obiici potest, non in ioco exprobranda est.
 
@@ -3721,7 +3721,7 @@ solet interim accidere, ut id quod in adversarium dicimus aut in iudicem conveni
 
 qui malam faciem habet, liber non est? vitandum etiam, ne petulans, ne superbum, ne loco, ne tempore alienum, ne praeparatum et domo adlatum videatur quod dicimus. nam adversus miseros, sicut supra dixeram, inhumanus est iocus. sed quidam ita sunt receptae auctoritatis ac notae verecundiae, ut nocitura sit in eos dicendi petulantia. nam de amicis iam praeceptum est.
 
-illud non ad oratoris oratoris, Harster: orat fori*, A: orā fori, G. consilium sed ad hominis pertinet; lacessat hoc modo quem laedere sit periculosum, ne aut inimicitiae graves insequantur aut turpis satisfactio. male etiam dicitur, quod in plures conuenit, si aut nationes totae incessantur aut ordines aut condicio aut studia multorum.
+illud non ad oratoris consilium sed ad hominis pertinet; lacessat hoc modo quem laedere sit periculosum, ne aut inimicitiae graves insequantur aut turpis satisfactio. male etiam dicitur, quod in plures conuenit, si aut nationes totae incessantur aut ordines aut condicio aut studia multorum.
 
 ea quae dicet vir bonus omnia salva dignitate ac verecundia dicet. nimium enim risus pretium est, si probitatis impendio constat. unde autem concilietur risus et quibus ex locis peti soleat, difficillimum dicere. nam si species omnes persequi velimus, nec modum reperiemus et frustra laborabimus.
 
@@ -3745,11 +3745,11 @@ nam , cum Brutus in accusatione C. Planci ex duobus lectoribus ostendisset, cont
 
 sed acutior est illa atque velocior in urbanitate brevitas. cuius quidem duplex forma est dicendi ac respondendi, sed ratio communis in partem; nihil enim quod in lacessendo dici potest, non etiam in repercutiendo.
 
-at quaedam propria sunt respondentium; illa etiam etiam atque etiam, Spalding : etiam itaque or etiam ira MSS.: cogitata, Becher : concitati, MSS. atque etiam cogitata adferri solent, haec plerumque in altercatione aut in rogandis testibus reperiuntur. reperiuntur, Spalding : requiriuntur, A : requirantur, G. Cum sint autem loci plures, ex quibus dicta ridicula ducantur, repetendum est mihi non omnes eos oratoribus convenire; in primis ex amphibolia neque illa obscena, obscena, Teuffel : obscura, MSS.
+at quaedam propria sunt respondentium; illa etiam atque etiam cogitata adferri solent, haec plerumque in altercatione aut in rogandis testibus reperiuntur. Cum sint autem loci plures, ex quibus dicta ridicula ducantur, repetendum est mihi non omnes eos oratoribus convenire; in primis ex amphibolia neque illa obscena,
 
 quae Atellani e more captant, nec qualia vulgo iactantur a vilissimo quoque, conversa in maledictum fere ambiguitate; ne illa quidem, quae Ciceroni aliquando sed non in agendo exciderunt, ut dixit, cum is candidatus, qui coqui filius habebatur, coram eo suffragium ab alio peteret: ego quoque tibi favebo.
 
-non quia excludenda sint omnino verba duos sensus significantia, sed quia raro belle respondeant, nisi cum prorsus rebus ipsis adiuvantur. quare non hoc modo non hoc. modo, bracketd by Halm. paene et ipsum scurrile Ciceronis est in eundem, de quo supra dixi, Isauricum: miror , quid sit, quod pater tuus, homo constantissimus, te nobis varium reliquit.
+non quia excludenda sint omnino verba duos sensus significantia, sed quia raro belle respondeant, nisi cum prorsus rebus ipsis adiuvantur. quare non hoc modo paene et ipsum scurrile Ciceronis est in eundem, de quo supra dixi, Isauricum: miror , quid sit, quod pater tuus, homo constantissimus, te nobis varium reliquit.
 
 sed illud ex eodem genere praeclarum; cum obiiceret Miloni accusator in argumentum factarum Clodio insidiarum, quod Bovillas ante horam nonam devertisset, ut exspectaret, dum Clodius a villa sua exiret, et identidem interrogaret, quo tempore Clodius occisus esset, respondit, sero ; quod vel solum sufficit, ut hoc genus non totum repudietur.
 
@@ -3769,11 +3769,11 @@ praebet tamen aliquando occasionem quaedam felicitas hoc quoque bene utendi: ut 
 
 acriora igitur sunt et elegantiora, quae trahuntur ex vi rerum. in his maxime valet similitudo, si tamen ad aliquid inferius leviusque referatur; quae iam veteres illi iocabantur, qui Lentulum Spintherem et Scipionem Serapionem esse dixerunt. sed ea non ab hominibus modo petitur verum etiam ab animalibus, ut nobis pueris Iunius Bassus, homo in primis dicax, asinus albus vocabatur;
 
-et Sarmentus Messium Cicirrum equo fero comparavit. ducitur et ab inanimis Messium inanimis, an addition suggested by Radermacher. sicut P. Blaesius Iulium, hominem nigrum et macrum et pandum, fibulam ferream dixit. quod nunc risus petendi genus frequentissimum est.
+et Sarmentus Messium Cicirrum equo fero comparavit. ducitur et ab inanimis sicut P. Blaesius Iulium, hominem nigrum et macrum et pandum, fibulam ferream dixit. quod nunc risus petendi genus frequentissimum est.
 
 Adhibetur autem similitudo interim palam, interim inseri solet parabolae; cuius est generis illud Augusti, qui militi libellum timide porrigenti, noli , inquit, tanquam assem elephanto des.
 
-sunt quaedam vi vi is the reading of AG, but is unsatisfactory as introducing nothing new. veri ( some later MSS. ),vitii ( Halm ), vix ( Radermacher ), do nothing to help out the meaning. similia; unde Vatinius dixit hoc dictum, cum reus, agente in eum Calvo, frontem candido sudario tergeret, idque ipsum accusator in invidiam vocaret, quamvis reus sum, inquit, et panem item panem item, Haupt: parentem, MSS. candidum edo.
+sunt quaedam vi similia; unde Vatinius dixit hoc dictum, cum reus, agente in eum Calvo, frontem candido sudario tergeret, idque ipsum accusator in invidiam vocaret, quamvis reus sum, inquit, et panem item candidum edo.
 
 adhuc est subtilior illa ex simili translatio, cum, quod in alia re fieri solet, in aliam mutuamur. ea dicatur sane fictio: ut Chrysippus, cum in triumpho Caesaris eborea oppida essent translata, et post dies paucos Fabii Maximi lignea, thecas esse oppidorum Caesaris dixit. et Pedo de mirmillone, qui retiarium consequebatur nec feriebat, vivum , inquit, capere vult.
 
@@ -3781,15 +3781,15 @@ iungitur amphiboliae similitudo, ut a Galba, qui pilam negligenter petenti, sic 
 
 ceterum frequentissima aliorum generum cum aliis mixtura est, eaque optima, quae ex pluribus constat. eadem dissimilium ratio est. hinc eques Romanus, ad quem in spectaculis bibentem cum misisset Augustus, qui ei diceret, ego si prandere volo, domum eo: Tu enim, inquit, non times, ne locum perdas.
 
-ex contrario non una species. neque enim eodem modo dixit Augustus praefecto, quem cum ignominia mittebat, subinde interponenti precibus, quid respondebo patri meo? dic , me tibi displicuisse; quo Galba penulam roganti: non possum commodare, domi maneo, cum cenaculum eius perplueret. tertium adhuc illud: (nisi quod, nisi quod, Becher : si quod, AG. ut ne auctorem ponam, verecundia ipsius facit) libidinosior es quam ullus spado; quo sine dubio et opinio decipitur sed ex contrario. et hoc ex eodem loco est sed nulli priorum simile, quod dixit M. Vestinus, cum ei nuntiatum esset necatum esse, necatum esse, supplied by Spalding. aliquando desinet putere.
+ex contrario non una species. neque enim eodem modo dixit Augustus praefecto, quem cum ignominia mittebat, subinde interponenti precibus, quid respondebo patri meo? dic , me tibi displicuisse; quo Galba penulam roganti: non possum commodare, domi maneo, cum cenaculum eius perplueret. tertium adhuc illud: (nisi quod, ut ne auctorem ponam, verecundia ipsius facit) libidinosior es quam ullus spado; quo sine dubio et opinio decipitur sed ex contrario. et hoc ex eodem loco est sed nulli priorum simile, quod dixit M. Vestinus, cum ei nuntiatum esset necatum esse, aliquando desinet putere.
 
 onerabo librum exemplis similemque iis, qui risus gratia componuntur, efficiam, si persequi voluero singula veterum. ex omnibus argumentorum locis eadem occasio est. nam et finitione usus est Augustus de pantomimis duobus, qui alternis gestibus contendebant, cum eorum alterum saltatorem dixit alterum interpellatorem;
 
 et partitione Galba, cum paenulam roganti respondit, non pluit, non opus est tibi; si pluit, ipse utar. proinde genere, specie, propriis, differentibus, iugatis, adiunctis, consequentibus, antecedentibus, repugnantibus, causis, effectis, comparatione parium, maiorum, minorum similis materia praebetur; sicut in tropos quoque omnes cadit.
 
-an non plurima per hyperbolen per hyperbolen, added by Regius. dicuntur? quale refert Cicero de homine praelongo, caput eum ad fornicem Fabium offendisse; et quod P. Oppius dixit de genere Lentulorum, cum assidue minores parentibus liberi essent, nascendo interiturum.
+an non plurima per hyperbolen dicuntur? quale refert Cicero de homine praelongo, caput eum ad fornicem Fabium offendisse; et quod P. Oppius dixit de genere Lentulorum, cum assidue minores parentibus liberi essent, nascendo interiturum.
 
-quid ironia? nonne etiam quae severissime fit, ioci prope genus est? qua urbane usus est Afer, cum Didio Gallo, qui provinciam ambitiosissime petierat, deinde, impetrata ea, tanquam coactus querebatur, age , inquit, aliquid et rei publicae causa. metaphora metaphors, Halm : et abora, et labor, etc., MSS. quoque Cicero lusit, cum, Vatinii morte nuntiata, cuius parum certus dicebatur auctor, interim , inquit, usura fruar.
+quid ironia? nonne etiam quae severissime fit, ioci prope genus est? qua urbane usus est Afer, cum Didio Gallo, qui provinciam ambitiosissime petierat, deinde, impetrata ea, tanquam coactus querebatur, age , inquit, aliquid et rei publicae causa. metaphora quoque Cicero lusit, cum, Vatinii morte nuntiata, cuius parum certus dicebatur auctor, interim , inquit, usura fruar.
 
 idem per allegorian M. Caelium, melius obiicientem crimina quam defendentem, bonam dextram, malam sinistram habere dicebat. emphasi A. Villius dixit, ferrum in Tuccium incidisse.
 
@@ -3803,7 +3803,7 @@ ergo ego, inquit, nunquam vici? Redarguimus interim aperte, ut Cicero Vibium Cur
 
 belle interim subiicitur pro eo, quod neges, aliud mordacius: ut Iunius Bassus, querente Domitia Passieni, quod incusans eius sordes calceos eam veteres diceret vendere solere, non mehercules, inquit, hoc unquam dixi; sed dixi emere te solere. defensionem imitatus est eques Romanus, qui obiicienti Augusto, quod patrimonium comedisset, meum , inquit, putavi.
 
-elevandi ratio est duplex, ut aut nimiam quis nimiam quis, Deffner: veniam quis aut, MSS. iactantiam minuat: quemadmodum C. Caesar Pomponio ostendenti vulnus ore exceptum in seditione Sulpiciana, quod is se passum pro Caesare pugnantem gloriabatur, nunquam fugiens respexeris, inquit; aut crimen obiectum, ut Cicero obiurgantibus, quod sexagenarius Publiliam virginem duxisset, cras mulier erit, inquit.
+elevandi ratio est duplex, ut aut nimiam quis iactantiam minuat: quemadmodum C. Caesar Pomponio ostendenti vulnus ore exceptum in seditione Sulpiciana, quod is se passum pro Caesare pugnantem gloriabatur, nunquam fugiens respexeris, inquit; aut crimen obiectum, ut Cicero obiurgantibus, quod sexagenarius Publiliam virginem duxisset, cras mulier erit, inquit.
 
 hoc genus dicti consequens vocant quidam, atque illi simile, quod Cicero Curionem, semper ab excusatione aetatis incipientem, facilius cotidie prooemium habere dixit, quia ista natura sequi et cohaerere videantur.
 
@@ -3819,13 +3819,13 @@ contraria est neganti confessionis simulatio, sed ipsa quoque multum habet urban
 
 in se dicere non fere est nisi scurrarum et in oratore utique minime probabile, quod fieri totidem modis quot in alios potest. ideoque hoc, quamvis frequens sit, transeo.
 
-illud vero, etiamsi ridiculum est, indignum tamen est homine liberali, liberali, early edd.: tolerabili, MSS. quod aut turpiter aut potenter dicitur; quod fecisse quendam scio, qui humiliori libere adversus se loquenti, colaphum , inquit, tibi ducam et formulam scribam, scribani, Badius: screws ibes, G. quod caput durum habeas. hic enim dubium est, utrum ridere audientes an indignari debuerint.
+illud vero, etiamsi ridiculum est, indignum tamen est homine liberali, quod aut turpiter aut potenter dicitur; quod fecisse quendam scio, qui humiliori libere adversus se loquenti, colaphum , inquit, tibi ducam et formulam scribam, quod caput durum habeas. hic enim dubium est, utrum ridere audientes an indignari debuerint.
 
 superest genus decipiendi opinionem aut dicta aliter intellegendi, quae sunt in omni hac materia vel venustissima. inopinatum et a lacessente poni solet, quale est, quod refert Cicero, quid huic abest nisi res et virus? aut illud Afri, homo in agendis causis optime vestitus; et in occurrendo, ut Cicero, audita falsa Vatinii morte, cum obvium libertum eius interrogasset, rectene omnia? dicenti, recte , mortuus est?
 
-inquit. plurimus autem circa simulationem et dissimulationem et dissimulationem, added by Reyiats. risus est, quae sunt vicina et prope eadem; sed simulatio est certam opinionem animi sui imitantis, dissimulatio aliena se parum intelligere fingentis. simulavit Afer, cum in causa subinde dicentibus Celsinam de re cognovisse, quae erat potens femina: quis est, inquit, iste? Celsinam enim videri sibi virum finxit.
+inquit. plurimus autem circa simulationem et dissimulationem risus est, quae sunt vicina et prope eadem; sed simulatio est certam opinionem animi sui imitantis, dissimulatio aliena se parum intelligere fingentis. simulavit Afer, cum in causa subinde dicentibus Celsinam de re cognovisse, quae erat potens femina: quis est, inquit, iste? Celsinam enim videri sibi virum finxit.
 
-dissimulavit Cicero, cum Sex. Annalis testis reum laesisset, et instaret identidem accusator ei, dic , M. Tulli, numquid Tulli numquid, cod. Parisinus 7723: Tullius inquid, AG. potes de Sex. Annali ? versus enim dicere coepit de libro Ennii annali sexto: quis potis ingentis causas evolvere belli?
+dissimulavit Cicero, cum Sex. Annalis testis reum laesisset, et instaret identidem accusator ei, dic , M. Tulli, numquid potes de Sex. Annali ? versus enim dicere coepit de libro Ennii annali sexto: quis potis ingentis causas evolvere belli?
 
 quis potis ingentis causas evolvere belli?
 
@@ -3839,9 +3839,9 @@ alienam finxit Iuba, qui querenti, quod ab equo suo esset aspersus, quid ? Tu, i
 
 est et illa ex ironia fictio, qua usus est C. Caesar. nam cum testis diceret a reo femina sua ferro petita, et esset facilis reprehensio, cur illam potissimum partem corporis vulnerare voluisset: quid enim faceret, inquit,
 
-cum tu galeam et loricam haberes? vel optima est simulatio contra simulantem, qualis illa Domitii Afri fuit: vetus habebat testamentum, et unus ex amicis recentioribus, sperans aliquid ex mutatione tabularum, falsam fabulam intulerat, consulens eum, an primipilari seni iam testato rursus primipilari rursus, Spalding : primipilaris enim intestator, AG. suaderet ordinare suprema iudicia. noli , inquit, facere; offendis illum.
+cum tu galeam et loricam haberes? vel optima est simulatio contra simulantem, qualis illa Domitii Afri fuit: vetus habebat testamentum, et unus ex amicis recentioribus, sperans aliquid ex mutatione tabularum, falsam fabulam intulerat, consulens eum, an primipilari seni iam testato rursus suaderet ordinare suprema iudicia. noli , inquit, facere; offendis illum.
 
-iucundissima sunt autem ex his omnibus lenia et, ut sic dixerim, boni stomachi: ut Afer idem ingrato litigatori conspectum eius in foro vitanti per nomenclatorem missum ad eum, amas me, inquit, quod te non vidi? et dispensatori, qui, cum reliqua non responderent, dicebat subinde, non comedi; pane et aqua vivo, responderet MSS. corr. salmasius . pane et aqua, A: panem et aquaam, remaining MSS. vivo, Haupt: bibo, MSS. passer , redde quod debes. quae ὑπὸ τὸ ἦθος vocant.
+iucundissima sunt autem ex his omnibus lenia et, ut sic dixerim, boni stomachi: ut Afer idem ingrato litigatori conspectum eius in foro vitanti per nomenclatorem missum ad eum, amas me, inquit, quod te non vidi? et dispensatori, qui, cum reliqua non responderent, dicebat subinde, non comedi; pane et aqua vivo, passer , redde quod debes. quae ὑπὸ τὸ ἦθος vocant.
 
 est gratus iocus, qui minus exprobrat quam potest, ut idem dicenti candidate, semper domum tuam colui, cum posset palam negare, credo , inquit, et verum est. interim de se dicere ridiculum et quod in alium si absentem diceretur urbanum non erat, quoniam ipsi palam exprobratur,
 
@@ -3853,17 +3853,17 @@ nisi si qua Ulixes intervasit Lartius; seu verbis ex parte mutatis, ut in eum qu
 
 et proverbia opportune aptata: ut homini nequam lapso et, ut allevaretur, roganti, tollat te qui non novit. ex historia etiam ducere urbanitatem eruditum est: ut Cicero fecit, cum ei testem in iudicio Verris roganti dixisset Hortensius, non intelligo haec aenigmata. atqui debes, inquit, cum Sphingem domi habeas; acceperat autem ille a Verre Sphingem aeneam magnae pecuniae.
 
-subabsurda illa constant stulti simulatione; quae, stulti simulatione; quae, Spalding : stultissimi imitatione et quae, MSS. nisi fingantur, stulta sunt: ut, qui mirantibus, quod humile candelabrum emisset, pransorium erit, inquit. sed illa similia absurdis sunt acria, quae tanquam sine ratione dicta feruntur: ut servus Dolabellae, cum interrogaretur an dominus eius auctionem proposuisset, domum , inquit, vendidit. Deprehensi interim pudorem suum ridiculo aliquo explicant:
+subabsurda illa constant stulti simulatione; quae, nisi fingantur, stulta sunt: ut, qui mirantibus, quod humile candelabrum emisset, pransorium erit, inquit. sed illa similia absurdis sunt acria, quae tanquam sine ratione dicta feruntur: ut servus Dolabellae, cum interrogaretur an dominus eius auctionem proposuisset, domum , inquit, vendidit. Deprehensi interim pudorem suum ridiculo aliquo explicant:
 
-ut, qui testem dicentem se a reo vulneratum interrogaverat an cicatricem haberet, cum ille ingentem in femine ostendisset, latus , inquit, oportuit. contumeliis quoque uti belle datur: ut Hispo obiicienti atrociora contumeliis Badius : umis AG: atrociora, Halm : arbore, MSS. crimina accusatori, me ex te metiris, me ex te metiris, Burmann: mentis, mentiris, MSS. inquit. et Fulvius Propinquus legato interroganti an in tabulis, quas proferebat, chirographus esset, et verus, inquit, domine.
+ut, qui testem dicentem se a reo vulneratum interrogaverat an cicatricem haberet, cum ille ingentem in femine ostendisset, latus , inquit, oportuit. contumeliis quoque uti belle datur: ut Hispo obiicienti atrociora crimina accusatori, me ex te metiris, inquit. et Fulvius Propinquus legato interroganti an in tabulis, quas proferebat, chirographus esset, et verus, inquit, domine.
 
 has aut accepi species aut inveni frequentissimas, ex quibus ridicula ducerentur; sed repetam necesse est, infinitas esse tam salse dicendi quam severe, quas praestat persona, locus, tempus, casus denique, qui est maxime varius.
 
-itaque haec, ne omisisse viderer, attigi; illa autem, quae de usu ipso et modo iocandi complexus sum, audeo confirmare audeo confirmare, Radermacher: adeo infirmare, infirmarem, infirma sed, MSS. esse plane necessaria. his adiicit Domitius Marsus, qui de urbanitate diligentissime scripsit, quaedam non ridicula, sed cuilibet severissimae orationi convenientia eleganter dicta et proprio quodam lepore iucunda; quae sunt quidem urbana sed risum tamen non habent.
+itaque haec, ne omisisse viderer, attigi; illa autem, quae de usu ipso et modo iocandi complexus sum, audeo confirmare esse plane necessaria. his adiicit Domitius Marsus, qui de urbanitate diligentissime scripsit, quaedam non ridicula, sed cuilibet severissimae orationi convenientia eleganter dicta et proprio quodam lepore iucunda; quae sunt quidem urbana sed risum tamen non habent.
 
 neque enim ei de risu sed de urbanitate est opus institutum, quam propriam esse nostrae civitatis et sero sic intelligi coeptam, postquam Urbis appellatione, etiamsi nomen proprium non adiiceretur, Romam tamen accipi sit receptum.
 
-eamque sic finit: urbanitas est virtus quaedam in breve dictum coacta et apta ad delectandos mouendosque homines in omnem adfectum animi, maxime idonea ad resistendum vel lacessendum, prout quaeque res aut persona desiderat. cui si brevitatis exceptionem detraxeris, omnes orationis virtutes complexa sit. nam si constat rebus et personis, quod in utrisque oporteat dicere perfectae eloquentiae est. cur autem brevem esse eam voluerit, nescio, cum idem atque cum idem atque, Halm : cumidem ad quem, A: cuidem ad quem, G; quidem at quam, codd. litt. in eodem libro dicat fuisse in multis narrandi urbanitatem. paulo post ita finit, Catonis (ut ait) opinionem secutus, urbanus homo erit, cuius multa bene dicta responsaque erunt, et qui in sermonibus, circulis, conviviis, item in contionibus, omni denique loco ridicule commodeque dicet. risus erunt, quicunque haec faciet orator.
+eamque sic finit: urbanitas est virtus quaedam in breve dictum coacta et apta ad delectandos mouendosque homines in omnem adfectum animi, maxime idonea ad resistendum vel lacessendum, prout quaeque res aut persona desiderat. cui si brevitatis exceptionem detraxeris, omnes orationis virtutes complexa sit. nam si constat rebus et personis, quod in utrisque oporteat dicere perfectae eloquentiae est. cur autem brevem esse eam voluerit, nescio, cum idem atque in eodem libro dicat fuisse in multis narrandi urbanitatem. paulo post ita finit, Catonis (ut ait) opinionem secutus, urbanus homo erit, cuius multa bene dicta responsaque erunt, et qui in sermonibus, circulis, conviviis, item in contionibus, omni denique loco ridicule commodeque dicet. risus erunt, quicunque haec faciet orator.
 
 quas si recipimus finitiones, quidquid bene dicetur, et urbane dicti nomen accipiet. ceterum illi, qui hoc proposuerat, consentanea fuit illa divisio, ut dictorum urbanorum alia seria, alia iocosa, alia media faceret. nam est eadem omnium bene dictorum. verum mihi etiam iocosa quaedam videntur posse in non satis urbana referri.
 
@@ -3895,7 +3895,7 @@ itaque videas alios plerumque iudiciis privatis ad actiones advocari alios ad pr
 
 opus est igitur inprimis ingenio veloci ac mobili, animo praesenti et acri. non enim cogitandum, sed dicendum statim est et prope sub conatu adversarii manus exigenda. quare cum in omni parte huiusce officii plurimum facit, totas non diligenter modo sed etiam familiariter nosse causas, tum in altercatione maxime necessarium est, omnium personarum, instrumentorum, temporum, locorum habere notitiam; alioqui et tacendum erit saepe et aliis subiicientibus (plerumque autem studio loquendi fatue modo) accedendum; quo nonnunquam accidit, ut nostra credulitate aliena stultitia erubescamus.
 
-neque tantum cum his ipsis monitoribus clam res erit tantum clam res erit, Halm : tam cu clarescit, MSS. ; quidam faciunt aperte ut quoque rixentur. ut quoque rixentur, Madvig: quod ( or quae) rixemur, MSS. Videas enim plerosque ira percitos exclamantes, ut iudex audiat contrarium id esse, quod admoneatur, sciatque ille, qui pronuntiaturus est in causa,
+neque tantum cum his ipsis monitoribus clam res erit ; quidam faciunt aperte ut quoque rixentur. Videas enim plerosque ira percitos exclamantes, ut iudex audiat contrarium id esse, quod admoneatur, sciatque ille, qui pronuntiaturus est in causa,
 
 malum quod tacetur. quare bonus altercator vitio iracundiae careat; nullus enim rationi magis obstat adfectus et fert extra causam plerumque et deformia convicia facere ac mereri cogit et in ipsos nonnunquam iudices incitat. melior moderatio ac nonnunquam etiam patientia. neque enim refutanda tantum quae ex contrario dicuntur, sed contemnenda, elevanda, ridenda sunt; nec usquam plus loci recipit urbanitas. hoc , dum ordo est et pudor; contra turbantes audendum et impudentiae fortiter resistendum.
 
@@ -3949,7 +3949,7 @@ de inventione, ut arbitror, satis dictum est. neque enim ea demum, quae ad docen
 
 nec immerito secunda quinque partium posita est, cum sine ea prior nihil valeat. neque enim quanquam fusis omnibus membris statua sit, nisi collocetur, et si quam in corporibus nostris aliorumve animalium partem permutes et transferas, licet habeat eadem omnia, prodigium sit tamen. et artus etiam leviter loco moti perdunt quo viguerunt usum, et turbati exercitus sibi ipsi sunt impedimento.
 
-nec mihi videntur errare qui ipsam rerum naturam stare ordine putant, quo confuso peritura sint omnia. sic oratio carens hac virtute tumultuetur necesse est et sine rectore fluitet nec cohaereat sibi, multa repetat, multa transeat, velut nocte in ignotis locis errans, nec initio nec fine proposito casum potius quam consilium sequatur. quapropter totus hic liber serviat dispositioni, dispositioni, early editors: divisioni, MSS.
+nec mihi videntur errare qui ipsam rerum naturam stare ordine putant, quo confuso peritura sint omnia. sic oratio carens hac virtute tumultuetur necesse est et sine rectore fluitet nec cohaereat sibi, multa repetat, multa transeat, velut nocte in ignotis locis errans, nec initio nec fine proposito casum potius quam consilium sequatur. quapropter totus hic liber serviat dispositioni,
 
 quae quidem, si certa aliqua via tradi in omnes materias ullo modo posset, non tam paucis contigisset. sed cum infinitae litium formae fuerint futuraeque sint et tot saeculis nulla reperta sit causa, quae esset tota alteri similis, sapiat oportet actor et vigilet et inveniat et iudicet et consilium a se ipso petat. neque infitias eo quaedam esse quae demonstrari possint, eaque non omittam.
 
@@ -3967,9 +3967,9 @@ si confessum, non poterat ibi esse quaestio. transibam ergo ad responsum partis 
 
 convenit ; transeo. rationem reddere debet reus, quare occiderit. adulterum , inquit, cum adultera occidere licet. legem esse certum est. tertium iam aliquid videndum est, ex quo pugna consistat. non fuerunt adulteri; Fuerunt: quaestio; de facto ambigitur, coniectura est.
 
-interim et hoc tertium confessum est adulteros fuisse sed tibi, inquit accusator, illos non licuit occidere; exul enim eras, aut ignominiosus. de iure quaeritur. at si protinus dicenti occidisti respondeatur non occidi, statim pugna est. si explorandum est, ubi controversia incipiat, et considerari debet, quid primam quaestionem faciat. quid faciat, Happel : quae facit, AG. Intentio simplex, occidit Saturninum Rabirius;
+interim et hoc tertium confessum est adulteros fuisse sed tibi, inquit accusator, illos non licuit occidere; exul enim eras, aut ignominiosus. de iure quaeritur. at si protinus dicenti occidisti respondeatur non occidi, statim pugna est. si explorandum est, ubi controversia incipiat, et considerari debet, quid primam quaestionem faciat. Intentio simplex, occidit Saturninum Rabirius;
 
-coniuncta, lege de sicariis commisit L. Varenus. nam C. Varenum occidendum et Cn. Varenum vulnerandum et Salarium item occidendum curavit. curavit, Gesner : ca A.: cadit, G.: cavit, 2nd hand A. Nam sic diuersae propositiones erunt; quod idem de petitionibus dictum sit. verum ex coniuncta propositione plures esse quaestiones ac status possunt, si aliud negat reus, aliud defendit, aliud a iure actionis excludit. in quo genere agenti est dispiciendum, quid quoque loco diluat.
+coniuncta, lege de sicariis commisit L. Varenus. nam C. Varenum occidendum et Cn. Varenum vulnerandum et Salarium item occidendum curavit. Nam sic diuersae propositiones erunt; quod idem de petitionibus dictum sit. verum ex coniuncta propositione plures esse quaestiones ac status possunt, si aliud negat reus, aliud defendit, aliud a iure actionis excludit. in quo genere agenti est dispiciendum, quid quoque loco diluat.
 
 quod pertinet ad actorem, non plane dissentio a Celso, qui sine dubio Ciceronem secutus instat tamen huic parti vehementius, ut putet primo firmum aliquid esse ponendum, summo firmissimum, imbecilliora medio, quia et initio movendus sit iudex et summo impellendus.
 
@@ -3977,7 +3977,7 @@ at pro reo plerumque gravissimum quidque primum movendum est, ne illud spectans 
 
 anteactae vitae crimina plerumque prima purganda sunt, ut id, de quo laturus est sententiam iudex, audire propitius incipiat. sed hoc quoque pro Vareno Cicero ex ultimum distulit, non quid frequentissime sed quid tum expediret intuitus.
 
-cum simplex intentio erit, videndum est, unum aliquid respondeamus an plura. si unum, ex re quaestionem instituamus an ex scripto; si ex re, ex re, Regius : iure, MSS. negandum sit quod obiicitur an tuendum; si ex scripto, ex qua specie iuris pugna sit, et ex ea, de verbis an de voluntate quaeratur.
+cum simplex intentio erit, videndum est, unum aliquid respondeamus an plura. si unum, ex re quaestionem instituamus an ex scripto; si ex re, negandum sit quod obiicitur an tuendum; si ex scripto, ex qua specie iuris pugna sit, et ex ea, de verbis an de voluntate quaeratur.
 
 id ita consequemur, si intuiti fuerimus, quae sit lex quae litem faciat, hoc est, qua iudicium sit constitutum. nam quaedam ex scholasticis ponuntur ad coniungendam modo actae rei seriem, ut puta: expositum qui agnouerit, solutis alimentis recipiat. minus dicto audientem filium liceat abdicare. qui expositum recepit, imperat ei nuptias locupletis propinquae; ille deducere vult filiam pauperis educatoris.
 
@@ -3993,25 +3993,25 @@ non ut damnasse eas videamur, sed omisisse, quia possimus etiam sine eis vincere
 
 finge nos, postquam tractavimus eam, remittere vel etiam convinci: quaeretur, an ei, cuius nomine litigatur, procuratorem habendi sit ius. discedamus hinc quoque: recipit materia quaestionem, an ille, cuius nomine agitur, heres sit feneratoris an ex asse heres. haec quoque concessa sint:
 
-quaeretur an debeatur. contra nemo tam demens fuerit, ut cum id quod firmissimum duxerit se habere protulerit, protulerit, Halm : omitted by MSS. remittat illud et ad leviora transcendat. huic ex schola simile est: non abdicabis adoptatum; ut hunc quoque, non virum. fortem; ut et fortem, non qui cuicunque qui cuicunque, W. Meyer : quicunque, MSS. voluntati tuae non paruerit; ut ex alia omnia subiectus sit, non propter optionem; ut propter optionem, non propter talem optionem. optionem optionem, Obrecht : opinionem opinionem, MSS.: ut propter optionem omitted by MSS. Haec iuris quaestionum differentia est.
+quaeretur an debeatur. contra nemo tam demens fuerit, ut cum id quod firmissimum duxerit se habere protulerit, remittat illud et ad leviora transcendat. huic ex schola simile est: non abdicabis adoptatum; ut hunc quoque, non virum. fortem; ut et fortem, non qui cuicunque voluntati tuae non paruerit; ut ex alia omnia subiectus sit, non propter optionem; ut propter optionem, non propter talem optionem. Haec iuris quaestionum differentia est.
 
 in factis autem ad idem tendentia sunt plura, ex quibus aliqua citra summam quaestionem remitti solent; ut si is, cum quo furti agitur, dicat: proba te habuisse, proba perdidisse, proba furto perdidisse, proba mea fraude. priora enim remitti possunt, ultimum non potest.
 
-solebam et hoc facere, facere is followed by praecipere, which is expunged by Meister as a gloss. ut vel ab ultima specie (nam ea fere est, quae continue causam) retrorsum quaererem usque ad primam generalem quaestionem, vel a genere ad extremam speciem descenderem, etiam ex suasoriis.
+solebam et hoc facere, ut vel ab ultima specie (nam ea fere est, quae continue causam) retrorsum quaererem usque ad primam generalem quaestionem, vel a genere ad extremam speciem descenderem, etiam ex suasoriis.
 
-ut deliberat Numa, an regnum offerentibus Romanis recipiat. primum , id est genus, an regnandum, tum tum added by Christ. an ex civitate aliena, an Romae, an laturi sint Romani talem regem. similiter ex controversiis. optet enim vir fortis alienam uxorem. ultima species est, an optare possit alienam uxorem. generale est, an quidquid optarit, accipere debeat. inde , an ex privato, an nuptias, an maritum habentis.
+ut deliberat Numa, an regnum offerentibus Romanis recipiat. primum , id est genus, an regnandum, tum an ex civitate aliena, an Romae, an laturi sint Romani talem regem. similiter ex controversiis. optet enim vir fortis alienam uxorem. ultima species est, an optare possit alienam uxorem. generale est, an quidquid optarit, accipere debeat. inde , an ex privato, an nuptias, an maritum habentis.
 
-sed hoc non, quemadmodum dicitur, ita et quaeritur. primum enim occurrit fere, quod est ultimum dicendum, ut hoc, non debes alienam uxorem optare, ideoque divisionem perdit festinatio. non oportet igitur offerentibus se contentum esse, sed quaerere aliquid quod ultra est, esse ultra est, Spalding : esse quaere aliquidem ultra sit, AG. ne uiduam quidem. adhuc plus est, est, Halm : si, A: se G. nihil ex privato. ultimum retrorsum, quod idem a capite primum est, nihil iniquum. itaque propositione visa,
+sed hoc non, quemadmodum dicitur, ita et quaeritur. primum enim occurrit fere, quod est ultimum dicendum, ut hoc, non debes alienam uxorem optare, ideoque divisionem perdit festinatio. non oportet igitur offerentibus se contentum esse, sed quaerere aliquid quod ultra est, ne uiduam quidem. adhuc plus est, nihil ex privato. ultimum retrorsum, quod idem a capite primum est, nihil iniquum. itaque propositione visa,
 
 quod est facillimum, cogitemus, si fieri potest, quid naturale sit primum responderi. id si, tanquam res agatur et nobis ipsis respondendi necessitas sit, intueri voluerimus, occurret.
 
 si id non contigerit, seponamus id quod primum se obtulerit, et ipsi nobiscum sic loquamur: quid si hoc non esset? id iterum et tertium et dum nihil sit reliqui. itaque inferiora quoque scrutabimur, quae tractata faciliorem nobis iudicem ex summa quaestione facient.
 
-non dissimile huic est et illud praeceptum, ut a communibus ad propria veniamus. fere enim communia generalia sunt. commune est, tyrannum occidit; proprium, patrem patremn, added by Halm. tyrannum occidit; mulier occidit, uxor occidit.
+non dissimile huic est et illud praeceptum, ut a communibus ad propria veniamus. fere enim communia generalia sunt. commune est, tyrannum occidit; proprium, patrem tyrannum occidit; mulier occidit, uxor occidit.
 
 solebam et excerpere, quid mihi cum adversario conveniret, si modo id pro me erat, nec solum premere confessionem, sed partiendo multiplicare, ut ex illa controversia, dux ., qui competitorem patrem ex suffragiis vicerat, captus est; euntes ad redemptionem eius legati obvium habuerunt patrem revertentem ab hostibus.
 
-is legatis dixit: Sero itis. excusserunt illi patrem et aurum ex sinu eius invenerunt; ipsi perseverarunt ire quo intenderant; invenerunt ducem cruci fixum, cuius uox fuit: cauete proditorem. reus est pater. quid convenit? proditio nobis praedicta est et praedicta a duce; quaerimus proditorem. te isse ad hostes fateris et isse clam et clam et, Regius : claret, AG. ab his incolumem redisse, aurum retulisse et aurum occultum habuisse. nam ,
+is legatis dixit: Sero itis. excusserunt illi patrem et aurum ex sinu eius invenerunt; ipsi perseverarunt ire quo intenderant; invenerunt ducem cruci fixum, cuius uox fuit: cauete proditorem. reus est pater. quid convenit? proditio nobis praedicta est et praedicta a duce; quaerimus proditorem. te isse ad hostes fateris et isse clam et ab his incolumem redisse, aurum retulisse et aurum occultum habuisse. nam ,
 
 quod fecit, id nonnunquam potentius fit propositione; quae si animos occupavit, prope aures ipsae defensioni praecluduntur. in totum autem congregatio criminum accusantem adiuvat, separatio defendentem. solebam id, quod fieri et ex argumentis dixi, ex tota facere materia, ut propositis extra quae nihil esset omnibus, deinde ceteris remotis, solum id superesset quod credi volebam,
 
@@ -4033,7 +4033,7 @@ contendunt ; quis primus dicat, incertum est, propositio tamen certa; ab eo enim
 
 at quomodo inveniemus etiam illas occultiores quaestiones? scilicet, quomodo sententias, verba, figuras, colores: ingenio, cura, exercitatione. non tamen fere unquam nisi imprudentem fugerint, si, ut dixi, naturam sequi ducem velit.
 
-sed plerique eloquentiae famam adfectantes contenti sunt locis speciosis modo vel nihil ad probationem conferentibus. alii nihil ultra ea quae ultra ea quae, M. Haupt, Mudvig: vitare quae, A : vitare aquae, G. ex oculos incurrunt exquirendum putant. quod quo facilius appareat, unam de schola controversiam, non ita sane difficillimam aut novam, proponam ex exemplum.
+sed plerique eloquentiae famam adfectantes contenti sunt locis speciosis modo vel nihil ad probationem conferentibus. alii nihil ultra ea quae ex oculos incurrunt exquirendum putant. quod quo facilius appareat, unam de schola controversiam, non ita sane difficillimam aut novam, proponam ex exemplum.
 
 qui reo proditionis patri non adfuerit, exheres sit. proditionis damnatus cum advocato exulet. reo proditionis patri disertus filius adfuit, rusticus non adfuit: damnatus abiit cum advocato ex exilium. rusticus cum fortiter fecisset, praemii nomine impetravit restitutionem patris et fratris. pater reversus intestatus decessit: petit rusticus partem bonorum, orator totum vindicat sibi.
 
@@ -4049,17 +4049,17 @@ hanc communem omnium legem leviter adornabit ut iustam. nempe sequetur, ut quaer
 
 adhuc versamur ex confessis; redeat animus ad petitorem; numquid non hoc cogitet necesse est, nisi qui sit plane hebes? si lex obstat, nulla lis est, inane iudicium est. atqui et legem esse et hoc, quod ea puniat, a rustico factum extra dubitationem est. quid ergo dicimus? rusticus eram.
 
-si lex lex, Halm : lexeram, AG. omnes complectitur, nihil proderit. quaeramus ergo num infirmari ex aliquam partem lex possit. quid aliud (saepius dicam) natura permittit quam ut, cum verba contra sint, de voluntate quaeratur? generalis igitur quaestio, verbis an voluntate sit standum. sed hoc ex commune de iure omni disputandum semper nec unquam satis iudicatum est. quaerendum igitur ex hac ipsa, qua consistimus, an aliquid inveniri possit quod scripto adversetur.
+si lex omnes complectitur, nihil proderit. quaeramus ergo num infirmari ex aliquam partem lex possit. quid aliud (saepius dicam) natura permittit quam ut, cum verba contra sint, de voluntate quaeratur? generalis igitur quaestio, verbis an voluntate sit standum. sed hoc ex commune de iure omni disputandum semper nec unquam satis iudicatum est. quaerendum igitur ex hac ipsa, qua consistimus, an aliquid inveniri possit quod scripto adversetur.
 
 ergo , quisquis non adfuerit, exheres erit? quisquis sine exceptione? iam se illa vel ultro offerent argumenta: et infans? filius enim est et non adfuit; et qui aberat et qui militabat et qui ex legatione erat? iam multum acti est: potest aliquis non adfuisse et heres esse. transeat nunc idem ille,
 
-qui hoc hoc, added by Christ. cogitavit, ut ait Cicero, tibicinis Latini modo ad disertum. ut ista concedam, tu nec infans es nec abfuisti nec militasti. num aliud occurrit quam illud, sed rusticus sum? contra , quod palam est dici: dici, Christ : dicit, MSS.
+qui hoc cogitavit, ut ait Cicero, tibicinis Latini modo ad disertum. ut ista concedam, tu nec infans es nec abfuisti nec militasti. num aliud occurrit quam illud, sed rusticus sum? contra , quod palam est dici:
 
 ut agere non potueris, adsidere potuisti; et verum est. quare redeundum rustico ad animum legumlatoris: impietatem punire voluit, ego autem impius non sum.
 
 contra quod disertus, tu impie fecisti, inquit, cum exheredationem meruisti, licet te postea vel paenitentia vel ambitus ad hoc genus optionis adduxerit. praeterea propter te damnatus est pater, videbaris enim de causa pronuntiasse. ad haec rusticus: tu vero ex causa damnationis fuisti, multos offenderas, inimicitias domui contraxeras. haec coniecturalia; illud quoque, quod coloris loco rusticus dicit, patris fuisse tale consilium, ne universam domum periculo subiiceret. haec prima quaestione scripti et voluntatis continentur.
 
-intendamus ultra animum videamusque, an aliquid inveniri praeterea possit. quo id modo fiet? sedulo imitor quaerentem, ut quaerere doceam, et omisso speciosiore stili genere ad utilitatem me summitto discentium. omnes adhuc quaestiones ex persona petitoris ipsius duximus; cur non aliquid circa patrem quaerimus? dictum non est, quisquis quisquis, Spalding : cui quis, AG. non adfuerit, exheres erit.
+intendamus ultra animum videamusque, an aliquid inveniri praeterea possit. quo id modo fiet? sedulo imitor quaerentem, ut quaerere doceam, et omisso speciosiore stili genere ad utilitatem me summitto discentium. omnes adhuc quaestiones ex persona petitoris ipsius duximus; cur non aliquid circa patrem quaerimus? dictum non est, quisquis non adfuerit, exheres erit.
 
 cur non conamur et sic quaerere, num , cuicunque quis non adfuerit? facimus hoc saepe ex iis controversiis, ex quibus petuntur ex vincula qui parentes suos non alunt, ut eam quae testimonium ex filium peregrinitatis reum dixit, eum, qui filium lenoni vendidit. in hoc, de quo loquimur, patre quid apprehendi potest? damnatus est.
 
@@ -4067,7 +4067,7 @@ numquid igitur lex ad absolutos tantum patres pertinet? dura prima fronte quaest
 
 dat aliud argumentum controversiae damnatus proditionis cum advocato exulet. vix videtur posse fieri, ut poena filio ex eodem patre, et si adfuerit et si non adfuerit, constitute sit. praeterea lex ad exules nulla pertinet. non ergo credibile est de advocato damnati scriptum; an possunt enim bona esse ulla exulis?
 
-rusticus rusticus, Regius : scolastica, AG. ex utramque partem dubium facit; disertus et verbis inhaerebit, ex quibus nulla exceptio est, et propter hoc ipsum poenam esse constitutam eis qui non adfuerint, ne periculo exilii deterreantur advocatione, et rusticum innocenti non adfuisse dicet. illud protinus non indignum quod adnotetur, posse ex uno statu duas generales fieri quaestiones, an quisquis? an cuicunque?
+rusticus ex utramque partem dubium facit; disertus et verbis inhaerebit, ex quibus nulla exceptio est, et propter hoc ipsum poenam esse constitutam eis qui non adfuerint, ne periculo exilii deterreantur advocatione, et rusticum innocenti non adfuisse dicet. illud protinus non indignum quod adnotetur, posse ex uno statu duas generales fieri quaestiones, an quisquis? an cuicunque?
 
 haec ex duabus personis quaesita sunt. ex tertia autem, quae est adversarii, nulla oriri quaestio potest, quia nulla fit ei de sua parte controversia. nondum tamen cura deficiat. ista enim omnia dici possent etiam non restituto patre. nec statim eo tendamus, quod occurrit ultro, a rustico restitutum. qui subtiliter quaeret, aliquid spectabit ultra; nam, ut genus species sequitur, ita species genus praecedit. fingamus ergo ab alio restitutum:
 
@@ -4079,7 +4079,7 @@ reliqua iam aequitatis, utrius iustius sit desiderium. id ipsum adhuc dividitur;
 
 plerumque autem ex fine causarum de aequitate tractabitur, quia nihil libentius iudices audiunt. aliquando tamen hunc ordinem mutabit utilitas, ut, si ex iure minus fiduciae erit, aequitate iudicem praeparemus.
 
-nihil habui amplius quod ex universum praeciperem. nunc eamus per singulas causarum iudicialium partes, quas ut persequi ad ultimam speciem, id est ad singulas lites controversiasque, non possum, ita de de, Regius : ex, AG. generalibus scribere licet, ut, quae ex quemque statum frequentissime incidant, tradam. et , quia natura prima quaestio est, factumne sit, ab hoc ordiar.
+nihil habui amplius quod ex universum praeciperem. nunc eamus per singulas causarum iudicialium partes, quas ut persequi ad ultimam speciem, id est ad singulas lites controversiasque, non possum, ita de generalibus scribere licet, ut, quae ex quemque statum frequentissime incidant, tradam. et , quia natura prima quaestio est, factumne sit, ab hoc ordiar.
 
 coniectura omnis aut de re aut de animo est. utriusque tria tempora, praeteritum, praesens, futurum. de re et generales quaestiones sunt et definitae, id est, et quae non continentur personis et quae continentur.
 
@@ -4087,19 +4087,19 @@ de animo quaeri non potest, nisi ubi persona est et de facto constat. ergo cum d
 
 in iudiciis praeteritum tempus maxime valet; nemo enim accusat, nisi quae facta sunt. nam quae fiant et quae futura sint ex praeteritis colliguntur. quaeritur et unde quid ortum? ut pestilentia ira deum an intemperie caeli an corruptis aquis an noxio terrae halitu. et quae causa facti? ut, quare ad Troiam quinquaginta reges navigaverint iure iurando adacti an exemplo moti an gratificantes Atridis. quae duo genera non multum inter se distant.
 
-ea vero, quae sunt praesentis temporis, si non argumentis, quae necesse est praecessisse, sed oculis deprehendenda sunt, non egent coniectura, ut si apud Lacedaemonios quaeratur, an Athenis muri fiant. sed et illud, quod potest videri extra haec positum, coniecturae genus, cum de aliquo homine quaeritur, qui sit; ut est quaesitum contra Urbiniae heredes, is qui is qui, Spalding : si qui, A: si quis, G. tanquam filius petebat bona, Figulus esset an Sosipater.
+ea vero, quae sunt praesentis temporis, si non argumentis, quae necesse est praecessisse, sed oculis deprehendenda sunt, non egent coniectura, ut si apud Lacedaemonios quaeratur, an Athenis muri fiant. sed et illud, quod potest videri extra haec positum, coniecturae genus, cum de aliquo homine quaeritur, qui sit; ut est quaesitum contra Urbiniae heredes, is qui tanquam filius petebat bona, Figulus esset an Sosipater.
 
 nam et substantia eius sub oculos venit, ut non possit quaeri, an sit, quomodo an ultra oceanum; nec quid sit nec quale sit, sed quis sit? verum hoc quoque genus litis ex praeterito pendet, an hic sit ex Urbinia natus Clusinius Figulus. fuerunt autem tales nostris etiam temporibus controversiae, atque aliquae in meum quoque patrocinium inciderunt.
 
 animi coniectura non dubie in omnia tempora cadit, qua mente Ligarius in Africa fuerit, qua mente Pyrrhus foedus petat, quomodo laturus sit Caesar, si Ptolemaeus Pompeium occiderit. quaeritur per coniecturam et qualitas circa modum, speciem, numerum, an sol maior quam terra, luna globosa an plana an acuta, unus mundus an plures. itemque extra naturales quaestiones,
 
-maius bellum Troianum an Peloponnesium, qualis clipeus Achillis, an unus Hercules. in iis autem, quae accusatione ac defensione constant, unum est genus, in quo quaeritur et de facto et de auctore; quod interim coniunctam quaestionem habet, cum cum, Halm : et, MSS. utrumque pariter negatur, interim separatam, cum et factum sit necne, et si de facto constet, a quo factum sit ambigitur.
+maius bellum Troianum an Peloponnesium, qualis clipeus Achillis, an unus Hercules. in iis autem, quae accusatione ac defensione constant, unum est genus, in quo quaeritur et de facto et de auctore; quod interim coniunctam quaestionem habet, cum utrumque pariter negatur, interim separatam, cum et factum sit necne, et si de facto constet, a quo factum sit ambigitur.
 
 ipsum quoque factum aliquando simplicem quaestionem habet, an homo perierit, aliquando duplicem, veneno an cruditate perierit. alterum est genus de facto tantum, cum, si id certum sit, non potest de auctore dubitari; tertium de auctore tantum, cum factum constat, sed a quo sit factum in controversiam venit. et hoc, quod tertio loco posui, non est simplex.
 
 aut enim reus fecisse tantummodo se negat aut alium fecisse dicit. sed ne in alterum quidem transferendi criminis una forma est. Interdum enim substituitur mutua accusatio, quam Graeci ἀντικατηγορίαν vocant, nostrorum quidam concertativam. Interdum in aliquam personam, quae extra discrimen iudicii est, transfertur, et alias certam, alias incertam;
 
-et, cum certam, aut in extrariam aut in ipsius qui periit periit, Badius : perit, cod. argentorat : petit, AG. voluntatem. in quibus similis atque in ἀντικατηγορίᾳ personarum, causarum, ceterorum comparatio est, ut Cicero pro Vareno in familiam Ancharianam, pro Scauro circa mortem Bostaris in matrem avertens crimen facit.
+et, cum certam, aut in extrariam aut in ipsius qui periit voluntatem. in quibus similis atque in ἀντικατηγορίᾳ personarum, causarum, ceterorum comparatio est, ut Cicero pro Vareno in familiam Ancharianam, pro Scauro circa mortem Bostaris in matrem avertens crimen facit.
 
 est etiam illud huic contrarium comparationis genus, in quo uterque a se factum esse dicit; et illud in quo non personae inter se sed res ipsae colliduntur, id est, non uter fecerit, sed utrum factum sit. cum de facto et de auctore constat, de animo quaeri potest. nunc de singulis. cum pariter negatur, hoc modo: adulterium non commisi; tyrannidem non adfectavi. in caedis ac veneficii causis frequens est illa divisio: non est factum; et si est factum, ego non feci.
 
@@ -4107,7 +4107,7 @@ sed , cum dicimus, proba hominem occisum, accusatoris tantum partes sunt; a reo 
 
 ut cum quaerimus de ambiguis signis cruditatis et veneni, nihil tertium est ideoque utraque pars, quod proposuit, tuetur. interim autem ex re quaeritur, veneficium fuerit an cruditas; cum aliqua ex ipsa citra personam quoque argumenta ducuntur.
 
-refert enim, convivium praecesserit laetitia laetitia, added by Philander. an tristitia, labor an otium, labor an otium, Regius : laborantium, MSS. vigilia an quies. Aetas quoque eius, qui periit, discrimen facit; interest, subito defecerit an longiore valetudine consumptus sit. liberior adhuc in utramque partem disputatio, si tantum subita mors in quaestionem venit.
+refert enim, convivium praecesserit laetitia an tristitia, labor an otium, vigilia an quies. Aetas quoque eius, qui periit, discrimen facit; interest, subito defecerit an longiore valetudine consumptus sit. liberior adhuc in utramque partem disputatio, si tantum subita mors in quaestionem venit.
 
 interim ex persona probatio rei petitur, ut propterea credibile sit venenum fuisse, quia credibile est ab hoc factum veneficium, vel contra. cum vero de reo et de facto quaeritur, naturalis ordo est, ut prius factum esse accusator probet, deinde a reo factum. si tamen plures in persona probationes habuerit, conuertit hunc ordinem.
 
@@ -4117,21 +4117,21 @@ sicut in illa controversia: (utendum est enim et his exemplis, quae sunt discent
 
 manifestum , quis potionem dederit, quae si veneni fuit, nulla quaestio de auctore; tamen, an venenum fuerit, ex argumentis a persona ductis colligetur. superest tertium, in quo factum esse constat aliquid, a quo sit factum, quaeritur. cuius rei supervacuum est ponere exemplum, cum plurima sint huiusmodi iudicia, ut hominem occisum esse manifestum sit vel sacrilegium commissum, is autem, qui arguitur fecisse, neget. ex hoc nascitur ἀντικατηγορία; utique enim factum esse convenit, quod duo invicem obiiciunt.
 
-in quo quidem genere causarum admonet Celsus fieri id in foro non posse; quod neminem ignorare arbitror. de uno reo consilium cogitur, et etiam et etiam, Christ : etiam et, MSS. si qui sunt, qui invicem accusent, alterum iudicium praeferre necesse est.
+in quo quidem genere causarum admonet Celsus fieri id in foro non posse; quod neminem ignorare arbitror. de uno reo consilium cogitur, et etiam si qui sunt, qui invicem accusent, alterum iudicium praeferre necesse est.
 
 Apollodorus quoque ἀντικατηγορίαν duas esse controversias dixit, et sunt revera secundum forense ius duae lites. potest tamen hoc genus in cognitionem venire senatus aut principis. sed in iudicio quoque nihil interest actionum,
 
-utrum simul de utroque pronuntietur an sententia de uno feratur. sententia. . feratur, Regius , Zumpt: etiamsi fertur, MSS. Quo in genere semper prior debebit esse defensio, primum quia natura potior est salus nostra quam adversarii pernicies, deinde quod plus habebimus in accusatione auctoritatis, si prius de innocentia nostra constiterit, postremum, quod ita demum duplex causa erit. nam qui dicit, ego non occidi, habet reliquam partem, ut dicat, tu occidisti; at qui dicit, tu occidisti, at qui dicit occidisti, added by Regius. supervacuum habet postea dicere, ego non occidi.
+utrum simul de utroque pronuntietur an sententia de uno feratur. Quo in genere semper prior debebit esse defensio, primum quia natura potior est salus nostra quam adversarii pernicies, deinde quod plus habebimus in accusatione auctoritatis, si prius de innocentia nostra constiterit, postremum, quod ita demum duplex causa erit. nam qui dicit, ego non occidi, habet reliquam partem, ut dicat, tu occidisti; at qui dicit, tu occidisti, supervacuum habet postea dicere, ego non occidi.
 
-hae porro actiones constant comparatione; ipsa comparatio non una via ducitur. aut enim totam causam nostram cum tota adversarii causa componimus aut singula argumenta cum singulis. quorum utrum sit faciendum, non potest nisi ex ipsius litis utilitate cognosci: ut Cicero singula pro Vareno comparat in primo crimine; etenim in posteriore etenim in posteriore crimine persona, Halm : est enim superior enim persona, AG (persona enim A ). crimine persona alieni cum persona matris temere compararetur. quare optimum est, si fieri poterit, ut singula vincantur a singulis; sed si quando in partibus laborabimus, universitate pugnandum est. et sive invicem accusant,
+hae porro actiones constant comparatione; ipsa comparatio non una via ducitur. aut enim totam causam nostram cum tota adversarii causa componimus aut singula argumenta cum singulis. quorum utrum sit faciendum, non potest nisi ex ipsius litis utilitate cognosci: ut Cicero singula pro Vareno comparat in primo crimine; etenim in posteriore crimine persona alieni cum persona matris temere compararetur. quare optimum est, si fieri poterit, ut singula vincantur a singulis; sed si quando in partibus laborabimus, universitate pugnandum est. et sive invicem accusant,
 
 sive crimen reus citra accusationem in adversarium vertit (ut Roscius in accusatores suos, quamvis reos non fecisset), sive in ipsos, quos sua manu periisse dicemus, factum deflectitur, lion aliter quam in iis quae mutuam accusationem habent utriusque partis argumenta inter se comparantur.
 
-id autem genus de quo novissime dixi non solum in scholis saepe tractatur, sed etiam in foro. nam id est in causa Naevii Arpiniani solum quaesitum, praecipitata esset ab eo uxor an se ipsa sua sponte iecisset. cuius actionem et quidem solam in hoc tempus emiseram, quod ipsum me fecisse ductum iuvenali cupiditate gloriae fateor. nam ceterae, quae sub nomine meo feruntur, feruntur, cod. monac : runtur, A: fecerunt, G. negligentia excipientium in quaestum notariorum corruptae minimam partem mei habent.
+id autem genus de quo novissime dixi non solum in scholis saepe tractatur, sed etiam in foro. nam id est in causa Naevii Arpiniani solum quaesitum, praecipitata esset ab eo uxor an se ipsa sua sponte iecisset. cuius actionem et quidem solam in hoc tempus emiseram, quod ipsum me fecisse ductum iuvenali cupiditate gloriae fateor. nam ceterae, quae sub nomine meo feruntur, negligentia excipientium in quaestum notariorum corruptae minimam partem mei habent.
 
 est et alia duplex coniectura huic ἀντικατηγορίᾳ diversa, de praemiis, ut in illa controversia, tyrannus suspicatus a medico suo datum sibi venenum torsit eum et, cum is dedisse se pernegaret, arcessit alterum medicum; ille datum ei venenum dixit, sed se antidotum daturum, et dedit ei potionem, qua epota tyrannus decessit. de praemio duo medici contendunt. nam ut illic factum in adversarium transferentium, ita hic sibi vindicantium personae, causae, facultates, tempora, instrumenta,
 
-testimonia comparantur. illud quoque, etiamsi non est ἀντικατηγορία, simili tamen ratione tractatur, in quo citra accusationem quaeritur, utrum factum sit. utraque enim pars suam expositionem habet atque eam tuetur, ut in lite Urbiniana petitor dicit, Clusinium Figulum filium Vrbiniae acie victa, in qua steterat, fugisse, iactatumque casibus variis, retentum etiam a rege, tandem in Italiam ac patriam suam Marrucinos Marrucinos, Bonnell: Marginos, MSS. venisse atque ibi agnosci; Pollio contra, servisse eum Pisauri dominis duobus, medicinam factitasse, manumissum alienae se familiae venali immiscuisse, a se rogantem, a se rogantem, A: ac roganterm, arrogantem, other MSS. ut ei serviret, emptum.
+testimonia comparantur. illud quoque, etiamsi non est ἀντικατηγορία, simili tamen ratione tractatur, in quo citra accusationem quaeritur, utrum factum sit. utraque enim pars suam expositionem habet atque eam tuetur, ut in lite Urbiniana petitor dicit, Clusinium Figulum filium Vrbiniae acie victa, in qua steterat, fugisse, iactatumque casibus variis, retentum etiam a rege, tandem in Italiam ac patriam suam Marrucinos venisse atque ibi agnosci; Pollio contra, servisse eum Pisauri dominis duobus, medicinam factitasse, manumissum alienae se familiae venali immiscuisse, a se rogantem, ut ei serviret, emptum.
 
 nonne tota lis constat duarum causarum comparatione et coniectura duplici atque diversa? quae autem accusantium ac defendentium, eadem petentium et infitiantium ratio est. ducitur coniectura primum a praeteritis. in his sunt personae, causae, consilia. nam is ordo est, ut facere voluerit, potuerit, fecerit. ideoque intuendum ante omnia, qualis sit de quo agitur.
 
@@ -4139,19 +4139,19 @@ accusatoris autem est efficere ut, si quid obiecerit non solum turpe sit, sed et
 
 patrono , si fieri poterit, id agendum est ut obiecta vel neget vel defendat vel minuat; proximum est ut a praesenti quaestione separet. sunt enim pleraque non solum dissimilia, sed etiam aliquando contraria: ut si reus furti prodigus dicatur aut negligens. neque enim videtur in eundem et contemptus pecuniae et cupiditas cadere.
 
-si deerunt haec remedia, ad illa declinandum est, non de hoc quaeri nec eum, qui aliquando peccaverit, utique commisisse omnia, et hanc fiduciam fuisse accusatoribus falsa obiiciendi, quod laesum et vulneratum reum speraverint speraverint, Gesner : speravere, MSS. hac invidia opprimi posse.
+si deerunt haec remedia, ad illa declinandum est, non de hoc quaeri nec eum, qui aliquando peccaverit, utique commisisse omnia, et hanc fiduciam fuisse accusatoribus falsa obiiciendi, quod laesum et vulneratum reum speraverint hac invidia opprimi posse.
 
-alii a propositione accusatoris contraque eam contraque eam, Halm : contra quarm, A: contra qua, G. loci oriuntur. saepe a persona prior ducit argumenta defensor et interim generaliter, incredibile esse a filio patrem occisum, ab imperatore proditam hostibus patriam. facile respondetur vel quod omnia scelera in malos cadant ideoque saepe deprehensa sint, vel quod indignum indignum, Aldine ed.: ingenuum, ingenium, MSS. sit crimina ipsa atrocitate defendi. interim proprie, quod est varium. nam dignitas et tuetur reum et nonnunquam ipsa in argumentum facti convertitur, tanquam inde fuerit spes inpunitatis; proinde paupertas, humilitas, opes, ut cuique ingenio vis est, in diversum trahuntur.
+alii a propositione accusatoris contraque eam loci oriuntur. saepe a persona prior ducit argumenta defensor et interim generaliter, incredibile esse a filio patrem occisum, ab imperatore proditam hostibus patriam. facile respondetur vel quod omnia scelera in malos cadant ideoque saepe deprehensa sint, vel quod indignum sit crimina ipsa atrocitate defendi. interim proprie, quod est varium. nam dignitas et tuetur reum et nonnunquam ipsa in argumentum facti convertitur, tanquam inde fuerit spes inpunitatis; proinde paupertas, humilitas, opes, ut cuique ingenio vis est, in diversum trahuntur.
 
-probi vero mores et anteactae vitae integritas nunquam non plurimum profuerint. si nihil obiicietur, patronus quidem in hoc vehementer incumbet, accusator autem ad praesentem quaestionem, de qua sola iudicium sit, cognitionem adligabit dicens neminem non aliquando coepisse peccare, nec per encaenia Eacaceia is a feast in honour of the dedication of a new temple or building. the phrase is strange, but there seems no possibility of plausible emendation. the word is rare and not likely to be corrupt. pro is the reading of the best MSS. ducendum scelus primum.
+probi vero mores et anteactae vitae integritas nunquam non plurimum profuerint. si nihil obiicietur, patronus quidem in hoc vehementer incumbet, accusator autem ad praesentem quaestionem, de qua sola iudicium sit, cognitionem adligabit dicens neminem non aliquando coepisse peccare, nec per encaenia ducendum scelus primum.
 
-haec in respondendo. sic autem praeparabit actione prima iudicum animos, ut noluisse potius obiicere quam non potuisse credatur. eoque satius est omni se ante actae vitae abstinere convicio quam levibus aut frivolis aut manifesto falsis reum incessere, quia fides ceteris detrahitur; et qui nihil obiicit, omisisse credi potest maledicta tanquam supervacua; qui vana congerit, confitetur unum unum, Spolding: vanum, MSS. in anteactis argumentum, in quibus vinci quam tacere maluerit.
+haec in respondendo. sic autem praeparabit actione prima iudicum animos, ut noluisse potius obiicere quam non potuisse credatur. eoque satius est omni se ante actae vitae abstinere convicio quam levibus aut frivolis aut manifesto falsis reum incessere, quia fides ceteris detrahitur; et qui nihil obiicit, omisisse credi potest maledicta tanquam supervacua; qui vana congerit, confitetur unum in anteactis argumentum, in quibus vinci quam tacere maluerit.
 
-cetera , quae a personis duci solent, in argumentorum locis exposuimus. proxima est ex causis probatio, in quibus haec maxime spectantur, ira, odium, metus, cupiditas, spes; nam reliqua in horum species cadunt. quorum si quid in reum conveniet, accusatoris est efficere ut ut, added by Spaading. ad quidquid faciendum causae valere videantur, easque quas in argumentum sumet augere; si minus, illuc conferenda est oratio,
+cetera , quae a personis duci solent, in argumentorum locis exposuimus. proxima est ex causis probatio, in quibus haec maxime spectantur, ira, odium, metus, cupiditas, spes; nam reliqua in horum species cadunt. quorum si quid in reum conveniet, accusatoris est efficere ut ad quidquid faciendum causae valere videantur, easque quas in argumentum sumet augere; si minus, illuc conferenda est oratio,
 
 aut aliquas fortasse latentes fuisse aut nihil ad rem pertinere cur fecerit, si fecit, aut etiam dignius esse odio scelus, quod non habuerit causam. patronus vero, quotiens poterit, instabit huic loco, ut nihil credibile sit factum esse sine causa. quod Cicero vehementissime multis orationibus tractat, praecipue tamen pro Vareno, qui omnibus aliis premebatur; nam et damnatus est. at ,
 
-si proponitur, cur factum sit, aut falsam causam aut levem aut ignotam reo dicet. possunt autem esse aliquae interim ignotae, an heredem habuerit, an accusaturus fuerit eum, a quo dicitur dicitur, vulgo: dicetur, AG. occisus. si alia defecerint, non utique spectandas esse causas; nam quem posse reperiri, qui non metuat, oderit, speret?
+si proponitur, cur factum sit, aut falsam causam aut levem aut ignotam reo dicet. possunt autem esse aliquae interim ignotae, an heredem habuerit, an accusaturus fuerit eum, a quo dicitur occisus. si alia defecerint, non utique spectandas esse causas; nam quem posse reperiri, qui non metuat, oderit, speret?
 
 plurimos tamen haec salva innocentia facere. neque illud est omittendum, non omnes causas in omnibus personis valere. nam ut alicui sit furandi causa paupertas, non erit idem in Curio Fabricioque momentum.
 
@@ -4171,13 +4171,13 @@ inspiciuntur itaque difficultates occasionesque, quae sunt plurimae ideoque exem
 
 an fecerit, incipit a secundo tempore, id est praesenti, deinde coniuncto, quorum sunt sonus, clamor, gemitus; insequentis latitatio, metus, similia. his accedunt signa, de quibus tractatum est, verba etiam et facta, quaeque antecesserunt quaeque insecuta sunt.
 
-haec aut nostra sunt aut aliena. sed verba nobis magis nocent et minus et minus, Regius : aut minus magis, MSS. prosunt nostra quam aliena; magis prosunt et minus nocent aliena quam nostra. facta autem interim magis prosunt nostra, interim aliena, ut si quid, quod pro nobis sit, adversarius fecit; semper vero magis nocent nostra quam aliena.
+haec aut nostra sunt aut aliena. sed verba nobis magis nocent et minus prosunt nostra quam aliena; magis prosunt et minus nocent aliena quam nostra. facta autem interim magis prosunt nostra, interim aliena, ut si quid, quod pro nobis sit, adversarius fecit; semper vero magis nocent nostra quam aliena.
 
 est et illa in verbis differentia, quod aut aperta sunt aut dubia. seu nostra seu aliena sunt, infirmiora in utrumque sint necesse dubia; tamen nostra saepe nobis nocent, ut in illa controversia: interrogatus filius, ubi esset pater, dixit, Ubicunque est, vivit; at ille in puteo mortuus est inventus. aliena ,
 
 quae sunt dubia, nunquam possunt nocere nisi aut incerto auctore aut mortuo. nocte audita vox est, cauete tyrannidem; et, interrogatus , cuius veneno moreretur respondit, Non expedit tibi scire. nam si est, qui possit interrogari, solvet ambiguitatem.
 
-cum autem dicta factaque nostra defendi solo animo possint, aliena varie refutantur. de uno quidem maximo genere coniecturalium controversiarum locuti videmur, sed videniur sed, Spalding : videmnus et, G; videnlur et, A. in omnes aliquid ex his cadit. nam furti, depositi, creditae pecuniae et a facultatibus argumenta veniunt, an fuerit, quod deponeretur, et a personis, an ullum deposuisse apud hunc, vel huic credidisse credibile sit, an petitorem calumniari, an reum infitiatorem esse vel furem.
+cum autem dicta factaque nostra defendi solo animo possint, aliena varie refutantur. de uno quidem maximo genere coniecturalium controversiarum locuti videmur, sed in omnes aliquid ex his cadit. nam furti, depositi, creditae pecuniae et a facultatibus argumenta veniunt, an fuerit, quod deponeretur, et a personis, an ullum deposuisse apud hunc, vel huic credidisse credibile sit, an petitorem calumniari, an reum infitiatorem esse vel furem.
 
 sed etiam in furti reo sicut in caedis quaeritur de facto et de auctore. crediti et depositi duae quaestiones, sed nunquam iunctae, an datum sit, an redditum. habent aliquid proprii adulterii causae, quod plerumque duorum discrimen est et de utriusque vita dicendum, quanquam et id quaeritur, an utrumque pariter defendi oporteat. cuius rei consilium nascetur ex causa; nam si adiuvabit pars altera, coniungam; si nocebit, separabo. ne quis autem mihi putet temere excidisse,
 
@@ -4185,21 +4185,21 @@ quod plerumque duorum crimen esse adulterium, non semper dixerim: potest accusar
 
 aut enim plures in culpam vocantur aut unus. et scriptor quidem semper tueri signatorem necesse habet, signator scriptorem non semper, nam et decipi potuit. is autem, qui hos adhibuisse et cui id factum dicitur, et scriptorem et signatores defendet. iidem argumentorum loci in causis proditionis et adfectatae tyrannidis.
 
-verum illa scholarum consuetudo ituris in forum potest nocere, quod omnia, quae in themate non sunt, pro nobis ducimus. adulterium obiicis; quis testis? quis index? proditionem , Proditionem, added by Spalding. quod pretium? quis conscius? venenum ; ubi emi? a quo? quando? quanti? per quem dedi? pro reo tyrannidis adfectatae; ubi sunt arma?
+verum illa scholarum consuetudo ituris in forum potest nocere, quod omnia, quae in themate non sunt, pro nobis ducimus. adulterium obiicis; quis testis? quis index? proditionem , quod pretium? quis conscius? venenum ; ubi emi? a quo? quando? quanti? per quem dedi? pro reo tyrannidis adfectatae; ubi sunt arma?
 
-quos contraxi satellites? neque haec nego esse dicenda, et ipsis utendum pro parte suscepta. nam et in foro aliqua, quando aliqua quando, Spalding : aliquando, AG. adversarius probare non poterit, desiderabo. sed in foro tantam illam facilitatem olim desiderauimus, ubi non fere causa agitur, ut non aliquid ex his aut plura ponantur.
+quos contraxi satellites? neque haec nego esse dicenda, et ipsis utendum pro parte suscepta. nam et in foro aliqua, quando adversarius probare non poterit, desiderabo. sed in foro tantam illam facilitatem olim desiderauimus, ubi non fere causa agitur, ut non aliquid ex his aut plura ponantur.
 
-huic simile est, quod in epilogis quidam, quibus volunt, liberos, parentes, nutrices accommodant, nisi quod magis concesseris ea, quae non sint posita, desiderare quam adiicere. adiicere, Spalding : dicere, AG. de animo quomodo quaeratur, satis dictum est, cum ita diviserimus, an voluerit, an potuerit, an fecerit. nam qua via tractatur, an voluerit, eadem, quo animo fecerit; id enim est, an male facere voluerit.
+huic simile est, quod in epilogis quidam, quibus volunt, liberos, parentes, nutrices accommodant, nisi quod magis concesseris ea, quae non sint posita, desiderare quam adiicere. de animo quomodo quaeratur, satis dictum est, cum ita diviserimus, an voluerit, an potuerit, an fecerit. nam qua via tractatur, an voluerit, eadem, quo animo fecerit; id enim est, an male facere voluerit.
 
-ordo quoque rerum aut adfert aut detrahit fidem; multo scilicet magis res, prout ponuntur, ponuntur, added by Spalding. congruunt aut repugnant. sed haec nisi in ipso complexu causarum non deprehenduntur. quaerendum tamen semper, quid cuique connectatur et quid consentiat.
+ordo quoque rerum aut adfert aut detrahit fidem; multo scilicet magis res, prout ponuntur, congruunt aut repugnant. sed haec nisi in ipso complexu causarum non deprehenduntur. quaerendum tamen semper, quid cuique connectatur et quid consentiat.
 
-sequitur coniecturam finitio. nam , qui non potest dicere nihil fecisse, proximum habebit, ut dicat, non id fecisse, quod obiiciatur. itaque pluribus legibus rei iisdem quibus coniectura versatur, defensionis tantum genere mutato, ut rei furtis, depositis, adulteriis. nam , quemadmodum dicimus, non feci furtum, non accepi depositum, non commisi adulterium, ita, non est hoc furtum, non est hoc depositum, depositum, Badius : initiatio, AG: mutuatio, cod. mon . non est hoc adulterium.
+sequitur coniecturam finitio. nam , qui non potest dicere nihil fecisse, proximum habebit, ut dicat, non id fecisse, quod obiiciatur. itaque pluribus legibus rei iisdem quibus coniectura versatur, defensionis tantum genere mutato, ut rei furtis, depositis, adulteriis. nam , quemadmodum dicimus, non feci furtum, non accepi depositum, non commisi adulterium, ita, non est hoc furtum, non est hoc depositum, non est hoc adulterium.
 
-interim a qualitate ad finitionem descenditur, ut rei actionibus dementiae, malae tractationis, rei publicae laesae; rei quibus si recte facta esse, quae obiiciuntur, dici non potest, illud succurrit, non est male tractare uxorem verbis uxorem verbis, Spalding : rem publicam verbis, MSS. laedere. finitio igitur est rei propositae propria et dilucida et breviter comprehensa verbis enuntiatio. constat maxime,
+interim a qualitate ad finitionem descenditur, ut rei actionibus dementiae, malae tractationis, rei publicae laesae; rei quibus si recte facta esse, quae obiiciuntur, dici non potest, illud succurrit, non est male tractare uxorem verbis laedere. finitio igitur est rei propositae propria et dilucida et breviter comprehensa verbis enuntiatio. constat maxime,
 
 sicut est dictum, genere, specie, differentibus, propriis: ut si finias equum, (noto enim maxime utar exemplo) genus est animal, species mortale, differentia irrationale, (nam et homo mortale erat) proprium hinniens. haec adhibetur orationi pluribus causis.
 
-nam tum est certum de nomine, sed quaeritur quae res ei subiicienda sit, tum res est manifesta, sed de nomine non constat. cum de sed constat, Halm : et quod nomine constat, MSS. nomine constat, de re dubium est, interim coniectura est: ut si quaeratur, quid sit deus.
+nam tum est certum de nomine, sed quaeritur quae res ei subiicienda sit, tum res est manifesta, sed de nomine non constat. cum de nomine constat, de re dubium est, interim coniectura est: ut si quaeratur, quid sit deus.
 
 nam qui neget deum esse spiritum omnibus partibus immixtum, non hoc dicat falsam esse divinae illius naturae appellationem, sicut Epicurus, qui humanam ei formam locumque inter mundos dedit? nomine uterque uno utitur;
 
@@ -4207,23 +4207,23 @@ utrum sit rei re, coniectat. interim qualitas tractatur, ut quid sit rhetorice, 
 
 diversum est genus, cum controversia consistit rei nomine, quod pendet ex scripto, nec versatur rei iudiciis nisi propter verba quae litem faciunt: an, qui se interficit, homicida sit; an, qui tyrannum rei mortem compulit, tyrannicida; an carmina magorum veneficium. res enim manifesta est, sciturque non idem esse occidere se quod alium, non idem occidere tyrannum quod compellere ad mortem, non idem carmina ac mortiferam potionem; quaeritur tamen, an eodem nomine appellanda sint.
 
-quanquam autem dissentire vix audeo a Cicerone, qui multos secutus auctores dicit, finitionem esse de eodem et de altero, semper enim enim, added by Regius. neganti aliquod esse nomen dicendum quod sit potius: tamen equidem equidem, Christ : eandem, AG. tris habeo velut species.
+quanquam autem dissentire vix audeo a Cicerone, qui multos secutus auctores dicit, finitionem esse de eodem et de altero, semper enim neganti aliquod esse nomen dicendum quod sit potius: tamen equidem tris habeo velut species.
 
-nam interim convenit solum solum, Zumpt : suum, AG. quaerere, an hoc sit, ut an adulterium rei lupanari. cum hoc negamus, non necesse est dicere quid id vocetur, quia totum crimen infitiamur. interim quaeritur, hoc an hoc; furtum an sacrilegium. non quin sufficiat non esse sacrilegium, sed quia necesse sit dicere quid sit aliud; quo rei loco utrumque finiendum est.
+nam interim convenit solum quaerere, an hoc sit, ut an adulterium rei lupanari. cum hoc negamus, non necesse est dicere quid id vocetur, quia totum crimen infitiamur. interim quaeritur, hoc an hoc; furtum an sacrilegium. non quin sufficiat non esse sacrilegium, sed quia necesse sit dicere quid sit aliud; quo rei loco utrumque finiendum est.
 
 interim quaeritur rei rebus specie diversis, an et hoc et hoc eodem modo sit appellandum, cum res utraque habet suum nomen, ut amatorium, venenum. in omnibus autem huius generis litibus quaeritur, an etiam hoc, quia nomen de quo ambigitur utique rei alia re certum est. sacrilegium est rem sacram de templo surripere: an et privatam? adulterium cum aliena uxore domi coire: an et rei lupanari? tyrannicidium occidere tyrannum: an et rei mortem compellere?
 
-ideoque συλλογισμός de quo postea dicam, velut infirmior est finitio, quia rei hac quaeritur, an idem sit huius rei nomen quod alterius, illo, an proinde habenda sit haec atque illa. est et talis finitionum fiuitionum, Regius : division, MSS. diversitas,
+ideoque συλλογισμός de quo postea dicam, velut infirmior est finitio, quia rei hac quaeritur, an idem sit huius rei nomen quod alterius, illo, an proinde habenda sit haec atque illa. est et talis finitionum diversitas,
 
 ut qui idem sentiant, non iisdem verbis comprehendant: ut rhetorice bene dicendi scientia, et eadem bene inveniendi et bene enuntiandi et dicendi secundum virtutem orationis et dicendi quod sit officii. atque providendum ut, si sensu non pugnant, comprehensione dissentiant. sed de his disputatur, non litigatur.
 
-opus est aliquando finitione obscurioribus et ignotioribus verbis ut, quid sit clarigatio, erctum citum: eretum citum, Halm : erectus citus, A: ercet ut, G. interim notis nomine verbis, verhis, early edd.: videbis, AG. quid sit penus, quid litus. quae varietas efficit, ut eam quidam coniecturae, quidam qualitati, quidam legitimis quaestionibus subiecerint.
+opus est aliquando finitione obscurioribus et ignotioribus verbis ut, quid sit clarigatio, erctum citum: interim notis nomine verbis, quid sit penus, quid litus. quae varietas efficit, ut eam quidam coniecturae, quidam qualitati, quidam legitimis quaestionibus subiecerint.
 
-quibusdam ne placuit quidem omnino subtilis haec et ad morem dialecticorum formata conclusio, ut rei disputationibus potius arguta arguta, Zumpt : argumenta, AG. verborum cavillatrix quam rei oratoris officio multum adlatura momenti. licet enim valeat rei sermone tantum, ut constrictum vinculis suis eum qui responsurus est vel tacere vel etiam invitum id quod sit contra cogat fateri, non eadem est tamen eius rei causis utilitas.
+quibusdam ne placuit quidem omnino subtilis haec et ad morem dialecticorum formata conclusio, ut rei disputationibus potius arguta verborum cavillatrix quam rei oratoris officio multum adlatura momenti. licet enim valeat rei sermone tantum, ut constrictum vinculis suis eum qui responsurus est vel tacere vel etiam invitum id quod sit contra cogat fateri, non eadem est tamen eius rei causis utilitas.
 
 persuadendum enim iudici est, qui etiamsi verbis devinctus est, tamen, nisi ipsi rei accesserit, tacitus dissentiet. agenti vero quae tanta est huius praecisae comprehensionis necessitas? an , si non dixero, homo est animal mortale rationale, non potero, expositis tot corporis animique proprietatibus, latius oratione ducta, vel a dis eum vel a mutis discernere?
 
-quid quod nec uno modo definitur res eadem (ut facit Cicero: quid est enim vulgo? universos ) et latiore varioque tractatu, ut omnes oratores plerumque fecerunt? rarissima enim apud eos reperitur ilia ex consuetudine philosophorum ducta servitus est certa servitus Expunged by Halm. ad certa se verba adstringendi, idque faciendum rei libris Ciceronis de Oratore vetat M. Antonius.
+quid quod nec uno modo definitur res eadem (ut facit Cicero: quid est enim vulgo? universos ) et latiore varioque tractatu, ut omnes oratores plerumque fecerunt? rarissima enim apud eos reperitur ilia ex consuetudine philosophorum ducta servitus est certa servitus ad certa se verba adstringendi, idque faciendum rei libris Ciceronis de Oratore vetat M. Antonius.
 
 nam est etiam periculosum, cum, si uno verbo sit erratum, tota causa cecidisse videamur; optimaque est media illa via, qua utitur Cicero pro Caecina, ut res proponatur, verba non periclitentur. etenim , reciperatores, non ea sola vis est quae ad corpus nostrum vitamque pervenit, sed etiam multo maior ea quae periculo mortis iniecto formidine animum perterritum loco saepe et certo statu demovet.
 
@@ -4235,17 +4235,17 @@ ideoque rei schola, ubi nobis ipsi fingimus contradictionem, duos ponere debemus
 
 ut recte autem finiamus, ita fiet, si prius rei animo constituerimus quid velimus efficere. sic enim accommodari ad voluntatem verba poterunt. atque ut a notissimo exemplo, quo sit res lucidior, non recedamus: qui privatam pecuniam de templo surripuit, sacrilegii reus est.
 
-culpa manifesta est; quaestio est an huic crimini nomen quod est rei lege conveniat. ergo ambigitur an hoc sacrilegium sit? accusator , quia de templo surrepta sit pecunia, utitur hoc nomine. reus , quia privatam surripuerit, negat esse sacrilegium sed furtum fatetur. actor ergo ita finiet, sacrilegium est surripere aliquid de sacro; Reus, sacrilegium est surripere aliquid de sacro aliquid, added by early editors. sacri. uterque finitionem alterius impugnat.
+culpa manifesta est; quaestio est an huic crimini nomen quod est rei lege conveniat. ergo ambigitur an hoc sacrilegium sit? accusator , quia de templo surrepta sit pecunia, utitur hoc nomine. reus , quia privatam surripuerit, negat esse sacrilegium sed furtum fatetur. actor ergo ita finiet, sacrilegium est surripere aliquid de sacro; Reus, sacrilegium est surripere aliquid sacri. uterque finitionem alterius impugnat.
 
 ea duobus generibus evertitur, si aut falsa est aut parum plena. nam illud tertium nisi stultis non accidit, ut nihil ad quaestionem pertineat.
 
-Falsa est, si dicas, equus animal rationale; nam est equus animal sed irrationale. quod autem commune cum alio est, desinet esse proprium. Falsa. . proprium, expunged by Gesner. Hic reus falsam dicit esse finitionem accusatoris, accusator autem non potest dicere falsam rei; nam est sacrilegium surripere aliquid sacri; sed dicit parum plenam, adiiciendum enim aut ex sacro.
+Falsa est, si dicas, equus animal rationale; nam est equus animal sed irrationale. quod autem commune cum alio est, desinet esse proprium. Hic reus falsam dicit esse finitionem accusatoris, accusator autem non potest dicere falsam rei; nam est sacrilegium surripere aliquid sacri; sed dicit parum plenam, adiiciendum enim aut ex sacro.
 
 maximus autem usus rei approbando refellendoque fine propriorum ac differentium, nonnunquam etiam etymologiae. quae tamen omnia, sicut rei ceteris, confirmat aequitas, nonnunquam et coniectura mentis. etymologia maxime rare est: quid enim est aliud tumultus, nisi perturbatio tanta, ut maior timor oriatur? unde etiam nomen ductum est tumultus.
 
 circa propria ac differentia magna subtilitas, ut cum quaeritur an addictus, quem lex servire, donec solverit, iubet, servus sit. altera pars finit ita, servus est, qui est iure rei servitute; altera, qui rei seruitute est eo iure, quo servus, aut, ut antiqui dixerunt, qui servitutem servit. quae finitio, etiamsi distat aliquo, nisi tamen propriis et differentibus adiuvatur, inanis est.
 
-dicet enim adversarius, servire eum servitutem aut eo iure quo servum. videamus ergo propria et differentia, quae libro quinto leviter rei transitu attigeram. servus , cum manumittitur, fit libertinus, addictus recepta libertate ingenuus; servus invito domino libertatem non consequetur, addictus soluendo citra voluntatem domini consequetur: addictus consequetur, added by Regius. ad servum nulla lex pertinet, addictus legem habet. propria liberi, quod nemo habet nisi liber, praenomen, nomen, cognomen, tribum; habet haec addictus.
+dicet enim adversarius, servire eum servitutem aut eo iure quo servum. videamus ergo propria et differentia, quae libro quinto leviter rei transitu attigeram. servus , cum manumittitur, fit libertinus, addictus recepta libertate ingenuus; servus invito domino libertatem non consequetur, addictus soluendo citra voluntatem domini consequetur: ad servum nulla lex pertinet, addictus legem habet. propria liberi, quod nemo habet nisi liber, praenomen, nomen, cognomen, tribum; habet haec addictus.
 
 excusso quid sit, prope peracta est quaestio, an hoc sit. id enim agimus ut sit causae nostrae conveniens finitio. potentissima est autem rei ea qualitas, an amor insania. huc pertinebunt probationes, quas Cicero dicit proprias esse finitionis, ex antecedentibus, consequentibus, adiunctis, repugnantibus, causis, effectis, similibus; de quorum argumentorum natura dictum est.
 
@@ -4259,21 +4259,21 @@ dicuntur ii causa mortis fuisse. hic finitio est accusatoris, per quem factum es
 
 contra , Non statim, per quem factum est, ut quis periret, is damnari debet, ut accusator, testis, iudex rei capitalis. nec undecunque causa fluxit, ibi culpa est: ut si quis profectionem suaserit aut amicum arcessierit trans mare et is naufragio perierit, ad cenam invitarit et is cruditate illic contracta decesserit.
 
-nec fuerit rei causa mortis solum adolescentium factum sed credulitas senis, rei dolore ferundo infirmitas; denique, si fortior fuisset aut prudentior, uiueret. nec mala mente fecerunt; et ille potuit vel ex loco tumuli vel ex opere tumultuario suspicari non esse monumentum. qui ergo puniri debent, rei quibus omnia absunt absunt, Teuffel: sunt, MSS. homicidae praeter manum?
+nec fuerit rei causa mortis solum adolescentium factum sed credulitas senis, rei dolore ferundo infirmitas; denique, si fortior fuisset aut prudentior, uiueret. nec mala mente fecerunt; et ille potuit vel ex loco tumuli vel ex opere tumultuario suspicari non esse monumentum. qui ergo puniri debent, rei quibus omnia absunt homicidae praeter manum?
 
-est interim certa finitio, de qua inter utramnque partem convenit: ut Cicero dicit, maiestas est rei imperii atque rei nominis populi Romani dignitate. quaeritur tamen, an maiestas minuta sit, ut rei causa Cornelii quaesitum est. sed hic etiamsi etiamsi, Christ : etiam simnilis, MSS. videri potest finitiva, tamen quia de finitione non ambigitur, iudicatio est qualitatis atque ad eum potius status reducenda, ad cuius forte quidem venimus mentionem, sed erat ordine proximus locus.
+est interim certa finitio, de qua inter utramnque partem convenit: ut Cicero dicit, maiestas est rei imperii atque rei nominis populi Romani dignitate. quaeritur tamen, an maiestas minuta sit, ut rei causa Cornelii quaesitum est. sed hic etiamsi videri potest finitiva, tamen quia de finitione non ambigitur, iudicatio est qualitatis atque ad eum potius status reducenda, ad cuius forte quidem venimus mentionem, sed erat ordine proximus locus.
 
 est autem qualitas alia de summo genre atque ea quidem non simplex. nam et qualis sit cuiusque rei natura et quae forma quaeritur: an immortalis anima, an humana specie deus; et de magnitudine ac numero, quantus sol, an unus mundus. quae omnia coniectura quidem colliguntur, quaestionem tamen habent in eo, qualia sint? haec et in suasoriis aliquando tractari solent,
 
 ut, si Caesar deliberet, an Britanniam impugnet, quae sit Oceani natura, an Britanniam insula (nam tum ignorabatur), quanta in ea terra, quo numero militum aggredienda, in consilium ferendum sit. eidem qualitati succedunt facienda ac non facienda, appetenda, vitanda; quae in suasorias quidem maxime cadunt, sed in controversiis quoque sunt frequentia, hac sola differentia, quod illic de futuris hic de factis agitur.
 
-item demonstratiuae partis omnia sunt in hoc statu: factum esse constat, quale sit factum quaeritur. lis est omnis aut de praemio aut de poena aut de quantitate. igitur igitur, early edd.: agitur, A: egrum, G. genus causae aut simplex aut comparativum. illic , quid aequum, hic, quid aequius aut quid aequissimum sit, excutitur. cum de poena iudicium est, a parte eius, qui causam dicit, aut defensio est criminis aut imminutio aut excusatio aut, ut quidam putant, deprecatio.
+item demonstratiuae partis omnia sunt in hoc statu: factum esse constat, quale sit factum quaeritur. lis est omnis aut de praemio aut de poena aut de quantitate. igitur genus causae aut simplex aut comparativum. illic , quid aequum, hic, quid aequius aut quid aequissimum sit, excutitur. cum de poena iudicium est, a parte eius, qui causam dicit, aut defensio est criminis aut imminutio aut excusatio aut, ut quidam putant, deprecatio.
 
 defensio longe potentissima est, qua ipsum factum, quod obiicitur, dicimus honestum esse. abdicatur aliquis, quod invito patre militarit, honores petierit, uxorem duxerit: tuemur, quod fecimus. hanc partem vocant Hermagorei κατ᾽ ἀντίλημψιν, ad intellectum id nomen referentes. Latine ad verbum translatam non invenio; absoluta appellatur. sed enim de re sola quaestio, iusta sit ea necne.
 
 iustum omne continetur natura vel constitutione; natura, quod fit secundum cuiusque rei dignitatem.
 
-hinc sunt pietas, fides, continentia et talia. adiiciunt et id, quod sit par. verum sit par. verum , Regius : sit pusum, MSS. id non temere intuendum est: nam et vis contra vim et talio nihil habent adversum eum, qui prior fecit, iniusti; et non, quoniam res pares sunt, etiam id est iustum, quod antecessit. illa utrinque iusta, eadem lex, eadem condicio; ac forsitan ne sint quidem paria, quae ulla parte sunt dissimilia. constitutio est in lege, more, iudicato, pacto.
+hinc sunt pietas, fides, continentia et talia. adiiciunt et id, quod sit par. verum id non temere intuendum est: nam et vis contra vim et talio nihil habent adversum eum, qui prior fecit, iniusti; et non, quoniam res pares sunt, etiam id est iustum, quod antecessit. illa utrinque iusta, eadem lex, eadem condicio; ac forsitan ne sint quidem paria, quae ulla parte sunt dissimilia. constitutio est in lege, more, iudicato, pacto.
 
 alterum est defensionis genus, in quo factum per se improbabile adsumptis extrinsecus auxiliis tuemur; id vocant κατ᾽ ἀντίθεσιν Latine hoc quoque non ad verbum transferunt, adsumptiva enim dicitur causa. in quo genere fortissimum est,
 
@@ -4287,7 +4287,7 @@ quibus similia etiam in vera rerum quaestione tractantur. nam quae in scholis ab
 
 subiacet utilitati etiam illa defensio, si peius aliquid futurum fuit. nam in comparatione malorum boni locum obtinet levius: ut si Mancinus foedus Numantinum sic defendat, quod periturus, nisi id factum esset, fuerit exercitus. hoc genus ἀντίστασις Graece nominatur, comparativum nostri vocant.
 
-haec circa defensionem facti; quae si neque per se ipsa nec adhibitis auxiliis dabitur, proximum est in alium transferre crimen, si possumus. ideoque etiam in hos, qui citra scriptum citra scriptum, Christ : etiam scriptum, AG. sunt, status visa est cadere translatio Interdum ergo culpa in hominem relegatur, ut si Gracchus reus foederis Numantini, cuius metu leges populares tulisse in tribunatu videretur, videretur, Halm : videntur, AG. missum se ab imperatore suo diceret.
+haec circa defensionem facti; quae si neque per se ipsa nec adhibitis auxiliis dabitur, proximum est in alium transferre crimen, si possumus. ideoque etiam in hos, qui citra scriptum sunt, status visa est cadere translatio Interdum ergo culpa in hominem relegatur, ut si Gracchus reus foederis Numantini, cuius metu leges populares tulisse in tribunatu videretur, missum se ab imperatore suo diceret.
 
 interim derivatur in rem, ut si is, qui testamento quid iussus non fecerit, dicat per leges id fieri non potuisse. hoc μετάστασιν dicunt. hinc quoque exclusis excusatio superest. ea est aut ignorantiae, ut si quis fugitivo stigmata scripserit eoque ingenuo iudicato neget se liberum esse scisse; aut necessitatis, ut cum miles ad commeatus diem non adfuit et dicit se fluminibus interclusum aut valetudine.
 
@@ -4301,7 +4301,7 @@ in senatu vero et apud populum et apud principem et ubicunque iuris dementia est
 
 in eo tamen qui cognoscit plurimum ponendum, si laus eum misericordis potius quam reprehensio dissoluti consecutura est. verum et in iudiciis, etiamsi non toto genere causae, tamen ex parte magna hic locus saepe tractatur. nam et divisio frequens est, etiamsi fecisset, ignoscendum fuisse idque in causis dubiis saepe praevaluit, et epilogi omnes in eadem fere materia versari solent.
 
-sed nonnunquam etiam rei totius hic summa constituta. an constituta. an , Zumpt : constitutam, G: constitute iam A. vero si exheredatum a se filium pater testatus fuerit elogio, propterea quod is meretricem amaverit, non omnis hic erit quaestio, an huic delicto pater debuerit ignoscere et centumviri tribuere debeant veniam? sed etiam in formulis, cum poenariae sunt actiones, ita causam partimur, an commissa sit poena, an exigi debeat. id autem, quod illi viderunt, verum est, reum a iudicibus hoc defensionis modo liberari non posse.
+sed nonnunquam etiam rei totius hic summa constituta. an vero si exheredatum a se filium pater testatus fuerit elogio, propterea quod is meretricem amaverit, non omnis hic erit quaestio, an huic delicto pater debuerit ignoscere et centumviri tribuere debeant veniam? sed etiam in formulis, cum poenariae sunt actiones, ita causam partimur, an commissa sit poena, an exigi debeat. id autem, quod illi viderunt, verum est, reum a iudicibus hoc defensionis modo liberari non posse.
 
 de praemiis autem quaeruntur duo: an ullo sit dignus, qui petit, an tanto; ex duobus, uter dignior; ex pluribus, quis dignissimus. quorum tractatus ex ipso meritorum genere ducuntur. et intuebimur non rem tantum, sive adleganda sive comparanda erit, sed personam quoque; nam et multum interest, tyrannum iuvenis occiderit an senex, vir an femina, alienus an coniunctus;
 
@@ -4311,11 +4311,11 @@ similiter liberalitas a quo profecta sit, refert. nam in paupere gratior quam in
 
 nam coniectura extrinsecus quoque adductas frequenter probationes habet et argumenta ex materia sumit; quale quidque videatur eloquentiae est opus; hic regnat, hic imperat, hic sola vincit. huic parti subiungit Verginius causas abdicationis, dementiae, malae tractationis, orbarum nuptias indicentium. nam et fere sic accidit, inventique sunt, qui has materias officiorum vocarent.
 
-sed alios quoque nonnunquam leges hae recipiunt status. nam et coniectura est aliquando in plerisque horum, cum se vel non fecisse vel bona mente fecisse contendunt Cuius generis exempla sunt multa. et quid sit dementia ac mala tractatio, finitur. nam leges iuris leges iuris, Spalding : iuris leges, MSS. plerumque quaestiones praecurrere solent, sed sed, Spalding : et, MSS. ex quibus causae non fiat status.
+sed alios quoque nonnunquam leges hae recipiunt status. nam et coniectura est aliquando in plerisque horum, cum se vel non fecisse vel bona mente fecisse contendunt Cuius generis exempla sunt multa. et quid sit dementia ac mala tractatio, finitur. nam leges iuris plerumque quaestiones praecurrere solent, sed ex quibus causae non fiat status.
 
-quod tamen facto defendi non poterit, iure nitetur: et quot et quibus causis abdicare non liceat, et in quae crimina malae tractationis actio non non, added by Obrecht. detur, et cui accusare dementiae non permittatur.
+quod tamen facto defendi non poterit, iure nitetur: et quot et quibus causis abdicare non liceat, et in quae crimina malae tractationis actio non detur, et cui accusare dementiae non permittatur.
 
-abdicationum formae sunt duae, altera criminis perfecti, ut si abdicetur raptor, adulter, altera velut pendentis et adhuc in condicione positi, quales sunt, in quibus abdicatur filius, quia non pareat patri. illa semper asperam abdicantis actionem habet; immutabile est enim, quod factum est; haec ex parte blandam et suadenti similem; mavult enim pater pater non abdicare, Spalding : pater abdicare, G. : quam abdicare, A.: pater corrigere quam abdicare, cod. monac and early edd. non abdicare; at pro filiis in utroque genere summissam et ad satisfaciendum compositam.
+abdicationum formae sunt duae, altera criminis perfecti, ut si abdicetur raptor, adulter, altera velut pendentis et adhuc in condicione positi, quales sunt, in quibus abdicatur filius, quia non pareat patri. illa semper asperam abdicantis actionem habet; immutabile est enim, quod factum est; haec ex parte blandam et suadenti similem; mavult enim pater non abdicare; at pro filiis in utroque genere summissam et ad satisfaciendum compositam.
 
 A quo dissensuros scio, qui libenter patres figura laedunt; quod non ausim dicere nunquam esse faciendum, potest enim materia incidere, quae hoc exigat; certe vitandum est, quotiens aliter agi potest. sed de figuris alio libro tractabimus.
 
@@ -4327,19 +4327,19 @@ reus , quotiens causa patietur, debebit esse in defensione moderatus, quia fere 
 
 sed alia quoque multa controversiarum genera in qualitatem cadunt. iniuriarum ; quanquam enim reus aliquando fecisse negat, plerumque tamen haec actio facto atque animo continetur.
 
-de accusatore constituendo, quae iudicia divinationes vocantur; in quo genere Cicero quidem, qui mandantibus sociis Verrem deferebat, deferebat, Halm : defendebant, AG.: accusabat contra eos qui eum defendebant, 2nd hand of A and early edd. hac usus est divisione, spectandum a quo maxime agi velint ii quorum de ultione quaeritur, a quo minime velit is qui accusatur. frequentissimae tamen hae sunt quaestiones,
+de accusatore constituendo, quae iudicia divinationes vocantur; in quo genere Cicero quidem, qui mandantibus sociis Verrem deferebat, hac usus est divisione, spectandum a quo maxime agi velint ii quorum de ultione quaeritur, a quo minime velit is qui accusatur. frequentissimae tamen hae sunt quaestiones,
 
 uter maiores causas habeat, uter plus industriae aut virium sit adlaturus ad accusandum, uter id fide meliore facturus.
 
 tutelae praeterea; in quo iudicio solet quaeri, an alia de re quam de calculis cognosci oporteat, an fidem praestare debeat tantum, non etiam consilium et eventum. cui simile est male gestae procurationis, quae in foro negotiorum gestorum; nam et mandati actio est.
 
-praeter haec finguntur in scholis et inscripti inseripti inscriptum, Caperonnier: scripti scripturn, MSS. maleficii, in quibus aut hoc quaeritur, an inscriptum aliae in uiittiando, added by Spalding. sit aut hoc, an maleficium sit, raro utrumque. male gestae legationis apud Graecos et veris causis frequens, ubi iuris loco quaeri solet, an omnino aliter agere quam mandatum sit liceat, et quo usque sit legatus, quoniam aliae in nuntiando, aliae in renuntiando aliae oin nuntiaando, added by Spalding. sunt, ut in Heio, qui testimonium in Verrem dixerat post perlatam legationem.
+praeter haec finguntur in scholis et inscripti maleficii, in quibus aut hoc quaeritur, an inscriptum sit aut hoc, an maleficium sit, raro utrumque. male gestae legationis apud Graecos et veris causis frequens, ubi iuris loco quaeri solet, an omnino aliter agere quam mandatum sit liceat, et quo usque sit legatus, quoniam aliae in nuntiando, aliae in renuntiando sunt, ut in Heio, qui testimonium in Verrem dixerat post perlatam legationem.
 
 plurimum tamen est in eo, quale sit factum. rei publicae laesae: hinc moventur quidem illae iuris cavillationes, quid sit rem publicam laedere, et, laeserit an non profuerit, et, ab ipso an propter ipsum laesa sit: in facto tamen plurimum est. ingrati quoque, in quo genere quaeritur, an is cum quo agitur acceperit beneficium. quod raro negandum est; ingratus est enim qui negat.
 
-quantum acceperit, an reddiderit, an protinus qui non reddidit ingratus sit, an potuerit reddere, an id, quod exigebatur, debuerit, quo animo sit. simpliciores illae iniusti repudii, sub qua lege controversiae illud proprium habent, quod a parte accusantis defensio est, a a, Spalding : et, MSS. defendentis accusatio.
+quantum acceperit, an reddiderit, an protinus qui non reddidit ingratus sit, an potuerit reddere, an id, quod exigebatur, debuerit, quo animo sit. simpliciores illae iniusti repudii, sub qua lege controversiae illud proprium habent, quod a parte accusantis defensio est, a defendentis accusatio.
 
-praeterea , cum quis rationem mortis in senatu reddit, ubi una quaestio est iuris, an is demum prohibendus sit, qui mori vult ut se legum actionibus subtrahat; cetera qualitatis. finguntur et testamenta, in quibus de sola qualitate qualitate, added by Crist. quaeratur, ut in controversia, quam supra exposui, in qua de parte patrimonii quarta, quam pater dignissimo ex filiis reliquerat, contendunt philosophus, medicus, orator. quod idem accidit, si orbae nuptias indicant pares gradu, et si inter propinquos de idoneo quaeratur.
+praeterea , cum quis rationem mortis in senatu reddit, ubi una quaestio est iuris, an is demum prohibendus sit, qui mori vult ut se legum actionibus subtrahat; cetera qualitatis. finguntur et testamenta, in quibus de sola qualitate quaeratur, ut in controversia, quam supra exposui, in qua de parte patrimonii quarta, quam pater dignissimo ex filiis reliquerat, contendunt philosophus, medicus, orator. quod idem accidit, si orbae nuptias indicant pares gradu, et si inter propinquos de idoneo quaeratur.
 
 sed mihi nec omnes persequi materias in animo est, fingi enim adhuc possunt; nec omnes earum quaestiones, quia positionibus mutantur. hoc tantum admiror Flavum, cuius apud me summa est auctoritas, cum artem scholae tantum componeret, tam anguste materiam qualitatis terminasse.
 
@@ -4353,9 +4353,9 @@ illa quoque, quae ex numero ducitur, pendet ex iure, an Thrasybulo triginta prae
 
 qui neque fecisse se negabit neque aliud esse quod fecerit dicet neque factum defendet, necesse est in suo iure consistat, in quo plerumque actionis est quaestio.
 
-ea non semper, ut quidam putaverunt, iudicium antecedit, qualia sunt praetorum curiosa consilia, cum de iure accusatoris ambigitur; sed in ipsis iudiciis frequentissime versatur. est autem autem, Spalding : enim, MSS. duplex eius disceptationis condicio, quod aut intentio aut praescriptio habet controversiam. ac fuerunt, qui praescriptionis statum facerent, tanquam ea non iisdem omnibus quibus ceterae leges quaestionibus contineretur.
+ea non semper, ut quidam putaverunt, iudicium antecedit, qualia sunt praetorum curiosa consilia, cum de iure accusatoris ambigitur; sed in ipsis iudiciis frequentissime versatur. est autem duplex eius disceptationis condicio, quod aut intentio aut praescriptio habet controversiam. ac fuerunt, qui praescriptionis statum facerent, tanquam ea non iisdem omnibus quibus ceterae leges quaestionibus contineretur.
 
-cum ex praescriptione lis pendet, de ipsa re quaeri non est necesse. ignominioso filius praescribit: de eo solo solo, Regius : loco, G: colo, A. iudicatio est, an liceat. quotiens tamen poterimus, efficiendum est, ut de re quoque iudex bene sentiat; sic enim iuri nostro libentius indulgebit, ut in sponsionibus, quae ex interdictis fiunt, etiam si non proprietatis est quaestio sed tantum possessionis, tamen non solum possedisse nos, sed etiam nostrum possedisse docere oportebit. sed frequentius etiam quaeritur de intentione.
+cum ex praescriptione lis pendet, de ipsa re quaeri non est necesse. ignominioso filius praescribit: de eo solo iudicatio est, an liceat. quotiens tamen poterimus, efficiendum est, ut de re quoque iudex bene sentiat; sic enim iuri nostro libentius indulgebit, ut in sponsionibus, quae ex interdictis fiunt, etiam si non proprietatis est quaestio sed tantum possessionis, tamen non solum possedisse nos, sed etiam nostrum possedisse docere oportebit. sed frequentius etiam quaeritur de intentione.
 
 vir fortis optet, quod volet. nego illi dandum, quidquid optaverit: non habeo praescriptionem, sed tamen voluntate contra verba praescriptionis nodo utor. in utroque autem genere status iidem sunt.
 
@@ -4367,13 +4367,13 @@ scripti et voluntatis frequentissima inter consultos quaestio est, et pars magna
 
 id tum accidit, cum est in lege aliqua obscuritas. in ea aut uterque suam interpretationem confirmat, adversarii subvertit: ut hic, fur quadruplum solvat. duo surripuerunt pariter decem milia; petuntur ab utroque quadragena; illi postulant, ut vicena conferant; nam et actor dicit hoc esse quadruplum quod petat, et rei hoc quod offerant; voluntas quoque utrinque defenditur.
 
-aut , cum de altero intellectu certum est, de altero dubium: ex meretrice natus ne contionetur. quae filium habebat, prostare coepit: prohibetur adolescens contione. nam de eius filio, quae ante partum meretrix fuit, certum est: an eadem huius causa sit, dubium est, quia ex hac natus est, antequam meretrix esset. antequa esset, Regius : et haec. .. eat, MSS.
+aut , cum de altero intellectu certum est, de altero dubium: ex meretrice natus ne contionetur. quae filium habebat, prostare coepit: prohibetur adolescens contione. nam de eius filio, quae ante partum meretrix fuit, certum est: an eadem huius causa sit, dubium est, quia ex hac natus est, antequam meretrix esset.
 
 solet et illud quaeri, quo referatur, quod scriptum est, bis de eadem re ne sit actio; id est, hoc bis ad actorem an ad actionem? haec ex iure obscuro. alterum genus est ex manifesto; quod qui solum viderunt, hunc statum plani et voluntatis appellarunt. in hoc altera pars scripto nititur, altera voluntate. Sed contra scriptum tribus generibus occurritur.
 
 unum est, in quo ipso patet, semper id servari non posse: liberi parentis alant ad vinciantur; non enim adligabitur infans. hic erit ad alia transitus, et divisio, num quisquis non aluerit, num hic propter hoc.
 
-secundum Secundum, Christ : quidam, MSS. tale genus controversiarum, in quo nullum argumentum est, quod ex lege ipsa peti possit, sed de eo tantum, de quo lis est, quaerendum est. est, Halm : sit, MSS. Peregrinus, si murum ascenderit, capite puniatur. cum hostes murum ascendissent, peregrinus eos depulit; petitur ad supplicium.
+secundum tale genus controversiarum, in quo nullum argumentum est, quod ex lege ipsa peti possit, sed de eo tantum, de quo lis est, quaerendum est. Peregrinus, si murum ascenderit, capite puniatur. cum hostes murum ascendissent, peregrinus eos depulit; petitur ad supplicium.
 
 non erunt hic separatae quaestiones, an quisquis, an hic, quia nullum potest adferri argumentum contra scriptum vehementius eo quod in lite est; sed hoc tantum, an ne servandae quidem civitatis causa. ergo aequitate et voluntate pugnandum. fieri tamen potest, ut ex aliis legibus exempla ducamus, per quae appareat semper stari scripto non posse, ut Cicero pro Caecina fecit.
 
@@ -4387,15 +4387,15 @@ id quoque, quod huic contrarium est, accidit nuper, ut esset scriptum, quod appa
 
 sub hoc statu generales sunt quaestiones, scripto an voluntate standum sit, quae fuerit scribentis voluntas; tractatus omnes qualitatis aut coniecturae, de quibus satis dictum arbitror.
 
-proximum est de legibus contrariis dicere, quia inter omnes artium scriptores constitit, in antinomia duos esse scripti et voluntatis status; neque immerito; quia, cum lex legi obstat, et obstat et, Halm : obstet, MSS. utrinque contra scriptum dicitur et quaestio est de voluntate; in utraque id ambigitur, an utique illa lege sit utendum.
+proximum est de legibus contrariis dicere, quia inter omnes artium scriptores constitit, in antinomia duos esse scripti et voluntatis status; neque immerito; quia, cum lex legi obstat, et utrinque contra scriptum dicitur et quaestio est de voluntate; in utraque id ambigitur, an utique illa lege sit utendum.
 
 omnibus autem manifestum est nunquam esse legem legi contrariam iure ipso, quia, si diversum ius esset, alterum altero abrogaretur, sed eas casu collidi et eventu.
 
 colliduntur autem aut pares inter se, ut si optio tyrannicidae et viri fortis comparentur, utrique data quod velit petendi potestate; hic meritorum, temporis, praemii collatio est; aut secum ipsae, ut duorum fortium, duorum tyrannicidarum, duarum raptarum, in quibus non potest esse alia quaestio, quam temporis, utra prior sit, aut qualitatis, utra iustior sit petitio.
 
-diversae quoque leges confligunt aut similes aut impares. aut impares. diversae , Christ : ut duae, AG. diversae , quibus etiam citra adversam legem contradici possit, ut in hac controversia: magistratus ab arce ne discedat; vir fortis optet quod volet: impunitatem magistratus petit. vir fortis petit, added by Christ: it is possible that no insertion is necessary, the heading Magistratus discedat being considered by Q. as sufficient indication of a familiar theme. vel alia nulla obstante quaeri potest, vir fortis an, quidquid optarit, accipere debeat. et in legem legem, added by Halm. magistratus multa dicentur, quibus scriptum expugnatur; si incendium in arce fuerit, si in hostes decurrendum.
+diversae quoque leges confligunt aut similes aut impares. diversae , quibus etiam citra adversam legem contradici possit, ut in hac controversia: magistratus ab arce ne discedat; vir fortis optet quod volet: impunitatem magistratus petit. vel alia nulla obstante quaeri potest, vir fortis an, quidquid optarit, accipere debeat. et in legem magistratus multa dicentur, quibus scriptum expugnatur; si incendium in arce fuerit, si in hostes decurrendum.
 
-similes , contra quas nihil opponi potest nisi lex altera: tyrannicidae imago in gymnasio ponatur; contra, mulieris imago in gymnasio ponatur; contra gymnasio, added by Regius. ne ponatur. mulier tyrannum occidit. nam neque mulieris imago ullo alio casu poni potest nec tyrannicidae ullo alio casu summoveri.
+similes , contra quas nihil opponi potest nisi lex altera: tyrannicidae imago in gymnasio ponatur; contra, mulieris imago in gymnasio ne ponatur. mulier tyrannum occidit. nam neque mulieris imago ullo alio casu poni potest nec tyrannicidae ullo alio casu summoveri.
 
 impares sunt, cum alteri multa opponi possunt, alteri nihil nisi quod in lite est: ut cum vir fortis impunitatem desertoris petit. nam contra legem viri fortis, ut supra ostendi, multa dicuntur; adversus desertores scripta non potest nisi optione subverti.
 
@@ -4403,13 +4403,13 @@ item aut confessum ex utraque parte ius est aut dubium. si confessum est, haec f
 
 solet tractari et, utra sit antiquior, sed velut potentissimum, utra minus perdat; ut in desertore et viro forti, quod illo non occiso lex tota tollatur, occiso, sit reliqua viro forti alia optio. plurimum tamen est in hoc, utrum fieri sit melius atque aequius; de quo nihil praecipi nisi proposita materia potest.
 
-si dubium, aut alteri aut invicem utrique de iure fit controversia, ut in re tali: patri in filium, patrono in libertum manus iniectio sit; liberti heredem sequantur. liberti filium quidam fecit heredem: invicem petitur manus iniectio; et pater dicit sibi ius in filium esse, et patronus dicit et patrons, added by Halm. negat ius patris illi fuisse, quia ipse in manu patroni fuerit.
+si dubium, aut alteri aut invicem utrique de iure fit controversia, ut in re tali: patri in filium, patrono in libertum manus iniectio sit; liberti heredem sequantur. liberti filium quidam fecit heredem: invicem petitur manus iniectio; et pater dicit sibi ius in filium esse, et patronus negat ius patris illi fuisse, quia ipse in manu patroni fuerit.
 
 duplices leges sicut duae colliduntur: ut nothus ante legitimum natus, legitimus sit; post legitimum, tantum civis. quod de legibus, idem de senatus consultis dictum; quae si aut inter se pugnent aut obstent legibus, non tamen aliud sit eius status nomen.
 
 syllogismus habet aliquid simile scripto et voluntati, quia semper pars in eo altera scripto nititur, sed hoc interest, quod illic dicitur contra scriptum, hic supra scriptum; illic qui verba defendit, hoc agit ut fiat utique quod scriptum est; hic, ne aliud quam scriptum est. ei nonnulla etiam cum finitione coniunctio: nam saepe, si finitio infirma est, in syllogismum delabitur.
 
-sit enim lex: venefica capite puniatur. saepe se verberanti marito uxor amatorium se verberanti marito uxor amatorium, victor (p. 373, II.): severantia moritorium, G: se rantis maritorium, A. dedit; eundem repudiavit; per propinquos rogata ut rediret non est reversa; suspendit se maritus. mulier veneficii rea est. fortissima est actio dicentis amatorium venenum esse. id erit finitio; quod si parum valebit, fiet syllogismus, ad quem, velut remissa priore contentione, veniemus, an proinde puniri debeat, ac si virum veneno necasset?
+sit enim lex: venefica capite puniatur. saepe se verberanti marito uxor amatorium dedit; eundem repudiavit; per propinquos rogata ut rediret non est reversa; suspendit se maritus. mulier veneficii rea est. fortissima est actio dicentis amatorium venenum esse. id erit finitio; quod si parum valebit, fiet syllogismus, ad quem, velut remissa priore contentione, veniemus, an proinde puniri debeat, ac si virum veneno necasset?
 
 ergo hic status ducit ex eo quod scriptum est id quod incertum est; quod quoniam ratione colligitur, ratiocinativus dicitur. in has autem fere species venit an, quod semel ius est, idem et saepius. incesti damnata et praecipitata de saxo vixit; repetitur. an , quod in uno, et in pluribus. qui duos uno tempore tyrannos occidit, duo praemia petit. an quod ante, et postea.
 
@@ -4417,7 +4417,7 @@ raptor profugit, rapta nupsit, reverso illo petit optionem. an , quod in toto, i
 
 in his syllogismus et scripto nititur; nam satis cautum esse dicit. postulo , ut praecipitetur incesta; lex est; et rapta optionem petit, et in ore lanae sunt, similiter alia. sed quia responderi potest,
 
-non est scriptum, ut bis praecipitetur damnata, ut quandoque rapta optet, ut tyrannicida duo praemia accipiat, nihil de vomere cautum, nihil de ovibus: ex eo, quod manifestum est, colligitur quod dubium est. maioris pugnae est ex scripto ducere quod scriptum non est; an, quia hoc, et hoc. et hoc, added by 2nd hand of A. qui patrem occiderit, culleo insuatur: matrem occidit. ex domo in ius educere ne liceat: ex tabernaculo eduxit. in hoc genere haec quaeruntur,
+non est scriptum, ut bis praecipitetur damnata, ut quandoque rapta optet, ut tyrannicida duo praemia accipiat, nihil de vomere cautum, nihil de ovibus: ex eo, quod manifestum est, colligitur quod dubium est. maioris pugnae est ex scripto ducere quod scriptum non est; an, quia hoc, et hoc. qui patrem occiderit, culleo insuatur: matrem occidit. ex domo in ius educere ne liceat: ex tabernaculo eduxit. in hoc genere haec quaeruntur,
 
 an, quotiens propria lex non est, simili sit utendum, an id de quo agitur ei de quo scriptum est simile sit. simile autem et maius est et par et minus. in illo priore, an satis lege cautum sit, an, etsi parum cautum est, et hoc sit utendum. in utroque de voluntate legumlatoris. sed de aequo tractatus potentissimi.
 
@@ -4429,7 +4429,7 @@ quae ambiguitas plurimis modis accidit. unde fere lites, praecipue ex testamenti
 
 alterum est, in quo alia integro verbo significatio est, alia diviso, ut ingenua et armamentum et Corvinum, ineptae sane cavillationis, ex qua tamen Graeci controversias ducunt: inde enim αὐλητρίς illa vulgata, cum quaeritur, utrum aula, quae ter ceciderit, an tibicina, si ceciderit, debeat publicari.
 
-tertia est ex compositis, ut si quis corpus suum in culto loco poni iubeat, circaque monumentum multum agri ab heredibus in tutelam cinerum, ut solent, leget, sit litis occasio cultum locum dixerit an incultum. locum incultum, added by Zumpt.
+tertia est ex compositis, ut si quis corpus suum in culto loco poni iubeat, circaque monumentum multum agri ab heredibus in tutelam cinerum, ut solent, leget, sit litis occasio cultum locum dixerit an incultum.
 
 sic apud Graecos contendunt Λέων et Πανταλέων , cum scriptura dubia est, bona omnia Λέοντι an bona Πανταλέοντι relicta sint. in coniunctis plus ambiguitatis est. fit autem per casus, ut aio te, Aeacida, Romanos sincere posse.
 
@@ -4443,31 +4443,31 @@ utri duorum antecedentium sermo subiunctus sit, in dubio est: unde et controvers
 
 accusativi geminatione facta amphibolia solvitur ablativo, ut illud, Lachetem audivi percussisse Demean. fiat a Lachete percussum Demean. sed ablativo ipsi, ut in primo diximus, inest naturalis amphibolia. caelo decurrit aperto: utrum per apertum caelum, an cum apertum esset.
 
-divisio respiratione et mora constat: statuam, deinde auream hastam; vel statuam auream, deinde hastam. adiectio talis est, argentum, quod elegerit ipse, ut heres intelligatur, vel ipsa, ut uxor. adiectione facta amphibolia, qualis sit, Nos Nos, radius : Nunc, MSS.: Hunc, Spalding . flentes illos deprehendimus, detractione solvetur.
+divisio respiratione et mora constat: statuam, deinde auream hastam; vel statuam auream, deinde hastam. adiectio talis est, argentum, quod elegerit ipse, ut heres intelligatur, vel ipsa, ut uxor. adiectione facta amphibolia, qualis sit, Nos flentes illos deprehendimus, detractione solvetur.
 
-pluribus verbis emendandum, ubi est id, quod quo referatur dubium est, et ipsum ipsum, later MSS.: ipse est, AG. est ambiguum. heres meus dare illi damnas esto omnia sua. in quod genus incidit Cicero loquens de C. Fannio; is soceri instituto, quem, quia cooptatus in augurum collegium non erat, non admodum diligebat, praesertim cum ille Q. Scaevolam sibi minorem natu generum praetulisset. nam sibi et ad socerum referri et ad Fannium potest.
+pluribus verbis emendandum, ubi est id, quod quo referatur dubium est, et ipsum est ambiguum. heres meus dare illi damnas esto omnia sua. in quod genus incidit Cicero loquens de C. Fannio; is soceri instituto, quem, quia cooptatus in augurum collegium non erat, non admodum diligebat, praesertim cum ille Q. Scaevolam sibi minorem natu generum praetulisset. nam sibi et ad socerum referri et ad Fannium potest.
 
-productio quoque in scripto et correptio in dubio relicta causa est ambiguitatis, ut in hoc, Cato . aliud enim ostendit brevis secunda syllaba casu nominativo, aliud eadem syllaba producta casu dativo aut ablativo. aliud eadem ablativo, added by Regius. Plurimae praeterea sunt aliae species, quas persequi nihil necesse est.
+productio quoque in scripto et correptio in dubio relicta causa est ambiguitatis, ut in hoc, Cato . aliud enim ostendit brevis secunda syllaba casu nominativo, aliud eadem syllaba producta casu dativo aut ablativo. Plurimae praeterea sunt aliae species, quas persequi nihil necesse est.
 
 nec refert, quo modo sit facta amphibolia aut quo resolvatur. duas enim res significari manifestum est et, quod ad scriptum vocemve pertinet, in utramque partem par est. ideoque frustra praecipitur, ut in hoc statu vocem ipsam ad nostram partem conemur vertere. nam , si id fieri potest, amphibolia non est. amphiboliae autem omnis erit in his quaestio;
 
 aliquando, uter sit secundum naturam magis sermo, semper, utrum sit aequius, utrum is, qui scripsit ac dixit, voluerit. quarum in utramque partem satis ex his, quae de coniectura et qualitate diximus, praeceptum est.
 
-est autem quaedam inter hos status cognatio. nam et in finitione, quae sit voluntas nominis, quaeritur, et in syllogismo, qui secundus a finitione status est, after est AG read quae, which is expunged by Regius. spectatur quid voluerit scriptor; et contrarias leges duos esse scripti et voluntatis status apparet. rursus et finitio quodammodo est amphibolia, cum in duas partes diducatur intellectus nominis.
+est autem quaedam inter hos status cognatio. nam et in finitione, quae sit voluntas nominis, quaeritur, et in syllogismo, qui secundus a finitione status est, spectatur quid voluerit scriptor; et contrarias leges duos esse scripti et voluntatis status apparet. rursus et finitio quodammodo est amphibolia, cum in duas partes diducatur intellectus nominis.
 
-scriptum et voluntas habet in verbis iuris iuris, Spalding :H ocis, A.: iocis, G. quaestionem, quod idem antinomia petitur. ideoque omnia haec quidam scriptum et voluntatem esse dixerunt, alii in scripto et voluntate amphiboliam esse, quae facit quaestionem. sed distincta sunt; aliud est enim obscurum ius, aliud ambiguum.
+scriptum et voluntas habet in verbis iuris quaestionem, quod idem antinomia petitur. ideoque omnia haec quidam scriptum et voluntatem esse dixerunt, alii in scripto et voluntate amphiboliam esse, quae facit quaestionem. sed distincta sunt; aliud est enim obscurum ius, aliud ambiguum.
 
 igitur finitio in natura ipsa nominis quaestionem habet generalem, et quae esse etiam citra complexum causae possit; scriptum et voluntas de eo disputat iure quod est in lege, syllogismus de eo quod non est. amphiboliae lis in diversum trahit, legum contrariarum ex diverso pugna est.
 
 neque immerito et recepta est a doctissimis haec differentia et apud plurimos ac prudentissimos durat. et de hoc quidem genere dispositionis, etiamsi non omnia, tradi tamen aliqua potuerunt.
 
-sunt alia quae, nisi proposita de qua dicendum est materia, viam docendi non praebeant. non enim causa tantum tantum, added by Halm. universa in quaestiones ac locos diducenda diducenda, Regius : dicenda, AG. est, sed hae ipsae partes habent rursus ordinem suum. nam et in prooemio primum est aliquid et secundum ac deinceps, et quaestio omnis ac locus habet suam dispositionem ut theses etiam simplices. nisi nisi, Obrecht : si, MSS. forte satis erit dividendi peritus,
+sunt alia quae, nisi proposita de qua dicendum est materia, viam docendi non praebeant. non enim causa tantum universa in quaestiones ac locos diducenda est, sed hae ipsae partes habent rursus ordinem suum. nam et in prooemio primum est aliquid et secundum ac deinceps, et quaestio omnis ac locus habet suam dispositionem ut theses etiam simplices. nisi forte satis erit dividendi peritus,
 
-qui controversiam in haec diduxerit, diduxerit, Regius : dixerit, MSS. an omne praemium viro forti dandum sit, an ex privato, an nuptiae, an eius quae nupta sit, an hae; deinde, cum fuerit de prima quaestione dicendum, passim et ut quidque in mentem veniet miscuerit, non primum in ea scierit esse tractandum,
+qui controversiam in haec diduxerit, an omne praemium viro forti dandum sit, an ex privato, an nuptiae, an eius quae nupta sit, an hae; deinde, cum fuerit de prima quaestione dicendum, passim et ut quidque in mentem veniet miscuerit, non primum in ea scierit esse tractandum,
 
 verbis legis standum sit an voluntate, huius ipsius particulae aliquod initium fecerit, deinde proxima subnectens struxerit orationem, ut pars hominis est manus, eius digiti, illorum quoque articuli. hoc est quod scriptor demonstrare non possit, nisi certa definitaque materia.
 
-sed quid una faciet aut altera, quin immo centum ac mille in re infinita in re infinita, Rollin : in re finita quae materia in se finita, G: in re finitaque materia ars finita, A. ? Praeceptoris est, in alio atque alio genere cotidie ostendere, quis ordo sit rerum et quae copulatio, ut paulatim fiat usus et ad similia transitus. tradi enim omnia, quae ars efficit, non possunt. nam quis pictor omnia,
+sed quid una faciet aut altera, quin immo centum ac mille in re infinita ? Praeceptoris est, in alio atque alio genere cotidie ostendere, quis ordo sit rerum et quae copulatio, ut paulatim fiat usus et ad similia transitus. tradi enim omnia, quae ars efficit, non possunt. nam quis pictor omnia,
 
 quae in rerum natura sunt, adumbrare didicit? sed percepta semel imitandi ratione adsimulabit quidquid acceperit. quis non faber vasculum aliquod, quale nunquam viderat, fecit?
 
@@ -4479,13 +4479,13 @@ quando a nostris, quando ab adversariorum propositionibus incipiamus, quando a f
 
 si multiplices causae erunt, quis ordo faciendus, quae testimonia tabulaeve cuiusque generis in actione recitandae, quae reservandae. haec est velut imperatoria virtus copias suas partientis ad casus proeliorum, retinentis partes per castella tuenda custodiendasve urbes, petendos commeatus, obsidenda itinera, mari denique ac terra dividentis. sed haec in oratione praestabit,
 
-cui omnia adfuerint, natura, doctrina, studium. quare nemo exspectet, ut alieno tantum labore sit disertus. vigilandum , durandum, durandum, Bonnell: dicendum, A.: dicat iterum, G. enitendum, pallendum est, facienda sua cuique vis, suus usus, sua ratio, non respiciendum ad haec, sed in promptu habenda, nec tanquam tradita sed tanquam innata.
+cui omnia adfuerint, natura, doctrina, studium. quare nemo exspectet, ut alieno tantum labore sit disertus. vigilandum , durandum, enitendum, pallendum est, facienda sua cuique vis, suus usus, sua ratio, non respiciendum ad haec, sed in promptu habenda, nec tanquam tradita sed tanquam innata.
 
 nam via demonstrari potest, velocitas sua cuique est; verum ars satis praestat, si copias eloquentiae ponit in medio; nostrum est uti eis scire.
 
 neque enim partium est demum dispositio, sed in his ipsis primus aliquis sensus et secundus et tertius; qui non modo ut sint ordine collocati, laborandum est, sed ut inter se vincti atque ita cohaerentes, ne commissura perluceat; corpus sit, non membra.
 
-quod ita continget, si et quid cuique conveniat viderimus et verba verbis applicarimus non pugnantia, sed quae invicem complectantur. ita res non diversae distantibus ex locis quasi invicem ignotae collidentur, sed aliqua societate cum prioribus ac sequentibus copulatae tenebuntur, copulatae tenebuntur, Halm : scopula tenebunt, G: se copula tenebunt, A (se 2nd hand ). ac videbitur non solum composita oratio, sed etiam continua. verum longius fortasse progredior fallente transitu et a dispositione ad elocutionis praecepta labor, quae proximus liber inchoabit.
+quod ita continget, si et quid cuique conveniat viderimus et verba verbis applicarimus non pugnantia, sed quae invicem complectantur. ita res non diversae distantibus ex locis quasi invicem ignotae collidentur, sed aliqua societate cum prioribus ac sequentibus copulatae tenebuntur, ac videbitur non solum composita oratio, sed etiam continua. verum longius fortasse progredior fallente transitu et a dispositione ad elocutionis praecepta labor, quae proximus liber inchoabit.
 
 his fere, quae in proximos quinque libros collata sunt, ratio inveniendi atque inventa disponendi continetur, quam ut per omnes numeros penitus cognoscere ad summam scientiae necessarium est, ita incipientibus brevius ac simplicius tradi magis convenit.
 
@@ -4497,25 +4497,25 @@ mox cum robore dicendi crescet etiam eruditio. iidem primo solum iter credant es
 
 itaque in toto artis huiusce tractatu difficilius est iudicare quid doceas quam, cum iudicaris, docere, praecipueque in duabus his partibus perquam sunt pauca, circa quae si is qui instituitur non repugnaverit, pronum ad cetera habiturus est cursum.
 
-nempe enim plurimum in hoc laboris exhausimus, ut ostenderemus rhetoricen bene dicendi scientiam et utilem et artem et virtutem esse; materiam eius res omnes de quibus dicendum esset; eas in tribus fere generibus, demonstrativo, deliberative, iudicialique reperiri; orationem porro omnem constare rebus et verbis; in rebus intuendam inventionem, in verbis elocutionem, in utroque utroque, Halm : utraque, AG. collocationem, quae memoria conplecteretur, actio commendaret. oratoris officium docendi,
+nempe enim plurimum in hoc laboris exhausimus, ut ostenderemus rhetoricen bene dicendi scientiam et utilem et artem et virtutem esse; materiam eius res omnes de quibus dicendum esset; eas in tribus fere generibus, demonstrativo, deliberative, iudicialique reperiri; orationem porro omnem constare rebus et verbis; in rebus intuendam inventionem, in verbis elocutionem, in utroque collocationem, quae memoria conplecteretur, actio commendaret. oratoris officium docendi,
 
 movendi, delectandi partibus contineri, ex quibus ad docendum expositio et argumentatio, ad movendum adfectus pertinerent, quos per omnem quidem causam sed maxime tamen in ingressu ac fine dominari. nam delectationem, quamvis in utroque sit eorum, magis tamen proprias in elocutione partes habere.
 
 quaestiones alias infinitas, alias finitas quae personis, temporibus, locis continerentur. in omni porro materia tria esse quaerenda, an sit, quid sit, quale sit. his adiiciebamus demonstrativam laude ac vituperatione constare. in ea quae ab ipso de quo diceremus, quae post eum acta essent, intuendum. hoc opus tractatu honestorum utiliumque constare.
 
-suasoriis accedere tertiam partem ex coniectura, possetne fieri et an esset futurum de quo deliberaretur. hic praecipue diximus spectandum, quis, apud quem, quid diceret. iudicialium causarum alias in singulis, alias in pluribus controversiis consistere, et in quibusdam intentionem modo stature facere, modo depulsionem; statum depulsionem, added by Happel, following Schütz depulsionem porro omnem infitiatione duplici, factumne et an hoc factum esset, praeterea defensione ac translatione constare.
+suasoriis accedere tertiam partem ex coniectura, possetne fieri et an esset futurum de quo deliberaretur. hic praecipue diximus spectandum, quis, apud quem, quid diceret. iudicialium causarum alias in singulis, alias in pluribus controversiis consistere, et in quibusdam intentionem modo stature facere, modo depulsionem; depulsionem porro omnem infitiatione duplici, factumne et an hoc factum esset, praeterea defensione ac translatione constare.
 
-quaestionem aut ex scripto esse aut ex facto; facto, facto, added by Spalding. de rerum fide, proprietate, qualitate; scripto, de verborum vi aut voluntate, in quibus vis tum causarum tum actionum inspici soleat, quae aut scripti et voluntatis aut ratiocinativa aut ambiguitatis aut legum contrariarum specie continentur.
+quaestionem aut ex scripto esse aut ex facto; facto, de rerum fide, proprietate, qualitate; scripto, de verborum vi aut voluntate, in quibus vis tum causarum tum actionum inspici soleat, quae aut scripti et voluntatis aut ratiocinativa aut ambiguitatis aut legum contrariarum specie continentur.
 
-in omni porro causa iudiciali quinque esse partes, quarum exordio conciliari audientem, narratione doceri, probatione doceri, probatione, added by Meister. proposita confirmari, refutatione contra dicta dissolvi, peroratione contra dicta, added by Halm: dissolvi, peroratione, added by Aldine edn. aut memoriam refici aut animos moveri.
+in omni porro causa iudiciali quinque esse partes, quarum exordio conciliari audientem, narratione doceri, probatione proposita confirmari, refutatione contra dicta dissolvi, peroratione aut memoriam refici aut animos moveri.
 
-his argumentandi et adficiendi locos et quibus generibus concitari, placari, resolvi iudices oporteret, adiecimus. accessit ratio divisionis. credere modo qui discet velit materiam quandam variam esse, materiam quandam variam esse, Happel : certa quaedam varia est and the like, MSS. et in qua multa etiam sine doctrina praestare debeat per se ipsa natura, ut haec de quibus dixi non tam inventa a praeceptoribus quam cum fierent observata esse videantur.
+his argumentandi et adficiendi locos et quibus generibus concitari, placari, resolvi iudices oporteret, adiecimus. accessit ratio divisionis. credere modo qui discet velit materiam quandam variam esse, et in qua multa etiam sine doctrina praestare debeat per se ipsa natura, ut haec de quibus dixi non tam inventa a praeceptoribus quam cum fierent observata esse videantur.
 
 plus exigunt laboris et curae quae sequuntur. hinc enim iam elocutionis rationem tractabimus, partem operis, ut inter omnes oratores convenit, difficillimam. nam et M. Antonius, cuius supra mentionem habuimus, cum a se disertos visos esse multos ait, eloquentem neminem: diserto satis putat dicere quae oporteat, ornate autem dicere proprium esse eloquentissimi.
 
 quae virtus si usque ad eum in nullo reperta est, ac ne in ipso quidem aut L. Crasso, certum est et in his et in prioribus eam desideratam, quia difficillima fuit. et Marcus Tullius inventionem quidem ac dispositionem prudentis hominis putat,
 
-eloquentiam oratoris, ideoque praecipue circa praecepta partis huius laboravit. quod eum merito fecisse etiam ipso rei, de qua loquimur, nomine palam declaratur. eloqui enim after enim the MSS. give hoc which is deleted by Gesner. est omnia, quae mente conceperis, promere atque ad audientes perferre; sine quo supervacua sunt priora et similia gladio condito atque intra vaginam suam haerenti.
+eloquentiam oratoris, ideoque praecipue circa praecepta partis huius laboravit. quod eum merito fecisse etiam ipso rei, de qua loquimur, nomine palam declaratur. eloqui enim est omnia, quae mente conceperis, promere atque ad audientes perferre; sine quo supervacua sunt priora et similia gladio condito atque intra vaginam suam haerenti.
 
 hoc itaque maxime docetur, hoc nullus nisi arte adsequi potest, hic studium plurimum adhibendum, hoc exercitatio petit, hoc imitatio, hic omnis aetas consumitur, hoc maxime orator oratore praestantior, hoc genera ipsa dicendi alia alia potiora.
 
@@ -4531,7 +4531,7 @@ nam plerumque optima rebus cohaerent et cernuntur suo lumine; at nos quaerimus i
 
 maiore animo aggredienda eloquentia est, quae si toto corpore valet, ungues polire et capillum reponere non existimabit ad curam suam pertinere. sed evenit plerumque ut in hac diligentia deterior etiam fiat oratio, primum,
 
-quia sunt optima minime arcessita et simplicibus atque ab ipsa veritate profectis similia. nam illa, quae curam fatentur et ficta atque composita videri etiam volunt, nec gratiam consequuntur et fidem amittunt propter id quod sensus obumbrantur et velut laeto gramine sata strangulantur. obumbrantur strangulantur, Spalding : obumbrant . . stragulant, MSS.
+quia sunt optima minime arcessita et simplicibus atque ab ipsa veritate profectis similia. nam illa, quae curam fatentur et ficta atque composita videri etiam volunt, nec gratiam consequuntur et fidem amittunt propter id quod sensus obumbrantur et velut laeto gramine sata strangulantur.
 
 nam et quod recte dici potest circumimus amore verborum et quod satis dictum est repetimus et quod uno verbo patet pluribus oneramus et pleraque significare melius putamus quam dicere. quid quod nihil iam proprium placet, dum parum creditur disertum quod et alius dixisset?
 
@@ -4543,11 +4543,11 @@ atqui plerosque videas haerentes circa singula et dum inveniunt et dum inventa p
 
 miser enim et, ut sic dicam, pauper orator est qui nullum verbum aequo animo perdere potest. sed ne perdet quidem, qui rationem loquendi primum cognoverit, tum lectione multa et idonea copiosam sibi verborum supellectilem compararit et huic adhibuerit artem collocandi, deinde haec omnia exercitatione plurima roborarit, ut semper in promptu sint et ante oculos.
 
-namque ei qui id fecerit simul ei qui fecerit, simul, Halm : hii quid fecerit sic, G: : illi qui id fecerit sic, A. (illi qui id, 2nd hand ). res cum suis nominibus occurrent. sed opus est studio praecedente et acquisita facultate et quasi reposita. namque ista quaerendi, iudicandi, comparandi anxietas, dum discimus, adhibenda est, non dum dicimus. alioqui sicut, qui patrimonium non pararunt, sub diem quaerunt, ita in oratione, qui non satis laboravit.
+namque ei qui id fecerit simul res cum suis nominibus occurrent. sed opus est studio praecedente et acquisita facultate et quasi reposita. namque ista quaerendi, iudicandi, comparandi anxietas, dum discimus, adhibenda est, non dum dicimus. alioqui sicut, qui patrimonium non pararunt, sub diem quaerunt, ita in oratione, qui non satis laboravit.
 
 sin praeparata dicendi vis fuerit, erunt in officio, non ut requisita respondere, sed ut semper sensibus inhaerere videantur atque eos ut umbra corpus sequi.
 
-sed sequi. sed , Halm : sequis,.: sequitur, A. in hac ipsa cura est aliquid satis. nam cum Latina, significantia, ornata, cum apte sunt collocata, quid amplius laboremus? quibusdam tamen nullus est finis calumniandi se et cum singulis paene syllabis commoriendi, qui etiam, cum optima sunt reperta, quaerunt aliquid quod sit magis antiquum, remotum, inopinatum, nec intelligunt iacere sensus in oratione, in qua verba laudantur.
+sed in hac ipsa cura est aliquid satis. nam cum Latina, significantia, ornata, cum apte sunt collocata, quid amplius laboremus? quibusdam tamen nullus est finis calumniandi se et cum singulis paene syllabis commoriendi, qui etiam, cum optima sunt reperta, quaerunt aliquid quod sit magis antiquum, remotum, inopinatum, nec intelligunt iacere sensus in oratione, in qua verba laudantur.
 
 sit igitur cura elocutionis quam maxima, dum sciamus tamen nihil verborum causa esse faciendun, cum verba ipsa rerum gratia sint reperta; quorum ea sunt maxime probabilia, quae sensum animi nostri optime promunt atque in animis iudicum quod nos volumus efficiunt.
 
@@ -4561,9 +4561,9 @@ et in Tito Livio, mirae facundiae viro, putat inesse Pollio Asinius quandam Pata
 
 perspicuitas in verbis praecipuam habet proprietatem, sed proprietas ipsa non simpliciter accipitur. primus enim intellectus est sua cuiusque rei appellatio, qua non semper utemur; nam et obscena vitabimus et sordida et humilia.
 
-sunt autem humilia infra dignitatem rerum aut ordinis. in quo vitio cavendo non mediocriter errare quidam solent, qui omnia quae sunt in usu, in, Regius : sine, MSS. etiamsi causae necessitas postulet, reformidant; ut ille, qui in actione Hibericas herbas, se solo nequiquam intelligente, dicebat, nisi irridens hanc vanitatem Cassius Severus spartum dicere eum velle indicasset.
+sunt autem humilia infra dignitatem rerum aut ordinis. in quo vitio cavendo non mediocriter errare quidam solent, qui omnia quae sunt in usu, etiamsi causae necessitas postulet, reformidant; ut ille, qui in actione Hibericas herbas, se solo nequiquam intelligente, dicebat, nisi irridens hanc vanitatem Cassius Severus spartum dicere eum velle indicasset.
 
-nec video quare clarus orator duratos muria pisces nitidius esse crediderit quam ipsum id quod vitabat. vitabat, Aldine ed.: videbat, MSS. In hac autem proprietatis specie, quae nominibus ipsis cuiusque rei utitur, nulla virtus est, at quod ei contrarium est, vitium. id apud nos improprium, ἄκυρον apud Graecos vocatur, quale est,
+nec video quare clarus orator duratos muria pisces nitidius esse crediderit quam ipsum id quod vitabat. In hac autem proprietatis specie, quae nominibus ipsis cuiusque rei utitur, nulla virtus est, at quod ei contrarium est, vitium. id apud nos improprium, ἄκυρον apud Graecos vocatur, quale est,
 
 tantum sperare dolorem, aut, quod in oratione Dolabellae emendatum a Cicerone adnotavi, mortem ferre, aut, qualia nunc laudantur a quibusdam, quorum est, de cruce verba ceciderunt. non tamen quidquid non erit proprium, protinus et improprii vitio laborabit, quia primum omnium multa sunt et Graece et Latine non denominata.
 
@@ -4581,11 +4581,11 @@ in quo modo illud quoque est a quibusdam traditum proprii genus ex appositis (ep
 
 etiam quae bene translata sunt propria dici solent. interim autem quae sunt in quoque praecipua proprii locum accipiunt, ut Fabius inter plures imperatorias virtutes cunctator est appellatus. possunt videri verba, quae plus significant quam eloquuntur, in parte ponenda perspicuitatis; intellectum enim adiuvant. ego tamen libentius emphasim retulerim ad ornatum orationis, quia non ut intelligatur efficit, sed ut plus intelligatur.
 
-at obscuritas fit verbis iam iam, Halm : etiam, AG. ab usu remotis: ut si commentarios quis pontificum et vetustissima foedera et exoletos scrutatus auctores id ipsum petat ex his quae inde contraxerit, quod non intelliguntur. hinc enim aliqui famam eruditionis adfectant, ut quaedam soli scire videantur.
+at obscuritas fit verbis iam ab usu remotis: ut si commentarios quis pontificum et vetustissima foedera et exoletos scrutatus auctores id ipsum petat ex his quae inde contraxerit, quod non intelliguntur. hinc enim aliqui famam eruditionis adfectant, ut quaedam soli scire videantur.
 
-fallunt etiam verba vel regionibus quibusdam magis familiaria vel artium propria, ut Atabulus ventus et navis saccaria et in malo cosanum. The meaning is not known and no satisfactory emendation has been made. quae vel vitanda apud iudicem ignarum significationum earum vel interpretanda sunt, sicut in his, quae homonyma vocantur: ut, taurus animal sit an mons an signum in coelo an nomen hominis an radix arboris, nisi distinctum non intelligetur.
+fallunt etiam verba vel regionibus quibusdam magis familiaria vel artium propria, ut Atabulus ventus et navis saccaria et in malo cosanum. quae vel vitanda apud iudicem ignarum significationum earum vel interpretanda sunt, sicut in his, quae homonyma vocantur: ut, taurus animal sit an mons an signum in coelo an nomen hominis an radix arboris, nisi distinctum non intelligetur.
 
-plus tamen est obscuritatis in contextu et continuatione sermonis et plures modi. quare nec sit tam longus, ut eum prosequi non possit intentio, nec traiectione vel ultra modum transiectione vel ultra modum, Salding: transiectio intra modum (domum G. ), AG. hyperbato finis eius differatur. quibus adhuc peior est mixtura verborum, qualis in illo versu. saxa vacant Itali, mediis quae in fluctibus, aras.
+plus tamen est obscuritatis in contextu et continuatione sermonis et plures modi. quare nec sit tam longus, ut eum prosequi non possit intentio, nec traiectione vel ultra modum hyperbato finis eius differatur. quibus adhuc peior est mixtura verborum, qualis in illo versu. saxa vacant Itali, mediis quae in fluctibus, aras.
 
 saxa vacant Itali, mediis quae in fluctibus, aras.
 
@@ -4599,15 +4599,15 @@ stare loco nescit.
 
 non haec solum, de cuius genere supra dictum est, quae incertum intellectum facit, ut Chremetem audivi percussisse Demean, sed illa quoque, quae, etiamsi turbare non potest sensum, in idem tamen verborum vitium incidit, ut si quis dicat, visum a se hominem libram scribentem. nam etiamsi librum ab homine scribi patet, male tamen composuerit feceritque ambiguum, quantum in ipso fuit.
 
-est etiam in quibusdam turba inanium verborum, qui, dum communem loquendi more reformidant, ducti specie nitoris circumeunt omnia copiosa loquacitate, eo quod eo quod, Halm : et quod or et quae, MSS. dicere nolunt ipsa ipsa; deinde, Christ : ipsam deinde, MSS. ; deinde illam seriem cum alia simili iungentes miscentesque, ultra quam ullus spiritus durare possit, extendunt.
+est etiam in quibusdam turba inanium verborum, qui, dum communem loquendi more reformidant, ducti specie nitoris circumeunt omnia copiosa loquacitate, eo quod dicere nolunt ipsa ; deinde illam seriem cum alia simili iungentes miscentesque, ultra quam ullus spiritus durare possit, extendunt.
 
 in hoc malum a quibusdam etiam laboratur; neque id novum vitium est, cum iam apud Titum Livium inveniam fuisse praeceptorem aliquem, qui discipulos obscurare quae dicerent iuberet, Graeco verbo utens σκότισον. unde illa scilicet egregia laudatio: tanto melior;
 
 ne ego quidem intellexi. alii brevitatem aemulati necessaria quoque orationi subtrahunt verba et, velut satis sit scire ipsos quid dicere velint, quantum ad alios pertineat, nihil putant. at ego otiosum sermonem dixerim, quem auditor suo ingenio intelligit. quidam , emutatis in perversum dicendi figuris, idem vitium consequuntur.
 
-pessima vero sunt ἀδιανόητα, hoc est, quae verbis aperta occultos sensus habent, ut cum dictus est caecus secundum viam stare, cum ductus, A: conductus, G: cum dictus, Spalding : viam A: vitam, G. This sentence is unintelligible. Halm reads cum dictus eat caecus secundum vitam ( G. ) stare, which night conceivably be intended to mean ' as when the blind man was said to stand there to gain his living,' a rare use of vita. et, qui suos artus morsu lacerasset, fingitur in scholis supra se cubasse.
+pessima vero sunt ἀδιανόητα, hoc est, quae verbis aperta occultos sensus habent, ut cum dictus est caecus secundum viam stare, et, qui suos artus morsu lacerasset, fingitur in scholis supra se cubasse.
 
-ingeniosa haec et fortia et ex ancipiti diserta creduntur, pervasitque pervasitque, Badius : persuasitque, MSS. iam multos ista persuasio, ut id iam demum eleganter atque exquisite dictum putent, quod interpretandum sit. sed auditoribus etiam nonnullis grata sunt haec, quae cum intellexerunt acumine suo delectantur et gaudent, non quasi audierint sed quasi invenerint.
+ingeniosa haec et fortia et ex ancipiti diserta creduntur, pervasitque iam multos ista persuasio, ut id iam demum eleganter atque exquisite dictum putent, quod interpretandum sit. sed auditoribus etiam nonnullis grata sunt haec, quae cum intellexerunt acumine suo delectantur et gaudent, non quasi audierint sed quasi invenerint.
 
 nobis prima sit virtus perspicuitas, propria verba, rectus ordo, non in longum dilata conclusio, nihil neque desit neque superfluat: ita sermo et doctis probabilis et planus imperitis erit. haec eloquendi observatio. nam rerum perspicuitas quo modo praestanda sit, diximus in praeceptis narrationis.
 
@@ -4619,13 +4619,13 @@ venio nunc ad ornatum, in quo sine dubio plus quam in ceteris dicendi partibus s
 
 dispositio modicae doctrinae credi potest; si quae sunt artes altiores, plerumque occultantur, ut artes sint; denique omnia haec ad utilitatem causarum solam referenda sunt. cultu vero atque ornatu se quoque commendat ipse qui dicit et in ceteris iudicium doctorum, in hoc vero etiam popularem laudem petit, nec fortibus modo, sed etiam fulgentibus armis proeliatur.
 
-an An, added by Spalding. in causa Cicero Cornelii consecutus esset docendo iudicem tantum et utiliter demum ac Latine perspicueque dicendo, ut populus Romanus admirationem suam non acclamatione tantum, sed etiam plausu confiteretur? sublimitas profecto et magnificentia et nitor et auctoritas expressit illum fragorem.
+an in causa Cicero Cornelii consecutus esset docendo iudicem tantum et utiliter demum ac Latine perspicueque dicendo, ut populus Romanus admirationem suam non acclamatione tantum, sed etiam plausu confiteretur? sublimitas profecto et magnificentia et nitor et auctoritas expressit illum fragorem.
 
 nec tam insolita laus esset prosecuta dicentem, si usitata et ceteris similis fuisset oratio. atque ego illos credo, qui aderant, nec sensisse quid facerent nec sponte iudicioque plausisse, sed velut mente captos et quo essent in loco ignaros erupisse in hunc voluptatis adfectum.
 
-sed ne causae quidem parum confert idem hic orationis ornatus. nam , qui libenter audiunt, et magis attendunt et facilius credunt, plerumque ipsa delectatione capiuntur, nonnunquam admiratione auferuntur. nam et ferrum ipsum ipsum, added by Christ. adfert oculis terroris aliquid, et fulmina ipsa non tam nos confunderent, si vis eorum tantum, non etiam ipse fulgor timeretur.
+sed ne causae quidem parum confert idem hic orationis ornatus. nam , qui libenter audiunt, et magis attendunt et facilius credunt, plerumque ipsa delectatione capiuntur, nonnunquam admiratione auferuntur. nam et ferrum ipsum adfert oculis terroris aliquid, et fulmina ipsa non tam nos confunderent, si vis eorum tantum, non etiam ipse fulgor timeretur.
 
-recteque Cicero his ipsis ad Brutum Now lost. verbis quadam in epistola scribit, nam eloquentiam, quae admirationem non habet, nullam iudico. eandem Aristoteles quoque petendam maxime putat. sed hic ornatus (repetam enim) virilis et fortis et sanctus sit nec effeminatam levitatem et fuco ementitum colorem amet, sanguine et viribus niteat.
+recteque Cicero his ipsis ad Brutum verbis quadam in epistola scribit, nam eloquentiam, quae admirationem non habet, nullam iudico. eandem Aristoteles quoque petendam maxime putat. sed hic ornatus (repetam enim) virilis et fortis et sanctus sit nec effeminatam levitatem et fuco ementitum colorem amet, sanguine et viribus niteat.
 
 hoc autem adeo verum est ut, cum in hac maxime parte sint vicina virtutibus vitia, etiam, qui vitiis utuntur, virtutum tamen iis nomen imponant. quare nemo ex corruptis dicat me inimicum esse culte dicentibus. non hanc esse virtutem nego, sed illis eam non tribuo.
 
@@ -4633,9 +4633,9 @@ an ego fundum cultiorem putem, in quo mihi quis ostenderit lilia et violas et an
 
 nullusne ergo etiam frugiferis adhibendus est decor? quis negat? nam et in ordinem certaque intervalla redigam meas arbores. quid illo quincunce speciosius qui, in quamcunque partem spectaveris, rectus est? sed protinus in id quoque prodest, ut terrae sucum aequaliter trahat. surgentia in altum cacumina oleae ferro coercebo;
 
-in orbem se formosius fundet et protinus fructum ramis pluribus feret. decentior equus, cuius adstricta ilia, sed idem velocior. Pulcher aspectu est 1st, Halm : sit, MSS. athleta, cuius lacertos exercitatio expressit, idem certamini paratior.
+in orbem se formosius fundet et protinus fructum ramis pluribus feret. decentior equus, cuius adstricta ilia, sed idem velocior. Pulcher aspectu est athleta, cuius lacertos exercitatio expressit, idem certamini paratior.
 
-nunquam vera species ab utilitate dividitur. sed hoc quidem discernere modici iudicii est. illud observatione dignius, quod hic ipse honestus ornatus materiae genere esse debebit esse debebit, Halm : decidit, AG. variatus. atque , ut a prima divisione ordiar, non idem demonstrativis et deliberativis et iudicialibus causis conveniet. namque illud genus ostentationi compositum solam petit audientium voluptatem, ideoque omnes dicendi artes aperit ornatumque orationis exponit, ut quod non insidietur nec ad victoriam sed ad solum finem laudis et gloriae tendat.
+nunquam vera species ab utilitate dividitur. sed hoc quidem discernere modici iudicii est. illud observatione dignius, quod hic ipse honestus ornatus materiae genere esse debebit variatus. atque , ut a prima divisione ordiar, non idem demonstrativis et deliberativis et iudicialibus causis conveniet. namque illud genus ostentationi compositum solam petit audientium voluptatem, ideoque omnes dicendi artes aperit ornatumque orationis exponit, ut quod non insidietur nec ad victoriam sed ad solum finem laudis et gloriae tendat.
 
 quare , quidquid erit sententiis populare, verbis nitidum, figuris iucundum, translationibus magnificum, compositione elaboratum, velut institor quidam eloquentiae intuendum et paene pertractandum dabit. nam eventus ad ipsum, non ad causam refertur.
 
@@ -4657,31 +4657,31 @@ caesa iungebant foedera porca,
 
 praetextam in cista mures rosere camilli.
 
-saepe exiguus mus. Nam epitheton Epitheton is followed by the words exiguus aptum, which are bracketed as a gloss by Christ. proprium effecit, ne plus exspectaremus, et casus singularis magis decuit, et clausula ipsa unius syllabae non usitata addidit gratiam. imitatus est itaque utrumque Horatius, nascetur ridiculus mus.
+saepe exiguus mus. Nam epitheton proprium effecit, ne plus exspectaremus, et casus singularis magis decuit, et clausula ipsa unius syllabae non usitata addidit gratiam. imitatus est itaque utrumque Horatius, nascetur ridiculus mus.
 
 saepe exiguus mus.
 
 nascetur ridiculus mus.
 
-nec augenda semper oratio sed summittenda nonnunquam est. vim rebus aliquando verborum ipsa humilitas adfert. an , cum dicet in Pisonem Cicero, cum tibi tota cognatio serraco advehatur, incidisse videtur in sordidum nomen, non eo contemptum hominis, quem destructum volebat, auxisse? et alibi, caput opponis, cum eo coruscans. coruscans, W. Freund: conificans, MSS.
+nec augenda semper oratio sed summittenda nonnunquam est. vim rebus aliquando verborum ipsa humilitas adfert. an , cum dicet in Pisonem Cicero, cum tibi tota cognatio serraco advehatur, incidisse videtur in sordidum nomen, non eo contemptum hominis, quem destructum volebat, auxisse? et alibi, caput opponis, cum eo coruscans.
 
-unde interim gratus fit iocis decor, gratus fit iocis decor, Christ : grati idiotis de quo, AG. qualis est ille apud M. Tullium pusio , qui cum maiore sorore cubitabat, et, Flavius , qui cornicum oculos confixit, et pro Milone illud Heus tu Rufio, et Erucius Antoniaster. id tamen in declamatoribus est notabilius laudarique me puero solebat, da patri panem; et in eodem, etiam canem pascis.
+unde interim gratus fit iocis decor, qualis est ille apud M. Tullium pusio , qui cum maiore sorore cubitabat, et, Flavius , qui cornicum oculos confixit, et pro Milone illud Heus tu Rufio, et Erucius Antoniaster. id tamen in declamatoribus est notabilius laudarique me puero solebat, da patri panem; et in eodem, etiam canem pascis.
 
 res quidem praecipue in scholis anceps et frequenter causa risus, nunc utique, cum haec exercitatio procul a veritate seiuncta laboret incredibili verborum fastidio ac sibi magnam partem sermonis absciderit.
 
 cum sint autem verba propria, ficta, translata, propriis dignitatem dat antiquitas. namque et sanctiorem et magis admirabilem faciunt orationem, quibus non quilibet fuerit usurus, eoque ornamento acerrimi iudicii P. Vergilius unice est usus.
 
-olli enim et quianam et moerus moerus, O. Ribbeck: mus, AG. et pone et pellacia pellacia, Ribbeck : pollicerent or policent, MSS. aspergunt illam, quae etiam in picturis est gratissima, vetustatis inimitabilem arti auctoritatem. sed utendum modo, nec ex ultimis teneris repetenda. satis est vetus quaeso; quid necesse est quaiso quaiso, Gertz: quam, MSS. dicere? oppido quidem quidem, Halm : quam, MSS. usi sunt paulum tempore nostro superiores, vereor, ut iam nos ferat quisquam; certe antegerio, cuius eadem significatio est, nemo nisi ambitiosus utetur.
+olli enim et quianam et moerus et pone et pellacia aspergunt illam, quae etiam in picturis est gratissima, vetustatis inimitabilem arti auctoritatem. sed utendum modo, nec ex ultimis teneris repetenda. satis est vetus quaeso; quid necesse est quaiso dicere? oppido quidem usi sunt paulum tempore nostro superiores, vereor, ut iam nos ferat quisquam; certe antegerio, cuius eadem significatio est, nemo nisi ambitiosus utetur.
 
-aerumnosum aerumnosum, Zumpt : erumnas, AG. quid opus est? tanquam parum sit, si dicatur quid horridum. reor tolerabile, autumo tragicum, prolem dicere inusitatum est, dicere inusitatum eat, Halm : dicendi versum ei, AG. prosapiam insulsum. quid multa? totus prope mutatus est sermo.
+aerumnosum quid opus est? tanquam parum sit, si dicatur quid horridum. reor tolerabile, autumo tragicum, prolem dicere inusitatum est, prosapiam insulsum. quid multa? totus prope mutatus est sermo.
 
-quaedam tamen adhuc vetera vetustate ipsa gratius nitent, quaedam et necessario interim sumuntur, ut nuncupare et fari; multa alia etiam audentius inseri possunt sed ita demum, si non appareat adfectatio, in quam mirifice Vergilius: Corinthiorum amator iste verborum, Thucydides Britannus, Atticae febris, tau Gallicum, al, min, et sil ut male elisit; al min et sil ut male elisit, Schenkl following Wagner: enim et spinet male illisit and the like, MSS. See Ausonius, Idiyll xii. Grammaticomnst 5. For sil Bücheler would read sphin. ita omnia ista verba miscuit fratri. Cimber hic fuit,
+quaedam tamen adhuc vetera vetustate ipsa gratius nitent, quaedam et necessario interim sumuntur, ut nuncupare et fari; multa alia etiam audentius inseri possunt sed ita demum, si non appareat adfectatio, in quam mirifice Vergilius: Corinthiorum amator iste verborum, Thucydides Britannus, Atticae febris, tau Gallicum, al, min, et sil ut male elisit; ita omnia ista verba miscuit fratri. Cimber hic fuit,
 
 Corinthiorum amator iste verborum,
 
 Thucydides Britannus, Atticae febris,
 
-tau Gallicum, al, min, et sil ut male elisit; al min et sil ut male elisit, Schenkl following Wagner: enim et spinet male illisit and the like, MSS. See Ausonius, Idiyll xii. Grammaticomnst 5. For sil Bücheler would read sphin.
+tau Gallicum, al, min, et sil ut male elisit;
 
 ita omnia ista verba miscuit fratri.
 
@@ -4691,15 +4691,15 @@ et verba antiqui multum furate Catonis
 
 Crispe, Iugurthinae conditor historiae.
 
-odiosa cura; nam et cuilibet facilis et hoc pessima, quod eius eius, Gesner : rei, AG. studiosus non verba rebus aptabit, sed res extrinsecus arcesset, quibus haec verba conveniant. fingere , ut primo libro dixi, Graecis magis concessum est, qui sonis etiam quibusdam et adfectibus non dubitaverunt nomina aptare, non alia libertate quam qua illi primi homines rebus appellationes dederunt.
+odiosa cura; nam et cuilibet facilis et hoc pessima, quod eius studiosus non verba rebus aptabit, sed res extrinsecus arcesset, quibus haec verba conveniant. fingere , ut primo libro dixi, Graecis magis concessum est, qui sonis etiam quibusdam et adfectibus non dubitaverunt nomina aptare, non alia libertate quam qua illi primi homines rebus appellationes dederunt.
 
 nostri autem in iungendo aut in derivando paulum aliquid ausi vix in hoc satis recipiuntur. nam memini iuvenis admodum inter Pomponium ac Senecam etiam praefationibus esse tractatum, an gradus eliminat in tragoedia dici oportuisset. at veteres ne expectorat quidem timuerunt; et sane eiusdem notae est exanimat.
 
 at tractu et declinatione talia sunt, qualia apud Ciceronem beatitas et beatitudo; quae dura quidem sentit esse, verumtamen usu putat posse molliri. nec a verbis modo, sed a nominibus quoque derivata sunt quaedam, ut a Cicerone sullaturit ab Asinio fimbriatum et figulatum .
 
-multa ex Graeco format nova ac plurima a Verginio Verginio, Spalding : Sergio, MSS. Flavo, quorum dura quaedam admodum videntur, ut queens queens, halm: quae ens, MSS. et essentia; quae cur tantopere aspernemur nihil video, nisi quod iniqui iudices adversus nos sumus ideoque paupertate sermonis laboramus. quaedam tamen perdurant.
+multa ex Graeco format nova ac plurima a Verginio Flavo, quorum dura quaedam admodum videntur, ut queens et essentia; quae cur tantopere aspernemur nihil video, nisi quod iniqui iudices adversus nos sumus ideoque paupertate sermonis laboramus. quaedam tamen perdurant.
 
-nam et quae vetera nunc sunt, fuerunt olim nova, et quaedam sunt in usu perquam recentia, ut Messala primus reatum, munerarium Augustus primus dixerunt. piraticam quoque ut musicam et fabricam dici adhuc vetabant vetabant, Halm : dubitabant, MSS. om, by A. mei praeceptores. favorem et urbanum Cicero nova credit. nam et in epistola ad Brutum eum , inquit, amorem et eum, ut hoc verbo utar, fauorem in consilium advocabo.
+nam et quae vetera nunc sunt, fuerunt olim nova, et quaedam sunt in usu perquam recentia, ut Messala primus reatum, munerarium Augustus primus dixerunt. piraticam quoque ut musicam et fabricam dici adhuc vetabant mei praeceptores. favorem et urbanum Cicero nova credit. nam et in epistola ad Brutum eum , inquit, amorem et eum, ut hoc verbo utar, fauorem in consilium advocabo.
 
 et ad Appium Pulchrum, te , hominem non solum sapientem verum etiam, ut nunc loquimur, urbanum. idem putat a Terentio primum dictum esse obsequium, Caecilius a Sisenna albente caelo. cervicem videtur Hortensius primus dixisse, nam veteres pluraliter appellabant. audendum itaque; neque enim accedo Celso, qui ab oratore verba fingi vetat. nam ,
 
@@ -4713,19 +4713,19 @@ quod viderint, qui non putant esse vitanda, quia nec sit vox ulla natura turpis 
 
 iam hinc igitur ad rationem sermonis coniuncti transeamus. cuius ornatus in haec duo prima dividitur, quam concipiamus elocutionem, quo modo efferamus. nam primum est, ut liqueat, augere quid velimus an minuere, concitate dicere an moderate, laete an severe, abundanter an presse, aspere an leniter, magnifice an subtiliter, graviter an urbane. tum ,
 
-quo translationum translationum, Halm : translationem, A: translatione, G. genere, quibus figuris, qualibus sententiis, quo modo, qua postremo collocatione id, quod intendimus, efficere possimus. ceterum dicturus, quibus ornetur oratio, prius ea, quae sunt huic contraria laudi, attingam; nam prima virtus est vitio carere.
+quo translationum genere, quibus figuris, qualibus sententiis, quo modo, qua postremo collocatione id, quod intendimus, efficere possimus. ceterum dicturus, quibus ornetur oratio, prius ea, quae sunt huic contraria laudi, attingam; nam prima virtus est vitio carere.
 
-igitur ante omnia ne speremus ornatam orationem fore, quae probabilis non erit. Probabile autem Cicero id genus dicit, quod non nimis est comptum. nimis est comptum, Cicero : nimis est dictum, AG.: plus minusve quam dicet (decet, edd. ), codd. dett. Non quia comi expolirique non debeat (nam et haec ornatus pars est) sed quia vitium est ubique quod nimium est.
+igitur ante omnia ne speremus ornatam orationem fore, quae probabilis non erit. Probabile autem Cicero id genus dicit, quod non nimis est comptum. Non quia comi expolirique non debeat (nam et haec ornatus pars est) sed quia vitium est ubique quod nimium est.
 
 itaque vult esse auctoritatem in verbis, sententias vel graves vel aptas opinionibus hominum ac moribus. his enim salvis, licet assumere ea quibus illustrem fieri orationem putat, delecta, translata, superlata, ad nomen adiuncta, duplicata et idem significantia atque ab ipsa actione atque ab imitatione rerum non abhorrentia.
 
-sed quoniam vitia prius demonstrare aggressi sumus, ab hoc initium ab hoc initium, Halm : vel hoc initium, AG.: vel hoc vitium vulgo. sit, quod κακέμφατον vocatur, sive mala consuetudine in obscenum intellectum sermo detortus est (ut ductare exercitus et patrare bella, apud Sallustium dicta sancte et antique ridentibus, si dis placet; quam culpam non scribentium quidem iudico sed legentium,
+sed quoniam vitia prius demonstrare aggressi sumus, ab hoc initium sit, quod κακέμφατον vocatur, sive mala consuetudine in obscenum intellectum sermo detortus est (ut ductare exercitus et patrare bella, apud Sallustium dicta sancte et antique ridentibus, si dis placet; quam culpam non scribentium quidem iudico sed legentium,
 
-tamen vitandam, quatenus verba honesta moribus perdidimus, et vincentibus iam iam, Spalding : etiam, AG. vitiis cedendum est) sive iunctura deformiter sonat, ut, si cum hominibus notis loqui nos dicimus, nisi hoc ipsum hominibus medium sit, in praefanda videmur incidere, quia ultima prioris syllabae littera, quae exprimi nisi labris coeuntibus non potest, aut intersistere nos indecentissime cogit aut continuata cum insequente in naturam eius corrumpitur.
+tamen vitandam, quatenus verba honesta moribus perdidimus, et vincentibus iam vitiis cedendum est) sive iunctura deformiter sonat, ut, si cum hominibus notis loqui nos dicimus, nisi hoc ipsum hominibus medium sit, in praefanda videmur incidere, quia ultima prioris syllabae littera, quae exprimi nisi labris coeuntibus non potest, aut intersistere nos indecentissime cogit aut continuata cum insequente in naturam eius corrumpitur.
 
 aliaeque coniunctiones aliquid simile faciunt, quas persequi libenter est in eo vitio, quod vitandum dicimus, commorantis. sed divisio quoque adfert eandem iniuriam pudori, ut si intercapedinis nominativo casu quis utatur.
 
-nec scripto modo id accidit, sed etiam sensu plerique obscene intelligere, nisi caveris, cupiunt (ut apud Ovidium quaeque si qua, MSS. of Ovid. latent meliora putat ) et ex verbis, quae longissime ab obscenitate absunt, occasionem turpitudinis rapere. siquidem Celsus κακέμφατον apud Vergilium putat: incipiunt agitata tumescere. Quod si recipias, nihil loqui tutum est.
+nec scripto modo id accidit, sed etiam sensu plerique obscene intelligere, nisi caveris, cupiunt (ut apud Ovidium quaeque latent meliora putat ) et ex verbis, quae longissime ab obscenitate absunt, occasionem turpitudinis rapere. siquidem Celsus κακέμφατον apud Vergilium putat: incipiunt agitata tumescere. Quod si recipias, nihil loqui tutum est.
 
 incipiunt agitata tumescere.
 
@@ -4733,15 +4733,15 @@ deformitati proximum est humilitatis vitium, ταπείνωσιν vocant, qua re
 
 sordida, ieiuna, tristis, ingrata, vilis oratio est; quae vitia facillime fient manifesta contrariis virtutibus. nam primum acuto, secundum nitido, tertium copioso, deinceps hilari, iucundo, accurato diversum est.
 
-vitari debet debet, added by Halm. et μείωσις, cum sermoni deest aliquid, quo minus plenus sit; quanquam id obscurae potius quam inornatae orationis est vitium. sed hoc quoque, cum a prudentibus fit, schema dici solet, sicut ταυτολογία id est eiusdem verbi aut sermonis iteratio. haec enim,
+vitari debet et μείωσις, cum sermoni deest aliquid, quo minus plenus sit; quanquam id obscurae potius quam inornatae orationis est vitium. sed hoc quoque, cum a prudentibus fit, schema dici solet, sicut ταυτολογία id est eiusdem verbi aut sermonis iteratio. haec enim,
 
 quanquam non magnopere a summis auctoribus vitata, interim vitium videri potest, in quod saepe incidit etiam Cicero securus tam parvae observationis, sicut hoc loco, non solum igitur illud iudicium iudicii simile, iudices, non fuit. interim mutato nomine ἐπανάλημψις dicitur, atque est et ipsum inter schemata; quorum exempla illo loco quaerenda, quo virtutes erunt.
 
-peior hac ὁμοείδεια, quae nulla varietatis gratia levat taedium atque est tota coloris unius, qua maxime deprehenditur carens arte oratio; eaque et in sententiis et in figuris et in compositione longe non animis solum sed etiam auribus est ingratissima. vitanda etiam etiam added by Christ. μακρολογία,
+peior hac ὁμοείδεια, quae nulla varietatis gratia levat taedium atque est tota coloris unius, qua maxime deprehenditur carens arte oratio; eaque et in sententiis et in figuris et in compositione longe non animis solum sed etiam auribus est ingratissima. vitanda etiam μακρολογία,
 
 id est longior quam oportet sermo: ut apud T. Livium, legati non impetrata pace retro domum, unde venerant, abierunt. sed huic vicina periphrasis virtus habetur. est et πλεονασμὸς vitium, cum supervacuis verbis oratio oneratur: ego oculis meis vidi; sat est enim vidi.
 
-emendavit hoc etiam urbane in Hirtio Cicero, cui sapasim cui sapasim cum, A: cusapastium, G, while equally meaningless readings are given by later MSS. R. Unger suggested cum is Pasiphaam, Volkmann cum is apud ipsum. cum declamans filium a matre decem mensibus in utero latum esse dixisset, quid ? aliae, inquit, in perula perula, asserta: penula, MSS. solent ferre? nonnunquam tamen illud genus, cuius exemplum priore loco posui, adfirmationis gratia adhibetur: vocemque his auribus hausi.
+emendavit hoc etiam urbane in Hirtio Cicero, cui sapasim cum declamans filium a matre decem mensibus in utero latum esse dixisset, quid ? aliae, inquit, in perula solent ferre? nonnunquam tamen illud genus, cuius exemplum priore loco posui, adfirmationis gratia adhibetur: vocemque his auribus hausi.
 
 vocemque his auribus hausi.
 
@@ -4751,7 +4751,7 @@ at vitium erit, quotiens otiosum fuerit et supererit, non cum adiicietur. est et
 
 est autem totum in elocutione. nam rerum vitia sunt stultum, commune, contrarium, supervacuum; corrupta oratio in verbis maxime impropriis, redundantibus, comprehensione obscura compositione fracta, vocum similium aut ambiguarum puerili captatione consistit.
 
-est autem omne κακόζηλον utique falsum, etiamsi non omne falsum κακόζηλον est enim quod I have added est enim quod as the simplest way of filling up an obvious gap. victor gives cacozelon vero est quod dicitur. dicitur aliter, quam se natura habet et quam oportet et quam sat est. totidem autem generibus corrumpitur oratio quot ornatur. sed de hac parte et in alio nobis opere plenius dictum est et in hoc saepe tractatur et adhuc spargetur omnibus locis. loquentes enim de ornatu subinde, quae sint vitanda similia virtutibus vitia, dicemus.
+est autem omne κακόζηλον utique falsum, etiamsi non omne falsum κακόζηλον est enim quod dicitur aliter, quam se natura habet et quam oportet et quam sat est. totidem autem generibus corrumpitur oratio quot ornatur. sed de hac parte et in alio nobis opere plenius dictum est et in hoc saepe tractatur et adhuc spargetur omnibus locis. loquentes enim de ornatu subinde, quae sint vitanda similia virtutibus vitia, dicemus.
 
 sunt inornata et haec: quod male dispositum est, id ἀνοικονόμητον, quod male figuratum, id ἀσχημάτιστον quod male collocatum, id κακοσύνθετον vocant. sed de dispositione diximus; de figuris et compositione dicemus. Σαρδισμὸς quoque appellatur quaedam mixta ex varia ratione linguarum oratio, ut si Atticis Dorica, Ionica, Aeolica etiam dicta confundas. Cui simile vitium est apud nos,
 
@@ -4761,11 +4761,11 @@ humano capiti cervicem pictor equinam
 
 iungere si velit,
 
-ornatum est, quod perspicuo ac probabili plus est. eius primi sunt gradus in eo quod velis concipiendo et The plural primi gradus followed by tertius demands the addition of some other verb beside exprimendo. I have added concipiendo et. exprimendo, tertius, qui haec nitidiora faciat, quod proprie dixeris cultum. itaque ἐνάργειαν cuius in praeceptis narrationis feci mentionem, quia plus est evidentia vel, ut alii dicunt, repraesentatio quam perspicuitas, et illud patet, hoc se quodam modo ostendit, inter ornamenta ponamus.
+ornatum est, quod perspicuo ac probabili plus est. eius primi sunt gradus in eo quod velis concipiendo et exprimendo, tertius, qui haec nitidiora faciat, quod proprie dixeris cultum. itaque ἐνάργειαν cuius in praeceptis narrationis feci mentionem, quia plus est evidentia vel, ut alii dicunt, repraesentatio quam perspicuitas, et illud patet, hoc se quodam modo ostendit, inter ornamenta ponamus.
 
 magna virtus est res de quibus loquimur dare atque, ut cerni videantur, enuntiare. non enim satis efficit neque, ut debet, plene dominatur oratio, si usque ad aures valet atque ea sibi iudex, de quibus cognoscit, narrari credit, non exprimi et oculis mentis ostendi.
 
-sed quoniam pluribus modis accipi solet non equidem in omnes eam particulas secabo, secabo, Regius : locabo, AG. quarum ambitiose a quibusdam numerus augetur, sed maxime necessarias attingam. est igitur unum genus, quo tota rerum imago quodammodo verbis depingitur: constitit in digitos extemplo arrectus uterque et cetera, quae nobis illam pugilum congredientium faciem ita ostendunt, ut non clarior futura fuerit spectantibus.
+sed quoniam pluribus modis accipi solet non equidem in omnes eam particulas secabo, quarum ambitiose a quibusdam numerus augetur, sed maxime necessarias attingam. est igitur unum genus, quo tota rerum imago quodammodo verbis depingitur: constitit in digitos extemplo arrectus uterque et cetera, quae nobis illam pugilum congredientium faciem ita ostendunt, ut non clarior futura fuerit spectantibus.
 
 constitit in digitos extemplo arrectus uterque
 
@@ -4885,7 +4885,7 @@ hic et Catilina Graccho et status rei publicae orbi terrarum et mediocris labefa
 
 quas dixi per ratiocinationem fieri amplificationes, viderimus an satis proprio verbo significaverim. nec sum in hoc sollicitus, dum res ipsa volentibus discere appareat. hoc sum tamen secutus, quod haec amplificatio alibi posita est alibi valet; ut aliud crescat aliud augetur, inde ad id, quod extolli volumus, ratione ducitur.
 
-obiecturus Antonio Cicero merum et vomitum, tu , inquit, istis faucibus, istis lateribus, ista gladiatoria totius corporis firmitate. quid fauces et latera ad ebrietatem? minime sunt otiosa; nam respicientes ad haec possumus aestimare, quantum ille vini in Hippiae nuptiis exhauserit, quod ferre et concoquere concoquere, Spalding : conquere, B: quod coquere, A. non posset illa corporis gladiatoria firmitate. ergo , si ex alio colligitur aliud, nec improprium nec inusitatum nomen est ratiocinationis, ut quod ex eadem causa inter status quoque habeamus.
+obiecturus Antonio Cicero merum et vomitum, tu , inquit, istis faucibus, istis lateribus, ista gladiatoria totius corporis firmitate. quid fauces et latera ad ebrietatem? minime sunt otiosa; nam respicientes ad haec possumus aestimare, quantum ille vini in Hippiae nuptiis exhauserit, quod ferre et concoquere non posset illa corporis gladiatoria firmitate. ergo , si ex alio colligitur aliud, nec improprium nec inusitatum nomen est ratiocinationis, ut quod ex eadem causa inter status quoque habeamus.
 
 sic et ex insequentibus amplificatio ducitur, siquidem tanta vis fuit vini erumpentis, ut non casum adferret aut voluntatem sed necessitatem, ubi minime deceret, vomendi, et cibus non recens, ut accidere interim solet, redderetur, sed usque in posterum diem redundaret.
 
@@ -4899,7 +4899,7 @@ ruunt,
 
 quid ? cum res atrocissimas quasque in summam ipsi extulimus invidiam elevamus consulto, quo graviora videantur quae secutura sunt, ut a Cicerone factum est, cum illa diceret, levia sunt haec in hoc reo. metum virgarum nauarchus nobilissimae ciuitatis pretio redemit: humanum est. alias , ne securi feriretur, pecuniam dedi: usitatam est.
 
-nonne usus est ratiocinatione, ratiocinatione, Regius : ratione, MSS. qua colligerent audientes, quantum illud esset quod inferebatur, cui comparata haec viderentur humana atque usitata? sic quoque solet ex alio aliud augeri: ut cum Hannibalis bellicis laudibus ampliatur virtus Scipionis, et fortitudinem Gallorum Germanorumque miramur, quo sit maior C. Caesaris gloria.
+nonne usus est ratiocinatione, qua colligerent audientes, quantum illud esset quod inferebatur, cui comparata haec viderentur humana atque usitata? sic quoque solet ex alio aliud augeri: ut cum Hannibalis bellicis laudibus ampliatur virtus Scipionis, et fortitudinem Gallorum Germanorumque miramur, quo sit maior C. Caesaris gloria.
 
 illud quoque est ex relatione ad aliquid, quod non eius rei gratia dictum videtur, amplificationis genus. non putant indignum Troiani principes, Graios Troianosque propter Helenae speciem tot mala tanto temporis spatio sustinere: quaenam igitur illa forma credenda est? non enim hoc dicit Paris, qui rapuit, non aliquis iuvenis aut unus e vulgo, sed senes et prudentissimi et Priamo assidentes.
 
@@ -4919,7 +4919,7 @@ est hoc simile illi, quod ἔμφασις dicitur; sed illa ex verbo, hoc ex re 
 
 quid enim tuus ille, Tubero, destrictus in acie Pharsalica gladius agebat? cuius latus ille mucro petebat? qui sensus erat armorum tuorum? quae tua mens, oculi, manus, ardor animi? quid cupiebas? quid optabas ? Simile est hoc figurae, quam συναθροισμόν vocant; sed illic plurium rerum est congeries, hic unius multiplicatio. haec etiam crescere solet verbis omnibus altius atque altius insurgentibus: aderat ianitor carceris, carnifex praetoris, mors terrorque sociorum et civim Romanorum, victor Sextius. 28 Eadem fere est ratio minuendi. nam totidem sunt ascendentibus quot descendentibus gradus. ideoque uno ero exemplo contentus eius loci, quo Cicero de oratione Rulli haec dicit: pauci tamen qui proximi adstiterant, nescio quid illum de lege agraria voluisse dicere suspicabantur. quod si ad intellectum referas, minutio est, si ad obscuritatem, incrementum.
 
-scio posse videri quibusdam speciem amplificationis hyperbolen quoque, nam et haec in utramque partem valet; sed quia excedit excedit, B: excidit, A. hoc nomen in tropos, differenda est. quos continuo subiungerem, nisi esset a ceteris separata ratio dicendi, quae constat non propriis sed translatis . Halm brackets quae translatis as a gloss. the sense is unsatisfactory, but no satisfactory correction seems possible. Demus ergo breviter hoc desiderio iam paene publico, ne omittamus eum, quem plerique praecipuum ac paene solum putant orationis ornatum.
+scio posse videri quibusdam speciem amplificationis hyperbolen quoque, nam et haec in utramque partem valet; sed quia excedit hoc nomen in tropos, differenda est. quos continuo subiungerem, nisi esset a ceteris separata ratio dicendi, quae constat non propriis sed translatis . Demus ergo breviter hoc desiderio iam paene publico, ne omittamus eum, quem plerique praecipuum ac paene solum putant orationis ornatum.
 
 sententiam veteres, quod animo sensissent, vocaverunt. id cum est apud oratores frequentissimum, tum etiam in usu cotidiano quasdam reliquias habet; nam et iuraturi ex animo nostri sententia et gratulantes ex sententia dicimus. non raro tamen et sic locuti sunt, ut sensa sua dicerent; nam sensus corporis videbantur.
 
@@ -4973,7 +4973,7 @@ ea vero fit pulcherrima, cum aliqua comparatione clarescit. Trachalus contra Spa
 
 sed horum quidem generum et bonae dici possunt et malae. illae semper vitiosae ut a verbo: patres conscripti, sic enim incipiendum est mihi, ut memineritis patrum. peius adhuc, quo magis falsum est et longius petitum, contra eandem sororem gladiatoris, cuius modo feci mentionem, ad digitum pugnavi.
 
-est etiam generis eiusdem, nescio an vitiosissimum, quotiens verborum ambiguitas cum rerum falsa quadam similitudine iungitur. clarum actorem actorem, Spalding : actorum, A: auctorem, other MSS. iuvenis audivi, cum lecta in capite cuiusdam ossa sententiae gratia tenenda matri dedisset: infelicissima femina, nondum extulisti filium et iam ossa legisti.
+est etiam generis eiusdem, nescio an vitiosissimum, quotiens verborum ambiguitas cum rerum falsa quadam similitudine iungitur. clarum actorem iuvenis audivi, cum lecta in capite cuiusdam ossa sententiae gratia tenenda matri dedisset: infelicissima femina, nondum extulisti filium et iam ossa legisti.
 
 ad hoc plerique minimis etiam inventiunculis gaudent, quae excussae risum habent, inventae facie ingenii blandiuntur. de eo, qui naufragus et ante agrorum sterilitate vexatus in scholis fingitur se suspendisse: quem neque terra recipit nec mare, pendeat. huic simile in illo,
 
@@ -4987,11 +4987,11 @@ ut in satis omnibus fructibusque arborum nihil ad iustam magnitudinem adolescere
 
 facit res eadem concisam quoque orationem; subsistit enim omnis sententia, ideoque post eam utique aliud est initium. unde soluta fere oratio et e singulis non membris sed frustis collata structura caret, cum illa rotunda et undique circumcisa insistere invicem
 
-nequeant. praeter hoc etiam color ipse dicendi quamlibet claris, multis tamen ac variis velut maculis conspergitur. porro , ut adfert lumen clavus purpurae in loco insertus, adferent lumen clavus et purpurae, B (adferunt, Spading. ita certe neminem deceat intertexta pluribus notis vestis. quare ,
+nequeant. praeter hoc etiam color ipse dicendi quamlibet claris, multis tamen ac variis velut maculis conspergitur. porro , ut adfert lumen clavus purpurae in loco insertus, ita certe neminem deceat intertexta pluribus notis vestis. quare ,
 
 licet haec et nitere et aliquatenus exstare videantur, tamen et lumina illa non flammae, sed scintillis inter fumum emicantibus similia dixeris (quae ne apparent quidem, ubi tota lucet oratio, ut in sole sidera ipsa desinunt cerni); et, quae crebris parvisque conatibus se attollunt, inaequalia tantum et velut confragosa nec admirationem consequuntur eminentium et planorum gratiam perdunt.
 
-hoc quoque accedit quod solas captanti sententias multas dicere necesse est leves, frigidas, ineptas. non enim potest esse dilectus, ubi numero laboratur. itaque videas et divisionem pro sententia poni et argumentum; sit tantum in clausula nec clausula nec male, Halm : clausula et male, B: clausulae calce, A. male pronuntietur. occidisti uxorem ipse adulter;
+hoc quoque accedit quod solas captanti sententias multas dicere necesse est leves, frigidas, ineptas. non enim potest esse dilectus, ubi numero laboratur. itaque videas et divisionem pro sententia poni et argumentum; sit tantum in clausula nec male pronuntietur. occidisti uxorem ipse adulter;
 
 non ferrem te, etiamsi repudiasses, divisio est. vis scire, venenum esse amatorium? viveret homo, nisi illud bibisset, argumentum est. Nec multas plerique sententias dicunt, sed omnia tanquam sententias.
 
@@ -5011,7 +5011,7 @@ quare mihi videntur errasse, qui non alios crediderunt tropos, quam id quibus ve
 
 incipiamus igitur ab eo, qui cum frequentissimus est tum longe pulcherrimus, translatione dico, quae μεταφορά Graece vocatur. quae quidem cum ita est ab ipsa nobis concessa natura, ut indocti quoque ac non sentientes ea frequenter utantur, tum ita iucunda atque nitida, ut id oratione quamlibet clara proprio tamen lumine eluceat.
 
-neque enim vulgaris esse neque humilis nec insuavis apte apte, added by Christ. ac recte modo adscita potest. copiam quoque sermonis auget permutando aut mutuando quae non habet, quodque est difficillimum, praestat ne ulli rei nomen deesse videatur. transfertur ergo nomen aut verbum ex eo loco id quo proprium est, id eum id quo aut proprium deest aut translatum proprio melius est. id facimus,
+neque enim vulgaris esse neque humilis nec insuavis apte ac recte modo adscita potest. copiam quoque sermonis auget permutando aut mutuando quae non habet, quodque est difficillimum, praestat ne ulli rei nomen deesse videatur. transfertur ergo nomen aut verbum ex eo loco id quo proprium est, id eum id quo aut proprium deest aut translatum proprio melius est. id facimus,
 
 aut quia necesse est aut quia significantius est aut (ut dixi) quia decentius. ubi nihil horum praestabit, quod transferetur, improprium erit. necessitate rustici gemmam id vitibus (quid enim dicerent aliud?), et sitire segetes et fructus laborare; necessitate nos durum hominem aut asperum; non enim proprium erat, quod daremus his adfectibus, nomen.
 
@@ -5027,13 +5027,13 @@ comparatio est, cum dico fecisse quid hominem ut leonem; translatio, cum dico de
 
 gubernator magna contorsit equum vi;
 
-inanima pro aliis generis eiusdem sumuntur, ut: classique immittit habenas; aut pro rebus animalibus inanima, ferron an ferron, Bücheler: ferro, MSS. : an, B: non, A. fato moerus Argivom occidit? aut contra: sedet stupet, MSS. of Virgil. inscius alto accipiens sonitum saxi de uertice pastor. Praecipueque ex his oritur mira sublimitas,
+inanima pro aliis generis eiusdem sumuntur, ut: classique immittit habenas; aut pro rebus animalibus inanima, ferron an fato moerus Argivom occidit? aut contra: sedet inscius alto accipiens sonitum saxi de uertice pastor. Praecipueque ex his oritur mira sublimitas,
 
 classique immittit habenas;
 
-ferron an ferron, Bücheler: ferro, MSS. : an, B: non, A. fato moerus Argivom occidit?
+ferron an fato moerus Argivom occidit?
 
-sedet stupet, MSS. of Virgil. inscius alto
+sedet inscius alto
 
 accipiens sonitum saxi de uertice pastor.
 
@@ -5041,7 +5041,7 @@ quae audaci et proxime periculum translatione tolluntur, cum rebus sensu carenti
 
 pontem indignatus Araxes,
 
-quid enim tuus ille, Tubero, destrictus id acie Pharsalica gladius agebat? cuius latus ille mucro petebat? qui sensus erat armorum tuorum? duplicatur interim haec virtus, ut apud Vergilium, ferrumque armare veneno. Nam et veneno armare et ferrum armare translatio est. secantur haec id plures species species, added by Daniel. :
+quid enim tuus ille, Tubero, destrictus id acie Pharsalica gladius agebat? cuius latus ille mucro petebat? qui sensus erat armorum tuorum? duplicatur interim haec virtus, ut apud Vergilium, ferrumque armare veneno. Nam et veneno armare et ferrum armare translatio est. secantur haec id plures species :
 
 ferrumque armare veneno.
 
@@ -5057,9 +5057,9 @@ sunt et durae, id est a longinqua similitudine ductae, ut capitis nives et Iuppi
 
 Iuppiter hibernas cana nive conspuit Alpes.
 
-at ego id agendo nec pastorem populi auctore Homero dixerim, nec volucres per aera nare, Per aera nare, Halm following Burmann: sperae sanare, G.: pennis remigare, A. licet hoc Vergilius id apibus ac Daedalo speciosissime sit usus. metaphora enim aut vacantem occupare locum debet aut, si id alienum venit, plus valere eo quod expellet.
+at ego id agendo nec pastorem populi auctore Homero dixerim, nec volucres per aera nare, licet hoc Vergilius id apibus ac Daedalo speciosissime sit usus. metaphora enim aut vacantem occupare locum debet aut, si id alienum venit, plus valere eo quod expellet.
 
-quod aliquanto etiam aliquanto etiam, Regius : aliquando pentiam, AG: paene etiam Obrecht. magis de synecdoche dicam. nam translatio permovendis animis plerumque et signandis rebus ac sub oculos subiiciendis reperta est. haec variare sermonem potest, ut ex uno plures intelligamus, parte totum, specie genus, praecedentibus sequentia, vel omnia haec contra; liberior poetis quam oratoribus.
+quod aliquanto etiam magis de synecdoche dicam. nam translatio permovendis animis plerumque et signandis rebus ac sub oculos subiiciendis reperta est. haec variare sermonem potest, ut ex uno plures intelligamus, parte totum, specie genus, praecedentibus sequentia, vel omnia haec contra; liberior poetis quam oratoribus.
 
 nam prosa, ut mucronem pro gladio et lectum pro domo recipiet, ita non puppim pro navi nec abietem pro tabellis; et rursus, ut pro gladio ferrum, ita non pro equo quadrupedem. maxime autem id orando valebit numerorum illa libertas. nam et Livius saepe sic dicit, Romanus proelio victor, cum Romanos vicisse significat; et contra Cicero ad Brutum, populo , inquit, imposuimus et oratores visi sumus, cum de se tantum loqueretur.
 
@@ -5071,7 +5071,7 @@ illic ergo reddetur. aliud etiam intelligitur ex alio: aspice , aratra iugo refe
 
 aspice , aratra iugo referunt suspensa iuuenci,
 
-nec procul ab hoc genere discedit metonymia, quae est nominis pro nomine positio, the MSS. here inserts the words cuius vis est pro eo quod dicitur causam propter quam dicitur ponere ( the substitution of the cause for which we say a thing id place of the thing to which we refer ). the words are expunged by Spalding as a manifest gloss, so clumsily worded as to be barely intelligible, but intended to mean the substitution of cause for effect. sed, ut ait Cicero, hypallagen rhetores dicunt. haec inventas ab inventore et subiectas res ab obtinentibus significat: ut Cererem corruptam undis, et receptus terra Neptunus classes Aquilonibus arcet. Quod fit retrorsum durius.
+nec procul ab hoc genere discedit metonymia, quae est nominis pro nomine positio, sed, ut ait Cicero, hypallagen rhetores dicunt. haec inventas ab inventore et subiectas res ab obtinentibus significat: ut Cererem corruptam undis, et receptus terra Neptunus classes Aquilonibus arcet. Quod fit retrorsum durius.
 
 Cererem corruptam undis,
 
@@ -5093,7 +5093,7 @@ pallida mors aequo pulsat pede pauperum tabernas,
 
 pallentesque habitant morbi tristisque senectus,
 
-est etiam huic tropo quaedam cum synecdoche vicinia. nam , cum dico vultus hominis pro vultu, dico pluraliter quod singulare est; sed non id ago, ut unum ex multis intelligatur (nam id est manifestum), sed nomen immuto immuto, early edd.: malta, MSS. ; et cum aurata tecta aurea, pusillum a vero discedo, quia non est nisi nisi added by Badius. pars auratura. quae singula persequi minutioris est curae etiam non oratorem instruentibus. antonomasia ,
+est etiam huic tropo quaedam cum synecdoche vicinia. nam , cum dico vultus hominis pro vultu, dico pluraliter quod singulare est; sed non id ago, ut unum ex multis intelligatur (nam id est manifestum), sed nomen immuto ; et cum aurata tecta aurea, pusillum a vero discedo, quia non est nisi pars auratura. quae singula persequi minutioris est curae etiam non oratorem instruentibus. antonomasia ,
 
 quae aliquid pro nomine ponit, poetis utroque modo frequentissima, et per epitheton, quod detracto eo, cui apponitur, valet pro nomine, Tydides, Pelides: et ex his, quae id quoque sunt praecipua, divum pater atque hominum rex; et ex factis, quibus persona signatur, thalamo quae fixa reliquit impius . Oratoribus etiamsi rarus eius rei,
 
@@ -5107,35 +5107,35 @@ nonnullus tamen usus est. nam ut Tydiden et Peliden non dixerint, ita dixerint i
 
 id est fictio nominis, Graecis inter maximas habita virtutes, nobis vix permittitur. et sunt plurima ita posita ab iis, qui sermonem primi fecerunt aptantes adfectibus vocem. nam mugitus et sibilus et murmur inde venerunt.
 
-deinde , tanquam consummata consummata, Badius : consumpta, MSS. sint omnia, nihil generare audemus ipsi, cum multa cotidie ab antiquis ficta moriantur. vix illa, quae πεποιημένα vocant, quae ex vocibus id usum receptis quocunque modo declinantur, nobis permittimus, qualia sunt sullaturit et proscripturit; atque laureati postes pro illo lauru coronati, ex eadem fictione sunt.
+deinde , tanquam consummata sint omnia, nihil generare audemus ipsi, cum multa cotidie ab antiquis ficta moriantur. vix illa, quae πεποιημένα vocant, quae ex vocibus id usum receptis quocunque modo declinantur, nobis permittimus, qualia sunt sullaturit et proscripturit; atque laureati postes pro illo lauru coronati, ex eadem fictione sunt.
 
 sed hoc feliciter evaluit* adoinoia et uio eo ferimus id Graecis ocoeludituinobono eo dure etiam iungere, arquitenentem et videre septentriones videmur .
 
-eo magis necessaria catachresis, quam recte dicimus abusionem, quae non habentibus nomen suum accommodat quod id proximo est: sic equum divina Palladis arte aedificant , et apud Tragicos Aegialeo parentat Aegialeo parentat, Gertz: aegialeo paretat, AG. pater.
+eo magis necessaria catachresis, quam recte dicimus abusionem, quae non habentibus nomen suum accommodat quod id proximo est: sic equum divina Palladis arte aedificant , et apud Tragicos Aegialeo parentat pater.
 
 equum divina Palladis arte
 
 aedificant ,
 
-similia Similia. Grsner: mille, MSS. sunt haec: acetabula quidquid habent, et pyxides cuiuscunque materiae sunt, et parricida matris quoque aut fratris interfector. discernendumque est hoc totum a translatione translatione, Regius : translationis istud, MSS. genus, quod abusio est, ubi nomen defuit, translatio, ubi aliud fuit. nam poetae solent abusive etiam id his rebus, quibus nomina sua sunt, vicinis potius uti; quod rarum id prosa est.
+similia sunt haec: acetabula quidquid habent, et pyxides cuiuscunque materiae sunt, et parricida matris quoque aut fratris interfector. discernendumque est hoc totum a translatione genus, quod abusio est, ubi nomen defuit, translatio, ubi aliud fuit. nam poetae solent abusive etiam id his rebus, quibus nomina sua sunt, vicinis potius uti; quod rarum id prosa est.
 
 illa quoque quidam catachresis volunt esse, cum pro temeritate virtus aut pro luxuria liberalitas dicitur. A quibus ego quidem dissentio; namque id his non verbum pro verbo ponitur, sed res pro re. neque enim quisquam putat luxuriam et liberalitatem idem significare; verum id quod fit alius luxuriam esse dicit, alius liberalitatem, quamvis neutri dubium sit haec esse diversa.
 
-superest ex his, quae aliter significant, metalepsis, id est transumptio, quae ex alio tropo id alium velut viam praestat; * nisi id comoediis I have added hie nisi id conoediis, cp. 39 below. et rarissimus et improbissimus, Graecis tamen frequentior, qui Centaurum qui Χείρων est Ἥσσονα et insulas ὀξείας θοάς Centaurum, Regius : scient aurum, AG.: Ἥσσονα , Meister : hoccona, AG : insulas oxias thoas, cod. par . 7530: insulamn ΕΜΨΙΑΣΘΟΑΣ AG. dicunt. nos quis ferat, si Verrem suem aut Aelium Catum doctum nominemus?
+superest ex his, quae aliter significant, metalepsis, id est transumptio, quae ex alio tropo id alium velut viam praestat; * nisi id comoediis et rarissimus et improbissimus, Graecis tamen frequentior, qui Centaurum qui Χείρων est Ἥσσονα et insulas ὀξείας θοάς dicunt. nos quis ferat, si Verrem suem aut Aelium Catum doctum nominemus?
 
-est enim haec id metalepsi natura, ut inter id quod transfertur et id quod transfertur et id quod transfertur, Halm : et id quo transfertur, cod. par . 7530: om. AG. sit medius quidam gradus, nihil ipse significans sed praebens transitum; quem tropum magis adfectamus, ut habere videamur, quam ullo id loco desideramus. nam id eius frequentissimum exemplum est cano canto, canto dico; ita cano, dice.
+est enim haec id metalepsi natura, ut inter id quod transfertur et id quod transfertur sit medius quidam gradus, nihil ipse significans sed praebens transitum; quem tropum magis adfectamus, ut habere videamur, quam ullo id loco desideramus. nam id eius frequentissimum exemplum est cano canto, canto dico; ita cano, dice.
 
-interest medium illud canto. nec diutius id eo morandum; nihil enim usus admodum video nisi, nihil enim nisi, Regiius: innisi nihil, AG. ut dixi, id comoediis.
+interest medium illud canto. nec diutius id eo morandum; nihil enim usus admodum video nisi, ut dixi, id comoediis.
 
 cetera iam non significandi gratia sed ad ornandam et augendam orationem assumuntur. ornat enim epitheton, quod recte dicimus appositum, a nonnullis sequens dicitur. eo poetae et frequentius et liberius utuntur. namque illis satis est convenire id verbo, cui apponitur, itaque et dentes albos et humida vina id iis non reprehendemus; apud oratorem, nisi aliquid efficitur, redundat. tum autem efficitur, si sine illo, quod dicitur, minus est:
 
 qualia sunt O scelus abominandum, o deformem libidinem. exornatur autem res tota maxime translationibus, cupiditas effrenata et insanae substructiones. et solet fieri aliis adiunctis epitheton tropus, ut apud Vergilium turpis egestas et tristis senectus. verum tamen talis est ratio huiusce virtutis, ut sine appositis nuda sit et velut incompta oratio, oneretur tamen multis.
 
-nam fit longa et impedita, ut id quaestionibus eam iudices indices, vulgo: iungas, MSS. id quaestionibus is clearly corrupt. similem agmini totidem lixas habenti quot milites, cui et numerus est duplex nec duplum virium; quanquam non singula modo sed etiam plura verba apponi solent: ut coniugio Anchise Veneris dignate superbo. Sed hoc quocunque modo:
+nam fit longa et impedita, ut id quaestionibus eam iudices similem agmini totidem lixas habenti quot milites, cui et numerus est duplex nec duplum virium; quanquam non singula modo sed etiam plura verba apponi solent: ut coniugio Anchise Veneris dignate superbo. Sed hoc quocunque modo:
 
 coniugio Anchise Veneris dignate superbo.
 
-duo vero quocunque vero, Spalding : queque verba, MSS. uni apposita ne uersum quidem decuerint. sunt autem, quibus non videatur hic omnino tropus, quia nihil vertat. nec est semper, nec, Spalding : necesse, MSS. sed id quod est sed id quod est, cod. Paris 7530: sed cum id est AG. appositum, si a proprio diviseris, per se significat et facit antonomasiam. nam si dicas, ille qui Numantiam et Carthaginem evertit, antonomasia est; si adieceris Scipio , appositum. non potest ergo esse seiunctum. seiunctum, Christ : iunctum, MSS.
+duo vero uni apposita ne uersum quidem decuerint. sunt autem, quibus non videatur hic omnino tropus, quia nihil vertat. nec est semper, sed id quod est appositum, si a proprio diviseris, per se significat et facit antonomasiam. nam si dicas, ille qui Numantiam et Carthaginem evertit, antonomasia est; si adieceris Scipio , appositum. non potest ergo esse seiunctum.
 
 allegoria , quam inversionem interpretantur, aut aliud verbis aliud sensu ostendit aut etiam interim contrarium. prius fit genus plerumque continuatis translationibus, ut O navis, referent id mare te novi fluctus ; o quid agis? fortiter occupa portum , totusque ille Horatii locus, quo navem pro re publica, fluctus et tempestates pro bellis civilibus, portum pro pace atque concordia dicit.
 
@@ -5179,15 +5179,15 @@ dic , quibus id ferris, et eris mihi magnus Apollo,
 
 tres pateat caeli spatium non amplius ulnas?
 
-ut Caelius quadrantariam Clytaemnestram, et in triclinio Coam, in cubiculo Nolam. namque et nunc quidem solvuntur et tum erant notiora, cum dicerentur; aenigmata sunt tamen, nam et cetera nam et cetera, Christ : non et cetera, AG. si quis interpretetur, intelligas. | eo vero genere,
+ut Caelius quadrantariam Clytaemnestram, et in triclinio Coam, in cubiculo Nolam. namque et nunc quidem solvuntur et tum erant notiora, cum dicerentur; aenigmata sunt tamen, nam et cetera si quis interpretetur, intelligas. | eo vero genere,
 
 quo contraria ostenduntur, ironia est; illusionem vocant. quae aut pronuntiatione intelligitur aut persona aut rei natura; nam, si qua earum verbis dissentit, apparet diversam esse orationi voluntatem.
 
-quanquam id plurimis id tropis accidit, ut intersit, quid de quoque dicatur, quia quod dicitur alibi verum est. et laudis adsimulatione adsimulatione, Spalding : autem simulatione, AG. detrahere et vituperationis laudare concessum est: quod C. Verres, praetor urbanus, homo sanctus et diligens, subsortitionem eius id codice non haberet. et contra: oratores visi sumus et populo imposuimus.
+quanquam id plurimis id tropis accidit, ut intersit, quid de quoque dicatur, quia quod dicitur alibi verum est. et laudis adsimulatione detrahere et vituperationis laudare concessum est: quod C. Verres, praetor urbanus, homo sanctus et diligens, subsortitionem eius id codice non haberet. et contra: oratores visi sumus et populo imposuimus.
 
 aliquando cum id risu quodam contraria dicuntur iis quae intelligi volunt: quale est in Clodium, integritas tua te purgavit, mihi crede, pudor eripuit, vita anteacta servavit.
 
-praeter haec usus est allegoriae, ut tristia dicamus mollioribus mollioribus, Werlhof: melioribus, MSS. verbis urbanitatis urtanitatis, Gsner: aut bonae rei, MSS. gratia aut quaedam contrariis significemus aliud textum spectaco et enumeravimus. I have printed the reading of A, from which the others differ but little. Haec si quis ignorat, quibus Graeci nominibus appellent, σαρκασμόν, ἀστεϊσμόν, ἀντίφρασιν, παροιμίαν dici sciat. sunt etiam,
+praeter haec usus est allegoriae, ut tristia dicamus mollioribus verbis urbanitatis gratia aut quaedam contrariis significemus aliud textum spectaco et enumeravimus. Haec si quis ignorat, quibus Graeci nominibus appellent, σαρκασμόν, ἀστεϊσμόν, ἀντίφρασιν, παροιμίαν dici sciat. sunt etiam,
 
 qui haec non species allegoriae sed ipsa tropos dicant; acri quidem ratione, quod illa obscurior sit, id his omnibus aperte appareat quid velimus. cui accedit hoc quoque, quod genus, cum dividitur id species, nihil habet proprium, ut arbor pinus et olea et cupressus, et ipsius per se nulla proprietas; allegoria vero habet aliquid proprium. quod quo modo fieri potest, nisi ipsa species est? sed utentium nihil refert.
 
@@ -5201,17 +5201,17 @@ incipit et dono divum gratissima serpit.
 
 Quidquid enim significari brevius potest et cum ornatu latius ostenditur, περίφρασις est, cui nomen Latine datum est non sane aptum orationis virtuti circumlocutio. verum hoc ut, cum decorem habet, periphrasis, ita, cum id vitium incidit, περισσολογία dicitur. obstat enim quidquid non adiuvat.
 
-hyperbaton quoque, id est verbi transgressionem, quoniam frequenter ratio compositionis compositionis, Daniel : comparationis, MSS. et decor poscit, non immerito inter virtutes habemus. fit enim frequentissime aspera et dura et dissoluta et hians oratio, si ad necessitatem ordinis sui verba redigantur et, ut quodque oritur, ita proximis, etiamsi vinciri non potest, adligetur.
+hyperbaton quoque, id est verbi transgressionem, quoniam frequenter ratio compositionis et decor poscit, non immerito inter virtutes habemus. fit enim frequentissime aspera et dura et dissoluta et hians oratio, si ad necessitatem ordinis sui verba redigantur et, ut quodque oritur, ita proximis, etiamsi vinciri non potest, adligetur.
 
 differenda igitur quaedam et praesumenda, atque ut id structuris lapidum impolitorum loco, quo convenit, quodque ponendum. non enim recidere ea nec polire possumus, quo coagmentata se magis iungant, sed utendum iis, qualia sunt, eligendaeque sedes.
 
 nec aliud potest sermonem facere numerosum quam opportuna ordinis per mutatio; neque alio ceris Platonis inventa sunt quattuor illa verba, quibus id illo pulcherrimo operum id Piraeeum se descendisse significat, plurimis modis scripta,
 
-quam quam, inserted by Regius . quod eum quoque maxime numerosum The sentence can hardly be correct as it stands id the MSS. I have inserted numerosum as being the simplest improvement available. facere experiretur. verum id cum id duobus verbis fit, ἀναστροφὴ dicitur, reversio quaedam: qualia sunt vulgo, mecum, secum, apud oratores et historicos quibus de rebus. at cum decoris gratia traiicitur traiicitur, Spalding : trahitur, AG. longius verbum, proprie hyperbati tenet nomen: animaduerti , iudices, omnem accusatoris orationem in duas diuisam esse partes. nam in duas partes divisam esse rectum erat, sed durum et incomptum.
+quam quod eum quoque maxime numerosum facere experiretur. verum id cum id duobus verbis fit, ἀναστροφὴ dicitur, reversio quaedam: qualia sunt vulgo, mecum, secum, apud oratores et historicos quibus de rebus. at cum decoris gratia traiicitur longius verbum, proprie hyperbati tenet nomen: animaduerti , iudices, omnem accusatoris orationem in duas diuisam esse partes. nam in duas partes divisam esse rectum erat, sed durum et incomptum.
 
 poetae quidem etiam verborum divisione faciunt transgressionem: Hyperboreo septem subiecta trioni, quod oratio nequaquam recipiet. atqui est propter quod dici tropus possit, quia componendus est e duobus intellectus.
 
-alioqui , ubi nihil ex significatione mutatum est et structura sola variatur, figura potius verborum dici potest, sicut multi existimarunt. longis autem hyperbatis et confusis quae vitia accidunt, suo loco diximus. hyperbolen audacioris ornatus summo loco posui. est haec decens veri decens veri, Spalding : decensuris, G. : demensuris, A ( 2nd hand ). superiectio; virtus eius ex diverso par augendi atque minuendi; fit pluribus modis.
+alioqui , ubi nihil ex significatione mutatum est et structura sola variatur, figura potius verborum dici potest, sicut multi existimarunt. longis autem hyperbatis et confusis quae vitia accidunt, suo loco diximus. hyperbolen audacioris ornatus summo loco posui. est haec decens veri superiectio; virtus eius ex diverso par augendi atque minuendi; fit pluribus modis.
 
 aut enim plus facto dicimus, ut vomens frustis esculentis gremium suum et totum tribunal implevit, et geminique minantur | caelum scopuli; aut res per similitudinem attollimus, credas innare revulsas Cycladas;
 
@@ -5321,7 +5321,7 @@ haec enim sunt fere atque horum similia vel plura etiam esse possunt, quae sente
 
 et reliqua, ex conlocatione verborum quae sumuntur quasi lumina, magnum adferunt ornatum orationi. sunt enim similia illis quae in amplo ornatu scenae aut fori appellantur insignia, non quia sola ornent, sed quod excellant.
 
-eadem ratio est horum quae sunt orationis lumina et quodam modo insignia, cum aut duplicantur iteranturque verba aut leviter leviter Gesner , Ernesti: breviter, MSS. commutata ponuntur, aut ab eodem verbo ducitur saepius oratio aut in idem coniicitur aut utrumque, aut adiungitur idem iteratum aut idem ad extremum refertur, aut continenter unum verbum non eadem sententia ponitur, aut cum similiter vel cadunt verba vel desinunt;
+eadem ratio est horum quae sunt orationis lumina et quodam modo insignia, cum aut duplicantur iteranturque verba aut leviter commutata ponuntur, aut ab eodem verbo ducitur saepius oratio aut in idem coniicitur aut utrumque, aut adiungitur idem iteratum aut idem ad extremum refertur, aut continenter unum verbum non eadem sententia ponitur, aut cum similiter vel cadunt verba vel desinunt;
 
 aut multis modis contrariis relata contraria, aut cum gradatim sursum versus reditur, aut cum demptis coniunctionibus dissolute plura dicuntur, aut cum aliquid praetereuntes, cur id faciamus, ostendimus, aut cum corrigimus nosmet ipsos quasi reprehendentes, aut si est aliqua exclamatio vel admirationis vel conquestionis, aut cum eiusdem nominis casus saepius commutantur.
 
@@ -5345,7 +5345,7 @@ quae delectatio aut quod mediocriter saltem docti hominis indicium, nisi alia re
 
 quae cum adesse debent, tum disponenda atque varianda sunt, ut auditorem, quod in fidibus fieri videmus, omni sono mulceant. verum ea plerumque recta sunt nec se fingunt, sed confitentur. admittunt autem, ut dixi, figuras, quod vel ex proxima doceri potest.
 
-quid enim tam commune quam interrogare vel percontari? nam utroque utimur indifferenter, quanquam quanquam, Spalding : quam cum, A: cum, B. alterum noscendi, alterum arguendi gratia videtur adhiberi. at ea res, utrocunque dicitur modo, etiam multiplex habet schema. incipiamus enim ab iis, quibus acrior ac vehementior fit probatio, quod primo loco posuimus.
+quid enim tam commune quam interrogare vel percontari? nam utroque utimur indifferenter, quanquam alterum noscendi, alterum arguendi gratia videtur adhiberi. at ea res, utrocunque dicitur modo, etiam multiplex habet schema. incipiamus enim ab iis, quibus acrior ac vehementior fit probatio, quod primo loco posuimus.
 
 simplex est sic rogare, sed vos qui tandem? quibus aut venistis ab oris? Figuratum autem, quotiens non sciscitandi gratia adsumitur, sed instandi, quid enim tuus ille, Tubero, destrictus in acie Pharsalica gladius agebat? et, quousque tandem abutere, Catilina, patientia nostra? et, patere tua consilia non sentis? et totus denique hic locus.
 
@@ -5443,19 +5443,19 @@ Aulide iuravi—.
 
 ilia vero, ut ait Cicero, sub oculos subiectio tum fieri solet, cum res non gesta indicatur, sed ut sit gesta ostenditur, nec universa, sed per partes; quem locum proximo libro subiecimus evidentiae, et Celsus hoc nomen isti figurae dedit. ab allis ὑποτύπωσις dicitur proposita quaedam forma rerum ita expressa verbis, ut cerni potius videatur quam audiri: ipse inflammatus scelere et furore in forum venit, ardebant oculi, toto ex ore crudelitas eminebat.
 
-nec solum quae facta sint aut fiant, sed etiam quae futura sint aut futura fuerint imaginamur. mire tractat hoc Cicero pro Milone, quae facturus fuerit Clodius, si praeturam invasisset. sed haec quidem translatio temporum, quae proprie μετάστασις dicitur, ιν διατυπώσει ιν διατυπώσει vulgo: indiatyposi, B: incliatibosi, A. verecundior apud priores fuit. praeponebant enim talia, credite vos intueri, ut Cicero, haec , quae non vidistis oculis, animis cernere potestis.
+nec solum quae facta sint aut fiant, sed etiam quae futura sint aut futura fuerint imaginamur. mire tractat hoc Cicero pro Milone, quae facturus fuerit Clodius, si praeturam invasisset. sed haec quidem translatio temporum, quae proprie μετάστασις dicitur, ιν διατυπώσει verecundior apud priores fuit. praeponebant enim talia, credite vos intueri, ut Cicero, haec , quae non vidistis oculis, animis cernere potestis.
 
-novi vero et praecipue declamatores audacius nec mehercule sine motu quodam imaginantur, ut et Seneca ut et Seneca, vulgo: ut Seneca, cod. bamb .: ut, cod. bern .: et, A. in controversia, cuius summa est, quod pater filium et novercam inducente altero filio in adulterio deprehensos occidit: duc , sequor; accipe hanc senilem manum et quocunque vis imprime.
+novi vero et praecipue declamatores audacius nec mehercule sine motu quodam imaginantur, ut et Seneca in controversia, cuius summa est, quod pater filium et novercam inducente altero filio in adulterio deprehensos occidit: duc , sequor; accipe hanc senilem manum et quocunque vis imprime.
 
 et post paulo, aspice , inquit, quod diu non credidisti. ego vero non video, nox oboritur et crassa caligo. habet haec figura manifestius aliquid; non enim narrari res, sed agi videtur.
 
-locorum quoque dilucida et significans descriptio eidem eider, Regius : eiusdem, B: huic, A (2nd hand): virtuti, A: virtutis, B. virtuti adsignatur a quibusdam; alii τοπογραφίαν dicunt. Εἰρωνείαν inveni qui dissimulationem vocaret; quo nomine quia parum totius huius figurae vires videntur ostendi, nimirum sicut in plerisque erimus Graeca appellatione contenti. igitur Εἰρωνεία quae est schema, ab illa, quae est tropos, genere ipso nihil admodum distat; (in utroque enim contrarium ei quod dicitur intelligendum est) species vero prudentius intuenti diversas esse facile est deprehendere. primum ,
+locorum quoque dilucida et significans descriptio eidem virtuti adsignatur a quibusdam; alii τοπογραφίαν dicunt. Εἰρωνείαν inveni qui dissimulationem vocaret; quo nomine quia parum totius huius figurae vires videntur ostendi, nimirum sicut in plerisque erimus Graeca appellatione contenti. igitur Εἰρωνεία quae est schema, ab illa, quae est tropos, genere ipso nihil admodum distat; (in utroque enim contrarium ei quod dicitur intelligendum est) species vero prudentius intuenti diversas esse facile est deprehendere. primum ,
 
 quod tropos apertior est et, quanquam aliud dicit ac sentit, non aliud tamen simulat. nam et omnia circa fere recta sunt: ut illud in Catilinam, A quo repudiatus ad sodalem tuum, virum optimum, Metellum demigrasti. in duobus demum verbis est ironia, ergo etiam brevior est tropos.
 
-at in figura totius voluntatis fictio est apparens magis quam confessa, ut illic verba sint verbis diversa, hic sensus sermoni et voci sermoni et voci, Halm : sermonis et ioci, AB. et tota interim causae conformatio; cum etiam vita universa ironiam habere videatur, qualis est visa Socratis; nam ideo dictus εἴρων, agens imperitum et admiratorem aliorum tanquam sapientium; ut, quemadmodum ἀλληγορίαν facit continua μεταφορὰ sic hoc schema faciat tropos ille contextus.
+at in figura totius voluntatis fictio est apparens magis quam confessa, ut illic verba sint verbis diversa, hic sensus sermoni et voci et tota interim causae conformatio; cum etiam vita universa ironiam habere videatur, qualis est visa Socratis; nam ideo dictus εἴρων, agens imperitum et admiratorem aliorum tanquam sapientium; ut, quemadmodum ἀλληγορίαν facit continua μεταφορὰ sic hoc schema faciat tropos ille contextus.
 
-quaedam vero genera huius figurae nullam cum tropis habent societatem, ut illa statim prima, quae dicitur a negando, quam nonnulli ἀντίφρασιν vocant: non agam tecum iure summo, non dicam, quod forsitan obtinerem; debeam forsitan obtinere, MSS. of Cicero. et quid ego istius decreta, quid rapinas, quid hereditatum possessiones datas, quid ereptas proferam? et Mitto illam primam libidinis iniuriam, et Ne illa quidem testimonia recito, quae dicta sunt de HS sescentis milibus, et possum dicere.
+quaedam vero genera huius figurae nullam cum tropis habent societatem, ut illa statim prima, quae dicitur a negando, quam nonnulli ἀντίφρασιν vocant: non agam tecum iure summo, non dicam, quod forsitan obtinerem; et quid ego istius decreta, quid rapinas, quid hereditatum possessiones datas, quid ereptas proferam? et Mitto illam primam libidinis iniuriam, et Ne illa quidem testimonia recito, quae dicta sunt de HS sescentis milibus, et possum dicere.
 
 quibus generibus per totas interim quaestiones decurrimus: ut Cicero, hoc ego si sic agerem, tanquam mihi modi esset diluendum, haec pluribus dicerem. Εἰρωνεία est, et cum similes imperantibus vel permittentibus sumus: I, sequere Italiam venti; et cum ea,
 
@@ -5489,7 +5489,7 @@ vel alio transeundi gratia: Cominius autem — tametsi ignoscite mihi, iudices. 
 
 nam brevior illa, ut ait Cicero, a re digressio plurimis fit modis. sed haec exempli gratia sufficient: tum C. Varenus, is qui a familia Anchariana occisus est; hoc, quaeso, iudices, diligenter attendite; et pro Milone et aspexit me illis quidem oculis, quibus tum solebat, cum omnibus omnia minabatur.
 
-est alia non quidem reticentia, quae sit imperfecti sermonis, sed tamen praecisa velut ante legitimum finem oratio: ut illud nimis urgeo, commoveri videtur adolescens; et quid plura? ne multa, Cicero . ipsum adolescentem dicere audistis. imitatio morum alienorum, quae ἠθοποιία vel, ut alii malunt, μίμησις dicitur, iam inter leniores adfectus numerari potest; est enim posita fere in eludendo, sed versatur et in factis et in dictis. in factis, quod est ὑποτυπώσει vicinum; in dictis, quale est apud Terentium: at ego nesciebam, quorsum tu ires. parvula hinc est abrepta, eduxit mater pro sua, soror dicta est: cupio abducere, ut reddam suis.
+est alia non quidem reticentia, quae sit imperfecti sermonis, sed tamen praecisa velut ante legitimum finem oratio: ut illud nimis urgeo, commoveri videtur adolescens; et quid plura? ipsum adolescentem dicere audistis. imitatio morum alienorum, quae ἠθοποιία vel, ut alii malunt, μίμησις dicitur, iam inter leniores adfectus numerari potest; est enim posita fere in eludendo, sed versatur et in factis et in dictis. in factis, quod est ὑποτυπώσει vicinum; in dictis, quale est apud Terentium: at ego nesciebam, quorsum tu ires. parvula hinc est abrepta, eduxit mater pro sua, soror dicta est: cupio abducere, ut reddam suis.
 
 at ego nesciebam, quorsum tu ires. parvula
 
@@ -5505,7 +5505,7 @@ unde etiam venusti transitus fiunt; non quia transitus ipse sit schema, ut Cicer
 
 quod quidem non in hoc tantum valet. quibusdam enim, dum aliud agere videmur, aliud efficimus, sicut hic Cicero consequitur, ne, cum morbum in signis atque tabulis obiiciat Verri, ipse quoque earum rerum studiosus esse credatur. et Demosthenes iurando per interfectos in Marathone et Salamine id agit, ut minore invidia cladis apud Chaeroneam acceptae laboret.
 
-faciunt illa quoque iucundam orationem, aliqua mentione habita differre et deponere apud memoriam iudicis et reposcere quae deposueris, et iterare iterare, Halm : sperare, B: separare A (m.2). quaedam schemate aliquo, (non enim est ipsa per se iteratio schema) et excipere aliqua et dare actioni varios velut vultus. gaudet enim res varietate, et sicut oculi diversarum aspectu rerum magis detinentur, ita semper animis praestat, in quod se velut novum intendant.
+faciunt illa quoque iucundam orationem, aliqua mentione habita differre et deponere apud memoriam iudicis et reposcere quae deposueris, et iterare quaedam schemate aliquo, (non enim est ipsa per se iteratio schema) et excipere aliqua et dare actioni varios velut vultus. gaudet enim res varietate, et sicut oculi diversarum aspectu rerum magis detinentur, ita semper animis praestat, in quod se velut novum intendant.
 
 est emphasis etiam inter figuras, cum ex aliquo dicto latens aliquid eruitur, ut apud Vergilium non licuit thalami expertem sine crimine vitam Degere more ferae? quamquam enim de matrimonio queritur Dido, tamen huc erumpit eius adfectus, ut sine thalamis vitam non hominum putet, sed ferarum. aliud apud Ovidium genus, apud quem Zmyrna nutrici amorem patris sic confitetur; O, dixit, felicem coniuge matrem Huic vel confinis vel eadem est,
 
@@ -5513,7 +5513,7 @@ O, dixit, felicem coniuge matrem
 
 qua nunc utimur plurimum. iam enim ad id genus, quod et frequentissimum est et exspectari maxime credo, veniendum est, in quo per quandam suspicionem quod non dicimus accipi volumus, non utique contrarium, ut in Εἰρωνείᾳ, sed aliud latens et auditori quasi inveniendum. quod , ut supra ostendi, iam fere solum schema a nostris vocatur, et unde controversiae figuratae dicuntur.
 
-eius triplex usus est: unus si dicere palam parum tutum est, alter si non decet, tertius qui venustatis modo gratia adhibetur et ipsa novitate ac varietate magis, quam si relatio si relatio, A (si r by 2nd hand ): si elatio, B. sit recta, delectat.
+eius triplex usus est: unus si dicere palam parum tutum est, alter si non decet, tertius qui venustatis modo gratia adhibetur et ipsa novitate ac varietate magis, quam si relatio sit recta, delectat.
 
 ex his, quod est primum, frequens in scholis est. nam et pactiones deponentium imperium tyrannorum et post bellum civile senatus consulta finguntur et capitale est obiicere anteacta, ut, quod in foro non expedit, illic nec liceat. sed schematum condicio non eadem est. quamlibet enim apertum, quod modo et aliter intelligi possit, in illos tyrannos bene dixeris, quia periculum tantum, non etiam offensa vitatur. quod si ambiguitate sententiae possit eludi, nemo non illi furto favet.
 
@@ -5533,17 +5533,17 @@ nam , quia per leges institui uxor non poterat heres, id fuerat actum, ut ad eam
 
 quae probare non possis, figura potius spargenda sunt. haeret enim nonnunquam telum illud occultum, et hoc ipso, quod non apparet, eximi non potest; at si idem dicas palam, et defenditur et probandum est.
 
-cum autem obstat nobis personae reverentia, (quod secundum posuimus genus) tanto cautius dicendum est, quanto validius bonos inhibet pudor quam metus. hic vero tegere nos iudex quod sciamus et verba vi quadam veritatis erumpentia credat coercere. nam quanto magis quanto magis, Halm : quo minus, AB aut ipsi, in quos dicimus, aut iudices aut adsistentes oderint hanc maledicendi lasciviam, si velle nos credant? aut quid interest quomodo dicatur,
+cum autem obstat nobis personae reverentia, (quod secundum posuimus genus) tanto cautius dicendum est, quanto validius bonos inhibet pudor quam metus. hic vero tegere nos iudex quod sciamus et verba vi quadam veritatis erumpentia credat coercere. nam quanto magis aut ipsi, in quos dicimus, aut iudices aut adsistentes oderint hanc maledicendi lasciviam, si velle nos credant? aut quid interest quomodo dicatur,
 
 cum et res et animus intelligitur? quid dicendo denique proficimus, nisi ut palam sit facere nos quod ipsi sciamus non esse faciendum? atqui praecipue prima, quibus praecipere coeperam, tempora hoc vitio laborarunt. dicebant enim libenter tales controversias, quae difficultatis gratia placent, cum sint multo faciliores.
 
 nam rectum genius adprobari nisi maximis viribus non potest; haec deverticula et anfractus suffugia sunt infirmitatis, ut qui cursu parum valent, flexu eludant, cum haec, quae adfectatur, ratio sententiarum non procul a ratione iocandi abhorreat. adiuvat etiam, quod auditor gaudet intelligere, et favet ingenio suo et alio dicente se laudat.
 
-itaque non solum, si persona obstaret rectae orationi, (quo in genere saepius modo quam figuris opus est) decurrebant ad schemata, sed faciebant illis locum etiam, ubi inutiles ac nefariae essent, ut si si, Regius : is, MSS. pater, qui infamem in matrem filium secreto occidisset, reus malae tractationis iacularetur in uxorem obliquis sententiis. nam quid impurius, quam retinuisse talem?
+itaque non solum, si persona obstaret rectae orationi, (quo in genere saepius modo quam figuris opus est) decurrebant ad schemata, sed faciebant illis locum etiam, ubi inutiles ac nefariae essent, ut si pater, qui infamem in matrem filium secreto occidisset, reus malae tractationis iacularetur in uxorem obliquis sententiis. nam quid impurius, quam retinuisse talem?
 
 quid porro tam contrarium quam eum, qui accusetur, quia summum nefas suspicatus de uxore videatur, confirmare id ipsa defensione, quod diluendum est? at si iudicum sumerent animum, scirent, quam eiusmodi actionem laturi non fuissent, multoque etiam minus, cum in parentes abominanda crimina spargerentur.
 
-et quatenus huc incidimus, paulo plus scholis demus. nam et in his educatur orator, et in eo, quomodo declamatur, positum est etiam, quomodo agatur. dicendum ergo de iis quoque, in quibus non asperas figuras, sed palam contrarias causae plerique fecerunt: tyrannidis adfectatae damnatis torqueatur, ut conscios indicet; accusator eius optet, quod volet. patrem quidam damnavit, quidam damnavit, B: qui accusavit, A. optat, ne is torqueatur; paler ei contra dicit.
+et quatenus huc incidimus, paulo plus scholis demus. nam et in his educatur orator, et in eo, quomodo declamatur, positum est etiam, quomodo agatur. dicendum ergo de iis quoque, in quibus non asperas figuras, sed palam contrarias causae plerique fecerunt: tyrannidis adfectatae damnatis torqueatur, ut conscios indicet; accusator eius optet, quod volet. patrem quidam damnavit, optat, ne is torqueatur; paler ei contra dicit.
 
 nemo se tenuit agens pro patre, quin figuras in filium faceret, tanquam illum conscium in tormentis nominaturus. quo quid stultius? nam cum hoc iudices intellexerint, aut non torquebitur, cum ideo torqueri velit, aut torto non credetur.
 
@@ -5553,7 +5553,7 @@ quare ne illud quidem semper succurret sic dicentibus, patrocinium hoc voluit, q
 
 est et ille in hoc genere frequens error, ut putent aliud quosdam dicere aliud velle, praecipue cum in themate est aliquem, ut sibi mori liceat, postulare, ut in illa controversia, qui aliquando fortiter fecerat et alio bello petierat, ut militia vacaret ex lege quod quinquagenarius esset, adversante filio ire in aciem coactus deseruit. filius , qui fortiter eodem proelio fecerat, incolumitatem eius optat; contra dicit pater. non enim, inquiunt, mori vult, sed invidiam filio facere.
 
-equidem rideo, quod illi sic timent tanquam ipsi morituri et in consilium suos metus ferunt, obliti tot exemplorum circa voluntariam mortem, causarum quoque, quas habet factus ex viro forti desertor. sed de una controversia loqui loqui, B: sequi contrarium, A. supervacuum est.
+equidem rideo, quod illi sic timent tanquam ipsi morituri et in consilium suos metus ferunt, obliti tot exemplorum circa voluntariam mortem, causarum quoque, quas habet factus ex viro forti desertor. sed de una controversia loqui supervacuum est.
 
 ego in universum neque oratoris puto esse unquam praevaricari, neque litem intelligo, in qua pars utraque idem velit, neque tam stultum quemquam, qui, si vivere vult, mortem potius male petat quam omnino non petat.
 
@@ -5571,7 +5571,7 @@ quaesitum etiam est, quomodo responderi contra figuras oporteret. et quidam semp
 
 atque etiam si fuerint crebriores figurae quam ut dissimulari possint, postulandum est, ut nescio quid illud, quod adversarii obliquis sententiis significare voluerint, si fiducia sit, obiiciant palam, aut certe non exigant ut, quod ipsi non audent dicere, id iudices non modo intelligant, sed etiam credant.
 
-utilis aliquando etiam dissimulatio est, ut in eo (nota enim fabula est), qui, cum esset contra eum dictum, iura per paris patris, Seneca (Contr. 7), Seton.: patroni, MSS. tui cineres, paratum se esse respondit, et iudex condicione usus est, clamante multum advocato schemata de rerum natura tolli, ut protinus etiam praeceptum sit, eiusmodi figuris utendum temere non esse.
+utilis aliquando etiam dissimulatio est, ut in eo (nota enim fabula est), qui, cum esset contra eum dictum, iura per paris tui cineres, paratum se esse respondit, et iudex condicione usus est, clamante multum advocato schemata de rerum natura tolli, ut protinus etiam praeceptum sit, eiusmodi figuris utendum temere non esse.
 
 tertium est genus, in quo sola melius dicendi petitur occasio; ideoque id Cicero non putat esse positum in contentione. tale est illud, quo idem utitur in Clodium: quibus iste, qui omnia sacrificia nosset, facile ab se deos placari posse arbitrabatur.
 
@@ -5581,7 +5581,7 @@ frequens illud est nec magnopere captandum, quod petitur a iureiurando, ut pro e
 
 levissimum autem longe genus ex verbo, etiamsi est apud Ciceronem in Clodiam, praesertim quam omnes amicam omnium potius quam cuiusquam inimicam putaverunt.
 
-comparationem equidem video figuram quoque quoque, Halm : non, MSS. esse, cum sit interim probationis, interim etiam causae genus, et sit talis eius forma, qualis est pro Murena, vigilas tu de nocte, ut tuis consultoribus respondeas, ille, ut eo, quo contendit, intendit, MSS. of Cicero. mature cum exercitu perveniat; te gallorum illum buccinarum cantus exsuscitat et cetera.
+comparationem equidem video figuram quoque esse, cum sit interim probationis, interim etiam causae genus, et sit talis eius forma, qualis est pro Murena, vigilas tu de nocte, ut tuis consultoribus respondeas, ille, ut eo, quo contendit, mature cum exercitu perveniat; te gallorum illum buccinarum cantus exsuscitat et cetera.
 
 nescio an orationis potius quam sententiae sit. id enim solum mutatur, quod non universa universis, sed singula singulis opponuntur. et Celsus tamen et non negligens auctor Visellius in hac eam parte posuerunt, Rutilius quidem Lupus in utroque genere, idque ἀντίθετον vocat.
 
@@ -5593,7 +5593,7 @@ praeter haec Celsus excludere, asseverare, detrectare, excitare iudicem, proverb
 
 partitionem quoque et propositionem et divisionem et rerum duarum cognationem, quod est, ut idem valeant quae videntur esse diversa, ut non is demum sit veneficus, qui vitam abstulit data potione, sed etiam qui mentem; quod est in parte finitionis.
 
-Rutilius sive Gorgias, ἀναγκαῖον, ἀνάμνησιν, ἀνθυποφορὰν, ἀνθυποφοράν, παραύξησιν, προέκθεσιν, quod est dicere quid fieri oportuerit, deinde quid factum sit; ἐναντιότητα unde sint enthymemata κατ᾽ ἐναντίωσιν, κατ᾽ ἐναντίωσιν. Kayser : ΚΑΤΑΙΤΙΑΞΙϜ, A : ΚΑΤΑΙΚΚΤΙΑΞΙΝ, B. μετάληψιν etiam, quo statu Hermagoras utitur. Visellius , quanquam paucissimas faciat figuras, ἐνθύμημα tamen, quod commentum vocat, et, rationem appellans, ἐπιχείρημα inter eas habet. quod quidem recipit quodammodo et Celsus; nam consequens an epichirema sit dubitat. Visellius adiicit et sententiam.
+Rutilius sive Gorgias, ἀναγκαῖον, ἀνάμνησιν, ἀνθυποφορὰν, ἀνθυποφοράν, παραύξησιν, προέκθεσιν, quod est dicere quid fieri oportuerit, deinde quid factum sit; ἐναντιότητα unde sint enthymemata κατ᾽ ἐναντίωσιν, μετάληψιν etiam, quo statu Hermagoras utitur. Visellius , quanquam paucissimas faciat figuras, ἐνθύμημα tamen, quod commentum vocat, et, rationem appellans, ἐπιχείρημα inter eas habet. quod quidem recipit quodammodo et Celsus; nam consequens an epichirema sit dubitat. Visellius adiicit et sententiam.
 
 invenio , qui aggregent his διασκευάς, ἀπαγορεύσις, παραδιηγήσεις. sed ut haec non sunt schemata, sic alia vel sint forsitan ac nos fugerint vel etiam nova fieri adhuc possint, eiusdem tamen naturae cuius sunt ea de quibus dictum est.
 
@@ -5605,15 +5605,15 @@ verum auctoritate, vetustate, consuetudine plerumque defenditur, saepe etiam rat
 
 quodsi quis parce et, cum res poscet, utetur; velut asperso quodam condimento iucundior erit; at qui nimium adfectaverit, ipsam illam gratiam varietatis amittet. quanquam sunt quaedam figurae ita receptae, ut paene iam hoc ipsum nomen effugerint; quae etiamsi fuerint crebriores, consuetas aures minus ferient.
 
-nam secretae et extra vulgarem usum positae ideoque magis notabiles, notabiles, Lochmann: nobiles, MSS. ut novitate aurem excitant, ita copia satiant, et se non obvias fuisse dicenti sed conquisitas et ex omnibus latebris extractas congestasque declarant.
+nam secretae et extra vulgarem usum positae ideoque magis notabiles, ut novitate aurem excitant, ita copia satiant, et se non obvias fuisse dicenti sed conquisitas et ex omnibus latebris extractas congestasque declarant.
 
 fiunt ergo et circa genus figurae in nominibus; nam et oculis capti talpae et timidi dammae dicuntur a Vergilio; sed subest ratio, quia sexus uterque altero significatur, tamque mares esse talpas dammasque quam feminas certum est; et in verbis, ut fabricatus est gladium et inimicum poenitus es.
 
 quod mirum minus est, quia in natura verborum est et quae facimus patiendi modo saepe dicere, ut arbitror, suspicor, et contra faciendi quae patimur, ut vapulo; ideoque frequens permutatio est et pleraque utroque modo efferuntur: luxuriatur, luxuriat; fluctuatur, fluctuat; adsentior, adsentio.
 
-est figura et in numero, vel cum singulari pluralis subiungitur, gladio pugnacissima gens Romani ( gens enim ex multis), vel ex diverso, qui qui, Politianus: cui, MSS. of Quintilian and Virgil. non risere parentes, nec deus hunc mensa dea nec dignata cubili est; Ex illis enim, qui non risere, hic quem non dignata.
+est figura et in numero, vel cum singulari pluralis subiungitur, gladio pugnacissima gens Romani ( gens enim ex multis), vel ex diverso, qui non risere parentes, nec deus hunc mensa dea nec dignata cubili est; Ex illis enim, qui non risere, hic quem non dignata.
 
-qui qui, Politianus: cui, MSS. of Quintilian and Virgil. non risere parentes,
+qui non risere parentes,
 
 nec deus hunc mensa dea nec dignata cubili est;
 
@@ -5625,7 +5625,7 @@ aspexi ,
 
 magnum dat ferre talentum,
 
-interim etiam dubitari potest, cui vitio simile sit schema: ut in hoc virus est vitium fugere: aut enim partes orationis mutat ex illo virtus est fuga vitiorum, aut casus ex illo virtutis est vilium fugere; multo tamen hoc utroque excitatius. iunguntur interim schemata: Sthenelus sciens pugnae; est enim scitus Sthenelus scitus Sthenelus, vulgo: sciusticus, B: scius cus, A: sciens scitus, cod. monac .: suus scenalus, cod. arqentor . pugnandi.
+interim etiam dubitari potest, cui vitio simile sit schema: ut in hoc virus est vitium fugere: aut enim partes orationis mutat ex illo virtus est fuga vitiorum, aut casus ex illo virtutis est vilium fugere; multo tamen hoc utroque excitatius. iunguntur interim schemata: Sthenelus sciens pugnae; est enim scitus Sthenelus pugnandi.
 
 virus est vitium fugere:
 
@@ -5637,7 +5637,7 @@ haec quoque est, quam ἑτεροίωσιν vocant, cui non dissimilis ἐξαλ
 
 quae ille quidem fecerit schemata, an idem vocari possint, videndum, quia recepta sint. nam receptis etiam vulgo auctore contenti sumus: ut nunc evaluit rebus agentibus, quod Pollio in Labieno damnat, et contumeliam fecit, quod a Cicerone reprehendi notum est; ad fici enim contumelia dicebant.
 
-alia commendatio vetustatis, cuius amator unice Vergilius fuit: vel cum se pavidum contra mea iurgia iactat.— fingit, MSS. of Virgil. progeniem sed enim Troiano a sanguine duci audierat . Quorum similia apud veteres tragicos comicosque sunt plurima.
+alia commendatio vetustatis, cuius amator unice Vergilius fuit: vel cum se pavidum contra mea iurgia iactat.— progeniem sed enim Troiano a sanguine duci audierat . Quorum similia apud veteres tragicos comicosque sunt plurima.
 
 vel cum se pavidum contra mea iurgia iactat.—
 
@@ -5653,7 +5653,7 @@ tam magis illa tremens et tristibus effera flammis,
 
 quam magis effuso crudescunt sanguine pugnae.
 
-pleni talibus antiqui sunt; initio Eunuchi Terentius quid igitur faciam? inquit. alius : ain alius: ain, Halm : alius in, AG: allusit, some late MSS. tandem leno? Catullus in Epithalamio, dum innupta manet, dum cara suis est, cum prius dum significet quoad, sequens usque eo.
+pleni talibus antiqui sunt; initio Eunuchi Terentius quid igitur faciam? inquit. alius : ain tandem leno? Catullus in Epithalamio, dum innupta manet, dum cara suis est, cum prius dum significet quoad, sequens usque eo.
 
 dum innupta manet, dum cara suis est,
 
@@ -5661,17 +5661,17 @@ ex Graeco vero translata vel Sallustii plurima, quale est, vulgus amat fieri, ve
 
 Tyrrhenum navigat aequor.
 
-ex eadem parte figurarum priore dicto priore dicto is meaningless and the sense of ex eadem parte is obscure (?= Graecisms ). et adiectio est, quae videri potest supervacua, sed non sine gratia est: nam neque Parnasi vobis iuga, nam neque Pindi; potest enim deesse alterum nam. et apud Horatium illud, Fabriciumque , hunc et intonsis incomptis, MSS. of Horace. Curium capillis. sed detractiones, quae in complexu sermonis aut vitium habent aut figuram; accede ad ignem, iam calesces plus satis. plus enim quam satis est.
+ex eadem parte figurarum priore dicto et adiectio est, quae videri potest supervacua, sed non sine gratia est: nam neque Parnasi vobis iuga, nam neque Pindi; potest enim deesse alterum nam. et apud Horatium illud, Fabriciumque , hunc et intonsis Curium capillis. sed detractiones, quae in complexu sermonis aut vitium habent aut figuram; accede ad ignem, iam calesces plus satis. plus enim quam satis est.
 
 nam neque Parnasi vobis iuga, nam neque Pindi;
 
 Fabriciumque ,
 
-hunc et intonsis incomptis, MSS. of Horace. Curium capillis.
+hunc et intonsis Curium capillis.
 
 accede ad ignem, iam calesces plus satis.
 
-nam de altera quae detractione pluribus dicendum quae bracketed by Halm: dicendum, Regius : adiiciendum, MSS. est. utimur vulgo et comparativis pro absolutis, ut cum se quis infirmiorem esse dicet; duo inter se comparativa committimus: si te, Catilina, comprehendi, si interfici iussero, credo, erit verendum mihi, ne non potius hoc omnes boni serius a me quam quisquam crudelius factum esse dicat.
+nam de altera quae detractione pluribus dicendum est. utimur vulgo et comparativis pro absolutis, ut cum se quis infirmiorem esse dicet; duo inter se comparativa committimus: si te, Catilina, comprehendi, si interfici iussero, credo, erit verendum mihi, ne non potius hoc omnes boni serius a me quam quisquam crudelius factum esse dicat.
 
 sunt et illa non similia soloecismo quidem, sed tamen numerum mutantia, quae et tropis adsignari solent, ut de uno pluraliter dicamus: sed nos immensum spatiis confecimus aequor; et de pluribus singulariter, haud secus ac patriis acer Romanus in armis. Specie diversa sed genere eadem et haec sunt,
 
@@ -5687,7 +5687,7 @@ ne mihi tum molles sub divo carpere somnos,
 
 neu dorso nemoris libeat iacuisse per herbas,
 
-sed nostra persona utimur pro aliena, et alios pro aliis fingimus. utriusque rei exemplum pro Caecina. Pisonem , adversae partis advocatum, adloquens Cicero dicit, restituisse te dixti; nego me ex edicto praetoris restitutum esse; verum enim est illud; restituisse se se added by Halm. Aebutius dixit, Caecina nego me ex edicto praetoris restitutum esse; et ipsum dixti, excussa syllaba, figura in verbo.
+sed nostra persona utimur pro aliena, et alios pro aliis fingimus. utriusque rei exemplum pro Caecina. Pisonem , adversae partis advocatum, adloquens Cicero dicit, restituisse te dixti; nego me ex edicto praetoris restitutum esse; verum enim est illud; restituisse se Aebutius dixit, Caecina nego me ex edicto praetoris restitutum esse; et ipsum dixti, excussa syllaba, figura in verbo.
 
 illa quoque ex eodem genere possunt videri: unum quod interpositionem vel interclusionem dicimus, Graeci παρένθεσιν, παρέμπτωσιν vocant, dum continuationi sermonis medius aliqui sensus intervenit: ego cum te ( mecum enim saepissime loquitur ) patriae reddidissem; cui adiiciunt hyperbaton,
 
@@ -5735,7 +5735,7 @@ possunt media quoque respondere vel primis, ut te nemus Angitiae, vitrea te Fuci
 
 te nemus Angitiae, vitrea te Fucinus unda;
 
-est et illud repetendi genus, quod simul simul, Spalding : semel, MSS. proposita iterat et dividit: Iphitus et Pelias mecum, quorum Iphitus aevo iam gravior, Pelias et vulnere tardus Ulixi. Ἐπάνοδος dicitur Graece, nostri regressionem vocant. nec solum in eodem sensu,
+est et illud repetendi genus, quod simul proposita iterat et dividit: Iphitus et Pelias mecum, quorum Iphitus aevo iam gravior, Pelias et vulnere tardus Ulixi. Ἐπάνοδος dicitur Graece, nostri regressionem vocant. nec solum in eodem sensu,
 
 Iphitus et Pelias mecum, quorum Iphitus aevo
 
@@ -5753,7 +5753,7 @@ hic segetes, illic ueniunt felicius uuae,
 
 arborei fetus alibi,
 
-ilia vero apud Ciceronem mira figurarum mixtura deprehenditur, in qua et primum verbum primum verbum, Halm : primo verbo, MSS. longo post intervallo redditum est ultimum et media primis et mediis ultima congruunt: vestrum iam hic factum reprehenditur, patres conscripti, non meum; ac pulcherrimum quidem factum, verum, ut dixi, non meum, sed vestrum.
+ilia vero apud Ciceronem mira figurarum mixtura deprehenditur, in qua et primum verbum longo post intervallo redditum est ultimum et media primis et mediis ultima congruunt: vestrum iam hic factum reprehenditur, patres conscripti, non meum; ac pulcherrimum quidem factum, verum, ut dixi, non meum, sed vestrum.
 
 hanc frequentiorem repetitionem πλοκήν vocant, quae fit ex permixtis figuris, ut supra dixi, utque se habet epistola ad Brutum, ego cum in gratiam redierim cum Appio Claudio, et redierim per Cn.
 
@@ -5763,9 +5763,9 @@ usque adeone
 
 scire tuum nihil est, nisi te scire hoc sciat alter?
 
-sed sensus quoque toti, quemadmodum coeperunt, desinunt: venit ex Asia. hoc ipsum quam novum! tribunus plebis venit ex Asia. * eadem tamen periodo et verbum primum ultimum primum ultimum, suggested by Halm: ultimum primum, refertur, tertium iam sermone, adiectum est enim verumtamen venit. interim sententia quidem repetitur, sed non eodem sed non eodem, added by Meister. verborum ordine: quid Cleomenes facere potuit? non enim possum quemquam insimulare falso. quid , inquam, magno opere potuit Cleomenes facere? the text is as given by the best MSS. of Cicero. the best MSS. of Quintilian, however, read facere Cleomenes potuit.
+sed sensus quoque toti, quemadmodum coeperunt, desinunt: venit ex Asia. hoc ipsum quam novum! tribunus plebis venit ex Asia. * eadem tamen periodo et verbum primum ultimum refertur, tertium iam sermone, adiectum est enim verumtamen venit. interim sententia quidem repetitur, sed non eodem verborum ordine: quid Cleomenes facere potuit? non enim possum quemquam insimulare falso. quid , inquam, magno opere potuit Cleomenes facere?
 
-prioris etiam sententiae verbum ultimum ac sequentis primum primum added by Badius. frequenter est idem, quo quidem schemate utuntur poetae saepius: Pierides, vos haec facietis maxima Gallo, Gallo , cuius amor tantum mihi crescit in horas. Sed ne oratores quidem raro: hic tamen vivit; vivit? immo vero etiam in senatum venit.
+prioris etiam sententiae verbum ultimum ac sequentis primum frequenter est idem, quo quidem schemate utuntur poetae saepius: Pierides, vos haec facietis maxima Gallo, Gallo , cuius amor tantum mihi crescit in horas. Sed ne oratores quidem raro: hic tamen vivit; vivit? immo vero etiam in senatum venit.
 
 Pierides, vos haec facietis maxima Gallo,
 
@@ -5777,7 +5777,7 @@ et in eundem alio libro: abiit , excessit, erupit, evasit. hoc Caecilio πλεο
 
 non video. nam et geminatio et repetitio et qualiscunque adiectio πλεονασμός videri potest. nec verba modo, sed sensus quoque idem facientes acervantur: perturbatio istum mentis et quaedam scelerum offusa caligo et ardentes furiarum faces excitarunt.
 
-congeruntur et diversa: mulier , tyranni saeva crudelitas, patris amor, ira praeceps, temeritatis dementia. sed apud Ovidium: sed grave Nereidum numen, sed corniger Ammon, sed quae visceribus veniebat belua ponti exsaturanda meis. Inveni, qui et hoc πλοκήν after πλοκήν followed by late MSS. continues: usque deducit et apud nostrum etiam tragicum. Iove propagatus est ut perhibent Tantalus ( see sect. 57) per me et investigata, etc. vocaret:
+congeruntur et diversa: mulier , tyranni saeva crudelitas, patris amor, ira praeceps, temeritatis dementia. sed apud Ovidium: sed grave Nereidum numen, sed corniger Ammon, sed quae visceribus veniebat belua ponti exsaturanda meis. Inveni, qui et hoc πλοκήν vocaret:
 
 sed grave Nereidum numen, sed corniger Ammon,
 
@@ -5785,9 +5785,9 @@ sed quae visceribus veniebat belua ponti
 
 exsaturanda meis.
 
-cui non adsentior, cum sit unius figurae, mixta quoque et idem et diversum significantia, quod et ipsum διαλλαγὴν vocant. quaero ab inimicis, sintne haec investigate, comperta, before patefacta MSS. give idē or id est, which, if pate. facta be correct, must be deleted. alternately Halm deletes id est patefacta as a gloss, also expunging deleta. patefacta, sublata, deleta, exstincta per me. investigata , comperta, patefacta aliud ostendunt; sublata, deleta, extincta sunt inter se similia, sed non etiam prioribus.
+cui non adsentior, cum sit unius figurae, mixta quoque et idem et diversum significantia, quod et ipsum διαλλαγὴν vocant. quaero ab inimicis, sintne haec investigate, comperta, patefacta, sublata, deleta, exstincta per me. investigata , comperta, patefacta aliud ostendunt; sublata, deleta, extincta sunt inter se similia, sed non etiam prioribus.
 
-sed hoc autem exemplum et superius aliam quoque efficiunt figuram, quae, quia coniunctionibus caret, dissolutio vocatur, apta, cum quid instantius dicimus; nam et singula inculcantur et quasi plura fiunt. ideoque utimur hac figura non in singulis modo verbis, sed sententiis etiam, ut Cicero dicit contra contionem Metelli: qui indicabantur, eos vocari, custodiri, ad senatum adduci iussi; in senatum sunt introducti, et totus hic locus talis est. hoc genus et βραχυλογίαν vocant, quae potest esse copulata dissolutio. contrarium illud illud, Halm : ut, AG. est schema, quod coniunctionibus abundat. illud ἀσύνδετον, hoc πολυσύνδετον dicitur.
+sed hoc autem exemplum et superius aliam quoque efficiunt figuram, quae, quia coniunctionibus caret, dissolutio vocatur, apta, cum quid instantius dicimus; nam et singula inculcantur et quasi plura fiunt. ideoque utimur hac figura non in singulis modo verbis, sed sententiis etiam, ut Cicero dicit contra contionem Metelli: qui indicabantur, eos vocari, custodiri, ad senatum adduci iussi; in senatum sunt introducti, et totus hic locus talis est. hoc genus et βραχυλογίαν vocant, quae potest esse copulata dissolutio. contrarium illud est schema, quod coniunctionibus abundat. illud ἀσύνδετον, hoc πολυσύνδετον dicitur.
 
 sed hoc est vel iisdem saepius repetitis, ut tectumque laremque armaque Amyclaeumque canem Cressamque pharetram; vel diversis:
 
@@ -5797,13 +5797,13 @@ armaque Amyclaeumque canem Cressamque pharetram;
 
 arma virumque — multum ille et terris — multa quoque.
 
-adverbia quoque et pronomina variantur, hic illum vidi iuvenem, — bis senos cui nostra dies, — hic mihi responsum primus dedit ille petenti. sed utrumque horum acervatio est, eat, Spalding : et, MSS. tantum iuncta aut dissoluta.
+adverbia quoque et pronomina variantur, hic illum vidi iuvenem, — bis senos cui nostra dies, — hic mihi responsum primus dedit ille petenti. sed utrumque horum acervatio est, tantum iuncta aut dissoluta.
 
 omnibus scriptores sua nomina dederunt, sed varia et ut cuique fingenti placuit. fons quidem unus, quia acriora facit et instantiora quae dicimus et vim quandam prae se ferentia velut saepius erumpentis adfectus. gradatio , quae dicitur κλῖμαξ apertiorem habet artem et magis adfectatam ideoque esse rarior debet.
 
-est autem ipsa quoque adiectionis; repetit enim quae dicta sunt et, priusquam ad aliud descendat, in prioribus resistit. eius exemplum ex Graeco notissimo transferatur: non enim dixi quidem sed non Omitted by MSS. scripsi, nec scripsi quidem Omitted by MSS. sed non obii legationem, nec Omitted by MSS. obii quidem legationem Omitted by MSS. sed non persuasi Thebanis.
+est autem ipsa quoque adiectionis; repetit enim quae dicta sunt et, priusquam ad aliud descendat, in prioribus resistit. eius exemplum ex Graeco notissimo transferatur: non enim dixi quidem sed non scripsi, nec scripsi quidem sed non obii legationem, nec obii quidem legationem sed non persuasi Thebanis.
 
-sint tamen tradita et Latina: Africano virtutem industria, virtus gloriam, gloria aemulos comparavit. et Calvi: non ergo magis pecuniarum repetundarum quam maiestatis, neque maiestatis magis quam Plautiae legis, neque Plautiae legis magis quam ambitus, neque ambitus magis quam omnium legum iudicia perierunt. iudicia perierunt, aquila Romanus: est, MSS.
+sint tamen tradita et Latina: Africano virtutem industria, virtus gloriam, gloria aemulos comparavit. et Calvi: non ergo magis pecuniarum repetundarum quam maiestatis, neque maiestatis magis quam Plautiae legis, neque Plautiae legis magis quam ambitus, neque ambitus magis quam omnium legum iudicia perierunt.
 
 invenitur apud poetas quoque, ut apud Homerum de sceptro, quod a Iove ad Agamemnonem usque deducit, et apud nostrum etiam tragicum: Iove propagatus est, ut perhibent, Tantalus, ex Tantalo ortus Pelops, ex Pelope autem satus Atreus , qui nostrum porro propagat genus.
 
@@ -5821,9 +5821,9 @@ nouimus et qui te, transversa tuentibus hircis,
 
 sed quo, sed faciles Nymphae risere, sacello.
 
-nam illa quid taceat incertum est aut certe longiore sermone explicandum, hic unum verbum et manifestum quidem desideratur; quod si aposiopesis est, nihil non, in quo deest aliquid, idem appellabitur. ego ne ego ne, Spalding : nego, AG. illud quidem aposiopesin semper voco,
+nam illa quid taceat incertum est aut certe longiore sermone explicandum, hic unum verbum et manifestum quidem desideratur; quod si aposiopesis est, nihil non, in quo deest aliquid, idem appellabitur. ego ne illud quidem aposiopesin semper voco,
 
-in quo res quaecunque relinquitur intelligenda, ut ea quae in epistolis Cicero: data Lupercalibus, quo die Antonius Caesari; non enim obticuit sed sed added by Halm. lusit, quia nihil aliud intelligi poterat quam hoc, diadema imposuit.
+in quo res quaecunque relinquitur intelligenda, ut ea quae in epistolis Cicero: data Lupercalibus, quo die Antonius Caesari; non enim obticuit sed lusit, quia nihil aliud intelligi poterat quam hoc, diadema imposuit.
 
 altera est per detractionem figura, de qua modo dictum, cui coniunctiones eximuntur. tertia , quae dicitur ἐπεζευγμένον in qua unum ad verbum plures sententiae referuntur, quarum unaquaeque desideraret illud, si sola poneretur. id accidit aut praeposito verbo, ad quod reliqua respiciant: vicit pudorem libido, timorem audacia, rationem amentia; aut illato, quo plura cluduntur: neque enim is es, Catilina, ut te aut pudor unquam a turpitudine aut metus a periculo aut ratio a furore revocaverit.
 
@@ -5837,13 +5837,13 @@ edico , et dira bellum cum genie gerendum.
 
 tam deest avaro, quod habet, quam quod non habet.
 
-cui dant nomen παραδιαστολήν qua similia discernuntur: qua similia discernuntur, Regius : quia simili discernunt, AG. cum te pro astuto sapientem appelles, pro confidente, fortem, pro illiberali diligentem. quod totum pendet ex finitione, ideoque an figura sit dubito. cui contraria est ea, qua fit ex vicino transitus ad diversa ut similia: brevis esse laboro, obscurus fio, et quae sequuntur.
+cui dant nomen παραδιαστολήν qua similia discernuntur: cum te pro astuto sapientem appelles, pro confidente, fortem, pro illiberali diligentem. quod totum pendet ex finitione, ideoque an figura sit dubito. cui contraria est ea, qua fit ex vicino transitus ad diversa ut similia: brevis esse laboro, obscurus fio, et quae sequuntur.
 
 tertium est genus figurarum, quod aut similitudine aliqua vocum aut paribus aut contrariis convertit in se aures et animos excitat. hinc est παρονομασία, quae dicitur adnominatio. ea non uno modo fieri solet: ex vicinia (quadam praedicti nominis ducta casibus declinat, ut Domitius Afer pro Cloatilla, mulier omnium rerum imperita, in omnibus rebus infelix;
 
-et cum verbo idem verbum plus significans subiungitur: quando homo hostis, homo. quibus exemplis sum in aliud usus, sed in uno ἔμφασις est ἔμφασις estet, E. Wöffin: CPACIC est, A: fassis, falsis, fallis, other MSS. geminatio. παρονομασίᾳ contrarium est, quod eodem verbo quasi falsum arguitur: Quae lex privatis hominibus esse lex non uidebatur.
+et cum verbo idem verbum plus significans subiungitur: quando homo hostis, homo. quibus exemplis sum in aliud usus, sed in uno ἔμφασις est geminatio. παρονομασίᾳ contrarium est, quod eodem verbo quasi falsum arguitur: Quae lex privatis hominibus esse lex non uidebatur.
 
-cui confinis est ἀντανάκλασις eiusdem verbi contraria significatio. cum Proculeius> quereretur de filio, quod is mortem suam expectaret, et ille dixisset, se vero non exspectare: Immo, inquit, rogo exspectes. non ex eodem sed ex vicino diversum vicino diversum, sch ütz: diverso vicinum, MSS. accipitur, cum supplicio adficiendum dicas, quem supplicatione dignum iudicaris.
+cui confinis est ἀντανάκλασις eiusdem verbi contraria significatio. cum Proculeius> quereretur de filio, quod is mortem suam expectaret, et ille dixisset, se vero non exspectare: Immo, inquit, rogo exspectes. non ex eodem sed ex vicino diversum accipitur, cum supplicio adficiendum dicas, quem supplicatione dignum iudicaris.
 
 aliter quoque voces aut eaedem diversa in significatione ponuntur aut productione tantum vel correptione mutatae; quod etiam in iocis frigidum equidem tradi inter praecepta miror, eorumque exempla vitandi potius quam imitandi gratia pono:
 
@@ -5853,11 +5853,11 @@ cur ego non dicam, Furia, te furiam?
 
 videlicet alterius intellectus ad alterum. sed elegantius, quod est positum in distinguenda rei proprietate: hanc rei publicae pestem paulisper reprimi, non in perpetuum comprimi posse. sed quae praepositionibus in contrarium mutantur: non emissus ex urbe, sed immissius in urbem esse videatur. melius atque acrius, quod cum figura iucundum est tum etiam sensu valet: Emit morte immortalitatem.
 
-illa leviora: Non Pisonum sed pistorum et ex oratore arator. pessimum vero: ne patres conscripti videantur circumscripti; — raro evenit sed vehementer venit. sed sed, Halm : sic, MSS. contingit, ut aliqui sensus vehemens et acer venustatem aliquam non eadem ex voce voce, added by Christ. non dissona accipiat.
+illa leviora: Non Pisonum sed pistorum et ex oratore arator. pessimum vero: ne patres conscripti videantur circumscripti; — raro evenit sed vehementer venit. sed contingit, ut aliqui sensus vehemens et acer venustatem aliquam non eadem ex voce non dissona accipiat.
 
 sed cur me prohibeat pudor uti domestico exemplo? pater meus contra eum, qui se legationi immoriturum dixerat, deinde vix paucis diebus insumptis re infecta redierat, non exigo, ut inmoriaris legationi; immorare. nam et valet sensus ipse et in verbis tantum distantibus iucunde consonat vox, praesertim non captata, sed velut oblata, cum altero suo sit usus, alterum ab adversario acceperit.
 
-magnae veteribus curae fuit gratiam dicendi et paribus et contrariis acquirere. Gorgias in hoc immodicus, copiosus aetate utique prima Isocrates fuit. delectatus est his etiam M. Tullius, verum et modum adhibuit non ingratae, nisi copia redundet, voluptati et rem alioqui leuem sententiarum pondere implevit. nam per se frigida et inanis adfectatio, cum in acres incidit sensus, innatam gratiam innatam, 2nd hand of A.: inata, AG.: gratiam added by Meister. videtur habere non arcessitam.
+magnae veteribus curae fuit gratiam dicendi et paribus et contrariis acquirere. Gorgias in hoc immodicus, copiosus aetate utique prima Isocrates fuit. delectatus est his etiam M. Tullius, verum et modum adhibuit non ingratae, nisi copia redundet, voluptati et rem alioqui leuem sententiarum pondere implevit. nam per se frigida et inanis adfectatio, cum in acres incidit sensus, innatam gratiam videtur habere non arcessitam.
 
 similium fere quadruplex ratio est. nam est primum, quotiens verbum verbo aut non dissimile valde quaeritur, ut puppesque tuae pubesque tuorum; et sic in hac calamitosa fama quasi in aliqua perniciosissima flamma, et non enim tam spes laudanda quam res est, aut certe par et extremis syllabis consonans: non verbis, sed armis.
 
@@ -5865,13 +5865,13 @@ puppesque tuae pubesque tuorum;
 
 sed hoc quoque, quotiens in sententias acres incidit, pulchrum est: quantum possis, in eo semper experire, it prosis. hoc est πάρισον, ut plerisque placuit. Theo Stoicus πάρισον existimat, quod sit e membris non dissimilibus.
 
-secundum , ut clausula similiter cadat, syllabis iisdem in ultimam partem collatis: ὁμοιοτέλευτον vocant vocant, added by Cappcronnier. similem duarum sententiarum vel plurium finem: non modo ad salutem eius exstinguendam, sed etiam gloriam per tales viros infingendam. ex quibus fere fiunt, non tamen ut semper utique ultimis consonent, quae τρίκωλα dicuntur: vicit pudorem libido, timorem audacia, rationem amentia. sed in quaternas quoque ac plures haec ratio ire sententias potest. fit etiam singulis verbis: Hecuba hoc dolet, pudet, piget; et abiit , excessit, erupit, evasit.
+secundum , ut clausula similiter cadat, syllabis iisdem in ultimam partem collatis: ὁμοιοτέλευτον vocant similem duarum sententiarum vel plurium finem: non modo ad salutem eius exstinguendam, sed etiam gloriam per tales viros infingendam. ex quibus fere fiunt, non tamen ut semper utique ultimis consonent, quae τρίκωλα dicuntur: vicit pudorem libido, timorem audacia, rationem amentia. sed in quaternas quoque ac plures haec ratio ire sententias potest. fit etiam singulis verbis: Hecuba hoc dolet, pudet, piget; et abiit , excessit, erupit, evasit.
 
-tertium est, quod in eosdem casus cadit, ὁμοιόπτωτον dicitur. sed neque, quod finem habet similem, utique in eundem venit finem ὁμοιόπτωτον, quia ὁμοιόπτωτον est tantum casu simile, etiamsi dissimilia sint quae declinentur; nec tantum in fine deprehenditur, sed respondentibus respondentibus, Halm : respondent, AG. vel primis inter se vel mediis vel extremis vel etiam permutatis his, ut media primis et summa mediis accommodentur, et quocunque modo accommodari potest.
+tertium est, quod in eosdem casus cadit, ὁμοιόπτωτον dicitur. sed neque, quod finem habet similem, utique in eundem venit finem ὁμοιόπτωτον, quia ὁμοιόπτωτον est tantum casu simile, etiamsi dissimilia sint quae declinentur; nec tantum in fine deprehenditur, sed respondentibus vel primis inter se vel mediis vel extremis vel etiam permutatis his, ut media primis et summa mediis accommodentur, et quocunque modo accommodari potest.
 
-neque enim semper paribus syllabis constat, ut est apud Afrum, amisso nuper infelicis aulae si non infelicis aulae si non, an early emendation: infelicis auleis non, MSS. Halm conjectures infelicibus ausis non modo p.i.p., sed etiam solacio i.a. praesidio inter pericula tamen solacio inter adversa. eius fere videntur optima, in quibus initia sententiarum et fines, consentiunt, ut hic praesidio solacio, pericula adversa, pericula adversa, inserted by G Laubmann. paene paene ut, ed. ald : pedem et, MSS. ut similia sint verbis et paribus cadant et eodem modo desinant.
+neque enim semper paribus syllabis constat, ut est apud Afrum, amisso nuper infelicis aulae si non praesidio inter pericula tamen solacio inter adversa. eius fere videntur optima, in quibus initia sententiarum et fines, consentiunt, ut hic praesidio solacio, pericula adversa, paene ut similia sint verbis et paribus cadant et eodem modo desinant.
 
-etiam ut sint, quod est quartum, membris aequalibus, quod ἰσόκωλον dicitur: si , quantum in agro locisque desertis audacia potest, tantum in foro atque iudiciis impudentia valeret ἰσόκωλον est et ὁμοιόπτωτον habet; non minus nunc in causa cederet Aulus Caecina Sexti Aebutii impudentiae, quam tum in vi facienda cessit audaciae, ἰσόκωλον, ὁμοιόπτωτον, ὁμοιοτέλευτον. accedit et ex illa figura gratia, qua nomina dixi mutatis casibus repeti: non minus cederet quam cessit. at hoc at hoc, Halm : ad hue, AG. ὁμοιοτέλευτον et παρονομασία est: neminem alteri posse dare in matrimonium, nisi penes quem sit patrimonium.
+etiam ut sint, quod est quartum, membris aequalibus, quod ἰσόκωλον dicitur: si , quantum in agro locisque desertis audacia potest, tantum in foro atque iudiciis impudentia valeret ἰσόκωλον est et ὁμοιόπτωτον habet; non minus nunc in causa cederet Aulus Caecina Sexti Aebutii impudentiae, quam tum in vi facienda cessit audaciae, ἰσόκωλον, ὁμοιόπτωτον, ὁμοιοτέλευτον. accedit et ex illa figura gratia, qua nomina dixi mutatis casibus repeti: non minus cederet quam cessit. at hoc ὁμοιοτέλευτον et παρονομασία est: neminem alteri posse dare in matrimonium, nisi penes quem sit patrimonium.
 
 contrapositum autem vel, ut quidam vocant, contentio ( ἀντίθετον dicitur) non uno fit modo. nam et fit, si singula singulis opponuntur, ut in eo quod modo dixi, uicit pudorem libido, timorem audacia, et bina binis: non nostri ingenii, vestri auxilii est, et sententiae sententiis: dominetur in contionibus, iaceat in iudiciis.
 
@@ -5885,7 +5885,7 @@ fit etiam adsumpta illa figura, qua verba declinata repetuntur, quod ἀντιμ
 
 et eodem cluditur verbo: ut quod dicit de se. Roscio , etenim , cum artifex eiusmodi est, ut solus videatur dignus qui in scena, spectetur, tum vir eiusmodi est, ut solus dignus esse videatur, qui eo non accedat. est et in nominibus ex diverso collocatis sua gratia: si consul Antonius, Brutus hostis; si conservator rei publicae Brutus, hostis Antonius.
 
-olim plura de figuris quam necesse erat, et adhuc erunt, qui putent esse figuram: incredibile est, ( quod dico, sed verum; ἀνθυποφοράν vocant; et aliquis hoc semel tulit, nemo nemo, Badius : nego, MSS. bis, ego ter, διέξοδον et longius evectus sum sed redeo ad propositum, ἄφοδον.
+olim plura de figuris quam necesse erat, et adhuc erunt, qui putent esse figuram: incredibile est, ( quod dico, sed verum; ἀνθυποφοράν vocant; et aliquis hoc semel tulit, nemo bis, ego ter, διέξοδον et longius evectus sum sed redeo ad propositum, ἄφοδον.
 
 quaedam verborum figurae paulum figuris sententiarum declinantur, ut dubitatio. nam cum est in re, priori parti adsignanda est, cum in verbo, sequenti; sive me malitiam sive stultitiam dicere oportet.
 
@@ -5893,9 +5893,9 @@ item correctionis eadem ratio est; nam quod illic dubitat, hic emendat. etiam in
 
 ut fateor autem verborum quoque figuras posse plures reperiri a quibusdam, ita iis, quae ab auctoribus claris traduntur, meliores non adsentior. nam in primis M. Tullius multas in tertio De Oratore libro posuit, quas in Oratore postea scripto transeundo videtur ipse damnasse; quarum pars est, quae sententiarum potius quam uerborum sit: ut imminutio, improvisum, imago, sibi ipsi responsio, digressio, permissio, contrarium (hoc enim puto, quod dicitur ἐναντιότης ), sumpta ex adverso probatio.
 
-quaedam omnino non sunt figurae, sicut ordo, dinumeratio, circumscriptio, sive hoc nomine significatur comprehensa breviter sententia sive finitio; nam et hoc Cornificius atque Rutilius schema λέξεως putant. verborum autem concinna transgressio, id est hyperbaton, quod Caecilius quoque putat schema, a nobis est inter tropos tropos, added by Burmann. posita.
+quaedam omnino non sunt figurae, sicut ordo, dinumeratio, circumscriptio, sive hoc nomine significatur comprehensa breviter sententia sive finitio; nam et hoc Cornificius atque Rutilius schema λέξεως putant. verborum autem concinna transgressio, id est hyperbaton, quod Caecilius quoque putat schema, a nobis est inter tropos posita.
 
-sed mutatio, si si, Halm : etsi, MSS. ea est, quam Rutilius ἀλλοίωσιν vocat, dissimilitudinem ostendit horminum, rerum, factorum; quae si latius fiat, figura non est, si angustius, in ἀντίθετον cadet; si vero haec appellatio significat ὑπαλλαγήν, satis de ea dictum est.
+sed mutatio, si ea est, quam Rutilius ἀλλοίωσιν vocat, dissimilitudinem ostendit horminum, rerum, factorum; quae si latius fiat, figura non est, si angustius, in ἀντίθετον cadet; si vero haec appellatio significat ὑπαλλαγήν, satis de ea dictum est.
 
 quod vero schema est ad propositum subiecta ratio, quod Rutilius αἰτιολογίαν vocat? nam de illo dubitari possit, an schema sit distributis subiecta ratio, quod apud eundem primo loco positum est.
 
@@ -5913,7 +5913,7 @@ excoquitur vitium—et totus locus;
 
 seu plures calor ille vias,—Seu durat magis.
 
-nam si ἀνάκλασιν aut ἐπάνοδον dicit, de omnibus locuti sumus. sed quidquid id est, neque hoc neque superiora in Oratore repetit. sola est in eo libro posita pariter inter figuras uerborum exclamatio, quam sententiae potius puto (adfectus enim est), de de, Halm : et, MSS. ceteris omnibus consentio.
+nam si ἀνάκλασιν aut ἐπάνοδον dicit, de omnibus locuti sumus. sed quidquid id est, neque hoc neque superiora in Oratore repetit. sola est in eo libro posita pariter inter figuras uerborum exclamatio, quam sententiae potius puto (adfectus enim est), de ceteris omnibus consentio.
 
 adiicit his Caecilius περίφρασιν, de qua dixi; Cornificius interrogationem, ratiocinationem, subiectionem, transitionem, occultationem, praeterea sententiam, membrum, articulos, interpretationem, conclusionem. quorum priora alterius generis sunt schemata, sequentia schemata omnino non sunt.
 
@@ -5921,7 +5921,7 @@ item Rutilius praeter ea, quae apud alios quoque sunt, παρομολογίαν,
 
 adiiciam breviter, sicut ornent orationem opportune positae, ita ineptissimas esse, cum immodice petantur. sunt qui neglecto rerum pondere et viribus sententiarum, si vel inania verba in hos modos depravarunt, summos se iudicent artifices ideoque non desinant eas nectere, quas sine substantia sectari tam est ridiculum quam quaerere habitum gestumque sine corpore.
 
-sed ne eae quidem, quae recte fiunt, densandae sunt nimis; nam et vultus mutatio oculorumque coniectus multum in actu valet; sed si quis ducere os exquisitis modis et frontis ac luminum inconstantia trepidare non desinat, rideatur. sed oratio oratio, Regius : orator, MSS. habet rectam quandam velut faciem, quae ut stupere immobili rigore non debebit, ita saepius in ea, quam natura dedit, specie continenda est.
+sed ne eae quidem, quae recte fiunt, densandae sunt nimis; nam et vultus mutatio oculorumque coniectus multum in actu valet; sed si quis ducere os exquisitis modis et frontis ac luminum inconstantia trepidare non desinat, rideatur. sed oratio habet rectam quandam velut faciem, quae ut stupere immobili rigore non debebit, ita saepius in ea, quam natura dedit, specie continenda est.
 
 sciendum vero in primis, quid quisque in orando postulet locus, quid persona, quid tempus; maior enim pars harum figurarum posita est in delectatione. ubi vero atrocitate, invidia, miseratione pugnandum est, quis ferat contrapositis et pariter cadentibus et consimilibus irascentem, flentem, rogantem cum in his rebus cura uerborum deroget adfectibus fidem et ubicunque ars ostentatur, veritas abesse videatur.
 
@@ -5955,11 +5955,11 @@ denique quod cuique visum erit vehementer, dulciter, speciose dictum, solvat et 
 
 idem corrigit quae a Graccho composita durius putat. illum decet; nos hac sumus probatione contenti, quod ut scribendo, quae se nobis solutiora obtulerunt, componimus. quid enim attinet eorum exempla quaerere, quae sibi quisque experiri potest? illud notasse satis habeo, quo pulchriora et sensu et elocutione dissolveris, hoc orationem magis deformem fore, quia negligentia collocationis ipsa verborum luce deprehenditur.
 
-itaque ut confiteor, paene ultimam oratoribus artem compositionis, quae quidem quae quildem, Spalding : qua de, AG. perfecta sit, contigisse, ita illis quoque priscis habitam inter curas, ut quantum adhuc profecerant, puto. neque enim mihi quamlibet magnus auctor Cicero persuaserit, Lysian, Herodotum, Thucydiden parum studiosos eius fuisse. genus fortasse sint secuti non idem,
+itaque ut confiteor, paene ultimam oratoribus artem compositionis, quae quidem perfecta sit, contigisse, ita illis quoque priscis habitam inter curas, ut quantum adhuc profecerant, puto. neque enim mihi quamlibet magnus auctor Cicero persuaserit, Lysian, Herodotum, Thucydiden parum studiosos eius fuisse. genus fortasse sint secuti non idem,
 
 quod Demosthenes aut Plato, quanquam et ii ipsi inter se dissimiles fuerunt. nam neque illud ut Lysia dicendi textum tenue atque rasum laetioribus numeris corrumpendum erat; perdidisset enim gratiam, quae ut eo maxima est, simplicis atque inadfectati coloris, perdidisset fidem quoque. nam scribebat alis, non ipse dicebat, ut oportuerit esse illa rudibus et incompositis similia; quod ipsum compositio est.
 
-et historiae, quae currere debet ac ferri, minus convenissent insistentes clausulae et debita actionibus respiratio et cludendi inchoandique sententias ratio. in contionibus quidem etiam similiter cadentia quaedam et contraposita deprehendas. in Herodoto vero cum omnia (ut ego quidem sentio) leniter fluunt, tum ipsa διάλεκτος habet eam iucunditatem, ut latentes etiam ut se ut se numeros, Obrecht : innumeros, AG. numeros complexa videatur.
+et historiae, quae currere debet ac ferri, minus convenissent insistentes clausulae et debita actionibus respiratio et cludendi inchoandique sententias ratio. in contionibus quidem etiam similiter cadentia quaedam et contraposita deprehendas. in Herodoto vero cum omnia (ut ego quidem sentio) leniter fluunt, tum ipsa διάλεκτος habet eam iucunditatem, ut latentes etiam ut se numeros complexa videatur.
 
 sed de propositorum diversitate post paulum. nunc , quae prius iis, qui recte componere volent, discenda sint. est igitur ante omnia oratio alia vincta atque contexta, soluta alia, qualis ut sermone et epistolis, nisi cum aliquid supra naturam suam tractant, ut de philosophia, de re publica, similibus.
 
@@ -5975,11 +5975,11 @@ quaedam ordine permutato fiunt supervacua, ut fratres gemini; nam si gemini prae
 
 nec non et illud nimiae superstitionis, uti quaeque sint tempore, ea facere etiam ordine priora, non quin frequenter sit hoc melius, sed quia interim plus valent ante gesta, ideoque levioribus superponenda sunt. verbo sensum cludere multo,
 
-si compositio patiatur, optimum est; ut verbis enim sermonis vis est. si id asperum erit, cedet haec ratio numeris, ut fit apud summos Graecos Latinosque oratores frequentissime. sine dubio erit omne, quod non cludet, hyperbaton, sed sed, Spaldig: et, A: est, G. ipsum hoc inter tropos vel figuras, quae sunt virtutes, receptum est.
+si compositio patiatur, optimum est; ut verbis enim sermonis vis est. si id asperum erit, cedet haec ratio numeris, ut fit apud summos Graecos Latinosque oratores frequentissime. sine dubio erit omne, quod non cludet, hyperbaton, sed ipsum hoc inter tropos vel figuras, quae sunt virtutes, receptum est.
 
 non enim ad pedes verba dimensa sunt, ideoque ex loco transferuntur ut locum, ut iungantur, quo congruunt maxime, sicut ut structura saxorum rudium etiam ipsa enormitas invenit, cui applicari et ut quo possit insistere. felicissimus tamen sermo est, cui et rectus ordo et apta iunctura et cum his numerus opportune cadens contigit. quaedam vero transgressiones et longae sunt nimis,
 
-ut superioribus diximus libris, et interim etiam compositione vitiosae, quae ut hoc ipsum petuntur, ut exultent atque lasciviant, quales illae Maecenatis, sole et aurora rubent plurima. inter se se added by Halm . sacra movit aqua fraxinos. ne exequias quidem unus inter miserrimos viderem meas. quod inter haec pessimum est, quia ut re tristi ludit compositio.
+ut superioribus diximus libris, et interim etiam compositione vitiosae, quae ut hoc ipsum petuntur, ut exultent atque lasciviant, quales illae Maecenatis, sole et aurora rubent plurima. inter se sacra movit aqua fraxinos. ne exequias quidem unus inter miserrimos viderem meas. quod inter haec pessimum est, quia ut re tristi ludit compositio.
 
 saepe tamen est vehemens aliquis sensus ut verbo, quod si ut media parte sententiae latet, transire intentionem et obscurari circumiacentibus solet, ut clausula positum adsignatur auditori et infigitur, quale illud est Ciceronis, ut tibi necesse esset ut conspectu populi Romani vomere postridie.
 
@@ -5987,25 +5987,25 @@ transfer hoc ultimum: minus valebit. nam totius ductus hic est quasi mucro, ut p
 
 solebat Afer Domitius traiicere ut clausulas verba tantum asperandae compositionis gratia et maxime ut prooemiis, ut pro Cloatilla, gratias agam continuo, et pro Laelia, eis utrisque apud te iudicem periclitatur Laelia. adeo refugit teneram delicatamque modulandi voluptatem, ut currentibus per se numeris quod eos inhiberet obiiceret.
 
-amphiboliam quoque fieri vitiosa locatione verborum, nemo est qui nesciat. haec arbitror, ut ut brevi, de ordine fuisse dicenda; qui si vitiosus est, licet et vincta vincta sit et, Obrecht : vincat ac sit, AG. sit et apte cadens oratio, tamen merito incomposita dicatur. iunctura sequitur. est ut verbis, incisis, membris, periodis; omnia namque ista et virtutes et vitia ut complexu habent.
+amphiboliam quoque fieri vitiosa locatione verborum, nemo est qui nesciat. haec arbitror, ut ut brevi, de ordine fuisse dicenda; qui si vitiosus est, licet et vincta sit et apte cadens oratio, tamen merito incomposita dicatur. iunctura sequitur. est ut verbis, incisis, membris, periodis; omnia namque ista et virtutes et vitia ut complexu habent.
 
 atque , ut ordinem sequar, primum sunt quae imperitis quoque ad reprehensionem notabilia videntur, id est, quae, commissis inter se verbis duobus, ex ultima prioris ac prima sequentis syllaba deforme aliquod nomen efficiunt. tum vocalium concursus; quod cum accidit, hiat et intersistit et quasi laborat oratio. pessime longae, quae easdem inter se litteras committunt, sonabunt. praecipuus tamen erit hiatus earum, quae cavo aut patulo maxime ore efferuntur.
 
-E planior littera est, i angustior est, ideoque obscurius ut his vitium. minus peccabit, qui longis breves subiiciet, et adhuc, qui praeponet longae brevem. minima est ut duabus brevibus offensio. atque cum aliae subiunguntur aliis, proinde asperiores aut leniores aut leniores added by Christ. erunt prout oris habitu simili aut diverso pronuntiabuntur.
+E planior littera est, i angustior est, ideoque obscurius ut his vitium. minus peccabit, qui longis breves subiiciet, et adhuc, qui praeponet longae brevem. minima est ut duabus brevibus offensio. atque cum aliae subiunguntur aliis, proinde asperiores aut leniores erunt prout oris habitu simili aut diverso pronuntiabuntur.
 
-non tamen id ut crimen ingens expavescendum est, ac nescio negligentia ut hoc an sollicitudo sit peior. Inhibeat enim necesse est hic metus impetum dicendi et a potioribus avertat. quare ut negligentiae passim passim, Christ : pars, MSS. hoc pati, ita humilitatis ubique perhorrescere, nimiosque non immerito ut hac cura putant omnes Isocraten secutos praecipueque Theopompum.
+non tamen id ut crimen ingens expavescendum est, ac nescio negligentia ut hoc an sollicitudo sit peior. Inhibeat enim necesse est hic metus impetum dicendi et a potioribus avertat. quare ut negligentiae passim hoc pati, ita humilitatis ubique perhorrescere, nimiosque non immerito ut hac cura putant omnes Isocraten secutos praecipueque Theopompum.
 
-at Demosthenes et Cicero modice respexerunt ad hanc partem. nam et coeuntes litterae, quae συναλιφαί dicuntur, etiam leviorem faciunt orationem, quam si omnia verba suo fine cludantur, et nonnunquam hiulca etiam decent faciuntque ampliora quaedam: ut pulchra oratione ista iacta te oratione ista iacta te, Halm : oratione acta oratio iactate, G: oratione acta oratio actate, A. cum longae per se et velut opimae syllabae aliquid etiam medii temporis inter vocales, quasi intersistatur, adsumunt.
+at Demosthenes et Cicero modice respexerunt ad hanc partem. nam et coeuntes litterae, quae συναλιφαί dicuntur, etiam leviorem faciunt orationem, quam si omnia verba suo fine cludantur, et nonnunquam hiulca etiam decent faciuntque ampliora quaedam: ut pulchra oratione ista iacta te cum longae per se et velut opimae syllabae aliquid etiam medii temporis inter vocales, quasi intersistatur, adsumunt.
 
 qua de re utar Ciceronis potissimum verbis. habet , inquit, ille tanquam hiatus et concursus vocalium molle quiddam, et quod indicet non ingratam negligentiam de re hominis magis quam de verbis laborantis. ceterum consonantes quoque, earumque praecipue quae sunt asperiores, ut commissura verborum rixantur, ut si s ultima cum x proxima confligat, quarum tristior etiam, si binae collidantur, stridor est, ut ars studiorum.
 
-quae fuit causa et Servio, ut dixit, dixit, Lachmann: dixi, MSS. subtrahendae s litterae, quotiens ultima esset aliaque consonante susciperetur; quod reprehendit Luranius, Messala defendit. nam neque Lucilium putat uti eadem ultima, cum dicit Aeserninus fuit et dignus locoque, et Cicero ut Oratore plures antiquorum tradit sic locutos.
+quae fuit causa et Servio, ut dixit, subtrahendae s litterae, quotiens ultima esset aliaque consonante susciperetur; quod reprehendit Luranius, Messala defendit. nam neque Lucilium putat uti eadem ultima, cum dicit Aeserninus fuit et dignus locoque, et Cicero ut Oratore plures antiquorum tradit sic locutos.
 
 inde belligerare, pomeridiem, et illa Censori Catonis diee hanc, aeque m littera in e mollita. quae in veteribus libris reperta mutare imperiti solent, et dum librariorum insectari volunt inscientiam, suam confitentur.
 
 atqui eadem illa littera, quotiens ultima est et vocalem verbi sequentis ita contingit, ut ut eam transire possit, etiamsi scribitur, tamen parum exprimitur, ut multum ille et quantum erat, adeo ut paene cuiusdam novae litterae sonum reddat. neque enim eximitur, sed obscuratur et tantum ut hoc aliqua inter duas vocales velut nota est, ne ipsae coeant.
 
-videndum etiam, ne syllabae verbi prioris ultimae et primae sequentis sint eaedem; quod syllabae quod, Halm : syllaba verba prioris ultima et prima sequentes idē (id, ÷ G ), nec quod, AG. ne quis praecipi miretur, Ciceroni ut epistolis excidit, res mihi invisae invisae added by Regius. visae sunt, Brute, et ut carmine, O fortunatam natam me Consule Romam. Etiam monosyllaba,
+videndum etiam, ne syllabae verbi prioris ultimae et primae sequentis sint eaedem; quod ne quis praecipi miretur, Ciceroni ut epistolis excidit, res mihi invisae visae sunt, Brute, et ut carmine, O fortunatam natam me Consule Romam. Etiam monosyllaba,
 
 O fortunatam natam me Consule Romam.
 
@@ -6013,13 +6013,13 @@ si plura sunt, male continuabuntur, quia necesse est compositio multis clausulis
 
 ne verba quidem verbis aut nomina nominibus similiaque his continuari decet, cum virtutes etiam ipsae taedium pariant nisi gratia varietatis adiutae.
 
-membrorum incisorumque iunctura non ea modo est observanda quae verborum, quanquam et ut his extrema ac prima coeunt, sed plurimum refert compositionis, quae quibus anteponas. nam et vomens frustis esculentis gremium suum et totum tribunal implevit something has obviously been lost. Halm suggests recte se habet, cum maius sit quod tribunal implevit, see transl. et contra (nam frequentius utar iisdem diversarum quoque rerum exemplis, quo sint magis familiaria) saxa atque solitudines voci respondent, bestiae saepe immanes cantu flectuntur atque consistent magis insurgebat, si verteretur; nam plus est saxa quam bestias commoveri, vicit tamen compositionis decor. sed transeamus ad numeros.
+membrorum incisorumque iunctura non ea modo est observanda quae verborum, quanquam et ut his extrema ac prima coeunt, sed plurimum refert compositionis, quae quibus anteponas. nam et vomens frustis esculentis gremium suum et totum tribunal implevit et contra (nam frequentius utar iisdem diversarum quoque rerum exemplis, quo sint magis familiaria) saxa atque solitudines voci respondent, bestiae saepe immanes cantu flectuntur atque consistent magis insurgebat, si verteretur; nam plus est saxa quam bestias commoveri, vicit tamen compositionis decor. sed transeamus ad numeros.
 
 omnis structura ac dimensio et copulatio vocum constat aut numeris (numeros ῥυθμούς accipi volo) aut μέτροις, id est dimensione quadam. quod , etiamsi constat utrumque pedibus, habet tamen non simplicem differentiam.
 
-nam primum primum, Christ : plurimum, AG. numeri spatio temporum constant, metra etiam ordine, ideoque alterum esse quantitatis videtur, alterum qualitatis. ῥυθμὸς est aut par ut dactylicus,
+nam primum numeri spatio temporum constant, metra etiam ordine, ideoque alterum esse quantitatis videtur, alterum qualitatis. ῥυθμὸς est aut par ut dactylicus,
 
-una enim syllaba longa par est duabus longa and duabus, added by Halm following Rollin. brevibus (est quidem vis eadem et aliis pedibus, sed nomen illud tenet; longam esse duorum temporum, brevem unius, etiam pueri sciunt) aut sescuplex ut paeonicus: is est ex longa et tribus brevibus, aut ex tribus brevibus aut ex tribus brevibus, added by Halm. et longa, vel alio quoquo modo ut tempora tria ad duo relata sescuplum faciant; aut duplex, ut iambus (nam est ex brevi et longa) quique est ei contrarius.
+una enim syllaba longa par est duabus brevibus (est quidem vis eadem et aliis pedibus, sed nomen illud tenet; longam esse duorum temporum, brevem unius, etiam pueri sciunt) aut sescuplex ut paeonicus: is est ex longa et tribus brevibus, aut ex tribus brevibus et longa, vel alio quoquo modo ut tempora tria ad duo relata sescuplum faciant; aut duplex, ut iambus (nam est ex brevi et longa) quique est ei contrarius.
 
 sunt hi et metrici pedes, sed hoc interest, quod rhythmo indifferens, dactylicusne ille priores habeat breves an sequentes; tempus enim solum metitur, ut a sublatione ad positionem idem spatii sit. proinde alia dimensio est versuum; pro dactylico poni non poterit anapaestus aut spondeus, nec paean eadem ratione brevibus incipiet ac desinet.
 
@@ -6029,11 +6029,11 @@ panditur interea domus omnipotentis Olympi
 
 sunt et illa discrimina, quod rhythmis libera spatia, metris finita sunt, et his certae clausulae, illi, quomodo coeperant, currunt usque ad μεταβολήν, id est transitum ad aliud rhythmi genus, et quod metrum ut verbis modo, rhythmos etiam ut corporis motu est.
 
-inania quoque tempora rhythmi facilius accipient, quanquam haec et ut metris accidunt. maior tamen illic licentia est, ubi tempora etiam animo Bracketed by Christ. metiuntur et pedum et digitorum ictu, et intervalla signant quibusdam notis atque aestimant, quot breves illud spatium habeat; inde τετράσημοι, πεντάσημοι deinceps longiores fiunt percussiones; nam σημεῖον tempus est unum.
+inania quoque tempora rhythmi facilius accipient, quanquam haec et ut metris accidunt. maior tamen illic licentia est, ubi tempora etiam animo metiuntur et pedum et digitorum ictu, et intervalla signant quibusdam notis atque aestimant, quot breves illud spatium habeat; inde τετράσημοι, πεντάσημοι deinceps longiores fiunt percussiones; nam σημεῖον tempus est unum.
 
-in compositione orationis certior et magis omnibus aperta servari debet dimensio. est igitur ut pedibus et metricis quidem pedibus, qui qui added by Halm. adeo reperiuntur ut oratione, ut ut ea frequenter non sentientibus nobis omnium generum excidant versus; et contra nihil non, quod est prosa scriptum, redigi possit ut quaedam versiculorum genera vel ut membra, sicut sicut, Spalding : sint at (ad, G ), AG. ut molestos incidimus grammaticos,
+in compositione orationis certior et magis omnibus aperta servari debet dimensio. est igitur ut pedibus et metricis quidem pedibus, qui adeo reperiuntur ut oratione, ut ut ea frequenter non sentientibus nobis omnium generum excidant versus; et contra nihil non, quod est prosa scriptum, redigi possit ut quaedam versiculorum genera vel ut membra, sicut ut molestos incidimus grammaticos,
 
-quorum fuerunt, qui velut quorum an early correction of quam, MSS. velut added by Burmann. lyricorum quorundam carmina ut varias mensuras coegerunt. at Cicero frequentissime dicit totum hoc constare numeris, ideoque reprehenditur a quibusdam, tanquam orationem ad rhythmos adliget.
+quorum fuerunt, qui velut lyricorum quorundam carmina ut varias mensuras coegerunt. at Cicero frequentissime dicit totum hoc constare numeris, ideoque reprehenditur a quibusdam, tanquam orationem ad rhythmos adliget.
 
 nam sunt numeri rhythmi, ut et ipse constituit, et secuti eum Vergilius, cum dicit numeros memini, si verba tenerem, et Horatius numerisque fertur lege solutis.
 
@@ -6045,21 +6045,21 @@ lege solutis.
 
 invadunt ergo hanc inter ceteras vocem: neque enim Demosthenis fulmina tantopere vibratura dicit, nisi numeris contorta ferrentur. in quo si hoc sentit rhythmis contorta, dissentio. nam rhythmi, ut dixi, neque finem habent certum nec ullam ut contextu varietatem, sed qua coeperunt sublatione ac positione, ad finem usque decurrunt; oratio non descendet ad crepitum digitorum et pedum.
 
-quod et pedum. quod , Christ : et quae, AG. Cicero optime videt ac testatur frequenter se quod numerosum sit quaerere, ut magis non ἀπάλαιστοι. quod esset inscitum atque agreste, quam ἔνρυθμον, quod poeticum est, esse compositionem velit; sicut etiam quos palaestritas esse nolumus, tamen esse nolumus eos qui dicuntur ἀπάλαιστοι.
+quod Cicero optime videt ac testatur frequenter se quod numerosum sit quaerere, ut magis non ἀπάλαιστοι. quod esset inscitum atque agreste, quam ἔνρυθμον, quod poeticum est, esse compositionem velit; sicut etiam quos palaestritas esse nolumus, tamen esse nolumus eos qui dicuntur ἀπάλαιστοι.
 
-verum ea quae efficitur e pedibus apta apta, Spalding :aqua, AG. conclusio nomen aliquod desiderat. quid sit igitur potius quam numerus, sed oratorius numerus, ut enthymema rhetoricus syllogismus? ego certe, ne ut calumniam cadam, qua ne M. quidem Tullius caruit, posco hoc mihi, ut, cum de compositionis dixero numero de compositionis. . numero, Halm : pro composito numero, MSS. (nunerum, A. ). et ubicunque iam dixi,oratorium dicere intelligar.
+verum ea quae efficitur e pedibus apta conclusio nomen aliquod desiderat. quid sit igitur potius quam numerus, sed oratorius numerus, ut enthymema rhetoricus syllogismus? ego certe, ne ut calumniam cadam, qua ne M. quidem Tullius caruit, posco hoc mihi, ut, cum de compositionis dixero numero et ubicunque iam dixi,oratorium dicere intelligar.
 
 collocatio autem verba iam probata et electa et velut adsignata sibi debet connectere; nam vel dure inter se commissa potiora sunt inutilibus. tamen et eligere quaedam, dum ex iis quae idem significent atque idem valeant, permiserim, et adiicere dum non otiosa, et detrahere dum non necessaria, et figuris mutare casus atque numeros, quorum varietas frequenter gratia compositionis adscita etiam suo nomine solet esse iucunda.
 
 etiam ubi aliud ratio, aliud consuetudo poscet, utrum volet, sumat compositio, vitavisse vel vitasse, deprehendere vel deprendere. coitus etiam syllabarum non negabo, et quidquid sententiis aut elocutioni non nocebit. praecipuum tamen ut hoc opus est,
 
-scire quod quoque loco verborum maxime quadret. atque is optime componet, qui hoc non non added by Rollin. solum componendi gratia facit. ratio vero pedum ut oratione est multo quam ut versu difficilior: primum quod versus paucis continetur, oratio longiores habet saepe circuitus; deinde quod versus semper similis sibi est et una ratione decurrit, orationis compositio, nisi varia est, et offendet similitudine et ut adfectatione deprehenditur.
+scire quod quoque loco verborum maxime quadret. atque is optime componet, qui hoc non solum componendi gratia facit. ratio vero pedum ut oratione est multo quam ut versu difficilior: primum quod versus paucis continetur, oratio longiores habet saepe circuitus; deinde quod versus semper similis sibi est et una ratione decurrit, orationis compositio, nisi varia est, et offendet similitudine et ut adfectatione deprehenditur.
 
 et ut omni quidem corpore totoque (ut ita dixerim) tractu numerus insertus est; neque enim loqui possumus nisi syllabis brevibus ac longis, ex quibus pedes fiunt. magis tamen et desideratur ut clausulis et apparet, primum quia sensus omnis habet suum finem poscitque naturale intervallum, quo a sequentis initio dividatur, deinde quod aures continuam vocem secutae ductaeque velut prono decurrentis orationis flumine tum magis iudicant, cum ille impetus stetit et intuendi tempus dedit.
 
-non igitur durum sit neque abruptum, quo animi velut respirant ac reficiuntur. haec est sedes orationis, hoc auditor exspectat, hic laus omnis declamantium. declamrantium, Halm : deelamat, AG. Proximam clausulis diligentiam postulant initia; nam et ut haec intentus auditor est.
+non igitur durum sit neque abruptum, quo animi velut respirant ac reficiuntur. haec est sedes orationis, hoc auditor exspectat, hic laus omnis declamantium. Proximam clausulis diligentiam postulant initia; nam et ut haec intentus auditor est.
 
-sed eorum facilior ratio est, non enim cohaerent aliis nec nec, Regius : sed, MSS. praecedentibus serviunt; exordium sumunt cum clausula cum praecedentibus cohaereat: quamlibet sit enim composita ipsa, the text gives Halm's suggested correction of AG sumunt cum ea quamlibet sit enim composita. gratiam perdet, si ad eam rupta via venerimus. namque eo fit, ut, cum namque eo fit ut cum, Halm , Spalding: nam quo cum fit ut, AG. Demosthenis seuera videatur compositio, τοῖς θεοῖς εὔχομαι πᾶσι καὶ πάσαις; et illa (quae ab uno, quod sciam, Bruto minus probatur, ceteris placet) κἂν μήπω βάλλῃ μηδὲ τοξεύῃ,
+sed eorum facilior ratio est, non enim cohaerent aliis nec praecedentibus serviunt; exordium sumunt cum clausula cum praecedentibus cohaereat: quamlibet sit enim composita ipsa, gratiam perdet, si ad eam rupta via venerimus. namque eo fit, ut, cum Demosthenis seuera videatur compositio, τοῖς θεοῖς εὔχομαι πᾶσι καὶ πάσαις; et illa (quae ab uno, quod sciam, Bruto minus probatur, ceteris placet) κἂν μήπω βάλλῃ μηδὲ τοξεύῃ,
 
 Ciceronem carpant ut his, familiaris coeperat esse balneatori, et non minus dura archipiratae. nam balneatori et archipiratae idem finis est qui πᾶσι καὶ πάσαις et qui μηδὲ τοξεύῃ sed priora sunt severiora. est ut eo quoque nonnihil,
 
@@ -6067,13 +6067,13 @@ quod hic singulis verbis bini pedes continentur, quod etiam ut carminibus est pr
 
 quare hoc quoque vitandum est, ne plurium syllabarum verbis utamur ut fine. mediis quoque non ea modo cura sit, ut inter se cohaereant, sed ne pigra, ne longa sint, ne, quod nunc maxime vitium est, brevium contextu resultent ac sonum reddant paene puerilium crepitaculorum. nam ut initia clausulaeque plurimum momenti habent,
 
-quotiens incipit sensus aut desinit, sic ut mediis quoque sunt quidam conatus iique leviter insistunt. currentium pes, etiamsi non moratur, tamen vestigium facit. itaque non modo membra atque incisa bene incipere atque cludi decet, sed etiam ut iis, quae non dubie contexta sunt nec respiratione utuntur, illi velut occulti gradus sint. velut, Halm : vel, MSS.: sint added by Halm.
+quotiens incipit sensus aut desinit, sic ut mediis quoque sunt quidam conatus iique leviter insistunt. currentium pes, etiamsi non moratur, tamen vestigium facit. itaque non modo membra atque incisa bene incipere atque cludi decet, sed etiam ut iis, quae non dubie contexta sunt nec respiratione utuntur, illi velut occulti gradus sint.
 
 quis enim dubitet, unum sensum ut hoc et unum spiritum esse? animaduerti , iudices, omnem accusatoris orationem ut duas divisam esse partes; tamen et duo prima verba et tria proxima et deinceps duo rursus ac tria suos quasi numeros habent et spiritum sustinemus, sicut apud rhythmicos aestimantur.
 
 hae particulae prout sunt graves, acres, lentae, celeres, remissae, exultantes, proinde id, quod ex illis conficitur, aut severum aut luxuriosum aut quadratum aut solutum erit.
 
-quaedam etiam clausulae sunt claudae atque pendentes, si relinquantur, sed sequentibus suscipi ac sustineri solent, eoque facto vitium, quod erat ut fine, continuatione emendatur. emendatur, Meister : mnendat, AG. non vult populus Romanus obsoletis criminibus accusari Verrem durum, si desinas; sed cum sit sit, Halm : est, MSS. continuatum iis quae sequuntur, quanquam natura ipsa divisa sunt, nova postulat, inaudita desiderat, salvus est cursus.
+quaedam etiam clausulae sunt claudae atque pendentes, si relinquantur, sed sequentibus suscipi ac sustineri solent, eoque facto vitium, quod erat ut fine, continuatione emendatur. non vult populus Romanus obsoletis criminibus accusari Verrem durum, si desinas; sed cum sit continuatum iis quae sequuntur, quanquam natura ipsa divisa sunt, nova postulat, inaudita desiderat, salvus est cursus.
 
 ut adeas, tantum dabis male cluderet, nam et interim versus pars ultima est; excipit ut cibum vestitumque introferre liceat, tantum; praeceps adhuc firmatur ac sustinetur ultimo nemo recusabat.
 
@@ -6083,39 +6083,39 @@ in Africa fuisse initium senarii est, primum pro Q. Ligario caput claudit; esse 
 
 etsi vereor, iudices, et animadverti , iudices. sed initia initiis non convenient, ut T. Livius hexametri exordio coepit: facturusne operae pretium sim (nam ita edidit, estque melius, quam quo modo emendatur),
 
-nec clausulae clausulis, ut Cicero, quo me vertam, nescio, qui trimetri finis est. trimetrum et senarium senarium, added by Christ. promiscue dicere licet, sex enim pedes, tres percussiones habet. peius cludit finis hexametri, ut Brutus ut epistolis: neque illi malunt habere tutores aut defensores, quoniam causam quoniam causam sciunt, Halm : quam consciunt, G: quamquam sciunt, A: quam constituunt, codd. monac . Argeator. sciunt placuisse Catoni.
+nec clausulae clausulis, ut Cicero, quo me vertam, nescio, qui trimetri finis est. trimetrum et senarium promiscue dicere licet, sex enim pedes, tres percussiones habet. peius cludit finis hexametri, ut Brutus ut epistolis: neque illi malunt habere tutores aut defensores, quoniam causam sciunt placuisse Catoni.
 
 illi minus sunt notabiles, quia hoc genus sermoni proximum est. itaque et versus hi fere excidunt, quos Brutus ipso componendi durius studio saepissime facit, non raro Asinius, sed etiam Cicero nonnunquam, ut ut principio statim orationis ut Lucium Pisonem: pro di immortales, qui hic nunc illuxit dies?
 
 non minore autem cura vitandum est quidquid est ἔνρυθμον, quale apud Sallustium, falso queritur de natura sua. quamvis enim vincta sit, tamen soluta videri debet oratio. atqui Plato, diligentissimus compositionis, ut Timaeo prima statim parte vitare ista non potuit.
 
-nam et initium hexametri statim invenias, et Anacreontion protinus colon efficias, et si velis trimetron, et quod duobus pedibus et parte πενθημιμερές a Graecis dicitur, et haec omnia ut tribus versibus; versibus, Daniel : verbis, MSS. et Thucydidi ὑπὲρ ἥμισυ κᾶρες ἐφάνησαν ex mollissimo rhythmorum genere excidit.
+nam et initium hexametri statim invenias, et Anacreontion protinus colon efficias, et si velis trimetron, et quod duobus pedibus et parte πενθημιμερές a Graecis dicitur, et haec omnia ut tribus versibus; et Thucydidi ὑπὲρ ἥμισυ κᾶρες ἐφάνησαν ex mollissimo rhythmorum genere excidit.
 
-sed quia omnem compositionem compositionem, added by Spalding. oratoriam constare pedibus pedibus, added by ed. camp . dixi, aliqua de his quoque; quorum nomina quia varia traduntur, constituendum est, quo quemque appellemus. equidem Ciceronem sequar, (nam is eminentissimos Graecorum est secutus) excepto quod pes mihi tris syllabas non videtur excedere, quanquam ille paeane dochmioque, quorum prior ut quattuor, secundus ut quinque excurrit, utatur.
+sed quia omnem compositionem oratoriam constare pedibus dixi, aliqua de his quoque; quorum nomina quia varia traduntur, constituendum est, quo quemque appellemus. equidem Ciceronem sequar, (nam is eminentissimos Graecorum est secutus) excepto quod pes mihi tris syllabas non videtur excedere, quanquam ille paeane dochmioque, quorum prior ut quattuor, secundus ut quinque excurrit, utatur.
 
 nec tamen ipse dissimulat, quibusdam numeros videri non pedes; neque immerito; quidquid est enim supra tris syllabas, id est ex pluribus pedibus. ergo cum constent quattuor pedes binis, octo ternis, spondeum longis duabus, pyrrhichium, quem alii pariambum vocant, brevibus, iambum brevi longaque, huic contrarium e longa et brevi choreum, non ut alii trochaeum nominemus.
 
 ex iis vero, qui ternas syllabas habent, dactylum longa duabusque brevibus, huic temporibus parem, sed retro actum appellari constat anapaeston. media inter longas brevis faciet amphimacrum, sed frequentius eius nomen est creticus; longa inter breves, amphibrachyn huic contrarium.
 
-duabus amphibrachyn duabus, Spalding : brachios huic (hinc, G) ausis, AG. longis brevem sequentibus bacchius, totidem longis brevem sequentibus brevem, added by L. Valla. praecedentibus palimbacchius erit. tres breves trochaeum, quem tribrachyn dici volunt, qui choreo trochaei nomen imponunt; totidem longae molosson efficient.
+duabus longis brevem sequentibus bacchius, totidem longis brevem praecedentibus palimbacchius erit. tres breves trochaeum, quem tribrachyn dici volunt, qui choreo trochaei nomen imponunt; totidem longae molosson efficient.
 
 horum pedum nullus non ut orationem venit, sed quo quique sunt temporibus pleniores longisque syllabis magis stabiles, hoc graviorem faciunt orationem, breves celerem ac mobilem. utrumque locis utile; nam et illud, ubi opus est velocitate, tardum et segne, et hoc, ubi pondus exigitur, praeceps ac resultans merito damnetur.
 
-sit ut hoc quoque aliquid fortasse momenti, quod et longis longiores et brevibus sunt breviores syllabae, ut, quamvis neque plus duobus temporibus neque uno minus habere videantur, ideoque ut metris omnes breves longaeque inter se ipsae ipsae, Spaldinig: obsessae, AG. sint pares, lateat tamen nescio quid quod quid quod, Spalding : quidquid, AG. supersit aut desit. nam versuum propria condicio est, ideoque ut his quaedam etiam communes.
+sit ut hoc quoque aliquid fortasse momenti, quod et longis longiores et brevibus sunt breviores syllabae, ut, quamvis neque plus duobus temporibus neque uno minus habere videantur, ideoque ut metris omnes breves longaeque inter se ipsae sint pares, lateat tamen nescio quid quod supersit aut desit. nam versuum propria condicio est, ideoque ut his quaedam etiam communes.
 
-veritas vero quia patitur aeque brevem esse vel longam vocalem, cum est sola, quam cum eam consonantes una pluresve praecedunt, certe ut dimensione pedum syllaba, quae est brevis, insequente alia vel longa vel longs, added by Christ. vel brevi, quae tamen duas primas consonantes habeat, fit longa, ut agrestem tenui musam: nam A brevis,
+veritas vero quia patitur aeque brevem esse vel longam vocalem, cum est sola, quam cum eam consonantes una pluresve praecedunt, certe ut dimensione pedum syllaba, quae est brevis, insequente alia vel longa vel brevi, quae tamen duas primas consonantes habeat, fit longa, ut agrestem tenui musam: nam A brevis,
 
 agrestem tenui musam:
 
 gres brevis, faciet tamen longam priorem; dat igitur illi aliquid ex suo tempore. quo modo, nisi habet plus quam quae brevissima, qualis ipsa esset detractis consonantibus? nunc unum tempus accommodat priori et unum accipit a sequente; ita duae natura breves positione sunt temporum quattuor.
 
-miror autem ut hac opinione doctissimos homines fuisse, ut alios pedes ita eligerent aliosque damnarent, quasi ullus esset, quem non sit necesse ut oratione deprehendi. licet igitur paeana sequatur Ephorus, inventum a Thrasymacho, probatum ab Aristotele, dactylumque ut temperatos brevibus ac longis, fugiat spondeum et spondeum et, added by ed. camp . trochaeum,
+miror autem ut hac opinione doctissimos homines fuisse, ut alios pedes ita eligerent aliosque damnarent, quasi ullus esset, quem non sit necesse ut oratione deprehendi. licet igitur paeana sequatur Ephorus, inventum a Thrasymacho, probatum ab Aristotele, dactylumque ut temperatos brevibus ac longis, fugiat spondeum et trochaeum,
 
-alterius tarditate nimia, nimia, Ialm: etenim, AG. alterius celeritate damnata, herous, qui est idem dactylus, Aristoteli amplior, iambus humilior humilior, P. Victorius, Pithoeus: humanior, MSS. videatur, trochaeum ut nimis currentem damnet eique cordacis nomen imponat, eademque dicant Theodectes ac Theophrastus, similia post eos Halicarnasseus Dionysius:
+alterius tarditate nimia, alterius celeritate damnata, herous, qui est idem dactylus, Aristoteli amplior, iambus humilior videatur, trochaeum ut nimis currentem damnet eique cordacis nomen imponat, eademque dicant Theodectes ac Theophrastus, similia post eos Halicarnasseus Dionysius:
 
-irrumpent etiam ad invitos, nec semper illis heroo aut paeane suo, quem, quia versum raro facit, maxime laudant, uti licebit. ut sint tamen allis alii crebriores, non verba facient, quae neque augeri nec minui nec sicuti toni toni, added by Christ. modulatione produci aut corripi possint, sed transmutatio et collocatio.
+irrumpent etiam ad invitos, nec semper illis heroo aut paeane suo, quem, quia versum raro facit, maxime laudant, uti licebit. ut sint tamen allis alii crebriores, non verba facient, quae neque augeri nec minui nec sicuti toni modulatione produci aut corripi possint, sed transmutatio et collocatio.
 
-plerique enim ex commissuris eorum vel divisione fiunt pedes; quo fit ut iisdem verbis alii atque alii versus fiant, ut memini quendam non ignobilem poetam talem exarasse: talem exarasse, Halm : tatelarasse, G: taliter lusisse, A. (iter lus by corrector ). astra tenet caelum, mare classes, area messem. hic retrorsum fit sotadeus; itemque e sotadeo retro trimetros: caput exeruit mobile pinus repetita.
+plerique enim ex commissuris eorum vel divisione fiunt pedes; quo fit ut iisdem verbis alii atque alii versus fiant, ut memini quendam non ignobilem poetam talem exarasse: astra tenet caelum, mare classes, area messem. hic retrorsum fit sotadeus; itemque e sotadeo retro trimetros: caput exeruit mobile pinus repetita.
 
 astra tenet caelum, mare classes, area messem.
 
@@ -6127,21 +6127,21 @@ acres , quae ex brevibus ad longas insurgunt; leniores, quae a longis ut breves 
 
 clausula quoque e longis firmissima est; sed venit et ut breves, quamvis habeatur indifferens ultima. neque enim ego ignoro, ut fine pro longa accipi brevem, quia videtur aliquid vacantis temporis ex eo, quod insequitur, accedere; aures tamen consulens meas, intelligo multum referre, verene longa sit, quae cludit, an pro longa. neque enim tam plenum est dicere incipientem timere, quam illud ausus est confiteri.
 
-atqui si nihil refert, brevis an longa sit ultima, idem pes erit; verum nescio quo modo sedebit hoc, illud subsistet. quo moti quidam longae ultimae tria tempora dederunt, ut illud tempus, quod brevis ex loco loco, Spalding : longo, AG. accipit, huic quoque accederet. nec solum refert, quis pes claudat, sed claudentem quis pes claudat sed claudentem quis, Halm : quis claudatem quis, G: quis claudat et quis, A. quis antecedat. retrorsum autem neque plus tribus,
+atqui si nihil refert, brevis an longa sit ultima, idem pes erit; verum nescio quo modo sedebit hoc, illud subsistet. quo moti quidam longae ultimae tria tempora dederunt, ut illud tempus, quod brevis ex loco accipit, huic quoque accederet. nec solum refert, quis pes claudat, sed claudentem quis antecedat. retrorsum autem neque plus tribus,
 
-iique, si non ternas syllabas habebunt, repetendi erunt (absit enim absit enim, Christ : sit tam, AG. poetica observatio), neque minus duobus; alioqui pes erit, non numerus. potest tamen vel unus esse dichoreus, si unus est, qui constat e duobus choreis.
+iique, si non ternas syllabas habebunt, repetendi erunt (absit enim poetica observatio), neque minus duobus; alioqui pes erit, non numerus. potest tamen vel unus esse dichoreus, si unus est, qui constat e duobus choreis.
 
-itemque paean, qui est ex choreo et pyrrhichio, quem aptum initiis putant, vel contra, qui est e tribus brevibus et longa, cui clausulam adsignant; de quibus fere duobus scriptores huius artis loquantur. alii omnes, ut ut, Halm : ut, MSS. quocunque sit loco longa, longa, added by Halm. temporum quod ad rationem pertinet,paeanas appellant.
+itemque paean, qui est ex choreo et pyrrhichio, quem aptum initiis putant, vel contra, qui est e tribus brevibus et longa, cui clausulam adsignant; de quibus fere duobus scriptores huius artis loquantur. alii omnes, ut quocunque sit loco longa, temporum quod ad rationem pertinet,paeanas appellant.
 
-est et dochmius, qui fit ex bacchio et iambo vel ex iambo et cretico, stabilis ut clausulis et severus. spondeus quoque, quo plurimum est Demosthenes usus, non eodem modo semper se non eodem modo se, Halm neodem per se, AG. habet. optime praecedet eum creticus, ut ut hoc, de qua ego nihil dicam, nisi depellendi criminis causa. non nihil causa non nihil, Halm : causam nihil, AG. est, quod supra dixi multum referre, unone verbo sint duo pedes comprehensi an uterque liber. Sic enim fit forte criminis casa; molle archipiratae , mollius, si tribrachys praecedat, facilitates, temeritates.
+est et dochmius, qui fit ex bacchio et iambo vel ex iambo et cretico, stabilis ut clausulis et severus. spondeus quoque, quo plurimum est Demosthenes usus, non eodem modo semper se habet. optime praecedet eum creticus, ut ut hoc, de qua ego nihil dicam, nisi depellendi criminis causa. non nihil est, quod supra dixi multum referre, unone verbo sint duo pedes comprehensi an uterque liber. Sic enim fit forte criminis casa; molle archipiratae , mollius, si tribrachys praecedat, facilitates, temeritates.
 
 est enim quoddam ipsa divisione verborum latens tempus, ut ut pentametri medio spondeo, qui nisi alterius verbi fine, alterius initio constat, versum non efficit. potest , etiamsi minus bene, praeponi anapaestos: muliere non solum nobili, verum etiam nota. cum anapaestus et creticus,
 
-iambus quoque, qui est utroque syllaba minor (praecedet enim tres longas brevis), sed et spondeus iambo recte praeponitur: iisdem ut Bracketed by Regius. armis fui. cum spondeus, et bacchius, sic enim fiet ultimus dochmius:
+iambus quoque, qui est utroque syllaba minor (praecedet enim tres longas brevis), sed et spondeus iambo recte praeponitur: iisdem ut armis fui. cum spondeus, et bacchius, sic enim fiet ultimus dochmius:
 
 in armis fui. ex iis quae supra probavi apparet molosson quoque clausulae convenire, dum habeat ex quocunque pede ante se brevem: illud scimus ubicunque sunt, esse pro nobis.
 
-minus gravis erit spondeus, praecedentibus palimbacchio et pyrrhichio, ut iudicii Iuniani, praecedentibus et, G: praecedenti A. I have added palimbacchio. et adhuc peius priore paeane, ut Brute, dubitavi; nisi potius hoc esse volumus dactylum et bacchium. Duo spondei non fere se iungi patiuntur, quae ut versu quoque notabilis notabilis, early edd.: nobis, AG. clausula est, nisi cum id fieri potest ex tribus quasi membris: cur de perfugis nostris copias comparat is contra nos? una syllaba, duabus, una.
+minus gravis erit spondeus, praecedentibus palimbacchio et pyrrhichio, ut iudicii Iuniani, et adhuc peius priore paeane, ut Brute, dubitavi; nisi potius hoc esse volumus dactylum et bacchium. Duo spondei non fere se iungi patiuntur, quae ut versu quoque notabilis clausula est, nisi cum id fieri potest ex tribus quasi membris: cur de perfugis nostris copias comparat is contra nos? una syllaba, duabus, una.
 
 ne dactylus quidem spondeo bene praeponitur, quia finem versus damnamus ut fine orationis. bacchius et claudit et sibi iungitur: uenenum timeres; vel choreum et spondeum ante se amat: ut venenum timeres. contrarius quoque qui est, cludet, nisi si ultimam syllabam longam esse volumus, optimeque habebit ante se molosson: civis Romanus sum; aut bacchium, quod hic potest, nos possemus.
 
@@ -6157,9 +6157,9 @@ quod precatus a diis immortalibus sum, et clausulis: in conspectu populi Romani 
 
 sed hic est illud inane, quod dixi: paulum enim morae damus inter ultimum ac proximum verbum et turpe illud intervallo quodam producimus; alioqui sit exultantissimum et trimetri finis: quis non turpe duceret? sicut illud ore excipere liceret, si iungas, lascivi carminis est; sed interpunctis quibusdam et tribus quasi initiis fit plenum auctoritatis.
 
-nec ego, cum praecedentes pedes posui, legem dedi ne alii essent, sed quid fere accideret et quid ut praesentia videretur optimum, ostendi. non non, added by Spalding. quidem optime est sibi iunctus anapaestos, ut qui sit pentametri finis, vel rhythmos qui nomen ab eo traxit: nam ubi libido dominatur, innocentiae leve praesidium est; nam synaloephe facit, ut duae ultimae syllabae pro una sonent.
+nec ego, cum praecedentes pedes posui, legem dedi ne alii essent, sed quid fere accideret et quid ut praesentia videretur optimum, ostendi. non quidem optime est sibi iunctus anapaestos, ut qui sit pentametri finis, vel rhythmos qui nomen ab eo traxit: nam ubi libido dominatur, innocentiae leve praesidium est; nam synaloephe facit, ut duae ultimae syllabae pro una sonent.
 
-melior fiet praecedente spondeo vel bacchio, ut si idem mutes leave innocentiae praesidium est. non me capit (ut a magnis viris dissentiam) paean, qui est ex tribus brevibus et longa. nam est et ipse una plus brevi anapaestos facilitas et agilitas. quid quid, Halm : quidquid, AG. ita placuerit is, non video, nisi quod illum fere probaverunt, quibus loquendi magis quam orandi studium fuit.
+melior fiet praecedente spondeo vel bacchio, ut si idem mutes leave innocentiae praesidium est. non me capit (ut a magnis viris dissentiam) paean, qui est ex tribus brevibus et longa. nam est et ipse una plus brevi anapaestos facilitas et agilitas. quid ita placuerit is, non video, nisi quod illum fere probaverunt, quibus loquendi magis quam orandi studium fuit.
 
 nam et ante se brevibus gaudet pyrrhichio vel choreo, mea facilitas, nostra facilitas; ac praecedente spondeo tamen plane finis est trimetri, cum sit per se quoque. ei contrarius principiis merito laudatur, nam et primam stabilem et tres celeres habet. tamen hoc quoque meliores alios puto.
 
@@ -6167,7 +6167,7 @@ totus vero hic locus non ideo tractatur a nobis, ut oratio, quae ferri debet ac 
 
 tum ut minimis occupati est, neque enim, qui se totum ut hac cura consumpserit, potioribus vacabit, si quidem relicto rerum pondere ac nitore contempto tesserulas, ut ait Lucilius, struet et vermiculate inter se lexis committet. nonne ergo refrigeretur sic calor et impetus pereat, ut equorum cursum delicati minutis passibus frangunt?
 
-quasi vero numeri numeri non, Regius : fecerint, MSS. non sint ut compositione deprehensi, sicut poema nemo dubitaverit impetu impetu, Halm : peritu, AG. quodam initio fusum et aurium mensura et similiter decurrentium spatiorum observatione esse generatum, mox ut eo repertos pedes. satis igitur ut hoc nos componet multa scribendi exercitatio, ut ex tempore etiam similia fundamus.
+quasi vero numeri non sint ut compositione deprehensi, sicut poema nemo dubitaverit impetu quodam initio fusum et aurium mensura et similiter decurrentium spatiorum observatione esse generatum, mox ut eo repertos pedes. satis igitur ut hoc nos componet multa scribendi exercitatio, ut ex tempore etiam similia fundamus.
 
 neque vero tam sint intuendi pedes quam universa comprehensio, ut versum facientes totum illum decursum non sex vel quinque partes, ex quibus constat versus, aspiciunt. ante enim carmen ortum est quam observatio carminis, ideoque illud Fauni vatesque canebant.
 
@@ -6175,17 +6175,17 @@ ergo quem ut poemate locum habet versificatio, eum ut oratione compositio. optim
 
 quaedam vero tradi arte non possunt. mutandus est casus, si durius is, quo coeperamus, feratur. num , ut quem transeamus ex quo, praecipi potest? figura laboranti compositioni variata saepe succurrit. quae ? cum orationis, tum etiam sententiae? num praescriptum eius rei ullum est? occasionibus utendum et cum re praesenti deliberandum est.
 
-iam est iam, Halm : etiam, MSS. vero spatia ipsa, quae ut hac quidem parte plurimum valent, quod possunt nisi aurium habere iudicium? cur alia paucioribus verbis satis plena vel nimium, alia pluribus brevia et abscisa sunt? cur ut circumductionibus, etiam cum sensus finitus est, aliquid tamen loci vacare videatur?
+iam vero spatia ipsa, quae ut hac quidem parte plurimum valent, quod possunt nisi aurium habere iudicium? cur alia paucioribus verbis satis plena vel nimium, alia pluribus brevia et abscisa sunt? cur ut circumductionibus, etiam cum sensus finitus est, aliquid tamen loci vacare videatur?
 
-neminem vestrum ignorare arbitror, iudices, hunc per hosce dies sermonem vulgi atque hanc opinionem populi Romani fuisse. cur hosce potius quam hos? neque enim erat asperum. rationem fortasse non reddam, sentiam tamen seutiam tanien, Halm: sontentiai, A (?) G: sent am, later MSS. esse melius. cur non satis sit, sermonem vulgi fuisse, (compositio enim patiebatur) ignorabo; sed ut audio hoc, animus accipit plenum sine hac geminatione non esse.
+neminem vestrum ignorare arbitror, iudices, hunc per hosce dies sermonem vulgi atque hanc opinionem populi Romani fuisse. cur hosce potius quam hos? neque enim erat asperum. rationem fortasse non reddam, sentiam tamen esse melius. cur non satis sit, sermonem vulgi fuisse, (compositio enim patiebatur) ignorabo; sed ut audio hoc, animus accipit plenum sine hac geminatione non esse.
 
-ad sensum igitur referenda sunt. et si qui non Et si qui non, Halm : necquis, AG. satis forte, quid seuerum, quid iucundum sit, intelligent, facient quidem natura duce melius quam arte; sed naturae ipsi ars inerit. illud prorsus oratoris,
+ad sensum igitur referenda sunt. et si qui non satis forte, quid seuerum, quid iucundum sit, intelligent, facient quidem natura duce melius quam arte; sed naturae ipsi ars inerit. illud prorsus oratoris,
 
 scire ubi quoque genere compositionis sit utendum. ea duplex observatio est: altera, quae ad pedes refertur; altera, quae ad comprehensiones, quae efficiuntur ex pedibus. ac de his prius.
 
 diximus igitur esse incisa, membra, circuitus. incisum (quantum mea fert opinio) erit sensus non expleto numero conclusus, plerisque pars membri. tale est enim, quo Cicero utitur: domus tibi deerat? at habebas. pecunia superabat? at egebas. fiunt autem etiam singulis verbis incisa; diximus , testes dare volumus; incisum est diximus.
 
-membrum autem est sensus numeris I numneris, Regiues: membris, AG. conclusus, sed a toto corpore abruptus et per se nihil efficiens. O callidos homines perfectum est, sed remotum a ceteris vim non habet, ut per se manus et pes et caput: et O rem excogitatam. quando ergo incipit corpus esse? cum venit extrema conclusio: quem , quaeso, nostrum fefellit, id vos ita esse facturos? quam Cicero brevissimam putat. itaque fere incisa et membra mutila mutila, Christ : mixta, MSS.: multa, Diomedes. sunt et conclusionem utique desiderant.
+membrum autem est sensus numeris conclusus, sed a toto corpore abruptus et per se nihil efficiens. O callidos homines perfectum est, sed remotum a ceteris vim non habet, ut per se manus et pes et caput: et O rem excogitatam. quando ergo incipit corpus esse? cum venit extrema conclusio: quem , quaeso, nostrum fefellit, id vos ita esse facturos? quam Cicero brevissimam putat. itaque fere incisa et membra mutila sunt et conclusionem utique desiderant.
 
 periodo plurima nomina dat Cicero, ambitum, circuitum, comprehensionem, continuationem, circumscriptionem. genera eius duo sunt, alterum simplex, cum sensus unus longiore ambitu circumducitur, alterum, quod constat membris et incisis, quae plures sensus habent: aderat ianitor carceris, carnifex praetoris, reliqua. habet periodus membra minimum duo.
 
@@ -6195,13 +6195,13 @@ ubicunque acriter erit, instanter, pugnaciter dicendum,membratim caesimque dicem
 
 membratim plerumque narrabimus, aut ipsas periodos maioribus intervallis et velut laxioribus nodis resolvemus, exceptis quae non docendi gratia, sed ornandi narrantur, ut ut Verrem Proserpinae raptus. haec enim lenis et fluens contextus decet.
 
-periodos apta prooemiis maiorum causarum, ubi sollicitudine, commendatione, miseratione res eget, item communibus locis et ut omni amplificatione; sed poscitur poscitur, Regius : poscit, A. : possit, G. tum austera, si accuses, tum fusa, si laudes. multum et ut epilogis pollet.
+periodos apta prooemiis maiorum causarum, ubi sollicitudine, commendatione, miseratione res eget, item communibus locis et ut omni amplificatione; sed poscitur tum austera, si accuses, tum fusa, si laudes. multum et ut epilogis pollet.
 
-totum autem hoc adhibendum est, quod sit amplius compositionis genus, cum iudex non solum rem tenet, sed etiam captus est oratione et se credit actori et voluptate iam ducitur. historia non tam finitos numeros quam orbem quendam contextumque desiderat. namque omnia eius membra connexa sunt et, quoniam lubrica est, hac atque illac atque illac added by Spalding. fluit, ut homines, qui manibus invicem apprehensis gradum firmant, continent et continentur.
+totum autem hoc adhibendum est, quod sit amplius compositionis genus, cum iudex non solum rem tenet, sed etiam captus est oratione et se credit actori et voluptate iam ducitur. historia non tam finitos numeros quam orbem quendam contextumque desiderat. namque omnia eius membra connexa sunt et, quoniam lubrica est, hac atque illac fluit, ut homines, qui manibus invicem apprehensis gradum firmant, continent et continentur.
 
 demonstrativum genus omne fusiores habet liberioresque numeros; iudiciale et contionale, ut materia varium est, sic etiam ipsa collocatione verborum. ubi iam nobis pars ex duabus, quas modo fecimus, secunda tractanda est. nam quis dubitat alia lenius, alia concitatius, alia sublimius, alia pugnacius, alia ornatius, alia gracilius esse dicenda;
 
-gravibus, sublimibus, ornatis longas magis syllabas convenire? ita ut lenia spatium, sublimia et ornata claritatem quoque vocalium poscant; his contraria magis gaudere gaudere, Spalding : laudere, AG. brevibus, argumenta, partitiones, iocos et quidquid est sermoni magis simile.
+gravibus, sublimibus, ornatis longas magis syllabas convenire? ita ut lenia spatium, sublimia et ornata claritatem quoque vocalium poscant; his contraria magis gaudere brevibus, argumenta, partitiones, iocos et quidquid est sermoni magis simile.
 
 itaque componemus prooemium varie atque ut sensus eius postulabit. neque enim accesserim Celso, qui unam quandam huic parti formam dedit, et optimam compositionem esse prooemii, ut est apud Asinium, dixit, si , Caesar, ex omnibus mortalibus, qui sunt ac fuerunt, posset huic causae disceptator legi, non quisquam te potius optandus nobis fuit.
 
@@ -6209,17 +6209,17 @@ non quia negem hoc bene esse compositum, sed quia legem hanc esse componendi ut 
 
 narratio fere tardiores atque, ut sic dixerim, modestiores desiderat pedes ex omnibus maxime mixtos. nam et verbis, ut saepius pressa est, ita interim insurgit; sed docere et infigere animis res semper cupit, quod minime festinantium opus est. ac mihi videtur tota narratio constare longioribus membris, brevioribus periodis.
 
-argumenta acria et citata pedibus quoque ad hanc naturam commodatis utentur, non tamen non tamen, ed. ven : nondum, MSS. ita ut trochaeis quoque celeria quidem, sed sine viribus sint, verum iis, qui sint brevibus longisque mixti, non tamen plures longas quam breves habent. hahent, Halm : habentia, G.
+argumenta acria et citata pedibus quoque ad hanc naturam commodatis utentur, non tamen ita ut trochaeis quoque celeria quidem, sed sine viribus sint, verum iis, qui sint brevibus longisque mixti, non tamen plures longas quam breves habent.
 
-illa sublimia spatiosas clarasque voces habentia habentia, Christ : habent, MSS. amant amplitudinem dactyli quoque ac paeanis, etiamsi maiore ex parte syllabis brevibus, temporibus tamen satis pleni. aspera contra iambis maxime concitantur, non solum quod sunt e duabus modo syllabis eoque frequentiorem quasi pulsum habent, quae res lenitati contraria est, sed etiam quod omnibus pedibus insurgunt et e brevibus ut longas nituntur et crescunt, ideoque meliores choreis, qui ab longis ut breves cadunt.
+illa sublimia spatiosas clarasque voces habentia amant amplitudinem dactyli quoque ac paeanis, etiamsi maiore ex parte syllabis brevibus, temporibus tamen satis pleni. aspera contra iambis maxime concitantur, non solum quod sunt e duabus modo syllabis eoque frequentiorem quasi pulsum habent, quae res lenitati contraria est, sed etiam quod omnibus pedibus insurgunt et e brevibus ut longas nituntur et crescunt, ideoque meliores choreis, qui ab longis ut breves cadunt.
 
-summissa , qualia ut epilogis sunt, lentas et ipsa, sed minus exclamantes exigunt. vult esse Celsus aliquam et superiorem superbiorem. Salding: superiorem, G. compositionem, quam equidem si scirem, non docerem; sed sit necesse est tarda et supina, verum nisi ex verbis atque sententiis. per se si id quaeritur, satis odiosa esse non poterit.
+summissa , qualia ut epilogis sunt, lentas et ipsa, sed minus exclamantes exigunt. vult esse Celsus aliquam et superiorem compositionem, quam equidem si scirem, non docerem; sed sit necesse est tarda et supina, verum nisi ex verbis atque sententiis. per se si id quaeritur, satis odiosa esse non poterit.
 
 denique , ut semel finiam, sic fere componendum quomodo pronuntiandum erit. an non ut prooemiis plerumque summissi, (nisi cum ut accusatione concitandus est iudex aut aliqua indignatione complendus) ut narratione pleni atque expressi, ut argumentis citati atque ipso etiam motu celeres sumus, ut locis ac descriptionibus fusi ac fluentes, ut epilogis plerumque deiecti et infracti?
 
-atqui corporis quoque motui sunt motti sunt Spalding : riotus, G. sua quaedam tempora et ad signandos signandos, Ham: signos, G. pedes non minus saltationi quam modulationibus adhibetur musica ratio numerorum. quid ? non vox et gestus accommodatur naturae ipsarum, de quibus dicimus, rerum? quo minus id mirere ut pedibus orationis, cum debeant sublimia ingredi, lenia duci, acria currere, delicata fluere. itaque tragoediae,
+atqui corporis quoque motui sunt sua quaedam tempora et ad signandos pedes non minus saltationi quam modulationibus adhibetur musica ratio numerorum. quid ? non vox et gestus accommodatur naturae ipsarum, de quibus dicimus, rerum? quo minus id mirere ut pedibus orationis, cum debeant sublimia ingredi, lenia duci, acria currere, delicata fluere. itaque tragoediae,
 
-ubi necesse est, adfectamus etiam tumorem ex spondeis atque iambis quibus quihus, added by Spalding. maxime continetur: en impero Argis, sceptra mi liquit Pelops. At ille comicus aeque senarius, quem trochaicum vocant, pluribus trochaeis, qui trochaei trochaeis . . trochaei, Spalding : choreis. . trochaei, MSS. ab aliis dicuntur, pyrrhichiisque decurrit;
+ubi necesse est, adfectamus etiam tumorem ex spondeis atque iambis quibus maxime continetur: en impero Argis, sceptra mi liquit Pelops. At ille comicus aeque senarius, quem trochaicum vocant, pluribus trochaeis, qui trochaei ab aliis dicuntur, pyrrhichiisque decurrit;
 
 en impero Argis, sceptra mi liquit Pelops.
 
@@ -6233,11 +6233,11 @@ nisi impudicus et vorax et aleo?
 
 si sit necesse, duram potius atque asperam compositionem malim esse quam effeminatam et enervem, qualis apud multos et cotidie magis lascivissimis syntonorum modis saltat. ac ne tam bona quidem ulla erit, ut debeat esse continua et ut eosdem semper pedes ire.
 
-nam et versificandi genus est unam legem omnibus sermonibus dare; et id cum manifestae adfectationis est (cuius rei maxime cavenda suspicio est), tum etiam taedium ex similitudine ac satietatem creat; quoque est dulcius, magis perdit amittit que amittit que, Regius : atque, MSS. et fidem et adfectus motusque omnes, qui est ut hac cura deprehensus. nec potest ei credere aut propter eum dolere et irasci iudex, cui putat hoc vacare.
+nam et versificandi genus est unam legem omnibus sermonibus dare; et id cum manifestae adfectationis est (cuius rei maxime cavenda suspicio est), tum etiam taedium ex similitudine ac satietatem creat; quoque est dulcius, magis perdit amittit que et fidem et adfectus motusque omnes, qui est ut hac cura deprehensus. nec potest ei credere aut propter eum dolere et irasci iudex, cui putat hoc vacare.
 
 ideoque interim quaedam quasi solvenda de industria sunt; et quidem illa maximi laboris, ne laborata videantur. sed neque longioribus, quam oportet, hyperbatis compositioni serviamus ne, quae eius rei gratia fecerimus, propter eam fecisse videamur; et certe nullum aptum atque idoneum verbum permutemus gratia levitatis.
 
-neque enim ullum erit tam difficile, quod non commode inseri possit, nisi quod ut evitandis eiusmodi verbis non decorem compositionis quaerimus, sed facilitatem. non tamen mirabor Latinos magis indulsisse compositioni quam Atticos, cum minus cum minus. . G. Meyer: quouminus, G: quamvis, quamvis minus, later MSS. ut verbis habeant severitatis severitatis, Spalding : veitatis, G: varietatis, Regius . et gratiae;
+neque enim ullum erit tam difficile, quod non commode inseri possit, nisi quod ut evitandis eiusmodi verbis non decorem compositionis quaerimus, sed facilitatem. non tamen mirabor Latinos magis indulsisse compositioni quam Atticos, cum minus ut verbis habeant severitatis et gratiae;
 
 nec vitium duxerim, si Cicero a Demosthene paulum ut hac parte descivit. Sed quae sit differentia nostri Graecique sermonis, explicabit summus liber. compositio (nam finem imponere egresso destinatum modum volumini festino) debet esse honesta, iucunda, varia.
 
@@ -6245,25 +6245,25 @@ eius tres partes: ordo, coniunctio, numerus. ratio ut adiectione, detractione, m
 
 sed haec eloquendi praecepta, sicut cogitationi sunt necessaria, ita non satis ad vim dicendi valent, nisi illis firma quaedam facilitas, quae apud Graecos ἕξις nominatur, accesserit: ad quam scribendo plus an legendo an dicendo conferatur, solere quaeri scio. quod esset diligentius nobis examinandum, si qualibet earum rerum possemus una esse contenti.
 
-verum ita sunt inter se conexa et indiscreta omnia ut, si quid ex his defuerit, frustra sit in ceteris laboratum. nam neque solida atque robusta fuerit unquam eloquentia nisi multo stilo vires acceperit, et citra lectionis exemplum labor ille carens rectore fluitabit; et qui fluitabit et qui, Halm : fluvit autem qui, G. sciet quae quoque sint modo dicenda, nisi tamen in procinctu paratamque ad omnes casus habuerit eloquentiam, velut clausis thesauris incubabit.
+verum ita sunt inter se conexa et indiscreta omnia ut, si quid ex his defuerit, frustra sit in ceteris laboratum. nam neque solida atque robusta fuerit unquam eloquentia nisi multo stilo vires acceperit, et citra lectionis exemplum labor ille carens rectore fluitabit; et qui sciet quae quoque sint modo dicenda, nisi tamen in procinctu paratamque ad omnes casus habuerit eloquentiam, velut clausis thesauris incubabit.
 
 non autem ut quidquid praecipue necessarium est, sic ad efficiendum oratorem maximi protinus erit momenti. nam certe, cum sit in eloquendo positum oratoris officium, dicere ante omnia est, atque hinc initium eius artis fuisse manifestum est; proximam deinde imitationem, novissimam scribendi quoque diligentiam.
 
-sed ut perveniri ad summa nisi ex principiis non potest, ita procedente iam opere etiam etiam, Osann : iam, MSS minima incipiunt esse quae prima sunt. verum nos non, quomodo instituendus orator, hoc loco dicimus; nam id quidem aut satis aut certe uti potuimus dictum est; sed athleta, qui omnes iam perdidicerit a praeceptore numeros, quo genere exercitationis ad certamina praeparandus sit. igitur eum, qui res invenire et disponere sciet, verba quoque et eligendi et collocandi rationem perceperit, instruamus, qua ratione quod didicerit qua ratione, ed. Col . 1527: qua oratione, MSS. didicerit, Zumpt: dicere, G. facere quam optime, quam facillime possit.
+sed ut perveniri ad summa nisi ex principiis non potest, ita procedente iam opere etiam minima incipiunt esse quae prima sunt. verum nos non, quomodo instituendus orator, hoc loco dicimus; nam id quidem aut satis aut certe uti potuimus dictum est; sed athleta, qui omnes iam perdidicerit a praeceptore numeros, quo genere exercitationis ad certamina praeparandus sit. igitur eum, qui res invenire et disponere sciet, verba quoque et eligendi et collocandi rationem perceperit, instruamus, qua ratione quod didicerit facere quam optime, quam facillime possit.
 
 num ergo dubium est, quin ei velut opes sint quaedam parandae, quibus uti, ubicunque desideratum erit, possit? eae constant copia rerum ac verborum.
 
 sed res propriae sunt cuiusque causae aut paucis communes, verba in universas paranda; quae si in rebus singulis essent singula, minorem curam postularent, nam cuncta sese cum ipsis protinus rebus offerrent. sed cum sint aliis alia aut magis propria aut magis ornata aut plus efficientia aut melius sonantia, debent esse non solum nota omnia sed in promptu atque, ut ita dicam, in conspectu, ut, cum se iudicio dicentis ostenderint, facilis ex his optimorum sit electio.
 
-et quae idem significarent solitos scio ediscere, quo facilius et occurreret unum ex pluribus et, cum essent usi aliquo, si breve intra spatium rursus desideraretur, effugiendae repetitionis gratia sumerent aliud quod idem intelligi posset. quod cum est puerile et cuiusdam infelicis operae tum etiam utile parum; turbam tantum modo turbam tantum modo, Halm : turbam_tum modo, G: turbam enim tantum, vulgo. congregat, ex qua sine discrimine occupet proximum quodque.
+et quae idem significarent solitos scio ediscere, quo facilius et occurreret unum ex pluribus et, cum essent usi aliquo, si breve intra spatium rursus desideraretur, effugiendae repetitionis gratia sumerent aliud quod idem intelligi posset. quod cum est puerile et cuiusdam infelicis operae tum etiam utile parum; turbam tantum modo congregat, ex qua sine discrimine occupet proximum quodque.
 
 nobis autem copia cum iudicio paranda est vim orandi non circulatoriam volubilitatem spectantibus. id autem consequemur optima legendo atque audiendo; non enim solum nomina ipsa rerum cognoscemus hac cura, sed quod quoque loco sit aptissimum.
 
-omnibus enim fere verbis fere verbis, cod Harl. 4995: ferebis vel, G. praeter pauca, quae sunt parum verecunda, in oratione locus est. nam scriptores quidem iamborum veterisque comoediae etiam in illis saepe laudantur, sed nobis nostrum opus intueri sat est. omnia verba, exceptis de quibus dixi, sunt alicubi optima; nam et humilibus interim et vulgaribus est opus, et quae nitidiore in parte videntur sordida, ubi res poscit, proprie dicuntur.
+omnibus enim fere verbis praeter pauca, quae sunt parum verecunda, in oratione locus est. nam scriptores quidem iamborum veterisque comoediae etiam in illis saepe laudantur, sed nobis nostrum opus intueri sat est. omnia verba, exceptis de quibus dixi, sunt alicubi optima; nam et humilibus interim et vulgaribus est opus, et quae nitidiore in parte videntur sordida, ubi res poscit, proprie dicuntur.
 
 haec ut sciamus atque eorum non significationem modo sed formas etiam mensurasque norimus, ut, ubicunque erunt posita, conveniant, nisi multa lectione atque auditione assequi nullo modo possumus, cum omnem sermonem auribus primum accipiamus. propter quod infantes a mutis nutricibus iussu regum in solitudine educati, etiamsi verba quaedam emisisse traduntur,
 
-tamen loquendi facultate caruerunt. sunt autem alia huius naturae, ut idem pluribus vocibus declarent, ita ut nihil significationis, quo potius utaris, intersit, ut ensis et gladius; alia vero, alia vero, Frotsher: aliave, G. etiamsi propria rerum aliquarum sint nomina, τροπικῶς quasi tamen quasi tamen, edd.: quare tam, G: quare tamen, later, MSS. ad eundem intellectum feruntur, ut ferrum et mucro.
+tamen loquendi facultate caruerunt. sunt autem alia huius naturae, ut idem pluribus vocibus declarent, ita ut nihil significationis, quo potius utaris, intersit, ut ensis et gladius; alia vero, etiamsi propria rerum aliquarum sint nomina, τροπικῶς quasi tamen ad eundem intellectum feruntur, ut ferrum et mucro.
 
 nam per abusionem sicarios etiam omnes vocamus, qui caedem telo quocunque commiserint. alia circuitu verborum plurium ostendimus, quale est et pressi copia lactis. Plurima vero mutatione figuramus: Scio non ignoro et non me fugit et non me praeterit et quis nescit? et nemini dubium est.
 
@@ -6271,15 +6271,15 @@ sed etiam ex proximo mutuari libet. nam et intelligo et sentio et video saepe id
 
 non semper enim haec inter se idem faciunt; nec sicut de intellectu animi recte dixerim video ita de visu oculorum intelligo, nec ut mucro gladium sic mucronem gladius ostendit.
 
-sed ut copia verborum sic paratur, ita non uerborum tantum gratia legendum vel audiendum est. nam omnium, quaecunque docemus, hoc hoc, Regius : haec, MSS. sunt exempla potentiora etiam ipsis quae traduntur artibus, cum eo qui discit perductus est, ut intelligere ea sine demonstrate et sequi iam suis viribus possit, quia, quae doctor praecepit, orator ostendit.
+sed ut copia verborum sic paratur, ita non uerborum tantum gratia legendum vel audiendum est. nam omnium, quaecunque docemus, hoc sunt exempla potentiora etiam ipsis quae traduntur artibus, cum eo qui discit perductus est, ut intelligere ea sine demonstrate et sequi iam suis viribus possit, quia, quae doctor praecepit, orator ostendit.
 
 alia vero audientes, alia legentes magis adiuvant. excitat qui dicit spiritu ipso, nec imagine et ambitu rerum sed rebus incendit. vivunt omnia enim et moventur, excipimusque nova ilia velut nascentia cum favore ac sollicitudine. nec fortuna modo iudicii sed etiam ipsorum qui orant periculo adficimur.
 
-praeter haec vox, actio decora, accommodata, accommodate ut, ed. Col . 1527: commoda aut, G: comniodiata ut, Halm . ut quisque locus postulabit, pronuntiandi vel potentissima in dicendo ratio et, ut semel dicam, pariter omnia docent. in lectione certius iudicium, quod audienti frequenter aut suus cuique favor aut ille laudantium clamor extorquet.
+praeter haec vox, actio decora, accommodata, ut quisque locus postulabit, pronuntiandi vel potentissima in dicendo ratio et, ut semel dicam, pariter omnia docent. in lectione certius iudicium, quod audienti frequenter aut suus cuique favor aut ille laudantium clamor extorquet.
 
 pudet enim dissentire, et velut tacita quadam verecundia inhibemur plus nobis credere, cum interim et vitiosa pluribus placent, et a conrogatis laudantur etiam quae non placent.
 
-sed e contrario quoque accidit, ut optime dictis gratiam prava iudicia non referant. lectio libera est nec actionis impetu transcurrit; sed repetere saepius licet, sive dubites sive memoriae penitus adfigere velis. repetamus autem et retractemus, retractemus, Spading: tractemnus, G. et ut cibos mansos ac prope liquefactos demittimus, quo facilius digerantur, ita lectio non cruda, sed multa iteratione iteratione, some late MSS.: altercatiune, G and others. mollita et velut confecta, memoriae imitationique tradatur.
+sed e contrario quoque accidit, ut optime dictis gratiam prava iudicia non referant. lectio libera est nec actionis impetu transcurrit; sed repetere saepius licet, sive dubites sive memoriae penitus adfigere velis. repetamus autem et retractemus, et ut cibos mansos ac prope liquefactos demittimus, quo facilius digerantur, ita lectio non cruda, sed multa iteratione mollita et velut confecta, memoriae imitationique tradatur.
 
 ac diu non nisi optimus quisque et qui credentem sibi minime fallat legendus est, sed diligenter ac paene ad scribendi sollicitudinem; nec per partes modo scrutanda omnia, sed perlectus liber utique ex integro resumendus, praecipueque oratio, cuius virtutes frequenter ex industria quoque occultantur.
 
@@ -6287,7 +6287,7 @@ saepe enim praeparat, dissimulat, insidiatur orator, eaque in prima parte action
 
 illud vero utilissimum nosse eas causas, quarum orationes in manus sumpserimus et, quotiens continget, utrimque habitas legere actiones: ut Demosthenis atque Aeschinis inter se contrarias, et Servii Sulpicii atque Messalae, quorum alter pro Aufidia, contra dixit alter, et Pollionis et Cassii reo Asprenate aliasque plurimas.
 
-quin etiam si minus pares uidebuntur aliquae, tamen ad cognoscendam litium quaestionem recte requirentur, ut contra Ciceronis orationes Tuberonis in Ligarium et Hortensii pro Verre. quin etiam , easdem causas ut quisque egerit utile utile, edd. ald . and Col.: utrisque, G and most MSS. erit scire. Nam de domo Ciceronis dixit Calidius, et pro Milone orationem Brutus exercitationis gratia scripsit, etiamsi egisse eum Cornelius Celsus falso existimat; et Pollio et Messala defenderunt eosdem, et nobis pueris insignes pro Voluseno Catulo Domitii Afri, Crispi Passieni, Decimi Laelii orationes ferebantur.
+quin etiam si minus pares uidebuntur aliquae, tamen ad cognoscendam litium quaestionem recte requirentur, ut contra Ciceronis orationes Tuberonis in Ligarium et Hortensii pro Verre. quin etiam , easdem causas ut quisque egerit utile erit scire. Nam de domo Ciceronis dixit Calidius, et pro Milone orationem Brutus exercitationis gratia scripsit, etiamsi egisse eum Cornelius Celsus falso existimat; et Pollio et Messala defenderunt eosdem, et nobis pueris insignes pro Voluseno Catulo Domitii Afri, Crispi Passieni, Decimi Laelii orationes ferebantur.
 
 neque id statim legenti persuasum sit omnia quae optimi auctores dixerint utique esse perfecta. nam et labuntur aliquando et oneri cedunt et indulgent ingeniorum suorum voluptati, nec semper intendunt animum; nonnunquam fatigantur, cum Ciceroni dormitare interim Demosthenes, Horatio vero etiam Homerus ipse videatur.
 
@@ -6303,21 +6303,21 @@ patrocinio quoque aliquo iuvari, quod alligata ad certam pedum necessitatem non 
 
 neque ergo arma squalere situ ac rubigine velim, sed fulgorem inesse qui terreat, qualis est ferri, quo mens simul visusque praestringitur, non qualis auri argentique, imbellis et potius habenti periculosus.
 
-historia quoque alere oratorem quodam uberi uberi, Spalding : moveri, G. iucundoque suco potest; verum et ipsa sic est legenda, ut sciamus, plerasque eius virtutes oratori esse vitandas. est enim proxima poetis et quodammodo carmen solutum, et scribitur ad narrandum non ad probandum, totumque opus non ad actum rei pugnamque praesentem, sed ad memoriam posteritatis et ingenii famam componitur; ideoque et verbis remotioribus et liberioribus figuris narrandi taedium evitat.
+historia quoque alere oratorem quodam uberi iucundoque suco potest; verum et ipsa sic est legenda, ut sciamus, plerasque eius virtutes oratori esse vitandas. est enim proxima poetis et quodammodo carmen solutum, et scribitur ad narrandum non ad probandum, totumque opus non ad actum rei pugnamque praesentem, sed ad memoriam posteritatis et ingenii famam componitur; ideoque et verbis remotioribus et liberioribus figuris narrandi taedium evitat.
 
 itaque , ut dixi, neque ilia Sallustiana brevitas, qua nihil apud aures vacuas atque eruditas potest esse perfectius, apud occupatum variis cogitationibus iudicem et saepius ineruditum captanda nobis est; neque illa Livii lactea ubertas satis docebit eum, qui non speciem expositionis, sed fidem quaerit.
 
-adde quod adde quod, Regius : audeo quia, G. M. Tullius ne Thucydidem quidem aut Xenophontem utiles oratori putat, quanquam illum bellicum canere, huius ore Musas esse locutas existimet. licet tamen nobis in digressionibus uti vel historico nonnunquam nitore, dum in his, de quibus erit quaestio, meminerimus, non athletarum toris, sed militum lacertis opus opus, added by ed. Col . 1527. esse; nec versicolorem illam, qua Demetrius Phalereus dicebatur uti, vestem bene ad forensem pulverem facere.
+adde quod M. Tullius ne Thucydidem quidem aut Xenophontem utiles oratori putat, quanquam illum bellicum canere, huius ore Musas esse locutas existimet. licet tamen nobis in digressionibus uti vel historico nonnunquam nitore, dum in his, de quibus erit quaestio, meminerimus, non athletarum toris, sed militum lacertis opus esse; nec versicolorem illam, qua Demetrius Phalereus dicebatur uti, vestem bene ad forensem pulverem facere.
 
 est et alius ex historiis usus et is quidem maximus, sed non ad praesentem pertinens locum, ex cognitione rerum exemplorumque, quibus in primis instructus esse debet orator, ne omnia testimonia exspectet a litigatore, sed pleraque ex vetustate diligenter sibi cognita sumat, hoc potentiora, quod ea sola criminibus odii et gratiae vacant.
 
-A philosophorum vero lectione ut essent multa nobis petenda, vitio factum est oratorum, qui quidem illis optima sui operis parte cesserunt. nam et de iustis, honestis, utilibus, iisque quae sint istis contraria, et de rebus divinis maxime dicunt et argumentantur acriter Stoici, Stoici added by Meister. et altercationibus atque interrogationibus oratorem futurum optime Socratici praeparant.
+A philosophorum vero lectione ut essent multa nobis petenda, vitio factum est oratorum, qui quidem illis optima sui operis parte cesserunt. nam et de iustis, honestis, utilibus, iisque quae sint istis contraria, et de rebus divinis maxime dicunt et argumentantur acriter Stoici, et altercationibus atque interrogationibus oratorem futurum optime Socratici praeparant.
 
 sed his quoque adhibendum est simile iudicium, ut etiam cum in rebus versemur iisdem, non tamen eandem esse condicionem sciamus litium ac disputationum, fori et auditorii, praeceptorum et periculorum.
 
-credo exacturos plerosque, cum tantum esse utilitatis in legendo iudicemus, ut id quoque adiungamus operi, qui sint legendi, legendi inserted by ed. Col . 1527. quae in auctore quoque praecipua virtus. sed persequi singulos infiniti fuerit operis.
+credo exacturos plerosque, cum tantum esse utilitatis in legendo iudicemus, ut id quoque adiungamus operi, qui sint legendi, quae in auctore quoque praecipua virtus. sed persequi singulos infiniti fuerit operis.
 
-quippe cum in Bruto M. Tullius tot milibus versuum de Romanis tantum oratoribus loquatur et tamen de omnibus aetatis suae, quibuscum vivebat, exceptis Caesare atque Marcello, silentium egerit, quis erit modus, si et illos et qui postea fuerunt et Graecos omnes? Graecos is followed in the MSS. by et philosophos, which is expurged by Schimidt.
+quippe cum in Bruto M. Tullius tot milibus versuum de Romanis tantum oratoribus loquatur et tamen de omnibus aetatis suae, quibuscum vivebat, exceptis Caesare atque Marcello, silentium egerit, quis erit modus, si et illos et qui postea fuerunt et Graecos omnes?
 
 fuit igitur brevitas illa tutissima, quae est apud Livium in epistola ad filium scripta, legendos Demosthenem atque Ciceronem, tum ita, ut quisque esset Demostheni et Ciceroni simillimus.
 
@@ -6329,25 +6329,25 @@ sed non quidquid ad aliquam partem scientiae pertinet, protinus ad phrasin, de q
 
 nam quidam solos veteres legendos putant neque in ullis aliis esse naturalem eloquentiam et robur viris dignum arbitrantur; alios recens haec lascivia deliciaeque et omnia ad voluptatem multitudinis imperitae composita delectant.
 
-ipsorum etiam qui rectum dicendi genus sequi volunt, alii pressa demum et tenuia et quae minimum ab usu cotidiano recedant, sana et vere Attica putant; quosdam elatior ingenii vis et magis concitata et plena spiritus capit; sunt etiam lenis et nitidi et compositi generis non pauci amatores. de qua differentia disseram diligentius, cum de genere dicendi quaerendum erit. interim summatim, quid et summatim quid et a qua, vulgo: sumat et a qua, G (quia et a qua 2nd hand ). a qua lectione petere possint, qui confirmare facultatem dicendi volent, attingam. paucos enim qui qui added by ed. Col . 1527. sunt eminentissimi excerpere in animo est.
+ipsorum etiam qui rectum dicendi genus sequi volunt, alii pressa demum et tenuia et quae minimum ab usu cotidiano recedant, sana et vere Attica putant; quosdam elatior ingenii vis et magis concitata et plena spiritus capit; sunt etiam lenis et nitidi et compositi generis non pauci amatores. de qua differentia disseram diligentius, cum de genere dicendi quaerendum erit. interim summatim, quid et a qua lectione petere possint, qui confirmare facultatem dicendi volent, attingam. paucos enim qui sunt eminentissimi excerpere in animo est.
 
-facile est autem studiosis, qui sint his simillimi, iudicare; ne quisquam queratur omissos forte quos ipse valde probet. fateor enim plures plures, vulgo: plurimis, G. legendos esse quam qui a me nominabuntur. sed nunc genera ipsa lectionum, quae praecipue convenire intendentibus ut oratores fiant, existimem, persequar.
+facile est autem studiosis, qui sint his simillimi, iudicare; ne quisquam queratur omissos forte quos ipse valde probet. fateor enim plures legendos esse quam qui a me nominabuntur. sed nunc genera ipsa lectionum, quae praecipue convenire intendentibus ut oratores fiant, existimem, persequar.
 
-igitur , ut Aratus ab Iove incipiendum putat, ita nos rite coepturi ab Homero uidemur. hic enim, quemadmodum ex Oceano dicit ipse omnium omnium added by Osann. amnium fontiumque cursus initium capere, omnibus eloquentiae partibus exemplum et ortum dedit. hunc nemo in magnis rebus sublimitate, in parvis proprietate superaverit. idem laetus ac pressus, iucundus et gravis, tum copia tum brevitate mirabilis, nec poetica modo sed oratoria virtute eminentissimus.
+igitur , ut Aratus ab Iove incipiendum putat, ita nos rite coepturi ab Homero uidemur. hic enim, quemadmodum ex Oceano dicit ipse omnium amnium fontiumque cursus initium capere, omnibus eloquentiae partibus exemplum et ortum dedit. hunc nemo in magnis rebus sublimitate, in parvis proprietate superaverit. idem laetus ac pressus, iucundus et gravis, tum copia tum brevitate mirabilis, nec poetica modo sed oratoria virtute eminentissimus.
 
 nam ut de laudibus, exhortationibus, consolationibus taceam, nonne vel nonus liber, quo missa ad Achillem legatio continetur, vel in primo inter duces illa contentio vel dictae in secundo sententiae omnes litium ac consiliorum explicant artes?
 
 adfectus quidem vel illos mites vel hos concitatos, nemo erit tam indoctus, qui non in sua potestate hunc auctorem habuisse fateatur. age vero, non utriusque operis sui ingressu in paucissimis versibus legem prooemiorum non dico servavit sed constituit? nam benevolum auditorem invocatione dearum, quas praesidere vatibus creditum est, et intentum proposita rerum magnitudine et docilem summa celeriter comprehensa facit.
 
-narrare vero quis brevius quam qui mortem nuntiat Patrocli, quis significantius potest quam qui Curetum Aetolorumque proelium exponit? iam similitudines, amplificationes, exempla, digressus, signa rerum et argumenta ceteraque genera genera, Caesar : quae, G. probandi ac refutandi sunt ita multa, ut etiam qui de artibus scripserunt plurimi harum rerum testimonium ab hoc poeta petant.
+narrare vero quis brevius quam qui mortem nuntiat Patrocli, quis significantius potest quam qui Curetum Aetolorumque proelium exponit? iam similitudines, amplificationes, exempla, digressus, signa rerum et argumenta ceteraque genera probandi ac refutandi sunt ita multa, ut etiam qui de artibus scripserunt plurimi harum rerum testimonium ab hoc poeta petant.
 
 nam epilogus quidem quis unquam poterit illis Priami rogantis Achillem precibus aequari? quid ? in verbis, sententiis, figuris, dispositione totius operis nonne humani ingenii modum excedit? ut magni sit virtutes eius non aemulatione, quod fieri non potest, sed intellectu sequi.
 
-verum hic omnes sine dubio et in omni genere eloquentiae procul a se reliquit, epicos tamen praecipue, videlicet quia clarissima clarissina, most MSS.: durissima, G. in materia simili comparatio est.
+verum hic omnes sine dubio et in omni genere eloquentiae procul a se reliquit, epicos tamen praecipue, videlicet quia clarissima in materia simili comparatio est.
 
 raro assurgit Hesiodus, magnaque pars eius in nominibus est occupata; tamen utiles circa praecepta sententiae levitasque verborum et compositionis probabilis, daturque ei palma in illo medio genere dicendi.
 
-contra in Antimacho vis et gravitas et minime vulgare eloquendi genus habet laudem. sed quamvis ei secundas fere grammaticorum consensus deferat, et adfectibus et iucunditate et dispositione et omnino arte deficitur, ut plane manifesto appareat, quanto sit aliud proximum esse aliud secundum. secundum, various late MSS. omitted by G.
+contra in Antimacho vis et gravitas et minime vulgare eloquendi genus habet laudem. sed quamvis ei secundas fere grammaticorum consensus deferat, et adfectibus et iucunditate et dispositione et omnino arte deficitur, ut plane manifesto appareat, quanto sit aliud proximum esse aliud secundum.
 
 Panyasin ex utroque mixtum putant in eloquendo neutriusque aequare virtutes, alterum tamen ab eo materia alterum disponendi ratione superari. Apollonius in ordinem a grammaticis datum non venit, quia Aristarchus atque Aristophanes, poetarum iudices, neminem sui temporis in numerum redegerunt; non tamen contemnendum reddidit opus aequali quadam mediocritate.
 
@@ -6359,7 +6359,7 @@ nec sane quisquam est tam procul a cognitione eorum remotus, ut non indicem cert
 
 sed ad illos iam perfectis constitutisque viribus revertemur; quod in cenis grandibus saepe facimus ut, cum optimis satiati sumus, varietas tamen nobis ex vilioribus grata sit. tunc et elegiam vacabit in manus sumere, cuius princeps habetur Callimachus, secundas confessione plurimorum Philetas occupavit.
 
-sed dum adsequamur adsequamur, Halm : adsequimur, G and most MSS: adsequatur, a few late MSS. illam firmam, ut dixi, facilitatem, optimis adsuescendum est et multa magis quam multorum lectione formanda mens et ducendus color. itaque ex tribus receptis Aristarchi iudicio scriptoribus iamborum ad ἕξιν maxime pertinebit unus Archilochus.
+sed dum adsequamur illam firmam, ut dixi, facilitatem, optimis adsuescendum est et multa magis quam multorum lectione formanda mens et ducendus color. itaque ex tribus receptis Aristarchi iudicio scriptoribus iamborum ad ἕξιν maxime pertinebit unus Archilochus.
 
 summa in hoc vis elocutionis, cum validae tum breves vibrantesque sententiae, plurimum sanguinis atque nervorum, adeo ut videatur quibusdam, quod quoquam minor est, materiae esse non ingenii vitium.
 
@@ -6367,11 +6367,11 @@ novem vero Lyricorum longe Pindarus princeps spiritus magnificentia, sententiis,
 
 Stesichorus quam sit ingenio validus, materiae quoque ostendunt, maxima bella et clarissimos canentem duces et epici carminis onera lyra sustinentem. reddit enim personis in agendo simul loquendoque debitam dignitatem, ac si tenuisset modum, videtur aemulari proximus Homerum potuisse; sed redundat atque effunditur, quod ut est reprehendendum, ita copiae vitium est.
 
-Alcaeus in parte operis aureo plectro merito donatur, qua tyrannos insectatus multum etiam moribus confert in eloquendo quoque brevis et magnificus et dicendi vi dicendi vi, Halm : dicendi et, G. plerumque oratori similis; sed et lusit sed et lusit, several late MSS.: et eius sit, G. et in amores descendit, maioribus tamen aptior.
+Alcaeus in parte operis aureo plectro merito donatur, qua tyrannos insectatus multum etiam moribus confert in eloquendo quoque brevis et magnificus et dicendi vi plerumque oratori similis; sed et lusit et in amores descendit, maioribus tamen aptior.
 
 Simonides , tenuis alioqui, sermone proprio et iucunditate quadam commendari potest; praecipua tamen eius in commovenda miseratione virtus, ut quidam in hac eum parte omnibus eius operis auctoribus praeferant.
 
-antiqua comoedia cum sinceram illam sermonis Attici gratiam prope sola retinet, tum facundissimae libertatis est et in est et in, G. A. B. Wolff: etsi est, MSS. insectandis vitiis praecipua, plurimum tamen virium etiam in ceteris partibus habet. nam et grandis et elegans et venusta, et nescio an ulla, post Homerum tamen, quem ut Achillem semper excipi par est, aut similior sit oratoribus aut ad oratores faciendos aptior.
+antiqua comoedia cum sinceram illam sermonis Attici gratiam prope sola retinet, tum facundissimae libertatis est et in insectandis vitiis praecipua, plurimum tamen virium etiam in ceteris partibus habet. nam et grandis et elegans et venusta, et nescio an ulla, post Homerum tamen, quem ut Achillem semper excipi par est, aut similior sit oratoribus aut ad oratores faciendos aptior.
 
 plures eius auctores; Aristophanes tamen et Eupolis Cratinusque praecipui. tragoedias primus in lucem Aeschylus protulit, sublimis et gravis et grandiloquus saepe usque ad vitium, sed rudis in plerisque et incompositus; propter quod correctas eius fabulas in certamen deferre posterioribus poetis Athenienses permiserunt, suntque eo modo multi coronati.
 
@@ -6379,9 +6379,9 @@ sed longe clarius illustraverunt hoc opus Sophocles atque Euripides, quorum in d
 
 namque is et sermone (quod ipsum reprehendunt, quibus gravitas et cothurnus et sonus Sophocli videtur esse sublimior) magis accedit oratorio generi et sententiis densus et in iis quae a sapientibus tradita sunt paene ipsis par, et dicendo ac respondendo cuilibet eorum qui fuerunt in foro diserti comparandus; in adfectibus vero cum omnibus mirus tum in iis qui miseratione constant facile praecipuus.
 
-hunc hunc, several late MSS. : et, G. admiratus maxime est, ut saepe testatur, et secutus, quanquam in opere diverso, Menander, qui vel unus, meo quidem iudicio, diligenter lectus ad cuncta, quae praecipimus, effingenda sufficiat; ita omnem vitae imagine expressit, tanta in eo inveniendi copia et eloquendi facultas, ita est omnibus rebus, personis, adfectibus accommodatus.
+hunc admiratus maxime est, ut saepe testatur, et secutus, quanquam in opere diverso, Menander, qui vel unus, meo quidem iudicio, diligenter lectus ad cuncta, quae praecipimus, effingenda sufficiat; ita omnem vitae imagine expressit, tanta in eo inveniendi copia et eloquendi facultas, ita est omnibus rebus, personis, adfectibus accommodatus.
 
-nec nihil profecto viderunt, qui orationes, quae Charisii nomini addicuntur, Charisii nomini addicintur, a, Frotscher: charis in homile adduetura, G. : Charisii nomine edumtnr, vulgo. a Menandro scriptas putant. sed mihi longe magis orator probari in opere suo videtur, nisi forte aut illa after illa G and a number of later MSS. read mala, which is, however, omitted in a few MSS. and is expunged by Andresen. iudicia, quae Epitrepontes, Epicleros, Locroe habent, aut meditationes in Psophodee, Nomothete, Hypobolimaeo non omnibus oratoriis numeris sunt absolutae.
+nec nihil profecto viderunt, qui orationes, quae Charisii nomini addicuntur, a Menandro scriptas putant. sed mihi longe magis orator probari in opere suo videtur, nisi forte aut illa iudicia, quae Epitrepontes, Epicleros, Locroe habent, aut meditationes in Psophodee, Nomothete, Hypobolimaeo non omnibus oratoriis numeris sunt absolutae.
 
 ego tamen plus adhuc quiddam collaturum eum declamatoribus puto, quoniam his necesse est secundum condicionem controversiarum plures subire personas, patrum, filiorum, militum, rusticorum, divitum, pauperum, irascentium, deprecantium, mitium, asperorum. in quibus omnibus mire custoditur ab hoc poeta decor.
 
@@ -6403,23 +6403,23 @@ Isocrates in diverso genere dicendi nitidus et comptus et palaestrae quam pugnae
 
 neque ego in his, de quibus sum locutus, has solas virtutes, sed has praecipuas puto, nec ceteros parum fuisse magnos. quin etiam Phalerea illum Demetrium, quanquam is primus inclinasse eloquentiam dicitur, multum ingenii habuisse et facundiae fateor, vel ob hoc memoria dignum, quod ultimus est fere ex Atticis, qui dici possit orator; quem tamen in illo medio genere dicendi praefert omnibus Cicero.
 
-philosophorum , ex quibus plurimum se traxisse eloquentiae M. Tullius confitetur, quis dubitet Platonem esse praecipuum sive acumine disserendi sive eloquendi facultate divina quadam et Homerica? multum enim supra prosam orationem et quam pedestrem Graeci vocant surgit, ut mihi non hominis ingenio sed quodam Delphici videatur oraculo dei instinctus. quodam Delphici dei instinctus, Frotschcer: quaedam Delphico de instrietus, G: quodam Delphico instinctus, vulg.
+philosophorum , ex quibus plurimum se traxisse eloquentiae M. Tullius confitetur, quis dubitet Platonem esse praecipuum sive acumine disserendi sive eloquendi facultate divina quadam et Homerica? multum enim supra prosam orationem et quam pedestrem Graeci vocant surgit, ut mihi non hominis ingenio sed quodam Delphici videatur oraculo dei instinctus.
 
 quid ego commemorem Xenophontis illam iucunditatem inadfectatam, sed quam nulla consequi adfectatio possit? ut ipsae sermonem finxisse Gratiae videantur et, quod de Pericle veteris comoediae testimonium est, in hunc transferri iustissime possit, in labris eius sedisse quandam persuadendi deam. quid reliquorum Socraticorum elegantiam?
 
-quid Aristotelem? quem dubito scientia rerum an scriptorum copia an eloquendi eloquendi, cod. Harl . 4950, cod. dor .: eloquendi usus, G and nearly all MSS.: eloquendi vi ac, Geel. suavitate an inventionum acumine an varietate operum clariorem putem. nam in Theophrasto tam est loquendi nitor ille divinus, ut ex eo nomen quoque traxisse dicatur.
+quid Aristotelem? quem dubito scientia rerum an scriptorum copia an eloquendi suavitate an inventionum acumine an varietate operum clariorem putem. nam in Theophrasto tam est loquendi nitor ille divinus, ut ex eo nomen quoque traxisse dicatur.
 
 minus indulsere eloquentiae Stoici veteres; sed cum honesta suaserunt tum in colligendo probandoque quae instituerant plurimum valuerunt, rebus tamen acuti magis quam, id quod sane non adfectaverunt, oratione magnifici.
 
 idem nobis per Romanos quoque auctores ordo ducendus est. itaque ut apud illos Homerus sic apud nos Vergilius auspicatissimum dederit exordium, omnium eius generis poetarum Graecorum nostrorumque haud dubie proximus.
 
-utar enim verbis iisdem, quae ex Afro Domitio iuvenis excepi; qui mihi interroganti, quem Homero crederet maxime accedere, Secundus , inquit, est Vergilius, propior tamen primo quam tertio. et hercule ut ut, several late MSS.: cum, G and majority of MSS. illi naturae caelesti atque immortali cesserimus, ita curae et diligentiae vel ideo in hoc plus est, quod ei fuit magis laborandum, et quantum eminentibus vincimur, fortasse aequalitate pensamus.
+utar enim verbis iisdem, quae ex Afro Domitio iuvenis excepi; qui mihi interroganti, quem Homero crederet maxime accedere, Secundus , inquit, est Vergilius, propior tamen primo quam tertio. et hercule ut illi naturae caelesti atque immortali cesserimus, ita curae et diligentiae vel ideo in hoc plus est, quod ei fuit magis laborandum, et quantum eminentibus vincimur, fortasse aequalitate pensamus.
 
 ceteri omnes longe sequentur. nam Macer et Lucretius legendi quidem, sed non ut phrasin, id est, corpus eloquentiae faciant, elegantes in sua quisque materia sed alter humilis, alter difficilis. Atacinus Varro in iis, per quae nomen est adsecutus, interpres operis alieni, non spernendus quidem, verum ad augendam facultatem dicendi parum locuples.
 
 Ennium sicut sacros vetustate lucos adoremus, in quibus grandia et antiqua robora iam non tantam habent speciem quantam religionem. propiores alii atque ad hoc, de quo loquimur, magis utiles. lascivus quidem in herois quoque Ovidius et nimium amator ingenii sui, laudandus tamen in partibus.
 
-Cornelius autem Severus, etiam si sit si sit, Spalding : MSS. vary between si, sit and sic. versificator quam poeta melior, si tamen, ut est dictum, ad exemplar primi libri bellum Siculum perscripsisset, vindicaret sibi iure secundum locum. Serranum Serranum, Lange: forrenum, G. consummari mors immatura non passa est; puerilia tamen eius opera et maximam indolem ostendunt et admirabilem praecipue in aetate illa recti generis voluntatem.
+Cornelius autem Severus, etiam si sit versificator quam poeta melior, si tamen, ut est dictum, ad exemplar primi libri bellum Siculum perscripsisset, vindicaret sibi iure secundum locum. Serranum consummari mors immatura non passa est; puerilia tamen eius opera et maximam indolem ostendunt et admirabilem praecipue in aetate illa recti generis voluntatem.
 
 multum in Valerio Flacco nuper amisimus. vehemens et poeticum ingenium Saleii Bassi fuit, nec ipsum senectute maturuit. Rabirius ac Pedo non indigni cognitione, si vacet. Lucanus ardens et concitatus et sententiis clarissimus et, ut dicam quod sentio, magis oratoribus quam poetis imitandus.
 
@@ -6435,27 +6435,27 @@ ego quantum ab illis tantum ab Horatio dissentio, qui Lucilium fluere lutulentum
 
 alterum illud etiam prius saturae genus, sed non sola carminum varietate mixtum condidit Terentius Varro, vir Romanorum eruditissimus. plurimos hic libros et doctissimos composuit, peritissimus linguae Latinae et omnis antiquitatis et rerum Graecarum nostrarumque, plus tamen scientiae collaturus quam eloquentiae.
 
-iambus non sane a Romanis celebratus est ut proprium opus, sed aliis sod aliis, inserted by Christ. quibusdam interpositus; cuius acerbitas in Catullo, Bibaculo, Horatio, quanquam illi epodos interveniat, reperietur. at Lyricorum idem Horatius fere solus legi dignus. nam et insurgit aliquando et plenus est iucunditatis et gratiae et varius figuris et verbis felicissime audax. si quem adiicere velis, is erit Caesius Bassus, quem nuper vidimus; sed eum longe praecedunt ingenia viventium.
+iambus non sane a Romanis celebratus est ut proprium opus, sed aliis quibusdam interpositus; cuius acerbitas in Catullo, Bibaculo, Horatio, quanquam illi epodos interveniat, reperietur. at Lyricorum idem Horatius fere solus legi dignus. nam et insurgit aliquando et plenus est iucunditatis et gratiae et varius figuris et verbis felicissime audax. si quem adiicere velis, is erit Caesius Bassus, quem nuper vidimus; sed eum longe praecedunt ingenia viventium.
 
-tragoediae scriptores veterum Accius atque Pacuvius clarissimi clarissimi, several late MSS.: gravissima, G: gravissimus, other late MSS.: grandissimus, cod. murac .: grandissimni, Halm . gravitate sententiarum, verborum pondere, auctoritate personarum. ceterum nitor et summa in excolendis operibus manus magis videri potest temporibus quam ipsis defuisse. virium tamen Accio plus tribuitur; Pacuvium videri doctiorem qui esse docti adfectant volunt.
+tragoediae scriptores veterum Accius atque Pacuvius clarissimi gravitate sententiarum, verborum pondere, auctoritate personarum. ceterum nitor et summa in excolendis operibus manus magis videri potest temporibus quam ipsis defuisse. virium tamen Accio plus tribuitur; Pacuvium videri doctiorem qui esse docti adfectant volunt.
 
 iam Varii Thyestes cuilibet Graecarum comparari potest. Ovidi Medea videtur mihi ostendere, quantam ille vir praestare potuerit, si ingenio suo imperare quam indulgere maluisset. eorum quos viderim longe princeps Pomponius Secundus, quem senes quidem parum tragicum putabant, eruditione ac nitore praestare confitebantur.
 
 in comoedia maxime claudicamus. licet Varro Musas, Aeli Stilonis sententia, Plautino dicat sermone locuturas fuisse, si Latine loqui vellent, licet Caecilium veteres laudibus ferant, licet Terentii scripta ad Scipionem Africanum referantur (quae tamen sunt in hoc genere elegantissima et plus adhuc habitura gratiae si intra versus trimetros stetissent), vix levem consequimur umbram,
 
-adeo ut mihi sermo ipse Romanus non recipere videatur illam solis concessam Atticis venerem, cum eam ne Graeci quidem in alio genere linguae suae slae, Köhler: quae, G. obtinuerint. togatis excellit Afranius; utinam non inquinasset argumenta puerorum foedis amoribus mores suos fassus.
+adeo ut mihi sermo ipse Romanus non recipere videatur illam solis concessam Atticis venerem, cum eam ne Graeci quidem in alio genere linguae suae obtinuerint. togatis excellit Afranius; utinam non inquinasset argumenta puerorum foedis amoribus mores suos fassus.
 
 at non historia cesserit Graecis, nec opponere Thucydidi Sallustium verear, neque indignetur sibi Herodotus aequari T. Livium, cum in narrando mirae iucunditatis clarissimique candoris, tum in contionibus supra quam enarrari potest eloquentem; ita quae dicuntur omnia cum rebus tum personis accommodata sunt; adfectus quidem, praecipueque eos qui sunt dulciores, ut parcissime dicam, nemo historicorum commendavit magis.
 
-ideoque immortalem illam Sallustii velocitatem diversis virtutibus consecutus est. nam mihi egregie dixisse videtur Servilius Nonianus, pares eos magis quam similes; qui et ipse a nobis auditus est, clarus vi clarus vi, Kiderlin: clarius, G : clari vir, vulgo. ingenii et sententiis creber, sed minus pressus quam historiae auctoritas postulat.
+ideoque immortalem illam Sallustii velocitatem diversis virtutibus consecutus est. nam mihi egregie dixisse videtur Servilius Nonianus, pares eos magis quam similes; qui et ipse a nobis auditus est, clarus vi ingenii et sententiis creber, sed minus pressus quam historiae auctoritas postulat.
 
 quam paulum aetate praecedens eum Bassus Aufidius egregie, utique in libris belli Germanici, praestitit genere ipso, probabilis in omnibus, sed in quibusdam suis ipse viribus minor.
 
-superest adhuc et exornat aetatis nostrae gloriam vir saeculorum memoria dignus, qui olim nominabitur, nunc intelligitur. habet amatores nec immerito Cremuti immnerito Cremuti, Nipperdey: illnlerito rem uti, G: later MSS. vary between immeritor remitti cad imitatores uti. libertas, quanquam circumcisis quae dixisse ei nocuerat. sed elatum abunde spiritum et audaces sententias deprehendas etiam in his quae manent. sunt et alii scriptores boni, sed nos genera degustamus, non bibliothecas excutimus.
+superest adhuc et exornat aetatis nostrae gloriam vir saeculorum memoria dignus, qui olim nominabitur, nunc intelligitur. habet amatores nec immerito Cremuti libertas, quanquam circumcisis quae dixisse ei nocuerat. sed elatum abunde spiritum et audaces sententias deprehendas etiam in his quae manent. sunt et alii scriptores boni, sed nos genera degustamus, non bibliothecas excutimus.
 
 oratores vero vel praecipue Latinam eloquentiam parem facere Graecae possint. nam Ciceronem cuicunque eorum fortiter opposuerim. nec ignoro quantam mihi concitem pugnam, cum praesertim non sit id propositi, ut eum Demostheni comparem hoc tempore; neque enim attinet, cum Demosthenem in primis legendum vel ediscendum potius putem.
 
-quorum ego virtutes plerasque arbitror similes, consilium, ordinem, dividendi, dividendi, Aldine ed.: videndi, G and nearly all MSS. praeparandi, probandi rationem, omnia denique quae sunt inventionis. in eloquendo est aliqua diversitas; densior ille hic copiosior, ille concludit adstrictius hic latius, pugnat ille acumine semper hic frequenter et pondere, illi nihil detrahi potest huic nihil adiici, curae plus in illo in hoc naturae.
+quorum ego virtutes plerasque arbitror similes, consilium, ordinem, dividendi, praeparandi, probandi rationem, omnia denique quae sunt inventionis. in eloquendo est aliqua diversitas; densior ille hic copiosior, ille concludit adstrictius hic latius, pugnat ille acumine semper hic frequenter et pondere, illi nihil detrahi potest huic nihil adiici, curae plus in illo in hoc naturae.
 
 salibus certe et commiseratione, qui duo plurimum in adfectibus valent, vincimus. et fortasse epilogos illi mos civitatis abstulerit; sed et nobis illa, quae Attici mirantur, diversa Latini sermonis ratio minus permiserit. in epistolis quidem, quanquam sunt utriusque, dialogisve, quibus nihil ille, nulla contentio est.
 
@@ -6467,17 +6467,17 @@ nam quis docere diligentius, movere vehementius potest? cui tanta unquam iucundi
 
 iam in omnibus quae dicit tanta auctoritas inest, ut dissentire pudeat, nec advocati studium sed testis aut iudicis adferat fidem, cum interim haec omnia, quae vix singula quisquam intentissima cura consequi posset, fluunt illaborata, et illa, qua nihil pulchrius auditum est, oratio prae se fert tamen felicissimam facilitatem.
 
-quare non immerito ab hominibus ab hominibus, Halm : ab omnibus, B: hominibus, a few late MSS. aetatis suae regnare in iudiciis dictus est, apud posteros vero id consecutus, ut Cicero iam non hominis nomen, sed eloquentiae habeatur. hunc igitur spectemus, hoc propositum nobis sit exemplum, ille se profecisse sciat, cui Cicero valde placebit.
+quare non immerito ab hominibus aetatis suae regnare in iudiciis dictus est, apud posteros vero id consecutus, ut Cicero iam non hominis nomen, sed eloquentiae habeatur. hunc igitur spectemus, hoc propositum nobis sit exemplum, ille se profecisse sciat, cui Cicero valde placebit.
 
 multa in Asinio Pollione inventio, summa diligentia, adeo ut quibusdam etiam nimia videatur, et consilii et animi satis; a nitore et iucunditate Ciceronis ita longe abest, ut videri possit saeculo prior. at Messala nitidus et candidus et quadam modo praeferens in dicendo nobilitatem suam, viribus minor.
 
-C. vero Caesar si foro tantum vacasset, non alius ex nostris contra Ciceronem nominaretur. tanta in eo vis est, id acumen, ea concitatio, ut illum eodem animo dixisse, quo bellavit, appareat; exornat tamen haec omnia mira sermonis, cuius proprie studiosus fuit, elegantia.
+**C** vero Caesar si foro tantum vacasset, non alius ex nostris contra Ciceronem nominaretur. tanta in eo vis est, id acumen, ea concitatio, ut illum eodem animo dixisse, quo bellavit, appareat; exornat tamen haec omnia mira sermonis, cuius proprie studiosus fuit, elegantia.
 
-multum ingenii in Caelio et praecipue in accusando multa urbanitas, dignusque vir cui et mens melior et vita longior contigisset. inveni qui Calvum praeferrent omnibus, inveni qui Ciceroni crederent, eum nimia contra se calumnia verum sanguinem perdidisse; sed est et sancta et gravis oratio et castigata et frequenter vehemens quoque. imitator autem est Atticorum, fecitque illi properata mors iniuriam, si quid adiecturus fuit. adiecturus fuit, B: most later MSS. add non si quid detracturus with slight variations.
+multum ingenii in Caelio et praecipue in accusando multa urbanitas, dignusque vir cui et mens melior et vita longior contigisset. inveni qui Calvum praeferrent omnibus, inveni qui Ciceroni crederent, eum nimia contra se calumnia verum sanguinem perdidisse; sed est et sancta et gravis oratio et castigata et frequenter vehemens quoque. imitator autem est Atticorum, fecitque illi properata mors iniuriam, si quid adiecturus fuit.
 
 et Servius Sulpicius insignem non inmerito famam tribus orationibus meruit. multa , si cum iudicio legatur, dabit imitatione digna Cassius Severus, qui si ceteris virtutibus colorem et gravitatem orationis adiecisset, ponendus inter praecipuos foret.
 
-nam et ingenii plurimum est in eo et acerbitas mira, et urbanitas et fervor; et fervor, Bursian : et sermo, B. sed plus stomacho quam consilio dedit. praeterea ut amari sales, ita frequenter amaritudo ipsa ridicule est.
+nam et ingenii plurimum est in eo et acerbitas mira, et urbanitas et fervor; sed plus stomacho quam consilio dedit. praeterea ut amari sales, ita frequenter amaritudo ipsa ridicule est.
 
 sunt alii multi diserti,(quos persequi longum est. eorum quos uiderim Domitius Afer et Iulius Africanus longe praestantissimi. arte ille et toto genere dicendi praeferendus et quem in numero veterum habere non timeas; hic concitatior, sed in cura verborum nimius et compositione nonnunquam longior et translationibus parum modicus. erant clara et nuper ingenia.
 
@@ -6503,7 +6503,7 @@ cuius e multae alioqui et magnae virtutes fuerunt, ingenium facile et copiosum, 
 
 tractavit etiam omnem fere studiorum materiam. nam et orationes eius et poemata et epistolae et dialogi feruntur. in philosophia parum diligens, egregius tamen vitiorum insectator fuit. multae in eo claraeque sententiae, multa etiam morum gratia legenda; sed in eloquendo corrupta pleraque atque eo perniciosissima, quod abundant dulcibus vitiis.
 
-velles eum suo ingenio dixisse, alieno iudicio. nam si oblique obilqua, E. Wöfilin: simile quam, B: si aliqua, 2 nd hand. contempsisset, si parum recta recta, added by Peterson. non concupisset, si non omnia sua amasset, si rerum pondera minutissimis sententiis non fregisset, consensus potius eruditorum quam puerorum amore comprobaretur.
+velles eum suo ingenio dixisse, alieno iudicio. nam si oblique contempsisset, si parum recta non concupisset, si non omnia sua amasset, si rerum pondera minutissimis sententiis non fregisset, consensus potius eruditorum quam puerorum amore comprobaretur.
 
 verum sic quoque iam robustis et severiore genere satis firmatis legendus vel ideo quod exercere potest utrinque iudicium. multa enim, ut dixi, probanda in eo, multa etiam admiranda sunt, eligere modo curae sit; quod utinam ipse fecisset. digna enim fuit illa natura, quae meliora vellet; quod voluit effecit.
 
@@ -6521,13 +6521,13 @@ et cum illi, qui nullum cuiusquam rei habuerunt magistrum, plurima in posteros t
 
 turpe etiam illud est, contentum esse id consequi quod imiteris. nam rursus quid erat futurum, si nemo plus effecisset eo quem sequebatur? nihil in poetis supra Livium Andronicum, nihil in historiis supra Pontificum annales haberemus; ratibus adhuc navigaremus; non esset pictura, nisi quae lineas modo extremas umbrae, quam corpora in sole fecissent, circumscriberet.
 
-ac si omnia percenseas, nulla mansit mansit, Meister : sit, MSS. ars, qualis inventa est, nec intra initium stetit, nisi forte nostra potissimum tempora damnamus huius infelicitatis, ut nunc demum nihil crescat. nihil autem crescit sola imitatione.
+ac si omnia percenseas, nulla mansit ars, qualis inventa est, nec intra initium stetit, nisi forte nostra potissimum tempora damnamus huius infelicitatis, ut nunc demum nihil crescat. nihil autem crescit sola imitatione.
 
-quodsi prioribus adiicere fas non est, quomodo sperare possumus illum oratorem perfectum? cum in his, quos maximos adhuc novimus, nemo sit inventus, in quo nihil aut desideretur aut reprehendatur. sed etiam qui summa non appetent, contendere potius quam sequi debent. nam qui hoc agit hoc agit, Halm , om. B: agit, later MSS. ut prior sit,
+quodsi prioribus adiicere fas non est, quomodo sperare possumus illum oratorem perfectum? cum in his, quos maximos adhuc novimus, nemo sit inventus, in quo nihil aut desideretur aut reprehendatur. sed etiam qui summa non appetent, contendere potius quam sequi debent. nam qui hoc agit ut prior sit,
 
 forsitan, etiamsi non transierit, aequabit. eum vero nemo potest aequare, cuius vestigiis sibi utique insistendum putat; necesse est enim semper sit posterior qui sequitur. adde quod plerumque facilius est plus facere quam idem. tantam enim difficultatem habet similitudo, ut ne ipsa quidem natura in hoc ita evaluerit, ut non res quae simillimae, quaeque pares maxime videantur, utique discrimine aliquo discernantur.
 
-adde quod, quidquid alteri simile est, necesse est minus sit eo, quod imitatur, ut umbra corpore et imago facie et actus histrionum veris adfectibus. quod in orationibus quoque evenit. namque eis, quae in exemplum adsumimus, subest natura et vera vis; contra omnis imitatio ficta est et ad alienum propositum accommodatur. accommnoatur, 2nd hand of B and later MSS. : colllodatur, B.
+adde quod, quidquid alteri simile est, necesse est minus sit eo, quod imitatur, ut umbra corpore et imago facie et actus histrionum veris adfectibus. quod in orationibus quoque evenit. namque eis, quae in exemplum adsumimus, subest natura et vera vis; contra omnis imitatio ficta est et ad alienum propositum accommodatur.
 
 quod facit, ut minus sanguinis ac virium declamationes habeant quam orationes, quod in illis vera, in his adsimulata materia est. adde quod ea, quae in oratore maxima sunt, imitabilia non sunt, ingenium, inventio, vis, facilitas et quidquid arte non traditur.
 
@@ -6549,7 +6549,7 @@ atque ego illi praeceptori, quem institueram in libro secundo, credidi non ea so
 
 difficilius est naturam suam fingere. sed ne ille quidem doctor, quanquam omnia quae recta sunt velit esse in suis auditoribus quam plenissima, in eo tamen, cui naturam obstare viderit, laborabit. id quoque vitandum, in quo magna pars errat, ne in oratione poetas nobis et historicos, in illis operibus oratores aut declamatores imitandos putemus.
 
-sua cuique proposita proposita, most later MSS.: propositio, B: proposito, Gertz. lex, suus cuique decor est. nam nec comoedia in cothurnos adsurgit, nec contra tragoedia socco ingreditur. habet tamen omnis eloquentia aliquid commune; id imitemur quod commune est.
+sua cuique proposita lex, suus cuique decor est. nam nec comoedia in cothurnos adsurgit, nec contra tragoedia socco ingreditur. habet tamen omnis eloquentia aliquid commune; id imitemur quod commune est.
 
 etiam hoc solet incommodi accidere iis, qui se uni alicui generi dediderunt, ut, si asperitas iis placuit alicuius, hanc etiam in leni ac remisso causarum genere non exuant; si tenuitas ac iucunditas, in asperis gravibusque causis ponderi rerum parum respondeant: cum sit diversa non causarum modo inter ipsas condicio, sed in singulis etiam causis partium, sintque alia leniter alia aspere, alia concitate alia remisse, alia docendi alia movendi gratia dicenda; quorum omnium dissimilis atque diversa inter se ratio est.
 
@@ -6601,21 +6601,21 @@ protinus ergo adhibere curam rectius erit atque ab initio sic opus ducere, ut ca
 
 nam in stilo quidem quamlibet properato dat aliquam cogitationi moram non consequens celeritatem eius manus; ille cui dictamus urget, atque interim pudet etiam dubitare aut resistere aut mutare quasi conscium infirmitatis nostrae timentes.
 
-quo fit, ut non rudia tantum et fortuita, sed impropria interim, dum sola est connectendi sermonis cupiditas, effluant, quae nec scribentium curam nec dicentium impetum consequantur. at idem ille, qui excipit, si tardior in scribendo aut incertior in intellegendo intellegendo, Müller: legeldo, B. velut offensator fuit, inhibetur cursus, atque omnis quae erat concepta mentis intentio mora et interdum iracundia excutitur.
+quo fit, ut non rudia tantum et fortuita, sed impropria interim, dum sola est connectendi sermonis cupiditas, effluant, quae nec scribentium curam nec dicentium impetum consequantur. at idem ille, qui excipit, si tardior in scribendo aut incertior in intellegendo velut offensator fuit, inhibetur cursus, atque omnis quae erat concepta mentis intentio mora et interdum iracundia excutitur.
 
-tum illa, quae altiorem altiorem, later MSS.: aptiorem, B. animi motum sequuntur quaeque ipsa animum quodammodo concitant, quorum est iactare nanum, torquere vultum, frontem et latus frontem et latus, Peterson : sintielatus, B ( 2nd hand ): simul et, almost all MSS. interim obiurgare, quaeque Persius notat, cum leviter dicendi genus significat, nec pluteum, inquit, caedit nec demorsos sapit unguis, etiam ridicula sunt, nisi cum soli sumus.
+tum illa, quae altiorem animi motum sequuntur quaeque ipsa animum quodammodo concitant, quorum est iactare nanum, torquere vultum, frontem et latus interim obiurgare, quaeque Persius notat, cum leviter dicendi genus significat, nec pluteum, inquit, caedit nec demorsos sapit unguis, etiam ridicula sunt, nisi cum soli sumus.
 
 nec pluteum,
 
 caedit nec demorsos sapit unguis,
 
-denique ut semel quod est potentissimum dicam, secretum in i, several latr MSS.: quod, B. dictando perit. atque liberum arbitris locum et quam altissimum silentium scribentibus maxime convenire nemo dubitaverit. non tamen protinus audiendi, qui credunt aptissima in hoc nemora silvasque, quod illa caeli libertas locorumque amoenitas sublimem animum et beatiorem spiritum parent.
+denique ut semel quod est potentissimum dicam, secretum in dictando perit. atque liberum arbitris locum et quam altissimum silentium scribentibus maxime convenire nemo dubitaverit. non tamen protinus audiendi, qui credunt aptissima in hoc nemora silvasque, quod illa caeli libertas locorumque amoenitas sublimem animum et beatiorem spiritum parent.
 
 mihi certe iucundus hic magis quam studiorum hortator videtur esse secessus. namque illa, quae ipsa delectant, necesse est avocent ab intentione operis destinati. neque enim se bona fide in multa simul intendere animus totum potest, et quocunque respexit, desinit intueri quod propositum erat.
 
 quare silvarum amoenitas et praeterlabentia flumina et inspirantes ramis arborum aurae volucrumque cantus et ipsa late circumspiciendi libertas ad se trahunt, ut mihi remittere potius voluptas ista videatur cogitationem quam intendere.
 
-Demosthenes melius, qui se in locum, ex quo nulla exaudiri vox et ex quo nihil prospici posset, recondebat ne aliud agere mentem cogerent oculi. ideoque lucubrantes silentium noctis et clausum cubiculum et lumen unum velut tectos tectos, ed. leid .: rectos, MSS. maxime teneat.
+Demosthenes melius, qui se in locum, ex quo nulla exaudiri vox et ex quo nihil prospici posset, recondebat ne aliud agere mentem cogerent oculi. ideoque lucubrantes silentium noctis et clausum cubiculum et lumen unum velut tectos maxime teneat.
 
 sed cum in omni studiorum genere tum in hoc praecipue bona valetudo, quaeque eam maxime praestat, frugalitas, necessaria est, cum tempora ab ipsa rerum natura ad quietem refectionemque nobis data in acerrimum laborem convertimus. cui tamen non plus irrogandum est quam quod somno supererit, haud deerit.
 
@@ -6641,7 +6641,7 @@ sed neque hoc contingere semper potest praesertim oratori, cui saepius scribere 
 
 sit ergo aliquando quod placeat aut certe quod sufficiat, ut opus poliat lima, non exterat. temporis quoque esse debet modus. nam quod Cinnae Zmyrnam novem annis accepimus scriptam, et panegyricum Isocratis, qui parcissime, decem annis dicunt elaboratum, ad oratorem nihil pertinet, cuius nullum erit, si tam tardum fuerit, auxilium.
 
-proximum est, ut dicamus, quae praecipue scribenda sint ἕξιν parantibus. non est huius I non est huius, added by Bursian. quidem operis, ut explicemus quae sint materiae, quae prima aut secunda aut deinceps tractanda sint (nam id factum est etiam primo libro, quo puerorum, et secundo, quo iam robustorum studiis ordinem dedimus) sed de quo nunc agitur, unde copia ac facilitas maxime veniat.
+proximum est, ut dicamus, quae praecipue scribenda sint ἕξιν parantibus. non est huius quidem operis, ut explicemus quae sint materiae, quae prima aut secunda aut deinceps tractanda sint (nam id factum est etiam primo libro, quo puerorum, et secundo, quo iam robustorum studiis ordinem dedimus) sed de quo nunc agitur, unde copia ac facilitas maxime veniat.
 
 vertere Graeca in Latinum veteres nostri oratores optimum iudicabant. id se L. Crassus in illis Ciceronis de Oratore libris dicit factitasse. id Cicero sua ipse persona frequentissime praecipit, quin etiam libros Platonis atque Xenophontis edidit hoc genere translatos. id Messalae placuit, multaeque sunt ab eo scriptae ad hunc modum orationes, adeo ut etiam cum illa Hyperidis pro Phryne difficillima Romanis subtilitate contenderet.
 
@@ -6673,7 +6673,7 @@ quapropter historiae nonnunquam ubertas in aliqua exercendi stili parte ponenda 
 
 ideoque mihi videtur M. Tullius tantum intulisse eloquentiae lumen, quod in hos quoque studiorum secessus excurrit. nam si nobis sola materia fuerit ex litibus, necesse est deteratur fulgor et durescat articulus et ipse ille mucro ingenii cotidiana pugna retundatur.
 
-sed quemadmodum forensibus certaminibus exercitatos et quasi militantes reficit ac reparat haec velut sagina dicendi, sic adolescentes non debent nimium in falsa rerum imagine detineri et inanibus simulacris usque adeo, ut difficilis ab his digressus sit, assuescere, assuescere, Zumpt: assuefacere, MSS. ne ab illa, in qua prope consenuerunt, umbra vera discrimina velut quendam solem reformident.
+sed quemadmodum forensibus certaminibus exercitatos et quasi militantes reficit ac reparat haec velut sagina dicendi, sic adolescentes non debent nimium in falsa rerum imagine detineri et inanibus simulacris usque adeo, ut difficilis ab his digressus sit, assuescere, ne ab illa, in qua prope consenuerunt, umbra vera discrimina velut quendam solem reformident.
 
 quod accidisse etiam M. Porcio Latroni, qui primus clari nominis professor fuit, traditur, ut, cum ei summam in scholis opinionem obtinenti causa in foro esset oranda, impense petierit, uti subsellia in basilicam transferrentur. ita illi caelum novum fuit, ut omnis eius eloquentia contineri tecto ac parietibus videretur.
 
@@ -6693,29 +6693,29 @@ neque vero rerum ordinem modo, quod ipsum satis erat, intra se ipsa disponit, se
 
 nam primum facienda multo stilo forma est, quae nos etiam cogitantes sequatur; tum adsumendus usus paulatim, ut pauca primum complectamur animo, quae reddi fideliter possint; mox per incrementa tam modica, ut onerari se labor ille non sentiat, augenda vis et exercitatione multa continenda est, quae quidem maxima ex parte memoria constat. ideoque aliqua mihi in illum locum differenda sunt.
 
-eo tandem tandem, Madvig: tamen, MSS. pervenit, ut is, cui non refragetur ingenium, acri studio adiutus tantum consequatur, ut ei tam quae cogitarit quam quae scripserit atque edidicerit in dicendo fidem servent. Cicero certe Graecorum Metrodorum Scepsium et Empylum Rhodium nostrorumque Hortensium tradidit, quae cogitaverant, ad verbum in agendo retulisse.
+eo tandem pervenit, ut is, cui non refragetur ingenium, acri studio adiutus tantum consequatur, ut ei tam quae cogitarit quam quae scripserit atque edidicerit in dicendo fidem servent. Cicero certe Graecorum Metrodorum Scepsium et Empylum Rhodium nostrorumque Hortensium tradidit, quae cogitaverant, ad verbum in agendo retulisse.
 
 sed si forte aliquis inter dicendum effulserit extemporalis color, non superstitiose cogitatis demum est inhaerendum. neque enim tantum habent curae, ut non sit dandus et fortunae locus, cum saepe etiam scriptis ea quae subito nata sunt inserantur. ideoque totum hoc exercitationis genus ita instituendum est, ut et digredi ex eo et redire in id facile possimus.
 
 nam ut primum est domo adferre paratam dicendi copiam et certam, ita refutare temporis munera longe stultissimum est. quare cogitatio in hoc praeparetur, ut nos fortuna decipere non possit, adiuvare possit. id autem fiet memoriae viribus, ut illa, quae complexi animo sumus, fluant secura, non sollicitos et respicientes et una spe suspensos recordationis non sinant providere. alioqui vel extemporalem temeritatem malo quam male cohaerentem cogitationem.
 
-peius enim quaeritur retrorsus, quia, dum illa desideramus, ab allis avertimur, et ex memoria potius res petimus quam ex materia. plura sunt autem, si utrimque utrimque, Boonell: utrumque, MSS. quaerendum est, quae inveniri possunt quam quae inventa sunt.
+peius enim quaeritur retrorsus, quia, dum illa desideramus, ab allis avertimur, et ex memoria potius res petimus quam ex materia. plura sunt autem, si utrimque quaerendum est, quae inveniri possunt quam quae inventa sunt.
 
-Maximus vero studiorum fructus est et velut primus quoddam praemium quoddam, cod. Harl . 4995: primus quid, B. amplissimum longi laboris ex tempore dicendi facultas, quam qui non erit consecutus, mea quidem sententia civilibus officiis renuntiabit et solam scribendi facultatem potius ad alia opera convertet. vix enim bonae fidei viro convenit auxilium in publicum polliceri, quod praesentissimis quibusque periculis desit, intrare intrare portum, MSS: instar ports, Meister . portum ad quem navis accedere nisi lenibus ventis vecta non possit,
+Maximus vero studiorum fructus est et velut primus quoddam amplissimum longi laboris ex tempore dicendi facultas, quam qui non erit consecutus, mea quidem sententia civilibus officiis renuntiabit et solam scribendi facultatem potius ad alia opera convertet. vix enim bonae fidei viro convenit auxilium in publicum polliceri, quod praesentissimis quibusque periculis desit, intrare portum ad quem navis accedere nisi lenibus ventis vecta non possit,
 
 siquidem innumerabiles accidunt subitae necessitates vel apud magistratus vel repraesentatis iudiciis continuo agendi. quarum si qua, non dico cuicunque innocentium civium sed amicorum ac propinquorum alicui evenerit, stabitne mutus et salutarem petentibus uocem statimque, si non succurratur, perituris, moras et secessum et silentium quaeret, dum illa verba fabricentur et memoriae insidant et vox ac latus praeparetur?
 
-quae vero patitur hoc ratio, ratio, cod. Harl . 4995: oratiu, B. possit. frotscher , Bonnell: sit, MSS. omittere, Bonnell: mittere, B. ut quisquam possit orator omittere aliquando casus Quid, cum adversario respondendum erit, fiet? nam saepe ea, quae opinati sumus et contra quae scripsimus, fallunt, ac tota subito causa mutatur; atque ut gubernatori ad incursus tempestatum, sic agenti ad varietatem causarum ratio mutando est.
+quae vero patitur hoc ratio, ut quisquam possit orator omittere aliquando casus Quid, cum adversario respondendum erit, fiet? nam saepe ea, quae opinati sumus et contra quae scripsimus, fallunt, ac tota subito causa mutatur; atque ut gubernatori ad incursus tempestatum, sic agenti ad varietatem causarum ratio mutando est.
 
 quid porro multus stilus et adsidua lectio et longa studiorum aetas facit, si manet eadem quae fuit incipientibus difficultas? perisse profecto confitendum est praeteritum laborem, cui semper idem laborandum est. neque ego hoc ago ut ex tempore dicere malit, sed ut possit. id autem maxime hoc modo consequemur.
 
 nota sit primum dicendi via. neque enim prius contingere cursus potest quam scierimus, quo sit et qua perveniendum. nec satis est non ignorare quae sunt causarum iudicialium partes, aut quaestionum ordinem recte disponere, quanquam ista sunt praecipua, sed quid quoque loco primum sit ac secundum et deinceps; quae ita sunt natura copulata, ut mutari aut intervelli sine confusione non possint.
 
-quisquis autem via dicet, ducetur ducetur dicet, Eusser. ante omnia rerum ipsa serie velut duce; propter quod homines etiam modice exercitati facillime tenorem in narrationibus servant. deinde , quid quoque loco quaerant, scient. nec circumspectabunt nec offerentibus se aliunde sensibus turbabuntur nec confundent ex diversis orationem velut salientes huc illuc nec usquam insistentes.
+quisquis autem via dicet, ducetur ante omnia rerum ipsa serie velut duce; propter quod homines etiam modice exercitati facillime tenorem in narrationibus servant. deinde , quid quoque loco quaerant, scient. nec circumspectabunt nec offerentibus se aliunde sensibus turbabuntur nec confundent ex diversis orationem velut salientes huc illuc nec usquam insistentes.
 
 postremo habebunt modum et fine, qui esse citra divisionem nullus potest. expletis pro facultate omnibus quae proposuerint, pervenisse se ad ultimum sentient. et haec quidem ex arte, illa vero ex studio: ut copiam sermonis optimi, quemadmodum praeceptum est, comparemus: multo ac fideli stilo sic formetur oratio, ut scriptorum colorem etiam quae subito effusa sint reddant, ut, cum multa scripserimus, etiam multa dicamus.
 
-nam consuetudo et exercitatio facilitatem maxime parit; quae si paulum intermissa fuerit, non velocitas illa modo tardatur, sed ipsum os os, added by Halm. coit atque concurrit. quanquam enim opus est naturali quadam mobilitate animi ut, dum proxima dicimus, struere ulteriora possimus semperque nostram vocem provisa et formata cogitatio excipiat,
+nam consuetudo et exercitatio facilitatem maxime parit; quae si paulum intermissa fuerit, non velocitas illa modo tardatur, sed ipsum os coit atque concurrit. quanquam enim opus est naturali quadam mobilitate animi ut, dum proxima dicimus, struere ulteriora possimus semperque nostram vocem provisa et formata cogitatio excipiat,
 
 vix tamen aut natura aut ratio in tam multiplex officium diducere animum queat, ut inventioni, dispositioni, elocutioni, ordini rerum verborumque, tum iis, quae dicit, quae subiuncturus est, quae ultra spectanda sunt, adhibita vocis, pronuntiationis, gestus observatione, una sufficiat.
 
@@ -6731,7 +6731,7 @@ deum tunc adfuisse, cum id evenisset, veteres oratores, ut Cicero, dictitabant. 
 
 quare capiendae sunt illae, de quibus dixi, rerum imagines, quas vocari φαντασίας indicavimus, omniaque, de quibus dicturi erimus, personae, quaestiones, spes, metus habenda in oculis, in adfectus recipienda. pectus est enim, quod disertos facit, et vis mentis. ideoque imperitis quoque, si modo sint aliquo adfectu concitati, verba non desunt.
 
-tum intendendus animus, non in aliquam rem unam, sed in plures simul continuas; ut, si per aliquam rectam viam mittamus oculos, simul omnia quae sunt in ea circaque intuemur, non ultimum tantum videmus sed usque ad ultimum. addit ad dicendum etiam pudor stimulos, after habet cod. monac . gives et dicendorum exspectata laus. mirumque videri potest, quod, cum stilus secreto gaudeat atque omnes arbitros reformidet, extemporalis actio auditorium frequentia, ut miles congestu signorum, excitatur.
+tum intendendus animus, non in aliquam rem unam, sed in plures simul continuas; ut, si per aliquam rectam viam mittamus oculos, simul omnia quae sunt in ea circaque intuemur, non ultimum tantum videmus sed usque ad ultimum. addit ad dicendum etiam pudor stimulos, mirumque videri potest, quod, cum stilus secreto gaudeat atque omnes arbitros reformidet, extemporalis actio auditorium frequentia, ut miles congestu signorum, excitatur.
 
 namque et difficiliorem cogitationem exprimit et expellit dicendi necessitas, et secundos impetus auget placendi cupido. adeo pretium omnia spectant, ut eloquentia quoque, quanquam plurimum habeat in se voluptatis, maxime tamen praesenti fructu laudis opinionisque ducatur.
 
@@ -6739,31 +6739,31 @@ nec quisquam tantum fidat ingenio, ut id sibi speret incipienti statim posse con
 
 ceterum pervenire eo debet, ut cogitatio non utique melior sit ea sed tutior, cum hanc facilitatem non prosa modo multi sint consecuti, sed etiam carmine, ut Antipater Sidonius et Licinius Archias (credendum enim Ciceroni est), non quia nostris quoque temporibus non et fecerint quidam hoc et faciant. quod tamen non ipsum tam probabile puto, (neque enim habet aut usum res aut necessitatem) quam exhortandis in hanc spem, qui foro praeparantur, utile exemplum.
 
-neque vero tanta esse unquam debet debet, added by Herzog. fiducia facilitatis, ut non breve saltem tempus, quod nusquam fere deerit, ad ea quae dicturi simus dispicienda sumamus, quod quidem in iudiciis ac foro datur semper. neque enim quisquam est, qui causam quam non didicerit agat.
+neque vero tanta esse unquam debet fiducia facilitatis, ut non breve saltem tempus, quod nusquam fere deerit, ad ea quae dicturi simus dispicienda sumamus, quod quidem in iudiciis ac foro datur semper. neque enim quisquam est, qui causam quam non didicerit agat.
 
 declamatores quosdam perversa ducit ambitio, ut exposita controversia protinus dicere velint; quin etiam, quod est in primis frivolum ac scenicum, verbum petant, quo incipiant. sed tam contumeliosos in se ridet invicem eloquentia, et qui stultis videri eruditi volunt, stulti eruditis videntur.
 
-si qua tamen fortuna tam subitam fecerit agendi necessitatem, mobiliore quodam opus erit ingenio, et vis omnis intendenda rebus, et in praesentia remittendum aliquid ex cura verborum, si consequi consequi, added by Spalding: non sequi, 2nd hand of cod. bamb . utrumque non dabitur. tum et tardior pronuntiatio moras habet et suspensa ac velut dubitans oratio, ut tamen deliberate, non haesitare videamur.
+si qua tamen fortuna tam subitam fecerit agendi necessitatem, mobiliore quodam opus erit ingenio, et vis omnis intendenda rebus, et in praesentia remittendum aliquid ex cura verborum, si consequi utrumque non dabitur. tum et tardior pronuntiatio moras habet et suspensa ac velut dubitans oratio, ut tamen deliberate, non haesitare videamur.
 
 hoc , dum egredimur e portu, si nos nondum aptatis satis armamentis aget ventus; deinde paulatim simul euntes aptabimus vela et disponemus rudentes et impleri sinus optabimus. Id potius quam se inani verborum torrenti dare quasi tempestatibus quo volent auferendum.
 
-sed non minore studio continetur haec facultas quam paratur. ars enim semel percepta non labitur, labitur, ed. gryph : capitur, MSS. stilus quoque intermissione paulum admodum de celeritate deperdit; promptum hoc et in expedito positum exercitatione sola continetur. hac uti sic optimum est, ut cotidie dicamus audientibus pluribus, maxime de quorum simus iudicio atque opinione solliciti; rarum est enim ut satis se quisque vereatur.
+sed non minore studio continetur haec facultas quam paratur. ars enim semel percepta non labitur, stilus quoque intermissione paulum admodum de celeritate deperdit; promptum hoc et in expedito positum exercitatione sola continetur. hac uti sic optimum est, ut cotidie dicamus audientibus pluribus, maxime de quorum simus iudicio atque opinione solliciti; rarum est enim ut satis se quisque vereatur.
 
-vel soli tamen dicamus potius quam omnino non dicamus. est et et, added by Spalding. illa exercitatio cogitandi totasque materias vel silentio (dum tamen quasi dicat intra se ipsum) persequendi, quae nullo non et tempore et loco, quando non aliud agimus, explicari potest, et est in parte utilior utilior, carly edd.: utilitatis, B. quam haec proxima.
+vel soli tamen dicamus potius quam omnino non dicamus. est et illa exercitatio cogitandi totasque materias vel silentio (dum tamen quasi dicat intra se ipsum) persequendi, quae nullo non et tempore et loco, quando non aliud agimus, explicari potest, et est in parte utilior quam haec proxima.
 
 diligentius enim componitur quam illa, in qua contextum dicendi intermittere veremur. rursus in alia plus prior confert, vocis firmitatem, oris facilitatem, motum corporis, qui et ipse, ut dixi, excitat oratorem et iactatione manus, pedis supplosione, sicut cauda leones facere dicuntur, hortatur. studendum vero semper et ubique.
 
-neque enim fere tam est ullus dies occupatus, ut nihil lucrativae, ut Cicero Brutum facere tradit, operae ad scribendum aut legendum ant legendum, 2nd hand of cod. bamb .: omitted by B. aut dicendum rapi aliquo momento temporis possit; siquidem C. Carbo etiam in tabernaculo solebat hac uti exercitatione dicendi.
+neque enim fere tam est ullus dies occupatus, ut nihil lucrativae, ut Cicero Brutum facere tradit, operae ad scribendum aut legendum aut dicendum rapi aliquo momento temporis possit; siquidem C. Carbo etiam in tabernaculo solebat hac uti exercitatione dicendi.
 
-ne id quidem tacendum, quod eidem Ciceroni placet, nullum nostrum usquam negligentem esse sermonem; quidquid loquemur ubicunque, sit pro sua scilicet portione perfectum. scribendum certe nunquam est magis, quam cum multa dicemus ex tempore. ita enim servabitur pondus, et innatans innatans, Stoer: unatrans, B. illa verborum facilitas in altum reducetur; sicut rustici proximas vitis radices amputant, quae illam in summum solum ducunt, ut inferiores penitus descendendo firmentur.
+ne id quidem tacendum, quod eidem Ciceroni placet, nullum nostrum usquam negligentem esse sermonem; quidquid loquemur ubicunque, sit pro sua scilicet portione perfectum. scribendum certe nunquam est magis, quam cum multa dicemus ex tempore. ita enim servabitur pondus, et innatans illa verborum facilitas in altum reducetur; sicut rustici proximas vitis radices amputant, quae illam in summum solum ducunt, ut inferiores penitus descendendo firmentur.
 
-ac nescio an, si si added by ed. camp . utrumque cum cura et studio fecerimus, invicem prosit, ut scribendo dicamus diligentius, dicendo scribamus facilius. scribendum ergo, quotiens licebit; si id non dabitur, cogitandum; ab utroque exclusi debent tamen sic dicere, sic dicere, Peterson : inicere, B. ut neque deprehensus orator neque litigator destitutus esse videatur.
+ac nescio an, si utrumque cum cura et studio fecerimus, invicem prosit, ut scribendo dicamus diligentius, dicendo scribamus facilius. scribendum ergo, quotiens licebit; si id non dabitur, cogitandum; ab utroque exclusi debent tamen sic dicere, ut neque deprehensus orator neque litigator destitutus esse videatur.
 
 plerumque autem multa agentibus accidit, ut maxime necessaria et utique initia scribant, cetera quae domo adferunt cogitatione complectantur, subitis ex tempore occurrant; quod fecisse M. Tullium commentariis ipsius apparet. sed feruntur aliorum quoque et inventi forte, ut eos dicturus quisque composuerat, et in libros digesti, ut causarum quae sunt actae a Ser. Sulpicio , cuius tres orationes extant; sed hi de quibus loquor commentarii ita sunt exacti, ut ab ipso mihi in memoriam posteritatis videantur esse compositi.
 
 nam Ciceronis ad praesens modo tempus aptatos libertus Tiro contraxit; quos non ideo excuso, quia non probem, sed ut sint magis admirabiles. in hoc genere prorsus recipio hanc brevem adnotationem libellosque, qui vel manu teneantur, et ad quos interim respicere fas sit.
 
-illud quod Laenas praecipit displicet mihi, vel in his quae scripserimus velut vel in his, Bonnell: ne in his, B. velut, Halm : vel in, B. summas in commentarium et capita conferre. facit enim ediscendi negligentiam haec ipsa fiducia et lacerat ac deformat orationem. ego autem ne scribendum quidem puto, quod non non, added by Regius. sinus memoria persecuturi. nam hic quoque accidit, ut revocet nos cogitatio ad illa elaborata nec sinat praesentem fortunam experiri.
+illud quod Laenas praecipit displicet mihi, vel in his quae scripserimus velut summas in commentarium et capita conferre. facit enim ediscendi negligentiam haec ipsa fiducia et lacerat ac deformat orationem. ego autem ne scribendum quidem puto, quod non sinus memoria persecuturi. nam hic quoque accidit, ut revocet nos cogitatio ad illa elaborata nec sinat praesentem fortunam experiri.
 
 sic anceps inter utrumque animus aestuat, cum et scripta perdidit et non quaerit nova. sed de memoria destinatus est libro proximo locus nec huic parti subiungendus, quia sunt alia prius nobis dicenda.
 
@@ -6793,7 +6793,7 @@ et nos secundum communem potius loquendi consuetudinem quam ipsam veritatis regu
 
 hi vero parva illa, quae abiectissimus quisque animus utilia credit, si cum virtute conferantur despicienda iudicaverunt, ideoque perpetua saeculorum admiratione celebrantur. neque nos simus tam humiles, ut quae laudamus inutilia credamus.
 
-sed hoc qualecunque discrimen raro admodum eveniet: idem fere, ut dixi, in omni genere causarum et proderit et decebit. est autem, quod omnes et semper et ubique deceat, facere ac deceat facere ac, 2nd hand of cod. bamb .: persuadere ae, B: deccat ac, cod. mon . dicere honeste, contraque neminem unquam ullo in loco turpiter. minora vero quaeque sunt ex mediis plerumque sunt talia, ut aliis sint concedenda, aliis non sint, aut pro persona, tempore, loco, causa magis ac minus vel excusata debeant videri vel reprehendenda.
+sed hoc qualecunque discrimen raro admodum eveniet: idem fere, ut dixi, in omni genere causarum et proderit et decebit. est autem, quod omnes et semper et ubique deceat, facere ac dicere honeste, contraque neminem unquam ullo in loco turpiter. minora vero quaeque sunt ex mediis plerumque sunt talia, ut aliis sint concedenda, aliis non sint, aut pro persona, tempore, loco, causa magis ac minus vel excusata debeant videri vel reprehendenda.
 
 cum dicamus autem de rebus aut alienis aut nostris, dividenda ratio est eorum, dum sciamus pleraque neutro loco convenire. in primis igitur omnis vitiosa iactatio est, eloquentiae tamen in oratore praecipue, adfertque audientibus non fastidium modo, sed plerumque etiam odium.
 
@@ -6811,11 +6811,11 @@ in epistolis aliquando familiariter apud amicos, nonnunquam in dialogis aliena t
 
 ambitiosissimum gloriandi genus est etiam deridere. ab aliis ergo laudemur; nam ipsos, ut Demosthenes ait, erubescere, etiam cum ab alis laudabimur, decet. neque hoc dico, non aliquando de rebus a se gestis oratori esse dicendum, sicut eidem Demostheni pro Ctesiphonte; quod tamen ita emendavit, ut necessitatem id faciendi ostenderet invidiamque omnem in eum regereret, qui hoc se coegisset.
 
-et M. Tullius saepe dicit de oppressa coniuratione Catilinae; sed modo id virtuti senatus, modo providentiae deorum immortalium adsignat. plerumque contra inimicos atque obtrectatores plus vindicat sibi. erant enim illa tuenda, illa tuenda, Halm : intuenda, B. cum obiicerentur.
+et M. Tullius saepe dicit de oppressa coniuratione Catilinae; sed modo id virtuti senatus, modo providentiae deorum immortalium adsignat. plerumque contra inimicos atque obtrectatores plus vindicat sibi. erant enim illa tuenda, cum obiicerentur.
 
-in carminibus utinam pepercisset, quae non desierunt carpere maligni: cedant arma togae, concedat laurea linguae; linguae, B: laudi, vulgo. et O fortunatam natam me consule Romam; et Iovem illum, a quo in concilium deorum advocatur; et Minervam , quae artes eum edocuit; quae sibi ille secutus quaedam Graecorum exempla permiserat.
+in carminibus utinam pepercisset, quae non desierunt carpere maligni: cedant arma togae, concedat laurea linguae; et O fortunatam natam me consule Romam; et Iovem illum, a quo in concilium deorum advocatur; et Minervam , quae artes eum edocuit; quae sibi ille secutus quaedam Graecorum exempla permiserat.
 
-cedant arma togae, concedat laurea linguae; linguae, B: laudi, vulgo.
+cedant arma togae, concedat laurea linguae;
 
 O fortunatam natam me consule Romam;
 
@@ -6863,7 +6863,7 @@ quis vero nesciat, quanto aliud dicendi genus poscat gravitas senatoria, aliud a
 
 tempus quoque ac locus egent observatione propria. nam et tempus tum triste, tum laetum, tum liberum, tum angustum est, atque ad haec omnia componendus orator;
 
-et loco publico privatone, celebri an secreto, aliena civitate an tua, in castris denique an foro dicas, interest plurimum, ac suam quidque formam et proprium quendam modum eloquentiae poscit: cum etiam in ceteris actibus vitae non idem in foro, curia, campo, theatro, domi facere conveniat; et pleraque, quae natura non sunt reprehendenda atque adeo adeo, Gesner: idco, B. interim sunt necessaria, alibi quam mos permiserit turpia habeantur.
+et loco publico privatone, celebri an secreto, aliena civitate an tua, in castris denique an foro dicas, interest plurimum, ac suam quidque formam et proprium quendam modum eloquentiae poscit: cum etiam in ceteris actibus vitae non idem in foro, curia, campo, theatro, domi facere conveniat; et pleraque, quae natura non sunt reprehendenda atque adeo interim sunt necessaria, alibi quam mos permiserit turpia habeantur.
 
 illud iam diximus, quanto plus nitoris et cultus demonstrativae materiae, ut ad delectationem audientium compositae, quam, quae sunt in actu et contentione, suasoriae iudicialesque permittant. hoc adhuc adiiciendum aliquas etiam, quae sunt egregiae dicendi virtutes, quo minus deceant, effici condicione causarum.
 
@@ -6915,15 +6915,15 @@ haec est profecto ratio et certissimum praeceptorum genus illius viri observatio
 
 hoc enim commune remedium est, si in tota actione aequaliter appareat non honor modo eius, sed etiam caritas. praeterea causa sit nobis iusta sic dicendi, neque id moderate tantum faciamus, sed etiam necessario.
 
-diversum ab hoc sed facilius, cum hominum aut alioqui turpium aut nobis invisorum quaedam facta laudanda sunt. decet enim rem ipsam probare in qualicunque persona. dixit Cicero pro Gabinio et P. Vatinio, inimicissimis antea sibi hominibus et in quos orationes etiam scripserat, uerum ait, ut sit iusta causa sic faciendi, ait ut sit sic faciendi, Halm : et iusta sit faciendi ( and the like ), MSS. non se de ingenii fama, sed de fide esse sollicitum.
+diversum ab hoc sed facilius, cum hominum aut alioqui turpium aut nobis invisorum quaedam facta laudanda sunt. decet enim rem ipsam probare in qualicunque persona. dixit Cicero pro Gabinio et P. Vatinio, inimicissimis antea sibi hominibus et in quos orationes etiam scripserat, uerum ait, ut sit iusta causa sic faciendi, non se de ingenii fama, sed de fide esse sollicitum.
 
-difficilior ei ratio in iudicio Cluentiano fuit, cum Scamandrum necesse haberet dicere nocentem, cuius egerat causam. verum id elegantissime cum eorum, a quibus ad se perductus esset, precibus, tum etiam adolescentia sua excusat, detracturus alioqui plurimum auctoritatis sibi, sibi, Halm : sidut, G: si, vulgo. in causa praesertim suspecta, si eum se esse, qui temere nocentes reos susciperet, fateretur.
+difficilior ei ratio in iudicio Cluentiano fuit, cum Scamandrum necesse haberet dicere nocentem, cuius egerat causam. verum id elegantissime cum eorum, a quibus ad se perductus esset, precibus, tum etiam adolescentia sua excusat, detracturus alioqui plurimum auctoritatis sibi, in causa praesertim suspecta, si eum se esse, qui temere nocentes reos susciperet, fateretur.
 
 apud iudicem vero, qui aut erit inimicus aut propter aliquod commodum a causa, quam nos susceperimus, aversus, ut persuadendi ardua ratio, ita dicendi expeditissima. fiducia enim iustitiae eius et nostrae causae nihil nos timere simulabimus. ipse erit gloria inflandus, ut tanto clarior eius futura sit fides ac religio in pronuntiando, quanto minus vel offensae vel utilitati suae indulserit.
 
 hoc et apud eos, a quibus appellatum erit, si forte ad eosdem remittemur; adiicienda ratio vel necessitatis alicuius, si id causa concedit, vel erroris vel suspicionis. tutissimum ergo paenitentiae confessio et satisfactio culpae, perducendusque omni modo iudex ad irae pudorem.
 
-accidit etiam nonnunquam ut eadem de ut, added by Regius, de by Halm. causa, de qua pronuntiarit, cognoscat iterum. tum illud quidem commune: apud alium nos iudicem disputaturos de illius sententia non fuisse, neque enim emendari ab alio quam ipso fas esse; ceterum ex causa, ut quaeque permittet, aut ignorata quaedam aut defuisse testes aut (quod timidissime et, si nihil aliud plane fuerit, dicendum est) patronos non suffecisse succurret.
+accidit etiam nonnunquam ut eadem de causa, de qua pronuntiarit, cognoscat iterum. tum illud quidem commune: apud alium nos iudicem disputaturos de illius sententia non fuisse, neque enim emendari ab alio quam ipso fas esse; ceterum ex causa, ut quaeque permittet, aut ignorata quaedam aut defuisse testes aut (quod timidissime et, si nihil aliud plane fuerit, dicendum est) patronos non suffecisse succurret.
 
 etiam , si apud alios iudices agetur, ut in secunda adsertione aut in centumviralibus iudiciis duplicibus, parte victa decentius erit, quotiens contigerit, servare iudicum pudorem; de qua re latius probationum loco dictum est. potest evenire, ut in aliis reprehendenda sint, quae ipsi fecerimus, ut obiicit Tubero Ligario, quod in Africa fuerit.
 
@@ -6933,11 +6933,11 @@ Tubero , iuvenem se patri haesisse, illum a senatu missum non ad bellum, sed ad 
 
 ceterum vel facillimum est, ibi alienam culpam incusare, ubi fateris tuam. verum id iam indicis est, non actoris. quodsi nulla contingit excusatio, sola colorem habet paenitentia. potest enim videri satis emendatus, qui in odium eorum, in quibus erraverat, ipse conversus est.
 
-sunt enim casus quidam, qui hoc natura ipsa rei non indecens faciant: ut cum pater ex meretrice natum, quod duxerit meretrice duxerit, added by ed. camp . meretricem in matrimonium, abdicat; scholastica materia sed non quae in foro non possit accidere. hic igitur multa non deformiter dicet: vel quod omnium sit votum parentum, ut honestiores quam sint ipsi liberos habeant, (nam et si filia nata, meretrix eam mater pudicam esse voluisset) vel quod humilior ipse fuerit, (licet enim huic ducere) huic ducere, Spalding : hoc ducrere or dicere, MSS. vel quod non habuerit patrem qui moneret;
+sunt enim casus quidam, qui hoc natura ipsa rei non indecens faciant: ut cum pater ex meretrice natum, quod duxerit meretricem in matrimonium, abdicat; scholastica materia sed non quae in foro non possit accidere. hic igitur multa non deformiter dicet: vel quod omnium sit votum parentum, ut honestiores quam sint ipsi liberos habeant, (nam et si filia nata, meretrix eam mater pudicam esse voluisset) vel quod humilior ipse fuerit, (licet enim huic ducere) vel quod non habuerit patrem qui moneret;
 
-quin eo minus id faciendum filio fuisse, ne renovaret domus pudorem et exprobraret patri nuptias, matri prioris vitae necessitatem, ne denique legem quandam suis quoque rursum rursum, Halm : sum, G: subindo, vulgo. liberis daret. credibilis erit etiam propria quaedam in illa meretrice turpitudo, quam nunc hic pater ferre non possit. alia praetereo; neque enim nunc declamamus, sed ostendimus nonnunquam posse dicentem ipsis incommodis bene uti.
+quin eo minus id faciendum filio fuisse, ne renovaret domus pudorem et exprobraret patri nuptias, matri prioris vitae necessitatem, ne denique legem quandam suis quoque rursum liberis daret. credibilis erit etiam propria quaedam in illa meretrice turpitudo, quam nunc hic pater ferre non possit. alia praetereo; neque enim nunc declamamus, sed ostendimus nonnunquam posse dicentem ipsis incommodis bene uti.
 
-illic maior aestus, ubi quis pudenda queritur, ut stuprum, praecipue in maribus, aut os profanatum. non dico, si loquatur ipse; nam quid aliud ei quam gemitus ac fletus et exsecratio vitae conveniat, ut iudex intelligat potius dolorem illum quam audiat? sed patrono quoque per similes adfectus eundum erit, quia hoc iniuriae genus verecundius est fateri fateri, added by Halm. passis quam ausis.
+illic maior aestus, ubi quis pudenda queritur, ut stuprum, praecipue in maribus, aut os profanatum. non dico, si loquatur ipse; nam quid aliud ei quam gemitus ac fletus et exsecratio vitae conveniat, ut iudex intelligat potius dolorem illum quam audiat? sed patrono quoque per similes adfectus eundum erit, quia hoc iniuriae genus verecundius est fateri passis quam ausis.
 
 mollienda est in plerisque alio colore asperitas orationis, ut Cicero de proscriptorum liberis fecit. quid enim crudelius quam homines honestis parentibus ac maioribus natos a re publica summoveri? itaque durum id esse summus ille tractandorum animorum artifex confitetur, sed ita legibus Sullae cohaerere statum civitatis adfirmat, ut iis solutis stare ipsa non possit. adsecutus itaque est, ut aliquid eorum quoque causa videretur facere contra quos diceret.
 
@@ -6945,7 +6945,7 @@ illud etiam in iocis monui, quam turpis esset fortunae insectatio, et ne in toto
 
 in quibus omnibus commune remedium est, ut ea, quae laedunt, non libenter tractare videaris nec in omnia impetum facias, sed in id quod expugnandum est, et reprehendens alia laude compenses:
 
-si cupidos milites dicas, cupidos milites dicas, sed, Spalding : cupidum dedicasset, G. sed non mirum, quod periculorum ac sanguinis maiora sibi deberi praemia putent; eosdem petulantes, sed hoc fieri, quod bellis magis quam paci consuerint. libertinis detrahenda est auctoritas; licet iis testimonium reddere industriae, per quam exierint de servitute.
+si cupidos milites dicas, sed non mirum, quod periculorum ac sanguinis maiora sibi deberi praemia putent; eosdem petulantes, sed hoc fieri, quod bellis magis quam paci consuerint. libertinis detrahenda est auctoritas; licet iis testimonium reddere industriae, per quam exierint de servitute.
 
 quod ad nationes exteras pertinet, Cicero varie: detracturus Graecis testibus fidem, doctrinam iis concedit ac litteras, seque eius gentis amatorem esse profitetur, Sardos contemnit, Allobrogas ut hostes insectatur; quorum nihil tunc, cum diceretur, parum aptum aut remotum cura decoris fuit.
 
@@ -6953,59 +6953,59 @@ verborum etiam moderatione detrahi solet, si qua est rei invidia: si asperum dic
 
 indecorum est super haec omne nimium, ideoque etiam quod natura rei satis aptum est, nisi modo quoque temperatur, gratiam perdit. cuius rei observatio iudicio magis quodam sentiri quam praeceptis tradi potest, quantum satis sit et quantum recipiant aures. non habet res mensuram et quasi pondus, quia ut in cibis alia aliis magis complent.
 
-adiiciendum etiam breviter videtur, quod fit ut fit ut, Halm : fiat, MSS. dicendi virtutes diversissimae non solum suos amatores habeant, sed ab eisdem saepe laudentur. nam Cicero quodam loco scribit, id esse optimum, quod, cum te facile credideris consequi imitatione, non possis. alio vero, non id egisse, ut ita diceret, quomodo se quilibet posse confideret, sed quomodo nemo.
+adiiciendum etiam breviter videtur, quod fit ut dicendi virtutes diversissimae non solum suos amatores habeant, sed ab eisdem saepe laudentur. nam Cicero quodam loco scribit, id esse optimum, quod, cum te facile credideris consequi imitatione, non possis. alio vero, non id egisse, ut ita diceret, quomodo se quilibet posse confideret, sed quomodo nemo.
 
-quod potest pugnare inter se videri. verum utrumque ac merito laudatur; causarum enim causarum enim, Spalding : causa enim enim, G. modo distat, quia simplicitas illa et velut securitas inadfectatae orationis mire tenues causas decet, maioribus illud admirabile dicendi genus magis convenit. in utroque eminet Cicero; ex quibus alterum imperiti se posse consequi credent, neutrum, qui intelligunt.
+quod potest pugnare inter se videri. verum utrumque ac merito laudatur; causarum enim modo distat, quia simplicitas illa et velut securitas inadfectatae orationis mire tenues causas decet, maioribus illud admirabile dicendi genus magis convenit. in utroque eminet Cicero; ex quibus alterum imperiti se posse consequi credent, neutrum, qui intelligunt.
 
 memoriam quidam naturae modo esse munus existimaverunt, estque in ea non dubie plurimum, sed ipsa excolendo sicut alia omnia augetur; et totus, de quo diximus adhuc, inanis est labor, nisi ceterae partes hoc velut spiritu continentur. nam et omnis disciplina memoria constat, frustraque docemur, si quidquid audimus praeterfluat; et exemplorum, legum, responsorum, dictorum denique factorumque velut quasdam copias, quibus abundare quasque in promptu semper habere debet orator, eadem illa vis praesentat. neque immerito thesaurus hic eloquentiae dicitur.
 
 sed non firme tantum continere, verum etiam cito percipere multa acturos oportet, nec quae scripseris modo iterata lectione complecti, sed in cogitatis quoque rerum ac verborum contextum sequi, et quae sint ab adversa parte dicta meminisse, nec utique ea, quo dicta sunt ordine, refutare, sed opportunis locis ponere.
 
-quid ? extemporalis oratio non alio mihi videtur mentis vigore constare. nam dum alia dicimus, quae dicturi sumus intuenda sunt. ita , cum semper cogitatio ultra eat, ultra eat id, Halm : ultre ad id, G: ultra id, codd. mon . Argeutorat. id quod est longius quaerit, quidquid autem repperit quodam modo apud memoriam deponit; quod illa quasi media quaedam manus acceptum ab inventione tradit elocutioni.
+quid ? extemporalis oratio non alio mihi videtur mentis vigore constare. nam dum alia dicimus, quae dicturi sumus intuenda sunt. ita , cum semper cogitatio ultra eat, id quod est longius quaerit, quidquid autem repperit quodam modo apud memoriam deponit; quod illa quasi media quaedam manus acceptum ab inventione tradit elocutioni.
 
-non arbitror autem mihi in hoc immorandum, quid sit quod memoriam faciat, quanquam plerique imprimi quaedam vestigia animo, velut in ceris anulorum signa serventur, existimant. neque ero tam credulus, ut, qui qui fieri videam, Spalding : quam ficri, MSS. habitu tardiorem firmioremque memoriam fieri videam, ei artem quoque audeam impertire. ei artem quoque audeam impertire, Spalding : et actem ( or autem) quoque ad animum pertire (pertinere or partire) MASS.
+non arbitror autem mihi in hoc immorandum, quid sit quod memoriam faciat, quanquam plerique imprimi quaedam vestigia animo, velut in ceris anulorum signa serventur, existimant. neque ero tam credulus, ut, qui habitu tardiorem firmioremque memoriam fieri videam, ei artem quoque audeam impertire.
 
 magis admirari naturam subit, tot res vetustas tanto ex intervallo repetitas reddere se et offerre, nec tantum requirentibus sed etiam sponte interim, nec vigilantibus sed etiam quiete compositis:
 
 eo magis, quod illa quoque animalia, quae carere intellectu videntur, meminerunt et agnoscunt et quamlibet longo itinere deducta ad adsuetas sibi sedes revertuntur. quid ? non haec varietas mira est, excidere proxima, vetera inhaerere? hesternorum immemores acta pueritiae recordari?
 
-quid quod quaedam requisita se occultant et eadem forte succurrunt? nec manet semper memoria, sed aliquando etiam redit? nesciretur tamen, quanta vis esset eius, quanta divinitas illa, nisi in hoc lumen vim vim, added by Regius. orandi extulisset. non
+quid quod quaedam requisita se occultant et eadem forte succurrunt? nec manet semper memoria, sed aliquando etiam redit? nesciretur tamen, quanta vis esset eius, quanta divinitas illa, nisi in hoc lumen vim orandi extulisset. non
 
 enim rerum modo sed etiam verborum ordinem praestat, nec ea pauca contexit, sed durat prope in infinitum, et in longissimis actionibus prius audiendi patientia quam memoriae fides deficit.
 
 quod et ipsum argumentum est subesse artem aliquam iuvarique ratione naturae, cum idem docti facere illud, indocti inexercitatique non possimus. quanquam invenio apud Platonem obstare memoriae usum litterarum, videlicet quoniam illa, quae scriptis reposuimus,
 
-velut custodire desinimus et ipsa securitate dimittimus. nec dubium est quin plurimum in hac parte valeat mentis intentio et velut acies luminum a prospectu rerum, quas intuetur, non aversa. unde accidit, ut quae per plures dies scribimus ediscendi causa, cogitatione causa, cogitatione, early edd.: sint cogitationes, MSS. ipsa contineamus. contineamius, Slothouwer: contineat, MSS.
+velut custodire desinimus et ipsa securitate dimittimus. nec dubium est quin plurimum in hac parte valeat mentis intentio et velut acies luminum a prospectu rerum, quas intuetur, non aversa. unde accidit, ut quae per plures dies scribimus ediscendi causa, cogitatione ipsa contineamus.
 
 artem autem memoriae primus ostendisse dicitur Simonides. cuius vulgata fabula est: cum pugili coronato carmen, quale componi victoribus solet, mercede pacta scripsisset, abnegatam ei pecuniae partem, quod more poetis frequentissimo digressus in laudes Castoris ac Pollucis exierat. quapropter partem ab iis petere, quorum facta celebrasset, iubebatur.
 
 et persolverunt, ut traditum est. nam cum esset grande convivium in honorem eiusdem victoriae atque adhibitus ei cenae Simonides, nuntio est excitus, quod eum duo iuvenes equis advecti desiderare maiorem in modum dicebantur. et illos quidem non invenit, fuisse tamen gratos erga se deos exitu comperit.
 
-nam vix eo ultra limen egresso, triclinium illud supra convivas corruit atque ita confudit, confudit ut, Badius: confunditur, MSS. ut non ora modo oppressorum, sed membra etiam omnia requirentes ad sepulturam propinqui nulla nota possent discernere. tum Simonides dicitur memor ordinis, ordinis, Regiuns: orline, MSS. quo quisque discubuerat, corpora suis reddidisse.
+nam vix eo ultra limen egresso, triclinium illud supra convivas corruit atque ita confudit, ut non ora modo oppressorum, sed membra etiam omnia requirentes ad sepulturam propinqui nulla nota possent discernere. tum Simonides dicitur memor ordinis, quo quisque discubuerat, corpora suis reddidisse.
 
-est autem magna inter auctores dissensio, Glaucone Carystio an Leocrati an Agatharcho an Scopae scriptum sit id carmen; et Pharsali fuerit haec domus, ut ipse quodam loco significare Simonides videtur utque Apollodorus et Eratosthenes et Euphorion et Larissaeus Eurypylus tradiderunt, an Crannone, ut Apollas Callimachus, Apollas Callimachus being unknown, Bentley conjectured Alollas et Callimachus ( Schneidewin Callimachusque). Apollas would then refer to a philosopher and geographer of Cyrene. quam secutus Cicero hanc famam latius fudit.
+est autem magna inter auctores dissensio, Glaucone Carystio an Leocrati an Agatharcho an Scopae scriptum sit id carmen; et Pharsali fuerit haec domus, ut ipse quodam loco significare Simonides videtur utque Apollodorus et Eratosthenes et Euphorion et Larissaeus Eurypylus tradiderunt, an Crannone, ut Apollas Callimachus, quam secutus Cicero hanc famam latius fudit.
 
 scopam nobilem Thessalum periisse in eo convivio constat; adiicitur sororis eius filius; putant et ortos plerosque ab alio Scopa, qui maior aetate fuerit.
 
 quanquam mihi totum de Tyndaridis fabulosum videtur, neque omnino huius rei meminit usquam poeta ipse, profecto non taciturus de tanta sua gloria.
 
-ex hoc Simonidis facto notatum videtur, iuvari memoriam signatis animo sedibus, idque credere suo quisque experimento potest. potest, added by Rollin. Nam cum in loca aliqua post tempus reversi sumus, non ipsa agnoscimus tantum, sed etiam, quae in his fecerimus, reminiscimur personaeque subeunt, nonnunquam tacitae quoque cogitationes in mentem revertuntur. nata est igitur, ut in plerisque, ars ab experimento. loca deligunt deligunt, Spalding : discunt, MSS. quam maxime spatiosa,
+ex hoc Simonidis facto notatum videtur, iuvari memoriam signatis animo sedibus, idque credere suo quisque experimento potest. Nam cum in loca aliqua post tempus reversi sumus, non ipsa agnoscimus tantum, sed etiam, quae in his fecerimus, reminiscimur personaeque subeunt, nonnunquam tacitae quoque cogitationes in mentem revertuntur. nata est igitur, ut in plerisque, ars ab experimento. loca deligunt quam maxime spatiosa,
 
 multa varietate signata, domum forte magnam et in multos diductam recessus. in ea quidquid notabile est, animo diligenter adfigunt, ut sine cunctatione ac mora partes eius omnes cogitatio possit percurrere. et primus hic labor est non haerere in occursu; plus enim quam firma debet esse memoria, quae aliam memoriam adiuvet.
 
-tum , quae scripserunt vel cogitatione complexi sunt, complexi sunt, Spalding : complectitur, G. aliquo signo, quo moneantur, notant; quod esse vel ex re tota potest, ut de navigatione, militia, vel ex verbo aliquo; nam etiam excidentes unius admonitione verbi in memoriam reponuntur. Sit autem signum navigationis ut ancora, militiae ut aliquid ex armis.
+tum , quae scripserunt vel cogitatione complexi sunt, aliquo signo, quo moneantur, notant; quod esse vel ex re tota potest, ut de navigatione, militia, vel ex verbo aliquo; nam etiam excidentes unius admonitione verbi in memoriam reponuntur. Sit autem signum navigationis ut ancora, militiae ut aliquid ex armis.
 
-haec ita digerunt. primum sensum vestibulo quasi adsignant, secundum, puta, atrio, tum impluvia circumeunt, nec cubiculis modo aut exedris, sed statuis etiam similibusque per ordinem committunt. hoc facto, cum est repetenda memoria, incipiunt ab initio loca haec recensere, et quod cuique crediderunt reposcunt, ut eorum imagine admonentur. ita , quamlibet multa sint, quorum meminisse oporteat, fiunt singula conexa quodam choro, choro, early editors: coria, corio, MSS. nec errant nec errant, Bonnell: onerant, G. coniungentes prioribus consequentia solo ediscendi labore.
+haec ita digerunt. primum sensum vestibulo quasi adsignant, secundum, puta, atrio, tum impluvia circumeunt, nec cubiculis modo aut exedris, sed statuis etiam similibusque per ordinem committunt. hoc facto, cum est repetenda memoria, incipiunt ab initio loca haec recensere, et quod cuique crediderunt reposcunt, ut eorum imagine admonentur. ita , quamlibet multa sint, quorum meminisse oporteat, fiunt singula conexa quodam choro, nec errant coniungentes prioribus consequentia solo ediscendi labore.
 
 quod de domo dixi, et in operibus publicis et in itinere longo et urbium ambitu et picturis fieri potest. etiam fingere sibi has imagines licet. opus est ergo locis, quae vel finguntur vel sumuntur, et imaginibus vel simulacris, quae utique fingenda sunt. imagines voces sunt, quibus ea quae ediscenda sunt notamus, ut, quomodo Cicero dicit, locis pro cera, simulacris pro litteris utamur.
 
 illud quoque ad verbum ponere optimum fuerit: locis est utendum multis, inlustribus, explicatis, modicis intervallis, imaginibus autem agentibus, acribus, insignitis, quae occurrere celeriterque percutere animum possint. quo magis miror, quomodo Metrodorus in XII signis, per quae sol meat, trecenos et sexagenos invenerit locos. vanitas nimirum fuit atque iactatio circa memoriam sua potius arte quam natura gloriantis.
 
-equidem haec ad quaedam prodesse non negaverim, ut si rerum nomina multa per ordinem audita reddenda sint. namque in iis quae didicerunt locis ponunt res illas: mensam, ut hoc utar, in vestibulo et pulpitum pulpitum, Bonnell: populum, G: pulvinum, early editors. in atrio et sic cetera, deinde relegentes inveniunt, ubi posuerunt.
+equidem haec ad quaedam prodesse non negaverim, ut si rerum nomina multa per ordinem audita reddenda sint. namque in iis quae didicerunt locis ponunt res illas: mensam, ut hoc utar, in vestibulo et pulpitum in atrio et sic cetera, deinde relegentes inveniunt, ubi posuerunt.
 
-et forsitan hoc sunt adiuti qui, auctione dimissa, quid cuique vendidissent testibus argentariorum tabulis reddiderunt; quod praestitisse Hortensium dicunt. minus idem proderit in ediscendis, quae orationis perpetuae erunt. nam et sensus non eandem imaginem quam res habent, cum alterum fingendum sit, et horum tamen utcunque commonet locus, sicut sermonis alicuius habiti. at At, added by Halm. verborum contextus eadem arte quomodo comprehendetur?
+et forsitan hoc sunt adiuti qui, auctione dimissa, quid cuique vendidissent testibus argentariorum tabulis reddiderunt; quod praestitisse Hortensium dicunt. minus idem proderit in ediscendis, quae orationis perpetuae erunt. nam et sensus non eandem imaginem quam res habent, cum alterum fingendum sit, et horum tamen utcunque commonet locus, sicut sermonis alicuius habiti. at verborum contextus eadem arte quomodo comprehendetur?
 
-mitto quod quaedam nullis simulacris significari possunt, ut certe coniunctiones. habeamus enim sane, ut qui notis scribunt, certas imagines omnium et loca scilicet infinita, per quae verba, quot sunt in quinque contra Verrem secundae actionis libris, explicentur, meminerimus etiam omnium quasi depositorum: nonne impediri quoque dicendi cursum quoque dicendi cursum, Spalding : quodque dicit dicursum, G. necesse est duplici memoriae cura?
+mitto quod quaedam nullis simulacris significari possunt, ut certe coniunctiones. habeamus enim sane, ut qui notis scribunt, certas imagines omnium et loca scilicet infinita, per quae verba, quot sunt in quinque contra Verrem secundae actionis libris, explicentur, meminerimus etiam omnium quasi depositorum: nonne impediri quoque dicendi cursum necesse est duplici memoriae cura?
 
 nam quomodo poterunt copulata fluere, si propter singula verba ad singulas formas respiciendum erit? quare et Charmadas et Scepsius, de quo modo dixi, Metrodorus, quos Cicero dicit usos hac exercitatione, sibi habeant sua; nos simpliciora tradamus.
 
@@ -7013,13 +7013,13 @@ si longior complectenda memoria fuerit oratio, proderit per partes ediscere; lab
 
 dandi sunt certi quidam termini, ut contextum verborum, qui est difficillimus, continua et crebra meditatio, partes deinceps ipsas repetitus ordo coniungat. non est inutile, iis quae difficillimus haereant aliquas apponere notas, quarum recordatio commoneat et quasi excitet memoriam;
 
-nemo etiam fere tam infelix, ut, quod cuique loco signum destinaverit, nesciat. at , si tardus at, Halm : ut, G.: tardus, an early emendation: trandus, G: tradendus, late MSS. ad hoc, eo quoque adhuc remedio utetur utetur, Halm : utitur, MSS. ut ipsae notae (hoc enim est ex illa arte non inutile) aptentur aptentur, Hiecke: adtentus. MSS. ad eos qui excidunt sensus: ancora ancora, Hiecke: ancoram, MSS. ut supra pro posui, si de nave dicendum est, est, Halm : esset, MSS. spiculum, si de proelio.
+nemo etiam fere tam infelix, ut, quod cuique loco signum destinaverit, nesciat. at , si tardus ad hoc, eo quoque adhuc remedio utetur ut ipsae notae (hoc enim est ex illa arte non inutile) aptentur ad eos qui excidunt sensus: ancora ut supra pro posui, si de nave dicendum est, spiculum, si de proelio.
 
 multum enim signa faciunt, et ex alia memoria venit alia: ut cum translatus anulus vel alligatus commoneat nos, cur id fecerimus. haec magis adhuc adstringunt, qui memoriam ab aliquo simili transferunt ad id quod continendum est: ut in nominibus, si Fabius forte sit tenendus, referamus ad illum Cunctatorem, qui excidere non potest, aut ad aliquem amicum, qui idem vocetur.
 
-quod est facilius in Apris et in Ursis et Nasone aut Crispo, ut id memoriae adfigatur unde sunt nomina. origo quoque aliquando declinatorum tenendi magis causa est, ut in Cicerone, Verrio, Aurelio. sed hoc miserim. miserim, Halm : misceri, G.
+quod est facilius in Apris et in Ursis et Nasone aut Crispo, ut id memoriae adfigatur unde sunt nomina. origo quoque aliquando declinatorum tenendi magis causa est, ut in Cicerone, Verrio, Aurelio. sed hoc miserim.
 
-illud neminem non iuvabit, iisdem quibus scripserit scripserit, early edd.: ceteris, MSS. ceris ediscere. sequitur enim vestigiis quibusdam memoriam, et velut oculis intuetur non paginas modo, sed versus prope ipsos, estque cum estque cum, Meister : quae cum, G. dicit similis legenti. iam vero si litura aut adiectio aliqua atque mutatio interveniat, signa sunt quaedam, quae intuentes deerrare non possumus.
+illud neminem non iuvabit, iisdem quibus scripserit ceris ediscere. sequitur enim vestigiis quibusdam memoriam, et velut oculis intuetur non paginas modo, sed versus prope ipsos, estque cum dicit similis legenti. iam vero si litura aut adiectio aliqua atque mutatio interveniat, signa sunt quaedam, quae intuentes deerrare non possumus.
 
 haec ratio, ut est illi, de qua primum locutus sum, arti non dissimilis, ita, si quid me experimenta docuerunt, et expeditior et potentior. ediscere tacite (nam id quoque est quaesitum) erat optimum, si non subirent velut otiosum animum plerumque aliae cogitationes; propter quas excitandus est voce, ut duplici motu iuvetur memoria dicendi et audiendi. sed haec vox sit modica et magis murmur.
 
@@ -7099,7 +7099,7 @@ augentur autem sicut omnium, ita vocis quoque bona cura, negligentia minuuntur. 
 
 praeterea ut sint fauces integrae, id est molles ac leves, quarum vitio et frangitur et obscuratur et exasperatur et scinditur vox. nam ut tibiae eodem spiritu accepto alium clausis, alium apertis foraminibus, alium non satis purgatae, alium quassae sonum reddunt, ita fauces tumentes strangulant vocem, obtusae obscurant, rasae exasperant, convulsae fractis sunt organis similes.
 
-finditur etiam spiritus obiectu aliquo sicut lapillo tenues aquae, quarum cursus cursus, Spalding : spiritus, MSS. etiamsi ultra paulum coit, aliquid tamen cavi relinquit post id ipsum quod offenderat. humor quoque vocem ut nimius impedit, ita consumptus destituit. nam fatigatio, ut corpora, non ad praesens modo tempus, sed etiam in futurum adficit.
+finditur etiam spiritus obiectu aliquo sicut lapillo tenues aquae, quarum cursus etiamsi ultra paulum coit, aliquid tamen cavi relinquit post id ipsum quod offenderat. humor quoque vocem ut nimius impedit, ita consumptus destituit. nam fatigatio, ut corpora, non ad praesens modo tempus, sed etiam in futurum adficit.
 
 sed ut communiter et phonascis et oratoribus necessaria est exercitatio, qua omnia convalescent, ita curae non idem genus est. nam neque certa tempora ad spatiandum dari possunt tot civilibus officiis occupato, nec praeparare ab imis sonis vocem ad summos nec semper a contentione condere licet, cum pluribus iudiciis saepe dicendum sit.
 
@@ -7121,7 +7121,7 @@ non alia est autem ratio pronuntiationis quam ipsius orationis. nam ut illa emen
 
 non enim sine causa dicitur barbarum Graecumve. nam sonis homines ut aera tinnitu dinoscimus. ita fiet illud, quod Ennius probat, cum dicit suaviloquenti ore Cethegum fuisse, non quod Cicero in his reprehendit, quos ait latrare non agere. sunt enim multa vitia, de quibus dixi, cum in quadam primi libri parte puerorum ora formarem, opportunius ratus, in ea aetate facere illorum mentionem, in qua emendari possunt.
 
-itemque si ipsa vox primum fuerit, ut sic dicam, sana, id est, nullum eorum, de quibus modo rettuli, patietur incommodum; deinde non subsurda, rudis, immanis, dura, rigida, rava, rava, Burman : vana, MSS. praepinguis, aut tenuis, inanis, acerba, pusilla, mollis, effeminata, spiritus nec brevis nec parum durabilis nec in receptu difficilis.
+itemque si ipsa vox primum fuerit, ut sic dicam, sana, id est, nullum eorum, de quibus modo rettuli, patietur incommodum; deinde non subsurda, rudis, immanis, dura, rigida, rava, praepinguis, aut tenuis, inanis, acerba, pusilla, mollis, effeminata, spiritus nec brevis nec parum durabilis nec in receptu difficilis.
 
 dilucida vero erit pronuntiatio prinum, si verba tota exierint, quorum pars devorari, pars destitui solet, plerisque extremas syllabas non perferentibus, dum priorum sono indulgent. ut est autem necessaria uerborum explanatio, ita omnes imputare et velut adnumerare litteras molestum et odiosum.
 
@@ -7137,7 +7137,7 @@ tertio Italiam, quia interiectio est fato profugus et continuum sermonem, qui fa
 
 itaque illam distinctionem litora protinus altero spiritus initio insequar; cum illuc venero atque altae moenia Romae, deponam et morabor et novum rursus exordium faciam.
 
-sunt aliquando et sine respiratione quaedam morae etiam in periodis. ut enim enim, Obrecht: in, MSS. illa in coetu vero populi Romani, negotium publicum gerens, magister equitum, et., multa membra habent (sensus enim sunt alii atque alii), sed unam circumductionem, ita paulum morandum in his intervallis, non interrumpendus est contextus. et e contrario spiritum interim recipere sine intellectu morae necesse est, quo loco quasi surripiendus est; alioqui si inscite recipiatur, non minus adferat obscuritatis quam vitiosa distinctio. virtus autem distinguendi fortasse sit parva; sine qua tamen esse nulla alia in agendo potest.
+sunt aliquando et sine respiratione quaedam morae etiam in periodis. ut enim illa in coetu vero populi Romani, negotium publicum gerens, magister equitum, et., multa membra habent (sensus enim sunt alii atque alii), sed unam circumductionem, ita paulum morandum in his intervallis, non interrumpendus est contextus. et e contrario spiritum interim recipere sine intellectu morae necesse est, quo loco quasi surripiendus est; alioqui si inscite recipiatur, non minus adferat obscuritatis quam vitiosa distinctio. virtus autem distinguendi fortasse sit parva; sine qua tamen esse nulla alia in agendo potest.
 
 ornata est pronuntiatio, cui suffragatur vox facilis, magna te, beata, flexibilis, firma, dulcis, durabilis, clara, pura, secans aëra et auribus sedens (est enim quaedam ad auditum accommodata non magnitudine, sed proprietate), ad hoc velut tractabilis, utique habens omnes in se qui desiderantur sinus intentionesque et toto, ut aiunt, organo instructa; cui aderit lateris firmitas, spiritus cum spatio pertinax, tum labori non facile cessurus.
 
@@ -7169,13 +7169,13 @@ spiritus quoque nec crebro receptus concidat sententiam, nec eo usque trahatur, 
 
 exercendus autem est, ut sit quam longissimus; quod Demosthenes ut efficeret, scandens in adversum continuabat quam posset plurimos versus. idem , quo facilius verba ore libero exprimeret, calculos lingua volvens dicere domi solebat.
 
-est interim et longus et plenus et clarus satis spiritus, non tamen firmae intentionis ideoque tremulus, ut corpora, quae aspectu integra nervis parum sustinentur; id βρασμόν βρασμόν, Butler : BPAMON, cod. beru . : BPAMON, cod. bamb.: βράγχον Gesner and ed. tarvis . Graeci vocant. sunt qui spiritum cum stridore per raritatem dentium non recipiunt, sed resorbent. sunt qui crebro anhelitu et introrsum etiam clare sonante imitentur iumenta onere et iugo laborantia.
+est interim et longus et plenus et clarus satis spiritus, non tamen firmae intentionis ideoque tremulus, ut corpora, quae aspectu integra nervis parum sustinentur; id βρασμόν Graeci vocant. sunt qui spiritum cum stridore per raritatem dentium non recipiunt, sed resorbent. sunt qui crebro anhelitu et introrsum etiam clare sonante imitentur iumenta onere et iugo laborantia.
 
 quod adfectant quoque, tanquam inuentionis copia urgeantur maiorque vis eloquentiae ingruat, quam quae emitti faucibus possit. est aliis concursus oris et cum verbis suis colluctatio. iam tussire et exspuere crebro et ab imo pulmone pituitam trochleis adducere et oris humore proximos spargere et maiorem partem spiritus in loquendo per nares effundere, etiamsi non utique vocis sunt vitia, quia tamen propter vocem accidunt, potissimum huic loco subiciantur.
 
 sed quodcunque ex his vitium magis tulerim quam, quo nunc maxime laboratur in causis omnibus scholisque, cantandi, quod inutilius sit an foedius, nescio. quid enim minus oratori convenit quam modulatio scenica et nonnunquam ebriorum aut comissantium licentiae similis?
 
-quid vero movendis adfectibus contrarium magis quam, cum dolendum, dolendum, Regius : docendum, B. and Iul. victor . irascendum, indignandum, commiserandum sit, non solum ab his adfectibus, in quos inducendus est iudex, recedere, sed ipsam fori sanctitatem Lyciorum et Carum Lyciorum et Carum, Daniel: ludorum talarium, MSS. licentia solvere? nam Cicero illos ex Lycia et Caria Phrygia, MSS. of Cicero. rhetoras paene cantare in epilogis dixit. nos etiam cantandi severiorem paulo modum excessimus.
+quid vero movendis adfectibus contrarium magis quam, cum dolendum, irascendum, indignandum, commiserandum sit, non solum ab his adfectibus, in quos inducendus est iudex, recedere, sed ipsam fori sanctitatem Lyciorum et Carum licentia solvere? nam Cicero illos ex Lycia et Caria rhetoras paene cantare in epilogis dixit. nos etiam cantandi severiorem paulo modum excessimus.
 
 quisquamne , non dico de homicidio, sacrilegio, parricidio, sed de calculis certe atque rationibus, quisquam denique, ut semel finiam, in lite cantat? quod si omnino recipiendum est, nihil causae est, cur non illam vocis modulationem fidibus ac tibiis, immo me hercule, quod est huic deformitati propius, cymbalis adiuvemus.
 
@@ -7213,7 +7213,7 @@ itaque in iis, quae ad scenam componuntur, fabulis artifices pronuntiandi a pers
 
 in comoediis vero praeter aliam observationem, qua servi, lenones, parasiti, rustici, milites, meretriculae, ancillae, senes austeri ac mites, iuvenes severi ac luxuriosi, matronae, puellae inter se discernuntur, pater ille, cuius praecipuae partes sunt, quia interim concitatus, interim lenis est, altero erecto, altero composito est supercilio; atque id ostendere maxime latus actoribus moris est, quod cum iis, quas agunt, partibus congruat.
 
-sed in ipso vultu plurimum valent oculi, per quos maxime animus eminet, animus enminet, Spalding : anima se malnat, B. ut citra motum quoque et hilaritate enitescant et tristitiae quoddam nubilum ducant. quin etiam lacrimas iis natura mentis indices dedit, quae aut erumpunt dolore aut laetitia manant. motu vero intenti, remissi, superbi, torvi, mites, asperi fiunt, quae, ut actus poposcerit, fingentur.
+sed in ipso vultu plurimum valent oculi, per quos maxime animus eminet, ut citra motum quoque et hilaritate enitescant et tristitiae quoddam nubilum ducant. quin etiam lacrimas iis natura mentis indices dedit, quae aut erumpunt dolore aut laetitia manant. motu vero intenti, remissi, superbi, torvi, mites, asperi fiunt, quae, ut actus poposcerit, fingentur.
 
 rigidi vero et extenti, aut languidi et torpentes, aut stupentes, aut lascivi et mobiles, et natantes et quadam voluptate suffusi, aut limi et, ut sic dicam, venerei, aut poscentes aliquid pollicentesve nunquam esse debebunt. nam opertos compressosve eos in dicendo quis nisi plane rudis aut stultus habeat?
 
@@ -7223,7 +7223,7 @@ multum et superciliis agitur. nam et oculos formant aliquatenus et fronti impera
 
 vitium in superciliis, si aut immota sunt omnino aut nimium mobilia aut inaequalitate, ut modo de persona comica dixeram, dissident aut contra id quod dicimus finguntur. ira enim contractis, tristitia deductis, hilaritas remissis ostenditur. adnuendi quoque et renuendi ratione demittuntur aut allevantur.
 
-naribus labrisque non fere quidquam decenter ostendimus, tametsi derisus iis, derisus iis, Obrecht: derisui, B. contemptus, fastidium significari solet. nam et corrugare nares, ut Horatius ait, et inflare et movere et digito inquietare et impulso subito spiritu excutere et diducere saepius et plana manu resupinare indecorum est, cum emunctio etiam frequentior non sine causa reprehendatur.
+naribus labrisque non fere quidquam decenter ostendimus, tametsi derisus iis, contemptus, fastidium significari solet. nam et corrugare nares, ut Horatius ait, et inflare et movere et digito inquietare et impulso subito spiritu excutere et diducere saepius et plana manu resupinare indecorum est, cum emunctio etiam frequentior non sine causa reprehendatur.
 
 labra et porriguntur male et scinduntur et adstringuntur et diducuntur et dentes nudant et in latus ac paene ad aurem trahuntur et velut quodam fastidio replicantur et pendent et vocem tantum altera parte dimittunt. lambere quoque ea et mordere deforme est, cum etiam in efficiendis verbis modicus eorum esse debeat motus; ore enim magis quam labris loquendum est.
 
@@ -7237,7 +7237,7 @@ manus vero, sine quibus trunca esset actio ac debilis, vix dici potest, quot mot
 
 annon his poscimus, pollicemur, uocamus, dimittimus, minamur, supplicamus, abominamur, timemus, interrogamus, negamus; gaudium, tristitiam, dubitationem, confessionem, paenitentiam, modum, copiam, numerum, tempus ostendimus?
 
-non eaedem concitant, inhibent, after inhibent the MSS. add supplicant, rightly deleted by Slothouwer. probant, admirantur, verecundantur? non in demonstrandis locis ac personis adverbiorum atque pronominum obtinent vicem? ut in tanta per omnes gentes nationesque linguae diversitate hic mihi omnium hominum communis sermo videatur.
+non eaedem concitant, inhibent, probant, admirantur, verecundantur? non in demonstrandis locis ac personis adverbiorum atque pronominum obtinent vicem? ut in tanta per omnes gentes nationesque linguae diversitate hic mihi omnium hominum communis sermo videatur.
 
 et hi quidem, de quibus sum locutus, cum ipsis vocibus naturaliter exeunt gestus; alii sunt, qui res imitatione significant, ut si aegrum temptantis venas medici similitudine aut citharoedum formatis ad modum percutientis nervos manibus ostendas; quod est genus quam longissime in actione fugiendum.
 
@@ -7285,9 +7285,9 @@ unde id quoque fluit vitium, ut iuvenes, cum scribunt, gestum praemodulati cogit
 
 melius illud, cum sint in sermone omni brevia quaedam membra, ad quae, si necesse sit, recipere spiritum liceat, ad haec gestum disponere: ut puta novum crimen, C. Caesar, habet per se fine quendam suum, quia sequitur coniunctio; deinde et ante hanc diem non auditum satis circumscriptum est. ad haec commodanda manus est, idque dum erit prima et composita actio.
 
-at ubi eam calor concitaverit; etiam gestus cum ipsa orationis celeritate crebrescet. aliis locis citata, aliis pressa conveniet pronuntiatio. illa transcurrimus, congerimus, After congerimus B. gives abundamus, which is omitted by one late MS. and exepunged by Halm. festinamus; hac instamus, inculcamus, infigimus. plus autem adfectus habent lentiora; ideoque Roscius citatior, Aesopus gravior fuit, quod ille comoedias, hic tragoedias egit.
+at ubi eam calor concitaverit; etiam gestus cum ipsa orationis celeritate crebrescet. aliis locis citata, aliis pressa conveniet pronuntiatio. illa transcurrimus, congerimus, festinamus; hac instamus, inculcamus, infigimus. plus autem adfectus habent lentiora; ideoque Roscius citatior, Aesopus gravior fuit, quod ille comoedias, hic tragoedias egit.
 
-eadem motus quoque observatio est. itaque in fabulis iuvenum, senum, militum, matronarum gravior ingressus est; servi, ancillulae, parasiti, piscatores citatius moventur. tolli autem manum artifices supra oculos, demitti infra pectus vetant; adeo a capite eum petere a capite eum petere is almost certainly corrupt: gestulm for eum is the least improbable corretion that has been suggested. aut ad imum ventrem deducere, vitiosum habetur.
+eadem motus quoque observatio est. itaque in fabulis iuvenum, senum, militum, matronarum gravior ingressus est; servi, ancillulae, parasiti, piscatores citatius moventur. tolli autem manum artifices supra oculos, demitti infra pectus vetant; adeo a capite eum petere aut ad imum ventrem deducere, vitiosum habetur.
 
 in sinistrum intra humerum promovetur; ultra non decet. sed cum aversantes in laevam partem velut propellemus manum, sinister humerus proferendus, ut cum capite ad dextram ferente consentiat.
 
@@ -7295,13 +7295,13 @@ mantis sinistra numquam sola gestum recte facit; dextrae se frequenter accommoda
 
 sive satisfacientes aut supplicantes (diversi autem sunt hi gestus) summittimus sive adorantes attollimus sive aliqua demonstratione aut invocatione protendimus: vos Albani tumuli atque luci, aut Gracchanum illud: quo me miser conferam? in Capitolium? ad fratris sanguine madet: an domum?
 
-plus enim adfectus in his iunctae exhibent manus; in rebus parvis, mitibus, tristibus breves; magnis, laetis, atrocibus exertiores. exortiores,, Spalding : exteriores, B. Vitia quoque earum subiicienda sunt,
+plus enim adfectus in his iunctae exhibent manus; in rebus parvis, mitibus, tristibus breves; magnis, laetis, atrocibus exertiores. Vitia quoque earum subiicienda sunt,
 
 quae quidem accidere etiam exercitatis actoribus solent. nam gestum poculum poscentis aut verbera minantis aut numerum quingentorum flexo pollice efficientis, quae sunt a quibusdam scriptoribus notata, ne in rusticis quidem vidi.
 
 at ut brachio exerto introspiciatur latus, ut manum alius ultra sinum proferre non audeat, alius, in quantum patet longitudo, protendat aut ad tectum erigat aut repetito ultra laevum humerum gestu ita in tergum flagellet, ut consistere post eum parum tutum sit, aut sinistrum ducat orbem aut temere sparsa manu in proximos offendat aut cubitum utrumque in diversum latus uentilet, saepe scio evenire.
 
-solet esse et pigra et trepida et secanti similis; interim etiam uncis digitis, ut ut added by Spalding. aut a capite deiciatur aut eadem manu supinata in superiora iactetur. fit et ille gestus, gestus suggested by Halm. the second hand of cod. bamb . reads habituhs, qui csse in status pacificator solet: presumably an interpolation. qui, inclinato in humerum dextrum capite, brachio ab aure protenso, manum infesto pollice extendit; qui quidem maxime place iis, qui se dicere sublata manu iactant.
+solet esse et pigra et trepida et secanti similis; interim etiam uncis digitis, ut aut a capite deiciatur aut eadem manu supinata in superiora iactetur. fit et ille gestus, qui, inclinato in humerum dextrum capite, brachio ab aure protenso, manum infesto pollice extendit; qui quidem maxime place iis, qui se dicere sublata manu iactant.
 
 adiicias licet eos, qui sententias vibrantes digitis iaculantur aut manu sublata denuntiant aut, quod per se interim recipiendum est, quotiens aliquid ipsis placuit, in ungues eriguntur; sed vitiosum id faciunt, aut digito, quantum plurimum possunt, erecto aut etiam duobus, aut utraque manu ad modum aliquid portantium composita.
 
@@ -7343,7 +7343,7 @@ itaque etiam gestu necesse est usos esse in principiis eos alio, quorum brachium
 
 ut purpura recte descendat, levis cura est; notatur interim negligentia. latum habentium clavum modus est, ut sit paulum cinctis summissior. ipsam togam rotundam esse et apte caesam velim, aliter enim multis modis fiet enormis. pars eius prior mediis cruribus optime terminatur, posterior eadem portione altius qua cinctura.
 
-sinus decentissimus, si aliquanto supra imam tunicam tunicam, Spalding : togam, MSS. fuerit; nunquam certe sit inferior. ille , qui sub humero dextro ad sinistrum oblique ducitur velut balteus, nec strangulet nec fluat. pars togae, quae postea imponitur, sit inferior; nam ita et sedet melius et continetur. subducenda etiam pars aliqua tunicae, ne ad lacertum in actu redeat; tum sinus iniciendus humero, cuius extremam oram reiecisse non dedecet.
+sinus decentissimus, si aliquanto supra imam tunicam fuerit; nunquam certe sit inferior. ille , qui sub humero dextro ad sinistrum oblique ducitur velut balteus, nec strangulet nec fluat. pars togae, quae postea imponitur, sit inferior; nam ita et sedet melius et continetur. subducenda etiam pars aliqua tunicae, ne ad lacertum in actu redeat; tum sinus iniciendus humero, cuius extremam oram reiecisse non dedecet.
 
 operiri autem humerum cum toto iugulo non oportet, alioqui amictus fiet angustus et dignitatem, quae est in latitudine pectoris, perdet. sinistrum brachium eo usque adlevandum est, ut quasi normalem illum angulum faciat, super quod ora ex toga duplex aequaliter sedeat.
 
@@ -7407,11 +7407,11 @@ epilogus , si enumerationem rerum habet, desiderat quandam concisorum continuati
 
 hic etiam fusca illa vox, qualem Cicero fuisse in Antonio dicit, mire faciet; habet enim in se, quod imitamur. duplex est tamen miseratio, altera cum invidia, qualis modo dicta de damnatione Philodami, altera cum deprecatione demissior.
 
-quare , etiamsi est in illis quoque cantus obscurior, in coetu vero populi Romani (non enim haec rixantis modo dixit); et vos, Albani tumuli (non enim, quasi inclamaret aut testaretur, locutus est), tamen infinito magis illa flexa et circumducta sunt: me miserum, me infelicem, et quid respondebo liberis meis? et revocare tu me in patriam potuisti, Milo, per hos; ego te in eadem patria per eosdem retinere non potero? et cum bona C. Rabirii nummo nummo, Bentley: uno, MSS. sestertio addicit: O meum miserum acerbumque praeconium.
+quare , etiamsi est in illis quoque cantus obscurior, in coetu vero populi Romani (non enim haec rixantis modo dixit); et vos, Albani tumuli (non enim, quasi inclamaret aut testaretur, locutus est), tamen infinito magis illa flexa et circumducta sunt: me miserum, me infelicem, et quid respondebo liberis meis? et revocare tu me in patriam potuisti, Milo, per hos; ego te in eadem patria per eosdem retinere non potero? et cum bona C. Rabirii nummo sestertio addicit: O meum miserum acerbumque praeconium.
 
 ilia quoque mire facit in peroratione velut deficientis dolore et fatigatione confessio, ut pro eodem Milone, sed . finis sit; neque enim prae lacrimis iam loqui possum. quae similem verbis habere debent etiam pronuntiationem.
 
-possunt videri alia quoque huius partis atque officii, reos excitare, pueros attollere, propinquos producere, vestes laniare; sed suo loco dicta sunt. et quia in partibus causae talis causa talis, ed. camp .: causa, et aliis, B. est varietas, satis apparet, accommodandam sententiis ipsis pronuntiationem, sicut ostendimus, sed verbis quoque, quod novissime dixeram, non semper, sed aliquando.
+possunt videri alia quoque huius partis atque officii, reos excitare, pueros attollere, propinquos producere, vestes laniare; sed suo loco dicta sunt. et quia in partibus causae talis est varietas, satis apparet, accommodandam sententiis ipsis pronuntiationem, sicut ostendimus, sed verbis quoque, quod novissime dixeram, non semper, sed aliquando.
 
 an non hoc misellus et pauperculus summissa atque contracta, fortis et uehemens et latro erecta et concitata voce dicendum est? accedit enim vis et proprietas rebus tali adstipulatione, quae nisi adsit, aliud vox, aliud animus ostendat.
 
@@ -7435,7 +7435,7 @@ cum arcessor ultro? an potius ita me comparem
 
 non perpeti meretricum contumelias?
 
-quare non immerito reprehenditur pronuntiatio vultuosa et gesticulationibus molesta et vocis mutationibus resultans. nec inutiliter ex Graecis veteres transtulerunt, quod ab iis sumptum Laenas Popilius posuit, esse hanc negotiosam negotiosam, Halm : mocosam, B. actionem.
+quare non immerito reprehenditur pronuntiatio vultuosa et gesticulationibus molesta et vocis mutationibus resultans. nec inutiliter ex Graecis veteres transtulerunt, quod ab iis sumptum Laenas Popilius posuit, esse hanc negotiosam actionem.
 
 optime igitur idem, qui omnia, Cicero praeceperat, quae supra ex Oratore posui; quibus similia in Bruto de M. Antonio dicit. sed iam recepta est actio paulo agitatior et exigitur et quibusdam partibus convenit, ita tamen temperanda, ne, dum actoris captamus elegantiam, perdamus viri boni et gravis auctoritatem.
 
@@ -7445,7 +7445,7 @@ quare nunc quoque, licet maior quam unquam moles premat, tamen prospicienti fine
 
 iam cum eloquendi rationem novissime repertam paucissimisque temptatam ingressi sumus, rarus, qui tam procul a portu recessisset, reperiebatur. postquam vero nobis ille, quem instituebamus, orator a dicendi magistris dimissus aut suo iam impetu fertur aut maiora sibi auxilia ex ipsis sapientiae penetralibus petit, quam in altum simus ablati sentire coepimus.
 
-nunc caelum undique et undique pontus. unum modo in illa immensa vastitate cernere videmur M. Tullium, qui tamen ipse, quamvis tanta atque ita instructa nave hoc mare ingressus, contrahit vela inhibetque remos et de ipso demum genere dicendi, quo sit usurus perfectus orator, satis habet dicere. at nostra temeritas etiam mores ei conabitur dare et adsignabit officia. ita nec antecedentem consequi possumus, et longius eundum est, ut res feret. probabilis tamen cupiditas honestorum et velut tutioris velut tutioris, Obrecht: velutioris, B. audentiae est temptare, quibus paratior venia est.
+nunc caelum undique et undique pontus. unum modo in illa immensa vastitate cernere videmur M. Tullium, qui tamen ipse, quamvis tanta atque ita instructa nave hoc mare ingressus, contrahit vela inhibetque remos et de ipso demum genere dicendi, quo sit usurus perfectus orator, satis habet dicere. at nostra temeritas etiam mores ei conabitur dare et adsignabit officia. ita nec antecedentem consequi possumus, et longius eundum est, ut res feret. probabilis tamen cupiditas honestorum et velut tutioris audentiae est temptare, quibus paratior venia est.
 
 sit ergo nobis orator, quem constituimus, is, qui a M. Catone finitur, vir bonus dicendi peritus; verum, id quod et ille posuit prius et ipsa natura potius ac maius est, utique vir bonus. id non eo tantum, quod, si vis illa dicendi malitiam instruxerit, nihil sit publicis privatisque rebus perniciosius eloquentia, nosque ipsi, qui pro virili parte conferre aliquid ad facultatem dicendi conati sumus, pessime mercamur de rebus humanis, si latroni comparamus haec arma, non militi.
 
@@ -7485,7 +7485,7 @@ quodsi defuit his viris summa virtus, sic quaerentibus, an oratores fuerint, res
 
 nam et Pythagoras non sapientem se, ut qui ante eum fuerunt, sed studiosum sapientiae vocari voluit. ego tamen secundum communem loquendi consuetudinem saepe dixi dicamque, perfectum oratorem esse Ciceronem; ut amicos et bonos viros et prudentissimos dicimus vulgo, quorum nihil nisi perfecte sapienti datur. sed cum proprie et ad legem ipsam veritatis loquendum erit, cum quaeram oratorem, quem et ille quaerebat.
 
-quanquam enim stetisse ipsum in fastigio eloquentiae fateor, ac vix, quid adiici potuerit, inuenio, fortasse inventurus, quod adhuc abscisurum putem fuisse (nam fere sic docti iudicaverunt, plurimum in eo virtutum, nonnihil fuisse vitiorum, et se ipse multa ex illa iuvenili abundantia coercuisse testatur), tamen, quando nec sapientis sibi nomen, minime sui contemptor, asseruit et melius dicere, certe data longiore vita et tempore tempore, Burman: te, B. ad componendum securiore, potuisset, non maligne crediderim defuisse ei summam illam, ad quam nemo propius accessit.
+quanquam enim stetisse ipsum in fastigio eloquentiae fateor, ac vix, quid adiici potuerit, inuenio, fortasse inventurus, quod adhuc abscisurum putem fuisse (nam fere sic docti iudicaverunt, plurimum in eo virtutum, nonnihil fuisse vitiorum, et se ipse multa ex illa iuvenili abundantia coercuisse testatur), tamen, quando nec sapientis sibi nomen, minime sui contemptor, asseruit et melius dicere, certe data longiore vita et tempore ad componendum securiore, potuisset, non maligne crediderim defuisse ei summam illam, ad quam nemo propius accessit.
 
 et licebat, si aliter sentirem, fortius id liberiusque defendere. an vero M. Antonius neminem a se visum eloquentem, quod tanto minus erat, professus est; ipse etiam M. Tullius quaerit adhuc eum et tantum imaginatur ac fingit, ego non audeam dicere, aliquid in hac, quae superest, aeternitate inveniri posse eo, quod fuerit, perfectius?
 
@@ -7509,13 +7509,13 @@ ille regit dictis animos et pectora mulcet.
 
 non in bellis quoque idem ille vir, quem instituimus, si sit ad proelium miles cohortandus, ex mediis sapientiae praeceptis orationem trahet? nam quomodo pugnam ineuntibus tot simul metus laboris, dolorum, postremo mortis ipsius exciderint, nisi in eorum locum pietas et fortitudo et honesti praesens imago successerit?
 
-quae certe melius persuadebit aliis qui prius persuaserit sibi. prodit enim se, quamlibet custodiatur, simulatio, nec unquam tanta fuerit loquendi facultas, ut non titubet atque haereat, atque haereat, Buttmann : adhaereat, B.o quotiens ab animo verba dissentiunt. vir autem malus aliud dicat necesse est quam sentit.
+quae certe melius persuadebit aliis qui prius persuaserit sibi. prodit enim se, quamlibet custodiatur, simulatio, nec unquam tanta fuerit loquendi facultas, ut non titubet atque haereat, quotiens ab animo verba dissentiunt. vir autem malus aliud dicat necesse est quam sentit.
 
 bonos nunquam honestus sermo deficiet, nunquam rerum optimarum (nam iidem etiam prudentes erunt) inventio; quae etiamsi lenociniis destituta sit, satis tamen natura sua ornatur nec quidquam non diserte, quod honeste, dicitur.
 
 quare , iuventus, immo omnes aetates, (neque enim rectae voluntati serum est tempus ullum) totis mentibus huc tendamus, in hoc elaboremus; forsan et consummare contingat. nam si natura non prohibet et esse virum bonum et esse dicendi peritum, cur non aliquis etiam unus utrumque consequi possit? cur autem non se quisque speret fore illum aliquem?
 
-ad quod si vires ingenii non suffecerint, tamen ad quem usque modum processerimus, meliores erimus ex utroque. hoc certe procul eximatur animo, rerum rerum, Regius: rem, B. pulcherrimam eloquentiam cum vitiis mentis posse misceri. facultas dicendi, si in malos incidit, et ipsa iudicanda est malum; peiores enim illos facit, quibus contigit.
+ad quod si vires ingenii non suffecerint, tamen ad quem usque modum processerimus, meliores erimus ex utroque. hoc certe procul eximatur animo, rerum pulcherrimam eloquentiam cum vitiis mentis posse misceri. facultas dicendi, si in malos incidit, et ipsa iudicanda est malum; peiores enim illos facit, quibus contigit.
 
 videor mihi audire quosdam (neque enim deerunt unquam, qui diserti esse quam boni malint) illa dicentes: Quid ergo tantum est artis in eloquentia? cur tu de coloribus et difficilium causarum defensione, nonnihil etiam de confessione locutus es, nisi aliquando vis ac facultas dicendi expugnat ipsam veritatem? bonus enim vir non agit nisi bonas causas, eas porro etiam sine doctrina satis per se tuetur veritas ipsa.
 
@@ -7537,7 +7537,7 @@ quid si quaedam bene facta damnaturus est iudex, nisi ea non esse facta convicer
 
 ad hoc nemo dubitabit, quin, si nocentes mutari in bonam mentem aliquo modo possint, sicut posse conceditur, salvos esse eos magis e re publica sit quam puniri. si liqueat igitur oratori futurum bonum virum, cui vera obicientur, non id aget, ut salvus sit?
 
-da nunc, ut crimine manifesto prematur dux bonus et sine quo vincere hostem hostem, Obrecht: honestem, B. civitas non possit: nonne ei communis utilitas oratorem advocabit? certe Fabricius Cornelium Rufinum, et alioqui malum civem et sibi inimicum, tamen, quia utilem sciebat ducem, imminente bello, palam consulem suffragio suo fecit atque id mirantibus quibusdam respondit, a cive se spoliari malle quam ab hoste venire. ita , si fuisset orator, non defendisset eundem Rufinum vel manifesti peculatus reum?
+da nunc, ut crimine manifesto prematur dux bonus et sine quo vincere hostem civitas non possit: nonne ei communis utilitas oratorem advocabit? certe Fabricius Cornelium Rufinum, et alioqui malum civem et sibi inimicum, tamen, quia utilem sciebat ducem, imminente bello, palam consulem suffragio suo fecit atque id mirantibus quibusdam respondit, a cive se spoliari malle quam ab hoste venire. ita , si fuisset orator, non defendisset eundem Rufinum vel manifesti peculatus reum?
 
 multa dici possunt similia, sed vel unum ex iis quodlibet sufficit. non enim hoc agimus, ut istud illi, quem formamus, viro saepe sit faciendum; sed ut, si talis coegerit ratio, sit tamen vera finitio, oratorem esse virum bonum dicendi peritum.
 
@@ -7547,7 +7547,7 @@ quando igitur orator est vir bonus, is autem citra virtutem intelligi non potest
 
 nisi forte accedemus iis, qui natura constare mores et nihil adiuvari disciplina putant; scilicet ut ea quidem, quae manu fiunt, atque eorum etiam contemptissima confiteantur egere doctoribus, virtutem vero, qua nihil homini, quo ad deos immortales propius accederet, datum est, obviam et illaboratam, tantum quia nati simus, habeamus. abstinens erit qui id ipsum, quid sit abstinentia, ignoret?
 
-et fortis qui metus doloris, mortis, superstitionis nulla ratione purgaverit? et iustus qui aequi bonique tractatum, qui leges, quaeque natura sunt omnibus datae quaeque propriae populis et gentibus constitutae, nunquam eruditiore aliquo sermone tractarit? O quam istud parvum parvum, Spalding : parum, B. putant, quibus tam facile videtur!
+et fortis qui metus doloris, mortis, superstitionis nulla ratione purgaverit? et iustus qui aequi bonique tractatum, qui leges, quaeque natura sunt omnibus datae quaeque propriae populis et gentibus constitutae, nunquam eruditiore aliquo sermone tractarit? O quam istud parvum putant, quibus tam facile videtur!
 
 sed hoc transeo, de quo neminem, qui litteras vel primis, ut aiunt, labris degustarit, dubitaturum puto. ad illud sequens praevertar, ne dicendi quidem satis peritum fore, qui non et naturae vim omnem penitus perspexerit et mores praeceptis ac ratione formarit.
 
@@ -7587,7 +7587,7 @@ nam si regitur providentia mundus, administranda certe bonis viris erit res publ
 
 haec si ratione manifesta non essent, exemplis tamen crederemus. siquidem et Periclem, cuius eloquentiae, etiamsi nulla ad nos monumenta venerunt, vim tamen quandam incredibilem cum historici, tum etiam, liberrimum hominum genus, comici veteres tradunt, Anaxagorae physici constat auditorem fuisse, et Demosthenem, principem omnium Graeciae oratorum, dedisse operam Platoni.
 
-nam M. Tullius, non tantum se debere scholis rhetorum, quantum Academiae spatiis, frequenter ipse testatus est; neque se tanta in eo unquam fudisset fudisset, Badius: fuisset, MSS. ubertas, si ingenium suum consaepto fori, non ipsius rerum naturae finibus terminasset. verum ex hoc alia mihi quaestio exoritur, quae secta conferre plurimum eloquentiae possit, quanquam ea non inter multas potest esse contentio.
+nam M. Tullius, non tantum se debere scholis rhetorum, quantum Academiae spatiis, frequenter ipse testatus est; neque se tanta in eo unquam fudisset ubertas, si ingenium suum consaepto fori, non ipsius rerum naturae finibus terminasset. verum ex hoc alia mihi quaestio exoritur, quae secta conferre plurimum eloquentiae possit, quanquam ea non inter multas potest esse contentio.
 
 nam in primis nos Epicurus a se ipse dimittit, qui fugere omnem disciplinam navigatione quam velocissima iubet. neque vero Aristippus, summum in voluptate corporis bonum ponens, ad hunc nos laborem hortetur. Pyrrhon quidem quas in hoc opere habere partes potest? cui iudices esse, apud quos verba faciat, et reum, pro quo loquatur, et senatum, in quo sit dicenda sententia, non liquebit.
 
@@ -7597,17 +7597,17 @@ sed haec inter ipsos, qui velut sacramento rogati vel etiam superstitione constr
 
 maius enim est opus atque praestantius, ad quod ipse tendit, et cuius est velut candidatus, si quidem est futurus cum vitae, tum etiam eloquentiae laude perfectus. quare in exemplum bene dicendi facundissimum quemque proponet sibi ad imitandum, moribus vero formandis quam honestissima praecepta rectissimamque ad virtutem viam deliget. exercitatione quidem utetur omni, sed tamen erit plurimus in maximis quibusque ac natura pulcherrimis.
 
-nam quae potest materia reperiri ad graviter copioseque dicendum magis abundans quam de virtute, de re publica, de providentia, de origine animorum, de amicitia? haec sunt, quibus mens pariter atque oratio insurgat, quae vere bona, quid mitiget metus, coerceat cupiditates, eximat nos opinionibus vulgi animumque caelestem erigat. erigat added by Meister.
+nam quae potest materia reperiri ad graviter copioseque dicendum magis abundans quam de virtute, de re publica, de providentia, de origine animorum, de amicitia? haec sunt, quibus mens pariter atque oratio insurgat, quae vere bona, quid mitiget metus, coerceat cupiditates, eximat nos opinionibus vulgi animumque caelestem erigat.
 
 neque ea solum, quae talibus disciplinis continentur, sed magis etiam, quae sunt tradita antiquitus dicta ac facta praeclare, et nosse et animo semper agitare conveniet. quae profecto nusquam plura maioraque quam in nostrae civitatis monumentis reperientur.
 
 an fortitudinem, iustitiam, fidem, continentiam, frugalitatem, contemptum doloris ac mortis melius alii docebunt quam Fabricii, Curii, Reguli, Decii, Mucii aliique innumerabiles? quantum enim Graeci praeceptis valent, tantum Romani, quod est maius, exemplis.
 
-tantum quod non cognitis ille rebus adquieverit, cognitis ille rebus adquieverit, Halm , Bonnell: cognatis ide rebus admoveri, B. qui non modo proximum tempus lucemque praesentem intueri satis credat, sed omnem posteritatis memoriam spatium vitae honestae et curriculum laudis existimet. hinc mihi ille iustitiae haustus bibat, hinc sumptam libertatem in causis atque consiliis praestet. neque erit perfectus orator, nisi qui honeste dicere et sciet et audebit.
+tantum quod non cognitis ille rebus adquieverit, qui non modo proximum tempus lucemque praesentem intueri satis credat, sed omnem posteritatis memoriam spatium vitae honestae et curriculum laudis existimet. hinc mihi ille iustitiae haustus bibat, hinc sumptam libertatem in causis atque consiliis praestet. neque erit perfectus orator, nisi qui honeste dicere et sciet et audebit.
 
 iuris quoque civilis necessaria huic viro scientia est et morum ac religionum eius rei publicae, quam capesset. nam qualis esse suasor in consiliis publicis privatisve poterit tot rerum, quibus praecipue civitas continetur, ignarus? quo autem modo patronum se causarum non falso dixerit, qui, quod est in causis potentissimum, sit ab altero petiturus, paene non dissimilis iis, qui poetarum scripta pronuntiant?
 
-nam quodammodo mandata perferet, et ea, quae sibi a iudice credi postulaturus est, aliena fide dicet, et ipse litigantium auxiliator egebit auxilio. quod ut fieri nonnunquam minore incommodo possit, cum domi praecepta et composita et sicut cetera, quae in causa sunt, inde inde, Halm : in, MSS. discendo cognita ad iudicem perfert, quid fiet in iis quaestionibus, quae subito inter ipsas actiones nasci solent? non deformiter respectet et inter subsellia minores advocatos interroget?
+nam quodammodo mandata perferet, et ea, quae sibi a iudice credi postulaturus est, aliena fide dicet, et ipse litigantium auxiliator egebit auxilio. quod ut fieri nonnunquam minore incommodo possit, cum domi praecepta et composita et sicut cetera, quae in causa sunt, inde discendo cognita ad iudicem perfert, quid fiet in iis quaestionibus, quae subito inter ipsas actiones nasci solent? non deformiter respectet et inter subsellia minores advocatos interroget?
 
 potest autem satis diligenter accipere, quae tum audiet, cum ei dicenda sunt, aut fortiter adfirmare aut ingenue pro suis dicere? possit in actionibus: quid fiet in altercatione, ubi occurrendum continuo, nec libera ad discendum mora est? Quid, si forte peritus iuris ille non aderit? quid , si quis non satis in ea re doctus falsum aliquid subiecerit? hoc enim est maximum ignorantiae malum, quod credit eum scire qui moneat.
 
@@ -7647,9 +7647,9 @@ certe cum in basilica Iulia diceret primo tribunal, quattuor autem iudicia, ut m
 
 agendi autem initium sine dubio secundum vires cuiusque sumendum est. neque ego annos definiam, cum Demosthenen puerum admodum actiones pupillares habuisse manifestum sit, Calvus, Caesar, Pollio multum ante quaestoriam omnes aetatem gravissima iudicia susceperint, praetextatos egisse quosdam sit traditum, Caesar Augustus duodecim natus annos aviam pro rostris laudaverit.
 
-modus mihi videtur quidam tenendus, ut neque praepropere destringatur immatura frons et, nec, Buttmann : et, MSS. quidquid est illud adhuc acerbum, proferatur; nam inde et contemptus operis innascitur et fundamenta iaciuntur impudentiae et, quod est ubicunque perniciosissimum, praevenit vires fiducia.
+modus mihi videtur quidam tenendus, ut neque praepropere destringatur immatura frons et, quidquid est illud adhuc acerbum, proferatur; nam inde et contemptus operis innascitur et fundamenta iaciuntur impudentiae et, quod est ubicunque perniciosissimum, praevenit vires fiducia.
 
-nec rursus differendum est tirocinium in senectutem; nam cotidie metus crescit, maiusque fit semper quod ausuri sumus et, dum deliberamus quando incipiendum sit, incipere iam serum est. quare fructum studiorum viridem et adhuc dulcem promi decet, dum et veniae veniae, Davisius: venia et, MSS spes est et paratus favor et audere non dedecet et, si quid desit operi, supplet aetas, et, si qua sunt dicta iuveniliter, pro indole accipiuntur:
+nec rursus differendum est tirocinium in senectutem; nam cotidie metus crescit, maiusque fit semper quod ausuri sumus et, dum deliberamus quando incipiendum sit, incipere iam serum est. quare fructum studiorum viridem et adhuc dulcem promi decet, dum et veniae spes est et paratus favor et audere non dedecet et, si quid desit operi, supplet aetas, et, si qua sunt dicta iuveniliter, pro indole accipiuntur:
 
 ut totus ille Ciceronis pro Sexto Roscio locus: quid enim tam commune quam spiritus vivis, terra mortuis, mare fluctuantibus, litus eiectis? quae cum sex et viginti natus annos summis audientium clamoribus dixerit, defervisse tempore et annis liquata iam senior idem fatetur. et hercule quantumlibet secreta studia contulerint, est tamen proprius quidam fori profectus, alia lux, alia veri discriminis facies, plusque, si separes, usus sine doctrina quam citra usum doctrina valet.
 
@@ -7665,7 +7665,7 @@ quare neque sociorum querelas nec amici vel propinqui necem nec erupturas in rem
 
 itaque ut accusatoriam vitam vivere et ad deferendos reos praemio duci proximum latrocinio est, ita pestem intestinam propulsare cum propugnatoribus patriae comparandum. ideoque principes in re publica viri non detrectaverunt hanc officii partem, creditique sunt etiam clari iuvenes obsidem rei publicae dare malorum civium accusationem, quia nec odisse improbos nec simultates provocare nisi ex fiducia bonae mentis videbantur;
 
-idque cum ab Hortensio, Lucullis, Sulpicio, Cicerone, Caesare, plurimis aliis, tum ab utroque Catone factum est, quorum alter appellatus est sapiens, alter nisi creditur fuisse, vix scio, cui reliquerit huius nominis locum. neque neque, early edd.: namque, MSS. defendet omnis orator idem, portumque illum eloquentiae suae salutarem non etiam piratis patefaciet duceturque in advocationem maxime causa.
+idque cum ab Hortensio, Lucullis, Sulpicio, Cicerone, Caesare, plurimis aliis, tum ab utroque Catone factum est, quorum alter appellatus est sapiens, alter nisi creditur fuisse, vix scio, cui reliquerit huius nominis locum. neque defendet omnis orator idem, portumque illum eloquentiae suae salutarem non etiam piratis patefaciet duceturque in advocationem maxime causa.
 
 quoniam tamen omnes, qui non improbe litigabunt, quorum certe bona pars est, sustinere non potest unus, aliquid et commendantium personis dabit et ipsorum qui iudicio decernent, ut optimi cuiusque voluntate moveatur; namque hos et amicissimos habebit vir bonus.
 
@@ -7681,7 +7681,7 @@ neque enim video, quae iustior acquirendi ratio quam ex honestissimo labore et a
 
 sed tum quoque tenendus est modus, ac plurimum refert et a quo accipiat et quantum et quo usque. paciscendi quidem ille piraticus mos et imponentium periculis pretia procul abominanda negotiatio etiam a mediocriter improbis aberit, cum praesertim bonos homines bonasque causas tuenti non sit metuendus ingratus; quodsi sit futurus, malo tamen ille peccet.
 
-nihil ergo acquirere volet orator ultra quam satis erit; ac ne pauper quidem tanquam mercedem accipiet, sed mutua benivolentia utetur, cum sciat se tanto plus praestitisse. non enim, quia venire hoc beneficium non oportet, oportet second oportet added by Buttmann. perire. denique ut gratus sit ad eum magis pertinet qui debet.
+nihil ergo acquirere volet orator ultra quam satis erit; ac ne pauper quidem tanquam mercedem accipiet, sed mutua benivolentia utetur, cum sciat se tanto plus praestitisse. non enim, quia venire hoc beneficium non oportet, oportet perire. denique ut gratus sit ad eum magis pertinet qui debet.
 
 proxima discendae causae ratio, quod est orationis fundamentum. neque enim quisquam ingenio tam tenui reperietur, qui, cum omnia quae sunt in causa diligenter cognoverit, ad docendum certe iudicem non sufficiat.
 
@@ -7707,13 +7707,13 @@ nam dum omnia quaerimus, aliquando ad verum, ubi minime exspectavimus, pervenimu
 
 ideoque opus est intueri omne litis instrumentum; quod videre non est satis, perlegendum erit. nam frequentissime aut non sunt omnino, quae promittebantur, aut minus continent aut cum alio aliquo nocituro permixta sunt aut nimia sunt et fidem hoc ipso detractura quod non habent modum.
 
-denique linum ruptum aut turbatam ceram turhatam ceram, Salmasius: turbata cetera, B aut sine agnitore signa frequenter invenies; quae, nisi domi excusseris, in foro inopinata decipient, plusque nocebunt destituta quam non promissa nocuissent. multa etiam, quae litigator nihil ad causam pertinere crediderit, patronus eruet, modo per omnes, quos tradidimus, argumentorum locos eat.
+denique linum ruptum aut turbatam ceram aut sine agnitore signa frequenter invenies; quae, nisi domi excusseris, in foro inopinata decipient, plusque nocebunt destituta quam non promissa nocuissent. multa etiam, quae litigator nihil ad causam pertinere crediderit, patronus eruet, modo per omnes, quos tradidimus, argumentorum locos eat.
 
 quos ut circumspectare in agendo et attentare singulos minime convenit, propter quas diximus causas, ita in discendo rimari necessarium est, quae personae, quae tempora et loca, instituta, instrumenta, cetera, ex quibus non tantum illud, quod est artificiale probationis genus, colligi possit, sed qui metuendi testes, quomodo sint refellendi. nam plurimum refert, invidia reus an odio an contemptu laboret, quorum fere pars prima superiores, proxima pares, tertia humiliores premit.
 
 sic causam perscrutatus, propositis ante oculos omnibus quae prosint noceantve, tertiam deinceps personam induat iudicis, fingatque apud se agi causam, et, quod ipsum movisset de eadem re pronuntiaturum, id potentissimum, apud quemcunque agetur, existimet. sic eum raro fallet eventus, aut culpa iudicis erit.
 
-quae sint in agendo servanda, toto fere opere exsecuti sumus; pauca tamen propria huius loci, quae non tam dicendi arte quam officiis agentis agentis, Obrecht: agendis, B. continentur, attingam. ante omnia ne, quod plerisque accidit, ab utilitate eum causae praesentis cupido laudis abducat.
+quae sint in agendo servanda, toto fere opere exsecuti sumus; pauca tamen propria huius loci, quae non tam dicendi arte quam officiis agentis continentur, attingam. ante omnia ne, quod plerisque accidit, ab utilitate eum causae praesentis cupido laudis abducat.
 
 nam ut gerentibus bella non semper exercitus per plana et amoena ducendus est, sed adeundi plerumque asperi colles, expugnandae civitates quamlibet praecisis impositae rupibus aut operum mole difficiles, ita oratio gaudebit quidem occasione laetius decurrendi et aequo congressa campo totas vires populariter explicabit;
 
@@ -7733,7 +7733,7 @@ ea est enim prorsus canina, ut ait Appius, eloquentia, cognituram male dicendi s
 
 turpis voluptas et inhumana et nulli audientium bona gratia a litigatoribus quidem frequenter exigitur, qui ultionem malunt quam defensionem. sed neque alia multa ad arbitrium eorum facienda sunt. hoc quidem quis hominum liberi modo sanguinis sustineat petulans esse ad alterius arbitrium?
 
-atqui etiam in advocatos partis adversae libenter nonnulli invehuntur; quod, nisi si forte meruerunt, et inhumanum est respectu communium officiorum, et cum ipsi qui dicit inutile (nam idem iuris responsuris datur), tum causae contrarium, cui cui, Halm : qui, B. plane adversarii fiunt et inimici, et quantulumcunque eis uirium est, contumelia augetur.
+atqui etiam in advocatos partis adversae libenter nonnulli invehuntur; quod, nisi si forte meruerunt, et inhumanum est respectu communium officiorum, et cum ipsi qui dicit inutile (nam idem iuris responsuris datur), tum causae contrarium, cui plane adversarii fiunt et inimici, et quantulumcunque eis uirium est, contumelia augetur.
 
 super omnia perit illa, quae plurimum oratori et auctoritatis et fidei adfert, modestia, si a viro bono in rabulam latratoremque convertitur, compositus non ad animum iudicis sed ad stomachum litigatoris.
 
@@ -7767,11 +7767,11 @@ nam Zeuxis plus membris corporis dedit, id amplius atque augustius ratus atque, 
 
 floruit autem circa Philippum et usque ad successores Alexandri pictura praecipue, sed diversis virtutibus. nam cura Protogenes, ratione Pamphilus ac Melanthius, facilitate Antiphilus, concipiendis visionibus, quas φαντασίας vocant, Theon Samius, ingenio et gratia, quam in se ipse maxime iactat, Apelles est praestantissimus. Euphranorem admirandum facit, quod et ceteris optimis studiis inter praecipuos et pingendi fingendique idem mirus artifex fuit.
 
-similis in statuariis differentia statiuiisri, Christ : status, MSS. Nam duriora et Tuscanicis proxima Callon atque Hegesias, iam minus rigida Calamis, molliora adhuc supra dictis Myron fecit. diligentia ac decor in Polyclito supra ceteros, cui quamquam a plerisque tribuitur palma, tamen, ne nihil detrahatur, deesse pondus putant.
+similis in statuariis differentia Nam duriora et Tuscanicis proxima Callon atque Hegesias, iam minus rigida Calamis, molliora adhuc supra dictis Myron fecit. diligentia ac decor in Polyclito supra ceteros, cui quamquam a plerisque tribuitur palma, tamen, ne nihil detrahatur, deesse pondus putant.
 
 nam ut humane formae decorem addiderit supra verum, ita non explevisse deorum auctoritatem videtur. quin aetatem quoque graviorem dicitur refugisse nihil ausus ultra leves genas. at quae Polyclito defuerunt, Phidiae atque Alcameni dantur.
 
-Phidias tamen diis quam hominibus efficiendis effillgendis, Duckerus: elficieidlis, MSS. melior artifex creditur in ebore vero longe citra aemulum, vel si nihil nisi Minervam Athenis aut Olympium in Elide Iovem fecisset, cuius pulchritudo adiecisse aliquid etiam receptae religioni videtur; adeo maiestas operis deum aequavit. ad veritatem Lysippum ac Praxitelen accessisse optime adfirmant. nam Demetrius tanquam nimius in ea reprehenditur et fuit similitudinis quam pulchritudinis amantior.
+Phidias tamen diis quam hominibus efficiendis melior artifex creditur in ebore vero longe citra aemulum, vel si nihil nisi Minervam Athenis aut Olympium in Elide Iovem fecisset, cuius pulchritudo adiecisse aliquid etiam receptae religioni videtur; adeo maiestas operis deum aequavit. ad veritatem Lysippum ac Praxitelen accessisse optime adfirmant. nam Demetrius tanquam nimius in ea reprehenditur et fuit similitudinis quam pulchritudinis amantior.
 
 in oratione vero si species intueri velis, totidem paene reperias ingeniorum quot corporum formas. sed fuere quaedam genera dicendi condicione temporum horridiora, alioqui magnam iam ingenii vim prae se ferentia. hinc sint Laelii, Africani, Catones etiam Gracchique, quos tu licet Polygnotos vel Callonas appelles. mediam illam formam teneant L. Crassus, Q. Hortensius.
 
@@ -7813,7 +7813,7 @@ quod cum contingit, nescio quomodo hilarior protinus renidet oratio, ut in Zephy
 
 nam et illa, quae est sexta nostrarum, paene non humana voce vel omnino non voce potius inter discrimina dentium efflanda est; quae, etiam cum vocalem proxima accipit, quassa quodammodo, utique quotiens aliquam consonantium frangit, it in hoc ipso frangit, multo fit horridior. Aeolicae quoque litterae, qua servum ceruumque dicimus, etiamsi forma a nobis repudiata est, vis tamen nos ipsa persequitur.
 
-duras et illa syllabus facit, quae ad coniungendas demum subiectas sibi uocalis est utilis, alias supervacua, ut equos hac et aequum scribimus; cum etiam ipsae hae vocales duae efficiant sonum, qualis apud Graecos nullus est, ideoque scribi illorum litteris non potest. quid ? quod pleraque nos illa quasi mugiente M M added by Halm. littera cludimus in quam quam Halm : qua, MSS. nullum Graece verbum cadit: at illi ny iucundam et in fine praecipue quasi tinnientem illius loco ponunt, quae est apud nos rarissima in clausulis. quid ? quod syllabae nostrae in B litteram et D innituntur adeo aspere, ut plerique non antiquissimorum quidem, sed tamen veterum mollire temptaverint non solum aversa pro abversis dicendo, sed et in praepositione B litterae absonam et ipsam S subiciendo.
+duras et illa syllabus facit, quae ad coniungendas demum subiectas sibi uocalis est utilis, alias supervacua, ut equos hac et aequum scribimus; cum etiam ipsae hae vocales duae efficiant sonum, qualis apud Graecos nullus est, ideoque scribi illorum litteris non potest. quid ? quod pleraque nos illa quasi mugiente M littera cludimus in quam nullum Graece verbum cadit: at illi ny iucundam et in fine praecipue quasi tinnientem illius loco ponunt, quae est apud nos rarissima in clausulis. quid ? quod syllabae nostrae in B litteram et D innituntur adeo aspere, ut plerique non antiquissimorum quidem, sed tamen veterum mollire temptaverint non solum aversa pro abversis dicendo, sed et in praepositione B litterae absonam et ipsam S subiciendo.
 
 sed accentus quoque, cum rigore quodam, tum similitudine ipsa, minus suaves habemus, quia ultima syllaba nec acuta unquam excitatur nec flexa circumducitur, sed in gravem vel duas graves cadit semper. itaque tanto est sermo Graecus Latino iucundior, ut nostri poetae, quotiens dulce carmen esse voluerint, illorum id nominibus exornent.
 
@@ -7837,21 +7837,21 @@ denique antiquissimum quemque maxime secundum naturam dixisse contendunt: mox po
 
 si quis tamen, ut in loco dixi compositionis, ad necessaria, quibus nihil minus est, aliquid melius adiecerit, non erit hac calumnia reprehendendus. nam mihi aliam quandam videtur habere naturam sermo vulgaris, aliam viri eloquentis oratio; cui si res modo indicare satis esset, nihil ultra verborum proprietatem elaboraret; sed cum debeat delectare, movere, in plurimas animum audientis species impellere, utetur his quoque adiutoriis, quae sunt ab eadem nobis concessa natura.
 
-nam et lacertos exercitatione constringere et augere vires et colorem trahere naturale est. ideoque in omnibus gentibus alius alio facundior habetur et eloquendo dulcis magis (quod si non eveniret, omnes pares essent); at idem homines aliter de re alia at idem homines aliter de re alia loquuntur, Halm : et idem homines al τ̔ de re allocuntur, G. loquuntur et servant personarum discrimina. ita , quo quisque plus efficit dicendo, hoc magis secundum naturam eloquentiae dicit.
+nam et lacertos exercitatione constringere et augere vires et colorem trahere naturale est. ideoque in omnibus gentibus alius alio facundior habetur et eloquendo dulcis magis (quod si non eveniret, omnes pares essent); at idem homines aliter de re alia loquuntur et servant personarum discrimina. ita , quo quisque plus efficit dicendo, hoc magis secundum naturam eloquentiae dicit.
 
-quapropter ne illis quidem nimium repugno, qui dandum putant nonnihil etiam temporibus atque auribus nitidius aliquid atque adfectius postulantibus. itaque non solum ad priores Catone Gracchisque, sed ne ad hos quidem ipsos oratorem adligandum puto. atque id fecisse M. Tullium video, ut cum plurimum plurimum, Christ : omnium, G. utilitati, tum partem quandam delectationi daret; cum et suam se rem agere diceret, ageret autem maxime litigatoris.
+quapropter ne illis quidem nimium repugno, qui dandum putant nonnihil etiam temporibus atque auribus nitidius aliquid atque adfectius postulantibus. itaque non solum ad priores Catone Gracchisque, sed ne ad hos quidem ipsos oratorem adligandum puto. atque id fecisse M. Tullium video, ut cum plurimum utilitati, tum partem quandam delectationi daret; cum et suam se rem agere diceret, ageret autem maxime litigatoris.
 
-nam hoc ipso proderat, quod placet. ad cuius voluptates nihil equidem quod addi possit invenio, nisi ut sensus nos quidem dicamus plures. neque enim non non added by Buttmann. fieri potest salva tractatione causae et dicendi auctoritate, si non crebra hac lumina et continua fuerint et invicem offecerint. sed me hactenus cedentem nemo insequatur ultra.
+nam hoc ipso proderat, quod placet. ad cuius voluptates nihil equidem quod addi possit invenio, nisi ut sensus nos quidem dicamus plures. neque enim non fieri potest salva tractatione causae et dicendi auctoritate, si non crebra hac lumina et continua fuerint et invicem offecerint. sed me hactenus cedentem nemo insequatur ultra.
 
 do tempori, ne hirta toga sit, non ut serica; ne intonsum caput, non ut in gradus atque anulos comptum, cum eo quod, si non ad luxuriam ac libidinem referas, eadem speciosiora quoque sint, quae honestiora.
 
 ceterum hoc, quod vulgo sententias vocamus, quod veteribus praecipueque Graecis in usu non fuit (apud Ciceronem enim invenio), dum rem contineant et copia non redundent et ad victoriam spectent, quis utile neget? feriunt animum et uno ictu frequenter impellunt et ipsa brevitate magis haerent et delectatione persuadent.
 
-at sunt qui haec excitatiora lumina, etiamsi dicere permittant, a componendis tamen orationibus excludenda arbitrentur. quocirca mihi ne Hic quidem locus intactus est omittendus; nam plurimi nam plurimi, Halm : ā plurimis, G. eruditorum aliam esse dicendi rationem, aliam scribendi putaverunt; ideoque in agendo clarissimos quosdam nihil posteritati mansurisque mox litteris reliquisse, ut Periclem, ut Demaden; rursus alios ad componendum optimos actionibus idoneos non fuisse, ut Isocraten;
+at sunt qui haec excitatiora lumina, etiamsi dicere permittant, a componendis tamen orationibus excludenda arbitrentur. quocirca mihi ne Hic quidem locus intactus est omittendus; nam plurimi eruditorum aliam esse dicendi rationem, aliam scribendi putaverunt; ideoque in agendo clarissimos quosdam nihil posteritati mansurisque mox litteris reliquisse, ut Periclem, ut Demaden; rursus alios ad componendum optimos actionibus idoneos non fuisse, ut Isocraten;
 
-praeterea in agendo plus impetus plerumque et petitas vel paulo licentius voluptates, commovendos enim esse ducendosque animos imperitorum; at quod libris dedicatum in exemplum edatur, id at qod dedicatum edatur id, Halm : ad quos dedicatorum edantur et, G. tersum ac limatum et ad legem ac regulam conpositum esse oportere, quia veniat in manus doctorum et iudices artis habeat artifices.
+praeterea in agendo plus impetus plerumque et petitas vel paulo licentius voluptates, commovendos enim esse ducendosque animos imperitorum; at quod libris dedicatum in exemplum edatur, id tersum ac limatum et ad legem ac regulam conpositum esse oportere, quia veniat in manus doctorum et iudices artis habeat artifices.
 
-quin illi subtiles (ut sibimet ac multis persuaserunt) magistri παράδειγμα dicendo, ἐνθύμημα scribendo esse aptius tradiderunt. mihi unum atque idem videtur bene dicere ac bene scribere, neque aliud esse oratio scripta quam monumentum actionis habitae. itaque nullas non, ut opinor, debet habere virtutes, second virtutes added by Buttmann. virtutes dico, non vitia. nam imperitis placere aliquando quae vitiosa sint, scio.
+quin illi subtiles (ut sibimet ac multis persuaserunt) magistri παράδειγμα dicendo, ἐνθύμημα scribendo esse aptius tradiderunt. mihi unum atque idem videtur bene dicere ac bene scribere, neque aliud esse oratio scripta quam monumentum actionis habitae. itaque nullas non, ut opinor, debet habere virtutes, virtutes dico, non vitia. nam imperitis placere aliquando quae vitiosa sint, scio.
 
 quo different igitur? quodsi mihi des consilium iudicum sapientium, perquam multa recidam ex orationibus non Ciceronis modo, sed etiam eius, qui est strictior multo, Demosthenis. neque enim adfectus omnino movendi erunt, nec aures delectatione mulcendae, cum etiam prooemia supervacua esse apud tales Aristoteles existimet; non enim trahentur his illi sapientes; proprie et significanter rem indicare, probationes colligere satis est.
 
@@ -7859,7 +7859,7 @@ cum vero iudex detur aut populus aut ex populo, laturique sint sententiam indoct
 
 an Demosthenes male sic egisset, ut scripsit, aut Cicero? aut eos praestantissimos oratores alia re quam scriptis cognoscimus? melius egerunt igitur an peius? nam si peius, sic potius oportuit dici, ut scripserunt; si melius, sic potius oportuit scribi, ut dixerunt.
 
-quid ergo? semper sic aget orator, ut scribet? si licebit, semper. si vero quando Si vero quando, Wölffin: steterunt qua, G. impediant brevitate tempora a iudice data, multum ex eo, quod oportuit oportuit, Christ : potiit, MSS. dici, recidetur; editio habebit omnia. quae tamen quae tamen, Halm : quaedam, G. secundum naturam iudicantium dicta sunt, non ita posteris tradentur, ne videantur propositi fuisse, non temporis.
+quid ergo? semper sic aget orator, ut scribet? si licebit, semper. si vero quando impediant brevitate tempora a iudice data, multum ex eo, quod oportuit dici, recidetur; editio habebit omnia. quae tamen secundum naturam iudicantium dicta sunt, non ita posteris tradentur, ne videantur propositi fuisse, non temporis.
 
 nam id quoque plurimum refert, quomodo audire iudex velit, atque eius vultus saepe ipse rector est dicentis, ut Cicero praecipit. ideoque instandum iis quae placere intellexeris, resiliendum ab iis quae non recipientur. sermo ipse, qui facillime iudicem doceat, aptandus. nec id mirum sit, cum etiam testium personis aliqua mutentur.
 
@@ -7867,17 +7867,17 @@ prudenter enim, qui cum interrogasset rusticum testem, an Amphionem nosset, nega
 
 altera est divisio, quae in tres partes et ipsa discedit, qua discerni posse etiam recte dicendi genera inter se videntur. namque unum subtile, quod ἰσχνόν vocant, alterum grande atque robustum, quod ἁδρόν dicunt, constituunt; tertium alii, medium ex duobus, alii floridum (namque id ἀνθηρόν appellant) addiderunt.
 
-quorum tamen ea fere ratio est, ut primum docendi, secundum movendi, tertium illud, utrocumque est utrocumque est, Halm : est ultrorumque, G. nomine, delectandi sire, ut alii dicunt, conciliandi praestare videatur officium; in docendo autem acumen, in conciliando lenitas, in movendo vis exigi videatur. itaque illo subtili praecipue ratio narrandi probandique consistet, sed saepe id saepe id, Halm : que id, G. etiam detractis ceteris virtutibus suo genere plenum.
+quorum tamen ea fere ratio est, ut primum docendi, secundum movendi, tertium illud, utrocumque est nomine, delectandi sire, ut alii dicunt, conciliandi praestare videatur officium; in docendo autem acumen, in conciliando lenitas, in movendo vis exigi videatur. itaque illo subtili praecipue ratio narrandi probandique consistet, sed saepe id etiam detractis ceteris virtutibus suo genere plenum.
 
-medius hic modus et translationibus crebrior et figuris erit iucundior, egressionibus amoenus, compositione aptus, sententiis dulcis, lenior tamen ut amnis lucidus quidem sed uirentibus utrinque ripis ripis inumbratus, Meyer: sipisim umbratus and the like, MSS. inumbratus.
+medius hic modus et translationibus crebrior et figuris erit iucundior, egressionibus amoenus, compositione aptus, sententiis dulcis, lenior tamen ut amnis lucidus quidem sed uirentibus utrinque ripis inumbratus.
 
 at ille, qui saxa devolvat et pontem indignetur et ripas sibi faciat, multus et torrens iudicem vel nitentem contra feret cogetque ire, qua rapiet. hic orator et defunctos excitabit ut Appium Caecum, apud hunc et patria ipsa exclamabit, aliquandoque ut Ciceronem in oratione contra Catilinam in senatu alloquetur.
 
-hic et amplificationibus extollet orationem, et in superlationem quoque erigetur. quae Charybdis tam vorax? et Oceanus medius fidius ipse. nota sunt enim iam studiosis haec lumina. hic deos ipsos in congressum prope suum sermonemque deducet: vos enim Albani tumuli atque luci; vos, inquam, Albanorum obrutae arae, sacrorum popli Romani sociae et aequales. hic iram, hic misericordiam inspirabit, hoc dicente iudex deos hoc dicente iudex deos apellabit et flebit., Madrig: hoc dicente iudet appellavit et flevit, G. appellabit et flebit et per omnes adfectus tractatus huc atque illuc sequetur nec doceri desiderabit.
+hic et amplificationibus extollet orationem, et in superlationem quoque erigetur. quae Charybdis tam vorax? et Oceanus medius fidius ipse. nota sunt enim iam studiosis haec lumina. hic deos ipsos in congressum prope suum sermonemque deducet: vos enim Albani tumuli atque luci; vos, inquam, Albanorum obrutae arae, sacrorum popli Romani sociae et aequales. hic iram, hic misericordiam inspirabit, hoc dicente iudex deos appellabit et flebit et per omnes adfectus tractatus huc atque illuc sequetur nec doceri desiderabit.
 
 quare si ex tribus his generibus necessario sit eligendum unum, quis dubitet hoc praeferre omnibus et validissimum alioqui et maximis quibusque causis accommodatissimum?
 
-nam et Homerus brevem quidem cum iucunditate et propriam, id enim est non deerrare uerbis, et carentem supervacuis eloquentiam Menelao dedit, quae sunt virtutes generis illius primi, et ex ore Nestoris dixit dulciorem melle profluere sermonem, qua certe delectatione nihil fingi maius potest; sed summam expressurus expressurus, M. Seyffert: regressurus est, G. in Ulixe facundiam et magnitudinem illi vocis et vim orationis niuibus hibernis vocis hibernis, Seyffert: vicisset cum orationi similibus, G. et copia verborum atque impetu parem tribuit.
+nam et Homerus brevem quidem cum iucunditate et propriam, id enim est non deerrare uerbis, et carentem supervacuis eloquentiam Menelao dedit, quae sunt virtutes generis illius primi, et ex ore Nestoris dixit dulciorem melle profluere sermonem, qua certe delectatione nihil fingi maius potest; sed summam expressurus in Ulixe facundiam et magnitudinem illi vocis et vim orationis niuibus hibernis et copia verborum atque impetu parem tribuit.
 
 cum hoc igitur nemo mortalium contendet; hunc ut deum homines intuebuntur. hanc vim et celeritatem in Pericle miratur Eupolis, hanc fulminibus Aristophanes comparat, haec est vere dicendi facultas.
 
@@ -7889,7 +7889,7 @@ eademque musicis ratio est, qui, cum in cithara quinque constituerunt sonos, plu
 
 plures igitur etiam eloquentiae faces, sed stultissimum quaerere, ad quam se recturus sit orator, cum omnis species, quae modo recta est, habeat usum, atque id ipsum non sit oratoris, quod vulgo genus dicendi vocant. utetur enim, ut res exiget, omnibus, nec pro causa modo, sed pro partibus causae.
 
-nam ut non eodem modo pro reo capitis et in certamine hereditatis et de interdictis ac sponsionibus et de certa credita dicet, sententiarum quoque in senatu et contionum et privatorum consiliorum servabit discrimina, multa ex differentia personarum, locorum temporumque mutabit, ita in eadem oratione aliter concitabit, aliter concitabit, added by Halm. aliter conciliabit, non ex iisdem haustibus iram et misericordiam petet, alias ad docendum alias ad movendum adhibebit artes.
+nam ut non eodem modo pro reo capitis et in certamine hereditatis et de interdictis ac sponsionibus et de certa credita dicet, sententiarum quoque in senatu et contionum et privatorum consiliorum servabit discrimina, multa ex differentia personarum, locorum temporumque mutabit, ita in eadem oratione aliter concitabit, aliter conciliabit, non ex iisdem haustibus iram et misericordiam petet, alias ad docendum alias ad movendum adhibebit artes.
 
 non unus color prooemii, narrationis, argumentorum, egressionis, perorationis servabitur. dicet idem graviter, severe, acriter, vehementer, concitate, copiose, amare, comiter, remisse, subtiliter, blande, leniter, dulciter, breviter, urbane, non ubique similis, sed ubique par sibi.
 
@@ -7899,15 +7899,15 @@ falluntur enim plurimum, qui vitiosum et corruptum dicendi genus, quod aut verbo
 
 Est enim iucunda auribus ac favorabilis qualiscunque eloquentia et ducit animos naturali voluptate vox omnis, neque aliunde illi per fora atque aggerem circuli; quo minus mirum est, quod nulli non agentium parata vulgi corona est.
 
-ubi vero quid exquisitius dictum accidit auribus imperitorum, qualecunque id est, quod modo se ipsi posse desperent, habet admirationem, neque immerito; nam ne illud quidem facile est. sed evanescunt hac atque emoriuntur comparatione meliorum, ut lana tincta fuco citra purpuras placet; at si contuleris Tyriae eam Tyriae cam, Halm : etiam, MSS. lacernae, conspectu melioris obruatur, ut Ovidius ait.
+ubi vero quid exquisitius dictum accidit auribus imperitorum, qualecunque id est, quod modo se ipsi posse desperent, habet admirationem, neque immerito; nam ne illud quidem facile est. sed evanescunt hac atque emoriuntur comparatione meliorum, ut lana tincta fuco citra purpuras placet; at si contuleris Tyriae eam lacernae, conspectu melioris obruatur, ut Ovidius ait.
 
-si vero iudicium his corruptis acrius adhibeas ut fucinis fucinis, Buttmann : fucinus, G. sulfura, iam illum, quo fefellerant, exuant illum quo fefellerant exuant, Buttamann,: illul quod fefellerat exuat, G. mentitum colorem et quadam vix enarrabili foeditate pallescant. lucent igitur haec citra solem, ut quaedam exigua animalia igniculi videntur in tenebris. denique mala multi probant, nemo improbat bona.
+si vero iudicium his corruptis acrius adhibeas ut fucinis sulfura, iam illum, quo fefellerant, exuant mentitum colorem et quadam vix enarrabili foeditate pallescant. lucent igitur haec citra solem, ut quaedam exigua animalia igniculi videntur in tenebris. denique mala multi probant, nemo improbat bona.
 
-neque vero omnia ista, de quibus locuti sumus, orator optime tantum sed etiam facillime faciet. neque enim vim summam dicendi et os os, Halm : eos, G. admiratione dignum infelix usque ad ultimum sollicitudo persequitur, quae quae, Halm : nec, MSS. oratorem macerat et coquit aegre verba vertentem et perpendendis coagmentandisque eis intabescentem.
+neque vero omnia ista, de quibus locuti sumus, orator optime tantum sed etiam facillime faciet. neque enim vim summam dicendi et os admiratione dignum infelix usque ad ultimum sollicitudo persequitur, quae oratorem macerat et coquit aegre verba vertentem et perpendendis coagmentandisque eis intabescentem.
 
 nitidus ille et sublimis et locuples circumfluentibus undique eloquentiae copiis imperat. desinit enim in adversa niti, qui pervenit in summum. scandenti circa ima labor est; ceterum quantum processeris, mollior clivus ac laetius solum.
 
-et si haec quoque iam lenius supina perseverantibus studiis evaseris, inde fructus illaborati offerunt sese et omnia sponte proveniunt; quae tamen cotidie nisi decerpantur, arescunt. sed et copia habeat habeat, Heindorf: habet, MSS. modum, sine quo nihil nec laudabile nec salutare est, et nitor ille cultum virilem et inventio iudicium.
+et si haec quoque iam lenius supina perseverantibus studiis evaseris, inde fructus illaborati offerunt sese et omnia sponte proveniunt; quae tamen cotidie nisi decerpantur, arescunt. sed et copia habeat modum, sine quo nihil nec laudabile nec salutare est, et nitor ille cultum virilem et inventio iudicium.
 
 sic erunt magna non nimia, sublimia non abrupta, fortia non temeraria, severa non tristia, gravia non tarda, laeta non luxuriosa, iucunda non dissoluta, grandia non tumida. similis in ceteris ratio est ac tutissima fere per medium via, quia utriusque ultimum vitium est.
 
@@ -7915,7 +7915,7 @@ his dicendi virtutibus usus orator ad iudiciis, consiliis, contionibus, senatu, 
 
 neque enim scientia modo constat orator, quae augetur annis, sed voce, latere, firmitate; quibus fractis aut imminutis aetate seu valetudine cavendum est, ne quid ad oratore summo desideretur, ne intersistat fatigatus, ne quae dicet parum audiri sentiat, ne se quaerat priorem.
 
-vidi ego longe omnium, quos mihi cognoscere contigit, summum oratorem, Domitium Afrum valde senem, cotidie aliquid ex ea quam meruerat auctoritate perdentem, cum agente illo, quem principem fuisse quondam fori non erat dubium, alii, quod indignum videatur, riderent, alii erubescerent; quae occasio fuit de de added by Halm. illo dicendi, malle eum deficere quam desinere.
+vidi ego longe omnium, quos mihi cognoscere contigit, summum oratorem, Domitium Afrum valde senem, cotidie aliquid ex ea quam meruerat auctoritate perdentem, cum agente illo, quem principem fuisse quondam fori non erat dubium, alii, quod indignum videatur, riderent, alii erubescerent; quae occasio fuit de illo dicendi, malle eum deficere quam desinere.
 
 neque erant ilia qualiacunque mala sed minora. quare antequam ad has aetatis veniat insidias, receptui canet et ad portum integra nave perveniet. neque enim minores eum, cum id fecerit, studiorum fructus prosequentur. aut ille monumenta rerum posteris aut, ut L. Crassus ad libris Ciceronis destinat, iura quaerentibus reddet aut eloquentiae component artem aut pulcherrimis vitae praeceptis dignum os dabit.
 
@@ -7923,7 +7923,7 @@ frequentabunt vero eius domum optimi iuvenes more veterum et vere dicendi viam v
 
 quid porro est honestius quam docere quod optime scias? sic ad se Caelium deductum a patre Cicero profitetur; sic Pansam, Hirtium, Dolabellam ad morem praeceptoris exercuit cotidie dicens audiensque.
 
-ac nescio an eum tum beatissimum credi oporteat fore, cum iam secretus et consecratus, liber invidia, procul contentionibus famam ad tuto collocarit et sentiet sentiet, Obrecht: sententia et, G. vivus eam, quae post fata praestari magis solet, venerationem et, quid apud posteros futurus sit, videbit.
+ac nescio an eum tum beatissimum credi oporteat fore, cum iam secretus et consecratus, liber invidia, procul contentionibus famam ad tuto collocarit et sentiet vivus eam, quae post fata praestari magis solet, venerationem et, quid apud posteros futurus sit, videbit.
 
 conscius sum mihi, quantum mediocritate valui, quaeque antea scierim, quaeque operis huiusce gratia potuerim inquirere, candide me atque simpliciter ad notitiam eorum, si qui forte cognoscere voluissent, protulisse. atque id viro bono satis est, docuisse quod scierit.
 
@@ -7933,39 +7933,39 @@ qui primum renuntient sibi, quanta sit humani ingenii vis, quam potens efficiend
 
 quod si mente conceperint, huic quoque parti facilius accedent, ut ipsum iter neque impervium neque saltem durum putent. nam id, quod prius quodque maius est, ut boni viri simus, voluntate maxime constat; quam qui vera fide induerit, facile eas, quae virtutem docent, artes accipiet.
 
-neque enim aut tam perplexa aut tam numerosa sunt quae praecipiuntur, praccipiuntur, Buttmann : praenmultur, G. ut non paucorum admodum annorum intentione discantur. longam enim facit operam quod repugnamus; brevis est institution vitae honestae beataeque, si credas. natura enim nos ad mentem optimam genuit, adeoque discere meliora uolentibus promptum est, ut vere intuenti mirum sit illud magis malos esse tam multos.
+neque enim aut tam perplexa aut tam numerosa sunt quae praecipiuntur, ut non paucorum admodum annorum intentione discantur. longam enim facit operam quod repugnamus; brevis est institution vitae honestae beataeque, si credas. natura enim nos ad mentem optimam genuit, adeoque discere meliora uolentibus promptum est, ut vere intuenti mirum sit illud magis malos esse tam multos.
 
-nam ut aqua piscibus, ut sicca terrenis, circumfusus nobis spiritus volucribus convenit, ita certe facilius esse oportebat secundum naturam quam contra eam vivere. cetera vero, etiamsi aetatem nostram non spatio senectutis sed tempore tempore, early edd.: corpore, G. adolescentiae metiamur, abunde multos ad discendum annos habent. omnia enim breviora reddet ordo et ratio et modus.
+nam ut aqua piscibus, ut sicca terrenis, circumfusus nobis spiritus volucribus convenit, ita certe facilius esse oportebat secundum naturam quam contra eam vivere. cetera vero, etiamsi aetatem nostram non spatio senectutis sed tempore adolescentiae metiamur, abunde multos ad discendum annos habent. omnia enim breviora reddet ordo et ratio et modus.
 
-sed culpa est ad praeceptoribus prima, qui libenter detinent quos occupaverunt, partim cupiditate diutius exigendi mercedulas, partim ambitione, quo difficilius videatur videatur esse, added by Halm. esse quod pollicentur, partim etiam inscientia tradendi vel negligentia. proxima ad nobis, qui morari ad eo quod novimus, quam discere quae nondum scimus, melius putamus.
+sed culpa est ad praeceptoribus prima, qui libenter detinent quos occupaverunt, partim cupiditate diutius exigendi mercedulas, partim ambitione, quo difficilius videatur esse quod pollicentur, partim etiam inscientia tradendi vel negligentia. proxima ad nobis, qui morari ad eo quod novimus, quam discere quae nondum scimus, melius putamus.
 
 nam ut de nostris potissimum studiis dicam, quid attinet tam multis annis quam ad more est plurimorum (ut de his, a quibus magna ad hoc pars aetatis absumitur, taceam) declamitare ad schola et tantum laboris ad rebus falsis consumere, cum satis sit modico tempore imaginem veri discriminis et dicendi leges comperisse Quod non eo diro,
 
-quasi qasi, Halm : qua, G. sit umquam omittenda dicendi exercitatio, sed quia non ad una sit eius specie consenescendum. res varias Res varias, added by Halm. cognoscere et praecepta vivendi perdiscere et ad foro nos experiri potuimus, dum scholastici sumus. discendi ratio talis, ut non multos poscat annos. quaelibet enim ex iis artibus, quarum habui mentionem, ad paucos libros contrahi solet; adeo non est infinito spatio ad traditionem opus. reliqua est exercitatio, ad traditionem, Halm : ac tradilione, G. : exercitatio added by Halm. quae vires cito facit, cum fecit, tuetur.
+quasi sit umquam omittenda dicendi exercitatio, sed quia non ad una sit eius specie consenescendum. res varias cognoscere et praecepta vivendi perdiscere et ad foro nos experiri potuimus, dum scholastici sumus. discendi ratio talis, ut non multos poscat annos. quaelibet enim ex iis artibus, quarum habui mentionem, ad paucos libros contrahi solet; adeo non est infinito spatio ad traditionem opus. reliqua est exercitatio, quae vires cito facit, cum fecit, tuetur.
 
-rerum cognitio cotidie crescit, et tamen quam multorum ad eam librorum necessaria lectio est, quibus aut rerum exempla ab historicis aut dicendi ab oratoribus petuntur, philosophorum quoque consultorumque opiniones, si utilia velimus legere non, quod ne fieri quidem si utilia, Christ : siuti alia, MSS.: quod ne fieri quidem, Halm : quod quidem, MSS. potest, omnia? sed breve nobis tempus nos facimus.
+rerum cognitio cotidie crescit, et tamen quam multorum ad eam librorum necessaria lectio est, quibus aut rerum exempla ab historicis aut dicendi ab oratoribus petuntur, philosophorum quoque consultorumque opiniones, si utilia velimus legere non, quod ne fieri quidem potest, omnia? sed breve nobis tempus nos facimus.
 
-quantulum enim studiis partimur Alias horas vanus salutandi labor, alias datum tabulis otium, alias spectacula, alias convivia trahunt. adiice tot genera ludendi et insanam corporis curam, peregrinatio, rura, calculorum anxiam sollicitudinem, invitamenta libidinum et vinum et flagrantibus omni genere voluptatum animis the text is as corrected by Halm. the MSS. give a variety of readings. the chief alterations involved by Halm's correction are invitanienta for multae causae, multae eam, etc., and flagrantibus for flagitis. the other changes are of the simplest and most ordinary character. ne ea quidem tempora idonea, quae supersunt.
+quantulum enim studiis partimur Alias horas vanus salutandi labor, alias datum tabulis otium, alias spectacula, alias convivia trahunt. adiice tot genera ludendi et insanam corporis curam, peregrinatio, rura, calculorum anxiam sollicitudinem, invitamenta libidinum et vinum et flagrantibus omni genere voluptatum animis ne ea quidem tempora idonea, quae supersunt.
 
-quae si omnia studiis impenderentur, iam nobis longa aetas et abunde satis ad discendum spatii viderentur vel vel, Buettmann: ut, MSS. diurna tantum computantibus tempora ut nihil noctes, quarum bona pars omni somno longior est, adiuvarent. nunc computamus annos, non quibus studuimus, sed quibus viximus.
+quae si omnia studiis impenderentur, iam nobis longa aetas et abunde satis ad discendum spatii viderentur vel diurna tantum computantibus tempora ut nihil noctes, quarum bona pars omni somno longior est, adiuvarent. nunc computamus annos, non quibus studuimus, sed quibus viximus.
 
-nec vero si geometrae et musici et musici, added by Halm ( erasure ad G ). et grammatici ceterarumque artium professores omnem suam vitam, quamlibet longa fuerit, ad singulis artibus consumpserunt, sequitur ut plures quasdam vitas ad plura discenda desideremus. neque enim illi didicerunt haec usque ad senectutem, sed ea sola didicisse contenti fuerunt ac tot annos non ad percipiendo exhauserunt, sed ad praecipiendo. sed ad praecipiendo, Halm : p** p***do G.
+nec vero si geometrae et musici et grammatici ceterarumque artium professores omnem suam vitam, quamlibet longa fuerit, ad singulis artibus consumpserunt, sequitur ut plures quasdam vitas ad plura discenda desideremus. neque enim illi didicerunt haec usque ad senectutem, sed ea sola didicisse contenti fuerunt ac tot annos non ad percipiendo exhauserunt, sed ad praecipiendo.
 
-ceterum , ut de Homero taceam, ad quo nullius non artis aut opera perfecta aut certe non dubia vestigia reperiuntur, (ut Eleum Hippiam transeam, qui non liberalium modo disciplinarum prae se scientiam tulit, sed vestem et anulum crepidasque, quae omni manu sua fecerat, ad usu habuit, atque ita se praeparavit, ne cuius alterius opere egeret,) illusisse tot malis, quot tot malis quot, Bonnell: tot,****s quod, G. summa senectus habet, uniuersae Graeciae credimus Gorgian, qui quaerere auditores de quo quisque vellet iubebat.
+ceterum , ut de Homero taceam, ad quo nullius non artis aut opera perfecta aut certe non dubia vestigia reperiuntur, (ut Eleum Hippiam transeam, qui non liberalium modo disciplinarum prae se scientiam tulit, sed vestem et anulum crepidasque, quae omni manu sua fecerat, ad usu habuit, atque ita se praeparavit, ne cuius alterius opere egeret,) illusisse tot malis, quot summa senectus habet, uniuersae Graeciae credimus Gorgian, qui quaerere auditores de quo quisque vellet iubebat.
 
 quae tandem ars digna litteris Platoni defuit? quot sacculis Aristoteles didicit, ut non solum, quae ad philosophos atque oratores pertinent, scientia complecteretur, sed animalium satorumque naturas omnes perquireret? illis haec invenienda fuerunt, nobis cognoscenda sunt. tot nos praeceptoribus, tot exemplis instruxit antiquitas, ut possit videri nulla sorte nascendi aetas felicior quam nostra, cui docendae priores elaborarunt.
 
-M. igitur Cato idem summus imperator, idem sapiens, idem orator, idem historiae conditor, idem iris, idem rerum rusticarum peritissimus fuit inter tot operas militiae, tantas domi contentiones, rudi saeculo, litteras Graecas aetate iam declinata; didicit, ut esset hominibus documento ea quoque percipi posse quae senes concupissent.
+**M** igitur Cato idem summus imperator, idem sapiens, idem orator, idem historiae conditor, idem iris, idem rerum rusticarum peritissimus fuit inter tot operas militiae, tantas domi contentiones, rudi saeculo, litteras Graecas aetate iam declinata; didicit, ut esset hominibus documento ea quoque percipi posse quae senes concupissent.
 
 quam multa, paene omnia, tradidit Varro! quod instrumentum dicendi M. Tullio defuit? quid plura? cum etiam Cornelius Celsus, mediocri vir ingenio, non solum de his omnibus conscripserit artibus, sed amplius rei militaris et rusticae et medicinae praecepta reliquerit, dignus vel ipso proposito, ut eum scisse omnia illa credamus.
 
-at perficere tantum opus arduum et nemo perfecit. ante omnia sufficit ad exhortationem studiorum, capere id rerum naturam nec, nec, Zumpt: eo, AG. quidquid non est factum, ne fieri quidem posse; tum omnia, quae magna sunt atque admirabilia, tempus aliquod quo primum efficerentur habuisse.
+at perficere tantum opus arduum et nemo perfecit. ante omnia sufficit ad exhortationem studiorum, capere id rerum naturam nec, quidquid non est factum, ne fieri quidem posse; tum omnia, quae magna sunt atque admirabilia, tempus aliquod quo primum efficerentur habuisse.
 
 nam et poesis ab Homero et Vergilio tantum fastigium accepit et eloquentia a Demosthene atque Cicerone. denique quidquid est optimum, ante non fuerat. verum etiam si quis summa desperet (quod cur faciat, cui ingenium, valetudo, facultas, praeceptores non deerunt?), tamen est, ut Cicero ait, pulchrum ad secundis tertiisque consistere.
 
-neque enim, si quis Achillis gloriam ad bellicis consequi non potest, Aiacis aut Diomedis laudem aspernabitur, nec qui Homeri non fuerunt, Tyrtaei. non fuerunt, G: non tyrthei, second had of A, written ad over an erasure. quin immo si hanc cogitationem homines habuissent, ut nemo se meliorem fore eo qui optimus fuisset, arbitraretur, ii ipsi, qui sunt optimi, non fuissent, neque post Lucretium ac Macrum Vergilius nec post Crassum et Hortensium Cicero, sed nec illi, qui post eos fuerunt.
+neque enim, si quis Achillis gloriam ad bellicis consequi non potest, Aiacis aut Diomedis laudem aspernabitur, nec qui Homeri non fuerunt, Tyrtaei. quin immo si hanc cogitationem homines habuissent, ut nemo se meliorem fore eo qui optimus fuisset, arbitraretur, ii ipsi, qui sunt optimi, non fuissent, neque post Lucretium ac Macrum Vergilius nec post Crassum et Hortensium Cicero, sed nec illi, qui post eos fuerunt.
 
-verum ut transeundi spes non sit, magna tamen est dignitas subsequendi. an Pollio et Messala, qui iam Cicerone arcem tenente eloquentiae agere coeperunt, parum ad vita dignitatis habuerunt, parum ad posteros gloriae tradiderunt? alioqui pessime de rebus humanis perductae ad summum artes mererentur, si, quod optimum, idem ultimum idem ultimum, added by Buttmann. fuisset.
+verum ut transeundi spes non sit, magna tamen est dignitas subsequendi. an Pollio et Messala, qui iam Cicerone arcem tenente eloquentiae agere coeperunt, parum ad vita dignitatis habuerunt, parum ad posteros gloriae tradiderunt? alioqui pessime de rebus humanis perductae ad summum artes mererentur, si, quod optimum, idem ultimum fuisset.
 
 adde quod magnos modica quoque eloquentia parit fructus ac, si quis haec studia utilitate sola metiatur, paene illi perfectae par est. neque erat difficile vel veteribus vel novis exemplis palam facere, non aliunde maiores opes, honores, amicitias, laudem praesentem, futuram hominibus contigisse, nisi indignum litteris esset, ab opere pulcherrimo, cuius tractatus atque ipsa possessio plenissimam studiis gratiam refert, hanc minorem exigere mercedem, more eorum, qui a se non virtutes sed voluptatem, quae fit ex virtutibus, peti dicunt.
 

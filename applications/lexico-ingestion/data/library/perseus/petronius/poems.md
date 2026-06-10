@@ -12,15 +12,15 @@ title: Poems
 
 # Poems
 
-74 Poet. Lat. Min. iv, ed. Baehrens. Inveniet quod quisque velit: non omnibus unum est quod placet: hic spinas colligit, ille rosas.
+**74** Poet. Lat. Min. iv, ed. Baehrens. Inveniet quod quisque velit: non omnibus unum est quod placet: hic spinas colligit, ille rosas.
 
 Inveniet quod quisque velit: non omnibus unum est
 
 quod placet: hic spinas colligit, ille rosas.
 
-75 P.L.M. Iam nunc algentes autumnus fecerat umbrasalgentes fecerat Baehrens: ardentes fregerat V. atque hiemem tepidis spectabat Phoebus habenis, iam platanus iactare comas, iam coeperat uvas adnumerare suas defecto palmite vitis: ante oculos stabat quidquid promiserat annus.
+**75** P.L.M. Iam nunc algentes autumnus fecerat umbras atque hiemem tepidis spectabat Phoebus habenis, iam platanus iactare comas, iam coeperat uvas adnumerare suas defecto palmite vitis: ante oculos stabat quidquid promiserat annus.
 
-Iam nunc algentes autumnus fecerat umbrasalgentes fecerat Baehrens: ardentes fregerat V.
+Iam nunc algentes autumnus fecerat umbras
 
 atque hiemem tepidis spectabat Phoebus habenis,
 
@@ -30,13 +30,13 @@ adnumerare suas defecto palmite vitis:
 
 ante oculos stabat quidquid promiserat annus.
 
-76 P.L.M. Primus in orbe deos fecit timor, ardua caelo fulmina cum caderent discussaque moenia flammis atque ictus flagraret Athos; mox Phoebus ab ortuab ortu Butler: ad ortus V. lustrata deuectus humo, Lunaeque senectus et reparatus honos; hinc signa effusa per orbem et permutatis disiunctus mensibus annus. Profecitprofecit anon: proiecit V. vitium iamque error iussit inanis agricolas primos Cereri dare messis honores, palmitibus plenis Bacchum vincire, Palemque pastorum gaudere manu; natat obrutus omnisnatat obrutus probably corrupt: portus tenet Buecheler. Neptunus demersus aqua; Pallasque tabernas vindicat; et voti reus et qui vendidit orbem,orbem perhaps corrupt: orbam Barth: urbem Pithoeus iam sibi quisque deos avido certamine fingit.
+**76** P.L.M. Primus in orbe deos fecit timor, ardua caelo fulmina cum caderent discussaque moenia flammis atque ictus flagraret Athos; mox Phoebus ab ortu lustrata deuectus humo, Lunaeque senectus et reparatus honos; hinc signa effusa per orbem et permutatis disiunctus mensibus annus. Profecit vitium iamque error iussit inanis agricolas primos Cereri dare messis honores, palmitibus plenis Bacchum vincire, Palemque pastorum gaudere manu; natat obrutus omnis Neptunus demersus aqua; Pallasque tabernas vindicat; et voti reus et qui vendidit orbem, iam sibi quisque deos avido certamine fingit.
 
 Primus in orbe deos fecit timor, ardua caelo
 
 fulmina cum caderent discussaque moenia flammis
 
-atque ictus flagraret Athos; mox Phoebus ab ortuab ortu Butler: ad ortus V.
+atque ictus flagraret Athos; mox Phoebus ab ortu
 
 lustrata deuectus humo, Lunaeque senectus
 
@@ -44,25 +44,25 @@ et reparatus honos; hinc signa effusa per orbem
 
 et permutatis disiunctus mensibus annus.
 
-Profecitprofecit anon: proiecit V. vitium iamque error iussit inanis
+Profecit vitium iamque error iussit inanis
 
 agricolas primos Cereri dare messis honores,
 
 palmitibus plenis Bacchum vincire, Palemque
 
-pastorum gaudere manu; natat obrutus omnisnatat obrutus probably corrupt: portus tenet Buecheler.
+pastorum gaudere manu; natat obrutus omnis
 
 Neptunus demersus aqua; Pallasque tabernas
 
-vindicat; et voti reus et qui vendidit orbem,orbem perhaps corrupt: orbam Barth: urbem Pithoeus
+vindicat; et voti reus et qui vendidit orbem,
 
 iam sibi quisque deos avido certamine fingit.
 
-77 P.L.M. Nolo ego semper idem capiti suffundere costum nec notonoto Paulmier: toto V. stomachum conciliare mero. Taurus amat gramen mutata carpere valle et fera mutatis sustinet ora cibis. Ipsa dies ideo nos grato perluit haustu, quod permutatis hora recurrit equis.
+**77** P.L.M. Nolo ego semper idem capiti suffundere costum nec noto stomachum conciliare mero. Taurus amat gramen mutata carpere valle et fera mutatis sustinet ora cibis. Ipsa dies ideo nos grato perluit haustu, quod permutatis hora recurrit equis.
 
 Nolo ego semper idem capiti suffundere costum
 
-nec notonoto Paulmier: toto V. stomachum conciliare mero.
+nec noto stomachum conciliare mero.
 
 Taurus amat gramen mutata carpere valle
 
@@ -72,17 +72,17 @@ Ipsa dies ideo nos grato perluit haustu,
 
 quod permutatis hora recurrit equis.
 
-78 P.L.M. Uxor, legis onus,legis onus Baehrens: inus V. debet quasi census amari. nec censum vellem semper amare meum.
+**78** P.L.M. Uxor, legis onus, debet quasi census amari. nec censum vellem semper amare meum.
 
-Uxor, legis onus,legis onus Baehrens: inus V. debet quasi census amari.
+Uxor, legis onus, debet quasi census amari.
 
 nec censum vellem semper amare meum.
 
-79 P.L.M. Linque tuas sedes alienaque litora quaere, O added by Scaliger, omitted by V. iuvenis: maior rerum tibi nascitur ordo. Ne succumbe malis: te noverit ultimus Hister, te Boreas gelidus securaque regna Canopi, quique renascentem Phoebum cernuntque cadentem: maior in externas fit quifit qui Baehrens: itacui V. descendit harenas.
+**79** P.L.M. Linque tuas sedes alienaque litora quaere, O iuvenis: maior rerum tibi nascitur ordo. Ne succumbe malis: te noverit ultimus Hister, te Boreas gelidus securaque regna Canopi, quique renascentem Phoebum cernuntque cadentem: maior in externas fit qui descendit harenas.
 
 Linque tuas sedes alienaque litora quaere,
 
-O added by Scaliger, omitted by V. iuvenis: maior rerum tibi nascitur ordo.
+O iuvenis: maior rerum tibi nascitur ordo.
 
 Ne succumbe malis: te noverit ultimus Hister,
 
@@ -90,9 +90,9 @@ te Boreas gelidus securaque regna Canopi,
 
 quique renascentem Phoebum cernuntque cadentem:
 
-maior in externas fit quifit qui Baehrens: itacui V. descendit harenas.
+maior in externas fit qui descendit harenas.
 
-80 P.L.M. Nam nihil est, quod non mortalibus afferat usum; rebus in adversis quae iacuere iuvant. Sic rate demersa fulvum deponderat aurum, remorum levitas naufraga membra vehit. Cum sonuere tubae, iugulo stat divite ferrum barbaricum: tenuis praebia pannus habet.barbaricum Baehrens: tenuis Butler: praebia Baehrens: barbara contempnit praelia V., retaining which hebes for habet Scaliger.
+**80** P.L.M. Nam nihil est, quod non mortalibus afferat usum; rebus in adversis quae iacuere iuvant. Sic rate demersa fulvum deponderat aurum, remorum levitas naufraga membra vehit. Cum sonuere tubae, iugulo stat divite ferrum barbaricum: tenuis praebia pannus habet.
 
 Nam nihil est, quod non mortalibus afferat usum;
 
@@ -104,9 +104,9 @@ remorum levitas naufraga membra vehit.
 
 Cum sonuere tubae, iugulo stat divite ferrum
 
-barbaricum: tenuis praebia pannus habet.barbaricum Baehrens: tenuis Butler: praebia Baehrens: barbara contempnit praelia V., retaining which hebes for habet Scaliger.
+barbaricum: tenuis praebia pannus habet.
 
-81 P.L.M. Parvula securo tegitur mihi culmine sedes uvaque plena mero fecunda pendet ab ulmo. Dant rami cerasos, dant mala rubentia silvae, Palladiumque nemus pingui se vertice frangit. Iam qua diductos potat levis area fontes, Corycium milli surgit olus maluaeque supinae et non sollicitos missura papavera somnos. Praeterea sive alitibus contexere fraudem seu magis imbelles libuit circumdare cervos aut tereti lino pavidum subducere piscem, hos tantum novere dolos mea sordida rura. I nunc et vitae fugientis tempora vende divitibus cenis. Me si manet exitus idem, hic precor inveniat consumptaque tempora poscat.
+**81** P.L.M. Parvula securo tegitur mihi culmine sedes uvaque plena mero fecunda pendet ab ulmo. Dant rami cerasos, dant mala rubentia silvae, Palladiumque nemus pingui se vertice frangit. Iam qua diductos potat levis area fontes, Corycium milli surgit olus maluaeque supinae et non sollicitos missura papavera somnos. Praeterea sive alitibus contexere fraudem seu magis imbelles libuit circumdare cervos aut tereti lino pavidum subducere piscem, hos tantum novere dolos mea sordida rura. I nunc et vitae fugientis tempora vende divitibus cenis. Me si manet exitus idem, hic precor inveniat consumptaque tempora poscat.
 
 Parvula securo tegitur mihi culmine sedes
 
@@ -130,21 +130,21 @@ aut tereti lino pavidum subducere piscem,
 
 hos tantum novere dolos mea sordida rura.
 
-I nunc et vitae fugientis tempora vende
+**I** nunc et vitae fugientis tempora vende
 
 divitibus cenis. Me si manet exitus idem,
 
 hic precor inveniat consumptaque tempora poscat.
 
-82 P.L.M. Non satis est quod nos mergitmergis V. corr. Buecheler. furiosa iuventus transversosque rapit fama sepulta probris? Enen L. Müller: an V. etiamfamuli cognataque faece catervacaterva Baehrens: sepulti V. inter conrasas luxuriantur opes.inter conrasas Baehrens: intesta merassas V. Vilis servus habet regni bona, cellaque capti deridet Vestam Romuleamque casam. Idcirco virtus medio iacet obruta caeno, nequitiae classes candida vela ferunt.
+**82** P.L.M. Non satis est quod nos mergit furiosa iuventus transversosque rapit fama sepulta probris? En etiamfamuli cognataque faece caterva inter conrasas luxuriantur opes. Vilis servus habet regni bona, cellaque capti deridet Vestam Romuleamque casam. Idcirco virtus medio iacet obruta caeno, nequitiae classes candida vela ferunt.
 
-Non satis est quod nos mergitmergis V. corr. Buecheler. furiosa iuventus
+Non satis est quod nos mergit furiosa iuventus
 
 transversosque rapit fama sepulta probris?
 
-Enen L. Müller: an V. etiamfamuli cognataque faece catervacaterva Baehrens: sepulti V.
+En etiamfamuli cognataque faece caterva
 
-inter conrasas luxuriantur opes.inter conrasas Baehrens: intesta merassas V.
+inter conrasas luxuriantur opes.
 
 Vilis servus habet regni bona, cellaque capti
 
@@ -154,19 +154,19 @@ Idcirco virtus medio iacet obruta caeno,
 
 nequitiae classes candida vela ferunt.
 
-83 P.L.M. Sic et membra solent auras includere ventris,ventis V., corr. Riese. quae penitus mersae cum rursus abire laborant, verberibus rimantur iter; nec desinit ante frigidus, adstrictiset frigidus strictis V., corr. Reiske. qui regnat in ossibus, horror quam tepidus laxo manavit corpore sudor.
+**83** P.L.M. Sic et membra solent auras includere ventris, quae penitus mersae cum rursus abire laborant, verberibus rimantur iter; nec desinit ante frigidus, adstrictis qui regnat in ossibus, horror quam tepidus laxo manavit corpore sudor.
 
-Sic et membra solent auras includere ventris,ventis V., corr. Riese.
+Sic et membra solent auras includere ventris,
 
 quae penitus mersae cum rursus abire laborant,
 
 verberibus rimantur iter; nec desinit ante
 
-frigidus, adstrictiset frigidus strictis V., corr. Reiske. qui regnat in ossibus, horror
+frigidus, adstrictis qui regnat in ossibus, horror
 
 quam tepidus laxo manavit corpore sudor.
 
-84 P.L.M. O litus vita mihi dulcius, o mare! felix cui licet ad terras ire subinde meas! O formosa dies! hoc quondam rure solebam NaiadasNaiadas Lindenbrog: Iliadas V. alterna manu B armatas. . manus V. alterna sollicitare manu! Hic fontis lacus est, illic sinus egerit algas: haec statio est tacitis fidafida Pithoeus: victa V. cupidinibus. Pervixi; neque enim fortuna malignior unquam eripiet nobis quod prior horaprior hora Scaliger: priora V. dedit.
+**84** P.L.M. O litus vita mihi dulcius, o mare! felix cui licet ad terras ire subinde meas! O formosa dies! hoc quondam rure solebam Naiadas alterna sollicitare manu! Hic fontis lacus est, illic sinus egerit algas: haec statio est tacitis fida cupidinibus. Pervixi; neque enim fortuna malignior unquam eripiet nobis quod prior hora dedit.
 
 O litus vita mihi dulcius, o mare! felix
 
@@ -174,17 +174,17 @@ cui licet ad terras ire subinde meas!
 
 O formosa dies! hoc quondam rure solebam
 
-NaiadasNaiadas Lindenbrog: Iliadas V. alterna manu B armatas. . manus V. alterna sollicitare manu!
+Naiadas alterna sollicitare manu!
 
 Hic fontis lacus est, illic sinus egerit algas:
 
-haec statio est tacitis fidafida Pithoeus: victa V. cupidinibus.
+haec statio est tacitis fida cupidinibus.
 
 Pervixi; neque enim fortuna malignior unquam
 
-eripiet nobis quod prior horaprior hora Scaliger: priora V. dedit.
+eripiet nobis quod prior hora dedit.
 
-85 P.L.M. Haec ait et tremulo deduxit vertice canos consecuitque genas; oculis nec defuit imber, sed qualis rapitur per vallis improbus amnis, cum gelidae periere nives et languidus auster non patitur glaciem resoluta vivere terra, gurgite sic pleno facies manavit et alto insonuit gemitu turbato murmure pectus.
+**85** P.L.M. Haec ait et tremulo deduxit vertice canos consecuitque genas; oculis nec defuit imber, sed qualis rapitur per vallis improbus amnis, cum gelidae periere nives et languidus auster non patitur glaciem resoluta vivere terra, gurgite sic pleno facies manavit et alto insonuit gemitu turbato murmure pectus.
 
 Haec ait et tremulo deduxit vertice canos
 
@@ -200,7 +200,7 @@ gurgite sic pleno facies manavit et alto
 
 insonuit gemitu turbato murmure pectus.
 
-86 P.L.M. Nam citius flammas mortales ore tenebunt quam secreta tegant. Quicquid dimittis in aula, effluit et subitis rumoribus oppida pulsat. Nec satis est vulgasse fidem. Cumulatius exit proditionis opus famamque onerare laborat. Sic commissa verens avidus reserareverens reserare Fulgentius: ferens seruare V. minister fodit humum regisque latentes prodidit aures. Concepit nam terra sonos calamique loquentes incinuereincinuere Salmasius: inuenerem V. Midam, qualem narraverat index.
+**86** P.L.M. Nam citius flammas mortales ore tenebunt quam secreta tegant. Quicquid dimittis in aula, effluit et subitis rumoribus oppida pulsat. Nec satis est vulgasse fidem. Cumulatius exit proditionis opus famamque onerare laborat. Sic commissa verens avidus reserare minister fodit humum regisque latentes prodidit aures. Concepit nam terra sonos calamique loquentes incinuere Midam, qualem narraverat index.
 
 Nam citius flammas mortales ore tenebunt
 
@@ -212,39 +212,39 @@ Nec satis est vulgasse fidem. Cumulatius exit
 
 proditionis opus famamque onerare laborat.
 
-Sic commissa verens avidus reserareverens reserare Fulgentius: ferens seruare V. minister
+Sic commissa verens avidus reserare minister
 
 fodit humum regisque latentes prodidit aures.
 
 Concepit nam terra sonos calamique loquentes
 
-incinuereincinuere Salmasius: inuenerem V. Midam, qualem narraverat index.
+incinuere Midam, qualem narraverat index.
 
-87 P.L.M. Illic alternis depugnat pontus et aer, hic rivo tenui pervia ridet humus. Illic demersasdemersas Baehrens: divisas V. complorat navita puppes, hic pastor miti perluit amne pecus. Illic immanes mors obditaobdita Baehrens: oblita V. solvit hiatus, hic gaudet curva falce recisa Ceres. Illic inter aquas urit sitis arida fauces, hic data periurodata Wernsdorf: da V. periuro probably corrupt: perhaps quaeque suo Butler. basia multa viro. Naviget et fluctus lasset mendicus Vlixes, in terris vivet candida Penelope.
+**87** P.L.M. Illic alternis depugnat pontus et aer, hic rivo tenui pervia ridet humus. Illic demersas complorat navita puppes, hic pastor miti perluit amne pecus. Illic immanes mors obdita solvit hiatus, hic gaudet curva falce recisa Ceres. Illic inter aquas urit sitis arida fauces, hic data periuro basia multa viro. Naviget et fluctus lasset mendicus Vlixes, in terris vivet candida Penelope.
 
 Illic alternis depugnat pontus et aer,
 
 hic rivo tenui pervia ridet humus.
 
-Illic demersasdemersas Baehrens: divisas V. complorat navita puppes,
+Illic demersas complorat navita puppes,
 
 hic pastor miti perluit amne pecus.
 
-Illic immanes mors obditaobdita Baehrens: oblita V. solvit hiatus,
+Illic immanes mors obdita solvit hiatus,
 
 hic gaudet curva falce recisa Ceres.
 
 Illic inter aquas urit sitis arida fauces,
 
-hic data periurodata Wernsdorf: da V. periuro probably corrupt: perhaps quaeque suo Butler. basia multa viro.
+hic data periuro basia multa viro.
 
 Naviget et fluctus lasset mendicus Vlixes,
 
 in terris vivet candida Penelope.
 
-88 P.L.M. Qui nolit properarenolit Oudendorp:moluit V. properare Tollius: prepare V. mori nec cogere fata mollia praecipiti rumpere fila manu, hactenus irarum mare noverit. Ecce refuso gurgite securos obluit unda pedes. Ecce inter virides iactatur mytilus algas et rauco trahitur lubrica concha sinu. Ecce recurrentes qua versat fluctus arenas, discolor attrita calculus exit humo. Haec quisquis calcare potest, in litore tuto ludat et hoc solum iudicet esse mare.
+**88** P.L.M. Qui nolit properare mori nec cogere fata mollia praecipiti rumpere fila manu, hactenus irarum mare noverit. Ecce refuso gurgite securos obluit unda pedes. Ecce inter virides iactatur mytilus algas et rauco trahitur lubrica concha sinu. Ecce recurrentes qua versat fluctus arenas, discolor attrita calculus exit humo. Haec quisquis calcare potest, in litore tuto ludat et hoc solum iudicet esse mare.
 
-Qui nolit properarenolit Oudendorp:moluit V. properare Tollius: prepare V. mori nec cogere fata
+Qui nolit properare mori nec cogere fata
 
 mollia praecipiti rumpere fila manu,
 
@@ -264,9 +264,9 @@ Haec quisquis calcare potest, in litore tuto
 
 ludat et hoc solum iudicet esse mare.
 
-89 P.L.M. Non est forma satis nec quae vult bella videriThe first couplet is to be found in Fulgentius, Myth. 1, 12, P. 44. debet vulgari more placere sibi. Dicta, sales, lusus, sermonis gratia, risus vincunt naturae candidioris opus. Condit enim formam quicquid consumitur artis, et nisi vellevelle subest probably corrupt: sal suberit Baehrens. subest, gratia nuda perit.
+**89** P.L.M. Non est forma satis nec quae vult bella videri debet vulgari more placere sibi. Dicta, sales, lusus, sermonis gratia, risus vincunt naturae candidioris opus. Condit enim formam quicquid consumitur artis, et nisi velle subest, gratia nuda perit.
 
-Non est forma satis nec quae vult bella videriThe first couplet is to be found in Fulgentius, Myth. 1, 12, P. 44.
+Non est forma satis nec quae vult bella videri
 
 debet vulgari more placere sibi.
 
@@ -276,9 +276,9 @@ vincunt naturae candidioris opus.
 
 Condit enim formam quicquid consumitur artis,
 
-et nisi vellevelle subest probably corrupt: sal suberit Baehrens. subest, gratia nuda perit.
+et nisi velle subest, gratia nuda perit.
 
-90 P.L.M. Sic contra rerum naturae munera notae corvus maturis frugibus ova refert. Sic format lingua fetum cum protulit ursa et piscis nullo iunctus amore parit. Sic Phoebea chelys nutunutu Butler: victo W: vinclo Binetus. resoluta parentis Lucinae tepidis naribus ova fovet. Sic sine concubitu textis apis excita ceris fervet et audaci milite castra replet. Non uno contenta valet natura tenore, sed permutatas gaudet habere vices.
+**90** P.L.M. Sic contra rerum naturae munera notae corvus maturis frugibus ova refert. Sic format lingua fetum cum protulit ursa et piscis nullo iunctus amore parit. Sic Phoebea chelys nutu resoluta parentis Lucinae tepidis naribus ova fovet. Sic sine concubitu textis apis excita ceris fervet et audaci milite castra replet. Non uno contenta valet natura tenore, sed permutatas gaudet habere vices.
 
 Sic contra rerum naturae munera notae
 
@@ -288,7 +288,7 @@ Sic format lingua fetum cum protulit ursa
 
 et piscis nullo iunctus amore parit.
 
-Sic Phoebea chelys nutunutu Butler: victo W: vinclo Binetus. resoluta parentis
+Sic Phoebea chelys nutu resoluta parentis
 
 Lucinae tepidis naribus ova fovet.
 
@@ -300,7 +300,7 @@ Non uno contenta valet natura tenore,
 
 sed permutatas gaudet habere vices.
 
-91 P.L.M. Indica purpureo genuit me litore tellus, candidus accenso qua redit orbe dies. Hic ego divinos inter generatus honores mutavi Latio barbara verba sono. Iam dimitte tuos, Paean o Delphice, cycnos: dignior haec vox est, quae tua templa colat. 92 P.L.M. Naufragus eiecta nudus rate quaerit eodem percussum telo, cui sua fata fleat.fleat Jacobs: legat W. Grandine qui segetes et totum perdidit annum, in simili deflet tristia fata sinu. Funera conciliant miseros, orbique parentes coniungunt gemitus et facit hora pares. Nos quoque confusis feriemus sidera verbis; fama est coniunctasfama est coniunctas Butler: et fama est constans W. fortius ire preces.
+**91** P.L.M. Indica purpureo genuit me litore tellus, candidus accenso qua redit orbe dies. Hic ego divinos inter generatus honores mutavi Latio barbara verba sono. Iam dimitte tuos, Paean o Delphice, cycnos: dignior haec vox est, quae tua templa colat. 92 P.L.M. Naufragus eiecta nudus rate quaerit eodem percussum telo, cui sua fata fleat. Grandine qui segetes et totum perdidit annum, in simili deflet tristia fata sinu. Funera conciliant miseros, orbique parentes coniungunt gemitus et facit hora pares. Nos quoque confusis feriemus sidera verbis; fama est coniunctas fortius ire preces.
 
 Indica purpureo genuit me litore tellus,
 
@@ -316,7 +316,7 @@ dignior haec vox est, quae tua templa colat.
 
 Naufragus eiecta nudus rate quaerit eodem
 
-percussum telo, cui sua fata fleat.fleat Jacobs: legat W.
+percussum telo, cui sua fata fleat.
 
 Grandine qui segetes et totum perdidit annum,
 
@@ -328,9 +328,9 @@ coniungunt gemitus et facit hora pares.
 
 Nos quoque confusis feriemus sidera verbis;
 
-fama est coniunctasfama est coniunctas Butler: et fama est constans W. fortius ire preces.
+fama est coniunctas fortius ire preces.
 
-93 P.L.M. Aurea mala mihi, dulcis mea Martia, mittis, mittis et hirsutae munera castaneae. Omnia grata putem, sed si magis ipsa venire ornares donum, pulcra puella, tuum. Tu licet apportes stringentia mala palatum, tristia mandenti est melleus ore sapor. At si dissimulas, multum mihi cara, venire, oscula cum pomis mitte; vorabo libens.
+**93** P.L.M. Aurea mala mihi, dulcis mea Martia, mittis, mittis et hirsutae munera castaneae. Omnia grata putem, sed si magis ipsa venire ornares donum, pulcra puella, tuum. Tu licet apportes stringentia mala palatum, tristia mandenti est melleus ore sapor. At si dissimulas, multum mihi cara, venire, oscula cum pomis mitte; vorabo libens.
 
 Aurea mala mihi, dulcis mea Martia, mittis,
 
@@ -348,7 +348,7 @@ At si dissimulas, multum mihi cara, venire,
 
 oscula cum pomis mitte; vorabo libens.
 
-94 P.L.M. Si Phoebi soror es, mando tibi, Delia, causam, scilicet ut fratri quae peto verba feras: “Marmore Sicanio struxi tibi, Delphice, templum et levibus calamis candida verba dedi. Nunc si nos audis atque es divinus, Apollo, dic mihi, qui nummos non habet, unde petat.”
+**94** P.L.M. Si Phoebi soror es, mando tibi, Delia, causam, scilicet ut fratri quae peto verba feras: “Marmore Sicanio struxi tibi, Delphice, templum et levibus calamis candida verba dedi. Nunc si nos audis atque es divinus, Apollo, dic mihi, qui nummos non habet, unde petat.”
 
 Si Phoebi soror es, mando tibi, Delia, causam,
 
@@ -362,7 +362,7 @@ Nunc si nos audis atque es divinus, Apollo,
 
 dic mihi, qui nummos non habet, unde petat.”
 
-95 P.L.M. Omnia quae miseras possunt finire querellas, in promptu voluit candidus esse deus. Vile holus et duris haerentia mora rubetis pungentispungentis Dousa: pugnantis W. stomachi composuere famem. Flumine vicino stultus sitit, et rigetet riget Binet: effugit W. euro cum calidus tepido consonat igne focusfocus Buecheler: rogus W.. Lex armata sedet circum fera limina nuptae: nil metuit licito fusa puella toro. Quod satiare potest dives natura ministrat; quod docet infrenisinfrenis Binet: inferius W. gloria fine caret.
+**95** P.L.M. Omnia quae miseras possunt finire querellas, in promptu voluit candidus esse deus. Vile holus et duris haerentia mora rubetis pungentis stomachi composuere famem. Flumine vicino stultus sitit, et riget euro cum calidus tepido consonat igne focus. Lex armata sedet circum fera limina nuptae: nil metuit licito fusa puella toro. Quod satiare potest dives natura ministrat; quod docet infrenis gloria fine caret.
 
 Omnia quae miseras possunt finire querellas,
 
@@ -370,11 +370,11 @@ in promptu voluit candidus esse deus.
 
 Vile holus et duris haerentia mora rubetis
 
-pungentispungentis Dousa: pugnantis W. stomachi composuere famem.
+pungentis stomachi composuere famem.
 
-Flumine vicino stultus sitit, et rigetet riget Binet: effugit W. euro
+Flumine vicino stultus sitit, et riget euro
 
-cum calidus tepido consonat igne focusfocus Buecheler: rogus W..
+cum calidus tepido consonat igne focus.
 
 Lex armata sedet circum fera limina nuptae:
 
@@ -382,15 +382,15 @@ nil metuit licito fusa puella toro.
 
 Quod satiare potest dives natura ministrat;
 
-quod docet infrenisinfrenis Binet: inferius W. gloria fine caret.
+quod docet infrenis gloria fine caret.
 
-96 P.L.M. Militis in galea nidum fecere columbae: apparet Marti quam sit amica Venus.
+**96** P.L.M. Militis in galea nidum fecere columbae: apparet Marti quam sit amica Venus.
 
 Militis in galea nidum fecere columbae:
 
 apparet Marti quam sit amica Venus.
 
-97 P.L.M. Iudaeus licet et porcinum numen adoret et caeli summas advocet auriculas, ni tamen et ferro succiderit inguinis oram et nisi nodatum solverit arte caput, exemptus populo sacrasacra Baehrens: graia W. migrabit ab urbe et non ieiuna sabbata lege premet.premet W., perhaps corrupt: tremet Buecheler.
+**97** P.L.M. Iudaeus licet et porcinum numen adoret et caeli summas advocet auriculas, ni tamen et ferro succiderit inguinis oram et nisi nodatum solverit arte caput, exemptus populo sacra migrabit ab urbe et non ieiuna sabbata lege premet.
 
 Iudaeus licet et porcinum numen adoret
 
@@ -400,23 +400,23 @@ ni tamen et ferro succiderit inguinis oram
 
 et nisi nodatum solverit arte caput,
 
-exemptus populo sacrasacra Baehrens: graia W. migrabit ab urbe
+exemptus populo sacra migrabit ab urbe
 
-et non ieiuna sabbata lege premet.premet W., perhaps corrupt: tremet Buecheler.
+et non ieiuna sabbata lege premet.
 
-98 P.L.M. Una est nobilitas argumentumque coloris ingenui timidas non habuisse manus.
+**98** P.L.M. Una est nobilitas argumentumque coloris ingenui timidas non habuisse manus.
 
 Una est nobilitas argumentumque coloris
 
 ingenui timidas non habuisse manus.
 
-99 P.L.M. Lecto compositus vix prima silentia noctis carpebam et somno lumina victa dabam, cum me savus Amor prensatprensat Oudendorp: prensum W. sursumque capillis excitat et lacerum pervigilare iubet. Tu famulus meus, inquit, “ames cum mille puellas, solus, io, solus, dure, iacere potes?” Exsilio et pedibus nudis tunicaque soluta omne iter ingredior,ingredior Riese: impedio W. nullum iter expedio. Nunc propero, nunc ire piget, rursumque redire paenitet, et pudor est stare via media. Ecce tacent voces hominum strepitusque viarum et volucrum cantus fidaque turba canum; solus ego ex cunctis paveo somnumque torumque, et sequor imperium, magne Cupido, tuum.
+**99** P.L.M. Lecto compositus vix prima silentia noctis carpebam et somno lumina victa dabam, cum me savus Amor prensat sursumque capillis excitat et lacerum pervigilare iubet. Tu famulus meus, inquit, “ames cum mille puellas, solus, io, solus, dure, iacere potes?” Exsilio et pedibus nudis tunicaque soluta omne iter ingredior, nullum iter expedio. Nunc propero, nunc ire piget, rursumque redire paenitet, et pudor est stare via media. Ecce tacent voces hominum strepitusque viarum et volucrum cantus fidaque turba canum; solus ego ex cunctis paveo somnumque torumque, et sequor imperium, magne Cupido, tuum.
 
 Lecto compositus vix prima silentia noctis
 
 carpebam et somno lumina victa dabam,
 
-cum me savus Amor prensatprensat Oudendorp: prensum W. sursumque capillis
+cum me savus Amor prensat sursumque capillis
 
 excitat et lacerum pervigilare iubet.
 
@@ -426,7 +426,7 @@ solus, io, solus, dure, iacere potes?”
 
 Exsilio et pedibus nudis tunicaque soluta
 
-omne iter ingredior,ingredior Riese: impedio W. nullum iter expedio.
+omne iter ingredior, nullum iter expedio.
 
 Nunc propero, nunc ire piget, rursumque redire
 
@@ -440,13 +440,13 @@ solus ego ex cunctis paveo somnumque torumque,
 
 et sequor imperium, magne Cupido, tuum.
 
-100 P.L.M. Sit nox illa diu nobis dilecta, Nealce, quae te prima meo pectore composuit: sit torus et lecti genius secretaque lampas,lampas Buecheler: longa W. quis tenera in nostrum veneris arbitrium. Ergo age duremus, quamvis adoleverit aetas, utamurque annis quos mora parva teret. Fas et iura sinunt veteres extendere amores; fac cito quod coeptum est, non cito desinere.
+**100** P.L.M. Sit nox illa diu nobis dilecta, Nealce, quae te prima meo pectore composuit: sit torus et lecti genius secretaque lampas, quis tenera in nostrum veneris arbitrium. Ergo age duremus, quamvis adoleverit aetas, utamurque annis quos mora parva teret. Fas et iura sinunt veteres extendere amores; fac cito quod coeptum est, non cito desinere.
 
 Sit nox illa diu nobis dilecta, Nealce,
 
 quae te prima meo pectore composuit:
 
-sit torus et lecti genius secretaque lampas,lampas Buecheler: longa W.
+sit torus et lecti genius secretaque lampas,
 
 quis tenera in nostrum veneris arbitrium.
 
@@ -458,7 +458,7 @@ Fas et iura sinunt veteres extendere amores;
 
 fac cito quod coeptum est, non cito desinere.
 
-101 P.L.M. Foeda est in coitu et brevis voluptas et taedet Veneris statim peractae. Non ergo ut pecudes libidinosae caeci protinus irruamus illuc (nam languescit amor peritque flamma); sed sic sic sine fine feriati et tecum iaceamus osculantes. Hic nullus labor est ruborque nullus: hoc iuvit, iuvat et diu iuvabit; hoc non deficit incipitque semper.
+**101** P.L.M. Foeda est in coitu et brevis voluptas et taedet Veneris statim peractae. Non ergo ut pecudes libidinosae caeci protinus irruamus illuc (nam languescit amor peritque flamma); sed sic sic sine fine feriati et tecum iaceamus osculantes. Hic nullus labor est ruborque nullus: hoc iuvit, iuvat et diu iuvabit; hoc non deficit incipitque semper.
 
 Foeda est in coitu et brevis voluptas
 
@@ -480,13 +480,13 @@ hoc iuvit, iuvat et diu iuvabit;
 
 hoc non deficit incipitque semper.
 
-102 P.L.M. Accusare et amare tempore uno ipsi vix fuit Herculi ferendum.
+**102** P.L.M. Accusare et amare tempore uno ipsi vix fuit Herculi ferendum.
 
 Accusare et amare tempore uno
 
 ipsi vix fuit Herculi ferendum.
 
-120 P.L.M. Fallunt nos oculi vagique sensus oppressa ratione mentiuntur. Nam turris prope quae quadrata surgit, detritis procul angulis rotatur. Hyblaeum refugit satur liquorem et naris casiam frequenter odit. Hoc illo magis aut minus placere non posset nisi lite destinata pugnarent dubio tenore sensus.
+**120** P.L.M. Fallunt nos oculi vagique sensus oppressa ratione mentiuntur. Nam turris prope quae quadrata surgit, detritis procul angulis rotatur. Hyblaeum refugit satur liquorem et naris casiam frequenter odit. Hoc illo magis aut minus placere non posset nisi lite destinata pugnarent dubio tenore sensus.
 
 Fallunt nos oculi vagique sensus
 
@@ -506,7 +506,7 @@ non posset nisi lite destinata
 
 pugnarent dubio tenore sensus.
 
-121 P.L.M. Somnia quae mentes ludunt volitantibus umbris, non delubra deum nec ab aethere numina mittunt, sed sibi quisque facit. Nam cum prostrata sopore urget membra quies et mens sine pondere ludit, quidquid luce fuit tenebris agit. Oppida bello qui quatit et flammis miserandas eruit urbes, tela videt versasque acies et funera regum atque exundantes profuso sanguine campos. Qui causas orare solent, legesque forumque et pavidi cernunt inclusum chortechorte Mommsen: code E. tribunal. Condit avarus opes defossumque invenit aurum. Venator saltus canibus quatit. Eripit undis aut premit eversam periturus navita puppem. Scribit amatori meretrix, dat adultera munus: et canis in somnis leporis vestigia lustrat. In noctis spatium miserorum vulnera durant.
+**121** P.L.M. Somnia quae mentes ludunt volitantibus umbris, non delubra deum nec ab aethere numina mittunt, sed sibi quisque facit. Nam cum prostrata sopore urget membra quies et mens sine pondere ludit, quidquid luce fuit tenebris agit. Oppida bello qui quatit et flammis miserandas eruit urbes, tela videt versasque acies et funera regum atque exundantes profuso sanguine campos. Qui causas orare solent, legesque forumque et pavidi cernunt inclusum chorte tribunal. Condit avarus opes defossumque invenit aurum. Venator saltus canibus quatit. Eripit undis aut premit eversam periturus navita puppem. Scribit amatori meretrix, dat adultera munus: et canis in somnis leporis vestigia lustrat. In noctis spatium miserorum vulnera durant.
 
 Somnia quae mentes ludunt volitantibus umbris,
 
@@ -526,7 +526,7 @@ atque exundantes profuso sanguine campos.
 
 Qui causas orare solent, legesque forumque
 
-et pavidi cernunt inclusum chortechorte Mommsen: code E. tribunal.
+et pavidi cernunt inclusum chorte tribunal.
 
 Condit avarus opes defossumque invenit aurum.
 

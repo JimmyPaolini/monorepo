@@ -12,7 +12,7 @@ title: De Otio
 
 # De Otio
 
-cit, nobis magno consensu vitia commendant. Licet nihil aliud, quod sit salutare, temptemus, proderit tamen per se ipsum secedere ; meliores erimus singuli. Quid, quod secedere ad optimos viros et aliquod exemplum eligere, ad quod vitam derigamus, licet ? Quod nisi nisi added by Gronovius. in otio non fit. Tunc potest obtineri quod semel placuit, ubi nemo intervenit, qui iudicium adhuc imbecillum populo adiutore detorqueat; tunc potest vita aequali et uno tenore procedere, quam propositis diversissimis scindimus.
+cit, nobis magno consensu vitia commendant. Licet nihil aliud, quod sit salutare, temptemus, proderit tamen per se ipsum secedere ; meliores erimus singuli. Quid, quod secedere ad optimos viros et aliquod exemplum eligere, ad quod vitam derigamus, licet ? Quod nisi in otio non fit. Tunc potest obtineri quod semel placuit, ubi nemo intervenit, qui iudicium adhuc imbecillum populo adiutore detorqueat; tunc potest vita aequali et uno tenore procedere, quam propositis diversissimis scindimus.
 
 Nam inter cetera mala illud pessimum est, quod vitia ipsa mutamus. Sic ne hoc quidem nobis contingit permanere in malo iam familiari. Aliud ex alio placet vexatque nos hoc quoque, quod iudicia nostra non tantum prava, sed etiam levia sunt. Fluctuamur aliudque ex alio com- prendimus, petita relinquimus, relicta repetimus, alternae inter cupiditatem nostram et paenitentiam vices sunt ;
 
@@ -26,17 +26,17 @@ Hoc tibi in praesentia respondebo : " Numquid vis amplius, quam ut me similem du
 
 Nunc probabo tibi non desciscere me a praeceptis Stoicorum ; nam ne ipsi quidem a suis desciverunt; et tamen excusatissimus essem, etiam si non praecepta illorum sequerer, sed exempla. Hoc quod dico in duas dividam partes : primum, ut possit aliquis vel a prima aetate contemplationi veritatis totum se tradere, rationem vivendi quaerere atque exercere secreto;
 
-deinde, ut possit hoc aliquis emeritis iam stipendiis, profligatae aetatis, iure optimo facere et ad alios actus animum animum Ruhkopf: animos A. referre virginum Vestalium more, quae annis inter officia divisis discunt facere sacra et cum didicerunt docent.
+deinde, ut possit hoc aliquis emeritis iam stipendiis, profligatae aetatis, iure optimo facere et ad alios actus animum referre virginum Vestalium more, quae annis inter officia divisis discunt facere sacra et cum didicerunt docent.
 
 Hoc Stoicis quoque placere ostendam, non quia mihi legem dixerim nihil contra dictum Zenonis Chrysippive committere, sed quia res ipsa patitur me ire in illorum sententiam, quoniam si quis semper unius sequitur, non in curia sed in factione est. Utinam quidem iam tenerentur omnia et in aperto confessa veritas esset nihilque ex decretis mutaremus ! Nunc veritatem cum eis ipsis qui docent quaerimus.
 
 Duae maxime et in hac re dissident sectae, Epicureorum et Stoicorum, sed utraque ad otium diversa via mittit. Epicurus ait : " Non accedet ad rem publicam sapiens, nisi si quid intervenerit "; Zenon ait : " Accedet ad rem publicam, nisi si quid impedient."
 
-Alter otium ex proposito petit, alter ex causa ; causa autem illa late patet. Si res publica corruptior est quam ut ut commonly supplied. adiuvari possit, si occupata est malis, non nitetur sapiens in supervacuum nec se nihil profuturus impendet. Si parum habebit auctoritatis aut virium nec illum erit admissura res publica, si valetudo illum impediet,
+Alter otium ex proposito petit, alter ex causa ; causa autem illa late patet. Si res publica corruptior est quam ut adiuvari possit, si occupata est malis, non nitetur sapiens in supervacuum nec se nihil profuturus impendet. Si parum habebit auctoritatis aut virium nec illum erit admissura res publica, si valetudo illum impediet,
 
 quomodo navem quassam non deduceret in mare, quomodo nomen in militiam non daret debilis, sic ad iter, quod inhabile sciet, non accedet. Potest ergo et ille, cui omnia adhuc in integro sunt, antequam ullas experiatur tempestates, in tuto subsistere et protinus commendare se bonis artibus et inlibatum otium exigere, virtutium cultor, quae exerceri etiam quietissimis possunt.
 
-Hoc nempe ab homine exigitur, ut prosit hominibus, si fieri potest, multis, si minus, paucis, si minus, proximis, si minus, sibi. Nam cum se utilem ceteris efficit, commune agit negotium. Quomodo qui se deteriorem facit non sibi tantummodo nocet, sed etiam omnibus eis, quibus melior factus prodesse potuisset, sic quis- quis bene de se meretur hoc ipso aliis prodest, quod illis profuturum parat. 1
+Hoc nempe ab homine exigitur, ut prosit hominibus, si fieri potest, multis, si minus, paucis, si minus, proximis, si minus, sibi. Nam cum se utilem ceteris efficit, commune agit negotium. Quomodo qui se deteriorem facit non sibi tantummodo nocet, sed etiam omnibus eis, quibus melior factus prodesse potuisset, sic quis- quis bene de se meretur hoc ipso aliis prodest, quod illis profuturum parat.
 
 Duas res publicas animo complectamur, alteram magnam et vere publicam, qua dii atque homines continentur, in qua non ad hunc angulum respicimus aut ad illum, sed terminos civitatis nostrae cum sole metimur; alteram, cui nos adscripsit condicio nascendi. Haec aut Atheniensium erit aut Carthaginiensium,aut alterius alicuius urbis, quae non ad omnis pertineat homines sed ad certos. Quidam eodem tempore utrique rei publicae dant operam, maiori minorique, quidam tantum minori, quidam tantum maiori.
 
@@ -68,7 +68,7 @@ Quis negat illam debere profectus suos in opere temptare, nec tantum quid facien
 
 Quo animo ad otium sapiens secedit ? Ut sciat se tum quoque ea acturum, per quae posteris prosit. Nos certe sumus qui dicimus et Zenonem et Chrysippum maiora egisse, quam si duxissent exercitus, gessissent honores, leges tulissent. Quas non uni civitati, sed toti humano generi tulerunt. Quid est ergo, quare tale otium non conveniat viro bono, per quod futura saecula ordinet nec apud paucos contionetur, sed apud omnis omnium gentium homines, quique sunt quique erunt ?
 
-Ad summam quaero, an ex praeceptis suis vixerint Cleanthes et Chrysippus et Zenon. Non non commonly added. dubie respondebis sic illos vixisse, quemadmodum dixerant esse vivendum. Atqui nemo illorum rem publicam administravit. " Non fuit," inquis, " illis aut ea fortuna aut ea dignitas, quae admitti ad publicarum rerum tractationem solet." Sed idem nihilo minus non segnem egere vitam ; invenerunt, quemadmodum plus quies ipsorum hominibus prodesset quam aliorum discursus et sudor. Ergo nihilo minus hi multum egisse visi sunt, quamvis nihil publice agerent.
+Ad summam quaero, an ex praeceptis suis vixerint Cleanthes et Chrysippus et Zenon. Non dubie respondebis sic illos vixisse, quemadmodum dixerant esse vivendum. Atqui nemo illorum rem publicam administravit. " Non fuit," inquis, " illis aut ea fortuna aut ea dignitas, quae admitti ad publicarum rerum tractationem solet." Sed idem nihilo minus non segnem egere vitam ; invenerunt, quemadmodum plus quies ipsorum hominibus prodesset quam aliorum discursus et sudor. Ergo nihilo minus hi multum egisse visi sunt, quamvis nihil publice agerent.
 
 Praeterea tria genera sunt vitae, inter quae quod sit optimum quaeri solet. Unum voluptati vacat, alterum contemplatione tertium actioni. Primum deposita contentione depositoque odio quod implacabile diversa sequentibus indiximus, videamus, ut haec omnia ad idem sub alio atque alio titulo perveniant. Nec ille, qui voluptatem probat, sine contemplatione est, nec ille, qui contemplationi inservit, sine voluptate est, nec ille, cuius vita actionibus destinata est, sine contemplatione est.
 
@@ -78,10 +78,10 @@ ita et haec ipsa voluptaria secta in actu est. Quidni in actu sit ? cum ipse dic
 
 Ut appareat contemplationem placere omnibus ; alii petunt illam, nobis haec statio, non portus est.
 
-Adice nunc, nunc Haase : nunc huc A. quod e lege Chrysippi vivere otioso licet ; non dico, ut otium patiatur, sed ut eligat. Negant nostri sapientem ad quamlibet rem publicam accessurum ; quid autem interest, quo- modo sapiens ad otium veniat, utrum quia res publica illi deest, an quia ipse rei publicae, si non ubivis futura res publica est? Semper autem deerit fastidiose quaerentibus. Interrogo, ad quam rem publicam sapiens sit accessurus. Ad Atheniensium, in qua Socrates damnatur, Aristoteles, ne damnetur, fugit ? in qua opprimit invidia virtutes ? Negabis mihi accessurum ad hanc rem publicam sapientem.
+Adice nunc, quod e lege Chrysippi vivere otioso licet ; non dico, ut otium patiatur, sed ut eligat. Negant nostri sapientem ad quamlibet rem publicam accessurum ; quid autem interest, quo- modo sapiens ad otium veniat, utrum quia res publica illi deest, an quia ipse rei publicae, si non ubivis futura res publica est? Semper autem deerit fastidiose quaerentibus. Interrogo, ad quam rem publicam sapiens sit accessurus. Ad Atheniensium, in qua Socrates damnatur, Aristoteles, ne damnetur, fugit ? in qua opprimit invidia virtutes ? Negabis mihi accessurum ad hanc rem publicam sapientem.
 
 Ad Carthaginiensium ergo rem publicam sapiens accedet, in qua adsidua seditio et optimo cuique infesta libertas est, summa aequi ac boni vilitas, adversus hostes inhumana crudelitas, etiam adversus suos hostilis ? Et hanc fugiet.
 
 Si percensere singulas voluero, nullam inveniam, quae sapientem aut quam sapiens pati possit. Quodsi non invenitur illa res publica, quam nobis fingimus, incipit omnibus esse otium necessarium, quia quod unum praeferri poterat otio, nusquam est.
 
-Si quis dicit optimum esse navigare, deinde negat navigandum in eo mari, in quo naufragia fieri soleant et frequenter subitae tempestates sint, quae rectorem in contrarium rapiant, puto hic me vetat navem solvere, quamquam quamquam Hermes: quam A. laudet navigationem.
+Si quis dicit optimum esse navigare, deinde negat navigandum in eo mari, in quo naufragia fieri soleant et frequenter subitae tempestates sint, quae rectorem in contrarium rapiant, puto hic me vetat navem solvere, quamquam laudet navigationem.

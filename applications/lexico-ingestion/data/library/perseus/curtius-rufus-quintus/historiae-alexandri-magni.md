@@ -369,7 +369,7 @@ At iis, qui praemissi ab Dareo iugum montis insederant, Agrianos opposuit ex Thr
 
 At illi neque obstare venientibus nec circumire praetergressos ausi funditorum maxime aspectu territi profugerant, eaque res Alexandro tutum agminis latus, quod ne superne incesseretur, timuerat, praestitit.
 
-XXX et duo armatorum ordines ibant: neque enim latius extendi aciem patiebantur angustiae. Paulatim deinde laxare semet sinus montium et maius spatium aperire coeperant, ita ut non pedes solum pluribus in ordinem incedere, sed etiam lateribus circumfundi posset equitatus.
+**XXX** et duo armatorum ordines ibant: neque enim latius extendi aciem patiebantur angustiae. Paulatim deinde laxare semet sinus montium et maius spatium aperire coeperant, ita ut non pedes solum pluribus in ordinem incedere, sed etiam lateribus circumfundi posset equitatus.
 
 Iam in conspectu, sed extra teli iactum utraque acies erat, cum priores Persae inconditum et trucem sustulere clamorem.
 
@@ -743,7 +743,7 @@ His per praecones pronuntiatis nemo tamen armatus opem a dis petere sustinuit: p
 
 Multis tamen saluti fuere Sidonii, qui intra Macedonum praesidia erant. Hi urbem quidem inter victores intraverant, sed cognationis cum Tyriis memores — quippe utramque urbem Agenorem condidisse credebant — multos Tyriorum clam protegentes ad sua perduxere navigia: quibus occultatis Sidona devecti sunt.
 
-XV milia hoc furto subducta saevitiae sunt. Quantumque sanguinis fusum sit, vel ex hoc aestimari potest, quod intra munimenta urbis vi milia armatorum trucidata sunt.
+**XV** milia hoc furto subducta saevitiae sunt. Quantumque sanguinis fusum sit, vel ex hoc aestimari potest, quod intra munimenta urbis vi milia armatorum trucidata sunt.
 
 Triste deinde spectaculum victoribus ira praebuit regis: II milia, in quibus occidendis defecerat rabies, crucibus adfixi per ingens litoris spatium pependerunt.
 
@@ -789,7 +789,7 @@ Praefecti Alexandri in obsidione urbis perseverabant non tam suis fisi viribus q
 
 cumque porta effracta cohors Macedonum intrasset, oppidani olim consilio proditionis agitato adgregant se Amphotero et Hegelocho, Persarumque praesidio caeso Pharnabazus cum Apollonide et Athenagora vincti traduntur,
 
-XII triremes cum suo milite аc remige, praeter eas XXX inanes et piratici lembi Graecorumque i n milia a Persis mercede conducta. His in supplementum copiarum suarum distributis piratisque supplicio adfectis captivos remiges adiecere classi suae.
+**XII** triremes cum suo milite аc remige, praeter eas XXX inanes et piratici lembi Graecorumque i n milia a Persis mercede conducta. His in supplementum copiarum suarum distributis piratisque supplicio adfectis captivos remiges adiecere classi suae.
 
 Forte Aristonicus, Methymnaeorum tyrannus, cum piraticis navibus ignarus omnium, quae apud Chium acta erant, prima vigilia ad portus claustra successit interrogatusque a custodibus, quis esset, Aristonicum ad Pharnabazum venire respondit.
 
@@ -1505,7 +1505,7 @@ Inter haec flagitia exercitus ille domitor Asiae per XXIIII dies saginatus ad ea
 
 Namque Amyntas Andromeni ab Antipatro Macedonum peditum VI milia adduxit,
 
-D praeterea eiusdem generis equites, cum his DC Thracas adiunctis peditibus suae gentis in milibus D, et ex Peloponneso mercennarius miles ad IIII milia advenerat cum trecentis octoginta equitibus.
+**D** praeterea eiusdem generis equites, cum his DC Thracas adiunctis peditibus suae gentis in milibus D, et ex Peloponneso mercennarius miles ad IIII milia advenerat cum trecentis octoginta equitibus.
 
 Idem Amyntas adduxerat L principum Macedoniae liberos adultos ad custodiam corporis. Quippe inter epulas hi sunt regibus ministri idemque equos ineuntibus proelium admovent venantesque comitantur et vigiliarum vices ante cubiculi fores servant: magnorumque praefectorum et ducum haec incrementa sunt et rudimenta.
 
@@ -1715,7 +1715,7 @@ Se certe rediturum ad penates et in patriam tantoque beneficio regis usurum: si 
 
 Pauci huius sententiae fuere, ceteros consuetudo natura potior vicit. Consenserunt petendum esse a rege, ut aliquam ipsis attribueret sedem.
 
-C ad hoc electi sunt. Quos Alexander ratus, quod ipse praestare cogitabat, petituros: Iumenta, inquit, adsignari, quae vos veherent, et singulis vestrum milia denarium dari iussi. Cum redieritis in Graeciam, praestabo, ne qui statum suum, si haec calamitas absit, vestro credat esse meliorem.
+**C** ad hoc electi sunt. Quos Alexander ratus, quod ipse praestare cogitabat, petituros: Iumenta, inquit, adsignari, quae vos veherent, et singulis vestrum milia denarium dari iussi. Cum redieritis in Graeciam, praestabo, ne qui statum suum, si haec calamitas absit, vestro credat esse meliorem.
 
 Illi obortis lacrimis terram intuebantur nec aut erigere vultus aut loqui audebant: tandem rege tristitiae causam exigente Euctemon similia iis, quae in consilio dixerat, respondit.
 
@@ -1789,7 +1789,7 @@ Ille iam Ecbatana pervenerat. Caput Mediae urbs haec: nunc tenent Parthi, eaque 
 
 Aberat ab eo Alexander stadia MD, sed iam nullum intervallum adversus velocitatem eius satis longum videbatur: itaque proelio magis quam fugae se praeparabat.
 
-XXX milia peditum sequebantur, in quibus Graecorum erant mi milia fide vetere erga re gem ad ultimum invicta.
+**XXX** milia peditum sequebantur, in quibus Graecorum erant mi milia fide vetere erga re gem ad ultimum invicta.
 
 Funditorum quoque et sagittariorum manus IIII milia expleverat: praeter hos III milia et CCC equites erant, maxime Bactrianorum.
 
@@ -1913,7 +1913,7 @@ Nec mirari hominem mercede conductum omnia habere venalia: sine pignore, sine la
 
 Purganti deinde se deosque patrios testes fidei suae invocanti Dareus vultu adsentiebatur, haud dubius, quin vera deferrentur a Graecis: sed eo rerum ventum erat, ut tam periculosum esset non credere suis quam decipi.
 
-XXX milia erant, quorum inclinata in scelus levitas timebatur, mi milia Patron habebat: quibus si credidisset salutem suam damnata popularium fide, parricidio excusationem videbat offerri. Itaque praeoptabat inmerito quam iure violari.
+**XXX** milia erant, quorum inclinata in scelus levitas timebatur, mi milia Patron habebat: quibus si credidisset salutem suam damnata popularium fide, parricidio excusationem videbat offerri. Itaque praeoptabat inmerito quam iure violari.
 
 Besso tamen insidiarum consilium purganti respondit, Alexandri sibi non minus iustitiam quam virtutem esse perspectam. Falli eos, qui proditionis ab eo praemium expectent: violatae fidei neminem acriorem fore vindicem ultoremque.
 
@@ -1967,7 +1967,7 @@ Haec agentem Alexandrum adeunt Orsines et Mithracenes: Bessi parricidium exosi t
 
 Gratus regi adventus transfugarum fuit. Itaque prima vespera ducibus isdem cum expedita equitum manu monstratam viam ingreditur phalange, quantum festinare posset, sequi iussa. Ipse quadrato agmine incedens ita cursum regebat, ut prim i coniungi ultimis possent.
 
-CCC stadia processerant, cum occurrit Brochubelus, Mazaei filius, Syriae quondam praetor: is quoque transfuga nuntiabat Bessum haud amplius quam ce stadia abesse, exercitum, utpote praedae avidum, inconpositum inordinatumque procedere.
+**CCC** stadia processerant, cum occurrit Brochubelus, Mazaei filius, Syriae quondam praetor: is quoque transfuga nuntiabat Bessum haud amplius quam ce stadia abesse, exercitum, utpote praedae avidum, inconpositum inordinatumque procedere.
 
 Hyrcaniam videri petituros: si festinaret sequi palan tes, superventurum. Dareum adhuc vivere. Strenuo alioqui cupiditatem consequendi transfuga iniecerat: itaque calcaribus subditis effuso cursu eunt. Iamque fremitus hostium iter ingredientium exaudiebatur, sed prospectum ademerat pulveris nubes. Paulisper ergo inhibuit cursum, donec consideret pulvis.
 
@@ -1995,9 +1995,9 @@ Interim iumenta, quae Dareum vehebant, nullo regente decesserant militari via et
 
 Haud procul erat fons: ad quem monstratum a peritis Polystratus Macedo siti maceratus accessit аc, dum galea haustam aquam sorbet, tela iumentorum deficientium corporibus infixa conspexit.
 
-Miratusque, confossa potius quam abacta esse, semivivi hominisVerba quae secuntur usque ad VI, 1,1 pugnae discrimen desunt in A, add. Freinshemius. In FP complures versus vacui relicti sunt, in BLV nihil spatii vacuum, sed in margine additum est a correctore hinc deest vel hic desunt plura (B). gemitum percipit. Itaque more ingenii humani cupidus visendi, quid rei vehiculo isto conderetur, dimotis pellibus, quibus obtectum erat, Dareum multis vulneribus confossum repperit. Regius enim cultus et aureae catenae, quibus a parricidis vinctus erat, dubitationem eximebant. Non erat expers Graeci sermonis Dareus gratiasque agebat dis, qui post tanta mala hoc tamen induisissent solacii, ne omnino in solitudine extremum spiritum effunderct. Itaque te, inquit, quisquis es mortalium, per communem hominum sortem, a qua ne maximos quidem reges exemptos esse praesenti spectaculo moneris, rogo quaesoque, ut haec ad Alexandrum mandata per feras: nihil eorum, quae longe tristissima perpessus sum, ne hunc quidem incredibilis calamitatis exitum tam gravem mihi accidisse quam illud, quod post tanta in me meosque merita adversus clementissimum victorem inimico vivendum fuit et nunc ingrato moriendum est. Sed — si qua extremis miserorum votis apud deos vis est, et cum ipso spiritu profusas preces aliquod numen exaudit — ille quidem sospes et incolumis longeque supra sortem fortunae meae et invidiam deorum positus in solio Cyri gloriosam aetatem exigat suaeque virtutis memor eum matri liberisque meis locum apud se esse patiatur, quem illi fide et obsequio meruerint. At parricidas promptum exitium consequatur, quod Alexander inrogabit, si non misericordia infelicis hostis, saltem odio facinorum, et ne inpunita in aliorum etiam regum suumque ipsius exitium erumpant. Post haec, cum siti angeretur, adlata per Polystratum aqua recreatus: Ergo, inquit, hanc etiam tantis calamitatibus extremam accedere oportuit, ut bene merito gratiam referre non possim: at refer et Alexander, Alexandro vero di. Dextram deinde protendit eamque Alexandro fidei regiae pignus ferri iubens adprehensa Polystrati manu animam efflavit. Alexander num spiranti adhuc supervenerit, incertum est: illud constat miserabili regis opulentissimi exitu conperto plurimas lacrimas profudisse statimque chlamyde sibi detracta corpus operuisse et magno cum honore ad suos deferri iussisse, ut regio Persarum more curatum monumentis maiorum inferretur. Perfidiam hominum, a quibus pro summis beneficiis crudelissimum exitium Dareus pertulit, quamquam suapte natura horrendem et execrabilem, insigniore ad posteritatem infamia notavit canis cuiusdam mira fides, qui ab omnibus familiaribus destitute solus adfuit et eandem, quam vivo, adulationem morienti praestitit. Hunc vitae finem sortitus est ille, quem modo contumelia adfici putabant, nisi regem regum et deorum consanguineum salutarent; magnoque denuo experimento conprobatum est neminem magis patere fortunae, quam qui plurimis eius beneficiis ornatus iugum eius tota cervice receperit.
+Miratusque, confossa potius quam abacta esse, semivivi hominis gemitum percipit. Itaque more ingenii humani cupidus visendi, quid rei vehiculo isto conderetur, dimotis pellibus, quibus obtectum erat, Dareum multis vulneribus confossum repperit. Regius enim cultus et aureae catenae, quibus a parricidis vinctus erat, dubitationem eximebant. Non erat expers Graeci sermonis Dareus gratiasque agebat dis, qui post tanta mala hoc tamen induisissent solacii, ne omnino in solitudine extremum spiritum effunderct. Itaque te, inquit, quisquis es mortalium, per communem hominum sortem, a qua ne maximos quidem reges exemptos esse praesenti spectaculo moneris, rogo quaesoque, ut haec ad Alexandrum mandata per feras: nihil eorum, quae longe tristissima perpessus sum, ne hunc quidem incredibilis calamitatis exitum tam gravem mihi accidisse quam illud, quod post tanta in me meosque merita adversus clementissimum victorem inimico vivendum fuit et nunc ingrato moriendum est. Sed — si qua extremis miserorum votis apud deos vis est, et cum ipso spiritu profusas preces aliquod numen exaudit — ille quidem sospes et incolumis longeque supra sortem fortunae meae et invidiam deorum positus in solio Cyri gloriosam aetatem exigat suaeque virtutis memor eum matri liberisque meis locum apud se esse patiatur, quem illi fide et obsequio meruerint. At parricidas promptum exitium consequatur, quod Alexander inrogabit, si non misericordia infelicis hostis, saltem odio facinorum, et ne inpunita in aliorum etiam regum suumque ipsius exitium erumpant. Post haec, cum siti angeretur, adlata per Polystratum aqua recreatus: Ergo, inquit, hanc etiam tantis calamitatibus extremam accedere oportuit, ut bene merito gratiam referre non possim: at refer et Alexander, Alexandro vero di. Dextram deinde protendit eamque Alexandro fidei regiae pignus ferri iubens adprehensa Polystrati manu animam efflavit. Alexander num spiranti adhuc supervenerit, incertum est: illud constat miserabili regis opulentissimi exitu conperto plurimas lacrimas profudisse statimque chlamyde sibi detracta corpus operuisse et magno cum honore ad suos deferri iussisse, ut regio Persarum more curatum monumentis maiorum inferretur. Perfidiam hominum, a quibus pro summis beneficiis crudelissimum exitium Dareus pertulit, quamquam suapte natura horrendem et execrabilem, insigniore ad posteritatem infamia notavit canis cuiusdam mira fides, qui ab omnibus familiaribus destitute solus adfuit et eandem, quam vivo, adulationem morienti praestitit. Hunc vitae finem sortitus est ille, quem modo contumelia adfici putabant, nisi regem regum et deorum consanguineum salutarent; magnoque denuo experimento conprobatum est neminem magis patere fortunae, quam qui plurimis eius beneficiis ornatus iugum eius tota cervice receperit.
 
-DumVerba quae secuntur usque ad VI, 1,1 pugnae discrimen desunt in A, add. Freinshemius. In FP complures versus vacui relicti sunt, in BLV nihil spatii vacuum, sed in margine additum est a correctore hinc deest vel hic desunt plura (B). haec in Asia geruntur, ne in Graecia quidem Macedoniaque tranquillae res fuere. Regnabat apud Lacedaemonios Agis, filius Archidami, qui Tarentinis opem fer ens occiderat eodem die, quo Philippus Athenienses ad Chaeroneam vicit: is Alexandri virtutis aemulus cives suos stimulabat, ne Graeciam Servitute Macedonum diutius premi paterentur: nisi in tempore providerent, idem iugum ad ipsos transiturum. Adnitendum igitur, dum aliquae Persis ad resistendum vires essent: illis oppressis adversus inmanem potentiam frustra avitae libertatis memores futuros. Sic instinctis animis occasionem belli movendi captabant. Prospero igitur eventu Memnonis invitati consilia cum eo miscere adgressi sunt et, postquam ille rerum laetarum initia intempestiva morte destituit, nihilo remissius agebant. Sed ad Pharnabazum et Autophradaten profectus Agis triginta argenti talento decemque triremes inpetravit, quas Agesilao fratri misit, ut in Cretam navigaret, cuius insulae cultores inter Lacedaemonios et Maccdonas diversis studiis distrahebantur. Legati quoque ad Dareum missi sunt, qui ad bellum ampliorem vim pecuniae pluresque naves peterent. Atque haec eorum consilia clades ad Issum — nam ea intervenerat — adeo non interpellavit, ut etiam adiuvaret. Quippe fugientem insecutus Alexander in loca in dies longinquiora rapiebatur, et ex ipso proelio mercennariorum ingens multitude in Graeciam fuga se receperat: quorum octo milia pecunia conduxit Agis eorumque opera plerasque Cretensium urbes recepit. Cum deinceps Menon in Thraciam ah Alexandro missus barbaros ad defectionem inpulisset atque Antipater ad eam conprimendam exercitum ex Macedonia in Thraciam duxisset, opportunitate temporis strenue usi Lacedaemonii totam Peloponnesum paucis urbibus exceptis ad suas partes traxerunt confectoque exercitu viginti milium peditum cum duobus milibus equitum Agidi summam imperii detulerunt. Antipater ea re conperta bellum in Thracia, quibus potest condicionibus, conponit raptimque in Graeciam regressus ab amicis sociisque civitatibus auxilia cogit. Quibus convenientibus ad quadraginta milia militum recensuit. Advenerat etiam ex Peloponneso valida manus: sed quia dubiam eorum fidem cognoverat, dissimulata suspicione gratias egit, quod ad defendendam a Lacedaemoniis Alexandri dignitatem adfuissent: scripturum se id regi gratiam in tempore relaturo. In praesens nihil opus esse maioribus copiis: itaque domos redirent foederis necessitate expleta. Nuntios deinde ad Alexandrum mittit de motu Graeciae certiorem facturus. Atque illi regem apud Bactra demum consecuti sunt, cum interim Antipatri victoria et nece Agidis in Arcadia res transacta esset. Rex iam pridem tumultu Lacedaemoniorum cognito, quantum tot terrarum spatiis discretus potuit, providerat: Amphoterum cum Cypriis et Phoeniciis navibus in Peloponnesum navigare, Meneta tria milia talentum ad mare deferre iusserat, ut ex propinquo pecuniam Antipatro subministraret, quanta illi opus esse cognovisset. Probe enim perspexerat, quanti ad omnia momenti motus istius inclinatio futura esset: quamquam postea accepto victoriae nuntio cum suis rebus illam dimicationem conparans murium eam pugnam fuisse cavillatus est. Ceterum principia eius belli haud inprospera Lacedaemoniis fuere. Iuxta Corrhagum, Macedoniae castellum, cum Antipatri militibus congressi victores extiterant: et rei bene gestae fama etiam, qui dubiis mentibus fortunam spectaverant, societati eorum se adiunxerunt. Una ex Eleis Achaeisque urbibus Pellene foedus aspernabatur et in Arcadia Megalopolis, fida Macedonibus propter Philippi memoriam, a quo beneficiis adfecta fuerat. Sed haec circumsessa non multum a deditione aberat, nisi tandem Antipater subvenisset. Is postquam castra castris contulit seque numero militum alioque apparatu superiorem conspexit, quam primum de summa rerum proelio contendere statuit: neque Lacedaemonii detrectavere certamen. Ita commissa est pugna, quae rem Spartanam maiorem in modum adflixit. Cum enim angustiis locorum, in quibus pugnabatur, confisi, ubi hosti nullum multitudinis usum futurum credebant, fortissime congressi essent, ac Macedones inpigerrime resisterent, multum sanguinis fusum est. Sed postquam Antipater integram subinde manum laborantibus suis subsidio misit, inpulsa Lacedaemoniorum acies gradum paulisper retulit. Quod conspicatus Agis cum cohorte
+Dum haec in Asia geruntur, ne in Graecia quidem Macedoniaque tranquillae res fuere. Regnabat apud Lacedaemonios Agis, filius Archidami, qui Tarentinis opem fer ens occiderat eodem die, quo Philippus Athenienses ad Chaeroneam vicit: is Alexandri virtutis aemulus cives suos stimulabat, ne Graeciam Servitute Macedonum diutius premi paterentur: nisi in tempore providerent, idem iugum ad ipsos transiturum. Adnitendum igitur, dum aliquae Persis ad resistendum vires essent: illis oppressis adversus inmanem potentiam frustra avitae libertatis memores futuros. Sic instinctis animis occasionem belli movendi captabant. Prospero igitur eventu Memnonis invitati consilia cum eo miscere adgressi sunt et, postquam ille rerum laetarum initia intempestiva morte destituit, nihilo remissius agebant. Sed ad Pharnabazum et Autophradaten profectus Agis triginta argenti talento decemque triremes inpetravit, quas Agesilao fratri misit, ut in Cretam navigaret, cuius insulae cultores inter Lacedaemonios et Maccdonas diversis studiis distrahebantur. Legati quoque ad Dareum missi sunt, qui ad bellum ampliorem vim pecuniae pluresque naves peterent. Atque haec eorum consilia clades ad Issum — nam ea intervenerat — adeo non interpellavit, ut etiam adiuvaret. Quippe fugientem insecutus Alexander in loca in dies longinquiora rapiebatur, et ex ipso proelio mercennariorum ingens multitude in Graeciam fuga se receperat: quorum octo milia pecunia conduxit Agis eorumque opera plerasque Cretensium urbes recepit. Cum deinceps Menon in Thraciam ah Alexandro missus barbaros ad defectionem inpulisset atque Antipater ad eam conprimendam exercitum ex Macedonia in Thraciam duxisset, opportunitate temporis strenue usi Lacedaemonii totam Peloponnesum paucis urbibus exceptis ad suas partes traxerunt confectoque exercitu viginti milium peditum cum duobus milibus equitum Agidi summam imperii detulerunt. Antipater ea re conperta bellum in Thracia, quibus potest condicionibus, conponit raptimque in Graeciam regressus ab amicis sociisque civitatibus auxilia cogit. Quibus convenientibus ad quadraginta milia militum recensuit. Advenerat etiam ex Peloponneso valida manus: sed quia dubiam eorum fidem cognoverat, dissimulata suspicione gratias egit, quod ad defendendam a Lacedaemoniis Alexandri dignitatem adfuissent: scripturum se id regi gratiam in tempore relaturo. In praesens nihil opus esse maioribus copiis: itaque domos redirent foederis necessitate expleta. Nuntios deinde ad Alexandrum mittit de motu Graeciae certiorem facturus. Atque illi regem apud Bactra demum consecuti sunt, cum interim Antipatri victoria et nece Agidis in Arcadia res transacta esset. Rex iam pridem tumultu Lacedaemoniorum cognito, quantum tot terrarum spatiis discretus potuit, providerat: Amphoterum cum Cypriis et Phoeniciis navibus in Peloponnesum navigare, Meneta tria milia talentum ad mare deferre iusserat, ut ex propinquo pecuniam Antipatro subministraret, quanta illi opus esse cognovisset. Probe enim perspexerat, quanti ad omnia momenti motus istius inclinatio futura esset: quamquam postea accepto victoriae nuntio cum suis rebus illam dimicationem conparans murium eam pugnam fuisse cavillatus est. Ceterum principia eius belli haud inprospera Lacedaemoniis fuere. Iuxta Corrhagum, Macedoniae castellum, cum Antipatri militibus congressi victores extiterant: et rei bene gestae fama etiam, qui dubiis mentibus fortunam spectaverant, societati eorum se adiunxerunt. Una ex Eleis Achaeisque urbibus Pellene foedus aspernabatur et in Arcadia Megalopolis, fida Macedonibus propter Philippi memoriam, a quo beneficiis adfecta fuerat. Sed haec circumsessa non multum a deditione aberat, nisi tandem Antipater subvenisset. Is postquam castra castris contulit seque numero militum alioque apparatu superiorem conspexit, quam primum de summa rerum proelio contendere statuit: neque Lacedaemonii detrectavere certamen. Ita commissa est pugna, quae rem Spartanam maiorem in modum adflixit. Cum enim angustiis locorum, in quibus pugnabatur, confisi, ubi hosti nullum multitudinis usum futurum credebant, fortissime congressi essent, ac Macedones inpigerrime resisterent, multum sanguinis fusum est. Sed postquam Antipater integram subinde manum laborantibus suis subsidio misit, inpulsa Lacedaemoniorum acies gradum paulisper retulit. Quod conspicatus Agis cum cohorte
 
 regia, quae ex fortissimis constabat, se in medium pugnae discrimen inmisit obtruncatisque, qui promptius resistebant, magnam partem hostium propulit.
 
@@ -2059,7 +2059,7 @@ Adhuc in animo regis tenues reliquiae pristini moris haerebant: itaque fortunam 
 
 Postero autem die praecepit Hephaestioni, ut omnes captivos in regiam iuberet adduci. Ibi singulorum nobilitate spectata secrevit a vulgo, quorum eminebat genus. M hi fuerunt: inter quos repertus est Oxathres, Darei frater, non illius fortuna quam indole animi sui clarior.
 
-XXVI milia talentum proxima praeda redacta erant omnino: duodecim milia in congiarium militum absumpta sunt, par huic pecuniae summa custodum fraude subtracta est.
+**XXVI** milia talentum proxima praeda redacta erant omnino: duodecim milia in congiarium militum absumpta sunt, par huic pecuniae summa custodum fraude subtracta est.
 
 Oxydates erat nobilis Perses, qui a Dareo capitali supplicio destinatus cohibebatur in vinculis: huic liberato satrapeam Mediae attribuit fratremque Darei recepit in cohortem amicorum omni vetustae claritatis honore servato.
 
@@ -2163,7 +2163,7 @@ Praeter alios commeatus, quorum tum copia regio abundabat, pomorum quoque ingens
 
 Frequens arbor faciem quercus habet, cuius folia multo melle tinguntur, sed, nisi solis ortum incolae occupaverint, vel modico tepore sucus extinguitur.
 
-XXX hinc stadia processerat, cum Phrataphernes ei occurrit seque et eos, qui post Darei mortem profugerant, dedens: quibus benigne exceptis ad oppidum Arvas pervenit. Hic ei Craterus et Erigyius occurrunt.
+**XXX** hinc stadia processerat, cum Phrataphernes ei occurrit seque et eos, qui post Darei mortem profugerant, dedens: quibus benigne exceptis ad oppidum Arvas pervenit. Hic ei Craterus et Erigyius occurrunt.
 
 Praefectum Tapurorum gentis, Phradatem, adduxerant: hic quoque in fidem receptus multis exemplo fuit experiendi clementiam regis.
 
@@ -2187,7 +2187,7 @@ Rex omissis sponsionum fideique pignoribus venire eos iussit, fortunam, quam ips
 
 At Democrates Atheniensis, qui maxime Macedonum opibus semper obstiterat, desperata venia gladio se transfigit. Ceteri, sicut constitueront, dicioni Alexandri ipsos se permittunt.
 
-M et D milites erant, praeter hos legati ad Dareum missi XC. In supplementum distributus miles, ceteri remissi domum praeter Lacedaemonios, quos tradi in custodiam iussit.
+**M** et D milites erant, praeter hos legati ad Dareum missi XC. In supplementum distributus miles, ceteri remissi domum praeter Lacedaemonios, quos tradi in custodiam iussit.
 
 Mardorum erat gens confinis Hyrcaniae, cultu vitae aspera et latrociniis adsueta: haec sola nec legatos miserat nec videbatur imperata factura. Itaque rex indignatus, si una gens posset efficere, ne invictus esset, inpedimentis cum praesidio relictis valida manu comitante procedit.
 
@@ -2281,7 +2281,7 @@ Praerupta rupes est, qua spectat occidentem, eadem, qua vergit ad orientem, leni
 
 Circuitus eius XXX et duo stadia conprehendit. In vertice herbidus campus: in hoc multitudinem inbellem considere iubent. Ipsi, qua rupes sedit, arborum truncos et saxa obmoliuntur.
 
-XIII milia armata erant. In quorum obsidione Cratero relicto ipse Satibarzanen sequi festinat. At, quia longius abesse eum cognoverat, ad expugnandos eos, qui edita montium occupaverant, redit.
+**XIII** milia armata erant. In quorum obsidione Cratero relicto ipse Satibarzanen sequi festinat. At, quia longius abesse eum cognoverat, ad expugnandos eos, qui edita montium occupaverant, redit.
 
 Ac primo repurgari iubet, quidquid ingredi possent, deinde, ut occurrebant in viae cotes praeruptaeque rupes, inritus labor videbatur obstante natura.
 
@@ -2851,7 +2851,7 @@ Taurus, secundae magnitudinis mons, committitur Caucaso: a Cappadocia se attolle
 
 Sic inter se iuga velut serie cohaerentia perpetuum habent dorsum, ex quo Asiae omnia fere flumina, alia in Rubrum, alia in Caspium mare, alia in Hyrcanium et Ponticum decidunt.
 
-XVII dierum spatio Caucasum superavit exercitus. Rupes in eo x in circuitu stadia conplectitur, IIII in altitudinem excedit, in qua vinctum Promethea fuisse antiquitas tradidit.
+**XVII** dierum spatio Caucasum superavit exercitus. Rupes in eo x in circuitu stadia conplectitur, IIII in altitudinem excedit, in qua vinctum Promethea fuisse antiquitas tradidit.
 
 Condendae in radicibus montis urbi sedes electa est. VII milibus subactarum nationum et praeterea militibus, quorum opera uti desisset, permissum in nova urbe considere. Hauc quoque Alexandream incolae appellaverunt.
 
@@ -2893,7 +2893,7 @@ Consilium habes fidele, quod diutius exequi supervacuum est. Nobilis equus umbra
 
 Bessus et ingenio et multo mero ferox adeo exarsit, ut vix ab amicis, quo minus occideret eum, — nam strinxerat quoque acinacem — contineretur. Certe convivio prosiluit haudquaquam potens mentis. Gobares inter tumultum elapsus ad Alexandrum transfugit.
 
-VIII milia Bactrianorum habebat armata Bessus. Quae quamdiu propter caeli intemperiem Indiam potius Macedonas petituros crediderant, oboedienter imperata fecerunt: postquam adventare Alexandrum conpertum est, in suos quisque vicos dilapsi Bessum reliquerunt.
+**VIII** milia Bactrianorum habebat armata Bessus. Quae quamdiu propter caeli intemperiem Indiam potius Macedonas petituros crediderant, oboedienter imperata fecerunt: postquam adventare Alexandrum conpertum est, in suos quisque vicos dilapsi Bessum reliquerunt.
 
 Ille cum clientium manu, qui non mutaverant fidem, Oxo amne superato exustisque navigiis, quibus transierat, ne isdem hostis uteretur, novas copias in Sogdianis contrahebat.
 
@@ -3927,11 +3927,11 @@ Ptolomaeus plurimas urbes, Alexander maximas cepit: rursusque, quas distribuerat
 
 Superato deinde Choaspe amne Coenon in obsidione urbis opulentae — Beiram incolae vocant — reliquit, ipse ad Mazagas venit. Nuper Assacano, cuius regnum fuerat, demortuo regioni urbique praeerat mater eius Cleophis.
 
-XXXVIII milia peditum tuebantur urbem non situ solum, sed etiam opere munitam. Nam qua spectat orientem, cingitur amne torrenti, qui praeruptis utrimque ripis aditum ad urbem inpedit.
+**XXXVIII** milia peditum tuebantur urbem non situ solum, sed etiam opere munitam. Nam qua spectat orientem, cingitur amne torrenti, qui praeruptis utrimque ripis aditum ad urbem inpedit.
 
 Ad occidentem ac meridiem veluti de industria rupes praealtas obmolita natura est, infra quas cavernae et voragines longa vetustate in altum cavatae iacent, quaque desinunt, fossa ingentis operis obiecta est.
 
-XXXV stadium murus urbem conplectitur, cuius ima saxo, superiora crudo latere sunt structa. Lateri vinculum lapides sunt, quos interposuere, ut duriori materiae fragilis incumberet, simulque terra hutnore diluta.
+**XXXV** stadium murus urbem conplectitur, cuius ima saxo, superiora crudo latere sunt structa. Lateri vinculum lapides sunt, quos interposuere, ut duriori materiae fragilis incumberet, simulque terra hutnore diluta.
 
 Ne tamen universa consideret, inpositae erant trabes validae, quibus iniecta tabulata muros et tegebant et pervios fecerant.
 
@@ -3961,7 +3961,7 @@ Multa ignobilia oppida deserta a suis venere in regis potestatem. Quorum incolae
 
 vulgaverat. Inopem consilii Alexandrum, quia undique praeceps et abrupta rupes erat, senior quidam peritus locorum cum duobus filiis adiit, si pretium operae esset, aditum se monstraturum esse promittens.
 
-LXXX talenta constituit daturum Alexander et altero ex iuvenibus obside retento ipsum ad exequenda, quae obtulerat, dimisit.
+**LXXX** talenta constituit daturum Alexander et altero ex iuvenibus obside retento ipsum ad exequenda, quae obtulerat, dimisit.
 
 Leviter armatis dux datus est Myllinas, scriba regis. Hos enim circuitu, quo fallerent hostem, in summum iugum placebat evadere.
 
@@ -4025,7 +4025,7 @@ Coiere, quod ex utriusque vultu posset intellegi, amicis animis. Ceterum sine in
 
 Corpus suum et regnum permittere illi, quem sciret gloriae militantem nihil magis quam famam timere perfidiae. Laetus simplicitate barbari rex et dexteram, fidei suae pignus, dedit et regnum restituit.
 
-LVI elephanti erant, quos tradidit Alexandra, multaque pecora eximiae magnitudinis, tauros ad III milia, pretiosum in ea regione acceptumque animis regnantium armentum.
+**LVI** elephanti erant, quos tradidit Alexandra, multaque pecora eximiae magnitudinis, tauros ad III milia, pretiosum in ea regione acceptumque animis regnantium armentum.
 
 Quaerenti Alexandro, plures agricultores haberet an milites, cum duobus regibus bellanti sibi maiore militum quam agrestium manu opus esse respondit.
 
@@ -4051,7 +4051,7 @@ Damaraxus quoque, rex exiguae partis Indorum, qui Barzaenti se coniunxerat, vinc
 
 Igitur transfuga et regulo in custodiam, elephantis autem Taxili traditio ad amnem Hydaspen pervenit, in cuius ulteriore ripa Porus consederat transitu prohibiturus hostem.
 
-LXXX et V elephantos obiecerat eximio corporum robore ultraque eos currus CCC et peditum XXX fere milia, in quis erant sagittarii, sicuti ante dictum est, gravioribus telis, quam ut apte excuti possent.
+**LXXX** et V elephantos obiecerat eximio corporum robore ultraque eos currus CCC et peditum XXX fere milia, in quis erant sagittarii, sicuti ante dictum est, gravioribus telis, quam ut apte excuti possent.
 
 Ipsum vehebat elephantus super ceteras beluas eminens, armaque auro et argento distincta corpus rarae magnitudinis honestabant.
 
@@ -4383,7 +4383,7 @@ Pelles ferarum pro veste, clavae tela erant, multaque etiam, cum Graeci mores ex
 
 Hinc escensione facta CC et L stadia excessit depopulatusque regionem oppidum, caput eius, corona cepit.
 
-XL milia peditum alia gens in ripa fluminum opposuerat: quae amne superato in fugam conpulit inclusosque moenibus expugnat.
+**XL** milia peditum alia gens in ripa fluminum opposuerat: quae amne superato in fugam conpulit inclusosque moenibus expugnat.
 
 Puberes interfecti sunt, ceteri venierunt. Alteram deinde urbem expugnare adortus magnaque vi defendentium pulsus multos Macedonum amisit. Sed cum in obsidione perseverasset, oppidani desperata salute ignem subiecere tectis seque аc liberos coniugesque, incendio cremant.
 
@@ -4633,7 +4633,7 @@ Diruta igitur arce et omnibus captivis venundatis Sambi regis fines ingressus es
 
 Barbarie simile monstri visum est rudibus militarium operum: quippe in media ferme urbe armati terra existebant nullo suffossi specus ante vestigio facto.
 
-LXXX milia Indorum in ea regione caesa Clitarchus est auctor multosque captivos sub corona venisse.
+**LXXX** milia Indorum in ea regione caesa Clitarchus est auctor multosque captivos sub corona venisse.
 
 Rursus Musicani defecerunt: ad quos opprimendos missus est Pithon, qui captum principem gentis eundemque defectionis auctorem adduxit ad regem. Quo Alexander in crucem sublato rursus amnem, in quo classem expectare se iusserat, repetit.
 
@@ -4781,7 +4781,7 @@ adeo nec luxuriae quicquam crudelitas nec crudelitati luxuria obstat.
 
 Isdem fere diebus Cleander et Sitalces et cum Agathone Heracon superveniunt, qui Parmenionem iussu regis occiderant.
 
-V milia peditum cum equitibus M, sed et accusatores eos e provincia, cui praefuerant, sequebantur.
+**V** milia peditum cum equitibus M, sed et accusatores eos e provincia, cui praefuerant, sequebantur.
 
 Nec tot facinora, quot admiserant, conpensare poterat caedis perquam gratae regi ministerium. Quippe cum omnia profana spoliassent, ne sacris quidem abstinuerant, virginesque et principes feminarum stupra perpessae corporum ludibria deflebant.
 

@@ -91,7 +91,7 @@ title: Achilleis
 
 **39** Pelion et torvi commisimus antra magistri?
 
-**40** illic, ni fallor, Lapitharum proelia luditilla ubi ω: illa P.
+**40** illic, ni fallor, Lapitharum proelia ludit
 
 **41** improbus et patria iam se metitur in hasta,
 
@@ -681,7 +681,7 @@ title: Achilleis
 
 **334** talis erat divae natum mutantis imago,
 
-**335** nec luctata diu; superest nam plurimus illi cogique Heinsius: cogitque Pω.
+**335** nec luctata diu; superest nam plurimus illi
 
 **336** invita virtute decor, fallitque tuentes
 
@@ -731,7 +731,7 @@ title: Achilleis
 
 **359** intus ale et similes inter seclude puellas;
 
-**360** litore praecipue portuque arcere memento.protervas ω: catervas P.
+**360** litore praecipue portuque arcere memento.
 
 **361** vidisti modo vela Phrygum: iam mutua iura
 
@@ -1587,7 +1587,7 @@ title: Achilleis
 
 **789** rura urbesque vacant, montes spoliavimus altos,
 
-**790** omne fretum longa velorum obtexitur umbra;After line 780 occurs only in late MSS.: possem, plena forent mihi gaudia; namque iuvarem, I could (belonging to the aposiopesis), my joy would be full; for I would help.
+**790** omne fretum longa velorum obtexitur umbra;
 
 **791** tradunt arma patres, rapit inrevocata iuventus,
 

@@ -14,11 +14,11 @@ title: Ab urbe condita
 
 # Ab urbe condita
 
-V = Veronensis saec. V.
+**V** = Veronensis saec. V.
 
-M = Mediceus saec. XI.
+**M** = Mediceus saec. XI.
 
-C = Colbertinus saec. XI.
+**C** = Colbertinus saec. XI.
 
 P = Parisiensis saec. X.
 
@@ -30,9 +30,9 @@ U = Upsaliensis saec. X.
 
 R = Romanus saec. XI.
 
-D = Dominicanus saec. XII.
+**D** = Dominicanus saec. XII.
 
-L vel Leid. = Leidensis saec. XII.
+**L** vel Leid. = Leidensis saec. XII.
 
 Vorm. = Vormacensis.
 
@@ -1438,7 +1438,7 @@ ibi cum stipendium militibus forte daretur, et scriba cum rege sedens pari fere 
 
 vadentem inde, qua per trepidam turbam cruento mucrone sibi ipse fecerat viam, cum concursu ad clamorem facto conprehensum regii satellites retraxissent, ante tribunal regis destitutus, tur tum quoque inter tantas fortunae minas metuendus magis quam metuens “Romanus sum” inquit “civis;
 
-C. Mucium vocant. hostis hostem occidere volui, nec ad mortem minus animi est, quam fuit ad caedem:
+**C** Mucium vocant. hostis hostem occidere volui, nec ad mortem minus animi est, quam fuit ad caedem:
 
 et facere et pati fortia Romanum est. nec unus in te ego hos animos gessi; longus post me ordo est idem petentium decus. proinde in hoc discrimen, si iuvat, accingere, ut in singulas horas capite dimices tuo, ferrum hostemque in vestibulo habeas regiae.
 
@@ -2284,7 +2284,7 @@ ingenti praeda praeter suas reciperatas res potiti sunt. missus tamen ab Roma co
 
 nullum genus calamitatis contumeliaeque non editum in Volscos est, nec tamen perpelli potuere, ut acie dimicarent.
 
-L. Furius inde et C. Manlius consules. Manlio Veientes provincia evenit. non tamen bellatum; indutiae in annos quadraginta petentibus datae frumento stipendioque imperato.
+**L** Furius inde et C. Manlius consules. Manlio Veientes provincia evenit. non tamen bellatum; indutiae in annos quadraginta petentibus datae frumento stipendioque imperato.
 
 paci externae confestim continuatur discordia domi. agrariae legis tribuniciis stimulis plebs furebat. consules, nihil Meneni damnatione, nihil periculo deterriti Servilii, summa vi resistunt. abeuntes magistratu Cn. Genucius tribunus plebis arripuit. L. Aemilius et Opiter Verginius consulatum ineunt;
 
@@ -2584,7 +2584,7 @@ multi per eos dies motus multique impetus hinc atque illinc facti, quia superant
 
 simul castra oppugnabantur, simul pars exercitus ad populandum agrum Romanum missa urbemque ipsam, si qua fortuna daret, temptandam.
 
-L. Valerius ad praesidium urbis relictus, consul Postumius ad arcendas populationes finium missus. nihil remissum ab ulla parte curae aut laboris;
+**L** Valerius ad praesidium urbis relictus, consul Postumius ad arcendas populationes finium missus. nihil remissum ab ulla parte curae aut laboris;
 
 vigiliae in urbe, stationes ante portas praesidiaque in muris disposita et, quod necesse erat in tanto tumultu, iustitium per aliquot dies servatum.
 
@@ -2754,7 +2754,7 @@ adfirmabat neque in Quinctia gente neque in civitate Romana tantam indolem tam m
 
 Sp. Furius: missum ab Quinctio Capitolino sibi eum in dubiis suis rebus venisse subsidio; neminem unum esse, cuius magis opera putet rem restitutam.
 
-L. Lucretius, consul anni prioris, recenti gloria nitens, suas laudes participare cum Caesone, memorare pugnas, referre egregia facinora nunc in expeditionibus, nunc in acie, suadere et monere, iuvenem egregium, instructum naturae fortunaeque omnibus bonis,
+**L** Lucretius, consul anni prioris, recenti gloria nitens, suas laudes participare cum Caesone, memorare pugnas, referre egregia facinora nunc in expeditionibus, nunc in acie, suadere et monere, iuvenem egregium, instructum naturae fortunaeque omnibus bonis,
 
 maximum momentum rerum eius civitatis, in quamcumque venisset, suum quam alienum mallent civem esse.
 
@@ -2852,7 +2852,7 @@ dum haec in foro sedandae discordiae causa aguntur, consules interim, ne Sabini 
 
 eadem nocte et Tusculum de arce capta Capitolioque occupato et alio turbatae urbis statu nuntii veniunt.
 
-L. Mamilius Tusculi tum dictator erat. is confestim convocato senatu atque introductis nuntiis magno opere censet,
+**L** Mamilius Tusculi tum dictator erat. is confestim convocato senatu atque introductis nuntiis magno opere censet,
 
 ne expectent, dum ab Roma legati auxilium petentes veniant; periculum ipsum discrimenque ac sociales deos fidemque foederum id poscere. demerendi beneficio tam potentem, tam propinquam civitatem numquam parem occasionem daturos deos. placet ferri auxilium;
 
@@ -2982,7 +2982,7 @@ census, res priore anno inchoata, perficitur; idque lustrum ab origine urbis dec
 
 consulum magna domi bellique eo anno gloria fuit, quod et foris pacem peperere, et domi etsi non concors, minus tamen quam alias infesta civitas fuit.
 
-L. Minucius inde et C. Nautius consules facti duas residuas anni prioris causas exceperunt.
+**L** Minucius inde et C. Nautius consules facti duas residuas anni prioris causas exceperunt.
 
 eodem modo consules legem, tribuni iudicium de Volscio inpediebant;
 
@@ -3014,7 +3014,7 @@ Nautium consuler consulem arcessunt. in quo cum parum praesidii videretur dictat
 
 operae pretium est audire, qui omnia prae divitiis humana spernunt neque honori magno locum neque virtuti putant esse, nisi ubi effuse afluant opes. spes unica imperii populi Romani,
 
-L. Quinctius trans Tiberim, contra eum ipsum locum, ubi nunc navalia sunt, quattuor iugerum colebat agrum, quae prata Quinctia vocantur.
+**L** Quinctius trans Tiberim, contra eum ipsum locum, ubi nunc navalia sunt, quattuor iugerum colebat agrum, quae prata Quinctia vocantur.
 
 ibi ab legatis, seu fossam fodiens palae innixus seu cum araret, operi certe, id quod constat, agresti intentus, salute data in vicem redditaque rogatus, ut, quod bene verteret ipsi reique publicae, togatus mandata senatus audiret, admiratus rogitansque “satin salve?” togam propere e tugurio proferre uxorem Raciliam iubet.
 
@@ -3246,7 +3246,7 @@ iubent acciri omnes senatumque in diem posterum edicunt; qui aliquanto spe ipsor
 
 sed magis oboedienter ventum in curiam esse quam obnoxie dictas sententias accepimus.
 
-L. Valerium Potitum proditum memoriae est post relationem Ap. Claudii, priusquam ordine sententiae rogarentur, postulando, ut de re publica liceret dicere, prohibentibus minaciter decemviris proditurum se ad plebem denuntiantem tumultum excivisse.
+**L** Valerium Potitum proditum memoriae est post relationem Ap. Claudii, priusquam ordine sententiae rogarentur, postulando, ut de re publica liceret dicere, prohibentibus minaciter decemviris proditurum se ad plebem denuntiantem tumultum excivisse.
 
 nec minus ferociter M. Horatium Barbatum isse in certamen decem Tarquinios appellantem admonentemque Valeriis et Horatiis ducibus pulsos reges.
 
@@ -3298,7 +3298,7 @@ tur tum Appius, iam prope esse ratus, ut, ni violentiae eorum pari resisteretur 
 
 “non erit melius” inquit, “nisi de quo consulimus vocem misisse” et ad Valerium, negantem se privato reticere, lictorem accedere iussit. iam Quiritium fidem inplorante Valerio a curiae limine,
 
-L. Cornelius conplexus complexus Appium non cui simulabat consulendo diremit certamen; factaque per Cornelium Valerio dicendi gratia, quae vellet, cum libertas non ultra vocem excessisset, decemviri propositum tenuere.
+**L** Cornelius conplexus complexus Appium non cui simulabat consulendo diremit certamen; factaque per Cornelium Valerio dicendi gratia, quae vellet, cum libertas non ultra vocem excessisset, decemviri propositum tenuere.
 
 consulares quoque ac seniores ab residuo tribuniciae potestatis odio, cuius desiderium plebi multo acrius quam consularis imperii rebantur esse, prope malebant postmodo ipsos decemviros voluntate abire magistratu quam invidia eorum exsurgere rursus plebem;
 
@@ -3310,7 +3310,7 @@ et Ap. Claudius. bellum domi maius quam foris apparebat. Appi violentiam aptiore
 
 hunc enim virum, egregium olim domi militiaeque, decemviratus collegaeque ita mutaverant, ut Appi quam sui similis mallet esse. huic bellum in Sabinis M’. Rabuleio et Q. Poetilio Poetelio additis collegis mandatum.
 
-M. Cornelius in Algidum missus cum L. Minucio et T. Antonio et K. Duillio et M. Sergio. Sp. Oppium Ap. Claudio adiutorem ad urbem tuendam aequo omnium decemvirorum imperio decernunt.
+**M** Cornelius in Algidum missus cum L. Minucio et T. Antonio et K. Duillio et M. Sergio. Sp. Oppium Ap. Claudio adiutorem ad urbem tuendam aequo omnium decemvirorum imperio decernunt.
 
 nihilo militiae quam domi melius res publica administrata est.
 
@@ -3328,7 +3328,7 @@ arma Tusculum ac supplementum decernerent decemvirosque ab arce Tusculi degresso
 
 ad clades ab hostibus acceptas duo nefanda facinora decemviri belli domique adiciunt.
 
-L. Siccium in Sabinis, per invidiam decemviralem tribunorum creandorum secessionisque mentiones ad vulgus militum sermonibus occultis serentem, prospeculatum ad locum : castris capiendum mittunt.
+**L** Siccium in Sabinis, per invidiam decemviralem tribunorum creandorum secessionisque mentiones ad vulgus militum sermonibus occultis serentem, prospeculatum ad locum : castris capiendum mittunt.
 
 datur negotium militibus, quos miserant expeditionis eius comites, ut eum opporttno opportuno adorti loco interficerent.
 
@@ -3348,7 +3348,7 @@ viro acri et pro causa plebis expertae virtutis.
 
 hanc virginer adultam, forma excellentem Appius amore amens pretio ac spe perlicere adortus, postquam omnia pudore saepta animadvertit, ad crudelem superbamque vim animum convertit.
 
-M. Claudio clienti negotium dedit, ut virginem in servitutem adsereret neque cederet secundum libertatem postulantibus vindicias, quod pater puellae abesset, locum iniuriae esse ratus.
+**M** Claudio clienti negotium dedit, ut virginem in servitutem adsereret neque cederet secundum libertatem postulantibus vindicias, quod pater puellae abesset, locum iniuriae esse ratus.
 
 virgini venienti in forum — ibi namque in tabernaculis litterarum ludi erant — minister decemviri libidinis manum iniecit serva sua natam servamque appellans sequique se iubebat:
 
@@ -3580,7 +3580,7 @@ ibi extemplo pontifice maximo comitia habente tribunos plebis creaverunt, omnium
 
 auctores secessionis, tur tum C. Sicinium, progeniem eius, quem primum tribunum plebis creatum in Sacro monte proditum memoriae est, et M. Duillium, qui tribunatum insignem ante decemviros creatos gesserat nec in decemviralibus certaminibus plebi defuerat. spe deinde magis quam meritis electi M. Titinius,
 
-M. Pomponius, C. Apronius, Ap. P. Villius, C. Oppius.
+**M** Pomponius, C. Apronius, Ap. P. Villius, C. Oppius.
 
 tribunatu inito L. [cilius Icilius extemplo plebem rogavit, et plebs scivit, ne cui fraudi esset secessio ab decemviris facta.
 
@@ -3612,7 +3612,7 @@ quae refellitur interpretatio, quod iis temporibus nondum consulem iudicem, sed 
 
 hae consulares leges fiere. institutum etiam ab iisdem consulibus, ut senatus consulta in aedem Cereris ad aediles plebis deferrentur, quae antea arbitrio consulum supprimebantur vitiabanturque.
 
-M. Duillius deinde tribunus plebis plebem rogavit plebesque scivit, qui plebem sine tribunis reliquisset quique magistratum sine provocatione creasset, tergo ac capite puniretur.
+**M** Duillius deinde tribunus plebis plebem rogavit plebesque scivit, qui plebem sine tribunis reliquisset quique magistratum sine provocatione creasset, tergo ac capite puniretur.
 
 haec omnia ut invitis, ita non adversantibus patriciis transacta, quia nondum in quemquam unum saeviebatur.
 
@@ -3662,7 +3662,7 @@ itaque partiri provincias consules iussi. Horatio Sabini, Valerio Aequi evenere.
 
 leges decemvirales, quibus tabulis duodecim est nomen, in aes incisas in publico proposuerunt. sunt, qui iussu tribunorum aediles functos eo ministerio scribant.
 
-C. Claudius, qui perosus decemvirorum scelera et ante omnes fratris filii superbiae infestus Regillum antiquam iu in patriam se contulerat, is magno iam natu, cum ad pericula eius deprecanda redisset, cuius vitia fugerat, sordidatus cum gentilibus clientibusque in foro prensabat singulos orabatque,
+**C** Claudius, qui perosus decemvirorum scelera et ante omnes fratris filii superbiae infestus Regillum antiquam iu in patriam se contulerat, is magno iam natu, cum ad pericula eius deprecanda redisset, cuius vitia fugerat, sordidatus cum gentilibus clientibusque in foro prensabat singulos orabatque,
 
 ne Claudiae genti earn eam inustam maculam vellent, ut carcere et vinculis viderentur digni. virum honoratissimae imaginis futurum ad posteros, legum latorem conditoremque Romani iuris, iacere vinctum inter fures nocturnos ac latrones! latrones.
 
@@ -3810,7 +3810,7 @@ novi tribuni plebis in cooptandis collegis patrum voluntatem foverunt, duos etia
 
 consules creati Sp. Herminius, T. Verginius Caelimontanus, nihil magnopere ad patrum aut plebis causam inclinati, otium domi ac foris habuere.
 
-L. Trebonius tribunus plebis infestus patribus, quod se ab iis in cooptandis tribunis fraude captum proditumque a collegis aiebat, rogationem tulit,
+**L** Trebonius tribunus plebis infestus patribus, quod se ab iis in cooptandis tribunis fraude captum proditumque a collegis aiebat, rogationem tulit,
 
 ut, qui plebem Romanam tribunos plebi rogaret, is usque eo rogaret, dum decem tribunos plebi faceret; insectandisque patribus, unde Aspero etiam inditum est cognomen, tribunatum gessit. inde M. Geganius Macerinus
 
@@ -4284,7 +4284,7 @@ non pro scelere id magis quam pro monstro habendum, nec satis esse sanguine eius
 
 domum deinde, ut monumento area esset oppressae nefariae spei, dirui extemplo iussit. id Aequimelium appellatum est.
 
-L. Minucius bove aurato et statua extra portam Trigeminam est donatus ne plebe quidem invita, quia frumentum Maelianum assibus in modios aestimatum plebi divisit.
+**L** Minucius bove aurato et statua extra portam Trigeminam est donatus ne plebe quidem invita, quia frumentum Maelianum assibus in modios aestimatum plebi divisit.
 
 hunc Minucium apud quosdam auctores transisse a patribus ad plebem undecimumque tribunum plebis cooptatum seditionem motam ex Maeliana caede sedasse invenio;
 
@@ -4376,7 +4376,7 @@ tertius ab consulatu Cossi annus tribunum eum militum consulari potestate habet,
 
 cum auctor pugnae recentibus spoliis in sacra sede positis Iovem prope ipsum, cui vota erant, Romulumque intuens, haud spernendos falsi tituli testes, se A. Cornelium Cossum consulem scripserit.
 
-M. Cornelio Maluginense, L. Papirio Crasso consulibus exercitus in agrum Veientem ac Faliscum ducti, praedae abactae hominum pecorumque;
+**M** Cornelio Maluginense, L. Papirio Crasso consulibus exercitus in agrum Veientem ac Faliscum ducti, praedae abactae hominum pecorumque;
 
 hostis in agris nusquam inventus neque pugnandi copia facta; urbes tamen non oppugnatae, quia pestilentia populum invasit. et seditiones domi quaesitae sunt nec motae tamen ab Sp. Maelio tribuno plebis,
 
@@ -4570,7 +4570,7 @@ donec publicus iam pudor ad primores civitatis pervenit cernentes in omnibus vic
 
 datum inde negotium aedilibus, ut animadverterent, ne qui nisi Romani dii neu quo alio more quam patrio colerentur. Irae adversus Veientes in insequentem annum,
 
-C. Servilium Ahalam, L. Papirium Mugilanum Mugillanum consules, dilatae sunt.
+**C** Servilium Ahalam, L. Papirium Mugilanum Mugillanum consules, dilatae sunt.
 
 tune nihil quoque, ne confestim bellum indiceretur neve exercitus mitterentur, religio obstitit; fetiales prius mittendos ad res repetendas censuere.
 
@@ -4752,7 +4752,7 @@ qui M. Postumio et T. Quinctio diem dixerant, quod ad Veios eorum opera male pug
 
 itaque advocata contione cum proditam Veis rem publicam esse ab ducibus, proditum deinde, quia illis inpune fuerit, in Volscis ab consule exercitum, traditos ad caedem fortissimos equites, deserta foede castra vociferati essent,
 
-C. Iunius unus ex tribunis Tempanium equitem vocari iussit coramque ei “Sex. Tempani” inquit, “quaero de te, arbitrerisne C. Sempronium consulem aut in tempore pugnam inisse aut firmasse subsidiis aciem aut ullo boni consulis functum officio et tune ipse victis legionibus Romanis tuo consilio equitem ad pedes deduxeris restituerisque pugnam;
+**C** Iunius unus ex tribunis Tempanium equitem vocari iussit coramque ei “Sex. Tempani” inquit, “quaero de te, arbitrerisne C. Sempronium consulem aut in tempore pugnam inisse aut firmasse subsidiis aciem aut ullo boni consulis functum officio et tune ipse victis legionibus Romanis tuo consilio equitem ad pedes deduxeris restituerisque pugnam;
 
 excluso deinde ab acie nostra tibi atque equitibus num aut consul ipse subvenerit aut miserit praesidium;
 
@@ -5022,7 +5022,7 @@ cum in legationes non plus singulis senatoribus invenientes coacti sunt binos eq
 
 praeterquam ab morbo annonaque nihil eo biennio intestini externive incommodi fuit. at ubi eae sollicitudines decessere, omnia, quibus turbari solita erat civitas, domi discordia, foris bellum exortum.
 
-M. Aemilio, C. Valerio Potito consulibus bellum Aequi parabant, Volscis quamquam non publico consilio capessentibus arma, voluntariis mercede secutis militiam.
+**M** Aemilio, C. Valerio Potito consulibus bellum Aequi parabant, Volscis quamquam non publico consilio capessentibus arma, voluntariis mercede secutis militiam.
 
 ad quorum famam hostium — iam enim in Latinum Hernicumque transcenderant agrum — dilectum habentem Valerium consulem M. Menenius tribunus plebis, legis agrariae lator, cum inpediret auxilioque tribuni nemo invitus sacramento diceret,
 
@@ -5162,7 +5162,7 @@ haec cum in sermonibus contionibusque interdum agitantes avertissent plebem ab s
 
 interim tribunos militum in Volscum agrum ducere exercitum placuit;
 
-C. Cn. Cornelius unus Romae relictus. tres tribuni, postquam nullo loco castra Volscorum esse nec commissuros se proelio apparuit, tripertito ad devastandos fines discessere.
+**C** Cn. Cornelius unus Romae relictus. tres tribuni, postquam nullo loco castra Volscorum esse nec commissuros se proelio apparuit, tripertito ad devastandos fines discessere.
 
 Valerius Antium petit, Cornelius Ecetras; quacumque incessere, late populati sunt tecta agrosque, ut distinerent Volscos; Fabius, quod maxime petebatur, ad Anxur oppugnandum sine ulla populatione accessit. Anxur fuit,
 
@@ -5444,7 +5444,7 @@ cum omnium adsensu conprobata oratio esset gauderentque patres sine tribuniciae 
 
 victi consensu omnium comitia tribunorum militum habuere, qui kal. Octobribus magistratum occiperent, seque ante eam diem magistratu abdicavere.
 
-L. Valerio Potito quartum, M. Furio Camillo iterum, M. Aemilio Mamerco tertium, Cn. Cornelio Cosso iterum, K. Fabio Ambusto, L. Iulio Iulo tribunis militum consulari potestate multa domi militiaeque gesta.
+**L** Valerio Potito quartum, M. Furio Camillo iterum, M. Aemilio Mamerco tertium, Cn. Cornelio Cosso iterum, K. Fabio Ambusto, L. Iulio Iulo tribunis militum consulari potestate multa domi militiaeque gesta.
 
 nam et bellum multiplex fuit eodem tempore, ad Veios et ad Capenam et ad Falerios et in Volscis,
 
@@ -5900,7 +5900,7 @@ quia nemo ex collegio intercessurus erat, coortis ad perferendam legem tribunis 
 
 colonorum pars maxima incolumes, quia nocte proditione oppidum captum liberam per aversa urbis fugam dederat, Romam perfugere.
 
-L. Lucretio consuli ea provincia evenit. is cum exercitu profectus acie hostes vicit victorque Romam ad maius aliquanto certamen rediit.
+**L** Lucretio consuli ea provincia evenit. is cum exercitu profectus acie hostes vicit victorque Romam ad maius aliquanto certamen rediit.
 
 Dies dies dicta erat tribunis plebi bienni superioris A. Verginio et Q. Pomponio, quos defendi patrum consensu ad fidem senatus pertinebat; neque enim eos aut vitae ullo crimine alio aut gesti magistratus quisquam arguebat, praeterquam quod gratificantes patribus rogationi tribuniciae intercessissent.
 
@@ -7442,7 +7442,7 @@ cura non deesset, si qua ad verum via inquirentem ferret; nunc fama rerum standu
 
 Post post tanti prodigii procurationem eodem anno de Hernicis consultus senatus cum fetiales ad res repetendas nequiquam misisset, primo quoque die ferendum ad populum de bello indicendo Hernicis censuit, populusque id bellum frequens iussit.
 
-L. Genucio consuli ea provincia sorte evenit. in expectatione civitas erat, quod primus ille de plebe consul bellum suis auspiciis gesturus esset, perinde ut evenisset res, ita communicatos honores pro bene aut secus consulto habitura. forte ita tulit casus,
+**L** Genucio consuli ea provincia sorte evenit. in expectatione civitas erat, quod primus ille de plebe consul bellum suis auspiciis gesturus esset, perinde ut evenisset res, ita communicatos honores pro bene aut secus consulto habitura. forte ita tulit casus,
 
 ut Genucius ad hostes magno conatu profectus in insidias praecipitaret et legioniba legionibus necopinato pavore fusis consul circumventus ab insciis, quem intercepissent, occideretur. Quod quod ubi est Romam nuntiatum,
 
@@ -7684,7 +7684,7 @@ castra quoque necopinato adgressus cepit et octo milibus hostium captis, ceteris
 
 nec per dictatorem plebeium nec per consulem comitia consularia haberi volebant et alter consul Fabius bello retinebatur, res ad interregnum rediit. interreges deinceps Q. Servilius Ahala,
 
-M. Fabius, Cn. Manlius, C. Fabius, C. Sulpicius, L. Aemilius, Q. Servilius, M. Fabius Ambustus.
+**M** Fabius, Cn. Manlius, C. Fabius, C. Sulpicius, L. Aemilius, Q. Servilius, M. Fabius Ambustus.
 
 in secundo interregno orta contentio est, quod duo patricii consules creabantur, intercedentibusque tribunis interrex Fabius aiebat in duodecim tabulis legem esse, ut, quodcumque postremum populus iussisset, id ius ratumque esset; iussum populi et suffragia esse.
 
@@ -7788,7 +7788,7 @@ nec variatum comitiis est, quin cum Gnaeo Manlio censor Marcius crearetur. dicta
 
 nec tamen dictatura potentiorem eum consensum patrum consularibus comitiis fecit, quam censoriis fuerat.
 
-M. Popilius Laenas a plebe consul, a patribus L. Cornelius Scipio datus. fortuna quoque inlustriorem plebeium consulem fecit;
+**M** Popilius Laenas a plebe consul, a patribus L. Cornelius Scipio datus. fortuna quoque inlustriorem plebeium consulem fecit;
 
 nam cum ingentem Gallorum exercitum in agro Latino castra posuisse nuntiatum esset, Scipione gravi morbo inplicito Gallicum bellum Popilio extra ordinem datum.
 
@@ -7858,7 +7858,7 @@ et cum in agrum Pomptinum descendisset, quia neque in campis congredi nulla coge
 
 ubi cum in stationibus quieti tempus tererent, Gallus processit magnitudine atque armis insignis; quatiensque scutum hasta cum silentium fecisset, provocat per interpretem unum ex Romanis, qui secum ferro decernat.
 
-M. erat Valerius tribunus militum adulescens, qui haud indigniorenm indigniorem eo decore se 425) quam T. Manlium ratus, prius sciscitatus consulis voluntatem in medium armatus processit.
+**M** erat Valerius tribunus militum adulescens, qui haud indigniorenm indigniorem eo decore se 425) quam T. Manlium ratus, prius sciscitatus consulis voluntatem in medium armatus processit.
 
 minus insigne certamen humanum numine interposito decorum factum; namque conserenti iam manum Romano corvus repente in galea consedit in hostem versus.
 
@@ -8724,7 +8724,7 @@ cuius Capuam, esse placuit.
 
 naves Antiatium partim in navalia Romae subductae partim incensae, rostrisque earum suggestum in foro exstructum adornari placuit, Rostraque id templum appellatum.
 
-C. Sulpicio Longo P. Aelio Paeto consulibus, cum omnia non opes magis Romanae quam beneficiis parta gratia bona pace obtineret, inter Sidicinos Auruncosque bellum ortum.
+**C** Sulpicio Longo P. Aelio Paeto consulibus, cum omnia non opes magis Romanae quam beneficiis parta gratia bona pace obtineret, inter Sidicinos Auruncosque bellum ortum.
 
 Aurunci a T. Manlio consule in deditionem accepti nihil deinde moverant; eo petendi auxilii ab Romanis causa iustior fuit.
 
@@ -8938,7 +8938,7 @@ itaque cum et comitiorum dies instaret et Publilium inminentem hostium muris avo
 
 actum cum tribunis est, ad populum ferrent, ut, cum Q. Publilius Philo consulatu abisset, pro consule rem gereret, quoad debellatum cum Graecis esset.
 
-L. Cornelio, quia ne eum quidem in Samnium iam ingressum revocari ab impetu belli placebat, litterae missae, ut dictatorerm dictatorem comitiorum causa diceret.
+**L** Cornelio, quia ne eum quidem in Samnium iam ingressum revocari ab impetu belli placebat, litterae missae, ut dictatorerm dictatorem comitiorum causa diceret.
 
 dixit M. Claudium Marcellum; ab eo magister equitum dictus Sp. Postumius. nec tamen ab dictatore comitia sunt habita, quia, vitione creatus esset, in disquisitionem venit. consulti augures vitiosum videri dictatorem pronuntiaverunt.
 
@@ -9048,7 +9048,7 @@ dilucere deinde brevi fraus coepit, postquam criminum falsorum auctores Tarentum
 
 eo anno plebei Romanae velut aliud initium libertatis factum est, quod necti desierunt; mutatum autem ius ob unius faeneratoris simul libidinem simul crudelitatem insignem.
 
-L. Papirius is fuit, cui cum se C. Publilius ob aes alienum paternum nexum dedisset, quae aetas formaque misericordiam elicere poterant, ad libidinem et contumeliam animum accenderunt.
+**L** Papirius is fuit, cui cum se C. Publilius ob aes alienum paternum nexum dedisset, quae aetas formaque misericordiam elicere poterant, ad libidinem et contumeliam animum accenderunt.
 
 ut florem aetatis eius fructum adventicium crediti ratus, primo perlicere adulescentem sermone incesto est conatus; dein, postquam aspernabantur flagitium aures, minis territare atque identidem admonere fortunae;
 
@@ -9228,7 +9228,7 @@ se tamen perstaturum in incepto nec ei, qui adversus dictum suum turbatis religi
 
 maiestas imperil imperii perpetuane esset, non esse in sua potestate;
 
-L. Papirium nihil eius deminuturum; optare, ne potestas tribunicia, inviolata ipsa, violet intercessione sua Romanum imperium, neu populus in se potissimum dictatore ius dictaturae extinguat.
+**L** Papirium nihil eius deminuturum; optare, ne potestas tribunicia, inviolata ipsa, violet intercessione sua Romanum imperium, neu populus in se potissimum dictatore ius dictaturae extinguat.
 
 quod si fecisset, non L. Papirium, sed tribunos, sed pravum populi iudicium nequiquam posteros accusaturos, cum polluta semel militari disciplina non miles centurionis, non centurio tribuni, non tribunus legati, non legatus consulis, non magister equitum dictatoris pareat imperio,
 
@@ -9846,7 +9846,7 @@ ut alios reges claros ducesque omittam, magna exempla casuum humanorum, Cyrum, q
 
 recenseam duces Romanos, nec omnes omnium aetatium, sed ipsos eos, cum quibus consulibus aut dictatoribus Alexandro fuit bellandum,
 
-M. Valerium Corvum, C. Marcium Rutilum, C. Sulpicium, T. Manlium Torquatum, Q Q. . Publilium Philonem, L. Papirium Cursorem, Q Q. Fabium Maximum, duos Decios, L. Volumnium, M’. Curium?
+**M** Valerium Corvum, C. Marcium Rutilum, C. Sulpicium, T. Manlium Torquatum, Q Q. . Publilium Philonem, L. Papirium Cursorem, Q Q. Fabium Maximum, duos Decios, L. Volumnium, M’. Curium?
 
 deinceps ingentes sequntur sequuntur viri, si Punicum Romano praevertisset bellum seniorque in Italiam traiecisset.
 
@@ -9938,7 +9938,7 @@ saltus inpeditos avia commeatibus loca gravis armis miles timere potest:
 
 mille acies graviores quam Macedonum atque Alexandri avertit avertetque, modo sit perpetuus huius, qua vivimus, pacis amor et civilis cura concordiae.
 
-M. Folius Flaccina inde et L. Plautius Venox consules facti.
+**M** Folius Flaccina inde et L. Plautius Venox consules facti.
 
 eo anno ab frequentibus Samnitium populis de foedere renovando legati cum senatum humi strati movissent, reiecti ad populum haudquaquam tam efficaces habebant preces.
 
@@ -9958,7 +9958,7 @@ nam Forento quoque, valido oppido, Iunius potitus erat — in Lucanos perrectum;
 
 et postquam res Capuae stabilitas Romana disciplina fama per socios vulgavit, Antiatibus quoque, qui se sine legibus certis, sine magistratibus agere querebantur, dati ab senatu ad iura statuenda ipsius coloniae patroni: nec arma modo sed iura etiam Romana late pollebant.
 
-C. Iunius Bubulcus et Q. Aemilius Barbula consules exitu anni non consulibus ab se creatis, Sp. Nautio et M. Popilio, ceterum dictatori L. Aemilio legiones tradiderunt.
+**C** Iunius Bubulcus et Q. Aemilius Barbula consules exitu anni non consulibus ab se creatis, Sp. Nautio et M. Popilio, ceterum dictatori L. Aemilio legiones tradiderunt.
 
 is cum L. Fulvio magistro equitur Saticulam oppugnare adortus rebellandi causam Samnitibus dedit.
 
@@ -10086,7 +10086,7 @@ vicit tamen sententia, ut mitterentur coloni. duo milia et quingenti missi. eode
 
 haudquaquam neglecta res: quaestiones decretae, dictatoremque quaestionibus exercendis dici placuit.
 
-C. Maenius dictus; is M. Folium magistrum equitum dixit. ingens erat magistratus eius terror. itaque — sive is timor seu conscientia fuit — Calavios Ovium Noviumque — ea capita coniurationis fuerant — , priusquam nominarentur apud dictatorem, mors baud haud dubie ab ipsis conscita iudicio subtraxit. Deinde deinde ut quaestioni Campanae materia decessit,
+**C** Maenius dictus; is M. Folium magistrum equitum dixit. ingens erat magistratus eius terror. itaque — sive is timor seu conscientia fuit — Calavios Ovium Noviumque — ea capita coniurationis fuerant — , priusquam nominarentur apud dictatorem, mors baud haud dubie ab ipsis conscita iudicio subtraxit. Deinde deinde ut quaestioni Campanae materia decessit,
 
 versa Romam interpretando res: non nominatim qui Capuae, sed in universum qui usquam coissent coniurassentve adversus rem publicam, quaeri senatum iussisse;
 
@@ -10474,7 +10474,7 @@ quod ubi sensit dictator, “ab laevone cornu victoria incipiet” inquit, “et
 
 concitat milites; nec peditum virtuti equites aut legatorum studia ducibus cedunt.
 
-M. Valerius a dextro, P. Decius ab laevo cornu, ambo consulares, ad equites in cornibus positos evehuntur adhortatique eos, ut partem secum capesserent decoris, in transversa latera hostium incurrunt.
+**M** Valerius a dextro, P. Decius ab laevo cornu, ambo consulares, ad equites in cornibus positos evehuntur adhortatique eos, ut partem secum capesserent decoris, in transversa latera hostium incurrunt.
 
 is novus additus terror cum ex parte utraque circumvasisset aciem et ad terrorem hostium legiones Romanae redintegrato clamore intulissent gradum, turn tum fuga ab Samnitibus coepta.
 
@@ -10708,7 +10708,7 @@ adeoque earn eam rem acceptam gratis animis ferunt, ut Maximi cognomen, quod tot
 
 Coloniae deductae sunt Sora et Alba et Carseoli. Marsi in deditionem accepti sunt. collegium augurum ampliatum est, ut essent novem, cum antea quaterni fuissent. lex de provocatione ad populum a M. Valerio consule tertio tunc lata est. duae tribus adiectae sunt, Aniensis et Terentina. Samnitibus bellum indictum est et adversus eos saepe prospere pugnatum est. cum adversus Etruscos, Umbros, Samnites, Gallos P. Decio et Q. Fabio ducibus pugnaretur et Romanus exercitus in magno discrimine esset, P. Decius, secutus patris exemplum, devovit se pro exercitu et morte sua victoriam eius pugnae populo Romano dedit. Papirius Cursor Samnitium exercitum, qui iure iurando obstrictus, quo maiore constantia virtutis pugnaret, in aciem descenderat, fudit. census actus est, lustrum conditum; censa sunt civium capita milia ducenta septuaginta duo et trecenta viginti.
 
-L. Genucio Ser. Cornelio consulibus ab externis ferme bellis otium fuit. Soram atque Albam coloniae deductae. Albam in Aequos sex milia colonorum scripta. Sora agri Volsci fuerat, sed possederant Samnites;
+**L** Genucio Ser. Cornelio consulibus ab externis ferme bellis otium fuit. Soram atque Albam coloniae deductae. Albam in Aequos sex milia colonorum scripta. Sora agri Volsci fuerat, sed possederant Samnites;
 
 eo quattuor milia hominum missa.
 
@@ -10720,7 +10720,7 @@ in earn eam speluncam penetratum cum signis est, et ex loco obscuro multa vulner
 
 ita intus fumo ac vapore ad duo milia armatorum, ruentia novissime in ipsas flammas, dum evadere tendunt, absumpta.
 
-M. Livio Dentre iM. Aemilio consulibus redintegratum Aequicum bellum. coloniam aegre patientes velut arcem suis finibus inpositam summa vi expugnare adorti ab ipsis colonis pelluntur.
+**M** Livio Dentre iM. Aemilio consulibus redintegratum Aequicum bellum. coloniam aegre patientes velut arcem suis finibus inpositam summa vi expugnare adorti ab ipsis colonis pelluntur.
 
 ceterum tanturn tantum Romae terrorem fecere, quia vix credibile erat tam adfectis rebus solos per se Aequos ad bellum coortos, ut tumultus eius causa dictator diceretur C. Iunius Bubulcus.
 
@@ -10824,7 +10824,7 @@ pax negata, indutiae biennii datae. dictator triumphans in urbem rediit. habeo a
 
 non petentem atque adeo etiam absentem creatum tradidere quidam et per interregem ea comitia facta; id unum non ambigitur, consulatum cum Apuleio Pansa gessisse.
 
-M. Valerio et Q. Apuleio consulibus satis pacatae foris res fuere: Etruscum adversae belli res et indutiae quietum tenebant;
+**M** Valerio et Q. Apuleio consulibus satis pacatae foris res fuere: Etruscum adversae belli res et indutiae quietum tenebant;
 
 Samnitem multorum annorum cladibus domitum hauddum foederis novi paenitebat.
 
@@ -10884,7 +10884,7 @@ Sabinum advenam, principem nobilitatis vestrae, seu Attium Clausum seu Appium Cl
 
 multa nobiscum decora adferimus, immo omnia eadem, quae vos superbos fecerunt: L. Sextius primus de plebe consul est factus,
 
-C. Licinius Stolo primus magister equitum, C. Marcius Rutilus primus et dictator et censor, Q. Publilius Philo primus praetor.
+**C** Licinius Stolo primus magister equitum, C. Marcius Rutilus primus et dictator et censor, Q. Publilius Philo primus praetor.
 
 semper ista audita sunt eadem, penes vos auspicia esse, vos solos gentem habere, vos solos iustum imperium et auspicium domi militiaeque: aeque adhuc prosperum plebeium et patricium fuit porroque erit.
 
@@ -10952,7 +10952,7 @@ quo velut omine belli accepto deos pro se commisisse bellum memorantes Etrusci s
 
 Romae cum desiderio viri tur tum incommoditate temporis tristis nuntius fuit; patres ab iubendo dictatore consulis subrogandi comitia ex sententia principum habita deterruerunt.
 
-M. Valerium consulem omnes sententiae centuriaeque dixere, quem senatus dictatorem dici iussurus fuerat. tur tum extemplo in Etruriam ad legiones proficisci iussit.
+**M** Valerium consulem omnes sententiae centuriaeque dixere, quem senatus dictatorem dici iussurus fuerat. tur tum extemplo in Etruriam ad legiones proficisci iussit.
 
 adventus eius conpressit Etruscos adeo, ut nemo extra munimenta egredi auderet timorque ipsorum obsidioni similis esset.
 
@@ -11860,7 +11860,7 @@ eadem fortuna ab altero consule ad Cominium gesta res. prima luce ad moenia omni
 
 iam signum dantem eum nuntius a collega trepidus de viginti cohortium adventu et ab impetu moratus est et partem copiarum revocare instructam intentamque ad oppugnandum coegit.
 
-D. Brutum Scaevam legatum cum legione prima et decem cohortibus alariis equitatuque ire adversus subsidium hostium iussit:
+**D** Brutum Scaevam legatum cum legione prima et decem cohortibus alariis equitatuque ire adversus subsidium hostium iussit:
 
 quocumque in loco fuisset obvius, obsisteret ac moraretur manumque, si forte ita res posceret, conferret, modo ne ad Cominium eae copiae admoveri possent.
 
@@ -11998,11 +11998,11 @@ Caecilius Metellus rebus adversus Poenos prospere gestis speciosum egit triumphu
 
 Falisci cum rebellussent, sexto die perdomiti in deditionem venerunt. Spoletium colonia deducta eat. adversus Ligures tunc primum exercitus promotus est. Sardi et Corsi, oum rebellaisent, subacti sunt. Tuccia virgo Vestalis incesti damnata est. bellum Illyriai propter unum ex legatis, qui ad eol misai erant, occisum indictum est, subactique in deditionem venerunt. praetorum numerus ampliatus est, ut essent quattuor. Galli Transalpini, qui in Italiam inruperant, caesi sunt. eo bello populum Romanum sui Latinique nominis octingenta milia armatorum habuisse Fabiu dicit. exercitibus Romanis tunc primum trans Padum ductis Galli Insubres aliquot proeliis fusi in deditionem venerunt. M. Claudius Marcellus consul occiso Gallorum Insubrium duce Virdomaro opima spolia rettulit. Histri subacti sunt. item llyrii, cum rebellassent, domiti in deditionem venerunt. lustrum a censoribus ter conditum est; primo lustro censa sunt civium capita C_C_L_X_X_ DCCXIII * *. libertini in quattuor tribus redacti sunt, cum antea dispersi per omnes fuissent, Esquilinam, Palatinam, Suburanam, Collinam. C. Flaminius censor viam Flaminiar muniit et circum Flsminium exstruxit. coloniae deductae aunt in agro de Gallis capto Placentia et Cremona.
 
-V = Veronensis saec. V.
+**V** = Veronensis saec. V.
 
-M = Mediceus saec. XI.
+**M** = Mediceus saec. XI.
 
-C = Colbertinus saec. XI.
+**C** = Colbertinus saec. XI.
 
 P = Parisiensis saec. X.
 
@@ -12016,7 +12016,7 @@ R = Romanus saec. XI.
 
 D= Dominicanus saec. XII.
 
-L vel Leid. = Leidensis saec. XII.
+**L** vel Leid. = Leidensis saec. XII.
 
 Vorm. = Vormacensis.
 
@@ -12524,7 +12524,7 @@ ibi se munimento ad tempus commeatibusque fluminis et Brixianorum etiam Gallorum
 
 qui tumultus repens postquam est Romam perlatus, et Punicum insuper Gallico bellum auctum patres acceperunt,
 
-C. Atilium praetorem cum una legione Romana et quinque milibus sociorum dilectu novo a consule conscriptis auxilium ferre Manlio iubent; qui sine ullo certamine — abscesserant enim metu hostes — Tannetum pervenit.
+**C** Atilium praetorem cum una legione Romana et quinque milibus sociorum dilectu novo a consule conscriptis auxilium ferre Manlio iubent; qui sine ullo certamine — abscesserant enim metu hostes — Tannetum pervenit.
 
 et P. Cornelius in locum eius quae missa cum praetore erat, scripta legione nova profectus ab urbe sexaginta longis navibus praeter oram Etruriae Ligurumque et inde Salluvium montis pervenit Massiliam et ad proxumum ostium Rhodani —
 
@@ -12764,7 +12764,7 @@ hoc maxime modo in Italiam perventum est, quinto mense a Carthagine Nova, ut qui
 
 nequaquam inter auctores constat. qui plurimum, centur centum milia peditum, viginti equitum fuisse scribunt, qui minimum, viginti milia peditum, sex equitum.
 
-L. Cincius Alimentus qui captum se ab Hannibale scribit, maxime auctor moveret, nisi confunderet numerum Gallis Liguribusque additis:
+**L** Cincius Alimentus qui captum se ab Hannibale scribit, maxime auctor moveret, nisi confunderet numerum Gallis Liguribusque additis:
 
 cum his octoginta milia peditum, decem equitum adducta — in Italia magis adfluxisse veri simile est, et ita quidam auctores sunt — ;
 
@@ -13050,7 +13050,7 @@ repetenti Siciliam consuli escensio hostium in agrum Viboniensem Uibonensem fact
 
 multis simul anxius curis exercitum extemplo in naves inpositum Ariminum mari supero misit, Sexto Pomponio legato cum viginti quinque longis navibus Viboniensem Uibonensem agrum maritimamque oram Italiae tuendam adtribuit,
 
-M. Aemilio praetori quinquaginta navium classem explevit. ipse conpositis Siciliae rebus decem navibus oram Italiae legens Ariminum pervenit. inde cum exercitu suo profectus ad Trebiam flumen conlegae coniungitur.
+**M** Aemilio praetori quinquaginta navium classem explevit. ipse conpositis Siciliae rebus decem navibus oram Italiae legens Ariminum pervenit. inde cum exercitu suo profectus ad Trebiam flumen conlegae coniungitur.
 
 iam ambo consules et quidquid Romanorum virium erat Hannibali oppositum aut illis copiis defendi posse Romanum imperium aut spem nullam aliam esse satis declarabat.
 
@@ -14078,7 +14078,7 @@ iis vitio creatis iussisque die quarto decimo se magistratu abdicare, res ad int
 
 consulibus prorogatum in annum imperium. interreges proditi a patribus C. Claudius Appi filius Cento, inde P. Cornelius Asina. in eius interregno comitia habita magno certamine patrum ac plebis.
 
-C. Terentio Varroni, quem sui generis hominem, plebi insectatione principum popularibusque artibus conciliatum, ab Q. Fabi opibus et dictatorio imperio concusso aliena invidia splendentem, volgus extrahere ad consulatum nitebatur, patres summa ope obstabant, ne se insectando sibi aequari adsuescerent homines.
+**C** Terentio Varroni, quem sui generis hominem, plebi insectatione principum popularibusque artibus conciliatum, ab Q. Fabi opibus et dictatorio imperio concusso aliena invidia splendentem, volgus extrahere ad consulatum nitebatur, patres summa ope obstabant, ne se insectando sibi aequari adsuescerent homines.
 
 Q. Baebius Herennius tribunus plebis, cognatus C. Terenti, criminando non senatum modo sed etiam augures, quod dictatorem prohibuissent comitia perficere, per invidiam eorum favorem candidate suo conciliabat:
 
@@ -14100,7 +14100,7 @@ consulatum unum certe plebis Romanae esse, populum eum liberum habiturum ac datu
 
 cum his orationibus accensa plebs esset, tribus patriciis petentibus, P P. . Cornelio Meranda Merenda L. Manlio Volsone M. Aemilio Lepido, duobus nobilium iam familiarum plebeis,
 
-C. Atilio Serrano et Q. Aelio Paeto, quorum alter pontifex, alter augur erat, C. Terentius consul unus creatur, ut in manu eius essent comitia rogando collegae.
+**C** Atilio Serrano et Q. Aelio Paeto, quorum alter pontifex, alter augur erat, C. Terentius consul unus creatur, ut in manu eius essent comitia rogando collegae.
 
 tum experta nobilitas parum fuisse virium in conpetitoribus competitoribus eius L. Aemilium Paulum, qui cum M. Livio consul fuerat, ex danmatione damnatione collegae, ex qua prope ambustus evaserat, infestum plebei, diu ac multum recusantem ad petitionem conpellit.
 
@@ -14418,7 +14418,7 @@ consul alter, seu forte seu consilio nulli fugientium insertus agmini, cum quinq
 
 quadraginta quinque milia quingenti pedites, duo milia septingenti equites et tantadem prope civium sociorumque pars caesi dicuntur; in his ambo consulum quaestores,
 
-L. Atilius et L. Furius Bibaculus, et undetriginta tribuni militum, consulares quidam praetoriique et aedilicii — inter eos Cn. Servilium Geminum et M. Minucium numerant, qui magister equitum priore anno, aliquot annis ante consul fuerat —
+**L** Atilius et L. Furius Bibaculus, et undetriginta tribuni militum, consulares quidam praetoriique et aedilicii — inter eos Cn. Servilium Geminum et M. Minucium numerant, qui magister equitum priore anno, aliquot annis ante consul fuerat —
 
 , octoginta praeterea aut senatores aut qui eos magistratus gessissent, unde in senatum legi deberent, cum sua voluntate milites in legionibus facti essent.
 
@@ -14546,7 +14546,7 @@ custodesque praeterea ad portas ponant, qui prohibeant quemquam egredi urbe, cog
 
 cum in hanc sententiam pedibus omnes issent, summotaque foro per magistratus turba patres diversi ad sedandos tumultus discessissent, tum demuma demum litterae a C. Terentio consule allatae sunt:
 
-L. Aenilinu Aemilium consulem exercitumque caesum; sese Canusii esse, reliquias tantae cladis velut ex naufragio colligentem; ad decem milia militum ferme esse inconpositorum inordinatorumque; Poenum sedere ad Cannas, in captivorum — ;
+**L** Aenilinu Aemilium consulem exercitumque caesum; sese Canusii esse, reliquias tantae cladis velut ex naufragio colligentem; ad decem milia militum ferme esse inconpositorum inordinatorumque; Poenum sedere ad Cannas, in captivorum — ;
 
 pretiis praedaque alia nec victoris animo nec magni ducis more nundinantem.
 
@@ -14564,7 +14564,7 @@ litteris consulis praetorisque recitatis censuerunt praetorem M. Claudium, qui c
 
 territi etiam super tantas clades cum ceteris prodigiis, tum quod duae Vestales eo anno, Opimia atque Floronia, stupri compertae et altera sub terra, uti mos est, ad portam Collinam necata fuerat, altera sibimet ipsa mortem consciverat.
 
-L. Cantilius scriba pontificius, quos nunc minores pontifices appellant, qui cum Floronia stuprum fecerat, a pontifice maximo eo usque virgis in comitio caesus erat, ut inter verbera expiraret.
+**L** Cantilius scriba pontificius, quos nunc minores pontifices appellant, qui cum Floronia stuprum fecerat, a pontifice maximo eo usque virgis in comitio caesus erat, ut inter verbera expiraret.
 
 hoc nefas cum inter tot, ut fit, clades in prodigium versum esset, decemviri libros adire iussi sunt,
 
@@ -15328,7 +15328,7 @@ duae legiones urbanae alteri consuli, qui in locum L. Postumi suffectus esset, d
 
 legiones praeterea duas primo quoque tempore ex Sicilia acciri, atque inde consulem, cui legiones urbanae evenissent, militum sumere quantum opus esset;
 
-C. Terentio consul prorogari in annum imperium, neque de eo exercitu, quem ad praesidium Apuliae haberet, quicquam minui.
+**C** Terentio consul prorogari in annum imperium, neque de eo exercitu, quem ad praesidium Apuliae haberet, quicquam minui.
 
 dum haec in Italia geruntur apparanturque, nihilo segnius in Hispania bellum erat, sed ad eam diem magis prosperum Romanis.
 
@@ -15538,7 +15538,7 @@ et viginti quinque naves datae, quibus oram maritimam inter Brundisium ac Tarent
 
 par navium numerus Q. Fulvio praetori urbano decretus ad suburbana litora tutanda.
 
-C. Terentio proconsuli negotium datum, ut in Piceno agro conquisitionem militum haberet locisque iis praesidio esset.
+**C** Terentio proconsuli negotium datum, ut in Piceno agro conquisitionem militum haberet locisque iis praesidio esset.
 
 et T. Otacilius Crassus postquam aedem Mentis in Capitolio dedicavit, in Siciliam cum imperio, qui classi praeesset, missus.
 
@@ -15984,7 +15984,7 @@ advocataque extemplo contione cum et levissimus quisque novas res novamque socie
 
 pauci magis taciti probarent constantem fidem quam probatam tueri auderent, baud haud dubio in speciem consensu fit ad Poenos deditio.
 
-L. Atilio praefecto praesidii quique cum eo milites Romani erant, clam in portum deductis atque impositis in navis, ut Regium deveherentur, Hamilcarem Poenosque ea condicione, ut foedus extemplo aequis legibus fieret, in urbem acceperunt.
+**L** Atilio praefecto praesidii quique cum eo milites Romani erant, clam in portum deductis atque impositis in navis, ut Regium deveherentur, Hamilcarem Poenosque ea condicione, ut foedus extemplo aequis legibus fieret, in urbem acceperunt.
 
 cuius rei prope non servata fides deditis est, cum Poenus dolo dimissum Romanum incusaret, Locrenses profugisse ipsum causarentur.
 
@@ -16156,7 +16156,7 @@ nobis autem in apparatu ipso ac tantum incohantibus res annus circumagitur.
 
 quoniam, quales viros creare vos consules deceat, satis est dictum, restat, ut pauca de eis, in quos praerogativae favor inclinavit, dicam.
 
-M. Aemilius Regillus flamen est Quirinalis, quem neque mittere a sacris neque retinere possumus, ut non deum aut belli deseramus curam.
+**M** Aemilius Regillus flamen est Quirinalis, quem neque mittere a sacris neque retinere possumus, ut non deum aut belli deseramus curam.
 
 Otacilius sororis meae filiam uxorem atque ex ea liberos habet; ceterum non ea vestra in me maioresque meos merita sunt, ut non potiorem privatis necessitudinibus rem publicam habeam.
 
@@ -16360,7 +16360,7 @@ dum haec ad Beneventum geruntur, Hannibal depopulatus agrum Neapolitanum ad Nola
 
 quem ubi adventare consul sensit, Pomponio propraetore cum eo exercitu, qui super Suessulam in castris erat, accito ire obviam hosti parat nec moram dimicandi facere.
 
-C. Claudium Neronem cum robore equitum silentio noctis per aversam maxime ab hoste portam emittit circumvectumque occulte subsequi sensim agmen hostium iubet et, cum coortum proelium videret, ab tergo se obicere.
+**C** Claudium Neronem cum robore equitum silentio noctis per aversam maxime ab hoste portam emittit circumvectumque occulte subsequi sensim agmen hostium iubet et, cum coortum proelium videret, ab tergo se obicere.
 
 id errore viarum an exiguitate temporis Nero exsequi non potuerit, incertum est.
 
@@ -16840,7 +16840,7 @@ ad hanc defectionem erecti sunt et aliarum civitatium animi, praesidiaque Romana
 
 Henna excelso loco ac praerupto undique sita, cum loco inexpugnabilis erat, tum praesidium in arce validum praefectumque praesidii haud sane opportunum insidiantibus habebat.
 
-L. Pinarius erat, vir acer et qui plus in eo, ne posset decipi, quam in fide Siculorum reponeret. et tum intenderant eum ad cavendi omnia curam tot auditae proditiones defectionesque urbium et clades praesidiorum.
+**L** Pinarius erat, vir acer et qui plus in eo, ne posset decipi, quam in fide Siculorum reponeret. et tum intenderant eum ad cavendi omnia curam tot auditae proditiones defectionesque urbium et clades praesidiorum.
 
 itaque die ac nocte iuxta parata instructaque omnia custodiis ac vigiliis erant, nec ab armis aut loco suo miles abscedebat.
 
@@ -16910,7 +16910,7 @@ deinde, ut ea res tardior spe fuerit, ad Oricum clam nocte exercitum admovisse; 
 
 haec nuntiantes orabant, ut opem ferret hostemque baud haud dubium Romanis mari ac terra a maritimis urbibus arceret, quae ob nullam aliam causam, nisi quod imminerent Italiae, peterentur.
 
-M. Valerius duorum milium praesidio relicto praepositoque eis P. Valerio legato cum classe instructa parataque et, quod longae naves militum capere non poterant, in onerarias inpositis altero die Oricum pervenit urbemque eam levi tenente praesidio,
+**M** Valerius duorum milium praesidio relicto praepositoque eis P. Valerio legato cum classe instructa parataque et, quod longae naves militum capere non poterant, in onerarias inpositis altero die Oricum pervenit urbemque eam levi tenente praesidio,
 
 quod rex recedens inde reliquerat, baud haud magno certamine recepit.
 
@@ -17176,7 +17176,7 @@ aedilis curulis fuit eo anno cum M. Cornelio Cethego P. Cornelius Scipio, cui po
 
 aedilicia largitio haec fuit: ludi Romani pro temporis illius copiis magnifice facti et diem unum instaurati, et centeni congii olei in vicos singulos dati.
 
-L. Villius Tappulus et M. Fundanius Fundulus aediles plebei aliquot matronas apud populum probri accusarunt, quasdam ex eis damnatas in exilium egerunt.
+**L** Villius Tappulus et M. Fundanius Fundulus aediles plebei aliquot matronas apud populum probri accusarunt, quasdam ex eis damnatas in exilium egerunt.
 
 ludi plebei per biduum instaurati et Iovis epulum fuit ludorum causa.
 
@@ -17220,7 +17220,7 @@ nec procul dimicatione res erat, cum Fulvius consul tribunis “nonne videtis”
 
 plebe dimissa senatus vocatur et consules referunt de concilio plebis turbato vi atque audacia publicanorum:
 
-M. Furium Camillum, cuius exilium ruina urbis secutura fuerit, damnari se ab iratis civibus passum esse;
+**M** Furium Camillum, cuius exilium ruina urbis secutura fuerit, damnari se ab iratis civibus passum esse;
 
 decemviros ante eum, quorum legibus ad eam diem viverent, multos postea principes civitatis indicium de se populi passos:
 
@@ -17752,7 +17752,7 @@ qui nuntiarent, ut reliquias duorum exercituum cum cura colligerent darentque op
 
 idem negotii P. Cornelio datum, cui et dilectus mandatus erat, isque per fora conciliabulaque edixit, ut conquisitio volonum fieret iique ad signa reducerentur. haec omnia intentissima cura acta. Ap. Claudius consul D. Iunio ad ostium Vulturni,
 
-M. Aurelio Cotta Puteolis praeposito, qui, ut quaeque naves ex Etruria ac Sardinia accessissent, extemplo in castra mitterent frumentum,
+**M** Aurelio Cotta Puteolis praeposito, qui, ut quaeque naves ex Etruria ac Sardinia accessissent, extemplo in castra mitterent frumentum,
 
 ipse ad Capuam regressus Q. Fulvium collegam invenit Casilino omnia deportantem molientemque ad oppugnandam Capuam. tum ambo circumsederunt urbem
 
@@ -18320,11 +18320,11 @@ si supplemento opus esset, suppleret de legionibus, quibus P. Cornelius propraet
 
 dum ne quem militem legeret ex eo numero, quibus senatus missionem reditumque in patriam negasset ante belli finem.
 
-C. Sulpicio, cui Sicilia evenerat, duae legiones, quas P. Cornelius habuisset, decretae et supplementur supplementum de exercitu Cn. Fulvii, qui priore anno in Apulia foede caesus fugatusque erat.
+**C** Sulpicio, cui Sicilia evenerat, duae legiones, quas P. Cornelius habuisset, decretae et supplementur supplementum de exercitu Cn. Fulvii, qui priore anno in Apulia foede caesus fugatusque erat.
 
 huic generi militurn militum senatus eundem quem Cannensibus finem statuerat militiae. additum etiamr etiam utrorumque ignominiae est, ne in oppidis hibernarent neve hiberna propius ullam urbem decem milibus passuum aedificarent.
 
-L. Cornelio in Sardinia duae legionesi legiones datae, quibus Q. Mucius praefuerat; supplementur supplementum , si opus esset, consules scribere iussi.
+**L** Cornelio in Sardinia duae legionesi legiones datae, quibus Q. Mucius praefuerat; supplementur supplementum , si opus esset, consules scribere iussi.
 
 T. Otacilio et M. Valerio Siciliae Graeciaeque ora cum legionibus classibusque, quibus praeerant, decretae; quinquaginta Graecia cum legione una, centum Sicilia cum duabus legionibus habebant naves.
 
@@ -18342,7 +18342,7 @@ dimissis equitibus de nulla re prius consules rettulerunt, omniumque in unum sen
 
 ea res cum tribunis acta promulgataque est. sed aliud certamen occupaverat animos.
 
-C. Sempronius Blaesus die dicta Cn. Fulvium ob exercitum in Apulia amissum in contionibus vexabat, multos imperatores temeritate atque inscitia exercitum in locum praecipitem perduxisse dictitans,
+**C** Sempronius Blaesus die dicta Cn. Fulvium ob exercitum in Apulia amissum in contionibus vexabat, multos imperatores temeritate atque inscitia exercitum in locum praecipitem perduxisse dictitans,
 
 neminem praeter Cn. Fulvium ante conrupisse omnibus vitiis legiones suas, quam proderet. itaque vere dici posse prius eos perisse, quam viderent hostem, nec ab Hannibale, sed ab imperatore suo victos esse.
 
@@ -19064,7 +19064,7 @@ Cn. Fulvio consuli superioris anni nec de provincia Apulia nec de exercitu, quem
 
 item ex Sicilia exercitus, cui M. Cornelius praeesset, ubi consul in provinciam venisset, dimitti iussus.
 
-L. Cincio praetori ad obtinendam Siciliam Cannenses milites dati duarum instar legionum.
+**L** Cincio praetori ad obtinendam Siciliam Cannenses milites dati duarum instar legionum.
 
 totidem legiones in Sardiniam P. Manlio Vulsoni praetori decretae, quibus L. Cornelius in eadem provincia priore anno praefuerat.
 
@@ -19174,7 +19174,7 @@ per senatum agi de Campanis, qui cives Romani sunt, iniussn iniussu populi non v
 
 itaque censeo cum tribunis plebis agendum esse, ut eorum unus pluresve rogationem ferant ad plebem, qua nobis statuendi de Campanis ius fiat.”
 
-L. Atilius tribunus plebis ex auctoritate senatus plebem in haec verba rogavit: “omnes Campani, Atellani, Calatini, Sabatini, qui se dediderunt in arbitrium dicionemque populi Romani Q. Fulvio proconsuli,
+**L** Atilius tribunus plebis ex auctoritate senatus plebem in haec verba rogavit: “omnes Campani, Atellani, Calatini, Sabatini, qui se dediderunt in arbitrium dicionemque populi Romani Q. Fulvio proconsuli,
 
 quosque una secum dedidere, quaeque una secum dedidere, agrum urbemque, divina humanaque, utensiliaque sive quid aliud dediderunt, de iis rebus quid fieri velitis, vos rogo, Quirites.”
 
@@ -19560,7 +19560,7 @@ sociis C. Laelius praefectus classis, legionariis M. Sempronius Tuditanus aderat
 
 ea contentio cumr cum prope seditionem veniret, Scipio tris recuperatores cum se daturum pronuntiasset, qui cognita causa testibusque auditis iudicarent, uter prior in oppidum transcendisset,
 
-C. Laelio et M. Sempronio, advocatis partis utriusque, P. Cornelium Caudinum de medio adiecit eosque tris recuperatores considere et causam cognoscere iussit.
+**C** Laelio et M. Sempronio, advocatis partis utriusque, P. Cornelium Caudinum de medio adiecit eosque tris recuperatores considere et causam cognoscere iussit.
 
 cum res eo maiore ageretur certamine quod amoti tantae dignitatis non tam advocati quam moderatores studiorum fuerant, C. Laelius relicto consilio ad tribunal ad Scipionem accedit
 
@@ -19732,7 +19732,7 @@ Acerranis permissum, ut aedificarent, quae incensa erant; Nucerini Atellam, quia
 
 quae nunc secundait secundae nunc adversae occupabant cogitationes hominum, ne Tarentinae quidem arcis excidit memoria.
 
-M. Ogulnius et P. Aquilius in Etruriam legati ad frumentum coemendum, quod Tarentum portaretur, profecti, et mille milites de exercitu urbano, par numerus Romanorum sociorumque eodem in praesidium cum frujmento frumento missi.
+**M** Ogulnius et P. Aquilius in Etruriam legati ad frumentum coemendum, quod Tarentum portaretur, profecti, et mille milites de exercitu urbano, par numerus Romanorum sociorumque eodem in praesidium cum frujmento frumento missi.
 
 iam aestas in exitu erat, comitiorumque consularium instabat tempus. sed litterae Marcelli negantis e re publica esse vestigium abscedi ab Hannibale, cui cedenti certamenque abnuenti gravis ipse instaret, curam iniecerant,
 
@@ -19764,7 +19764,7 @@ Tarquiniis porcum cum ore humano genitum, et in agro Capenate ad lucum Feroniae 
 
 haec prodigia hostiis maioribus procurata decreto pontificum; et supplicatio diem unum Romae ad omnia pulvinaria, alterum in Capenati agro ad Feroniae lucum indicta.
 
-M. Valerius consul litteris excitus, provincia exercituque mandate L. Cincio praetori, M. Valerioi Ualerio Messalla praefecto classis cum parte navium in ad Africam praedatum simul speculatumque, quae populus Carthaginiensis ageret pararetque, misso,
+**M** Valerius consul litteris excitus, provincia exercituque mandate L. Cincio praetori, M. Valerioi Ualerio Messalla praefecto classis cum parte navium in ad Africam praedatum simul speculatumque, quae populus Carthaginiensis ageret pararetque, misso,
 
 ipse decem navibus Romam profectus cum prospere pervenisset, senatum extemplo habuit.
 
@@ -19794,7 +19794,7 @@ haec recitata a consule ita movere senatum, ut non expectanda comitia consuli ce
 
 illa disceptatio tenebat, quod consul in ad Sicilia se M. Valerium Messallam, qui tum classi praeesset, dictatorem dicturum esse aiebat, patres extra Romanum agrum — eum autem in ad Italia terminari — negabant dictatorem dici posse.
 
-M. Lucretius tribunus plebis cum de ea re consuleret, ita decrevit senatus, ut consul, priusquam ab urbe discederet, populum rogaret, quem dictatorem dici placeret eumque, quem populus iussisset, diceret dictatorem; si consul noluisset, praetor populum rogaret; si ne is quidem vellet, tum tribuni ad plebem ferrent.
+**M** Lucretius tribunus plebis cum de ea re consuleret, ita decrevit senatus, ut consul, priusquam ab urbe discederet, populum rogaret, quem dictatorem dici placeret eumque, quem populus iussisset, diceret dictatorem; si consul noluisset, praetor populum rogaret; si ne is quidem vellet, tum tribuni ad plebem ferrent.
 
 cum consul se populum rogaturum negasset, quod suae potestatis esset, praetoremque vetuisset rogare, tribuni plebis rogarunt, plebesque scivit, ut Q. Fulvius, qui tum ad Capuam erat, dictator diceretur.
 
@@ -19854,19 +19854,19 @@ sed mihi minus simile veri visum est annum integrum Scipionem nihil gerundo in H
 
 Q. Fabio Maximo quintum Q. Fulvio Flacco quartum consulibus idibus Martiis, quo die magistratum inierunt, Italia ambobus provincia decreta, regionibus tamen partitum imperium: Fabius ad Tarentum, Fulvius in Lucanis ac Bruttiis rem gereret.
 
-M. Claudio prorogatum in annum imperium. praetores sortiti provincias, C. Hostilius Tubulus urbanam, L. Veturius Philo peregrinam cum Gallia, T. Quinctius Crispinus Capuam, C. Aurunculeius Sardiniam.
+**M** Claudio prorogatum in annum imperium. praetores sortiti provincias, C. Hostilius Tubulus urbanam, L. Veturius Philo peregrinam cum Gallia, T. Quinctius Crispinus Capuam, C. Aurunculeius Sardiniam.
 
 exercitus ita per provincias divisi: Fulvio duae legiones, quas in Sicilia M. Valerius Laevinus haberet, Q. Fabio, quibus in Etruria C. Calpurnius praefuisset; urbanus exercitus ut in Etruriam succederet;
 
-C. Calpurnius eidem praeesset provinciae exercituique; Capuam exercitumque, quem Q. Fulvius habuisset, T. Quinctius obtineret.
+**C** Calpurnius eidem praeesset provinciae exercituique; Capuam exercitumque, quem Q. Fulvius habuisset, T. Quinctius obtineret.
 
-C. Hostilius ab C. Laetorio propraetore provinciam exercitumque, qui tum Arimini erat, acciperet. M. Marcello, quibus consul rem gesserat, legiones decretae. M. Valerio cum L. Cincio —
+**C** Hostilius ab C. Laetorio propraetore provinciam exercitumque, qui tum Arimini erat, acciperet. M. Marcello, quibus consul rem gesserat, legiones decretae. M. Valerio cum L. Cincio —
 
 iis quoque enim prorogatum in Sicilia imperium — Cannensis exercitus datus, euinque supplere ex militibus, qui ex legionibus Cn. Fulvi superessent, iussi.
 
 conquisitos eos consules in Siciliam miserunt; additaque eadem militiae ignominia, sub qua Cannenses militabant quique ex praetoris Cn. Fulvi exercitu ob similis iram fugae missi eo ab senatu fuerant.
 
-C. Aurunculeio eaedem in Sardinia legiones, quibus P. Manlius Volso ear eam provinciam obtinuerat, decretae.
+**C** Aurunculeio eaedem in Sardinia legiones, quibus P. Manlius Volso ear eam provinciam obtinuerat, decretae.
 
 P. Sulpicio eadem legione eademque classe Macedoniam obtinere iusso prorogatum in annum imperium. triginta quinqueremes ex Sicilia Tarentum ad Q. Fabium consulem mitti iussae;
 
@@ -20064,7 +20064,7 @@ instaurat cum victoribus certamen.” signa inde canere iussit et copias educit.
 
 sinistra ala ab Romanis et cohortes quae amiserant signa, in prima acie pugnabant, et legio vicensima ab dextro cornu instructa.
 
-L. Cornelius Lentulus et C. Claudius Nero legati cornibus praeerant; Marcellus mediam aciem hortator testisque praesens firmabat.
+**L** Cornelius Lentulus et C. Claudius Nero legati cornibus praeerant; Marcellus mediam aciem hortator testisque praesens firmabat.
 
 ab Hannibale Hispani primam obtinebant frontem, et id roboris in omni exercitu erat.
 
@@ -20326,7 +20326,7 @@ supplementum quo opus esset, ut scriberent consulibus permissum. una et viginti 
 
 et P. Licinio Varo praetori urbano negotium datum, ut naves longas triginta veteres reficeret, quae Ostiae erant, et viginti novas naves sociis navalibus conpleret, ut quinquaginta navium classe oram maris vicinam urbi Romanae tueri posset.
 
-C. Calpurnius vetitus ab Arretio movere exercitum, nisi cum successor venisset; idem et Tubulo imperatum, ut inde praecipue caveret, ne qua nova consilia orerentur.
+**C** Calpurnius vetitus ab Arretio movere exercitum, nisi cum successor venisset; idem et Tubulo imperatum, ut inde praecipue caveret, ne qua nova consilia orerentur.
 
 praetores in provincias profecti; consules religio tenebat, quod prodigiis aliquot nuntiatis non facile litabant.
 
@@ -20354,9 +20354,9 @@ postero die luce prima, cum senatus in forum citari coeptus esset, desiderati, b
 
 is omnia suspectiora, quam ante fuerant, in senatu fecit. itaque tamquam imminente Etrusco tumultu legionem unam, alteram ex urbanis, Arretium ducere iussus ipse C. Terentius, eamque habere in praesidio urbis;
 
-C. Hostilium cum cetero exercitu placuit totam provinciam peragrare et cavere, ne qua occasio novare cupientibus res daretur.
+**C** Hostilium cum cetero exercitu placuit totam provinciam peragrare et cavere, ne qua occasio novare cupientibus res daretur.
 
-C. Terentius ut Arretium cum legione venit, claves portarum cum magistratus poposcisset, negantibus iis comparere, fraude amotas magis ratus quam neglegentia intercidisse, ipse alias claves omnibus portis imposuit, cavitque cum cura, ut omnia in potestate sua essent;
+**C** Terentius ut Arretium cum legione venit, claves portarum cum magistratus poposcisset, negantibus iis comparere, fraude amotas magis ratus quam neglegentia intercidisse, ipse alias claves omnibus portis imposuit, cavitque cum cura, ut omnia in potestate sua essent;
 
 Hostilium intentius monuit, ut in eo spem non moturos quicquam Etruscos poneret, si, ne quid movere possent, praecavisset.
 
@@ -20608,13 +20608,13 @@ quam ignominiam adeo aegre tulerat, ut rus migraret et per multos annos et urbe 
 
 octavo ferme post damnationem anno M. Claudius Marcellus et M. Valerius Laevinus consules redduxerant eum in urbem; sed erat veste obsoleta capilloque et barba promissa, prae se ferens in vultu habituque insignem memoriam ignominiae acceptae.
 
-L. Veturius et P. Licinius censores eum tonderi et squalorem deponere et in senatum venire fungique aliis publicis muneribus coegerunt.
+**L** Veturius et P. Licinius censores eum tonderi et squalorem deponere et in senatum venire fungique aliis publicis muneribus coegerunt.
 
 sed tum quoque aut verbo adsentiebatur aut pedibus in sententiam ibat, donec cognati hominis eum causa M. Livii Macati, cum fama eius ageretur, stantem coegit in senatu sententiam dicere.
 
 tune tunc ex tanto intervallo auditus convertit ora hominum in se, causamque sermonibus praebuit, indigno iniuriam a populo factam, magnoque id damno fuisse, quod tam gravi bello nec opera nec consilio talis viri usa res publica esset:
 
-C. Neroni neque Q. Fabium neque M. Valerium Laevinum dari conlegam posse, quia duos patricios creari non liceret;
+**C** Neroni neque Q. Fabium neque M. Valerium Laevinum dari conlegam posse, quia duos patricios creari non liceret;
 
 eandem causam in T. Manlio esse, praeterquam quod recusasset delatum consulatum recusaturusque esset. egregium par consulum fore, si M. Livium C. Claudio conlegam adiunxissent.
 
@@ -20630,7 +20630,7 @@ adnisi omnes cum C. Claudio M. Livium consulem fecerunt.
 
 post diem tertium eius diei praetorum comitia habita. praetores creati L. Porcius Licinus C. Mamilius C. et A. Hostilii Catones. comitiis perfectis ludisque factis dictator et magister equitum magistratu abierunt.
 
-C. Terentius Varro in Etruriam pro praetore missus, ut ex ea provincia C. Hostilius Tarentum ad eum exercitum iret, quem T. Quinctius consul habuerat;
+**C** Terentius Varro in Etruriam pro praetore missus, ut ex ea provincia C. Hostilius Tarentum ad eum exercitum iret, quem T. Quinctius consul habuerat;
 
 et L. Manlius trans mare legatus iret viseretque, quae res ibi gererentur; simul quod Olympiae ludicrum ea aestate futurum erat, quod maximo coetu Graeciae celebraretur, ut, si tuto per hostem posset,
 
@@ -20676,7 +20676,7 @@ et plebei ludi biduum instaurati a C. Mamilio et M. Caecilio Metello aedilibus p
 
 et M. Livius iterum. qui quia iam designati provincias sortiti erant, praetores sortiri iusserunt.
 
-C. Hostilio iurisdictio urbana evenit; addita et peregrina, ut tres in provincias exire possent; A. Hostilio Sardinia, C. Mamilio Sicilia, L. Porcio Gallia evenit.
+**C** Hostilio iurisdictio urbana evenit; addita et peregrina, ut tres in provincias exire possent; A. Hostilio Sardinia, C. Mamilio Sicilia, L. Porcio Gallia evenit.
 
 summa legionum trium et viginti ita per provincias divisa: binae consulum essent, quattuor Hispania haberet. binas tres praetores, in Sicilia et Sardinia et Gallia, duas C. Terentius in Etruria,
 
@@ -21046,7 +21046,7 @@ et ut quisque audierat exercitum hostium imperatoremque occisum, legiones Romana
 
 cum aegre in curiam perventum esset, multo aegrius summota turba, ne patribus misceretur, litterae in senatu recitatae sunt. inde traducti in contioneni contionem legati.
 
-L. Veturius litteris recitatis ipse planius omnia, quae acta erant, exposuit cum ingenti adsensu, postremo etiam clamore universae contionis, cum vi gaudium animis caperent.
+**L** Veturius litteris recitatis ipse planius omnia, quae acta erant, exposuit cum ingenti adsensu, postremo etiam clamore universae contionis, cum vi gaudium animis caperent.
 
 discursum inde ab aliis circa templa deum, ut grates agerent, ab aliis domos, coniugibus liberisque tam laetum nuntium impertirent senatus,
 
@@ -21056,7 +21056,7 @@ omniaque templa per totum triduum aequalem turbam habuere, cum matronae amplissi
 
 statum quoque civitatis ea victoria movit, ut iam inde haud secus quam in pace res inter se contrahere vendendo, emendo, mutuum dando argentum creditumque solvendo auderent.
 
-C. Claudius consul cum in castra redisset caput Hasdrubalis, quod servatum cum cura attulerat, proici ante hostium stationes captivosque Afros vinctos, ut erant, ostendi, duos etiam ex iis solutos ire ad Hannibalem et expromere, quae acta essent, iussit.
+**C** Claudius consul cum in castra redisset caput Hasdrubalis, quod servatum cum cura attulerat, proici ante hostium stationes captivosque Afros vinctos, ut erant, ostendi, duos etiam ex iis solutos ire ad Hannibalem et expromere, quae acta essent, iussit.
 
 Hannibal, tanto simul publico familiarique ictus luctu, agnoscere se fortunam Carthaginis fertur dixisse;
 
@@ -21150,7 +21150,7 @@ Scipio conlaudato fratre cum, quanto poterat verborum honore, Carthagini ab se c
 
 quia et hiems instabat, ut nec temptare Gades nec disiectum passim per provinciam exercitum Hasdrubalis consectari posset, in citeriorem Hispaniam omnes suas copias reduxit, dimissisque in hiberna legionibus,
 
-L. Scipione fratre Romam misso et Hannone hostium imperatore ceterisque nobilibus captivis ipse Tarraconem concessit.
+**L** Scipione fratre Romam misso et Hannone hostium imperatore ceterisque nobilibus captivis ipse Tarraconem concessit.
 
 eodem anno classis Romana cum M. Valerio Laevino proconsule ex Sicilia in Africam transmissa ia in Uticensi Carthaginiensique agro late populations populationes fecit.
 
@@ -21348,13 +21348,13 @@ in Etruria duas volonum legiones a C. Terentio propraetore M. Livius proconsul, 
 
 et Q. Mamilio, ut collegae iuris dictione tradita Galliam cum exercitu, cui L. Porcius propraetor praefuerat, obtineret, decretum est, iussusque populari agros Gallorum, qui ad Poenos sub adventure Hasdrubalis defecissent.
 
-C. Servilio cum Cannensibus duabus legionibus, sicut C. Mamilius tenuerat, Sicilia tuenda data.
+**C** Servilio cum Cannensibus duabus legionibus, sicut C. Mamilius tenuerat, Sicilia tuenda data.
 
 ex Sardinia vetus exercitus, cui A. Hostilius praefuerat, deportatus; novam legionem, quam Ti. Claudius traiceret secum, consules conscripserunt.
 
 Q. Claudio, ut Tarentum, C. Hostilio Tubulo, ut Capuam provinciam haberet, prorogatum in annum imperium est.
 
-M. Valerius proconsul, qui tuendae circa Siciliam maritumae orae praefuerat, triginta navibus C. Servilio traditis cum cetera omni classe redire ad urbem iussus.
+**M** Valerius proconsul, qui tuendae circa Siciliam maritumae orae praefuerat, triginta navibus C. Servilio traditis cum cetera omni classe redire ad urbem iussus.
 
 in civitate tanto discrimine belli sollicita, cum omnium secundorum adversorumque causas in deos verterent, multa prodigia nuntiabantur:
 
@@ -21538,7 +21538,7 @@ hoc maxime modo ductu atque auspicio P. Scipionis pulsi Hispania Carthaginienses
 
 baud haud multo post Silanus debellatum referens Tarraconem ad Scipionem rediit.
 
-L. Scipio cum multis nobilibus captivis nuntius receptae Hispaniae Romam est missus;
+**L** Scipio cum multis nobilibus captivis nuntius receptae Hispaniae Romam est missus;
 
 et cum ceteri laetitia gloriaque ingenti ear eam rem vulgo ferrent, unus, qui gesserat, inexplebilis virtutis veraeque laudis, parvum instar eorum, quae spe ac magnitudine animi concepisset, receptas Hispanias ducebat:
 
@@ -22522,7 +22522,7 @@ Hispaniae populis reddita pax; stipendium eius anni duplex et frumentum sex mens
 
 ita Hispaniae rebellantis tumultu haud magno motu intra paucos dies concito et compresso in Africam omnis terror versus.
 
-C. Laelius nocte ad Hipponem Regium cum accessisset, luce prima ad populandum agrum sub signis milites sociosque navales duxit.
+**C** Laelius nocte ad Hipponem Regium cum accessisset, luce prima ad populandum agrum sub signis milites sociosque navales duxit.
 
 omnibus pacis modo incuriose agentibus magna clades inlata; nuntiique trepidi Carthaginem terrore ingenti conplevere, classem Romanam Scipionemque imperatorem — et fama fuerat iam in Siciliam transgressum advenisse.
 
@@ -22574,7 +22574,7 @@ Liguribus, quod procul agro urbibusque eorum castra Romana sint, libera consilia
 
 eorum mercede conducere; commeatus quoque omnis generis occulte ad eum a Gallicis populis mittebantur.
 
-M. Livius exercitum volonum ex Etruria in Galliam traducit iunctusque Lucretio, si se Mago ex Liguriburs Liguribus propius urbem moveat, obviam ire parat, si Poenus sub angulo Alpium quietus se contineat, et ipse in eadem regione circa Ariminum Italiae praesidio futurus.
+**M** Livius exercitum volonum ex Etruria in Galliam traducit iunctusque Lucretio, si se Mago ex Liguriburs Liguribus propius urbem moveat, obviam ire parat, si Poenus sub angulo Alpium quietus se contineat, et ipse in eadem regione circa Ariminum Italiae praesidio futurus.
 
 post reditum ex Africa C. Laeli et Scipione stimulato Masinissae adhortationibus et militibus, praedam ex hostium terra cernentibus tota classe efferri, accensis ad traiciendum quam primum, intervenit maiori minor cogitatio Locros urbem recipiendi, quae sub defectionem Italiae desciverat et ipsa adi Poenos.
 
@@ -22696,7 +22696,7 @@ nullasdum in Asia socias civitates habebat populus Romanus; tamen memores Aescul
 
 tunc iam cum Attalo rege propter commune adversus Philippum bellum coeptam amicitiam esse, facturum eum, quae posset, populi Romani causa, legatos ad eum decernunt,
 
-M. Valerium Laevinum, qui bis consul fuerat ac res in Graecia gesserat, M. Caecilium Metellum praetorium, Ser. Sulpicium Galbam aedilicium, duos quaestorios, Cn. Tremellium Flaccum et M. Valerium Faltonem.
+**M** Valerium Laevinum, qui bis consul fuerat ac res in Graecia gesserat, M. Caecilium Metellum praetorium, Ser. Sulpicium Galbam aedilicium, duos quaestorios, Cn. Tremellium Flaccum et M. Valerium Faltonem.
 
 iis quinque naves quinqueremes, ut ex dignitate populi Romani adirent eas terras, ad quas concilianda maiestas nomini Romano esset, decernunt.
 
@@ -22752,7 +22752,7 @@ haec conscripta consignataque sunt, et in duos menses indutiae factae, done done
 
 iusseruntque omnes tribus, quia verso in Africam bello omnibus aliis in praesentia levari bellis volebant. P. Sempronius pace facta ad consulatum Romam decessit.
 
-M. Cornelio P. Sempronio consulibus — quintus decimus is annus belli Punici erat — provinciae Cornelio Etruria cum vetere exercitu, Sempronio Bruttii, ut novas scriberet legiones, decretae.
+**M** Cornelio P. Sempronio consulibus — quintus decimus is annus belli Punici erat — provinciae Cornelio Etruria cum vetere exercitu, Sempronio Bruttii, ut novas scriberet legiones, decretae.
 
 praetoribus M. Marcio urbana L. Scribonio Liboni peregrina et eidem Gallia, M. Pomponio Mathoni Sicilia, Ti. Claudio Neroni Sardinia evenit.
 
@@ -22762,7 +22762,7 @@ et M. Livio et Sp. Lucretio cum binis legionibus,
 
 quibus adversus Magonem Galliae praesidio fuissent, prorogatum imperium est, et Cn. Octavio, ut cum Sardiniam legionemque Ti. Claudio tradidisset, ipse navibus longis quadraginta maritimam oram, quibus finibus senatus censuisset, tutaretur.
 
-M. Pomponio praetori in Sicilia Cannensis exercitus, duae legiones decretae; T. Quinctius Tarentum, C. Hostilius Tubulus Capuam pro praetoribus, sicut priore anno, cum vetere uterque praesidio obtinerent.
+**M** Pomponio praetori in Sicilia Cannensis exercitus, duae legiones decretae; T. Quinctius Tarentum, C. Hostilius Tubulus Capuam pro praetoribus, sicut priore anno, cum vetere uterque praesidio obtinerent.
 
 de Hispaniae imperio quos in ear eam provinciam duos pro consulibus mitti placeret, latum ad populum est. omnes tribus eosdem, L. Cornelium Lentulum et L. Manlium Acidinum, pro consulibus, sicut priore anno tenuissent, obtinere eas provincias iusserunt.
 
@@ -23434,7 +23434,7 @@ nobilis idem ac dives erat; forma viribusque corporis excellebat; facundissimus 
 
 super haec bellicae quoque laudis consulatus compotem fecerat. quod in Bruttiis provincia, idem in Etruria ac Liguribus decretum:
 
-M. Cornelius novo consuli tradere exercitum iussus; ipse prorogato imperio Galliam provinciam obtineret cum legionibus iis, quas L. Scribonius priore anno habuisset.
+**M** Cornelius novo consuli tradere exercitum iussus; ipse prorogato imperio Galliam provinciam obtineret cum legionibus iis, quas L. Scribonius priore anno habuisset.
 
 sortiti deinde provincias: Caepioni Bruttii, Servilio Gemino Etruria evenit. tum praetorum provinciae in sortem coniectae:
 
@@ -23980,7 +23980,7 @@ Q. Metellus, qui triennio ante consul dictatorque fuerat: cum P. Scipio caedendo
 
 quam qui ante portas Carthaginis bellum gereret, nullius alterius consilio quam Scipionis accipiendam abnuendamve pacem esse.
 
-M. Valerius Laevinus qui bis consul fuerat, speculatores, non legatos venisse arguebat iubendosque Italia excedere et custodes cum iis usque ad naves mittendos Scipionique scribendum, ne bellum remitteret.
+**M** Valerius Laevinus qui bis consul fuerat, speculatores, non legatos venisse arguebat iubendosque Italia excedere et custodes cum iis usque ad naves mittendos Scipionique scribendum, ne bellum remitteret.
 
 Laelius Fulviusque adiecerunt et Scipionem in eo positam habuisse spem pacis, si Hannibal et Mago ex Italia non revocarentur.
 
@@ -24070,13 +24070,13 @@ nihilo minus consules provinciam Africam — ita enim senatus decreverat — in 
 
 Ti. Claudio Africa evenit, ut quinquaginta navium classem, omnes quinqueremes, in Africam traiceret parique imperio cum P. Scipione imperator esset;
 
-M. Servilius Etruriam sortitus. in eadem provincia et C. Servilio prorogatum imperium, si consulem manere ad urbem senatu placuisset.
+**M** Servilius Etruriam sortitus. in eadem provincia et C. Servilio prorogatum imperium, si consulem manere ad urbem senatu placuisset.
 
 praetores M. Sextius Galliam est sortitus, ut duas legiones provinciamque traderet ei P. Quinctilius Varus; C. Livius Bruttios cum duabus legionibus, quibus P. Sempronius proconsul priore anno praefuerat;
 
 Cn. Tremellius Siciliam, ut a P. Villio Tappulo praetore prioris anni provinciam et duas legiones acciperet; Villius pro praetore viginti navibus longis et militibus mille oram Siciliae tutaretur;
 
-M. Pomponius viginti navibus reliquis mille et quingentos milites Romam deportaret; C. Aurelio Cottae urbana evenit.
+**M** Pomponius viginti navibus reliquis mille et quingentos milites Romam deportaret; C. Aurelio Cottae urbana evenit.
 
 ceteris ita, uti quisque obtinebant provincias exercitusque, prorogata imperia. sedecim non amplius eo anno legionibus defensum imperium est.
 
@@ -24432,7 +24432,7 @@ P. Scipioni cum exercitibus, quos haberet, in provincia Africa prorogatum imperi
 
 P. Aelius praetor duas legiones in Sicilia ab On. Cn. Tremellio acciperet; legio una M. Fabio in Sardiniam, quam P. Lentulus pro praetore habuisset, decernitur.
 
-M. Servilio prioris anni consuli cum suis duabus item legionibus in Etruria prorogatum imperium est.
+**M** Servilio prioris anni consuli cum suis duabus item legionibus in Etruria prorogatum imperium est.
 
 quod ad Hispanias attineret, aliquot annos iam ibi L. Cornelium Lentulum et L. Manlium Acidinum esse; uti consules cum tribunis agerent, ut, si iis videretur, plebem rogarent, cui iuberent in Hispania imperium esse;
 
@@ -24602,7 +24602,7 @@ cum primum senatum habuit, universis postulantibus, ne quam prius rem quam de Ph
 
 decrevitque frequens senatus, ut P. Aelius consul quem videretur ei cum imperio mitteret, qui classe accepta, quam ex Sicilia Cn. Octavius reduceret, in Macedoniam traiceret.
 
-M. Valerius Laevinus propraetor missus circa Vibonem duodequadraginta navibus ab Cn. Octavio acceptis in Macedoniam transmisit.
+**M** Valerius Laevinus propraetor missus circa Vibonem duodequadraginta navibus ab Cn. Octavio acceptis in Macedoniam transmisit.
 
 ad quem cum M. Aurelius legatus venisset edocuissetque eum, quantos exercitus,
 
@@ -24700,7 +24700,7 @@ praetoribus L. Furio Purpurioni et Q. Minucio Rufo quina milia socium Latini nom
 
 Q. Fulvius Gillo ipse iussus ex eo exercitu, quem P. Aelius consul habuisset, ut quisque minime multa stipendia haberet, legere, donec et ipse quinque milia socium ac nominis Latini effecisset: id praesidii Siciliae provinciae esset.
 
-M. Valerio Faltoni, qui praetor priore anno Campaniam provinciam habuerat,
+**M** Valerio Faltoni, qui praetor priore anno Campaniam provinciam habuerat,
 
 prorogatum in annum imperium est, uti propraetor in Sardiniam traiceret: is quoque de exercitu, qui ibi esset, quinque milia socium nominis Latini, qui eorum minime multa stipendia haberent, legeret.
 
@@ -24734,7 +24734,7 @@ et direpta urbe ac per iram magna ex parte incensa, vix duobus milibus hominum i
 
 vicinae urbis audita clades spatium colonis dedit ad claudendas portas praesidiaque per muros disponenda, ut obsiderentur tamen prius quam expugnarentur nuntiosque mitterent ad praetorem Romanum.
 
-L. Furius Purpurio tur tum provinciae praeerat cetero ex senatus consulto exercitu dimisso praeter quinque milia socium ac Latini nominis; cum iis copiis in proxima regione provinciae circa Ariminum substiterat. is tur tum senatui scripsit, quo in tumultu provincia esset:
+**L** Furius Purpurio tur tum provinciae praeerat cetero ex senatus consulto exercitu dimisso praeter quinque milia socium ac Latini nominis; cum iis copiis in proxima regione provinciae circa Ariminum substiterat. is tur tum senatui scripsit, quo in tumultu provincia esset:
 
 duarum coloniarum, quae ingentem illam tempestatem Punici belli subterfugissent, alteram captam ac direptam ab hostibus, alteram oppugnari;
 
@@ -24780,7 +24780,7 @@ litterae deinde in senatu recitatae sunt Q. Minucii praetoris, cui Bruttii provi
 
 indigne passus senatus non cessari ab sacrilegiis, et ne Pleminium quidem, tam clarum recensque noxae simul ac poenae exemplum, homines deterrere.
 
-C. Aurelio consuli negotium datum, ut ad praetorem in Bruttios scriberet senatui placere, quaestionem de expilatis thensauris eodem exemplo haberi, quo M.
+**C** Aurelio consuli negotium datum, ut ad praetorem in Bruttios scriberet senatui placere, quaestionem de expilatis thensauris eodem exemplo haberi, quo M.
 
 Pomponius praetor triennio ante habuisset; quae inventa pecunia esset, reponi; si quo minus inventum foret, expleri, ac piacularia, si videretur, sicut ante pontifices censuissent, fieri.
 
@@ -24956,9 +24956,9 @@ nec Romanus moram pugnandi fecit. sed vix spatium instruendi fuit;
 
 eo cursu hostes in proelium venerunt. dextra ala — in alas divisum socialem exercitum habebat — in prima acie locata est, in subsidiis duae Romanae legiones.
 
-M. Furius dextrae alae, legionibus M. Caecilius, equitibus L. Valerius Flaccus — legati omnes erant — praepositi. praetor secum duos legatos,
+**M** Furius dextrae alae, legionibus M. Caecilius, equitibus L. Valerius Flaccus — legati omnes erant — praepositi. praetor secum duos legatos,
 
-C. Laetorium et P. Titinium, habebat, cum quibus circumspicere et obire ad omnis hostium subitos conatus posset.
+**C** Laetorium et P. Titinium, habebat, cum quibus circumspicere et obire ad omnis hostium subitos conatus posset.
 
 primo Galli omni multitudine in unum locum conixi obruere atque obterere sese dextram alam, quae prima erat, sperarunt posse.
 
@@ -24966,7 +24966,7 @@ ubi id parum procedebat, circuire a cornibus et amplecti hostium aciem, quod mul
 
 id ubi vidit praetor, ut et ipse dilataret aciem, duas legiones ex subsidiis dextra laevaque alae, quae in prima acie pugnabat, circumdat aedemque Diiovi vovit, si eo die hostis fudisset.
 
-L. Valerio imperat, ut parte una duarum legionum equites, altera sociorum equitatum in cornua hostium emittat nec circuire eos aciem patiatur;
+**L** Valerio imperat, ut parte una duarum legionum equites, altera sociorum equitatum in cornua hostium emittat nec circuire eos aciem patiatur;
 
 simul et ipse, ut extenuatam mediam diductis cornibus aciem Gallorum vidit, signa inferre confertos milites et perrumpere ordines iubet.
 
@@ -25554,7 +25554,7 @@ consul alter C. Aurelius ad confectum bellum cum in provinciam venisset, haud cl
 
 misso igitur eo in Etruriam ipse in agrum hostiulm hostium legiones induxit populandoque cum praeda maiore quam gloria bellum gessit.
 
-L. Furius, simul quod in Etruria nihi) nihil erat rei, quod gereret, simul Gallico triumpho imminens, quem absente consule irato atque invidente facilius impetrari posse ratus est, Romam inopinato cum venisset,
+**L** Furius, simul quod in Etruria nihi) nihil erat rei, quod gereret, simul Gallico triumpho imminens, quem absente consule irato atque invidente facilius impetrari posse ratus est, Romam inopinato cum venisset,
 
 senatum in aede Bellonae habuit expositisque rebus gestis, ut triumphanti sibi in urbem invehi liceret, petit.
 
@@ -25596,7 +25596,7 @@ triumviri item creati ad supplendum Venusinis colonorum numerum, quod bello Hann
 
 eodem anno C. Cornelius Cethegus, qui proconsul Hispaniam obtinebat, magnum hostium exercitum in agro Sedetano fudit. quindecim milia Hispanorum eo proelio dicuntur caesa, signa militaria capta octo et septuaginta.
 
-C. Aurelius consul, cum ex provincia Romam comitiorum causa venisset, non id, quod animis praeceperant, questus est, non expectatum se ab senatu,
+**C** Aurelius consul, cum ex provincia Romam comitiorum causa venisset, non id, quod animis praeceperant, questus est, non expectatum se ab senatu,
 
 neque disceptandi cum praetore consuli potestatem factam, sed ita triumphum decresse senatum, ut nullius
 
@@ -25618,7 +25618,7 @@ paria quinque et viginti pugnarunt. M. Aurelius Cotta decemvir sacrorum mortuus;
 
 comitiis aediles curules creati sunt forte ambo, qui static statim occipere magistratum non possent. nam C. Cornelius Cethegus absens creatus erat, cum Hispaniam obtineret provinciam;
 
-C. Valerius Flaccus, quem praesentem creaverant, quia flamen Dialis erat, iurare in leges non poterat; magistratum autem plus quinque dies, nisi qui iurasset in leges, non licebat gerere.
+**C** Valerius Flaccus, quem praesentem creaverant, quia flamen Dialis erat, iurare in leges non poterat; magistratum autem plus quinque dies, nisi qui iurasset in leges, non licebat gerere.
 
 petente Flacco, ut legibus solveretur, senatus decrevit, ut, si aedilis, qui pro se iuraret, arbitratu consulum daret, consules, si iis videretur, cum tribunis plebis agerent, uti ad plebem ferrent.
 
@@ -25632,7 +25632,7 @@ Complura prodigia ex diversis regionibus nuntiata referuntur, inter quae in Mace
 
 consules praetoresque, cum idibus Martiis magistratum inissent, provincias sortiti sunt.
 
-L. Lentulo Italia, P. Villio Macedonia, praetoribus L. Quinctio urbana, Cn. Baebio Ariminum, L. Valerio Sicilia, L.
+**L** Lentulo Italia, P. Villio Macedonia, praetoribus L. Quinctio urbana, Cn. Baebio Ariminum, L. Valerio Sicilia, L.
 
 Villio Sardinia evenit. Lentulus consul novas legiones scribere iussus, Villius a P. Sulpicio exercitum accipere;
 
@@ -26294,7 +26294,7 @@ creati autem hi: L. Manlius Volso, C. Sempronius Tuditanus, M. Sergius Silus, M.
 
 curules aediles Q. Minucius Thermus et Ti. Sempronius Longus. ludi Romani eo anno quater instaurati.
 
-C. Cornelio et Q. Minucio consulibus omnium primum de provinciis consulum praetorumque actum.
+**C** Cornelio et Q. Minucio consulibus omnium primum de provinciis consulum praetorumque actum.
 
 prius de praetoribus transacta res, quae transigi sorte poterat. urbana Sergio, peregrina iurisdictio Minucio obtigit; Sardiniam Atilius, Siciliam Manlius, Hispanias Sempronius citeriorem, Helvius ulteriorem est sortitus.
 
@@ -26322,7 +26322,7 @@ priusquam consules praetoresque in provincias proficiscerentur, prodigia procura
 
 et Frusinone inter noctem lux orta, et Aefulae agnus biceps cum quinque pedibus natus, et Formiis duo lupi oppidum ingressi obvios aliquot laniaverant, Romae non in urbem solum sed in Capitolium penetraverat lupus.
 
-C. Atinius tribunus plebis tulit, ut quinque coioniae coloniae in oram maritimam deducerentur, duae ad ostia fluminum Vulturni Liternique, una Puteolos, una ad Castrum Salerni:
+**C** Atinius tribunus plebis tulit, ut quinque coioniae coloniae in oram maritimam deducerentur, duae ad ostia fluminum Vulturni Liternique, una Puteolos, una ad Castrum Salerni:
 
 his Buxentum adiectum, trecenae familiae in singulas colonias iubebantur mitti. triumviri deducendis iis, qui per triennium magistratum haberent, creati M. Servilius Geminus, Q. Minucius Thermus, Ti. Sempronius Longus. dilectu rebusque aliis divinis humanisque,
 
@@ -27082,7 +27082,7 @@ quattuor superstites habuit — , mitis ac munificus amicis fait; fuit; regnum a
 
 cum hic status rerum in Asia Graeciaque et Macedonia esset, vixdum terminate terminato cum Philippo bello, pace certe nondum perpetrata, ingens in Hispania ulteriore coortum est bellum.
 
-M. Helvius ear eam provinciam obtinebat. is litteris senatum certiorem fecit Culcham et Luxinium regulos in armis esse,
+**M** Helvius ear eam provinciam obtinebat. is litteris senatum certiorem fecit Culcham et Luxinium regulos in armis esse,
 
 cum Culcha decem et septem oppida, cum Luxinio validas urbes Carmonem et Baldonem, in maritima ora Malacinos Sexetanosque et Baeturiam omnem et quae nondum animos nudaverant ad finitimorum motus consurrectura.
 
@@ -27108,13 +27108,13 @@ et in tempus simulatas sine ullo pignore deditiones factas esse.
 
 hae inter consules tribunosque altercationes biduunm biduum tenuerunt, victique perseverantia tribunorum consules separatim rettulerunt.
 
-C. Cornelio omniurn omnium consensu decretus triumphus. et Placentini Creronensesque Cremonensesque addiderunt favorem consuli,
+**C** Cornelio omniurn omnium consensu decretus triumphus. et Placentini Creronensesque Cremonensesque addiderunt favorem consuli,
 
 gratias agentes commemorantesque obsidione sese ab eo liberators liberatos, plerique etiam, cum capti apud hostes essent, servitute exemptos.
 
 Q. Minucius temptata tantum relatione, cum adversum omnem senatum videret, in monte Albano se triumphaturum et iure imperii consularis et multorum clarorum virorum exemplo dixit.
 
-C. Cornelius de Insubribus Cenomanisque in magistratu triumphavit. multa sigxa signa militaria tulit, multa Gallica spolia captivis carpentis transvexit,
+**C** Cornelius de Insubribus Cenomanisque in magistratu triumphavit. multa sigxa signa militaria tulit, multa Gallica spolia captivis carpentis transvexit,
 
 multi nobiles Galli ante currum ducti, inter quos quidam Hamilcarem,
 
@@ -27150,7 +27150,7 @@ plebei septiens instaurati; M’. Acilius Glabrio et C. Laelius eos ludos feceru
 
 et de argento multaticio tria signa aenea, Cererem Liberunum Liberumque que et Liberam, posuerunt.
 
-L. Furius et M. Claudius Marcellus consulate consulatu inito, cum de provinciis ageretur et Italiam utrique provinciam senatus decerneret, ut Macedoniam cum Italia sortirentur tendebant.
+**L** Furius et M. Claudius Marcellus consulate consulatu inito, cum de provinciis ageretur et Italiam utrique provinciam senatus decerneret, ut Macedoniam cum Italia sortirentur tendebant.
 
 Marcellus, provinciae cupidior, pacem simulatam ac fallacem dicendo et rebellaturmm, rebellaturum, si exercitus inde deportatus esset, regem,
 
@@ -27188,7 +27188,7 @@ iisdem diebus Cn. Cornelius Blasio, qui ante C. Sempronium Tuditanum citeriorem 
 
 tulit prae se auri mille et quingenta quindecim pondo, argenti viginti milia, signati denarium triginta quattuor milia et quingentos.
 
-L. Stertinius ex ulteriore Hispania, ne temptata quidem triumphi spe, quinquaginta milia pondo argenti in aerarium intulit
+**L** Stertinius ex ulteriore Hispania, ne temptata quidem triumphi spe, quinquaginta milia pondo argenti in aerarium intulit
 
 et de manubiis duos fornices in foro bovario ante Fortunae aedem et matris Matutae, unum in maximo circo fecit et his fornicibus signa aurata inposuit.
 
@@ -27534,7 +27534,7 @@ tres ex his condemnati sunt; ex eorum multaticia pecunia aedem in insula Fauji F
 
 ludi plebei per biduum instaurati, et epulum fuit ludorum causa.
 
-L. Valerius Flaccus et M. Porcius Cato consules idibus Martiis, quo die magistratum inierunt de provinciis cum ad senatum rettulissent, patres censuerunt,
+**L** Valerius Flaccus et M. Porcius Cato consules idibus Martiis, quo die magistratum inierunt de provinciis cum ad senatum rettulissent, patres censuerunt,
 
 quoniam in Hispania tantum glisceret bellun, bellum, ut iam consulari et duce et exercitu opus esset placere consules Hispaniam citeriorem Italiamque provincias aut comparare inter se aut sortiri;
 
@@ -27666,11 +27666,11 @@ lex Oppia, quam C. Oppius tribunus plebis bello Punico de finiendis matronarum c
 
 inter bellorum magnorum aut vixdum finitorum aut imminentium curas intercessit res parva dictu, sed quae studiis in magnum certamen excesserit.
 
-M. Fundanius et L. Valerius tribuni plebi ad plebem tulerunt de Oppia lege abroganda.
+**M** Fundanius et L. Valerius tribuni plebi ad plebem tulerunt de Oppia lege abroganda.
 
 tulerat eain eam C. Oppius tribunus plebis Q. Fabio Ti. Sempronio consulibus, in medio ardore Punici belli, ne qua mulier plus semunciam auri haberet neu vestimento versicolori uteretur neu iuncto vehiculo in urbe oppidove aut propius inde mille passus nisi sacrorum publicorum causa veheretur.
 
-M. et P. Iunii Bruti tribuni plebis legem Oppiam tuebantur nec ear eam se abrogari passuros aiebant; ad suadendum dissuadendumque multi nobiles prodibant;
+**M** et P. Iunii Bruti tribuni plebis legem Oppiam tuebantur nec ear eam se abrogari passuros aiebant; ad suadendum dissuadendumque multi nobiles prodibant;
 
 Capitolium turba hominum faventium adversantiumque legi complebatur. matronae nulla nec auctoritate nec verecundia nec imperio virorum contineri limine poterant, omnis vias urbis aditusque in forum obsidebant viros descendentis ad forum orantes, ut florente re publica, crescente in dies privata omnium fortuna matronis quoque pristinum ornatum reddi paterentur.
 
@@ -27862,7 +27862,7 @@ unoque agmine omnes Brutorum ianuas obsederunt, qui collegarum rogationi interce
 
 nulla deinde dubitatio fuit, quin omnes tribus legem abrogarent. viginti annis post abrogata est quam lata.
 
-M. Porcius consul, postquam abrogata lex Oppia est, extemplo viginti quinque navibus longis, quarum quinque sociorum erant, ad Lunae portum profectus est eodem exercitu convenire iusso
+**M** Porcius consul, postquam abrogata lex Oppia est, extemplo viginti quinque navibus longis, quarum quinque sociorum erant, ad Lunae portum profectus est eodem exercitu convenire iusso
 
 et edicto per orara oram maritimam misso navibus omnis generis contractis ab Luna proficiscens edixit, ut ad portum Pyrenaei sequerentur; inde se frequenti classe ad hostis iturum.
 
@@ -28564,7 +28564,7 @@ eo proelio victum castrisque exutum pacem petisse, cum cecidissent quattuordecim
 
 eodem fere tempore et a T. Quinctio de rebus ad Lacedaemonem gestis et a M. Porcio consule ex Hispania litterae adlatae. utriusque nomine in dies ternos supplicatio ab senatu decreta est.
 
-L. Valerius consul, cum post fusos circa Litanam silvam Boios quietam provinciam habuisset,
+**L** Valerius consul, cum post fusos circa Litanam silvam Boios quietam provinciam habuisset,
 
 comitiorum causa Romam rediit et creavit consules P. Cornelium Scipionem Africanum iterum et Ti. Sempronium Longum.
 
@@ -29096,11 +29096,11 @@ cuius coercendi cum ratio quaereretur, diem finiri placuit Feralia, quae proxime
 
 deinde postquam professionibus detecta est magnitudo aeris alieni per hanc fraudem contracti,
 
-M. Sempronius tribunus plebis ex auctoritate patrum plebem rogavit, plebesque scivit, ut cum sociis ac nomine Latino creditae pecuniae ius idem quod cum civibus Romanis esset. haec in Italia domi militiaeque acta.
+**M** Sempronius tribunus plebis ex auctoritate patrum plebem rogavit, plebesque scivit, ut cum sociis ac nomine Latino creditae pecuniae ius idem quod cum civibus Romanis esset. haec in Italia domi militiaeque acta.
 
 in Hispania nequaquam tantum belli fuit, quantum auxerat fama.
 
-C. Flaminius in citeriore Hispania oppidum Inluciam in Oretanis cepit, deinde in hibernacula milites deduxit, et per hiemem proelia aliquot nulla memoria digna adversus latronum magis quam hostium excursiones vario tamen eventu nec sine militum iactura sunt facta. maiores gestae res a M. Fulvio.
+**C** Flaminius in citeriore Hispania oppidum Inluciam in Oretanis cepit, deinde in hibernacula milites deduxit, et per hiemem proelia aliquot nulla memoria digna adversus latronum magis quam hostium excursiones vario tamen eventu nec sine militum iactura sunt facta. maiores gestae res a M. Fulvio.
 
 is apud Toletum oppidum cum Vaccaeis Vettonibusque et Celtiberis signis collatis dimicavit, exercitum earum gentium fudit fugavitque, regem Hilernum vivum cepit.
 
@@ -29144,7 +29144,7 @@ filius Scipio, qui ex Hispania provincia nuper decesserat magnis rebus gestis, e
 
 hi patricii; plebei autem C. Laelius, Cn. Domitius,
 
-C. Livius Salinator, M’. Acilius. sed omnium oculi in Quinctium Corneliumque coniecti; nam et in unum locum petebant ambo patricii, et rei militaris gloria recens utrumque commendabat.
+**C** Livius Salinator, M’. Acilius. sed omnium oculi in Quinctium Corneliumque coniecti; nam et in unum locum petebant ambo patricii, et rei militaris gloria recens utrumque commendabat.
 
 ceterum ante omnia certamen accendebant fratres candidatorum, duo clarissimi aetatis suae imperatores. maior gloria Scipionis, et quo maior, eo propior invidiam; Quincti recentior,
 
@@ -29156,7 +29156,7 @@ pro fratre germano, non patrueli se petere aiebat, pro legato et participe admin
 
 se terra, fratrem mari rem gessisse. his obtinuit, ut praeferretur candidato, quem Africanus frater ducebat, quem Cornelia gens Cornelio consule comitia habente, quem tantum praeiudicium senatus, virum e civitate optimum iudicatum, qui matrem Idaeam Pessinunte venientem in urbem acciperet.
 
-L. Quinctius et Cn. Domitius Ahenobarbus consules facti: adeo ne in plebeio quidem consule,
+**L** Quinctius et Cn. Domitius Ahenobarbus consules facti: adeo ne in plebeio quidem consule,
 
 cum pro C. Laelio niteretur, Africanus valuit. postero die praetores creati L. Scribonius Libo M. Fulvius Centumalus A. Atilius Serranus M. Baebius Tamphilus L. Valerius Tappo Q. Salonius Sarra. aedilitas insigms insignis eo anno fuit M. Aemilii Lepidi et L. Aemilii Pauli;
 
@@ -30122,19 +30122,19 @@ consulibus sortitis provincias extemplo et praetores sortiti sunt. M. Iunio Brut
 
 A. Cornelio noui novi milites, conscripti priore anno ex senatus consulto a L. Quinctio consule, dati sunt, iussusque tueri omnem oram circa Tarentum Brundisiumque.
 
-L. Aemilio Paulo in ulteriorem Hispaniam, praeter eum exercitum, quem a M. Fuluio Fulvio proconsule accepturus esset, decretum est, ut nouorum novorum militum tria milia duceret et trecentos equites, ita ut in iis duae partes socium Latini nominis, tertia ciuium civium Romanorum esset.
+**L** Aemilio Paulo in ulteriorem Hispaniam, praeter eum exercitum, quem a M. Fuluio Fulvio proconsule accepturus esset, decretum est, ut nouorum novorum militum tria milia duceret et trecentos equites, ita ut in iis duae partes socium Latini nominis, tertia ciuium civium Romanorum esset.
 
 idem supplementi ad C. Flaminium, cui imperium prorogabatur, in Hispaniam citeriorem est missum.
 
-M. Aemilius Lepidus ab L. Ualerio, Valerio, cui successurus esset, simul prouinciam provinciam exercitumque accipere iussus;
+**M** Aemilius Lepidus ab L. Ualerio, Valerio, cui successurus esset, simul prouinciam provinciam exercitumque accipere iussus;
 
-L. Ualerium, Valerium, si ita uideretur, videretur, pro praetore in prouincia provincia retinere et prouinciam provinciam ita diuidere, dividere, ut una ab Agrigento ad Pachynum esset, altera a Pachyno Tyndareum; eam maritimam oram L. Ualerius Valerius uiginti viginti nauibus navibus longis custodiret.
+**L** Ualerium, Valerium, si ita uideretur, videretur, pro praetore in prouincia provincia retinere et prouinciam provinciam ita diuidere, dividere, ut una ab Agrigento ad Pachynum esset, altera a Pachyno Tyndareum; eam maritimam oram L. Ualerius Valerius uiginti viginti nauibus navibus longis custodiret.
 
 eidem praetori mandatum, ut duas decumas frumenti exigeret; id ad mare comportandum deuehendumque devehendumque in Graeciam curaret.
 
 idem L. Oppio de alteris decumis exigendis in Sardinia imperatum; ceterum non in Graeciam sed Romam id frumentum portari placere.
 
-C. Liuius Livius praetor, cui classis euenerat, evenerat, triginta nauibus navibus paratis traicere in Graeciam primo quoque tempore iussus, et ab Atilio naues naves accipere.
+**C** Liuius Livius praetor, cui classis euenerat, evenerat, triginta nauibus navibus paratis traicere in Graeciam primo quoque tempore iussus, et ab Atilio naues naves accipere.
 
 ueteres veteres naues naves , quae in naualibus navalibus erant, ut reficeret et armaret, M. Iunio praetori negotium datum est, et in eam classem socios nauales navales libertinos legeret.
 
@@ -30322,7 +30322,7 @@ aliis nunc vires urbis nequaquam Pheris conferendae memorantibus, nunc hiemem et
 
 incerto regi inter spem metumque legati a Pharsalo, qui ad dedendam urbem suam forte venerant, animos auxerunt.
 
-M. Baebius interim cum Philippo in Dassaretiis congressus Ap. Claudium ex communi consilio ad praesidium Larisae misit, qui per Macedoniam magnis itineribus in iugum montium, quod super Gonnos est, pervenit.
+**M** Baebius interim cum Philippo in Dassaretiis congressus Ap. Claudium ex communi consilio ad praesidium Larisae misit, qui per Macedoniam magnis itineribus in iugum montium, quod super Gonnos est, pervenit.
 
 oppidum Gonni viginti milia ab Larisa abest, in ipsis faucibus saltus, quae Tempe appellantur, situm. ibi castra metatus latius quam pro copiis et plures quam quot satis in usum erant ignes cum accendisset, speciem, quam quaesierat, hosti fecit omnem ibi Romanum exercitum cum rege Philippo esse.
 
@@ -30948,7 +30948,7 @@ unus vera et providere et fideliter praedicere visus. itaque ipse rex navibus, q
 
 ceteram classem Polyxenidam parare et deducere iussit; speculatorias naves ad omnia exploranda circa insulas dimisit.
 
-C. Livius praefectus Romanae classis, cum quinquaginta navibus tectis profectus ab Roma Neapolim, quo ab sociis eius orae convenire iusserat apertas naves,
+**C** Livius praefectus Romanae classis, cum quinquaginta navibus tectis profectus ab Roma Neapolim, quo ab sociis eius orae convenire iusserat apertas naves,
 
 quae ex foedere debebantur, Siciliam inde petit fretoque Messanam praetervectus, cum sex Punicas naves ad auxilium missas accepisset et ab Reginis Locrisque et eiusdem iuris sociis debitas exegisset naves, lustrata classe ad Lacinium, altum petit.
 
@@ -31030,9 +31030,9 @@ ibi relictis ad praesidium urbis quattuor quinqueremibus ad Canas classis venit;
 
 exitu anni comitia Romae habita, quibus creati sunt consules L. Cornelius Scipio et C. Laelius Africanum intuentibus cunctis — ad finiendum cum Antiocho bellum. postero die praetores creati M. Tuccius L. Aurunculeius Cn. Fulvius L. Aemilius P. Iunius C. Atinius Labeo.
 
-L. Cornelius Scipio consul legato Scipione Africano fratre, qui se legatum fratris futurum dixerat, si ei Graecia provincia decerneretur, cum C. Laelio, qui multum in senatu poterat, ea provincia dari videretur, profectus ad bellum adversus Antiochum regem gerendum, primus omnium Romanorum ducum in Asiam traiecit. Regillus adversus regiam classem Antiochi feliciter pugnavit ad Myonnesum Rhodiis iuvantibus. filius Africani captus ab Antiocho patri remissus est. victo deinde Antiocho ab L. Cornelio Scipione adiuvante Eumene, rege Pergami, Attali filio, pax data est ea condicione, ut omnibus provinciis citra Taurum montem cederet. L. Cornelius Scipio, qui cum Antiocho debellaverat, cognomine fratri exaequatus Asiaticus appellatus. Eumenis, quo iuvante Antiochus victus erat, regnum ampliatum. Rhodiis quoque, qui et ipsi iuverant, quaedam civitates concessae. colonia deducta est Bononia. Aemilius Regillus, qui praefectos Antiochi navali proelio devicerat, navalem triumphum duxit. M’. Acilius Glabrio de Antiocho, quem Graecia expulerat, et de Aetolis triumphavit.
+**L** Cornelius Scipio consul legato Scipione Africano fratre, qui se legatum fratris futurum dixerat, si ei Graecia provincia decerneretur, cum C. Laelio, qui multum in senatu poterat, ea provincia dari videretur, profectus ad bellum adversus Antiochum regem gerendum, primus omnium Romanorum ducum in Asiam traiecit. Regillus adversus regiam classem Antiochi feliciter pugnavit ad Myonnesum Rhodiis iuvantibus. filius Africani captus ab Antiocho patri remissus est. victo deinde Antiocho ab L. Cornelio Scipione adiuvante Eumene, rege Pergami, Attali filio, pax data est ea condicione, ut omnibus provinciis citra Taurum montem cederet. L. Cornelius Scipio, qui cum Antiocho debellaverat, cognomine fratri exaequatus Asiaticus appellatus. Eumenis, quo iuvante Antiochus victus erat, regnum ampliatum. Rhodiis quoque, qui et ipsi iuverant, quaedam civitates concessae. colonia deducta est Bononia. Aemilius Regillus, qui praefectos Antiochi navali proelio devicerat, navalem triumphum duxit. M’. Acilius Glabrio de Antiocho, quem Graecia expulerat, et de Aetolis triumphavit.
 
-L. Cornelio Scipione C. Laelio consulibus nulla prius secundum religiones acta in senatu res est quam de Aetolis. et legati eorum institerunt, quia brevem indutiarum diem habebant, et ab T. Quinctio, qui tum Romam ex Graecia redierat, adiuti sunt.
+**L** Cornelio Scipione C. Laelio consulibus nulla prius secundum religiones acta in senatu res est quam de Aetolis. et legati eorum institerunt, quia brevem indutiarum diem habebant, et ab T. Quinctio, qui tum Romam ex Graecia redierat, adiuti sunt.
 
 Aetoli, ut quibus plus in misericordia senatus quam in causa spei esset, suppliciter egerunt, veteribus benefactis nova pensantes maleficia.
 
@@ -31070,7 +31070,7 @@ si Acilius redire Romam mallet, ut A. Cornelius cum eo exercitu in Aetolia reman
 
 P. Iunius Brutus in Tuscos exercitum novum, legionem unam Romanam et decem milia socium ac Latini nominis scribere et quadringentos equites;
 
-L. Aemilius, cui maritima provincia erat, viginti naves longas et socios navalis a M. Iunio praetore superioris anni accipere iussus et scribere ipse mille navalis socios, duo milia peditum; cum iis navibus militibusque in Asiam proficisci et classem a C. Livio accipere.
+**L** Aemilius, cui maritima provincia erat, viginti naves longas et socios navalis a M. Iunio praetore superioris anni accipere iussus et scribere ipse mille navalis socios, duo milia peditum; cum iis navibus militibusque in Asiam proficisci et classem a C. Livio accipere.
 
 duas Hispanias Sardiniamque obtinentibus prorogatum in annum imperium est et idem exercitus decreti.
 
@@ -31098,7 +31098,7 @@ omnia perculsa metu non in Asia modo sed etiam in Syria esse; reges Aegypti ad e
 
 quae censuisset senatus, paratos fore. gratiae regibus actae; legatis munera dari iussa in singulos quaternum plilium milium aeris.
 
-L. Cornelius consul peractis, quae Romae agenda erant, pro contione edixit, ut milites, quos ipse in supplementum scripsisset, quique in Bruttiis cum A. Cornelio propraetore essent, ut hi omnes idibus Quinctilibus Brundisium convenirent.
+**L** Cornelius consul peractis, quae Romae agenda erant, pro contione edixit, ut milites, quos ipse in supplementum scripsisset, quique in Bruttiis cum A. Cornelio propraetore essent, ut hi omnes idibus Quinctilibus Brundisium convenirent.
 
 item tres legatos nominavit, Sex. Digitium L. Apustium C. Fabricium Luscinum, qui ex ora maritima undique navis Brundisium contraherent; et omnibus iam paratis paludatus ab urbe est profectus.
 
@@ -31346,7 +31346,7 @@ curam posse, et eam classem, quae in Cilicia compararetur, intercludi, ne Polyxe
 
 haec maxime movit sententia; placuit tamen Regillum classe tota evehi ad portum Ephesi ad inferendum hostibus terrorem.
 
-C. Livius cum duabus quinqueremibus Romanis et quattuor quadriremibus Rhodiis et duabus apertis Zmyrnaeis in Lyciam est missus, Rhodum prius iussus adire et omnia cutm cum iis communicare consilia.
+**C** Livius cum duabus quinqueremibus Romanis et quattuor quadriremibus Rhodiis et duabus apertis Zmyrnaeis in Lyciam est missus, Rhodum prius iussus adire et omnia cutm cum iis communicare consilia.
 
 civitates, quas praetervectus est, Miletus Myndus Halicarnassus Cnidus Cous, imperata enixe fecerunt.
 
@@ -31850,7 +31850,7 @@ laevum cornu non egere videbatur obiectis talibus auxiliis, quia flumen ab ea pa
 
 quattuor tamen inde turmae equitum oppositae. haec summa copiarum erat Romanis, et duo milia mixtorum Macedonum Thracumque, qui voluntate secuti erant; hi praesidio castris relicti sunt.
 
-XVI elephantos post triaiios triarios in subsidio locaverunt; nam praeterquam quod multitudinem regiorum elephantorum — erant autem quattuor et quinquaginta — sustinere non videbantur posse, ne pari quidem numero Indicis Africi resistunt, sive quia magnitudine — longe enim illi praestant — sive robore animorum vincuntur.
+**XVI** elephantos post triaiios triarios in subsidio locaverunt; nam praeterquam quod multitudinem regiorum elephantorum — erant autem quattuor et quinquaginta — sustinere non videbantur posse, ne pari quidem numero Indicis Africi resistunt, sive quia magnitudine — longe enim illi praestant — sive robore animorum vincuntur.
 
 regia acies varia magis multis gentibus, dissimilitudine armorum auxiliorumque erat. decem et sex milia peditum more Macedonum armati fuere, qui phalangitae appellabantur. haec media acies fuit,
 
@@ -32022,7 +32022,7 @@ creati M. Atilius Serranus L. Valerius P. F. Flaccus L. Valerius C. F. Tappo.
 
 haud ita multo post, cum iam consularium comitiorum appeteret tempus,
 
-C. Laelius consul ex Gallia Romam rediit. is non solum ex facto absente se senatus consulto in supplementum Cremonae et Placentiae colonos scripsit, sed, ut novae coloniae duae in agrum, qui Boiorum fuisset, deducerentur, et rettulit et auctore eo patres censuerunt.
+**C** Laelius consul ex Gallia Romam rediit. is non solum ex facto absente se senatus consulto in supplementum Cremonae et Placentiae colonos scripsit, sed, ut novae coloniae duae in agrum, qui Boiorum fuisset, deducerentur, et rettulit et auctore eo patres censuerunt.
 
 eodem tempore litterae L. Aemilii praetoris adlatae de navali pugna ad Myonnesum facta, et L. Scipionem consulem in Asiam exercitum traiecisse.
 
@@ -32036,7 +32036,7 @@ petebant cum eo M. Fulvius Nobilior Cn. Manlius Vulso M. Valerius Messalla. Fulv
 
 praetores exinde facti duo Q. Fabii, Labeo et Pictor — Pictor flamen Quirinalis eo anno inauguratus fuerat — , M. Sempronius Tuditanus Sp. Postumius Albinus L. Plautius Hypsaeus L. Baebius Dives.
 
-M. Fulvio Nobiliore et Cn. Manlio Vulsone consulibus Valerius Antias auctor est rumorem celebrem Romae fuisse et paene pro certo habitum,
+**M** Fulvio Nobiliore et Cn. Manlio Vulsone consulibus Valerius Antias auctor est rumorem celebrem Romae fuisse et paene pro certo habitum,
 
 recipiendi Scipionis adulescentis causa consulem L.
 
@@ -32082,11 +32082,11 @@ nam, praeterquam quod magistratus annui subrogandi essent, censores quoque place
 
 Aetolia M. Fulvio, Asia Cn. Manlio sorte evenit. praetores deinde sortiti sunt, Sp. Postumius Albinus urbanam et inter peregrinos, M. Sempronius Tuditanus Siciliam, Q. Fabius Pictor, flamen Quirinalis, Sardiniam, Q. Fabius Labeo classem, L. Plautius Hypsaeus Hispaniam citeriorem,
 
-L. Baebius Dives Hispaniam ulterioremn. ulteriorem. Siciliae legio una et classis, quae in ea provincia erat, decreta, et ut duas decumas frumenti novus praetor imperaret Siculis; earum alteram in Asiam, alteram in Aetoliam mitteret.
+**L** Baebius Dives Hispaniam ulterioremn. ulteriorem. Siciliae legio una et classis, quae in ea provincia erat, decreta, et ut duas decumas frumenti novus praetor imperaret Siculis; earum alteram in Asiam, alteram in Aetoliam mitteret.
 
 idem ab Sardis exigi atque ad eosdem exercitus id frumentum, ad quos Siculum, deportari iussum.
 
-L. Baebio supplementum in Hispaniam datum mille Romani pedites, equites quinquaginta, et sex milia peditum Latini nominis, ducenti equites;
+**L** Baebio supplementum in Hispaniam datum mille Romani pedites, equites quinquaginta, et sex milia peditum Latini nominis, ducenti equites;
 
 Plautio Hypsaeo in Hispaniam citeriorem mille Romani dati sunt pedites, duo milia socium Latini nominis et ducenti equites; cum his supplementis ut singulas legiones duae Hispaniae haberent.
 
@@ -32350,7 +32350,7 @@ quia belli minas timuerint, ex tota insula reddita scripsit; eamque causam Fabio
 
 a Creta Ephesum Fabius redit; inde tribus navibus in Thraciae oram missis ab Aeno et Maronia praesidia Antiochi deduci iussit, ut in libertate eae civitates essent.
 
-M. Fulvius consul in Epiro Ambracienses obsessos in deditionem accepit, Cephallaniam subegit, Aetolis perdomitis pacem dedit. Cn. Manlius consul, collega eius, Gallograecos Tolostobogios et Tectosagos et Trocmos, qui Brenno duce in Asiam transierant, cum soli citra Taurum montem non parerent, vicit. eorum origo, et quo modo ea loca, quae tenent, occupaverint, referuntur. exemplum quoque virtutis et pudicitiae in femina traditur. quae cum regis Gallograecorum uxor fuisset, capta centurionem, qui ei vim intulerat, occidit. lustrum a censoribus conditum est: censa sunt civium capita CCLVIII CCCX. cum Ariarathe Cappadociae rege amicitia iuncta est. Cn. Manlius contradicentibus decem legatis, ex quorum consilio foedus cum Antiocho conscripserat, de Gallograecis acta pro se causa in senatu triumphavit. Scipio Africanus die ei dicta, ut quidam tradunt, a Q. Petillio tribuno plebis, ut quidam, a Naevio, quod praeda ex Antiocho capta aerarium fraudasset, posteaquam is dies venit, evocatus in rostra “hac die” inquit, “Quirites, Carthaginem vici,” et prosequente populo Capitolium escendit. inde, ne amplius tribuniciis iniuriis vexaretur, in voluntarium exilium Liternum concessit. incertum, ibi an Romae defunctus sit; nam monumentum eius utrobique fuit. L. Scipio Asiaticus, frater Africani, eodem crimine peculatus accusatus damnatusque cum in vincula et carcerem duceretur, Tib. Sempronius Gracchus tribunus plebis, qui antea Scipionibus inimicus erat, intercessit et ob id beneficium Africani filiam duxit. cum quaestores in bona eius publice possidenda missi essent, non modo in his nllum vestigium pccuniae regiae apparuit, sed nequaquam tantum redactum, quantae summae erat damnatus. conlatam a cognatis et amicis innumerabilem pecuniam accipere noluit; quae necessaria ei erant ad cultum redempta.
+**M** Fulvius consul in Epiro Ambracienses obsessos in deditionem accepit, Cephallaniam subegit, Aetolis perdomitis pacem dedit. Cn. Manlius consul, collega eius, Gallograecos Tolostobogios et Tectosagos et Trocmos, qui Brenno duce in Asiam transierant, cum soli citra Taurum montem non parerent, vicit. eorum origo, et quo modo ea loca, quae tenent, occupaverint, referuntur. exemplum quoque virtutis et pudicitiae in femina traditur. quae cum regis Gallograecorum uxor fuisset, capta centurionem, qui ei vim intulerat, occidit. lustrum a censoribus conditum est: censa sunt civium capita CCLVIII CCCX. cum Ariarathe Cappadociae rege amicitia iuncta est. Cn. Manlius contradicentibus decem legatis, ex quorum consilio foedus cum Antiocho conscripserat, de Gallograecis acta pro se causa in senatu triumphavit. Scipio Africanus die ei dicta, ut quidam tradunt, a Q. Petillio tribuno plebis, ut quidam, a Naevio, quod praeda ex Antiocho capta aerarium fraudasset, posteaquam is dies venit, evocatus in rostra “hac die” inquit, “Quirites, Carthaginem vici,” et prosequente populo Capitolium escendit. inde, ne amplius tribuniciis iniuriis vexaretur, in voluntarium exilium Liternum concessit. incertum, ibi an Romae defunctus sit; nam monumentum eius utrobique fuit. L. Scipio Asiaticus, frater Africani, eodem crimine peculatus accusatus damnatusque cum in vincula et carcerem duceretur, Tib. Sempronius Gracchus tribunus plebis, qui antea Scipionibus inimicus erat, intercessit et ob id beneficium Africani filiam duxit. cum quaestores in bona eius publice possidenda missi essent, non modo in his nllum vestigium pccuniae regiae apparuit, sed nequaquam tantum redactum, quantae summae erat damnatus. conlatam a cognatis et amicis innumerabilem pecuniam accipere noluit; quae necessaria ei erant ad cultum redempta.
 
 dum in Asia bellum geritur, ne in Aetolia quidem res quietae fuerant, principio a gente Athamanum orto.
 
@@ -32560,7 +32560,7 @@ profectus ab Ambracia consul in mediterranea Aetoliae ad Argos Amphilochium — 
 
 eo tandem legati Aetoli mirante consule, quod morarentur, venerunt. inde, postquam approbasse pacem concilium Aetolorum accepit, iussis proficisci Romam ad senatum permissoque, ut et Rhodii et Athenienses deprecatores irent, dato, qui simul cum iis proficisceretur,
 
-C. Valerio fratre ipse in Cephallaniam traiecit. praeoccupatas auris animosque principum Romae criminibus Philippi invenerunt, qui per legatos, per litteras Dolopas Amphilochosque et Athamaniam erepta sibi querens, praesidiaque sua, postremo filium etiam Persea ex Amphilochis pulsum, averterat senatum ab audiendis precibus eorum.
+**C** Valerio fratre ipse in Cephallaniam traiecit. praeoccupatas auris animosque principum Romae criminibus Philippi invenerunt, qui per legatos, per litteras Dolopas Amphilochosque et Athamaniam erepta sibi querens, praesidiaque sua, postremo filium etiam Persea ex Amphilochis pulsum, averterat senatum ab audiendis precibus eorum.
 
 Rhodii tamen et Athenienses cum silentio auditi sunt. Atheniensis legatus Leon Hicesiae filius eloquentia etiam dicitur movisse;
 
@@ -32818,7 +32818,7 @@ ipse cum maxima parte copiarum, qua aequissimum aditum praebebat mons, ascendit;
 
 si qua periculosa et praerupta occurrant, non pugnare cum iniquitate locorum neque inexsuperabilibus vim adferre, sed obliquo monte ad se declinare et suo agmini coniungi;
 
-C. Helvium cum tertia parte circuire sensim per infima montis, deinde ab occasu aestivo erigere agmen. et Attali auxilia trifariam aequo numero divisit, secum esse ipsum iuvenem iussit.
+**C** Helvium cum tertia parte circuire sensim per infima montis, deinde ab occasu aestivo erigere agmen. et Attali auxilia trifariam aequo numero divisit, secum esse ipsum iuvenem iussit.
 
 equitatum cum elephantis in proxima tumulis planitie reliquit; edictum praefectis, ut intenti, quid ubique geratur, animadvertant opemque ferre, quo postulet res, possint.
 
@@ -33126,7 +33126,7 @@ et duodecim clipea aurata ab aedilibus curulibus P. Claudio Pulchro et Ser. Sulp
 
 et aedilis plebi Q. Fulvius Flaccus duo signa aurata uno reo damnato — nam separatim accusaverant — posuit; collega eius A. Caecilius neminem condemnavit. ludi Romani ter, plebei quinquiens toti instaurati.
 
-M. Valerius Messala inde et C. Livius Salinator consulatum idibus Martiis cum inissent, de re publica deque provinciis et exercitibus senatum consuluerunt.
+**M** Valerius Messala inde et C. Livius Salinator consulatum idibus Martiis cum inissent, de re publica deque provinciis et exercitibus senatum consuluerunt.
 
 de Aetolia et Asia nihil mutatum est; consulibus alteri Pisae cum Liguribus, alteri Gallia provincia decreta est.
 
@@ -33152,7 +33152,7 @@ huic rogationi quattuor tribuni plebis, quia non ex auctoritate senatus ferretur
 
 impertire, destiterunt incepto rogatio perlata est, ut in Aemilia tribu Formiani et Fundani, in Cornelia Arpinates ferrent; atque in his tribubus tum primuni primum ex Valerio plebiscito censi sunt.
 
-M. Claudius Marcellus censor sorte superato T. Quinctio lustrum condidit. censa sunt civium capita CCLVIII CCCXVIII. lustro perfecto consules in provincias profecti sunt.
+**M** Claudius Marcellus censor sorte superato T. Quinctio lustrum condidit. censa sunt civium capita CCLVIII CCCXVIII. lustro perfecto consules in provincias profecti sunt.
 
 hieme ea, qua haec Romae gesta sunt, ad Cn. Manlium consulem prinlum, primum, dein pro consule, hibernantem in Asia, legationes undique ex omnibus civitatibus gentiblisque, gentibusque, (juae quae cis Taurum montem incolunt, conveniebant.
 
@@ -33310,7 +33310,7 @@ exitu prope anni M. Valerius consul ex Liguribus ad magistratus subrogandos Roma
 
 comitia consulibus rogandis fuerunt a. d.
 
-XII. Kal. Martias; creati M. Aemilius Lepidus C. Flaminius. postero die praetores facti Ap. Claudius Pulcher Ser.
+**XII** Kal. Martias; creati M. Aemilius Lepidus C. Flaminius. postero die praetores facti Ap. Claudius Pulcher Ser.
 
 Sulpicius Galba Q. Terentius Culleo L. Terentius Massaliota Q. Fulvius Flaccus M. Furius Crassipes.
 
@@ -33324,7 +33324,7 @@ in Liguribus magni belli et gliscentis in dies magis fama erat. itaque consulibu
 
 huic senatus consulto Lepidus consul intercedebat, indignum esse praedicans consules ambos in valles Ligurum includi,
 
-M. Fulvium et Cn. Manlium biennium iam, alterum in Europa, alterum in Asia, velut pro Philippo atque Antiocho substitutos regnare. si exercitus in his terris esse placeat, consules iis potius quam privatos praeesse oportere.
+**M** Fulvium et Cn. Manlium biennium iam, alterum in Europa, alterum in Asia, velut pro Philippo atque Antiocho substitutos regnare. si exercitus in his terris esse placeat, consules iis potius quam privatos praeesse oportere.
 
 vagari eos cum belli terrore per nationes, quibus bellum indictum non sit, pacem pretio venditantis. si eas provincias exercitibus obtinere opus esset, sicut M’. Acilio L. Scipio consul, L. Scipioni M. Fulvius et Cn. Manlius successissent consules,
 
@@ -33438,7 +33438,7 @@ quibus ego gratiam habeo, quod seu mihi seu magnitudini rerum gestarum hoc deder
 
 ex decem legatis, si diis placet, quod consilium dispensandae cohonestandaeque victoriae imperatoribus maiores dederunt nostri, adversarios habeo.
 
-L. Furius et L. Aemilius currum triumphalem me conscendere prohibent, coronam insignem capiti detrahunt, quos ego, si tribuni triumphare me prohiberent,
+**L** Furius et L. Aemilius currum triumphalem me conscendere prohibent, coronam insignem capiti detrahunt, quos ego, si tribuni triumphare me prohiberent,
 
 testes citaturus fui rerum a me gestarum. nullius equidem invideo honori, patres conscripti; vos tribunos plebei nuper, viros fortes ac strenuos, impedientes Q. Fabii Labeonis triumphum auctoritate vestra deterruistis;
 
@@ -33632,7 +33632,7 @@ parum enim fuisse non laudari pro Rostris P. Africanum post mortem, nisi etiam a
 
 et Carthaginienses exilio Hannibalis contentos esse, populum Romanum ne morte quidem P. Scipionis exsatiari, nisi et ipsius fama sepulti laceretur et frater insuper, accessio invidiae, mactetur.
 
-M. Cato suasit rogationem — exstat oratio eius de pecunia regis Antiochi — et Mummios tribunos auctoritate deterruit, ne adversarentur rogationi.
+**M** Cato suasit rogationem — exstat oratio eius de pecunia regis Antiochi — et Mummios tribunos auctoritate deterruit, ne adversarentur rogationi.
 
 remittentibus ergo his intercessionem omnes tribus uti rogassent iusserunt.
 
@@ -33718,7 +33718,7 @@ sed quod Romanae temperantiae fideique specimen illis gentibus dedissent, ad ext
 
 cum illorum gloriam tueri posteris satis esset, P. Africanum tantum paternas superiecisse laudes, ut fidem fecerit non sanguine humano sed stirpe divina satum se esse.
 
-L. Scipionem, de quo agatur, ut, quae in Hispania, quae in Africa, cum legatus fratris esset, gessisset, praetereantur, consulem et ab senatu dignum habitum, cui extra sortem Asia provincia et bellum cum Antiocho rege decerneretur, et a fratre, cui post duos consulatus censuramque et triumphum legatus in Asiam iret.
+**L** Scipionem, de quo agatur, ut, quae in Hispania, quae in Africa, cum legatus fratris esset, gessisset, praetereantur, consulem et ab senatu dignum habitum, cui extra sortem Asia provincia et bellum cum Antiocho rege decerneretur, et a fratre, cui post duos consulatus censuramque et triumphum legatus in Asiam iret.
 
 ibi ne magnitudo et splendor legati laudibus consulis officeret, forte ita incidisse, ut, quo die ad Magnesiam signis collatis L. Scipio Antiochum devicisset, aeger P. Scipio Elaeae dierum aliquot via abesset.
 
@@ -33758,7 +33758,7 @@ tribuni cum in consilium secessissent, paulo post C. Fannius ex sua collegarumqu
 
 Ti. Gracchus ita decrevit, quo minus ex bonis L. Scipionis quod iudicatum sit redigatur, se non intercedere praetori;
 
-L. Scipionem, qui regem opulentissimum orbis terrarum devicerit,
+**L** Scipionem, qui regem opulentissimum orbis terrarum devicerit,
 
 imperium populi Romani propagaverit in ultimos terrarum fines, regem Eumenem, Rhodios, alias tot Asiae urbes devinxerit populi Romani beneficiis, plurimos duces hostium in triumpho ductos carcere incluserit, non passurum inter hostes populi Romani in carcere et vinculis esse, mittique eum se iubere.
 
@@ -33770,7 +33770,7 @@ collata ea pecunia a cognatis amicisque et clientibus est L. Scipioni, ut, si ac
 
 nihil accepit; quae necessaria ad cultum erant, redempta ei a proximis cognatis sunt; verteratque Scipionum invidia in praetorem et consilium eius et accusatores.
 
-M. Aemilius consul Liguribus subactis viam Placentia usque Ariminum perductam Flaminiae iunxit. initia luxuriae in urbem introducta ab exercitu Asiatico referuntur. Ligures quicumque citra Appenninum erant, subacti sunt. Bacchanalia, sacrum Graecum et nocturnum, omnium scelerum seminarium, cum ad incentis turbae coniurationem pervenisset, investigatum et multorum poena sublatum est. a censoribus L. Valerio Flacco et M. Porcio Catone, et belli et pacis artibus maximo, motus est senatu L. Quinctius Flamininus Titi frater, eo quod, cum Galliam provinciam consul obtineret, rogatus in convivio a Poeno Philippo, quem amabat, scorto nobili, Gallum quendam sua manu occiderat, sive ut quidam tradiderunt, unum ex damnatis securi percusserat rogatus a meretrice Placentina, cuius amore deperibat. exstat oratio M. Catonis in eum. Scipio Literni decessit, et tamquam iungente fortuna circa idem tempus duo funera maximorum virorum, Hannibal a Prusia Bithyniae rege, ad quem victo Antiocho confugerat, cum dederetur Romanis, qui ad exposcendum eum T. Quinctium Flamininum miserant, veneno sibi mortem conscivit. Philopoemen quoque dux Achaeorum, vir maximus, a Messeniis occisus veneno, cum ab eis bello captus esset. coloniae Potentia et Pisaurum et Mutina et Parma deductae sunt. praeterea res adversus Celtiberos prospere gestas et initia causasque belli Macedonici continet. cuius origo inde fluxit, quod Philippus aegre ferebat regnum suum a Romanis imminui, et quod cogeretur a Thracibus aliisque locis praesidia deducere.
+**M** Aemilius consul Liguribus subactis viam Placentia usque Ariminum perductam Flaminiae iunxit. initia luxuriae in urbem introducta ab exercitu Asiatico referuntur. Ligures quicumque citra Appenninum erant, subacti sunt. Bacchanalia, sacrum Graecum et nocturnum, omnium scelerum seminarium, cum ad incentis turbae coniurationem pervenisset, investigatum et multorum poena sublatum est. a censoribus L. Valerio Flacco et M. Porcio Catone, et belli et pacis artibus maximo, motus est senatu L. Quinctius Flamininus Titi frater, eo quod, cum Galliam provinciam consul obtineret, rogatus in convivio a Poeno Philippo, quem amabat, scorto nobili, Gallum quendam sua manu occiderat, sive ut quidam tradiderunt, unum ex damnatis securi percusserat rogatus a meretrice Placentina, cuius amore deperibat. exstat oratio M. Catonis in eum. Scipio Literni decessit, et tamquam iungente fortuna circa idem tempus duo funera maximorum virorum, Hannibal a Prusia Bithyniae rege, ad quem victo Antiocho confugerat, cum dederetur Romanis, qui ad exposcendum eum T. Quinctium Flamininum miserant, veneno sibi mortem conscivit. Philopoemen quoque dux Achaeorum, vir maximus, a Messeniis occisus veneno, cum ab eis bello captus esset. coloniae Potentia et Pisaurum et Mutina et Parma deductae sunt. praeterea res adversus Celtiberos prospere gestas et initia causasque belli Macedonici continet. cuius origo inde fluxit, quod Philippus aegre ferebat regnum suum a Romanis imminui, et quod cogeretur a Thracibus aliisque locis praesidia deducere.
 
 dum haec, si modo hoc anno acta sunt, Romae aguntur, consules ambo in Liguribus gerebant bellum.
 
@@ -33788,7 +33788,7 @@ itaque non lixa sequebatur, non iumentorum longus ordo agmen extendebat. nihil p
 
 nec deerat umquam cum iis vel materia belli vel causa, quia propter domesticam inopiam vicinos agros incursabant. nec tamen in discrimen summae rerum pugnabatur.
 
-C. Flaminius consul, cum Friniatibus Liguribus in agro eorum pluribus proeliis secundis factis, in deditionem gentem accepit et arma ademit.
+**C** Flaminius consul, cum Friniatibus Liguribus in agro eorum pluribus proeliis secundis factis, in deditionem gentem accepit et arma ademit.
 
 ea quia non sincera fide tradebant, cum castigarentur, relictis vicis in montem Auginum profugerunt.
 
@@ -33800,7 +33800,7 @@ qui in agrum Pisanum Bononiensemque ita incursaverant, ut coli non possent.
 
 his quoque perdomitis consul pacem dedit finitimis. et quia a bello quieta ut esset provincia effecerat, ne in otio militem haberet, viam a Bononia perduxit Arretium.
 
-M. Aemilius alter consul agros Ligurum vicosque, qui in campis aut vallibus erant, ipsis montes duos Ballistam Suismontiumque tenentibus, deussit depopulatusque est.
+**M** Aemilius alter consul agros Ligurum vicosque, qui in campis aut vallibus erant, ipsis montes duos Ballistam Suismontiumque tenentibus, deussit depopulatusque est.
 
 deinde eos, qui in montibus erant, adortus primo levibus proeliis fatigavit, postremo coactos in aciem descendere iusto proelio devicit, in quo et aedem Dianae vovit.
 
@@ -33826,7 +33826,7 @@ priusquam consules redirent Romam, M. Fulvius proconsul ex Aetolia redit;
 
 isque ad aedem Apollinis in senatu cum de rebus in Aetolia Cephallaniaque ab se gestis disseruisset, petit a patribus, ut, si aequum censerent, ob rem publicam bene ac feliciter gestam et diis immortalibus honorem haberi iuberent et sibi triumphum decernerent.
 
-M. Aburius tribunus plebis, si quid de ea re ante M. Aemilii consulis adventure decerneretur, intercessurum se ostendit:
+**M** Aburius tribunus plebis, si quid de ea re ante M. Aemilii consulis adventure decerneretur, intercessurum se ostendit:
 
 eum contra dicere velle, proficiscentemque in provinciam ita sibi mandasse, ut ea disceptatio integra in adventum suum servaretur. Fulvium temporis iacturam facere: senatum etiam praesente consule quod vellet decreturum.
 
@@ -34168,7 +34168,7 @@ nam saltus, unde eum Ligures fugaverant, Marcius est appellatus.
 
 sub hunc nuntium ex Ligustinis vulgatun vulgatum litterae ex Hispania mixtam gaudio tristitiam adferentes recitatae sunt.
 
-C. Atinius, qui biennio ante praetor in earn eam provinciam profectus erat, cum Lusitanis in agro Hastensi signis collatis pugnavit: ad sex milia hostium sunt caesa, ceteri fusi et fugati castrisque exuti.
+**C** Atinius, qui biennio ante praetor in earn eam provinciam profectus erat, cum Lusitanis in agro Hastensi signis collatis pugnavit: ad sex milia hostium sunt caesa, ceteri fusi et fugati castrisque exuti.
 
 ad oppidum deinde Hastam oppugnandum legiones ducit: id quoque baud haud multo maiore certamine cepit quam castra; sed dum incautius subit muros, ictus ex vulnere post dies paucos moritur.
 
@@ -34608,7 +34608,7 @@ Romae principio eius anni, cum de provinciis consulum et praetorum actum est, co
 
 praetores C. Decimius Flavus urbanam, P. Cornelius Cethegus inter cives et peregrinos sortiti sunt,
 
-C. Sempronius Blaesus Siciliam, Q. Naevius Matho Sardiniam et ut idem quaereret de veneficiis, A. Terentius Varro Hispaniam citeriorem, P. Sempronius Longus Hispaniam ulteriorem.
+**C** Sempronius Blaesus Siciliam, Q. Naevius Matho Sardiniam et ut idem quaereret de veneficiis, A. Terentius Varro Hispaniam citeriorem, P. Sempronius Longus Hispaniam ulteriorem.
 
 de iis duabus provinciis legati per id fere tempus L. Iuventius Talna et T. Quinctilius Varus venerunt,
 
@@ -34636,7 +34636,7 @@ certamenque ei cum flamine erat. et postquam primo aequare, mox superare etiam e
 
 quod duos simul unus magistratus, praesertim curules, neque capere posset nec gerere; pars legibus eum solvi aequum censere, ut quem vellet praetorem creandi populo potestas fieret.
 
-L. Porcius consul primo in ea sententia esse, ne nomen eius acciperet;
+**L** Porcius consul primo in ea sententia esse, ne nomen eius acciperet;
 
 deinde, ut ex auctoritate senatus idem faceret, convocatis patribus referre se ad eos dixit, quod nec iure ullo nec exemplo tolerabili liberae civitati aedilis curulis designatus praeturam peteret; sibi, nisi quid aliud iis videretur, in animo esse e lege comitia habere.
 
@@ -35802,7 +35802,7 @@ et is ipse exercitus aegre explebatur propter pestilentiam, quae tertium iam ann
 
 praetor Ti. Minucius et baud haud ita multo post consul C. Calpurnius moritur, multique alii omnium ordinum illustres viri postremo prodigii loco ea clades haberi coepta est.
 
-C. Servilius pontifex maximus piacula irae deum conquirere iussus, decemviri libros inspicere, consul Apollini Aesculapio Saluti dona vovere et dare signa inaurata:
+**C** Servilius pontifex maximus piacula irae deum conquirere iussus, decemviri libros inspicere, consul Apollini Aesculapio Saluti dona vovere et dare signa inaurata:
 
 quae vovit deditque. decemviri supplicationem in biduum valetudinis causa in urbe et per omnia fora conciliabulaque edixerunt: maiores duodecim annis omnes coronati et lauream in manu tenentes supplicaverunt.
 
@@ -36088,7 +36088,7 @@ tres eiecti de senatu; retinuit quosdam Lepidus a collega praeteritos. opera ex 
 
 theatrum et proscaeninmZZZ proscenium ad Apollinis, aedem Iovis in Capitolio, columnasque circa poliendas albo locavit; et ab his columnis, quae incommode opposita videbantur, signa amovit clipeaque de columnis et signa militaria adfixa omnis generis dempsit.
 
-M. Fulvius plura et maioris locavit usus: portur portum et pilas pontis in Tiberi, quibus pilis fornices post aliquot annos P. Scipio Africanus et L. Mummius censores locaverunt imponendos;
+**M** Fulvius plura et maioris locavit usus: portur portum et pilas pontis in Tiberi, quibus pilis fornices post aliquot annos P. Scipio Africanus et L. Mummius censores locaverunt imponendos;
 
 basilicam post argentarias novas et forum piscatorium circumdatis tabernis quas vendidit in privatum;
 
@@ -36294,7 +36294,7 @@ egregiam gloriam legionis fore, si castra metu secundanorum amissa sua virtute r
 
 sicut ceperint, posse capi. summa militum alacritate adhortatio audita est. ferunt citati signa, nec signiferos armati morantur. priores tamen consul copiaeque, quae a mari reducebantur, ad vallum accesserunt.
 
-L. Atius, tribunus primus secundae legionis, non hortabatur modo milites, sed docebat etiam, si victores Histri, quibus armis cepissent castra, iisdem capta retinere in animo haberent, primum exutum castris hostem ad mare persecuturos fuisse, deinde stationes certe pro vallo habituros:
+**L** Atius, tribunus primus secundae legionis, non hortabatur modo milites, sed docebat etiam, si victores Histri, quibus armis cepissent castra, iisdem capta retinere in animo haberent, primum exutum castris hostem ad mare persecuturos fuisse, deinde stationes certe pro vallo habituros:
 
 vino somnoque veri simile esse mersos iacere.
 
@@ -36322,15 +36322,15 @@ quo non capta tantum castra ab hostibus nec fuga, quae vera erant, sed perditas 
 
 itaque, quod in tumultu fieri solet, dilectus extra ordinem non in urbe tantum, sed tota Italia indicti. duae legiones civium Romanorum conscriptae, et decem milia peditum cum equitibus quingentis sociis nominis Latini imperata.
 
-M. Iunius consul transire in Galliam et ab civitatibus provinciae eius, quantum quaeque posset, militum exigere iussus.
+**M** Iunius consul transire in Galliam et ab civitatibus provinciae eius, quantum quaeque posset, militum exigere iussus.
 
 simul decretum, ut Ti. Claudius praetor militibus legionis quartae et socium Latini nominis quinque milibus, equitibus ducentis quinquaginta, Pisas ut convenirent, ediceret, eamque provinciam, dum consul inde abesset, tutaretur;
 
-M. Titinius praetor legionem primam, parem numerum sociorum peditum equitumque, Ariminum convenire iuberet.
+**M** Titinius praetor legionem primam, parem numerum sociorum peditum equitumque, Ariminum convenire iuberet.
 
 Nero paludatus Pisas in provinciam est profectus; Titinius C. Cassio tribuno militum Ariminum, qui praeesset legioni, misso dilectum Romae habuit.
 
-M. Iunius consul ex Liguribus in provinciam Galliam transgressus, auxiliis protinus per civitates Galliae militibusque coloniis imperatis, Aquileiam pervenit.
+**M** Iunius consul ex Liguribus in provinciam Galliam transgressus, auxiliis protinus per civitates Galliae militibusque coloniis imperatis, Aquileiam pervenit.
 
 ibi certior factus exercitum incolumem esse, scriptis litteris Romam, ne tumultuarentur, ipse remissis auxiliis, quae Gallis imperaverat, ad collegam est profectus.
 
@@ -36506,7 +36506,7 @@ pontufex eo anno mortuus est M. Claudius Marcellus, qui consul censorque fuerat.
 
 triumviri deduxerunt P. Aelius M. Aemilius Lepidus Cn. Sicinius; quinquagena et singula iugera et semisses agri in singulos dati sunt. de Liguribus captus ager erat; Etruscorum ante quam Ligurum fuerat.
 
-C. Claudius consul ad urbem venit; cui, cum in senatu de rebus in Histria Liguribusque prospere gestis disseruisset, postulanti triumphus est decretus.
+**C** Claudius consul ad urbem venit; cui, cum in senatu de rebus in Histria Liguribusque prospere gestis disseruisset, postulanti triumphus est decretus.
 
 triumphavit in magistratu de duabus simul gentibus. tulit in eo triumpho denarium trecenta septem milia et victoriatum octoginta quinque milia septingentos duos. militibus in singulos quini deni denarii dati, duplex centurioni, triplex equiti.
 
@@ -36522,7 +36522,7 @@ ita, uti censuit senatus, comitia habita. consules creati Cn. Cornelius Scipio H
 
 praetores inde facti M. Popilius Laenas P. Licinius Crassus M. Cornelius Scipio L. Papirius Maso M. Aburius L. Aquilius Gallus.
 
-C. Claudio consuli prorogatum in annum imperium et Gallia provincia; et ne Histri idem, quod et Ligures, facerent, socios nominis Latini in Histriam mitteret, quos triumphi causa de provincia deduxisset.
+**C** Claudio consuli prorogatum in annum imperium et Gallia provincia; et ne Histri idem, quod et Ligures, facerent, socios nominis Latini in Histriam mitteret, quos triumphi causa de provincia deduxisset.
 
 Cn. Cornelio et Q. Petilio consulibus, quo die magistratum inierunt, immolantibus Iovi singulis bubus, uti solet, in ea hostia, qua Q. Petilius sacrificavit, in iocinere caput non inventum. id cum ad senatum rettulisset, bove perlitare iussus.
 
@@ -36554,7 +36554,7 @@ probata Popilii excusatio est. P. Licinius Crassus sacrificiis se impediri solle
 
 ei citerior Hispania obvenerat. ceterum aut ire iussus aut iurare pro contione sollemni sacrificio se prohiberi. id ubi in P. Licinio ita statutum est, et ab se uti iusiurandum acciperent M. Cornelius postulavit, ne in Hispaniam ulteriorem iret. praetores ambo in eadem verba iurarunt.
 
-M. Titinius et T. Fonteius proconsules manere cum eodem imperii iure in Hispania iussi; et ut in supplementum his tria milia civium Romanorum cum equitibus ducentis, quinque milia socium Latini nominis et trecenti equites mitterentur.
+**M** Titinius et T. Fonteius proconsules manere cum eodem imperii iure in Hispania iussi; et ut in supplementum his tria milia civium Romanorum cum equitibus ducentis, quinque milia socium Latini nominis et trecenti equites mitterentur.
 
 Latinae feriae fuere ante diem tertium nonas Maias, in quibus quia in una hostia magistratus Lanuvinus precatus non erat populo Romano Quiritium, religioni fuit.
 
@@ -36618,7 +36618,7 @@ alia multitudo peditum equitumque deturbatis hostibus montis sine duce cepere. a
 
 super tam evidentem tristis ominis eventum etiam ex pullario auditum est vitium in auspicio fuisse, nec id consulem ignorasse.
 
-C. Valerius audita * * * periti religionum iurisque publici, quando duo ordinarii consules eius anni, alter morbo, alter ferro perisset, suffectum consulem negabant recte comitia habere posse.
+**C** Valerius audita * * * periti religionum iurisque publici, quando duo ordinarii consules eius anni, alter morbo, alter ferro perisset, suffectum consulem negabant recte comitia habere posse.
 
 * * * deduxit.
 
@@ -36670,7 +36670,7 @@ deinde saepius dando et modo volneribus tenus, modo sine missione, etiam et fami
 
 itaque qui primo ab Roma magnis pretiis paratos gladiatores accersere solitus erat, iam suo Scipio inter peregrinos.
 
-M. Atilio praetori provincia Sardinia obvenerat;
+**M** Atilio praetori provincia Sardinia obvenerat;
 
 sed cum legione nova, quam consules conscripserant, quinque milibus peditum, trecentis equitibus in Corsicam iussus est transire. dum is ibi bellum gereret, Cornelio prorogatum imperium, uti obtineret Sardiniam.
 
@@ -36796,7 +36796,7 @@ exulibus Hypataeis, qui factionis Proxeni erant, cum reditus in patriam promissu
 
 inde gravius de integro bellum exarsit.
 
-C. Valerius Laevinus et Ap. Claudius Pulcher et C. Memmius et M. Popilius et L. Canuleius missi ab senatu venerant.
+**C** Valerius Laevinus et Ap. Claudius Pulcher et C. Memmius et M. Popilius et L. Canuleius missi ab senatu venerant.
 
 apud eos cum Delphis utriusque partis legati magno certamine agerent, Proxenus maxime cum causa, tum eloquentia praestare visus est; qui paucos post dies ab Orthobula uxore veneno est sublatus; damnataque eo crimine in exilium abiit.
 
@@ -36864,7 +36864,7 @@ munera gladiatorum eo anno aliquot, parva alia, data; unum ante cetera insigne f
 
 Q. Fulvius Flaccus censor templum Iunonis Laciniae tegulis marmoreis spoliavit, ut aedem, quam dedicabat, tegeret. tegulae ex senatus consulto reportatae. Eumenes Asiae rex in senatu de Perseo Macedoniae rege questus est; cuius iniuriae in populum Romanum referuntur. ob quas bello ei indicto P. Licinius Crassus consul, cui mandatum erat, in Macedoniam transiit, levibusque expeditionibus, equestribus proeliis, in Thessalia cum Perseo * eventu pugnavit. inter Masinissam et Carthaginienses de agro fuit lis. dies iis a senatu ad disceptandum datus. legati missi ad socias civitates regesque rogandos, ut in fide permanerent, dubitantibus Rhodiis. lustrum a censoribus conditum est: censa sunt civium capita CCLXVII CCXXXI. res praeterea adversus Corsos et Liguras prospere gestas continet.
 
-L. Postumius Albinus M. Popilius Laenas consules cum omnium primum de provinciis et exercitibus ad senatum rettulissent, Ligures utrique decreti sunt, ut novas ambo, quibus eam provinciam obtinerent, legiones —
+**L** Postumius Albinus M. Popilius Laenas consules cum omnium primum de provinciis et exercitibus ad senatum rettulissent, Ligures utrique decreti sunt, ut novas ambo, quibus eam provinciam obtinerent, legiones —
 
 binae singulis decretae — et socium Latini nominis dena milia peditum et sescenos equites, et supplementum Hispaniae tria milia peditum Romanorum scriberent et ducentos equites.
 
@@ -37040,7 +37040,7 @@ concors et e re publica censura fuit. omnes, quos senatu moverunt quibusque equo
 
 Fulvius aedem Fortunae equestris, quam proconsul in Hispania dimicans cum Celtiberorum legionibus voverat, annis sex post, quam voverat, dedicavit, et scaenicos ludos per quadriduum, unum diem in circo fecit.
 
-L. Cornelius Lentulus, decemvir sacrorum, eo anno mortuus est. in locum eius suffectus A. Postumius Albinus.
+**L** Cornelius Lentulus, decemvir sacrorum, eo anno mortuus est. in locum eius suffectus A. Postumius Albinus.
 
 lucustarum tantae nubes a mari repente in Apuliam inlatae sunt, ut examinibus suis agros late operirent.
 
@@ -37056,7 +37056,7 @@ Macedoniam decreturos negant, ni de M. Popilio referretur. postulantibus deinde,
 
 praetoribus quoque in Hispaniam supplementum petentibus negatum, M. Iunio in citeriorem, Sp. Lucretio in ulteriorem.
 
-C. Licinius Crassus urbanam iurisdictionem, Cn. Sicinius inter peregrinos erat sortitus, C. Memmius Siciliam, Sp. Cluvius Sardiniam.
+**C** Licinius Crassus urbanam iurisdictionem, Cn. Sicinius inter peregrinos erat sortitus, C. Memmius Siciliam, Sp. Cluvius Sardiniam.
 
 consules ob ea irati senatui, Latinis feriis in primam quamque diem indictis, in provinciam abituros esse denuntiarunt, nec quicquam rei publicae acturos, praeterquam quod ad provinciarum administrationem adtineret.
 
@@ -37268,7 +37268,7 @@ ibi cum laceratus iurgiis multorum esset, senatus consultum factum est, ut, qui 
 
 multa milia hominum hoc senatus consulto restituta in libertatem, transductisque Padum ager est adsignatus.
 
-M. Popilius rogatione Marcia bis apud C. Licinium causam dixit; tertio praetor, gratia consulis absentis et Popiliae familiae precibus victus, idibus Martiis adesse reum iussit, quo die novi magistratus inituri erant honorem, ne diceret ius, qui privatus futurus esset.
+**M** Popilius rogatione Marcia bis apud C. Licinium causam dixit; tertio praetor, gratia consulis absentis et Popiliae familiae precibus victus, idibus Martiis adesse reum iussit, quo die novi magistratus inituri erant honorem, ne diceret ius, qui privatus futurus esset.
 
 ita rogatio de Liguribus arte fallaci elusa est.
 
@@ -37556,7 +37556,7 @@ inde tribunos cum duobus milibus militum ad occupanda Dassaretiorum et Illyrioru
 
 paucis post diebus Q. Marcius et A. Atilius et P. et Ser. Cornelii Lentuli et L. Decimius, legati in Graeciam missi, Corcyram peditum mille secum advexerunt; ibi inter se et regiones, quas obirent, et milites diviserunt.
 
-L. Decimius missus est ad Gentium regem Illyriorum, quem si aliquem respectum amicitiae cum populo Romano habere cerneret, retentare aut etiam ad belli societatem perlicere iussus.
+**L** Decimius missus est ad Gentium regem Illyriorum, quem si aliquem respectum amicitiae cum populo Romano habere cerneret, retentare aut etiam ad belli societatem perlicere iussus.
 
 Lentuli in Cephallaniam missi, ut in Peloponnesum traicerent oramque maris in occidentem versi ante hiemem circumirent.
 
@@ -37780,7 +37780,7 @@ cetera deprecatio erat. sed non eis animis audiebantur, qui aut doceri aut flect
 
 P. Licinio deinde consuli, cui Macedonia provincia obvenerat, denuntiatum, ut exercitui diem primam quamque diceret ad conveniendum.
 
-C. Lucretius praetor, cui classis provincia erat, cum quadraginta quinqueremibus ab urbe profectus; nam ex refectis navibus alias in alium usum retineri ad urbem placuit.
+**C** Lucretius praetor, cui classis provincia erat, cum quadraginta quinqueremibus ab urbe profectus; nam ex refectis navibus alias in alium usum retineri ad urbem placuit.
 
 praemissus a praetore est frater M. Lucretius cum quinqueremi una, iussusque ab sociis ex foedere acceptis navibus ad Cephallaniam classi occurrere.
 
@@ -37788,7 +37788,7 @@ ab Reginis triremi una sumpta, ab Locris duabus, ab Uritibus quattuor, praeter o
 
 ibi decem ipsorum Dyrrhachinorum, duodecim Issaeorum, quinquaginta quattuor Genti regis lembos nanctus, simulans se credere eos in usum Romanorum conparatos esse, omnibus abductis die tertio Corcyram, inde protinus in Cephallaniam traicit.
 
-C. Lucretius praetor ab Neapoli profectus, superato freto, die quinto in Cephallaniam transmisit.
+**C** Lucretius praetor ab Neapoli profectus, superato freto, die quinto in Cephallaniam transmisit.
 
 ibi stetit classis, simul opperiens, ut terrestres copiae traicerentur, simul ut onerariae ex agmine suo per altum dissipatae consequerentur.
 
@@ -37952,7 +37952,7 @@ sub idem tempus et C. Lucretius praetor, qui navibus praeerat ad Cephallaniam, M
 
 tardior ei navigatio propter infirmitatem corporis fuit.
 
-M. Lucretius, Chalcidem adveniens, cum a P. Lentulo Haliartum oppugnari audisset, nuntium, praetoris verbis qui abscedere eum inde iuberet, misit.
+**M** Lucretius, Chalcidem adveniens, cum a P. Lentulo Haliartum oppugnari audisset, nuntium, praetoris verbis qui abscedere eum inde iuberet, misit.
 
 Boeotorum iuventute, quae pars cum Romanis stabat, eam rem adgressus legatus a moenibus abscessit.
 
@@ -38166,7 +38166,7 @@ praedam custodiendam ducendamque in castra trecentis Cretensium dedit;
 
 ipse revocato ab effusa caede equite et reliquis peditum ducit ad proximum praesidium, ratus haud magno certamine opprimi posse.
 
-L. Pompeius tribunus militum praeerat, qui perculsos milites repentino hostium adventu in propinquum tumulum recepit, loci se praesidio, quia numero et viribus impar erat, defensurus.
+**L** Pompeius tribunus militum praeerat, qui perculsos milites repentino hostium adventu in propinquum tumulum recepit, loci se praesidio, quia numero et viribus impar erat, defensurus.
 
 ibi cum in orbem milites coegisset, ut densatis scutis ab ictu sagittarum et iaculorum sese tuerentur, Perseus circumdato armatis tumulo alios ascensum undique temptare iubet et comminus proelium conserere, alios eminus tela ingerere.
 
@@ -38404,7 +38404,7 @@ litteras se ad L. Hortensium praetorem daturos esse, quae Chalcidenses querantur
 
 haec Hortensio iussu senatus scripta. munera binum milium aeris legatis missa et vehicula Micythioni publice locata, quae eum Brundisium commode perveherent.
 
-C. Lucretium, ubi dies, quae dicta erat, venit, tribuni ad populum accusarunt multamque deciens centum milium aeris dixerunt.
+**C** Lucretium, ubi dies, quae dicta erat, venit, tribuni ad populum accusarunt multamque deciens centum milium aeris dixerunt.
 
 comitiis habitis omnes quinque et triginta tribus eum condemnarunt.
 
@@ -38558,7 +38558,7 @@ eo facto avocatam a se contionem tribunus questus et in ordinem se coactum ex Ca
 
 postero die ingentis tumultus ciere. Ti. Gracchi primum bona consecravit, quod in multa pignoribusque eius, qui tribunum appellasset, intercessioni non parendo se in ordinem coegisset;
 
-C. Claudio diem dixit, quod contionem ab se avocasset; et utrique censori perduellionem se iudicare pronuntiavit diemque comitiis a C. Sulpicio praetore urbano petit.
+**C** Claudio diem dixit, quod contionem ab se avocasset; et utrique censori perduellionem se iudicare pronuntiavit diemque comitiis a C. Sulpicio praetore urbano petit.
 
 non recusantibus censoribus, quominus primo quoque tempore iudicium de se populus faceret, in ante diem octavum et septimum kal. Octobres comitiis perduellionis dicta dies.
 
@@ -38648,7 +38648,7 @@ haec Stuberram rettulere regi tum maxime captivos ex Illyrico vendenti. extemplo
 
 Ancyram inde populatus Perseus in Penestas rursus exercitum reducit firmatisque Uscanae et circa eam per omnia castella, quae receperat, praesidiis in Macedoniam sese recipit.
 
-L. Coelius, legatus Romanus, praeerat Illyrico; qui moveri non ausus, cum in iis locis rex esset, post profectionem demum eius conatus in Penestis Uscanam recipere, a praesidio, quod ibi Macedonum erat, cum multis volneribus repulsus Lychnidum copias reduxit.
+**L** Coelius, legatus Romanus, praeerat Illyrico; qui moveri non ausus, cum in iis locis rex esset, post profectionem demum eius conatus in Penestis Uscanam recipere, a praesidio, quod ibi Macedonum erat, cum multis volneribus repulsus Lychnidum copias reduxit.
 
 inde post dies paucos M. Trebellium Fregellanum cum satis valida manu in Penestas misit ad obsides ab iis urbibus, quae in amicitia cum fide permanserant, accipiendos;
 
@@ -38708,7 +38708,7 @@ Q. Marcius Philippus per invios saltus penetravit Macedoniam et complures urbes 
 
 principio veris, quod hiemem eam, qua haec gesta sunt, insecutum est, ab Roma profectus Q. Marcius Philippus consul cum quinque milibus , quod in supplementum legionum secum traiecturus erat, Brundisium pervenit.
 
-M. Popilius consularis et alii pari nobilitate adulescentes tribuni militum in Macedonicas legiones consulem secuti sunt.
+**M** Popilius consularis et alii pari nobilitate adulescentes tribuni militum in Macedonicas legiones consulem secuti sunt.
 
 per eos dies et C. Marcius Figulus praetor, cui classis provincia evenerat, Brundisium venit; et simul ex Italia profecti Corcyram altero die, tertio Actium, Acarnaniae portum, tenuerunt.
 
@@ -39104,7 +39104,7 @@ sacerdotes eo anno mortui sunt P. Quinctilius Varus flamen Martialis et M. Claud
 
 et iam magnificentia crescente notatum est ludis circensibus P. Corneli Scipionis Nasicae et P. Lentuli aedilium curulium sexaginta tres Africanas et quadraginta ursos et elephantos lusisse.
 
-L. Aemilio Paulo C. Licinio consulibus, idibus Martiis, principio insequentis anni, cum in expectatione patres fuissent, maxime quidnam consul de Macedonia, cuius ea provincia esset, referret, nihil se habere Paulus, quod referret, nondum cum legati redissent, dixit.
+**L** Aemilio Paulo C. Licinio consulibus, idibus Martiis, principio insequentis anni, cum in expectatione patres fuissent, maxime quidnam consul de Macedonia, cuius ea provincia esset, referret, nihil se habere Paulus, quod referret, nondum cum legati redissent, dixit.
 
 ceterum Brundisi legatos iam esse, bis ex cursu Dyrrachium reiectos.
 
@@ -39112,7 +39112,7 @@ cognitis mox, quae nosci prius in rem esset, relaturum; id fore intra perpaucos 
 
 et ne quid profectionem suam teneret, pridie idus Apriles Latinis esse constitutam diem. sacrificio rite perfecto et se et Cn. Octavium, simul senatus censuisset, exituros esse.
 
-C. Licinio collegae suo fore curae se absente, ut, si qua parari mittique ad id bellum opus sit, parentur mittanturque. interea legationes exterarum nationum audiri posse.
+**C** Licinio collegae suo fore curae se absente, ut, si qua parari mittique ad id bellum opus sit, parentur mittanturque. interea legationes exterarum nationum audiri posse.
 
 primi Alexandrini legati ab Ptolemaeo et Cleopatra regibus vocati sunt.
 
@@ -39848,7 +39848,7 @@ missi sunt tres legati, P. Lentulus, A. Postumius Albinus, A. Antonius. nihil ea
 
 quae dum aguntur, classis Cn. Octavi Samothracam est adpulsa. is quoque praesenti admoto terrore modo minis, modo spe perlicere, ut se traderet, cum conaretur, adiuvit in hoc eum res seu casu contracta seu consilio.
 
-L. Atilius, inlustris adulescens, cum in contione esse populum Samothracum animum advertisset, a magistratibus petit, ut sibi paucis adloquendi populi potestatem facerent.
+**L** Atilius, inlustris adulescens, cum in contione esse populum Samothracum animum advertisset, a magistratibus petit, ut sibi paucis adloquendi populi potestatem facerent.
 
 permisso “utrum nos, hospites Samothraces, vere accepimus an falso sacram hanc insulam et augusti totam atque inviolati soli esse?”
 
@@ -39936,7 +39936,7 @@ tum maximum in terris Macedonum regnum nomenque; inde morte Alexandri distractum
 
 victoriae Romanae fama cum pervasisset in Asiam, Antenor, qui cum classe lemborum ad Phanas stabat, Cassandriam inde traiecit.
 
-C. Popilius, qui Deli in praesidio navibus Macedoniam petentibus erat, postquam debellatum in Macedonia et statione summotos hostium lembos audivit, dimissis et ipse Attali navibus ad susceptam legationem peragendam navigare Aegyptum pergit,
+**C** Popilius, qui Deli in praesidio navibus Macedoniam petentibus erat, postquam debellatum in Macedonia et statione summotos hostium lembos audivit, dimissis et ipse Attali navibus ad susceptam legationem peragendam navigare Aegyptum pergit,
 
 ut prius occurrere Antiocho posset, quam ad Alexandreae moenia accederet.
 
@@ -39952,7 +39952,7 @@ rettulit, et vir asper ingenio augebat atrocitatem eorum, quae dicerentur,
 
 voltu truci et accusatoria voce, ut, cum propriae simultatis nulla causa cum civitate ei esset, ex unius senatoris Romani acerbitate, qualis in se universi senatus animus esset, coniectarent.
 
-C. Decimi moderatior oratio fuit, qui in plerisque eorum, quae commemorata a Popilio essent, culpam non penes populum, sed penes paucos concitores volgi esse dixit:
+**C** Decimi moderatior oratio fuit, qui in plerisque eorum, quae commemorata a Popilio essent, culpam non penes populum, sed penes paucos concitores volgi esse dixit:
 
 eos, venalem linguam habentis, decreta plena regiae adsentationis fecisse et eas legationes misisse, quarum Rhodios semper non minus puderet quam paeniteret. quae omnia, si sana mens populo foret, in capita noxiorum versura.
 
@@ -40110,7 +40110,7 @@ in Illyricum autem hi nominati: P. Aelius Ligus consularis, C. Cicereius et Cn. 
 
 moniti deinde consules a patribus, ut, quoniam alterum ex his succedere C. Licinio, qui legatus nominatus erat, in Gallia oporteret, primo quoque tempore provincias aut conpararent inter se aut sortirentur, sortiti sunt.
 
-M. Iunio Pisae obvenerunt, quem, priusquam in provinciam iret, legationes, quae undique Romam gratulatum convenerant, introducere in senatum placuit, Q. Aelio Gallia. ceterum quamquam tales viri mitterentur,
+**M** Iunio Pisae obvenerunt, quem, priusquam in provinciam iret, legationes, quae undique Romam gratulatum convenerant, introducere in senatum placuit, Q. Aelio Gallia. ceterum quamquam tales viri mitterentur,
 
 quorum de consilio sperari posset imperatores nihil indignum nec clementia nec gravitate populi Romani decreturos esse, tamen in senatu quoque agitata sunt summa consiliorum, ut inchoata omnia legati ab domo ferre ad imperatores possent.
 

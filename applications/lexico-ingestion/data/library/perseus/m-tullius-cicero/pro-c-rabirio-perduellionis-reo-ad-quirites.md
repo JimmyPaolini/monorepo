@@ -75,7 +75,7 @@ quapropter equidem et C. Mari et ceterorum virorum sapientissimorum ac fortissim
 
 neminem esse dico ex his omnibus, qui illo die Romae fuerit, quem tu diem in iudicium vocas, pubesque tum fuerit, quin arma ceperit, quin consules secutus sit. omnes ei quorum tu ex aetate coniecturam facere potes quid tum fecerint abs te capitis C. Rabiri nomine citantur. at occidit Saturninum Rabirius. Vtinam fecisset! non supplicium deprecarer sed praemium postularem. etenim, si Scaevae, servo Q. Crotonis, qui occidit L. Saturninum, libertas data est, quod equiti Romano praemium dari par fuisset? et, si C. Marius, quod fistulas quibus aqua suppeditabatur Iovis optimi maximi templis ac sedibus praecidi imperarat, quod in clivo Capitolino improborum civium * * *
 
-Fragmenta (a Niebuhrio ex P edita, supplementa sunt Niebuhrii, nisi aliter indicatum est) * * * aret. itaque non senatus in ea causa cognoscenda me agente diligentior aut inclementior fuit quam vos universi, cum orbis terrae distributionem atque illum ipsum agrum Campanum animis, manibus, vocibus repudiavistis.
+* * * aret. itaque non senatus in ea causa cognoscenda me agente diligentior aut inclementior fuit quam vos universi, cum orbis terrae distributionem atque illum ipsum agrum Campanum animis, manibus, vocibus repudiavistis.
 
 idem ego quod is qui auctor huius iudicii est clamo, praedico, denuntio. nullus est reliquus rex, nulla gens, nulla natio quam pertimescatis; nullum adventicium, nullum extraneum malum est quod insinuare in hanc rem publicam possit. si immortalem hanc civitatem esse voltis, si aeternum hoc imperium, si gloriam sempiternam manere, nobis a nostris cupiditatibus, a turbulentis hominibus atque novarum rerum cupidis, ab intestinis malis, a domesticis consiliis est cavendum.
 

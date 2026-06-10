@@ -61,7 +61,7 @@ title: Saturae
 
 **24** patricios omnis opibus cum provocet unus
 
-**25** quo tondente gravis iuveni mihi barba sonabat, line repeated at 10.226.
+**25** quo tondente gravis iuveni mihi barba sonabat,
 
 **26** cum pars Niliacae plebis, cum verna Canopi
 
@@ -81,13 +81,13 @@ title: Saturae
 
 **34** et cito rapturus de nobilitate comesa
 
-**35** quod superest, quem Massa timet, quem munere palpat palpat is omitted by P.
+**35** quod superest, quem Massa timet, quem munere palpat
 
 **36** Carus et a trepido Thymele summissa Latino?
 
 **37** cum te summoveant qui testamenta merentur
 
-**38** noctibus, noctibus Vind. Ψ : non tibi P. in caelum quos evenit optima summi
+**38** noctibus, in caelum quos evenit optima summi
 
 **39** nunc via processus, vetulae vesica beatae?
 
@@ -145,7 +145,7 @@ title: Saturae
 
 **66** et multum referens de Maecenate supino
 
-**67** signator falsi falsi P: falso Ψ , qui se lautum atque beatum
+**67** signator falsi, qui se lautum atque beatum
 
 **68** exiguis tabulis et gemma fecerit uda?
 
@@ -239,9 +239,9 @@ title: Saturae
 
 **113** maiestas, etsi funesta pecunia templo
 
-**114** nondum habitas habitas Ψ: habitat P Vind. OT Büch. Housman, nullas nummorum ereximus aras,
+**114** nondum habitas, nullas nummorum ereximus aras,
 
-**115** ut colitur Pax atqueIn place of the dull atque of PΨ, Postgate, supported by the reading firma found in the MS. II, has made the brilliant conj. Fama , approved by L. Havet. See Class. Quart, iii. p. 67. Fides Victoria Virtus
+**115** ut colitur Pax atque Fides Victoria Virtus
 
 **116** quaeque salutate crepitat Concordia nido.
 
@@ -263,7 +263,7 @@ title: Saturae
 
 **125** Galla mea est inquit, ‘citius dimitte, moraris?
 
-**126** profer, Galla, caput, noli vexare, quiescit.’ quiescit Vind.Ψ: quiescaet P: quiescet Büch. Housman.
+**126** profer, Galla, caput, noli vexare, quiescit.’
 
 **127** Ipse dies pulchro distinguitur ordine rerum:
 
@@ -297,11 +297,11 @@ title: Saturae
 
 **142** poena tamen praesens, cum tu deponis amictus
 
-**143** turgidus et crudumP has crudus : crudum Ψ etc. pavonem in balnea portas,
+**143** turgidus et crudum pavonem in balnea portas,
 
 **144** hinc subitae mortes atque intestata senectus;
 
-**145** itSo AL and Housman: Büch. follows the et of P. nova nec tristis per cunctas fabula cenas:
+**145** it nova nec tristis per cunctas fabula cenas:
 
 **146** ducitur iratis plaudendum funus amicis.
 
@@ -311,7 +311,7 @@ title: Saturae
 
 **149** omne in praecipiti vitium stetit, utere velis,
 
-**150** totos pande sinus, dicas dicas Ψ: dices PO: Housman prefers dicas ; see Journal of Phil. No. 67, p. 43. hic forsitan ‘unde
+**150** totos pande sinus, dicas hic forsitan ‘unde
 
 **151** ingenium par materiae? unde illa priorum
 
@@ -321,11 +321,11 @@ title: Saturae
 
 **154** quid refert, dictis ignoscat Mucius an non?”’
 
-**155** pone Tigellinum: taeda lucebisP has lucebit : so also GT in illa
+**155** pone Tigellinum: taeda lucebis in illa
 
-**156** qua stantes ardent qui fixo guttureBüch. (1893 edn.) reads pectore , as do PAO and Owen: gutture is read by Vind.GLTU. So Housman; see Journal of Phil. No. 67, p. 45. fumant,
+**156** qua stantes ardent qui fixo gutture fumant,
 
-**157** et latum media sulcum deducisSo pO: deducit P Housman: Büch. (1910) conj. ducetis . Owen conj. dent lucis , reading ut for et . Housman supposes a line dropped out after 1.156, containing the word cadaver which becomes the subject to deducit . harena.
+**157** et latum media sulcum deducis harena.
 
 **158** Qui dedit ergo tribus patruis aconita, vehatur
 
@@ -347,7 +347,7 @@ title: Saturae
 
 **167** criminibus, tacita sudant praecordia culpa,
 
-**168** inde ira ira Housman following AGLO: Büch. reads irae from P. et lacrimae. tecum prius ergo voluta
+**168** inde ira et lacrimae. tecum prius ergo voluta
 
 **169** haec animo ante tubas: galeatum sero duelli
 
@@ -427,7 +427,7 @@ title: Saturae
 
 **36** Non tulit ex illis torvum Laronia quendam
 
-**37** clamantem totiens ubi nunc, lex Iulia? dormis? Housman punctuates ubi nunc, lex Iulia, dormis?
+**37** clamantem totiens ubi nunc, lex Iulia? dormis?
 
 **38** atque ita subridens: ‘felicia tempora, quae te
 
@@ -439,11 +439,11 @@ title: Saturae
 
 **42** quae tibi? ne pudeat dominum monstrare tabernae,
 
-**43** quod si vexantur leges ac iura ac iura Ψ (see 1. 72): acturae P., citari
+**43** quod si vexantur leges ac iura, citari
 
 **44** ante omnes debet Scantinia: respice primum
 
-**45** et scrutare viros; faciunt nam nam Housman from O: hi Vinci.Ψ and Büch.: qui Büch. (1910). plura, sed illos
+**45** et scrutare viros; faciunt nam plura, sed illos
 
 **46** defendit numerus iunctaeque umbone phalanges,
 
@@ -513,7 +513,7 @@ title: Saturae
 
 **79** et dabit in plures, sicut grex totus in agris
 
-**80** unius scabie cadit et porrigine prurigine P. porci
+**80** unius scabie cadit et porrigine porci
 
 **81** uvaque conspecta livorem ducit ab uva.
 
@@ -553,7 +553,7 @@ title: Saturae
 
 **99** ille tenet speculum, pathici gestamen Othonis,
 
-**100** Actoris Aurunci spoliumThe words Actoris Aurunci spolium are a quotation from Virg. Aen. 12.94., quo se ille videbat
+**100** Actoris Aurunci spolium, quo se ille videbat
 
 **101** armatum, cum iam tolli vexilla iuberet,
 
@@ -565,9 +565,9 @@ title: Saturae
 
 **105** et curare cutem; summi constantia civis
 
-**106** Bebriacis campis spolium spolium ΨO: solium Herwerd. Housman. adfectare Palati,
+**106** Bebriacis campis spolium adfectare Palati,
 
-**107** et pressum in faciem faciem Clausen and Willis, so P1, AKLO; facie P2, GHTUZ digitis extendere panem,
+**107** et pressum in faciem digitis extendere panem,
 
 **108** quod nec in Assyrio pharetrata Samiramis orbe,
 
@@ -575,7 +575,7 @@ title: Saturae
 
 **110** hic nullus verbis pudor aut reverentia mensae,
 
-**111** hic turpis turpis PVind.Ψ: turpes TParis. Cybeles et fracta voce loquendi
+**111** hic turpis Cybeles et fracta voce loquendi
 
 **112** libertas et crine senex fanaticus albo
 
@@ -653,7 +653,7 @@ title: Saturae
 
 **149** Esse aliquos manes et subterranea regna
 
-**150** Cocytum et contum ΣVind.Ψ: et pontum PSTU. Housman reads Cocytum after Luitprandus, Antapodosis 5 B. et Stygio ranas in gurgite nigras,
+**150** Cocytum et Stygio ranas in gurgite nigras,
 
 **151** atque una transire vadum tot milia cumba
 
@@ -671,7 +671,7 @@ title: Saturae
 
 **158** sulpura cum taedis et si foret umida laurus,
 
-**159** illic illic Vind.GL: illuc ATU and appar. P. heu miseri traducimur. arma quidem ultra
+**159** illic heu miseri traducimur. arma quidem ultra
 
 **160** litora Iuvernae promovimus et modo captas
 
@@ -689,7 +689,7 @@ title: Saturae
 
 **167** hic fiunt homines, nam si mora longior urbem
 
-**168** indulsit induerit Willis, following Nisbet pueris, non umquam non umquam GLOT Housman: non numquam PUBüch. derit amator,
+**168** indulsit pueris, non umquam derit amator,
 
 **169** mittentur bracae cultelli frena flagellum;
 
@@ -729,7 +729,7 @@ title: Saturae
 
 **17** in vallem Egeriae descendimus et speluncas
 
-**18** dissimiles veris, quanto praesentius praestantius pΨ: presentius Vind. esset
+**18** dissimiles veris, quanto praesentius esset
 
 **19** numen aquis, viridi si margine clauderet undas
 
@@ -767,9 +767,9 @@ title: Saturae
 
 **36** munera nunc edunt et, verso pollice vulgus
 
-**37** cum quem Ψ: cum PAUBüch. and Housman iubet, occidunt populariter; inde reversi
+**37** cum iubet, occidunt populariter; inde reversi
 
-**38** conducunt foricas, et cur non omnia, cum sint Büch. punctuates et cur non? omnia cum sint.
+**38** conducunt foricas, et cur non omnia, cum sint
 
 **39** quales ex humili magna ad fastigia rerum
 
@@ -911,7 +911,7 @@ title: Saturae
 
 **108** si trulla inverso crepitum dedit aurea fundo.
 
-**109** Praeterea sanctum nihil est nequeP defective here. Most MSS. have aut for est . Housman reads aut tibi . ab inguine tutum,
+**109** Praeterea sanctum nihil est neque ab inguine tutum,
 
 **110** non matrona Laris, non filia virgo, neque ipse
 
@@ -919,7 +919,7 @@ title: Saturae
 
 **112** horum si nihil est, aviam resupinat amici,
 
-**113** scire volunt secreta domus atque inde timeri. Pinzger rejects
+**113** scire volunt secreta domus atque inde timeri.
 
 **114** et quoniam coepit Graecorum mentio, transi
 
@@ -1113,7 +1113,7 @@ title: Saturae
 
 **209** perdidit infelix totum nihil, ultimus autem
 
-**210** aerumnae est cumulus, quod nudum et frusta rogantem est PRAO
+**210** aerumnae est cumulus, quod nudum et frusta rogantem
 
 **211** nemo cibo, nemo hospitio tectoque iuvabit.
 
@@ -1127,9 +1127,9 @@ title: Saturae
 
 **216** conferat inpensas; hic nuda et candida signa,
 
-**217** hic aliquid praeclarum praeclarum P: Housman conj. praedarum . Euphranoris et Polycliti,
+**217** hic aliquid praeclarum Euphranoris et Polycliti,
 
-**218** hic hic conj. by Jahn and confirmed by O and Vind.: haec P Büch.: Housman conj. aera . Asianorum vetera ornamenta deorum,
+**218** hic Asianorum vetera ornamenta deorum,
 
 **219** hic libros dabit et forulos mediamque Minervam,
 
@@ -1161,13 +1161,13 @@ title: Saturae
 
 **233** languorem peperit cibus inperfectus et haerens
 
-**234** ardenti stomacho), nam quaeHousman adopts the conj. quem (Hadr. Valesius): quae PALO. meritoria somnum
+**234** ardenti stomacho), nam quae meritoria somnum
 
 **235** admittunt? magnis opibus dormitur in urbe.
 
 **236** inde caput morbi, raedarum transitus arto
 
-**237** vicorum in flexuBüch. and Owen read inflexu , after PVind.Ψ: Housman in flexu . See Journal of Phil. No. 67, p. 40. et stantis convicia mandrae
+**237** vicorum in flexu et stantis convicia mandrae
 
 **238** eripient somnum Druso vitulisque marinis.
 
@@ -1337,15 +1337,15 @@ title: Saturae
 
 **321** converte a Cumis, saturarum ego, ni pudet illas,
 
-**322** auditor auditor PVind. Büch. (1910): adiutor ΨBüch. (1893). gelidos veniam caligatus in agros.’
+**322** auditor gelidos veniam caligatus in agros.’
 
-**1** Ecce iterum Crispinus, et est mihi saepe vocandusWillis rejects 4.1-36, following Ribbeck
+**1** Ecce iterum Crispinus, et est mihi saepe vocandus
 
 **2** ad partes, monstrum nulla virtute redemptum
 
 **3** a vitiis, aegrae solaque libidine fortes
 
-**4** deliciae; viduas tantum aspernatus. aspernatur Ψ: aspernatus Vind. etc. and Housman: sper. natur PSA. adulter,
+**4** deliciae; viduas tantum aspernatus. adulter,
 
 **5** quid refert igitur, quantis iumenta fatiget
 
@@ -1353,7 +1353,7 @@ title: Saturae
 
 **7** iugera quot vicina foro, quas emerit aedes?
 
-**8** nemo malus felix, minime minime PVind.Ψ: quin sit ς: Housman conj. qum sit . corruptor et idem Clausen rejects, following Jahn
+**8** nemo malus felix, minime corruptor et idem
 
 **9** incestus, cum quo nuper vittata iacebat
 
@@ -1387,7 +1387,7 @@ title: Saturae
 
 **24** succinctus patria quondam, Crispine, papyro?
 
-**25** hoc pretio squamasP has squamae . So Büch.? potuit fortasse minoris
+**25** hoc pretio squamas? potuit fortasse minoris
 
 **26** piscator quam piscis emi; provincia tanti
 
@@ -1471,7 +1471,7 @@ title: Saturae
 
 **66** ‘privatis maiora focis, genialis agatur
 
-**67** iste dies, propera stomachum laxare sagina saginam PS: saginis Ψ Vind.,
+**67** iste dies, propera stomachum laxare sagina,
 
 **68** et tua servatum consume in saecula rhombum.
 
@@ -1495,7 +1495,7 @@ title: Saturae
 
 **78** anne aliud tum praefecti? quorum optimus atque
 
-**79** interpres legum sanctissimus omnia, quamquam quamquam Vind.Ψ: quamque P.
+**79** interpres legum sanctissimus omnia, quamquam
 
 **80** temporibus diris, tractanda putabat inermi
 
@@ -1593,7 +1593,7 @@ title: Saturae
 
 **127** excidet Arviragus. peregrina est belua, cernis
 
-**128** erectas inHousmam conj. per for in . terga sudes?‘ hoc defuit unum
+**128** erectas in terga sudes?‘ hoc defuit unum
 
 **129** Fabricio, patriam ut rhombi memoraret et annos.
 
@@ -1729,7 +1729,7 @@ title: Saturae
 
 **41** qui numeret gemmas, ungues observet acutos.
 
-**42** da veniam, praeclara illi illic Ψ. laudatur iaspis;
+**42** da veniam, praeclara illi laudatur iaspis;
 
 **43** nam Virro, ut multi, gemmas ad pocula transfert
 
@@ -1805,7 +1805,7 @@ title: Saturae
 
 **79** Iuppiter et multo stillaret paenula nimbo.’
 
-**80** Aspice quam longo distinguat distinguat P Vind.: distendat Ψ. pectore lancem
+**80** Aspice quam longo distinguat pectore lancem
 
 **81** quae fertur domino squilla, et quibus undique saepta
 
@@ -1827,7 +1827,7 @@ title: Saturae
 
 **90** propter quod Romae cum Boccare nemo lavatur,
 
-**91** quod tutos etiam facit a serpentibus atris. This line and 6.126 are the only two lines omitted by P (excepting, of course, vi. O 1-34).
+**91** quod tutos etiam facit a serpentibus atris.
 
 **92** Mullus erit domini, quem misit Corsica vel quem
 
@@ -1877,7 +1877,7 @@ title: Saturae
 
 **115** altilis, et flavi dignus ferro Meleagri
 
-**116** spumat spumat PSA: fumat Ψ. aper. post hunc tradentur tubera, si ver
+**116** spumat aper. post hunc tradentur tubera, si ver
 
 **117** tunc erit et facient optata tonitrua cenas
 
@@ -2049,7 +2049,7 @@ title: Saturae
 
 **28** certe sanus eras; uxorem, Postume, ducis?
 
-**29** dic, qua Tisiphone, quibus exagitare exagitare PΨ: exagitere O. colubris?
+**29** dic, qua Tisiphone, quibus exagitare colubris?
 
 **30** ferre potes dominam salvis tot restibus ullam,
 
@@ -2091,7 +2091,7 @@ title: Saturae
 
 **49** si tibi contigerit capitis matrona pudici.
 
-**50** paucae adeo Cereris Cereris PΨ: Housman conj. teretis . vittas contingere dignae,
+**50** paucae adeo Cereris vittas contingere dignae,
 
 **51** quarum non timeat pater oscula: necte coronam
 
@@ -2225,7 +2225,7 @@ title: Saturae
 
 **116** quae tulerit, dormire virum cum senserat uxor,
 
-**117** ausa Palatino tegetem praeferre cubili,Clausen transposes 6.117 and 6.118, following Hermann.
+**117** ausa Palatino tegetem praeferre cubili,
 
 **118** sumere nocturnos meretrix Augusta cucullos
 
@@ -2243,7 +2243,7 @@ title: Saturae
 
 **125** excepit blanda intrantis atque aera poposcit;
 
-**126** continueque iacens cunctorum absorbuit ictus. omitted by PRΨ.
+**126** continueque iacens cunctorum absorbuit ictus.
 
 **127** mox lenone suas iam dimittente puellas
 
@@ -2297,7 +2297,7 @@ title: Saturae
 
 **152** quodque domi non est, sed habet, vicinus, ematur.
 
-**153** mense quidem brumae, quo quo PA: cum Ψ iam mercator Iason
+**153** mense quidem brumae, quo iam mercator Iason
 
 **154** clausus et armatis opstat casa candida nautis,
 
@@ -2307,7 +2307,7 @@ title: Saturae
 
 **157** in digito factus pretiosior: hunc dedit olim
 
-**158** barbarus incestae, dedit hunc dedit hunc SΨ: dedit huc P: Housman conj. gestare . Agrippa sorori,
+**158** barbarus incestae, dedit hunc Agrippa sorori,
 
 **159** observant ubi festa mero pede sabbata reges
 
@@ -2381,7 +2381,7 @@ title: Saturae
 
 **194** in vetula: quotiens lascivum intervenit illud
 
-**195** ζωὴ καὶ ψυχή, modo sub lodice relictisHousman conj. ferendis for the relictis of PΨ.
+**195** ζωὴ καὶ ψυχή, modo sub lodice relictis
 
 **196** uteris in turba, quod enim non excitet inguen
 
@@ -2685,9 +2685,9 @@ title: Saturae
 
 **346** Audio quid veteres olim moneatis amici:
 
-**347** ‘pone seram, cohibeP here has the false reading prohibe for cohibe ..’ sed quis custodiet ipsos
+**347** ‘pone seram, cohibe.’ sed quis custodiet ipsos
 
-**348** custodes? cauta est et ab illis incipit uxor. Lines 6.346-348 are repeated below, with an addition, as O 29-34. Clausen rejects these verses here; Willis accepts these and rejects O.1-34.
+**348** custodes? cauta est et ab illis incipit uxor.
 
 **349** iamque eadem summis pariter minimisque libido,
 
@@ -2723,7 +2723,7 @@ title: Saturae
 
 **365** non umquam re putant quanti sibi gaudia constent.
 
-**366O** In quacumque domo vivit luditque professusHousman and Clausen accept the following thirty-four lines (MS O 1-34); Willis rejects them, following Buecheler. The verses were discovered in 1899 by Mr. E. O. Winstedt in Bodleian MS. O (formerly MS Canonicianus 41). Classical Review, May, 1899, pp. 201 foll.
+**366O** In quacumque domo vivit luditque professus
 
 **367O** obscenum, tremula promittit et omnia dextra,
 
@@ -2739,11 +2739,11 @@ title: Saturae
 
 **374O** in cuius numero longe migrare iubetur
 
-**375O** psellus psellus so Housman and Owen: O reads psillus : Büch. Psyllus . Eupholio O: Housman reads euphono : Büch. conj. Euhoplio . ab Eupholio; quid quod nec retia turpi
+**375O** psellus ab Eupholio; quid quod nec retia turpi
 
 **376O** iunguntur tunicae, nec cella ponit eadem
 
-**377O** munimenta umeri pulsatamque armaO reads pulsatamque arma : Housman conj. pulsata hastamque : pulsata arcaque Owen: pulsantemque Postgate: Büch. conj. pulsaloremque tridentem and compares 6.40 tridentem
+**377O** munimenta umeri pulsatamque arma tridentem
 
 **378O** qui nudus pugnare solet? pars ultima ludi
 
@@ -2783,7 +2783,7 @@ title: Saturae
 
 **396O** consilia et veteres quaecumque monetis amici:
 
-**397O** pone seram, cohibe. sed quis custodiatO here reads custodiat , but PΨ have custodiet in the repeated passage, line 347. ipsos
+**397O** pone seram, cohibe. sed quis custodiat ipsos
 
 **398O** custodes, qui nunc lascivae furta puellae
 
@@ -2807,7 +2807,7 @@ title: Saturae
 
 **373** tonsoris damno tantum rapit Heliodorus.
 
-**373a** mangonum pueros vera ac miserabilis urit The MS. O alone gives two additional lines between 6.373 and 6.374. O reads magonum : Postgate mangonum . Clausen (1992) accepts.
+**373a** mangonum pueros vera ac miserabilis urit
 
 **373b** debilitas, follisque pudet cicerisque relicti.
 
@@ -2883,17 +2883,17 @@ title: Saturae
 
 **409** excipit ad portas, quosdam facit; isse Niphaten
 
-**410** in populos magnoque illic cuncta arva arva Ψ: arma P. teneri
+**410** in populos magnoque illic cuncta arva teneri
 
 **411** diluvio, nutare urbes, subsidere terras
 
 **412** quocumque in trivio cuicumque est obvia, narrat.
 
-**413** Nec tamen id vitium magis intolerabile quam quae quod Ψ: quae P.
+**413** Nec tamen id vitium magis intolerabile quam quae
 
 **414** vicinos humiles rapere et concidere loris
 
-**415** exorata exorata Ψ: exortata P, Housman, Büch. (1910). solet, nam si latratibus alti
+**415** exorata solet, nam si latratibus alti
 
 **416** rumpuntur somni, fustes huc ocius, inquit,
 
@@ -2973,7 +2973,7 @@ title: Saturae
 
 **454** ignotosque mihi tenet antiquaria versus
 
-**455** nec curanda virisHousman puts a full stop after viris , and interprets: aliasque res virorum cura indignas . Postgate suggests, after one of Ruperti's MSS., haec curanda viris ? opicae castigat amicae
+**455** nec curanda viris opicae castigat amicae
 
 **456** verba; soloecismum liceat fecisse marito.
 
@@ -2983,7 +2983,7 @@ title: Saturae
 
 **459** auribus extentis magnos commisit elenchos;
 
-**460** intolerabilis nihil est quam femina dives. Clausen and Willis reject line 6.460, following Paldamus.
+**460** intolerabilis nihil est quam femina dives.
 
 **461** interea foeda aspectu ridendaque multo
 
@@ -3179,7 +3179,7 @@ title: Saturae
 
 **557** praecipuus tamen est horum, qui saepius exul,
 
-**558** cuius amicitia conducendaque tabella Lines 6.558-59 are omitted in PFG and not noted in the scholia. Clausen rejects them, as does Willis, following Hermann.
+**558** cuius amicitia conducendaque tabella
 
 **559** magnus civis obit et formidatus Othoni.
 
@@ -3201,7 +3201,7 @@ title: Saturae
 
 **568** post ipsam: quid enim maius dare numina possunt?
 
-**569** haec tamen ignorat haec ignorat GLOU: haec ignorant T: hae ignorant Büch (1893). quid sidus triste minetur
+**569** haec tamen ignorat quid sidus triste minetur
 
 **570** Saturni, quo laeta Venus se proferat astro,
 
@@ -3233,7 +3233,7 @@ title: Saturae
 
 **584** praebebit vati crebrum poppysma roganti,
 
-**585** divitibus responsa dabit dabit PG: dabunt FTU. Phryx augur, et Indus indus Brit. 15 B xvii: inde PςΨ: indi U: Owen and Büch. (1893) Iudae : Housman and Büch. (1910) inde . Housman thinks a line has dropped out.
+**585** divitibus responsa dabit Phryx augur, et Indus
 
 **586** conductus, dabit astrorum mundique peritus
 
@@ -3275,7 +3275,7 @@ title: Saturae
 
 **605** corpore laturos, stat Fortuna inproba noctu
 
-**606** adridens nudis infantibus; hos fovet omni omnes Ψ: omni PT and most edd.
+**606** adridens nudis infantibus; hos fovet omni
 
 **607** involvitque sinu, domibus tunc porrigit altis
 
@@ -3293,7 +3293,7 @@ title: Saturae
 
 **614** quas modo gessisti. tamen hoc tolerabile, si non
 
-**614a** semper aquam portes rimosa ad dolia, semper Clausen brakets 6.614abc, which is placed after 6.614 in U, after 6.601 in K, and in the marginalia of certain texts
+**614a** semper aquam portes rimosa ad dolia, semper
 
 **614b** istud onus subeas ipsis manantibus urnis,
 
@@ -3389,7 +3389,7 @@ title: Saturae
 
 **659** at nunc res agitur tenui pulmone rubetae;
 
-**660** sed tamen et ferro, si praegustarit praegustabit PSG: praegustaret Ψ: praegustarit Markl. and Housman. Atrides
+**660** sed tamen et ferro, si praegustarit Atrides
 
 **661** Pontica ter victi cautus medicamina regis.
 
@@ -3471,7 +3471,7 @@ title: Saturae
 
 **39** propter mille annos, et si dulcedine famae
 
-**40** succensus recites, maculosas maculosas Heinr.: maculonsas Ribb. Housman: maculonus Ψ, maculonis PGBüch. commodat aedes;
+**40** succensus recites, maculosas commodat aedes;
 
 **41** haec longe ferrata domus servire iubetur,
 
@@ -3493,7 +3493,7 @@ title: Saturae
 
 **50** nam si discedas, laqueo tenet ambitiosi
 
-**51** consuetudo mali, tenet insanabile multos The text of lines 50-52 is evidently corrupt Part of the passage seems to be a gloss, but, even if line 51 be eliminated, lines 50 and 52 can scarcely be translated though the general sense is clear.
+**51** consuetudo mali, tenet insanabile multos
 
 **52** scribendi cacoethes et aegro in corde senescit.
 
@@ -3589,7 +3589,7 @@ title: Saturae
 
 **98** Vester porro labor fecundior, historiarum
 
-**99** scriptores? perit perit PFG: petit Ψ hic plus temporis atque olei plus.
+**99** scriptores? perit hic plus temporis atque olei plus.
 
 **100** nullo quippe modo millensima pagina surgit
 
@@ -3619,7 +3619,7 @@ title: Saturae
 
 **113** si libet, hinc centum patrimonia causidicorum,
 
-**114** parte alia solum russati pone Lacertae Lacertae Ψ: Lacernae P..
+**114** parte alia solum russati pone Lacertae.
 
 **115** consedere duces, surgis tu pallidus Aiax
 
@@ -3669,7 +3669,7 @@ title: Saturae
 
 **138** sed finem inpensae non servat prodiga Roma.
 
-**139** Fidimus eloquio Instead of fidimus eloquio Ψ has ut redeant veteres .? Ciceroni nemo ducentos
+**139** Fidimus eloquio? Ciceroni nemo ducentos
 
 **140** nunc dederit nummos, nisi fulserit anulus ingens.
 
@@ -3703,7 +3703,7 @@ title: Saturae
 
 **155** quis color et quod sit causae genus atque ubi summa
 
-**156** quaestio, quae veniant diversa e parte parte . So Ψ: P and Büch. have forte . sagittae,
+**156** quaestio, quae veniant diversa e parte sagittae,
 
 **157** nosse volunt omnes, mercedem solvere nemo
 
@@ -3721,7 +3721,7 @@ title: Saturae
 
 **164** circumagat madidas a tempestate cohortes.
 
-**165** quantum vis stipulare et protinus accipe: quid quid PFGTU: quod ALO. do
+**165** quantum vis stipulare et protinus accipe: quid do
 
 **166** ut totiens illum pater audiat? haec alii sex
 
@@ -3745,7 +3745,7 @@ title: Saturae
 
 **176** Chrysogonus quanti doceat vel Polio quanti
 
-**177** lautorum pueros: artem scindes scindens PΨ: scindes conj. Iahn, confirmed by Voss. Theodori
+**177** lautorum pueros: artem scindes Theodori
 
 **178** Balnea sescentis et pluris porticus in qua
 
@@ -3761,7 +3761,7 @@ title: Saturae
 
 **184** qualiacumque domus, veniet qui fercula docte
 
-**185** conponat componit GT. P and most MSS. have componat . See Housman, Journal of Phil. No. 67, p. 41., veniet qui pulmentaria conditP has condit : LOU condat : condiat Lachmann..
+**185** conponat, veniet qui pulmentaria condit.
 
 **186** hos inter sumptus sestertia Quintiliano,
 
@@ -3785,7 +3785,7 @@ title: Saturae
 
 **196** edere vagitus et adhuc a matre rubentem.
 
-**197** si Fortuna volet, fies fies pΨ: fiet P. de rhetore consul;
+**197** si Fortuna volet, fies de rhetore consul;
 
 **198** si volet haec eadem, fiet de consule rhetor.
 
@@ -3827,7 +3827,7 @@ title: Saturae
 
 **217** quodcumque est, minus est autem quam rhetoris aera,
 
-**218** discipuli custos praemordet acoenonoetus acoenonoetus PS: acoenonetos U (ἀκοινώνηος refusing to go shares).
+**218** discipuli custos praemordet acoenonoetus
 
 **219** et qui dispensat frangit sibi. cede, Palaemon,
 
@@ -3875,7 +3875,7 @@ title: Saturae
 
 **241** observare manus oculosque in fine trementis,
 
-**242** ‘haec,’ inquit, ‘cura, sed cura sed G and one of Ruperti's MSS.: curas et PΨ and Büch. (1893): cures et Owen. cum se verterit annus,
+**242** ‘haec,’ inquit, ‘cura, sed cum se verterit annus,
 
 **243** accipe, victori populus quod postulat, aurum.’
 
@@ -3891,7 +3891,7 @@ title: Saturae
 
 **6** quis fructus generis tabula iactare capaci
 
-**7** Corvinum Corvinum P etc.: Housman conj. pontifices ., posthac multa contingere virga
+**7** Corvinum, posthac multa contingere virga
 
 **8** fumosos equitum cum dictatore magistros,
 
@@ -3953,7 +3953,7 @@ title: Saturae
 
 **37** quod fremat in terris violentius; ergo cavebis
 
-**38** et metues ne tu sic sic H. Junius: si P: sis Ψ. Creticus aut Camerinus.
+**38** et metues ne tu sic Creticus aut Camerinus.
 
 **39** His ego quem monui? tecum est mihi sermo, Rubelli
 
@@ -3979,7 +3979,7 @@ title: Saturae
 
 **50** qui iuris nodos et legum aenigmata solvat;
 
-**51** hinc hinc conj. by Weidner and confirmed by GU: PΨ have hic . petit Euphraten iuvenis domitique Batavi
+**51** hinc petit Euphraten iuvenis domitique Batavi
 
 **52** custodes aquilas, armis industrius. at tu
 
@@ -4053,11 +4053,11 @@ title: Saturae
 
 **87** Expectata diu tandem provincia cum te
 
-**88** rectorem accipiet accipiet Ψ: accipiat PAF., pone irae frena modumque,
+**88** rectorem accipiet, pone irae frena modumque,
 
 **89** pone et avaritiae, miserere inopum sociorum:
 
-**90** ossa vides rerum rerum PFGU: regum ALOT. vacuis exucta medullis;
+**90** ossa vides rerum vacuis exucta medullis;
 
 **91** respice quid moneant leges, quid curia mandet,
 
@@ -4101,7 +4101,7 @@ title: Saturae
 
 **111** si quis in aedicula deus unicus; haec etenim sunt
 
-**112** pro summis, iam iam conj. by Büch.: nam PΨ and Büch. (1893): Housman conj. quis . sunt haec maxima, despicias tu
+**112** pro summis, iam sunt haec maxima, despicias tu
 
 **113** forsitan inbellis Rhodios unctamque Corinthon;
 
@@ -4173,7 +4173,7 @@ title: Saturae
 
 **147** carpento rapitur pinguis Lateranus, et ipse.
 
-**148** ipse rotam adstringit sufflamine mulioAll edd before Bücheler (1886) read multo . The true reading mulio was found in the Florilegium Sangallense and is confirmed elsewhere. See Duff's and Housman's notes on the passage. consul.
+**148** ipse rotam adstringit sufflamine mulio consul.
 
 **149** nocte quidem, sed Luna videt, sed sidera testes
 
@@ -4267,7 +4267,7 @@ title: Saturae
 
 **194** nec dubitant celsi praetoris vendere ludis,
 
-**195** finge tamen gladios inde atque hinc pulpita poni poni P; pone Ψ.,
+**195** finge tamen gladios inde atque hinc pulpita poni,
 
 **196** quid satius? mortem sic quisquam exhorruit, ut sit
 
@@ -4323,7 +4323,7 @@ title: Saturae
 
 **222** debuit ulcisci magis aut cum Vindice Galba,
 
-**223** quod quod Madvig: quid PΨ. Nero tam saeva crudaque tyrannide fecit?
+**223** quod Nero tam saeva crudaque tyrannide fecit?
 
 **224** haec opera atque hae sunt generosi principis artes,
 
@@ -4359,7 +4359,7 @@ title: Saturae
 
 **240** tantum igitur muros intra toga contulit illi
 
-**241** nominis ac tituli, quantum sibiWillis accepts sibi , following the cautious conjecture of Jahn. If we read in with PSGU the line is deficient metrically. Ψ has non : Owen conj. vi . Leucade, quantum
+**241** nominis ac tituli, quantum sibi Leucade, quantum
 
 **242** Thessaliae campis Octavius abstulit udo
 
@@ -4455,7 +4455,7 @@ title: Saturae
 
 **13** silva comae, nullus tota nitor in cute, qualem
 
-**14** Bruttia praestabat calidi tibi fascia visciGU give this line in two places, here and after line 11. The reading is uncertain. Owen reads lita for tibi , taken from circumlita in Ψ.,
+**14** Bruttia praestabat calidi tibi fascia visci,
 
 **15** sed fruticante pilo neglecta et squalida crura.
 
@@ -4477,7 +4477,7 @@ title: Saturae
 
 **24** et Cererem (nam quo non prostat femina templo?)
 
-**25** notior Aufidio moechus celebrare scelerare P Büch.: celebrare Ψ ( fortasse melius Housman). solebas,
+**25** notior Aufidio moechus celebrare solebas,
 
 **26** quodque taces, ipsos etiam inclinare maritos.
 
@@ -4509,7 +4509,7 @@ title: Saturae
 
 **40** computat, et cevet. ponatur calculus, adsint
 
-**41** cum tabula pueri; numera numera Ψ: numeras P. sestertia quinque
+**41** cum tabula pueri; numera sestertia quinque
 
 **42** omnibus in rebus: numerentur deinde labores,
 
@@ -4547,7 +4547,7 @@ title: Saturae
 
 **59** quantum erat exhausti lumbos donare clientis
 
-**60** iugeribus paucis? meliusne hicFor ne hic (PΨ) Housman conjectured nunc . rusticus infans
+**60** iugeribus paucis? meliusne hic rusticus infans
 
 **61** cum matre et casulis et conlusore catello
 
@@ -4663,9 +4663,9 @@ title: Saturae
 
 **117** pro populo faciens quantum Saufeia bibebat,
 
-**118** vivendum recte cum propter plurima tum est his tum est his . So Housman instead of the tunc est of PA.
+**118** vivendum recte cum propter plurima tum est his
 
-**119** idcirco ut possis linguam contemnere servi. After 9.118 PA; after 9.123 Ψ.
+**119** idcirco ut possis linguam contemnere servi.
 
 **120** praecipue causis, ut linguas mancipiorum
 
@@ -4697,7 +4697,7 @@ title: Saturae
 
 **134** spes superest; tu tantum erucis inprime dentem.
 
-**134a** gratus eris; tu tantum erucis inprime dentem. Ψ omits. After line 134, P has this line, being mainly a repetition of that line. Housman conjectures an omission of five words, and reads the lines thus: altera maior spes superest; turbae, properat quae crescere, molli gratus eris, tu tantum erucis imprime dentom .
+**134a** gratus eris; tu tantum erucis inprime dentem.
 
 **135** ‘Haec exempla para felicibus, at mea Clotho
 
@@ -4837,7 +4837,7 @@ title: Saturae
 
 **53** mandaret laqueum mediumque ostenderet unguem.
 
-**54** Ergo supervacua aut quae quae is a conj. by Büch. (1893), the space being blank in the MSS. aut ne perniciosa petantur Lach. Housman has a mark of interrogation after petuntur . As the text stands, sunt must be understood after quae . Owen conj. prope . perniciosa petuntur
+**54** Ergo supervacua aut quae perniciosa petuntur
 
 **55** propter quae fas est genua incerare deorum!
 
@@ -4857,7 +4857,7 @@ title: Saturae
 
 **63** Seianus, deinde ex facie toto orbe secunda
 
-**64** fiunt urceoli pelves sartago matellae matellae P: patellae Ψ..
+**64** fiunt urceoli pelves sartago matellae.
 
 **65** pone domi laurus, duc in Capitolia magnum
 
@@ -4915,7 +4915,7 @@ title: Saturae
 
 **92** illum exercitibus praeponere, tutor haberi
 
-**93** principis angusta angusta Ψ Büch. (1910) Housman: augusta PABüch. (1893). Caprearum in rupe sedentis
+**93** principis angusta Caprearum in rupe sedentis
 
 **94** cum grege Chaldaeo? vis certe pila cohortes
 
@@ -4961,7 +4961,7 @@ title: Saturae
 
 **115** incipit optare et totis quinquatribus optat
 
-**116** quisquis adhuc uno parcam parcam P: partam Ψ colit asse Minervam,
+**116** quisquis adhuc uno parcam colit asse Minervam,
 
 **117** quem sequitur custos augustae vernula capsae.
 
@@ -4973,7 +4973,7 @@ title: Saturae
 
 **121** sanguine causidici maduerunt rostra pusilli.
 
-**122** o fortunatam natam me consule Romam:This line is (apparently) taken from the poem (De suo Consulatu) which Cicero wrote to glorify the events of his Consulship To the many who are not gifted with the divine faculty of poesy it may be a consolation to know that a writer of the most splendid prose could be guilty of such a rubbishy line as that here quoted.
+**122** o fortunatam natam me consule Romam:
 
 **123** Antoni gladios potuit contemnere, si sic
 
@@ -5029,7 +5029,7 @@ title: Saturae
 
 **149** percussa oceano Niloque admota tepenti,
 
-**150** rursus ad Aethiopum populos aliosque aliosque Ψ: altosque PA. elephantos!
+**150** rursus ad Aethiopum populos aliosque elephantos!
 
 **151** additur imperiis Hispania, Pyrenaeum
 
@@ -5039,7 +5039,7 @@ title: Saturae
 
 **154** iam tenet Italiam, tamen ultra pergere tendit:
 
-**155** acti acti Ψ Housman Büch. (1910): actum PT Büch. (1893)., inquit, ‘nihil est, nisi Poeno milite portas
+**155** acti, inquit, ‘nihil est, nisi Poeno milite portas
 
 **156** frangimus et media vexillum pono Subura.’
 
@@ -5123,7 +5123,7 @@ title: Saturae
 
 **196** plurima sunt iuvenum discrimina; pulchrior ille
 
-**197** hoc atque ille ille Ψ, omitted by PO. Housman conjectures ore . alio, multum hic robustior illo:
+**197** hoc atque ille alio, multum hic robustior illo:
 
 **198** una senum facies, cum voce trementia membra
 
@@ -5237,7 +5237,7 @@ title: Saturae
 
 **253** Antilochi barbam ardentem, cum quaerit ab omni
 
-**254** quisquis adest socius socius P: socio Ψ and Housman., cur haec in tempora duret
+**254** quisquis adest socius, cur haec in tempora duret
 
 **255** quod facinus dignum tam longo admiserit aevo.
 
@@ -5355,7 +5355,7 @@ title: Saturae
 
 **312** publicus et poenas metuet quascumque maritis
 
-**313** lex irae irati PT: exire irati A: exigere irati Ψ: mariti irati Büch.Owen: lex irae conjectures Housman: maritis iratis Rigalt Büch. (1910). debet, nec erit felicior astro
+**313** lex irae debet, nec erit felicior astro
 
 **314** Martis, ut in laqueos numquam incidat, exigit autem
 
@@ -5473,7 +5473,7 @@ title: Saturae
 
 **5** de Rutilo; nam dum valida ac iuvenalia membra
 
-**6** sufficiunt galeae dumque ardent ardenti PΨ: ardens U: ardent conjectures Rigalt. sanguine, fertur
+**6** sufficiunt galeae dumque ardent sanguine, fertur
 
 **7** non cogente quidem sed nec prohibente tribuno,
 
@@ -5507,7 +5507,7 @@ title: Saturae
 
 **22** luxuria est, in Ventidio laudabile nomen
 
-**23** sumit sumit PSΨ: sumptus Heinrich and Housman, et a censu famam trahit. Illum ego iure
+**23** sumit, et a censu famam trahit. Illum ego iure
 
 **24** despiciam, qui scit quanto sublimior Atlans
 
@@ -5575,7 +5575,7 @@ title: Saturae
 
 **56** Experiere hodie numquid pulcherrima dictu,
 
-**57** Persice, non praestem vitae tibi tibi is added by Büch.: P has a blank. moribus et re,
+**57** Persice, non praestem vitae tibi moribus et re,
 
 **58** si laudem siliquas occultus ganeo, pultes
 
@@ -5643,7 +5643,7 @@ title: Saturae
 
 **90** cum tremerent autem Fabios durumque Catonem
 
-**91** et Scauros et Fabricium, rigidique rigidique Ψ, Housman: postremo P Büch. severos
+**91** et Scauros et Fabricium, rigidique severos
 
 **92** censoris mores etiam collega timeret,
 
@@ -5673,7 +5673,7 @@ title: Saturae
 
 **105** imperii fato, geminos sub rupe Quirinos,
 
-**106** ac nudam effigiem clipeoHousman inserts in before clipeo . venientis et hasta
+**106** ac nudam effigiem clipeo venientis et hasta
 
 **107** pendentisque dei perituro ostenderet hosti,
 
@@ -5757,7 +5757,7 @@ title: Saturae
 
 **147** non Phryx aut Lycius, non a mangone petitus
 
-**148** quisquam erit et magno quisquam erit et magno ALOT: quisquam erit in magno PSFGU: qui steterit magno conjectures Housman: in magno si posces Büch. (1893) Owen; id magnum Büch. (1910).: cum posces, posce latine.
+**148** quisquam erit et magno: cum posces, posce latine.
 
 **149** idem habitus cunctis, tonsi rectique capilli
 
@@ -5941,7 +5941,7 @@ title: Saturae
 
 **31** alternum puppis latus evertentibus undis,
 
-**32** arbori arbori is Lachmann's conj. for the arboris of the MSS. incertae, nullam prudentia cani
+**32** arbori incertae, nullam prudentia cani
 
 **33** rectoris cum ferret opem, decidere iactu
 
@@ -5971,7 +5971,7 @@ title: Saturae
 
 **46** adde et bascaudas et mille escaria, multum
 
-**47** caelati, biberat quo callidus callidus Ψ: pallidus PA. emptor Olynthi.
+**47** caelati, biberat quo callidus emptor Olynthi.
 
 **48** sed quis nunc alius qua mundi parte, quis audet
 
@@ -5999,7 +5999,7 @@ title: Saturae
 
 **60** mox cum reticulis et pane et ventre lagonae,
 
-**61** aspice aspice PΨ: accipe Housman: respice Iahn. sumendas in tempestate secures.
+**61** aspice sumendas in tempestate secures.
 
 **62** Sed postquam iacuit planum mare, tempora postquam
 
@@ -6173,7 +6173,7 @@ title: Saturae
 
 **17** sexaginta annos Fonteio consule natus?
 
-**18** an nihil in melius tot rerum proficis proficit P: proficis Ψ and Housman. usu?
+**18** an nihil in melius tot rerum proficis usu?
 
 **19** Magna quidem, sacris quae dat praecepta libellis,
 
@@ -6193,7 +6193,7 @@ title: Saturae
 
 **27** Thebarum portae vel divitis ostia Nili.
 
-**28** nona nona . So Ψ and Housman: non FG: P Büch. and Owen have the unmeaning nunc . aetas agitur peioraque saecula ferri
+**28** nona aetas agitur peioraque saecula ferri
 
 **29** temporibus, quorum sceleri non invenit ipsa
 
@@ -6235,7 +6235,7 @@ title: Saturae
 
 **48** numinibus miserum urguebant Atlanta minori
 
-**49** pondere, nondum aliquis aliquis is read by Ψ, but omitted by P. Housman conjectures imi . See Journal of Phil. No. 67, p. 42. sortitus triste profundi
+**49** pondere, nondum aliquis sortitus triste profundi
 
 **50** imperium, aut Sicula torvos cum coniuge Pluton,
 
@@ -6267,7 +6267,7 @@ title: Saturae
 
 **64** egregium sanctumque virum si cerno, bimembri
 
-**65** hoc monstrum puero et mirantiSo Ψ and Housman: Büch. follows the mirandis of P. sub aratro
+**65** hoc monstrum puero et miranti sub aratro
 
 **66** piscibus inventis et fetae comparo mulae,
 
@@ -6495,7 +6495,7 @@ title: Saturae
 
 **178** depositum tibi sospes erit, sed corpore trunco
 
-**179** invidiosa dabit minimus minimus PΨ: Housman conj. solum . solacia sanguis.
+**179** invidiosa dabit minimus solacia sanguis.
 
 **180** at vindicta bonum vita iucundius ipsa.
 
@@ -6639,7 +6639,7 @@ title: Saturae
 
 **1** Plurima sunt, Fuscine, et fama digna sinistra
 
-**1a** et quod maiorum vitia sequiturque minores Büch. (1910) inserts within brackets this line found in Ψ between 14.1 and 14.2: . AG read vitio for vitia .
+**1a** et quod maiorum vitia sequiturque minores
 
 **2a** et nitidis maculam haesuram figentia rebus,
 
@@ -6727,7 +6727,7 @@ title: Saturae
 
 **44** nil dictu foedum visuque haec limina tangat,
 
-**45** intra quae pater est est PΨ: es Housman after Cramer.; procul, a procul inde puellae
+**45** intra quae pater est; procul, a procul inde puellae
 
 **46** lenonum et cantus pernoctantis parasiti.
 
@@ -6779,7 +6779,7 @@ title: Saturae
 
 **70** gratum est quod patriae civem populoque dedisti,
 
-**71** si facis ut patriae patriae Ψ: patria PS: Housman conjectures civis . sit idoneus, utilis agris,
+**71** si facis ut patriae sit idoneus, utilis agris,
 
 **72** utilis et bellorum et pacis rebus agendis,
 
@@ -6863,7 +6863,7 @@ title: Saturae
 
 **112** tamquam parcus homo et rerum tutela suarum
 
-**113** certa magis quam si fortunasPFGU have fortuna , other MSS. fortunas : Büch. (1910) reads a fortuna . servet easdem
+**113** certa magis quam si fortunas servet easdem
 
 **114** Hesperidum serpens aut Ponticus. adde quod hunc de
 
@@ -6881,7 +6881,7 @@ title: Saturae
 
 **121** pauperis esse putat, iuvenes hortatur ut illa
 
-**122** ire via pergant pergant Ψ: peragant P. et eidem incumbere sectae,
+**122** ire via pergant et eidem incumbere sectae,
 
 **123** sunt quaedam vitiorum elementa, his protinus illos
 
@@ -6905,7 +6905,7 @@ title: Saturae
 
 **133** filaque sectivi numerata includere porri.
 
-**134** invitatus ad haec aliquis de ponte negabit negabit Ψ: negavit PS: negabat O..
+**134** invitatus ad haec aliquis de ponte negabit.
 
 **135** sed quo divitias haec per tormenta coactas,
 
@@ -6915,7 +6915,7 @@ title: Saturae
 
 **138** interea pleno cum turget sacculus ore,
 
-**139** crescit crevit P: other MSS crescit . amor nummi quantum ipsa pecunia crevit,
+**139** crescit amor nummi quantum ipsa pecunia crevit,
 
 **140** et minus hanc optat qui non habet, ergo paratur
 
@@ -6941,7 +6941,7 @@ title: Saturae
 
 **151** et quot venales iniuria fecerit agros
 
-**152** Sed qui sermones, quam foedae foedae Ψ: foede PG. bucina famae!
+**152** Sed qui sermones, quam foedae bucina famae!
 
 **153** quid nocet haec? inquit, ‘tunicam mihi malo lupini
 
@@ -7069,7 +7069,7 @@ title: Saturae
 
 **215** parcendum est teneris, nondum implevere medullas
 
-**216** maturae maturae quinque Rupertii: naturae PΨ. mala nequitiae, cum pectere barbam
+**216** maturae mala nequitiae, cum pectere barbam
 
 **217** coeperit et longae mucronem admittere cultri,
 
@@ -7095,7 +7095,7 @@ title: Saturae
 
 **228** et laevo monitu pueros producit avaros
 
-**229** et qui per fraudes patrimonia conduplicari *y omits; Ruperti delete
+**229** et qui per fraudes patrimonia conduplicari
 
 **230** dat libertatem et totas effundit habenas
 
@@ -7175,7 +7175,7 @@ title: Saturae
 
 **268** atque habitas, Coro semper tollendus et Austro,
 
-**269** perditus ac vilis ac vilis P etc.: a siculis Ψ: ac similis conjecture Housman: assiculis Büch. (1910). sacci mercator olentis,
+**269** perditus ac vilis sacci mercator olentis,
 
 **270** qui gaudes pingue antiquae de litore Cretae
 
@@ -7269,7 +7269,7 @@ title: Saturae
 
 **315** numen habes, si sit prudentia: nos te,
 
-**316** nos facimus, Fortuna, deamThe sentence nullum through deam is repeated from 10.365-66, quite irrelevantly.. Mensura tamen quae
+**316** nos facimus, Fortuna, deam. Mensura tamen quae
 
 **317** sufficiat census, siquis me consulat, edam:
 
@@ -7313,7 +7313,7 @@ title: Saturae
 
 **6** atque vetus Thebe centum iacet obruta portis,
 
-**7** illic aeluros aeluros Brod.: illic caeruleos Ψ., hic piscem fluminis, illic
+**7** illic aeluros, hic piscem fluminis, illic
 
 **8** oppida tota canem venerantur, nemo Dianam,
 
@@ -7353,7 +7353,7 @@ title: Saturae
 
 **26** solus enim haec Ithacus nullo sub teste canebat;
 
-**27** Nos miranda quidem, set nuper consule Iunco iunco Bob.AU: iunpo P: iunio Ψ.
+**27** Nos miranda quidem, set nuper consule Iunco
 
 **28** gesta super calidae referemus moenia Copti,
 
@@ -7449,7 +7449,7 @@ title: Saturae
 
 **74** audet et infestis pugnam instaurare sagittis,
 
-**75** terga fugae fugae POT: fuga Ψ. The correct reading instantibus Ombis is preserved by O only. celeri praestant instantibus Ombis
+**75** terga fugae celeri praestant instantibus Ombis
 
 **76** qui vicina colunt umbrosae Tentyra palmae,
 
@@ -7495,7 +7495,7 @@ title: Saturae
 
 **97** huius enim, quod nunc agitur, miserabile debet
 
-**98** exemplum esse cibi, sicutHousman reads tibi from G in place of cibi PΨ, and conjectures si cui in place of sicut PΨ. modo dicta mihi gens:
+**98** exemplum esse cibi, sicut modo dicta mihi gens:
 
 **99** post omnis herbas, post cuncta animalia, quidquid
 
@@ -7507,13 +7507,13 @@ title: Saturae
 
 **103** et sua. quisnam hominum veniam dare quisve deorum
 
-**104** ventribusSo Housman, after Hadr. Vales.: PU have urbibus , and so Büch. and Owen: viribus Ψ. abnueret dira atque inmania passis,
+**104** ventribus abnueret dira atque inmania passis,
 
 **105** et quibus illorum poterant ignoscere manes,
 
 **106** quorum corporibus vescebantur? melius nos
 
-**107** Zenonis praecepta monent, nec enim omnia, quaedam quaedam AGLT: P has quidam : so Büch. and Housman
+**107** Zenonis praecepta monent, nec enim omnia, quaedam
 
 **108** pro vita facienda putant; sed Cantaber unde
 
@@ -7607,7 +7607,7 @@ title: Saturae
 
 **153** aedificare domos, laribus coniungere nostris
 
-**154** tectum aliud, tutos vicino limine limine Ψ: limite PA. somnos
+**154** tectum aliud, tutos vicino limine somnos
 
 **155** ut collata daret fiducia, protegere armis
 
@@ -7683,7 +7683,7 @@ title: Saturae
 
 **17** et procul a signis. ‘iustissima centurionum
 
-**18** cognitio est igiturFor the igitur of PΨ Housman reads inquis . de milite, nec mihi derit
+**18** cognitio est igitur de milite, nec mihi derit
 
 **19** ultio, si iustae defertur causa querellae.’
 
@@ -7691,7 +7691,7 @@ title: Saturae
 
 **21** consensu magno efficiunt curabilis ut sit
 
-**22** vindicta et gravior quam quam PΨ: Büch. (1910) conjectures tum . iniuria, dignum erit ergo
+**22** vindicta et gravior quam iniuria, dignum erit ergo
 
 **23** declamatoris mulino corde Vagelli,
 
@@ -7767,4 +7767,4 @@ title: Saturae
 
 **59** ut qui fortis erit, sit felicissimus idem,
 
-**60** ut laeti phaleris omnes et torquibus, omnesThe Saturae are broken off at this point.
+**60** ut laeti phaleris omnes et torquibus, omnes

@@ -330,7 +330,7 @@ title: Panegyricus de quarto consulatu Honorii Augusti
 
 **159** uberibus Sanctis inmortalique dearum
 
-**160** crescis adoratus gremio: tibi saepe Diana 160
+**160** crescis adoratus gremio: tibi saepe Diana
 
 **161** Maenalios arcus venatricesque pharetras
 

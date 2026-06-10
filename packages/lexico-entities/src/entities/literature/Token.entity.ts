@@ -3,7 +3,7 @@ import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 
 import { AuditableEntity } from "../Auditable.entity.js";
 
-import type { Word } from "../Word.entity.js";
+import type { Word } from "../dictionary/Word.entity.js";
 import type { Author } from "./Author.entity.js";
 import type { Line } from "./Line.entity.js";
 import type { Text } from "./Text.entity.js";

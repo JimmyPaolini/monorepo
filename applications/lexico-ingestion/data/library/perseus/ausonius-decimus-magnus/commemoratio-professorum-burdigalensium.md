@@ -116,7 +116,7 @@ title: Commemoratio professorum Burdigalensium
 
 **4** tuae ministrum memoriae,
 
-**5** opponit unum quem viris prioribus 5
+**5** opponit unum quem viris prioribus
 
 **6** aetas recentis temporis,
 
@@ -166,7 +166,7 @@ title: Commemoratio professorum Burdigalensium
 
 **29** quod digna nequiens promere officium colo,
 
-**30** iniuriose sedulus. 30
+**30** iniuriose sedulus.
 
 **31** quiesce placidus et caduci corporis
 
@@ -190,7 +190,7 @@ title: Commemoratio professorum Burdigalensium
 
 **9** Mitis amice, bonus frater, fidissime coniunx,
 
-**10** nate pius, genitor: paenitet, ut fueris. 10
+**10** nate pius, genitor: paenitet, ut fueris.
 
 **11** comis convivis, numquam inclamare clientes,
 
@@ -642,7 +642,7 @@ title: Commemoratio professorum Burdigalensium
 
 **4** lubricae nisi te iuventae praecipitem flexus daret,
 
-**5** Pythagorei non tenentem tramitis rectam viam: 5
+**5** Pythagorei non tenentem tramitis rectam viam:
 
 **6** esto placidus et quietis manibus sedem fove,
 

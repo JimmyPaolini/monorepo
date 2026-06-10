@@ -280,7 +280,7 @@ title: de bello Gildonico
 
 **134** cum procul insanis quatiens ululatibus axem
 
-**135** et contusa genas mediis adparet in astris 135
+**135** et contusa genas mediis adparet in astris
 
 **136** Africa: rescissae vestes et spicea passim
 
@@ -710,7 +710,7 @@ title: de bello Gildonico
 
 **349** At iuvenem stimulis inmanibus aemula virtus
 
-**350** exacuit; iam puppe vehi, iam stagna secare 350
+**350** exacuit; iam puppe vehi, iam stagna secare
 
 **351** fervet et absentes invadere cuspide Mauros.
 

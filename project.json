@@ -409,12 +409,12 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/scripts/database/*.sql",
+        "{projectRoot}/notepads/*.sql",
         "{workspaceRoot}/configuration/pyproject.toml",
         "sharedGlobals"
       ],
       "options": {
-        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml scripts/database",
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml notepads",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -431,12 +431,12 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/scripts/database/*.sql",
+        "{projectRoot}/notepads/*.sql",
         "{workspaceRoot}/configuration/pyproject.toml",
         "sharedGlobals"
       ],
       "options": {
-        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml scripts/database",
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml notepads",
         "cwd": "{workspaceRoot}"
       }
     },

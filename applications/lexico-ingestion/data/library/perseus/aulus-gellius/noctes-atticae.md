@@ -17,7 +17,7 @@ iucundiora alia reperiri queunt, ad hoc ut liberis quoque meis partae istiusmodi
 
 Usi autem sumus ordine rerum fortuito, quem antea in excerpendo feceramus. Nam proinde ut librum quemque in manus ceperam seu Graecum seu Latinum vel quid memoratu dignum audieram, ita quae libitum erat, cuius generis cumque erant, indistincte atque promisce annotabam eaque mihi ad subsidium memoriae quasi quoddam litterarum penus recondebam, ut quando usus venisset aut rei aut verbi, cuius me repens forte oblivio tenuisset, et libri ex quibus ea sumpseram non adessent, facile inde nobis inventu atque depromptu foret.
 
-Facta igitur est in his quoque commentariis eadem rerum disparilitas quae fuitfruit in illis annotationibus pristinis, quas breviter et indigeste et incondite ex ex, added by J. F. Gronov. eruditionibus lectionibusque variis feceramus.
+Facta igitur est in his quoque commentariis eadem rerum disparilitas quae fuitfruit in illis annotationibus pristinis, quas breviter et indigeste et incondite ex eruditionibus lectionibusque variis feceramus.
 
 Sed quoniam longinquis per hiemem noctibus in agro, sicuti dixi, terrae Atticae commentationes hasce ludere ac facere exorsi sumus, idcirco eas inscripsimus Noctium esse Atticarum, nihil imitati festivitates inscriptionum quas plerique alii utriusque linguae scriptores in id genus libris fecerunt.
 
@@ -27,7 +27,7 @@ Namque alii Musarum inscripserunt, alii Silvarum, ille Πείπλον, hic Ἀμ
 
 Sunt etiam qui Λὔχνους inscripserint, sunt item qui Στρωματεις,, sunt adeo qui Πανδέκτας et Ἑλικῶνα et qui Προβλήματα et Ἐγχειρίδια et Παραξιφίδας.
 
-Est qui Memoriales titulum fecerit, est qui Πραγματικὰ et Πάρεργα et Διδασκαλικά, est item qui Historiae Naturalis, et et, Skutsch; est, ω. Παντοδαπῆς Ἱστορίας, est praeterea qui Pratum, est itidem qui Πάγκαρπον, est qui Τόπων scripserit scripserit, Petschenig; scripsit, ω. ; sunt item multi qui Coniectanea,
+Est qui Memoriales titulum fecerit, est qui Πραγματικὰ et Πάρεργα et Διδασκαλικά, est item qui Historiae Naturalis, et Παντοδαπῆς Ἱστορίας, est praeterea qui Pratum, est itidem qui Πάγκαρπον, est qui Τόπων scripserit ; sunt item multi qui Coniectanea,
 
 neque item non sunt qui indices libris suis fecerint aut Epistularum Moralium aut Epistolicarum Quaestionum aut Confusarum et quaedam alia inscripta nimis lepida multasque prorsum concinnitates redolentia.
 
@@ -37,21 +37,21 @@ Sed ne consilium quidem in excerpendis notandisque rebus idem mihi, quod plerisq
 
 Ego vero, cum illud Ephesii viri summe nobilis verbum cordi haberem, quod profecto ita est πολυμαθίη νόον οὐ διδάσκει, ipse quidem volvendis transeundisque multis admodum voluminibus per omnia semper negotiorum intervalla in quibus furari otium potui exercitus defessusque sum, sed modica ex his eaque sola accepi quae aut ingenia prompta expeditaque ad honestae eruditionis cupidinem utiliumque artium contemplationem celeri facilique compendio ducerent aut homines aliis iam vitae negotiis occupatos a turpi certe agrestique rerum atque verborum imperitia vindicarent.
 
-Quod erunt autem in his commentariis pauca quaedam scrupulosa et anxia, vel ex grammatica vel ex dialectica vel etiam ex geometrica, geometrica, ω; geometria, ς (A.L.L. x, p. 240). quodque erunt item paucula remotiora super augurio iure et pontificio, non oportet ea defugere, quasi aut cognitu non utilia aut perceptu difficilia. Non enim fecimus altos nimis et obscuros in his rebus quaestionum sinus, sed primitias quasdam et quasi libamenta ingenuarum artium dedimus, quae virum civiliter eruditum neque audisse umquam neque attigisse, si non inutile, at quidem certe indecorum est.
+Quod erunt autem in his commentariis pauca quaedam scrupulosa et anxia, vel ex grammatica vel ex dialectica vel etiam ex geometrica, quodque erunt item paucula remotiora super augurio iure et pontificio, non oportet ea defugere, quasi aut cognitu non utilia aut perceptu difficilia. Non enim fecimus altos nimis et obscuros in his rebus quaestionum sinus, sed primitias quasdam et quasi libamenta ingenuarum artium dedimus, quae virum civiliter eruditum neque audisse umquam neque attigisse, si non inutile, at quidem certe indecorum est.
 
 Ab his igitur, si cui forte nonnumquam tempus voluptasque erit lucubratiunculas istas cognoscere, petitum impetratumque volumus, ut in legendo quae pridem scierint non aspernentur quasi nota invulgataque.
 
-Nam ecquid ecquid, Madvig; et quid, ω. tam remotum in litteris est quin id tamen complusculi sciant? Et satis hoc blandum est, non esse haec neque in scholis decantata neque in commentariis protrita.
+Nam ecquid tam remotum in litteris est quin id tamen complusculi sciant? Et satis hoc blandum est, non esse haec neque in scholis decantata neque in commentariis protrita.
 
 Quae porro nova sibi ignotaque offenderint, aequum esse puto ut sine vano obtrectatu considerent an minutae istae admonitiones et pauxillulae nequaquam tamen sint vel ad alendum studium vescae vel ad oblectandum fovendumque animum frigidae, sed eius seminis generisque sint ex quo facile adolescent aut ingenia hominum vegetiora aut memoria adminiculatior aut oratio sollertior aut sermo incorruptior aut delectatio in otio atque in ludo liberalior.
 
 Quae autem parum plana videbuntur aut minus plena in structaque, petimus, inquam, ut ea non docendi magis quam admonendi gratia scripta existiment et, quasi demonstratione vestigiorum contenti, persequantur ea post, si libebit, vel libris repertis vel magistris.
 
-Quae vero putaverint reprehendenda, his, si audebunt, succenseant, unde ea nos accepimus; sed enim, si si, added by Skutsch. quae aliter apud alium scripta legerint, ne iam statim temere temere, Carrio; tempere, w (tempore R.). obstrepant, sed et rationes rerum et auctoritates hominum pensitent, quos illi quosque nos secuti sumus.
+Quae vero putaverint reprehendenda, his, si audebunt, succenseant, unde ea nos accepimus; sed enim, si quae aliter apud alium scripta legerint, ne iam statim temere obstrepant, sed et rationes rerum et auctoritates hominum pensitent, quos illi quosque nos secuti sumus.
 
-Erit autem id longe optimum, ut qui in lectitando, percontando, percontando, added by J. F. Gronov; see note 4. scribendo, commentando, numquam voluptates, numquam labores ceperunt, nullas hoc genus vigilias vigilarunt neque ullis inter eiusdem Musae aemulos certationibus disceptationibusque elimati sunt, sed intemperiarum negotiorumque pleni sunt, abeant labeant percontando scribendo, ω.. a Noctibus his procul, atque alia sibi oblectamenta quaerant. Vetus adagium est:
+Erit autem id longe optimum, ut qui in lectitando, percontando, scribendo, commentando, numquam voluptates, numquam labores ceperunt, nullas hoc genus vigilias vigilarunt neque ullis inter eiusdem Musae aemulos certationibus disceptationibusque elimati sunt, sed intemperiarum negotiorumque pleni sunt, abeant a Noctibus his procul, atque alia sibi oblectamenta quaerant. Vetus adagium est:
 
-Nil cum fidibus graculost, graculos, ω. nihil cum amaracino sui.
+Nil cum fidibus graculost, nihil cum amaracino sui.
 
 Atque etiam, quo sit quorundam male doctorum hominum scaevitas et invidentia irritatior, mutuabor ex Aristophanae choro anapaesta pauca et quam ille homo festivissimus fabulae suae spectandae legem dedit, eandem ego commentariis his legendis dabo, ut ea ne attingat neve adeat profestum et profanum vulgus, a ludo musico diversum.
 
@@ -73,13 +73,13 @@ Volumina commentariorum ad hunc diem viginti iam facta sunt.
 
 Quantum autem vitae mihi deinceps deum voluntate erit quantumque a tuenda re familiari procurandoque cultu liberorum meorum dabitur otium, ea omnia subsiciva et subsecundaria tempora ad colligendas huiuscemodi memoriarum delectatiunculas conferam.
 
-Progredietur ergo numerus librorum, diis bene iuvantibus, cum ipsius vitae quantuli quomque quomque, Skutsch; quique, ω. fuerint progressibus, neque longiora mihi dari spatia vivendi volo quam dum ero ad hanc quoque facultatem scribendi commentandique idoneus.
+Progredietur ergo numerus librorum, diis bene iuvantibus, cum ipsius vitae quantuli quomque fuerint progressibus, neque longiora mihi dari spatia vivendi volo quam dum ero ad hanc quoque facultatem scribendi commentandique idoneus.
 
 Capita rerum quae cuique commentario insunt, exposuimus hic universa, ut iam statim declaretur quid quo in libro quaeri invenirique possit.
 
 Quali proportione quibusque collectionibus Plutarchus ratiocinatum esse Pythagoram philosophum dixerit de comprehendenda corporis proceritate qua fuit Hercules, cum vitam inter homines viveret.
 
-Plutarchus in libro quem de Herculis quam diu quam diu, Klotz; quantum, ω. inter homines fuit animi corporisque ingenio atque virtutibus conscripsit, scite subtiliterque ratiocinatum Pythagoram philosophum dicit in reperienda modulandaque status longitudinisque eius praestantia.
+Plutarchus in libro quem de Herculis quam diu inter homines fuit animi corporisque ingenio atque virtutibus conscripsit, scite subtiliterque ratiocinatum Pythagoram philosophum dicit in reperienda modulandaque status longitudinisque eius praestantia.
 
 Nam cum fere constaret, curriculum stadii quod est Pisis apud Iovem Olympium Herculem pedibus suis metatum idque fecisse longum pedes sescentos, cetera quoque stadia in terra Graecia ab aliis postea instituta pedum quidem esse numero sescentum, sed tamen esse aliquantulum breviora, facile intellexit, modum spatiumque plantae Herculis, ratione proportionis habita, tanto fuisse quam aliorum procerius, quanto Olympicum stadium longius esset quam cetera.
 
@@ -89,11 +89,11 @@ Ab Herode Attico C. V. tempestive deprompta in quondam iactantem et gloriosum ad
 
 HERODES ATTICUS, vir et Graeca facundia et consulari honore praeditus, accersebat saepe, nos cum apud magistros Athenis essemus, in villas ei urbi proximas me et clarissimum virum Servilianum compluresque alios nostrates qui Roma in Graeciam ad capiendum ingenii cultum concesserant.
 
-Atque ibi tunc, cum essemus apud eum in villa cui nomen est Cephisia, et aestu anni et sidere autumni flagrantissimo, propulsabamus incommoda caloris lucorum umbra ingentium, longis ambulacris et mollibus, medium positu refrigeranti, lavacris nitidisnlitidis et abundis et collucentibus totiusquetotiusqiue villae venustate, aquis undique canoris atque avibus personante.The proper height was six times the length of the foot.
+Atque ibi tunc, cum essemus apud eum in villa cui nomen est Cephisia, et aestu anni et sidere autumni flagrantissimo, propulsabamus incommoda caloris lucorum umbra ingentium, longis ambulacris et mollibus, medium positu refrigeranti, lavacris nitidisnlitidis et abundis et collucentibus totiusquetotiusqiue villae venustate, aquis undique canoris atque avibus personante.
 
 Erat ibidem nobiscum simul adulescens philosophiae sectator, disciplinae, ut ipse dicebat, stoicae, sed loquacior inpendio et promptior.
 
-Is plerumque in convivio sermonibus, qui post epulas haberi solent, multa atque inmodica de de, Vulg.; omitted by w. philosophiae doctrinis intempestive atque insubide disserebat praeque se uno ceteros omnes linguae Atticae principes gentemque omnem togatam, quodcumque nomen Latinum rudes esse et agrestes praedicabat atque interea vocabulis haut facile cognitis, syllogismorum captionumque dialecticarum laqueis strepebat, χυριεύοντας et σωρείτας aliosque id genus griphos neminem posse dicens nisi se dissolvere. Rem vero ethicam naturamque humani ingenii virtutumque origines officiaque earum et confinia, aut contra morborum vitiorumque fraudes animorumque labes et et, R. Klotz; omitted by. pestilentias, asseverabat nulli esse ulli magis ea omnia explorata, comperta meditataque.
+Is plerumque in convivio sermonibus, qui post epulas haberi solent, multa atque inmodica de philosophiae doctrinis intempestive atque insubide disserebat praeque se uno ceteros omnes linguae Atticae principes gentemque omnem togatam, quodcumque nomen Latinum rudes esse et agrestes praedicabat atque interea vocabulis haut facile cognitis, syllogismorum captionumque dialecticarum laqueis strepebat, χυριεύοντας et σωρείτας aliosque id genus griphos neminem posse dicens nisi se dissolvere. Rem vero ethicam naturamque humani ingenii virtutumque origines officiaque earum et confinia, aut contra morborum vitiorumque fraudes animorumque labes et pestilentias, asseverabat nulli esse ulli magis ea omnia explorata, comperta meditataque.
 
 Cruciatibus autem doloribusque corporis et periculis mortem minitantibus habitum statumque vitae beatae, quem se esse adeptum putabat, neque laedi neque inminui existimabat, ac ne oris quoque et vultus serenitatem stoici hominis umquam ulla posse aegritudine obnubilari.
 
@@ -101,19 +101,19 @@ Has ille inanes glorias cum flaret iamque omnes finem cuperent verbisque eius de
 
 Lecta igitur sunt ex libro qui prolatus est ea quae addidi; quibus verbis Epictetus severe simul et festiviter seiunxit atque divisit a vero atque sincero Stoico, qui esset procul dubio ἀκώλυτος, ἀνανάγκαστος, ἀπαραπόδιστος, ἐλεύθερος, εὐπορῶν, εὐδαιμονῶν, vulgus
 
-κακῶν. Ἄκουε. aliud nebulonum hominum qui se Stoicos nuncuparent, atraque verborum et argutiarum fuligine ob oculos audientium iacta atro iacto, ω. sanctissimae disciplinae nomen ementirentur:Εἰπέ μοι περὶ ἀγαθῶν καὶ κακῶν. Ἄκουε. Ἰλιόθεν με φέρων ἄνεμος Κικόνεσσι πέλασσεν.
+κακῶν. Ἄκουε. aliud nebulonum hominum qui se Stoicos nuncuparent, atraque verborum et argutiarum fuligine ob oculos audientium iacta sanctissimae disciplinae nomen ementirentur:Εἰπέ μοι περὶ ἀγαθῶν καὶ κακῶν. Ἄκουε. Ἰλιόθεν με φέρων ἄνεμος Κικόνεσσι πέλασσεν.
 
 Ἰλιόθεν με φέρων ἄνεμος Κικόνεσσι πέλασσεν.
 
 Τῶν ὅντων τὰ μέν ἐστιν ἀγαθά, τὰ δὲ ἀδιάφορα. Ἀγαθὰ μὲν οὖν ἀρεταὶ τὰ μετέχοιτα αὐτῶν, κακὰ δὲ κακία καὶ τὰ μετέχοντα κακίας, ἀδιάφορα δὲ τὰ μεταξὺ τούων, πλοῦτος, ὑγεία, ζωή, θάνατος, ἡδονή, πόνος.
 
-Πόθεν οἶδας; Ἑλλάνικος λέγει ἐν τοῖς Αἰγυπτιακοῖς. Τι γὰρ διαφέρει τοῦτο εἰπεῖν, ἢ ὅτι Διογένης ἐν τῇ ἠθικῇ ἢ Χρύσιππος ἢ Κλεάνθης; βεβασάνικας οὖν τι Omitted byω. αὐτῶν καὶ
+Πόθεν οἶδας; Ἑλλάνικος λέγει ἐν τοῖς Αἰγυπτιακοῖς. Τι γὰρ διαφέρει τοῦτο εἰπεῖν, ἢ ὅτι Διογένης ἐν τῇ ἠθικῇ ἢ Χρύσιππος ἢ Κλεάνθης; βεβασάνικας οὖν τι αὐτῶν καὶ
 
-δόγμα σαυτοῦ πεποίησαι. Δείκνυε πῶς εἴωθας ἐν πλοίῳ χειμάζεσθαι· γυμνάζεσθαι Arrian. μέμνησαι ταύτης τῆς διαιρέσεως, ὅταν ψοφήσῃ τὸ ἱστίον καὶ ἀνακραυγάσῃς. Ἄν σοί τις κακόσχολός πως παραστὰς εἴπῃ, λέγε μοι, τοὺς θεούς σοι, ἃ πρῴην ἔλεγες, μή τι κακία ἐστὶν τὸ ναυαγῆσαι; μήτι κακίας μετέχον; οὐκ ἄρα γυμνάζεσθαι, Arrian. ξύλον ἐνσείσεις αὐτῷ; τί ἡμῖν καὶ σοί, ἄνθρωπε; ἀπολλύμεθα, καὶ σὺ ἐλθὼν
+δόγμα σαυτοῦ πεποίησαι. Δείκνυε πῶς εἴωθας ἐν πλοίῳ χειμάζεσθαι· μέμνησαι ταύτης τῆς διαιρέσεως, ὅταν ψοφήσῃ τὸ ἱστίον καὶ ἀνακραυγάσῃς. Ἄν σοί τις κακόσχολός πως παραστὰς εἴπῃ, λέγε μοι, τοὺς θεούς σοι, ἃ πρῴην ἔλεγες, μή τι κακία ἐστὶν τὸ ναυαγῆσαι; μήτι κακίας μετέχον; οὐκ ἄρα ξύλον ἐνσείσεις αὐτῷ; τί ἡμῖν καὶ σοί, ἄνθρωπε; ἀπολλύμεθα, καὶ σὺ ἐλθὼν
 
 παίζεις. Ἐὰν δέ σε ὁ Καῖσαρ μεταπέμψηται κατηγορούμενον
 
-His ille auditis insolentissimus adulescens obticuit, tamquam si ea omnia non ab Epicteto in quosdamquosdan alios, sed ab Herode in eum dicta essent. His essent, only in Α. β.
+His ille auditis insolentissimus adulescens obticuit, tamquam si ea omnia non ab Epicteto in quosdamquosdan alios, sed ab Herode in eum dicta essent.
 
 Quod Chilo Lacedaemonius consilium anceps pro salute amici cepit; quodque est circumspecte et anxie considerandum an pro utilitatibus amicorum delinquendum aliquando sit; notataque inibi et relata quae et Theophrastus et M. Cicero super ea re scripserunt.
 
@@ -141,7 +141,7 @@ Eum librum M. Cicero videtur legisse, cum ipse quoque librum De Amicitia compone
 
 hunc autem locum de quo satis quaesitum esse dixi, omnium rerum aliarum difficillimum, strictim atque cursim transgressus est, neque ea quae a Theophrasto pensiculate atque enucleate scripta sunt exsecutusexecutus est, sed anxietate illa et quasi morositate disputationis praetermissa, genus ipsum rei tantum paucis verbis notavit.
 
-Ea verba Ciceronis, si recensere quis vellet, apposui: His igitur finibus utendum esse arbitror, ut, cum emendati mores amicorumainicorum sunt, sint, Cicero. tum sit inter eos omnium rerum, consiliorum, voluntatum sine ulla exceptione communitas, ut etiam, si qua fortuna accident, ut minus iustae voluntates amicorum adiuvandae sint, in quibus eorum aut caput capitis causa, β; de capite, codd. of Cie. agatur aut fama, declinandum de via sit, modo ne summa turpitudo sequatur; est enim quatenus amicitiae venia dari possit.
+Ea verba Ciceronis, si recensere quis vellet, apposui: His igitur finibus utendum esse arbitror, ut, cum emendati mores amicorumainicorum sunt, tum sit inter eos omnium rerum, consiliorum, voluntatum sine ulla exceptione communitas, ut etiam, si qua fortuna accident, ut minus iustae voluntates amicorum adiuvandae sint, in quibus eorum aut caput agatur aut fama, declinandum de via sit, modo ne summa turpitudo sequatur; est enim quatenus amicitiae venia dari possit.
 
 Cum agetur, inquit, aut caput amici aut fama, declinandum est de via, ut etiam iniquam voluntatem illius adiutemus.
 
@@ -149,7 +149,7 @@ Sed cuiusmodi declinatio esse ista debeat qualisque ad adiuvandum digressio et i
 
 Quid autem refert scire me in eiusmodi periculis amicorum, si non magna me turpitudo insecutura est, de via esse recta declinandum, nisi id quoque me docuerit, quam putet magnam turpitudinem, et cum decessero de via, quousque degredi debeam? Est enim, inquit, quatenus dari amicitiae venia possit.
 
-Hoc immo ipsum est quod maxime discendum est quodque ab his qui docent docent, β; doceant, ω. minime dicitur, quatenus quaque fini dari amicitiaeanicitiae venia debeat.
+Hoc immo ipsum est quod maxime discendum est quodque ab his qui docent minime dicitur, quatenus quaque fini dari amicitiaeanicitiae venia debeat.
 
 Chilo ille sapiens, de quo paulo ante dixi, conservandi amici causa de via declinavit. Sed video quousque progressus sit; falsum enim pro amici salute consilium dedit.
 
@@ -157,11 +157,11 @@ Id ipsum tamen in fine quoque vitae an iure posset reprehendi culparique dubitav
 
 Contra patriam, inquit Cicero, arma Pro amico sumenda non sunt.
 
-Hoc profecto nemo ignoravit, et priusquam Theognis, quod quomodo, Marx, l. c. commentary. Lucilius ait, nasceretur. Set id quaero, id desidero: cum pro amico contra ius, contra quam licet, salva tamen libertate atque pace, faciendum est et cum de via, sicut ipse ait, declinandum est, quid et quantum et in quali causa et quonam usque id fieri debeat.
+Hoc profecto nemo ignoravit, et priusquam Theognis, quod Lucilius ait, nasceretur. Set id quaero, id desidero: cum pro amico contra ius, contra quam licet, salva tamen libertate atque pace, faciendum est et cum de via, sicut ipse ait, declinandum est, quid et quantum et in quali causa et quonam usque id fieri debeat.
 
-Pericles ille Atheniensis, vir egregio ingenio bonisque omnibus disciplinis ornatus, in una quidem specie, set planius tamen quid existimaret professus est. Nam cum amicus eum rogaret ut pro re causaque eius falsum deiuraret, deieraret, scripsi; cf. Thes. Ling. Lat.; deiraret, A; deiuraret, ω. his ad eum verbis usus est: Δεῖ μὲν συμπράττειν τοῖς φίλοις, ἀλλὰ μέχρι τῶν φεῶν.
+Pericles ille Atheniensis, vir egregio ingenio bonisque omnibus disciplinis ornatus, in una quidem specie, set planius tamen quid existimaret professus est. Nam cum amicus eum rogaret ut pro re causaque eius falsum deiuraret, his ad eum verbis usus est: Δεῖ μὲν συμπράττειν τοῖς φίλοις, ἀλλὰ μέχρι τῶν φεῶν.
 
-Theophrastus autem in eo quo dixi libro inquisitius quidem super hac ipsa re et exactius expressiusque expressiusque, Skutsch; prcssiusque, ω. quam Cicero disserit.
+Theophrastus autem in eo quo dixi libro inquisitius quidem super hac ipsa re et exactius expressiusque quam Cicero disserit.
 
 Set is quoque in docendo non de unoquoque facto singillatim existimat neque certis exemplorum documentis, set generibus rerum summatim universimque utitur ad hunc ferme modum:
 
@@ -187,7 +187,7 @@ Super hoc eodem Chilone Plutarchus philosophus, in libro Περὶ Ψυχῆς p
 
 Quam tenuiter curioseque exploraverit Antonius Iulianus in oratione M. Tullii verbi ab eo mutati argutiam.
 
-ANTONIUS Iulianuslulianus rhetor perquam fuit honesti atque amoeni ingeni. Doctrina quoque iste iste, Falster; ista, ω. utiliore ac delectabili veterumque elegantiarum cura et memoria multa fuit; ad hoc scriptascript omnia antiquiora tam curiose spectabat et aut virtutes pensitabat aut vitia rimabatur, ut iudicium esse factum ad amussim diceres.
+ANTONIUS Iulianuslulianus rhetor perquam fuit honesti atque amoeni ingeni. Doctrina quoque iste utiliore ac delectabili veterumque elegantiarum cura et memoria multa fuit; ad hoc scriptascript omnia antiquiora tam curiose spectabat et aut virtutes pensitabat aut vitia rimabatur, ut iudicium esse factum ad amussim diceres.
 
 Is Iulianus super eo enthymemate, quod est in oratione M. Tullii,
 
@@ -201,7 +201,7 @@ Cicero autem, inquit, cum gratiae pecuniaeque debitionem dissimilem esse dixisse
 
 Sed id verbum habet cum proposita comparatione non satis convenit. Debitio enim gratiae, non habitio, cum pecunia confertur, atque ideo consequens quidem fuerat sic dicere: et qui debet in eo ipso quod debet refert; sed absurdum et nimis coactum foret, si nondum redditam gratiam eo ipso redditam diceret, quia debetur.
 
-Inmutavit ergo, inquit, et A omits et; verbum, subdidit, Vogel. subdidit verbum ei verbo, quod omiserat, finitimum, ut videretur et sensum debitionis conlatae non reliquisse et concinnitatem sententiae retinuisse. Ad hunc modum Iulianus enodabat diiudicabatque veterum scriptorum sententias, quae aput eum adulescentes delecti lectitabant. adulescentes delectitabant, ω.
+Inmutavit ergo, inquit, et subdidit verbum ei verbo, quod omiserat, finitimum, ut videretur et sensum debitionis conlatae non reliquisse et concinnitatem sententiae retinuisse. Ad hunc modum Iulianus enodabat diiudicabatque veterum scriptorum sententias, quae aput eum adulescentes delecti lectitabant.
 
 Quod Demosthenes rhetor cultu corporis atque vestitu probris obnoxio infamique munditia fuit; quodque item Hortensius orator, ob eiusmodi munditias gestumque in agendo histrionicum, Dionysiae saltatriculae cognomento compellatus est.
 
@@ -215,7 +215,7 @@ Verba ex oratione Metelli Numidici quam dixit in censura ad populum, cum eum ad 
 
 MULTIS et eruditis viris audientibus legebatur oratio Metelli Numidici, gravis ac diserti viri, quam in censura dixit ad populum de ducendis uxoribus, cum eum ad matrimonia capessenda hortaretur. In ea oratione ita scriptum fuit:
 
-Si sine uxore pati pati suggested by Hosius; vivere, Hertz; esse, ς. possemus, Quirites, omnes omnes, ω; omni, apparently, A. ea molestia careremus; set quoniam ita natura tradidit, ut nec cum illis satis commode, nec sine illis ullo modo vivi possit, saluti perpetuae potius quam brevi voluptati consulendum est.
+Si sine uxore pati possemus, Quirites, omnes ea molestia careremus; set quoniam ita natura tradidit, ut nec cum illis satis commode, nec sine illis ullo modo vivi possit, saluti perpetuae potius quam brevi voluptati consulendum est.
 
 Videbatur quibusdam, Q. Metellum censorem, cui consilium esset ad uxores ducendas populum hortari, non oportuisse de molestia incommodisque perpetuis rei uxoriae confiteri, neque id hortari magis esse quam dissuadere absterrereque; set contra in id potius orationem debuisse sumi dicebant, ut et nullas plerumque esse in matrimoniis molestias adseveraret et, si quae tamen accidere nonnumquam viderentur, parvas et leves facilesque esse toleratu diceret maioribusque eas emolumentis et voluptatibus oblitterari easdemque ipsas neque omnibus neque naturae vitio, set quorundam maritorum culpa et iniustitia evenire.
 
@@ -223,17 +223,17 @@ Titus autem Castricius recte atque condigne Metellum esse locutum existimabat. A
 
 Sed enim Metellum, inquit, sanctum virum, illa gravitate et fide praeditum cum tanta honorum atque vitae dignitate aput populum Romanum loquentem, nihil decuit aliud dicere quam quod verum esse sibi atque omnibus videbatur, praesertim cum super ea re diceret quae cotidiana intellegentia et communi pervolgatoque vitae usu comprenderetur.
 
-De molestia igitur cunctis hominibus notissima confessus, fidem sedulitatis Damsté compares Cic. Client. 58, quamquam sedulo faciebat, pracvaricari (videbatur). veritatisque commeritus, tum denique facile et procliviter, quod fuit rerum omnium validissimum atque verissimumvelissimum i, persuasit civitatem salvam esse sine matrimoniorum frequentia non posse.
+De molestia igitur cunctis hominibus notissima confessus, fidem sedulitatis veritatisque commeritus, tum denique facile et procliviter, quod fuit rerum omnium validissimum atque verissimumvelissimum i, persuasit civitatem salvam esse sine matrimoniorum frequentia non posse.
 
 HocHoe quoque aliut ex eadem oratione Q. Metelli dignum esse existimavimus adsidua lectione non hercle minus quam quae a gravissimis philosophis scripta sunt.
 
-Verba Metelli haec sunt: Di immortales plurimum possunt; sed non plus velle nobis debent quam parentes. At parentes, si pergunt liberi errare, bonis exheredant. Quid ergo nos ab immortalibus dissimile ius dissimile ius, Damsté; nos diutius, ω; ab immortalibus dis divinitus, Hertz; nos immortalibus dissimilius, Hosius, comparing A. expectemus, nisi malis rationibus finem faciamus? Is demum deos propitios esse aecum est, qui sibi adversarii non sunt. Dii immortales virtutem adprobare, non adhibere debent.
+Verba Metelli haec sunt: Di immortales plurimum possunt; sed non plus velle nobis debent quam parentes. At parentes, si pergunt liberi errare, bonis exheredant. Quid ergo nos ab immortalibus dissimile ius expectemus, nisi malis rationibus finem faciamus? Is demum deos propitios esse aecum est, qui sibi adversarii non sunt. Dii immortales virtutem adprobare, non adhibere debent.
 
 In hisce verbis Ciceronis ex oratione quinta in Verrem hanc sibi rem praesidio sperant futurum, neque mendum esse neque vitium, errareque istos qui bonos libros violant et futuram scribunt; atque ibi de quodam alio Ciceronis verbo dictum, quod probe scriptum perperam mutatur; et aspersa pauca de modulis numerisque orationis, quos Cicero avide sectatus est.
 
 IN oratione Ciceronis quinta In Verrem, libro spectatae fidei,
 
-Tironiana cura atque disciplina facto, ita ita facto ita, ω; facto, A. scriptum fuit: Homines tenues, obscuro loco nati, navigant; adeunt ad ea loca quae numquam antea adierant. viderunt, ubi neque, Cic. Neque noti esse iis quo venerunt neque semper cum cognitoribus esse possunt, hac una tamen fiducia civitatis, non modo apud nostros magistratus, qui et legum et existimationis periculo continentur, neque apud cives solum Romanos, qui et sermonis et iuris et multarum rerum societate iuncti sunt, fore se tutos arbitrantur, sed quocumque venerint, hanc sibi rem praesidio sperant futurum. futuram, MSS. of Cic.
+Tironiana cura atque disciplina facto, ita scriptum fuit: Homines tenues, obscuro loco nati, navigant; adeunt ad ea loca quae numquam antea adierant. Neque noti esse iis quo venerunt neque semper cum cognitoribus esse possunt, hac una tamen fiducia civitatis, non modo apud nostros magistratus, qui et legum et existimationis periculo continentur, neque apud cives solum Romanos, qui et sermonis et iuris et multarum rerum societate iuncti sunt, fore se tutos arbitrantur, sed quocumque venerint, hanc sibi rem praesidio sperant futurum.
 
 Videbatur compluribus in extremo verbo menda esse. Debuisse enim scribi putabant non futurum, sed futuram, neque dubitabant quin liber emendandus esset, ne, ut in Plauti comoedia moechus, sic enim mendae suae inludiabant, ita in Ciceronis oratione soloecismus esset manifestarius.
 
@@ -247,15 +247,15 @@ set liberum undique et impromiscum, quali C. Gracchus verbo usus est in oratione
 
 qua est aput Ciceronem futurum? Sicut in Graeca oratione sine ulla vitii suspicione omnibus numeris generibusque sine discrimine tribuuntur huiuscemodi verba: ἐρεῖν, ποιήσειν, ἔσεσθαι et similia.
 
-In Claudi quoque Quadrigarii tertio Annali verba haec esse dixit: II = ei, ii. dum conciderentur, hostium copias ibi occupatas futurum ; in duodevicesimo Annali eiusdem Quadrigarii principium libri sic scriptum: Si pro tua bonitate et nostra voluntate tibi valitudo subpetit, est quod speremus deos bonis benefacturum;
+In Claudi quoque Quadrigarii tertio Annali verba haec esse dixit: I dum conciderentur, hostium copias ibi occupatas futurum ; in duodevicesimo Annali eiusdem Quadrigarii principium libri sic scriptum: Si pro tua bonitate et nostra voluntate tibi valitudo subpetit, est quod speremus deos bonis benefacturum;
 
 item in Valerii Antiatis libro quarto vicesimo simili modo scriptum esse: Si eae res divinae factae recteque perlitatae essent, haruspices dixerunt omnia ex sententia processurum esse. Plautus etiam in Casina,
 
-cum de puella loqueretur, occisurum dixit, non occisuram, his verbis: Etiamne habet sed etiamne habet nunc, Plaut. Casina gladium? Habét, sed duós.—Quid duós? quid duos, Plaut.; quibus, ω. —Alteró te Occísurum aít, alteró vilicum.
+cum de puella loqueretur, occisurum dixit, non occisuram, his verbis: Etiamne habet Casina gladium? Habét, sed duós.—Quid duós? —Alteró te Occísurum aít, alteró vilicum.
 
-Etiamne habet sed etiamne habet nunc, Plaut. Casina gladium?
+Etiamne habet Casina gladium?
 
-Habét, sed duós.—Quid duós? quid duos, Plaut.; quibus, ω. —Alteró te
+Habét, sed duós.—Quid duós? —Alteró te
 
 Occísurum aít, alteró vilicum.
 
@@ -271,9 +271,9 @@ sicuti M. Cicero futurum dixit non virili genere neque neutro, soloecismus enim 
 
 Idem autem ille amicus noster in eiusdem M. Tullii oratione, quae est De imperio Cn. Pompei, ita scriptum esse a Cicerone dicebat atque ipse ita lectitabat: Cum vestros portus, atque eos portus quibus vitam ac spiritum ducitis, in praedonum fuisse potestatem sciatis,
 
-neque soloecismum esse aiebat in potestatem fuisse, ut vulgus semidoctum putat, sed ratione dictum certa et proba contendebat, qua et Graeci ita uterentur; et Plautus, verborum Latinorum elegantissimus, in Amphitruone dixit: número nunc vero, codd. Plaut.; numero, β, Nonius, 352. mihi in mentemmentdm fuit, non, ut dici solitum est, in mente.
+neque soloecismum esse aiebat in potestatem fuisse, ut vulgus semidoctum putat, sed ratione dictum certa et proba contendebat, qua et Graeci ita uterentur; et Plautus, verborum Latinorum elegantissimus, in Amphitruone dixit: número mihi in mentemmentdm fuit, non, ut dici solitum est, in mente.
 
-número nunc vero, codd. Plaut.; numero, β, Nonius, 352. mihi in mentemmentdm fuit,
+número mihi in mentemmentdm fuit,
 
 Sed enim praeter Plautum, cuius ille in praesens exemplo usus est, multam nos quoque apud veteres scriptores locutionum talium copiam offendimus atque his vulgo adnotamentis inspersimus.
 
@@ -301,11 +301,11 @@ Tali petulantia mulieris atque pecuniae magnitudine ictus expavidusque Demosthen
 
 Quis modus fuerit, quis ordo disciplinae Pythagoricae, quantumque temporis imperatum observatumque sit discendi simul ac tacendi.
 
-ordo atque ratio Pythagorae, ac deinceps familiae et et added by Bongars. successionis eius, recipiendi instituendique discipulos huiuscemodi fuisse traditur:
+ordo atque ratio Pythagorae, ac deinceps familiae et successionis eius, recipiendi instituendique discipulos huiuscemodi fuisse traditur:
 
 Iamlam a principio adulescentes qui sese ad discendum obtulerant εφυ- σιογνωμόνει. Id verbum significat, mores naturasque hominum coniectatione quadam de oris et vultus ingenio deque totius corporis filo atque habitu sciscitari.
 
-tumTurn qui exploratus ab eo idoneusque inventus inventus added by Vahlen. fuerat recipi in disciplinam statim iubebat et tempus certum tacere; non omnes idem, sed alios alios, J. F. Gronov; alits, ω. aliud tempus pro aestimato captu sollertiae.
+tumTurn qui exploratus ab eo idoneusque inventus fuerat recipi in disciplinam statim iubebat et tempus certum tacere; non omnes idem, sed alios aliud tempus pro aestimato captu sollertiae.
 
 Is autem qui tacebat quae dicebantur ab aliis audiebat, neque percontari, si parum intellexerat, commentari quae audierat fas erat; sed non minus quisquam tacuit quam biennium: hi prorsus appellabantur intra tempus tacendi audiendique ἀκουστικοί.
 
@@ -323,35 +323,35 @@ Est etiam, inquit, pro Iuppiter! qui Platonem legere postulet non vitae ornandae
 
 Haec Taurus dicere solitus, novicios philosophorumphilosoplorum sectatores cum veteribus Pythagoricis pensitans.
 
-Sed id quoque non Praetereundum est, quod omnes, simul atque a atque a, J. Gronov; at quia, P; qui a, ω. Pythagora in cohortem illam disciplinarum recepti erant, quod quisque familiae, pecuniae habebat in medium dabat et coibatur societas inseparabilis, tamquamtamquanla tam, qualn, Momsen. illud fuit anticum consortium, quod iure atque verbo Romano appellabatur ercto non cito.
+Sed id quoque non Praetereundum est, quod omnes, simul atque a Pythagora in cohortem illam disciplinarum recepti erant, quod quisque familiae, pecuniae habebat in medium dabat et coibatur societas inseparabilis, tamquamtamquanla illud fuit anticum consortium, quod iure atque verbo Romano appellabatur ercto non cito.
 
 Quibus verbis compellaverit Favorinus philosophus adulescentem casce nimis et prisce loquentem.
 
-FAVORINUS philosophus adulescenti veterum verborum cupidissimo et plerasque voces nimis priscas et ignotas in cotidianis communibusque sermonibus expromenti: Curius, inquit, et Fabricius et Coruncanius, antiquissimi viri, et his antiquiores Horatii illi trigemini, plane ac dilucide cum suis fabulati sunt neque Auruncorum aut Sicanorum aut Pelasgorum, qui primi coluisse Italiam in Italia, Macrobius, i. 5. 1. dicuntur, sed aetatis suae verbis locuti sunt;
+FAVORINUS philosophus adulescenti veterum verborum cupidissimo et plerasque voces nimis priscas et ignotas in cotidianis communibusque sermonibus expromenti: Curius, inquit, et Fabricius et Coruncanius, antiquissimi viri, et his antiquiores Horatii illi trigemini, plane ac dilucide cum suis fabulati sunt neque Auruncorum aut Sicanorum aut Pelasgorum, qui primi coluisse Italiam dicuntur, sed aetatis suae verbis locuti sunt;
 
 tu autem, proinde quasi cum matre Euandri nunc loquare, sermone abhinc multis annis iam desito uteris, quod scire atque intellegere neminem vis quae dicas. Nonne, homo inepte, ut quod vis abunde consequaris, taces?
 
 Sed antiquitatem tibi placere ais, quod honesta et bona et sobria et modesta sit.
 
-Vive ergo moribus praeteritis, loquere verbis praesentibus atque id, quod a C. Caesare, excellentis ingenii ac prudentiae viro, in primo De Analogia libro scriptum est, habe semper in memoriamemorial atque in pectore, ut tamquam scopulum, sic fugias inauditum infrequens, Macrob. atque insolens verbum.
+Vive ergo moribus praeteritis, loquere verbis praesentibus atque id, quod a C. Caesare, excellentis ingenii ac prudentiae viro, in primo De Analogia libro scriptum est, habe semper in memoriamemorial atque in pectore, ut tamquam scopulum, sic fugias inauditum atque insolens verbum.
 
 Quod Thucydides, scriptor inclitus, Lacedaemonios in acie non tuba, sed tibiis esse usos dicit verbaque eius super ea re posita; quodque Herodotus Alyattem regem fidicinas in procinctuprocinct habuissehalbuisse tradit; atque inibi quaedam notata de Gracchi fistula contionaria.
 
-AUCTOR historiae Graecae gravissimus Thucydides, Lacedaemonios, summos bellatores, non cornuum tubarumve signis, sed tibiarum modulis in proeliis esse usos refert, non prorsus ex aliquo ritu religionum neque rei divinae gratia neque autem ut excitarentur atque evibrarentur animi, quod cornua et litui moliuntur; sed contra, ut moderatiores modulatioresque fierent, quod tibicinis numeris vis vis, inserted by Nettleship. temperatur.
+AUCTOR historiae Graecae gravissimus Thucydides, Lacedaemonios, summos bellatores, non cornuum tubarumve signis, sed tibiarum modulis in proeliis esse usos refert, non prorsus ex aliquo ritu religionum neque rei divinae gratia neque autem ut excitarentur atque evibrarentur animi, quod cornua et litui moliuntur; sed contra, ut moderatiores modulatioresque fierent, quod tibicinis numeris vis temperatur.
 
 Nihil adeo in congrediendis hostibus atque in principiis proeliorum ad salutem virtutemque aptius rati, quam si permultipermulcti sonis mitioribus non inmodice ferocirent.
 
 Cum procinctae igitur classes erant et instructa acies coeptumquecoeptunique in hostem progredi tibicines inter exercitum positi canere inceptabant.
 
-Ea ibi praecentione tranquilla et delectabili atque adeo delectabili adeo, β.; omitted by ω. venerabili ad quandam quasi militaris musicae disciplinam vis et impetus militum, ne sparsi dispalatique proruerent, cohibebatur.
+Ea ibi praecentione tranquilla et delectabili atque adeo venerabili ad quandam quasi militaris musicae disciplinam vis et impetus militum, ne sparsi dispalatique proruerent, cohibebatur.
 
-Sed ipsius illius egregii scriptoris uti verbis libet, quae et dignitate et fide graviora sunt: Καὶ μετὰ ταῦτα ἡ ξύνοδος ἦν· Ἀργεῖοι μὲν καὶ οἱ σύμμαχοι ἐντόνως καὶ ὀργῇ χωροῦντες, Λακεδαιμόνιοι δὲ βραδέως καὶ ὑπὸ αὐλητῶν πολλῶν, νόμου νόμου, ὁμοῦ, νόμῳ, codd. Thuc. ἐγκαθεστώτων, οὐ τοῦ θείου χάριν, ἀλλʼ ἵνα ὁμαλῶς μετὰ ῥυθμοῦ βαίνοντες προσέλθοιεν καὶ μὴ διασπασθείη αὐτοῖς ἡ τάξις, ὅπερ φιλεῖ τὰ μεγάλα στρατόπεδα ἐν ταῖς προσόδοις ποιεῖν
+Sed ipsius illius egregii scriptoris uti verbis libet, quae et dignitate et fide graviora sunt: Καὶ μετὰ ταῦτα ἡ ξύνοδος ἦν· Ἀργεῖοι μὲν καὶ οἱ σύμμαχοι ἐντόνως καὶ ὀργῇ χωροῦντες, Λακεδαιμόνιοι δὲ βραδέως καὶ ὑπὸ αὐλητῶν πολλῶν, νόμου ἐγκαθεστώτων, οὐ τοῦ θείου χάριν, ἀλλʼ ἵνα ὁμαλῶς μετὰ ῥυθμοῦ βαίνοντες προσέλθοιεν καὶ μὴ διασπασθείη αὐτοῖς ἡ τάξις, ὅπερ φιλεῖ τὰ μεγάλα στρατόπεδα ἐν ταῖς προσόδοις ποιεῖν
 
 Cretenses quoque proelia ingredi solitos memoriae datum est praecinente ac praemoderante cithara gressibus;
 
 Alyattes autem, rex terrae Lydiae, more atque luxu barbarico praeditus, cum bellum Milesiis faceret, ut Herodotus in Historiis tradit, concinentes habuit fistulatores et fidicines atque feminas etiam tibicinas in exercitu atque in procinctu habuit, lascivientium delicias conviviorum.
 
-Sed enim Achaeos Homerus pugnam indipisci ait non fidicularum tibiarumque, sed mentium animorumque sed -que β.; omitted by ω. concentu conspiratuque tacito nitibundos:
+Sed enim Achaeos Homerus pugnam indipisci ait non fidicularum tibiarumque, sed mentium animorumque concentu conspiratuque tacito nitibundos:
 
 Οἱ δ᾽ ἄρʼ ἴσαν σιγῇ μένεα πνείοντες Ἀχαιοί,
 
@@ -363,17 +363,17 @@ Ecce autem per tibicinia Laconica tibiae quoque illius contionariae in mentem ve
 
 Sed nequaquamneuquaquam sic est, ut a vulgo dicitur, canere tibia solitum qui pone eum loquentem staret, et variis modis tum demulcere animum actionemque eius, tum intendere.
 
-Quid enim foret ista re ineptius, si, ut planipedi saltanti, ita Graccho contionanti numeros et modos et frequentamenta fritamenta, W. Heraeus, Berl. phil. Woch. 1904, comparing v. 1. I and Corp. Gloss. Lat. ii. 580. 42; see note on v. 1. 1. quaedam varia tibicen incineret?
+Quid enim foret ista re ineptius, si, ut planipedi saltanti, ita Graccho contionanti numeros et modos et frequentamenta quaedam varia tibicen incineret?
 
-Sed qui hoc compertius memoriae tradiderunt, stetisse in circumstantibus dicunt occultius, qui fistula brevi sensim graviusculum sonum inspiraret ad reprimendum sedandumque inpetus vocis eius effervescentes; effervescente namque, ω.; corr. by Mommsen.
+Sed qui hoc compertius memoriae tradiderunt, stetisse in circumstantibus dicunt occultius, qui fistula brevi sensim graviusculum sonum inspiraret ad reprimendum sedandumque inpetus vocis eius effervescentes;
 
 namque inpulsu et instinctu extraneo naturalis illa Gracchi vehementia indiguisse, non, opinor, existimanda est.
 
-M. tamen Cicero fistulatorem istum utrique rei adhibitumadhibituim esse a Graccho putat, ut sonis tum placidis tum citatis aut demissam iacentemque orationem eius erigeret aut ferocientem saevientemque cohiberet. Verba ipsius Ciceronis apposui:
+**M** tamen Cicero fistulatorem istum utrique rei adhibitumadhibituim esse a Graccho putat, ut sonis tum placidis tum citatis aut demissam iacentemque orationem eius erigeret aut ferocientem saevientemque cohiberet. Verba ipsius Ciceronis apposui:
 
-Itaque idem Gracchus, quod potes audire, Catule, ex Licinio cliente tuo, litterato homine, quem servum sibi habuit ad manum, cum eburnea eburneola, Cic. solitus est habere fistula, qui staret occulte post ipsum cum contionaretur, peritum hominem, qui inflaret celeriter eum sonum, qui quo, Cic. illum aut remissum excitaret aut a contentione revocaret.
+Itaque idem Gracchus, quod potes audire, Catule, ex Licinio cliente tuo, litterato homine, quem servum sibi habuit ad manum, cum eburnea solitus est habere fistula, qui staret occulte post ipsum cum contionaretur, peritum hominem, qui inflaret celeriter eum sonum, qui illum aut remissum excitaret aut a contentione revocaret.
 
-Morem autem illum ingrediendi ad tibicinum modulos proelii institutum esse a Lacedaemonis, Aristoteles in libris Problematon The work discusses thirty-eight problems, or questions, dealing for the most part with Natural History, but also with Music and Poetry. The collection as it has come down to us is only in part the work of Aristotle. Frag. 244, V. Rose. scripsit, quo manifestior fieret exploratiorque militum securitas et alacritas.
+Morem autem illum ingrediendi ad tibicinum modulos proelii institutum esse a Lacedaemonis, Aristoteles in libris Problematon scripsit, quo manifestior fieret exploratiorque militum securitas et alacritas.
 
 Nam diffidentiae, inquit, et timori cum ingressione huiuscemodi minime convenit et maesti atque formidantes ab hac tam intrepida ac tam decora incedendi modulatione alieni sunt.
 
@@ -391,7 +391,7 @@ item quae ipsa aut cuius pater emancipatus sit, etiamsi vivo patre in avi potest
 
 item cuius parentes alter amboueabove servitutem servierunt aut in negotiis sordidis versantur.
 
-Set et added by Cramer. eam cuius soror ad id sacerdotium lecta est excusationem mereri aiunt; item cuius pater flamen aut augur aut quindecimvirum sacris faciundis aut aut, Cramer; autem, A; aut qui, ω. septemvirum epulonum aut Salius est.
+Set et eam cuius soror ad id sacerdotium lecta est excusationem mereri aiunt; item cuius pater flamen aut augur aut quindecimvirum sacris faciundis aut septemvirum epulonum aut Salius est.
 
 Sponsae quoque pontificis et tubicinis sacrorum filiae vacatio a sacerdotio isto tribui solet.
 
@@ -401,21 +401,21 @@ Virgo autem Vestalis simul est capta atque in atrium Vestae deducta et pontifici
 
 De more autem rituque capiundae virginis litterae quidem antiquiores non extant, nisi quae capta prima est a Numa rege esse captam.
 
-Sed Papiam legem invenimus, qua cavetur ut pontificis maximi arbitratu virgines e populo viginti legantur sortitioque in contione ex eo numero fiat et et fiat, β; omitted by ω. cuius sors sors added by Mommsen. virginis ducta erit, ut eam pontifex maximus capiat eaque Vestae fiat.
+Sed Papiam legem invenimus, qua cavetur ut pontificis maximi arbitratu virgines e populo viginti legantur sortitioque in contione ex eo numero fiat et cuius sors virginis ducta erit, ut eam pontifex maximus capiat eaque Vestae fiat.
 
-Sed ea sortitio ex lege Papia non necessaria nunc videri solet. Nam si quis honesto loco natus adeat pontificem maximum atque offerat ad sacerdotium filiam suam, cuius dumtaxat salvis religionum observationibus ratio haberi possit, gratia Papiae Papiae, Carrio; Popiliae, ω.; Papiae illae, Hertz. legis per senatum fit.
+Sed ea sortitio ex lege Papia non necessaria nunc videri solet. Nam si quis honesto loco natus adeat pontificem maximum atque offerat ad sacerdotium filiam suam, cuius dumtaxat salvis religionum observationibus ratio haberi possit, gratia Papiae legis per senatum fit.
 
 Capi autem virgo propterea dici videtur, quia pontificis maximi manu prensa ab eo parente in cuius potestate est, veluti bello capta, abducitur.
 
-In libro primo Fabii Pictoris, quae verba pontificem maximum dicere oporteat, cum virginem capiat, scriptum est. Ea verba haec sunt: Sacerdotem Vestalem, quae sacra faciat quae ius siet sacerdotem Vestalem facere pro populo Romano Quiritibus, uti quae utique, ω. optima lege fuit, ita te, Amata, capio.
+In libro primo Fabii Pictoris, quae verba pontificem maximum dicere oporteat, cum virginem capiat, scriptum est. Ea verba haec sunt: Sacerdotem Vestalem, quae sacra faciat quae ius siet sacerdotem Vestalem facere pro populo Romano Quiritibus, uti quae optima lege fuit, ita te, Amata, capio.
 
 Plerique autem capi virginem solam debere dici putant. Sed flamines quoque Diales, item pontifices et augures capi dicebantur.
 
-L. Sulla Rerum Gestarum libro secundo ita scripsit: P. Cornelius, cui primum cognomen Sullae impositum est, flamen Dialis captus.
+**L** Sulla Rerum Gestarum libro secundo ita scripsit: P. Cornelius, cui primum cognomen Sullae impositum est, flamen Dialis captus.
 
-M. Cato de Lusitanis, cum Servium Galbam accusavit ob eam rem, σ; ob meam, ω. : Tamen dicunt deficere voluisse. Ego me nunc volo ius pontificium optime scire; iamne ea causa pontifex capiar? Si volo augurium optime tenere, ecquis me ob eamearn rem ob eam rem, σ; ob meam, ω. augurem capiat?
+**M** Cato de Lusitanis, cum Servium Galbam accusavit : Tamen dicunt deficere voluisse. Ego me nunc volo ius pontificium optime scire; iamne ea causa pontifex capiar? Si volo augurium optime tenere, ecquis me ob eamearn rem augurem capiat?
 
-Praeterea in commentariisCommenlariis Labeonis, quae ad duodecimDuodecin Tabulas composuit, ita scriptum est: Virgo Vestalis neque heres est cuiquam intestato, neque intestatae quisquam, sed bona eius in in, ς; omitted by ω. publicum redigi aiunt. Id quo iure fiat, quaeritur.
+Praeterea in commentariisCommenlariis Labeonis, quae ad duodecimDuodecin Tabulas composuit, ita scriptum est: Virgo Vestalis neque heres est cuiquam intestato, neque intestatae quisquam, sed bona eius in publicum redigi aiunt. Id quo iure fiat, quaeritur.
 
 Amata inter capiendum a pontifice maximo appellatur, quoniam quae prima capta est hoc fuisse nomen traditum est.
 
@@ -433,7 +433,7 @@ Alii existimaverunt incommoda prius quae metuenda essent, si res gesta aliter fo
 
 neque timendum exemplum non parendi crediderunt, si rationes dumtaxat huiuscemodi non abessent.
 
-Cumprimiscum autem respiciendum putaverunt ingenium naturamque illius cuia cuia, Carrio; cui ea, ω. res praeceptumque esset: ne ferox, durus, indomitus inexorabilisque sit, qualia fuerunt Postumiana imperia et Manliana.
+Cumprimiscum autem respiciendum putaverunt ingenium naturamque illius cuia res praeceptumque esset: ne ferox, durus, indomitus inexorabilisque sit, qualia fuerunt Postumiana imperia et Manliana.
 
 Nam si tali praeceptori ratio reddenda sit, nihil faciendum esse monuerunt aliter quam praeceptum est.
 
@@ -441,9 +441,9 @@ Instructius deliberatiusque fore arbitramur theorematium hoc de mandatis huiusce
 
 Is Crassus a Sempronio Asellione et plerisque aliis historiae Romanae scriptoribus traditur habuisse quinque rerum bonarum maxima et praecipua: quod esset ditissimus, quod nobilissimus, quod eloquentissimus, quod iuris consultissimus, quod pontifex maximus.
 
-Is cum in consulatu obtineret Asiam provinciam et circumsedere oppugnareque Leucas pararet opusque esset firma atque procera trabe, qui arietem faceret quo muros eius oppidi quateret, scripsit ad magistrum ἀρχιτεκτόνων Mylattensium, magistrum ἀρχιτεκτόνων, Capps; magistrum architectona Moleatensium, B; mag. (māg., V) G. mole (more, P) Atheniensium (attenisium, V), ω.; magistraftus (-tum, ς) Mylasensium or Mylattensium, Mommsen; ἀρχιτέκτονα Myl., Hertz; magistrum Myl., Hosius. sociorum amicorumque populi Romani, ut ex malis duobus, quos apud eos vidisset, uter maior esset eum mittendum curaret.
+Is cum in consulatu obtineret Asiam provinciam et circumsedere oppugnareque Leucas pararet opusque esset firma atque procera trabe, qui arietem faceret quo muros eius oppidi quateret, scripsit ad magistrum ἀρχιτεκτόνων Mylattensium, sociorum amicorumque populi Romani, ut ex malis duobus, quos apud eos vidisset, uter maior esset eum mittendum curaret.
 
-Tum magister ἀρχιτεκτόνων magister ἀρχιτεκτόνων, Capps; ma g (mag, P) G., ω. magister ἀρχιτεκτόνων, ς. comperto quamobrem malum desideraret, non, uti iussus erat, maiorem, sed quem esse magis idoneum aptioremque faciendo arieti facilioremque portatu existimabat, minorem misit.
+Tum magister ἀρχιτεκτόνων comperto quamobrem malum desideraret, non, uti iussus erat, maiorem, sed quem esse magis idoneum aptioremque faciendo arieti facilioremque portatu existimabat, minorem misit.
 
 Crassus eum vocari iussit et, cum interrogasset cur non quem iusserat misisset, causis rationibusque quas dictitabat spretis, vestimenta detrahi imperavit virgisque multum cecidit, corrumpi atque dissolvi officium omne imperantis ratus. si quis ad id quod facere iussus est non obsequio debito, sed consilio non desiderato respondeat.
 
@@ -455,11 +455,11 @@ tumTurn Fabricium planas manus ab auribus ad oculos et infra deinceps ad nares e
 
 Quam inportunum vitiumvitiimn plenumque odii sit futilis inanisque loquacitas, et quam multis in locis a principibus utriusque linguae viris detestatione iusta culpata sit.
 
-QUI sunt leves et futiles et importuni locutores quique nullo rerum pondere innixi verbis uvidis uvidis. Salmansius; ubi dis (diis P2) P; (h)umidis, ω. tumidis, Falster. et lapsantibus diffluunt, eorum orationem bene existimatum est in ore nasci, non in pectore, linguam autem debere aiunt non esse liberam nec vagam, sed vinclis de pectore imo ac de corde aptis moverirnoveri et quasi gubernari.
+QUI sunt leves et futiles et importuni locutores quique nullo rerum pondere innixi verbis uvidis et lapsantibus diffluunt, eorum orationem bene existimatum est in ore nasci, non in pectore, linguam autem debere aiunt non esse liberam nec vagam, sed vinclis de pectore imo ac de corde aptis moverirnoveri et quasi gubernari.
 
 Sed enim videas quosdam scatere verbis sine ullo iudicii negotio cum securitate multa et profunda, ut loquentes plerumque videantur loqui sese nescire.
 
-Ulixen contra Homerus, virum sapienti facundia praeditum, vocem mittere ait non ex ore, sed ex pectore, quod quod, J. E. Gronov; quos (quo, P) scilicet (licet, R,), ω. scilicet non ad sonum magis habitumquehabitunmque vocis quam ad sententiarum penitus conceptarum altitudinem pertineret, petulantiaeque verborum coercendae vallum esse oppositum dentium luculente dixit, ut loquendi temeritas non cordis tantum custodia atque vigilia cohibeatur, sed et quibusdam quasi excubiis in ore positis saepiatur. Homerica,
+Ulixen contra Homerus, virum sapienti facundia praeditum, vocem mittere ait non ex ore, sed ex pectore, quod scilicet non ad sonum magis habitumquehabitunmque vocis quam ad sententiarum penitus conceptarum altitudinem pertineret, petulantiaeque verborum coercendae vallum esse oppositum dentium luculente dixit, ut loquendi temeritas non cordis tantum custodia atque vigilia cohibeatur, sed et quibusdam quasi excubiis in ore positis saepiatur. Homerica,
 
 de quibus supra dixi, haec sunt: Ἀλλʼ ὅτε δὴ ὄπα τε μεγάλην ἐκ στήθεος εἵη, et: Ποῖόν σε ἔπος φύγεν ἕρκος ὀδόντων.
 
@@ -467,21 +467,21 @@ de quibus supra dixi, haec sunt: Ἀλλʼ ὅτε δὴ ὄπα τε μεγάλ
 
 Ποῖόν σε ἔπος φύγεν ἕρκος ὀδόντων.
 
-M. Tullii quoque verba posui, quibus stultam et inanem dicendi copiam graviter et vere detestatus est:
+**M** Tullii quoque verba posui, quibus stultam et inanem dicendi copiam graviter et vere detestatus est:
 
-Dummodo, inquit, hoc constet, neque infantiam eius, qui rem norit, sed eam explicare dicendo non queat, neque inscientiam illius, cui res non subpetat, verba non desint, esse laudandam; quorum si alterum sit optandum, malim equidem indisertam prudentiam quam stultam loquacitatem.stultitiam loquacem. Cic.
+Dummodo, inquit, hoc constet, neque infantiam eius, qui rem norit, sed eam explicare dicendo non queat, neque inscientiam illius, cui res non subpetat, verba non desint, esse laudandam; quorum si alterum sit optandum, malim equidem indisertam prudentiam quam stultam loquacitatem.
 
 Item in libro De Oratore primo verba haec posuit: Quid enim est tam furiosum quam verborum vel optimorum atque ornatissimorum sonitus inanis, nulla subiecta sententia nec scientia?
 
 Cumprimis autem M. Cato atrocissimus huiusce vitii insectator est.
 
-Namque in oratione, quae inscripta est Si se Caelius tribunus plebis appellasset, Numquam, inquit, tacet, quemquern morbus tenet loquendi tamquam veternosum bibendi atque dormiendi. Quod si non conveniatis, cum convocari iubet, ita cupidus orationis conducat, qui auscultet. Itaque auditis, non auscultatis, tamquam pharmacopolam. Nam eius verba audiuntur, verum se ei ei, added by ς nemo committit, si aeger est.
+Namque in oratione, quae inscripta est Si se Caelius tribunus plebis appellasset, Numquam, inquit, tacet, quemquern morbus tenet loquendi tamquam veternosum bibendi atque dormiendi. Quod si non conveniatis, cum convocari iubet, ita cupidus orationis conducat, qui auscultet. Itaque auditis, non auscultatis, tamquam pharmacopolam. Nam eius verba audiuntur, verum se ei nemo committit, si aeger est.
 
 Idem Cato in eadem oratione eidem M. Caelio tribuno plebi vilitatem obprobrans non loquendi tantum, verum etiam tacendi: Frusto, inquit, panis conduci potest, vel uti taceat vel uti loquatur.
 
 Neque non merito Homerus unum ex omnibus Thersitam ἀμετροεπῆ et ἀκριτόμυθον appellat verbaque illius multa et ἄκοσμα strepentium sine modo graculorum similia esse dicit. Quid enim est aliud ἐκολώα?
 
-Eupolidis quoque versus de id genus hominibus consignatissime factus est: Λαλεῖν ἄριστος, ἀδυνατώτατος λέγειν, quod Sallustius noster imitari volens sic, added by Hertz. sic scribit:
+Eupolidis quoque versus de id genus hominibus consignatissime factus est: Λαλεῖν ἄριστος, ἀδυνατώτατος λέγειν, quod Sallustius noster imitari volens sic scribit:
 
 Λαλεῖν ἄριστος, ἀδυνατώτατος λέγειν,
 
@@ -529,9 +529,9 @@ Ad portam mille a porta est, sex inde Salernum,
 
 Varro in XVII. Humanarum: Ad Romuli initium plus mille et centum annorum est.
 
-M. Cato in primo Originum: Inde est ferme mille passum.
+**M** Cato in primo Originum: Inde est ferme mille passum.
 
-M. Cicero in sexta in Antonium: Itane Ianuslanus medius in L. Antonii clientela est? Quis umquam in illo Iano inventus est, qui L. Antonio mille nummum ferret expensum?
+**M** Cicero in sexta in Antonium: Itane Ianuslanus medius in L. Antonii clientela est? Quis umquam in illo Iano inventus est, qui L. Antonio mille nummum ferret expensum?
 
 In his atque in multis aliis mille numero singulari dictum est;
 
@@ -543,7 +543,7 @@ Quamobrem id quoque recte et probabiliter dici solitum mille denarium in area es
 
 Lucilius autem, praeterquam supra posui, alio quoque in loco id manifestius demonstrat,
 
-nam in libro XV. ita dicit: huncHune, milli passum qui vicerit atque duobus, Campanus sonipes succussor nullus sequetur Maiore in spatio ac diversus videbitur ire; item libro nono:alio libro IX mille, ω.
+nam in libro XV. ita dicit: huncHune, milli passum qui vicerit atque duobus, Campanus sonipes succussor nullus sequetur Maiore in spatio ac diversus videbitur ire; item libro nono:
 
 huncHune, milli passum qui vicerit atque duobus,
 
@@ -559,7 +559,7 @@ milli passum dixit pro mille passibus et uno milli nummum pro unis mille nummis 
 
 Neque ceteros casus requiri oportet, cum sint alia pleraque vocabula, quae in singulos tantum casus, quaedam etiam, quae in nullum inclinentur.
 
-Quapropter nihil iam dubium est, quin M. Cicero in oratione, quam scripsit pro Milone, ita scriptum reliquerit: Ante fundum Clodi, quo in fundo propter insanas illas substructiones facile mille hominum versabatur valentium, non versabantur, quod in libris minus accuratis scriptum est; alia enim ratione mille homines, alia hormines alia, supplied by Klotz. mille hominum dicendum est.
+Quapropter nihil iam dubium est, quin M. Cicero in oratione, quam scripsit pro Milone, ita scriptum reliquerit: Ante fundum Clodi, quo in fundo propter insanas illas substructiones facile mille hominum versabatur valentium, non versabantur, quod in libris minus accuratis scriptum est; alia enim ratione mille homines, alia mille hominum dicendum est.
 
 Quanta cum animi aequitate toleraverit Socrates uxoris ingenium intractabile; atque inibi, quid M. Varro in quadam satura de officio mariti scripserit.
 
@@ -569,25 +569,25 @@ Has eius intemperies in maritum Alcibiades demiratus, interrogavit Socraten quae
 
 Quoniam, inquit Socrates, cum illam domi talem perpetior, insuesco et exerceor, ut ceterorum quoque foris petulantiam et iniuriam facilius feram.
 
-Secundum hanc sententiam quoque Varro in Satura Menippea, quam De Officio Mariti inscripsit: inscripsit, Vahlen; scripsit, MSS. Vitium, inquit, uxoris aut tollendum aut ferendum est. Qui tollit vitium, uxorem commodiorem praestat, qui fert, sese meliorem facit.
+Secundum hanc sententiam quoque Varro in Satura Menippea, quam De Officio Mariti inscripsit: Vitium, inquit, uxoris aut tollendum aut ferendum est. Qui tollit vitium, uxorem commodiorem praestat, qui fert, sese meliorem facit.
 
 Haec verba Varronis tollere et ferre lepide quidem composita sunt, sed tollere apparet dictum pro corrigere.
 
 Id etiam apparet, eiusmodi vitium uxoris, si corrigi non possit, ferendum esse Varronem censuisse, quod ferri scilicet a viro honeste potest; vitia enim flagitiis leviora sunt.
 
-Quod M. Varro in quarto decimo Humanarum L. Aelium magistrum suum in in, Hertz, et in, ω. ἐτμολογίᾳ falsa reprehendit; quodque idem Varro in eodem libro falsum furis ἔτυμον dicit.
+Quod M. Varro in quarto decimo Humanarum L. Aelium magistrum suum in ἐτμολογίᾳ falsa reprehendit; quodque idem Varro in eodem libro falsum furis ἔτυμον dicit.
 
 IN XIV. Rerum Divinarum libro M. Varro doctissimum tunc civitatis hominem L. Aelium errasse ostendit, quod vocabulum Graecum vetus traductum in linguam Romanam, proinde atque si primitus Latine fictum esset, resolverit in voces Latinas ratione etymologica falsa.
 
-Verba ipsa super ea re Varronis posuimus: In quo L. Aelius noster, litteris ornatissimus memoria nostra, erravit aliquotiens. Nam aliquot verborum Graecorum antiquiorum, proinde atque essent propria nostra, reddidit causas falsas. Non leporem dicimus, ut ait, quod est levipes, sed quod est vocabulum anticum Graecum. Multa vetera illorum ignorantur, quod pro his aliis nunc vocabulis utuntur; et illorum esse plerique ignorent Graecum, quod nunc nominant Ἕλληνα, puteum, quod vocant φρέαρ leporem, quod λαγωὸν dicunt. In quo non modo Aelii ingenium non reprehendo, sed industriam laudo; successum enim fert fert, added by Hirschfeld; fortuna dat, Mommsen; fortuna fundat, Hertz (from Amm. xvii. 5. 8). fortuna, experientiam laus sequitur.
+Verba ipsa super ea re Varronis posuimus: In quo L. Aelius noster, litteris ornatissimus memoria nostra, erravit aliquotiens. Nam aliquot verborum Graecorum antiquiorum, proinde atque essent propria nostra, reddidit causas falsas. Non leporem dicimus, ut ait, quod est levipes, sed quod est vocabulum anticum Graecum. Multa vetera illorum ignorantur, quod pro his aliis nunc vocabulis utuntur; et illorum esse plerique ignorent Graecum, quod nunc nominant Ἕλληνα, puteum, quod vocant φρέαρ leporem, quod λαγωὸν dicunt. In quo non modo Aelii ingenium non reprehendo, sed industriam laudo; successum enim fert fortuna, experientiam laus sequitur.
 
 HaecIaec Varro in primore libro scripsit, de ratione vocabulorum scitissimescitissirne, de usu utriusque linguae peritissime, de ipso Aelio clementissime.
 
 Sed in posteriore eiusdem libri parte furem dicit ex eo dictum, quod veteres Romani furuumfurvurm atrum appellaverintappellavcrint et fures per noctem, quae atra sit, facilius furentur.
 
-Nonne sic videtur Varro de fure, The Aldine ed. added errasse. tamquam Aelius de lepore? Nam quod a Graecis nunc κλέπτης dicitur, antiquiore Graeca lingua φὼρ dictum est. Hinc per adfinitatem litterarum, qui φὼρ Graece, est Latine fur.
+Nonne sic videtur Varro de fure, tamquam Aelius de lepore? Nam quod a Graecis nunc κλέπτης dicitur, antiquiore Graeca lingua φὼρ dictum est. Hinc per adfinitatem litterarum, qui φὼρ Graece, est Latine fur.
 
-Sed ea res fugeritne tunc Varronis memoriammemioriamr , an contra aptius et cohaerentiuscolaerentius putarit, furem a furvo, id est nigro, id est nigro is probably a gloss. appellari, in hac re de viro tam excellentis doctrinae non meum iudicium est.
+Sed ea res fugeritne tunc Varronis memoriammemioriamr , an contra aptius et cohaerentiuscolaerentius putarit, furem a furvo, id est nigro, appellari, in hac re de viro tam excellentis doctrinae non meum iudicium est.
 
 Historia super libris Sibyllinis ac de Tarquinio Superbo rege.
 
@@ -625,15 +625,15 @@ Solidum est quando non longitudines modo et latitudines planasplans numeri linea
 
 ex quo ipsae quoque appellatae κύβοι In numeris etiam similiter κύβος dicitur, cum omne latus eiusdem numeri aequabiliter in sese solvitur, sicuti fit cum ter terna ducuntur atque ipse numerus terplicatur.
 
-Huius numeri cubum Pythagoras vim habere lunaris circuli dixit, quod et luna orbem suum lustret septem et viginti diebus et numerus ternio, ternio, ς triennio, ω. qui τριὰς Graece dicitur, tantundemtatutndem efficiat in cubo.
+Huius numeri cubum Pythagoras vim habere lunaris circuli dixit, quod et luna orbem suum lustret septem et viginti diebus et numerus ternio, qui τριὰς Graece dicitur, tantundemtatutndem efficiat in cubo.
 
 Linea autem a nostris dicitur, quam γραμμὴν Graeci nominant.
 
-Eam ea M., ω. corr. in ς M. Varro ita definit: Linea est, inquit, longitudo quaedam sine latitudine et altitudine.
+Eam M. Varro ita definit: Linea est, inquit, longitudo quaedam sine latitudine et altitudine.
 
 Εὐκλείδης autem brevius, praetermissa altitudine: γραμμὴ, inquit, est μῆκος ἀπλατές, quod exprimere uno Latino verbo non queas, nisi audeas dicere inlatabile.
 
-Quod Iulius Hyginus affirmatissime contendit, legisse se librum P. Vergilii domesticum, ubi ubi added by Hertz: in quo, ς scriptum esset et ora Tristia temptantum sensus torquebit amaror, non quod vulgus legeret sensu torquebit amaro.
+Quod Iulius Hyginus affirmatissime contendit, legisse se librum P. Vergilii domesticum, ubi scriptum esset et ora Tristia temptantum sensus torquebit amaror, non quod vulgus legeret sensu torquebit amaro.
 
 VERSUS istos ex Georgicis Vergilii plerique omnes sic legunt: At sapor indicium faciet manifestus et ora Tristia temptantum sensu torquebit amaro.
 
@@ -649,9 +649,9 @@ Tristia temptantum sensus torquebit amaror,
 
 sed doctis quibusdam etiam viris complacitum, quoniam videtur absurde dici sapor sensu amaro torquet. Cum ipse, inquiunt, sapor sensus sit, non alium in semet ipso sensum habeat ac proinde sit quasi dicatur ‘sensus sensu amaro torquet.’
 
-Sed enim cum Favorino Hygini commentariumcoommentarium legissem atque ei statimstatic displicita esset insolentia et insuavitas illius sensu torquebit amaro, risit et illius risit et, β. amaror is, ω. : Iovem lapidem, lapidem, β. lapideum, ω. inquit, quod sanctissimum iusiurandum habitum est, paratus ego iurare sum Vergilium hoc numquam scripsisse, sed Hyginum ego verum dicere arbitror.
+Sed enim cum Favorino Hygini commentariumcoommentarium legissem atque ei statimstatic displicita esset insolentia et insuavitas illius sensu torquebit amaro, risit et : Iovem lapidem, inquit, quod sanctissimum iusiurandum habitum est, paratus ego iurare sum Vergilium hoc numquam scripsisse, sed Hyginum ego verum dicere arbitror.
 
-Non enimenin primus finxit hoc verbum Vergilius insolenter, sed in carminibuscarnminibus Lucreti invento usus est, non inventus est non, ω.; corr. by Ehrenthal. aspernatus auctoritatem poetae ingenio et facundia praecellentis.
+Non enimenin primus finxit hoc verbum Vergilius insolenter, sed in carminibuscarnminibus Lucreti invento usus est, non aspernatus auctoritatem poetae ingenio et facundia praecellentis.
 
 Verba ex IV. Lucreti haec sunt: dilutaque contra Cum tuimur misceri absinthia, tangit amaror.
 
@@ -661,7 +661,7 @@ Cum tuimur misceri absinthia, tangit amaror.
 
 Non verba autem sola, sed versus prope totos et locos quoque Lucreti plurimos sectatum esse Vergilium videmus.
 
-An qui causas defendit recte Latineque dicat superesse se se added by Carrio. is is = eis, iis. quos id quod, ω.; corr. by Hertz. defendit; et superesse proprie quid sit.
+An qui causas defendit recte Latineque dicat superesse se is quos defendit; et superesse proprie quid sit.
 
 INROBORAVIT inveteravitque falsa atque aliena verbi significatio, quod dicitur hic illi superest, cum dicendum est advocatum esse quem cuipiam causamque eius defendere.
 
@@ -671,17 +671,17 @@ Qui integre autem locuti sunt magnamnagnam partem superesse ita dixerunt, ut eo 
 
 Itaque M. Varro, in satura quae inscripta est Nescis Quid Vesper Vehat, superfuisse dicit immodice et intempestive fuisse.
 
-Verba ex eo libro haec sunt: In convivio legi nec omnia debent et ea potissimum, quae simul sint βιωφελῆ et delectent, potius ut id quoque videatur non defuisse quam superfuisse. quod superfuisse,β. omitted by ω. non videatur magis defuisse quam superfuisse, codd. Carrionis; Vogel put potius after defuisse.
+Verba ex eo libro haec sunt: In convivio legi nec omnia debent et ea potissimum, quae simul sint βιωφελῆ et delectent, potius ut id quoque videatur non defuisse quam superfuisse.
 
 Memini ego praetoris, docti hominis, tribunali me forte assistere atque ibi advocatum non incelebrem sic postulare, ut extra causam diceret remque quae agebatur non attingeret. Tunc praetorem ei cuia res erat dixisse advocatum eum non habere, et cum is qui verba faciebat reclamasset ego illi V. C. supersum, respondisse praetorem festiviter tu plane superes, non ades.
 
-M. autem Cicero, in libro qui inscriptus est De iurelure Civili in Artem Redigendo, verba haec posuit: Nec vero scientia iuris maioribus suis Q. Aelius Tubero defuit, doctrina etiam superfuit. In quo loco superfuit significare videtur supra fuit et praestitit superavitque maiores suos doctrina sua, superfluenti tamen et nimis abundanti, disciplinas enim Tubero stoicas et dialecticas percalluerat
+**M** autem Cicero, in libro qui inscriptus est De iurelure Civili in Artem Redigendo, verba haec posuit: Nec vero scientia iuris maioribus suis Q. Aelius Tubero defuit, doctrina etiam superfuit. In quo loco superfuit significare videtur supra fuit et praestitit superavitque maiores suos doctrina sua, superfluenti tamen et nimis abundanti, disciplinas enim Tubero stoicas et dialecticas percalluerat
 
 . In libro quoque De Republica secundo id ipsum verbum Cicero ponit non temere transeundum. Verba ex eo libro haec sunt: Non gravarer, Laeli, nisi et hos velle putarem et ipse cuperem te quoque aliquam partem huius nostri sermonis attingere, praesertim cum heri ipse dixeris te nobis etiam superfuturum. Verum id quidem fieri non potest; ne desis omnes te rogamus.
 
 Exquisite igitur et comperte Iulius Paulus dicebat, homo in nostra memoria doctissimus, superesse non simplici ratione dici tam Latine quam Graece; Graecos enim περισσὸν in utramque partemparteni ponere, vel quod supervacaneum esset ac non necessarium,
 
-vel quod abundans nimis et afluens et exuberans exuperans, ω.; corr. by Hertz. ; sic nostros quoque veteres superesse alias dixisse pro superfluenti et vacivo neque admodum necessario, ita ut supra posuimus Varronem dicere, alias ita ut Cicero dixit, pro eo quod copia quidem et facultate ceteris anteiret, super modum tamen et largius prolixiusque flueret quam esset satis.
+vel quod abundans nimis et afluens et exuberans ; sic nostros quoque veteres superesse alias dixisse pro superfluenti et vacivo neque admodum necessario, ita ut supra posuimus Varronem dicere, alias ita ut Cicero dixit, pro eo quod copia quidem et facultate ceteris anteiret, super modum tamen et largius prolixiusque flueret quam esset satis.
 
 Qui dicit ergo superesse se ei quem defendit, nihil istorum vult dicere sed nescio quid 12 aliud indictum inscitumque dicitlicit
 
@@ -697,13 +697,13 @@ Farraque, ne blando nequeat superesse labori;
 
 An autem superesse dixerint veteres pro restare et perficiendae rei deesse, quaerebamus. Nam Sallustius in significatione ista non superesse,
 
-sed superare dicit. Verba eius in Iugurtha haec sunt: Is is, ς; his, ω. qui, Sall. plerumque seorsum a rege exercitum ductare et omnis res exequi solitus erat, quae Iugurthae fesso aut maioribus astricto superaverant.
+sed superare dicit. Verba eius in Iugurtha haec sunt: Is plerumque seorsum a rege exercitum ductare et omnis res exequi solitus erat, quae Iugurthae fesso aut maioribus astricto superaverant.
 
 Sed invenimus in tertio Enni Annalium in hoc versu: Inde sibi memorat unum super esse laborem, id est relicum esse et restare, quod, quia id est, divise pronuntiandum est, ut non una pars orationis esse videatur, sed duae.
 
 Inde sibi memorat unum super esse laborem,
 
-Cicero autem in secunda Antonianarum, Antoniarum, ω. quod est relicum, non superesse, sed restare dicit.
+Cicero autem in secunda Antonianarum, quod est relicum, non superesse, sed restare dicit.
 
 Praeter haec superesse invenimus dictum pro superstitem esse.
 
@@ -715,7 +715,7 @@ Sicút tuum vis únicum gnatúm tuae
 
 Superésse vitae sóspitem et supérstitem.
 
-Cavenda igitur est non inproprietasimnproprietas sola verbi, sed etiam pravitas ominis, omnis, ω.. si quis senior advocatus adulescenti superesse se dicat.
+Cavenda igitur est non inproprietasimnproprietas sola verbi, sed etiam pravitas ominis, si quis senior advocatus adulescenti superesse se dicat.
 
 Quis fuerit Papirius Praetextatus; quae istius causa cognomenti sit; historiaque ista omnis super eodem Papirio cognitu iucunda.
 
@@ -737,7 +737,7 @@ tumTurn puer, matre urgente, lepidi atque festivi mendacii consilium capit. Actu
 
 Hoc illa ubi audivit, animus compavescit,
 
-domo trepidans egreditur, ad ceteras matronas perfert. Venit perfert. Venit, Klotz; pervenit, ω. pervenit. It, Mommsen. ad senatum postridie matrum familias caterva. Lacrimantes atque obsecrantes orant una potius ut duobus nupta fieret quam ut uni duae.
+domo trepidans egreditur, ad ceteras matronas perfert. Venit ad senatum postridie matrum familias caterva. Lacrimantes atque obsecrantes orant una potius ut duobus nupta fieret quam ut uni duae.
 
 Senatores, ingredientes in curiam, quae illa mulierum intemperies et quid sibi postulatio istaec vellet, mirabantur.
 
@@ -755,9 +755,9 @@ Inmórtalés mortáles si forét fas flére,
 
 Flerént divaé Caménae Naéviúm poétam.
 
-Itáque póstquam est ÓOrchorcho Orcho, ω. Orchi, β. cf. alicui dono dare. tráditús thesaúro,
+Itáque póstquam est ÓOrchorcho tráditús thesaúro,
 
-Oblíti súnt Romaé loquiér linguá Latína. The scansion is quantitative. Saturnian verse is also scanned as accentual.
+Oblíti súnt Romaé loquiér linguá Latína.
 
 Epigramma Plauti, quod dubitassemus an Plauti foret, nisi a M. Varrone positum esset in libro De Poetis primo:
 
@@ -769,11 +769,11 @@ Et Numeri innumeri simul omnes conlacrimarunt.
 
 Epigramma Pacuvii verecundissimum et purissimum dignumque eius elegantissima gravitate:
 
-Adulescens, tametsi tamen etsi, ω. próperas, hoc te saxúlum te saxulum, Bücheler and Bormann; te saxum, P, V; thesaurum, R. rogat,
+Adulescens, tametsi próperas, hoc te saxúlum rogat,
 
 Ut sése aspicias, deínde quod scriptum ést legas.
 
-Hic súnt poetae Pácuvi Pacuvii, ω. Marcí sita
+Hic súnt poetae Pácuvi Marcí sita
 
 Ossa. Hóc volebam néscius ne essés. Vale.
 
@@ -793,7 +793,7 @@ Aut rursus quid esse id dicemus quod in primo Annalium Quadrigarii scriptum est,
 
 Belli autem ferias festive magis dixit quam aperte atque definite.
 
-Graeci autem significantius consignatiusque cessationem istam pugnae pacticiam ἐκεχειρίαν dixerunt, exempta littera una sonitus vastioris et subdita subdita, J. F. Gronov; sub vita (vitae, R), ω.. lenioris.
+Graeci autem significantius consignatiusque cessationem istam pugnae pacticiam ἐκεχειρίαν dixerunt, exempta littera una sonitus vastioris et subdita lenioris.
 
 Nam quod eo tempore non pugnetur et manus cohibeantur, ἐκεχειρίαν appellarunt.
 
@@ -809,9 +809,9 @@ Indutias sic dictas arbitramurarbitramu, quasi tu dicas inde uti iam.
 
 Pactum indutiarum eiusmodi est, ut in diem certum non pugnetur nihilqueiihilque incommodetur, sed ex eo die postea uti iam omnia belli iure agantur.
 
-Quod igitur igitur, J. F. Gronov; dicitur, ω.. dies certus praefinitur pactumque fit, ut ante eum diem ne pugnetur atque is dies ubi venit ubi venit, omitted by R. inde uti iam pugnetur, idcirco ex his quibus dixi vocibus, quasi per quendam coitum et copulam nomen indutiarum conexumconexuni est.
+Quod igitur dies certus praefinitur pactumque fit, ut ante eum diem ne pugnetur atque is dies ubi venit inde uti iam pugnetur, idcirco ex his quibus dixi vocibus, quasi per quendam coitum et copulam nomen indutiarum conexumconexuni est.
 
-Aurelius autem Opilius in primo librorum, quos Musarum inscripsit, indutiae, inquit, dicuntur, cum hostes inter sese utrimque utroque alteri ad alteros impune et sine pugna ineunt; inde adeo inquit nomen factum videtur, quasi initiae, initiae, Lambecius; induitiae, Fleckeisen; inviae, ω.. hoc est initus atque introitus.
+Aurelius autem Opilius in primo librorum, quos Musarum inscripsit, indutiae, inquit, dicuntur, cum hostes inter sese utrimque utroque alteri ad alteros impune et sine pugna ineunt; inde adeo inquit nomen factum videtur, quasi initiae, hoc est initus atque introitus.
 
 Hoc ab Aurelio scriptum propterea non praeterii, ne cui harum Noctium aemulo eo tantum nomine elegantius id videretur, tamquam id nos originem verbi requirentes fugisset.
 
@@ -827,9 +827,9 @@ sed, quid et Plutarchus noster, vir doctissimus ac prudentissimus, senserit, non
 
 Plutarchus, inquit, servo suo, nequam homini et contumaci, sed libris disputationibusque philosophiae aures inbutasinbuftas habenti, tunicam detrahidetrahli ob nescio quod delictum caedique eum loro iussit.
 
-Coeperat verberari et obloquebaturobloquebatum non meruisse ut vapulet, vapularet, Veen; Damsté regards as a gloss. nihil mali, nihil sceleris admisisse. Postremo vociferari inter vapulandum incipit,
+Coeperat verberari et obloquebaturobloquebatum non meruisse ut vapulet, nihil mali, nihil sceleris admisisse. Postremo vociferari inter vapulandum incipit,
 
-neque iam querimonias aut gemitus eiulatusque facere, iacere. Faster. sed verba seria et obiurgatoria: non ita esse Plutarchum, ut philosophum deceret; irasci turpe esse: saepe eum de malo irae dissertavisse, librum quoque Περὶ Ἀοργησίας pulcherrimum conscripsisse; his omnibus quae in eo libro scripta sint nequaquam convenire, quod provolutus effususqueefususque in iram plurimis se plagis multaret.
+neque iam querimonias aut gemitus eiulatusque facere, sed verba seria et obiurgatoria: non ita esse Plutarchum, ut philosophum deceret; irasci turpe esse: saepe eum de malo irae dissertavisse, librum quoque Περὶ Ἀοργησίας pulcherrimum conscripsisse; his omnibus quae in eo libro scripta sint nequaquam convenire, quod provolutus effususqueefususque in iram plurimis se plagis multaret.
 
 tumTurn Plutarchus lente et leniter quid autem, inquit, verbero, nunc ego tibi irasci videor? Ex vultune meo an ex voce an ex colore an etiam ex verbis correptum esse me ira intellegis? Mihi quidem neque oculi, opinor, truces sunt neque os turbidum neque inmaniter clamo neque in spumam ruborenve effervesco neque pudenda dico aut paenitenda neque omnino trepido ira et gestio.
 
@@ -839,7 +839,7 @@ Summa autem totius sententiae Tauri haec fuit: Non idem esse existimavit ἀορ
 
 Nam sicut aliorum omnium, quos Latini philosophi affectus vel affectiones, Graeci πάθη appellant, ita huius quoque motus animi, qui cum est ulciscendi causa saevior ira dicitur, non privationem esse utilem censuit, quam Graeci στέρησιν dicunt, sed mediocritatem, quam μετριότητα illi appellant.
 
-Quo genere solitus sit philosophus Socrates exercere patientiam corporis; deque eiusdem viri temperantia. temperantia, ς; pacientia, ω.; parcitnoia, J . F. Gronov.
+Quo genere solitus sit philosophus Socrates exercere patientiam corporis; deque eiusdem viri temperantia.
 
 INTER labores voluntarios et exercitia corporis ad fortuitas patientiae vices firmandi id quoque accepimus Socraten facere insuevisse:
 
@@ -863,9 +863,9 @@ assurrexit placide Taurus et post mutuam salutationem resedit.
 
 Allata moxmnox una sella est, quae in promptuprompt erat, atque dum aliae promebanturpromrebantur, apposita est. Invitavit Taurus patrem praesidispralesidis uti sederet.
 
-Ad quae Ad quae, Cramer; atque (adque, I), ω. ille ait: Sedeat hic potius qui populi Romani magistratus est.
+Ad quae ille ait: Sedeat hic potius qui populi Romani magistratus est.
 
-Absque praeiudicio, inquit Taurus, tu interea sede, dum dum, Aldine ed.; cum, RV; dun cum, P; dum circumspicimus, Madvig. inspicimus quaerimusquequaerimlusque utrum conveniat, tene potius sedere, qui pater es, an filium, qui magistratus est.
+Absque praeiudicio, inquit Taurus, tu interea sede, dum inspicimus quaerimusquequaerimlusque utrum conveniat, tene potius sedere, qui pater es, an filium, qui magistratus est.
 
 Et cum pater assedisset appositumque esset aliud filio quoque eius sedile, verba super ea re Taurus facit cum summa, dii boni, honorum atque officiorum perpensationeperpenlsatione.
 
@@ -877,13 +877,13 @@ Haec atque alia in eandem sententiam Taurus graviter simul et comiter disseruit.
 
 Quid autem super huiuscemodihuiuscemlodi patris atque filii officio apud Claudium legerimus, non esse ab re visum est ut adscriberemus.
 
-Posuimus igitur verba ipsa Quadrigarii ex Annali eius sexto transscripta: Deinde facti consules Ti. Ti added by Skutsch. Sempronius Gracchus iterum, iterumque, ω. Q. Fabius Maximus, filius eius qui priore anno erat consul. Ei consulicosuli pater proconsul obviam in equo vehens venit neque descendere voluit, quod pater erat, et quod inter eos sciebant maxima concordia convenire, lictores non ausi sunt descendere iubere. Ubi iuxta venit, tum consul ait: Quid postea? ; lictor ille qui apparebat cito intellexit, Maximum proconsulem descendere iussit. Fabius imperio paret et filium collaudavit, cum imperium, quod populi esset, retineret.
+Posuimus igitur verba ipsa Quadrigarii ex Annali eius sexto transscripta: Deinde facti consules Ti. Sempronius Gracchus iterum, Q. Fabius Maximus, filius eius qui priore anno erat consul. Ei consulicosuli pater proconsul obviam in equo vehens venit neque descendere voluit, quod pater erat, et quod inter eos sciebant maxima concordia convenire, lictores non ausi sunt descendere iubere. Ubi iuxta venit, tum consul ait: Quid postea? ; lictor ille qui apparebat cito intellexit, Maximum proconsulem descendere iussit. Fabius imperio paret et filium collaudavit, cum imperium, quod populi esset, retineret.
 
 Qua ratione verbis quibusdam vocabulisque veteres immiserintimmiseurint h litterae spiritum.
 
 H LITTERAM, sive illam spiritum magis quam litteram dici oportet, inserebant eamearn veteres nostri plerisque vocibus verborumverborLum firmandis roborandisque, ut sonus earum esset viridior vegetiorque; atque id videntur fecisse studio et exemplo linguae Atticae.
 
-Satis notum est Atticos ἱχθὺν et ἵππον ἵππον Skutsch (cf. Meyer, Gr. Gram.3 p. 108; ippon, VP; ippō, R; l pronomen, Hertz. et multa itidem alia contra morem gentium Graeciae ceterarum inspirantis prime litterae dixisse.
+Satis notum est Atticos ἱχθὺν et ἵππον et multa itidem alia contra morem gentium Graeciae ceterarum inspirantis prime litterae dixisse.
 
 Sic lachrumas, sic sepulcrum, sic ahenum, sic vehemens, sic incohare, sic helluari, sic halucinari, sic honera, sic honustum dixerunt.
 
@@ -897,9 +897,9 @@ Exultat, telis et luce coruscus aena,
 
 Sic in illo quoque Vergili versu in optimis libris scriptumscriptumr invenimus:
 
-Aut aut, ω.; et, Virg. foliis undam trepidi despumat aheni.
+Aut foliis undam trepidi despumat aheni.
 
-Quam ob causam Gavius Bassus genus quoddam iudicii divinationem appellari scripserit; et quam alii causam esse eiusdem vocabuli dixerint. dixerunt, ω.
+Quam ob causam Gavius Bassus genus quoddam iudicii divinationem appellari scripserit; et quam alii causam esse eiusdem vocabuli dixerint.
 
 CUM de constituendo accusatore quaeritur iudiciumque super ea re redditur cuinam potissimum ex duobus pluribusque accusatio subscriptiove in reum permittatur, ea res atque iudicum cognitio divinatio appellatur.
 
@@ -909,15 +909,15 @@ Gavius Bassus in tertio librorum, quos De Origine vocabulorumVocabilorum composu
 
 Nimis quidem est in verbis Gavi Bassi ratio inperfecta vel magis inops et ieiuna.
 
-Sed videtur tamen significare velle idcirco dici divinationem, quod in aliis quidem causis iudex ea quae quae, added in ς didicit quaeque argumentis vel testibus demonstrata sunt sequi solet, in hac autem re, cum eligendus accusator est, parva admodum et exilia sunt quibus moveri iudex possit, et propterea quinam magis ad accusandum idoneus sit quasi divinandum est.
+Sed videtur tamen significare velle idcirco dici divinationem, quod in aliis quidem causis iudex ea quae didicit quaeque argumentis vel testibus demonstrata sunt sequi solet, in hac autem re, cum eligendus accusator est, parva admodum et exilia sunt quibus moveri iudex possit, et propterea quinam magis ad accusandum idoneus sit quasi divinandum est.
 
-Haec Bassus. Sed alii quidam divinationem esse appellatam putant quoniam, cum accusator et reus duae res quasi cognatae cognitae, ω.; corr. in ς coniunctaeque sint neque utra sine altera constare possit, in hoc tamen genere causae reus quidem iam est, sed accusator nondum est, et idcirco quod adhuc usque deest et latet divinatione supplendum est, quisnam sit accusator futurus.
+Haec Bassus. Sed alii quidam divinationem esse appellatam putant quoniam, cum accusator et reus duae res quasi cognatae coniunctaeque sint neque utra sine altera constare possit, in hoc tamen genere causae reus quidem iam est, sed accusator nondum est, et idcirco quod adhuc usque deest et latet divinatione supplendum est, quisnam sit accusator futurus.
 
-Quam lepide signateque designate, ω; corr. by Falster. dixerit Favorinus philosophus quid intersit inter Platonis et Lysiae orationem.
+Quam lepide signateque dixerit Favorinus philosophus quid intersit inter Platonis et Lysiae orationem.
 
 FAVORINUS de Lysia et Platone solitus dicere est: Si ex Platonis, inquit, oratione verbum aliquod demas mutesve atque id commodatissimecommnodatissime facias, de elegantiaclegantia tamen detraxeris; si ex Lysiae, de sententia.
 
-Quibus verbis ignaviter et abiecte Vergilius usus esse dicatur; et quid his qui improbe id id added by Hertz (Stephants). dicunt respondeatur.
+Quibus verbis ignaviter et abiecte Vergilius usus esse dicatur; et quid his qui improbe id dicunt respondeatur.
 
 NONNULLI grammatici aetatis superioris, in quibus est Cornutus Annaeus, haut sane indocti neque ignobiles, qui commentaria in Vergilium composuerunt, reprehendunt quasi incuriose et abiecte verbum positum in his versibus:
 
@@ -929,7 +929,7 @@ A! timidos nautas canibus lacerasse marinis;
 
 vexasse enim putant verbum esse leve et tenuis ac parvi incommodi, nec tantae atrocitati congruere, cum homines repente a belua immanissima rapti laniatique sint.
 
-Item aliud huiuscemodi reprehendunt: Quis aut Eurysthea durum Aut inlaudati nescit Busiridis aras? Inlaudati parum idoneum verbum esse dicunt, neque id satis esse ad faciendam scelerati hominis detestationem, qui, quod hospites omnium gentium immolare solitus fuit, non laude indignus, sed detestatione detestatione, Macr. vi. 7, and iii. 5. 9; de retractacione (retractione, P), ω.; detract(at)ione, TY; deprecatione, Mdg. execrationeque totius generis humani dignus esset.
+Item aliud huiuscemodi reprehendunt: Quis aut Eurysthea durum Aut inlaudati nescit Busiridis aras? Inlaudati parum idoneum verbum esse dicunt, neque id satis esse ad faciendam scelerati hominis detestationem, qui, quod hospites omnium gentium immolare solitus fuit, non laude indignus, sed detestatione execrationeque totius generis humani dignus esset.
 
 Quis aut Eurysthea durum
 
@@ -943,13 +943,13 @@ Sed de verbo vexasse ita responderi posse credo: Vexasse grave verbum est factum
 
 Non igitur, quia vulgo dici solet (vexatum esse quem fumo aut vento aut pulvere, propterea debet vis vera atque natura verbi deperire, quae a veteribus, qui proprie atque signate locuti sunt, ita ut decuit, conservata est.
 
-M. Catonis verba sunt ex oratione quam De Achaeis scripsit: Cumque Hannibal terram Italiam laceraret atque vexaret; vexatam Italiam dixit Cato ab Hannibale, quando nullum calamitatis aut saevitiae aut immanitatis genus reperiri queat quod in eo tempore Italia non perpessa sit; M. Tullius IV.
+**M** Catonis verba sunt ex oratione quam De Achaeis scripsit: Cumque Hannibal terram Italiam laceraret atque vexaret; vexatam Italiam dixit Cato ab Hannibale, quando nullum calamitatis aut saevitiae aut immanitatis genus reperiri queat quod in eo tempore Italia non perpessa sit; M. Tullius IV.
 
 In Verrem: Quae ab isto sic spoliata atque direpta est, non ut ab hoste aliquo, qui tamen in bello religionem et consuetudinis iura retineret, sed ut a barbaris praedonibus vexata esse videatur.
 
-De inlaudato autem duo videntur responderi posse. Unum est eiusmodi: Nemo quisquam tamtan efflictis efflictis. Macr. vi. 712.; effi(c)tis, ω.; efferis, ς est moribus quin faciat aut dicat nonnumquam aliquid quod laudari queat. Unde hic antiquissimus versus vice proverbii celebratus est: Πολλάκι τοι τοι Stobaeus, Diog., Apost.; γὰρ Macr.
+De inlaudato autem duo videntur responderi posse. Unum est eiusmodi: Nemo quisquam tamtan efflictis est moribus quin faciat aut dicat nonnumquam aliquid quod laudari queat. Unde hic antiquissimus versus vice proverbii celebratus est: Πολλάκι τοι
 
-Πολλάκι τοι τοι Stobaeus, Diog., Apost.; γὰρ Macr.
+Πολλάκι τοι
 
 Sed enim qui omni in re atque omni tempore laude omni vacat, is inlaudatus est isque omnium pessimus deterrimusque est, sicuti omnis culpae privatio inculpatum facit. Inculpatus autem instar est absolutae virtutis; inlaudatus quoque igitur 11 finis est extremae malitiae. Itaque Homerus non virtutibus appellandis, sed vitiis detrahendis laudare ampliter solet. Hoc enim est: τὼ δʼ οὐκ ἄκοντε πετέσθην, et item illud: Ἔνθʼ οὐκ ἂν βρίζοντα ἴδοις Ἀγαμέμνονα δῖον Οὐδὲ καταπτώσσοντʼ, οὐδʼ οὐκ ἐθέλοντα μάχεσθαι.
 
@@ -957,7 +957,7 @@ Sed enim qui omni in re atque omni tempore laude omni vacat, is inlaudatus est i
 
 Οὐδὲ καταπτώσσοντʼ, οὐδʼ οὐκ ἐθέλοντα μάχεσθαι.
 
-Epicurus quoque simili modo maximam voluptatem privationem detractionemque omnis doloris definivit his verbis: Ὅρος τοῦ μεγέθους τῶν ἡδονῶν ἡ παντὸς τοῦ παντός, Macr.; omitted by ω. τοῦ ἀλγοῦντος ὑπεξαίρεσις.
+Epicurus quoque simili modo maximam voluptatem privationem detractionemque omnis doloris definivit his verbis: Ὅρος τοῦ μεγέθους τῶν ἡδονῶν ἡ παντὸς τοῦ ἀλγοῦντος ὑπεξαίρεσις.
 
 Eadem ratione idem Vergilius inamabilem dixit Stygiam paludem.
 
@@ -965,9 +965,9 @@ Nam sicut inlaudatum κατὰ στέρησιν laudis, ita inamabilem
 
 κατὰ amoris στέρησιν detestatus est. Altero modo inlaudatus ita defenditur:
 
-Laudare significat prisca lingua nominare appellareque. Sic in actionibus civilibus auctor, auctor, Macr.; autem, ω. laudari dicitur, quod est nominari.
+Laudare significat prisca lingua nominare appellareque. Sic in actionibus civilibus auctor, laudari dicitur, quod est nominari.
 
-Is inlaudatus autem ergo, Macr. est, quasi inlaudabilis, qui neque mentione aut memoria ulla dignus neque umquam nominandus est,
+Is inlaudatus autem est, quasi inlaudabilis, qui neque mentione aut memoria ulla dignus neque umquam nominandus est,
 
 sicuti quondam a communi consilio Asiae decretum est uti nomen eius qui templum Dianae Ephesi incenderat ne quis ullo in tempore nominaret.
 
@@ -991,7 +991,7 @@ Accius in Pelopidis ita scribit: Éius serpentis squámae squalido aúro et purp
 
 Éius serpentis squámae squalido aúro et purpurá pertextae.
 
-Quicquid igitur nimis inculcatum obsitumque aliqua re erat, ut ut, Macr.; et, ω.. incuteret visentibus facie nova horrorem, id squalere dicebatur.
+Quicquid igitur nimis inculcatum obsitumque aliqua re erat, ut incuteret visentibus facie nova horrorem, id squalere dicebatur.
 
 Sic in corporibus incultis squamosisque alta congeries sordium squalor appellabatur. Cuius significationis multo assiduoque usu totum id verbum ita contaminatum est, ut iam squalor de re alia nulla quam de solis inquinamentis dici coeperit.
 
@@ -1003,7 +1003,7 @@ Super ea re Graeci nostrique, qui De Officiis scripserunt, tres sententias esse 
 
 Earum una est: omnia quae pater imperat parendum;
 
-altera est: in in, T; omitted by ω. quibusdam parendum,
+altera est: in quibusdam parendum,
 
 quibusdam non obsequendum; tertia est: nihil necesse esse patri obsequi et parere.
 
@@ -1017,7 +1017,7 @@ Set neque istam sententiam probari accepimus—argutiola quippe haec, sicuti mox
 
 ostendemus, frivola et inanis est—neque autem illa quam primo in loco diximus vera et proba videri potest, omnia esse quae pater iusserit parendum. Quid enim?
 
-si proditionem patriae, si matris necem, si alia quaedam imperabit imperabi, A; imperavit, ω. turpia aut impia?
+si proditionem patriae, si matris necem, si alia quaedam imperabit turpia aut impia?
 
 Media igitur sententia optima atque tutissima visa est, quaedam esse parendum, quaedam non obsequendum.
 
@@ -1039,9 +1039,9 @@ Sed enim si imperet uxorem ducere infamem, propudiosam, criminosam, aut pro reo 
 
 Non ergo integra est propositio dicentium aut honesta sunt, quae imperat pater, aut turpia, neque ὑγιὲς et νόμιμον διεζευγμένον videri potest. Deest enim diiunctioni isti tertium: aut neque honesta sunt neque turpia. Quod si additur, non potest ita concludi: numquam est igitur patri parendum.
 
-Quod parum aequa reprehensio Epicuri a Plutarcho facta pacta, ω.; corr. by J. F. Gronov; peracta, ς. sit in synlogismi disciplina.
+Quod parum aequa reprehensio Epicuri a Plutarcho facta sit in synlogismi disciplina.
 
-PlutarchusPLUTARCIIUS, secundo librorum quos De Homero composuit, inperfecte atque praepostere atque inscite synlogismo esse usum Epicurum dicit verbaque ipsa Epicuri ponit: Ὁ θάνατος οὐδὲν πρὸς ἡμᾶ· τὸ γὰρ διαλυθὲν λυθέν, Plut. contra Epic. Beat. 27. ἡμᾶς.
+PlutarchusPLUTARCIIUS, secundo librorum quos De Homero composuit, inperfecte atque praepostere atque inscite synlogismo esse usum Epicurum dicit verbaque ipsa Epicuri ponit: Ὁ θάνατος οὐδὲν πρὸς ἡμᾶ· τὸ γὰρ διαλυθὲν ἡμᾶς.
 
 Nam praetermisit, inquit, quod in prima parte sumere debuit, τὸν θάνατον εἶναι ψυχῆς καὶ σώματος διάλυσιν, tum deinde eodem ipso,
 
@@ -1049,13 +1049,13 @@ quod omiserat, quasi posito concessoque ad confirmandum aliud utitur.
 
 Progredi autem hic, inquit, synlogismus, nisi illo prius posito, non potest.
 
-Vere hoc quidem Plutarchus de forma atque ordine synlogismi scripsit. Nam si, ut sicut, ω.. in disciplinis traditur, ita colligere et ratiocinari velis, sic dici oportet: Ὁ θάνατος ψυχῆς καὶ σώματος διάλυσις· τὸ δὲ διαλυθὲν ἀναισθητεῖ· τὸ δὲ ἀναισθητοῦ οὑδὲν πρὸς ἡμᾶς.
+Vere hoc quidem Plutarchus de forma atque ordine synlogismi scripsit. Nam si, ut in disciplinis traditur, ita colligere et ratiocinari velis, sic dici oportet: Ὁ θάνατος ψυχῆς καὶ σώματος διάλυσις· τὸ δὲ διαλυθὲν ἀναισθητεῖ· τὸ δὲ ἀναισθητοῦ οὑδὲν πρὸς ἡμᾶς.
 
 Sed Epicurus, cuiusmodi homost, non inscitia
 
 videtur partem istam synlogismi praetermisisse, neque id ei negotium fuit, synlogismum tamquam in scholis philosophorum cum suis numeris omnibus et cum suis finibus dicere, sed profecto, quia separatio animi et corporis in morte evidens est, non est ratus necessariam esse eius admonitionem,
 
-quod omnibus prosus erat prosumserat. A; prorsus erat, ω.. obvium. Sicuti etiam, quod coniunctionem synlogismi non in fine posuit, set in principio; nam id quoque non inperite factum, quis non videt?
+quod omnibus prosus erat obvium. Sicuti etiam, quod coniunctionem synlogismi non in fine posuit, set in principio; nam id quoque non inperite factum, quis non videt?
 
 Aput Platonem quoque multis in locis reperias synlogismos, repudiate conversoque ordine isto qui in docendo traditur, cum eleganti quadam reprehensionis contemptione positos esse.
 
@@ -1075,19 +1075,19 @@ Quid sint favisae Capitolinae; et quid super eo verbo M. Varro Servio Sulpicio q
 
 SERVIUS SULPICIUS, iurisiunis civilis auctor, vir bene litteratus, scripsit ad M. Varronem rogavitque ut rescriberet quid significaret verbum quod in censoriis libris scriptum esset. Id erat verbum favisae Capitolinae.
 
-Varro rescripsit in memoriamemorial sibi esse quod Q. Catulus curator restituendi Capitolii dixisset, voluisse se aream Capitolinam deprimere, ut pluribus gradibus in aedem aedem, Mercier; eadem, ω; eandem, ς. conscenderetur suggestusque pro fastigii magnitudine altior fieret, sed facere id non quisse, quoniam favisae impedissent.
+Varro rescripsit in memoriamemorial sibi esse quod Q. Catulus curator restituendi Capitolii dixisset, voluisse se aream Capitolinam deprimere, ut pluribus gradibus in aedem conscenderetur suggestusque pro fastigii magnitudine altior fieret, sed facere id non quisse, quoniam favisae impedissent.
 
-Id esse cellas quasdam et cisternas quae in area sub terra essent, ubi reponi solerent signa vetera quae ex eo templo collapsa essent, et alia et alia, ς; talia, ω; aliaque, Hertz. quaedam religiosa e donis consecratis. Ac deinde eadem epistula negat quidem se in litteris invenisse cur favisae dictae sint, sed Q. Valerium Soranum solitum dicere ait, quos thesauros Graeco nomine appellaremus, priscos Latinos flavisas dixisse, quod in eos non rude aes argentumque, sed flata signataque pecunia conderetur.
+Id esse cellas quasdam et cisternas quae in area sub terra essent, ubi reponi solerent signa vetera quae ex eo templo collapsa essent, et alia quaedam religiosa e donis consecratis. Ac deinde eadem epistula negat quidem se in litteris invenisse cur favisae dictae sint, sed Q. Valerium Soranum solitum dicere ait, quos thesauros Graeco nomine appellaremus, priscos Latinos flavisas dixisse, quod in eos non rude aes argentumque, sed flata signataque pecunia conderetur.
 
 Coniectare igitur se detractam esse ex eo verbo secundam litteram et favisas esse dictas cellas quasdam et specus, quibus aeditui Capitolii uterentur ad custodiendas res veteres religiosas.
 
 De Sicinio Dentato egregio bellatore multa memoratu digna.
 
-L. SICINIUM DENTATUM, qui tribunus plebi fuit Sp. Tarpeio, A. Aternio consulibus, scriptum est in libris annalibus plus quam credi debeatdefeat strenuum bellatorem fuisse nomenque ei factum ob ingentem fortitudinem appellatumque esse Achillem Romanum.
+**L** SICINIUM DENTATUM, qui tribunus plebi fuit Sp. Tarpeio, A. Aternio consulibus, scriptum est in libris annalibus plus quam credi debeatdefeat strenuum bellatorem fuisse nomenque ei factum ob ingentem fortitudinem appellatumque esse Achillem Romanum.
 
 Is pugnasse in hostem dicitur centum et viginti proeliis, cicatricem aversam nullam, adversas quinque et quadraginta tulisse, coronis donatus esse aureis octo, obsidionali una, muralibus tribus, civicis quattuordecim, torquibus tribus et octoginta, armillis plus centum sexaginta, hastis duodeviginti; phaleris item donatus est quinquies viciesque;
 
-spolia spolia, ς; populi, ω. militaria habuit multiiuga,
+spolia militaria habuit multiiuga,
 
 in his provocatoria pleraque; triumphavit cum imperatoribus suis triumphos novem.
 
@@ -1099,7 +1099,7 @@ Cum hanc legem Solonis, singulari sapientia praediti, legissemus, tenuit nos gra
 
 Tum, qui penitus atque alte usum ac sententiam legis introspexerant, non ad augendam, sed ad desinendam seditionem legem hanchanec esse dicebant.
 
-Et res prorsum se sic habent. Nam si boni omnes, qui in principio coercendae seditioni impares fuerint, populum percitum et amentem non deseruerint, ad alterutram partem dividi dividi, ς; dividui, J. F. Gronov; dividiae, Landgraf. sese adiunxerint, tum eveniet, ut cum socii partis seorsum utriusque fuerint eaeque partes ab his, ut maioris auctoritatis viris, temperari ac regi coeperint, concordia per eos potissimum restitui conciliarique possit, dum et suos, apud quos sunt, regunt atque mitificant et aduersariosadversaries sanatos magis cupiunt quam perditos.
+Et res prorsum se sic habent. Nam si boni omnes, qui in principio coercendae seditioni impares fuerint, populum percitum et amentem non deseruerint, ad alterutram partem dividi sese adiunxerint, tum eveniet, ut cum socii partis seorsum utriusque fuerint eaeque partes ab his, ut maioris auctoritatis viris, temperari ac regi coeperint, concordia per eos potissimum restitui conciliarique possit, dum et suos, apud quos sunt, regunt atque mitificant et aduersariosadversaries sanatos magis cupiunt quam perditos.
 
 Hoc idem Favorinus philosophus inter fratres quoque aut amicos dissidentis oportere fieri censebat, ut qui in medio sunt utriusque partis benivoli, si in concordia adnitenda parum auctoritatis quasi ambigui amici habuerint, tum alteri in alteram partem discedant ac per id meritum viam sibi ad utriusque concordiam muniant.
 
@@ -1115,13 +1115,13 @@ Is Asellio sub P. Scipione Africano tribunus militum ad Numantiam fuit resque ea
 
 Eius verba de Tiberio Graccho, tribuno pl., quo in tempore interfectus in Capitolio est, haec sunt: Nam Gracchus domo cum proficiscebatur, numquam minus terna aut quaterna milia hominum sequebantur.
 
-Atque inde infra de eodem Graccho ita scripsit: Orare coepit id quidem, ut se defenderent liberosque suos, eumque -que added by Cramer. quem virile secus tum unum, J. F. Gronov. in eo tempore habebat produci iussit populoque commendavit prope flens.
+Atque inde infra de eodem Graccho ita scripsit: Orare coepit id quidem, ut se defenderent liberosque suos, eumque quem virile secus tum in eo tempore habebat produci iussit populoque commendavit prope flens.
 
 Quod M. Cato, in libro qui inscriptus est Contra Tiberium Exulem, stitisses vadimonium per i litteram dicit, non stetisses ; eiusque verbi ratio reddita.
 
-IN libro vetere M. Catonis, qui inscribitur Contra TiberiumTiberiunm Exulem, scriptum sic sic, J. F. Gronov; quid sic, ω; quidem sic, ς. erat: Quid si vadimonium capite obvoluto stitisses?
+IN libro vetere M. Catonis, qui inscribitur Contra TiberiumTiberiunm Exulem, scriptum sic erat: Quid si vadimonium capite obvoluto stitisses?
 
-Recte quidem ille stitisses scripsit; sed falsa et audaci emendatione editores audaci emendatione editores, H. J. Müller: falsa et audax emendatores, MSS. e scripto per et per, MSS. libros stetisses fecerunt, tamquam stitisses vanum et nihili verbum esset.
+Recte quidem ille stitisses scripsit; sed falsa et audaci emendatione editores e scripto per libros stetisses fecerunt, tamquam stitisses vanum et nihili verbum esset.
 
 Quin potius ipsi nequam et nihili sunt, qui ignorant stitisses dictum a Catone, quoniam sisteretur vadimonium, non staretur.
 
@@ -1139,7 +1139,7 @@ Sed si par utrique numerus liberorum est, maritus aut qui in numero maritorum es
 
 si vero ambo et mariti et patres totidem liberorum sunt, tum ille pristinus honos instauratur et qui maior natu est prior fasces sumit.
 
-Super his autem, qui aut caelibes ambo sunt et parem numerum filiorum habent aut mariti sunt et liberos non habent, nihil scriptum in ea lege de ea lege de, Vogel; lege de ea, ω.; lege de aetate, Carrio. aetate est.
+Super his autem, qui aut caelibes ambo sunt et parem numerum filiorum habent aut mariti sunt et liberos non habent, nihil scriptum in ea lege de aetate est.
 
 Solitos tamen audio, qui lege potiores essent fasces primi mensis collegis concedere aut longe aetate prioribus aut nobilioribus multo aut secundum consulatum ineuntibus.
 
@@ -1169,7 +1169,7 @@ Quem tibi longaevo serum Lavinia coniunx
 
 Educet silvis.
 
-Nam si hic Silvius, ita ut in omnium ferme annalium monumentis scriptum est, post mortem Aeneae Aeneae, added by Hertz. natus est ob eamque causam praenomen ei Postumo fuit, qua ratione subiectum est:
+Nam si hic Silvius, ita ut in omnium ferme annalium monumentis scriptum est, post mortem Aeneae natus est ob eamque causam praenomen ei Postumo fuit, qua ratione subiectum est:
 
 Quem tibi longaevo serum Lavinia coniunx
 
@@ -1183,7 +1183,7 @@ Sed huius historiae auctorem idoneum nullum nominat;
 
 Silvium autem post Aeneae mortem, sicuti diximus, natum esse multi tradiderunt.
 
-Idcirco Apollinaris Sulpicius, inter cetera in quis Caesellium reprehenditrepreliendit, hoc quoque eius quasi erratum animadvertit errorisque istius hanc esse causam dixit, quod scriptum ita sit quem tibi longaevo. Longaevo longaevo, added by Carrio. inquit, non seni significat, hoc enim significato (-tio, P) enim, ω. est contra historiae fidem, sed in longum iam aevum et perpetuum recepto immortalique facto.
+Idcirco Apollinaris Sulpicius, inter cetera in quis Caesellium reprehenditrepreliendit, hoc quoque eius quasi erratum animadvertit errorisque istius hanc esse causam dixit, quod scriptum ita sit quem tibi longaevo. Longaevo inquit, non seni significat, hoc enim est contra historiae fidem, sed in longum iam aevum et perpetuum recepto immortalique facto.
 
 Anchises enim, qui haec ad filium dicit, sciebat eum, cum hominum vita discessisset, immortalem atque indigetem futurum et longo perpetuoque aevo potiturum.
 
@@ -1193,7 +1193,7 @@ CuiusmodiCuiusnlodi esse naturamnaturaim quarundam praepositionum M. Cicero anim
 
 OBSERVATE curioseque animadvertit M. Tullius in et con praepositiones verbis aut vocabulis praepositas tunc produci atque protendi, cum litterae sequerentur quae primae sunt in sapiente atque felice, in alis autem omnibus correpte pronuntiari.
 
-Verba Ciceronis haec sunt: Quid vero hoc elegantius, quod non fit natura, sed quodam instituto? Indoctus dicimus brevi prima littera, insanu. producta, immanisimmanis, L. Müller; inhumanus, ω. brevi, infelix longa et, ne multis, quibus in verbis hae primae litterae sunt quae in sapiente atque felice, producte dicuntur, in ceteris omnibus breviter; itemque conposuit, consuevit, concrepuit, confecit. Consule veritatem, reprehendet; refer ad auris, probabunt; quaere cur ita sit? dicent iuvare. cur? ita se dicent iuvari, Cic. Voluptati autem aurium morigerari debet oratio.
+Verba Ciceronis haec sunt: Quid vero hoc elegantius, quod non fit natura, sed quodam instituto? Indoctus dicimus brevi prima littera, insanu. producta, immanis brevi, infelix longa et, ne multis, quibus in verbis hae primae litterae sunt quae in sapiente atque felice, producte dicuntur, in ceteris omnibus breviter; itemque conposuit, consuevit, concrepuit, confecit. Consule veritatem, reprehendet; refer ad auris, probabunt; quaere cur ita sit? dicent iuvare. Voluptati autem aurium morigerari debet oratio.
 
 Manifesta quidem ratio suavitatis est in his vocibus de quibus Cicero locutus est. Sed quid dicemus de praepositione pro, quae, cum produci et corripi soleat, observationem hanc tamen M. Tullii aspernata est?
 
@@ -1215,7 +1215,7 @@ Quod quidem etiam in eo servatur, quod est cogo ;
 
 neque repugnat quod coegi correpte dicimus; non enim salva id ἀναλογίᾳ dicitur a verbo, quod est cogo.
 
-Quod Phaedon Socraticus servus fuit; quodque item alii alii philosophi, Carrio. complusculi servitutem servierunt.
+Quod Phaedon Socraticus servus fuit; quodque item alii complusculi servitutem servierunt.
 
 PHAEDON Elidensis ex cohorte illa Socratica fuit Socratique et Platoni per fuit familiaris.
 
@@ -1233,7 +1233,7 @@ Ex quibus ille Menippus fuit cuius libros M. Varro in saturissatiris aemulatus e
 
 Sed et Theophrasti Peripatetici servus Pompylus et Zenonis Stoici servus, qui Persaeus vocatus est, et Epicuri, cui Mys nomen fuit, philosophi non incelebres vixerunt.
 
-Diogenes etiam Cynicus servitutem servivit. Sed is ex libertate in servitutem venum ierat. Quem cum emere vellet Ξενιάδης Κορίνθιος et ecquid artificii novisset esset esset added by Hertz. percontatus: Novi, inquit Diogenes, hominibus liberis imperare.
+Diogenes etiam Cynicus servitutem servivit. Sed is ex libertate in servitutem venum ierat. Quem cum emere vellet Ξενιάδης Κορίνθιος et ecquid artificii novisset esset percontatus: Novi, inquit Diogenes, hominibus liberis imperare.
 
 Tum Ξενιάδης responsum eius demiratus emit et manu emisit filiosque suos ei tradens: Accipe, inquit, liberos meos quibus imperes.
 
@@ -1245,13 +1245,13 @@ VERBUM rescire observavimus vim habere propriam quandam, non ex communi signific
 
 nam qui factum aliquod occultius aut inopinatum insperatumque cognoscit, is dicitur proprie rescire.
 
-Cur autem in hoc uno verbo re particula huius sententiae vim habeat, equidem et quidem, ω. adhuc quaero.
+Cur autem in hoc uno verbo re particula huius sententiae vim habeat, equidem adhuc quaero.
 
 Aliter enim dictum esse rescivi aut rescire apud eos qui diligenter locuti sunt, nondum invenimus quam super is rebus quae aut consulto consilio latuerint aut contra spem opinionemve usu venerint;
 
-quamquam ipsum scire de omnibus communiter rebus dicatur vel adversis vel prosperis vel insperatis vel expectatis. Naevius in Triphallo ita scripsit: Sive sive, Skutsch; si umquam, MSS. únquam quicquam filium rescívero, Argéntum amoris caúsa sumpse mútuum, Extémplo illo te dúcam ubi non déspuas.
+quamquam ipsum scire de omnibus communiter rebus dicatur vel adversis vel prosperis vel insperatis vel expectatis. Naevius in Triphallo ita scripsit: Sive únquam quicquam filium rescívero, Argéntum amoris caúsa sumpse mútuum, Extémplo illo te dúcam ubi non déspuas.
 
-Sive sive, Skutsch; si umquam, MSS. únquam quicquam filium rescívero,
+Sive únquam quicquam filium rescívero,
 
 Argéntum amoris caúsa sumpse mútuum,
 
@@ -1261,13 +1261,13 @@ Claudius Quadrigarius in primo Annali: Ea Lucani ubi resciverunt, sibi per falla
 
 Item Quadrigarius in eodem libro in re tristi et inopinata verbo isto ita utitur: Id ubi rescierunt propinqui obsidum, quos Pontio traditos supra demonstravimus, eorum parentes cumcunl propinquis capillo passo in viam provolarunt.
 
-M. Cato in quarto originumOriginun:Deinde dictator iubet postridie magistrum equitum arcessi: mittam te, si vis, cum equitibus. Sero est, inquit magister equitum, iam rescivere.
+**M** Cato in quarto originumOriginun:Deinde dictator iubet postridie magistrum equitum arcessi: mittam te, si vis, cum equitibus. Sero est, inquit magister equitum, iam rescivere.
 
 Quae volgo dicuntur vivaria, id vocabulum veteres non dixisse; et quid pro eo P. Scipio in oratione ad populum, quid postea M. Varro in librislilbris De Re Rustica dixerit.
 
 VIVARIA, quae nunc dicuntur saepta quaedam loca, in quibus ferae vivae pascuntur, M. Varro in libro De Re Rustica III. dicit leporaria appellari. Verba Varronis subieci:
 
-Villaticae pastionis genera sunt tria, ornithones, leporaria, piscinae. piscinae leporaria, Varro; omitted by ω. Nunc ornithonas dico omnium alitum quae intra parietes villaevillage solent pasci. Leporaria te accipere volo, non ea quae tritavi nostri dicebant, ubi soli soliti, Varro. lepores sint, sed omnia saepta adficta adficta, Varro; aedificia, ω.. villae quae sunt et habent inclusa animalia quae pascuntur.
+Villaticae pastionis genera sunt tria, ornithones, leporaria, piscinae. Nunc ornithonas dico omnium alitum quae intra parietes villaevillage solent pasci. Leporaria te accipere volo, non ea quae tritavi nostri dicebant, ubi soli lepores sint, sed omnia saepta adficta villae quae sunt et habent inclusa animalia quae pascuntur.
 
 Is item infra eodem in libro ita scribit: Cum emisti fundum Tusculanum a M. Pisone, in leporario apri multi fuere.
 
@@ -1275,13 +1275,13 @@ Vivaria autem quae nunc vulgus dicit—quos παραδείσους Graeci appell
 
 Sed quod apud Scipionem, omnium aetatis suae purissime locutum, legimuslegimuns roboraria, aliquot Romae doctosdoctorss viros dicere audivi id significare, quod nos vivaria dicimus, appellataqueapplellataque esse a tabulistabulia roboreis, quibus saepta essent; quod genus saeptorumsaeptorun vidimus in Italia locis plerisque.
 
-Verba ex oration eius Contra Claudium Asellum quinta haechace sunt: Ubi agros optime cultos atque villas expolitissimas vidisset, in his regionibus excelsissimo loco grumam grumaim, Madvig; locorum mu (P omits mu), ω. statuere aiebat; inde corrigere viam, aliis per vineas medias, aliis per roborariumroborariuni atque piscinam, aliis per villamvillaim.
+Verba ex oration eius Contra Claudium Asellum quinta haechace sunt: Ubi agros optime cultos atque villas expolitissimas vidisset, in his regionibus excelsissimo loco grumam statuere aiebat; inde corrigere viam, aliis per vineas medias, aliis per roborariumroborariuni atque piscinam, aliis per villamvillaim.
 
-Lacus vero aut stagna quae quae, supplied in ω. piscibus vivis coercentur clausa, suo atque proprio nomine piscinas nominaverunt.
+Lacus vero aut stagna quae piscibus vivis coercentur clausa, suo atque proprio nomine piscinas nominaverunt.
 
 Apiaria quoque vulgus dicit loca in quibus siti sunt alvei apum; sed neminem ferme qui incorrupte locuti sunt aut scripsisse memini aut dixisse.
 
-M. autem Varro in libro De Re Rustica tertio: Μελις- σῶνας, inquit, ita facere oportet, quae quidam mellaria appellant. Sed hoc verbum quo Varro usus est Graecum est; nam μελισσῶνες ita dicuntur, ut ἀμπελῶνες et δαφνῶνες.
+**M** autem Varro in libro De Re Rustica tertio: Μελις- σῶνας, inquit, ita facere oportet, quae quidam mellaria appellant. Sed hoc verbum quo Varro usus est Graecum est; nam μελισσῶνες ita dicuntur, ut ἀμπελῶνες et δαφνῶνες.
 
 Super eo sidere quod Graeci ἅμαξαν, nos septentriones vocamus; ac de utriusque vocabulivocaluli ratione et origine.
 
@@ -1289,9 +1289,9 @@ AB Aegina in Piraeum complusculi earundem disciplinarum sectatores Graeci Romani
 
 Nox fuit et clemens mare et anni aestas caelumque liquide serenum. Sedebamus ergo in puppi simul universi et lucentia sidera considerabamus.
 
-Tum, qui eodem in numero Graecas res eruditi erant, quid ἅμαξα esset, quid βοώτης et quaenam maior non occidant, added by Carrio. et quae minor, cur ita appellata et quam in partem procedentis noctis spatio moveretur et quamobrem Homerus solam eam non occidere dicat, cum et quaedam alia non occidant astra, added by Hosits. astra, maior ἄρκτος, ς. scite ista omnia ac perite disserebant.
+Tum, qui eodem in numero Graecas res eruditi erant, quid ἅμαξα esset, quid βοώτης et quaenam maior et quae minor, cur ita appellata et quam in partem procedentis noctis spatio moveretur et quamobrem Homerus solam eam non occidere dicat, cum et quaedam alia non occidant astra, scite ista omnia ac perite disserebant.
 
-Hic ego ad nostros iuvenes convertor et quin, quin, Markland; quid, ω. inquam, vos opici dicitis mihi quare quod ἅμαξαν Graeci vocant nos septentriones vocamus?
+Hic ego ad nostros iuvenes convertor et quin, inquam, vos opici dicitis mihi quare quod ἅμαξαν Graeci vocant nos septentriones vocamus?
 
 Non enimn satis est quod septem stellas videmus, sed quid hoc totum quod septentriones dicimus significet scire, inquam, id prolixius volo.
 
@@ -1299,13 +1299,13 @@ Tum quispiam ex his, qui se ad litteras memoriasque veteres dediderat: Vulgus, i
 
 Triones enim per sese nihil significare aiunt, sed vocabuli esse supplementum; sicut in eo, quod quinquatrus dicamus, quod quinque ab Idibus dierum numerus sit, atrus nihil.
 
-Sed ego quidem cum L. Aelio et M. Varrone sentio, qui triones rustico cetera caetero, MSS.; probably a gloss. (sc. e tero), Damnst ω. vocabulo boves appellatos scribunt, quasi quosdam terriones, hoc est arandae colendaequecolendacque terrae idoneos.
+Sed ego quidem cum L. Aelio et M. Varrone sentio, qui triones rustico cetera vocabulo boves appellatos scribunt, quasi quosdam terriones, hoc est arandae colendaequecolendacque terrae idoneos.
 
-Itaque hoc sidus, quod a figura posituraque ipsa, quia simile plaustri videtur, antiqui Graecorum ἕμαξαν dixerunt, nostri quoque veteres a bubus iunctis septentriones appellaruntalppellarunt, id est septem stellas, stellas, Skutsch; stellis, MSS. ex quibus quasi iuncti triones figurantur.
+Itaque hoc sidus, quod a figura posituraque ipsa, quia simile plaustri videtur, antiqui Graecorum ἕμαξαν dixerunt, nostri quoque veteres a bubus iunctis septentriones appellaruntalppellarunt, id est septem stellas, ex quibus quasi iuncti triones figurantur.
 
 Praeter hanc, inquit, opinionem id quoque Varro addit, dubitare sese an propterea magis hae septem stellae triones appellatae sint, quia ita sunt sitae ut ternae stellae proximae quaeque inter sese faciant trigona, id est triquetras figuras.
 
-Ex his duabus rationibus quas ille dixit, quod posterius est subtilius elegantiusque est est, Lion; esse, ω. visum. Intuentibus enim nobis in illud, ita propemodum res erat, ut forma esse esse, Carrio; esset ut, ω. triquetra viderentur.
+Ex his duabus rationibus quas ille dixit, quod posterius est subtilius elegantiusque est visum. Intuentibus enim nobis in illud, ita propemodum res erat, ut forma esse triquetra viderentur.
 
 De vento Iapyge deque aliorum ventorum vocabulis regionibusque accepta ex Favorini sermonibus.
 
@@ -1331,7 +1331,7 @@ Tertius ventus, qui ab oriente hiberno spirat—volturnum Romani vocant—,eum p
 
 aquilo, volturnus, eurus, quorum medius eurus est.
 
-His oppositi et contrarii sunt alii tres occidui: caurus, quem solent Graeci appellare appellare, added by Hertz. ἀργεστήν: is adversus aquilonemaquilonein flat; item alter favonius, qui Graece ζέφυρος vocatur: is adversus eurum flat; tertius Africus, qui Graece λίψ: is is, added in ς. adversus volturnum facit.
+His oppositi et contrarii sunt alii tres occidui: caurus, quem solent Graeci appellare ἀργεστήν: is adversus aquilonemaquilonein flat; item alter favonius, qui Graece ζέφυρος vocatur: is adversus eurum flat; tertius Africus, qui Graece λίψ: is adversus volturnum facit.
 
 Hae duae regiones caeli orientis occidentisque inter sese adversae sex habere ventos videntur.
 
@@ -1345,7 +1345,7 @@ aquilonem, favonium, a quattuor caeli partibus, quas quasi primas nominavimus, o
 
 Partim autem sunt qui pro octo duodecim faciant, tertios quattuor in media loca inserentes circum meridiem et septentriones eadem ratione qua secundi quattuor intersiti sunt inter primores duos apud orientem occidentemqueoccidentenique.
 
-Sunt porro alia quaedem nomina quasi peculiariumpeculiarum ventorum, quae incolae in suis quisque regionibus fecerunt aut ex locorum vocabulis in quibus colunt, aut aut, added by J. F. Gronov. ex alia qua causa quae ad faciendum vocabulum acciderat.
+Sunt porro alia quaedem nomina quasi peculiariumpeculiarum ventorum, quae incolae in suis quisque regionibus fecerunt aut ex locorum vocabulis in quibus colunt, aut ex alia qua causa quae ad faciendum vocabulum acciderat.
 
 Nostri namque Galli venture ex sua terra flantem, quem saevissimum patiuntur, circium appellant a turbine, opinor, eius ac vertigine;
 
@@ -1377,19 +1377,19 @@ Consultatio diiudicatioque locorum facta ex comoedia Menandri et Caecilii, quae 
 
 Comoedias lectitamus nostrorum poetarum sumptas ac versas de Graecis Menandro aut Posidippo aut Apollodoro aut Alexide et quibusdam item aliis comicis.
 
-Neque, cum legimus eas, nimium sane displicent, quin lepide quoque et venuste scriptae videntur, videntur, Skutsch; videantur, ω.. prorsus ut melius posse fieri nihil censeas.
+Neque, cum legimus eas, nimium sane displicent, quin lepide quoque et venuste scriptae videntur, prorsus ut melius posse fieri nihil censeas.
 
-Set enim Set enim, Hertz; etenim, ω. si conferas et componascomnponas Graeca ipsa, unde illa venerunt, ac singula considerate atque apte iunctis et alternis lectionibus committas, oppido quam iacere atque sordere incipiunt quae Latina sunt; ita Graecarum, quas aemulari nequiverunt, facetiis atque luminibus obsolescunt.
+Set enim si conferas et componascomnponas Graeca ipsa, unde illa venerunt, ac singula considerate atque apte iunctis et alternis lectionibus committas, oppido quam iacere atque sordere incipiunt quae Latina sunt; ita Graecarum, quas aemulari nequiverunt, facetiis atque luminibus obsolescunt.
 
 Nuper adeo usus huius rei nobis venit. Caecili Plocium legebamus; hautquaquam mihi et qui aderant displicebat.
 
 Libitum et Menandri quoque PlociumPlociitm legere, a quo istam comoediam verterat.
 
-Sed enim postquam in manus Menander venit, a principio statimstating, di boni, quantum stupere atque frigere quantumque mutare a Menandro Caecilius visus est! Diomedis hercle arma arma, ς Vulg.; amerca, ω; munera, Lion. et Glauci non dispari magis pretio existimata sunt.
+Sed enim postquam in manus Menander venit, a principio statimstating, di boni, quantum stupere atque frigere quantumque mutare a Menandro Caecilius visus est! Diomedis hercle arma et Glauci non dispari magis pretio existimata sunt.
 
 Accesserat dehinc lectio ad eum locum, in quo maritus senex super uxore divite atque deformi querebatur, quod ancillam suam, non inscito puellam ministerio et facie haut inliberali, coactus erat venundare, suspectam uxori quasi paelicem. Nihil dicam ego, quantum differat; versus utrimque eximi iussi et aliis ad iudicium faciundum exponi.
 
-Menander sic: Ἐπʼ ἀμφότερα νῦν ἡπίκληρος ἡ καλή Μέλλει καθευδῄσειν. Κατείργασται μέγα Καὶ περιβόητον ἔργον· ἐκ τῆς οἰκίας Ἐξέβαλε τὴν λυποῦσαν, ἣν ἐβούλετο, Ἵνʼ ἀποβλέπωσι πάντες εἰς τὸ Κρωβύλης Πρόσωπον ᾖ τʼ εὔγνωστος οὖσʼ ἐμὴ γυνή Δέσποινα. Καὶ τὴν ὄψιν, ἣν ἐκτήσατο, Ὄνος ἐν πιθήκοις, τοῦτο δὴ τὸ λεγόμενον Ἔστιν. Σιωπᾶν βούλομαι τὴν νύκτα τήν Πολλῶν κακῶν ἀρχηγόν. Οἴμοι Κροωβύλην Λαβεῖν ἔμʼ, ἑκκαίδεκα τάλαντα προῖκα καί προῖκα καί, Allison. Τὴν ῥῖνʼ ἔχουσαν πηχέως· εἶτʼ ἐστὶ τό Φρύαγμά πως ὑπόστατον; μὰ τὸν Δια Τὸν Ὀλύμπιον καὶ τὴν Ἀθηνᾶν, οὐδαμῶς. Παιδισκάριον θεραπευτικὸν δὲ καὶ λόγου †Τάχιον ἀπαγέσθω δέτις ἄρʼ ἀντεεσαγάγοι.
+Menander sic: Ἐπʼ ἀμφότερα νῦν ἡπίκληρος ἡ καλή Μέλλει καθευδῄσειν. Κατείργασται μέγα Καὶ περιβόητον ἔργον· ἐκ τῆς οἰκίας Ἐξέβαλε τὴν λυποῦσαν, ἣν ἐβούλετο, Ἵνʼ ἀποβλέπωσι πάντες εἰς τὸ Κρωβύλης Πρόσωπον ᾖ τʼ εὔγνωστος οὖσʼ ἐμὴ γυνή Δέσποινα. Καὶ τὴν ὄψιν, ἣν ἐκτήσατο, Ὄνος ἐν πιθήκοις, τοῦτο δὴ τὸ λεγόμενον Ἔστιν. Σιωπᾶν βούλομαι τὴν νύκτα τήν Πολλῶν κακῶν ἀρχηγόν. Οἴμοι Κροωβύλην Λαβεῖν ἔμʼ, ἑκκαίδεκα τάλαντα προῖκα καί Τὴν ῥῖνʼ ἔχουσαν πηχέως· εἶτʼ ἐστὶ τό Φρύαγμά πως ὑπόστατον; μὰ τὸν Δια Τὸν Ὀλύμπιον καὶ τὴν Ἀθηνᾶν, οὐδαμῶς. Παιδισκάριον θεραπευτικὸν δὲ καὶ λόγου †Τάχιον ἀπαγέσθω δέτις ἄρʼ ἀντεεσαγάγοι.
 
 Ἐπʼ ἀμφότερα νῦν ἡπίκληρος ἡ καλή
 
@@ -1423,17 +1423,17 @@ Menander sic: Ἐπʼ ἀμφότερα νῦν ἡπίκληρος ἡ καλή
 
 †Τάχιον ἀπαγέσθω δέτις ἄρʼ ἀντεεσαγάγοι.
 
-Caecilius autem sic: Is démum miser est, qui aérumnam suám néscit Occultáre. Foris:foris, Ribbeek. íta me uxor forma ét factís facit, sí taceam, tamen íudicium. Quae nísi dotem, ómnia quaé nolis habet; quí sapiet, de mé discet, Qui quási ad hostis captús liber servío salva urbe atque árce. Quaenquaen, Ribbeck; quae, ω.. míhi quidquid placet éo privatum id me servatam velim? Dum ego éius mortem inhio, égomet vivo mórtuus inter vivos. Éa me clam se cúm mea ancilla aít consuetum, id me árguit; Íta plorando, orándo, instando atque óbiurgando me óbtudit Eam utí venderém; nunc credo ínter suás Aequális et cognátas sermoném serit: Quís vestrarúm fuit íntegra aetátula, Quae hóc idem a viro Ímpetrarit suo, quód ego anus modo Efféci, paelice út meum privarém virum? Haéc erunt concília hodie, dífferor sermóne miser.
+Caecilius autem sic: Is démum miser est, qui aérumnam suám néscit Occultáre. Foris: íta me uxor forma ét factís facit, sí taceam, tamen íudicium. Quae nísi dotem, ómnia quaé nolis habet; quí sapiet, de mé discet, Qui quási ad hostis captús liber servío salva urbe atque árce. Quaen míhi quidquid placet éo privatum id me servatam velim? Dum ego éius mortem inhio, égomet vivo mórtuus inter vivos. Éa me clam se cúm mea ancilla aít consuetum, id me árguit; Íta plorando, orándo, instando atque óbiurgando me óbtudit Eam utí venderém; nunc credo ínter suás Aequális et cognátas sermoném serit: Quís vestrarúm fuit íntegra aetátula, Quae hóc idem a viro Ímpetrarit suo, quód ego anus modo Efféci, paelice út meum privarém virum? Haéc erunt concília hodie, dífferor sermóne miser.
 
 Is démum miser est, qui aérumnam suám néscit Occultáre.
 
-Foris:foris, Ribbeek. íta me uxor forma ét factís facit, sí taceam, tamen íudicium.
+Foris: íta me uxor forma ét factís facit, sí taceam, tamen íudicium.
 
 Quae nísi dotem, ómnia quaé nolis habet; quí sapiet, de mé discet,
 
 Qui quási ad hostis captús liber servío salva urbe atque árce.
 
-Quaenquaen, Ribbeck; quae, ω.. míhi quidquid placet éo privatum id me servatam velim?
+Quaen míhi quidquid placet éo privatum id me servatam velim?
 
 Dum ego éius mortem inhio, égomet vivo mórtuus inter vivos.
 
@@ -1527,13 +1527,13 @@ Cuí fortuna et rés ut est continuó patet.
 
 Nam opulénto famam fácile occultat fáctio:
 
-Itaque, ut supra dixi, cum haec Caecilii seorsum lego, neutiquam videntur ingrata ignavaque, cum autem Graeca comparo et contendo, non puto Caecilium sequi debuisse quod assequi nequiret. assequi nequiret, ς; assequiret, ω..
+Itaque, ut supra dixi, cum haec Caecilii seorsum lego, neutiquam videntur ingrata ignavaque, cum autem Graeca comparo et contendo, non puto Caecilium sequi debuisse quod assequi nequiret.
 
 De vetere parsimonia; deque antiquis legibus sumptuariis.
 
 Parsimonia apud veteres Romanos et victus atque cenarum tenuitas non domestica solum observatione ac disciplina, sed publicapublic quoque animadversione legumque complurium sanctionibus custodita est.
 
-Legi adeo nuper in Capitonis Atei Coniectaneis senatus decretum vetus C. Fannio et M. Valerio Messalla consulibusconsulilus factum, in quo iubentur principes civitatis, qui ludis Megalensibus antiquo ritu mutitarent, id est mutua inter sese dominia agitarent, iurare apud consules verbis conceptis, non amplius in singulas cenas sumptus se se, added by Hertz. esse facturos quam centenos vicenosque aeris praeter olus et far et vinum, neque vino alienigena, sed patriae usuros, neque argenti in convivio plus pondo quam quam, omitted by J. F. Gronov; quam libras, omitted by Mommsen. libras centum inlaturos.
+Legi adeo nuper in Capitonis Atei Coniectaneis senatus decretum vetus C. Fannio et M. Valerio Messalla consulibusconsulilus factum, in quo iubentur principes civitatis, qui ludis Megalensibus antiquo ritu mutitarent, id est mutua inter sese dominia agitarent, iurare apud consules verbis conceptis, non amplius in singulas cenas sumptus se esse facturos quam centenos vicenosque aeris praeter olus et far et vinum, neque vino alienigena, sed patriae usuros, neque argenti in convivio plus pondo quam libras centum inlaturos.
 
 Sed post id senatus consultum lex Fannia lata est, quae ludis Romanis, item ludis plebeis et Saturnalibus et aliis quibusdam diebus, in singulos dies centenos aeris insumi concessit decemque aliis diebus in singulis mensibus tricenos, ceteris autem diebus omnibus denos.
 
@@ -1545,7 +1545,7 @@ In quo erraverunt quidam commentariorum in Lucilium scriptores, quod putaverunt 
 
 Centum enim aeris Fannius constituit, sicuti supra dixi, festis quibusdam diebus eosque ipsos dies nominavit, aliorum autem dierum omnium in singulos dies sumptum inclusit intra aeris alias tricenos, alias denos.
 
-Lex deinde Licinia rogata est, quae cum certis diebus, sicuti Fannia, centenos aeris inpendi permisisset, nuptiis ducenos indulsit ceterisque diebus statuit aeris tricenos; cum et carnis aridae aridae, ς Macr. iii., 17. 9; autem, ω. et salsamenti certa pondera in singulos dies constituisset, quidquid esset natum natum, ς, Macr.; tamen, ω. e terra, vite, arbore, promiscepromise atque indefinite largita est.
+Lex deinde Licinia rogata est, quae cum certis diebus, sicuti Fannia, centenos aeris inpendi permisisset, nuptiis ducenos indulsit ceterisque diebus statuit aeris tricenos; cum et carnis aridae et salsamenti certa pondera in singulos dies constituisset, quidquid esset natum e terra, vite, arbore, promiscepromise atque indefinite largita est.
 
 Huius legis Laevius poeta meminit in Erotopaegniis.
 
@@ -1559,7 +1559,7 @@ Lucilius quoque legis istius meminit in his verbis: Legem vitemus Licini.
 
 Legem vitemus Licini.
 
-Postea L. Sulla dictator, cum, legibus istis situ atque senio oblitteratis, plerique in patrimoniis amplis elluarentur et familiam pecuniamque suam prandiorum conviviorumque conviviorum, added by Hertz.; cenarum, Salmasius. gurgitibus proluissent, legem ad populum tulit qua cautum est ut Kalendis, Idibus, Nonis diebusque ludorum et feriis quibusdam sollemnibus sestertios trecenos in cenam insumere ius potestasque esset, ceteris autem diebus omnibus non amplius tricenos.
+Postea L. Sulla dictator, cum, legibus istis situ atque senio oblitteratis, plerique in patrimoniis amplis elluarentur et familiam pecuniamque suam prandiorum conviviorumque gurgitibus proluissent, legem ad populum tulit qua cautum est ut Kalendis, Idibus, Nonis diebusque ludorum et feriis quibusdam sollemnibus sestertios trecenos in cenam insumere ius potestasque esset, ceteris autem diebus omnibus non amplius tricenos.
 
 Praeter has leges Aemiliam quoque legem invenimus, qua lege non sumptus cenarum, sed ciborum genus et modus praefinitus est.
 
@@ -1567,7 +1567,7 @@ Lex deinde Antia praeter sumptum aeris id etiam sanxit, ut qui magistratus esset
 
 Postrema lex Iulialulia ad populum pervenit Caesare Augusto imperante, qua profestis quidem diebus ducenti finiuntur, Kalendis, Idibus, Nonis et aliis quibusdam festis trecenti, nuptiis autem et repotiis sestertii mille.
 
-Esse etiam dicit Capito Ateius edictum—divine vero vero, added by Skutsch; rue, nerve, MSS. Augusti an Tiberii Caesaris non satis commemini—quo edicto per dierum varias sollemnitates a trecentis sestertiis adusque duo sestertia sumptus cenarum propagatus est, ut his saltemsalter finibus luxuriae effervescentis aestus coerceretur.
+Esse etiam dicit Capito Ateius edictum—divine vero Augusti an Tiberii Caesaris non satis commemini—quo edicto per dierum varias sollemnitates a trecentis sestertiis adusque duo sestertia sumptus cenarum propagatus est, ut his saltemsalter finibus luxuriae effervescentis aestus coerceretur.
 
 Quid Graeci ἀναλογίαν quid contra ἀνωμαλίαν vocent.
 
@@ -1579,21 +1579,21 @@ In Latino sermone, sicut in Graeco, alii ἀνα- λογίαν sequendam putaver
 
 Duo autem Graeci grammatici illustres, Aristarchus et Crates, summa ope ille ἀναλογίαν, hic ἀνωμαλίαν defensitavit.
 
-M. Varronis liber ad Ciceronem De Lingua Latina octavus nullam esse observationem similium docet inque omnibus paene verbis consuetudinem dominari ostendit:
+**M** Varronis liber ad Ciceronem De Lingua Latina octavus nullam esse observationem similium docet inque omnibus paene verbis consuetudinem dominari ostendit:
 
 Sicuti cum dicimus, inquit, lupus lupi, probus probi et lepus leporis, item paro paravi et lavo lavi, pungo pupugi, tundo tutudi et pingo pinxi.
 
 Cumque, inquit, a ceno et prandeo et poto, et cenatus sum et pransus sum et potus sum dicamus, a destringor tamen et extergeor et lavor, destrinxi et extersi et lavi dicimus.
 
-Item cum dicamus ab Osco, Tusco, Graeco, Osce, Tusce, Graece, a Gallo tamen et Mauro Gallice et Maurice dicimus; item a probus. probe, aa,ς; omitted by ω. doctus docte, sed aa,ς; omitted by ω. rarus non dicitur rare, sed alii raro dicunt, alii rarenter.
+Item cum dicamus ab Osco, Tusco, Graeco, Osce, Tusce, Graece, a Gallo tamen et Mauro Gallice et Maurice dicimus; item a probus. probe, a doctus docte, sed a rarus non dicitur rare, sed alii raro dicunt, alii rarenter.
 
-Idem M. Varro idem M. Skutsch; inde mauro, ω; eodem Varro, A. in eodem libro: Sentior, inquit, nemo dicit et id per se nihil est, adsentior tamen fere omnes dicunt. Sisenna unus adsentio in senatu dicebat et eum postea multi secuti, neque tamen vincere consuetudinem potuerunt.
+Idem M. Varro in eodem libro: Sentior, inquit, nemo dicit et id per se nihil est, adsentior tamen fere omnes dicunt. Sisenna unus adsentio in senatu dicebat et eum postea multi secuti, neque tamen vincere consuetudinem potuerunt.
 
 Sed idem Varro in aliis libris multa pro ἀναλογίᾳ tuenda scribit.
 
 Sunt igitur ii tamquam loci quidam communes, contra ἀναλογίαν dicere et item rursum pro ἀναλογίᾳ.
 
-Sermones sermonem, ω. M. Frontonis et Favorini philosophi de generibus colorum vocabulisque eorumeorurn Graecis et Latinis; atqueatquc inibi color spadix cuiusmodi sit.
+Sermones M. Frontonis et Favorini philosophi de generibus colorum vocabulisque eorumeorurn Graecis et Latinis; atqueatquc inibi color spadix cuiusmodi sit.
 
 Favorinus philosophus cum ad M. Frontonem consularem pedibus aegrum visum iret, voluit me quoque ad eum secum ire.
 
@@ -1601,31 +1601,31 @@ Ac deinde, cum ibi aput Frontonem plerisque viris doctis praesentibus sermones d
 
 plura, inquit sunt Favorinus, in sensibus oculorum quam in verbis vocibusque colorum discrimina.
 
-Nam, ut alias eorum inconcinnitates inconcinnitates,Mommsen; concinnitates, ω. omittamus, simplices isti rufus et viridis colores singula quidem vocabula, multas autem species differentis habent.
+Nam, ut alias eorum inconcinnitates omittamus, simplices isti rufus et viridis colores singula quidem vocabula, multas autem species differentis habent.
 
-Atque eamearn vocum inopiam in lingua magis Latina video quam in Graeca. Quippe qui rufus color a rubore quidem appellatus est, sed cum aliter rubeat ignis, aliter sanguis, aliter ostrum, aliter crocum, aliter aurum, aliter aurum, added by J. F. Gronov. has singulas rufi varietates Latina oratio singulis propriisque vocabulis non demonstrat omniaque ista significat una ruboris appellatione, nisi nisi, added by Skutch. cum ex ipsis rebus vocabula colorum mutuatur et igneum aliquid dicit et flammeum et sanguineum et croceum et ostrinum et aureum.
+Atque eamearn vocum inopiam in lingua magis Latina video quam in Graeca. Quippe qui rufus color a rubore quidem appellatus est, sed cum aliter rubeat ignis, aliter sanguis, aliter ostrum, aliter crocum, aliter aurum, has singulas rufi varietates Latina oratio singulis propriisque vocabulis non demonstrat omniaque ista significat una ruboris appellatione, nisi cum ex ipsis rebus vocabula colorum mutuatur et igneum aliquid dicit et flammeum et sanguineum et croceum et ostrinum et aureum.
 
-Russusrussus, Carrio; rufus, ω. enim color et ruber nimirum nimirum, suggested by Hosius; nihil, ω; nihil dinoscuntur, Heraeus. a vocabulo rufi dicuntur neque proprietates eius omnes declarant, ξανθός autem et ἐρυθρός et πυρρός et κιρρός et φοῖνιξ habere quasdam distantias coloris rufi videntur, vel augentes eum vel remittentes vel mixta quadam specie temperantes.
+Russus enim color et ruber nimirum a vocabulo rufi dicuntur neque proprietates eius omnes declarant, ξανθός autem et ἐρυθρός et πυρρός et κιρρός et φοῖνιξ habere quasdam distantias coloris rufi videntur, vel augentes eum vel remittentes vel mixta quadam specie temperantes.
 
 Tum Fronto ad Favorinum, Non infitias, inquit, imus quin lingua Graeca, quam tu videre elegisse, prolixior fusiorque sit quam nostra; sed in his tamen coloribus quibus modo dixisti denominandis, non proinde inopes sumus ut tibi videmur.
 
 Non enim haec sunt sola vocabula rufum colorem demonstrantia, quae tu modo dixisti, russus et ruber, sed alia quoque habemus plura quam quae dicta abs te Graeca sunt; fulvus enim et flavus et rubidus et poeniceus et rutilus et luteus et spadix appellationes sunt rufi coloris, aut acuentes eum, quasi incendentes, aut cum colore viridi miscentes aut nigro infuscantes aut virenti sensim albo illuminantes.
 
-Nam poeniceus, quem tu GraeceGraecc φοίνικα dixisti, noster est et rutilus et spadix, poenicei συνώνυμος, qui factus e Graeco Graeco, J. F. Gronov; Graece, ω. noster est, exuberantiam splendoremque significant ruboris, quales sunt fructus palmae arboris non admodum sole incocti, unde spadici et poeniceo nomen est;
+Nam poeniceus, quem tu GraeceGraecc φοίνικα dixisti, noster est et rutilus et spadix, poenicei συνώνυμος, qui factus e Graeco noster est, exuberantiam splendoremque significant ruboris, quales sunt fructus palmae arboris non admodum sole incocti, unde spadici et poeniceo nomen est;
 
-enim Dorice Dorice, suggested by Hosis; Dorici, ω. vocant avulsum e palma termitem cum fructu.
+enim Dorice vocant avulsum e palma termitem cum fructu.
 
-Fulvus autem videtur de rufo atque viridi mixtus in aliis plus viridis, in aliis plus rufi habere. Sic poeta verborum diligentissimus fuluamfulvarm aquilam dicit et iaspidem, fulvos galeros et fulvum aurum et arenam fulvam et fulvum leonem, sicque Ennius in Annalibus aere fulvo fulva, Gell. xiii. 21. 14. dixit.
+Fulvus autem videtur de rufo atque viridi mixtus in aliis plus viridis, in aliis plus rufi habere. Sic poeta verborum diligentissimus fuluamfulvarm aquilam dicit et iaspidem, fulvos galeros et fulvum aurum et arenam fulvam et fulvum leonem, sicque Ennius in Annalibus aere fulvo dixit.
 
 Flavus contra videtur e viridi et rufo et albo concretus; sic flaventes comae et, quod mirari quosdam video,
 
-frondes olearum a Vergilio flavae dicuntur, sic multo ante Pacuvius aquam flavam dixit et fulvum pulverem. Cuius versus, quoniam sunt iucundissimi, libens commemini: Cédo tuum tuum, Fleckeisen; tum, ω. pedém mi, added by Peerlkamp. lymphis flávis fulvum ut Púlverem Mánibus isdem, quíbus Ulixi sáepe permulsi, permulsis, ω. ábluam, Lássitudinémque minuam mánuum manum, ω. mollitúdine.
+frondes olearum a Vergilio flavae dicuntur, sic multo ante Pacuvius aquam flavam dixit et fulvum pulverem. Cuius versus, quoniam sunt iucundissimi, libens commemini: Cédo tuum pedém mi, lymphis flávis fulvum ut Púlverem Mánibus isdem, quíbus Ulixi sáepe permulsi, ábluam, Lássitudinémque minuam mánuum mollitúdine.
 
-Cédo tuum tuum, Fleckeisen; tum, ω. pedém mi, added by Peerlkamp. lymphis flávis fulvum ut Púlverem
+Cédo tuum pedém mi, lymphis flávis fulvum ut Púlverem
 
-Mánibus isdem, quíbus Ulixi sáepe permulsi, permulsis, ω. ábluam,
+Mánibus isdem, quíbus Ulixi sáepe permulsi, ábluam,
 
-Lássitudinémque minuam mánuum manum, ω. mollitúdine.
+Lássitudinémque minuam mánuum mollitúdine.
 
 Rubidus autem est rufus atrior et nigrore multo inustus, luteus contra rufus color est dilutior;
 
@@ -1643,31 +1643,31 @@ Postquam haec Fronto dixit, tum Favorinus scientiam rerum uberem verborumque eiu
 
 Καί νύ κεν ἢ παρέλασσας ἢ ἀμφήριστον ἔθηκας.
 
-Sed cum omnia libens audivi quae peritissime dixisti, tum maxime quod varietatem flavi coloriscolors enarrasti fecistique ut intellegerem verba illa ex Annali quarto decimodecino Ennii amoenissima, quae minime intellegebam: Verrunt extemplo placide placide, ω.; placidum, Hertz (Parrhasius). mare marmore flavo Caeruleum, spumat sale sale, Priscian; mare, MSS. conferta rate pulsum;
+Sed cum omnia libens audivi quae peritissime dixisti, tum maxime quod varietatem flavi coloriscolors enarrasti fecistique ut intellegerem verba illa ex Annali quarto decimodecino Ennii amoenissima, quae minime intellegebam: Verrunt extemplo placide mare marmore flavo Caeruleum, spumat sale conferta rate pulsum;
 
-Verrunt extemplo placide placide, ω.; placidum, Hertz (Parrhasius). mare marmore flavo
+Verrunt extemplo placide mare marmore flavo
 
-Caeruleum, spumat sale sale, Priscian; mare, MSS. conferta rate pulsum;
+Caeruleum, spumat sale conferta rate pulsum;
 
 non enim videbatur caeruleum mare cum marmore flavo convenire.
 
-Sed cum sit, ita ut dixisti, flavus color colore, ω.. e viridi et albo mixtus, pulcherrime prorsus spumas virentis maris flavom marmor appellavit.
+Sed cum sit, ita ut dixisti, flavus color e viridi et albo mixtus, pulcherrime prorsus spumas virentis maris flavom marmor appellavit.
 
 Quid T. Castricius existimarit super Sallustii verbis et Demosthenis, quibus alter Philippum descripsit, alter Sertorium.
 
 VERBA sunt haec gravia atque illustria de rege Philippo Demosthenis: Ἑώρων δʼ αὐτὸν τὸν Φίλιππον, πρὸς ὃν ἦν ἡμῖν ὁ ἀγών , ὑπὲρ ἀρχῆς καὶ δυναστείας τὸν ὀφθαλμὸν ἐκκεκομμένον, τὴν κλεῖν κατεαγότα, τὴν χεῖρα, τὸ σκέλος πεπηρωμένον, πᾶν ὅτι βουληθείη μέρος ἡ τύχη τοῦ σώματος παρελέσθαι, τοῦτο προϊέμενον, ὥστε τῷ λοιπῷ μετὰ τιμῆς καὶ δόξης ζῆν.
 
-Haec aemulari volens Sallustius de Sertorio duce in Historiis ita scripsit: Magna gloria tribunus militum in Hispania T. Didio imperante, magno usui bello Marsico paratu militum et armorum fuit, multaque tum ductu eius iussuque iussu, added by Hertz. patrata patrata, Dietsch; rapta, ω.. primo per ignobilitatem, deinde per invidiam scriptorum incelebrata celebrata, ω; incelebrata, J. Gronov; celata, Ciacconi. sunt, quae vivus facie sua ostentabat aliquot adversis cicatricibus et effosso oculo. Quin ille dehonestamento corporis maxime laetabatur, neque illis anxius, neque illis anxius before quin, Maurenbrecher. quia reliqua gloriosius retinebat.
+Haec aemulari volens Sallustius de Sertorio duce in Historiis ita scripsit: Magna gloria tribunus militum in Hispania T. Didio imperante, magno usui bello Marsico paratu militum et armorum fuit, multaque tum ductu eius iussuque patrata primo per ignobilitatem, deinde per invidiam scriptorum incelebrata sunt, quae vivus facie sua ostentabat aliquot adversis cicatricibus et effosso oculo. Quin ille dehonestamento corporis maxime laetabatur, neque illis anxius, quia reliqua gloriosius retinebat.
 
 De utriusque his verbis T. Castricius cum iudicaret, Nonne, inquit, ultra naturae humanae modum est, dehonestamento corporis laetari? Siquidem laetitia dicitur exultatio quaedam animi gaudio efferventior eventu rerum expetitarum.
 
-Quanto illud sincerius veriusque verius, an addition suggested by Hosius; sinceriusque et, ω.. et humanis magis condicionibus conditionibus, J. F. Gronov; communibus, ω. conveniens: πᾶν ὅτι ἂν βουληθείη μέρος ἡ τύχη τοῦ σώματος παρελέσθαι, τοῦτο ποϊέμε- νον.
+Quanto illud sincerius veriusque et humanis magis condicionibus conveniens: πᾶν ὅτι ἂν βουληθείη μέρος ἡ τύχη τοῦ σώματος παρελέσθαι, τοῦτο ποϊέμε- νον.
 
 Quibus verbis, inquit, ostenditur Philippus, non, ut Sertorius, corporis dehonestamento laetus, quod est, inquit, insolens et inmodicum, sed prae studio laudis et honoris iacturarum damnorumque corporis contemptor, qui singulos artus suos fortunae prodigendos daret quaestu atque compendio gloriarum.
 
 Non esse compertumcompertnm cui deo rem divinam fieri oporteat, cum terra movet.
 
-QUAENAM esse causa videatur quamobrem terrae tremores fiant, non modo his communibus hominum sensibus opinionibusque incompertum, incompertum, Skutsch; compertum, MSS. sed ne inter physicas quidem philosophias satis constitit ventorumne vi accidant specus hiatusque terrae subeuntium an aquarum subter in terrarum cavis undantium pulsibus fluctibusque, ita uti videntur existimasse antiquissimi Graecorum, qui Neptunum σεισίχθονα appellaverunt, an cuius aliae rei causa alteriusve dei vi ac numine, nondum etiam, sicuti diximus, pro certo creditum.
+QUAENAM esse causa videatur quamobrem terrae tremores fiant, non modo his communibus hominum sensibus opinionibusque incompertum, sed ne inter physicas quidem philosophias satis constitit ventorumne vi accidant specus hiatusque terrae subeuntium an aquarum subter in terrarum cavis undantium pulsibus fluctibusque, ita uti videntur existimasse antiquissimi Graecorum, qui Neptunum σεισίχθονα appellaverunt, an cuius aliae rei causa alteriusve dei vi ac numine, nondum etiam, sicuti diximus, pro certo creditum.
 
 Propterea veteres Romani, cum in omnibus aliis vitae officiisoficiis, tum in constituendis religionibus atque in dis inmortalibus animadvertendis castissimi cautissimiquecautissirnique, ubi terrain movisse senserant nuntiatumve erat, ferias eius rei causa edicto imperabant, sed dei nomen, ita uti solet, cui servari ferias oporteret, statuere et edicere quiescebant, ne alium pro alio nominando falsa religione populum alligarent.
 
@@ -1701,15 +1701,15 @@ Haec ubi ille dixit, et discessit. Atque ubi redit cassita, pulli tremibundi, tr
 
 Mater iubet eos otioso animo esse: Si enim dominus, inquit, messim ad amicos reicit, crastino seges non metetur neque necessum est hodie uti vos auferam.
 
-Die, inquit, postero mater in pabulum volat. Dominus quos rogaverat opperitur. Sol fervit, et fit nihil; it it, J. F. Gronov; et, ω.. dies, et amici nulli eunt.
+Die, inquit, postero mater in pabulum volat. Dominus quos rogaverat opperitur. Sol fervit, et fit nihil; it dies, et amici nulli eunt.
 
-tumTurn ille rursum ad filium amici isti magnam partem, inquit, cessatores sunt. Quin potius imus et cognatos adfinesque adfines amicosque, MSS. nostros oramus ut assint eras tempori ad metendum?
+tumTurn ille rursum ad filium amici isti magnam partem, inquit, cessatores sunt. Quin potius imus et cognatos adfinesque nostros oramus ut assint eras tempori ad metendum?
 
 Itidem hoc pulli pavefacti matri nuntiant. Mater hortatur ut tum quoque sine metu ac sine cura sint, cognatoscognates adfinesque nullos ferme tam esse obsequibiles ait, ut ad laborem capessendum nihil cunctentur et statimstatic dicto oboediant: Vos modo, inquit, advertite, si modo quid denuo dicetur.
 
-Alia luce orta avis in pastum profecta est. Cognati et adfines opera, opera, suggested by Hosius (cf. x. 14. 1); operam, MSS. quam dare rogati sunt supersederunt.
+Alia luce orta avis in pastum profecta est. Cognati et adfines opera, quam dare rogati sunt supersederunt.
 
-Ad postremum igitur dominus filio: Valeant, inquit, amici cum propinquis. Afferes primo luci primo luci, P; prima luce, ω. falces duas; unam egomet mihi et tu tibi capies alteram et frumentum nosmetipsi manibus nostris eras metemus.
+Ad postremum igitur dominus filio: Valeant, inquit, amici cum propinquis. Afferes primo luci falces duas; unam egomet mihi et tu tibi capies alteram et frumentum nosmetipsi manibus nostris eras metemus.
 
 Id ubi ex pullis dixisse dominum mater audivit, Tempus, inquit, est cedendi et abeundi; fiet nunc dubio procul quod futurum dixit. In ipso enim iam vertitur cuia res est, non in alio, unde petitur.
 
@@ -1723,17 +1723,17 @@ alia autem omnia quae extra nos extraque nostrum animum sunt neque pro nostris n
 
 Hunc Aesopi apologum Q. Ennius in Satiris scite admodum et venuste versibus quadratis composuit. Quorum duo postremi isti sunt, quos habere cordi et memoriae operae pretium esse hercle puto:
 
-Hóc erit tibi árgumentum sémper in promptú promptu, T; promptum, ω. situm:
+Hóc erit tibi árgumentum sémper in promptú situm:
 
 Né quid expectés amicos, quód tute agere póssies.
 
 Quid observatum sit in undarum motibus, quae in mari alio atque alio modo fiunt austris flantibus aquilonibusque.
 
-Hoc saepenumero in undarum motu, quas aquilones venti quique ex eadem caeli regione aer fluit, faciunt lacuna indicated by Mommsen, who suggested: animadversum est ut diversus sit ab eo quem faciunt, which is followed in the translation. in mari austri atque Africi.
+Hoc saepenumero in undarum motu, quas aquilones venti quique ex eadem caeli regione aer fluit, faciunt in mari austri atque Africi.
 
 Nam fluctus, qui flante aquilone maximi et creberrimi excitantur, simul ac ventus posuit, sternuntur et conflaccescunt et mox fluctus esse desinunt.
 
-At non idem fit flante austro vel Africo; quibus iam nihil spirantibus undae tamen factae diutius tument et a vento quidem iamdudum tranquillae Beroaldus; tranquilla, MSS. sunt, sed mare est etiam atque etiam undabundum.
+At non idem fit flante austro vel Africo; quibus iam nihil spirantibus undae tamen factae diutius tument et a vento quidem iamdudum tranquillae sunt, sed mare est etiam atque etiam undabundum.
 
 Eius rei causa esse haec coniectatur, quod venti a septentrionibus, ex altiore caeli parte in mare incidentes, deorsum in aquarum profunda quasi praecipites deferuntur undasque faciunt non prorsus inpulsas, sed imitus commotas, quae tantisper erutae volvuntur, dum illius infusi desuper spiritus vis manet.
 
@@ -1749,7 +1749,7 @@ quem aquilonem nos appellamus, alio dicit modo: Καὶ βορέης αἰθρη
 
 Καὶ βορέης αἰθρηγενέτης μέγα κῦμα κυλίνδων.
 
-Ab aquilonibus enim, qui alti supernique sunt, fluctus excitatos quasi per prona volvi dicit, ab austris autem, his qui humiliores sunt, maiore vi vi, ς; ut, ω. quadam propelli sursum sursum, ς; rursum, ω.. atque subici. Id enim significat verbum ὠθεῖ,, sicut alio in loco:
+Ab aquilonibus enim, qui alti supernique sunt, fluctus excitatos quasi per prona volvi dicit, ab austris autem, his qui humiliores sunt, maiore vi quadam propelli sursum atque subici. Id enim significat verbum ὠθεῖ,, sicut alio in loco:
 
 Λᾶαν ἄνω ὤθεσκε ποτὶ λόφον.
 
@@ -1759,7 +1759,7 @@ Quaesitum atque tractatum quam ob causam Sallustius avaritiam dixerit non animum
 
 HIEME iam decedente, apud balneas Titias in area subcalido sole cum Favorino philosopho ambulabamus; atque ibi inter ambulandum legebatur Catilina Sallustii, quem in manu amici conspectum legi iusserat.
 
-Cumque haec verba ex eo libro lecta essent: Avaritia pecuniae studium habet, quam nemo sapiens concupivit; ea quasi venenis malis imbuta corpus animumque virilem effeminat, semper infinita et MSS. of Sall. omit et. insatiabilis est, neque copia neque inopia minuitur,
+Cumque haec verba ex eo libro lecta essent: Avaritia pecuniae studium habet, quam nemo sapiens concupivit; ea quasi venenis malis imbuta corpus animumque virilem effeminat, semper infinita et insatiabilis est, neque copia neque inopia minuitur,
 
 tum Favorinus me aspiciens Quo, inquit, pacto corpus hominis avaritia effeminat? Quid enim istuc sit, quod animum virilem ab ea effeminari dixit, videor ferme assequi, set quonam modo corpus quoque hominis effeminet nondum reperiorcperio. Et ego,
 
@@ -1773,7 +1773,7 @@ Erat tum nobiscum in eodem ambulacro homo quispiam sane doctus.
 
 Is quoque a Favorino rogatus ecquid haberet super ea re dicere, huiuscemodi verbis usus est:
 
-Quorum, inquit, avaritia mentem mentem, supplied by Dziatzko; avaritiam tenuit (ienuit, V; avaritia intenuit, R), ω. tenuit et corrupit quique sese quaerundae undique pecuniae dediderunt, eos plerosque tali genere vitae occupatos videmus, ut sicuti alia in his omnia prae pecunia, ita labor quoque virilis exercendique corporis studium relictui sit.
+Quorum, inquit, avaritia mentem tenuit et corrupit quique sese quaerundae undique pecuniae dediderunt, eos plerosque tali genere vitae occupatos videmus, ut sicuti alia in his omnia prae pecunia, ita labor quoque virilis exercendique corporis studium relictui sit.
 
 Negotiis enim se plerumque umbraticis et sellulariis quaestibus intentos habent, in quibus omnis eorum vigor animi corporisque elanguescit et, quod Sallustius ait, effeminatur.
 
@@ -1781,21 +1781,21 @@ Tum Favorinus legi denuo verba eadem Sallustii iubet atque, ubi lecta sunt, Quid
 
 Tum ille ita respondit: Respondes non hercle inscite. Quisquis, inquit, est pecuniae cupiens et corpore tamen est bene habito ac strenuo, aliarum quoque rerum vel studio vel exercitio eum teneri necessum est atque in sese colendo non aeque esse parcum.
 
-Nam si avaritia sola summa omnes hominis partes affectionesque occupet et si ad incuriam usque corporis grassetur, ut per illam unam neque virtutis neque virium neque corporis neque animi cura adsit, tum denique id vere dici potest effeminando esse et animo et corpori, si si, added by H. J. Müller. qui neque sese neque aliud curent, nisi pecuniam.
+Nam si avaritia sola summa omnes hominis partes affectionesque occupet et si ad incuriam usque corporis grassetur, ut per illam unam neque virtutis neque virium neque corporis neque animi cura adsit, tum denique id vere dici potest effeminando esse et animo et corpori, si qui neque sese neque aliud curent, nisi pecuniam.
 
-Tum Favorinus Aut hoc, inquit, quod dixisti, probabile est, aut Sallustius odio avaritiae plus quam par fuit par fuit, suggested by Hosius; potuit, MSS.; decuit, Damsté. eam criminatus est.
+Tum Favorinus Aut hoc, inquit, quod dixisti, probabile est, aut Sallustius odio avaritiae plus quam par fuit eam criminatus est.
 
-Quemnam esse natalem diem M. Varro dicat, qui ante noctis horam sextam postve eamearn nati sunt; atque inibi de temporibus terminisque dierum qui civiles nominantur et usquequaque gentium varie observantur; et praeterea quid Q. Mucius scripserit super ea muliere quae a quae a, Erbius; qlia, ω.. marito non iure se usurpavisset, quod rationem civilis anni non habuerit.
+Quemnam esse natalem diem M. Varro dicat, qui ante noctis horam sextam postve eamearn nati sunt; atque inibi de temporibus terminisque dierum qui civiles nominantur et usquequaque gentium varie observantur; et praeterea quid Q. Mucius scripserit super ea muliere quae a marito non iure se usurpavisset, quod rationem civilis anni non habuerit.
 
 QUAERI solitum est, qui noctis hora tertia quartave sive qua alia nati sunt, uter dies natalis haberi appellarique debeat, isne quem nox ea consecuta est, an qui dies noctem consecutus est.
 
-M. Varro in libro Rerum humanarumHumnanarum, quem De Diebus scripsit, homines, inquit, qui inde a inde a, Hertz; in, ω.; ex, Macr. i. 2. 3. media nocte ad proximam mediam noctem in his horis viginti quattuor nati sunt, uno die nati dicuntur.
+**M** Varro in libro Rerum humanarumHumnanarum, quem De Diebus scripsit, homines, inquit, qui inde a media nocte ad proximam mediam noctem in his horis viginti quattuor nati sunt, uno die nati dicuntur.
 
 Quibus verbis ita videtur dierum observationem divisisse, ut qui post solem occasum ante mediam noctem natus sit, is ei dies natalis sit, a quo die ea nox coeperit; contra vero, qui in sex noctis horis posterioribus nascatur, eo die videri natum, qui post eamearn noctem diluxerit.
 
 Athenienses autem aliter observare, idem Varro in eodem libro scripsit, eosque a sole occaso ad solem iterum occidentem omne id medium tempus unum diem esse dicere.
 
-Babylonios porro aliter; a sole enim exorto ad exortum eiusdem incipientem insequentem, Damsté. totum id spatium unius diei nomine appellare;
+Babylonios porro aliter; a sole enim exorto ad exortum eiusdem incipientem totum id spatium unius diei nomine appellare;
 
 multos vero in terra Umbria unum et eundem diem esse dicere a meridie ad insequentem meridiem; quod quidem, inquit, nimis absurdum est. Nam qui Kalendis hora sexta apud Umbros natus est, dies eius natalis videri debebit et Kalendarum dimidiarum et qui est post Kalendas dies ante horam eius diei sextam.
 
@@ -1805,11 +1805,11 @@ Sacra sunt Romana partim diurna, alia nocturna, sed ea quae inter noctem fiunt d
 
 quae igitur sex posterioribus noctis horis fiunt, eo die fieri dicuntur qui proximus eam noctem inlucescit.
 
-Ad hoc ritus quoque et mos auspicandi eandem esse observationem docet; nam magistratus, quando uno die eis auspicandum est et id super quo auspicaverunt agendum, post cum post, Puteanus; dum post, Damsté. mediam noctem auspicantur et post meridiem sole magno agunt, meridiem sole magno agunt, Hertz; meridiem solem agnum (sole magnum, V), ω; meridionalem solem agunt, Hosius. auspicatique esse et egisse eodem die dicuntur.
+Ad hoc ritus quoque et mos auspicandi eandem esse observationem docet; nam magistratus, quando uno die eis auspicandum est et id super quo auspicaverunt agendum, post mediam noctem auspicantur et post meridiem sole magno agunt, auspicatique esse et egisse eodem die dicuntur.
 
 Praeterea tribuni plebei, quos nullum diem abessealesse Roma licet, cum post mediam noctem proficiscuntur et post primam facem ante mediam sequentem revertuntur, non videntur afuisse unum diem, quoniam, ante horam noctis sextam regressi, parte aliqua illius in urbe Roma sunt.
 
-Q. Q. added by ς, Macrob. quoque Mucium iureconsultum dicere solitum legi, non esse usurpatam mulierem, quae, cum Kalendis Ianuariis apud virum matrimonii causa esse coepisset, ante diem IV. Kalendas Ianuarias sequentes usurpatumusulpatum isset;
+Q. quoque Mucium iureconsultum dicere solitum legi, non esse usurpatam mulierem, quae, cum Kalendis Ianuariis apud virum matrimonii causa esse coepisset, ante diem IV. Kalendas Ianuarias sequentes usurpatumusulpatum isset;
 
 non enim posse impleri trinoctium, quod abesse a viro usurpandi causa ex Duodecim Tabulis deberet, quoniam tertiae noctis posterioris sex horae alterius anni essent, qui inciperet ex Kalendis.
 
@@ -1823,7 +1823,7 @@ Et me saevus equis oriens afflavit anhelis.
 
 His enim versibus oblique, sicuti dixi, admonere voluit, diem quem Romani civilem appellaverunt a sexta noctis hora oriri.
 
-De noscendis explorandisque Plauti comoediis, quoniamquonian promiscepromise verae atque falsae nomine eius inscriptaeinscriptac feruntur; atque inibi, quod Plautus in pistrino in pistrinum (pistrino, ς), added in ς. et Naevius in carcere fabulas scriptitarint.
+De noscendis explorandisque Plauti comoediis, quoniamquonian promiscepromise verae atque falsae nomine eius inscriptaeinscriptac feruntur; atque inibi, quod Plautus in pistrino et Naevius in carcere fabulas scriptitarint.
 
 VERUM esse comperior quod quosdam bene litteratos homines dicere audivi, qui plerasque Plauti comoedias curiose atque contente lectitarunt, non indicibus Aelii nec Sedigiti nec Claudii nec Aurelii nec Accii nec Manilii super his fabulis quae dicuntur ambiguae crediturum, sed ipsi Plauto moribusque ingeni atque linguae eius.
 
@@ -1841,7 +1841,7 @@ Quique ádeo primus státuit hichie solárium,
 
 Qui míhi comminuit mísero articulatím diem.
 
-Nam unúm unum, added by Hertz. me puero vénter erat soláríum
+Nam unúm me puero vénter erat soláríum
 
 Multo ómnium istorum óptimum et veríssimum;
 
@@ -1851,7 +1851,7 @@ Nunc étiam quod est non éstur, nisi solí libet;
 
 Itaque ádeo iam oppletum óppidum est soláriis,
 
-Maiór pars populi iam iam, added by Hertz; ut aridi reptent, Ritschl. áridi reptánt fame.
+Maiór pars populi iam áridi reptánt fame.
 
 Favorinus quoque noster, cum Nervulariam Plauti legerem, quae inter incertas habita est, et audisset ex ea comoedia versum hunc: Scrattáe, scrupipedae, stríttivillae sórdidae, delectatus faceta verborum antiquitate, meretricum vitia atque deformitates significantium, vel unus hercle, inquit, hic versus Plauti esse hanc fabulam satis potest fidei fecisse.
 
@@ -1861,11 +1861,11 @@ Nos quoque ipsi nuperrime, cum legeremus Fretum—nomen est id comoediae quam Pl
 
 Ex qua duo hos versus exscripsimus, ut historiam quaereremus oraculi Arretini:
 
-Nunc íllud est quód responsum Arreti Arretini, ω. and T.L.L.; Arreti, Leo. ludis magnis magis, ω. dícitur:
+Nunc íllud est quód responsum Arreti ludis magnis dícitur:
 
 Períbo, si non fécero, si fáxo, vapulábo.
 
-M. tamen Varro in libro De Comoediis Plautinis primo Accii verba haec ponit: Nam nec Geminei Lenones nec Condalium nec Anus Plauti, nec Bis Coimpressa nec Boeotia umquam fuit, neque adeo Agroecus neque Commorientes Macci Titi.
+**M** tamen Varro in libro De Comoediis Plautinis primo Accii verba haec ponit: Nam nec Geminei Lenones nec Condalium nec Anus Plauti, nec Bis Coimpressa nec Boeotia umquam fuit, neque adeo Agroecus neque Commorientes Macci Titi.
 
 In eodem libro M. Varronis id quoque scriptum, et Plautium fuisse quempiam poetam comoediarum. Quoniam fabulae eae Plauti inscriptae forent, acceptas esse quasi Plautinas, cum essent non a Plauto Plautinae, sed a Plautio Plautianae.
 
@@ -1873,7 +1873,7 @@ Feruntur autem sub Plauti nomine comoediaecomoediac circiter centum atque trigin
 
 sed homo eruditissimus L. Aelius quinque et viginti eius esse solas existimavit.
 
-Neque tamen dubium est quin istaec quae scriptae a Plauto non videntur et nomini eius addicuntur, veterum poetarum fuerint et ab eo retractatae et et, added by Carrio. expolitae sint ac propterea resipiant stilum Plautinum.
+Neque tamen dubium est quin istaec quae scriptae a Plauto non videntur et nomini eius addicuntur, veterum poetarum fuerint et ab eo retractatae et expolitae sint ac propterea resipiant stilum Plautinum.
 
 Sed enim Saturionem et Addictum et tertiam quandam, cuius nunc mihi nomen non subpetit, in pistrino eum scripsisse Varro et plerique alii memoriae tradiderunt, cum, pecunia omni quam in operas artificum scaenicorum pepereratpeperat, in mercatibus perdita, inops Romam redisset et ob quaerendum victum ad circumagendas molas quae trusatiles appellantur, operam pistori locasset.
 
@@ -1911,7 +1911,7 @@ in locum insinuant fraudi et perniciei obnoxium.
 
 Tribulus ad consulem venit, ostendit exitium de loci importunitate et hostium circumstantia maturum.
 
-Censeo, inquit, si rem servare vis, faciundum ut quadringentos trecentos, Livy and others. aliquos milites ad verrucam illam, sic enim Cato locum editum asperumque appellat, ire iubeas, eamque uti occupent imperes horterisque; hostes profecto ubi id viderint, fortissimus quisque et promptissimus ad occursandum pugnandumque in eos praevertentur unoque illo negotio sese alligabunt atque illi omnes quadringenti procul dubio obtruncabuntur.
+Censeo, inquit, si rem servare vis, faciundum ut quadringentos aliquos milites ad verrucam illam, sic enim Cato locum editum asperumque appellat, ire iubeas, eamque uti occupent imperes horterisque; hostes profecto ubi id viderint, fortissimus quisque et promptissimus ad occursandum pugnandumque in eos praevertentur unoque illo negotio sese alligabunt atque illi omnes quadringenti procul dubio obtruncabuntur.
 
 Tunc interea, occupatis in ea caede hostibus, tempus exercitus ex hoc loco educendi habebis.
 
@@ -1925,7 +1925,7 @@ Tribunus et quadringenti ad moriendum proficiscuntur.
 
 Hostes eorum audaciam demirantur, quorsum ire pergant in expectando sunt.
 
-Sed ubi apparuit ad eam ad eam, J. F. Gronov; eadem, RV.; eandenm, P. verrucam occupandam iter intendere, mittit adversum illos imperator Carthaginiensis peditatum equitatumque quos in exercitu viros habuit strenuissimos.
+Sed ubi apparuit ad eam verrucam occupandam iter intendere, mittit adversum illos imperator Carthaginiensis peditatum equitatumque quos in exercitu viros habuit strenuissimos.
 
 Romani milites circumveniuntur, circumventi repugnant;
 
@@ -1933,13 +1933,13 @@ fit proelium diu anceps.
 
 Tandem superat multitudo.
 
-Quadringenti omnes cum tribuno cum tribuno, Mähly; cum uno (una, V.), ω.; ad unum, Pricaeus. perfossi gladiis aut missilibus operti cadunt.
+Quadringenti omnes cum tribuno perfossi gladiis aut missilibus operti cadunt.
 
 Consul interim, dum ibi pugnatur, se in locos tutos atque editos subducit.
 
 Sed quod illi tribuno, duci militum quadringentorum, divinitus in eo proelio usus venit, non iam nostris, sed ipsius Catonis verbis subiecimus:
 
-Dii inmortales tribuno militum fortunam ex virtute eius dedere. Nam ita evenit: cum saucius multifariam ibi factus esset, tamen vulnus capiti nullum evenit, eumque inter mortuos, defetigatum vulneribus atque quod sanguen eius defluxerat, cognovere. Eum sustulere, isque convaluit, saepeque post illa operam reipublicae fortem atque strenuam perhibuitpraehibuit illoque facto, quod illos milites subduxit, exercitum ceterum servavit. Sed idem benefactum quo in loco ponas, nimium interest. Leonides Laco, qui quia, Mommsen. simile apud Thermopylas fecit, propter eius virtutes omnis Graecia gloriam atque gratiam praecipuam claritudinis inclitissimae decoravere monumentis: signis, statuis, elogiis, historiis aliisque rebus gratissimum id eius factum habuere; at tribuno militum parva laus pro factis relicta, qui idem fecerat atque rem servaverat.
+Dii inmortales tribuno militum fortunam ex virtute eius dedere. Nam ita evenit: cum saucius multifariam ibi factus esset, tamen vulnus capiti nullum evenit, eumque inter mortuos, defetigatum vulneribus atque quod sanguen eius defluxerat, cognovere. Eum sustulere, isque convaluit, saepeque post illa operam reipublicae fortem atque strenuam perhibuitpraehibuit illoque facto, quod illos milites subduxit, exercitum ceterum servavit. Sed idem benefactum quo in loco ponas, nimium interest. Leonides Laco, qui simile apud Thermopylas fecit, propter eius virtutes omnis Graecia gloriam atque gratiam praecipuam claritudinis inclitissimae decoravere monumentis: signis, statuis, elogiis, historiis aliisque rebus gratissimum id eius factum habuere; at tribuno militum parva laus pro factis relicta, qui idem fecerat atque rem servaverat.
 
 Hanc Q. Caedici tribuni virtutem M. Cato tali suo testimonio decoravit.
 
@@ -1947,7 +1947,7 @@ Claudius autem Quadrigarius Annalis tertio non Caedicio nomen fuisse ait, sed La
 
 Litterae eximiae consulum C. Fabricii et Q. Aemilii ad regem Pyrrum, a Q. Claudio scriptore historiarum in memoriammemorial datae.
 
-CUM Pyrrus rex in terra Italia esset et unam atque alteram pugnas prospere pugnasset satisque agerent Romani et pleraque Italia ad regem descivisset, tum Ambraciensis quispiam Timochares, Demochares, Amm. xxx. 1. regis Pyrri amicus, ad C. Fabricium consulem furtim venit ac praemium petivit et, si de praemio conveniret, promisit regem venenis necare, idque facile esse factu dixit, quoniam filius suus pocula in convivio regi ministraret.
+CUM Pyrrus rex in terra Italia esset et unam atque alteram pugnas prospere pugnasset satisque agerent Romani et pleraque Italia ad regem descivisset, tum Ambraciensis quispiam Timochares, regis Pyrri amicus, ad C. Fabricium consulem furtim venit ac praemium petivit et, si de praemio conveniret, promisit regem venenis necare, idque facile esse factu dixit, quoniam filius suus pocula in convivio regi ministraret.
 
 Eam rem Fabricius ad senatum scripsit.
 
@@ -1955,11 +1955,11 @@ Senatus ad regem legatos misit mandavitque ut de Timochare nihil proderent, sed 
 
 Hoc ita, uti diximus, in Valeri Antiatis Historia scriptum est.
 
-Quadrigarius autem in libro tertio non Timocharem, sed Niciam adisse ad consulem scripsit, neque legatos a senatu missos, sed a consulibus, et Pyrrum Pyrrum, added by Hertz; regem. ς. populo Romano laudes atque gratias scripsisse captivosque omnes quos tum habuit vestivisse et reddidisse.
+Quadrigarius autem in libro tertio non Timocharem, sed Niciam adisse ad consulem scripsit, neque legatos a senatu missos, sed a consulibus, et Pyrrum populo Romano laudes atque gratias scripsisse captivosque omnes quos tum habuit vestivisse et reddidisse.
 
 Consules tum fuerunt C. Fabricius et Q. Aemilius.
 
-Litteras, quas ad regem Pyrrum super ea causa miserunt, Claudius Quadrigarius scripsit fuisse hoc exemplo: Consules Romani salutem dicunt Pyrro regi. Nos pro tuis iniuriis continuis animo tenustenus, Bentley; tenui, ω.. commoti inimiciter tecum bellare studemus. Sed communis exempli et fidei ergo visum ut te salvum velimus, ut esset quem armis vincere possemus. Ad nos venit Nicias familiaris tuus, qui sibi praemium a nobis peteret, si te clam interfecisset. Id nos negavimus velle, neve ob eam rem quicquam commodi expectaret, et simul visum est ut te certiorem faceremus, ne quid eiusmodi, si accidisset, nostro consilio civitates putarent factumfittum, et quod nobis non placet pretio aut praemio aut dolis pugnare. Tu, nisi caves, iacebis.
+Litteras, quas ad regem Pyrrum super ea causa miserunt, Claudius Quadrigarius scripsit fuisse hoc exemplo: Consules Romani salutem dicunt Pyrro regi. Nos pro tuis iniuriis continuis animo tenus commoti inimiciter tecum bellare studemus. Sed communis exempli et fidei ergo visum ut te salvum velimus, ut esset quem armis vincere possemus. Ad nos venit Nicias familiaris tuus, qui sibi praemium a nobis peteret, si te clam interfecisset. Id nos negavimus velle, neve ob eam rem quicquam commodi expectaret, et simul visum est ut te certiorem faceremus, ne quid eiusmodi, si accidisset, nostro consilio civitates putarent factumfittum, et quod nobis non placet pretio aut praemio aut dolis pugnare. Tu, nisi caves, iacebis.
 
 Consules Romani salutem dicunt Pyrro regi.
 
@@ -1977,15 +1977,15 @@ Eum Cassium postea satis notum est victis partibus fusoque exercitu suo miseram 
 
 Hinc proverbium de hominibus calamitosis ortum dicique solitum: Ille homo habet equum Seianum.
 
-Eadem sententia est illius quoque veteris proverbii, quod ita dictum accepimus: aurum Tolosanum. Nam cum oppidum Tolosanum in terra Gallia Gallia, Erasmus; Italia, RV.; Italica, P. Quintus Caepio consul diripuisset multumque auri in eius oppidi templis fuisset, quisquis ex ea direptione aurum attigit misero cruciabilique exitu periit.
+Eadem sententia est illius quoque veteris proverbii, quod ita dictum accepimus: aurum Tolosanum. Nam cum oppidum Tolosanum in terra Gallia Quintus Caepio consul diripuisset multumque auri in eius oppidi templis fuisset, quisquis ex ea direptione aurum attigit misero cruciabilique exitu periit.
 
-Hunc equum Gavius Bassus vidisse se se, ς; omitted by PRV. Argis refert haut credibili pulcritudine vigoreque et colore exuberantissimo.
+Hunc equum Gavius Bassus vidisse se Argis refert haut credibili pulcritudine vigoreque et colore exuberantissimo.
 
 Quem colorem nos, sicuti dixi, poeniceum dicimus, Graeci partim φοίνικα, alii σπάδικα appellant, quoniam palmae termes ex arbore cum fructu avulsus spadix dicitur.
 
 Quod est quaedam septenarii numeri vis et facultas in multis naturae rebus animaduersaaninadversa, de qua M. Varro in Hebdomadibus disserit copiose.
 
-M. VARRO in primo librorum qui inscribuntur Hebdomades vel De Imaginibus, septenarii numeri, quem Graece ἑβδομάδα (h)ebdoma, ω. appellant, virtutes potestatesque multas variasque dicit.
+**M** VARRO in primo librorum qui inscribuntur Hebdomades vel De Imaginibus, septenarii numeri, quem Graece ἑβδομάδα appellant, virtutes potestatesque multas variasque dicit.
 
 Is namque numerus, inquit, septentriones maiores minoresque in caelo facit, item vergilias, quas πλειάδας Graeci vocant, facit etiam stellas quas alii erraticas, P. Nigidius errones appellat.
 
@@ -1995,11 +1995,11 @@ nam in septimo signo fit solstitium a bruma, in septimo bruma a solstitio, in se
 
 Dies deinde illos quibus alcyones hieme anni in aqua nidulantur, eos quoque septem esse dicit.
 
-Praeterea scribit lunae curriculum confici integris quater septenis diebus: nam die duo- duo, ς Hertz;omitted by ω.. detricesimo luna, inquit, ex quo vestigio profecta est, eodem redit, auctoremque opinionis huius Aristidem esse Samium; in qua re non id solum animadverti debere dicit quod quater septenis, id est octo et viginti, diebus conficeret luna iter suum, sed quod is numerus septenarius, si ab uno profectus, dum ad semetipsum progreditur, omnes per quos progressus est numeros comprehendat ipsumque se addat, facit numerum octo et viginti, quot quod, ω.. dies sunt curriculi lunaris.
+Praeterea scribit lunae curriculum confici integris quater septenis diebus: nam die duo- detricesimo luna, inquit, ex quo vestigio profecta est, eodem redit, auctoremque opinionis huius Aristidem esse Samium; in qua re non id solum animadverti debere dicit quod quater septenis, id est octo et viginti, diebus conficeret luna iter suum, sed quod is numerus septenarius, si ab uno profectus, dum ad semetipsum progreditur, omnes per quos progressus est numeros comprehendat ipsumque se addat, facit numerum octo et viginti, quot dies sunt curriculi lunaris.
 
 Ad homines quoque nascendos vim numeri istius porrigi pertinereque ait: Nam cum in uterum, inquit, mulieris genitale semen datum est, primis septem diebus conglobatur, coagulaturque fitque ad capiendam figuram idoneum. Post deinde quarta hebdomade, quod eius virile secus futurum est, caput et spina, quae est in dorso, informatur. Septima autem fere hebdomade, id est nono et quadragesimo die, totus, inquit, homo in utero absolvitur.
 
-Illam quoque vim numeri huius observatam refert, quod ante mensem septimum neque mas neque femina salubriter ac secundum naturam nasci potest, et quod hi qui iustissime in utero sunt, post ducentos septuaginta tres dies postquam sunt concepti, quadragesima denique hebdomade inita inita, Skutsch; ita, ω. nascuntur.
+Illam quoque vim numeri huius observatam refert, quod ante mensem septimum neque mas neque femina salubriter ac secundum naturam nasci potest, et quod hi qui iustissime in utero sunt, post ducentos septuaginta tres dies postquam sunt concepti, quadragesima denique hebdomade inita nascuntur.
 
 Pericula quoque vitae fortunarumque omnium, quae climacteras Chaldaei appellant, gravissimos quosque fieri septenarios.
 
@@ -2011,7 +2011,7 @@ Dentes quoque et in septem mensibus primis et septenos ex utraque parte gigni ai
 
 Venas etiam in hominibus, vel potius arterias, medicos musicos dicere ait numero moveri septenario, quod ipsi appellant τὴν διὰ τεσσάρων συμφωνίαν, quae fit in collatione quaternarii numeri.
 
-Discrimina etiam periculorum in morbis maiore vi fieri putat in diebus qui conficiuntur ex numero septenario, eosque dies omnium maxime, ita ut medici appellant, κρισίμους videri videri, ς; cui videri, ω. primam hebdomadam et secundam et tertiam.
+Discrimina etiam periculorum in morbis maiore vi fieri putat in diebus qui conficiuntur ex numero septenario, eosque dies omnium maxime, ita ut medici appellant, κρισίμους videri primam hebdomadam et secundam et tertiam.
 
 Neque non id etiam sumit ad vim facultatesque eius numeri augendas, quod, quibus inedia mori consilium est, septimo demumdernum die mortem oppetunt.
 
@@ -2025,7 +2025,7 @@ SUPER aetate Homeri atque Hesiodi non consentitur.
 
 Alii Homerum quam Hesiodum maiorem natu fuisse scripserunt, in quis Philochorus et Xenophanes, alii minorem, in quis L. Accius poeta et Ephorus historiae scriptor.
 
-M. autem Varro in primo De Imaginibus, uter prior sit natus parum constare dicit, sed non esse dubium quin aliquo tempore eodem vixerint, idque ex epigrammate ostendi quod in tripode scriptum est, qui in monte Helicone ab Hesiodo positus traditur.
+**M** autem Varro in primo De Imaginibus, uter prior sit natus parum constare dicit, sed non esse dubium quin aliquo tempore eodem vixerint, idque ex epigrammate ostendi quod in tripode scriptum est, qui in monte Helicone ab Hesiodo positus traditur.
 
 Accius autem in primo Didascalico levibus admodum argumentis utitur, per quae ostendi putat, Hesiodum natu priorem:
 
@@ -2033,7 +2033,7 @@ Quod Homerus, inquit, cum in principio carminis Achillem esse filium Pelei dicer
 
 De patria quoque Homeri multo maxime dissensum est. Alii Colophonium, alii Smyrnaeum, sunt qui Atheniensem, sunt etiam qui Aegyptium fuisse dicant, Aristoteles tradidit ex insula Io.
 
-M. Varro in libro De Imaginibus primo Homeri imagini epigramma hoc apposuit.
+**M** Varro in libro De Imaginibus primo Homeri imagini epigramma hoc apposuit.
 
 Capélla Homeri candida haec tumulum índicat,
 
@@ -2061,13 +2061,13 @@ Is Callistratus Athenis orator in republica fuit quos illi δημαγωγούς 
 
 Visum est paulum devertere experirique an digna auditio tanto properantium studio foret.
 
-Venit, inquit, atque audit Callistratum nobilem illam τὴν περὶ Ὠρωποῦ δίκην dicentem, atque ita motus et demultus For demulctus from demulceo. et captus est ut Callistratum iam inde sectari coeperit Academiam cum Platone reliquerit.
+Venit, inquit, atque audit Callistratum nobilem illam τὴν περὶ Ὠρωποῦ δίκην dicentem, atque ita motus et demultus et captus est ut Callistratum iam inde sectari coeperit Academiam cum Platone reliquerit.
 
 Dimidium librum legi aut dimidiam fabulam audivi aliaque huiuscemodi qui dicat, vitiose dicere; eiusque vitii causas reddere M. Varronem; nec quemquam veterem hisce verbis ita usum esse.
 
 DIMIDIUM librum legi aut dimidiam fabulam audivi, vel quid aliud huiuscemodi, male ac vitiose dici existumat Varro.
 
-Oportet enim, inquit, dicere dimidiatum librum, non dimidium, et dimidiatam fabulam, non dimidiam. Contra autem si ex sextario hemina fusa est, non dimidiatum sed dimidium, sed dimidium, added by Skutsch. sextarium fusum dicendum est, et qui ex mille nummum, quod ei debebatur, quingentos recepit, non dimidiatum recepisse dicemus, sed dimidium.
+Oportet enim, inquit, dicere dimidiatum librum, non dimidium, et dimidiatam fabulam, non dimidiam. Contra autem si ex sextario hemina fusa est, non dimidiatum sed dimidium, sextarium fusum dicendum est, et qui ex mille nummum, quod ei debebatur, quingentos recepit, non dimidiatum recepisse dicemus, sed dimidium.
 
 At si scyphusscyplus, inquit, argenteus mihi cum alio communis in duas partis disiectus sit,dimidiatum eum esse dicere scyphum debeo, non dimidium, argenti autem, quod in eo scypho inest, dimidium meum esse, non dimidiatum ;
 
@@ -2107,15 +2107,15 @@ Per quod satis apparet ne horam quidem dimidiam recte dici, sed vel dimidiatam h
 
 Propterea Plautus quoque in Bacchidibus dimidium auri dicit, non dimidiatumdiridiatum aurum ;
 
-item in Aulularia dimidium obsoni, non dimidiatum obsonium, in hoc versu: Ei ádeo obsoni hic hinc, codd. Plauti. iússit dimidiúm dari; in MenaechmisMenaeclmis autem dimidiatum diem,
+item in Aulularia dimidium obsoni, non dimidiatum obsonium, in hoc versu: Ei ádeo obsoni hic iússit dimidiúm dari; in MenaechmisMenaeclmis autem dimidiatum diem,
 
-Ei ádeo obsoni hic hinc, codd. Plauti. iússit dimidiúm dari;
+Ei ádeo obsoni hic iússit dimidiúm dari;
 
 non dimidium in hochoe versu: Diés quidem iam ad úmbilicum dímidiatus mórtuust.
 
 Diés quidem iam ad úmbilicum dímidiatus mórtuust.
 
-M. etiam Cato in libro quem De Agricultura conscripsit: Semen cupressi serito crebrum, ita uti linum seri solet. Eo cribro terram incernito, dimidiatum digitum. Iam id bene tabula aut pedibus aut manibus complanato.
+**M** etiam Cato in libro quem De Agricultura conscripsit: Semen cupressi serito crebrum, ita uti linum seri solet. Eo cribro terram incernito, dimidiatum digitum. Iam id bene tabula aut pedibus aut manibus complanato.
 
 Dimidiatum, inquit, digitum, non dimidium. Nam digiti quidem dimidium, digitum autem ipsum dimidiatum dici oportet.
 
@@ -2131,7 +2131,7 @@ Philippides quoque, comoediarum poeta haut ignobilis, aetate iam edita cum in ce
 
 De Rodio etiam Diagora celebrata historia est. Is Diagoras tris filios adulescentes habuit, unum pugilem, alterum pancratiasten, tertium luctatorem. Eos omnis vidit vincere coronarique Olympiae eodem die et, cum ibi eum tres adulescentes amplexi coronis suis in caput patris positis saviarentur, cum populus gratulabundus flores undique in eum iaceret, ibidem in stadio inspectante populo in osculis atque in manibus filiorum animam efflavit.
 
-Praeterea in nostris annalibus scriptum legimus, qua tempestate apud Cannas exercitus populi Romani caesus est, anum matrem, nuntio de morte filii allato, luctu atque maerore affectam esse; sed is nuntius non verus fuit, utque utque, Petschenig; atque, MSS. is adulescens non diu post ex ea pugna in urbem redit, anus repente filio viso copia atque turba et quasi ruina incidentis inopinati gaudii oppressa exanimataque est.
+Praeterea in nostris annalibus scriptum legimus, qua tempestate apud Cannas exercitus populi Romani caesus est, anum matrem, nuntio de morte filii allato, luctu atque maerore affectam esse; sed is nuntius non verus fuit, utque is adulescens non diu post ex ea pugna in urbem redit, anus repente filio viso copia atque turba et quasi ruina incidentis inopinati gaudii oppressa exanimataque est.
 
 Temporis varietas in puerperis mulierum quaenam sit a medicis et a philosophis tradita; atque inibi poetarum quoque veterum super eadem re opiniones multaque alia auditu atque memoratu digna; verbaque ipsa Hippocratis medicinedici ex libro illius sumpta qui inscriptus est Περὶ Τροφῆς.
 
@@ -2159,7 +2159,7 @@ Nam mense nonnumquam octavo editum esse partum in libro quarto decimo Rerum Divi
 
 Sed huius de mense octavo dissensionis causa cognosci potest in libro Hippocratis qui inscriptus est Περὶ Τροφῆς, ex quo libro verba haec sunt: Ἔστιν δὲ καὶ οὐκ ἔστιν τὰ ὀκτάμηνα.
 
-Id tam obscure atque praecise et et, added by Otho. tamquam adverse dictum Sabinus medicus, qui Hippocratem commodissime commentatus est, verbis his his, added by Hertz. enarravit: Ἔστιν μέν, φαινόμενα ὡς ζῶα μετὰ τὴν ἔκτρωσιν· οὐκ ἔστιν δέ, θνήσκοντα μετὰ ταῦτα· καὶ ἔστιν οὖν καὶ οὐκ ἔστιν, φαντασίᾳ μὲν παραυτίκα ὄντα, δυνάμει δὲ οὐκέτι.
+Id tam obscure atque praecise et tamquam adverse dictum Sabinus medicus, qui Hippocratem commodissime commentatus est, verbis his enarravit: Ἔστιν μέν, φαινόμενα ὡς ζῶα μετὰ τὴν ἔκτρωσιν· οὐκ ἔστιν δέ, θνήσκοντα μετὰ ταῦτα· καὶ ἔστιν οὖν καὶ οὐκ ἔστιν, φαντασίᾳ μὲν παραυτίκα ὄντα, δυνάμει δὲ οὐκέτι.
 
 Antiquos autem Romanos Varro dicit non recepisse huiuscemodi quasi monstruosas raritates, sed nono mense aut decimo, neque praeter hos aliis, partionem mulieris secundum naturam fieri existimasse idcircoque eos nomina Fatis tribus fecisse apariendo et a nono atque decimo mense.
 
@@ -2189,7 +2189,7 @@ alii alia quaedam nugalia. Sed Favorinus mihi ait περιπλομένου ἐν
 
 In qua re verbo usus est non vulgariae significationis.
 
-Adfecta enim, sicuti Marcus Cicero et veterum elegantissimi locuti sunt, ea proprie dicebantur quae non ad finem ipsum, sed proxime finem progressa deductave erant. Hoc verbum ad hanc sententiam Cicero in hac oratione, ς; hoc, ω. fecit, fuit, R. V. quam dixit De Provinciis Consularibus.
+Adfecta enim, sicuti Marcus Cicero et veterum elegantissimi locuti sunt, ea proprie dicebantur quae non ad finem ipsum, sed proxime finem progressa deductave erant. Hoc verbum ad hanc sententiam Cicero in hac fecit, quam dixit De Provinciis Consularibus.
 
 Hippocrates autem in eo libro de quo supra scripsi, cum et numerum dierum quibus conceptum in utero coagulum conformatur, et tempus ipsius partionis nono aut decimo mense definisset neque id tamen semper eadem esse fini dixisset, sed alias ocius fieri, alias serius, hisce ad postremum verbis usus est: Γίνεται δὲ ἐν τούτοις καὶ πλείω καὶ ἐλάσσω καὶ ὅλον καὶ κατὰ μέρος· οὐ πολλὸν δὲ καὶ πλείω πλείω καὶ ἐλάσσω ἐλάσσω. Quibus verbis significat, quod aliquando ocius fieret, non multo tamen fieri ocius, neque quod serius, multo serius.
 
@@ -2197,7 +2197,7 @@ Memini ego Romae accurate hoc atque sollicite quaesitum, negotio non rei tunc pa
 
 Sed quoniam de Homerico annuo partu ac de undecimo mense diximus quae cognoveramus, visum est non praetereundum quod in Plinii Secundi libro septimo Naturalis Historiae legimus.
 
-Id autem quia extra fidem esse videri potest, verba ipsius Plinii posuimus: Masurius auctor est, L. Papirium praetorem, secundo herede lege agente, bonorumbonoruin possessionem contra eum dedisse, cum mater partum se tredecim mensibus tulisse diceret, quoniam nullum certum tempus pariendi statutum ei See note 1, p. 291. Here Gellius’ text is followed. videretur.
+Id autem quia extra fidem esse videri potest, verba ipsius Plinii posuimus: Masurius auctor est, L. Papirium praetorem, secundo herede lege agente, bonorumbonoruin possessionem contra eum dedisse, cum mater partum se tredecim mensibus tulisse diceret, quoniam nullum certum tempus pariendi statutum ei videretur.
 
 In eodem libro Plini Secundi verba haec scripta sunt: Oscitatio in nixu letalis est, sicut sternuisse a coitu abortivum.
 
@@ -2211,7 +2211,7 @@ Aristotelem quoque traditum libros pauculos Speusippi philosophi post mortem eiu
 
 Τίμων amarulentus librum maledicentissimum conscripsit, qui Σίλλος inscribitur.
 
-In eo libro Platonem philosophum after philosophum the MSS. repeat tenui fuisse from § 1. contumeliose appellat, quod inpenso pretio librum Pythagoricae disciplinae emisset exque eo Timaeum, nobilem illum dialogum, concinnasset. Versus super ea re Τίμωνος hi sunt:
+In eo libro Platonem philosophum contumeliose appellat, quod inpenso pretio librum Pythagoricae disciplinae emisset exque eo Timaeum, nobilem illum dialogum, concinnasset. Versus super ea re Τίμωνος hi sunt:
 
 Καὶ σύ, Πλάτων, καὶ γάρ σε μαθητείης πόθος ἔσχεν, Πολλῶν δʼ ἀργυρίων ὀλίγην ἠλλάξαο βίβλον, Ἔνθεν ἀπαρχόμενος τιμαιογραφεῖν ἐδιδάχθης.
 
@@ -2227,15 +2227,15 @@ NON pauci sunt qui opinantur pedarios senatores appellatos, qui sententiam in se
 
 cum senatusconsultum per discessionem fiebat, nonne universi senatores sententiam pedibus ferebant?
 
-Atque haec etiam vocabuli istius ratio dicitur, quam Gavius G., ω. Bassus in Commentariis suis scriptam reliquit.
+Atque haec etiam vocabuli istius ratio dicitur, quam Gavius Bassus in Commentariis suis scriptam reliquit.
 
-Senatores enim dicit in veterum aetate, qui curulem magistratum gessissent, curru solitos honoris gratia in curiam vehi, in quo curru sella esset super quam considerent, quae ob eam causam curulis appellaretur; sed eos senatores, qui magistratum curulem nondum ceperant, pedibus itavisse in curiam: propterea senatores nondum maioribus honoribus usos suggested by Hertz; functos, ς. pedarios nominatos.
+Senatores enim dicit in veterum aetate, qui curulem magistratum gessissent, curru solitos honoris gratia in curiam vehi, in quo curru sella esset super quam considerent, quae ob eam causam curulis appellaretur; sed eos senatores, qui magistratum curulem nondum ceperant, pedibus itavisse in curiam: propterea senatores nondum maioribus honoribus usos pedarios nominatos.
 
-M. autem Varro in Satira Menippea, quae Ἱπποκύων inscripta est, equites quosdam dicit pedarios appellatos, videturque eos significare qui, nondum a censoribus in senatum lecti, senatores quidem non erant, sed quia honoribus populi usi erant, in senatum veniebant et sententiae ius habebant.
+**M** autem Varro in Satira Menippea, quae Ἱπποκύων inscripta est, equites quosdam dicit pedarios appellatos, videturque eos significare qui, nondum a censoribus in senatum lecti, senatores quidem non erant, sed quia honoribus populi usi erant, in senatum veniebant et sententiae ius habebant.
 
-Nam et curulibus magistratibus functi, si functi si, Scioppius; functis, ω; functi qui, ς. nondum a censoribus in senatum lecti erant, senatores non erant et, quia in postremis scripti erant, non rogabantur sententias sed, quas principes dixerant, in eas discedebant.
+Nam et curulibus magistratibus functi, si nondum a censoribus in senatum lecti erant, senatores non erant et, quia in postremis scripti erant, non rogabantur sententias sed, quas principes dixerant, in eas discedebant.
 
-Hoc significabat edictum quo nunc quoque consules, cum consules qu(a)e cum, ω; c. usque cum, Mommsen. senatores in curiam vocant, servandae consuetudinis causa tralaticio utuntur. Verba edicti haec sunt:
+Hoc significabat edictum quo nunc quoque consules, cum senatores in curiam vocant, servandae consuetudinis causa tralaticio utuntur. Verba edicti haec sunt:
 
 Senatores quibusque in senatu sententiam dicere licet.
 
@@ -2259,19 +2259,19 @@ Quin potius, inquit, quod simplicius veriusque est, id dicimus? Parcus enim nequ
 
 Sermo quidam Favorini philosophi cum grammatico iactantiore factus in Socraticum modum; atque ibi in sermone dictum quibus verbis penus a Q. Scaevola definita sit; quodque eadem definitio culpata reprehensaque est.
 
-IN vestibulo aedium Palatinarum omnium fere ordinum multitudo opperientes salutationem Caesaris constiterant; atque ibi in circulo doctorum hominum, Favorino philosopho praesente, ostentabat quispiam grammaticae rei ditior doct(i)or, ς; scitior, J. F. Gronov; eruditior, peritior, others. scholica quaedam nugalia, de generibus et casibus vocabulorum disserens cum arduis superciliis vocisque et vultus gravitate composita, tamquam interpres et arbiter Sibyllae oraculorum.
+IN vestibulo aedium Palatinarum omnium fere ordinum multitudo opperientes salutationem Caesaris constiterant; atque ibi in circulo doctorum hominum, Favorino philosopho praesente, ostentabat quispiam grammaticae rei ditior scholica quaedam nugalia, de generibus et casibus vocabulorum disserens cum arduis superciliis vocisque et vultus gravitate composita, tamquam interpres et arbiter Sibyllae oraculorum.
 
 Tum aspiciens ad Favorinum, quamquam ei nondum etiam satis notus esset, Penus quoque, inquit, variis generibus dictum et varie declinatum est. Nam et hoc penus et haec penus et huius peni et penoris veteres dictaverunt;
 
-mundum quoque muliebrem Lucilius in Satirarum xvi. non virili genere, ut ceteri, sed neutro appellavit his verbis: Legavit quidam uxori mundum omne penumque. atque penumqu(a)e quid, ω. Atqui quid mundum, quid non? quis dividet istuc?
+mundum quoque muliebrem Lucilius in Satirarum xvi. non virili genere, ut ceteri, sed neutro appellavit his verbis: Legavit quidam uxori mundum omne penumque. Atqui quid mundum, quid non? quis dividet istuc?
 
-Legavit quidam uxori mundum omne penumque. atque penumqu(a)e quid, ω.
+Legavit quidam uxori mundum omne penumque.
 
 Atqui quid mundum, quid non? quis dividet istuc?
 
-Atque horum omnium et testimoniis et exemplis constrepebat; cumque nimis odiose blatiret, blatiret, Hosius; blateraret, Bentley; plateret, RV, placeret P. intercessit placide Favorinus et Amabo, inquit, magister, quicquid est nomen tibi, abunde multa docuisti quae quidem ignorabamus et scire haud sane postulabamus.
+Atque horum omnium et testimoniis et exemplis constrepebat; cumque nimis odiose blatiret, intercessit placide Favorinus et Amabo, inquit, magister, quicquid est nomen tibi, abunde multa docuisti quae quidem ignorabamus et scire haud sane postulabamus.
 
-Quid enim refert mea eiusque quicum loquor, quo genere penum dicam aut in quas extremas litteras declinem, si nemo id non nimis barbare fecerimus? nemo non fecerit, Mommsen; si modo, Lion; fecerim, RV.
+Quid enim refert mea eiusque quicum loquor, quo genere penum dicam aut in quas extremas litteras declinem, si nemo id non nimis barbare fecerimus?
 
 Sed hoc plane indigeo discere, quid sit penus et qua fini id vocabulum dicatur, ne rem cotidiani usus, tamquam qui in venalibus Latine loqui coeptant, alia quam oportet voce appellem.
 
@@ -2295,9 +2295,9 @@ Meministi enim, credo, quaeri solitum quid Vergilius dixerit, penum struere vel 
 
 Sed ut faciam te aequiore animo ut sis, ne illi quidem veteres iuris magistri, qui sapientes appellati sunt, definisse satis recte existimantur, quid sit penus.
 
-Nam Quintum Scaevolam ad demonstrandam penum his verbis usum audio: Penus est, inquit, quod esculentum aut posculentum est, quod ipsius patrisfamilias aut matris familias aut m.f. and aut. f., added by Hertz. aut liberum patrisfamilias aut familiae aut m.f. and aut. f., added by Hertz. eius, quae circum eum aut liberos eius est et opus non eorum, Lambecius. facit, causa paratum est. .. , ut Mucius ait, penus videri debet. Nam quae ad edendum bibendumque in dies singulos prandii aut cenae causa parantur, penus non sunt; sed ea potius, quae huíusce generis longae usionis gratia contrahuntur et reconduntur, ex eo, quod non in promptu est, sed intus et penitus habeatur, penus dicta est.
+Nam Quintum Scaevolam ad demonstrandam penum his verbis usum audio: Penus est, inquit, quod esculentum aut posculentum est, quod ipsius patrisfamilias aut matris familias aut liberum patrisfamilias aut familiae eius, quae circum eum aut liberos eius est et opus non facit, causa paratum est. .. , ut Mucius ait, penus videri debet. Nam quae ad edendum bibendumque in dies singulos prandii aut cenae causa parantur, penus non sunt; sed ea potius, quae huíusce generis longae usionis gratia contrahuntur et reconduntur, ex eo, quod non in promptu est, sed intus et penitus habeatur, penus dicta est.
 
-Haec ego, inquit, cum philosophiae me dedissem, non insuper tamen habui discere; quoniam civibus Romanis Latine loquentibus rem non suo suo, added in ς vocabulo demonstrare non minus turpe est quam hominem non suo nomine appellare.
+Haec ego, inquit, cum philosophiae me dedissem, non insuper tamen habui discere; quoniam civibus Romanis Latine loquentibus rem non suo vocabulo demonstrare non minus turpe est quam hominem non suo nomine appellare.
 
 Sic Favorinus sermones id genus communes a rebus parvis et frigidis abducebat ad ea quae magis utile esset audire ac discere, non allata extrinsecus, non per ostentationem, sed indidem nata acceptaque.
 
@@ -2307,11 +2307,11 @@ Masurius autem Sabinus in Iuris Civilis secundo, etiam quod iumentorum causa app
 
 Ligna quoque et virgas et carbones, quibus conficeretur penus, quibusdam ait videri esse in penu.
 
-Ex his autem quae promercalia et usuaria isdem in locis essent, essent, added by Mommsen. esse ea sola penoris putat quae satis sint usu annuo.
+Ex his autem quae promercalia et usuaria isdem in locis essent, esse ea sola penoris putat quae satis sint usu annuo.
 
 Morbus et vitium quid differat et quam vim habeant vocabula ista in edicto aedilium; et an eunuchus et steriles mulieres redhiberi possint; diversaeque super ea re sententiae.
 
-IN Edicto Aedilium Curulium, qua parte de mancipiis vendundis cautum est, scriptum sic fuit: Titulus servorum servorum, ς; scriptorum, ω; omitted by Hertz; gypsatorum, Damsté. singulorum scriptus sit curato ita, ut intellegi recte possit quid morbi vitiive cuique sit, quis fugitivus errove sit noxave solutus non sit.
+IN Edicto Aedilium Curulium, qua parte de mancipiis vendundis cautum est, scriptum sic fuit: Titulus servorum singulorum scriptus sit curato ita, ut intellegi recte possit quid morbi vitiive cuique sit, quis fugitivus errove sit noxave solutus non sit.
 
 Propterea quaesierunt iure consulti veteres, quod mancipium morbosum quodve vitiosum recte diceretur quantumque morbus a vitio differret.
 
@@ -2319,7 +2319,7 @@ Caelius Sabinus in libro, quem De Edicto Aedilium Curulium composuit, Labeonem r
 
 Sed morbum alias in toto corpore accidere dicit, alias in parte corporis. Totius corporis morbum esse, veluti sit phthisis aut febris, partis autem, veluti sit caecitas aut pedis debilitas.
 
-Balbus autem, inquit, et atypus vitiosi magis quam morbosi sunt, et equus mordax aut calcitro vitiosus, non morbosus est. Sed cui morbus est, idem etiam vitiosus est. Neque id tamen contra fit; potest enim qui vitiosus est non morbosus esse. quamobremQuarmobrem, cum de homine morboso agetur, aeque, aeque, Huschke; neque, ω.. inquit, ita dicetur: quanto ob id vitium minoris erit.
+Balbus autem, inquit, et atypus vitiosi magis quam morbosi sunt, et equus mordax aut calcitro vitiosus, non morbosus est. Sed cui morbus est, idem etiam vitiosus est. Neque id tamen contra fit; potest enim qui vitiosus est non morbosus esse. quamobremQuarmobrem, cum de homine morboso agetur, aeque, inquit, ita dicetur: quanto ob id vitium minoris erit.
 
 De eunucho quidem quaesitum est an contra edictum aedilium videretur venundatus, si ignorasset emptor eum eunuchum esse.
 
@@ -2345,17 +2345,17 @@ Quod nullae fuerunt rei uxoriae actiones in urbe Roma ante Carvilianum divortium
 
 MEMORIAE traditum est quingentis fere annis post Romam conditam nullas rei uxoriae neque actiones neque cautiones in urbe Roma aut in Latio fuisse, quoniam profecto nihil desiderabantur, nullis etiamtunc matrimoniis divertentibus.
 
-Servius quoque Sulpicius in libro, quem composuit De Dotibus, tum primum cautiones rei uxoriae necessarias esse visas scripsit, cum Spurius Carvilius, cui Ruga cognomentum fuit, vir nobilis, divortium cum uxore fecit, quia liberi ex ea corporis vitio non gignerentur, anno urbis conditae quingentesimo vicesimo tertio M. Atilio, P. Valerio consulibus. Atque is Carvilius traditur uxorem quam dimisit egregie dilexisse carissimamque morum eius gratia habuisse, set sed, Carrio; et, ω. iurisiurandi religionem animo atque amori praevertisse quod iurare a censoribus coactus erat, uxorem se liberum quaerundum gratia habiturum.
+Servius quoque Sulpicius in libro, quem composuit De Dotibus, tum primum cautiones rei uxoriae necessarias esse visas scripsit, cum Spurius Carvilius, cui Ruga cognomentum fuit, vir nobilis, divortium cum uxore fecit, quia liberi ex ea corporis vitio non gignerentur, anno urbis conditae quingentesimo vicesimo tertio M. Atilio, P. Valerio consulibus. Atque is Carvilius traditur uxorem quam dimisit egregie dilexisse carissimamque morum eius gratia habuisse, set iurisiurandi religionem animo atque amori praevertisse quod iurare a censoribus coactus erat, uxorem se liberum quaerundum gratia habiturum.
 
-Paelicem autem appellatam probrosamque habitam, quae iuncta consuetaque esset cum eo in cuius manu mancipioque alia matrimonii causa foret, hac antiquissima lege ostenditur, quam Numae regis fuisse accepimus: Paelex aedem aram, Paulus; aedem (edem), MSS. Iunonis ne tangito; si tangit, Iunoni crinibus demissis agnum feminam caedito.
+Paelicem autem appellatam probrosamque habitam, quae iuncta consuetaque esset cum eo in cuius manu mancipioque alia matrimonii causa foret, hac antiquissima lege ostenditur, quam Numae regis fuisse accepimus: Paelex aedem Iunonis ne tangito; si tangit, Iunoni crinibus demissis agnum feminam caedito.
 
 Paelex autem quasi πάλλαξ, id est quasi παλλακίς. Ut pleraque alia, ita hoc quoque vocabulum de Graeco flexum est.
 
 Quid Servius Sulpicius, in libro qui est De Dotibus, scripserit de iure atque more veterum sponsaliorum.
 
-SPONSALIA in ea parte ItaliaeItaliac quae Latium appellatur hoc more atque iure solita fieri scripsit Servius Sulpicius in libro quem inscripsit inscripsit, Huschke; scripsit, ω.. De Dotibus:
+SPONSALIA in ea parte ItaliaeItaliac quae Latium appellatur hoc more atque iure solita fieri scripsit Servius Sulpicius in libro quem inscripsit De Dotibus:
 
-Qui uxorem, inquit, ducturus erat, ab eo unde ducenda erat stipulabatur, eam in matrimonium datum ducturum iri. Cui, ω. iri. Qui ducturus erat, id id, suggested by Hosius. itidem spondebat. Is contractus stipulationum sponsionumque dicebatur sponsalia. Tunc, quae promissa erat sponsa appellabatur, qui spoponderat ducturum, sponsus. Sed si post eas stipulationis uxor non dabatur aut non ducebatur, qui stipulabatur aut qui spoponderat aut spoponderat, Gronov. ex sponsu agebat. Iudices cognoscebant. Iudex quamobremquamobrerm data acceptave non esset uxor quaerebat. Si nihil iustae causae videbatur, litem pecunia aestimabat, quantique interfuerat eamearn uxorem accipi aut dari, eum qui spoponderat aut aut, added in ς; ei, Cramer. qui stipulatus erat, condemnabat.
+Qui uxorem, inquit, ducturus erat, ab eo unde ducenda erat stipulabatur, eam in matrimonium datum iri. Qui ducturus erat, id itidem spondebat. Is contractus stipulationum sponsionumque dicebatur sponsalia. Tunc, quae promissa erat sponsa appellabatur, qui spoponderat ducturum, sponsus. Sed si post eas stipulationis uxor non dabatur aut non ducebatur, qui stipulabatur aut qui spoponderat ex sponsu agebat. Iudices cognoscebant. Iudex quamobremquamobrerm data acceptave non esset uxor quaerebat. Si nihil iustae causae videbatur, litem pecunia aestimabat, quantique interfuerat eamearn uxorem accipi aut dari, eum qui spoponderat aut qui stipulatus erat, condemnabat.
 
 Hoc ius sponsaliorum observatum dicit Servius ad id tempus quo civitas universe Latio lege Iulia data est.
 
@@ -2367,7 +2367,7 @@ STATUA Romae in comitio posita Horatii Coclitis, fortissimi viri, de caelo tacta
 
 Ob id fulgur piaculis luendum aruspices ex Etruria acciti, inimico atque hostili in populum Romanum animo, instituerant eamearn rem contrariis religionibus procurare,
 
-atque illam statuam suaserunt in inferiorem locum perperam transponi, quem sol oppositu circum undique undique montis aliarumque, P; Monetae, Mommsen. altarum altarum, Jahn; aliarum, RV; aliarumque P, Mommsen. aedium numquam illustraret.
+atque illam statuam suaserunt in inferiorem locum perperam transponi, quem sol oppositu circum undique altarum aedium numquam illustraret.
 
 Quod cum ita fieri persuasissent, delati ad populum proditique sunt et, cum de perfidia confessi essent, necati sunt, constititque, eam statuam, proinde ut verae rationes post compertae monebant, in locum editum subducendam atque ita in area Volcani sublimiore loco statuendam; ex quo res bene ac prospere populo Romano cessit.
 
@@ -2385,7 +2385,7 @@ Verba veteris senatusconsulti posita, quo decretum est hostiis maioribus expiand
 
 UT terram movisse nuntiari solet eaque res procuratur, ita in veteribus memoriis scriptum legimus nuntiatum esse senatui in sacrario in regia hastas Martias movisse.
 
-Eius rei causa senatusconsultum factum est M. Antonio A. Postumio consulibus, eiusque exemplum hoc est: Quod C. Iulius, L. filius, pontifex nuntiavit in sacrario in in, added in ς regia hastas Martias movisse, de ea re ita censuerunt, uti M. Antonius consul hostiis maioribus Iovi et Marti procuraret et ceteris dis, quibus videretur, lactantibus. Ibus ibus, added by Scioppius. uti procurasset satis halendum censuerunt. Si quid succidaneis opus esset, robiis succideret.
+Eius rei causa senatusconsultum factum est M. Antonio A. Postumio consulibus, eiusque exemplum hoc est: Quod C. Iulius, L. filius, pontifex nuntiavit in sacrario in regia hastas Martias movisse, de ea re ita censuerunt, uti M. Antonius consul hostiis maioribus Iovi et Marti procuraret et ceteris dis, quibus videretur, lactantibus. Ibus uti procurasset satis halendum censuerunt. Si quid succidaneis opus esset, robiis succideret.
 
 Quod succidaneas hostias senatus appellavit, quaeri solet quid verbum id significet.
 
@@ -2395,9 +2395,9 @@ Mén piaculárem oportet fíeri ob stultitiám tuam,
 
 Ut meum tergum tuaé stultitiae súbdas succidaneum?
 
-Succidaneae autem hostiae dicuntur, ae littera per morem compositi vocabuli in i i, added in ς. litteram tramutata tramutata, Mommsen; nam, ω. quasi succaedaneae,
+Succidaneae autem hostiae dicuntur, ae littera per morem compositi vocabuli in i litteram tramutata quasi succaedaneae,
 
-appellatae, quoniam, si primis hostiis litatum non erat, aliae post easdem ductae hostiae caedebantur; quae quia, quae quia, Otho; due qua (quas, R), ω.. prioribus iam caesis, luendi piaculi gratia subdebantur et succidebantur, succidaneae nominatae, littera i i, added in ς. scilicet tractim pronuntiata; audio enim quosdam eam litteram in hac voce barbare corripere.
+appellatae, quoniam, si primis hostiis litatum non erat, aliae post easdem ductae hostiae caedebantur; quae quia, prioribus iam caesis, luendi piaculi gratia subdebantur et succidebantur, succidaneae nominatae, littera i scilicet tractim pronuntiata; audio enim quosdam eam litteram in hac voce barbare corripere.
 
 Eadem autem ratione verbi praecidaneae quoque hostiae dicuntur quae ante sacrificia sollemnia pridie caeduntur.
 
@@ -2411,15 +2411,15 @@ De epistula Valerii Probi grammatici ad Marcellum scripta super accentu nominum 
 
 VALERIUS PROBUS grammaticus inter suam aetatem praestanti scientia fuit.
 
-Is Hannibalem et Hasdrubalem et Hamilcarem ita pronuntiabat ut paenultimam circumflecteret, et est et est, Lion; ut est, ω.; teste, J. F. Gronov. epistula eius scripta Ad Marcellum, in qua Plautum et Ennium multosque alios veteres eo modo pronuntiasse affirmat,
+Is Hannibalem et Hasdrubalem et Hamilcarem ita pronuntiabat ut paenultimam circumflecteret, et est epistula eius scripta Ad Marcellum, in qua Plautum et Ennium multosque alios veteres eo modo pronuntiasse affirmat,
 
 solius tamen Ennii versum unum ponit ex libro, qui Scipio inscribitur.
 
 Eum versum quadrato numero factum subiecimus, in quo, nisi tertia syllaba de Hannibalis nomine circumflexe promatur, numerus clausurus est.
 
-Versus Ennii quem dixit, ita est: Quáque quaque, Hertz, Vahlen; si qua, Boücheler; qua, ω. propter Hánnibalis cópias considerat.
+Versus Ennii quem dixit, ita est: Quáque propter Hánnibalis cópias considerat.
 
-Quáque quaque, Hertz, Vahlen; si qua, Boücheler; qua, ω. propter Hánnibalis cópias considerat.
+Quáque propter Hánnibalis cópias considerat.
 
 Quid C. Fabricius de Cornelio Rufino homine avaro dixerit, quem, cum odisset inimicusque esset, designandum tamen consulem curavit.
 
@@ -2429,15 +2429,15 @@ P. Cornelius Rufinus manu quidem strenuus et bellator bonus militarisque discipl
 
 Hunc Fabricius non probabat neque amico utebatur osusque eum morum causa fuit.
 
-Sed cum in temporibus rei publicae publicae, ς Damsté. difficillimis consules creandi forent et is Rufinus peteret consulatum competitoresque eius essent inbelles quidam et futtiles, summa ope adnixus est Fabricius uti Rufino consulatus deferretur.
+Sed cum in temporibus rei publicae difficillimis consules creandi forent et is Rufinus peteret consulatum competitoresque eius essent inbelles quidam et futtiles, summa ope adnixus est Fabricius uti Rufino consulatus deferretur.
 
 eamEarn rem plerisque admirantibus, quod hominem avarum cui esset inimicissimus,
 
-creari consulem vellet, Malo, inquit, civis me consulem me, not in MSS. compilet, quam hostis vendat.
+creari consulem vellet, Malo, inquit, civis me compilet, quam hostis vendat.
 
-Hunc Rufinum postea, bis consulatu et dictatura functum, censor Fabricius senatu movit ob luxuriae notam, quod decem pondo libras argenti facti haberet.facti haberet, Scioppius; factitaret, ω.
+Hunc Rufinum postea, bis consulatu et dictatura functum, censor Fabricius senatu movit ob luxuriae notam, quod decem pondo libras argenti facti haberet.
 
-Id autem quod supra scripsi, Fabricium de Cornelio Rufino ita, uti in pleraque historia scriptum est, dixisse, M. Cicero non aliis a Fabricio, sed ipsi Rufino, gratias agenti quod ope ope, added by Hertz. eius designatus esset, dictum esse refert in libro secundo De Oratore.
+Id autem quod supra scripsi, Fabricium de Cornelio Rufino ita, uti in pleraque historia scriptum est, dixisse, M. Cicero non aliis a Fabricio, sed ipsi Rufino, gratias agenti quod ope eius designatus esset, dictum esse refert in libro secundo De Oratore.
 
 Quid significet proprie religiosus ; et in quae diverticula significatio istius vocabuli flexa sit; et verbaverbal Nigidii Figuli ex Commentariis eius super ea re sumpta.
 
@@ -2459,7 +2459,7 @@ Idem tamen M. Tullius in oratione De accusatoreAccusalore Constituendo religiosa
 
 Masurius autem Sabinus in Commentariis quos De Indigenis composuit, Religiosum, inquit, est quod propter sanctitatem aliquam remotum ac sepositum a nobis est, verbum a reliquendo dictum, tamquam caerimoniae a carendo.
 
-Secundum hanc Sabini interpretationem templa quidem ac delubra—quia horum cumulus in vituperationem non cadit, ut illorum quorum laus in modo extat quia extat, omitted by Madvig. —, quae non volgo ac temere, sed cum castitate caerimoniaque adeundum, et reverenda et reformidanda
+Secundum hanc Sabini interpretationem templa quidem ac delubra—quia horum cumulus in vituperationem non cadit, ut illorum quorum laus in modo extat —, quae non volgo ac temere, sed cum castitate caerimoniaque adeundum, et reverenda et reformidanda
 
 sunt magis quam involganda; sed dies religiosi dicti, quos ex contraria causa, propter ominis diritatem, relinquimus.
 
@@ -2467,7 +2467,7 @@ Et Terentius: Tun, quód dem recte est. Nám, nihil esse Míhi, religio est dice
 
 Tun, quód dem recte est. Nám, nihil esse Míhi, religio est dicere.
 
-Quod si, ut ait Nigidius, omnia istiusmodi inclinamenta nimium ac praeter modum significant et idcirco in culpas cadunteadunt, ut vinosus, mulierosus, morosus, verbosus, famosus, cur ingeniosus et formosus et officiosus et speciosus, quae pariter ab ingenio et forma et officio et specie, et specie, suggested by Hosius; Damsté would omit speciosus. inclinata sunt, cur etiam disciplinosus, consiliosus, victoriosus, quae M. Cato ita affiguravit, cur item facundiosa, quod Sempronius Asellio XIII Rerum Gestarum ita scripsit: facta sua spectare oportere, non dicta, si minus facundiosa essent—cur, inquam, ista omnia numquam in culpam, sed in laudem dicuntur, quamquam haec item haec item, Hosius; haec cum, ω; quamquam aecum, Hertz. incrementum sui nimium demonstrent? an propterea, quia illis quidem, quae supra posui, adhibendus est modus quidam necessarius?
+Quod si, ut ait Nigidius, omnia istiusmodi inclinamenta nimium ac praeter modum significant et idcirco in culpas cadunteadunt, ut vinosus, mulierosus, morosus, verbosus, famosus, cur ingeniosus et formosus et officiosus et speciosus, quae pariter ab ingenio et forma et officio et specie, inclinata sunt, cur etiam disciplinosus, consiliosus, victoriosus, quae M. Cato ita affiguravit, cur item facundiosa, quod Sempronius Asellio XIII Rerum Gestarum ita scripsit: facta sua spectare oportere, non dicta, si minus facundiosa essent—cur, inquam, ista omnia numquam in culpam, sed in laudem dicuntur, quamquam haec item incrementum sui nimium demonstrent? an propterea, quia illis quidem, quae supra posui, adhibendus est modus quidam necessarius?
 
 Nam et gratia, si nimia atque inmodica, et mores, si multi atque varii, et verba, si perpetua atque infinita et obtundentia, et fama, si magna et inquieta et invidiosa sit, neque laudabilia neque utilia sunt;
 
@@ -2483,7 +2483,7 @@ quidam e consulibus, studio aut necessitudine aliqua adducti, quem is visum erat
 
 Observatum tamen est, cum extra ordinem fieret, ne quis quemquam ex alio quam ex consulari loco sententiam primum rogaret.
 
-C. Caesar in consulatu, quem cum M. Bibulo gessit, quattuor solos extra ordinem rogasse sententiam dicitur. Ex his quattuor principem rogabat M. Crassum; sed, postquam filiam Cn. Pompeio desponderat, primumprimuim coeperat Pompeium rogare.
+**C** Caesar in consulatu, quem cum M. Bibulo gessit, quattuor solos extra ordinem rogasse sententiam dicitur. Ex his quattuor principem rogabat M. Crassum; sed, postquam filiam Cn. Pompeio desponderat, primumprimuim coeperat Pompeium rogare.
 
 Eius rei rationem reddidisse eum senatui Tiro Tullius, M. Ciceronis libertus, refert, itaque se ex patrono suo audisse scribit.
 
@@ -2497,7 +2497,7 @@ OPINIO vetus falsa occupavit et convaluit, Pythagoram philosophum non esitavisse
 
 Ex hac opinione Callimachus poeta scripsit: Καὶ κυάμων ἄπο χεῖρας ἔχειν, ἀνιῶντος ἐδεστοῦ, Κἀγώ, Πυθαγόρας ὡς ἐκέλευε, λέγω.
 
-Ex eadem item opinione M. Cicero in libro De Divinatione primo haec verba posuit: Iubet igitur Plato sic ad somnum proficisci corporibus affectis, ut nihil sit quod errorem animis perturbationemque afferat. Ex quo etiam Pythagoreis Pythagoricis, Cic. interdictum putatur ne faba vescerentur, quae res habet inflationem magnam, magnam is cibus t. m. q. constat esse contrariam, ω.; corrected by J. F. Gronov; quod habet inflationem magnam is cibus tranquillitati mentis quaerenti(s) vera contrariam, Cic. tranquillitatem mentis quaerentibus contrariam.
+Ex eadem item opinione M. Cicero in libro De Divinatione primo haec verba posuit: Iubet igitur Plato sic ad somnum proficisci corporibus affectis, ut nihil sit quod errorem animis perturbationemque afferat. Ex quo etiam Pythagoreis interdictum putatur ne faba vescerentur, quae res habet inflationem magnam, tranquillitatem mentis quaerentibus contrariam.
 
 Haec quidem M. Cicero. Sed Aristoxenus musicus, vir litterarum veterum diligentissimus, Aristoteli philosophi auditor, in libro quem De Pythagora reliquit, nullo saepius legumento Pythagoram dicit usum quam fabis, quoniam is cibus et subduceret sensim alvum et levigaret.
 
@@ -2505,7 +2505,7 @@ Verba ipsa Aristoxeni subscripsi: Πυθαγόρας δὲ τῶν ὀσπρίω
 
 Porculis quoque minusculis et haedis tenerioribus victitasse, idem Aristoxenus refert.
 
-Quam rem videtur cognovisse e Xenophilo Pythagorico familiari suo, et ex quibusdam aliis natu maioribus, qui ab aetate Pythagorae minus diu aberant. minus aberant, added by Hertz.
+Quam rem videtur cognovisse e Xenophilo Pythagorico familiari suo, et ex quibusdam aliis natu maioribus, qui ab aetate Pythagorae minus diu aberant.
 
 Ac de animalibus Alexis etiam poeta in comoedia, quae Πυθαγορίζουσα inscribitur, docet.
 
@@ -2513,33 +2513,33 @@ Videtur autem de κυάμῳ non esitato causam erroris fuisse, quia in Empedocl
 
 Δειλοί, πάνδειλοι, κυάμων ἄπο χεῖρας ἔχεσθαι.
 
-Opinati enim sunt plerique κυάμους legumentum dici, ut a vulgo dicitur. Sed qui diligentius scitiusque carmina Empedocli arbitrati sunt, κυάμους hoc in loco testiculos significare dicunt, eosque more Pythagorae operte atque symbolice κυάμους appellatos, quod sint αἴτιοι τοῦ κυεῖν et geniturae humanae vim praebeant; idcircoque Empedoclen versu isto non a fabulo edendo, sed a rei veneriae prolubio proluvio, ω., Hertz. voluisse homines deducere.
+Opinati enim sunt plerique κυάμους legumentum dici, ut a vulgo dicitur. Sed qui diligentius scitiusque carmina Empedocli arbitrati sunt, κυάμους hoc in loco testiculos significare dicunt, eosque more Pythagorae operte atque symbolice κυάμους appellatos, quod sint αἴτιοι τοῦ κυεῖν et geniturae humanae vim praebeant; idcircoque Empedoclen versu isto non a fabulo edendo, sed a rei veneriae prolubio voluisse homines deducere.
 
 Plutarchus quoque, homo in disciplinis gravi auctoritate, in primo librorum quos De Homero composuit, Aristotelem philosophum scripsit eadem ipsa de Pythagoricis scripsisse, quod non abstinuerint edundis animalibus, nisi pauca carne quadam.
 
 Verba ipsa Plutarchi, quoniam res inopinata est, subscripsi: Ἀριστοτέλης δὲ μήτρας καὶ καρδίας καὶ ἀκαλήφης καὶ τοιούτων τινῶν ἄλλων ἀπέχεσθαί φησιν
 
-τοὺς Πυθαγορικούς· χρῆσθαι δὲ τοῖς ἄλλοις. Ἀκαλήφη autem est animal marinum, quod urtica appellatur. Sed et piscibus mullis mullis, omitted by Hertz; multis, Mommsen. abstinere Pythagoricos, Plutarchus in Symposiacis dicit.
+τοὺς Πυθαγορικούς· χρῆσθαι δὲ τοῖς ἄλλοις. Ἀκαλήφη autem est animal marinum, quod urtica appellatur. Sed et piscibus mullis abstinere Pythagoricos, Plutarchus in Symposiacis dicit.
 
-Pythagoram vero ipsum, sicuti celebre est Euphorbum primo fuisse dictasse, ita dictasse. Ita, ω. haec remotiora sunt his quae Clearchus et Dicaearchus memoriae tradiderunt, fuisse eum postea Pyrrum Pyranthium, deinde Aethaliden, deinde feminam pulcra facie meretricemneretricem, cui nomen fuerat Alco.
+Pythagoram vero ipsum, sicuti celebre est Euphorbum primo fuisse dictasse, ita haec remotiora sunt his quae Clearchus et Dicaearchus memoriae tradiderunt, fuisse eum postea Pyrrum Pyranthium, deinde Aethaliden, deinde feminam pulcra facie meretricemneretricem, cui nomen fuerat Alco.
 
 Notae et animadversiones censoriae in veteribus monumentis repertae memoria dignae.
 
-Si quis agrum suum passus fuerat sordescere eumque indiligenter curabat ac neque araverat neque purgaverat, sive quis arborem suam vineamque habuerat derelictui, non id sine poena fuit, sed erat opus censorium censoresque aerarium faciebant. Item, si quis si quis, ς; 2 quis, ω.; qui, Vogel; quisquis, C. F. W. Müller. eques Romanus equum habere gracilentum aut parum nitidum visus erat, inpolitiae notabatur; id verbum significat quasi tu dicas incuriae.
+Si quis agrum suum passus fuerat sordescere eumque indiligenter curabat ac neque araverat neque purgaverat, sive quis arborem suam vineamque habuerat derelictui, non id sine poena fuit, sed erat opus censorium censoresque aerarium faciebant. Item, si quis eques Romanus equum habere gracilentum aut parum nitidum visus erat, inpolitiae notabatur; id verbum significat quasi tu dicas incuriae.
 
 Cuius rei utriusque auctoritates sunt et M. Cato id saepenumero adtestatus est.
 
 Quod incentiones quaedam tibiarum certo modo factae ischiacis mederi possunt.
 
-Creditum hoc a plerisque esse esse, Hertz; est,ω. et memoriae mandatum, ischia cum maxime doleant, tum, si modulis lenibus tibicen incinat, minui dolores, ego nuperrime in libro Theophrasti Περὶ Ἐνθουσιασμοῦ title added by Hosius. scriptum inveni.
+Creditum hoc a plerisque esse et memoriae mandatum, ischia cum maxime doleant, tum, si modulis lenibus tibicen incinat, minui dolores, ego nuperrime in libro Theophrasti Περὶ Ἐνθουσιασμοῦ scriptum inveni.
 
-Viperarum morsibus tibicinium scite modulateque adhibitumadhilitum mederi, refert etiam Democriti liber, qui inscribiturinscrilitur Περὶ Λοιμῶν, title added by Hertz. in quo docet plurimis hominum morbidis medicinae fuisse incentiones tibiarum.
+Viperarum morsibus tibicinium scite modulateque adhibitumadhilitum mederi, refert etiam Democriti liber, qui inscribiturinscrilitur Περὶ Λοιμῶν, in quo docet plurimis hominum morbidis medicinae fuisse incentiones tibiarum.
 
 Tanta prosus adfinitas est corporibus hominum mentibusque et propterea vitiis quoque aut medellis animorum et corporum.
 
-Narratur historia de Hostilio Mancino aedili cur. aedili cur., suggested by Hosius; aedilium, ω. et Manilia meretrice; verbaque decreti tribunorum ad quos a Manilia provocatum est.
+Narratur historia de Hostilio Mancino aedili cur. et Manilia meretrice; verbaque decreti tribunorum ad quos a Manilia provocatum est.
 
-CUM librum IX. VIII, Scioppius. Atei Capitonis Coniectaneorum legeremus, qui inscriptus est De Iudiciis Publicis, decretum tribunorum visum est gravitatis antiquae plenum.
+CUM librum IX. Atei Capitonis Coniectaneorum legeremus, qui inscriptus est De Iudiciis Publicis, decretum tribunorum visum est gravitatis antiquae plenum.
 
 Propterea id meminimus, idque ob hanc causam et in hanc sententiam scriptum est: Aulus Hostilius Mancinus aedilis curulis fuit.
 
@@ -2547,7 +2547,7 @@ Is Maniliae meretrici diem ad populum dixit, quod e tabulato eius noctu lapide i
 
 Manilia ad tribunos plebi provocavit.
 
-Apud eos dixit comessatorem Mancinum ad aedes suas venisse; eum sibi recipere non fuisse e re e re, Bentley; ede, ω.. sua, sed cum vi inrumperetinruinperet, lapidibus depulsum.
+Apud eos dixit comessatorem Mancinum ad aedes suas venisse; eum sibi recipere non fuisse e re sua, sed cum vi inrumperetinruinperet, lapidibus depulsum.
 
 Tribuni decreverunt aedilem ex eo loco iure deiectum quo eum venire cum corollario non decuisset; propterea, ne cum populo aedilis ageret intercesserunt
 
@@ -2555,9 +2555,9 @@ Defensa a culpa sententia ex historia Sallustii, quam iniqui eius cum insectatio
 
 ELEGANTIA orationis Sallustii verborumque fingendi et novandi studium cum multa prorsus invidia fuit, multique non mediocri ingenio viri conati sunt reprehendere pleraque et obtrectare. In quibus plura inscite aut maligne vellicant. Nonnulla tamen videri possunt non indigna reprehensione; quale illud in Catilinae Historia repertum est, quod habeat eamearn speciem, quasi parum adtente dictum. Verba Sallustii haec sunt:
 
-Ac mihi quidem, tametsi hautquaquam par gloria sequitur scriptorem et auctorem rerum, tamen inprimis arduum videtur res gestas scribere; primum, quod facta dictis exaequanda sunt; dein, quia plerique quae delicta reprehenderis reprehenderis, Sall.; deprehenderis, ω. malivolentia et invidia dicta putant. Ubi de magna virtute atque gloria bonorum memores, quae sibi quisque facilia factu putat, aequo animo accipit; supra ea, supra ea, Sall.; supra, ω. veluti ficta, pro falsis ducit
+Ac mihi quidem, tametsi hautquaquam par gloria sequitur scriptorem et auctorem rerum, tamen inprimis arduum videtur res gestas scribere; primum, quod facta dictis exaequanda sunt; dein, quia plerique quae delicta reprehenderis malivolentia et invidia dicta putant. Ubi de magna virtute atque gloria bonorum memores, quae sibi quisque facilia factu putat, aequo animo accipit; supra ea, veluti ficta, pro falsis ducit
 
-Proposuit, inquiunt, dicturum causas quamobrem videatur esse arduum, res gestas scribere; atque ibi cum primam causam dixerit, dein non alteram causam, dixerit causam added by Hertz, who reads primum causam aliquam dixerit causam. sed querellas dicit.
+Proposuit, inquiunt, dicturum causas quamobrem videatur esse arduum, res gestas scribere; atque ibi cum primam causam dixerit, dein non alteram causam, sed querellas dicit.
 
 Non enim causa videri debet cur historiae opus arduum sit, quod hi qui legunt aut inique interpretantur quae scripta sunt aut vera esse non credunt.
 
@@ -2567,17 +2567,17 @@ Haec illi malivoli reprehensores dicunt. Sed arduum Sallustius non pro difficili
 
 De vocabulis quibusdam a Varrone et Nigidio contra cotidiani sermonis consuetudinem declinatis; atque inibi id genus quaedam cum exemplis veterum relata.
 
-M. VARRONEM et P. Nigidium, viros Romani generis doctissimos, comperimus non aliter elocutos esse et scripsisse quam senatuis et domuis et fluctuis, qui est patrius casus ab eo quod est senatus, domus fluctus ; (et) fluctus and domui, added in ς. huic senatui, domui (et) fluctus and domui, added in ς fluctui ceteraque is consimilia pariter dixisse.
+**M** VARRONEM et P. Nigidium, viros Romani generis doctissimos, comperimus non aliter elocutos esse et scripsisse quam senatuis et domuis et fluctuis, qui est patrius casus ab eo quod est senatus, domus fluctus ; huic senatui, domui fluctui ceteraque is consimilia pariter dixisse.
 
-Terentii quoque comici versus in libris veteribus itidem scriptus est: Eius ánuis causa, opínor, quae est emórtua. erat mortua, Ter.
+Terentii quoque comici versus in libris veteribus itidem scriptus est: Eius ánuis causa, opínor, quae est emórtua.
 
-Eius ánuis causa, opínor, quae est emórtua. erat mortua, Ter.
+Eius ánuis causa, opínor, quae est emórtua.
 
 Hanc eorum auctoritatem quidam e veteribus grammaticis ratione etiam firmare voluerunt, quod omnis dativus singularis i littera finitus, si non similis est genetivi singularis, s littera addita genetivum singularem facit, ut patri patris, duci ducis, caedi caedis.
 
 Cum igitur inquiunt in casu dandi huic senatui dicamus, genetivus ex eo singularis senatuis est, non senatus.
 
-Set sed, ς; et, ω.. non omnes concedunt in casu dativo senatui magis dicendum quam senatu.
+Set non omnes concedunt in casu dativo senatui magis dicendum quam senatu.
 
 Sicuti Lucilius in eodem casu victu et anu dicit, non victui nec anui, in hisce versibus: Quod sumptum atque epulas victu praeponis honesto et alio in loco: Anu noceo (inquit).
 
@@ -2591,7 +2591,7 @@ Teque aspectu ne subtrahe nostro
 
 Quod nec concubitu indulgent.
 
-C. etiam Caesar, gravis auctor linguae Latinae, in Anticatone, unius, inquit, arrogantiae, superbiae dominatuque. Item In Dolabellam actionis l. lib. I.: Isti, quorum in aedibus fanisque posita et honori erant et ornatu.
+**C** etiam Caesar, gravis auctor linguae Latinae, in Anticatone, unius, inquit, arrogantiae, superbiae dominatuque. Item In Dolabellam actionis l. lib. I.: Isti, quorum in aedibus fanisque posita et honori erant et ornatu.
 
 In libris quoque analogicis omnia istiusmodi sine i littera dicenda censet.
 
@@ -2603,7 +2603,7 @@ Scipiadae magno improbus obiciebat Asellus,
 
 Lustrum illo censore malum infelixque fuisse.
 
-idque eo facere dicunt ut ratio numeri salva sit. Idem infra: Conicere in versus dictum praeconis volebam Grani. In hac quoque primi verbi praepositione o o, added by Mommsen. ob eandem causam producunt.
+idque eo facere dicunt ut ratio numeri salva sit. Idem infra: Conicere in versus dictum praeconis volebam Grani. In hac quoque primi verbi praepositione o ob eandem causam producunt.
 
 Conicere in versus dictum praeconis volebam
 
@@ -2625,13 +2625,13 @@ etiam Parnasia laurus
 
 Parva sub ingenti matris se subicit umbra.
 
-Sed neque ob neque sub praepositio producendi habet naturam, neque item con, con, added in ς. nisi cum eam litterae secuntur quae in verbis constituit et confecit secundum eam primae sunt, vel cumcurl eliditur ex ea n ex ea n, ς; ea non, ω. littera, sicut Sallustius: faenoribus, inquit, copertus.
+Sed neque ob neque sub praepositio producendi habet naturam, neque item con, nisi cum eam litterae secuntur quae in verbis constituit et confecit secundum eam primae sunt, vel cumcurl eliditur ex ea n littera, sicut Sallustius: faenoribus, inquit, copertus.
 
 In his autem quae supra posui et metrum esse integrum potest et praepositiones istae possunt non barbare protendi; secunda enim littera in his verbis per duo i, non per unum scribenda est.
 
-Nam verbum ipsum, cui supradictae particulae praepositae sunt, non est icio, sed iacio et praeteritum non icit facit, sed iecit. Id ubi compositum est, a a, Lion; ex a, ω. littera in i i, added in ς. mutatur, sicuti fit in verbis insilio et incipio, atque i i, added in ς. ita vim consonantis,capit, et idcirco ea syllaba productius latiusque paulo pronuntiata priorem syllabam brevem esse non patitur, sed reddit eam positu longam, proptereaque et numerus in versu et ratio in pronuntiatu manet.
+Nam verbum ipsum, cui supradictae particulae praepositae sunt, non est icio, sed iacio et praeteritum non icit facit, sed iecit. Id ubi compositum est, a littera in i mutatur, sicuti fit in verbis insilio et incipio, atque i ita vim consonantis,capit, et idcirco ea syllaba productius latiusque paulo pronuntiata priorem syllabam brevem esse non patitur, sed reddit eam positu longam, proptereaque et numerus in versu et ratio in pronuntiatu manet.
 
-Haec quae diximus eo etiam conducunt, ut quod quod, added in ς. apud Vergilium in sexto positum invenimus: Eripe me his, invicte, malis, aut tu mihi terram Inice, sic esse iniice, ut supra dixi, et scribendum et legendum sciamus, nisi quis tam indocilis est, ut ut, added in ς. in hoc quoque verbo in praepositionem metri gratia protendat.
+Haec quae diximus eo etiam conducunt, ut quod apud Vergilium in sexto positum invenimus: Eripe me his, invicte, malis, aut tu mihi terram Inice, sic esse iniice, ut supra dixi, et scribendum et legendum sciamus, nisi quis tam indocilis est, ut in hoc quoque verbo in praepositionem metri gratia protendat.
 
 Eripe me his, invicte, malis, aut tu mihi terram Inice,
 
@@ -2643,19 +2643,19 @@ qua vi maria alta tumescant
 
 Obicibus ruptis;
 
-i litteram, quae in hoc hoc, added by Hertz. vocabulo quoque gemina esse debet, paulo uberius largiusque pronuntiabat.
+i litteram, quae in hoc vocabulo quoque gemina esse debet, paulo uberius largiusque pronuntiabat.
 
 Congruens igitur est ut subices etiam, quod proinde ut obices compositum est, u littera brevi dici oporteat.
 
-Ennius in tragoedia quae Achilles inscribitur, subices pro aere alto ponit qui caelo subiectus est, in his versibus: per ego déum sublimas súbices Húmidas, unde óritur imber sónitu saevo et spíritu; spiritu, Festus; strepitu, ω. plerosque omnes tamen legere audias u littera producta.
+Ennius in tragoedia quae Achilles inscribitur, subices pro aere alto ponit qui caelo subiectus est, in his versibus: per ego déum sublimas súbices Húmidas, unde óritur imber sónitu saevo et spíritu; plerosque omnes tamen legere audias u littera producta.
 
 per ego déum sublimas súbices
 
-Húmidas, unde óritur imber sónitu saevo et spíritu; spiritu, Festus; strepitu, ω.
+Húmidas, unde óritur imber sónitu saevo et spíritu;
 
-Id ipsum autem verbum M. Cato sub alia praepositione dicit in oratione quam De Consulatu Suo habuit: Ita hos, nos,H. Meyer; Italos, Falster. inquit, fert ventus ad primorem Pyrenaeum, quo proicit in altum. Et Pacuvius item in Chryse: Idae Idae, Voss; id, ω.. promúnturium, cuius lingua in altum prócit.
+Id ipsum autem verbum M. Cato sub alia praepositione dicit in oratione quam De Consulatu Suo habuit: Ita hos, inquit, fert ventus ad primorem Pyrenaeum, quo proicit in altum. Et Pacuvius item in Chryse: Idae promúnturium, cuius lingua in altum prócit.
 
-Idae Idae, Voss; id, ω.. promúnturium, cuius lingua in altum prócit.
+Idae promúnturium, cuius lingua in altum prócit.
 
 De P. Africano superiore sumpta quaedam ex annalibus memoratu dignissimadignissinla.
 
@@ -2663,7 +2663,7 @@ SCIPIO AFRICANUS antiquior quanta virtutum gloria praestiterit et quam fuerit al
 
 Ex quibus sunt haec duo exempla eius fiduciae atque exuperantiae ingentis.
 
-Cum M. Naevius tribunus plebis accusaret eum ad populum diceretque accepisse a rege Antiocho pecuniam, ut condicionibus gratiosis et mollibus pax cum eo populi Romani nomine fieret, et quaedam item alia crimini daret indigna tali viro, tum Scipio pauca praefatus quae dignitas vitae suae atque gloria postulabat, Memoria, inquit, Quirites, repeto, diem esse hodiernum quo Hannibalem Poenum imperio vestro inimicissimum magno proelio vici in terra Africa pacemque et victoriam vobis peperi spectabilem. spectabilem, Scioppius; inspectabilem, ω.. Non igitur simus adversum deos ingrati et, censeo, relinquamus nebulonem hunc, eamus hinc protinus Iovi optimo maximo gratulatum.
+Cum M. Naevius tribunus plebis accusaret eum ad populum diceretque accepisse a rege Antiocho pecuniam, ut condicionibus gratiosis et mollibus pax cum eo populi Romani nomine fieret, et quaedam item alia crimini daret indigna tali viro, tum Scipio pauca praefatus quae dignitas vitae suae atque gloria postulabat, Memoria, inquit, Quirites, repeto, diem esse hodiernum quo Hannibalem Poenum imperio vestro inimicissimum magno proelio vici in terra Africa pacemque et victoriam vobis peperi spectabilem. Non igitur simus adversum deos ingrati et, censeo, relinquamus nebulonem hunc, eamus hinc protinus Iovi optimo maximo gratulatum.
 
 Id cum dixisset, avertit et ire ad Capitolium coepit.
 
@@ -2683,19 +2683,19 @@ Sed enim id iam non faciam, inquit, nec me ipse afficiam contumelia,
 
 eumque librum statim coram discidit suis manibus et concerpsit, aegre passus quod cui salus imperii ac reipublicae accepta ferri deberet rationem pecuniae praedatae posceretur.
 
-Quid M. Varro in Logistorico longi historia, ω. scripserit de moderando victu puerorum inpubium.
+Quid M. Varro in Logistorico scripserit de moderando victu puerorum inpubium.
 
 PUEROS inpubes compertum est, si plurimo cibo nimioque somno uterentur, hebetiores fieri ad veterni usque aut eluci tarditatem, corporaque eorum inprocera fieri minusque adolescere.
 
-Idem plerique alii medicorum philosophorumque et M. Varro in Logistorico longa (h)istoria, ω. scripsit, quae inscripta est Catus aut De Liberis Educandis.
+Idem plerique alii medicorum philosophorumque et M. Varro in Logistorico scripsit, quae inscripta est Catus aut De Liberis Educandis.
 
-Notati a censoribus qui audientibus iis dixerant ioca quaedam intempestiviter; ac de eius ac de, s; accede, ω; atque de, Lion; ac quod de, suggested by Hosius; aeque de, Damsté. quoque nota deliberatum qui steterat forte apud eos oscitabundus.
+Notati a censoribus qui audientibus iis dixerant ioca quaedam intempestiviter; ac de eius quoque nota deliberatum qui steterat forte apud eos oscitabundus.
 
 INTER censorum severitates tria haec exempla in litteris sunt castigatissimae disciplinae.
 
 Unum est huiuscemodi:
 
-Censor agebat de uxoribus sollemne iusiurandum; verba erant ita concepta: Ut tu ex animi tui sententia uxorem habes? Qui iurabat cavillator quidam et canicula canalicola, Lipsius. et nimis ridicularius fuit.
+Censor agebat de uxoribus sollemne iusiurandum; verba erant ita concepta: Ut tu ex animi tui sententia uxorem habes? Qui iurabat cavillator quidam et canicula et nimis ridicularius fuit.
 
 Is locum esse sibi loci dicundi ratus, cum ita uti mos erat censor dixisset, Ut tu ex animi tui sententia uxorem habes?
 
@@ -2721,9 +2721,9 @@ Caecilius quoque, ille comoediarum poeta inclutus, servus fuit et propterea nome
 
 Quod Musonius philosophus reprehendit inprobavitque laudari philosophum disserentem a vociferantibus et in laudando gestientibus.
 
-Lacuna suggested by Hertz. MUSONIUM philosophum solitum solitum dicere, ς. accepimus. Cum philosophus, inquit, hortatur, monet, suadet, obiurgat aliudve quid disciplinarum disserit, tum qui audiunt si de summo et soluto pectore obvias vulgatasque laudes effutiunt, si clamitant etiam, si gestiunt, si vocum eius festivitatibus, si modulis verborum, si quibusdam quasi fritamentis fretamentis, ω: corr. by Heraeus; cf. C.G.L. ii. 580, 42; v. 23. 3; v. 70. 21. orationis moventur, exagitantur et gestiunt, tum scias et qui dicit et qui audiunt frustra esse, neque illi philosophum loqui, sed tibicinem canere.
+MUSONIUM philosophum solitum accepimus. Cum philosophus, inquit, hortatur, monet, suadet, obiurgat aliudve quid disciplinarum disserit, tum qui audiunt si de summo et soluto pectore obvias vulgatasque laudes effutiunt, si clamitant etiam, si gestiunt, si vocum eius festivitatibus, si modulis verborum, si quibusdam quasi fritamentis orationis moventur, exagitantur et gestiunt, tum scias et qui dicit et qui audiunt frustra esse, neque illi philosophum loqui, sed tibicinem canere.
 
-Animus, inquit, audientis philosophum, dum dum, added by Hertz. quae dicuntur utilia ac salubria sunt et errorum atque vitiorum medicinas ferunt, laxamentum atque otium prolixe profuseque laudandi non habet. Quisquis ille est qui audit, nisi ille est plane deperditus,
+Animus, inquit, audientis philosophum, dum quae dicuntur utilia ac salubria sunt et errorum atque vitiorum medicinas ferunt, laxamentum atque otium prolixe profuseque laudandi non habet. Quisquis ille est qui audit, nisi ille est plane deperditus,
 
 inter ipsam philosophi orationem et perhorrescat necesse est et pudeat tacitus et paeniteat et gaudeat et admiretur,
 
@@ -2769,13 +2769,13 @@ De verbo duovicesimo, quod vulgo incognitum eat, a viris doctis multifariam in l
 
 APUD Sigillaria forte in libraria ego et Iulius Paulus poeta, vir memoria nostra doctissimus, consideramus; atque ibi expositi erant Fabii Annales, bonae atque sincerae vetustatis libri, quos venditor sine mendis esse contendebat.
 
-Grammaticus autem quispiam de nobilioribus, ab emptore ad spectandos libros adhibitus, repperisse se se, added by Hertz. unum in libro mendum dicebat; sed contra librarius in quodvis pignus vocabat, si in una uspiam littera delictum esset. Ostendebat grammaticus ita scriptum in libro quarto:
+Grammaticus autem quispiam de nobilioribus, ab emptore ad spectandos libros adhibitus, repperisse se unum in libro mendum dicebat; sed contra librarius in quodvis pignus vocabat, si in una uspiam littera delictum esset. Ostendebat grammaticus ita scriptum in libro quarto:
 
 Quapropter tum primumprimnum ex plebe alter consul factus est, duovicesimo anno postquam Romam Galli ceperunt.
 
 Non, inquit, duovicesimo, sed duo et vicesimo scribi oportuit.
 
-Quid enim est duovicesimo? Varro Humanarum Rerum lib. XVI; Varro xvi, from Nonius II., p. 100, 9. hic ita scripsit: Mortuus est anno duovicesimo; rex fuit annos XXI.
+Quid enim est duovicesimo? Varro Humanarum Rerum lib. XVI; hic ita scripsit: Mortuus est anno duovicesimo; rex fuit annos XXI.
 
 CuiusmodiCuiustnodi ioco incavillatus sit Antiochum regem Poenus Hannibal.
 
@@ -2785,7 +2785,7 @@ ostendebat ei Antiochus in campo copias ingentis quas bellum populo Romano factu
 
 inducebat etiam currus cum falcibus et elephantos cum turribus equitatumque frenis, ephippiis, monilibus, phaleris praefulgentem.
 
-Atque ibi rex, contemplatione tanti ac tam ornati exercitus gloriabundus, Hannibalem aspicit et Putasne, inquit, conferri posse ac satis esse esse, Macrob. ii. 2. 2; esse credo, ω. Romanis haec omnia?
+Atque ibi rex, contemplatione tanti ac tam ornati exercitus gloriabundus, Hannibalem aspicit et Putasne, inquit, conferri posse ac satis esse Romanis haec omnia?
 
 Tum Poenus, eludens ignaviam inbelliamqueinbelliarnque militum eius pretiose armatorum: Satis, plane satis esse credo Romanis haec omnia, etiamsi avarissimi sunt.
 
@@ -2795,7 +2795,7 @@ rex de numero exercitus sui ac de aestimanda aequiperatione quaesiverat, respond
 
 De coronis militaribus; quae sit earum triumphalistriumnphalis, quae obsidionalis, quae civica, quae muralis, quae castrensis, quae navalis, quae ovalis, quae oleaginea.
 
-MILITARES coronae multae et et, added by Lion. variae sunt.
+MILITARES coronae multae et variae sunt.
 
 Quarum quae nobilissimae sunt, has ferme esse accepimus: triumphalem, obsidionalem, civicam, muralem, castrensem, navalem ;
 
@@ -2819,9 +2819,9 @@ Hanc coronam gramineam senatus populusque Romanus Q. Fabio Maximo dedit bello Po
 
 Civica corona appellatur, quam civis civi a quo in proelio servatus est testem vitae salutisque perceptae dat.
 
-Ea fit e fronde quernea, quoniam cibus victusque antiquissimus quercus perhaps querceus or querneus. capi solitus; fuit etiam ex ilice, quod genus superiori proximum est, sicuti scriptum est in quadam comoedia Caecilii: † Advehuntur, dvehitur cum iligna, Fleckeisen; advehunt Eum, C. W. F. Müller. (inquit), cum ilignea corona et chlamyde; di vostram fidem!
+Ea fit e fronde quernea, quoniam cibus victusque antiquissimus quercus capi solitus; fuit etiam ex ilice, quod genus superiori proximum est, sicuti scriptum est in quadam comoedia Caecilii: † Advehuntur, (inquit), cum ilignea corona et chlamyde; di vostram fidem!
 
-† Advehuntur, dvehitur cum iligna, Fleckeisen; advehunt Eum, C. W. F. Müller. (inquit), cum ilignea corona et chlamyde; di vostram fidem!
+† Advehuntur, (inquit), cum ilignea corona et chlamyde; di vostram fidem!
 
 Masurius autem Sabinus, in undecimo Librorum Memorialium, civicam coronam tum dari solitam dicit, cum is qui civem servaverat eodem tempore etiam hostem occiderat neque locum in ea pugna reliquerat; aliter ius civicae coronae negat concessum.
 
@@ -2833,7 +2833,7 @@ Muralis est corona, qua donatur ab imperatore qui primusprirus murum subiit inqu
 
 Castrensis est corona, qua donat imperator eum qui primus hostium castra pugnans introivit; ea corona insigne valli habet.
 
-Navalis est, qua donari solet maritimomaritino proelio qui primus in hostium navem vi after navem, ω; cf. Paul. Fest. p. 157. 7, Lindsay. armatus transiluit; ea quasi navium rostris insignita est.
+Navalis est, qua donari solet maritimomaritino proelio qui primus in hostium navem armatus transiluit; ea quasi navium rostris insignita est.
 
 Et muralis autem et castrensis et navalis fieri ex auro solent.
 
@@ -2849,7 +2849,7 @@ Marcus Cato obicit M. Fulvio Nobiliori quod milites per ambitum coronis de levis
 
 Iam principio quis vidit corona donari quemquam, cum oppidum captum non esset aut castra hostium non incensa essent?
 
-Fulvius autem, in quem hoc a Catone dictum est, coronis donaverat milites qui qui, Lion; quia, ω. vallum curaverant aut qui puteum strenue foderant.
+Fulvius autem, in quem hoc a Catone dictum est, coronis donaverat milites qui vallum curaverant aut qui puteum strenue foderant.
 
 Praetereundum non est quod ad ovationes attinet, super quo dissensisse veteres scriptores accipio. Partim enim scripserunt qui ovaret introire solitum equo vehentem; set Sabinus Masurius pedibus ingredi ovantes dicit, sequentibus eos non militibus, sed universo senatu.
 
@@ -2857,7 +2857,7 @@ Personae vocabulum quamqualn lepide interpretatusinlterpretatus sit quamque esse
 
 LEPIDE, mi hercules, et scite Gavius Bassus in libris, quos De Origine Vocabulorum composuit, unde appellata persona sit interpretatur; a personando enim id vocabulum factum esse coniectat.
 
-Nam caput, inquit, et os coperimento personae tectum undique unaque tantum vocis emittendae via pervium, quoniam non vaga neque diffusa est, set set, added by Mommsen. in unum tantummodo exitum collectam coactamque vocem ciet, magis claros canorosque sonitus facit. Quoniam igitur indumentum illud oris clarescere et resonare vocer facit, ob eam causam persona dicta est, o littera propter vocabuli formam productiore.
+Nam caput, inquit, et os coperimento personae tectum undique unaque tantum vocis emittendae via pervium, quoniam non vaga neque diffusa est, set in unum tantummodo exitum collectam coactamque vocem ciet, magis claros canorosque sonitus facit. Quoniam igitur indumentum illud oris clarescere et resonare vocer facit, ob eam causam persona dicta est, o littera propter vocabuli formam productiore.
 
 Defensus error a Vergilii versibus, quos arguerat Iulius Hyginus grammaticus; et ibidem, quid sit lituus; deque ἐτυμολογίᾳ vocis eius.
 
@@ -2903,11 +2903,11 @@ Utitur autem vocabulo isto Vergilius et pro tuba: Et lituo pugnas insignis obiba
 
 Et lituo pugnas insignis obibat et hasta.
 
-Historia de Croesi filio muto, filio muto, Hertz; filium tam, ω.. ex Herodoti libris.
+Historia de Croesi filio muto, ex Herodoti libris.
 
 filius Croesi regis, cum iam fari per aetatem posset, infans erat et, cum iam multum adolevisset, item nihil fari quibat. Mutus adeo et elinguis diu habitus est.
 
-Cum in patrem eius, bello magno victum et urbe in qua erat capta, hostis gladio educto, educto, J. F. Gronov; deducto, MSS.; destricto, Lion. regem esse ignorans, invaderet, diduxit adulescens os, clamare nitens, eoque nisu atque impetu spiritus vitium nodumque linguae rupit planeque et articulate elocutus est, clamans in hostemhosterm ne rex Croesus occideretur.
+Cum in patrem eius, bello magno victum et urbe in qua erat capta, hostis gladio educto, regem esse ignorans, invaderet, diduxit adulescens os, clamare nitens, eoque nisu atque impetu spiritus vitium nodumque linguae rupit planeque et articulate elocutus est, clamans in hostemhosterm ne rex Croesus occideretur.
 
 Tum et hostis gladium reduxit et rex vita donatus est et adulescens loqui prorsum deinceps incepit.
 
@@ -2931,7 +2931,7 @@ Euathlus, adulescens dives, eloquentiae discendae causarumque orandi cupiens fui
 
 Is in disciplinam Protagorae sese dedit daturumque promisit mercedemmercederm grandem pecuniam, quantam Protagoras petiverat, dimidiumque eius dedit iam tunc statim priusquam disceret, pepigitque ut reliquum dimidium daret quo primoprimro die causam apud iudices orasset et vicisset.
 
-Postea cum diutule auditor adsectatorque Protagorae fuisset et et, added in σ. in studio quidem facundiae abunde promovisset, causas tamen non reciperet tempusque iam longum transcurreret et facere id videretur, ne relicum mercedis daret, capit consilium Protagoras,
+Postea cum diutule auditor adsectatorque Protagorae fuisset et in studio quidem facundiae abunde promovisset, causas tamen non reciperet tempusque iam longum transcurreret et facere id videretur, ne relicum mercedis daret, capit consilium Protagoras,
 
 ut tum existimabat, astutum; petere institit ex pacto mercedem, litem cum Euathlo contestatur.
 
@@ -2993,7 +2993,7 @@ Iovemlove Latini veteres a iuvando appellavere, eundemque alio vocabulo iuncto p
 
 Nam quod est, elisis aut inmutatis quibusdam litteris, Iupiter, id plenum atque integrum est Iovispater. Sic et Neptunuspater coniuncte dictus est et Saturnuspater et IanuspaterManuspater et Marspater —hoc enim est Marspiter — itemque Iovis Diespiter appellatus, id est diei et lucis pater.
 
-Idcircoque simili nominenominee Iovis Iovis, added by Hertz. Diovis dictus est et Lucetius, quod nos die et luce quasi vita ipsa afficeret et iuvaret.
+Idcircoque simili nominenominee Iovis Diovis dictus est et Lucetius, quod nos die et luce quasi vita ipsa afficeret et iuvaret.
 
 Lucetium autem Iovem Cn. Naevius in libris Belli Poenici appellat.
 
@@ -3005,9 +3005,9 @@ Nam et augendae rei et minuendae valet, sicuti aliae particulae plurimae; propte
 
 Simulacrum igitur dei Vediovis, quod est in aede de qua supra dixi, sagittas tenet, quae sunt videlicet partae ad nocendum.
 
-Quapropter eum deum plerumque Apollinem esse dixerunt; immolaturque ritu humano humano, ω; Romano, Thysius. capra eiusque animalis figmentum iuxta simulacrum stat.
+Quapropter eum deum plerumque Apollinem esse dixerunt; immolaturque ritu humano capra eiusque animalis figmentum iuxta simulacrum stat.
 
-Propterea Vergilium quoque aiunt, multae antiquitatis hominem sine ostentationis studio studio, Cornelissen from v. 14. 3; odio, ω.. peritum, numina laeva in Georgicis deprecari, significantem vim quandam esse huiuscemodi deorum in laedendo magis quam in iuvando potentem. Versus Vergilii sunt: In tenui labor; at tenuis non gloria, si quem Numina laeva sinunt auditque vocatus Apollo.
+Propterea Vergilium quoque aiunt, multae antiquitatis hominem sine ostentationis studio peritum, numina laeva in Georgicis deprecari, significantem vim quandam esse huiuscemodi deorum in laedendo magis quam in iuvando potentem. Versus Vergilii sunt: In tenui labor; at tenuis non gloria, si quem Numina laeva sinunt auditque vocatus Apollo.
 
 In tenui labor; at tenuis non gloria, si quem
 
@@ -3017,17 +3017,17 @@ In istis autem diis quos placari oportet, uti mala a nobis vel a frugibus natis 
 
 De officiorum gradu atque ordineordme moribus populi Romani observato.
 
-SENIORUM hominum et Romae nobilium atque in morum disciplinarumque veterum doctrina memoriaque praestantium disceptatio quaedam fuit, praesentepraesentc et audiente me, de gradu atque ordine officiorum. Cumque quaereretur quibus nos ea prioribus potioribusque facere oporteret, si necesse esset in opera danda faciendoque officio alios aliis anteferre, non consentiebatur.consentiebatur, Hosius, comparing iii. 11. 1, etc.; constituebat (confatuebat, R), ω.
+SENIORUM hominum et Romae nobilium atque in morum disciplinarumque veterum doctrina memoriaque praestantium disceptatio quaedam fuit, praesentepraesentc et audiente me, de gradu atque ordine officiorum. Cumque quaereretur quibus nos ea prioribus potioribusque facere oporteret, si necesse esset in opera danda faciendoque officio alios aliis anteferre, non consentiebatur.
 
 Conveniebat autem facile constabatque, ex moribus populi Romani primum iuxta parentes locum tenere pupillos debere,fidei tutelaeque nostrae creditos; secundum eos proximum locum clientes habere, qui sese itidem in fidem patrociniumque nostrum dediderunt; tum in tertio loco esse hospites; postea esse cognatos adfinesque.
 
 Huius moris observationisque multa sunt testimonia atque documenta in antiquitatibus perscripta, ex quibus unum hoc interim de clientibus cognatisque, quod prae manibus est, ponemus.
 
-M. Cato in oratione, quam dixit apud censores In Lentulum, ita scripsit: Quod maiores sanctius; habuere, defendi pupillos quam clientem non fallere. Adversus cognatos pro cliente testatur, testimonium adversus clientem nemo dicit. Patrem primum, postea patronum proximum nomenniomen habuere.
+**M** Cato in oratione, quam dixit apud censores In Lentulum, ita scripsit: Quod maiores sanctius; habuere, defendi pupillos quam clientem non fallere. Adversus cognatos pro cliente testatur, testimonium adversus clientem nemo dicit. Patrem primum, postea patronum proximum nomenniomen habuere.
 
-Masurius autem Sabinus in libro luris Civilis tertio antiquiorem locum hospiti tribuit quam clienti. Verba ex eo libro haec sunt: In officiis apud maiores ita observatum est, primum tutelae, deinde hospiti, deinde clienti, tum cognato, postea adfini. Aequa aequa, Boot; de qua, ω. causa feminae viris potiores habitae pupillarisque tutela muliebri praelata. Etiam adversus quem adfuissent, eius filiis tutores relicti, in eadem causa pupillo aderant.
+Masurius autem Sabinus in libro luris Civilis tertio antiquiorem locum hospiti tribuit quam clienti. Verba ex eo libro haec sunt: In officiis apud maiores ita observatum est, primum tutelae, deinde hospiti, deinde clienti, tum cognato, postea adfini. Aequa causa feminae viris potiores habitae pupillarisque tutela muliebri praelata. Etiam adversus quem adfuissent, eius filiis tutores relicti, in eadem causa pupillo aderant.
 
-Firmum atque clarum isti rei testimonium perhibet auctoritas C. Caesaris pontificis maximi, qui in oratione quam Pro Bithynis dixit hoc principio usus est: Vel pro hospitio regis Nicomedis vel pro horum necessitate quorum res res, ς; re, ω; de re, Hertz. agitur, refugere hoc munus, M. Iunce, non potui. Nam neque hominum morte memoria deleri debet quin a proximis retineatur, neque clientes sine summa infamia deseri possunt, quibus etiam a propinquis nostris opem ferre instituimus.
+Firmum atque clarum isti rei testimonium perhibet auctoritas C. Caesaris pontificis maximi, qui in oratione quam Pro Bithynis dixit hoc principio usus est: Vel pro hospitio regis Nicomedis vel pro horum necessitate quorum res agitur, refugere hoc munus, M. Iunce, non potui. Nam neque hominum morte memoria deleri debet quin a proximis retineatur, neque clientes sine summa infamia deseri possunt, quibus etiam a propinquis nostris opem ferre instituimus.
 
 Quod Apion, doctus homo, qui Plistonices appellatus est, vidisse se Romae scripsit recognitionem inter sese mutuam ex vetere notitia hominis et leonis.
 
@@ -3035,7 +3035,7 @@ APION, qui Plistonices appellatus est, litteris homo multis praeditus rerumque G
 
 Eius libri non incelebres feruntur, quibus omnium ferme quae mirifica in Aegypto visuntur audiunturque historia comprehenditur.
 
-Sed in his quae vel audisse vel legisse sese dicit, fortassean vitio studioque ostentationis sit loquacior—est enim sane quam in praedicandis doctrinis sui sui, Eussner; suis, ω. venditator—hoc autem,
+Sed in his quae vel audisse vel legisse sese dicit, fortassean vitio studioque ostentationis sit loquacior—est enim sane quam in praedicandis doctrinis sui venditator—hoc autem,
 
 quod in libro Aegyptiacorum quinto scripsit, neque audisse neque legisse, sed ipsum sese in urbe Roma vidisse oculis suis confirmat.
 
@@ -3049,7 +3049,7 @@ immanitas admirationi fuit praeterque omnis ceteros unus.
 
 Is unus leo corporis impetu et vastitudine terrificoque fremitu et sonoro, toris comisque cervicum fluctuantibus, animos oculosque omnium in sese converterat.
 
-Introductus erat inter compluris ceteros ad pugnam bestiarum datos datos, Hertz; datus, ω.. servus viri consularis; ei servo Androclus nomen fuit.
+Introductus erat inter compluris ceteros ad pugnam bestiarum datos servus viri consularis; ei servo Androclus nomen fuit.
 
 Hunc ille leo ubi vidit procul, repente, inquit, quasi admirans stetit ac deinde sensim atque placide, tamquam noscitabundus, ad hominem accedit.
 
@@ -3059,7 +3059,7 @@ Homo Androclus inter illa tam atrocis ferae blandimenta amissum animum recuperat
 
 Tum quasi mutua recognitione facta laetos, inquit, et gratulabundos videres hominem et leonem.
 
-Ea re prorsus tam admirabili maximos populi clamores excitatos dicit, accersitumque a C. C. added by L. Müller. Caesare Androclum quaesitamque causam cur illi illi, John of Salisbury; ille, ω. atrocissimus leo uni parsisset.
+Ea re prorsus tam admirabili maximos populi clamores excitatos dicit, accersitumque a C. Caesare Androclum quaesitamque causam cur illi atrocissimus leo uni parsisset.
 
 Ibi Androclus rem mirificam narrat atque admirandam.
 
@@ -3099,9 +3099,9 @@ Hoc enim vocabulum quidam finxerunt proinde quod Graece dicitur ἀσώματο�
 
 Corpus autem est quod aut efficient est aut patiens; id Graece definitur τὸ ἤτοι ποιοῦν ἢ πάσχον.
 
-Quam definitionem significare volens, Lucretius poeta ita scripsit: Tangere enim aut et, Lucr. tangi, nisi corpus, nulla potest res.
+Quam definitionem significare volens, Lucretius poeta ita scripsit: Tangere enim aut tangi, nisi corpus, nulla potest res.
 
-Tangere enim aut et, Lucr. tangi, nisi corpus, nulla potest res.
+Tangere enim aut tangi, nisi corpus, nulla potest res.
 
 Alio quoque modo corpus esse Graeci dicunt τὸ τριχῆ διάστατον.
 
@@ -3125,7 +3125,7 @@ Epicurus afluere semper ex omnibus corporibus simulacra quaedam corporum ipsorum
 
 Plato existimat, genus quoddam ignis lucisque de oculis exire idque, coniunctum continuatumque vel cum luce solis vel cum alterius ignis lumine, sua vi et externa nixum efficere ut quaecumque offenderit inlustraveritque cernamus.
 
-Set hic aeque aeque, Petschenig; eaque, ω; quoque, Madvig. non diutius muginandum, eiusdemque illius Enniani Neoptolemi, de quo supra scripsimus, consilio utendum est, qui degustandum ex philosophia censet, non in eamearn ingurgitandum.
+Set hic aeque non diutius muginandum, eiusdemque illius Enniani Neoptolemi, de quo supra scripsimus, consilio utendum est, qui degustandum ex philosophia censet, non in eamearn ingurgitandum.
 
 Quam ob causam dies primi post Kalendas, Nonas, Idus atri habeantur; et cur diem quoque quartum ante Kalendas vel Nonas vel Idus quasi religiosum plerique vitent.
 
@@ -3133,7 +3133,7 @@ VERRIUS FLACCUS, in quarto De Verborum Significatu, dies qui sunt postridie Kale
 
 Urbe, inquit, a Gallis Senonibus recuperata, L. Atilius in senatu verba fecit, Q. Sulpicium tribunum militum, ad Alliam adversus Gallos pugnaturum, rem divinam dimicandi gratia postridie Idus fecisse; tum exercitum populi Romani occidione occisum et post diem tertium eius diei urbem praeter Capitolium captam esse: compluresque alii senatores recordari sese dixerunt, quotiens belli gerendi gratia res divina postridie Kalendas, Nonas, Idus a magistratu populi Romani facta esset, eius belli proximo deinceps proelio rem publicam male gestam esse. Tum senatus eamearn rem ad pontifices reiecit, ut ipsi quod videretur statuerent. Pontifices decreverunt nullum his diebus sacrificium recte futurum.
 
-Ante diem quoque quartum Kalendas vel Nonas vel Idus tamquam inominalem nominalem, P; ominalem, Salmasius. diem plerique vitant.
+Ante diem quoque quartum Kalendas vel Nonas vel Idus tamquam inominalem diem plerique vitant.
 
 Eius observationis an religio ulla sit tradita, quaeri solet.
 
@@ -3157,7 +3157,7 @@ Cum vero non per annos, sed per dies singulos res gestae scribuntur, ea historia
 
 Verum inter eos, inquit, qui annales relinquere voluissent, et eos qui res gestas a Romanis perscribere conati essent, omnium rerum hoc interfuit. Annales libri tantummodo quod factum quoque anno gestum sit, ea demonstrabant, id est quasi qui diarium scribunt, quam Graeci ἐφημερίδα vocant. Nobis non modo satis esse video, quod factum esset, id pronuntiare, sed etiam quo consilio quaque ratione gesta essent demonstrare.
 
-Paulo post idem Asellio in eodem libro: Nam neque alacriores, inquit, ad rempublicam defendundam, neque segniores ad rem perperam faciundam annales libri commovere quicquam possunt. Scribere autem bellum initum quo consule et quo confectum sit et quis triumphans introierit ex eo, et eo et eo, added by Hertz. libro quae in bello gesta sint sint enarrare, Nipperdey; sint blaterare, Machly; sint iterare id fabulas non praedicare aut, ω (from line 3). non praedicare aut interea quid senatus decreverit aut quae lex rogatiove lata sit neque quibus consiliis ea gesta sint iterare: id fabulas pueris est narrare, non historias scribere.
+Paulo post idem Asellio in eodem libro: Nam neque alacriores, inquit, ad rempublicam defendundam, neque segniores ad rem perperam faciundam annales libri commovere quicquam possunt. Scribere autem bellum initum quo consule et quo confectum sit et quis triumphans introierit ex eo, et eo libro quae in bello gesta sint non praedicare aut interea quid senatus decreverit aut quae lex rogatiove lata sit neque quibus consiliis ea gesta sint iterare: id fabulas pueris est narrare, non historias scribere.
 
 Quid sit adoptatio, quid item sit adrogatio, quantumque haec inter se differant; verbaque eius quae qualiaque sint, qui in liberis adrogandis super ea re populum rogat.
 
@@ -3179,13 +3179,13 @@ Adrogatio autem dicta, quia genus hoc in alienam familiam transitus per populi r
 
 Eius rogationis verba haec sunt: Velitis, iubeatis, uti L. Valerius L. Titio tam iure legeque filius siet, quam si ex eo patre matreque familias eius natus esset, utique ei vitae necisque in eum potestas siet, uti patri endo filio est. Haec ita uti dixi, ita vos, Quirites, rogo.
 
-Neque pupillus autem neque mulier quae in parentis potestate non est adrogari possunt; quoniam et cum feminis nulla comitiorum communio est et tutoribus in pupillos tantam esse auctoritatem potestatemque fas non est, ut caput liberum fidei suae commissum alienae dicioni condicioni (-ditioni, P), ω. subiciant.
+Neque pupillus autem neque mulier quae in parentis potestate non est adrogari possunt; quoniam et cum feminis nulla comitiorum communio est et tutoribus in pupillos tantam esse auctoritatem potestatemque fas non est, ut caput liberum fidei suae commissum alienae dicioni subiciant.
 
 Libertinos vero ab ingenuis adoptari quidem iure posse, Masurius Sabinus scripsit.
 
 Sed id neque permitti dicit, neque permittendum esse umquam putat, ut homines libertini ordinis per adoptiones in iura ingenuorum invadant.
 
-Alioquin, inquit, si iuris ista antiquitas servetur, etiam servus a a, omitted by Skutsch. domino per praetorem dari in adoptionem potest.
+Alioquin, inquit, si iuris ista antiquitas servetur, etiam servus a domino per praetorem dari in adoptionem potest.
 
 Idque ait plerosque iuris veteris auctores posse fieri scripsisse.
 
@@ -3211,7 +3211,7 @@ Quod si ita est, neque in Graeca neque in Latina lingua soloecismus probe dicitu
 
 Pluria qui dicat et compluria et compluriens non barbare dicere, sed Latine.
 
-PLURIA forte quis dixit sermocinans vir adprime doctus, meus amicus, non hercle studio se se, added by Hertz. ferens ostentandi neque quo plura non dicendum putaret.
+PLURIA forte quis dixit sermocinans vir adprime doctus, meus amicus, non hercle studio se ferens ostentandi neque quo plura non dicendum putaret.
 
 Est enim doctrina homo seria et ad vitae officia devincta ac nihil de verbis laborante.
 
@@ -3241,13 +3241,13 @@ Huius opinionis Sinnianae id quoque adiumentum est, quod complures cum dicimus, 
 
 Ab eo autem quod est compluria adverbium est factum compluriens.
 
-Id quoniam minus usitatum est, versum Plauti subscripsi ex comoedia quae Persa inscribitur: Quid metuis?–Metuo hércle vero; sénsi ego ego iatn, Plaut. Complúriens.
+Id quoniam minus usitatum est, versum Plauti subscripsi ex comoedia quae Persa inscribitur: Quid metuis?–Metuo hércle vero; sénsi ego Complúriens.
 
-Quid metuis?–Metuo hércle vero; sénsi ego ego iatn, Plaut.
+Quid metuis?–Metuo hércle vero; sénsi ego
 
 Complúriens.
 
-Item M. Cato in IV. Originum eodem in loco ter hoc verbum posuit: Compluriens eorum milites mercennarii inter se multi alteri alteros in castris in castris, Nonius, ii, p. 124. 13, Lindsay; omitted by ω. occidere, compluriens multi simul ad hostis transfugere, compluriens in imperatorem impetum facere.
+Item M. Cato in IV. Originum eodem in loco ter hoc verbum posuit: Compluriens eorum milites mercennarii inter se multi alteri alteros in castris occidere, compluriens multi simul ad hostis transfugere, compluriens in imperatorem impetum facere.
 
 Admiranda quaedam ex annalibus sumpta de P. Africano superiore.
 
@@ -3265,13 +3265,13 @@ Id etiam dicere haut piget, quod idem illi quos supra nominavi litteris mandaver
 
 Has volgi de Scipione opiniones confirmare atque approbare videbantur dicta factaque eius pleraque admiranda. Ex quibus est unumunurm huiuscemodiuiuscemodi:
 
-Assidebat oppugnabatque oppidum in Hispania, situ, situm, ω, corrected in ς. moenibus, defensoribus validum et munitum, re etiam cibaria copiosum, nullaque eius potiundi spes erat, et quodam die ius in castris sedens dicebat atque ex eo loco id oppidum procul visebatur,
+Assidebat oppugnabatque oppidum in Hispania, situ, moenibus, defensoribus validum et munitum, re etiam cibaria copiosum, nullaque eius potiundi spes erat, et quodam die ius in castris sedens dicebat atque ex eo loco id oppidum procul visebatur,
 
 Tum e militibus, qui in iure apud eum stabant, interrogavit quispiam ex more in quem diem locumque vadimonium promitti iuberet;
 
 et Scipio, manum ad ipsam oppidi quod obsidebatur arcem protendens, Perendie, inquit, sese sistant illo in loco. Atque ita factum;
 
-die tertio, in quem vadari iusserat, oppidum captum est eodemque eo eo omitted by RV. die in arce eius oppidi ius dixit.
+die tertio, in quem vadari iusserat, oppidum captum est eodemque eo die in arce eius oppidi ius dixit.
 
 De Caeselli Vindicis pudendo errore, quem offendimus in libris eius quos inscripsit Lectionum antiquarumAntiquairum.
 
@@ -3337,11 +3337,11 @@ Culpavit autem primum hoc, quod Cato inerudite et ἀναγώγως, ut ipse ait
 
 In principiis autem, inquit, patroni, qui pro reis dicunt, conciliare sibi et complacare iudices debent sensusque eorum expectatione causae suspensos rigentesque honorificis verecundisque sententiis commulcere, non iniuriis atque imperiosis minationibus confutare.
 
-Ipsum deinde principium apposuit, cuius verba haec sunt: Scio solere plerisque hominibus rebus in rebus, Gell. xiii. 25. 14. secundis atque prolixis atque prosperis Damnsté regards atque prosperis as a gloss. animum excellere atque superbiam atque ferociam augescere atque crescere. Quo mihi nunc magnae curae est, quod haec res tam secunde processit, ne quid in consulendo advorsi eveniat, quod nostras secundas res confutet, neve haec laetitia nimis luxuriose eveniat. Advorsae res edomant et docent quid opus siet facto, secundae res laetitia transvorsum trudere solent a recte consulendo atque intellegendo. Quo maiore opere dico suadeoque uti haec res aliquot dies proferatur, dum ex tanto gaudio in potestatem nostram redeamus.
+Ipsum deinde principium apposuit, cuius verba haec sunt: Scio solere plerisque hominibus rebus secundis atque prolixis atque prosperis animum excellere atque superbiam atque ferociam augescere atque crescere. Quo mihi nunc magnae curae est, quod haec res tam secunde processit, ne quid in consulendo advorsi eveniat, quod nostras secundas res confutet, neve haec laetitia nimis luxuriose eveniat. Advorsae res edomant et docent quid opus siet facto, secundae res laetitia transvorsum trudere solent a recte consulendo atque intellegendo. Quo maiore opere dico suadeoque uti haec res aliquot dies proferatur, dum ex tanto gaudio in potestatem nostram redeamus.
 
-Quae deinde Cato iuxta dicit, ea, inquit, confessionem faciunt, non defensionem, neque propulsationem translationemve criminis habent, sed cum pluribus aliis communicationem, quod scilicet nihili nihili, suggested by Hosius; nihil, ω. ad purgandum est. Atque etiam, inquit, insuper profitetur Rodienses, qui accusabantur quod adversus populum Romanum regi magis cupierint faverintque, id eos cupisse atque favisse utilitatis suae gratia, ne Romani Perse quoque rege victo ad superbiam ferociamque et inmodicum modum insolescerent.
+Quae deinde Cato iuxta dicit, ea, inquit, confessionem faciunt, non defensionem, neque propulsationem translationemve criminis habent, sed cum pluribus aliis communicationem, quod scilicet nihili ad purgandum est. Atque etiam, inquit, insuper profitetur Rodienses, qui accusabantur quod adversus populum Romanum regi magis cupierint faverintque, id eos cupisse atque favisse utilitatis suae gratia, ne Romani Perse quoque rege victo ad superbiam ferociamque et inmodicum modum insolescerent.
 
-Eaque ipsa verba ponit, ita ut infra scriptum: Atque ego quidem arbitror Rodienses noluisse nos ita depugnare, uti depugnatumdepugnaturm est, neque regem Persen vinci. Sed non Rodienses modo id noluere, sed multos populos atque multas nationes idem noluisse arbitror atque haut scio an partim eorum fuerint, qui non nostrae contumeliae causa id noluerint evenire; sed enim id metuere, metuentes, Damsté; metueres nemo, P. ne ne added by A. Schaefer. si nemo esset homo quem vereremur, quidquid luberet faceremus. Ne sub solo imperio nostro in servitute nostra essent, libertatis suae causa in ea sententia fuisse arbitror. Atque Rodienses tamen Persen publice numquam adiuvere. Cogitate quanto nos inter nos privatim cautius facimus. Nam unusquisque nostrum, si quis advorsus rem suam quid fieri arbitrantur, summa vi contraeontra nititur, ne advorsus eam fiat; quod illi tamen perpessi.
+Eaque ipsa verba ponit, ita ut infra scriptum: Atque ego quidem arbitror Rodienses noluisse nos ita depugnare, uti depugnatumdepugnaturm est, neque regem Persen vinci. Sed non Rodienses modo id noluere, sed multos populos atque multas nationes idem noluisse arbitror atque haut scio an partim eorum fuerint, qui non nostrae contumeliae causa id noluerint evenire; sed enim id metuere, ne si nemo esset homo quem vereremur, quidquid luberet faceremus. Ne sub solo imperio nostro in servitute nostra essent, libertatis suae causa in ea sententia fuisse arbitror. Atque Rodienses tamen Persen publice numquam adiuvere. Cogitate quanto nos inter nos privatim cautius facimus. Nam unusquisque nostrum, si quis advorsus rem suam quid fieri arbitrantur, summa vi contraeontra nititur, ne advorsus eam fiat; quod illi tamen perpessi.
 
 Sed, quod ad principium reprehensum attinet, scire oportuit Tironem, defensos esse Rodienses a Catone, sed ut a senatore et consulari et censorio viro, quidquid optimum esse publicum existimabat suadente, non ut a patrono causam pro reis dicente.
 
@@ -3365,7 +3365,7 @@ Postea verba haec ex eadem oratione ponit: Ea nunc derepente tanta beneficia ult
 
 Hoc, inquit, enthymema nequam et vitiosum est. Responderi enim potuit: Occupabimus certe; nam, si non occupaverimusoccupaverimnus, opprimemur incidendumque erit in insidias a quibus ante non caverimus.
 
-Recteque, inquit, hoc vitio dat Lucilius poetae Euripidae, quod, cum Polyphontes rex propterea se interfecisse fratrem diceret, quod ipse ante de nece eius consilium cepisset, Meropa fratris uxor hisce adeo eum adeo eum, Hertz; ad eum, ω. verbis eluserit: Εἰ γάρ γάρ σʼ ἔμελλεν, ὡς σὺ φής, κτείνειν πόσις, Χρὴ καὶ σὲ μέλλειν, ὡς χρόνος παρήλυθεν.
+Recteque, inquit, hoc vitio dat Lucilius poetae Euripidae, quod, cum Polyphontes rex propterea se interfecisse fratrem diceret, quod ipse ante de nece eius consilium cepisset, Meropa fratris uxor hisce adeo eum verbis eluserit: Εἰ γάρ γάρ σʼ ἔμελλεν, ὡς σὺ φής, κτείνειν πόσις, Χρὴ καὶ σὲ μέλλειν, ὡς χρόνος παρήλυθεν.
 
 Εἰ γάρ γάρ σʼ ἔμελλεν, ὡς σὺ φής, κτείνειν πόσις,
 
@@ -3373,7 +3373,7 @@ Recteque, inquit, hoc vitio dat Lucilius poetae Euripidae, quod, cum Polyphontes
 
 At hoc enim, inquit, plane stultitiae plenum est, eo consilio atque ea fini facere velle aliquid, uti numquam id facias quod velis.
 
-Sed videlicet Tiro animum non advertit non esse in omnibus rebus cavendis eandem causam, neque humanae vitae negotia et actiones et officiaofiicia vel occupandi vel differendi vel etiam ulciscendi vel cavendi similia esse pugnae pugnae et gl., ω; et omitted in ς. gladiatoriae.
+Sed videlicet Tiro animum non advertit non esse in omnibus rebus cavendis eandem causam, neque humanae vitae negotia et actiones et officiaofiicia vel occupandi vel differendi vel etiam ulciscendi vel cavendi similia esse pugnae gladiatoriae.
 
 Nam gladiatori composito ad pugnandum pugnae haec proposita sors est, aut occidere, si occupaverit, aut occumbere, si cessaverit.
 
@@ -3381,7 +3381,7 @@ Hominum autem vita non tam iniquis neque tam indomitisindoimitis necessitatibus 
 
 Quod tantum aberat a populi Romani mansuetudine, ut saepe iam in sese factas iniurias ulcisci neglexerit.
 
-Post deinde usum esse Catonem dicit in eadem oratione argumentisargutnentis parum honestis et nimis audacibus ac non viri qui alioqui fuit, qui alioqui fuit, Hosius; qui ante fuit, Damsté; alius, Scioppius; alio, ω. sed vafris ac fallaciosis et quasi Graecorum sophistarum sollertiis.
+Post deinde usum esse Catonem dicit in eadem oratione argumentisargutnentis parum honestis et nimis audacibus ac non viri qui alioqui fuit, sed vafris ac fallaciosis et quasi Graecorum sophistarum sollertiis.
 
 Nam cum obiceretur, inquit, Rodiensibus quod bellum populo Romano facere voluissent, negavit poena esse dignos, quia id non fecissent, etsi maxime voluissent, induxisseque eum dicit quam dialectici ἐπαγωγήν appellant, rem admodum insidiosam et sophisticam neque ad veritates magis quam ad captiones repertam, cum conatus sit exemplis decipientibus conligere confirmareque, neminem qui male facere voluit plecti aequum esse, nisi quod factum voluit etiam fecerit.
 
@@ -3393,7 +3393,7 @@ Postea ita dicit: Sed si honorem non aequum est haberi ob eam rem, quod bene fac
 
 His argumentis Tiro Tullius M. Catonem contendere et conficere dicit Rodiensibus quoque impune esse debere, quod hostes quidem esse populi Romani voluissent, ut qui maxime non fuissent.
 
-Dissimulari autem non posse ait quin paria et consimilia non sint, plus quingenta iugera habere velle, quod plebiscito Stolonis prohibitum fuit, et bellum iniustum atque impium populo Romano facere velle, neque item infitiari infitiari, ω; infitias iri, Hosius. posse quin alia causa in praemio sit, alia in poenis.
+Dissimulari autem non posse ait quin paria et consimilia non sint, plus quingenta iugera habere velle, quod plebiscito Stolonis prohibitum fuit, et bellum iniustum atque impium populo Romano facere velle, neque item infitiari posse quin alia causa in praemio sit, alia in poenis.
 
 Nam beneficia, inquit, promissa opperiri oportet neque ante remunerari quam facta sint, iniurias autem imminentis praecavisse iustum est quam expectavisse.
 
@@ -3407,7 +3407,7 @@ Ac primum ea non incallide conquisivit, quae non iure naturae aut iure gentium f
 
 In quibus rebus quod prohibitum est fieri quidem per leges non licet; velle id tamen facere, si liceat, inhonestum non est.
 
-Atque eas res contulit sensim miscuitque cum eo, quod neque facere neque velle per sese honestum est; tum deinde, ne disparilitas conlationis evidens fieret, pluribus id propugnaculis defensat, neque tenues istas et enucleatas voluntatum in rebus illicitis reprehensiones, qualia in philosophorum otio disputantur, magni facit, sed id solum solum ex, MSS.; ex omitted by Carrio. summa ope nititur, ut causa Rodiensium, quorum amicitiam retineri ex republica fuit, aut aequa iudicaretur aut quidem certe ignoscenda. Atque interim neque fecisse Rodienses bellum neque facere voluisse dicit, interim autem facta sola censenda dicit atque in iudicium vocanda, sed voluntates nudas inanesque neque legibus neque poenis fieri obnoxias; interdum tamen, quasi deliquisse eos concedat, ignosci postulat et ignoscentias utiles esse rebus humanis docet ac, nisi ignoscant, metus in republica rerum novarum movet; sed enim contra, si ignoscatur, conservatum iri ostendit populi Romani magnitudinem.
+Atque eas res contulit sensim miscuitque cum eo, quod neque facere neque velle per sese honestum est; tum deinde, ne disparilitas conlationis evidens fieret, pluribus id propugnaculis defensat, neque tenues istas et enucleatas voluntatum in rebus illicitis reprehensiones, qualia in philosophorum otio disputantur, magni facit, sed id solum summa ope nititur, ut causa Rodiensium, quorum amicitiam retineri ex republica fuit, aut aequa iudicaretur aut quidem certe ignoscenda. Atque interim neque fecisse Rodienses bellum neque facere voluisse dicit, interim autem facta sola censenda dicit atque in iudicium vocanda, sed voluntates nudas inanesque neque legibus neque poenis fieri obnoxias; interdum tamen, quasi deliquisse eos concedat, ignosci postulat et ignoscentias utiles esse rebus humanis docet ac, nisi ignoscant, metus in republica rerum novarum movet; sed enim contra, si ignoscatur, conservatum iri ostendit populi Romani magnitudinem.
 
 Superbiae quoque crimen, quod tunc praeter cetera in senatu Rodiensibus obiectum erat, mirifica et prope divina responsionis figura elusit et eluit.
 
@@ -3417,7 +3417,7 @@ Rodiensis superbos esse aiunt, id obiectantes quod mihi et liberis meis minime d
 
 Nihil prorsus hac compellatione dici potest neque gravius neque munitius adversus homines superbissimos facta, qui superbiam in sese amarent, in aliis reprehenderent.
 
-Praeterea animadvertere est, in tota ista Catonis oratione omnia disciplinarum rhetoricarum arma atque subsidia mota esse; sed non proinde ut in decursibus ludicris aut simulacris proeliorum voluptariis fieri videmus. Non enim, inquam, distincte nimis atque compte atque modulate res acta est, sed quasi in ancipiti certamine, cum sparsa acies est, multis locis Marte vario pugnatur, sic in ista tum causa Cato, cum superbia illa Rodiensium famosissima multorum odio atque invidia flagraret, omnibus promisce tuendi atque propugnandi modis usus est, et nunc ut optime meritos commendat, nunc tamquam si innocentes purgat, nunc nunc, added by Hertz; neve, Damsté; purget, ne, Mommsen. ne bona divitiaeque eorum expetantur obiurgat, nunc nunc et, MSS.; et omitted by Hertz. quasi sit erratum deprecatur, nunc ut necessarios reipublicae ostentat, nuncnune clementiae, nunc mansuetudinis maiorum, nunc utilitatis publicae commonefacit.
+Praeterea animadvertere est, in tota ista Catonis oratione omnia disciplinarum rhetoricarum arma atque subsidia mota esse; sed non proinde ut in decursibus ludicris aut simulacris proeliorum voluptariis fieri videmus. Non enim, inquam, distincte nimis atque compte atque modulate res acta est, sed quasi in ancipiti certamine, cum sparsa acies est, multis locis Marte vario pugnatur, sic in ista tum causa Cato, cum superbia illa Rodiensium famosissima multorum odio atque invidia flagraret, omnibus promisce tuendi atque propugnandi modis usus est, et nunc ut optime meritos commendat, nunc tamquam si innocentes purgat, nunc ne bona divitiaeque eorum expetantur obiurgat, nunc quasi sit erratum deprecatur, nunc ut necessarios reipublicae ostentat, nuncnune clementiae, nunc mansuetudinis maiorum, nunc utilitatis publicae commonefacit.
 
 Eaque omnia distinctius numerosiusque fortassean dici potuerint, fortius atque vividius potuisse dici non videntur.
 
@@ -3477,9 +3477,9 @@ Pótine tu homo fácinus facere strénuum?—Aliorum áffatim est.
 
 Qui faciant; sane égo me nolo fórtem perhiberi virum,
 
-quod affatim non essent duae partes orationis, sed utraque pars in unam vocem coaluisset, sicuti in eo quoque quod exadversum dicimus secundam syllabam debere acui existimabat, quoniam una, non duae essent partes orationis; atque ita oportere apud Terentium legi dicebat in his versibus: In quo haéc discebat lúdo, exadversúm loco ilico and ei loco, codd. Ter. Tostrina erat quaedam.
+quod affatim non essent duae partes orationis, sed utraque pars in unam vocem coaluisset, sicuti in eo quoque quod exadversum dicimus secundam syllabam debere acui existimabat, quoniam una, non duae essent partes orationis; atque ita oportere apud Terentium legi dicebat in his versibus: In quo haéc discebat lúdo, exadversúm loco Tostrina erat quaedam.
 
-In quo haéc discebat lúdo, exadversúm loco ilico and ei loco, codd. Ter.
+In quo haéc discebat lúdo, exadversúm loco
 
 Tostrina erat quaedam.
 
@@ -3507,15 +3507,15 @@ Res ultra fidem tradita super amatore delphino et puero amato.
 
 DelphinosDELPIIINOS venerios esse et amasios non modo historiae veteres, sed recentes quoque memoriae declarant.
 
-Nam et sub Caesare Augusto Caesare Augusto, Hosius; Cesaribus (Cesaris, P) ω; Caesaris Augusti imperio, Hertz. in Puteolano mari, ut Apion scriptum reliquit, et aliquot saeculis ante apud Naupactum, ut Theophrastus tradidit, amatores flagrantissimi delphinorum cogniti compertique sunt.
+Nam et sub Caesare Augusto in Puteolano mari, ut Apion scriptum reliquit, et aliquot saeculis ante apud Naupactum, ut Theophrastus tradidit, amatores flagrantissimi delphinorum cogniti compertique sunt.
 
 Neque hi amaverunt quod sunt ipsi genus, sed pueros forma liberali in naviculis forte aut in vadis litorum conspectos miris et humanis modis arserunt.
 
 Verba subscripsi Ἀπίωνος, eruditi viri, ex Aegyptiacorum libro quinto, quibus delphini amantis et pueri non abhorrentis consuetudines, lusus, gestationes, aurigationes refert eaque omnia sese ipsum multosque alios vidisse dicit:
 
-Αὐτὸς δʼ περὶ Δικαιαρχίας εἶδον περὶ δικαιαρχίας παιδός παιδός added by Scioppius. —Ὑάκινθος ἐκαλεῖτο—πόθοις ἐπτοημένον δελφῖνα. Προσσαίνει τὴν φωνὴν αὐτοῦ τὴν ψυχὴν πτερούμενος ἐντὸς τάς τε ἀκάνθας ὑποστέλλων, μή τι τοῦ ποθουμένου χρωτὸς ἀμύξη φειδόμενος, ἱππηδόν τε τε added by Hertz. περιβεβηκότα μέχρι διακοσίων ἀνῆγε σταδίων. ἐξεχεῖτο ἡ Ῥώμη καὶ πᾶσα Ἰταλία τῆς Ἀφροδίτης ὑπʼ Ἀφροδίτης, Damsté. ξυνορῶντες ἡνιοχούμενον ἰχθύν.
+Αὐτὸς δʼ περὶ Δικαιαρχίας εἶδον περὶ δικαιαρχίας παιδός —Ὑάκινθος ἐκαλεῖτο—πόθοις ἐπτοημένον δελφῖνα. Προσσαίνει τὴν φωνὴν αὐτοῦ τὴν ψυχὴν πτερούμενος ἐντὸς τάς τε ἀκάνθας ὑποστέλλων, μή τι τοῦ ποθουμένου χρωτὸς ἀμύξη φειδόμενος, ἱππηδόν τε περιβεβηκότα μέχρι διακοσίων ἀνῆγε σταδίων. ἐξεχεῖτο ἡ Ῥώμη καὶ πᾶσα Ἰταλία τῆς Ἀφροδίτης ξυνορῶντες ἡνιοχούμενον ἰχθύν.
 
-Ad hoc adicit rem non non added in ς. minus mirandam. Postea, inquit, idem ille puer δελφι- νερώμενος morbo adfectus obit suum diem. At ille amans,
+Ad hoc adicit rem non minus mirandam. Postea, inquit, idem ille puer δελφι- νερώμενος morbo adfectus obit suum diem. At ille amans,
 
 ubi saepe ad litus solitum adnavit et puer, qui in primo vado adventum eius opperiri consueverat, nusquam fuit, desiderio tabuit exanimatusque est et in litore iacens inventus ab his qui rem cognoverant, in sui pueri sepulcro humatus est.
 
@@ -3547,7 +3547,7 @@ Ut ádmemordit hóminem.
 
 Sed idem Plautus in Trigeminis neque praememordisse neque praemomordisse dicit, sed praemorsisse:
 
-Nisi fugissem (inquit) in inquit in, Skutsch; in, Winter; inquit, MSS. médium, credo, praémorsisset.
+Nisi fugissem (inquit) in médium, credo, praémorsisset.
 
 Item Atta in Conciliatrice:
 
@@ -3577,7 +3577,7 @@ Num érgo aquila ita, ut hi praedicánt, sciciderat Péctus?
 
 Ennius quoque in Melanippa:
 
-cum saxum scíciderit. in ... sciciderit from Priscian, i. 517. 10 K. by J.F. Gronov.
+cum saxum scíciderit.
 
 Valerius Antias in libro Historiarum LXXV. verba haec scripsit: Deinde funere locato ad forum descendidit.
 
@@ -3585,9 +3585,9 @@ Laberius quoque in Catulario ita scripsit:
 
 égo mirabar, quómodo mammaemammal mihi
 
-Déscendiderant descendiderant added in ς.
+Déscendiderant
 
-Ut Ut added by J. F. Gronov. ususcapio copulate recto vocabuli casu dicitur, ita pignoriscapio coniuncte eadem vocabuli forma dictum esse.
+Ut ususcapio copulate recto vocabuli casu dicitur, ita pignoriscapio coniuncte eadem vocabuli forma dictum esse.
 
 UT haec ususcapio dicitur copulato vocabulo, a littera in eo tractim pronuntiata, ita pignoriscapio iuncte et producte dicebatur.
 
@@ -3603,29 +3603,29 @@ Sed veterum hominum qui proprie atque integre locuti sunt leves dixerunt, quos v
 
 Qui exempla horum verborum requirit, ne in libris nimium remotis quaerat, inveniet ea in M. Tullii secunda Antonianarum.
 
-Nam cum genus quoddam sordidissimum vitae atque victus M. Antoni demonstraturus esset, quod in caupona delitisceret, quod ad vesperum perpotaret, quod ore involuto iter faceret ne cognosceretur, haec aliaque eiusdemmodi cum in eum dicturus esset: Videte, inquit, hominis levitatem, tamquam prorsus ista dedecora hoc convicio vicio, ω; corr. by J. F. Gronov, retained by Petschenig. in homine notarentur.
+Nam cum genus quoddam sordidissimum vitae atque victus M. Antoni demonstraturus esset, quod in caupona delitisceret, quod ad vesperum perpotaret, quod ore involuto iter faceret ne cognosceretur, haec aliaque eiusdemmodi cum in eum dicturus esset: Videte, inquit, hominis levitatem, tamquam prorsus ista dedecora hoc convicio in homine notarentur.
 
 At postea, cum in eundem Antonium probra quaedam alia ludibriosa et turpia ingessisset, ad extremum hoc addidit: O hominem nequam! nihil enim magis proprie possum dicere.
 
-Sed ex eo loco M. Tullii verba compluscula libuit ponere: At videte levitatem hominis! Cum hora diei decima fere ad Saxa Rubra venisset, delituit in quadam cauponula atque ibi se occultans perpotavit ad vesperum; inde cisio celeriter ad urbem advectus, domum venit ore capite involuto, Cic. involuto. Ianitor rogat: rogat omitted by Cic. Quis tu? A Marco tabellarius. Confestim ad eam cuius causa venerat deducitur eique epistulam tradit. Quam illa cum legeret flens— erat enim scripta amatorie, caput autem litterarum hoc erat: sibi cum illa mima posthac nihil futurum, omnem se amorem abiecisse illim illim, Lambinus; illi,ω. atque in hanc transfudisse— cum mulier fleret uberius, homo misericors ferre non potuit: caput aperuit, in collum invasit. O hominem nequam!—nihil enim magis proprie possum dicere; ergo ut te catamitum nec opinato cum ostendisses, praeter spem mulier aspiceret, idcirco urbem terrore nocturno, Italiam multorum dierum metu perturbasti?
+Sed ex eo loco M. Tullii verba compluscula libuit ponere: At videte levitatem hominis! Cum hora diei decima fere ad Saxa Rubra venisset, delituit in quadam cauponula atque ibi se occultans perpotavit ad vesperum; inde cisio celeriter ad urbem advectus, domum venit ore involuto. Ianitor rogat: Quis tu? A Marco tabellarius. Confestim ad eam cuius causa venerat deducitur eique epistulam tradit. Quam illa cum legeret flens— erat enim scripta amatorie, caput autem litterarum hoc erat: sibi cum illa mima posthac nihil futurum, omnem se amorem abiecisse illim atque in hanc transfudisse— cum mulier fleret uberius, homo misericors ferre non potuit: caput aperuit, in collum invasit. O hominem nequam!—nihil enim magis proprie possum dicere; ergo ut te catamitum nec opinato cum ostendisses, praeter spem mulier aspiceret, idcirco urbem terrore nocturno, Italiam multorum dierum metu perturbasti?
 
 Consimiliter Q. quoque Claudius in primo Annalium nequitiam appellavit luxum vitae prodigum effusumque in hisce verbis: Persuadent i cuidam adulescenti Lucano, qui adprime summo genere gnatus erat, sed luxuria et nequitia pecuniam magnam consumpserat.
 
-M. Varro in libris De Lingua Latina, Ut ex non et ex volo, inquit, nolo, sic ex ne et quicquam, media syllaba extrita, compositum est nequam.
+**M** Varro in libris De Lingua Latina, Ut ex non et ex volo, inquit, nolo, sic ex ne et quicquam, media syllaba extrita, compositum est nequam.
 
-P. Africanus Pro se contra Tiberium Asellum de multa ad populum: Omnia mala, probra, flagitia, quae homines faciunt, in duabus rebus sunt, malitia atque nequitia. Utrum defendis, malitiam an nequitiam an utrumque simul? Si nequitiam defendere vis, licet; si tu in uno scorto maiorem pecuniam absumpsisti quam quanti omne instrumentum fundi Sabini in censum dedicavisti; si hoc ita est, qui spondet mille nummum? si tu plus tertia parte pecuniae paternae perdidisti atque absumpsisti in flagitiis; si hoc ita est, qui spondet mille nummum? Non vis nequitiam. Age malitiam saltem defende. Si tu verbis conceptis coniuravisti periuravisti, H. Meyer. sciens sciente animo tuo; si hoc ita est, qui spondet mille nummum?
+P. Africanus Pro se contra Tiberium Asellum de multa ad populum: Omnia mala, probra, flagitia, quae homines faciunt, in duabus rebus sunt, malitia atque nequitia. Utrum defendis, malitiam an nequitiam an utrumque simul? Si nequitiam defendere vis, licet; si tu in uno scorto maiorem pecuniam absumpsisti quam quanti omne instrumentum fundi Sabini in censum dedicavisti; si hoc ita est, qui spondet mille nummum? si tu plus tertia parte pecuniae paternae perdidisti atque absumpsisti in flagitiis; si hoc ita est, qui spondet mille nummum? Non vis nequitiam. Age malitiam saltem defende. Si tu verbis conceptis coniuravisti sciens sciente animo tuo; si hoc ita est, qui spondet mille nummum?
 
-De tunicis chiridotis; quod earum usum usum, added in ς. P. Africanus Sulpicio Gallo obiecit
+De tunicis chiridotis; quod earum usum P. Africanus Sulpicio Gallo obiecit
 
 TUNICIS uti virum prolixis ultra brachia et usque in primores manus ac prope in digitos, Romae atque in omni Latio indecorum fuit.
 
-Eas tunicas Graeco vocabulo nostri chiridotas appellaverunt feminisque solis vestem longe lateque diffusam non indecere non indecere, suggested by Hosius; indecere (incedere R)ω. existimaverunt ad ulnas cruraque adversus oculos protegenda.
+Eas tunicas Graeco vocabulo nostri chiridotas appellaverunt feminisque solis vestem longe lateque diffusam non indecere existimaverunt ad ulnas cruraque adversus oculos protegenda.
 
 Viri autem Romani primo quidem sine tunicis toga sola amicti fuerunt; postea substrictas et breves tunicas citra umerum desinentis habebant, quod genus Graeci dicunt ἐξωμίδας.
 
 Hac antiquitate indutus P. Africanus, Pauli filius, vir omnibus bonis artibus atque omni virtute praeditus, P. Sulpicio Gallo, homini delicate, inter pleraque alia, quae obiectabat, id quoque probro dedit, quod tunicis uteretur manus totas operientibus.
 
-Verba sunt haec Scipionis: Nam qui cotidie unguentatus adversum speculum ornetur, cuius supercilia radantur, qui barba vulsa feminibusque subvulsis ambulet, qui in conviviis adulescentulus cum amatore, cum chiridota tunica interior interior, Lipsius; inferior, ω; cf. Suet. Jul. xlix. 1. accubuerit, qui non modo vinosus, sed virosus quoque sit, eumne quisquam dubitet, quin idem fecerit quod cinaedi facere solent?
+Verba sunt haec Scipionis: Nam qui cotidie unguentatus adversum speculum ornetur, cuius supercilia radantur, qui barba vulsa feminibusque subvulsis ambulet, qui in conviviis adulescentulus cum amatore, cum chiridota tunica interior accubuerit, qui non modo vinosus, sed virosus quoque sit, eumne quisquam dubitet, quin idem fecerit quod cinaedi facere solent?
 
 Vergilius quoque tunicas huiuscemodi quasi femineas, probrosas criminatur:
 
@@ -3635,13 +3635,13 @@ Q. quoque Ennius Carthaginiensium tunicatam iuventuten non videtur sine probro d
 
 Quem classicum dicat M. Cato, quem infra classem.
 
-CLASSICI dicebantur non omnes qui in quinque in quinque, Scioppius; inqu(a)e, ω. classibus erant, sed primae tantum classis homines, qui centum et viginti quinque milia aeris ampliusve censi erant.
+CLASSICI dicebantur non omnes qui in quinque classibus erant, sed primae tantum classis homines, qui centum et viginti quinque milia aeris ampliusve censi erant.
 
-Infra classes autem appellabantur secundae classis ceterarumque omnium classium, qui minore summa aeris, quam quod quam quod, Skutsch; quod, ω; quam ς. supra dixi, censebantur.
+Infra classes autem appellabantur secundae classis ceterarumque omnium classium, qui minore summa aeris, quam quod supra dixi, censebantur.
 
 Hoc eo strictim notavi, quoniam in M. Catonis oratione, Qua Voconiam legem suasit, quaeri solet quid sit classicus, quid infra classem.
 
-De tribus dicendi generibus; ac de tribus philosophis qui ab Atheniensibus ad senatum Romam legati missi sunt. Romae legati sunt, MSS.
+De tribus dicendi generibus; ac de tribus philosophis qui ab Atheniensibus ad senatum Romam legati missi sunt.
 
 ET in carmine et in soluta oratione genera dicendi probabilia sunt tria, quae Graeci χαρακτῆρας vocant nominaque eis fecerunt ἁδρόν, ἰσχνόν, μέσον.
 
@@ -3651,13 +3651,13 @@ Uberi dignitas atque amplitudo est, gracili venustas et subtilitas, medius in co
 
 His singulis orationis virtutibus vitia agnata sunt pari numero, quae earum modum et habitum simulacris falsis ementiuntur.
 
-Sic plerumque sufflati atque tumidi fallunt pro uberibus, squalentes et ieiunidici ieiuni dici, MSS.; ieiunidici, J. Gronov. Heraens suggests in place of this rare word, eiuncidi, Varro R.R. i. 31. 3; ii. 10. 8; Plin. N.H. xvii. 176, defined by a gloss as tenuis. pro gracilibus, incerti et ambigui pro mediocribus.
+Sic plerumque sufflati atque tumidi fallunt pro uberibus, squalentes et ieiunidici pro gracilibus, incerti et ambigui pro mediocribus.
 
 Vera autem et propria huiuscemodihuitscemodi formarum exempla in Latina lingua M. Varro esse dicit ubertatis Pacuvium, gracilitatis Lucilium, mediocritatis Terentium.
 
 Sed ea ipsa genera dicendi iam antiquitus tradita ab Homero sunt tria in tribus: magnificum in Ulixe et ubertum, subtile in Menelao et cohibitum, mixtum moderatumque in Nestore.
 
-Animadversa eadem tripertita varietas est in tribus philosophis quos Athenienses Romam ad senatum senatum populi, w; senatum populi R., Hosius; senatum publice, Damsté. legaverant, inpetratum uti multam remitteret, quam fecerat is propter Oropi vastationem. Ea multa fuerat talentum fere quingentum.
+Animadversa eadem tripertita varietas est in tribus philosophis quos Athenienses Romam ad senatum legaverant, inpetratum uti multam remitteret, quam fecerat is propter Oropi vastationem. Ea multa fuerat talentum fere quingentum.
 
 Erant isti philosophi Carneades ex Academia, Diogenes Stoicus. Critolaus Peripateticus. Et in senatum quidem introducti interprete usi sunt C. Acilio senatore; sed ante ipsi seorsum quisque ostentandi gratia magno conventu hominum dissertaverunt.
 
@@ -3673,17 +3673,17 @@ Itaque Q. Scaevola, in librorum quos De iurelure Civili composuit XVI., verba ha
 
 Locus exscriptus ex satura M. Varronis, quae Περὶ Ἐδεσμάτων inscripta est, de peregrinis ciborum generibus; et appositi versus Euripidi, quibus delicatorum hominum luxuriantem gulam confutavit.
 
-M. VARRO, in satura quam Περὶ Ἐδεσμάτων inscripsit, lepide admodum et scite factis versibus cenarum, ciborum exquisitas delicias comprehendit.
+**M** VARRO, in satura quam Περὶ Ἐδεσμάτων inscripsit, lepide admodum et scite factis versibus cenarum, ciborum exquisitas delicias comprehendit.
 
 Nam pleraque id genus, quae helluones isti terra et mari conquirunt, exposuit inclusitque in numeros senarios.
 
 Et ipsos quidem versus, cui otium erit in libro quo dixi positos legat;
 
-genera autem nominaque edulium et domicilia ciborum omnibus aliis praestantia, quae profunda ingluvies vestigavit, quae quaeque, Hertz. Varro obprobrans exsecutus est, haec sunt ferme, quantum nobis memoriae est pavus e Samo,
+genera autem nominaque edulium et domicilia ciborum omnibus aliis praestantia, quae profunda ingluvies vestigavit, quae Varro obprobrans exsecutus est, haec sunt ferme, quantum nobis memoriae est pavus e Samo,
 
-Phrygia attagena, grues Melicae, haedus ex Ambracia, pelamys Chalcedonia, muraena Tartesia, aselli Pessinuntii, ostrea Tarenti, pectunculus Siculus, Siculus added by Hertz. helops RhodiusRodius, scari Cilices, nuces Thasiae, palma Aegyptia, glans Hiberica.
+Phrygia attagena, grues Melicae, haedus ex Ambracia, pelamys Chalcedonia, muraena Tartesia, aselli Pessinuntii, ostrea Tarenti, pectunculus Siculus, helops RhodiusRodius, scari Cilices, nuces Thasiae, palma Aegyptia, glans Hiberica.
 
-Hanc autem peragrantis gulae et in sucos inquirentis industriam atque has undiquevorsum indagines cuppediarum maiore detestatione dignas censebimus, si versus Euripidi recordemur, quibus saepissime Chrysippus philosophus usus, tamquam ἡδυπαθείας ἡδυπαθείας suggested by Hosius (cf. Clem. Alex. Paed. ii. 1. 3, p. 164). edendi repertas esse, non per usum vitae necessarium, sed per luxum animi parata atque facilia fastidientis per inprobam satietatis lasciviam.
+Hanc autem peragrantis gulae et in sucos inquirentis industriam atque has undiquevorsum indagines cuppediarum maiore detestatione dignas censebimus, si versus Euripidi recordemur, quibus saepissime Chrysippus philosophus usus, tamquam ἡδυπαθείας edendi repertas esse, non per usum vitae necessarium, sed per luxum animi parata atque facilia fastidientis per inprobam satietatis lasciviam.
 
 Versus Euripidi adscribendos putavi:
 
@@ -3703,11 +3703,11 @@ PERCONTABAR Romae quempiam grammaticum primae in docendo celebritatis, non hercl
 
 Atque ille aspicit me, inludens levitatem quaestionis pravitatemque: Obscuram, inquit, sane rem quaeris multaque prorsus vigilia indagandam!
 
-Quis adeo tam linguae Latinae ignarus est, quin sciat eum dici obnoxium cui quid ab eo cui esse obnoxius dicitur incommodari et noceri potest, ut qui ut qui, suggested by Hosius; et, Acidalius; ei, ω. habeat aliquem noxae, id est culpae suae, conscium? Quin potius, inquit, haec mittis nugalia et affers ea quae digna quaeri tractarique sint?
+Quis adeo tam linguae Latinae ignarus est, quin sciat eum dici obnoxium cui quid ab eo cui esse obnoxius dicitur incommodari et noceri potest, ut qui habeat aliquem noxae, id est culpae suae, conscium? Quin potius, inquit, haec mittis nugalia et affers ea quae digna quaeri tractarique sint?
 
-Tum vero ego permotus, agendum iam oblique, ut cum homine stulto, existimavi et Cetera, inquam, vir doctissime, remotiora gravioraque si discere et scire debuero, quando mihi usus venerit, tum quaeram ex te atque discam; sed enim quia dixi saepe obnoxius et quid dicerem nescivi, didici ex te et scire nunc coepi quod non ego omnium solus, ut tibi sum visus, ignoravi, sed, ut res est, Plautus quoque, homo linguae atque elegantiae in verbis Latinae princeps, quid esset obnoxius nescivit; versus enim est in Sticho illius ita. scriptus: nuncNune ego hercle perii pláne, non obnóxie,periei hercle vero plane, nihil obnoxie, codd. Plaut. quod minime congruit cum ista, quam me docuisti, significatione; composuit enim Plautus tamquam duo inter se contraria plane et obnoxie, quod a tua significatione longe abest.
+Tum vero ego permotus, agendum iam oblique, ut cum homine stulto, existimavi et Cetera, inquam, vir doctissime, remotiora gravioraque si discere et scire debuero, quando mihi usus venerit, tum quaeram ex te atque discam; sed enim quia dixi saepe obnoxius et quid dicerem nescivi, didici ex te et scire nunc coepi quod non ego omnium solus, ut tibi sum visus, ignoravi, sed, ut res est, Plautus quoque, homo linguae atque elegantiae in verbis Latinae princeps, quid esset obnoxius nescivit; versus enim est in Sticho illius ita. scriptus: nuncNune ego hercle perii pláne, non obnóxie, quod minime congruit cum ista, quam me docuisti, significatione; composuit enim Plautus tamquam duo inter se contraria plane et obnoxie, quod a tua significatione longe abest.
 
-nuncNune ego hercle perii pláne, non obnóxie,periei hercle vero plane, nihil obnoxie, codd. Plaut.
+nuncNune ego hercle perii pláne, non obnóxie,
 
 Atque ille grammaticus satis ridicule, quasi obnoxius et obnoxie non declinatione sola, sed re atque sententia differrent, Ego, inquit, dixi quid esset obnoxius, non quid obnoxie.
 
@@ -3715,9 +3715,9 @@ At tunc ego admirans insolentis hominis inscitiam, Mittamus, inquam, sicuti vis,
 
 atque illud quoque praetermittamus, quod Sallustius in Catilina scribit:
 
-Minari etiam interdum, Sall. ferro, ni sibi obnoxia foret, et quod videtur novius pervulgatiusque esse, id me doce. Versus enim Vergilii sunt notissimi: Nam neque tunc astris stellis, Virg. acies obtunsa videri, videtur, Virg. Nec fratris radiis obnoxia surgere luna,
+Minari etiam ferro, ni sibi obnoxia foret, et quod videtur novius pervulgatiusque esse, id me doce. Versus enim Vergilii sunt notissimi: Nam neque tunc astris acies obtunsa videri, Nec fratris radiis obnoxia surgere luna,
 
-Nam neque tunc astris stellis, Virg. acies obtunsa videri, videtur, Virg.
+Nam neque tunc astris acies obtunsa videri,
 
 Nec fratris radiis obnoxia surgere luna,
 
@@ -3727,11 +3727,11 @@ iuvat arva videre
 
 Non rastris hominum, non ulli obnoxia curae;
 
-Iam vero illud etiam Q. Enni quo pacto congruere tecum potest, quod scribit in Phoenice in hisce versibus: Séd virum verá virtute vívere animatum áddecet, Fórtiterque innóxium stare stare, Bentley; vocare, RV; vacare, P. ádversum adversários. Éa libertas ést, qui pectus púrum et firmum géstitat, Áaliaeliae res obnóxiosae nócte in obscurá latent?
+Iam vero illud etiam Q. Enni quo pacto congruere tecum potest, quod scribit in Phoenice in hisce versibus: Séd virum verá virtute vívere animatum áddecet, Fórtiterque innóxium stare ádversum adversários. Éa libertas ést, qui pectus púrum et firmum géstitat, Áaliaeliae res obnóxiosae nócte in obscurá latent?
 
 Séd virum verá virtute vívere animatum áddecet,
 
-Fórtiterque innóxium stare stare, Bentley; vocare, RV; vacare, P. ádversum adversários.
+Fórtiterque innóxium stare ádversum adversários.
 
 Éa libertas ést, qui pectus púrum et firmum géstitat,
 
@@ -3761,7 +3761,7 @@ De observata custoditaque apud Romanos iurisiurandi sanctimonia; atque inibi de 
 
 IUSIURANDUM apud Romanos inviolate sancteque habitum servatumque est. Id et moribus legibusque multis ostenditur, et hoc, quod dicemus, ei rei non tenue argumentum esse potest.
 
-Post Post added by Hertz; est. Post, Lambecius. proelium Cannense Hannibal, Carthaginiensium imperator, ex captivis nostris electos decem Romam misit mandavitque eis pactusque est, ut, si populo Romano videretur, permutatio fieret captivorum et pro his quos alteri plures acciperent, darent argenti pondo libram et selibram.
+Post proelium Cannense Hannibal, Carthaginiensium imperator, ex captivis nostris electos decem Romam misit mandavitque eis pactusque est, ut, si populo Romano videretur, permutatio fieret captivorum et pro his quos alteri plures acciperent, darent argenti pondo libram et selibram.
 
 Hoc, priusquam proficiscerentur, iusiurandum eos adegit, redituros esse in castra Poenica, si Romani captivos non permutarent.
 
@@ -3783,7 +3783,7 @@ Historia ex annalibus sumpta de Tiberio Graccho, Gracchorum patre, tribuno plebi
 
 PULCRUM atque liberale atque magnanimum factum Tiberii Sempronii Gracchi in Exemplis repositum est. Id exemplum huiuscemodi est:
 
-L. Scipioni Asiatico, P. Scipionis Africani superioris fratri, C. Minucius Augurinus tribunus plebi multam irrogavit eumque ob eam causam praedes poscebat.
+**L** Scipioni Asiatico, P. Scipionis Africani superioris fratri, C. Minucius Augurinus tribunus plebi multam irrogavit eumque ob eam causam praedes poscebat.
 
 Scipio Africanus fratris nomine ad collegium tribunorum provocabat, petebatque ut virum consularem triumphalemque a collegae vi defenderent.
 
@@ -3799,7 +3799,7 @@ Valerius autem Antias contra hanc decretorum memoriam contraque auctoritates vet
 
 Quod Vergilius a Nolanis ob aquam sibi non permissam sustulit e versu suo Nolam et posuit oram; atque ibi quaedam alia de iucunda consonantia litterarum.
 
-SCRIPTUM in quodam commentario repperi, versus istos a Vergilio ita primum esse recitatos atque editos: Talem dives arat Capua et vicina Vesevo Nola iugo; postea Vergilium petisse a Nolanis, aquam uti duceret Hosius suggests. ducerent or duci liceret; Heraeus (Berl. Ph. Woch. 1904, 1163 ff.) defends duceret. in propinquum rus, Nolanos beneficium petitum non fecisse, poetam offensum nomen urbis eorum, quasi ex hominum memoria, sic ex carmine suo derasisse, oram que pro Nola mutasse atque ita reliquisse;
+SCRIPTUM in quodam commentario repperi, versus istos a Vergilio ita primum esse recitatos atque editos: Talem dives arat Capua et vicina Vesevo Nola iugo; postea Vergilium petisse a Nolanis, aquam uti duceret in propinquum rus, Nolanos beneficium petitum non fecisse, poetam offensum nomen urbis eorum, quasi ex hominum memoria, sic ex carmine suo derasisse, oram que pro Nola mutasse atque ita reliquisse;
 
 Talem dives arat Capua et vicina Vesevo
 
@@ -3835,7 +3835,7 @@ Ebria acina ebriosioris,
 
 Quoad vivet quoad que morietur cur id ipsum temporis significent, cum ex duobus sint facta contrariis.
 
-QUOAD vivet cum dicitur, cum dicitur supplied by Hertz. cum item dicitur quoad morietur, videntur quidem duae res dici contrariae; sed idem atque unum tempus utraque verba demonstrant.
+QUOAD vivet cum dicitur, cum item dicitur quoad morietur, videntur quidem duae res dici contrariae; sed idem atque unum tempus utraque verba demonstrant.
 
 Item cum dicitur quoad senatus habebitur et quoad senatus dimittetur, tametsi haberi atque dimitti contraria sunt, unum atque id ipsum tamen utroque in verbo ostenditur.
 
@@ -3843,7 +3843,7 @@ Tempora enim duo cum inter sese opposita sunt atque ita cohaerentia ut alterius 
 
 Quod censores equum adimere soliti sunt equitibus corpulentis et praepinguibus; quaesitumque utrum ea res cum ignominia an incolumi dignitate equitum facta sit.
 
-NIMIS pingui homini et corpulento censores equum esse omitted by Skutsch. adimere solitos, scilicet minus idoneum ratos esse cum tanti corporis pondere ad faciendum equitis munus.
+NIMIS pingui homini et corpulento censores equum adimere solitos, scilicet minus idoneum ratos esse cum tanti corporis pondere ad faciendum equitis munus.
 
 Non enim poena id fuit, ut quidam existimant, sed munus sine ignominia remittebatur.
 
@@ -3865,11 +3865,11 @@ Proinde, inquit, homines stulti cur non hoc etiam desiderant, ut veritas sit et 
 
 Alterum enim ex altero, sicuti Plato ait, verticibus inter se contrariis deligatum est; si tuleris unum, abstuleris utrumque.
 
-Idem Chrysippus in eodem libro tractat consideratque dignumque esse id quaeri putat, εἰ αἱ τῶν ἀνθρώπων νόσοι κατὰ φύσιν γίνονται, id est, si si added by J. Gronov, or by Otho. natura ipsa rerum vel providentia, quae compagem hanc mundi et genus hominum fecit, morbos quoque et debilitates et aegritudines corporum, quas patiuntur homines, fecerit.
+Idem Chrysippus in eodem libro tractat consideratque dignumque esse id quaeri putat, εἰ αἱ τῶν ἀνθρώπων νόσοι κατὰ φύσιν γίνονται, id est, si natura ipsa rerum vel providentia, quae compagem hanc mundi et genus hominum fecit, morbos quoque et debilitates et aegritudines corporum, quas patiuntur homines, fecerit.
 
 Existimat autem non fuisse hoc principale naturae consilium, ut faceret homines morbis obnoxios, numquam enim hoc convenisse naturae auctori parentique omnium rerum bonarum.
 
-Sed cum multa, inquit, atque magna gigneret pareretque aptissima et utilissima, alia quoque simul adgnata sunt incommoda his ipsis quae faciebat cohaerentia; eaque non neque, J. Gronov. per naturam, sed per sequellas quasdam necessarias facta dicit, quod ipse appellat κατὰ παρακολούθησιν.
+Sed cum multa, inquit, atque magna gigneret pareretque aptissima et utilissima, alia quoque simul adgnata sunt incommoda his ipsis quae faciebat cohaerentia; eaque non per naturam, sed per sequellas quasdam necessarias facta dicit, quod ipse appellat κατὰ παρακολούθησιν.
 
 Sicut, inquit, cum corpora hominum natura fingeret, ratio subtilior et utilitas ipsa operis postulavit ut tenuissimis minutisque ossiculis caput compingeret.
 
@@ -3877,7 +3877,7 @@ Sed hanc utilitatem rei maiorem alia quaedam incommoditas extrinsecus consecuta 
 
 Proinde morbi quoque et aegritudines partae sunt, dum salus paritur.
 
-Sicut hercle, inquit, dum virtus hominibus per consilium naturae gignitur, vitia ibidem per adfinitatem contrariacontraria, Skutsch; contrariam, MSS. nata sunt.
+Sicut hercle, inquit, dum virtus hominibus per consilium naturae gignitur, vitia ibidem per adfinitatem contraria nata sunt.
 
 Quo itidem modo et vim necessitatemque fati constituerit et esse tamen in nobis consilii iudiciique nostri arbitrium confirmaverit.
 
@@ -3901,7 +3901,7 @@ Idque ipsum ut ea ratione fiat, naturalis illa et necessaria rerum consequentia 
 
 Est enim genere ipso quasi fatale et consequens, ut mala ingenia peccatis et erroribus non vacent.
 
-Huius deinde fere rei exemplo non hercle nimis alieno neque inlepido utitur. Sicut, inquit, lapidem cylindrum si per spatia terrae prona atque derupta iacias, causam causam, Hosius (cf. ii. 17. 6); causa, ω. quidem ei et initium praecipitantiae feceris, fueris, Hertz. mox tamen ille praeceps volvitur, non quia tu id etiam etiam, Hosius; iam, ω. facis, sed quoniam ita sese modus eius et formae volubilitas habet; sic ordo et ratio et necessitas fati genera ipsa et principia causarum movet, impetus vero consiliorum mentiumque nostrarum actionesque ipsas voluntas cuiusque propria et animorum ingenia moderantur.
+Huius deinde fere rei exemplo non hercle nimis alieno neque inlepido utitur. Sicut, inquit, lapidem cylindrum si per spatia terrae prona atque derupta iacias, causam quidem ei et initium praecipitantiae feceris, mox tamen ille praeceps volvitur, non quia tu id etiam facis, sed quoniam ita sese modus eius et formae volubilitas habet; sic ordo et ratio et necessitas fati genera ipsa et principia causarum movet, impetus vero consiliorum mentiumque nostrarum actionesque ipsas voluntas cuiusque propria et animorum ingenia moderantur.
 
 Infert deinde verba haec, his quae dixi congruentia: Διὸ καὶ ὑπὸ τῶν Πυθαγορείων εἴρηται. Γνώσει δʼ ἀνθρώπους αὐθαίρετα πήματʼ ἔχοντας, ὡς τῶν βλαβῶν ἑκάστοις παρʼ αὐτοῖς γινομένων καὶ καθʼ ὁρμὴν αὐτῶν ἁμαρτανόντων τε καὶ βλαπτομένων καὶ κατὰ τὴν αὐτῶν διάνοιαν καὶ θέσιν.
 
@@ -3917,11 +3917,11 @@ Primus autem hoc sapientissimus ille et antiquissimus poetarum dixit hisce versi
 
 Σφῇσιν ἀτασθαλίῃσιν ὑπὲρ μόρον ἄλγεʼ ἔχουσιν.
 
-Itaque M. Cicero, in libro quem De Fato conscripsit, cum quaestionem istam diceret obscurissimam esse et inplicatissimam, Chrysippum quoque philosophum non expedisse se in ea ait ait, added by Lion. his verbis: Chrysippus aestuans laboransque quonam hoc modo hoc modo after intricatur in ω; transposed by Hertz; hoc nodo after intricatur, Damsté. explicet, et fato omnia fieri et esse aliquid in nobis, intricatur.
+Itaque M. Cicero, in libro quem De Fato conscripsit, cum quaestionem istam diceret obscurissimam esse et inplicatissimam, Chrysippum quoque philosophum non expedisse se in ea ait his verbis: Chrysippus aestuans laboransque quonam hoc modo explicet, et fato omnia fieri et esse aliquid in nobis, intricatur.
 
 Historia sumpta ex libris Tuberonis de serpente invisitatae longitudinis.
 
-TUBERO in Historiis scriptum reliquit, bello primo Poenico Atilium Regulum consulem in Africa, castris apud Bagradam flumen positis, proelium grande atque acre fecisse adversus unum serpentem in illis locis stabulantem invisitatae inmanitatis, eumque magna totius exercitus conflictione balistis atque catapultis diu oppugnatum, eiusque interfecti corium longum pedes centum et viginti Romam missum esse. missum esse, Lion; Hosius suggested cos. (= consulem) before corium; misisse, ω.
+TUBERO in Historiis scriptum reliquit, bello primo Poenico Atilium Regulum consulem in Africa, castris apud Bagradam flumen positis, proelium grande atque acre fecisse adversus unum serpentem in illis locis stabulantem invisitatae inmanitatis, eumque magna totius exercitus conflictione balistis atque catapultis diu oppugnatum, eiusque interfecti corium longum pedes centum et viginti Romam missum esse.
 
 Quid idem Tubero novae historiae de Atilio Regulo a Carthaginiensibus capto litteris mandaverit; quid etiam Tuditanus super eodem Regulo scripserit.
 
@@ -4023,11 +4023,11 @@ Sed hanc utramque declamatiunculam super Alexandro et Scipione celebraverint, qu
 
 nos satis habebimus, quod ex historia est, id dicere: Scipionem istum, verone an falso incertum, fama tamen, cum esset adulescens, haud sincera fuisse et propemodum constitisse, hosce versus a Cn. Naevio poeta in eum scriptos esse:
 
-Etiám qui res magnás manu manu magnas, Fleckeisen. saepe géssit glorióse,
+Etiám qui res magnás manu saepe géssit glorióse,
 
 Cuius fácta viva núnc vigent, qui apud géntes solus praéstat,
 
-Eum súus pater cum pállio uno domum domum added by Bährens. ab amíca abduxit.
+Eum súus pater cum pállio uno domum ab amíca abduxit.
 
 His ego versibus credo adductum Valerium Antiatem adversus ceteros omnis scriptores de Scipionis moribus sensisse et eam puellam captivam non redditam patri scripsisse, contra quam nos supra diximus, sed retentam a Scipione atque in deliciis amoribusque ab eo usurpatamusurlpatam.
 
@@ -4059,13 +4059,13 @@ At nunc, inquit, videre est philosophos ultro currere, ut doceant, ad fores iuve
 
 verba ex oratione Q. Metelli Numidici, quae libuit meminisse, ad officium gravitatis dignitatisque vitae ducentia.
 
-CUM inquinatissimis hominibus non esse convicio decertandum neque in maledictis adversum inpudentes et inprobos velitandum, quia tantisper similis et compar eorum fias, dum paria et consimilia dicas atque audis, audis, Hosius (cf. v. 11. 1, vi. 15. 2, etc.); audias, ω. non minus ex oratione Q. Metelli Numidici, sapientis viri, cognosci potest quam ex libris et disciplinis philosophorum.
+CUM inquinatissimis hominibus non esse convicio decertandum neque in maledictis adversum inpudentes et inprobos velitandum, quia tantisper similis et compar eorum fias, dum paria et consimilia dicas atque audis, non minus ex oratione Q. Metelli Numidici, sapientis viri, cognosci potest quam ex libris et disciplinis philosophorum.
 
 Verba haec sunt Metelli Adversus C. Manlium, tribunum plebis, a quo apud populum in contione lacessitus iactatusque fuerat dictis petulantibus:
 
 Nunc quod ad ilium attinet, Quirites, quoniam se ampliorem putat esse, si se mihi inimicum dictitarit, quem ego mihi neque amicum recipio neque inimicum respicio, in eum ego non sum plura dicturus. Nam cum indignissimum arbitror cui a viris bonis benedicatur, tum ne idoneum quidem cui a probis maledicatur. Nam si in eo tempore huiusmodi homunculum nomines, in quo punire non possis, maiore honore quam contumelia adficias.
 
-Quod neque testamentum, sicuti Servius Sulpicius existimavit, neque sacellum. sicuti C. Trebatius, duplicia verba sunt, sed a testatione productum alterum, alterum added by Hertz. alterum a sacro imminutum.
+Quod neque testamentum, sicuti Servius Sulpicius existimavit, neque sacellum. sicuti C. Trebatius, duplicia verba sunt, sed a testatione productum alterum, alterum a sacro imminutum.
 
 SERVIUS SULPICIUS iureconsultus, vir aetatis suae doctissimus, in libro De Sacris Detestandis secundo, qua ratione adductus testamentum verbum esse duplex scripserit, non reperio;
 
@@ -4083,7 +4083,7 @@ De quaestiunculis apud Taurum philosophum in convivio agitatis, quae sympoticae 
 
 FACTITATUM observatumque hoc Athenis est ab his qui erant philosophophilosophy Tauro iunctiores;
 
-cum domum suam nos vocaret, ne omnino, ut dicitur, immunes et asymboli veniremus, coniectabamus convectabamus, Petschenig. ad cenulam non cuppedias ciborum, sed argutias quaestionum.
+cum domum suam nos vocaret, ne omnino, ut dicitur, immunes et asymboli veniremus, coniectabamus ad cenulam non cuppedias ciborum, sed argutias quaestionum.
 
 Unusquisque igitur nostrum commentus paratusque ibat quod quaereret, eratque initium loquendi edundi finis.
 
@@ -4119,7 +4119,7 @@ Has tris ulciscendi rationes et philosophi alii plurifariam et noster Taurus in 
 
 Plato autem ipse verbis apertis duas solas esse poeniendi causas dicit: unam, quam primo in loco propter corrigendum, alteram, quam in tertio propter exempli metum posuimus.
 
-Verba haec sunt Platonis in Gorgia: Προσήκει δὲ παντὶ τῷ ἐν τιμωρίᾳ ὄντι ὑπʼ ἄλλου ὀρθῶς τιμωρουμένῳ ἢ βελτίονι γίγνεσθαι καὶ ὀνίνασθαι, ἢ παραδείγματι ἄλλοις τοῖς ἄλλοις, Plato. γίγνεσθαι, ἵνα ἄλλοι οἱ οἱ omitted in MSS. of Plato. ὁρῶντες πάσχοντα φοβούμενοι βελτίους γίγνωνται.
+Verba haec sunt Platonis in Gorgia: Προσήκει δὲ παντὶ τῷ ἐν τιμωρίᾳ ὄντι ὑπʼ ἄλλου ὀρθῶς τιμωρουμένῳ ἢ βελτίονι γίγνεσθαι καὶ ὀνίνασθαι, ἢ παραδείγματι ἄλλοις γίγνεσθαι, ἵνα ἄλλοι οἱ ὁρῶντες πάσχοντα φοβούμενοι βελτίους γίγνωνται.
 
 In hisce verbis facile intellegas τιμωρίαν Platonem dixisse, non ut supra scripsi quosdam dicere, sed ita ut promiscepromisee dici solet pro omni punitione.
 
@@ -4141,7 +4141,7 @@ litteras tamen super hac re fecit inter exercitia quaedam ludicra et quiesco non
 
 Verbum deprecor a poeta Catullo inusitate quidem, sed apte positum et proprie; deque ratione eius verbi exemplisque veterum scriptorum.
 
-EIUSMODI quispiam qui tumultuariis et inconditis linguae exercitationibus ad famam sese facundiae promiseratproniiserat prornoverat, suggested by Hosius; promiserat, ω. neque orationis Latinae usurpationes rationesve rationes added by Hertz; u. veras, Carrio; u. venustas, Petschenig. ullas didicerat, cum in Lycio forte vespera ambularemus, ludo ibi et voluptati fuit.
+EIUSMODI quispiam qui tumultuariis et inconditis linguae exercitationibus ad famam sese facundiae promiseratproniiserat neque orationis Latinae usurpationes rationesve ullas didicerat, cum in Lycio forte vespera ambularemus, ludo ibi et voluptati fuit.
 
 Nam cum esset verbum deprecor doctiuscule positum in Catulli carmine, quia id ignorabat, frigidissimos versus esse dicebat omnium quidem iudicio venustissimos, quos subscripsi: Lesbia mi dicit semper male nec tacet umquam De me; Lesbia me dispeream nisi amat. Quo signo? quia sunt totidem mea; deprecor illam Assidue, verum dispeream nisi amo.
 
@@ -4157,15 +4157,15 @@ Deprecor hoc in loco vir bonus ita esse dictum putabat, ut plerumque a vulgo dic
 
 Quod si ita esset, frigidi sane versus forent.
 
-Nunc enim contra omnino est; nam de praepositio, quoniam est anceps, in uno eodemque verbo duplicem vim duplicem (or duum) vim, Hosius; dum, V; diversum, DZiatzko. capit. Sic enim deprecor a Catullo dictum est, quasi detestor vel exsecror vel depello vel abominor;
+Nunc enim contra omnino est; nam de praepositio, quoniam est anceps, in uno eodemque verbo duplicem vim capit. Sic enim deprecor a Catullo dictum est, quasi detestor vel exsecror vel depello vel abominor;
 
-contra autem valet, cum Cicero Pro P. Sulla ita dicit: Quam quam, omitted by Cic. multorum hic vitamst est, Cic.; sit, V. a Sulla deprecatus.
+contra autem valet, cum Cicero Pro P. Sulla ita dicit: Quam multorum hic vitamst a Sulla deprecatus.
 
 Item in dissuasione legis agrariae: Si quid deliquero, nullae sunt imagines, quae me a vobis deprecentur.
 
 Sed neque solus Catullus ita isto verbo usus est. Pleni sunt adeo libri similis in hoc verbo significationis, ex quibus unum et alterum, quae subpetierant, apposui.
 
-Q. Ennius in Erectheo non longe secus dixit quam CatullusCattullus: Qui núnc (inquit) aerumna meá libertatém paro, Quibus sérvitutem meá miseria déprecor; signat (in hoc versu deprecor) signat, Skutsch. abigo et amolior, vel prece adhibita vel quo alio modo.
+Q. Ennius in Erectheo non longe secus dixit quam CatullusCattullus: Qui núnc (inquit) aerumna meá libertatém paro, Quibus sérvitutem meá miseria déprecor; signat abigo et amolior, vel prece adhibita vel quo alio modo.
 
 Qui núnc (inquit) aerumna meá libertatém paro,
 
@@ -4175,19 +4175,19 @@ Item Ennius in Cresphonte: Ego cum meae vitae parcam, létum inimico déprecer.
 
 Ego cum meae vitae parcam, létum inimico déprecer.
 
-Cicero in libro sexto De RepublIca ita scripsit: Quod quidem eo fuit maius, quia, cum causa pari collegae essent, non modo invidia pari non erant, sed etiam Claudi invidiam Gracchi caritas deprecabatur; hic quoque item non est valde precabatur, sed quasi propulsabat invidiam invidiam omitted by ς. et defensabat invidiam, quod Graeci propinqua significatione παραιτεῖσθαι dicunt.
+Cicero in libro sexto De RepublIca ita scripsit: Quod quidem eo fuit maius, quia, cum causa pari collegae essent, non modo invidia pari non erant, sed etiam Claudi invidiam Gracchi caritas deprecabatur; hic quoque item non est valde precabatur, sed quasi propulsabat invidiam et defensabat invidiam, quod Graeci propinqua significatione παραιτεῖσθαι dicunt.
 
-Item Pro Aulo Caecina consimiliter Cicero verbo isto utitur. Quid, inquit, huic huic tu, Cic. homini facias? Nonne concedas interdum ut excusatione summae stultitiae summae improbitatis odium deprecetur? Item In Verrem actionis secundae primo:
+Item Pro Aulo Caecina consimiliter Cicero verbo isto utitur. Quid, inquit, huic homini facias? Nonne concedas interdum ut excusatione summae stultitiae summae improbitatis odium deprecetur? Item In Verrem actionis secundae primo:
 
 Nunc vero quid faciat Hortensius? Avaritiaene crimina frugalitatis laudibus deprecetur? At hominem flagitiosissimum, libidinosissimum nequissimumque defendit. Sic igitur Catullus eadem se facere dicit quae Lesbiam, quod et malediceret ei palam respueretque et recusaret detestareturque assidue et tamen eam penitus deperiret.
 
-Quis omnium primus libros publice praebuerit legendos; quantusque numerusnumerous fuerit Athenis ante clades Persicas librorum in bibliothecis publicorum. publicorum, MSS.; publicis, Hertz.
+Quis omnium primus libros publice praebuerit legendos; quantusque numerusnumerous fuerit Athenis ante clades Persicas librorum in bibliothecis publicorum.
 
 LIBROS Athenis disciplinarum liberalium publice ad legendum praebendos primus posuisse dicitur Pisistratus tyrannus. Deinceps studiosius accuratiusque ipsi Athenienses auxerunt; sed omnem illam postea librorum copiam Xerxes, Athenarum potitus, urbe ipsa praeter arcem incensa, abstulit asportavitque in Persas.
 
 Eos porro libros universos multis post tempestatibus Seleucus rex, qui Nicanor appellatus est, referendos Athenas curavit.
 
-Ingens postea numerus librorum in Aegypto ab Ptolemaeis regibus vel conquisitus vel confectus est ad milia ferme voluminum septingenta; septuaginta, s, Isid. vi. 3. 5. sed ea omnia bello priore Alexandrino, dum diripitur ea civitas, non sponte neque opera consulta, sed a militibus forte auxiliaris incensa sunt.
+Ingens postea numerus librorum in Aegypto ab Ptolemaeis regibus vel conquisitus vel confectus est ad milia ferme voluminum septingenta; sed ea omnia bello priore Alexandrino, dum diripitur ea civitas, non sponte neque opera consulta, sed a militibus forte auxiliaris incensa sunt.
 
 HESTERNA noctu rectene an cum vitio dicatur et quaenam super istis verbis grammatica traditio sit; item quod decemviri in XII. Tabulis nox pro noctu dixerunt.
 
@@ -4225,7 +4225,7 @@ QUIBUS modis ignominiatus tractatusque sit a C. Caesare Laberius poeta; atque in
 
 Historia ex libris Heraclidae Pontici iucunda memoratu et miranda.
 
-Quamobrem Quintus Claudius Quadrigarius, in undevicesimo undevicesimo, Q; duodevicesirno, ω. Annali, scripserit rectiores certioresque ictus fieri, si sursum quid mittas quam si deorsum.
+Quamobrem Quintus Claudius Quadrigarius, in undevicesimo Annali, scripserit rectiores certioresque ictus fieri, si sursum quid mittas quam si deorsum.
 
 QUINTUS CLAUDIUS in undevicesimo Annali, cum oppidum a Metello proconsule oppugnari, contra ab oppidanis desuper e muris propugnari describeret, ita scripsit: Sagittarius cum funditore utrimque summo studio spargunt fortissime. Sed sagittam atque lapidem deorsum an sursum mittas, hoc interest; nam neutrum potest deorsum versum recte mitti, sed sursum utrumque optime. Quare milites Metelli sauciabantur multo minus et, quod maxime opus erat, a pinnis hostis defendebant facillime finditorePercontabar.
 
@@ -4257,7 +4257,7 @@ Video, inquit Herodes, barbam et pallium, philosophum nondum video.
 
 Quaeso autem te, cum bona venia dicas mihi quibus nos uti posse argumentis existimas, ut esse te philosophum noscitemus?
 
-Interim aliquot ex his qui cum Herode erant erraticum esse hominem dicere et nulli nullius, BQ2. rei incolamque esse sordentium ganearum, nisi accipiat quod petat petat or petierit, Skutsch; petit, MSS. convicio turpi solitum incessere; atque ibi Herodes Demus, inquit, huic aliquid aeris, cuicuimodi est,
+Interim aliquot ex his qui cum Herode erant erraticum esse hominem dicere et nulli rei incolamque esse sordentium ganearum, nisi accipiat quod petat convicio turpi solitum incessere; atque ibi Herodes Demus, inquit, huic aliquid aeris, cuicuimodi est,
 
 tamquam homines, non tamquam homini, et iussit dari pretium panis triginta dierum.
 
@@ -4279,11 +4279,11 @@ Feruntur adeo libri epistularum eius, munditiae et venustatis et prudentiae plen
 
 Ea epistula, quoniam curae diligentiaeque in liberorum disciplinas hortamentum est, exscribenda visa est ad commonendos parentum animos.
 
-Exponenda est igitur ad hanc ferme sententiam: Philippus Aristoteli salutem dicit. Filium mihi genitum scito. Quod equidem dis habeo gratiam, non proinde quia natus est, quam pro eo, quod nasci contigit temporibus vitae tuae. Spero enim fore ut eductus eruditusque a te, dignus existat et nobis et rerum nostrarum nostrarum, Skutsch; istarum, MSS.; ipsarum, suggested by Hosius. susceptione.
+Exponenda est igitur ad hanc ferme sententiam: Philippus Aristoteli salutem dicit. Filium mihi genitum scito. Quod equidem dis habeo gratiam, non proinde quia natus est, quam pro eo, quod nasci contigit temporibus vitae tuae. Spero enim fore ut eductus eruditusque a te, dignus existat et nobis et rerum nostrarum susceptione.
 
 Philippus Aristoteli salutem dicit.
 
-Filium mihi genitum scito. Quod equidem dis habeo gratiam, non proinde quia natus est, quam pro eo, quod nasci contigit temporibus vitae tuae. Spero enim fore ut eductus eruditusque a te, dignus existat et nobis et rerum nostrarum nostrarum, Skutsch; istarum, MSS.; ipsarum, suggested by Hosius. susceptione.
+Filium mihi genitum scito. Quod equidem dis habeo gratiam, non proinde quia natus est, quam pro eo, quod nasci contigit temporibus vitae tuae. Spero enim fore ut eductus eruditusque a te, dignus existat et nobis et rerum nostrarum susceptione.
 
 Ipsius autem Philippi verba haec sunt: Φίλιππος Ἀριστοτέλει χαίρειν. Ἴσθι μοι γεγονότα υἱόν. πολλὴν οὖν τοῖς θεοῖς ἔχω χάριν, οὐχ οὕτως ἐπὶ τῇ γενέσει τοῦ παιδός, ὡς ἐπὶ τῷ κατὰ τὴν σὴν ἡλικίαν αὐτὸν γεγονέναι· ἐλπίζω γάρ αὐτὸν ὑπὸ σοῦ τραφέντα καὶ παιδευθέντα ἄξιον ἔσεσθαι καὶ ἡμῶν καὶ τῆς τῶν πραγμάτων διαδοχῆς.
 
@@ -4303,11 +4303,11 @@ ipsa autem volumina ex diutino situ squalebant et habitu aspectuque taetro erant
 
 Accessi tamen percontatusque pretium sum et, adductus mira atque insperata vilitate, libros plurimos aere pauco emo eosque omnis duabus proximis noctibus cursim transeo; atque in legendo carpsi exinde quaedam et notavi mirabilia et scriptoribus fere nostris intemptata eaque his commentariis aspersi, ut qui eos lectitarit ne rudis omnino et ἀνήκοος inter istiusmodi rerum auditiones reperiatur.
 
-Erant igitur in illis libris scripta huiuscemodi: Scythas illos penitissimospenitissiimos, qui sub ipsis septentrionibus aetatem agunt, corporibus hominum vesci eiusque victus alimento vitam ducere et ἀνθρωποφάγους nominari; item esse homines sub eadem regione caeli unum oculum in frontis medio habentes, qui appellantur Arimaspi, qua fuisse facie Cyclopas poetae ferunt; alios item esse homines apud eandem caeli plagam singulariae velocitatis, vestigia pedum habentes retro porrecta, non, ut ceterorum hominum, prosum spectantia; prosum spectantia, Hagen; prosprofium petet antispectancia, δ; prospectantia, γ. praeterea traditum esse memoratumque in ultima quadam terra, quae Albania dicitur, gigni homines, qui in pueritia canescant et plus cernant oculis per noctem quam interdiu; item esse compertum et creditum, Sauromatas, qui ultra Borysthenen fluvium longe colunt, cibum capere semper diebus tertiis, medio abstinere.
+Erant igitur in illis libris scripta huiuscemodi: Scythas illos penitissimospenitissiimos, qui sub ipsis septentrionibus aetatem agunt, corporibus hominum vesci eiusque victus alimento vitam ducere et ἀνθρωποφάγους nominari; item esse homines sub eadem regione caeli unum oculum in frontis medio habentes, qui appellantur Arimaspi, qua fuisse facie Cyclopas poetae ferunt; alios item esse homines apud eandem caeli plagam singulariae velocitatis, vestigia pedum habentes retro porrecta, non, ut ceterorum hominum, prosum spectantia; praeterea traditum esse memoratumque in ultima quadam terra, quae Albania dicitur, gigni homines, qui in pueritia canescant et plus cernant oculis per noctem quam interdiu; item esse compertum et creditum, Sauromatas, qui ultra Borysthenen fluvium longe colunt, cibum capere semper diebus tertiis, medio abstinere.
 
 Id etiam in isdem libris scriptum offendimus, quod postea in libro quoque Plinii Secundi Naturalis Historiae septimo legi, esse quasdam in terra Africa hominum familias voce atque lingua effascinantium,
 
-qui si impensius forte laudaverint pulchras arbores, segetes laetiores, infantes amoeniores, egregios equos, pecudes pastu atque cultu opimas, emoriantur repente haec omnia, nulli aliae causae obnoxia. Oculis quoque exitialem fascinationem fieri in isdem libris scriptum est traditurque esse homines in Illyriis qui interimant videndo quos diutius irati viderint, eosque ipsos mares feminasque, qui visu ita ita, Q; tam, ω. nocenti sunt, pupillas in singulis oculis binas habere.
+qui si impensius forte laudaverint pulchras arbores, segetes laetiores, infantes amoeniores, egregios equos, pecudes pastu atque cultu opimas, emoriantur repente haec omnia, nulli aliae causae obnoxia. Oculis quoque exitialem fascinationem fieri in isdem libris scriptum est traditurque esse homines in Illyriis qui interimant videndo quos diutius irati viderint, eosque ipsos mares feminasque, qui visu ita nocenti sunt, pupillas in singulis oculis binas habere.
 
 Item esse in montibus terrae Indiae homines caninis capitibus et latrantibus eosque vesci avium et ferarum venatibus; atque esse item alia aput ultimas orientis terras miracula homines, qui monocoli appellentur, singulis cruribus saltatim currentes, vivacissimae pernicitatis; quosdam etiam esse nullis cervicibus, oculos in humeris habentes.
 
@@ -4321,7 +4321,7 @@ Libitum tamen est in loco hoc miraculorum notare id etiam, quod Plinius Secundus
 
 Verba igitur haec, quae infra posui, ipsius sunt, ex eo libro sumpta, quae profecto faciunt ut neque respuenda neque ridenda sit notissima illa veterum poetarum de Caenide et Caeneo cantilena.
 
-Ex feminis, inquit, mutari in mares, non esse fabulosum. Invenimus in annalibus, Q. Licinio Crasso, C. Cassio Longino consulibus, Casini puerum factum ex virgine sub parentibus iussuque haruspicum deportatum in insulam desertam. Licinius Mucianus prodidit visum esse a se Argis Arescontem, cui nomen Arescusae fuisset, fuisse, Plin. nupsisse etiam, mox barbam et virilitatem provenisse uxoremque duxisse; eiusdem sortis et Zmyrnae puerum a se visum. Ipse in Africa vidi mutatum in marem die nuptiarum L. Cossitium civem Thysdritanum, vivebatque cum proderem haec.
+Ex feminis, inquit, mutari in mares, non esse fabulosum. Invenimus in annalibus, Q. Licinio Crasso, C. Cassio Longino consulibus, Casini puerum factum ex virgine sub parentibus iussuque haruspicum deportatum in insulam desertam. Licinius Mucianus prodidit visum esse a se Argis Arescontem, cui nomen Arescusae fuisset, nupsisse etiam, mox barbam et virilitatem provenisse uxoremque duxisse; eiusdem sortis et Zmyrnae puerum a se visum. Ipse in Africa vidi mutatum in marem die nuptiarum L. Cossitium civem Thysdritanum, vivebatque cum proderem haec.
 
 Idem Plinius in eodem libro verba haec scripsit: Gignuntur homines utriusque sexus, quos hermaphroditos vocamus, olim androgynos vocatos et in prodigiis habitos, nuncnune vero in deliciis.
 
@@ -4337,7 +4337,7 @@ Speusippus vetusque omnis Academia voluptatem et dolorem duo mala esse dicunt op
 
 Zeno censuit voluptatem esse indifferens, id est neutrum, neque bonum neque malum, quod ipse Graeco vocabulo ἀδιάφορον appellavit.
 
-Critolaus Peripateticus et malum esse voluptatem ait et multa alia mala parere ex sese, iniurias, incurias, Kronenberg. desidias, obliviones, ignavias.
+Critolaus Peripateticus et malum esse voluptatem ait et multa alia mala parere ex sese, iniurias, desidias, obliviones, ignavias.
 
 Plato ante hos omnis ita varie et multiformitermultiobrmiter de voluptate disseruit, ut cunctae istae sententiae quas exposui videantur ex sermonum eius fontibus profluxisse; nam proinde unaquaque utitur, ut et ipsius voluptatis natura fert, quae est multiplex, et causarum quas tractat, rerumque quas efficere vult ratio desiderat.
 
@@ -4477,7 +4477,7 @@ Ea res prorsus miranda sic profecto est in libris annalibus memorata:
 
 Adulescens tali genere editus, L. Furio, Claudio Appio consulibus fit tribunus militaris.
 
-Atque in eo tempore copiae Gallorum ingentes agrum Pomptinum insederant instruebaturque instruebatur, Skutsch; instruebanturque, codd. acies a consulibus, de vi ac multitudine hostium satis agentibus.
+Atque in eo tempore copiae Gallorum ingentes agrum Pomptinum insederant instruebaturque acies a consulibus, de vi ac multitudine hostium satis agentibus.
 
 Dux interea Gallorum, vasta et ardua proceritate armisque auro praefulgentibus, grandia ingrediens et manu telum reciprocans incedebat perque contemptum et superbiam circumspicienscircumsliciens despiciensque omnia, venire iubet et congredi, si quis pugnare secum ex omni Romano exercitu auderet.
 
@@ -4571,19 +4571,19 @@ Pugnae facta pausa est.
 
 Extemplo silentio facto cum voce maxima conclamat, si quis secum depugnare vellet, uti prodiret.
 
-Nemo audebat propter magnitudinem atque inmanitatem facies. On this form of the genitive see ix. 14.
+Nemo audebat propter magnitudinem atque inmanitatem facies.
 
 Deinde Gallus inridere coepit atque linguam exertare.
 
 Id subito perdolitum est cuidam Tito Manlio, summo genere gnato, tantum flagitium civitati adcidere, e tanto exercitu neminem prodire.
 
-Is, ut dico, ilico, Mommsen; iudico, X1. processit neque passus est virtutem Romanam ab Gallo turpiter spoliari. spurcari, Damsté. Scuto pedestri et gladio Hispanico cinctus contra Gallum constitit.
+Is, ut dico, processit neque passus est virtutem Romanam ab Gallo turpiter spoliari. Scuto pedestri et gladio Hispanico cinctus contra Gallum constitit.
 
 Metu magno ea congressio in ipso ponti, utroque exercitu inspectante, facta est.
 
-Ita, ut ante dixi, constiterunt: Gallus sua disciplina scuto proiecto cunctabundus; cunctabundus, π; cantabundus, ς; cautabundus, reliqui codd. Manlius, animo magis quam arte confisus, scuto scutum percussit atque statum Galli conturbavit.
+Ita, ut ante dixi, constiterunt: Gallus sua disciplina scuto proiecto cunctabundus; Manlius, animo magis quam arte confisus, scuto scutum percussit atque statum Galli conturbavit.
 
-Dum se Gallus iterum eodem pacto constituere studet, Manlius iterum scuto scutum percutit atque de loco hominem iterum deiecit; eo pacto ei sub Gallicum gladium successit atque Hispanico pectus hausit; deinde continuo umerum dextrum eodem successu successu, Damsté cf. successit above; conisu, Mommsen; concessu, ω; concussu,ς. incidit neque recessit usquam, donec subvertit, ne Gallus impetum in ictu haberet.
+Dum se Gallus iterum eodem pacto constituere studet, Manlius iterum scuto scutum percutit atque de loco hominem iterum deiecit; eo pacto ei sub Gallicum gladium successit atque Hispanico pectus hausit; deinde continuo umerum dextrum eodem successu incidit neque recessit usquam, donec subvertit, ne Gallus impetum in ictu haberet.
 
 Ubi eum evertit, caput praecidit, torquem detraxit eamque sanguinulentam sibi in collum inponit.
 
@@ -4617,7 +4617,7 @@ Munera laetitiamque dii,
 
 Sic autem dies, dii a veteribus declinatum est, ut fames fami, pernicies pernicii, progenies progenii, luxuries luxurii, acies acii.
 
-M. enim Cato in oratione, quam De Bello Carthaginiensi composuit, ita scripsit: Pueri atque mulieres extrudebantur fami causa.
+**M** enim Cato in oratione, quam De Bello Carthaginiensi composuit, ita scripsit: Pueri atque mulieres extrudebantur fami causa.
 
 Lucilius in XII.: Rugosum atque fami plenum. Sisenna in Historiarum libro VI.:
 
@@ -4637,19 +4637,19 @@ Idem Matius in XXIII.:
 
 An maneat specii simulacrum in morte silentum.
 
-C. Gracchus De Legibus Promulgatis: Ea luxurii causa aiunt institui;
+**C** Gracchus De Legibus Promulgatis: Ea luxurii causa aiunt institui;
 
 et ibidem infra ita scriptum est: Non est ea luxuries, quae necessario parentur vitae causa,
 
 per quod apparet eum ab eo quod est luxuries luxurii patrio casu dixisse.
 
-M. quoque Tullius, in oratione qua Sextum Roscium defendit, pernicii scriptum reliquit. Verba haec sunt: Quorum nihil pernicii causa divino consilio, sed vi ipsa et magnitudine rerum factum putamus.
+**M** quoque Tullius, in oratione qua Sextum Roscium defendit, pernicii scriptum reliquit. Verba haec sunt: Quorum nihil pernicii causa divino consilio, sed vi ipsa et magnitudine rerum factum putamus.
 
 Aut facies ergo in casu patrio aut facii Quadrigarium scripsisse existimandum est; facie autem in nullo veteri libro scriptum repperi.
 
 In casu autem dandi qui purissime locuti sunt non faciei, uti nuncnune dicitur, sed facie dixerunt. Lucilius in Saturis:
 
-primum (inquit) facie quod honestae et Aetati et aetati, L. Müller et annis, Bährens; tantis, ω. accedit. Lucilius in libro septimo:
+primum (inquit) facie quod honestae et Aetati accedit. Lucilius in libro septimo:
 
 primum (inquit) facie quod honestae et
 
@@ -4705,13 +4705,13 @@ Eleganter, inquit, et probabiliter ex parte posterioris viri fortis, uxorem sibi
 
 Fugit autem Plinium, sententiolam istam, quam putavit esse argutissimam, vitio non carere quod Graece ἀντιστρέφον dicitur. Et est vitium insidiosum et sub falsa laudis specie latens; nihil enim minus converti ex contrario id ipsum adversus eundem potest, atque ita a priore illo viro forte dici: Si placet lex, non reddo; si non placet, non reddo.
 
-Tertiumne consul an tertio dici oporteat; et quonam modo Cn. Pompeius, cum in theatro, quod erat dedicaturus, honores suos scriberet, inscriberet, NOII. quaestionem ancipitem istius verbi de consilio Ciceronis vitaverit.
+Tertiumne consul an tertio dici oporteat; et quonam modo Cn. Pompeius, cum in theatro, quod erat dedicaturus, honores suos scriberet, quaestionem ancipitem istius verbi de consilio Ciceronis vitaverit.
 
 FAMILIARI meo cuipiam litteras Athenis Romam misi.
 
 In his scriptum fuit me illi iam tertium scripsisse.
 
-Is ad me rescripsit petivitque ut rationem dicerem cur tertium ac non tertio scripsissem. Id etiam adscripsit, ut eadem, quid super illo quoque mihi videretur, facerem se certiorem, tertium ne consul et quartum an tertio et quarto dicendum esset, quoniam Romae doctum virum dicere audisset tertio et quarto consul, non tertium quartum que; idque in principio libri III. III. added by Meltzer; libri, ω. Coelium scripsisse et Quintum Claudium in libro undevicesimo C. Marium creatum septimo consulem dixisse.
+Is ad me rescripsit petivitque ut rationem dicerem cur tertium ac non tertio scripsissem. Id etiam adscripsit, ut eadem, quid super illo quoque mihi videretur, facerem se certiorem, tertium ne consul et quartum an tertio et quarto dicendum esset, quoniam Romae doctum virum dicere audisset tertio et quarto consul, non tertium quartum que; idque in principio libri III. Coelium scripsisse et Quintum Claudium in libro undevicesimo C. Marium creatum septimo consulem dixisse.
 
 Ad haec ego rescripsi nihil amplius quam verba M. Varronis, hominis, opinor, quam fuit Claudius cum Coelio doctioris, quibus verbis utrumque de quo ad me scripserat decideretur;
 
@@ -4721,7 +4721,7 @@ Verba M. Varronis ex libro Disciplinarum quinto haechace sunt: Aliud est quarto 
 
 Quintus pater quartum fit consul,
 
-Quod de Pompeio Varro breviter et subobscure dixit, Tiro Tullius, Ciceronis libertus, in epistula quadam enarratius scripsit ad hunc ferme modum: Cum Pompeius, inquit, aedem Victoriae dedicaturus foret, cuius gradus vicem theatri essent, nomenque eius et honores scriberentur, inscriberentur, ΝΟ2ΠΧ. quaeri coeptum est, utrum consul tertio inscribendum esset an tertium. Eam rem Pompeius exquisitissime rettulit ad doctissimos civitatis, cumque dissentiretur et pars tertio, alii tertium scribendum contenderent, rogavit, inquit, Ciceronem Pompeius, ut quod ei rectius videretur scribi iuberet. Tum Ciceronem iudicare de viris doctis veritum esse, ne, quorum opinionem inprobasset, ipsos videretur inprobasse. Persuasit igitur Pompeio, ut neque tertium. neque tertio scriberetur, sed ad secundum usque t fierent litterae, ut verbo non perscripto res quidem demonstraretur, sed dictio tamen ambigua verbi lateret.
+Quod de Pompeio Varro breviter et subobscure dixit, Tiro Tullius, Ciceronis libertus, in epistula quadam enarratius scripsit ad hunc ferme modum: Cum Pompeius, inquit, aedem Victoriae dedicaturus foret, cuius gradus vicem theatri essent, nomenque eius et honores scriberentur, quaeri coeptum est, utrum consul tertio inscribendum esset an tertium. Eam rem Pompeius exquisitissime rettulit ad doctissimos civitatis, cumque dissentiretur et pars tertio, alii tertium scribendum contenderent, rogavit, inquit, Ciceronem Pompeius, ut quod ei rectius videretur scribi iuberet. Tum Ciceronem iudicare de viris doctis veritum esse, ne, quorum opinionem inprobasset, ipsos videretur inprobasse. Persuasit igitur Pompeio, ut neque tertium. neque tertio scriberetur, sed ad secundum usque t fierent litterae, ut verbo non perscripto res quidem demonstraretur, sed dictio tamen ambigua verbi lateret.
 
 Id autem, quod et Varro et Tiro dixerunt, in eodem nunc theatro non est ita scriptum.
 
@@ -4761,9 +4761,9 @@ iamlam haec medius fidius sola verba: nudari ac deligari et virgas expediri iube
 
 Gracchus autem non querentis neque implorantis, sed nuntiantis vicem: Palus, inquit, in foro destitutus est, vestimenta detracta sunt, virgis caesus est.
 
-Sed enim M. Cicero praeclare cum diutina repraesentatione, non caesus est, sed caedebatur, inquit, virgis in medio foro Messanae civis Romanus, cum interea nullus gemitus, nulla vox illius miseri inter dolorem strepitumque crepitumque, γ, CiC. plagarum audiebatur, nisi haec: civis Romanus sum! Hac hac se, CiC. commemoratione civitatis omnia verbera depulsurum cruciatumque a corpore deiecturum arbitrabatur.
+Sed enim M. Cicero praeclare cum diutina repraesentatione, non caesus est, sed caedebatur, inquit, virgis in medio foro Messanae civis Romanus, cum interea nullus gemitus, nulla vox illius miseri inter dolorem strepitumque plagarum audiebatur, nisi haec: civis Romanus sum! Hac commemoratione civitatis omnia verbera depulsurum cruciatumque a corpore deiecturum arbitrabatur.
 
-Complorationem deinde tam acerbae rei et odium in Verrem detestationemque aput civis Romanos inpense atque acriter atque inflammanter facit, cum haec dicit: O nomen dulce libertatis! O ius eximium nostrae civitatis! O lex Porcia legesque Semproniae! O graviter desiderata et aliquando reddita plebi Romanae tribunicia potestas! Hucine tandem haec Omitted by MSS. of Cic. omnia reciderunt, ut civis Romanus in provincia populi Romani, in oppido foederatorum, ab eo qui beneficio populi Romani fasces ac secures haberet, deligatus in foro virgis caederetur? Quid? cum ignes ardentesque laminae ceterique cruciatus admovebantur, si te illius acerba imploratio et vox miserabilis non leniebat, inhibebat, Cic. ne civium quidem Romanorum, qui tum aderant, fletu gemituque maximo commovebare?
+Complorationem deinde tam acerbae rei et odium in Verrem detestationemque aput civis Romanos inpense atque acriter atque inflammanter facit, cum haec dicit: O nomen dulce libertatis! O ius eximium nostrae civitatis! O lex Porcia legesque Semproniae! O graviter desiderata et aliquando reddita plebi Romanae tribunicia potestas! Hucine tandem haec omnia reciderunt, ut civis Romanus in provincia populi Romani, in oppido foederatorum, ab eo qui beneficio populi Romani fasces ac secures haberet, deligatus in foro virgis caederetur? Quid? cum ignes ardentesque laminae ceterique cruciatus admovebantur, si te illius acerba imploratio et vox miserabilis non leniebat, ne civium quidem Romanorum, qui tum aderant, fletu gemituque maximo commovebare?
 
 Haec M. Tullius atrociter, graviter, apte copioseque miseratus est.
 
@@ -4771,7 +4771,7 @@ Sed si quis est tam agresti aure ac tam hispida, quem lux ista et amoenitas orat
 
 Intelleget, opinor, Catonem contentum eloquentia aetatis suae non fuisse et id iam tum facere voluisse quod Cicero postea perfecit.
 
-In eo namque libro qui De Falsis Pugnis inscriptus est ita de Q. Thermo conquestus est: Dixit a decemviris parum bene sibi cibaria curata esse. iussitlussit vestimenta detrahi atque flagro caedi. Decemviros Bruttiani verberavere, videre multi mortales. Quis hanc contumeliam, quis hoc imperium, quis hanc servitutem ferre potest? Nemo hoc rex ausus est facere; eane fieri bonis, bono genere gnatis, boni consultis? Ubi societas? ubi fides maiorum? Insignitas iniurias, plagas, verbera, vibices, eos dolores atque carnificinas per dedecus atque maximam contumeliam, inspectantibus popularibus suis atque multis mortalibus, te facere ausum esse? Set quantum luctum, quantum gemitum, quid lacrimarum, quantum fletum factum audivi! Servi iniurias nimis nimias, Mommsen. aegre ferunt; quid illos, bono genere natos, magna virtute praeditos, opinamini animi habuisse atque habituros, dum vivent?
+In eo namque libro qui De Falsis Pugnis inscriptus est ita de Q. Thermo conquestus est: Dixit a decemviris parum bene sibi cibaria curata esse. iussitlussit vestimenta detrahi atque flagro caedi. Decemviros Bruttiani verberavere, videre multi mortales. Quis hanc contumeliam, quis hoc imperium, quis hanc servitutem ferre potest? Nemo hoc rex ausus est facere; eane fieri bonis, bono genere gnatis, boni consultis? Ubi societas? ubi fides maiorum? Insignitas iniurias, plagas, verbera, vibices, eos dolores atque carnificinas per dedecus atque maximam contumeliam, inspectantibus popularibus suis atque multis mortalibus, te facere ausum esse? Set quantum luctum, quantum gemitum, quid lacrimarum, quantum fletum factum audivi! Servi iniurias nimis aegre ferunt; quid illos, bono genere natos, magna virtute praeditos, opinamini animi habuisse atque habituros, dum vivent?
 
 Quod Cato dixit: Bruttiani verberavere, ne qui fortasse de Bruttianis requirat,
 
@@ -4799,7 +4799,7 @@ Multam dictam esse ab aedilibus plebei Appi Caeci filiae, mulieri nobili, quod l
 
 NON in facta modo, sed in voces etiam petulantiores publice vindicatum est; ita enim debere esse visa est Romanae disciplinae dignitas inviolabilis.
 
-Appi namque illius Caeci filia, a ludis quos spectaverat exiens, turba undique confluentis fluctuantisque populi iactata est. Atque inde egressa, cum se male habitam doleret: doleret suggested by Hosius; diceret, MSS. Quid me nunc factum esset, inquit, quantoque artius pressiusque conflictata essem, si P. Claudius, frater meus, navali proelio classem navium cum ingenti civium numero non perdidisset? Certe quidem maiore nunc copia populi oppressa intercidissem. Sed utinam, inquit, reviviscat frater aliamque classem in Siciliam ducat atque istam multitudinem perditum eat, quae me nunc male miseram convexavit!
+Appi namque illius Caeci filia, a ludis quos spectaverat exiens, turba undique confluentis fluctuantisque populi iactata est. Atque inde egressa, cum se male habitam doleret: Quid me nunc factum esset, inquit, quantoque artius pressiusque conflictata essem, si P. Claudius, frater meus, navali proelio classem navium cum ingenti civium numero non perdidisset? Certe quidem maiore nunc copia populi oppressa intercidissem. Sed utinam, inquit, reviviscat frater aliamque classem in Siciliam ducat atque istam multitudinem perditum eat, quae me nunc male miseram convexavit!
 
 Ob haec mulieris verba tam inproba ac tam incivilia C. Fundanius et Tiberius Sempronius, aediles plebei, multam dixerunt ei aeris gravis viginti quinque milia.
 
@@ -4865,17 +4865,17 @@ De portentis fabularum quae Plinius Secundus indignissime in Democritum philosop
 
 LIBRUM esse Democriti, nobilissimi philosophorum, De Vi et Natura Chamaeleontis eumque se legisse Plinius Secundus in Naturalis Historiae vicesimo octavo refert, multaque vana atque intoleranda auribus deinde quasi a Democrito scripta tradit, ex quibus pauca haec inviti meminimus, quia pertaesum est:
 
-accipitrem avium rapidissimum a chamaeleonte humi reptante, si eum forte supervolet, detrahi et cadere vi quadam in terram ceterisque avibus animalibus, Plin. laniandum sponte sua obiicere sese et dedere.
+accipitrem avium rapidissimum a chamaeleonte humi reptante, si eum forte supervolet, detrahi et cadere vi quadam in terram ceterisque avibus laniandum sponte sua obiicere sese et dedere.
 
-Item aliud ultra humanam fidem: caput et collum guttur, Plin. chamaeleontis si uratur ligno quod appellatur robur, imbres et tonitrus fieri derepentederelente, idque ipsum usu venire, si iecur eiusdem animalis in summis tegulis uratur.
+Item aliud ultra humanam fidem: caput et collum chamaeleontis si uratur ligno quod appellatur robur, imbres et tonitrus fieri derepentederelente, idque ipsum usu venire, si iecur eiusdem animalis in summis tegulis uratur.
 
 Item aliud, quod hercle an ponerem dubitavi, ita est deridiculae vanitatis, nisi idcirco plane posui quod oportuit nos dicere quid de istiusmodi admirationum fallaci inlecebra sentiremus, qua plerumque capiuntur et ad perniciem elabuntur ingenia maxime sollertia, eaque potissimum quae discendi cupidiora sunt. Sed redeo ad Plinium.
 
-Sinistrum pedem ait chamaeleontis ferro ex igni calefacto torreri torreri in furno, Plin. cum herba, quae appellatur eodem nomine chamaeleontis, et utrumque macerari unguento conligique in modum pastilli atque in vas mitti ligneum et eum qui id vas ferat, etiamsi is in medio palam versetur, a nullo videri posse.
+Sinistrum pedem ait chamaeleontis ferro ex igni calefacto torreri cum herba, quae appellatur eodem nomine chamaeleontis, et utrumque macerari unguento conligique in modum pastilli atque in vas mitti ligneum et eum qui id vas ferat, etiamsi is in medio palam versetur, a nullo videri posse.
 
 His portentis atque praestigiis a Plinio Secundo scriptis non dignum esse cognomen Democriti puto;
 
-vel illud quale est quod idem Plinius in decimo libro Democritum scripsisse adseverat, aves quasdam esse certis vocabulis et earum avium confuso sanguine gigni serpentem; eum qui quisquis, Plin. ederit linguas avium et conloquia interpretaturum.
+vel illud quale est quod idem Plinius in decimo libro Democritum scripsisse adseverat, aves quasdam esse certis vocabulis et earum avium confuso sanguine gigni serpentem; eum qui ederit linguas avium et conloquia interpretaturum.
 
 Multa autem videntur ab hominibus istis male sollertibus huiuscemodi commenta in Democriti nomen data, nobilitatis auctoritatisque eius perfugio utentibus.
 
@@ -4887,11 +4887,11 @@ Cum partim hominum qua ratione veteres dixerint.
 
 PARTIM hominum venerunt plerumque dicitur, quod significat pars hominum venit, id est quidam homines. Nam partim hoc in loco adverbium est neque in casus inclinatur, sicuti cum partim hominum dici potest, id est cum quibusdam hominibus et quasi cum quadam parte hominum.
 
-M. Cato in oratione De Re Floria ita scripsit: Ibi pro scorto fuit, in cubiculum subrectitavit subreptitavit, early editors. e convivio, cum partim illorum iam saepe ad eundem modum erat.
+**M** Cato in oratione De Re Floria ita scripsit: Ibi pro scorto fuit, in cubiculum subrectitavit e convivio, cum partim illorum iam saepe ad eundem modum erat.
 
 Imperitiores autem cum parti legunt, tamquam declinatum sit quasi vocabulum, non dictum quasi adverbium.
 
-Sed Q. Claudius in vicesimo primo Annali insolentius paulo hac figura est ita usus: Enimn cum partim copiis hominum adulescentium placentem placent(i)um, Lion. sibi. Itemque Claudi in vicesimo tertio Annali verba haec sunt: Sed idcirco me fecisse, quod utrum neglegentia partim magistratum For magistratuum, which is read by Q. an avaritia an calamitate populi Romani evenisse dicam, nescio.
+Sed Q. Claudius in vicesimo primo Annali insolentius paulo hac figura est ita usus: Enimn cum partim copiis hominum adulescentium placentem sibi. Itemque Claudi in vicesimo tertio Annali verba haec sunt: Sed idcirco me fecisse, quod utrum neglegentia partim magistratum an avaritia an calamitate populi Romani evenisse dicam, nescio.
 
 Iniuria mihimilli factum itur quali verborum ordine Cato dixerit.
 
@@ -4899,7 +4899,7 @@ AUDIO illi iniuriam factum iri, audio contumeliam dictum iri vulgo quoque ita di
 
 Sed contumelia illi vel iniuria factum itur paulo est remotius, exemplum igitur ponemus.
 
-M. Cato Pro Se contra C. Cassium: Atque evenit ita, Quirites, uti in hac contumelia quae mihi per huiusce petulantiam factum itur, rei quoque publicae medius fidius miserear, Quirites.
+**M** Cato Pro Se contra C. Cassium: Atque evenit ita, Quirites, uti in hac contumelia quae mihi per huiusce petulantiam factum itur, rei quoque publicae medius fidius miserear, Quirites.
 
 Sicut autem contumeliam factum iri significat iri ad contumeliam faciendam, id est opera dari quo fiat, ita contumelia mihi factum itur casu tantum inmutato idem dicit.
 
@@ -4911,13 +4911,13 @@ Unde haec ferme sunt, quae commeminimus:
 
 Equo Dialem flaminem vehi religio est;
 
-item religio est item est, added by Hertz. classemclassesm procinctam extra pomerium, id est exercitum armatum, videre; idcirco rarenter flamen Dialis creatus consul est, cum bella consulibus mandabantur?
+item religio est classemclassesm procinctam extra pomerium, id est exercitum armatum, videre; idcirco rarenter flamen Dialis creatus consul est, cum bella consulibus mandabantur?
 
 item iurare Dialem fas numquam est;
 
 item anulo uti nisi pervio cassoque fas non est.
 
-Ignem e flaminia, id est flaminis Dialis domo, nisi nisi in, Lipsius. sacrum efferri ius non est;
+Ignem e flaminia, id est flaminis Dialis domo, nisi sacrum efferri ius non est;
 
 vinetum, si aedes eius introierit, solvi necessum est et vincula per impluvium in tegulas subduci atque inde foras in viam demitti.
 
@@ -4961,7 +4961,7 @@ veluti est quod venenato operitur
 
 et quod in rica surculum de arbore felici habet et quod scalas,
 
-nisi nisi, added by Scaliger. quae Graecae appellantur, escendere ei plus tribus gradibus religiosum est atque etiam,
+nisi quae Graecae appellantur, escendere ei plus tribus gradibus religiosum est atque etiam,
 
 cum it ad Argeos, quod neque comit caput neque capillum depectit.
 
@@ -4983,7 +4983,7 @@ Quo, inquit, modo aut Palinurus novisse et nominare potuit portus Velinos aut Ae
 
 Nam qui ab Harpalo, inquit, regis Cyri praefecto, ex terra Phocide fugati sunt, alii Veliam, partim Massiliam condiderunt.
 
-Inscitissime igitur petit ut Aeneas portum Velinum requirat, cum id nomen eo tempore fuerit fuerit, Π; fuit, ω. nusquam gentium.
+Inscitissime igitur petit ut Aeneas portum Velinum requirat, cum id nomen eo tempore fuerit nusquam gentium.
 
 Neque simile, inquit, illud videri debet, quod est in primo carmine: Italiam fato profugus LaviniaqueLavinaque venit Litora, et aeque in sexto libro:
 
@@ -5015,13 +5015,13 @@ Infelix Theseus.
 
 Qui autem, inquit, fieri potest, ut aeternum aput inferos sedeat, quem supra cum is nominat qui descenderint illuc atque inde rursum evaserint, praesertim cum ita sit fabula de Theseo, atque si Hercules eum evellerit e petra et in lucem ad superos eduxeriteduxeri?
 
-Item in his versibus errasse Vergilium dicit: Eruet ille Argos Agamemnoniasque Mycenas Ipsumque Aeaciden, genus armipotentis Achilli, Ultus avos Troiae, templa intemerata et temerata, Virg. Minervae.
+Item in his versibus errasse Vergilium dicit: Eruet ille Argos Agamemnoniasque Mycenas Ipsumque Aeaciden, genus armipotentis Achilli, Ultus avos Troiae, templa intemerata Minervae.
 
 Eruet ille Argos Agamemnoniasque Mycenas
 
 Ipsumque Aeaciden, genus armipotentis Achilli,
 
-Ultus avos Troiae, templa intemerata et temerata, Virg. Minervae.
+Ultus avos Troiae, templa intemerata Minervae.
 
 Confudit, inquit, et personas diversas et tempora. Nam neque eodem tempore neque per eosdem homines cum Achaeis et cum Pyrro bellatum est. Pyrrus enim,
 
@@ -5037,7 +5037,7 @@ DEMOCRITUM philosophum in monumentis historiae Graecae scriptum est, virum praet
 
 Id factum eius modumque ipsum quo caecitatem facile sollertia subtilissima conscivit, Laberius poeta in mimo quem scripsit Restionem, versibus quidem satis munde atque graphice factis descripsit, sed causam voluntariae caecitatis finxit aliam vertitque in eam rem quam tum agebat, non inconcinniter.
 
-Est enim persona, quae hoc aput Laberium dicit, divitis avari et parci, sumptum plurimum asotiamque adulescentis vivide plorantis. vivide plorantis, Bothe; viri deplorantis, ω. Versus Laberiani sunt:
+Est enim persona, quae hoc aput Laberium dicit, divitis avari et parci, sumptum plurimum asotiamque adulescentis vivide plorantis. Versus Laberiani sunt:
 
 Demócritus Abderítes physicus phílosophus Clipeúm constituit cóntra exortum Hyperíonis, Oculós effodere ut pósset splendore aéreo. Ita rádiis solis áciem effodit lúminis, Malís bene esse né videret cívibus. Sic égo fulgentis spléndorem pecúniae Volo élucificare éxitum aetatí meae, Ne in ré bona esse vídeam nequam fílium.
 
@@ -5061,13 +5061,13 @@ Historia de Artemisia; deque eo certamine quod aput Mausoli sepulcrum a scriptor
 
 ARTEMISIA Mausolum virum amasse fertur supra omnis amorum fabulas ultraque affectionis humanae fidem.
 
-Mausolus autem fuit, ut M. Tullius ait, rex terrae Cariae, ut quidam Graecarum historiarum scriptores, provinciae provinciae, Lipsius; pr. Gr(a)ece, ω; pr. Cariae, Thysius. praefectus σατράπην Graeci vocant.
+Mausolus autem fuit, ut M. Tullius ait, rex terrae Cariae, ut quidam Graecarum historiarum scriptores, provinciae praefectus σατράπην Graeci vocant.
 
 Is Mausolus, ubi fato perfunctus inter lamenta et manus uxoris funere magnifico sepultus est, Artemisia, luctu atque desiderio mariti flagrans uxor, ossa cineremque eius mixta odoribus contusaque in faciem pulveris aquae indidit ebibitque multaque alia violenti amoris indicia fecisse dicitur.
 
 Molita quoque est ingenti impetu operis conservandae mariti memoriae sepulcrum illud memoratissimum dignatumque numerari inter septem omnium terrarum spectacula.
 
-Id monumentum Artemisia cum dis manibus sacrum sacrum, Mommsen; sacris, ω. Mausoli dicaret, agona, id est certamen laudibus eius dicundis, facit ponitque praemia pecuniae aliarumque rerum bonarum amplissima.
+Id monumentum Artemisia cum dis manibus sacrum Mausoli dicaret, agona, id est certamen laudibus eius dicundis, facit ponitque praemia pecuniae aliarumque rerum bonarum amplissima.
 
 Ad eas laudes decertandas venisse dicuntur viri nobiles ingenio atque lingua praestabili, Theopompus, Theodectes, Naucrates; sunt etiam qui Isocratem ipsum cum his certavisse memoriae mandaverint. Sed eo certamine vicisse Theopompum iudicatum est. Is fuit Isocrates discipulus.
 
@@ -5079,7 +5079,7 @@ INCESSEBAT quempiam Taurus philosophus severa atque vehementi obiurgatione adule
 
 Atque ibi Taurus isto ipso defensionis genere inritatior: Homo, inquit, stulte et nihili, si te a malis exemplis auctoritates et rationes philosophiae non abducunt, ne illius quidem Demosthenis vestri sententia tibi in mentem venit, quae, quia lepidis et venustis vocum modis vincta est, quasi quaedam cantilena rhetorica facilius adhaerere memoriae tuae potuit?
 
-Nam si me inquit non fallit quod quidem in primori pueritia legerim, verba haec sunt Demosthenis adversus eum, qui, ut tu nunc facis, peccatum suum peccatis alienis exemptum purgatumque ibat: Σὺ δὴ μὴ λέγε, ὡς γέγονε τοῦτο πολλάκις, ἀλλʼ ὡς οὕτω προσήκει γίγνεσθαι· οὐ γάρ, εἴ τι πώποτε μὴ κατὰ τοὺς νόμους ἐπράχθη, σὺ δὲ τοῦτο ἐμιμήσω, διὰ τοῦτο ἀποφύγοις ἂν δικαίως, ἀλλά πολλῷ μᾶλλον ἁλίσκοιο· ὥσπερ γάρ, εἴ τις ἑάλω, σὺ τοῦτα ἐκείνων προήλω, σὺ τάδʼ, Demos. οὐκ ἂν ἔγραψας, οὕτως, ἐὰν σὺ νῦν δίκην δῷς, ἄλλος οὐ γράψει.
+Nam si me inquit non fallit quod quidem in primori pueritia legerim, verba haec sunt Demosthenis adversus eum, qui, ut tu nunc facis, peccatum suum peccatis alienis exemptum purgatumque ibat: Σὺ δὴ μὴ λέγε, ὡς γέγονε τοῦτο πολλάκις, ἀλλʼ ὡς οὕτω προσήκει γίγνεσθαι· οὐ γάρ, εἴ τι πώποτε μὴ κατὰ τοὺς νόμους ἐπράχθη, σὺ δὲ τοῦτο ἐμιμήσω, διὰ τοῦτο ἀποφύγοις ἂν δικαίως, ἀλλά πολλῷ μᾶλλον ἁλίσκοιο· ὥσπερ γάρ, εἴ τις ἑάλω, σὺ τοῦτα οὐκ ἂν ἔγραψας, οὕτως, ἐὰν σὺ νῦν δίκην δῷς, ἄλλος οὐ γράψει.
 
 Sic Taurus, omni suasionum admonitionumque genere utens, sectatores suos ad rationes bonae inculpataeque indolis ducebat.
 
@@ -5101,7 +5101,7 @@ Plebem autem Capito in eadem definitione seorsum a populo divisit, quoniam in po
 
 Plebisscitum igitur est secundum eum Capitonem lex, quam plebes, non populus, accipit.
 
-Sed totius huius rei iurisque, sive cum populus sive cum plebs rogatur, sive quod ad singulos sive quod ad singulos, supplied by J. F. Gronov. sive quod ad universos pertinet, caput ipsum et origo et quasi fons frons, δ. rogatio est.
+Sed totius huius rei iurisque, sive cum populus sive cum plebs rogatur, sive quod ad singulos sive quod ad universos pertinet, caput ipsum et origo et quasi fons rogatio est.
 
 Ista enim omnia vocabula censentur continenturque rogationis principali genere et nomine; nam, nisi populus aut plebs rogetur, nullum plebis aut populi iussum fieri potest.
 
@@ -5115,7 +5115,7 @@ NON paucis verbis, quorum frequens usus est nunc et fuit, M. Ciceronem noluisse 
 
 Nam cum et M. Cato et Sallustius et alii quoque aetatis eiusdem verbo isto promisce usitati sint, multi etiam non indocti viri in libris id suis scripserint, abstinuisse eo tamen tamquam non Latino videtur, quoniam qui doctissimus eorum temporum fuerat, L. Aelius Stilo, ut novo et inprobo verbo uti vitaverat.
 
-Propterea, quid M. quoque Varro de ista voce existimaverit, verbis ipsius Varronis ex libro De Lingua Latina ad Ciceronem sexto demonstrandum putavi. Quod extremum, inquit, dicebatur, dici novissimum coeptum vulgo, quod mea memoria ut Aelius, sic senes aliquot, aliquot, Varro; alii, ω. quod nimium novum verbum esset, vitabant; cuius origo, ut a vetere vetustius ac veterrimum, sic a novo declinatum novius et novius et, omitted by MSS. of Varro (Heraeus). novissimum.
+Propterea, quid M. quoque Varro de ista voce existimaverit, verbis ipsius Varronis ex libro De Lingua Latina ad Ciceronem sexto demonstrandum putavi. Quod extremum, inquit, dicebatur, dici novissimum coeptum vulgo, quod mea memoria ut Aelius, sic senes aliquot, quod nimium novum verbum esset, vitabant; cuius origo, ut a vetere vetustius ac veterrimum, sic a novo declinatum novius et novissimum.
 
 Locus exemptus ex Platonis libro qui inscribitur Gorgias, de falsae philosophiae probis, quibus philosophos temere incessunt qui emolumenta verae philosophiae ignorant.
 
@@ -5175,7 +5175,7 @@ Bibere autem solitas ferunt loream, passum, murrinam et quae id genus sapiant po
 
 sed Marcus Cato non solum existimatas, set et multatas quoque a iudice mulieres refert, non minus si vinum in se, quam si probrum et adulterium admisissent.
 
-Verba Marci Catonis adscripsi ex oratione quae inscribitur De Dote, in qua id quoque scriptum est, in adulterio uxores deprehensas ius fuisse maritis necare: Vir, inquit, cum divortium fecit, mulieri iudex pro censore est, imperium quod videtur habet, si quid perverse taetreque factum est a muliere; multaturmultitatur, multiatur, BZ; mulcititur, Q; multatur, γ; corrected by Hertz. si vinum bibit; si cum alieno viro probri quid fecit, condemnatur.
+Verba Marci Catonis adscripsi ex oratione quae inscribitur De Dote, in qua id quoque scriptum est, in adulterio uxores deprehensas ius fuisse maritis necare: Vir, inquit, cum divortium fecit, mulieri iudex pro censore est, imperium quod videtur habet, si quid perverse taetreque factum est a muliere; multaturmultitatur, si vinum bibit; si cum alieno viro probri quid fecit, condemnatur.
 
 De iure autem occidendi ita scriptum: In adulterio uxorem tuam si prehendisses, sine iudicio inpune necares; illa te, si adulterares sive tu adulterarere, digito non auderet contingere, neque ius est.
 
@@ -5189,17 +5189,17 @@ Satis autem erit perpetuae veterum consuetudinis demonstrandae gratia verba soll
 
 Neque praetor solum, sed pleraque omnis vetustas sic locuta est.
 
-Venit ecce illius versus Pomponiani in mentem, qui est ex Atellania, quae Mevia inscribitur: Díes hic sextus, cúm nihil egi: edi, Pontanus. diequarte Moriár fame.
+Venit ecce illius versus Pomponiani in mentem, qui est ex Atellania, quae Mevia inscribitur: Díes hic sextus, cúm nihil egi: diequarte Moriár fame.
 
-Díes hic sextus, cúm nihil egi: edi, Pontanus. diequarte Moriár fame.
+Díes hic sextus, cúm nihil egi: diequarte Moriár fame.
 
 Suppetit etiam Coelianum illud ex libro Historiarum secundo: Si vis mihi equitatum dare et ipse cum cetero exercitu me sequi, diequinti Romae in Capitolium curabo tibi cena sit cocta.
 
-Et historiam autem et verbum hoc sumpsit Coelius ex Origine IV. IV. added by Hertz. M. Catonis, in qua ita scriptum est: Igitur dictatorem Carthaginiensium magister equitum monuit: Mitte mecum Romam equitatum; diequinti in Capitolio tibi cena cocta erit.
+Et historiam autem et verbum hoc sumpsit Coelius ex Origine IV. M. Catonis, in qua ita scriptum est: Igitur dictatorem Carthaginiensium magister equitum monuit: Mitte mecum Romam equitatum; diequinti in Capitolio tibi cena cocta erit.
 
 Extremam istius vocis syllabam tum per e tum per i scriptam legi; nam sane quam consuetum is veteribus fuerit, litteris is plerumque uti indifferenter, sicuti praefiscine et praefiscini, proclivi et proclive atque alia item multa hoc genus varie dixerunt; die pristini quoque eodem modo dicebatur, quod significabat die pristino, id est priore, quod vulgo pridie dicitur, converso compositionis ordine, quasi pristino die. Atque item simili figura die crastini dicebatur, id erat crastino die.
 
-Sacerdotes quoque populi Romani, cum condicunt in diem tertium, die die, Skutsch; diem, ω. perendini dicunt.
+Sacerdotes quoque populi Romani, cum condicunt in diem tertium, die perendini dicunt.
 
 Sed ut plerique die pristini, ita M. Cato in oratione Contra Furium die proximi dixit, die quarto autem Cn. Matius, homo impense doctus, in Mimiambis pro eo dicit, quod nudius quartus nos dicimus, in his versibus: Nuper die quarto, ut recordor, et certe Aquarium urceum unicum domi fregit. Hoc igitur intererit, ut die quarto quidem de praeterito dicamus, diequarte autem de futuro.
 
@@ -5209,7 +5209,7 @@ Aquarium urceum unicum domi fregit.
 
 Telorum et iaculorum gladiorumque, atque inibi navium quoque vocabula, quae scripta in veterum libris reperiuntur.
 
-TELORUM, iaculorum gladiorumque vocabula quae in historiis veteribus scripta sunt, item navigiorum genera et nomina, libitum forte nobis est sedentibus in reda conquirere, ne quid malarum malarum, Skutsch; aliarum, ω. ineptiarum vacantem stupentemque animum occuparet.
+TELORUM, iaculorum gladiorumque vocabula quae in historiis veteribus scripta sunt, item navigiorum genera et nomina, libitum forte nobis est sedentibus in reda conquirere, ne quid malarum ineptiarum vacantem stupentemque animum occuparet.
 
 Quae tum igitur suppetierant, haec sunt: hasta, pilum, phalarica, semiphalarica, soliferrea, gaesa, lancea, spari, rumices, trifaces, tragulae, frameae, mesanculae, cateiae, rumpiae, scorpii, sibones, siciles, veruta, enses, sicae, machaeraemacherae, spathae, lingulae, pugiones, clunacula.
 
@@ -5227,17 +5227,17 @@ ASINIO POLLIONI in quadam epistula, quam ad Plancum scripsit, et quibusdam aliis
 
 Verba ipsa Sallusti posui: Itaque Sertorius, levi praesidio relicto in Mauretania, nanctus obscuram noctem, aestu secundo furtim aut celeritate vitare proelium in transgressu conatus est.
 
-Ac deinde infra ita scripsit: Transgressos omnis recipit mons mons Balleia, Serv. Aen. i. 518. praeceptus a Lusitanis.
+Ac deinde infra ita scripsit: Transgressos omnis recipit mons praeceptus a Lusitanis.
 
 Hoc igitur et minus proprie et ἀπερισκέπτως et nullo gravi auctore dictum aiunt. Nam transgressus, inquit, a transgrediendo dicitur idque ipsum ab ingressu et a pedum gradu appellatum.
 
 Idcirco verbum transgredi convenire non putavit neque volantibus neque serpentibus neque navigantibus, sed his solis qui gradiuntur et pedibus iter emetiuntur. Propterea negant aput scriptorem idoneum aut navium transgressum reperiri posse aut pro transfretatione transgressum.
 
-Sed quaero ego, cur non, sicuti cursus navium recte dici solet, solet,skutsch;solent, MSS ita transgressus etiam navibus factus dici possit. Praesertim cum brevitas tam angusti fretus, qui terram Africam Hispaniamque interfluit, elegantissime transgressionis vocabulo, quasi paucorum graduum spatium, definita sit.
+Sed quaero ego, cur non, sicuti cursus navium recte dici solet, ita transgressus etiam navibus factus dici possit. Praesertim cum brevitas tam angusti fretus, qui terram Africam Hispaniamque interfluit, elegantissime transgressionis vocabulo, quasi paucorum graduum spatium, definita sit.
 
 Qui auctoritatem autem requirunt et negant dictum ingredi transgredi ve in navigantibus, volo uti respondeant quantum existiment interesse ingredi atque ambulare.
 
-Atqui Cato De Re Rustica: Fundus, inquit, eo in loco habendus est, ut et fundus ut et, not in Cato. oppidum prope validum prope, Cato. amplum sit et mare aut amnis, qua naves ambulant.
+Atqui Cato De Re Rustica: Fundus, inquit, eo in loco habendus est, ut et oppidum prope amplum sit et mare aut amnis, qua naves ambulant.
 
 Appetitas porro huiuscemodi translationes habitasque esse pro honestamentis orationis, Lucretius quoque testimonium in hac eadem voce dicit. In quarto enim libro clamorem per arterias et per fauces gradientem dicit, quod est nimio confidentius quam illud de navibus Sallustianum. Versus Lucreti hi sunt: Praeterea radit vox fauces saepe, facitque Asperiora foras gradiens arteria clamor.
 
@@ -5253,15 +5253,15 @@ IN litteris veteribus memoria extat quod par quondam fuit vigor et acritudo ampl
 
 Neque inmerito aestimatum. Cum aliis quidem populis de uniuscuiusque republica, cum Poenis autem de omnium terrarum imperio decertatum.
 
-Eius rei specimen est in illo utriusque populi verbo factoque: Q. Fabius, imperator Romanus, dedit ad Carthaginienses epistulam. Ibi scriptum fuit populum Romanum misisse ad eos hastam et caduceum, signa duo belli duelli, Kronenberg. aut pacis, ex quis utrum vellent eligerent; quod elegissent, id unum ut esse missum existimarent.
+Eius rei specimen est in illo utriusque populi verbo factoque: Q. Fabius, imperator Romanus, dedit ad Carthaginienses epistulam. Ibi scriptum fuit populum Romanum misisse ad eos hastam et caduceum, signa duo belli aut pacis, ex quis utrum vellent eligerent; quod elegissent, id unum ut esse missum existimarent.
 
 CarthaginiensesCathaginienses responderunt neutrum sese eligere, sed posse qui adtulissent utrum mallent relinquere; quod reliquissent, id sibi pro electo futurum.
 
-M. autem Varro non hastam ipsam neque ipsum caduceum missa dicit, sed duas tesserulas, in quarum altera caduceum, in altera hastae simulacra fuerint incisa.
+**M** autem Varro non hastam ipsam neque ipsum caduceum missa dicit, sed duas tesserulas, in quarum altera caduceum, in altera hastae simulacra fuerint incisa.
 
 De aetatum finibus pueritiae, iuventae, senectae, ex Tuberonis historia sumptum.
 
-TUBERO in Historiarum primo scripsit Servium Tullium regem, populi Romani cum illas quinque classes seniorum et seniorum et, added by Thysius; Lipsius deleted iuniorum. iuniorum census faciendi gratia institueret, pueros esse existimasse qui minores essent annis septem decem, atque inde ab anno septimo decimo, quo idoneos iam esse reipublicae arbitraretur, milites scripsisse, eosque ad annum quadragesimum sextum iuniores supraque eum annum seniores appellasse.
+TUBERO in Historiarum primo scripsit Servium Tullium regem, populi Romani cum illas quinque classes seniorum et iuniorum census faciendi gratia institueret, pueros esse existimasse qui minores essent annis septem decem, atque inde ab anno septimo decimo, quo idoneos iam esse reipublicae arbitraretur, milites scripsisse, eosque ad annum quadragesimum sextum iuniores supraque eum annum seniores appellasse.
 
 Eam rem propterea notavi, ut discrimina, quae fuerint iudicio moribusque maiorum pueritiae, iuventae, senectae, ex ista censione Servi Tulli, prudentissimi regis, noscerentur.
 
@@ -5275,7 +5275,7 @@ Atque atque accedit muros Romana iuventus;
 
 cui significationi contrarium est quod itidem a veteribus dictum est, deque.
 
-Et praeterea pro alio quoque adverbio dicitur, id est statim statim, γ B; factum, QZ. factum, quod in his Vergili versibus existimatur, ubi obscure et insequentur particula ista posita est: statim est, Hosius, reading both statim and factum and inserting ubi. sic omnia fatis In peius ruere ac retro sublapsa referri; Non aliter quam qui adverso vix flumine lembum Remigiis subigit, si brachia forte remisit, Atque illum in praeceps prono rapit alveus amni.
+Et praeterea pro alio quoque adverbio dicitur, id est statim factum, quod in his Vergili versibus existimatur, ubi obscure et insequentur particula ista posita est: sic omnia fatis In peius ruere ac retro sublapsa referri; Non aliter quam qui adverso vix flumine lembum Remigiis subigit, si brachia forte remisit, Atque illum in praeceps prono rapit alveus amni.
 
 sic omnia fatis
 
@@ -5289,7 +5289,7 @@ Atque illum in praeceps prono rapit alveus amni.
 
 De origine vocabuli terrae Italiae; deque ea multa quae suprema appellatur deque eius nominis ratione ac de lege Aternia; et quibus verbis antiquitus multa minima dici solita sit.
 
-TIMAEUS in Historiis quas oratione Graeca de rebus populi Romani composuit, et M. Varro in Antiquitatibus Rerum Humanarum,terram Italiam de Graeco vocabulo appellatam scripserunt, quoniam boves Graeca vetere lingua ἰταλοί vocitati sint, sint, Lion; sunt, MSS. (Z omits). quorum in Italia magna copia fuerit, bucetaque buceta, MSS.; bucera, Paris ed. of 1536. in ea terra gigni pascique solita sint complurima.
+TIMAEUS in Historiis quas oratione Graeca de rebus populi Romani composuit, et M. Varro in Antiquitatibus Rerum Humanarum,terram Italiam de Graeco vocabulo appellatam scripserunt, quoniam boves Graeca vetere lingua ἰταλοί vocitati sint, quorum in Italia magna copia fuerit, bucetaque in ea terra gigni pascique solita sint complurima.
 
 Coniectare autem possumus ob eandem causam, quod Italia tunc esset armentosissima multam, quae appellatur suprema institutam in dies singulos duarum ovium, boum triginta, pro copia scilicet boumbourn proque ovium penuria. Sed cum eiusmodi multa pecoris armentique a magistratibus dicta erat, adigebantur boves ovesque alias pretii parvi, alias maioris, eaque res faciebat inaequalem multae poenitionem. Idcirco postea lege Aternia constituti sunt in oves singulas aeris deni, in boves aeris centeni.
 
@@ -5307,7 +5307,7 @@ Quod elegantia apud antiquiores, non de amoeniore ingenio, sed de nitidiore cult
 
 ELEGANS homo non dicebatur cum laude, set id fere verbum ad aetatem M. Catonis vitii, non laudis fuit.
 
-Est namque hoc animadvertere, cum in quibusdam aliis, tum in libro Catonis qui inscriptus est Carmen De Moribus. Ex quo libro verba haec sunt: Avaritiam omnia vitia habere putabant; sumptuosus, cupidus, elegans, vitiosus, inritus qui habebatur, is laudabatur;(avarus) laudabatur, L. Müller; is audiebat avarus, Bährens.
+Est namque hoc animadvertere, cum in quibusdam aliis, tum in libro Catonis qui inscriptus est Carmen De Moribus. Ex quo libro verba haec sunt: Avaritiam omnia vitia habere putabant; sumptuosus, cupidus, elegans, vitiosus, inritus qui habebatur, is laudabatur;
 
 ex quibus verbis apparet, elegantem dictum antiquitus non ab ingenii elegantia, sed qui nimis lecto amoenoque cultu victuque esset.
 
@@ -5319,7 +5319,7 @@ Illa quoque ex eodem libro praeclarae veritatis sententia est: Nam vita, inquit,
 
 Qualis quantaque sit pro particulae varietas; deque exemplis eius varietatis.
 
-QUANDO ab arbitriis negotiisque otium est et motandi corporis gratia aut spatiamur aut vectamur, quaerere nonnumquam aput memet ipsum soleo res eiusmodi, parvas quidem minutasque et hominibus non bene eruditis aspernabiles, sed ad veterum scripta penitus noscenda et ad scientiam linguae Latinae cumprimis necessarias; velut est, quod forte nuper in Praenestino recessu secessu, Juretus. vespertina ambulatione solus ambulans, considerabam qualis quantaque esset particularum quarundam in oratione Latina varietas.
+QUANDO ab arbitriis negotiisque otium est et motandi corporis gratia aut spatiamur aut vectamur, quaerere nonnumquam aput memet ipsum soleo res eiusmodi, parvas quidem minutasque et hominibus non bene eruditis aspernabiles, sed ad veterum scripta penitus noscenda et ad scientiam linguae Latinae cumprimis necessarias; velut est, quod forte nuper in Praenestino recessu vespertina ambulatione solus ambulans, considerabam qualis quantaque esset particularum quarundam in oratione Latina varietas.
 
 Quod genus est praepositio pro. Aliter enim dici videbam pontifices pro conlegio decrevisse, aliter quempiam testem introductum pro testimonio dixisse, aliter M. Catonem in Originum quarto: Proelium factum depugnatumque pro castris scripsisse et item in quinto: Urbes insulasque omnis pro agro Illyrio esse, aliter etiam dici pro aede Castoris, aliter pro rostris, aliter pro tribunali, aliter pro contione atque aliter tribunum plebis pro potestate intercessisse.
 
@@ -5363,7 +5363,7 @@ Super qua re Favorinus quoque subtilissime argutissimeque decem libros composuit
 
 Vetus autem quaestio et a multis scriptoribus Graecis tractata, an quid et quantum Pyrronios et Academicos philosophos intersit. Utrique enim σκεπτικοί, ἐφεκτικοί, ἀπορητικοί dicuntur, quoniam utrique nihil adfirmant nihilque comprehendi putant. Sed ex omnibus rebus proinde visa dicunt fieri, quas φαντασίας appellant, non ut rerum ipsarum natura est, sed ut adfectio animi corporisve est eorum, ad quos ea visa perveniunt.
 
-Itaque omnes omnino res quae sensus hominum movent, τῶν πρός τι esse dicunt. Id verbum significat nihil esse quicquam quod ex sese constet nec quod habeat vim propriam et naturam, sed omnia prorsum ad aliquid referri taliaque videri qualis sit eorum species dum videntur, qualiaque apud sensus nostros, quo pervenerunt, creantur, cernantur, Skutsch. non apud sese, unde profecta sunt.
+Itaque omnes omnino res quae sensus hominum movent, τῶν πρός τι esse dicunt. Id verbum significat nihil esse quicquam quod ex sese constet nec quod habeat vim propriam et naturam, sed omnia prorsum ad aliquid referri taliaque videri qualis sit eorum species dum videntur, qualiaque apud sensus nostros, quo pervenerunt, creantur, non apud sese, unde profecta sunt.
 
 Cum haec autem consimiliter tam Pyrronii dicant quam Academici, differre tamen inter sese et propter alia quaedam et vel maxime propterea existimati sunt, quod Academici quidem ipsum illud nihil posse comprehendi quasi comprehendunt, et nihil posse decerni quasi decernunt, Pyrronii ne id quidem ullo pacto verum videri dicunt, quod nihil esse verum videtur.
 
@@ -5387,7 +5387,7 @@ VERBIS uti aut nimis obsoletis exculcatisque aut insolentibus novitatisque durae
 
 Nova autem videri dico etiam ea quae sunt inusitata et desita, etsi sunt vetusta.
 
-Est adeo id vitium plerumque serae eruditionis, quam Graeci ὀψιμαθίαν appellant, ut quod numquam antequam, Casaubon. didiceris, diu ignoraveris, cum id scire aliquando coeperis, magni facias quo in loco cumque et quacumque in re dicere. Veluti Romae, nobis praesentibus, vetus celebratusque homo in causis, sed repentina et quasi tumultuaria doctrina praeditus, cum apud praefectum urbi verba faceret et dicere vellet inopi quendam miseroque victu vivere et furfureum panem esitare, vinumque eructum et fetidum potare, Hic, inquit, eques Romanus apludam edit et flocces bibit.
+Est adeo id vitium plerumque serae eruditionis, quam Graeci ὀψιμαθίαν appellant, ut quod numquam didiceris, diu ignoraveris, cum id scire aliquando coeperis, magni facias quo in loco cumque et quacumque in re dicere. Veluti Romae, nobis praesentibus, vetus celebratusque homo in causis, sed repentina et quasi tumultuaria doctrina praeditus, cum apud praefectum urbi verba faceret et dicere vellet inopi quendam miseroque victu vivere et furfureum panem esitare, vinumque eructum et fetidum potare, Hic, inquit, eques Romanus apludam edit et flocces bibit.
 
 Aspexerunt omnes qui aderant alius alium, primo tristiores turbato et requirente voltu, quidnam illud utriusque verbi foret; post deinde, quasi nescio quid Tusce aut Gallice dixisset, universi riserunt.
 
@@ -5399,9 +5399,9 @@ Alter quoque a lectionibus id genus paucis apirocalus, cum adversarius causam di
 
 Commurmuratio fieri coepta est a plerisque qui aderant, quasi monstrum verbi admirantibus. At ille iactans et gestiens:
 
-Non enim Lucilium, inquit, legistis, qui tergiversatorem bovinatorem dicit? Est autem in Lucili XI. versus hic: Si tricosus hic stric(h)osus, ω; corrected by Lachmann; hic: est tricosus, Skutsch. bovinatorque ore improbus duro.
+Non enim Lucilium, inquit, legistis, qui tergiversatorem bovinatorem dicit? Est autem in Lucili XI. versus hic: Si tricosus bovinatorque ore improbus duro.
 
-Si tricosus hic stric(h)osus, ω; corrected by Lachmann; hic: est tricosus, Skutsch. bovinatorque ore improbus duro.
+Si tricosus bovinatorque ore improbus duro.
 
 Quid senserit dixeritque M. Cato de Albino, qui homo Romanus Graeca oratione res Romanas, venia sibi ante eius imperitiae petita, composuit.
 
@@ -5411,13 +5411,13 @@ qui cum L. Lucullo consul fuit, res Romanas oratione Graeca scriptitavit.
 
 In eius Historiae principio scriptum est ad hanc sententiam: neminem suscensere sibi convenire, si quid in his libris parum composite aut minus eleganter tum scriptum foret; nam sum, inquit, homo Romanus natus in Latio, Graeca oratio a nobis alienissima est, ideoque veniam gratiamque malae existimationis, si quid esset erratum, postulavit.
 
-Ea cum legisset M. Cato: Ne tu, inquit, Aule, nimium nugator es, cum maluisti culpam deprecari quam culpa vacare. Nam petere veniam solemus, aut cum inprudentes erravimus aut cum compulsi peccavimus. Dic, dic, Hosius; tibi, MSS. inquit, oro te, quis perpulit ut id committeres, quod, priusquam faceres, peteres ut ignosceretur?
+Ea cum legisset M. Cato: Ne tu, inquit, Aule, nimium nugator es, cum maluisti culpam deprecari quam culpa vacare. Nam petere veniam solemus, aut cum inprudentes erravimus aut cum compulsi peccavimus. Dic, inquit, oro te, quis perpulit ut id committeres, quod, priusquam faceres, peteres ut ignosceretur?
 
 Scriptum hoc est in libro Corneli Nepotis De Inlustribus Viris XIII.
 
 Historia de legatis Mileti ac Demosthene rhetore in libris Critolai reperta.
 
-CRITOLAUS scripsit legatos Mileto publicae rei causa venisse Athenas, fortasse an auxilii petendi gratia. fortasse an dixerit, MSS.; dixerit deleted by Scaliger, fortasse gratia, by Hertz. Tum qui pro sese verba facerent quos visum erat advocavisse, aduocatosadvocates, uti erat mandatum, verba pro Milesiis ad populum fecisse, Demosthenen Milesiorum postulatis acriter respondisse, neque Milesios auxilio dignos neque ex republica id esse contendisse; rem in posterum diem prolatam. Legatos ad Demosthenen venisse magnoque opere orasse uti contra ne diceret; eum pecuniam petivisse et quantam petiverat abstulisse. Postridie, cum res agi denuo coepta esset, Demosthenen, lana multa collum cervicesque circumvolutum, ad populum prodisse et dixisse se synanchen pati, eo contra Milesios loqui non quire. Tum e populo unum exclamasse, non synanchen, quod Demosthenes pateretur, sed argyranchen esse.
+CRITOLAUS scripsit legatos Mileto publicae rei causa venisse Athenas, fortasse an auxilii petendi gratia. Tum qui pro sese verba facerent quos visum erat advocavisse, aduocatosadvocates, uti erat mandatum, verba pro Milesiis ad populum fecisse, Demosthenen Milesiorum postulatis acriter respondisse, neque Milesios auxilio dignos neque ex republica id esse contendisse; rem in posterum diem prolatam. Legatos ad Demosthenen venisse magnoque opere orasse uti contra ne diceret; eum pecuniam petivisse et quantam petiverat abstulisse. Postridie, cum res agi denuo coepta esset, Demosthenen, lana multa collum cervicesque circumvolutum, ad populum prodisse et dixisse se synanchen pati, eo contra Milesios loqui non quire. Tum e populo unum exclamasse, non synanchen, quod Demosthenes pateretur, sed argyranchen esse.
 
 Ipse etiam Demosthenes, ut idem Critolaus refert, non id postea concelavit, quin gloriae quoque hoc sibi adsignavit. Nam cum interrogasset Aristodemum, actorem fabularum, quantum mercedis, uti ageret, accepisset, et Aristodemus talentum respondisset, At ego plus, inquit, accepi, ut tacerem.
 
@@ -5475,7 +5475,7 @@ si ita, inquit, diceretur, gravior scilicet solidiorque fieret sententia et acci
 
 nunc autem verba haec cupide et temere, in quibus verbis omne momentum rei est, non in concludenda sententia tantum dicuntur, sed supra quoque nondum desiderata ponuntur et quae nasci oririque ex ipsa rei conceptione debebant, ante omnino quam res postulat dicuntur. Nam qui ita dicit: si hoc feceris, cupide fecisse diceris, rem dicit sensus alicuius ratione conlectam et consertam; qui vero ita dicit: si cupide feceris, cupide fecisse diceris, non longe secus dicit atque si diceret: si cupide feceris, cupide feceris.
 
-Haec ego, inquit, admonui, non ut C. Graccho vitio darem,—dii enim mentem meliorem mihi! nam, si quicquam in tam fortis facundiae viro vitii vel erroris esse dici potest, id omne et auctoritas eius exhausit et vetustas consumpsit,—sed uti caveretis ne vos facile praestringeret modulatus aliqui currentis facundiae sonitus atque ut vim ipsam rerum virtutemque verborum prius pensitaretis et, si quidem gravis atque integra et sincera sententia diceretur, tum, si ita videretur, gressibus quoque ipsis orationis oratoris, Eussner. et gestibus plauderetis; si vero frigidi et leves et futtiles sensus in verba apte numeroseque posita includerentur, non esse id secus crederetis quam cum homines insigni deformitate ac facie deridicula imitantur histriones et gestiunt.
+Haec ego, inquit, admonui, non ut C. Graccho vitio darem,—dii enim mentem meliorem mihi! nam, si quicquam in tam fortis facundiae viro vitii vel erroris esse dici potest, id omne et auctoritas eius exhausit et vetustas consumpsit,—sed uti caveretis ne vos facile praestringeret modulatus aliqui currentis facundiae sonitus atque ut vim ipsam rerum virtutemque verborum prius pensitaretis et, si quidem gravis atque integra et sincera sententia diceretur, tum, si ita videretur, gressibus quoque ipsis orationis et gestibus plauderetis; si vero frigidi et leves et futtiles sensus in verba apte numeroseque posita includerentur, non esse id secus crederetis quam cum homines insigni deformitate ac facie deridicula imitantur histriones et gestiunt.
 
 Sobria et pulcherrima Romuli regis responsio circa vini usum.
 
@@ -5505,21 +5505,21 @@ Quod Graecorum verborum quorundam difficillima est in Latinam linguam mutatio, v
 
 ADIECIMUS saepe animum ad vocabula rerum non paucissima quae neque singulis verbis, ut a Graecis, neque, si maxime pluribus eas res verbis dicamus, tam dilucide tamque apte demonstrari Latina oratione possunt quam Graeci ea dicunt privis vocibus.
 
-Nuper etiam cum adlatus esset ad nos Plutarchi liber et eius libri indicem legissemus, qui erat Περὶ Πολυπραγμοσύνης, percontanti cuipiam qui et litterarum et vocum Graecarum expers fuit cuiusnam liber et qua de re scriptus esset, nomen quidem scriptoris statim diximus, rem de qua scriptum scriptus, J. Gronov. fuit dicturi, haesimus.
+Nuper etiam cum adlatus esset ad nos Plutarchi liber et eius libri indicem legissemus, qui erat Περὶ Πολυπραγμοσύνης, percontanti cuipiam qui et litterarum et vocum Graecarum expers fuit cuiusnam liber et qua de re scriptus esset, nomen quidem scriptoris statim diximus, rem de qua scriptum fuit dicturi, haesimus.
 
-Ac tum quidem primo, quia non satis commode opinabar interpretaturum me me added by Hertz. esse, si dicerem librum scriptum De Negotiositate, aliud institui aput me exquirere, quod, ut dicitur, verbum de verbo expressum esset.
+Ac tum quidem primo, quia non satis commode opinabar interpretaturum me esse, si dicerem librum scriptum De Negotiositate, aliud institui aput me exquirere, quod, ut dicitur, verbum de verbo expressum esset.
 
-Nihil erat prorsus quod aut meminissem legere me aut, si etiam vellem fingere, quod non insigniter asperum absurdumque esset, si velut si, Skutsch. ex multitudine et negotio verbum unum compingerem, sicuti multiiuga dicimus et multicolora et multiformia.
+Nihil erat prorsus quod aut meminissem legere me aut, si etiam vellem fingere, quod non insigniter asperum absurdumque esset, si ex multitudine et negotio verbum unum compingerem, sicuti multiiuga dicimus et multicolora et multiformia.
 
 Sed non minus inlepide ita diceretur quam si interpretari voce una velis πολυφιλίαν aut πολυτροπίαν aut πολυσαρκίαν.
 
-Quamobrem, cum diutule tacitus in cogitando fuissem, respondi tandem non videri mihi significari eam rem posse uno nomine, et idcirco iuncta oratione quid vellet Graecum id verbum parabam parabam, Skutsch; pararam, MSS. dicere.
+Quamobrem, cum diutule tacitus in cogitando fuissem, respondi tandem non videri mihi significari eam rem posse uno nomine, et idcirco iuncta oratione quid vellet Graecum id verbum parabam dicere.
 
 Ad multas igitur res adgressio earumque omnium rerum actio πολυπραγμοσύνη, inquam, Graece dicitur, de qua hunc librum conpositum esse, inscriptio ista indicat.
 
-Tum ille opicus, verbis meis inchoatis et inconditis adductus virtutemque esse πολυπραγμοσύνην ratus, ratus, Bentley; iratus, QZ; tratus, B; omitted by γ. Hortatur, inquit, nos profecto nescio quis hic Plutarchus ad negotia capessenda et ad res obeundas plurimas cum industria et celeritate, nomenque ipsius virtutis de qua locuturus esset libro ipsi, sicuti dicis, non incommode praescripsit. Minime, inquam, vero;
+Tum ille opicus, verbis meis inchoatis et inconditis adductus virtutemque esse πολυπραγμοσύνην ratus, Hortatur, inquit, nos profecto nescio quis hic Plutarchus ad negotia capessenda et ad res obeundas plurimas cum industria et celeritate, nomenque ipsius virtutis de qua locuturus esset libro ipsi, sicuti dicis, non incommode praescripsit. Minime, inquam, vero;
 
-neque enim ista omnino virtus est, cuius Graeco nomine argumentum hoc libri demonstratur, neque id quod tu opinare aut ego me dicere sentio aut Plutarchus facit. Deterret enim nos hoc quidem in libro, quam potest maxime, a varia a varia, ς; avaritia (-cia), ω. promiscaque et non necessaria rerum cuiuscemodi plurimarum et cogitatione et petitione.
+neque enim ista omnino virtus est, cuius Graeco nomine argumentum hoc libri demonstratur, neque id quod tu opinare aut ego me dicere sentio aut Plutarchus facit. Deterret enim nos hoc quidem in libro, quam potest maxime, a varia promiscaque et non necessaria rerum cuiuscemodi plurimarum et cogitatione et petitione.
 
 Sed huius, inquam, tui erroris culpam esse intellego in mea scilicet infacundia, qui ne pluribus quidem verbis potuerim non obscurissime dicere quod a Graecis perfectissime verbo uno et planissime dicitur.
 
@@ -5577,13 +5577,13 @@ Quam caste autem ac religiose a prudentissimis viris quid esset furtum definitum
 
 Verba sunt Sabini ex libro luris Civilis secundo: Qui alienam rem adtrectavit, cum id se invito domino facere iudicare deberet, furti tenetur.
 
-Item alio capite: Qui alienum tacens alienum quid iacens, Dig. xlvii. 2. 43. 4. lucri faciendi causa sustulit, furti obstringitur, sive scit cuius sit, sive nescit.
+Item alio capite: Qui alienum tacens lucri faciendi causa sustulit, furti obstringitur, sive scit cuius sit, sive nescit.
 
 Haec quidem sic, in eo quo nunc dixi, Sabinus scripsit de rebus furti faciendi causa adtrectatis.
 
 Sed meminisse debemus, secundum ea quae supra scripsi, furtum sine ulla quoque adtrectatione fieri posse, sola mente atque animo ut furtum fiat adnitente.
 
-Quocirca ne id quidem Sabinus Fr. 4, H; 127 Br. dubitare se ait, quin dominus furti sit condemnandus qui servo suo uti furtum faceret imperavit.
+Quocirca ne id quidem Sabinus dubitare se ait, quin dominus furti sit condemnandus qui servo suo uti furtum faceret imperavit.
 
 Dissertatio Favorini philosophi, qua suasit nobili feminae uti liberos quos peperisset, non nutricum aliarum, sed sibi suo lacte aleret.
 
@@ -5619,7 +5619,7 @@ Neque in hominibus id solum, sed in pecudibus quoque animadversum. Nam si ovium 
 
 In arboribus etiam et frugibus maior plerumque vis et potestas est ad earum indolem vel detrectandam vel augendam aquarum atque terrarum quae alunt, quam ipsius quod iacitur seminis, ac saepe videas arborem laetam et nitentem, in locum alium transpositam, deterioris terrae suco deperisse.
 
-Quae, malum, igitur ratio est, nobilitatem istam nati modo hominis corpusque et animum, bene ingeniatis primordiis inchoatum, insitivo degenerique alimento lactis alieni corrumpere? praesertim si ista quam ad praebendum lactem adhibebitis, aut serva aut servilis est et, ut plerumque solet, externae et barbarae nationis est, et si improha, Damté. si inproba, si informis, si inpudica, si temulenta est; nam plerumque sine discrimine, quaecumque id temporis lactans est adhiberi solet.
+Quae, malum, igitur ratio est, nobilitatem istam nati modo hominis corpusque et animum, bene ingeniatis primordiis inchoatum, insitivo degenerique alimento lactis alieni corrumpere? praesertim si ista quam ad praebendum lactem adhibebitis, aut serva aut servilis est et, ut plerumque solet, externae et barbarae nationis est, si inproba, si informis, si inpudica, si temulenta est; nam plerumque sine discrimine, quaecumque id temporis lactans est adhiberi solet.
 
 Patiemurne igitur infantem hunc nostrum pernicioso contagio infici et spiritum ducere in animum atque in corpus suum ex corpore et animo deterrimo?
 
@@ -5639,7 +5639,7 @@ Et praeter haec autem, quis illud etiam neglegere aspernarique possit, quod quae
 
 Nam ubi infantis aliorsum dati facta ex oculis amolitiost, vigor ille maternae flagrantiae sensim atque paulatim restinguitur omnisque inpatientissimae sollicitudinis strepitus consilescit, neque multo minor amendati ad nutricem aliam filii, quam morte amissi, obliviost.
 
-Ipsius quoque infantis adfectio animi, amoris, consuetudinis amoris consuetudine, Eussnex in ea sola unde alitur occupatur, et proinde, ut in expositis usu venit, matris quae genuit neque sensum ullum neque desiderium capit. Ac propterea, oblitteratis et abolitis nativae pietatis elementis, quicquid ita educati liberi amare patrem atque matrem videntur, magnam fere partem non naturalis ille amor est, sed civilis et opinabilis.
+Ipsius quoque infantis adfectio animi, amoris, consuetudinis in ea sola unde alitur occupatur, et proinde, ut in expositis usu venit, matris quae genuit neque sensum ullum neque desiderium capit. Ac propterea, oblitteratis et abolitis nativae pietatis elementis, quicquid ita educati liberi amare patrem atque matrem videntur, magnam fere partem non naturalis ille amor est, sed civilis et opinabilis.
 
 Haec Favorinum dicentem audivi Graeca oratione. Cuius sententias communis utilitatis gratia, quantum meminisse potui, rettuli, amoenitates vero et copias ubertatesque verborum Latina omnis facundia vix quaedam indipisci potuerit, mea tenuitas nequaquam.
 
@@ -5649,17 +5649,17 @@ DE Annaeo Seneca partim existimant ut de scriptore minime utili, cuius libros ad
 
 Mihi de omni eius ingenio deque omni scripto iudicium censuramque facere non necessum est; sed quod de M. Cicerone et Q. Ennio et P. Vergilio iudicavit, ea res cuimodicuiusmodi sit, ad considerandum ponemus.
 
-In libro enim vicesimo secundo Epistularum Moralium quas ad Lucilium conposuit, deridiculos versus Q. Ennium de Cetego antiquo viro fecisse hos dicit: is dictust ollis popularibus olim Qui tum vivebant homines atque aevum agitabant, agebant, codd. Cic. Flos delibatus populi, Suadaeque suadaque, Cic.; suada, ω. medulla.
+In libro enim vicesimo secundo Epistularum Moralium quas ad Lucilium conposuit, deridiculos versus Q. Ennium de Cetego antiquo viro fecisse hos dicit: is dictust ollis popularibus olim Qui tum vivebant homines atque aevum agitabant, Flos delibatus populi, Suadaeque medulla.
 
 is dictust ollis popularibus olim
 
 Qui tum vivebant homines atque aevum agitabant,
 
-Flos delibatus populi, Suadaeque suadaque, Cic.; suada, ω. medulla.
+Flos delibatus populi, Suadaeque medulla.
 
 Ac deinde scripsit de isdem versibus verba haec: Admiror eloquentissimos viros et deditos Ennio pro optimis ridicula laudasse. Cicero certe inter bonos eius versus et hos refert.
 
-Atque id etiam de Cicerone dicit: Non miror, inquit, fuisse qui hos versus scriberet, cum fuerit qui laudaret; nisi forte Cicero summus orator agebat causam suam et volebat suos suos, Skutsch; hos, MSS. versus videri bonos.
+Atque id etiam de Cicerone dicit: Non miror, inquit, fuisse qui hos versus scriberet, cum fuerit qui laudaret; nisi forte Cicero summus orator agebat causam suam et volebat suos versus videri bonos.
 
 Postea hoc etiam addidit insulsissime: Aput ipsum quoque, inquit, Ciceronem invenies, etiam in prosa oratione, quaedam ex quibus intellegas ilium non perdidisse operam, quod Ennium legit.
 
@@ -5671,21 +5671,21 @@ De Vergilio quoque eodem in loco verba haec ponit: Vergilius quoque noster non e
 
 Sed iam verborum Senecae piget; haec tamen inepti et insubidi hominis ioca non praeteribo: Quidam sunt, inquit, tam magni sensus Q. Ennii, ut, licet scripti sint inter hircosos, possint tamen inter unguentatos placere; et, cum reprehendisset versus quos supra de Cetego posuimus: Qui huiuscemodi, inquit, versus amant, liqueat tibi eosdem admirari et Soterici lectos.
 
-Dignus indignus, Skutsch. sane iamne or anne, Damst. Seneca videatur lectione ac studio adulescentium, qui honorem coloremque veteris orationis Soterici lectis compararit, quasi minimae scilicet gratiae et relictis iam contemptisque. Weiss makes the sentence interrogative.
+Dignus sane Seneca videatur lectione ac studio adulescentium, qui honorem coloremque veteris orationis Soterici lectis compararit, quasi minimae scilicet gratiae et relictis iam contemptisque.
 
 Audias tamen commemoraricormmemorari ac referri pauca quaedam quae idem ipse Seneca bene dixerit, quale est illud, quod in hominem avarum et avidum et pecuniae sitientem dixit: Quid enim refert quantum habeas? multo illud plus est quod non habesbabes.
 
 Benene hoc? sane bene; sed adulescentium indolem non tam iuvant quae bene dicta sunt quam inficiunt quae pessime, multoque tanto magis, si et plura sunt quae deteriora sunt, et quaedam in his non pro enthymemate aliquo rei parvae ac simplicis, sed in re ancipiti pro consilio dicuntur.
 
-Lictoris vocabulum qua ratione conceptum ortumque sit; et super eo diversae sententiae Valgi Rufi et Tulli Tironis. Tironis, Bentley; Ciceronis, O2X; Ciceronis versus accepti, ω (from lemma of xii. 4).
+Lictoris vocabulum qua ratione conceptum ortumque sit; et super eo diversae sententiae Valgi Rufi et Tulli Tironis.
 
-VALGIUS RUFUS in secundo librorum quos inscripsit De Rebus per Epistulam Quaesitis, lictorem dicit a ligando appellatum esse, quod, cum magistratus populi Romani virgis quempiam verberari iussissent, crura eius et manus ligari vincirique a viatore solita sint, et inde is qui et inde is qui, Mommsen; is qui, δ; isque, γ. ex conlegio viatorum officium ligandi haberet lictor sit appellatus; utiturque ad eam rem testimonio M. Tulli verbaque eius refert ex oratione quae dicta est Pro C. Rabirio: Lictor, inquit, conliga manus.
+VALGIUS RUFUS in secundo librorum quos inscripsit De Rebus per Epistulam Quaesitis, lictorem dicit a ligando appellatum esse, quod, cum magistratus populi Romani virgis quempiam verberari iussissent, crura eius et manus ligari vincirique a viatore solita sint, et inde is qui ex conlegio viatorum officium ligandi haberet lictor sit appellatus; utiturque ad eam rem testimonio M. Tulli verbaque eius refert ex oratione quae dicta est Pro C. Rabirio: Lictor, inquit, conliga manus.
 
 Haec ita Valgius.
 
 Et nos sane cum illo sentimus; sed Tiro Tullius M. Ciceronis libertus, lictorem vel a limo vel a licio dictum scripsit: Licio enim transverse, quod limum appellatur, qui magistratibus, inquit, praeministrabant cincti erant.
 
-Si quis autem est qui propterea putat probabilius esse quod Tiro dixit, quoniam prima syllaba in lictore, sicuti in licio, producta est et in eo verbo quod est ligo correpta est, nihil ad rem istud pertinet. Nam sicut a ligando lictor et a legendo lector et a viendo vitor vivendo victor, ω; corr. by Lachmann; vincendo victor, ς. et tuendo tutor et struendo structor productis quae corripiebantur vocalibus dicta sunt.
+Si quis autem est qui propterea putat probabilius esse quod Tiro dixit, quoniam prima syllaba in lictore, sicuti in licio, producta est et in eo verbo quod est ligo correpta est, nihil ad rem istud pertinet. Nam sicut a ligando lictor et a legendo lector et a viendo vitor et tuendo tutor et struendo structor productis quae corripiebantur vocalibus dicta sunt.
 
 Versus accepti ex Q. Enni septimo Annalium, quibus depingitur finiturque ingenium comitasque hominis minoris erga amicum superiorem.
 
@@ -5695,7 +5695,7 @@ Eos ego versus non minus frequenti adsiduoque memoratu dignos puto quam philosop
 
 Ad hoc color quidam vetustatisvestustatis in his versibus tam reverendus est, suavitas tam inpromiscainprolnisca tamque a fuco omni remota est, ut mea quidem sententia pro antiquis sacratisque amicitias legibus observandi, tenendi colendique sint. Quapropter adscribendos eos existimavi,
 
-si quis iam statim desideraret: Haece locutus vocat quocum bene saepe libenter Mensam sermonesque suos rerumque suarum Comiter inpertit, magnam cum lassus diei Partem fuisset, de summis rebus regundis Consilio indu foro lato sanctoque senatu; Cui res audacter magnas parvasque iocumque Eloqueretur sed cura sed cura, Hosius (sed = sine); et cuncta, γ. malaque et bona dictu Evomeret, si qui vellet, tutoque locaret, Quocum multa volup ac ac, added in ς; volup sibi fecit clamque, Vahlen1. gaudia clamque palamque; Ingenium cui nulla malum sententia suadet Ut faceret facinus levis aut malus; doctus, fidelis, Suavis homo, facundus, suo contentus, beatus, Scitus, secunda loquens in tempore, commodus, verbum Paucum, multa tenens antiqua sepulta, vetustas Quem facit et mores veteresque novosque tenentem, Multorum veterum leges divumque hominumque; Prudenter qui dicta loquive tacereve posset; Hunc inter pugnas conpellat Servilius sic. L. Aelium Stilonem dicere solitum ferunt Q. Ennium de semet ipso haec scripsisse picturamque istam morum et ingenii ipsius Q. Ennii factam esse.
+si quis iam statim desideraret: Haece locutus vocat quocum bene saepe libenter Mensam sermonesque suos rerumque suarum Comiter inpertit, magnam cum lassus diei Partem fuisset, de summis rebus regundis Consilio indu foro lato sanctoque senatu; Cui res audacter magnas parvasque iocumque Eloqueretur sed cura malaque et bona dictu Evomeret, si qui vellet, tutoque locaret, Quocum multa volup ac gaudia clamque palamque; Ingenium cui nulla malum sententia suadet Ut faceret facinus levis aut malus; doctus, fidelis, Suavis homo, facundus, suo contentus, beatus, Scitus, secunda loquens in tempore, commodus, verbum Paucum, multa tenens antiqua sepulta, vetustas Quem facit et mores veteresque novosque tenentem, Multorum veterum leges divumque hominumque; Prudenter qui dicta loquive tacereve posset; Hunc inter pugnas conpellat Servilius sic. L. Aelium Stilonem dicere solitum ferunt Q. Ennium de semet ipso haec scripsisse picturamque istam morum et ingenii ipsius Q. Ennii factam esse.
 
 Haece locutus vocat quocum bene saepe libenter
 
@@ -5709,11 +5709,11 @@ Consilio indu foro lato sanctoque senatu;
 
 Cui res audacter magnas parvasque iocumque
 
-Eloqueretur sed cura sed cura, Hosius (sed = sine); et cuncta, γ. malaque et bona dictu
+Eloqueretur sed cura malaque et bona dictu
 
 Evomeret, si qui vellet, tutoque locaret,
 
-Quocum multa volup ac ac, added in ς; volup sibi fecit clamque, Vahlen1. gaudia clamque palamque;
+Quocum multa volup ac gaudia clamque palamque;
 
 Ingenium cui nulla malum sententia suadet
 
@@ -5743,23 +5743,23 @@ Post deinde, cum Taurus et medicos accersisset conlocutusque de facienda medella
 
 Tum e sectatoribus Tauri invenis, in disciplinis philosophiae non ignavus, Si tanta, inquit, doloris acerbitas est, ut contra voluntatem contraque iudicium animi nitatur invitumque hominem cogat ad gemendum confitendumque de malo morbi saevientis, cur dolor aput Stoicos indifferens esse dicitur, non malum? Cur deinde aut Stoicus homo cogi aliquid potest aut dolor cogere, cum et dolorem Stoici nihil cogere et sapientem nihil cogi posse dicant?
 
-Ad ea Taurus vultu iam propemodum laetiore, delectatus enim videbatur inlecebra quaestionis, Si iam amicus, inquit, hic noster melius valeret, gemitus eiusmodi necessarios a calumnia defendisset et hanc, opinor, tibi quaestionem dissolvisset, me autem scis cum Stoicis non bene convenire, vel cum StoicaStoa Stoa, Thysius; Stoica, MSS.; Stoa potius portica or secta, suggested by Hosius (but cf. Porph. on Hor. Epist. i. 1. 16–17). potius; est enim pleraque et sibi et nobis incongruens, sicut libro quem supra illa re composuimus declaratur.
+Ad ea Taurus vultu iam propemodum laetiore, delectatus enim videbatur inlecebra quaestionis, Si iam amicus, inquit, hic noster melius valeret, gemitus eiusmodi necessarios a calumnia defendisset et hanc, opinor, tibi quaestionem dissolvisset, me autem scis cum Stoicis non bene convenire, vel cum StoicaStoa potius; est enim pleraque et sibi et nobis incongruens, sicut libro quem supra illa re composuimus declaratur.
 
-Sed ut tibi a me mos geratur, dicam ego indoctius, ut aiunt, et apertius, quae fuisse dicturum puto sinuosius atque sollertius, si quis nunc adesset Stoicorum; nosti enim, credo, verbum illud vetus et pervolgatum: Ἀμαθέστερόν πως εἰπὲ καὶ σαφέστερον λέγε. λέγε not in MSS. of Arist.
+Sed ut tibi a me mos geratur, dicam ego indoctius, ut aiunt, et apertius, quae fuisse dicturum puto sinuosius atque sollertius, si quis nunc adesset Stoicorum; nosti enim, credo, verbum illud vetus et pervolgatum: Ἀμαθέστερόν πως εἰπὲ καὶ σαφέστερον λέγε.
 
-Ἀμαθέστερόν πως εἰπὲ καὶ σαφέστερον λέγε. λέγε not in MSS. of Arist.
+Ἀμαθέστερόν πως εἰπὲ καὶ σαφέστερον λέγε.
 
 Atque hine exorsus de dolore atque de gemitu Stoici aegrotantis ita disseruit:
 
-Natura, inquit, omnium rerum quae nos genuit, induit nobis inolevitque in ipsis statim principiis quibus nati sumus, amorem nostri et caritatem, ita prorsus ut nihil quicquam esset carius pensiusque nobis quam nosmet ipsi, atque hoc esse fundamentum ratast conservandae hominum perpetuitatis, si unusquisque nostrum, simul atque editus in lucem foret, harum prius rerum sensum adfectionemque caperet quae a veteribus philosophis τὰ πρῶτα κατὰ φύσιν appellata sunt; ut omnibus scilicet corporis sui commodis gauderet, ab incommodis omnibus abhorreret. Postea per incrementa aetatis exorta e seminibus suis ratiost et utendi consilii reputatio et honestatis utilitatisque verae contemplatio subtiliorque et exploratior commodorum incommodorumque incommodorum supplied by Bentley. dilectus; atque ita prae ceteris omnibus enituit et praefulsit decori et honesti dignitas ac, si ei retinendae obtinendaeve incommodum extrinsecus aliquod obstaret, contemptum est; neque aliud esse vere et simpliciter bonum nisi honestum, aliud quicquam malum nisi quod turpe esset existimatum est. Reliqua omnia, quae in medio forent ac neque honesta essent neque turpia, neque bona esse neque mala decretum est. Productiones tamen et relationes suis quaeque momentis distinctae divisaeque sunt, quae προηγμένα et ἀποπροηγμένα ipsi vocant. Propterea voluptas quoque et dolor, quod ad finemfiner ipsum bene beateque vivendi pertinet, et in mediis relicta et neque in bonis neque in malis iudicata sunt.
+Natura, inquit, omnium rerum quae nos genuit, induit nobis inolevitque in ipsis statim principiis quibus nati sumus, amorem nostri et caritatem, ita prorsus ut nihil quicquam esset carius pensiusque nobis quam nosmet ipsi, atque hoc esse fundamentum ratast conservandae hominum perpetuitatis, si unusquisque nostrum, simul atque editus in lucem foret, harum prius rerum sensum adfectionemque caperet quae a veteribus philosophis τὰ πρῶτα κατὰ φύσιν appellata sunt; ut omnibus scilicet corporis sui commodis gauderet, ab incommodis omnibus abhorreret. Postea per incrementa aetatis exorta e seminibus suis ratiost et utendi consilii reputatio et honestatis utilitatisque verae contemplatio subtiliorque et exploratior commodorum incommodorumque dilectus; atque ita prae ceteris omnibus enituit et praefulsit decori et honesti dignitas ac, si ei retinendae obtinendaeve incommodum extrinsecus aliquod obstaret, contemptum est; neque aliud esse vere et simpliciter bonum nisi honestum, aliud quicquam malum nisi quod turpe esset existimatum est. Reliqua omnia, quae in medio forent ac neque honesta essent neque turpia, neque bona esse neque mala decretum est. Productiones tamen et relationes suis quaeque momentis distinctae divisaeque sunt, quae προηγμένα et ἀποπροηγμένα ipsi vocant. Propterea voluptas quoque et dolor, quod ad finemfiner ipsum bene beateque vivendi pertinet, et in mediis relicta et neque in bonis neque in malis iudicata sunt.
 
 Sed enim quoniam his primis sensibus doloris voluptatisque ante consilii et rationis exortum recens natus homo inbutus est et voluptati quidem a natura conciliatus, a dolore autem, quasi a gravi quodam inimico, abiunctus alienatusque est—circo adfectiones istas primitus penitusque inditas ratio ipsi post addita convellere ab stirpe atque extinguere vix potest. Pugnat autem cum his semper et exultantis eas opprimit obteritque et parere sibi atque oboedire cogit.
 
 Itaque vidistis philosophum, ratione decreti sui nixum, cum petulantia morbi dolorisque exultantia conluctantem, nihil cedentem, nihil confitentem, neque ut plerique dolentes solent, eiulantem atque lamentantem ac miserum sese et infelicem appellantem, sed acres tantum anhelitus et robustos gemitus edentem, signa atque indicia non victi nec obpressi a dolore, sed vincere eum atque obprimere enitentis.
 
-Sed haut scio, inquit, an dicat aliquis, ipsum illud quod pugnat, quod gemit, si malum dolor non est, cur necesse est gemere et pugnare? Quia enim omnia quae non sunt mala molestia quoque omni non carent, sed sunt pleraque noxa quidem magna et pernicie privata, quia non sunt turpia, contra naturae tamen mansuetudinem lenitatemque opposita sunt et infesta per obscuram quandam et necessariam ipsius naturae consequentiam. Haec ergo vir sapiens tolerare et exanclare 1 Hosius; cun(c)tari, ω; eluctari, Madrig. potest, non admittere omnino in sensum sui non potest; ἀναλγησία enim atque ἀπάθεια non meo tantum, inquit, sed quorundam etiam ex eadem porticu prudentiorum hominum, sicuti iudicio Panaetii, gravis atque docti viri, inprobata abiectaque est.
+Sed haut scio, inquit, an dicat aliquis, ipsum illud quod pugnat, quod gemit, si malum dolor non est, cur necesse est gemere et pugnare? Quia enim omnia quae non sunt mala molestia quoque omni non carent, sed sunt pleraque noxa quidem magna et pernicie privata, quia non sunt turpia, contra naturae tamen mansuetudinem lenitatemque opposita sunt et infesta per obscuram quandam et necessariam ipsius naturae consequentiam. Haec ergo vir sapiens tolerare et exanclare potest, non admittere omnino in sensum sui non potest; ἀναλγησία enim atque ἀπάθεια non meo tantum, inquit, sed quorundam etiam ex eadem porticu prudentiorum hominum, sicuti iudicio Panaetii, gravis atque docti viri, inprobata abiectaque est.
 
-Sed cur contra voluntatem suam gemitus facere cogitur philosophus Stoicus, quem nihil cogi posse dicunt? Nihil sane potest cogi vir sapiens, cum est rationi obtinendae locus; cum vero natura cogit, ratio quoque a natura data cogitur. Quaere etiam, si videtur, cur manu alicuius ob oculos suos repente agitata invitus coniveat, cur fulgente caelo a luminis iactu non sua sponte et caput et oculos declinet, cur tonitru vehementius facto facto, Q; facto sensim, γ; impavescat, Skutsch. sensim pavescat, cur sternumentis quatiatur, cur aut in ardoribus solis aestuet aut in pruinis inmanibus obrigescat.
+Sed cur contra voluntatem suam gemitus facere cogitur philosophus Stoicus, quem nihil cogi posse dicunt? Nihil sane potest cogi vir sapiens, cum est rationi obtinendae locus; cum vero natura cogit, ratio quoque a natura data cogitur. Quaere etiam, si videtur, cur manu alicuius ob oculos suos repente agitata invitus coniveat, cur fulgente caelo a luminis iactu non sua sponte et caput et oculos declinet, cur tonitru vehementius facto sensim pavescat, cur sternumentis quatiatur, cur aut in ardoribus solis aestuet aut in pruinis inmanibus obrigescat.
 
 Haec enim et pleraque alia non voluntas nec consilium nec ratio moderatur, set naturae necessitatisque decreta sunt.
 
@@ -5825,7 +5825,7 @@ Periculum etiam et venenum et contagium non, uti nunc dicuntur, pro malis tantum
 
 Sed honorem quoque mediam vocem fuisse et ita appellatum, ut etiam malus honos diceretur et significaret iniuriam, id profecto rarissimum. Quintus autem Metellus Numidicus,
 
-in oratione quam De Triumpho Suo dixit, his verbis usus est: Qua in re quanto universi me unum antistatis, tanto vobis quam mihi maiorem iniuriam atque contumeliam facit, Quirites, et quanto probi iniuriam facilius accipiunt quam alteri tradunt, tanto ille vobis quam mihi peiorem honorem habuit; nam me iniuriam ferre, vos facere vult, Quirites, ut hic conquestio, istic vituperatio relinquatur. Honorem, inquit, peiorem vobis habuit quam quam gratiam, ω; gratiam deleted by Carrio. mihi;
+in oratione quam De Triumpho Suo dixit, his verbis usus est: Qua in re quanto universi me unum antistatis, tanto vobis quam mihi maiorem iniuriam atque contumeliam facit, Quirites, et quanto probi iniuriam facilius accipiunt quam alteri tradunt, tanto ille vobis quam mihi peiorem honorem habuit; nam me iniuriam ferre, vos facere vult, Quirites, ut hic conquestio, istic vituperatio relinquatur. Honorem, inquit, peiorem vobis habuit quam mihi;
 
 cuius verbi sententia est quam ipse quoque supra dicit: maiore vos adfecit iniuria et contumelia quam me.
 
@@ -5839,11 +5839,11 @@ Pro eo a plerisque nunc aedituus dicitur nova et commenticia usurpatione,
 
 quasi a tuendis aedibus appellatus. Satis hoc esse potuit admonendi gratia dixisse propter agrestes quosdam et indomitos certatores, qui nisi auctoritatibus adhibitis non comprimuntur.
 
-M. Varro in libro secundo Ad Marcellum De Latino Sermone aeditumum dici oportere censet magis quam aedituum, quod alterum sit recenti novitate fictum, alterum antiqua origine incorruptum. Laevius quoque,
+**M** Varro in libro secundo Ad Marcellum De Latino Sermone aeditumum dici oportere censet magis quam aedituum, quod alterum sit recenti novitate fictum, alterum antiqua origine incorruptum. Laevius quoque,
 
 ut opinor in Protesilaodamia, claustritumum dixit qui claustris ianuae praeesset, eadem scilicet figura qua aeditumum dici videbat qui aedibus praeest.
 
-In IV in IV in, added by Vogel. Verrem M. Tullii in exemplaribus fidelissimis ita inveni scriptum: Aeditumi custodesque mature sentiunt, in libris autem hoc vulgariis aeditui scriptum est.
+In IV in Verrem M. Tullii in exemplaribus fidelissimis ita inveni scriptum: Aeditumi custodesque mature sentiunt, in libris autem hoc vulgariis aeditui scriptum est.
 
 pomponiiPomponi fabula Atellania est quae ita scripta est: Aeditumus. In qua hic versus est: Quí postquam tibi appáreo atque aedítumor in templó tuo.
 
@@ -5875,7 +5875,7 @@ Alius quidam veterum poetarum, cuius nomen mihi nuncnune memoriae non est, Verit
 
 Faceta responsio M. Ciceronis, amolientis a se crimen manifesti mendacii.
 
-HAEC quoque disciplina rhetorica Hoc disciplinae rhetoricae, Nettleship. est, callide et cum astu res criminosas citra periculum confiteri, ut si obiectum sit turpe aliquid quod negari non queat, responsione ioculari eludas et rem facias risu magis dignam quam crimine, sicut fecisse Ciceronem scriptum est, cum id quod infitiari non poterat urbano facetoque dicto diluit.
+HAEC quoque disciplina rhetorica est, callide et cum astu res criminosas citra periculum confiteri, ut si obiectum sit turpe aliquid quod negari non queat, responsione ioculari eludas et rem facias risu magis dignam quam crimine, sicut fecisse Ciceronem scriptum est, cum id quod infitiari non poterat urbano facetoque dicto diluit.
 
 Nam cum emere vellet in Palatio domum et pecuniam in praesens non haberet, a P. Sulla, qui tum reus erat, mutua sestertium viciens tacita accepit.
 
@@ -5885,11 +5885,11 @@ Tum Cicero, inopinata obprobratione permotus, accepisse se negavit ac domum quoq
 
 Intra Kalendas cum dicitur, quid significet, utrum ante Kalendas an Kalendis an utrumque; atque inibi, quid sit in oratione M. Tulli intra oceanum et intra monte Taurum et in quadam epistula intra modum.
 
-CUM Romae a consulibus iudex extra ordinem datus pronuntiare intra Kalendas iussus essem, Sulpicium Apollinarem, doctum hominem, percontatus sum an his verbis intra Kalendas ipsae quoque Kalendae tenerentur, dixique ei me me iudicem, Hertz (N2); me omitted by Q. videlicet datum Kalendasque mihi prodictas, ut intra eum diem pronuntiarem. Cur, inquit,
+CUM Romae a consulibus iudex extra ordinem datus pronuntiare intra Kalendas iussus essem, Sulpicium Apollinarem, doctum hominem, percontatus sum an his verbis intra Kalendas ipsae quoque Kalendae tenerentur, dixique ei me videlicet datum Kalendasque mihi prodictas, ut intra eum diem pronuntiarem. Cur, inquit,
 
 hoc me potius rogas quam ex istis aliquem peritis studiosisque iuris, quos adhibere in consilium iudicaturi soletis? Tum illi ego ita respondi:
 
-Si aut de vetere, inquam, iure et et, ilosius; aut, ω. recepto aut controverso et ambiguo aut novo et constituto discendum esset, issem plane sciscitatum ad istos quos dicis;
+Si aut de vetere, inquam, iure et recepto aut controverso et ambiguo aut novo et constituto discendum esset, issem plane sciscitatum ad istos quos dicis;
 
 sed cum verborum Latinorum sententia, usus, ratio exploranda sit, scaevus profecto et caecus animi forem, si, cum haberem tui copiam, issem magis ad alium quam ad te.
 
@@ -5913,7 +5913,7 @@ nam, si ante id fiat, non intra pronuntiat, sed citra.
 
 Nescio quo autem pacto recepta vulgo interpretatio est absurdissima, ut intra Kalendas significare videatur etiam citra Kalendas vel ante Kalendas, nihil enim ferme interest.
 
-Atque insuper dubitatur an Kalendis quoque pronuntiari possit, quando neque ultra neque citra, set, quod inter haec medium est, intra Kalendas, id est Kalendis, id est Kalendis, deleted by Hertz. pronuntiandum sit.
+Atque insuper dubitatur an Kalendis quoque pronuntiari possit, quando neque ultra neque citra, set, quod inter haec medium est, intra Kalendas, id est Kalendis, pronuntiandum sit.
 
 Sed nimirum consuetudo vicit, quae cum omnium domina rerum, tum maxime verborum est.
 
@@ -5929,9 +5929,9 @@ Haec tunc Apollinaris scite acuteque dicere visus est.
 
 Set postea in libro M. Tullii Epistularum ad Servium Sulpicium sic dictum esse invenimus intra modum, ut intra Kalendas dicunt qui dicere citra Kalendas volunt.
 
-Verba haec Ciceronis sunt, quae adposui: Sed tamen, quoniam effugi eius offensionem, offensionem, Cic.; occasionem, ω. qui fortasse arbitraretur me hanc rem publicam rem publicam, Cic.; rem imperite, ω (impertire, Q). non putare, si perpetuo tacerem, modice hoc faciam aut etiam intra modum, ut et illius voluntati et meis studiis serviam.
+Verba haec Ciceronis sunt, quae adposui: Sed tamen, quoniam effugi eius offensionem, qui fortasse arbitraretur me hanc rem publicam non putare, si perpetuo tacerem, modice hoc faciam aut etiam intra modum, ut et illius voluntati et meis studiis serviam.
 
-Modice dixerat hoc faciam, faciam omitted by ω. id est cum modo aequo et pari;
+Modice dixerat hoc faciam, id est cum modo aequo et pari;
 
 deinde, quasi hoc displiceret et corrigere id vellet, addit: aut etiam intra modum, per quod ostendit minus sese id facturum esse quam quod fieri modice videretur; id est, non ad ipsum modum, sed retro paululum et citra modum.
 
@@ -5967,9 +5967,9 @@ CUM lectitaremus Historiam Sisennae adsidue. huiuscemodi figurae adverbia in ora
 
 Ex quibus duo prima, quia sunt notiora, exemplis non indigebant, reliqua in Historiarum sexto sic scripta sunt: Quam maxime celatim poterat, in insidiis suos disponit. Item alio in loco: Nos una aestate in Asia et Graecia gesta litteris idcirco continentia mandavimus, ne vellicatim aut saltuatim scribendo lectorum animos impediremus.
 
-Inquisitio verborum istorum M. Tulli curiosior quae sunt sunt, Damsté; fuit, ω. in primo Antonianarum libro, multa autem inpendere videntur praeter naturam etiam praeterque fatum; tractatumque an idem duo ista significant, fatum atque natura, an diversum.
+Inquisitio verborum istorum M. Tulli curiosior quae sunt in primo Antonianarum libro, multa autem inpendere videntur praeter naturam etiam praeterque fatum; tractatumque an idem duo ista significant, fatum atque natura, an diversum.
 
-MARCUS CICERO in primo Antonianarum ita scriptum reliquit: Hunc igitur ut sequerer properavi quem praesentes non sunt secuti; non ut proficerem aliquid, neque enim sperabam id nec praestare poteram, sed ut, si quid mihi humanitus accidisset, multa autem inpendere videntur praeter naturam etiam Many MSS. of Cic. omit etiam. praeterque fatum, huius diei vocem testem reipublicae relinquerem meae perpetuae erga se voluntatis.
+MARCUS CICERO in primo Antonianarum ita scriptum reliquit: Hunc igitur ut sequerer properavi quem praesentes non sunt secuti; non ut proficerem aliquid, neque enim sperabam id nec praestare poteram, sed ut, si quid mihi humanitus accidisset, multa autem inpendere videntur praeter naturam etiam praeterque fatum, huius diei vocem testem reipublicae relinquerem meae perpetuae erga se voluntatis.
 
 Praeter naturam, inquit, praeterque fatum. An utrumque idem valere voluerit fatum atque naturam et duas res καθʼ ἑνὸς ὑποκειμένου posuerit, an vero diviserit separaritque, ut alios casus natural ferre videatur, alios fatum, considerandum equidem puto, atque id maxime requirendum, qua ratione dixerit accidere multa humanitus posse praeter fatum, quando sic ratio et ordo et insuperabilis quaedam necessitas fati constituitur, ut omnia intra fatum claudenda sint, nisi illud sane Homeri secutus est: Μὴ καὶ ὑπὲρ μοῖραν δόμον Ἄιδος εἰσαφίκηαι.
 
@@ -6015,9 +6015,9 @@ Sed necessitas sane pro iure officioque observantiae adfinitatisve infrequens es
 
 Repperi tamen in oratione C. Caesaris, Qua Plautian Rogationem Suasit, necessitatem dictam pro necessitudine, id est iure adfinitatis. Verba haec sunt: Equidem mihi videor pro nostra necessitate non labore, non opera, non industria defuisse.
 
-Hoc ego scripsi de utriusque vocabuli indifferentia, admonitus forte verbi istius, cum legerem Sempronii Asellionis, veteris scriptoris, quartum ex Historia librum, in quo de P. Africano, Pauli filio, ita scriptum est: Nam se patrem suum audisse dicere L. Aemilium Paulum, nimis minime, Hosius, omitting non; he regards L. Aemilius Paulus as a gloss. bonum imperatorem signis conlatis non decertare, nisi summa necessitudo aut summa occasio data esset.
+Hoc ego scripsi de utriusque vocabuli indifferentia, admonitus forte verbi istius, cum legerem Sempronii Asellionis, veteris scriptoris, quartum ex Historia librum, in quo de P. Africano, Pauli filio, ita scriptum est: Nam se patrem suum audisse dicere L. Aemilium Paulum, nimis bonum imperatorem signis conlatis non decertare, nisi summa necessitudo aut summa occasio data esset.
 
-Descripta Alexandri ad matrem Olympiadem epistula; et quid Olympias festive ei rescripserit. ad matrem .. rescripserit, supplied by Hertz.
+Descripta Alexandri ad matrem Olympiadem epistula; et quid Olympias festive ei rescripserit.
 
 IN plerisque monimentis rerum ab Alexandro gestarum, et paulo ante in libro M. Varronis qui inscriptus est Orestes vel De Insania, Olympiadem, Philippi uxorem, festivissime rescripsisse legimus Alexandro filio.
 
@@ -6065,7 +6065,7 @@ Diversum de natura leonum dixisse Homerum in carminibus et Herodotum in historii
 
 LEAENAS inter omnem vitam semel parere eoque uno partu numquam edere plures quam unum, Herodotus in tertia Historia scriptum reliquit.
 
-Verba ex eo libro haec sunt: Ἡ δὲ δὴ λέαινα, ἐὸν ἰσχυρὸν ἰσχυρότατον,, Hdt. καὶ θρασύτατον, ἅπαξ ἐν τῷ βίῳ τίκτει ἕν· τίκτουσα γὰρ συνεκβάλλει τῷ τέκνῳ τὰς μήτρας.
+Verba ex eo libro haec sunt: Ἡ δὲ δὴ λέαινα, ἐὸν ἰσχυρὸν καὶ θρασύτατον, ἅπαξ ἐν τῷ βίῳ τίκτει ἕν· τίκτουσα γὰρ συνεκβάλλει τῷ τέκνῳ τὰς μήτρας.
 
 Homerus autem leones, sic enim feminas quoque virili genere appellat, quod grammatici ἐπίκοινον vocant, pluris gignere atque educare catulos dicit. Versus, quibus hoc aperte demonstrat, hi sunt:
 
@@ -6083,13 +6083,13 @@ Homerus autem leones, sic enim feminas quoque virili genere appellat, quod gramm
 
 Ὕλης ἐκ πυκινῆς.
 
-Ea nos dissensio atque diversitas cum agitaret inclutissimi poetarum et historicorum nobilissimi, placuit libros Aristotelis philosophi inspici quos De Animalibus exquisitissime composuit. In quibus quod super ista re scriptum invenerimus, cum ipsius Aristotelis verbis in his commentariis scribemus. Aristotle’s words in Hist. Anim. vi. 31, p. 579, are added in ς; omitted by ω.
+Ea nos dissensio atque diversitas cum agitaret inclutissimi poetarum et historicorum nobilissimi, placuit libros Aristotelis philosophi inspici quos De Animalibus exquisitissime composuit. In quibus quod super ista re scriptum invenerimus, cum ipsius Aristotelis verbis in his commentariis scribemus.
 
 Quod Afranius poeta prudenter et lepide Sapientiam filiam esse Usus et Memoriae dixit.
 
 EXIMIE hoc atque verissime Afranius poeta de gignenda conparandaque Sapientia opinatus est, quod eam filiam esse Usus et Memoriae dixit.
 
-Eo namque argumento demonstrat, qui sapiens rerum esse humanarum velit, non libris solis neque disciplinis rhetoricis dialecticisque opus esse, sed oportere eum versari quoque exercerique in rebus comminus noscendis periclitandisque eaque omnia acta et eventa firmiter meminisse et proinde sapere atque consulere ex his quae pericula ipsa rerum docuerint, non quae libri tantum aut magistri per quasdam inanitates verborum et imaginum tamquam in mimo aut in somnio deliraverint.delectaverint, ω; corrected by Ott; delineaverint, Kronenberg (cf. Cic. N. D i. 75).
+Eo namque argumento demonstrat, qui sapiens rerum esse humanarum velit, non libris solis neque disciplinis rhetoricis dialecticisque opus esse, sed oportere eum versari quoque exercerique in rebus comminus noscendis periclitandisque eaque omnia acta et eventa firmiter meminisse et proinde sapere atque consulere ex his quae pericula ipsa rerum docuerint, non quae libri tantum aut magistri per quasdam inanitates verborum et imaginum tamquam in mimo aut in somnio deliraverint.
 
 Versus Afrani sunt in togata, cui Sellae nomen est: Usús me genuit, máter peperit Mémoria, Sophiám vocant me Grái, vos Sapiéntiam.
 
@@ -6097,9 +6097,9 @@ Usús me genuit, máter peperit Mémoria,
 
 Sophiám vocant me Grái, vos Sapiéntiam.
 
-Item versus est in eandem ferme sententiam Pacuvii, quem Macedo philosophus, vir bonus, familiaris meus, scribi debere censebat pro foribus omnium templorum: Ego odi ergo or odi ego, Bothe. homines ígnava opera et phílosopha Senténtia.
+Item versus est in eandem ferme sententiam Pacuvii, quem Macedo philosophus, vir bonus, familiaris meus, scribi debere censebat pro foribus omnium templorum: Ego odi homines ígnava opera et phílosopha Senténtia.
 
-Ego odi ergo or odi ego, Bothe. homines ígnava opera et phílosopha Senténtia.
+Ego odi homines ígnava opera et phílosopha Senténtia.
 
 Nihil enim fieri posse indignius neque intolerantius dicebat quam quod homines ignavi ac desides, operti barba et pallio, mores et emolumenta philosophiae in linguae verborumque artes converterent et vitia facundissime accusarent, intercutibus ipsi vitiis madentes.
 
@@ -6111,9 +6111,9 @@ Is libros compluris de usu atque ratione linguae Latinae, item de variis atque p
 
 In his esse praecipui videntur quos Graeco titulo Πανδέκτας inscripsit, tamquam omne rerum atoue doctrinarum genus continentis.
 
-Ibi de his stellis quae appellantur suculae hoc scriptum est: Adeo, inquit, veteres Romani litteras Graecas nesciverunt et rudes Graecae linguae fuerunt, ut stellas quae in capite tauri sunt propterea suculas appellarint, quod eas Graeci ὑάδας vocant, tamquam id verbum Latinum Graeci verbi interpretamentum sit, quia quae quae added by Skutsch. Graece sues Latine dicantur. Sed ὑάδες, inquit, οὐκ ἀπὸ τῶν ὑῶν (id est, non a subus), ita ut nostri opici putaverunt, sed ab eo quod est ὕειν, appellantur; nam et cum oriuntur et cum occidunt, tempestates pluvias largosque imbres cient. Pluere autem Graeca lingua ὕειν dicitur.
+Ibi de his stellis quae appellantur suculae hoc scriptum est: Adeo, inquit, veteres Romani litteras Graecas nesciverunt et rudes Graecae linguae fuerunt, ut stellas quae in capite tauri sunt propterea suculas appellarint, quod eas Graeci ὑάδας vocant, tamquam id verbum Latinum Graeci verbi interpretamentum sit, quia quae Graece sues Latine dicantur. Sed ὑάδες, inquit, οὐκ ἀπὸ τῶν ὑῶν (id est, non a subus), ita ut nostri opici putaverunt, sed ab eo quod est ὕειν, appellantur; nam et cum oriuntur et cum occidunt, tempestates pluvias largosque imbres cient. Pluere autem Graeca lingua ὕειν dicitur.
 
-Haec quidem Tiro in Pandectis. Sed enim veteres nostri non usque eo rupices et agrestes fuerunt, ut stellas hyadas idcirco suculas nominarent, quod ὕες Latine sues dicantur; sed ut quod Graeci ὑπέρ, nos super dicimus, quod illi ὕπτιος, nos supinus, quod illi ὑφορβός, nos subulcus, quod item illi ὕπνος, nos primo sypnus, deinde per y Graecae Latinaeque o o added in ς; litterae cum o littera, Hertz. litterae cognationem somnus: sic quod ab illis ὑάδες, a nobis primo syades, deinde suculae appellatae.
+Haec quidem Tiro in Pandectis. Sed enim veteres nostri non usque eo rupices et agrestes fuerunt, ut stellas hyadas idcirco suculas nominarent, quod ὕες Latine sues dicantur; sed ut quod Graeci ὑπέρ, nos super dicimus, quod illi ὕπτιος, nos supinus, quod illi ὑφορβός, nos subulcus, quod item illi ὕπνος, nos primo sypnus, deinde per y Graecae Latinaeque o litterae cognationem somnus: sic quod ab illis ὑάδες, a nobis primo syades, deinde suculae appellatae.
 
 Stellae autem istae non in capite tauri sunt, ut Tiro dicit, nullum enim videtur praeter eas stellas tauri caput, set hae ita circulo qui zodiacus dicitur sitae locataeque sunt, ut ex earum positu species quaedam et simulacrum esse videatur tauri capitis, sicuti ceterae partes et reliqua imago tauri conformata et quasi depicta est locis regionibusque earum stellarum quas Graeci Πλειάδας, nos Vergilias vocamus.
 
@@ -6133,11 +6133,11 @@ LEPIDISSIMUS liber est M. Varronis ex Satiris Menippeis, qui inscribitur Nescis 
 
 Dicit autem, convivarum numerum incipere oportere a Gratiarum numero et progredi ad Musarum, id est proficisci a tribus et consistere in novem, ut, cum paucissimi convivae sunt, non pauciores sint quam tres, cum plurimi, non plures quam novem.
 
-Nam multos, inquit, esse non convenit, quod turba plerumque est turbulenta et Romae quidem stat, stat, Hertz; constat, MSS.; concio stat, Boot. sedet Athenis, nusquam autem cubat. Ipsum deinde convivium constat, inquit, ex rebus quattuor et tum denique omnibus suis numeris absolutum est, si belli homunculi conlecti sunt, si electus locus, si tempus lectum, si apparatus non neglectus. Nec loquaces autem, inquit, convivas nec mutos legere oportet, quia eloquentia in foro et aput subsellia, silentium vero non in convivio, set in cubiculo esse debet.
+Nam multos, inquit, esse non convenit, quod turba plerumque est turbulenta et Romae quidem stat, sedet Athenis, nusquam autem cubat. Ipsum deinde convivium constat, inquit, ex rebus quattuor et tum denique omnibus suis numeris absolutum est, si belli homunculi conlecti sunt, si electus locus, si tempus lectum, si apparatus non neglectus. Nec loquaces autem, inquit, convivas nec mutos legere oportet, quia eloquentia in foro et aput subsellia, silentium vero non in convivio, set in cubiculo esse debet.
 
 Sermones igitur id temporis habendos censet non super rebus anxiis aut tortuosis, sed iucundos atque invitabiles et cum quadam inlecebra et voluptate utiles, ex quibus ingenium nostrum venustius fiat et amoenius.
 
-Quod profecto, inquit, eveniet, si de id genus rebus ad communem vitae usum pertinentibus confabulemur, de quibus in foro atque in negotiis agendi non est otium. Dominum autem, inquit, convivii esse oportet non tam lautum, quam sine sordibus, et: In convivio legi nec nec, Gell. i. 22. 5; non, MSS. omnia debent, sed et, Gell. i. 22. 5. ea potissimum, quae simul sint βιωφελῆ et delectent.
+Quod profecto, inquit, eveniet, si de id genus rebus ad communem vitae usum pertinentibus confabulemur, de quibus in foro atque in negotiis agendi non est otium. Dominum autem, inquit, convivii esse oportet non tam lautum, quam sine sordibus, et: In convivio legi nec omnia debent, sed ea potissimum, quae simul sint βιωφελῆ et delectent.
 
 Neque non de secundis quoque mensis, cuiusmodi esse eas oporteat, praecipit. His enim verbis utitur: Bellaria, inquit, ea maxime sunt mellita, quae melltta non sunt; πέμμασιν enim cum πέψει societas infida.
 
@@ -6163,9 +6163,9 @@ Quae, malum, autem ratio fuit vocantibus nolle obsequi quos confiteare ius haber
 
 Sed quaerentibus nobis quam ob causam tribuni, qui haberent summam coercendi potestatem, ius vocandi non habuerint ..., quod tribuni plebis antiquitus creati videntur non iuri dicundo nec causis querelisque de absentibus noscendis, sed intercessionibus faciendis quibus usus praesens fuisset, ut iniuria quae coram fieret arceretur; ac propterea ius abnoctandi ademptum, quoniam, ut vim fieri vetarent, adsiduitate eorum et praesentium oculis opus erat.
 
-Quod in libris Humanarum Humanarum Rerum, Damsté. M. Varronis scriptum est aediles et quaestores populi Romani in ius a privato ad praetorem vocari posse.
+Quod in libris Humanarum M. Varronis scriptum est aediles et quaestores populi Romani in ius a privato ad praetorem vocari posse.
 
-CUM ex angulis secretisque librorum ludorum, Eussner. ac magistrorum in medium iam hominum et in lucem fori prodissem, quaesitum esse memini in plerisque Romae stationibus ius publice docentium aut respondentium, an quaestor populi Romani a praetore in ius vocari posset.
+CUM ex angulis secretisque librorum ac magistrorum in medium iam hominum et in lucem fori prodissem, quaesitum esse memini in plerisque Romae stationibus ius publice docentium aut respondentium, an quaestor populi Romani a praetore in ius vocari posset.
 
 Id autem non ex otiosa quaestione agitabatur, sed usus forte natae rei ita erat, ut vocandus esset in ius quaestor.
 
@@ -6191,7 +6191,7 @@ Huius rei Messala aliquot causas videri scripsit; sed praeter eas omnis ipse una
 
 Idcirco, inquit, omnes qui pomerium protulerunt montem istum excluserunt, quasi avibus obscenis ominosum.
 
-Sed de Aventino monte praetermittendum non putavi quod non pridem ego in Elydis, Felicis, Mercklin; Heraclidis, Hertz; Epelydis, Beryk; some one of the Aelii, Hosius. grammatici veteris, Conmmenlario offendi, in quo scriptum erat Aventinum antea, sicuti diximus, extra pomerium exclusum, post auctore divo Claudio receptum et intra pomerii fines observatum.
+Sed de Aventino monte praetermittendum non putavi quod non pridem ego in Elydis, grammatici veteris, Conmmenlario offendi, in quo scriptum erat Aventinum antea, sicuti diximus, extra pomerium exclusum, post auctore divo Claudio receptum et intra pomerii fines observatum.
 
 Verba ex libro Messalae auguris, quibus docet qui sint minores magistratus, et consulem praetoremque conlegas esse; et quaedam alia de auspiciis.
 
@@ -6201,7 +6201,7 @@ Quaeri igitur solet qui sint magistratus minores.
 
 Super hac re meis verbis nil opus fuit, quoniam liber M. Messalae auguris De Auspiciis primus, cum hoc scriberemus, forte adfuit.
 
-Propterea ex eo libro verba ipsius Messalae subscripsimus: Patriciorum auspicia in duas sunt divisa potestates. Maxima sunt consulum, praetorum, censorum. Neque tamen eorum omnium inter se eadem aut eiusdem potestatis, ideo quod conlegae non sunt censores consulum aut praetorum, praetores consulum sunt. Ideo neque consules aut praetores censorious neque censores consulibus aut praetoribus turbant aut retinent auspicia; at censores inter se, rursus praetores consulesque inter se, et vitiant et obtinent. Praetor, etsi conlega consulis est, neque praetorem neque consulem iure rogare potest, ut quidem nos a superioribus accepimus aut ante haec tempora servatum est et ut in Commentario tertio decimo C. Tuditani patet, quia imperium minus praetor, maius habet consul, et a minore imperio maius aut maior a minore a minore, added by Hertz. conlega rogari iure non potest. Nos his temporibus, praetore praetores creante, veterum auctoritatem sumus secuti neque his comitiis in auspicio fuimus. Censores aeque non eodem rogantur auspicio atque consules et praetores. Reliquorum magistratuum minora sunt auspicia. Ideo illi minores, hi maiores magistratus appellantur. Minoribus creatis magistratibus, tributis comitiis magistratus, sed iustus curiata datur lege; maiores centuriatis comitiis fiunt.
+Propterea ex eo libro verba ipsius Messalae subscripsimus: Patriciorum auspicia in duas sunt divisa potestates. Maxima sunt consulum, praetorum, censorum. Neque tamen eorum omnium inter se eadem aut eiusdem potestatis, ideo quod conlegae non sunt censores consulum aut praetorum, praetores consulum sunt. Ideo neque consules aut praetores censorious neque censores consulibus aut praetoribus turbant aut retinent auspicia; at censores inter se, rursus praetores consulesque inter se, et vitiant et obtinent. Praetor, etsi conlega consulis est, neque praetorem neque consulem iure rogare potest, ut quidem nos a superioribus accepimus aut ante haec tempora servatum est et ut in Commentario tertio decimo C. Tuditani patet, quia imperium minus praetor, maius habet consul, et a minore imperio maius aut maior a minore conlega rogari iure non potest. Nos his temporibus, praetore praetores creante, veterum auctoritatem sumus secuti neque his comitiis in auspicio fuimus. Censores aeque non eodem rogantur auspicio atque consules et praetores. Reliquorum magistratuum minora sunt auspicia. Ideo illi minores, hi maiores magistratus appellantur. Minoribus creatis magistratibus, tributis comitiis magistratus, sed iustus curiata datur lege; maiores centuriatis comitiis fiunt.
 
 Ex his omnibus verbis Messalae manifestum fit, et qui sint magistratus minores et quamobrem minores appellentur.
 
@@ -6211,7 +6211,7 @@ Maiora autem dicuntur auspicia habere, quia eorum auspicia magis rata sunt quam 
 
 Item verba eiusdem Messalae, disserentis aliud esse ad populum loqui, aliud cum populo agere; et qui magistratus a quibus avocent comitiatum.
 
-IDEM Messala in eodem libro de minoribus magistratibus ita scripsit: Consul ab omnibus magistratibus et comitiatum et contionem avocare potest. Praetor et comitiatum et contionem usquequaque avocare potest, nisi a consule. Minores magistratus nusquam nec comitiatum nec contionem avocare possunt. Ea re, qui eorum primus vocat ad comitiatum, is recte agit, quia bifariam cum populo agi non potest nec avocare alius alii potest. potest, Madvig; posset ω (-ent, π). Set, si contionem habere volunt uti ne cum populo agant, quamvis multi magistratus simul contionem habere possunt.
+IDEM Messala in eodem libro de minoribus magistratibus ita scripsit: Consul ab omnibus magistratibus et comitiatum et contionem avocare potest. Praetor et comitiatum et contionem usquequaque avocare potest, nisi a consule. Minores magistratus nusquam nec comitiatum nec contionem avocare possunt. Ea re, qui eorum primus vocat ad comitiatum, is recte agit, quia bifariam cum populo agi non potest nec avocare alius alii potest. Set, si contionem habere volunt uti ne cum populo agant, quamvis multi magistratus simul contionem habere possunt.
 
 Ex his verbis Messalae manifestum est, aliud esse cum populo agere, aliud contionem habere.
 
@@ -6225,7 +6225,7 @@ Sic igitur eo verbo veteres esse usos, et cumprimis M. Varronem Marcumque Tulliu
 
 Itaque verba posui Varronis e libro Rerum Humanarum primo, cuius principium hoc est: Praxiteles, qui propter artificium egregium nemini est paulum modo humaniori ignotus.
 
-Humaniori inquit non ita ut vulgo dicitur, facili et tractabili et benivolo, tametsi rudis litterarum sit, hoc enim cum sententia nequaquam convenit, sed eruditiori doctiorique, qui Praxitelem, quid fuerit, et ex libris litteris, Eussner; hiis libris, Z. et ex historia cognoverit.
+Humaniori inquit non ita ut vulgo dicitur, facili et tractabili et benivolo, tametsi rudis litterarum sit, hoc enim cum sententia nequaquam convenit, sed eruditiori doctiorique, qui Praxitelem, quid fuerit, et ex libris et ex historia cognoverit.
 
 Quid aput M. Catonem significent verba haec inter os atque offam.
 
@@ -6233,11 +6233,11 @@ ORATIO est M. Catonis Censorii De Aedilibus Vitio Creatis. Ex ea oratione verba 
 
 Erucius Clarus, qui praefectus urbi et bis consul fuit, vir morum et litterarum veterum studiosissimus, ad Sulpicium Apollinarem scripsit, hominem memoriae nostrae doctissimum, quaerere sese et petere, uti sibi rescriberet quaenam esset eorum verborum sententia.
 
-Tum Apollinaris, nobis praesentibus, nam id temporis ego adulescens Romae sectabar eum discendi gratia, rescripsit Claro ut viro erudito brevissime, vetus esse proverbium proverbium omitted by Q, perhaps rightly. inter os et offam, idem significans quod Graecus ille παροιμιώδης versus: Πολλὰ μεταξὺ πέλει κύλικος καὶ χείλεος ἄκρου.
+Tum Apollinaris, nobis praesentibus, nam id temporis ego adulescens Romae sectabar eum discendi gratia, rescripsit Claro ut viro erudito brevissime, vetus esse proverbium inter os et offam, idem significans quod Graecus ille παροιμιώδης versus: Πολλὰ μεταξὺ πέλει κύλικος καὶ χείλεος ἄκρου.
 
 Πολλὰ μεταξὺ πέλει κύλικος καὶ χείλεος ἄκρου.
 
-Platonem tribuere Euripidi Sophocli versum; et similia quaedam alia. 1 Lemma omitted by ω.
+Platonem tribuere Euripidi Sophocli versum; et similia quaedam alia.
 
 VERSUS est notae vetustatis senarius: Σοφοὶ τύραννοι τῶν σοφῶν ξυνουσίᾳ.
 
@@ -6335,9 +6335,9 @@ Haec finis Priami fatorum,
 
 quem das finem, rex magne, laborum?
 
-Ennius item rectos cupressos dixit contra receptum vocabuli genus hoc versu: Cautibus cautibus, Stowasser; capitibus, ω; vertice, Onions; comptibus, Damsté (cf. Lucr. i. 87). nutantis pinos rectosque cupressos. Firmior ei, credo, et viridior sonus esse vocis visus
+Ennius item rectos cupressos dixit contra receptum vocabuli genus hoc versu: Cautibus nutantis pinos rectosque cupressos. Firmior ei, credo, et viridior sonus esse vocis visus
 
-Cautibus cautibus, Stowasser; capitibus, ω; vertice, Onions; comptibus, Damsté (cf. Lucr. i. 87). nutantis pinos rectosque cupressos.
+Cautibus nutantis pinos rectosque cupressos.
 
 est, rectos dicere cupressos quam rectas. Contra vero idem Ennius in Annali duodevicesimo aere fulva dixit, non fulvo, non ob id solum, quod Homerus ἠέρα βαθεῖαν dicit, sed quod hic sonus, opinor, vocabilior visus et amoenior.
 
@@ -6373,7 +6373,7 @@ Illud vero cumprimis apud Homerum veteres grammatici adnotaverunt, quod, cum dix
 
 Verba Titi Castricii rhetoris ad discipulos adulescentes de vestitu atque calciatu on decoro.
 
-T. CASTRICIUS, rhetoricae disciplinae doctor, qui habuit Romae locum principem declamandi ac docendi, summa vir auctoritate gravitateque et a divo Hadriano in mores atque litteras spectatus, cum me forte praesente, usus enim sum eo magistro, discipulos quosdam suos senatores vidisset die feriato tunicis et lacernis indutos et gallicis calciatos, Equidem, inquit, maluissem vos togatos esse; si si added by Dziatzko. pigitum est, cinctos saltem esse et paenulatos. Sed si hic vester huiusmodi vestitus de multo iam usu ignoscibilis est, soleatos tamen vos, populi Romani senatores, per urbis vias ingredi nequaquam decorum est, non hercle vobis minus quam illi tum fuit, cui hoc M. Tullius pro turpi crimine obiectavit.
+T. CASTRICIUS, rhetoricae disciplinae doctor, qui habuit Romae locum principem declamandi ac docendi, summa vir auctoritate gravitateque et a divo Hadriano in mores atque litteras spectatus, cum me forte praesente, usus enim sum eo magistro, discipulos quosdam suos senatores vidisset die feriato tunicis et lacernis indutos et gallicis calciatos, Equidem, inquit, maluissem vos togatos esse; si pigitum est, cinctos saltem esse et paenulatos. Sed si hic vester huiusmodi vestitus de multo iam usu ignoscibilis est, soleatos tamen vos, populi Romani senatores, per urbis vias ingredi nequaquam decorum est, non hercle vobis minus quam illi tum fuit, cui hoc M. Tullius pro turpi crimine obiectavit.
 
 Haec, me audiente, Castricius et quaedam alia ad eam rem conducentia Romane et severe dixit.
 
@@ -6383,13 +6383,13 @@ Sed Castricius profecto scite atque incorrupte locutus est;
 
 omnia enim ferme id genus, quibus plantarum calces tantum infimae teguntur, cetera prope nuda et teretibus habenis vincta sunt, soleas dixerunt, nonnumquam voce Graeca crepidulas.
 
-Gallicas autem verbum esse opinor novum, non diu ante aetatem M. Ciceronis usurpari coeptum, itaque ab eo ipso positum est in secunda Antonianarum: Cum gallicis, caligis, most MSS. of Cic. inquit, et lacerna cucurristi.
+Gallicas autem verbum esse opinor novum, non diu ante aetatem M. Ciceronis usurpari coeptum, itaque ab eo ipso positum est in secunda Antonianarum: Cum gallicis, inquit, et lacerna cucurristi.
 
 Neque in ea significatione id apud quemquam alium scriptum lego gravioris dumtaxat auctoritatis scriptorem; sed, ut dixi, crepidas et crepidulas, prima syllaba correpta, id genus calciamentum appellaverunt, quod Graeci κρηπῖδας vocant, eiusque calciamenti sutores crepidarios dixerunt.
 
 Sempronius Asellio in libro Rerum Gestarum XIV: Crepidarium, inquit, cultellum rogavit a crepidario sutore.
 
-De Neriene Martis in antiquis conprecationibus. lemma omitted by ω, supplied by Hertz.
+De Neriene Martis in antiquis conprecationibus.
 
 CONPRECATIONES deum inmortalium, quae ritu Romano fiunt, expositae sunt in libris sacerdotum populi Romani et in plerisque antiquis orationibus. In his scriptum est:
 
@@ -6397,7 +6397,7 @@ Luam Saturni, Salaciam Neptuni, Horam Quirini, Virites Quirini, Maiam Volcani, H
 
 Ex quibus id quod postremum posui sic plerosque dicere audio, ut priimam in eo syllabam producant, quo Graeci modo dicunt Νηρεΐδας. Sed qui proprie locuti sunt primam correptam dixerunt, tertiam produxerunt.
 
-Est enim rectus casus vocabuli, sicut in libris veterum scriptum est, Nerio, quamquam M. Varro in Satura Menippea, quae inscribitur Σκιομαχία, panda te lato, ω; Panda Celato, ς, corr. by Mommsen; panda te lito, Hertz. non Nerio, sed Nerienes vocative dicit in his versibus: Te Anna á Peranna, Pánda Cela, té Pales, Neriénes et Minérva, Fortuna ác Ceres.
+Est enim rectus casus vocabuli, sicut in libris veterum scriptum est, Nerio, quamquam M. Varro in Satura Menippea, quae inscribitur Σκιομαχία, non Nerio, sed Nerienes vocative dicit in his versibus: Te Anna á Peranna, Pánda Cela, té Pales, Neriénes et Minérva, Fortuna ác Ceres.
 
 Te Anna á Peranna, Pánda Cela, té Pales,
 
@@ -6409,7 +6409,7 @@ Sed Nerio a veteribus sic declinabatur, quasi Anio; nam perinde ut Anienem, sic 
 
 Id autem, sive Nerio sive Nerienes est, Sabinum verbum est,
 
-eoque significatur virtus et fortitudo. Itaque ex Claudiis, quos a Sabinis oriundos accepimus, qui quis, Q; quisquis, C. F. W. Müller. erat egregia atque praestanti fortitudine Nero appellatus est.
+eoque significatur virtus et fortitudo. Itaque ex Claudiis, quos a Sabinis oriundos accepimus, qui erat egregia atque praestanti fortitudine Nero appellatus est.
 
 Sed id Sabini accepisse a Graecis videntur, qui vincula et firmamenta membrorum νεῦρα dicunt, unde nos quoque Latine nervos appellamus.
 
@@ -6427,25 +6427,25 @@ De tui, inquit, coniugis consilio, Martem scilicet significans; per quod apparet
 
 Inibi autem animadvertendum est quod Gellius Neria dicit per a litteram, non Nerio, neque Nerienes.
 
-Praeter Plautum etiam praeterque Gellium Licinius Imbrex, vetus comoediarum scriptor, in fabula quae Neaera scripta est, ita scripsit: Nolo égo Neaeram té vocent, set Nérienem, Cum quidém Mavorti Mavorti, Ribbeck; Marti, ω. es ín conubiúm data.
+Praeter Plautum etiam praeterque Gellium Licinius Imbrex, vetus comoediarum scriptor, in fabula quae Neaera scripta est, ita scripsit: Nolo égo Neaeram té vocent, set Nérienem, Cum quidém Mavorti es ín conubiúm data.
 
 Nolo égo Neaeram té vocent, set Nérienem,
 
-Cum quidém Mavorti Mavorti, Ribbeck; Marti, ω. es ín conubiúm data.
+Cum quidém Mavorti es ín conubiúm data.
 
 Ita autem se numerus huiusce versus habet, ut tertia in eo nomine syllaba, contra quam supra dictum est, corripienda sit; cuius sonitus quanta aput veteres indifferentia sit, notius est quam ut plura in id verba sumenda sint.
 
-Ennius autem in primo Annali in hoc versu: Nerienem Mavortis et Herem, Herem, Meursius; erdem, X; Herclem, ω. si, quod minime solet, numerum servavit, primam syllabam intendit, tertiam corripuit.
+Ennius autem in primo Annali in hoc versu: Nerienem Mavortis et Herem, si, quod minime solet, numerum servavit, primam syllabam intendit, tertiam corripuit.
 
-Nerienem Mavortis et Herem, Herem, Meursius; erdem, X; Herclem, ω.
+Nerienem Mavortis et Herem,
 
 Ac ne id quidem praetermittendum puto, cuiusmodi est, quod in Commentario Servii Claudii scriptum invenimus, Nerio dictum quasi Neirio, hoc est sine ira et cum placiditate, ut eo nomine mitem tranquillumque fieri Martem precemur; ne enim particula, ut apud Graecos, ita plerumque in Latina quoque lingua privativa est.
 
 Verba M. Catonis, egere se multis rebus et nihil tamen cupere dicentis.
 
-M. CATO, consularis et censorius, publicis iam privatisque opulentis rebus, villas suas inexcultas et rudes, ne tectorio quidem praelitas fuisse dicit ad annum usque aetatis suae septuagesimum. Atque ibi postea his verbis utitur: Neque mihi, inquit, aedificatio neque vasum neque vestimentum ullum est manupretiosum neque pretiosus servus neque ancilla. Si quid est, inquit, quod utar, utor; si non est, egeo. Suum cuique per me uti atque frui licet.
+**M** CATO, consularis et censorius, publicis iam privatisque opulentis rebus, villas suas inexcultas et rudes, ne tectorio quidem praelitas fuisse dicit ad annum usque aetatis suae septuagesimum. Atque ibi postea his verbis utitur: Neque mihi, inquit, aedificatio neque vasum neque vestimentum ullum est manupretiosum neque pretiosus servus neque ancilla. Si quid est, inquit, quod utar, utor; si non est, egeo. Suum cuique per me uti atque frui licet.
 
-Tum deinde addit: Vitio vertunt, quia multa egeo; at ego illis, quia nequeunt egere. Haec mera veritas Tusculani hominis, egere se multis rebus et nihil tamen cupere dicentis, plus hercle promovet ad exhortandam parsimoniam sustinendamque inopiam quam Graecae Graecorum, Hertz; Graeculorum praestigiae, Boot. istorum praestigiae, philosophari sese dicentium umbrasque verborum inanes fingentium, qui se nihil habere et nihil tamen egere ac nihil cupere dicunt, cum et habendo et egendo et cupiendo ardeant.
+Tum deinde addit: Vitio vertunt, quia multa egeo; at ego illis, quia nequeunt egere. Haec mera veritas Tusculani hominis, egere se multis rebus et nihil tamen cupere dicentis, plus hercle promovet ad exhortandam parsimoniam sustinendamque inopiam quam Graecae istorum praestigiae, philosophari sese dicentium umbrasque verborum inanes fingentium, qui se nihil habere et nihil tamen egere ac nihil cupere dicunt, cum et habendo et egendo et cupiendo ardeant.
 
 Quaesitum tractatumque, quid sint manubiae; atque inibi dicta quaedam de ratione utendi verbis pluribus idem significantibus.
 
@@ -6461,13 +6461,13 @@ verba ipsa M. Tulli statim dixit.
 
 Ea nos hic adscripsimus: Praedam, manubias, sectionem, castra denique Cn. Pompei, sedente imperatore, decemviri vendent; et infra itidem duo haec simul iunctim posita dixit: Ex praeda, ex manubiis, ex auro coronario.
 
-Ac deinde ad eum convertit qui manubias esse praedam dixerat, et: Videturne tibi, inquit, utroque in loco M. Cicero duobus verbis idem, sicuti tu putas, significantibus inepte et frigide esse usus ac tali ioco dignus quali apud Aristophanen, facetissimum comicorum, Euripides Aeschylum insectatus est, cum ait: Δὶς ταὐτὸν ἡμῖν εἶπεν ὁ σοφὸς Αἰσχύλος. Ἥκω γὰρ εἰς γῆν, φησι., καὶ κατέρχομαι· Ἥκω ἥκειν, Aristoph. δὲ ταὐτόν ἐστι τῷ κατέρχομαι. Νὴ τὸν Δίʼ, ὥσπερ γʼ εἴ τις εἴποι γείτονι, Χρῆσον σὺ μάκτραν, εἰ δὲ βούλει, κάρδοπον?
+Ac deinde ad eum convertit qui manubias esse praedam dixerat, et: Videturne tibi, inquit, utroque in loco M. Cicero duobus verbis idem, sicuti tu putas, significantibus inepte et frigide esse usus ac tali ioco dignus quali apud Aristophanen, facetissimum comicorum, Euripides Aeschylum insectatus est, cum ait: Δὶς ταὐτὸν ἡμῖν εἶπεν ὁ σοφὸς Αἰσχύλος. Ἥκω γὰρ εἰς γῆν, φησι., καὶ κατέρχομαι· Ἥκω δὲ ταὐτόν ἐστι τῷ κατέρχομαι. Νὴ τὸν Δίʼ, ὥσπερ γʼ εἴ τις εἴποι γείτονι, Χρῆσον σὺ μάκτραν, εἰ δὲ βούλει, κάρδοπον?
 
 Δὶς ταὐτὸν ἡμῖν εἶπεν ὁ σοφὸς Αἰσχύλος.
 
 Ἥκω γὰρ εἰς γῆν, φησι., καὶ κατέρχομαι·
 
-Ἥκω ἥκειν, Aristoph. δὲ ταὐτόν ἐστι τῷ κατέρχομαι.
+Ἥκω δὲ ταὐτόν ἐστι τῷ κατέρχομαι.
 
 Νὴ τὸν Δίʼ, ὥσπερ γʼ εἴ τις εἴποι γείτονι,
 
@@ -6497,9 +6497,9 @@ Sed ante omnis apud Homerum eiusdem rei atque sententiae luculenta exaggeratio e
 
 Ὑσμῖναί τε μαχαί τε φόνοι τʼ ἀνδροκτασίαι τε.
 
-Nam cum omnia ista utrubique multa et cognominata cognominata, suggested by Hertz, approved by Heraeus; continua nomina, γ. nihil plus demonstrent quam proelium, huius tamen rei varia facies delectabiliter ac decore multis variisque verbis depicta est.
+Nam cum omnia ista utrubique multa et cognominata nihil plus demonstrent quam proelium, huius tamen rei varia facies delectabiliter ac decore multis variisque verbis depicta est.
 
-Neque non illa quoque aput eundem poetam una in duobus verbis sententia cum egregia ratione repetita est; Idaeus enim, cum inter Aiacem et Hectorem decertantes armis intercederet, his ad eos verbis Omitted by Hosius; but cf. i. 3. 20. usus est: Μηκέτι, παῖδε φίλω, πολεμίζετε μηδὲ μάχεσθε,
+Neque non illa quoque aput eundem poetam una in duobus verbis sententia cum egregia ratione repetita est; Idaeus enim, cum inter Aiacem et Hectorem decertantes armis intercederet, his ad eos verbis usus est: Μηκέτι, παῖδε φίλω, πολεμίζετε μηδὲ μάχεσθε,
 
 Μηκέτι, παῖδε φίλω, πολεμίζετε μηδὲ μάχεσθε,
 
@@ -6545,7 +6545,7 @@ Sic quidem Nigidius dici praecipit. Sed si quis nunc, Valerium appellans, in cas
 
 Summum autem tonum προσῳδίαν acutam dicit et quem accentum nos dicimus voculationem appellat et casum interrogandi eum dicit, quem nunc nos genetivum dicimus.
 
-Id quoque in eodem libro Nigidiano animadvertimus: Si huius, inquit, amici vel huius magni scribas, unum i facito extremum, sin vero hei magnei, In this passage I have followed the revision of the text made by Kent, A.J.P. xxxii (1911), p. 290. hei amicei, casu multitudinis recto, tum ante i scribendum erit e, atque id ipsum facies in similibus. Item si huius terrai scribas, i littera fit extrema, si huic terrae, per e scribendum est. Item mei qui scribit in casu interrogandi, velut cum dicimus mei studiosus, per i unum scribat, non per e; at cum mehei, tum per e et i scribendum est, quia dandi casus est.
+Id quoque in eodem libro Nigidiano animadvertimus: Si huius, inquit, amici vel huius magni scribas, unum i facito extremum, sin vero hei magnei, hei amicei, casu multitudinis recto, tum ante i scribendum erit e, atque id ipsum facies in similibus. Item si huius terrai scribas, i littera fit extrema, si huic terrae, per e scribendum est. Item mei qui scribit in casu interrogandi, velut cum dicimus mei studiosus, per i unum scribat, non per e; at cum mehei, tum per e et i scribendum est, quia dandi casus est.
 
 Haec nos auctoritate doctissimi hominis adducti, propter eos qui harum quoque rerum scientiam quaerunt, non praetermittenda existimavimus.
 
@@ -6605,17 +6605,17 @@ Non solum autem in hominum corporibus, sed etiam in rerum cuiusquemodi aliarum f
 
 Sallustii verba sunt ex Historia secunda: Sardinia in Africo mari facie vestigii humani in orientem quam occidentem latior prominet.
 
-Ecce autem id quoque in mentem venit, quod etiam Plautus in Poenulo faciem pro totius corporis colorisque habitu dixit. Verba Plauti haec sunt: Set eárum nutrix quá sit facie mi éxpedi.— Statúra non hau, Plaut. magna córpore aquilost. aquilo, codd. Plaut. — Ipsa east.— Specié venusta, óre atque oculis pérnigris.— Formám quidem hercle vérbis depinxtí depinxit, ω. probe!
+Ecce autem id quoque in mentem venit, quod etiam Plautus in Poenulo faciem pro totius corporis colorisque habitu dixit. Verba Plauti haec sunt: Set eárum nutrix quá sit facie mi éxpedi.— Statúra non magna córpore aquilost. — Ipsa east.— Specié venusta, óre atque oculis pérnigris.— Formám quidem hercle vérbis depinxtí probe!
 
 Set eárum nutrix quá sit facie mi éxpedi.—
 
-Statúra non hau, Plaut. magna córpore aquilost. aquilo, codd. Plaut. —
+Statúra non magna córpore aquilost. —
 
 Ipsa east.—
 
 Specié venusta, óre atque oculis pérnigris.—
 
-Formám quidem hercle vérbis depinxtí depinxit, ω. probe!
+Formám quidem hercle vérbis depinxtí probe!
 
 Praeterea memini Quadrigarium in undevicesimo faciem pro statura totiusque corporis figura dixisse.
 
@@ -6647,7 +6647,7 @@ sed, in quo illis nihil opus est, id, rogo te, dicas mihi: caninum prandium in h
 
 Atque ille egregius nebulo, quasi difficili quaestione proterritus, exurgit statim et abiens, Non, inquit, parvam rem quaeris; talia ego gratis non doceo.
 
-Eius autem loci, in quo id proverbium est, verba haec sunt: Non vides apud Mnesitheum scribi tria genera esse vini, nigrum, album, medium, quod vocant κιρρόν, Viris L. et novum, vetus, medium? Et efficere nigrum virus, album urinam, medium πέψιν? Novum refrigerare, vetus calefacere, medium esse prandium caninum?
+Eius autem loci, in quo id proverbium est, verba haec sunt: Non vides apud Mnesitheum scribi tria genera esse vini, nigrum, album, medium, quod vocant κιρρόν, et novum, vetus, medium? Et efficere nigrum virus, album urinam, medium πέψιν? Novum refrigerare, vetus calefacere, medium esse prandium caninum?
 
 Quid significet prandium caninum, rem leviculam, diu et anxie quaesivimus.
 
@@ -6675,7 +6675,7 @@ Nam si principes Chaldaei, qui in patentibus campis colebant, stellarum motus et
 
 Eaedem igitur stellae, per quas omnia divina humanaque fieri contendunt, sicuti non usquequaque pruinas aut calores cient, sed mutant et variant tempestatesque eodem in tempore alibi placidas, alibi violentas movent, cur non eventa quoque rerum ac negotiorum alia efficiunt in Chaldaeis, alia in Gaetulis, alia aput Danuvium, alia aput Nilum?
 
-Per autem, autem enim, Q; enim, Hertz. inquit, inconsequens, ipsum quidem corpus et habitum tam profundi aeris sub alio atque alio caeli curvamine non eundem manere, in hominum autem negotiis stellas istas opinari idem semper ostendere, si eas ex quacumque terra conspexeris.
+Per autem, inquit, inconsequens, ipsum quidem corpus et habitum tam profundi aeris sub alio atque alio caeli curvamine non eundem manere, in hominum autem negotiis stellas istas opinari idem semper ostendere, si eas ex quacumque terra conspexeris.
 
 Praeterea mirabatur id cuiquam pro percepto liquere, stellas istas quas a Chaldaeis et Babyloniis sive Aegyptiis observatas ferunt, quas multi erraticas, Nigidius errones vocat, non esse plures quam volgo dicerentur;
 
@@ -6687,15 +6687,15 @@ Atque uti demus, inquit, et has tantummodo stellas et ex una parte terrae observ
 
 Nam si isto modo coepta fieri observatio est, ut animadverteretur quo habitu quaque forma quaque positura stellarum aliquis nasceretur, tum deinceps ab ineunte vita fortuna eius et mores et ingenium et circumstantia rerum negotiorumque et ad postremumpostrernum finis etiam vitae spectaretur eaque omnia, ut usu venerant, litteris mandarentur ac postea longis temporibus, cum ipsae illae eodem in loco eodemque habitu forent, eadem ceteris quoque eventura existimarentur,
 
-qui eodem eodem deleted by Skutsch. illo tempore nati fuissent—si isto, inquit, modo observari coeptum et ex ea observatione conposita quaedam disciplina est, nullo id pacto potest procedere.
+qui eodem illo tempore nati fuissent—si isto, inquit, modo observari coeptum et ex ea observatione conposita quaedam disciplina est, nullo id pacto potest procedere.
 
 Dicant enim quot tandem annis vel potius quot saeculis orbis hic observationis perfici quiverit.
 
-Constare quippe inter astrologos dicebat, stellas istas quas erraticas dicerent, quae esse omnium rerum fatales viderentur, infinito prope et innumerabili numero annorum ad eundem locum, cum eodem abitu simul omnes reverti reverti (redire, etc.) added by J. F. Gronov and others after sunt; reverti unde olim omnes, Skutsch. unde unde added by Vogel. profectae sunt, ut neque ullus observationis tenor neque memoriae ulla effigies litterarum litterarum deleted by Skutsch. tanto aevo potuerint edurare.
+Constare quippe inter astrologos dicebat, stellas istas quas erraticas dicerent, quae esse omnium rerum fatales viderentur, infinito prope et innumerabili numero annorum ad eundem locum, cum eodem abitu simul omnes reverti unde profectae sunt, ut neque ullus observationis tenor neque memoriae ulla effigies litterarum tanto aevo potuerint edurare.
 
 Atque illud etiam cuimodi esset considerandum putabat, quod aliud stellarum agmen foret quo primumprimur tempore conciperetur homo in utero matris, aliud postea cum in decem mensibus proximis in lucem ederetur, quaerebatque qui conveniret diversam super eodem fieri demonstrationem, si, ut ipsi putarent, alius atque alius earundem stellarum situs atque ductus alias atque alias fortunas daret.
 
-Sed et nuptiarum tempore, ex quibus liberi quaererentur, atque ipso etiam illo maris et feminae iam declarari coitu oportere dicebat certo quodam et necessario stellarum ordine quales qualique fortuna homines gignerentur; ac multo etiam ante, cum ante, cum, Hertz; antequam, ω. pater ipse atque mater nascerentur, ex eorum genitura debuisse iam tunc prospici quinam olim futuri essent quos hi creaturi forent; et supra longelone atque longe per infinitum, ut, si disciplina ista fundamento aliquo veritatis nixa est, centesimo usque abhinc saeculo vel magis primo caeli atque mundi exordio atque inde iam deinceps continua significatione, quotiens generis auctores eiusdem homines nascerentur, stellae istae praemonstrare debuerint qualis qualique fato futurus sit quisquis hodie natus est.
+Sed et nuptiarum tempore, ex quibus liberi quaererentur, atque ipso etiam illo maris et feminae iam declarari coitu oportere dicebat certo quodam et necessario stellarum ordine quales qualique fortuna homines gignerentur; ac multo etiam ante, cum pater ipse atque mater nascerentur, ex eorum genitura debuisse iam tunc prospici quinam olim futuri essent quos hi creaturi forent; et supra longelone atque longe per infinitum, ut, si disciplina ista fundamento aliquo veritatis nixa est, centesimo usque abhinc saeculo vel magis primo caeli atque mundi exordio atque inde iam deinceps continua significatione, quotiens generis auctores eiusdem homines nascerentur, stellae istae praemonstrare debuerint qualis qualique fato futurus sit quisquis hodie natus est.
 
 Quo autem, inquit, pacto credi potest, uniuscuiusque stellarum formae et positionis sortem atque fortunam uni omnino homini certam destinatamque esse eamque formam post longissima saeculorum spatia restitui, si vitae fortunarumquefortunaruinque eiusdem hominis indicia in tam brevibus intervallis per singulos maiorum eius gradus perque infinitum successionum ordinem tam saepe ac tam multipliciter eadem ipsa, non eadem stellarum facie denotantur?
 
@@ -6719,7 +6719,7 @@ Non igitur hac causa probe uti queunt adversum hominum impares ortus, interitus 
 
 Illud autem condonare se his dicebat quod non id quoque requireret: si vitae mortisque hominum rerumque humanarum omnium tempus et ratio et causa in caelo et apud stellas foret, quid de muscis aut vermiculis aut echinis, multis aliis minutissimis terra marique animantibus dicerent? An istaec quoque isdem, quibus homines, legibus nascerentur isdemque itidem extinguerentur? ut aut ranunculis quoque et culicibus nascendi fata sint de caelestium siderum motibus adtributa aut, si id non putarent, nulla ratio videretur cur ea siderum vis in hominibus valeret, deficeret in ceteris.
 
-Haec nos sicca et incondita et propemodum ieiuna oratione adtingimusadtigimus. adtigimus, Skutsch; adtingimus, MSS. Set Favorinus, ut hominis ingenium fuit utque est Graecae facundiae copia simul et venustas, latius ea et amoenius et splendidius et profluentius exequebatur, atque identidem commonebat ut caveremus ne qua nobis isti sycophantae ad faciendam fidem inreperent, quod viderentur quaedam interdum vera effutire aut spargere.
+Haec nos sicca et incondita et propemodum ieiuna oratione adtingimusadtigimus. Set Favorinus, ut hominis ingenium fuit utque est Graecae facundiae copia simul et venustas, latius ea et amoenius et splendidius et profluentius exequebatur, atque identidem commonebat ut caveremus ne qua nobis isti sycophantae ad faciendam fidem inreperent, quod viderentur quaedam interdum vera effutire aut spargere.
 
 Non enim comprehensa, inquit, neque definita neque percepta dicunt, sed lubrica atque ambagiosa coniectatione nitentes, inter falsa atque vera pedetemptim quasi per tenebras ingredientes, eunt et aut multa temptando incidunt repente inprudentes in veritatem aut ipsorum, qui eos consulunt, multa credulitate ducente perveniunt callide ad ea quae vera sunt, et idcirco videntur in praeteritis rebus quan in futuris veritatem facilius imitari. Ista tamen omnia quae aut tenere aut astute vera dicunt, prae ceteris, inquit, quae mentiuntur, pars ea non sit millesima.
 
@@ -6751,7 +6751,7 @@ ilium autem unde petebatur hominem esse non bonae rei vitaque turpi et sordida c
 
 Is tamen cum suis multis patronis clamitabat probari apud me debere pecuniam datam consuetis modis, expensi latione, mensae rationibus, chirographi exhibitione tabularum obsignatione, testium intercessione,
 
-ex quibus omnibus si nulla re probaretur, dimitti iam se sane se sane, Lion; se, δ; sane, γ. oportere et adversarium de calumnia damnari, quod de utriusque autem vita atque factis diceretur, frustra id fieri atque dici; rem enim de petenda pecunia apud iudicem privatum agi, non apud censores de moribus.
+ex quibus omnibus si nulla re probaretur, dimitti iam se sane oportere et adversarium de calumnia damnari, quod de utriusque autem vita atque factis diceretur, frustra id fieri atque dici; rem enim de petenda pecunia apud iudicem privatum agi, non apud censores de moribus.
 
 Tunc ibi amici mei, quos rogaveram in consilium, viri exercitati atque in patrociniis et in operis fori celebres semperque se circumundique distrahentibus causis festinantes, non sedendum diutius ac nihil esse dubium dicebant quin absolvendus foret, quem accepisse pecuniam nulla probatione sollemni docebatur.
 
@@ -6763,7 +6763,7 @@ Tum Favorinus, religione illa cunctationis et sollicitudinis nostrae conprobata:
 
 est enim disceptatio ista multiiugae et sinuosae quaestionis multaque et anxia cura et circumspicientia indigens.
 
-Namque, ut pauca tibi nunc quaestionum capita adtingam, iam omnium primum hoc de iudicis officio quaeritur: si iudex forte id sciat, super qua re apud eum litigatur, eaque res uni ei, priusquam agi coepta aut in iudicium deducta sit, ex alio quodam negotio casuve casuve, Cramer; casuque, MSS. aliquo cognita liquido et comperta sit, neque id tamen in agenda causa probetur, oporteatne eum secundum ea quae sciens venit iudicare, an secundum ea quae aguntur?
+Namque, ut pauca tibi nunc quaestionum capita adtingam, iam omnium primum hoc de iudicis officio quaeritur: si iudex forte id sciat, super qua re apud eum litigatur, eaque res uni ei, priusquam agi coepta aut in iudicium deducta sit, ex alio quodam negotio casuve aliquo cognita liquido et comperta sit, neque id tamen in agenda causa probetur, oporteatne eum secundum ea quae sciens venit iudicare, an secundum ea quae aguntur?
 
 Id etiam, inquit, quaeri solet, an deceat atque conveniat iudici causa iam cognita, si facultas esse videatur conponendi negotii, officio paulisper iudicis dilato communis amicitiae et quasi pacificatoris partes recipere?
 
@@ -6787,7 +6787,7 @@ Hoc quidem mihi tum Favorinus, ut virum philosophum decuit, suasit.
 
 Sed maius ego altiusque id esse existimavi quam quod meae aetati et mediocritati conveniret, ut cognovisse et condemnasse de moribus, non de probationibus rei gestae viderer; ut absolverem tamen inducere in animum non quivi et propterea iuravi, mihi non liquere, atque ita iudicatu illo solutus sum.
 
-Verba ex oratione M. Catonis cuius commeminit Favorinus, haec sunt: Atque ego a maioribus memoria sic accepiaccept: si quis quid alter ab altero peterent, si ambo pares essent, sive boni sive mali essent, quod duo res rei, Rutgers; pares, Skutsch. gessissent uti testes non interessent, illi unde petitur, ei potius credendum esse. Nunc si sponsionem fecissent fecisset, NO. Gellius cum Turio: Ni vir melior esset Gellius quam Turius, nemo, opinor, tam insanus esset qui iudicaret meliorem esse Gellium quam Turium; si non melior Gellius est Turio, potius oportet credi unde petitur.
+Verba ex oratione M. Catonis cuius commeminit Favorinus, haec sunt: Atque ego a maioribus memoria sic accepiaccept: si quis quid alter ab altero peterent, si ambo pares essent, sive boni sive mali essent, quod duo res gessissent uti testes non interessent, illi unde petitur, ei potius credendum esse. Nunc si sponsionem fecissent Gellius cum Turio: Ni vir melior esset Gellius quam Turius, nemo, opinor, tam insanus esset qui iudicaret meliorem esse Gellium quam Turium; si non melior Gellius est Turio, potius oportet credi unde petitur.
 
 An aemuli offensique inter sese fuerint Xenophon et Plato.
 
@@ -6807,7 +6807,7 @@ Sed enim de viris optimis et gravissimis si credendum hoc aut suspicandum fuit, 
 
 Haec profecto est: aequiperatio ipsa plerumque et parilitas virtutum inter sese consimilium, etiamsi contentionis studium et voluntas abest, speciem tamen aemulationis creat.
 
-Nam cum ingenia quaedam magna duorum pluriumve in eiusdem rei studio inlustrium aut pari sunt fama aut proxima, oritur apud diversos favisores eorum industriae inlustriae, suggested by Hosius. laudisque aestumandae contentio.
+Nam cum ingenia quaedam magna duorum pluriumve in eiusdem rei studio inlustrium aut pari sunt fama aut proxima, oritur apud diversos favisores eorum industriae laudisque aestumandae contentio.
 
 Tum postea ex alieno certamine ad eos quoque ipsos contagium certationis adspirat cursusque eorum ad eandem virtutis calcem pergentium, quando est compar vel ambiguusarmbiguus, in aemulandi suspiciones non suo, sed faventium studio delabitur.
 
@@ -6823,7 +6823,7 @@ Ex imaginis autem istius significatione intellegi voluit, iudicem, qui Iustitiae
 
 Verba ipsa Chrysippi de Iustitia scripta haec sunt: Παρθένος δὲ εἶναι λέγεται κατὰ σύμβολον τοῦ ἀδιάφθορος εἶναι καὶ μηδαμῶς ἐνδιδόναι τοῖς κακούργοις, μηδὲ προσίεσθαι μήτε τοὺς ἐπιεικεῖς λόγους μήτε παραίτησιν καὶ δέησιν μήτε κολακείαν μήτε ἄλλο μηδὲν τῶν τοιούτων· οἷς ἀκολούθως καὶ σκυθρωπὴ γράφεται καὶ συνεστηκὸς ἔχουσα τὸ πρόσωπον καὶ ἔντονον καὶ δεδορκὸς βλέπουσα, ὥστε τοῖς μὲν ἀδίκοις φόβον ἐμποεῖν, τοῖς δὲ δικαίοις θάρσος· τοῖς μὲν προσφιλοῦς ὄντος τοῦ τοιούτου προσώπου, τοῖς δὲ ἑτέροις προσάντους.
 
-Haec verba Chrysippi eo etiam magis ponenda existimavi, ut prompta ad considerandum iudicandumque sint, quoniam legentibus ea nobis delicatiorum delicatiores, w; corr. by Stephanus. quidam disciplinarum philosophi, Saevitiae imaginem istam esse, non Iustitiae, dixerunt.
+Haec verba Chrysippi eo etiam magis ponenda existimavi, ut prompta ad considerandum iudicandumque sint, quoniam legentibus ea nobis delicatiorum quidam disciplinarum philosophi, Saevitiae imaginem istam esse, non Iustitiae, dixerunt.
 
 Lis atque contentio grammaticorum Romae inlustrium enarrata, super casu vocativo vocabuli quod est egregius.
 
@@ -6843,7 +6843,7 @@ tamquam si copiae cornum nactus essem, et recondo me penitus, ut sine arbitris l
 
 At quae ibi scripta erant, pro Iuppiter, mera miracula! quo nomine fuerit qui primus grammaticus appellatus est; et quot fuerint Pythagorae nobiles, quot Hippocratae; et cuiusmodi fuisse Homerus dicat in Ulixis domo λαύρην; et quam ob causam Telemachus cubans iunctim sibi cubantem Pisistratum non manu adtigerit, sed pedis ictu excitarit; et Euryclia Telemachum quo genere claustri incluserit; et quapropter idem poeta rosam non norit, oleum ex rosa norit. Atque illud etiam scriptum fuit, quae nomina fuerint sociorum Ulixis, qui a Scylla rapti laceratique sunt; utrum ἐν τῇ ἔσω θαλάσσῃ Ulixes erraverit κατʼ Ἀρίσταρχον an ἐν τῇ ἔξω κατὰ Κράτητα; item etiam istic scriptum fuit, qui sint apud Homerum versus isopsephi;
 
-et quorum ibi nominum παραστιχίς reperiatur; et quis adeo versus sit, qui per singula vocabula singulis syllabis increscat; ac deinde qua ratione dixerit singulas pecudes in singulos annos terna parere; et ex quinque operimentis quibus Achillis clipeus munitus est, quod factum ex auro est summum sit an medium, et praeterea quibus urbibus regionibusque vocabula iam mutata sint, quod Boeotia ante appellata fuerit Aonia, quod Aegyptus Aeria, quod Creta quoque eodem nomine Aeria dicta sit, quod Attice Ἀκτή, quod Corinthus Ephyre, quod Macedonia Ἠμαθία, quod Thessalia Αἱμονία, quod Tyros Sarra, quod Thracia ante Sithonia Sithonia, Hertz; Sithon, MSS. dicta sit, quod Paestum Ποσειδώνιον.
+et quorum ibi nominum παραστιχίς reperiatur; et quis adeo versus sit, qui per singula vocabula singulis syllabis increscat; ac deinde qua ratione dixerit singulas pecudes in singulos annos terna parere; et ex quinque operimentis quibus Achillis clipeus munitus est, quod factum ex auro est summum sit an medium, et praeterea quibus urbibus regionibusque vocabula iam mutata sint, quod Boeotia ante appellata fuerit Aonia, quod Aegyptus Aeria, quod Creta quoque eodem nomine Aeria dicta sit, quod Attice Ἀκτή, quod Corinthus Ephyre, quod Macedonia Ἠμαθία, quod Thessalia Αἱμονία, quod Tyros Sarra, quod Thracia ante Sithonia dicta sit, quod Paestum Ποσειδώνιον.
 
 Haec item atque alia multa istiusmodi scripta in eo libro fuerunt.
 
@@ -6855,13 +6855,13 @@ Quod M. Varro Cn. Pompeio, consuli primum designato, commentarium dedit, quem ap
 
 GNAEO POMPEIO consulatus primus cum M. Crasso designatus est.
 
-Eum magistratum Pompeius cum initurus foret, quoniam per militiae tempora senatus habendi consulendique, senatus consulendique deleted by C.W. F. Müller; reliquarumque rerum, Mommsen; omninoque rerum, Mähly. rerum expers urbanarum fuit, M. Varronem, familiarem suum, rogavit uti commentarium faceret Εἰσαγωγικόν—sic enim Varro ipse appellat—, ex quo disceret quid facere dicereque deberet, cum senatum consuleret.
+Eum magistratum Pompeius cum initurus foret, quoniam per militiae tempora senatus habendi consulendique, rerum expers urbanarum fuit, M. Varronem, familiarem suum, rogavit uti commentarium faceret Εἰσαγωγικόν—sic enim Varro ipse appellat—, ex quo disceret quid facere dicereque deberet, cum senatum consuleret.
 
 Eum librum commentarium, quem super ea re Pompeio fecerat, perisse Varro ait in litteris quas ad Oppianum dedit, quae sunt in libro Epistolicarum Quaestionum quarto, in quibus litteris, quoniam quae ante scripserat non comparebant, docet rursum multa ad eamearn rem ducentia.
 
 Primum ibi ponit qui fuerint per quos more maiorum senatus haberi soleret eosque nominat: dictatorem, consules, praetores, tribunos plebi, interregem, praefectum urbi, neque alii praeter hos ius fuisse dixit facere senatusconsultum, quotiensque usus venisset ut omnes isti magistratus eodem tempore Romae essent, tum quo supra ordine scripti essent, qui eorum prior aliis esset, ei potissimum senatus consulendi ius fuisse ait,
 
-deinde extraordinario iure tribunos quoque militares, qui pro consulibus fuissent, item decemviros, quibus imperium consulare tum esset, I.e. datum esset or datum fuisset, Mommsen; tum esset, MSS. item triumviros reipublicae constituendae causa creatos ius consulendi senatum habuisse.
+deinde extraordinario iure tribunos quoque militares, qui pro consulibus fuissent, item decemviros, quibus imperium consulare tum esset, item triumviros reipublicae constituendae causa creatos ius consulendi senatum habuisse.
 
 Postea scripsit de intercessionibus dixitque intercedendi ne senatusconsultum fieret ius fuisse iis solis qui eadem potestate qua ii qui senatusconsultum facere vellent maioreve essent.
 
@@ -6883,7 +6883,7 @@ Quaesitumuaesitum esse dissensumque an praefectus Latinarum causa creatus insius
 
 PRAEFECTUM urbi Latinarum causa relictum senatum habere posse Iunius negat, quoniam ne senator quidem sit neque ius habeat sententiae dicendae, cum ex ea aetate praefectus fiat quae non sit senatoria.
 
-M. autem Varro in quarto Epistolicarum Quaestionum et Ateius Capito in coniectaneorumConiectancorum VIII., ius esse praefecto senatus habendi dicunt; deque ea re adsensum esse Capito Varronem Capito Varronem, Hertz; capitonem, ω. Tuberoni contra sententiam Iunii refert: Nam et tribunis, inquit, plebis senatus habendi ius erat, quamquam senatores non essent ante Atinium plebiscitum.
+**M** autem Varro in quarto Epistolicarum Quaestionum et Ateius Capito in coniectaneorumConiectancorum VIII., ius esse praefecto senatus habendi dicunt; deque ea re adsensum esse Capito Varronem Tuberoni contra sententiam Iunii refert: Nam et tribunis, inquit, plebis senatus habendi ius erat, quamquam senatores non essent ante Atinium plebiscitum.
 
 Quod in Quinti Claudii Annalibus scriptum est lignum alumine oblitum non ardere.
 
@@ -6899,7 +6899,7 @@ Percontatus ego sum quid esset illud mirum Quadrigarii.
 
 Repetit: In eo igitur libro scriptum inveni, cum obpugnaret L. Sulla in terra Attica Piraeum et contra Archelaus regis Mitridati praefectus ex eo oppido propugnaret, turrim ligneam defendendi gratia structam, cum ex omni latere circumplexa igni foret, ardere non quisse, quod alumine ab Archelao oblita fuisset.
 
-Verba Quadrigarii ex eo libro haec sunt: Cum Sulla conatus cunctatus, sugg. by Hosius. esset tempore opere, Lipsius. magno, eduxit copias, ut Archelai turrim unam quam ille interposuit ligneam incenderet. Venit, accessit, ligna subdidit, submovit Graecos, ignem admovit; satis sunt diu conati, numquam quiverunt incendere, ita Archelaus omnem materiam obleverat alumine, quod Sulla atque milites mirabantur, et postquam non succendit, succendit, ω; successit, Damsté. reduxit copias.
+Verba Quadrigarii ex eo libro haec sunt: Cum Sulla conatus esset tempore magno, eduxit copias, ut Archelai turrim unam quam ille interposuit ligneam incenderet. Venit, accessit, ligna subdidit, submovit Graecos, ignem admovit; satis sunt diu conati, numquam quiverunt incendere, ita Archelaus omnem materiam obleverat alumine, quod Sulla atque milites mirabantur, et postquam non succendit, reduxit copias.
 
 Quod Plato in libris quos De Legibus composuit largiores laetioresque in conviviis invitatiunculas vini non inutiles esse existimavit.
 
@@ -6925,7 +6925,7 @@ LEGIMUS librum M. Ciceronis qui inscriptus est Orator.
 
 In eo libro Cicero, cuin dixisset verba haec aufugio et aufero composita quidem esse ex praepositione ab et ex verbis fugio et fero, sed eam praepositionem, quo fieret vox pronuntiatu audituque lenior, versam mutatamque esse in au syllabam coeptumque esse dici aufugio et aufero pro abfugio et abfero—
 
-cum haec, inquam, ita dixisset, tum postea ibidemilbidem super eadem particula ita scripsit: Haec, quae, Cic. intuit, praepositio praeter haec duo verba nullo alio in verbo reperietur.
+cum haec, inquam, ita dixisset, tum postea ibidemilbidem super eadem particula ita scripsit: Haec, intuit, praepositio praeter haec duo verba nullo alio in verbo reperietur.
 
 Invenimus autem in conmentarioConmenctario Nigidiano, verbum autumoautum compositumcominositum ex ab praepositionepraelositione et verbo aestumo dictunque intercise autumo quasi abaestumo, quod significaret totum aestumo, tamquam abnumeroabumero.
 
@@ -6947,7 +6947,7 @@ IN sermonibus nuper fuit seniorum hominum et eruditorum, multos in vetere memori
 
 Nihil adeo de quoquam tantae admirationi fuit, quantae fuerunt quae de Ventidio Basso scripta sunt:
 
-eum Picentem fuisse genere et loco humili; et matrem eius a Pompeio Strabone, Pompei Magni patre, bello sociali, quo Asculanos subegit, captam cum ipso esse; mox triumphante Pompeio Strabone eum quoque puerum inter ceteros ante currum imperatoris sinu matris vectum esse; post, cum adolevisset, victum sibi aegre quaesisse eumque sordide invenisse comparandis conquirendis, Damsté, but cf. Suet. Jul. lxxv. 3; Calig. xxvii. 1. mulis et vehiculis, quae magistratibus qui sortiti provincias forent praebenda publice conduxisset. In isto quaestu notum esse coepisse C. Caesari et cum eo profectum esse in Gallias. Tum, quia in ea provincia satis naviter versatus esset et deinceps civili bello mandata sibi pleraque inpigre et strenue fecisset, non modo in amicitiam Caesaris, sed ex ea in amplissimum quoque ordinem pervenisse; mox tribunum quoque plebi ac deinde praetorem creatum atque in eo tempore iudicatum esse a senatu hostem cum M. Antonio; post vero coniunctis partibus patribus, ω; corr. in ς: coniunctum patribus, Hertz. non pristinam tantum dignitatem reciperasse, sed pontificatum ac deinde consulatum quoque adeptum esse, eamque rem tam intoleranter tulisse populum Romanum, qui Ventidium Bassum meminerat curandis mulis victitasse, ut vulgo per vias urbis versiculi proscriberentur:
+eum Picentem fuisse genere et loco humili; et matrem eius a Pompeio Strabone, Pompei Magni patre, bello sociali, quo Asculanos subegit, captam cum ipso esse; mox triumphante Pompeio Strabone eum quoque puerum inter ceteros ante currum imperatoris sinu matris vectum esse; post, cum adolevisset, victum sibi aegre quaesisse eumque sordide invenisse comparandis mulis et vehiculis, quae magistratibus qui sortiti provincias forent praebenda publice conduxisset. In isto quaestu notum esse coepisse C. Caesari et cum eo profectum esse in Gallias. Tum, quia in ea provincia satis naviter versatus esset et deinceps civili bello mandata sibi pleraque inpigre et strenue fecisset, non modo in amicitiam Caesaris, sed ex ea in amplissimum quoque ordinem pervenisse; mox tribunum quoque plebi ac deinde praetorem creatum atque in eo tempore iudicatum esse a senatu hostem cum M. Antonio; post vero coniunctis partibus non pristinam tantum dignitatem reciperasse, sed pontificatum ac deinde consulatum quoque adeptum esse, eamque rem tam intoleranter tulisse populum Romanum, qui Ventidium Bassum meminerat curandis mulis victitasse, ut vulgo per vias urbis versiculi proscriberentur:
 
 Concúrrite omnes aúgures, harúspices!
 
@@ -6963,7 +6963,7 @@ SICUT alia verba pleraque, ignoratione et inscitia improbe dicentium quae non in
 
 Nam cum ab adfligendo et ad perniciem interitumque deducendo inclinatum id tractumque sit, semperque eo verbo qui diligenter locuti sunt ita usi sint, ut profligare dicerent prodigere et deperdere profligatasque res quasi proflictasproflictaset perditas appellarent, nunc audio aedificia et templa et alia fere multa quae prope absoluta adfectaque sunt in nrofligato esse dici ipsaque esse iam profligata.
 
-Quapropter urbanissime respondisse praetorem, non indoctum virum, barunculo barunculo, Heraeus (see T.LL. s.v.); baruasculo, ω; barbasculo, S. and early edd.; barbariusculo, Madvig. cuidam ex advocatorum turba, Sulpicius Apollinaris in quadam epistula scriptum reliquit.
+Quapropter urbanissime respondisse praetorem, non indoctum virum, barunculo cuidam ex advocatorum turba, Sulpicius Apollinaris in quadam epistula scriptum reliquit.
 
 Nam cum ille, inquit, rabula audaculus ita postulasset verbaque ita fecisset: Omnia, vir clarissime, negotia de quibus te cogniturum esse hodie dixisti diligentia et velocitate tua profligata sunt, unum id solum relictum est, de quo, rogo, audias, tum praetor satis ridicule: An illa negotia de quibus iam cognovisse me dicis profligata sint equidem nescio; hoc autem negotium quod in te incidit, procul dubio, sive id audiam sive non audiam, profligatum est.
 
@@ -6971,7 +6971,7 @@ Quod significare autem volunt qui profligatumprofigatum dicunt, hi qui Latine lo
 
 Eius verba haec sunt: Bellum adfectum videmus et, vere ut dicam, paene confectum.
 
-Item infra: Nam ipse Caesar quid est quod est cur, Cic. in ea ea, omitted by MSS. of Cic. provincia commorari velit, nisi ut ea quae per eum adfecta sunt, perfecta reipublicae tradat?
+Item infra: Nam ipse Caesar quid est quod in ea provincia commorari velit, nisi ut ea quae per eum adfecta sunt, perfecta reipublicae tradat?
 
 Idem Cicero in Oeconomico: Cum vero adfecta iam prope aestate uvas a sole mitescere tempus est.
 
@@ -6999,13 +6999,13 @@ Propterea, qui rerum verborumque istiusmodi studio tenentur eum aetatis annum ap
 
 Nocte quoque ista proxima superiore, cum librum Epistularum divi Augusti, quas ad Gaium nepotem suum scripsit, legeremus duceremurque elegantia orationis neque morosa neque anxia, sed facili hercle et simplici, id ipsum in quadam epistula super eodem anno scriptum offendimus; eiusque epistula exemplum hoc est: IX. Kal. Octobris. Ave, mi Gai, meus asellus iucundissimus, quem semper medius fidius desidero, cum a me abes. Set praecipue diebus talibus, qualis est hodiernus, oculi mei requirunt meum Gaium, quem, ubicumque hoc die fuisti, spero laetum et bene valentem celebrasse quartum et sexagesimum natalem meum. Nam, ut vides, κλιμακτῆρα communem seniorum omnium tertium et sexagesimum annum evasimus. Deos autem oro ut mihi quantumcumque superest temporis, id salvis nobis traducere liceat in statu reipublicae felicissimo, ἀνδραγαθούντων ὑμῶν καὶ διαδεχομένων stationem meam.
 
-IX. Kal. Octobris.
+**IX** Kal. Octobris.
 
 Locus ex oratione Favoni, veteris oratoris, de cenarum atque luxuriae obprobratione, qua usus est cum legem Liciniam de sumptu minuendo suasit.
 
 CUM legeremus orationem veterem Favoni, non indiserti viri, qua oratione totum, ut meminisse possemus odio esse hercle istiusmodi sumptus atque victus, perdidicimus.
 
-Verba haec, quae adposuimus, Favoni sunt: Praefecti popinae atque luxuriae negant cenam lautam esse, nisi cum lubentissime edis, tum auferatur et alia esca melior atque amplior succenturietur. Is nunc flos cenae habetur inter istos quibus sumptus et fastidium pro facetiis procedit, qui negant ullam avem praeter ficedulam totam comesse oportere; ceterarum avium atque altilium nisi tantum adponatur, ut a cluniculis inferiore parte Damsté would delete inferiore parte and avium atque altilium. saturi fiant, convivium putant inopia sordere, superiorem partem avium atque altilium qui edint, eos palatum parum delicatum parum delicatum added by Hertz; palatum non habere, ς. habere. Si proportione pergit luxuria crescere, quid relinquitur, nisi ut delibari sibi cenas iubeant, ne edendo defetigentur, quando stratus lectuls lectus added by Skutsch. auro, argento, purpura amplior aliquot hominibus quam dis inmortalibus adornatur?
+Verba haec, quae adposuimus, Favoni sunt: Praefecti popinae atque luxuriae negant cenam lautam esse, nisi cum lubentissime edis, tum auferatur et alia esca melior atque amplior succenturietur. Is nunc flos cenae habetur inter istos quibus sumptus et fastidium pro facetiis procedit, qui negant ullam avem praeter ficedulam totam comesse oportere; ceterarum avium atque altilium nisi tantum adponatur, ut a cluniculis inferiore parte saturi fiant, convivium putant inopia sordere, superiorem partem avium atque altilium qui edint, eos palatum parum delicatum habere. Si proportione pergit luxuria crescere, quid relinquitur, nisi ut delibari sibi cenas iubeant, ne edendo defetigentur, quando stratus lectuls auro, argento, purpura amplior aliquot hominibus quam dis inmortalibus adornatur?
 
 Quod Caecilius poeta frontem genere virili non poetice, sed cum probatione et cum analogia appellavit.
 
@@ -7019,7 +7019,7 @@ Hos ego versus, cum de quodam istiusmodi homine sermones essent, in circulo fort
 
 Tum de grammaticorumgranlnaticorum volgo quispiam nobiscum ibi adsistens non sane ignobilis, Quanta, inquit, licentia audaciaque Caecilius hic fuit, cum fronte hilaro, non fronte hilara dixit et tam inmanem soloecismum nihil veritus est!
 
-Immo, inquam, potius nos et quam audaces et quam licentes sumus, qui frontemfiontem inprobe indocteque non virili genere dicimus, cum et ratio proportionis,pro portione, Skutsch, comparing Varro, L.L. x. 3.37. quae analogia appellatur, et veterum auctoritates non hanc, sed hunc frontem debere dici suadeant. Quippe M. Cato in primo Originum ita scripsit:
+Immo, inquam, potius nos et quam audaces et quam licentes sumus, qui frontemfiontem inprobe indocteque non virili genere dicimus, cum et ratio proportionis, quae analogia appellatur, et veterum auctoritates non hanc, sed hunc frontem debere dici suadeant. Quippe M. Cato in primo Originum ita scripsit:
 
 Postridie signis conlatis, aequo fronte, peditatu, equitibus atque alis cum hostium legionibus pugnavimus. Recto quoque fronte idem Cato in libro eodem dicit.
 
@@ -7037,13 +7037,13 @@ Atque ita hominem nulli rei ad indagandum vocabulum, quo rescinderet finitionem 
 
 De voluntario et admirando interitu virginum Milesiarum.
 
-PLUTARCHUS in librorum quos Περὶ Ψυχῆς inscripsit primo, cum de morbis dissereret in animos hominum incidentibus, virgines virginem,; δ; virginum, Hertz. dixit Milesii nominis fere quot tum in ea civitate erant repente sine ulla evidenti causa voluntatem cepisse obeundae mortis ac deinde plurimas vitam suspendio amisisse.
+PLUTARCHUS in librorum quos Περὶ Ψυχῆς inscripsit primo, cum de morbis dissereret in animos hominum incidentibus, virgines dixit Milesii nominis fere quot tum in ea civitate erant repente sine ulla evidenti causa voluntatem cepisse obeundae mortis ac deinde plurimas vitam suspendio amisisse.
 
 Id cum accideret in dies crebrius neque animis earum mori perseverantium medicina adhiberi quiret, decrevisse Milesios ut virgines quae corporibus suspensis demortuae forent, ut hae omnes nudae, cum eodem laqueo quo essent praevinctae efferrentur. Post id decretum virgines voluntariam mortem non petisse pudore solo deterritas tam inhonesti funeris.
 
 Verba senatusconsulti de exigendis urbe Roma philosophis; item verba edicti censorum, quo inprobati et coerciti sunt qui disciplinam rhetoricamrhetorical instituere et exercere Romae coeperant.
 
-C. FANNIO STRABONE, M. Valerio Messala coss. senatusconsultum de philosophis et de rhetoribus Latinis Latinis deleted by Pighius, comparing Suetonius, De Rhet. 1. factum est: M. Pomponius praetor senatum consuluit. Quod verba facta sunt de philosophisphilosophies et de rhetoribus, de ea re ita censuerunt, ut M. Pomponius praetor animadverteret curaretque, uti ei ut si ei, Suet. De Rhet. 1. e republica fideque sua videretur, uti Romae ne essent.
+**C** FANNIO STRABONE, M. Valerio Messala coss. senatusconsultum de philosophis et de rhetoribus Latinis factum est: M. Pomponius praetor senatum consuluit. Quod verba facta sunt de philosophisphilosophies et de rhetoribus, de ea re ita censuerunt, ut M. Pomponius praetor animadverteret curaretque, uti ei e republica fideque sua videretur, uti Romae ne essent.
 
 Aliquot deinde annis post id senatusconsultum Cn. Domitius Ahenobarbus et L. Licinius Crassus censores de coercendiscoereendis rhetoribus Latinis ita edixerunt: Renuntiatum est nobis esse homines, qui novum genus disciplinae instituerunt, ad quos iuventus in ludum conveniat; eos sibi nomen inposuisse Latinos rhetoras; ibi homines adulescentulos dies totos desidere. Maiores nostri quae liberos suos discere et quos in ludos itare vellent instituerunt. Haec nova, quae praeter consuetudinem ac morem maiorum fiunt, neque placent neque recta videntur. Quapropter et his qui eos ludos habent, et his qui eo venire consuerunt, visum est faciundum, ut ostenderemus nostram sententiam, nobis non placere.
 
@@ -7055,7 +7055,7 @@ Qua tempestate Epictetus quoque philosophus propter id senatusconsultum Nicopoli
 
 Locus ex oratione Gracchi de parsimonia ac de pudicitia sua memoratissimus.
 
-C. GRACCHUS cum ex Sardinia rediit, orationem ad populum in contione habuit.
+**C** GRACCHUS cum ex Sardinia rediit, orationem ad populum in contione habuit.
 
 Ea verba haec sunt: Versatus sum, inquit, in provincia, quomodo ex usu vestro existimabam esse, non quomodo ambitioni meae conducere arbitrabar. Nulla apud me fuit popina, neque pueri eximia facie stabant, et in convivio liberi vestri modestius erant quam apud principia.
 
@@ -7065,7 +7065,7 @@ Atque ibi ex intervallo: Itaque, inquit, Quirites, cum Romam profectus sum, zona
 
 De verbis inopinatis, quae utroque versum dicuntur et a grammaticis communia vocantur.
 
-UTOR et vereor et consolor communia verba sunt ac dici utroque versus possunt: vereor te et vereor abs te, id est tu me vereris; utor te et utor abs te, id est tu me uteris; id uteris, ς; id (pro id, Q) factum, ω. hortor te et hortor abs te, id est tu me hortaris; consolor te et consolor abs te, id est tu me consolaris; testor quoque et interpretor significatione reciproca dicuntur.
+UTOR et vereor et consolor communia verba sunt ac dici utroque versus possunt: vereor te et vereor abs te, id est tu me vereris; utor te et utor abs te, id est tu me uteris; hortor te et hortor abs te, id est tu me hortaris; consolor te et consolor abs te, id est tu me consolaris; testor quoque et interpretor significatione reciproca dicuntur.
 
 Sunt autem verba haec omnia ex altera parte inusitata, et an dicta sint in eam quoque partem quaeri solet.
 
@@ -7079,7 +7079,7 @@ Novius in Lignaria verbum quod est utitur ex contraria parte dicit: Quía supell
 
 Quía supellex múlta quae non útitur, emitúr tamen,
 
-M. Cato in quinta Origine: Exercitum, inquit, suum pransum, paratum, cohortatum eduxit foras atque instruxit.
+**M** Cato in quinta Origine: Exercitum, inquit, suum pransum, paratum, cohortatum eduxit foras atque instruxit.
 
 Consolor quoque in partem alteram, praeterquam dici solitum est, scriptum invenimus in epistula Q. Metelli, quam, cum in exilio esset, ad Cn. et ad L. Domitios dedit. At cum animum, inquit, vestrum erga me video, vehementer consolor et fides virtusque vestra mihi ante oculos versatur.
 
@@ -7095,7 +7095,7 @@ Coniugio, Anchisa, Veneris dignate superbo,
 
 cursusque dabit venerata secundos.
 
-Confessi autem aeris, de quo facta confession est, in XII. Tabulis scriptum est his verbis: Aeris confessi rebusque iure iure, cf. xx. i. 45; omitted here by ω. iudicatis XXX. dies iusti sunto. Item ex isdem tabulis id quoque est. Qui se si erit testarier libri pensve fuerit, ni testimonium fariatur, inprobus intestabilisque esto.
+Confessi autem aeris, de quo facta confession est, in XII. Tabulis scriptum est his verbis: Aeris confessi rebusque iure iudicatis XXX. dies iusti sunto. Item ex isdem tabulis id quoque est. Qui se si erit testarier libri pensve fuerit, ni testimonium fariatur, inprobus intestabilisque esto.
 
 Quod Metellus Numidicus figuram orationis novam ex orationibus Graecis mutuatus est.
 
@@ -7103,7 +7103,7 @@ APUT Q. Metellum Numidicum in libro accusationis In Valerium Messalam tertio nov
 
 Verba ex oratione eius haec sunt: Cum sese sciret in tantum crimen venisse atque socios ad senatum questum flentes venisse, sese pecunias maximas exactos esse.
 
-Sese Sese added by Hertz. pecunias, inquit, maximas maximas added by Carrio. exactos esse pro eo quod est: pecunias a se esse se esse, Hertz; esse, Q; a se, ω. maximas exactas.
+Sese pecunias, inquit, maximas exactos esse pro eo quod est: pecunias a se esse maximas exactas.
 
 Id nobis videbatur Graeca figura dictum; Graeci enim dicunt: εἰσεπράξατό με ἀργύριον, id significat exegit me pecuniam. Quod si id dici potest, etiam exactus esse aliqui pecuniam dici potest,
 
@@ -7121,17 +7121,17 @@ quasi porrecto et expanso, et passis manibus et velis passis dicimus, quod signi
 
 Itaque Plautus in Milite Glorioso, a littera in e mutata per compositi vocabuli morem, dispessis dicit pro eo, quod est dispassis:
 
-Credo égo istoc exempló tibi esse pereundum pereundum, best MSS. of Plaut.; eundum, ω. extra pórtam,
+Credo égo istoc exempló tibi esse pereundum extra pórtam,
 
 Dispéssis manibus pátibulum cum habébis.
 
 De novo genere interitus Crotoniensis Milonis.
 
-MILO Crotoniensis, athleta inlustris, quem in chronicis scriptum est Olympiade LXII lxii. primum, Lübbert; prima, ω; plurima, Damsté. primum coronatum esse, exitum habuit e vita miserandum et mirandum.
+MILO Crotoniensis, athleta inlustris, quem in chronicis scriptum est Olympiade LXII primum coronatum esse, exitum habuit e vita miserandum et mirandum.
 
 Cum iam natu grandis artem athleticam desisset iterque faceret forte solus in locis Italiae silvestribus, quercum vidit proxime viam patulis in parte media rimis hiantem.
 
-Tum experiri, credo, etiam tunc volens an ullae sibi reliquae vires adessent, inmissis in cavernas arboris digitis, diducere et rescindere quercum conatus est. Ac mediam quidem partem partem deleted by Ranchinus. discidit divellitque;
+Tum experiri, credo, etiam tunc volens an ullae sibi reliquae vires adessent, inmissis in cavernas arboris digitis, diducere et rescindere quercum conatus est. Ac mediam quidem partem discidit divellitque;
 
 quercus autem in duas diducta partis, cum ille, quasi perfecto quod erat conixus, manus laxasset, cessante vi rediit in naturam manibusque eius retentis inclusisque stricta denuo et cohaesa, dilacerandum hominem feris praebuit.
 
@@ -7143,7 +7143,7 @@ Ea res cum percrebuisset, omnium tum Atheniensium consensu disciplina tibiis can
 
 Scriptum hoc in Commentario Pamphilae nono et vicesimo.
 
-Quod pugnapogna belli civilis victoriaque Gai Caesaris, quam vicit in Pharsaliis campis, nuntiata praedictaque est per cuiuspiam sacerdotis sacerdotis, scripsi, cf. §§ 2 and 3 (beginning); praesagi or sagacis, Hosius; remigis, ω. As Madvig long ago pointed out (Adv. Crit. ii, p. 605, n. 1), this is not a question of palaeography, but remigis was a marginal note, suggested by the story in Cic. Div. i. 68, which somehow made its way into the text. vaticinium eodem ipso die in Italia Patavi.
+Quod pugnapogna belli civilis victoriaque Gai Caesaris, quam vicit in Pharsaliis campis, nuntiata praedictaque est per cuiuspiam sacerdotis vaticinium eodem ipso die in Italia Patavi.
 
 Quo C. Caesar et Cn. Pompeius die per civile bellum signis conlatis in Thessalia conflixerunt, res accidit Patavi in transpadana Italia memorari digna.
 
@@ -7171,7 +7171,7 @@ Philochorus refert in insula Salamine speluncam esse taetram et horridam, quam n
 
 Mulieres fere omnes in maiorem modum exosus fuisse dicitur, sive quod natura abhorruit a mulierum coetu sive quod duas simul uxores habuerat, cum id decreto ab Atheniensibus facto ius esset, quarum matrimonii pertaedebat.
 
-Eius odii in mulieres Aristophanes quoque meminit ἐν ταῖς τροτέραις Θεσμοφοριαζούσαις in his versibus: Νῦν οὖν ἁπάσαισιν παραινῶ καὶ λέγω, Τοῦτον κολάσαι τὸν ἄνδρα πολλῶν οὕνεκα. Ἄγρια γὰρ ἡμᾶς, ὦ γυναῖκες, δρᾷ κακά, Ἅτʼ ἐν ἀγρίοισι τοῖς τοῖς omitted by codd. of Aristoph. λαχάνοις αὐτὸς τραφείς.
+Eius odii in mulieres Aristophanes quoque meminit ἐν ταῖς τροτέραις Θεσμοφοριαζούσαις in his versibus: Νῦν οὖν ἁπάσαισιν παραινῶ καὶ λέγω, Τοῦτον κολάσαι τὸν ἄνδρα πολλῶν οὕνεκα. Ἄγρια γὰρ ἡμᾶς, ὦ γυναῖκες, δρᾷ κακά, Ἅτʼ ἐν ἀγρίοισι τοῖς λαχάνοις αὐτὸς τραφείς.
 
 Νῦν οὖν ἁπάσαισιν παραινῶ καὶ λέγω,
 
@@ -7179,7 +7179,7 @@ Eius odii in mulieres Aristophanes quoque meminit ἐν ταῖς τροτέρα
 
 Ἄγρια γὰρ ἡμᾶς, ὦ γυναῖκες, δρᾷ κακά,
 
-Ἅτʼ ἐν ἀγρίοισι τοῖς τοῖς omitted by codd. of Aristoph. λαχάνοις αὐτὸς τραφείς.
+Ἅτʼ ἐν ἀγρίοισι τοῖς λαχάνοις αὐτὸς τραφείς.
 
 Alexander autem Aetolus hos de Euripide versus composuit:
 
@@ -7191,15 +7191,15 @@ Alexander autem Aetolus hos de Euripide versus composuit:
 
 Is cum in Macedonia apud Archelaum regem esset utereturque eo rex familiariter, rediens nocte ab eius cena, canibus a quodam aemulo inmissis dilaceratus est et ex his vulneribus mors secuta est.
 
-Sepulchrum autem eius et memoriam Macedones eo dignati sunt honore, ut in gloriae quoque loco praedicarent: οὔποτʼ ἂν ἄν added by Capps. σὸν μνῆμα, Εὐρίπιδες, ὄλοιτό που, quod egregius poeta morte obita sepultus in eorum terra foret. Quamobrem cum legati ad eos ab Atheniensibus missi petissent ut ossa Athenas in terram illius patriam permitterent transferri, maximo consensu Macedones in ea re deneganda perstiterunt.
+Sepulchrum autem eius et memoriam Macedones eo dignati sunt honore, ut in gloriae quoque loco praedicarent: οὔποτʼ ἂν σὸν μνῆμα, Εὐρίπιδες, ὄλοιτό που, quod egregius poeta morte obita sepultus in eorum terra foret. Quamobrem cum legati ad eos ab Atheniensibus missi petissent ut ossa Athenas in terram illius patriam permitterent transferri, maximo consensu Macedones in ea re deneganda perstiterunt.
 
 Quod a poetis Iovis filii prudentissimi humanissimique, Neptuni autem ferocissimi et inhumanissimi traduntur.
 
-PRAESTANTISSIMOS virtute, prudentia, viribus viribus, w; moribus, Kronenberg. Iovis filios poetae appellaverunt, ut Aeacum et Minoa et Sarpedona; ferocissimos et inmanes et alienos ab omni humanitate, tamquam e mari genitos, Neptuni filios dixerunt, Cyclopa et Cercyona et Scirona et Laestrygonas.
+PRAESTANTISSIMOS virtute, prudentia, viribus Iovis filios poetae appellaverunt, ut Aeacum et Minoa et Sarpedona; ferocissimos et inmanes et alienos ab omni humanitate, tamquam e mari genitos, Neptuni filios dixerunt, Cyclopa et Cercyona et Scirona et Laestrygonas.
 
 Historia de Sertorio, egregio duce, deque astu eius commenticiisque simulamentis quibus ad barbaros milites continendos conciliandosque sibi utebatur.
 
-SERTORIUS, vir acer egregiusque dux, et utendi exacuendi or excitandi suggested by Hosiuis; dux educendi, TY. regendique exercitus peritus fuit.
+SERTORIUS, vir acer egregiusque dux, et utendi regendique exercitus peritus fuit.
 
 Is in temporibus difficillimis et mentiebatur ad milites, si mendaciumn prodesset, et litteras compositas pro veris legebat et somnium simulabat et falsas religiones conferebat, si quid istae res eum apud militum animos adiuvabant. Illud adeo Sertori nobile est:
 
@@ -7207,7 +7207,7 @@ Cerva alba eximiae pulchritudinis et vivacissimae celeritatis a Lusitano ei quod
 
 Hanc sibi oblatam divinitus et instinctam Dianae numine conloqui secum monereque et docere quae utilia factu essent, persuadere omnibus institit ac, si quid durius videbatur quod imperandum militibus foret, a cerva sese monitumnonitum praedicabat. Id cum dixerat, universi, tamquam si deo, libentes parebant.
 
-Ea cerva quodam die, cum incursio esset hostium nuntiata, festinatione ac tumultu consternata in fugam se prorupitproruptit atque in palude proxima delituit et frustra frustra, Cornelissen; postea, ω. requisita perisse credita est.
+Ea cerva quodam die, cum incursio esset hostium nuntiata, festinatione ac tumultu consternata in fugam se prorupitproruptit atque in palude proxima delituit et frustra requisita perisse credita est.
 
 Neque multis diebus post inventam esse cervam Sertorio nuntiatur.
 
@@ -7261,7 +7261,7 @@ CN. MATIUS, vir eruditus, in mimiambisMimianibis suis non absurde neque absone f
 
 Iam iam albicascit Phoebus et recentatur
 
-Commune lumen hominibus do mimico, J. Gronor; do cominico, x2; do comico, No. ii, x2. voluptatis. et voluptatis, ω.
+Commune lumen hominibus voluptatis.
 
 Idem Matius in isdem Mimiambis edulcare dicit, quod est dulcius reddere, in his versibus:
 
@@ -7283,7 +7283,7 @@ Eorum autem alia esse curiata, alia centuriata; curiata per lictorem curiatum ca
 
 Isdem comitiis, quae calata appellari diximus, et sacrorum detestatio et testamenta fieri solebant. Tria enim genera testamentorum fuisse accepimus: unum, quod calatis comitiis in populi contione fieret, alterum in procinctu, cum viri ad proelium faciendum in aciem vocabantur, tertium per familiae emancipationem, cui aes et libra adhiberetur.
 
-In eodem Laeli Felicis libro haec scripta sunt: Is qui non non ut, Q. universum populum, sed partem aliquam adesse iubet, non comitia, sed concilium edicere debet. Tribuni autem neque advocant patricios neque ad eos referre ulla de re possunt. Ita ne leges quidem proprie, sed plebisscita appellantur quae tribunis plebis ferentibus acceptaaccept sunt, quibus rogationibus ante patricii non tenebantur, donec Q. Hortensius dictator legem tulit, ut eo iure quod plebs statuisset omnes Quirites tenerentur.
+In eodem Laeli Felicis libro haec scripta sunt: Is qui non universum populum, sed partem aliquam adesse iubet, non comitia, sed concilium edicere debet. Tribuni autem neque advocant patricios neque ad eos referre ulla de re possunt. Ita ne leges quidem proprie, sed plebisscita appellantur quae tribunis plebis ferentibus acceptaaccept sunt, quibus rogationibus ante patricii non tenebantur, donec Q. Hortensius dictator legem tulit, ut eo iure quod plebs statuisset omnes Quirites tenerentur.
 
 Item n eodem libro hoc scriptum est: Cum ex generibus hominum suffragium feratur, curiata comitia esse, cum ex censu et aetate centuriata, cum ex regionibus et locis, tributa; centuriata autem comitia intra pomerium fieri nefas esse, quia exercitum extra urbem imperari oporteat, intra urbem imperari ius non sit. Propterea centuriata in campo Martio haberi exercitumque imperari praesidii causa solitum, quoniam populus esset in suffragiis ferendis occupatus.
 
@@ -7299,7 +7299,7 @@ In qua re etiam Fenestellam errasse Pedianus Asconius animadvertit, quod eum scr
 
 Longior autem Nepotis quam Fenestellae error est, nisi quis vult in animum inducere Nepotem, studio amoris et amicitiae adductum, amplificandae admirationis gratia quadriennium suppressisse, ut M. Cicero orationem florentissimam dixisse Pro Roscio admodum adulescens videretur.
 
-Illud adeo ab utriusque oratoris studiosis animadversum et scriptum est, quod Demosthenes et Cicero pari aetate inlustrissimas primas primas suggested by Hosius, omitted in ω. orationes in causis causis privatis, Hertz. dixerunt, alter Κατὰ Ἀνδροτίωνος et Κατὰ Τιμοκράτους septem et viginti annos natus, alter anno minor Pro P. Quinctio septimoque et vicesimo Pro Sex. Roscio.
+Illud adeo ab utriusque oratoris studiosis animadversum et scriptum est, quod Demosthenes et Cicero pari aetate inlustrissimas primas orationes in causis dixerunt, alter Κατὰ Ἀνδροτίωνος et Κατὰ Τιμοκράτους septem et viginti annos natus, alter anno minor Pro P. Quinctio septimoque et vicesimo Pro Sex. Roscio.
 
 Vixerunt quoque non nimis numerumnunerum annorum diversum; alter tres et sexaginta annos, Demosthenes sexaginta.
 
@@ -7315,13 +7315,13 @@ Qui ab alio genere vitae detriti iam et retorridi ad litterarum disciplinas seri
 
 Quod genus profecto ille homo est, qui de petorritis nuper argutissimas nugas dixit.
 
-Nam cum quaereretur, petorritum quali forma vehiculum cuiatisque linguae vocabulum esset, et faciem vehiculi ementitus est longe alienam falsamque et vocabulum Graecum semigraecum, Damsté. esse dixit atque adsignificare volucres rotas interpretatus est, commutataque una littera petorritum esse dictum volebat quasi petorrotum;
+Nam cum quaereretur, petorritum quali forma vehiculum cuiatisque linguae vocabulum esset, et faciem vehiculi ementitus est longe alienam falsamque et vocabulum Graecum esse dixit atque adsignificare volucres rotas interpretatus est, commutataque una littera petorritum esse dictum volebat quasi petorrotum;
 
 scriptum etiam hoc esse a Valerio Probo contendit.
 
 Ego, cum Probi multos admodum Commentationum libros adquisierim, neque scriptum in his inveni nec usquam alioqui Probum scripsisse credo; petorritum enim est non ex Graecia dimidiatum,
 
-sed totum Transalpibus; For Transalpibus cf. Pliny, N. H. iii. 124 (Heraeus); totam ortum trans Alpibus, Hertz; totum transalpinum, J. Gronov. nam est vox Gallica.
+sed totum Transalpibus; nam est vox Gallica.
 
 Id scriptum est in libro M. Varronis quarto decimo Rerum Divinarum, quo in loco Varro, cum de petorrito dixisset, esse id verbum Gallicum, lanceam quoque dixit non Latinum, set Hispanicum verbum esse.
 
@@ -7351,13 +7351,13 @@ Cuiusmodi sit lex apud dialecticos percontandi disserendique; et quae sit eius l
 
 LEGEM esse aiunt disciplinae dialecticae, si de quapiam re quaeratur disputeturque atque ibi quid rogere ut respondeas, tum ne amplius quid dicas quam id solum quod es rogatus aut aias aut neges;
 
-eamque legem qui non servent, et aut plus aut aliter quam sunt rogati respondeant, existumanturexistumnantur indoctique indoctique, QZON; indocti, IIQ2; rudes indoctique N2; indocti inscitique, sugg. by Hosius (cf. xix. 8. 12). esse disputandique morem atque rationem non tenere. Hoc quidem quod dicunt in plerisque disputationibus procul dubio fieri oportet.
+eamque legem qui non servent, et aut plus aut aliter quam sunt rogati respondeant, existumanturexistumnantur indoctique esse disputandique morem atque rationem non tenere. Hoc quidem quod dicunt in plerisque disputationibus procul dubio fieri oportet.
 
 Indefinitus namque inexplicabilisque sermo fiet, nisi interrogationibus responsionibusque simplicibus fuerit determinatus.
 
 Sed enim esse quaedam videntur, in quibus si breviter et ad id quod rogatus fueris respondeas, capiare.
 
-Nam si quis his verbis interroget: Postulo uti respondeas desierisne facere adulterium an non, utrumcumque dialectica lege responderis, sive aias seu neges, haerebis in captione, tamquam si te dicas adulterum quam si neges; tam neges, ς; tamquam si te dicas adulterum negent, MSS.
+Nam si quis his verbis interroget: Postulo uti respondeas desierisne facere adulterium an non, utrumcumque dialectica lege responderis, sive aias seu neges, haerebis in captione, tamquam si te dicas adulterum quam si neges;
 
 nam qui facere non desinit, non id necessario etiam fecit.
 
@@ -7367,7 +7367,7 @@ Quid autem legis istius propugnatores in illa captiuncula facient, in qua haerer
 
 Quicquid non perdidisti habeasne an non habeas postulo ut aias aut neges, utrumcumque breviter respondent, capietur.
 
-Nam si habere si non habere, ω; non deleted by Gruppe. se negaverit quod non perdidit, colligetur oculos eum non habere, quos non perdidit; sin vero habere se dixerit, colligetur habere eum cornua, quae non perdidit.
+Nam si habere se negaverit quod non perdidit, colligetur oculos eum non habere, quos non perdidit; sin vero habere se dixerit, colligetur habere eum cornua, quae non perdidit.
 
 Rectius igitur cautiusque ita respondebitur: Quicquid habui, id habeo, si id non perdidi.
 
@@ -7377,7 +7377,7 @@ Propterea id quoque ad eam legem addi solet, non esse captiosis interrogationibu
 
 Quanam ratione effici dixerit Erasistratus medicus, si cibus forte deerit, ut tolerari aliquantisper inedia possit et tolerari fames; verbaque ipsa Erasistrati super ea re scripta.
 
-Cum Favorino Romae dies plerumque totos eramus tenebatque animos nostros homo ille fandi dulcissimus atque eum, quoquo iret, quasi ex lingua prorsum eius captiapti, Stephanus. prosequebamur; ita sermonibus usquequaque amoenissimis demulcebat.
+Cum Favorino Romae dies plerumque totos eramus tenebatque animos nostros homo ille fandi dulcissimus atque eum, quoquo iret, quasi ex lingua prorsum eius capti prosequebamur; ita sermonibus usquequaque amoenissimis demulcebat.
 
 Tum ad quendam aegrum cum isset visere nosque cum eo una introissemus multaque ad medicos, qui tumturn forte istic erant, valitudinis eius gratia oratione Graeca dixisset, Ac ne hoc quidem mirum, inquit, videri debet, quod, cum antehac semper edundi fuerit adpetens, nunc post imperatam inediam tridui omnis eius adpetitio pristina elanguerit.
 
@@ -7399,15 +7399,15 @@ Verba quibus id dicit, haec sunt: Ἄπορον δὲ καὶ δεόμενον �
 
 Quo ritu quibusque verbis fetialis populi Romani bellum indicere solitus sit his quibus populus bellum fieri iusserat; et item in quae verba conceptum fuerit iusiurandum de furtis militaribus sanciendis; et uti milites scripti intra praedictum diem in loco certo frequentarentfrequentitarent, causis quibusdam exceptis, propter quas id iusiurandum remitti aecumaecui esset.
 
-CINCIUS in libro tertio De Re Militari, fetialem populi Romani bellum indicentem hostibus telumque in agrum eorum iacientem, hisce verbis uti scripsit: Quod populus Hermundulus hominesque populi Hermunduli adversus populum Romanum bellum bellum deleted by H. J. Müler and A. Schmidt. fecere deliqueruntque, quodque populus Romanus cum populo Hermundulo hominibusque Hermundulis bellum iussit, ob eam rem ego populusque Romanus populo Hermundulo hominibusque Hermundulis bellum dico facioque.
+CINCIUS in libro tertio De Re Militari, fetialem populi Romani bellum indicentem hostibus telumque in agrum eorum iacientem, hisce verbis uti scripsit: Quod populus Hermundulus hominesque populi Hermunduli adversus populum Romanum bellum fecere deliqueruntque, quodque populus Romanus cum populo Hermundulo hominibusque Hermundulis bellum iussit, ob eam rem ego populusque Romanus populo Hermundulo hominibusque Hermundulis bellum dico facioque.
 
-Item in libro eiusdem Cincii De Re Militari quinto ita scriptum est: Cum dilectus antiquitus fieret et milites scriberentur, iusiurandum eos tribunus militaris adigebat in verba haec (magistratus verba): magistratu (-us, Q2) verba, δ; in magistratu verba, OX; in magistratu, N π; deleted by Hertz, see edit. maior, ii, xci. C. Laelii C. fili consulis, L. Cornelii P. fili consulis in exercitu, decemque milia passuum prope, furtum non facies dolo malo solus neque cum pluribus pluris nummi argentei in dies singulos; extraque hastam, hastile, ligna, poma, pabulum, utrem, follem, faculam si quid ibi inveneris sustulerisve quod tuum non erit, quod pluris nummi argentei erit, uti tu ad C. Laelium C. filium consulem Luciumve Cornelium P. filium sive quem ad tuter eorum iusserit proferes, aut profitebere in triduotridiuo proximo quidquid inveneris sustulerisve dolo dolo, Aldus; in dolo, ω. malo, aut domino suo, cuium id censebis esse, reddes, uti quod rectum factum esse voles.
+Item in libro eiusdem Cincii De Re Militari quinto ita scriptum est: Cum dilectus antiquitus fieret et milites scriberentur, iusiurandum eos tribunus militaris adigebat in verba haec (magistratus verba): C. Laelii C. fili consulis, L. Cornelii P. fili consulis in exercitu, decemque milia passuum prope, furtum non facies dolo malo solus neque cum pluribus pluris nummi argentei in dies singulos; extraque hastam, hastile, ligna, poma, pabulum, utrem, follem, faculam si quid ibi inveneris sustulerisve quod tuum non erit, quod pluris nummi argentei erit, uti tu ad C. Laelium C. filium consulem Luciumve Cornelium P. filium sive quem ad tuter eorum iusserit proferes, aut profitebere in triduotridiuo proximo quidquid inveneris sustulerisve dolo malo, aut domino suo, cuium id censebis esse, reddes, uti quod rectum factum esse voles.
 
 Militibus autem scriptis, dies praefinibatur quo die adessent et citanti consuli responderent; deinde concipiebatur iusiurandum,
 
 ut adessent, his additis exceptionibus: Nisi harunce quae causa erit: funus familiare feriaeve denicales, quae non eius rei causa in eum diem conlatae sint, quo is eo die minus ibi esset, morbus sonticus auspiciumve quod sine piaculo praeterire non liceat, sacrificiumve anniversarium quod recte fieri non possit nisi ipsus eo die ibi sit, vis hostesve, status condictusve dies cum hoste; si cui eorum harunce quae causa erit, tum se postridie quam per eas causas licebit, eo die venturum adiuturumque eum qui eum pagum, vicum, oppidumve delegerit.
 
-Item in eodem libro verba haec sunt: Miles cum die, qui prodictus est, aberat neque excusatus erat, infrequens notabatur.notabatur, J. F. Gronov; dabatur, ω.
+Item in eodem libro verba haec sunt: Miles cum die, qui prodictus est, aberat neque excusatus erat, infrequens notabatur.
 
 Item in libro sexto hoc scriptum est: Alae dictae exercitus equitum ordines, quod circum legiones dextra sinistraque tamquam alae in avium corporibus locabantur. In legione sunt centuriae sexaginta, manipuli triginta, cohortes decem.
 
@@ -7417,7 +7417,7 @@ PLERAQUE sunt vocabula quibus vulgo utimur, neque tamen liquido scimus quid ea p
 
 Animadverti enim quosdam hautquaquam indoctos viros opinari vestibulum esse partem domus primorei, quam vulgus atrium vocat.
 
-C. Aelius Gallus, in libro De Significatione verborumVerhorunm Quae ad Ius Civile pertinentPertilent secundo, vestibulum esse dicit non in ipsis aedibus neque partem aedium, sed locum ante ianuamianuaim domus vacuum, per quem a via aditus accessusque ad aedis est, cum dextra sinistraque ianuam tecta saepiunt ianuam tecta saepiunt, Madvig; tecta qu(a)e, NOIIQ2; tectaque, QZ (Hosius); tecte, X; tecta, Carrio. viae iuncta atque ipsa ianua procul a via est, area vacanti intersita.
+**C** Aelius Gallus, in libro De Significatione verborumVerhorunm Quae ad Ius Civile pertinentPertilent secundo, vestibulum esse dicit non in ipsis aedibus neque partem aedium, sed locum ante ianuamianuaim domus vacuum, per quem a via aditus accessusque ad aedis est, cum dextra sinistraque ianuam tecta saepiunt viae iuncta atque ipsa ianua procul a via est, area vacanti intersita.
 
 Quae porro huic vocabulo ratio sit, quaeri multum solet; sed quae scripta legi, ea ferme omnia inconcinna atque absurda visa sunt.
 
@@ -7439,11 +7439,11 @@ Vestibulum ante ipsum primisque in faucibus Orci
 
 Luctus et ultrices posuere cubilia Curae:
 
-non enim vestibulum prioremprimorem, Damsté, comparing § 2. partem domus infernae esse dicit, quod obrepere potest tamquam si ita dicatur, sed loca duo demonstrat extra Orci fores, vestibulum et fauces, ex quibus vestibulum appellate ante ipsam quasi domum et ante ipsa Orci penetralia, fauces autem vocat iter angustum, per quod ad vestibulum adiretur.
+non enim vestibulum priorem partem domus infernae esse dicit, quod obrepere potest tamquam si ita dicatur, sed loca duo demonstrat extra Orci fores, vestibulum et fauces, ex quibus vestibulum appellate ante ipsam quasi domum et ante ipsa Orci penetralia, fauces autem vocat iter angustum, per quod ad vestibulum adiretur.
 
 Hostiae quae dicuntur bidentes, quid sint et quam ob causam ita appellatae sint; superque ea re P. Nigidii et Iulii Hygini sententiae.
 
-REDEUNTES ex ex added by Hertz. Graecia, Brundisium navem advertimus. Ibi quispiam linguae Latinae litterator, Roma a Brundisinis accersitus, experiundum sese vulgo dabat.
+REDEUNTES ex Graecia, Brundisium navem advertimus. Ibi quispiam linguae Latinae litterator, Roma a Brundisinis accersitus, experiundum sese vulgo dabat.
 
 Imus ad eum nos quoque oblectamenti gratia, erat enim fessus atque languens animus de aestu maris.
 
@@ -7477,13 +7477,13 @@ sed, quod ultro existumabamus, id scriptum invenimus in commentariis quibusdamqu
 
 Hyginus tamen Iulius, qui ius pontificum non videtur ignorasse, in quarto librorum quos De Vergilio fecit, bidentes appellari scripsit hostias quae per aetatem duos dentes altiores haberent.
 
-Verba illius ipsa posui: Quae bidens est, inquit, hostia, oportet habeat dentes octo, sed ex his duo ceteris altiores, per quos appareat ex minore aetate in maiorem transcendisse. Haec Hygini opinio an vera sit, non argui argui, an addition suggested by Hosius; argumentis iudicari, Hertz (see crit. note 2). argumentis, sed oculis videri videri, Q; iudicari, ω. potest.
+Verba illius ipsa posui: Quae bidens est, inquit, hostia, oportet habeat dentes octo, sed ex his duo ceteris altiores, per quos appareat ex minore aetate in maiorem transcendisse. Haec Hygini opinio an vera sit, non argui argumentis, sed oculis videri potest.
 
 Quod Laberius verba pleraque licentius petulantiusque finxit; et quod multis item verbis utitur de quibus an sint Latina quaeri solet.
 
 LABERIUS, in mimis quos scriptitavit, oppido quam verba finxit praelicenter.
 
-Nam et mendicimonium dicit et moechimoniummechimonium et adulterionem adulteritatemque pro adulterio et depudicavit pro stupravit et abluvium pro diluvio et, quod in mimo ponit quem Cophinum inscripsit, inscripsit, Nonius ii, p. 141. 2 (p. 205 Linds.); scripsit, ω.
+Nam et mendicimonium dicit et moechimoniummechimonium et adulterionem adulteritatemque pro adulterio et depudicavit pro stupravit et abluvium pro diluvio et, quod in mimo ponit quem Cophinum inscripsit,
 
 manuatus est pro furatus est et item in Fullone furem manuarium appellat: manuari (inquit) pudorem perdidisti, multaque alia huiuscemodi novat.
 
@@ -7493,11 +7493,11 @@ Neque non obsoleta quoque et maculantia ex sordidiore vulgi usu ponit, quale est
 
 Tóllet bona fide vos Orcus nudasnuidas in catómum.
 
-Et elutriare lintea et lavandaria dicit, quae ad lavandum sint data, et: coicior (inquit) in fullónicam, et: Quid próperas? ecquid praecurris, caldónia? caldonia, MSS.; Caldonia, Hosius; Calidoniam, Ribbeck.
+Et elutriare lintea et lavandaria dicit, quae ad lavandum sint data, et: coicior (inquit) in fullónicam, et: Quid próperas? ecquid praecurris, caldónia?
 
 coicior (inquit) in fullónicam,
 
-Quid próperas? ecquid praecurris, caldónia? caldonia, MSS.; Caldonia, Hosius; Calidoniam, Ribbeck.
+Quid próperas? ecquid praecurris, caldónia?
 
 Item in Restione talabarriunculos dicit, quos vulgus talabarriones,
 
@@ -7513,7 +7513,7 @@ Hic est (inquit)
 
 Vénientem excepísse tibi narrávi,
 
-qui inscribitur NataliciusNatalicilus, Natalicius, Fleckeisen; nata, L. (1. X) ΠΧ; nata, Z1; Natalia or Natta, Bothe. cippum dicit et obbam et camellam et pittacium et capitium:
+qui inscribitur NataliciusNatalicilus, cippum dicit et obbam et camellam et pittacium et capitium:
 
 Induis (inquit) cápitium tunicaé pittacium.
 
@@ -7541,7 +7541,7 @@ Tum, quia in primo περὶ ἀξιωμάτων discendum, quae M. Varro alias 
 
 Sed in eo nihil edocenter neque ad instituendum explanate scriptum est, fecisseque videtur eum librum Aelius sui magis admonendi quam aliorum docendi gratia.
 
-Redimus igitur necessario ad Graecos libros. Ex quibus accepimus ἀξίωμα esse his verbis definitum: definitum added by Skutsch. λεκτὸν αὐτοτελὲς ἀπόφαντον ὅσον ἐφʼ αὑτῷ. Hoc ego supersedi vertere, quia novis et inconditis vocibus utendum fuit, quas pati aures per insolentiam vix possent.
+Redimus igitur necessario ad Graecos libros. Ex quibus accepimus ἀξίωμα esse his verbis definitum: λεκτὸν αὐτοτελὲς ἀπόφαντον ὅσον ἐφʼ αὑτῷ. Hoc ego supersedi vertere, quia novis et inconditis vocibus utendum fuit, quas pati aures per insolentiam vix possent.
 
 Sed M. Varro in libro De Lingua Latina ad Ciceronem quarto vicesimo expeditissime ita finit: Proloquium est sententia in qua nihil desideratur.
 
@@ -7569,7 +7569,7 @@ cui sane nisi modum feceris, periculum non mediocre erit ne, ut plerique alii, t
 
 Quid significet verbum in libris veterum creberrime positum susque deque.
 
-SUSQUE deque fero aut susque deque sum aut s.d sum, added by Hertz; aut s.d. est, Skutsch. aut susque deque habeo—his enim omnibus modis dicitur—verbum est ex hominum doctorum sermonibus. In poematis quoque et in epistulis veterum scriptum est plurifariam; sed facilius reperias qui verbum ostentent quam qui intellegant.
+SUSQUE deque fero aut susque deque sum aut susque deque habeo—his enim omnibus modis dicitur—verbum est ex hominum doctorum sermonibus. In poematis quoque et in epistulis veterum scriptum est plurifariam; sed facilius reperias qui verbum ostentent quam qui intellegant.
 
 Ita plerique nostrum quae remotiora verba invenimus dicere ea properamus, non discere.
 
@@ -7593,7 +7593,7 @@ Verum haec ludus ibi susque omnia deque fuerunt,
 
 Susque et deque fuere, inquam, omnia, ludus iocusque;
 
-Illud opus durum, ut Setinum accessimus finem: Αἰγίλιποι aigilepes, Marx. montes, Aetnae omnes, asperi Athones.
+Illud opus durum, ut Setinum accessimus finem: Αἰγίλιποι montes, Aetnae omnes, asperi Athones.
 
 Quid sint proletarii, quid capite censi; quid item sit in XII. Tabulis adsiduus; et quae eius vocabuli ratio sit.
 
@@ -7609,7 +7609,7 @@ Atque ego, aspiciens quempiam in eo circulo ius civile callentem, familiarem meu
 
 et cum illic se iuris, non rei grammaticae peritum esse respondisset, Eo maxime, inquam, te dicere hoc oportet, quando, ut praedicas, peritus iuris es.
 
-Nam Q. Ennius verbum hoc ex Duodecim Tabulis vestris accepit, in quibus, si recte commemini, ita scriptum est: Adsiduo vindex adsiduus esto. Proletario iam civi civi cui, ω; cui deleted by Schöll. quis volet vindex esto.
+Nam Q. Ennius verbum hoc ex Duodecim Tabulis vestris accepit, in quibus, si recte commemini, ita scriptum est: Adsiduo vindex adsiduus esto. Proletario iam civi quis volet vindex esto.
 
 Petimus igitur ne Annalem nunc Q. Ennii, sed Duodecim Tabulas legi arbitrere et quid sit in ea lege proletarius civis interpretere.
 
@@ -7629,7 +7629,7 @@ nam et asperis reipublicae temporibus, cum iuventutis inopia esset, in militiam 
 
 Capite censos autem primus C. Marius, ut quidam ferunt bello Cimbrico, difficillimis reipublicae temporibus, vel potius, ut Sallustius ait, bello Iugurthino, milites scripsisse traditur, cum id factum ante in nulla memoria extaret.
 
-Adsiduus in XII. Tabulis pro locuplete et facile facienti dictus aut ab assibus, ab assiduis ω; corrected in a. Hosius suqgests assariis, comparing Varro, L.L. viii. 71; Gram. Lat. i. 76. 3K. id est, aere dando, cum id tempora reipublicae postularent, aut a muneris pro familiari copia faciendi adsiduitate.
+Adsiduus in XII. Tabulis pro locuplete et facile facienti dictus aut ab assibus, id est, aere dando, cum id tempora reipublicae postularent, aut a muneris pro familiari copia faciendi adsiduitate.
 
 Verba autem Sallusti in Historia Iugurthina de C. Mario consule et de capite censis haec sunt: Ipse interea milites scribere, non more maiorum nec ex classibus, sed ut libido cuiusque erat, capite censos plerosque. Id factum alii inopia bonorum, alii per ambitionem consulis memorabant, quod ab eo genere celebratus auctusque erat, et homini potentiampotential quaerenti egentissimus quisque oportunissimus.
 
@@ -7639,7 +7639,7 @@ GENS in Italia Marsorum orta fertur a Circae filio.
 
 Propterea Marsis hominibus, quorum dumtaxat familiae cum externis cognationibus nondum etiam permixtae corruptaeque sunt, vi quadam genitali datum ut et serpentium virulentorumvirulentoruni domitoresdomnitores sint et incentionibus herbarumque sucis faciant medellarum miracula.
 
-Hac eadem vi praeditos esse quosdam videmus, qui Psylli vocantur. Quorum super nomine et genere cum in veteribus litteris quaesissem, quaesissemus, Kronenberg. in quarto denique Herodoti libro fabulam de Psyllis hanc invenimus:
+Hac eadem vi praeditos esse quosdam videmus, qui Psylli vocantur. Quorum super nomine et genere cum in veteribus litteris quaesissem, in quarto denique Herodoti libro fabulam de Psyllis hanc invenimus:
 
 Psyllos quondam fuisse in terra Africa conterminos Nasamonibus Austrumque in finibus eorum quodam in tempore perquam validum ac diutinum flavisse;
 
@@ -7661,9 +7661,9 @@ Errare, inquit, dictum est ἀπὸ τοῦ ἔρρειν, versumque infert Home
 
 Item alucinari factum scripsit ex eo, quod dicitur Graece ἀλύειν, unde elucum quoque esse dictum putat, a littera in e versa, tarditatem quandam animi et stuporem, qui alucinantibus plerumque usu venit.
 
-Item fascinum appellatum appellatum, Skutsch; appellat, ω. quasi bascanum et fascinare esse quasi bascinare.
+Item fascinum appellatum quasi bascanum et fascinare esse quasi bascinare.
 
-Commode haec sane omnia et conducenter. Sed in libro quarto: Faenerator, inquit, appellatus est quasi φαινεράτωρ, ἀπὸ τοῦ φαίνεσθαι ἐπὶ τὸ χρηστότερον, quoniam id genus hominum homines, Skutsch. speciem ostentent humanitatishurnanitatis et commodi esse videantur inopibus nummos desiderantibus,
+Commode haec sane omnia et conducenter. Sed in libro quarto: Faenerator, inquit, appellatus est quasi φαινεράτωρ, ἀπὸ τοῦ φαίνεσθαι ἐπὶ τὸ χρηστότερον, quoniam id genus hominum speciem ostentent humanitatishurnanitatis et commodi esse videantur inopibus nummos desiderantibus,
 
 idque dixisse ait Hypsicraten quempiam grammaticum, cuius libri sane nobiles sunt super his, quae a Graecis accepta sunt. Sive hoc autem ipse Cloatius sive nescio quis alius nebulo effutivit, nihil potest dici insulsius.
 
@@ -7785,21 +7785,21 @@ navitas stupefactos convictosque ire infitias non quisse.
 
 Eam fabulam dicere Lesbios et Corinthios atque esse fabulae argumentum, quod simulacra duo aenea ad Taenarum viserentur, delphinus vehens et homo insidens.
 
-Quod Gallus Asinius et Largius Licinus sententiam M. Ciceronis reprehenderunt ex oratione quam dixit Pro M. CaelioCaclio; et quid ad versus homines stolidissimos pro eadem sententia vere re, Skutsch; mere, δ, digneque dici possit.
+Quod Gallus Asinius et Largius Licinus sententiam M. Ciceronis reprehenderunt ex oratione quam dixit Pro M. CaelioCaclio; et quid ad versus homines stolidissimos pro eadem sententia vere digneque dici possit.
 
 UT quidam fuerunt monstra hominum, quod de dis inmortalibus impias falsasque opiniones prodiderunt, ita nonnulli tam prodigiosi tamque vecordes extiterunt, in quibus sunt Gallus Asinius et Largius Licinus, cuius liber etiam fertur infando titulo Ciceromastix, ut scribere ausi sint M. Ciceronem parum integre atque inproprie atque inconsiderate locutum.
 
 Atque alia quidem quae reprehenderunt neque dictu neque auditu digna sunt,
 
-sed enim hoc, in hoc, w; in deleted by Hosius. in quo sibimet ipsi praeter cetera esse visi sunt verborum pensitatores subtilissimi, cedo, quale id sit consideremus.
+sed enim hoc, in quo sibimet ipsi praeter cetera esse visi sunt verborum pensitatores subtilissimi, cedo, quale id sit consideremus.
 
-M. Cicero Pro M. Caelio ita scribit: Nam quod obiectum est de pudicitia quodque omnium accusatorum non criminibus, sed vocibus maledictisque celebratum est, id numquam tam acerbe feret M. Caelius, ut eum paeniteat non deformem esse natum.
+**M** Cicero Pro M. Caelio ita scribit: Nam quod obiectum est de pudicitia quodque omnium accusatorum non criminibus, sed vocibus maledictisque celebratum est, id numquam tam acerbe feret M. Caelius, ut eum paeniteat non deformem esse natum.
 
 Non existumant verbo proprio esse usum, quod ait paeniteat, atque id prope ineptum etiam esse dicunt.
 
 Nam paenitere, inquiunt, tum dicere solemus, cum quae ipsi fecimus aut quae de nostra voluntate nostroque consilio facta sunt, ea nobis post incipiunt displicere sententiamque in iis nostram demutamus;
 
-neminem autem recte ita loqui paenitere sese, quod natus sit aut paenitere, quod mortalis sit aut quod ex offenso forte vulneratoque corpore dolorem sentiat, quando istiusmodi rerum nec consilium sit nostrum nec arbitrium, sed ea ingratis nostris in nostris, ω; in deleted by Carrio. vi ac necessitate naturae nobis accidant: Sicut hercle, inquiunt,
+neminem autem recte ita loqui paenitere sese, quod natus sit aut paenitere, quod mortalis sit aut quod ex offenso forte vulneratoque corpore dolorem sentiat, quando istiusmodi rerum nec consilium sit nostrum nec arbitrium, sed ea ingratis nostris vi ac necessitate naturae nobis accidant: Sicut hercle, inquiunt,
 
 non voluntarium fuit M. Caelio, quali forma nasceretur, cuius eum dixit non paenitere, tamquam in ea causa res esset ut rationem caperet paenitendi.
 
@@ -7817,9 +7817,9 @@ Velut haec verba ex Q. Claudi primo Annali, quae meminisse potui, notavi, quem l
 
 Arma, inquit, plerique abiciunt atque inermi inlatebrant sese. Inlatebrant verbum poeticum visum est, sed non absurdum neque asperum.
 
-Ea, inquit, dum fiunt, Latini subnixo animo ex victoria inerti consilium ineunt. Subnixo animo ex animo, supplied by Hertzfrom Nonius iv, p. 405, 29; et victoria certi, Canter. quasi sublimisublimli et supra nixo, verbum bene significans et non fortuitum; demonstratque animi altitudinem fiduciamque, quoniam quibus innitimur, iis quasi erigimur attollimurque.
+Ea, inquit, dum fiunt, Latini subnixo animo ex victoria inerti consilium ineunt. Subnixo animo quasi sublimisublimli et supra nixo, verbum bene significans et non fortuitum; demonstratque animi altitudinem fiduciamque, quoniam quibus innitimur, iis quasi erigimur attollimurque.
 
-Domus, inquit, suas quemque ire iubet et sua omnia frunisci. Frunisci frunisci, added by Carrio. rarius quidem fuit in aetate M. Tulli ac deinceps infra rarissimum, dubitatunque est ab inperitis antiquitatis an Latinum foret.
+Domus, inquit, suas quemque ire iubet et sua omnia frunisci. Frunisci rarius quidem fuit in aetate M. Tulli ac deinceps infra rarissimum, dubitatunque est ab inperitis antiquitatis an Latinum foret.
 
 Non modo autem Latinum, sed iucundius amoeniusque etiam verbum est fruniscor quam fruor, et ut fatiscor a fateor, ita fruniscor factum est a fruor.
 
@@ -7831,9 +7831,9 @@ Quód magno opere quaésiverunt, id frunisci nón queunt.
 
 Qui non parsit ápud se, frunítus est.
 
-Et Romani, inquit, multis armis et magno commeatu praedaque ingenti copiantur. Copiantur copiantur, added by Hertz (Carrio). verbum castrense est nec facile id reperias apud civilium causarum oratores, ex eademque figura est qua lignantur et pabulantur et aquantur. Sole, inquit, occaso.
+Et Romani, inquit, multis armis et magno commeatu praedaque ingenti copiantur. Copiantur verbum castrense est nec facile id reperias apud civilium causarum oratores, ex eademque figura est qua lignantur et pabulantur et aquantur. Sole, inquit, occaso.
 
-Sole occaso non insuavi vetustate est, si quis aurem habeat non sordidam nec proculcatam; in Duodecim autem Tabulis verbum hoc ita scriptum est: Ante meridiem causam coniciunto, cum perorant ambo praesentes. Post meridiem praesenti litem addicito. Si ambo praesentes, sol sol, Hosius, comparing xiv. 7. 8; solis, Q. occasus suprema tempestas esto.
+Sole occaso non insuavi vetustate est, si quis aurem habeat non sordidam nec proculcatam; in Duodecim autem Tabulis verbum hoc ita scriptum est: Ante meridiem causam coniciunto, cum perorant ambo praesentes. Post meridiem praesenti litem addicito. Si ambo praesentes, sol occasus suprema tempestas esto.
 
 Nos, inquit, in medium relinquemus. Vulgus in medio dicit; nam vitium esse istuc putat et, si dicas in medium ponere, id quoque esse soloecon putant; set probabilius significantiusque sic dici videbitur, si quis ea verba non incuriose introspiciat; Graece quoque θεῖναι εἰς μέσον, vitium id non est.
 
@@ -7845,9 +7845,9 @@ Nam Marcus, inquit, Manlius, quem Capitolium servasse a Gallis supra ostendi cui
 
 NihilNihl sibi, inquit, divitias opus esse. Nos divitiis dicimus. Sed vitium hoc orationis nullum est ac ne id quidem est quod figura dici solet; recta enim istaec oratio est et veteres conpluscule ita dixerunt, nec ratio dici potest, cur rectius sit divitiis opus esse quam divitias, nisi qui grammaticorum nova instituta ut τεμένων ἱερά observant.
 
-Nam hac, hac suggested by Hosius; haec, ω. inquit, maxime versatur deorum iniquitas, quod deteriores sunt incolumiores neque optimum quemquam inter nos sinunt diurnare. Inusitate diurnare dixit pro diu vivere, sed ex ea figuratione est, qua dicimus perennare. Cum iis, inquit, consermonabatur.
+Nam hac, inquit, maxime versatur deorum iniquitas, quod deteriores sunt incolumiores neque optimum quemquam inter nos sinunt diurnare. Inusitate diurnare dixit pro diu vivere, sed ex ea figuratione est, qua dicimus perennare. Cum iis, inquit, consermonabatur.
 
-Sermonari rusticius videtur, sed rectius est, sermocinari tritius, tritius, Hosius; rectius, ω; crebrius, a; lectius, Dziatzko. sed corruptius est.
+Sermonari rusticius videtur, sed rectius est, sermocinari tritius, sed corruptius est.
 
 Sese, inquit, ne id quoque, quod tum suaderet, facturum esse. Ne id quoque dixit pro ne id quidem, infrequens nunc in loquendo, sed in libris veterum creberrimum.
 
@@ -7859,7 +7859,7 @@ Cum tantus, inquit, arrabo penes Samnites populi Romani esset. Arrabonem dixit s
 
 Miserrimas, inquit, vitas exegerunt, et: hic nimiis in otiis, inquit, consumptus est. Elegantia utrobique ex multitudine numeri quaesita est.
 
-Cominius, inquit, qua ascenderat, descendit atque verba Gallis dedit. Verba Cominium dedisse Gallis dicit, qui nihil quicquam cuiquam dixerat; neque eum Galli, qui Capitolium obsidebant, ascendentem aut descendentem aut descendentem, ς; not in the MSS. viderant. Sed verba dedit haut secus posuit quam si tu dicas latuit atque obrepsit.
+Cominius, inquit, qua ascenderat, descendit atque verba Gallis dedit. Verba Cominium dedisse Gallis dicit, qui nihil quicquam cuiquam dixerat; neque eum Galli, qui Capitolium obsidebant, ascendentem aut descendentem viderant. Sed verba dedit haut secus posuit quam si tu dicas latuit atque obrepsit.
 
 Convalles, inquit, et arboreta magna erant.
 
@@ -7877,9 +7877,9 @@ Riserunt hoc ad inludendum ex his, qui ibi aderant, unus atque alter, male homin
 
 Καὶ δὴ δοῦρα σέσηπε νεῶν καὶ σπάρτα λέλυνται.
 
-Tum ille prorsum inritatus: Non, inquit, meo libro versus iste, iste, Lion; ipse, Qπ; se, z; sed, NOX; ipse, sed, Longolius. sed vobis plane magister defuit, si creditis in eo versu σπάρτα id significare quod nos spartum dicimus.
+Tum ille prorsum inritatus: Non, inquit, meo libro versus iste, sed vobis plane magister defuit, si creditis in eo versu σπάρτα id significare quod nos spartum dicimus.
 
-Maiorem illi risum subiciunt, neque id desierunt, desierunt suggested by Hosius; destituerunt, Q1Z; the other MSS. have destiterunt. nisi liber ab eo prolatus esset M. Varronis vicesimus quintus Humanarum, in quo de isto Homeri verbo a Varrone ita scriptum est: Ego σπάρτα apud Homerum non plus spartum significare puto quam σπάρτους, qui dicuntur in agro Thebano nati. In Graecia sparti copia modo coepit esse ex Hispania. Neque ea ipsa facultate usi Liburni; sed hi plerasque naves loris suebant, Graeci magis cannabo et stuppa ceterisque sativis rebus, a quibus σπάρτα appellabant.
+Maiorem illi risum subiciunt, neque id desierunt, nisi liber ab eo prolatus esset M. Varronis vicesimus quintus Humanarum, in quo de isto Homeri verbo a Varrone ita scriptum est: Ego σπάρτα apud Homerum non plus spartum significare puto quam σπάρτους, qui dicuntur in agro Thebano nati. In Graecia sparti copia modo coepit esse ex Hispania. Neque ea ipsa facultate usi Liburni; sed hi plerasque naves loris suebant, Graeci magis cannabo et stuppa ceterisque sativis rebus, a quibus σπάρτα appellabant.
 
 Quod cum ita Varro dicat, dubito hercle, an posterior syllaba in eo verbo, quod apud Homerum est, acuenda sit, nisi quia voces huiusmodi, cum ex communi significatione in rei certae proprietatem concedunt, diversitate accentuum separantur.
 
@@ -7905,9 +7905,9 @@ Ex istis tamen centum et quinque omnibus, solis eum octo vicisse, idem Apollodor
 
 Nequaquam esse verum, quod minutis quibusdam rhetoricae artificibus videatur, M. Ciceronem in libro quem De Amicitia scripsit vitioso argumento usum, ἀμφισβητούμενον ἀντὶ ὁμολογουμένου posuisse; totumque id consideratius tractatum exploratumque.
 
-M. CICERO, in dialogo cui titulus est Laelius vel De Amicitia, docere volens amicitiam non spe expectationeque utilitatis neque pretii mercedisque causa colendam, sed quod ipsa per sese plena virtutis honestatisque sit expetendam diligendamque esse, etiamsi nihil opis nihilque emolumenti ex ea percipi queat, hac sententia atque his verbis usus est eaque dicere facit C. Laelium, sapientem virum, qui Publii Africani fuerat amicissimus: Quid enim?
+**M** CICERO, in dialogo cui titulus est Laelius vel De Amicitia, docere volens amicitiam non spe expectationeque utilitatis neque pretii mercedisque causa colendam, sed quod ipsa per sese plena virtutis honestatisque sit expetendam diligendamque esse, etiamsi nihil opis nihilque emolumenti ex ea percipi queat, hac sententia atque his verbis usus est eaque dicere facit C. Laelium, sapientem virum, qui Publii Africani fuerat amicissimus: Quid enim?
 
-Africanus indigens mei? Ne minime hercule! ac ne, Cic. ego quidem illius. Sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse nonnulla quam de meis moribus habebat me dilexit; auxit benivolentiam consuetudo. Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae. Ut enim benefici liberalesque sumus, non ut exigamus gratiam—neque enim beneficium faeneramur, sed natura propensi ad liberalitatem sumus—, sic amicitiam non spe mercedis adducti, sed quod omnis eius fructus in ipso amore inest, expetendam putamus.
+Africanus indigens mei? Ne ego quidem illius. Sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse nonnulla quam de meis moribus habebat me dilexit; auxit benivolentiam consuetudo. Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae. Ut enim benefici liberalesque sumus, non ut exigamus gratiam—neque enim beneficium faeneramur, sed natura propensi ad liberalitatem sumus—, sic amicitiam non spe mercedis adducti, sed quod omnis eius fructus in ipso amore inest, expetendam putamus.
 
 Hoc cum legeretur in coetu forte hominum doctorum, rhetoricus quidam sophista, utriusque linguae callens, haut sane ignobilis ex istis acutulis et minutis doctoribus qui τεχνικοί appellantur, atque in disserendo tamen non impiger, usum esse existimabat argumento M. Tullium non probo neque apodictico, sed eiusdem quaestionis, cuius esset ea ipsa res de qua quaereretur; verbisque id vitium Graecis appellat, quod accepisset ἀμφισβητούμενον ἀντὶ ὁμολογουμένου.
 
@@ -7923,9 +7923,9 @@ Poterit sane, inquit, ita dicere, sed neque amicitia liberalitati neque liberali
 
 Haec ille rhetoricus artifex dicere quibusdam videbatur perite et scienter, sed videlicet eum vocabula rerum vera ignoravisse.
 
-Nam beneficum et liberalem Cicero appellat, ita ut philosophi appellandum esse censent, non eum qui, ut ipse ait, beneficia faeneratur, sed qui benigne facit, nulla tacita citate, Q; citata, Q2; citatus, Hertz. ratione ad utilitates suas redundante.
+Nam beneficum et liberalem Cicero appellat, ita ut philosophi appellandum esse censent, non eum qui, ut ipse ait, beneficia faeneratur, sed qui benigne facit, nulla tacita ratione ad utilitates suas redundante.
 
-Non ergo obscuro neque ambiguo argumento usus est, sed certo atque perspicuo, siquidem, qui vere beneficus liberalisque est, qua mente bene aut liberaliter facit non quaeritur. quaerit, Skutsch.
+Non ergo obscuro neque ambiguo argumento usus est, sed certo atque perspicuo, siquidem, qui vere beneficus liberalisque est, qua mente bene aut liberaliter facit non quaeritur.
 
 Aliis enim longe nominibus appellandus est, si, cum talia facit, sui potius quam alterius iuvandi causa facit.
 
@@ -7935,7 +7935,7 @@ Sed cum beneficos liberalesque dixerit neque alius modi isti sint quam cuius ess
 
 Falsum esse, quod Verrius Flaccus, in libro secundo quos De Obscuris M. Catonis composuit, de servo recepticio scriptum reliquit.
 
-M. CATO Voconiam legem suadens verbis hisce usus est: Principio vobis mulier magnam dotem adtulit; tum magnam pecuniam recipit, quam in viri potestatem non conmittit, eam pecuniam viro mutuam dat; postea, ubi irata facta est, servum recepticium sectari atque flagitare virum iubet.
+**M** CATO Voconiam legem suadens verbis hisce usus est: Principio vobis mulier magnam dotem adtulit; tum magnam pecuniam recipit, quam in viri potestatem non conmittit, eam pecuniam viro mutuam dat; postea, ubi irata facta est, servum recepticium sectari atque flagitare virum iubet.
 
 Quaerebatur, servus recepticius quid esset. Libri statim quaesiti allatique sunt Verrii Flacci De Obscuris Catonis. In libro secundo scriptum et inventum est, recepticium servum dici nequam et nulli pretii, qui, cum venum esset datus, redhibitus ob aliquod vitium receptusque sit.
 
@@ -7947,9 +7947,9 @@ Recepticius enim servus, in ea re quam dicit Cato, aliud omnino est quam Verrius
 
 Atque id cuivis facile intellectu est; res enim procul dubio sic est: quando mulier dotem marito dabat, tum quae ex suis bonis retinebat neque ad virum tramittebat, ea recipere dicebatur, sicuti nuncnune quoque in venditionibus recipi dicuntur, quae excipiuntur neque veneunt.
 
-Quo verbo Plautus quoque in Trinummo usus est in hoc versu: Postículum hoc recépit, recepit, MSS. of Plaut. except A, and of Nonius, p. 384 (613, Linds.); recipit, ω. cum aedis véndidit, id est: cum aedis vendidit, particulam quandam quae post eas aedis erat non vendidit, sed retinuit.
+Quo verbo Plautus quoque in Trinummo usus est in hoc versu: Postículum hoc recépit, cum aedis véndidit, id est: cum aedis vendidit, particulam quandam quae post eas aedis erat non vendidit, sed retinuit.
 
-Postículum hoc recépit, recepit, MSS. of Plaut. except A, and of Nonius, p. 384 (613, Linds.); recipit, ω. cum aedis véndidit,
+Postículum hoc recépit, cum aedis véndidit,
 
 Ipse etiam Cato mulierem demonstrare locupletem volens: Mulier, inquit, et magnam dotem dat et magnam pecuniam recipit, hoc est: et magnam dotem dat et magnam pecuniam retinet.
 
@@ -7975,7 +7975,7 @@ Videbatur tamen hoc dicere, suum verbum et est esse et erit; quando per sese pon
 
 Cum enim dico: in campo est et in comitio est, tempus instans significo; item cum dico in campo erit, tempus futurum demonstro; at cum dico: factum est, scriptum est, subruptum est, quamquam est verbum temporis est praesentis, confunditur tamen cum praeterito et praesens esse desinit.
 
-Sic igitur, inquit, etiam istud quod in lege est; si dividas separesque duo verba haec subruptum et erit, ut sic audias subruptum erit, erit added by Hertz; subruptum, tum erit, suggested by Hosius. tamquam certamencertanien erit aut sacrificium erit, tumturn videbitur lex in postfuturum loqui; si vero copulate permixteque dictum intellegas, ut subruptum erit non duo, sed unum verbum sit idque unitum unitum, Hertz; unita, ω; unita p. declinatio, Skutsch. patiendi declinatione sit, Tum hoc verbo non minus praeteritum tempus ostenditur quam futurum.
+Sic igitur, inquit, etiam istud quod in lege est; si dividas separesque duo verba haec subruptum et erit, ut sic audias subruptum erit, tamquam certamencertanien erit aut sacrificium erit, tumturn videbitur lex in postfuturum loqui; si vero copulate permixteque dictum intellegas, ut subruptum erit non duo, sed unum verbum sit idque unitum patiendi declinatione sit, Tum hoc verbo non minus praeteritum tempus ostenditur quam futurum.
 
 In sermonibus apud mensam Tauri philosophi quaeri agitarique eiusmodi solita: cur oleum saepe et facile, vina rarius congelascant, acetum haut fere umquam et quod aquae fluviorum fontiumque durentur, mare gelu non duretur.
 
@@ -7983,11 +7983,11 @@ PHILOSOPHUS TAURUS accipiebat nos Athenis cena plerumque ad id diei ubi iam vesp
 
 id enim est tempus istic cenandi. Frequens eius cenae fundus et firmamentum omne erat aula una lentis Aegyptiae et cucurbitae inibi minutim caesae.
 
-Ea quodam die ubi paratis et expectantibus nobis adlata atque inposita mensae est, puerum iubet Taurus oleum in aulam indere. aedere, X, with erasure of a; videre, Q.
+Ea quodam die ubi paratis et expectantibus nobis adlata atque inposita mensae est, puerum iubet Taurus oleum in aulam indere.
 
 Erat is puer genere Atticus, ad annos maxime natus octo, festivissimis aetatis et gentis argutiis scatens.
 
-Gutum Samium ore tenus inprudens inanem, tamquam si inesset oleum, adfert convertitque eum et, ut solitum est, circumegit per omnem partem aulae manum: manum, ω; manu suggested by Hosius. nullum inde ibat oleum.
+Gutum Samium ore tenus inprudens inanem, tamquam si inesset oleum, adfert convertitque eum et, ut solitum est, circumegit per omnem partem aulae manum: nullum inde ibat oleum.
 
 Aspicit puer gutum atrocibus oculis stomachabundus et concussum vehementius iterum in aulam vertit;
 
@@ -8015,7 +8015,7 @@ Praeterea id quoque ait quaeri dignum, cur fluviorum et fontium aquae gelu duren
 
 Dum haec Taurus, interea puer venerat et aula deferbuerat tempusque esse coeperat edendi et tacendi.
 
-De notis litterarum quae in C. Caesaris epistulis reperiuntur; deque aliis clandestinis litteris ex vetere historia petitis; petita, Skutsch, comparing lemmata of i. 3; 7; 11. et quid σκυτάλη sit Laconica.
+De notis litterarum quae in C. Caesaris epistulis reperiuntur; deque aliis clandestinis litteris ex vetere historia petitis; et quid σκυτάλη sit Laconica.
 
 LIBRI sunt epistularum C. Caesaris ad C. Oppium et Balbum Cornelium, qui rebus eius absentis curabant.
 
@@ -8025,13 +8025,13 @@ Erat autem conventum inter eos clandestinum de commutando situ litterarum, ut in
 
 quaenam vero littera pro qua scriberetur, ante is, sicuti dixi, conplacebat qui hanc scribendi latebram parabant.
 
-Est adeo Probi grammatici commentarius satis curiose factus De Occulta Litterarum Significatione in Epistularum C. Caesaris Scriptura. scriptura, Hertz; scriptarum, ω.
+Est adeo Probi grammatici commentarius satis curiose factus De Occulta Litterarum Significatione in Epistularum C. Caesaris Scriptura.
 
-Lacedaemonii autem veteres, cum dissimulare et occultare litteras publice ad imperatores suos missas volebant, ne, si ab hostibus eae captae hostibus exceptae, ς. forent, consilia sua noscerentur, epistulas id genus factas mittebant.
+Lacedaemonii autem veteres, cum dissimulare et occultare litteras publice ad imperatores suos missas volebant, ne, si ab hostibus eae captae forent, consilia sua noscerentur, epistulas id genus factas mittebant.
 
 Surculi duo erant teretes, oblonguli, pari crassamento eiusdemque longitudinis, derasi atque ornati consimiliter;
 
-unus imperatori in bellum proficiscenti dabatur, alterum domi magistratus cum iure cura, Madvig; loro, Goettling. atque cum signo habebant.
+unus imperatori in bellum proficiscenti dabatur, alterum domi magistratus cum iure atque cum signo habebant.
 
 Quando usus venerat litterarum secretiorum, circum eum surculum lorum modicae tenuitatis, longum autem quantum rei satis erat, conplicabant, volumine rotundo et simplici, ita uti orae adiunctae undique et cohaerentes lori, quod plicabatur, coirent.
 
@@ -8043,13 +8043,13 @@ resolutio autem lori litteras truncas atque mutilas reddebat membraque earum et 
 
 propterea, si id lorum in manus hostium inciderat, nihil quicquam coniectari ex eo scripto quibat;
 
-sed ubi ille ad quem erat missum acceperat, surculo conpari, quem habebat, a added by Madvig. capite ad finem, proinde ut debere fieri sciebat, circumplicabat, atque ita litterae per eundem ambitum surculi coalescentes rursum coibant integramque et incorruptam epistulam et facilem legi praestabant.
+sed ubi ille ad quem erat missum acceperat, surculo conpari, quem habebat, a capite ad finem, proinde ut debere fieri sciebat, circumplicabat, atque ita litterae per eundem ambitum surculi coalescentes rursum coibant integramque et incorruptam epistulam et facilem legi praestabant.
 
 Hoc genus epistulae Lacedaemonii σκυτάλην appellant.
 
 Legebamus id quoque in vetere historia rerum Poenicarum, virum indidem quempiam inlustrem—sive ille Hasdrubal sive quis alius est non retineo—epistulam scriptam super rebus arcanis hoc modo abscondisse:
 
-pugillaria nova, nondum etiam cera inlita, accepisse, cepisse, Kronenberg, comparing xix. 12. 9; but see Hor. Serm. i. 4. 14–15. litteras in lignum incidisse, postea tabulas, uti solitum est, cera conlevisse easque tabulas, tamquam non scriptas, cui facturum id praedixerat misisse; eum deinde ceram derasisse litterasque incolumes ligno incisas legisse.
+pugillaria nova, nondum etiam cera inlita, accepisse, litteras in lignum incidisse, postea tabulas, uti solitum est, cera conlevisse easque tabulas, tamquam non scriptas, cui facturum id praedixerat misisse; eum deinde ceram derasisse litterasque incolumes ligno incisas legisse.
 
 Est et alia in monumentis rerum Graecarum profunda quaedam et inopinabilis latebra, barbarico astu excogitata.
 
@@ -8071,7 +8071,7 @@ Servus, ut imperatum erat, ad Aristagoran venit mandatumque domini adfert.
 
 Atque ille id non esse frustra ratus, quod erat mandatum fecit. Ita litterae perlatae sunt.
 
-Quid de versibus Vergilii Favorinus existumarit, quibus in describenda flagrantia montis Aetnae Pindarum poetam secutus est; conlataque ab eo super eadem re utriusque carmina et diiudicata. indiiudicata, δ; iudicata, Hertz.
+Quid de versibus Vergilii Favorinus existumarit, quibus in describenda flagrantia montis Aetnae Pindarum poetam secutus est; conlataque ab eo super eadem re utriusque carmina et diiudicata.
 
 FAVORINUM philosophum, cum in hospitis sui Antiatem villam aestu anni concessisset nosque ad eum videndum Roma venissemus, memini super Pindaro poeta et Vergilio in hunc ferme modum disserere:
 
@@ -8089,7 +8089,7 @@ Itaque cum morbo obpressus adventare mortem viderat, petivit oravitque a suis am
 
 In his autem, inquit, quae videntur retractari et corrigi debuisse, is maxime locus est qui de monte Aetna factus est. Nam cum Pindari, veteris poetae, carmen quod de natura atque flagrantia montis eius compositum est, aemulari vellet, eiusmodi sententias et verba molitus est, ut Pindaro quoque ipso, qui nimis opima pinguique esse facundia existimatus est, insolentior hoc quidem in loco tumidiorque sit.
 
-Atque uti vosmet ipsos, inquit, eius quod dico arbitros faciam, carmen Pindari quod est super monte Aetna, quantulum est mihi memoriae, dicam: Τᾶς ἐρεύγονται μὲν ἀπλάτου πυρὸς ἁγνόταται Ἐκ μυχῶν παγαί· ποταμοὶ δʼ ἁμέροισιν μὲν προχέοντιμυχῶν παγαί· ποταμοὶ δʼ ἁμέροισιν μὲν προχέοντι ῥόον καπνοῦ Αἴθωνʼ· ἀλλʼ ἐν ὄρφναισιν πέτραςπέτρας omitted by ω. Φοίνισσα κυλινδομένα φλὸξ ἐς βαθεῖαν φέρει πόντου πλάκα σὺν πατάγῳ. Κεῖνο δʼ Ἀφαίστοιο κρουνοὺς ἑρπετὸν Δεινοτάτους ἀναπέμπει· τέρας μὲν θαυμάσιον προσιδέσθαι, θαῦμα δὲ καὶ παρεόντων ἀκοῦσαι.
+Atque uti vosmet ipsos, inquit, eius quod dico arbitros faciam, carmen Pindari quod est super monte Aetna, quantulum est mihi memoriae, dicam: Τᾶς ἐρεύγονται μὲν ἀπλάτου πυρὸς ἁγνόταται Ἐκ μυχῶν παγαί· ποταμοὶ δʼ ἁμέροισιν μὲν προχέοντιμυχῶν παγαί· ποταμοὶ δʼ ἁμέροισιν μὲν προχέοντι ῥόον καπνοῦ Αἴθωνʼ· ἀλλʼ ἐν ὄρφναισιν πέτρας Φοίνισσα κυλινδομένα φλὸξ ἐς βαθεῖαν φέρει πόντου πλάκα σὺν πατάγῳ. Κεῖνο δʼ Ἀφαίστοιο κρουνοὺς ἑρπετὸν Δεινοτάτους ἀναπέμπει· τέρας μὲν θαυμάσιον προσιδέσθαι, θαῦμα δὲ καὶ παρεόντων ἀκοῦσαι.
 
 Τᾶς ἐρεύγονται μὲν ἀπλάτου πυρὸς ἁγνόταται
 
@@ -8125,7 +8125,7 @@ Iam principio, inquit, Pindarus, veritati magis obsecutus, id dixit quod res era
 
 Vergilius autem, dum in strepitu sonituque verborum conquirendo laborat, utrumque tempus, nulla discretione facta, confudit.
 
-Atque ille Graecus quidem fontes imitus imitus, Lipsius; imitatus, ω. ignis eructari et fluere amnes fumi et flammarum fulva et tortuosa volumina in plagas maris ferre, quasi quosdam igneos angues, luculente dixit;
+Atque ille Graecus quidem fontes imitus ignis eructari et fluere amnes fumi et flammarum fulva et tortuosa volumina in plagas maris ferre, quasi quosdam igneos angues, luculente dixit;
 
 at hic noster atram nubem turbine piceo et favilla fumantem ῥόον καπνοῦ αἴθωνα interpretari volens, crasse et inmodice congessit,
 
@@ -8145,7 +8145,7 @@ ET Plutarchus et alii quidam docti viri reprehensum esse ab Erasistrato, nobili 
 
 Τέγγε πνεύμονα οἴνῳ· τὸ γὰρ ἄστρον περιτέλλεται,
 
-ipsum autem Erasistratum dicere duas esse quasi canaliculas quasdam vel fistulas easque ab oris faucibus proficisci deorsum, per earumque alteram deduci delabique in stomachum esculenta omnia et posculenta posculenta, Z, cf. iv. 1. 17; poculenta (potulenta, NQ), ω. ex eoque ferri in ventriculum, quae Graece appellatur; ἡ κάτω κοιλία, atque ibi subigi digerique, ac deinde aridiora ex his recrementa in alvum convenire, quod Graece κόλον dicitur, humidiora per renes in vesicam.
+ipsum autem Erasistratum dicere duas esse quasi canaliculas quasdam vel fistulas easque ab oris faucibus proficisci deorsum, per earumque alteram deduci delabique in stomachum esculenta omnia et posculenta ex eoque ferri in ventriculum, quae Graece appellatur; ἡ κάτω κοιλία, atque ibi subigi digerique, ac deinde aridiora ex his recrementa in alvum convenire, quod Graece κόλον dicitur, humidiora per renes in vesicam.
 
 Per alteram autem fistulam, quae Graece nominatur τραχεῖα ἀρτηρία, spiritum a summo ore in pulmonem atque inde rursum in os et in nares commeare,
 
@@ -8153,15 +8153,15 @@ perque eandem viam vocis quoque fieri meatum ac, ne potus cibusve aridior, quem 
 
 eamque ἐπιγλωττίδα inter edendum bibendumque operire atque protegere τὴν τραχεῖαν ἀρτηρίαν, ne quid ex esca potuve incideret in illud quasi aestuantis animae iter; ac propterea nihil humoris influere in pulmonem ore ipso arteriae communito. Haec Erasistratus medicus adversum Platonem.
 
-Sed Plutarchus in libro septimo, Volkmann; Symp. vii, Skutsch. Symposiacorum auctorem Platonis sententiae Hippocraten dicit fuisse idemque esse opinatos et Philistiona Locrum et Dioxippum Hippocraticum, veteres medicos et nobiles; atque illam, de qua Erasistratus dixerat, ἐπιγλωττίδα non idcirco eo in loco constitutam, ne quid ex potu influeret in arteriam; nam pulmoni quoque fovendo rigandoque utiles necessariosque humores videri, set adpositam quasi moderatricem quandam et arbitram prohibendi admittendive quod ex salutis usu foret, uti edulia quidem omnia defenderet ab arteria depelleretque in stomachum, potum autem partiretur inter stomachum et pulmonem et quod ex eo admitti in pulmonem per arteriam deberet, non rapidum id neque universum, sed quadam quasi obice sustenta tum ac repressum sensim paulatimque tramitteret atque omne reliquum in alteram stomachi fistulam derivaret.
+Sed Plutarchus in libro Symposiacorum auctorem Platonis sententiae Hippocraten dicit fuisse idemque esse opinatos et Philistiona Locrum et Dioxippum Hippocraticum, veteres medicos et nobiles; atque illam, de qua Erasistratus dixerat, ἐπιγλωττίδα non idcirco eo in loco constitutam, ne quid ex potu influeret in arteriam; nam pulmoni quoque fovendo rigandoque utiles necessariosque humores videri, set adpositam quasi moderatricem quandam et arbitram prohibendi admittendive quod ex salutis usu foret, uti edulia quidem omnia defenderet ab arteria depelleretque in stomachum, potum autem partiretur inter stomachum et pulmonem et quod ex eo admitti in pulmonem per arteriam deberet, non rapidum id neque universum, sed quadam quasi obice sustenta tum ac repressum sensim paulatimque tramitteret atque omne reliquum in alteram stomachi fistulam derivaret.
 
 De materiis infamibus, quas Graeci ἀδόξους appellant, a Favorino exercendi gratia disputatis.
 
-INFAMES materias, sive quis mavult dicere inopinabiles, quas Graeci ἀδόξους ὑποθέσεις appellant, et veteres adorti sunt, non sophistae solum, sed philosophi quoque, et noster Favorinus oppido quam libens in eas materias se se added by Madvig. deiciebat, deiciebat, T; dicebat, X; deicebat, ω. vel ingenio expergificando ratus idoneas vel exercendis argutiis vel edomandis usu difficultatibus;
+INFAMES materias, sive quis mavult dicere inopinabiles, quas Graeci ἀδόξους ὑποθέσεις appellant, et veteres adorti sunt, non sophistae solum, sed philosophi quoque, et noster Favorinus oppido quam libens in eas materias se deiciebat, vel ingenio expergificando ratus idoneas vel exercendis argutiis vel edomandis usu difficultatibus;
 
 sicuti, cum Thersitae laudes quaesivit et cum febrim quartis diebus recurrentem laudavit, lepida sane multa et non facilia inventu in utramque causam dixit eaque scripta in libris reliquit.
 
-Sed in febris laudibus testemtested etiam Platonem produxit, quem scripsisse ait qui quartanam passus convaluerit viresque integras recuperaverit, fidelius constantiusque postea valiturum. Atque inibi in in added in ς. isdem laudibus non hercle hac sententiola invenuste lusit:
+Sed in febris laudibus testemtested etiam Platonem produxit, quem scripsisse ait qui quartanam passus convaluerit viresque integras recuperaverit, fidelius constantiusque postea valiturum. Atque inibi in isdem laudibus non hercle hac sententiola invenuste lusit:
 
 Versus, inquit, est longo hominum aevo probatus: Ἄλλοτε μητρυιὴ πέλει ἡμέρη, ἄλλοτε μήτηρ. Eo versu significatur, non omni die bene esse posse, sed isto bene atque alio male.
 
@@ -8197,7 +8197,7 @@ Sententiae ex Publili mimisMiminis selectae lepidiores.
 
 PUBLILIUS mimos scriptitavit. Dignus habitus est qui subpar Laberio iudicaretur.
 
-C. autem Caesarem ita Laberii maledicentia et adrogantia offendebat, ut acceptiores sibi esse Publili quam Laberii mimos praedicaret.
+**C** autem Caesarem ita Laberii maledicentia et adrogantia offendebat, ut acceptiores sibi esse Publili quam Laberii mimos praedicaret.
 
 Huius Publili sententiae feruntur pleraeque lepidae et ad communem sermonum usum commendatissimae, ex quibus sunt istae singulis versibus circumscriptae,
 
@@ -8221,7 +8221,7 @@ Furór fit laesa saépius patiéntia.
 
 Inprobe Neptúnum accusat, qui iterum naufragiúm facit.
 
-Ita amicumamicumi habeas pésse ut facile facile, Syrus; omitted by ω and Macrob. ii. 7. 11. fieri hunc inimicúm putes.
+Ita amicumamicumi habeas pésse ut facile fieri hunc inimicúm putes.
 
 Veterém ferendo iniúriam invités novam.
 
@@ -8241,7 +8241,7 @@ idque cum in historia Graeca legissem, quod elleboro candido scriptum erat, quid
 
 Tum comperi duas species ellebori esse discerniculo coloris insignes, candidi et nigri; eos autem colores non in semine ellebori neque in virgultis, sed in radice dinosci; candido stomachum et ventrem superiorem vomitionibus purgari; nigro alvum, quae inferior vocatur, dilui, utriusque esse hanc vim, ut humoreshumrores noxios in quibus causae morborum sunt extrahant.
 
-Esse autem periculum ne inter causas morborum, omni corporum via patefacta, ea quoque ipsa, in quibus causa vivendi est, effluant effluant suggested by Hosius; amittantur, Vahlen (cf. xix. 12. 5); exinaniantur, ς; omitted by ω. amissoque omni naturalis alimoniae fundamento homo exhaustus intereat.
+Esse autem periculum ne inter causas morborum, omni corporum via patefacta, ea quoque ipsa, in quibus causa vivendi est, effluant amissoque omni naturalis alimoniae fundamento homo exhaustus intereat.
 
 Set elleborum sumi posse tutissime in insula Anticyra Plinius Secundus in libris Naturalis Historiae scripsit. Propterea Livium Drusum, qui tribunus plebi fuit, cum morbum qui comitialis dicitur pateretur, Anticyram navigasse et in ea insula elleborum bibisse ait, atque ita inorbo liberatum.
 
@@ -8261,17 +8261,17 @@ Quamobrem postea, cum proelio victus in ultima regni refugisset et mori decrevis
 
 Huius regis antidotus celebratissima est, quae Mitridatios vocatur.
 
-Mitridatem, Ponti regem, quinque duobus, n; II, ς; duarum, Pliny and others. et viginti gentium linguis locutum; Quintumque Ennium tria corda habere sese dixisse, quod tris linguas percalluisset, Graecam, Oscam, Latinam.
+Mitridatem, Ponti regem, quinque et viginti gentium linguis locutum; Quintumque Ennium tria corda habere sese dixisse, quod tris linguas percalluisset, Graecam, Oscam, Latinam.
 
 QUINTUS ENNIUS tria corda habere sese dicebat, quod loqui Graece et Osce et Latine sciret.
 
-Mitridates autem, Ponti atque Bithyniae rex inclutus, qui a Cn; Pompeio bello superatus est, quinque duarum, ς. et viginti gentium quas sub dicione habuit linguas percalluit earumque omnium gentium viris haut umquam per interpretem conlocutus est, sed ut quemque ab eo appellari usus fuit, proinde lingua et oratione ipsius non minus scite quam si gentilis eius esset locutus est.
+Mitridates autem, Ponti atque Bithyniae rex inclutus, qui a Cn; Pompeio bello superatus est, quinque et viginti gentium quas sub dicione habuit linguas percalluit earumque omnium gentium viris haut umquam per interpretem conlocutus est, sed ut quemque ab eo appellari usus fuit, proinde lingua et oratione ipsius non minus scite quam si gentilis eius esset locutus est.
 
 Quod M. Varro C. Sallustium. historiae scriptorem, deprehensum ab Annio Milone in adulterio scribit et loris caesum pecuniaque data dimissumdimrissum.
 
-M. VARRO, in litteris atque vita fide homo multa et gravis, in libro quem inscripsit scripsit, ω; correc/el by Burman. Pius aut De Pace, C. Sallustium scriptorem seriae illius et severae orationis, in cuius historia notiones censorias fieri atque exerceri videmus, in adulterio deprehensum ab Annio Milone loris bene caesuin dicit et, cum dedisset pecuniam, dimissum.
+**M** VARRO, in litteris atque vita fide homo multa et gravis, in libro quem inscripsit Pius aut De Pace, C. Sallustium scriptorem seriae illius et severae orationis, in cuius historia notiones censorias fieri atque exerceri videmus, in adulterio deprehensum ab Annio Milone loris bene caesuin dicit et, cum dedisset pecuniam, dimissum.
 
-Quid Epictetus philosophus dicere solitus sit hominibushoninibus nequamneuam et inpuris, disciplinas philosophiaephilosoplhiae studiose tractantibus; et quae duo verba observanda praeceperit omniumomniuni rerum longelone saluberrima. saluberrima, Skutsch; salubria, ω.
+Quid Epictetus philosophus dicere solitus sit hominibushoninibus nequamneuam et inpuris, disciplinas philosophiaephilosoplhiae studiose tractantibus; et quae duo verba observanda praeceperit omniumomniuni rerum longelone saluberrima.
 
 FavorinumFAVOINUM ego audivi dicere Epictetum philosophum dixisse plerosque istos, qui philosophariphilosohari viderentur, philosophos esse huiuscemodieiuscemodi ἄνευ τοῦ πράττειν, μέχρι τοῦ λέγειν; id significat factis procul, verbis tenus.
 
@@ -8285,7 +8285,7 @@ Praeterea idem ille Epictetus, quod ex eodem Favorino audivimus, solitus dicere 
 
 Itaque, inquit, si quis haec duo verba cordi habeat eaque sibi imperando atque observando curet, is erit pleraque inpeccabilis vitamque vivet tranquillissimam. Verba haec duo dicebat: ἀνέχου et ἀπέχου.
 
-Verba sumptasumnpta ex SymposioSlnmposio PlatonisPllatonis, numerisrumeris cum numeris sugq. by Hosius. coagmentisque verborum scite modulatequelmodtulatequc apta, apta, Lion; apteque composite, Beloc; aptique, ω; apta atque, Daonsté. exercendiexerxcendi gratia in Latinam orationem versa.
+Verba sumptasumnpta ex SymposioSlnmposio PlatonisPllatonis, numerisrumeris coagmentisque verborum scite modulatequelmodtulatequc apta, exercendiexerxcendi gratia in Latinam orationem versa.
 
 SymposiumSYIMPOSIUMI Platonis apud philosophum Taurum legebatur.
 
@@ -8313,7 +8313,7 @@ Satis autem visum est in hoc conmentario de temporibus paucorum hominum dicere, 
 
 Incipiemus igitur a Solone claro, quoniam de Homero et Hesiodo inter omnes fere scriptores constitit aetatem eos egisse vel isdem fere temporibus vel Homerum aliquanto antiquiorem, utrumque tamen ante Romam conditam vixisse, Silviis Albae regnantibus, annis post bellum Troianum, ut Cassius in prino Annalium de Homero atque Hesiodo scriptum reliquit, plus centum atque sexaginta, ante Romam autem conditam, ut Cornelius Nepos in primo Chronico de Homero dicit, annis circiter centum et sexaginta.
 
-Solonem ergo accepimus, unum ex illo nobili numero sapientium, leges scripsisse Atheniensium, Tarquinio Prisco Romae regnante, anno regni eius tricesimo tertio. Lewze (Rh. Mus., 1911) on chronological grounds would read xxiii. with T.
+Solonem ergo accepimus, unum ex illo nobili numero sapientium, leges scripsisse Atheniensium, Tarquinio Prisco Romae regnante, anno regni eius tricesimo tertio.
 
 Servio autem Tullio regnante, Pisistratus Athenis tyrannus fuit, Solone ante in exilium voluntarium profecto, quoniam id ei praedicenti non creditum est.
 
@@ -8345,7 +8345,7 @@ In hoc tempore nobiles celebresque erant Sophocles ac deinde Euripides tragici p
 
 Iam deinde, tribunis militaribus consulari imperio rempublicam Romae regentibus, ad annum fere conditae urbis trecentesimum quadragesimum septimum, triginta illi tyranni praepositi sunt a Lacedaemoniis Atheniensibus et in Sicilia Dionysius superior tyrannidem tenuit, paucisque annis post Socrates Athenis capitis damnatus est et in carcere veneno necatus.
 
-Set set, Q; the other MSS. omit; et, Hertz. ea fere tempestate Romae M. Furius Camillus dictator fuitfruit et Veios cepit;
+Set ea fere tempestate Romae M. Furius Camillus dictator fuitfruit et Veios cepit;
 
 ac post non longo tempore bellum Senonicum fuit,
 
@@ -8391,13 +8391,13 @@ Anno deinde post Romam conditam quadringentesimo ferme et nonagesimo, consulibus
 
 neque diu post Callimachus, poeta Cyrenensis, Alexandriae apud Ptolemaeum regem celebratus est.
 
-Annis deinde postea paulo pluribus quam viginti, pace cum Poenis facta, consulibus C. C. added by Hosius. Claudio Centhone, Appii Caeci filio, et M. SempronioSeimpronio Tuditano, primus omnium L. Livius poeta tabulas docere Romae coepit post Sophoclis et Euripidis mortem annis plus fere centum et sexaginta, post Menandri annis circiter quinquaginta duobus.
+Annis deinde postea paulo pluribus quam viginti, pace cum Poenis facta, consulibus C. Claudio Centhone, Appii Caeci filio, et M. SempronioSeimpronio Tuditano, primus omnium L. Livius poeta tabulas docere Romae coepit post Sophoclis et Euripidis mortem annis plus fere centum et sexaginta, post Menandri annis circiter quinquaginta duobus.
 
-Claudium et Tuditanum consules secuntur Q. Valerius et C. Mamilius, quibus natum esse Q. Ennium poetam M. Varro in primo De Poetis libro scripsit eumque, cum septimum et sexagesimum annum haberet, duodecimum duodevicesinum, Mcrela; xxii (first x erased), X; xvii, L. Miller. Annalem scripsisse, idque ipsum Ennium in eodem libro dicere.
+Claudium et Tuditanum consules secuntur Q. Valerius et C. Mamilius, quibus natum esse Q. Ennium poetam M. Varro in primo De Poetis libro scripsit eumque, cum septimum et sexagesimum annum haberet, duodecimum Annalem scripsisse, idque ipsum Ennium in eodem libro dicere.
 
-Anno deinde post Romam conditam quingentesimo undevicesimo vicesimo tertio, iv. 3. 2. Sp. Carvilius Ruga primus Romae de amicorum sententia divortium cum uxore fecit, quod sterila esset iurassetque apud censores, uxorem se liberum quaerundorum quaerundum, iv. 3. 2. causa habere,
+Anno deinde post Romam conditam quingentesimo undevicesimo Sp. Carvilius Ruga primus Romae de amicorum sententia divortium cum uxore fecit, quod sterila esset iurassetque apud censores, uxorem se liberum quaerundorum causa habere,
 
-eodemque anno Cn. Naevius poeta fabulas apud populum dedit, quem M. Varro in libro De Poetis primo stipendia fecisse ait bello Poenico primo, idque ipsum Naevium dicere in eo carmine quod de eodem bello scripsit. Porcius autem Licinus serius Porcium (Portium, δ; Portum, X) autem Licinium servius, ω, corrected by Torrentius and Carrio. poeticam Romae coepisse dicit dixit, Hertz; Porcium dicere, Ritschl, Schanz, Rhein. Mus. liv. 19. in his versibus:
+eodemque anno Cn. Naevius poeta fabulas apud populum dedit, quem M. Varro in libro De Poetis primo stipendia fecisse ait bello Poenico primo, idque ipsum Naevium dicere in eo carmine quod de eodem bello scripsit. Porcius autem Licinus serius poeticam Romae coepisse dicit in his versibus:
 
 Poénico belló secundo Músa pinnató gradu
 
@@ -8405,7 +8405,7 @@ Poénico belló secundo Músa pinnató gradu
 
 Ac deinde annis fere post quindecim bellum adversum
 
-Poenos sumptum est atque non nimium longe longe post (cf. § 35), sugg. by Hosius. M. Cato orator in civitate et Plautus poeta in scaena florueruntforuerunt;
+Poenos sumptum est atque non nimium longe M. Cato orator in civitate et Plautus poeta in scaena florueruntforuerunt;
 
 isdemque temporibus Diogenes Stoicus et Carneades Academicus et Critolaus Peripateticus ab Atheniensibus ad senatum populi Romani negotii publici gratia legati sunt.
 
@@ -8419,11 +8419,11 @@ FAMILIARES Favorini erant duo quidam non incelebres in urbe Roma philosophi. Eor
 
 His quondam ego acriter atque contente pro suis utrimque decretis propugnantibus, cum essemus una omnesones Ostiae cum Favorino, interfui.
 
-Ambulabamus autem in litore, cum iam advesperasceret, aestate anni novi. nova, Salmasius; novi, ω; molli, Damsté.
+Ambulabamus autem in litore, cum iam advesperasceret, aestate anni novi.
 
 Atque ibi Stoicus censebat et vitam beatam homini virtute animi sola et miseriammiseriar summam malitia sola posse effici, etiamsi cetera bona omnia quae corporalia et externa appellarentur virtuti deessent, malitiae adessent.
 
-Ille contra Peripateticus miseram quidem vitam vitiis animi et malitia sola fieri concedebat, sed ad conplendos omnes vitae beatae numeros virtutem solam nequaquam satis esse existimabat, quoniam et corporis integritas sanitasque et honestus modus formae et pecunia familiaris fortunae et pecuniae reique familiaris, Madvig; res familiaris, Damsté; but cf. iii. 17. 1. et bona existimatio ceteraque omnia corporis et fortunae bona necessaria viderentur perficiendae vitae beatae.
+Ille contra Peripateticus miseram quidem vitam vitiis animi et malitia sola fieri concedebat, sed ad conplendos omnes vitae beatae numeros virtutem solam nequaquam satis esse existimabat, quoniam et corporis integritas sanitasque et honestus modus formae et pecunia familiaris et bona existimatio ceteraque omnia corporis et fortunae bona necessaria viderentur perficiendae vitae beatae.
 
 Reclamabat hoc in loco Stoicus et, tamquam duas ille res diversas poneret, mirabatur, quod, cum essent malitia et virtus duo contraria, vita misera et beata quoque aeque contraria, non servaret in utrisque vim
 
@@ -8435,7 +8435,7 @@ Tum Peripateticus perquam hercle festive: Rogo te, inquit, cum bona venia respon
 
 Minime, inquit, vini amphora dici potest ex qua abest congius.
 
-Hoc ubi accepit Peripateticus, Unus igitur, inquit, congius amphoram facere dici debebit, quoniam, cum deest ille unus, non fit amphora vini et, cum accessit, fit amphora. Quod si id dicere absurdum est, uno congio solo fieri amphoram, itidem absurdum est una sola virtute vitam fieri beatam dicere, quoniam, cum virtus abest, beata esse vita numquam potest. possit, or quamquam for quoniam, Skutsch.
+Hoc ubi accepit Peripateticus, Unus igitur, inquit, congius amphoram facere dici debebit, quoniam, cum deest ille unus, non fit amphora vini et, cum accessit, fit amphora. Quod si id dicere absurdum est, uno congio solo fieri amphoram, itidem absurdum est una sola virtute vitam fieri beatam dicere, quoniam, cum virtus abest, beata esse vita numquam potest.
 
 Tum Favorinus aspiciens Peripateticum, Est quidem, inquit, argutiola haec qua de congio vini usus es exposita in libris; sed, ut scis, captio magis lepida quam probum aut simile argumentum videri debet.
 
@@ -8461,19 +8461,19 @@ Si nemo dissolvebat, corona eius quaestionis deo cuius id festum erat dicabatur.
 
 Quaerebantur autem res huiuscemodi: aut sententia poetae veteris lepide obscura, non anxie, aut historiae antiquioris requisitio, aut decreti cuiuspiam ex philosophia perperam invulgati purgatio, aut captionis sophisticae solutio, aut inopinati rariorisque verbi indagatio, aut tempus item in verbo perspicuo obscurissimum.
 
-Itaque nuper quaesita esse memini numero septem, quorum prima fuit enarratio horum versuum, qui sunt in Saturis Quinti Enni uno multifariam verbo concinniter inplicati. Quorum exemplum hoc est: Nám qui lepidé postulat álterum frustrári, Quém frustratúr, frustra eum dícit frustra ésse; Nám si se nam si se sugcested by Hosius; nam qui sese, MSS. frústrari quém frustras séntit, Quí frustratur frustrast, sí non ille frústra est. ille frustra est, Skutsch.
+Itaque nuper quaesita esse memini numero septem, quorum prima fuit enarratio horum versuum, qui sunt in Saturis Quinti Enni uno multifariam verbo concinniter inplicati. Quorum exemplum hoc est: Nám qui lepidé postulat álterum frustrári, Quém frustratúr, frustra eum dícit frustra ésse; Nám si se frústrari quém frustras séntit, Quí frustratur frustrast, sí non ille frústra est.
 
 Nám qui lepidé postulat álterum frustrári,
 
 Quém frustratúr, frustra eum dícit frustra ésse;
 
-Nám si se nam si se sugcested by Hosius; nam qui sese, MSS. frústrari quém frustras séntit,
+Nám si se frústrari quém frustras séntit,
 
-Quí frustratur frustrast, sí non ille frústra est. ille frustra est, Skutsch.
+Quí frustratur frustrast, sí non ille frústra est.
 
 Secunda quaestio fuit quonam modo audiri atque accipi deberet, quod Plato, in civitate quam in libris suis condidit, κοινὰς τὰς γυναῖκας, id est communes esse mulieres, censuit et praemia viris fortissimis summisque bellatoribus posuit saviationes puerorum et puellarum.
 
-Tertio in loco hoc quaesitum est, in quibus verbis captionum istarum fraus esset et quo pacto distingui resolvique possent: Quod non perdidisti, habes; cornua non perdidisti: habesbabes igitur cornua, item altera captio: quod ego sum, id tu non es; homo ego sum: homno . . sum supplied by Hert sed hoino sulm igitur, Q). homo igitur tu non es.
+Tertio in loco hoc quaesitum est, in quibus verbis captionum istarum fraus esset et quo pacto distingui resolvique possent: Quod non perdidisti, habes; cornua non perdidisti: habesbabes igitur cornua, item altera captio: quod ego sum, id tu non es; homo ego sum: homo igitur tu non es.
 
 Quaesitum ibi est quae esset huius quoque sophismatis resolutio: Cum mentior et mentiri me dico, mentior an verum dico?
 
@@ -8507,7 +8507,7 @@ Consilium quod dabat, quodque oportere fieri suadebat, acceptum ab universis et 
 
 Ibi unus ex illo principum ordine quos Lacedaemonii, aetatis dignitatisque maiestate, tamquam arbitros et magistros disciplinae publicae verebantur, commoto irritatoque animo exilit, et Quaenam, inquit, Lacedaemonii, ratio aut quae tandem spes erit urbem hanc et hancbane rempublicam salvam inexpugnabilemqueinexpuglnabilemque esse diutius posse, si huiuscemodi anteactae vitae hominibus consiliariis utemur? Quod si proba istaec et honesta sententia est, quaeso vos, non sinamus eandem dehonestari turpissimi auctoris contagio.
 
-Atque ubi hoc dixit, elegit virum fortitudine atque iustitia praeter alios praestantem, sed inopi lingua et infacundum, iussitque eum consensus petituque omnium eandem illam sententiam diserti viri cuimodi posset verbis dicere, ut nulla prioris mentione habita, scitum atque decretum populi ex eius unius nomine fieret qui idqui id, J. F. Gronov; quod, ω. ipsum denuo dixerat.
+Atque ubi hoc dixit, elegit virum fortitudine atque iustitia praeter alios praestantem, sed inopi lingua et infacundum, iussitque eum consensus petituque omnium eandem illam sententiam diserti viri cuimodi posset verbis dicere, ut nulla prioris mentione habita, scitum atque decretum populi ex eius unius nomine fieret qui id ipsum denuo dixerat.
 
 Atque ita, ut suaserat prudentissimus senex, factum est.
 
@@ -8533,7 +8533,7 @@ Nos deinde eum tenebamus urgebamusque, et cumprimis Apollinaris, ut de vocabulor
 
 Atque ille, se iam plane inludi ratus, negotium sibi esse causatur et digreditur.
 
-Nos autem posteaposted ex Apollinari didicimus, vanos proprie dici, non ut vulgus diceret, desipientis aut hebetes aut ineptos, sed, ut veterum doctissimi dixissentdiissent, mendaces et infidos et levia inaniaque pro gravibus et veris astutissime componentes; stolidos autem vocari non tam stultos et excordes quam taetros castros, Z; stautros, Q; austeros, Hertz. et molestos et inlepidos, quos Graeci μχθηροὺς καὶ φορτικούς dicerent.
+Nos autem posteaposted ex Apollinari didicimus, vanos proprie dici, non ut vulgus diceret, desipientis aut hebetes aut ineptos, sed, ut veterum doctissimi dixissentdiissent, mendaces et infidos et levia inaniaque pro gravibus et veris astutissime componentes; stolidos autem vocari non tam stultos et excordes quam taetros et molestos et inlepidos, quos Graeci μχθηροὺς καὶ φορτικούς dicerent.
 
 Etyma quoque harum vocum et origines scriptas esse dicebat in libris Nigidianis. Quas requisitas ego et repertas cum primarum significationum exemplis, ut commentariis harum Noctium inferrem, notavi et intulisse iam me aliquo in loco commentationibus istis existimo.
 
@@ -8545,9 +8545,9 @@ Atque ibi tunc Iulianoluliano nuntiatur, ἀναγνώστην quendam, non indo
 
 inquit, auditum nescio quem istum Ennianistam; hoc enim se ille nomine appellari volebat.
 
-Quem cum iam inter ingentes clamores legentem invenissemus—legebat autem librum ex annalibusAnnalibuis Ennii septimum—, hos eum primum versus perperam pronuntiantem audivimus: Denique vi magnainagna quadrupes equus eques, Vahlen. atque elephanti Proiciunt sese, neque multis postea versibus additis, celebrantibus eum laudantibusque omnibus, discessit.
+Quem cum iam inter ingentes clamores legentem invenissemus—legebat autem librum ex annalibusAnnalibuis Ennii septimum—, hos eum primum versus perperam pronuntiantem audivimus: Denique vi magnainagna quadrupes equus atque elephanti Proiciunt sese, neque multis postea versibus additis, celebrantibus eum laudantibusque omnibus, discessit.
 
-Denique vi magnainagna quadrupes equus eques, Vahlen. atque elephanti
+Denique vi magnainagna quadrupes equus atque elephanti
 
 Proiciunt sese,
 
@@ -8557,7 +8557,7 @@ Denique vi magna quadrupes equus atque elephanti
 
 Proiciunt sese.
 
-Ecquid putatis, si magistrum praelectoremque habuisset alicuius aeris,auris, Damste. quadrupes equus dicturum fuisse ac non quadrupes eques, quod ab Ennio ita scriptum relictumque esse nemo unus litterarum veterum diligens dubitavit?
+Ecquid putatis, si magistrum praelectoremque habuisset alicuius aeris, quadrupes equus dicturum fuisse ac non quadrupes eques, quod ab Ennio ita scriptum relictumque esse nemo unus litterarum veterum diligens dubitavit?
 
 Cumque aliquot eorum qui aderant quadrupes equus apud suum quisque grammaticumgranmmaticum legisse se dicerent et mirarentur quidnam esset quadrupes eques, Vellem vos, inquit, optimi iuvenes, tam accurate Q. Ennium legisse quam P. Vergilius legerat, qui hunchune eius versum secutus in Georgicis suis equitem pro equo posuit his in versibus: Frena Pelethronii Lapithae gyrosque dedere Impositi dorso atque equitem docuere sub armis Insultare solo et gressus glomerare superbos. In quo loco equitem, si quis modo non inscite inepteque argutior sit, nihil potest accipi aliud nisi equum;
 
@@ -8567,7 +8567,7 @@ Impositi dorso atque equitem docuere sub armis
 
 Insultare solo et gressus glomerare superbos.
 
-pleraque enim veterum aetas et hominem equo insidentem et equum cui cui, Sketsch; qui, ω (quo, π1). insideretur equitem dixerunt.
+pleraque enim veterum aetas et hominem equo insidentem et equum cui insideretur equitem dixerunt.
 
 Propterea equitare etiam, quod verbum e vocabulo equitis inclinatum est, et homo equo utens et equus sub homine gradiens dicebatur.
 
@@ -8585,7 +8585,7 @@ Hoc tum nobis Iulianus et multa alia lucide simul et adfabiliter dixit. Sed eade
 
 Quod Aelius Melissus, in libro cui titulum fecit De Loquendi proprietatePropriictate, quemqueln, cum ederet, cornuin esse copiae dicebat, rem scripsit neque dictu neque audit dignam, cum differre matronam et matrem familias existimavit differentia longe vanissimavanisima.
 
-AELIUS MELISSUS in nostra memoriamemorial fuit Romae summi quidem loci inter grammaticosgranimaticos id id, Faster; et, γ; s; (= sed), δ; sui, Damsté. temporis; sed maiore in litteris erat iactantiaiactintia et σοφιστείᾳ quam opera.
+AELIUS MELISSUS in nostra memoriamemorial fuit Romae summi quidem loci inter grammaticosgranimaticos id temporis; sed maiore in litteris erat iactantiaiactintia et σοφιστείᾳ quam opera.
 
 Is praeter alia quae scripsit compluria, librum composuit, ut tum videbatur cum est editusedits, doctrinae inclutae.
 
@@ -8603,7 +8603,7 @@ Enimvero illud impendio probabilius est quod idonei vocum antiquarum enarratores
 
 dicitur, matrem autem familias appellatam esse eam solam quae in mariti manu mancipioque aut in eius in cuius maritus manu mancipioque esset, quoniam non in matrimonium tantum, sed in familiam quoque mariti et in sui heredis locum venisset.
 
-Quem in modum Favorinus tractaverit intempestivum quendam Favorinum tractaverit intempestivus quidam, J. Gronov; Domitius Favorinum tr. intempestive quaedam, Boot. de verborum ambiguitatibus quaerentem; querentem, Damsté. atque ibi, quot significationes capiat contio.
+Quem in modum Favorinus tractaverit intempestivum quendam de verborum ambiguitatibus quaerentem; atque ibi, quot significationes capiat contio.
 
 DOMITIO, homini docto celebrique in urbe Roma grammatico, cui cognomentum Insano factum est,
 
@@ -8613,15 +8613,15 @@ Tum Domitius voce atque vultu atrociore Nulla, inquit, prorsus bonae salutis spe
 
 Cumque digressi essemus, Non tempestive, inquit Favorinus, hunc hominem accessimus. Videtur enim mihi ἐπισήμως μαίνεσθαι. Scitote, inquit, tamen intemperiem istam quae μελαγχολία dicitur, non parvis nec abiectis ingeniis accidere, ἀλλὰ εἶναι σχεδόν τι τὸ πάθος ἡρωϊκόν et veritates plerumqueplerumique fortiter dicere, sed respectum non habere μήτε καιροῦ σχεδόν μήτε μέτρου. Vel ipsumipsurm hoc quale existimatis quod nunc de philosophis dixit? Nonne, si id Antisthenes aut Diogenes dixisset, dignum memoria visum esset?
 
-Misit autem paulo post Favorino librum quem promiserat—Verri, opinor, Flacci erat—, in quo scriptascript ad hoc genus quaestionis pertinentia haec fuerunt: senatum dici et pro loco et pro hominibus, civitatem et pro loco et oppido et pro iure quoque omnium civium, Otho; Quiritium, Skutsch; omnium deleted by Vassis. et pro hominum multitudine, tribus quoque et decurias dici et pro loco et pro iure et pro hominibus, contionem autem tria significare:
+Misit autem paulo post Favorino librum quem promiserat—Verri, opinor, Flacci erat—, in quo scriptascript ad hoc genus quaestionis pertinentia haec fuerunt: senatum dici et pro loco et pro hominibus, civitatem et pro loco et oppido et pro iure quoque omnium et pro hominum multitudine, tribus quoque et decurias dici et pro loco et pro iure et pro hominibus, contionem autem tria significare:
 
 locum suggestumque unde verba fierent,
 
 sicut M. Tullius in oratione quae inscripta est Contra Contionem Q. Metelli: Escendi, inquit, in contionem;
 
-concursus est populi factus; item significare coetum populi adsistentis, sicuti idem M. Tullius in Oratore ait: Contiones saepe exclamare vidi, cum apte verba cecidissent. Etenim id enim, Cic. expectant aures, ut verbis conligetur sententia; item orationem ipsam quae ad populum diceretur.
+concursus est populi factus; item significare coetum populi adsistentis, sicuti idem M. Tullius in Oratore ait: Contiones saepe exclamare vidi, cum apte verba cecidissent. Etenim expectant aures, ut verbis conligetur sententia; item orationem ipsam quae ad populum diceretur.
 
-Exempla exempla illa suggested by Hosius. in eo libro scripta non erant. Sed nos postea Favorino desideranti harum omnium significationum monumenta apud Ciceronem, sicut supra scripsi, et apud elegantissimos veterum reperta exhibuimus;
+Exempla in eo libro scripta non erant. Sed nos postea Favorino desideranti harum omnium significationum monumenta apud Ciceronem, sicut supra scripsi, et apud elegantissimos veterum reperta exhibuimus;
 
 id autem quod potissimum expetebat, contionem esse dictam pro verbis et oratione, docui titulo Tulliani libri, qui a M. Cicerone inscriptus est Contra Contionem Q. Metelli, quo nihil profecto significatur aliud quam ipsa quae a Metello dicta est oratio.
 
@@ -8633,7 +8633,7 @@ Nam ubi est cum amico conquestus, quod ad se aegrotum non viseret, haec ibidem a
 
 Quo me habeam pacto, tametsi non quaeris, docebo,
 
-Quando in eo numero mansi mansi, ω; mansti, Nannius, Hosius. quo in maxima non non, ω; nunc, Scaliger, Hosius. est
+Quando in eo numero mansi quo in maxima non est
 
 Pars hominum
 
@@ -8641,9 +8641,9 @@ Ut perisse velis quem visere nolueris, cum
 
 Debueris. Hoc nolueris et debueris te
 
-Si minus delectat (quod atechnon) atexnon or atexnon, ω; ἄτεχνον, Hosius. et Isocratium Isocratium, Scaliger; eissocratium, δ; the other MSS. have eisocratium. hoc
+Si minus delectat (quod atechnon) et Isocratium hoc
 
-σκληρῶδες que simul totum ac si συμμειρακιῶδες, Lerodesque miraciodes, Marx.
+σκληρῶδες que simul totum ac si συμμειρακιῶδες,
 
 Non operam perdo, si tu hic.
 
@@ -8651,17 +8651,17 @@ Quid significet apud M. Catonem verbum insecenda quodque insecenda potius legend
 
 IN libro vetere, in quo erat oratio M. Catonis De Ptolemaeo contra Thermum, sic scriptum fuit: Sed si omnia dolo fecit, omnia avaritiae atque pecuniae causa fecit, eiusmodi scelera nefaria, quae neque fando neque legendo audivimus, supplicium pro factis dare oportet.
 
-Insecenda insecenda must have occurred in the lacuna. quid esset quaeri coeptum. tumTurn ex his qui aderant alter litterator fuit, alter litteras sciens, id est alter docens, doctus alter. Hi duo inter sese dissentiebant.
+Insecenda quid esset quaeri coeptum. tumTurn ex his qui aderant alter litterator fuit, alter litteras sciens, id est alter docens, doctus alter. Hi duo inter sese dissentiebant.
 
-Et grammaticus quidem contendebat, insequenda scribendum esse; insequenda esse added by Hertz. insequenda enim scribi, inquit, debet, debet added by Carrio. non insecenda, quoniam insequens significat traditumque esse inseque quasi perge dicere et insequere itaque ab Ennio scriptum in his versibus: Inseque, Musa, manu Romanorum induperator Quod quisque in bello gessit cum rege Philippo.
+Et grammaticus quidem contendebat, insequenda scribendum esse; insequenda enim scribi, inquit, debet, non insecenda, quoniam insequens significat traditumque esse inseque quasi perge dicere et insequere itaque ab Ennio scriptum in his versibus: Inseque, Musa, manu Romanorum induperator Quod quisque in bello gessit cum rege Philippo.
 
 Inseque, Musa, manu Romanorum induperator
 
 Quod quisque in bello gessit cum rege Philippo.
 
-Alter autem ille eruditior, nihil mendum, sed recte atque integre scriptum esse perseverabat et Velio Longo, non homini indocto, fidem esse habendam, qui in commentario quod fecisset De Usu Antiquae Lectionis scripserit non inseque apud Ennium legendum, sed insece; ideoque a veteribus, quas narrationes dicimus, insectiones esse appellatas; Varronem quoque versum hunc Plauti de Menaechmis: Nihilo haec nihilo, Plaut. minus esse mihi videntur setius, edd. Plaut. minus esse videtur sectius quam sómnia, sic enarrasse: nihilo magis narranda esse quam si ea essent somnia. Haec illi inter se certabant.
+Alter autem ille eruditior, nihil mendum, sed recte atque integre scriptum esse perseverabat et Velio Longo, non homini indocto, fidem esse habendam, qui in commentario quod fecisset De Usu Antiquae Lectionis scripserit non inseque apud Ennium legendum, sed insece; ideoque a veteribus, quas narrationes dicimus, insectiones esse appellatas; Varronem quoque versum hunc Plauti de Menaechmis: Nihilo minus esse videtur sectius quam sómnia, sic enarrasse: nihilo magis narranda esse quam si ea essent somnia. Haec illi inter se certabant.
 
-Nihilo haec nihilo, Plaut. minus esse mihi videntur setius, edd. Plaut. minus esse videtur sectius quam sómnia,
+Nihilo minus esse videtur sectius quam sómnia,
 
 Ego arbitror et a M. Catone insecenda et a Q. Ennio insece scriptum sine u littera. Offendi enim in bibliotheca Patrensi librum verae vetustatis Livii Andronici, qui inscriptus est Ὀδύσσεια in quo erat versus primus cum hoc verbo sine u littera: Virum mihi, Camena, insece versutum, cactus ex illo Homeri versu: Ἄνδρα μοι ἔννεπε, Μοῦσα, πολύτεοπον. Illic igitur aetatis et fidei magnae libro credo.
 
@@ -8683,7 +8683,7 @@ Eadem ergo ratione antiqui nostri narrationes sermonesque insectiones appellitav
 
 Errare istos qui in exploranda febri venarum pulsus pertemptariperteniptari putant, non arteriarum.
 
-IN Herodis, C. V., villam, quae est in agro Attico, loco qui appellatur Cephisiae, aquis lucidis et lucidis et, Damsté; educis, Q; et lucis et, ς; lucis deleted by Hertz; laetis suggested by Hosius. nemoribus frequentem, aestu anni medio concesseram.
+IN Herodis, C. V., villam, quae est in agro Attico, loco qui appellatur Cephisiae, aquis lucidis et nemoribus frequentem, aestu anni medio concesseram.
 
 Ibi alvo mihi cita et accedente febri rapida decubueram.
 
@@ -8711,7 +8711,7 @@ non hercle idem sentio cum Caesellio Vindice, grammatico, ut mea opinio est, hau
 
 Verum hoc tamen petulanter insciteque, quod Furium, veterem poetam, dedecorasse linguam Latinam scripsit huiuscemodi vocum fictionibustictionibus quae mihi quidem neque abhorrere a poetica facultate visae sunt neque dictu profatuque ipso taetrae aut insuaves esse, sicuti sunt quaedam alia ab inlustribus poetis ficta dure et rancide.
 
-Quae reprehendit autem Caesellius Furiana haec sunt: quod terram in lutum versam lutescere dixerit et tenebras in noctis modum factas noctescere et pristinas reciperare vires virescere, et quod ventus si si suggested by Hosius; caerulum cum, Dziatzko. mare caerulum crispicans nitefacit purpurat dixerit, et opulentum fieri opulescere.
+Quae reprehendit autem Caesellius Furiana haec sunt: quod terram in lutum versam lutescere dixerit et tenebras in noctis modum factas noctescere et pristinas reciperare vires virescere, et quod ventus si mare caerulum crispicans nitefacit purpurat dixerit, et opulentum fieri opulescere.
 
 Versus autem ipsos ex poematis Furianis, in quibus verba haec sunt, subdidi:
 
@@ -8721,7 +8721,7 @@ Omnia noctescunt tenebris caliginis atrae.
 
 Increscunt animi, virescit volnere virtus.
 
-Sicut fulica levis sic fulica levius, Beloe. volitat super aequora classis,
+Sicut fulica levis volitat super aequora classis,
 
 Spiritus Eurorum viridis cum purpurat undas.
 
@@ -8729,11 +8729,11 @@ Quo magis in patriis possint opulescere campis.
 
 Morem istum veteribus nostris fuisse verba patiendi mutare ac vetere in agendi nodum.
 
-ID quoque habitum est in oratione facienda elegantiae genus, ut pro verbis habentibus patiendi figuram agentia ponerent ac deinde haec vice inter sese mutua verterent.
+**ID** quoque habitum est in oratione facienda elegantiae genus, ut pro verbis habentibus patiendi figuram agentia ponerent ac deinde haec vice inter sese mutua verterent.
 
 Iuventius in comoedia:
 
-pallium (inquit) flocci non facio non facio, added bu Fleckeisen. ut splendeat an maculet. splendeat an maculet, Seyffert: splendean, δΟΠΧ.
+pallium (inquit) flocci non facio ut splendeat an maculet.
 
 Nonne hoc inpendio venustius gratiusque est quam si diceret maculetur?
 
@@ -8753,9 +8753,9 @@ Meúm caput contémples, si quidem é re consultás tua.
 
 Postquam tempestas sedavit, Atherbal taurum immolavit.
 
-M. Cato in Originibus:Eodem convenae conplures ex agro accessitavere.
+**M** Cato in Originibus:Eodem convenae conplures ex agro accessitavere.
 
-Eo res eorum auxit. Varro libris quos ad Marcellum De Lingua LatinaLaiina fecit: In priore verbo graves prosodiae, quae fuerunt, manent, reliquae mutant, mutant mutant added by Carrio. inquit elegantissime pro mutantur.
+Eo res eorum auxit. Varro libris quos ad Marcellum De Lingua LatinaLaiina fecit: In priore verbo graves prosodiae, quae fuerunt, manent, reliquae mutant, mutant inquit elegantissime pro mutantur.
 
 Potest etiam id quoque ab eodem Varrone in septimo Divinarum similiter dictum videri: Inter duas filias regum quid mutet, inter Antigonam et Tulliam, est animadvertere.
 
@@ -8797,9 +8797,9 @@ Quod M. Varro in herois versibus observaverit rem nimis anxiae et curiosae obser
 
 IN longis versibus qui hexametri vocantur, item in senariis, animadverterunt metrici primos duos pedes, item extremos duos, habere singulos posse integras partes orationis, medios haut umquam posse, sed constare eos semper ex verbis aut divisis aut mixtis atque confusis.
 
-M. etiam Varro in libris disciplinarumDisciplinarurm scripsit, observasse sese in versu hexametro, quod omnimodo quintus semipes verbum finiret et quod priores quinque semipedes aeque magnam vim haberent in efficiendo versu atque alii posteriores septem, idque ipsum ratione quadam geometrica fieri disserit.
+**M** etiam Varro in libris disciplinarumDisciplinarurm scripsit, observasse sese in versu hexametro, quod omnimodo quintus semipes verbum finiret et quod priores quinque semipedes aeque magnam vim haberent in efficiendo versu atque alii posteriores septem, idque ipsum ratione quadam geometrica fieri disserit.
 
-Responsio cuiusdam philosophi, interrogati quam ob causam maris tempestate palluerit. Lemmata of Book xix omitted in ω; appear in various forms i
+Responsio cuiusdam philosophi, interrogati quam ob causam maris tempestate palluerit.
 
 NAVIGABAMUS a Cassiopa Brundisium mare Ionium violentum et vastum et iactabundum.
 
@@ -8811,7 +8811,7 @@ In eadem fuit philosophus in disciplina Stoica celebratus, quem ego A the nis co
 
 Eum tunc in tantis periculis inque illo tumultu caeli marisque requirebam oculis, scire cupiens quonam statu animi et an interritus intrepidusque esset.
 
-Atque ibi hominem conspicimus pavidum et expallidum, expallidum, Hosius; extrilidum, ω; exterritum, J. F. ploratus quidem nullos, sicuti ceteri omnes, nec ullas eiusmodihuiusmodi voces cientem, sed coloris et voltus turbatione non multum a ceteris differenten.
+Atque ibi hominem conspicimus pavidum et expallidum, ploratus quidem nullos, sicuti ceteri omnes, nec ullas eiusmodihuiusmodi voces cientem, sed coloris et voltus turbatione non multum a ceteris differenten.
 
 At ubi caelum enituit et deferbuit mare et ardor ille periculi deflagravit, accedit ad Stoicum Graecus quispiam dives ex Asia, magno, ut videbamus, cultu paratuque rerum et familiae, atque ipse erat multis corporis animique deliciis affluens.
 
@@ -8819,7 +8819,7 @@ Is quasi inludens: Quid hoc, inquit, est, o philosophe, quod, cum in periculis e
 
 Et philosophus aliquantum cunctatus an respondere ei conveniret, Si quid ego, inquit. in tanta violentia tempestatum videor paulum pavefactus, non tu istius rei ratione audienda dignus es.
 
-Set tibi sane Aristippus, Aristippius, J. Gronov; Aristippus, ω; Hertz placed a lacuna after ille, suggesting egregius Socratis ille to fill it. ille Socratis discipulus, pro me responderit, qui in simili qui cum in simili, ω; qui (in) consimili, suggested by Hosius. tempore a simillimo tui homine interrogatus quare philosophus timeret, cum ille contra nihil metueret, non eandem esse causam sibi atque illi respondit, quoniam is quidem esset non magnopere sollicitus pro anima nequissimi nebulonis, ipsum autem pro Aristippi anima timere.
+Set tibi sane Aristippus, ille Socratis discipulus, pro me responderit, qui in simili tempore a simillimo tui homine interrogatus quare philosophus timeret, cum ille contra nihil metueret, non eandem esse causam sibi atque illi respondit, quoniam is quidem esset non magnopere sollicitus pro anima nequissimi nebulonis, ipsum autem pro Aristippi anima timere.
 
 His tunc verbis Stoicus divitem ilium Asiaticum a sese molitus est.
 
@@ -8831,9 +8831,9 @@ In eo libro Graeca scilicet oratione scriptam hanc sententiam legimus: Visa anim
 
 probationes autem, quas συγκαταφέσεις vocant, quibus eadem visa noscuntur, voluntariae sunt fiuntque hominum arbitratu.
 
-Propterea cum sonus aliquis formidabilis aut caelo aut ex ruina aut repentinus nescio cuius periculi nuntius vel quid aliud est est, J. Gronov; ex, δ; γ omits. eiusmodi factum, sapientis quoque animum paulisper moveri et contrahi et pallescere necessum est, non opinione alicuius mali praecepta, sed quibusdam motibus rapidis et inconsultis, officium mentis atque rationis praevertentibus.
+Propterea cum sonus aliquis formidabilis aut caelo aut ex ruina aut repentinus nescio cuius periculi nuntius vel quid aliud est eiusmodi factum, sapientis quoque animum paulisper moveri et contrahi et pallescere necessum est, non opinione alicuius mali praecepta, sed quibusdam motibus rapidis et inconsultis, officium mentis atque rationis praevertentibus.
 
-Mox tamen ille sapiens ibidem τὰς τοιαύτας φαντασίας id est visa istaec animi sui terrifica, non adprobat, hoc est οὐ συγκαττατιθεται οὐδὲ προσεπιδοξάζει, Kronenberg transfers οὐδὲ προσεπιδοξάζει to § 20, after συγκατατίθεται. sed abicit respuitque nec ei metuendum esse in his quicquam videtur.
+Mox tamen ille sapiens ibidem τὰς τοιαύτας φαντασίας id est visa istaec animi sui terrifica, non adprobat, hoc est οὐ συγκαττατιθεται οὐδὲ προσεπιδοξάζει, sed abicit respuitque nec ei metuendum esse in his quicquam videtur.
 
 Atque hoc inter insipientis sapientisque animum differre dicunt, quod insipiens, qualia sibi esse primo animi sui pulsu visa sunt saeva et aspera, talia esse vero putat et eadem incepta, tamquam si iure metuenda sint, sua quoque adsensione adprobat καὶ προσεπιδοξάζει hoc enim verbo Stoici, cum super istaistare disserunt, utuntur.
 
@@ -8851,7 +8851,7 @@ Istae autem voluptates duae gustus atque tactus, id est libidines in cibos atque
 
 ceterae ex tribus aliis sensibus proficiscentes hominum esse tantum propriae videntur.
 
-Verba super hac re Aristotelis philosophi adscripsi, ut vel auctoritas clari atque incluti viri tam infamibus nos voluptatibus deterreret: Διὰ τί οἱ κατὰ τὴν τῆς ἁφῆς ἢ γεύσεως ἡδονὴν ἡδονήν, οὗ ἄν, Arist. γιγνομένην, ἂν ὑπερβάλλωσιν, ἀκρατεῖς λέγονται; οἵ τε γὰρ περὶ τὰ ἀφροδίσια ἀκόλαστοι τοιοῦτοι, τοιοῦτοι omitted by MSS. of Arist. οἵ τε περὶ τὰς τῆς τροφῆς ἀπολαύσεις· τῶν δὲ κατὰ τὴν τροφήν, ἀπʼ ἐνίων μὲν ἐν τῇ γλώττῃ τὸ ἡδύ, ἀπʼ ἐνίων δὲ ἐν τῷ λάρυγγι, διὸ καὶ Φιλόξενος γεράνου λάρυγγα φάρυγγα, Arist. εὔχετο ἔχειν· ἢ διὰ τὸ τὰς ἀπὸ τούτων γιγνομένας ἡδονὰς κοινὰς εἶναι ἡμῖν καὶ τοῖς ἄλλοις ζώοις; ἅτε ἅτε οὖν, Arist. οὐσῶν κοινῶν, οὖσαι κοιναί, many MSS. of Arist. ἀτιμόταταί εἰσι καὶ μάλιστα ἢ μόναι ἐπονείδιστοι, ὡς τὸν ὥστε τόν, Arist. ὑπὸ τούτων ἡττώ- μενον ψέγομεν καὶ ἀκρατῆ καὶ ἀκόλαστον λέγομεν διὰ τὸ ὑπὸ τῶν χειρίστων ἡδονῶν ἡττᾶσθαι. οὐσῶν δὲ τῶν αἰσθήσεων πέντε, τὰ ἄλλα ζῶα ἀπὸ τῶν δύο μόνων τῶν προειρημένων ἥδεται, κατὰ δὲ τὰς ἄλλας ἢ ὅλως οὐχ ἥδεται ἢ κατὰ συμβεβηκὸς τοῦτο πάσχει.
+Verba super hac re Aristotelis philosophi adscripsi, ut vel auctoritas clari atque incluti viri tam infamibus nos voluptatibus deterreret: Διὰ τί οἱ κατὰ τὴν τῆς ἁφῆς ἢ γεύσεως ἡδονὴν γιγνομένην, ἂν ὑπερβάλλωσιν, ἀκρατεῖς λέγονται; οἵ τε γὰρ περὶ τὰ ἀφροδίσια ἀκόλαστοι τοιοῦτοι, οἵ τε περὶ τὰς τῆς τροφῆς ἀπολαύσεις· τῶν δὲ κατὰ τὴν τροφήν, ἀπʼ ἐνίων μὲν ἐν τῇ γλώττῃ τὸ ἡδύ, ἀπʼ ἐνίων δὲ ἐν τῷ λάρυγγι, διὸ καὶ Φιλόξενος γεράνου λάρυγγα εὔχετο ἔχειν· ἢ διὰ τὸ τὰς ἀπὸ τούτων γιγνομένας ἡδονὰς κοινὰς εἶναι ἡμῖν καὶ τοῖς ἄλλοις ζώοις; ἅτε οὐσῶν κοινῶν, ἀτιμόταταί εἰσι καὶ μάλιστα ἢ μόναι ἐπονείδιστοι, ὡς τὸν ὑπὸ τούτων ἡττώ- μενον ψέγομεν καὶ ἀκρατῆ καὶ ἀκόλαστον λέγομεν διὰ τὸ ὑπὸ τῶν χειρίστων ἡδονῶν ἡττᾶσθαι. οὐσῶν δὲ τῶν αἰσθήσεων πέντε, τὰ ἄλλα ζῶα ἀπὸ τῶν δύο μόνων τῶν προειρημένων ἥδεται, κατὰ δὲ τὰς ἄλλας ἢ ὅλως οὐχ ἥδεται ἢ κατὰ συμβεβηκὸς τοῦτο πάσχει.
 
 Quis igitur habens aliquid humani pudoris voluptatibus istis duabus coeundi atque comedendi, quae sunt homini cum sue atque asino communes, gaudeat?
 
@@ -8873,11 +8873,11 @@ In his quaerit quam ob causam eveniat ut quibus invasit repentinus rei magnae ti
 
 Item quaerit cur accidat ut eum qui propter ignem diutius stetit libido urinae lacessat.
 
-Ac de alvo quidem inter timendum prona atque praecipiti causam esse dicit quod timor omnis sit algificus, quem ille appellat ψυχροποιόν, ψυχροποιόν, not in Arist. eaque vi frigoris sanguine caldoremque omnem de summa corporis cute cogat penitus et depellat faciatque simul ut qui timent, sanguine ex ore decedente, pallescant.
+Ac de alvo quidem inter timendum prona atque praecipiti causam esse dicit quod timor omnis sit algificus, quem ille appellat ψυχροποιόν, eaque vi frigoris sanguine caldoremque omnem de summa corporis cute cogat penitus et depellat faciatque simul ut qui timent, sanguine ex ore decedente, pallescant.
 
 Is autem, inquit, sanguis et caldor in intuma coactus movet plerumque alvum et incitat.
 
-De urina celebri, ex igni proximo facta, verba haec posuit: Τὸ δὲ πῦρ διαχαλᾷ τὸ πεπηγός, πεπηγὸς ἐν τῷ σώματι, Arist. ὥσπρ ἥλιος τὴν χιόνα.
+De urina celebri, ex igni proximo facta, verba haec posuit: Τὸ δὲ πῦρ διαχαλᾷ τὸ πεπηγός, ὥσπρ ἥλιος τὴν χιόνα.
 
 Ex Aristotelis libris sumptum quod nivis aqua potui pessima sit; et quod ex nive crystallus concreatur.
 
@@ -8889,13 +8889,13 @@ Is nos aquam multam ex diluta nive bibentes coercebat severiusque increpabat. Ad
 
 Haec quidem ille ad nos prudenter et benivole et adsidue dictitabat. Sed cum bibendae nivis pausa fieret nulla, profit e bibliotheca Tiburti, quae tunc in Herculis templo satis commode instructa libris erat, Aristotelis librum eumque ad nos adfert et Huius saltem, inquit, sapientissimi viri verbis credite ac desinite valitudinem vestram profligare.
 
-In eo libro scriptum fuit deterrimam esse potu aquam e nive itemque solidius latiusque concretam esse esse deleted by Vogel. eam, quam κρύσταλλον Graeci appellant; causaque ibi adscripta est huiuscemodi:
+In eo libro scriptum fuit deterrimam esse potu aquam e nive itemque solidius latiusque concretam esse eam, quam κρύσταλλον Graeci appellant; causaque ibi adscripta est huiuscemodi:
 
 Quoniam, cum aqua frigore aeris duratur et coit, necessum est fieri evaporationem et quandam quasi auram tenuissimam exprimi ex ea et emanare.
 
 Id autem, inquit, in ea levissimum est quod evaporatur; manet autem quod est gravius et sordidius et insalubrius, atque id, pulsu aeris verberatum, in modum coloremque spumae candidae oritur.
 
-Sed aliquantum quod est salubrius difflari atque evaporari ex nive indicium illud est, quod quod, Hertz; qui, ω. minor fit illo, quod ante fuerat quam concresceret.
+Sed aliquantum quod est salubrius difflari atque evaporari ex nive indicium illud est, quod minor fit illo, quod ante fuerat quam concresceret.
 
 Verba ipsa Aristotelis ex eo libro pauca sumpsi et adscripsi: Διὰ τί τὰ ἀπὸ χιόνος καὶ κρυστάλλων ὕδατα φαὐλά ἐστιν; ὅτι παντὸς ὕδατος πηγνυμένου τὸ λεπτότατον καὶ κουφότατον ἐξατμίζει. σημεῖον δέ, ὅτι ἔλαττον γίνεται ἢ πρότερον, ὅταν τακῇ παγέν. ἀπεληλυθότος οὖν τοῦ ὑγιεινοτάτου, ἀνάγκη ἀεί, τὸ καταλειμόμενον χεῖρον εἶναι.
 
@@ -8957,13 +8957,13 @@ Veluti fuit illa quodam die sermocinatio illius, levi quidem de re, sed a Latina
 
 Nam, cum quispiam familiaris eius, bene eruditus homo et tum poeta inlustris, liberatum esse se aquae intercutis morbo diceret, quod harenis calentibus esset usus, tum adludens Fronto: Morbo quidem, inquit, cares, sed verbi vitio non cares. Gaius enim Caesar, ille perpetuus dictator, Cn. Pompei socer, a quo familia et appellatio Caesarum deinceps propagata est, vir ingenii praecellentis, sermonis praeter alios suae aetatis castissimi, in libris, quos ad M. Ciceronem De Analogia conscripsit, harenas vitiose dici existimat, quod harena numquam multitudinis numero appellanda sit, sicuti neque caelum neque triticum;
 
-contra autem quadrigas, etiamsi currus unus, equorum quattuor iunctorum agmen unum sit, plurativo semper numero dicendas putat, sicut armaarina circa arma, Q; castra, arma, Vogel. et moenia et comitia et inimicitias—nisi quid contra ea dicis, poetarum pulcherrime, quo et te purges et non esse id vitium demonstres.
+contra autem quadrigas, etiamsi currus unus, equorum quattuor iunctorum agmen unum sit, plurativo semper numero dicendas putat, sicut armaarina et moenia et comitia et inimicitias—nisi quid contra ea dicis, poetarum pulcherrime, quo et te purges et non esse id vitium demonstres.
 
 De caelo, inquit ille, et tritico non infitias eo, quin singulo semper numero dicenda sint, neque de armis et moenibus et comitiis, quin figurafigure multitudinis perpetua censeantur;
 
-videbimus autem potius potius, Hosisus; post ω. de inimicitiis et quadrigis. Ac fortassean de quadrigis veterum auctoritati concessero, inimicitiam tamen, sicuti inscientiam et inpotentiam et iniuriam, quae ratio est quamobrem C. Caesar vel dictam esse a veteribus vel dicendam a nobis non putat, quando Plautus, linguae Latinae decus, deliciam. quoque ἐνικῶς dixerit pro deliciis? Méa (inquit) voluptas, méa delicia. meae deliciae, codd Plaut.; mea delicia, Lindsay. Inimicitiam autem Q. Ennius in illo memoratissimo libro dixit: Eo ego (inquit) ingenio natus sum; Amicitiam atque inimicitiaminimicitiamr in frontem promptam gero. Sed enim harenas parum Latine dici, quis, oro te, alius aut scripsit aut dixit? Ac propterea peto ut, si Gai Caesaris liber prae manibus est, promi iubeas, ut quam confidenter hoc indicat aestimari a te possit.
+videbimus autem potius de inimicitiis et quadrigis. Ac fortassean de quadrigis veterum auctoritati concessero, inimicitiam tamen, sicuti inscientiam et inpotentiam et iniuriam, quae ratio est quamobrem C. Caesar vel dictam esse a veteribus vel dicendam a nobis non putat, quando Plautus, linguae Latinae decus, deliciam. quoque ἐνικῶς dixerit pro deliciis? Méa (inquit) voluptas, méa delicia. Inimicitiam autem Q. Ennius in illo memoratissimo libro dixit: Eo ego (inquit) ingenio natus sum; Amicitiam atque inimicitiaminimicitiamr in frontem promptam gero. Sed enim harenas parum Latine dici, quis, oro te, alius aut scripsit aut dixit? Ac propterea peto ut, si Gai Caesaris liber prae manibus est, promi iubeas, ut quam confidenter hoc indicat aestimari a te possit.
 
-Méa (inquit) voluptas, méa delicia. meae deliciae, codd Plaut.; mea delicia, Lindsay.
+Méa (inquit) voluptas, méa delicia.
 
 Eo ego (inquit) ingenio natus sum;
 
@@ -8971,17 +8971,17 @@ Amicitiam atque inimicitiaminimicitiamr in frontem promptam gero.
 
 Tunc, prolato libro De Analogia primo, verba haec ex eo pauca memoriae mandavi.
 
-Nam, cum supra dixisset, neque caelum neque triticum neque harenamlarenam multitudinis significationem pati, Num tu, inquit, harum rerum natura accidere arbitraris quod unam terram ac ac plures, Hertz; adplures, δ; the other MSS. have et. plures terras et urbem et urbes et imperium et imperia dicamus, neque quadrigas in unam nominis figuram redigere neque harenam multitudinis appellatione convertere possimus?
+Nam, cum supra dixisset, neque caelum neque triticum neque harenamlarenam multitudinis significationem pati, Num tu, inquit, harum rerum natura accidere arbitraris quod unam terram ac plures terras et urbem et urbes et imperium et imperia dicamus, neque quadrigas in unam nominis figuram redigere neque harenam multitudinis appellatione convertere possimus?
 
-His deinde verbis lectis ibi ibi, Salmasius; sibi, ω. Fronto ad illum poetam: Videturne tibi, inquit, C. Caesar de statu verbi contra te satis aperte satisque constanter pronuntiasse?
+His deinde verbis lectis ibi Fronto ad illum poetam: Videturne tibi, inquit, C. Caesar de statu verbi contra te satis aperte satisque constanter pronuntiasse?
 
-Tunc permotus auctoritate libri poeta: Si a Caesare, inquit, ius provocandi foret, ego nunc ab hoc Caesaris libro provocassem. Sed quoniam ipse rationem sententiae suae reddere supersedit, nos te nunc rogamus ut dicas quam esse causam vitii putes et in quadriga dicenda et in harenis. harenis, Carrio; harena, ω.
+Tunc permotus auctoritate libri poeta: Si a Caesare, inquit, ius provocandi foret, ego nunc ab hoc Caesaris libro provocassem. Sed quoniam ipse rationem sententiae suae reddere supersedit, nos te nunc rogamus ut dicas quam esse causam vitii putes et in quadriga dicenda et in harenis.
 
 Tum Fronto ita respondit: Quadrigae semper, etsi multiiugae non sunt, multitudinis tamen numero tenentur, quoniam quattuor simul equi iuncti quadrigae, quasi quadriiugae, vocantur, neque debet prorsus appellatio equorum plurium includi in singularis numeri unitatem.
 
-Eandemque rationem harenae harenae supplied by Hertz; habet arena, Madvig. habendam, sed in specie dispari; nam cum harena singulari in numero dicta multitudinem tamen et copiam significet minimarum, ex quibus constat, partium, indocte et inscite harenae dici videntur, tamquam id vocabulum indigeat numeri amplitudine, cum ei singulariter dicto dicto, Madvig; dici, ω. ingenita sit naturalis sui multitudo. Sed haec ego, inquit, dixi, non ut huius sententiae legisque fundus subscriptorque fierem, sed ut ne Caesaris, viri docti, opinionem ἀπαραμύθητον destituerem. Nam cum caelum semper ἑνικῶς dicatur,
+Eandemque rationem harenae habendam, sed in specie dispari; nam cum harena singulari in numero dicta multitudinem tamen et copiam significet minimarum, ex quibus constat, partium, indocte et inscite harenae dici videntur, tamquam id vocabulum indigeat numeri amplitudine, cum ei singulariter dicto ingenita sit naturalis sui multitudo. Sed haec ego, inquit, dixi, non ut huius sententiae legisque fundus subscriptorque fierem, sed ut ne Caesaris, viri docti, opinionem ἀπαραμύθητον destituerem. Nam cum caelum semper ἑνικῶς dicatur,
 
-mare et terra non semper, et pulvis, ventus et fumus. non semper, curindutias et caerimonias scriptores veteres nonnumquam singulari numero appellaverunt, ferias et nundinas. et inferias. et exequias numquam? Cur mel et vinum atque id genus cetera numerum multitudinis capiunt, lacte lac, γ. non capiat?
+mare et terra non semper, et pulvis, ventus et fumus. non semper, curindutias et caerimonias scriptores veteres nonnumquam singulari numero appellaverunt, ferias et nundinas. et inferias. et exequias numquam? Cur mel et vinum atque id genus cetera numerum multitudinis capiunt, lacte non capiat?
 
 Quaeri, inquam, ista omnia et enucleari et extundi ab hominibus negotiosis in civitate tam occupata non queunt. Quin his quoque ipsis quae iam dixi demoratos vos esse video, alicui, opinor, negotio destinatos.
 
@@ -9005,7 +9005,7 @@ Ac posteaquam introducti pueri puellaeque sunt, iucundum in modum Ἀνακρε�
 
 Oblectati autem sumus praeter multa alia versiculis lepidissimis Anacreontis senis, quos equidem scripsi, ut interea labor hic vigiliarum et inquies suavitate paulisper vocum atque modulorum adquiesceret:
 
-Τὸν ἄργυρον τορεύσας, Ἥφαιστέ, μοι ποίησον Πανοπλίας μὲν οὐχί, Τί γὰρ μάχαισι κἀμοί; Ποτήριον δὲ κοῖλον Ὅσον δύνῃ βάθυνον, Καὶ μὴμοι, Bergk from Anth. Pal. xi. 48. ποίει κατʼ αὐτὸ Μήτʼ ἄστρα μήτʼ ἀμάξας: Τίδʼ ἀστέρος Βοώτεω; Ποίησον ἀμπέλους μοι Καὶ βότρυας κατʼ αὐτῶν Καὶ χρυσέους πατοῦντας Ὁμοῦ καλῷ Λυαίῳ Ἔρωτα καὶ Βάθυλλον.
+Τὸν ἄργυρον τορεύσας, Ἥφαιστέ, μοι ποίησον Πανοπλίας μὲν οὐχί, Τί γὰρ μάχαισι κἀμοί; Ποτήριον δὲ κοῖλον Ὅσον δύνῃ βάθυνον, Καὶ μὴ ποίει κατʼ αὐτὸ Μήτʼ ἄστρα μήτʼ ἀμάξας: Τίδʼ ἀστέρος Βοώτεω; Ποίησον ἀμπέλους μοι Καὶ βότρυας κατʼ αὐτῶν Καὶ χρυσέους πατοῦντας Ὁμοῦ καλῷ Λυαίῳ Ἔρωτα καὶ Βάθυλλον.
 
 Τὸν ἄργυρον τορεύσας,
 
@@ -9019,7 +9019,7 @@ Oblectati autem sumus praeter multa alia versiculis lepidissimis Anacreontis sen
 
 Ὅσον δύνῃ βάθυνον,
 
-Καὶ μὴμοι, Bergk from Anth. Pal. xi. 48. ποίει κατʼ αὐτὸ
+Καὶ μὴ ποίει κατʼ αὐτὸ
 
 Μήτʼ ἄστρα μήτʼ ἀμάξας:
 
@@ -9037,23 +9037,23 @@ Oblectati autem sumus praeter multa alia versiculis lepidissimis Anacreontis sen
 
 Tum Graeci plusculi qui in eo convivio erant, homines amoeni et nostras quoque litteras haut incuriose docti, Iulianumlulianum rhetorem lacessere insectarique adorti sunt tamquam prorsus barbarum et agrestem, qui ortus terra Hispania foret clamatorque tantum et facundia rabida iurgiosaque esset eiusque linguae exercitationes doceret quae nullas voluptates nullamque mulcedinem Veneris atque Musae haberet; saepeque eum percontabantur quid de Anacreonte ceterisque id genus poetis sentiret et ecquis nostrorum poetarum tam fluentes carminum delicias fecisset. Nisi Catullus, inquiunt, forte pauca et Calvus itidem pauca. Nam Laevius inplicata et Hortensius invenusta et Cinna inlepida et Memmius dura ac deinceps omnes rudia fecerunt atque absona.
 
-Tum ille pro lingua patria, tamquam pro aris et focis, animo inritato indignabundus: Cedere equidem, inquit, vobis debui, ut in tali asotia atque nequitia AlcinoumAlcinum Alcinum, Hertz (cf. Hor. Ep. i. 2. 28 ff.); arcinnum, ω; Apicium suggested by Hosius (cf. Sen. Ep. cxx. 19). vinceretis et sicut in voluptatibus cultus atque victus, ita in cantilenarum quoque mollitiis mollitiis, Hertz; multis, ω. anteiretis.
+Tum ille pro lingua patria, tamquam pro aris et focis, animo inritato indignabundus: Cedere equidem, inquit, vobis debui, ut in tali asotia atque nequitia AlcinoumAlcinum vinceretis et sicut in voluptatibus cultus atque victus, ita in cantilenarum quoque mollitiis anteiretis.
 
 Sed ne nos, id est nomen Latinum, tamquam profecto vastos quosdam et insubidos, ἀναφροδισίας condemnetis, permittite mihi, quaeso, operire pallio caput, quod in quadam parum pudica oratione Socraten fecisse aiunt, et audite ac discite nostros quoque antiquiores ante eos quos nominastis poetas amasios ac venerios fuisse.
 
-Tum resupinus, capite convelato, voce admodum quam suavi, versus cecinit Valeri Aeditui, veteris poetae, item Porcii Licini et Q. Catuli, quibus mundius, venustius, limatius, tersius, tersius, Salmasius; persius, pessius, pressius, MSS. Graecum Latinumve nihil quicquam reperiri puto.
+Tum resupinus, capite convelato, voce admodum quam suavi, versus cecinit Valeri Aeditui, veteris poetae, item Porcii Licini et Q. Catuli, quibus mundius, venustius, limatius, tersius, Graecum Latinumve nihil quicquam reperiri puto.
 
-Aeditui versus: Dicere cum conor curam tibi, Pamphila, cordis, Quid mi abs te quaeram? verba labris abeunt, Per pectus manat subito subido subido added by Usener; stupido, C. F. W. Müller. mihi sudor: Sic tacitus, subidus, dum pudeo, pereo.
+Aeditui versus: Dicere cum conor curam tibi, Pamphila, cordis, Quid mi abs te quaeram? verba labris abeunt, Per pectus manat subito subido mihi sudor: Sic tacitus, subidus, dum pudeo, pereo.
 
 Dicere cum conor curam tibi, Pamphila, cordis,
 
 Quid mi abs te quaeram? verba labris abeunt,
 
-Per pectus manat subito subido subido added by Usener; stupido, C. F. W. Müller. mihi sudor:
+Per pectus manat subito subido mihi sudor:
 
 Sic tacitus, subidus, dum pudeo, pereo.
 
-Atque item alios versus eiusdem addidit, non hercle minus dulces quam priores: Qui faculam praefers, Phileros, quae nil opus nobis? Ibimus sic, lucet pectore flamma satis. Istam nam potis est vis saeva extinguere venti Aut imber caelo candidus concitus, Bährens. praecipitans, At contra hunc ignem Veneris, nisi si Venus ipsa, Nullast quae possit vis alia opprimere.
+Atque item alios versus eiusdem addidit, non hercle minus dulces quam priores: Qui faculam praefers, Phileros, quae nil opus nobis? Ibimus sic, lucet pectore flamma satis. Istam nam potis est vis saeva extinguere venti Aut imber caelo candidus praecipitans, At contra hunc ignem Veneris, nisi si Venus ipsa, Nullast quae possit vis alia opprimere.
 
 Qui faculam praefers, Phileros, quae nil opus nobis?
 
@@ -9061,15 +9061,15 @@ Ibimus sic, lucet pectore flamma satis.
 
 Istam nam potis est vis saeva extinguere venti
 
-Aut imber caelo candidus concitus, Bährens. praecipitans,
+Aut imber caelo candidus praecipitans,
 
 At contra hunc ignem Veneris, nisi si Venus ipsa,
 
 Nullast quae possit vis alia opprimere.
 
-Item dixit versus Porcii Licini hosce: Custodes ovium tenerae teneraeque, Victorius; vernae, Hertz and Unger; vendere, ω. propaginis, agnum, Quaeritis ignem? ite huchue; quaeritis? ignis homosthomrost. Si digito attigero, incendam silvam simul omnem; Omne pecus flammast, omnia quae video. Quinti Catuli versus illi fuerunt:
+Item dixit versus Porcii Licini hosce: Custodes ovium tenerae propaginis, agnum, Quaeritis ignem? ite huchue; quaeritis? ignis homosthomrost. Si digito attigero, incendam silvam simul omnem; Omne pecus flammast, omnia quae video. Quinti Catuli versus illi fuerunt:
 
-Custodes ovium tenerae teneraeque, Victorius; vernae, Hertz and Unger; vendere, ω. propaginis, agnum,
+Custodes ovium tenerae propaginis, agnum,
 
 Quaeritis ignem? ite huchue; quaeritis? ignis homosthomrost.
 
@@ -9089,25 +9089,25 @@ Ibimus quaesitum. Verum, ne ipsi teneamur,
 
 Formido. Quid ago? Da Venus consilium.
 
-Verba haec, praeter propter, in usu vulgi protrita, prodita, MSS. etiam Ennii fuisse.
+Verba haec, praeter propter, in usu vulgi protrita, etiam Ennii fuisse.
 
-MEMINI me quondam et Celsinum Iulium Numidam ad Frontonem Cornelium, pedes tunc graviter aegrum, ire et visere. Atque ubi ubi, Salmasius; ibi, δ; ibi qui, γ; ibi ubi, Hertz. introducti sumus, offendimus eum cubantem in scimpodio Graeciensi, circumundique sedentibus multis doctrina aut genere aut fortuna nobilibus viris.
+MEMINI me quondam et Celsinum Iulium Numidam ad Frontonem Cornelium, pedes tunc graviter aegrum, ire et visere. Atque ubi introducti sumus, offendimus eum cubantem in scimpodio Graeciensi, circumundique sedentibus multis doctrina aut genere aut fortuna nobilibus viris.
 
 Adsistebant fabri aedium complures, balneis novis moliendis adhibiti, ostendebantque
 
-depictas in membranulis varias species balnearum. Ex quibus cum elegisset unam formam speciemque operis, operis, Lipsius; veris (veneris, X), MSS.; verisimilem, Damsté. interrogavit quantus esset pecuniae sumptus sumptus, Q; espectus, Z; conspectus, γ; conputus suggested by Hosius. ad id totum opus absolvendum.
+depictas in membranulis varias species balnearum. Ex quibus cum elegisset unam formam speciemque operis, interrogavit quantus esset pecuniae sumptus ad id totum opus absolvendum.
 
 Cumque architectus dixisset necessaria videri esse sestertia ferme trecenta, unus ex amicis Frontonis: Et praeterpropter, inquit, alia quinquaginta.
 
-Tum Fronto, dilatis sermonibus quos habere de balnearum sumptu institerat, aspiciens ad eum amicum qui dixerat quinquaginta esse alia praeterpropter necessaria, necessaria praeterpropter supplied by Skutsch. eum interrogavit quid significaret verbum praeterpropter.
+Tum Fronto, dilatis sermonibus quos habere de balnearum sumptu institerat, aspiciens ad eum amicum qui dixerat quinquaginta esse alia praeterpropter necessaria, eum interrogavit quid significaret verbum praeterpropter.
 
 Atque ille amicus: Non meummeutm, inquit, hoc verbum est, sed multorum hominumhominurm quos loquentis id audias;
 
-quid autem id verbum significet, non ex me, sed ex grammatico quaerundum est, ac simul digito demonstrat grammaticum, haud incelebri nomine Romae docentem unaque ibi unaque ibi supplied by Hosius. sedentem. Tum grammaticus usitati pervulgatique verbi obscuritate motus:
+quid autem id verbum significet, non ex me, sed ex grammatico quaerundum est, ac simul digito demonstrat grammaticum, haud incelebri nomine Romae docentem unaque ibi sedentem. Tum grammaticus usitati pervulgatique verbi obscuritate motus:
 
 Quaerimus, inquit, quod honore quaestionis minime dignum est.
 
-Nam nescio quid hoc praenimis plebeium est et in opificum sermonibus quam in hominum doctorum in horninur doctorum supplied by Carrio. notius.
+Nam nescio quid hoc praenimis plebeium est et in opificum sermonibus quam in hominum doctorum notius.
 
 At enim Fronto, iam voce atque vultu intentiore: Itane, inquit, magister, dehonestum tibi deculpatumque hoc verbum videtur, quo et M. Cato et M. Varro et pleraque aetas superior ut necessario et Latino usi sunt?
 
@@ -9119,11 +9119,11 @@ Quocirca statim proferri Iphigeniam Q. Enni iubet. In eius tragoediae choro insc
 
 Plús negoti habét quam cum est negótium in negótio.
 
-Nám cui quod agat ínstitutumst, nil nisi nil nisi, Hertz; in illis, δ; in illo, y. negótium,
+Nám cui quod agat ínstitutumst, nil nisi negótium,
 
-Íd agit, id id added by Ribbeck. studét, ibi mentem atque ánimum delectát suum,
+Íd agit, id studét, ibi mentem atque ánimum delectát suum,
 
-Óotiosotioso in ótio animus néscit quid velit. quid agat, quid velit, Dziotzko.
+Óotiosotioso in ótio animus néscit quid velit.
 
 Hóc idem est; em néque domi nunc nós nec militiaé sumussumlus,
 
@@ -9131,7 +9131,7 @@ Hóc idem est; em néque domi nunc nós nec militiaé sumussumlus,
 
 Íincertencerte errat ánimus, praeterprópter vitam vívitur.
 
-Hoc ibi lectum est, tum deinde Fronto ad grammaticum iam labentem: Audistine, inquit, magister optime, Ennium tuum dixisse praeterpropter et cum sententia quidem tali, quali severissimae philosophorum esse obiurgationes solent? Petimus igitur dicas, quoniam de Enniano iam verbo quaeritur, qu sit remotus renotus, Hosius; motus, ω; ignotus, Hertz. huiusce versus sensus: Íincertencerte errat ánimus, praeterprópter vitam vívitur.
+Hoc ibi lectum est, tum deinde Fronto ad grammaticum iam labentem: Audistine, inquit, magister optime, Ennium tuum dixisse praeterpropter et cum sententia quidem tali, quali severissimae philosophorum esse obiurgationes solent? Petimus igitur dicas, quoniam de Enniano iam verbo quaeritur, qu sit remotus huiusce versus sensus: Íincertencerte errat ánimus, praeterprópter vitam vívitur.
 
 Íincertencerte errat ánimus, praeterprópter vitam vívitur.
 
@@ -9141,7 +9141,7 @@ Ponit versus Platonis amatorios quos admodum iuvenis lusit, dum tragoediis conte
 
 CELEBRANTUR duo isti Graeci versiculi multorumque doctorum hominum memoria dignantur, quod sint lepidissimi et venustissimae brevitatis.
 
-Neque adeo pauci sunt veteres scriptores, qui quidem qui quidem, Lion; quidem, Q; quid, Z; qui, γ. eos Platonis esse philosophi adfirmant, quibus ille adulescens luserit, cum tragoediis quoque eodem tempore faciendis praeluderet: Τὴν ψυχὴν Ἀγάθωνα φιλῶν ἐπὶ χείλεσιν ἔσχον Ἤλθε γὰρ ἡ τλήμων ὡς διαβησομένη.
+Neque adeo pauci sunt veteres scriptores, qui quidem eos Platonis esse philosophi adfirmant, quibus ille adulescens luserit, cum tragoediis quoque eodem tempore faciendis praeluderet: Τὴν ψυχὴν Ἀγάθωνα φιλῶν ἐπὶ χείλεσιν ἔσχον Ἤλθε γὰρ ἡ τλήμων ὡς διαβησομένη.
 
 Τὴν ψυχὴν Ἀγάθωνα φιλῶν ἐπὶ χείλεσιν ἔσχον
 
@@ -9149,7 +9149,7 @@ Neque adeo pauci sunt veteres scriptores, qui quidem qui quidem, Lion; quidem, Q
 
 Hoc δίστιχον amicus meus, οὐκ ἄμουσος adulescens, in plures versiculos licentius liberiusque vertit. Qui quoniam mihi quidem visi sunt non esse memoratu indigni, subdidi:
 
-Cum semihiulco savio Meo puellum savior Dulcemque florem spiritus Duco ex aperto tramite, Anima male male suggested by Hosius (cf. Hor. S. i. 4. 66); mea, Hertz. aegra et saucia Cucurrit ad labeas mihimilli, Rictuinque in oris pervium Et labra pueri mollia, Rimata itineri transitus, Ut transiliret, nititur. Tum si morae quid plusculaeplusculac Fuisset in coetu osculi, Amoris igni percita Transisset et me linqueret Et mira prorsum res foret, Ut fierem ad me fierem and ad me transposed by L. Müller. mortuus, Ad puerum ut ut added by Scaliger; at puerulo intus suggested by Hosius. intus viverem.
+Cum semihiulco savio Meo puellum savior Dulcemque florem spiritus Duco ex aperto tramite, Anima male aegra et saucia Cucurrit ad labeas mihimilli, Rictuinque in oris pervium Et labra pueri mollia, Rimata itineri transitus, Ut transiliret, nititur. Tum si morae quid plusculaeplusculac Fuisset in coetu osculi, Amoris igni percita Transisset et me linqueret Et mira prorsum res foret, Ut fierem ad me mortuus, Ad puerum ut intus viverem.
 
 Cum semihiulco savio
 
@@ -9159,7 +9159,7 @@ Dulcemque florem spiritus
 
 Duco ex aperto tramite,
 
-Anima male male suggested by Hosius (cf. Hor. S. i. 4. 66); mea, Hertz. aegra et saucia
+Anima male aegra et saucia
 
 Cucurrit ad labeas mihimilli,
 
@@ -9181,9 +9181,9 @@ Transisset et me linqueret
 
 Et mira prorsum res foret,
 
-Ut fierem ad me fierem and ad me transposed by L. Müller. mortuus,
+Ut fierem ad me mortuus,
 
-Ad puerum ut ut added by Scaliger; at puerulo intus suggested by Hosius. intus viverem.
+Ad puerum ut intus viverem.
 
 Dissertatio Herodis Attici super vi et natura doloris suaeque opinionis affirmatio per exemplum indocti rustici, qui cum rubis fructiferas arbores praecidit.
 
@@ -9191,19 +9191,19 @@ HERODEM ATTICUM, consularem virum, Athenis disserentem audivi Graeca oratione, i
 
 Disseruit autem contra ἀπάθειαν Stoicorum, lacessitus a quodam Stoico, tamquam minus sapienter et parum viriliter dolorem ferret ex morte pueri quem amaverat.
 
-In ea dissertione, dissertione, ω (cf. Thes. Ling. Lat.); dissertatione, Beroaldus. quantulum memini, huiuscemodi sensus est: quod nullus usquam homo, qui secundum naturam sentiret et saperet, adfectionibus istis animi, quas πάθη appellabat, aegritudinis, cupiditatis, timoris, irae, voluptatis, carere et vacare totis posset, posset rhetor non dolere (dolore) MSS.; rh. non d. deleted by Carrio. atque, si posset etiam obniti ut totis careret, non fore fore, H. J. Müller; ex re, ω. id melius, quoniam langueret animus et torperet, adfectionum quarundam adminiculis, ut necessaria plurimum temperie privatus.
+In ea dissertione, quantulum memini, huiuscemodi sensus est: quod nullus usquam homo, qui secundum naturam sentiret et saperet, adfectionibus istis animi, quas πάθη appellabat, aegritudinis, cupiditatis, timoris, irae, voluptatis, carere et vacare totis posset, atque, si posset etiam obniti ut totis careret, non fore id melius, quoniam langueret animus et torperet, adfectionum quarundam adminiculis, ut necessaria plurimum temperie privatus.
 
 Dicebat enim sensus istos motusque animi, qui cum inmoderatiores sunt vitia fiunt, innexos inplicatosque esse vigoribus quibusdam mentium et alacritatibus,
 
-ac propterea, si omnino omnis eos inperitius convellamus, periculum esse ne eis ne eis, ς; necis, ω. adhaerentes bonas quoque et utiles animi indoles amittamus.
+ac propterea, si omnino omnis eos inperitius convellamus, periculum esse ne eis adhaerentes bonas quoque et utiles animi indoles amittamus.
 
 Moderandos esse igitur et scite considerateque purgandos censebat, ut ea tantum quae aliena sunt contraque naturam videntur et cum pernicie adgnata sunt detrahantur, ne profecto id accidat quod cuipiam Thraco insipienti et rudi in agro quem emerat procurando venisse usu fabulast.
 
-Homo Thracus, inquit, ex ultima barbaria, ruris colendi insolens, cum in terras cultiores humanioris vitae cupidine commigrasset, fundum mercatus est oleo atque vino consitum. Qui cum cum added by Skutsch. nihil admodum super vite aut arbore colenda sciret, videt forte vicinum rubos alte atque late obortas excidentem, fraxinos ad summum prope verticem deputantem, suboles vitium e radicibus caudicum super terrain fusas revellentem, stolones in pomis aut in oleis proceros atque derectos amputantem, acceditque prope et cur tantam ligni atque frondium caedem faceret percontatus est.
+Homo Thracus, inquit, ex ultima barbaria, ruris colendi insolens, cum in terras cultiores humanioris vitae cupidine commigrasset, fundum mercatus est oleo atque vino consitum. Qui cum nihil admodum super vite aut arbore colenda sciret, videt forte vicinum rubos alte atque late obortas excidentem, fraxinos ad summum prope verticem deputantem, suboles vitium e radicibus caudicum super terrain fusas revellentem, stolones in pomis aut in oleis proceros atque derectos amputantem, acceditque prope et cur tantam ligni atque frondium caedem faceret percontatus est.
 
 Et vicinus ita respondit: Ut ager, inquit, mundus purusque fiat, eius arbor atque vitis fecundior.
 
-Discedit ille a vicino gratias agens et laetus, tamquam adeptus rei rusticae disciplinam. Tum falcem ibi ac securim capit: atque ibi homo misere miser, ω; corr. by Hosius (cf. xiii. 31. 1, etc.). inperitus vites suas sibi omnis et oleas detruncat comasque arborum laetissimas uberrimosque vitium palmites decidit et frutecta atque virgulta simul omnia, pomis frugibusque gignendis felicia, cum sentibus et rubis purificandi agri gratia convellit, mala mercede doctus audaciam fiduciamque peccandi imitatione falsa eruditus.
+Discedit ille a vicino gratias agens et laetus, tamquam adeptus rei rusticae disciplinam. Tum falcem ibi ac securim capit: atque ibi homo misere inperitus vites suas sibi omnis et oleas detruncat comasque arborum laetissimas uberrimosque vitium palmites decidit et frutecta atque virgulta simul omnia, pomis frugibusque gignendis felicia, cum sentibus et rubis purificandi agri gratia convellit, mala mercede doctus audaciam fiduciamque peccandi imitatione falsa eruditus.
 
 Sic, inquit, isti apathiae sectatores, qui videri se esse tranquillos et intrepidos et inmobiles volunt, dum nihil cupiunt, nihil dolent, nihil irascuntur, nihil gaudent, omnibus vehementioris animi officiis amputatis, in torpore ignavae et quasi enervatae vitae consenescunt.
 
@@ -9213,9 +9213,9 @@ STABANT forte una in vestibulo Palatii fabulantestabulantes Fronto Cornelius et 
 
 Tum Fronto Apollinari: Fac me, inquit, oro, magister, ut sim certus an recte supersederim nanos dicere parva nimisnimtis statura homines maluerimque eos pumiliones appellare, quoniam hoc scriptum esse in libris veterum memineram, nanos autem sordidum esse verbum et barbarum credebam?
 
-Est quidem, inquit, hoc Apollinaris, in consuetudine inperiti vulgi frequens, sed barbarum non est censeturque linguae Graecae origine; νάνους enim Graeci Graeci, ς; Graece, ω. vocaverunt brevi atque humili corpore homines paulum supra terrain extantes idque ita dixerunt adhibita quadam ratione etymologiae cum sententia vocabuli competente et, si memoria, inquit, mihi non labat scriptun hoc est in comoedia Aristophanis, cui nomen est Ὁλκάδες. Ὁλκάδες Hertz; ἀκαλες, ω (or something similar). Fuisset autem verbum hoc a te civitate donatum aut in Latinam coloniamcolonial deductum, si tu eo uti dignatus fores, essetque id inpendio probabilius quam quae a Laberio ignobilia nimis et sordentia in usum linguae Latinae intromissa sunt.
+Est quidem, inquit, hoc Apollinaris, in consuetudine inperiti vulgi frequens, sed barbarum non est censeturque linguae Graecae origine; νάνους enim Graeci vocaverunt brevi atque humili corpore homines paulum supra terrain extantes idque ita dixerunt adhibita quadam ratione etymologiae cum sententia vocabuli competente et, si memoria, inquit, mihi non labat scriptun hoc est in comoedia Aristophanis, cui nomen est Ὁλκάδες. Fuisset autem verbum hoc a te civitate donatum aut in Latinam coloniamcolonial deductum, si tu eo uti dignatus fores, essetque id inpendio probabilius quam quae a Laberio ignobilia nimis et sordentia in usum linguae Latinae intromissa sunt.
 
-Tum Festus Postumius grammatico cuipiam Latino, Frontonis familiari: Docuit, inquit, nos Apollinaris, nanos verbum Graecum esse, tu nos doce, quoniam quoniam, Skutsch; in quo, ω. de mulis aut eculeis humilioribus vulgo dicitur, anne Latinum sit et aput quem scriptum reperiatur?
+Tum Festus Postumius grammatico cuipiam Latino, Frontonis familiari: Docuit, inquit, nos Apollinaris, nanos verbum Graecum esse, tu nos doce, quoniam de mulis aut eculeis humilioribus vulgo dicitur, anne Latinum sit et aput quem scriptum reperiatur?
 
 Atque ille grammaticus, homo sane perquam in noscendis veteribus scriptis exercitus: Si piaculumpiaculunm, inquit, non committiturcomniittitur, praesente Apollinare, quid de voce ulla Graeca Latinave sentiam dicere, audeo tibi, Feste, quaerenti respondere esse hoc verbum Latinum scriptumque inveniri in poematispoeinatis Helvi Cinnae, non ignobilis neque indocti poetae, versusque eius ipsos dixit, quos, quoniam memoriae mihi forte aderant, adscripsi: At nunc me Genumana per salicta Bigis raeda rapit citata nanis.
 
@@ -9227,15 +9227,15 @@ Sed Varronis quidem monumenta rerum ac disciplinarum, quae per litteras condidit
 
 Nigidianae autem commentationes non proinde in volgus exeunt et obscuritas subtilitasque earum tamquam parum utilis derelicta est.
 
-Sicuti sunt quae paulo ante legimus in Commentariis eius, quos Grammaticos inscripsit, ex ex, Aldus; et, ω. quibus quaedam ad demonstrandum scripturaeseripturae genus exempli gratia sumpsisunpsi.
+Sicuti sunt quae paulo ante legimus in Commentariis eius, quos Grammaticos inscripsit, ex quibus quaedam ad demonstrandum scripturaeseripturae genus exempli gratia sumpsisunpsi.
 
 Nam, cum de natura atque ordine litterarum dissereret quas grammatici vocales appellant, verba haec scripsit, quae reliquimus inenarrata ad exercendam legentium intentionem:
 
-A et o semper principes sunt, i et u semper subditae, e et subit et praeit; praeit praeit added by Hertz. in Euripo, subit in Aemilio. Si quis putat praeire u in his verbis: Valerius, Vennonius, Volusius, aut i in his: iampridemianpridem, iecur, iocus, iucundum, errabit, quod hae litterae, cum praeeunt, ne vocales quidem sunt.
+A et o semper principes sunt, i et u semper subditae, e et subit et praeit; praeit in Euripo, subit in Aemilio. Si quis putat praeire u in his verbis: Valerius, Vennonius, Volusius, aut i in his: iampridemianpridem, iecur, iocus, iucundum, errabit, quod hae litterae, cum praeeunt, ne vocales quidem sunt.
 
 Item ex eodem libro verba haec sunt: Inter litteram n et g est alia vis, ut in nomine anguis et angarianrari et ancorae et increpat et incurrit et ingenuusingeluus. In omnibus his non verum n, sed adulterinum ponitur. Nam n non esse lingua indicio est; nam si ea littera esset, lingua palatum tangeret.
 
-Alio deinde in loco ita scriptum: Graecos non tantae inscitiae arcesso, qui ou ex o et u scripserunt, quantae quantae addedd in ς; quantae nostri fuerunt, Hertz. qui ei ex e et i; illud enim inopia fecerunt, hoc nulla re subacti.
+Alio deinde in loco ita scriptum: Graecos non tantae inscitiae arcesso, qui ou ex o et u scripserunt, quantae qui ei ex e et i; illud enim inopia fecerunt, hoc nulla re subacti.
 
 Disputatio Sex. Caecilii iureconsulti et Favorini philosophi de legibus Duodecim Tabularum.
 
@@ -9245,15 +9245,15 @@ Ad eum forte in area Palatina, cum salutationem Caesaris opperiremur, philosophu
 
 In illis tunc eorum sermonibus orta mentiost legum decemviralium, quas decemviri eius rei gratia a populo creati conposuerunt, in duodecim tabulas conscripserunt.
 
-Eas leges cum Sex. Caecilius, inquisitis exploratisque multarum urbium legibus, eleganti atque absoluta brevitate verborum scriptas diceret, Sit, sit, Beroaldus; sed, ω. inquit, hoc Favorinus, in pleraque earum legum parte ita uti dicis; non enim minus cupide tabulas istas duodecimduodecin legi quam illos duodecim libros Platonis De Legibus. Sed quaedam istic esse animadvertuntur aut obscurissima aut durissima aut durissima, added by J. Gronov. aut lenia contra nimis et remissa aut nequaquam ita, ut scriptum est, consistentia.
+Eas leges cum Sex. Caecilius, inquisitis exploratisque multarum urbium legibus, eleganti atque absoluta brevitate verborum scriptas diceret, Sit, inquit, hoc Favorinus, in pleraque earum legum parte ita uti dicis; non enim minus cupide tabulas istas duodecimduodecin legi quam illos duodecim libros Platonis De Legibus. Sed quaedam istic esse animadvertuntur aut obscurissima aut durissima aut lenia contra nimis et remissa aut nequaquam ita, ut scriptum est, consistentia.
 
 Obscuritates, inquit Sex.
 
 Caecilius, non adsignemus culpae scribentium, sed inscitiae non adsequentium, quamquam hi quoque ipsi, qui quae scriptascript sunt minus percipiunt culpa vacant.
 
-Nam longa aetas verba atque mores veteres oblitteravit, quibus verbis moribusque sententia legum conprehensa est. Trecentesimo quoque anno post Romam conditam tabulae conpositae scriptaeque sunt, a quo tempore ad hunc diem anni esse non longe minus sescenti sexcenti, J. F. Gronov; septingenti, ω. videntur.
+Nam longa aetas verba atque mores veteres oblitteravit, quibus verbis moribusque sententia legum conprehensa est. Trecentesimo quoque anno post Romam conditam tabulae conpositae scriptaeque sunt, a quo tempore ad hunc diem anni esse non longe minus sescenti videntur.
 
-Dure autem scriptum esse in istis legibus quid existimari potest? nisi duram esse legemlegend putas, quae iudicem arbitrumve iure datum, qui ob rem iudicandam iudicandam, Scioppius (cf. Quint. v. 10. 87; Tac. Ann. iv. 31; etc.); dicendam, ω. Heracus suggests that we have a fusion of ob rein iudicandam and ob ius dicendum or ob falsum testiinonium dicendum. pecuniam accepisse convictus est, capite poenitur aut quae furemfurerm manifestum ei cui furtum factum est in servitutem tradit, nocturnum autem furem ius occidendi tribuit.
+Dure autem scriptum esse in istis legibus quid existimari potest? nisi duram esse legemlegend putas, quae iudicem arbitrumve iure datum, qui ob rem iudicandam pecuniam accepisse convictus est, capite poenitur aut quae furemfurerm manifestum ei cui furtum factum est in servitutem tradit, nocturnum autem furem ius occidendi tribuit.
 
 Dic enim, quaeso, die, vir sapientiae studiosissime, an aut iudicis illius perfidiam contra omnia divina atque humana iusiurandum suum pecunia vendentis aut furis manifesti intolerandam audaciam aut nocturni grassatoris insidiosam violentiam non dignam esse capitis poena existumes?
 
@@ -9265,25 +9265,25 @@ Sicut illud quoque inhumaniternon scriptum improbavit, quod, si homo in ius voca
 
 Quod vero dixi videri quaedam esse inpendio molliora, nonne tibi quoque videtur nimis esse dilutum quod ita de iniuria poenienda scriptum est: Si iniuriam alteri faxsit, viginti quinque aeris poenae sunto? Quis enim erit tam inops, quem ab iniuriae faciendae libidine viginti quinque asses deterreant?
 
-Itaque cum eam legem Labeo quoque Labeo quoque, Huschke; cum Labeo q., δΝΟ; cum (tum, π) quoque Labeo, πΧ. vester in libris, quos Ad Duodecimn Tabulas conscripsit, non probaret: Quidam, quidam added by Carrio; various other suggestions for partly filling the lacuna before inquit have been made. inquit, L. Veratius fuit egregie homo inprobus atque inmani vecordia. Is pro delectamento habebat, os hominis liberi manus suae palma verberare. Eum servus sequebatur ferens crumenam plenam assium; ut quemque depalmaverat, numerari statim secundum Duodecim Tabulas quinque et viginti asses iubebat. Propterea, inquit, praetores postea hanc abolescere et relinqui censuerunt iniuriisque aestumandis recuperatores se daturos edixerunt.
+Itaque cum eam legem Labeo quoque vester in libris, quos Ad Duodecimn Tabulas conscripsit, non probaret: Quidam, inquit, L. Veratius fuit egregie homo inprobus atque inmani vecordia. Is pro delectamento habebat, os hominis liberi manus suae palma verberare. Eum servus sequebatur ferens crumenam plenam assium; ut quemque depalmaverat, numerari statim secundum Duodecim Tabulas quinque et viginti asses iubebat. Propterea, inquit, praetores postea hanc abolescere et relinqui censuerunt iniuriisque aestumandis recuperatores se daturos edixerunt.
 
 Nonnulla autem in istis legibus ne consistere quidem, sicuti dixi, visa sunt, velut illa lex talionis, cuius verba, nisi memoria me fallit, haec sunt: Si merbrum rupit, ni cum e pacto, talio esto.
 
 Praeter enim ulciscendiulclsendi acerbitatem ne procedere quoque executio iustae talionis potest. Nam cui membrum ab alio ruptum est, si ipsi itidem rumpere per talionem velit, quaero, an efficere possit rumpendi pariter membri aequilibrium? In qua re primum ea difficultas est inexplicabilis.
 
-Quid si quid si, Q2; qui si, πΖ; quis in, O; quis vi, Q; qui sin, N; quis, X. membrum, inquit, alteri inprudens ruperit? Quod enim inprudentia factum est, retaliari per inprudentiam debet. Ictus quippe fortuitus et consultus non cadunt sub eiusdem talionis similitudinem. Quonam igitur modo inprudentem poterit imitari, qui in exequenda talione non licentiae ius habet, sed inprudentiae?
+Quid si membrum, inquit, alteri inprudens ruperit? Quod enim inprudentia factum est, retaliari per inprudentiam debet. Ictus quippe fortuitus et consultus non cadunt sub eiusdem talionis similitudinem. Quonam igitur modo inprudentem poterit imitari, qui in exequenda talione non licentiae ius habet, sed inprudentiae?
 
 Sed et si prudens ruperit, nequaquam patietur aut altius se laedi aut latius. Quod cuimodicuiusmodi libra atque mensura caveri possit, non reperio.
 
 Quin etiam, si quid plus erit aliterve conmissum, res fiet ridiculae atrocitatis, ut contraria actio mutuaenutuae talionis oriatur et adolescat infinita quaedam reciprocatio talionum.
 
-Nam de inmanitate illa secandi partiendique humani corporis, si unus ob pecuniam debitam iudicatus addictusque sit pluribus, non libet meminisse et piget dicere. Quid enim videri potest efferatius, quid ab hominis ingenio diversius quam quod membra inopis debitoris acerbissimo acerbissimo, Hosius; brevissimo, ω; saevissimo, Bynkershoek. laniatu distrahebantur, sicuti nunc bona venum distrahuntur?
+Nam de inmanitate illa secandi partiendique humani corporis, si unus ob pecuniam debitam iudicatus addictusque sit pluribus, non libet meminisse et piget dicere. Quid enim videri potest efferatius, quid ab hominis ingenio diversius quam quod membra inopis debitoris acerbissimo laniatu distrahebantur, sicuti nunc bona venum distrahuntur?
 
 Tum Sex. Caecilius amplexus utraque manu Favorinum, Tu es, inquit, unus profecto in nostra memoriamemorial non Graecae modo, sed Romanae quoque rei peritissimus. Quis enim philosophorum disciplinae suae leges tam scite atque docte callet quam leges tu nostras decemvirales percalluisti?
 
 Sed, quaeso tecum tamen, degrediare paulisperpaulisler curriculis istis disputationum vestrarum academicis omissoque studio, quicquid lubitum est arguendi tuendique, consideres gravius cuimodicuiusmodi sint ea quae reprehendisti,
 
-nec ideo contemnas legum istarum antiquitates, quod plerisque ipse ipse, Hosius; ipsis, w; ipsus, Boot. iam populus Romanus uti desiverit. Non enim profecto ignoras legum oportunitatesoportunlitates et medellas pro temporumtempoorum moribus et pro rerum publicarum generibus ac pro utilitatum praesentium rationibus proque vitiorum quibus medendum est fervoribus mutari atque flecti neque uno statu consistere, quin, ut facies caeli et maris, ita rerum atque fortunae tempestatibus varientur.
+nec ideo contemnas legum istarum antiquitates, quod plerisque ipse iam populus Romanus uti desiverit. Non enim profecto ignoras legum oportunitatesoportunlitates et medellas pro temporumtempoorum moribus et pro rerum publicarum generibus ac pro utilitatum praesentium rationibus proque vitiorum quibus medendum est fervoribus mutari atque flecti neque uno statu consistere, quin, ut facies caeli et maris, ita rerum atque fortunae tempestatibus varientur.
 
 Quid salubrius visum est rogatione illa Stolonis iugerum de numero praefinito? Quid utilius plebisscito Voconio de coercendis mulierum hereditatibus? Quid tam necessarium existimatum est propulsandae civium luxuriae quam lex Licinia et Fannia aliaeque item leges sumptuariae? Omnia tamen haec oblitterata et operta sunt civitatis opulentia quasi quibusdam fluctibus exaestuantis.
 
@@ -9295,11 +9295,11 @@ arceram ne sternito. An tu forte morbum appellari hic putas aegrotationem graver
 
 Hoc, mi Favorine, nequaquam ita est. Nam morbus in lege ista non febriculosus neque nimium gravis, sed vitium aliquod inbecillitatis atque invalentiae demonstratur, non periculum vitae ostenditur. Ceteroqui morbum vehementiorem, vim graviter nocendi habenten, legum istarum scriptores alio in loco, non per se morbum, sed morbum sonticum appellant.
 
-Iumentum quoque non id solum significat quod nunc dicitur, sed vectabulum etiam quod a iunctis pecoribus trahebatur; veteres veteres enim, ς. nostri iumentum. a iungendo dixerunt.
+Iumentum quoque non id solum significat quod nunc dicitur, sed vectabulum etiam quod a iunctis pecoribus trahebatur; veteres nostri iumentum. a iungendo dixerunt.
 
-Arcera autem vocabatur plaustrum plaltstrum rusticum, Hertz from Nonius. tectum undique et munitum, quasi area quaedam magna, vestimentis instrata, qua nimis aegri aut senes portari cubantes solebant.
+Arcera autem vocabatur plaustrum tectum undique et munitum, quasi area quaedam magna, vestimentis instrata, qua nimis aegri aut senes portari cubantes solebant.
 
-Quaenam tibi igitur acerbitas esse visa est, quod in ius vocato paupertino homini vel inopi, qui aut pedibus forte aegris esset aut quo alio casu ingredi non quiret, plaustrum esse dandum censuerunt? neque insterni tamen delicate arceram iusserunt, quoniam satis esset invalido cuimodi vectabulum. Atque id fecerunt, ne causatio ista aegri corporis perpetuam vocationem daret fidem detractantibus iurisque actiones declinantibus; sed enim insubide. insubide, Heraeus; ipsum vide, ω; ipse, Boot; vide quod, ς.
+Quaenam tibi igitur acerbitas esse visa est, quod in ius vocato paupertino homini vel inopi, qui aut pedibus forte aegris esset aut quo alio casu ingredi non quiret, plaustrum esse dandum censuerunt? neque insterni tamen delicate arceram iusserunt, quoniam satis esset invalido cuimodi vectabulum. Atque id fecerunt, ne causatio ista aegri corporis perpetuam vocationem daret fidem detractantibus iurisque actiones declinantibus; sed enim insubide.
 
 Iniurias factas quinque et viginti assibus sanxerunt. Non omnino omnes, mi Favorine, iniurias aere isto pauco diluerunt, tametsi haec ipsa paucitas assium grave pondus aeris fuit; nam librariis assibus in ea tempestate populus usus est.
 
@@ -9313,13 +9313,13 @@ Quod si ita est ut dico, et ut ipse aequitatis habitus demonstrat, taliones illa
 
 Sed quoniam acerbum quoque esse hoc genus poenae putas, quae, obsecro te, ista acerbitas est, si idem fiat in te quod tute in alio feceris? praesertim cum habeas facultatem paciscendi et non necesse sit pati talionem, nisi eam tu elegeris.
 
-Quod edictum autem praetorum de aestimandis iniuriis probabilius esse existimas, existinmas, Huschske; ex his (iis, ΝΟΧ), ω. nolo hoc ignores, hanc quoque ipsam talionem ad aestimationem iudicis redigi necessario solitam.
+Quod edictum autem praetorum de aestimandis iniuriis probabilius esse existimas, nolo hoc ignores, hanc quoque ipsam talionem ad aestimationem iudicis redigi necessario solitam.
 
 Nam si reus, qui depecisci noluerat, iudici talionem imperanti non parebat, aestimata lite iudex hominem pecuniae damnabat, atque ita, si reo et pactio gravis et acerba talio visa fuerat, severitas legis ad pecuniae multam redibat.
 
 Restat, ut ei quod de sectione partitioneque que corporis inmanissimum esse tibi visum est respondeam. Omnibus quidem virtutum generibus exercendis colendisque populus Romanus e parva origine ad tantae amplitudinis instar emicuit, sed omnium maxime atque praecipue fidem coluit sanctamque habuit tam privatim quam publice.
 
-Sic consules, clarissimos viros, hostibus confirmandae fidei publicae causa dedidit, dedit, ω; corr. by Daniel. sic clientem in fidem acceptum cariorem haberi quam propinquos tuendumque esse contra cognatos censuit, neque peius ullum facinus existimatum est quam si cui probareturprolaretur clientem divisui habuisse.
+Sic consules, clarissimos viros, hostibus confirmandae fidei publicae causa dedidit, sic clientem in fidem acceptum cariorem haberi quam propinquos tuendumque esse contra cognatos censuit, neque peius ullum facinus existimatum est quam si cui probareturprolaretur clientem divisui habuisse.
 
 Hanc autem fidem maiores nostri non modo in officiorum vicibusvicious, sed in negotiorum quoque contractibus sanxerunt maximeque in pecuniae mutuaticae usu atque commercio; adimi enim putaverunt subsidium hoc inopiae temporariae, quo communiscomnunis omnium vita indiget, si perfidia debitorum sine gravi poena eluderet.
 
@@ -9335,7 +9335,7 @@ Erat autem ius interea paciscendi ac, nisi pacti forent, habebantur in vinculis 
 
 Inter eos dies trinis nundinis continuis ad praetorem in comitium producebantur, quantaeque pecuniae iudicati essent praedicabatur. Tertiis autem nundinis capite poenas dabant aut trans Tiberim peregre venum ibant.
 
-Sed eam capitis poenam sanciendae, sicuti dixi, fidei gratia horrificam atrocitatis ostentu novisque terroribus metuendam reddiderunt. Nam si plures forent, quibus reus esset iudicatus, adiudicatus, Skutsch. secare, si vellent, atque partiri corpus addicti sibi hominis permiserunt.
+Sed eam capitis poenam sanciendae, sicuti dixi, fidei gratia horrificam atrocitatis ostentu novisque terroribus metuendam reddiderunt. Nam si plures forent, quibus reus esset iudicatus, secare, si vellent, atque partiri corpus addicti sibi hominis permiserunt.
 
 Et quidem verba ipsa legis dicam, ne existimes invidiam me istam forte formidare: Tertiis, inquit, nundinis partis secanto. Si plus minusve secuerunt, se fraude esto.
 
@@ -9347,7 +9347,7 @@ dissectum esse antiquitus neminem equidem legi neque audivi, quoniam saevitia is
 
 An putas, Favorine, si non illa etiam ex Duodecim Tabulis de testimoniis falsis poena abolevisset et si nunc quoque, ut antea, qui falsum testimonium dixisse convictus esset, e saxo Tarpeio deiceretur, mentituros fuisse pro testimonio tam multos quam videmus? Acerbitas plerumque ulciscendi maleficii bene atque caute vivendi disciplinast.
 
-Historia de Metto Fufetio Albano nobis quoque, non admodum numero saepe numero, Knapp. istiusmodi libros lectitantibus, ignota non est, qui, quoniam pactum atque condictum cum rege populi Romani perfide ruperat, binis quadrigis evinctus in diverse nitentibus laceratus est; novum atque asperum supplicium quis negat? sed, quid elegantissimus poeta dicat, vide: at tu dictis, Albane, maneres.
+Historia de Metto Fufetio Albano nobis quoque, non admodum numero istiusmodi libros lectitantibus, ignota non est, qui, quoniam pactum atque condictum cum rege populi Romani perfide ruperat, binis quadrigis evinctus in diverse nitentibus laceratus est; novum atque asperum supplicium quis negat? sed, quid elegantissimus poeta dicat, vide: at tu dictis, Albane, maneres.
 
 at tu dictis, Albane, maneres.
 
@@ -9371,13 +9371,13 @@ Posuit hoc verbum L. Accius poeta in Pragmaticis appellarique sicinnistas ait ne
 
 Artificum scaenicorum studium amoremque inhonestum probrosumque esse; et super ea re verba Aristotelis philosophi adscripta.
 
-COMOEDOS quispiam et tragoedos et tibicines dives adulescens, Tauri philosophi discipulus, ut ut added by Vogel. liberos homines in deliciis atque in delectamentis habebat.
+COMOEDOS quispiam et tragoedos et tibicines dives adulescens, Tauri philosophi discipulus, ut liberos homines in deliciis atque in delectamentis habebat.
 
 Id genus autem artifices Graece appellantur οἱ περὶ τὸν Διόνυσον τεχνῖται.
 
 Eum adulescentem Taurus a sodalitatibus convictuque hominum scaenicorum abducere volens, misit ei verba haec ex Aristotelis libro exscripta, qui Προβλήματα Ἐγκύκλια inscriptus est,
 
-iussitque uti ea cotidie lectitaret: Διὰ τὶ οἱ Διονυσιακοὶ τεχνῖται ὡς ἐπὶ τὸ πολὺ πονηροί εἰσιν; ἢ ἤ, Arist.; omitted by ω. ὅτι ἥκιστα λόγου καὶ καί omitted by Arist φιλοσοφίας σοφίας, Arist. κοινωνοῦσι διὰ τὸ περὶ τὰς ἀναγκαίας τέχνας τὸ πολὺ μέρος τοῦ βίου εἶναι, καὶ ὅτι ἐν ἀκρασίαις τὸν πολὺν χρόνον εἰσίν, ὁτὲ δὲ ἐν ἀποριαις; τὸ πολὺ τοῦ βίου εἰσίν, τὰ δὲ καὶ ἐν ἀπ., Arist. ἀμφότερα δὲ φαυλότητος παρασκευαστικά.
+iussitque uti ea cotidie lectitaret: Διὰ τὶ οἱ Διονυσιακοὶ τεχνῖται ὡς ἐπὶ τὸ πολὺ πονηροί εἰσιν; ἢ ὅτι ἥκιστα λόγου καὶ φιλοσοφίας κοινωνοῦσι διὰ τὸ περὶ τὰς ἀναγκαίας τέχνας τὸ πολὺ μέρος τοῦ βίου εἶναι, καὶ ὅτι ἐν ἀκρασίαις τὸν πολὺν χρόνον εἰσίν, ὁτὲ δὲ ἐν ἀποριαις; ἀμφότερα δὲ φαυλότητος παρασκευαστικά.
 
 Exempla epistularum Alexandri regis et Aristotelis philosophi, ita uti sunt edita; eaque in lingua Latinam versa.
 
@@ -9393,19 +9393,19 @@ Illas vero exotericas auditiones exercitiumque dicendi eodem in loco vesperi fac
 
 Libros quoque suos, earum omnium rerum conmentarios, seorsum divisit, ut alii exoterici dicerentur, partim acroatici.
 
-Eos libros generis acroatici cum in vulgus ab eo editos rex Alexander cognovisset atque ea tempestate armis exercitam exercitam, Carrio (cf. Plaut. Epid. 529, Skutsch); exercitum, ω. omnem prope Asiam teneret regemque ipsum Darium proeliis et victoriis urgeret, in illis tamen tantis negotiis litteras ad Aristotelem misit, non eum recte fecisse, quod disciplinas acroaticas, quibus ab eo ipse eruditus foret, libris foras editis involgasset:
+Eos libros generis acroatici cum in vulgus ab eo editos rex Alexander cognovisset atque ea tempestate armis exercitam omnem prope Asiam teneret regemque ipsum Darium proeliis et victoriis urgeret, in illis tamen tantis negotiis litteras ad Aristotelem misit, non eum recte fecisse, quod disciplinas acroaticas, quibus ab eo ipse eruditus foret, libris foras editis involgasset:
 
 Nam qua, inquit, alia re praestare ceteris poterimus, si ea quae ex te accepimusaccelimus omnium prosus fient communia? Quippe ego doctrina anteire malim quam copiis atque opulentiis.
 
-Rescripsit ei Aristoteles ad hanc sententiam: Acroaticos libros, quos editos quereris et non proinde ut arcana absconditos, neque editos scito esse neque non editos, quoniam his solis cognobiles erunt, qui nos audiverunt. qui audiverunt added by Hertz.
+Rescripsit ei Aristoteles ad hanc sententiam: Acroaticos libros, quos editos quereris et non proinde ut arcana absconditos, neque editos scito esse neque non editos, quoniam his solis cognobiles erunt, qui nos audiverunt.
 
-Exempla utrarumque litterarum sumpta ex Andronici philosophi libro subdidi; amavi amavi scripsi; amavi autem, a; an autem, ω; en autem, Rose. Prosus seems to call for a preceding verb or adjective; see my article in Class. Phil. xvii (1922), 144 ff. Otherwise I should prefer the en autem of Rose. prosus in utriusque epistula brevitatis elegantissimae filum tenuissimum:
+Exempla utrarumque litterarum sumpta ex Andronici philosophi libro subdidi; amavi prosus in utriusque epistula brevitatis elegantissimae filum tenuissimum:
 
-Ἀλέξανδρος Ἀριστοτέλει εὖ πράττειν. Οὐκ ὀρθῶς ἐποίησας, ἐκδοὺς τοὺς ἀκροατικοὺςἀκροαματικούς Plut. τῶν λόγων· τίνι γὰρ δὴ διοίσομεν ἡμεῖς τῶν ἄλλων, εἰ καθʼ οὓς ἐπαιδεύθημεν λόγους, οὗτοι πάντων ἔσονται κοινοί; ἐγὼ δὲ βουλοίμην ἂν ταῖς περὶ τὰ ἄριστα ἐμπειράαις ἢ ταῖς δυνάμεσιν διαφέρειν. ἔρρωσο.
+Ἀλέξανδρος Ἀριστοτέλει εὖ πράττειν. Οὐκ ὀρθῶς ἐποίησας, ἐκδοὺς τοὺς ἀκροατικοὺς τῶν λόγων· τίνι γὰρ δὴ διοίσομεν ἡμεῖς τῶν ἄλλων, εἰ καθʼ οὓς ἐπαιδεύθημεν λόγους, οὗτοι πάντων ἔσονται κοινοί; ἐγὼ δὲ βουλοίμην ἂν ταῖς περὶ τὰ ἄριστα ἐμπειράαις ἢ ταῖς δυνάμεσιν διαφέρειν. ἔρρωσο.
 
 Ἀλέξανδρος Ἀριστοτέλει εὖ πράττειν.
 
-Οὐκ ὀρθῶς ἐποίησας, ἐκδοὺς τοὺς ἀκροατικοὺςἀκροαματικούς Plut. τῶν λόγων· τίνι γὰρ δὴ διοίσομεν ἡμεῖς τῶν ἄλλων, εἰ καθʼ οὓς ἐπαιδεύθημεν λόγους, οὗτοι πάντων ἔσονται κοινοί; ἐγὼ δὲ βουλοίμην ἂν ταῖς περὶ τὰ ἄριστα ἐμπειράαις ἢ ταῖς δυνάμεσιν διαφέρειν. ἔρρωσο.
+Οὐκ ὀρθῶς ἐποίησας, ἐκδοὺς τοὺς ἀκροατικοὺς τῶν λόγων· τίνι γὰρ δὴ διοίσομεν ἡμεῖς τῶν ἄλλων, εἰ καθʼ οὓς ἐπαιδεύθημεν λόγους, οὗτοι πάντων ἔσονται κοινοί; ἐγὼ δὲ βουλοίμην ἂν ταῖς περὶ τὰ ἄριστα ἐμπειράαις ἢ ταῖς δυνάμεσιν διαφέρειν. ἔρρωσο.
 
 Ἀριστοτέλης βασιλεῖ Ἀλεξάνδρῳ εὖ πράττειν. Ἔγραψάς μοι περὶ τῶν ἀκροατικῶν λόγων, οἰόμενος δεῖν αὐτοὺς φυλάττειν ἐν ἀπορρήτοις. ἴσθι οὖν αὐτοὺς καὶ ἐκδεδομένους καὶ μὴ ἐκδεδομένουσ· ξυνετοὶ γάρ εἰσιν μόνοις τοῖς ἡμῶν ἀκούσασιν. ἔρρωσο, Ἀλέξανδρε βασιλεῦ.
 
@@ -9419,9 +9419,9 @@ Quaesitum atque tractatum utrumn siet rectius dicere habeo curam vestri, an vest
 
 PERCONTABAR Apollinarem Sulpicium, cum eum Romae adulescentulus sectarer, qua ratione diceretur habeo curam vestri aut misereor vestri et iste casus vestri eo in loco quem videretur habere casum rectum.
 
-Is hic mihi ita respondit: Quaeris, inquit, ex me, quod mihi quoque est iamdiu in perpetua quaestione. Videtur enim non vestri oportere dici, sed vestrum, sicuti Graeci locuntur: ἐπιμελοῦμαι ὑμῶν, κήδομαι ὑμῶν, in quo loco ὑμῶν aptius vestrum dicitur quam vestri et habet casum nominandi, quem tu rectum appellasti, vos. vos added by Hertz.
+Is hic mihi ita respondit: Quaeris, inquit, ex me, quod mihi quoque est iamdiu in perpetua quaestione. Videtur enim non vestri oportere dici, sed vestrum, sicuti Graeci locuntur: ἐπιμελοῦμαι ὑμῶν, κήδομαι ὑμῶν, in quo loco ὑμῶν aptius vestrum dicitur quam vestri et habet casum nominandi, quem tu rectum appellasti, vos.
 
-Invenio tamen, inquit, non paucis in locis nostri atque vestri dictum, non nostrum aut vestrum. L. Sulla Rerum Gestarum libro secundo: Quod si fieri potest, ut etiam nunc nostri vobis in mentem veniat, nosque magis dignos creditis quibus civibus quam hostibus utamini quique pro vobis potius quam contra vos pugnemus, neque nostro neque maiorum nostrorum inmmerito immerito, Madvig; nerito, ω. nobis id continget.
+Invenio tamen, inquit, non paucis in locis nostri atque vestri dictum, non nostrum aut vestrum. L. Sulla Rerum Gestarum libro secundo: Quod si fieri potest, ut etiam nunc nostri vobis in mentem veniat, nosque magis dignos creditis quibus civibus quam hostibus utamini quique pro vobis potius quam contra vos pugnemus, neque nostro neque maiorum nostrorum inmmerito nobis id continget.
 
 Terentius in Phormione: Ita plérique ingenió sumus omnes, nóstri nosmet paénitet.
 
@@ -9435,11 +9435,11 @@ Et Laberius in Necyomantia: Dum diútius retinétur, nostri oblitus est.
 
 Dum diútius retinétur, nostri oblitus est.
 
-Dubium porro, inquit, non est, quin eodem haec omnia casu dicantur: nostri paenitet, nostri paenitet added by Skutsch. nostri oblitus est, nostri misertus est, quo dicitur: mei paenitet, mei misertus est, mei oblitus est.
+Dubium porro, inquit, non est, quin eodem haec omnia casu dicantur: nostri paenitet, nostri oblitus est, nostri misertus est, quo dicitur: mei paenitet, mei misertus est, mei oblitus est.
 
 Mei autem casus interrogandi est, quem genetivum grammatici vocant, et ab eo declinatur, quod est ego; huius deinde plurativum est nos. Tui aeque declinatur ab eo, quod est tu; huius itidem plurativum est vos.
 
-Sic namque Plautus declinavit in PseuduloPseudolo in hisce versibus: Si ex té tacente fíeri possem cértior, Ere, quaé miseriae té tam misere mácerent, Duorúm labori ego hóminum parsissém lubens: Mei té rogandi et tís tui tis γ. respondendí mihi. Mei enim Plautus hoc in loco non ab eo dixit, quod est meus, sed ab eo, quod est ego.
+Sic namque Plautus declinavit in PseuduloPseudolo in hisce versibus: Si ex té tacente fíeri possem cértior, Ere, quaé miseriae té tam misere mácerent, Duorúm labori ego hóminum parsissém lubens: Mei té rogandi et tís respondendí mihi. Mei enim Plautus hoc in loco non ab eo dixit, quod est meus, sed ab eo, quod est ego.
 
 Si ex té tacente fíeri possem cértior,
 
@@ -9447,15 +9447,15 @@ Ere, quaé miseriae té tam misere mácerent,
 
 Duorúm labori ego hóminum parsissém lubens:
 
-Mei té rogandi et tís tui tis γ. respondendí mihi.
+Mei té rogandi et tís respondendí mihi.
 
 Itaque si dicere velis patrem mei pro patrem meum, quo Graeci modo τὸν πατέρα μου dicunt, inusitate quidem, sed recte profecto eaque ratione dices, qua Plautus dixit labori mei pro labori meo.
 
 Haec autem ipsa ratio est in numero plurativo, qua Gracchus misereri vestrum dixit et qua M. Cicero contentio vestrum et contentione nostrum dixit quaque item ratione Quadrigarius in Annali undevicesimo verba haec posuit: C. Mari, ecquando te nostrum et reipublicae miserebitur! Cur igitur Terentius paenitet nostri, non nostrum, et Afranius nostri miseritus est, non nostrum?
 
-Nihil hercle, inquit, mihi de ista re in mentem venit, nisi auctoritas quaedam vetustatis non nimis anxie neque superstitiose loquentis. Nam sicuti multifariam scriptum est vestrorum provestrum, ut in Plauti MustellariaMostellaria in hoc versu: Vérum illud esse illud est, codd. Plant. máxima maxime, O1; maximum (maximam, Plaut. B) adeo, párs vestrorum intéllegit, cum vellet maxima pars dicere vestrum, ita nonnumquam vestri quoquc dictum est pro vestrum.
+Nihil hercle, inquit, mihi de ista re in mentem venit, nisi auctoritas quaedam vetustatis non nimis anxie neque superstitiose loquentis. Nam sicuti multifariam scriptum est vestrorum provestrum, ut in Plauti MustellariaMostellaria in hoc versu: Vérum illud esse máxima párs vestrorum intéllegit, cum vellet maxima pars dicere vestrum, ita nonnumquam vestri quoquc dictum est pro vestrum.
 
-Vérum illud esse illud est, codd. Plant. máxima maxime, O1; maximum (maximam, Plaut. B) adeo, párs vestrorum intéllegit,
+Vérum illud esse máxima párs vestrorum intéllegit,
 
 Sed proculprocu dubio qui rectissime loqui volet vestrum potius dixerit quam vestri.
 
@@ -9463,19 +9463,19 @@ Et idcircoideirco inportunissime, inquit, fecerunt, qui in plerisque Sallusti ex
 
 Haec memini mihi Apollinarem dicere, eaque tunc ipsa, ita ut dicta fuerant, notavi.
 
-Quam diversae Graecorum sint sententiae super numero Niobae filiorum. Lemma omitted by ω; supplied by ς, omitting sint.
+Quam diversae Graecorum sint sententiae super numero Niobae filiorum.
 
 MIRA et prope adeo ridicula diversitas fabulae apud Graecos poetas deprenditur super numero Niobae filiorum.
 
 Nam Homerus pueros puellasque eius bis senos dicit fuisse, Euripides bis septenos, Sappho bis novenos, Bacchylides et Pindarus bis denos, quidam alii scriptores tres fuisse solos dixerunt.
 
-De his quae habere συμπτωσίαν videntur cum luna iuvenescente iuvenescente, suggested by Hosius, who writes mansuescente in his text; ansuescente δΝΠ; anuescente (ac vescente, X), OX; accrescente or adolescente, Lion. ac senescente.
+De his quae habere συμπτωσίαν videntur cum luna iuvenescente ac senescente.
 
 ANNIANUS poeta in fundo suo, quem in agro Falisco possidebat, agitare erat solitus vindemiam hilare atque amoeniter.
 
 Ad eos dies me et quosdam item alios familiaris vocavit.
 
-Ibi tum cenantibus nobis magnus ostrearum numerus Roma missus est. Quae cum adpositae fuissent et multae quidem, sed inuberes macriusculaeque macriusculaeque, Hertz; macrae quaeque, NX; macraeque ΠΧ;2 macrus queque, Δ. essent: Luna, inquit Annianus, nunc videlicet senescit; ea re ostrea quoque, sicuti quaedam alia, tenuis exsuctaque est.
+Ibi tum cenantibus nobis magnus ostrearum numerus Roma missus est. Quae cum adpositae fuissent et multae quidem, sed inuberes macriusculaeque essent: Luna, inquit Annianus, nunc videlicet senescit; ea re ostrea quoque, sicuti quaedam alia, tenuis exsuctaque est.
 
 Cum quaereremus quae alia item senescente luna tabescerent, Nonne Lucilium, inquit, nostrum meministis dicere: Luna alit ostrea et implet echinos, muribus fibras Et iecur addit?
 
@@ -9489,7 +9489,7 @@ Aelurorum quoque oculi ad easdem vices lunae aut ampliores fiunt aut minores.
 
 Id etiam, inquit, multo mirandum est magis, quod apud Plutarchum in quarto In Hesiodum Commentario legi: Cepetum revirescit et congerminat decedente luna, contra autem inarescit adolescente. Eam causam esse dicunt sacerdotes Aegyptii, cur Pelusiotae cepe non edint, quia solum olerum omnium contra lunae augmenta atque damna vices minuendi et augendi habeat contrarias.
 
-Qualibus verbis delectari solitus sit Antonius Iulianus, positis in mimiambisMamiambis Cn. Cn quam added by L. Müller. Matii; et quid significetsigniificet M. Cato in oratione quam scripsit de innocentia sua, cumcurl ita dictitat: numquam vestimentavestirnenta a populo poposcipeposci.
+Qualibus verbis delectari solitus sit Antonius Iulianus, positis in mimiambisMamiambis Cn. Matii; et quid significetsigniificet M. Cato in oratione quam scripsit de innocentia sua, cumcurl ita dictitat: numquam vestimentavestirnenta a populo poposcipeposci.
 
 Delectari mulcerique aures suas dicebat Antonius Iulianus figmentis verborum novis Cn. Matii, hominis eruditi,
 
@@ -9499,13 +9499,13 @@ Sinuque amicam refice frigidam caldo,
 
 Columbulatim labra conserens labris.
 
-Iam tonsiles tapetes ebrii fuco, Quos concha purpura imbuens venenavit Something is lacking, as the chapter-heading shows.
+Iam tonsiles tapetes ebrii fuco, Quos concha purpura imbuens venenavit
 
 Iam tonsiles tapetes ebrii fuco,
 
-Quos concha purpura imbuens venenavit Something is lacking, as the chapter-heading shows.
+Quos concha purpura imbuens venenavit
 
-Quid vocabulum ex iure manuni consertum signiticet. Lemmata of X and XI omitted by ω.
+Quid vocabulum ex iure manuni consertum signiticet.
 
 Ex iure manum consertum verba sunt ex antiquis actionibus, quae, cum lege agitur et vindiciae contenduntur, dici nunc quoque apud praetorem solent.
 
@@ -9513,9 +9513,9 @@ Rogavi ego Romae grammaticum, celebri hominem fama et multo nomine, quid haec ve
 
 Ex Ennio ergo, inquam, est, magister, quod quaero.
 
-Ennius enim verbis hisce usus est. Cumque ille demiratus aliena haec esse a poetis et haud usquam inveniri in carminibus Ennii diceret, tumturn ego hos versus ex octavo Annali absentes dixi, nam forte eos tamquam insigniter praeter alios factos Pellitur Tollitur, Cic. pro Mur. 30. e medio sapientia, vi geritur res; Spernitur orator bonus, horridus miles amatur. Haut doctis dictis certantes nec maledictis, Miscent inter sese inimicitiam agitantes. Non ex iure manum manum, Cic. Fam. vii. 13. 2 and some MSS. of pro Mur. 30; manu, ω. consertum, sed magis ferro Rem rem, Cic.; rei, ω. repetunt regnumque petunt, vadunt solida vi.
+Ennius enim verbis hisce usus est. Cumque ille demiratus aliena haec esse a poetis et haud usquam inveniri in carminibus Ennii diceret, tumturn ego hos versus ex octavo Annali absentes dixi, nam forte eos tamquam insigniter praeter alios factos Pellitur e medio sapientia, vi geritur res; Spernitur orator bonus, horridus miles amatur. Haut doctis dictis certantes nec maledictis, Miscent inter sese inimicitiam agitantes. Non ex iure manum consertum, sed magis ferro Rem repetunt regnumque petunt, vadunt solida vi.
 
-Pellitur Tollitur, Cic. pro Mur. 30. e medio sapientia, vi geritur res;
+Pellitur e medio sapientia, vi geritur res;
 
 Spernitur orator bonus, horridus miles amatur.
 
@@ -9523,21 +9523,21 @@ Haut doctis dictis certantes nec maledictis,
 
 Miscent inter sese inimicitiam agitantes.
 
-Non ex iure manum manum, Cic. Fam. vii. 13. 2 and some MSS. of pro Mur. 30; manu, ω. consertum, sed magis ferro
+Non ex iure manum consertum, sed magis ferro
 
-Rem rem, Cic.; rei, ω. repetunt regnumque petunt, vadunt solida vi.
+Rem repetunt regnumque petunt, vadunt solida vi.
 
 Cum hos ego versus Ennianos dixissem, Credo, inquit grammaticus, iam tibi. Sed tu velim credas mihi, Quintum Ennium didicisse hoc non ex poeticae litteris, set ex iuris aliquo perito. Eas igitur tu quoque, inquit, et discas unde Ennius didicit.
 
 Usus consilio sum magistri, quod docere ipse debuerat a quo discerem praetermonstrantis. Itaque id quod ex iureconsultis quodque ex libris eorum didici inferendum his commentariis existimavi, quoniam in medio rerum et hominum vitam qui colunt ignorare non oportet verba actionum civilium celebriora.
 
-Manum conserere Nam de qua re disceptatur in iurelure in re in iure in re, Hertz; in iure, N; in re, early editors. praesenti, sive ager sive quid aliud est, cum adversario simul manu prendere et in ea re sollemnibus verbis vindicare, id est vindicia.
+Manum conserere Nam de qua re disceptatur in iurelure in re praesenti, sive ager sive quid aliud est, cum adversario simul manu prendere et in ea re sollemnibus verbis vindicare, id est vindicia.
 
 Correptio manus in re atque in loco praesenti apud praetorem ex Duodecim Tabulis fiebat, in quibus ita scriptum est: Si qui in iure manum conserunt.
 
-Sed postquam praetores, propagatis Italiae finibus, satis iurisdictionis satis iurisdictionis, Karlowa; datis iur., MSS. negotiis occupati, proficisci vindiciarum dicendarum causa ad ad added by Oiselius; in, Carrio. longinquas res gravabantur, institutum est contra Duodecim Tabulas tacito consensus, ut litigantes non in iure apud praetorem manum consererent, sed ex iure manum consertum vocarent, id est alter alterum ex iure ad conserendam manum in rem de qua ageretur vocaret atque profecti simul in agrum de quo litigabatur, terrae aliquid ex eo, uti unam glebam, in ius in urbem ad praetorem deferrent et in ea gleba, tamquam in toto agro, vindicarent.
+Sed postquam praetores, propagatis Italiae finibus, satis iurisdictionis negotiis occupati, proficisci vindiciarum dicendarum causa ad longinquas res gravabantur, institutum est contra Duodecim Tabulas tacito consensus, ut litigantes non in iure apud praetorem manum consererent, sed ex iure manum consertum vocarent, id est alter alterum ex iure ad conserendam manum in rem de qua ageretur vocaret atque profecti simul in agrum de quo litigabatur, terrae aliquid ex eo, uti unam glebam, in ius in urbem ad praetorem deferrent et in ea gleba, tamquam in toto agro, vindicarent.
 
-Idcirco Ennius significare volens gestum, volens gestum, Huschke; volens bellum, N. non, ut ad praetorem solitum est, legitimis actionibus neque ex iure manum consertum, sed bello ferroque et vera vi atque solidasolid rem repeti dixit; rem dixit added by Boot. quod videtur dixisse, conferens vim illam civilem et festucariam, quae verbo diceretur, non quae manu fieret, cum vi bellica et cruenta.
+Idcirco Ennius significare volens gestum, non, ut ad praetorem solitum est, legitimis actionibus neque ex iure manum consertum, sed bello ferroque et vera vi atque solidasolid rem repeti dixit; quod videtur dixisse, conferens vim illam civilem et festucariam, quae verbo diceretur, non quae manu fieret, cum vi bellica et cruenta.
 
 Quid sit sculuae verbum positum apud M. Varronem.
 

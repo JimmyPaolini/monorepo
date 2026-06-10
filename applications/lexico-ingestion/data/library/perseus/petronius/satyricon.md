@@ -13,7 +13,7 @@ title: Satyricon
 
 # Satyricon
 
-Artis severae si quis ambitambit margin ed. of Tornaesius: amat. effectus
+Artis severae si quis ambit effectus
 
 mentemque magnis applicat, prius mores
 
@@ -25,9 +25,9 @@ cliensve cenas impotentium captet,
 
 nec perditis addictus obruat vino
 
-mentis calorem, neve plausor in scaenamscenam Heinsius: scena.
+mentis calorem, neve plausor in scaenam
 
-sedeat redemptus histrionis ad rictus.histrionis ad rictus O. Ribbeck: histrioni addictus.
+sedeat redemptus histrionis ad rictus.
 
 Sed sive armigerae rident Tritonidis arces,
 
@@ -47,9 +47,9 @@ exonerata sono mutet suffusa saporem.
 
 Interdum subducta foro det pagina cursum
 
-et furtivafurtiva Heinsius: fortuna. sonet celeri distincta meatu;
+et furtiva sonet celeri distincta meatu;
 
-deindein Pithoeus: dent. epulas et bella truci memorata canore
+dein epulas et bella truci memorata canore
 
 grandiaque indomiti Ciceronis verba minetur.
 
@@ -61,9 +61,9 @@ Quid faciant leges, ubi sola pecunia regnat,
 
 aut ubi paupertas vincere nulla potest?
 
-Ipsi qui Cynica traducunt tempora pera,pera Heinsius: cera.
+Ipsi qui Cynica traducunt tempora pera,
 
-non nunquam nummis vendere vera solent.vendere vera solent cod. Vossianus (verba L): verba solent emere other MSS.
+non nunquam nummis vendere vera solent.
 
 Ergo iudicium nihil est nisi publica merces,
 
@@ -81,11 +81,11 @@ Nam sane et sapiens contemptus iurgia nectit,
 
 et qui non iugulat, victor abire solet
 
-“Huc huc citocito added by Buecheler. convenite nunc, spatalocinaedi,
+“Huc huc cito convenite nunc, spatalocinaedi,
 
 Pede tendite, cursum addite, convolate planta
 
-Femorequeque added by Buecheler. facili, dune agili et manu procaces,
+Femoreque facili, dune agili et manu procaces,
 
 Molles, veteres, Deliaci manu recisi.”
 
@@ -97,7 +97,7 @@ Ergo vivamus, dum licet esse bene.
 
 et “Aquam foras, vinum intro” clamavit
 
-"Quod non expectes, ex transverse fit Heinsius would supply ubique, nostra, to fill the gap between fit and et.
+"Quod non expectes, ex transverse fit
 
 —et supra nos Fortuna negotia curat.
 
@@ -105,7 +105,7 @@ quare da nobis vina Falerna, puer.”
 
 “'Luxuriae rictu Martis marcent moenia.
 
-Tuo palato clausus pavo pasciturpascitur Scaliger: nascitur.
+Tuo palato clausus pavo pascitur
 
 plumato amictus aureo Babylonico,
 
@@ -117,9 +117,9 @@ pietaticultrix gracilipes crotalistria,
 
 avis exul hiemis, titulus tepidi temporis,
 
-nequitiae nidum in caccabo fecit modo.modo Jacobs: meo.
+nequitiae nidum in caccabo fecit modo.
 
-Quo margarita cara tibi, bacam Indicam?tibi, bacam Indicam. Heinsius: tribaca Indica
+Quo margarita cara tibi, bacam Indicam?
 
 An ut matrona ornataphaleris pelagiis
 
@@ -129,7 +129,7 @@ Zmaragdum ad quam rem viridem, pretiosum vitrum?
 
 Quo Carchedonios optas ignes lapideos,
 
-nisi ut scintillet probitas e carbunculis?e cod. Bernensis: est other MSS. carbunculis Buecheler: carbunculus-o–s or—as.
+nisi ut scintillet probitas e carbunculis?
 
 Aequum est induere nuptam ventum textilem,
 
@@ -161,7 +161,7 @@ filius hic, nomen divitis ille tenet.
 
 Mox ubi ridendas inclusit pagina partes,
 
-vera redit facies, dum simulatadum simulata Buecheler: dissimulata. perit
+vera redit facies, dum simulata perit
 
 Non bibet inter aquas poma aut pendentia carpit
 
@@ -193,7 +193,7 @@ cum Delio profante caesi vertices
 
 Idae trahuntur scissaque in molem cadunt
 
-robora, minacem quae figurarentfigurarent Pithoeus, Tomaesius: figurabat. equum.
+robora, minacem quae figurarent equum.
 
 Aperitur ingens antrum et obducti specus,
 
@@ -207,9 +207,9 @@ O patria, pulsas mille credidimus rates
 
 solumque bello liberum: hoc titulus fero
 
-incisus, hoc ad furtafurta Buecheler: fata. compositus Sinon
+incisus, hoc ad furta compositus Sinon
 
-firmabat et mens sempermens semper cod. Autissiodurensis: mendatium sempercod. Paris. 6842 D: mendacium other MSS. in damnum potens.
+firmabat et mens semper in damnum potens.
 
 Iam turba portis libera ac bello carens
 
@@ -257,7 +257,7 @@ ad saxa fluctus, tumida quorum pectora
 
 rates ut altae lateribus spumas agunt.
 
-Dat cauda sonitum, liberae pontoponto Sambucus, Tornaesius: pontem L: pontum O. iubae
+Dat cauda sonitum, liberae ponto iubae
 
 consentiunt luminibus, fulmineum iubar
 
@@ -321,7 +321,7 @@ atque Afrae volucres placent palato,
 
 quod non sunt faciles: at albus anser
 
-et pictis anas enovataenovata Pithoeus renovata. pennis
+et pictis anas enovata pennis
 
 plebeium sapit. Ultimis ab oris
 
@@ -357,7 +357,7 @@ vernantesque comas tristis abegit hiemps.
 
 Nunc umbra nudata sua iam tempora maerent,
 
-areaque attritis ridet adultaadulta Buecheler: adusta. pilis.
+areaque attritis ridet adulta pilis.
 
 O fallax natura deum: quae prima dedisti
 
@@ -399,11 +399,11 @@ quaerebantur opes. Non vulgo nota placebant
 
 gaudia, non usu plebeio trita voluptas.
 
-Aes EphyreiacumAes Ephyreiacum Heinsius: aes epyrecum and the like most MSS.: spolia Tum (cum Dr) Senius codd. Monacensis et Dresdensis. laudabat miles in unda;
+Aes Ephyreiacum laudabat miles in unda;
 
 quaesitus tellure nitor certaverat ostro;
 
-hinc Numidae accusant,accusant L: accusatius O. illinc nova vellera Seres,
+hinc Numidae accusant, illinc nova vellera Seres,
 
 atque Arabum populus sua despoliaverat arva.
 
@@ -439,13 +439,13 @@ quaeque virum quaerunt. Ecce Afris eruta terris
 
 citrea mensa greges servorum ostrumque renidens,
 
-ponitur ac maculis imitatur viliusvilius Gronovius: vilibus. For imitatur some MSS. give mutatur. aurum
+ponitur ac maculis imitatur vilius aurum
 
 quae sensum trahat. Hoc sterile ac male nobile lignum
 
 turba sepulta mero circum venit, omniaque orbis
 
-praemia corruptiscorruptis Buecheler: correptis. miles vagus esurit armis.
+praemia corruptis miles vagus esurit armis.
 
 Ingeniosa gula est. Siculo scarus aequore mersus
 
@@ -483,7 +483,7 @@ Romanumque decus. Quare tam perdita Roma
 
 ipsa sui merces erat et sine vindice praeda.
 
-Praeterea gemino deprensam gurgite plebemplebem Crusius: praedam.
+Praeterea gemino deprensam gurgite plebem
 
 faenoris illuvies ususque exederat aeris.
 
@@ -501,7 +501,7 @@ Hoc mersam caeno Romam somnoque iacentem
 
 quae poterant artes sana ratione movere,
 
-ni furor et bellum ferroque excitaexcita cod. Messaniensis: excisa. libido?
+ni furor et bellum ferroque excita libido?
 
 Tres tulerat Fortuna duces, quos obruit omnes
 
@@ -565,7 +565,7 @@ En etiam mea regna petunt. Perfossa dehiscit
 
 molibus insanis tellus, iam montibus haustis
 
-antra gemunt, et dum vanosvanos Delbenius: vanus O: varios L. lapis invenit usus,
+antra gemunt, et dum vanos lapis invenit usus,
 
 inferni manes caelum sperare fatentur.
 
@@ -637,9 +637,9 @@ Continuo clades hominum venturaque damna
 
 auspiciis patuere deum. Namque ore cruento
 
-deformis TitanTitan Delbenius: titubans. vultum caligine texit:
+deformis Titan vultum caligine texit:
 
-civiles acies iam tum spectarespectare Crusius: spirare (spitare Bernensis.) putares.
+civiles acies iam tum spectare putares.
 
 Parte alia plenos exstinxit Cynthia vultus
 
@@ -669,7 +669,7 @@ quippe moras Caesar, vindictaeque actus amore
 
 Gallica proiecit, civilia sustulit arma.
 
-Alpibus aeriis, ubi Graio numinenumine Reiske: nomine. pulsae
+Alpibus aeriis, ubi Graio numine pulsae
 
 descendunt rupes et se patiuntur adiri,
 
@@ -677,7 +677,7 @@ est locus Herculeis aris sacer: hunc nive dura
 
 claudit hiemps canoque ad sidera vertice tollit.
 
-caelum illinc cecidisse putes: non solis adultiadulti cod. Messaniensis: adusti other MSS.
+caelum illinc cecidisse putes: non solis adulti
 
 mansuescit radiis, non verni temporis aura,
 
@@ -687,19 +687,19 @@ totum ferre potest umeris minitantibus orbem.
 
 Haec ubi calcavit Caesar iuga milite laeto
 
-optavitqueoptavit margin ofL: oravit. locum, summo de vertice montis
+optavitque locum, summo de vertice montis
 
 Hesperiae campos late prospexit et ambas
 
 intentans cum voce manus ad sidera dixit:
 
-'Iuppiter omnipotens, et te,te Buecheler: tu L: eu O. Saturnia tellus,
+'Iuppiter omnipotens, et te, Saturnia tellus,
 
 armis laeta meis olimque onerata triumphis,
 
 testor, ad has acies invitum accersere Martem,
 
-invitas me ferre manus. Sed vulnere cogor, LO
+invitas me ferre manus. Sed vulnere cogor,
 
 pulsus ab urbe mea, dum Rhenum sanguine tinguo,
 
@@ -715,7 +715,7 @@ aut qui sunt qui bella vident? Mercedibus emptae
 
 ac viles operae, quorum est mea Roma noverca.
 
-Atat Heinsius: ut. reor, haud impune, nec hanc sine vindice dextram
+At reor, haud impune, nec hanc sine vindice dextram
 
 vinciet ignavus. Victores ite furentes,
 
@@ -763,7 +763,7 @@ incaluere nives. Mox flumina montibus altis
 
 undabant modo nata, sed haec quoque—iussa putares—
 
-stabant,et vincta fluctus stupuere ruina,ruina Reiske: pruina.
+stabant,et vincta fluctus stupuere ruina,
 
 et paulo ante lues iam concidenda iacebat.
 
@@ -797,7 +797,7 @@ Amphitryoniades, aut torvo Iuppiter ore,
 
 cum se verticibus magni demisit Olympi
 
-et periturorum disiecitdisiecit Gulielmus: deiecit. tela Gigantum.
+et periturorum disiecit tela Gigantum.
 
 Dum Caesar tumidas iratus deprimit arces,
 
@@ -871,7 +871,7 @@ pro pudor, imperii deserto nomine fugit,
 
 ut Fortuna levis Magni quoque terga videret.
 
-Ergo tanta lues divum quoque numina vicit,vicit Hermann: vidit.
+Ergo tanta lues divum quoque numina vicit,
 
 consensitque fugae caeli timor. Ecce per orbem
 
@@ -919,7 +919,7 @@ Caesaris acta sui ducit, comes additur illi
 
 Pallas et ingentem quatiens Mavortius hastam.
 
-MagnumMagnum cod. Messaniensis: Magnaque other MSS. cum Phoebo soror et Cyllenia proles
+Magnum cum Phoebo soror et Cyllenia proles
 
 excipit ac totis similis Tirynthius actis.
 
@@ -929,7 +929,7 @@ extulit ad superos Stygium caput. Huius in ore
 
 concretus sanguis, contusaque lumina flebant,
 
-stabant aeratiaerati L: irati O. scabra rubigine dentes,
+stabant aerati scabra rubigine dentes,
 
 tabo lingua fluens, obsessa draconibus ora,
 
@@ -987,7 +987,7 @@ iam tua flammifero membra calore fluent
 
 Idaeo quales fudit de vertice flores
 
-terra parens, cum se concessoconcesso Sambucus: confesso. iunxit amori
+terra parens, cum se concesso iunxit amori
 
 Iuppiter et toto concepit pectore flammas:
 
@@ -1031,7 +1031,7 @@ Dignus amore locus: testis silvestris aedon
 
 atque urbana Procne, quae circum gramina fusae
 
-ac molles violas cantu sua furtafurta Buecheler: sura or rura. colebant
+ac molles violas cantu sua furta colebant
 
 ter corripui terribilem manu bipennem,
 
@@ -1051,7 +1051,7 @@ sed furciferae mortifero timore lusus
 
 ad verba, magis quae poterant nocere, fugi.
 
-illa solo fixos oculos aversa tenebat, LO
+illa solo fixos oculos aversa tenebat,
 
 nec magis incepto vultum sermone movetur
 
@@ -1067,9 +1067,9 @@ quodque facit populus, candida lingua refert.
 
 Nam quis concubitus, Veneris quis gaudia nescit?
 
-Quis vetatvetat Dousa: petat. in tepido membra calere toro?
+Quis vetat in tepido membra calere toro?
 
-Ipse pater veri doctos Epicurus amaredoctos— — amare Dousa: doctus — — in arte.
+Ipse pater veri doctos Epicurus amare
 
 iussit, et hoc vitam dixit habere te/los
 
@@ -1079,7 +1079,7 @@ divitibus silvis numen dedit, inclita paret
 
 cui Lesbos viridisque Thasos, quem Lydus adorat
 
-semper ovansseptifluus most MSS.: semperflavius cod. Bernensis: vestifluus Turnebus: semper ovans Buecheler. templumque suissuis Jungermann: tuis. imponit Hypaepis:
+semper ovans templumque suis imponit Hypaepis:
 
 hue ades etBacchi tutor Dryadumque voluptas,
 
@@ -1101,7 +1101,7 @@ non sine honore tuum patiar decus. Ibit ad aras,
 
 sancte tuas hircus, pecoris pater, ibit ad aras
 
-corniger et querulae fetusfetus Sambucus: festus. suis, hostia lactens.
+corniger et querulae fetus suis, hostia lactens.
 
 Spumabit pateris hornus liquor, et ter ovantem
 
@@ -1149,7 +1149,7 @@ muneribus delusa suis, sed crate saligna
 
 impositum Cereris vacuae nemus et nova terrae
 
-pocula, quae facili vilis rota finxerat actu.actu margin of L: astu or hastu.
+pocula, quae facili vilis rota finxerat actu.
 
 Hinc molli stillae lacus et de caudice lento
 
@@ -1157,7 +1157,7 @@ vimineae lances maculataque testa Lyaeo.
 
 At paries circa palea satiatus inani
 
-fortuitoque luto clavosclavos Sambucus: clavus. numerabat agrestes,
+fortuitoque luto clavos numerabat agrestes,
 
 et viridi iunco gracilis pendebat harundo.
 
@@ -1187,7 +1187,7 @@ fallaces epulae. Tremuit perterritus aether
 
 planctibus insolitis, confusaque regia caeli
 
-Quisquis habet nummos, secura navigatnavigat Vincentius: naviget. aura
+Quisquis habet nummos, secura navigat aura
 
 fortunamque suo temperat arbitrio.
 

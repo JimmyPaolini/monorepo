@@ -82,7 +82,7 @@ title: Epicedion in Patrem
 
 **34** atque bonos mores legibus antetuli.
 
-**35** irasci promptus properavi condere motum 35
+**35** irasci promptus properavi condere motum
 
 **36** atque mihi poenas pro levitate dedi.
 

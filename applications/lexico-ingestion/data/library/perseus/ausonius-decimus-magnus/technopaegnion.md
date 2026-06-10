@@ -322,7 +322,7 @@ title: Technopaegnion
 
 **22** atque alium pro se titulum replicata dedit G.
 
-**23** ansis cincta duabus erit cum lota, leges ϠSAMPI.
+**23** ansis cincta duabus erit cum lota, leges Ϡ.
 
 **24** in Latio numerus denarius, Argolicum Χ.
 

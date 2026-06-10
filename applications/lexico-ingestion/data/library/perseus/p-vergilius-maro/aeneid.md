@@ -2023,7 +2023,7 @@ title: Aeneid
 
 **249** ille dies, festa velamus fronde per urbem.
 
-**250** Aeneas narrates through line 715 in Book 3. A quotation mark appears here; this quote is never closed in print and has been omitted.Vertitur interea caelum et ruit oceano nox,
+**250** Vertitur interea caelum et ruit oceano nox,
 
 **251** involvens umbra magna terramque polumque
 

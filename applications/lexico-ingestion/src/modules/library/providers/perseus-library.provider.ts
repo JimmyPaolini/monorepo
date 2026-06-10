@@ -9,6 +9,7 @@ import YAML from "yaml";
 import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
+import { formatLineNumber, hasValidTextContent } from "../library.command";
 
 /**
  * Provider for ingesting Perseus DL Latin texts.
@@ -26,36 +27,30 @@ export class PerseusLibraryProvider {
     author?: string;
     text?: string;
   }): Promise<Author[]> {
-    const host =
-      "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/";
-    this.logger.log(`Scraping library from ${host}`);
+    this.logger.log(`🗂️ Ingesting Perseus from local data`);
 
-    // Fetch the entire repository tree
-    const treeUrl =
-      "https://api.github.com/repos/PerseusDL/canonical-latinLit/git/trees/master?recursive=1";
-    this.logger.log(`Fetching Perseus tree from ${treeUrl}`);
-    const treeRes = await fetch(treeUrl);
+    const sourceDataDir = path.resolve("data", "perseus-source");
 
-    if (!treeRes.ok) {
-      this.logger.error(`Failed to fetch Perseus tree: ${treeRes.statusText}`);
+    const xmlPaths: string[] = [];
+    try {
+      const allFiles = await fs.readdir(sourceDataDir, {
+        recursive: true,
+        withFileTypes: true,
+      });
+      const filteredFiles = allFiles
+        .filter((f) => f.isFile() && f.name.endsWith(".xml"))
+        .map((f) => path.join(f.parentPath, f.name));
+      xmlPaths.push(...filteredFiles);
+    } catch (error) {
+      this.logger.error(
+        `❌ Could not read source directory: ${String(error)}. Did you run the perseus command first?`,
+      );
       return [];
     }
 
-    const treeData = (await treeRes.json()) as {
-      tree: { path: string; type: string }[];
-    };
-
-    // Filter for Latin XML files (typically ending in lat1.xml, lat2.xml etc.)
-    const xmlPaths = treeData.tree
-      .filter(
-        (node) =>
-          node.type === "blob" &&
-          node.path.endsWith(".xml") &&
-          node.path.includes("-lat"),
-      )
-      .map((node) => node.path);
-
-    this.logger.log(`Found ${xmlPaths.length} Latin XML files in Perseus repo`);
+    this.logger.log(
+      `🗂️ Found ${xmlPaths.length} Latin XML files in local Perseus cache`,
+    );
 
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
@@ -66,24 +61,18 @@ export class PerseusLibraryProvider {
       const xmlPath = xmlPaths[i];
       if (!xmlPath) continue;
 
-      this.logger.log(`Fetching (${i + 1}/${xmlPaths.length}): ${xmlPath}`);
+      const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
+      this.logger.log(`📜 Processing ${xmlPath}${progressString}`);
 
       try {
-        const fileUrl = host + xmlPath;
-        const res = await fetch(fileUrl);
-        if (!res.ok) {
-          this.logger.warn(`Failed to fetch ${fileUrl}: ${res.statusText}`);
-          continue;
-        }
-
-        const xmlContent = await res.text();
+        const xmlContent = await fs.readFile(xmlPath, "utf8");
         const $ = cheerio.load(xmlContent, { xml: true });
 
         const rawAuthor = $("titleStmt author").first().text().trim();
         const rawTitle = $("titleStmt title").first().text().trim();
 
         if (!rawAuthor || !rawTitle) {
-          this.logger.warn(`Missing metadata in ${xmlPath}`);
+          this.logger.warn(`⚠️ Missing metadata in ${xmlPath}`);
           continue;
         }
 
@@ -103,7 +92,11 @@ export class PerseusLibraryProvider {
           $("sourceDesc date").first().text().trim();
         if (printDate) metadata["print_publication_date"] = printDate;
 
-        const urnMatch = /(phi\d+\.phi\d+\.perseus-lat\d+)/.exec(xmlPath);
+        const relativeSourcePath = path.relative(sourceDataDir, xmlPath);
+
+        const urnMatch = /(phi\d+\.phi\d+\.perseus-lat\d+)/.exec(
+          relativeSourcePath,
+        );
         if (urnMatch) metadata["cts_urn"] = `urn:cts:latinLit:${urnMatch[1]}`;
 
         const authorSlug = _.kebabCase(rawAuthor);
@@ -117,14 +110,14 @@ export class PerseusLibraryProvider {
         if (!author) {
           author = new Author();
           author.name = rawAuthor;
-          author.metadata = { sourceUrl: xmlPath };
+          author.metadata = { sourceUrl: relativeSourcePath };
           author.slug = authorSlug;
           author.texts = [];
           authorsMap.set(authorSlug, author);
         }
 
         const textEntity = new Text();
-        textEntity.metadata = { ...metadata, sourceUrl: xmlPath };
+        textEntity.metadata = { ...metadata, sourceUrl: relativeSourcePath };
         textEntity.title = rawTitle;
         textEntity.slug = titleSlug;
         textEntity.type = "text";
@@ -135,7 +128,10 @@ export class PerseusLibraryProvider {
           author: authorSlug,
           type: "text",
         };
-        const textMetadata = { ...metadata, source_url: fileUrl };
+        const textMetadata = {
+          ...metadata,
+          source_url: `https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/${relativeSourcePath}`,
+        };
         if (Object.keys(textMetadata).length > 0) {
           frontmatterObj["text_metadata"] = textMetadata;
         }
@@ -162,6 +158,21 @@ export class PerseusLibraryProvider {
               const subtype = $child.attr("subtype") || "section";
               const n = $child.attr("n") || "";
 
+              const skipKeywords = [
+                "front",
+                "preface",
+                "introduction",
+                "cast",
+                "subject",
+                "index",
+              ];
+              if (
+                skipKeywords.some((kw) => subtype.toLowerCase().includes(kw)) ||
+                skipKeywords.some((kw) => n.toLowerCase().includes(kw))
+              ) {
+                return;
+              }
+
               const partName = _.kebabCase(n ? `${subtype} ${n}` : subtype);
               const partTitle = n
                 ? `${_.startCase(subtype)} ${n}`
@@ -174,16 +185,20 @@ export class PerseusLibraryProvider {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $el.children("p, l").each((_index: number, pElem: unknown) => {
               const $clone = $(pElem as string).clone();
-              $clone.find("note, app, rdg, lem").remove();
+              $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
               let text = $clone.text().trim();
               if (!text) return;
-              text = text.replaceAll(/\s+/g, " ");
               const nAttr = $(pElem as string).attr("n");
               if (nAttr) text = `**${nAttr}** ${text}`;
+              text = formatLineNumber(text);
+              text = text.replaceAll(/\s+/g, " ");
               directParagraphs.push(text);
             });
 
-            if (directParagraphs.length > 0) {
+            if (
+              directParagraphs.length > 0 &&
+              hasValidTextContent(directParagraphs)
+            ) {
               filesToWrite.push({
                 content: directParagraphs.join("\n\n"),
                 relativePath: [...currentPath, "index.md"].join("/"),
@@ -195,30 +210,33 @@ export class PerseusLibraryProvider {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $el.find("p, l").each((_index: number, pElem: unknown) => {
               const $clone = $(pElem as string).clone();
-              $clone.find("note, app, rdg, lem").remove();
+              $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
               let text = $clone.text().trim();
               if (!text) return;
-              text = text.replaceAll(/\s+/g, " ");
               const nAttr = $(pElem as string).attr("n");
               if (nAttr) {
                 text = `**${nAttr}** ${text}`;
               }
+              text = formatLineNumber(text);
+              text = text.replaceAll(/\s+/g, " ");
               paragraphs.push(text);
             });
 
             if (paragraphs.length === 0) {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               const $clone = $el.clone();
-              $clone.find("note, app, rdg, lem").remove();
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+              $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               let text = $clone.text().trim();
               if (text) {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-                text = text.replaceAll(/\s+/g, " ");
+                const formatted = formatLineNumber(text as string);
+                text = formatted.replaceAll(/\s+/g, " ");
                 paragraphs.push(text as string);
               }
             }
 
-            if (paragraphs.length > 0) {
+            if (paragraphs.length > 0 && hasValidTextContent(paragraphs)) {
               filesToWrite.push({
                 content: paragraphs.join("\n\n"),
                 relativePath: `${currentPath.join("/")}.md`,
@@ -245,7 +263,7 @@ export class PerseusLibraryProvider {
         // Small delay
         await new Promise((resolve) => setTimeout(resolve, 100));
       } catch (error) {
-        this.logger.warn(`Error processing ${xmlPath}: ${error}`);
+        this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);
       }
     }
 

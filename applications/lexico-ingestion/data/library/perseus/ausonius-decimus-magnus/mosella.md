@@ -422,7 +422,7 @@ title: Mosella
 
 **205** impubemque manum super amnica terga vagantem
 
-**206** dum spectat suppl. Böcking: viridis qua surgit ripa colonus, non sentit1 transire diem, sua seria ludo
+**206** dum spectat transire diem, sua seria ludo
 
 viridis qua surgit ripa colonus,
 

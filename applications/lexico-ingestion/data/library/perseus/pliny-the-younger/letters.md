@@ -1609,7 +1609,7 @@ et quaerit quod amet, putatque amari.
 
 Ille o Plinius, ille quot Catones!
 
-I nunc, quisquis amas, amare noli.
+**I** nunc, quisquis amas, amare noli.
 
 Vides quam acuta omnia quam apta quam expressa. Ad hunc gustum totum librum repromitto, quem tibi ut primum publicaverit exhibebo. Interim ama iuvenem et temporibus nostris gratulare pro ingenio tali, quod ille moribus adornat. Vivit cum Spurinna, vivit cum Antonino, quorum alteri affinis, utrique contubernalis est.
 

@@ -2198,7 +2198,7 @@ title: Peristephanon Liber
 
 **174** angelus coram Patre Filioque
 
-**175** urbis unius regimen tenentes 175>
+**175** urbis unius regimen tenentes
 
 **176** iure sepulcri.
 

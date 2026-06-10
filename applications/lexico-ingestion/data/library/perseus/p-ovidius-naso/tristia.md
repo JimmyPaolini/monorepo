@@ -15,7 +15,7 @@ title: Tristia
 
 **1** Parve—nec invideo—sine me, liber, ibis in urbem,
 
-**2** ei mihi, quod cum vel quo domino non licet ire tuo!
+**2** ei mihi, quod domino non licet ire tuo!
 
 **3** vade, sed incultus, qualem decet exulis esse
 
@@ -39,13 +39,13 @@ title: Tristia
 
 **13** neve liturarum pudeat; qui viderit illas,
 
-**14** de lacrimis factas sentiet sentiat corr. σ esse meis.
+**14** de lacrimis factas sentiet esse meis.
 
 **15** vade, liber, verbisque meis loca grata saluta:
 
 **16** contingam certe quo licet illa pede.
 
-**17** siquis, ut in populo, nostri non inmemor illi,illo
+**17** siquis, ut in populo, nostri non inmemor illi,
 
 **18** siquis, qui, quid agam, forte requirat, erit,
 
@@ -53,7 +53,7 @@ title: Tristia
 
 **20** id quoque, quod vivam, munus habere dei.
 
-**21** atque ita tu tacitus—quaerenti plura legendus legendum corr. Ehwald—
+**21** atque ita tu tacitus—quaerenti plura legendus —
 
 **22** ne, quae non opus est, forte loquare, cave!
 
@@ -63,7 +63,7 @@ title: Tristia
 
 **25** tu cave defendas, quamvis mordebere dictis;
 
-**26** causa patrocinio non bona maior peior σ erit.
+**26** causa patrocinio non bona maior erit.
 
 **27** invenies aliquem, qui me suspiret ademptum,
 
@@ -97,7 +97,7 @@ title: Tristia
 
 **42** me mare, me venti, me fera iactat hiems.
 
-**43** carminibus metus omnis obest abest corr. Francius; perditus ensem
+**43** carminibus metus omnis obest ; perditus ensem
 
 **44** haesurum iugulo iam puto iamque meo.
 
@@ -105,7 +105,7 @@ title: Tristia
 
 **46** scriptaque cum venia qualiacumque leget.
 
-**47** da mihi Maeoniden et tot circumice circumice Heinsius: circumspice casus,
+**47** da mihi Maeoniden et tot circumice casus,
 
 **48** ingenium tantis excidet omne malis.
 
@@ -179,7 +179,7 @@ title: Tristia
 
 **83** quicumque Argolica de classe Capherea fugit,
 
-**84** semper ab Euboicis vela retorsit retorquet corr. Bentley aquis;
+**84** semper ab Euboicis vela retorsit aquis;
 
 **85** et mea cumba semel vasta percussa procella
 
@@ -191,7 +191,7 @@ title: Tristia
 
 **89** dum petit infirmis nimium sublimia pennis
 
-**90** Icarus, aequoreas nomine fecit aquas. Icarias: aequoreis nomina fecit aquis σ
+**90** Icarus, aequoreas nomine fecit aquas.
 
 **91** difficile est tamen hinc, remis utaris an aura,
 
@@ -235,7 +235,7 @@ title: Tristia
 
 **111** tres procul obscura latitantes parte videbis,—
 
-**112** sic quoque,hi qui vel hi quoque: sic quoque Bentley quod nemo nescit, amare docent.
+**112** sic quoque, quod nemo nescit, amare docent.
 
 **113** hos tu vel fugias, vel, si satis oris habebis,
 
@@ -259,7 +259,7 @@ title: Tristia
 
 **123** plura quidem mandare tibi, si quaeris, habebam,
 
-**124** sed vereor tardae causa fuisse morae viae;
+**124** sed vereor tardae causa fuisse morae ;
 
 **125** et si quae subeunt, tecum, liber, omnia ferres,
 
@@ -373,11 +373,11 @@ title: Tristia
 
 **52** demite naufragium, mors mihi munus erit.
 
-**53** est aliquid, fatove suo ferrove fatove ferrove Heinsius: fatoque ferroque cadentem
+**53** est aliquid, fatove suo ferrove cadentem
 
-**54** in solida solita: solida σ moriens ponere corpus humo,
+**54** in solida moriens ponere corpus humo,
 
-**55** et mandare suis aliqua et aliquid et corr. σ sperare sepulcrum
+**55** et mandare suis aliqua et sperare sepulcrum
 
 **56** et non aequoreis piscibus esse cibum,
 
@@ -393,7 +393,7 @@ title: Tristia
 
 **62** hanc sinite infelix in loca iussa feram,
 
-**63** si quantam quoque quam vel quia: quantam Rappold merui, poena me perdere vultis,
+**63** si quantam merui, poena me perdere vultis,
 
 **64** culpa mea est ipso iudice morte minor.
 
@@ -429,13 +429,13 @@ title: Tristia
 
 **80** delicias videam, Nile iocose, tuas.
 
-**81** quod faciles facile est: faciles Heinsius opto ventos,—quis credere posset possit?—
+**81** quod faciles opto ventos,—quis credere posset ?—
 
 **82** Sarmatis est tellus, quam mea vela petunt,
 
 **83** obligor, ut tangam laevi fera litora Ponti;
 
-**84** quodque sit a patria tam iam corr. σ fuga tarda, queror.
+**84** quodque sit a patria tam fuga tarda, queror.
 
 **85** nescio quo videam positos ut in orbe Tomitas,
 
@@ -447,9 +447,9 @@ title: Tristia
 
 **89** seu magis odistis, iussae Ine advertite terrae:
 
-**90** supplicii pars est in regione mei. mori: mei σ
+**90** supplicii pars est in regione mei.
 
-**91** ferte—quid hic facio?—rapidi mea corpora carbasa: corpora σ venti!
+**91** ferte—quid hic facio?—rapidi mea corpora venti!
 
 **92** Ausonios fines cur mea vela volunt?
 
@@ -497,7 +497,7 @@ title: Tristia
 
 **4** labitur ex oculis nunc quoque gutta meis.
 
-**5** iam prope lux aderat, qua qua cum me discedere Caesar
+**5** iam prope lux aderat, qua me discedere Caesar
 
 **6** finibus extremae iusserat Ausoniae,
 
@@ -537,7 +537,7 @@ title: Tristia
 
 **24** inque domo lacrimas angulus omnis habet.
 
-**25** si licet exemplis in parvis parvo grandibus uti,
+**25** si licet exemplis in parvis grandibus uti,
 
 **26** haec facies Troiae, cum caperetur, erat.
 
@@ -545,7 +545,7 @@ title: Tristia
 
 **28** Lunaque nocturnos alta regebat equos.
 
-**29** hanc ego suspiciens et ad hanc ab hac Capitolia cernens,
+**29** hanc ego suspiciens et ad hanc Capitolia cernens,
 
 **30** quae nostro frustra iuncta fuere Lari,
 
@@ -573,9 +573,9 @@ title: Tristia
 
 **42** singultu medios impediente sonos,
 
-**43** illa etiam ante Lares Lares aras passis adstrata capillis
+**43** illa etiam ante Lares passis adstrata capillis
 
-**44** contigit extinctos extinctos aeternos ore tremente focos,
+**44** contigit extinctos ore tremente focos,
 
 **45** multaque in adversos effudit verba Penates
 
@@ -637,7 +637,7 @@ title: Tristia
 
 **74** et pars abrumpi corpore visa suo est.
 
-**75** sic doluit Mettus Priamus tunc cum in contraria versos
+**75** sic doluit Mettus tunc cum in contraria versos
 
 **76** ultores habuit proditionis equos.
 
@@ -681,7 +681,7 @@ title: Tristia
 
 **96** nomen et erepti saepe vocasse viri,
 
-**97** nec gemuisse minus, quam si nataeque meumque virique
+**97** nec gemuisse minus, quam si nataeque meumque
 
 **98** vidisset structas corpus habere rogos,
 
@@ -689,7 +689,7 @@ title: Tristia
 
 **100** respectuque tamen non periisse mei.
 
-**101** vivat, et absentem, quoniam sic fata tulerunt, vivat ut et corr. Salmasius auxilio sublevet usque suo.
+**101** vivat, et absentem, quoniam sic fata tulerunt, vivat ut auxilio sublevet usque suo.
 
 **1** Tinguitur oceano custos Erymanthidos ursae,
 
@@ -707,7 +707,7 @@ title: Tristia
 
 **8** insilit et pictos verberat unda deos.
 
-**9** pinea texta sonant, pulsi pulsu Rothmaler stridore rudentes,
+**9** pinea texta sonant, pulsi stridore rudentes,
 
 **10** ingemit et nostris ipsa carina malis.
 
@@ -735,7 +735,7 @@ title: Tristia
 
 **22** et mecum magno pareat aura deo.
 
-**23** dum loquor, et timeo pariter cupioque timeo cupio nimiumque vel cupio pariter timeoque repelli,
+**23** dum loquor, et timeo pariter cupioque repelli,
 
 **24** increpuit quantis viribus unda latus!
 
@@ -747,7 +747,7 @@ title: Tristia
 
 **28** si modo, qui periit, non periisse potest.
 
-**1** O mihi post nullos umquam ullos numquam memorande sodales,
+**1** O mihi post nullos umquam memorande sodales,
 
 **2** et cui praecipue sors mea visa sua est,
 
@@ -775,7 +775,7 @@ title: Tristia
 
 **14** et longa pietas excidat ista die.
 
-**15** di tibi sint faciles, tibi di et opis vel sisui: tibi di Ehwald nullius egentem
+**15** di tibi sint faciles, tibi di nullius egentem
 
 **16** fortunam praestant dissimilemque meae.
 
@@ -833,7 +833,7 @@ title: Tristia
 
 **43** invigiles igitur nostris pro casibus, oro,
 
-**44** deminui siqua q nunc L numinis ira potest.
+**44** deminui siqua numinis ira potest.
 
 **45** scire meos casus siquis desiderat omnes,
 
@@ -851,7 +851,7 @@ title: Tristia
 
 **52** meque velim possit dissimulante tegi.
 
-**53** si vox infragilis, pectus mihi firmius aere, heret vel esset corr. σ
+**53** si vox infragilis, pectus mihi firmius aere,
 
 **54** pluraque cum linguis pluribus ora forent,
 
@@ -869,7 +869,7 @@ title: Tristia
 
 **61** nos freta sideribus totis distantia mensos
 
-**62** sors tulit sors tulit σ detulit in Geticos Sarmaticosque sinus,
+**62** sors tulit in Geticos Sarmaticosque sinus,
 
 **63** ille habuit fidamque manum sociosque fideles:
 
@@ -917,7 +917,7 @@ title: Tristia
 
 **1** Nec tantum Clario est Lyde dilecta poetae,
 
-**2** nec tantum Coo Coo Clario Bittis battis corr. Merkel amata suo est,
+**2** nec tantum Coo Bittis amata suo est,
 
 **3** pectoribus quantum tu nostris, uxor, inhaeres,
 
@@ -959,7 +959,7 @@ title: Tristia
 
 **22** Penelopes esset fama secunda tuae:
 
-**23** sive tibi hoc debes, nullo nulli pia facta magistro,
+**23** sive tibi hoc debes, nullo pia facta magistro,
 
 **24** cumque nova mores sunt tibi luce dati,
 
@@ -1051,7 +1051,7 @@ title: Tristia
 
 **32** non fastiditus si tibi, lector, ero.
 
-**33** hos quoque sex versus, in prima prima primi Heinsius fronte libelli
+**33** hos quoque sex versus, in prima fronte libelli
 
 **34** si praeponendos esse putabis, habe.’
 
@@ -1079,7 +1079,7 @@ title: Tristia
 
 **6** parsque suum mundi nulla tenebit iter,
 
-**7** omnia iam fient, fieri quae posse negabam, negabat (negabant σ ) vel negabit
+**7** omnia iam fient, fieri quae posse negabam,
 
 **8** et nihil est, de quo non sit habenda fides.
 
@@ -1101,13 +1101,13 @@ title: Tristia
 
 **17** quid fuit, ingenti prostratum mole sodalem
 
-**18** visere et adloquiis alloquii sui (tui) corr. Ehwald parte levare tuis,
+**18** visere et adloquiis parte levare tuis,
 
 **19** inque meos si non lacrimam demittere casus,
 
-**20** pauca tamen ficto verba dolore pati,loqui
+**20** pauca tamen ficto verba dolore pati,
 
-**21** idque, quod ignoti faciunt, vel dicere vale dicere corr. Merkel saltem,
+**21** idque, quod ignoti faciunt, vel dicere saltem,
 
 **22** et vocem populi publicaque ora sequi,—
 
@@ -1141,7 +1141,7 @@ title: Tristia
 
 **37** non ego te genitum placida reor
 
-**38** urbe Quirini, urbe meo quae iam non adeunda pede est, pede est mihi haec habet ora sinistri,
+**38** urbe Quirini, urbe meo quae iam non adeunda pede est, haec habet ora sinistri,
 
 **39** sed scopulis, Ponti quos haec habet
 
@@ -1175,7 +1175,7 @@ title: Tristia
 
 **4** quae pro me duros non tetigere deos!
 
-**5** donec eris sospes, felix multos numerabis amicos :
+**5** donec eris sospes, multos numerabis amicos :
 
 **6** tempora si fuerint nubila, solus eris.
 
@@ -1213,13 +1213,13 @@ title: Tristia
 
 **23** sed tamen in duris remanentem rebus amicum
 
-**24** quamlibet qualibet vel quolibet corr. σ inviso Caesar in hoste probat,
+**24** quamlibet inviso Caesar in hoste probat,
 
 **25** nec solet irasci—neque enim moderatior alter—
 
 **26** cum quis in adversis, siquid amavit, amat.
 
-**27** de comite Argolici argolico corr. Heinsius postquam cognovit Orestis,
+**27** de comite Argolici postquam cognovit Orestis,
 
 **28** narratur Pyladen ipse probasse Thoas.
 
@@ -1249,7 +1249,7 @@ title: Tristia
 
 **41** hoc eventurum iam tum, carissime, vidi,
 
-**42** ferret adhuc istam ista cum minus aura ratem,
+**42** ferret adhuc istam cum minus aura ratem,
 
 **43** sive aliquod morum seu vitae labe carentis
 
@@ -1309,9 +1309,9 @@ title: Tristia
 
 **5** nec comites volucri contenta est vincere cursu,
 
-**6** occupat egressas quamlibet ante qualibet arte corr. σ rates,
+**6** occupat egressas quamlibet ante rates,
 
-**7** et pariter fluctus fert ac salientia ferit (fert) atque silentia vel assilientia corr. Vogel longe
+**7** et pariter fluctus fert ac salientia longe
 
 **8** aequora, nec saevis victa madescit aquis,
 
@@ -1345,7 +1345,7 @@ title: Tristia
 
 **23** nam mihi Bistonios placuit pede carpere campos:
 
-**24** Hellespontiacas illa relegit reliquit: relegit σ aquas
+**24** Hellespontiacas illa relegit aquas
 
 **25** Dardaniamque petit, auctoris nomen habentem,
 
@@ -1367,7 +1367,7 @@ title: Tristia
 
 **34** transeat instabilis strenua Cyaneas
 
-**35** Thyniacosque sinus, et ab his per Apollinis urbem arta apta vel alta vel vecta: arta σ
+**35** Thyniacosque sinus, et ab his per Apollinis urbem arta
 
 **36** sub Anchiali moenia tendat iter.
 
@@ -1389,7 +1389,7 @@ title: Tristia
 
 **45** vos quoque, Tyndaridae, quos haec colit insula, fratres,
 
-**46** mite precor duplici numen adesse adeste viae!
+**46** mite precor duplici numen adesse viae!
 
 **47** altera namque parat Symplegadas ire per artas,
 
@@ -1415,13 +1415,13 @@ title: Tristia
 
 **8** Cycladas Aegaeas obstipuisse puto.
 
-**9** ipse ego nunc ego nunc etenim miror tantis animique marisque
+**9** ipse ego nunc miror tantis animique marisque
 
 **10** fluctibus ingenium non cecidisse meum.
 
 **11** seu stupor huic studio sive est insania nomen,
 
-**12** omnis ab hac cura cura levata cura levata mens relevata mea est,
+**12** omnis ab hac cura cura levata mea est,
 
 **13** saepe ego nimbosis dubius iactabar ab Haedis,
 
@@ -1459,7 +1459,7 @@ title: Tristia
 
 **30** haec titulum nostrae mortis habere velit.
 
-**31** barbara pars laeva est avidaeque adsueta rapinae, ad ethera penne vel substrata (substracta vel subtracta etc.) rapinae: adsueta rapinae Haupt
+**31** barbara pars laeva est avidaeque adsueta rapinae,
 
 **32** quam cruor et caedes bellaque semper habent,
 
@@ -1471,7 +1471,7 @@ title: Tristia
 
 **36** si spe sunt, ut sunt, inferiora tua.
 
-**37** non haec in nostris, ut quondam, scripsimusscribimus hortis,
+**37** non haec in nostris, ut quondam, scripsimus hortis,
 
 **38** nec, consuete, meum, lectule, corpus habes,
 
@@ -1501,7 +1501,7 @@ title: Tristia
 
 **7** carmina fecerunt, ut me moresque notaret
 
-**8** iam demi iussa demum visa Caesar ab Arte mea.
+**8** iam demi iussa Caesar ab Arte mea.
 
 **9** deme mihi studium, vitae quoque crimina demes;
 
@@ -1517,7 +1517,7 @@ title: Tristia
 
 **15** at nunc—tanta meo comes est insania morbo—
 
-**16** saxa malum refero rursus ad ista icta: ista σ pedem :
+**16** saxa malum refero rursus ad ista pedem :
 
 **17** scilicet ut victus repetit gladiator harenam,
 
@@ -1611,7 +1611,7 @@ title: Tristia
 
 **62** mille locis plenos nominis esse tui?
 
-**63** inspice maius opus, quod adhuc sine fine tenetur, tenetur reliqui
+**63** inspice maius opus, quod adhuc sine fine tenetur,
 
 **64** in non credendos corpora versa modos:
 
@@ -1639,13 +1639,13 @@ title: Tristia
 
 **76** sic capitur minimo turis honore deus.
 
-**77** a! ferus et nobis nobis nimium crudelior omnibus hostis,
+**77** a! ferus et nobis crudelior omnibus hostis,
 
 **78** delicias legit qui tibi cumque meas,
 
 **79** carmina ne nostris quae te venerantia libris
 
-**80** iudicio indicio possint candidiore legi.
+**80** iudicio possint candidiore legi.
 
 **81** esse sed irato quis te mihi posset amicus?
 
@@ -1657,7 +1657,7 @@ title: Tristia
 
 **85** cunctaque fortuna rimam faciente dehiscunt,
 
-**86** inque ipse quodam corr. Vogel. suo cladem pondere tracta ruunt.
+**86** inque suo cladem pondere tracta ruunt.
 
 **87** ergo hominum quaesitum odium mihi carmine, quosque
 
@@ -1669,9 +1669,9 @@ title: Tristia
 
 **91** quod si non prodest et honesti gloria nulla
 
-**92** redditur, at nullum crimen adeptus eram. eram erit
+**92** redditur, at nullum crimen adeptus eram.
 
-**93** nec male commissa est nobis fortuna reorum Usque usque: lisque Heinsius
+**93** nec male commissa est nobis fortuna reorum Usque
 
 **94** decem deciens inspicienda viris.
 
@@ -1715,7 +1715,7 @@ title: Tristia
 
 **114** unde sit in neutrum conspiciendus eques.
 
-**115** sit sit si vel sic quoque nostra domus vel censu parva vel ortu, ortu astu
+**115** sit quoque nostra domus vel censu parva vel ortu,
 
 **116** ingenio certe non latet illa meo,
 
@@ -1775,7 +1775,7 @@ title: Tristia
 
 **144** quae fuerat saevi fulmine tacta Iovis.
 
-**145** ipse licet sperare vetes, sperabimus usque utque vel atque: usque Heinsius;
+**145** ipse licet sperare vetes, sperabimus usque ;
 
 **146** hoc unum fieri te prohibente potest,
 
@@ -1815,7 +1815,7 @@ title: Tristia
 
 **164** nullaque, cui posses esse maritus, erat;
 
-**165** sospite sit tecum si tecum vel sic te sit corr. σ natus quoque sospes, et olim
+**165** sospite sit tecum natus quoque sospes, et olim
 
 **166** imperium regat hoc cum seniore senex;
 
@@ -1835,7 +1835,7 @@ title: Tristia
 
 **174** auspicium cui das grande deosque tuos,
 
-**175** dimidioque tui praesens es et aspicis et (es) respicis: es et aspicis σ urbem,
+**175** dimidioque tui praesens es et aspicis urbem,
 
 **176** dimidio procul es saevaque bella geris;
 
@@ -1867,7 +1867,7 @@ title: Tristia
 
 **190** Parrhasiae gelido virginis axe premor—
 
-**191** Ciziges et Colchi Tereteaque metereaque corr. Ellis turba Getaeque
+**191** Ciziges et Colchi Tereteaque turba Getaeque
 
 **192** Danuvii mediis vix prohibentur aquis—
 
@@ -1955,7 +1955,7 @@ title: Tristia
 
 **234** et morum, similes quos cupis esse tuis.
 
-**235** nec non tibi contingunt, quae gentibus otia praestas,
+**235** nec tibi contingunt, quae gentibus otia praestas,
 
 **236** bellaque cum multis inrequieta geris,
 
@@ -1963,7 +1963,7 @@ title: Tristia
 
 **238** te numquam nostros evoluisse iocos?
 
-**239** at si, quod mallem, vacuum tibi forte tibi forte fortasse fuisset,
+**239** at si, quod mallem, vacuum tibi forte fuisset,
 
 **240** nullum legisses crimen in Arte mea.
 
@@ -1991,7 +1991,7 @@ title: Tristia
 
 **252** quas stola contingi vittaque sumpta vetat?
 
-**253** at matrona potest alienis artibus uti, quodque quoque
+**253** at matrona potest alienis artibus uti, quodque
 
 **254** trahat, quamvis non doceatur, habet.
 
@@ -2047,7 +2047,7 @@ title: Tristia
 
 **280** nequitiae: tolli tota theatra iube!
 
-**281** peccandi causam multis quam multi quam vel quam multis corr. Riese saepe dederunt.
+**281** peccandi causam multis quam saepe dederunt.
 
 **282** Martia cum durum sternit harena solum!
 
@@ -2055,7 +2055,7 @@ title: Tristia
 
 **284** hic sedet ignoto iuncta puella viro.
 
-**285** cum quaedam spatientur in hoc, hac ut amator eodem eadem
+**285** cum quaedam spatientur in hoc, ut amator eodem
 
 **286** conveniat, quare porticus ulla patet .
 
@@ -2077,7 +2077,7 @@ title: Tristia
 
 **295** venerit in magni templum, tua munera, Martis,
 
-**296** stat Venus Ultori iuncta, vir viro ante fores.
+**296** stat Venus Ultori iuncta, vir ante fores.
 
 **297** Isidis aede sedens, cur hanc Saturnia, quaeret,
 
@@ -2097,7 +2097,7 @@ title: Tristia
 
 **305** quaecumque erupit, qua non sinit ire sacerdos,
 
-**306** protinus huic haec: huic Rothmaler dempti criminis ipsa rea est.
+**306** protinus huic dempti criminis ipsa rea est.
 
 **307** nec tamen est facinus versus evolvere mollis;
 
@@ -2199,9 +2199,9 @@ title: Tristia
 
 **356** plus sibi permisit compositore suo.
 
-**357** nec liber indicium est animi, sed honesta voluntas voluptas
+**357** nec liber indicium est animi, sed honesta voluntas
 
-**358** plurima mulcendis auribus apta ferens. feret vel fores: ferens σ
+**358** plurima mulcendis auribus apta ferens.
 
 **359** Accius esset atrox, conviva Terentius esset,
 
@@ -2251,7 +2251,7 @@ title: Tristia
 
 **382** haec quoque materiam semper amoris habet,
 
-**383** num quid namquid in Hippolyto, nisi caecae flamma novercae?
+**383** num quid in Hippolyto, nisi caecae flamma novercae?
 
 **384** nobilis est Canace fratris amore sui.
 
@@ -2275,7 +2275,7 @@ title: Tristia
 
 **394** ni patrium crinem desecuisset amor.
 
-**395** qui legis Electran et egentem mentis Oresten, orestem
+**395** qui legis Electran et egentem mentis Oresten,
 
 **396** Aegisthi crimen Tyndaridosque legis.
 
@@ -2291,7 +2291,7 @@ title: Tristia
 
 **402** Haemonaque et noctes cui coiere duae?
 
-**403** quid Peliae generum, quid Thesea, quique quidve vel corr. Ehwald Pelasgum
+**403** quid Peliae generum, quid Thesea, quique Pelasgum
 
 **404** Iliacam tetigit de rate primus humum?
 
@@ -2303,7 +2303,7 @@ title: Tristia
 
 **408** vixque meus capiet nomina nuda Uber.
 
-**409** est et in obscenos commixta deflexa tragoedia risus,
+**409** est et in obscenos commixta tragoedia risus,
 
 **410** multaque praeteriti verba pudoris habet;
 
@@ -2323,7 +2323,7 @@ title: Tristia
 
 **418** nec qui concubitus non tacuere suos.
 
-**419** suntque ea doctorum monumentis mixta saxa vel texta virorum,
+**419** suntque ea doctorum monumentis mixta virorum,
 
 **420** muneribusque ducum publica facta patent.
 
@@ -2349,7 +2349,7 @@ title: Tristia
 
 **431** par fuit exigui similisque licentia Calvi,
 
-**432** detexit variis qui sua furta facta modis,
+**432** detexit variis qui sua furta modis,
 
 **433** quid referam Ticidae, quid Memmi carmen, apud quos
 
@@ -2359,7 +2359,7 @@ title: Tristia
 
 **436** et leve Cornifiei parque Catonis opus.
 
-**437** et quorum libris modo dissimulata Perillae, per illos: Perillae σ
+**437** et quorum libris modo dissimulata Perillae,
 
 **438** nomine, nunc legitur dicta, Metelle, tuo.
 
@@ -2383,7 +2383,7 @@ title: Tristia
 
 **448** sic etiam de se quod neget illa viro.
 
-**449** fallere custodes idem custodem tandem (vel demum) corr. Francius docuisse fatetur,
+**449** fallere custodes idem docuisse fatetur,
 
 **450** seque sua miserum nunc ait arte premi.
 
@@ -2403,9 +2403,9 @@ title: Tristia
 
 **458** se quoque uti servet, peccet ut illa minus,
 
-**459** scit, cui latretur, cum solus obambulet, ipsas ipse corr. Owen
+**459** scit, cui latretur, cum solus obambulet, ipsas
 
-**460** cur cui vel qui: cur σ totiens clausas exercet ante fores,
+**460** cur totiens clausas exercet ante fores,
 
 **461** multaque dat furti talis praecepta docetque
 
@@ -2433,7 +2433,7 @@ title: Tristia
 
 **473** quid valeant tali, quo possis plurima iactu
 
-**474** figere,fingere damnosos effugiasque canes;
+**474** figere, damnosos effugiasque canes;
 
 **475** tessera quos habeat numeros, distante vocato
 
@@ -2443,11 +2443,11 @@ title: Tristia
 
 **478** eum medius gemino calculus hoste perit,
 
-**479** ut bellare mare (vel mage vel male) velle corr. Vogel sequens sequi sciat et revocare priorem,
+**479** ut bellare sequens sciat et revocare priorem,
 
 **480** nec tuto fugiens incomitatus eat,
 
-**481** parva sit ut ternis sed uternis (vel internis vel interius) corr. Ehwald instructa tabella lapillis,
+**481** parva sit ut ternis instructa tabella lapillis,
 
 **482** in qua vicisse est continuasse suos,
 
@@ -2481,7 +2481,7 @@ title: Tristia
 
 **497** quid, si scripsissem mimos obscena iocantes,
 
-**498** qui semper vetiti victi vel iunctum: vetiti σ crimen amoris habent,
+**498** qui semper vetiti crimen amoris habent,
 
 **499** in quibus assidue cultus procedit adulter,
 
@@ -2497,9 +2497,9 @@ title: Tristia
 
 **505** cumque fefellit amans aliqua novitate maritum,
 
-**506** plauditur et magno palma favore datur; quodque quoque
+**506** plauditur et magno palma favore datur; quodque
 
-**507** minus prodest, scaena poena: scaena Heumann est lucrosa poetae,
+**507** minus prodest, scaena est lucrosa poetae,
 
 **508** tantaque non parvo crimina praetor emit.
 
@@ -2527,7 +2527,7 @@ title: Tristia
 
 **520** saepe oculos etiam detinuere tuos.
 
-**521** scilicet in domibus nostris vestris corr. σ ut prisca virorum
+**521** scilicet in domibus nostris ut prisca virorum
 
 **522** artificis fulgent corpora picta manu,
 
@@ -2569,7 +2569,7 @@ title: Tristia
 
 **541** carminaque edideram, cum te delicta notantem
 
-**542** praeterii totiens inreprehensus inrequietus eques.
+**542** praeterii totiens inreprehensus eques.
 
 **543** ergo quae iuvenis mihi non nocitura putavi
 
@@ -2667,7 +2667,7 @@ title: Tristia
 
 **12** vel pedis hoc ratio, vel via longa facit;
 
-**13** quod neque sum cedro flavus fulvus nec pumice levis,
+**13** quod neque sum cedro flavus nec pumice levis,
 
 **14** erubui domino cultior esse meo;
 
@@ -2719,7 +2719,7 @@ title: Tristia
 
 **38** et magni verum est hanc Iovis esse domum,
 
-**39** cur tamen opposita apposita velatur ianua lauro,
+**39** cur tamen opposita velatur ianua lauro,
 
 **40** cingit et augustas arbor opaca comas?
 
@@ -2757,7 +2757,7 @@ title: Tristia
 
 **57** quandocumque, precor, nostro placere parenti
 
-**58** isdem et et om. codd. add. Itali sub dominis aspiciare domus!
+**58** isdem et sub dominis aspiciare domus!
 
 **59** inde tenore pari gradibus sublimia celsis
 
@@ -2815,9 +2815,9 @@ title: Tristia
 
 **4** docta sacerdoti turba tulistis opem.
 
-**5** nec mihi, quod lusi vero vestro sine crimine, prodest,
+**5** nec mihi, quod lusi vero sine crimine, prodest,
 
-**6** quodque magis vita Musa iocata iocosa mea est,
+**6** quodque magis vita Musa iocata mea est,
 
 **7** plurima sed pelago terraque pericula passum
 
@@ -2831,7 +2831,7 @@ title: Tristia
 
 **12** perdere, diversae nec potuere viae,
 
-**13** suffecitque sufficit atque malis animus; nam corpus ab illo
+**13** suffecitque malis animus; nam corpus ab illo
 
 **14** accepit vires vixque ferenda tulit.
 
@@ -2851,7 +2851,7 @@ title: Tristia
 
 **22** quicquid et amissa restat in urbe mei.
 
-**23** ei mihi, quod quo totiens nostri pulsata sepulcri
+**23** ei mihi, quod totiens nostri pulsata sepulcri
 
 **24** ianua, sed nullo tempore aperta fuit!
 
@@ -3057,7 +3057,7 @@ title: Tristia
 
 **7** nam quamquam soli possunt prodesse potentes,
 
-**8** non prosint prosit vel prodest: prosint scripsi, cf. prosunt σ potius, siquis siquis plurimum obesse potest.
+**8** non prosint potius, siquis obesse potest.
 
 **9** effugit hibernas demissa antemna procellas,
 
@@ -3135,7 +3135,7 @@ title: Tristia
 
 **46** nomen ama : Scythicus cetera Pontus habet.
 
-**47** Proxima cum prioribus codd. sideribus tellus Erymanthidos Ursae
+**47** Proxima sideribus tellus Erymanthidos Ursae
 
 **48** me tenet, adstricta terra perusta gelu.
 
@@ -3155,11 +3155,11 @@ title: Tristia
 
 **56** corpore: sunt animo cuncta videnda meo.
 
-**57** ante oculos errant domus, urbsque et urbs et corr. σ forma locorum,
+**57** ante oculos errant domus, urbsque et forma locorum,
 
 **58** acceduntque suis singula facta locis,
 
-**59** coniugis ante oculos, sicut praesentis, imago est. est om.
+**59** coniugis ante oculos, sicut praesentis, imago est.
 
 **60** illa meos casus ingravat, illa levat;
 
@@ -3183,11 +3183,11 @@ title: Tristia
 
 **70** adloquar, et nulli causa timoris ero.
 
-**71** nec meus indicio latitantes versus amicos protrahit. protrahet
+**71** nec meus indicio latitantes versus amicos protrahit.
 
 **72** occulte siquis amabat, amet.
 
-**73** scite tamen, quamvis longe longa corr. Owen ex deflorat. regione remotus
+**73** scite tamen, quamvis longe regione remotus
 
 **74** absim, vos animo semper adesse meo;
 
@@ -3203,7 +3203,7 @@ title: Tristia
 
 **2** non aegre posses dissimulare, fuit,
 
-**3** nec ni: nec σ me complexus vinclis propioribus esses
+**3** nec me complexus vinclis propioribus esses
 
 **4** nave mea vento, forsan, eunte suo.
 
@@ -3227,7 +3227,7 @@ title: Tristia
 
 **14** ore meo lacrimas, auribus illa bibi ;
 
-**15** brachiaque accepi presso maesto pendentia collo,
+**15** brachiaque accepi presso pendentia collo,
 
 **16** et singultatis oscula mixta sonis.
 
@@ -3235,7 +3235,7 @@ title: Tristia
 
 **18** scis carum veri nominis esse loco—
 
-**19** multaque praeterea manifesti manifesta signa favoris
+**19** multaque praeterea manifesti signa favoris
 
 **20** pectoribus teneo non abitura meis.
 
@@ -3291,7 +3291,7 @@ title: Tristia
 
 **46** Caesareum caput est, quod caput orbis erat;
 
-**47** non aliquid dixive, elatave dixi velataque (vel violataque vel violentaque) corr. lingua loquendo est,
+**47** non aliquid dixive, elatave lingua loquendo est,
 
 **48** lapsaque sunt nimio verba profana mero:
 
@@ -3307,7 +3307,7 @@ title: Tristia
 
 **54** mutati poenam condicione loci.
 
-**55** hos hoc corr. Riese utinam nitidi Solis praenuntius ortus
+**55** hos utinam nitidi Solis praenuntius ortus
 
 **56** afferat admisso Lucifer albus equo!
 
@@ -3325,7 +3325,7 @@ title: Tristia
 
 **7** quique est in caris animi tibi candor amicis—
 
-**8** cognita sunt ipsi, quem colis, ista cognitus est ipsi iste viro.
+**8** cognita sunt ipsi, quem colis, ista viro.
 
 **9** nil ita celabas, ut non ego conscius essem,
 
@@ -3341,7 +3341,7 @@ title: Tristia
 
 **15** sed mea me in poenam nimirum fata trahebant :
 
-**16** omne bonae claudunt claudent σ utilitatis iter.
+**16** omne bonae claudunt utilitatis iter.
 
 **17** sive malum potui tamen hoc vitare cavendo,
 
@@ -3441,7 +3441,7 @@ title: Tristia
 
 **27** forsitan exemplo, quia me laesere libelli,
 
-**28** tu quoque sis poenae fata facta: fata σ secuta meae.
+**28** tu quoque sis poenae fata secuta meae.
 
 **29** pone, Perilla, metum; tantummodo femina nulla
 
@@ -3457,7 +3457,7 @@ title: Tristia
 
 **35** inicietque manum formae damnosa senectus,
 
-**36** quae strepitum strepitus: strepitum σ passu non faciente venit;
+**36** quae strepitum passu non faciente venit;
 
 **37** cumque aliquis dicet fuit haec formosa dolebis,
 
@@ -3467,7 +3467,7 @@ title: Tristia
 
 **40** finge sed inmensis censibus esse pares,
 
-**41** nempe dat id et: id σ quodcumque libet fortuna rapitque,
+**41** nempe dat id quodcumque libet fortuna rapitque,
 
 **42** Irus et est subito, qui modo Croesus erat.
 
@@ -3517,7 +3517,7 @@ title: Tristia
 
 **11** stulte, quid haec frustra votis puerilibus optas,
 
-**12** quae non ulla tibi tulit fertque feretque dies?
+**12** quae non ulla tibi fertque feretque dies?
 
 **13** si semel optandum est, Augusti numen adora,
 
@@ -3641,9 +3641,9 @@ title: Tristia
 
 **31** ut genitor luctuque novo tardetur et, artus
 
-**32** dum legit extinctos, triste moretur retardet iter.
+**32** dum legit extinctos, triste moretur iter.
 
-**33** inde Tomis tomus (thomus) rel tomos dictus locus hic, quia fertur in illo
+**33** inde Tomis dictus locus hic, quia fertur in illo
 
 **34** membra soror fratris consecuisse sui.
 
@@ -3661,17 +3661,17 @@ title: Tristia
 
 **7** dum tamen aura tepet, medio defendimur Histro :
 
-**8** ille suis liquidus liquidis bella repellit aquis,
+**8** ille suis liquidus bella repellit aquis,
 
 **9** at cum tristis hiems squalentia protulit ora,
 
 **10** terraque marmoreo est candida facta gelu,
 
-**11** dum prohibet patet et: prohibet Owen Boreas et nix habitare sub Arcto,
+**11** dum prohibet Boreas et nix habitare sub Arcto,
 
 **12** tum patet has gentes axe tremente premi.
 
-**13** nix iacet, et iactam ne ne nec sol pluviaeque resolvant,resolvunt corr. Ehwald
+**13** nix iacet, et iactam ne sol pluviaeque resolvant,
 
 **14** indurat Boreas perpetuamque facit.
 
@@ -3795,7 +3795,7 @@ title: Tristia
 
 **74** scriberet hic dominae verba legenda suae.
 
-**75** aspiceres aspiceret nudos sine fronde, sine arbore, campos .
+**75** aspiceres nudos sine fronde, sine arbore, campos .
 
 **76** heu loca felici non adeunda viro!
 
@@ -3851,7 +3851,7 @@ title: Tristia
 
 **24** quamlibet ignavi praecipitata premunt.
 
-**25** non sum ego quod sum ego qui fueram, quid inanem proteris umbram
+**25** non sum ego quod fueram, quid inanem proteris umbram
 
 **26** quid cinerem saxis bustaque nostra petis?
 
@@ -3893,7 +3893,7 @@ title: Tristia
 
 **45** aspicis a dextra latus hoc adapertile tauri?
 
-**46** hac hic tibi, quem perdes, coniciendus erit.
+**46** hac tibi, quem perdes, coniciendus erit.
 
 **47** protinus inclusum lentis carbonibus ure:
 
@@ -3925,7 +3925,7 @@ title: Tristia
 
 **61** crede mihi, si sit nobis collatus Ulixes,
 
-**62** Neptuni neptunique corr. σ minor est quam Iovis ira fuit.
+**62** Neptuni minor est quam Iovis ira fuit.
 
 **63** ergo quicumque es, rescindere crimina noli,
 
@@ -3985,7 +3985,7 @@ title: Tristia
 
 **17** otia nunc istic, iunctisque ex ordine ludis
 
-**18** cedunt verbosi garrula bella fori. lusus usus
+**18** cedunt verbosi garrula bella fori. lusus
 
 **19** equi nunc est, levibus nunc luditur armis,
 
@@ -3999,7 +3999,7 @@ title: Tristia
 
 **24** proque tribus resonant terna theatra foris.
 
-**25** o quater, o quotiens quantum et vel quantum o vel quater et
+**25** o quater, o quotiens
 
 **26** non est numerare, beatum, non interdicta cui licet urbe frui!
 
@@ -4011,7 +4011,7 @@ title: Tristia
 
 **30** stridula Sauromates plaustra bubulcus agit.
 
-**31** incipient incipiunt aliquae tamen huc adnare carinae,
+**31** incipient aliquae tamen huc adnare carinae,
 
 **32** hospitaque in Ponti litore puppis erit.
 
@@ -4021,7 +4021,7 @@ title: Tristia
 
 **35** ille quidem mirum ni de regione propinqua
 
-**36** non nisi vicinas tutus ararit arabit vel araret corr. Heinsius aquas.
+**36** non nisi vicinas tutus ararit aquas.
 
 **37** rarus ab Italia tantum mare navita transit,
 
@@ -4099,7 +4099,7 @@ title: Tristia
 
 **20** adventu possim laetus ut esse tuo.
 
-**21** funeris ara mihi, ferali cincta cupressu, cupresso
+**21** funeris ara mihi, ferali cincta cupressu,
 
 **22** convenit et structis flamma parata rogis.
 
@@ -4123,7 +4123,7 @@ title: Tristia
 
 **4** nunc quoque, ne videar totus abesse, caves?
 
-**5** suscipis conficis: suscipis σ exceptis ecquid mea carmina solis
+**5** suscipis exceptis ecquid mea carmina solis
 
 **6** Artibus, artifici quae nocuere suo?
 
@@ -4135,7 +4135,7 @@ title: Tristia
 
 **10** qui domini poenam non meruere sui.
 
-**11** saepe per externas extremas profugus pater exulat oras,
+**11** saepe per externas profugus pater exulat oras,
 
 **12** urbe tamen natis exulis esse licet.
 
@@ -4207,7 +4207,7 @@ title: Tristia
 
 **46** verba mihi desunt dedidicique loqui.
 
-**47** Threicio Scythicoque fere fero circumsonor ore,
+**47** Threicio Scythicoque fere circumsonor ore,
 
 **48** et videor Geticis scribere posse modis,
 
@@ -4237,7 +4237,7 @@ title: Tristia
 
 **9** quique refert pariter lentos ad pectora remos,
 
-**10** in numerum pulsa brachia pulsat iactat σ aqua.
+**10** in numerum pulsa brachia pulsat aqua.
 
 **11** fessus ubi incubuit baculo saxove resedit
 
@@ -4259,7 +4259,7 @@ title: Tristia
 
 **20** sola comes nostrae perstitit illa fugae;
 
-**21** sola nec insidias, Sinti nec inter nec: Sinti nec Ehwald militis ensem,
+**21** sola nec insidias, Sinti nec militis ensem,
 
 **22** nec mare nec ventos barbariamque timet.
 
@@ -4317,7 +4317,7 @@ title: Tristia
 
 **49** iure deas igitur veneror mala nostra levantes,
 
-**50** sollicitae sollicitas corr. Scaliger comites ex Helicone fugae,
+**50** sollicitae comites ex Helicone fugae,
 
 **51** et partim pelago partim vestigia terra
 
@@ -4327,7 +4327,7 @@ title: Tristia
 
 **54** cetera cum magno Caesare turba facit,
 
-**55** meque tot adversis cumulant,cumulat quot litus harenas,
+**55** meque tot adversis cumulant, quot litus harenas,
 
 **56** quotque fretum pisces, ovaque piscis habet,
 
@@ -4337,7 +4337,7 @@ title: Tristia
 
 **59** quam mala, quae toto patior iactatus in orbe,
 
-**60** dum miser Euxini litora laeva saeva: laeva σ peto.
+**60** dum miser Euxini litora laeva peto.
 
 **61** nec tamen, ut veni, levior fortuna malorum est :
 
@@ -4349,7 +4349,7 @@ title: Tristia
 
 **65** utque neque insidias capitisque pericula narrem,
 
-**66** vera quidem, veri veri vera vel vidi corr. Francius sed graviora fide,
+**66** vera quidem, veri sed graviora fide,
 
 **67** vivere quam miserum est inter Bessosque Getasque
 
@@ -4371,7 +4371,7 @@ title: Tristia
 
 **76** induimus trepida protinus arma manu.
 
-**77** hostis, habens arcus imbutaque tela venenis, veneno
+**77** hostis, habens arcus imbutaque tela venenis,
 
 **78** saevus anhelanti moenia lustrat equo,
 
@@ -4379,7 +4379,7 @@ title: Tristia
 
 **80** per sata, per silvas fertque trahitque lupus,
 
-**81** sic, siquem nondum portarum saepe sede: saepe σ receptum
+**81** sic, siquem nondum portarum saepe receptum
 
 **82** barbarus in campis repperit hostis, habet:
 
@@ -4389,7 +4389,7 @@ title: Tristia
 
 **85** hic ego sollicitae lateo novus incola sedis .
 
-**86** heu nimium fati tempora longa lenta mei!
+**86** heu nimium fati tempora longa mei!
 
 **87** et tamen ad numeros antiquaque sacra reverti
 
@@ -4423,7 +4423,7 @@ title: Tristia
 
 **102** misit in arsuros carmina nostra focos,
 
-**103** atque ita ea: ita σ de multis quoniam non multa supersunt,
+**103** atque ita de multis quoniam non multa supersunt,
 
 **104** cum venia facito, quisquis es, ista legas.
 
@@ -4549,7 +4549,7 @@ title: Tristia
 
 **59** illa per inmensas spatiatur libera terras,
 
-**60** in caelum celeri pervenit illa via fuga,
+**60** in caelum celeri pervenit illa via ,
 
 **61** illa meos oculos mediam deducit in urbem,
 
@@ -4601,7 +4601,7 @@ title: Tristia
 
 **11** ei mihi, cur timeam? quae sunt manifesta, requiro.
 
-**12** cur iacet latet vel labat: iacet Ehwald ambiguo spes mea mixta metu?
+**12** cur iacet ambiguo spes mea mixta metu?
 
 **13** crede, quod est et vis, ac desine tuta vereri,
 
@@ -4615,7 +4615,7 @@ title: Tristia
 
 **18** quodque potest, secum nomen habere tuum
 
-**19** vultibus illa tuis tamquam praesentis inhaeret,praesentibus haeret
+**19** vultibus illa tuis tamquam praesentis inhaeret,
 
 **20** teque remota procul, si modo vivit, amat.
 
@@ -4645,7 +4645,7 @@ title: Tristia
 
 **33** tristis es? indignor quod sim tibi causa doloris ;
 
-**34** non es? at ut: at Bentley amisso coniuge digna fores.
+**34** non es? at amisso coniuge digna fores.
 
 **35** tu vero tua damna dole, mitissima coniunx,
 
@@ -4687,7 +4687,7 @@ title: Tristia
 
 **54** coniuge, nec nomen dissimulare viri?
 
-**55** tempus ubi est, quo te illud quo te vel illud nisi non vis vel illud quo ni (non) fugis corr. σ —nisi non vis illa referri—
+**55** tempus ubi est, quo te —nisi non vis illa referri—
 
 **56** et dici, memini, iuvit et esse meam?
 
@@ -4743,7 +4743,7 @@ title: Tristia
 
 **82** conspicuum pietas qua tua tollat, habet.
 
-**83** utere temporibus, quorum nunc munere facta est ficta est vel freta es: facta est Ehwald
+**83** utere temporibus, quorum nunc munere facta est
 
 **84** et patet in laudes area lata tuas.
 
@@ -4753,7 +4753,7 @@ title: Tristia
 
 **3** cuius inest animo patrii candoris imago,
 
-**4** non careat nervis numeris σ candor ut iste suis,
+**4** non careat nervis candor ut iste suis,
 
 **5** cuius in ingenio est patriae facundia linguae,
 
@@ -4813,9 +4813,9 @@ title: Tristia
 
 **33** non igitur tibi nunc, quod me domus ista recepit,
 
-**34** sed prius auctori sunt data verba tuo. sed sunt auctori non tua verba tuo
+**34** sed prius auctori sunt data verba tuo.
 
-**35** nec non: nec σ data sunt, mihi crede, tamen: sed in omnibus actis
+**35** nec data sunt, mihi crede, tamen: sed in omnibus actis
 
 **36** ultima si demas, vita tuenda mea est.
 
@@ -4825,9 +4825,9 @@ title: Tristia
 
 **39** aut timor aut error nobis, prius obfuit error.
 
-**40** a! at sine me fati non meminisse mei;
+**40** a! sine me fati non meminisse mei;
 
-**41** neve retractando nondum coeuntia rumpam rumpe vel rupem
+**41** neve retractando nondum coeuntia rumpam
 
 **42** vulnera: vix illis proderit ipsa quies,
 
@@ -4891,7 +4891,7 @@ title: Tristia
 
 **72** qui duo corporibus mentibus unus erant,
 
-**73** protinus evincti evicti tristem ducuntur ad aram,
+**73** protinus evincti tristem ducuntur ad aram,
 
 **74** quae stabat geminas ante cruenta fores.
 
@@ -4915,7 +4915,7 @@ title: Tristia
 
 **84** quam fugere homines dique, propinqua mihi est:
 
-**85** aque atque mea terra meam terram prope sunt funebria sacra,
+**85** aque mea terra prope sunt funebria sacra,
 
 **86** si modo Nasoni barbara terra sua est.
 
@@ -4955,7 +4955,7 @@ title: Tristia
 
 **16** intempestivus nominis obstet honor,
 
-**17** quod licet (et hoc tutum est) intra tua pectora gaude
+**17** quod licet (et tutum est) intra tua pectora gaude
 
 **18** meque tui memorem teque fuisse pium,
 
@@ -4977,7 +4977,7 @@ title: Tristia
 
 **27** sic aequet tua nupta virum bonitate perenni,
 
-**28** incidat et vestro nulla nulla rara querella toro;
+**28** incidat et vestro nulla querella toro;
 
 **29** diligat et semper socius de sanguinis illo,
 
@@ -5003,7 +5003,7 @@ title: Tristia
 
 **6** nec feritas animo, quae fuit ante, manet;
 
-**7** quaeque sui monitis iussis obtemperat Inda magistri
+**7** quaeque sui monitis obtemperat Inda magistri
 
 **8** belua, servitium tempore victa subit.
 
@@ -5013,9 +5013,9 @@ title: Tristia
 
 **11** tempus et in canas semen producit aristas,
 
-**12** et ne sint tristi poma sapore cavet. facit
+**12** et ne sint tristi poma sapore cavet.
 
-**13** hoc tenuat dentem terram renovantis semoventis vel scindentis vel patientis: renovantis σ aratri,
+**13** hoc tenuat dentem terram renovantis aratri,
 
 **14** hoc rigidas silices, hoc adamanta terit;
 
@@ -5045,9 +5045,9 @@ title: Tristia
 
 **27** nec tam nota mihi, quam sunt, mala nostra fuerunt;
 
-**28** nunc nunc sed magis hoc, quo sunt cognitiora, gravant.
+**28** nunc magis hoc, quo sunt cognitiora, gravant.
 
-**29** est quoque non nihilum minimum vires afferre recentes,
+**29** est quoque non nihilum vires afferre recentes,
 
 **30** nec praeconsumptum temporis esse malis,
 
@@ -5063,7 +5063,7 @@ title: Tristia
 
 **36** quamlibet exiguo solvitur imbre vetus.
 
-**37** nos quoque quae ferimus, tulimus patientius ante quam quae: quam Ehwald
+**37** nos quoque quae ferimus, tulimus patientius ante quam
 
 **38** mala sunt longa multiplicata die!
 
@@ -5085,7 +5085,7 @@ title: Tristia
 
 **47** vulgus adest Scythicum bracataque turba Getarum:
 
-**48** sic me me mala quae video non videoque movent. nocent
+**48** sic me quae video non videoque movent.
 
 **49** una tamen spes est quae me soletur in istis,
 
@@ -5103,7 +5103,7 @@ title: Tristia
 
 **6** exiguus nobis cum quibus usus erat?
 
-**7** cur, quotiens totiens alicui chartae sua vincula dempsi,
+**7** cur, quotiens alicui chartae sua vincula dempsi,
 
 **8** illam speravi nomen habere tuum?
 
@@ -5113,13 +5113,13 @@ title: Tristia
 
 **11** quod precor, esse liquet. credam prius ora Medusae
 
-**12** Gorgonis anguineis anguinis σ cincta fuisse comis,
+**12** Gorgonis anguineis cincta fuisse comis,
 
 **13** esse canes utero sub virginis, esse Chimaeram,
 
 **14** a truce quae flammis separet angue leam.
 
-**15** quadrupedesque hominis homines vel hominum cum pectore pectora iunctos,
+**15** quadrupedesque hominis cum pectore pectora iunctos,
 
 **16** tergeminumque virum tergeminumque canem,
 
@@ -5153,7 +5153,7 @@ title: Tristia
 
 **5** nunc erat, ut posito deberem fine laborum
 
-**6** vivere, me nullo cum nullo sollicitante metu,
+**6** vivere, me nullo sollicitante metu,
 
 **7** quaeque meae semper placuerunt otia menti
 
@@ -5173,13 +5173,13 @@ title: Tristia
 
 **15** non ita dis visum est, qui me terraque marique
 
-**16** actum iactum Sarmaticis exposuere locis.
+**16** actum Sarmaticis exposuere locis.
 
 **17** in cava ducuntur quassae navalia puppes,
 
 **18** ne temere in mediis dissoluantur aquis.
 
-**19** ne cadat et multas palmas inhonestet adeptus, ademptus vel adeptas
+**19** ne cadat et multas palmas inhonestet adeptus,
 
 **20** languidus in pratis gramina carpit equus,
 
@@ -5227,7 +5227,7 @@ title: Tristia
 
 **42** qua maris Euxini terra sinistra iacet.
 
-**43** hoc mihi si Delphi delphis vel delphos corr. Scaliger Dodonaque diceret ipsa,
+**43** hoc mihi si Delphi Dodonaque diceret ipsa,
 
 **44** esse videretur vanus uterque locus.
 
@@ -5251,7 +5251,7 @@ title: Tristia
 
 **2** et tua Lethaeis acta dabuntur aquis,
 
-**3** nostraque vincetur lacrimis clementia dementia seris,
+**3** nostraque vincetur lacrimis clementia seris,
 
 **4** fac modo te pateat paenituisse tui;
 
@@ -5265,7 +5265,7 @@ title: Tristia
 
 **9** sim licet extremum, sicut sum, missus in orbem,
 
-**10** nostra suas istinc istic vel isto (istuc σ): istinc porriget ira manus,
+**10** nostra suas istinc porriget ira manus,
 
 **11** omnia, si nescis, Caesar mihi iura reliquit,
 
@@ -5303,7 +5303,7 @@ title: Tristia
 
 **28** nec mihi sumendi causa sit ulla velim.
 
-**29** Circus adhuc cessat; spargit iam torvus tamen acer harenam
+**29** Circus adhuc cessat; spargit iam torvus harenam
 
 **30** taurus et infesto iam pede pulsat humum.
 
@@ -5323,7 +5323,7 @@ title: Tristia
 
 **6** cum cecidit fato consul uterque pari
 
-**7** si quid id est, usque a proavis si quid (quis) et a proavis usque est vetus ordinis heres
+**7** si quid id est, usque a proavis vetus ordinis heres
 
 **8** non modo fortunae munere factus eques,
 
@@ -5335,7 +5335,7 @@ title: Tristia
 
 **12** una celebrata est per duo liba dies;
 
-**13** haec est armiferae armigerae festis de quinque Minervae,
+**13** haec est armiferae festis de quinque Minervae,
 
 **14** quae fieri pugna prima cruenta solet.
 
@@ -5357,17 +5357,17 @@ title: Tristia
 
 **23** motus eram dictis, totoque Helicone relicto
 
-**24** scribere temptabam conabar verba soluta modis.
+**24** scribere temptabam verba soluta modis.
 
 **25** sponte sua carmen numeros veniebat ad aptos,
 
-**26** et quod temptabam scribere dicere versus erat.
+**26** et quod temptabam scribere versus erat.
 
 **27** interea tacito passu labentibus annis
 
 **28** liberior fratri sumpta mihique toga est,
 
-**29** induiturque umeris humeros cum lato purpura clavo,
+**29** induiturque umeris cum lato purpura clavo,
 
 **30** et studium nobis, quod fuit ante, manet.
 
@@ -5377,7 +5377,7 @@ title: Tristia
 
 **33** cepimus et tenerae primos aetatis honores,
 
-**34** eque hecque vel deque viris quondam pars tribus una fui.
+**34** eque viris quondam pars tribus una fui.
 
 **35** curia restabat . clavi mensura coacta est,
 
@@ -5397,11 +5397,11 @@ title: Tristia
 
 **43** saepe suas volucres legit mihi grandior aevo,
 
-**44** quaeque nocet nocens vel necet serpens, quae iuvat iuvet herba. Macer.
+**44** quaeque nocet serpens, quae iuvat herba. Macer.
 
 **45** saepe suos solitus recitare Propertius ignes,
 
-**46** iure sodalicii, quo qui mihi iunctus erat.
+**46** iure sodalicii, quo mihi iunctus erat.
 
 **47** Ponticus heroo, Bassus quoque clarus iambis
 
@@ -5469,7 +5469,7 @@ title: Tristia
 
 **79** non aliter flevi, quam me fleturus ademptum
 
-**80** ille fuit. Matri matrix vel matri σ proxima busta tuli.
+**80** ille fuit. Matri proxima busta tuli.
 
 **81** felices ambo tempestiveque sepulti,
 
@@ -5479,7 +5479,7 @@ title: Tristia
 
 **84** sum miser, et de me quod doluere nihil!
 
-**85** si tamen extinctis aliquid nisi nomina restat, restant
+**85** si tamen extinctis aliquid nisi nomina restat,
 
 **86** et gracilis structas effugit umbra rogos,
 
@@ -5513,7 +5513,7 @@ title: Tristia
 
 **101** quid referam comitumque nefas famulosque nocentes?
 
-**102** Ipsa ipseque multa tuli non leviora fuga.
+**102** Ipsa multa tuli non leviora fuga.
 
 **103** indignata malis mens est succumbere seque
 
@@ -5587,7 +5587,7 @@ title: Tristia
 
 **6** materiae scripto conveniente suae.
 
-**7** integer et laetus donec eram laetus laeta et iuvenalia lusi:
+**7** integer et laetus laeta et iuvenalia lusi:
 
 **8** illa tamen nunc me composuisse piget,
 
@@ -5605,23 +5605,23 @@ title: Tristia
 
 **15** delicias siquis lascivaque carmina quaerit,
 
-**16** praemoneo, non est nostra vel numquam: non est Gronovius scripta quod ista legat,
+**16** praemoneo, non est scripta quod ista legat,
 
 **17** aptior huic Gallus blandique Propertius oris,
 
 **18** aptior, ingenium come, Tibullus erit.
 
-**19** atque utinam numero non nos ne nos essemus in isto!
+**19** atque utinam numero non nos essemus in isto!
 
-**20** ei mihi, cur umquam Musa iocata locuta: iocata σ mea est?
+**20** ei mihi, cur umquam Musa iocata mea est?
 
 **21** sed dedimus poenas, Scythicique in finibus Histri
 
 **22** ille pharetrati lusor Amoris abest,
 
-**23** quod superest, animos socios: numeros Ehwald ad publica carmina flexi,
+**23** quod superest, animos ad publica carmina flexi,
 
-**24** et memores iussi nominis esse mei. sui
+**24** et memores iussi nominis esse mei.
 
 **25** si tamen e vobis aliquis tam multa requiret,
 
@@ -5689,7 +5689,7 @@ title: Tristia
 
 **57** cum faceret Nioben orbam Latonia proles,
 
-**58** non tamen et et hanc siccas iussit habere genas.
+**58** non tamen et siccas iussit habere genas.
 
 **59** est aliquid, fatale malum per verba levare .
 
@@ -5699,13 +5699,13 @@ title: Tristia
 
 **62** voce fatigaret Lemnia saxa sua.
 
-**63** strangulat inclusus dolor atque exaestuat cor aestuat intus,
+**63** strangulat inclusus dolor atque exaestuat intus,
 
 **64** cogitur et vires multiplicare suas.
 
 **65** da veniam potius, vel totos tolle libellos,
 
-**66** si mihi quod prodest hoc sit (sic) ... si tibi, lector, obest,
+**66** si mihi quod prodest hoc tibi, lector, obest,
 
 **67** sed neque obesse potest, ulli nec scripta fuerunt
 
@@ -5715,7 +5715,7 @@ title: Tristia
 
 **70** aut quis deceptum ponere sumpta vetat?
 
-**71** ipse nec emendo, hoc mando sed ut hic deducta legantur;
+**71** ipse nec emendo, sed ut hic deducta legantur;
 
 **72** non sunt illa suo barbariora loco.
 
@@ -5731,7 +5731,7 @@ title: Tristia
 
 **78** quae tamen inrumpunt quoque vetantur eunt.
 
-**79** cur scribam, docui, cur mittam, quaeritis, isto istos: isto Heinsius?
+**79** cur scribam, docui, cur mittam, quaeritis, isto ?
 
 **80** vobiscum cupio quolibet esse modo.
 
@@ -5775,11 +5775,11 @@ title: Tristia
 
 **20** exiguum pleno de mare demat aquae,
 
-**21** detrahat ut multum, multum restabit acerbi, acervi
+**21** detrahat ut multum, multum restabit acerbi,
 
 **22** parsque meae poenae totius instar erit.
 
-**23** litora quot conchas, quot amoena rosaria amoenos hostia vel a. postia flores,
+**23** litora quot conchas, quot amoena rosaria flores,
 
 **24** quotve soporiferum grana papaver habet,
 
@@ -5799,7 +5799,7 @@ title: Tristia
 
 **32** sustinet et saevo cinctus ab hoste locus,
 
-**33** hinc ego traicerer traicerem vel transigerer —neque enim mea culpa cruenta est—
+**33** hinc ego traicerer —neque enim mea culpa cruenta est—
 
 **34** esset, quae debet, si tibi cura mei.
 
@@ -5817,7 +5817,7 @@ title: Tristia
 
 **41** quoque colla iugo? quo ferar? unde petam lassis solacia rebus?
 
-**42** ancora iam nostram non tenet ulla ratem, videris viderit codd.: corr. Ehwald
+**42** ancora iam nostram non tenet ulla ratem, videris
 
 **43** ! ipse sacram, quamvis invisus, ad aram
 
@@ -5851,7 +5851,7 @@ title: Tristia
 
 **58** edicti verbis nominor ipse tui.
 
-**59** omniaque haec timui, quia me meruisse videbam quoniam videbar;
+**59** omniaque haec timui, quia me meruisse videbam ;
 
 **60** sed tua peccato lenior ira meo est.
 
@@ -5867,13 +5867,13 @@ title: Tristia
 
 **66** glaebaque canenti semper obusta gelu,
 
-**67** nesciaque que quam est vocis quod barbara lingua Latinae,
+**67** nesciaque est vocis quod barbara lingua Latinae,
 
-**68** Graecaque quod Getico victa vincta vel iuncta loquella sono est,
+**68** Graecaque quod Getico victa loquella sono est,
 
-**69** quam quod finitimo cinctus premor undique Marte,finitima . . morte
+**69** quam quod finitimo cinctus premor undique Marte,
 
-**70** vixque brevis tutum tutos murus ab hoste facit.
+**70** vixque brevis tutum murus ab hoste facit.
 
 **71** pax tamen interdum est, pacis fiducia numquam:
 
@@ -5885,7 +5885,7 @@ title: Tristia
 
 **75** vel rapidae flammis urar patienter in Aetnae,
 
-**76** vel freta Leucadii mittar in alta dei. leucadio . . deo
+**76** vel freta Leucadii mittar in alta dei.
 
 **77** quod petimus, poena est: neque enim miser esse recuso,
 
@@ -5919,7 +5919,7 @@ title: Tristia
 
 **14** nubila nascenti seu mihi Parca fuit,
 
-**15** tu tamen e sacris hederae hederae me de cultoribus unum
+**15** tu tamen e sacris hederae cultoribus unum
 
 **16** numine debueras sustinuisse tuo.
 
@@ -5959,7 +5959,7 @@ title: Tristia
 
 **34** nescioquis nostri dicere cultor abest.
 
-**35** fer, bone Liber, opem: sic altera altam degravet ulmum
+**35** fer, bone Liber, opem: sic altera degravet ulmum
 
 **36** vitis et incluso plena sit uva inero,
 
@@ -5969,7 +5969,7 @@ title: Tristia
 
 **39** ossa bipenniferi sic sint male pressa Lycurgi,
 
-**40** impia nec poena Pentheos umbra vacet, vacet caret
+**40** impia nec poena Pentheos umbra vacet,
 
 **41** sic micet aeternum vicinaque sidera vincat
 
@@ -5989,7 +5989,7 @@ title: Tristia
 
 **49** atque atque vestrum, Nasonis nomine dicto,
 
-**50** opponat apponat lacrimis pocula mixta suis,
+**50** opponat lacrimis pocula mixta suis,
 
 **51** admonitusque mei, cum circumspexerit omnes,
 
@@ -6025,7 +6025,7 @@ title: Tristia
 
 **9** nec frondem in silvis, nec aperto mollia prato
 
-**10** gramina, nec pleno flumine cernit aquam aquas;
+**10** gramina, nec pleno flumine cernit aquam ;
 
 **11** quid Priamus doleat, mirabitur, Hectore rapto,
 
@@ -6169,7 +6169,7 @@ title: Tristia
 
 **31** sensus inest igitur nebulis, quas exigit ignis:
 
-**32** consilio fugiunt aethera, Ponte, consilium cetera pene corr. Withof tuum.
+**32** consilio fugiunt aethera, Ponte, tuum.
 
 **33** consilio, commune sacrum cum fiat in ara
 
@@ -6191,13 +6191,13 @@ title: Tristia
 
 **42** nulla fuit misero festa videnda mihi.
 
-**43** edidit haec mores illis heroisin heroibus corr. Salmasius aequos,
+**43** edidit haec mores illis heroisin aequos,
 
 **44** quis erat Eëtion Icariusque pater.
 
-**45** nata pudicitia est, virtus moris: virtus Owen probitasque, fidesque,
+**45** nata pudicitia est, virtus probitasque, fidesque,
 
-**46** at non sunt ista gaudia nata die, die fide
+**46** at non sunt ista gaudia nata die,
 
 **47** sed labor et curae fortunaque moribus impar,
 
@@ -6223,7 +6223,7 @@ title: Tristia
 
 **58** Laudamia nihil cur referatur erit.
 
-**59** et tua, quod malles,mallem pietas ignota maneret,
+**59** et tua, quod malles, pietas ignota maneret,
 
 **60** implerent venti si mea vela sui.
 
@@ -6243,7 +6243,7 @@ title: Tristia
 
 **4** officiique pium tam cito ponis onus?
 
-**5** sarcina sum, fateor, quam si non quamvis sine tempore nostro nostro duro
+**5** sarcina sum, fateor, quam si non tempore nostro
 
 **6** depositurus eras, non subeunda fuit.
 
@@ -6287,7 +6287,7 @@ title: Tristia
 
 **26** dixisse in Pyladen improba verba putas?
 
-**27** nec procul a vero est quin et quod non: quin et σ pulsarit amicum:
+**27** nec procul a vero est quin et pulsarit amicum:
 
 **28** mansit in officiis non minus ille suis.
 
@@ -6303,9 +6303,9 @@ title: Tristia
 
 **34** non habet in nobis ullius ira locum.
 
-**35** elige nostrorum minimum minimumque laborum,malorum
+**35** elige nostrorum minimum minimumque laborum,
 
-**36** isto, quod reris, illo quo quereris grandius illud erit.
+**36** isto, quod reris, grandius illud erit.
 
 **37** quam multa madidae celantur harundine fossae,
 
@@ -6315,7 +6315,7 @@ title: Tristia
 
 **40** limite formicae grana reperta solent,
 
-**41** tam me circumstat circumdat (circumdant): circumstant σ densorum turba malorum.
+**41** tam me circumstat densorum turba malorum.
 
 **42** crede mihi, vero est nostra querella minor.
 
@@ -6323,7 +6323,7 @@ title: Tristia
 
 **44** in litus harenas, in segetem spicas, in mare fundat aquas.
 
-**45** intempestivos igitur compesce tumores,timores corr. σ
+**45** intempestivos igitur compesce tumores,
 
 **46** vela nec in medio desere nostra mari.
 
@@ -6359,7 +6359,7 @@ title: Tristia
 
 **16** telaque vipereo lurida felle gerat,
 
-**17** vox fera, trux vultus, verissima Martis mortis corr. σ imago,
+**17** vox fera, trux vultus, verissima Martis imago,
 
 **18** non coma, non ulla barba resecta manu,
 
@@ -6367,11 +6367,11 @@ title: Tristia
 
 **20** quem iunctum lateri barbarus omnis habet,
 
-**21** vivit in his heu nunc, lusorum nullus eorum vel his nullus tenerorum: nunc lusorum Ehwald oblitus amorum,
+**21** vivit in his heu nunc, lusorum oblitus amorum,
 
 **22** hos videt, hos vates audit, amice, tuus:
 
-**23** atque utinam vivat non et et non corr. Heinsius moriatur in illis,
+**23** atque utinam vivat non et moriatur in illis,
 
 **24** absit ab invisis et tamen umbra locis.
 
@@ -6397,7 +6397,7 @@ title: Tristia
 
 **35** quaeque modo Euboicis lacerata est fluctibus, audet
 
-**36** Graia Capheream currere puppis aquam. capharea aqua
+**36** Graia Capheream currere puppis aquam.
 
 **37** nec tamen, ut lauder, vigilo curamque futuri
 
@@ -6409,7 +6409,7 @@ title: Tristia
 
 **41** quid potius faciam desertis solus in oris,
 
-**42** quamve malis aliam quaerere coner coner cogar opem?
+**42** quamve malis aliam quaerere coner opem?
 
 **43** sive locum specto, locus est inamabilis, et quo
 
@@ -6431,7 +6431,7 @@ title: Tristia
 
 **52** haec quoque iam Getico barbara facta sono.
 
-**53** unus in hoc nemo est populo, nemo . . populo populo vix est
+**53** unus in hoc nemo est populo,
 
 **54** qui forte Latine quaelibet e medio reddere verba queat.
 
@@ -6455,7 +6455,7 @@ title: Tristia
 
 **64** et studii repeto signa sinistra mei.
 
-**65** sic animum tempusque traho, sic meque me sicque vel mecumque corr. σ reduco
+**65** sic animum tempusque traho, sic meque reduco
 
 **66** a contemplatu summoveoque mali.
 
@@ -6479,11 +6479,11 @@ title: Tristia
 
 **8** numen, et exosae verba superba deae.
 
-**9** Exigit exigis vel exiget a dignis at dignes ultrix Rhamnusia poenas:
+**9** Exigit a dignis ultrix Rhamnusia poenas:
 
-**10** inposito calcas quid qui mea fata pede?
+**10** inposito calcas quid mea fata pede?
 
-**11** vidi ego naufragium qui risit naufragiumque viros et corr. Mencken in aequora aequore mergi,
+**11** vidi ego naufragium qui risit in aequora mergi,
 
 **12** et numquam dixi iustior unda fuit.
 
@@ -6495,7 +6495,7 @@ title: Tristia
 
 **16** et manet in nullo certa tenaxque loco,
 
-**17** sed modo laeta venit, manet: venit Heinsius vultus modo sumit acerbos,
+**17** sed modo laeta venit, vultus modo sumit acerbos,
 
 **18** et tantum constans in levitate sua est.
 
@@ -6521,7 +6521,7 @@ title: Tristia
 
 **29** exemploque deum, quibus accessurus et ipse est,
 
-**30** cum poenae venia plura roganda regenda dabit. petam: dabit Faber
+**30** cum poenae venia plura roganda dabit.
 
 **31** si numeres anno soles et nubila toto,
 
@@ -6567,11 +6567,11 @@ title: Tristia
 
 **14** et facis accepto munere posse frui.
 
-**15** cumque perhorruerit perhorreret casus pars maxima nostros,
+**15** cumque perhorruerit casus pars maxima nostros,
 
 **16** pars etiam credi pertimuisse velit,
 
-**17** naufragiumque meum tumulo spectant spectaret corr. Heinsius ab alto,
+**17** naufragiumque meum tumulo spectant ab alto,
 
 **18** nec dederit nanti per freta saeva manum,
 
@@ -6587,7 +6587,7 @@ title: Tristia
 
 **24** poneret in multa luce videnda labor;
 
-**25** nunc quoque se, quamvis est iam quamvis est vel q. e. iam corr. Naugerus (σ?) iussa quiescere, quin te
+**25** nunc quoque se, quamvis est iussa quiescere, quin te
 
 **26** nominet invitum, vix mea Musa tenet,
 
@@ -6599,7 +6599,7 @@ title: Tristia
 
 **30** nunc pede, nunc ipsa fronte lacessit equus,
 
-**31** sic mea lege data vincta atque inclusa Thalia Thalia voluntas
+**31** sic mea lege data vincta atque inclusa Thalia
 
 **32** per titulum vetiti nominis ire cupit.
 
@@ -6613,7 +6613,7 @@ title: Tristia
 
 **37** dumque quod o breve sit!—lumen vitale videbo,
 
-**38** serviet officio spiritus iste ipse tuo.
+**38** serviet officio spiritus iste tuo.
 
 **1** Ut sumus in Ponto, ter frigore constitit Hister,
 
@@ -6635,23 +6635,23 @@ title: Tristia
 
 **10** cumque meis curis omnia longa facit.
 
-**11** an peragunt solitos communia tempora motus, suntque stantque Housman
+**11** an peragunt solitos communia tempora motus, suntque
 
 **12** magis vitae tempora dura meae?
 
-**13** quem tenet Euxini mendax cognomine litus,litus s tellus vel tempus vel pontus
+**13** quem tenet Euxini mendax cognomine litus,
 
 **14** et Scythici vere terra sinistra freti,
 
 **15** innumerae circa gentes fera bella minantur,
 
-**16** quae sibi non rapto raptu vivere turpe putant.
+**16** quae sibi non rapto vivere turpe putant.
 
 **17** nil extra tutum est: tumulus defenditur ipse
 
 **18** moenibus exiguis ingenioque loci.
 
-**19** cum minime credas, ut aves,avis densissimus hostis
+**19** cum minime credas, ut aves, densissimus hostis
 
 **20** advolat, et praedam vix bene visus agit.
 
@@ -6659,7 +6659,7 @@ title: Tristia
 
 **22** per medias legimus noxia tela vias.
 
-**23** est igitur rarus, rus qui qui iam corr. Heinsius; cf. qui rus σ colere audeat, isque
+**23** est igitur rarus, rus qui colere audeat, isque
 
 **24** hac arat infelix, hac tenet arma manu.
 
@@ -6675,7 +6675,7 @@ title: Tristia
 
 **30** barbarus et tecti plus quoque parte tenet,
 
-**31** quos quorum ut non timeas, possis odisse videndo
+**31** quos ut non timeas, possis odisse videndo
 
 **32** pellibus et longa pectora tecta coma.
 
@@ -6695,11 +6695,11 @@ title: Tristia
 
 **40** forsitan obiciunt exiliumque mihi.
 
-**41** utque fit, in me aliquid ficti,siquidem vel si quid: ficti Owen dicentibus illis
+**41** utque fit, in me aliquid ficti, dicentibus illis
 
 **42** abnuerim quotiens adnuerimque, putant,
 
-**43** adde quod iniustum et iustum rigido ius dicitur ense,
+**43** adde quod iniustum rigido ius dicitur ense,
 
 **44** dantur et in medio vulnera saepe foro.
 
@@ -6743,7 +6743,7 @@ title: Tristia
 
 **12** venisset mallem funeris hora mihi.
 
-**13** quassa tamen nostra est, non mersa mersa fracta nec obruta navis,
+**13** quassa tamen nostra est, non mersa nec obruta navis,
 
 **14** utque caret portu, sic tamen extat aquis.
 
@@ -6791,7 +6791,7 @@ title: Tristia
 
 **6** sorte nec ulla mea tristior esse potest.
 
-**7** exigis ut Priamus natorum funere ludat, plaudat
+**7** exigis ut Priamus natorum funere ludat,
 
 **8** et Niobe festos ducat ut orba choros.
 
@@ -6801,7 +6801,7 @@ title: Tristia
 
 **11** des licet in valido pectus mihi robore fultum,
 
-**12** fama refert Anyti quale fuisse reo, rei vel senis
+**12** fama refert Anyti quale fuisse reo,
 
 **13** fracta cadet tantae sapientia mole ruinae:
 
@@ -6811,11 +6811,11 @@ title: Tristia
 
 **16** scribere in hoc casu sustinuisset opus.
 
-**17** ut veniant patriae, veniant oblivia vestri,nostri
+**17** ut veniant patriae, veniant oblivia vestri,
 
 **18** omnis ut amissi sensus abesse queat,
 
-**19** at timor officio fungi vetat ipse esse: ipse σ quietum:
+**19** at timor officio fungi vetat ipse quietum:
 
 **20** cinctus ab innumero me tenet hoste locus,
 
@@ -6823,19 +6823,19 @@ title: Tristia
 
 **22** torpet et est multo, quam fuit ante, minus,
 
-**23** fertilis, assiduo si non renovatur renovetur vel removetur aratro,
+**23** fertilis, assiduo si non renovatur aratro,
 
 **24** nil nisi cum spinis gramen habebit ager.
 
-**25** tempore qui longo steterit, male curret currit et inter
+**25** tempore qui longo steterit, male curret et inter
 
 **26** carceribus missos ultimus ibit equus,
 
 **27** vertitur in teneram cariem rimisque dehiscit,
 
-**28** siqua diu solitis cumba vacavit vacabit corr. σ aquis,
+**28** siqua diu solitis cumba vacavit aquis,
 
-**29** me quoque despera,despero fuerim cum parvus et ante,
+**29** me quoque despera, fuerim cum parvus et ante,
 
 **30** illi, qui fueram, posse redire parem.
 
@@ -6843,11 +6843,11 @@ title: Tristia
 
 **32** et pars antiqui nulla vigoris adest.
 
-**33** siqua siqua Bentley saepe tamen nobis, ut nunc quoque, sumpta tabella est,
+**33** siqua tamen nobis, ut nunc quoque, sumpta tabella est,
 
 **34** inque suos volui cogere verba pedes,
 
-**35** carmina nulla mihi sunt scripta, carmina sunt mihi scripta aut nulla vel carmina scripta mihi sunt nulla aut qualia cernis,
+**35** carmina nulla mihi sunt scripta, aut qualia cernis,
 
 **36** digna sui domini tempore, digna loco.
 
@@ -6889,7 +6889,7 @@ title: Tristia
 
 **55** omnia barbariae loca sunt vocisque ferinae,
 
-**56** omniaque hostilis hostilis Merkel possint vel possunt plena timore soni.
+**56** omniaque hostilis plena timore soni.
 
 **57** ipse mihi videor iam dedidicisse Latine:
 
@@ -6925,19 +6925,19 @@ title: Tristia
 
 **5** perque dies multos lateris cruciatibus uror;
 
-**6** sic me non modico sed quod non modico (in inmodico) corr. Ellis. frigore laesit hiems,
+**6** sic me non modico frigore laesit hiems,
 
 **7** si tamen ipse vales, aliqua nos parte valemus:
 
 **8** quippe mea est umeris fulta ruina tuis.
 
-**9** Quid, qui mihi cum dederis ingentia pignora, cumque
+**9** Quid, mihi cum dederis ingentia pignora, cumque
 
 **10** per numeros omnes hoc tueare caput,
 
 **11** quod tua me raro solatur epistula, peccas,
 
-**12** remque piam praestas, sed si: sed σ mihi verba negas?
+**12** remque piam praestas, sed mihi verba negas?
 
 **13** hoc, precor, emenda! quod si correxeris unum,
 
@@ -6969,7 +6969,7 @@ title: Tristia
 
 **27** utque solebamus consumere longa loquendo
 
-**28** tempora, sermoni sermone deficiente die,
+**28** tempora, sermoni deficiente die,
 
 **29** sic ferat ac referat tacitas nunc littera voces,
 
@@ -7009,7 +7009,7 @@ title: Tristia
 
 **14** quo dare nil potui munere maius, habes.
 
-**15** adde quod, ut et: ut Heinsius rerum sola es tutela mearum,
+**15** adde quod, ut rerum sola es tutela mearum,
 
 **16** ad te non parvi venit honoris onus,
 
@@ -7023,9 +7023,9 @@ title: Tristia
 
 **21** nam tua, dum stetimus, turpi sine crimine mansit,
 
-**22** et tantum tanta probitas inreprehensa fuit.
+**22** et tantum probitas inreprehensa fuit.
 
-**23** area de par (vel per) eadem: area de Withof nostra nunc est tibi facta ruina
+**23** area de nostra nunc est tibi facta ruina
 
 **24** conspicuum virtus hic tua ponat opus.
 
@@ -7041,7 +7041,7 @@ title: Tristia
 
 **30** quae maneat stabili, eum fugit illa, pede.
 
-**31** siqua tamen pretium sibi virtus merces: virtus Ehwald ipsa petitum,
+**31** siqua tamen pretium sibi virtus ipsa petitum,
 
 **32** inque parum laetis ardua rebus adest,
 

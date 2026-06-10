@@ -17,21 +17,21 @@ title: |-
 
 postulas, ut ex Hebdomadibus nostris eius quaestionis obscuritatem quae continet modum quo substantiae in eo quod sint bonae sint, cum non sint substantialia bona, digeram et paulo euidentius monstrem; idque eo dicis esse faciendum, quod non sit omnibus notum iter huiusmodi scriptionum. Tuus uero testis ipse sum quam haec uiuaciter fueris ante complexus. Hebdomadas uero ego mihi ipse commentor potiusque ad memoriam meam speculata conseruo quam cuiquam participo quorum lasciuia ac petulantia nihil a ioco risuque patitur esse seiunctum. 1 Prohinc tu ne sis obscuritatibus breuitatis aduersus, quae cum sint arcani fida custodia tum id habent commodi, quod cum his solis qui digni sunt conloquuntur. Vt igitur in mathematica fieri solet ceterisque etiam disciplinis, praeposui terminos regulasque quibus cuncta quae sequuntur efficiam.
 
-I. Communis animi conceptio est enuntiatio quam quisque probat auditam. Harum duplex modus est. Nam una ita communis est, ut omnium sit hominum, ueluti si hanc proponas: Si duobus aequalibus aequalia auferas, quae relinquantur aequalia esse, nullus id intellegens neget. Alia uero est doctorum tantum, quae tamen ex talibus communis animi conceptionibus uenit, ut est: Quae incorporalia sunt, in loco non esse, et cetera; quae non uulgus sed docti comprobant.
+**I** Communis animi conceptio est enuntiatio quam quisque probat auditam. Harum duplex modus est. Nam una ita communis est, ut omnium sit hominum, ueluti si hanc proponas: Si duobus aequalibus aequalia auferas, quae relinquantur aequalia esse, nullus id intellegens neget. Alia uero est doctorum tantum, quae tamen ex talibus communis animi conceptionibus uenit, ut est: Quae incorporalia sunt, in loco non esse, et cetera; quae non uulgus sed docti comprobant.
 
-II. Diuersum est esse et id quod est; ipsum enim esse nondum est, at uero quod est accepta essendi forma est atque consistit.
+**II** Diuersum est esse et id quod est; ipsum enim esse nondum est, at uero quod est accepta essendi forma est atque consistit.
 
-III. Quod est participare aliquo potest, sed ipsum esse nullo modo aliquo participat. Fit enim participatio cum aliquid iam est; est autem aliquid, cum esse susceperit.
+**III** Quod est participare aliquo potest, sed ipsum esse nullo modo aliquo participat. Fit enim participatio cum aliquid iam est; est autem aliquid, cum esse susceperit.
 
-IV. Id quod est habere aliquid praeterquam quod ipsum est potest; ipsum uero esse nihil aliud praeter se habet admixtum.
+**IV** Id quod est habere aliquid praeterquam quod ipsum est potest; ipsum uero esse nihil aliud praeter se habet admixtum.
 
-V. Diuersum est tantum esse aliquid et esse aliquid in eo quod est; illic enim accidens hic substantia significatum
+**V** Diuersum est tantum esse aliquid et esse aliquid in eo quod est; illic enim accidens hic substantia significatum
 
-VI. Omne quod est 1 participate eo quod est esse ut sit; alio uero participat ut aliquid sit. Ac per hoc id quod est participat eo quod est esse ut sit; est uero ut participet alio quolibet. VII. Omne simplex esse suum et id quod est unum habet.
+**VI** Omne quod est 1 participate eo quod est esse ut sit; alio uero participat ut aliquid sit. Ac per hoc id quod est participat eo quod est esse ut sit; est uero ut participet alio quolibet. VII. Omne simplex esse suum et id quod est unum habet.
 
 VIII, Omni composito aliud est esse, aliud ipsum est.
 
-IX. Omnis diuersitas discors, similitudo uero appetenda est; et quod appetit aliud, tale ipsum esse naturaliter ostenditur quale est illud hoc ipsum quod appetit.
+**IX** Omnis diuersitas discors, similitudo uero appetenda est; et quod appetit aliud, tale ipsum esse naturaliter ostenditur quale est illud hoc ipsum quod appetit.
 
 Sufficiunt igitur quae praemisimus; a prudente uero rationis interprete suis unumquodque aptabitur argumentis.
 

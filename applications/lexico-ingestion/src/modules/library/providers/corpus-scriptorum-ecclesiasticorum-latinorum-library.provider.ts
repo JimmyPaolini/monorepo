@@ -9,6 +9,7 @@ import YAML from "yaml";
 import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
+import { formatLineNumber, hasValidTextContent } from "../library.command";
 
 /**
  * Provider for ingesting CSEL (Corpus Scriptorum Ecclesiasticorum Latinorum) texts.
@@ -26,35 +27,33 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     author?: string;
     text?: string;
   }): Promise<Author[]> {
-    const host =
-      "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/";
-    this.logger.log(`Scraping library from ${host}`);
+    this.logger.log(`🗂️ Ingesting CSEL from local data`);
 
-    const treeUrl =
-      "https://api.github.com/repos/OpenGreekAndLatin/csel-dev/git/trees/master?recursive=1";
-    this.logger.log(`Fetching CSEL tree from ${treeUrl}`);
-    const treeRes = await fetch(treeUrl);
+    const sourceDataDir = path.resolve(
+      "data",
+      "corpus-scriptorum-ecclesiasticorum-latinorum-source",
+    );
 
-    if (!treeRes.ok) {
-      this.logger.error(`Failed to fetch CSEL tree: ${treeRes.statusText}`);
+    const xmlPaths: string[] = [];
+    try {
+      const allFiles = await fs.readdir(sourceDataDir, {
+        recursive: true,
+        withFileTypes: true,
+      });
+      const filtered = allFiles
+        .filter((f) => f.isFile() && f.name.endsWith(".xml"))
+        .map((f) => path.join(f.parentPath, f.name));
+      xmlPaths.push(...filtered);
+    } catch (error) {
+      this.logger.error(
+        `❌ Could not read source directory: ${String(error)}. Did you run the corpus-scriptorum-ecclesiasticorum-latinorum command first?`,
+      );
       return [];
     }
 
-    const treeData = (await treeRes.json()) as {
-      tree: { path: string; type: string }[];
-    };
-
-    const xmlPaths = treeData.tree
-      .filter(
-        (node) =>
-          node.type === "blob" &&
-          node.path.startsWith("data/") &&
-          node.path.endsWith(".xml") &&
-          !node.path.endsWith("__cts__.xml"),
-      )
-      .map((node) => node.path);
-
-    this.logger.log(`Found ${xmlPaths.length} Latin XML files in CSEL repo`);
+    this.logger.log(
+      `🗂️ Found ${xmlPaths.length} Latin XML files in local CSEL cache`,
+    );
 
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
@@ -65,17 +64,11 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
       const xmlPath = xmlPaths[i];
       if (!xmlPath) continue;
 
-      this.logger.log(`Fetching (${i + 1}/${xmlPaths.length}): ${xmlPath}`);
+      const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
+      this.logger.log(`📜 Processing ${xmlPath}${progressString}`);
 
       try {
-        const fileUrl = host + xmlPath;
-        const res = await fetch(fileUrl);
-        if (!res.ok) {
-          this.logger.warn(`Failed to fetch ${fileUrl}: ${res.statusText}`);
-          continue;
-        }
-
-        const xmlContent = await res.text();
+        const xmlContent = await fs.readFile(xmlPath, "utf8");
         const $ = cheerio.load(xmlContent, { xml: true });
 
         const rawAuthor =
@@ -84,7 +77,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
           $("titleStmt title").first().text().trim() || "Unknown Title";
 
         if (!rawAuthor || !rawTitle) {
-          this.logger.warn(`Missing metadata in ${xmlPath}`);
+          this.logger.warn(`⚠️ Missing metadata in ${xmlPath}`);
           continue;
         }
 
@@ -111,18 +104,20 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
         const textSlug = `${authorSlug}/${titleSlug}`;
         if (options?.text && textSlug !== options.text) continue;
 
+        const relativeSourcePath = path.relative(sourceDataDir, xmlPath);
+
         let author = authorsMap.get(authorSlug);
         if (!author) {
           author = new Author();
           author.name = rawAuthor;
-          author.metadata = { sourceUrl: xmlPath };
+          author.metadata = { sourceUrl: relativeSourcePath };
           author.slug = authorSlug;
           author.texts = [];
           authorsMap.set(authorSlug, author);
         }
 
         const textEntity = new Text();
-        textEntity.metadata = { ...metadata, sourceUrl: xmlPath };
+        textEntity.metadata = { ...metadata, sourceUrl: relativeSourcePath };
         textEntity.title = rawTitle;
         textEntity.slug = titleSlug;
         textEntity.type = "text";
@@ -133,7 +128,10 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
           title: rawTitle,
           type: "text",
         };
-        const textMetadata = { ...metadata, source_url: fileUrl };
+        const textMetadata = {
+          ...metadata,
+          source_url: `https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/${relativeSourcePath}`,
+        };
         if (Object.keys(textMetadata).length > 0) {
           frontmatterObj["text_metadata"] = textMetadata;
         }
@@ -164,8 +162,14 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
               text = `**${nAttr}** ${text}`;
             }
 
+            text = formatLineNumber(text);
             paragraphs.push(text);
           });
+
+        if (!hasValidTextContent(paragraphs)) {
+          this.logger.warn(`⚠️ Skipping empty or invalid text: ${textSlug}`);
+          continue;
+        }
 
         markdown += `${paragraphs.join("\n\n")}\n`;
 
@@ -179,7 +183,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
         await new Promise((resolve) => setTimeout(resolve, 100));
       } catch (error) {
-        this.logger.warn(`Error processing ${xmlPath}: ${error}`);
+        this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);
       }
     }
 

@@ -53,8 +53,6 @@ title: Carmina
 
 **10** et tristis animi levare curas!
 
-**10a** Lines 10a ff are represented as poem 2a in some editions.
-
 **11** Tam gratum est mihi quam ferunt puellae
 
 **12** pernici aureolum fuisse malum,
@@ -1541,7 +1539,7 @@ title: Carmina
 
 **12** lumina nocte.
 
-**13** otium, Catulle, tibi molestum est:Lines 13-16 are labeled as poem 51a or 51b in some editions. Merrill does not make that distinction.
+**13** otium, Catulle, tibi molestum est:
 
 **14** otio exsultas nimiumque gestis.
 
@@ -1569,8 +1567,6 @@ title: Carmina
 
 **1** Othonis caput oppido est pusillum,
 
-**1a** Lacunam proposuit Merrill; MSS have 50.16-17
-
 **2** et eri rustica semilauta crura,
 
 **3** subtile et leve peditum Libonis,
@@ -1579,7 +1575,7 @@ title: Carmina
 
 **5** tibi et Fuficio, seni recocto
 
-**6** irascere iterum meis iambisLines 6-7 (with or without a gap preceding) are labeled as 54a or 54b in some editions.
+**6** irascere iterum meis iambis
 
 **7** immerentibus, unice imperator.
 
@@ -1609,7 +1605,7 @@ title: Carmina
 
 **13** sed te iam ferre Herculi labos est:
 
-**23** Non custos si fingar ille Cretum,Lines 23-32 are labeled as 58b in the print edition but are presented as part of poem 55 here.
+**23** Non custos si fingar ille Cretum,
 
 **24** non si Pegaseo ferar volatu,
 
@@ -4101,7 +4097,7 @@ title: Carmina
 
 **5** eripuisti, eheu nostrae crudele venenum
 
-**6** vitae, eheu nostrae pestis amicitiae.Lines 7 ff are presented as part of poem 77 in the print edition. They are appended to poem 78 here.
+**6** vitae, eheu nostrae pestis amicitiae.
 
 **1** Gallus habet fratres, quorum est lepidissima coniunx
 
@@ -4114,8 +4110,6 @@ title: Carmina
 **5** Gallus homo est stultus nec se videt esse maritum,
 
 **6** qui patruus patrui monstret adulterium.
-
-**7a** Lines 7a ff are presented as part of poem 78b in the print edition. They are appended to poem 78 here.
 
 **7** Sed nunc id doleo quod purae pura puellae
 

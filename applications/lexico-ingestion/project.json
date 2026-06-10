@@ -28,6 +28,14 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
+    "corpus-scriptorum-ecclesiasticorum-latinorum": {
+      "description": "Download CSEL XML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts corpus-scriptorum-ecclesiasticorum-latinorum",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "dependency-cruiser": {},
     "dictionary": {
       "description": "Ingest dictionary entries into the database",
@@ -37,9 +45,25 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
+    "epigraphik-datenbank-clauss-slaby": {
+      "description": "Download Epigraphik-Datenbank Clauss-Slaby raw JSON chunks",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts epigraphik-datenbank-clauss-slaby",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "eslint": {},
     "format": {},
     "knip": {},
+    "latin-library": {
+      "description": "Download The Latin Library HTML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts latin-library",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "library": {
       "command": "node --import @swc-node/register/esm-register src/main.ts library",
       "options": {
@@ -64,6 +88,14 @@
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
+    "perseus": {
+      "description": "Download Perseus XML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts perseus",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "prettier": {},
     "repl": {
       "description": "Start the LexicoIngestion application in REPL mode",

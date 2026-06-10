@@ -19,9 +19,9 @@ title: Ex Ponto
 
 **3** si vacat, hospitio peregrinos. Brute, libellos
 
-**4** excipe, dumque aliquo, quolibet abde loco. loco modo
+**4** excipe, dumque aliquo, quolibet abde loco.
 
-**5** publica non audent intra inter monimenta venire,
+**5** publica non audent intra monimenta venire,
 
 **6** ne suus hoc illis clauserit auctor iter.
 
@@ -37,7 +37,7 @@ title: Ex Ponto
 
 **12** qua steterant Artes, pars vacat illa tibi.
 
-**13** Quid qui veniant, novitate roges fortasse sub ipsa.
+**13** Quid veniant, novitate roges fortasse sub ipsa.
 
 **14** accipe, quodcumque est, dummodo non sit amor.
 
@@ -59,7 +59,7 @@ title: Ex Ponto
 
 **23** quod metuas non est. Antoni scripta leguntur,
 
-**24** doctus et in promptu scrinia scrinia carmina Brutus habet.
+**24** doctus et in promptu scrinia Brutus habet.
 
 **25** nec me nominibus furiosus confero tantis:
 
@@ -111,9 +111,9 @@ title: Ex Ponto
 
 **49** nec quia vel merui vel sensi principis iram,
 
-**50** a nobis ipsum ipsum illum nolle putate coli.
+**50** a nobis ipsum nolle putate coli.
 
-**51** vidi ego linigerae lanigerae numen violasse fatentem
+**51** vidi ego linigerae numen violasse fatentem
 
 **52** Isidis Isiacos ante sedere focos,
 
@@ -143,7 +143,7 @@ title: Ex Ponto
 
 **65** mors faciet certe, ne sim, cum venerit, exul:
 
-**66** ut nec vel ne: ut C2 Owen non peccarim mors quoque non faciet,
+**66** ut non peccarim mors quoque non faciet,
 
 **67** non igitur mirum, si mens mea tabida facta
 
@@ -165,7 +165,7 @@ title: Ex Ponto
 
 **76** quique dolet, citius quam dolor ipse, cadet.
 
-**77** hoc mihi si superi, quorum sumus omnia, credent,credant
+**77** hoc mihi si superi, quorum sumus omnia, credent,
 
 **78** forsitan exigua dignus habebor ope,
 
@@ -189,9 +189,7 @@ title: Ex Ponto
 
 **8** durus et aversa cetera mente legas.
 
-**9** videris. viderit corr. Heinsius audebo audebo haec siquis tibi me scripsisse fateri
-
-**10** om. AC: spuria habent cett.
+**9** videris. audebo tibi me scripsisse fateri
 
 **11** qui, cum me poena dignum graviore fuisse
 
@@ -209,15 +207,15 @@ title: Ex Ponto
 
 **18** more lupi clausas circumeuntis oves:
 
-**19** et at semel intentus nervo levis arcus equino
+**19** et semel intentus nervo levis arcus equino
 
 **20** vincula semper habens inresoluta manet.
 
-**21** tecta rigent fixis veluti velata vallata sagittis,
+**21** tecta rigent fixis veluti velata sagittis,
 
 **22** portaque vix firma summovet arma sera.
 
-**23** adde loci faciem nec fronde nec arbore tecti, laeti
+**23** adde loci faciem nec fronde nec arbore tecti,
 
 **24** et quod iners hiemi continuatur hiems.
 
@@ -281,7 +279,7 @@ title: Ex Ponto
 
 **54** sive pruinosi Noctis aguntur equi,
 
-**55** sic mea perpetuis liquefiunt liquescunt pectora curis,
+**55** sic mea perpetuis liquefiunt pectora curis,
 
 **56** ignibus admotis ut nova cera solet,
 
@@ -351,9 +349,9 @@ title: Ex Ponto
 
 **89** nec me nec quemquam Romanum gaudet ab hoste,
 
-**90** meque minus, vitam cui dabat dedit vel dabit corr. Merkel ipse, capi.
+**90** meque minus, vitam cui dabat ipse, capi.
 
-**91** noluit, ut at poterat, minimo me perdere nutu.
+**91** noluit, ut poterat, minimo me perdere nutu.
 
 **92** nil opus est ullis in mea fata Getis,
 
@@ -369,7 +367,7 @@ title: Ex Ponto
 
 **98** alma nihil maius Caesare terra ferat,
 
-**99** utque fuit diu: fuit Ehwald sub eo, sic sit sub Caesare terra, sit publica sarcina terrae (publice saroterra A)
+**99** utque fuit sub eo, sic sit sub Caesare terra,
 
 **100** perque manus huius tradita gentis eat.
 
@@ -377,7 +375,7 @@ title: Ex Ponto
 
 **102** iudice pro lacrimis ora resolve meis.
 
-**103** non petito petis vel pete corr. Daumius ut bene sit, sed uti male tutius, utque
+**103** non petito ut bene sit, sed uti male tutius, utque
 
 **104** exilium saevo distet ab hoste meum,
 
@@ -421,7 +419,7 @@ title: Ex Ponto
 
 **124** clausit et aeterna civica bella sera,
 
-**125** multa metu poenae, poena et Qui multa metu sed poena vel multa metu cohibet poena qui pauca coercet,
+**125** multa metu poenae, poena qui pauca coercet,
 
 **126** et iacit invita fulmina rara manu.
 
@@ -461,7 +459,7 @@ title: Ex Ponto
 
 **144** proxima pars vitae transilienda meae.
 
-**145** sed de me ut sileam,taceam coniunx mea sarcina vestra est:
+**145** sed de me ut sileam, coniunx mea sarcina vestra est:
 
 **146** non potes hanc salva dissimulare fide,
 
@@ -497,7 +495,7 @@ title: Ex Ponto
 
 **12** ut mea sint dictis pectora sana tuis.
 
-**13** ut multum demas nostrae nostro corpore (pectore) de gurgite curae,
+**13** ut multum demas nostrae de gurgite curae,
 
 **14** non minus exhausto quod superabit erit.
 
@@ -547,7 +545,7 @@ title: Ex Ponto
 
 **37** quid melius Roma? Scythico quid frigore peius?
 
-**38** huc tamen ex illa ista barbarus urbe fugit,
+**38** huc tamen ex illa barbarus urbe fugit,
 
 **39** cum bene sit clausae cavea Pandione natae,
 
@@ -573,7 +571,7 @@ title: Ex Ponto
 
 **50** fert ubi perpetuas obruta terra nives.
 
-**51** non ager hic pomum, non dulces educat uvas, herbas
+**51** non ager hic pomum, non dulces educat uvas,
 
 **52** non salices ripa, robora monte virent.
 
@@ -581,7 +579,7 @@ title: Ex Ponto
 
 **54** ventorum rabie solibus orba tument.
 
-**55** quocumque aspicies,aspicias campi cultore carentes
+**55** quocumque aspicies, campi cultore carentes
 
 **56** vastaque, quae nemo vindicat, arva iacent.
 
@@ -697,7 +695,7 @@ title: Ex Ponto
 
 **18** quae numquam liquidis sicca carebit aquis.
 
-**19** me quoque debilitat series inmensa malorum, laborum
+**19** me quoque debilitat series inmensa malorum,
 
 **20** ante meum tempus cogit et esse senem,
 
@@ -721,7 +719,7 @@ title: Ex Ponto
 
 **30** solis ad occasus utraque terra tremit.
 
-**31** iunctior Haemonia est Ponto, quam Roma, Sinistro,sit histro corr. Burmann
+**31** iunctior Haemonia est Ponto, quam Roma, Sinistro,
 
 **32** et brevius, quam nos, ille peregit iter.
 
@@ -731,7 +729,7 @@ title: Ex Ponto
 
 **35** nos fragili ligno vastum sulcavimus aequor:
 
-**36** quae tulit Aesoniden, densa carina sacra carina (sa carina) vel firma carina fuit.
+**36** quae tulit Aesoniden, densa carina fuit.
 
 **37** nec mihi Tiphys erat rector, nec Agenore natus
 
@@ -751,13 +749,13 @@ title: Ex Ponto
 
 **45** durius est igitur nostrum, fidissima coniunx,
 
-**46** illo, quod subiit Aesone natus, opus. onus
+**46** illo, quod subiit Aesone natus, opus.
 
 **47** te quoque, quam iuvenem discedens urbe reliqui,
 
 **48** credibile est nostris insenuisse malis,
 
-**49** o, ego di faciant talem te cernere possim, possem: possim σ
+**49** o, ego di faciant talem te cernere possim,
 
 **50** caraque mutatis oscula ferre comis,
 
@@ -787,7 +785,7 @@ title: Ex Ponto
 
 **5** cernis ut ignavum corrumpant otia corpus,
 
-**6** ut capiant vitium,capeant vitio ni moveantur, aquae,
+**6** ut capiant vitium, ni moveantur, aquae,
 
 **7** et mihi siquis erat ducendi carminis usus,
 
@@ -819,7 +817,7 @@ title: Ex Ponto
 
 **21** torquet enim fortuna parum, nisi Lixus in Hebrum
 
-**22** confluat, et frondes Alpibus addat Atho athos?
+**22** confluat, et frondes Alpibus addat Atho ?
 
 **23** parcendum est animo miserabile vulnus habenti.
 
@@ -933,7 +931,7 @@ title: Ex Ponto
 
 **78** auctorem certe res iuvat ista nihil,
 
-**79** quid tibi, si calidae, prosit, laudere Syenae, calidae syene etc. corr. Riese
+**79** quid tibi, si calidae, prosit, laudere Syenae,
 
 **80** aut ubi Taprobanen Indica tinguit aqua?
 
@@ -971,9 +969,9 @@ title: Ex Ponto
 
 **11** certe ego cum primum potui sentire quid essem
 
-**12** —nam fuit attoniti attonito corr. Ehwald‘mens mea nulla diu—
+**12** —nam fuit attoniti ‘mens mea nulla diu—
 
-**13** hoc quoque fortunam fortunae σ sensi, quod amicus abesses,
+**13** hoc quoque fortunam sensi, quod amicus abesses,
 
 **14** qui mihi praesidium grande futurus eras.
 
@@ -993,7 +991,7 @@ title: Ex Ponto
 
 **22** scribere; tractari vulnera nostra timent.
 
-**23** qualicumque modo mihi sunt sint corr. Ehwald ea facta, rogare
+**23** qualicumque modo mihi sunt ea facta, rogare
 
 **24** desine: non agites, siqua coire velis.
 
@@ -1071,7 +1069,7 @@ title: Ex Ponto
 
 **7** di procul a cunctis, qui te venerantur amantque
 
-**8** huius notitiam gentis habere abesse velint,
+**8** huius notitiam gentis habere velint,
 
 **9** nos satis est inter glaciem Scythicasque sagittas
 
@@ -1079,7 +1077,7 @@ title: Ex Ponto
 
 **11** nos premat aut bello tellus, aut frigore caelum,
 
-**12** truxque Getes armis, grandine pugnet pulset σ hiems .
+**12** truxque Getes armis, grandine pugnet hiems .
 
 **13** nos habeat regio nec pomo feta nec uvis,
 
@@ -1099,7 +1097,7 @@ title: Ex Ponto
 
 **21** quis se Caesaribus notus non fingit amicum?
 
-**22** da veniam lasso: tu mihi Caesar eras. eris
+**22** da veniam lasso: tu mihi Caesar eras.
 
 **23** nec tamen inrumpo quo non licet ire, satisque est
 
@@ -1157,7 +1155,7 @@ title: Ex Ponto
 
 **50** a Iove percussus non leve vulnus habet?
 
-**51** ipse suas etiam etiam quamvis vires inhiberet Achilles,
+**51** ipse suas etiam vires inhiberet Achilles,
 
 **52** missa gravis ictus Pelias hasta dabat,
 
@@ -1171,7 +1169,7 @@ title: Ex Ponto
 
 **57** nec tamen officium sensit domus altera nostrum
 
-**58** sic: illic hic illic: sic Ehwald; punet. A. L. W. vestro sub Lare semper eram.
+**58** sic: illic vestro sub Lare semper eram.
 
 **59** quaeque tua est pietas, ut te non excolat ipsum,
 
@@ -1187,7 +1185,7 @@ title: Ex Ponto
 
 **65** idque facis, quantumque licet meminisse, solebas
 
-**66** officii causae causa vel causam corr. Purser pluribus esse datis. dari vel dati: datis Owen
+**66** officii causae pluribus esse datis.
 
 **67** quo libet in numero me, Messaline, repone,
 
@@ -1203,7 +1201,7 @@ title: Ex Ponto
 
 **3** neve roga quid agam. si persequar omnia, flebis;
 
-**4** summa satis nostri si sit tibi nota mali.
+**4** summa satis nostri si tibi nota mali.
 
 **5** vivimus assiduis expertes pacis in armis,
 
@@ -1235,7 +1233,7 @@ title: Ex Ponto
 
 **19** nec prius abscessit, merita quam caede nocentum
 
-**20** audaces animos contuderat contuderit BC: corr, Riese populi. Versum om. AB
+**20** audaces animos contuderat populi.
 
 **21** at tibi, rex aevo, detur, fortissime nostro,
 
@@ -1247,9 +1245,9 @@ title: Ex Ponto
 
 **25** sed memor unde abii, queror, o iucunde sodalis,
 
-**26** accedant accedunt nostris saeva quod arma malis,
+**26** accedant nostris saeva quod arma malis,
 
-**27** ut careo vobis. Stygias scythicas detrusus in oras,
+**27** ut careo vobis. Stygias detrusus in oras,
 
 **28** quattuor autumnos Pleias orta facit.
 
@@ -1289,7 +1287,7 @@ title: Ex Ponto
 
 **46** ad sata fontanas, nec pudet, addere aquas:
 
-**47** sunt ubi, ibi si vivunt, nostra quoque consita quaedam,
+**47** sunt ubi, si vivunt, nostra quoque consita quaedam,
 
 **48** sed non et nostra poma legenda manu.
 
@@ -1343,9 +1341,9 @@ title: Ex Ponto
 
 **73** terra velim propior nullique obnoxia bello
 
-**74** detur . erit erat nostris pars bona dempta malis.
+**74** detur . erit nostris pars bona dempta malis.
 
-**1** Quae mihi de rapto tua tua nunc venit epistula Celso,
+**1** Quae mihi de rapto tua venit epistula Celso,
 
 **2** protinus est lacrimis umida facta meis;
 
@@ -1377,7 +1375,7 @@ title: Ex Ponto
 
 **16** Maxime, fortunae nec fuit ipse comes,
 
-**17** illum ego non aliter flentem mea funera vulnera vidi,
+**17** illum ego non aliter flentem mea funera vidi,
 
 **18** ponendus quam si frater in igne foret.
 
@@ -1433,7 +1431,7 @@ title: Ex Ponto
 
 **44** ut tua venturi nomina, Celse, legant.
 
-**45** hoc est, quod possum possim Geticis tibi mittere ab arvis
+**45** hoc est, quod possum Geticis tibi mittere ab arvis
 
 **46** hoc solum est istic quod licet esse meum.
 
@@ -1447,7 +1445,7 @@ title: Ex Ponto
 
 **51** ille tibi exequias et magni funus honoris
 
-**52** fecit et in gelidos versit vertit corr Heinsius amoma sinus,
+**52** fecit et in gelidos versit amoma sinus,
 
 **53** diluit et lacrimis maerens unguenta profusis
 
@@ -1479,7 +1477,7 @@ title: Ex Ponto
 
 **11** nectar et ambrosiam, latices epulasque deorum,
 
-**12** det mihi formosa nava nava grata Iuventa manu,
+**12** det mihi formosa nava Iuventa manu,
 
 **13** non tamen exacuet torpens sapor ille palatum,
 
@@ -1557,7 +1555,7 @@ title: Ex Ponto
 
 **6** vidi, fortunae verba dedique meae.
 
-**7** nolit ut ulla noluit illa mihi contingere gaudia Caesar,
+**7** nolit ut ulla mihi contingere gaudia Caesar,
 
 **8** velle potest cuivis haec tamen una dari.
 
@@ -1609,9 +1607,9 @@ title: Ex Ponto
 
 **32** tura prius sanctis inposuisse focis,
 
-**33** iustitiamque sui caste castae vel castos vel iustos corr. Scaliger placasse parentis,
+**33** iustitiamque sui caste placasse parentis,
 
-**34** illo quae quo corr. Scal. templum pectore semper habet,
+**34** illo quae templum pectore semper habet,
 
 **35** quaque ierit felix adiectum plausibus omen,
 
@@ -1619,23 +1617,23 @@ title: Ex Ponto
 
 **37** protinus argento versos imitantia muros
 
-**38** barbara cum pictis victis oppida lata viris,
+**38** barbara cum pictis oppida lata viris,
 
-**39** fluminaque et montes et in altis proelia proelia Merkel proflua vel pascua silvis,
+**39** fluminaque et montes et in altis proelia silvis,
 
 **40** armaque cum telis in strue mixta sua,
 
-**41** deque tropaeorum, quod sol incendent, incenderet vel incenderat: incendent σ auro
+**41** deque tropaeorum, quod sol incendent, auro
 
 **42** aurea Romani tecta fuisse fori,
 
-**43** totque tulisse duces captivis captivos: captivis σ addita collis
+**43** totque tulisse duces captivis addita collis
 
 **44** vincula, paene hostis quot satis esse fuit.
 
 **45** maxima pars horum vitam veniamque tulerunt,
 
-**46** in quibus et belli summa caputque Bato. Bato fuit vel tenet
+**46** in quibus et belli summa caputque Bato.
 
 **47** cur ego posse negem minui mihi numinis iram,
 
@@ -1643,7 +1641,7 @@ title: Ex Ponto
 
 **49** pertulit hic idem nobis, Germanice, rumor,
 
-**50** oppida sub titulo nominis isse esse tui.
+**50** oppida sub titulo nominis isse tui.
 
 **51** atque ea te contra nec muri mole nec armis
 
@@ -1653,7 +1651,7 @@ title: Ex Ponto
 
 **54** sint modo virtuti tempora longa tuae.
 
-**55** quod precor, eveniet : sunt quiddam quaedam corr. Heinsius oracula vatum:
+**55** quod precor, eveniet : sunt quiddam oracula vatum:
 
 **56** nam deus optanti prospera signa dedit,
 
@@ -1689,7 +1687,7 @@ title: Ex Ponto
 
 **4** quam solitus praesens est tibi ferre. Getis.
 
-**5** ei mihi, si si quid lecto vultus tibi nomine non est
+**5** ei mihi, si lecto vultus tibi nomine non est
 
 **6** qui fuit, et dubitas cetera perlegere!
 
@@ -1743,13 +1741,13 @@ title: Ex Ponto
 
 **31** tuta petant alii: fortuna miserrima tuta est,
 
-**32** nam timor eventus eventu deterioris abest,
+**32** nam timor eventus deterioris abest,
 
 **33** qui rapitur spumante salo, sua brachia tendens
 
-**34** porrigit ad spinas duraque saxa manus, Vv.33-34 sic σ: corrupti in A. cett.
+**34** porrigit ad spinas duraque saxa manus,
 
-**35** accipitremque timens accipitrem metuens pennis trepidantibus ales
+**35** accipitremque timens pennis trepidantibus ales
 
 **36** audet ad humanos fessa venire sinus,
 
@@ -1803,7 +1801,7 @@ title: Ex Ponto
 
 **61** sic igitur, quasi me nullus deceperit error,
 
-**62** verba fac, ut vita, quam dedit ipse, ipse ille fruar;
+**62** verba fac, ut vita, quam dedit ipse, fruar;
 
 **63** cumque serenus erit vultusque remiserit illos,
 
@@ -1817,7 +1815,7 @@ title: Ex Ponto
 
 **68** quas fecit vires. Roma, valere tuas.
 
-**69** incolumis incolumi coniunx sua pulvinaria servat;
+**69** incolumis coniunx sua pulvinaria servat;
 
 **70** promovet Ausonium filius imperium;
 
@@ -1825,7 +1823,7 @@ title: Ex Ponto
 
 **72** nec vigor est Drusi nobilitate minor,
 
-**73** adde nurus nurum neptesque pias natosque nepotum
+**73** adde nurus neptesque pias natosque nepotum
 
 **74** ceteraque Augustae membra valere domus;
 
@@ -1845,7 +1843,7 @@ title: Ex Ponto
 
 **82** digna parente suo nominibusque datis,
 
-**83** fratribus adsimiles, adsimilis quos proxima templa tenentis
+**83** fratribus adsimiles, quos proxima templa tenentis
 
 **84** divus ab excelsa Iulius aede videt.
 
@@ -1857,19 +1855,19 @@ title: Ex Ponto
 
 **88** hac hominum nulli parte secundus erit.
 
-**89** hanc colet ante diem qua, quae quamque vel qua quam (quamquam): qua quae Owen decreta merenti,
+**89** hanc colet ante diem qua, quae decreta merenti,
 
 **90** venit honoratis laurea digna comis.
 
-**91** felices, quibus, o, o hos licuit spectare triumphos
+**91** felices, quibus, o, licuit spectare triumphos
 
 **92** et ducis ore deos aequiperante frui!
 
 **93** at mihi Sauromatae pro Caesaris ore videndi
 
-**94** terraque pacis inops undaque vincta iuncta gelu.
+**94** terraque pacis inops undaque vincta gelu.
 
-**95** si tamen haec audis et vox mea pervenit istuc, illuc, sed cf. istae A
+**95** si tamen haec audis et vox mea pervenit istuc,
 
 **96** sit tua mutando gratia blanda loco.
 
@@ -1899,7 +1897,7 @@ title: Ex Ponto
 
 **109** mite, sed iratum merito mihi, numen adora,
 
-**110** eximat eximar ut Scythici me me om.: add. σ feritate loci.
+**110** eximat ut Scythici me feritate loci.
 
 **111** difficile est, fateor, sed tendit in ardua virtus,
 
@@ -1953,7 +1951,7 @@ title: Ex Ponto
 
 **10** et cum fortuna statque caditque fides.
 
-**11** nec facile invenias invenies multis in milibus unum,
+**11** nec facile invenias multis in milibus unum,
 
 **12** virtutem pretium qui putet esse sui.
 
@@ -1961,7 +1959,7 @@ title: Ex Ponto
 
 **14** non movet, et gratis paenitet esse probum.
 
-**15** nil nil et nisi quod prodest carum est: sed sed si vel et vel en detrahe menti
+**15** nil nisi quod prodest carum est: sed detrahe menti
 
 **16** spem fructus avidae, nemo petendus erit.
 
@@ -1969,7 +1967,7 @@ title: Ex Ponto
 
 **18** utile, sollicitis supputat articulis.
 
-**19** illud amicitiae quondam venerabile numen nomen
+**19** illud amicitiae quondam venerabile numen
 
 **20** prostat et in quaestu pro meretrice sedet,
 
@@ -1997,7 +1995,7 @@ title: Ex Ponto
 
 **32** nec petere exemplum, sed dare dignus eras.
 
-**33** te, nihil exactos ex acto: exactos Ehwald nisi nos nos non vel vos peccasse fatentem,
+**33** te, nihil exactos nisi nos peccasse fatentem,
 
 **34** sponte sua probitas officiumque iuvat.
 
@@ -2005,7 +2003,7 @@ title: Ex Ponto
 
 **36** externis virtus incomitata bonis,
 
-**37** turpe putas abigi,abici quia sit miserandus, amicum,
+**37** turpe putas abigi, quia sit miserandus, amicum,
 
 **38** quodque sit infelix, desinere esse tuum.
 
@@ -2027,9 +2025,9 @@ title: Ex Ponto
 
 **47** tu quoque magnorum laudes admitte virorum,
 
-**48** ut facis,utque facis (et om.) et lapso quam potes affer opem.
+**48** ut facis, et lapso quam potes affer opem.
 
-**49** si bene te novi, si, qui qui, cf. quid A quis: quod σ prius esse solebas,
+**49** si bene te novi, si, qui prius esse solebas,
 
 **50** nunc quoque es, atque animi non cecidere tui,
 
@@ -2079,7 +2077,7 @@ title: Ex Ponto
 
 **73** quod, cum vestra domus teneris mihi semper ab annis
 
-**74** culta sit, esse vetus me tibi cogit nunc tibi cogor onus.
+**74** culta sit, esse vetus me tibi cogit onus.
 
 **75** me tuus ille pater, Latiae facundia linguae,
 
@@ -2099,13 +2097,13 @@ title: Ex Ponto
 
 **83** ultima me tecum vidit maestisque cadentes
 
-**84** excepit lacrimas Aethalis Ilva aeithali silva etc. corr. Rutfgers genis:
+**84** excepit lacrimas Aethalis Ilva genis:
 
 **85** cum tibi quaerenti, num verus nuntius esset,
 
 **86** attulerat culpae quem mala fama meae,
 
-**87** inter confessum dubie dubie medius: om A. dubieque negantem
+**87** inter confessum dubie dubieque negantem
 
 **88** haerebam, pavidas dante timore notas,
 
@@ -2123,7 +2121,7 @@ title: Ex Ponto
 
 **95** pro quibus optandi si nobis copia fiat,
 
-**96** tam bene promerito commoda mille precer. precor corr.Heinsius
+**96** tam bene promerito commoda mille precer.
 
 **97** sed si sola mihi dentur tua vota, precabor
 
@@ -2145,7 +2143,7 @@ title: Ex Ponto
 
 **6** fasque putem iam te non meminisse mei.
 
-**7** ante oculos nostros posita est posita est tua est vel tua stat etc. tua semper imago,
+**7** ante oculos nostros posita est tua semper imago,
 
 **8** et videor vultus mente videre tuos.
 
@@ -2163,7 +2161,7 @@ title: Ex Ponto
 
 **15** quod tu laudaras, populo placuisse putabam.
 
-**16** hoc pretium curae dulce regentis recentis vel monentis erat.
+**16** hoc pretium curae dulce regentis erat.
 
 **17** utque meus lima rasus liber esset amici,
 
@@ -2221,7 +2219,7 @@ title: Ex Ponto
 
 **10** illa tuus iuvit qualiacumque favor;
 
-**11** optastique brevem solvi solvil Postgate salvi vel fieri mihi Caesaris iram,
+**11** optastique brevem solvi mihi Caesaris iram,
 
 **12** quod tamen optari, si sciat, ipse sinat,
 
@@ -2303,7 +2301,7 @@ title: Ex Ponto
 
 **51** dumque silens adstat, status est vultusque diserti,
 
-**52** spemque decens doctae vocis amictus amicus corr. Heinsius habet,
+**52** spemque decens doctae vocis amictus habet,
 
 **53** mox, ubi pulsa mora est atque os caeleste solutum,
 
@@ -2333,7 +2331,7 @@ title: Ex Ponto
 
 **66** artis et ingenuae cultor uterque sumus,
 
-**67** thyrsus abest a te, abest a te Rothmaler sublestate (A) vel ubi est a te vel enim vobis gustata gestata est laurea nobis,
+**67** thyrsus abest a te, gustata est laurea nobis,
 
 **68** sed tamen ambobus debet inesse calor:
 
@@ -2349,7 +2347,7 @@ title: Ex Ponto
 
 **74** comprecor ad vitae tempora summa tuae.
 
-**75** succedatque suis tuis orbis moderator moderatus habenis:
+**75** succedatque suis orbis moderator habenis:
 
 **76** quod mecum populi vota precantur idem.
 
@@ -2363,7 +2361,7 @@ title: Ex Ponto
 
 **5** corripis, ut debes, stulti peccata sodalis,
 
-**6** et mala me meritis ferre minora doces. doles corr. Faber
+**6** et mala me meritis ferre minora doces.
 
 **7** vera facis, sed sera meae convicia culpae:
 
@@ -2373,7 +2371,7 @@ title: Ex Ponto
 
 **10** ut fera vitarem saxa, monendus eram.
 
-**11** nunc mihi naufragio quid prodest discere dicere facto,
+**11** nunc mihi naufragio quid prodest discere facto,
 
 **12** qua mea debuerit currere cumba via?
 
@@ -2397,7 +2395,7 @@ title: Ex Ponto
 
 **22** turpe laborantem deseruisse ratem,
 
-**23** turpe sequi casum et fortunae cedere accedere, at cf. Tib. iv.13.17 amicum,
+**23** turpe sequi casum et fortunae cedere amicum,
 
 **24** et, nisi sit felix, esse negare suum.
 
@@ -2433,9 +2431,9 @@ title: Ex Ponto
 
 **2** a male pacatis, Attice, missa Getis.
 
-**3** proxima subsequitur, quid agas, audire voluntas, voluptas
+**3** proxima subsequitur, quid agas, audire voluntas,
 
-**4** et si, quidquid si quid vel iam si quid vel nunc quicquid agis, sit tibi cura mei.
+**4** et si, quidquid agis, sit tibi cura mei.
 
 **5** nec dubito quin sit, sed me timor ipse malorum
 
@@ -2455,7 +2453,7 @@ title: Ex Ponto
 
 **13** membra reformidant mollem quoque saucia tactum,
 
-**14** vanaque sollicitis incutit inmutat vel incitat vel concitat corr. σ umbra metum.
+**14** vanaque sollicitis incutit umbra metum.
 
 **15** sic ego Fortunae telis confixus iniquis
 
@@ -2475,7 +2473,7 @@ title: Ex Ponto
 
 **23** crede mihi, si sum veri tibi cognitus oris
 
-**24** (nec planis planus nostris casibus esse puter puter Ehwald potes vel potest vel solet),
+**24** (nec planis nostris casibus esse puter ),
 
 **25** Cinyphiae segetis citius numerabis aristas,
 
@@ -2497,7 +2495,7 @@ title: Ex Ponto
 
 **34** Uias est fati longa futura mei.
 
-**35** non igitur vereor verear quo quo qua vel quia vel quod te rear esse verendum,
+**35** non igitur vereor quo te rear esse verendum,
 
 **36** cuius amor nobis pignora mille dedit,
 
@@ -2517,7 +2515,7 @@ title: Ex Ponto
 
 **44** nec magis est curvis Appia trita rotis,
 
-**45** pectora quam mea sunt sene calcata caecata malorum,
+**45** pectora quam mea sunt sene calcata malorum,
 
 **46** et nihil inveni, quod mihi ferret opem.
 
@@ -2525,7 +2523,7 @@ title: Ex Ponto
 
 **48** infelix perii dotibus ipse meis.
 
-**49** vita prior vitio caret et sine labe peracta est est om. A :
+**49** vita prior vitio caret et sine labe peracta est :
 
 **50** auxilii misero nil tulit illa mihi.
 
@@ -2533,11 +2531,11 @@ title: Ex Ponto
 
 **52** omnis pro nobis gratia muta fuit.
 
-**53** adiuvat in duris aliquos aliquo praesentia rebus:
+**53** adiuvat in duris aliquos praesentia rebus:
 
 **54** obruit hoc absens vasta procella caput.
 
-**55** quis quis Heinsius quae vel quem (que) obruent (-et) non horruerit tacitam faciti quoque Caesaris iram?
+**55** quis non horruerit tacitam quoque Caesaris iram?
 
 **56** addita sunt poenis aspera verba meis.
 
@@ -2617,7 +2615,7 @@ title: Ex Ponto
 
 **10** et quasi cum vero numine posse loqui.
 
-**11** quantum ad te, quanta meridi (A) vel quanta (quantum vel quando) a te (ad me) redii, etc. corr. Ehwald redii, nec me tenet ultima tellus,
+**11** quantum ad te, redii, nec me tenet ultima tellus,
 
 **12** utque prius, media sospes in urbe moror.
 
@@ -2645,7 +2643,7 @@ title: Ex Ponto
 
 **24** iustaque vindictae supprime lora tuae.
 
-**25** parce, precor, precor puer saecli decus indelebile admirabile vel o venerabile nostri,
+**25** parce, precor, saecli decus indelebile nostri,
 
 **26** terrarum dominum quem tua cura facit.
 
@@ -2701,11 +2699,11 @@ title: Ex Ponto
 
 **52** praesentis aliquid prosit habere deos.
 
-**53** Caesaris adventu tuta tota; tuto Owen gladiator harena
+**53** Caesaris adventu tuta gladiator harena
 
 **54** exit, et auxilium non leve vultus habet.
 
-**55** nos quoque vestra iuvat iuvet quod, qua licet, ora videmus,
+**55** nos quoque vestra iuvat quod, qua licet, ora videmus,
 
 **56** intrata est superis quod domus una tribus,
 
@@ -2735,7 +2733,7 @@ title: Ex Ponto
 
 **69** vos ego complectar, Geticis si cingar ab armis,
 
-**70** utque meas aquilas, ut mea ut mea tutaque vel vos mea vel signa ego vestra, etc. corr. Korn signa sequar,
+**70** utque meas aquilas, ut mea signa sequar,
 
 **71** aut ego me fallo nimiaque cupidine ludor,
 
@@ -2761,7 +2759,7 @@ title: Ex Ponto
 
 **6** quamque potes, profugo (nam potes) adfer opem.
 
-**7** me fortuna tibi—de qua quod non queror, querar hoc est—
+**7** me fortuna tibi—de qua quod non queror, hoc est—
 
 **8** tradidit, hoc uno non inimica mihi.
 
@@ -2785,15 +2783,15 @@ title: Ex Ponto
 
 **18** a superis ortae nobilitatis opus.
 
-**19** hoc tibi et Eumolpus, generis clarissimus auctor, generis . . auctor opus hoc tibi suadet erato
+**19** hoc tibi et Eumolpus, generis clarissimus auctor,
 
 **20** et prior Eumolpo suadet Erichthonius.
 
-**21** hoc tecum commune deo est, deos (deis vel dei): deo est Riese quod uterque rogati
+**21** hoc tecum commune deo est, quod uterque rogati
 
 **22** supplicibus vestris ferre soletis opem.
 
-**23** numquid namquid erit, quare solito dignemur honore
+**23** numquid erit, quare solito dignemur honore
 
 **24** numina, si demas velle iuvare deos?
 
@@ -2821,7 +2819,7 @@ title: Ex Ponto
 
 **36** efficit, auxiliis quoque favente suis.
 
-**37** tu quoque fac prosis intra profugus intra tua castra iacenti,
+**37** tu quoque fac prosis intra tua castra iacenti,
 
 **38** o Coty, progenies digna parente tuo.
 
@@ -2833,7 +2831,7 @@ title: Ex Ponto
 
 **42** munifici mores improbat Alcinoi?
 
-**43** non tibi Cassandreus pater est gentisve Pheraeae, genitorve (gentisque) caphereus (caphareus)
+**43** non tibi Cassandreus pater est gentisve Pheraeae,
 
 **44** quive repertorem torruit arte sua:
 
@@ -2867,7 +2865,7 @@ title: Ex Ponto
 
 **59** tempora sic data sunt studiis ubi iusta paternis,
 
-**60** atque suis numeris humeris corr. Heinsius forte quievit opus,
+**60** atque suis numeris forte quievit opus,
 
 **61** ne tua marcescant per inertis otia somnos,
 
@@ -2893,13 +2891,13 @@ title: Ex Ponto
 
 **72** est tamen his gravior noxa fatenda mihi.
 
-**73** neve roges, quae sit, stultam conscripsimus quae (quam) scripsimus Artem;
+**73** neve roges, quae sit, stultam conscripsimus Artem;
 
 **74** innocuas nobis haec vetat esse manus.
 
 **75** ecquid praeterea peccarim, quaerere noli,
 
-**76** ut lateat pateat corr. σ sola culpa sub Arte mea.
+**76** ut lateat sola culpa sub Arte mea.
 
 **77** quicquid id est, habuit moderatam vindicis iram,
 
@@ -2927,7 +2925,7 @@ title: Ex Ponto
 
 **9** quam tu vel longi debes convictibus aevi,
 
-**10** vel mea quod coniunx non aliena tibi est, est om
+**10** vel mea quod coniunx non aliena tibi est,
 
 **11** vel studiis, quibus es, quam nos, sapientius usus,
 
@@ -2943,7 +2941,7 @@ title: Ex Ponto
 
 **17** sunt tamen inter se communia sacra poetis,
 
-**18** diversum quamvis quisque sequamur queramur vel sequatur iter :
+**18** diversum quamvis quisque sequamur iter :
 
 **19** quorum te memorem, quamquam procul absumus, esse
 
@@ -2951,13 +2949,13 @@ title: Ex Ponto
 
 **21** te duce magnificas Asiae perspeximus urbes:
 
-**22** Trinacris est oculis te duce visa nota meis.
+**22** Trinacris est oculis te duce visa meis.
 
 **23** vidimus Aetnaea caelum splendescere flamma,
 
 **24** subpositus monti quam vomit ore Gigans,
 
-**25** Hennaeosque lacus et olentis olentia corr. Zinzerling stagna Palici,
+**25** Hennaeosque lacus et olentis stagna Palici,
 
 **26** quaque suis Cyanen miscet Anapus aquis.
 
@@ -2993,7 +2991,7 @@ title: Ex Ponto
 
 **42** quorum non pudeat, posse referre iocos,
 
-**43** haec tibi cum subeant, absim licet, ipsum licet vel hic sim licet omnibus annis
+**43** haec tibi cum subeant, absim licet, omnibus annis
 
 **44** ante tuos oculos, ut modo visus, ero.
 
@@ -3095,9 +3093,9 @@ title: Ex Ponto
 
 **13** nec tibi pampineas autumnus porrigit uvas:
 
-**14** cuncta sed inmodicum tempora frigus habet, habent: habet σ
+**14** cuncta sed inmodicum tempora frigus habet,
 
-**15** tu glacie freta vincta tenes, vides et in aequore piscis
+**15** tu glacie freta vincta tenes, et in aequore piscis
 
 **16** inclusus tecta saepe natavit aqua.
 
@@ -3109,7 +3107,7 @@ title: Ex Ponto
 
 **20** arbor, et in terra est altera forma maris.
 
-**21** non avis obloquitur, silvis nisi siqua remota nisi silvis siqua remotis corr. Ehwald
+**21** non avis obloquitur, silvis nisi siqua remota
 
 **22** aequoreas rauco gutture potat aquas,
 
@@ -3183,11 +3181,11 @@ title: Ex Ponto
 
 **57** nec te nesciri patitur mea pagina, qua non
 
-**58** inferius Coa Bittide bit tibi de etc. corr. Merkel nomen habes,
+**58** inferius Coa Bittide nomen habes,
 
 **59** quicquid ages igitur, scaena spectabere magna,
 
-**60** et pia non paucis parvis testibus uxor eris.
+**60** et pia non paucis testibus uxor eris.
 
 **61** crede mihi, quotiens laudaris carmine nostro,
 
@@ -3245,7 +3243,7 @@ title: Ex Ponto
 
 **88** utque ea non teneas, tuta repulsa tua est.
 
-**89** nec mihi suscense, succense totiens, si carmine nostro,
+**89** nec mihi suscense, totiens, si carmine nostro,
 
 **90** quod facis, ut facias, teque imitere, rogo.
 
@@ -3275,7 +3273,7 @@ title: Ex Ponto
 
 **103** utque meae res sunt, omni, puto, tempore flebis.
 
-**104** has fortuna tibi nostra ministrat ministret opes.
+**104** has fortuna tibi nostra ministrat opes.
 
 **105** si mea mors redimenda tua, quod abominor, esset,
 
@@ -3365,7 +3363,7 @@ title: Ex Ponto
 
 **148** nil nisi sollicitae sint tua verba preces,
 
-**149** tum lacrimis demenda mora est, summissaque terra terrae
+**149** tum lacrimis demenda mora est, summissaque terra
 
 **150** ad non mortalis brachia tende pedes.
 
@@ -3373,7 +3371,7 @@ title: Ex Ponto
 
 **152** hostem Fortunam sit satis esse mihi.
 
-**153** plura quidem subeunt, sed conturbata sunt turbata: conturbata σ timore
+**153** plura quidem subeunt, sed conturbata timore
 
 **154** haec quoque vix poteris voce tremente loqui.
 
@@ -3407,7 +3405,7 @@ title: Ex Ponto
 
 **3** namque meis sospes multum cruciatibus aufers,
 
-**4** atque utque sit in sit in ut sit vel sit ut nobis pars bona salva facis.
+**4** atque sit in nobis pars bona salva facis.
 
 **5** cumque labent aliqui iactataque vela relinquant,
 
@@ -3441,11 +3439,11 @@ title: Ex Ponto
 
 **20** sic appellari non meruere mali.
 
-**21** aut aut ut vel at vel et meus excusat caros ita candor amicos,
+**21** aut meus excusat caros ita candor amicos,
 
 **22** utque habeant de me crimina nulla,
 
-**23** favet, sint hi contenti venia, iactentque sientque vel signentque vel fugiantque corr. Korn licebit
+**23** favet, sint hi contenti venia, iactentque licebit
 
 **24** purgari factum me quoque teste suum.
 
@@ -3487,7 +3485,7 @@ title: Ex Ponto
 
 **43** ‘nos quoque amicitiae nomen, bone, novimus hospes,
 
-**44** quos procul a vobis Pontus et Hister Pontus et Hister barbarus ister, etc. habet.
+**44** quos procul a vobis Pontus et Hister habet.
 
 **45** est locus in Scythia, Tauros dixere priores,
 
@@ -3525,7 +3523,7 @@ title: Ex Ponto
 
 **62** nescioquam dicunt Iphigenian iter.
 
-**63** quam levibus ventis sub nube per aethera aequora vel aera: aethera σ vectam
+**63** quam levibus ventis sub nube per aethera vectam
 
 **64** creditur his Phoebe deposuisse locis.
 
@@ -3539,7 +3537,7 @@ title: Ex Ponto
 
 **69** par fuit his aetas et amor, quorum alter Orestes,
 
-**70** alter erat Pylades alter et est pilades vel et pylades alter :
+**70** alter erat Pylades :
 
 **71** nomina fama tenet, protinus inmitem Triviae ducuntur ad aram,
 
@@ -3575,7 +3573,7 @@ title: Ex Ponto
 
 **87** extitit hoc unum, quo non convenerit illis:
 
-**88** cetera par pars corr. Naugerius concors et sine lite fuit.
+**88** cetera par concors et sine lite fuit.
 
 **89** dum peragunt pulchri iuvenes certamen amoris
 
@@ -3603,7 +3601,7 @@ title: Ex Ponto
 
 **101** quid facere Ausonia geniti debetis in urbe,
 
-**102** cum tangant duros diros talia facta Getas?
+**102** cum tangant duros talia facta Getas?
 
 **103** adde quod est animus semper tibi mitis, et altae
 
@@ -3613,11 +3611,11 @@ title: Ex Ponto
 
 **106** quos Numa maternus non neget esse suos.
 
-**107** adiectique probent genetiva ad nomina agnomina Cottae,
+**107** adiectique probent genetiva ad nomina Cottae,
 
 **108** si tu non esses, interitura domus,
 
-**109** digne vir hac serie, lapso lasso succurrere amico
+**109** digne vir hac serie, lapso succurrere amico
 
 **110** conveniens istis moribus esse puta.
 
@@ -3685,7 +3683,7 @@ title: Ex Ponto
 
 **32** dicere magnorum passus es acta ducum,
 
-**33** forsitan exiguas, aliquas tamen, arcus et ignes ignis
+**33** forsitan exiguas, aliquas tamen, arcus et ignes
 
 **34** ingenii vires comminuere mei.
 
@@ -3693,7 +3691,7 @@ title: Ex Ponto
 
 **36** in nullum mea mens grande vacavit opus,
 
-**37** nec satis hoc fuerat, stulto stultus quoque carmine feci,
+**37** nec satis hoc fuerat, stulto quoque carmine feci,
 
 **38** Artibus ut posses non rudis esse meis.
 
@@ -3743,7 +3741,7 @@ title: Ex Ponto
 
 **61** sic regat imperium terrasque coerceat omnis
 
-**62** Caesar, ab Aenea qui tibi fratre tuus, tuus nepos
+**62** Caesar, ab Aenea qui tibi fratre tuus,
 
 **63** effice, sit nobis non inplacabilis ira,
 
@@ -3761,7 +3759,7 @@ title: Ex Ponto
 
 **70** Artibus et nullum crimen inesse tuis.
 
-**71** utque hoc, sic utinam defendere cetera possem posses!
+**71** utque hoc, sic utinam defendere cetera possem !
 
 **72** scis aliud, quod te laeserit, esse, magis,
 
@@ -3771,7 +3769,7 @@ title: Ex Ponto
 
 **75** tu licet erroris sub imagine crimen obumbres,
 
-**76** non gravior merito iudicis vindicis ira fuit.
+**76** non gravior merito iudicis ira fuit.
 
 **77** ut tamen aspicerem consolarerque iacentem,
 
@@ -3801,7 +3799,7 @@ title: Ex Ponto
 
 **90** omnis odoratis ignibus ara calet,
 
-**91** dum faciles aditus praebet venerabile templum, templum tempus vel numen
+**91** dum faciles aditus praebet venerabile templum,
 
 **92** sperandum est nostras posse valere preces,
 
@@ -3813,7 +3811,7 @@ title: Ex Ponto
 
 **96** Memnonio cycnos esse colore putem,
 
-**97** sed neque mutatur fuscatur nigra pice lacteus humor,
+**97** sed neque mutatur nigra pice lacteus humor,
 
 **98** nec, quod erat candens, fit terebinthus ebur.
 
@@ -3855,7 +3853,7 @@ title: Ex Ponto
 
 **9** non opus est magnis placido lectore poetis:
 
-**10** quamlibet quemlibet corr. σ invitum difficilemque tenent,
+**10** quamlibet invitum difficilemque tenent,
 
 **11** nos, quibus ingenium longi minuere labores,
 
@@ -3863,7 +3861,7 @@ title: Ex Ponto
 
 **13** viribus infirmi, vestro candore valemus:
 
-**14** quem quod mihi si demas, omnia rapta putem.
+**14** quem mihi si demas, omnia rapta putem.
 
 **15** cunctaque cum mea sint propenso nixa favore,
 
@@ -3889,7 +3887,7 @@ title: Ex Ponto
 
 **26** nutrissent carmen proeliaque ipsa meum,
 
-**27** et regum vultus, certissima pignora mentis, mentis gentis
+**27** et regum vultus, certissima pignora mentis,
 
 **28** iuvissent aliqua forsitan illud opus.
 
@@ -3937,7 +3935,7 @@ title: Ex Ponto
 
 **50** sic ad laetitiam mens mea segnis erat.
 
-**51** est quoque cunctarum novitas carissima calidissima rerum,
+**51** est quoque cunctarum novitas carissima rerum,
 
 **52** gratiaque officio, quod mora tardat,
 
@@ -3963,9 +3961,9 @@ title: Ex Ponto
 
 **63** quid mirum, lectis exhausto floribus horto,
 
-**64** si duce non facta est digna corona tuo suo corr. Owen?
+**64** si duce non facta est digna corona tuo ?
 
-**65** deprecor hoc haec vel o: vatum vates contra sua carmina ne quis
+**65** deprecor hoc : vatum contra sua carmina ne quis
 
 **66** dicta putet! pro se Musa locuta mea est.
 
@@ -4003,7 +4001,7 @@ title: Ex Ponto
 
 **83** res quoque tanta fuit, quantae subsistere summo
 
-**84** Aeneadum enidos vel aenidos vel aeneidos corr. Ehwald vati grande fuisset onus.
+**84** Aeneadum vati grande fuisset onus.
 
 **85** ferre etiam molles elegi tam vasta triumphi
 
@@ -4013,7 +4011,7 @@ title: Ex Ponto
 
 **88** alter enim de te, Rhene, triumphus adest,
 
-**89** inrita motorum votorum corr. Heinsius non sunt praesagia vatum .
+**89** inrita motorum non sunt praesagia vatum .
 
 **90** danda Iovi laurus, dum prior illa viret.
 
@@ -4043,7 +4041,7 @@ title: Ex Ponto
 
 **103** scuta sed et galeae gemmis radientur et auro,
 
-**104** stentque super vinctos iunctos vel victos trunca tropaea viros:
+**104** stentque super vinctos trunca tropaea viros:
 
 **105** oppida turritis cingantur eburnea muris,
 
@@ -4089,7 +4087,7 @@ title: Ex Ponto
 
 **12** non mihi, quam primo, grata fuere magis,
 
-**13** cumque nihil nihil sua totiens lecta lecta nihil e dulcedine perdant,
+**13** cumque nihil totiens lecta e dulcedine perdant,
 
 **14** viribus illa suis, non novitate, placent.
 
@@ -4117,11 +4115,11 @@ title: Ex Ponto
 
 **26** cum traherer dictis adnueremque tuis.
 
-**27** quem quoniam fatum patria vobisque nobis patriaque vel patria nobisque relictis
+**27** quem quoniam fatum patria vobisque relictis
 
 **28** inter inhumanos maluit esse Getas,
 
-**29** quod licet, ut videar tecum magis esse, legenda legendo vel loquendo corr. Burmann
+**29** quod licet, ut videar tecum magis esse, legenda
 
 **30** saepe, precor, studii pignora mitte tui,
 
@@ -4145,7 +4143,7 @@ title: Ex Ponto
 
 **40** aut, quod saepe soles, exigis ut recitent,
 
-**41** quaeror, ut utet interdum tua mens, oblita quid absit,
+**41** quaeror, ut interdum tua mens, oblita quid absit,
 
 **42** nescio quid certe sentit abesse sui,
 
@@ -4159,7 +4157,7 @@ title: Ex Ponto
 
 **47** te nisi momentis video paene omnibus absens.
 
-**48** gratia quod quod dis vel sit menti quolibet ire licet.
+**48** gratia quod menti quolibet ire licet.
 
 **49** hac ubi perveni nulli cernendus in urbem,
 
@@ -4181,7 +4179,7 @@ title: Ex Ponto
 
 **58** spem sine profectu. Maxime, tolle mihi.
 
-**1** Naso suo (posuit nomen quam quam cui paene!) sodali
+**1** Naso suo (posuit nomen quam paene!) sodali
 
 **2** mittit ab Euxinis hoc breve carmen aquis,
 
@@ -4243,7 +4241,7 @@ title: Ex Ponto
 
 **31** cum pereant acie fortissima quaeque, vel ipso
 
-**32** iudice delectus dilectus Martis iniquus erit.
+**32** iudice delectus Martis iniquus erit.
 
 **33** at si forte velis in nos inquirere, nemo est
 
@@ -4281,7 +4279,7 @@ title: Ex Ponto
 
 **50** terrebar titulo nominis ipse mei.
 
-**51** hactenus admonitus memori concede poëtae sodali
+**51** hactenus admonitus memori concede poëtae
 
 **52** ponat ut in chartis nemina cara suis.
 
@@ -4311,7 +4309,7 @@ title: Ex Ponto
 
 **5** nostraque quid portet iam nostis epistula, quamvis
 
-**6** cera charta sit a vinclis non labefacta suis. suis meis
+**6** cera sit a vinclis non labefacta suis.
 
 **7** ergo mutetur scripti sententia nostri,
 
@@ -4329,15 +4327,15 @@ title: Ex Ponto
 
 **14** iam tibi sentiri sarcina nulla potest.
 
-**15** ductus ab armento taurus detrectat detrectet aratrum,
+**15** ductus ab armento taurus detrectat aratrum,
 
-**16** subtrahit subtrahat et duro colla novella iugo:
+**16** subtrahit et duro colla novella iugo:
 
 **17** nos, quibus adsuevit fatum crudeliter uti,
 
 **18** ad mala iam pridem non sumus ulla rudes,
 
-**19** venimus in Geticos fines: moriamur moriemur in illis,
+**19** venimus in Geticos fines: moriamur in illis,
 
 **20** Parcaque ad extremum qua mea coepit eat.
 
@@ -4355,7 +4353,7 @@ title: Ex Ponto
 
 **27** mitius ille perit, subita qui mergitur unda,
 
-**28** quam sua qui tumidis brachia lassat iactat vel pulsat aquis,
+**28** quam sua qui tumidis brachia lassat aquis,
 
 **29** cur ego concepi Scythicis me posse carere
 
@@ -4373,11 +4371,11 @@ title: Ex Ponto
 
 **36** quam, quas admorint, non valuisse preces,
 
-**37** magna quidem res est, quam quam sed non audetis, amici:
+**37** magna quidem res est, quam non audetis, amici:
 
 **38** sed si quis peteret, qui dare vellet, erat.
 
-**39** dummodo non nobis vobis hoc Caesaris ira negant,
+**39** dummodo non nobis hoc Caesaris ira negant,
 
 **40** fortiter Euxinis inmoriemur aquis.
 
@@ -4407,7 +4405,7 @@ title: Ex Ponto
 
 **13** non hic pampineis amicitur vitibus ulmus,
 
-**14** nulla premunt ramos pondere poma suo. suos
+**14** nulla premunt ramos pondere poma suo.
 
 **15** tristia deformes pariunt absinthia campi,
 
@@ -4469,17 +4467,17 @@ title: Ex Ponto
 
 **20** corrigere et longi ferre laboris onus.
 
-**21** scribentem iuvat ipse labor favor minuitque laborem,
+**21** scribentem iuvat ipse labor minuitque laborem,
 
 **22** cumque suo crescens pectore fervet opus.
 
-**23** corrigere ut et vel at: ut Burmann res est tanto magis ardua quanto
+**23** corrigere ut res est tanto magis ardua quanto
 
 **24** magnus Aristarcho maior Homerus erat,
 
 **25** sic animum lento curarum frigore laedit
 
-**26** et et ut cupidi cursus frena retentat equi.
+**26** et cupidi cursus frena retentat equi.
 
 **27** atque ita di mites minuant mihi Caesaris iram,
 
@@ -4489,7 +4487,7 @@ title: Ex Ponto
 
 **30** fortunae species obstat acerba meae,
 
-**31** vixque mihi videor, faciam qui qui quod vel cum carmina, sanus,
+**31** vixque mihi videor, faciam qui carmina, sanus,
 
 **32** inque feris curem corrigere illa Getis.
 
@@ -4509,19 +4507,19 @@ title: Ex Ponto
 
 **40** verbaque profectu dissimulata carent.
 
-**41** et tamen haec eadem cum sint, non scripsimus scribimus vel scribitur isdem,
+**41** et tamen haec eadem cum sint, non scripsimus isdem,
 
 **42** unaque per plures vox mea temptat opem.
 
 **43** an, ne bis sensum lector reperiret eundem,
 
-**44** unus amicorum. Brute, rogandus eras erat?
+**44** unus amicorum. Brute, rogandus eras ?
 
 **45** non fuit hoc tanti, confesso ignoscite, docti:
 
 **46** vilior est operis fama salute mea.
 
-**47** denique materiam, quam quam cum Bentley quis sibi fluxerit ipse,
+**47** denique materiam, quam quis sibi fluxerit ipse,
 
 **48** arbitrio variat multa poeta suo.
 
@@ -4557,7 +4555,7 @@ title: Ex Ponto
 
 **8** sit precor officio non gravis ira pio.
 
-**9** o, o di quotiens ego sum libris mihi visus in in ab istis
+**9** o, quotiens ego sum libris mihi visus in istis
 
 **10** impius, in nullo quod legerere loco!
 
@@ -4571,7 +4569,7 @@ title: Ex Ponto
 
 **15** "viderit! ad summam " dixi " licet ipse queratur!
 
-**16** hanc hanc a, i.e. a! pudet offensam non meruisse prius."
+**16** hanc pudet offensam non meruisse prius."
 
 **17** da mihi, siquid ea est, hebetantem pectora Lethen.
 
@@ -4591,7 +4589,7 @@ title: Ex Ponto
 
 **25** nunc quoque nil subitis clementia territa fatis
 
-**26** auxilium vitae fertque feretque vel refertque vel referta feretque meae.
+**26** auxilium vitae fertque feretque meae.
 
 **27** unde rogas forsan fiducia tanta futuri
 
@@ -4601,7 +4599,7 @@ title: Ex Ponto
 
 **30** aequoreo madidas quae premit imbre comas:
 
-**31** arcis ut Actaeae vel eburna vel aerea aenea: aerea σ custos
+**31** arcis ut Actaeae vel eburna vel aerea custos
 
 **32** bellica Phidiaca stat dea facta manu:
 
@@ -4645,7 +4643,7 @@ title: Ex Ponto
 
 **16** sed siccum sterni vomere litus aro.
 
-**17** scilicet ut limus venas excaecat venas excaecat cum venas cecat in undis,
+**17** scilicet ut limus venas excaecat in undis,
 
 **18** laesaque suppresso fonte resistit aqua,
 
@@ -4677,7 +4675,7 @@ title: Ex Ponto
 
 **32** principium nostri res sit ut ista mali:
 
-**33** sive quod in tenebris numerosos ponere gestus,gressus σ
+**33** sive quod in tenebris numerosos ponere gestus,
 
 **34** quodque legas nulli scribere carmen, idem est.
 
@@ -4757,7 +4755,7 @@ title: Ex Ponto
 
 **22** nam nisi iusta tua est, iusta querella mea est.
 
-**23** quod te nunc crimen similem quae te consimilem res nunc (non) vetat esse priori?
+**23** quod te nunc crimen similem vetat esse priori?
 
 **24** an crimen, coepi quod miser esse, vocas?
 
@@ -4765,11 +4763,11 @@ title: Ex Ponto
 
 **26** venisset verbis charta notata tribus.
 
-**27** vix equidem credo, sed et sed et subito insultare iacenti
+**27** vix equidem credo, sed et insultare iacenti
 
 **28** te mihi nec verbis parcere fama refert.
 
-**29** quid facis, a! demens? cur, si Fortuna recedat, recedit: recedat σ
+**29** quid facis, a! demens? cur, si Fortuna recedat,
 
 **30** naufragio lacrimas eripis ipse tuo?
 
@@ -4799,8 +4797,6 @@ title: Ex Ponto
 
 **43** cuique viro totus terrarum paruit orbis,
 
-**44** om. optimi codd.
-
 **45** ille Iugurthino clarus Cimbroque triumpho,
 
 **46** quo victrix totiens consule Roma fuit,
@@ -4811,7 +4807,7 @@ title: Ex Ponto
 
 **49** ludit in humanis divina potentia rebus,
 
-**50** et certam praesens vix habet habet feret hora fidem.
+**50** et certam praesens vix habet hora fidem.
 
 **51** litus ad Euxinum si quis mihi diceret ‘ibis,
 
@@ -4847,9 +4843,9 @@ title: Ex Ponto
 
 **9** qua tamen inveni vultum diffundere causa
 
-**10** possim, possem fortunae nec meminisse meae.
+**10** possim, fortunae nec meminisse meae.
 
-**11** nam mihi, cum fulva solus solus tristis spatiarer harena,
+**11** nam mihi, cum fulva solus spatiarer harena,
 
 **12** visa est a tergo pinna dedisse sonum.
 
@@ -4893,7 +4889,7 @@ title: Ex Ponto
 
 **32** quos aluit campis herba Falisca suis:
 
-**33** cumque deos omnes, tunc hos quos: hos σ inpensius, aequos
+**33** cumque deos omnes, tunc hos inpensius, aequos
 
 **34** esse tibi cupias, cum Iove Caesar erunt.
 
@@ -4917,7 +4913,7 @@ title: Ex Ponto
 
 **44** nec poterunt istis lumina nostra frui!
 
-**45** quod licet, qualibet unde quamlibet Heinsius absentem qua possum mente videbo:
+**45** quod licet, absentem qua possum mente videbo:
 
 **46** aspiciet vultus consulis illa sui,
 
@@ -5007,7 +5003,7 @@ title: Ex Ponto
 
 **39** pro quibus ut meritis referatur gratia, iurat
 
-**40** se fore mancipii mancipium tuum tempus in omne tui.
+**40** se fore mancipii tempus in omne tui.
 
 **41** nam prius umbrosa carituros arbore montes,
 
@@ -5035,7 +5031,7 @@ title: Ex Ponto
 
 **7** perstat enim fortuna tenax, votisque malignum
 
-**8** opponit nostris insidiosa invidiosa pedem.
+**8** opponit nostris insidiosa pedem.
 
 **9** certus eras pro me. Fabiae laus. Maxime, gentis,
 
@@ -5087,7 +5083,7 @@ title: Ex Ponto
 
 **33** cum tibi suscepta est legis vindicta severae,
 
-**34** verba velut tinctu tinctum corr. Ehwald singula virus habent.
+**34** verba velut tinctu singula virus habent.
 
 **35** hostibus eveniat quam sis violentus in armis
 
@@ -5149,11 +5145,11 @@ title: Ex Ponto
 
 **14** non etiam proprio cognita Marte tibi!
 
-**15** tenditur tenditis corr. Owen ad primum per densa pericula pilum,
+**15** tenditur ad primum per densa pericula pilum,
 
 **16** contigit ex merito qui tibi nuper honor,
 
-**17** sit licet hic titulus plenus plenis tibi fructibus, ingens
+**17** sit licet hic titulus plenus tibi fructibus, ingens
 
 **18** ipsa tamen virtus ordine maior erit.
 
@@ -5223,7 +5219,7 @@ title: Ex Ponto
 
 **51** sed tantum virtus alios tua praeterit omnes,
 
-**52** ante citos quantum Pegasus ibit ibat equos,
+**52** ante citos quantum Pegasus ibit equos,
 
 **53** vincitur Aegisos, testataque tempus in omne
 
@@ -5273,7 +5269,7 @@ title: Ex Ponto
 
 **22** quos colis, exora supplice voce deos.
 
-**23** di tibi sunt sint Caesar iuvenis, tua numina placa,
+**23** di tibi sunt Caesar iuvenis, tua numina placa,
 
 **24** hac certe nulla est notior ara tibi.
 
@@ -5397,9 +5393,9 @@ title: Ex Ponto
 
 **84** ut tandem saevos effugiamque Getas:
 
-**85** clausaque si misero patria est, ut ponar in ullo, illo: ullo σ
+**85** clausaque si misero patria est, ut ponar in ullo,
 
-**86** qui minus Ausonia distet distat: distet σ ab urbe, loco,
+**86** qui minus Ausonia distet ab urbe, loco,
 
 **87** unde tuas possim laudes celebrare recentes
 
@@ -5479,7 +5475,7 @@ title: Ex Ponto
 
 **35** hic ego praesentes inter numerarer amicos,
 
-**36** mitia ius urbis verbis vel si nobis ius corr. Itali si modo fata darent,
+**36** mitia ius urbis si modo fata darent,
 
 **37** quaeque mihi sola capitur nunc mente voluptas,
 
@@ -5495,7 +5491,7 @@ title: Ex Ponto
 
 **43** haec modo te populo reddentem iura videbit,
 
-**44** et se secreto secretis correxi, cf. v.31 finget adesse tuis .
+**44** et se secreto finget adesse tuis .
 
 **45** nunc longi reditus hastae supponere lustri
 
@@ -5549,7 +5545,7 @@ title: Ex Ponto
 
 **70** talibus Augusti tempus in omne frui.
 
-**71** quod quod cum vel ut tamen ab rerum cura propiore vacabit,
+**71** quod tamen ab rerum cura propiore vacabit,
 
 **72** vota precor votis addite vestra meis.
 
@@ -5565,7 +5561,7 @@ title: Ex Ponto
 
 **78** hic arcu fisos terruit ense Getas,
 
-**79** hic raptam Troesmin troesenen etc corr Korn celeri virtute recepit,
+**79** hic raptam Troesmin celeri virtute recepit,
 
 **80** infecitque fero sanguine Danuvium.
 
@@ -5613,7 +5609,7 @@ title: Ex Ponto
 
 **102** laudat et inmunes publica cera facit,
 
-**103** conveniens miseris et quamquam gloria non est,sit
+**103** conveniens miseris et quamquam gloria non est,
 
 **104** proxima dant nobis oppida munus idem.
 
@@ -5637,7 +5633,7 @@ title: Ex Ponto
 
 **114** officii testis Pontica terra mei.
 
-**115** Pontica me tellus, quantis hae possumus ara,ora
+**115** Pontica me tellus, quantis hae possumus ara,
 
 **116** natalem ludis scit celebrare dei.
 
@@ -5645,7 +5641,7 @@ title: Ex Ponto
 
 **118** misit in has siquos longa Propontis aquas,
 
-**119** is quoque, quo laevus laetus fuerat sub praeside Pontus,
+**119** is quoque, quo laevus fuerat sub praeside Pontus,
 
 **120** audierit frater forsitan ista tuus.
 
@@ -5661,7 +5657,7 @@ title: Ex Ponto
 
 **126** nil illi, toto quod fit in orbe, latet.
 
-**127** tu certe scis haec,hoc superis ascite, videsque,
+**127** tu certe scis haec, superis ascite, videsque,
 
 **128** Caesar, ut est oculis subdita terra tuis.
 
@@ -5687,7 +5683,7 @@ title: Ex Ponto
 
 **5** gutta cavat lapidem, consumitur anulus usu,
 
-**6** atteritur et teritur corr. Heinsius pressa vomer aduncus humo.
+**6** atteritur pressa vomer aduncus humo.
 
 **7** tempus edax igitur praeter nos omnia perdit:
 
@@ -5841,7 +5837,7 @@ title: Ex Ponto
 
 **82** quis labor est puram non temerasse fidem?
 
-**83** haec tibi, qui perstas praestas indeclinatus amico,
+**83** haec tibi, qui perstas indeclinatus amico,
 
 **84** non est quod lingua dicta querente putes.
 
@@ -5883,7 +5879,7 @@ title: Ex Ponto
 
 **19** at cum longa dies sedavit vulnera mentis,
 
-**20** intempestive qui movet monet illa, novat.
+**20** intempestive qui movet illa, novat.
 
 **21** adde quod (atque utinam verum tibi venerit omen .)
 
@@ -5909,11 +5905,11 @@ title: Ex Ponto
 
 **10** artius adpellem Tuticanumque vocem.
 
-**11** nec nec et vel non corr. σ potes in versum Tuticani more venire,
+**11** nec potes in versum Tuticani more venire,
 
 **12** fiat ut e longa syllaba prima brevis,
 
-**13** aut producatur,ut ducatur quae nunc correptius exit,
+**13** aut producatur, quae nunc correptius exit,
 
 **14** et sit porrecta longa secunda mora.
 
@@ -5923,7 +5919,7 @@ title: Ex Ponto
 
 **17** haec mihi causa fuit dilati muneris huius,
 
-**18** quod meus adiecto faenore reddet reddit amor,
+**18** quod meus adiecto faenore reddet amor,
 
 **19** teque canam quacumque nota, tibi carmina mittam,
 
@@ -5961,7 +5957,7 @@ title: Ex Ponto
 
 **36** et possit fatum mollius esse meum,
 
-**37** quam tua sint lasso lapso praecordia dura sodali.
+**37** quam tua sint lasso praecordia dura sodali.
 
 **38** hic cumulus nostris absit abestque malis.
 
@@ -6011,7 +6007,7 @@ title: Ex Ponto
 
 **11** proderit auctorem vires, quas Hercule dignas
 
-**12** novimus atque illi, quem canis ipse, ipse esse pares.
+**12** novimus atque illi, quem canis ipse, pares.
 
 **13** et mea Musa potest, proprio deprensa colore,
 
@@ -6085,7 +6081,7 @@ title: Ex Ponto
 
 **48** quos laus formandos est tibi magna datos),
 
-**49** quanta potes, praebe nostrae momenta monimenta corr. σ saluti
+**49** quanta potes, praebe nostrae momenta saluti
 
 **50** quae nisi mutato nulla futura loco est.
 
@@ -6101,7 +6097,7 @@ title: Ex Ponto
 
 **6** quolibet ex istis scilicet ire locis.
 
-**7** nulla mihi cura est, terra quo mittar muter ab ista,
+**7** nulla mihi cura est, terra quo mittar ab ista,
 
 **8** hac quia, quam video, gratior omnis erit.
 
@@ -6117,7 +6113,7 @@ title: Ex Ponto
 
 **14** proxima Marticolis quam loca Naso Getis.
 
-**15** talia suscensent succensent propter mihi verba Tomitae,
+**15** talia suscensent propter mihi verba Tomitae,
 
 **16** iraque carminibus publica mota meis.
 
@@ -6129,7 +6125,7 @@ title: Ex Ponto
 
 **20** telaque adhuc demens, quae nocuere, sequor?
 
-**21** ad veteres scopulos iterum devertor devertar et illas,
+**21** ad veteres scopulos iterum devertor et illas,
 
 **22** in quibus offendit naufraga puppis, aquas?
 
@@ -6159,7 +6155,7 @@ title: Ex Ponto
 
 **35** quis patriam sollerte magis dilexit Ulixe?
 
-**36** hoc tamen asperitas indice docta dicta nota σ loci est.
+**36** hoc tamen asperitas indice docta loci est.
 
 **37** non loca, sed mores scriptis vexavit amaris
 
@@ -6325,7 +6321,7 @@ title: Ex Ponto
 
 **14** errantem saevo per duo lustra mari,
 
-**15** quique suam Troesmin trisonem vel troadem vel troezen etc corr. Ehwald imperfectumque dierum
+**15** quique suam Troesmin imperfectumque dierum
 
 **16** deseruit celeri morte Sabinus opus,
 
@@ -6349,19 +6345,19 @@ title: Ex Ponto
 
 **26** Tantalidae reducis Tyndaridosque Lupus;
 
-**27** et qui Maeoniam Phaeacida ecateida vel aeacida vertit, et une uni vel una
+**27** et qui Maeoniam Phaeacida vertit, et une
 
 **28** Pindaricae fidicen tu quoque, Rufe, lyrae;
 
 **29** Musaque Turrani tragicis innixa cothurnis;
 
-**30** et tua cum socco Musa, Melisse, levi levis;
+**30** et tua cum socco Musa, Melisse, levi ;
 
 **31** cum Varius Graccusque darent fera dicta tyrannis,
 
 **32** Callimachi Proculus molle teneret iter,
 
-**33** Tityron antiquas Passerque rediret Passerque rediret et erat qui pasceret herbas ad herbas
+**33** Tityron antiquas Passerque rediret ad herbas
 
 **34** aptaque venanti Grattius arma daret,
 
@@ -6373,7 +6369,7 @@ title: Ex Ponto
 
 **38** nomina longa mora est, carmina vulgus habet ;
 
-**39** essent et iuvenes, quorum quod inedita cura causa: cura σ est,
+**39** essent et iuvenes, quorum quod inedita cura est,
 
 **40** adpellandorum nil mihi iuris adest
 
@@ -6383,7 +6379,7 @@ title: Ex Ponto
 
 **43** maternos Cottas cui Messallasque paternos,
 
-**44** Maxime,maxima nobilitas ingeminata dedit)
+**44** Maxime, nobilitas ingeminata dedit)
 
 **45** dicere si fas est, claro mea nomine Musa
 
@@ -6397,6 +6393,6 @@ title: Ex Ponto
 
 **50** praebeat ut sensum materiamque mali.
 
-**51** quid iuvat extinctos ferrum demittere dimittere corr. Itali in artus?
+**51** quid iuvat extinctos ferrum demittere in artus?
 
 **52** non habet in nobis iam nova plaga locum.

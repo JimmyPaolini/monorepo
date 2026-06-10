@@ -11,6 +11,12 @@ import { Author, Text } from "@monorepo/lexico-entities";
 
 import { authorIdToName } from "../../literature/literature.constants";
 import { LoggerService } from "../../logger/logger.service";
+import {
+  cleanBoilerplate,
+  formatLineNumber,
+  hasValidTextContent,
+  isEnglishBoilerplate,
+} from "../library.command";
 
 /**
  * Provider for scraping The Latin Library.
@@ -21,6 +27,17 @@ export class LatinLibraryProvider {
 
   readonly name = "thelatinlibrary";
 
+  private async readLocal(urlStr: string, host: string): Promise<string> {
+    const parsed = new URL(urlStr, host);
+    let relative = parsed.pathname;
+    if (relative.startsWith("/")) relative = relative.slice(1);
+    if (!relative) relative = "index.html";
+    if (relative.endsWith("/")) relative += "index.html";
+
+    const targetPath = path.resolve("data", "latin-library-source", relative);
+    return fs.readFile(targetPath, "utf8");
+  }
+
   /**
    * Fetch authors, works, and output markdown files to the data directory.
    */
@@ -29,10 +46,9 @@ export class LatinLibraryProvider {
     text?: string;
   }): Promise<Author[]> {
     const host = "https://www.thelatinlibrary.com/";
-    this.logger.log(`Scraping library from ${host}`);
+    this.logger.log(`🗂️ Reading Latin Library from local cache`);
 
-    const res = await fetch(host);
-    const textData = await res.text();
+    const textData = await this.readLocal(host, host);
     const tableHtml = cheerio.load(textData);
     cheerioTableParser(tableHtml);
 
@@ -69,8 +85,7 @@ export class LatinLibraryProvider {
     for (const author of rootAuthors) {
       const href = author.metadata?.["sourceUrl"] as string;
       if (categoryHrefs.has(href)) {
-        const catRes = await fetch(host + href);
-        const catHtml = await catRes.text();
+        const catHtml = await this.readLocal(new URL(href, host).href, host);
         const $cat = cheerio.load(catHtml);
 
         $cat("table a").each((_i, a) => {
@@ -112,17 +127,23 @@ export class LatinLibraryProvider {
       return nickA.localeCompare(nickB);
     });
 
-    for (const author of authors) {
-      if (options?.author && author.slug !== options.author) {
-        continue;
-      }
+    let authorsToProcess = authors;
+    if (options?.author) {
+      authorsToProcess = authors.filter((a) => a.slug === options.author);
+    }
+    let currentAuthor = 0;
+    const totalAuthors = authorsToProcess.length;
+
+    for (const author of authorsToProcess) {
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
 
       const nickname = author.metadata?.["nickname"] as string;
       const authorPath = author.metadata?.["sourceUrl"] as string;
-      this.logger.log(`Scraping author: ${nickname}`);
+      this.logger.log(`👤 Processing author: ${nickname}${authorProgress}`);
 
-      const authorRes = await fetch(new URL(authorPath, host).href);
-      const authorText = await authorRes.text();
+      const authorUrlObj = new URL(authorPath, host);
+      const authorText = await this.readLocal(authorUrlObj.href, host);
       const $ = cheerio.load(authorText);
 
       const h1Text =
@@ -191,7 +212,17 @@ export class LatinLibraryProvider {
           continue;
         }
 
-        const absoluteUrl = new URL(href, authorRes.url).href;
+        const absoluteUrl = new URL(href, authorUrlObj.href).href;
+        const parsedUrl = new URL(absoluteUrl);
+        const parsedAuthorUrl = authorUrlObj;
+
+        // Skip external links and breadcrumb links back to the author's own index page
+        if (
+          parsedUrl.hostname !== "www.thelatinlibrary.com" ||
+          parsedUrl.pathname === parsedAuthorUrl.pathname
+        ) {
+          continue;
+        }
 
         let rawBook = $(a)
           .closest("div")
@@ -250,7 +281,7 @@ export class LatinLibraryProvider {
         fallback.title = author.metadata?.["nickname"] as string;
         fallback.slug = _.kebabCase(fallback.title);
         fallback.type = "text";
-        fallback.metadata = { sourceUrl: authorRes.url };
+        fallback.metadata = { sourceUrl: authorUrlObj.href };
         author.texts = [fallback];
       }
     }
@@ -283,8 +314,7 @@ export class LatinLibraryProvider {
         }
 
         try {
-          const workRes = await fetch(workPath);
-          const workHtml = await workRes.text();
+          const workHtml = await this.readLocal(workPath, host);
           const $work = cheerio.load(workHtml);
 
           const frontmatterObj: Record<string, unknown> = {
@@ -330,10 +360,9 @@ export class LatinLibraryProvider {
             )
               return;
 
-            const pText = $p.text().trim();
+            let pText = $p.text().trim();
+            pText = cleanBoilerplate(pText);
             if (pText.length === 0) return;
-            if (pText === "The Latin Library" || pText === "The Classics Page")
-              return;
 
             let paraHtml = $p.html() || "";
             // Replace <br> with newlines, keep <b> text to detect as labels
@@ -362,32 +391,38 @@ export class LatinLibraryProvider {
 
             // Clean up and add to markdown
             const lines = paraText.split("\n");
+            let pendingNumber = "";
+
             for (let line of lines) {
-              line = line.trim();
-              if (!line) continue;
+              line = cleanBoilerplate(line);
 
-              if (!line.startsWith("**")) {
-                const bracketMatch = /^\[([a-zA-Z0-9]+)\]\s*(.*)$/.exec(line);
-                const decimalMatch =
-                  /^((?:\d+\.)+[a-zA-Z0-9]*\.?)\s+(.*)$/.exec(line);
-                const simpleMatch =
-                  /^(\d+[a-zA-Z]*|[MDCLXVI]+)\.?\s+(.*)$/.exec(line);
+              // Skip empty lines and English text
+              if (!line || isEnglishBoilerplate(line)) continue;
 
-                if (bracketMatch) {
-                  line = `**[${bracketMatch[1]}]** ${bracketMatch[2]}`;
-                } else if (decimalMatch) {
-                  line = `**${decimalMatch[1]}** ${decimalMatch[2]}`;
-                } else if (simpleMatch) {
-                  line = `**${simpleMatch[1]}** ${simpleMatch[2]}`;
-                }
+              // Check if line is purely an isolated number
+              const numMatch =
+                /^[[(*]*(\d+[a-zA-Z]*|[MDCLXVI]+)[\])*]*\.?$/.exec(line.trim());
+              if (numMatch && !line.includes(" ")) {
+                pendingNumber = `**${numMatch[1]}**`;
+                continue;
               }
 
-              // Handle end-of-line poetry numbers padded with whitespace
-              line = line.replace(/\s{3,}(\d+)$/, " **$1**");
+              // Merge isolated number into the current text line
+              if (pendingNumber) {
+                line = `${pendingNumber} ${line.trim()}`;
+                pendingNumber = "";
+              }
+
+              line = formatLineNumber(line);
 
               paragraphs.push(line);
             }
           });
+
+          if (!hasValidTextContent(paragraphs)) {
+            this.logger.warn(`⚠️ Skipping empty or invalid text: ${textSlug}`);
+            continue;
+          }
 
           markdown += `${paragraphs.join("\n\n")}\n`;
 
@@ -415,7 +450,7 @@ export class LatinLibraryProvider {
           }
         } catch (error) {
           this.logger.error(
-            `Failed to fetch work ${work.title}`,
+            `❌ Failed to fetch work ${work.title}`,
             error instanceof Error ? error.stack : undefined,
           );
         }

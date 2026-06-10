@@ -36,7 +36,7 @@ et ut demum fato functum palam factum est, non solaciis ullis, non edictis inhib
 
 habuit in matrimonio Agrippinam, M. Agrippae et Iuliae filiam, et ex ea nouem liberos tulit: quorum duo infantes adhuc rapti, unus iam puerascens insigni festiuitate, cuius effigiem habitu Cupidinis in aede Capitolinae Veneris Liuia dedicauit, Augustus in cubiculo suo positam, quotiensque introiret, exosculabatur; ceteri superstites patri fuerunt, tres sexus feminini, Agrippina Drusilla Liuilla, continuo triennio natae; totidem mares, Nero et Drusus et C. Caesar. Neronem et Drusum senatus Tiberio criminante hostes iudicauit.
 
-C. Caesar natus est pridie Kal. Sept. patre suo et C. Fonteio Capitone coss. ubi natus sit, incertum diuersitas tradentium facit. Cn. Lentulus Gaetulicus Tiburi genitum scribit, Plinius Secundus in Treueris uico Ambitaruio supra Confluentes; addit etiam pro argumento aras ibi ostendi inscriptas ob agrippinae pverperivm. uersiculi imperante mox eo diuulgati apud hibernas legiones procreatum indicant:
+**C** Caesar natus est pridie Kal. Sept. patre suo et C. Fonteio Capitone coss. ubi natus sit, incertum diuersitas tradentium facit. Cn. Lentulus Gaetulicus Tiburi genitum scribit, Plinius Secundus in Treueris uico Ambitaruio supra Confluentes; addit etiam pro argumento aras ibi ostendi inscriptas ob agrippinae pverperivm. uersiculi imperante mox eo diuulgati apud hibernas legiones procreatum indicant:
 
 in castris natus, patriis nutritus in armis,
 
@@ -288,7 +288,7 @@ monuerunt et Fortunae Antiatinae, ut a Cassio caueret; qua causa ille Cassium Lo
 
 sacrificans respersus est phoenicopteri sanguine; et pantomimus Mnester tragoediam saltauit, quam olim Neoptolemus tragoedus ludis, quibus rex Macedonum Philippus occisus est, egerat; et cum in Laureolo mimo, in quo auctor proripiens se ruina sanguinem uomit, plures secundarum certatim experimentum artis darent, cruore scaena abundauit. parabatur et in noctem spectaculum, quo argumenta inferorum per Aegyptios et Aethiopas explicarentur.
 
-VIIII. Kal. Febr. hora fere septima cunctatus an ad prandium surgeret marcente adhuc stomacho pridiani cibi onere, tandem suadentibus amicis egressus est. cum in crypta, per quam transeundum erat, pueri nobiles ex Asia ad edendas in scaena operas euocati praepararentur, ut eos inspiceret hortareturque restitit, ac nisi princeps gregis algere se diceret, redire ac repraesentare spectaculum uoluit.
+**VIIII** Kal. Febr. hora fere septima cunctatus an ad prandium surgeret marcente adhuc stomacho pridiani cibi onere, tandem suadentibus amicis egressus est. cum in crypta, per quam transeundum erat, pueri nobiles ex Asia ad edendas in scaena operas euocati praepararentur, ut eos inspiceret hortareturque restitit, ac nisi princeps gregis algere se diceret, redire ac repraesentare spectaculum uoluit.
 
 duplex dehinc fama est: alii tradunt adloquenti pueros a tergo Chaeream ceruicem gladio caesim grauiter percussisse praemissa uoce: 'hoc age!' dehinc Cornelium Sabinum, alterum e coniuratis, tribunum ex aduerso traiecisse pectus; alii Sabinum summota per conscios centuriones turba signum more militiae petisse et Gaio 'Iouem' dante Chaeream exclamasse: 'accipe ratum!' respicientique maxillam ictu discidisse.
 

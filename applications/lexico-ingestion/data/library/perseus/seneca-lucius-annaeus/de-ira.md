@@ -30,7 +30,7 @@ Iam vero si effectus eius damnaque intueri velis, nulla pestis humano generi plu
 
 Aspice nobilissimarum civitatum fundamenta vix notabili a ; has ira deiecit. Aspice solitudines per multa milia sine habitatore desertas ; has ira exhausit. Aspice tot memoriae proditos duces mali exempla fati ; alium ira in cubili suo confodit, alium intra sacra mensae iura percussit, alium intra leges celebrisque spectaculum fori lancinavit, alium filii parricidio dare sanguinem iussit, alium servili manu regalem aperire iugulum, alium in cruce membra distendere.
 
-Et adhuc singulorum supplicia narro ; quid, si tibi libuerit relictis in quos ira viritim exarsit aspicere caesas gladio contiones et plebem immisso milite contrucidatam et in perniciem promiscuam totos populos capitis damnatos damnatos restored by Madvig, after which a leaf or more of tlte us. has been lost.
+Et adhuc singulorum supplicia narro ; quid, si tibi libuerit relictis in quos ira viritim exarsit aspicere caesas gladio contiones et plebem immisso milite contrucidatam et in perniciem promiscuam totos populos capitis damnatos
 
 tamquam aut curam nostram deserentibus aut auctoritatem contemnentibus. Quid ? Gladiatoribus quare populus irascitur et tam inique, ut iniuriam putet, quod non libenter pereunt ? Contemni se iudicat et vultu, gestu, ardore a spectatore in adversarium vertitur.
 
@@ -42,7 +42,7 @@ Quicquid est tale, non est ira, sed quasi ira, sicut puerorum, qui si ceciderunt
 
 ait enim iram esse cupiditatem doloris reponendi. Quid inter nostram et hanc finitionem intersit, exsequi longum est. Contra utramque dicitur feras irasci nec iniuria irritatas nec poenae dolorisve alieni causa; nam etiam si haec efficiunt, non haec petunt.
 
-Sed dicendum est feras ira carere et omnia animalia animalia added by Vahlen. praeter hominem ; nam cum sit inimica rationi, nusquam tamen nascitur, nisi ubi rationi locus est. Impetus habent ferae, rabiem, feritatem, incursum ; iram quidem non magis quam luxuriam, et in quasdam voluptates intemperantiores homine sunt.
+Sed dicendum est feras ira carere et omnia animalia praeter hominem ; nam cum sit inimica rationi, nusquam tamen nascitur, nisi ubi rationi locus est. Impetus habent ferae, rabiem, feritatem, incursum ; iram quidem non magis quam luxuriam, et in quasdam voluptates intemperantiores homine sunt.
 
 Non est quod credas illi qui dicit : Non aper irasci meminit, non fidere cursu cerva nec armentis incurrere fortibus ursi. Irasci dicit incitari, impingi; irasci quidem non magis sciunt quam ignoscere.
 
@@ -106,7 +106,7 @@ Nam si quis poenam exigit non ipsius poenae avidus sed quia oportet, non est adn
 
 Ideo numquam adsumet ratio in adiutorium improvidos et violentos impetus, apud quos nihil ipsa auctoritatis habeat, quos numquam comprimere possit, nisi pares illis similisque opposuerit, ut irae metum, inertiae iram, timori cupiditatem.
 
-ut cupiditatem Gertz and Hermes omit. Absit hoc a virtute malum, ut umquam ratio ad vitia confugiat ! Non potest hic animus fidele otium capere, quatiatur necesse est fluctueturque, qui malis suis tutus est, qui fortis esse nisi irascitur non potest, industrius nisi cupit, quietus nisi timet : in tyrannide illi vivendum est in alicuius adfectus venienti servitutem. Non pudet virtutes in clientelam vitiorum demittere ?
+Absit hoc a virtute malum, ut umquam ratio ad vitia confugiat ! Non potest hic animus fidele otium capere, quatiatur necesse est fluctueturque, qui malis suis tutus est, qui fortis esse nisi irascitur non potest, industrius nisi cupit, quietus nisi timet : in tyrannide illi vivendum est in alicuius adfectus venienti servitutem. Non pudet virtutes in clientelam vitiorum demittere ?
 
 Deinde desinit quicquam posse ratio, si nihil potest sine adfectu, et incipit par illi similisque esse. Quid enim interest, si aeque adfectus inconsulta res est sine ratione quam ratio sine adfectu inefficax ? Par utrumque est, ubi esse alterum sine altero non potest. Quis autem sustineat adfectum exaequare rationi ? " Ita," inquit, " utilis adfectus est, si modicus est."
 
@@ -132,7 +132,7 @@ Non est itaque utilis ne in proeliis quidem aut bellis ira ; in temeritatem enim
 
 Officia sua vir bonus exsequetur inconfusus, intrepidus ; et sic bono viro digna faciet, ut nihil faciat viro indignum. Pater caedetur, defendam ; caesus est, exsequar, quia oportet, non quia dolet. " Irascuntur boni viri pro suorum iniuriis.
 
-" The words irascuntur iniuriis Gertz places here ; in AL they appear after adgnoscit below. Cum hoc dicis, Theophraste, quaeris invidiam praeceptis fortioribus et relicto iudice ad coronam venis. Quia unusquisque in eiusmodi suorum casu irascitur, putas iudicaturos homines id fieri debere quod faciunt; fere enim iustum quisque affectum iudicat quem adgnoscit.
+" Cum hoc dicis, Theophraste, quaeris invidiam praeceptis fortioribus et relicto iudice ad coronam venis. Quia unusquisque in eiusmodi suorum casu irascitur, putas iudicaturos homines id fieri debere quod faciunt; fere enim iustum quisque affectum iudicat quem adgnoscit.
 
 Sed idem faciunt, si calda non bene praebetur, si vitreum fractum est, si calceus luto sparsus est. Non pietas illam iram sed infirmitas movet, sicut pueris, qui tam parentibus amissis flebunt quam nucibus.
 
@@ -164,15 +164,15 @@ Nil minus quam irasci punientem decet, cum eo magis ad emendationem poena profic
 
 Ergo ad coercitionem errantium sceleratorumque irato castigatore non opus est ; nam cum ira delictum animi sit, non oportet peccata corrigere peccantem. " Quid ergo ? Non irascar latroni ? Quid ergo ? Non irascar venefico ? " Non ; neque enim mihi irascor, cum sanguinem mitto. Omne poenae genus remedi loco admoveo.
 
-Tu adhuc in prima parte versaris errorum nec graviter labens sed frequenter ; obiurgatio te primum secreta deinde publicata emendare temptabit. Tu longius iam processisti, quam ut possis verbis sanari; ignominia contineberis. Hermes, after Pincianus, inserts non. Tibi fortius aliquid et quod sentias inurendum est ; in exilium et loca ignota mittens. In te duriora remedia iam solida nequitia desiderat ; et vincula publica et carcer adhibebitur.
+Tu adhuc in prima parte versaris errorum nec graviter labens sed frequenter ; obiurgatio te primum secreta deinde publicata emendare temptabit. Tu longius iam processisti, quam ut possis verbis sanari; ignominia contineberis. Tibi fortius aliquid et quod sentias inurendum est ; in exilium et loca ignota mittens. In te duriora remedia iam solida nequitia desiderat ; et vincula publica et carcer adhibebitur.
 
 Tibi insanabilis animus et sceleribus scelera contexens, et iam non causis, quae numquam malo defuturae sunt, impelleris, sed satis tibi est magna ad peccandum causa peccare, perbibisti nequitiam et ita visceribus immiscuisti, ut nisi cum ipsis exire non possit; olim miser mori quaeris ; bene de te merebimur, auferemus tibi istam qua vexas, vexaris insaniam et per tua alienaque volutato supplicia id quod unum tibi bonum superest repraesentabimus, mortem. Quare irascar cui cum maxime prosum ? Interim optimum misericordiae genus est occidere.
 
 Si intrassem valetudinarium exercitus ut sciens aut domus divitis, non idem imperassem omnibus per diversa aegrotantibus ; varia in tot animis vitia video et civitati curandae adhibitus sum; pro cuiusque morbo medicina quaeratur, hunc sanet verecundia, hunc peregrinatio, hunc dolor, hunc egestas, hunc ferrum.
 
-Itaque etsi perversa induenda magistratui vestis et convocanda classico contio est, procedam in tribunal non furens nec infestus sed vultu legis et illa sollemnia verba leni magis gravique quam rabida voce concipiam et agi lege lege added by Gertz, after Pincianus, iubebo non iratus sed severus ; et cum cervicem noxio imperabo praecidi et cum parricidas insuam culleo et cum mittam in supplicium militare et cum Tarpeio proditorem hostemve publicum imponam, sine ira eo vultu animoque ero, quo serpentes et animalia venenata percutio.
+Itaque etsi perversa induenda magistratui vestis et convocanda classico contio est, procedam in tribunal non furens nec infestus sed vultu legis et illa sollemnia verba leni magis gravique quam rabida voce concipiam et agi lege iubebo non iratus sed severus ; et cum cervicem noxio imperabo praecidi et cum parricidas insuam culleo et cum mittam in supplicium militare et cum Tarpeio proditorem hostemve publicum imponam, sine ira eo vultu animoque ero, quo serpentes et animalia venenata percutio.
 
-" Iracundia opus est ad puniendum." Quid ? Tibi lex videtur irasci iis quos non novit, quos non vidit, quos non futuros sperat ? Illius itaque sumendus est animus, quae non irascitur, sed constituit. Nam si bono viro ob mala facinora irasci convenit, et ob secundas res malorum hominum invidere conveniet. Quid enim est indignius quam florere improbos improbos added by Gemoll. quosdam et eos indulgentia fortunae abuti, quibus nulla potest satis mala inveniri fortuna ? Sed tam commoda illorum sine invidia videbit quam scelera sine ira ; bonus iudex damnat improbanda, non odit. " Quid ergo ?
+" Iracundia opus est ad puniendum." Quid ? Tibi lex videtur irasci iis quos non novit, quos non vidit, quos non futuros sperat ? Illius itaque sumendus est animus, quae non irascitur, sed constituit. Nam si bono viro ob mala facinora irasci convenit, et ob secundas res malorum hominum invidere conveniet. Quid enim est indignius quam florere improbos quosdam et eos indulgentia fortunae abuti, quibus nulla potest satis mala inveniri fortuna ? Sed tam commoda illorum sine invidia videbit quam scelera sine ira ; bonus iudex damnat improbanda, non odit. " Quid ergo ?
 
 Non, cum eiusmodi aliquid sapiens habebit in manibus, tangetur animus eius eritque solito commotior ? " Fateor ; sentiet levem quendam tenuemque motum ; nam, ut dicit Zenon, in sapientis quoque animo, etiam eum vulnus sanatum est, cicatrix manet. Sentiet itaque suspiciones quasdam et umbras affectuum, ipsis quidem carebit.
 
@@ -224,7 +224,7 @@ Omnes, quos vecors animus supra cogitationes extollit humanas, altum quiddam et 
 
 Multum, inquam, interest inter sublimem animum et superbum. Iracundia nihil amplum decorumque molitur ; contra mihi videtur veternosi et infelicis animi, imbecillitatis sibi conscii, saepe indolescere, ut exulcerata et aegra corpora, quae ad tactus levissimos gemunt. Ita ira muliebre maxime ac puerile vitium est. " At incidit et in viros." Nam viris quoque puerilia ac muliebria ingenia sunt.
 
-" Quid ergo ? Non aliquae voces ab iratis emittuntur quae magno emissae videantur animo ? " Immo immo added by Madvig. veram ignorantibus magnitudinem, qualis illa dira et abominanda : " Oderint, dum metuant." Sullano scias saeculo scriptam. Nescio utrum sibi peius optaverit, ut odio esset, an ut timori. " Oderint." Occurrit illi futurum, ut exsecrentur, insidientur, opprimant. Quid adiecit ? Di illi male faciant, adeo repperit dignum odio remedium. " Oderint "—quid tum ? Dum pareant ? Non ; dum probent ? Non ; quid ergo ? " Dum timeant." Sic ne amari quidem vellem. Magno hoc dictum spiritu putas ? Falleris ;
+" Quid ergo ? Non aliquae voces ab iratis emittuntur quae magno emissae videantur animo ? " Immo veram ignorantibus magnitudinem, qualis illa dira et abominanda : " Oderint, dum metuant." Sullano scias saeculo scriptam. Nescio utrum sibi peius optaverit, ut odio esset, an ut timori. " Oderint." Occurrit illi futurum, ut exsecrentur, insidientur, opprimant. Quid adiecit ? Di illi male faciant, adeo repperit dignum odio remedium. " Oderint "—quid tum ? Dum pareant ? Non ; dum probent ? Non ; quid ergo ? " Dum timeant." Sic ne amari quidem vellem. Magno hoc dictum spiritu putas ? Falleris ;
 
 nec enim magnitudo ista est sed immanitas. Non est quod credas irascentium verbis, quorum strepitus magni, minaces sunt, intra mens pavidissima.
 
@@ -232,7 +232,7 @@ Nec est quod existimes verum esse, quod apud disertissimum virum T. Livium dicit
 
 Terribilia enim esse et tumultuosa et exitiosa possunt ; magnitudinem quidem, cuius firmamentum roburque bonitas est, non habebunt. Ceterum sermone, conatu et omni extra paratu facient magnitudinis fidem ;
 
-eloquentur aliquid, quod tu magni animi animi added by Gertz, putes, sicut C. Caesar, qui iratus caelo, quod obstreperetur pantomimis, quos imitabatur studiosius quam spectabat, quodque comessatio sua fulminibus terreretur—prorsus parum certis—ad pugnam vocavit Iovem et quidem sine missione, Homericum illum exclamans versum : ἤ μ' ἀνάειρ' ἐγὼ σέ· 9 Quanta dementia fuit ! Putavit aut sibi noceri ne ab Iove quidem posse aut se nocere etiam Iovi posse. Non puto parum momenti hanc eius vocem ad incitandas coniuratorum mentes addidisse ; ultimae enim patientiae visum est eum ferre, qui Iovem non ferret !
+eloquentur aliquid, quod tu magni animi putes, sicut C. Caesar, qui iratus caelo, quod obstreperetur pantomimis, quos imitabatur studiosius quam spectabat, quodque comessatio sua fulminibus terreretur—prorsus parum certis—ad pugnam vocavit Iovem et quidem sine missione, Homericum illum exclamans versum : ἤ μ' ἀνάειρ' ἐγὼ σέ· Quanta dementia fuit ! Putavit aut sibi noceri ne ab Iove quidem posse aut se nocere etiam Iovi posse. Non puto parum momenti hanc eius vocem ad incitandas coniuratorum mentes addidisse ; ultimae enim patientiae visum est eum ferre, qui Iovem non ferret !
 
 ἤ μ' ἀνάειρ' ἐγὼ σέ·
 
@@ -244,7 +244,7 @@ videatur et libido magni animi—transnat freta, puerorum greges castrat, sub gl
 
 sola sublimis et excelsa virtus est, nec quicquam magnum est nisi quod simul placidum.
 
-Primus liber. Novate, benigniorem habuit materiam ; facilis enim in proclivia vitiorum decursus est. Nunc ad exiliora veniendum est ; quaerimus enim ira utrum iudicio an impetu incipiat, id est utrum sua sponte moveatur an quemadmodum pleraque, quae intra nos non non added by Hermes. insciis nobis oriuntur.
+Primus liber. Novate, benigniorem habuit materiam ; facilis enim in proclivia vitiorum decursus est. Nunc ad exiliora veniendum est ; quaerimus enim ira utrum iudicio an impetu incipiat, id est utrum sua sponte moveatur an quemadmodum pleraque, quae intra nos non insciis nobis oriuntur.
 
 Debet autem in haec se demittere disputatio, ut ad illa quoque altiora possit exsurgere. Nam et in corpore nostro ossa nervique et articuli, firmamenta totius et vitalia, minime speciosa visu, prius ordinantur, deinde haec, ex quibus omnis in faciem adspectumque decor est ; post haec omnia, qui maxime oculos rapit, color ultimus perfecto iam corpore adfunditur.
 
@@ -284,13 +284,13 @@ Illud etiamnunc quaerendum est, ii qui vulgo saeviunt et sanguine humano gaudent
 
 non enim quia accepit iniuriam nocet, sed parata est, dum noceat, vel accipere, nec illi verbera lacerationesque in ultionem petuntur sed in voluptatem.
 
-Quid ergo est est Hermes after Gertz, ? Origo huius mali ab ira est, quae ubi frequenti exercitatione et satietate in oblivionem clementiae venit et omne foedus humanum eiecit animo, novissime in crudelitatem transit. Rident itaque gaudentque et voluptate multa perfruuntur plurimumque ab iratorum vultu absunt, per otium saevi.
+Quid ergo est ? Origo huius mali ab ira est, quae ubi frequenti exercitatione et satietate in oblivionem clementiae venit et omne foedus humanum eiecit animo, novissime in crudelitatem transit. Rident itaque gaudentque et voluptate multa perfruuntur plurimumque ab iratorum vultu absunt, per otium saevi.
 
 Hannibalem aiunt dixisse, cum fossam sanguine humano plenam vidisset : "O formonsum spectaculum ! " Quanto pulchrius illi visum esset, si flumen aliquod lacumque complesset ! Quid mirum, si hoc maxime spectaculo caperis innatus sanguini et ab infante caedibus admotus ? Sequetur te fortuna crudelitati tuae per viginti annos secunda dabitque oculis tuis gratum ubique spectaculum ; videbis istud et circa Trasumennum et circa Cannas et novissime circa Carthaginem tuam.
 
 Volesus nuper sub divo Augusto proconsul Asiae, cum trecentos uno die securi percussisset, incedens inter cadavera vultu superbo, quasi magnificum quiddam conspiciendumque fecisset, Graece proclamavit : " O rem regiam ! " Quid hic rex fecisset ? Non fuit haec ira sed maius malum et insanabile.
 
-" Virtus," inquit, " ut honestis rebus propitia est, ita turpibus irata esse debet." Quid, si dicat virtutem et humilem et magnam esse debere ? Atqui hoc dicit, illam illam Hermes, after Müller : qui illam MSS. extolli vult et deprimi, quoniam laetitia ob recte factum clara magnificaque est, ira ob alienum peccatum sordida et angusti pectoris est. Nec umquam committet virtus, ut vitia, dum compescit, imitetur ;
+" Virtus," inquit, " ut honestis rebus propitia est, ita turpibus irata esse debet." Quid, si dicat virtutem et humilem et magnam esse debere ? Atqui hoc dicit, illam extolli vult et deprimi, quoniam laetitia ob recte factum clara magnificaque est, ira ob alienum peccatum sordida et angusti pectoris est. Nec umquam committet virtus, ut vitia, dum compescit, imitetur ;
 
 iram ipsam castigandam habet, quae nihilo melior est, saepe etiam peior is delictis quibus irascitur. Gaudere laetarique proprium et naturale virtutis est ; irasci non est ex dignitate eius, non magis quam maerere. Atqui iracundiae tristitia comes est et in hanc omnis ira vel post paenitentiam vel post repulsam revolvitur.
 
@@ -302,13 +302,13 @@ Et quid indignius quam sapientis adfectum ex aliena pendere nequitia ? Desinet i
 
 Quod enim momentum erit, quo non improbanda videat ? Quotiens processere domo, per sceleratos illi avarosque et prodigos et impudentis et ob ista felices incedendum erit ; nusquam oculi eius flectentur, ut non quod indignentur inveniant. Deficiet, si totiens a se iram quotiens causa poscet exegerit.
 
-Haec tot milia ad forum prima luce properantia quam turpes lites, quanto turpiores advocatos habent ! Alius iudicia patris accusat, quae vereri satius fuit, alius cum matre consistit, alius delator venit eius criminis, cuius manifestior reus est; et iudex damnaturus quae fecit eligitur et corona pro mala causa stat stat Gertz, omitted by Hermes. bona patroni voce corrupta.
+Haec tot milia ad forum prima luce properantia quam turpes lites, quanto turpiores advocatos habent ! Alius iudicia patris accusat, quae vereri satius fuit, alius cum matre consistit, alius delator venit eius criminis, cuius manifestior reus est; et iudex damnaturus quae fecit eligitur et corona pro mala causa stat bona patroni voce corrupta.
 
 Quid singula persequor ? Cum videris forum multitudine refertum et saepta concursu omnis frequentiae plena et illum circum, in quo maximam sui partem populus ostendit, hoc scito, istic tantundem esse vitiorum quantum hominum.
 
 Inter istos quos togatos vides nulla pax est ; alter in alterius exitium levi compendio ducitur ; nulli nisi ex alterius iniuria quaestus est; felicem oderunt, infelicem contemnunt; maiorem gravantur, minori graves sunt; diversis stimulantur cupiditatibus ; omnia perdita ob levem voluptatem praedamque cupiunt. Non alia quam in ludo gladiatorio vita est cum isdem bibentium pugnantiumque.
 
-Ferarum iste conventus est, nisi quod illae inter se placidae sunt morsuque similium abstinent, hi mutua laceratione satiantur. Hoc omnino hoc omnino Vahlen : hoc in uno A, ab animalibus mutis differunt, quod illa mansuescunt alentibus, horum rabies ipsos a quibus est nutrita depascitur.
+Ferarum iste conventus est, nisi quod illae inter se placidae sunt morsuque similium abstinent, hi mutua laceratione satiantur. Hoc omnino ab animalibus mutis differunt, quod illa mansuescunt alentibus, horum rabies ipsos a quibus est nutrita depascitur.
 
 Numquam irasci desinet sapiens, si semel coeperit. Omnia sceleribus ac vitiis plena sunt ; plus committitur quam quod possit coercitione sanari. Certatur ingenti quidem nequitiae certamine. Maior cottidie peccandi cupiditas, minor verecundia est ; expulso melioris aequiorisque respectu quocumque visum est libido se impingit, nec furtiva iam scelera sunt. Praeter oculos eunt, adeoque in publicum missa nequitia est et in omnium pectoribus evaluit, ut innocentia non rara sed nulla sit.
 
@@ -326,11 +326,11 @@ filius ante diem patrios inquirit in annos.
 
 Et quota ista pars scelerum est ! Non descripsit castra ex uno partu contraria et parentium liberorumque sacramenta diversa, subiectam patriae civis manu flammam et agmina infestorum equitum ad inquirendas proscriptorum latebras circumvolitantia et violatos fontes venenis et pestilentiam manu factam et praeductam obsessis parentibus fossam, plenos carceres et incendia totas urbes concremantia dominationesque funestas et regnorum publicorumque exitiorum clandestina consilia, et pro gloria habita, quae quam diu opprimi possunt, scelera sunt, raptus ac stupra et ne os quidem libidini exceptum.
 
-Adde nunc publica periuria gentium et rupta foedera et in praedam so editors : praedam A : pro praeda Gertz. validioris quidquid non resistebat abductum, circumscriptiones, furta, fraudes, infitiationes, quibus trina non sufficiunt fora. Si tantum irasci vis sapientem, quantum scelerum indignitas exigit, non irascendum illi sed insaniendum est.
+Adde nunc publica periuria gentium et rupta foedera et in praedam validioris quidquid non resistebat abductum, circumscriptiones, furta, fraudes, infitiationes, quibus trina non sufficiunt fora. Si tantum irasci vis sapientem, quantum scelerum indignitas exigit, non irascendum illi sed insaniendum est.
 
-Illud potius cogitabis, non esse irascendum erroribus. Quid enim, si quis irascatur in tenebris parum vestigia certa ponentibus ? Quid, si quis surdis imperia non exaudientibus ? Quid, si pueris, quod neglecto dispectu officiorum ad lusus et ineptos aequalium iocos spectent ? Quid, si illis irasci velis, qui, qui added by Hermes. quod aegrotant senescunt, fatigantur ? Inter cetera mortalitatis incommoda et hoc est, caligo mentium nec tantum necessitas errandi sed errorum amor.
+Illud potius cogitabis, non esse irascendum erroribus. Quid enim, si quis irascatur in tenebris parum vestigia certa ponentibus ? Quid, si quis surdis imperia non exaudientibus ? Quid, si pueris, quod neglecto dispectu officiorum ad lusus et ineptos aequalium iocos spectent ? Quid, si illis irasci velis, qui, quod aegrotant senescunt, fatigantur ? Inter cetera mortalitatis incommoda et hoc est, caligo mentium nec tantum necessitas errandi sed errorum amor.
 
-Ne singulis irascaris, universis ignoscendum est, generi humano venia tribuenda est. Si irasceris iuvenibus senibusque, quod peccant, irascere et et added by Gertz. infantibus : peccaturi sunt. Numquis irascitur pueris, quorum aetas nondum novit rerum discrimina ? Maior est excusatio et iustior hominem esse quam puerum.
+Ne singulis irascaris, universis ignoscendum est, generi humano venia tribuenda est. Si irasceris iuvenibus senibusque, quod peccant, irascere et infantibus : peccaturi sunt. Numquis irascitur pueris, quorum aetas nondum novit rerum discrimina ? Maior est excusatio et iustior hominem esse quam puerum.
 
 Hac condicione nati sumus, animalia obnoxia non paucioribus animi quam corporis morbis, non quidem obtusa nec tarda, sed acumine nostro male utentia, alter alteri vitiorum exempla. Quisquis sequitur priores male iter ingressos, quidni habeat excusationem, cum publica via erraverit ?
 
@@ -352,7 +352,7 @@ Quid, quod semper in auctores redundat timor nec quisquam metuitur ipse securus 
 
 Necesse est multos timeat quem multi timent.
 
-Ita natura constituit, ut quidquid alieno metu magnum est, a suo non vacet. Leonum quam pavida sunt ad levissimos sonos pectora ! Acerrimas feras umbra et vox et odor insolitus exagitat. Quidquid terret et trepidat. Non est ergo quare concupiscat quisquam sapiens timeri, nec ideo iram magnum quiddam putet, quia formidini est, quoniam quidem etiam contemptissima timentur ut venena et ossa pestifera et morsus. venena morsus so A : mortifera for pestifera L : venenato bestiae pestiferae morsu Haupt : venenato aspis viperave morsu Gertz : venenato serpens pestifera morsu Hermes.
+Ita natura constituit, ut quidquid alieno metu magnum est, a suo non vacet. Leonum quam pavida sunt ad levissimos sonos pectora ! Acerrimas feras umbra et vox et odor insolitus exagitat. Quidquid terret et trepidat. Non est ergo quare concupiscat quisquam sapiens timeri, nec ideo iram magnum quiddam putet, quia formidini est, quoniam quidem etiam contemptissima timentur ut venena et ossa pestifera et morsus.
 
 Nec mirum est, cum maximos ferarum greges linea pinnis distincta contineat et in insidias agat, ab ipso effectu dicta formido ; vanis enim vana terrori sunt. Curriculi motus rotarumque versata facies leones redegit in caveam, elephantos porcina vox terret.
 
@@ -448,7 +448,7 @@ Exprobrentur illi perperam facta. Pertinebit ad rem praeceptores paedagogosque p
 
 Apud Platonem educatus puer cum ad parentes relatus vociferantem videret patrem : " Numquam," inquit, " hoc apud Platonem vidi." Non dubito quin citius patrem imitatus sit quam Platonem.
 
-Tenuis ante omnia victus sit sit added by Ruhkopf, et non pretiosa vestis et similis cultus cum aequalibus. Non irascetur aliquem sibi comparari quem ab initio multis parem feceris.
+Tenuis ante omnia victus sit et non pretiosa vestis et similis cultus cum aequalibus. Non irascetur aliquem sibi comparari quem ab initio multis parem feceris.
 
 Sed haec ad liberos nostros pertinent; in nobis quidem sors nascendi et educatio nec vitii locum nec iam praecepti habet ; sequentia ordinanda sunt. Contra primas itaque causas pugnare debemus.
 
@@ -504,7 +504,7 @@ Quis est iste qui se profitetur omnibus legibus innocentem ? Ut hoc ita sit, qua
 
 Alia fecimus, aha cogitavimus, alia optavimus, aliis favimus ; in quibusdam innocentes sumus, quia non successit. Hoc cogitantes aequiores simus delinquentibus, credamus obiurgantibus;
 
-utique bonis ne irascamur (cui enim non, si bonis quoque ?), minime diis ; non enim illorum vi, vi added by Hermes. sed lege mortalitatis patimur quidquid incommodi accidit. " At morbi doloresque incurrunt." Utique aliquo defungendum est domicilium putre sorti tis. Dicetur aliquis male de te locutus ; cogita an prior feceris, cogita de quam multis loquaris.
+utique bonis ne irascamur (cui enim non, si bonis quoque ?), minime diis ; non enim illorum vi, sed lege mortalitatis patimur quidquid incommodi accidit. " At morbi doloresque incurrunt." Utique aliquo defungendum est domicilium putre sorti tis. Dicetur aliquis male de te locutus ; cogita an prior feceris, cogita de quam multis loquaris.
 
 Cogitemus, inquam, alios non facere iniuriam sed reponere, alios pro nobis facere, alios coactos facere, alios ignorantes, etiam eos, qui volentes scientesque faciunt, ex iniuria nostra non ipsam iniuriam petere ; aut dulcedine urbanitatis prolapsus est, aut fecit aliquid, non ut nobis obesset, sed quia consequi ipse non poterat, nisi nos repulisset; saepe adulatio, dum blanditur, offendit.
 
@@ -516,7 +516,7 @@ inde est quod tempestiva filii convivia pater deterior filio castigat, et nihil 
 
 Maximum remedium irae mora est. Hoc ab illa pete initio, non ut ignoscat, sed ut iudicet : graves habet impetus primos ; desinet, si expectat. Nec universam illam temptaveris tollere ; tota vincetur, dum partibus carpitur.
 
-Ex is, quae nos offendunt, alia renuntiantur nobis, alia ipsi audimus aut videmus. De iis, quae narrata sunt, non debemus cito credere ; multi mentiuntur, ut decipiant, multi, quia decepti sunt. Alius criminatione gratiam captat et fingit iniuriam, ut videatur doluisse factam ; est aliquis malignus et qui amicitias cohaerentis diducere velit ; est subdicax subdicax Badstübner: subprocax Lipsius: susipicax AL. et qui spectare ludos cupiat et ex longinquo tutoque speculetur quos conlisit.
+Ex is, quae nos offendunt, alia renuntiantur nobis, alia ipsi audimus aut videmus. De iis, quae narrata sunt, non debemus cito credere ; multi mentiuntur, ut decipiant, multi, quia decepti sunt. Alius criminatione gratiam captat et fingit iniuriam, ut videatur doluisse factam ; est aliquis malignus et qui amicitias cohaerentis diducere velit ; est subdicax et qui spectare ludos cupiat et ex longinquo tutoque speculetur quos conlisit.
 
 De parvola summa iudicaturo tibi res sine teste non probaretur, testis sine iureiurando non valeret, utrique parti dares actionem, dares tempus, non semel audires; magis enim veritas elucet quo saepius ad manum venit. Amicum condemnas de praesentibus ? Antequam audias, antequam interroges, antequam illi aut accusatorem suum nosse liceat aut crimen, irasceris ? Iam enim, iam utrimque quid diceretur audisti ?
 
@@ -542,9 +542,9 @@ ergo civi quoque, nam hic pars patriae est—sanctae partes sunt, si universum v
 
 Ne viperas quidem et natrices, et si qua morsu aut ictu nocent, effligeremus, si in reliquum mansuefacere possemus aut efficere, ne nobis aliisve periculo essent. Ergo ne homini quidem nocebimus, quia peccavit, sed ne peccet, nec umquam ad praeteritum, sed ad futurum poena referetur ; non enim irascitur, sed cavet. Nam si puniendus est cuicumque pravum maleficumque ingenium est, poena neminem excipiet.
 
-" At enim ira habet aliquam voluptatem et dulce est dolorem reddere." Minime ; non enim ut in beneficiis honestum est merita meritis repensare, ita iniurias iniuriis. Illic vinci turpe est, hic vincere. Inhumanum verbum est et quidem pro iusto receptum ultio, et talio non multum differt et quidem differt AL: ultio et deleted by most editors : et vitiose quidem pro iusto receptum, talio. proposed by Gertz: et quidem pro iusta receptum ultione " talio." Non multum differt nisi ordine, qui dolorem regerit: P. Thomas. nisi ordine ; qui dolorem regerit tantum excusatius peccat.
+" At enim ira habet aliquam voluptatem et dulce est dolorem reddere." Minime ; non enim ut in beneficiis honestum est merita meritis repensare, ita iniurias iniuriis. Illic vinci turpe est, hic vincere. Inhumanum verbum est et quidem pro iusto receptum ultio, et talio non multum differt nisi ordine ; qui dolorem regerit tantum excusatius peccat.
 
-M. Catonem ignorans ignorans most editors consider a gloss on imprudens. in balineo quidam percussit imprudens ; quis enim illi sciens faceret iniuriam ? Postea satis facienti Cato : " Non memini," inquit, " me percussum." Melius putavit non agnoscere quam vindicare.
+**M** Catonem ignorans in balineo quidam percussit imprudens ; quis enim illi sciens faceret iniuriam ? Postea satis facienti Cato : " Non memini," inquit, " me percussum." Melius putavit non agnoscere quam vindicare.
 
 " Nihil," inquis, " illi post tantam petulantiam mali factum est ? " Immo multum boni; coepit Catonem nosse. Magni animi est iniurias despicere ; ultionis contumeliosissimum genus est non esse visum dignum, ex quo peteretur ultio. Multi leves iniurias altius sibi demisere, dum vindicans Ille magnus et nobilis, qui more magnae ferae latratus minutorum canum securus exaudit.
 
@@ -552,13 +552,13 @@ M. Catonem ignorans ignorans most editors consider a gloss on imprudens. in bali
 
 Notissima vox est eius qui in cultu regum consenuerat. Cum illum quidam interrogaret, quomodo rarissimam rem in aula consecutus esset, senectutem : " Iniurias," inquit, " accipiendo et gratias agendo." Saepe adeo iniuriam vindicare non expedit, ut ne fateri quidem expediat.
 
-C. Caesar Pastoris splendidi equitis Romani filium cum in custodia habuisset munditiis eius et cultioribus capillis offensus, rogante patre ut salutem sibi filii concederet, quasi de supplicio admonitus duci protinus iussit; ne tamen omnia inhumane faceret adversum patrem, ad cenam illum eo die invitavit. Venit Pastor vultu nihil exprobrante.
+**C** Caesar Pastoris splendidi equitis Romani filium cum in custodia habuisset munditiis eius et cultioribus capillis offensus, rogante patre ut salutem sibi filii concederet, quasi de supplicio admonitus duci protinus iussit; ne tamen omnia inhumane faceret adversum patrem, ad cenam illum eo die invitavit. Venit Pastor vultu nihil exprobrante.
 
 Propinavit illi Caesar heminam et posuit illi custodem; perduravit miser, non aliter quam si fili sanguinem biberet. Unguentum et coronas misit et observare iussit an sumeret; sumpsit. Eo die, quo filium extulerat, immo quo non extulerat, iacebat conviva centesimus et potiones vix honestas natalibus liberorum podagricus senex hauriebat, cum interim non lacrimam emisit, non dolorem aliquo signo erumpere passus est ; cenavit tamquam pro filio exorasset.
 
 Quaeris, quare ? Habebat alterum. Quid ille Priamus ? Non dissimulavit iram et regis genua complexus est, funestam perfusamque cruore fili manum ad os suum retulit, cenavit ? Sed tamen sine unguento, sine coronis, et illum hostis saevissimus multis solaciis, ut cibum caperet, hortatus est, non ut pocula ingentia super caput posito custode siccaret.
 
-Contempsisses contempsisses Hermes, after Gertz : contempsisset AL. Romanum patrem, si sibi timuisset; nunc iram compescuit pietas. Dignus fuit cui permitteretur a convivio ad ossa fili legenda discedere ; ne hoc quidem permisit benignus interim et comis adulescens ; propinationibus senem crebris, ut cura leniretur admonens, lacessebat; contra ille se laetum et oblitum, quid eo actum esset die, praestitit. Perierat alter filius, si carnifici conviva non placuisset.
+Contempsisses Romanum patrem, si sibi timuisset; nunc iram compescuit pietas. Dignus fuit cui permitteretur a convivio ad ossa fili legenda discedere ; ne hoc quidem permisit benignus interim et comis adulescens ; propinationibus senem crebris, ut cura leniretur admonens, lacessebat; contra ille se laetum et oblitum, quid eo actum esset die, praestitit. Perierat alter filius, si carnifici conviva non placuisset.
 
 Ergo ira abstinendum est, sive par est qui lacessendus est sive superior sive inferior. Cum pare contendere anceps est, cum superiore furiosum, eum inferiore sordidum. Pusilli hominis et miseri est repetere mordentem. Mures formicaeque, si manum admoveris, ora convertunt; imbecillia se laedi putant, si tanguntur.
 
@@ -570,7 +570,7 @@ Cogitemus, quotiens ad ignoscendum difficiles erimus, an expediat nobis omnes in
 
 Irascetur aliquis ; tu contra beneficiis provoca. Cadit statim simultas ab altera parte deserta ; nisi paria non pugnant. Sed utrimque certabit ira, concurritur, ille est melior qui prior pedem rettulit ; victus est qui vicit. Percussit te, recede ; referiendo enim et occasionem saepius feriendi dabis et excusationem ; non poteris revelli, cum voles.
 
-Numquid velit quisquam tam graviter hostem ferire, ut relinquat manum in vulnere et se ab ictu revocare non possit ? Atqui tale ira telum est; vix retrahitur. Arma nobis expedita prospicimus, gladium commodum et habilem; non vitabimus impetus animi istos istos Gertz: hos A 1 A 5. graves et onerosos et irrevocabiles ?
+Numquid velit quisquam tam graviter hostem ferire, ut relinquat manum in vulnere et se ab ictu revocare non possit ? Atqui tale ira telum est; vix retrahitur. Arma nobis expedita prospicimus, gladium commodum et habilem; non vitabimus impetus animi istos graves et onerosos et irrevocabiles ?
 
 Ea demum velocitas placet, quae ubi iussa est vestigium sistit nec ultra destinata procurrit flectique et a cursu ad gradum reduci potest ; aegros scimus nervos esse, ubi invitis nobis moventur ; senex aut infirmi corporis est, qui cum ambulare vult currit. Animi motus eos putemus sanissimos validissimosque, qui nostro arbitrio ibunt, non suo ferentur.
 
@@ -590,19 +590,19 @@ Quibusdam, ut ait Sextius, iratis profuit aspexisse speculum ; perturbavit illos
 
 Animus si ostendi et si in ulla materia perlucere posset, intuentis nos confunderet ater maculosusque et aestuans et distortus et tumidus. Nunc quoque tanta deformitas eius est per ossa carnesque et tot impedimenta effluentis ; quid si nudus ostenderetur ?
 
-Speculo quidem neminem deterritum ab ira credideris : quid ergo est est added by Gertz. ? Qui ad speculum venerat, ut se mutaret, iam mutaverat ; iratis quidem nulla est formonsior effigies quam atrox et horrida, qualesque esse etiam videri volunt.
+Speculo quidem neminem deterritum ab ira credideris : quid ergo est ? Qui ad speculum venerat, ut se mutaret, iam mutaverat ; iratis quidem nulla est formonsior effigies quam atrox et horrida, qualesque esse etiam videri volunt.
 
 Magis illud videndum est, quam multis ira per se nocuerit. Alii nimio fervore rupere venas et sanguinem supra vires elatus clamor egessit et luminum suffudit aciem in oculos vehementius umor egestus et in morbos aegri reccidere. Nulla celerior ad insaniam via est.
 
 Multi itaque continuaverunt irae furorem nec quam expulerant mentem umquam receperunt. Aiacem in mortem egit furor, in furorem ira. Mortem liberis, egestatem sibi, ruinam domui imprecantur et irasci se negant non minus quam insanire furiosi. Amicissimis hostes vitandique carissimis, legum nisi qua nocent immemores, ad minima mobiles, non sermone, non officio adiri faciles, per vim omnia gerunt, gladiis et pugnare parati et incumbere.
 
-Maximum enim illos malum cepit et omnia exsuperans vitia. Alia paulatim intrant, repentina et universa vis huius est. Omnis denique alios affectus sibi subicit. Amorem ardentissimum vincit, transfoderunt itaque amata corpora et in eorum quos occiderant iacuere complexibus; avaritiam, durissimum malum minimeque flexibile, ira calcavit adactam adactam Michaelis and Gertz : adacta A. opes suas spargere et domui rebusque in unum conlatis inicere ignem. Quid ? Non ambitiosus magno aestimata proiecit insignia honoremque delatum reppulit ? Nullus affectus est, in quem non ira dominetur.
+Maximum enim illos malum cepit et omnia exsuperans vitia. Alia paulatim intrant, repentina et universa vis huius est. Omnis denique alios affectus sibi subicit. Amorem ardentissimum vincit, transfoderunt itaque amata corpora et in eorum quos occiderant iacuere complexibus; avaritiam, durissimum malum minimeque flexibile, ira calcavit adactam opes suas spargere et domui rebusque in unum conlatis inicere ignem. Quid ? Non ambitiosus magno aestimata proiecit insignia honoremque delatum reppulit ? Nullus affectus est, in quem non ira dominetur.
 
 Quod maxime desiderasti. Novate, nunc facere temptabimus, iram excidere animis aut certe refrenare et impetus eius inhibere. Id aliquando palam aperteque faciendum est, ubi minor vis mali patitur, aliquando ex occulto, ubi nimium ardet omnique impedimento exasperatur et crescit; refert quantas vires quamque integras habeat, utrum reverberanda et agenda retro sit an cedere ei debeamus, dum tempestas prima desaevit, ne remedia ipsa secum ferat.
 
 Consilium pro moribus cuiusque capiendum erit; quosdam enim preces vincunt; quidam insultant instantque summissis, quos terrendo placabimus; alios obiurgatio, alios confessio, alios pudor coepto deiecit, alios mora, lentum praecipitis mali remedium, ad quod novissime descendendum est.
 
-Ceteri enim adfectus dilationem recipiunt et curari tardius possunt, huius incitata et se ipsa rapiens violentia non paulatim procedit sed, dum incipit, tota est; nec aliorum more vitiorum sollicitat animos, sed abducit et impotentes sui cupidosque vel communis mali exagitat, nec in ea tantum in quae destinavit, sed in occurrentia obiter obiter A1: ob iter C. F. W. Mulier. furit. Cetera vitia impellunt animos, ira praecipitat.
+Ceteri enim adfectus dilationem recipiunt et curari tardius possunt, huius incitata et se ipsa rapiens violentia non paulatim procedit sed, dum incipit, tota est; nec aliorum more vitiorum sollicitat animos, sed abducit et impotentes sui cupidosque vel communis mali exagitat, nec in ea tantum in quae destinavit, sed in occurrentia obiter furit. Cetera vitia impellunt animos, ira praecipitat.
 
 Etiam si resistere contra affectus suos non licet, at certe affectibus ipsis licet stare; haec non secus quam fulmina procellaeque et si qua alia irrevocabilia sunt, quia non eunt, sed cadunt, vim suam magis ac magis intendit. Alia vitia a ratione, hoc a sanitate desciscit ;
 
@@ -658,7 +658,7 @@ Adice quod, cum indignatio eius a nimio sui suspectu veniat et animosa videatur,
 
 Ut tela a duro resiliunt et cum dolore caedentis solida feriuntur, ita nulla magnum animum iniuria ad sensum sui adducit, fragilior eo quod petit. Quanto pulchrius velut nulli penetrabilem telo omnis iniurias contumeliasque respuere! Ultio doloris confessio est ; non est magnus animus, quem incurvat iniuria. Aut potentior te aut imbecillior laesit ; si imbecillior, parce illi, si potentior, tibi.
 
-Nullum est argumentum magnitudinis certius quam nihil posse quo instigeris accidere. Pars superior mundi et ordinatior ac propinqua sideribus nec in nubem cogitur nec in tempestatem impellitur nec versatur in turbinem; omni tumultu caret, inferiora fulminantur. Eodem modo sublimis animus, quietus semper et in statione tranquilla conlocatus, omnia infra infra inferior MSS. : intra AL. se premens, quibus ira contrahitur, modestus et venerabilis est et dispositus ; quorum nihil invenies in irato.
+Nullum est argumentum magnitudinis certius quam nihil posse quo instigeris accidere. Pars superior mundi et ordinatior ac propinqua sideribus nec in nubem cogitur nec in tempestatem impellitur nec versatur in turbinem; omni tumultu caret, inferiora fulminantur. Eodem modo sublimis animus, quietus semper et in statione tranquilla conlocatus, omnia infra se premens, quibus ira contrahitur, modestus et venerabilis est et dispositus ; quorum nihil invenies in irato.
 
 Quis enim traditus dolori et furens non primam reiecit verecundiam ? Quis impetu turbidus et in aliquem ruens non quidquid in se venerandi habuit abiecit ? Cui officiorum numerus aut ordo constitit incitato ? Quis linguae temperavit ? Quis ullam partem corporis tenuit ?
 
@@ -676,7 +676,7 @@ Quotiens aliquid conaberis, te simul et ea, quae paras quibusque parans ipse, me
 
 Demus operam, ne accipiamus iniuriam, quia ferre nescimus. Cum placidissimo et facillimo et minime anxio morosoque vivendum est ; sumuntur a conversantibus mores et ut quaedam in contactos corporis vitia transibunt, ita animus mala sua proximis tradit.
 
-Ebriosus convictores in amorem meri traxit, impudicorum coetus fortem quoque et, si liceat, si liceat MSS. : ingenious is siliceum Pincianus, but in usage the transferred meaning is " hard-hearted " : solidum Cornelissen : si placet Gertz : si lis erat Petschenig. virum emolliit, avaritia in proximos virus suum transtulit. Eadem ex diverso ratio virtutum est, ut omne quod secum habent mitigent ; nec tam valetudini profuit utilis regio et salubrius caelum quam animis parum firmis in turba meliore versari.
+Ebriosus convictores in amorem meri traxit, impudicorum coetus fortem quoque et, si liceat, virum emolliit, avaritia in proximos virus suum transtulit. Eadem ex diverso ratio virtutum est, ut omne quod secum habent mitigent ; nec tam valetudini profuit utilis regio et salubrius caelum quam animis parum firmis in turba meliore versari.
 
 Quae res quantum possit intelleges, si videris feras quoque convictu nostro mansuescere nullique etiam immani bestiae vim suam permanere, si hominis contubernium diu passa est; retunditur omnis asperitas paulatimque inter placida dediscitur. Accedit huc, quod non tantum exemplo melior fit qui cum quietis hominibus vivit, sed quod causas irascendi non invenit nec vitium suum exercet. Fugere itaque debebit omnis quos irritaturos iracundiam sciet.
 
@@ -690,7 +690,7 @@ Eligamus ergo vel hos potius, si conscii nobis iracundiae sumus, qui vultum nost
 
 Quotiens disputatio longior et pugnacior erit, in prima resistamus, antequam robur accipiat. Alit se ipsa contentio et demissos altius tenet. Facilius est se a certamine abstinere quam abducere.
 
-Studia quoque graviora iracundis omittenda sunt aut certe citra lassitudinem exercenda, et animus non inter plura inter plura A : inter dura Gertz. versandus, sed artibus amoenis tradendus. Lectio illum carminum obleniat et historia fabulis detineat ; mollius delicatiusque tractetur.
+Studia quoque graviora iracundis omittenda sunt aut certe citra lassitudinem exercenda, et animus non inter plura versandus, sed artibus amoenis tradendus. Lectio illum carminum obleniat et historia fabulis detineat ; mollius delicatiusque tractetur.
 
 Pythagoras perturbationes animi lyra componebat; quis autem ignorat lituos et tubas concitamenta esse, sicut quosdam cantus blandimenta, quibus mens resolvatur ? Confusis oculis prosunt virentia et quibusdam coloribus infirma acies adquiescit, quorundam splendore praestringitur; sic mentes aegras studia laeta permulcent.
 
@@ -704,7 +704,7 @@ Optimum est itaque ad primum mali sensum mederi sibi, tum verbis quoque suis min
 
 Facile est autem adfectus suos, cum primum oriuntur, deprehendere ; morborum signa praecurrunt. Quemadmodum tempestatis ac pluviae ante ipsas notae veniunt, ita irae, amoris omniumque istarum procellarum animos vexantium sunt quaedam praenuntia.
 
-Qui comitiali vitio solent corripi, iam adventare valetudinem intellegunt, si calor summa deseruit et incertum lumen nervorumque trepidatio est, si memoria sublabitur caputque versatur ; solitis itaque remediis incipientem causam occupant, et odore gustuque quidquid est quod alienat animos repellitur, aut fomentis contra frigus rigoremque pugnatur ; aut si aut si A : aut si Hermes. parum medicina profecit, vitaverunt turbam et sine teste ceciderunt.
+Qui comitiali vitio solent corripi, iam adventare valetudinem intellegunt, si calor summa deseruit et incertum lumen nervorumque trepidatio est, si memoria sublabitur caputque versatur ; solitis itaque remediis incipientem causam occupant, et odore gustuque quidquid est quod alienat animos repellitur, aut fomentis contra frigus rigoremque pugnatur ; aut si parum medicina profecit, vitaverunt turbam et sine teste ceciderunt.
 
 Prodest morbum suum nosse et vires eius antequam spatientur opprimere. Videamus quid sit, quod nos maxime concitet. Alium verborum, alium rerum contumeliae movent; hic vult nobilitati, hic formae suae parci; hic elegantissimus haberi cupit, ille doctissimus ; hic superbiae impatiens est, hic contumaciae ; ille servos non putat dignos quibus irascatur, hic intra domum saevus est, foris mitis ; ille rogari invidiam iudicat, hic non rogari contumeliam. Non omnes ab eadem parte feriuntur ; scire itaque oportet, quid in te imbecillum sit, ut id maxime protegas.
 
@@ -718,7 +718,7 @@ Atheniensium tyrannum, memoriae proditur, cum multa in crudelitatem eius ebrius 
 
 Magna pars querellas manu fecit aut falsa suspicando aut levia adgravando. Saepe ad nos ira venit, saepius nos ad illam. Quae numquam arcessenda est ; etiam cum incidit, reiciatur.
 
-Nemo dicit sibi: " Hoc propter quod irascor aut feci aut fecisse potui " ; nemo animum facientis, sed ipsum aestimat factum. Atqui ille intuendus est, voluerit an inciderit, coactus sit an deceptus, odium secutus sit an praemium, sibi morem gesserit an manum alteri commodaverit. Aliquid aetas peccantis facit, aliquid fortuna, ut ferre aut pati aut pati A : ac pati Hermes, after Lipsius. aut humanum sit aut humile. humile A : non humile Hermes, after Madvig.
+Nemo dicit sibi: " Hoc propter quod irascor aut feci aut fecisse potui " ; nemo animum facientis, sed ipsum aestimat factum. Atqui ille intuendus est, voluerit an inciderit, coactus sit an deceptus, odium secutus sit an praemium, sibi morem gesserit an manum alteri commodaverit. Aliquid aetas peccantis facit, aliquid fortuna, ut ferre aut pati aut humanum sit aut humile.
 
 Eo nos loco constituamus, quo ille est cui irascimur ; nunc facit nos iracundos iniqua nostri aestimatio et quae facere vellemus pati nolumus.
 
@@ -730,7 +730,7 @@ Velut stupens gestum illum saevituri deformem sapienti viro servabat, oblitus ia
 
 " Ob hoc non cecidit, propter quod alius cecidisset. " Irascor," inquit; "plus faciam quam oportet, libentius faciam ; non sit iste servus in eius potestate qui in sua non est." Aliquis vult irato committi ultionem, cum Plato sibi ipse imperium abrogaverit ? Nihil tibi liceat, dum irasceris. Quare ? Quia vis omnia licere.
 
-Pugna tecum ipse ! Si vis vis added by Hermes, after Madvig. vincere iram, non potest te illa. Incipis vincere, si absconditur, si illi exitus non datur. Signa eius obruamus et illam quantum fieri potest occultam secretamque teneamus.
+Pugna tecum ipse ! Si vis vincere iram, non potest te illa. Incipis vincere, si absconditur, si illi exitus non datur. Signa eius obruamus et illam quantum fieri potest occultam secretamque teneamus.
 
 Cum magna id nostra molestia fiet, cupit enim exilire et incendere oculos et mutare faciem ; sed si eminere illi extra nos licuit, supra nos est. In imo pectoris secessu recondatur feraturque, non ferat ; immo in contrarium omnia eius indicia flectamus. Vultus remittatur, vox lenior sit, gradus lentior ; paulatim cum exterioribus interiora formantur.
 
@@ -882,7 +882,7 @@ Huic irasceris, deinde illi; servis, deinde libertis ; parentibus, deinde liberi
 
 Quanto nunc erat satius amicos parare, inimicos mitigare, rem publicam administrare, transferre in res domesticas operam, quam circumspicere, quid alicui facere possis mali, quod aut dignitati eius aut patrimonio aut corpori vulnus infligas, cum id tibi contingere sine certamine ac periculo non possit, etiam si cum inferiore concurses !
 
-Vinctum licet accipias et ad arbitrium tuum omni patientiae expositum ; saepe nimia vis caedentis aut articulum loco movit aut nervum in his quos fregerat dentibus fixit. Multos iracundia mancos, multos debiles fecit, etiam ubi patientem est est added by Petschenig. nancta materiam. Adice nunc quod nihil tam imbecille natum est, ut sine elidentis periculo pereat; imbecillos valentissimis alias dolor, alias casus exaequat.
+Vinctum licet accipias et ad arbitrium tuum omni patientiae expositum ; saepe nimia vis caedentis aut articulum loco movit aut nervum in his quos fregerat dentibus fixit. Multos iracundia mancos, multos debiles fecit, etiam ubi patientem est nancta materiam. Adice nunc quod nihil tam imbecille natum est, ut sine elidentis periculo pereat; imbecillos valentissimis alias dolor, alias casus exaequat.
 
 Quid, quod pleraque eorum, propter quae irascimur, offendunt nos magis quam laedunt ? Multum autem interest, utrum aliquis voluntati meae obstet an desit, eripiat an non det. Atqui in aequo ponimus, utrum aliquis auferat an neget, utrum spem nostram praecidat an differat, utrum contra nos faciat an pro se, amore alterius an odio nostri.
 
@@ -890,7 +890,7 @@ Quidam vero non tantum iustas causas standi contra nos, sed etiam honestas haben
 
 At me hercules vir magnus ac iustus fortissimum quemque ex hostibus suis et pro libertate ac salute patriae pertinacissimum suspicit et talem sibi civem, talem militem contingere optat.
 
-Turpe est odisse quem laudes ; quanto vero turpius ob id aliquem odisse, propter quod misericordia dignus est. Si captivus in servitutem subito depressus reliquias libertatis tenet nec ad sordida ac laboriosa ministeria agilis occurrit, si ex otio piger equum vehiculumque domini cursu non exaequat, si inter cottidiana pervigilia fessum somnus oppressit, si rusticum laborem recusat aut non fortiter obiit a servitute urbana et feriata translatus ad 2 durum opus, distinguamus, utrum aliquis non possit an nolit. Multos absolvemus, si coeperimus ante iudicare quam irasci. Nunc autem primum impetum sequimur, deinde, quamvis vana nos concitaverint, perseveramus, ne videamur coepisse sine causa, et, quod iniquissimum est, pertinaciores nos facit iniquitas irae ; retinemus enim illam et augemus, quasi argumentum sit iuste irascentis graviter irasci.
+Turpe est odisse quem laudes ; quanto vero turpius ob id aliquem odisse, propter quod misericordia dignus est. Si captivus in servitutem subito depressus reliquias libertatis tenet nec ad sordida ac laboriosa ministeria agilis occurrit, si ex otio piger equum vehiculumque domini cursu non exaequat, si inter cottidiana pervigilia fessum somnus oppressit, si rusticum laborem recusat aut non fortiter obiit a servitute urbana et feriata translatus ad durum opus, distinguamus, utrum aliquis non possit an nolit. Multos absolvemus, si coeperimus ante iudicare quam irasci. Nunc autem primum impetum sequimur, deinde, quamvis vana nos concitaverint, perseveramus, ne videamur coepisse sine causa, et, quod iniquissimum est, pertinaciores nos facit iniquitas irae ; retinemus enim illam et augemus, quasi argumentum sit iuste irascentis graviter irasci.
 
 Quanto melius est initia ipsa perspicere quam levia sint, quam innoxia! Quod accidere vides animalibus mutis, idem in homine deprendes ; frivolis turbamur et inanibus. Taurum color rubicundus excitat, ad umbram aspis exsurgit, ursos leonesque mappa proritat ; omnia, quae natura fera ac rabida sunt, consternantur ad vana.
 
@@ -954,9 +954,9 @@ Nunc iste se aliquem putat, quod custodit litigatorum turba limen obsessum ; nun
 
 Minus honorato loco positus irasci coepisti convivatori, vocatori, ipsi qui tibi praeferebatur. Demens, quid interest, quam lecti premas partem ? Honestiorem te aut turpiorem potest facere pulvinus ?
 
-Non aequis quendam oculis vidisti, quia de ingenio tuo male locutus est. Recipis hanc legem ? Ergo te Ennius, quo non delectaris, odisset, et Hortensius, si orationes eius improbares, si . . improbares added by Haupt. simultates tibi indiceret, et Cicero, si derideres carmina eius, inimicus esset. Vis tu aequo animo pati candidatus suffragia !
+Non aequis quendam oculis vidisti, quia de ingenio tuo male locutus est. Recipis hanc legem ? Ergo te Ennius, quo non delectaris, odisset, et Hortensius, si orationes eius improbares, simultates tibi indiceret, et Cicero, si derideres carmina eius, inimicus esset. Vis tu aequo animo pati candidatus suffragia !
 
-Contumeliam tibi fecit aliquis. Numquid maiorem quam Diogeni philosopho Stoico, cui de ira cum maxime disserenti adulescens protervus inspuit ? Tulit hoc ille leniter et sapienter : " Non quidem," inquit, " irascor, sed dubito tamen an oporteat irasci." Quanto Cato Cato added by Fickert: quanto noster A. noster melius !
+Contumeliam tibi fecit aliquis. Numquid maiorem quam Diogeni philosopho Stoico, cui de ira cum maxime disserenti adulescens protervus inspuit ? Tulit hoc ille leniter et sapienter : " Non quidem," inquit, " irascor, sed dubito tamen an oporteat irasci." Quanto Cato noster melius !
 
 Qui, cum agenti causam in frontem mediam quantum poterat attracta pingui saliva inspuisset Lentulus ille patrum nostrorum memoria factiosus et impotens, abstersit faciem et : " Adfirmabo," inquit, " omnibus, Lentule, falli eos qui te negant os habere."
 

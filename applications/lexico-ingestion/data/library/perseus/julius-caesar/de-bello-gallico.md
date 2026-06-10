@@ -603,7 +603,7 @@ In his fuit Ariovistus, qui naviculam deligatam ad ripam nactus ea profugit; rel
 
 Duae fuerunt Ariovisti uxores, una Sueba natione, quam domo secum eduxerat, altera Norica, regis Voccionis soror, quam in Gallia duxerat a fratre missam: utraque in ea fuga periit; duae filiae: harum altera occisa, altera capta est.
 
-C. Valerius Procillus, cum a custodibus in fuga trinis catenis vinctus traheretur, in ipsum Caesarem hostes equitatu insequentem incidit.
+**C** Valerius Procillus, cum a custodibus in fuga trinis catenis vinctus traheretur, in ipsum Caesarem hostes equitatu insequentem incidit.
 
 Quae quidem res Caesari non minorem quam ipsa victoria voluptatem attulit, quod hominem honestissimum provinciae Galliae, suum familiarem et hospitem, ereptum ex manibus hostium sibi restitutum videbat neque eius calamitate de tanta voluptate et gratulatione quicquam fortuna deminuerat.
 
@@ -659,7 +659,7 @@ Apud eos fuisse regem nostra etiam memoria Diviciacum, totius Galliae potentissi
 
 qui maxime feri inter ipsos habeantur longissimeque absint;
 
-XV milia Atrebates, Ambianos X milia, Morinos XXV milia, Menapios VII milia, Caletos X milia, Veliocasses et Viromanduos totidem, Atuatucos XVIIII milia;
+**XV** milia Atrebates, Ambianos X milia, Morinos XXV milia, Menapios VII milia, Caletos X milia, Veliocasses et Viromanduos totidem, Atuatucos XVIIII milia;
 
 Condrusos, Eburones, Caerosos, Paemanos, qui uno nomine Germani appellantur, arbitrari ad XL milia.
 
@@ -1057,7 +1057,7 @@ P. Crassum cum cohortibus legionariis XII et magno numero equitatus in Aquitania
 
 Q. Titurium Sabinum legatum cum legionibus tribus in Venellos, Coriosolites Lexoviosque mittit, qui eam manum distinendam curet.
 
-D. Brutum adulescentem classi Gallicisque navibus, quas ex Pictonibus et Santonis reliquisque pacatis regionibus convenire iusserat, praeficit et, cum primum possit, in Venetos proficisci iubet. Ipse eo pedestribus copiis contendit.
+**D** Brutum adulescentem classi Gallicisque navibus, quas ex Pictonibus et Santonis reliquisque pacatis regionibus convenire iusserat, praeficit et, cum primum possit, in Venetos proficisci iubet. Ipse eo pedestribus copiis contendit.
 
 Erant eius modi fere situs oppidorum ut posita in extremis lingulis promunturiisque neque pedibus aditum haberent, cum ex alto se aestus incitavisset, quod [bis] accidit semper horarum XII spatio, neque navibus, quod rursus minuente aestu naves in vadis adflictarentur.
 
@@ -1635,7 +1635,7 @@ Caesar in Belgis omnium legionum hiberna constituit. Eo duae omnino civitates ex
 
 His rebus gestis ex litteris Caesaris dierum XX supplicatio a senatu decreta est.
 
-L. Domitio Ap. Claudio consulibus, discedens ab hibernis Caesar in Italiam, ut quotannis facere consuerat, legatis imperat quos legionibus praefecerat uti quam plurimas possent hieme naves aedificandas veteresque reficiendas curarent. Earum modum formamque demonstrat.
+**L** Domitio Ap. Claudio consulibus, discedens ab hibernis Caesar in Italiam, ut quotannis facere consuerat, legatis imperat quos legionibus praefecerat uti quam plurimas possent hieme naves aedificandas veteresque reficiendas curarent. Earum modum formamque demonstrat.
 
 Ad celeritatem onerandi subductionesque paulo facit humiliores quam quibus in nostro mari uti consuevimus, atque id eo magis, quod propter crebras commutationes aestuum minus magnos ibi fluctus fieri cognoverat; ad onera, ad multitudinem iumentorum transportandam paulo latiores quam quibus in reliquis utimur maribus.
 
@@ -4047,7 +4047,7 @@ Cum utrimque gladii destricti essent, non tam pugnandi quam diffugiendi fuit utr
 
 Bellicosissimis gentibus devictis Caesar, cum videret nullam iam esse civitatem quae bellum pararet quo sibi resisteret, sed nonnullos ex oppidis demigrare, ex agris diffugere ad praesens imperium evitandum, plures in partes exercitum dimittere constituit.
 
-M. Antonium quaestorem cum legione duodecima sibi coniungit. C. Fabium legatum cum cohortibus XXV mittit in diversissimam partem Galliae, quod ibi quasdam civitates in armis esse audiebat neque C. Caninium Rebilum legatum, qui in illis regionibus erat, satis firmas duas legiones habere existimabat.
+**M** Antonium quaestorem cum legione duodecima sibi coniungit. C. Fabium legatum cum cohortibus XXV mittit in diversissimam partem Galliae, quod ibi quasdam civitates in armis esse audiebat neque C. Caninium Rebilum legatum, qui in illis regionibus erat, satis firmas duas legiones habere existimabat.
 
 Titum Labienum ad se evocat; legionem autem XV, quae cum eo fuerat in hibernis, in togatam Galliam mittit ad colonias civium Romanorum tuendas, ne quod simile incommodum accideret decursione barbarorum ac superiore aestate Tergestinis acciderat, qui repentino latrocinio atque impetu illorum erant oppressi.
 

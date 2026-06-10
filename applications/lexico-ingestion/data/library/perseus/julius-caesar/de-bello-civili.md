@@ -265,7 +265,7 @@ Pompeius his rebus cognitis, quae erant ad Corfinium gestae, Luceria proficiscit
 
 copias undique omnes ex novis dilectibus ad se cogi iubet; servos, pastores armat atque iis equos attribuit; ex his circiter ccc equites conficit.
 
-L. Manlius praetor Alba cum cohortibus sex profugit, Rutilius Lupus praetor Tarracina cum tribus; quae procul equitatum Caesaris conspicatae, cui praeerat Vibius Curius, relicto praetore signa ad Curium transferunt atque ad eum transeunt.
+**L** Manlius praetor Alba cum cohortibus sex profugit, Rutilius Lupus praetor Tarracina cum tribus; quae procul equitatum Caesaris conspicatae, cui praeerat Vibius Curius, relicto praetore signa ad Curium transferunt atque ad eum transeunt.
 
 item reliquis itineribus nonnullae cohortes in agmen Caesaris, aliae in equites incidunt. reducitur ad eum deprensus ex itinere N. Magius Cremona, praefectus fabrum Cn. Pompei.
 
@@ -1029,7 +1029,7 @@ eodemque exemplo sentiunt totam urbem, qua sit aditus ab terra, muro turribusque
 
 quibus ipsi magna speravissent, spatii propinquitate interire parique condicione ex muro ac turribus bellandi data se virtute nostris adaequare non posse intellegunt, ad easdem deditionis condiciones recurrunt.
 
-M. Varro in ulteriore Hispania initio cognitis iis rebus quae sunt in Italia gestae, diffidens Pompeianis rebus amicissime de Caesare loquebatur:
+**M** Varro in ulteriore Hispania initio cognitis iis rebus quae sunt in Italia gestae, diffidens Pompeianis rebus amicissime de Caesare loquebatur:
 
 praeoccupatum sese legatione ab Cn. Pompeio, teneri obstrictum fide; necessitudinem quidem sibi nihilo minorem cum Caesare intercedere, neque se ignorare, quod esset officium legati, qui fiduciariam operam obtineret, quae vires suae, quae voluntas erga Caesarem totius provinciae.
 
@@ -2233,7 +2233,7 @@ neque id fuit falsum, quod ille in pugnam proficiscens dixerat. sic enim Caesar 
 
 ex Pompeiano exercitu circiter milia xv cecidisse videbantur, sed in deditionem venerunt amplius milia xxiiii — namque etiam cohortes, quae praesidio in castellis fuerant, sese Sullae dediderunt — multi praeterea in finitimas civitates refugerunt, signaque militaria ex proelio ad Caesarem sunt relata clxxx et aquilae viiii.
 
-L. Domitius ex castris in montem refugiens, cum vires eum lassitudine defecissent, ab equitibus est interfectus.
+**L** Domitius ex castris in montem refugiens, cum vires eum lassitudine defecissent, ab equitibus est interfectus.
 
 Eodem tempore D. Laelius cum classe ad Brundisium venit eademque ratione, qua factum a Libone antea demonstravimus, insulam obiectam portui Brundisino tenuit.
 

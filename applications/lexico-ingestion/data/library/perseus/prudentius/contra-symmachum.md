@@ -3044,7 +3044,7 @@ title: Contra Symmachum
 
 **705** sed vis cruda virum perfractaque congredientum
 
-**706** pectora nec trepidans animus subcumbere leto7 06
+**706** pectora nec trepidans animus subcumbere leto
 
 **707** pro patria et pulchram per vulnera quaerere laudem,
 

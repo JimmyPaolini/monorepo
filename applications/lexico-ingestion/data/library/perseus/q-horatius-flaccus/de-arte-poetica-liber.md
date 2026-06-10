@@ -99,7 +99,7 @@ title: De Arte Poetica liber
 
 **44** pleraque differat et praesens in tempus omittat.
 
-**46** Lines 46 and 45 reordered. Print preserves natural order.in verbis etiam tenuis cautusque serendis
+**46** in verbis etiam tenuis cautusque serendis
 
 **45** hoc amet, hoc spernat promissi carminis auctor.
 

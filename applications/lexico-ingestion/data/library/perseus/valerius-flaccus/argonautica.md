@@ -13,7 +13,7 @@ title: Argonautica
 
 # Argonautica
 
-**1** Prima deum magnis canimus freta pervia natisnatis N, nautis V
+**1** Prima deum magnis canimus freta pervia natis
 
 **2** fatidicamque ratem, Scythici quae Phasidis oras
 
@@ -31,33 +31,33 @@ title: Argonautica
 
 **9** Oceanus Phrygios prius indignatus Iulos,
 
-**10** eripe me populis et habentihabenti X 2 O 2 N, habent sua V, sua a V 2 additum, ncnc tempore, ut permulta (cf. 16, 18, 19) in prima pagina codicis, paene deletum nubila terrae,
+**10** eripe me populis et habenti nubila terrae,
 
 **11** sancte pater, veterumque fave veneranda canenti
 
-**12** facta virum. versam proles tua pandetpandet Gryphius, pandit V Idumen
+**12** facta virum. versam proles tua pandet Idumen
 
-**13** (namque potestpotest Pius, potes VC ): Solymo nigrantem pulvere fratrem
+**13** (namque potest): Solymo nigrantem pulvere fratrem
 
 **14** spargentemque faces et in omni turre furentem.
 
-**15** ille tibi cultusque deum delubraque gentisgentis cod. Bon., genti V | pater (11) i. e. Vespasianus, proles (12) i. e. Domitianus, fratrem (13) et ille (15) i. e. Titus
+**15** ille tibi cultusque deum delubraque gentis
 
-**16** instituet, cum tu,tu V 1 ut vid. supra lin. add., plane fere obliteratum, S, iam MN genitor, lucebis ab omni
+**16** instituet, cum tu, genitor, lucebis ab omni
 
-**17** parte poli, neque iamneque iam Sudhaus, neque in V | Tyriis — carinis Friesemann, tyrias — carinas V Tyriis Cynosura carinis
+**17** parte poli, neque iam Tyriis Cynosura carinis
 
-**18** certior aut Grais Helice servanda magistris,magistris V dilucide
+**18** certior aut Grais Helice servanda magistris,
 
-**19** sed tu signa dabis, sedsed — sed Lemaire, seu — seu V | mittet V dare exhibet te duce Graecia mittet
+**19** sed tu signa dabis, sed te duce Graecia mittet
 
 **20** et Sidon Nilusque rates. nunc nostra serenus
 
 **21** orsa iuves, haec ut Latias vox impleat urbes.
 
-**22** Haemoniam habet par. primis Pelias frenabat ab annis,
+**22** Haemoniam primis Pelias frenabat ab annis,
 
-**23** iam gravis et longus populis metus: habet Par. illius amnesamnes Sabellicus, omnes VC, ore Par.
+**23** iam gravis et longus populis metus: illius amnes
 
 **24** Ionium quicumque petunt, ille Othryn et Haemum
 
@@ -87,17 +87,17 @@ title: Argonautica
 
 **37** ira maris vastique placent discrimina ponti.
 
-**38** tum iuvenem tranquilla tuenstuens C Ald., timens V nec fronte timendus
+**38** tum iuvenem tranquilla tuens nec fronte timendus
 
-**39** occupat et fictis dat vultum et pondera dictis.fictis uultus dat et pondera dictis habet Par.
+**39** occupat et fictis dat vultum et pondera dictis.
 
 **40** 'hanc mihi militiam, veterum quae pulchrior actis,
 
 **41** adnue daque animum. nostri de sanguine Phrixus
 
-**42** Cretheos ut patrias audisaudis V, audisti C effugerit aras.
+**42** Cretheos ut patrias audis effugerit aras.
 
-**43** hunc ferus Aeetes,eta pro Aeetes V (sic vel similiter saepe). Inter 44 et 46 x signum minio pictum est in marg. V, MNO 2 ad sententiam satis apte addunt inter et attonitae mactat sollemnia mensae Scythiam Phasimque rigentem
+**43** hunc ferus Aeetes, Scythiam Phasimque rigentem
 
 **44** qui colit (heu magni Solis pudor), hospita vina
 
@@ -105,9 +105,9 @@ title: Argonautica
 
 **47** fama refert: ipsum iuvenem tam saeva gementem,
 
-**48** ipsum ego, cum serus fessosfessos V 2 SM 2, fessus V sopor alligat artus,
+**48** ipsum ego, cum serus fessos sopor alligat artus,
 
-**49** aspicio; lacera adsiduis namque illius umbra ut supra V, meque assiduis lacera illius umbra C
+**49** aspicio; lacera adsiduis namque illius umbra
 
 **50** questibus et magni numen maris excitat Helle.
 
@@ -121,35 +121,35 @@ title: Argonautica
 
 **55** tu, cui iam curaeque vigent animique viriles,
 
-**56** i, post 64 legitur in V, suo loco in MN | I V, Id V 2 decus, et pecoris Nephelaei vellera Graio
+**56** i, decus, et pecoris Nephelaei vellera Graio
 
 **57** redde tholo ac tantis temet dignare periclis.'
 
-**58** talibus hortatur iuvenem, propiorquepropiorque M2, propriorque V (sic saepius) iubenti
+**58** talibus hortatur iuvenem, propiorque iubenti
 
-**59** conticuit, certuscertus QX 2 PM 2, certis V Scythico concurrere ponto
+**59** conticuit, certus Scythico concurrere ponto
 
 **60** Cyaneas, tantoque silet possessa dracone
 
 **61** vellera, multifidas regis quem filia linguas
 
-**62** vibrantem ex adytis cantu dapibusque vocabatuocabat V, ĩ supr. u add. V 2
+**62** vibrantem ex adytis cantu dapibusque vocabat
 
-**63** et dabat ex ternoex terno diiunxit Stroh, ut nu- merus in re magica sollemnis efficeretur; de usu praepositionis ex cf Langen ad hunc locum, externo V et similiter Avien. Ar. 347 ebria ut externo (Ambros.) splendescat lana veneno | liuentia X 2 O 2 M 2 N, libentia V, libantia V 2 liventia mella veneno.
+**63** et dabat ex terno liventia mella veneno.
 
 **64** Mox taciti patuere doli nec vellera curae
 
 **65** esse viro, sed sese odiis immania cogi
 
-**66** in freta. qua iussos sed tandemsed tandem Caussin, sectantem VC | quaerere SV 2, querire V 1 quaerere Colchos
+**66** in freta. qua iussos sed tandem quaerere Colchos
 
 **67** arte queat? nunc aerii plantaria vellet
 
-**68** PerseosPerseas V 2 aut curru saevos frenasse dracones
+**68** Perseos aut curru saevos frenasse dracones
 
-**69** ardet, utardet, ut Sudhaus, Creditus V | Cereris qui Bon. 2, cerere s quo V ignaras Cereris qui vomere terras
+**69** ardet, ut ignaras Cereris qui vomere terras
 
-**70** imbuitImbuat V 2 | damnabit V 2 et flava quercum damnavit arista.
+**70** imbuit et flava quercum damnavit arista.
 
 **71** heu quid agat? populumne levem veterique tyranno
 
@@ -163,17 +163,17 @@ title: Argonautica
 
 **76** fama queat? tu sola animos mentesque peruris,
 
-**77** Gloria;tu — Gloria habet Par. | mentesque Par., mentem- que V te viridem videt immunemque senectae
+**77** Gloria; te viridem videt immunemque senectae
 
-**78** Phasidis in ripa stantemstantem SM, stentem V iuvenesque vocantem.
+**78** Phasidis in ripa stantem iuvenesque vocantem.
 
-**79** tandem animi incertumincaeptum C a, incoeptum C b confusaque pectora firmat
+**79** tandem animi incertum confusaque pectora firmat
 
 **80** relligio, tendensque pias ad sidera palmas
 
 **81** 'omnipotens regina', inquit 'quam, turbidus atro
 
-**82** aethereAethere V, Aethera C | imbrem V 2 XO 2, imbre V 1 C caeruleum quateret cum Iuppiter imbrem,
+**82** aethere caeruleum quateret cum Iuppiter imbrem,
 
 **83** ipse ego praecipiti tumidum per Enipea nimbo
 
@@ -189,19 +189,19 @@ title: Argonautica
 
 **89** illa dabo, dabit auratis et cornibus igni
 
-**90** collaColla XM, Colca V | greges SV 2, greces V 1 pater, niveique greges altaria cingent.'
+**90** colla pater, niveique greges altaria cingent.'
 
-**91** AccepereAccepere de(a)e S, Accipere de V 1, Accepere sede V 2 deae celerique per aethera lapsu
+**91** Accepere deae celerique per aethera lapsu
 
 **92** diversas petiere vias. in moenia pernix
 
-**93** ThespiaThespia et ad Kr., cf. 478, Thespiaca et V, Thespiaca ad C et ad carum Tritonia devolat Argum.
+**93** Thespia et ad carum Tritonia devolat Argum.
 
 **94** moliri hunc puppem iubet et demittere ferro
 
-**95** robora, Peliacas et iam comes exit in umbras.umbras Sabellicus, undas VC
+**95** robora, Peliacas et iam comes exit in umbras.
 
-**96** at Iuno Argolicas pariter Macetumquemacedumque V 2 per urbes
+**96** at Iuno Argolicas pariter Macetumque per urbes
 
 **97** spargit inexpertos temptare parentibus austros
 
@@ -209,7 +209,7 @@ title: Argonautica
 
 **99** poscere quos revehat rebusque in saecula tollat.
 
-**100** Omnis avetauet C, cf. Thes. l. L. II p. 1313 sq., habet V, obit Schenkl | fama C Ald., forma V quae iam bellis spectataque fama
+**100** Omnis avet quae iam bellis spectataque fama
 
 **101** turba ducum, primae seu quos in flore iuventae
 
@@ -219,11 +219,11 @@ title: Argonautica
 
 **104** hos stimulant magnaque ratem per lustra viasque
 
-**105** visivisi Heinsius, iussi V laude canunt manifesto in lumine Fauni
+**105** visi laude canunt manifesto in lumine Fauni
 
 **106** silvarumque deae atque elatis cornibus Amnes.
 
-**107** Protinus Inachiis ultro Tirynthius ArgisArgis Bon. 1, agris V
+**107** Protinus Inachiis ultro Tirynthius Argis
 
 **108** advolat, Arcadio cuius flammata veneno
 
@@ -235,13 +235,13 @@ title: Argonautica
 
 **112** insequitur solitosque novat Saturnia questus:
 
-**113** 'o utinam Graiae rueretrueret X 2 supra lin. corr., grueret V non omne iuventae
+**113** 'o utinam Graiae rueret non omne iuventae
 
 **114** in nova fata decus, nostrique Eurystheos haec nunc
 
 **115** iussa forent. imbrem et tenebras saevumque tridentem
 
-**116** iam iam ego et inviti torsissemtorsissem M, torrissem V coniugis ignem.
+**116** iam iam ego et inviti torsissem coniugis ignem.
 
 **117** nune quoque nec socium nostrae columenve carinae
 
@@ -257,7 +257,7 @@ title: Argonautica
 
 **123** litora; iam pinus gracili dissolvere lamna
 
-**124** Thespiaden iungiqueiungitque V, t erasum in P latus lentoque sequaces
+**124** Thespiaden iungique latus lentoque sequaces
 
 **125** molliri videt igne trabes, remisque paratis
 
@@ -269,21 +269,21 @@ title: Argonautica
 
 **129** lumina, picturae varios superaddit honores.
 
-**130** hic sperata ...hic spe V, hic spectes etenim V 2, hic sperata SM, sperata diu Baehrens, fort. sperata deo vel Iovi (cf. 133), hic insperato P 2 C Tyrrheni tergore piscis
+**130** hic sperata ... Tyrrheni tergore piscis
 
 **131** Peleos in thalamos vehitur Thetis; aequora delphin
 
-**132** corripit, illa sedetCorripit sedet V, Corripuit residet V 2, ipsa interposuit Baehrens, illa Carrion (incertum, an ex C) | Achillen Thilo, achille V, achillem V 2 PM deiecta in lumina palla
+**132** corripit, illa sedet deiecta in lumina palla
 
 **133** nec love maiorem nasci suspirat Achillen.
 
 **134** hanc Panope Dotoque soror laetataque fluctu
 
-**135** prosequitur nitidisnitidis Wyttenbach, nudis V pariter Galatea lacertis
+**135** prosequitur nitidis pariter Galatea lacertis
 
-**136** altaalta Loehbach, antra V petens: Siculo revocat de litore Cyclops.
+**136** alta petens: Siculo revocat de litore Cyclops.
 
-**137** contra ignis viridiqueuiridisque V 2 torus de fronde dapesque
+**137** contra ignis viridique torus de fronde dapesque
 
 **138** vinaque et aequoreos inter cum coniuge divos
 
@@ -291,39 +291,39 @@ title: Argonautica
 
 **140** parte alia Pholoe multoque insanus Iaccho
 
-**141** RhoetusRh(o)etus SMC, Rboetus V, Rhoecus Parrhasius | atracia O 2 M 2, racia V, t(h)rac(h)ia SM, extracta C et Atracia subitae de virgine pugnae.
+**141** Rhoetus et Atracia subitae de virgine pugnae.
 
 **142** crateres mensaeque volant araeque deorum
 
 **143** poculaque, insignis veterum labor. optimus hasta
 
-**144** hic Peleus, hic enseHic P. hic ense V, Hac P., hac parte C furens agnoscitur Aeson;
+**144** hic Peleus, hic ense furens agnoscitur Aeson;
 
 **145** fert gravis invito victorem Nestora tergo
 
-**146** Monychus, ardenti peragit Clanis ActoraActora C Ald., auctora V quercu;
+**146** Monychus, ardenti peragit Clanis Actora quercu;
 
 **147** nigro Nessus equo fugit, adclinisque tapetis
 
-**148** in mediisin mediis: cf. Ilias Lat. 889 | hippasus X ex corr., M, hispasus V vacuo condit caput Hippasus auro.
+**148** in mediis vacuo condit caput Hippasus auro.
 
-**149** Haec quamquam miranda viris stupet Aesone natus stupet anxius navigii fragilitatem, cf. 150 sq. | aesone natus SM, aeson atus V, aeson ytaeus V 2 (inter n et y alterum y (?) paene obliteratum apparet)
+**149** Haec quamquam miranda viris stupet Aesone natus
 
-**150** etEt SM, Haec V 2 in ras., V 1 non legitur secum: 'heu miseros nostrum natosque patresque.
+**150** et secum: 'heu miseros nostrum natosque patresque.
 
 **151** haccine nos animae faciles rate nubila contra
 
 **152** mittimur? in solum nunc saeviet Aesona pontus?
 
-**153** non iuvenem in casus eademnque pericula AcastumNon V 1, Nam V 2 | acastum XMV 2, castum V
+**153** non iuvenem in casus eademnque pericula Acastum
 
 **154** abripiam? invisae Pelias freta tuta carinae
 
 **155** optet et exoret nostris cum matribus undas.'
 
-**156** Talia cunctanticunctanti Ald., conanti V laevum Iovis armiger aethra
+**156** Talia cunctanti laevum Iovis armiger aethra
 
-**157** advenit et validis fixam erigiterigit ON, er git X, ergit QII, rapit X et P in marg., git V et perspicue M, uegit V 2, gerit M 2 C unguibus agnam.
+**157** advenit et validis fixam erigit unguibus agnam.
 
 **158** at procul e stabulis trepidi clamore sequuntur
 
@@ -341,7 +341,7 @@ title: Argonautica
 
 **165** venimus ad questus: socium te iungere coeptis
 
-**166** est animus; neque enim Telamon aut Canthuscanthus et MN, candus et S (V olim, ut vestigia docent), candidus V 2 in ras. scripsisse spondeo et Idas
+**166** est animus; neque enim Telamon aut Canthus et Idas
 
 **167** Tyndareusque puer mihi vellere dignior Helles.
 
@@ -357,7 +357,7 @@ title: Argonautica
 
 **173** quam referam visas tua per suspiria gentes.'
 
-**174** Nec passus rex plura virum: 'satsat S, stat V multa parato
+**174** Nec passus rex plura virum: 'sat multa parato
 
 **175** in quaecumque vocas; nec nos' ait 'optume, segnes
 
@@ -365,11 +365,11 @@ title: Argonautica
 
 **177** quam tibi, si primos duce te virtutis honoris
 
-**178** carpere fraternae sedeatquesedeatque N, O 2 in marg. inf., sede X, O ut vid., V ut forma et spatium rasurae docent, sede at X 2, sed et M, eueniet q V 2 in ras., si des Carrion pereleganter, sed cf. I 555. VII 428; corruptela sic orta videtur sede adq; adcr. adcrescere famae.
+**178** carpere fraternae sedeatque adcrescere famae.
 
 **179** quin ego, nequa metu nimio me cura parentis
 
-**180** impediat, fallam ignarum subitusque paratisparatis Bon. 1 paratus V
+**180** impediat, fallam ignarum subitusque paratis
 
 **181** tunc adero, primas linquet cum puppis harenas.'
 
@@ -387,13 +387,13 @@ title: Argonautica
 
 **188** tum laeti statuunt aras. tibi, rector aquarum,
 
-**189** summus honor, tibi caeruleis in litore vittisuittis M, uictis V
+**189** summus honor, tibi caeruleis in litore vittis
 
-**190** et Zephyris Glaucoque bovem Thetidique iuvencamiuvencam C, iuuencum V
+**190** et Zephyris Glaucoque bovem Thetidique iuvencam
 
 **191** deicit Ancaeus. non illo certior alter
 
-**192** pinguiaPinguia S V 2, Pingua V letifera perfringere colla bipenni.
+**192** pinguia letifera perfringere colla bipenni.
 
 **193** ipse ter aequoreo libans carchesia patri
 
@@ -401,9 +401,9 @@ title: Argonautica
 
 **195** regna quatis terrasque salo complecteris omnes,
 
-**196** da veniam. scio me cunctis e gentibuscun(c)tis egentibus SM, cuntis (item 213) agentibus V unum
+**196** da veniam. scio me cunctis e gentibus unum
 
-**197** inlicitas temptare vias hiememque mereri:merer e V 1
+**197** inlicitas temptare vias hiememque mereri:
 
 **198** sed non sponte feror, nec nunc mihi iungere montes
 
@@ -413,15 +413,15 @@ title: Argonautica
 
 **201** repperit et Colchos in me luctumque meorum:
 
-**202** †illumetuIlli me V (sub rasura 1, altera hasta u litterae, 2, t, 3, vestigia u litt. ita apparent, ut Illumetu scriptum fuisse intellegas), Illo metu X, Ille metu OQX 2 P, Illum ego tu M, O 2 et X 2 in marg., Ille meum V 2; duo hemistichia huius fere sententiae ex- cidisse videntur ilium etiam tantum fas est sentire dolorem. aequore iam placido, non indignantibus undis tantum ... non indignantibus undis
+**202** †illumetu tantum ... non indignantibus undis
 
 **203** hoc caput accipias et pressam regibus alnum.'
 
-**204** sic fatus pingui cumulat libaminelibamine V 2 SM, libamina V flammam.
+**204** sic fatus pingui cumulat libamine flammam.
 
-**205** Protulit ut crinemcrinem OQX 2 P, crimen VX densis luctatus in extis
+**205** Protulit ut crinem densis luctatus in extis
 
-**206** ignis et escenditaescendit V clare, a(d)scendit SM salientia viscera tauri,
+**206** ignis et escendit salientia viscera tauri,
 
 **207** ecce sacer totusque dei per litora Mopsus
 
@@ -431,23 +431,23 @@ title: Argonautica
 
 **210** vox horrenda viris; tum facta silentia vati:
 
-**211** 'heu quaenam aspicio. nostris modo concitusconcitus V 2, M 2 in ras., concitos VS ausis
+**211** 'heu quaenam aspicio. nostris modo concitus ausis
 
 **212** aequoreos vocat ecce deos Neptunus et ingens
 
 **213** concilium. fremere et legem defendere cuncti
 
-**214** hortantur. sic amplexu,amplexu Heinsius, amplexus V sic pectora fratris,
+**214** hortantur. sic amplexu, sic pectora fratris,
 
 **215** Iuno, tene; tuque o puppem ne desere, Pallas:
 
 **216** nunc patrui nunc flecte minas. cessere ratemque
 
-**217** accepereAccepere S, Accippe re V mari. per quot discrimina rerum
+**217** accepere mari. per quot discrimina rerum
 
 **218** expedior. subita cur pulcher harundine crines
 
-**219** velat Hylas? unde urna umeris niveosque per artushumeris M, numeris V | per artus X 2 et M 2 in marg., P, paratus V
+**219** velat Hylas? unde urna umeris niveosque per artus
 
 **220** caeruleae vestes? unde haec tibi vulnera, Pollux?
 
@@ -463,25 +463,25 @@ title: Argonautica
 
 **226** Aesonide. cerno et thalamos ardere iugales.'
 
-**227** Iamdudum... Minyas ambage ducemqueIamdudum minyas ambage M, Iandudum minsas ambige V, S ut vid., I. uates mynias a. C a Carr. 1, I. longa minias a. C b Carr. 2, verum nescitur, nam possis per- multa, velut tali, insana | ducemque X in marg., ducumque V
+**227** Iamdudum... Minyas ambage ducemque
 
-**228** terrificat; sed enim contra Phoebeius Idmon,idmon SM 2, idimon V
+**228** terrificat; sed enim contra Phoebeius Idmon,
 
-**229** non pallore viris, non ullo horrore comarumcomarum X 2 QM, cumarum V
+**229** non pallore viris, non ullo horrore comarum
 
 **230** terribilis, plenus fatis Phoeboque quieto,
 
 **231** cui genitor tribuit monitu praenoscere divum
 
-**232** omina, seu flammas seu lubrica comminus extalubri comminus exit V, corr. SM 2
+**232** omina, seu flammas seu lubrica comminus exta
 
 **233** seu plenum certis interroget aera pennis,
 
-**234** sic sociis Mopsoquemopsoque S, mossoque V canit: 'quantum augur Apollo
+**234** sic sociis Mopsoque canit: 'quantum augur Apollo
 
 **235** flammaque prima docet, praeduri plena laboris
 
-**236** cerno equidem, patiens sed quae ratis omniaomnia S, omina V vincet.
+**236** cerno equidem, patiens sed quae ratis omnia vincet.
 
 **237** ingentes durate animae dulcesque parentum
 
@@ -507,13 +507,13 @@ title: Argonautica
 
 **248** ite, viri, mecum dubiisque evincite rebus,
 
-**249** quae meminisse iuvetite — iuuet habet Par. nostrisque nepotibus instent.instent V 2 in marg., O 2 MN, istem V
+**249** quae meminisse iuvet nostrisque nepotibus instent.
 
 **250** hanc vero, socii, venientem litore laeti
 
 **251** dulcibus adloquiis ludoque educite noctem.'
 
-**252** paretur. molli iuvenes fundunturfunduntur corr. X 2 M 2, funguntur V in alga,
+**252** paretur. molli iuvenes funduntur in alga,
 
 **253** conspicuusque toris Tirynthius. exta ministri
 
@@ -521,7 +521,7 @@ title: Argonautica
 
 **255** Iamque aderat summo decurrens vertice Chiron
 
-**256** clamantemque patri procul ostendebatostendebat M 2 C, ostenderet V, ostenderat M, ostentarat S Achillen.
+**256** clamantemque patri procul ostendebat Achillen.
 
 **257** ut puer ad notas erectum Pelea voces
 
@@ -541,17 +541,17 @@ title: Argonautica
 
 **265** suspiciensque polum 'placido si currere fluctu
 
-**266** Pelea vultis'uultis M 2, uultus V ait 'ventosque optare ferentes,
+**266** Pelea vultis' ait 'ventosque optare ferentes,
 
 **267** hoc, superi, servate caput. tu cetera, Chiron,
 
 **268** da mihi. te parvus lituos et bella loquentem
 
-**269** miretur;miretur X 2 M 2, meretur V sub te puerilia tela magistro
+**269** miretur; sub te puerilia tela magistro
 
 **270** senator ferat et nostram festinet ad hastam.'
 
-**271** omnibus inde merome ro M 2 ut vid., me V, viae V 2 in marg., uie XN, magis C; 'mero caluisse virtus' dicitur, unde promissa vs. 272sq.; Bacchyl. frg. 21 calor additus: ire per altum
+**271** omnibus inde mero calor additus: ire per altum
 
 **272** magna mente volunt. Phrixi promittitur absens
 
@@ -559,7 +559,7 @@ title: Argonautica
 
 **274** Sol ruit et totum Minyis laetantibus undae
 
-**275** deduxerededuxere OM 2 C a, diduxere VXC b diem. sparguntur litore curvo
+**275** deduxere diem. sparguntur litore curvo
 
 **276** lumina nondum ullis terras monstrantia nautis.
 
@@ -571,19 +571,19 @@ title: Argonautica
 
 **280** fugerit Inoo linquens Athamanta Learcho;
 
-**281** aureus ut iuvenem miserantibusmirantibus Bentley intulit undis
+**281** aureus ut iuvenem miserantibus intulit undis
 
 **282** vector et adstrictis ut sedit cornibus Helle.
 
-**283** septem Aurora vias totidemquetotidemque S, totidem V peregerat umbras
+**283** septem Aurora vias totidemque peregerat umbras
 
-**284** Luna polo, dirimique procul non aequore visavisa Bon. 2, iussa V, iussa V 2
+**284** Luna polo, dirimique procul non aequore visa
 
-**285** coeperat a gemina discederediscedere M 2, discendere V, descendere SC | abido SM 2, aboedo V Sestos Abydo.
+**285** coeperat a gemina discedere Sestos Abydo.
 
 **286** hic soror Aeoliden aevum mansura per omne
 
-**287** deserit, heu saevae nequiquamsaeuae nequiquam SM, seu uenae quiquam V erepta novercae.
+**287** deserit, heu saevae nequiquam erepta novercae.
 
 **288** illa quidem fessis longe petit umida palmis
 
@@ -609,23 +609,23 @@ title: Argonautica
 
 **299** suggerit adfatus turbataque pectora mulcet.
 
-**300** mox, ubi victa gravi ceciderunt luminalumina S, luminae V somno,
+**300** mox, ubi victa gravi ceciderunt lumina somno,
 
 **301** visa coronatae fulgens tutela carinae
 
 **302** vocibus his instare duci: 'Dodonida quercum
 
-**303** Chaoniique suo loco legitur in C Ald., post 308 in V | Chaoniique X 2 C Aid., Hiaionique V vides famulam Iovis. aequora tecum
+**303** Chaoniique vides famulam Iovis. aequora tecum
 
 **304** ingredior, nec fatidicis avellere silvis
 
-**305** me nisime nisi Bon. 1 Menesi V promisso potuit Saturnia caelo.
+**305** me nisi promisso potuit Saturnia caelo.
 
 **306** tempus adest; age rumpe moras; dumque aequore toto
 
-**307** currimus, incertus si nubila duxerit structura: mitte metus, si ('ob etwa') .. duxerit, dum currimus aether,
+**307** currimus, incertus si nubila duxerit aether,
 
-**308** iam nunc mitte metusmetus C, manus V fidens superisque mihique.'
+**308** iam nunc mitte metus fidens superisque mihique.'
 
 **309** dixerat. ille pavens, laeto quamquam omine divum,
 
@@ -637,41 +637,41 @@ title: Argonautica
 
 **313** expediunt, alii tonsas in marmore summo
 
-**314** praetemptant, prora funem legit Argus ab alta.alta N, alto V
+**314** praetemptant, prora funem legit Argus ab alta.
 
 **315** Increscunt matrum gemitus et fortia languent
 
 **316** corda patrum; longis flentes amplexibus haerent.
 
-**317** vox tamen Alcimedes planctus super eminet omnis.omnis S, onus V
+**317** vox tamen Alcimedes planctus super eminet omnis.
 
 **318** femineis tantum illa furens ululatibus opstat,
 
-**319** obruatobruat SM, obruad V, obruit Bon. 1, sed cf. II 529 III 55, 89 IV 716 Idaeam quantum tuba Martia buxum,
+**319** obruat Idaeam quantum tuba Martia buxum,
 
-**320** fatur et haec: 'nate a nate usque ad vs. 334 dextra habet Par. indignos aditure labores,
+**320** fatur et haec: 'nate indignos aditure labores,
 
-**321** dividimur; nec ad hos animumanimum S Par., abimum V componere casus
+**321** dividimur; nec ad hos animum componere casus
 
 **322** ante datum, sed bella tibi terrasque timebam.
 
 **323** vota aliis facienda deis. si fata reducunt
 
-**324** te mihi, si trepidis placabileplacabile Par. X 2 M, placibile V matribus aequor,
+**324** te mihi, si trepidis placabile matribus aequor,
 
 **325** possum equidem lucemque pati longumque timorem.
 
 **326** sin aliud Fortuna parat, miserere parentum,
 
-**327** Mors bona, dum metus est nec adhuc dolor. ei mihi,(h)ei mihi O 2 in marg., N, heu mihi Par., amipli V Colchos
+**327** Mors bona, dum metus est nec adhuc dolor. ei mihi, Colchos
 
 **328** unde ego et avecti timuissem vellera Phrixi?
 
 **329** quos iam mente dies, quam saeva insomnia curis
 
-**330** prospicio. quotiens raucosraucos Par. C, paucos V ad litoris ictus
+**330** prospicio. quotiens raucos ad litoris ictus
 
-**331** deficiam Scythicum metuens pontumque polumqueDeficiam scyth. Par. M, Deficiamus cyth. V | pontumque polumque Par. C, potumque cretamque V
+**331** deficiam Scythicum metuens pontumque polumque
 
 **332** nec de te credam nostris ingrata serenis.
 
@@ -683,9 +683,9 @@ title: Argonautica
 
 **336** attollens dictis animos: 'o si mihi sanguis,
 
-**337** quantus erat, cum signiferum cratera minantemsigniferum cratera (cratẽ M 2) minantem CM 2, signifera cratera sinaut V
+**337** quantus erat, cum signiferum cratera minantem
 
-**338** non leviore PholumPholum Sabellicus, tholum V, tolum C manus haec compescuit auro,
+**338** non leviore Pholum manus haec compescuit auro,
 
 **339** primus in aeratis posuissem puppibus arma
 
@@ -693,7 +693,7 @@ title: Argonautica
 
 **341** sed patriae valuere preces auditaque magnis
 
-**342** vota deis: videovideo T 1 Parrhasius, ut deque V (olim ex VIDEQ), ut dent C nostro tot in aequore reges
+**342** vota deis: video nostro tot in aequore reges
 
 **343** teque ducem. tales, tales ego ducere suetus
 
@@ -711,27 +711,27 @@ title: Argonautica
 
 **350** Et iam finis erat. Zephyrumque ratemque morantis
 
-**351** solverat amplexusamplexus M (sed s post deletum), amplexu VC tristi tuba tertia signo.
+**351** solverat amplexus tristi tuba tertia signo.
 
-**352** dant remo sua quisque viri, dantuiri dant SM, uirida ut V nomina transtris.
+**352** dant remo sua quisque viri, dant nomina transtris.
 
 **353** hinc laevom Telamon pelagus tenet, altior inde
 
 **354** occupat Alcides aliud mare, cetera pubes
 
-**355** dividitur: celer Asterion, quem matre cadentemcadentem Barth, carentem V
+**355** dividitur: celer Asterion, quem matre cadentem
 
-**356** PiresiusPiresius Parrhasius, Crestus V, Cristatus C | lavit pro fovit Heinsius, sed cf. Stat. Theb. I 60 sq. et de hoc usu verbi Cels. I 5 os frigida aqua fovendum, Cels. IV 5, Plin. Nat. Hist. 28, 12 gemino fovit pater amne Cometes,
+**356** Piresius gemino fovit pater amne Cometes,
 
-**357** segnior ApidaniSigniorapida ut uires V, Segnior corr. SM, apidani M s in marg. vires ubi sentit Enipeus.
+**357** segnior Apidani vires ubi sentit Enipeus.
 
-**358** nititur hinc Talaus fratrisque LeodocusLeodocus Iunt. 1, leodecus V urget
+**358** nititur hinc Talaus fratrisque Leodocus urget
 
 **359** remo terga sui, quos nobile contulit Argos.
 
-**360** hinc quoque missus adest quamvis arcentibus IdmonIdmon Bon. 2, ida V, ida V 2
+**360** hinc quoque missus adest quamvis arcentibus Idmon
 
-**361** alitibus;Alitibus SM, Altibus V sed turpe viro timuisse futura.
+**361** alitibus; sed turpe viro timuisse futura.
 
 **362** hic et Naubolides tortas consurgit in undas
 
@@ -755,13 +755,13 @@ title: Argonautica
 
 **372** Nauplius, et tortum non a love fulmen Oileus
 
-**373** qui gemet,gemet Bon. 2, gemit V Euboicas nato stridente per undas,
+**373** qui gemet, Euboicas nato stridente per undas,
 
-**374** quique Erymanthei sudantemerymanteis undantem V, corr. O 2 M 2 pondere monstri
+**374** quique Erymanthei sudantem pondere monstri
 
 **375** Amphitryoniaden Tegeaeo limine Cepheus
 
-**376** iuvit, et Amphidamas (at frater plenior actisactis V, annis X 2 in marg., N, fort. aevi
+**376** iuvit, et Amphidamas (at frater plenior actis
 
 **377** maluit Ancaeo vellus contingere Phrixi)
 
@@ -773,13 +773,13 @@ title: Argonautica
 
 **381** fama, Mycenaeis olim qui candida velis
 
-**382** aequora et instanteset instantes Eyssenhardt, nec stantes V, fort. et ecstantes mirabere mille magistros.
+**382** aequora et instantes mirabere mille magistros.
 
-**383** hic vatesvates Bon. 1, uatis VC Phoebique fides non vana parentis
+**383** hic vates Phoebique fides non vana parentis
 
 **384** Mopsus, puniceo cui circumfusa cothurno
 
-**385** palla imos ferit alba pedes vittataque frontealba V, ima C | uittataque X 2 M, uittaque V | fronte Barth, forontem V
+**385** palla imos ferit alba pedes vittataque fronte
 
 **386** cassis et in summo laurus Peneia cono.
 
@@ -787,7 +787,7 @@ title: Argonautica
 
 **388** Nelidesque Periclymenus, quem parva Methone
 
-**389** †felevis Elis equis et fluctibus obviusFeleuis V, Et leuis plerique codd. deteriores (praeferrem nec levis i. e. nec facilis), felixque Baehrens, fort. fervensque | obuius M, oblmis V Aulon
+**389** †felevis Elis equis et fluctibus obvius Aulon
 
 **390** caestibus adversos viderunt frangere vultus. —
 
@@ -795,7 +795,7 @@ title: Argonautica
 
 **392** bis Lemnon visure petis, nunc cuspide patris
 
-**393** inclitus, Herculeas olim moturemoture Bon. 1, morture V sagittas. desunt in S
+**393** inclitus, Herculeas olim moture sagittas.
 
 **394** proximus hinc Butes Actaeis dives ab oris;
 
@@ -805,39 +805,39 @@ title: Argonautica
 
 **397** pandit et in dulcem reges dimittit Hymetton.
 
-**398** insequeris casusque tuos expressa,expressa M, expres V Phalere,
+**398** insequeris casusque tuos expressa, Phalere,
 
-**399** arma geris; patulapatula Heinsius, uacua V, fort. sacra nam lapsus ab arbore parvum
+**399** arma geris; patula nam lapsus ab arbore parvum
 
-**400** te quater ardenti tergoter quater vulgo circumvenit anguis:
+**400** te quater ardenti tergo circumvenit anguis:
 
 **401** stat procul intendens dubium pater anxius arcum.
 
-**402** tune caelata metus alios gerit arma Eribotes armorum descriptio aut casu excidit aut a poeta nondum inserta est
+**402** tune caelata metus alios gerit arma Eribotes
 
 **403** nec Peleus fretus soceris et coniuge diva
 
-**404** defuit, ac prora splendet tuaac M 2, ad V | tua M, tu V cuspis ab alta,
+**404** defuit, ac prora splendet tua cuspis ab alta,
 
-**405** Aeacide: tantum haec aliishaec aliis cod. regius, hae altis V excelsior hastis,
+**405** Aeacide: tantum haec aliis excelsior hastis,
 
-**406** quantum Peliacas in vertice viceratuicerat M, uincerat V ornos.
+**406** quantum Peliacas in vertice vicerat ornos.
 
-**407** linquit et Actorides natumnatum M 2, natium V Chironis in antro,
+**407** linquit et Actorides natum Chironis in antro,
 
 **408** ut socius caro pariter meditetur Achilli
 
 **409** fila lyrae pariterque leves puer incitet hastas, ...
 
-**410** discat eques placidi conscendere terga magistri ... lepida sententia postea adscripta necdum inserta seriei orationis videtur, nec
+**410** discat eques placidi conscendere terga magistri ...
 
-**411** et quem fama genus non est sq. ad- aptatos aut suo loco insertos esse a poeta puto; versus alio loco intrudere ludentis est, cf. VI 102 decepta Lyaei
+**411** et quem fama genus non est decepta Lyaei
 
-**412** PhliasPhlias Bon. 1, Pelias VC immissus patrios de vertice crines.
+**412** Phlias immissus patrios de vertice crines.
 
 **413** nec timet Ancaeum genetrix committere ponto,
 
-**414** plena tulit quem rege maris.maris Bon. 1, mari V securus in aequor
+**414** plena tulit quem rege maris. securus in aequor
 
 **415** haut minus Erginus, proles Neptunia, fertur,
 
@@ -849,15 +849,15 @@ title: Argonautica
 
 **419** adsidua Tiphys vultum lassatus ab Arcto.
 
-**420** taurea vulnifico portat celer asperaceler aspera Chauvin, celera V, caelataque C plumbo
+**420** taurea vulnifico portat celer aspera plumbo
 
 **421** terga Lacon, saltem in vacuos ut bracchia ventos
 
-**422** spargat et Oebalium Pagaseia puppis alumnumalumnum M 1 ex alimmum corr., alumnis V
+**422** spargat et Oebalium Pagaseia puppis alumnum
 
 **423** spectet securo celebrantem litora ludo.
 
-**424** oraque Thessalicothessalico Bon.,2 thessalio V melior contundere freno
+**424** oraque Thessalico melior contundere freno
 
 **425** vectorem pavidae Castor dum quaereret Helles,
 
@@ -867,7 +867,7 @@ title: Argonautica
 
 **428** purpura, quod gemina mater spectabile tela
 
-**429** duxit opus; bis Taygeton silvasquetageton V, corr. M 1 | siluasque M, saluasque V comantes
+**429** duxit opus; bis Taygeton silvasque comantes
 
 **430** struxerat, Eurotan molli bis fuderat auro;
 
@@ -881,7 +881,7 @@ title: Argonautica
 
 **435** pectoris Herculeis aequum, Meleagre, lacertis.
 
-**436** hinchinc Bon. 2, Hic V numerosa phalanx, proles Cyllenia: certus
+**436** hinc numerosa phalanx, proles Cyllenia: certus
 
 **437** Aethalides subitas nervo redeunte sagittas
 
@@ -889,7 +889,7 @@ title: Argonautica
 
 **439** Euryte; nec patrio Minyis ignobilis usu,
 
-**440** nuntia verba ducis populis qui reddit,reddis Heinsius Echion.
+**440** nuntia verba ducis populis qui reddit, Echion.
 
 **441** sed non, Iphi, tuis Argo reditura lacertis
 
@@ -907,7 +907,7 @@ title: Argonautica
 
 **448** flevit, ubi Ossaeae captaret frigora quercus
 
-**449** perderetPenderet V scripserat, sed priore hasta n litterae sub linear deducta correxit | boebede V et pingui miseros Boebeide crines.
+**449** perderet et pingui miseros Boebeide crines.
 
 **450** insurgit transtris et remo Nerea versat
 
@@ -921,9 +921,9 @@ title: Argonautica
 
 **455** celsaque semiferum contorquens frena luporum
 
-**456** surgis ab ostrifero medius, Neptune, Geraesto.Geraesto Carr., gerasto V
+**456** surgis ab ostrifero medius, Neptune, Geraesto.
 
-**457** atat Burmann, Et V tibi Palladia pinu, Polypheme, revecto
+**457** at tibi Palladia pinu, Polypheme, revecto
 
 **458** ante urbem ardentis restat deprendere patris
 
@@ -933,7 +933,7 @@ title: Argonautica
 
 **461** occupat et longe sua transtra novissimus Idas.
 
-**462** at frater magnos Lynceus servaturservatur Ald., seruatus V in usus,
+**462** at frater magnos Lynceus servatur in usus,
 
 **463** quem tulit Arene, possit qui rumpere terras
 
@@ -949,7 +949,7 @@ title: Argonautica
 
 **469** temperet ut tremulos Zetes fraterque ceruchos.
 
-**470** nec vero Odrysius transtris impenditurimpenditur X 2 in marg., inpeditur V Orpheus
+**470** nec vero Odrysius transtris impenditur Orpheus
 
 **471** aut pontum remo subigit, sed carmine tonsas
 
@@ -957,7 +957,7 @@ title: Argonautica
 
 **473** donat et Iphiclo pelagus iuvenumque labores
 
-**474** Aesonides, fessum Phylace quem miserat aevomisera laeuo V, corr. X 2
+**474** Aesonides, fessum Phylace quem miserat aevo
 
 **475** non iam operum in partem, monitus sed tradat ut acres
 
@@ -967,19 +967,19 @@ title: Argonautica
 
 **478** Thespia Palladio dant munere; sors tibi, nequa
 
-**479** parte trahat tacitum puppis mare fissaque fluctufissaque fluctu N, fessaque luctu V (lucta) C
+**479** parte trahat tacitum puppis mare fissaque fluctu
 
 **480** vel pice vel molli conducere vulnera cera.
 
 **481** pervigil Arcadio Tiphys pendebat ab astro
 
-**482** Hagniades, felix stellis qui segnibus usumsegnibus X 2 M, signibus V | usum M 2, osum V
+**482** Hagniades, felix stellis qui segnibus usum
 
 **483** et dedit aequoreos caelo duce tendere cursus.
 
 **484** Ecce per obliqui rapidum compendia montis
 
-**485** ductor avensauens V, ovans Heinsius laetusque dolis agnoscit Acastum
+**485** ductor avens laetusque dolis agnoscit Acastum
 
 **486** horrentem iaculis et parmae luce coruscum.
 
@@ -991,21 +991,21 @@ title: Argonautica
 
 **490** venator cum lustra fugit dominoque timentem
 
-**491** urget equum, teneras compressansteneras T, teneros V | compressans Sudhaus, conpressus V, compressus C pectore tigres,
+**491** urget equum, teneras compressans pectore tigres,
 
 **492** quas astu rapuit pavido, dum saeva relictis
 
-**493** mater in adversoaverso Parrhasius catulis venatur Amano.
+**493** mater in adverso catulis venatur Amano.
 
-**494** itit Eyssenhardt, Ut V pariter propulsa ratis; stant litore matres
+**494** it pariter propulsa ratis; stant litore matres
 
 **495** claraque vela oculis percussaque sole secuntur
 
-**496** scuta virum, donec iamiam Bon. 1, tam V celsior arbore pontus
+**496** scuta virum, donec iam celsior arbore pontus
 
-**497** immensusqueinmensusque M 2, inmensus et M, inmens V ratem spectantibus abstulit aer.
+**497** immensusque ratem spectantibus abstulit aer.
 
-**498** Siderea tune arce pater pulcherrima GraiumGraium Bon. 1, gratum V (sic etiam 507, 523)
+**498** Siderea tune arce pater pulcherrima Graium
 
 **499** coepta tuens tantamque operis consurgere molem
 
@@ -1013,7 +1013,7 @@ title: Argonautica
 
 **501** una omnes gaudent superi, venturaque mundo
 
-**502** tempora aquaequeaquaeque Hertz, quaeque V vias cernunt sibi crescere Parcae.
+**502** tempora aquaeque vias cernunt sibi crescere Parcae.
 
 **503** sed non et Scythici genitor discrimine nati
 
@@ -1025,9 +1025,9 @@ title: Argonautica
 
 **507** Graiaque nunc undis duce te nutuque secundo
 
-**508** it ratis? an meritos fas estest VSMN mihi rumpere questus?
+**508** it ratis? an meritos fas est mihi rumpere questus?
 
-**509** hoc metuens et nequa foret manus invidainuida MN, inuita V nato,
+**509** hoc metuens et nequa foret manus invida nato,
 
 **510** non mediae telluris opes, non improba legi
 
@@ -1035,23 +1035,23 @@ title: Argonautica
 
 **512** et Libys et vestri Pelopis domus): horrida saevo
 
-**513** quae premis arva gelu strictosque insedimuspremis X 2 M, primis V | insedimus Zinzerling, insedibus V amnes.
+**513** quae premis arva gelu strictosque insedimus amnes.
 
 **514** cederet his etiam et sese sine honore referret
 
-**515** ulterius, sed nube rigens ac nescia rerumrerum Ald., regum VSMN (cf. 725, Aen. XII 227)
+**515** ulterius, sed nube rigens ac nescia rerum
 
-**516** stat super et nostros iam zona reverberatnostros X 2, nostris V | reverberat Bon. 1, perueruerat V ignes.
+**516** stat super et nostros iam zona reverberat ignes.
 
 **517** quid regio immanis, quid barbarus amnibus ullis
 
-**518** Phasis et aversisaversis Barth. aduersis V proles mea gentibus obstat?
+**518** Phasis et aversis proles mea gentibus obstat?
 
-**519** quidQuid X 2 M, Quod V Minyae meruere queri? num vellere Graio
+**519** quid Minyae meruere queri? num vellere Graio
 
-**520** vivi Bon. 1, Ut V potitur? profugo quin agmina iungere Phrixo
+**520** vi potitur? profugo quin agmina iungere Phrixo
 
-**521** abnuit Inoas ultroAbnuit cod. Harlesii, Adnuit V | ultro V, ultor Ald. nec venit ad aras,
+**521** abnuit Inoas ultro nec venit ad aras,
 
 **522** imperii sed parte virum nataeque moratus
 
@@ -1063,9 +1063,9 @@ title: Argonautica
 
 **526** aequora pande viris: veteris sat conscia luctus
 
-**527** silva Padipadi S, pandi V et viso flentes genitore sorores.'
+**527** silva Padi et viso flentes genitore sorores.'
 
-**528** adfremit his quassatque caput qui vellera donodono SM, don V
+**528** adfremit his quassatque caput qui vellera dono
 
 **529** Bellipotens sibi fixa videt, temptataque contra
 
@@ -1079,9 +1079,9 @@ title: Argonautica
 
 **534** noster erat, cum fata darem, iustique facultas
 
-**535** hinc mihi, cumhinc Balbus, Hic V, Haec C ut vid. | cum Q teste Heinsio, cur V, ut hinc C varios struerem per saecula reges.
+**535** hinc mihi, cum varios struerem per saecula reges.
 
-**536** atqueUtque C ego curarum repetam decreta mearum:
+**536** atque ego curarum repetam decreta mearum:
 
 **537** iam pridem regio, quae virginis aequor ad Helles
 
@@ -1093,7 +1093,7 @@ title: Argonautica
 
 **541** ausa manus; sic fata, locos sic ipse fovebam.
 
-**542** adcelerat sed summa dies Asiamque labantemlabantem Bon. 1, labentem V
+**542** adcelerat sed summa dies Asiamque labantem
 
 **543** linquimus et poscunt iam me sua tempora Grai.
 
@@ -1107,25 +1107,25 @@ title: Argonautica
 
 **548** ille dolor, sed nulla magis sententia menti
 
-**549** fixa meae: veniet Phrygia nam pastoriam pastor Bon. 2 ab Ida,
+**549** fixa meae: veniet Phrygia nam pastor ab Ida,
 
 **550** qui gemitus irasque pares et mutua Grais
 
-**551** dona ferat. quaequae Carr., qua V classe dehinc effusa procorum
+**551** dona ferat. quae classe dehinc effusa procorum
 
 **552** bella, quot ad Troiam flentes hiberna Mycenas,
 
 **553** quot proceres natosque deum, quae robora cernes
 
-**554** oppetere et magnis Asiam concedereconcidere C fatis.
+**554** oppetere et magnis Asiam concedere fatis.
 
 **555** hinc Danaum de fine sedet gentesque fovebo
 
 **556** mox alias. pateant montes silvaeque lacusque
 
-**557** cunctaque claustraclaustra SM, clastra V maris; spes et metus omnibus esto.
+**557** cunctaque claustra maris; spes et metus omnibus esto.
 
-**558** arbiter ipse locos terrenaque summa movendomouebo C
+**558** arbiter ipse locos terrenaque summa movendo
 
 **559** experiar, quaenam populis longissima cunctis
 
@@ -1135,9 +1135,9 @@ title: Argonautica
 
 **562** Herculeum Ledaeque tuens genus atque ita fatur:
 
-**563** 'tendite in astra, viri: meamea X 2 N, me V primum regia mundo
+**563** 'tendite in astra, viri: mea primum regia mundo
 
-**564** Iapeti post bella trucis Phlegramquetrucis Bon. 1, truces V | Phlegramque Sudhaus, cf. Stat. Theb. VI 358, phreglaeque V labores
+**564** Iapeti post bella trucis Phlegramque labores
 
 **565** imposuit: durum vobis iter et grave caeli
 
@@ -1165,29 +1165,29 @@ title: Argonautica
 
 **577** concitus. omne dei rapidis nemus ingemit alis,
 
-**578** strata Ceres, motusque niger sub praepetemotusque NT cod. Bon., motoque VC | praepete X 2 M, praete V pontus.
+**578** strata Ceres, motusque niger sub praepete pontus.
 
-**579** aequore Trinacrio refugique a parte habet Par. | a parte Par. SM, aperte V Pelori
+**579** aequore Trinacrio refugique a parte Pelori
 
 **580** stat rupes horrenda fretis: quot in aethera surgit
 
-**581** molibus, infernas totidemtotidem Iunt. 1, totiens V demissa sub undas.
+**581** molibus, infernas totidem demissa sub undas.
 
-**582** nec scopulosscopulos M, scopulis V aut antra minor iuxta altera tellus
+**582** nec scopulos aut antra minor iuxta altera tellus
 
-**583** cernitur. illam Acamans habitat nudusque Pyragmon,pyragmon XC, pyragmo V
+**583** cernitur. illam Acamans habitat nudusque Pyragmon,
 
 **584** has nimbi ventique domos et naufraga servat
 
 **585** tempestas. hinc in terras latumque profundum
 
-**586** est iter, hinchic Par. olim soliti miscere polumque
+**586** est iter, hinc olim soliti miscere polumque
 
-**587** infelixque fretum (neque enim tune AeolusAeolus Par. X 2, aeblus V illis
+**587** infelixque fretum (neque enim tune Aeolus illis
 
-**588** rector erat, Libya cum rumperetabrumperet Par. advena Calpen
+**588** rector erat, Libya cum rumperet advena Calpen
 
-**589** Oceanus, cum flens Siculos Oenotriaoenotria Par. SM, oenatria V fines
+**589** Oceanus, cum flens Siculos Oenotria fines
 
 **590** perderet et mediis intrarent montibus undae),
 
@@ -1195,13 +1195,13 @@ title: Argonautica
 
 **592** omnipotens regemque dedit, quem iussa vereri
 
-**593** saeva cohors:cohors: vix Sudhaus, c. bis Leo, cohoruis V, coorstum Par., cohors in C vix monte chalybs iterataque muris
+**593** saeva cohors: vix monte chalybs iterataque muris
 
 **594** saxa domant Euros. cum iam prohibere frementum
 
-**595** ora nequit, rex tune aditus et claustra refringitrefringit Par. M, refringet V
+**595** ora nequit, rex tune aditus et claustra refringit
 
-**596** ipse volens placatque data fera murmura porta. habet Par.
+**596** ipse volens placatque data fera murmura porta.
 
 **597** nuntius hunc solio Boreas proturbat ab alto:
 
@@ -1219,19 +1219,19 @@ title: Argonautica
 
 **604** quod Borean sub rege vident. da mergere Graios
 
-**605** insanamque ratem: nil me mea pignorapignora Sabellicus, pectora V, cf. Stat. Theb. V 432 tangunt,
+**605** insanamque ratem: nil me mea pignora tangunt,
 
-**606** tantum hominum compesce minas, dum litoralitorae V, corr. X 2 M iuxta
+**606** tantum hominum compesce minas, dum litora iuxta
 
 **607** Thessala necdum aliae viderunt carbasa terrae.'
 
-**608** Dixerat. atat S, om. V, et M cuncti fremere intus et aequora venti
+**608** Dixerat. at cuncti fremere intus et aequora venti
 
-**609** poscere. tum validam contortovalidam contorto Thilo, cf. II 273, IV 452, ualidam contortam V, valido contortam plerique receperunt turbine portam
+**609** poscere. tum validam contorto turbine portam
 
 **610** impulit Hippotades. fundunt se carcere laeti
 
-**611** Thraces equi Zephyrusque etzephirusque et M zepherusque te V nocti concolor alas
+**611** Thraces equi Zephyrusque et nocti concolor alas
 
 **612** nimborum cum prole Notus crinemque procellis
 
@@ -1247,13 +1247,13 @@ title: Argonautica
 
 **618** excussi manibus remi, conversaque frontem
 
-**619** puppis in oblicum resonos latus accipit ictus,obliquam C | resonat C ut vid. | ictus M, actus V
+**619** puppis in oblicum resonos latus accipit ictus,
 
 **620** vela super tremulum subitus volitantia malum
 
 **621** turbo rapit. qui tum Minyis trepidantibus horror,
 
-**622** cum piceipicei Bon. 1, picea V fulsere poli pavidamque coruscae
+**622** cum picei fulsere poli pavidamque coruscae
 
 **623** ante ratem cecidere faces, antemnaque laevo
 
@@ -1273,7 +1273,7 @@ title: Argonautica
 
 **631** tristius an miseris superest mare? linquite, terrae,
 
-**632** spem pelagipelagi S, pelagis V sacrosque iterum seponite fluctus.'
+**632** spem pelagi sacrosque iterum seponite fluctus.'
 
 **633** haec iterant segni flentes occumbere leto.
 
@@ -1283,11 +1283,11 @@ title: Argonautica
 
 **636** verba alii iunguntque manus atque ora fatigant
 
-**637** aspectu in misero toti,toti Beck, tota V, in C hic ordo tota in misero cum protinus alnus
+**637** aspectu in misero toti, cum protinus alnus
 
 **638** solvitur et vasto puppis mare sorbet hiatu.
 
-**639** illam huc atque illuc nunc torquens verberat Eurus,eurus X 2 >ut vid., M, euros V
+**639** illam huc atque illuc nunc torquens verberat Eurus,
 
 **640** nunc stridens Zephyris aufert Notus; undique fervent
 
@@ -1305,9 +1305,9 @@ title: Argonautica
 
 **647** non meus Orion aut saevus Pliade Taurus
 
-**648** mortis causa novae. miseris tu gentibus, Argo,argo X 2 N, ergo V
+**648** mortis causa novae. miseris tu gentibus, Argo,
 
-**649** fata paras, nec iamiam T, tam V merito tibi, Tiphy, quietum
+**649** fata paras, nec iam merito tibi, Tiphy, quietum
 
 **650** ulla parens volet Elysium manesque piorum.'
 
@@ -1317,7 +1317,7 @@ title: Argonautica
 
 **653** et madido gravis unda sinu longeque secutus
 
-**654** imber ad Aeoliam tendunt simul aequore portam.ad Aeoliam t. s. aequore portam Langen, ad aeoliae t. s. aequora porte V, ab aeoliae t. s. aequore portae C
+**654** imber ad Aeoliam tendunt simul aequore portam.
 
 **655** emicuit reserata dies caelumque resolvit
 
@@ -1325,33 +1325,33 @@ title: Argonautica
 
 **657** iam placidis ratis exstat aquis, quam gurgite ab imo
 
-**658** et Thetis et magnis Nereus socer erigit ulnis.ulnis SM, ulnus V
+**658** et Thetis et magnis Nereus socer erigit ulnis.
 
-**659** ergo umeros ductorductor X 2 P, doctor V sacro velatur amictu
+**659** ergo umeros ductor sacro velatur amictu
 
 **660** Aesoniamque capit pateram, quam munere gaudens
 
 **661** liquerat hospitio pharetrasque rependerat auro
 
-**662** Salmoneus, nondum ille furens, quiqui Declerq, cum V fingeret alti
+**662** Salmoneus, nondum ille furens, qui fingeret alti
 
-**663** quadrifida trabe tela Iovis contraque ruentiruenti Heinsius, ruente V
+**663** quadrifida trabe tela Iovis contraque ruenti
 
 **664** aut Athon aut Rhodopen maestae nemora ardua Pisae
 
-**665** aemulus et miseros ipse ureret Elidisureret aelidis X 2, urire caelidis V agros.
+**665** aemulus et miseros ipse ureret Elidis agros.
 
 **666** hac pelago libat latices et talibus infit:
 
 **667** 'di, quibus undarum tempestatisque sonorae
 
-**668** imperium et magno penitus par regiaregia MN, regio V caelo,
+**668** imperium et magno penitus par regia caelo,
 
-**669** tuqueTuque SM, Tu quoque V fretum divosque pater sortite biformes,
+**669** tuque fretum divosque pater sortite biformes,
 
 **670** seu casus nox ista fuit seu volvitur axis,
 
-**671** ut superum sic claretclaret Sud- haus, staret V; cf. Manil. IV 915—921 opus, tollique vicissim
+**671** ut superum sic claret opus, tollique vicissim
 
 **672** pontus habet, seu te subitae nova puppis imago
 
@@ -1361,23 +1361,23 @@ title: Argonautica
 
 **675** iam fuerint meliora mihi. da reddere terris
 
-**676** has animas patriaeque amplecti liminalimina S, limine V portae.
+**676** has animas patriaeque amplecti limina portae.
 
-**677** tum quocumque loco meritasmeritas T, miritis V tibi plurimus aras
+**677** tum quocumque loco meritas tibi plurimus aras
 
-**678** pascit honos, ubicumque rotis horrendus equisquePascet C b (in scho- liis Carr. nihil de C affert) | horrendus equisque NT, horren et equis V
+**678** pascit honos, ubicumque rotis horrendus equisque
 
-**679** stas, pater, atqueStas SM, Stat VC | atque vulgo, aque V ingens utrimque fluentia Triton
+**679** stas, pater, atque ingens utrimque fluentia Triton
 
-**680** frena tenet, tantus nostras conderecondere Heinsius, concede V per urbes.'
+**680** frena tenet, tantus nostras condere per urbes.'
 
-**681** dixerat haec. oritur clamor dextraeque sequunturdextraeque cod. Harlesii, dextraque VC | sequuntur Pius, sequentuin V
+**681** dixerat haec. oritur clamor dextraeque sequuntur
 
 **682** verba ducis. sic cum stabulis et messibus ingens
 
-**683** ira deum et Calabricalabri M, celabri V populator Sirius arvi
+**683** ira deum et Calabri populator Sirius arvi
 
-**684** incubuit, coit agrestum manus anxiaanxia V, inscia C priscum
+**684** incubuit, coit agrestum manus anxia priscum
 
 **685** in nemus, et miseris dictat pia vota sacerdos.
 
@@ -1399,13 +1399,13 @@ title: Argonautica
 
 **694** mensque mali praesaga quatit, quod regis adortus
 
-**695** progeniem raptoqueraptoque SM 2, rapto V dolis crudelis Acasto
+**695** progeniem raptoque dolis crudelis Acasto
 
 **696** cetera nuda neci medioque in crimine patrem
 
 **697** liquerit ac nullis inopem vallaverit armis,
 
-**698** ipse procul nunc tuta tenens; ruat omnis in illumilium Kr., illis V, illos X 2 M
+**698** ipse procul nunc tuta tenens; ruat omnis in illum
 
 **699** quippe furor. nec vana pavet trepidatque futuris.
 
@@ -1417,7 +1417,7 @@ title: Argonautica
 
 **703** clausa cohors telisque salum facibusque coruscat.
 
-**704** haut secus, aerisona volucer cum Daedalus oraora C, ira V
+**704** haut secus, aerisona volucer cum Daedalus ora
 
 **705** prosiluit iuxtaque comes brevioribus alis,
 
@@ -1425,11 +1425,11 @@ title: Argonautica
 
 **707** infremuit manus et visu lassatur inani
 
-**708** omnis equeseques nonnulli apud Pium, equis V plenisque redit Gortyna pharetris.
+**708** omnis eques plenisque redit Gortyna pharetris.
 
-**709** quin etiam in thalamis primoque in limine Acastiacasti SM, acati V
+**709** quin etiam in thalamis primoque in limine Acasti
 
-**710** fusus humohumo SCM 2, homo V, humi N iuvenis gressus et inania signa
+**710** fusus humo iuvenis gressus et inania signa
 
 **711** ore premit sparsisque legens vestigia canis
 
@@ -1451,17 +1451,17 @@ title: Argonautica
 
 **720** pervia, non ultro iuvenes classemque decissem?
 
-**721** o domus, o freti nequiquam prole penates.'penates Balbus, nepotes V
+**721** o domus, o freti nequiquam prole penates.'
 
 **722** dixit et extemplo furiis iraque minaci
 
-**723** terribilis: 'sunt hic etiam tua vulnera,uulnera SM, uulnere V praedo,
+**723** terribilis: 'sunt hic etiam tua vulnera, praedo,
 
 **724** sunt lacrimae carusque parens.' simul aedibus altis
 
-**725** itque reditque fremens rerumquererumque Iunt. 1, regumque V asperrima versat:
+**725** itque reditque fremens rerumque asperrima versat:
 
-**726** Bistonas ad meritos cum cornua saeva ThyoneusThyoneus Bon. 2, thyone VS
+**726** Bistonas ad meritos cum cornua saeva Thyoneus
 
 **727** torsit et infelix iam mille furoribus Haemus,
 
@@ -1469,7 +1469,7 @@ title: Argonautica
 
 **729** porticibus coniunxque fugit natique Lycurgum.
 
-**730** Tartareo tum sacrasacra SM 2, sacri V Iovi Stygiisque ferebat
+**730** Tartareo tum sacra Iovi Stygiisque ferebat
 
 **731** manibus Alcimede tanto super auxia nato,
 
@@ -1477,13 +1477,13 @@ title: Argonautica
 
 **733** ipsum etiam curisque parem talesque prementem
 
-**734** corde metus ducit,ducit Bon. 1, dicit V facilem tamen, Aesona coniunx.
+**734** corde metus ducit, facilem tamen, Aesona coniunx.
 
-**735** in scrobibus cruor et largus Phlegethontis apertiscrobibus SM, sacro uibus V | operti C
+**735** in scrobibus cruor et largus Phlegethontis aperti
 
 **736** stagnat honos, saevoque vocat grandaeva tumultu
 
-**737** Thessalis exanimes atavos magnaeque nepotemThessalis M, Thessales V | nepotem M, nepote V
+**737** Thessalis exanimes atavos magnaeque nepotem
 
 **738** Pleiones. et iam tenues ad carmina vultus
 
@@ -1493,7 +1493,7 @@ title: Argonautica
 
 **741** 'mitte metus, volat ille mari quantumque propinquat,
 
-**742** iam magis atque magis variis stupet Aeastupet Aea cod. Harlesii, stupe acta V deorum
+**742** iam magis atque magis variis stupet Aea deorum
 
 **743** prodigiis quatiuntque truces oracula Colchos.
 
@@ -1507,11 +1507,11 @@ title: Argonautica
 
 **748** rex parat et saevos irarum concipit ignes.
 
-**749** quin rapis hine animam et famulos citus effugishinc etiam V habet | effugis SM, effugit V artus?
+**749** quin rapis hine animam et famulos citus effugis artus?
 
-**750** i, meus es, iam te in lucos pia turba silentumin M, om. V | silentis Sudhaus, ex Verg. Georg. I 476
+**750** i, meus es, iam te in lucos pia turba silentum
 
-**751** secretisque ciet volitans pater Aeolus arvis.'aruis V, antris C
+**751** secretisque ciet volitans pater Aeolus arvis.'
 
 **752** Horruits interea famulum clamore supremo
 
@@ -1519,7 +1519,7 @@ title: Argonautica
 
 **754** mille ciere manus et iam dare iussa vocatis.
 
-**755** flagrantes aras vestemque nemusque sacerdos in hiatum terrae vel humi proturbat aram, στολὴνμαγικὴν (Luc. Men. 8), frondem perterrita Alcimede
+**755** flagrantes aras vestemque nemusque sacerdos
 
 **756** praecipitat, subitisque pavens circumspicit Aeson,
 
@@ -1527,11 +1527,11 @@ title: Argonautica
 
 **758** mole virum rictuque genas et lumina pressit,
 
-**759** sic curae subieresubiere SM, subiecere V ducem, ferrumne capessat
+**759** sic curae subiere ducem, ferrumne capessat
 
 **760** imbelle atque aevi senior gestamina primi
 
-**761** an patres regnique acuatacuat Bon. 1, acuatu V mutabile vulgus.
+**761** an patres regnique acuat mutabile vulgus.
 
 **762** contra effusa manus haerensque in pectore coniunx
 
@@ -1543,21 +1543,21 @@ title: Argonautica
 
 **766** vela dedit, potui quae tantum ferre dolorem.'
 
-**767** talia per lacrimas.perlacrimans C et iam circumspicit Aeson,
+**767** talia per lacrimas. et iam circumspicit Aeson,
 
-**768** praeveniat quo fine minas, quae fataquae fata Pius, quo fata V capessat
+**768** praeveniat quo fine minas, quae fata capessat
 
-**769** digna satis: magnos obitusobitus Bon. 1, obitū V natumque domumque
+**769** digna satis: magnos obitus natumque domumque
 
 **770** et genus Aeolium pugnataque poscere bella.
 
-**771** est etiam ante oculos aeviaeui CT, aeuū V, rerum Iunt. 1 rudis altera proles,
+**771** est etiam ante oculos aevi rudis altera proles,
 
 **772** ingentes animos et fortia discere facta
 
 **773** quem velit atque olim leti meminisse paterni.
 
-**774** ergo sacra novat.novat Bon. 1, noua V veteris sub nocte cupressi
+**774** ergo sacra novat. veteris sub nocte cupressi
 
 **775** sordidus et multa pallens ferrugine taurus
 
@@ -1565,11 +1565,11 @@ title: Argonautica
 
 **777** et taxi frons hirta comis; ipse aeger anhelans
 
-**778** impatiensqueInpatiensque S, que om. V. post loci visaque exterritus umbra.
+**778** impatiensque loci visaque exterritus umbra.
 
 **779** hunc sibi praecipuum gentis de more nefandae
 
-**780** Thessalis versus excidit huius fere sententiae talis enim diro mactatur victima ferro, terg. cum pl.; 781—784 mos describitur, non actio narratur. ad retro agens cf. Lucr. VI 381 Hor. epod. 17, 7 in seros Ditis servaverat usus:
+**780** Thessalis in seros Ditis servaverat usus:
 
 **781** tergeminam cum placat eram Stygiasque supremo
 
@@ -1577,11 +1577,11 @@ title: Argonautica
 
 **783** carmen agens; neque enim ante leves niger avehit umbras
 
-**784** portitor, et vinctaevinctae Iacobs, cunctae V primis stant faucibus Orci.
+**784** portitor, et vinctae primis stant faucibus Orci.
 
-**785** illum ubi terrificis superesse in tempore sacrissacris Burmann, sacri V
+**785** illum ubi terrificis superesse in tempore sacris
 
-**786** conspexit, statuit letoleto sc. suo (Renkema) supremaque fatur
+**786** conspexit, statuit leto supremaque fatur
 
 **787** ipse manu tangens damnati cornua tauri:
 
@@ -1599,7 +1599,7 @@ title: Argonautica
 
 **794** conciliet praemissa locis. tu, nuntia sontum
 
-**795** virgo Iovi, terras oculisoculis SM 2, oculos V quae prospicis aequis,
+**795** virgo Iovi, terras oculis quae prospicis aequis,
 
 **796** ultricesque deae Fasque et grandaeva Furorum
 
@@ -1625,13 +1625,13 @@ title: Argonautica
 
 **807** ora manusque feram. tum, vobis siquod inausum
 
-**808** arcanumque nefas et adhuc inconditaincognita plerique, sed cf. 531, Aetna 234 leti
+**808** arcanumque nefas et adhuc incondita leti
 
 **809** sors superest, date fallaci pudibunda senectae
 
 **810** exitia indecoresque obitus. non Marte nec armis
 
-**811** aut nati, precor, ille meinati om. V, hic add. M, post mei S dignatus ut umquam
+**811** aut nati, precor, ille mei dignatus ut umquam
 
 **812** ense cadat; quae fida manus, quae cara suorum
 
@@ -1639,9 +1639,9 @@ title: Argonautica
 
 **814** contegat. haec noster de rege piacula sanguis
 
-**815** sumat et heu cunctae quas misit in aequora gentes.'— huc transtulit Iunt. 1, post 822 habet V
+**815** sumat et heu cunctae quas misit in aequora gentes.'—
 
-**816** adstitit et nigro fumantia poculapocula SM, procula V tabo
+**816** adstitit et nigro fumantia pocula tabo
 
 **817** contigit ipsa gravi Furiarum maxima dextra;
 
@@ -1649,27 +1649,27 @@ title: Argonautica
 
 **819** Fit fragor; inrumpunt foribus qui saeva ferebant
 
-**820** imperiaforibus Heinsius, cf. II 220, sonitus V, sonitu S | ferebat Imperio V, corr. S et strictos iussis regalibus enses.
+**820** imperia et strictos iussis regalibus enses.
 
 **821** in media iam morte senes suffectaque leto
 
-**822** lumina et undanti revomentesrevomentes Pius, reuomente V veste cruorem
+**822** lumina et undanti revomentes veste cruorem
 
 **823** conspiciunt; primoque rudem sub limine rerum
 
-**824** te, puer, et visa pallentempallentem SM, pallantem V morte parentum
+**824** te, puer, et visa pallentem morte parentum
 
-**825** diripiuntDiripiunt Bon. 2 (Dirr. Bon. 1), Deripiunt V, cf. 813, II 240 adduntque tuis. procul horruit Aeson
+**825** diripiunt adduntque tuis. procul horruit Aeson
 
 **826** excedens memoremque tulit sub nubibus umbram.
 
-**827** Cardine sub nostro rebusque abscissaabscissa C Aid., adcisa V, abscisa Barth supernis
+**827** Cardine sub nostro rebusque abscissa supernis
 
 **828** Tartarei sedet aula patris, non illa ruenti
 
 **829** accessura polo, victam si volvere molem
 
-**830** ingenti †iacetiacet V, iuvet vel similia Sudhaus, ut continuentur versus; lacurnam ante hunc vs. suspicati sunt plerique; in marg. C ad supplen- dum vs. 829 hic fuit versus Iuppiter et primae uelit omnia reddere massae. ore Chaos, quod pondere fessam
+**830** ingenti †iacet ore Chaos, quod pondere fessam
 
 **831** materiem lapsumque queat consumere mundum.
 
@@ -1681,7 +1681,7 @@ title: Argonautica
 
 **835** rara et sponte patet, siquando pectore ductor
 
-**836** vulnera nota gerens,gerens S, marg. add. M 1, cerens V galeis praefixa rotisque
+**836** vulnera nota gerens, galeis praefixa rotisque
 
 **837** cui domus aut studium mortales pellere curas,
 
@@ -1691,13 +1691,13 @@ title: Argonautica
 
 **840** quos omnes lenis plantis et lampada quassans
 
-**841** progenies Atlantis agit. lucetlucet SM 2, luget V via late
+**841** progenies Atlantis agit. lucet via late
 
 **842** igne dei, donee silvas et amoena piorum
 
-**843** deveniantDeueniant S, Daueniant V, Adueniant M camposque, ubi sol totumque per annum
+**843** deveniant camposque, ubi sol totumque per annum
 
-**844** durat aprica dies thiasique choriquechorique XM, chori V virorum
+**844** durat aprica dies thiasique chorique virorum
 
 **845** carminaque et quorum populis iam nulla cupido.
 
@@ -1719,11 +1719,11 @@ title: Argonautica
 
 **4** ac temere in Pelian et adhuc obstantia regis
 
-**5** fata ruat placitosque deis nene Heinsius, neu V deserat actus.
+**5** fata ruat placitosque deis ne deserat actus.
 
-**6** Iamque fretisfretis C, freti V summas aequatum Pelion ornos
+**6** Iamque fretis summas aequatum Pelion ornos
 
-**7** templaque TisaeaeTisaeae Ald., pisaeae V mergunt obliqua Dianae;
+**7** templaque Tisaeae mergunt obliqua Dianae;
 
 **8** iam Sciathos subsedit aquis, iam longa recessit
 
@@ -1731,15 +1731,15 @@ title: Argonautica
 
 **10** campus equos: vidisse putant Dolopeia busta
 
-**11** intrantemque AmyronAmyron Maserius (Apoll. Rhod. I 596), myrin V, amyrin C curvas quaesita per oras
+**11** intrantemque Amyron curvas quaesita per oras
 
 **12** aequora, flumineo cuius redeuntia vento
 
 **13** vela legunt; remis insurgitur. inde salutant
 
-**14** Eurymenas; recipit velumque fretumque reversusreversus Bon. 1, reuerso V, reuersum C
+**14** Eurymenas; recipit velumque fretumque reversus
 
-**15** auster, et in nubem Minyis repetentibusrepentibus V, corr. X 2 M 2 altum
+**15** auster, et in nubem Minyis repetentibus altum
 
 **16** Ossa redit. metus ecce deum damnataque bello
 
@@ -1761,21 +1761,21 @@ title: Argonautica
 
 **25** hunc profugum et sacras revomentem pectore flammas,
 
-**26** ut memorant, prensum ipse comis Neptunus in altumaltum S, altu V, alto C
+**26** ut memorant, prensum ipse comis Neptunus in altum
 
 **27** abstulit implicuitque vadis totiensque cruenta
 
-**28** mole resurgentem torquentemque anguibus undasundas SM, aindas V
+**28** mole resurgentem torquentemque anguibus undas
 
-**29** Sicanium dedit usque fretum cumque urbibus Aetnamdedit: cf. Stat. Theb. I 568 | aetnam M, aeternam V
+**29** Sicanium dedit usque fretum cumque urbibus Aetnam
 
-**30** intulit ora premens. trux ille eiectat adesiadesi X 2 M, adesit V
+**30** intulit ora premens. trux ille eiectat adesi
 
-**31** fundamental iugi; pariter tune omnisomnis M, omnes V anhelat
+**31** fundamental iugi; pariter tune omnis anhelat
 
-**32** Trinacria, iniectaminiectam OQ, iniecta V fesso dum pectore molem
+**32** Trinacria, iniectam fesso dum pectore molem
 
-**33** commovetCommovet Bon. 1, Cū mouet V experiens gemituque reponit inani.
+**33** commovet experiens gemituque reponit inani.
 
 **34** Iamque Hyperionius metas maris urget Hiberi
 
@@ -1785,7 +1785,7 @@ title: Argonautica
 
 **37** sustulit et rupto sonuit sacer aequore Titan.
 
-**38** auxeratAuxerat M, Auserat V hora metus, iam se vertentis Olympi
+**38** auxerat hora metus, iam se vertentis Olympi
 
 **39** ut faciem raptosque simul montesque locosque
 
@@ -1799,23 +1799,23 @@ title: Argonautica
 
 **44** noctivagum qui carpit iter non aure quiescit,
 
-**45** non oculis, noctisque metus niger auget utrimqueNon V, Au Par. | uetus Par. (metus correctum) | utrunque Par.
+**45** non oculis, noctisque metus niger auget utrimque
 
-**46** campus et occurrensCorpus Par. | occurrit Par. umbris maioribus arbor, habet Par.
+**46** campus et occurrens umbris maioribus arbor,
 
 **47** haud aliter trepidare viri. sed pectora firmans
 
-**48** Hagniades 'non hanc' inquit 'sine numinenumine X 1 corr., M. nomine V pinum
+**48** Hagniades 'non hanc' inquit 'sine numine pinum
 
-**49** derigimus,Dirigimus OQ nec me tantum Tritonia cursus
+**49** derigimus, nec me tantum Tritonia cursus
 
 **50** erudiit; saepe ipsa manu dignata carinam est.
 
-**51** anan Balbus, At V non experti, subitus cum luce fugata
+**51** an non experti, subitus cum luce fugata
 
 **52** horruit imbre dies? quantis, pro Iuppiter, austris
 
-**53** restitimus, quanta quotiens et Palladis artearte X 2 M, arta V
+**53** restitimus, quanta quotiens et Palladis arte
 
 **54** incassum decimae cecidit tumor arduus undae.
 
@@ -1823,55 +1823,55 @@ title: Argonautica
 
 **56** puraque nec gravido surrexit Cynthia cornu,
 
-**57** nullus in oreore VC a, orbe C b rubor, certusque ad talia Titan
+**57** nullus in ore rubor, certusque ad talia Titan
 
-**58** integer in fluctus et in uno decidit auro.auro Thomas Phaedrus (cf. Verg. Georg. I 458 sqq.), euro VC
+**58** integer in fluctus et in uno decidit auro.
 
-**59** adde, quod in(ab in) et noctem venti veloque marique
+**59** adde, quod in noctem venti veloque marique
 
-**60** incumbunt magis et tacitis ratisratis V, uitis Par. ocior horis. habet Par.
+**60** incumbunt magis et tacitis ratis ocior horis.
 
-**61** atque adeo non illa sequi mihi sidera monstrat,monstrat Voss, monstrant V; monstrat scil. Pallas; redit enim Tiphys ad illud erudiendi (49, 50), quod tetigerat tantum, munus; monstrat iuxta sidera in monstrant pessumdatum videtur
+**61** atque adeo non illa sequi mihi sidera monstrat,
 
 **62** quae delapsa polo reficit mare: tantus Orion
 
 **63** iam cadit, irato iam stridet in aequore Perseus:
 
-**64** sed mihi dux, vetitis qui numquam conditusconditur C undis
+**64** sed mihi dux, vetitis qui numquam conditus undis
 
 **65** axe nitet serpens septenosque implicat ignes.'
 
 **66** sic ait et certi memorat qui vultus Olympi,
 
-**67** Pleiones Hyadumque locos, quoPleiadas Hein- sius | quo P, quos V sidere vibret
+**67** Pleiones Hyadumque locos, quo sidere vibret
 
 **68** Ensis et Actaeus niteat qua luce Bootes.
 
-**69** haec ubi dicta dedit, Cereris tum muneremunere SM, muneres V fessas
+**69** haec ubi dicta dedit, Cereris tum munere fessas
 
-**70** restituunt vires et parco pectorapectora Sudhaus, cf. Bacch. fr. 20, 2 et 11, corioro V, corpora X 2 M Baccho.
+**70** restituunt vires et parco pectora Baccho.
 
 **71** mox somno cessere; regunt sua sidera puppem.
 
-**72** Iamque sub Eoae dubios Atlantidisatlantidis M, athlantidis OQ, altantidis V ignes
+**72** Iamque sub Eoae dubios Atlantidis ignes
 
 **73** albet ager, motisque truces ab ovilibus ursi
 
 **74** tuta domosque petunt, raras et litus in altum
 
-**75** mittit aves, cum primusprimus SM 2, primis V equis exegit anhelis
+**75** mittit aves, cum primus equis exegit anhelis
 
-**76** Phoebus Athon mediasque diem dispersit in undas.undas SM, undis V
+**76** Phoebus Athon mediasque diem dispersit in undas.
 
 **77** certatim remis agitur mare rostraque cursu
 
 **78** prima tremunt, et iam summis Vulcania surgit
 
-**79** Lemnos aquis tibi per varios dilectadilecta Lennep, defleta V labores,
+**79** Lemnos aquis tibi per varios dilecta labores,
 
-**80** Ignipotens; nec te furiisfuriis X 2 M, fariis V et crimine matrum
+**80** Ignipotens; nec te furiis et crimine matrum
 
-**81** terra fugatfugat S, fugae V clare exhibet meritique piget meminisse prioris.
+**81** terra fugat meritique piget meminisse prioris.
 
 **82** Tempore quo primum fremitus insurgere opertos
 
@@ -1881,7 +1881,7 @@ title: Argonautica
 
 **85** Iunonem volucri primam suspendit Olympo
 
-**86** horrendum chaos ostendens poenamquepoenamque M 2 C, poenasque S, poenaque V barathri.
+**86** horrendum chaos ostendens poenamque barathri.
 
 **87** mox etiam pavidae temptantem vincula matris
 
@@ -1897,7 +1897,7 @@ title: Argonautica
 
 **93** alternos aegro cunctantem poplite gressus.
 
-**94** hinc reducireduci S ut vid., M, rudici V superas postquam pater adnuit arces,
+**94** hinc reduci superas postquam pater adnuit arces,
 
 **95** Lemnos cara deo, nec fama notior Aetne
 
@@ -1915,35 +1915,35 @@ title: Argonautica
 
 **102** exitium furiale movet. neque enim alma videri
 
-**103** tantum: eadem teretitantum: eadem Sudhaus, cf. V 436, Iā tumea cum V | tereti X 2 in marg., M, reti V crinem subnectitur auro
+**103** tantum: eadem tereti crinem subnectitur auro
 
 **104** sidereos diffusa sinus, eadem effera et ingens
 
 **105** et maculis suffecta genas pinumque sonantem
 
-**106** virginibus Stygiis nigramque simillima pallam.pallam Bon. 2, palmam VC
+**106** virginibus Stygiis nigramque simillima pallam.
 
 **107** Iamque dies aderat. Thracas qui fuderat armis
 
-**108** dux Lemni, puppespuppes M, puppe V tenui contexere canna
+**108** dux Lemni, puppes tenui contexere canna
 
 **109** ausus et inducto cratem defendere tergo,
 
 **110** laeta maria tum signa refert, plenasque movebant
 
-**111** armentis nuribusque rates. et barbarait barbara Pius; cf. praef. vestis
+**111** armentis nuribusque rates. et barbara vestis
 
 **112** et torques insigne loci. sonat aequore clamor:
 
 **113** 'o patria, o variis coniunx nunc anxia curis,
 
-**114** hasHas S, Hos V agimus longi famulas tibi praemia belli',
+**114** has agimus longi famulas tibi praemia belli',
 
 **115** cum dea se piceo per sudum turbida nimbo
 
-**116** praecipitat Famamque vagam vestigat in umbra.umbra M, umbro V
+**116** praecipitat Famamque vagam vestigat in umbra.
 
-**117** quam pater omnipotens digna atque indigna habet Par. | Rex superum famam digna Par. canentem
+**117** quam pater omnipotens digna atque indigna canentem
 
 **118** spargentemque metus placidis regionibus arcet
 
@@ -1953,7 +1953,7 @@ title: Argonautica
 
 **121** quas datur. audentem primi spernuntque foventque.
 
-**122** mox omnes agit et motis quatit oppida linguis.linguis M, linquis V
+**122** mox omnes agit et motis quatit oppida linguis.
 
 **123** talem diva sibi scelerisque dolique ministram
 
@@ -1969,29 +1969,29 @@ title: Argonautica
 
 **129** bella soles, cum mille tubas armataque campis
 
-**130** agmina et innumerum flatus cum fingisfingis M ex corr., fringis V equorum.
+**130** agmina et innumerum flatus cum fingis equorum.
 
 **131** adfore iam luxu turpique cupidine captos
 
-**132** farefare Bon. 1, Faue V viros carasque toris inducere Thressas.
+**132** fare viros carasque toris inducere Thressas.
 
-**133** haec tibi principia, hinc rabidasrabidas VSM, rapidas Thilo dolor undique matres
+**133** haec tibi principia, hinc rabidas dolor undique matres
 
 **134** instimulet: mox ipsa adero ducamque paratas.'
 
-**135** Illa abitabit M, dabit V et mediam gaudens defertur in urbem
+**135** Illa abit et mediam gaudens defertur in urbem
 
-**136** et primam Eurynomen, qua om. C | qua Sudhaus ex V 327, ac V, ad Carrion proxima limina Codri,
+**136** et primam Eurynomen, qua proxima limina Codri,
 
 **137** occupat exesam curis castumque cubile
 
 **138** servantem: manet illa viro famulasque fatigat
 
-**139** litoribus,litoribus intellego iteratis ad litus itionibus (cf. 283 furtis), velleribus Ald., vulgo tardi reputant quae tempora belli
+**139** litoribus, tardi reputant quae tempora belli
 
 **140** ante torum et longo mulcent insomnia penso.
 
-**141** huic dea cum lacrimis et nota veste NeaeraeNeaerae Ald., neaera V
+**141** huic dea cum lacrimis et nota veste Neaerae
 
 **142** icta genas 'utinam non hic tibi nuntius essem,
 
@@ -2005,31 +2005,31 @@ title: Argonautica
 
 **147** iamque aderunt, thalamisque tuis Threissa propinquat
 
-**148** non forma,forma nonnulli apud Pium, fama V non arte colus, non laude pudoris
+**148** non forma, non arte colus, non laude pudoris
 
 **149** par tibi nec magni proles praeclara Dorycli,
 
-**150** picta manus ustoqueustoque Bon. 1, usto V placet sed barbara mento.
+**150** picta manus ustoque placet sed barbara mento.
 
-**151** ac tamen hos aliisallis Heinsius, tales V forsan solabere casus
+**151** ac tamen hos aliis forsan solabere casus
 
 **152** tu thalamis fatoque leges meliore penates:
 
 **153** me tua matris egens damnataque paelice proles
 
-**154** exanimat,Exanimat M r, Examinat V quam iam miseros transversa tuentem
+**154** exanimat, quam iam miseros transversa tuentem
 
 **155** letalesque dapes infectaque pocula cerno.
 
 **156** scis simile ut flammis simus genus; adde cruentis
 
-**157** quod patrium saevire Dahis. ut supra nisi simili V, Scis sumus ut similes flammis genus adde cruentis Quod patrium saevire (patruum servire C a) dabis C iam lacte ferino,
+**157** quod patrium saevire Dahis. iam lacte ferino,
 
 **158** iam veniet durata gelu. sed me quoque pulsam
 
-**159** fama viro, nostrosque toros virgatauirgata V, ingrata C tenebit
+**159** fama viro, nostrosque toros virgata tenebit
 
-**160** et plaustro direptadirepta T Bon. 2, directa VC, derepta Vossius nurus.' sic fata querellas
+**160** et plaustro direpta nurus.' sic fata querellas
 
 **161** abscidit et curis pavidam lacrimisque relinquit.
 
@@ -2037,17 +2037,17 @@ title: Argonautica
 
 **163** Oleniique domum furiis; totam inde per urbem
 
-**164** personat, utut Bon. 1, et V cunctas agitent expellere Lemno,
+**164** personat, ut cunctas agitent expellere Lemno,
 
-**165** ipsi urbem Thressaeque regant.regant M 2, regnant V dolor iraque surgit:
+**165** ipsi urbem Thressaeque regant. dolor iraque surgit:
 
-**166** obvia quaeque eadem traditquetraditque Pius, trahitque V, retrahitque C auditque, neque ulli
+**166** obvia quaeque eadem traditque auditque, neque ulli
 
-**167** vana fides. tumvana Iunt. 1, Vna V | et om. V, add. M 2, tum S voce deos et questibus implent,
+**167** vana fides. tum voce deos et questibus implent,
 
-**168** oscula iamque toris atqueadque V, iamque C oscula postibus ipsis
+**168** oscula iamque toris atque oscula postibus ipsis
 
-**169** ingeminant lacrimisque iterum visuquevisuque Bon. 1, uisumque V morantur.
+**169** ingeminant lacrimisque iterum visuque morantur.
 
 **170** prosiliunt nec tecta virum thalamosque revisunt
 
@@ -2061,17 +2061,17 @@ title: Argonautica
 
 **175** flet Venus et saevis ardens dea planctibus instat
 
-**176** primaque 'Sarmaticas utinam Fortuna dedissetdedisses C
+**176** primaque 'Sarmaticas utinam Fortuna dedisset
 
 **177** insedisse domos tristesque habitasse pruinas,
 
-**178** plaustra sequi, vel iam patriae construo: patriae culmen (an culmina?) per ignes agi (i. e. ignibus rapi), cf. Sen. Med. 148 sq. vidisse per ignes
+**178** plaustra sequi, vel iam patriae vidisse per ignes
 
-**179** culmen agiFulmen C | agi C Bon. 1, agis V stragemque deum; nam cetera belli
+**179** culmen agi stragemque deum; nam cetera belli
 
 **180** perpetimur. mene ille novis, me destinat amens
 
-**181** servitiis, urbem autaut V, ut C fugiens natosque relinquam?
+**181** servitiis, urbem aut fugiens natosque relinquam?
 
 **182** non prius ense manus raptoque armabimus igne,
 
@@ -2079,9 +2079,9 @@ title: Argonautica
 
 **184** magnum aliquid spirabit amor?' tune ignea torquens
 
-**185** lumina praecipites excussit ab ubereubere S, urbere V natos.
+**185** lumina praecipites excussit ab ubere natos.
 
-**186** ilicet arrectae mentes, evictaqueeuictaque X 2 M, uictaque V matrum
+**186** ilicet arrectae mentes, evictaque matrum
 
 **187** corda sacer Veneris gemitus rapit: aequora cunctae
 
@@ -2091,19 +2091,19 @@ title: Argonautica
 
 **190** iamque domos mensasque petunt; discumbitur altis
 
-**191** porticibus; sua cuiquecuique X, cui V furens festinaque coniunx
+**191** porticibus; sua cuique furens festinaque coniunx
 
 **192** adiacet, inferni qualis sub nocte barathri
 
-**193** adcubatOccubat C attonitum Phlegyan et Thesea iuxta
+**193** adcubat attonitum Phlegyan et Thesea iuxta
 
 **194** Tisiphone saevasque dapes et pocula libat,
 
 **195** tormenti genus, et nigris amplectitur hydris.
 
-**196** Ipsa Venus quassans undantem turbine pinumpinum V, pontum C
+**196** Ipsa Venus quassans undantem turbine pinum
 
-**197** adglomerat tenebrasAdglomerat (X 2) tenebras P, Adglomerit tenebrat V pugnaeque adcincta trementem
+**197** adglomerat tenebras pugnaeque adcincta trementem
 
 **198** desilit in Lemnon; nimbis et luce fragosa
 
@@ -2113,9 +2113,9 @@ title: Argonautica
 
 **201** congeminat, qua primus Athos et pontus et ingens
 
-**202** Thraca pals pariterqueThraca pavet Pierson, Haupt | pariterque M, paterque V toris exhorruit omnis
+**202** Thraca pals pariterque toris exhorruit omnis
 
-**203** mater et adstricto riguerunt ubereubere M r, ubera V nati.
+**203** mater et adstricto riguerunt ubere nati.
 
 **204** adeelerat Pavor et Geticis Discordia demens
 
@@ -2133,49 +2133,49 @@ title: Argonautica
 
 **211** inrupitque domos et singultantia gestans
 
-**212** ora manu taboque sinus perfusa recentirecenti SM, recaedenti V
+**212** ora manu taboque sinus perfusa recenti
 
-**213** arrectasque comas 'meritosarrectosque V b | meritas C. 213-262 bis leguntur in V (V a et V b) en prima revertor
+**213** arrectasque comas 'meritos en prima revertor
 
-**214** ulta toros, premit ecce dies'. tum verbere victasuictas V, ductas C
+**214** ulta toros, premit ecce dies'. tum verbere victas
 
-**215** in thalamosInthamos V b agit et cunctantibus invenit enses.
+**215** in thalamos agit et cunctantibus invenit enses.
 
 **216** unde ego tot scelerum facies, tot fata iacentum
 
 **217** exsequar? heu, vatem monstris quibus intulit ordo,
 
-**218** quae se aperit series.series V, facies C o qui me vera canentem
+**218** quae se aperit series. o qui me vera canentem
 
-**219** sistatSista V a et hac nostras exsolvat imagine noctes.
+**219** sistat et hac nostras exsolvat imagine noctes.
 
 **220** invadunt aditus et quondam cara suorum
 
 **221** corpora, pars ut erant dapibus vinoque soporos,
 
-**222** pars conferre manus etiam magnisquemagnisque T, magnosque V paratae
+**222** pars conferre manus etiam magnisque paratae
 
 **223** cum facibus quosdam insomnes et cuncta tuentes:
 
-**224** sed temptare fugam prohibetque capesserecapescere V b contra
+**224** sed temptare fugam prohibetque capessere contra
 
 **225** arma metus: adeo ingentes inimica videri
 
-**226** diva dabat, notaque sonat vox coniuge maior;magior V a
+**226** diva dabat, notaque sonat vox coniuge maior;
 
-**227** tantum oculos pressere manu,presere V a | manu Burmann, om. V, metu C velut agmina cernant
+**227** tantum oculos pressere manu, velut agmina cernant
 
 **228** Bumenidum ferrumve super Bellona coruscet.
 
 **229** hoc soror, hoc coniunx, propiorque hoc nata parensque
 
-**230** saevaSeua M r, Seu V valet, prensosque toris mactatque trahitque
+**230** saeva valet, prensosque toris mactatque trahitque
 
-**231** femineum genus, immanesTemineum V a | inmagines V b quos sternere Bessi
+**231** femineum genus, immanes quos sternere Bessi
 
 **232** nec Geticae potuere manus aut aequoris irae.
 
-**233** it cruorit Sabellicus, His VC | cruos V b in thalamis, et anhela in pectore fumant
+**233** it cruor in thalamis, et anhela in pectore fumant
 
 **234** vulnera, seque toris misero luctamine trunci
 
@@ -2183,27 +2183,27 @@ title: Argonautica
 
 **236** iniciunt adduntque domos. pars ignibus atris
 
-**237** effugiunt propere,properes et V | dira C sed dura in limine coniunx
+**237** effugiunt propere, sed dura in limine coniunx
 
-**238** obsidet, et viso repetunt incendia incentha V a ferro.
+**238** obsidet, et viso repetunt incendia ferro.
 
-**239** ast aliae Thressas labem causamque furorumfurorum M r, furorem V
+**239** ast aliae Thressas labem causamque furorum
 
-**240** diripiunt; mixti gemitus clamorque precantumom. V a S | Diripicunt V b | precanum V b
+**240** diripiunt; mixti gemitus clamorque precantum
 
-**241** barbarus, om. V b ignotaeque implebant aethera voces.
+**241** barbarus, ignotaeque implebant aethera voces.
 
-**242** Sed tibi nunc quae digna tuis ingentibus ausisausis hic om. V a, add. in fine vs. 243
+**242** Sed tibi nunc quae digna tuis ingentibus ausis
 
-**243** oraOra V, orsa Heinsius feram, decus et patriae laus una ruentis,
+**243** ora feram, decus et patriae laus una ruentis,
 
-**244** Hypsipyle? non in marg. inf. habet V b ulla meo te carmine dictam
+**244** Hypsipyle? non ulla meo te carmine dictam
 
 **245** abstulerint, durent Latiis modo saecula fastis
 
 **246** Iliacique lares tantique palatia regni.
 
-**247** inruerantInrueant V a, Inruerea nt V b actae pariter nataeque nurusque,
+**247** inruerant actae pariter nataeque nurusque,
 
 **248** totaque iam sparsis exarserat insula monstris.
 
@@ -2211,93 +2211,93 @@ title: Argonautica
 
 **250** meque, pater; non hostis', ait 'non moenia laesi
 
-**251** Thraces habent: nostrum hoc facinus; ne quaere, quis auctor.facinus S, facimus V | neque is auctor V b
+**251** Thraces habent: nostrum hoc facinus; ne quaere, quis auctor.
 
 **252** iam fuge, iam dubiae donum rape mentis et ensem
 
-**253** tu potius, miserere, tene.'miserere tene V b, misereretene V a, miserae retine C tune excipit artus
+**253** tu potius, miserere, tene.' tune excipit artus
 
 **254** obnubitque caput tacitumque ad conscia Bacchi
 
-**255** templa rapitrabit V a primoque manus a limine tendens
+**255** templa rapit primoque manus a limine tendens
 
 **256** 'exime nos sceleri, pater, et miserere piorum
 
 **257** rursus' ait. tacita pavidum tune sede locavit
 
-**258** sub pedibus dextraque dei;dei SM, diei V latet ille receptus
+**258** sub pedibus dextraque dei; latet ille receptus
 
-**259** veste sacra; voces choruschorus sc. Bacchi comitum simulacra et trieterica reddunt
+**259** veste sacra; voces chorus et trieterica reddunt
 
-**260** aera sonum, fixaeque fremunt in limine lynces.lynces Schmiedeberg, tygues V a, tygers V b, tigres vulgo
+**260** aera sonum, fixaeque fremunt in limine lynces.
 
 **261** regina ut roseis Auroram surgere bigis
 
-**262** vidit et insomni lassataslasatas V b turbine tandem
+**262** vidit et insomni lassatas turbine tandem
 
 **263** conticuisse domos, stabilem quando optima facta
 
-**264** dant animumstabilem certe optima facta Dant animum habet Par. | fata V maiorque piis audacia coeptis,
+**264** dant animum maiorque piis audacia coeptis,
 
 **265** serta patri iuvenisque comam vestesque Lyaei
 
 **266** induit et medium curru locate aeraque circum
 
-**267** tympanaque et plenas tacitatacita M r, tacitas V formidine cistas.
+**267** tympanaque et plenas tacita formidine cistas.
 
-**268** ipsa sinus hederisque ligat famularibusfamularibus M, falamuribus V artus
+**268** ipsa sinus hederisque ligat famularibus artus
 
 **269** pampineamque quatit ventosis ictibus hastam
 
 **270** respiciens, teneat virides velatus habenas
 
-**271** ut pater, ee Kr., om. V, et C, in Baehrens nivea tumeant ut cornua mitra
+**271** ut pater, e nivea tumeant ut cornua mitra
 
 **272** et sacer ut Bacchum referat scyphus. impulit acri
 
-**273** tum in V, sed notis verus ordo restitutus est. in S hic est ordo 275, 274, 273 validas stridore fores rapiturque per urbem
+**273** tum validas stridore fores rapiturque per urbem
 
-**274** talia voce canens: 'linque ante o mihi caede madentem,
+**274** talia voce canens: 'linque o mihi caede madentem,
 
-**275** Bacche, domum; sine foedatum te funere pontusf eda tūmte V, corr. M, foeda tumente S | pontus M, ponus V
+**275** Bacche, domum; sine foedatum te funere pontus
 
 **276** expiet et referam lotos in templa dracones.'
 
-**277** sic medios egressaegressa X 2 M, aegras a V | fe rendam V 1, furendam S metus; facit ipse verendam
+**277** sic medios egressa metus; facit ipse verendam
 
-**278** nam deus et flatu non inscia gliscit anhelo.anhelo Bon. 1, anhele V
+**278** nam deus et flatu non inscia gliscit anhelo.
 
-**279** iamque senem tacitistacitis Bon. 1, tacitus VSM saeva procul urbe remotum
+**279** iamque senem tacitis saeva procul urbe remotum
 
-**280** occuleratocculuit Thilo, sed cf. Neue, Formenlehre III 396 silvis, ipsam sed conscius ausi
+**280** occulerat silvis, ipsam sed conscius ausi
 
 **281** nocte dieque Pavor fraudataque turbat Erinys.
 
 **282** non similes iam ferre choros (semel orgia fallunt)
 
-**283** audet, non patrios furtis accederepatrios furtis V, patrios (patriis C b) bustis C | accedere Bon. 1, accendere VC saltus,
+**283** audet, non patrios furtis accedere saltus,
 
 **284** et fuga diversas misero quaerenda per artes.
 
-**285** visa ratis saevaesaeuae M 2, seua V defecta laboribus undae,
+**285** visa ratis saevae defecta laboribus undae,
 
-**286** quam Thetidithetidi M, tetih V longinqua dies Glaucoque repostam
+**286** quam Thetidi longinqua dies Glaucoque repostam
 
-**287** solibus et canis urebaturebat Vdilu- cide luna pruinis.
+**287** solibus et canis urebat luna pruinis.
 
-**288** hucHuc Bon. 1, Hunc V genitorem altae per opaca silentia noctis
+**288** huc genitorem altae per opaca silentia noctis
 
-**289** praecipitem silvis rapit etrapit et Bon. 1, raptet V sic maesta profatur:
+**289** praecipitem silvis rapit et sic maesta profatur:
 
-**290** 'quam, genitor, patriam, quantas modo linquis inanisinanes nonnulli apud Pium, inani V
+**290** 'quam, genitor, patriam, quantas modo linquis inanis
 
 **291** pube domos. pro dira lues, pro noctis acerbae
 
-**292** exitium. talin possum te crederepossum X 2, possunt V | credere Bon. 2, reddere V puppi,
+**292** exitium. talin possum te credere puppi,
 
 **293** care parens? possum tantis retinere periclis?
 
-**294** solvimus heu serum Furiisserum V, miserum C | Furiis Pius, furtis V; cf. praef. scelus. adnue votis,
+**294** solvimus heu serum Furiis scelus. adnue votis,
 
 **295** diva, soporiferas quae nunc trahis aequore bigas.
 
@@ -2307,15 +2307,15 @@ title: Argonautica
 
 **298** quando ego servato mediam genitore per urbem
 
-**299** laeta ferar? quando hic lacrimas planctusqueplanctusque X 2 M, plantusque V videbo?'
+**299** laeta ferar? quando hic lacrimas planctusque videbo?'
 
-**300** dixerat. ille procul trunca fugitfug it V 1 ut vid. anxius alno
+**300** dixerat. ille procul trunca fugit anxius alno
 
-**301** Taurorum lucos,Taurorum lucos Sudhaus, Taurorum locos V, Taurorumque locos M, vulgo delubraque saeva Dianae
+**301** Taurorum lucos, delubraque saeva Dianae
 
 **302** advenit. hic illum tristi, dea, praeficis arae
 
-**303** ense dato;dato M, tato V mora nec terris tibi longa cruentis:
+**303** ense dato; mora nec terris tibi longa cruentis:
 
 **304** iam nemus Egeriae, iam te ciet altus ab Alba
 
@@ -2327,9 +2327,9 @@ title: Argonautica
 
 **308** natorumque locis vacuaeque in moenibus urbis
 
-**309** iura novant; donantnouant donant M, nocant dobant V solio sceptrisque paternis
+**309** iura novant; donant solio sceptrisque paternis
 
-**310** ut meritam, redeuntqueredeunt (om. que) etiam V piae sua praemia menti.
+**310** ut meritam, redeuntque piae sua praemia menti.
 
 **311** Ecce procul validis Lemnon tendentia remis
 
@@ -2343,27 +2343,27 @@ title: Argonautica
 
 **316** tunc etiam vates Phoebo dilecta Polyxo —
 
-**317** non patriam, non certa genus, sed maxima †taetaemagxima taeta e V, (caete C)
+**317** non patriam, non certa genus, sed maxima †taetae
 
-**318** Proteaque ambiguum Phariis se fingit abphariise ab V, pharii se patris ab C, phariis epatris ab M | la- cunas sic fere supplevit Sudhaus sed maxima iactans munera caelicolum maternaque nomina testans Proteaque a. Phariis se fingit ab a. antris
+**318** Proteaque ambiguum Phariis se fingit ab antris
 
-**319** huc rexisse vias iunctisiunctis SM r, iniunctis V super aequora phocis;
+**319** huc rexisse vias iunctis super aequora phocis;
 
-**320** saepe imisSaepe imis M, Saepimis V se condit aquis cunctataque paulum
+**320** saepe imis se condit aquis cunctataque paulum
 
-**321** surgit ut auditas referensreferens SM 2, reterns V in gurgite voces —
+**321** surgit ut auditas referens in gurgite voces —
 
-**322** 'portum demus' ait, 'fatis haec,fatis Summers, om. V, ait haec hospita C credite, puppis
+**322** 'portum demus' ait, 'fatis haec, credite, puppis
 
-**323** advenitAduenit et V, Adueniet C et levior Lemno deus aequore flexit
+**323** advenit et levior Lemno deus aequore flexit
 
-**324** huc Minyas; Venus ipsa volens dat corporacorpora Burmann, tempora V, foedera Mark- land, cf. Stat. Theb. V 138 de eadem re agentem iungi,
+**324** huc Minyas; Venus ipsa volens dat corpora iungi,
 
 **325** dum vires utero maternaque sufficit aetas.'
 
-**326** dicta placent, portatque preces ad litora GraisGrais XM, gris V
+**326** dicta placent, portatque preces ad litora Grais
 
-**327** Iphinoe; nec Post 328 lacunam statuit Thilo; fort. etiam post 331 nonnulla desunt turba nocens, scelerisquescelerisque O 2 QC, celerisque V | recentis O 2 in marg., nocentis VC recentis
+**327** Iphinoe; nec turba nocens, scelerisque recentis
 
 **328** signa movent, tollitque loci Cytherea timorem.
 
@@ -2371,13 +2371,13 @@ title: Argonautica
 
 **330** deicit, insuetis et iam pia munera templis
 
-**331** reddit, et hac prima Veneris calethac S M, ac V | ueneris M, ueris V | calet Bon. 1, caret V ara iuvenca.
+**331** reddit, et hac prima Veneris calet ara iuvenca.
 
 **332** Ventum erat ad rupem, cuius pendentia nigris
 
 **333** fumant saxa iugis coquiturque vaporibus aer.
 
-**334** substitit Aesonides,aesonides XM, aesomnes V atque Post 336 vel excidisse vel obliteratam esse sollemnem physicorunz et periegetarum declamationem, interdiu cessare opus Vulcani, increbrescere nocte, testis est 338 hic regina precari
+**334** substitit Aesonides, atque hic regina precari
 
 **335** hortatur causasque docens 'haec antra videtis
 
@@ -2391,17 +2391,17 @@ title: Argonautica
 
 **340** moenia tum viresque loci veteresque parentum
 
-**341** iactatiactat Bon. 1, Iactet V opes. mediis famulae convivia tectis
+**341** iactat opes. mediis famulae convivia tectis
 
 **342** expediunt; Tyrio vibrat torus igneus ostro.
 
-**343** statStat M 2, Istat V maerens atavos reges regesque maritos
+**343** stat maerens atavos reges regesque maritos
 
 **344** Thressa manus, quaecumque faces timuisse iugales
 
 **345** credita nec dominae sanctum tetigisse cubile.
 
-**346** iam mediummedium Heinsius, medi V, media S Aesonides, iam se regina locavit,
+**346** iam medium Aesonides, iam se regina locavit,
 
 **347** post alii proceres; sacris dum vincitur extis
 
@@ -2411,29 +2411,29 @@ title: Argonautica
 
 **350** noctis et in seras durant sermonibus umbras,
 
-**351** praecipueque ducisducis M 2, dices V casus mirata requirit
+**351** praecipueque ducis casus mirata requirit
 
-**352** Hypsipyle, quae fataquo fata Heinsius, fort. recte trahant, quae regis agat vis
+**352** Hypsipyle, quae fata trahant, quae regis agat vis
 
 **353** aut unde Haemoniae molem ratis: unius haeret
 
 **354** adloquio et blandos paulatim colligit ignes
 
-**355** iam non dura toris VeneriVeneri vulgo, ueneris V nec iniqua reversae,
+**355** iam non dura toris Veneri nec iniqua reversae,
 
-**356** et deus ipse morasmoras SM, mora si V spatiumque indulget amori.
+**356** et deus ipse moras spatiumque indulget amori.
 
 **357** Pliada lege poli nimboso moverat astro
 
 **358** Iuppiter aeternum volvens opus, et simul undis
 
-**359** cuncta ruunt, unoque deidei M, die V Pangaea sub ictu
+**359** cuncta ruunt, unoque dei Pangaea sub ictu
 
-**360** Gargaraque et maesti steteruntmaesti steterunt Pius, maestis et erant V formidine luci.
+**360** Gargaraque et maesti steterunt formidine luci.
 
-**361** saevior haut alio mortales tempore gentesmentes Heinsius, sed cf. 363
+**361** saevior haut alio mortales tempore gentes
 
-**362** terrorTerror SM, Tertor V, Tortor C agit; tune urget enim, tune flagitat iras
+**362** terror agit; tune urget enim, tune flagitat iras
 
 **363** in populos Astraea Iovem terrisque relictis
 
@@ -2441,13 +2441,13 @@ title: Argonautica
 
 **365** insequitur niger et magnis cum fratribus Eurus
 
-**366** intonat Aegaeo, tenditque ad litora pontus;tenditque SM, denditque V | pontus M, pondus V
+**366** intonat Aegaeo, tenditque ad litora pontus;
 
 **367** et lunam quarto densam videt imbribus ortu
 
-**368** Thespiades, longus coeptis et fluctibus arcensarcens Sudhaus, arcent V, arcet C Bon. 2
+**368** Thespiades, longus coeptis et fluctibus arcens
 
-**369** quiQui V, Quem C Bon. 2 metus. usque novos divae melioris ad ignis
+**369** qui metus. usque novos divae melioris ad ignis
 
 **370** urbe sedent laeti Minyae viduisque vacantes
 
@@ -2457,17 +2457,17 @@ title: Argonautica
 
 **373** dissimulant, donec resides Tirynthius heros
 
-**374** non tulit, ipse rati invigilansinuigilans M 1 corr., inuigans V atque integer urbis:
+**374** non tulit, ipse rati invigilans atque integer urbis:
 
 **375** invidisse deos tantum maris aequor adortis,
 
-**376** desertasqueDesertasque CM r, Diserti sque V | tempore M, tempora V domos, fraudataque tempore segni
+**376** desertasque domos, fraudataque tempore segni
 
 **377** vota patrum. quid et ipse viris cunctantibus adsit?
 
 **378** 'o miseri quicumque tuis accessimus actis.
 
-**379** Phasin et AeetenPhasim et oeten M, Phasine tamen V Scythicique pericula ponti
+**379** Phasin et Aeeten Scythicique pericula ponti
 
 **380** redde' ait 'Aesonide: me tecum solus in aequor
 
@@ -2475,13 +2475,13 @@ title: Argonautica
 
 **382** Cyaneos vigilemque alium spoliare draconem.
 
-**383** si sedet Aegaei scopulos habitare profundi,habitare SM, habire V | profundi M 2, profundo V
+**383** si sedet Aegaei scopulos habitare profundi,
 
-**384** hoc mecum Telamon peraget meus.' haechaec SM, hae V ubi dicta,
+**384** hoc mecum Telamon peraget meus.' haec ubi dicta,
 
 **385** baud secus Aesonides monitis accensus amaris,
 
-**386** quamquem X, quam V bellator equus, longa quem frigidafrigida ... umbra iuvat, flecti in l. p. ang. o. Sudhaus pace
+**386** quam bellator equus, longa quem frigida pace
 
 **387** terra iuvat, †brevis† in laevos piger angitur orbes,
 
@@ -2489,11 +2489,11 @@ title: Argonautica
 
 **389** clamor et obliti rursus fragor impleat aeris.
 
-**390** tune Argum Tiphynque vocat pelagoquepelagoque SM, pelago V parari
+**390** tune Argum Tiphynque vocat pelagoque parari
 
 **391** praecipitat; petit ingenti clamore magister
 
-**392** arma viros pariter sparsosque in litore remos.remos X 2 in marg., faemos V
+**392** arma viros pariter sparsosque in litore remos.
 
 **393** Exoritur novus urbe dolor planctusque per omnes
 
@@ -2501,13 +2501,13 @@ title: Argonautica
 
 **395** en iterum; et quando natorum tempora, gentem
 
-**396** qui recolant, qui sceptra gerant?gerant V, regant C nunc triste nefandae
+**396** qui recolant, qui sceptra gerant? nunc triste nefandae
 
 **397** noctis opus, vidui nunc illa silentia tecti
 
-**398** saeva magis, thalamosSaeua magis th. O 2, Saeuam at halama s V, Saeuit amor th. C | exclusaque C excussaque vincla quod ausae
+**398** saeva magis, thalamos excussaque vincla quod ausae
 
-**399** induere atqueInduere atque cod. Harlesii, Inbueratque V (Imb.) C iterum tales admittere curas.
+**399** induere atque iterum tales admittere curas.
 
 **400** ipsa quoque Hypsipyle subitos per litora cursus
 
@@ -2517,23 +2517,23 @@ title: Argonautica
 
 **403** 'iamne placet primo deducere vela sereno,
 
-**404** carius o mihi patre caput? modo saeva quieruntquierunt Ald., quierant V
+**404** carius o mihi patre caput? modo saeva quierunt
 
-**405** aequora. sic portus fugeret ratis, aspera sisic Bon. 2, si V | post ratis pc(vel potius pe) litt. in V exstant te
+**405** aequora. sic portus fugeret ratis, aspera si te
 
 **406** Plias in adversae tenuisset litore Thraces.
 
 **407** ergo moras caelo cursumque tenentibus undis
 
-**408** debuimus?' dixit lacrimanslacrymans Bon. 2, lacrimas V haesuraque caro
+**408** debuimus?' dixit lacrimans haesuraque caro
 
 **409** dona duci promit chlamydem textosque labores.
 
 **410** illic servati genitoris conscia sacra
 
-**411** pressit acuPressit acu CT 1 Iunt. 1, Praesit a V currusque pios: stant saeva paventum
+**411** pressit acu currusque pios: stant saeva paventum
 
-**412** agmina dantque locum; viridiviridi Barth, uiridis V circum horrida tela
+**412** agmina dantque locum; viridi circum horrida tela
 
 **413** silva tremit; mediis refugit pater anxius umbris.
 
@@ -2541,13 +2541,13 @@ title: Argonautica
 
 **415** illustremque fugam pueri; mox aethere laetus
 
-**416** adstabat mensis,mensis X 2 M, mmsis V quin et Iovis armiger ipse
+**416** adstabat mensis, quin et Iovis armiger ipse
 
 **417** accipit a Phrygio iam pocula blanda ministro.
 
-**418** tune ensem notumque ferens insigne ThoantisThoantis Bon. 1, tonantis V
+**418** tune ensem notumque ferens insigne Thoantis
 
-**419** 'accipe' ait, 'bellis mediaequemedi(a)eque OQPII, mediae V ut pulvere pugnae
+**419** 'accipe' ait, 'bellis mediaeque ut pulvere pugnae
 
 **420** sim comes, Aetnaei genitor quae flammea gessit
 
@@ -2557,11 +2557,11 @@ title: Argonautica
 
 **423** prima sinu, refer et domitis a Colchidos oris
 
-**424** velaVela M, Ue V per hunc utero quem linquis Iasona nostro.'
+**424** vela per hunc utero quem linquis Iasona nostro.'
 
 **425** sic ait Haemonii labens in colla mariti.
 
-**426** nec minus Orphea trististristis M, tristi V cervice tuaque,
+**426** nec minus Orphea tristis cervice tuaque,
 
 **427** Aeacide, et gemino coniunx a Castore pendet.
 
@@ -2571,15 +2571,15 @@ title: Argonautica
 
 **430** spumea subsequitur fugientis semita clavi.
 
-**431** tune tenuis Lemnos transitquetransitque T, transitaque V, transibatque C Electria tellus
+**431** tune tenuis Lemnos transitque Electria tellus
 
 **432** Threiciis arcana sacris. hic numinis ingens
 
-**433** horror et incautis decreta piacula linguis.linguis M, linquis V
+**433** horror et incautis decreta piacula linguis.
 
 **434** hanc demissa Iovi non umquam laedere fluctu
 
-**435** audet hiems. sponte ipse deus tune asperat undas,undas M, in V nunc tantum und legitur, cetera plicatura tecta sunt
+**435** audet hiems. sponte ipse deus tune asperat undas,
 
 **436** cum vetat infidos sua litora tangere nautas.
 
@@ -2587,17 +2587,17 @@ title: Argonautica
 
 **438** excipit hospitibus reserans secreta Thyotes.
 
-**439** hactenus in populos vates, Samothracia, dicam:vates, Samothracia, dicam dubitanter Sud- haus ex Apoll. Rhod. I 919, uates amothra cadica m V, uates samothraca diemque C
+**439** hactenus in populos vates, Samothracia, dicam:
 
-**440** missamissa i. e. silentio tecta mane, sacrisque metum servemus opertis.
+**440** missa mane, sacrisque metum servemus opertis.
 
 **441** illi sole novo laeti plenique deorum
 
-**442** considunt transtris. iam quas praevideratpraeuiderat T 1, prouiderat VSM urbes
+**442** considunt transtris. iam quas praeviderat urbes
 
 **443** navita condebat, proraeque accesserat Imbros,
 
-**444** et solsol M, sola V aetherias medius conscenderat arces.
+**444** et sol aetherias medius conscenderat arces.
 
 **445** Thessala Dardaniis tune primum puppis harenis
 
@@ -2605,7 +2605,7 @@ title: Argonautica
 
 **447** desiliunt: pars hinc levibus candentia velis
 
-**448** castra levat,castra levat Luc. IV 18 tracto pars frangit adorea saxo
+**448** castra levat, tracto pars frangit adorea saxo
 
 **449** farra, citum strictis alius de cautibus ignem
 
@@ -2615,17 +2615,17 @@ title: Argonautica
 
 **452** anfractu sinuosa legunt, vox accidit aures
 
-**453** flebileFlebile M 2, Flebili V, Flebilis accedens Parrhasius succedens, cum fracta remurmurat unda.
+**453** flebile succedens, cum fracta remurmurat unda.
 
 **454** attoniti pressere gradum vacuumque secuntur
 
-**455** vocis iter. iam certa sonat,sonat SM, resonat V desertaque durae
+**455** vocis iter. iam certa sonat, desertaque durae
 
 **456** virgo neci quem non hominum superumque vocabat?
 
 **457** acrius hoc instare viri succurrere certi;
 
-**458** qualiter, implevit gemitu cum taurustaurus SM, taturus V acerbo
+**458** qualiter, implevit gemitu cum taurus acerbo
 
 **459** avia frangentem morsu super alta leonem
 
@@ -2637,17 +2637,17 @@ title: Argonautica
 
 **463** rupe truces manicas defectaque virginis ora
 
-**464** cernit et ad primos turgentia lumina flexus;turgentia cod. re- gius, cod. Harlesii, T 1, surgentia VC | lumina T 1 Maserius, flumina VC | flexus sc. capitis Sudhaus, flectus V, fluctus MC
+**464** cernit et ad primos turgentia lumina flexus;
 
 **465** exanimum veluti multa tamen arte coactum
 
 **466** maeret ebur, Pariusve notas et nomina sumit
 
-**467** cum lapis aut liquidi referuntliquidi referunt C Bon. 2, aliquid ire ferunt V miranda colores.
+**467** cum lapis aut liquidi referunt miranda colores.
 
 **468** ductor ait: 'quod, virgo, tibi nomenque genusque,
 
-**469** quae sorssors Heinsius, mors V ista, doce, tendunt cur vincula palmas?'
+**469** quae sors ista, doce, tendunt cur vincula palmas?'
 
 **470** illa tremens tristique oculos deiecta pudore
 
@@ -2655,7 +2655,7 @@ title: Argonautica
 
 **472** dona vides, ostro scopulos auroque frequentes.
 
-**473** nos Ili felix quondam genus,felix Slothouwer, ueteris V, sed fort. post genus duo hemistichia exciderunt et pristinae felicitatis commemorationem et nominis nuncupationem (468) continentia invida donec
+**473** nos Ili felix quondam genus, invida donec
 
 **474** Laomedonteos fugeret Fortuna penates.
 
@@ -2663,11 +2663,11 @@ title: Argonautica
 
 **476** temperies, arsere rogis certantibus agri,
 
-**477** cum subitus fragor et fluctus Idaeaidaea M 2 C a, idae V moventes
+**477** cum subitus fragor et fluctus Idaea moventes
 
-**478** cum stabulis nemora: ecce repens consurgere pontoponto X 2, pono V
+**478** cum stabulis nemora: ecce repens consurgere ponto
 
-**479** belua, monstrum ingens; hanc tu nec montibusmontibus M, monibus V, menibus (i. e. moenibus) S ullis
+**479** belua, monstrum ingens; hanc tu nec montibus ullis
 
 **480** nec nostro metire mari. primaeva furenti
 
@@ -2679,7 +2679,7 @@ title: Argonautica
 
 **484** corpora; crudelis scopulis me destinat urna.
 
-**485** verum o iamiam Bon. 1, tam V redeunt Phrygibus si numina tuque
+**485** verum o iam redeunt Phrygibus si numina tuque
 
 **486** ille ades auguriis promisse et sorte deorum,
 
@@ -2699,7 +2699,7 @@ title: Argonautica
 
 **494** litoris et tumuli caelumque, quod incubat urbi,
 
-**495** quale laborantis Nemees iter aut Erymanthinemeesi terymanihi V, corr. M
+**495** quale laborantis Nemees iter aut Erymanthi
 
 **496** vidit et infectae miseratus flumina Lernae.
 
@@ -2711,9 +2711,9 @@ title: Argonautica
 
 **500** lumina nube tremunt, atque ordine curva trisulco
 
-**501** fulmineusFulmineus M, Flumineus V quatit ora fragor, pelagoque remenso
+**501** fulmineus quatit ora fragor, pelagoque remenso
 
-**502** cauda redit, passosque sinuspassosque sinus C, passusque sinu V rapit ardua cervix.
+**502** cauda redit, passosque sinus rapit ardua cervix.
 
 **503** illam incumbentem per mille volumina pontus
 
@@ -2737,23 +2737,23 @@ title: Argonautica
 
 **513** insiluit scopulo, motumque e sedibus aequor
 
-**514** horruit et celsicelsi M 2, celso V spatiosa volumina monstri.
+**514** horruit et celsi spatiosa volumina monstri.
 
 **515** qualis ubi a gelidi Boreas convallibus Hebri
 
 **516** tollitur et volucres Riphaea per ardua nubes
 
-**517** praecipitat piceo necdum tenet omniaomina C caelo,
+**517** praecipitat piceo necdum tenet omnia caelo,
 
-**518** illaIlle C simul molem horrificam scopulosaque terga
+**518** illa simul molem horrificam scopulosaque terga
 
-**519** promovet ingentique umbra subit. intremere IdeIde cod. regius, T, idem VC
+**519** promovet ingentique umbra subit. intremere Ide
 
-**520** inlidique rates pronaeque resurgere turres. cf. Lucr. VI 561–564, 575 sq.
+**520** inlidique rates pronaeque resurgere turres.
 
 **521** occupat Alcides arcum totaque pharetrae
 
-**522** nube premit. non illa magis quam sede moveturmouetur cod. Bon., T, mouenti V
+**522** nube premit. non illa magis quam sede movetur
 
 **523** magnus Eryx, deferre velint quem vallibus imbres.
 
@@ -2765,9 +2765,9 @@ title: Argonautica
 
 **527** proicit arma manu, scopulos vicinaque saxa
 
-**528** respicit, et quantum ventis adiutaadiuuata V, corr. SM 2 vetustas
+**528** respicit, et quantum ventis adiuta vetustas
 
-**529** impulerit pontive fragor,pontiue fragor M r, potentiue fragon V tantum abscidit imi
+**529** impulerit pontive fragor, tantum abscidit imi
 
 **530** concutiens a sede maris. iamque agmine toto
 
@@ -2779,11 +2779,11 @@ title: Argonautica
 
 **534** obruit; hinc vastos nodosi roboris ictus
 
-**535** congeminat, fluctus done deferturdone Sudhaus, om. V, defertur bellua C in imos
+**535** congeminat, fluctus done defertur in imos
 
 **536** iam totis resoluta vadis; Idaeaque mater
 
-**537** et chorus et summis ulularuntul larunt V (1 erasa est) collibus Amnes.
+**537** et chorus et summis ulularunt collibus Amnes.
 
 **538** protinus e scopulis et opaca valle resurgunt
 
@@ -2799,19 +2799,19 @@ title: Argonautica
 
 **544** virgineas de rupe manus aptatque superbis
 
-**545** arma umeris. regem inde petens superabat ovanteovante Bon. 1, ouant V
+**545** arma umeris. regem inde petens superabat ovante
 
 **546** litora tuta gradu, qualis per pascua victor
 
-**547** ingreditur, tum collacum colla C | armis V, artus C tumens, tum celsior armis
+**547** ingreditur, tum colla tumens, tum celsior armis
 
 **548** taurus, ubi adsueti pecoris stabula alta revisit
 
-**549** et patrium nemuspatrium nemus M r, patrum nemos V et bello quos ultus amores.
+**549** et patrium nemus et bello quos ultus amores.
 
 **550** Obvia cui contra longis emissa tenebris
 
-**551** turba Phrygumphrygum XM r, phrygaim V parvumque trahens cum coniuge natum
+**551** turba Phrygum parvumque trahens cum coniuge natum
 
 **552** Laomedon; iam maestus equos, iam debita posci
 
@@ -2823,13 +2823,13 @@ title: Argonautica
 
 **556** rex subit et patrio fatur male laetus amore:
 
-**557** 'maxime Graiugenum, quem non Sigea petentempetentem S, patentem V
+**557** 'maxime Graiugenum, quem non Sigea petentem
 
 **558** litora nec nostrae miserantem funera Troiae
 
 **559** adpulit his fors ipsa locis, si vera parentem
 
-**560** fama Iovem summique tibi genus esse Tonantis,tonantis S, donantis V
+**560** fama Iovem summique tibi genus esse Tonantis,
 
 **561** noster ades iunctisque venis: sator unus et idem
 
@@ -2839,7 +2839,7 @@ title: Argonautica
 
 **564** serus ades, quam parva tuis iam gloria factis.
 
-**565** verum age nunc socios fraternis moenibus infer;infer S, infers V | post 565 interpolaverunt MT: ut tibi seruata statui quam (quae M 2, que T) munera probe (prole M 2 T)
+**565** verum age nunc socios fraternis moenibus infer;
 
 **566** crastina lux biiuges stabulis ostendat apertis.'
 
@@ -2847,13 +2847,13 @@ title: Argonautica
 
 **568** corde nefas, clausum ut thalamis somnoque gravatum
 
-**569** immolet et rapta ludatImmolet et rapta ludat Baehrens, Immolete raptaque luat V, Immolet ereptaque luat X 2 M 2 responsa pharetra;
+**569** immolet et rapta ludat responsa pharetra;
 
 **570** namque bis Herculeis deberi Pergama telis
 
 **571** audierat. Priami sed quis iam vertere regnis
 
-**572** fata queat? manet immotis nox †turica†turica V, dorica M r T, cod. Bon. lustris
+**572** fata queat? manet immotis nox †turica† lustris
 
 **573** et genus Aeneadum et Troiae melioris honores.
 
@@ -2861,15 +2861,15 @@ title: Argonautica
 
 **575** raptat iter; mox huc vestras revehemur ad oras
 
-**576** donaque dicta feram.' tum vero plura vocatisuocantis C
+**576** donaque dicta feram.' tum vero plura vocatis
 
-**577** adnuitAnnuet C | deis T, dies VC ille deis. promissa infida tyranni
+**577** adnuit ille deis. promissa infida tyranni
 
 **578** iam Phryges et miserae flebant discrimina Troiae.
 
 **579** Panditur hinc totis in noctem carbasus alis
 
-**580** litoraque et veterisveteris Maserius, ueteres V tumulos praelabitur Ili
+**580** litoraque et veteris tumulos praelabitur Ili
 
 **581** Dardaniumque patrem; vigili simul omnia ludo
 
@@ -2879,9 +2879,9 @@ title: Argonautica
 
 **584** inde ubi iam medii tenuere silentia ponti
 
-**585** stridentesque iuvant aurae,aurae M, aurea V Phrixea subibant
+**585** stridentesque iuvant aurae, Phrixea subibant
 
-**586** aequora et angustas quondam sine nominenumine C fauces.
+**586** aequora et angustas quondam sine nomine fauces.
 
 **587** ecce autem prima volucrem sub luce dehiscens
 
@@ -2889,27 +2889,27 @@ title: Argonautica
 
 **589** iam Panopes Thetidisque soror, iamque aurea laeva
 
-**590** sceptra tenens. dum sternit aquas, proceresquedum V, tum Carr. 2 | proceresque P, proceremque V ducemque
+**590** sceptra tenens. dum sternit aquas, proceresque ducemque
 
 **591** aspicit et placidis compellat lasona dictis:
 
-**592** 'te quoque ab HaemoniisTe PM 2, Tu V | ab aehaemoniis V, corr. SM ignota per aequora terris
+**592** 'te quoque ab Haemoniis ignota per aequora terris
 
-**593** regna infesta domus fatisque simillimafatisque M 2, fastisque V | simillia V nostris
+**593** regna infesta domus fatisque simillima nostris
 
-**594** fata ferunt; iterum Aeoliosaeolios M, aelios V | nepotes V, penates C Fortuna nepotes
+**594** fata ferunt; iterum Aeolios Fortuna nepotes
 
 **595** spargit, et infelix Scythicum gens quaeritis amnem.
 
 **596** vasta super tellus, longum (ne defice coeptis)
 
-**597** aequor,Aequor M 2, Aequod V et ipse procul, verum dabit ostia Phasis.
+**597** aequor, et ipse procul, verum dabit ostia Phasis.
 
 **598** hic nemus arcanum geminaeque virentibus arae
 
-**599** stant tumulis; hic prima ut supra V, St. t. celeres hic prima piacula Phr. C pia sollemnia Phrixo
+**599** stant tumulis; hic prima pia sollemnia Phrixo
 
-**600** ferteFerte SM 2, Forte V manu cinerique, precor, mea reddite dicta:
+**600** ferte manu cinerique, precor, mea reddite dicta:
 
 **601** non ego per Stygiae quod rere silentia ripae,
 
@@ -2925,7 +2925,7 @@ title: Argonautica
 
 **607** regna nec Inois noster sinus invidet undis.'
 
-**608** dixerat et maestos tranquilla sub aequora vultusuultus SM, uultu V
+**608** dixerat et maestos tranquilla sub aequora vultus
 
 **609** cum gemitu tulit, ut patrii rediere dolores.
 
@@ -2947,15 +2947,15 @@ title: Argonautica
 
 **618** cuspis et adversi longus labor abscidit aevi,
 
-**619** ut Siculum Libycumque latus, stupuitque fragorefragorem C, fort. recte
+**619** ut Siculum Libycumque latus, stupuitque fragore
 
 **620** Ianus et occiduis regnator montibus Atlans.
 
-**621** iam iuga PercotesPercotes Bon. 2, percotis VC Pariumque infame fragosis
+**621** iam iuga Percotes Pariumque infame fragosis
 
-**622** exsuperant PityamquePityamque Bon. 2, phyamque V vadis, transmissaque puppi
+**622** exsuperant Pityamque vadis, transmissaque puppi
 
-**623** Lampsacus, Ogygiiogygti V quam nec trieterica Bacchi
+**623** Lampsacus, Ogygii quam nec trieterica Bacchi
 
 **624** sacra neque arcanis Phrygius furor invehit antris,
 
@@ -2971,7 +2971,7 @@ title: Argonautica
 
 **630** ceu fundo prolata maris; namque improba caecis
 
-**631** intulit arva vadis longoque perper S, om. V, sub MT aequora dorso
+**631** intulit arva vadis longoque per aequora dorso
 
 **632** litus agit: tenet hinc veterem confinibus oris
 
@@ -2983,9 +2983,9 @@ title: Argonautica
 
 **636** Cyzicus. Haemoniae qui tum nova signa carinae
 
-**637** utut Bon. 2, Et V videt, ipse ultro primas procurrit ad undas
+**637** ut videt, ipse ultro primas procurrit ad undas
 
-**638** miraturque viros dextramque amplexus et haerensdextraque C | haerens M, haeres V
+**638** miraturque viros dextramque amplexus et haerens
 
 **639** incipit: 'o terris nunc primum cognita nostris
 
@@ -2993,7 +2993,7 @@ title: Argonautica
 
 **641** non tamen haec adeo semota neque ardua tellus
 
-**642** longaque iam populis intellego: non tamen haec tells adeo semota aut ardua est neque omnino impervia (τὰ ἀδιάβατα) orientis iam longinqua sunt populis impervia lucis eoae,
+**642** longaque iam populis impervia lucis eoae,
 
 **643** cum tales intrasse duces, tot robora cerno.
 
@@ -3001,7 +3001,7 @@ title: Argonautica
 
 **645** meque fremens tumido circumfluat ore Propontis,
 
-**646** vestra fides ritusqueritusque NRF, ritus V pares et mitia cultu
+**646** vestra fides ritusque pares et mitia cultu
 
 **647** his etiam mihi corda locis; procul effera virtus
 
@@ -3017,7 +3017,7 @@ title: Argonautica
 
 **653** corpora; pars epulas manibus, pars aurea gestant
 
-**654** pocula bellorum casus expressa recentum.Pocula bellorum X 2 M, Procul apellorum V | recentum M, recentem V
+**654** pocula bellorum casus expressa recentum.
 
 **655** atque ea prima duci porgens carchesia Graio
 
@@ -3027,9 +3027,9 @@ title: Argonautica
 
 **658** terga vides, meus hic ratibus qui pascitur ignis.'
 
-**659** subicitsubiicit Bon. 1, Subigit V Aesonides: 'utinam nunc ira Pelasgos
+**659** subicit Aesonides: 'utinam nunc ira Pelasgos
 
-**660** adferatAdferat V, Efferat C et solitis temptet concurrere furtis
+**660** adferat et solitis temptet concurrere furtis
 
 **661** cunctaque se ratibus fundat manus: arma videbis
 
@@ -3039,15 +3039,15 @@ title: Argonautica
 
 **664** rapta vices nec non simili lux postera tractu.
 
-**1** Tertia iam gelidas Tithonia solverat umbrasumbras C, cod. Harlesii, undas V
+**1** Tertia iam gelidas Tithonia solverat umbras
 
-**2** exueratque polum;polum SM, po pulum V Tiphyn placida alta vocabant.
+**2** exueratque polum; Tiphyn placida alta vocabant.
 
 **3** it tectis Argoa manus, simul urbe profusi
 
-**4** AenidaeAenidae Ald., Caeneadae V caris socium digressibus haerent.
+**4** Aenidae caris socium digressibus haerent.
 
-**5** dantDat C Cererem lectumque pecus nec palmite Bacchum
+**5** dant Cererem lectumque pecus nec palmite Bacchum
 
 **6** Bithyno Phrygiove satum, sed quem sua noto
 
@@ -3057,19 +3057,19 @@ title: Argonautica
 
 **9** Cyzicus abscessu lacrimans
 
-**10** muneribus primas suo loco habet Aid. (et C, ut vid.), post 25 V | primas CMT, prima V coniunx Percosia vesteslacr. coniunx persocia uestes V, lachr. cui tradit amicis C, excidit e. g. iungitque virorum
+**10** muneribus primas coniunx Percosia vestes
 
-**11** quas dabat et picto Cliteelite V, ditem C variaverat auro.
+**11** quas dabat et picto Clite variaverat auro.
 
 **12** tum galeam et patriae telum insuperabile dextrae
 
-**13** addidit: ipse ducis paterasphaleras Heinsius et Thessala contra
+**13** addidit: ipse ducis pateras et Thessala contra
 
-**14** frena capit manibusque datis iunxere nepotes.nepotes V, penates Gronovius
+**14** frena capit manibusque datis iunxere nepotes.
 
-**15** TuTu SM, Tum V mihi nunc causas infandaque proelia, Clio,
+**15** Tu mihi nunc causas infandaque proelia, Clio,
 
-**16** pande virum; tibitibi M, ubi V enim superum data, virgo, facultas
+**16** pande virum; tibi enim superum data, virgo, facultas
 
 **17** nosse animos rerumque vias. cur talia passus
 
@@ -3077,7 +3077,7 @@ title: Argonautica
 
 **19** Iuppiter? unde tubae nocturnaque movit Erinys?
 
-**20** DindymaDindama V sanguineis famulum bacchata lacertis
+**20** Dindyma sanguineis famulum bacchata lacertis
 
 **21** dum volucri quatit asper equo silvasque fatigat
 
@@ -3085,7 +3085,7 @@ title: Argonautica
 
 **23** adsuetum Phrygias dominam vectare per urbes
 
-**24** oppressitOppressit M 2, Oppressus V iaculo redeuntem ad frena leonem.
+**24** oppressit iaculo redeuntem ad frena leonem.
 
 **25** et nunc ille iubas captivaque postibus ora
 
@@ -3105,11 +3105,11 @@ title: Argonautica
 
 **33** et iam prona leves spargebant sidera somnos.
 
-**34** aura vehit; religant tonsas veloque Procnessonreligant T, religat V | ueloq. procnesson V, uelo proconesson C
+**34** aura vehit; religant tonsas veloque Procnesson
 
-**35** et te iamEt te iam M 1 ut vid., T, cod. Bon., Ecce iam V, Et Caeam C medio flaventem, Rhundace, ponto
+**35** et te iam medio flaventem, Rhundace, ponto
 
-**36** spumosumque legunt fracta Scylaceon abscylaceon ab V, scyllaceon (ab om.) C unda.
+**36** spumosumque legunt fracta Scylaceon ab unda.
 
 **37** ipse diem longe solisque cubilia Tiphys
 
@@ -3117,13 +3117,13 @@ title: Argonautica
 
 **39** atque ilium non ante sopor luctamine tanto
 
-**40** lenit agensLenit agens M 2, Lenitangens V divum imperiis; cadit inscia clavo
+**40** lenit agens divum imperiis; cadit inscia clavo
 
-**41** dextera, demittitquedemittitque X olim, T, dimittitque VC oculos, solataque puppis
+**41** dextera, demittitque oculos, solataque puppis
 
 **42** turbine flectit iter portuque refertur amico.
 
-**43** Ut notis adlapsa vadis, dant aethere longalonga Ald., longo V
+**43** Ut notis adlapsa vadis, dant aethere longa
 
 **44** signa tubae, vox et mediis emissa tenebris:
 
@@ -3131,13 +3131,13 @@ title: Argonautica
 
 **46** rupta quies; deus ancipitem lymphaverat urbem
 
-**47** Mygdoniae Pan iussaMydoniae V | pan iussa M 2, panius ista V ferens saevissima matris,
+**47** Mygdoniae Pan iussa ferens saevissima matris,
 
-**48** Pan nemorum bellique potens, quem lucis ab horisbellique M 2, belli V | ab oris cod. Pii, ad oris V, ad oras M 2 T, codd. Burmanni et Coki, ad ortus C
+**48** Pan nemorum bellique potens, quem lucis ab horis
 
-**49** antra tenent; patet ad ad patet cf. Leo, Gött. Gel. Anz. 1897 p. 964 sq. medias per devia noctes
+**49** antra tenent; patet ad medias per devia noctes
 
-**50** saetigerum latus et torvae coma sibilasibila XO 1 M, sibilia VO frontis.
+**50** saetigerum latus et torvae coma sibila frontis.
 
 **51** vox omnes super una tubas, qua conus et enses,
 
@@ -3147,15 +3147,15 @@ title: Argonautica
 
 **54** Eumenidumque comae, non tristis ab aethere Gorgo
 
-**55** sparserit aut tantis aciem raptaverit umbris.umbris: cf. Aen. X 593
+**55** sparserit aut tantis aciem raptaverit umbris.
 
 **56** ludus et ille deo, pavidum praesepibus aufert
 
 **57** cum pecus et profugi sternunt dumeta iuvenci.
 
-**58** Ilicet ad regem clamor ruit. exilit altisaltis SM, ab altis V
+**58** Ilicet ad regem clamor ruit. exilit altis
 
-**59** somnia dira toris simulacraque pallida linquenslinquens SM, liquens V
+**59** somnia dira toris simulacraque pallida linquens
 
 **60** Cyzicus. ecce super foribus Bellona reclusis
 
@@ -3163,23 +3163,23 @@ title: Argonautica
 
 **62** adstitit et triplici pulsans fastigia crista
 
-**63** inde ciereinde ciere T Bon. 1, Indiciere V virum. sequitur per moenia demens
+**63** inde ciere virum. sequitur per moenia demens
 
-**64** ille deam et fatisfatis M, fastis V extrema in proelia tendit,
+**64** ille deam et fatis extrema in proelia tendit,
 
-**65** qualis in Alciden et Theseathesea PM 2, these V Rhoetus iniqui
+**65** qualis in Alciden et Thesea Rhoetus iniqui
 
 **66** nube meri geminam Pholoen maioraque cernens
 
 **67** astra ruit, qualisve redit venatibus actis
 
-**68** lustra pater Triviamque canens umeroque Learchumtriuiamque M, triamque V | leaschum V
+**68** lustra pater Triviamque canens umeroque Learchum
 
 **69** advehit, at miserae declinant lumina Thebae.
 
 **70** iamque adeo nec porta ducem nec pone moratur
 
-**71** excubias sortita manus, quae prima furentifurenti V, parenti C
+**71** excubias sortita manus, quae prima furenti
 
 **72** advolat; hinc alii subeunt, ut proxima quaeque
 
@@ -3189,9 +3189,9 @@ title: Argonautica
 
 **75** corda labant, nec quae regio aut discrimina cernunt,
 
-**76** cur galeaegaleae SM, galileae V | post hunc versum unum intercidisse vidit Carrio, qui in marg. C cod. a manu primae aequali scriptum invenit versum hostis et exciti dent obuia praelia Colchi clipeique micent, num pervigil armis
+**76** cur galeae clipeique micent, num pervigil armis
 
-**78** donec et hasta volans immaniinmanu V turbine transtris
+**78** donec et hasta volans immani turbine transtris
 
 **79** insonuit monuitque ratem rapere obvia caeca
 
@@ -3205,13 +3205,13 @@ title: Argonautica
 
 **84** currus, ubi ingentes animae clamorque tubaeque
 
-**85** sanguineaeSanguinae V iuvere deum, non segnius ille
+**85** sanguineae iuvere deum, non segnius ille
 
 **86** occupat arva furens; sequitur vis omnis Achivum.
 
 **87** adglomerant latera, et densis thoracibus horrens
 
-**88** stat manus, aegisono quam nec fera pectorepectore Bon. 2, pectora V virgo
+**88** stat manus, aegisono quam nec fera pectore virgo
 
 **89** dispulerit nec dextra Iovis Terrorque Pavorque,
 
@@ -3219,35 +3219,35 @@ title: Argonautica
 
 **91** caeruleo veluti cum Iuppiter agmine nubem
 
-**92** constituit: certant zephyri frustraque rigentemrigentem SM, rientem V
+**92** constituit: certant zephyri frustraque rigentem
 
 **93** pulsat utrimque notus; pendent mortalia longo
 
-**94** corda metu,metu SM 2, metus V quibus illa fretis, quibus incidat arvis.
+**94** corda metu, quibus illa fretis, quibus incidat arvis.
 
-**95** Hine manus infelix clamoremanus M 2, munus V | clamore SM, clamor V impellere magno
+**95** Hine manus infelix clamore impellere magno
 
-**96** saxa facesquefacesque XM, pacesque V, picesque OQ atras et tortae pondera fundae;
+**96** saxa facesque atras et tortae pondera fundae;
 
 **97** fert sonitus immota phalanx irasque retentant,
 
-**98** congeries dum prima fluat. stellantiastellantia M 2, stillancia V Mopsus
+**98** congeries dum prima fluat. stellantia Mopsus
 
-**99** tegmina et ingentem Corythi notat Eurytus umbram.umbram M 2, umbra nunc legitur in V (m fort. plicatura abdita)
+**99** tegmina et ingentem Corythi notat Eurytus umbram.
 
 **100** restitit ille gradu seseque a lumine ferri
 
 **101** sustinuit, praeceps subitum ceu pastor ad amnem,
 
-**102** spumantemamnem Spumantem SM, amne Spumante V nimbis fluctuque arbusta ruentem.
+**102** spumantem nimbis fluctuque arbusta ruentem.
 
-**103** atAt C, Et V Tydeus 'en intentis quem viribus' inquit
+**103** at Tydeus 'en intentis quem viribus' inquit
 
 **104** 'opperiar manibusque dari quem comminus optem;
 
-**105** quo steteris moriere loco.' subit iliasubit ilia M, r subtilia V cuspis
+**105** quo steteris moriere loco.' subit ilia cuspis
 
-**106** Olenii;Olenii C, Ochenii V dedit ille sonum compressaque mandens
+**106** Olenii; dedit ille sonum compressaque mandens
 
 **107** aequora purpuream singultibus expulit hastam.
 
@@ -3257,17 +3257,17 @@ title: Argonautica
 
 **110** praecipites impune rates, sic agmine caeco
 
-**111** incurrit strictis manus ensibus. occubatoccubat Bon. 2, occupat V Iron
+**111** incurrit strictis manus ensibus. occubat Iron
 
 **112** et Cotys et Pyrno melior genitore Bienor.
 
-**113** AtAt Iunt. 1, Et V magis interea diverso turbida motu
+**113** At magis interea diverso turbida motu
 
 **114** urbs agitur. Genyso coniunx amoverat arma;
 
 **115** ast illi subitus ventis vivoque reluxit
 
-**116** torretorre Bon. 1, Terre V focus; telis gaudes, miserande, repertis.
+**116** torre focus; telis gaudes, miserande, repertis.
 
 **117** linquit et undantes mensas infectaque pernox
 
@@ -3275,23 +3275,23 @@ title: Argonautica
 
 **119** torta manum, strictoque vias praefulgurat ense.
 
-**120** talis in arma ruit, nec vina dapesque remota,remotae CT 2
+**120** talis in arma ruit, nec vina dapesque remota,
 
-**121** statque loco torus, †in quo omen† manserein quo omen VC, insomnes Bentley, inque omen Lemaire | mansere S, masere V ministri.
+**121** statque loco torus, †in quo omen† mansere ministri.
 
-**122** inde vagi nec tela modis nec casibus isdemnec bella Bentley, sed cf. VI 182 | isdem M 2 in marg., idem V
+**122** inde vagi nec tela modis nec casibus isdem
 
-**123** conseruere manum et longemanum M 2, manu VC, manus longe et Iunt. 1 iacuere perempti.
+**123** conseruere manum et longe iacuere perempti.
 
 **124** ecce gravem nodis pinguique bitumine quassans
 
-**125** lampada turbata Phlegyas decurritdecurrit M (i in ras.), decurrat V | ab arce CX (sed X 1 urbe corr.) ab urbe.
+**125** lampada turbata Phlegyas decurrit ab urbe.
 
 **126** ille leves de more manus aciemque Pelasgum
 
-**127** per noctem remeasse ratusratus M, ratur V pulsumque requirens
+**127** per noctem remeasse ratus pulsumque requirens
 
-**128** saepe sibi vano ThamyrimThamyrim Heinsius, thamyrum V clamore petebat
+**128** saepe sibi vano Thamyrim clamore petebat
 
 **129** arduus et late fumanti nube coruscus;
 
@@ -3299,9 +3299,9 @@ title: Argonautica
 
 **131** igne simul ventisque rubens, quem Iuppiter alte
 
-**132** crine tenet; trepidant diro sub luminelumine T, limine V puppes.
+**132** crine tenet; trepidant diro sub lumine puppes.
 
-**133** tollitur hinc tentoquetentoque Reuβ, cf. 591, totusque V ruit Tirynthius arcu
+**133** tollitur hinc tentoque ruit Tirynthius arcu
 
 **134** pectore certa regens adversa spicula flamma:
 
@@ -3309,73 +3309,73 @@ title: Argonautica
 
 **136** per medium contenta fugit; ruit ille comanti
 
-**137** ore facemOre M 2, Ora V | facem XM, faciem V supra, maiorque apparuit ignis.
+**137** ore facem supra, maiorque apparuit ignis.
 
-**138** Ambrosium Peleus, ingentem Ancaeus EcheclumEcheclum Thilo, echelum V, Ethelum C
+**138** Ambrosium Peleus, ingentem Ancaeus Echeclum
 
 **139** sternit et elatae propius succedere dextrae
 
-**140** Telecoonta sinit †delicataque†Teleconta V | delicataque VC, deductaque M 2, duplicataque Heinsius, geminataque Thilo, delataque Schenkl ora securi
+**140** Telecoonta sinit †delicataque† ora securi
 
 **141** disiecit cervice tenus. simul aspera victor
 
 **142** cingula sublustri vibrantia detrahit umbra,
 
-**143** 'has, precor, exuvias et opima cadavera' Nestoret opima T, cod. Bon., opima V, o prima C | Nestor Ald., nostro VC
+**143** 'has, precor, exuvias et opima cadavera' Nestor
 
 **144** 'linquite' ait: 'ferro potius mihi dextera, ferro
 
 **145** navet opus', prensumque manu detruncat Amastrum 145
 
-**146** diversasque simul sociossocios X 2 PCT, ocios XIII, otios O, otius O 2, ocius M invadere desunt in V turmas
+**146** diversasque simul socios invadere turmas
 
 **147** admonuit. pergunt rupta testudine fusi,
 
 **148** qua tenebrae campique ferunt. gravis invenit Ochum
 
-**149** PhliasPhlias NRFT, Pelias SMUC et trepido Pollux impingitur Hebro.
+**149** Phlias et trepido Pollux impingitur Hebro.
 
-**150** ipse super vultus taboque natantianatantia vel fluentia Heinsius, labantia codd., madentia Friesemann terga
+**150** ipse super vultus taboque natantia terga
 
 **151** dux campi Martisque potens, ut caeca profundo
 
-**152** currit hiems, Zelyn et BrontenZelyn C a, zelen SMNRUC b, zelon F | Bronten Maserius, cf. Apoll. Rhod. 11041, broten codd. Abarimque relinquit
+**152** currit hiems, Zelyn et Bronten Abarimque relinquit
 
 **153** semineces: Glaucum sequitur Glaucumque ruentem
 
-**154** occupat et iugulo vulnus molitur aperto.uultus m. operto O
+**154** occupat et iugulo vulnus molitur aperto.
 
 **155** ille manu contra telum tenet ultima frustra
 
 **156** verba ciens fixamque videt decrescere cornum.
 
-**157** hinc Halyn,Halyn C, calin S, alyn MN, alin RF hinc rigido transcurrens demetit ense
+**157** hinc Halyn, hinc rigido transcurrens demetit ense
 
-**158** Protin etProtin etus X 1, Prothin et C, cod. Harlesii, Protinus OQP IMNT, cod. Bon. insignem cithara cantuque fluenti
+**158** Protin et insignem cithara cantuque fluenti
 
-**159** Dorcea, qui dulci festis adsistereassidere NRF mensis
+**159** Dorcea, qui dulci festis adsistere mensis
 
 **160** pectine Bistoniae magnum post ausus alumnum.
 
 **161** nec pharetram aut acres ultra Tirynthius arcus
 
-**162** exercet, socia sed disicitdissicit CT, dissic iet X, disicet OMU, dificit NF agmina clava.
+**162** exercet, socia sed disicit agmina clava.
 
 **163** ac veluti magna iuvenum cum densa securi
 
-**164** silva labat cuneisqueleuat O | cuneisque M 2, cunctisque SM, doneisque N gemit grave robur adactis
+**164** silva labat cuneisque gemit grave robur adactis
 
 **165** iamque abies piceaeque ruunt, sic dura sub ictu
 
-**166** ossa virum malaeque sonantmale sonant O sparsusque cerebro
+**166** ossa virum malaeque sonant sparsusque cerebro
 
 **167** albet ager. levis ante pedes subsederat †Hidmon;
 
-**168** occupat os barbamque viri clavamqueclariamque C superne
+**168** occupat os barbamque viri clavamque superne
 
-**169** intonat 'occumbes'occumbes T Bon. 1, occumbens SMNC | et SMN, i C et 'nunc' ait 'Herculis armis,
+**169** intonat 'occumbes' et 'nunc' ait 'Herculis armis,
 
-**170** donum ingens semperque tuis mirabile fatum.'superque O | fatum Kr., fatis codd.
+**170** donum ingens semperque tuis mirabile fatum.'
 
 **171** horruit ille cadens nomenque agnovit amicum
 
@@ -3383,13 +3383,13 @@ title: Argonautica
 
 **173** nee tibi Thessalicos tune profuit, Ornyte, reges
 
-**174** hospitiis aut mente moras fovissenec mente O | moras fouisse X 2 MN, fouisse moras S (post moras octo litt. spatio relicto) benigna
+**174** hospitiis aut mente moras fovisse benigna
 
-**175** et laribuslaribus M 2 N, claribus SM 1 U sacrasse diem; procul advenit Idmon
+**175** et laribus sacrasse diem; procul advenit Idmon
 
 **176** oblatumque ferit, galeam cristasque rubentes,
 
-**177** heu tuaHeu tria C (?) dona, gerens. quem te qualemque videbit
+**177** heu tua dona, gerens. quem te qualemque videbit
 
 **178** attonitus, Crenaee, parens. en frigidus orbes
 
@@ -3399,11 +3399,11 @@ title: Argonautica
 
 **181** desere nune nemus et Nympharum durus amores.
 
-**182** at diversa SagenAt diuersa Sagen C, At (Ad S) diuersas agent SMU, At diuersus agens NRFT, cod. Bon. turbantem fallere nervo
+**182** at diversa Sagen turbantem fallere nervo
 
 **183** tum primum puer ausus Hylas (spes maxima bellis
 
-**184** pulcherPulcher MN, Purher II, Puer XO Hylas, si fata sinant, si prospera Iuno),
+**184** pulcher Hylas, si fata sinant, si prospera Iuno),
 
 **185** prostravitque virum celeri per pectora telo.
 
@@ -3417,23 +3417,23 @@ title: Argonautica
 
 **190** balteus et gemini committunt ora dracones,
 
-**191** frater Hagen Thapsumque securigerumque Nealcennealce V
+**191** frater Hagen Thapsumque securigerumque Nealcen
 
 **192** transigit et Canthi pallentem vulnere Cydrum.
 
 **193** torserat hic totis conisus viribus hastam
 
-**194** venatori Erymo, brevis hanc sed fataVenator Hierimo C | fata SM, facta V ferentem
+**194** venatori Erymo, brevis hanc sed fata ferentem
 
 **195** prodidit et piceo comitem miserata refulsit
 
 **196** Luna polo; cessere iubae, raptumque per auras
 
-**197** vulnus, et extrema sonuit cita cuspide cassis.casside cuspis C
+**197** vulnus, et extrema sonuit cita cuspide cassis.
 
 **198** Nisaeum Telamon et Ophelten vana sonantem
 
-**199** per clipei cedentis opus cratemquecratemque Heinsius, artemque V trilicem,
+**199** per clipei cedentis opus cratemque trilicem,
 
 **200** qua stomachi secreta, ferit laetusque profatur:
 
@@ -3443,23 +3443,23 @@ title: Argonautica
 
 **203** conciderit.' super addit Aren fratremque Melanthum
 
-**204** Phoceaque Oleniden, Lelegumlelegum M 2, legum V qui pulsus ab oris
+**204** Phoceaque Oleniden, Lelegum qui pulsus ab oris
 
 **205** regis amicitiam et famuli propioris honores —
 
 **206** qua patiens non arte — tulit. nox alta cadentum
 
-**207** ingentes resonatresonat Hein- sius, donec V, donat C, duplicat Pius, denset Gronovius sonitus augetque ruinas:
+**207** ingentes resonat sonitus augetque ruinas:
 
 **208** ut magis Inarime, magis ut mugitor anhelat
 
-**209** Vesvius,Vesuius M 2 T 1, Vesubius V, Vesulus C | ater M 2 C | post 209 versum excidisse credas talis fere sententiae noctibus, et resonat geminatis ictibus incus, attonitas acer cum suscitat urbes ...
+**209** Vesvius, attonitas acer cum suscitat urbes ...
 
-**210** sic pugnae crebrescitcrudescit C opus; neque enim ignea cedunt
+**210** sic pugnae crebrescit opus; neque enim ignea cedunt
 
-**211** astra loco, lentislentisque Schenkl haeret nox conscia bigis.
+**211** astra loco, lentis haeret nox conscia bigis.
 
-**212** Perge age Tartareae mecum semel omniasemel omnia: cf. Luc. II 147 et III 296 noctis,
+**212** Perge age Tartareae mecum semel omnia noctis,
 
 **213** Musa, sequi. trepidam Phaethon adflavit ab alto
 
@@ -3467,7 +3467,7 @@ title: Argonautica
 
 **215** umbra premit; non signa virum, non funera cernunt,
 
-**216** et rabie magis ora calent. vos prodite,vos prodite Bon. 2, prosprodite V divae,
+**216** et rabie magis ora calent. vos prodite, divae,
 
 **217** Eumenidum noctisque globos, vatique patescat
 
@@ -3481,13 +3481,13 @@ title: Argonautica
 
 **222** agmina, iam passim vacuos disiecta per agros
 
-**223** credit ovans: tales habitus,habitus (ἕξεις) T, Heinsius, auditus V ea gaudia fingit
+**223** credit ovans: tales habitus, ea gaudia fingit
 
 **224** ira deum. fundo veluti cum Coeus in imo
 
 **225** vincla lovis fractoque trahens adamante catenas
 
-**226** Saturnum Tityumque vocat spemque aetheris amensamens M 2, amans V
+**226** Saturnum Tityumque vocat spemque aetheris amens
 
 **227** concipit, ast ilium fluviis et nocte remensa
 
@@ -3495,7 +3495,7 @@ title: Argonautica
 
 **229** saevit acerba fremens tardumque a moenibus agmen
 
-**230** increpitat: 'numquamne dolor virtusquenunquamne SM, numque ne V | virtusque Heinsius, uirtute V subibit
+**230** increpitat: 'numquamne dolor virtusque subibit
 
 **231** nil ausas sine rege manus? at barbara buxus
 
@@ -3503,13 +3503,13 @@ title: Argonautica
 
 **233** tune ensis placeatque furor, modo tela sacerdos
 
-**234** porrigat et iussa sanguis exuberet ulna.'iussa sanguis e. ulna Grotius, cf. 20 et Luc. III 664, iustas anguiis e. urna V
+**234** porrigat et iussa sanguis exuberet ulna.'
 
 **235** talibus insultans iamdudum numine divae
 
-**236** deficit, infracti languescunt frigorefrigore M, frore V cursus,
+**236** deficit, infracti languescunt frigore cursus,
 
-**237** corda pavent, audit fremitus irasque leonumlonum V
+**237** corda pavent, audit fremitus irasque leonum
 
 **238** cornuaque et motas videt inter nubila turres.
 
@@ -3523,11 +3523,11 @@ title: Argonautica
 
 **243** talia magnanimi diverso turbine fundunt
 
-**244** telaTela SM, Tala V viri sonitusque pedum suspectaque motu
+**244** tela viri sonitusque pedum suspectaque motu
 
-**245** explorant; prensant socios vocemque reposcunt.resposcunt V
+**245** explorant; prensant socios vocemque reposcunt.
 
-**246** quod si tanta luesQuod M, Quo V | lues Heinsius, iouis VC seros durasset in ortus,
+**246** quod si tanta lues seros durasset in ortus,
 
 **247** exstinctum genus et solas per moenia matres
 
@@ -3537,19 +3537,19 @@ title: Argonautica
 
 **250** flectere fata ratus miserasque abrumpere pugnas,
 
-**251** supremam celeravitSupremam SM 2, Suprema V | celerauit M 2 T, cele- brabit V, celebrauit C opem nutuque sereno
+**251** supremam celeravit opem nutuque sereno
 
-**252** intonuit, quem Nocte satae,satae V, satus C quem turbidus horret
+**252** intonuit, quem Nocte satae, quem turbidus horret
 
-**253** Armipotens: tunc porta trucis coit infera belli.belli V, leti Schrader
+**253** Armipotens: tunc porta trucis coit infera belli.
 
-**254** continuo dant terga metu versiqueuersique CT, auersique V per agros
+**254** continuo dant terga metu versique per agros
 
 **255** diffugiunt, quae sola salus; nec terga ruentum
 
 **256** mens Minyis conversa sequi: stetit anxia virtus.
 
-**257** ecce autem primoecce autem Peerlkamp, cf. II 587, Aen. VI 255, Ecce leui V | primo V, primos vulgo iam spargere lumine portus
+**257** ecce autem primo iam spargere lumine portus
 
 **258** orta dies notaeque (nefas) albescere turres.
 
@@ -3575,23 +3575,23 @@ title: Argonautica
 
 **269** terga metu. dextram tendens proclamat Iason
 
-**270** 'quosQuo XC fugitis? vellem hac equidem me strage meosque
+**270** 'quos fugitis? vellem hac equidem me strage meosque
 
 **271** procubuisse magis. deus haec, deus asper utrisque
 
-**272** implicuit. sumus enen M, eu V, heu X | sumus (hosp.) M, om.V Minyae, sumus hospita turba.
+**272** implicuit. sumus en Minyae, sumus hospita turba.
 
-**273** cur etiam flammasflasmas V miserosque moramur honores?'
+**273** cur etiam flammas miserosque moramur honores?'
 
-**274** Tum super exsangues confertaeconferte C, consertes V, consert(a)e SM caedis acervos
+**274** Tum super exsangues confertae caedis acervos
 
 **275** praecipiti plangore ruunt; agnoscit in alta
 
-**276** strageStrange V virum sua texta parens, sua munera coniunx.
+**276** strage virum sua texta parens, sua munera coniunx.
 
-**277** itit T 1 Bon. 2, Et V gemitus toto sinuosa per aequora caelo.
+**277** it gemitus toto sinuosa per aequora caelo.
 
-**278** pars tenuis flatus et adhuc stridentia prensantflatus C, fletus V | prensant cod. Burmanni, prensat V
+**278** pars tenuis flatus et adhuc stridentia prensant
 
 **279** volnera, pars sera componunt lumina dextra.
 
@@ -3611,27 +3611,27 @@ title: Argonautica
 
 **287** pallentesque genas infractaque pectore caro
 
-**288** telaTela Q, Taele V neque hesternos agnovit in hospite vultus,
+**288** tela neque hesternos agnovit in hospite vultus,
 
 **289** ingemit atque artus fatur complexus amicos:
 
-**290** 'te tamen ignarum tanti,tanti SM 2, tante V miserande, furoris
+**290** 'te tamen ignarum tanti, miserande, furoris
 
 **291** nox habet et nullo testantem foedera questu:
 
-**292** at mihi luctificum venit iubar. hiciubar. hic Sudhaus, iuuarint V, iubar en X 2 M, iubar. heu Thilo quibus adsum
+**292** at mihi luctificum venit iubar. hic quibus adsum
 
 **293** colloquiis, cui me hospitio Fortuna revexit?
 
-**294** exstinguine mea (fatis idfatis id Bon. 2, fatisia V, fatis hoc C defuit unum)
+**294** exstinguine mea (fatis id defuit unum)
 
 **295** speravi te posse manu? talisve reliqui
 
 **296** has ego, amice, domos? quod si iam bella manebant
 
-**297** et placitum hoc superis, nonne haec mea iustius essentessent M, esset V
+**297** et placitum hoc superis, nonne haec mea iustius essent
 
-**298** funera? meque tuus sineVulnera C | sine crimine Sudhaus, nunc V, potius nunc C crimine plangeret error,
+**298** funera? meque tuus sine crimine plangeret error,
 
 **299** nec Clarii nunc antra dei quercusque Tonantis
 
@@ -3645,11 +3645,11 @@ title: Argonautica
 
 **304** regna mihi. quinam reditus? quae me hospita tellus
 
-**305** accipiet? quae non primis prohibebitprohibebit V, arcebit C a, cohibebit C b harenis?
+**305** accipiet? quae non primis prohibebit harenis?
 
 **306** invidere dei, ne Phasidis arva remoti
 
-**307** et Scythicas populatus opesopes SM, opus V, II in marg. haec rursus adirem
+**307** et Scythicas populatus opes haec rursus adirem
 
 **308** litora neve tuos irem tune ultor in hostes.
 
@@ -3661,7 +3661,7 @@ title: Argonautica
 
 **312** et socios lustrate rogos; date debita caesis
 
-**313** munera,Munera SM, Mune V quae nostro misisset Cyzicus igni.'
+**313** munera, quae nostro misisset Cyzicus igni.'
 
 **314** Parte alia Clite laceras super ora mariti
 
@@ -3675,9 +3675,9 @@ title: Argonautica
 
 **319** perpeterer tenui luctum solamine fallens.
 
-**320** MygdonisMicdonis V arma patrem funestaque proelia nuper
+**320** Mygdonis arma patrem funestaque proelia nuper
 
-**321** natalesFatales C rapuere domos, Triviaeque potentis
+**321** natales rapuere domos, Triviaeque potentis
 
 **322** occidit arcana genetrix absumpta sagitta:
 
@@ -3687,39 +3687,39 @@ title: Argonautica
 
 **325** deseris heu, totamque deus simul impulit urbem.
 
-**326** ast ego non media te saltem,saltim V Cyzice, vidi
+**326** ast ego non media te saltem, Cyzice, vidi
 
 **327** tendentem mihi morte manus aut ulla monentis
 
-**328** verba tuli; quin tete Schenkl, et V thalamis modo questa morari
+**328** verba tuli; quin te thalamis modo questa morari
 
 **329** heu talem tantique metus secura recepi.'
 
-**330** illam vix geminogemino M 2 C, geminam V maerens cum Castore Pollux
+**330** illam vix gemino maerens cum Castore Pollux
 
 **331** erigit haerentem compressaque colla trahentem.
 
 **332** Interea innumeras nudatis montibus urgent
 
-**333** certatim decorantque pyras et corporacorpora C, Pii codd. 'emendati', tempora V maesti
+**333** certatim decorantque pyras et corpora maesti
 
 **334** summa locant. vadit sonipes cervice remissa,
 
 **335** venatrix nec turba canum pecudumque morantur
 
-**336** funereae,Venatrix SM, Vernatrix V | turba S, turma V 336 la- cunam statuit Leo eius fere sententiae dona viri passimque ferunt decoramina pompae funereae quae cuique manus, quae cura suorum,
+**336** funereae, quae cuique manus, quae cura suorum,
 
-**337** quae fortuna fuit. medio rex aggere longelonge C, Pius, longo V
+**337** quae fortuna fuit. medio rex aggere longe
 
 **338** eminet; hunc crebris quatiens singultibus ora
 
 **339** adlevat Aesonides celsoque reponit in ostro.
 
-**340** dat pictaspictas Bon. 1, piceas V auro atque ardentes murice vectes,
+**340** dat pictas auro atque ardentes murice vectes,
 
-**341** quas rapuit telis festinafestina C, fortuna V vocantibus austris
+**341** quas rapuit telis festina vocantibus austris
 
-**342** Hypsipyle; galeam dilectaque cingula regiregi Bon. 2, regni V
+**342** Hypsipyle; galeam dilectaque cingula regi
 
 **343** inicit. ille suam vultus conversus ad urbem
 
@@ -3727,15 +3727,15 @@ title: Argonautica
 
 **345** nam quia nec proles alius nec denique sanguis,
 
-**346** ipse decus regnique refert insigne parenti.parenti Madvig, parentis V
+**346** ipse decus regnique refert insigne parenti.
 
-**347** inde ter armatos Minyis referentibuster Egnatius, cf. Aen. XI 188, Apoll. Rhod. I 1059, per VC | referentibus SM, referentes V | orbes M, urbes V orbes
+**347** inde ter armatos Minyis referentibus orbes
 
 **348** concussi tremuere rogi, ter inhorruit aether
 
 **349** luctificum clangente tuba; iecere supremo
 
-**350** tumCum C clamore faces; rerum labor omnis in auras
+**350** tum clamore faces; rerum labor omnis in auras
 
 **351** solvitur, et celsis conlucent aequora flammis.
 
@@ -3753,23 +3753,23 @@ title: Argonautica
 
 **358** dilapsae cum prole nurus, tandemque quiescunt
 
-**359** dissona pervigili planctu vada, qualiter arctosarctos cod. regius, T, arcos V, agros C
+**359** dissona pervigili planctu vada, qualiter arctos
 
-**360** ad patriaspatrios C avibus medio iam vere revectis
+**360** ad patrias avibus medio iam vere revectis
 
-**361** Memphis et aprici statio silet annua Nili.silet XM, silicet V | nili XM, nilis V
+**361** Memphis et aprici statio silet annua Nili.
 
-**362** At non inde dies nec quae magisnec quae magis Vossius, neque magis V, neque magnis CM 2 aspera curis
+**362** At non inde dies nec quae magis aspera curis
 
-**363** nox Minyas tanta caesorumcaesorum Iunt. 1, laesorum VC ab imagine solvit.
+**363** nox Minyas tanta caesorum ab imagine solvit.
 
 **364** bis zephyri iam vela vocant: fiducia maestis
 
-**365** nulla viris, aegra adsiduo mens carpituraegra adsiduo Heinsius, aegro adsidue V | fiducia mestis Nulla animis. egros assidue meus crupitur igni habet Par. aestu,
+**365** nulla viris, aegra adsiduo mens carpitur aestu,
 
 **366** necdum omnes lacrimas atque omnia reddita caesis
 
-**367** iusta putant; patria ex oculis acerqueIusta M, Iuxta V | acerque C, sacerque V laborum
+**367** iusta putant; patria ex oculis acerque laborum
 
 **368** pulsus amor segnique iuvat frigescere luctu.
 
@@ -3783,9 +3783,9 @@ title: Argonautica
 
 **373** 'quaenam' ait 'ista lues, aut quae sententia divum?
 
-**374** decretusne venit fato pavor, an sibisibi Pius, tibi V nectunt
+**374** decretusne venit fato pavor, an sibi nectunt
 
-**375** corda moras? curcur M 2, cum V immemores famaeque larisque
+**375** corda moras? cur immemores famaeque larisque
 
 **376** angimur? aut pariet quemnam haec ignavia finem?'
 
@@ -3799,7 +3799,7 @@ title: Argonautica
 
 **381** fas ideo miseere neces ferroque morantes
 
-**382** exigereExigere M, Exiere V hinc animas redituraque semina caelo.
+**382** exigere hinc animas redituraque semina caelo.
 
 **383** quippe nec in ventos nec in ultima solvimur ossa:
 
@@ -3817,9 +3817,9 @@ title: Argonautica
 
 **390** implicat et varia meritos formidine pulsant.
 
-**391** at quibus invito fort. invitae maduerunt sanguine dextrae,
+**391** at quibus invito maduerunt sanguine dextrae,
 
-**392** si fors saeva tulit miseros, sed proxima culpae,culpae cod. Burmanni, culpa V
+**392** si fors saeva tulit miseros, sed proxima culpae,
 
 **393** hos variis mens ipsa modis agit, et sua carpunt
 
@@ -3829,21 +3829,21 @@ title: Argonautica
 
 **396** segnitiem, quos ecce vides. sed nostra requiret
 
-**397** cura viam. memori iam pridem cognita vatiuati cod. Burmanni, uate V
+**397** cura viam. memori iam pridem cognita vati
 
 **398** est procul ad Stygiae devexa silentia noctis
 
-**399** Cimmerium domusEumenidum domus C et superis incognita tellus,
+**399** Cimmerium domus et superis incognita tellus,
 
 **400** caeruleo tenebrosa situ, quo flammea numquam
 
 **401** Sol iuga sidereos nec mittit Iuppiter annos.
 
-**402** stant tacitaetacitae Bon. 2, sitae a V 1 corr. in citae frondes immotaque silva comanti
+**402** stant tacitae frondes immotaque silva comanti
 
-**403** horret acernaacerna Sudhaus et rei causa et metri, cf. Aen. IX 87 et Serv. ad Aen. II 16, uerna V, Averna Hein- sius iugo; specus umbrarumque meatus
+**403** horret acerna iugo; specus umbrarumque meatus
 
-**404** subter et et 405 inverso ordine in V, corr. Bon. 1 Oceani praeceps fragor arvaque nigro
+**404** subter et Oceani praeceps fragor arvaque nigro
 
 **405** vasta metu et subitae post longa silentia voces.
 
@@ -3853,13 +3853,13 @@ title: Argonautica
 
 **408** carmina turbatos volvit placantia manes.
 
-**409** ille mihi quae danda forentforent XM 2, fores V lustramina caesis
+**409** ille mihi quae danda forent lustramina caesis
 
 **410** prodidit, ille volens Erebum terrasque retexit.
 
-**411** ergo ubi puniceas oriens accenderitaccenderit Burmann, ascenderit V undas,
+**411** ergo ubi puniceas oriens accenderit undas,
 
-**412** tu socios adhibeadhibe M 2, Slothouwer, adhibere V sacris armentaque magnis
+**412** tu socios adhibe sacris armentaque magnis
 
 **413** bina deis; me iam coetus accedere vestros
 
@@ -3867,7 +3867,7 @@ title: Argonautica
 
 **415** vota fero. movet en gelidos Latonia currus:
 
-**416** flecte gradum, placitisplacidis cod. Bon. sileant age litora coeptis.'
+**416** flecte gradum, placitis sileant age litora coeptis.'
 
 **417** Iamque sopor mediis tellurem presserat horis
 
@@ -3875,13 +3875,13 @@ title: Argonautica
 
 **419** cum vigil arcani speculatus tempora sacri
 
-**420** Ampycides petit adversis Aesepiaesepia V, Aesopia C a, Asopia C b silvis
+**420** Ampycides petit adversis Aesepia silvis
 
-**421** flumina et aequoreas pariter decurrit ad undas.undas SM 2, undā V
+**421** flumina et aequoreas pariter decurrit ad undas.
 
 **422** hic sale purpureo vivaque nitentia lympha
 
-**423** membra novat seque horrificishorrificis M, horrigis V accommodat actis.
+**423** membra novat seque horrificis accommodat actis.
 
 **424** tempora tum vittis et supplice castus oliva
 
@@ -3901,13 +3901,13 @@ title: Argonautica
 
 **432** Delius hic longe candenti veste sacerdos
 
-**433** occurrit ramoque vocat; iamque ipse recentiuocat V, nouat C Pius | recenti M, recentis V
+**433** occurrit ramoque vocat; iamque ipse recenti
 
 **434** stat tumulo placida transmittens agmina lauro.
 
-**435** ducit et ad fluvios ac vinculafluuiosa cunicula V, corr. Bon. 1 solvere monstrat
+**435** ducit et ad fluvios ac vincula solvere monstrat
 
-**436** prima pedum glaucasqueglaucasque PM 2 C, glaucaque V comis praetexere frondes
+**436** prima pedum glaucasque comis praetexere frondes
 
 **437** imperat, hinc alte Phoebi surgentis ad orbem
 
@@ -3923,7 +3923,7 @@ title: Argonautica
 
 **443** pone iacit; rapidis adolentur cetera flammis.
 
-**444** quin etiam truncas nemorumnemorum S, nemorumque V; sententia haec est: locat quercus spoliatas fronde et effictas in virorum speciem effigiesque virorum
+**444** quin etiam truncas nemorum effigiesque virorum
 
 **445** rite locat quercus simulataque subligat arma.
 
@@ -3933,7 +3933,7 @@ title: Argonautica
 
 **448** atque ita lustrifico cantu vocat: 'ite, perempti,
 
-**449** ac memores abolete minas;abolete minas X, abolet animas V, abolete animas II M sint otia vobis,
+**449** ac memores abolete minas; sint otia vobis,
 
 **450** sit Stygiae iam sedis amor; procul agmine nostro
 
@@ -3943,9 +3943,9 @@ title: Argonautica
 
 **453** nec triviis ululare velim, pecorique satisque
 
-**454** nullae ideo pestes nee luctifer ingruatingruat OQM 2, ingrauat V annus,
+**454** nullae ideo pestes nee luctifer ingruat annus,
 
-**455** nec populi nostrive luant eanostriue luant ea M 2 T 1 C, nostri uel antea V facta minores.'
+**455** nec populi nostrive luant ea facta minores.'
 
 **456** dixerat, et summas frondentibus intulit aris
 
@@ -3959,7 +3959,7 @@ title: Argonautica
 
 **461** exciderint quae gesta manu, quae debita fatis.
 
-**462** illi alacres pars arma locant, pars ardua raptisraptis e. g. addidi, om. V, celsis C, summis MT, codd. Bon., Burmanni, Coki
+**462** illi alacres pars arma locant, pars ardua raptis
 
 **463** insternunt tabulata toris oriturque trementum
 
@@ -3967,23 +3967,23 @@ title: Argonautica
 
 **465** Iuppiter urgentem ceu summa Ceraunia nubem
 
-**466** cum pepulit movitquemouitque M, nouitque V iugis, fulsere repente
+**466** cum pepulit movitque iugis, fulsere repente
 
 **467** et nemora et scopuli nitidusque reducitur aether,
 
 **468** sic animi rediere viris, iamque ipse magister
 
-**469** nutat ab arce ratis remisque obsistere tendit.tendit SM, tend V (cetera membrana teguntur)
+**469** nutat ab arce ratis remisque obsistere tendit.
 
 **470** instaurant primi certamina liber amictu
 
-**471** Eurytus et dictis TalaiTalai Bon. 2, eali V non territus Idas;
+**471** Eurytus et dictis Talai non territus Idas;
 
 **472** inde alii increpitant atque aequora pectore tollunt.
 
 **473** par gemitu pulsuque labor, versumque vicissim
 
-**474** mittitur in puppem remo mare. laetuslaetus M, lactus V et ipse
+**474** mittitur in puppem remo mare. laetus et ipse
 
 **475** Alcides 'quisnam hos vocat in certamina fluctus?'
 
@@ -3997,17 +3997,17 @@ title: Argonautica
 
 **480** obruit inque tuo posuit caput, Iphite, transtro.
 
-**481** Iam summas caeli Phoebus candentiorcandentior XM, andentior V arces
+**481** Iam summas caeli Phoebus candentior arces
 
-**482** vicerat et longasVicerat S, Vincerat V | longas S, longasi V medius revocaverat umbras:
+**482** vicerat et longas medius revocaverat umbras:
 
-**483** tardior hine cessante viro quae duo hemistichia huius sententiae excidisse suspica- tur Sudhaus cessante virum certamine puppis labitur et repetens fessis quae pr. proxima Tiphys
+**483** tardior hine cessante viro quae proxima Tiphys
 
 **484** litora quosque dabat densa trabe Mysia montes
 
 **485** advehitur. petit excelsas Tirynthius ornos;
 
-**486** haeret Hylas lateri passusquelateri passusque SM, later ipsassusque V moratur iniquos.
+**486** haeret Hylas lateri passusque moratur iniquos.
 
 **487** Ilium ubi Iuno poli summo de vertice puppem
 
@@ -4021,7 +4021,7 @@ title: Argonautica
 
 **492** tum sic adloquitur: 'procerum vi pulsus iniqua
 
-**493** germanique manu (repetis,repetis Maserius, repetit V quo crimine) Perses
+**493** germanique manu (repetis, quo crimine) Perses
 
 **494** barbaricas iam movit opes Hyrcanaque signa.
 
@@ -4033,21 +4033,21 @@ title: Argonautica
 
 **498** bellum ingens, atque ipse citis Gradivus habenis
 
-**499** fundit equos. viden Arctoo de cardinecardine Heinsius, carcere V quanta
+**499** fundit equos. viden Arctoo de cardine quanta
 
-**500** tollat se nubes atque aequoreaethere Francius pendeat atro?
+**500** tollat se nubes atque aequore pendeat atro?
 
 **501** corripe prima vias; finem cum Phasidis alti
 
-**502** transierit Perses aciemqueaciemque Bon. 2, faciemque V admoverit urbi,
+**502** transierit Perses aciemque admoverit urbi,
 
-**503** coepta refer paulumque (nefas)refer Bon. 2, refert V | nefas distinxit Sudhaus et foedera necte
+**503** coepta refer paulumque (nefas) et foedera necte
 
 **504** consiliis atque arte tua. sponde adfore reges
 
 **505** dis genitos, quis arma volens, quis agmina iungat.'
 
-**506** at virgo, quamquam insidias aestusqueastusque Bon. 2 novercae
+**506** at virgo, quamquam insidias aestusque novercae
 
 **507** sentiat et blandos quaerentem fingere vultus,
 
@@ -4055,43 +4055,43 @@ title: Argonautica
 
 **509** Ingemuit Iuno tandemque silentia rumpit:
 
-**510** 'en labor, en odiis caputcaput XM, cupit V insuperabile nostris.
+**510** 'en labor, en odiis caput insuperabile nostris.
 
-**511** quam Nemeen tot fessa minis, quae †belua†belua V (interpolatum vid. ex Aen. VI 287), proelia Aid., flumina Burmann ex II 496, fort. semina, cf. 665 Lernae
+**511** quam Nemeen tot fessa minis, quae †belua† Lernae
 
 **512** experiar? Phrygiis ultro concurrere monstris
 
-**513** nempe virum et †pulchro†pulchro V, tuto Wagner | ponto V, coepto Burmann reserantem Pergama ponto
+**513** nempe virum et †pulchro† reserantem Pergama ponto
 
 **514** vidimus. en ego nunc regum soror — et mihi gentis
 
-**515** ullus honos? iam tum indecoresindecores CT, codd. Burmanni et Harlesii, indecore V | iustaeque Heinsius, iussaeque V iustaeque dolorum
+**515** ullus honos? iam tum indecores iustaeque dolorum
 
-**516** primitiaePritiae et V, Primitiae et SM, et del. Sudhaus, ut Heinsius, a Wagner tenero superati protinus angues.
+**516** primitiae tenero superati protinus angues.
 
 **517** debueram nullos iuveni iam quaerere casus
 
-**518** victa nec ad tales forsanad Bon. 1, om. V | forsan X 2 M, forsas V descendere pugnas.
+**518** victa nec ad tales forsan descendere pugnas.
 
 **519** verum animis insiste tuis actumque ........
 
-**520** tende, pudor; mox et Furias Ditemque movebo.'actumque movebo V (ex 520), actumque per omnem suppl. C, fort. actumque vel coeptumque tueri Ditemque movebo X olim, M 2 C, ditem quomodo verbo V
+**520** tende, pudor; mox et Furias Ditemque movebo.'
 
-**521** haec ait etet supr. vers. add. V 1 pariter laevi iuga pinea montis
+**521** haec ait et pariter laevi iuga pinea montis
 
 **522** respicit ac pulchro venantes agmine Nymphas,
 
 **523** undarum nemorumque decus. levis omnibus arcus
 
-**524** et manicae virides et stricta myrtus habena,habena T Bon. 2, harena V, ad habena cf. Luc. VI 221, ad myrtus Aen. VII 817
+**524** et manicae virides et stricta myrtus habena,
 
-**525** summo palla genu, tenui vagus innatat umbraumbra VC, optime ob obscurae (526), unda vulgo
+**525** summo palla genu, tenui vagus innatat umbra
 
 **526** crinis ad obscurae decurrens cingula mammae.
 
 **527** ipsa citatarum tellus pede plausa sororum
 
-**528** personat et teneris summittit gramina plantis.plantis S, plactis V
+**528** personat et teneris summittit gramina plantis.
 
 **529** e quibus Herculeo Dryope percussa fragore,
 
@@ -4103,17 +4103,17 @@ title: Argonautica
 
 **533** hanc delapsa polo piceaeque adclinis opacae
 
-**534** Iuno vocat prensaque manu sic blandablanda V, uoce C profatur:
+**534** Iuno vocat prensaque manu sic blanda profatur:
 
 **535** 'quem tibi coniugio tot dedignata dicavi
 
-**536** Nympha procos, en Haemoniahaemenia V puer adpulit alno,
+**536** Nympha procos, en Haemonia puer adpulit alno,
 
 **537** clarus Hylas, saltusque tuos fontesque pererrat.
 
-**538** vidistisVidisti M | roseis SM, reseis V roseis haec per loca Bacchus habenis
+**538** vidistis roseis haec per loca Bacchus habenis
 
-**539** cum domitas acies et Eoi ferculafercula Pius, pr ecula V, pocula C, fercula sunt ea quae in triumpho feruntur, cf. e. g. Sen. Herc. Oet. 110 regni
+**539** cum domitas acies et Eoi fercula regni
 
 **540** duceret ac rursus thiasos et sacra moventem.
 
@@ -4121,7 +4121,7 @@ title: Argonautica
 
 **542** crede dari. quae spes Nymphis aufertur Achaeis,
 
-**543** praereptum quanto prolesproles M, prole V Boebeia questu
+**543** praereptum quanto proles Boebeia questu
 
 **544** audiet et flavi quam tristis nata Lycormae.'
 
@@ -4145,11 +4145,11 @@ title: Argonautica
 
 **554** ducit et intactas levis ipse superfugit undas.
 
-**555** hoc pueri spes lusapueri spes lusa V 2 R 2, pueris perfusa V, pueri spes fusa C modo est, nec tendere certat
+**555** hoc pueri spes lusa modo est, nec tendere certat
 
 **556** amplius; utque artus et concita pectora sudor
 
-**557** diluerat, gratos avidus procumbit ad amnes.amnes M, omnes V
+**557** diluerat, gratos avidus procumbit ad amnes.
 
 **558** stagna vaga sic luce micant, ubi Cynthia caelo
 
@@ -4165,15 +4165,15 @@ title: Argonautica
 
 **564** detrahit; adiutae prono nam pondere vires.
 
-**565** Iam pater umbrosis Tirynthius arcibus ornumornum Lemaire, ornos V
+**565** Iam pater umbrosis Tirynthius arcibus ornum
 
-**566** depulerat magnoque iugi stridorestridore S, M 1 ut vid., strodere V, de trude C revulsam
+**566** depulerat magnoque iugi stridore revulsam
 
 **567** terga super fulvi porrexerat horrida monstri
 
 **568** litora curva petens; alio nam calle reversum
 
-**569** credit Hylan captaque dapes auxissehausisse C ferina.
+**569** credit Hylan captaque dapes auxisse ferina.
 
 **570** sed neque apud socios structasque in litore mensas
 
@@ -4181,11 +4181,11 @@ title: Argonautica
 
 **572** intendens aciem. varios hinc excitat aestus
 
-**573** nube mali percussuspercussus SM 2, percussas V amor, quibus haeserit oris,
+**573** nube mali percussus amor, quibus haeserit oris,
 
 **574** quis tales impune moras casusve laborve
 
-**575** attulerit. densam interea lacunam statuit Sudhaus eius fere sententiae: Et vid et obscuras concrescere vallibus umbras descendere noctem
+**575** attulerit. densam interea descendere noctem
 
 **576** iam maiore metu; tum vero et pallor et amens
 
@@ -4207,9 +4207,9 @@ title: Argonautica
 
 **585** silva, pavent montes, luctu succensus acerbo
 
-**586** quid struat Alcides tantaque quidquid (apparet) M, qd (i. e. quod) V apparet ira.
+**586** quid struat Alcides tantaque quid apparet ira.
 
-**587** ille, velut refugi quem contigitcotigit V improba Mauri
+**587** ille, velut refugi quem contigit improba Mauri
 
 **588** lancea sanguineus vasto leo murmure fertur
 
@@ -4219,13 +4219,13 @@ title: Argonautica
 
 **591** fertur et intento decurrit montibus arcu.
 
-**592** heu miserae quibus ille feris,feris Schmitz, ferae V quibus incidit usquam
+**592** heu miserae quibus ille feris, quibus incidit usquam
 
 **593** immeritis per lustra viris. volat ordine nullo
 
 **594** cuncta petens: nunc ad ripas deiectaque saxis
 
-**595** flumina, nunc notas nemorum procurritprocurrit V, procumbit QC, percumbit M ad umbras.
+**595** flumina, nunc notas nemorum procurrit ad umbras.
 
 **596** rursus Hylan et rursus Hylan per longa reclamat
 
@@ -4233,7 +4233,7 @@ title: Argonautica
 
 **598** At sociis immota fides austrisque secundis
 
-**599** certa: morae estmorae est Madvig, moraes V | aeq' (i. e. aeque) V nec parvus Hylas (quamquam omnibus aeque
+**599** certa: morae est nec parvus Hylas (quamquam omnibus aeque
 
 **600** grata rudimenta), Herculeo sub nomine pendent.
 
@@ -4247,23 +4247,23 @@ title: Argonautica
 
 **605** strata vel oblatis ductor videt aequora ventis,
 
-**606** stat lacrimans magnoque viri cunctatur amore.amore XM 2, amori V
+**606** stat lacrimans magnoque viri cunctatur amore.
 
 **607** illius incessus habilemque ad terga pharetram,
 
 **608** illum inter proceres maestaeque silentia mensae
 
-**609** quaerit inops quondam ingenti comprensa trahentemcomprensa (compressa C) trahentem X 2 MC, conpensatra lete V
+**609** quaerit inops quondam ingenti comprensa trahentem
 
-**610** vina manu et duraedurae O 2 M 2 C, dura V referentem monstra novercae.
+**610** vina manu et durae referentem monstra novercae.
 
 **611** Nec minus interea crudelis iapyga Iuno
 
 **612** adsidue movet et primis cum solibus offert.
 
-**613** iamque morae impatiens cunctantes increpat aususausus merito plerisque suspectum
+**613** iamque morae impatiens cunctantes increpat ausus
 
-**614** Tiphys et oblato monetmonet XM 2, mouet V otia rumpere cursu.
+**614** Tiphys et oblato monet otia rumpere cursu.
 
 **615** ergo animum flexus dictis instantis Iason
 
@@ -4279,19 +4279,19 @@ title: Argonautica
 
 **621** ante procellosum scopulis errantibus aequor:
 
-**622** nee tum fama viri nec certiornec tum Sudhaus, Nedum V, necdum XM 2, vulgo | certior etiam ad fama pertinet extitit auctor.
+**622** nee tum fama viri nec certior extitit auctor.
 
-**623** verum agite et, dubiis variant quiavariant quia Heinsius, uariunt qui V, quibus anxia C pectora curis,
+**623** verum agite et, dubiis variant quia pectora curis,
 
-**624** consuliteconsulite Bon. 1, Consulit V et, motis seu vos via flatibus urget,
+**624** consulite et, motis seu vos via flatibus urget,
 
 **625** pergite et inceptos mecum revocate labores,
 
-**626** seu plurispluris (sc. est) Burmann, plures V tolerare moras rursusque propinquis
+**626** seu pluris tolerare moras rursusque propinquis
 
 **627** quaesivisse iugis, pretium haut leve temporis acti.'
 
-**628** dixerat; atat Burmann, et V | flexa Sudhaus, cf. 598, 701 studiis iamdudum freta iuventus
+**628** dixerat; at studiis iamdudum freta iuventus
 
 **629** orat inire vias: unum tanto afore coetu,
 
@@ -4311,17 +4311,17 @@ title: Argonautica
 
 **637** at plus ingenti Telamon iam fluctuat ira
 
-**638** cum fremitu, saevisque serens modoserens Ald., ferens V, furens C | modo Kr., ut respondeat voci idem (640), om. V, fera S, in C iurgia dictis
+**638** cum fremitu, saevisque serens modo iurgia dictis
 
-**639** insequitur magnoque imploratimplorat X 2 ut vid., M 2, inplorant V numina questu,
+**639** insequitur magnoque implorat numina questu,
 
-**640** idem orans prensatque viros demissaqueIdem orans V, Dememorans C | prensatque Bon. 1, prensaque V | demissaque X, dimissaque V supplex
+**640** idem orans prensatque viros demissaque supplex
 
 **641** haeret ad ora ducis: nil se super Hercule fari
 
 **642** sed socio quocumque, gemens quamquam aspera fama
 
-**643** iam loca iamque ferasferas SM, fera V per barbara litora gentes,
+**643** iam loca iamque feras per barbara litora gentes,
 
 **644** non alium contra Alciden, non pectora tanta
 
@@ -4339,13 +4339,13 @@ title: Argonautica
 
 **651** traxit honor, dum iura dares, dum tempora fandi.
 
-**652** septimus hie celsis descenditdescendit SM, discendit V montibus auster
+**652** septimus hie celsis descendit montibus auster
 
 **653** iamque ratem Scythicis forsan statuisset in oris;
 
 **654** nos patriae immemores, maneant ceu nulla revectos
 
-**655** gaudia, sed duro saevaesaevae Bon. 1, saeua V sub rege Mycenae,
+**655** gaudia, sed duro saevae sub rege Mycenae,
 
 **656** ad medium cunctamur iter. si finibus ullis
 
@@ -4353,17 +4353,17 @@ title: Argonautica
 
 **658** regna hodie et dulcem sceptris Calydona tenerem
 
-**659** laetus opum pacisque meae, tutusquetutusque M 2, tuusque V manerem
+**659** laetus opum pacisque meae, tutusque manerem
 
 **660** quis genitor materque locis. quid deside terra
 
-**661** haeremus? vacuos cur lassantlassant MC, classant V aequora visus?
+**661** haeremus? vacuos cur lassant aequora visus?
 
 **662** tu comitem Alciden ad Phasidis amplius arva
 
-**663** adfore,Adfore X 2 M, Adfor V tu socias ultra tibi rere pharetras?
+**663** adfore, tu socias ultra tibi rere pharetras?
 
-**664** non ea paxpax Heinsius, cf. Stat. Iheb. VII 199, fax V, lex Loeh- bach odiis oblitave numine fesso
+**664** non ea pax odiis oblitave numine fesso
 
 **665** Iuno sui. nova Tartareo fors semine monstra
 
@@ -4375,9 +4375,9 @@ title: Argonautica
 
 **669** progenies, nec parva mihi fiducia gentis.
 
-**670** †et ego et† quocumque voces, †qua tegmina†Et ego et V, Et egomet M, Ast ego et S, Ast egomet CT, fort. ibo egomet | qua tegmina V, sequar, agmina Jacobs ferro
+**670** †et ego et† quocumque voces, †qua tegmina† ferro
 
-**671** plura metam; tibi dicta manus, tibi quidquidtibi (quidquid) X 2 MT, om. V in ipso
+**671** plura metam; tibi dicta manus, tibi quidquid in ipso
 
 **672** sanguine erit, iamque hinc operum quae maxima posco.
 
@@ -4385,7 +4385,7 @@ title: Argonautica
 
 **674** nostra salus; nempe ora aeque mortalia cuncti
 
-**675** ecce gerunt; ibantibunt Aid. aequo nempe ordine remi.
+**675** ecce gerunt; ibant aequo nempe ordine remi.
 
 **676** ille vel insano iamdudum turbidus aestu
 
@@ -4397,11 +4397,11 @@ title: Argonautica
 
 **680** tendite, dum rerum patiens calor et rude membris
 
-**681** robur inest; nec enim solissolis XM, soli V dare funera Colchis
+**681** robur inest; nec enim solis dare funera Colchis
 
 **682** sit satis et tota pelagus lustrasse iuventa.
 
-**683** spes mihi quae talitali Bon. 2, talis V potuit longissima casu
+**683** spes mihi quae tali potuit longissima casu
 
 **684** esse fuit; quiscumque virum perquirere silvis
 
@@ -4411,7 +4411,7 @@ title: Argonautica
 
 **687** cernere devexis redeuntem montibus opto.
 
-**688** sat lacrimis comitique datum,Sat M 2 T, Stat V | datum X 2 M, tadum V quem sortibus aevi
+**688** sat lacrimis comitique datum, quem sortibus aevi
 
 **689** crede vel in mediae raptum tibi sanguine pugnae.'
 
@@ -4435,13 +4435,13 @@ title: Argonautica
 
 **699** non hi tum flatus, non ista superbia dictis,
 
-**700** litore cum patrio,cum patrio M, cupatrio V iam vela petentibus austris,
+**700** litore cum patrio, iam vela petentibus austris,
 
 **701** cunctus ad Alciden versus favor: ipse iuvaret,
 
 **702** ipse ducis curas meritosque subiret honores.
 
-**703** iamne animis, iam gente pares, atque inclita vulgiiam gente M 2, iam negenite VS | inclita SM, indita V | uulgi X 2 MT, uului V
+**703** iamne animis, iam gente pares, atque inclita vulgi
 
 **704** dextera? nulla fides, nulli super Hercule fletus?
 
@@ -4453,7 +4453,7 @@ title: Argonautica
 
 **708** quae neque iam frondes virides nee proferet umbras,
 
-**709** ut semel est evulsaaeuulsa V, excussa C iugis ac matre perempta
+**709** ut semel est evulsa iugis ac matre perempta
 
 **710** fida ministeria et duras obit horrida pugnas,
 
@@ -4463,9 +4463,9 @@ title: Argonautica
 
 **713** Herculeas iam serus opes spretique vocabis
 
-**714** arma viri,uiri SM, uir V | tum XM, dum V nec nos tumida haec tum dicta iuvabunt.'
+**714** arma viri, nec nos tumida haec tum dicta iuvabunt.'
 
-**715** Talibus Aeacides socios terroribusterroribus V, sermonibus C urgens
+**715** Talibus Aeacides socios terroribus urgens
 
 **716** inlacrimat multaque comas deformat harena.
 
@@ -4477,7 +4477,7 @@ title: Argonautica
 
 **720** ut socii sedere locis nullaeque leonis
 
-**721** exuviae tantique vocantuocant V (Valerium sic scripsisse pro uacant docet IV 248) vestigia transtri.
+**721** exuviae tantique vocant vestigia transtri.
 
 **722** flet pius Aeacides, maerent Poeantia corda,
 
@@ -4487,7 +4487,7 @@ title: Argonautica
 
 **725** omnis Hylan, medio pereuntia nomina ponto.
 
-**726** Dat procul interea totototo XM 2, tot V pater aequore signum
+**726** Dat procul interea toto pater aequore signum
 
 **727** Phorcys et immanes intorto murice phocas
 
@@ -4497,21 +4497,21 @@ title: Argonautica
 
 **730** ilicet extremi nox litore Solis Hiberas
 
-**731** condidit alta domos et sidera sustulit axis.axis M 2, aris V, astris C
+**731** condidit alta domos et sidera sustulit axis.
 
-**732** flumina conticuere, tacet cum flatibusFlamina TC, sel cf. Cir. 233 et Skutschii explicationem Gallus und Vergil p. 51 sqq. | tacet Burmann, iacet VC | sine flatibus C aequor.
+**732** flumina conticuere, tacet cum flatibus aequor.
 
 **733** Amphitryoniades nec quae nova lustra requirat,
 
 **734** nec quo temptet iter, comitis nec fata parenti
 
-**735** quae referat, videt, aut socios qua mente revisat.reuisat V 1 ut vid., XM, reuirat V
+**735** quae referat, videt, aut socios qua mente revisat.
 
-**736** urit amor, solisque negat decederedecedera V silvis.
+**736** urit amor, solisque negat decedere silvis.
 
-**737** non aliter gemitugemitu dativus est quondam lea prolis ademptae
+**737** non aliter gemitu quondam lea prolis ademptae
 
-**738** terga dedit;terga dedit i. e. cessit, cf. Volliner ad Stat. Silv. II 6. 93 sedet inde viis inclusaque longo
+**738** terga dedit; sedet inde viis inclusaque longo
 
 **739** pervigilant castella metu; dolor adtrahit orbes
 
@@ -4521,9 +4521,9 @@ title: Argonautica
 
 **2** sustinuit, natique pios miseratus amores
 
-**3** IunonemIunorem V ardenti trepidam gravis increpat ira:
+**3** Iunonem ardenti trepidam gravis increpat ira:
 
-**4** 'ut nova nunc tacito sese M 2, Heinsius, om. V, te Carr. 2, sub S pectore gaudia tollunt:
+**4** 'ut nova nunc tacito se pectore gaudia tollunt:
 
 **5** haeret inops solisque furit Tirynthius oris,
 
@@ -4531,7 +4531,7 @@ title: Argonautica
 
 **7** alta tenent. sic Iuno ducem fovet anxia curis
 
-**8** Aesonium, sic arma viroviro Heinsius, uiros V sociosque ministrat.
+**8** Aesonium, sic arma viro sociosque ministrat.
 
 **9** iam quibus incertam bellis Scythicaeque paventem
 
@@ -4555,7 +4555,7 @@ title: Argonautica
 
 **19** ora ferens, ut nulla deum superare potestas,
 
-**20** procumbit. tandem fessis paxpax Bon. 1, fas V siluis M, silua V reddita silvis,
+**20** procumbit. tandem fessis pax reddita silvis,
 
 **21** fluminaque et vacuis auditae montibus aurae.
 
@@ -4565,17 +4565,17 @@ title: Argonautica
 
 **24** stansque super carum talis caput edere voces:
 
-**25** 'quid, pater, in vanos absumisabsumis M 2, adsumis V tempora questus?
+**25** 'quid, pater, in vanos absumis tempora questus?
 
-**26** hoc nemus acac Sudhaus, haec VC fatis mihi iam domus improba quo me
+**26** hoc nemus ac fatis mihi iam domus improba quo me
 
-**27** Nympha rapit saevae monitu lunonis, in amnes.in amnes V, inanes X 2 C, intellego hoc nemus ac quo me Nympha rapit, sc. amnes, domus sunt
+**27** Nympha rapit saevae monitu lunonis, in amnes.
 
-**28** nunc Iovis accessus et iam mihi liminalimina cod. Coki, lumina V, numina Baehrens caeli
+**28** nunc Iovis accessus et iam mihi limina caeli
 
-**29** conciliat iungitque torostoros Burmann, om. V, suos C et fontis honores.
+**29** conciliat iungitque toros et fontis honores.
 
-**30** o dolor, o dulces quas gessimus ante pharetrae.pharetrae M 2 C, pharetram V, pharetras S
+**30** o dolor, o dulces quas gessimus ante pharetrae.
 
 **31** iam socii laetis rapuerunt vincula ventis,
 
@@ -4591,7 +4591,7 @@ title: Argonautica
 
 **37** sis memor et cari comitis ne abscedat imago.'
 
-**38** talibus orantem dictis visuque fruentemfruentem X, fruente fruitur V
+**38** talibus orantem dictis visuque fruentem
 
 **39** ille ultro petit et vacuis amplexibus instat
 
@@ -4607,7 +4607,7 @@ title: Argonautica
 
 **45** cum rapit halcyonis miserae fetumque laremque,
 
-**46** it super aegra parens queriturquequaeriturque M 2, quaeritur V tumentibus undis
+**46** it super aegra parens queriturque tumentibus undis
 
 **47** certa sequi, quocumque ferant, audetque pavetque,
 
@@ -4615,15 +4615,15 @@ title: Argonautica
 
 **49** illa dolens vocem dedit et se sustulit alis:
 
-**50** haut aliter somni maestus labor. exilit amensamens M, amen V
+**50** haut aliter somni maestus labor. exilit amens
 
 **51** effusisque genas lacrimis rigat. 'ibimus' inquit,
 
-**52** 'solus et hos montes desertaque lustra tenebis,tenebis M, 2 tenebris V
+**52** 'solus et hos montes desertaque lustra tenebis,
 
 **53** care puer, nec res ultra mirabere nostras.'
 
-**54** haec fatus relegitque vias etuias et X 2, uiaret V vallibus exit
+**54** haec fatus relegitque vias et vallibus exit
 
 **55** incertus, quid Iuno ferat, quas apparet iras.
 
@@ -4643,15 +4643,15 @@ title: Argonautica
 
 **63** Caucaseum, rex magne, senem? nullumne malorum
 
-**64** finem adeo poenaeque dabis? te cuncta precaturprecantur C
+**64** finem adeo poenaeque dabis? te cuncta precatur
 
-**65** gens hominum atque ipsi iam te, pater optime,optime X 2 MT, om. V montes
+**65** gens hominum atque ipsi iam te, pater optime, montes
 
 **66** fessaque cum silvis orant iuga. sat tibi furtum
 
 **67** ignis et aetheriae defensa silentia mensae.'
 
-**68** dixit ubi,Exit ubi C e scopulis media inter pabula diri
+**68** dixit ubi, e scopulis media inter pabula diri
 
 **69** vulturis ipse etiam gemitu maestaque fatigat
 
@@ -4661,7 +4661,7 @@ title: Argonautica
 
 **72** Caucaseae; stupet ipse dei clamoribus ales.
 
-**73** tunc etiam superas Acheronte auditussuperas Bon. 1, super V | auditur C ad arces
+**73** tunc etiam superas Acheronte auditus ad arces
 
 **74** Iapetus; gravis orantem procul arcet Erinys
 
@@ -4675,7 +4675,7 @@ title: Argonautica
 
 **79** nunc' ait 'eripiat dirae Titana volucri.'
 
-**80** diva volat defertquedefertque M 2, differtque V viro celeranda parentis
+**80** diva volat defertque viro celeranda parentis
 
 **81** imperia atque alacrem laetis hortatibus implet.
 
@@ -4685,9 +4685,9 @@ title: Argonautica
 
 **84** multaque deserto memores super Hercule volvunt.
 
-**85** Thracius at summa sociis e puppe sacerdossacerdo V
+**85** Thracius at summa sociis e puppe sacerdos
 
-**86** fata deum et miserae solans incommoda vitae defuit in C
+**86** fata deum et miserae solans incommoda vitae
 
 **87** securum numeris agit et medicabile carmen;
 
@@ -4699,7 +4699,7 @@ title: Argonautica
 
 **91** Oceani genitale caput Titania frenis
 
-**92** antra sonant; Sol auricomis cingentibusauricomus T, cod. regius | cingentibus cod. Bon., ingentibus VC, urguentibus codd. Pii Horis
+**92** antra sonant; Sol auricomis cingentibus Horis
 
 **93** multifidum iubar et bisseno sidere textam
 
@@ -4723,31 +4723,31 @@ title: Argonautica
 
 **103** ulla colunt placidas aut iura tenentia mentes.
 
-**104** quales Aetnaeis rabidirapidi XC Cyclopes in antris
+**104** quales Aetnaeis rabidi Cyclopes in antris
 
-**105** nocteNocte SM, Noctis V sub hiberna servant freta, sicubi saevis
+**105** nocte sub hiberna servant freta, sicubi saevis
 
 **106** advectet ratis acta notis tibi pabula dira
 
 **107** et miseras, Polypheme, dapes: sic undique in omnes
 
-**108** prospiciunt cursantque : cursant V ( deleta videtur) vias, qui corpora regi
+**108** prospiciunt cursantque vias, qui corpora regi
 
 **109** capta trahant. ea Neptuno trux ipse parenti
 
 **110** sacrifici pro rupe iugi media aequora supra
 
-**111** torquet agens. sinsin C, in V forma viris praestantior adsit,
+**111** torquet agens. sin forma viris praestantior adsit,
 
 **112** tum legere arma iubet sumptisque occurrere contra
 
-**113** caestibus; haec miserimiseris Burmann sors est aequissima leti.
+**113** caestibus; haec miseri sors est aequissima leti.
 
 **114** huc ubi devectam Neptunus gurgite puppem
 
 **115** sensit et extremum nati prospexit in oras
 
-**116** et quondam laetos domini certamine campos,campis SM 2, campus V
+**116** et quondam laetos domini certamine campos,
 
 **117** ingemit ac tales evolvit pectore questus:
 
@@ -4763,21 +4763,21 @@ title: Argonautica
 
 **123** concidit infelix et nunc chaos implet Orion.
 
-**124** nec tibi nunc virtus aut detaut det T 1 Bon. 2, audet V fiducia nostri,
+**124** nec tibi nunc virtus aut det fiducia nostri,
 
-**125** nate, animos opibusque ultra neultra etiam V habet | ne Carrio, nec V crede paternis.
+**125** nate, animos opibusque ultra ne crede paternis.
 
-**126** iam iam aliaeeliae V vires maioraque sanguine nostro
+**126** iam iam aliae vires maioraque sanguine nostro
 
 **127** vincunt fata Iovis, potior cui cura suorum est.
 
-**128** atque ideo neque ego hanc tumidistumidis V, motis C avertere ventis
+**128** atque ideo neque ego hanc tumidis avertere ventis
 
 **129** temptavi tenuive ratem, nec iam mora morti
 
-**130** hinc erit ulla tuae. reges preme, dure,preme dure V, doliture C, premit ille Schenkl secundos.'
+**130** hinc erit ulla tuae. reges preme, dure, secundos.'
 
-**131** abstulit inde oculos, natumque et tristia linquenslinquens M, linque V
+**131** abstulit inde oculos, natumque et tristia linquens
 
 **132** proelia sanguineo terras pater alluit aestu.
 
@@ -4805,7 +4805,7 @@ title: Argonautica
 
 **144** abripit et sociis, quae sint ea, promere cogit.
 
-**145** ille manum tendens 'non haec' ait 'hospitamanum S, manu V | hospita X 2 M, hosta V vobis
+**145** ille manum tendens 'non haec' ait 'hospita vobis
 
 **146** terra, viri, non hic ullos reverentia ritus
 
@@ -4813,7 +4813,7 @@ title: Argonautica
 
 **148** iam veniet diros Amycus qui tollere caestus
 
-**149** imperet etet SM 2, om. V vasto qui vertice nubila pulset.
+**149** imperet et vasto qui vertice nubila pulset.
 
 **150** talis in advectos Neptuni credita proles
 
@@ -4825,19 +4825,19 @@ title: Argonautica
 
 **154** consulite atque fugae medium ne temnite tempus.
 
-**155** namque isti frustra quisquam concurrereconcurrere SM 2, concurre V monstro
+**155** namque isti frustra quisquam concurrere monstro
 
 **156** audeat; et quaenam talem vidisse voluptas?'
 
 **157** ductor ad haec 'Bebryxne venis diversaque regi
 
-**158** corda gerensgerens M 2 in marg., regens V (melior vulgi nam saepe voluntas),
+**158** corda gerens (melior vulgi nam saepe voluntas),
 
 **159** hostis an externis fato delatus ab oris?
 
 **160** et tua cur Amycus caestu nondum obruit ora?'
 
-**161** 'nomen' ait 'praedulce mihi †nomenque†nomenque V, ductumque Heinsius, votumque Damsté, fort. nutumque secutus
+**161** 'nomen' ait 'praedulce mihi †nomenque† secutus
 
 **162** Otreos unanimi. decus ille et laeta suorum
 
@@ -4849,23 +4849,23 @@ title: Argonautica
 
 **166** implicui; sed prima procul vixdum ora levantis
 
-**167** fulmineaFulminea Bon. 1, Fulmineam V frontem dextra disiectaque fudit
+**167** fulminea frontem dextra disiectaque fudit
 
 **168** lumina. me numquam leto dignatus et armis,
 
-**169** sed lacrimis potius luctuque absumorassumor C inerti.
+**169** sed lacrimis potius luctuque absumor inerti.
 
-**170** spes tamen, his fandofando M, frando V si nuntius extitit oris
+**170** spes tamen, his fando si nuntius extitit oris
 
 **171** et Mariandynum patrias penetravit ad urbes,
 
 **172** unde genus fraterque viro — sed et ille quierit
 
-**173** orooro Pius, Ora V, Gracia C nec vanis cladem Lycus augeat armis.'
+**173** oro nec vanis cladem Lycus augeat armis.'
 
-**174** Haec ubi non ulla iuvenesnon ulla cod. Bon, non nulla V | iuuenis V formidine moti
+**174** Haec ubi non ulla iuvenes formidine moti
 
-**175** accipiunt, videt et dura sic pergere mente,videt et Schenkl, dolet et V, dolor et duras insurgere mentes C
+**175** accipiunt, videt et dura sic pergere mente,
 
 **176** terga sequi properosque iubet coniungere gressus.
 
@@ -4875,39 +4875,37 @@ title: Argonautica
 
 **179** non quae dona deum, non quae trahat aetheris ignem,
 
-**180** infelix domus et sonitu tremibundatremebunda XII 1, remibunda VII profundi.
+**180** infelix domus et sonitu tremibunda profundi.
 
-**181** at varii pro rupe metus: hicat Heinsius, Vt V, et Bon. 2 | hic Aid., hinc V trunca rotatis
+**181** at varii pro rupe metus: hic trunca rotatis
 
 **182** bracchia rapta viris strictoque immortua caestu,
 
-**183** ossaque taetra situ et capitumet Heinsius, om. V, fort. capitum et maestissimus ordo.
+**183** ossaque taetra situ et capitum maestissimus ordo.
 
 **184** respicias quibus adverso sub vulnere nulla
 
 **185** iam facies nec nomen erat; media ipsius arma
 
-**186** sacra metumedia T, medius V metu Q, mentuque V magnique aris imposta parentis.
+**186** sacra metu magnique aris imposta parentis.
 
-**187** hospitis hic primum monitus rediere Dymantis,monitus P, monitis VC | Dymantis Hein- sius, tymantis V, tumentes C
+**187** hospitis hic primum monitus rediere Dymantis,
 
-**188** etEt V 2 SM, E V pavor et monstri subiit absentis imago,
+**188** et pavor et monstri subiit absentis imago,
 
 **189** atque oculos cuncti inter se tenuere silentes,
 
 **190** done sidereo Pollux interritus ore
 
-**191** 'te tamen, hac quicumque es' ait 'formidine, faxohac etiam V habet | ait Bon. 1, aut V | faxo Bon. 2, saxo V
+**191** 'te tamen, hac quicumque es' ait 'formidine, faxo
 
 **192** iam tua silva ferat, modo sint tibi sanguis et artus.'
 
 **193** omnibus idem animus forti decernere pugna,
 
-**194** exoptantque virum contraquecontraque SM 2, contra V occurrere poscunt.
+**194** exoptantque virum contraque occurrere poscunt.
 
-**195** qualiter ignotis spumantem funditus amnemamnem M, amem V
-
-**196** sen- tentiam mancam sic supplevit C taurus aquis, qui primus init, spernitque tumentem,
+**195** qualiter ignotis spumantem funditus amnem
 
 **197** pandit iter, mox omne pecus formidine pulsa
 
@@ -4915,7 +4913,7 @@ title: Argonautica
 
 **199** At procul e silvis sese gregibusque ferebat
 
-**200** saevos in antra gigans. quem necnec V, non C sua turba tuendo
+**200** saevos in antra gigans. quem nec sua turba tuendo
 
 **201** it taciti secura metus. mortalia nusquam
 
@@ -4927,31 +4925,31 @@ title: Argonautica
 
 **205** nec genus ante rogat, sed tali protonat ira:
 
-**206** 'incipite, oo XM 2, eo V iuvenes. etenim fiducia, credo,
+**206** 'incipite, o iuvenes. etenim fiducia, credo,
 
 **207** huc tulit auditas et sponte lacessitis oras.
 
-**208** sin errore viae necdum mens gnaragnara M 2 T 1, ignara V locorum,
+**208** sin errore viae necdum mens gnara locorum,
 
-**209** Neptuni domus haec, huc transposuit Schenkl domus haec Loehbach, domus adque V, haec domus atque Bur- mann egomet Neptunia proles.
+**209** Neptuni domus haec, egomet Neptunia proles.
 
-**210** hie mihi lex caestuscaestus CT, caestu V adversaque tollere contra
+**210** hie mihi lex caestus adversaque tollere contra
 
 **211** bracchia. sic ingens Asiae plaga quique per arcton
 
 **212** dexter et in laevum pontus iacet haec mea visit
 
-**213** hospitia; hoc cuncti remeant certamine reges.functi Burmann, sed hoc — certamine pro abla- tivo pretii est, certamen est pretium (λύτρον), quo se redimunt | reges SM, rege V
+**213** hospitia; hoc cuncti remeant certamine reges.
 
 **214** iam pridem caestus resides et frigida raris
 
-**215** dentibus aret humus. quisquis Heinsius, qui V mecum foedera iunget?
+**215** dentibus aret humus. quis mecum foedera iunget?
 
-**216** prima manu cui dona fero?feram Heinsius, sed cf. Langen ad V 285 mox omnibus idem
+**216** prima manu cui dona fero? mox omnibus idem
 
 **217** ibit honos. fuga sub terras, fuga nulla per auras.
 
-**218** nec lacrimae (ne ferteneferte V, nec forte XT preces) superive vocati
+**218** nec lacrimae (ne ferte preces) superive vocati
 
 **219** pectora nostra movent; aliis rex Iuppiter oris.
 
@@ -4961,25 +4959,25 @@ title: Argonautica
 
 **222** Talia dicta dabat, cum protinus asper Iason
 
-**223** et simul AeacidaeAeacidae Carrio, cf. V 573, aeacides V simul et Calydonis alumni
+**223** et simul Aeacidae simul et Calydonis alumni
 
 **224** Nelidesque Idasque prior quae maxima surgunt
 
 **225** nomina; sed nudo steterat iam pectore Pollux.
 
-**226** tumtum Thilo, Cum V pavor et gelidus defixit Castora sanguis.
+**226** tum pavor et gelidus defixit Castora sanguis.
 
 **227** nam nec ad Elei pugnam videt ora parentis,
 
 **228** nec sonat Oebalius caveae favor aut iuga nota
 
-**229** Taygeti, laviturlavitur Bon. 2, labitur V, capitur C patrios ubi victor ad amnes,
+**229** Taygeti, lavitur patrios ubi victor ad amnes,
 
 **230** nec pretium sonipes aut sacrae taurus harenae,
 
 **231** praemia sed manes reclusaque ianua leti.
 
-**232** illum Amycus nec fronte trucemtrucem Bon. 2, ducem V nec mole tremendum
+**232** illum Amycus nec fronte trucem nec mole tremendum
 
 **233** vixdum etiam primae spargentem signa iuventae
 
@@ -4989,7 +4987,7 @@ title: Argonautica
 
 **236** non aliter iam regna poli, iam capta Typhoeus
 
-**237** astra ferens Bacchum ante acies primamque deorumdeorum V 1 ut vid., M, deosum V
+**237** astra ferens Bacchum ante acies primamque deorum
 
 **238** pallada et oppositos doluit sibi virginis angues.
 
@@ -4997,35 +4995,35 @@ title: Argonautica
 
 **240** 'quisquis es, infelix celera puer; haut tibi pulchrae
 
-**241** manserit hoc ultra frontisfrontis X 2 M 2, fontis V decus orave matri
+**241** manserit hoc ultra frontis decus orave matri
 
-**242** nota feres. tune a sociis electusNota etiam V habet | tune a Thilo, tuneo V, tune e C | electus C, eluctus V iniquis?
+**242** nota feres. tune a sociis electus iniquis?
 
-**243** tuneTune X(?)M, Tunc V Amyci moriere manu?' nec plura moratus
+**243** tune Amyci moriere manu?' nec plura moratus
 
 **244** ingentes umeros spatiosaque pectoris ossa
 
 **245** protulit horrendosque toris informibus artus.
 
-**246** deficiunt visu Minyae,visu Minyae cod. Bon., T, uisum inse V miratur et ipse
+**246** deficiunt visu Minyae, miratur et ipse
 
 **247** Tyndarides; redit Alcidae iam sera cupido
 
-**248** et vocuo maestosuocuo V, uacuo M, sed cf. III 721 | maestos Koestlin, maesto V lustrarunt lumine montes.
+**248** et vocuo maestos lustrarunt lumine montes.
 
 **249** at satus aequoreo fatur tunc talia rege:
 
 **250** 'aspice et haec crudis durata volumina tauris;
 
-**251** nec petopeto Burmann, petae V sortis opem, sed quos potes indue caestus.'
+**251** nec peto sortis opem, sed quos potes indue caestus.'
 
-**252** Dixit et urgentis per seraper sera Baehrens, post sera V, pro sera Madvig piacula fati
+**252** Dixit et urgentis per sera piacula fati
 
 **253** nescius extremum hoc armis innectere palmas
 
 **254** dat famulis, dat et inde Lacon. odia aspera surgunt
 
-**255** ignotis prius atque incensa mente ferunturferuntur SM, feruruntus V
+**255** ignotis prius atque incensa mente feruntur
 
 **256** in medium sanguis Iovis et Neptunia proles.
 
@@ -5033,11 +5031,11 @@ title: Argonautica
 
 **258** et pater orantis caesorum Tartarus umbras
 
-**259** nube cava tandem ad meritae spectacula pugnaepoenae Wagner
+**259** nube cava tandem ad meritae spectacula pugnae
 
 **260** emittit; summi nigrescunt culmina montis.
 
-**261** continuo Bebryx, Maleae velut arce fragosaeuelut X 2, uolut V | fragosae Kr., fragosa V
+**261** continuo Bebryx, Maleae velut arce fragosae
 
 **262** turbo rapax, vix ora virum, vix tollere passus
 
@@ -5051,21 +5049,21 @@ title: Argonautica
 
 **267** semper et in digitis et summi pulvere campi,
 
-**268** proiectusque vocibus proiectus et effusus (304) notantur schemata pugnatorum pedem proferentium redit. spumanti qualis in alto
+**268** proiectusque redit. spumanti qualis in alto
 
-**269** Pliade capta ratis, trepiditrepidi M 2, trepida V quam sola magistri
+**269** Pliade capta ratis, trepidi quam sola magistri
 
-**270** cura tenet, rabidumrabidum Friesemann, rapidum V ventis certantibus aequor
+**270** cura tenet, rabidum ventis certantibus aequor
 
 **271** intemerata secat, Pollux sic providus ictus
 
-**272** servat et Oebalia dubium caput eripiterigit C arte.
+**272** servat et Oebalia dubium caput eripit arte.
 
 **273** ut deinde urgentes effudit nubibus iras
 
-**274** ardoremque viri, paulatim insurgere fessofesso codd. Pii, ferro VC
+**274** ardoremque viri, paulatim insurgere fesso
 
-**275** integerInteger CT, 1 Integet V et summos manibus deducere caestus.
+**275** integer et summos manibus deducere caestus.
 
 **276** ille dies aegros Amyci sudoribus artus
 
@@ -5075,21 +5073,21 @@ title: Argonautica
 
 **279** agmina. respirant ambo paulumque reponunt
 
-**280** bracchia, ceu Lapithas aut PaeonasPaeonas Iunt. 1, poenas V aequore in ipso
+**280** bracchia, ceu Lapithas aut Paeonas aequore in ipso
 
-**281** cumCum V, dum Carr. 2 refovet fixaque silet Gradivus in hasta.
+**281** cum refovet fixaque silet Gradivus in hasta.
 
-**282** vix steterant,steterant SM 2, sterant V et iam ecce ruunt inflictaque late
+**282** vix steterant, et iam ecce ruunt inflictaque late
 
 **283** terga sonant; nova vis iterum, nova corpora surgunt.
 
 **284** hunc pudor, hunc noto iam spes audentior hoste
 
-**285** instimulat.instimulat Iunt. 1, Instimulant V fumant crebro praecordia pulsu;
+**285** instimulat. fumant crebro praecordia pulsu;
 
 **286** avia responsant gemitu iuga: pervigil ut cum
 
-**287** artificum notat Aetna manusnotat Aetna manus Koestlin, notata manus V, notat ipse m. C, movet Aetna m. Heinsius et fulmina Cyclops
+**287** artificum notat Aetna manus et fulmina Cyclops
 
 **288** prosubigit, pulsis strepitant incudibus urbes.
 
@@ -5109,31 +5107,31 @@ title: Argonautica
 
 **296** saevit inops Amycus nullo discrimine sese
 
-**297** praecipitansPraecipitans M 2, Praecipitant V avidusque viri (respectat ovantes
+**297** praecipitans avidusque viri (respectat ovantes
 
-**298** quippe procul Minyas); tune caestu elatustum caestu elatus Baehrens, tune caestu uelatus V, tunc caestu latus Leo, caestuque elatus Heinsius utroque
+**298** quippe procul Minyas); tune caestu elatus utroque
 
-**299** inruit. hos inter Pollux subit et trucistrucis SM 2, trucis V ultro
+**299** inruit. hos inter Pollux subit et trucis ultro
 
-**300** advolat ora viri: nec spes effecta,effeta CM 2 T 1, cod. regius sed ambae
+**300** advolat ora viri: nec spes effecta, sed ambae
 
-**301** in pectusIn pectus M 2, Inspectus V cecidere manus. hoc saevior ille
+**301** in pectus cecidere manus. hoc saevior ille
 
 **302** ecce iterum vacuas agit inconsulta per auras
 
-**303** bracchia. sentit enimenim V, eum Ald., ubi Thilo Pollux rationis egentem...
+**303** bracchia. sentit enim Pollux rationis egentem...
 
-**304** dat genibus iunctis latus effusumque secutus iure Sud- haus offenditur asyndeto; me iudice talis vs. excidit Bebryca et insanos ludens vigil arte furores
+**304** dat genibus iunctis latus effusumque secutus
 
 **305** baud revocare gradum patitur, turbatque premitque
 
 **306** ancipitem crebros et liber congerit ictus
 
-**307** desuper averso; sonat omniomnis CT vulnere vertex
+**307** desuper averso; sonat omni vulnere vertex
 
-**308** inclinis ceditque malis.ceditque malis MC, ceciditque malis V iam tempora manant
+**308** inclinis ceditque malis. iam tempora manant
 
-**309** sanguineaequeSanguineaeque M, Sanguinaeque V latent aures, vitalia done
+**309** sanguineaeque latent aures, vitalia done
 
 **310** vincula, qua primo cervix committitur artu,
 
@@ -5149,7 +5147,7 @@ title: Argonautica
 
 **316** regis amor; montem celeres silvamque capessunt.
 
-**317** haec sors, haec Amycum tandem manus arcuit hic desinit S | arcuit Gronovius, arguit V ausis
+**317** haec sors, haec Amycum tandem manus arcuit ausis
 
 **318** effera servantem Ponti loca vimque iuventae
 
@@ -5159,7 +5157,7 @@ title: Argonautica
 
 **321** occupat, annosi veluti si decidat olim
 
-**322** pars Erycis vel totus Athos; qua mole iacentisqua mole iacentis suspecta videntur
+**322** pars Erycis vel totus Athos; qua mole iacentis
 
 **323** ipse etiam expleri victor nequit oraque longo
 
@@ -5167,7 +5165,7 @@ title: Argonautica
 
 **325** heroum densis certatim amplexibus urgent,
 
-**326** armaque ferre iuvat fessasquefessasque M, fessaque V attollere palmas.
+**326** armaque ferre iuvat fessasque attollere palmas.
 
 **327** 'salve vera Iovis, vera o Iovis' undique 'proles'
 
@@ -5187,15 +5185,15 @@ title: Argonautica
 
 **335** respiciensque ratem 'patriis' ait 'has precor oris,
 
-**336** diva, refer frondes cumque hac fretarefer Bon. 1, refers V | freta M, feta V curre corona.'
+**336** diva, refer frondes cumque hac freta curre corona.'
 
 **337** dixerat. hinc valida caedunt armenta bipenni
 
-**338** perfusiquePerfusique CT 1, Profusique V sacro placati gurgitis amne
+**338** perfusique sacro placati gurgitis amne
 
 **339** graminea sternuntur humo; tunc liba dapesque
 
-**340** frondibusFrondibus M, Frontibus V adcumulant; exsortia terga Laconi
+**340** frondibus adcumulant; exsortia terga Laconi
 
 **341** praecipiunt pecudum. toto mox tempore mensae
 
@@ -5207,7 +5205,7 @@ title: Argonautica
 
 **345** aequora, qua rigidos eructat Bosporos amnes.
 
-**346** illos, Nile, tuisNile tuis Bon. 2, nil et uos V nondum dea gentibus
+**346** illos, Nile, tuis nondum dea gentibus
 
 **347** transierat fluctus, unde haec data nomina ponto.
 
@@ -5219,7 +5217,7 @@ title: Argonautica
 
 **351** exilia intentisque canit: 'videre priores
 
-**352** saepe Iovem inin Heinsius, om. V terras Argivaque regna Pelasgum
+**352** saepe Iovem in terras Argivaque regna Pelasgum
 
 **353** virginis Iasiae blandos descendere ad ignes.
 
@@ -5229,23 +5227,23 @@ title: Argonautica
 
 **356** antraque deprensae tremuerunt conscia culpae.
 
-**357** tum trepida InachiaeTum T, Cum V | inachiae M inachaiae V paelex subit ora iuvencae
+**357** tum trepida Inachiae paelex subit ora iuvencae
 
 **358** sponte dei; plausu fovet hanc et pectora mulcet
 
-**359** Iuno renidentirenidenti M, reoidenti V cohibens suspiria vultu.
+**359** Iuno renidenti cohibens suspiria vultu.
 
 **360** mox ita adorta Iovem: "da quam modo ditibus Argis
 
 **361** campus alit primae referentem cornua Phoebes
 
-**362** indomitamque bovem, da caraecarae CM, caraxe V munera nuptae.
+**362** indomitamque bovem, da carae munera nuptae.
 
 **363** ipsa ego dilectae pecudi iam pascua digna
 
 **364** praecipuosque legam fontes." qua fraude negaret
 
-**365** aut quos inventus finxisset Iuppiter astus?inventus i. e. deprehensus | finxisset Peerlkamp, timuisset V, movisset Burmann (cfs. V 291 et Stat. Theb. XII 183) | aestus C
+**365** aut quos inventus finxisset Iuppiter astus?
 
 **366** muneris illa potens custodem protinus Argum
 
@@ -5263,7 +5261,7 @@ title: Argonautica
 
 **373** ultima tum patriae cedens dedit oscula ripae;
 
-**374** flevit Amymone, flerunt MesseidesMesseides Bon. 2, messonidaes, V messenides CT 1 undae,
+**374** flevit Amymone, flerunt Messeides undae,
 
 **375** flevit et effusis revocans Hyperia lacertis.
 
@@ -5273,7 +5271,7 @@ title: Argonautica
 
 **378** heu quotiens saxo posuit latus, aut ubi longa
 
-**379** aegra siti, quos ore lacus, quae pabula carpsit,crapsit V
+**379** aegra siti, quos ore lacus, quae pabula carpsit,
 
 **380** verbere candentes quotiens exhorruit armos.
 
@@ -5287,11 +5285,11 @@ title: Argonautica
 
 **385** imperiumque patris celerans Cyllcnius ales
 
-**386** advenit et leni modulatur carmen avenacarmen avena M, carmina uena V, carmina avena Baehrens
+**386** advenit et leni modulatur carmen avena
 
-**387** 'quo'que ait 'hinc diversus abis? heus respice cantus.'heus Burmann, heu V | cantus V, pastor Schenkl
+**387** 'quo'que ait 'hinc diversus abis? heus respice cantus.'
 
-**388** haud procul insectans Argum languentia languentia V, languentia somno C, l. cantu T, fort. virga (ramo) vel loto
+**388** haud procul insectans Argum languentia
 
 **389** lumina cuncta notat dulcesque sequentia somnos,
 
@@ -5299,15 +5297,15 @@ title: Argonautica
 
 **391** iamque refecta Iovi paulatim in imagine prisca
 
-**392** ibatIbat M, Ibant V agris Io victrix lunonis et ecce
+**392** ibat agris Io victrix lunonis et ecce
 
 **393** cum facibus spirisque et Tartareo ululatu
 
 **394** Tisiphonen videt: ac primo vestigia visu
 
-**395** figitFigit M 3, Fugit VC et in miserae rursus bovis ora recurrit,
+**395** figit et in miserae rursus bovis ora recurrit,
 
-**396** nec qua valle memor nec quo seualle M 2, uelle V | nec quo se T, quo se V, quo sese MC, cod. Bon., cod. Coki vertice sistat.
+**396** nec qua valle memor nec quo se vertice sistat.
 
 **397** Inachias errore etiam defertur ad undas
 
@@ -5317,19 +5315,19 @@ title: Argonautica
 
 **400** ergo iterum silvas, iterum petit invia retro
 
-**401** ceu Styga dilectumdilectum M, dilectam V fugiens caput; inde per urbes
+**401** ceu Styga dilectum fugiens caput; inde per urbes
 
-**402** raptaturRaptatur C Pius, Raptatus V Graias atque ardua flumina ripis,
+**402** raptatur Graias atque ardua flumina ripis,
 
 **403** oblato donec paulum cunctata profundo
 
-**404** incidit: absistunt fluctus et gnaragnara Bon. 1, ignara V futuri
+**404** incidit: absistunt fluctus et gnara futuri
 
-**405** dant pavidapauidae T alta viam; celsis procul ipsa refulget
+**405** dant pavida alta viam; celsis procul ipsa refulget
 
-**406** cornibus ac summa paleariapelearia V sustinet unda.
+**406** cornibus ac summa palearia sustinet unda.
 
-**407** ast ErebiAst herebi Bon. 1, Aetherebi V virgo ditem volat aethere Memphin
+**407** ast Erebi virgo ditem volat aethere Memphin
 
 **408** praecipere et Pharia venientem pellere terra.
 
@@ -5349,15 +5347,15 @@ title: Argonautica
 
 **416** atque ipsa imperium Iuno pavet. haec procul
 
-**417** spectat ab arce PhariSpectat Bon. 1, Spectabat V | Phari Carrio, om. V, poli T, Iovis Bury iam divis addita iamque
+**417** spectat ab arce Phari iam divis addita iamque
 
-**418** aspide cinctacincta M 2 T, cuncta V comas et ovanti persona sistro.
+**418** aspide cincta comas et ovanti persona sistro.
 
 **419** Bosporon hine veteres errantis nomine divae
 
-**420** vulgavere. iuvet nostrosnostros M 2, nostro V nunc ipsa labores
+**420** vulgavere. iuvet nostros nunc ipsa labores
 
-**421** immissisque ratem sua per freta provehat euris.'auris T
+**421** immissisque ratem sua per freta provehat euris.'
 
 **422** Dixerat, et placidi tendebant carbasa venti.
 
@@ -5367,11 +5365,11 @@ title: Argonautica
 
 **425** litora fatidici poenis horrentia Phinei,
 
-**426** dura deum summo quem sorsDura VC, Dira cod. Bon., T | summo quem sors Sudhaus, summoque suis V, summoque sui (surgebat) C, summoque lues Bon. 2, summo quem vis Lemaire urgebat in aevo.
+**426** dura deum summo quem sors urgebat in aevo.
 
 **427** quippe neque extorrem tantum nee lucis egentem
 
-**428** insuper Harpyiae Typhoides,Harpyiae Typhoides C b, H. Typhonides C a, Balbus, yphoides arpyiae V ira Tonantis,
+**428** insuper Harpyiae Typhoides, ira Tonantis,
 
 **429** depopulant ipsoque dapes praedantur ab ore.
 
@@ -5381,27 +5379,27 @@ title: Argonautica
 
 **432** quondam fata luem dederant Aquilone creatis.
 
-**433** ergo ubi iam Minyas certamque accedereaccedere M, accere V Phineus
+**433** ergo ubi iam Minyas certamque accedere Phineus
 
-**434** sentit opem, primas baculo defertur adad M, ab V undas
+**434** sentit opem, primas baculo defertur ad undas
 
 **435** vestigatque ratem atque oculos attollit inanes.
 
 **436** tune tenuem spirans animam 'salve o mihi longum
 
-**437** exspectata manus nostrisque' ait 'agnita votis.Expectata M, Expectat V | nostris- que M, nostrique V | uotis M, uobis V (ab utroque superioris b lit. partis latere punctum posuit V, t tamen non add.)
+**437** exspectata manus nostrisque' ait 'agnita votis.
 
-**438** novimus et divis geniti quibus et viauia M 2, nia V iussos
+**438** novimus et divis geniti quibus et via iussos
 
-**439** quae ferat ac cf. Aen. VI 690 vestri rebar sic tempora cursus
+**439** quae ferat ac vestri rebar sic tempora cursus
 
-**440** proxima quaeque legens,legens M, leges V quantum Vulcania Lemnos
+**440** proxima quaeque legens, quantum Vulcania Lemnos
 
 **441** traxerit, infelix tulerit quae Cyzicus arma.
 
-**442** sensi etSensi et M 2 in marg., Sentiet V Bebrycio supremam in litore pugnam
+**442** sensi et Bebrycio supremam in litore pugnam
 
-**443** iam propior iamque hoc animam solaminesolamine M 2, solamina V mulcens.
+**443** iam propior iamque hoc animam solamine mulcens.
 
 **444** non ego nunc, magno quod cretus Agenore Phineus,
 
@@ -5413,13 +5411,13 @@ title: Argonautica
 
 **448** amissas aut flere domos aut dulcia tempus
 
-**449** lumina; consuetis serumserum Gronovius, rerum V est ex ordine fatis
+**449** lumina; consuetis serum est ex ordine fatis
 
 **450** ingemere. Harpyiae semper mea pabula servant,
 
-**451** fallere quas nusquamnunquam C misero locus: ilicet omnes
+**451** fallere quas nusquam misero locus: ilicet omnes
 
-**452** deveniunt niger intorto ceu turbine nimbus,intorto V, in toto C | nimbus Bon. 1, nimbo VC
+**452** deveniunt niger intorto ceu turbine nimbus,
 
 **453** iamque alis procul et sonitu mihi nota Celaeno;
 
@@ -5429,23 +5427,23 @@ title: Argonautica
 
 **456** parque mihi monstrisque fames. sprevere quod omnes
 
-**457** pollueruntque manu quodque unguibus excidit atrismanus C | atris codd. Pii, cod. Harlesii, auris V, uncis M 2
+**457** pollueruntque manu quodque unguibus excidit atris
 
 **458** has mihi fert in luce moras. nec rumpere fata
 
 **459** morte licet; trahitur victu crudelis egestas.
 
-**460** sed vos oo servate Heinsius, obseruate V servate precor, praedicta deorum
+**460** sed vos o servate precor, praedicta deorum
 
 **461** si non falsa mihi, vos finem imponite poenis.
 
 **462** nempe adsunt, qui monstra fugent, Aquilonia proles
 
-**463** non externaexterna M 2, hesterna V mihi; nam rex ego divitis Hebri
+**463** non externa mihi; nam rex ego divitis Hebri
 
-**464** iunctaque vestra meo quondam Cleopatra cubili.'cubili M 2, cubile V
+**464** iunctaque vestra meo quondam Cleopatra cubili.'
 
-**465** Nomen ad Actaeaeacteae M, aeteae V Calais Zetesque sororis
+**465** Nomen ad Actaeae Calais Zetesque sororis
 
 **466** prosiliunt, Zetesque prior 'quem cernimus?' inquit.
 
@@ -5453,23 +5451,23 @@ title: Argonautica
 
 **468** tu Phoebi comes et nostro dilecte parenti?
 
-**469** o ubi nunc regni generisquegenerisque M, genenrisque V ubi gloria? quam te
+**469** o ubi nunc regni generisque ubi gloria? quam te
 
 **470** exedit labor et miseris festina senectus.
 
 **471** quin age, mitte preces; namque est tibi nostra voluntas,
 
-**472** si non ira deum vel si placabilis urget.'placabilis urget M, placibili surgit V
+**472** si non ira deum vel si placabilis urget.'
 
 **473** sustulit hic geminas Phineus ad sidera palmas
 
-**474** 'te'que ait, 'invisum quae nunc premis, irainvisum Kr., iniusti V, iniuste quae non Madvig | premis ira Bon. 2, praemisera V Tonantis,
+**474** 'te'que ait, 'invisum quae nunc premis, ira Tonantis,
 
 **475** ante precor, nostrae tandem iam parce senectae;
 
 **476** sit modus, et fore credo equidem; nam vestra voluntas
 
-**477** quid,quid Bal- bus, Quod V, haud Pius iuvenes, sine pace deum? nec credite culpam
+**477** quid, iuvenes, sine pace deum? nec credite culpam
 
 **478** saevitiae scelerumve mihi nunc crimina pendi:
 
@@ -5477,9 +5475,9 @@ title: Argonautica
 
 **480** consilia et terris subito ventura parabat
 
-**481** prodideramprodideram Bon. 2, Prodiderat V miserans hominum genus; hinc mihi tanta
+**481** prodideram miserans hominum genus; hinc mihi tanta
 
-**482** pestis et offusae mediaoffusae Gronovius, effusae V | mediae in media corr. V 1 inter dicta tenebrae.
+**482** pestis et offusae media inter dicta tenebrae.
 
 **483** iam tandem cessere irae, nec casus ab alto,
 
@@ -5493,7 +5491,7 @@ title: Argonautica
 
 **488** accipiunt circumque iacent; simul aequora servant,
 
-**489** astra simul, vescique iubent ac mittereac mittere Bon. 2, admittere V curas:
+**489** astra simul, vescique iubent ac mittere curas:
 
 **490** cum subitus misero tremor et pallentia primae
 
@@ -5501,15 +5499,15 @@ title: Argonautica
 
 **492** ante, sed in mediis dapibus videre volucres.
 
-**493** fragrat acerbus odor patriiqueFragrat acerbus Aid., Fraglata ceruus V | patriique M 2 T, patrique V exspirat Averni
+**493** fragrat acerbus odor patriique exspirat Averni
 
 **494** halitus; unum omnes incessere planctibus, unum
 
 **495** infestare manus; inhiat Cocytia nubes
 
-**496** luxuriansLuxorians V ipsoque ferens fastidia visu.
+**496** luxurians ipsoque ferens fastidia visu.
 
-**497** tum sola conluvie atque inlisisinlisis Mlaaserius, inlusis V stramina mensis
+**497** tum sola conluvie atque inlisis stramina mensis
 
 **498** foeda rigant; stridunt alae, praedaque retenta
 
@@ -5521,7 +5519,7 @@ title: Argonautica
 
 **502** cum clamore levat; genitor simul impulit alas.
 
-**503** hoste novo turbata lues, lapsaeque rapinaerapinae Pius, ruinae V
+**503** hoste novo turbata lues, lapsaeque rapinae
 
 **504** faucibus, et primum pavidae Phineia tecta
 
@@ -5533,17 +5531,17 @@ title: Argonautica
 
 **508** Hesperiae letalis apex — vixdum ignea montem
 
-**509** torsit hiems, iamque eoas cinis induitintuit V urbes:
+**509** torsit hiems, iamque eoas cinis induit urbes:
 
-**510** turbine sic rapidorapido C Bon. 2, rabido V populos atque aequora longe
+**510** turbine sic rapido populos atque aequora longe
 
-**511** transabeunt, nullaque datur considere terra.terra M 2 ut vid., terrae V
+**511** transabeunt, nullaque datur considere terra.
 
-**512** iamque et ad Ionii metas atque intimaultima Renkema, non recte tendunt
+**512** iamque et ad Ionii metas atque intima tendunt
 
-**513** saxa; vocatvocat Bon. 1, uocant V magni Strophadas nunc incola ponti.
+**513** saxa; vocat magni Strophadas nunc incola ponti.
 
-**514** hic fessae letique metu propiorislethique Bon. 1, loeti V | propioris etiam V anhelae
+**514** hic fessae letique metu propioris anhelae
 
 **515** dum trepidant humilique graves timidoque volatu
 
@@ -5563,21 +5561,21 @@ title: Argonautica
 
 **523** imperat; adgnoscunt monitus iussaeque recedunt.
 
-**524** mox tamen et vobis similis fuga, cum premet arquossimilis M 2 C, similes V | cum premet V, comprimet C | arquos Leo, argos VC, arcus vulgo
+**524** mox tamen et vobis similis fuga, cum premet arquos
 
-**525** letifer.Laetifera C Harpyiae numquam nova pabula quaerent,
+**525** letifer. Harpyiae numquam nova pabula quaerent,
 
 **526** done erunt divum meritae mortalibus irae.'
 
 **527** haesit uterque polo dubiisque elanguit alis;
 
-**528** mox abit et sociae victor petit agmina pubis.pubis Heinsius, pippis V
+**528** mox abit et sociae victor petit agmina pubis.
 
-**529** Interea Minyae pulsa luepulsa lue Bon. 1, pulsaue V prima Tonanti
+**529** Interea Minyae pulsa lue prima Tonanti
 
-**530** sacra novant; tum vinauina M, uena V toris epulasque reponunt.
+**530** sacra novant; tum vina toris epulasque reponunt.
 
-**531** ipse inter medios ceu dulcisceu Bon. 2, seu V | dulcis M 2, ducis V imagine somni
+**531** ipse inter medios ceu dulcis imagine somni
 
 **532** laetus ad oblitae Cereris suspirat honores;
 
@@ -5585,9 +5583,9 @@ title: Argonautica
 
 **534** et nova non pavidae miratur gaudia mensae.
 
-**535** hunc ubi reclinem stratis et pace fruentemfruentem M 2, furentem V
+**535** hunc ubi reclinem stratis et pace fruentem
 
-**536** aspicit ac longaeac longe M 2 T, alonge V ducentem oblivia poenae,
+**536** aspicit ac longae ducentem oblivia poenae,
 
 **537** talibus appellat supplexque ita fatur Iason:
 
@@ -5611,17 +5609,17 @@ title: Argonautica
 
 **547** ille ducem nec ferre preces nee dicere passus
 
-**548** amplius hic demum vittas laurumque capessitcapescit V
+**548** amplius hic demum vittas laurumque capessit
 
-**549** numina nota ciens.ciens M, ciens V (prior non abso- luta, sed incohata magis est) stupet Aesonis inclita proles
+**549** numina nota ciens. stupet Aesonis inclita proles
 
-**550** Phinea ceuceu Pius, ce V numquam poenis nullaque gravatum
+**550** Phinea ceu numquam poenis nullaque gravatum
 
-**551** peste Iovis: tam largus honos, tam miratam CT, iam V | tam mira C, tamira V senectae
+**551** peste Iovis: tam largus honos, tam mira senectae
 
 **552** maiestas infusa; vigor novus auxerat artus.
 
-**553** tum canit: 'o terras fama ventureventure Bon. 1, uentura V per omnes,
+**553** tum canit: 'o terras fama venture per omnes,
 
 **554** quem sociis ducibusque deis atque arte benigna
 
@@ -5639,13 +5637,13 @@ title: Argonautica
 
 **561** hinc iter ad Ponti caput errantesque per altum
 
-**562** Cyaneas. furor hishis Bon. 2, hic V medio concurrere ponto,
+**562** Cyaneas. furor his medio concurrere ponto,
 
-**563** necdum ullasullas Bon. 2, illas V videre rates: sua comminus actae
+**563** necdum ullas videre rates: sua comminus actae
 
-**564** saxa premunt cautesque suas. ceuceu Heinsius, cum V, tum Bon. 2 vincula mundi
+**564** saxa premunt cautesque suas. ceu vincula mundi
 
-**565** ima labent,labent Heinsius, labant V | equore Bon. 1, aequora V tremere ecce solum, tremere ipsa repente
+**565** ima labent, tremere ecce solum, tremere ipsa repente
 
 **566** tecta vides: illae redeunt, illae aequore certant.
 
@@ -5659,11 +5657,11 @@ title: Argonautica
 
 **571** et pater ipse maris pavidas detorquet habenas.
 
-**572** siqua brevis scopulis fieretfieret V, fuerit C mora, si semel orsis
+**572** siqua brevis scopulis fieret mora, si semel orsis
 
-**573** ulla quies, fuga tune medio sperandasperanda Sudhaus, peranda V, properanda M 2, patranda C recursu:
+**573** ulla quies, fuga tune medio speranda recursu:
 
-**574** vix repetunt primae celeresceleres Bon. 2, celeris V confinia terrae,
+**574** vix repetunt primae celeres confinia terrae,
 
 **575** iamque alio clamore ruont, omnisque tenetur
 
@@ -5675,7 +5673,7 @@ title: Argonautica
 
 **579** cum mihi Tartareas saevo clangore volucres
 
-**580** protulit ira Iovis, vox haec simul excidit auris:excidit auris Lachmann ad Lucr. V 608, excidit aures V, exciit (exiit C b) aures C, accidit aures Bulaeus
+**580** protulit ira Iovis, vox haec simul excidit auris:
 
 **581** "ne vanas impende preces finemque malorum
 
@@ -5685,13 +5683,13 @@ title: Argonautica
 
 **584** tune sperare modum poenae veniamque licebit."
 
-**585** sic deus. aut vobis ergo fera saxafera per saxa V, per del. M 2 patescunt
+**585** sic deus. aut vobis ergo fera saxa patescunt
 
 **586** aut mea iam saevae redeunt ad pabula Dirae.
 
 **587** verum inter medias dabitur si currere cautes
 
-**588** (certe dignacerte haec d. Burmann manus) vacuumque exibis in aequor,
+**588** (certe digna manus) vacuumque exibis in aequor,
 
 **589** proxima regna Lyci, remeat qui victor ab oris
 
@@ -5699,35 +5697,35 @@ title: Argonautica
 
 **591** mitior. hic lecto comitum de robore siquem
 
-**592** perculerit vicina lues, ne deficedefice Bon. 1, defece V casus
+**592** perculerit vicina lues, ne defice casus
 
-**593** praedicti memor atque animos accingeaccinge M, accingere V | futuris T 1, Bon. 2, futuros V futuris.
+**593** praedicti memor atque animos accinge futuris.
 
 **594** illic pestiferas subter iuga concava torquet
 
-**595** alterAter C aquas Acheron vastoque exundat hiatu
+**595** alter aquas Acheron vastoque exundat hiatu
 
-**596** fumeus et saeva sequitur ad sequitur cf. V 656 caligine campos.
+**596** fumeus et saeva sequitur caligine campos.
 
 **597** linque gravem fluvium et miseris sua fata colonis:
 
 **598** sic quoque non uno dabitur transcurrere luctu.
 
-**599** quid tibi nubifera surgentem rupe Carambin,carambī M 2, carambi V
+**599** quid tibi nubifera surgentem rupe Carambin,
 
-**600** quid memorem, quas Iris aquas autaut V, quas C torqueat Ancon?
+**600** quid memorem, quas Iris aquas aut torqueat Ancon?
 
-**601** proxima ThermodonThermodoon C M 2 T | hinc Madvig, hic V hinc iam secat arva, memento:
+**601** proxima Thermodon hinc iam secat arva, memento:
 
 **602** inclita Amazonidum magnoque exorta Gradivo
 
 **603** gens ibi; femineas nee tu nunc crede catervas,
 
-**604** sed qualis, sedsed Pius, et V quanta viris insultat Enyo
+**604** sed qualis, sed quanta viris insultat Enyo
 
 **605** divaque Gorgonei gestatrix innuba monstri.
 
-**606** ne tibi tunctunc Bon. 2, nunc V horrenda rapax ad litora puppem
+**606** ne tibi tunc horrenda rapax ad litora puppem
 
 **607** ventus agat, ludo volitans cum turma superbo
 
@@ -5735,7 +5733,7 @@ title: Argonautica
 
 **609** intremit et pugnas mota pater incitat basta.
 
-**610** non ita sit fort. non ita set, cf. VIII 318 metuenda tibi saevissima quamquam
+**610** non ita sit metuenda tibi saevissima quamquam
 
 **611** gens Chalybum, duris patiens cui cultus in arvis
 
@@ -5743,7 +5741,7 @@ title: Argonautica
 
 **613** inde omnem innumeri reges per litoris oram,
 
-**614** hospitii quis nulla fides; sed limitelimite Pomponius Laetus, limine V recto
+**614** hospitii quis nulla fides; sed limite recto
 
 **615** puppis et aequali transcurrat carbasus aura.
 
@@ -5759,11 +5757,11 @@ title: Argonautica
 
 **621** sed te non animis nec solis viribus aequom
 
-**622** credere; saepesaepe — acri potior prudentia dextra.
+**622** credere; saepe acri potior prudentia dextra.
 
-**623** quam tulerit deus, arripe opem.opem exihib. Par. iamque ultima nobis
+**623** quam tulerit deus, arripe opem. iamque ultima nobis
 
-**624** promere fata nefas; sileam,sileam Loehbach, sileo V, sileo et C precor.' atque ita facto
+**624** promere fata nefas; sileam, precor.' atque ita facto
 
 **625** fine dedit tacitis iterum responsa tenebris.
 
@@ -5775,37 +5773,37 @@ title: Argonautica
 
 **629** prosequitur Phincus. 'quaenam tibi praemia' dixit,
 
-**630** 'quas, decus o Boreae, possempossim Heinsius persolvere grates?
+**630** 'quas, decus o Boreae, possem persolvere grates?
 
 **631** me Pangaea super rursus iuga meque paterna
 
 **632** stare Tyro dulcesque iterum mihi surgere soles
 
-**633** nunc reor. exactae (verumne?uerumne V, nam uere C; distinxit O. Seyffert ) abiere volucres,
+**633** nunc reor. exactae (verumne?) abiere volucres,
 
 **634** nec metuam, tutaeque dapes? date tangere vultus,
 
-**635** dem sinitedem sinite Heinsius, Desinite V amplexus, propiusque accedite dextrae.'
+**635** dem sinite amplexus, propiusque accedite dextrae.'
 
 **636** dixerat. abscedunt terris et litora condunt.
 
 **637** Omnibus extemplo saeva sub imagine rupes
 
-**638** Cyaneae propiorquepropiorque M 2, propior V labor. quando adfore quaque
+**638** Cyaneae propiorque labor. quando adfore quaque
 
 **639** parte putent? stant ora metu nec fessa recedunt
 
 **640** Iumina diversas circum servantibus undas,
 
-**641** cum procul auditiauditi Maserius, auditis V, auditur C, auditus M T, cod. Bon. sonitus insanaque saxa,
+**641** cum procul auditi sonitus insanaque saxa,
 
 **642** saxa neque illa viris sed praecipitata profundo
 
-**643** siderei pars visa poli. dumque ocius instant,instant T, instat V
+**643** siderei pars visa poli. dumque ocius instant,
 
 **644** ferre fugam maria ante ratem, maria ipsa repente
 
-**645** deficeredeficere Burmann, Defigere V, Diffugere C | discedere Sabellicus, descendere V adversosque vident discedere montes,
+**645** deficere adversosque vident discedere montes,
 
 **646** omnibus et gelida rapti formidine remi.
 
@@ -5817,7 +5815,7 @@ title: Argonautica
 
 **650** ingentesque minae, mecum quibus ista secuti?
 
-**651** idem Amyci certe viso timor omnibus antro, excidit vs. huius fere sententiae: idem animos pelago Zephyris certantibus horror
+**651** idem Amyci certe viso timor omnibus antro,
 
 **652** perculerat; stetimus tamen et deus adfuit ausis.
 
@@ -5861,15 +5859,15 @@ title: Argonautica
 
 **672** cesserat, illa volans tenui per concita saxa
 
-**673** luce fugit; rediererediere Bon. 2 (cf. Stat. Theb. V 4), cecidere VC viris animique manusque,
+**673** luce fugit; rediere viris animique manusque,
 
 **674** ut videre viam: 'sequor, o quicumque deorum'
 
-**675** Aesonides 'vel fallis'uel fallis M 2 T 1, cod. regius, uel fallit V, uel fallor C, adfulsit dubitanter Sudhaus cfs. Stat. Theb. V 286 sq. ait, praecepsque fragores
+**675** Aesonides 'vel fallis' ait, praecepsque fragores
 
-**676** per medios ruit et fumofumo C, fuso V se condidit atro.
+**676** per medios ruit et fumo se condidit atro.
 
-**677** coeperat hinc cedenshinc cedens Heinsius, incendens V, incedens C, fort. abductis succedens | abductis Iunt. 1, adductis V abductis montibus unda
+**677** coeperat hinc cedens abductis montibus unda
 
 **678** ferre ratem pelagoque dies occurrere aperto.
 
@@ -5879,7 +5877,7 @@ title: Argonautica
 
 **681** Cyaneae. premit umbra ratem, scopulique feruntur
 
-**682** comminus. hic IunoIuno Bon. 1, om. V praecepsque ex aethere Pallas
+**682** comminus. hic Iuno praecepsque ex aethere Pallas
 
 **683** insiliunt pariter scopulos: hunc nata coercet,
 
@@ -5887,7 +5885,7 @@ title: Argonautica
 
 **685** sub iuga et invito detorquet in ilia cornu.
 
-**686** inde, velut mixtis Vulcanius ardor harenis cf. Sen. nat. quaest. II 26, 4, II 30
+**686** inde, velut mixtis Vulcanius ardor harenis
 
 **687** verset aquas, sic ima fremunt, fluctuque coacto
 
@@ -5895,23 +5893,23 @@ title: Argonautica
 
 **689** contra omnes validis tenui discrimine remis
 
-**690** pergere iter mediosque ratem transferre per ictus;ictus Bon l, ictos V
+**690** pergere iter mediosque ratem transferre per ictus;
 
-**691** saxaSaxa M, Secxa V sed extremis tamen increpuere corymbis,
+**691** saxa sed extremis tamen increpuere corymbis,
 
 **692** parsque (nefas) deprensa iugis; nam cetera caelo
 
 **693** debita. conclamant Minyae, latera utraque quippe
 
-**694** dissiluisseDisiluisse V putant. fugit ipse novissimus ictus
+**694** dissiluisse putant. fugit ipse novissimus ictus
 
-**695** Tiphys et ee Bon. 1, om. V in codd. Bon, et Burmanni mediis sequitur freta rapta ruinis;
+**695** Tiphys et e mediis sequitur freta rapta ruinis;
 
 **696** nec prius obsessum scopulis respexit ad aequor
 
 **697** aut sociis temptata quies, nigrantia quam iam
 
-**698** litora longinquique exirent flumina Rhebae.Rhebae Bon. 2, phoebi V, Rhebi C
+**698** litora longinquique exirent flumina Rhebae.
 
 **699** tunc fessas posuere manus, tunc arida anheli
 
@@ -5919,7 +5917,7 @@ title: Argonautica
 
 **701** Alcides Theseusque comes pallentia iungunt
 
-**702** oscula, vix primisprimas — oras cod. regius, T 1 amplexi luminis oris.
+**702** oscula, vix primis amplexi luminis oris.
 
 **703** Nec vero ipse metus curasque resolvere ductor,
 
@@ -5931,47 +5929,47 @@ title: Argonautica
 
 **707** unde per hos iterum montes fuga?' talia fundit,
 
-**708** imperio fixosfixos Bon. 2, fixus V Iovis aeternumque revinctos
+**708** imperio fixos Iovis aeternumque revinctos
 
-**709** nescius. idid Heinsius, et V, haec Baehrens | manebat T, manebat V 1 fati certa nam lege manebat,
+**709** nescius. id fati certa nam lege manebat,
 
 **710** siqua per hos undis umquam ratis isset apertis.
 
 **711** Tum freta, quae longis fuerant impervia saeclis,
 
-**712** ad subitam stupuere ratem,stupuere ratem M, stuperatem V Pontique iacentis
+**712** ad subitam stupuere ratem, Pontique iacentis
 
 **713** omen solum regesque patent gentesque repostae.
 
 **714** non alibi effusis cesserunt longius undis
 
-**715** litora, nec tantas quavisquavis Kr. et Vollmer, quamvis V (sed quau librarium scribere coepisse ex m lit. forma apparet), iunctus Thilo Tyrrhenus et Aegon
+**715** litora, nec tantas quavis Tyrrhenus et Aegon
 
 **716** volvat aquas, geminis et desint Syrtibus undae.
 
 **717** nam super huc vastos tellus quoque congerit amnes.
 
-**718** nonNon V, num Slothouwer, sed cf. IV 444 sq. septemgemini memorem quas exitus Histri,
+**718** non septemgemini memorem quas exitus Histri,
 
-**719** quas Tanais flavusqueflavusque Bon. 1, fluusque V Tyres Maserius e cod. quodam, lyces V | nouasque V (fluvius ignotus, cf. VI 100), Melasque C Tyres Hypanisque Novasque
+**719** quas Tanais flavusque Tyres Hypanisque Novasque
 
 **720** addat opes, quantosque sinus Maeotia laxent
 
-**721** aequora. flumineo sic agmine fregitfregit T, regit V amari
+**721** aequora. flumineo sic agmine fregit amari
 
-**722** vim salis hinc Boreae cedens glaciantibusglacialibus CT 1 auris
+**722** vim salis hinc Boreae cedens glaciantibus auris
 
 **723** Pontus et exorta facilis concrescere bruma.
 
-**724** utque vel immotos ursae rigor invenitinuenit codd. Pii, inueniat V amnes
+**724** utque vel immotos ursae rigor invenit amnes
 
 **725** vel freta versa vadis, hiemem sic unda per omnem
 
-**726** aut campo iacet aut tumido rigetrigat C ardua fluctu,
+**726** aut campo iacet aut tumido riget ardua fluctu,
 
-**727** atque hac Europam curvis anfractibus urget,urguet Heinsius, anguet V, angit M 2 T 2, auget C
+**727** atque hac Europam curvis anfractibus urget,
 
-**728** hachac Iunt, 1 Huc V Asiam Scytbicum specie sinuatus in arcum.
+**728** hac Asiam Scytbicum specie sinuatus in arcum.
 
 **729** illic umbrosae semper stant aequore nubes
 
@@ -5999,11 +5997,11 @@ title: Argonautica
 
 **741** 'haud temere est: fato divum reor ad mea vectos
 
-**742** litora vos, odium quibus atque eadem iraeadem ira C, Sabellicus, adea mira V furentis
+**742** litora vos, odium quibus atque eadem ira furentis
 
 **743** Bebryciae saevaque pares de gente triumphi.
 
-**744** certa fides animis, idem quibus incidit hostis. habet Par.
+**744** certa fides animis, idem quibus incidit hostis.
 
 **745** nos quoque, nos Amycum, tanto procul orbe remoti,
 
@@ -6017,13 +6015,13 @@ title: Argonautica
 
 **750** vidimus aequoreo similem per litora monstro.
 
-**751** nec vero praeceptapraecepta etiam V exhibet, praerepta Bon. 1, vulgo mihi suprema tyranni
+**751** nec vero praecepta mihi suprema tyranni
 
 **752** fata queror bellove magis laetarer et armis
 
-**753** procubuisse meis, quam lege quod occidit ultusultus M 2 C, uultus V
+**753** procubuisse meis, quam lege quod occidit ultus
 
-**754** ipse sua meritoque madent quod sanguinesanguine M, g..guine V (duarum litt. spatio relicto) caestus.'
+**754** ipse sua meritoque madent quod sanguine caestus.'
 
 **755** excipit Aesonides 'tuus ergo in montibus ignis
 
@@ -6031,7 +6029,7 @@ title: Argonautica
 
 **757** fatur, et ostentans prolem Iovis 'hic tibi Pollux
 
-**758** en' ait, 'inviso solvit cuiinvito Schenkl | cui Iunt. 1, qui V pectore poenas.'
+**758** en' ait, 'inviso solvit cui pectore poenas.'
 
 **759** ille virum circa mirantia Iumina volvit.
 
@@ -6039,7 +6037,7 @@ title: Argonautica
 
 **761** communesque vocant superos, quorum eruta nutu
 
-**762** Bebrycia, et votis pariter praedaquepraedaque Bon. 1 praeda V fruuntur.
+**762** Bebrycia, et votis pariter praedaque fruuntur.
 
 **1** Altera lux haud laeta viris emersit Olympo:
 
@@ -6049,9 +6047,9 @@ title: Argonautica
 
 **4** at memor Aesonides nimium iam vera locuti
 
-**5** Phincos hinc alios raptorapto M 2, rapta V pavet Idmone luctus.
+**5** Phincos hinc alios rapto pavet Idmone luctus.
 
-**6** tuncTun V comiti pia iusta tulit caelataque multa
+**6** tunc comiti pia iusta tulit caelataque multa
 
 **7** arte Dolionii donat velamina regis,
 
@@ -6061,17 +6059,17 @@ title: Argonautica
 
 **10** pars silvis portantque arae, pars auguris alba
 
-**11** fronde caputcaput Bon. 1 om. V, possis etiam comas (cf. Stat. Ach. I 289) vittisque ligant, positumque feretro
+**11** fronde caput vittisque ligant, positumque feretro
 
 **12** congemuere; dies simul et suns admonet omnes.
 
 **13** Ecce inter lacrimas interque extrema virorum
 
-**14** munera, quem cursus penes imperiumque carinae,carinae M 2, carina V
+**14** munera, quem cursus penes imperiumque carinae,
 
 **15** Tiphyn agit violenta lues, cunctique pavore
 
-**16** attoniti fundunt maestas ad sideraad sidera M, asidera V voces:
+**16** attoniti fundunt maestas ad sidera voces:
 
 **17** 'arquipotens adverte, precor, nunc denique Apollo;
 
@@ -6089,7 +6087,7 @@ title: Argonautica
 
 **24** duret ut invalidis et adhuc genitoris egenis,
 
-**25** haut aliter socii supremo in temporetempore V, funere C Tiphyn
+**25** haut aliter socii supremo in tempore Tiphyn
 
 **26** ante alios superesse volunt. mors frigida contra
 
@@ -6109,21 +6107,21 @@ title: Argonautica
 
 **34** visa ratis medioque viros deponere ponto.
 
-**35** non tulit AesonidesAesonides Bon. 2, aesonidus V, aesonius MT, codd. Bon. et Burmanni | fraglantia V geminis flagrantia cernens
+**35** non tulit Aesonides geminis flagrantia cernens
 
 **36** corpora cara rogis, sed pectore ductor ab imo
 
-**37** talia voceuoce M, uoces V gemit: 'quid tantum infensa repente
+**37** talia voce gemit: 'quid tantum infensa repente
 
 **38** numina? quas nostri poenas meruere labores?
 
-**39** bina (nefas) tutotuto Sabellicus, toto VC | surgunt M 2 T, surgent V pariter mihi funera surgunt
+**39** bina (nefas) tuto pariter mihi funera surgunt
 
 **40** litore. magna adeo comitum numerosaque pubes?
 
-**41** aut socios rapit atra dies aut ipse relinquorelinquor CT
+**41** aut socios rapit atra dies aut ipse relinquo
 
-**42** sontibus impulsus Furiis. ubi Tiphys?funis subit iphys V ubi Idmon
+**42** sontibus impulsus Furiis. ubi Tiphys? ubi Idmon
 
 **43** fata canens? ubi monstriferae par ille novercae?
 
@@ -6133,35 +6131,35 @@ title: Argonautica
 
 **46** Pleiadumque globos et agentes noctibus Arctos?
 
-**47** cui Minyas caramque ratem, cuiCui M, Cy V sidera tradis?
+**47** cui Minyas caramque ratem, cui sidera tradis?
 
 **48** carpere securas quis iam iubet Aesona noctes?
 
 **49** hoc labor, hoc dulci totiens fraudata sopore
 
-**50** lumina et admotis nimium mens anxia Colchisadmotis — Colchis Gronovius, cf. IV 544 sq., adtonitis — colchis V, adtonitis — curis Balbus
+**50** lumina et admotis nimium mens anxia Colchis
 
-**51** profuit? heu quantum Phasis, quantum AeaAea cod. regius, aeta VC recessit.
+**51** profuit? heu quantum Phasis, quantum Aea recessit.
 
-**52** nunc quoque, si tenui superantsuperant M 2, superat V in imagine curae,
+**52** nunc quoque, si tenui superant in imagine curae,
 
-**53** adsis umbra, precor, venturi praesciaprescia Bon. 1, praesagia V caeli
+**53** adsis umbra, precor, venturi praescia caeli
 
 **54** rectoremque tuae moneas ratis.' haec ubi fatus,
 
-**55** sola virum flammis vidit labentibuslambentibus C ossa.
+**55** sola virum flammis vidit labentibus ossa.
 
-**56** 'quod tamen externisexternis MCT, extermis V, extremis Pius unum solamen in oris
+**56** 'quod tamen externis unum solamen in oris
 
 **57** restat' ait, 'caras humus haec non dividat umbras
 
-**58** ossaque nec tumulo nec separese pare M, sapere V contegat urna,
+**58** ossaque nec tumulo nec separe contegat urna,
 
 **59** sed simul, ut iunctis venistis in aequora fatis.'
 
 **60** haud mora: reliquias socii defletaque miscent
 
-**61** nomina; tum vivo frondens efrondens e Heinsius, frondes et V caespite tellus
+**61** nomina; tum vivo frondens e caespite tellus
 
 **62** aggeritur, cineremque Lyco conmmendat Iason.
 
@@ -6173,51 +6171,51 @@ title: Argonautica
 
 **66** quercus, et ad tonsas victi rediere magistri.
 
-**67** ac velut ille gregisuelut ille gregis C, ueluti grecis V, cf. Aen. X 707, XI 809 cessit cui regia taurus
+**67** ac velut ille gregis cessit cui regia taurus
 
-**68** fertur ovans, omnis honos, huncouans hunc M, ouans hinc V | in unum M, intimum V omnis in unum
+**68** fertur ovans, omnis honos, hunc omnis in unum
 
-**69** transit amor: primo laetus siclaetus sic M 2, laetu sic V, laetos sic C tempore rector
+**69** transit amor: primo laetus sic tempore rector
 
 **70** ingreditur cursus; etenim dat candida certam
 
-**71** nox Helicen. iam proraiam prora M 2 C, nam prora V fretum commoverat et iam
+**71** nox Helicen. iam prora fretum commoverat et iam
 
-**72** puppe sedens dimiseratsedens dimiserat V, diras inseruit Loehbach optime, saevas Schenkl, summa Leo, sedens tristes diuiserat C (e v. 73) ancora terras.
+**72** puppe sedens dimiserat ancora terras.
 
 **73** Inde premente noto tristes Acherusidos oras
 
 **74** praeterit et festa vulgatum nocte Lyaei
 
-**75** Callichoron;Callichoron Bon. 2, Callirhoan V, Callirhoen CM 2 | his M, cod. Burmanni, hic V | in Pius, ut V nec vana fides: his Bacchus in undis
+**75** Callichoron; nec vana fides: his Bacchus in undis
 
 **76** abluit eoo rorantes sanguine thyrsos.
 
 **77** ilium post acies rubrique novissima claustra
 
-**78** aequorisAequoris M 2, Aequores V hic resides thiasos, hic aera moventem
+**78** aequoris hic resides thiasos, hic aera moventem
 
 **79** udaque pampinea nectentem cornua vitta
 
-**80** nunc etiam meministis, aquae, Boeotiabooetia V, boetia C qualem
+**80** nunc etiam meministis, aquae, Boeotia qualem
 
 **81** Thyias et infelix cuperet vidisse Cithaeron.
 
 **82** Fama per extremos quin iam volat improba manes
 
-**83** interea et magnis natorum laudibus implet in textu om. C et marg. add. | fatorum C | excidit vs. huius fere sententiae inferna qui sede latent, rate pervia Ponti; T, cod. regius, cod. Pom- ponii Laeti hunc vs. exhibent: venturam caelo fatis melioribus Argo
+**83** interea et magnis natorum laudibus implet
 
-**84** addita iamqueAddita iamque T 1 Bon. 1, Additamque V, Addictasque C | iamque T Bon. 2, namque V, quaque C | patentes marg. Venetae exemplaris Vaticani adscriptum, pharentes V, ferentes C fretis repetens freta iamque patentes
+**84** addita iamque fretis repetens freta iamque patentes
 
 **85** Cyaneas. ardent avidos attollere vultus,
 
 **86** quos pietas vel tangit adhuc quos aemula virtus.
 
-**87** fata immota manent; unum, qui litorelitore M, liotore V in illo
+**87** fata immota manent; unum, qui litore in illo
 
 **88** conditus, ad carae mittunt spectacula turbae.
 
-**89** it Sthenelus.It ythenelus V qualem Mavortia vidit Amazon
+**89** it Sthenelus. qualem Mavortia vidit Amazon
 
 **90** cumque suis comitem Alcides ut condidit armis,
 
@@ -6225,11 +6223,11 @@ title: Argonautica
 
 **92** emicuit; fulsere undae, sol magnus ut orbem
 
-**93** tolleret aut nubem quateretquateret Bon. 1 quater V | cauixdum V polus. atque ea vixdum
+**93** tolleret aut nubem quateret polus. atque ea vixdum
 
-**94** visa viris atra nox protinus abstulitattulit C | umbra Heinsius, umbram V umbra.
+**94** visa viris atra nox protinus abstulit umbra.
 
-**95** ille dolens altum repetit chaos. ominaomina C Ald., omnia VM Mopsus
+**95** ille dolens altum repetit chaos. omina Mopsus
 
 **96** dum stupet, in prima tumulum procul aspicit acta,
 
@@ -6237,23 +6235,23 @@ title: Argonautica
 
 **98** carmina quin etiam visos placantia manes
 
-**99** Odrysius duxdux V, dum C rite movet mixtoque sonantem
+**99** Odrysius dux rite movet mixtoque sonantem
 
-**100** percutit orePercutit ore T, Perclytore V lyram nomenque relinquit harenis.
+**100** percutit ore lyram nomenque relinquit harenis.
 
-**101** Altius hinchinc cod. regius, T 1, in V ventos recipit ratis, ac fugit omne
+**101** Altius hinc ventos recipit ratis, ac fugit omne
 
-**102** CrobialiCrobiali Bon. 2, Cobilli V, Cobylli MC latus et fatis tibi, Tiphy, negatum
+**102** Crobiali latus et fatis tibi, Tiphy, negatum
 
 **103** Parthenium, ante alios Triviae qui creditur amnis
 
-**104** fidus et InopiInopi Hermolaus Barbarus, inopia V, Enopiae C materna gratior unda.
+**104** fidus et Inopi materna gratior unda.
 
-**105** mox etiam CromnaeCromnae Heinsius, cromanae VC | pallentemque C M 2 T, cod. Burmanni, pallentem V | Cytoron T Bon 2 citheron V, Cytheram C iuga pallentemque Cytoron
+**105** mox etiam Cromnae iuga pallentemque Cytoron
 
 **106** teque cita penitus condunt, Erythia, carina.
 
-**107** iamque reducebat noctem polus: altaalta M, alca V Carambis
+**107** iamque reducebat noctem polus: alta Carambis
 
 **108** raditur et magnae pelago tremit umbra Sinopes.
 
@@ -6263,15 +6261,15 @@ title: Argonautica
 
 **111** caelicolis immota procis: deceptus amatae
 
-**112** fraude deae nec solus Halyshalys V, Hylas C nec solus Apollo.
+**112** fraude deae nec solus Halys nec solus Apollo.
 
 **113** Addidit hic casu comites Fortuna benigno
 
-**114** AutolycumAutolycum Pius, Aut holitum V, Autolitum C | Phlogiumque T 2, Bon. 2, phogiumque VC | Deileonta Bon. 2, deiolenta VC | secutos >M 2, secutus V Phlogiumque et Deileonta, secutos
+**114** Autolycum Phlogiumque et Deileonta, secutos
 
 **115** Herculis arma viros; vagus hos ibi fixerat error.
 
-**116** ut Graiam videre manum puppemque Pelasgum,Pelasgam Bon. 1
+**116** ut Graiam videre manum puppemque Pelasgum,
 
 **117** prima ruunt celeres ad litora seque precantur
 
@@ -6279,9 +6277,9 @@ title: Argonautica
 
 **119** nomina desertos et iam sibi currere remos.
 
-**120** transit Halyshalys M 2, halyx V | amfractibus M, autfractibus V longisque fluens anfractibus Iris
+**120** transit Halys longisque fluens anfractibus Iris
 
-**121** saevaque Thermodonthermodoon V | murmura M 2, murmure V medio sale murmura volvens,
+**121** saevaque Thermodon medio sale murmura volvens,
 
 **122** Gradivo sacer et spoliis ditissimus amnis,
 
@@ -6289,7 +6287,7 @@ title: Argonautica
 
 **124** cum redit ingenti per Caspia claustra triumpho
 
-**125** MassagetenMassageten C Pius, Messageton V | medumque M 2 T 1 mediumque V Medumque trahens. est vera propago
+**125** Massageten Medumque trahens. est vera propago
 
 **126** sanguinis, est ollis genitor deus. hinc magis alta
 
@@ -6303,13 +6301,13 @@ title: Argonautica
 
 **131** interea memorate manus.' sic fatus et aegro
 
-**132** corde silens audit cursuscursus doctus quidam apud Harlesium, currus V bellique labores
+**132** corde silens audit cursus bellique labores
 
 **133** virginei, exciderit frenis quae prima remissis,
 
-**134** semianimem patrius quam sanguine vexerit amnisquam sanguine uexerit amnis V, quam uexerit amnis in aequor C
+**134** semianimem patrius quam sanguine vexerit amnis
 
-**135** quae pelta latus atque umeroshumeros M 2 T umeris V nudata pharetris
+**135** quae pelta latus atque umeros nudata pharetris
 
 **136** fugerit Herculeae mox vulnere prensa sagittae,
 
@@ -6323,7 +6321,7 @@ title: Argonautica
 
 **141** pervigil auditur Chalybum labor: arma fatigant
 
-**142** ruricolae, Gradive, tui; sonatsonat M 2, isonat V illa creatrix
+**142** ruricolae, Gradive, tui; sonat illa creatrix
 
 **143** prima manus belli terras crudelis in omnes.
 
@@ -6333,7 +6331,7 @@ title: Argonautica
 
 **146** errabant Iraeque inopes et segnis Erinys.
 
-**147** inde Genetaei rupem Iovis, hincIndigena etaerupem iouis hinc tibi mauors V, corr. Politianus, Inde Genetaei rupes Iouis inde Tymauos (Tymanos C b) C Tibarenum
+**147** inde Genetaei rupem Iovis, hinc Tibarenum
 
 **148** dant virides post terga lacus, ubi deside mitra
 
@@ -6341,9 +6339,9 @@ title: Argonautica
 
 **150** vos quoque non notae mirati vela carinae
 
-**151** Mossynoeci, et vosMossynoeci et vos Kr. Moossonychi (Moss. MC) uos et VC,vos Mossynoeci et Leo, Mossyni vos et vulgo | magrones VC stabulis Macrones ab altis
+**151** Mossynoeci, et vos stabulis Macrones ab altis
 
-**152** ByzeresqueBytheresque C | Philyreiaque C vagi Philyraeque a nomine dicta
+**152** Byzeresque vagi Philyraeque a nomine dicta
 
 **153** litora, quae cornu pepulit Saturnus equino.
 
@@ -6351,7 +6349,7 @@ title: Argonautica
 
 **155** cernitur, in gelidas consurgens Caucasus arctos.
 
-**156** ille etiam Alciden Titaniatitania M, itania V fata morantem
+**156** ille etiam Alciden Titania fata morantem
 
 **157** attulerat tum forte dies; iamque aspera nisu
 
@@ -6375,13 +6373,13 @@ title: Argonautica
 
 **167** aequore Cyaneas Minyae timuere relictas.
 
-**168** tum gemitu propiore chalybs densusque revulsisrevulsis cod. Bon., peruulsis V
+**168** tum gemitu propiore chalybs densusque revulsis
 
 **169** rupibus audiri montis labor et grave Titan
 
 **170** vociferans, fixos scopulis dum vellitur artus.
 
-**171** contra autem ignari (quis enim nuncnunc vulgo, non V credat in illis
+**171** contra autem ignari (quis enim nunc credat in illis
 
 **172** montibus Alciden dimissave vota retemptet?)
 
@@ -6391,7 +6389,7 @@ title: Argonautica
 
 **175** et simul ingentem moribundae desuper umbram
 
-**176** alitis atque atris rorantes imbribusimbridus V auras.
+**176** alitis atque atris rorantes imbribus auras.
 
 **177** Sol propius flammabat aquas, extremaque fessis
 
@@ -6401,19 +6399,19 @@ title: Argonautica
 
 **180** ore ruit. cuncti pariter loca debita noscunt
 
-**181** signaque commemorant emensasqueemensasque M 2, e mensas quo V ordine gentes
+**181** signaque commemorant emensasque ordine gentes
 
 **182** dantque ratem fluvio. simul aethere plena corusco
 
 **183** Pallas et alipedum Iuno iuga sistit equorum.
 
-**184** Ac dumAc dum M, Actum V prima gravi ductor subit ostia pulsu,
+**184** Ac dum prima gravi ductor subit ostia pulsu,
 
 **185** populeos flexus tumulumque virentia supra
 
 **186** flumina cognati medio videt aggere Phrixi,
 
-**187** quem comes infelix ParioPario Maserius paruo V, paruo C de marmore iuxta
+**187** quem comes infelix Pario de marmore iuxta
 
 **188** stat soror, hinc saevae formidine maesta novercae,
 
@@ -6427,25 +6425,25 @@ title: Argonautica
 
 **193** rite ferens umbram vocat et sic fatur ad aras:
 
-**194** 'per genus atque pares tecum mihi, Phrixe,phrixe M, phire V | laboris V labores
+**194** 'per genus atque pares tecum mihi, Phrixe, labores
 
-**195** tu, precor, orsaorsa Bon. 2, ossa V regas meque his tuteris in oris
+**195** tu, precor, orsa regas meque his tuteris in oris
 
-**196** tot freta, tot durae properantia sidera brumaeproperantia s. brumae Sudhaus, properanti s. passum V, properantia s. passis C
+**196** tot freta, tot durae properantia sidera brumae
 
-**197** passum.passum Sudhaus huc transtulit e v. 196, Phrixe f. et p. r. t. V lacuna non significata, placidus post patrias inseruit C Phrixe, fave et patrias reminiscere terras.
+**197** passum. Phrixe, fave et patrias reminiscere terras.
 
 **198** tu quoque nunc, tumulo nequiquam condita inani,
 
 **199** adnue diva maris numeroque accede tuorum.
 
-**200** quando egomet rursus per te vehar?per te uehar C, perteue ara V, ego te r. praetervehar Pius aurea quando
+**200** quando egomet rursus per te vehar? aurea quando
 
 **201** Seston et infaustos adgnoscent vellera fluctus
 
 **202** vos etiam silvae, vos Colchidos hospitis orae,
 
-**203** pandite, dives ubi pellis micetmicet C, misceat V arbore sacra.
+**203** pandite, dives ubi pellis micet arbore sacra.
 
 **204** tunc tibi, fecundi proles Iovis, orte nivali
 
@@ -6453,13 +6451,13 @@ title: Argonautica
 
 **206** Palladiam patiare rate, nec dona nec arae
 
-**207** defuerint tellure mea; reverendareverenda Heinsius, uerenda V, ueneranda MT fluentis
+**207** defuerint tellure mea; reverenda fluentis
 
 **208** effigies te, Phasi, manet, quam magnus Enipeus
 
 **209** et pater aurato quantus iacet Inachus antro.'
 
-**210** dixerat,Dixerat M, Dixit erat V atque illi dextra sine versa magistri
+**210** dixerat, atque illi dextra sine versa magistri
 
 **211** protinus in proram rediit ratis omine certo
 
@@ -6469,7 +6467,7 @@ title: Argonautica
 
 **214** arma iubet celsa socios depromere puppe.
 
-**215** dona dehinc Bacchi casusque utcasusque ut Heinsius, casus qui V firmet in omnes
+**215** dona dehinc Bacchi casusque ut firmet in omnes
 
 **216** rapta Ceres, viridesque premunt longo ordine ripas.
 
@@ -6479,11 +6477,11 @@ title: Argonautica
 
 **219** ora satis. ventum ad furias infandaque natae
 
-**220** foedera et horrenda trepidam sub virgineuirgine V, imagine C puppem:
+**220** foedera et horrenda trepidam sub virgine puppem:
 
-**221** impia monstriferismonstriferi V surgunt iam proelia campis.
+**221** impia monstriferis surgunt iam proelia campis.
 
-**222** ante dolos, ante infidi tamen exsequar astusartus V
+**222** ante dolos, ante infidi tamen exsequar astus
 
 **223** Soligenae falli meriti meritique relinqui,
 
@@ -6505,21 +6503,21 @@ title: Argonautica
 
 **232** effigie vasta, socerumque exterruit ingens
 
-**233** prodita vox: 'oo T 1 Pius, om. V qui patria tellure fugatum
+**233** prodita vox: 'o qui patria tellure fugatum
 
 **234** quaerentemque domos his me considere passus
 
 **235** sedibus, oblata generum mox prole petisti,
 
-**236** tuncTunc M, Tunc V tibi regnorum labes luctusque supersunt,
+**236** tunc tibi regnorum labes luctusque supersunt,
 
-**237** rapta soporato fuerint cum vellerauellera M, uellerea V luco.
+**237** rapta soporato fuerint cum vellera luco.
 
-**238** praeterea infernae quae nunc sacrata sq. auris quae vocatur est in membrana, cuius in marginibus hic et in vss. 254–258 nonnullae literae perierunt; manca uncis inclusi: nunc sacrata M, nu..sacrata V Dianae
+**238** praeterea infernae quae nunc sacrata Dianae
 
-**239** fert castos Medea choros quemcumquequemcumque MT, quecumque V, quaecumque C procorum
+**239** fert castos Medea choros quemcumque procorum
 
-**240** pacta petat maneat regnis neuneu Heinsius, ne V virgo paternis.'
+**240** pacta petat maneat regnis neu virgo paternis.'
 
 **241** dixit et admota pariter fatalia visus
 
@@ -6529,11 +6527,11 @@ title: Argonautica
 
 **244** membra toris rapit ille tremens patriumque precatur
 
-**245** numen et eoo surgentes litore currus:currus M, cursus V
+**245** numen et eoo surgentes litore currus:
 
 **246** 'haec tibi fatorum, genitor, tutela meorum,
 
-**247** omnituens: tua nunc terris, tua luminalumina MT, limina V toto
+**247** omnituens: tua nunc terris, tua lumina toto
 
 **248** sparge mari; seu nostra dolos molitur opertos
 
@@ -6545,31 +6543,31 @@ title: Argonautica
 
 **252** arma tubaeque sonent, vox et tua noctibus exstet.'
 
-**253** vix ea, Caucaseis cum lapsus montibus anguis,anguis M 2, angues V
+**253** vix ea, Caucaseis cum lapsus montibus anguis,
 
-**254** haud sine mente dei, spirisdei spiris M, d..s.iris V (cf. 238) | refusis C, refosis V nemus omne refusis
+**254** haud sine mente dei, spiris nemus omne refusis
 
-**255** implicuit Graiumquegraiumque M, ....umque V | respexit M rexperit V procul respexit ad orbem.
+**255** implicuit Graiumque procul respexit ad orbem.
 
-**256** ergo omnesomnes M, ..nes V prohibere minas praedictaque Phrixi
+**256** ergo omnes prohibere minas praedictaque Phrixi
 
-**257** invigilat,Inuigilat plena M, Inuigila...ena V plena necdum Medea iuventa
+**257** invigilat, plena necdum Medea iuventa
 
 **258** adnuitur thalamis Albani virgo tyranni.
 
 **259** Interea auguriis monstrisque minacibus urbem
 
-**260** territatTerritat M 2 ut vid., Territa V | saevi C ante monens semper deus et data seri
+**260** territat ante monens semper deus et data seri
 
 **261** signa mali; reddi iubet exitiale sacerdos
 
-**262** vellus et Haemoniis infaustuminfaustum NT, infastum V, infestum C mittere terris.
+**262** vellus et Haemoniis infaustum mittere terris.
 
-**263** contra Sole satus Phrixi praecepta volutansuolutans M uoluntas V
+**263** contra Sole satus Phrixi praecepta volutans
 
 **264** aegro corde negat, nec vulgi cura tyranno,
 
-**265** dum sua sit modo tutatuta M, tua V salus. tunc ordine regi
+**265** dum sua sit modo tuta salus. tunc ordine regi
 
 **266** proximus et frater materno sanguine Perses
 
@@ -6577,15 +6575,15 @@ title: Argonautica
 
 **268** ille furens ira solio se proripit alto
 
-**269** praecipitatque patres ipsumque utipsumque ut Sudhaus, cf. 215, ipsum qui V, ipsum quoque C, ipsum quin Heinsius talibus ausis
+**269** praecipitatque patres ipsumque ut talibus ausis
 
-**270** spem sibi iam rerum vulgi levitate serentemferentem C
+**270** spem sibi iam rerum vulgi levitate serentem
 
 **271** ense petit. rapit inde fugam crudelia Perses
 
 **272** signa gerens omnemque quatit rumoribus arcton.
 
-**273** iamque aderat magnis regumregum C, regnum V cum milibus urbi,
+**273** iamque aderat magnis regum cum milibus urbi,
 
 **274** primaque in adversos frustratus proelia muros
 
@@ -6593,15 +6591,15 @@ title: Argonautica
 
 **276** ille dies alterque dies, cum Marte remisso
 
-**277** debitus AeaeisAetheis C dux Thessalus adpulit oris.
+**277** debitus Aeaeis dux Thessalus adpulit oris.
 
-**278** Nox hominum genus et duros miseratamiserata Bon. 1, mirata V labores
+**278** Nox hominum genus et duros miserata labores
 
 **279** rettulerat fessis optata silentia terris.
 
 **280** at Iuno et summi virgo Iovis intima secum
 
-**281** consilia et variasuarias M 2, uaria V sociabant pectore curas.
+**281** consilia et varias sociabant pectore curas.
 
 **282** virgo prior 'magna pariter quos mole petamus,
 
@@ -6611,13 +6609,13 @@ title: Argonautica
 
 **285** apparat Aeetes aciem. quibus addimur armis?'
 
-**286** cui Iuno 'dimitte metus, ne proelia fortefortes V
+**286** cui Iuno 'dimitte metus, ne proelia forte
 
-**287** hinc tibi grata negem: manet aegidahic Baehrens | manet aegid V, manet ingens aegida C, fort. tantus (vel parilis) manet a. s. sudor
+**287** hinc tibi grata negem: manet aegida sudor
 
 **288** et nostros iam sudor equos. stat pectore fixum
 
-**289** AeetaeAeete M, Aeetes V sociare manus. scio perfida regis
+**289** Aeetae sociare manus. scio perfida regis
 
 **290** corda quidem; nullos Minyis exsolvet honores.
 
@@ -6641,11 +6639,11 @@ title: Argonautica
 
 **300** cunctaque adhuc, magni veniant dum regis ad urbem,
 
-**301** ambiguaAmbiguae& V 1 (& in ras. t lit.) et dubia rerum pendentia summa.
+**301** ambigua et dubia rerum pendentia summa.
 
-**302** praecipue Aesoniden varios incerta per aestus sqq. cf. Hom. II. X 3 sqq.
+**302** praecipue Aesoniden varios incerta per aestus
 
-**303** mens rapit undantem curis ac multa moventem.moventem Reuss, nauantem V, nouantem M
+**303** mens rapit undantem curis ac multa moventem.
 
 **304** qualiter ex alta cum Iuppiter arce coruscat,
 
@@ -6653,13 +6651,13 @@ title: Argonautica
 
 **306** horriferamve nivem, canis ubi tollitur omnis
 
-**307** campus aquis, aut sanguineisanguinei M 2 sanguine V magna ostia belli
+**307** campus aquis, aut sanguinei magna ostia belli
 
-**308** aut aliosalios nonnulli apud Pium, altos VC duris fatorum gentibus ortus:
+**308** aut alios duris fatorum gentibus ortus:
 
-**309** sic tum diversis hinc atque hinc motibusmotibus Heinsius, molibus V anceps
+**309** sic tum diversis hinc atque hinc motibus anceps
 
-**310** pectora dux crebro gemitu quatit, optat et almumalmum M 2, almam V
+**310** pectora dux crebro gemitu quatit, optat et almum
 
 **311** iam iubar et certi tandem discriminis horas.
 
@@ -6675,19 +6673,19 @@ title: Argonautica
 
 **317** Soligenam Aeeten media regnare sub arcto.
 
-**318** ergo ubi lux altum spargetsparget Bon. 2, spargit V mare, tecta petenda
+**318** ergo ubi lux altum sparget mare, tecta petenda
 
 **319** urbis et ignoti mens experienda tyranni.
 
-**320** adnuet ipse, reor, neque inexorabileinexorabile M 2, exorabile V | certe M 2, terte V certe
+**320** adnuet ipse, reor, neque inexorabile certe
 
 **321** quod petimus. sin vero preces et dicta superbus
 
-**322** respuerit,Respuerit M 2, Respuent V | firmate M 2, firmata V iam nunc animos firmate repulsae,
+**322** respuerit, iam nunc animos firmate repulsae,
 
 **323** quaque via patriis referamus vellera terris,
 
-**324** stet potius: rebus semper pudor absit in artis.'rebus pudor absit in artis habet Par.
+**324** stet potius: rebus semper pudor absit in artis.'
 
 **325** dixerat et Scythicam qui se comitentur ad urbem
 
@@ -6703,7 +6701,7 @@ title: Argonautica
 
 **331** rapta toris primi iubar ad placabile Phoebi
 
-**332** ibat et horrendas lustrantialustrantia MC, lustratia V | C, cod. Burmanni flumina noctes.
+**332** ibat et horrendas lustrantia flumina noctes.
 
 **333** namque soporatos tacitis in sedibus artus
 
@@ -6715,7 +6713,7 @@ title: Argonautica
 
 **337** pontus, et ingenti circum stupefacta profundo,
 
-**338** fratre tamen conante sequi.fratre tamen conante sequi C, cod. Pii, Frater et amen conantes qui V (e ante qui add. V 2) | stara V mox stare paventes
+**338** fratre tamen conante sequi. mox stare paventes
 
 **339** viderat intenta pueros nece seque trementum
 
@@ -6723,7 +6721,7 @@ title: Argonautica
 
 **341** his turbata minis fluvios ripamque petebat
 
-**342** phasidis aequali Scythidumaequali Schytidum C, aequalis q: thidum V comitante caterva.
+**342** phasidis aequali Scythidum comitante caterva.
 
 **343** florea per verni qualis iuga duxit Hymetti
 
@@ -6747,19 +6745,19 @@ title: Argonautica
 
 **353** 'quae manus haec, certo ceu me petat agmine, mater,
 
-**354** advenitAduenit M, Aduenis V haud armis, haud umquam cognita cultu?
+**354** advenit haud armis, haud umquam cognita cultu?
 
 **355** quaere fugam, precor, et tutos circumspice saltus.'
 
 **356** audit virginei custos grandaeva pudoris
 
-**357** Henioche,Enioche V cultus primi cui creditus aevi;
+**357** Henioche, cultus primi cui creditus aevi;
 
 **358** tum trepidam dictis firmans hortatur alumnam:
 
 **359** 'non tibi ab hoste minae nec vis' ait 'ulla propinquat
 
-**360** necNec M 2 Necte V metus; externo iam flanimea murice cerno
+**360** nec metus; externo iam flanimea murice cerno
 
 **361** tegmina, iam vittas frondemque inbellis olivae.
 
@@ -6767,7 +6765,7 @@ title: Argonautica
 
 **363** Sic ait. at Iuno, pulchrum longissima quando
 
-**364** robur cura ducis magnique edereedere Gronovius, sedere V, dedere C labores,
+**364** robur cura ducis magnique edere labores,
 
 **365** mole nova et roseae perfudit luce iuventae.
 
@@ -6779,27 +6777,27 @@ title: Argonautica
 
 **369** Sirius et saevo cum nox accenditur auro
 
-**370** luciferas crinita faces, hebethebet C, Sabellicus, habet V Areas et ingens
+**370** luciferas crinita faces, hebet Areas et ingens
 
 **371** Iuppiter; ast ilium tanto non gliscere caelo
 
-**372** vellet ager, vellent calidis iam fontibusfontibus Bon. 1, foribus V, roribus Heinsius amnes.
+**372** vellet ager, vellent calidis iam fontibus amnes.
 
-**373** regina, attonito quamquam pavor orepavor ore Bon. 1 pauore V silentem
+**373** regina, attonito quamquam pavor ore silentem
 
 **374** exanimet, mirata tamen paulumque reductis
 
-**375** passibus in soloin solo Heinsius, insolito V stupuit duce. nec minus inter
+**375** passibus in solo stupuit duce. nec minus inter
 
 **376** ille tot ignoti socias gregis haeret in una
 
 **377** defixus sentitque ducem dominamque catervae.
 
-**378** 'si dea, si magni decus huc ades'ades M, adest V inquit 'Olympi,
+**378** 'si dea, si magni decus huc ades' inquit 'Olympi,
 
-**379** has ego credo faces, haec virginis oraora C, arma V Dianae,
+**379** has ego credo faces, haec virginis ora Dianae,
 
-**380** teque renodatam pharetris ac pace fruentemfruentem T, furentem V
+**380** teque renodatam pharetris ac pace fruentem
 
 **381** ad sua Caucaseae producunt flumina Nymphae.
 
@@ -6807,33 +6805,33 @@ title: Argonautica
 
 **383** felix prole parens, olimque beatior ille,
 
-**384** qui tulerit longis et teet te M 2, ecce V sibi iunxerit annis.
+**384** qui tulerit longis et te sibi iunxerit annis.
 
-**385** sed fer opem, regina, viris. nosnos varia lectio codicis Bon., non VC | hospita MChospia, V hospita pubes
+**385** sed fer opem, regina, viris. nos hospita pubes
 
-**386** advehimur, Graium proceres tuaproceres tua M, procerestatua V tecta petentes.
+**386** advehimur, Graium proceres tua tecta petentes.
 
 **387** duc, precor, ad vestri quicumque est ora tyranni
 
-**388** ac tuac tu Pius, Astu V | doce Bon. 2, duce V prima doce fandi tempusque modumque;
+**388** ac tu prima doce fandi tempusque modumque;
 
 **389** nam mihi sollicito deus ignaroque locorum
 
-**390** te dedit; in te animos atque omnia nostraadque V, sed et C | nostra MN, nostro V repono.'
+**390** te dedit; in te animos atque omnia nostra repono.'
 
 **391** Dixit et opperiens trepidam stetit. illa parumper
 
-**392** virgineo cunctata metu sic orsa vicissim:sic orsa uicorsa uicissim V, corr. M
+**392** virgineo cunctata metu sic orsa vicissim:
 
 **393** 'quem petis Aeeten, genitor meus, ipsaque iuxta
 
-**394** moenia, si vivosuiuos VC, biuios Heinsius possis discernere calles:
+**394** moenia, si vivos possis discernere calles:
 
-**395** hachac Iunt. 1 Huc V adeo duce ferte gradus; ingentia namque
+**395** hac adeo duce ferte gradus; ingentia namque
 
 **396** castra alios aditus atque impius obsidet hostis.'
 
-**397** dixerat haec patriumquepatriumque M 2, patrium V | amnem M 2 T, omnem V viam detorquet ad amnem,
+**397** dixerat haec patriumque viam detorquet ad amnem,
 
 **398** sacraque terrificae supplex movet inrita Nocti.
 
@@ -6851,17 +6849,17 @@ title: Argonautica
 
 **405** rex feret; hic proceres audit populosque precantes
 
-**406** adloquiis facilis: praesens pater admonet aequi.'ammouet aequi C
+**406** adloquiis facilis: praesens pater admonet aequi.'
 
-**407** Dixerat. huc transposuit Bon. 2, post 426 exhibet V | Dixerat M, Adixerat V ast illi propere monstrata capessunt
+**407** Dixerat. ast illi propere monstrata capessunt
 
-**408** limina.Limina M, Blimina V non aliter, quam si radiantis adirent
+**408** limina. non aliter, quam si radiantis adirent
 
 **409** ora dei verasque aeterni luminis arces:
 
-**410** tale iubar perper C T 1, om. V | atlas M 2, atdans V tecta micat. stat ferreus Atlans
+**410** tale iubar per tecta micat. stat ferreus Atlans
 
-**411** Oceano, genibusque tumens infringiturinfringitur Pius, infrangitur V unda;
+**411** Oceano, genibusque tumens infringitur unda;
 
 **412** at medii per terga senis rapit ipse nitentes
 
@@ -6871,9 +6869,9 @@ title: Argonautica
 
 **415** Pliades et madidis rorantes crinibus ignes.
 
-**416** nec minus hinchinc Heinsius, hic V varia dux laetus imagine templi
+**416** nec minus hinc varia dux laetus imagine templi
 
-**417** ad geminasAdgeminas M, Adgeminans V fert ora fores cunabula gentis
+**417** ad geminas fert ora fores cunabula gentis
 
 **418** Colchidos hic ortusque tuens: ut prima Sesostris
 
@@ -6883,15 +6881,15 @@ title: Argonautica
 
 **421** Phasidis hos imponat agris Colchosque vocari
 
-**422** imperet: Arsinoen illi tepidaequetepidaeque Parrhasius, trepidaeque VC | ad requirnnt cf. Aen. I 216 sq. requirunt
+**422** imperet: Arsinoen illi tepidaeque requirunt
 
-**423** otiaOtia M, Otila V laeta Phari pinguemque sine imbribus annum
+**423** otia laeta Phari pinguemque sine imbribus annum
 
-**424** et iam Sarmaticis permutant carbasa bracis.braeis V
+**424** et iam Sarmaticis permutant carbasa bracis.
 
 **425** barbarus in patriis sectatur montibus Aean
 
-**426** Phasis amore furens: pavidas iacit illailla M 2, ulla V pharetras
+**426** Phasis amore furens: pavidas iacit illa pharetras
 
 **427** virgineo turbata metu discursibus et iam
 
@@ -6907,31 +6905,31 @@ title: Argonautica
 
 **433** aurea quin etiam praesaga Mulciber arte
 
-**434** vellera venturosque olim caelaratcelarat M, celerat V Achivos:
+**434** vellera venturosque olim caelarat Achivos:
 
 **435** texitur Argoa pinus Pagasaea securi,
 
 **436** iamque eadem remos, eadem dea flectit habenas;
 
-**437** ipsaIpse C subit nudaque vocat dux agmina dextra.
+**437** ipsa subit nudaque vocat dux agmina dextra.
 
-**438** exoritur notus et totototo C, Sabellicus, torto V ratis una profundo
+**438** exoritur notus et toto ratis una profundo
 
 **439** cernitur; Odrysio gaudebant carmine phocae.
 
-**440** apparent trepidi perper C, om. V Phasidis ostia Colchi
+**440** apparent trepidi per Phasidis ostia Colchi
 
 **441** clamantemque procul linquens regina parentem.
 
 **442** urbs erat hinc contra gemino circumflua ponto,
 
-**443** ludus ubi et cantuset cantus codd. Pii et Harlesii, extantus V, est tantus C taedaeque in nocte iugales
+**443** ludus ubi et cantus taedaeque in nocte iugales
 
 **444** regalique toro laetus gener: ille priorem
 
 **445** deserit; ultrices spectant a culmine Dirae.
 
-**446** deficit in thalamis turbataque paelice coniunxconiunx M, coniunxi V
+**446** deficit in thalamis turbataque paelice coniunx
 
 **447** pallam et gemmiferae donum exitiale coronae
 
@@ -6941,17 +6939,17 @@ title: Argonautica
 
 **450** infelix, et iam rutilis correpta venenis
 
-**451** implicat igne domus.domos CM 2 haec tum miracula Colchis
+**451** implicat igne domus. haec tum miracula Colchis
 
-**452** struxerat Ignipotens nondum noscentibus, illeille Heinsius, illa V
+**452** struxerat Ignipotens nondum noscentibus, ille
 
-**453** quis labor, aligerisaligeris M, ali V (us eras. vid., sed 4–5 litt. spatium relictum) aut quae secet anguibus auras
+**453** quis labor, aligeris aut quae secet anguibus auras
 
 **454** caede madens; odere tamen visusque reflectunt.
 
-**455** Quin idem Minyas operum defixerat error,error V, horror Meyncke
+**455** Quin idem Minyas operum defixerat error,
 
-**456** cum se Sole satus patriis penetralibuspenetralibus M 2 C, penetrabilibus V infert.
+**456** cum se Sole satus patriis penetralibus infert.
 
 **457** filius hunc iuxta primis Absyrtus in annis,
 
@@ -6959,27 +6957,27 @@ title: Argonautica
 
 **459** tum gener Albanis Styrus qui advenerat oris,
 
-**460** distulerant sed bella toros; tum PhrontisPhrontis Pius, phontis V et Argus
+**460** distulerant sed bella toros; tum Phrontis et Argus
 
-**461** AeolidaeAeolidae T 1 Bon. 2, Aeoliae V fraterque Melas, quos advena Phrixus
+**461** Aeolidae fraterque Melas, quos advena Phrixus
 
-**462** progenuit; pariterque levi CytisorusCythisorus Pius, euthisorus V in hasta.
+**462** progenuit; pariterque levi Cytisorus in hasta.
 
-**463** post alii, quos praecipuopraecipuos C Titania tellus
+**463** post alii, quos praecipuo Titania tellus
 
-**464** legit honore patres,patres CT 1, patris V | reges C, regis V motique ad proelia reges.
+**464** legit honore patres, motique ad proelia reges.
 
-**465** admonet hie socios nebulamquenebulaque C erumpit Iason
+**465** admonet hie socios nebulamque erumpit Iason
 
-**466** siderissiderea Heinsius | lux M, lus V | offusa Gronovius, effusa V, effulsit C | Ithaeis C ora ferens; nova lux offusa Cytaeis.
+**466** sideris ora ferens; nova lux offusa Cytaeis.
 
-**467** conveniunt stipantquestipantque Loehbach, rogitantque V, lustrantque Thilo viros rogitantque, quid ausi,
+**467** conveniunt stipantque viros rogitantque, quid ausi,
 
 **468** quidve ferant. postquam primis inhiantia dictis
 
-**469** agmina suppressumque videt iam murmurmurmur T 1 Bon. 2, munus V Iason,
+**469** agmina suppressumque videt iam murmur Iason,
 
-**470** talia mirantimiranti M, maranti V propius tulit orsa tyranno:
+**470** talia miranti propius tulit orsa tyranno:
 
 **471** 'rex Hyperionide, quem per freta tanta petendum
 
@@ -7003,13 +7001,13 @@ title: Argonautica
 
 **481** sponte sequor. cui non iusso tot adire voluptas
 
-**482** monstra maris? cui Cyaneos intrare fragores?fragores M, frigores V
+**482** monstra maris? cui Cyaneos intrare fragores?
 
-**483** sceptra tui toto Pelias sub luminelumine vel numine Heinsius, nomine VC Phoebi
+**483** sceptra tui toto Pelias sub lumine Phoebi
 
-**484** maxima sortesorte Gronovius, oste V, forte C | ille Gronovius, illa VC | gravantia clivos Sudhaus, cremantia diuos VC, ornantia clivos Schenkl, prementia clivos Baehrens, frequentia dives Thilo tenens totque ille gravantia clivos
+**484** maxima sorte tenens totque ille gravantia clivos
 
-**485** oppida, tot vigili pulcherrimapurcherrima V flumina cornu,
+**485** oppida, tot vigili pulcherrima flumina cornu,
 
 **486** ille meum imperils urget caput, ille labores
 
@@ -7025,7 +7023,7 @@ title: Argonautica
 
 **492** sit, precor, haec meritique locus, quod iussa recepi
 
-**493** teque alium, quam quemquam quem T, quemque V Pelias speratque cupitque,
+**493** teque alium, quam quem Pelias speratque cupitque,
 
 **494** promisi et meliora tuae mihi foedera dextrae.
 
@@ -7033,7 +7031,7 @@ title: Argonautica
 
 **496** Ossa dabat Pindusque rates quotque ante secuti
 
-**497** inde nec audacem Bacchum nec Persea reges.reges Ald., regis V
+**497** inde nec audacem Bacchum nec Persea reges.
 
 **498** sed me nuda fides sanctique potentia iusti
 
@@ -7041,9 +7039,9 @@ title: Argonautica
 
 **500** iamque tibi nostra genti de stirpe nepotes.
 
-**501** nec tamen aut Phrygios reges aut arva furentisfurentis M 2, furentes V
+**501** nec tamen aut Phrygios reges aut arva furentis
 
-**502** Bebryciae spernendus adi: seu fraude petivitpetiui CM 2 T 2
+**502** Bebryciae spernendus adi: seu fraude petivit
 
 **503** seu quis honore meos, sua reddita dona deumque
 
@@ -7053,7 +7051,7 @@ title: Argonautica
 
 **506** contigimus, qualemque dabat te fama videmus
 
-**507** tu modo ne claros Minyis inviderisinuideris M 2, inuideri V actus.
+**507** tu modo ne claros Minyis invideris actus.
 
 **508** non aliena peto terrisve indebita nostris,
 
@@ -7063,31 +7061,31 @@ title: Argonautica
 
 **511** munera tu contra victum mihi vecta per aequor
 
-**512** accipe Taenariitaenarei V chlamydem de sanguine aeni
+**512** accipe Taenarii chlamydem de sanguine aeni
 
-**513** frenaque et accinctumaccensum Jacobs gemmis fulgentibus ensem:
+**513** frenaque et accinctum gemmis fulgentibus ensem:
 
-**514** hoc patrium decus, haec materni texta laboris,laboris M 2, labores V
+**514** hoc patrium decus, haec materni texta laboris,
 
-**515** his Lapithes adsuerat eques. da iungere dona,dona V, dextram C
+**515** his Lapithes adsuerat eques. da iungere dona,
 
 **516** da Scythicas sociare domos. sciat effera regis
 
 **517** ira mei, quem te horrifero sortitus in axe
 
-**518** Caucasus atque tuis quantum mitescat habenis.'habenis C, cod. Burmanni, harenis V
+**518** Caucasus atque tuis quantum mitescat habenis.'
 
 **519** Talibus orantem vultu gravis ille minaci
 
-**520** iamdudum fremitfremit V dilucide | ignescit C Bon. 2, ignoscit V | apertis C et furiis ignescit opertis.
+**520** iamdudum fremit et furiis ignescit opertis.
 
-**521** ceu tumetceu tumet Bon. 1, Centum et V atque imo sub gurgite concipit austros
+**521** ceu tumet atque imo sub gurgite concipit austros
 
 **522** unda silens, trahit ex alto sic barbarus iras
 
-**523** et nunc ausaausa Bon. 1, causa V viri, nunc heu sua prodita Grais
+**523** et nunc ausa viri, nunc heu sua prodita Grais
 
-**524** regna fremit, quin et facili sibi mente receptumreceptum T, receptus V
+**524** regna fremit, quin et facili sibi mente receptum
 
 **525** iam Phrixum dolet et Scythiae periisse timores,
 
@@ -7097,7 +7095,7 @@ title: Argonautica
 
 **528** urit et antiquae memorem vox praescia sortis,
 
-**529** cur simul autsimul aut Bon. 2, simul ac V | praesen V | moverit Bon. 1, mouerint V Persen illinc sibi moverit aut hinc
+**529** cur simul aut Persen illinc sibi moverit aut hinc
 
 **530** Thessalicam Fortuna ratem; num debitus ista
 
@@ -7107,23 +7105,23 @@ title: Argonautica
 
 **533** cura prior, fingit placidis fera pectora dictis
 
-**534** reddit et haec: 'cuperem haut talitali C, ali V, alio MT, cod. Bon. vos tempore tectis
+**534** reddit et haec: 'cuperem haut tali vos tempore tectis
 
 **535** advenisse meis, quo me gravis adsidet hostis.
 
-**536** frater enim (sceptri sic omnibus una cupidosceptri omnibus u. c. habet Par. )
+**536** frater enim (sceptri sic omnibus una cupido)
 
 **537** excidium parat et castris me ingentibus urget.
 
 **538** quare age cognatas primum defendite sedes,
 
-**539** nec decus oblati dimiserisdimiseris Bon. 1 demiseris V advena belli;
+**539** nec decus oblati dimiseris advena belli;
 
-**540** namqueIamque C Quippe uiros tr. i. calibs habet Par. virum trahit ipse chalybs. tum vellera victor,
+**540** namque virum trahit ipse chalybs. tum vellera victor,
 
-**541** tum meritis nee sola dabo.' contra inscius astusastus V, acti C
+**541** tum meritis nee sola dabo.' contra inscius astus
 
-**542** 'ergo nec hic nostris derat labor arduus actis' desiderabatur in C
+**542** 'ergo nec hic nostris derat labor arduus actis'
 
 **543** excipit Aesonides 'et ceu nihil aequore passis
 
@@ -7131,7 +7129,7 @@ title: Argonautica
 
 **545** bella meo. non hunc parva mihi caede dolorem
 
-**546** quasque dedit luetluet M 2, leuet V ille moras.' tum Castora mittit,
+**546** quasque dedit luet ille moras.' tum Castora mittit,
 
 **547** qui ferat Aeaei sociis responsa tyranni.
 
@@ -7143,11 +7141,11 @@ title: Argonautica
 
 **551** progenies, fare, an patriam spes ulla videndi,
 
-**552** fare' omnes.omnes Bon. 2, omnis V, tuis C ille in mediis sic orsus Achivis:
+**552** fare' omnes. ille in mediis sic orsus Achivis:
 
 **553** 'nec ferus Aeetes, ut fama, nec aurea nobis
 
-**554** terga negat; bello interea sed pressuspressus M, pressais V iniquo
+**554** terga negat; bello interea sed pressus iniquo
 
 **555** auxilium petit; armatos dux protinus omnes
 
@@ -7157,29 +7155,29 @@ title: Argonautica
 
 **558** Haud mora: prosiliunt, quos nec Riphaea iuventus,
 
-**559** quos nec Hiber aut totatuta C M T, cod. Bon. suis Aurora pharetris
+**559** quos nec Hiber aut tota suis Aurora pharetris
 
 **560** sustineat. stetit explicito prius agmine pubes,
 
-**561** expertiqueExpertique M 2, Experti quo V | arcusque Bon. 2 simul, si tela artusque sequantur.
+**561** expertique simul, si tela artusque sequantur.
 
-**562** nec quisquam freta nec patrias iam respicit urbes,urbes M, urbe V
+**562** nec quisquam freta nec patrias iam respicit urbes,
 
 **563** sed magis ad praesens itur decus. incita cristas
 
-**564** aura quatit, variis floret via discolordecolor C armis,
+**564** aura quatit, variis floret via discolor armis,
 
 **565** qualis ab Oceano nitidum chorus aethera vestit,
 
 **566** qualibus adsurgens nox aurea cingitur astris.
 
-**567** illos Sole satus tacita maestissimusmestissumus V ira
+**567** illos Sole satus tacita maestissimus ira
 
 **568** miratur temere adsumptos, nec talia mallet
 
 **569** robora, quam medios hostem subiisse penates.
 
-**570** interea laeto patiturpotitur C | cultu V, vultu vulgo, sed cf. Tac. Ann. II 75 fin. convivia cultu
+**570** interea laeto patitur convivia cultu
 
 **571** et iuxta Aesoniden magno cratere lacessit
 
@@ -7195,7 +7193,7 @@ title: Argonautica
 
 **577** expetit Aesonides et amicos ordine reges:
 
-**578** 'quis procul ille virum, nodisnodis Heinsius, nobis V quem balteus asper
+**578** 'quis procul ille virum, nodis quem balteus asper
 
 **579** subligat et stricto stat proximus armiger arcu,
 
@@ -7207,33 +7205,33 @@ title: Argonautica
 
 **583** semper habere viro, semper meminisse pharetrae.
 
-**584** quid Latagum, quid si amnigenam mirere Choaspen?choaspe V, corr. CM 2
+**584** quid Latagum, quid si amnigenam mirere Choaspen?
 
 **585** bellatoris equi potantem cerne cruores;
 
-**586** nec tamen immissis hic segniorhic segnior Bon. 2, hic genitor V, genitor sic C ibit habenis.'
+**586** nec tamen immissis hic segnior ibit habenis.'
 
 **587** 'illum' ait Aesonides 'pariter refer, horrida signis
 
 **588** cui chlamys et multa spirat coma flexilis aura.'
 
-**589** respicit AeetesAeetes Bon. 2 aesonides V atque hunc quoque nomine reddit:
+**589** respicit Aeetes atque hunc quoque nomine reddit:
 
 **590** 'dives Aron; croceos sic illius omnis odores
 
-**591** iactat eques, cunctiscunctis Bentley, iunctis V, unctis CT 2, Pius sic est coma culta maniplis:
+**591** iactat eques, cunctis sic est coma culta maniplis:
 
-**592** sed neSed nec C sperne virum et comptis diffide capillis.
+**592** sed ne sperne virum et comptis diffide capillis.
 
-**593** Campesus hic spoliis in tigridis.in tigridis Bon. 2, intigris V ille profundo
+**593** Campesus hic spoliis in tigridis. ille profundo
 
 **594** incumbens Odrussa mero; vide lata comantem
 
 **595** pectora et ingenti turbantem pocula barba.'
 
-**596** hic etet Bon. 2, ē V | Iaxarten vulgo, laxarten V, Laxasten C Iaxarten dictis stupet hospes acerbis
+**596** hic et Iaxarten dictis stupet hospes acerbis
 
-**597** immodicum linguaque gravem, cui multamulta Heinsius, inulla V, nulla vulgo minanti
+**597** immodicum linguaque gravem, cui multa minanti
 
 **598** non superum, non praesentis reverentia belli.
 
@@ -7249,19 +7247,19 @@ title: Argonautica
 
 **604** Medus et oppositis exspectat Hiberia claustris.
 
-**605** hos autem quae quemque manus,manus C Bon. 1, magnus V | quae C, om, V quae signa sequantur,
+**605** hos autem quae quemque manus, quae signa sequantur,
 
 **606** si memorem, prius umentem lux solverit umbram.
 
 **607** cras acies atque illa ducum eras regna videbis
 
-**608** dissona, saxiferae surgat quibus imber habenae,arenae C
+**608** dissona, saxiferae surgat quibus imber habenae,
 
-**609** quae iaculo gens apta levi, quaeQuae T Bon. 2, Qua et V | quae (picta) Bon. 1 qui V picta pharetris
+**609** quae iaculo gens apta levi, quae picta pharetris
 
 **610** venerit. ingentes animo iam prospice campos,
 
-**611** atque hanc alipedi pulsantem corporacorpora MC, corporo V curru
+**611** atque hanc alipedi pulsantem corpora curru
 
 **612** Euryalen, quibus exsultet Mavortia turmis
 
@@ -7271,23 +7269,23 @@ title: Argonautica
 
 **615** fatur et occiduo libat cratera parenti.
 
-**616** quisque suissuis T, suum V tum vota deis et pocula fundit,
+**616** quisque suis tum vota deis et pocula fundit,
 
-**617** dent aciem, dent belligerosdent (belligeros) M 2, dant V superare labores.
+**617** dent aciem, dent belligeros superare labores.
 
 **618** Ecce autem Geticis veniens Gradivus ab antris
 
 **619** ingentemque trahens arctoa per aequora nubem
 
-**620** aspicit AeaeaAdsp. Aeetae C Minyas stupefactus in urbe
+**620** aspicit Aeaea Minyas stupefactus in urbe
 
-**621** ambitumque senem promissaque vellera puppipubi Heinsius
+**621** ambitumque senem promissaque vellera puppi
 
 **622** Thessalicae. citus ad summi stellantia patris
 
 **623** tecta ruit questuque Iovem testatur acerbo:
 
-**624** 'quae studiis, rex magne, quies? iam mutua dividivi Gronovius, uidi V
+**624** 'quae studiis, rex magne, quies? iam mutua divi
 
 **625** exitia in solos hominum molimur honores,
 
@@ -7295,7 +7293,7 @@ title: Argonautica
 
 **627** non abigis neque femineis ius obicis ausis.
 
-**628** nonNon cod. Burmanni, Num VC | querar C | extructa M, exfructa V queror, exstructa quod vexerit ipsa carina
+**628** non queror, exstructa quod vexerit ipsa carina
 
 **629** vellera sacra meis sperantem avertere lucis,
 
@@ -7321,27 +7319,27 @@ title: Argonautica
 
 **640** adstiteris impune trabes. an Martia templa
 
-**641** intemeranda minus, tantumtantum T 1, codd. Burmanni et Pii, tantus V, tacitus C | lucus cod. Pii, C b, luctus VC a mihi lucus et agger
+**641** intemeranda minus, tantum mihi lucus et agger
 
-**642** quod rudis et sola colimur si gentibussigentibus V, frigentibus C umbra?
+**642** quod rudis et sola colimur si gentibus umbra?
 
-**643** est amor et rerum cunctis tutela suarum,suarum Bon. 1, suorum V
+**643** est amor et rerum cunctis tutela suarum,
 
-**644** et tibi, magnemagne Bon. 2, magna V pater, terris donaria certant:
+**644** et tibi, magne pater, terris donaria certant:
 
-**645** est honor his etiam lucis.lucis Sudhaus, suus, V, suus. ast Bon. 2, suus. anne C | cara V, cf. Hom. II. IV 51 sq., clara C | Mycenes Gronovius, mycenis V ego cara Mycenes
+**645** est honor his etiam lucis. ego cara Mycenes
 
-**646** culmina, virgineas praeder si Cecropiscecropis M 2, cecropias V arces,
+**646** culmina, virgineas praeder si Cecropis arces,
 
 **647** iam coniunx, iam te gemitu lacrimisque tenebit
 
-**648** nata querens. metuant ergo nec talia possint.'possint V (cf. 670), poscant Ald.
+**648** nata querens. metuant ergo nec talia possint.'
 
 **649** Non tulit haec animis, quin longa silentia Pallas
 
-**650** rumperet inridens strepitumque minasque Gradivi.gradiui M, gradiuit V
+**650** rumperet inridens strepitumque minasque Gradivi.
 
-**651** 'non tibi Aloidae,Aloidae Bon. 2, aolidae V, Bystonidae C | murmura M, mura V quibus haec fera murmura iactes,
+**651** 'non tibi Aloidae, quibus haec fera murmura iactes,
 
 **652** non Lapithae, sed Pallas' ait; 'neque ego aegide digna,
 
@@ -7353,7 +7351,7 @@ title: Argonautica
 
 **656** quin simili matrem demens gravitate secutus;
 
-**657** digna quidem, monstrum superis quae tale crearit.crearit Heinsius, creauit V
+**657** digna quidem, monstrum superis quae tale crearit.
 
 **658** quod tamen adgressae scelus aut quo crimine sontes,
 
@@ -7361,25 +7359,25 @@ title: Argonautica
 
 **660** impavidus maria et nondum qui nota subibat,
 
-**661** iuvimusIuuimus M, Uiuimus V et magnis aliquam spem movimus ausis?
+**661** iuvimus et magnis aliquam spem movimus ausis?
 
-**662** an nullasnullas M 2, nulla V | regis T 1 Bon. 2, reges V praeferre preces nec foedera regis
+**662** an nullas praeferre preces nec foedera regis
 
 **663** ulla sequi, caeca sed cuncta impellere pugna
 
 **664** debuimus? sic Thraces agunt, sic turbidus iste,
 
-**665** siqua petit. cuperem haec etiam nuncnunc Carrio, num V bella remitti
+**665** siqua petit. cuperem haec etiam nunc bella remitti
 
 **666** nec socias armare manus. da vellera, rector,
 
 **667** et medio nos cerne mari. quod sin ea Mavors
 
-**668** abnegatabnegat Pius, Abneget V et solus nostris sudoribus obstat,
+**668** abnegat et solus nostris sudoribus obstat,
 
 **669** ibimus indecores frustraque tot aequora vectae?
 
-**670** faxofaxo Kr., cf. 654, IV 220, Fas V | aliqua et Sudhaus, aliquae V | Fassaque quae nequeam C aliqua et nequeat.' sic femina. coepelat ardens
+**670** faxo aliqua et nequeat.' sic femina. coepelat ardens
 
 **671** hic iterum alternis Mavors insurgere dictis.
 
@@ -7389,7 +7387,7 @@ title: Argonautica
 
 **674** peccatumque satis, tunc ad mea iura venitis.
 
-**675** quolibetQuolibet M 2, Quodlibet V ista modo, quacumque impellite pugna,
+**675** quolibet ista modo, quacumque impellite pugna,
 
 **676** quae coepistis, habent quoniam sua fata furores.
 
@@ -7397,49 +7395,49 @@ title: Argonautica
 
 **678** sit Persen pepulisse satis, nec vana retentet
 
-**679** spes Minyas finemvefinemue M, finenem V velint imponere bello.
+**679** spes Minyas finemve velint imponere bello.
 
-**680** ilium etenim talis rerum manet, accipite,accipite MC, cod. Bon., accipere V | ordo C, ergo V ordo:
+**680** ilium etenim talis rerum manet, accipite, ordo:
 
 **681** victa retro nunc castra dabit bellumque remittet
 
 **682** territus adventu ducis et virtute Pelasgi:
 
-**683** mox ubi Thessalicis referentreferent M 2, reflerent V hos flamina terris,
+**683** mox ubi Thessalicis referent hos flamina terris,
 
 **684** tunc aderit victorque domos et sceptra tenebit,
 
 **685** done et Aeeten inopis post longa senectae
 
-**686** exilia heu magnis quantumlibetquantumlibet nonnulli apud Pium, quantum licet V | inopia M 2, inopia V impia fatis
+**686** exilia heu magnis quantumlibet impia fatis
 
 **687** nata iuvet Graiusque nepos in regna reponat.
 
-**688** hic labor amborumqueamborumque Carrio, aimborum V, amborum sunt haec Pius haec sunt discrimina fratrum.
+**688** hic labor amborumque haec sunt discrimina fratrum.
 
 **689** vadite et adversis, ut quis volet, inruat armis.'
 
 **690** Dixerat. instaurat mensas pacemque reducit,
 
-**691** et iam sidereosidereo Heinsius, sideream V | demittit Bon. 2, dimittit V noctem demittit Olympo.
+**691** et iam sidereo noctem demittit Olympo.
 
-**692** tunc adsuetus adest Phlegraeas redderephlegraeas reddere C Pius, phlegyas qui reddere V, Phlegrae qui reddere Thilo pugnas
+**692** tunc adsuetus adest Phlegraeas reddere pugnas
 
-**693** Musarum chorus et citharae pulsatorcitharae pulsator T Bon. 2, cithara pulsatur V Apollo,
+**693** Musarum chorus et citharae pulsator Apollo,
 
 **694** fertque gravem Phrygius circum cratera minister.
 
-**695** surgitur in somnos seque ad sua liminalimina Bon. 2, lumina V flectunt.
+**695** surgitur in somnos seque ad sua limina flectunt.
 
 **1** At vigil isdem ardet furiis Gradivus et acri
 
-**2** corde tumet necnec M 2, ne V quas acies, quae castra sequatur,
+**2** corde tumet nec quas acies, quae castra sequatur,
 
-**3** invenit; ire placet tandemtandem M 2, tandemque V | tueri C, uideri V praesensque tueri,
+**3** invenit; ire placet tandem praesensque tueri,
 
 **4** sternere si Minyas magnoque rependere luctu
 
-**5** regis pacta queat Graiamquegraiamque M, gratamque V | pubem Ald. absumere puppem.
+**5** regis pacta queat Graiamque absumere puppem.
 
 **6** impulit hinc currus, monstrum inrevocabile belli
 
@@ -7447,11 +7445,11 @@ title: Argonautica
 
 **8** protinus e castris fugit sopor: excita tela,
 
-**9** turbatique coireturbatique coire Kr., cf. 232, Turbati coire V, Turbati coiere M 2, vulgo duces; hos insuper ingens
+**9** turbatique coire duces; hos insuper ingens
 
 **10** fama movet, rate quae sacra vulgabat Achivos
 
-**11** advenisse sui repetentesrepetentes M 2, repente V vellera Phrixi,
+**11** advenisse sui repetentes vellera Phrixi,
 
 **12** quos malus hospitio iunctaque ad foedera dextra
 
@@ -7475,23 +7473,23 @@ title: Argonautica
 
 **22** aut remeent; neque enim Aeetae promissa fidenque
 
-**23** esse loco; abstineant alienaealienae V, alienae a C sanguine pugnae.
+**23** esse loco; abstineant alienae sanguine pugnae.
 
-**24** non illos ideoideo V adeo C tanti venisse labores
+**24** non illos ideo tanti venisse labores
 
-**25** per maris. ignotis quid opus concurrere nec quosquos M, qus V
+**25** per maris. ignotis quid opus concurrere nec quos
 
 **26** oderis? haec medio Perses dum tempore mandat,
 
-**27** aureus effulsiteffulsit M 2, et fulsit V campis rubor, armaque et acres
+**27** aureus effulsit campis rubor, armaque et acres
 
-**28** sponte sua strepuere tubae. Mars saevus abab M 2, ob V altis
+**28** sponte sua strepuere tubae. Mars saevus ab altis
 
-**29** 'hostis io' conclamat equis, 'agite ite,agite ite M 2, agite ite ite V propinquat',
+**29** 'hostis io' conclamat equis, 'agite ite, propinquat',
 
 **30** ac simul hinc Colchos, hinc fundit in aequora Persen.
 
-**31** tunc gens quaequetunc gens quaeque Meyncke, Tunc et quaeque V | telis Ald., terris V cf. Luc. VII 510 Illic quaeque suo miscet gens proelia telo suis commisit proelia telis,
+**31** tunc gens quaeque suis commisit proelia telis,
 
 **32** voxque dei pariter pugnas audita per omnes.
 
@@ -7509,7 +7507,7 @@ title: Argonautica
 
 **39** Marte cadat, pingui numquam tamen ubere defit,
 
-**40** quod geminasgeminas M 2, geminos V arctos magnumque quod impleat anguem.
+**40** quod geminas arctos magnumque quod impleat anguem.
 
 **41** ergo duces solasque, deae, mihi promite gentes.
 
@@ -7517,15 +7515,15 @@ title: Argonautica
 
 **43** Heniochosque truces iam pridem infensus Anausis,
 
-**44** pacta quod Albano coniunxconiunx M 2, condux V Medea tyranno,
+**44** pacta quod Albano coniunx Medea tyranno,
 
 **45** nescius heu, quanti thalamos ascendere monstri
 
 **46** arserit atque urbes maneat qui terror Achaeas.
 
-**47** gratiorGratior M, Cratior V ipse deis orbaque beatior aula.
+**47** gratior ipse deis orbaque beatior aula.
 
-**48** proxima BisaltaeBisalte Bon. 1, bis altae M 2 T hisaltae V | legio T Piu>s, regio V legio ductorque Colaxes,
+**48** proxima Bisaltae legio ductorque Colaxes,
 
 **49** sanguis et ipse deum, Scythicis quem Iuppiter oris
 
@@ -7541,11 +7539,11 @@ title: Argonautica
 
 **55** nec primus radios, miles Romane, corusci
 
-**56** fulminisFulminis M 2, Fluminis V | diffuderis Bon. 1, diffunderis VC et rutilas scutis diffuderis alas.
+**56** fulminis et rutilas scutis diffuderis alas.
 
 **57** insuper auratos collegerat ipse dracones,
 
-**58** matris Horae specimen,spetimen V linguisque adversus utrimque
+**58** matris Horae specimen, linguisque adversus utrimque
 
 **59** congruit et tereti serpens dat vulnera gemmae.
 
@@ -7559,15 +7557,15 @@ title: Argonautica
 
 **64** demittit sacro geminas a vertice vittas.
 
-**65** Datin AchaemeniaeAchaemeniae Iunt. 1, achaemoniae V, Achimeniae C gravior de vulnere pugnae
+**65** Datin Achaemeniae gravior de vulnere pugnae
 
-**66** misit in arma Daraps,Claraps C acies quem Martia circum
+**66** misit in arma Daraps, acies quem Martia circum
 
 **67** Gangaridum, potaque Gerus quos efferat unda,
 
 **68** quique lacum cinxere Bycen. non defuit Anxur,
 
-**69** non Rhadalo cum fratre Sidon, AcesinaqueSydon Acesinaque Bon. 2, sidonya caesinaque V, Fidon Iacesinaque C laevo
+**69** non Rhadalo cum fratre Sidon, Acesinaque laevo
 
 **70** omine fatidicae Phrixus movet agmina cervae.
 
@@ -7575,23 +7573,23 @@ title: Argonautica
 
 **72** ante aciem celsi vehitur gestamine conti
 
-**73** maesta nec in saevaenec in saeuae cod. Burmanni, Ald., necis saeuae V | lucos Heinsius, luco V lucos reditura Dianae.
+**73** maesta nec in saevae lucos reditura Dianae.
 
-**74** movit et Hylaea supplex cum gente Syenensyenen M 2, syrenen V, Sirenem C Bon. 1 post
+**74** movit et Hylaea supplex cum gente Syenen
 
 **75** impia germani praetentans volnera Perses.
 
 **76** densior haut usquam nec celsior extulit ullas
 
-**77** silva trabes, fessaeque prius rediere sagittae versus intercidit in VC, in TN hic versus legitur Arboris ad summum quam pervenere cacumen, quem omnes ante Thilonem editores receperunt
+**77** silva trabes, fessaeque prius rediere sagittae
 
 **79** quin et ab Hyrcanis Titanius expulit antris
 
 **80** Cyris in arma viros, plaustrisque ad proelia cunctas
 
-**81** CoelaletaeCoelaletae Lemaire, Coeia laetae V, Coraletae C | sutilis N, futtilis V traxere manus; ibi sutilis illis
+**81** Coelaletae traxere manus; ibi sutilis illis
 
-**82** estest Loehbach, Et V | uellere V, uulnere C domus et crudo residens sub vellere coniunx
+**82** est domus et crudo residens sub vellere coniunx
 
 **83** et puer e primo torquens temone cateias.
 
@@ -7615,11 +7613,11 @@ title: Argonautica
 
 **93** indigenas sed rite duces et prisca suorum
 
-**94** factafacta vulgo, Fata V canunt veterumque viris hortamina Iaudes.
+**94** facta canunt veterumque viris hortamina Iaudes.
 
-**95** ast ubi Sidonicas inter pedes aequat ad aequat cf. Thes. l. L. I 1022, 38–45 habenas,
+**95** ast ubi Sidonicas inter pedes aequat habenas,
 
-**96** illinc iuratos in seinse V, secum C Ald. | aeabatarnas V. Exabatarnas C a Exabaternas C b trahit Aea Batarnas,
+**96** illinc iuratos in se trahit Aea Batarnas,
 
 **97** quos, duce Teutagono, crudi mora corticis armat
 
@@ -7627,11 +7625,11 @@ title: Argonautica
 
 **99** nec procul albentes gemina ferit aclyde parmas,
 
-**100** hiberni qui terga Novaenouae V, Norae C, Noae Iunt. 1, sed cf. IV 719 gelidumque securi
+**100** hiberni qui terga Novae gelidumque securi
 
 **101** eruit et tota non audit Alazona ripa.
 
-**102** quosque Taras niveumque aut ante aut post hunc versum nonnulla exciderunt | Tarax C | niueumque M, niuemque V ferax Euarchus olorum.
+**102** quosque Taras niveumque ferax Euarchus olorum.
 
 **103** te quoque venturis, ingens Ariasmene, saeclis
 
@@ -7639,7 +7637,7 @@ title: Argonautica
 
 **105** undique falcatos deserta per aequora currus.
 
-**106** insequitur DrangaeaDrangaea Iunt. 1, dranc(a)ea VC phalanx claustrisque profusi
+**106** insequitur Drangaea phalanx claustrisque profusi
 
 **107** Caspiadae, quis turba canum non segnius acres
 
@@ -7651,19 +7649,19 @@ title: Argonautica
 
 **111** terribilesque innexa iubas ruit agmine nigro
 
-**112** latratuqueLatratuque M 2, Latratu V cohors, quanto sonat horrida Ditis
+**112** latratuque cohors, quanto sonat horrida Ditis
 
-**113** ianua vel superas Hecates comitatus in auras.in auras cod. Burmanni, in aulas V, ad aulas C a, ad auras C b
+**113** ianua vel superas Hecates comitatus in auras.
 
 **114** ducit ab Hyrcanis vates sacer agmina lucis
 
-**115** Vanus; eum Scythiae iam tertia viderat aetasVarus C | aestas MC, aestas V
+**115** Vanus; eum Scythiae iam tertia viderat aetas
 
 **116** magnanimos Minyas Argoaque vela canentem.
 
 **117** illius et dites monitis spondentibus Indi
 
-**118** et centumgeminae LageaLagea Gronovius, lagae V, longaeua C novalia Thebes
+**118** et centumgeminae Lagea novalia Thebes
 
 **119** totaque Riphaeo Panchaia rapta triumpho.
 
@@ -7671,49 +7669,49 @@ title: Argonautica
 
 **121** quas Otaces, quas Latris agunt et raptor amorum
 
-**122** Neurus, et expertes canentis IazygesIazyges Burmann, iazies V aevi.
+**122** Neurus, et expertes canentis Iazyges aevi.
 
-**123** namque ubi iam viresque †aliaet† notusqueuiresque alie V, fort. v. lassae vel tardae, verumtamen verbum velut labant praetulerim | notosque C refutat
+**123** namque ubi iam viresque †aliaet† notusque refutat
 
-**124** arcusarcus CT 1 Pius, Argus V et inceptus iam lancea temnit erilis,
+**124** arcus et inceptus iam lancea temnit erilis,
 
-**125** magnanimis mosmos Iunt. 1, mox V | dictus V, intellego edictus ab avis, ductus Pius dictus avis, haut segnia mortis
+**125** magnanimis mos dictus avis, haut segnia mortis
 
-**126** iura pati, dextra sed carae occumbere prolisprolis M 2, proles V
+**126** iura pati, dextra sed carae occumbere prolis
 
 **127** ense dato; rumpuntque moras natusque parensque,
 
 **128** ambo animis, ambo miseri tam fortibus actis.
 
-**129** hic et odoratoodorato CM 2 T 1, odorata V Mycael V, Micelae C, verum nescitur spirantes crine †Mycael
+**129** hic et odorato spirantes crine †Mycael
 
 **130** Cessaeaeque manus, et qui tua iugera nondum
 
 **131** eruis, ignotis insons Arimaspe metallis,
 
-**132** doctus et Auchates patulo vaga vincula gyrogyro Parrhasius (C?), cyro V
+**132** doctus et Auchates patulo vaga vincula gyro
 
 **133** spargere et extremas laqueis adducere turmas.
 
 **134** non ego sanguineis gestantem tympana bellis
 
-**135** ThyrsagetenThyrsagetem N, Tyrsaga& V clare exhibet cinctumque vagis pos terga silebo
+**135** Thyrsageten cinctumque vagis pos terga silebo
 
-**136** pellibus et nexas viridantemuiridantem M, uiritantem V, vibrantem Bulaeus floribus hastas.
+**136** pellibus et nexas viridantem floribus hastas.
 
 **137** fama, ducem Iovis et Cadmi de sanguine Bacchum
 
 **138** hac quoque turiferos, felicia regna, Sabaeos,
 
-**139** hac Arabas fudisse manu;manu Pius, manum V mox rumperet Hebri
+**139** hac Arabas fudisse manu; mox rumperet Hebri
 
-**140** cum vada, Thyrsagetasuada V, iuga C | Thyrsagetas Pius, thyrsagatas V gelida liquisse sub arcto.
+**140** cum vada, Thyrsagetas gelida liquisse sub arcto.
 
 **141** illis omnis adhuc veterum tenor et sacer aeris
 
 **142** pulsus et eoae memoratrix tibia pugnae.
 
-**143** iungit opes EmodaEmoda Bon. 2, emeda V, Eumeda C suas; sua signa secuti
+**143** iungit opes Emoda suas; sua signa secuti
 
 **144** Exomatae Torynique et flavi crine Satarchae:
 
@@ -7731,7 +7729,7 @@ title: Argonautica
 
 **151** Centoras et diros magico terrore Choatras.
 
-**152** omnibus in superos saevus sonor,sonor Sudhaus, cf. VII 389, onor V, honor M, vulgo | omnibus etiam V exhibet | artes M 2, artus V omnibus artes
+**152** omnibus in superos saevus sonor, omnibus artes
 
 **153** monstrificae: nunc vere novo compescere frondes,
 
@@ -7741,11 +7739,11 @@ title: Argonautica
 
 **156** sollicitat nec Martis amor, sed fama Cytaeae
 
-**157** virginis et paribus spirans Medea venenis.uenenis V 2, ueniens V 1 (i nunc erasa)
+**157** virginis et paribus spirans Medea venenis.
 
 **158** gaudet Averna palus, gaudet iam nocte quieta
 
-**159** portitor et tutotuto Gronovius, toto V veniens Latonia caelo.
+**159** portitor et tuto veniens Latonia caelo.
 
 **160** ibant et geminis aequantes cornibus alas
 
@@ -7755,19 +7753,19 @@ title: Argonautica
 
 **163** nec tot ab extremo fluctus agit aequore nec sic
 
-**164** fratribus adversa Boreas respondetrespondet M, respondit V ab unda
+**164** fratribus adversa Boreas respondet ab unda
 
-**165** aut is apud fluvios volucrum canor,vol. canor Heinsius, uol. clamor V, clamor volucrum Schenkl, uolucrum quatit aethera clamor C aethera quantus
+**165** aut is apud fluvios volucrum canor, aethera quantus
 
-**166** tunc lituum concentusconcentus C Bon. 2, conceptus V | adit V, agit C adit lymphataque miscet
+**166** tunc lituum concentus adit lymphataque miscet
 
 **167** milia, quot foliis, quot fioribus incipit annus.
 
-**168** ipse rotis gemit ictusictus Heinsius, intus V ager tremibundaque pulsu
+**168** ipse rotis gemit ictus ager tremibundaque pulsu
 
-**169** nutat humus, quatit ut saevo cum fulminefulmine T, flumine V | phlegram M, phlegra V Phlegram
+**169** nutat humus, quatit ut saevo cum fulmine Phlegram
 
-**170** Iuppiter atque imis Typhoeatyphoea (typhea V) uerberat VC, Typhona reverberat Bon. 2, vulgo, sed cf. Hom. II II 782 sq., unde conicias atque Arimis verberat arvis.
+**170** Iuppiter atque imis Typhoea verberat arvis.
 
 **171** Prima tenent illinc patriis Absyrtus in armis
 
@@ -7779,7 +7777,7 @@ title: Argonautica
 
 **175** nec pater horrentem colubris vultuque tremendam
 
-**176** Gorgoneo; nec seminecessemineces M, seminetis V ostendere crines
+**176** Gorgoneo; nec semineces ostendere crines
 
 **177** tempus adhuc, primasque sinit concurrere pugnas.
 
@@ -7787,11 +7785,11 @@ title: Argonautica
 
 **179** Gaudia Tisiphoneque caput per nubila tollens
 
-**180** ad sonitum litui mediaque altissimaatsonitū V (sonitū add. V 1) pugna,
+**180** ad sonitum litui mediaque altissima pugna,
 
-**181** necdum claraclara V, certa Pius | addat Bon. 1, addant V quibus sese Fuga mentibus addat.
+**181** necdum clara quibus sese Fuga mentibus addat.
 
-**182** Illi ubi consertis iunxereiunxere M, iuxere V frementia telis
+**182** Illi ubi consertis iunxere frementia telis
 
 **183** agmina virque virum galeis adflavit adactis,
 
@@ -7799,53 +7797,53 @@ title: Argonautica
 
 **185** corporaque, alternus cruor alternaeque ruinae;
 
-**186** volvit ager galeas et thorax erigitegerit C imbres
+**186** volvit ager galeas et thorax erigit imbres
 
 **187** sanguineos; hinc barbarici glomerantur ovatus,
 
 **188** hinc gemitus, mixtaeque virum cum pulvere vitae.
 
-**189** Caspius AeaeumAetaeum C correpto crine Monesen
+**189** Caspius Aeaeum correpto crine Monesen
 
-**190** abstulit; hinchunc Bon. 2 pariter Colchi Graique sequuntur
+**190** abstulit; hinc pariter Colchi Graique sequuntur
 
 **191** missilibus; rapit ille necem praedamque relinquit,
 
 **192** nec sociis iam cura viri. Dipsanta Caresus
 
-**193** StrymonaqueStrimonaque Bon. l, Strymoniaque V obscura spargentem vulnera funda
+**193** Strymonaque obscura spargentem vulnera funda
 
-**194** deicit; Albani cadit ipse CremedonisChremedonis CM 2 T 2, chremodonidis V hasta,
+**194** deicit; Albani cadit ipse Cremedonis hasta,
 
-**195** iamque latet currusque super turmaeque feruntur. et
+**195** iamque latet currusque super turmaeque feruntur.
 
-**196** Processere Melas et Idasmenus;et Idasmenus Bon. 2 fidasmenus V incipit hasta deerant in C
+**196** Processere Melas et Idasmenus; incipit hasta
 
-**197** ante Melas, levis ast abies elusit utrumque.utrunque M, utrimque V
+**197** ante Melas, levis ast abies elusit utrumque.
 
-**198** ensibus indeEnsibus inde M, Ensibus iniibus V (sibus delere voluisse videtur V 1) | aere citato M, aerigitato V ruunt; prior occupat aere citato
+**198** ensibus inde ruunt; prior occupat aere citato
 
 **199** cassidis ima Melas; infracta est vulnere cervix.
 
-**200** mixta perit virtus:Mixta perit uirtus habet Par. | Oebreus C nescit cui debeat Ocheus
+**200** mixta perit virtus: nescit cui debeat Ocheus
 
 **201** aut cui fata Tyres. dum sibila respicit Iron
 
-**202** cuspidisCupidis V Argivae, Pyliam latere accipit hastam.
+**202** cuspidis Argivae, Pyliam latere accipit hastam.
 
 **203** Viderat Hyrcanos paribus discurrere fratres
 
 **204** Castor equis, pater armento quos dives ab omni
 
-**205** nutrierat fatisquefatisque M 2, fratris que V | monstrarat M, monstrat V, viam molnstrarat iniquis.
+**205** nutrierat fatisque viam molnstrarat iniquis.
 
 **206** tum magis atque magis peditem candore notato
 
-**207** Tyndariden incendit amor, simul obvius hastamhastam Bon. 1, hasta V
+**207** Tyndariden incendit amor, simul obvius hastam
 
-**208** pectus in adversum ... iacitgleacit V, grauiter iacit C, Gelae iacit codex regius, T 1, desideratur nomnen propr. alipedemque
+**208** pectus in adversum ... iacit alipedemque
 
-**209** † constititconstitit (corripit Wagner) Vix mutandum (cf. VIII 133); deesse vid. us. eius sententiae corripit et iam barbarico sublimis in ostro constitit excusso victor duce; risit ab alta
+**209** † constitit excusso victor duce; risit ab alta
 
 **210** nube pater prensisque equitem cognovit habenis.
 
@@ -7855,13 +7853,13 @@ title: Argonautica
 
 **213** 'hunc age vel caeso comitem me reddite fratri,
 
-**214** primus et hic nostra sonipes cadatcadat MT, cadet V impius hasta,
+**214** primus et hic nostra sonipes cadat impius hasta,
 
 **215** credita qui misero non rettulit arma parenti
 
 **216** meque venit contra captivaque terga ministrat.'
 
-**217** dixerat; Actaei sed eum prior hasta PhaleriPhaleri C, parenti V
+**217** dixerat; Actaei sed eum prior hasta Phaleri
 
 **218** deicit; ad socias sonipes citus effigit alas.
 
@@ -7871,37 +7869,37 @@ title: Argonautica
 
 **221** diviso totidemque fretis? cadit impiger una
 
-**222** inguine transfosso clari Taulantis alumnusalumnus M, alumnis V
+**222** inguine transfosso clari Taulantis alumnus
 
 **223** semidea genetrice Tages, cui plurima silvis
 
 **224** pervigilat materna soror cultusque laborat.
 
-**225** tenuia non ilium candentiscandentis V, splendentis C | lini C, cod. Harlesiinili V carbasa lini,
+**225** tenuia non ilium candentis carbasa lini,
 
 **226** non auro depicta chlamys, non flava galeri
 
 **227** caesaries pictoque iuvant subtegmine bracae.
 
-**228** ianque novus mediae stupefacta per agmina pugnae hic legitur in M, post 245 in V
+**228** ianque novus mediae stupefacta per agmina pugnae
 
 **229** vadit eques densa spargens hastilia dextra,
 
-**230** fulmineumque viris †profundis†pro fundis diiunxit Koestlin (intellegens glandes fundae ut Sil. Pun. X 151), proturbans C, fort. procurrens ingeriit ensem
+**230** fulmineumque viris †profundis† ingeriit ensem
 
 **231** huc alternus et huc; cum saevior ecce iuventus
 
-**232** Sarmaticaeque coireSarmaticaeque coire Sudhaus, Sarmaticae coire V, Sarmaticae coiere M 2, vulgo | fremitusque Bon. 1, fremituque V manus fremitusque virorum
+**232** Sarmaticaeque coire manus fremitusque virorum
 
 **233** semiferi; riget his molli lorica catena;
 
-**234** id quoque tegmen equis; at equiequis at equi Ald., quis age qui V, equis agitur C | armos M 2, armas V, arma C porrecta per armos
+**234** id quoque tegmen equis; at equi porrecta per armos
 
 **235** et caput ingentem campis hostilibus umbram
 
 **236** fert abies obnixa genu vaditque virumn vi,
 
-**237** vadit equum, docilis relegirelegi M, religi V docilisque relinqui
+**237** vadit equum, docilis relegi docilisque relinqui
 
 **238** atque iterum medios non altior ire per hostes.
 
@@ -7915,21 +7913,21 @@ title: Argonautica
 
 **243** Campesus impacta latus inter et ilia quercu
 
-**244** tollitur ac mediam moriens descenditdescendit Bon. 1, discendit V in hastam.
+**244** tollitur ac mediam moriens descendit in hastam.
 
 **245** Oebasus infestum summisso poplite Phalcen
 
 **246** evasisse ratus laevum per luminis orbem
 
-**247** transigitur; teneraetenerae C lunt. 1, tenero V | liquuntur CT 1, cod. Bon., linquuntur V, tinguuntur Ph. Wagner liquuntur vulnere malae.
+**247** transigitur; tenerae liquuntur vulnere malae.
 
 **248** contra autem geminis fidens thoracibus ictum
 
-**249** sustinetsustinet Francius, Sustulit V et gladio Sibotes ferit ultima teli,
+**249** sustinet et gladio Sibotes ferit ultima teli,
 
 **250** nequiquam; iam cuspis inest, nec fragmina curat
 
-**251** Ambenus et trunco medium subitsubit M, subi V Ocrea ligno.
+**251** Ambenus et trunco medium subit Ocrea ligno.
 
 **252** seminecem Taxes Hypanin vehit atque remissum
 
@@ -7949,7 +7947,7 @@ title: Argonautica
 
 **260** qualem populeae fidentem nexibus umbrae
 
-**261** siquis avem summi deducat ab aereaere V, arbore C rami,
+**261** siquis avem summi deducat ab aere rami,
 
 **262** ante manu tacita cui plurima crevit harundo;
 
@@ -7957,15 +7955,15 @@ title: Argonautica
 
 **264** implorat ramos atque inrita concitat alas.
 
-**265** Parte alia infestis (nam fors ita iunxitfors ita iunxit CT 2 Bon. 2, forsitan iuncxit V | in armis T 2 Bon. inanis V ) in armis
+**265** Parte alia infestis (nam fors ita iunxit) in armis
 
-**266** Styrus adest, laetusque virum cognoscit Anausis,Anausis Dureau de Lamalle, anausim V
+**266** Styrus adest, laetusque virum cognoscit Anausis,
 
 **267** et prior 'en cuius thalamis Aeetia virgo
 
 **268** dicta manet nostrosque feret qui victor amores.
 
-**269** non', ait,En ait C 'invitoque gener mutabere patri.'
+**269** non', ait, 'invitoque gener mutabere patri.'
 
 **270** tum simul adversas conlatis cursibus hastas
 
@@ -7985,11 +7983,11 @@ title: Argonautica
 
 **278** voxque repressa gelu percussaque vertice tellus.
 
-**279** Hinc animos acies auget, magnoque dolorismagnoque doloris C, magnosque dolores V
+**279** Hinc animos acies auget, magnoque doloris
 
 **280** turbine Gesandrum Mavors rapit: ille morantes
 
-**281** increpat et stricto sic urgetsic urget Bon. 1, sigurgit V Iazygas ense:
+**281** increpat et stricto sic urget Iazygas ense:
 
 **282** 'nempe omnes cecidere senes, nempe omnis ademptus
 
@@ -7997,7 +7995,7 @@ title: Argonautica
 
 **284** corripuit fregitque animos atque abstulit iras?
 
-**285** aut mecum mediam, iuvenes, agite ite per urbemurbis Madvig
+**285** aut mecum mediam, iuvenes, agite ite per urbem
 
 **286** Argolicamque manum aut cars occumbite natis.'
 
@@ -8009,7 +8007,7 @@ title: Argonautica
 
 **290** tarda tibi turpesque moras non segnius ipsi
 
-**291** paruimus parvique eademeadem Baehrens, eam V, viam C Ald. | didicere M, dedicere V didicere nepotes.'
+**291** paruimus parvique eadem didicere nepotes.'
 
 **292** haec ait, auditusque Erebo. tunc corripit ensem
 
@@ -8019,7 +8017,7 @@ title: Argonautica
 
 **295** Phasidis Arctois Aquites errabat in armis
 
-**296** (populeus cui frontisfrontis Baehrens, frondis V honor conspectaque glauco
+**296** (populeus cui frontis honor conspectaque glauco
 
 **297** tempora nectuntur ramo), te, Cyrne, parentis
 
@@ -8027,7 +8025,7 @@ title: Argonautica
 
 **299** iamque omnes impune globos diversaque lustrans
 
-**300** agmina non usquam natum videt,non usquam natum videt Loehbach, non usquam uidet V, quem quaerit nusquam uidet C | utque Burmann, adque V | instat Heinsius utque iterum intrat
+**300** agmina non usquam natum videt, utque iterum intrat
 
 **301** vociferans, iterum belli diversa peragrat,
 
@@ -8037,13 +8035,13 @@ title: Argonautica
 
 **304** ille manum trepidans atque inrita sacra tetendit
 
-**305** 'te' que 'per hanc', inquit, 'genitorinquit genitor C, genitor inquit V tibi si manet, oro
+**305** 'te' que 'per hanc', inquit, 'genitor tibi si manet, oro
 
-**306** canitiem, compesce minas et si tibi natus,si tibi natus Koestlin, sicubi nato V
+**306** canitiem, compesce minas et si tibi natus,
 
 **307** parce meo.' dixit. contra sic victor adacto
 
-**308** ense refert:refert T, refer V 'genitor, turpi durare senecta
+**308** ense refert: 'genitor, turpi durare senecta
 
 **309** quem mihi reris adhuc, ipse hac occumbere dextra
 
@@ -8051,9 +8049,9 @@ title: Argonautica
 
 **311** et tibi si pietas nati, si dextra fuisset,
 
-**312** haut medii precibus tererestereres T, terere V | tempera Bon. 1, tempore V nunc tempora belli,
+**312** haut medii precibus tereres nunc tempora belli,
 
-**313** praeda future canum. iuveni sors pulchrior omnis:omnis Lennep, omni V
+**313** praeda future canum. iuveni sors pulchrior omnis:
 
 **314** et certasse manu decet et caruisse sepulchre.'
 
@@ -8063,9 +8061,9 @@ title: Argonautica
 
 **317** Te quoque, Canthe, tui non inscia funeris Argo
 
-**318** flevit abab T, ad V invita rapientem tela carina.
+**318** flevit ab invita rapientem tela carina.
 
-**319** iam Scythicos miserande sinus, iam Phasidis amnemamnem M, amne V
+**319** iam Scythicos miserande sinus, iam Phasidis amnem
 
 **320** contigeras, nec longa dies, ut capta videres
 
@@ -8079,75 +8077,75 @@ title: Argonautica
 
 **325** altricemque nivem festinaque taedia vitae.
 
-**326** non nos aut levibus componere bracchiabrachia M, brahia V remis
+**326** non nos aut levibus componere bracchia remis
 
 **327** novimus aut ventos opus exspectare ferentes;
 
-**328** imus equis, quaqua M 2, quam V | aequore M, aequora V vel medio riget aequore pontus
+**328** imus equis, qua vel medio riget aequore pontus
 
 **329** vel tumida fremit Hister aqua; nec moenia nobis
 
 **330** vestra placent: feror arctois nunc liber in arvis
 
-**331** cuncta tenens, mecum omnis amor, iacturaque plaustriamori arcturaque plustri V, corr. M 1 ut vid.
+**331** cuncta tenens, mecum omnis amor, iacturaque plaustri
 
-**332** sola, nee hac longum victor potiere rapina. cf. Aen. X 739 sq.
+**332** sola, nee hac longum victor potiere rapina.
 
 **333** ast epulae quodcumque pecus, quaecumque ferarum.
 
 **334** mitte Asiae, mitte Argolicis mandata colonis,
 
-**335** ne trepident;trepident Bon. 1, trepidant V | relinquam T 1 Bon. 2, relinquat V, relinquant C numquam has hiemes, haec saxa relinquam,
+**335** ne trepident; numquam has hiemes, haec saxa relinquam,
 
-**336** Martis agros, ubi tam saevoubi tam saeuo T, ubitam saeui V, (agro) subitam saeui C duravimus amne
+**336** Martis agros, ubi tam saevo duravimus amne
 
-**337** progeniem natosque rudes, ubi copiacopia M, capia V leti
+**337** progeniem natosque rudes, ubi copia leti
 
 **338** tanta viris. sic in patriis bellare pruinis
 
 **339** praedarique iuvat, talemque hanc accipe dextram.'
 
-**340** dixit, et EdonisEdonis Pius, aedoniis V nutritum missile ventis
+**340** dixit, et Edonis nutritum missile ventis
 
-**341** concitat; itit Bon. 1, ad V medium per pectus et horrida nexu
+**341** concitat; it medium per pectus et horrida nexu
 
 **342** letifer aera chalybs. trepidus super advolat Idas
 
-**343** ac simul Oenides pariterque MenoetiusMenoetius Bon 1, meonetius V et qui
+**343** ac simul Oenides pariterque Menoetius et qui
 
-**344** Bebrycio propiuspropius sc. advolat, satis dure remeavit ab hospite victor.
+**344** Bebrycio propius remeavit ab hospite victor.
 
 **345** at vero ingentem Telamon procul extulit orbem
 
-**346** exanimem te, Canthe, tegens; ceu saeptus in artoarto vulgo, arcto V
+**346** exanimem te, Canthe, tegens; ceu saeptus in arto
 
-**347** dat catulos post terga leo, sic comminus astatadstat Baehrens, hasta V, hastam Carrio
+**347** dat catulos post terga leo, sic comminus astat
 
 **348** Aeacides gressumque tenet contraque ruentem
 
 **349** septeno validam circumfert tegmine molem.
 
-**350** nec minus hinc urget Scythiae manus armaquearmaque M, arma V Canthi
+**350** nec minus hinc urget Scythiae manus armaque Canthi
 
 **351** quisque sibi et Graio poenam de corpore poscens.
 
 **352** arduus inde labos, medioque in corpore pugna
 
-**353** conseritur. magno veluti cum turbineturbine Bon. 1, turmine V sese
+**353** conseritur. magno veluti cum turbine sese
 
 **354** ipsius Aeoliae frangunt in limine venti,
 
 **355** quem pelagi rabies, quem nubila, quemque sequatur
 
-**356** ille dies: obnixa virum sic comminus haeret certant, cui tempestatum regimen omnisque ille dies cedat
+**356** ille dies: obnixa virum sic comminus haeret
 
-**357** pugna, nec arreptoarrepto Bon. 1, arreptos V | pelli Burmann, belli V, uelli T pelli de corpore possunt.
+**357** pugna, nec arrepto pelli de corpore possunt.
 
-**358** ut bovisUt bouis T, Et uobis V | frangit V, frangere T exuvias multo qui frangit olivo
+**358** ut bovis exuvias multo qui frangit olivo
 
 **359** dat famulis, tendunt illi tractuque vicissim
 
-**360** taurea terga dormant, pingui fluit unguineunguine Bon. 1, inguine V | tellus M, tellis V, pellis Damstē tellus:
+**360** taurea terga dormant, pingui fluit unguine tellus:
 
 **361** talis utrimque labos, raptataque limite in arto
 
@@ -8159,11 +8157,11 @@ title: Argonautica
 
 **365** colla viri et molles galeae Gesander habenas,
 
-**366** insonuit quaequae T 1, Bon. 2 qua V lapsa solo dextramque fefellit.
+**366** insonuit quae lapsa solo dextramque fefellit.
 
 **367** ille iterum in clipei septemplicis improbus orbem
 
-**368** arietat etArietat et MC, Arietate V Canthum sequitur Canthumque reposcit,
+**368** arietat et Canthum sequitur Canthumque reposcit,
 
 **369** quem manus a tergo socium rapit atque receptum
 
@@ -8177,11 +8175,11 @@ title: Argonautica
 
 **374** 'heu pudor.' inde Lycen ferit ad confine papillae,
 
-**375** inde Thoen, qua pelta vacat; iamque ibat in HarpenHarpen vulgo, harben V (h add. V 1)
+**375** inde Thoen, qua pelta vacat; iamque ibat in Harpen
 
-**376** vixdumVixdum M, Vixtum V prima levi ducentem cornua nervo,
+**376** vixdum prima levi ducentem cornua nervo,
 
-**377** et labentiset labentis Heinsius, Inlabentis V, Illabentis C, fort. iam labentis (cf. iamque 375) | Menippen Balbus, enhippen V, et Henippen C equi tendentem frena Menippen:
+**377** et labentis equi tendentem frena Menippen:
 
 **378** cum regina gravem nodis auroque securem
 
@@ -8191,7 +8189,7 @@ title: Argonautica
 
 **381** it globus; ille diu coniectis sufficit hastis,
 
-**382** quin etiam gravior nutuque duo hemistichia excidisse perspexit Leo; sic suppl. Sudhaus nutuque inclinis Acastum ense petit visuque carens e. I.
+**382** quin etiam gravior nutuque
 
 **382a** carens exterruit Idam;
 
@@ -8199,7 +8197,7 @@ title: Argonautica
 
 **384** quae scopulis trabibusque diu confectaque flammis
 
-**385** procubuit tandemtandem M 2 T 1, tamen V | protulit V, idem aiis verbis expressit Stat. Theb. IX 556, propulit MT, vulgo atque ingentem protulit urbem.
+**385** procubuit tandem atque ingentem protulit urbem.
 
 **386** Ecce locum tempusque ratus iamque et sua posci
 
@@ -8213,7 +8211,7 @@ title: Argonautica
 
 **391** Iuppiter atque omnes fluvium si fundat habenas,
 
-**392** ardua Parnasi lateant iuga, cesseritcesserit M, gesserit V post Othrys
+**392** ardua Parnasi lateant iuga, cesserit Othrys
 
 **393** piniger et mersis decrescant rupibus Alpes:
 
@@ -8225,9 +8223,9 @@ title: Argonautica
 
 **397** ter centum saevis squalentem sustulit hydris,
 
-**398** quam soli vidistis equi. pavor occupat ingens versum deesse suspicor
+**398** quam soli vidistis equi. pavor occupat ingens
 
-**399** excussis in terga viris, diramque retorquentretorquent Columbus, retorquet V
+**399** excussis in terga viris, diramque retorquent
 
 **400** in socios non sponte luem. tunc ensibus uncis
 
@@ -8237,7 +8235,7 @@ title: Argonautica
 
 **403** Tisiphone regesque movet, quorum agmina pilis,
 
-**404** quorum aquilisaquilis M 2, aqua lis V | parentes Burmann, parentis V utrimque micant, eademque parentes
+**404** quorum aquilis utrimque micant, eademque parentes
 
 **405** rura colunt, idem lectos ex omnibus agris
 
@@ -8245,7 +8243,7 @@ title: Argonautica
 
 **407** sic modo concordes externaque fata petentes
 
-**408** PalladiiPalladii M, Palladit V rapuere metus, sic in sua versi
+**408** Palladii rapuere metus, sic in sua versi
 
 **409** funera concurrunt dominis revocantibus axes.
 
@@ -8253,69 +8251,69 @@ title: Argonautica
 
 **411** eiecere noti, Libyco nec talis imago
 
-**412** litore, cum fractas involvunt aequoraaequora Bon. 1, aequore V puppes.
+**412** litore, cum fractas involvunt aequora puppes.
 
-**413** hinc biiuges, illinc artusartus M 2 T, arcus V | tendutur V tenduntur eriles,
+**413** hinc biiuges, illinc artus tenduntur eriles,
 
 **414** quos radii, quos frena secant, trahiturque trahitque
 
 **415** currus caede madens, atroque in pulvere regum
 
-**416** visceraViscera M, Vicera V nunc aliis, aliis nunc curribus haerent.
+**416** viscera nunc aliis, aliis nunc curribus haerent.
 
-**417** haud usquamHaut usquam V, augescunt dubitanter Sudhaus | neque in pestere uinctos V, neque cura cauere C, neque Graia morantur Sudhaus ad sententiam aptius Colchorum animi neque .....
+**417** haud usquam Colchorum animi neque .....
 
-**418** tela, sed implicitos miseraque in peste revinctosin ueste reuinctos C
+**418** tela, sed implicitos miseraque in peste revinctos
 
-**419** confodiunt ac forma necis non altera surgit,altera surgit Bon. 1, aliter asurgit V
+**419** confodiunt ac forma necis non altera surgit,
 
 **420** quam cervos ubi non Umbro venator edaci,
 
 **421** non penna petit, haerentes sed cornibus altis
 
-**422** invenlt et caeca constrictos excipitexcipit Pius, accipit VC ira.
+**422** invenlt et caeca constrictos excipit ira.
 
 **423** ipse recollectis audax Ariasmenus armis
 
-**424** desilit; illum acies curvae secat undique falcisfalcis M 2, falces V
+**424** desilit; illum acies curvae secat undique falcis
 
-**425** partiturquePartiturque V 2, Patiturque V rotis, atque inde furentia raptus
+**425** partiturque rotis, atque inde furentia raptus
 
 **426** in iuga Circaeos tetigit non amplius agros.
 
 **427** Talia certatim Minyae sparsique Cytaei
 
-**428** funera miscebant campis Scythiamque premebant,premebant T, premebat V
+**428** funera miscebant campis Scythiamque premebant,
 
 **429** cum Iuno Aesonidae non hanc ad vellera cernens
 
 **430** esse viam nec sic reditus regina parandos
 
-**431** extremam moliturmolitur vulgo, mollitur V opem, funesta prius quam
+**431** extremam molitur opem, funesta prius quam
 
-**432** consilia ac saevassaeuas V, seras C aperit rex perfidus iras.
+**432** consilia ac saevas aperit rex perfidus iras.
 
-**433** increpat et serisseris V, s(a)euis CM 2 Vulcanum maesta querellis,
+**433** increpat et seris Vulcanum maesta querellis,
 
-**434** cuius flammiferos videt inter regiainterregia V, inter egentia C tauros
+**434** cuius flammiferos videt inter regia tauros
 
 **435** pascua Tartaream proflantes pectore noctem.
 
 **436** haec etenim Minyas ne iungere Marte peracto
 
-**437** monstra satis iubeat Cadmei dentibus hydri, locus immerito suspectus, cf. Verg. Georg. 11 140 sq.
+**437** monstra satis iubeat Cadmei dentibus hydri,
 
-**438** ante diem timetAnte diem timet i. e. praetimet, cf. Thes. l. L. II 133, 72 sqq. | circumspicis V (corr. vid. V 1) et varias circumspicit artes.
+**438** ante diem timet et varias circumspicit artes.
 
-**439** solaSola N, Solo M animo Medea subit, mens omnis in una desunt in V uno folio exscisso
+**439** sola animo Medea subit, mens omnis in una
 
 **440** virgine, nocturnis qua nulla potentior aris.
 
-**441** illius adfatusadfatus Bury, ad fetus MNT, cod. Bon., cod. Burmanni, cf. 646, ad fremitus C, ad fatus Schenkl sparsosque per avia sucos
+**441** illius adfatus sparsosque per avia sucos
 
 **442** sidera fixa pavent et avi stupet orbita Solis.
 
-**443** mutat agros fluviumque vias, suus alligat ignisignis MNT, cod. Burmanni, ingens T 1 Bon. 2, igni C
+**443** mutat agros fluviumque vias, suus alligat ignis
 
 **444** cuncta, sopor recolit fessos aetate parentes
 
@@ -8333,9 +8331,9 @@ title: Argonautica
 
 **451** non aliam tauris videt et nascentibus armis
 
-**452** quippe parem nec quae medionec quae medio M 2, quae om. M 1, neque quae medio C, medio qu(a)e NT, cod. Bon. (om. nec) stet in agmine flammae:
+**452** quippe parem nec quae medio stet in agmine flammae:
 
-**453** nullum mente nefas, nullosnullos M 2 N, nullus M horrescere visus.
+**453** nullum mente nefas, nullos horrescere visus.
 
 **454** quid si caecus amor saevusque accesserit ignis?
 
@@ -8345,21 +8343,21 @@ title: Argonautica
 
 **457** diva toris volucrumque exercitus omnis Amorum.
 
-**458** ac prior hancAc prior hanc C, Ac prior ac M, Ac prior cod. Bon., Atque prior NT (hanc add. T 1) placidis supplex Saturnia dictis
+**458** ac prior hanc placidis supplex Saturnia dictis
 
 **459** adgreditur veros metuens aperire timores.
 
 **460** 'in manibus spes nostra tuis omnisque potestas
 
-**461** nunc' ait; 'hoc etiam magis adnue verauera M, diua N fatenti.
+**461** nunc' ait; 'hoc etiam magis adnue vera fatenti.
 
-**462** durus utut M, et N Argolicis Tirynthius exulat oris,
+**462** durus ut Argolicis Tirynthius exulat oris,
 
-**463** mens mihi non eadem Iovis atque adversaaversa Gronovius voluntas,
+**463** mens mihi non eadem Iovis atque adversa voluntas,
 
 **464** nullus honor thalamis flammaeve in nocte priores.
 
-**465** da,Da M, At N precor, artificis blanda adspiramina formae
+**465** da, precor, artificis blanda adspiramina formae
 
 **466** ornatusque tuos terra caeloque potentes.'
 
@@ -8369,15 +8367,15 @@ title: Argonautica
 
 **469** tum vero optatis potitur, nec passa precari
 
-**470** ulterius dedit acreacre M, ecce NT | fecundaque N, facundaque M decus fecundaque monstris
+**470** ulterius dedit acre decus fecundaque monstris
 
 **471** cingula, non pietas quibus aut custodia famae,
 
 **472** non pudor, at contra levis et festina cupido
 
-**473** adfatusque malimali MC, malis NT | labantibus T 1, Sabellicus, labentibus MN T, cod. Bon. dulcisque labantibus error
+**473** adfatusque mali dulcisque labantibus error
 
-**474** et metus et demens alienialieni C, alienaque MNT, cod. Bon. cura pericli.
+**474** et metus et demens alieni cura pericli.
 
 **475** 'omne' ait 'imperium natorumque arma meorum
 
@@ -8387,9 +8385,9 @@ title: Argonautica
 
 **478** atque hinc virgineae venit ad penetralia sedis
 
-**479** ChalciopenChachiopen V | imitata V (t V 2 add. vid.) imitata sono formaque sororem.
+**479** Chalciopen imitata sono formaque sororem.
 
-**480** fulsit ab invita numennumen V, lumen Pius procul, et pavor artus
+**480** fulsit ab invita numen procul, et pavor artus
 
 **481** protinus atque ingens Aeetida perculit horror.
 
@@ -8401,7 +8399,7 @@ title: Argonautica
 
 **485** turba tenet fruiturque virum caelestibus armis,
 
-**486** tu thalamis ignavaignara C, cod. Burmanni sedes, tu sola paterna
+**486** tu thalamis ignava sedes, tu sola paterna
 
 **487** fixa domo? tales quando tibi cernere reges?'
 
@@ -8411,7 +8409,7 @@ title: Argonautica
 
 **490** ducitur infelix ad moenia summa futuri
 
-**491** nescia virgo mali et falsaefalsae Bon. 1, falsi V commissa sorori:
+**491** nescia virgo mali et falsae commissa sorori:
 
 **492** lilia per vernos lucent velut alba colores
 
@@ -8419,7 +8417,7 @@ title: Argonautica
 
 **494** floret honor, fuscis et iam Notus imminet alis.
 
-**495** hanc residens altis Hecate Perseiaperseia M, persia V lucis
+**495** hanc residens altis Hecate Perseia lucis
 
 **496** flebat et has imo referebat pectore voces:
 
@@ -8427,9 +8425,9 @@ title: Argonautica
 
 **498** a misera, ut Graias haut sponte vageris ad urbes,
 
-**499** non iniussaNon inuisa M tamen; neque te, mea cura, relinquam.
+**499** non iniussa tamen; neque te, mea cura, relinquam.
 
-**500** magna fugae monumenta dabis, spernere nec usquamusquam M, usq; V
+**500** magna fugae monumenta dabis, spernere nec usquam
 
 **501** mendaci captiva viro, meque ille magistram
 
@@ -8441,9 +8439,9 @@ title: Argonautica
 
 **505** quales instanti nimborum frigore maestae
 
-**506** succedunt ramis haerentqueherentque Bon. 1 herent V pavore volucres.
+**506** succedunt ramis haerentque pavore volucres.
 
-**507** Iamque Getae, iamque omnis Hiber DrangaeaqueDrangaeaque Maserius, dratiaque V (n suprascr. V 1) densa
+**507** Iamque Getae, iamque omnis Hiber Drangaeaque densa
 
 **508** strage cadit legio et latis prosternitur arvis.
 
@@ -8451,21 +8449,21 @@ title: Argonautica
 
 **510** inter equos saevam misero luctamine versant
 
-**511** congeriem et longislongis M, ongis V (erasa est g) campos singultibus implent.
+**511** congeriem et longis campos singultibus implent.
 
 **512** victores patrium contra paeana Geloni
 
-**513** congeminant; eadem redeunt mox gaudia victis,Redeunt tandem sua gaudia uictis habet Par.
+**513** congeminant; eadem redeunt mox gaudia victis,
 
-**514** qua habet Par. | Qua V, Quos Par. deus et melior belli respexit imago.
+**514** qua deus et melior belli respexit imago.
 
-**515** Quis tales obitus dederit, quis talia facta,fata Heinsius
+**515** Quis tales obitus dederit, quis talia facta,
 
-**516** dic age, tuque feriferi C, ueri V reminiscere, Musa, furoris.
+**516** dic age, tuque feri reminiscere, Musa, furoris.
 
 **517** Absyrtus clipei radiis curruque coruscus
 
-**518** Solis avi, cuius vibrantemuibrantem M, uiprantem V comminus hastam
+**518** Solis avi, cuius vibrantem comminus hastam
 
 **519** cernere nec galeam gentes potuere minantem,
 
@@ -8473,23 +8471,23 @@ title: Argonautica
 
 **521** accipiunt magnisque fugam clamoribus augent,
 
-**522** proterit impulsu gravis agmina corporaque altisaltis Balbus, atris V
+**522** proterit impulsu gravis agmina corporaque altis
 
-**523** sternit equis gemitusque premit spirantis acervi.premitispirantiacerui V, s suprascr. V 2
+**523** sternit equis gemitusque premit spirantis acervi.
 
 **524** nec levior comitatur Aron, horrentia cuius
 
 **525** discolor arma super squalentesque aere lacertos
 
-**526** barbarica chlamys ardetardet Pius, arcet V | tamefactaque nonnulli apud Pium acu tremefactaque vento
+**526** barbarica chlamys ardet acu tremefactaque vento
 
-**527** implet equum, qualisqualis T, qualem V | it NF, cod. Bon., ut V roseis it Lucifer alis,
+**527** implet equum, qualis roseis it Lucifer alis,
 
 **528** quem Venus inlustri gaudet producere caelo.
 
-**529** atat vulgo, Et V non inde procul Rambelus et acer Otaxes
+**529** at non inde procul Rambelus et acer Otaxes
 
-**530** dispulerant ColchosColchos T, colchus V | Armes T 1, Gronovius, armis V pariterque inglorius Armes,
+**530** dispulerant Colchos pariterque inglorius Armes,
 
 **531** fraude nova stabula et furtis adsuetus inultis
 
@@ -8499,15 +8497,15 @@ title: Argonautica
 
 **534** hac tunc attonitos facie defixerat hostes.
 
-**535** quem simul ac notaacnota Burmann, cf. Sil. Pun. VII 744, agnota V, ignota Ven. 1 formidine bella moventem
+**535** quem simul ac nota formidine bella moventem
 
 **536** vidit Aron, 'pavidos te' inquit 'nunc rere magistros
 
-**537** et stolidum petiisse pecus? non pascua nec bosnec bos T Bon. 2, nexos V, nec spes C
+**537** et stolidum petiisse pecus? non pascua nec bos
 
-**538** hic tibi; nocturnis mitte haec simulacra rapinis538 rapinis C Pius, panis V (ante p nulla litera erasa est)
+**538** hic tibi; nocturnis mitte haec simulacra rapinis
 
-**539** neve deum mihi finge; deus quoque consere dextram.'dextram T 2 Bon. 2, dextra V
+**539** neve deum mihi finge; deus quoque consere dextram.'
 
 **540** sic ait, intentaque adiutum missile planta
 
@@ -8525,7 +8523,7 @@ title: Argonautica
 
 **547** 'macte' ait 'o nostrum genus et iam certa propago
 
-**548** Aeoliae nec opina domus; satsat lunt. 1, stat V magna laborum
+**548** Aeoliae nec opina domus; sat magna laborum
 
 **549** dona fero, satis hoc visu quaecumque rependo.'
 
@@ -8535,47 +8533,47 @@ title: Argonautica
 
 **552** deicit, ilium aperit lato per pectus hiatu.
 
-**553** Argus utrumque ab equis ingenti porrigit ausoauso Sudhaus, auro V, ictu C
+**553** Argus utrumque ab equis ingenti porrigit auso
 
-**554** et Zacorum et Phalcen,Phalcen C, Maserius, palchen V | haurit M, haunit V | T 1 Bon. 2, amastri V, Amastrum C, cod. Burmanni peditem pedes haurit Amastrin.
+**554** et Zacorum et Phalcen, peditem pedes haurit Amastrin.
 
 **555** sanguinis ille globos effusaque viscera gestat
 
-**556** barbarus et cassa stridensstridens T 1 Pius, ridens VC, frendens vulgo sublabitur ira.
+**556** barbarus et cassa stridens sublabitur ira.
 
 **557** dat Calais Barisanta neci semperque propinquas
 
 **558** Riphea venali comitantem sanguine pugnas,
 
-**559** centum lectalecta V, laeta C | boum M 2 T, bouum V, hominum C boum bellator corpora, centum
+**559** centum lecta boum bellator corpora, centum
 
-**560** pactus equos;equos T 1 Bon. 2, equis V his ille animam lucemque rependit
+**560** pactus equos; his ille animam lucemque rependit
 
 **561** crudelis; tandem dulces iam cassus in auras
 
 **562** respicit ac nulla caelum reparabile gaza.
 
-**563** labiturLabitur M 2, Dabitur V intortos per tempora caerula crines
+**563** labitur intortos per tempora caerula crines
 
 **564** tunc quoque materna velatus harundine Peucon.
 
-**565** at genetrixgenetrix M, negetrix V imis pariter Maeotis ab antris
+**565** at genetrix imis pariter Maeotis ab antris
 
 **566** implevit plangore lacus natumque vocavit,
 
-**567** iam non per ripas, iamper ripas iam M, perri passiam V non per curva volantem
+**567** iam non per ripas, iam non per curva volantem
 
 **568** stagna nec in medio truncantem marmore cervos.
 
 **569** Eurytus Exomatas agit aequore. Nestoris hastae
 
-**570** immoritur primaevusprimaeuus M, prima aeuus V Helix, nec reddita caro
+**570** immoritur primaevus Helix, nec reddita caro
 
-**571** nutrimenta patri, brevibusque ereptusbrevibusque ereptus Samuelsson, breuibus ereptus V, breuibus praereptus C in annis.
+**571** nutrimenta patri, brevibusque ereptus in annis.
 
-**572** at LatagumAt Latagum C, Ablatacum V | Daraps scil. aggreditur Zetemque Daraps; illum exigit hasta,
+**572** at Latagum Zetemque Daraps; illum exigit hasta,
 
-**573** hunc fugit, ingentem subiti cum sanguinissanguinis M, guinis V | undam vulgo, unda V undam
+**573** hunc fugit, ingentem subiti cum sanguinis undam
 
 **574** vidit et extremo lucentia pectora ferro.
 
@@ -8587,15 +8585,15 @@ title: Argonautica
 
 **578** agnoscit quaeritque alios Iunone magistra,
 
-**579** conspicit Aesoniumaesonium M 2, aesomnium V longe caput, ac simul acres
+**579** conspicit Aesonium longe caput, ac simul acres
 
 **580** huc oculos sensusque refert animumque faventem,
 
-**581** nunc quo se raperet, nuncNunc M, Hunc V quo diversus abiret,
+**581** nunc quo se raperet, nunc quo diversus abiret,
 
-**582** ante videns, quotque unus equos, quot funderetquot funderet C Ald., quod fuderat V arma,
+**582** ante videns, quotque unus equos, quot funderet arma,
 
-**583** errantesqueerrantesque Sabellicus, Orantesque VC | sisteret V, sterneret C viros quam densis sisteret hastis.
+**583** errantesque viros quam densis sisteret hastis.
 
 **584** quaque iterum tacito sparsit vaga lumina vultu
 
@@ -8617,25 +8615,25 @@ title: Argonautica
 
 **593** debita cognati repetit qui vellera Phrixi,
 
-**594** nec nunc laude priorprior T 1, Sabellicus, praecor V sanguinis usquam C generis nec sanguine quisquam.
+**594** nec nunc laude prior generis nec sanguine quisquam.
 
 **595** aspicis, ut Minyas inter proceresque Cytaeos
 
 **596** emicet effulgens quantisque insultet acervis;
 
-**597** et iam vela dabit, iam litora nostra relinquet,relinquet M, relinquent V
+**597** et iam vela dabit, iam litora nostra relinquet,
 
-**598** Thessaliae felicisfelicis M 2, felices V | dilectaque M 2, delectaque V opes dilectaque Phrixo
+**598** Thessaliae felicis opes dilectaque Phrixo
 
-**599** rura petens.petens M, potens V | fort. set eatque eat atque utinam superetque labores.'
+**599** rura petens. eat atque utinam superetque labores.'
 
 **600** tantum effata magis campis intendere suadet,
 
 **601** dum datur, ardentesque viri percurrere pugnas;
 
-**602** atAt M, Ad V, ac Heinsius simul hanc dictis, ilium dea Marte secundo
+**602** at simul hanc dictis, ilium dea Marte secundo
 
-**603** impulitImpulit C, Sabellicus, Intulit V atque novas egit sub pectora vires.
+**603** impulit atque novas egit sub pectora vires.
 
 **604** ora sub excelso iamdudum vertice coni
 
@@ -8643,13 +8641,13 @@ title: Argonautica
 
 **606** nec tibi, virgo, iubae laetabile sidus Achivae,
 
-**607** acer ut autumniautumni Bon. 1, autumi V, autumno Baehrens canis iratoque vocati
+**607** acer ut autumni canis iratoque vocati
 
-**608** ab Iove fatales ad regnaregna M, gregna V iniusta cometae.
+**608** ab Iove fatales ad regna iniusta cometae.
 
 **609** nec sua Crethiden latuit dea, vimque recentem
 
-**610** sentit agi membris ac se super agmina tollit,tollit M, tellit V, tolli Heinsius
+**610** sentit agi membris ac se super agmina tollit,
 
 **611** quantus ubi ipse gelu magnoque incanuit imbre
 
@@ -8657,19 +8655,19 @@ title: Argonautica
 
 **613** tunc vero, stabulis qualis leo saevit opimis
 
-**614** luxuriansLuxurians M, Luxurias V spargitque famem mutatque cruores,
+**614** luxurians spargitque famem mutatque cruores,
 
 **615** sic neque parte ferox nec caede moratur in una
 
-**616** turbidusTurbidus M, Turpidus V | furit M, fuit V inque omnes pariter furit ac modo saevo
+**616** turbidus inque omnes pariter furit ac modo saevo
 
 **617** ense, modo infesta rarescunt cuspide pugnae.
 
-**618** tunc et terrificis undantemundantem V, sudantem C crinibus Hebrum
+**618** tunc et terrificis undantem crinibus Hebrum
 
 **619** et Geticum Priona ferit; caput eripit Auchi
 
-**620** †brachiaque†Brachiaque V, Branchiadae Heinsius, sed cf. vs. 60 sqq., unde locus sanandus vid. et vastis volvendum mittit harenis.
+**620** †brachiaque† et vastis volvendum mittit harenis.
 
 **621** At genitus Iove complerat sua fata Colaxes;
 
@@ -8679,11 +8677,11 @@ title: Argonautica
 
 **624** 'ei mihi, si durae natum subducere sorti
 
-**625** moliarmoliar Engentinus, Melior V atque meis ausim confidere regnis,
+**625** moliar atque meis ausim confidere regnis,
 
-**626** frater adhuc Amyci maerensmaerens Peerlkamp, maeret V nece cunctaque divum
+**626** frater adhuc Amyci maerens nece cunctaque divum
 
-**627** turba fremant,fremant Schenkl, fremunt V, frement Peerlkamp quorum nati cecidere cadentque.
+**627** turba fremant, quorum nati cecidere cadentque.
 
 **628** quin habeat sua quemque dies cunctisque negabo,
 
@@ -8695,19 +8693,19 @@ title: Argonautica
 
 **632** per cuneos, velut hiberno proruptus ab arcu
 
-**633** imber agensImber agens T, Inuera gens V scopulos nemorumque operumque ruinas,
+**633** imber agens scopulos nemorumque operumque ruinas,
 
-**634** donec ab ingenti bacchatus vertice montismontis M 2, montes V
+**634** donec ab ingenti bacchatus vertice montis
 
 **635** frangitur inque novum paulatim deficit amnem.
 
-**636** talis in extremo proles Iovisiouis M, iouia V emicat aevo
+**636** talis in extremo proles Iovis emicat aevo
 
-**637** et nunc magnanimosmagnanimos M, magnimos V | hypetaona M, hypetaon V Hypetaona Gessithoumque,
+**637** et nunc magnanimos Hypetaona Gessithoumque,
 
-**638** nunc Arinen Olbumque notat;notat V, cf. Sudhaus ad Aetnam pp. 153 et 186, rotat Balbus, necat C Ald. iam saucius Aprem
+**638** nunc Arinen Olbumque notat; iam saucius Aprem
 
-**639** et desertus equo Thydrum pedes exigitexigit Sudhaus, cf. 572, excidit VC, excipit vulgo hasta
+**639** et desertus equo Thydrum pedes exigit hasta
 
 **640** Phasiaden, pecoris custos de more paterni
 
@@ -8715,23 +8713,23 @@ title: Argonautica
 
 **642** hinc puero cognomen erat, famulumque ferebant
 
-**643** Phasidis intonso nequiquam crine parentes.parentes Carrio, parentis V
+**643** Phasidis intonso nequiquam crine parentes.
 
 **644** iamque aliis instabat atrox, cum diva supremas
 
 **645** rumpit iniqua colus, victorque advenit Iason.
 
-**646** excipit hunc saeva sic fatusfatus M 2, fletus V voce Colaxes:
+**646** excipit hunc saeva sic fatus voce Colaxes:
 
 **647** 'vos Scythiae saturare canes Scythiaeque volucres
 
-**648** huc miseri venistis?'uenistis CM, uenis V ait saxumque prehensum,
+**648** huc miseri venistis?' ait saxumque prehensum,
 
 **649** illius et dextrae gestamen et illius aevi,
 
 **650** concussa molitur humo, quod regia Iuno
 
-**651** flexit ad ignotum caput infletumque Monesi.Flexit in admoti caput in fatumque monesi C
+**651** flexit ad ignotum caput infletumque Monesi.
 
 **652** praeceps ille ruit; nato non depulit ictus
 
@@ -8741,7 +8739,7 @@ title: Argonautica
 
 **655** advolat Aesonides mortemque cadentis acerbat.
 
-**656** spargitur hinc miserisque venit iam notus Alanis.alanis T 1 Bon. 2, alantis V
+**656** spargitur hinc miserisque venit iam notus Alanis.
 
 **657** At regina virum (neque enim deus amovet ignem)
 
@@ -8753,19 +8751,19 @@ title: Argonautica
 
 **661** respiciens, an vera soror; nec credere falsos
 
-**662** audet atrox vultus, eademqueeademque M, eadem V in gaudia rursus
+**662** audet atrox vultus, eademque in gaudia rursus
 
-**663** labitur et saevaesaeuae M 2, saeua V trahitur dulcedine flammae.
+**663** labitur et saevae trahitur dulcedine flammae.
 
 **664** ac velut ante comas ac summa cacumina silvae
 
 **665** lenibus adludit flabris levis auster, at illum
 
-**666** protinus immanem miserae senseresensere CM 2, om. V, fort. metuere carinae,
+**666** protinus immanem miserae sensere carinae,
 
 **667** talis ad extremos agitur Medea furores.
 
-**668** interdum blandae dereptaderepta Vossius, direpta V monilia divae
+**668** interdum blandae derepta monilia divae
 
 **669** contrectat miseroque aptat flagrantia collo,
 
@@ -8785,15 +8783,15 @@ title: Argonautica
 
 **677** contigit? aut belli quantum iam restat acerbi?
 
-**678** heu quibus ignota sese pro gentegente M 2, genere V periclis
+**678** heu quibus ignota sese pro gente periclis
 
 **679** obicit.' haec fantem medio in sermone reliquit
 
 **680** incepti iam Iuno potens securaque fraudis.
 
-**681** Imminet e celsis audentiusaudentius T, audientibus V improba muris
+**681** Imminet e celsis audentius improba muris
 
-**682** virgo nec ablatamablatam Bon. 1, albatam V sequitur quaeritve sororerm.
+**682** virgo nec ablatam sequitur quaeritve sororerm.
 
 **683** at quotiens vis dura ducum densique repente
 
@@ -8813,23 +8811,23 @@ title: Argonautica
 
 **691** venerat, ut Colchos procul atque Aeetia Parthis
 
-**692** foedera donato non inrita iungeret auro.inrigiungere tauro V 1, corr. M 2
+**692** foedera donato non inrita iungeret auro.
 
-**693** tum iuvenem terris Parcae tenuereparcae tenuere M, parcae et enuere V | cytheis M, scytheis V Cytaeis
+**693** tum iuvenem terris Parcae tenuere Cytaeis
 
 **694** ac subiti Mavortis amor. simul armiger ibat
 
-**695** semivir impubemque gerens sterilemque iuventam.iuuentam M 2, iuuenta V
+**695** semivir impubemque gerens sterilemque iuventam.
 
-**696** ipse EuphrataeisEuphrataeis Sudhaus, pharetratis V, cf. Plauti Stich. 378 et passim ad frena tapetis M 2, afrenata petis V residens ad frena tapetis
+**696** ipse Euphrataeis residens ad frena tapetis
 
 **697** nunc levis infesto procurrit in agmina curru,
 
-**698** nunc fuga conversas spargitspargit M, spagit V mentita sagittas.
+**698** nunc fuga conversas spargit mentita sagittas.
 
 **699** at viridem gemmis et eoae stamine silvae
 
-**700** subligat extrema patriumpatriam C cervice tiaran
+**700** subligat extrema patrium cervice tiaran
 
 **701** insignis manicis, insignis acinace dextro;
 
@@ -8841,11 +8839,11 @@ title: Argonautica
 
 **705** concita cuspis abit; subitos ex ore cruores
 
-**706** saucia tigris agitagit C, ait V, hiat T vitamque effundit erilem;
+**706** saucia tigris agit vitamque effundit erilem;
 
 **707** ipse puer fracto pronum caput implicat arcu.
 
-**708** sanguine tunc atro chlamys ignea, sanguine vultusuultus M 2, uultis V
+**708** sanguine tunc atro chlamys ignea, sanguine vultus
 
 **709** et gravidae maduere comae, quas flore Sabaeo
 
@@ -8857,11 +8855,11 @@ title: Argonautica
 
 **713** nec labor adsiduus nec spes sua fallit alentem,
 
-**714** iamque videtiamque videt Carr. 2, Iam quidet V, Iam uidet et C primam tenero de vertice frondem,
+**714** iamque videt primam tenero de vertice frondem,
 
 **715** cum subito immissis praeceps aquilonia nimbis
 
-**716** venit hiemps nigraque evulsam tendit harena:harena M, harem V
+**716** venit hiemps nigraque evulsam tendit harena:
 
 **717** haud secus ante urbem Myraces atque ipsius ante
 
@@ -8875,21 +8873,21 @@ title: Argonautica
 
 **722** tempestate pari versis incumbere turmis:
 
-**723** ante oculos fuga serasera Sudhaus, cf. 750, fera V, torva C, foeda T, vulgo ducum largusque cadentum
+**723** ante oculos fuga sera ducum largusque cadentum
 
-**724** estest Kr., Et V, it T, vulgo cruor et currus dominis ingentibus orbi.
+**724** est cruor et currus dominis ingentibus orbi.
 
-**725** Non tulit hos Perses gemitus clademqueclademque M, cladem V suorum
+**725** Non tulit hos Perses gemitus clademque suorum
 
-**726** tergaque versa tuens hishis vulgo, hic V caelum questibus implet:
+**726** tergaque versa tuens his caelum questibus implet:
 
-**727** 'quid meme M 2, ne V iam patriis eiectum sedibus, istas
+**727** 'quid me iam patriis eiectum sedibus, istas
 
-**728** utUt M 2, Ui V struerem pugnas Scythiamque in bella moverem,
+**728** ut struerem pugnas Scythiamque in bella moverem,
 
-**729** vos superi, vos augurio lusistislusistis Heinsius, iussistis V inani?
+**729** vos superi, vos augurio lusistis inani?
 
-**730** quid fratris meritas tua,tua T 1, Carrio, tum V | omina CT, cod. Burmanni, omnia V Iuppiter, omina
+**730** quid fratris meritas tua, Iuppiter, omina
 
 **731** promisere mihi? nobis Argoa parabas
 
@@ -8897,23 +8895,23 @@ title: Argonautica
 
 **733** saeva quidem lucis miseris mora; dent tamen, oro,
 
-**734** unum ilium mihi fata diem, quo velleravellera Sudhaus, fellet V, fallat C, fallet M Achivos
+**734** unum ilium mihi fata diem, quo vellera Achivos
 
-**735** sic meritos quoque huncquoque et hunc C videam virtute superbum
+**735** sic meritos quoque hunc videam virtute superbum
 
 **736** Aesoniden tantos flentem sine honore labores.'
 
 **737** dixerat haec pectusque suis everberat armis
 
-**738** et galeam fietu, galeam singultibus implet;implet Bon. 1, implent V
+**738** et galeam fietu, galeam singultibus implet;
 
-**739** ibatIbat M, Iba V et in medii praeceps incendia belli,
+**739** ibat et in medii praeceps incendia belli,
 
 **740** ni prior adversis Pallas vidisset ab armis
 
 **741** et secum: 'ruit ecce ferox in funera Perses,
 
-**742** quem genitor Colchis solioque imponereinponere Thilo, iteponere V, reponere M fratris
+**742** quem genitor Colchis solioque imponere fratris
 
 **743** iam statuit. nostra vereor ne fraude peremptum
 
@@ -8921,27 +8919,27 @@ title: Argonautica
 
 **745** haec dicens atro nebulam diffundit amictu
 
-**746** stridentesqueStridentesque M, Stridensque V | hastas M, hastos V viri circum caput amovet hastas.
+**746** stridentesque viri circum caput amovet hastas.
 
 **747** ille super socias clementi turbine gentes
 
-**748** erigitur paulumquepaullumque C Bon. 2, paulum V levi raptatus in aethra
+**748** erigitur paulumque levi raptatus in aethra
 
 **749** iam tandem extremas pugnae defertur in oras,
 
-**750** forte ubi serus Hiber IssedoniaequeHiber Issedoniaeque Thilo, hiberis sidoniaeque V, Iber Essedoniaeque C phalanges
+**750** forte ubi serus Hiber Issedoniaeque phalanges
 
-**751** Marte carentcarent T, calent VC solisque iuvant clamoribus agmen.
+**751** Marte carent solisque iuvant clamoribus agmen.
 
 **752** Nox simul astriferas profert optabilis umbras;
 
-**753** et cadit extemploextemplo Bon. 1, exemplo V belli fragor, aegraque muris
+**753** et cadit extemplo belli fragor, aegraque muris
 
 **754** digreditur longum virgo perpessa timorem.
 
-**755** ut fera Nyctelii paulum perpaulum per V, paullisper C sacra resistunt,
+**755** ut fera Nyctelii paulum per sacra resistunt,
 
-**756** mox rapuere deum iam iam quodcumquequodcumque V, quocunque C, in quodcumque T 1, cod. regius paratae
+**756** mox rapuere deum iam iam quodcumque paratae
 
 **757** Thyiades, haut alio remeat Medea tumultu
 
@@ -8949,7 +8947,7 @@ title: Argonautica
 
 **759** semper inexpletis adgnoscit Iasona curis
 
-**760** armaque quique cava superest de casside vultum.vultum Wagner, uultus V
+**760** armaque quique cava superest de casside vultum.
 
 **1** Te quoque Thessalico iam serus ab hospite vesper
 
@@ -8961,27 +8959,27 @@ title: Argonautica
 
 **5** contigit aegra toros et mens incensa tenebris,
 
-**6** vertere tunc variosuarios M 2, uario V per longa insomnia questus
+**6** vertere tunc varios per longa insomnia questus
 
 **7** nec pereat quo scire malo, tandemque fateri
 
-**8** ausa sibi paulum,paulum V, causam Ph. Wagner medio sic fata dolore est:
+**8** ausa sibi paulum, medio sic fata dolore est:
 
-**9** 'nunc ego quo casu vel quo sic pervigilperuigil M, pergil V usque
+**9** 'nunc ego quo casu vel quo sic pervigil usque
 
 **10** ipsa volens errore trahor? non haec mihi certe
 
-**11** nox erat ante tuos,tuos M 2, uos V iuvenis fortissime, vultus.
+**11** nox erat ante tuos, iuvenis fortissime, vultus.
 
 **12** quos ego cur iterum demens iterumque recordor
 
-**13** tam magnomagno M 2, magna V discreta mari? quid in hospite solo
+**13** tam magno discreta mari? quid in hospite solo
 
 **14** mens mihi? cognati potius iam vellera Phrixi
 
 **15** accipiat, quae sola petit quaeque una laborum
 
-**16** causa viro. nam quando domos has ille reviset?reuiset M 2, reuisit V
+**16** causa viro. nam quando domos has ille reviset?
 
 **17** aut meus Aesonias quando pater ibit ad urbes?
 
@@ -8989,33 +8987,33 @@ title: Argonautica
 
 **19** nec tantas timuere vias talemque secuti
 
-**20** hunchuc Schenkl qui deinde virum: sed sic quoque talis abito.'
+**20** hunc qui deinde virum: sed sic quoque talis abito.'
 
-**21** tum iactata toro totumquetotumque Loehbach (cf. Cat. 50, 11, Prop. I 14, 21, II 22, 47, Iuv. XIII 218). tumque V | tumque expectata cubili C ut vid. experta cubile
+**21** tum iactata toro totumque experta cubile
 
-**22** ecce videt tenui candescere limen eoo;eoo M 2, eaeo V
+**22** ecce videt tenui candescere limen eoo;
 
 **23** nec minus insomnem lux orta refecit amantem,
 
-**24** quam cum languentes levisleuis C non male suppl., om V erigit imber aristas
+**24** quam cum languentes levis erigit imber aristas
 
-**25** grataquegratave Heinsius iam fessis descendunt flamina remis.
+**25** grataque iam fessis descendunt flamina remis.
 
 **26** At sua longarum Minyas iam cura viarum
 
 **27** admonet, inque ipso nequiquam tempore regem
 
-**28** laetitiaeLaetitiae M 2, Latitiae V | meritique Bon. 1, mentirique V meritique petunt. quem passus Iason
+**28** laetitiae meritique petunt. quem passus Iason
 
 **29** vota prius captasque deis accendere praedas
 
-**30** prominet atque oculos longe tenet, aurea si iamsi iam M 2, siam V
+**30** prominet atque oculos longe tenet, aurea si iam
 
 **31** pellis et oblatis clarescant atria villis.
 
-**32** Ille autem iam iamiam iam Iunt. 1, nam iam VC | parantem V 1 C, parentem V, paratas Iunt. l, vulgo vultus vocesque parantem
+**32** Ille autem iam iam vultus vocesque parantem
 
-**33** ante petitpetit Ald., aperit V, venit E. Reuss rumpitque moras inque ipsa morantis
+**33** ante petit rumpitque moras inque ipsa morantis
 
 **34** prosilit ora viri talique effunditur ira:
 
@@ -9025,23 +9023,23 @@ title: Argonautica
 
 **37** quisve mei vos tantus amor? tu prima malorum
 
-**38** causa mihi, tu, Phrixe gener. non te aequoreaequore M, equote V mersum
+**38** causa mihi, tu, Phrixe gener. non te aequore mersum
 
-**39** quo soror,soror Bon. l, sor V ut felix nullos nunc nomine Graios
+**39** quo soror, ut felix nullos nunc nomine Graios
 
-**40** nossem ego. quis regum Pelias, quis Thessalus aut quaeautque ex adque corr. V 1
+**40** nossem ego. quis regum Pelias, quis Thessalus aut quae
 
-**41** Graecia, quodnamquodnam T Bon. 2, quondam V hominum cerno genus, aut ubi cautes
+**41** Graecia, quodnam hominum cerno genus, aut ubi cautes
 
 **42** Cyaneae? venit Scythicas en hospes in oras.
 
 **43** quinquaginta Asiam (pudet heu) penetrarit Iason
 
-**44** exulibus? meque ante alios sicsic V, ut C spreverit una,
+**44** exulibus? meque ante alios sic spreverit una,
 
 **45** una ratis, spolium ut vivo de rege reportet?
 
-**46** ipsum offerre meos, ipsum iamiam Sudhaus, om. V, me C, nunc cod. Bon. pandere lucos
+**46** ipsum offerre meos, ipsum iam pandere lucos
 
 **47** imperet et nullo dignetur vincere bello?
 
@@ -9063,11 +9061,11 @@ title: Argonautica
 
 **56** ac prior Haemonias repetet super aequora praedas,
 
-**57** aut ego cum vittis statui feralibus Hellen fort. ante ego | hellen M, hillen V | excidit versus, quo figura τοῦ ἀδυνάτου geminabatur; suppleas e. g. quam iussi, vivam ex pelago remeare videbo.
+**57** aut ego cum vittis statui feralibus Hellen
 
 **58** si tamen his aliter perstas non cedere terris,
 
-**59** teque pudor cassi reditus movet, ac latetmouet ac latet M, mouera clatet V una
+**59** teque pudor cassi reditus movet, ac latet una
 
 **60** nescio quid plus puppe viris, baud ipse morabor
 
@@ -9075,7 +9073,7 @@ title: Argonautica
 
 **62** Martius ante urbem longis iacet horridus annis
 
-**63** campus et ardentes ac me quoque vomereuomere M, uouemere V presso,
+**63** campus et ardentes ac me quoque vomere presso,
 
 **64** me quoque cunctantes interdum agnoscere tauri.
 
@@ -9093,35 +9091,35 @@ title: Argonautica
 
 **71** cumque tuis haec iussa deis, ac siquid in isto est
 
-**72** robore, praedicti veniesvenies Bon. 2, ueniens V in rura laboris.
+**72** robore, praedicti venies in rura laboris.
 
 **73** ipse incertus adhuc, tenebris te protinus illis
 
-**74** involvi flammisque velim,uelim M, uelum V durare parumper
+**74** involvi flammisque velim, durare parumper
 
-**75** an magis, everso iaciasiacias Bon. 1, iaceas V dum semina campo,
+**75** an magis, everso iacias dum semina campo,
 
-**76** acac Bon. 2, Hac V | cadmei MN, admei V |s dentibus Heinsius, seminis V (ex 75) tibi Cadmei dum dentibus exeat hydri
+**76** ac tibi Cadmei dum dentibus exeat hydri
 
 **77** miles et armata florescant pube novales.'
 
 **78** Filia prima trucis vocem mirata tyranni
 
-**79** haesit et ad iuvenem pallentia rettulitretiulit V ora
+**79** haesit et ad iuvenem pallentia rettulit ora
 
-**80** contremuitque metu, nene T Bon. 1, om. V nescius audeat hospes
+**80** contremuitque metu, ne nescius audeat hospes
 
 **81** seque miser ne posse putet. perstrinxerat horror
 
 **82** ipsum etiam et maesta stabat defixus in ira.
 
-**83** non ita Tyrrhenus stupet Ioniusque magister,ioniusque magister C, M 2 in marg., ionius magis V (magist&r V 2)
+**83** non ita Tyrrhenus stupet Ioniusque magister,
 
-**84** qui iam te, Tiberine, tuensqui iam te, Tiberine, tuens Heinsius, Qui iam te liberi netues V, Qui portus, Tiberine, tuos C clarumque serena
+**84** qui iam te, Tiberine, tuens clarumque serena
 
-**85** arce pharon, praecepspraeceps i. e. praeceps datus, scil. tempestate, cf. Aen. II 516 | subitonus quam V, subit bonus quam M, cod. Burmanni, submit nusquam C subito nusquam ostia, nusquam
+**85** arce pharon, praeceps subito nusquam ostia, nusquam
 
-**86** Ausoniam videtvidet Bon. 1, uides V et saevas accedere Syrtes.
+**86** Ausoniam videt et saevas accedere Syrtes.
 
 **87** tum tamen, infando quae det responsa tyranno,
 
@@ -9131,13 +9129,13 @@ title: Argonautica
 
 **90** spem Minyis, cum prima tuis pro moenibus arma
 
-**91** induimus. quo versa fides? quos vestra volutantquos uestra uolutant M, quo uesta uolunta V (erasa vid. t)
+**91** induimus. quo versa fides? quos vestra volutant
 
 **92** iussa dolos? alium hic Pelian, alia aequora cerno.
 
-**93** quin agiteagite et M 2 ut vid., agite et V hoc omnes odiisque urgete tyranni
+**93** quin agite hoc omnes odiisque urgete tyranni
 
-**94** imperiisque caput; numquamnumquam Columbus, quamquam V mihi dextera nec spes
+**94** imperiisque caput; numquam mihi dextera nec spes
 
 **95** defuerit; mos iussa pati nec cedere duris.
 
@@ -9153,7 +9151,7 @@ title: Argonautica
 
 **101** Talibus attonitos dictis natamque patremque
 
-**102** linquit et infidainfida M 2, infidi V praeceps prorumpit ab aula.
+**102** linquit et infida praeceps prorumpit ab aula.
 
 **103** at trepida et medios inter deserta parentes
 
@@ -9169,17 +9167,17 @@ title: Argonautica
 
 **109** illa domum atque ipsos paulum procedere postes
 
-**110** optat etet V, at Burmann ardentes tenet intra limina gressus.
+**110** optat et ardentes tenet intra limina gressus.
 
 **111** qualis ubi extremas Io vaga sentit harenas
 
-**112** fertque refertquerefertque Bon. 1, referque V pedem, tumido quam cogit Erinys
+**112** fertque refertque pedem, tumido quam cogit Erinys
 
 **113** ire maria Phariaeque vocant trans aequora matres:
 
 **114** circuit haut aliter foribusque impendet apertis,
 
-**115** an melior Minyas revocet pater; oraque quaerensquaerens M, quaeres V
+**115** an melior Minyas revocet pater; oraque quaerens
 
 **116** hospitis aut solo maeret defecta cubili
 
@@ -9187,33 +9185,33 @@ title: Argonautica
 
 **118** atque loqui conata silet, rursusque recedens
 
-**119** quaerit, ut AeaeisAet(h)aeis C hospes consederit oris
+**119** quaerit, ut Aeaeis hospes consederit oris
 
 **120** Phrixus, ut aligeri Circen rapuere dracones.
 
 **121** tum comitum visu fruitur miseranda suarum
 
-**122** impleriqueImplerique CM 2, Inpleritque V nequit subitoque parentibus haeret
+**122** implerique nequit subitoque parentibus haeret
 
 **123** blandior et patriae circumfert oscula dextrae.
 
 **124** sic adsueta toris et mensae dulcis erili
 
-**125** aegra nova iam peste canis rabiequerabieque Bon. 1, rapique V futura
+**125** aegra nova iam peste canis rabieque futura
 
 **126** ante fugam totos lustrat queribunda penates.
 
-**127** tandem etiam molli semetsemet sic Lemaire, semels V, semel sese M 1, cod. Bon., sese semel CM 2 sic increpat ira:
+**127** tandem etiam molli semet sic increpat ira:
 
 **128** 'pergis', ait 'demens, teque illius angit imago
 
-**129** curaque, quiqui T Bon. 2, cui V | profuga M, profugat V profuga forsan tenet alta carina
+**129** curaque, qui profuga forsan tenet alta carina
 
-**130** quique meum patrias referet necnec M, inec V nomen ad urbes.
+**130** quique meum patrias referet nec nomen ad urbes.
 
-**131** quid me autem sic ille movet, superetnesuperetne M, superenne V labores
+**131** quid me autem sic ille movet, superetne labores
 
-**132** an cadatHancadat V et tanto turbetur Graecia luctu?
+**132** an cadat et tanto turbetur Graecia luctu?
 
 **133** saltem, fata virum si iam suprema ferebant,
 
@@ -9225,31 +9223,31 @@ title: Argonautica
 
 **137** dicitur, et caram vidi indoluisse sororem,
 
-**138** seque ait has iussis actum miser ire per undas.undas cod. Burmanni, Iunt. 1, umbras V
+**138** seque ait has iussis actum miser ire per undas.
 
-**139** atat Bon. 2, Aut V | praecari M, p cani V redeat quocumque modo meque ista precari
+**139** at redeat quocumque modo meque ista precari
 
 **140** nesciat atque meum non oderit ille parentem.'
 
-**141** dixerat haec stratoque graves proiecerat artus,artus M 2, arcus V
+**141** dixerat haec stratoque graves proiecerat artus,
 
-**142** si veniat miserata quies,quies M, quisae V cum saevior ipse
+**142** si veniat miserata quies, cum saevior ipse
 
-**143** turbat agitque sopor: supplex hinchinc Bon. 1, hic V sternitur hospes,
+**143** turbat agitque sopor: supplex hinc sternitur hospes,
 
-**144** hinc pater. illailla T Bon. l, ille V nova rumpit formidine somnos
+**144** hinc pater. illa nova rumpit formidine somnos
 
-**145** erigiturque toro; famulas carosque penatespenates V, parentes C a (om. in C b)
+**145** erigiturque toro; famulas carosque penates
 
 **146** agnoscit, modo Thessalicas raptata per urbes:
 
-**147** turbidus ut poenis caecisquecaecisque M, caesisque V pavoribus ensem
+**147** turbidus ut poenis caecisque pavoribus ensem
 
 **148** corripit et saevae ferit agmina matris Orestes:
 
-**149** ipsum angues, ipsum horrisonihorrisoni M, horrison V quatit ira flagelli,
+**149** ipsum angues, ipsum horrisoni quatit ira flagelli,
 
-**150** atque iterum infestaeincestae Marius se fervere caede Lacaenae
+**150** atque iterum infestae se fervere caede Lacaenae
 
 **151** credit agens, falsaque redit de strage dearum
 
@@ -9261,17 +9259,17 @@ title: Argonautica
 
 **155** non iam mentitae vultum vocemque resumit
 
-**156** Chalciopes. quando ardor hebethebet T 1 Bon. 2, habet V | pudori V, pudore est Madvig; mihi talia excidisse videntur cedit amor meliorque redit iam pectore sensus leviorque pudori
+**156** Chalciopes. quando ardor hebet leviorque pudori
 
 **157** mensque obnixa malo, tenues sublimis in auras
 
 **158** tollitur et fulvo Venerem vestigat Olympo.
 
-**159** 'sum memor, ut †tecum† mecumtecum mecum V, totum mecum C partita laborem;
+**159** 'sum memor, ut †tecum† mecum partita laborem;
 
 **160** illa nimis sed dura manet conversaque in iram
 
-**161** et furias dolet ac me nunc deceptadecepta V, furiata C reliquit.
+**161** et furias dolet ac me nunc decepta reliquit.
 
 **162** i, precor, atque istum quo me frustratur amorem
 
@@ -9279,7 +9277,7 @@ title: Argonautica
 
 **164** audeat atque meum casu defendere ab omni
 
-**165** Aesoniden: visvis Sudhaus, quis V, queis C, quin Iunt. 1 | sacris C illa sacro, quo freta, veneno.
+**165** Aesoniden: vis illa sacro, quo freta, veneno.
 
 **166** illum etiam totis adstantem noctibus anguem,
 
@@ -9287,49 +9285,49 @@ title: Argonautica
 
 **168** vellera tot spiris circum, tot ductibus implet,
 
-**169** fallatfallat Loehbach, Scluat V, alii alia coniecerunt et in somnos ingenti solvat ab orno.
+**169** fallat et in somnos ingenti solvat ab orno.
 
-**170** haec tibi: namnam Bon. 1, non V Furiis atque ipsi cetera mando.'
+**170** haec tibi: nam Furiis atque ipsi cetera mando.'
 
-**171** Tum Venus aligerumaligerum M, alierum V | fatur Amorum Bon. 1, futura morum V mater sic fatur Amorum:
+**171** Tum Venus aligerum mater sic fatur Amorum:
 
 **172** 'nec tibi, cum primos adgressa es flectere sensus
 
 **173** virginis ignotaque animum contingere cura,
 
-**174** defuimus, data continuo quinquin Heinsius, om. V, sed C cingula soli
+**174** defuimus, data continuo quin cingula soli
 
 **175** nostra tibi, quis mota loco labefactaque cessit.
 
-**176** haut satis est, sed me ipsa opus, etopus et V, opus est C cunctantia poscunt
+**176** haut satis est, sed me ipsa opus, et cunctantia poscunt
 
 **177** pectora me dubiusque pudor: iam foedera faxo
 
-**178** AesoniiAesonii M, Aesoni V petat ipsa viri metuatque morari.
+**178** Aesonii petat ipsa viri metuatque morari.
 
-**179** tu face luciferaeluciferae V, letiferae C citus ad delubra Dianae
+**179** tu face luciferae citus ad delubra Dianae
 
-**180** deveniat, sacras solita est ubi fundere taedastaedas M, aedas V
+**180** deveniat, sacras solita est ubi fundere taedas
 
 **181** Colchis et aequali dominam lustrare caterva.
 
 **182** nec te nunc Hecates subeat metus, aut mea forte
 
-**183** impediat ne coepta time;ne coepta time Heinsius, nec aetati me V, nunc acta time C quin audeat opto:
+**183** impediat ne coepta time; quin audeat opto:
 
 **184** continuo transibit amor, cantuque trilingui
 
 **185** ipsam flammiferos cogam compescere tauros.'
 
-**186** amplexuque petit; ante hunc versum excidit versus huius fere sententiae talia iactantem blandis Saturnia dictis | peti V, peti C volucrem tunc aspicit Irin
+**186** amplexuque petit; volucrem tunc aspicit Irin
 
-**187** festinamqueFestinamque C, Festinansque V iubet monitis parere Diones
+**187** festinamque iubet monitis parere Diones
 
 **188** et iuvenem Aesonium praedicto sistere luco.
 
 **189** protinus hinc Iris Minyas, Cytherea petivit
 
-**190** Colchida; Caucaseis speculatrixspeculatrix M, speluncatrix V Iuno resedit
+**190** Colchida; Caucaseis speculatrix Iuno resedit
 
 **191** rupibus, attonitos Aeaea in moenia vultus
 
@@ -9353,21 +9351,21 @@ title: Argonautica
 
 **201** hoc satis ipse ...........
 
-**201a** ei mihi, ne casus etiam spectare supremosHoc satis ipse etiam spectare supraemos V (etiam sp. su. ex v. 201 a), suppleas fere hoc satis ipse putes, miserae quod linquitur unum
+**201a** ei mihi, ne casus etiam spectare supremos
 
-**202** atque iterum duraedirae C | ire V, esse C cogar comes ire sorori.
+**202** atque iterum durae cogar comes ire sorori.
 
-**203** et nunc ille sua non quemquam sortesorte Bon. 1, forte V moveri,
+**203** et nunc ille sua non quemquam sorte moveri,
 
 **204** non ullum meminisse putat, cumque omnibus odit
 
 **205** me quoque. siquando fuerit tamen ulla potestas,
 
-**206** illum ego, qui diris cinis ultimus haeserit arvis,aruis V, oris C
+**206** illum ego, qui diris cinis ultimus haeserit arvis,
 
 **207** ossaque, quis tauri saevusque pepercerit ignis,
 
-**208** componam sedemquesedemque M, sedem V dabo. fas tunc mihi manes
+**208** componam sedemque dabo. fas tunc mihi manes
 
 **209** dilexisse viri tumuloque has reddere curas.'
 
@@ -9379,7 +9377,7 @@ title: Argonautica
 
 **213** ipsa, velut lenti fallatur imagine somni,
 
-**214** sicsic T 1, Carrio, Hic V oculos incerta tenet magnique sororem
+**214** sic oculos incerta tenet magnique sororem
 
 **215** paulatim putat esse patris. tum flebile gaudens
 
@@ -9389,7 +9387,7 @@ title: Argonautica
 
 **218** dura tuis, quae te biiugis serpentibus egit
 
-**219** hinc fuga? quaeve fuit patriis mora gratior oris?gratior oris N Bon. 1, grauior onis V (n et i literae ligatae)
+**219** hinc fuga? quaeve fuit patriis mora gratior oris?
 
 **220** ante et Thessalicae Phasin petiere carinae
 
@@ -9399,25 +9397,25 @@ title: Argonautica
 
 **223** occurritque Venus: 'tu nunc mihi causa viarum
 
-**224** sola, tuae venio iam pridem ignavaignaua V, cf. VI 486, ignara Heinsius iuventae.
+**224** sola, tuae venio iam pridem ignava iuventae.
 
 **225** cetera parce queri neu me meliora secutam
 
 **226** argue; quippe etiam repetentur munera divum.
 
-**227** omnibus hunc potius communemCunctis communem - 229 dies habet Par. animantibus orbem,
+**227** omnibus hunc potius communem animantibus orbem,
 
-**228** communes et crede deos. patriam inde vocato,patriamque uocato Par.
+**228** communes et crede deos. patriam inde vocato,
 
-**229** qua redit itqueredit itque Par. M 2 CT 1, rediitque V | nos onata V, diis nata C | malignus cod. regius, cod. Burmanni, (vix maligni), malignis VC dies, nec nos, o nata, malignus
+**229** qua redit itque dies, nec nos, o nata, malignus
 
-**230** cluserit hoc uno semper sub frigore mensis. tamquam aeterno Ianuario Colchida premi rem augens dicit Venus
+**230** cluserit hoc uno semper sub frigore mensis.
 
 **231** fas mihi non habiles, fas et tibi linquere Colchos.
 
 **232** et nunc Ausonii coniunx ego regia Pici,
 
-**233** nec mihi flammiferis horrent ibi233 ibi M 2, tibi V pascua tauris,
+**233** nec mihi flammiferis horrent ibi pascua tauris,
 
 **234** meque vides Tusci dominam maris. at tibi quinam
 
@@ -9431,17 +9429,17 @@ title: Argonautica
 
 **239** 'cernis, ut infelix thalamos ego cogar in illos.
 
-**240** i, precor, atque illumillum Loehbach, unum V, tuum Baehrens, (ac) vanum Dureau de Lamalle (cf. II 167, VII 539) | me dimitte M, medium itte V pro me dimitte timorem.
+**240** i, precor, atque illum pro me dimitte timorem.
 
-**241** sed magis his miseram, quandoqn (i. e. quando) V, quoniam C potes, eripe curis,
+**241** sed magis his miseram, quando potes, eripe curis,
 
 **242** unde metus aestusque mihi, quaeque aspera, mater,
 
 **243** perpetior durae iamdudum incendia mentis.
 
-**244** nulla quies animo, nullus sopor arida ...arida menti V (menti ex 243), arida membra Thilo sufficiente sensu, languente stilo, ardua menti Junt. 1, ardua amanti C
+**244** nulla quies animo, nullus sopor arida ...
 
-**245** quaere malis nostris requiem mentemque repone,repone MT, reponem V
+**245** quaere malis nostris requiem mentemque repone,
 
 **246** redde diem noctemque mihi, da prendere vestes
 
@@ -9451,31 +9449,31 @@ title: Argonautica
 
 **249** sola fui. tristes thalamos infestaque cerno
 
-**250** omnia, vipereosuipereos M, uipereor V ipsi tibi surgere crines.'
+**250** omnia, vipereos ipsi tibi surgere crines.'
 
 **251** talia verba dabat conlapsaque flebat iniquae
 
 **252** in Veneris Medea sinus pestemque latentem
 
-**253** ossibus atque imiimi M 2, ibi V monstrabat pectoris ignem.
+**253** ossibus atque imi monstrabat pectoris ignem.
 
-**254** Occupat amplexu Venus et furialia figitfigit M, fugit V
+**254** Occupat amplexu Venus et furialia figit
 
 **255** oscula permixtumque odiis inspirat amorem;
 
 **256** dumque illam variis maerentem vocibus ambit
 
-**257** inque alio sermone tenet, quinquin M, qui in V hoc' ait 'audi
+**257** inque alio sermone tenet, quin hoc' ait 'audi
 
 **258** atque attolle genas', lacrimisque haec infit obortis:
 
-**259** 'cum levis a superisa superis MT, asperis V, Hesperiis Koestlin ad te modo laberer auris,
+**259** 'cum levis a superis ad te modo laberer auris,
 
-**260** forte ratem primo †figientem†figientem V, fugientem MT, sidentem dubitanter Sudhaus litore cerno,
+**260** forte ratem primo †figientem† litore cerno,
 
-**261** qualem nostra suo numquam dimittere portuportu M 2 T 1, porto V
+**261** qualem nostra suo numquam dimittere portu
 
-**262** vellet, adhuc omnes quae detinetdetinet M, detinent V insula nautas.
+**262** vellet, adhuc omnes quae detinet insula nautas.
 
 **263** unus ibi ante alios qui tum mihi pulchrior omnis
 
@@ -9485,11 +9483,11 @@ title: Argonautica
 
 **266** "per tibi siquis" ait "morituri protinus horror
 
-**267** et quemquem M, quidem V | occurrere M, occurre V non meritis videas occurrere monstris,
+**267** et quem non meritis videas occurrere monstris,
 
 **268** haec precor, haec dominae referas ad virginis aurem,
 
-**269** tu fletusfletus M, fletur V ostende meos; illi has ego voces,
+**269** tu fletus ostende meos; illi has ego voces,
 
 **270** qua datur, basque manus, ut possum, a litore tendo.
 
@@ -9499,21 +9497,21 @@ title: Argonautica
 
 **273** quam dederit, si forte dabit. ne vota repellat,
 
-**274** ne mea;nunc mea Bon. 2 | uiderit M, uideni V (n et i literae ligatae) totque animas, qualis nec viderit ultra,
+**274** ne mea; totque animas, qualis nec viderit ultra,
 
-**275** dic, precor, auxilio iuvet atque haec nomina servet.seruet M, seret V
+**275** dic, precor, auxilio iuvet atque haec nomina servet.
 
-**276** si Pelopis duros prior Hippodamia labores post 291 collocavit Thilo, sed versu 291 oratio aperte terminatur; vss. 276–283 in locum versuumn 288–291 poetam substituere voluisse mihi verisimile est, cf. praef. cap. I
+**276** si Pelopis duros prior Hippodamia labores
 
 **277** expediit totque ora simul vulgata procorum
 
-**278** respiciens tandem patriospatrios M, patrio V exhorruit axes,
+**278** respiciens tandem patrios exhorruit axes,
 
-**279** si dedit ipsa neci fratremneci fratrem M, neti fratem V Minoia virgo,
+**279** si dedit ipsa neci fratrem Minoia virgo,
 
 **280** cur non hospitibus fas sit succurrere dignis
 
-**281** te quoque et Aeaeos iubeasAeaeos iubeas Bon. 2 eaeor subeas V mitescere campos?
+**281** te quoque et Aeaeos iubeas mitescere campos?
 
 **282** occidat aeterna tandem Cadmeia morte
 
@@ -9521,19 +9519,19 @@ title: Argonautica
 
 **284** ei mihi, quod nullas hic possum exsolvere grates.
 
-**285** atat Iunt. 1, Ut VC tamen hoc saeva corpus de morte receptum,
+**285** at tamen hoc saeva corpus de morte receptum,
 
 **286** hanc animam sciat esse suam. miserebitur ergo?
 
 **287** die, ait, an potius" — strictumque ruebat in ensem.
 
-**288** promisi; ne falle, precor.praecor M 2, fraecor V cumque ipsa moverer
+**288** promisi; ne falle, precor. cumque ipsa moverer
 
 **289** adloquio casuque viri, te passa rogari
 
 **290** sum potius; tu laude nova, tu supplice digno
 
-**291** dignior es; sat fama meis iamDignior es. sat fama meis iam Heinsius, Digniores et famame istam V, Dignior; est et fama meis iam C parta venenis.'
+**291** dignior es; sat fama meis iam parta venenis.'
 
 **292** Torserat illa gravi iamdudum lumina vultu
 
@@ -9543,63 +9541,63 @@ title: Argonautica
 
 **295** verba cavens; horror molles invaserat annos.
 
-**296** iamque toro trepidastoro trepidas M, tor drepidas V infelix obruit aures
+**296** iamque toro trepidas infelix obruit aures
 
-**297** nec quo ferre fugam nec quo se verterenet quos euertere V posset
+**297** nec quo ferre fugam nec quo se vertere posset
 
-**298** prensaPrensa M, Piens a V videt; rupta condi tellure premique
+**298** prensa videt; rupta condi tellure premique
 
-**299** iamdudum cupit ac dirasduras C evadere voces.
+**299** iamdudum cupit ac diras evadere voces.
 
-**300** Illa sequi iubet et portis exspectatexpectat M, xpectat V in ipsis.
+**300** Illa sequi iubet et portis exspectat in ipsis.
 
 **301** saevus Echionia ceu Penthea Bacchus in aula
 
 **302** deserit infectis per roscida cornua vittis,
 
-**303** cum tenet ille deum pudibundaquepudibundaque M, puliibundaque V | matris Heinsius, dubitanter recepi, patris V tegmina matris
+**303** cum tenet ille deum pudibundaque tegmina matris
 
 **304** tympanaque et mollem subito miser accipit hastam:
 
 **305** haud aliter deserta pavet perque omnia circum
 
-**306** fertFert M, Feri V oculos tectisque negat procedere virgo.
+**306** fert oculos tectisque negat procedere virgo.
 
 **307** contra saevus amor, contra periturus Iason
 
-**308** urget et auditae crescunt in pectoreimpectore M, implet ore V voces.
+**308** urget et auditae crescunt in pectore voces.
 
 **309** heu quid agat? videt externo se prodere patrem
 
 **310** dura viro, famam scelerum iamque ipsa suorum
 
-**311** prospicit etet etiam V exhibet questu superos questuque fatigat
+**311** prospicit et questu superos questuque fatigat
 
 **312** Tartara; pulsat humum manibusque immurmurat uncis
 
 **313** noctis eram Ditemque ciens, succurrere tandem
 
-**314** morte velint ipsumque simul demitteredemittere Bon. 2, dimittere V leto,
+**314** morte velint ipsumque simul demittere leto,
 
 **315** quem propter furit; absentem saevissima poscit
 
-**316** nunc Pelian,pelian M, pelean V tanta iuvenem qui perderet ira;
+**316** nunc Pelian, tanta iuvenem qui perderet ira;
 
 **317** saepe suas misero promittere destinat artes
 
-**318** denegatdein negat d'Orville | in hora Heinsius, inira V atque una potius decernit in hora
+**318** denegat atque una potius decernit in hora
 
-**319** ac neque tamAc neque tam C b Bon. 2, Ac nequeat V turpi cessuram semper amori
+**319** ac neque tam turpi cessuram semper amori
 
 **320** proclamat neque opem ignoto viresque daturam,
 
 **321** atque toro proiecta manet, cum visa vocari
 
-**322** rursus et impulso sonuerunt cardine postes. perierunt in V
+**322** rursus et impulso sonuerunt cardine postes.
 
-**323** Ergo ubi nescio quo penitus se numine vinciuinci M 2 N, uincit M
+**323** Ergo ubi nescio quo penitus se numine vinci
 
-**324** sentit et abscisumabscisum M, abscissum NT, excussum Heinsius quidquid pudor ante monebat,
+**324** sentit et abscisum quidquid pudor ante monebat,
 
 **325** tum thalami penetrale petit, quae maxima norat
 
@@ -9607,69 +9605,69 @@ title: Argonautica
 
 **327** utque procul magicis spirantia tecta venenis
 
-**328** et saevae patuere fores oblataqueoblataque T 1 Bon. 2, ablataque MNT contra
+**328** et saevae patuere fores oblataque contra
 
 **329** omnia, quae ponto, quae manibus emit imis
 
-**330** et quae sanguineo lunaelunae T Bon. 2 lunam MN, cod. Bon. | destrinxit Burnmann, distrinxit UMT 2, distinxit NFT | sanguineo — ore Heinsius (idenm orbe), sanguinea - ira codd., sanguinea — ora Bury destrinxit ab ore,
+**330** et quae sanguineo lunae destrinxit ab ore,
 
 **331** 'tunc sequeris' ait 'quidquam aut patiere pudendum,
 
-**332** cum tibi tot mortesmortes Zinzerling, mortis MNT, cod. Bon. scelerisque brevissima tanti
+**332** cum tibi tot mortes scelerisque brevissima tanti
 
 **333** effugia?' haec dicens, qua non velocior ulla
 
-**334** pestis erat sq. velocior ulla pestis erat d'Orville, uelocius ulla Pestiferam codd. toto nequiquam luminelumine MT, limine NT 1 lustrat
+**334** pestis erat toto nequiquam lumine lustrat
 
 **335** cunctaturque super morituraque colligit iras.
 
 **336** o nimium iucunda dies, quam cara sub ipsa
 
-**337** morte magis: stetit etet N, om. M sese mirata furentem est.
+**337** morte magis: stetit et sese mirata furentem est.
 
 **338** 'occidis heu; primo potes hoc durare sub aevo?
 
 **339** nec tu lucis' ait 'nec videris ulla iuventae
 
-**340** gaudia,Gaudis N | non M, cod. Bon., nec NT non dulces fratris pubescere malas?
+**340** gaudia, non dulces fratris pubescere malas?
 
-**341** huncHunc N, Hinc M | quicumque est Koch, cf. V 387, qui nuce est codd. cum C | crudelis NT, cod. Bon., o crudelis M, primaeuus C quoque, quicumque est, crudelis, Iasona nescis
+**341** hunc quoque, quicumque est, crudelis, Iasona nescis
 
-**342** morte perire tua, qui tete N, om. M, tete post nunc add. M 2 nunc invocat unam,
+**342** morte perire tua, qui te nunc invocat unam,
 
-**343** qui rogatrogat N, regat M | quem prima Heinsius, cf. V 351, quem primum codd. et nostro quem prima in litore vidi?
+**343** qui rogat et nostro quem prima in litore vidi?
 
 **344** cur tibi fallaces placuit coniungere dextras
 
-**345** tunc, pater, atquepater atque Bon. 2, poteratque MNT, cod. Burmanni, cod. Bon., poterasque C istis iuvenem non perdere monstris
+**345** tunc, pater, atque istis iuvenem non perdere monstris
 
 **346** protinus? ipsa etiam, fateor, tunc ipsa volebam.
 
-**347** testor caracara N, cura M tuas, Circe Titania, voces,
+**347** testor cara tuas, Circe Titania, voces,
 
-**348** te ducente sequor,sequor M, sequar N tua me, grandaeva, fatigant
+**348** te ducente sequor, tua me, grandaeva, fatigant
 
-**349** consilia et monitis cedocedo M, celo FN | ubi M 2 N, tibi M minor.' haec ubi fata,
+**349** consilia et monitis cedo minor.' haec ubi fata,
 
 **350** rursus ad Haemonii iuvenis curamque metumque
 
-**351** vertitur, hunc solum propter seuseu Heinsius, se MNT, cod. Bon. vivere gaudens
+**351** vertitur, hunc solum propter seu vivere gaudens
 
 **352** sive mori, quodcumque velit. maiora precatur
 
 **353** carmina, maiores Hecaten immittere vires
 
-**354** nunc sibi, nec notisnotis M 2 N, noctis M stabat contenta venenis.
+**354** nunc sibi, nec notis stabat contenta venenis.
 
 **355** cingitur inde sinus et, qua sibi fida magis vis
 
 **356** nulla, Prometheae florem de sanguine fibrae
 
-**357** Cauaseum promitpromit MC, tonitru NT | poenis Bury, ponti M, ponit NCT, cod. Bon., cod. Harlesii nutritaque gramina poenis,
+**357** Cauaseum promit nutritaque gramina poenis,
 
 **358** quae sacer ille nives inter tristesque pruinas
 
-**359** durat alitquedurat alitque Bulaeus, Dura teditque M (t s. scr.M 2), Durat hedique cod. Burmanni, Durat editque T, Durabat editque N cruor, cum viscere vultur adeso
+**359** durat alitque cruor, cum viscere vultur adeso
 
 **360** tollitur e scopulis et rostro inrorat aperto.
 
@@ -9677,9 +9675,9 @@ title: Argonautica
 
 **362** immortale virens, idem stat fulmina contra
 
-**363** sanguissanguis Bon. 1, Sangus V, salvus Baehrens et in mediiis florescunt ignibus herbae.
+**363** sanguis et in mediiis florescunt ignibus herbae.
 
-**364** prima Hecate Stygiisstigiis M, estigiis V duratam fontibus harpen
+**364** prima Hecate Stygiis duratam fontibus harpen
 
 **365** intulit et validas scopulis effodit aristas;
 
@@ -9689,15 +9687,15 @@ title: Argonautica
 
 **368** relliquias saniemque dei; gemit inritus ille
 
-**369** Colchidos ora tuens; totostoto M probante Heinsio | tunc M, tunc V tunc contrahit artus
+**369** Colchidos ora tuens; totos tunc contrahit artus
 
-**370** †monte†Monte VC, nempe Ph. Wagner dolor cunctaeque tremunt sub falce catenae.
+**370** †monte† dolor cunctaeque tremunt sub falce catenae.
 
 **371** Talibus infelix contra sua regna venenis
 
-**372** induiturInduitur M, Intuitur V noctique tremens infertur opacae.
+**372** induitur noctique tremens infertur opacae.
 
-**373** dat dextram blandisque pavens Venus oscula miscetblandisque pavens Venus oscula miscet Kr., cf. Ov. Met. VI 626, blandique pauens uocem uenus qua (i. e. osquam est) V, uocemque Venus blandisque pauentem (parentem C a) C
+**373** dat dextram blandisque pavens Venus oscula miscet
 
 **374** adloquiis iunctoque trahit per moenia passu.
 
@@ -9705,19 +9703,19 @@ title: Argonautica
 
 **376** mater ab excelso produxit in aera nido
 
-**377** hortaturque sequisequi T Bon., saeui V, suis C brevibusque insurgere pennis;
+**377** hortaturque sequi brevibusque insurgere pennis;
 
 **378** illos caerulei primus ferit horror Olympi,
 
-**379** iamque redire rogantrogant T Bon. cogant V, uolunt C adsuetaque quaeritur arbor:
+**379** iamque redire rogant adsuetaque quaeritur arbor:
 
-**380** haud aliteraliter V, alia C | caecae T Bon. 1 caeo ae V, Aeaeae C caecae per moenia deficit urbis
+**380** haud aliter caecae per moenia deficit urbis
 
-**381** incedens horretquehorretque M 2, horret V domos Medea silentes.
+**381** incedens horretque domos Medea silentes.
 
-**382** hic iterum extremae nequiquam in liminelimine Bon. 1 lumine V portae
+**382** hic iterum extremae nequiquam in limine portae
 
-**383** substititSubstitit M, Subsistitit V atque iterum fetus animique soluti,
+**383** substitit atque iterum fetus animique soluti,
 
 **384** respexitque deam paulumque his vocibus haesit:
 
@@ -9727,19 +9725,19 @@ title: Argonautica
 
 **387** nullus amor, nec turpe viro servire precanti?'
 
-**388** illa nihil contra vocesque abrumpitabrumpit vulgo, adrumpit V inanes.
+**388** illa nihil contra vocesque abrumpit inanes.
 
 **389** et iam iam magico per opaca silentia Colchis
 
-**390** coeperat ire sono, montanaquemontanaque d'Orville, monstrataque V condere vultus
+**390** coeperat ire sono, montanaque condere vultus
 
 **391** numina cumque suis averti collibus amnes.
 
-**392** iam stabulis gregibusquegraegibusque M, graecibusque V | sepulcris M, sepubenis V pavor strepitusque sepulcris
+**392** iam stabulis gregibusque pavor strepitusque sepulcris
 
 **393** inciderat; stupet ipsa gravi nox tardior umbra;
 
-**394** iamqueiamque vulgo, Namque V, Ipsa C | sub altas CM 2, sublatas V tremens longe sequitur Venus; utque sub altas
+**394** iamque tremens longe sequitur Venus; utque sub altas
 
 **395** pervenere trabes divaeque triformis in umbram,
 
@@ -9747,9 +9745,9 @@ title: Argonautica
 
 **397** emicuit viditque prior conterrita virgo,
 
-**398** atque hinchinc Bon. 2, hic V volucris Thaumantias alis Carrio, uolucri taumatia salis V, volucri Thaumantias ala Bon. 1, vulgo se profugam volucris Thaumantias alis
+**398** atque hinc se profugam volucris Thaumantias alis
 
-**399** sustulit, inde Venus dextrae dilapsadilapsa T Bon. l delapsa V tenenti.
+**399** sustulit, inde Venus dextrae dilapsa tenenti.
 
 **400** obvius ut sera cum se sub nocte magistris
 
@@ -9757,13 +9755,13 @@ title: Argonautica
 
 **402** per chaos occurrunt caecae sine vocibus umbrae,
 
-**403** haut secus in mediis noctis nemorisquenemorisque Bon. 1, nemoris V tenebris
+**403** haut secus in mediis noctis nemorisque tenebris
 
 **404** inciderant ambo attoniti iuxtaque subibant,
 
 **405** abietibus tacitis aut immotis cyparissis
 
-**406** adsimiles, rapidus nondum quas miscuit auster.auster M, auter V
+**406** adsimiles, rapidus nondum quas miscuit auster.
 
 **407** Ergo ut erat vultu defixus uterque silenti
 
@@ -9777,31 +9775,31 @@ title: Argonautica
 
 **412** has tandem voces dedit et solatus amantem est:
 
-**413** 'fersne aliquam spem lucis?' ait, 'miserata laboremlaborem Bon. l, laborum V
+**413** 'fersne aliquam spem lucis?' ait, 'miserata laborem
 
 **414** nempe venis? an et ipsa mea laetabere morte?
 
 **415** ne, precor, infando similem te, virgo, parenti
 
-**416** gesseris, haut tales decet inclementia vultus.haut equidem pulcros decet inclementia uultus habet Par | tecet inelementia V
+**416** gesseris, haut tales decet inclementia vultus.
 
 **417** hascine nunc grates, haec exspectata laborum
 
 **418** dona dari decuit? sic te sub teste remitti
 
-**419** fas mihi, virgo, †tuum†tuum corruptum vid. ex 420, fort. fas me, virgo, fuit? iustas da vocibus aures:
+**419** fas mihi, virgo, †tuum† iustas da vocibus aures:
 
-**420** die,dic Kr., Nec V pater ille tuus tantis me opponere monstris
+**420** die, pater ille tuus tantis me opponere monstris
 
-**421** quid meritum aut tales voluit curcur Sudhaus, om.V, me Carrio (incertum an ex C | poenas M, ponoenas V pendere poenas?
+**421** quid meritum aut tales voluit cur pendere poenas?
 
-**422** an iacet externa quod nunc mihi cuspidecuspide M, cupide V Canthus,
+**422** an iacet externa quod nunc mihi cuspide Canthus,
 
 **423** quodque meus vestris cecidit pro moenibus Iphis
 
 **424** aut Scythiae tanta inde manus? iussisset abire
 
-**425** perfidus atque suis extemploextemplo M, exemplo V cedere regnis.
+**425** perfidus atque suis extemplo cedere regnis.
 
 **426** spem mihi promissam per quae discrimina rursus
 
@@ -9821,63 +9819,63 @@ title: Argonautica
 
 **434** quove tenus, prima cupiens effundere voce
 
-**435** omnia, sed nec prima pudor dat verba timenti;nec — timenti habet Par.
+**435** omnia, sed nec prima pudor dat verba timenti;
 
 **436** haeret et attollens vix tandem lumina fatur:
 
 **437** 'quid, precor, in nostras venisti, Thessale, terras?
 
-**438** unde mei spesspes M, sps V ulla tibi? tantosque petisti
+**438** unde mei spes ulla tibi? tantosque petisti
 
-**439** cur non ipseipse M, ipsa V tua fretus virtute labores?
+**439** cur non ipse tua fretus virtute labores?
 
-**440** nempe, ego si patriis timuissem excedere tectis, sq. cras saeva manebant funera Leo, pars saeua manebat Funeris V
+**440** nempe, ego si patriis timuissem excedere tectis,
 
 **441** occideras, nempe hanc animam cras saeva manebant
 
-**442** funera. Iuno ubi nunc,iuno ubi nunc V, en ubi Iuno C | tritonia M, tritinia V ubi nunc Tritonia virgo,
+**442** funera. Iuno ubi nunc, ubi nunc Tritonia virgo,
 
 **443** sola tibi quoniam tantis in casibus adsum
 
-**444** externae regina domus? miraris et ipse,ipse T Bon. 1 ipsa V
+**444** externae regina domus? miraris et ipse,
 
-**445** credo, nec agnoscunt haehae Bon. 1, haee V, haec Baehrens nunc Aeetida silvae.
+**445** credo, nec agnoscunt hae nunc Aeetida silvae.
 
 **446** sed fatis sum victa tuis; cape munera supplex
 
-**447** nonNon V, nunc T 1 Bon. 2 mea; teque iterum Pelias si perdere quaeret
+**447** non mea; teque iterum Pelias si perdere quaeret
 
-**448** inque alios casus, alias sisi Heinsius, om. V mittet ad urbes,
+**448** inque alios casus, alias si mittet ad urbes,
 
 **449** heu formae ne crede tuae.' Titania iamque
 
 **450** gramina Perseasque sinu depromere vires
 
-**451** coeperat hisquehisque Langen, his V iterum compellat Iasona dictis:
+**451** coeperat hisque iterum compellat Iasona dictis:
 
-**452** 'si tamen aut superis aliquam spem ponis in istisin istis Thilo, cf. 442, om. V, in ullis Ph. Wagner, sumtis al. sp. p. in armis C
+**452** 'si tamen aut superis aliquam spem ponis in istis
 
-**453** aut tua praesentipresenti Bon. 1, persenti V | te educere V, educere Iunt. 1,vulgo virtus te educere leto,
+**453** aut tua praesenti virtus te educere leto,
 
 **454** si te forte potest, etiam nunc deprecor, hospes,
 
-**455** me sine et insontem misero dimittedimitte Bon. 1, demitte V parenti.
+**455** me sine et insontem misero dimitte parenti.
 
 **456** dixerat: extemplo (neque enim matura ruebant
 
-**457** sidera et extremum suffeceratsuffecerat V, suffixerat Bon. 2, vulgo; sed nescio an voluerit poeta Booti occaso iam et quasi defuncto astrum tanquam vicarium dari | Booten T 1 Maserius, boontem V axe Booten)
+**457** sidera et extremum suffecerat axe Booten)
 
 **458** cum gemitu et multo iuveni medicamina fletu
 
 **459** non secus ac patriam pariter famamque decusque
 
-**460** obicit. ille manu subit et vim corripit omnem.omnem M, hominem V
+**460** obicit. ille manu subit et vim corripit omnem.
 
 **461** Inde ubi facta nocens et non revocabilis umquam
 
-**462** cessit ab ore pudor propiorquepropriorque V implevit Erinys,
+**462** cessit ab ore pudor propiorque implevit Erinys,
 
-**463** carmina nunc totos volvitvolvit Voss, soluit V figitque per artus
+**463** carmina nunc totos volvit figitque per artus
 
 **464** Aesonidae et totum septeno murmure fertur
 
@@ -9887,7 +9885,7 @@ title: Argonautica
 
 **467** 'nunc age et has' inquit 'cristas galeamque resume,
 
-**468** quam modo funereafunerea M, funera V tenuit Discordia dextra.
+**468** quam modo funerea tenuit Discordia dextra.
 
 **469** hanc iace per medias, cum verteris aequora, messes;
 
@@ -9897,7 +9895,7 @@ title: Argonautica
 
 **472** respiciet fortasse pater.' sic deinde locuta
 
-**473** iam magis atque magis mentem super alta ferebatferebat M, furebat V
+**473** iam magis atque magis mentem super alta ferebat
 
 **474** aequora, pandentes Minyas iam vela videbat
 
@@ -9907,57 +9905,57 @@ title: Argonautica
 
 **477** 'sis memor, oro, mei, contra memor ipsa manebo,
 
-**478** crede, tui. quantumquantum V, quando C hinc aberis, die quaeso, profundi?
+**478** crede, tui. quantum hinc aberis, die quaeso, profundi?
 
 **479** quod caeli spectabo latus? sed te quoque tangat
 
-**480** cura mei quocumquequocumque M 2, quodcumque V loco, quoscumque per annos;
+**480** cura mei quocumque loco, quoscumque per annos;
 
 **481** atque hunc te meminisse velis et nostra fateri
 
-**482** munera,Munera M, Munerat V servatum pudeat nec virginis arte.
+**482** munera, servatum pudeat nec virginis arte.
 
-**483** ei mihi, cur nulli stringunt tua lumina fletus?nulli stringunt tua l. fletus vel nullo stringuntur l. fletu Heinsius, nullos stringunt tua l. fletus V, nullo tinguuntur l. fletu Ruhnken
+**483** ei mihi, cur nulli stringunt tua lumina fletus?
 
 **484** an me mox merita morituram patris ab ira
 
-**485** dissimulas?Dissimulas M, Dissimilis V te regna tuae felicia gentis,
+**485** dissimulas? te regna tuae felicia gentis,
 
-**486** te coniunx natiquenatique T 1 Schenkl, nataeque V, materque nonnulli apud Pium | abibo VC b,cf. Thes.l.L. 168, 50 sqq., obibo C a, vulgo manent; ego prodita abibo;
+**486** te coniunx natique manent; ego prodita abibo;
 
 **487** nec queror et pro te lucem quoque laeta relinquam.'
 
 **488** protinus hospes ad haec (tacitis nam cantibus illum
 
-**489** flexerat et simili iamdudum adflaratadflarat Pius, adflebat V, adflabat M, cod. Bon. amore)
+**489** flexerat et simili iamdudum adflarat amore)
 
-**490** 'tune'Tune C, Tunc V ait 'Aesoniden quicquam te velle relicta
+**490** 'tune' ait 'Aesoniden quicquam te velle relicta
 
-**491** credis et ulla patipati Gronovius, peti V sine te loca? redde tyranno
+**491** credis et ulla pati sine te loca? redde tyranno
 
 **492** me potius, recipe ingratos atque exue cantus.
 
-**493** quis mihi lucislucis M 2, locis V amor? patriam cur amplius optem,
+**493** quis mihi lucis amor? patriam cur amplius optem,
 
 **494** si non et genitor te primam amplectitur Aeson,
 
 **495** teque tuo longe fulgentem vellere gaudens
 
-**496** spectat et ad primos procumbit Graeciaprocurrit Heinsius, sed ipsam Graeciam prosxunhsein Medeam sicut deam Iason blande promittit | graecia M, gratia V fluctus?
+**496** spectat et ad primos procumbit Graecia fluctus?
 
 **497** respice ad has voces et iam, precor, adnue, coniunx.
 
-**498** per te, quaequae Bon. 2, qui V superis divisque potentior imis,
+**498** per te, quae superis divisque potentior imis,
 
-**499** perque haec, virgo,virgo T Bon. 2, ergo V tuo redeuntia sidera nutu
+**499** perque haec, virgo, tuo redeuntia sidera nutu
 
 **500** atque per has nostri iuro discriminis horas:
 
-**501** umquam ego si meriti sim noctis etsi meriti sim noctis et C, si meritis noctis V, si meriti, si noctis sim Langen (sum Baehrens) immemor huius,
+**501** umquam ego si meriti sim noctis et immemor huius,
 
 **502** si te sceptra, domum, si te liquisse parentes,
 
-**503** senseris et me tum non haec promissa tuentem,me tum —tuentem Heinsius, mea tum — uidentem V, me umquam — tuentem Baehrens, me iam — tuentem Langen
+**503** senseris et me tum non haec promissa tuentem,
 
 **504** tum me non tauros iuvet evasisse ferosque
 
@@ -9965,19 +9963,19 @@ title: Argonautica
 
 **506** flamma tuaeque artes; nullus succurrere contra
 
-**507** ingrato queat, et si quid tumtum Baehrens, tu V, tibi Burmann | istis Bon. 2, ipsis V, fort. igni est saevius istis,
+**507** ingrato queat, et si quid tum saevius istis,
 
 **508** adicias meque in medio terrore relinquas.'
 
 **509** audiit atque simul meritis periuria poenis
 
-**510** despondet questus semper Furor ultus amantum.amantum Kr., amantis V
+**510** despondet questus semper Furor ultus amantum.
 
-**511** Haec ubi dicta, tamen perstant defixusperstat defixus — dictis (514) habet Par. uterque,
+**511** Haec ubi dicta, tamen perstant defixus uterque,
 
-**512** et nuncnunc V, non Par. ora levant audaci laeta iuventa,
+**512** et nunc ora levant audaci laeta iuventa,
 
-**513** ora simul totiens dulcistotiens dulces C, toties dulc(e)is Maserius, Ald., totiens ducis V, dulces totiens Par. rapientia visus,
+**513** ora simul totiens dulcis rapientia visus,
 
 **514** nunc deicit vultus aeger pudor, et mora dictis
 
@@ -9985,15 +9983,15 @@ title: Argonautica
 
 **516** 'accipe, perdomitis quae deinde pericula tauris
 
-**517** et quis in AeolioAeolio cod. Harlesii, Iunt. 1, aeoli V maneat te vellere custos;
+**517** et quis in Aeolio maneat te vellere custos;
 
 **518** nondum cuncta tibi, fateor, promissa peregi.
 
 **519** saevior ingenti Mavortis in arbore restat,
 
-**520** crede, labor, quemquem M, quaem V — tanta utinam fiducia nostri
+**520** crede, labor, quem — tanta utinam fiducia nostri
 
-**521** sit mihi nocturnaeque Hecates— nostriquenostrique V, vestrique Heinsius, sed parenthesin post Hecates terminari versumque deesse Leo cognovit, suppleas e. g. nostrique vigoris auxilio videamque tua virtute peractum.' vigoris '
+**521** sit mihi nocturnaeque Hecates— nostrique vigoris '
 
 **522** dixerat, utque virum doceat, quae monstra supersint,
 
@@ -10015,45 +10013,45 @@ title: Argonautica
 
 **531** illa trahit ridens tandemque ait angue represso:
 
-**532** 'hunc tibi postremum nostrinostri M 2, nostris V parat ira parentis,
+**532** 'hunc tibi postremum nostri parat ira parentis,
 
-**533** heu miser, heu tantis iterum mihi caremihi care V, carpende C periclis.
+**533** heu miser, heu tantis iterum mihi care periclis.
 
-**534** o utinamutinam ut V, ut del.Langen | sim M, sumus V nullo te sim visura labore
+**534** o utinam nullo te sim visura labore
 
 **535** ipsam caeruleis squalentem nexibus ornum
 
 **536** ipsaque pervigilis calcantem lumina monstri:
 
-**537** contingat bisbis Postgate, Leo, uix V deinde mori.' sic fata profugit
+**537** contingat bis deinde mori.' sic fata profugit
 
 **538** seque sub extremis in moenia rettulit umbris.
 
-**539** Et iam puniceo regem spes vanavana Maserius, una V sub ortu
+**539** Et iam puniceo regem spes vana sub ortu
 
 **540** extulerat, quantis nox una diremerit undis
 
-**541** Aesoniden, liberneliberne CT 1 Pius, tiberine V | fretis V, freto C apertis Pius, aperto VC fretis iam vultus apertis
+**541** Aesoniden, liberne fretis iam vultus apertis
 
 **542** utque prius totum sileat mare. dumque ea longe
 
-**543** explorare †quaeat†,quaeat V, parat Pius, meat Wagner, possis etiam iuvat, placet, iubet ante contra venit Arcas Echion
+**543** explorare †quaeat†, contra venit Arcas Echion
 
 **544** dicta ferens, iam Circaeis Mavortis in agris
 
 **545** stare virum: daret aeripedes in proelia tauros.
 
-**546** et 'vocor en ultro' dixit, 'spesque addidit alas. excidit versus eius fere sententiae: talibus attonitus subita rex institit ira | en ultro M, ultro en V alas Ph. Wagner (cf. Aen. VIII 224), aula V, ausa C, Bon. 2
+**546** et 'vocor en ultro' dixit, 'spesque addidit alas.
 
-**547** vos mihi nunc primum in flammasin flammas V, in glebas Ald. invertite, tauri,
+**547** vos mihi nunc primum in flammas invertite, tauri,
 
-**548** aequora, nunc totos aperite et volvite flatus.totos — flatus Loehbach, totas — flammas V
+**548** aequora, nunc totos aperite et volvite flatus.
 
 **549** exeat Haemonio messis memoranda colono,
 
-**550** tuque tuum patri in Graiumpatri in Graium Schenkl (Graios Heinsius), partim graium V, parti Graium C da, nata, draconem.
+**550** tuque tuum patri in Graium da, nata, draconem.
 
-**551** ipsius aspectu pereant in velleris,in velleris Koestlin, in uellera in V ipsa
+**551** ipsius aspectu pereant in velleris, ipsa
 
 **552** terga mihi diros servent infecta cruores.'
 
@@ -10065,27 +10063,27 @@ title: Argonautica
 
 **556** at sua magnanimum contra Pagasaea iuventus
 
-**557** prosequitur stipatquestipatque C, cod. Burmanni, spatioque V ducem; tum maxima quisque
+**557** prosequitur stipatque ducem; tum maxima quisque
 
-**558** dicta dedit saevisque procul discessit in agris.ab agris Bon. 2
+**558** dicta dedit saevisque procul discessit in agris.
 
-**559** fixerat ille gradus totoque ex agmineex agmine Bon. 1, examine V solus
+**559** fixerat ille gradus totoque ex agmine solus
 
-**560** stabat, ut extremis desertus ab orbibusab orbibus M, ab oribus V, in oribus Ph Wagner, sed exspectes ab aclibus, quae ducem sequi solent vel stipare | aclis vel axis Vollmer, axis V; cf. Thes.l L. II 1640, 22sqq. aclis,
+**560** stabat, ut extremis desertus ab orbibus aclis,
 
 **561** quem iam lassa dies austrique ardentis harenae,
 
-**562** aut quem Riphaeas exstantem rursus ad arcesarces etiam V exh.
+**562** aut quem Riphaeas exstantem rursus ad arces
 
 **563** nix et caerulei Boreae ferus abstulit horror,
 
-**564** cum subito attonitiattonitis C longissima Phasidis unda
+**564** cum subito attoniti longissima Phasidis unda
 
 **565** Caucaseaeque trabes omnisque Aeetia tellus
 
-**566** fulsit et ardentes stabula effudere tenebras.tenebras C, tenebrae V
+**566** fulsit et ardentes stabula effudere tenebras.
 
-**567** ac velut ex unauna MC, unua V siquando nube corusci
+**567** ac velut ex una siquando nube corusci
 
 **568** ira Iovis torsit geminos mortalibus ignes,
 
@@ -10107,31 +10105,31 @@ title: Argonautica
 
 **577** diversos postquam ire videt, galeamque minantem
 
-**578** quassat etet M 2 T, om V | post 578 in CMNT duo leguntur versus: Ut tandem stetit et toruo (torto C) se lumine flexit Qui prior aduersi respexit Iasonis arma errantem dextra ciet obvius ignem.
+**578** quassat et errantem dextra ciet obvius ignem.
 
 **581** cunctatus paulum subito furit. aequora non sic
 
 **582** in scopulos irata ruunt eademque recedunt
 
-**583** fractafracta Pius, Facta V | fulmineis NR, flumineis V retro. bis fulmineis se flatibus infert
+**583** fracta retro. bis fulmineis se flatibus infert
 
-**584** obnubitque virum, sed non incendiaincendia M, cendia V Colchis
+**584** obnubitque virum, sed non incendia Colchis
 
-**585** adspirare sinit, clipeoque inliditurinliditur M, inlidititur V ignis
+**585** adspirare sinit, clipeoque inliditur ignis
 
 **586** frigidus, et viso pallescit flamma veneno.
 
-**587** inicitInicit V, Incitat C | adque Leo, atque V, inque C Aesonides dextram adque ardentia mittit
+**587** inicit Aesonides dextram adque ardentia mittit
 
 **588** cornua, dein totis propendens viribus haeret.
 
-**589** ille virum atque ipsam tunc te,te M, de V Medea, recusans
+**589** ille virum atque ipsam tunc te, Medea, recusans
 
-**590** concutit et tota nitentem carminiscarminis V, cornibus C ira
+**590** concutit et tota nitentem carminis ira
 
-**591** portat iners; tandem gravius mugire recedensresidens Gronovius
+**591** portat iners; tandem gravius mugire recedens
 
-**592** incipit et fessofesso M, fessos V victus descendere cornu.
+**592** incipit et fesso victus descendere cornu.
 
 **593** respicit hinc socios immania vincula poscens
 
@@ -10139,57 +10137,57 @@ title: Argonautica
 
 **595** obnixusque genu superat cogitque trementes
 
-**596** sub iuga aena toros.toros M, tores V alium dehinc turbida Colchis
+**596** sub iuga aena toros. alium dehinc turbida Colchis
 
 **597** exarmat lentumque offert timideque minantem,
 
-**598** iamque propinquanti noctemnoctem M 2, noctemq. V implicat; ille fatiscens
+**598** iamque propinquanti noctem implicat; ille fatiscens
 
 **599** in caput inque umeros ipsa vi molis et irae
 
 **600** proruit. invadit totusque incumbit Iason
 
-**601** desuper atque suis detixumdefixum V, defessum cod. regius, defectum Burmann flatibus urget,
+**601** desuper atque suis detixum flatibus urget,
 
 **602** utque dedit vinclis validoque obstrinxit aratro,
 
-**603** suscitatSustitat V ipse genu saevaque agit insuper hasta,
+**603** suscitat ipse genu saevaque agit insuper hasta,
 
-**604** non secus aa d'Orville, ac V medio quam si telluris hiatu
+**604** non secus a medio quam si telluris hiatu
 
 **605** terga recentis equi primumque invasit habenis
 
 **606** murmur et in summa Lapithes apparuit Ossa.
 
-**607** Ille velut campos Libyescampos Libyes Bon 2, campis alibyae V ac pinguia Nili
+**607** Ille velut campos Libyes ac pinguia Nili
 
 **608** fertilis arva secet, plena sic semina dextra
 
-**609** spargere gaudet agrisagris Maserius, acri V oneratque novalia bello
+**609** spargere gaudet agris oneratque novalia bello
 
 **610** Martius hic primum ter vomere fusus ab ipso
 
 **611** clangor et ex omni sonuertnt cornua sulco;
 
-**612** bellatrix tunc gleba quatiquati CT, quatit V pariterque creari
+**612** bellatrix tunc gleba quati pariterque creari
 
 **613** armarique phalanx totisque insurgere campis.
 
-**614** cessit et ad socios paulum se rettulit herosheros M, he V
+**614** cessit et ad socios paulum se rettulit heros
 
-**615** opperiens, ubi prima sibi daret agminaagmina MC, agminia V tellus.
+**615** opperiens, ubi prima sibi daret agmina tellus.
 
-**616** at veroAt uero V, Aduerso C | cristis V, castris C ut summis iam rura recedere cristis
+**616** at vero ut summis iam rura recedere cristis
 
 **617** vidit et infesta vibrantes casside terras,
 
-**618** advolat atque, imoimo T 1 Bon. 2 ima V tellus qua proxima collo
+**618** advolat atque, imo tellus qua proxima collo
 
-**619** necdumNecdum M, Nectum V umeri videre diem, prior ense sequaci
+**619** necdum umeri videre diem, prior ense sequaci
 
 **620** aequat humo truncos; rutilum thoraca sequenti
 
-**621** aut primas a matre manus premit obviusobuius M, obuiusi V ante,
+**621** aut primas a matre manus premit obvius ante,
 
 **622** nec magis aut illis aut illis milibus ultra
 
@@ -10197,7 +10195,7 @@ title: Argonautica
 
 **624** agmina Palladios defessus respicit ignes.
 
-**625** ergo iterumiterum T Iunt. 1, iter VC | socios T 1 Bon. 2, Socios V ad socias convertere Colchidos artes
+**625** ergo iterum ad socias convertere Colchidos artes
 
 **626** et galeae nexus ac vincula dissipat imae,
 
@@ -10205,47 +10203,47 @@ title: Argonautica
 
 **628** ipse cupit; spes nulla datur, sic undique densant
 
-**629** terrigenae iam signa duces, clamorqueclamorque C Ald., clamore V tubaeque.
+**629** terrigenae iam signa duces, clamorque tubaeque.
 
-**630** iamque omnes videreuidere V, odere C virum, iamque omnia contra
+**630** iamque omnes videre virum, iamque omnia contra
 
-**631** tela micant.micant Kr. (vix vĭbrant), iubant V Post tum vero amens discrimine tanto,
+**631** tela micant. tum vero amens discrimine tanto,
 
-**632** quam modo Tartareo galeamn Medea veneno in C legitur Infectam dederă ususque armarat in illos
+**632** quam modo Tartareo galeamn Medea veneno
 
 **634** in medios torsit; conversae protinus hastae.
 
-**635** qualis ubi attonitosattonitos Carrio, atto V, exstimulat C, cod. Bon. maestae Phrygas annua Matris
+**635** qualis ubi attonitos maestae Phrygas annua Matris
 
-**636** ira vel exsectosex(s)ectos C Bon. 1, exertos V lacerat Bellona comatos,
+**636** ira vel exsectos lacerat Bellona comatos,
 
 **637** haud secus accensas subito Medea cohortes
 
 **638** implicat et miseros agit in sua proelia fratres:
 
-**639** omnis ibiibi Carrio, ubi V Aesoniden sterni putat, omnibus ira
+**639** omnis ibi Aesoniden sterni putat, omnibus ira
 
 **640** talis erat. stupet Aeetes ultroque furentes
 
 **641** ipse viros revocare cupit, sed cuncta iacebant
 
-**642** agmina, necnec Bon, 1 ne V | aut Carrio, haud V quisquam primus ruit aut super ullus
+**642** agmina, nec quisquam primus ruit aut super ullus
 
 **643** linquitur, atque hausit subito sua funera tellus.
 
 **644** Protinus in fluvium fumantibus evolat armis
 
-**645** Aesonides, qualis Getico de pulvere Mavorsmauores V
+**645** Aesonides, qualis Getico de pulvere Mavors
 
 **646** intrat equis uritque gravem sudoribus Hebrum,
 
 **647** aut niger ex antris rutilique a fulminis aestu
 
-**648** cum furit et SiculoSiculo Bon. 2, sicco V respirat in aequore Cyclops.
+**648** cum furit et Siculo respirat in aequore Cyclops.
 
-**649** redditus hichinc Francius tandem sociosque amplexus ovantes
+**649** redditus hic tandem sociosque amplexus ovantes
 
-**650** haud iam mendacemiam mendacem Carr. 2 tamen dacem V promissa reposcere regem
+**650** haud iam mendacem promissa reposcere regem
 
 **651** dignatur; nec, si ipse sibi terga ingerat ultro
 
@@ -10267,11 +10265,11 @@ title: Argonautica
 
 **7** quosque fugit complexa toros crinemque genasque
 
-**8** ante †peranti†panti carsit V, per antiqui carpsit M, vulgo, superstantis c. v. Somni Leo carpsit vestigia somni,
+**8** ante †peranti† carpsit vestigia somni,
 
 **9** atque haec impresso gemuit miseranda cubili:
 
-**10** 'o mihi si profugae genitor nunc illeille V, mille Heinsius, ipse Schenkl supremos
+**10** 'o mihi si profugae genitor nunc ille supremos
 
 **11** amplexus, Aeeta, dares fletusque videres
 
@@ -10285,21 +10283,21 @@ title: Argonautica
 
 **16** dixit et Haemonio numquam spernenda marito
 
-**17** condita letiferis promitpromit Turnebus, prodit V, profert C | cistis M, cistris V medicamina cistis,
+**17** condita letiferis promit medicamina cistis,
 
 **18** virgineosque sinus ipsumque monile venenis
 
 **19** implicat ac saevum super omnibus addidit ensem.
 
-**20** inde velut torto Furiarum erectaerecta T Bon. 1, eiecta VC flagello
+**20** inde velut torto Furiarum erecta flagello
 
 **21** prosilit, attonito qualis pede prosilit Ino
 
 **22** in freta nec parvi meminit conterrita nati,
 
-**23** quem tenet; extremum coniunx ferit inritus Isthmon.Isthmon C, Pius, sihmo V
+**23** quem tenet; extremum coniunx ferit inritus Isthmon.
 
-**24** Iam prior in lucos curiscuriis M 1, curiit V urgentibus heros
+**24** Iam prior in lucos curis urgentibus heros
 
 **25** venerat et nemoris sacra se nocte tegebat,
 
@@ -10321,21 +10319,21 @@ title: Argonautica
 
 **34** in quemcumque tremens hominem cadit, haut secus illa
 
-**35** actaIcta C timore gravi mediam se misit; at ille
+**35** acta timore gravi mediam se misit; at ille
 
 **36** excepit blandoque prior sic ore locutus:
 
 **37** 'o decus in nostros magnum ventura penates
 
-**38** solaqueSolaque M 2, Sola qui V tantarum virgo haut indigna viarum
+**38** solaque tantarum virgo haut indigna viarum
 
-**39** causa reperta duci, mihi iamduci, mihi iam Sudhaus, mihi iam V, mihi, iam nunc C, mihi, mihi iam Leo, mihi, iam iam vulgo | non nulla M 2 ut vid., non nulla V non ulla requiro
+**39** causa reperta duci, mihi iam non ulla requiro
 
-**40** vellera, teque meae satissatis M, statis V est quaesisse carinae.
+**40** vellera, teque meae satis est quaesisse carinae.
 
 **41** verum age et hoc etiam, quando potes, adice tantis
 
-**42** muneribusMuneribus M, Mumeneribus V meritisque tuis; namque aurea iussi
+**42** muneribus meritisque tuis; namque aurea iussi
 
 **43** terga referre sumus; socios ea gloria tangit.'
 
@@ -10355,13 +10353,13 @@ title: Argonautica
 
 **51** experiar quascumque vias, modo nequis abactam
 
-**52** huc referat me forte dies oculisqueoculisque M, oculis V parentis
+**52** huc referat me forte dies oculisque parentis
 
-**53** ingerar; hoc superos,superos M, superas V hoc te quoque deprecor, hospes.'
+**53** ingerar; hoc superos, hoc te quoque deprecor, hospes.'
 
 **54** Haec ait atque furens rapido per devia passu
 
-**55** tollitur. ille haeret comes et miseratur euntem,miseratur euntem M, miserat urentem V
+**55** tollitur. ille haeret comes et miseratur euntem,
 
 **56** cum subito ingentem media inter nubila flammam
 
@@ -10375,7 +10373,7 @@ title: Argonautica
 
 **61** aspicis; ille suis haec vibrat fulgura cristis:
 
-**62** me patiensme patiens Sudhaus, cf. Aen. VII 490, Suet. vit. Caes. 61, Meque pauens V, nec paveas Leo ac uocat C, aduocat V | ultro M, ultra V contra solam videt ac vocat ultro,
+**62** me patiens contra solam videt ac vocat ultro,
 
 **63** ceu solet, et blanda poscit me pabula lingua.
 
@@ -10383,51 +10381,51 @@ title: Argonautica
 
 **65** exuvias auferre velis, an lumina somno
 
-**66** mergimusMergimus cod. regius, T 1, Bon. l, Mergitur V et domitum potius tibi tradimus anguem?'
+**66** mergimus et domitum potius tibi tradimus anguem?'
 
-**67** ille silet: tantustantus M 2, tantos V | tum cod.regius. T 1, ut V subiit tum virginis horror.
+**67** ille silet: tantus subiit tum virginis horror.
 
 **68** Iamque manus Colchis crinemque intenderat astris,
 
 **69** carmina barbarico fundens pede, teque ciebat,
 
-**70** Somne pater: 'Somne omnipotens, te Colchiscolchis M, colchidis V ab omni
+**70** Somne pater: 'Somne omnipotens, te Colchis ab omni
 
 **71** orbe voco inque unum iubeo nunc ire draconem,
 
 **72** quae freta saepe tuo domui, quae nubila cornu
 
-**73** fulminaque in marg infer. add. V 1 | Fluminaque VM, corr.Bon. 1 et toto quicquid micat aethere; sed nunc,
+**73** fulminaque et toto quicquid micat aethere; sed nunc,
 
-**74** nunc age maior ades fratrique simillime Leto.laeto M, loto V
+**74** nunc age maior ades fratrique simillime Leto.
 
 **75** te quoque, Phrixeae pecudis fidissime custos,
 
-**76** tempus ab hac oculosoculos M, oculis V tandem deflectere cura.
+**76** tempus ab hac oculos tandem deflectere cura.
 
-**77** quem metuis me adstanteme adstante Heinsius, meis tande V, me stante C, me instante T, me hic stante cod. regius, miserande Meynke parumper M, panũper V dolum? servabo parumper
+**77** quem metuis me adstante dolum? servabo parumper
 
 **78** ipsa nemus; longum interea tu pone laborem.'
 
 **79** ille haut Aeolio discedere fessus ab auro
 
-**80** nec dare permissae, quamvis iuvet,iuvet Heinsius, iubet V ora quieti
+**80** nec dare permissae, quamvis iuvet, ora quieti
 
 **81** sustinet; ac primi percussus nube soporis
 
-**82** horruit et dulces excussit ab arboreab arbore V, corpore Heinsius | somnos M 2, somnus V somnos.
+**82** horruit et dulces excussit ab arbore somnos.
 
-**83** contra Tartareis Colchis spumare venenisuenenis M, om V
+**83** contra Tartareis Colchis spumare venenis
 
 **84** cunctaque Lethaei quassare silentia rami
 
 **85** perstat et adverso luctantia lumina cantu
 
-**86** obruitobruit Iunt. 1, Orruit V atque omnem linguaque manuque fatigat
+**86** obruit atque omnem linguaque manuque fatigat
 
 **87** vim Stygiam, ardentes donee sopor occupet iras.
 
-**88** iamque altae cecidere iubae, nutatque coactum desunt in V uno folio exscisso
+**88** iamque altae cecidere iubae, nutatque coactum
 
 **89** iam caput atque ingens extra sua vellera cervix,
 
@@ -10435,43 +10433,43 @@ title: Argonautica
 
 **91** Nilus et Hesperium veniens Alpheos in orbem.
 
-**92** ipsa caput cari postquam Medea draconisdraconis M 2 N, dracones M
+**92** ipsa caput cari postquam Medea draconis
 
 **93** vidit humi, fusis circum proiecta lacertis
 
-**94** seque suumqueSeque suumque M 2, Sed suumque MU, Se seuumque NF, Seque seuumque T simul flevit crudelis aluminum:
+**94** seque suumque simul flevit crudelis aluminum:
 
 **95** 'non ego te sera talem sub nocte videbam
 
 **96** sacra ferens epulasque tibi, nee talis hianti
 
-**97** mellaMella M 2 N, Melle M | nutribam M, turbam N dabam ac nostris nutribam fida venenis.
+**97** mella dabam ac nostris nutribam fida venenis.
 
 **98** quam gravida nunc mole iaces, quam segnis inertem
 
 **99** flatus habet; nec te saltem, miserande, peremi.
 
-**100** heuheu T 1 Aid., Nec M, cod. Bon.et Burmanni, Ne NT | passure lunt. 1, passura MNT saevum passure diem: iam nulla videbis
+**100** heu saevum passure diem: iam nulla videbis
 
 **101** vellera, nulla tua fulgentia dona sub umbra.
 
-**102** cede adeo inque aliis senium nunc digeredigere N, degenere M, degere M 2, egere Renkema, lucis
+**102** cede adeo inque aliis senium nunc digere lucis
 
 **103** immemor, oro, mei, nec me tua sibila toto
 
 **104** exagitent infesta mari. sed tu quoque cunctas,
 
-**105** Aesonide, dimitte hic C desiit | demitte N, demicte M moras atque effuge raptis
+**105** Aesonide, dimitte moras atque effuge raptis
 
 **106** velleribus. patrios exstinxi noxia tauros;
 
-**107** terrigenas in fatain fata Pius, infesta codd. dedi; fusum ecce draconis
+**107** terrigenas in fata dedi; fusum ecce draconis
 
 **108** corpus habes, iamque omne nefas, iam, spero, peregi.'
 
 **109** quaerenti tunc deinde viam, qua se arduus heros
 
-**110** ferret ad aurigeraeaurigerae N, arigerae M caput arboris,'eia, per ipsum
+**110** ferret ad aurigerae caput arboris,'eia, per ipsum
 
 **111** scande age et adverso gressus' ait 'imprime dorso.'
 
@@ -10495,7 +10493,7 @@ title: Argonautica
 
 **121** egressi relegunt campos et fluminis ora
 
-**122** summa petunt. micat omnis ager, villisqueuillisque N, nillisque M comantem
+**122** summa petunt. micat omnis ager, villisque comantem
 
 **123** sidereis totos pellem nunc fundit in artus,
 
@@ -10503,29 +10501,29 @@ title: Argonautica
 
 **125** talis ab Inachiis Nemeae Tirynthius antris
 
-**126** ibat, adhuc aptansaptans N, captans V umeris capitique leonem.
+**126** ibat, adhuc aptans umeris capitique leonem.
 
 **127** ut vero sociis, qui tunc praedicta tenebant
 
 **128** ostia, per longas apparuit aureus umbras,
 
-**129** clamor abab M 2, ad V Haemonio surgit grege; se quoque gaudens
+**129** clamor ab Haemonio surgit grege; se quoque gaudens
 
-**130** promovet ad primas iuveni ratisratis M 2 T, rates V obvia ripas.
+**130** promovet ad primas iuveni ratis obvia ripas.
 
-**131** praecipites agitagit M, ait V ille gradus atque aurea misit
+**131** praecipites agit ille gradus atque aurea misit
 
-**132** terga prius; mox attonitaatnotita V cum virgine puppem
+**132** terga prius; mox attonita cum virgine puppem
 
 **133** insilit ac rapta victor consistit in hasta.
 
-**134** Interea patrias saevus venit horror ad auresaures M 2, auras V
+**134** Interea patrias saevus venit horror ad aures
 
 **135** fata domus luctumque ferens. fraudemque fugamque
 
-**136** virginis.hinc subitis †inflexit†inflexit codd., effulsit Heinsius, incessit Wagner, infelix Schenkl frater in armis, in omnibus codd. XV. saeculi post 385 leguntur, idem ordo fuit in V, ubi tamen vss. 366–385 et 136–153 uno folio exscisso perierunt, ordo versunum restitutus est in marg. codicis R
+**136** virginis.hinc subitis †inflexit† frater in armis,
 
-**137** urbs etiam mox tota colt, volat ipseipse M 2, ipsa M senectae
+**137** urbs etiam mox tota colt, volat ipse senectae
 
 **138** immemor Aeetes, complentur litora bello
 
@@ -10541,7 +10539,7 @@ title: Argonautica
 
 **144** 'siste fugam, medio refer huc ex aequore puppem,
 
-**145** nata,Nata M 2 N, Nota M potes. quo' clamat 'abis? hic turba tuorum
+**145** nata, potes. quo' clamat 'abis? hic turba tuorum
 
 **146** omnis et iratus nondum pater; haec tua tellus
 
@@ -10549,7 +10547,7 @@ title: Argonautica
 
 **148** quis locus Inachias inter tibi, barbara, natas?
 
-**149** istane votauota M T 1, cod. Bon., cod.regils, nota T, tota N domus exspectatique hymenaei?
+**149** istane vota domus exspectatique hymenaei?
 
 **150** hunc petii grandaeva diem? vellem unguibus uncis
 
@@ -10567,31 +10565,31 @@ title: Argonautica
 
 **157** vellus habe et nostris siquid super accipe templis.
 
-**158** sed quid egoegō suspectum quemquam immeritis incuso querellis?
+**158** sed quid ego quemquam immeritis incuso querellis?
 
 **159** ipsa fugit tantoque (nefas) ipsa ardet amore.
 
 **160** hoc erat, infelix, redeunt nam singula menti,
 
-**161** ex quoEx quoto M 2, Ex quo to V Colchida reges Sudhaus, litora reges Giarratano, nam singula V (ex 160) Thessalici subierunt Colchida reges,
+**161** ex quo Thessalici subierunt Colchida reges,
 
 **162** quod nullae te, nata, dapes, non ulla iuvabant
 
-**163** tempora.tempora V, pocula d'Orville | aetraque M, aetraque V non ullus tibi tum color aegraque verba
+**163** tempora. non ullus tibi tum color aegraque verba
 
 **164** errantesque genae atque alieno gaudia vultu
 
-**165** semper erant.erant Bon. 1, erat V | cur M 2, cura V cur tanta mihi non prodita pestis,
+**165** semper erant. cur tanta mihi non prodita pestis,
 
-**166** ut gener Aesonidesgener aesonides M, genaenerae sonides V nostra consideret aula
+**166** ut gener Aesonides nostra consideret aula
 
-**167** necnec Bon. 1, Ne V talem paterere fugam, commune fuisset
+**167** nec talem paterere fugam, commune fuisset
 
 **168** aut certe nunc omne nefas, iremus et ambae
 
 **169** in quascumque vias? pariter petiisse iuvaret
 
-**170** Thessaliam et saevi quaecumque estest M, om. V hospitis urbem.'
+**170** Thessaliam et saevi quaecumque est hospitis urbem.'
 
 **171** sic genetrix, similique implet soror omnia questu
 
@@ -10601,7 +10599,7 @@ title: Argonautica
 
 **174** nomine; te venti procul et tua fata ferebant.
 
-**175** IndeInde M, Indi V diem noctemque volant. redeuntibus aura
+**175** Inde diem noctemque volant. redeuntibus aura
 
 **176** gratior, et notae Minyis transcurrere terrae,
 
@@ -10611,9 +10609,9 @@ title: Argonautica
 
 **179** nec via quae superet nec quae fortuna videtis.
 
-**180** crastinaCrastina M, Crasti V namque dies trucis ad confinia ponti
+**180** crastina namque dies trucis ad confinia ponti
 
-**181** Cyaneasque vocat, meminique,meminique Bon. 1, meminitque V | tuorum M 2, tioium V o Tiphy, tuorum
+**181** Cyaneasque vocat, meminique, o Tiphy, tuorum
 
 **182** saxa per illa, pater, memini, venerande, laborum.
 
@@ -10629,7 +10627,7 @@ title: Argonautica
 
 **188** illius adversi nunc ora petamus et undam,
 
-**189** quaeQuae M, Quaem V latus in laevum ponti cadit; inde sequemur
+**189** quae latus in laevum ponti cadit; inde sequemur
 
 **190** ipsius amnis iter, donec nos flumine certo
 
@@ -10639,13 +10637,13 @@ title: Argonautica
 
 **193** saxa iterum, quam Cyaneos perrumpere montes;
 
-**194** sat mihi: non totis Argo reditreddit M 1, reddit V ecce corymbis.'
+**194** sat mihi: non totis Argo redit ecce corymbis.'
 
 **195** haec ait ignarus fixas iam numine rupes
 
 **196** stare neque adversis ultra concurrere saxis.
 
-**197** reddidit Aesonides:'et te,te M, de V fidissime rector,
+**197** reddidit Aesonides:'et te, fidissime rector,
 
 **198** haud vani tetigere metus, nec me ire recuso
 
@@ -10655,31 +10653,31 @@ title: Argonautica
 
 **201** adsuetumque petunt plaustris migrantibus aequor.
 
-**202** Puppe procul summa vigilisuigilis M, uigiliis V post terga magistri
+**202** Puppe procul summa vigilis post terga magistri
 
 **203** haeserat auratae genibus Medea Minervae;
 
 **204** atque ibi deiecta residens in lumina palla
 
-**205** flebat adhuc, quamquamquamquam M, quaquam V Haemoniis cum regibus iret,
+**205** flebat adhuc, quamquam Haemoniis cum regibus iret,
 
-**206** sola tamen nec coniugiiconiugii M 2,coniugis V secura futuri.
+**206** sola tamen nec coniugii secura futuri.
 
 **207** illam Sarmatici miserantur litora ponti,
 
-**208** illa Thoanteae transit defletadefleta cod. regius, T 1 Pius, deflexa V Dianae.
+**208** illa Thoanteae transit defleta Dianae.
 
 **209** nulla palus, nullus Scythiae non maeret euntem
 
 **210** amnis; Hyperboreas movit conspecta pruinas,
 
-**211** tot modo regna tenens; ipsiipsi RF Bon. 1, ipse V | murmure V quoque murmura ponunt
+**211** tot modo regna tenens; ipsi quoque murmura ponunt
 
 **212** iam Minyae, iam ferre volunt. vix allevat ora
 
 **213** ad seras, siquando, dapes, quas carus lason
 
-**214** ipse dabat, iamdabat iam Bon. 1, dabam V | carambin M 2, carymbin V nubiferam transire Carambin
+**214** ipse dabat, iam nubiferam transire Carambin
 
 **215** significans, iam regna Lyci, totiensque gementem
 
@@ -10687,7 +10685,7 @@ title: Argonautica
 
 **217** Insula Sarmaticae Peuce stat nomine nymphae,
 
-**218** torvus ubiubi M, ilbi V | utraque M 2, utrasque V et ripa semper metuendus utraque
+**218** torvus ubi et ripa semper metuendus utraque
 
 **219** in freta per saevos Hister descendit alumnos.
 
@@ -10699,23 +10697,23 @@ title: Argonautica
 
 **223** ultro omnes laeti instigant meritamque fatentur.
 
-**224** ipseipse Balbus, Ipsa V autem invitae iam Pallados erigit aras
+**224** ipse autem invitae iam Pallados erigit aras
 
 **225** incipit Idaliae numen nec spernere divae,
 
 **226** praecipueque sui, siquando, in tempore pulcher
 
-**227** coniugiiConiugii M, Coniugi V Minyas numquam magis eminet inter:
+**227** coniugii Minyas numquam magis eminet inter:
 
-**228** qualis sanguineo victoruictor M, om V, fort. gradiens vel veniens vel rediens Gradivus ab Hebro
+**228** qualis sanguineo victor Gradivus ab Hebro
 
 **229** Idalium furto subit aut dilecta Cythera,
 
 **230** seu cum caelestes Alcidae invisere mensas
 
-**231** iam vacat et fessum Iunonia sustinetsustinet M, stistinet V Hebe.
+**231** iam vacat et fessum Iunonia sustinet Hebe.
 
-**232** adnuit unanimisadnuit unanimis Meyncke, Adsunt unanimes V Venus, hortatorque Cupido
+**232** adnuit unanimis Venus, hortatorque Cupido
 
 **233** suscitat adfixam maestis Aeetida curis;
 
@@ -10727,17 +10725,17 @@ title: Argonautica
 
 **237** tum novus implevit vultus honor, ac sua flavis
 
-**238** reddita curacura M, curo V comis, graditurque oblita malorum.
+**238** reddita cura comis, graditurque oblita malorum.
 
-**239** sic ubi Mygdonios planctus sacerplanctu sacer V abluit Almo,
+**239** sic ubi Mygdonios planctus sacer abluit Almo,
 
 **240** laetaque iam Cybele festaeque per oppida taedae,
 
-**241** quis modo tamtam cod. Bon., iam V saevos adytis fluxisse cruores
+**241** quis modo tam saevos adytis fluxisse cruores
 
 **242** cogitet? aut ipsi qui iam meminere ministri?
 
-**243** inde ubi sacrificassacrificas M, sacrificans V cum coniuge venit ad aras
+**243** inde ubi sacrificas cum coniuge venit ad aras
 
 **244** Aesonides unaque adeunt pariterque precari
 
@@ -10749,11 +10747,11 @@ title: Argonautica
 
 **248** explicuit, nec tura videt concordia Mopsus,
 
-**249** promissam nec stare fidem,fidem M, fides V breve tempus amorum.
+**249** promissam nec stare fidem, breve tempus amorum.
 
 **250** odit utrumque simul, simul et miseratur utrumque
 
-**251** et tibi tumtum V, iam Bon. 1 nullos optavit, barbara, natos.
+**251** et tibi tum nullos optavit, barbara, natos.
 
 **252** mox epulas et sacra parant; silvestria laetis
 
@@ -10769,7 +10767,7 @@ title: Argonautica
 
 **258** altius inque sui sternuntur velleris auro.
 
-**259** Quis novus inceptos timor impediitimpediit M, inpendit V hymenaeos
+**259** Quis novus inceptos timor impediit hymenaeos
 
 **260** turbavitque toros et sacra calentia rupit?
 
@@ -10777,7 +10775,7 @@ title: Argonautica
 
 **262** advehitur profugis infestam lampada Grais
 
-**263** concutiens, diroquediroque Baehrens, diramque V | sororem M, sonorem V premens clamore sororem
+**263** concutiens, diroque premens clamore sororem
 
 **264** atque 'hanc, o siquis vobis dolor iraque, Colchi,
 
@@ -10787,7 +10785,7 @@ title: Argonautica
 
 **267** puppe (nefas) una praedo Phrixea reportat
 
-**268** vellera; qua libuit remeatremeat T, tremeat V cum virgine; nobis
+**268** vellera; qua libuit remeat cum virgine; nobis
 
 **269** (o pudor) et muros et stantia tecta reliquit.
 
@@ -10799,39 +10797,39 @@ title: Argonautica
 
 **273** patris ad ora mei tam parvo in tempore fas sit'?
 
-**274** quinquaginta animae me scilicet unaqueunaque M, una V mersa
+**274** quinquaginta animae me scilicet unaque mersa
 
 **275** sufficiet placare ratis? te, Graecia fallax,
 
 **276** persequor atque tuis hunc quasso moenibus ignem;
 
-**277** nec tibi digna, soror, desum ad conubia frater,frater Bon. 1, pater V
+**277** nec tibi digna, soror, desum ad conubia frater,
 
 **278** primus et ecce fero quatioque hanc lampada vestro
 
-**279** coniugio, primus celebro dotaliadotalia M, datalia V sacra,
+**279** coniugio, primus celebro dotalia sacra,
 
-**280** qui potui; patriae veniam da,da M, de V quaeso, senectae.
+**280** qui potui; patriae veniam da, quaeso, senectae.
 
-**281** quin omnes aliialii Bon. 2, alti VM | populusque Bentley, sed cf. V 405 pariter populique patresque
+**281** quin omnes alii pariter populique patresque
 
 **282** mecum adsunt. magni virgo ne regia Solis
 
 **283** Haemonii thalamos adeas despecta mariti,
 
-**284** tot decuit coiissecoiisse Bon. 2, coire V | fulgere M 2, fulgurae V rates, tot fulgere taedas.'
+**284** tot decuit coiisse rates, tot fulgere taedas.'
 
 **285** Dixerat atque orans iterum ventosque virosque
 
 **286** perque ratis supplex et remigis
 
-**286a** vexilla magistris. duo hemistichia excidisse vidit Leo; iam antea suppleverat Sudhaus per... remigis ipse recentis transtra ruit panditque novis vexilla magistris, quod comprobatur Stat. Theb. V 403 sqq.
+**286a** vexilla magistris.
 
-**287** illi autem intorquent truncis frondentibusfrondentibus M, frondibus V undam,
+**287** illi autem intorquent truncis frondentibus undam,
 
-**288** quaeque die fueratfuerat M, furat V raptim formata sub uno
+**288** quaeque die fuerat raptim formata sub uno
 
-**289** et tantum deiecta suis a montibusa montibus M, amontibur V arbor
+**289** et tantum deiecta suis a montibus arbor
 
 **290** (quid dolor et veterum potuit non ira virorum?)
 
@@ -10839,7 +10837,7 @@ title: Argonautica
 
 **292** barbara Palladiam puppem ratis, ostia done
 
-**293** Danubii viridemqueuiridemque M, uirilegemque V vident ante ostia Peucen
+**293** Danubii viridemque vident ante ostia Peucen
 
 **294** ultimaque adgnoscunt Argoi cornua mali.
 
@@ -10857,7 +10855,7 @@ title: Argonautica
 
 **301** iamque alii clipeos et tela trabalia dextris
 
-**302** expediunt, armantarmant M 2, amant V | picis unguine Bon. 1, pici sanguine V alii picis unguine flammas;
+**302** expediunt, armant alii picis unguine flammas;
 
 **303** impatiens tremit hasta morae, nec longius inter,
 
@@ -10871,7 +10869,7 @@ title: Argonautica
 
 **308** primus et in puppem deserta virgine ductor
 
-**309** prosilit et summa galeam rapitrapit M, rapat V altus ab hasta;
+**309** prosilit et summa galeam rapit altus ab hasta;
 
 **310** ense simul clipeoque micat; nec cetera pubes
 
@@ -10889,15 +10887,15 @@ title: Argonautica
 
 **317** seu frater Graia victus cecidisset ab hasta.
 
-**318** Haud ita sed summo segnis sedetsedet M 2, sed V aethere Iuno
+**318** Haud ita sed summo segnis sedet aethere Iuno
 
 **319** aut sinit extrema Minyas decernere pugna,
 
-**320** nec numero quoniam Colchis nec puppibus aequos.aequi Wagner
+**320** nec numero quoniam Colchis nec puppibus aequos.
 
-**321** ergo ubi diva rates hostemque accedereaccedere M, accendere V cernit,
+**321** ergo ubi diva rates hostemque accedere cernit,
 
-**322** ipsa subitipsa subit Bon 1, ipsas ubi V terras tempestatumque refringit
+**322** ipsa subit terras tempestatumque refringit
 
 **323** ventorumque domos. volucrum gens turbida fratrum
 
@@ -10911,25 +10909,25 @@ title: Argonautica
 
 **328** Tollitur atque intra Minyas Argoaque vela
 
-**329** Styrus abit;abit T Bon. 1, habet V vasto rursus desidit hiatu
+**329** Styrus abit; vasto rursus desidit hiatu
 
 **330** abrupta revolutus aqua. iamque omnis in astra
 
-**331** itque reditque ratis,ratis M 2, rates V lapsoque reciproca fluctu
+**331** itque reditque ratis, lapsoque reciproca fluctu
 
-**332** descendit. voratvorat cod. regius, T 1, Bon 2, uarat V hos vertex, hos agmine toto
+**332** descendit. vorat hos vertex, hos agmine toto
 
-**333** gurges agit.agit M, ait V simul in vultus micat unldique terror;
+**333** gurges agit. simul in vultus micat unldique terror;
 
-**334** crebra ruina poli caelestia liminalimina cod.Bunrmunni, lumina V laxat.
+**334** crebra ruina poli caelestia limina laxat.
 
 **335** non tamen ardentis Styri violentia cedit;
 
 **336** hortatur socios media inter proelia divum:
 
-**337** 'transferetTransferet etiam V exhibet ergo meas in quae volet oppida dotes
+**337** 'transferet ergo meas in quae volet oppida dotes
 
-**338** Colchis?Colchis M 2, Colchius V | succedet M, succederet V et Haemonius nobis succedet adulter?
+**338** Colchis? et Haemonius nobis succedet adulter?
 
 **339** nec mihi tot magnos inter regesque procosque
 
@@ -10949,7 +10947,7 @@ title: Argonautica
 
 **347** sub freta, semiviri nec murra corpus Achivi
 
-**348** sed pice, sed flammis et olentisfiammis et olentis MT, flammise tollentis V, flammis sed olentes Lemaire sulphure crines.
+**348** sed pice, sed flammis et olentis sulphure crines.
 
 **349** vos modo vel solum hoc fluctus expellite corpus,
 
@@ -10977,15 +10975,15 @@ title: Argonautica
 
 **361** incipit et remos et quaerere transtra solutae
 
-**362** sparsa ratis maestasquemaestasque Thilo, ma est as V | altis V, aliis Heinsius altis intendere voces
+**362** sparsa ratis maestasque altis intendere voces
 
 **363** puppibus; ast inter tantos succurrere fluctus
 
-**364** nulla potest aut ille †velit†,aut ille velit V, aut ulla velit T 1 Balbus, actam ille petit Bury, fort. aut ille vehi (i. e. advehi) quotiensque propinquat,
+**364** nulla potest aut ille †velit†, quotiensque propinquat,
 
-**365** tunc aliud rursus dirimit mare. iam tamen erraterrat V, extat Ald.
+**365** tunc aliud rursus dirimit mare. iam tamen errat
 
-**366** iamque abiit, fundoque iterum violentus ab imo desunt in V (cf ad 136)
+**366** iamque abiit, fundoque iterum violentus ab imo
 
 **367** erigitur; sed fluctus adest magnoque sub altis
 
@@ -10993,29 +10991,29 @@ title: Argonautica
 
 **369** Absyrtus visu maeret defixus acerbo.
 
-**370** heuheu Heinsius (cf. 1 71, VII 309), Nec MN, nunc Schenkl quid agat? qua vi portus et prima capessat
+**370** heu quid agat? qua vi portus et prima capessat
 
 **371** ostia? qua possit Minyas invadere, clausos
 
-**372** quos videt agnoscitque fremens?fremens Sabellicus, tremens MN maria obvia contra
+**372** quos videt agnoscitque fremens? maria obvia contra
 
 **373** saevaque pugnat hiems totusque in vertice pontus.
 
-**374** abscessit tandem vanaque reseditresedit Lemaire,cf. Aen VI 407, recedit V ab ira
+**374** abscessit tandem vanaque resedit ab ira
 
-**375** et tanta de clade ratis.ratis M 2, Iunt. 1, rates MN latus inde sinistrum
+**375** et tanta de clade ratis. latus inde sinistrum
 
 **376** adversamque procul Peuces defertur in oram
 
-**377** cum sociis;sociis Bon. 2, socii MNT gemino nam scinditur insula flexu
+**377** cum sociis; gemino nam scinditur insula flexu
 
-**378** Danubii. hachac lunt. 1, ac MN, at M 2 | pagaseaque N, pegasea M (que add.M 2) dudum Minyae Pagasaeaque puppis
+**378** Danubii. hac dudum Minyae Pagasaeaque puppis
 
 **379** in statione manent; illinc Aeetius heros
 
 **380** obsidet adversa tentoria Thessala classe
 
-**381** impatiens, pugnaeque datur non ullaulla M 2 N, nulla M potestas.
+**381** impatiens, pugnaeque datur non ulla potestas.
 
 **382** noctes atque dies vastis mare fluetibus inter
 
@@ -11025,15 +11023,15 @@ title: Argonautica
 
 **385** At Minyae tanti reputantes ultima belli
 
-**386** urgentUrguent etiam V exhibet et precibus cuncti fremituque fatigant
+**386** urgent et precibus cuncti fremituque fatigant
 
-**387** Aesoniden. quid sequid se Bon. 1, quidese V | clausos T 1 Bon. 2, clausas V externa pro virgine clausos
+**387** Aesoniden. quid se externa pro virgine clausos
 
 **388** obiciat, quidve illa pati discrimina cogat?
 
-**389** respiceret pluresque animas maioraquemaioraque M, maiora V fata
+**389** respiceret pluresque animas maioraque fata
 
-**390** tot comitum, qui non furiisfuriis V, furtis Heinsius | amore Bon 2, more V nec amore nefando
+**390** tot comitum, qui non furiis nec amore nefando
 
 **391** per freta, sed sola sese virtute sequantur.
 
@@ -11045,23 +11043,23 @@ title: Argonautica
 
 **395** quemque suas sinat ire domos, nec Mart.cruento
 
-**396** EuropamEuropam M, Euroram V atque Asiam prima haec committat Erinys.
+**396** Europam atque Asiam prima haec committat Erinys.
 
 **397** namque datum hoc fatis trepidus supplexque canebat
 
-**398** Mopsus, ut in seros irent magis istaista T Bon. 2, ipsa V nepotes
+**398** Mopsus, ut in seros irent magis ista nepotes
 
 **399** atque alius lueret tam dira incendia raptor.
 
 **400** Ille trahens gemitum tantis ac vocibus impar,
 
-**401** quamquam iura deumiura deum M, iura adeum V | et sacri Pius, est acri V et sacri sibi conscia pacti
+**401** quamquam iura deum et sacri sibi conscia pacti
 
 **402** religio dulcisque movent primordia taedae,
 
 **403** cunctatur mortemque cupit sociatmque pericli
 
-**404** cogitat post cogitat duo hemistichia intercidisse statuit Schenkl
+**404** cogitat
 
 **404a** haut ultra sociis obsistere pergit.
 
@@ -11073,19 +11071,19 @@ title: Argonautica
 
 **408** Sed miser ut vanos, veros ita saepe timores
 
-**409** versat amor falliquefallique M, fallitque V sinit nec virginis annos.
+**409** versat amor fallique sinit nec virginis annos.
 
 **410** ac prior ipsa dolos et quamlibet intima sensit
 
-**411** non fidi iam signasigna M, signi V viri nimiumque silentes
+**411** non fidi iam signa viri nimiumque silentes
 
-**412** una omnes. haut illailla M, ulla V sui tamen immemor umquam
+**412** una omnes. haut illa sui tamen immemor umquam
 
 **413** nec subitis turbata minis prior occupat unum
 
 **414** Aesoniden longeque trahit, mox talibus infit:
 
-**415** 'me quoque, vir, tecumuir, tecum T, uittae cum V, quid tecum—movent? Liceat Heinsius, quid tecum—novent, liceat Thilo Minyae, fortissima pubes,
+**415** 'me quoque, vir, tecum Minyae, fortissima pubes,
 
 **416** nocte dieque movent. liceat cognoscere tandem,
 
@@ -11093,7 +11091,7 @@ title: Argonautica
 
 **418** nec dominos decepta sequor consultaque vestra
 
-**419** fas audire mihi. vereor, fidissimefidissime MU, uidissime V coniunx,
+**419** fas audire mihi. vereor, fidissime coniunx,
 
 **420** nil equidem; miserere tamen promissaque serva
 
@@ -11101,11 +11099,11 @@ title: Argonautica
 
 **422** inque tua me sperne domo. scis te mihi certe,
 
-**423** non socios iurasse tuos. hihi Pii codd., his V reddere forsan
+**423** non socios iurasse tuos. hi reddere forsan
 
-**424** fas habeant, tibi non eadem permissapermissa Bon. 2, promissa V potestas,
+**424** fas habeant, tibi non eadem permissa potestas,
 
-**425** teque simul mecum ipsa traham; non sola reposcorreposcor M, reposcos V
+**425** teque simul mecum ipsa traham; non sola reposcor
 
 **426** virgo nocens, atque hac pariter rate fugimus omnes.
 
@@ -11127,15 +11125,15 @@ title: Argonautica
 
 **435** nec spes ulla super. quin tu mea respice saltem
 
-**436** coasilia et nimionimio MRF, nimia V | cede M 2, ce V comitum ne cede timori.
+**436** coasilia et nimio comitum ne cede timori.
 
-**437** crediditcredidit Bon. 2, Reddidit V | quis te Heinsius, quise V, quis se T Bon. 2 ardentes quis te tunc iungere tauros
+**437** credidit ardentes quis te tunc iungere tauros
 
 **438** posse? quis ad saevi venturum templa draconis?
 
 **439** o utinam ergo meus pro te non omnia posset
 
-**440** atque aliquid dubitaret amor. quin nunc quoque quaeroquaero Bon. 2, quaere V
+**440** atque aliquid dubitaret amor. quin nunc quoque quaero
 
 **459** quid iubeas.— heu dure siles, magnumque minatur
 
@@ -11145,23 +11143,23 @@ title: Argonautica
 
 **443** fas erat? haud hoc nunc genitor putat aut dare poenas
 
-**444** iam sceleris dominumque pati.' sic fata parantemparantem T, parentum V
+**444** iam sceleris dominumque pati.' sic fata parantem
 
-**445** reddereReddere M 2, Redde V dicta virum furiata mente refugit
+**445** reddere dicta virum furiata mente refugit
 
 **446** vociferans. qualem Ogygias cum tollit in arces
 
-**447** Bacchus et Aoniis inlidit ThyadaThyada Heinsius, tyana V truncis,
+**447** Bacchus et Aoniis inlidit Thyada truncis,
 
 **448** talis erat talemque iugis se virgo ferebat
 
 **449** cuncta pavens: fugit infestos vibrantibus hastis
 
-**450** terrigenas, fugit ardentes exterrita tauros. huc transposuit Lemaire
+**450** terrigenas, fugit ardentes exterrita tauros.
 
 **451** si Pagasas vel Peliacas hinc denique nubes
 
-**452** cerneret et tenuitenui post Tempe add. Baehrens om V Tempe lucentia fumo,
+**452** cerneret et tenui Tempe lucentia fumo,
 
 **453** hoc visu contenta mori. tunc tota querellis
 
@@ -11169,11 +11167,11 @@ title: Argonautica
 
 **455** sola movet, maestis veluti nox illa sonaret
 
-**456** plenaPlena M 2, Plana V lupis quaterentque truces ieiuna leones
+**456** plena lupis quaterentque truces ieiuna leones
 
-**457** ora vel orbatae traherent suspiria vaccae.vacc(a)e T Bon. 1, bacchae V
+**457** ora vel orbatae traherent suspiria vaccae.
 
-**458** procedit: non gentis honos, non restat imago restat imago vel gloria restat Sudhaus, om. V, gloria magni T Ineter versus
+**458** procedit: non gentis honos, non restat imago
 
 **460** Solis avi, non barbaricae decor ille iuventae,
 
@@ -11181,15 +11179,15 @@ title: Argonautica
 
 **462** vellera vexit ovans interque ingentia Graium
 
-**463** nomina Palladia virgo stetit altera prora. et
+**463** nomina Palladia virgo stetit altera prora.
 
-**464** haeret, et hinc praesens pudor, hinc decreta suorum secuml non cohaerentes nonnulli codd.deteriores haec interpolaverunt: Moestus at ille minis et nota Colchidos ira
+**464** haeret, et hinc praesens pudor, hinc decreta suorum
 
 **465** dura premunt. utcumque tamen mulcere gementem
 
-**466** temptat et ipse gemens †et tempera dictis†:et tempera dictis V, et dictis temperat iras M 2 in marg., et tempora quaerere dictis Heinsius
+**466** temptat et ipse gemens †et tempera dictis†:
 
-**467** 'meneMane V | ultimos versus, nisi mortem in scribendo poetam oppressisse credas, sic fere constituendos et e. g. supplendos censet Sudhausius: temptat et ipse gemens quaerens et tempora dictis: 'mene aliquid meruisse putas? me talia velle pro tantis, inquit, meritis tibi praemia reddi?' aliquid meruisse putas? me talia velle ...'
+**467** 'mene aliquid meruisse putas? me talia velle ...'
 
 temptat et ipse gemens quaerens et tempora dictis:
 

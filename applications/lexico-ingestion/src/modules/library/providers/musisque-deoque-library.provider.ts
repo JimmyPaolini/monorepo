@@ -27,15 +27,15 @@ export class MusisqueDeoqueLibraryProvider {
   }): Promise<Author[]> {
     const host =
       "https://raw.githubusercontent.com/souravsingh/latin_text_musisque_deoque/master/";
-    this.logger.log(`Scraping MQDQ from ${host}`);
+    this.logger.log(`🗂️ Scraping MQDQ from ${host}`);
 
     const treeUrl =
       "https://api.github.com/repos/souravsingh/latin_text_musisque_deoque/git/trees/master?recursive=1";
-    this.logger.log(`Fetching MQDQ tree from ${treeUrl}`);
+    this.logger.log(`🗂️ Fetching MQDQ tree from ${treeUrl}`);
     const treeRes = await fetch(treeUrl);
 
     if (!treeRes.ok) {
-      this.logger.error(`Failed to fetch MQDQ tree: ${treeRes.statusText}`);
+      this.logger.error(`❌ Failed to fetch MQDQ tree: ${treeRes.statusText}`);
       return [];
     }
 
@@ -47,7 +47,7 @@ export class MusisqueDeoqueLibraryProvider {
       .filter((node) => node.type === "blob" && node.path.endsWith(".json"))
       .map((node) => node.path);
 
-    this.logger.log(`Found ${jsonPaths.length} JSON files in MQDQ repo`);
+    this.logger.log(`🗂️ Found ${jsonPaths.length} JSON files in MQDQ repo`);
 
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
@@ -58,13 +58,14 @@ export class MusisqueDeoqueLibraryProvider {
       const jsonPath = jsonPaths[i];
       if (!jsonPath) continue;
 
-      this.logger.log(`Fetching (${i + 1}/${jsonPaths.length}): ${jsonPath}`);
+      const progressString = ` (${(((i + 1) / jsonPaths.length) * 100).toFixed(2)}%, ${i + 1}/${jsonPaths.length})`;
+      this.logger.log(`📜 Fetching ${jsonPath}${progressString}`);
 
       try {
         const fileUrl = host + jsonPath;
         const res = await fetch(fileUrl);
         if (!res.ok) {
-          this.logger.warn(`Failed to fetch ${fileUrl}: ${res.statusText}`);
+          this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${res.statusText}`);
           continue;
         }
 
@@ -130,7 +131,7 @@ export class MusisqueDeoqueLibraryProvider {
 
         await new Promise((resolve) => setTimeout(resolve, 100));
       } catch (error) {
-        this.logger.warn(`Error processing ${jsonPath}: ${error}`);
+        this.logger.warn(`⚠️ Error processing ${jsonPath}: ${error}`);
       }
     }
 

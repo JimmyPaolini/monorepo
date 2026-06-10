@@ -20,7 +20,7 @@ is quaestorius Cn. et C. procreauit, a quibus duplex Octauiorum familia defluxit
 
 sed haec alii; ipse Augustus nihil amplius quam equestri familia ortum se scribit uetere ac locuplete, et in qua primus senator pater suus fuerit. M. Antonius libertinum ei proauum exprobrat, restionem e pago Thurino, auum argentarium. nec quicquam ultra de paternis Augusti maioribus repperi.
 
-C. Octauius pater a principio aetatis et re et existimatione magna fuit, ut equidem mirer hunc quoque a nonnullis argentarium atque etiam inter diuisores operasque campestres proditum; amplis enim innutritus opibus honores et adeptus est facile et egregie administrauit. ex praetura Macedoniam sortitus fugitiuos, residuam Spartaci et Catilinae manum, Thuringum agrum tenentis in itinere deleuit, negotio sibi in senatu extra ordinem dato.
+**C** Octauius pater a principio aetatis et re et existimatione magna fuit, ut equidem mirer hunc quoque a nonnullis argentarium atque etiam inter diuisores operasque campestres proditum; amplis enim innutritus opibus honores et adeptus est facile et egregie administrauit. ex praetura Macedoniam sortitus fugitiuos, residuam Spartaci et Catilinae manum, Thuringum agrum tenentis in itinere deleuit, negotio sibi in senatu extra ordinem dato.
 
 prouinciae praefuit non minore iustitia quam fortitudine; namque Bessis ac Thracibus magno proelio fusis ita socios tractauit, ut epistulae M. Ciceronis extent, quibus Quintum fratrem eodem tempore parum secunda fama proconsulatum Asiae administrantem hortatur et monet, imitetur in promerendis sociis uicinum suum Octauium.
 
@@ -78,7 +78,7 @@ nec temere plura ac maiora pericula ullo alio bello adiit. traiecto in Siciliam 
 
 Post Pompei fugam collegarum alterum M. Lepidum, quem ex Africa in auxilium euocarat, superbientem uiginti legionum fiducia summasque sibi partes terrore et minis uindicantem spoliauit exercitu supplicemque concessa uita Cerceios in perpetuum relegauit.
 
-M. Antonii societatem semper dubiam et incertam reconciliationibusque uariis male focilatam abrupit tandem, et quo magis degenerasse eum a ciuili more approbaret, testamentum, quod is Romae etiam de Cleopatra liberis inter heredes nuncupatis reliquerat, aperiundum recitandumque pro contione curauit.
+**M** Antonii societatem semper dubiam et incertam reconciliationibusque uariis male focilatam abrupit tandem, et quo magis degenerasse eum a ciuili more approbaret, testamentum, quod is Romae etiam de Cleopatra liberis inter heredes nuncupatis reliquerat, aperiundum recitandumque pro contione curauit.
 
 remisit tamen hosti iudicato necessitudines amicosque omnes atque inter alios C. Sosium et T. Domitium tunc adhuc consules. Bononiensibus quoque publice, quod in Antoniorum clientela antiquitus erant, gratiam fecit coniurandi cum tota Italia pro partibus suis. nec multo post nauali proelio apud Actium uicit in serum dimicatione protracta, ut in naue uictor pernoctauerit.
 
@@ -480,7 +480,7 @@ Cum primum fari coepisset, in auito suburbano obstrepentis forte ranas silere iu
 
 Q. Catulus post dedicatum Capitolium duabus continuis noctibus somniauit: prima, Iouem Optimum Maximum e praetextatis compluribus circum aram ludentibus unum secreuisse atque in eius sinum signum rei p. quod manu gestaret reposuisse; at insequenti, animaduertisse se in gremio Capitolini Iouis eundem puerum, quem cum detrahi iussisset, prohibitum monitu dei, tamquam is ad tutelam rei p. educaretur; ac die proximo obuium sibi Augustum, cum incognitum alias haberet, non sine admiratione contuitus simillimum dixit puero, de quo somniasset. quidam prius somnium Catuli aliter exponunt, quasi Iuppiter compluribus praetextatis tutorem a se poscentibus unum ex eis demonstrasset, ad quem omnia desideria sua referrent, eiusque osculum delibatum digitis ad os suum rettulisset.
 
-M. Cicero C. Caesarem in Capitolium prosecutus somnium pristinae noctis familiaribus forte narrabat: puerum facie liberali demissum e caelo catena aurea ad fores Capitoli constitisse eique Iouem flagellum tradidisse; deinde repente Augusto uiso, quem ignotum plerisque adhuc auunculus Caesar ad sacrificandum acciuerat, affirmauit ipsum esse, cuius imago secundum quietem sibi obuersata sit.
+**M** Cicero C. Caesarem in Capitolium prosecutus somnium pristinae noctis familiaribus forte narrabat: puerum facie liberali demissum e caelo catena aurea ad fores Capitoli constitisse eique Iouem flagellum tradidisse; deinde repente Augusto uiso, quem ignotum plerisque adhuc auunculus Caesar ad sacrificandum acciuerat, affirmauit ipsum esse, cuius imago secundum quietem sibi obuersata sit.
 
 Sumenti uirilem togam tunica lati claui resuta ex utraque parte ad pedes decidit. fuerunt qui interpretarentur, non aliud significare, quam ut is ordo cuius insigne id esset quandoque ei subiceretur.
 

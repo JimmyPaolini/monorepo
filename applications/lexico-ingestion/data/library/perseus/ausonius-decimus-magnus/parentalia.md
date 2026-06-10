@@ -298,7 +298,7 @@ title: Parentalia
 
 **4** moribus ornasti qui veteres proavos.
 
-**5** pulcher honore oris, tranquillo pectore comis, 5
+**5** pulcher honore oris, tranquillo pectore comis,
 
 **6** facundo quamvis maior ab ingenio:
 

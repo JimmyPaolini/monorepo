@@ -414,7 +414,7 @@ title: Hercules
 
 **197** me mea tellus
 
-**197b** lare secreto tutoque tegat. 197 b
+**197b** lare secreto tutoque tegat.
 
 **198** venit ad pigros cana senectus,
 

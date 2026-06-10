@@ -13,7 +13,7 @@ title: De Beneficiis
 
 # De Beneficiis
 
-Inter multos ac varios errores temere inconsulteque viventium nihil propemodum indignius, indignius commonly supplied ; diffusius dixerim quam quod Bourgery ; discerni haec duo dixerim quod Préchac. vir optime Liberalis, dixerim, quam quod quam quod MG2: quod N, Hosius after a lacuna. beneficia nec dare scimus nec accipere. Sequitur enim, ut male collocata male debeantur ; de quibus non redditis sero querimur ; ista enim perierunt, cum darentur. Nec mirum est inter plurima maximaque vitia nullum esse frequentius quam ingrati animi.
+Inter multos ac varios errores temere inconsulteque viventium nihil propemodum indignius, vir optime Liberalis, dixerim, quam quod beneficia nec dare scimus nec accipere. Sequitur enim, ut male collocata male debeantur ; de quibus non redditis sero querimur ; ista enim perierunt, cum darentur. Nec mirum est inter plurima maximaque vitia nullum esse frequentius quam ingrati animi.
 
 Id evenire ex causis pluribus video. Prima illa est, quod non eligimus dignos, quibus tribuamus. Sed nomina facturi diligenter in patrimonium et vitam debitoris inquirimus, semina in solum effetum et sterile non spargimus ; beneficia sine ullo dilectu magis proicimus quam damus.
 
@@ -29,7 +29,7 @@ Nemo autem libenter debet, quod non accepit, sed expressit. Gratus adversus eum 
 
 Eodem animo beneficium debetur, quo datur, et ideo non est neclegenter dandum ; sibi enim quisque debet, quod a nesciente accepit ; ne tarde quidem, quia, cum omni in officio magni aestimetur dantis voluntas, qui tarde fecit, diu noluit ; utique non contumeliose ; nam eum ita natura comparatum sit, ut altius iniuriae quam merita descendant et illa cito defluant, has tenax memoria custodiat, quid expectat, qui offendit, dum obligat ? Satis adversus illum gratus est, si quis beneficio eius ignoscit.
 
-Non est autem, quod tardiores faciat ad bene merendum turba ingratorum. Nam primum, ut dixi, nos illam augemus ; deinde ne deos quidem immortales ab hac tam effusa nec cessante benignitate nec cessante benignitate corrected by Lipsius: necessitate O. sacrilegi neclegentesque eorum deterrent. Utuntur natura sua et cuncta interque illa ipsos munerum suorum malos interpretes iuvant. Hos sequamur duces, quantum humana imbecillitas patitur ; demus beneficia, non feneremus. Dignus est decipi, qui de recipiendo cogitavit, cum daret. At male cesserit.
+Non est autem, quod tardiores faciat ad bene merendum turba ingratorum. Nam primum, ut dixi, nos illam augemus ; deinde ne deos quidem immortales ab hac tam effusa nec cessante benignitate sacrilegi neclegentesque eorum deterrent. Utuntur natura sua et cuncta interque illa ipsos munerum suorum malos interpretes iuvant. Hos sequamur duces, quantum humana imbecillitas patitur ; demus beneficia, non feneremus. Dignus est decipi, qui de recipiendo cogitavit, cum daret. At male cesserit.
 
 Et liberi et coniuges spem fefellerunt, tamen et educamus et ducimus, adeoque adversus experimenta pertinaces sumus, ut bella victi et naufragi maria repetamus. Quanto magis permanere in dandis beneficiis decet ! Quae si quis non dat, quia non recepit, dedit, ut reciperet, bonamque ingratorum facit causam, quibus turpe est non reddere, si licet.
 
@@ -55,9 +55,9 @@ Officia etiam ferae sentiunt, nec ullum tam immansuetum animal est, quod non cur
 
 Is perdet beneficia, qui cito se perdidisse credit ; at qui instat et onerat priora sequentibus, etiam ex duro et immemori pectore gratiam extundit. Non audebit adversus multa oculos attollere ; quocumque se convertit memoriam suam fugiens, ibi te videat : beneficiis illum tuis cinge.
 
-Quorum quae vis quaeve proprietas sit, dicam, si prius illa, quae ad rem non pertinent, transilire mihi permiseris, quare tres Gratiae et quare sorores sint, et quare manibus implexis, et quare ridentes et iuvenes et iuvenes added by Gertz. et virgines solutaque ac perlucida veste.
+Quorum quae vis quaeve proprietas sit, dicam, si prius illa, quae ad rem non pertinent, transilire mihi permiseris, quare tres Gratiae et quare sorores sint, et quare manibus implexis, et quare ridentes et iuvenes et virgines solutaque ac perlucida veste.
 
-Alii quidem videri volunt unam esse, quae det beneficium, alteram, quae accipiat, tertiam, quae reddat ; alii tria beneficorum beneficorum corrected by Madvig : beneficiorum O. esse genera, promerentium, reddentium, simul accipientium reddentiumque.
+Alii quidem videri volunt unam esse, quae det beneficium, alteram, quae accipiat, tertiam, quae reddat ; alii tria beneficorum esse genera, promerentium, reddentium, simul accipientium reddentiumque.
 
 Sed utrumlibet ex istis iudica verum ; quid ista nos scientia iuvat ? Quid ille consertis manibus in se redeuntium chorus ? Ob hoc, quia ordo beneficii per manus transeuntis nihilo minus ad dantem revertitur et totius speciem perdit, si usquam interruptus est, pulcherrimus, si cohaeret et vices servat. In eo est aliqua tamen maioris dignatio, sicut promerentium.
 
@@ -85,7 +85,7 @@ Tu me aliquid eorum doce, per quae beneficentior gratiorque adversus bene merent
 
 At qui ingenia sanare et fidem in rebus humanis retinere, memoriam officiorum ingerere animis volunt, serio loquantur et magnis viribus agant ; nisi forte existimas levi ac fabuloso sermone et anilibus argumentis prohiberi posse rem perniciosissimam, beneficiorum novas tabulas.
 
-Sed quemadmodum supervacua transcurram, ita exponam necesse est hoc primum nobis esse discendum, quid accepto beneficio debeamus. Debere enim se ait ait added by Madvig. alius pecuniam, quam accepit, alius consulatum, alius sacerdotium, alius provinciam.
+Sed quemadmodum supervacua transcurram, ita exponam necesse est hoc primum nobis esse discendum, quid accepto beneficio debeamus. Debere enim se ait alius pecuniam, quam accepit, alius consulatum, alius sacerdotium, alius provinciam.
 
 Ista autem sunt meritorum signa, non merita. Non potest beneficium manu tangi ; res animo geritur. Multum interest inter materiam beneficii et beneficium ; itaque nec aurum nec argentum nec quicquam eorum, quae pro maximis accipiuntur, beneficium est, sed ipsa tribuentis voluntas. Imperiti autem id, quod oculis incurrit et quod traditur possideturque, solum notant, cum contra illud, quod in re carum atque pretiosum est, parvi pendunt.
 
@@ -113,15 +113,15 @@ Socrati cum multa pro suis quisque facultatibus offerrent, Aeschines, pauper aud
 
 " Quidni tu," inquit, " magnum munus mihi dederis, nisi forte te parvo aestimas ? Habebo itaque curae, ut te meliorem tibi reddam, quam accepi." Vicit Aeschines hoc munere Alcibiadis parem divitiis animum et omnem iuvenum opulentorum munificentiam.
 
-Vides, quomodo animus inveniat liberalitatis materiam etiam inter angustias. Videtur mihi dixisse : " Nihil egisti, fortuna, quod me pauperem esse voluisti; expediam dignum nihilo minus huic viro munus, et quia de tuo non possum, de meo dabo." Neque est, quod existimes illum vilem sibi fuisse : pretium se sui fecit. Ingeniosus adulescens invenit, quemadmodum Socraten sibi daret. Non quanta quaeque sint, sed a quali profecta, prospiciendum. quali profecta prospiciendum Hosius before a lacuna: quali proficiendum NRP; quali profecta scire proficit Préchac.
+Vides, quomodo animus inveniat liberalitatis materiam etiam inter angustias. Videtur mihi dixisse : " Nihil egisti, fortuna, quod me pauperem esse voluisti; expediam dignum nihilo minus huic viro munus, et quia de tuo non possum, de meo dabo." Neque est, quod existimes illum vilem sibi fuisse : pretium se sui fecit. Ingeniosus adulescens invenit, quemadmodum Socraten sibi daret. Non quanta quaeque sint, sed a quali profecta, prospiciendum.
 
-Callidus Before callidus Préchac supplies En dominus and for opinio below reads Opimio (cf. Hor. Sat. ii. 3. 142). non difficilem aditum praebuit immodica cupientibus spesque improbas nihil re adiuturus verbis fovit ; at peior opinio, si lingua asper, vultu gravis cum invidia fortunam suam explicuit. Colunt enim detestanturque felicem et, si potuerint, eadem facturi odere facientem. After facientem Hosius indicates a lacuna.
+Callidus non difficilem aditum praebuit immodica cupientibus spesque improbas nihil re adiuturus verbis fovit ; at peior opinio, si lingua asper, vultu gravis cum invidia fortunam suam explicuit. Colunt enim detestanturque felicem et, si potuerint, eadem facturi odere facientem.
 
 Coniugibus alienis ne clam quidem sed aperte ludibrio habitis suas aliis permisere. Rusticus, inhumanus ac mali moris et inter matronas abominanda condicio est, si quis coniugem suam in sella prostare vetuit et vulgo admissis inspectoribus vehi perspicuam undique.
 
 Si quis nulla se amica fecit insignem nec alienae uxori annuum praestat, hunc matronae humilem et sordidae libidinis et ancillariolum vocant. Inde decentissimum sponsaliorum genus est adulterium et in consensu vidui caelibatus, quoniam nemo uxorem duxit, nisi qui abduxit.
 
-Iam rapta spargere, sparsa fera et acri avaritia recolligere certant; nihil pensi habere, paupertatem alienam contemnere, suam magis magis added by Gertz ; omitted by Hosius. quam ullum aliud vereri malum, pacem iniuriis perturbare, imbecilliores vi ac metu premere. Nam provincias spoliari et nummarium tribunal audita utrimque licitatione alteri addici non mirum, quoniam, quae emeris, vendere gentium ius est !
+Iam rapta spargere, sparsa fera et acri avaritia recolligere certant; nihil pensi habere, paupertatem alienam contemnere, suam magis quam ullum aliud vereri malum, pacem iniuriis perturbare, imbecilliores vi ac metu premere. Nam provincias spoliari et nummarium tribunal audita utrimque licitatione alteri addici non mirum, quoniam, quae emeris, vendere gentium ius est !
 
 Sed longius nos impetus evehit provocante materia ; itaque sic finiamus, ne in nostro saeculo culpa subsidat. Hoc maiores nostri questi sunt, hoc nos querimur, hoc posteri nostri querentur, eversos mores, regnare nequitiam, in deterius res humanas et omne nefas labi. At ista eodem stant loco stabuntque, paulum dumtaxat ultra aut citra mota, ut fluctus, quos aestus accedens longius extulit, recedens interiore litorum vestigio tenuit.
 
@@ -159,7 +159,7 @@ Libens accepit non dilutum honorem et legatos invitatione aliaque humanitate pro
 
 Quid enim illi simile habebat vesanus adulescens, cui pro virtute erat felix temeritas ? Hercules nihil sibi vicit; orbem terrarum transivit non concupiscendo, sed iudicando, quid vinceret, malorum hostis, bonorum vindex, terrarum marisque pacator. At hic a pueritia latro gentiumque vastator, tam hostium pernicies quam amicorum, qui summum bonum duceret terrori esse cunctis mortalibus, oblitus non ferocissima tantum, sed ignavissima quoque animalia timeri ob malum virus.
 
-Ad propositum nunc revertamur. Beneficium si qui quibuslibet dat, nulli gratum est ; nemo se stabularii aut cauponis hospitem iudicat nec convivam dantis epulum, ubi dici potest : " Quid enim in me contulit ? Nempe hoc, quod et in illum vix bene notum sibi et in illum etiam inimicum ac turpissimum hominem. Numquid enim me dignum iudicavit ? Morbo suo morem gessit ! " Quod voles gratum esse, rarum effice; quivis quivis Préchac : quis N; so Hosius adding volgaria after imputari. patitur sibi imputari.
+Ad propositum nunc revertamur. Beneficium si qui quibuslibet dat, nulli gratum est ; nemo se stabularii aut cauponis hospitem iudicat nec convivam dantis epulum, ubi dici potest : " Quid enim in me contulit ? Nempe hoc, quod et in illum vix bene notum sibi et in illum etiam inimicum ac turpissimum hominem. Numquid enim me dignum iudicavit ? Morbo suo morem gessit ! " Quod voles gratum esse, rarum effice; quivis patitur sibi imputari.
 
 Nemo haec ita interpretetur, tamquam reducam liberalitatem et frenis artioribus reprimam ; illa vero, in quantum libet, exeat, sed eat, non erret. Licet ita largiri, ut unusquisque, etiam si cum multis accepit, in populo se esse non putet.
 
@@ -169,7 +169,7 @@ Quemadmodum meretrix ita inter multos se dividet, ut nemo non aliquod signum fam
 
 Ego vero beneficiis non obicio moras ; quo plura maioraque fuerint, plus adferent laudis. At sit iudicium ; neque enim cordi esse cuiquam possunt forte ac temere data.
 
-Quare si quis existimat nos, cum ista praecipimus, benignitatis fines introrsus referre et illi minus laxum limitem aperire, ne perperam monitiones nostras exaudivit. exaudivit Préchac : exaudiat O : exaudit Hosius. Quam enim virtutem magis veneramur ? Cui magis stimulos addimus ? Quibusve tam convenit haec adhortatio quam nobis societatem generis humani sancientibus ?
+Quare si quis existimat nos, cum ista praecipimus, benignitatis fines introrsus referre et illi minus laxum limitem aperire, ne perperam monitiones nostras exaudivit. Quam enim virtutem magis veneramur ? Cui magis stimulos addimus ? Quibusve tam convenit haec adhortatio quam nobis societatem generis humani sancientibus ?
 
 Quid ergo est ? Cum sit nulla honesta vis animi, etiam si a recta voluntate incepit, nisi quam virtutem modus fecit, veto liberalitatem nepotari. Tunc iuvat accepisse beneficium et supinis quidem manibus, ubi illud ratio ad dignos perducit, non quolibet casus et consilii indigens impetus defert ; quod ostentare libet et inscribere sibi.
 
@@ -197,7 +197,7 @@ Ut ille se castiget, quod tardior in rogando fuit, adicias licet familiarem quer
 
 Sic efficies, ut animum tuum pluris aestimet quam illud, quidquid est, ad quod petendum venerat. Tune est summa virtus tribuentis, tunc benignitas, ubi ille, qui discessit, dicet sibi : " Magnum hodie lucrum feci; malo, quod illum talem inveni, quam si multiplicatum hoc ad me, de quo loquebar, alia via pervenisset; huic eius animo numquam parem gratiam referam."
 
-At plerique sunt, qui beneficia asperitate verborum et supercilio in odium adducunt eo sermone usi, ea superbia, ut impetrasse paeniteat. Aliae deinde post rem promissam secuntur morae ; nihil autem est acerbius, quam ubi quoque, quod quod commonly added. impetrasti, rogandum est.
+At plerique sunt, qui beneficia asperitate verborum et supercilio in odium adducunt eo sermone usi, ea superbia, ut impetrasse paeniteat. Aliae deinde post rem promissam secuntur morae ; nihil autem est acerbius, quam ubi quoque, quod impetrasti, rogandum est.
 
 Repraesentanda sunt beneficia, quae a quibusdam accipere difficilius est quam impetrare. Hic rogandus est, ut admoneat, ille, ut consummet ; sic unum munus per multorum manus teritur, ex quo gratiae minimum apud promittentem remanet, quia auctori detrahit, quisquis post illum rogandus est.
 
@@ -215,7 +215,7 @@ Quemadmodum acerbissima crudelitas est, quae trahit poenam, et misericordiae gen
 
 Omnis benignitas properat, et proprium est libenter facientis cito facere ; qui tarde et diem de die extrahens profuit, non ex animo fecit. Ita duas res maximas perdidit, et tempus et argumentum amicae voluntatis ; tarde velle nolentis est.
 
-In omni negotio. Liberalis, non minima portio est, quomodo quidque aut dicatur aut fiat. Multum celeritas adiecit, multum abstulit mora. Sicut in telis eadem ferri vis est, sed infinitum interest, utrum excusso lacerto torqueantur an remissa manu effluant, gladius idem et stringit et transforat, quam presso articulo venerit, refert, ita ita added by Haase ; omitted by Hosius. idem est, quod datur, sed interest, quomodo detur.
+In omni negotio. Liberalis, non minima portio est, quomodo quidque aut dicatur aut fiat. Multum celeritas adiecit, multum abstulit mora. Sicut in telis eadem ferri vis est, sed infinitum interest, utrum excusso lacerto torqueantur an remissa manu effluant, gladius idem et stringit et transforat, quam presso articulo venerit, refert, ita idem est, quod datur, sed interest, quomodo detur.
 
 Quam dulce, quam pretiosum est, si gratias sibi agi non est passus, qui dedit, si dedisse, dum dat, oblitus est ! Nam corripere eum, cui cum maxime aliquid praestes, dementia est et inserere contumeliam meritis. Itaque non sunt exasperanda beneficia nec quicquam illis triste miscendum. Etiam si quid erit, de quo velis admonere, aliud tempus eligite.
 
@@ -233,7 +233,7 @@ Praecipiunt itaque omnes auctores sapientiae quaedam beneficia palam danda, quae
 
 rursus, quae non producunt nec honestiorem faciunt, sed succurrunt infirmitate egestati, ignominiae, tacite danda sunt, ut nota sint solis, quibus prosunt.
 
-Interdum etiam ipse, qui iuvatur, vel vel added by Préchac. fallendus favellendus N1: fallendus Hosius. est, ut habeat nec, a quo acceperit, sciat. Arcesilan aiunt amico pauperi et paupertatem suam dissimulanti, aegro autem et ne hoc quidem confitenti deesse sibi in sumptum ad necessarios usus, clam succurrendum iudicasse ; pulvino eius ignorantis sacculum subiecit, ut homo inutiliter verecundus, quod desiderabat, inveniret potius quam acciperet.
+Interdum etiam ipse, qui iuvatur, vel fallendus est, ut habeat nec, a quo acceperit, sciat. Arcesilan aiunt amico pauperi et paupertatem suam dissimulanti, aegro autem et ne hoc quidem confitenti deesse sibi in sumptum ad necessarios usus, clam succurrendum iudicasse ; pulvino eius ignorantis sacculum subiecit, ut homo inutiliter verecundus, quod desiderabat, inveniret potius quam acciperet.
 
 " Quid ergo ? ille nesciet, a quo acceperit ? " Primum nesciat, si hoc ipsum beneficii pars est ; deinde multa alia faciam, multa tribuam, per quae intellegat et illius auctorem ; denique ille nesciet accepisse se, ego sciam me dedisse. " Parum est," inquis. Parum, si fenerare cogitas ; sed si dare, quo genere accipienti maxime profuturum erit, dabis. Contentus eris te teste ; alioqui non bene facere delectat sed videri bene fecisse.
 
@@ -253,19 +253,19 @@ Numquid ulla maiora possunt esse, quam quae in liberos patres conferunt ? Haec t
 
 Nihil aeque in beneficio dando vitandum est quam superbia. Quid opus arrogantia vultus, quid tumore verborum? Ipsa res te extollit. Detrahenda est inanis iactatio; res loquentur nobis tacentibus. Non tantum ingratum, sed invisum est beneficium superbe datum.
 
-C. Caesar dedit vitam Pompeio Penno, si dat, qui non aufert ; deinde absoluto et agenti gratias porrexit osculandum sinistrum pedem. Qui excusant et negant id insolentiae causa factum, aiunt socculum auratum, immo aureum, margaritis distinctum ostendere eum voluisse. Ita prorsus : quid hic contumeliosum est, si vir consularis aurum et margaritas osculatus est alioquin nullam partem in corpore eius electurus, quam purius oscularetur ?
+**C** Caesar dedit vitam Pompeio Penno, si dat, qui non aufert ; deinde absoluto et agenti gratias porrexit osculandum sinistrum pedem. Qui excusant et negant id insolentiae causa factum, aiunt socculum auratum, immo aureum, margaritis distinctum ostendere eum voluisse. Ita prorsus : quid hic contumeliosum est, si vir consularis aurum et margaritas osculatus est alioquin nullam partem in corpore eius electurus, quam purius oscularetur ?
 
 Homo natus in hoc, ut mores liberae civitatis Persica servitute mutaret, parum iudicavit, si senator, senex, summis usus honoribus in conspectu principum supplex sibi eo more iacuisset, quo hostes victi hostibus iacuere ; invenit aliquid infra genua, quo libertatem detruderet ! Non hoc est rem publicam calcare, et quidem, licet id aliquis non putet ad rem pertinere, sinistro pede ? Parum enim foede furioseque insolens fuerat, qui de capite consularis viri soccatus audiebat, nisi in os senatoris ingessisset imperator epigros suos !
 
-O superbia, magnae fortunae stultissimum malum ! Ut a te nihil accipere iuvat ! Ut omne beneficium in iniuriam convertis Hosius adds ut te omnia nimia delectant. ! Ut te omnia dedecent ! Quoque altius te sublevasti, hoc depressior es ostendisque tibi non datum adgnoscere ista bona, quibus tantum inflaris ; quidquid das, corrumpis.
+O superbia, magnae fortunae stultissimum malum ! Ut a te nihil accipere iuvat ! Ut omne beneficium in iniuriam convertis! Ut te omnia dedecent ! Quoque altius te sublevasti, hoc depressior es ostendisque tibi non datum adgnoscere ista bona, quibus tantum inflaris ; quidquid das, corrumpis.
 
-Libet itaque interrogare, quid se tanto opere resupinet, quid vultum habitumque oris pervertat, ut malit personam habere quam faciem ? Iucunda sunt, quae humana fronte, certe leni placidaque tribuuntur, quae cum daret mihi superior, non exultavit supra me, sed quam potuit benignissimus fuit descenditque in aequum et detraxit muneri suo pompam, sic sic Préchac : si N, Hosius. observavit idoneum tempus, ut in occasione potius emam in necessitate succurreret.
+Libet itaque interrogare, quid se tanto opere resupinet, quid vultum habitumque oris pervertat, ut malit personam habere quam faciem ? Iucunda sunt, quae humana fronte, certe leni placidaque tribuuntur, quae cum daret mihi superior, non exultavit supra me, sed quam potuit benignissimus fuit descenditque in aequum et detraxit muneri suo pompam, sic observavit idoneum tempus, ut in occasione potius emam in necessitate succurreret.
 
 Uno modo istis persuadebimus, ne beneficia sua insolentia perdant, si ostenderimus non ideo videri maiora, quod tumultuosius data sunt ; ne ipsos quidem ob id cuiquam posse maiores videri; vanam esse superbiae magnitudinem et quae in odium etiam amanda perducat.
 
 Sunt quaedam nocitura impetrantibus, quae non dare sed negare beneficium est ; aestimabimus itaque utilitatem potius quam voluntatem petentium. Saepe enim noxia concupiscimus, nec dispicere, quam perniciosa sunt, licet, quia iudicium interpellat adfectus ; sed cum subsedit cupiditas, cum impetus ille flagrantis animi, qui consilium fugat, cecidit, detestamur perniciosos malorum munerum auctores.
 
-Ut frigidam aegris negamus et lugentibus ac sibi iratis ferrum, ut amentibus, quidquid contra se usurus ardor petit, sic omnino, omnino Préchac after Gertz: omnium N, Hosius : omnia most editors. quae nocitura sunt, impense ac summisse,non numquam etiam miserabiliter rogantibus perseverabimus non dare. Cum initia beneficiorum suorum spectare tum etiam exitus decet et ea dare, quae non tantum accipere, sed etiam accepisse delectet. Multi sunt, qui dicant :
+Ut frigidam aegris negamus et lugentibus ac sibi iratis ferrum, ut amentibus, quidquid contra se usurus ardor petit, sic omnino, quae nocitura sunt, impense ac summisse,non numquam etiam miserabiliter rogantibus perseverabimus non dare. Cum initia beneficiorum suorum spectare tum etiam exitus decet et ea dare, quae non tantum accipere, sed etiam accepisse delectet. Multi sunt, qui dicant :
 
 " Scio hoc illi non profuturum, sed quid faciam ? Rogat, resistere precibus eius non possum ; viderit : de se, non de me queretur." Falsum est : immo de te et merito quidem; cum ad mentem bonam redierit, cum accessio illa, quae animum inflammabat, remiserit, quidni eum oderit, a quo in damnum ac periculum suum adiutus est ?
 
@@ -275,7 +275,7 @@ Sive illum ira, quo non debebit, impellet, sive ambitionis calor abducet a tutis
 
 Numquam in turpitudinem nostram reditura tribuamus. Cum summa amicitiae sit amicum sibi aequare, utrique simul consulendum est. Dabo egenti, sed ut ipse non egeam ; succurram perituro, sed ut ipse non peream, nisi si futurus ero magni hominis aut magnae rei merces.
 
-Nullum beneficium dabo, quod turpiter peterem. Nec exiguum dilatabo nec magna pro parvis accipi patiar ; nam ut qui, quod dedit, dedit commonly added. imputat, gratiam destruit, ita qui, quantum det, ostendit, munus suum commendat, non exprobrat.
+Nullum beneficium dabo, quod turpiter peterem. Nec exiguum dilatabo nec magna pro parvis accipi patiar ; nam ut qui, quod dedit, imputat, gratiam destruit, ita qui, quantum det, ostendit, munus suum commendat, non exprobrat.
 
 Respiciendae sunt cuique facultates suae viresque, ne aut plus praestemus, quam possumus, aut minus. Aestimanda est eius persona, cui damus ; quaedam enim minora sunt, quam ut exire a magnis viris debeant, quaedam accipiente maiora sunt. Utriusque itaque personam confer et ipsum inter illas, quod donabis, examina, numquid aut danti grave sit aut parum, numquid rursus, qui accepturus est, aut fastidiat aut non capiat.
 
@@ -305,7 +305,7 @@ Videamus, num etiam maiore dilectu quaerendus est, cui debeamus, quam cui praest
 
 Totiens admoneam necesse est non loqui me de sapientibus, quos, quidquid oportet, et iuvat, qui animum in potestate habent et legem sibi, quam volunt, dicunt, quam dixerunt, servant, sed de imperfectis hominibus honestam viam sequi volentibus, quorum adfectus saepe contumaciter parent. Itaque eligendum est, a quo beneficium accipiam ;
 
-et quidem diligentius quaerendus beneficii quam pecuniae creditor. Huic enim reddendum est, quantum accepi, et, si reddidi, solutus sum ac liber ; at illi et plus solvendum est, et nihilo minus etiam relata gratia cohaeremus ; debeo enim, cum reddidi, rursus incipere, manetque amicitia ; et ut in amicitiam et ut in amicitiam added by Haase. non reciperem indignum, sic ne in beneficiorum quidem sacratissimum ius, ex quo amicitia oritur.
+et quidem diligentius quaerendus beneficii quam pecuniae creditor. Huic enim reddendum est, quantum accepi, et, si reddidi, solutus sum ac liber ; at illi et plus solvendum est, et nihilo minus etiam relata gratia cohaeremus ; debeo enim, cum reddidi, rursus incipere, manetque amicitia ; et ut in amicitiam non reciperem indignum, sic ne in beneficiorum quidem sacratissimum ius, ex quo amicitia oritur.
 
 " Non semper," inquit, " mihi licet dicere : ' nolo '; aliquando beneficium accipiendum est et invito. Dat tyrannus crudelis et iracundus, qui munus suum fastidire te iniuriam iudicaturus est : non accipiam ? Eodem loco latronem pone, piratam, regem animum latronis ac piratae habentem. Quid faciam ? Parum dignus est, cui debeam ?
 
@@ -339,11 +339,11 @@ Cum accipiendum iudicaverimus, hilares accipiamus profitentes gaudium, et id dan
 
 Sunt quidam, qui nolint nisi secreto accipere ; testem beneficii et conscium vitant ; quos scias licet male cogitare. Quomodo danti in tantum producenda notitia est muneris sui, in quantum delectatura est, cui datur, ita accipienti adhibenda contio est ; quod pudet debere, ne acceperis. Quidam furtive gratias agunt et in angulo et ad aurem ;
 
-non est ista verecundia, sed infitiandi genus ; ingratus est, qui remotis arbitris agit gratias. Quidam nolunt nomina secum fieri nec interponi pararios nec signatores advocari, chirographum chirographum N, Préchac: vix chirographum Hosius after Havet. dare. Idem faciunt, qui dant operam, ut beneficium in ipsos conlatum quam ignotissimum sit.
+non est ista verecundia, sed infitiandi genus ; ingratus est, qui remotis arbitris agit gratias. Quidam nolunt nomina secum fieri nec interponi pararios nec signatores advocari, chirographum dare. Idem faciunt, qui dant operam, ut beneficium in ipsos conlatum quam ignotissimum sit.
 
 Verentur palam ferre, ut sua potius virtute quam alieno adiutorio consecuti dicantur ; rariores in eorum officiis sunt, quibus vitam aut dignitatem debent, et, dum opinionem clientium timent, graviorem subeunt ingratorum.
 
-Alii pessime locuntur de optime meritis. Tutius est quosdam offendere quam demeruisse ; argumentum enim nihil debentium odio quaerunt. Atqui nihil magis praestandum est, quam ut memoria nobis meritorum haereat, quae subinde reficienda est, quia nec referre potest gratiam, nisi qui meminit, et, qui meminit, et qui meminit commonly added. eam refert.
+Alii pessime locuntur de optime meritis. Tutius est quosdam offendere quam demeruisse ; argumentum enim nihil debentium odio quaerunt. Atqui nihil magis praestandum est, quam ut memoria nobis meritorum haereat, quae subinde reficienda est, quia nec referre potest gratiam, nisi qui meminit, et, qui meminit, eam refert.
 
 Nec delicate accipiendum est nec summisse et humiliter ; nam qui neclegens est in accipiendo, cum omne beneficium recens pateat, quid faciat, cum prima eius voluptas refrixit ? Alius accipit fastidiose, tamquam qui dicat :
 
@@ -359,11 +359,11 @@ Qui gratus futurus est, statim, dum accipit, de reddendo cogitet. Chrysippus qui
 
 Videndum est nunc, quid maxime faciat ingratos. Facit aut nimius sui suspectus et insitum mortalitati vitium se suaque mirandi aut aviditas aut invidia.
 
-Incipiamus a primo. Nemo non benignus est sui iudex. Inde est, ut omnia meruisse se existimet et in solutum accipiat nec satis suo pretio se aestimatum putet. " Hoc mihi dedit, sed quam sero, sed post quot labores ! Quanto consequi plura potuissem, si illum aut illum aut me aut me, O, Préchac : ita me Hosius after Feldmann. colere maluissem ! Non hoc speraveram; in turbam coniectus sum. Tam exiguo dignum me iudicavit ? Honestius praeteriri fuit."
+Incipiamus a primo. Nemo non benignus est sui iudex. Inde est, ut omnia meruisse se existimet et in solutum accipiat nec satis suo pretio se aestimatum putet. " Hoc mihi dedit, sed quam sero, sed post quot labores ! Quanto consequi plura potuissem, si illum aut illum aut me colere maluissem ! Non hoc speraveram; in turbam coniectus sum. Tam exiguo dignum me iudicavit ? Honestius praeteriri fuit."
 
 Cn. Lentulus augur, divitiarum maximum exemplum, antequam illum libertini pauperem facerent, hic, qui quater milies sestertium suum vidit (proprie dixi ; nihil enim amplius quam vidit), ingenii fuit sterilis, tam pusilli quam animi. Cum esset avarissimus, nummos citius emittebat quam verba : tanta illi inopia erat sermonis.
 
-Hic cum omnia incrementa sua divo Augusto deberet, ad quem attulerat paupertatem sub onere nobilitatis laborantem, princeps iam civitatis et pecunia et gratia subinde de de commonly added. Augusto solebat queri dicens a studiis se abductum ; nihil tantum in se congestum esse, quantum perdidisset relicta eloquentia. At illi inter alia hoc quoque divus Augustus praestiterat, quod illum derisu et labore irrito liberaverat !
+Hic cum omnia incrementa sua divo Augusto deberet, ad quem attulerat paupertatem sub onere nobilitatis laborantem, princeps iam civitatis et pecunia et gratia subinde de Augusto solebat queri dicens a studiis se abductum ; nihil tantum in se congestum esse, quantum perdidisset relicta eloquentia. At illi inter alia hoc quoque divus Augustus praestiterat, quod illum derisu et labore irrito liberaverat !
 
 Non patitur aviditas quemquam esse gratum ; numquam enim improbae spei, quod datur, satis est, et maiora cupimus, quo maiora venerunt, multoque concitatior est avaritia in magnarum opum congestu collocata, ut flammae infinite acrior vis est, quo ex maiore incendio emicuit.
 
@@ -391,7 +391,7 @@ carissimos nos habuerunt di immortales habentque, et, qui maximus tribui honos p
 
 Haec, mi Liberalis, necessaria credidi, et quia loquendum aliquid de maximis beneficiis erat, cum de minutis loqueremur, et quia inde manat etiam in cetera huius detestabilis vitii audacia. Cui enim respondebit grate, quod munus existimabit aut magnum aut reddendum, qui summa beneficia spernit ? Cui salutem, cui spiritum debebit, qui vitam accepisse se a dis negat, quam cotidie ab illis petit ?
 
-Quicumque ergo gratos esse docet, et hominum causam agit et deorum, quibus nullius rei indigentibus, positis extra desiderium, referre nihilo minus gratiam possumus. Non est, quod quisquam excusationem mentis ingratae ab infirmitate atque inopia petat et dicat : " Quid enim faciam et quomodo ? Quando superioribus dominisque rerum omnium gratiam referam ? " Referre facile est, si avarus es, sine impendio, si iners, sine sine added by Muretus. opera. Eodem quidem momento, quo obligatus es, si vis, cum quolibet paria fecisti, quoniam, qui libenter beneficium accipit, reddidit.
+Quicumque ergo gratos esse docet, et hominum causam agit et deorum, quibus nullius rei indigentibus, positis extra desiderium, referre nihilo minus gratiam possumus. Non est, quod quisquam excusationem mentis ingratae ab infirmitate atque inopia petat et dicat : " Quid enim faciam et quomodo ? Quando superioribus dominisque rerum omnium gratiam referam ? " Referre facile est, si avarus es, sine impendio, si iners, sine opera. Eodem quidem momento, quo obligatus es, si vis, cum quolibet paria fecisti, quoniam, qui libenter beneficium accipit, reddidit.
 
 Hoc ex paradoxis Stoicae sectae minime mirabile, ut mea fert opinio, aut incredibile est eum, qui libenter accipit, beneficium reddidisse. Nam eum omnia ad animum referamus, fecit quisque, quantum voluit ; et cum pietas, fides, iustitia, omnis denique virtus intra se perfecta sit, etiam si illi manum exserere non licuit, gratus quoque homo esse potest voluntate.
 
@@ -407,13 +407,13 @@ Quod accipiebam, eo animo accepi, quo dabatur : reddidi. Alioqui pessima optimae
 
 Exemplum hoc dissimile est ; quare ? Quia huius rei laus in corporis motu est et in agilitate, non in animo ; explicari itaque totum debet, de quo oculis iudicatur. Nec tamen ideo non bonum lusorem dicam, qui pilam, ut oportebat, excepit, si per ipsum mora, quominus remitteret, non fuit.
 
-" Sed quamvis," inquit, " arti ludentis nihil desit, quia partem quidem fecit, sed partem, quam non fecit, potest facere, lusus ipse imperfectus est, qui 4 consummatur vicibus mittendi ac remittendo" Nolo diutius hoc refellere ; existimemus ita esse, desit aliquid lusui, non lusori ; sic et in hoc, de quo disputamus, deest aliquid rei datae, cui par alia debetur, non animo, qui animum parem sibi nanctus est et, quantum in illo est, quod voluit, effecit.
+" Sed quamvis," inquit, " arti ludentis nihil desit, quia partem quidem fecit, sed partem, quam non fecit, potest facere, lusus ipse imperfectus est, qui consummatur vicibus mittendi ac remittendo" Nolo diutius hoc refellere ; existimemus ita esse, desit aliquid lusui, non lusori ; sic et in hoc, de quo disputamus, deest aliquid rei datae, cui par alia debetur, non animo, qui animum parem sibi nanctus est et, quantum in illo est, quod voluit, effecit.
 
 Beneficium mihi dedit ; accepi non aliter, quam ipse accipi voluit : iam habet, quod petit, et quod unum petit, ergo gratus sum. Post hoc usus mei restat et aliquod ex homine grato commodum ; hoc non imperfecti officii reliqua pars est, sed perfecti accessio. Facit Phidias statuam ;
 
 alius est fructus artis, alius artificii : artis est fecisse, quod voluit, artificii fecisse cum fructu ; perfecit opus suum Phidias, etiam si non vendidit. Triplex illi fructus est operis sui: unus conscientiae ; hunc absoluto opere percipit; alter famae ; tertius utilitatis, quem allatura est aut gratia aut venditio aut aliqua commoditas.
 
-Sic bene ficii fructus primus ille est conscientiae ; hunc percipit, qui, quo voluit, munus suum pertulit ; secundus et tertius et tertius added by Haase. est et famae et eorum, quae praestari in vicem possunt. Itaque cum benigne acceptum est beneficium, qui dedit, gratiam quidem iam recepit, mercedem nondum ; debeo itaque, quod extra beneficium est, ipsum quidem bene accipiendo persolvi.
+Sic bene ficii fructus primus ille est conscientiae ; hunc percipit, qui, quo voluit, munus suum pertulit ; secundus et tertius est et famae et eorum, quae praestari in vicem possunt. Itaque cum benigne acceptum est beneficium, qui dedit, gratiam quidem iam recepit, mercedem nondum ; debeo itaque, quod extra beneficium est, ipsum quidem bene accipiendo persolvi.
 
 " Quid ergo ? ", inquit, " rettulit gratiam, qui nihil fecit ? " Primum fecit : bono animo bonum obtulit et, quod est amicitiae, ex aequo. Post deinde aliter beneficium, aliter creditum solvitur ; non est, quod expectes, ut solutionem tibi ostendam ; res inter animos geritur.
 
@@ -429,7 +429,7 @@ Itaque attende, iam intellegis nihil me, quod opinio tua refugiat, dicere. Illi 
 
 A consuetudine quaedam, quae dicimus, abhorrent, deinde alia via ad consuetudinem redeunt. Negamus iniuriam accipere sapientem, tamen, qui illum pugno percusserit, iniuriarum damnabitur ; negamus stulti quidquam esse, et tamen eum, qui rem aliquam stulto surripuit, furti condemnabimus ; insanire omnes dicimus, nec omnes curamus elleboro ; his ipsis, quos vocamus insanos, et suffragium et iuris dictionem committimus.
 
-Sic dicimus eum, qui beneficium bono animo accipit, gratiam rettulisse, nihilo minus illum in aere alieno relinquimus gratiam relaturum, etiam cum rettulit. Exhortatio est illa, non infitiatio beneficii, ne beneficii ne added by Gertz. beneficia timeamus, ne ut intolerabili sarcina pressi deficiamus animo. " Bona mihi donata sunt et fama defensa, detractae sordes, spiritus servatus servatus added by Haase. et libertas spiritu potior. Et quomodo referre gratiam potero ? Quando ille veniet dies, quo illi animum meum ostendam ?
+Sic dicimus eum, qui beneficium bono animo accipit, gratiam rettulisse, nihilo minus illum in aere alieno relinquimus gratiam relaturum, etiam cum rettulit. Exhortatio est illa, non infitiatio beneficii, ne beneficia timeamus, ne ut intolerabili sarcina pressi deficiamus animo. " Bona mihi donata sunt et fama defensa, detractae sordes, spiritus servatus et libertas spiritu potior. Et quomodo referre gratiam potero ? Quando ille veniet dies, quo illi animum meum ostendam ?
 
 " Hic ipse est, quo ille suum ostendit ! Excipe beneficium, amplexare, gaude, non quod accipias, sed quod reddas debiturusque sis ; non adibis tam magnae rei periculum, ut casus ingratum facere te possit. Nullas tibi proponam difficultates, ne despondeas animum, ne laborum ac longae servitutis expectatione deficias ; non differo te, de praesentibus fiat. Numquam eris gratus, nisi statim es.
 
@@ -447,7 +447,7 @@ Vitiosi oculi sunt, qui lucem reformidant, caeci, qui non vident ; et parentes s
 
 Quis tam ingratus est, quam qui, quod in prima parte animi positum esse debuit et semper occurrere, ita seposuit et abiecit, ut in ignorantiam verteret ? Apparet illum non saepe de reddendo cogitasse, cui obrepsit oblivio.
 
-Denique ad reddendam gratiam et virtute opus est et tempore et facultate et adspirante fortuna ; qui meminit, sat sine sat sine Préchac: sine after erasures N, sine Hosius : et sine Gertz. impendio gratus est. Hoc, quod non operam exigit, non opes, non felicitatem, qui non praestat, nullum habet, quo lateat, patrocinium ; numquam enim voluit gratus esse, qui beneficium tam longe proiecit, ut extra conspectum suum poneret.
+Denique ad reddendam gratiam et virtute opus est et tempore et facultate et adspirante fortuna ; qui meminit, sat sine impendio gratus est. Hoc, quod non operam exigit, non opes, non felicitatem, qui non praestat, nullum habet, quo lateat, patrocinium ; numquam enim voluit gratus esse, qui beneficium tam longe proiecit, ut extra conspectum suum poneret.
 
 Quemadmodum, quae in usu sunt et manum cotidie tactumque patiuntur, numquam periculum situs adeunt, illa, quae ad oculos non revocantur, sed extra conversationem ut supervacua iacuerunt, sordes ipsa colligunt vetustate, ita, quidquid frequens cogitatio exercet ac renovat, memoriae numquam subducitur, quae nihil perdit, nisi ad quod non saepe respexit.
 
@@ -467,7 +467,7 @@ Quemadmodum, mi Liberalis, quaedam res semel perceptae haerent, quaedam, ut scia
 
 Audi voces petentium. Nemo non victuram semper in animo suo memoriam dixit, nemo non deditum se et devotum professus est, et si quod aliud humilius verbum, quo se oppigneraret, invenit. Post exiguum tempus idem illi verba priora quasi sordida et parum libera evitant ; perveniunt deinde eo, quo, ut ego existimo, pessimus quisque atque ingratissimus pervenit, ut obliviscantur. Adeo enim ingratus est, qui oblitus est, ut ingratus sit, cui beneficium in mentem venit.
 
-Hoc tam invisum vitium an impunitum esse debeat, quaeritur, et an haec lex, quae in scholis exercetur, etiam in civitate ponenda sit, qua ingrati datur actio ; quae videtur aequa omnibus. " Quidni ? cum urbes quoque urbibus, quae praestitere, exprobrent et in in added by Gruter. maiores collata a posteris exigant."
+Hoc tam invisum vitium an impunitum esse debeat, quaeritur, et an haec lex, quae in scholis exercetur, etiam in civitate ponenda sit, qua ingrati datur actio ; quae videtur aequa omnibus. " Quidni ? cum urbes quoque urbibus, quae praestitere, exprobrent et in maiores collata a posteris exigant."
 
 Nostri maiores, maximi scilicet viri, ab hostibus tantum res repetierunt, beneficia magno animo dabant, magno perdebant; excepta Macedonum gente non est in ulla data adversus ingratum actio. Magnumque hoc argumentum est dandam non fuisse, quia adversus maleficium omne consensimus, et homicidii, veneficii, parricidii, violatarum religionum aliubi atque aliubi diversa poena est, sed ubique aliqua, hoc frequentissimum crimen nusquam punitur, ubique improbatur. Neque absolvimus illud, sed eum difficilis esset incertae rei aestimatio, tantum odio damnavimus et inter ea reliquimus, quae ad iudices deos mittimus.
 
@@ -507,7 +507,7 @@ Quam deinde poenam ingratis constituimus ? Unam omnibus, cum disparia sint ? Ina
 
 "Quaedam," inquit, " privilegia parentibus data sunt ; quomodo horum extra ordinem habita ratio est, sic aliorum quoque beneficorum haberi debet." Parentium condicionem sacravimus, quia expediebat liberos tolli ; sollicitandi ad hunc laborem erant incertam adituri fortunam. Non poterat illis dici, quod beneficia dantibus dicitur : " Cui des, elige ; ipse tecum, si deceptus es, querere ; dignum adiuva." In liberis tollendis nihil iudicio tollentium licet, tota res voti est. Itaque, ut aequiore animo adirent aleam, danda aliqua illis potestas fuit.
 
-Deinde alia condicio parentium est, qui beneficia, quibus dederunt, dant nihilo minus daturique sunt, nec est periculum, ne dedisse ipsos mentiantur. In ceteris quaeri debet, non tantum an receperint, sed an dederint, horum in confesso merita sunt, et, quia utile est iuventuti regi, imposuimus illi quasi domesticos magistratus, sub sub GMP, Hosius : sed NR : scilicet Préchac. quorum custodia contineretur. et quia contineretur placed by Gertz after potestas fuit § 1 : bracketed by Préchac.
+Deinde alia condicio parentium est, qui beneficia, quibus dederunt, dant nihilo minus daturique sunt, nec est periculum, ne dedisse ipsos mentiantur. In ceteris quaeri debet, non tantum an receperint, sed an dederint, horum in confesso merita sunt, et, quia utile est iuventuti regi, imposuimus illi quasi domesticos magistratus, sub quorum custodia contineretur.
 
 Deinde omnium parentium unum erat beneficium, itaque aestimari semel potuit ; alia diversa sunt, dissimilia, infinitis inter se intervallis distantia; itaque sub nullam regulam cadere potuerunt, cum aequius esset omnia relinqui quam omnia aequari.
 
@@ -545,7 +545,7 @@ Numquid iam ulla repudio erubescit, postquam illustres quaedam ac nobiles femina
 
 Numquid iam ullus adulterii pudor est, postquam eo ventum est, ut nulla virum habeat, nisi ut adulterum irritet ? Argumentum est deformitatis pudicitia. Quam invenies tam miseram, tam sordidam, ut illi satis sit unum adulterorum par, nisi singulis divisit horas ? Et non sufficit dies omnibus, nisi apud alium gestata est, apud alium mansit. Infrunita et antiqua est, quae nesciat matrimonium vocari unum adulterium.
 
-Quemadmodum horum delictorum iam evanuit pudor, postquam res latius evagata est, ita ingratos plures efficies et auctiores, auctiores O, Préchac : auctores N. si numerare se coeperint.
+Quemadmodum horum delictorum iam evanuit pudor, postquam res latius evagata est, ita ingratos plures efficies et auctiores, si numerare se coeperint.
 
 "Quid ergo? impunitus erit ingratus?" Quid ergo, impunitus erit impius ? Quid malignus ? Quid avarus ? Quid impotens ? Quid crudelis ? Impunita tu credis esse, quae invisa sunt, aut ullum supplicium gravius existimas publico odio ?
 
@@ -555,7 +555,7 @@ Testes ingratorum omnium deos metuit, urit illum et angit intercepti beneficii c
 
 Comparari autem potest utriusque vita, cum alter tristis sit et sollicitus, qualis esse infitiator ac fraudulentus solet, apud quem non parentium, qui debet, honor est, non educatoris, non praeceptorum, alter laetus, hilaris, occasionem referendae gratiae expectans et ex hoc ipso adfectu gaudium grande percipiens nec quaerens, quomodo decoquat, sed quemadmodum plenius uberiusque respondeat non solum parentibus et amicis, sed humilioribus quoque personis ? Nam etiam si a servo suo beneficium accepit, aestimat, non a quo, sed quid acceperit.
 
-Quamquam quaeritur a quibusdam, sicut ab Hecatone, an beneficium dare servus domino possit. Sunt enim, qui ita distinguant, quaedam beneficia esse, quaedam officia, quaedam ministeria ; beneficium esse, quod alienus det (alienus est, qui potuit sine reprehensione cessare) ; officium esse filii, uxoris, earum personarum, quas necessitudo suscitat et ferre opem iubet ; ministerium esse servi, quem condicio sua eo loco posuit, ut nihil eorum, quae praestat, imputet superiori. Hosius after Lipsius marks a lacuna here.
+Quamquam quaeritur a quibusdam, sicut ab Hecatone, an beneficium dare servus domino possit. Sunt enim, qui ita distinguant, quaedam beneficia esse, quaedam officia, quaedam ministeria ; beneficium esse, quod alienus det (alienus est, qui potuit sine reprehensione cessare) ; officium esse filii, uxoris, earum personarum, quas necessitudo suscitat et ferre opem iubet ; ministerium esse servi, quem condicio sua eo loco posuit, ut nihil eorum, quae praestat, imputet superiori.
 
 Praeterea servum qui negat dare aliquando domino beneficium, ignarus est iuris humani ; refert enim, cuius animi sit, qui praestat, non cuius status. Nulli praeclusa virtus est ; omnibus patet, omnes admittit, omnes invitat, et ingenuos et libertinos et servos et reges et exules ; non eligit domum nec censum, nudo homine contenta est. Quid enim erat tuti adversus repentina, quid animus magnum promitteret sibi, si certam virtutem fortuna amitteret ?
 
@@ -579,7 +579,7 @@ Quaedam sunt, quae leges nec iubent nec vetant facere ; in iis servus materiam b
 
 Est aliquid, quod dominus praestare servo debeat, ut cibaria, ut vestiarium ; nemo hoc dixit beneficium. At indulsit, liberalius educavit, artes, quibus erudiuntur ingenui, tradidit : beneficium est. Idem e contrario fit in persona servi. Quidquid est, quod servilis officii formulam excedit, quod non ex imperio, sed ex voluntate praestatur, beneficium est, si modo tantum est, ut hoc vocari potuerit quolibet alio praestante.
 
-Servus, ut placet Chrysippo, perpetuus mercennarius est. Quemadmodum ille beneficium dat, ubi plus praestat, quam in in commonly added quod operas locavit, sic servus : ubi benevolentia erga dominum fortunae suae modum transit et altius aliquid ausus, quod etiam felicius natis decori esset, spem domini antecessit, beneficium est intra domum inventum.
+Servus, ut placet Chrysippo, perpetuus mercennarius est. Quemadmodum ille beneficium dat, ubi plus praestat, quam in quod operas locavit, sic servus : ubi benevolentia erga dominum fortunae suae modum transit et altius aliquid ausus, quod etiam felicius natis decori esset, spem domini antecessit, beneficium est intra domum inventum.
 
 An aecum videtur tibi, quibus, si minus debito faciant, irascimur, non haberi gratiam, si plus debito solitoque fecerint ? Vis scire, quando non sit beneficium ? Ubi dici potest : " Quid, si nollet ? " Ubi vero id praestitit, quod nolle licuit, voluisse laudandum est.
 
@@ -593,7 +593,7 @@ Claudius Quadrigarius in duodevicensimo annalium tradit, cum obsideretur Grument
 
 Manu misit utrumque e vestigio illa nec indignata est ab his se vitam accepisse, in quos vitae necisque potestatem habuisset. Potuit sibi hoc vel magis gratulari ; aliter enim servata munus notae et vulgaris clementiae habuisset, sic servata nobilis fabula et exemplum duarum urbium fuit.
 
-In tanta confusione captae civitatis eum sibi quisque consuleret, omnes ab illa praeter transfugas fugerunt ; at hi, ut ostenderent, quo animo facta esset prior illa transitio, a victoribus ad captivam transfugerunt personam parricidarum ferentes ; quod in illo beneficio maximum fuit, tanti iudicaverunt, ne domina occideretur, videri dominam occidisse. Non est, mihi crede, non dico non dico O, Préchac : condicio Hosius. servilis, sed vilis sed vilis added by Préchac. animi egregium factum fama sceleris emisse.
+In tanta confusione captae civitatis eum sibi quisque consuleret, omnes ab illa praeter transfugas fugerunt ; at hi, ut ostenderent, quo animo facta esset prior illa transitio, a victoribus ad captivam transfugerunt personam parricidarum ferentes ; quod in illo beneficio maximum fuit, tanti iudicaverunt, ne domina occideretur, videri dominam occidisse. Non est, mihi crede, non dico servilis, sed vilis animi egregium factum fama sceleris emisse.
 
 Vettius, praetor Marsorum, ducebatur ad Romanum imperatorem ; servus eius gladium militi illi ipsi, a quo trahebatur, eduxit et primum dominum occidit, deinde : " Tempus est," inquit, " me et mihi consulere ! iam dominum manu misi," atque ita traiecit se uno ictu. Da mihi quemquam, qui magnificentius dominum servaverit.
 
@@ -637,7 +637,7 @@ Adspice trabes, sive proceritatem aestimes, altissimas, sive crassitudinem spati
 
 principia sua semper sequens magnitudo obruet. Non potuissem quicquam consequi, nisi parentum beneficium antecessisset ; sed non ideo, quidquid consecutus sum, minus est eo, sine quo consecutus non essem.
 
-Nisi me nutrix aluisset infantem, nihil eorum, quae consilio ac manu gero, facere potuissem nec in hanc emergere nominis claritatem, quam civili ac militari industria merui ; numquid tamen ideo maximis operibus praeferes nutricis officium ? Atqui quid interest, cum aeque sine patris beneficio quam sine nutricis non potuerim ad ulteriora procedere ? Quod 8 si initio meo, quidquid iam possum, debeo, cogita non esse initium mei patrem, ne avum quidem ; semper enim erit ulterius aliquid, ex quo originis proximae origo descendat. Atqui nemo dicet me plus debere ignotis et ultra memoriam positis maioribus quam patri; plus autem debeo, si hoc ipsum, quod genuit me pater meus, maioribus debet.
+Nisi me nutrix aluisset infantem, nihil eorum, quae consilio ac manu gero, facere potuissem nec in hanc emergere nominis claritatem, quam civili ac militari industria merui ; numquid tamen ideo maximis operibus praeferes nutricis officium ? Atqui quid interest, cum aeque sine patris beneficio quam sine nutricis non potuerim ad ulteriora procedere ? Quod si initio meo, quidquid iam possum, debeo, cogita non esse initium mei patrem, ne avum quidem ; semper enim erit ulterius aliquid, ex quo originis proximae origo descendat. Atqui nemo dicet me plus debere ignotis et ultra memoriam positis maioribus quam patri; plus autem debeo, si hoc ipsum, quod genuit me pater meus, maioribus debet.
 
 " Quidquid praestiti patri, etiam si magnum est, infra aestimationem paterni muneris est, quia non esset, si non genuisset." Isto modo etiam, si quis patrem meum aegrum ac moriturum sanaverit, nihil praestare ei potero, quod non beneficio eius minus sit ; non enim genuisset me pater, nisi sanatus esset. Sed vide, ne illud verius sit aestimari, an id, quod potui, et id, quod feci, meum sit, mearum virium, meae voluntatis.
 
@@ -697,7 +697,7 @@ Unde certamen tam optabile ? Unde tantam felicitatem parentibus, ut fateantur ip
 
 Sumite modo animum, qualem decet, et deficere nolite : vincetis optantes. Nec desunt tam pulchro certamini duces, qui ad similia vos cohortentur ac per vestigia sua ire ad victoriam saepe iam partam ex parentibus iubeant.
 
-" Vicit Aeneas patrem, ipse eius in in added by Pincianus. infantia leve tutumque gestamen, gravem senio per media hostium agmina et per cadentis circa se urbis ruinas ferens, cum complexus sacra ac penates deos religiosus senex non simplici vadentem sarcina premeret ; tulit illum per ignes et (quid non pietas potest ?) pertulit colendumque inter conditores Romani imperii posuit. 2 " Vicere Siculi iuvenes : cum Aetna maiore vi peragitata in urbes, in agros, in magnam insulae partem effudisset incendium, vexerunt parentes suos ; discessisse creditum est ignes et utrimque flamma recedente limitem adapertum, per quem transcurrerent iuvenes dignissimi, qui magna tuto auderent. 3 " Vicit Antigonus, qui, cum ingenti proelio superasset hostem, praemium belli ad patrem transtulit et imperium illi Cypri tradidit. Hoc est regnum nolle regnare, cum possis. 4 " Vicit patrem imperiosum quidem Manlius, qui, eum ante ad tempus relegatus esset a patre ob adulescentiam brutam et hebetem, ad tribunum plebis, qui patri suo diem dixerat, venit ; petito tempore, quod ille dederat sperans fore proditorem parentis invisi, (et bene meruisse se de iuvene credebat, cuius exilium pro gravissimo crimine inter alia Manlio obiciebat), nanctus adulescens secretum stringit occultatum sinu ferrum et : ' Nisi iuras,' inquit, ' te diem patri remissuruin, hoc te gladio transfodiam. In tua potestate est, utro modo pater meus accusatorem non habeat.' Iuravit tribunus nec fefellit et causam actionis omissae contioni reddidit. Nulli alii licuit impune tribunum in ordinem redigere.
+" Vicit Aeneas patrem, ipse eius in infantia leve tutumque gestamen, gravem senio per media hostium agmina et per cadentis circa se urbis ruinas ferens, cum complexus sacra ac penates deos religiosus senex non simplici vadentem sarcina premeret ; tulit illum per ignes et (quid non pietas potest ?) pertulit colendumque inter conditores Romani imperii posuit. " Vicere Siculi iuvenes : cum Aetna maiore vi peragitata in urbes, in agros, in magnam insulae partem effudisset incendium, vexerunt parentes suos ; discessisse creditum est ignes et utrimque flamma recedente limitem adapertum, per quem transcurrerent iuvenes dignissimi, qui magna tuto auderent. " Vicit Antigonus, qui, cum ingenti proelio superasset hostem, praemium belli ad patrem transtulit et imperium illi Cypri tradidit. Hoc est regnum nolle regnare, cum possis. " Vicit patrem imperiosum quidem Manlius, qui, eum ante ad tempus relegatus esset a patre ob adulescentiam brutam et hebetem, ad tribunum plebis, qui patri suo diem dixerat, venit ; petito tempore, quod ille dederat sperans fore proditorem parentis invisi, (et bene meruisse se de iuvene credebat, cuius exilium pro gravissimo crimine inter alia Manlio obiciebat), nanctus adulescens secretum stringit occultatum sinu ferrum et : ' Nisi iuras,' inquit, ' te diem patri remissuruin, hoc te gladio transfodiam. In tua potestate est, utro modo pater meus accusatorem non habeat.' Iuravit tribunus nec fefellit et causam actionis omissae contioni reddidit. Nulli alii licuit impune tribunum in ordinem redigere.
 
 Alia ex aliis exempla sunt eorum, qui parentes suos periculis eripuerint, qui ex infimo ad summum protulerint et e plebe acervoque ignobili numquam tacendos saeculis dederint.
 
@@ -737,7 +737,7 @@ Tot arbusta non uno modo frugifera, tot herbae salutares, tot varietates ciborum
 
 Flumina haec amoenissimis flexibus campos cingentia, illa praebitura commercio viam vasto et navigabili cursu vadentia, ex quibus quaedam aestatis diebus mirabile incrementum trahunt, ut arida et ferventi subiecta caelo loca subita vis aestivi torrentis irriget ? Quid mercatorum torrentium venae ? Quid in ipsis litoribus aquarum calentium exundatio ? Te, Lari maxime, teque, fluctibus et fremitu adsurgens, Benace, marino ?
 
-Si pauca quis tibi donasset iugera, accepisse te diceres beneficium; immensa terrarum late patentium spatia negas esse beneficium ? Si pecuniam tibi aliquis donaverit et arcam tuam, quoniam tibi id ma gnum videtur, impleverit, beneficium vocabis ; tot metalla deus deus added by Hosius. defodit, tot flumina emisit terra, super quae decurrunt sola, aurum vehentia ; argenti, aeris, ferri immane pondus omnibus locis obrutum, cuius investigandi tibi facultatem dedit, ac latentium divitiarum in summa terra signa disposuit : negas te accepisse beneficium ?
+Si pauca quis tibi donasset iugera, accepisse te diceres beneficium; immensa terrarum late patentium spatia negas esse beneficium ? Si pecuniam tibi aliquis donaverit et arcam tuam, quoniam tibi id ma gnum videtur, impleverit, beneficium vocabis ; tot metalla deus defodit, tot flumina emisit terra, super quae decurrunt sola, aurum vehentia ; argenti, aeris, ferri immane pondus omnibus locis obrutum, cuius investigandi tibi facultatem dedit, ac latentium divitiarum in summa terra signa disposuit : negas te accepisse beneficium ?
 
 Si domus tibi donetur, in qua marmoris aliquid resplendeat et tectum nitidi us auro aut coloribus sparsum, non mediocre munus vocabis. Ingens tibi domicilium sine ullo incendii aut ruinae metu struxit, in quo vides non tenues crustas et ipsa, qua secantur, lamna gracili ores, sed integras lapidis pretiosissimi moles, sed totas variae distinctaeque materiae, cuius tu parvula frusta miraris, tectum vero aliter nocte, aliter interdiu fulgens : negas te ullum munus accepisse ?
 
@@ -753,7 +753,7 @@ Neque enim nostra ista, quae invenimus, dixeris, non magis, quam quod crescimus,
 
 nam cum fatum nihil aliud sit, quam series implexa causarum, ille est prima omnium causa, ex qua ceterae pendent. Quaecumque voles, illi nomina proprie aptabis vim aliquam effectumque caelestium rerum continentia : tot appellationes eius possunt esse, quot munera.
 
-Hunc et Liberum patrem et Herculem ac Mercurium nostri putant : Liberum patrem, quia omnium parens sit, cui primum inventa seminum vis est vitae vitae added by Basore : vitae perpetuitati added by Préchac after voluptatem. consultura per voluptatem ; Herculem, quia vis eius invicta sit quandoque lassata fuerit operibus editis, in ignem recessura ; Mercurium, quia ratio penes illum est numerusque et ordo et scientia. Quocumque te flexeris, ibi illum videbis occurrentem tibi ;
+Hunc et Liberum patrem et Herculem ac Mercurium nostri putant : Liberum patrem, quia omnium parens sit, cui primum inventa seminum vis est vitae consultura per voluptatem ; Herculem, quia vis eius invicta sit quandoque lassata fuerit operibus editis, in ignem recessura ; Mercurium, quia ratio penes illum est numerusque et ordo et scientia. Quocumque te flexeris, ibi illum videbis occurrentem tibi ;
 
 nihil ab illo vacat, opus suum ipse implet. Ergo nihil agis, ingratissime mortalium, qui te negas deo debere, sed naturae, quia nec natura sine deo est nec deus sine natura, sed idem est utrumque, distat officio.
 
@@ -761,9 +761,9 @@ Si, quod a Seneca accepisses, Annaeo te debere diceres vel Lucio, non creditorem
 
 Sed ne aliam disputationem ex obliquo habeam, plurima beneficia ac maxima in nos deus defert sine spe recipiendi, quoniam nec ille conlato eget nec nos ei quidquam conferre possumus ; ergo beneficium per se expetenda res est. Una spectatur in eo accipientis utilitas ; ad hanc accedamus sepositis commodis nostris.
 
-" Dicitis," inquit, " diligenter eligendos, quibus beneficia demus, quia ne agricolae quidem semina harenis committant ; quod si verum est, nostram utilitatem in beneficiis dandis sequimur, quemadmodum in arando serendoque ; neque enim serere per se res expetenda est. Praeterea quaeritis, ubi et quomodo detis ubi et quomodo detis added by Gertz. beneficium, quod non esset faciendum, si per se beneficium dare expetenda res esset, quoniam, quocumque loco et quocumque modo daretur, beneficium erat."
+" Dicitis," inquit, " diligenter eligendos, quibus beneficia demus, quia ne agricolae quidem semina harenis committant ; quod si verum est, nostram utilitatem in beneficiis dandis sequimur, quemadmodum in arando serendoque ; neque enim serere per se res expetenda est. Praeterea quaeritis, ubi et quomodo detis beneficium, quod non esset faciendum, si per se beneficium dare expetenda res esset, quoniam, quocumque loco et quocumque modo daretur, beneficium erat."
 
-Honestum propter nullam aliam causam quam propter ipsum sequimur ; tamen, etiam si nihil aliud sequendum est, quaerimus, quid quid O : cui Hosius after Gertz. faciamus et quando et quemadmodum ; per haec enim constat. Itaque, cum eligo, cui dem beneficium, id ago, ut quandoque beneficium sit, quia, si turpi datur, nec honestum esse potest nec beneficium.
+Honestum propter nullam aliam causam quam propter ipsum sequimur ; tamen, etiam si nihil aliud sequendum est, quaerimus, quid faciamus et quando et quemadmodum ; per haec enim constat. Itaque, cum eligo, cui dem beneficium, id ago, ut quandoque beneficium sit, quia, si turpi datur, nec honestum esse potest nec beneficium.
 
 Depositum reddere per se res expetenda est; non tamen semper reddam nec quolibet loco nec quolibet tempore. Aliquando nihil interest, utrum infitier an palam reddam. Intuebor utilitatem eius, cui redditurus sum, et nociturum illi depositum negabo. Idem in beneficio faciam.
 
@@ -771,7 +771,7 @@ Videbo, quando dem, cui dem, quemadmodum, quare. Nihil enim sine ratione faciend
 
 " Mallem perdidisse quam illi dedisse " ! Turpissimum genus damni est inconsulta donatio multoque gravius male dedisse beneficium quam non recepisse ; aliena enim culpa est, quod non recipimus ; quod, cui daremus, non elegimus, nostra.
 
-In electione nihil minus quam hoc, quod tu existimas, spectabo, a quo recepturus sim ; elige enim eum, qui gratus, non qui redditurus sit, saepe autem et non redditurus gratus est et ingratus, est et ingratus commonly added. qui reddidit.
+In electione nihil minus quam hoc, quod tu existimas, spectabo, a quo recepturus sim ; elige enim eum, qui gratus, non qui redditurus sit, saepe autem et non redditurus gratus est et ingratus, qui reddidit.
 
 Ad animum tendit aestimatio mea ; ideo locupletem sed indignum praeteribo, pauperi viro bono dabo ; erit enim in summa inopia gratus et, cum omnia illi deerunt, supererit animus.
 
@@ -791,9 +791,9 @@ Atqui numquam diligentius damus, numquam magis iudicia nostra torquemus, quam ub
 
 Adeo beneficium utilitatis causa dandum non est, ut saepe, quemadmodum dixi, cum damno ac periculo dandum sit. Sic latronibus circumventum defendo, ut tuto transire permittatur ; reum gratia laborantem tueor et hominum potentium factionem in me converto, quas illi detraxero sordes, sub accusatoribus isdem fortasse sumpturus, cum abire in partem alteram possim et securus spectare aliena certamina ; spondeo pro iudicato et suspensis amici bonis libellum deicio creditoribus eius me obligaturus ; ut possim servare proscriptum, ipse proscriptionis periculum adeo.
 
-Nemo Tusculanum aut Tiburtinum paraturus salubritatis causa et aestivi secessus, quoto anno empturus sit, disputat ; cum erit, cum erit O : cui e re sit Hosius: alii alia. tuendum est.
+Nemo Tusculanum aut Tiburtinum paraturus salubritatis causa et aestivi secessus, quoto anno empturus sit, disputat ; cum erit, tuendum est.
 
-Eadem in beneficio ratio est ; nam cum interrogaveris, quid reddat, respondebo : bonam conscientiam. Quid reddat beneficium ? Dic tu mihi, quid reddat iustitia, quid innocentia, quid magnitudo animi, quid pudicitia, quid temperantia ; si quicquam praeter ipsas, ipsas ipsas added by Modius. non petis. In quid mundus vices suas solvit ?
+Eadem in beneficio ratio est ; nam cum interrogaveris, quid reddat, respondebo : bonam conscientiam. Quid reddat beneficium ? Dic tu mihi, quid reddat iustitia, quid innocentia, quid magnitudo animi, quid pudicitia, quid temperantia ; si quicquam praeter ipsas, ipsas non petis. In quid mundus vices suas solvit ?
 
 In quid sol diem extendit et contrahit ? Omnia ista beneficia sunt, fiunt enim nobis profutura. Quomodo mundi officium est circumagere rerum ordinem, quomodo solis loca mutare, ex quibus oriatur, in quae cadat, et haec salutaria nobis facere sine praemio, ita viri officium est inter alia et beneficium dare. Quare ergo dat ? Ne non det, ne occasionem bene faciendi perdat.
 
@@ -835,9 +835,9 @@ Dic enim cuilibet ex istis, qui rapto vivunt, an ad illa, quae latrociniis et fu
 
 Ut scias per se expetendam esse grati animi adfectionem, per se fugienda res est ingratum esse, quoniam nihil aeque concordiam humani generis dissociat ac distrahit quam hoc vitium. Nam quo alio tuti sumus, quam quod mutuis iuvamur officiis ? Hoc uno instructior vita contraque incursiones subitas munitior est, beneficiorum commercio.
 
-Fac nos singulos, quid sumus ? Praeda animalium et victimae ac bellissimus et facillimus sanguis. Quoniam ceteris animalibus in tutelam sui satis virium est, quaecumque vaga nascebantur et actura vitam segregem, armata sunt, hominem imbecilla cutis cutis added by Madvig. cingit ; non unguium vis, non dentium terribilem ceteris fecit, nudum et infirmum societas munit. Duas deus deus added by Haase. res dedit, quae illum obnoxium validissimum facerent, rationem et societatem ; itaque, qui par esse nulli posset, si seduceretur, rerum potitur.
+Fac nos singulos, quid sumus ? Praeda animalium et victimae ac bellissimus et facillimus sanguis. Quoniam ceteris animalibus in tutelam sui satis virium est, quaecumque vaga nascebantur et actura vitam segregem, armata sunt, hominem imbecilla cutis cingit ; non unguium vis, non dentium terribilem ceteris fecit, nudum et infirmum societas munit. Duas deus res dedit, quae illum obnoxium validissimum facerent, rationem et societatem ; itaque, qui par esse nulli posset, si seduceretur, rerum potitur.
 
-Societas illi dominium omnium animalium dedit; societas terris genitum in alienae naturae transmisit imperium et dominari etiam in mari iussit ; hoc hoc O : haec M, Hosius. morborum impetus arcuit, senectuti adminicula prospexit, solacia contra dolores dedit ; hoc hoc O: haec M, Hosius. fortes nos facit, quod licet contra fortunam advocare.
+Societas illi dominium omnium animalium dedit; societas terris genitum in alienae naturae transmisit imperium et dominari etiam in mari iussit ; hoc morborum impetus arcuit, senectuti adminicula prospexit, solacia contra dolores dedit ; hoc fortes nos facit, quod licet contra fortunam advocare.
 
 Hanc societatem tolle, et unitatem generis humani, qua vita sustinetur, scindes ; tolletur autem, si efficis, ut ingratus animus non per se vitandus sit, sed quia aliquid illi timendum est ; quam multi enim sunt, quibus ingratis esse tuto licet ! Denique ingratum voco, quisquis metu gratus est.
 
@@ -937,7 +937,7 @@ Hic egregiis maioribus ortus est : qualiscumque est, sub umbra suorum lateat. Ut
 
 Excusare hoc loco tibi, mi Liberalis, deos volo. Interdum enim solemus dicere : " Quid sibi voluit providentia, quae Arrhidaeum regno imposuit ?"
 
-Illi putas hoc datum ? Patri eius datum est et fratri. " Quare C C. added by Muretus. Caesarem orbi terrarum praefecit, hominem sanguinis humani avidissimum, quem non aliter fluere in conspectu suo iubebat, quam si ore excepturus esset ? " Quid ergo ? Tu hoc illi datum existimas ? Patri eius Germanico datum, avo proavoque et ante hos aliis non minus claris viris, etiam si privati paresque aliis vitam exegerunt. Quid ?
+Illi putas hoc datum ? Patri eius datum est et fratri. " Quare C Caesarem orbi terrarum praefecit, hominem sanguinis humani avidissimum, quem non aliter fluere in conspectu suo iubebat, quam si ore excepturus esset ? " Quid ergo ? Tu hoc illi datum existimas ? Patri eius Germanico datum, avo proavoque et ante hos aliis non minus claris viris, etiam si privati paresque aliis vitam exegerunt. Quid ?
 
 Tu, cum Mamercum Scaurum consulem faceres, ignorabas ancillarum illum suarum menstruum ore hiante exceptare ? Numquid enim ipse dissimulabat? Numquid purus videri volebat ? Referam tibi dictum eius in se, quod circumferri memini et ipso praesente laudari.
 
@@ -945,7 +945,7 @@ Pollioni Annio iacenti obsceno verbo usus dixerat se facturum id, quod pati male
 
 Nempe dum veterem illum Scaurum senatus principem cogitas et indigne fers subolem eius iacere.
 
-Idem facere idem facere added by Madvig. deos veri simile est, ut alios indulgentius tractent propter parentes avosque, alios propter futuram nepotum pronepotumque ac longe sequentium posterorum indolem ; nota enim illis est operis sui series, omniumque illis rerum per manus suas iturarum scientia in aperto semper est ; nobis ex abdito subit, et, quae repentina putamus, illis provisa veniunt ac familiaria.
+Idem facere deos veri simile est, ut alios indulgentius tractent propter parentes avosque, alios propter futuram nepotum pronepotumque ac longe sequentium posterorum indolem ; nota enim illis est operis sui series, omniumque illis rerum per manus suas iturarum scientia in aperto semper est ; nobis ex abdito subit, et, quae repentina putamus, illis provisa veniunt ac familiaria.
 
 " Sint hi reges, quia maiores eorum non fuerunt, quia pro summo imperio habuerunt iustitiam, abstinentiam, quia non rem publicam sibi, sed se rei publicae dicaverunt. Regnent hi, quia vir bonus quidam ante proavus eorum fuit, qui animum supra fortunam gessit, qui in dissensione civili, quoniam ita expediebat rei publicae, vinci quam vincere maluit ; referri gratia illi tam longo spatio non potuit ; in illius respectum iste populo praesideat, non quia scit aut potest, sed quia alius pro illo meruit.
 
@@ -987,7 +987,7 @@ Narravit Philippo naufragium suum, auxilium tacuit et protinus petit, ut sibi cu
 
 " Haec Philippus sibi dixit, cum illum induci in bona, quae petebat, iussit. Expulsus bonis suis ille non ut rusticus iniuriam tacitus tulit contentus, quod non et ipse donatus esset, sed Philippo epistulam strictam ac liberam scripsit ; qua accepta ita exarsit, ut statim Pausaniae mandaret, bona priori domino restitueret, ceterum improbissimo militi, ingratissimo hospiti, avidissimo naufrago stigmata inscriberet ingratum hominem testantia.
 
-Dignus quidem fuit, cui non inscriberentur illae litterae, sed insculperentur, qui hospitem suum nudo et naufrago similem in id, in in commonly added. 5 quo iacuerat ipse, litus expulerat. Sed videbimus, quis modus poenae servandus fuerit ; auferendum utique fuit, quod summo scelere invaserat. Quis autem poena eius moveretur ? Id commiserat, propter quod nemo misereri misericors posset.
+Dignus quidem fuit, cui non inscriberentur illae litterae, sed insculperentur, qui hospitem suum nudo et naufrago similem in id, in quo iacuerat ipse, litus expulerat. Sed videbimus, quis modus poenae servandus fuerit ; auferendum utique fuit, quod summo scelere invaserat. Quis autem poena eius moveretur ? Id commiserat, propter quod nemo misereri misericors posset.
 
 Dabit tibi Philippus, quia promisit, etiam si non debet, etiam si iniuriam facturus est, etiam si scelus facturus est, etiam si uno facto praeclusurus est naufragis litora ? Non est levitas a cognito et damnato errore discedere, et ingenue fatendum est : " Aliud putavi, deceptus sum." Haec vero superbae stultitiae perseverantia est: " Quod semel dixi, qualecumque est, fixum ratumque sit."
 
@@ -997,7 +997,7 @@ Non est turpe cum re mutare consilium. Age, si Philippus possessorem illum eorum
 
 " Primum alia condicio est in credito, alia in beneficio. Pecuniae etiam male creditae exactio est ; et appellare debitorem ad diem possum et, si foro cesserit, portionem feram ; beneficium et totum perit et statim. Praeterea hoc mali viri est, illud mali patris familiae. Deinde ne Zeno quidem, si maior fuisset summa, credere perseverasset. Quingenti denarii sunt : illud quod dici solet, " in morbo consumat " ; fuit tanti non revocare promissum suum.
 
-Ad cenam, quia promisi, ibo, etiam si frigus erit; non quidem, si nives cadent. Surgam ad sponsalia, quia promisi, quamvis non concoxerim ; sed non, si febricitavero. Sponsum descendam, quia promisi; sed non, si spondere me in in added by Erasmus. incertum iubebis, si fisco obligabis. Subest, inquam, tacita exceptio : "Si potero, si debebo, si haec ita erunt."
+Ad cenam, quia promisi, ibo, etiam si frigus erit; non quidem, si nives cadent. Surgam ad sponsalia, quia promisi, quamvis non concoxerim ; sed non, si febricitavero. Sponsum descendam, quia promisi; sed non, si spondere me in incertum iubebis, si fisco obligabis. Subest, inquam, tacita exceptio : "Si potero, si debebo, si haec ita erunt."
 
 Effice, ut idem status sit, cum exigis, qui fuit, cum promitterem ; destituere levitas erit. Si aliquid intervenit novi, quid miraris, cum condicio promittentis mutata sit, mutatum esse consilium ? Eadem mihi omnia praesta, et idem sum. Vadimonium promittimus, tamen deserti non in omnes datur actio : deserentem vis maior excusat.
 
@@ -1051,7 +1051,7 @@ Non est tamen turpe vinci beneficiis a parente; quidni non sit turpe, eum a null
 
 Saepe necesse est ante alia beneficia petamus, quam priora reddidimus, nec ideo non petimus aut turpiter, quia non reddituri debebimus, quia non per nos erit mora, quominus gratissimi simus, sed interveniet aliquid extrinsecus, quod prohibeat. Nos tamen nec vincemur animo nec turpiter his rebus superabimur, quae non sunt in nostra potestate.
 
-Alexander Macedonum rex gloriari solebat a nullo se beneficiis victum. Non est, quod nimius animi Macedonas et Graecos et Caras et Persas et nationes discriptas in exercitum suspiciat, nec hoc sibi praestitisse regnum a a commonly added. Thraciae angulo porrectum usque ad litus incogniti maris iudicet. Eadem re gloriari Socrates potuit, eadem Diogenes, a quo utique victus est, Quidni victus sit illo die, quo homo super mensuram iam humanae superbiae tumens vidit aliquem, cui nec dare quicquam posset nec eripere ?
+Alexander Macedonum rex gloriari solebat a nullo se beneficiis victum. Non est, quod nimius animi Macedonas et Graecos et Caras et Persas et nationes discriptas in exercitum suspiciat, nec hoc sibi praestitisse regnum a Thraciae angulo porrectum usque ad litus incogniti maris iudicet. Eadem re gloriari Socrates potuit, eadem Diogenes, a quo utique victus est, Quidni victus sit illo die, quo homo super mensuram iam humanae superbiae tumens vidit aliquem, cui nec dare quicquam posset nec eripere ?
 
 Archelaus rex Socratem rogavit, ut ad se veniret ; dixisse Socrates traditur nolle se ad eum venire, a quo acciperet beneficia, cum reddere illi paria non posset. Primum in ipsius potestate erat non accipere ; deinde ipse dare beneficium prior incipiebat, veniebat enim rogatus et id dabat, quod utique ille non erat Socrati redditurus. Etiamnunc Archelaus daturus erat aurum et argentum recepturus contemptum auri et argenti: non poterat referre Archelao Socrates gratias ?
 
@@ -1105,11 +1105,11 @@ Idem ipso vocabulo apparet, in quo hoc continetur, " bene fecisse " ; nemo autem
 
 Quidni ? cum inter ea sit habendum beneficium, quae secundam personam desiderant. Quaedam, cum sint honesta, pulcherrima, summae virtutis, nisi in altero non habent locum. Laudatur et inter maxima humani generis bona fides colitur ; num quis ergo dicitur sibi fidem praestitisse ?
 
-Venio nunc ad ultimam partem. Qui gratiam refert, aliquid debet impendere, sicut, qui solvit, pecuniam ; nihil autem impendit, qui gratiam sibi refert, non magis quam consequitur, qui beneficium a se accepit. Beneficium et gratiae relatio ultro citro ire debent ; intra unum hominem non est vicissitudo. Qui gratiam refert, invicem prodest ei, a quo consecutus est aliquid. Qui sibi gratiam refert, cui prodest ? Sibi. Et quis non alio loco relationem gratiae, alio beneficium cogitat ? Qui gratiam refert sibi, sibi sibi added by Haase. prodest. Et quis umquam ingratus hoc noluit facere ? Immo quis non ingratus fuit, ut hoc faceret ?
+Venio nunc ad ultimam partem. Qui gratiam refert, aliquid debet impendere, sicut, qui solvit, pecuniam ; nihil autem impendit, qui gratiam sibi refert, non magis quam consequitur, qui beneficium a se accepit. Beneficium et gratiae relatio ultro citro ire debent ; intra unum hominem non est vicissitudo. Qui gratiam refert, invicem prodest ei, a quo consecutus est aliquid. Qui sibi gratiam refert, cui prodest ? Sibi. Et quis non alio loco relationem gratiae, alio beneficium cogitat ? Qui gratiam refert sibi, sibi prodest. Et quis umquam ingratus hoc noluit facere ? Immo quis non ingratus fuit, ut hoc faceret ?
 
 "Si gratias," inquit, " nobis agere debemus, et gratiam referre debemus ; dicimus autem : ' Ago gratias mihi, quod illam uxorem nolui ducere ' et ' quod cum illo non contraxi societatem.' " Cum hoc dicimus, laudamus nos et, ut factum nostrum comprobemus, gratias agentium verbis abutimur.
 
-Beneficium est, quod potest, cum datum est, et non reddi ; qui sibi beneficium dat, non potest non recipere, quod dedit ; ergo non est beneficium. Alio tempore beneficium accipitur, alio redditur. In Hosius after Haupt posits a hiatus before in.
+Beneficium est, quod potest, cum datum est, et non reddi ; qui sibi beneficium dat, non potest non recipere, quod dedit ; ergo non est beneficium. Alio tempore beneficium accipitur, alio redditur. In
 
 beneficio et hoc est probabile, hoc suspiciendum, quod aliquis, ut alteri prodesset, utilitatis interim suae oblitus est, quod alteri dedit ablaturus sibi. Hoc non facit, qui beneficium sibi dat.
 
@@ -1123,7 +1123,7 @@ Quid enim boni est nodos operose solvere, quos ipse, ut solveres, feceris ? Sed 
 
 Dicitur nemo ingratus esse ; id sic colligitur: " Beneficium est, quod prodest ; prodesse autem nemo homini malo potest, ut dicitis Stoici; ergo beneficium non accipit malus,ingratus est. " Etiamnunc beneficium honesta et probabilis res est; apud malum nulli honestae rei aut probabili locus est, ergo nec beneficio ; quod si accipere non potest, ne reddere quidem debet, et ideo non fit ingratus.
 
-" Etiamnunc, ut dicitis, bonus vir omnia recte facit; si omnia recte facit, ingratus esse non potest. Malo viro beneficium nemo dare potest. Bonus beneficium reddit, malus non accipit ; quod si est, nec bonus quisquam ingratus est nec malus. Ita ingratus in rerum natura est nemo, et hoc inane nomen." nomen added by Erasmus ; omitted by Hosius.
+" Etiamnunc, ut dicitis, bonus vir omnia recte facit; si omnia recte facit, ingratus esse non potest. Malo viro beneficium nemo dare potest. Bonus beneficium reddit, malus non accipit ; quod si est, nec bonus quisquam ingratus est nec malus. Ita ingratus in rerum natura est nemo, et hoc inane nomen."
 
 Unum est apud nos bonum, honestum. Id pervenire ad malum non potest ; desinet enim malus esse, si ad illum virtus intraverit ; quam diu autem malus est, nemo illi dare beneficium potest, quia mala bonaque dissentiunt nec in unum eunt. Ideo nemo illi prodest, quia, quidquid ad illum pervenit, id pravo usu corrumpitur.
 
@@ -1143,7 +1143,7 @@ Cleanthes vehementius agit. " Licet," inquit, " beneficium non sit, quod accepit
 
 " Sic latro est etiam antequam manus inquinet, quia ad occidendum iam armatus est et habet spoliandi atque interficiendi voluntatem ; exercetur et aperitur opere nequitia, non incipit. Sacrilegi dant poenas, quamvis nemo usque ad deos manus porrigat.
 
-" Quomodo," inquit, " adversus malum ingratus est quisquam, cum a a added by Haupt. malo dari beneficium non possit ? " Ea scilicet ratione, quia ipsum, quod accepit, beneficium non erat, sed vocabatur ; qui qui added by Gertz. accipiet ab illo aliquid ex his, quae apud imperitos sunt, quorum et malis copia est, ipse quoque in simili materia gratus esse debebit et illa, qualiacumque sunt, cum pro bonis acceperit, pro bonis reddere.
+" Quomodo," inquit, " adversus malum ingratus est quisquam, cum a malo dari beneficium non possit ? " Ea scilicet ratione, quia ipsum, quod accepit, beneficium non erat, sed vocabatur ; qui accipiet ab illo aliquid ex his, quae apud imperitos sunt, quorum et malis copia est, ipse quoque in simili materia gratus esse debebit et illa, qualiacumque sunt, cum pro bonis acceperit, pro bonis reddere.
 
 Aes alienum habere dicitur et qui aureos debet et qui corium forma publica percussum, quale apud Lacedaemonios fuit, quod usum numeratae pecuniae praestat. Quo genere obligatus es, hoc fidem exsolve.
 
@@ -1177,7 +1177,7 @@ Deficiet dies enumerantem ingratos usque in ultima patriae exitia. Aeque immensu
 
 Camillum in exilium misit, Scipionem dimisit; exsulavit post Catilinam Cicero, diruti eius penates, bona direpta, factum, quidquid victor Catilina fecisset; Rutilius innocentiae pretium tulit in Asia latere ; Catoni populus Romanus praeturam negavit, consulatum pernegavit.
 
-Ingrati publice sumus. Se quisque interroget: nemo non aliquem queritur ingratum. Atqui non potest fieri, ut omnes querantur, nisi querendum est de omnibus : omnes ergo ingrati sunt. Ingrati sunt Ingrati sunt added by Gertz ; omitted by Hosius. tantum ? Et cupidi omnes et maligni omnes et timidi omnes, illi in primis, qui videntur audaces. Adice : et ambitiosi omnes sunt et impii omnes. Sed non est, quod irascaris ; ignosce illis, omnes insaniunt.
+Ingrati publice sumus. Se quisque interroget: nemo non aliquem queritur ingratum. Atqui non potest fieri, ut omnes querantur, nisi querendum est de omnibus : omnes ergo ingrati sunt. Ingrati sunt tantum ? Et cupidi omnes et maligni omnes et timidi omnes, illi in primis, qui videntur audaces. Adice : et ambitiosi omnes sunt et impii omnes. Sed non est, quod irascaris ; ignosce illis, omnes insaniunt.
 
 Nolo te ad incerta revocare, ut dicam : " Vide, quam ingrata sit iuventus ! Quis non patris sui supremum diem, ut innocens sit, optat ? Ut moderatus sit, expectat ? Ut pius, cogitat ? Quotus quisque uxoris optimae mortem timet, ut non et computet ? Cui, rogo, litigatori defenso tam magni beneficii ultra res proximas memoria duravit ? "
 
@@ -1227,7 +1227,7 @@ Verba sunt ista. Quam diu me nihil urguet, quam diu fortuna nihil cogit, perdam 
 
 " Sed lex," inquit, " non permittendo exigere vetuit." Multa legem non habent nec actionem, ad quae consuetudo vitae humanae omni lege valentior dat aditum. Nulla lex iubet amicorum secreta non eloqui; nulla lex iubet fidem etiam inimico praestare ; quae lex ad id praestandum nos, quod alicui promisimus, adligat ? Nulla. Querar tamen cum eo, qui arcanum sermonem non continuerit, et fidem datam nec servatam indignabor.
 
-" Sed ex beneficio," inquit, " creditum facis." Minime ; non enim exigo, sed repeto, et ne repeto quidem, sed admoneo. Num ultima quoque me necessitas in hoc aget, ut ad eum veniam, cum quo mihi diu luctandum sit ? Si si added by Gruter. quis tam ingratus est, ut illi non sit satis admoneri, eum transibo nec dignum iudicabo, qui gratus esse cogatur.
+" Sed ex beneficio," inquit, " creditum facis." Minime ; non enim exigo, sed repeto, et ne repeto quidem, sed admoneo. Num ultima quoque me necessitas in hoc aget, ut ad eum veniam, cum quo mihi diu luctandum sit ? Si quis tam ingratus est, ut illi non sit satis admoneri, eum transibo nec dignum iudicabo, qui gratus esse cogatur.
 
 Quomodo fenerator quosdam debitores non appellat, quos scit decoxisse et in quorum pudorem nihil superest, nisi quod pereat, sic ego quosdam ingratos palam ac pertinaciter praeteribo nec ab ullo beneficium repetam, nisi a quo non ablaturus ero, sed recepturus.
 
@@ -1245,7 +1245,7 @@ Quare properas et beneficium et amicum perdere ? Unde scis, nolim an ignorem, an
 
 Causam dicebat apud divum Iulium ex veteranis quidam paulo violentior adversus vicinos suos et causa premebatur. " Meministi," inquit, " imperator, in Hispania, talum extorsisse te circa Sucronem ?" Cum Caesar meminisse se dixisset : " Meministi quidem sub quadam arbore minimum umbrae spargente cum velles residere ferventissimo sole et esset asperrimus locus, in quo ex rupibus acutis unica illa arbor eruperat, quendam ex commilitonibus paenulam suam substravisse ? "
 
-Cum dixisset Caesar : " Quidni meminerim ? Et quidem siti confectus, quia impeditus ire ad fontem proximum non poteram, repere manibus volebam, nisi commilito, nisi commilito editors : manibus milito O. gratus possit offendi nec added by Haase, homo fortis ac strenuus, aquam mihi in galea sua adtulisset "—, " Potes ergo," inquit, " imperator, adgnoscere illum hominem aut illam galeam ? " Caesar ait se non posse galeam adgnoscere, hominem pulchre posse, et adiecit, puto obiratus, quod se a cognitione media ad veterem fabulam abduceret :
+Cum dixisset Caesar : " Quidni meminerim ? Et quidem siti confectus, quia impeditus ire ad fontem proximum non poteram, repere manibus volebam, nisi commilito, homo fortis ac strenuus, aquam mihi in galea sua adtulisset "—, " Potes ergo," inquit, " imperator, adgnoscere illum hominem aut illam galeam ? " Caesar ait se non posse galeam adgnoscere, hominem pulchre posse, et adiecit, puto obiratus, quod se a cognitione media ad veterem fabulam abduceret :
 
 " Tu utique ille non es." " Merito/' inquit, " Caesar, me non adgnoscis ; nam cum hoc factum est, integer eram ; postea ad Mundam in acie oculus mihi effossus est et in capite lecta ossa. Nec galeam illam, si videris, adgnosces ; machaera enim Hispana divisa est." Vetuit illi exhiberi negotium Caesar et agellos, in quibus vicinalis via causa rixae ac litium fuerat, militi suo donavit.
 
@@ -1341,7 +1341,7 @@ Quemadmodum ei, qui voluit mihi quidem pecuniam credere, sed non dedit, nihil de
 
 Intellego iam, quid velis quaerere ; non opus est te dicere ; vultus tuus loquitur. " Si quis sua nobis causa profuit, eine," inquis, " debetur aliquid ? Hoc enim saepe te conquerentem audio, quod quaedam homines sibi praestant, aliis imputant." Dicam, mi Liberalis ; sed prius istam quaestiunculam dividam et rem aequam ab iniqua separabo.
 
-Multum enim interest, utrum aliquis beneficium nobis det sua causa an et sua. Ille, qui totus ad se spectat et nobis prodest, quia aliter prodesse sibi non potest, eo mihi loco est, quo, qui pecori suo hibernum et aestivum pabulum prospicit; eo loco est, quo, qui captivos suos, ut commodius veneant, pascit et ut ut added by Rossbach. opimos boves saginat ac defricat, quo lanista, qui familiam summa cura exercet atque ornat. Multum, ut ait Cleanthes, a beneficio distat negotiatio.
+Multum enim interest, utrum aliquis beneficium nobis det sua causa an et sua. Ille, qui totus ad se spectat et nobis prodest, quia aliter prodesse sibi non potest, eo mihi loco est, quo, qui pecori suo hibernum et aestivum pabulum prospicit; eo loco est, quo, qui captivos suos, ut commodius veneant, pascit et ut opimos boves saginat ac defricat, quo lanista, qui familiam summa cura exercet atque ornat. Multum, ut ait Cleanthes, a beneficio distat negotiatio.
 
 Rursus non sum tam iniquus, ut ei nihil debeam, qui, cum mihi utilis esset, fuit et sibi; non enim exigo, ut mihi sine respectu sui consulat, immo etiam opto, ut beneficium mihi datum vel magis danti profuerit, dum modo id, qui dabat duos intuens dederit et inter me seque diviserit.
 
@@ -1405,7 +1405,7 @@ Nam ut tibi debeam aliquid pro eo, quod praestas, debes non tantum mihi praestar
 
 noluit mihi civitatem proprie dare nec in me direxit animum ; ita quare ei debeam, qui me sibi non substituit, cum facturus esset, quod fecit ?
 
-" Primum, cum cogitavit Gallis omnibus prodesse, et mihi cogitavit prodesse ; eram enim Gallus et me etiam si non mea, publica tamen nota comprendit. Deinde ego quoque illi non tamquam proprium debebo, sed tamquam commune munus ; unus unus added by Fickert. ex populo non tamquam pro me solvam, sed tamquam pro patria conferam.
+" Primum, cum cogitavit Gallis omnibus prodesse, et mihi cogitavit prodesse ; eram enim Gallus et me etiam si non mea, publica tamen nota comprendit. Deinde ego quoque illi non tamquam proprium debebo, sed tamquam commune munus ; unus ex populo non tamquam pro me solvam, sed tamquam pro patria conferam.
 
 Si quis patriae meae pecuniam credat, non dicam me illius debitorem nec hoc aes alienum profitebor aut candidatus aut reus ; ad exsolvendum tamen hoc dabo portionem meam. Sic istius muneris, quod universis datur, debitorem me nego, quia mihi quidem dedit sed non propter me, et mihi quidem, sed nesciens, an mihi daret; nihilo minus aliquid mihi dependendum sciam, quia ad me quoque circumitu longo pervenit. Propter me debet factum esse, quod me obliget.
 
@@ -1535,7 +1535,7 @@ Istos tu libros, quos vix nomenclatorum complectitur aut memoria aut manus, amic
 
 Consuetudo ista vetus est regibus regesque simulantibus populum amicorum discribere, et proprium superbiae magno aestimare introitum ac tactum sui liminis et pro honore dare, ut ostio suo propius adsideas, ut gradum prior intra domum ponas, in qua deinceps multa sunt ostia, quae receptos quoque excludant.
 
-Apud nos primi omnium C. C. added by Muretus. Gracchus et mox Livius Drusus instituerunt segregare turbam suam et alios in secretum recipere, alios cum pluribus, alios universos. Habuerunt itaque isti amicos primos, habuerunt secundos, numquam veros.
+Apud nos primi omnium C. Gracchus et mox Livius Drusus instituerunt segregare turbam suam et alios in secretum recipere, alios cum pluribus, alios universos. Habuerunt itaque isti amicos primos, habuerunt secundos, numquam veros.
 
 Amicum vocas, cuius disponitur salutatio ? Aut potest huius tibi fides patere, qui per fores maligne apertas non intrat, sed illabitur ? Huic pervenire usque ad libertatem destringendam licet, cuius vulgare et publicum verbum et promiscuum ignotis " Have ! " non nisi suo ordine emittitur ?
 
@@ -1579,13 +1579,13 @@ Sed non, quidquid reprehendendum, etiam damnandum est, sicut hoc votum amici, qu
 
 Vide, quam sis aecus ! Horum optares nihil, si tibi beneficium non dedisset. Ut alia taceam, quae graviora committis pessima pro optimis referendo, hoc certe delinquis, quod non expectas suum cuiusque rei tempus, quod aeque peccat, qui non sequitur, quam qui antecedit. Quomodo beneficium non semper recipiendum est, sic non utique reddendum.
 
-Si mihi non desideranti redderes, ingratus esses ; quanto ingratior es, qui desiderare me cogis ! Expecta ! Quare subsidere apud te munus meum non vis ? Quare obligatum moleste te te added by Gruter. fers ? Quare quasi cum acerbo feneratore signare rationem parem properas ? Quid mihi negotium quaeris ? Quid in me deos immittis ? Quomodo exigeres, qui sic reddis ?
+Si mihi non desideranti redderes, ingratus esses ; quanto ingratior es, qui desiderare me cogis ! Expecta ! Quare subsidere apud te munus meum non vis ? Quare obligatum moleste te fers ? Quare quasi cum acerbo feneratore signare rationem parem properas ? Quid mihi negotium quaeris ? Quid in me deos immittis ? Quomodo exigeres, qui sic reddis ?
 
 Ante omnia ergo, Liberalis, hoc discamus, beneficia debere secure et occasiones reddendorum observare, non manu facere. Ipsam hanc cupiditatem primo quoque tempore liberandi se meminerimus ingrati esse ; nemo enim libenter reddit, quod invitus debet, et, quod apud se esse non vult, onus iudicat esse, non munus.
 
-Quanto melius ac iustius in promptu habere merita amicorum et offerre, non ingerere, nec obaeratum se iudicare, quoniam beneficium commune vinculum est et inter se duos adligat ! Dic : " Nihil moror, quominus tuum revertatur; opto, hilaris accipias. Si necessitas alterutri nostrum imminet fatoque quodam datum est, ut aut tu cogaris beneficium recipere aut ego alterum alterum added by Gertz. accipere, det potius, qui solet. Ego paratus sum : Nulla mora in Turno est; ostendam hunc animum, cum primum tempus advenerit ; interim di testes sunt."
+Quanto melius ac iustius in promptu habere merita amicorum et offerre, non ingerere, nec obaeratum se iudicare, quoniam beneficium commune vinculum est et inter se duos adligat ! Dic : " Nihil moror, quominus tuum revertatur; opto, hilaris accipias. Si necessitas alterutri nostrum imminet fatoque quodam datum est, ut aut tu cogaris beneficium recipere aut ego alterum accipere, det potius, qui solet. Ego paratus sum : Nulla mora in Turno est; ostendam hunc animum, cum primum tempus advenerit ; interim di testes sunt."
 
-Soleo, mi Liberalis, notare hunc in te adfectum et quasi manu prendere verentis et aestuantis, ne in ullo officio sis tardior. Non decet gratum animum sollicitudo, contra summa fiducia sui et ex conscientia veri amoris dimissa omnis anxietas. Tam convicium est : " Recipe " quam : " Debes." Hoc primum beneficii dati sit ius, ut recipiendi tempus eligat, qui dedit. " At vereor, ne homines de me sequius loquantur." Male agit, qui famae, non conscientiae gratus est. Duos istius rei iudices habes, illum, quem non debes timere, et te, quem non debes timere, et te added by Gertz. quem non potes. " Quid ergo ? Si nulla intervenerit occasio, semper debebo ? " Debebis ; sed palam debebis, sed libenter debebis, sed cum magna voluptate apud te depositum intueberis. Paenitet accepti beneficii, quem nondum redditi piget. Quare, qui tibi dignus visus est, a quo acciperes, indignus videatur, cui diu debeas ?
+Soleo, mi Liberalis, notare hunc in te adfectum et quasi manu prendere verentis et aestuantis, ne in ullo officio sis tardior. Non decet gratum animum sollicitudo, contra summa fiducia sui et ex conscientia veri amoris dimissa omnis anxietas. Tam convicium est : " Recipe " quam : " Debes." Hoc primum beneficii dati sit ius, ut recipiendi tempus eligat, qui dedit. " At vereor, ne homines de me sequius loquantur." Male agit, qui famae, non conscientiae gratus est. Duos istius rei iudices habes, illum, quem non debes timere, et te, quem non potes. " Quid ergo ? Si nulla intervenerit occasio, semper debebo ? " Debebis ; sed palam debebis, sed libenter debebis, sed cum magna voluptate apud te depositum intueberis. Paenitet accepti beneficii, quem nondum redditi piget. Quare, qui tibi dignus visus est, a quo acciperes, indignus videatur, cui diu debeas ?
 
 In magnis erroribus sunt, qui ingentis animi credunt proferre, donare, plurium sinum ac domum implere, cum ista interdum non magnus animus faciat, sed magna fortuna ; nesciunt, quanto interim maius ac difficilius sit capere, quam fundere. Nam, ut nihil alteri detraham, quoniam utrumque, ubi virtute fit, par est, non minoris est animi beneficium debere quam dare ; eo quidem operosius hoc quam illud, quo maiore diligentia custodiuntur accepta, quam dantur.
 
@@ -1691,7 +1691,7 @@ O miserum, si quem delectat patrimonii sui liber magnus et vasta spatia terrarum
 
 Cum bene ista, per quae divitias suas disposuit ac fudit, circumspexerit superbumque se fecerit, quidquid habet, ei, quod cupit, comparet : pauper est. Dimitte me et illis divitiis meis redde. Ego regnum sapientiae novi, magnum, securum ; ego sic omnia habeo, ut omnium sint."
 
-Itaque cum C. C. added by Pincianus. Caesar illi ducenta donaret, ridens reiecit ne dignam quidem summam iudicans, qua non accepta gloriaretur. Di deaeque, quam pusillo animo illum aut honorare voluit aut corrumpere ! Reddendum egregio viro testimonium est ;
+Itaque cum C. Caesar illi ducenta donaret, ridens reiecit ne dignam quidem summam iudicans, qua non accepta gloriaretur. Di deaeque, quam pusillo animo illum aut honorare voluit aut corrumpere ! Reddendum egregio viro testimonium est ;
 
 ingentem rem ab illo diei audivi, cum miraretur Gai dementiam, quod se putasset tanti posse mutari. " Si temptare," inquit, " me constituerat, toto illi fui experiendus imperio."
 
@@ -1717,15 +1717,15 @@ Quaedam eius condicionis sunt, ut effectum praestare debeant ; quibusdam pro eff
 
 Omnia fecit, ut beneficium redderet, obstitit illi felicitas tua ; nihil incidit durius, quod veram amicitiam experiretur ; locupleti donare non potuit, sano adsidere, felici succurrere : gratiam rettulit, etiam si tu beneficium non recepisti. Praeterea huic intentus semper et huius rei tempus opperiens, qui in hoc multum curae, multum sedulitatis impendit, plus laboravit, quam cui cito referre gratiam contigit.
 
-Debitoris exemplum dissimile est, cui parum est pecuniam quaesisse, nisi solvit ; illic enim stat acerbus super caput creditor, qui nullum diem gratis occidere patiatur ; hic benignissimus, qui, te cum viderit concursantem et sollicitum atque anxium, dicat : " Mitte hanc de pectore curam ; desine tibi molestus instare. Omnia a te habeo; iniuriam mihi facis, si me quicquam desiderare amplius iudicas ; plenissime ad me pervenit animus tuus." 6 " Dic," inquit, " mihi : si reddidisset beneficium, diceres illum gratiam rettulisse ; eodem ergo loco est, qui reddidit et qui non reddidit ? " Contra nunc illud pone : si oblitus esset accepti beneficii, si ne temptasset quidem gratus esse, negares illum gratiam rettulisse ; at hic se diebus noctibusque lassavit et omnibus aliis renuntiavit officiis huic uni imminens et operatus, ne qua se fugeret occasio ; eodem ergo loco erunt ille, qui curam referendae gratiae abiecit, et hic, qui numquam ab illa recessit ? Iniquus es, si rem a me exigis, cum videas animum non defuisse.
+Debitoris exemplum dissimile est, cui parum est pecuniam quaesisse, nisi solvit ; illic enim stat acerbus super caput creditor, qui nullum diem gratis occidere patiatur ; hic benignissimus, qui, te cum viderit concursantem et sollicitum atque anxium, dicat : " Mitte hanc de pectore curam ; desine tibi molestus instare. Omnia a te habeo; iniuriam mihi facis, si me quicquam desiderare amplius iudicas ; plenissime ad me pervenit animus tuus." " Dic," inquit, " mihi : si reddidisset beneficium, diceres illum gratiam rettulisse ; eodem ergo loco est, qui reddidit et qui non reddidit ? " Contra nunc illud pone : si oblitus esset accepti beneficii, si ne temptasset quidem gratus esse, negares illum gratiam rettulisse ; at hic se diebus noctibusque lassavit et omnibus aliis renuntiavit officiis huic uni imminens et operatus, ne qua se fugeret occasio ; eodem ergo loco erunt ille, qui curam referendae gratiae abiecit, et hic, qui numquam ab illa recessit ? Iniquus es, si rem a me exigis, cum videas animum non defuisse.
 
-Ad summam puta, cum captus esses, me pecuniam mutuatum rebus meis in securitatem creditoris oppositis navigasse hieme tam saeva per infesta latrociniis litora, emensum, quidquid periculorum adferre potest etiam pacatum mare ; peragratis omnibus solitudinibus, cum, quos nemo non non commonly added. fugiebat, ego quaererem, tandem ad piratas perveni ; iam te alius redemerat : negabis me gratiam rettulisse ? Etiamne, si in illa navigatione pecuniam, quam saluti tuae contraxeram, naufragus perdidi, etiamne, si in in added by Gruter. vincula, quae detrahere tibi volui, ipse incidi, negabis me rettulisse gratiam ?
+Ad summam puta, cum captus esses, me pecuniam mutuatum rebus meis in securitatem creditoris oppositis navigasse hieme tam saeva per infesta latrociniis litora, emensum, quidquid periculorum adferre potest etiam pacatum mare ; peragratis omnibus solitudinibus, cum, quos nemo non fugiebat, ego quaererem, tandem ad piratas perveni ; iam te alius redemerat : negabis me gratiam rettulisse ? Etiamne, si in illa navigatione pecuniam, quam saluti tuae contraxeram, naufragus perdidi, etiamne, si in vincula, quae detrahere tibi volui, ipse incidi, negabis me rettulisse gratiam ?
 
 At mehercules Athenienses Harmodium et Aristogitonem tyrannicidas vocant, et Mucio manus in hostili ara relicta instar occisi Porsinae fuit, et semper contra fortunam luctata virtus etiam citra effectum propositi operis enituit. Plus praestitit, qui fugientes occasiones secutus est et alia atque alia captavit, per quae referre gratiam posset, quam quem sine ullo sudore gratum prima fecit occasio.
 
 " Duas," inquit, " res ille tibi praestitit, voluntatem et rem ; tu quoque illi duas debes." Merito istud diceres ei, qui tibi reddidit voluntatem otiosam, huic vero, qui et vult et conatur et nihil intemptatum relinquit, id non potes dicere ; utrumque enim praestat, quantum in se est.
 
-Deinde non semper numero numerus aequandus est, aliquando una res pro duabus valet ; itaque in locum rei succedit tam propensa voluntas et cupida reddendi. Quod si animus sine re ad referendam gratiam non valet, nemo adversus deos gratus est, in quos voluntas sola confertur. 5 " Dis," inquit, " nihil aliud praestare possumus." Sed si huic quoque, cui referre gratiam debeo, nihil aliud praestare possum, quid est, quare non eo adversus hominem gratus sim, quo nihil amplius in deos confero ?
+Deinde non semper numero numerus aequandus est, aliquando una res pro duabus valet ; itaque in locum rei succedit tam propensa voluntas et cupida reddendi. Quod si animus sine re ad referendam gratiam non valet, nemo adversus deos gratus est, in quos voluntas sola confertur. " Dis," inquit, " nihil aliud praestare possumus." Sed si huic quoque, cui referre gratiam debeo, nihil aliud praestare possum, quid est, quare non eo adversus hominem gratus sim, quo nihil amplius in deos confero ?
 
 Si tamen quaeris, quid sentiam, et vis signare responsum, hic beneficium recepisse se iudicet, ille se sciat non reddidisse ; hic illum dimittat, ille se teneat ; hic dicat : " Habeo," ille respondeat : " Debeo.
 
@@ -1743,13 +1743,13 @@ Drstinguendum hoc, quo magis intellegatur, existimo. Duo sunt beneficia : unum, 
 
 De hoc non est dubium, quin illi, qualiscumque est, debeam reddere, sive homicida sive fur sive adulter evasit. Habent scelera leges suas ; melius istos iudex quam ingratus emendat. Nemo te malum, quia est, faciat. Malo beneficium proiciam, bono reddam, huic, quia debeo, illi, ne debeam.
 
-De altero beneficii genere dubitatur, quod si accipere non potui nisi sapiens, ne reddere quidem nisi sapienti possum. " Puta enim me reddere : ille non potest recipere, non est iam huius rei capax, scientiam utendi perdidit. Quid, si me remittere maneo pilam iubeas ? Stultum est dare alicui, quod accipere non possit." 2 Ut respondere ab ultimo incipiam : non dabo ulli, quod accipere non poterit ; reddam, etiam si recipere non poterit. Obligare enim non possum nisi accipientem ; liberari tantum, si reddidi, possum. Ille uti illo non poterit ? Viderit ; penes illum erit culpa, non penes me.
+De altero beneficii genere dubitatur, quod si accipere non potui nisi sapiens, ne reddere quidem nisi sapienti possum. " Puta enim me reddere : ille non potest recipere, non est iam huius rei capax, scientiam utendi perdidit. Quid, si me remittere maneo pilam iubeas ? Stultum est dare alicui, quod accipere non possit." Ut respondere ab ultimo incipiam : non dabo ulli, quod accipere non poterit ; reddam, etiam si recipere non poterit. Obligare enim non possum nisi accipientem ; liberari tantum, si reddidi, possum. Ille uti illo non poterit ? Viderit ; penes illum erit culpa, non penes me.
 
 " Reddere est," inquit, " accepturo tradidisse. Quid enim ? si cui vinum debeas et hoc ille te infundere reticulo iubeat aut cribro, reddidisse te dices ? Aut reddere voles, quod, dum redditur, inter duos pereat ? "
 
 Reddere est id, quod debeas, ei, cuius est, volenti dare. Hoc unum mihi praestandum est. Ut quidem habeat, quod a me accepit, iam ulterioris est curae ; non tutelam illi, sed fidem debeo, multoque satius est illum non habere, quam me non reddere.
 
-Et creditori statim in macellum laturo, quod acceperit, reddam ; etiam si mihi adulteram, cui monerem, delegaverit, solvam ; et, si nummos, quos accipiet, in sinum suum discinctus infundet, dabo. Reddendum enim mihi est, non servandum, cum reddidero, ac tuendum; beneficii accepti, accepi commonly added. non redditi, custodiam debeo. Dum apud me est, salvum sit ; ceterum, licet accipientis manibus effluat, dandum est reposcenti. Reddam bono, cum expediet, malo, cum petet.
+Et creditori statim in macellum laturo, quod acceperit, reddam ; etiam si mihi adulteram, cui monerem, delegaverit, solvam ; et, si nummos, quos accipiet, in sinum suum discinctus infundet, dabo. Reddendum enim mihi est, non servandum, cum reddidero, ac tuendum; beneficii accepti, non redditi, custodiam debeo. Dum apud me est, salvum sit ; ceterum, licet accipientis manibus effluat, dandum est reposcenti. Reddam bono, cum expediet, malo, cum petet.
 
 " Tale," inquit, " illi beneficium, quale accepisti, non potes reddere ; accepisti enim a sapiente, stulto reddis." Non ; reddo illi, quale nunc potest recipere, nec per me fit, quod deterius id, quod accepi, reddam, sed per illum, cui, si ad sapientiam redierit, reddam, quale accepi ; dum in malis est, reddam, quale ab illo potest accipi.
 
@@ -1757,7 +1757,7 @@ Et creditori statim in macellum laturo, quod acceperit, reddam ; etiam si mihi a
 
 Ferae inter nos educatae si in silvas eruperunt, aliquid mansuetudinis pristinae retinent tantumque a placidissimis absunt, quantum a veris feris et numquam humanam manum passis. Nemo in summam nequitiam incidit, qui umquam haesit sapientiae ; altius infectus est, quam ut ex toto elui et transire in colorem malum possit.
 
-Deinde interrogo, utrum iste ferus sit animo tantum, an et in perniciem publicam excurrat ? Proposuisti enim mihi Phalarim et alterum alterum added by Hosius. tyrannum, quorum si naturam habet intra se malus, quidni ego isti beneficium suum reddam, ne quid mihi cum illo iuris sit amplius ?
+Deinde interrogo, utrum iste ferus sit animo tantum, an et in perniciem publicam excurrat ? Proposuisti enim mihi Phalarim et alterum tyrannum, quorum si naturam habet intra se malus, quidni ego isti beneficium suum reddam, ne quid mihi cum illo iuris sit amplius ?
 
 Si vero sanguine humano non tantum gaudet, sed pascitur, sed et suppliciis omnium aetatium crudelitatem insatiabilem exercet nec ira sed aviditate quadam saeviendi furit, si in ore parentium liberos iugulat, si non contentus simplici morte distorquet nec urit solum perituros, sed excoquit, si arx eius cruore semper recenti madet, parum est huic beneficium non reddere ! Quidquid erat, quo mihi cohaereret, intercisa iuris humani societas abscidit.
 
@@ -1771,9 +1771,9 @@ Si pro magno petet munere artifices scenae et scorta et quae feritatem eius emol
 
 Sed haec rara nequitia est semper portenti loco habita, sicut hiatus terrae et e cavernis maris ignium eruptio ; itaque ab illa recedamus, de iis loquamur vitiis, quae detestamur sine horrore.
 
-Huic homini malo, quem invenire in quolibet foro possum, quem singuli timent, reddam beneficium, quod accepi. Non oportet mihi nequitiam eius prodesse ; quod meum non est, redeat ad dominum. Bonus sit an malus, quid differt differt added by Gertz. ? Diligenter istud excuterem, si non redderem, sed darem.
+Huic homini malo, quem invenire in quolibet foro possum, quem singuli timent, reddam beneficium, quod accepi. Non oportet mihi nequitiam eius prodesse ; quod meum non est, redeat ad dominum. Bonus sit an malus, quid differt ? Diligenter istud excuterem, si non redderem, sed darem.
 
-Hic locus fabulam poscit. Pythagoricus quidam emerat a sutore phaecasia, rem magnam, non praesentibus nummis. Post aliquot dies venit ad tabernam redditurus et, cum elusam diu pulsaret, fuit, qui diceret : " Quid perdis operam ? Sutor ille, quem quaeris, elatus, combustus est ; quod nobis fortasse molestum est, qui in aeternum nostros amittimus, tibi minime, qui scis futurum, ut renascatur," 2 iocatus in Pythagoricum. At philosophus noster tres aut quattuor denarios non invita manu domum rettulit subinde concutiens ; deinde, cum reprehendisset hanc suam non reddendi tacitam voluptatem, intellegens arrisisse illud lucellum sibi redit ad eandem tabernam et ait : " Ille tibi vivit ; redde, quod debes." Deinde per clostrum, qua se commissura laxaverat, quattuor denarios in tabernam inseruit ac misit poenas a se exigens improbae cupiditatis, ne alieno adsuesceret.
+Hic locus fabulam poscit. Pythagoricus quidam emerat a sutore phaecasia, rem magnam, non praesentibus nummis. Post aliquot dies venit ad tabernam redditurus et, cum elusam diu pulsaret, fuit, qui diceret : " Quid perdis operam ? Sutor ille, quem quaeris, elatus, combustus est ; quod nobis fortasse molestum est, qui in aeternum nostros amittimus, tibi minime, qui scis futurum, ut renascatur," iocatus in Pythagoricum. At philosophus noster tres aut quattuor denarios non invita manu domum rettulit subinde concutiens ; deinde, cum reprehendisset hanc suam non reddendi tacitam voluptatem, intellegens arrisisse illud lucellum sibi redit ad eandem tabernam et ait : " Ille tibi vivit ; redde, quod debes." Deinde per clostrum, qua se commissura laxaverat, quattuor denarios in tabernam inseruit ac misit poenas a se exigens improbae cupiditatis, ne alieno adsuesceret.
 
 Quod debes, quaere, cui reddas, et, si nemo poscet, ipse te appella. Malus an bonus, ad te non pertinet ; redde et accusa. Oblitus es, quemadmodum inter vos officia divisa sint : illi oblivio imperata est, tibi meminisse mandavimus. Errat tamen, si quis existimat, cum dicimus eum, qui beneficium dedit, oblivisci oportere, excutere nos illi memoriam rei praesertim honestissimae ; quaedam praecipimus ultra modum, ut ad verum et suum redeant. Cum dicimus :
 
@@ -1799,7 +1799,7 @@ Placido animo, mansueto, magno. Numquam te tam inhumanus et immemor et ingratus 
 
 Alium labor, alium impensa deterret, alium periculum, alium turpis verecundia, ne, dum reddit, fateatur accepisse, alium ignorantia officii, alium pigritia, alium occupatio. Adspice, quemadmodum immensae hominum cupiditates hient semper et poscant ; non miraberis ibi neminem reddere, ubi nemo satis accepit.
 
-Quis est istorum tam firmae mentis ac solidae, ut tuto apud eum beneficia deponas ? Alius libidine insanit, alius abdomini servit ; alius lucri totus est, cuius summam, non vias, spectat ; alius invidia laborat, alius caeca ambitione et in gladios irruente. Adice torporem mentis ac senium et contraria huic inquieti pectoris agitationem tumultusque perpetuos; adice aestimationem sui nimiam et tumorem, ob quae contemnendus est, insolentem. Quid contumaciam dicam dicam added by Gertz. in perversa nitentium, quid levitatem semper aliquo transilientem ?
+Quis est istorum tam firmae mentis ac solidae, ut tuto apud eum beneficia deponas ? Alius libidine insanit, alius abdomini servit ; alius lucri totus est, cuius summam, non vias, spectat ; alius invidia laborat, alius caeca ambitione et in gladios irruente. Adice torporem mentis ac senium et contraria huic inquieti pectoris agitationem tumultusque perpetuos; adice aestimationem sui nimiam et tumorem, ob quae contemnendus est, insolentem. Quid contumaciam dicam in perversa nitentium, quid levitatem semper aliquo transilientem ?
 
 Hoc accedat temeritas praeceps et numquam fidele consilium daturus timor et mille errores, quibus volvimur : audacia timidissimorum, discordia familiarissimorum et, publicum malum, incertissimis fidere, fastidire possessa, quae consequi posse spes non fuit. Inter adfectus inquietissimos rem quietissimam, fidem, quaeris ?
 
@@ -1815,15 +1815,15 @@ Ut excusem tibi imbecillitatem, imprimis vas fragile est memoria et rerum turbae
 
 Meliorem illum facies ferendo, utique peiorem exprobrando. Non est, quod frontem eius indures ; sine, si quid est pudoris residui, servet. Saepe dubiam verecundiam vox conviciantis clarior rupit. Nemo id esse, quod iam videtur, timet ; deprenso pudor demitur.
 
-" Perdidi beneficium." Numquid, quae consecravimus, perdidisse nos dicimus ? Inter consecrata beneficium est, etiam si male respondit, bene conlatum. Non est ille, qualem speravimus ; simus nos, quales fuimus, ei dissimiles. Damnum non tunc factum : apparuit. Ingratus non sine nostro pudore protrahitur, quoniam quidem querella amissi beneficti non non commonly added. bene dati signum est.
+" Perdidi beneficium." Numquid, quae consecravimus, perdidisse nos dicimus ? Inter consecrata beneficium est, etiam si male respondit, bene conlatum. Non est ille, qualem speravimus ; simus nos, quales fuimus, ei dissimiles. Damnum non tunc factum : apparuit. Ingratus non sine nostro pudore protrahitur, quoniam quidem querella amissi beneficti non bene dati signum est.
 
 Quantum possumus, causam eius apud nos agamus : " Fortasse non potuit, fortasse ignoravit, fortasse facturus est." Quaedam nomina bona lentus et sapiens creditor fecit, qui sustinuit ac mora fovit. Idem nobis faciundum est ; nutriamus fidem languidam.
 
-" Perdidi beneficium." Stulte non nosti detrimenti tui tempora ! Perdidisti, sed cum dares ; nunc palam factum est. Etiam in his, quae videntur in perdito, moderatio plurimum profuit , ut corporum ita animorum molliter vitia tractanda sunt. Saepe, quod explicari pertinacia potuit, violentia potuit violentia added, potuit commonly, violentia by Haupt. trahentis abruptum est. Quid opus est maledictis ? Quid querellis? Quid insectatione ? Quare illum liberas ? Quare dimittis ? Si ingratus est, iam nihil debet.
+" Perdidi beneficium." Stulte non nosti detrimenti tui tempora ! Perdidisti, sed cum dares ; nunc palam factum est. Etiam in his, quae videntur in perdito, moderatio plurimum profuit , ut corporum ita animorum molliter vitia tractanda sunt. Saepe, quod explicari pertinacia potuit, violentia trahentis abruptum est. Quid opus est maledictis ? Quid querellis? Quid insectatione ? Quare illum liberas ? Quare dimittis ? Si ingratus est, iam nihil debet.
 
-Quae ratio est exacerbare eum, in quem magna contuleris, ut ex amico dubio fiat non dubius inimicus et patrocinium sibi nostra infamia quaerat, nec desit vox desit vox Rossbach : desit O : dicere Madvig, Hosius. : " Nescio quid est, quod eum, cui tantum debuit, ferre non potuit ; subest aliquid " ? Nemo non superioris dignitatem querendo, etiam si non inquinavit, adspersit ; nec quisquam fingere contentus est levia, cum magnitudine mendacii fidem quaerat.
+Quae ratio est exacerbare eum, in quem magna contuleris, ut ex amico dubio fiat non dubius inimicus et patrocinium sibi nostra infamia quaerat, nec desit vox: " Nescio quid est, quod eum, cui tantum debuit, ferre non potuit ; subest aliquid " ? Nemo non superioris dignitatem querendo, etiam si non inquinavit, adspersit ; nec quisquam fingere contentus est levia, cum magnitudine mendacii fidem quaerat.
 
-Quanto illa melior via, qua servatur illi species amicitiae et, si reverti ad sanitatem velit, etiam amicitia ! Vincit malos pertinax bonitas, nec quisquam tam duri infestique adversus diligenda animi est, ut etiam in in added by Lipsius. iniuria bonos non amet, quibus hoc quoque coepit debere, quod impune non solvit. Ad illa itaque cogitationes tuas flecte :
+Quanto illa melior via, qua servatur illi species amicitiae et, si reverti ad sanitatem velit, etiam amicitia ! Vincit malos pertinax bonitas, nec quisquam tam duri infestique adversus diligenda animi est, ut etiam in iniuria bonos non amet, quibus hoc quoque coepit debere, quod impune non solvit. Ad illa itaque cogitationes tuas flecte :
 
 “Non est relata mihi gratia; quid faciam ? Quod di, omnium rerum optimi auctores, qui beneficia ignoranti dare incipiunt, ingratis perseverant.
 
@@ -1831,6 +1831,6 @@ Alius illis obicit neclegentiam nostri, alius iniquitatem ; alius illos extra mu
 
 Nihilo minus tamen more optimorum parentium, qui maledictis suorum infantium arrident, non cessant di beneficia congerere de beneficiorum auctore dubitantibus, sed aequali tenore bona sua per gentes populosque distribuunt; unam potentiam, prodesse, sortiti spargunt opportunis imbribus terras, maria flatu movent, siderum cursu notant tempora, hiemes aestatesque interventu lenioris spiritus molliunt, errorem labentium animarum placidi ac propitii ferunt. Imitemur illos ;
 
-demus, etiam si multa in irritum data sunt ; demus nihilo minus aliis, demus ipsis, apud quos facta iactura est. Neminem ad excitandas domos ruina deterruit, et, eum penates ignis absumpsit, fundamenta tepente adhuc area ponimus et urbes haustas saepius eidem solo credimus ; adeo ad bonas spes pertinax animus est. Terra marique humana opera cessarent, nisi male temptata retemptare retemptare Madvig : temptare MSS. libuisset.
+demus, etiam si multa in irritum data sunt ; demus nihilo minus aliis, demus ipsis, apud quos facta iactura est. Neminem ad excitandas domos ruina deterruit, et, eum penates ignis absumpsit, fundamenta tepente adhuc area ponimus et urbes haustas saepius eidem solo credimus ; adeo ad bonas spes pertinax animus est. Terra marique humana opera cessarent, nisi male temptata retemptare libuisset.
 
 Ingratus est: non mihi fecit iniuriam, sed sibi; ego beneficio meo, cum darem, usus sum. Nec ideo pignus dabo, sed diligentius ; quod in hoc perdidi, ab aliis recipiam. Sed huic ipsi beneficium dabo iterum et tamquam bonus agricola cura cultuque sterilitatem soli vincam ; perit mihi beneficium, iste hominibus. Non est magni animi beneficium dare et perdere ; hoc est magni animi perdere et dare.”

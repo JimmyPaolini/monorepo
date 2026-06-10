@@ -9,7 +9,7 @@ import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
 
-interface EdcsRecord {
+interface EpigraphikDatenbankClaussSlabyRecord {
   obj: {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     "edcs-id"?: string;
@@ -20,7 +20,7 @@ interface EdcsRecord {
 }
 
 /**
- * Provider for ingesting EDCS (Epigraphik-Datenbank Clauss-Slaby) inscriptions.
+ * Provider for ingesting Epigraphik-Datenbank Clauss-Slaby inscriptions.
  */
 @Injectable()
 export class EpigraphikDatenbankClaussSlabyLibraryProvider {
@@ -29,14 +29,16 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
   readonly name = "epigraphik-datenbank-clauss-slaby";
 
   /**
-   * Fetch inscriptions from EDCS via their JSON API and group them by province.
+   * Parse inscriptions from Epigraphik-Datenbank Clauss-Slaby JSON files and group them by province.
    */
   async ingest(options?: {
     author?: string;
     text?: string;
   }): Promise<Author[]> {
     const host = "https://edcs.hist.uzh.ch/api/query";
-    this.logger.log(`Fetching from EDCS API at ${host}`);
+    this.logger.log(
+      `🗂️ Ingesting Epigraphik-Datenbank Clauss-Slaby from local data`,
+    );
 
     const dataPath = path.resolve("data", "library", this.name);
     const authorSlug = "epigraphik-datenbank-clauss-slaby";
@@ -53,34 +55,41 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     author.metadata = { sourceUrl: host };
     author.texts = [];
 
-    // We'll fetch up to 1,000,000 records to capture the full 500,000+ corpus.
-    const limit = 1_000_000;
-    const batchSize = 1000;
-
     // Group records by province
     const provinceData = new Map<string, string[]>();
 
-    for (let start = 0; start < limit; start += batchSize) {
-      this.logger.log(
-        `Fetching EDCS records ${start} to ${start + batchSize}...`,
+    const sourceDataDir = path.resolve(
+      "data",
+      "epigraphik-datenbank-clauss-slaby-source",
+    );
+    this.logger.log(
+      `🗂️ Reading Epigraphik-Datenbank Clauss-Slaby chunks from ${sourceDataDir}`,
+    );
+
+    let chunkFiles: string[];
+    try {
+      const allFiles = await fs.readdir(sourceDataDir);
+      chunkFiles = allFiles.filter(
+        (f) => f.startsWith("chunk-") && f.endsWith(".json"),
       );
+    } catch (error) {
+      this.logger.error(
+        `❌ Could not read source directory: ${String(error)}. Did you run the epigraphik-datenbank-clauss-slaby command first?`,
+      );
+      return [];
+    }
+
+    for (const file of chunkFiles) {
       try {
-        const res = await fetch(`${host}?start=${start}&length=${batchSize}`);
-        if (!res.ok) {
-          this.logger.warn(`Failed to fetch EDCS records: ${res.statusText}`);
-          continue;
-        }
-
-        const data = (await res.json()) as { data: EdcsRecord[] };
-
-        if (data.data.length === 0) {
-          this.logger.log(`No more EDCS records found after ${start}.`);
-          break;
-        }
+        const filePath = path.join(sourceDataDir, file);
+        const fileContent = await fs.readFile(filePath, "utf8");
+        const data = JSON.parse(fileContent) as {
+          data: EpigraphikDatenbankClaussSlabyRecord[];
+        };
 
         for (const item of data.data) {
           const obj = item.obj;
-          const edcsId = obj["edcs-id"] || obj.edcsId;
+          const recordId = obj["edcs-id"] || obj.edcsId;
           const provinz = obj.provinz || "Unknown Province";
 
           const text = obj.inschriften[0]?.[0];
@@ -88,17 +97,16 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
 
           // Clean up the text
           const cleanedText = text.replaceAll(/<[^>]*>?/gm, ""); // remove any stray HTML
-          const markdownLine = `**${edcsId}** ${cleanedText}`;
+          const markdownLine = `**${recordId}** ${cleanedText}`;
 
           const provArr = provinceData.get(provinz) || [];
           provArr.push(markdownLine);
           provinceData.set(provinz, provArr);
         }
-
-        // Small delay to be polite to the API
-        await new Promise((resolve) => setTimeout(resolve, 500));
       } catch (error) {
-        this.logger.warn(`Error fetching EDCS chunk: ${error}`);
+        this.logger.warn(
+          `⚠️ Error reading chunk file ${file}: ${String(error)}`,
+        );
       }
     }
 

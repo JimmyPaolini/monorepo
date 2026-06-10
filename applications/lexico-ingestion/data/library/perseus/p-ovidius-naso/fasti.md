@@ -5283,7 +5283,7 @@ title: Fasti
 
 **163** dum loquor, elatae metuendus acumine caudae
 
-**164** Scorpios in viridis praecipitatur aquas. 2. D F
+**164** Scorpios in viridis praecipitatur aquas.
 
 **165** Nox ubi transierit, caelumque rubescere primo
 
@@ -5311,7 +5311,7 @@ title: Fasti
 
 **177** sive quod Electra Troiae spectare ruinas
 
-**178** non tulit, ante oculos opposuitque manum. 3. EC 4. FC LVDI — MATR — MAG
+**178** non tulit, ante oculos opposuitque manum.
 
 **179** Ter sine perpetuo caelum versetur in axe,
 
@@ -5699,7 +5699,7 @@ title: Fasti
 
 **371** ‘candidus elisae miscetur caseus herbae,
 
-**372** cognoscat priscos ut dea prisca cibos.’ 5. G NON LVNI
+**372** cognoscat priscos ut dea prisca cibos.’
 
 **373** Postera cum caelo motis Pallantias astris
 
@@ -5707,7 +5707,7 @@ title: Fasti
 
 **375** qui dicet ‘quondam sacrata est colle Quirini
 
-**376** hac Fortuna die Publica,’ verus erit. 6. HNP LVDI 7. AN LVDI 8. BN LVDI 9- CN LVDI
+**376** hac Fortuna die Publica,’ verus erit.
 
 **377** Tertia lux (memini) ludis erat, ac mihi quidam
 
@@ -5731,7 +5731,7 @@ title: Fasti
 
 **387** Ante tamen, quam summa dies spectacula sistat,
 
-**388** ensifer Orion aequore mersus erit. 10. DN LVD — IN — CIR
+**388** ensifer Orion aequore mersus erit.
 
 **389** Proxima victricem cum Romam inspexerit Eos,
 
@@ -5739,7 +5739,7 @@ title: Fasti
 
 **391** circus erit pompa celeber numeroque deorum,
 
-**392** primaque ventosis palma petetur equis. 11. EN 12. FN LVDI — CERERI
+**392** primaque ventosis palma petetur equis.
 
 **393** Hinc Cereris ludi. non est opus indice causae;
 
@@ -6195,7 +6195,7 @@ title: Fasti
 
 **619** alba decent Cererem: vestis Cerialibus albas
 
-**620** sumite; nunc pulli velleris usus abest. 13. G EID — NP LVDI
+**620** sumite; nunc pulli velleris usus abest.
 
 **621** Occupat Aprilis Idus cognomine Victor
 
@@ -6203,7 +6203,7 @@ title: Fasti
 
 **623** hac quoque, ni fallor, populo dignissima nostro
 
-**624** atria Libertas coepit habere sua. 14. HN LVDI
+**624** atria Libertas coepit habere sua.
 
 **625** Luce secutura tutos pete, navita, portus:
 
@@ -6211,7 +6211,7 @@ title: Fasti
 
 **627** hcet ut fuerit, tamen hac Mutinensia Caesar
 
-**628** grandine militia perculit arma sua. 15. A FORD — NP LVDI 16. BN LVDI
+**628** grandine militia perculit arma sua.
 
 **629** Tertia post Veneris cum lux surrexerit Idus,
 
@@ -6307,11 +6307,11 @@ title: Fasti
 
 **675** ut titulum imperii quam primum luce sequenti
 
-**676** Augusto iuveni prospera bella darent. 17. CN LVDI 18. DN LVDI
+**676** Augusto iuveni prospera bella darent.
 
 **677** Sed iam praeteritas quartus tibi Lucifer Idus
 
-**678** respicit: hac Hyades Dorida nocte tenent. 19. E CER — N LVD — IN — CIR
+**678** respicit: hac Hyades Dorida nocte tenent.
 
 **679** Tertia post Hyadas cum lux erit orta remotas
 
@@ -6379,7 +6379,7 @@ title: Fasti
 
 **711** utque luat poenas gens haec Cerialibus ardet,
 
-**712** quoque modo segetes perdidit, ipsa perit.’ 20. FN
+**712** quoque modo segetes perdidit, ipsa perit.’
 
 **713** Proxima cum veniet terras visura patentes
 
@@ -6395,7 +6395,7 @@ title: Fasti
 
 **719** seu tamen est taurus sive est hoc femina signum,
 
-**720** Iunone invita munus amoris habet. 21. G PAR — NP
+**720** Iunone invita munus amoris habet.
 
 **721** Nox abiit, oriturque Aurora. Parilia 1 poscor:
 
@@ -6679,7 +6679,7 @@ title: Fasti
 
 **861** et quotiens steteris domito sublimis in orbe,
 
-**862** omnia sint numeris inferiora tuis. 22. HN 23. A VIN — NP
+**862** omnia sint numeris inferiora tuis.
 
 **863** Dicta Pales nobis, idem Vinalia dicam;
 
@@ -6755,7 +6755,7 @@ title: Fasti
 
 **899** dicta dies hinc est Vinalia: Iuppiter illam
 
-**900** vindicat et festis gaudet inesse suis, 24. BC 25. C ROB — NP
+**900** vindicat et festis gaudet inesse suis,
 
 **901** Sex ubi, quae restant, luces Aprilis habebit,
 
@@ -6839,7 +6839,7 @@ title: Fasti
 
 **941** pro cane sidereo canis hic imponitur arae,
 
-**942** et quare pereat, nil nisi nomen habet.’ 26. DF 27. EC 28. F NP LVD — FLOR 29. GC LVDI 30. HC LVDI
+**942** et quare pereat, nil nisi nomen habet.’
 
 **943** Cum Phrygis Assaraci Tithonia fratre relicto
 
@@ -7083,7 +7083,7 @@ title: Fasti
 
 **109** gratia Pieridum nobis aequaliter adsit,
 
-**110** nullaque laudetur plusve minusve mihi. 1. A — K — MAI — NP LVDI 2. BF LVDI
+**110** nullaque laudetur plusve minusve mihi.
 
 **111** Ab Iove surgat opus. prima mihi nocte videnda
 
@@ -7691,15 +7691,15 @@ title: Fasti
 
 **413** nona dies aderat, cum tu, iustissime Chiron,
 
-**414** bis septem stellis corpora cinctus eras. 4. DC 5
+**414** bis septem stellis corpora cinctus eras.
 
 **415** Hunc Lyra curva sequi cuperet, sed idonea nondum
 
-**416** est via: nox aptum tertia tempus erit. 6. FC
+**416** est via: nox aptum tertia tempus erit.
 
 **417** Scorpios in caelo, cum cras lucescere Nonas
 
-**418** dicimus, a media parte notandus erit. 7. G NON . N 8. HF 9. A LEM — N
+**418** dicimus, a media parte notandus erit.
 
 **419** Hinc ubi protulerit formosa ter Hesperus ora,
 
@@ -7847,7 +7847,7 @@ title: Fasti
 
 **491** sed tamen haec tria sunt sub eodem tempore festa
 
-**492** inter se nulla continuata die. 10. BC 11. C LEM . N
+**492** inter se nulla continuata die.
 
 **493** Quorum si mediis Boeotum Oriona quaeres,
 
@@ -7951,7 +7951,7 @@ title: Fasti
 
 **543** obstitit Orion. Latona nitentibus astris
 
-**544** addidit et meriti praemia dixit habe. 12. D NP LVD — MART — IN — CIRC
+**544** addidit et meriti praemia dixit habe.
 
 **545** Sed quid et Orion et cetera sidera mundo
 
@@ -8059,7 +8059,7 @@ title: Fasti
 
 **597** sollemnes ludos Circo celebrate, Quirites!
 
-**598** non visa est fortem scaena decere deum. 13. E LEM — N
+**598** non visa est fortem scaena decere deum.
 
 **599** Pliadas aspicies omnes totumque sororum
 
@@ -8067,7 +8067,7 @@ title: Fasti
 
 **601** tum mihi non dubiis auctoribus incipit aestas,
 
-**602** et tepidi finem tempora veris habent. 14. FC
+**602** et tepidi finem tempora veris habent.
 
 **603** Idibus ora prior stellantia tollere Taurum
 
@@ -8301,19 +8301,19 @@ title: Fasti
 
 **719** dixit et alterna fratrem statione redemit.
 
-**720** utile sollicitae sidus utrumque rati.’ 21. E AGON. NP
+**720** utile sollicitae sidus utrumque rati.’
 
 **721** Ad Ianum redeat, qui quaerit, Agonia quid sint:
 
-**722** quae tamen in fastis hoc quoque tempus habent. 22. FN
+**722** quae tamen in fastis hoc quoque tempus habent.
 
 **723** Nocte sequente diem canis Erigoneius exit:
 
-**724** est alio signi reddita causa loco. 23. G TVB — NP
+**724** est alio signi reddita causa loco.
 
 **725** Proxima Volcani lux est, Tubilustria dicunt:
 
-**726** lustrantur purae, quas facit ille, tubae. 24. HQ — R — C — F
+**726** lustrantur purae, quas facit ille, tubae.
 
 **727** Quattuor inde notis locus est, quibus ordine lectis
 
@@ -8529,7 +8529,7 @@ title: Fasti
 
 **99** ite pares a me. perierunt iudice formae
 
-**100** Pergama: plus laedunt, quam iuvat una, duae. 1. HK . IVN. N
+**100** Pergama: plus laedunt, quam iuvat una, duae.
 
 **101** Prima dies tibi, Carna, datur, dea cardinis haec est:
 
@@ -8721,11 +8721,11 @@ title: Fasti
 
 **195** haec hominum monumenta patent, si quaeritis astra
 
-**196** tunc oritur magni praepes adunca Iovis. 2. AF
+**196** tunc oritur magni praepes adunca Iovis.
 
 **197** Postera lux Hyadas, Taurinae cornua frontis,
 
-**198** evocat, et multa terra madescit aqua. 3. BC
+**198** evocat, et multa terra madescit aqua.
 
 **199** Mane ubi bis fuerit Phoebusque iteraverit ortus
 
@@ -8745,7 +8745,7 @@ title: Fasti
 
 **207** hinc solet hasta manu belli praenuntia mitti,
 
-**208** in regem et gentes cum placet arma capi. 4. CC
+**208** in regem et gentes cum placet arma capi.
 
 **209** Altera pars Circi Custode sub Hercule tuta est:
 
@@ -8753,7 +8753,7 @@ title: Fasti
 
 **211** muneris est tempus, qui Nonas Lucifer ante est:
 
-**212** si titulum quaeris, Sulla probavit opus. 5. D NON
+**212** si titulum quaeris, Sulla probavit opus.
 
 **213** Quaerebam, Nonas Sanco Fidione referrem,
 
@@ -8765,7 +8765,7 @@ title: Fasti
 
 **217** hunc igitur veteres donarunt aede Sabini
 
-**218** inque Quirinali constituere iugo. 6. EN
+**218** inque Quirinali constituere iugo.
 
 **219** Est mihi (sitque, precor, nostris diuturnior annis)
 
@@ -8797,7 +8797,7 @@ title: Fasti
 
 **233** tu quoque ne propera, melius tua filia nubet,
 
-**234** ignea cum pura Vesta nitebit humo.’ 7. FN
+**234** ignea cum pura Vesta nitebit humo.’
 
 **235** Tertia post Nonas removere Lycaona Phoebe
 
@@ -8809,7 +8809,7 @@ title: Fasti
 
 **239** festa dies illis, qui lina madentia ducunt,
 
-**240** quique tegunt parvis aera recurva cibis, 8. GN MENTI — IN — CAPIT
+**240** quique tegunt parvis aera recurva cibis,
 
 **241** Mens quoque numen habet. Mentis delubra videmus
 
@@ -8825,7 +8825,7 @@ title: Fasti
 
 **247** aspicit instantes mediis sex lucibus Idus
 
-**248** illa dies, qua sunt vota soluta deae. 9. H VEST FER — VESTAE
+**248** illa dies, qua sunt vota soluta deae.
 
 **249** Vesta, fave! tibi nunc operata resolvimus ora,
 
@@ -9265,7 +9265,7 @@ title: Fasti
 
 **467** Parthe, quid exultas? dixit dea ‘signa remittes,
 
-**468** quique necem Crassi vindicet, ultor erit.’ 10. AN
+**468** quique necem Crassi vindicet, ultor erit.’
 
 **469** At simul auritis violae demuntur asellis,
 
@@ -9273,7 +9273,7 @@ title: Fasti
 
 **471** navita puppe sedens Delphina videbimus, inquit ‘h
 
-**472** umida cum pulso nox erit orta die.’ 11. B MATR — N
+**472** umida cum pulso nox erit orta die.’
 
 **473** Iam, Phryx, a nupta quereris, Tithone, relinqui,
 
@@ -9625,7 +9625,7 @@ title: Fasti
 
 **647** sic agitur censura et sic exempla parantur,
 
-**648** cum iudex, alios quod monet, ipse facit. 12. CN 13. D EID — N
+**648** cum iudex, alios quod monet, ipse facit.
 
 **649** Nulla nota est veniente die, quam dicere possis.
 
@@ -9749,7 +9749,7 @@ title: Fasti
 
 **709** sum tamen inventrix auctorque ego carminis huius.
 
-**710** hoc est, cur nostros ars colat ista dies.’ 14. E EN 15. F Q — ST — D — F
+**710** hoc est, cur nostros ars colat ista dies.’
 
 **711** Tertia lux veniet, qua tu, Dodoni Thyone,
 
@@ -9761,7 +9761,7 @@ title: Fasti
 
 **715** Si qua fides ventis, Zephyro date carbasa, nautae.
 
-**716** cras veniet vestris ille secundus aquis. 16. GC 17. HC 18. AC
+**716** cras veniet vestris ille secundus aquis.
 
 **717** At pater Heliadum radios ubi tinxerit undis,
 
@@ -9777,7 +9777,7 @@ title: Fasti
 
 **723** unde suburbano clarus, Tuberte, triumpho
 
-**724** vectus es in niveis, Postume, victor equis. 19. BC
+**724** vectus es in niveis, Postume, victor equis.
 
 **725** Iam sex et totidem luces de mense supersunt,
 
@@ -9785,7 +9785,7 @@ title: Fasti
 
 **727** sol abit a Geminis, et Cancri signa rubescunt;
 
-**728** coepit Aventina Pallas in arce coli. 20. CC
+**728** coepit Aventina Pallas in arce coli.
 
 **729** Iam tua, Laomedon, oritur nurus ortaque noctem
 
@@ -9853,7 +9853,7 @@ title: Fasti
 
 **761** Phoebe, querebaris: deus est, placare parenti:
 
-**762** propter te, fieri quod vetat, ipse facit. 21. DC
+**762** propter te, fieri quod vetat, ipse facit.
 
 **763** Non ego te, quamvis properabis vincere, Caesar,
 
@@ -9865,11 +9865,11 @@ title: Fasti
 
 **767** tempora si veteris quaeris temeraria damni,
 
-**768** quintus ab extremo mense bis ille dies. 22. EC
+**768** quintus ab extremo mense bis ille dies.
 
 **769** Postera lux melior: superat Masinissa Syphacem,
 
-**770** et cecidit telis Hasdrubal ipse suis. 23. FC. 24. GC
+**770** et cecidit telis Hasdrubal ipse suis.
 
 **771** Tempora labuntur, tacitisque senescimus annis,
 
@@ -9897,7 +9897,7 @@ title: Fasti
 
 **783** convenit et servis, serva quia Tullius ortus
 
-**784** constituit dubiae templa propinqua deae. 25. HC 26. AC
+**784** constituit dubiae templa propinqua deae.
 
 **785** Ecce suburbana rediens male sobrius aede
 
@@ -9909,7 +9909,7 @@ title: Fasti
 
 **789** at si non esset potus, dixisset eadem
 
-**790** venturum tempus solstitiale die. 27. BC 28. CF
+**790** venturum tempus solstitiale die.
 
 **791** Lucifero subeunte Lares delubra tulerunt
 
@@ -9921,7 +9921,7 @@ title: Fasti
 
 **795** Tot restant de mense dies, quot nomina Parcis,
 
-**796** cum data sunt trabeae templa, Quirine, tuae. 30. EC
+**796** cum data sunt trabeae templa, Quirine, tuae.
 
 **797** Tempus Iuleis cras est natale Kalendis:
 

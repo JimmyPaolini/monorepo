@@ -23,7 +23,7 @@ quem enim appellem, quem obtester, quem implorem? senatumne? at is ipse auxilium
 
 condemnatus est is qui Catilinam signa patriae inferentem interemit; quid est causae cur non is qui Catilinam ex urbe expulit pertimescat? rapitur ad poenam qui indicia communis exiti cepit; cur sibi confidat is qui ea proferenda et patefacienda curavit? socii consiliorum, ministri comitesque vexantur; quid auctores, quid duces, quid principes sibi exspectent? atque utinam inimici nostri ac bonorum omnium mecum potius aestiment, utrum tum omnes boni duces nostri an comites fuerint ad communem conservandam salutem
 
-Fragmenta a Scholiasta Bobiensi Servata strangulatos maluit dicere.
+strangulatos maluit dicere.
 
 quid sibi meus necessarius caetra voluit?
 
@@ -33,9 +33,9 @@ Vtinam esset proprie mea! senatus igitur magna ex parte
 
 di, inquam, immortales Lentulum
 
-Fragmenta Mediolanense externum cum domestica vita naturaque constaret. itaque non patiar, D. Laeli, te tibi hoc sumere atque hanc ceteris in posterum, nobis in praesens tempus legem condicionemque Cum adulescentiam notaris, cum reliquum tempus aetatis turpitudinis maculis consperseris, cum privatarum rerum ruinas, cum domesticas labes, cum urbanam infamiam, cum Hispaniae, Galliae, Ciliciae, Cretae, quibus in provinciis non obscure versatus est, vitia et flagitia protuleris, tum denique quid Tmolitae et Dorylenses de L. Flacco existiment audiemus. quem vero tot tam gravesque provinciae salvum esse cupiant, quem plurimi cives tota ex Italia devincti necessitudine ac vetustate defendant, quem haec communis nostrum omnium patria propter recentem summi benefici memoriam complexa teneat, hunc etiam si tota Asia deposcit ad supplicium, defendam, resistam. quid? si neque tota neque optima neque incorrupta neque sua sponte nec iure nec more nec vere nec religiose nec integre, si impulsa, si sollicitata, si concitata, si coacta, si impie, si temere, si cupide, si inconstanter nomen suum misit in hoc iudicium per egentissimos testis, ipsa autem nihil queri vere de iniuriis potest, tamenne, iudices, haec ad breve tempus audita longinqui temporis cognitarum rerum fidem derogabunt? tenebo igitur hunc ordinem defensor quem fugit inimicus, et accusatorem urgebo atque insequar et ultro crimen ab adversario flagitabo. quid est, Laeli? num quid ea d . . d . . ea . . f no qui quidem non in umbra neque in illius aetatis disciplinis artibusque versatus est? etenim puer cum patre consule ad bellum est profectus. nimirum etiam hoc ipso nomine aliquid . . ia sus
+externum cum domestica vita naturaque constaret. itaque non patiar, D. Laeli, te tibi hoc sumere atque hanc ceteris in posterum, nobis in praesens tempus legem condicionemque Cum adulescentiam notaris, cum reliquum tempus aetatis turpitudinis maculis consperseris, cum privatarum rerum ruinas, cum domesticas labes, cum urbanam infamiam, cum Hispaniae, Galliae, Ciliciae, Cretae, quibus in provinciis non obscure versatus est, vitia et flagitia protuleris, tum denique quid Tmolitae et Dorylenses de L. Flacco existiment audiemus. quem vero tot tam gravesque provinciae salvum esse cupiant, quem plurimi cives tota ex Italia devincti necessitudine ac vetustate defendant, quem haec communis nostrum omnium patria propter recentem summi benefici memoriam complexa teneat, hunc etiam si tota Asia deposcit ad supplicium, defendam, resistam. quid? si neque tota neque optima neque incorrupta neque sua sponte nec iure nec more nec vere nec religiose nec integre, si impulsa, si sollicitata, si concitata, si coacta, si impie, si temere, si cupide, si inconstanter nomen suum misit in hoc iudicium per egentissimos testis, ipsa autem nihil queri vere de iniuriis potest, tamenne, iudices, haec ad breve tempus audita longinqui temporis cognitarum rerum fidem derogabunt? tenebo igitur hunc ordinem defensor quem fugit inimicus, et accusatorem urgebo atque insequar et ultro crimen ab adversario flagitabo. quid est, Laeli? num quid ea d . . d . . ea . . f no qui quidem non in umbra neque in illius aetatis disciplinis artibusque versatus est? etenim puer cum patre consule ad bellum est profectus. nimirum etiam hoc ipso nomine aliquid . . ia sus
 
-Fragmenta Scholiastae Bobiensis sed si neque Asiae luxuries infirmissimum tempus aetatis
+sed si neque Asiae luxuries infirmissimum tempus aetatis
 
 ex hoc aetatis gradu se ad exercitum C. Flacci patrui contulit.
 
@@ -43,7 +43,7 @@ tribunus militaris cum P. Servilio, gravissimo et sanctissimo cive, profectus.
 
 quorum amplissimis iudiciis ornatus quaestor factus est.
 
-M. Pisone, qui cognomen frugalitatis, nisi accepisset, ipse peperisset.
+**M** Pisone, qui cognomen frugalitatis, nisi accepisset, ipse peperisset.
 
 idem novum bellum suscepit atque confecit.
 
@@ -251,6 +251,6 @@ nolite, iudices, existimare eos quibus integrum est, qui nondum ad honores acces
 
 huic, huic misero puero vestro ac liberorum vestrorum supplici, iudices, hoc iudicio vivendi praecepta dabitis. cui si patrem conservatis, qualis ipse debeat esse civis praescribetis; si eripitis, ostendetis bonae rationi et constanti et gravi nullum a vobis fructum esse propositum. qui vos, quoniam est id aetatis ut sensum iam percipere possit ex maerore patrio, auxilium nondum patri ferre possit, orat ne suum luctum patris lacrimis, patris maerorem suo fletu augeatis; qui etiam me intuetur, me voltu appellat, meam quodam modo flens fidem implorat ac repetit eam quam ego patri suo quondam pro salute patriae spoponderim dignitatem. miseremini familiae, iudices, miseremini fortissimi patris, miseremini fili; nomen clarissimum et fortissimum vel generis vel vetustatis vel hominis causa rei publicae reservate.
 
-Fragmentaquam benivolum hunc populo Romano, quam fidelem putatis?
+quam benivolum hunc populo Romano, quam fidelem putatis?
 
 ingenita levitas et erudita vanitas.

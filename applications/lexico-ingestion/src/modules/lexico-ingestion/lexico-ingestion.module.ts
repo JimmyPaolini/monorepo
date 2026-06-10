@@ -4,11 +4,15 @@ import { ConfigModule } from "@nestjs/config";
 import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 
 import { ClearModule } from "../clear/clear.module";
+import { CorpusScriptorumEcclesiasticorumLatinorumModule } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.module";
 import { DictionaryModule } from "../dictionary/dictionary.module";
+import { EpigraphikDatenbankClaussSlabyModule } from "../epigraphik-datenbank-clauss-slaby/epigraphik-datenbank-clauss-slaby.module";
+import { LatinLibraryModule } from "../latin-library/latin-library.module";
 import { LibraryModule } from "../library/library.module";
 import { LiteratureModule } from "../literature/literature.module";
 import { LoggerModule } from "../logger/logger.module";
 import { ManualModule } from "../manual/manual.module";
+import { PerseusModule } from "../perseus/perseus.module";
 import { WiktionaryModule } from "../wiktionary/wiktionary.module";
 import { WordsModule } from "../words/words.module";
 
@@ -30,12 +34,16 @@ import { environmentSchema } from "./lexico-ingestion.constants";
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
+    CorpusScriptorumEcclesiasticorumLatinorumModule,
     DictionaryModule,
+    EpigraphikDatenbankClaussSlabyModule,
+    LatinLibraryModule,
     LexicoDatabaseModule,
     LibraryModule,
     LiteratureModule,
     LoggerModule,
     ManualModule,
+    PerseusModule,
     WiktionaryModule,
     WordsModule,
   ],

@@ -27,7 +27,7 @@ Sequens a Bruto Collatinoque consulibus in Appium Claudium Quintum Fulvium consu
 
 Deinceps ad Caesarem Augustum centum et quinquaginta anni, quibus totum orbem pacavit. Hic iam ipsa iuventus imperii et quasi robusta maturitas.
 
-A Caesare Augusto in gradus—aetas NL: quattuor gradibus romae aetas B. saeculum nostrum haud multo minus anni ducenti, quibus inertia Caesarum quasi consenuit atque decoxit, nisi quod sub Traiano principe movit lacertos et praeter spem omnium senectus imperii quasi reddita iuventute reviruit.
+A Caesare Augusto in saeculum nostrum haud multo minus anni ducenti, quibus inertia Caesarum quasi consenuit atque decoxit, nisi quod sub Traiano principe movit lacertos et praeter spem omnium senectus imperii quasi reddita iuventute reviruit.
 
 Primus ille et urbis et imperii conditor Romulus fuit, Marte genitus et Rhea Silvia.
 
@@ -39,7 +39,7 @@ Alba tum erat Latio caput, Iuli opus; nam Lavinium patris Aeneae contempserat. A
 
 Igitur statim prima iuventutis face patruum ab arce deturbat, avum reponit. Ipse fluminis amator et montium, apud quos erat educatus, moenia novae urbis agitabat.
 
-Gemini erant; uter auspicaretur et regeret, See Introduction, p. x. adhibere placuit deos. Remus montem Aventinum, hic Palatinum occupat. Prius ille sex vulturios,
+Gemini erant; uter auspicaretur et regeret, adhibere placuit deos. Remus montem Aventinum, hic Palatinum occupat. Prius ille sex vulturios,
 
 hic postea, sed duodecim videt. Sic victor augurio urbem excitat, plenus spei bellatricem fore; id adsuetae sanguine et praeda aves pollicebantur.
 
@@ -49,7 +49,7 @@ Erat in proximo lucus; hunc asylum facit, et statim mira vis hominum; Latini Tus
 
 Erat unius aetatis populus virorum. Itaque matrimonia a finitimis petita, quia non inpetrabantur, manu capta sunt. Simulatis quippe ludis equestribus virgines, quae ad spectaculum venerant, praedae fuere: et haec statim causa bellorum. Pulsi fugatique Veientes.
 
-Caeninensium captum ac direptum est increpat saltu dubium NL: increpat saltu transiluit dubium B. rex Iordanis cod. Rehd.: res BINL. oppidum. Spolia insuper opima de rege Agrone Feretrio Iovi manibus suis rex reportavit.
+Caeninensium captum ac direptum est oppidum. Spolia insuper opima de rege Agrone Feretrio Iovi manibus suis rex reportavit.
 
 Sabinis proditae portae per virginem Tarpeiam. Haec dolose pretium rei quae gerebant in sinistris petiverat, dubium clipeos an armillas; illi, ut et fidem solverent et ulciscerentur, clipeis obruere.
 
@@ -61,7 +61,7 @@ Auctis brevi viribus, hunc rex sapientissimus statum rei publicae inposuit: iuve
 
 His ita ordinatis repente, cum contionem haberet ante urbem aput Caprae paludem, e conspectu ablatus est.
 
-Discerptum aliqui a senatu putant ob asperius haec dolose Rossbachius: non dolo sed puella B I: nec dolos sed puella N. vocabantur: vocabatur B I. ingenium; sed oborta tempestas solisque defectio consecrationis speciem praebuere.
+Discerptum aliqui a senatu putant ob asperius ingenium; sed oborta tempestas solisque defectio consecrationis speciem praebuere.
 
 Cui mox Iulius Proculus fidem fecit, visum a se Romulum adfirmans augustiore forma quam fuisset; mandare praeterea ut se pro numine acciperent; Quirinum in caelo vocari; placitum dis ut gentium Roma poteretur.
 
@@ -73,7 +73,7 @@ haec omnia quasi monitu deae Egeriae, quo magis barbari acciperent.
 
 Eo denique ferocem populum redegit, ut, quod vi et iniuria occuparat imperium, religione atque iustitia gubernaret.
 
-Excipit Pompilium Numam Tullus Hostilius, cui discripsit N I: descripsit B L. in honorem virtutis regnum ultro datum. Hic omnem militarem disciplinam artemque bellandi condidit.
+Excipit Pompilium Numam Tullus Hostilius, cui in honorem virtutis regnum ultro datum. Hic omnem militarem disciplinam artemque bellandi condidit.
 
 Itaque mirum in modum exercitata iuventute provocare ausus Albanos, gravem et diu principem populum.
 
@@ -85,7 +85,7 @@ Sic—rarum alias decus—unius manu parta victoria est, quam ille mox parricidi
 
 Citavere leges nefas, sed abstulit virtus parricidium,et facinus infra gloriam fuit. Nec diu in fide Albanus. Nam Fidenate bello missi in auxilium ex foedere medii inter duos expectavere fortunam.
 
-Sed rex callidus ubi inclinare socios ad hostem videt, tollit animos, quasi man- exercitata Iordanis cod. Emmeranus: exercitate B: exercita N. parricidium Iordanis cod. Emmeranus: parricidam B I N L. nec diu in fide L I: nec desit deinde B. missi L: misit B N I. dasset: spes inde nostris, metus hostibus. Sic fraus proditorum irrita fuit.
+Sed rex callidus ubi inclinare socios ad hostem videt, tollit animos, quasi man- dasset: spes inde nostris, metus hostibus. Sic fraus proditorum irrita fuit.
 
 Itaque hoste victo ruptorem foederis Mettum Fufetium religatum inter duos currus pernicibus equis distrahit, Albamque ipsam quamvis parentem, aemulam tamen diruit, cum prius omnes opes urbis ipsumque populum Romam transtulisset;
 
@@ -99,7 +99,7 @@ Tarquinius postea Priscus, quamvis transmarinae originis, regnum ultro petens ac
 
 Hic et senatus maiestatem numero ampliavit, et centuriis tribus auxit equites quatenus Attius Naevius numerum augeri prohibebat, vir summus augurio.
 
-Quem rex in experimentum rogavit, fierine posset, pari avo F. E. Koehlerus: pravo N: raro B. petens: potens B. equites add. Iahnius. augeri L I: augure B.
+Quem rex in experimentum rogavit, fierine posset,
 
 quod ipse mente conceperat. Ille rem expertus augurio, posse respondit. Atqui hoc inquit agitaram, an cotem illam secare novacula possem;
 
@@ -111,7 +111,7 @@ Servius Tullius deinceps gubernacula urbis invadit, nec obscuritas inhibuit quam
 
 Ergo inter Tarquinii mortem adnitente regina substitutus in locum regis quasi in tempus, regnum dolo partum sic egit industrie, ut iure adeptus videretur.
 
-Ab hoc populus Romanus relatus in censum, digestus in classes, decuriis atque collegiis distributus, summaque regis sollertia ita est ordinata res publica, ut omnia patrimonii, dignitatis,aetatis, artium an ora. B 1. possem: posse B 1. ea ante sumpta add. B: dei. Iahnius. dignitatis: dignitas B. officiorumque discrimina in tabulas referrentur, ac sic maxima civitas minimae domus diligentia contineretur.
+Ab hoc populus Romanus relatus in censum, digestus in classes, decuriis atque collegiis distributus, summaque regis sollertia ita est ordinata res publica, ut omnia patrimonii, dignitatis,aetatis, artium officiorumque discrimina in tabulas referrentur, ac sic maxima civitas minimae domus diligentia contineretur.
 
 Postremus fuit omnium regum Tarquinius, cui cognomen Superbo ex moribus datum.
 
@@ -127,7 +127,7 @@ Tum quoque cruentus in suos. Neque enim filium verberare dubitavit, ut simulanti
 
 fugam apud hostis hinc fides esset. Cui Gabiis, ut voluerat, recepto et per nuntios consulenti, quid fieri vellet, eminentia forte papaverum capita vir-gula excutiens, cum per hoc interficiendos esse principes vellet intellegi, quasi superbia sileret, respondit tamen. De manubiis captarum urbium templum erexit.
 
-Quod cum inauguraretur, ceden- sic: si B. Gabii N: gravii B. quasi Titzius: qna B I: quae N L. sileret Hauptius: sic codd. tibus ceteris dis mira res dicitur extitisse: restitere Iuventas et Terminus.
+Quod cum inauguraretur, ceden- tibus ceteris dis mira res dicitur extitisse: restitere Iuventas et Terminus.
 
 Placuit vatibus contumacia numinum, si quidem firma omnia et aeterna pollicebantur. Sed illud horrentius, quod molientibus aedem in fundamentis humanum repertum est caput, nec dubitavere cuncti monstrum pulcherrimum imperii sedem caputque terrarum promit-
 
@@ -141,7 +141,7 @@ Nam quid Romulo ardentius? tali opus fuit, ut invaderet regnum.
 
 Quid Numa religiosius? Ita res poposcit, ut ferox populus deorum metu mitigaretur.
 
-Quid? ille contumacia: contumatiam B. molientibus: moventibus B. aberat: aderat B. militiae artifex Tullus bellatoribus viris quam necessarius, ut acueret ratione virtutem. Quid? aedificator Ancus, ut urbem colonia extenderet, ponte iungeret, muro tueretur.
+Quid? ille militiae artifex Tullus bellatoribus viris quam necessarius, ut acueret ratione virtutem. Quid? aedificator Ancus, ut urbem colonia extenderet, ponte iungeret, muro tueretur.
 
 Iam vero ornamenta Tarquinii et insignia quantam principi populo addiderunt ex ipso habitu dignitatem.
 
@@ -151,7 +151,7 @@ Sic enim effectum est, ut agitatus iniuriis populus cupiditate libertatis incend
 
 Igitur Bruto Collatinoque ducibus et auctoribus, quibus ultionem sui moriens matrona mandaverat, populus Romanus ad vindicandum libertatis ac pudicitiae decus quodam quasi instinctu deorum concitatus regem repente destituit, bona diripit, agrum Marti suo consecrat, imperium in eosdem libertatis suae vindices transfert, mutato tamen et iure et nomine.
 
-Quippe ex perpetuo annuum placuit, ex singulari duplex, ne potestas solitudine vel mora corrumperetur, consulesque appellavit pro colonia: coloniam B. incenderetur: incendetur B. annuum L I: annum B. regibus, ut consulere civibus suis se debere meminissent.
+Quippe ex perpetuo annuum placuit, ex singulari duplex, ne potestas solitudine vel mora corrumperetur, consulesque appellavit pro regibus, ut consulere civibus suis se debere meminissent.
 
 Tantumque libertatis novae gaudium incesserat, ut vix mutati status fidem caperent alterumque ex consulibus, Lucretiae maritum, tantum ob nomen et genus regium fascibus abrogatis urbe dimitteret.
 
@@ -161,7 +161,7 @@ Brutus vero favori civium etiam domus suae clade et parricidio velificatus est. 
 
 Liber iam hinc populus Romanus prima adversus exteros arma pro libertate corripuit, mox pro finibus, deinde pro sociis, tum gloria et imperio, lacessentibus adsidue usquequaque finitimis;
 
-quippe cum patrii soli glaeba nulla, sed statim hostile pomerium, mediusque inter Latium atque Etruscos quasi in quodam bivio conlocatus omnibus portis in hostem se add. Halmius. libertatis: libertati B. incesserat: incenserat B. caperent: caperet B. urbe: urbem B I N. augendam: augendum B. eminentis N: aeminenti B. plana: planas B. urbem: urbe B. imperio, lacessentibus: imperium lacescentibus B.
+quippe cum patrii soli glaeba nulla, sed statim hostile pomerium, mediusque inter Latium atque Etruscos quasi in quodam bivio conlocatus omnibus portis in hostem
 
 incurreret; donec quasi contagio quodam per singulos itum est et proximis quibusque correptis totam Italiam sub se redegerunt.
 
@@ -175,7 +175,7 @@ Quippe Horatius Cocles postquam hostes undique instantes solus summovere non pot
 
 Mucius Scaevola regem per insidias in castris ipsius adgreditur, sed ubi frustrato circa purpuratum eius ictu tenetur, ardentibus focis inicit manum terroremque geminat dolo.
 
-En, ut scias, illa tria Romani nominis Koehlerus: illa in romani nominis B: illa romana N L. inquit, quem virum effugeris; idem trecenti iuravimus; cum interim—inmane dictu—hic interritus,
+En, ut scias, inquit, quem virum effugeris; idem trecenti iuravimus; cum interim—inmane dictu—hic interritus,
 
 ille trepidaret, tamquam manus regis arderet. Sic quidem viri; sed ne qui sexus a laude cessaret, ecce et virginum virtus. Una ex opsidibus regi datis elapsa custodiam, Cloelia, per patrium flumen equitabat.
 
@@ -185,7 +185,7 @@ Latini quoque Tarquinios adserebant aemulatione et invidia, ut populus qui foris
 
 Apud Regilli lacum dimicavit diu Marte vario, donec Postumius ipse dictator signum in hostis iaculatus est—novum et insigne commentum—, ut inde re-
 
-peteretur.Cossus equitum magister exuere frenos datis elapsa custodiam Tollius: data etlapsa custodiae B: data elapsa custodiam L. ut inde repeteretur lahnius: ut inde ipse peteretur B: uti peteretur N L. imperavit—et hoc novum—quo acrius incurrerent.
+peteretur.Cossus equitum magister exuere frenos imperavit—et hoc novum—quo acrius incurrerent.
 
 Ea denique atrocitas proelii fuit, ut interfuisse spectaculo deos fama tradiderit. Duo in candidis equis iuvenes more siderum praetervolaverunt; Castorem atque Pollucem nemo dubitavit. Itaque et imperator ipse veneratus est pactusque victoriam templa promisit et reddidit, plane quasi stipendium commilitonibus dis.
 
@@ -199,7 +199,7 @@ Idem tunc Faesulae quod Carrhae nuper, idem nemus Aricinum quod Hercynius saltus
 
 Coriolos quoque—pro pudor—victos adeo gloriae fuisse, ut captum oppidum Gnaeus Marcius Coriolanus quasi Numantiam aut Africam nomini indueret.
 
-Extant et parta de Antio spolia, quae Maenius in suggestu fori capta hostium classe suffixit—si tamen illa Cora Rehd.: sora B I: Ora L. Gesoriacum: gesoria; cum N: gersoriacum L: caesoriacum B I. victos: victus B. indueret: induere B: induceret N. Maenius: menius I: menenius B: moenibus N. classis, nam sex fuere rostratae. Sed hic numerus illis initiis navale bellum fuit.
+Extant et parta de Antio spolia, quae Maenius in suggestu fori capta hostium classe suffixit—si tamen illa classis, nam sex fuere rostratae. Sed hic numerus illis initiis navale bellum fuit.
 
 Pervicacissimi tamen Latinorum Aequi et Volsci fuere et cotidiani, ut sic dixerim, hostes.
 
@@ -213,7 +213,7 @@ Intra quindecim dies coeptum peractumque bellum, prorsus ut festinasse dictator 
 
 ADSIDUI vero et anniversarii hostes ab Etruria fuere Veientes, adeo ut extraordinariam manum adversus eos promiserit privatumque gesserit bellum gens una Fabiorum. Satis superque nota clades.
 
-Caesi apud Cremeram trecenti, patricius exercitus; sed hos om. B. itaque scelerato signata nomine quae proficiscentes in proelium porta dimisit.
+Caesi apud Cremeram trecenti, patricius exercitus; itaque scelerato signata nomine quae proficiscentes in proelium porta dimisit.
 
 Sed ea clades ingentibus expiata victoriis, postquam per alios atque alios robustissima capta sunt oppida, vario quidem eventu.
 
@@ -229,7 +229,7 @@ Veî quanta res fuerit, indicat decennis obsidio. Tum primum hiematum sub pellib
 
 Spolia de Larte Tolumnio rege ad Feretrium triumpho reportata.Denique non scalis nec inruptione, sed cuniculo et subterraneis dolis peractum urbis excidium.
 
-Ea denique itaque scelerato signata Koehlerus: it scel. signat B: et scel. signata N. ad Feretrium triumpho reportata Iahnius: afferret triumphum reportaret B. visa est praedae magnitudo, cuius decima Apollini Pythio mitteretur, universusque populus Romanus ad direptionem urbis vocaretur.
+Ea denique visa est praedae magnitudo, cuius decima Apollini Pythio mitteretur, universusque populus Romanus ad direptionem urbis vocaretur.
 
 Hoc tunc Veî fuere. Nunc fuisse quis meminit? Quae reliquiae? Quod vestigium? Laborat annalium fides, ut Veios fuisse credamus.
 
@@ -241,7 +241,7 @@ an virtutis experimentis speciosius. Ea certe fuit vis calamitatis, ut in experi
 
 Galli Senones, gens natura ferox, moribus incondita, ad hoc ipsa corporum mole, perinde armis ingentibus, adeo omni genere terribilis fuit, ut plane nata ad hominum interitum, urbium stragem videretur.
 
-Hi quondam ab ultimis terrarum oris et cingente omnia Oceano ingenti agmine profecti, cum iam media vastassent, positis inter Alpes et Padum sedibus, ne his quidem contenti per Italiam decima Iahnius: decumae codd.
+Hi quondam ab ultimis terrarum oris et cingente omnia Oceano ingenti agmine profecti, cum iam media vastassent, positis inter Alpes et Padum sedibus, ne his quidem contenti per Italiam
 
 vagabantur; tum Clusium urbem obsidebant. Pro sociis ac foederatis Romanus intervenit; missi ex more legati. Sed quod ius apud barbaros? Ferocius agunt, et inde certamen.
 
@@ -255,13 +255,13 @@ statimque in suas quisque aedes regressi, sic ut in trabeis erant et amplissimo 
 
 in sua quisque dignitate moreretur. Pontifices et flamines quidquid religiosissimi in templis erat partim in doleis defossa terra recondunt, partim inposita plaustris secum Veios auferunt.
 
-Virgines simul ex sacerdotio Vestae nudo pede fugientia sacra comitantur. Tamen excepisse fugientis unus ex plebe fertur Albinius, qui depositis uxore et liberis virgines in plaustrum recepit. Adeo tunc quoque in ultimis se om. B. Albinius Liv. V. 40: Atinius B: Albinus L. religio publica privatis adfectibus antecellebat. Iuventus vero, quam satis constat vix mille hominum fuisse, duce Manlio arcem Capitolini montis insedit, obtestata ipsum quasi praesentem Iovem, ut quem ad modum ipsi ad defendendum templum concurrissent, ita ille virtutem eorum numine suo tueretur.
+Virgines simul ex sacerdotio Vestae nudo pede fugientia sacra comitantur. Tamen excepisse fugientis unus ex plebe fertur Albinius, qui depositis uxore et liberis virgines in plaustrum recepit. Adeo tunc quoque in ultimis religio publica privatis adfectibus antecellebat. Iuventus vero, quam satis constat vix mille hominum fuisse, duce Manlio arcem Capitolini montis insedit, obtestata ipsum quasi praesentem Iovem, ut quem ad modum ipsi ad defendendum templum concurrissent, ita ille virtutem eorum numine suo tueretur.
 
 Aderant interim Galli apertamque urbem primo trepidi, ne quis subesset dolus, mox, ubi solitudinem vident, pari clamore et impetu invadunt. Patentis passim domos adeunt. Ibi sedentes in curulibus suis praetextatos senes velut deos geniosque venerati, mox eosdem, postquam esse homines liquebat, alioquin nihil respondere dignantes pari vaecordia mactant, facesque tectis iniciunt, et totam urbem igni ferro manibus exaequant.
 
 Sex mensibus barbari—quis crederet?—circa montem unum pependerunt, nec diebus modo, sed noctibus quoque omnia experti; cum tamen Manlius nocte subeuntis clangore anseris excitatus a summa rupe deiecit, et ut spem hostibus demeret, quamquam in summa fame, tamen ad speciem fiduciae panes ab arce iaculatus est.
 
-Et stato quodam die per medias hostium custodias Fabium pontificem ab arce dimisit, qui sollemne sacrum in Quirinali monte conficeret. Manlio: Manilio B. rupe—summa ora. B. Atque ille per media hostium tela incolumis religionis auxilio redivit propitiosque deos renuntiavit.
+Et stato quodam die per medias hostium custodias Fabium pontificem ab arce dimisit, qui sollemne sacrum in Quirinali monte conficeret. Atque ille per media hostium tela incolumis religionis auxilio redivit propitiosque deos renuntiavit.
 
 Novissime cum iam obsidio sua barbaros fatigasset, mille pondo auri recessum suum venditantes, idque ipsum per insolentiam, cum ad iniqua pondera addito adhuc gladio superbe vae victisincreparent, subito adgressus a tergo Camillus adeo cecidit, ut omnia incendiorum vestigia Gallici sanguinis inundatione deleret.
 
@@ -269,7 +269,7 @@ Agere gratias dis in. mortalibus ipso tantae cladis nomine libet. Pastorum casas
 
 Ac primum omnium illam ipsam Gallicam gentem non contentus moenibus expulisse, cum per Italiam naufragia sua latius traherent, sic persecutus est duce Camillo, ut hodie nulla Senonum vestigia supersint.
 
-Semel apud Anienem trucidati, cum singulari certamine Manlius aureum torquem superbe "vae victis" Aldus (cf. Liv. V. 48): insuper victis B: superbe victis N L. a manlio L: amillio B: a manilio N. barbaro inter spolia detraxit, unde Torquati. Iterum Pomptino agro, cum in simili pugna Valerius, insidente galeae sacra alite adiutus, tulit spolia; et inde Corvini.
+Semel apud Anienem trucidati, cum singulari certamine Manlius aureum torquem barbaro inter spolia detraxit, unde Torquati. Iterum Pomptino agro, cum in simili pugna Valerius, insidente galeae sacra alite adiutus, tulit spolia; et inde Corvini.
 
 Nec non tamen post aliquot annos omnis reliquias eorum in Etruria ad lacum Vadimonis Dolabella delevit, ne quis extaret ex ea gente, qui incensam a se Romanam urbem gloriaretur.
 
@@ -277,7 +277,7 @@ Conversus a Gallis in Latinos Manlio Torquato Decio Mure consulibus, semper quid
 
 Quo tempore quis cessisse hostem mirabitur? Cum alter consulum filium suum, quia contra imperium pugnaverat, quamvis victorem occiderit ostenderitque plus esse in imperio quam in victoria;
 
-alter quasi monitu deorum capite velato primam ante aciem dis manibus se devoverit, ut in confertissima se hostium tela iaculatus novum ad victoriam iter sanguinis sui limite aperiret. qui L: quae B I N. partem imperii Rossbachius: pari imperio B I. magistratuum Rossbachius: magistratum B. audentes Mommsenus: auderent codd.
+alter quasi monitu deorum capite velato primam ante aciem dis manibus se devoverit, ut in confertissima se hostium tela iaculatus novum ad victoriam iter sanguinis sui limite aperiret.
 
 A Latinis adgressus est gentem Sabinorum, qui immemores factae sub Tito Tatio adfinitatis quodam contagio bellis se Latinis adiunxerant.
 
@@ -291,7 +291,7 @@ sed eo speciosius pro sociis Samnitas invadit. Erat foedus cum utrisque percussu
 
 Omnium non modo Italiae, sed toto orbe terrarum pulcherrima Campaniae plaga est. Nihil mollius caelo: denique bis floribus vernat. Nihil uberius solo:
 
-ideo Liberi Cererisque certamen dicitur. Nihil hospitalius mari: hic illi nobiles See p. 13. 290 B.C. portus Caieta, Misenus, tepentes fontibus Baiae,
+ideo Liberi Cererisque certamen dicitur. Nihil hospitalius mari: hic illi nobiles portus Caieta, Misenus, tepentes fontibus Baiae,
 
 Lucrinus et Avernus, quaedam maris otia. Hic amicti vitibus montes Gaurus, Falernus, Massicus et pulcherrimus omnium Vesuvius, Aetnaei ignis imitator.
 
@@ -303,7 +303,7 @@ Hos tamen quinquaginta annis per Fabios ac Papirios patres eorumque liberos ita 
 
 Maxime tamen nota et inlustris apud Caudinas furculas ex hac gente clades Veturio Postumioque consulibus accepta est.
 
-Cluso per insidias intra eum saltum exercitu, unde non posset evadere, stupens tanta amicti: amici B. post maximas add. BINL romam carthaginemque, del. Hauptius. ornatam Iord. Cod. Bamb., Heinsius: armatam BI. sacratis: sacris BI. 1 321 B.C. occasione dux hostium Pontius Herennium patrem consuluit. Et ille, mitteret omnes vel occideret,
+Cluso per insidias intra eum saltum exercitu, unde non posset evadere, stupens tanta occasione dux hostium Pontius Herennium patrem consuluit. Et ille, mitteret omnes vel occideret,
 
 sapienter ut senior suaserat: hic armis exutos mittere sub iugum maluit, ut nec amici forent beneficio et post flagitium hostes magis. Itaque et consules statim magnifice voluntaria deditione turpitudinem foederis dirimunt, et ultionem flagitans miles Papirio duce—horribile dictu—strictis ensibus per ipsam viam ante pugnam furit; et in congressu arsisse omnium oculos hostis auctor fuit. Nec prius finis caedibus datus, quam iugum et hostibus et duci capto reposuerunt.
 
@@ -321,7 +321,7 @@ Ea namque species fuit illius belli, quasi in terrigenas e caelo ac nubibus tela
 
 Nec incruenta tamen illa victoria. Nam oppressus in sinu vallis alter consulum Decius more patrio devotum dis manibus optulit caput, sollemnemque familiae suae consecrationem in victoriae pretium peregit.
 
-Sequitur bellum Tarentinum, unum quidem titulo et nomine, set victoria multiplex. Hoc enim Campanos, Apulos atque Lucanos et caput belli Tarentinos, id est totam Italiam, et cum iis omnibus Pyrrhum, clarissimum Graeciae regem, una Ciminius: Cyminius Rehd. man. sec.: geminius BIN. veluti ruina pariter involvit, ut eodem tempore et Italiam consummaret et transmarinos triumphos auspicaretur.
+Sequitur bellum Tarentinum, unum quidem titulo et nomine, set victoria multiplex. Hoc enim Campanos, Apulos atque Lucanos et caput belli Tarentinos, id est totam Italiam, et cum iis omnibus Pyrrhum, clarissimum Graeciae regem, una veluti ruina pariter involvit, ut eodem tempore et Italiam consummaret et transmarinos triumphos auspicaretur.
 
 Tarentus, Lacedaemoniorum opus, Calabriae quondam et Apuliae totiusque Lucaniae caput, cum magnitudine et muris portuque nobilis,
 
@@ -333,7 +333,7 @@ Qui enim aut unde Romani? Nec satis. Aderat sine mora querellam ferens legatio. 
 
 et hinc bellum. Sed apparatus horribilis, cum tot simul populi pro Tarentinis consurgerent omnibusque vehementior Pyrrhus, qui semigraecam ex Lacedaemoniis conditoribus civitatem vindicaturus cum totis viribus Epiri, Thessaliae, Macedoniae incognitisque in id tempus elephantis mari terra, viris equis armis, addito insuper ferarum terrore veniebat.
 
-Apud Heracleam Campaniae fluviumque Lirim Laevino consule prima pugna, quae tam atrox fuit ut Ferentaneae turmae praefectus Obsidius, in- mirabilis N Iahnius: mirabili BI. 1 280 B.C. vectus in regem, turbaverit coegeritque proiectis insignibus proelio excedere.
+Apud Heracleam Campaniae fluviumque Lirim Laevino consule prima pugna, quae tam atrox fuit ut Ferentaneae turmae praefectus Obsidius, in- vectus in regem, turbaverit coegeritque proiectis insignibus proelio excedere.
 
 Actum erat, nisi elephanti, converso in spectaculum bello, procucurrissent, quorum cum magnitudine tum deformitate et novo odore simul ac stridore consternati equi, cum incognitas sibi beluas amplius quam erant suspicarentur, fugam stragemque late dederunt.
 
@@ -343,7 +343,7 @@ Itaque in ipsas pila congesta sunt, et in turres vibratae faces tota hostium agm
 
 Lucaniae suprema pugna fuit Arusinis quos vocant campis, ducibus isdem quibus superius; sed tum tota victoria. Exitum, quem datura virtus fuit, casus dedit.
 
-Nam provectis in primam aciem rursus elephantis, unum ex eis pullum adacti in caput teli gravis ictus avertit; qui cum per stragem suorum recurrens stridore quereretur, mater agnovit alias Salmasius: alius codd.: citius Sauppius: ante Aldus: prius Mommsenus. et quasi vindicaret exiluit, tum omnia circa quasi hostilia gravi mole permiscuit.
+Nam provectis in primam aciem rursus elephantis, unum ex eis pullum adacti in caput teli gravis ictus avertit; qui cum per stragem suorum recurrens stridore quereretur, mater agnovit et quasi vindicaret exiluit, tum omnia circa quasi hostilia gravi mole permiscuit.
 
 Ac sic eaedem ferae, quae primam victoriam abstulerunt, secundam parem fecerunt, tertiam sine controversia tradiderunt.
 
@@ -355,7 +355,7 @@ Sed et bello et pace et foris et domi omnem in partem Romana virtus tum se adpro
 
 ducum magnanimitatem. Quinam illi fuerunt viri quos ab elephantis primo proelio obtritos accepimus? Omnium vulnera in pectore, quidam hostibus suis morte sua conmortui, omnium in manibus ensis, et relictae in voltibus minae, et in ipsa morte ira vivebat.
 
-Quod adeo Pyrrhus miratus est ut diceret o quam facile erat orbis imperium occupare, aut mihi Romanis militibus datis, aut me rege Romanis! Quae autem eorum in reparando intra urbem ante cum add. codd.: dei. Iahnius.
+Quod adeo Pyrrhus miratus est ut diceret o quam facile erat orbis imperium occupare, aut mihi Romanis militibus datis, aut me rege Romanis! Quae autem eorum in reparando
 
 exercitu festinatio? Cum Pyrrhus video me inquit plane procreatum Herculis semine, cui quasi ab angue Lernaeo tot caesa hostium capita quasi de sanguine suo renascuntur. Qui autem ille senatus fuit,
 
@@ -367,7 +367,7 @@ vel in pace, cum Curius fictilia sua Samnitico praeferret auro, Fabricius decem 
 
 Quis ergo miretur his moribus ea virtute militum victorem populum Romanum fuisse, unoque bello Tarentino intra quadriennium maximam partem Italiae, fortissimas gentes, opulentissimas urbes uberrimasque regiones subegisse? Aut quid adeo fidem superet,
 
-quam si principia belli cum exitu conferantur? Victor primo proelio Pyrrhus, tota tremente Campania Lirim Fregellasque populatus, prope captam urbem a Praenestina arce prospexit et a vicensimo video me L Voss. Rehd. Palat.: idem omne BN. ' concessum add. Aldus, cf. Plui. Pyrrh. 19, Liv. ix, 17, 14. victorem NL: exercitum B. populum romanum NL: populi romani B. lapide oculos trepidae civitatis fumo ac pulvere inplevit.
+quam si principia belli cum exitu conferantur? Victor primo proelio Pyrrhus, tota tremente Campania Lirim Fregellasque populatus, prope captam urbem a Praenestina arce prospexit et a vicensimo lapide oculos trepidae civitatis fumo ac pulvere inplevit.
 
 Eodem postea bis exuto castris, bis saucio et in Graeciam suam trans mare ac terras fugato, pax et quies et tanta de opulentissimis tot gentibus spolia, ut victoriam suam Roma non caperet.
 
@@ -379,7 +379,7 @@ Sed nihil libentius populus Romanus aspexit quam illas, quas ita timuerat, cum t
 
 OMNIS mox Italia pacem habuit—quid enim post Tarentum auderent?—nisi quod ultro persequi socios hostium placuit.
 
-domiti ergo Picentes et caput gentis Asculum Sempronio duce, qui tremente inter proelium campo Tellurem deam promissa aede placavit. PICENS N: PYCENSE B.
+domiti ergo Picentes et caput gentis Asculum Sempronio duce, qui tremente inter proelium campo Tellurem deam promissa aede placavit.
 
 SALLENTINI Picentibus additi caputque regionis Brundisium inclito portu M. Atilio duce. In hoc certamine victoriae pretium templum sibi pastoria Pales ultro poposcit.
 
@@ -397,7 +397,7 @@ Cum senatu quoque vehementius aequo bonoque certatum est, adeo ut relictis sedib
 
 Prima discordia ob inpotentiam feneratorum. Quibus in terga quoque serviliter saevientibus, in sacrum montem plebs armata secessit aegreque, nec nisi tribunos impetrasset, Meneni Agrippae, facundi et sapientis viri, auctoritate revocata est.
 
-Extat orationis antiquae satis efficax ad concordiam fabula, qua dissedisse quondam humanos dixit artus, quod omnibus opere fungentibus solus venter inmunis Veis Seebodius: vis B. ageret; deinde moribundos ea seiunctione redisse in gratiam, quando sensissent quod eius opera redactis in sanguinem cibis inrigarentur.
+Extat orationis antiquae satis efficax ad concordiam fabula, qua dissedisse quondam humanos dixit artus, quod omnibus opere fungentibus solus venter inmunis ageret; deinde moribundos ea seiunctione redisse in gratiam, quando sensissent quod eius opera redactis in sanguinem cibis inrigarentur.
 
 Secundam in urbe media decemviratus libido conflavit. Allatas a Graecia leges decem principes lecti iubente populo conscripserant, ordinataque erat in duodecim tabulis tota iustitia, cum tamen traditos fasces regio quodam furore retinebant.
 
@@ -419,7 +419,7 @@ nullaque in pretium eius potuit largitione corrumpi, cum ut in magno et in dies 
 
 Spurium largitione, Cassium agraria lege suspectum regiae dominationis praesenti morte multavit. Ac de Spurio quidem supplicium pater ipsius sumpsit, hunc Quinctii dictatoris imperio in medio foro magister equitum Servilius Ahala confodit.
 
-Manlium vero Capitolii vindicem, quia plerosque debitorum liberaverat altius et incivilius se efferentem, ab illa ipsa quam defenderat arce deiecit. qua add. Halmius. Spurium inseruit Salmasius.
+Manlium vero Capitolii vindicem, quia plerosque debitorum liberaverat altius et incivilius se efferentem, ab illa ipsa quam defenderat arce deiecit.
 
 Talis domi ac foris, talis pace belloque populus Romanus fretum illud adulescentiae, id est secundam imperii aetatem habuit, in qua totam inter Alpes fretumque Italiam armis subegit.
 
@@ -431,7 +431,7 @@ Igitur victor Italiae populus Romanus cum ad fretum usque venisset, more ignis, 
 
 rumpitur, paulisper substitit. Mox cum videret opulentissimam in proximo praedam quodam modo Italiae suae abscissam et quasi revolsam, adeo cupiditate eius exarsit, ut, quatenus nec mole iungi nec pontibus posset, armis belloque iungenda et ad continentem suam revocanda bello videretur.
 
-Sed et iuvenis par Halmius: iuvenis et par B. obvias N L: cunctas B. abscissam L Halmius: abscisam BN. ecce, ultro ipsis viam pandentibus fatis, nec occasio defuit, cum de Poenorum inpotentia foederata Siciliae civitas Messana quereretur. Adfectabat autem ut Romanus ita Poenus Siciliam, et eodem tempore paribus uterque votis ac viribus imperium orbis agitabat.
+Sed ecce, ultro ipsis viam pandentibus fatis, nec occasio defuit, cum de Poenorum inpotentia foederata Siciliae civitas Messana quereretur. Adfectabat autem ut Romanus ita Poenus Siciliam, et eodem tempore paribus uterque votis ac viribus imperium orbis agitabat.
 
 Igitur specie quidem socios iuvandi, re autem sollicitante praeda, quamquam territaret novitas rei, tamen—tanta in virtute fiducia est— ille rudis, ille pastorius populus vereque terrester ostendit nihil interesse virtutis, equis an navibus, terra an mari dimicaretur.
 
@@ -439,7 +439,7 @@ Appio Claudio consule primum fretum ingressus est fabulosis infame monstris aest
 
 Duillio Cornelioque consulibus etiam mari congredi ausus est. Tum quidem ipsa velocitas classis conparatae victoriae auspicium fuit. Intra enim sexagesimum diem quam caesa silva fuerat centum sexaginta navium classis in anchoris stetit, ut non arte factae, sed quodam munere deorum conversae in naves atque mutatae arbores viderentur.
 
-Proelii vero forma mirabilis, cum illas celeris volucrisque tamen tanta Voss.: tanta tamen BNL. quod velocitas navium mari iuvaretur post amplectitur add. BI. Duillio: ad uilio B: diullio L: duellio I. 1 264 B.C. hostium navis hae graves tardaeque conprehenderent. Longe illis nauticae artes, detorquere remos et ludificari fuga rostra.
+Proelii vero forma mirabilis, cum illas celeris volucrisque hostium navis hae graves tardaeque conprehenderent. Longe illis nauticae artes, detorquere remos et ludificari fuga rostra.
 
 Iniectae enim ferreae manus machinaeque validae, ante certamen multum ab hoste derisae, coactique hostes quasi in solido decernere. Victor ergo apud Liparas mersa aut fugata hostium classe primum illum maritimum egit triumphum.
 
@@ -451,7 +451,7 @@ Calatino dictatore fere omnia praesidia Poenorum Agrigento, Drepanis, Panhormo, 
 
 Trepidatum est semel circa Camerinensium saltum, sed eximia virtute Calpurni Flammae tribuni militum evasimus. Qui lecta trecentorum manu insessum ab hostibus tumulum occupavit atque moratus hostes est, dum exercitus omnis evaderet.
 
-Ac sic pulcherrimo exitu Thermopylarum et Leonidae famam adaequavit, hoc inlustrior noster, quod leve damnum: leve huius proelii damnum codd. est add. Iahnius. expeditioni tantae superfuit,licet nihil inscripserit sanguine.
+Ac sic pulcherrimo exitu Thermopylarum et Leonidae famam adaequavit, hoc inlustrior noster, quod expeditioni tantae superfuit,licet nihil inscripserit sanguine.
 
 Lucio Cornelio Scipione consule,cum iam Sicilia suburbana esset populi Romani provincia, serpente latius bello Sardiniam adnexamque Corsicam transiit.
 
@@ -465,7 +465,7 @@ Prooemium belli fuit civitas Clipea; prima enim a Punico litore quasi arx et spe
 
 Nec cum hominibus, sed cum monstris quoque dimicatum est, cum quasi in vindictam Africae nata mirae magnitudinis serpens posita apud Bagradam castra vexaverit.
 
-Sed omnium victor ut supervixit add. B, et supervixit add. NL post superfuit. consule add. Iahnius. ibi Aleriae Salmasius: ibi alte B: baleriae NL: ibi ateriae I. prooemium belli Iahnius: prima premium (proemium I) belli B: prima belli praemium NL. Regulus cum terrorem nominis sui late circumtulisset cumque magnam vim iuventutis ducesque ipsos aut cecidisset aut haberet in vinculis, classemque ingenti praeda onustam et triumpho gravem in urbem praemisisset, iam ipsam, caput belli, Carthaginem urguebat obsidio ipsisque portis inhaerebat.
+Sed omnium victor Regulus cum terrorem nominis sui late circumtulisset cumque magnam vim iuventutis ducesque ipsos aut cecidisset aut haberet in vinculis, classemque ingenti praeda onustam et triumpho gravem in urbem praemisisset, iam ipsam, caput belli, Carthaginem urguebat obsidio ipsisque portis inhaerebat.
 
 Hic paululum circumacta fortuna est, tantum ut plura essent Romanae virtutis insignia, cuius fere magnitudo calamitatibus adprobatur.
 
@@ -475,7 +475,7 @@ Quippe diversa quam hostis mandaverat censuit, ne pax fieret, ne commutatio capt
 
 Sed nec illo voluntario ad hostis suos reditu nec ultimo sive carceris seu crucis supplicio deformata maiestas; immo his omnibus admirabilior quid aliud quam victor de victoribus atque etiam, quia Carthago non cesserat, de fortuna triumphavit? Populus autem Romanus multo acrior intentiorque pro ultione Reguli quam pro victoria fuit.
 
-Metello igitur consule spirantibus altius Poenis et cecidisset Iordanis cod. Polling.: coepisset B: cepisset NI. 1 250 B.C. reverso in Siciliam bello, apud Panhormum sic hostes cecidit, ut nec amplius eam insulam adgredi cogitarent.
+Metello igitur consule spirantibus altius Poenis et reverso in Siciliam bello, apud Panhormum sic hostes cecidit, ut nec amplius eam insulam adgredi cogitarent.
 
 Argumentum ingentis victoriae centum circiter elephantorum captivitas, sic quoque magna praeda, si gregem illum non bello, sed venatione cepisset.
 
@@ -489,7 +489,7 @@ Et tamen cum Punicae praedae omnibus promontoriis insulisque fluitarent, populus
 
 Lutatio Catulo consule tandem bello finis inpositus apud insulas, quibus nomen Aegatae, nec maior alias in mari pugna.
 
-Aderat quippe commeatibus, exercitu, propugnaculis, armis gravis classis et in ut nec L: ut ne N: ne BI. ibi IN: ab his B. hostium post Aegimurum ponit BI. et add. Bentleius. interiacentium Bentleius: imperiagentium codd. perisse om. B. ea quasi tota Carthago; quod ipsum exitio fuit.
+Aderat quippe commeatibus, exercitu, propugnaculis, armis gravis classis et in ea quasi tota Carthago; quod ipsum exitio fuit.
 
 Romana classis prompta, levis, expedita et quodam genere castrensis ad similitudinem pugnae equestris sic remis quasi habenis agebatur, et in hos vel illos ictus mobilia rostra speciem viventium praeferebant.
 
@@ -501,7 +501,7 @@ Peracto Punico bello secuta est brevis sane quasi ad recuperandum spiritum requi
 
 Quippe iam Ligures, iam Insubres Galli, nec non et Illyrici lacessebant, sitae sub Alpibus, id est sub ipsis Italiae faucibus gentes, deo quodam incitante adsidue, ne rubiginem ac situm scilicet arma sentirent.
 
-Denique utrique cotidiani et quasi domestici hostes tirocinia militum inbuebant, nec aliter utraque gente quam quasi cote quadam populus Romanus ferrum suae virtutis acuebat. excindendis Halmius; excidendis codd.
+Denique utrique cotidiani et quasi domestici hostes tirocinia militum inbuebant, nec aliter utraque gente quam quasi cote quadam populus Romanus ferrum suae virtutis acuebat.
 
 Liguras, imis Alpium iugis adhaerentis inter Varum et Magram flumen inplicitosque dumis silvestribus, maior aliquanto labor erat invenire quam vincere. Tuti locis et fuga, durum atque velox genus, ex occasione latrocinia magis quam bella faciebant.
 
@@ -513,7 +513,7 @@ quum mox caluere pugna, statim in sudorem eunt et levi motu quasi sole laxantur.
 
 Hi saepe et alias et Brittomaro duce non prius posituros se baltea quam Capitolium ascendissent iuraverant. Factum est; victos enim Aemilius in Capitolio discinxit.
 
-Mox Ariovisto duce vovere de nostrorum militum praeda Marti suo torquem. Intercepit Iuppiter eluderent: ludere B: eluderet NL. Saluvii: salui B: saltus NL: saltu viis i. Deciates: decilates BI: deciate L. Oxubii: exuuii B. Euburiates: et buriates B, quum mox scripsi: quam mox B: cum mox I: quae mox ut NL: cum vix Bezzenbergerus. votum; nam de torquibus eorum aureum tropaeum Iovi Flaminius erexit.
+Mox Ariovisto duce vovere de nostrorum militum praeda Marti suo torquem. Intercepit Iuppiter votum; nam de torquibus eorum aureum tropaeum Iovi Flaminius erexit.
 
 Viridomaro rege Romana arma Volcano promiserant. Aliorsum vota ceciderunt; occiso enim rege Marcellus tertia post Romulum patrem Feretrio Iovi opima suspendit.
 
@@ -525,7 +525,7 @@ Legatos quippe nostros, ob ea quae deliquerant iure agentes, ne gladio quidem, s
 
 Itaque Gnaeo Fulvio Centimalo duce late domantur. Strictae secures in principum colla legatorum manibus litavere.
 
-Post primum Punicum bellum vix quadriennii requies: ecce alterum bellum, minus quidem spatio —nec enim amplius decem et octo annos habet—, sed adeo cladium atrocitate terribilius, ut si quis conferat damna utriusque populi, similior victo sit Titiumque: titullumque B: titulumque I. Centimalo: gentimalo BI: Centumalum appellant fast. Capit. CILI 1, p. 456.
+Post primum Punicum bellum vix quadriennii requies: ecce alterum bellum, minus quidem spatio —nec enim amplius decem et octo annos habet—, sed adeo cladium atrocitate terribilius, ut si quis conferat damna utriusque populi, similior victo sit
 
 populus ille qui vicit. Urebat nobilem populum mare ablatum, raptae insulae, dare tributa, quae iubere consueverat. Hinc ultionem puer Annibal ad aram patri iuraverat, nec morabatur.
 
@@ -535,7 +535,7 @@ Summa foederum Romanis religio est; itaque ad auditum sociae civitatis obsidium,
 
 Saguntini interim iam novem mensibus fessi fame machinis ferro, versa denique in rabiem fide inmanem in foro excitant rogum, tum desuper se suosque cum omnibus opibus suis ferro et igne corrumpunt.
 
-Huius tantae cladis auctor Annibal poscitur. Tergiversantibus Poenis dux legationis quae inquit mora est? Fabius in hoc ego sinu bellum pacemque porto; utrum digitis? Succlamantibus bellum, bellum igitur inquit Fabius del. Graevius. accipite. Et excusso in media curia togae gremio non sine horrore, quasi plane sinu bellum ferret, effudit.
+Huius tantae cladis auctor Annibal poscitur. Tergiversantibus Poenis dux legationis quae inquit mora est? Fabius in hoc ego sinu bellum pacemque porto; utrum digitis? Succlamantibus bellum, bellum igitur inquit accipite. Et excusso in media curia togae gremio non sine horrore, quasi plane sinu bellum ferret, effudit.
 
 Similis exitus belli initiis fuit. Nam quasi has inferias sibi Saguntinorum ultimae dirae in illo publico parricidio incendioque mandassent, ita manibus eorum vastatione Italiae, captivitate Africae, ducum et regum qui id gessere bellum exitio parentatum est.
 
@@ -545,7 +545,7 @@ Ac primi quidem impetus turbo inter Padum atque Ticinum valido statim fragore de
 
 Hic erit Scipio, qui in exitium Africae crescit, nomen ex malis eius habiturus.
 
-Ticino Trebia succedit. Hic secunda Punici belli procella desaevit Sempronio consule. Tum callidissimi hostes, frigidum et nivalem nancti diem, cum 218 B.C se ignibus prius oleoque fovissent—horribile dictu— homines a meridie et sole venientes, nostra nos hieme vicerunt.
+Ticino Trebia succedit. Hic secunda Punici belli procella desaevit Sempronio consule. Tum callidissimi hostes, frigidum et nivalem nancti diem, cum se ignibus prius oleoque fovissent—horribile dictu— homines a meridie et sole venientes, nostra nos hieme vicerunt.
 
 Thrasymennus lacus, tertium fulmen Annibalis, imperatore Flaminio.Ars nova Punicae fraudis; quippe nebula lacus palustribusque virgultis tectus equitatus terga subito pugnantium invasit.
 
@@ -553,7 +553,7 @@ Nec de dis possumus queri. Inminentem temerario duci cladem praedixerant insiden
 
 Quartum id et paene ultimum volnus imperii Cannae, ignobilis Apuliae victis; sed magnitudine cladis emersit et sexaginta milium caede parta nobilitas. Ibi in excidium infelicis exercitus dux, terra, caelum, dies, tota rerum natura consensit.
 
-Si quidem non contentus simulatis transfugis Annibal, qui mox terga pugnantium ceciderunt,insuper callidus imperator in patentibus campis observato loci ingenio, quod et sol ibi acerrimus et plurimus pulvis et curus ab oriente semper quasi ex constituto, ita instruxit aciem, ut, Romanis Flaminio N: flamminino BL: flamminio I, et scripsi: est codd. ceciderunt Aldus: ceciderant BIL. adversus haec omnia obversis, secundum caelum tenens vento pulvere et sole pugnaret.
+Si quidem non contentus simulatis transfugis Annibal, qui mox terga pugnantium ceciderunt,insuper callidus imperator in patentibus campis observato loci ingenio, quod et sol ibi acerrimus et plurimus pulvis et curus ab oriente semper quasi ex constituto, ita instruxit aciem, ut, Romanis adversus haec omnia obversis, secundum caelum tenens vento pulvere et sole pugnaret.
 
 Itaque duo maximi exercitus caesi ad hostium satietatem, donec Annibal diceret militi suo parce ferro. Ducum fugit alter, alter occisus est; dubium, uter maiore animo: Paulum puduit, Varro non desperavit.
 
@@ -565,7 +565,7 @@ Sed tum quidem illum, ut dici volgo solet, aut fatum urbis imperaturae aut ipsiu
 
 Cum victoria posset uti, frui maluit, relictaque Roma Campaniam Tarentumque perrexit; ubi mox et ipsius et exercitus ardor elanguit, adeo ut vere dictum sit Capuam Annibali Cannas fuisse.
 
-Si quidem invictum Alpibus indomitumque armis Campani—quis crederet?—soles et tepentes fontibus Baiae subegerunt. et ipsius et exercitus Dukerus: et ipse et ipsius exercitus B.
+Si quidem invictum Alpibus indomitumque armis Campani—quis crederet?—soles et tepentes fontibus Baiae subegerunt.
 
 Permissum est interim respirare Romanis et quasi ab inferis emergere. Arma non erant: detracta sunt templis. Deerat iuventus: in sacramentum liberata servitia.
 
@@ -579,7 +579,7 @@ Prima redeuntis et, ut ita dixerim, revivescentis imperii spes Fabius fuit, qui 
 
 Itaque per Samnium totum, per Falernos Gauranosque saltus sic maceravit Annibalem, ut, quia frangi virtute non poterat, mora comminueretur.
 
-Inde Claudio Marcello duce etiam congredi ausus Golden ornaments which free-born Roman children wore suspended round their necks. 210 B.C. est: comminus venit et perculit in Campania sua et ab obsidione Nolae urbis exclusit.
+Inde Claudio Marcello duce etiam congredi ausus est: comminus venit et perculit in Campania sua et ab obsidione Nolae urbis exclusit.
 
 Ausus et Sempronio Graccho duce per Lucaniam sequi et premere terga cedentis, quamvis tum—o pudor!2—servili pugnaret exercitu; nam hucusque tot mala conpulerant. Sed libertate donati fecerunt de servis se virtute Romanos.
 
@@ -589,7 +589,7 @@ cumque hostis in iugulo per Campaniam Apuliam-que volitaret mediaque de Italia A
 
 Sicilia mandata Marcello. Nec diu restitit; tota enim insula in una urbe superata est. Grande illud et ante id tempus invictum caput, Syracusae, quamvis Archimedis ingenio defenderentur, aliquando cesserunt.
 
-Longe illi triplex murus totidemque arces, portus ille marmoreus et fons celebratus Arethusae; nisi quod hactenus profuere, ut pulchritudini victae urbis parceretur. perculit Salmasius: perpulit BI: pepulit N. o pudor I: pudor B: o pudor manu NL. exercitu I: exercitum B. de servis se virtute Salmasius: de servitute codd. dubitare I: decedere B. hostis in iugulo I: hosti singulo B. mediaque Heinsius: mediamque codd.
+Longe illi triplex murus totidemque arces, portus ille marmoreus et fons celebratus Arethusae; nisi quod hactenus profuere, ut pulchritudini victae urbis parceretur.
 
 Sardiniam Gracchus arripuit. Sed nihil illi gentium feritas Insanorumque—nam sic vocantur— inmanitas montium profuere. Saevitum in urbes urbemque urbium Caralim, ut gens contumax vilisque mortis saltem desiderio patrii soli doma-retur.
 
@@ -601,7 +601,7 @@ bellatricem illam, viris armisque nobilem Hispaniam, illam seminarium hostilis e
 
 nescias citius an felicius. Quam velociter, quattuor anni fatentur; quam facile, vel una civitas probat. Eodem quippe quo obsessa est die capta est, omenque Africanae victoriae fuit, quod tam facile victa est Hispaniae Carthago.
 
-Certum est tamen ad profligandam provinciam maxime profecisse vix Rossbachius: vim B. pusilli illam iam: pusilli iam B: illam NL: illam iam I. omenque: nomenque B: omnemque LI. singularem ducis sanctitatem, quippe qui captivos pueros puellasque praecipuae pulchritudinis barbaris restitueret, ne in conspectum suum quidem passus adduci, ne quid de virginitatis integritate delibasse saltem oculis videretur.
+Certum est tamen ad profligandam provinciam maxime profecisse singularem ducis sanctitatem, quippe qui captivos pueros puellasque praecipuae pulchritudinis barbaris restitueret, ne in conspectum suum quidem passus adduci, ne quid de virginitatis integritate delibasse saltem oculis videretur.
 
 Haec in diversa terrarum populus Romanus, nec ideo tamen visceribus Italiae inhaerentem summovere poterat Annibalem. Pleraque ad hostem defecerant, et dux acerrimus contra Romanos Italicis quoque viribus utebatur.
 
@@ -611,7 +611,7 @@ O populum dignum orbis imperio dignumque omnium favore et admiratione hominum ac
 
 Quid ergo miramur moventi castra a tertio lapide Annibali iterum ipsos deos—deos inquam, nec fateri pudebit—restitisse? Tanta enim ad singulos illius motus vis imbrium effusa est,
 
-tanta ventorum violentia coorta est, ut divinitus hostem summoveri non a caelo, sed ab urbis ipsius moenibus et Capi- restitisse post deos inser. B.
+tanta ventorum violentia coorta est, ut divinitus hostem summoveri non a caelo, sed ab urbis ipsius moenibus et Capi-
 
 tolio videretur. Fugit et cessit et in ultimum se Italiae recepit sinum, cum urbem tantum non adoratam reliquisset.
 
@@ -627,7 +627,7 @@ Nero in ultimum Italiae angulum summoverat Annibalem, Livius in diversissimam pa
 
 Tanto, id est omni, qua longissima est Italia, solo interiacente, quo consilio, qua celeritate consules castra coniunxerint, inopina-tumque hostem conlatis signis oppresserint, neque id fieri Annibal senserit, difficile dictu est.
 
-Certe Annibal re cognita cum proiectum fratris caput ad sua castra vidisset, agnosco inquit infelicita- iam tum quom Rossbachius: tantum quod codd. in ultimum Italiae angulum Halmius: in ultimo Italiae angulo codd,. est 1: fuit B. tem Carthaginis. Haec fuit illius viri non sine praesagio quodam fati inminentis prima confessio.
+Certe Annibal re cognita cum proiectum fratris caput ad sua castra vidisset, agnosco inquit infelicita- tem Carthaginis. Haec fuit illius viri non sine praesagio quodam fati inminentis prima confessio.
 
 Iam certum erat Annibalem etiam ipsius confessione posse vinci; sed tot rerum prosperarum fiducia plenus populus Romanus magni aestimabat asperrimum hostem in sua Africa debellare.
 
@@ -643,7 +643,7 @@ Ubi de pace non convenit, signa cecinere.
 
 Constat utriusque confessione nec melius instrui aciem nec acrius potuisse pugnari; hoc Scipio de Annibalis, Annibal de Scipionis exercitu praedicaverunt.
 
-Sed tamen Anni- post utriusque add. clasis B, classis I. maximi I: maxime EN. bal cessit, praemiumque victoriae Africa fuit et secutus Africam statim terrarum orbis.
+Sed tamen Anni- bal cessit, praemiumque victoriae Africa fuit et secutus Africam statim terrarum orbis.
 
 Post Carthaginem vinci neminem puduit. Statim Africam secutae sunt gentes, Macedonia, Graecia, Syria ceteraque omnia quodam quasi aestu et torrente fortunae, sed primi omnium Macedones, adfectator quondam imperii populus.
 
@@ -657,7 +657,7 @@ Placuit senatui opem tantis ferre supplicibus. Quippe iam gentium reges, duces, 
 
 Primum igitur Laevino consule populus Romanus Ionium mare ingressus, tota Graeciae litora velut triumphanti classe peragravit.
 
-Spolia quippe Siciliae, Sardiniae, Hispaniae, Africae prae- 210 B.C. ferebat, et manifestam victoriam nata in praetoria puppi laurus pollicebatur.
+Spolia quippe Siciliae, Sardiniae, Hispaniae, Africae prae- ferebat, et manifestam victoriam nata in praetoria puppi laurus pollicebatur.
 
 Aderat sponte in auxilium Attalus rex Pergamenorum, aderant Rhodii, nauticus populus, qui navibus a mari,consul a terris omnia equis virisque quatiebat.
 
@@ -673,7 +673,7 @@ Graeciae vero veterem statum reddidit, ut legibus viveret suis et avita libertat
 
 Quae gaudia, quae vociferationes fuerunt, cum hoc forte Nemeae in theatro quinquennalibus ludis a praecone caneretur! Quo certavere plausu! Quid
 
-Horum in consulem profuderunt! Et iterum ite- qui navibus a mari Freinshemius: quibus a mari codd. Flaminino: flamminio BI: flaminio NL. Aoumque Vinetus: savum que B: dumque NL: saumque I. abrupta L: abruta B. et ipsa NL: ad ipsa B: et ad ipsa I. sub Nabide: sub nam | bide B: sum mauide N: summa uide L. rumque praeconem repetere vocem illam iubebant, qua libertas Achaiae pronuntiabatur, nec aliter illa consulari sententia quam modulatissimo aliquo tibiarum aut fidium cantu fruebantur.
+Horum in consulem profuderunt! Et iterum ite- rumque praeconem repetere vocem illam iubebant, qua libertas Achaiae pronuntiabatur, nec aliter illa consulari sententia quam modulatissimo aliquo tibiarum aut fidium cantu fruebantur.
 
 MACEDONIAM Asia statim et regem Philippum Antiochus excepit quodam casu, quasi de industria sic adgubernante fortuna, ut quem ad modum ab Africa in Europam, sic ab Europa in Asiam ultro se suggerentibus causis imperium procederet, et cum terrarum orbis situ ipse ordo victoriarum navigaret.
 
@@ -683,7 +683,7 @@ quando velis opertum mare nuntiaretur. Ad hoc caelestes minae territabant, cum u
 
 Nec sane viris opibus armisque quicquam copiosius Syria; sed in manus tam ignavi regis inciderat, ut nihil fuerit in Antiocho speciosius quam quod a Romanis victus est.
 
-Inpulere regem in id bellum illinc Thoas, Aetoliae princeps, inhonoratam apud Romanos querens adversus Macedonas militiae suae societa- Asia add. Halmius. Europam L: Achaiam B. Europa: Achaia B. tem, hinc Annibal, qui in Africa victus, profugus et pacis inpatiens hostem populo Romano toto orbe quaerebat.
+Inpulere regem in id bellum illinc Thoas, Aetoliae princeps, inhonoratam apud Romanos querens adversus Macedonas militiae suae societa- tem, hinc Annibal, qui in Africa victus, profugus et pacis inpatiens hostem populo Romano toto orbe quaerebat.
 
 Et quod illud fuisset periculum, si se consiliis eius rex tradidisset, id est si Asiae viribus usus fuisset miser Annibal? Sed rex suis opibus et nomine regio fretus satis habuit bellum movere.
 
@@ -693,7 +693,7 @@ Hoc velut sidere Asiatici belli mota tempestas. Sed maximus regum, contentus for
 
 Euboan insulam continenti adhaerentem tenui freto reciprocantibus aquis Euripus abscindit. Hic ille positis aureis sericisque tentoriis sub ipso freti murmure, cum praefluentes aquae tibiis fidibusque concinerent, conlatis undique quamvis per hiemem rosis, ne non aliquo genere ducem agere videretur, virginum puerorumque dilectus habebat.
 
-Talem ergo regem iam luxuria sua debellatum Acilio Glabrione consule populus Romanus in insula adgressus ipso statim adventus agere videretur om. B.
+Talem ergo regem iam luxuria sua debellatum Acilio Glabrione consule populus Romanus in insula adgressus ipso statim adventus
 
 sui nuntio coëgit ab insula fugere. Tum praecipitem apud Thermopylas adsecutus, locum trecentorum Laconum speciosa clade memorandum, ne ibi quidem fiducia loci resistentem, mari ac terra cedere coëgit.
 
@@ -709,7 +709,7 @@ Trecenta milia peditum, equitum falcatorumque curruum non minor numerus. Elephan
 
 Sed haec omnia praepedita magnitudine sua, ad hoc imbre, qui subito superfusus mira felicitate Persicos arcus corruperat. Primum trepidatio, mox fuga, deinde triumphus fuerunt.
 
-Victo et supplici pacem par- vallaverat: vallaverant NL: variaverat B. corruperat: perruperat B. temque regni dari placuit eo libentius, quod tam facile cessisset.
+Victo et supplici pacem par- temque regni dari placuit eo libentius, quod tam facile cessisset.
 
 Syriaco bello successit, et debebat, Aetolum. Victo quippe Romanus Antiocho faces Asiatici belli persequebatur. Ergo Fulvio Nobiliori mandata ultio est.
 
@@ -721,7 +721,7 @@ sic placuit ignoscere. Serpsit tamen latius in proximos bellum, omnisque late Ce
 
 Histri secuntur Aetolos; quippe bellantes eos nuper adiuverant.
 
-Et initia pugnae hosti prospera fuerunt, eademque exitii causa. Nam cum Gnaei Manlii castra cepissent opimaeque praedae incubarent, epulantes ac ludibundos plerosque, qui aut ubi essent prae poculis nescientes, Appius Pulcher omnisque late Cephallenia, Zacynthos Freinshemius: omnemque late Cephalleniam, Zacynthon codd. fuerunt: fuerant B. Manlii: manilii B: mali NL.
+Et initia pugnae hosti prospera fuerunt, eademque exitii causa. Nam cum Gnaei Manlii castra cepissent opimaeque praedae incubarent, epulantes ac ludibundos plerosque, qui aut ubi essent prae poculis nescientes, Appius Pulcher
 
 invadit. Sic cum sanguine et spiritu male partam revomuere victoriam. Ipse rex Aepulo equo inpositus, cum subinde crapula et capitis errore lapsaret, captum sese vix et aegre, postquam expergefactus est, didicit.
 
@@ -735,7 +735,7 @@ itaque, uti frugum semina mutato solo degenerant, sic illa genuina feritas eorum
 
 obus itaque proeliis fusi fugatique sunt, quamvis sub adventu hostis relictis sedibus in altissimos se montes recepissent. Tolostobogi Olympum, Tecto-sagi Magabam insederant. Utrimque fundis sagittisque detracti in perpetuam se pacem dediderunt.
 
-Sed alligat! miraculo quidam fuere, cum catenas Aepulo Livius, XLI. 11: apulo BNL. Manlius Vulso Mommsenus: visos B: aneos visos NL: visus I. at certe Iahnius: hac | perte B: certe NL. semina: seminam B. Tolostobogi: colos cobegi B: colosobegit T. Magabam H. Muellerus: magabant B: magaba I. quidam: quodam codd. morsibus et ore temptassent, cum offocandas invicem fauces praebuissent. Nam Orgiacontis regis uxor a centurione stuprum passa memorabili exemplo custodiam evasit, revolsumque adulteri hostis caput ad maritum reportavit.
+Sed alligat! miraculo quidam fuere, cum catenas morsibus et ore temptassent, cum offocandas invicem fauces praebuissent. Nam Orgiacontis regis uxor a centurione stuprum passa memorabili exemplo custodiam evasit, revolsumque adulteri hostis caput ad maritum reportavit.
 
 Dum aliae aliaeque gentes Syriaci belli secuntur ruinam, Macedonia rursus se erexit.
 
@@ -745,7 +745,7 @@ Multo vehementius sub hoc Macedones quam sub patre exurgunt. Quippe Thracas in r
 
 Accessit his consilium ducis, qui situm regionum suarum a summo speculatus Haemo, positis per abrupta castris, ita Macedoniam suam armis ferroque vallaverat, ut non reliquisse aditum nisi a caelo Venturis hostibus videretur.
 
-Tamen Marcio Philippo consule eam provinciam ingressus populus Romanus, exploratis diligenter accessibus per Ascurida paludem Perrhaebosque tumulos illa volucribus regis om. B. passa om. BI. res Iahnius: vires codd. abrupta: abruta codd. eam Heinsius: nam codd. Ascurida Heinsius; cf. Livius XLIV. 2, 3: astudam B: astundam NL. 1 186 B.C quoque, ut videbantur, invia accessit, regemque securum et nihil tale metuentem subita belli inruptione deprehendi Cuius tanta trepidatio fuit,
+Tamen Marcio Philippo consule eam provinciam ingressus populus Romanus, exploratis diligenter accessibus per Ascurida paludem Perrhaebosque tumulos illa volucribus quoque, ut videbantur, invia accessit, regemque securum et nihil tale metuentem subita belli inruptione deprehendi Cuius tanta trepidatio fuit,
 
 ut pecuniam omnem in mare iusserit mergi ne periret, et classem cremari ne incenderetur.
 
@@ -761,7 +761,7 @@ Cum in conspectum venisset hostis, in tribunali recepit et conviviis adhibuit li
 
 Inter pulcherrimos hunc quoque populus Romanus de Macedonia duxit ac vidit triumphum, quippe cuius spectaculo triduum impleverit.
 
-Primus dies signa For the paradox cp. Martial, II. 80: Hostem cum fugeret, se Fannius ipse peremit. Hic, rogo, non furor est, ne moriare, mori? 182 B.C. tabulasque, sequens arma pecuniam transvexit, tertius captivos ipsumque regem adtonitum adhuc tamquam subito malo et stupentem.
+Primus dies signa tabulasque, sequens arma pecuniam transvexit, tertius captivos ipsumque regem adtonitum adhuc tamquam subito malo et stupentem.
 
 Sed multo prius gaudium victoriae populus Romanus quam epistulis victoris praeceperat. Quippe eodem die, quo victus est Perses in Macedonia, Romae cognitum est, cum duo iuvenes candidis equis apud Iuturnae lacum pulverem et cruorem abluebant.
 
@@ -771,7 +771,7 @@ Macedonici belli contagio traxit Illyrios; si quidem, ut Romanum a tergo distrin
 
 Sine mora ab Anicio praetore subiguntur. Scodram, caput gentis, delesse suffecit; statim secuta deditio est. Denique hoc bellum ante finitum est quam geri Romae nuntiaretur.
 
-Quodam fato, quasi ita convenisset inter Poenos et Macedonas ut tertio quoque vincerentur, eodem si quidem Iahnius: ipsi quidem BN: sed ipsi quidem L, Scodram: scoriadam B: scordam NL.
+Quodam fato, quasi ita convenisset inter Poenos et Macedonas ut tertio quoque vincerentur, eodem
 
 tempore utrique arma moverunt. Sed prior iugum excutit Macedo, aliquanto quam ante gravior, dum contemnitur.
 
@@ -779,7 +779,7 @@ Causa belli prope erubescenda. Quippe regnum pariter et bellum vir ultimae sorti
 
 Igitur dum haec ipsa contemnit populus Romanus, Iuventio praetore contentus, virum non Macedonicis modo sed Thraciae quoque auxiliis ingentibus validum temere temptavit, in victusque a veris regibus, ab illo imaginario et scaenico rege superatus est.
 
-Sed consul Metellus amissum cum legione praetorem plenissime ultus est. Nam et Macedoniam servitute multavit et ducem belli, deditum ab eo ad quem confugerat Thraciae regulo, in urbem in catenis reduxit, hoc quoque illi in malis suis indulgente fortuna, ut de eo populus Romanus quasi de rege vero triumpharet. Philippus ex similitudine Philippi Persae filii vocabatur Sauppius: philippus persae filius vocabatur B: philippus ex similitudine philippi pseudo filippus (philippus L) vocabatur NL. invictusque a veris regibus Freinshemius: invictusque non a veris regibus sed NL: invalidus que non veris regibus sed B.
+Sed consul Metellus amissum cum legione praetorem plenissime ultus est. Nam et Macedoniam servitute multavit et ducem belli, deditum ab eo ad quem confugerat Thraciae regulo, in urbem in catenis reduxit, hoc quoque illi in malis suis indulgente fortuna, ut de eo populus Romanus quasi de rege vero triumpharet.
 
 Tertium Punicum bellum et tempore exiguum (nam quadriennio patratum est) et in comparatio-nem priorum minimum labore (non enim tam cum viris quam cum ipsa urbe pugnatum est) sed plane maximum eventu: quippe tandem Carthago finita est.
 
@@ -795,7 +795,7 @@ Nihil enim speciosius videbatur quam esse Carthaginem, quae non timeretur.
 
 Igitur Manilio Censorinoque consulibus populus Romanus adgressus Carthaginem spe pacis iniecta traditam a volentibus classem sub ipso ore urbis incendit.
 
-Tum evocatis principibus, patratum: raptum B. sed: et B. Massinissa Iahnius: massinissae BNL. urbis post felicitas BNL. si salvi esse vellent, ut migrarent finibus imperavit. Quod pro rei atrocitate adeo movit iras, ut extrema mallent. Comploratum igitur publice statim et pari voce clamatum est "ad arma," seditque sententia quoquo modo rebellandum;
+Tum evocatis principibus, si salvi esse vellent, ut migrarent finibus imperavit. Quod pro rei atrocitate adeo movit iras, ut extrema mallent. Comploratum igitur publice statim et pari voce clamatum est "ad arma," seditque sententia quoquo modo rebellandum;
 
 non quia iam spes ulla superesset, sed quia patriam suam mallent hostium quam suis manibus everti.
 
@@ -807,7 +807,7 @@ Quamvis profligato urbis excidio tamen fatale Africae nomen Scipionum videbatur.
 
 Sed quem ad modum maxime mortiferi morsus solent esse morientium bestiarum, sic plus negotii fuit cum semiruta Carthagine quam cum integra. Conpulsis
 
-in unam arcem hostibus portum quoque mari in om. B. Romanus obstruxerat. Illi alterum sibi portum ab alia urbis parte foderunt, nec ut fugerent; sed qua nemo illos nec evadere posse credebat, inde quasi nata
+in unam arcem hostibus portum quoque mari Romanus obstruxerat. Illi alterum sibi portum ab alia urbis parte foderunt, nec ut fugerent; sed qua nemo illos nec evadere posse credebat, inde quasi nata
 
 subito classis erupit, cum interim iam diebus, iam noctibus nova aliqua moles, nova machina, nova perditorum hominum manus quasi ex obruto incendio subita de cineribus flamma prodibat.
 
@@ -817,7 +817,7 @@ Quanto fortius femina et uxor ducis! Quae conprehensis duobus liberis a culmine 
 
 didit. Quanta urbs deleta sit, ut de ceteris taceam, de ignis mora probari potest. Quippe per continuos decem et septem dies vix potuit incendium extingui quod domibus ac templis suis sponte hostes inmiserant; ut, quatenus urbs eripi Romanis non poterat, triumphus arderet.
 
-Quasi saeculum illud eversionibus urbium curreret, Carthaginis ruinam statim Corinthus excepit, Achaiae caput, Graeciae decus, inter duo maria, Ionium et Aegaeum, quasi spectaculo exposita. Haec—facinus alterum NL: autem B. nata: nota B. indignum—ante oppressa est quam in numero certorum hostium referretur.
+Quasi saeculum illud eversionibus urbium curreret, Carthaginis ruinam statim Corinthus excepit, Achaiae caput, Graeciae decus, inter duo maria, Ionium et Aegaeum, quasi spectaculo exposita. Haec—facinus indignum—ante oppressa est quam in numero certorum hostium referretur.
 
 Critolaus causa belli, qui libertate a Romanis data adversus ipsos usus est legatosque Romanos, dubium an et manu, certe oratione violavit.
 
@@ -829,7 +829,7 @@ Tum ab incolis deserta civitas direpta primum, deinde tuba
 
 praecinente deleta est. Quid signorum, quid vestium quidve tabularum raptum incensumque atque proiectum est! Quantas opes et abstulerit et cremaverit, hinc scias, quod quidquid Corinthii aeris toto orbe laudatur incendio superfuisse comperimus.
 
-Nam et aeris notam pretiosiorem ipsa opulentissimae urbis fecit iniuria, quia incendio permixtis plurimis statuis atque simulacris aeris auri argentique venae in commune fluxerunt. tum: cum codd. Macedoniam: Macedoniae codd. intervenit Woelfflinus: inuenit B. Diaei Pighius: dinei B: dignitate NL. tuba L. Voss. Palat.: turba BN. iniuria: syniuria B: ruina Hauptius.
+Nam et aeris notam pretiosiorem ipsa opulentissimae urbis fecit iniuria, quia incendio permixtis plurimis statuis atque simulacris aeris auri argentique venae in commune fluxerunt.
 
 VT Carthaginem Corinthus, ita Corinthum Numantia secuta est; nec deinde orbe toto quicquam intactum armis fuit.
 
@@ -841,7 +841,7 @@ Sed ante a Romanis obsessa est quam se ipsa cognosceret, et sola omnium provinci
 
 In hac prope ducentos per annos dimicatum est a primis Scipionibus in primum Caesarem Augustum, non continuo nec cohaerenter, sed prout causae lacessierant, nec cum Hispanis initio, sed cum Poenis in Hispania; inde contagium serpens causaeque bellorum.
 
-Prima per Pyrenaeum iugum signa Romana Publius et Gnaeus Scipiones intulerunt proeliisque ingentibus Annonem et Hasdrubalem fratres Annibalis ceciderunt; raptaque erat impetu Hispania, clarissimarum Freinshemius: clarissima codd. illae: ille BN: favillae lahnius: scintillae Woelfflinus. serpens Mommsenus: ad series B: et series NL. nisi fortissimi viri in ipsa victoria sua oppressi Punica fraude cecidissent, terra marique victores.
+Prima per Pyrenaeum iugum signa Romana Publius et Gnaeus Scipiones intulerunt proeliisque ingentibus Annonem et Hasdrubalem fratres Annibalis ceciderunt; raptaque erat impetu Hispania, nisi fortissimi viri in ipsa victoria sua oppressi Punica fraude cecidissent, terra marique victores.
 
 Igitur quasi novam integramque provinciam ultor patris et patrui Scipio ille mox Africanus invasit, isque statim capta Carthagine et aliis urbibus, non contentus Poenos expulisse, stipendiariam nobis provinciam fecit, omnes citra ultraque Hiberum subiecit imperio, primusque Romanorum ducum victor ad Gades et Oceani ora pervenit. Plus est provinciam retinere quam facere.
 
@@ -853,7 +853,7 @@ Metellus ille, qui ex Macedonia cognomen meruerat, et Celtibericus fieri meruit,
 
 Lucullus Turdulos atque Vaccaeos, de quibus ille Scipio posterior singulari certamine,
 
-cum rex fuisset provocator, opima rettulerat. Decimus Brutus aliquanto latius Celticos Lusitanosque et Contrebiam: cantabriam B: cum | trebiam L. Nertobrigae: nectobricae B: nersobrigis L. omnis Callaeciae populos formidatumque militibus flumen Oblivionis, peragratoque victor Oceani litore non prius signa convertit quam cadentem in maria solem obrutumque aquis ignem non sine quodam sacrilegii metu et horrore deprendit.
+cum rex fuisset provocator, opima rettulerat. Decimus Brutus aliquanto latius Celticos Lusitanosque et omnis Callaeciae populos formidatumque militibus flumen Oblivionis, peragratoque victor Oceani litore non prius signa convertit quam cadentem in maria solem obrutumque aquis ignem non sine quodam sacrilegii metu et horrore deprendit.
 
 Sed tota certaminum moles cum Lusitanis fuit et Numantinis. Nec inmerito. Quippe solis gentium Hispaniae duces contigerunt. Fuisset et cum omnibus Celtiberis, nisi dux illius motus initio belli vi oppressus esset, summi vir astus et audaciae, si processisset, Olyndicus, qui hastam argenteam quatiens quasi caelo missam vaticinanti similis omnium in se mentes converterat.
 
@@ -861,7 +861,7 @@ Sed cum pari temeritate sub nocte castra consulis adisset, iuxta tentorium ipsum
 
 Ceterum Lusitanos Viriatus erexit, vir calliditatis acerrimae. Qui ex venatore latro, ex latrone subito dux atque imperator et, si fortuna cessisset, Hispaniae Romulus, non contentus libertatem suorum defendere, per quattuordecim annos omnia citra ultraque Hiberum et Tagum igni ferroque populatus,
 
-castra etiam praetorum et praesidia adgressus, Claudium Vnimanum paene ad internicionem exercitus cecidit et insignia trabeis et fascibus nostris quae ceperat in montibus vi Iahnius: ut B. summi vir astus et audaciae scripsi: summae uir audaciae B: summus uir astutus et audaciae NL. quattuordecim: quattuor B: XIIII NL. praesidia Halmius: praesidium codd. cecidit et Freinshemius: cecidisset codd.
+castra etiam praetorum et praesidia adgressus, Claudium Vnimanum paene ad internicionem exercitus cecidit et insignia trabeis et fascibus nostris quae ceperat in montibus
 
 suis tropaea fixit. Tandem et eum Fabius Maximus consul oppresserat; sed a successore Popilio violata victoria est. Quippe qui conficiendae rei cupidus, fractum ducem et extrema deditionis agitantem per fraudem et insidias et domesticos percussores adgressus, hanc hosti gloriam dedit, ut videretur aliter vinci non posse.
 
@@ -871,7 +871,7 @@ Quippe quae sine muro, sine turribus, modice edito in tumulo apud flumen sita, q
 
 Non temere, si fateri licet, ullius causa belli iniustior. Segidenses, socios et consanguineos suos,
 
-Romanorum manibus elapsos, exceperant. Habita pro his deprecatio nihil valuit. Cum se ab omni bellorum contagione removerent, in legitimi foederis pretium iussi arma deponere. Hoc sic a barbaris fixit Freinshemius: fixisset codd. et eum scripsi: etiam codd. aliquando Lipsius: aliquanto codd. exceperant: susceperant B. acceptum, quasi manus absciderentur. Itaque statim Megaravico fortissimo duce ad arma conversi. Pompeium proelio adgressi, foedus tamen maluerunt, cum debellare potuissent; Hostilium deinde Manci-
+Romanorum manibus elapsos, exceperant. Habita pro his deprecatio nihil valuit. Cum se ab omni bellorum contagione removerent, in legitimi foederis pretium iussi arma deponere. Hoc sic a barbaris acceptum, quasi manus absciderentur. Itaque statim Megaravico fortissimo duce ad arma conversi. Pompeium proelio adgressi, foedus tamen maluerunt, cum debellare potuissent; Hostilium deinde Manci-
 
 num: hunc quoque adsiduis caedibus ita subegerunt, ut ne oculos quidem aut vocem Numantini viri quisquam sustineret.
 
@@ -885,7 +885,7 @@ nostro cum milite quam cum Numantino proeliandum fuit.
 
 Quippe adsiduis et iniustis et servilibus maxime operibus adtriti ferre plenius vallum, qui arma nescirent, luto inquinari, quia sanguine nollent, iubebantur. Ad hoc scorta, calones, sarcinae nisi ad usum necessariae amputantur.
 
-Tanti esse exercitum quanti imperatorem vere proditum est. Sic redacto in disciplinam Mancinus was placed unarmed and bound before the gates of Numantia, but the Numantines refused to take him prisoner (Veil. Pater. II, 1, 5). Cp. Liv. Spit. 57 (where the incident is referred to): militem triginta dierum frumenta ac septenos vallos ferre coegit. milite commissa acies, quodque nemo visurum se umquam speraverat factum, ut fugientes Numantinos quisquam videret.
+Tanti esse exercitum quanti imperatorem vere proditum est. Sic redacto in disciplinam milite commissa acies, quodque nemo visurum se umquam speraverat factum, ut fugientes Numantinos quisquam videret.
 
 Dedere etiam se volebant, si toleranda viris imperarentur. Sed cum Scipio veram vellet et sine exceptione victoriam, eo necessitatum conpulsi primum ut destinata morte in proelium ruerent, cum se prius epulis quasi inferiis implevissent carnis semicrudae et caeliae; sic vocant indigenam ex frumento potionem.
 
@@ -895,7 +895,7 @@ Sic conserta manu plurimi occisi, et cum urgueret fames, aliquantisper inde vixe
 
 Itaque deplorato exitu in ultimam rabiem furoremque conversi, postremo Rhoecogene duce se, suos, patriam ferro veneno, subiecto igne undique pere-
 
-gerunt. Macte fortissimam et meo iudicio beatissimam in ipsis malis civitatem. Adseruit cum fide socios, populum orbis terrarum viribus fultum tam parva manu aetate tam longa sustinuit. Novissime caeliae NL: praellae B. vixerunt: vicerunt B. cingulis: singuli B. esse post macte add. codd. del. Aldus. maximo duce oppressa civitas nullum de se gaudium hosti reliquit.
+gerunt. Macte fortissimam et meo iudicio beatissimam in ipsis malis civitatem. Adseruit cum fide socios, populum orbis terrarum viribus fultum tam parva manu aetate tam longa sustinuit. Novissime maximo duce oppressa civitas nullum de se gaudium hosti reliquit.
 
 Unus enim vir Numantinus non fuit qui in catenis duceretur; praeda, ut de pauper-rimis, nulla: arma ipsi cremaverunt. Triumphus fuit tantum de nomine,
 
@@ -907,7 +907,7 @@ sicut poetae canunt, iure meritoque fateatur, centum sequentes ferreos plane et 
 
 gladiatoria. Denique in se ipse conversus Marianis atque Sullanis,novissime Pompei et Caesaris manibus, quasi per rabiem et furorem—nefas!—semet ipse laceravit.
 
-Quae etsi iuncta inter se sunt omnia atque confusa, tamen quo melius appareant, tantum: tantus B. Siciliam om. B: Syriam Iahnius. Sullanis: Sillanis B. quae etsi L. Voss: quasi B: quaesi N. simul et ne scelera virtutibus obstrepant, separatim referentur, priusque, ut coepimus, iusta illa et pia cum exteris gentibus bella memorabimus, ut magnitudo crescentis in dies imperii appareat; tum ad illa civium scelera turpesque et inpias pugnas revertemur.
+Quae etsi iuncta inter se sunt omnia atque confusa, tamen quo melius appareant, simul et ne scelera virtutibus obstrepant, separatim referentur, priusque, ut coepimus, iusta illa et pia cum exteris gentibus bella memorabimus, ut magnitudo crescentis in dies imperii appareat; tum ad illa civium scelera turpesque et inpias pugnas revertemur.
 
 Victa ad occasum Hispania populus Romanus ad orientem pacem agebat, nec pacem modo, sed inusitata et incognita quadam felicitate relictae regiis hereditatibus opes et tota insemel regna veniebant.
 
@@ -915,7 +915,7 @@ Attalus rex Pergamenorum, regis Eumenis filius, socii quondam commilitonisque no
 
 sed,
 
-quod aequius, testamenti iure retinebat. Sed hanc difficile dictu est utrum facilius amiserit populus Romanus an recuperaverit. Aristonicus, regii sanguinis ferox iuvenis, urbis regibus parere consuetas partim facile sollicitat, paucas resistentis, Myndon, Samon, Colophona vi recepit; Crassi quoque praetoris cecidit exercitum ipsumque cepit. referentur Halmius: perferentur codd. Myndon: myndam B. cecidit Rehd.: caede codd.
+quod aequius, testamenti iure retinebat. Sed hanc difficile dictu est utrum facilius amiserit populus Romanus an recuperaverit. Aristonicus, regii sanguinis ferox iuvenis, urbis regibus parere consuetas partim facile sollicitat, paucas resistentis, Myndon, Samon, Colophona vi recepit; Crassi quoque praetoris cecidit exercitum ipsumque cepit.
 
 Sed ille memor et familiae et Romani nominis custodem barbarum virgula excaecat et in exitium sui, quod volebat, ita concitat.
 
@@ -927,7 +927,7 @@ HAEC ad orientem; sed non ad meridianam plagam eadem quies. Quis speraret post C
 
 Quippe rex callidissimus populum Romanum armis invictum opibus adgressus est; citra spem omnium fortuna cessit,
 
-ut rex fraude praecipuus fraude caperetur. Hic, Massinissa avo, Micipsa patre per adoptionem, cum interficere fratres statuisset agitatus regni cupiditate, nec illos magis quam senatum populumque Romanum, quorum in fide et in clientela regnum sui post custodem delevi. erat, metueret, primum scelus mandat insidiis.
+ut rex fraude praecipuus fraude caperetur. Hic, Massinissa avo, Micipsa patre per adoptionem, cum interficere fratres statuisset agitatus regni cupiditate, nec illos magis quam senatum populumque Romanum, quorum in fide et in clientela regnum erat, metueret, primum scelus mandat insidiis.
 
 Potitus Hiempsalis capite cum se in Adherbalem convenisset isque Romam profugisset, missa per legatos pecunia traxit in sententiam suam senatum.
 
@@ -941,7 +941,7 @@ Cuius flagitii reus cum interveniente publica fide a senatu arcesseretur, pari a
 
 Haec altera contra regem causa belli fuit. Igitur sequens ultio mandatur Albino. Sed huius quoque—pro dedecus—frater ita corrupit exercitum, ut voluntaria nostrorum fuga vinceret Numida castrisque poteretur, addito etiam turpi foedere in pretium salutis, quo quos emerat dimisit exercitus.
 
-Tandem in ultionem non tam imperii Romani quo Perizonius: quod codd. quam pudoris Metellus adsurgit, qui callidissime hostem nunc precibus nunc minis, iam simulata iam vera fuga eludentem artibus suis adgressus est.
+Tandem in ultionem non tam imperii Romani quam pudoris Metellus adsurgit, qui callidissime hostem nunc precibus nunc minis, iam simulata iam vera fuga eludentem artibus suis adgressus est.
 
 Agrorum atque vicorum populatione non contentus in ipsa Numidiae capita impetum fecit; et Zamam quidem frustra adsiluit, ceterum Thalam, gravem armis thensaurisque regiis, diripuit.
 
@@ -955,7 +955,7 @@ Mox non ipsum modo, sed Bocchum quoque Mauretaniae regem, iure sanguinis Numidas
 
 Qui ubi diffisus rebus suis alienae cladis accessio fieri timet, pretium foederis atque amicitiae regem facit.
 
-Sic fraudulentissimus regum fraude gener soceri sui in insidias deductus non add. Aldus. contentus: contemptus codd. adsiluit Freudenbergius: diuoluit B: diu uoluit NL. regiis Halmius: regii B: regis NL. Molucham Aldus: molucam B. Sullae in manum traditur, tandemque opertum catenis Iugurtham in triumpho populus Romanus aspexit.
+Sic fraudulentissimus regum fraude gener soceri sui in insidias deductus Sullae in manum traditur, tandemque opertum catenis Iugurtham in triumpho populus Romanus aspexit.
 
 Sed ille quoque, quamvis victus ac vinctus, vidit urbem, quam venalem et quandoque perituram, si habuisset emptorem, frustra cecinerat. Iam, ut venalis fuisset, habuit emptorem; cum illum evaserat, certum erat non esse perituram.
 
@@ -967,7 +967,7 @@ Prima trans Alpes arma nostra sensere Saluvii, cum de eis fidissima atque amicis
 
 Allobroges deinde et Arveni, cum adversus eos similes Haeduorum querellae opem et auxilium nostrum flagitarent: utriusque victoriae testes Isara et Vindelicus amnes et inpiger fluminum Rhodanus.
 
-Maximus barbaris terror elephanti fuere, inmanitati gentium pares. Nihil tam conspicuum in triumpho quam rex ipse Bituitus dis- sullae N: sillae B. laciniam post venientem indicavit Mommsenus: saevitum vel saeviente Aldus: venit malum vel exitium Rossbachius. eos add. Voss. Rehd. Monac. Palat. utriusque lahnius: variusque codd. testes Dukerus: testis codd. elephanti N L: elephantis B. Bituitus: vituitus B: bis visus N L. coloribus in armis argenteoque carpento, qualis pugnaverat.
+Maximus barbaris terror elephanti fuere, inmanitati gentium pares. Nihil tam conspicuum in triumpho quam rex ipse Bituitus dis- coloribus in armis argenteoque carpento, qualis pugnaverat.
 
 Utriusque victoriae quod quantumque gaudium fuerit, vel hinc aestimari potest, quod et Domitius Ahenobarbus et Fabius Maximus ipsis quibus dimicaverant locis saxeas erexere turres, et desuper exornata armis hostilibus tropaea fixerunt, cum hic mos inusitatus fuerit nostris. Numquam enim populus Romanus hostibus domitis victoriam exprobravit.
 
@@ -979,7 +979,7 @@ Sed quas daret terras populus Romanus agrariis legibus inter se dimicaturus? Rep
 
 armis petere coeperunt.Sed nec primum impetum barbarorum Silanus, nec secundum Manilius, nec tertium Caepio sustinere potuerunt; omnes fugati,
 
-exuti castris. Actum erat, nisi Marius illi saeculo contigisset. Ille quoque non ausus congredi statim militem tenuit in castris, donec invicta illa rabies coeperunt: ceperunt B: constituunt N L. et impetus, quem pro virtute barbari habent, consenesceret.
+exuti castris. Actum erat, nisi Marius illi saeculo contigisset. Ille quoque non ausus congredi statim militem tenuit in castris, donec invicta illa rabies et impetus, quem pro virtute barbari habent, consenesceret.
 
 Recessere igitur increpantes et—tanta erat capiendae urbis fiducia—consulentes, si quid ad uxores suas mandarent. Nec segnius quam minati fuerant tripertito agmine in Alpes, id est claustra Italiae, ferebantur.
 
@@ -991,7 +991,7 @@ Nam flagitante aquam exercitu, Si viri estis, inquit en, illic habetis. Itaque t
 
 Certe rex ipse Teutobodus, quaternos senosque equos transilire solitus, vix unum, cum fugeret, ascendit, proximoque in saltu conprehensus insigne spectaculum triumphi fuit, Quippe vir proceritatis eximiae super tropaea sua eminebat.
 
-Sublatis funditus Teutonis in Cimbros convertitur. quo fidem Salmasius: pro fide B: qua fide L. flagitante aquam exercitu: flagitantem aquam exercitum B. Teutobodus: teuto vocatus B: teutobocus NL. Hi iam—quis crederet?—per hiemem, quae altius Alpes levat, Tridentinis iugis in Italiam provoluti veluti ruina descenderant.
+Sublatis funditus Teutonis in Cimbros convertitur. Hi iam—quis crederet?—per hiemem, quae altius Alpes levat, Tridentinis iugis in Italiam provoluti veluti ruina descenderant.
 
 Atesim flumen non ponte nec navibus, sed quadam stoliditate barbarica primum corporibus adgressi, postquam retinere amnem manibus et clipeis frustra temptaverant,
 
@@ -1001,7 +1001,7 @@ Venere ipsi—nam metus in barbaris nulla vestigia—et diem pugnae a nostro imp
 
 Istic quoque imperator addiderat virtuti dolum, secutus Annibalem artemque Cannarum; primum nebulosum nanctus diem, ut hosti inopinatus occurreret, tum ventosum quoque, ut pulvis in oculos et ora ferretur, tum acie conversa in orientem, ut, quod ex captivis mox cognitum est, ex splendore galearum aere repercusso quasi ardere caelum videretur.
 
-Nec minor veluti add. N. Heinsius. Atesim Salmasius: adesim B: ad hostes in N L. locus valde corruptus: est—vestigia om. B: venere— vestigia om. L: venere illi quam et in barbaris multa vestigia ceteri: venere ipsi—nam metus in barbaris nulla vestigia—et etc. Halmius. aere repercusso lahnius: aere percusso B. cum uxoribus eorum pugna quam cum ipsis fuit; cum obiectis undique plaustris atque carpentis altae desuper securibus contisque pugnarent.
+Nec minor cum uxoribus eorum pugna quam cum ipsis fuit; cum obiectis undique plaustris atque carpentis altae desuper securibus contisque pugnarent.
 
 Perinde speciosa mors earum fuit quam pugna. Nam cum missa ad Marium legatione libertatem ac sacerdotium non inpetrassent (nec fas erat), suffocatis elisisque passim infantibus suis aut mutuis concidere vulneribus aut vinculo e crinibus suis facto ab arboribus iugisque plaustrorum pependerunt.
 
@@ -1011,7 +1011,7 @@ Hunc tam laetum tamque felicem liberatae Italiae adsertique imperii nuntium non 
 
 Quippe eodem die quo gesta res est visi pro aede Pollucis et Castoris iuvenes laureatas praetori litteras dare, frequensque in spectaculo rumor victoriae Cimbricae.
 
-feliciter! dixit. Quo quid admirabilius, quid insignius fieri potest? Quippe velut elata montibus suis Roma spectaculo belli interesset, quod in Boiorix: Boleris BL: bo eloris N. et NL: e B. si credere fas est: fas est si credere B. post Cimbricae lacunam statuit lahnius. gladiatorio munere fieri solet, uno eodemque momento, cum in acie Cimbri succumberent, populus in urbe plaudebat.
+feliciter! dixit. Quo quid admirabilius, quid insignius fieri potest? Quippe velut elata montibus suis Roma spectaculo belli interesset, quod in gladiatorio munere fieri solet, uno eodemque momento, cum in acie Cimbri succumberent, populus in urbe plaudebat.
 
 Post Macedonas, si dis placet, Thraces rebellant, illi quondam tributarii Macedonum; nec in proximas modo provincias contenti incurrere, Thessaliam atque Dalmatiam, in Adriaticum mare usque venerunt; eoque fine retenti, quasi interveniente natura.
 
@@ -1021,7 +1021,7 @@ Saevissimi omnium Thracum Scordisci fuere, sed calliditas quoque ad robur access
 
 silvarum et montium situs cum ingenio consentiebant. Itaque non fusus modo ab his aut fugatus, sed—simile prodigio—omnino totus interceptus exercitus quem duxerat Cato.
 
-Didius vagos et libera populatione diffusos intra suam reppulit Thraciam. Drusus ulterius egit et vetuit transire Danuvium. Minucius toto vastavit Hebro, multis quidem amissis, dum per retenti Graevius: contenti codd. per id omne: peridomne L: perdi omne N: per imperium donec B. simile Aldus: simili BL. per om. B.
+Didius vagos et libera populatione diffusos intra suam reppulit Thraciam. Drusus ulterius egit et vetuit transire Danuvium. Minucius toto vastavit Hebro, multis quidem amissis, dum per
 
 perfidum glacie flumen equitatur. Volso Rhodopen Caucasumque penetravit. Curio Dacia tenus venit, sed tenebras saltuum expavit. Appius in Sarmatas usque pervenit, Lucullus ad terminum gentium Tanain lacumque Maeotim.
 
@@ -1031,7 +1031,7 @@ Ponticae gentes a septentrione in sinistrum iacent, a Pontico cognominatae mari.
 
 omnium longe maximus. Quippe cum quattuor Pyrrho, tredecim anni Annibali suffecerint, ille per quadraginta annos restitit, donec tribus ingentibus bellis subactus felicitate Sullae, virtute Luculli, magnitudine Pompei consumeretur.
 
-Causam quidem illius belli praetenderat apud Cassium legatum, adtrectari terminos suos a Nicomede Bithyno; ceterum elatus animis ingentibus Asiae totius et, Caucasumque: cauca umque B: Haemumque Iahnius. Aeetas: aetas N: aetas B: etas L. tredecim B: quattuordecim NL. Sullae: syllae N L: sillae B.
+Causam quidem illius belli praetenderat apud Cassium legatum, adtrectari terminos suos a Nicomede Bithyno; ceterum elatus animis ingentibus Asiae totius et,
 
 si posset, Europae cupiditate flagrabat. Spem ac fiduciam dabant nostra vitia. Quippe cum civilibus bellis distringeremur, invitabat occasio, nudumque latus imperii ostendebant procul Marius, Sulla,
 
@@ -1055,7 +1055,7 @@ sed incendit. Quippe rex Asia et Europa quodam modo inescatus non iam quasi alie
 
 Igitur ut extincta parum fideliter incendia maiore flamma revivescunt, ita ille de integro, auctis maiorem in modum copiis, tota denique regni sui mole in Asiam rursus mari terra fluminibusque veniebat.
 
-Cyzicus, nobilis civitas, arce, moenibus, portu turribusque marmoreis Asiaticae plagae litora inlustrat. Hanc ille quasi alteram Romam toto invaserat depulisset: dispulisset BL. a: et B. Nicomedes, Ariobarzanes: nichomede abariobar zenae B. tantum: tantus B. alienas raptas scripsi: alienam raptam codd. Cyzicus: ei zicus B: Cyzicum NL.
+Cyzicus, nobilis civitas, arce, moenibus, portu turribusque marmoreis Asiaticae plagae litora inlustrat. Hanc ille quasi alteram Romam toto invaserat
 
 bello. Sed fiduciam oppidanis resistendi nuntius fecit, docens adventare Lucullum, qui—horribile dictu—per medias hostium naves utre suspensus et pedibus iter gubernans, videntibus procul quasi marina pristis evaserat.
 
@@ -1069,7 +1069,7 @@ Ad-tritae iam omnes validissimi regni vires erant, sed animus malis augebatur.
 
 Itaque conversus ad proximas gentes totum paene orientem ac septentrionem ruina sua involvit. Hiberi, Caspii, Albani et utraeque sollicitantur Armeniae, per quae omnia decus et nomen et titulos gloriae Pompeio suo Fortuna quaerebat.
 
-Qui ubi novis motibus ardere Asiam videt aliosque ex aliis prodire reges, nihil cecidit L: caedit B: caecidit N. Aesepus Salmasius: aesopus codd. centum om. B. Pontico: in pontico NL: pontu B. cunctandum ratus, priusquam inter se gentium robora coirent, statim ponte navibus facto omnium ante se primus transiit Euphratem regemque fugientem media nanctus Armenia—quanta felicitas viri—uno proelio confecit.
+Qui ubi novis motibus ardere Asiam videt aliosque ex aliis prodire reges, nihil cunctandum ratus, priusquam inter se gentium robora coirent, statim ponte navibus facto omnium ante se primus transiit Euphratem regemque fugientem media nanctus Armenia—quanta felicitas viri—uno proelio confecit.
 
 Nocturna ea dimicatio fuit et Luna in partibus. Quippe quasi commilitans cum dea a tergo se hostibus, a facie Romanis praebuisset, Pontici per errorem longius cadentis umbras suas quasi hostium corpora petebant.
 
@@ -1081,13 +1081,13 @@ Sed defectione civium Pharnacisque filii scelere praeventus male temptatum venen
 
 Gnaeus interim Magnus rebellis Asiae reliquias sequens per diversa gentium terrarumque volitabat. Nam sub orientem secutus Armenios, captis, ipso capite gentis, Artaxatis, supplicem iussit regnare Tigranen.
 
-At in septentrione Scythicum iter tamquam in mari stellis secutus Colchos cecidit, ignovit Hiberiae, pepercit Albanis. Regem horum Oroden quasi post cum add. B. valuit om. B. captis, ipso capite gentis, Artaxatis NL: captae gentis atrapens supplicem ceteris omissis B. horum Graevius: colchorum codd. Oroden: orhozen B. positis sub ipso Caucaso castris iussit in plana descendere, at Arthocen, qui Hiberis imperabat, obsides liberos dare; Oroden etiam muneravit, ultro ab Albania sua lectum aureum et alia dona mittentem.
+At in septentrione Scythicum iter tamquam in mari stellis secutus Colchos cecidit, ignovit Hiberiae, pepercit Albanis. Regem horum Oroden positis sub ipso Caucaso castris iussit in plana descendere, at Arthocen, qui Hiberis imperabat, obsides liberos dare; Oroden etiam muneravit, ultro ab Albania sua lectum aureum et alia dona mittentem.
 
 Nec non in meridiem verso agmine Libanum Syriae Damascumque transgressus per nemora illa odorata, per turis et balsami silvas Romana signa circumtulit.
 
 Arabes, si quid imperaret, praesto fuere. Hierosolyma defendere temptavere Iudaei; verum haec quoque et intravit et vidit illud grande inpiae gentis arcanum patens, sub aurea vite caelum. Dissidentibusque de regno fratribus arbiter factus regnare iussit Hyrcanum; Aristobolum, quia renovabat imperium, in catenas dedit.
 
-Sic Pompeio duce populus Romanus totam,qua latissima est, Asiam pervagatus, quam extremam imperii habebat provinciam mediam fecit. Exceptis quippe Parthis, qui foedus maluerunt, et Indis, qui adhuc nos nec noverant, omnis Asia inter Rubrum et Caspium et Oceanum Pompeianis domita vel oppressa signis tenebatur. post imperabat add. et codd., dei. Iahnius. Oroden: horolen B. Hierosolyma: ierosolimam B: hierosolymam N. vite: vitae B. totam: tota B: totum (-am man. sec.) N.
+Sic Pompeio duce populus Romanus totam,qua latissima est, Asiam pervagatus, quam extremam imperii habebat provinciam mediam fecit. Exceptis quippe Parthis, qui foedus maluerunt, et Indis, qui adhuc nos nec noverant, omnis Asia inter Rubrum et Caspium et Oceanum Pompeianis domita vel oppressa signis tenebatur.
 
 Interim cum populus Romanus per diversa terrarum districtus est, Cilices invaserant maria sublatisque commerciis, rupto foedere generis humani, sic maria bello quasi tempestate praecluserant.
 
@@ -1113,7 +1113,7 @@ Sic per omnis aequoris portus, sinus, latebras, recessus, promontoria, freta, pa
 
 Ipse Pompeius in originem fontemque belli Ciliciam; nec hostes detractavere certamen.
 
-Non ex fiducia, sed quia oppressi erant, ausi Atilius Gronovius: gratillus B: gratillius NL. Pomponius Dukerus: Pompeius codd. Marcellinus Libycum scripsi: Libycum Marcellinus codd. Ionicum Ormerodius: Ponticum et codd. porta Lipsius: portam codd. videbantur; sed nihil tamen amplius, quam ut ad primum ictum concurrerent. Mox ubi circumfusa undique rostra viderunt,abiectis statim telis remis-que plausu undique pari, quod supplicantium signum fuit, vitam petiverunt.
+Non ex fiducia, sed quia oppressi erant, ausi videbantur; sed nihil tamen amplius, quam ut ad primum ictum concurrerent. Mox ubi circumfusa undique rostra viderunt,abiectis statim telis remis-que plausu undique pari, quod supplicantium signum fuit, vitam petiverunt.
 
 Non alia tam incruenta victoria usi umquam sumus, sed nec fidelior in posterum reperta gens ulla est; idque prospectum singulari consilio ducis, qui maritimum genus a conspectu longe removit maris et mediterraneis agris quasi obligavit, eodemque tempore et usum maris navibus recuperavit et terrae homines suos reddidit.
 
@@ -1123,7 +1123,7 @@ Creticum bellum, si vera volumus, nos fecimus sola vincendi nobilem insulam cupi
 
 Primus invasit insulam Marcus Antonius cum ingenti quidem victoriae spe atque fiducia, adeo ut pluris catenas in navibus quam arma portaret.
 
-Dedit itaque poenas vaecordiae. Nam plerasque naves intercepit hostis, captivaque corpora religantes velis ac funibus suspendere, ac sic velifi- viderunt: viderent B. reperta gens ulla est om. B. nos fecimus sed. Iahnius. cantes triumphantem in modum Cretes portibus suis adremigaverunt.
+Dedit itaque poenas vaecordiae. Nam plerasque naves intercepit hostis, captivaque corpora religantes velis ac funibus suspendere, ac sic velifi- cantes triumphantem in modum Cretes portibus suis adremigaverunt.
 
 Metellus deinde totam insulam igni ferroque populatus intra castella et urbes redegit, Cnoson Eleuthernan et, ut Graeci dicere solent, urbium matrem Cydoneam;
 
@@ -1137,7 +1137,7 @@ Baleares per id tempus insulae piratica rabie maria corruperant. Homines feros a
 
 Ascendere etiam inconditas rates et praeternavigantes subinde inopinato impetu terruere.
 
-Sed cum venientem ab alto Romanam classem pro- Eleuthernan: aetery threan B: et erythream N. consulebatur: consolebatur B: consulabatur N. alienam Mommsenus: aliam B. agnominibus: bacnominibus B: nominibus NL. spexissent, praedam putantes, ausi etiam occurrere, et primo impetu ingenti lapidum saxorumque nimbo classem operuerunt.
+Sed cum venientem ab alto Romanam classem pro- spexissent, praedam putantes, ausi etiam occurrere, et primo impetu ingenti lapidum saxorumque nimbo classem operuerunt.
 
 Tribus quisque fundis proeliantur. Certos esse quis miretur ictus, cum haec sola genti arma sint, id unum ab infantia studium? cibum puer a matre non accipit, nisi quem ipsa monstrante percusserit. Sed non diu lapidatione Romanos terruere.
 
@@ -1149,7 +1149,7 @@ Sed divitiarum tanta erat fama, nec falso, ut victor gentium populus et donare r
 
 Et ille quidem ad rei famam veneno fata praecepit.
 
-Ceterum Porcius Cato Cyprias opes Liburnis per Tiberinum ostium invexit. Quae res latius aerarium populi Romani quam ullus triumphus implevit. accipit: accepit B.
+Ceterum Porcius Cato Cyprias opes Liburnis per Tiberinum ostium invexit. Quae res latius aerarium populi Romani quam ullus triumphus implevit.
 
 Asia Pompei manibus subacta reliqua, quae restabant in Europa, Fortuna in Caesarem transtulit.
 
@@ -1159,7 +1159,7 @@ hoc sacramentum fuit, ne redirent. Sed petito tempore ad deliberandum, cum inter
 
 Sequens longe longeque cruentior pugna Belgarum, quippe pro libertate pugnantium. Hic cum multa Romanorum militum insignia, tum illud egregium ipsius ducis, quod, nutante in fugam exercitu, rapto fugientis e manu scuto in primam volitans aciem manu proelium restituit.
 
-Inde cum Venetis etiam navale bellum, sed maior cum Oceano quam cum ipsis navibus rixa. Quippe illae rudes et informes et statim naufragae, cum rostra sensissent; sed haerebat in vadis pugna, fugam Rhed.: fuga cet. cum aestibus solitis in ipso certamine subductus Oceanus intercedere bello videretur.
+Inde cum Venetis etiam navale bellum, sed maior cum Oceano quam cum ipsis navibus rixa. Quippe illae rudes et informes et statim naufragae, cum rostra sensissent; sed haerebat in vadis pugna, cum aestibus solitis in ipso certamine subductus Oceanus intercedere bello videretur.
 
 Illae quoque accessere diversitates pro gentium locorumque natura. Aquitani, callidum genus, in speluncas se recipiebant: iussit includi; Morini dilabebantur in silvas:iussit incendi. Nemo tantum feroces dixerit Gallos:
 
@@ -1173,7 +1173,7 @@ Et prima contra Germanos illius pugna iustissimis quidem ex causis. Haedui de in
 
 Quae Ariovisti regis superbia! cui cum legati dicerent veni ad Caesarem, et quis est Caesar? et si vult, veniat inquit, et quid ad illum, quid agat nostra Germania? num ego me interpono Romanis?
 
-Itaque tantus gentis novae terror in castris, ut testamenta passim etiam in Morini dilabebantur in silvas Vinetus: morabantur in silvis B: nec mora dilabebantur in silvas A. Aurunculeium Perizonius: aurum ablatum codd. Titurio: tirio B. Ariovisti: tario bisti B: ario iusti L. principiis scriberentur. Sed illa inmania corpora quo maiora erant, eo magis gladiis ferroque patuerunt.
+Itaque tantus gentis novae terror in castris, ut testamenta passim etiam in principiis scriberentur. Sed illa inmania corpora quo maiora erant, eo magis gladiis ferroque patuerunt.
 
 Qui calor in proeliando militum fuerit, nullo magis exprimi potest quam quod, elatis super caput scutis cum se testudine barbarus tegeret, super ipsa Romani scuta salierunt, et inde in iugulos gladiis descendebant.
 
@@ -1183,7 +1183,7 @@ Nec semel Rhenus, sed iterum quoque, et quidem ponte facto penetratus est. Maior
 
 Omnibus terra marique peragratis respexit Oceanum et, quasi hic Romanis orbis non sufficeret, alterum cogitavit. Classe igitur conparata Britanniam transit mira celeritate; quippe qui tertia vigilia cum Morinorum solvisset a portu, minus quam medio die insulam ingressus est.
 
-Plena erant tumultu hostico litora, et trepidantia ad conspectum rei Tencteri: genteri B: centeri NL: treviri Aldus. Mosellam Monac.: musellam B: massiliam NL. Romanus visus Rossbachius: romana vis BN. cum Morinorum solvisset Halmius: com morinos movisset B: marino solvisset (om. cum) N L. hostico: hostilico (li in margine additum) B. novae carpenta volitabant. Itaque trepidatio pro victoria fuit. Arma et obsides accepit a trepidis, et ulterius isset, nisi inprobam classem naufragio castigasset Oceanus.
+Plena erant tumultu hostico litora, et trepidantia ad conspectum rei novae carpenta volitabant. Itaque trepidatio pro victoria fuit. Arma et obsides accepit a trepidis, et ulterius isset, nisi inprobam classem naufragio castigasset Oceanus.
 
 Reversus igitur in Galliam, classe maiore auctisque copiis in eundem rursus Oceanum eosdemque rursus Britannos. Caledonas secutus in silvas unum quoque e regibus Casuellanum in vincla dedit.
 
@@ -1193,7 +1193,7 @@ Sed maxima omnium eademque novissima coniuratio fuit Galliarum, cum omnis parite
 
 Ille festis diebus et conciliabulis, cum frequentissimos in lucis haberet, ferocibus dictis ad ius pristinum libertatis erexit.
 
-Aberat tunc Caesar Ravennae dilectum agens, et hieme creverant Alpes: sic interclusum putabant iter. Sed ille qualis erat ad nuntium rei felicissima temeritate per invios ad id tempus montium tumulos, per intactas vias et nives, e: et B. Casuellanum Rossbachius (cf. Dio, XL. 2, 3, Polyaen. VIII. 23, 5): cas | uella B: cavelianis N L. omnis X: omnes L. post contraxit add. hi B, ille N L. felicissima temeritate Salmasius: felicissimae temeritatis codd. expedita manu emensus Galliam, et ex distantibus hibernis castra contraxit, et ante in media Gallia fuit, quam ab ultima timeretur.
+Aberat tunc Caesar Ravennae dilectum agens, et hieme creverant Alpes: sic interclusum putabant iter. Sed ille qualis erat ad nuntium rei felicissima temeritate per invios ad id tempus montium tumulos, per intactas vias et nives, expedita manu emensus Galliam, et ex distantibus hibernis castra contraxit, et ante in media Gallia fuit, quam ab ultima timeretur.
 
 Tum ipsa capita belli adgressus urbes, Avaricum quadraginta milium propugnantium sustulit, Alesiam ducentorum quinquaginta milium iuventute subnixam flammis adaequavit.
 
@@ -1205,7 +1205,7 @@ novissime in deditionem redegit. Ipse ille rex, maximum victoriae decus, supplex
 
 Dum Gallos per Caesarem in septentrione debellat, ipse interim ad orientem grave volnus a Parthis populus Romanus accepit. Nec de fortuna queri possumus;
 
-caret solacio clades. Adversis et dis et hominibus cupiditas consulis Crassi, dum Parthico inhiat auro, undecim strage legionum et ipsius Avaricum: salaricum B: alvaricum N: aviaricum in alvaricum mut. L. sustulit sed. Iahnius. habe Petrarca: habes codd.
+caret solacio clades. Adversis et dis et hominibus cupiditas consulis Crassi, dum Parthico inhiat auro, undecim strage legionum et ipsius
 
 capite multata est. Et tribunus plebi Metellus exeuntem ducem hostilibus diris devoverat, et cum Zeugma transisset exercitus, rapta subitis signa turbinibus hausit Euphrates,
 
@@ -1221,13 +1221,13 @@ Itaque vixdum venerat Carrhas, cum undique praefecti regis Silaces et Surenas os
 
 Ipse in conloquium sollicitatus, signo dato vivus hostium in manus incidisset, nisi tribunis reluctantibus fugam ducis barbari ferro occupassent.
 
-Sic quoque relatum caput ludibrio hostibus fuit. Filium ducis hostilibus: hostibus B. Orode: herode B. Mazarae: mazare BL. tum om. B: dum L. Surenas Aldus: sirenas B: syrenas NL. sic—fuit sed. Iahnius. paene in conspectu patris idem telis operuerunt. Reliquiae infelicis exercitus, quo quemque rapuit fuga, in Armeniam, Ciliciam Syriamque distractae, vix nuntium cladis rettulerunt. Caput eius recisum cum dextera manu ad regem reportatum ludibrio fuit, neque indigno. Aurum enim liquidum in rictum oris infusum est, ut cuius animus arserat auri cupiditate, eius etiam mortuum et exsangue corpus auro ureretur.
+Sic quoque relatum caput ludibrio hostibus fuit. Filium ducis paene in conspectu patris idem telis operuerunt. Reliquiae infelicis exercitus, quo quemque rapuit fuga, in Armeniam, Ciliciam Syriamque distractae, vix nuntium cladis rettulerunt. Caput eius recisum cum dextera manu ad regem reportatum ludibrio fuit, neque indigno. Aurum enim liquidum in rictum oris infusum est, ut cuius animus arserat auri cupiditate, eius etiam mortuum et exsangue corpus auro ureretur.
 
 HAEC est illa tertia aetas populi Romani trans-marina, qua Italia progredi ausus orbe toto arma circumtulit, Cuius aetatis superiores centum anni sancti, pii et, ut diximus, aurei, sine flagitio, sine scelere, dum sincera adhuc et innoxia pastoriae illius sectae integritas, dumque Poenorum hostium inminens metus disciplinam veterem continebat.
 
 Posteri centum, quos a Carthaginis, Corinthi Numantiaeque excidiis et Attali regis Asiatica hereditate deduximus in Caesarem et Pompeium secutumque hos, de quo dicemus, Augustum, ut claritate rerum bellicarum magnifici, ita domesticis cladibus miseri et erubescendi.
 
-Quippe sicut Galliam, Thraciam, Ciliciam, Cappadociam, uberrimas vali- quo om. B. tertia om. B. dicemus Voss. Palat.: dicimus cet. dissimasque provincias, Armenios etiam et Britannos, ut non in usum, ita ad imperii speciem magna nomina adquisisse pulchrum ac decorum:
+Quippe sicut Galliam, Thraciam, Ciliciam, Cappadociam, uberrimas vali- dissimasque provincias, Armenios etiam et Britannos, ut non in usum, ita ad imperii speciem magna nomina adquisisse pulchrum ac decorum:
 
 ita eodem tempore dimicasse domi cum civibus, sociis, mancipiis, gladiatoribus totoque inter se senatu turpe atque miserandum.
 
@@ -1239,7 +1239,7 @@ mox Asiatica Pergameni regis hereditas. Illae opes atque divitiae adflixere saec
 
 Unde iudiciariis legibus divulsus ab senatu eques nisi ex avaritia, ut vectigalia rei publicae atque ipsa iudicia in quaestu haberentur? Hinc Drusus et promissa civitas Latio et per hoc arma sociorum.
 
-Quid autem? Bella servilia unde nobis nisi ex abundantia familiarum? Unde gladiatorii adversum an satius: ac satis B. carere: parcere B. Gracchanae Iahnius: gracchana et L: grachana et B. ab: at B. dominos suos exercitus, nisi ad conciliandum plebis favorem effusa largitio, dum spectaculis indulget,
+Quid autem? Bella servilia unde nobis nisi ex abundantia familiarum? Unde gladiatorii adversum dominos suos exercitus, nisi ad conciliandum plebis favorem effusa largitio, dum spectaculis indulget,
 
 supplicia quondam hostium artem faceret? Iam ut speciosiora vitia tangamus, nonne ambitus honorum ab isdem divitiis concitatus? Atquin inde Mariana, inde Sullana tempestas.
 
@@ -1259,7 +1259,7 @@ populum vivere ex aerario suo? Quid ad ius libertatis aequandae magis efficax qu
 
 et misera res publica in exitium sui merces erat.
 
-Nam et a senatu in equitem translata iudiciorum potestas vectigalia, id quid ad ius: quid satius B: quid ius L. niteretur: uteretur B. in exitium: inexilium B.
+Nam et a senatu in equitem translata iudiciorum potestas vectigalia, id
 
 est imperii patrimonium, subprimebat, et emptio frumenti ipsos rei publicae nervos exhauriebat, aerarium; et reduci plebs in agros unde poterat sine possidentium eversione, qui ipsi pars populi erant, et iam relictas sibi a maioribus sedes aetate quasi iure possidebant?
 
@@ -1271,7 +1271,7 @@ sive aequo et bono ductus, quia depulsam agris suis plebem miseratus est, ne pop
 
 quacumque mente rem ausus ingentem est. Postquam rogationis dies aderat, ingenti stipatus agmine rostra conscendit, nec deerat obvia manu tota inde nobilitas;
 
-et tribuni in partibus. Sed ubi intercedentem legibus suis C. Octavium videt Gracchus, contra fas collegii, ius potestatis, iniecta et iam Iahnius: et tam B: et tamen NL. Ti. add. Aldus. deditionis, quia: seditionis qua B. ne populus—exularet sed. Gruterus. est. postquam Halmius: sed postquam B. ius: iuris B. manu depulit rostris, adeoque praesenti metu mortis exterruit, ut abdicare se magistratu cogeretur.
+et tribuni in partibus. Sed ubi intercedentem legibus suis C. Octavium videt Gracchus, contra fas collegii, ius potestatis, iniecta manu depulit rostris, adeoque praesenti metu mortis exterruit, ut abdicare se magistratu cogeretur.
 
 Sic triumvir creatus dividendis agris, cum ad perpetranda coepta die comitiorum prorogari sibi vellet imperium, obvia nobilitas manu eorum, quos agris moverat.
 
@@ -1283,7 +1283,7 @@ Gracchus. Qui cum pari tumultu atque terrore plebem in avitos agros arcesseret, 
 
 iamque nimius et inpotens altero tribunatu secunda plebe volitaret,
 
-obrogare auso legibus suis Minucio tribuno, fretus inpotens Heinsius: potens codd. obrogare Vinetus: abrogare codd. comitum manu fatale familiae suae Capitolium invasit.
+obrogare auso legibus suis Minucio tribuno, fretus comitum manu fatale familiae suae Capitolium invasit.
 
 Inde proximorum caede depulsus cum se in Aventinum recepisset, inde quoque obvia senatus manu ab Opimio consule oppressus est.
 
@@ -1295,7 +1295,7 @@ Cum tot tantisque ludibriis exultaret inpune, rogandis Gracchorum legibus ita ve
 
 Unus tamen extitit, qui mallet exilium. Igitur post Metelli fugam omni nobilitate perculsa cum iam tertium annum dominaretur, eo vesaniae progressus est, ut consularia quoque comitia nova caede turbaret.
 
-Quippe ut satellitem furoris sui Glauciam qui seclusi. consulem faceret, C. Memmium conpetitorem interfici iussit, et in eo tumultu regem se a satellitibus suis appellatum laetus accepit.
+Quippe ut satellitem furoris sui Glauciam consulem faceret, C. Memmium conpetitorem interfici iussit, et in eo tumultu regem se a satellitibus suis appellatum laetus accepit.
 
 Tum vero iam conspiratione senatus, ipso quoque iam Mario consule, quia tueri non poterat, adverso, directae in foro acies;
 
@@ -1305,7 +1305,7 @@ POSTREMO LIVIUS Drusus non tribunatus modo viribus, sed ipsius etiam senatus auc
 
 dum alium captat ex alio, tantum conflavit incendium, ut nec primam illius flammam posset sustinere et subita morte correptus hereditarium in posteros suos bellum propagaret.
 
-Iudiciaria lege Gracchi diviserant populum Romanum et bicipitem ex una fecerant civitatem. Equites Romani tanta potestate subnixi, ut qui fata fortunasque principum C. Memmium: publium mummium B: c. menmium L: c. memmium N 2: cf. Liv. per. 69, Sail. Iug. 27, 2. se a satellitibus Halmius: exatellitibus B. nec Vinetus: ne codd. primam illius flammam Iahnius prima illius flamma codd. haberent in manu, interceptis vectigalibus pecula-bantur suo iure rem publicam; senatus exilio Metelli, damnatione Rutili debilitatus omne decus maiestatis amiserat.
+Iudiciaria lege Gracchi diviserant populum Romanum et bicipitem ex una fecerant civitatem. Equites Romani tanta potestate subnixi, ut qui fata fortunasque principum haberent in manu, interceptis vectigalibus pecula-bantur suo iure rem publicam; senatus exilio Metelli, damnatione Rutili debilitatus omne decus maiestatis amiserat.
 
 In hoc statu rerum pares opibus animis dignitate (unde et nata Livio Druso aemulatio)equitem Servilius Caepio, senatum Livius Drusus adserere.
 
@@ -1317,7 +1317,7 @@ Aderat promulgandi dies, cum subito tanta vis hominum undique apparuit, ut hosti
 
 Ausus tamen obrogare legibus consul Philippus, sed adprehensum faucibus viator non ante dimisit quam sanguis in os et oculos redundaret.
 
-Sic per vim latae iussaeque leges. Et pretium rogationis statim socii flagitare, cum inparem Drusum aegrumque rerum temere senatus L Voss. Monac. Palat,: pilatus B. unde et nata Livio Druso aemulatio Graevius: unde et natalium druso aemulatio accesserat B: unde et natalivio druso aemulatio accesserat N. equitem Voss. Rehd.: equitatem B: aequitum NL. isdemque: eisdem NL. extat L: exat B. motarum matura, ut in tali discrimine, mors abstulit. Nec ideo minussocii promissa Drusi a populo Romano reposcere armis desierunt.
+Sic per vim latae iussaeque leges. Et pretium rogationis statim socii flagitare, cum inparem Drusum aegrumque rerum temere motarum matura, ut in tali discrimine, mors abstulit. Nec ideo minussocii promissa Drusi a populo Romano reposcere armis desierunt.
 
 Sociale bellum vocetur licet, ut extenuemus invidiam, si verum tamen volumus, illud civile bellum fuit. Quippe cum populus Romanus Etruscos, Latinos Sabinosque sibi miscuerit et unum ex omnibus sanguinem ducat, corpus fecit ex membris et ex omnibus unus est;
 
@@ -1331,7 +1331,7 @@ Quid hac clade tristius? Quid calamito-sius? Cum omne Latium atque Picenum, Etru
 
 cum omne robur fortissimorum fidelissimorumque sociorum sub suis quisque signis haberent municipalia illa prodigia, Poppaedius Marsos et Paelignos3, Latinos Afranius, Vmbros Plotius, Egnatius Etrus-
 
-cos, Samnium Lucaniamque Telesinus; cum regum minus seclusit Perizonius. Poppaedius (cf. Liv. per. 76, C. I. L. x. 220, 417, Appian, Bell. Civ. I. 40, etc.): poppedius BL: poppedios N. Paelignos add. Kellerbauerus. Afranius: affranius N: afrienus B. Plotius Tollius x totos B x totus NL. Egnatius Etruscos Lipsius x senatos et consules B. regum: rerum B x regnum L. et gentium arbiter populus ipsum se regere non posset, et victrix Asiae et Europae a Corfinio Roma adpeteretur.
+cos, Samnium Lucaniamque Telesinus; cum regum et gentium arbiter populus ipsum se regere non posset, et victrix Asiae et Europae a Corfinio Roma adpeteretur.
 
 Primum fuit belli consilium, ut in Albano monte festo die Latinorum Iulius Caesar et Marcius Philippus consules inter sacra et aras immolarentur.
 
@@ -1345,7 +1345,7 @@ Nam ipse Iulius Caesar, exercitu amisso, cum in urbem cruentus referretur, miser
 
 Sed magna populi Romani fortuna, et semper in malis maior, totis denuo viribus consurrexit; ad-gressique singulos populos Cato discutit Etruscos, Gabinius Marsos, Carbo Lucanos, Sulla Samnites;
 
-Pompeius vero Strabo omnia flammis ferroque consilium, ut in Albano monte Rossbachius: in Albano monte consilium ut B. erupit: eripuit B. inpii belli: imbellis B, Poppaedio: poppedio NL: pompeio B. Grumentum, ecce Faesulae, ecce: crumentum ecce pessulae et B. Aesernia, Nuceria Iahnius: reserat anuceria B: res erat nuceria N. Picentia penitus Hauptius: picenti moenibus B. mediam per urbem viam fecit scripsi: mediam urbem per viam fecit codd. Strabo om. B. populatus non prius finem caedium fecit, quam Asculi eversione manibus tot exercituum, consulum direptarumque urbium dis litaretur utcumque.
+Pompeius vero Strabo omnia flammis ferroque populatus non prius finem caedium fecit, quam Asculi eversione manibus tot exercituum, consulum direptarumque urbium dis litaretur utcumque.
 
 Etsi cum sociis—nefas—cum liberis tamen et ingenuis dimicatum est: quis aequo animo ferat in principe populo bella servorum? Primum servile bellum inter initia urbis Herdonio duce Sabino in ipsa urbe temptatum est, cum occupata tribuniciis seditionibus civitate Capitolium obsessum est et a consule receptum;
 
@@ -1353,7 +1353,7 @@ sed hic tumultus magis fuit quam bellum. Mox imperio per diversa terrarum occupa
 
 Hic ad cultum agri frequentia ergastula catenatique cultores materiam bello praebuere.
 
-Syrus quidam nomine Eunus 4—magnitudo cladium facit, ut meminerimus—fanatico furore simulato, dum Syriae deae comas iactat, ad libertatem et arma servos quasi utcumque ab initio proximi capitis huc transposuit Lipsius: id qualitercumque B. inter initia: in italia B. Syrus: sirus B. Eunus: con us B. cladium: gladium BN: claudium L
+Syrus quidam nomine Eunus 4—magnitudo cladium facit, ut meminerimus—fanatico furore simulato, dum Syriae deae comas iactat, ad libertatem et arma servos quasi
 
 numinum imperio concitavit; idque ut divinitus fieri probaret, in ore abdita nuce quam sulphure et igni stipaverat, leniter inspirans flammam inter verba fundebat.
 
@@ -1365,7 +1365,7 @@ Hic enim victos et apud Hennam novissime obsessos cum fame quasi pestilentia con
 
 Vixdum respiraverat insula, cum statim Servilio praetore a Syro reditur ad Cilicem. Athenio pastor interfecto domino familiam ergastulo liberatam sub signis ordinat.
 
-Ipse veste purpurea ex obviis Rehd.: exobulis NL, om. B. quin: quid B. dedecus: decus B. Hypsaei: hypsei N L: ipse B. Hennam: bennam B. Servilio praetore a Syro Mommsenus: servile et asyro B: servi, et a syro N L. argenteoque baculo et regium in morem fronte redimita non minorem quam ille fanaticus prior conflavit exercitum, acriusque multo, quasi et illum vindicaret, vicos, oppida, castella diripiens, in servos infestius quam in dominos quasi in transfugas,
+Ipse veste purpurea argenteoque baculo et regium in morem fronte redimita non minorem quam ille fanaticus prior conflavit exercitum, acriusque multo, quasi et illum vindicaret, vicos, oppida, castella diripiens, in servos infestius quam in dominos quasi in transfugas,
 
 saeviebat. Ab hoc quoque praetorii exercitus fusi, capta Servili castra, capta Luculli. Sed Titus Aquilius Perpernae usus exemplo, interclusum hostem commeatibus ad extrema conpulit comminutasque copias fame armis facile delevit; dedidissentque se, nisi suppliciorum metu voluntariam mortem praetulissent.
 
@@ -1375,7 +1375,7 @@ ENIMVERO et servitium armorum dedecus feras; nam etsi per fortunam in omnia obno
 
 quippe cum servi militaverint, gladiatores imperaverint, illi infimae sortis homines, hi pessumae auxere ludibriis calamitatem Romanam.
 
-Spartacus, Crixus, Oenomaus effracto Lentuli in servos infestius quam in dominos Rossbachius: in dominos quam in servos infestius (quam ora. NL) codd. servi: serviliberi B. ludo cum triginta aut amplius eiusdem fortunae viris erupere Capua;servisque ad vexillum vocatis cum statim decem milia amplius coissent, homines modo effugisse contenti, iam et vindicari volebant.
+Spartacus, Crixus, Oenomaus effracto Lentuli ludo cum triginta aut amplius eiusdem fortunae viris erupere Capua;servisque ad vexillum vocatis cum statim decem milia amplius coissent, homines modo effugisse contenti, iam et vindicari volebant.
 
 Prima sedes velut rabidis beluis mons Vesuvius placuit. Ibi cum obsiderentur a Clodio Glabro, per fauces cavi montis vitineis delapsi vinculis ad imas eius descendere radices et exitu inviso nihil tale opinantis ducis subito impetu castra rapuerunt;
 
@@ -1385,7 +1385,7 @@ Adfluentibus in diem copiis cum iam esset iustus exercitus, e viminibus pecudumq
 
 Ac ne quod decus iusto deesset exercitui, domitis obviis etiam gregibus paratur equitatus, captaque de praetoribus insignia et fasces ad ducem detulere.
 
-Nec abnuit ille de stipendiario Thrace miles, de milite desertor, inde latro, deinde Capua: capuam B. ad vexillum: ad auxilium B: ad vexillum ad (et L) auxilium N L. velut rapidis beluis mons Rossbachius: velut bellus mons B: velut arauiris mons NL. delapsi vinculis: dilapsi ungulis B. inviso: indiviso B: inuno NL. castra post Vareniana add. B. Thurios: thauros B: turios N L. decus: dedecus B. inde latro NL: de latro B.
+Nec abnuit ille de stipendiario Thrace miles, de milite desertor, inde latro, deinde
 
 in honorem virium gladiator. Quin defunctorum quoque proelio ducum funera imperatoriis celebravit exsequiis, captivosque circa rogum iussit armis depugnare, quasi plane expiaturus omne praeteritum dedecus, si de gladiatore munerarius fuisset.
 
@@ -1397,7 +1397,7 @@ Tandem enim totis imperii viribus contra myrmillonem consurgitur pudoremque Roma
 
 hostes in extrema Italiae refugerunt. Ibi circa Brittium angulum clusi, cum fugam in Siciliam pararent neque navigia suppeterent, ratesque ex trabibus et dolia conexa virgultis rapidissimo freto frustra experirentur, tandem eruptione facta digna 1
 
-viris obiere morte et, quod sub gladiatore duce oportuit, sine missione pugnatum est. Spartacus ipse in primo agmine fortissime dimicans quasi imperator occisus est. honorem Rehd.: honore cet. quin Freinshemius x quia B: qui NL. imperatoriis: imperatorum B. consulares N L: consularem cet. consurgitur N L: consurgunt cet. clusi: fusi B.
+viris obiere morte et, quod sub gladiatore duce oportuit, sine missione pugnatum est. Spartacus ipse in primo agmine fortissime dimicans quasi imperator occisus est.
 
 Hoc deerat unum populi Romani malis, ut iam ipse intra se parricidale telum domi stringeret, et in urbe media ac foro quasi harena cives cum civibus suis gladiatorio more concurrerent.
 
@@ -1409,7 +1409,7 @@ mox atrocius et cruentius, per ipsius viscera senatus grassante victoria;
 
 ultimo non civicam modo, sed hostilem quoque rabiem supergressum est, cum armorum furor totius Italiae viribus niteretur, eo usque odiis saevientibus, donec deessent qui occiderentur.
 
-Initium et causa belli inexplebilis honorum Marii fames, dum decretam Sullae provinciam Sulpicia lege sollicitat. Sed inpatiens iniuriae statim Sulla legiones circumegit, dilatoque Mithridate Esquilina magis scripsi: maiore codd. peractum est post saevientibus add. B. Mithridate Esquilina Rehd.: mithridates quilla B: mithridate escylia N. Collinaque porta geminum urbi agmen infudit.
+Initium et causa belli inexplebilis honorum Marii fames, dum decretam Sullae provinciam Sulpicia lege sollicitat. Sed inpatiens iniuriae statim Sulla legiones circumegit, dilatoque Mithridate Esquilina Collinaque porta geminum urbi agmen infudit.
 
 Inde cum consules Sulpicius et Albinovanus obiecissent catervas suas, et saxa undique a moenibus ac tela iacerentur, ipse quoque iaculatus incendia viam fecit arcemque Capitolii, quae Poenos quoque, quae Gallos etiam Senonas evaserat, quasi captivam victor insedit.
 
@@ -1421,7 +1421,7 @@ cincta quidem gladiis contione, sed vincentibus quibus pax et quies potior, prof
 
 Itaque ad nomen tanti viri late concurritur, servitia—pro nefas—et ergastula armantur, et facile invenit exercitum imperator.
 
-Itaque vi patriam reposcens, unde vi fuerat ex- quae add. Halmius. tum L. Voss. Palat.: cum BN. quom: quam B. pulsus, poterat videri iure agere, nisi causam suam saevitia corrumperet. Sed cum dis hominibusque infestus rediret, statim primo impetu cliens et alumna urbis Ostia nefanda strage diripitur.
+Itaque vi patriam reposcens, unde vi fuerat ex- pulsus, poterat videri iure agere, nisi causam suam saevitia corrumperet. Sed cum dis hominibusque infestus rediret, statim primo impetu cliens et alumna urbis Ostia nefanda strage diripitur.
 
 Mox in urbem quadruplici agmine intratur. Divisere copias Cinna, Marius, Carbo, Sertorius. Hic postquam manus omnis Octavi depulsa Ianiculo est, statim ad principum caedem signo dato aliquanto saevius quam vel in Punica urbe saevitur.
 
@@ -1433,7 +1433,7 @@ Merula flamen Dialis in Capitolio Iovis ipsius oculos venarum cruore respersit. 
 
 Haec tot senatus funera intra kalendas et idus Ianuarii mensis septima illa Marii purpura dedit. Quid futurum fuit, si annum consulatus implesset?
 
-Scipione Norbanoque consulibus tertius ille turbo civilis insaniae toto furore detonuit, quippe cum urbis Ostia: urbs urbis hostia B. Caesar et N L: caesare B. domuum Iahnius: domus B. hinc octo legiones, quingentae cohortes starent in armis, inde ab Asia cum victore exercitu Sulla properaret.
+Scipione Norbanoque consulibus tertius ille turbo civilis insaniae toto furore detonuit, quippe cum hinc octo legiones, quingentae cohortes starent in armis, inde ab Asia cum victore exercitu Sulla properaret.
 
 Et sane cum tam ferox in Sullanos Marius fuisset, quanta saevitia opus erat, ut Sulla de Mario vindicaretur? Primum apud Capuam sub amne Vulturno signa concurrunt, et statim omnis Norbani fusus exercitus, statim Scipionis copiae ostentata spe pacis oppressae.
 
@@ -1443,7 +1443,7 @@ Quantum funerum in foro, in circo, in penitis templis! nam Mucius Scaevola ponti
 
 Lamponius atque Telesinus, Samnitum duces, atrocius Pyrrho et Annibale Campaniam Etruriamque populantur, et sub specie partium se vindicant.
 
-Apud Sacriportum Collinamque portam debellatae omnes hostium copiae; ibi Marius, hic Telesinus oppressi. Nec idem tamen caedium qui belli finis fuit. Stricti enim et in pace gladii, animadversumque in eos, qui se sponte dediderant. Minus est, quod apud Sacriportum, apud Collinam septuaginta milia amplius Sulla concidit: bellum inde post legiones add. BNL, dei. Iahnius. quantum Iahnius i quantum id B: quid NL. penitis Rossbachius: penitentibus B: patentibus NL. Lamponius (cp. Appian, Bell. Civ. I. 40; Plutarch, Sulla, 29): lucius amponius B: Iamponius L. erat. Quattuor milia deditorum inermium civium in Villa Publica interfici iussit:
+Apud Sacriportum Collinamque portam debellatae omnes hostium copiae; ibi Marius, hic Telesinus oppressi. Nec idem tamen caedium qui belli finis fuit. Stricti enim et in pace gladii, animadversumque in eos, qui se sponte dediderant. Minus est, quod apud Sacriportum, apud Collinam septuaginta milia amplius Sulla concidit: bellum erat. Quattuor milia deditorum inermium civium in Villa Publica interfici iussit:
 
 isti tot in pace non plures sunt? Quis autem illos potest conputare, quos in urbe passim quisquis voluit occidit? Donec admonente Fufidio vivere aliquos debere, ut essent quibus imperaret, proposita est ingens illa tabula, et ex ipso equestris ordinis flore ac senatu duo milia electi, qui mori iuberentur: novi generis edictum.
 
@@ -1451,7 +1451,7 @@ Longum post haec referre ludibrio habita fata Carbonis, fata Sorani, Plaetorios 
 
 retur. Possis singulorum hominum ferre poenas: municipia Italiae splendidissima sub hasta venie-runt, Spoletium, Interamnium, Praeneste, Florentia.
 
-Nam Sulmonem, vetus oppidum socium atque amicum—facinus indignum—non expugnat aut obsidet iure belli; sed quo modo morte damnati duci iubentur, sic damnatam civitatem iussit Sulla deleri. Fufidio Dukerus: forfidio B: furfidio NL. ac—electi om. B. fata fata: facta facta B. Plaetorios atque Venuleios: plaetorius atque venuleius B.
+Nam Sulmonem, vetus oppidum socium atque amicum—facinus indignum—non expugnat aut obsidet iure belli; sed quo modo morte damnati duci iubentur, sic damnatam civitatem iussit Sulla deleri.
 
 BELLUM Sertorianum quid amplius quam Sullanae proscriptionis hereditas fuit? Hostile potius an civile dixerim nescio, quippe quod Lusitani Celtiberique Romano gesserint duce.
 
@@ -1465,7 +1465,7 @@ Et quid futurum fuit satis tanto hosti, cui uno imperatore resistere res Romana 
 
 Hi copias adtrivere viri, prope tota Hispania persecuti. Diu et ancipiti semper acie pugnatum est; nec tamen prius bello quam suorum scelere et insidiis extinctus est. Prima per legatos habita certamina, cum hinc Domitius et Thorius, inde Hirtulei proluderent;
 
-mox his apud Segoviam, illis apud Anam flumen oppressis, ipsi duces comminus invicem experti apud Lauronem atque Sucronem respexit: perrexit B. hi—extinctus est Iahnius et Halmius: hic copias adtri-verant viri diu et ancipiti semper acie pugnatum est. Nec tamen prius bello quam suorum scelere et insidiis extinctus est. Copias eius prope tota hispania persequuti diu et varia semper acie domaverunt B: hi copias viri diu et ancipitis (ancipiti L) semper acie adtribuere (adtrivere L) nec tamen prius bello quam suorum scelere et insidiis extinctus copias eius prope tota (totas L) hispania persecuti diu et ancipiti semper acie donaverunt NL. aequavere clades. Tum illis ad populationes agrorum,
+mox his apud Segoviam, illis apud Anam flumen oppressis, ipsi duces comminus invicem experti apud Lauronem atque Sucronem aequavere clades. Tum illis ad populationes agrorum,
 
 his ad urbium excidia conversis, misera inter Romanos duces Hispania discordiae poenas dabat;
 
@@ -1475,7 +1475,7 @@ MARCO LEPIDO Quinto Catulo consulibus civile bellum paene citius oppressum est q
 
 Cupidus rerum novarum per insolentiam Lepidus acta tanti viri rescindere parabat; nec inmerito, si tamen posset sine magna clade rei publicae.
 
-Nam cum iure belli Sulla dictator proscripsisset inimicos, qui supererant revocante Lepido quid aliud quam ad bellum vocabantur? Cumque damnatorum civium bona addicente Sulla quamvis male capta iure tamen tenerentur, repetitio eorum procul dubio labe- ad populationes agrorum: apopulatione sacrorum B: ad populationem agrorum NL. Termes, Vlia Salmasius et Iahnius: tergaest cum B: termestudia N L. tenerentur add. Dukerus.
+Nam cum iure belli Sulla dictator proscripsisset inimicos, qui supererant revocante Lepido quid aliud quam ad bellum vocabantur? Cumque damnatorum civium bona addicente Sulla quamvis male capta iure tamen tenerentur, repetitio eorum procul dubio labe-
 
 factabat compositae civitatis statum. Expediebat ergo quasi aegrae sauciaeque rei publicae quiescere quomodocumque, ne volnera curatione ipsa rescinderentur.
 
@@ -1489,7 +1489,7 @@ Victores quoque, quod non temere alias in civilibus bellis, pace contenti fuerun
 
 CATILINAM luxuria primum, tum hinc conflata egestas rei familiaris, simul occasio, quod in extremis finibus mundi arma Romana peregrinabantur, in nefaria consilia opprimendae patriae suae conpulere.
 
-Senatum confodere, consules trucidare, distringere incendiis urbem, diripere aerarium, totam denique rem publicam funditus tollere et quidquid nec Annibal videretur optasse, quibus— ne om. B. curatione: cutio B. Lutatius: latius B. pace: pacis B. tum: cum B: tu N. conpulere: contulere B.
+Senatum confodere, consules trucidare, distringere incendiis urbem, diripere aerarium, totam denique rem publicam funditus tollere et quidquid nec Annibal videretur optasse, quibus—
 
 o nefas—sociis adgressus est! Ipse patricius; sed hoc minus est: Curii, Porcii, Sullae, Cethegi, Autronii, Varguntei atque Longini, quae familiae! quae senatus insignia! Lentulus quoque tum cum maxime praetor. Hos omnis inmanissimi facinoris satellites habuit.
 
@@ -1503,7 +1503,7 @@ Consul habito senatu in praesentem reum peroravit; sed non amplius profectum, qu
 
 Et ille quidem ad praeparatum a Manlio in Etruria exercitum proficiscitur signa inlaturus urbi. Lentulus, destinatum familiae suae Sibyllinis versibus regnum sibi vaticinans, ad praestitutum a Catilina diem urbe tota viros, faces,
 
-tela disponit. Nec civili conspiratione contentus legatos Allobrogum, qui tum forte aderant, in ni: ne B. tum: cum B. legatos Halmius: legatis NL: om. B. arma sollicitat. Isset ultra Alpes furor, nisi altera proditione Volturci praetoris litterae tenerentur. Statim Ciceronis imperio iniecta est barbaris manus;
+tela disponit. Nec civili conspiratione contentus legatos Allobrogum, qui tum forte aderant, in arma sollicitat. Isset ultra Alpes furor, nisi altera proditione Volturci praetoris litterae tenerentur. Statim Ciceronis imperio iniecta est barbaris manus;
 
 palam praetor in senatu convincitur. De supplicio agentibus, Caesar parcendum dignitati, Cato animadvertendum pro scelere censebant.
 
@@ -1513,7 +1513,7 @@ Quam atrociter dimicatum sit, exitus docuit. Nemo hostium bello superfuit; quem 
 
 IAM toto orbe paene pacato maius erat imperium Romanum, quam ut ullis exteris viribus opprimi posset. Itaque invidens fortuna principi gentium populo ipsum illum in exitium sui armavit.
 
-Ac sollicitat. Isset Halmius: sollicitatis. Sed B: solli-citatiset. Isset N: sollicitatis isset L. Mariana quidem Cinnanaque rabies iam intra urbem praeluserat, quasi si experiretur. Sullana tempestas latius, intra Italiam tamen, detonuerat.
+Ac Mariana quidem Cinnanaque rabies iam intra urbem praeluserat, quasi si experiretur. Sullana tempestas latius, intra Italiam tamen, detonuerat.
 
 Caesaris furor atque Pompei urbem Italiam, gentes nationes, totum denique qua patebat imperium quodam quasi diluvio et inflammatione corripuit, adeo ut non recte tantum civile dicatur,
 
@@ -1523,7 +1523,7 @@ Quippe si duces eius inspicias, totus senatus in partibus; si exercitus, hinc un
 
 Graeciae totiusque robur orientis; si moram belli, quattuor anni, sed pro clade rerum breves; si locum et spatium, commissum est intra Italiam, inde se in Galliam Hispaniamque deflexit re-versumque ab occasu totis viribus in Epiro Thessa-liaque consedit; hinc in Aegyptum subito transi-luit, inde respexit Asiam, Africae incubuit, postremo in Hispaniam regyravit et ibi aliquando defecit.
 
-Sed non et odia partium finita cum bello. Non praeluserat Graevius: praecluserat B: precluxerat L. totum denique qua patebat: totumque potibat B: totum denique patebat L. Tarcondimotus, Cotys et Rhascypolis: tarcondi motus cotys et thascypolis B. anni, sed: annis sed B: anni et L. breves Halmius: breve B: breve tempus NL. ubi post spatium dei. Perizonius. regyravit: regiravit L: regnavit B. enim prius quieverunt, quam in ipsa urbe medio senatu eorum, qui victi erant, odia victoris se caede satiarent.
+Sed non et odia partium finita cum bello. Non enim prius quieverunt, quam in ipsa urbe medio senatu eorum, qui victi erant, odia victoris se caede satiarent.
 
 Causa tantae calamitatis eadem quae omnium, nimia felicitas. Si quidem Quinto Metello Lucio Afranio consulibus cum Romana maiestas toto orbe polleret recentesque victorias, Ponticos et Armenios triumphos, in Pompeianis theatris Roma cantaret, nimia Pompei potentia apud otiosos, ut solet, cives movit invidiam.
 
@@ -1533,7 +1533,7 @@ Forte tunc Crassus genere, divitiis, dignitate florebat, ut vellet tamen auction
 
 Sic igitur Caesare dignitatem conparare, Crasso augere, Pompeio retinere cupientibus, omnibusque pariter potentiae cupidis de invadenda re publica facile convenit.
 
-Ergo cum mutuis viribus in suum quisque decus niterentur, Galliam Caesar invadit, Crassus Asiam, Pompeius Hispaniam: tres maximi exercitus, et in his orbis imperium societate eadem quae Aldus: eademque codd. Afranio: Africano B. ut add. Mommsenus.
+Ergo cum mutuis viribus in suum quisque decus niterentur, Galliam Caesar invadit, Crassus Asiam, Pompeius Hispaniam: tres maximi exercitus, et in his orbis imperium societate
 
 trium principum occupatur. Decem annos traxit ista dominatio ex fide, quia mutuo metu tenebantur. Crassi morte apud Parthos, morte Iuliae Caesaris filiae, quae nupta Pompeio generi socerique concordiam matrimonii foedere continebat, statim aemulatio erupit.
 
@@ -1545,7 +1545,7 @@ Ut daretur consulatus absenti, quem decem tribuni favente Pompeio nuper decrever
 
 Ille contra flagitare decreta, ac, nisi fides permaneret, non remittere exercitum. Ergo ut in hostem decernitur. His Caesar agitatus statuit praemia armorum armis defendere.
 
-Prima civilis belli harena Italia fuit, cuius arces levibus praesidiis Pompeius insederat; sed omnia primum coniurationis fides Halmius: prima coniurationis fide codd.
+Prima civilis belli harena Italia fuit, cuius arces levibus praesidiis Pompeius insederat; sed omnia
 
 subito Caesaris impetu oppressa sunt. Prima Arimino signa cecinerunt. Tum pulsus Etruria Libo, Vmbria Thermus, Domitius Corfinio. Et peractum erat bellum sine sanguine, si Pompeium Brundisii opprimere potuisset.
 
@@ -1555,7 +1555,7 @@ Nec Pompei ab Italia quam senatus ab urbe fuga turpior:quam paene vacuam, metu C
 
 Pulso fugatoque Pompeio maluit prius ordinare provincias quam ipsum sequi. Siciliam et Sardiniam,
 
-annonae pignera, per legatos habet. Nihil hostile erat in Gallia; pacem ipse fecerat. Sed ad Hispanienses Pompei exercitus transeunti per eam duci portas claudere ausa Massilia est. Misera dum cupit pacem, belli metu in bellum incidit; sed quia tuta muris erat, vinci eam sibi iussit absenti. fuga turpior Gruterus: fugatur prior BNL.
+annonae pignera, per legatos habet. Nihil hostile erat in Gallia; pacem ipse fecerat. Sed ad Hispanienses Pompei exercitus transeunti per eam duci portas claudere ausa Massilia est. Misera dum cupit pacem, belli metu in bellum incidit; sed quia tuta muris erat, vinci eam sibi iussit absenti.
 
 Graecula civitas non pro mollitia nominis et vallum rumpere et incendere machinas ausa, etiam congredi navibus;
 
@@ -1571,7 +1571,7 @@ Sic citerior Hispania recepta est, nec ulterior moram fecit. Quid enim una post 
 
 Aliquid tamen adversus absentem ducem ausa Fortuna est circa Illyricum et Africam,quasi de industria prospera eius adversis radiaret;
 
-quippe cum fauces Adriani maris iussi occupare Dolabella et add. Salmasius. pugnae: pugna BL. conpulit: contulit B. Illyricum: illirium B: illiricum L. moranti post Africam add. B. radiaret: radiarent B: radiarentur NL. iussi: iussit B. et Antonius, ille Illyrico, hic Curictico litore castra posuissent, iam maria late tenente Pompeio, repente legatus eius Octavius Libo ingentibus copiis classicorum utrumque circumvenit.
+quippe cum fauces Adriani maris iussi occupare Dolabella et Antonius, ille Illyrico, hic Curictico litore castra posuissent, iam maria late tenente Pompeio, repente legatus eius Octavius Libo ingentibus copiis classicorum utrumque circumvenit.
 
 Deditionem fames extorsit Antonio. Missae quoque a Basilo in auxilium eius rates, quales inopia navium fecerat,nova Pompeianorum arte Cilicum actis sub mari funibus captae quasi per indaginem.
 
@@ -1581,7 +1581,7 @@ In Africa quoque par et virtus et calamitas Curionis fuit, qui ad recipiendam pr
 
 Sed iam debitum par Fortuna flagitante sedem bello Pompeius Epiron elegerat; nec Caesar morabatur.
 
-Quippe ordinatis a tergo omnibus, quamvis Curictico: currictico L: syretico B. ingentibus: genibus B. a Basilo Asulanus: ablatio B: ablasio N L. fecerat: fecerant B. exemplum Freinshemius: exitum codd. tandem Iahnius: tamen codd. Varo: varro B. morte: mortis B. hiemps media prohiberet tempestate, ad bellum navigavit;
+Quippe ordinatis a tergo omnibus, quamvis hiemps media prohiberet tempestate, ad bellum navigavit;
 
 positisque ad Oricum castris, cum pars exercitus ob inopiam navium cum Antonio relicta Brundisii moram faceret, adeo inpatiens erat, ut ad arcessendos eos ardente ventis mari, nocte concubia, speculatorio navigio solus ire temptaverit. Extat ad trepidum tanto discrimine gubernatorem vox ipsius, Quid times? Caesarem venis. Contractis in unum undique omnibus copiis positisque comminus castris diversa erant ducum consilia.
 
@@ -1593,7 +1593,7 @@ ad hoc adsiduis in eruptione hostium proeliis, quo tempore egregia virtus Scaevo
 
 iam vero urbium direptione sociarum, cum Oricum et Gomphos et alia castella
 
-Thessaliae vastaret. Pompeius adversus haec nectere moras, tergiversari, sic hostem interclusum undique quid times om. B. iis: is B. vel: vis B. in eruptione: inruptione B: ineruptionem L. castella om. B. inopia commeatuum terere, usque dum ardentissimi ducis consenesceret impetus.
+Thessaliae vastaret. Pompeius adversus haec nectere moras, tergiversari, sic hostem interclusum undique inopia commeatuum terere, usque dum ardentissimi ducis consenesceret impetus.
 
 Nec diutius profuit ducis salutare consilium. Miles otium, socii moram, principes ambitum ducis increpabant. Sic praecipitantibus fatis proelio sumpta Thessalia est, et Philippicis campis urbis, imperii, generis humani fata commissa sunt.
 
@@ -1603,7 +1603,7 @@ Numquam inminentis ruinae manifestiora prodigia: fuga victimarum, examina in sig
 
 Numquam acrior neque alacrior exercitus Caesaris fuit; inde classica prius, inde tela. Adnotatum quoque committentis aciem Crastini pilum, qui mox adacto in os gladio—sic inter cadavera repertus est— libidinem ac rabiem qua pugnaverat ipsa novitate volneris praeferebat.
 
-Sed nec minus admirabilior illius exitus belli. Quippe cum Pompeius adeo equitum copia abundaret, ut facile circumventurus urbis: orbis B. plausu theatri sui in modum Mommsenus: plausum theatrisui audiens in modum B. illius: ullius B. sibi Caesarem videretur, circumventus ipse est.
+Sed nec minus admirabilior illius exitus belli. Quippe cum Pompeius adeo equitum copia abundaret, ut facile circumventurus sibi Caesarem videretur, circumventus ipse est.
 
 Nam cum diu aequo Marte contenderent, iussuque Pompei fusus a cornu erupisset equitatus, repente hinc signo dato Germanorum cohortes tantum in effusos equites fecere impetum, ut illi esse pedites,
 
@@ -1613,7 +1613,7 @@ Multus in eo proelio Caesar fuit mediusque inter imperatorem et militem. Voces q
 
 cum ipse sequeretur felicem utcumque in malis Pompeium, si eadem ipsum quae exercitum eius fortuna traxisset. Superstes dignitatis suae vixit, ut cum maiore dedecore per Thessalica Tempe equo fugeret, ut una navicula Lesbon applicaret, ut Syedris in deserto Ciliciae scopulo fugam in Parthos,
 
-Africam vel Aegyptum agitaret, ut denique Pelusio litore imperio vilissimi regis, consiliis spadonum et, ne quid malis desit, Septimii desertoris sui post fusus add. B. esse: essent B. hi: ulli B. ipsum quae: ipsumque BL. applicaret, ut Rossbachius: applicarentur et B. Syedris Salmasius: hedris codd. sui gladio trucidatus sub oculis uxoris suae libero-rumque moreretur.
+Africam vel Aegyptum agitaret, ut denique Pelusio litore imperio vilissimi regis, consiliis spadonum et, ne quid malis desit, Septimii desertoris sui gladio trucidatus sub oculis uxoris suae libero-rumque moreretur.
 
 Quis non peractum esse cum Pompeio crederet? Atquin acrius multo atque vehementius Thessalici incendii cineres recaluerunt.
 
@@ -1627,7 +1627,7 @@ qui Pompei caedem partium fato, non Caesari dederat, haud dubie idem in ipsum au
 
 Quam ubi Caesar restitui iussit in regnum, statim ab isdem percussoribus Pompei obsessus in regia quamvis exigua manu ingentis exercitus molem mira virtute sustinuit.
 
-Ac primum proximorum aedificiorum atque navalium incendio infestorum hostium tela summovit, mox in paenin-sulam Pharon subitus evasit; inde depulsus in maria mira felicitate ad proximam classem enatavit, relicto ultionem clarissimi viri manibus quaerente Fortuna: ultionem quaemanibus clarissimi viri omnibus quaerente fortunae B. et post forma sed. et ante odium add. dubitanter Rossbachius. Pompeii caedem: pompeium regem B: pompeio aedem N: pompeii cedem L. idem om. B. fuisset occasio: ruisset hoccasio B. atque navalium om. B. quidem in fluctibus paludamento seu fato seu consilio, ut illud ingruentibus hostium telis saxisque peteretur.
+Ac primum proximorum aedificiorum atque navalium incendio infestorum hostium tela summovit, mox in paenin-sulam Pharon subitus evasit; inde depulsus in maria mira felicitate ad proximam classem enatavit, relicto quidem in fluctibus paludamento seu fato seu consilio, ut illud ingruentibus hostium telis saxisque peteretur.
 
 Tunc receptus a classicis suis, undique simul hostes adortus de inbelli ac perfida gente iusta generi manibus dedit. Quippe et Theodotus magister auctorque totius belli, et ne virilia quidem portenta, Pothinus atque Ganymedes diversa per mare et terras fuga morte consumpti. Regis ipsius corpus obrutum limo repertum est in aureae loricae honore.
 
@@ -1639,7 +1639,7 @@ Sed hunc Caesar adgressus uno et, ut sic dixerim, non toto proelio obtrivit, mor
 
 Sic cum exteris; at in Africa cum civibus multo atrocius quam in Pharsalia. Hic reliquias partium naufragarum quidam fugae aestus expulerat; nec reliquias diceres, sed integrum bellum.
 
-Sparsae plane om. B. vana: una B. magis quam oppressae vires erant; auxerat sacramentum ipsa clades imperatoris, nec degenerabat ducum successio. Quippe satis ample sonabant in Pompeiani nominis locum Cato et Scipio. Accessit copiis Mauretaniae rex Iuba, videlicet ut latius vinceret Caesar.
+Sparsae magis quam oppressae vires erant; auxerat sacramentum ipsa clades imperatoris, nec degenerabat ducum successio. Quippe satis ample sonabant in Pompeiani nominis locum Cato et Scipio. Accessit copiis Mauretaniae rex Iuba, videlicet ut latius vinceret Caesar.
 
 Nihil ergo inter Pharsaliam et Thapson, nisi quod amplior; eoque acrior Caesareanorum impetus fuit, indignantium post Pompeium crevisse bellum; denique, quod alias numquam, ante imperium ducis sua sponte signa cecinerunt.
 
@@ -1647,7 +1647,7 @@ Strages a Iuba coepit, cuius elephanti bellorum rudes et nuperi a silva constern
 
 Iam Scipio nave fugiebat; sed adsecutis hostibus gladium per viscera exegit et, ubi esset quodam requirenti, respondit hoc ipsum, Bene se habet imperator. Iuba cum se recepisset in regiam, magnifice epulatus est postero die cum Petreio fugae comite superque mensas et pocula interficiendum se ei praebuit.
 
-Ille et regi suffecit et sibi, cum interim semesi in medio cibi et parentalia fercula sonabant: sonabat B: sanabant L. et primum ante strages add. B. nuperi Heinsius: nuper codd. fortiores scripsi: fortius codd.
+Ille et regi suffecit et sibi, cum interim semesi in medio cibi et parentalia fercula
 
 regio simul Romanoque sanguine madebant. Cato non interfuit bello. Positis apud Bagradam castris Vticam veluti altera Africae claustra servabat. Sed accepta partium clade nihil cunctatus, ut sapiente dignum erat, mortem sibi etiam laetus accivit.
 
@@ -1661,7 +1661,7 @@ tanto Africam superabat Hispania. Plurimum quantum favoris partibus dabat frater
 
 Itaque nusquam atrocius nec tam ancipiti Marte concursum est. Primum in ipso ostio Oceani Varus Didiusque legati conflixere. Sed acrius fuit cum ipso mari quam inter se navibus bellum, siquidem, quasi furorem civicum castigaret,
 
-Oceanus utramque classem naufragio cecidit. Quinam ille horror, cum eodem tempore fluctus, procellae, viri, naves, armamenta confligerent! Adde situs ipsius formidinem, vergentia in unum hinc fercula regio: pericula quaeregio B. est post cunctatus add B. Varus: varius B. civicum: civium B: avicum L. fluctus: fluctibus B: fructus NL. armamenta: arma et armenta B. vergentia; urgentia B. Hispaniae, inde Mauritaniae litora, mare et intestinum et externum inminentesque Herculis speculas, cum omnia undique simul proelio et tempestate saevirent.
+Oceanus utramque classem naufragio cecidit. Quinam ille horror, cum eodem tempore fluctus, procellae, viri, naves, armamenta confligerent! Adde situs ipsius formidinem, vergentia in unum hinc Hispaniae, inde Mauritaniae litora, mare et intestinum et externum inminentesque Herculis speculas, cum omnia undique simul proelio et tempestate saevirent.
 
 Mox circa obsidionem urbium utrimque discursum est, quae miserae inter hos atque illos duces societatis Romanae poenas dabant. Omnium postrema certaminum Munda.
 
@@ -1673,7 +1673,7 @@ cum diu pari Marte acies nihil amplius quam occiderent, in medio ardore pugnanti
 
 post quattuordecim annos probata veteranorum manus gradum retro dedit, quos, etsi nondum fugerant apparuit tamen pudore magis quam virtute resistere.
 
-Itaque ille ablegato equo similis furenti primam in aciem procurrit. Ibi prensare fugientis, confirmare Romanae: romae B. deliberare: liberare B. Caesar sive: caesaris sue B: cesar sui L. respectu: respectum B: respectus NL. et Iahnius: sed codd. hic NL: in hic B. illud? novissime: illum novissime B: novissime illud NL. fugerant Heinsius: fugerat codd. signiferos, orare hortari increpare, per totum denique agmen oculis manibus clamore volitare.
+Itaque ille ablegato equo similis furenti primam in aciem procurrit. Ibi prensare fugientis, confirmare signiferos, orare hortari increpare, per totum denique agmen oculis manibus clamore volitare.
 
 Dicitur in illa perturbatione et de extremis agitasse secum manifestoque voltu fuisse, quasi occupare mortem manu vellet; nisi cohortes hostium quinque per trans-versam aciem actae, quas Labienus periclitantibus castris praesidio miserat, speciem fugae praebuissent.
 
@@ -1683,7 +1683,7 @@ Quanta fuerit hostibus caedendis ira rabies-que victoribus, sic aestimare posses
 
 Sed videlicet victoriam desperantibus Pompei liberis, Gnaeum proelio profugum, crure saucium, deserta et avia petentem Caesonius apud Lauronem oppidum consecutus, pugnantem—adeo nondum desperabat—interfecit;
 
-Sextum fortuna in quod post nisi add. codd. praeter Rehd. aut et: autem et B. iam victos Iahnius: invictos B. caedendis B 1: caedentis B. posses scripsi: posset B. victos: victor B. pilis tragulisque Rossbachius: plaustri stragulisque B. pilis iaculisque N L. crure saucium: cruore avium B: crure saucio N L. Celtiberia interim abscondit aliisque post Caesarem bellis servavit.
+Sextum fortuna in Celtiberia interim abscondit aliisque post Caesarem bellis servavit.
 
 Caesar in patriam victor invenitur, primum de Gallia triumphum trahens: hic erat Rhenus et Rhodanus et ex auro captivus Oceanus. Altera laurus Aegyptia: tunc in ferculis Nilus, Arsinoe et ad simulacrum ignium ardens Pharos.
 
@@ -1691,7 +1691,7 @@ Tertius de Pharnace currus et Ponto. Quartus Iubam et Mauretaniam et bis subacta
 
 Hic aliquando finis armis fuit; reliqua pax incruenta pensatumque clementia bellum. Nemo caesus imperio praeter Afranium (satis ignoverat semel) et Faustum Sullam (docuerat generos timere Pompeius) filiamque Pompei cum parvulis ex Sulla (hic posteris cavebatur).
 
-Itaque non ingratis civibus omnes in principem congesti honores: circa templa imagines, in theatro distincta radiis corona, suggestus in curia, fastigium in domo, mensis in caelo, ad hoc pater ipse patriae perpetuusque dictator, novissime, dubium an ipso volente, oblata Pharsalia: pharsaliam B. cum parvulis Perizonius: et parvulus B: cum patruolis N: cum patruelis L. ex Sulla N: exylla B L. volente om. B.
+Itaque non ingratis civibus omnes in principem congesti honores: circa templa imagines, in theatro distincta radiis corona, suggestus in curia, fastigium in domo, mensis in caelo, ad hoc pater ipse patriae perpetuusque dictator, novissime, dubium an ipso volente, oblata
 
 pro rostris ab Antonio consule regni insignia. Quae omnia velut infulae in destinatam morti victimam congerebantur. Quippe clementiam principis vicit invidia, gravisque erat liberis ipsa beneficiorum potentia.
 
@@ -1707,13 +1707,13 @@ nisi aut Pompeius liberos aut Caesar heredem reliquisset, vel, quod utroque pern
 
 Quippe dum Sextus paterna repetit, trepidatum toto mari; dum Octavius mortem patris ulciscitur, iterum fuit movenda Thessalia;
 
-dum lata: dilata B. aut Pompeius: ad pompeii B. potentiae: potentiam B. Antonius vario ingenio aut successorem Caesaris indignatur Octavium aut amore Cleopatrae desciscit in regem *** . Nam aliter salvus esse non potuit,
+dum Antonius vario ingenio aut successorem Caesaris indignatur Octavium aut amore Cleopatrae desciscit in regem *** . Nam aliter salvus esse non potuit,
 
 nisi confugisset ad servitutem. Gratulandum tamen ut in tanta perturbatione est, quod potissimum ad Octavium Caesarem Augustum summa rerum redit, qui sapientia sua atque sollertia perculsum undique ac perturbatum ordinavit imperii corpus, quod haud dubie numquam coire et consentire potuisset, nisi unius praesidis nutu quasi anima et mente regeretur.
 
 Marco Antonio Publio Dolabella consulibus imperium Romanum iam ad Caesarem transferente fortuna varius et multiplex motus civitatis fuit. Quodque in annua caeli conversione fieri solet, ut mota sidera tonent ac suos flexus tempestate significent, sic tum Romanae dominationis, id est humani generis, conversione penitus intremuit omnique genere discriminum, civilibus, externis, servilibus terrestribus ac navalibus bellis omne imperii corpus agitatum est.
 
-Prima civilium motuum causa testamentum Caesaris fuit, cuius secundus heres Antonius, praelatum sibi Octavium furens, inexpiabile contra adoptionem post regem spatium vacuum octo circiter litterarum B. conversione: conversatione B.
+Prima civilium motuum causa testamentum Caesaris fuit, cuius secundus heres Antonius, praelatum sibi Octavium furens, inexpiabile contra adoptionem
 
 acerrimi iuvenis susceperat bellum. Quippe cum intra octavum decimum annum tenerum et obnoxium et opportunum iniuriae iuvenem videret, se plenae ex commilitio Caesaris dignitatis, lacerare furtis hereditatem, ipsum insectari probris, cunctis artibus cooptationem Iuliae gentis inhibere,
 
@@ -1725,7 +1725,7 @@ Tunc quidem etiam manu pulcher apparuit. Nam cruentus et saucius aquilam a morie
 
 Alterum bellum concitavit agrorum divisio, quod Caesar veteranis patris pretium militiae persolvebat. Semper alias Antonii pessimum ingenium Fulvia tum gladio cincta virilis militiae uxor agitabat.
 
-Ergo depulsos agris colonos incitando iterum arma se plenae scripsi: is plenae B: .se. plene L. furtis: viri fortis B: fortis (o in u mut.) L. et heredem ante hereditatem add. B. obsidere. At Iahnius: obsiderat B: obsidebat NL. crederet: credere B. tum Mommsenus: ut B.
+Ergo depulsos agris colonos incitando iterum arma
 
 cierat. Hic vero iam non privatis, sed totius senatus suffragiis iudicatum hostem Caesar adgressus intra Perusiae muros redegit conpulitque ad extrema deditionis turpi et nihil non experta fame.
 
@@ -1735,7 +1735,7 @@ Lepidum divitiarum cupido, quarum spes erat ex perturbatione rei publicae, Anton
 
 In hoc velut foedus pax inter tres duces conponitur. Apud Confluentes inter Perusiam et Bononiam iungunt manus, et exercitus consalutant. Nullo bono more triumviratus invaditur, oppressaque armis re publica redit Sullana proscriptio, cuius atro-citas nihil insignius habet quam numerum centum et quadraginta senatorum.
 
-Exitus foedi, truces, miserabiles toto terrarum orbe fugientium. Quis pro indignitate ingemescat, cum Antonius Lucium arma cierat Hauptius: in arma re vocaverat B: in arma ierat N L. non om. B. redegit L: redigit B. gravis paci om. B. quid Graevius: cui B. ultionis: ultionem B. insignius Mommsenus: in se minus codd. Caesarem avunculum suum, Lepidus Lucium Paulum fratrem suum proscripserint? Romae capita caesorum proponere in rostris iam usitatum erat;
+Exitus foedi, truces, miserabiles toto terrarum orbe fugientium. Quis pro indignitate ingemescat, cum Antonius Lucium Caesarem avunculum suum, Lepidus Lucium Paulum fratrem suum proscripserint? Romae capita caesorum proponere in rostris iam usitatum erat;
 
 verum sic quoque civitas lacrimas tenere non potuit, cum recisum Ciceronis caput in illis suis rostris videret, nec aliter ad videndum eum, quam solebat ad audiendum, concurreretur.
 
@@ -1747,7 +1747,7 @@ Igitur caede perfecta cum veteranos Caesaris, nec inmerito, timerent, statim e c
 
 Igitur cum appareret, quae strages rei publicae inmineret, displicuit ultio, cum caedes inprobaretur.
 
-Igitur Ciceronis consiliis abolitione decreta, ne tamen publici doloris oculos ferirent, in provincias ab illo ipso quem occiderant Caesare datas, Syriam Romae: romanae B. depulisse: depulisset B. videbantur: videbatur B. et Macedoniam concesserant. Sic vindicta Caesaris dilata potius quam oppressa est.
+Igitur Ciceronis consiliis abolitione decreta, ne tamen publici doloris oculos ferirent, in provincias ab illo ipso quem occiderant Caesare datas, Syriam et Macedoniam concesserant. Sic vindicta Caesaris dilata potius quam oppressa est.
 
 Igitur iam ordinata magis ut poterat quam ut debebat inter triumviros re publica, relicto ad urbis praesidium Lepido, Caesar cum Antonio in Cassium Brutumque succingitur.
 
@@ -1759,7 +1759,7 @@ Ipsique Bruto per noctem, cum inlato lumine ex more aliqua secum agitaret, atra 
 
 Pari in meliora praesagio in Caesaris castris omnia aves victimaeque promiserant. Sed nihil illo praestantius, quod Caesaris medicus somnio admonitus est, ut Caesar castris excederet,
 
-quibus capi inminebat; ut factum est. Acie namque commissa cum pari ardore aliquandiu dimicatum foret, et quamvis duces inde praesentes adessent, hinc alterum corporis aegritudo, illum metus et ignavia subduxissent, stabat tamen pro partibus tum: tot B. inminentia cladis destinatae signa latuerunt N: imminentia destinate cladis latuerunt B. castra om. B. Aethiops: aethiope B. ac: hoc B. est om. B N. et om. B N. stabat Salmasius'. staret B: starent N L. invicta fortuna et ultoris et qui vindicabatur, ut exitus proelii docuit. Primum adeo anceps fuit,
+quibus capi inminebat; ut factum est. Acie namque commissa cum pari ardore aliquandiu dimicatum foret, et quamvis duces inde praesentes adessent, hinc alterum corporis aegritudo, illum metus et ignavia subduxissent, stabat tamen pro partibus invicta fortuna et ultoris et qui vindicabatur, ut exitus proelii docuit. Primum adeo anceps fuit,
 
 ut—par utrimque discrimen—capta sint hinc Caesaris castra, inde Cassi.Sed quanto efficacior est fortuna, quam virtus! Et quam verum est, quod moriens Brutusefflavit, non in re, sed in verbo tantum esse virtutem! Victoriam illi proelio error
 
@@ -1769,7 +1769,7 @@ Inde pulvere et strepitu, etiam nocte vicina eximentibus gestae rei sensum, cum 
 
 Brutus cum in Cassio etiam suum animum perdidisset, ne quid ex constituti fide resignaret, (ita enim non superesse bello convenerat) ipse quoque uni comitum suorum confodiendum praebuit latus.
 
-Quis sapientissimos ac fortissimos viros non miretur ad ultimum non suis manibus usos? Nisi hoc quoque ex persuasione sectae fuit, ne violarent manus, sed in amolitione fortissimarum piissimarumque animarum iudicio suo, scelere alieno uterentur. ut om. B. utrimque Palat. Rehd.: utrumque B N. sint Spengelius: sunt codd. Cassi: classi B: cassii N: cassias L. Brutus add. Tollius: cf. Dio Cass. XLVII, 49. error: errore B. superesse: superesset B. persuasione N: suasione B.
+Quis sapientissimos ac fortissimos viros non miretur ad ultimum non suis manibus usos? Nisi hoc quoque ex persuasione sectae fuit, ne violarent manus, sed in amolitione fortissimarum piissimarumque animarum iudicio suo, scelere alieno uterentur.
 
 Sublatis percussoribus Caesaris supererat Pompei domus. Alter iuvenum in Hispania occiderat, alter fuga evaserat contractisque infelicis belli reliquiis, cum insuper ergastula armasset, Siciliam Sardiniam-que habebat; iam et classe medium mare insederat.
 
@@ -1777,7 +1777,7 @@ O quam diversus a patre! Ille Cilicas extinxerat, hic se piratica tuebatur. Pute
 
 Ob haec tot prospera centum bubus auratis Peloro litavit spirantemque equum cum auro in fretum misit, dona Neptuno,ut se maris rector in suo mari regnare pateretur. Eo denique discriminum ventum est, ut foedus et pax cum hoste—si modo hostis Pompei filius—tamen feriretur.
 
-Quantum id, sed breve gaudium fuit, cum in Baiani litoris mole de reditu eius et bonorum restitutione convenit, cumque invitante ipso in navem discubitum est, et ille sortem suam increpitans hae sunt inquit carinae tuebatur. Puteolos Bezzenbergerus: turbatur per (=pn = proprium nomen) puteolos B. Aenariam: tenariam B. congressus: congressas B. demersit: emersit B. Menas: mensas B. praedabundi Halmius: praedendi B. hoc putabant post Neptuno add. B, dei Hauptius. et: ut B. meae ; haud incomiter, quod, cum in celeberrima parte urbis Carinis pater eius habitasset, ipsius domus et penates in navi penderent.
+Quantum id, sed breve gaudium fuit, cum in Baiani litoris mole de reditu eius et bonorum restitutione convenit, cumque invitante ipso in navem discubitum est, et ille sortem suam increpitans hae sunt inquit carinae meae ; haud incomiter, quod, cum in celeberrima parte urbis Carinis pater eius habitasset, ipsius domus et penates in navi penderent.
 
 Sed inportunitate Antonii, et Pompeianorum bonorum, quorum sector ille fuerat, praeda devorata, possessio manere non poterat; detrectare coepit foederis pactum. Itaque itum ad arma rursus, et iam totis imperii viribus classis in iuvenem conparata est, cuius molitio ipsa magnifica.
 
@@ -1787,7 +1787,7 @@ Tanta mole belli petitus in Siculo freto iuvenis oppressus est, magnique famam d
 
 Perditis enim rebus profugit Asiamque velis petit, venturus ibi in manus hostium et catenas et, quod miserrimum est fortibus viris, ad hostium arbitrium sub percussore moriturus.
 
-Non inportunitate Iahnius: inportu B. itum Halmius: inille B. et iam totis Halmius: et intotis B, illa aquarum: illae quarum B. venturus: ventus B. alia post Xerxen miserabilior fuga. Quippe modo trecentarum quinquaginta navium dominus cum sex septemve fugiebat extincto praetoriae navis lumine, anulis in mare abiectis, pavens atque respectans, et tamen non timens nisi ne periret.
+Non alia post Xerxen miserabilior fuga. Quippe modo trecentarum quinquaginta navium dominus cum sex septemve fugiebat extincto praetoriae navis lumine, anulis in mare abiectis, pavens atque respectans, et tamen non timens nisi ne periret.
 
 QUAMVIS in Cassio et Bruto partes sustulisset, in Pompeio totum partium nomen abolevisset, nondum tamen ad pacis stabilitatem profecerat Caesar, cum scopulus et nodus et mora publicae securitatis superesset Antonius.
 
@@ -1795,7 +1795,7 @@ Nec ille defuit vitiis quin periret, immo omnia expertus ambitu et luxuria primu
 
 Parthi clade Crassiana altius animos erexerant civilesque populi Romani discordias laeti acceperant. Itaque ut prima adfulsit occasio, non dubitaverunt erumpere, ultro quidem invitante Labieno, qui missus a Cassio Brutoque—qui furor scelerum—sollicitaverat hostes in auxilium.
 
-Et illi Pacoro duce, regio iuvene, dispulerant Antoniana praetoriae: portitoriae B: praetorio NL. ambitu: ambitus B. saeculum terrore Halmius: terrore saeculum B. populi Romani: populus romanus B. regi post acceperant add. B. praesidia; Saxa legatus ne veniret in potestatem gladio impetravit.
+Et illi Pacoro duce, regio iuvene, dispulerant Antoniana praesidia; Saxa legatus ne veniret in potestatem gladio impetravit.
 
 Denique ablata Syria emanabat latius malum, hostibus sub auxilii specie sibi vincentibus, nisi Ventidius, et hic legatus Antonii, incredibili felicitate et Labieni copias ipsumque Pacorum et omnem Parthicum equitatum toto inter Oronten et Euphraten sinu late cecidisset.
 
@@ -1805,7 +1805,7 @@ Rex fortissime dimicans cecidit. Mox circumlato eius per urbes, quae desciverant
 
 EXPERTIS invicem Parthis atque Romanis, cum Crassus et Pacorus utrimque virium mutuarum documenta fecissent, pari rursus reverentia integrata amicitia, et quidem ab ipso foedus Antonio cum rege percussum.
 
-Sed—inmensa vanitas hominis— dum titulorum cupidine Araxen et Euphraten sub imaginibus suis legi concupiscit, neque causa neque gladio Vossius: claudio B: aclaudio N L. equitatum toto: et que tantum totum B. consilio ac ne imaginaria quidem belli indictione, quasi hoc quoque ex arte ducis esset obrepere,
+Sed—inmensa vanitas hominis— dum titulorum cupidine Araxen et Euphraten sub imaginibus suis legi concupiscit, neque causa neque consilio ac ne imaginaria quidem belli indictione, quasi hoc quoque ex arte ducis esset obrepere,
 
 relicta repente Syria in Parthos impetum facit. Gens praeter armorum fiduciam callida simulat trepidationem et in campos fugam. Et hic statim quasi victor sequebatur, cum subito nec magna manus ex inproviso et iam in fessos via sub vespere velut nimbus erupit. Missis undique sagittis duas
 
@@ -1815,7 +1815,7 @@ iam adfuturum cum omnibus copiis regem; irent retro peterentque montis: sic quoq
 
 adfuit tamen. Deletae reliquae copiae forent, nisi urguentibus telis in modum grandinis quidam forte quasi docti procubuissent in genua milites, et elatis supra capita scutis caesorum speciem praebuissent.
 
-Tunc Parthus arcus inhibuit. Dein rursus cum se in om. B. duas: suas B. speciem: specie B. Romani extulissent, adeo res miraculo fuit, ut unus ex barbaris miserit vocem Ite et bene valete, Romani! Merito vos victores fama gentium loquitur, qui Parthorum tela fugistis. Non minor ex via postea quam ab hostibus accepta clades.
+Tunc Parthus arcus inhibuit. Dein rursus cum se Romani extulissent, adeo res miraculo fuit, ut unus ex barbaris miserit vocem Ite et bene valete, Romani! Merito vos victores fama gentium loquitur, qui Parthorum tela fugistis. Non minor ex via postea quam ab hostibus accepta clades.
 
 Infesta primum siti regio, tum quibusdam salmacidae infestiores, novissime quae iam ab invalidis et avide hauriebantur noxiae etiam dulces fuere.
 
@@ -1825,7 +1825,7 @@ Sic vix tertia parte de sedecim legionibus reliqua, cum argentum eius passim dol
 
 FUROR Antonii quatenus per ambitum non poterat interire, luxu et libidine extinctus est. Quippe cum post Parthos exosus arma in otio ageret, captus amore Cleopatrae quasi bene gestis rebus in regio se sinu reficiebat.
 
-Hinc mulier Aegyptia ab ebrio imperatore pretium libidinum Romanum imperium minor: minora B. salmacidae infestiores Halmius: salmacidae fluvius in B: salmacidis fluvius infestior M. hauriebantur: hauriebat B: hauriebatur N L. et om. B. pretium—imperium om. B. petit; et promisit Antonius, quasi facilior esset Partho Romanus.
+Hinc mulier Aegyptia ab ebrio imperatore pretium libidinum Romanum imperium petit; et promisit Antonius, quasi facilior esset Partho Romanus.
 
 Igitur coepit non sibi dominationem parare nec tacite, sed patriae, nominis, togae, fascium oblitus totus in monstrum illud ut mente, ita amictu quoque cultuque desciverat. Aureum in manu baculum, in latere acinaces, purpurea vestis ingentibus obstricta gemmis: diadema deerat, ut regina rex et ipse frueretur.
 
@@ -1835,7 +1835,7 @@ Nobis quadringentae amplius naves, ducentae minus hostium; sed numerum magnitudo
 
 quae quidem ipsa moles exitio fuit. Caesaris naves a binis remigum in senos nec amplius ordines creverant; itaque habiles in omnia quae usus posceret, ad impetus et recursus flexusque capiendos, illas graves et ad omnia praepeditas singulas plures adortae missilibus, simul rostris, ad hoc ignibus iactis ad arbitrium dissipavere.
 
-Nec ulla re magis hostilium copiarum apparuit magni- facilior: felicior B. amictu Freinshemius: animo codd. Leucada Rossbachius: leucadam B. non post ducentae codd., dei. Titzius. a senis: adenis B. ad arbitrium om. B. re: res B. tudo quam post victoriam. Quippe inmensae classis naufragium bello factum toto mari fluitabat, Arabumque et Sabaeorum et mille Asiae gentium spolia purpura auroque inlita adsidue mota ventis maria revomebant.
+Nec ulla re magis hostilium copiarum apparuit magni- tudo quam post victoriam. Quippe inmensae classis naufragium bello factum toto mari fluitabat, Arabumque et Sabaeorum et mille Asiae gentium spolia purpura auroque inlita adsidue mota ventis maria revomebant.
 
 Prima dux fugae regina cum aurea puppe veloque purpureo in altum dedit. Mox secutus Antonius, sed instare vestigiis Caesar.
 
@@ -1847,7 +1847,7 @@ ut solebat, induta cultus in referto odoribus solio iuxta suum se conlocavit Ant
 
 Hic finis armorum civilium: reliqua adversus exteras gentes, quae districto circa mala sua imperio diversis orbis emicabant.
 
-Nova quippe pax, revomebant: removebant B. infra Aldus: intra codd. regum: regem B. sic om. B. recepit: recipit BNL. soluta: resoluta cod. Iordanis Polling.: victa B. districto circa mala sua: destricto circa asa sua B. necdum adsuetae frenis servitutis tumidae gentium inflataeque cervices ab inposito nuper iugo resiliebant.
+Nova quippe pax, necdum adsuetae frenis servitutis tumidae gentium inflataeque cervices ab inposito nuper iugo resiliebant.
 
 Ad septentrionem conversa ferme plaga ferocius agebat, Norici, Illyrii, Pannonii, Delmatae, Moesi, Thraces et Dari, Sarmatae atque Germani.
 
@@ -1857,7 +1857,7 @@ Quae fuerit Alpinarum gentium feritas, facile est vel per mulieres ostendere, qu
 
 ILLYRII quoque sub Alpibus agunt imasque valles earum et quaedam quasi claustra custodiunt abruptis torrentibus inplicata. In hos expeditionem ipse sumpsit fierique pontes imperavit.
 
-Hic et aquis et hoste turbantibus, cunctanti ad ascen sum militi scutum de manu rapuit et viam primus ingressus est. Tum agmine secuto cum subrutus multitudine pons succidisset, saucius manibus et cruribus, Moesi: misi B. Daci: claci B. Breunos, Vcennos Rossbachius: brennos, cennos B. humi I, om. B. saucius A Idus: sauciis BI. speciosior sanguine et ipso periculo augustior terga hostium percecidit.
+Hic et aquis et hoste turbantibus, cunctanti ad ascen sum militi scutum de manu rapuit et viam primus ingressus est. Tum agmine secuto cum subrutus multitudine pons succidisset, saucius manibus et cruribus, speciosior sanguine et ipso periculo augustior terga hostium percecidit.
 
 PANNONII duobus acribus fluviis, Dravo Savoque vallantur. Populati proximos intra ripas se recipiebant. In hos domandos Vinnium misit. Caesi sunt in utrisque fluminibus.
 
@@ -1867,7 +1867,7 @@ DELMATAE plerumque sub silvis agebant; unde in latrocinia promptissimi.
 
 Hos iam pridem Marcius consul incensa urbe Delminio quasi detruncaverat, postea Asinius Pollio gregibus, armis, agris multaverat—hic secundus orator—sed Augustus perdomandos Vibio mandat, qui efferum genus fodere terras coegit aurumque venis repurgare;
 
-quod alioquin gens omnium stupidissima eo studio, ea diligentia anquirit, ut illud in usus suos eruere videantur. speciosior: specior B: speciosiore N. augustior: auctior BI. rupta Rossbachius: capta codd. profluentem: profluente B: profluentes NL. Delminio: deiminio B. stupidissima Graevius: cupidissima codd. anquirit Vinetus: adquirit codd.
+quod alioquin gens omnium stupidissima eo studio, ea diligentia anquirit, ut illud in usus suos eruere videantur.
 
 MOESI quam feri, quam truces fuerint, quam ipsorum etiam barbari barbarorum horribile dictu est.
 
@@ -1877,7 +1877,7 @@ Illi statim ante aciem inmolato equo concepere votum, ut caesorum extis ducum et
 
 Deos audisse crediderim: nec tubas sustinere potuerunt. Non minimum terroris incussit barbaris Cornidius centurio satis barbarae, efficacis tamen apud tales homines stolidi-tatis, qui foculum gerens super cassidem, agitatum motu corporis, flammam velut ardenti capite funditabat.
 
-THRACES antea saepe, tum maxime Rhoemetalce rege desciverant. Ille barbaros et signis militaribus et disciplina, armis etiam Romanis adsueverat; sed a Pisone perdomiti in ipsa captivitate rabiem ostendere. Quippe cum catenas morsibus temptarent, feritatem suam ipsi puniebant. MOESICUM: MYSICUM B. Moesi N2I: mysi BN. Marcus Monach.: marcius BN: martius L. extis: exitus B. Cornidius: chornidius B: Cornidius Mommsenus. Rhoemetalce: rhemetalce B.
+THRACES antea saepe, tum maxime Rhoemetalce rege desciverant. Ille barbaros et signis militaribus et disciplina, armis etiam Romanis adsueverat; sed a Pisone perdomiti in ipsa captivitate rabiem ostendere. Quippe cum catenas morsibus temptarent, feritatem suam ipsi puniebant.
 
 DACI montibus inhaerent. Inde Cotisonis regis imperio, quotiens concretus gelu Danuvius iunxerat ripas, decurrere solebant et vicina populari.
 
@@ -1887,7 +1887,7 @@ SARMATAE patentibus campis inequitant. Et hos per eundem Lentulum prohibere Danu
 
 GERMANIAM quoque utinam vincere tanti non putasset! Magis turpiter amissa est quam gloriose adquisita.
 
-Sed quatenus sciebat patrem suum C. Caesarem bis transvectum ponte Rhenum quaesisse bellum, in illius honorem concupierat facere provinciam; et factum erat, si barbari tam vitia nostra quam imperia ferre potuissent. Cotisonis: gotisoni B. dilata: deleta B: dilatata L. patentibus: iacentibus B. patrem: patroni B. barbari tam: barbaricam B. quam imperia om. B.
+Sed quatenus sciebat patrem suum C. Caesarem bis transvectum ponte Rhenum quaesisse bellum, in illius honorem concupierat facere provinciam; et factum erat, si barbari tam vitia nostra quam imperia ferre potuissent.
 
 Missus in eam provinciam Drusus primos domuit Vsipetes, inde Tencteros percurrit et Catthos. Nam Marcomannorum spoliis et insignibus quendam editum tumulum in tropaei modum excoluit.
 
@@ -1899,7 +1899,7 @@ et praeterea in tutelam provinciae praesidia atque custodias ubique disposuit pe
 
 Invisum atque inaccessum in id tempus Hercynium saltum patefecit. Ea denique in Germania pax erat, ut mutati homines, alia terra, caelum ipsum mitius molliusque solito videretur.
 
-Denique non per adulationem, sed ex meritis, defuncto ibi fortissimo iuvene, ipse, quod numquam alias, senatus cognomen ex provincia dedit. Tencteros: cenceros B. certa: certae B. in anticessum pactione: ante pactionem B: inantices-sum L. diviserint: diviserunt B: dividerent L. Gesoriacum: caesoria cum B: gesogiam cum N: genoso niam cum L. ipse Perizonius: ipsi codd.
+Denique non per adulationem, sed ex meritis, defuncto ibi fortissimo iuvene, ipse, quod numquam alias, senatus cognomen ex provincia dedit.
 
 Sed difficilius est provincias obtinere quam facere;
 
@@ -1915,7 +1915,7 @@ Itaque inprovidum et nihil tale metuentem ex inproviso adorti, cum ille—o secu
 
 tres legiones opprimuntur. Varus perditas res eodem quo Cannensem diem Paulus et fato est et
 
-animo secutus. Nihil illa caede per paludes perque silvas cruentius, nihil insultatione barbarorum intolerabilis, praecipue tamen in causarum patro- in Catthos (vel Chaucos) edixerat Rossbachius: incauto sedixerat B: incastos sedi rexerat N: incastris se direxerat L: incautius edixerat Halmius. violentiam: vinolentia B. obsitos Rehd.: oblitos BN. Armenio NL: ar meno B. prodita quidem Iahnius: perdita quidem aut prodita B. Segestem L: segentem B. unum: unius B. perditas res N: perdi castra B. Paulus et fato est et N L: diem potuisse fassus est ex B.
+animo secutus. Nihil illa caede per paludes perque silvas cruentius, nihil insultatione barbarorum intolerabilis, praecipue tamen in causarum patro-
 
 nos. Aliis oculos, aliis manus amputabant, uni os obsutum, recisa prius lingua, quam in manu tenens barbarus tandem ait vipera sibilare desisti.
 
@@ -1925,13 +1925,13 @@ HAEC ad septentrionem: sub meridiano tumultua-tum magis quam bellatum est. Musul
 
 Marmaridas atque Garamantes Quirinio subigendos dedit. Potuit et ille redire Marmaricus, sed modestior in aestimanda victoria fuit.
 
-AD orientem plus negotii cum Armeniis. Huc alterum ex Caesaribus, nepotibus suis, misit. Ambo non steterat Baehrensius: constiterat codd. Quirinio: quirjnio N om. B: curinio L Voss. Monac Palat. fato breves, sed alter inglorius. Massiliae quippe morbo Lucius solvitur, in Syria Gaius ex volnere occubuit, cum Armeniam ad Parthos se subtrahentem in ius recepit.
+AD orientem plus negotii cum Armeniis. Huc alterum ex Caesaribus, nepotibus suis, misit. Ambo fato breves, sed alter inglorius. Massiliae quippe morbo Lucius solvitur, in Syria Gaius ex volnere occubuit, cum Armeniam ad Parthos se subtrahentem in ius recepit.
 
 Armenios victo rege Tigrane in hoc unum servitutis genus Pompeius adsueverat, ut rectores a nobis acciperent. Inter-missum ergo ius per hunc recuperatum non incruento,
 
 nec multo tamen certamine. Quippe Dones, quem rex Artageris praefecerat, simulata proditione adortus virum intentum libello, quem ut thensaurorum rationes continentem ipse porrexerat, stricto repente ferro subiit. Et tunc quidem Caesar recreatus est ex volnere in tempus, sed * * *.Ceterum barbarus undique infesto exercitu oppressus gladio et pyra, in quam se percussus inmisit, super-stiti etiam nunc Caesari satisfecit.
 
-SUB occasu pacata erat fere omnis Hispania, nisi quam Pyrenaei desinentis scopulis inhaerentem citerior adluebat Oceanus. Hic duae validissimae Armeniam: armenia B. in ius Iahnius: ipsos B. victo rege Tigrane: victor gentis Tigranen B. multo: ulto B: multa L. Artageris G. Vossius: artaxer ser par this B: artaxatis N: artasatis L. recreatus—profundo (60, 6) scripsit B1. lacunam indicavit Iahnius. percussus: percussu* B1. inmisit: summisit B1: immisit L. adluebat: abluebat B1: alluebat L. gentes,Cantabri et Astures;inmunes imperii agitabant.
+SUB occasu pacata erat fere omnis Hispania, nisi quam Pyrenaei desinentis scopulis inhaerentem citerior adluebat Oceanus. Hic duae validissimae gentes,Cantabri et Astures;inmunes imperii agitabant.
 
 Cantabrorum et prior et acrior et magis pertinax in rebellando animus fuit, qui non contenti libertatem suam defendere proximis etiam imperitare temptabant Vaccaeosque et Turmogos et Autrigonas
 
@@ -1941,7 +1941,7 @@ Nec ab Oceano quies, cum infesta classe ipsa quoque terga hostium caederentur. P
 
 Tertio Aracelium oppidum magna vi repugnat;captum tamen. Postremo fuit Medulli montis obsidio, quem perpetua decem et octo milium fossa conprehensum undique simul adeunte Romano postquam extrema barbari vident, certatim igne, ferro inter epulas venenoque, quod ibi volgo taxo exprimitur, praecepere mortem, seque pars maior a captivitate, quae morte gravior ad id tempus indomitis videbatur, vindicaverunt.
 
-Haec per Autrigonas Salmasius: aurigantes B1: aurigonas N L. quia: qua B1. Vindium: vinnium B1. repugnat: oppugnat B1. inter epulas om. B1. taxo scripsi: taxeo B1. praecipere N: praecoepere B1. maior a: magis (om. a) B1. Antistium Furniumque legatos et Agrippam hibernans in Tarraconis maritimis Caesar accepit.
+Haec per Antistium Furniumque legatos et Agrippam hibernans in Tarraconis maritimis Caesar accepit.
 
 Mox ipse praesens hos deduxit montibus, hos obsidibus astrinxit, hos sub corona iure belli venun-
 
@@ -1955,15 +1955,13 @@ tam subito, tam cum consilio venientibus, nisi Brigaecini prodidissent, a quibus
 
 Reliquias fusi exercitus validissima civitas Lancea excipit, ubi cum locis adeo certatum est, ut, cum in captam urbem faces poscerentur, aegre dux impetraverit veniam, ut victoriae Romanae stans potius esset quam incensa monumentum.
 
-Antistium: antatium B1: antestium L. Furniumque: firmumque B1. in Tarraconis: in terra tonis B1: intarrachonis N: in-terraconis L. digna curru: dignas currus B1. Asturam: astaram B1: scuram NL. tam L Voss. Rehd.: quam B1. Brigaecini: dri caecini B1: drigaecini N: drigenici L. prodidissent: providissent B1. tamen post sic add. B1 N: om. Iahnius.
-
 Hic finis Augusto bellicorum certaminum fuit, idem rebellandi finis Hispaniae. Certa mox fides et aeterna pax, cum ipsorum ingenio in pacis artes promptiore, tum consilio Caesaris, qui fiduciam montium timens in quos se recipiebant, castra sua,
 
 quia in plano erant, habitare et incolere iussit; ibi gentis esse concilium, illud observari caput. Favebat consilio natura regionis; circa enim omnis aurifera est et chrysocoliae miniique et aliorum colorum ferax. Itaque exerceri solum iussit. Sic Astures nitentes in profundo opes suas atque divitias, dum aliis quaerunt, nosse coeperunt.
 
 OMNIBUS ad occasum et meridiem pacatis gentibus, ad septentrionem quoque, dum taxat intra Rhenum atque Danuvium, item ad orientem intra Cyrum et Euphraten, illi quoque reliqui, qui inmunes imperii erant, sentiebant tamen magnitudinem et victorem gentium populum Romanum reverebantur.
 
-Nam et Scythae misere legatos et Sarmatae amicitiam petentes. Seres etiam habitantesque sub ipso sole Indi, cum gemmis et margaritis elephantos quoque inter munera trahentes, nihil magis quam bellicorum certaminum: belli civilium certamin B1. artes: arte B1: partes N L. observari: observare B1. aurifera: auriferae B1. chrysocollae: chriso calle B1, Astures N 2: astare B1. Cyrum: ecyrum N: circum L. victorem Aldus: victoriam codd. populum Romanum Aldus: populi Romani codd. longinquitatem viae inputabant—quadriennium in-pleverant; et iam ipse hominum color ab alio venire caelo fatebatur.
+Nam et Scythae misere legatos et Sarmatae amicitiam petentes. Seres etiam habitantesque sub ipso sole Indi, cum gemmis et margaritis elephantos quoque inter munera trahentes, nihil magis quam longinquitatem viae inputabant—quadriennium in-pleverant; et iam ipse hominum color ab alio venire caelo fatebatur.
 
 Parthi quoque, quasi victoriae paeniteret, rapta clade Crassiana signa ultro rettulere.
 
@@ -1971,4 +1969,4 @@ Sic ubique certa atque continua totius generis humani aut pax fuit aut pactio, a
 
 Hinc conversus ad pacem pronum in omnia mala et in luxuriam fluens saeculum gravibus severisque legibus multis coercuit, ob haec tot facta ingentia dictus imperator perpetuus et pater patriae.
 
-Tractatum etiam in senatu, an, quia condidisset imperium, Romulus vocaretur; sed sanctius et reverentius visum est nomen Augusti, ut scilicet iam tum, dum colit terras, ipso nomine et titulo consecraretur. iam Mommsenus: tamen codd. paeniteret Rehd.: pertineret N: permaneret L Monac. certa Freinshemius: cuncta codd. pactio L Palat.: paccio Voss. Monac. Rehd.: factio N.
+Tractatum etiam in senatu, an, quia condidisset imperium, Romulus vocaretur; sed sanctius et reverentius visum est nomen Augusti, ut scilicet iam tum, dum colit terras, ipso nomine et titulo consecraretur.
