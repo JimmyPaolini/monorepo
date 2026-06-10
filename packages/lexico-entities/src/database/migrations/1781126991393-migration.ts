@@ -3,8 +3,8 @@ import type { MigrationInterface, QueryRunner } from "typeorm";
 /**
  *
  */
-export class Baseline1781118131673 implements MigrationInterface {
-  name = "Baseline1781118131673";
+export class Migration1781126991393 implements MigrationInterface {
+  name = "Migration1781126991393";
 
   /**
    *
@@ -145,7 +145,7 @@ export class Baseline1781118131673 implements MigrationInterface {
       [
         "GENERATED_COLUMN",
         "translation_full_text_search",
-        "lexico_empty",
+        "postgres",
         "public",
         "translations",
       ],
@@ -303,7 +303,7 @@ export class Baseline1781118131673 implements MigrationInterface {
     await queryRunner.query(
       `INSERT INTO "public"."typeorm_metadata"("database", "schema", "table", "type", "name", "value") VALUES ($1, $2, $3, $4, $5, $6)`,
       [
-        "lexico_empty",
+        "postgres",
         "public",
         "translations",
         "GENERATED_COLUMN",
@@ -372,7 +372,7 @@ export class Baseline1781118131673 implements MigrationInterface {
       `COMMENT ON TABLE "word_lexemes" IS 'Junction table linking a normalized Latin word string to the lexemes (dictionary entries) it can represent'`,
     );
     await queryRunner.query(
-      `CREATE TABLE "words" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "word" character varying NOT NULL, CONSTRAINT "UQ_38a98e41b6be0f379166dc2b58d" UNIQUE ("word"), CONSTRAINT "PK_feaf97accb69a7f355fa6f58a3d" PRIMARY KEY ("id")); COMMENT ON COLUMN "words"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "words"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "words"."created_by" IS 'Identifier of the user or process that created the record'; COMMENT ON COLUMN "words"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "words"."updated_by" IS 'Identifier of the user or process that last updated the record'; COMMENT ON COLUMN "words"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "words"."deleted_by" IS 'Identifier of the user or process that soft-deleted the record'; COMMENT ON COLUMN "words"."word" IS 'The Latin word as written'`,
+      `CREATE TABLE "words" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "data" character varying NOT NULL, CONSTRAINT "UQ_e02087015bb44b8ee83a801ca45" UNIQUE ("data"), CONSTRAINT "PK_feaf97accb69a7f355fa6f58a3d" PRIMARY KEY ("id")); COMMENT ON COLUMN "words"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "words"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "words"."created_by" IS 'Identifier of the user or process that created the record'; COMMENT ON COLUMN "words"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "words"."updated_by" IS 'Identifier of the user or process that last updated the record'; COMMENT ON COLUMN "words"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "words"."deleted_by" IS 'Identifier of the user or process that soft-deleted the record'; COMMENT ON COLUMN "words"."data" IS 'The Latin word as written'`,
     );
     await queryRunner.query(
       `COMMENT ON TABLE "words" IS 'A Latin word string that maps to one or more dictionary entries'`,

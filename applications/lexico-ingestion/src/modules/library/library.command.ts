@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -42,8 +43,16 @@ export class LibraryCommand extends CommandRunner {
       latinLibraryProvider,
       perseusProvider,
     ];
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
+  private readonly logFilePath: string;
   private readonly providers: {
     ingest: (options?: { author?: string; text?: string }) => Promise<Author[]>;
     name: string;
@@ -273,13 +282,6 @@ export class LibraryCommand extends CommandRunner {
     const dataPath = path.resolve("data", "library");
     await fs.mkdir(dataPath, { recursive: true });
 
-    const outputDir = path.join(process.cwd(), "output");
-    await fs.mkdir(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
-
     const providerName = await this.parseProvider(
       options.provider ?? undefined,
     );
@@ -323,7 +325,7 @@ export class LibraryCommand extends CommandRunner {
           error instanceof Error ? error.stack : undefined,
         );
         await fs.appendFile(
-          logFilePath,
+          this.logFilePath,
           `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
         );
       }

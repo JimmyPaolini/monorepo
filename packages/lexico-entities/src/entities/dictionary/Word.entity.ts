@@ -21,7 +21,7 @@ export class Word extends AuditableEntity {
     unique: true,
   })
   @Field()
-  word!: string;
+  data!: string;
 
   /** Junction rows linking this word to every morphological form it can surface as. */
   @Field(() => [WordForm])

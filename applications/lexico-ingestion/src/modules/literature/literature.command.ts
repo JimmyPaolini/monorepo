@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -49,8 +50,16 @@ export class LiteratureCommand extends CommandRunner {
   ) {
     super();
     this.logger.setContext(LiteratureCommand.name);
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
+  private readonly logFilePath: string;
   private readonly memoizedWordCache = new Map<string, null | string>();
 
   // Ordered by priority
@@ -112,9 +121,9 @@ export class LiteratureCommand extends CommandRunner {
     if (!this.wordsCache) {
       this.logger.log("📖 Caching dictionary words for token mapping...");
       const words = await this.wordRepository.find({
-        select: { id: true, word: true },
+        select: { data: true, id: true },
       });
-      this.wordsCache = new Map(words.map((w) => [w.word, w.id]));
+      this.wordsCache = new Map(words.map((w) => [w.data, w.id]));
       this.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
     }
     return this.wordsCache;
@@ -593,12 +602,6 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const textsToIngest = [...textMap.values()];
-    const outputDir = path.join(process.cwd(), "output");
-    await fs.mkdir(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
 
     this.logger.log(`📚 Selected ${textsToIngest.length} texts for ingestion.`);
 
@@ -694,7 +697,7 @@ export class LiteratureCommand extends CommandRunner {
                 `❌ Failed to process ${hierarchy}${t.title} (from ${t.provider}): ${String(error)}`,
               );
               await fs.appendFile(
-                logFilePath,
+                this.logFilePath,
                 `[${new Date().toISOString()}] ${t.fullPath}: ${errorMessage}\n`,
               );
             }

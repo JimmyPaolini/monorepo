@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -22,11 +23,19 @@ export class LatinLibraryCommand extends CommandRunner {
   constructor(private readonly logger: LoggerService) {
     super();
     this.logger.setContext(LatinLibraryCommand.name);
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
 
   private readonly dataDir = path.resolve("data", "latin-library-source");
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
@@ -82,13 +91,6 @@ export class LatinLibraryCommand extends CommandRunner {
     this.logger.log(`🕷️ Starting to scrape The Latin Library from ${host}`);
 
     await fs.mkdir(this.dataDir, { recursive: true });
-
-    const outputDir = path.join(process.cwd(), "output");
-    await fs.mkdir(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
 
     // 1. Fetch index
     const indexHtml = await this.fetchAndSave(host, host);
@@ -257,7 +259,7 @@ export class LatinLibraryCommand extends CommandRunner {
               : String(error);
           this.logger.error(`❌ Error processing ${urlStr}: ${String(error)}`);
           await fs.appendFile(
-            logFilePath,
+            this.logFilePath,
             `[${new Date().toISOString()}] ${urlStr}: ${errorMessage}\n`,
           );
         }

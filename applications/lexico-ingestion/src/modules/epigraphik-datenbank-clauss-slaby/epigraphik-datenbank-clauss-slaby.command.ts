@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -20,6 +21,13 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   constructor(private readonly logger: LoggerService) {
     super();
     this.logger.setContext(EpigraphikDatenbankClaussSlabyCommand.name);
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
@@ -31,15 +39,13 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   );
   private readonly host = "https://edcs.hist.uzh.ch/api/query";
   private readonly limit = 1_000_000;
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
-  private async fetchChunk(
-    start: number,
-    logFilePath: string,
-  ): Promise<boolean> {
+  private async fetchChunk(start: number): Promise<boolean> {
     const chunkFile = path.join(this.dataDir, `chunk-${start}.json`);
 
     try {
@@ -85,7 +91,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
         `❌ Error fetching chunk at ${start}: ${String(error)}`,
       );
       await fs.appendFile(
-        logFilePath,
+        this.logFilePath,
         `[${new Date().toISOString()}] chunk-${start}: ${errorMessage}\n`,
       );
       return true;
@@ -99,19 +105,12 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     this.logger.log(`📁 Ensuring data directory exists at ${this.dataDir}`);
     await fs.mkdir(this.dataDir, { recursive: true });
 
-    const outputDir = path.join(process.cwd(), "output");
-    await fs.mkdir(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
-
     this.logger.log(
       `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
     );
 
     for (let start = 0; start < this.limit; start += this.batchSize) {
-      const shouldContinue = await this.fetchChunk(start, logFilePath);
+      const shouldContinue = await this.fetchChunk(start);
       if (!shouldContinue) {
         break;
       }

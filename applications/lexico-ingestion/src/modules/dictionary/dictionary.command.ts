@@ -39,6 +39,13 @@ export class DictionaryCommand extends CommandRunner {
   ) {
     super();
     this.logger.setContext(DictionaryCommand.name);
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
@@ -46,6 +53,7 @@ export class DictionaryCommand extends CommandRunner {
   private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
   private fileIndex: Map<string, string> | null = null;
   private readonly inProgressWords = new Set<string>();
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
@@ -220,13 +228,6 @@ export class DictionaryCommand extends CommandRunner {
       files = files.slice(start, end + 1);
     }
 
-    const outputDir = path.join(process.cwd(), "output");
-    fs.mkdirSync(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
-
     this.logger.log(`📖 Processing ${files.length} lexemes`);
 
     let current = 0;
@@ -249,7 +250,7 @@ export class DictionaryCommand extends CommandRunner {
           error instanceof Error ? error.stack || error.message : String(error);
         this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
         fs.appendFileSync(
-          logFilePath,
+          this.logFilePath,
           `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
         );
       }

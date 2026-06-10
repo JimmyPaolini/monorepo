@@ -30,11 +30,19 @@ export class WiktionaryCommand extends CommandRunner {
   constructor(private readonly logger: LoggerService) {
     super();
     this.logger.setContext(WiktionaryCommand.name);
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+    this.errorLogFilePath = path.join(
+      outputDir,
+      `wiktionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
 
   private readonly directory = path.join(process.cwd(), "./data/wiktionary");
+  private readonly errorLogFilePath: string;
   private readonly host = "https://en.wiktionary.org";
   private readonly maxRetries = 5;
   private readonly maxRetryDelayMilliseconds = 60_000;
@@ -104,9 +112,17 @@ export class WiktionaryCommand extends CommandRunner {
             await new Promise((resolve) =>
               setTimeout(resolve, this.requestDelayMilliseconds),
             );
-          } catch (wordError) {
+          } catch (wordError: unknown) {
+            const errorMessage =
+              wordError instanceof Error
+                ? wordError.stack || wordError.message
+                : String(wordError);
             this.logger.error(
               `❌ Error ingesting word "${word}" - ${String(wordError)}`,
+            );
+            fs.appendFileSync(
+              this.errorLogFilePath,
+              `[${new Date().toISOString()}] ${word}: ${errorMessage}\n`,
             );
           }
         }
@@ -116,9 +132,15 @@ export class WiktionaryCommand extends CommandRunner {
         this.logger.log(`📄 Ingested page "${this.host}${urlPath}"`);
       }
       this.logger.log(`🗂️ Ingested category "${category}"`);
-    } catch (error) {
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
       this.logger.error(
         `❌ Error ingesting category "${category}" at url "${this.host}${urlPath}" - ${String(error)}`,
+      );
+      fs.appendFileSync(
+        this.errorLogFilePath,
+        `[${new Date().toISOString()}] category ${category}: ${errorMessage}\n`,
       );
     }
   }
@@ -183,6 +205,7 @@ export class WiktionaryCommand extends CommandRunner {
     if (!fs.existsSync(this.directory)) {
       fs.mkdirSync(this.directory, { recursive: true });
     }
+
     for (const category of Object.keys(categories).filter(
       (key): key is Category => Object.hasOwn(categories, key),
     )) {

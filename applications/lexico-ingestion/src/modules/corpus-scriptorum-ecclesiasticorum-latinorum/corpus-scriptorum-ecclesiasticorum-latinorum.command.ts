@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -22,6 +23,13 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     this.logger.setContext(
       CorpusScriptorumEcclesiasticorumLatinorumCommand.name,
     );
+
+    const outputDir = path.join(process.cwd(), "output");
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    this.logFilePath = path.join(
+      outputDir,
+      `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
@@ -30,6 +38,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     "data",
     "corpus-scriptorum-ecclesiasticorum-latinorum-source",
   );
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
@@ -70,13 +79,6 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     this.logger.log(`🗂️ Found ${xmlPaths.length} Latin XML files in CSEL repo`);
     await fs.mkdir(this.dataDir, { recursive: true });
 
-    const outputDir = path.join(process.cwd(), "output");
-    await fs.mkdir(outputDir, { recursive: true });
-    const logFilePath = path.join(
-      outputDir,
-      `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
-
     for (const xmlPath of xmlPaths) {
       const targetPath = path.join(this.dataDir, xmlPath);
 
@@ -107,7 +109,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
           error instanceof Error ? error.stack || error.message : String(error);
         this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
         await fs.appendFile(
-          logFilePath,
+          this.logFilePath,
           `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
         );
       }

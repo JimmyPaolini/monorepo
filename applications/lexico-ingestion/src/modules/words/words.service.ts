@@ -76,16 +76,16 @@ export class WordsService {
     if (normalizedWords.length > 0) {
       // Upsert all Word rows by their unique word strings.
       await this.wordsRepository.upsert(
-        normalizedWords.map((word) => ({ word })),
+        normalizedWords.map((word) => ({ data: word })),
         {
-          conflictPaths: ["word"],
+          conflictPaths: ["data"],
           skipUpdateIfNoValuesChanged: true,
         },
       );
 
       // Fetch the inserted words to get their IDs for the junction table
       const words = await this.wordsRepository.find({
-        where: { word: In(normalizedWords) },
+        where: { data: In(normalizedWords) },
       });
 
       // Insert WordLexeme junction rows — ignore if the pair already exists.
@@ -115,17 +115,17 @@ export class WordsService {
     await this.wordsRepository.upsert(
       normalizedWords.map((w) => ({
         createdBy: LEXICO_INGESTION_BY_ID,
+        data: w,
         updatedBy: LEXICO_INGESTION_BY_ID,
-        word: w,
       })),
-      { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
+      { conflictPaths: ["data"], skipUpdateIfNoValuesChanged: true },
     );
 
     const words = await this.wordsRepository.find({
-      where: { word: In(normalizedWords) },
+      where: { data: In(normalizedWords) },
     });
 
-    const wordMap = new Map(words.map((w) => [w.word, w]));
+    const wordMap = new Map(words.map((w) => [w.data, w]));
 
     const wordLexemeValues = words.map((word) => ({
       createdBy: LEXICO_INGESTION_BY_ID,
