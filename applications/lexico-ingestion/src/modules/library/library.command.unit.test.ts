@@ -7,7 +7,6 @@ import { LibraryCommand } from "./library.command";
 import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
 import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
 import { LatinLibraryProvider } from "./providers/latin-library.provider";
-import { MusisqueDeoqueLibraryProvider } from "./providers/musisque-deoque-library.provider";
 import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
 
 describe("LibraryCommand", () => {
@@ -36,10 +35,6 @@ describe("LibraryCommand", () => {
         },
         {
           provide: LatinLibraryProvider,
-          useValue: { ingest: vi.fn().mockResolvedValue([]) },
-        },
-        {
-          provide: MusisqueDeoqueLibraryProvider,
           useValue: { ingest: vi.fn().mockResolvedValue([]) },
         },
         {

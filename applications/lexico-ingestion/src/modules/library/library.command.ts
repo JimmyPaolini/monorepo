@@ -11,7 +11,6 @@ import { LoggerService } from "../logger/logger.service";
 import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
 import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
 import { LatinLibraryProvider } from "./providers/latin-library.provider";
-import { MusisqueDeoqueLibraryProvider } from "./providers/musisque-deoque-library.provider";
 import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
 
 import type { LibraryCommandOptions } from "./library.types";
@@ -33,7 +32,6 @@ export class LibraryCommand extends CommandRunner {
     corpusScriptorumEcclesiasticorumLatinorumProvider: CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider,
     epigraphikDatenbankClaussSlabyProvider: EpigraphikDatenbankClaussSlabyLibraryProvider,
     latinLibraryProvider: LatinLibraryProvider,
-    musisqueDeoqueProvider: MusisqueDeoqueLibraryProvider,
     perseusProvider: PerseusLibraryProvider,
   ) {
     super();
@@ -42,7 +40,6 @@ export class LibraryCommand extends CommandRunner {
       corpusScriptorumEcclesiasticorumLatinorumProvider,
       epigraphikDatenbankClaussSlabyProvider,
       latinLibraryProvider,
-      musisqueDeoqueProvider,
       perseusProvider,
     ];
   }
