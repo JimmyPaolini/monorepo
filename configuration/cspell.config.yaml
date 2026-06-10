@@ -72,10 +72,13 @@ dictionaryDefinitions:
 words:
   - amissa
   - apikey
+  - Biblia
+  - caes
   - Canis
   - dataloaders
   - disambiguator
   - elipssis
+  - epubs
   - extensionless
   - futp
   - gallico
@@ -88,6 +91,7 @@ words:
   - killallnode
   - killallvscodeextensions
   - killport
+  - livius
   - mcp
   - MDCLXVI
   - multivalued

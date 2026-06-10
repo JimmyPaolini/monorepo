@@ -16,7 +16,7 @@ import {
   formatLineNumber,
   hasValidTextContent,
   isEnglishBoilerplate,
-} from "../library.command";
+} from "../library.utilities";
 
 /**
  * Provider for scraping The Latin Library.

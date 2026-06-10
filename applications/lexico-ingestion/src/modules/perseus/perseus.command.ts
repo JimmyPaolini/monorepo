@@ -40,11 +40,13 @@ export class PerseusCommand extends CommandRunner {
       "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/";
     const treeUrl =
       "https://api.github.com/repos/PerseusDL/canonical-latinLit/git/trees/master?recursive=1";
-    this.logger.log(`Fetching Perseus tree from ${treeUrl}`);
+    this.logger.log(`🌳 Fetching Perseus tree from ${treeUrl}`);
     const treeRes = await fetch(treeUrl);
 
     if (!treeRes.ok) {
-      this.logger.error(`Failed to fetch Perseus tree: ${treeRes.statusText}`);
+      this.logger.error(
+        `❌ Failed to fetch Perseus tree: ${treeRes.statusText}`,
+      );
       return;
     }
 
@@ -61,7 +63,9 @@ export class PerseusCommand extends CommandRunner {
       )
       .map((node) => node.path);
 
-    this.logger.log(`Found ${xmlPaths.length} Latin XML files in Perseus repo`);
+    this.logger.log(
+      `🗂️ Found ${xmlPaths.length} Latin XML files in Perseus repo`,
+    );
     await fs.mkdir(this.dataDir, { recursive: true });
 
     for (const xmlPath of xmlPaths) {
@@ -69,20 +73,20 @@ export class PerseusCommand extends CommandRunner {
 
       try {
         await fs.access(targetPath);
-        this.logger.log(`Skipping already downloaded: ${xmlPath}`);
+        this.logger.log(`⏭️ Skipping already downloaded: ${xmlPath}`);
         continue;
       } catch {
         // file does not exist
       }
 
       await fs.mkdir(path.dirname(targetPath), { recursive: true });
-      this.logger.log(`Downloading: ${xmlPath}`);
+      this.logger.log(`📥 Downloading: ${xmlPath}`);
 
       try {
         const fileUrl = host + xmlPath;
         const res = await fetch(fileUrl);
         if (!res.ok) {
-          this.logger.warn(`Failed to fetch ${fileUrl}: ${res.statusText}`);
+          this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${res.statusText}`);
           continue;
         }
 
@@ -90,10 +94,10 @@ export class PerseusCommand extends CommandRunner {
         await fs.writeFile(targetPath, xmlContent, "utf8");
         await new Promise((resolve) => setTimeout(resolve, 100)); // polite delay
       } catch (error) {
-        this.logger.error(`Error downloading ${xmlPath}: ${String(error)}`);
+        this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
       }
     }
 
-    this.logger.log("Finished downloading Perseus source files.");
+    this.logger.log("✅ Finished downloading Perseus source files.");
   }
 }

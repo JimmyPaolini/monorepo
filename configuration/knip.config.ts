@@ -11,6 +11,7 @@ const config: KnipConfig = {
     "**/node_modules/**",
     "**/.nx/**",
     "**/coverage/**",
+    "notepads/**",
   ],
 
   // Binaries invoked via project.json targets or scripts, not imported in code
@@ -133,8 +134,8 @@ const config: KnipConfig = {
     // lexico-components: Shared React component library (shadcn/ui)
     "packages/lexico-components": {
       entry: ["src/index.ts", "src/components/**/*.tsx"],
-      project: ["src/**/*.ts", "src/**/*.tsx"],
       ignoreDependencies: ["tailwindcss-animate"],
+      project: ["src/**/*.ts", "src/**/*.tsx"],
     },
 
     // lexico-entities: Shared TypeORM entities

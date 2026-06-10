@@ -42,14 +42,14 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     try {
       // Check if file already exists
       await fs.access(chunkFile);
-      this.logger.log(`Chunk ${start} already exists, skipping.`);
+      this.logger.log(`⏭️ Chunk ${start} already exists, skipping.`);
       return true; // continue to next chunk
     } catch {
       // File doesn't exist, proceed with download
     }
 
     this.logger.log(
-      `Fetching records ${start} to ${start + this.batchSize}...`,
+      `📥 Fetching records ${start} to ${start + this.batchSize}...`,
     );
 
     try {
@@ -57,7 +57,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
         `${this.host}?start=${start}&length=${this.batchSize}`,
       );
       if (!res.ok) {
-        this.logger.warn(`Failed to fetch records: ${res.statusText}`);
+        this.logger.warn(`⚠️ Failed to fetch records: ${res.statusText}`);
         return true; // continue trying next ones? or false to abort? let's continue.
       }
 
@@ -66,7 +66,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       // Stop if there are no more records
       // The API returns { data: [] } when empty
       if (Array.isArray(data.data) && data.data.length === 0) {
-        this.logger.log(`No more records found after ${start}. Stopping.`);
+        this.logger.log(`🛑 No more records found after ${start}. Stopping.`);
         return false; // Stop loop
       }
 
@@ -76,7 +76,9 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       await new Promise((resolve) => setTimeout(resolve, 500));
       return true;
     } catch (error) {
-      this.logger.error(`Error fetching chunk at ${start}: ${String(error)}`);
+      this.logger.error(
+        `❌ Error fetching chunk at ${start}: ${String(error)}`,
+      );
       return true;
     }
   }
@@ -85,11 +87,11 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
   /** Runs the ingestion of epigraphs by downloading chunks to the filesystem */
   async run(): Promise<void> {
-    this.logger.log(`Ensuring data directory exists at ${this.dataDir}`);
+    this.logger.log(`📁 Ensuring data directory exists at ${this.dataDir}`);
     await fs.mkdir(this.dataDir, { recursive: true });
 
     this.logger.log(
-      `Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
+      `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
     );
 
     for (let start = 0; start < this.limit; start += this.batchSize) {
@@ -99,6 +101,6 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       }
     }
 
-    this.logger.log("Finished downloading chunks.");
+    this.logger.log("✅ Finished downloading chunks.");
   }
 }

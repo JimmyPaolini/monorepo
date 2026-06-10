@@ -139,7 +139,11 @@
         "cwd": "{projectRoot}"
       }
     },
-    "type-coverage": {},
+    "type-coverage": {
+      "options": {
+        "command": "type-coverage --at-least 99 --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
+      }
+    },
     "typecheck": {},
     "wiktionary": {
       "description": "Ingest Wiktionary data into the database",

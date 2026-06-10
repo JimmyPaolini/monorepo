@@ -9,7 +9,7 @@ import YAML from "yaml";
 import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
-import { formatLineNumber, hasValidTextContent } from "../library.command";
+import { formatLineNumber, hasValidTextContent } from "../library.utilities";
 
 /**
  * Provider for ingesting CSEL (Corpus Scriptorum Ecclesiasticorum Latinorum) texts.
