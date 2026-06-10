@@ -3,8 +3,8 @@ import type { MigrationInterface, QueryRunner } from "typeorm";
 /**
  *
  */
-export class Migration1781048059409 implements MigrationInterface {
-  name = "Migration1781048059409";
+export class Migration1781051916210 implements MigrationInterface {
+  name = "Migration1781051916210";
 
   /**
    *
@@ -87,6 +87,9 @@ export class Migration1781048059409 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE "word_forms"`);
     await queryRunner.query(`COMMENT ON TABLE "tokens" IS NULL`);
     await queryRunner.query(
+      `DROP INDEX "public"."IDX_3e996c69e86e8b258ca8703166"`,
+    );
+    await queryRunner.query(
       `DROP INDEX "public"."IDX_75ceaf795d390a0a045c4eccee"`,
     );
     await queryRunner.query(
@@ -111,6 +114,9 @@ export class Migration1781048059409 implements MigrationInterface {
     );
     await queryRunner.query(`DROP TABLE "texts"`);
     await queryRunner.query(`COMMENT ON TABLE "lines" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_b2c6fef6d09c7cd7b3c92a5664"`,
+    );
     await queryRunner.query(
       `DROP INDEX "public"."IDX_8ba479aa45ba1795a3f7e5c8d2"`,
     );
@@ -348,13 +354,16 @@ export class Migration1781048059409 implements MigrationInterface {
       `COMMENT ON TABLE "authors" IS 'An author of Latin literature'`,
     );
     await queryRunner.query(
-      `CREATE TABLE "lines" ("created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "id" uuid NOT NULL DEFAULT uuid_generate_v4(), "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "data" character varying NOT NULL, "index" bigint NOT NULL, "label" character varying(32) NOT NULL, "slug" character varying(128) NOT NULL, "author_id" uuid, "text_id" uuid, CONSTRAINT "UQ_36b1af92536a18ee0d3345d5542" UNIQUE ("slug"), CONSTRAINT "PK_155ad34738bc0e1aab0ca198dea" PRIMARY KEY ("id")); COMMENT ON COLUMN "lines"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "lines"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "lines"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "lines"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "lines"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lines"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "lines"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "lines"."data" IS 'The raw text data content of the line'; COMMENT ON COLUMN "lines"."index" IS 'The sequential 0-based index of the line within its text'; COMMENT ON COLUMN "lines"."label" IS 'The display label for the line (e.g. section number or roman numeral)'; COMMENT ON COLUMN "lines"."slug" IS 'Unique slug identifier (e.g. ''caesar/de bello gallico_12'')'; COMMENT ON COLUMN "lines"."author_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lines"."text_id" IS 'Auto-generated UUID primary key'`,
+      `CREATE TABLE "lines" ("created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "id" uuid NOT NULL DEFAULT uuid_generate_v4(), "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "data" character varying NOT NULL, "index" bigint NOT NULL, "label" character varying(32) NOT NULL, "author_id" uuid, "text_id" uuid, CONSTRAINT "PK_155ad34738bc0e1aab0ca198dea" PRIMARY KEY ("id")); COMMENT ON COLUMN "lines"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "lines"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "lines"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "lines"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "lines"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lines"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "lines"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "lines"."data" IS 'The raw text data content of the line'; COMMENT ON COLUMN "lines"."index" IS 'The sequential 0-based index of the line within its text'; COMMENT ON COLUMN "lines"."label" IS 'The display label for the line (e.g. section number or roman numeral)'; COMMENT ON COLUMN "lines"."author_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lines"."text_id" IS 'Auto-generated UUID primary key'`,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_90ccb87cbd0fd6952e1aee4248" ON "lines"  ("author_id") `,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_8ba479aa45ba1795a3f7e5c8d2" ON "lines"  ("text_id") `,
+    );
+    await queryRunner.query(
+      `CREATE UNIQUE INDEX "IDX_b2c6fef6d09c7cd7b3c92a5664" ON "lines"  ("text_id", "index") `,
     );
     await queryRunner.query(
       `COMMENT ON TABLE "lines" IS 'A single line of classical Latin literature'`,
@@ -372,7 +381,7 @@ export class Migration1781048059409 implements MigrationInterface {
       `COMMENT ON TABLE "texts" IS 'A hierarchical literary work (corpus, book, text, poem, etc.)'`,
     );
     await queryRunner.query(
-      `CREATE TABLE "tokens" ("created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "id" uuid NOT NULL DEFAULT uuid_generate_v4(), "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "index" bigint NOT NULL, "is_punctuation" boolean NOT NULL, "slug" character varying(128) NOT NULL, "text_value" character varying NOT NULL, "author_id" uuid, "line_id" uuid, "text_id" uuid, "word_id" uuid, CONSTRAINT "UQ_de0ed6434b885dedafe92ac875b" UNIQUE ("slug"), CONSTRAINT "PK_3001e89ada36263dabf1fb6210a" PRIMARY KEY ("id")); COMMENT ON COLUMN "tokens"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "tokens"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "tokens"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "tokens"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "tokens"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "tokens"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "tokens"."index" IS 'The 0-based index of this token within its parent line'; COMMENT ON COLUMN "tokens"."is_punctuation" IS 'True if the token represents punctuation or whitespace, false if it is a word'; COMMENT ON COLUMN "tokens"."slug" IS 'Unique slug identifier (e.g. line_slug_index)'; COMMENT ON COLUMN "tokens"."text_value" IS 'The raw string value of the token'; COMMENT ON COLUMN "tokens"."author_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."line_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."text_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."word_id" IS 'Auto-generated UUID primary key'`,
+      `CREATE TABLE "tokens" ("created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "id" uuid NOT NULL DEFAULT uuid_generate_v4(), "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "index" bigint NOT NULL, "is_punctuation" boolean NOT NULL, "text_value" character varying NOT NULL, "author_id" uuid, "line_id" uuid, "text_id" uuid, "word_id" uuid, CONSTRAINT "PK_3001e89ada36263dabf1fb6210a" PRIMARY KEY ("id")); COMMENT ON COLUMN "tokens"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "tokens"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "tokens"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "tokens"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "tokens"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "tokens"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "tokens"."index" IS 'The 0-based index of this token within its parent line'; COMMENT ON COLUMN "tokens"."is_punctuation" IS 'True if the token represents punctuation or whitespace, false if it is a word'; COMMENT ON COLUMN "tokens"."text_value" IS 'The raw string value of the token'; COMMENT ON COLUMN "tokens"."author_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."line_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."text_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "tokens"."word_id" IS 'Auto-generated UUID primary key'`,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_784a19cd725470a3068fc62db3" ON "tokens"  ("author_id") `,
@@ -388,6 +397,9 @@ export class Migration1781048059409 implements MigrationInterface {
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_75ceaf795d390a0a045c4eccee" ON "tokens"  ("word_id") `,
+    );
+    await queryRunner.query(
+      `CREATE UNIQUE INDEX "IDX_3e996c69e86e8b258ca8703166" ON "tokens"  ("line_id", "index") `,
     );
     await queryRunner.query(
       `COMMENT ON TABLE "tokens" IS 'A single parsed token (word or punctuation) from a line of literature'`,

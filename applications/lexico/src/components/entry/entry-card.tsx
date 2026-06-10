@@ -18,7 +18,7 @@ import { PrincipalParts } from "./principal-parts";
 import { Translations } from "./translations";
 import { VerbFormsTable } from "./verb-forms-table";
 
-import type { PartOfSpeech } from "../../lib/supabase";
+import type { PartOfSpeech } from "../../lib/types";
 import type { AdjectiveForm } from "./adjective-forms-table";
 import type { NounForm } from "./noun-forms-table";
 import type { Inflection, PrincipalPart } from "./principal-parts";

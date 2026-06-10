@@ -17,6 +17,7 @@ import type { Text } from "./Text.entity.js";
   name: "tokens",
   schema: "public",
 })
+@Index(["line", "index"], { unique: true })
 @ObjectType()
 export class Token extends AuditableEntity {
   @Field(() => Object)
@@ -41,14 +42,6 @@ export class Token extends AuditableEntity {
   @Index()
   @ManyToOne("Line", "tokens", { eager: false, onDelete: "CASCADE" })
   line!: Line;
-
-  @Column("varchar", {
-    comment: "Unique slug identifier (e.g. line_slug_index)",
-    length: 128,
-    unique: true,
-  })
-  @Field()
-  slug!: string;
 
   @Field(() => Object)
   @Index()

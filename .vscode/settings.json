@@ -195,7 +195,7 @@
     "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
     "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
     "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-    "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
+    "lexico", // TanStack Start SSR Latin dictionary web app
     "lexico-components", // Shared React/shadcn component library
     "lexico-entities", // Shared TypeORM entities and GraphQL types
     "lexico-ingestion", // Data ingestion scripts for Lexico
@@ -525,7 +525,7 @@
   "github.copilot.chat.reviewSelection.enabled": true,
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.searchSubagent.enabled": true,
-  "github.copilot.chat.searchSubagent.model": "Gemini 3.1 Pro Preview (gemini)",
+  "github.copilot.chat.searchSubagent.model": "Gemini 3 Flash Preview (gemini)",
   "github.copilot.chat.searchSubagent.useAgenticProxy": true,
   "github.copilot.chat.setupTests.enabled": true,
   "github.copilot.chat.switchAgent.enabled": true,
@@ -535,8 +535,8 @@
   "github.copilot.nextEditSuggestions.eagerness": "high",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
-  "github.copilot.nextEditSuggestions.preferredModel": "Gemini 3.1 Pro Preview (gemini)",
-  "github.copilot.selectedCompletionModel": "Gemini 3.1 Pro Preview (gemini)",
+  "github.copilot.nextEditSuggestions.preferredModel": "Gemini 3 Flash Preview (gemini)",
+  "github.copilot.selectedCompletionModel": "Gemini 3 Flash Preview (gemini)",
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -798,26 +798,6 @@
     "3000": {
       "label": "Lexico Dev Server",
       "onAutoForward": "notify"
-    },
-    "54321": {
-      "label": "Supabase API (PostgREST)",
-      "onAutoForward": "silent"
-    },
-    "54322": {
-      "label": "Supabase PostgreSQL",
-      "onAutoForward": "silent"
-    },
-    "54323": {
-      "label": "Supabase Studio",
-      "onAutoForward": "notify"
-    },
-    "54324": {
-      "label": "Supabase Inbucket (Email)",
-      "onAutoForward": "silent"
-    },
-    "54325": {
-      "label": "Supabase Analytics",
-      "onAutoForward": "silent"
     }
   },
   "ruff.interpreter": [

@@ -11,7 +11,7 @@ import {
 
 import { Identifier } from "./identifier";
 
-import type { PartOfSpeech } from "../../lib/supabase";
+import type { PartOfSpeech } from "../../lib/types";
 import type { ReactElement } from "react";
 
 /**

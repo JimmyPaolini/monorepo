@@ -61,6 +61,8 @@ DROP TABLE "word_forms";
 
 COMMENT ON TABLE "tokens" IS NULL;
 
+DROP INDEX "public"."IDX_3e996c69e86e8b258ca8703166";
+
 DROP INDEX "public"."IDX_75ceaf795d390a0a045c4eccee";
 
 DROP INDEX "public"."IDX_3b16d16d743b1c55ffe8bed7af";
@@ -82,6 +84,8 @@ DROP INDEX "public"."IDX_275807c423ad9d0b569c2b9ca8";
 DROP TABLE "texts";
 
 COMMENT ON TABLE "lines" IS NULL;
+
+DROP INDEX "public"."IDX_b2c6fef6d09c7cd7b3c92a5664";
 
 DROP INDEX "public"."IDX_8ba479aa45ba1795a3f7e5c8d2";
 

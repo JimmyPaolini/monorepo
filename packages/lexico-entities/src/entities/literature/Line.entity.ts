@@ -15,6 +15,7 @@ import type { Token } from "./Token.entity.js";
   name: "lines",
   schema: "public",
 })
+@Index(["text", "index"], { unique: true })
 @ObjectType()
 export class Line extends AuditableEntity {
   @Field(() => Object)
@@ -39,14 +40,6 @@ export class Line extends AuditableEntity {
   })
   @Field()
   label!: string;
-
-  @Column("varchar", {
-    comment: "Unique slug identifier (e.g. 'caesar/de bello gallico_12')",
-    length: 128,
-    unique: true,
-  })
-  @Field()
-  slug!: string;
 
   @Field(() => Object)
   @Index()

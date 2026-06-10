@@ -307,7 +307,6 @@ kubectl delete pvc caelundas-output
 - **Type**: Kubernetes Deployment
 - **Execution**: Always running (3+ replicas)
 - **Exposure**: Service + Ingress (HTTPS)
-- **Database**: External Supabase instance
 - **State**: Stateless app (session in cookies)
 
 **Workflow**:

@@ -81,9 +81,16 @@ export class LiteratureCommand extends CommandRunner {
     this.logger.log(`👤 Ingesting author: ${slug}`);
 
     try {
-      const author = await this.authorRepository.save({
-        name: authorIdToName[slug] || slug,
-        slug,
+      await this.authorRepository.upsert(
+        {
+          name: authorIdToName[slug] || slug,
+          slug,
+        },
+        { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+      );
+
+      const author = await this.authorRepository.findOneOrFail({
+        where: { slug },
       });
 
       const authorPath = path.join(basePath, slug);
@@ -190,24 +197,29 @@ export class LiteratureCommand extends CommandRunner {
 
       const lineText = toString({ children: lineNodes, type: "paragraph" });
 
-      const slug = `${text.slug}_${index}`;
       return {
         author: text.author,
         data: lineText,
         index,
         label,
-        slug,
         text,
       };
     });
 
-    const savedLines: Line[] = [];
     const lineChunkSize = 1000;
     for (let i = 0; i < lineEntities.length; i += lineChunkSize) {
       const chunk = lineEntities.slice(i, i + lineChunkSize);
-      const savedChunk = await this.lineRepository.save(chunk);
-      savedLines.push(...savedChunk);
+      await this.lineRepository.upsert(chunk, {
+        conflictPaths: ["text", "index"],
+        skipUpdateIfNoValuesChanged: true,
+      });
     }
+
+    const savedLines = await this.lineRepository.find({
+      order: { index: "ASC" },
+      relations: { text: { author: true } },
+      where: { text: { id: text.id } },
+    });
 
     this.logger.log(
       `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
@@ -228,7 +240,6 @@ export class LiteratureCommand extends CommandRunner {
           index,
           isPunctuation,
           line,
-          slug: `${line.slug}_${index}`,
           text: line.text,
           textValue: tokenText,
           word: wordId ? { id: wordId } : null,
@@ -241,7 +252,10 @@ export class LiteratureCommand extends CommandRunner {
     );
     const chunkSize = 5000;
     for (let i = 0; i < tokenEntities.length; i += chunkSize) {
-      await this.tokenRepository.insert(tokenEntities.slice(i, i + chunkSize));
+      await this.tokenRepository.upsert(tokenEntities.slice(i, i + chunkSize), {
+        conflictPaths: ["line", "index"],
+        skipUpdateIfNoValuesChanged: true,
+      });
     }
   }
 
@@ -266,7 +280,15 @@ export class LiteratureCommand extends CommandRunner {
       textSaveObj.parentText = parentText;
     }
 
-    const text = await this.textRepository.save(textSaveObj);
+    await this.textRepository.upsert(textSaveObj, {
+      conflictPaths: ["slug"],
+      skipUpdateIfNoValuesChanged: true,
+    });
+
+    const text = await this.textRepository.findOneOrFail({
+      relations: { author: true },
+      where: { slug: textSlug },
+    });
 
     await this.ingestLines(text, textPath);
   }
@@ -277,11 +299,20 @@ export class LiteratureCommand extends CommandRunner {
     dirSlug: string,
     dirPath: string,
   ): Promise<void> {
-    const parentText = await this.textRepository.save({
-      author,
-      slug: `${author.slug}/${dirSlug}`,
-      title,
-      type: "book",
+    const parentTextSlug = `${author.slug}/${dirSlug}`;
+    await this.textRepository.upsert(
+      {
+        author,
+        slug: parentTextSlug,
+        title,
+        type: "book",
+      },
+      { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+    );
+
+    const parentText = await this.textRepository.findOneOrFail({
+      relations: { author: true },
+      where: { slug: parentTextSlug },
     });
 
     const texts = await fs.readdir(dirPath, { withFileTypes: true });
