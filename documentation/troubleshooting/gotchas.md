@@ -236,10 +236,10 @@ There are three hooks:
 | `commit-msg` | `nx run monorepo:commitlint` — validates commit message format |
 | `pre-push` | `nx run monorepo:validate-branch-name` — validates branch name pattern |
 
-**Reading the last pre-commit failure**: Output is always written to `last-lint-staged-output.txt` at the workspace root. Read it without re-running the hook:
+**Reading the last pre-commit failure**: Output is always written to `last-lint-staged-output.log` at the workspace root. Read it without re-running the hook:
 
 ```bash
-cat last-lint-staged-output.txt
+cat last-lint-staged-output.log
 ```
 
 **After applying auto-fixes**, validate with `--configuration=check` before staging — do NOT re-run `lint-staged` directly (it would stage fixes before you can review them):

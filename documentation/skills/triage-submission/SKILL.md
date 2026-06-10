@@ -1,7 +1,7 @@
 ---
 name: triage-submission
 description: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-output.txt"
+argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-output.log"
 ---
 
 # Triage Submission Failures
@@ -96,7 +96,7 @@ Read the error output carefully. Determine which hook failed:
 If the user did not paste error output, read the last recorded output from the pre-commit hook:
 
 ```bash
-cat last-lint-staged-output.txt
+cat last-lint-staged-output.log
 ```
 
 This file is written automatically after every commit attempt (git-ignored, workspace root).
