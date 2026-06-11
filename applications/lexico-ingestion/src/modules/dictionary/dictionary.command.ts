@@ -40,17 +40,21 @@ export class DictionaryCommand extends CommandRunner {
     super();
     this.logger.setContext(DictionaryCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDirectory))
+      fs.mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
 
   // 🔐 Private Fields
 
-  private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
+  private readonly dataDirectory = path.join(
+    process.cwd(),
+    "./data/wiktionary",
+  );
   private fileIndex: Map<string, string> | null = null;
   private readonly inProgressWords = new Set<string>();
   private readonly logFilePath: string;
@@ -67,14 +71,17 @@ export class DictionaryCommand extends CommandRunner {
     const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
 
     // Exact match
-    const p = path.join(this.dataDir, `${this.escapeCapitals(fileWord)}.json`);
+    const p = path.join(
+      this.dataDirectory,
+      `${this.escapeCapitals(fileWord)}.json`,
+    );
     if (fs.existsSync(p)) return p;
 
     // Build the case-insensitive index on first miss
     if (this.fileIndex === null) {
       this.fileIndex = new Map();
-      if (fs.existsSync(this.dataDir)) {
-        for (const file of fs.readdirSync(this.dataDir)) {
+      if (fs.existsSync(this.dataDirectory)) {
+        for (const file of fs.readdirSync(this.dataDirectory)) {
           if (!file.endsWith(".json")) continue;
           // Reverse escapeCapitals: Remove all '_' and lowercase the string
           const normalized = file.replaceAll("_", "").toLowerCase();
@@ -87,18 +94,18 @@ export class DictionaryCommand extends CommandRunner {
       `${fileWord.toLowerCase()}.json`,
     );
     if (fallbackFileName) {
-      return path.join(this.dataDir, fallbackFileName);
+      return path.join(this.dataDirectory, fallbackFileName);
     }
 
     return null;
   }
 
   private getLemmaChoices(): { title: string; value: string }[] {
-    const dataDir = path.join(process.cwd(), "./data/wiktionary");
-    if (!fs.existsSync(dataDir)) return [];
+    const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
+    if (!fs.existsSync(dataDirectory)) return [];
 
     return fs
-      .readdirSync(dataDir)
+      .readdirSync(dataDirectory)
       .filter((file) => file.endsWith(".json"))
       .map((file) => {
         const title = file.replace(".json", "");
@@ -129,7 +136,8 @@ export class DictionaryCommand extends CommandRunner {
 
       const lexeme =
         lexemes.find(
-          (e) => e.partOfSpeech === translation.lexeme.partOfSpeech,
+          (lexemeEntry) =>
+            lexemeEntry.partOfSpeech === translation.lexeme.partOfSpeech,
         ) ?? lexemes[0];
 
       if (!lexeme) {
@@ -206,14 +214,16 @@ export class DictionaryCommand extends CommandRunner {
   /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
    * parses each into structured `Entry` records, and saves them to the database. */
   async ingestAll(startLemma?: string, endLemma?: string): Promise<void> {
-    if (!fs.existsSync(this.dataDir)) {
+    if (!fs.existsSync(this.dataDirectory)) {
       this.logger.warn(
-        `⚠️ Data directory not found: ${this.dataDir}. Please run Wikipedia dump extraction first.`,
+        `⚠️ Data directory not found: ${this.dataDirectory}. Please run Wikipedia dump extraction first.`,
       );
       return;
     }
 
-    let files = fs.readdirSync(this.dataDir).filter((f) => f.endsWith(".json"));
+    let files = fs
+      .readdirSync(this.dataDirectory)
+      .filter((f) => f.endsWith(".json"));
 
     if (startLemma || endLemma) {
       const startIndex = startLemma
@@ -237,7 +247,7 @@ export class DictionaryCommand extends CommandRunner {
     for (const file of files) {
       current++;
       try {
-        const filePath = path.join(this.dataDir, file);
+        const filePath = path.join(this.dataDirectory, file);
         const wiktionaryPage = this.readWiktionaryPage(filePath);
         if (!wiktionaryPage) {
           throw new Error("File missing or unreadable");

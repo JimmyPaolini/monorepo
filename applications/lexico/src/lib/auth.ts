@@ -35,7 +35,7 @@ export const signOut = createServerFunction({ method: "POST" }).handler(
  * Server function to get the OAuth sign-in URL for Google.
  */
 export const getGoogleSignInUrl = createServerFunction({ method: "GET" })
-  .inputValidator((data: { redirectTo: string }) => data)
+  .validator((data: { redirectTo: string }) => data)
   .handler(async (): Promise<{ error: null | string; url: null | string }> => {
     await Promise.resolve();
     return { error: null, url: "/" };
@@ -46,7 +46,7 @@ export const getGoogleSignInUrl = createServerFunction({ method: "GET" })
  * This is called after the OAuth provider redirects back to our app.
  */
 export const exchangeCodeForSession = createServerFunction({ method: "POST" })
-  .inputValidator((data: { code: string }) => data)
+  .validator((data: { code: string }) => data)
   .handler(async (): Promise<{ error: null | string; success: boolean }> => {
     await Promise.resolve();
     return { error: null, success: true };

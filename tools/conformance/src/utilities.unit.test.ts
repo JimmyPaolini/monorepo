@@ -198,7 +198,7 @@ describe("resolveNameByCase", () => {
 
     beforeEach(() => {
       templateDirectoryPath = fs.mkdtempSync(
-        path.join(os.temporaryDirectory(), "mustache-templates-"),
+        path.join(os.tmpdir(), "mustache-templates-"),
       );
     });
 

@@ -42,12 +42,12 @@ function resolveNestjsModuleDirectories(
     .filter((application) => application.tags.includes(tag))
     .map((application) => {
       return {
-        appName: path.basename(application.rootPath),
+        applicationName: path.basename(application.rootPath),
         modulesPath: path.join(application.rootPath, "src", "modules"),
       };
     })
     .filter(({ modulesPath }) => fs.existsSync(modulesPath))
-    .flatMap(({ appName: applicationName, modulesPath }) =>
+    .flatMap(({ applicationName, modulesPath }) =>
       fs
         .readdirSync(modulesPath, { withFileTypes: true })
         .filter(

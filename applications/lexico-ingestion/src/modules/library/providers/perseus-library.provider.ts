@@ -29,11 +29,11 @@ export class PerseusLibraryProvider {
   }): Promise<Author[]> {
     this.logger.log(`🗂️ Ingesting Perseus from local data`);
 
-    const sourceDataDir = path.resolve("data", "perseus-source");
+    const sourceDataDirectory = path.resolve("data", "perseus-source");
 
     const xmlPaths: string[] = [];
     try {
-      const allFiles = await fs.readdir(sourceDataDir, {
+      const allFiles = await fs.readdir(sourceDataDirectory, {
         recursive: true,
         withFileTypes: true,
       });
@@ -91,7 +91,7 @@ export class PerseusLibraryProvider {
           $("sourceDesc date").first().text().trim();
         if (printDate) metadata["print_publication_date"] = printDate;
 
-        const relativeSourcePath = path.relative(sourceDataDir, xmlPath);
+        const relativeSourcePath = path.relative(sourceDataDirectory, xmlPath);
 
         const urnMatch = /(phi\d+\.phi\d+\.perseus-lat\d+)/.exec(
           relativeSourcePath,
@@ -143,15 +143,12 @@ export class PerseusLibraryProvider {
 
         const extractNodes = (
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          $element: any,
+          $element: cheerio.Cheerio<any>,
           currentPath: string[],
           currentTitle: string,
         ): void => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
           const children = $element.children("div[type='textpart']");
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (children.length > 0) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             children.each((_index: number, child: unknown) => {
               const $child = $(child as string);
               const subtype = $child.attr("subtype") || "section";
@@ -181,7 +178,6 @@ export class PerseusLibraryProvider {
             });
 
             const directParagraphs: string[] = [];
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $element
               .children("p, l")
               .each((_index: number, pElement: unknown) => {
@@ -208,7 +204,6 @@ export class PerseusLibraryProvider {
             }
           } else {
             const paragraphs: string[] = [];
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $element.find("p, l").each((_index: number, pElement: unknown) => {
               const $clone = $(pElement as string).clone();
               $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
@@ -224,16 +219,13 @@ export class PerseusLibraryProvider {
             });
 
             if (paragraphs.length === 0) {
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               const $clone = $element.clone();
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               let text = $clone.text().trim();
               if (text) {
-                const formatted = formatLineNumber(text as string);
+                const formatted = formatLineNumber(text);
                 text = formatted.replaceAll(/\s+/g, " ");
-                paragraphs.push(text as string);
+                paragraphs.push(text);
               }
             }
 
@@ -249,14 +241,14 @@ export class PerseusLibraryProvider {
 
         extractNodes($("body"), [titleSlug], rawTitle);
 
-        const authorDir = path.join(dataPath, authorSlug);
+        const authorDirectory = path.join(dataPath, authorSlug);
         for (const file of filesToWrite) {
           const fm = { ...frontmatterObject, title: file.title };
           let markdown = `---\n${YAML.stringify(fm)}---\n\n`;
           markdown += `# ${file.title}\n\n`;
           markdown += `${file.content}\n`;
 
-          const fullPath = path.join(authorDir, file.relativePath);
+          const fullPath = path.join(authorDirectory, file.relativePath);
           await fs.mkdir(path.dirname(fullPath), { recursive: true });
           await fs.writeFile(fullPath, markdown, "utf8");
         }

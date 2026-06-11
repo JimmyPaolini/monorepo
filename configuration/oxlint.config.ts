@@ -80,9 +80,9 @@ export default defineConfig({
     // lint-staged config causes circular issues when linted during pre-commit
     "lint-staged.config.ts",
     // Shadcn generated components — managed by CLI, never manually edited
-    "packages/lexico-components/src/components/ui",
-    "packages/lexico-components/src/hooks",
-    "packages/lexico-components/src/lib",
+    "**/packages/lexico-components/src/components/**",
+    "**/packages/lexico-components/src/hooks/**",
+    "**/packages/lexico-components/src/lib/**",
     "**/applications/lexico-ingestion/data/**",
     "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
     "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",

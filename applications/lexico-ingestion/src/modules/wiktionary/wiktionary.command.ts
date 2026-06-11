@@ -31,10 +31,11 @@ export class WiktionaryCommand extends CommandRunner {
     super();
     this.logger.setContext(WiktionaryCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDirectory))
+      fs.mkdirSync(outputDirectory, { recursive: true });
     this.errorLogFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `wiktionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }

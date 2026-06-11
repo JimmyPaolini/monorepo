@@ -33,7 +33,7 @@ export const getUserTexts = createServerFunction({ method: "GET" }).handler(
  * Create a new text for the current user
  */
 export const createUserText = createServerFunction({ method: "POST" })
-  .inputValidator((data: { text: string; title: string }) => data)
+  .validator((data: { text: string; title: string }) => data)
   .handler(
     async (): Promise<{
       error: null | string;
@@ -49,7 +49,7 @@ export const createUserText = createServerFunction({ method: "POST" })
  * Update an existing text
  */
 export const updateUserText = createServerFunction({ method: "POST" })
-  .inputValidator((data: { id: string; text: string; title: string }) => data)
+  .validator((data: { id: string; text: string; title: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<{ error: null | string; success: boolean }> => {
@@ -61,7 +61,7 @@ export const updateUserText = createServerFunction({ method: "POST" })
  * Delete a text
  */
 export const deleteUserText = createServerFunction({ method: "POST" })
-  .inputValidator((data: { id: string }) => data)
+  .validator((data: { id: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<{ error: null | string; success: boolean }> => {

@@ -41,11 +41,9 @@ export default [
       "CHANGELOG.md",
       "lint-staged.config.ts",
       // Shadcn generated components
-      "packages/lexico-components/src/components",
-      "packages/lexico-components/src/lib/utils",
-      "packages/lexico-components/src/components/ui",
-      "packages/lexico-components/src/lib",
-      "packages/lexico-components/src/hooks",
+      "**/packages/lexico-components/src/components/**",
+      "**/packages/lexico-components/src/lib/**",
+      "**/packages/lexico-components/src/hooks/**",
       // Lock files and Helm templates use formats that can't be linted
       "**/pnpm-lock.yaml",
       "**/helm/**/templates/**",
@@ -144,30 +142,33 @@ export default [
       "unicorn/prevent-abbreviations": [
         "error",
         {
-          replacements: {
-            e: { error: true, event: true },
-            i: { index: true },
-            res: { response: true, result: true },
-            req: { request: true },
-            ctx: { context: true },
-            app: { application: true },
-            tmp: { temporary: true },
-            idx: { index: true },
+          allowList: {
+            args: true,
+            ctx: true,
+            db: true,
+            dir: true,
+            env: true,
+            envFilePath: true,
+            fn: true,
+            rel: true,
+            res: true,
+            str: true,
           },
+          checkDefaultAndNamespaceImports: true,
+          checkFilenames: false,
+          checkProperties: true,
+          checkShorthandImports: true,
+          checkShorthandProperties: true,
+          checkVariables: true,
           ignore: [
-            "\\.e2e$",
-            "\\.cjs$",
-            "\\.mjs$",
-            "\\.d\\.ts$",
-            "vite\\.config\\..*$",
-            "vitest\\.config\\..*$",
-            "eslint\\.config\\..*$",
-            "package\\.json",
-            "adjectivalPos",
-            "nominalPos",
-            "posWithoutForms",
-            "buildAdjectivalFormsForPos",
-            "buildNominalFormsForPos",
+            String.raw`\.e2e$`,
+            String.raw`\.cjs$`,
+            String.raw`\.mjs$`,
+            String.raw`\.d\.ts$`,
+            String.raw`vite\.config\..*$`,
+            String.raw`vitest\.config\..*$`,
+            String.raw`eslint\.config\..*$`,
+            String.raw`package\.json`,
             "AdjectiveFormsTableProps",
             "EntryCardProps",
             "FormCellProps",
@@ -184,16 +185,14 @@ export default [
             "NavigationProps",
             "SearchBarProps",
           ],
-          allowList: {
-            args: true,
-            str: true,
+          replacements: {
+            app: { application: true },
+            e: { error: true, event: true },
+            i: { index: true },
+            idx: { index: true },
+            req: { request: true },
+            tmp: { temporary: true },
           },
-          checkDefaultAndNamespaceImports: true,
-          checkProperties: true,
-          checkVariables: true,
-          checkShorthandImports: true,
-          checkShorthandProperties: true,
-          checkFilenames: false,
         },
       ],
       // reduce() is used in pipeline transformations and aggregations
@@ -222,16 +221,29 @@ export default [
       "unicorn/consistent-function-scoping": "off",
       // Explicit undefined in test assertions is acceptable
       "unicorn/no-useless-undefined": "off",
+      // Abbreviation rules are too strict for test files (e.g. catch (e), mock variable names)
+      "unicorn/prevent-abbreviations": "off",
     },
   },
 
   // ━━━━━━━━━━━━━━━━━━━ Unicorn Config File Relaxations ━━━━━━━━━━━━━━━━━━━
   // Allow CommonJS patterns in config files
   {
-    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    files: [
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.config.ts",
+      "**/*.config.mts",
+      "**/vite.config.*",
+      "**/vitest.config.*",
+      "**/eslint.config.*",
+    ],
     rules: {
       // Config files explicitly use .cjs extension when CommonJS is required
       "unicorn/prefer-module": "off",
+      // Config files often use schema-defined property names that are abbreviations
+      "unicorn/prevent-abbreviations": "off",
     },
   },
 

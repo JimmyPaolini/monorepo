@@ -11,7 +11,6 @@ import { LoggerService } from "../../logger/logger.service";
 
 interface EpigraphikDatenbankClaussSlabyRecord {
   obj: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     "edcs-id"?: string;
     edcsId?: string;
     inschriften: [string, unknown, string[], string[]][];
@@ -46,8 +45,8 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       return [];
     }
 
-    const authorDir = path.join(dataPath, authorSlug);
-    await fs.mkdir(authorDir, { recursive: true });
+    const authorDirectory = path.join(dataPath, authorSlug);
+    await fs.mkdir(authorDirectory, { recursive: true });
 
     const author = new Author();
     author.name = "Epigraphik-Datenbank Clauss-Slaby";
@@ -58,17 +57,17 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     // Group records by province
     const provinceData = new Map<string, string[]>();
 
-    const sourceDataDir = path.resolve(
+    const sourceDataDirectory = path.resolve(
       "data",
       "epigraphik-datenbank-clauss-slaby-source",
     );
     this.logger.log(
-      `🗂️ Reading Epigraphik-Datenbank Clauss-Slaby chunks from ${sourceDataDir}`,
+      `🗂️ Reading Epigraphik-Datenbank Clauss-Slaby chunks from ${sourceDataDirectory}`,
     );
 
     let chunkFiles: string[];
     try {
-      const allFiles = await fs.readdir(sourceDataDir);
+      const allFiles = await fs.readdir(sourceDataDirectory);
       chunkFiles = allFiles.filter(
         (f) => f.startsWith("chunk-") && f.endsWith(".json"),
       );
@@ -85,7 +84,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
 
       this.logger.log(`📜 Starting processing chunk: ${file}`);
       try {
-        const filePath = path.join(sourceDataDir, file);
+        const filePath = path.join(sourceDataDirectory, file);
         const fileContent = await fs.readFile(filePath, "utf8");
         const data = JSON.parse(fileContent) as {
           data: EpigraphikDatenbankClaussSlabyRecord[];
@@ -129,8 +128,8 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     for (const [province, inscriptions] of provinceEntries) {
       this.logger.log(`🌍 Starting province: ${province}`);
       const bookSlug = _.kebabCase(province);
-      const bookDir = path.join(authorDir, bookSlug);
-      await fs.mkdir(bookDir, { recursive: true });
+      const bookDirectory = path.join(authorDirectory, bookSlug);
+      await fs.mkdir(bookDirectory, { recursive: true });
 
       let bookText = booksMap.get(province);
       if (!bookText) {
@@ -172,7 +171,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         markdown += `${chunk.join("\n\n")}\n`;
 
         await fs.writeFile(
-          path.join(bookDir, `${titleSlug}.md`),
+          path.join(bookDirectory, `${titleSlug}.md`),
           markdown,
           "utf8",
         );

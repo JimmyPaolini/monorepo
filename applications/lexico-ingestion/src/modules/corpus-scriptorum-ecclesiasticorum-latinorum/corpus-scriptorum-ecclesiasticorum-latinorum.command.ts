@@ -24,17 +24,18 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       CorpusScriptorumEcclesiasticorumLatinorumCommand.name,
     );
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
 
   // 🔐 Private Fields
 
-  private readonly dataDir = path.resolve(
+  private readonly dataDirectory = path.resolve(
     "data",
     "corpus-scriptorum-ecclesiasticorum-latinorum-source",
   );
@@ -55,14 +56,16 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     const treeUrl =
       "https://api.github.com/repos/OpenGreekAndLatin/csel-dev/git/trees/master?recursive=1";
     this.logger.log(`🌳 Fetching CSEL tree from ${treeUrl}`);
-    const treeRes = await fetch(treeUrl);
+    const treeResponse = await fetch(treeUrl);
 
-    if (!treeRes.ok) {
-      this.logger.error(`❌ Failed to fetch CSEL tree: ${treeRes.statusText}`);
+    if (!treeResponse.ok) {
+      this.logger.error(
+        `❌ Failed to fetch CSEL tree: ${treeResponse.statusText}`,
+      );
       return;
     }
 
-    const treeData = (await treeRes.json()) as {
+    const treeData = (await treeResponse.json()) as {
       tree: { path: string; type: string }[];
     };
 
@@ -77,10 +80,10 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       .map((node) => node.path);
 
     this.logger.log(`🗂️ Found ${xmlPaths.length} Latin XML files in CSEL repo`);
-    await fs.mkdir(this.dataDir, { recursive: true });
+    await fs.mkdir(this.dataDirectory, { recursive: true });
 
     for (const xmlPath of xmlPaths) {
-      const targetPath = path.join(this.dataDir, xmlPath);
+      const targetPath = path.join(this.dataDirectory, xmlPath);
 
       try {
         await fs.access(targetPath);

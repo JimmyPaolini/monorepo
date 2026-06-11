@@ -103,7 +103,7 @@ function SearchPage(): ReactNode {
         <Input
           ref={inputReference}
           className="w-full text-lg"
-          onChange={(e) => setQuery(e.currentTarget.value)}
+          onChange={(event) => setQuery(event.currentTarget.value)}
           placeholder="Search Latin or English..."
           type="search"
           value={query}

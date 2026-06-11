@@ -149,10 +149,10 @@ describe("validateInstancesDirectory", () => {
 
   beforeEach(() => {
     temporaryDirectory = fs.mkdtempSync(
-      path.join(os.temporaryDirectory(), "validator-modules-"),
+      path.join(os.tmpdir(), "validator-modules-"),
     );
     templateDirectory = fs.mkdtempSync(
-      path.join(os.temporaryDirectory(), "validator-templates-"),
+      path.join(os.tmpdir(), "validator-templates-"),
     );
   });
 
@@ -243,7 +243,7 @@ describe("validateInstanceFile", () => {
 
   beforeEach(() => {
     temporaryDirectory = fs.mkdtempSync(
-      path.join(os.temporaryDirectory(), "validator-file-"),
+      path.join(os.tmpdir(), "validator-file-"),
     );
   });
 
@@ -316,13 +316,11 @@ describe("validateInstanceDirectory", () => {
   let templateDirectory: string;
 
   beforeEach(() => {
-    baseDirectory = fs.mkdtempSync(
-      path.join(os.temporaryDirectory(), "validator-dir-"),
-    );
+    baseDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "validator-dir-"));
     instanceDir = path.join(baseDirectory, "user-auth");
     fs.mkdirSync(instanceDir);
     templateDirectory = fs.mkdtempSync(
-      path.join(os.temporaryDirectory(), "validator-tpl-"),
+      path.join(os.tmpdir(), "validator-tpl-"),
     );
   });
 

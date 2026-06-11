@@ -185,7 +185,7 @@ function LibraryPage(): ReactNode {
                 <Label htmlFor="title">Title</Label>
                 <Input
                   id="title"
-                  onChange={(e) => setFormTitle(e.currentTarget.value)}
+                  onChange={(event) => setFormTitle(event.currentTarget.value)}
                   placeholder="e.g., Cicero's First Catilinarian"
                   value={formTitle}
                 />
@@ -195,7 +195,7 @@ function LibraryPage(): ReactNode {
                 <Textarea
                   className="min-h-[200px]"
                   id="text"
-                  onChange={(e) => setFormText(e.currentTarget.value)}
+                  onChange={(event) => setFormText(event.currentTarget.value)}
                   placeholder="Paste your Latin text here..."
                   value={formText}
                 />
@@ -236,7 +236,7 @@ function LibraryPage(): ReactNode {
               <Label htmlFor="edit-title">Title</Label>
               <Input
                 id="edit-title"
-                onChange={(e) => setFormTitle(e.currentTarget.value)}
+                onChange={(event) => setFormTitle(event.currentTarget.value)}
                 value={formTitle}
               />
             </div>
@@ -245,7 +245,7 @@ function LibraryPage(): ReactNode {
               <Textarea
                 className="min-h-[200px]"
                 id="edit-text"
-                onChange={(e) => setFormText(e.currentTarget.value)}
+                onChange={(event) => setFormText(event.currentTarget.value)}
                 value={formText}
               />
             </div>
@@ -295,8 +295,8 @@ function LibraryPage(): ReactNode {
                   <div className="flex gap-1">
                     <Button
                       className="h-8 w-8"
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      onClick={(event) => {
+                        event.stopPropagation();
                         openEdit(text);
                       }}
                       size="icon"
@@ -306,8 +306,8 @@ function LibraryPage(): ReactNode {
                     </Button>
                     <Button
                       className="h-8 w-8 text-muted-foreground hover:text-destructive"
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      onClick={(event) => {
+                        event.stopPropagation();
                         void handleDelete(text.id);
                       }}
                       size="icon"

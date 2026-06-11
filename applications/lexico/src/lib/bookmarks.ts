@@ -5,7 +5,7 @@ import type { PartOfSpeech, PrincipalParts } from "./types";
 /**
  * Represents a bookmarked lexical entry from the database.
  */
-/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  *
  */
@@ -37,7 +37,7 @@ export const getBookmarks = createServerFunction({ method: "GET" }).handler(
  * Check if an entry is bookmarked by the current user
  */
 export const isBookmarked = createServerFunction({ method: "GET" })
-  .inputValidator((data: { entryId: string }) => data)
+  .validator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<boolean> => {
@@ -49,7 +49,7 @@ export const isBookmarked = createServerFunction({ method: "GET" })
  * Add a bookmark for the current user
  */
 export const addBookmark = createServerFunction({ method: "POST" })
-  .inputValidator((data: { entryId: string }) => data)
+  .validator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<{ error: null | string; success: boolean }> => {
@@ -61,7 +61,7 @@ export const addBookmark = createServerFunction({ method: "POST" })
  * Remove a bookmark for the current user
  */
 export const removeBookmark = createServerFunction({ method: "POST" })
-  .inputValidator((data: { entryId: string }) => data)
+  .validator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<{ error: null | string; success: boolean }> => {
@@ -73,7 +73,7 @@ export const removeBookmark = createServerFunction({ method: "POST" })
  * Toggle bookmark status for an entry
  */
 export const toggleBookmark = createServerFunction({ method: "POST" })
-  .inputValidator((data: { entryId: string }) => data)
+  .validator((data: { entryId: string }) => data)
   .handler(
     async (): Promise<{
       bookmarked: boolean;

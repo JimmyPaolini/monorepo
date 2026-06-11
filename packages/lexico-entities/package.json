@@ -4,13 +4,10 @@
     "@nestjs/config": "^4.0.4",
     "@nestjs/graphql": "^12.2.2",
     "@nestjs/typeorm": "^11.0.0",
-    "@nx/vite": "^22.7.3",
     "pluralize": "^8.0.0",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^1.0.0",
-    "typeorm-naming-strategies": "^4.1.0",
-    "typescript": "^6.0.3",
-    "vite": "^8.0.14"
+    "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
     "@nx/vite": "^22.7.3",

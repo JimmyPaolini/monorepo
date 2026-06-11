@@ -8,7 +8,7 @@ interface SearchInput {
 }
 
 export const searchEntries = createServerFunction({ method: "GET" })
-  .inputValidator((data: SearchInput) => data)
+  .validator((data: SearchInput) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<EntrySearchResult[]> => {
@@ -21,7 +21,7 @@ interface GetEntryInput {
 }
 
 export const getEntry = createServerFunction({ method: "GET" })
-  .inputValidator((data: GetEntryInput) => data)
+  .validator((data: GetEntryInput) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
     async (): Promise<EntryFull | null> => {

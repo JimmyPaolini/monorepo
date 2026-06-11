@@ -22,17 +22,18 @@ export class PerseusCommand extends CommandRunner {
     super();
     this.logger.setContext(PerseusCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `perseus-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
 
   // 🔐 Private Fields
 
-  private readonly dataDir = path.resolve("data", "perseus-source");
+  private readonly dataDirectory = path.resolve("data", "perseus-source");
   private readonly logFilePath: string;
 
   // 🔑 Public Fields
@@ -50,16 +51,16 @@ export class PerseusCommand extends CommandRunner {
     const treeUrl =
       "https://api.github.com/repos/PerseusDL/canonical-latinLit/git/trees/master?recursive=1";
     this.logger.log(`🌳 Fetching Perseus tree from ${treeUrl}`);
-    const treeRes = await fetch(treeUrl);
+    const treeResponse = await fetch(treeUrl);
 
-    if (!treeRes.ok) {
+    if (!treeResponse.ok) {
       this.logger.error(
-        `❌ Failed to fetch Perseus tree: ${treeRes.statusText}`,
+        `❌ Failed to fetch Perseus tree: ${treeResponse.statusText}`,
       );
       return;
     }
 
-    const treeData = (await treeRes.json()) as {
+    const treeData = (await treeResponse.json()) as {
       tree: { path: string; type: string }[];
     };
 
@@ -75,10 +76,10 @@ export class PerseusCommand extends CommandRunner {
     this.logger.log(
       `🗂️ Found ${xmlPaths.length} Latin XML files in Perseus repo`,
     );
-    await fs.mkdir(this.dataDir, { recursive: true });
+    await fs.mkdir(this.dataDirectory, { recursive: true });
 
     for (const xmlPath of xmlPaths) {
-      const targetPath = path.join(this.dataDir, xmlPath);
+      const targetPath = path.join(this.dataDirectory, xmlPath);
 
       try {
         await fs.access(targetPath);

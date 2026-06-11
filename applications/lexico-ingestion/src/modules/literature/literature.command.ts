@@ -51,10 +51,11 @@ export class LiteratureCommand extends CommandRunner {
     super();
     this.logger.setContext(LiteratureCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
@@ -367,7 +368,7 @@ export class LiteratureCommand extends CommandRunner {
       title: string;
     }[]
   > {
-    const dataDir = path.resolve("data", "library");
+    const dataDirectory = path.resolve("data", "library");
     const texts: {
       authorSlug: string;
       fullPath: string;
@@ -406,20 +407,25 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     try {
-      const providers = await fs.readdir(dataDir, { withFileTypes: true });
+      const providers = await fs.readdir(dataDirectory, {
+        withFileTypes: true,
+      });
       for (const provider of providers) {
         if (!provider.isDirectory()) continue;
         const providerName = provider.name;
 
-        const authors = await fs.readdir(path.join(dataDir, providerName), {
-          withFileTypes: true,
-        });
+        const authors = await fs.readdir(
+          path.join(dataDirectory, providerName),
+          {
+            withFileTypes: true,
+          },
+        );
         for (const author of authors) {
           if (!author.isDirectory()) continue;
           const authorSlug = author.name;
 
           await walk(
-            path.join(dataDir, providerName, authorSlug),
+            path.join(dataDirectory, providerName, authorSlug),
             [],
             providerName,
             authorSlug,

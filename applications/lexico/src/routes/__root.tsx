@@ -87,7 +87,7 @@ export const Route = createRootRoute({
 });
 
 /**
- * Props for the AppSidebar component.
+ * Props for the ApplicationSidebar component.
  */
 interface ApplicationSidebarProperties {
   /** Callback when hover state changes */
@@ -108,7 +108,7 @@ interface RootDocumentProperties {
  * @param props - Component props
  * @returns React node
  */
-function AppSidebar(
+function ApplicationSidebar(
   properties: Readonly<ApplicationSidebarProperties>,
 ): ReactNode {
   const { onHoverChange } = properties;
@@ -220,7 +220,7 @@ function RootDocument(properties: Readonly<RootDocumentProperties>): ReactNode {
           onOpenChange={setOpen}
           open={open}
         >
-          <AppSidebar onHoverChange={setOpen} />
+          <ApplicationSidebar onHoverChange={setOpen} />
           <SidebarInset>
             {/* Mobile header with hamburger */}
             <header className="flex h-14 items-center border-b border-border bg-card px-4 md:hidden">

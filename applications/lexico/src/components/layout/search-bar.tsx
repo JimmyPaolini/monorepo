@@ -42,16 +42,16 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
     const value =
       controlledValue === undefined ? internalValue : controlledValue;
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-      const newValue = e.target.value;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+      const newValue = event.target.value;
       if (controlledValue === undefined) {
         setInternalValue(newValue);
       }
       onChange?.(newValue);
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent): void => {
-      if (e.key === "Enter") {
+    const handleKeyDown = (event: React.KeyboardEvent): void => {
+      if (event.key === "Enter") {
         onSearch(value);
       }
     };

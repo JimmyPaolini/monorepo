@@ -24,17 +24,18 @@ export class LatinLibraryCommand extends CommandRunner {
     super();
     this.logger.setContext(LatinLibraryCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
 
   // 🔐 Private Fields
 
-  private readonly dataDir = path.resolve("data", "latin-library-source");
+  private readonly dataDirectory = path.resolve("data", "latin-library-source");
   private readonly logFilePath: string;
 
   // 🔑 Public Fields
@@ -49,7 +50,7 @@ export class LatinLibraryCommand extends CommandRunner {
     if (relative.endsWith("/")) relative += "index.html";
     else if (!path.extname(relative)) relative += ".html";
 
-    const targetPath = path.join(this.dataDir, relative);
+    const targetPath = path.join(this.dataDirectory, relative);
 
     try {
       const existing = await fs.readFile(targetPath, "utf8");
@@ -90,7 +91,7 @@ export class LatinLibraryCommand extends CommandRunner {
     const host = "https://www.thelatinlibrary.com/";
     this.logger.log(`🕷️ Starting to scrape The Latin Library from ${host}`);
 
-    await fs.mkdir(this.dataDir, { recursive: true });
+    await fs.mkdir(this.dataDirectory, { recursive: true });
 
     // 1. Fetch index
     const indexHtml = await this.fetchAndSave(host, host);

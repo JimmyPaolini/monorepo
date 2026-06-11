@@ -576,7 +576,7 @@ Use template variables in agent prompts to make them dynamic:
 
 - **Project Name**: ${projectName}
 - **Base Path**: ${basePath}
-- **Output Directory**: ${outputDir}
+- **Output Directory**: ${outputDirectory}
 
 ## Your Mission
 
@@ -586,7 +586,7 @@ Process the **${projectName}** project located at `${basePath}`.
 
 1. Read input from: `${basePath}/input/`
 2. Process files according to project configuration
-3. Write results to: `${outputDir}/`
+3. Write results to: `${outputDirectory}/`
 4. Generate summary report
 
 ## Quality Standards
@@ -742,7 +742,7 @@ Always document what variables are expected:
 
 ## Derived Variables
 
-- **outputDir**: Automatically set to ${basePath}/output
+- **outputDirectory**: Automatically set to ${basePath}/output
 - **logFile**: Automatically set to ${basePath}/.log.md
 ```
 

@@ -22,10 +22,11 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     super();
     this.logger.setContext(EpigraphikDatenbankClaussSlabyCommand.name);
 
-    const outputDir = path.join(process.cwd(), "output");
-    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
     this.logFilePath = path.join(
-      outputDir,
+      outputDirectory,
       `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
   }
@@ -33,7 +34,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   // 🔐 Private Fields
 
   private readonly batchSize = 1000;
-  private readonly dataDir = path.resolve(
+  private readonly dataDirectory = path.resolve(
     "data",
     "epigraphik-datenbank-clauss-slaby-source",
   );
@@ -46,7 +47,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   // 🔏 Private Methods
 
   private async fetchChunk(start: number): Promise<boolean> {
-    const chunkFile = path.join(this.dataDir, `chunk-${start}.json`);
+    const chunkFile = path.join(this.dataDirectory, `chunk-${start}.json`);
 
     try {
       // Check if file already exists
@@ -102,8 +103,10 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
   /** Runs the ingestion of epigraphs by downloading chunks to the filesystem */
   async run(): Promise<void> {
-    this.logger.log(`📁 Ensuring data directory exists at ${this.dataDir}`);
-    await fs.mkdir(this.dataDir, { recursive: true });
+    this.logger.log(
+      `📁 Ensuring data directory exists at ${this.dataDirectory}`,
+    );
+    await fs.mkdir(this.dataDirectory, { recursive: true });
 
     this.logger.log(
       `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,

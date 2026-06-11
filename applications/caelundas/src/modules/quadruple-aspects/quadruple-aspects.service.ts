@@ -404,7 +404,9 @@ export class QuadrupleAspectsService {
   ): null | { eventMinute: Moment; phase: AspectPhase } {
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+      edges.filter(
+        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
+      );
 
     const currentFiltered = filterByBodies(currentAspectBodies);
     const previousFiltered = filterByBodies(previousAspectBodies);

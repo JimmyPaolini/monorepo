@@ -38,16 +38,19 @@ export function stringifyConformanceErrors(
 
   const lines: string[] = [];
 
-  const dirCount = directoriesWithErrors.length;
+  const directoryCount = directoriesWithErrors.length;
   lines.push(
-    `Conformance validation failed — ${String(dirCount)} director${dirCount === 1 ? "y" : "ies"} with errors.`,
+    `Conformance validation failed — ${String(directoryCount)} director${directoryCount === 1 ? "y" : "ies"} with errors.`,
   );
 
   directoriesWithErrors.forEach(
-    ({ directoryName, results: fileResults }, dirIndex) => {
+    ({ directoryName, results: fileResults }, directoryIndex) => {
       const failingFiles = fileResults.filter((r) => r.errors.length > 0);
 
-      lines.push("", `${String(dirIndex + 1)}. directory: ${directoryName}`);
+      lines.push(
+        "",
+        `${String(directoryIndex + 1)}. directory: ${directoryName}`,
+      );
 
       failingFiles.forEach((fileResult, fileIndex) => {
         lines.push(

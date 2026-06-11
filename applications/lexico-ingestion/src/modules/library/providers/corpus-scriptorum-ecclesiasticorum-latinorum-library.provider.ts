@@ -29,14 +29,14 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
   }): Promise<Author[]> {
     this.logger.log(`🗂️ Ingesting CSEL from local data`);
 
-    const sourceDataDir = path.resolve(
+    const sourceDataDirectory = path.resolve(
       "data",
       "corpus-scriptorum-ecclesiasticorum-latinorum-source",
     );
 
     const xmlPaths: string[] = [];
     try {
-      const allFiles = await fs.readdir(sourceDataDir, {
+      const allFiles = await fs.readdir(sourceDataDirectory, {
         recursive: true,
         withFileTypes: true,
       });
@@ -103,7 +103,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
         const textSlug = `${authorSlug}/${titleSlug}`;
         if (options?.text && textSlug !== options.text) continue;
 
-        const relativeSourcePath = path.relative(sourceDataDir, xmlPath);
+        const relativeSourcePath = path.relative(sourceDataDirectory, xmlPath);
 
         let author = authorsMap.get(authorSlug);
         if (!author) {
@@ -175,10 +175,10 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
         markdown += `${paragraphs.join("\n\n")}\n`;
 
-        const authorDir = path.join(dataPath, authorSlug);
-        await fs.mkdir(authorDir, { recursive: true });
+        const authorDirectory = path.join(dataPath, authorSlug);
+        await fs.mkdir(authorDirectory, { recursive: true });
         await fs.writeFile(
-          path.join(authorDir, `${titleSlug}.md`),
+          path.join(authorDirectory, `${titleSlug}.md`),
           markdown,
           "utf8",
         );

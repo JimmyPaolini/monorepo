@@ -133,9 +133,9 @@ const config: KnipConfig = {
 
     // lexico-components: Shared React component library (shadcn/ui)
     "packages/lexico-components": {
-      entry: ["src/index.ts", "src/components/**/*.tsx"],
+      entry: ["src/index.ts", "src/components/**/*.tsx", "vite.config.mts"],
       ignoreDependencies: ["tailwindcss-animate"],
-      project: ["src/**/*.ts", "src/**/*.tsx"],
+      project: ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"],
     },
 
     // lexico-entities: Shared TypeORM entities

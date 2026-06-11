@@ -9,7 +9,7 @@ interface PronunciationResult {
  * Get pronunciation audio for a Latin text
  */
 export const getPronunciation = createServerFunction({ method: "POST" })
-  .inputValidator(
+  .validator(
     (data: { dialect?: "classical" | "ecclesiastical"; text: string }) => data,
   )
   .handler(

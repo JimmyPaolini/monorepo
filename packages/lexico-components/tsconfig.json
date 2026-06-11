@@ -11,13 +11,6 @@
     },
     "types": ["node", "vite/client"]
   },
-  "exclude": [
-    "src/components",
-    "src/components/ui",
-    "src/hooks",
-    "src/lib",
-    "src/lib/utils"
-  ],
   "extends": "../../configuration/tsconfig.base.json",
   "include": [
     "eslint.config.ts",

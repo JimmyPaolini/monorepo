@@ -104,8 +104,8 @@ function BookmarksPage(): ReactNode {
               </Link>
               <Button
                 className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={(event) => {
+                  event.preventDefault();
                   void handleRemoveBookmark(entry.id);
                 }}
                 size="icon"
