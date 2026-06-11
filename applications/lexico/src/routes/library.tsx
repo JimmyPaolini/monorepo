@@ -83,7 +83,9 @@ function LibraryPage(): ReactNode {
       });
       if (result.success && result.text) {
         const newText = result.text;
-        setTexts((prev) => _.orderBy([...prev, newText], [(t) => t.title]));
+        setTexts((previous) =>
+          _.orderBy([...previous, newText], [(t) => t.title]),
+        );
         setFormTitle("");
         setFormText("");
         setIsCreateOpen(false);
@@ -104,9 +106,9 @@ function LibraryPage(): ReactNode {
         data: { id: editingText.id, text: formText, title: formTitle },
       });
       if (result.success) {
-        setTexts((prev) =>
+        setTexts((previous) =>
           _.orderBy(
-            prev.map((t) =>
+            previous.map((t) =>
               t.id === editingText.id
                 ? { ...t, text: formText, title: formTitle }
                 : t,
@@ -130,7 +132,7 @@ function LibraryPage(): ReactNode {
       try {
         const result = await deleteUserText({ data: { id } });
         if (result.success) {
-          setTexts((prev) => prev.filter((t) => t.id !== id));
+          setTexts((previous) => previous.filter((t) => t.id !== id));
           if (selectedText?.id === id) {
             setSelectedText(null);
           }

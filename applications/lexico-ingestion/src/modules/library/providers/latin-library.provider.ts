@@ -27,8 +27,8 @@ export class LatinLibraryProvider {
 
   readonly name = "thelatinlibrary";
 
-  private async readLocal(urlStr: string, host: string): Promise<string> {
-    const parsed = new URL(urlStr, host);
+  private async readLocal(urlString: string, host: string): Promise<string> {
+    const parsed = new URL(urlString, host);
     let relative = parsed.pathname;
     if (relative.startsWith("/")) relative = relative.slice(1);
     if (!relative) relative = "index.html";
@@ -56,7 +56,7 @@ export class LatinLibraryProvider {
     tableHtml("p>table")
       .first()
       .find("a")
-      .each((_i, a) => {
+      .each((_index, a) => {
         const $a = tableHtml(a);
         const nickname = $a.text().replace(/\s/, " ").trim().toLowerCase();
         const slug = _.kebabCase(nickname);
@@ -88,7 +88,7 @@ export class LatinLibraryProvider {
         const catHtml = await this.readLocal(new URL(href, host).href, host);
         const $cat = cheerio.load(catHtml);
 
-        $cat("table a").each((_i, a) => {
+        $cat("table a").each((_index, a) => {
           const $a = $cat(a);
           const nickname = $a.text().replace(/\s/, " ").trim().toLowerCase();
           if (!nickname) return;
@@ -139,8 +139,8 @@ export class LatinLibraryProvider {
       const authorPath = author.metadata?.["sourceUrl"] as string;
       this.logger.log(`👤 Starting author metadata: ${nickname}`);
 
-      const authorUrlObj = new URL(authorPath, host);
-      const authorText = await this.readLocal(authorUrlObj.href, host);
+      const authorUrlObject = new URL(authorPath, host);
+      const authorText = await this.readLocal(authorUrlObject.href, host);
       const $ = cheerio.load(authorText);
 
       const h1Text =
@@ -209,9 +209,9 @@ export class LatinLibraryProvider {
           continue;
         }
 
-        const absoluteUrl = new URL(href, authorUrlObj.href).href;
+        const absoluteUrl = new URL(href, authorUrlObject.href).href;
         const parsedUrl = new URL(absoluteUrl);
-        const parsedAuthorUrl = authorUrlObj;
+        const parsedAuthorUrl = authorUrlObject;
 
         // Skip external links and breadcrumb links back to the author's own index page
         if (
@@ -235,12 +235,12 @@ export class LatinLibraryProvider {
             const tableToCheck =
               outerTable.length > 0 ? outerTable : parentTable;
 
-            let prev = tableToCheck.prev();
-            while (prev.length > 0 && !prev.text().trim()) {
-              prev = prev.prev();
+            let previous = tableToCheck.prev();
+            while (previous.length > 0 && !previous.text().trim()) {
+              previous = previous.prev();
             }
-            if (prev.length > 0) {
-              rawBook = prev.text().trim().toLowerCase();
+            if (previous.length > 0) {
+              rawBook = previous.text().trim().toLowerCase();
             }
           }
         }
@@ -278,7 +278,7 @@ export class LatinLibraryProvider {
         fallback.title = author.metadata?.["nickname"] as string;
         fallback.slug = _.kebabCase(fallback.title);
         fallback.type = "text";
-        fallback.metadata = { sourceUrl: authorUrlObj.href };
+        fallback.metadata = { sourceUrl: authorUrlObject.href };
         author.texts = [fallback];
       }
 
@@ -326,7 +326,7 @@ export class LatinLibraryProvider {
           const workHtml = await this.readLocal(workPath, host);
           const $work = cheerio.load(workHtml);
 
-          const frontmatterObj: Record<string, unknown> = {
+          const frontmatterObject: Record<string, unknown> = {
             author: author.slug,
             text_metadata: {
               source_url: workPath,
@@ -335,16 +335,16 @@ export class LatinLibraryProvider {
             type: workBook ? "text" : "book",
           };
           if (author.metadata) {
-            frontmatterObj["author_metadata"] = { ...author.metadata };
+            frontmatterObject["author_metadata"] = { ...author.metadata };
             delete (
-              frontmatterObj["author_metadata"] as Record<string, unknown>
+              frontmatterObject["author_metadata"] as Record<string, unknown>
             )["nickname"];
             delete (
-              frontmatterObj["author_metadata"] as Record<string, unknown>
+              frontmatterObject["author_metadata"] as Record<string, unknown>
             )["sourceUrl"];
           }
 
-          let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
+          let markdown = `---\n${YAML.stringify(frontmatterObject)}---\n\n`;
 
           if (workBook) {
             markdown += `# ${workBook}\n\n`;
@@ -409,10 +409,10 @@ export class LatinLibraryProvider {
               if (!line || isEnglishBoilerplate(line)) continue;
 
               // Check if line is purely an isolated number
-              const numMatch =
+              const numberMatch =
                 /^[[(*]*(\d+[a-zA-Z]*|[MDCLXVI]+)[\])*]*\.?$/.exec(line.trim());
-              if (numMatch && !line.includes(" ")) {
-                pendingNumber = `**${numMatch[1]}**`;
+              if (numberMatch && !line.includes(" ")) {
+                pendingNumber = `**${numberMatch[1]}**`;
                 continue;
               }
 

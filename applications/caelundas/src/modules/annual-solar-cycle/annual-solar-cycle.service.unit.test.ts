@@ -45,11 +45,11 @@ describe("AnnualSolarCycleService", () => {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
-      const longitude = longitudes[i] ?? longitudes.at(-1) ?? 0;
+        .subtract(MARGIN_MINUTES - index, "minutes");
+      const longitude = longitudes[index] ?? longitudes.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         latitude: 0,
         longitude,
@@ -67,11 +67,11 @@ describe("AnnualSolarCycleService", () => {
     const ephemeris: DistanceEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
-      const distance = distances[i] ?? distances.at(-1) ?? 0;
+        .subtract(MARGIN_MINUTES - index, "minutes");
+      const distance = distances[index] ?? distances.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         distance,
       };
@@ -301,12 +301,12 @@ describe("AnnualSolarCycleService", () => {
 
       // Distance increasing then decreasing (maximum at current)
       const distances: number[] = [];
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(1.016 + i * 0.000_001);
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
+        distances.push(1.016 + index * 0.000_001);
       }
       distances.push(1.0167); // Current (maximum)
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(1.0167 - (i + 1) * 0.000_001);
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
+        distances.push(1.0167 - (index + 1) * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(
@@ -334,12 +334,12 @@ describe("AnnualSolarCycleService", () => {
 
       // Distance decreasing then increasing (minimum at current)
       const distances: number[] = [];
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(0.9833 - i * 0.000_001);
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
+        distances.push(0.9833 - index * 0.000_001);
       }
       distances.push(0.9832); // Current (minimum)
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(0.9832 + (i + 1) * 0.000_001);
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
+        distances.push(0.9832 + (index + 1) * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(
@@ -367,8 +367,8 @@ describe("AnnualSolarCycleService", () => {
 
       // Distance constantly increasing (no extrema)
       const distances: number[] = [];
-      for (let i = 0; i < MARGIN_MINUTES * 2 + 1; i++) {
-        distances.push(1 + i * 0.000_001);
+      for (let index = 0; index < MARGIN_MINUTES * 2 + 1; index++) {
+        distances.push(1 + index * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(

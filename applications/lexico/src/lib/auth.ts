@@ -1,4 +1,4 @@
-import { createServerFn } from "@tanstack/react-start";
+import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 /**
  * Authenticated user
@@ -14,7 +14,7 @@ export interface AuthUser {
  * Server function to get the current authenticated user.
  * Returns null if not authenticated.
  */
-export const getCurrentUser = createServerFn({ method: "GET" }).handler(
+export const getCurrentUser = createServerFunction({ method: "GET" }).handler(
   async (): Promise<AuthUser | null> => {
     await Promise.resolve();
     return null;
@@ -24,7 +24,7 @@ export const getCurrentUser = createServerFn({ method: "GET" }).handler(
 /**
  * Server function to sign out the current user.
  */
-export const signOut = createServerFn({ method: "POST" }).handler(
+export const signOut = createServerFunction({ method: "POST" }).handler(
   async (): Promise<{ success: boolean }> => {
     await Promise.resolve();
     return { success: true };
@@ -34,7 +34,7 @@ export const signOut = createServerFn({ method: "POST" }).handler(
 /**
  * Server function to get the OAuth sign-in URL for Google.
  */
-export const getGoogleSignInUrl = createServerFn({ method: "GET" })
+export const getGoogleSignInUrl = createServerFunction({ method: "GET" })
   .inputValidator((data: { redirectTo: string }) => data)
   .handler(async (): Promise<{ error: null | string; url: null | string }> => {
     await Promise.resolve();
@@ -45,7 +45,7 @@ export const getGoogleSignInUrl = createServerFn({ method: "GET" })
  * Server function to exchange an OAuth code for a session.
  * This is called after the OAuth provider redirects back to our app.
  */
-export const exchangeCodeForSession = createServerFn({ method: "POST" })
+export const exchangeCodeForSession = createServerFunction({ method: "POST" })
   .inputValidator((data: { code: string }) => data)
   .handler(async (): Promise<{ error: null | string; success: boolean }> => {
     await Promise.resolve();
@@ -56,7 +56,7 @@ export const exchangeCodeForSession = createServerFn({ method: "POST" })
  * Server function to delete the current user's account.
  * This requires admin privileges in production.
  */
-export const deleteAccount = createServerFn({ method: "POST" }).handler(
+export const deleteAccount = createServerFunction({ method: "POST" }).handler(
   async (): Promise<{ error: null | string; success: boolean }> => {
     await Promise.resolve();
     return { error: null, success: true };

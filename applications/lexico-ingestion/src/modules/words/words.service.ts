@@ -161,8 +161,8 @@ export class WordsService {
     if (wordFormValues.length > 0) {
       // Chunk to avoid exceeding PostgreSQL parameter limits
       const chunkSize = 1000;
-      for (let i = 0; i < wordFormValues.length; i += chunkSize) {
-        const chunk = wordFormValues.slice(i, i + chunkSize);
+      for (let index = 0; index < wordFormValues.length; index += chunkSize) {
+        const chunk = wordFormValues.slice(index, index + chunkSize);
         await this.wordFormRepository
           .createQueryBuilder()
           .insert()

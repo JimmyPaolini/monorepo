@@ -273,7 +273,10 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /** Orchestrate ingestion from library sources */
-  async run(_args: string[], options: LibraryCommandOptions): Promise<void> {
+  async run(
+    _arguments: string[],
+    options: LibraryCommandOptions,
+  ): Promise<void> {
     this.logger.log("📚 Starting library ingestion...");
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();

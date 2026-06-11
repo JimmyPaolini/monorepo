@@ -26,10 +26,10 @@ export class NumeralsService {
     const upperRoman = roman.toUpperCase();
     let decimal = 0;
 
-    for (let i = 0; i < upperRoman.length; i++) {
-      const v1 = ROMAN_VALUES[upperRoman.charAt(i)] || 0;
-      const v2 = ROMAN_VALUES[upperRoman.charAt(i + 1)] || 0;
-      if (i + 1 < upperRoman.length && v1 < v2) {
+    for (let index = 0; index < upperRoman.length; index++) {
+      const v1 = ROMAN_VALUES[upperRoman.charAt(index)] || 0;
+      const v2 = ROMAN_VALUES[upperRoman.charAt(index + 1)] || 0;
+      if (index + 1 < upperRoman.length && v1 < v2) {
         decimal -= v1;
       } else {
         decimal += v1;

@@ -52,15 +52,16 @@ export class TranslationsService {
   /** Scans translation strings for `{*word*}` cross-reference patterns and
    * returns the unique set of referenced word strings. */
   extractTranslationReferences(translations: Translation[]): string[] {
-    const refs: string[] = [];
+    const references: string[] = [];
     for (const t of translations) {
       for (const match of t.data.matchAll(/\{\*(.+?)\*\}/g)) {
-        let ref = match[1] ?? "";
-        if (/\(.*\)/.test(ref)) ref = ref.replace(/ ?\(.*\)/, "");
-        if (ref) refs.push(ref);
+        let reference = match[1] ?? "";
+        if (/\(.*\)/.test(reference))
+          reference = reference.replace(/ ?\(.*\)/, "");
+        if (reference) references.push(reference);
       }
     }
-    return [...new Set(refs)];
+    return [...new Set(references)];
   }
 
   /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
@@ -115,7 +116,10 @@ export class TranslationsService {
         translation = `${translation} ${$(li)
           .find("span.form-of-definition-link")
           .toArray()
-          .map((ref: AnyNode) => `{*${this.normalize($(ref).text())}*}`)
+          .map(
+            (reference: AnyNode) =>
+              `{*${this.normalize($(reference).text())}*}`,
+          )
           .join(" ")}`;
       }
 

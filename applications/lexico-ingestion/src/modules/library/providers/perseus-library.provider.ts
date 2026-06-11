@@ -57,8 +57,8 @@ export class PerseusLibraryProvider {
 
     const authorsMap = new Map<string, Author>();
 
-    for (let i = 0; i < xmlPaths.length; i++) {
-      const xmlPath = xmlPaths[i];
+    for (let index = 0; index < xmlPaths.length; index++) {
+      const xmlPath = xmlPaths[index];
       if (!xmlPath) continue;
 
       this.logger.log(`📜 Starting processing: ${xmlPath}`);
@@ -77,7 +77,7 @@ export class PerseusLibraryProvider {
 
         const metadata: Record<string, unknown> = {};
         const editors = $("titleStmt editor")
-          .map((_, el) => $(el).text().trim())
+          .map((_, element) => $(element).text().trim())
           .get();
         if (editors.length > 0) metadata["editors"] = editors;
 
@@ -123,7 +123,7 @@ export class PerseusLibraryProvider {
         author.texts.push(textEntity);
 
         // Process markdown
-        const frontmatterObj: Record<string, unknown> = {
+        const frontmatterObject: Record<string, unknown> = {
           author: authorSlug,
           type: "text",
         };
@@ -132,7 +132,7 @@ export class PerseusLibraryProvider {
           source_url: `https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/${relativeSourcePath}`,
         };
         if (Object.keys(textMetadata).length > 0) {
-          frontmatterObj["text_metadata"] = textMetadata;
+          frontmatterObject["text_metadata"] = textMetadata;
         }
 
         const filesToWrite: {
@@ -143,12 +143,12 @@ export class PerseusLibraryProvider {
 
         const extractNodes = (
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          $el: any,
+          $element: any,
           currentPath: string[],
           currentTitle: string,
         ): void => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
-          const children = $el.children("div[type='textpart']");
+          const children = $element.children("div[type='textpart']");
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (children.length > 0) {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
@@ -182,17 +182,19 @@ export class PerseusLibraryProvider {
 
             const directParagraphs: string[] = [];
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-            $el.children("p, l").each((_index: number, pElem: unknown) => {
-              const $clone = $(pElem as string).clone();
-              $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
-              let text = $clone.text().trim();
-              if (!text) return;
-              const nAttr = $(pElem as string).attr("n");
-              if (nAttr) text = `**${nAttr}** ${text}`;
-              text = formatLineNumber(text);
-              text = text.replaceAll(/\s+/g, " ");
-              directParagraphs.push(text);
-            });
+            $element
+              .children("p, l")
+              .each((_index: number, pElement: unknown) => {
+                const $clone = $(pElement as string).clone();
+                $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
+                let text = $clone.text().trim();
+                if (!text) return;
+                const nAttribute = $(pElement as string).attr("n");
+                if (nAttribute) text = `**${nAttribute}** ${text}`;
+                text = formatLineNumber(text);
+                text = text.replaceAll(/\s+/g, " ");
+                directParagraphs.push(text);
+              });
 
             if (
               directParagraphs.length > 0 &&
@@ -207,14 +209,14 @@ export class PerseusLibraryProvider {
           } else {
             const paragraphs: string[] = [];
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-            $el.find("p, l").each((_index: number, pElem: unknown) => {
-              const $clone = $(pElem as string).clone();
+            $element.find("p, l").each((_index: number, pElement: unknown) => {
+              const $clone = $(pElement as string).clone();
               $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
               let text = $clone.text().trim();
               if (!text) return;
-              const nAttr = $(pElem as string).attr("n");
-              if (nAttr) {
-                text = `**${nAttr}** ${text}`;
+              const nAttribute = $(pElement as string).attr("n");
+              if (nAttribute) {
+                text = `**${nAttribute}** ${text}`;
               }
               text = formatLineNumber(text);
               text = text.replaceAll(/\s+/g, " ");
@@ -223,7 +225,7 @@ export class PerseusLibraryProvider {
 
             if (paragraphs.length === 0) {
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-              const $clone = $el.clone();
+              const $clone = $element.clone();
               // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
               $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -249,7 +251,7 @@ export class PerseusLibraryProvider {
 
         const authorDir = path.join(dataPath, authorSlug);
         for (const file of filesToWrite) {
-          const fm = { ...frontmatterObj, title: file.title };
+          const fm = { ...frontmatterObject, title: file.title };
           let markdown = `---\n${YAML.stringify(fm)}---\n\n`;
           markdown += `# ${file.title}\n\n`;
           markdown += `${file.content}\n`;
@@ -262,7 +264,7 @@ export class PerseusLibraryProvider {
         // Small delay
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
+        const progressString = ` (${(((index + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${index + 1}/${xmlPaths.length})`;
         this.logger.log(`📜 Completed processing: ${xmlPath}${progressString}`);
       } catch (error) {
         this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);

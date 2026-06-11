@@ -67,9 +67,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     description: "Activate/deactivate the dictionary stage",
     flags: "--dictionary [boolean]",
   })
-  parseDictionary(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseDictionary(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /**
@@ -79,9 +79,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     description: "Activate/deactivate the library stage",
     flags: "--library [boolean]",
   })
-  parseLibrary(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseLibrary(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /**
@@ -91,9 +91,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     description: "Activate/deactivate the library sources stage",
     flags: "--library-sources [boolean]",
   })
-  parseLibrarySources(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseLibrarySources(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /**
@@ -103,9 +103,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     description: "Activate/deactivate the literature stage",
     flags: "--literature [boolean]",
   })
-  parseLiterature(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseLiterature(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /**
@@ -115,9 +115,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     description: "Activate/deactivate the Wikipedia (Wiktionary) stage",
     flags: "--wikipedia [boolean]",
   })
-  parseWikipedia(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseWikipedia(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /**
@@ -125,7 +125,7 @@ export class LexicoIngestionCommand extends CommandRunner {
    * wikipedia → dictionary → library sources → library → literature
    */
   async run(
-    _passedParams: string[],
+    _passedParameters: string[],
     options: LexicoIngestionCommandOptions,
   ): Promise<void> {
     if (options.wikipedia === undefined) {

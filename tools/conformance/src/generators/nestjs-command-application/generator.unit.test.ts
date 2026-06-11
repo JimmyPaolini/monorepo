@@ -58,11 +58,11 @@ describe("generateNestjsCommandApplication", () => {
       expect(commandFile).toContain("name: 'stellar-cli'");
       expect(commandFile).toContain("class StellarCliCommand");
 
-      const envDefault = tree.read(
+      const environmentDefault = tree.read(
         "applications/stellar-cli/.env.default",
         "utf8",
       );
-      expect(envDefault).toContain("🌱");
+      expect(environmentDefault).toContain("🌱");
     });
   });
 

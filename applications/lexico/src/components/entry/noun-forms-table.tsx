@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps } from "./form-cell";
+import type { FormCellProps as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single declined form of a noun.
@@ -52,7 +52,7 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
  * Restructure noun forms into a 2-column grid (singular, plural)
  * Each row is a case, columns are singular and plural
  */
-function restructureNounForms(forms: NounForm[]): FormCellProps[] {
+function restructureNounForms(forms: NounForm[]): FormCellProperties[] {
   // Group by case
   const byCase: Record<string, { plural?: string; singular?: string }> = {};
 
@@ -72,7 +72,7 @@ function restructureNounForms(forms: NounForm[]): FormCellProps[] {
   // Filter to only cases that have data (for vocative/locative)
   const activeCases = CASE_ORDER.filter((caseName) => byCase[caseName]);
 
-  const cells: FormCellProps[] = [];
+  const cells: FormCellProperties[] = [];
 
   for (const caseName of activeCases) {
     const caseData = byCase[caseName] || {};
@@ -95,12 +95,12 @@ function restructureNounForms(forms: NounForm[]): FormCellProps[] {
 }
 
 const NounFormsTable = React.forwardRef<HTMLDivElement, NounFormsTableProps>(
-  ({ className, forms, search }, ref) => {
+  ({ className, forms, search }, reference) => {
     const cells = React.useMemo(() => restructureNounForms(forms), [forms]);
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={className}
       >
         <FormsTable

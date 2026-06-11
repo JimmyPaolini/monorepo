@@ -390,9 +390,9 @@ export class IngressesService {
       );
 
       // Pair consecutive ingresses to create progressive events
-      for (let i = 0; i < sortedIngresses.length - 1; i++) {
-        const entering = sortedIngresses[i];
-        const exiting = sortedIngresses[i + 1];
+      for (let index = 0; index < sortedIngresses.length - 1; index++) {
+        const entering = sortedIngresses[index];
+        const exiting = sortedIngresses[index + 1];
         if (!entering || !exiting) {
           continue;
         }

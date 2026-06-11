@@ -1,4 +1,4 @@
-import { createServerFn } from "@tanstack/react-start";
+import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 import type { PartOfSpeech, PrincipalParts } from "./types";
 
@@ -26,7 +26,7 @@ export interface BookmarkedEntry {
 /**
  * Get all bookmarked entries for the current user
  */
-export const getBookmarks = createServerFn({ method: "GET" }).handler(
+export const getBookmarks = createServerFunction({ method: "GET" }).handler(
   // eslint-disable-next-line @typescript-eslint/require-await
   async (): Promise<BookmarkedEntry[]> => {
     return [];
@@ -36,7 +36,7 @@ export const getBookmarks = createServerFn({ method: "GET" }).handler(
 /**
  * Check if an entry is bookmarked by the current user
  */
-export const isBookmarked = createServerFn({ method: "GET" })
+export const isBookmarked = createServerFunction({ method: "GET" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -48,7 +48,7 @@ export const isBookmarked = createServerFn({ method: "GET" })
 /**
  * Add a bookmark for the current user
  */
-export const addBookmark = createServerFn({ method: "POST" })
+export const addBookmark = createServerFunction({ method: "POST" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -60,7 +60,7 @@ export const addBookmark = createServerFn({ method: "POST" })
 /**
  * Remove a bookmark for the current user
  */
-export const removeBookmark = createServerFn({ method: "POST" })
+export const removeBookmark = createServerFunction({ method: "POST" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -72,7 +72,7 @@ export const removeBookmark = createServerFn({ method: "POST" })
 /**
  * Toggle bookmark status for an entry
  */
-export const toggleBookmark = createServerFn({ method: "POST" })
+export const toggleBookmark = createServerFunction({ method: "POST" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
     async (): Promise<{

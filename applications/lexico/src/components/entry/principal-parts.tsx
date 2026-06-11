@@ -115,7 +115,7 @@ export interface VerbInflection {
  * @param props - Component props
  * @returns React element
  */
-export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
+export function PrincipalParts(properties: PrincipalPartsProps): ReactElement {
   const {
     bookmarked,
     className,
@@ -124,7 +124,7 @@ export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
     onBookmarkToggle,
     partOfSpeech,
     principalParts,
-  } = props;
+  } = properties;
 
   // 🪝 Hooks
 

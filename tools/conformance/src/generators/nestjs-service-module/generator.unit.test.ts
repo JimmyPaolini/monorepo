@@ -125,12 +125,12 @@ describe("generateNestjsServiceModule", () => {
         path.join(__dirname, "templates/__nameKebabCase__.service.ts"),
         "utf8",
       );
-      const vars: Record<string, unknown> = {
+      const variables: Record<string, unknown> = {
         nameCamelCase: "calculator",
         namePascalCase: "Calculator",
       };
       const result = validateConformance({
-        data: vars,
+        data: variables,
         filename: "calculator.service.ts",
         instance: serviceContent,
         template: templateContent,

@@ -17,20 +17,26 @@ describe("generateJupyterNotebookApplication", () => {
   it("creates expected files under applications/<name>", async () => {
     await generateJupyterNotebookApplication(tree, { name: "daily-notebook" });
 
-    const appRoot = path.join("applications", "daily-notebook");
+    const applicationRoot = path.join("applications", "daily-notebook");
 
-    expect(tree.exists(path.join(appRoot, "project.json"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "pyproject.toml"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, ".gitignore"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "README.md"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "src", "__init__.py"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "src", "models.py"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "src", "daily-notebook.ipynb"))).toBe(
+    expect(tree.exists(path.join(applicationRoot, "project.json"))).toBe(true);
+    expect(tree.exists(path.join(applicationRoot, "pyproject.toml"))).toBe(
       true,
     );
-    expect(tree.exists(path.join(appRoot, "testing", "__init__.py"))).toBe(
+    expect(tree.exists(path.join(applicationRoot, ".gitignore"))).toBe(true);
+    expect(tree.exists(path.join(applicationRoot, "README.md"))).toBe(true);
+    expect(tree.exists(path.join(applicationRoot, "src", "__init__.py"))).toBe(
       true,
     );
+    expect(tree.exists(path.join(applicationRoot, "src", "models.py"))).toBe(
+      true,
+    );
+    expect(
+      tree.exists(path.join(applicationRoot, "src", "daily-notebook.ipynb")),
+    ).toBe(true);
+    expect(
+      tree.exists(path.join(applicationRoot, "testing", "__init__.py")),
+    ).toBe(true);
   });
 
   it("uses provided description in pyproject.toml", async () => {

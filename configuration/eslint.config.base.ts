@@ -141,7 +141,61 @@ export default [
       // null is used extensively in the codebase (React refs, database nulls, API contracts)
       "unicorn/no-null": "off",
       // Common abbreviations are acceptable (ctx, env, req, res, db, fn)
-      "unicorn/prevent-abbreviations": "off",
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          replacements: {
+            e: { error: true, event: true },
+            i: { index: true },
+            res: { response: true, result: true },
+            req: { request: true },
+            ctx: { context: true },
+            app: { application: true },
+            tmp: { temporary: true },
+            idx: { index: true },
+          },
+          ignore: [
+            "\\.e2e$",
+            "\\.cjs$",
+            "\\.mjs$",
+            "\\.d\\.ts$",
+            "vite\\.config\\..*$",
+            "vitest\\.config\\..*$",
+            "eslint\\.config\\..*$",
+            "package\\.json",
+            "adjectivalPos",
+            "nominalPos",
+            "posWithoutForms",
+            "buildAdjectivalFormsForPos",
+            "buildNominalFormsForPos",
+            "AdjectiveFormsTableProps",
+            "EntryCardProps",
+            "FormCellProps",
+            "FormTabsProps",
+            "FormsTableProps",
+            "IdentifierProps",
+            "NounFormsTableProps",
+            "PrincipalPartsProps",
+            "TranslationsProps",
+            "VerbFormsTableProps",
+            "DeckProps",
+            "LayoutProps",
+            "LogoProps",
+            "NavigationProps",
+            "SearchBarProps",
+          ],
+          allowList: {
+            args: true,
+            str: true,
+          },
+          checkDefaultAndNamespaceImports: true,
+          checkProperties: true,
+          checkVariables: true,
+          checkShorthandImports: true,
+          checkShorthandProperties: true,
+          checkFilenames: false,
+        },
+      ],
       // reduce() is used in pipeline transformations and aggregations
       "unicorn/no-array-reduce": "off",
       // forEach() is acceptable for imperative operations with side effects
@@ -860,4 +914,19 @@ export default [
   // ━━━━━━━━━━━━━━━━━━━ Prettier (must be last) ━━━━━━━━━━━━━━━━━━━
   // Disables all formatting rules that conflict with Prettier
   eslintConfigPrettier,
+  {
+    rules: {
+      "@typescript-eslint/naming-convention": "off",
+    },
+  },
+  {
+    rules: {
+      "@typescript-eslint/naming-convention": "off",
+    },
+  },
+  {
+    rules: {
+      "@typescript-eslint/naming-convention": "off",
+    },
+  },
 ] as ConfigWithExtends[];

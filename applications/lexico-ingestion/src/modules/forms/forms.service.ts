@@ -246,8 +246,8 @@ export class FormsService {
     rawWordsPerForm: string[][],
   ): Map<string, Set<Form>> {
     const formsByWord = new Map<string, Set<Form>>();
-    for (const [i, savedForm] of savedForms.entries()) {
-      const rawWords = rawWordsPerForm[i];
+    for (const [index, savedForm] of savedForms.entries()) {
+      const rawWords = rawWordsPerForm[index];
       if (!rawWords) continue;
 
       for (const wordString of rawWords) {

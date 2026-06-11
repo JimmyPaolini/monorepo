@@ -79,8 +79,8 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       return [];
     }
 
-    for (let i = 0; i < chunkFiles.length; i++) {
-      const file = chunkFiles[i];
+    for (let index = 0; index < chunkFiles.length; index++) {
+      const file = chunkFiles[index];
       if (!file) continue;
 
       this.logger.log(`📜 Starting processing chunk: ${file}`);
@@ -92,23 +92,23 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         };
 
         for (const item of data.data) {
-          const obj = item.obj;
-          const recordId = obj["edcs-id"] || obj.edcsId;
-          const provinz = obj.provinz || "Unknown Province";
+          const object = item.obj;
+          const recordId = object["edcs-id"] || object.edcsId;
+          const provinz = object.provinz || "Unknown Province";
 
-          const text = obj.inschriften[0]?.[0];
+          const text = object.inschriften[0]?.[0];
           if (!text) continue;
 
           // Clean up the text
           const cleanedText = text.replaceAll(/<[^>]*>?/gm, ""); // remove any stray HTML
           const markdownLine = `**${recordId}** ${cleanedText}`;
 
-          const provArr = provinceData.get(provinz) || [];
-          provArr.push(markdownLine);
-          provinceData.set(provinz, provArr);
+          const provArray = provinceData.get(provinz) || [];
+          provArray.push(markdownLine);
+          provinceData.set(provinz, provArray);
         }
 
-        const progressString = ` (${(((i + 1) / chunkFiles.length) * 100).toFixed(2)}%, ${i + 1}/${chunkFiles.length})`;
+        const progressString = ` (${(((index + 1) / chunkFiles.length) * 100).toFixed(2)}%, ${index + 1}/${chunkFiles.length})`;
         this.logger.log(
           `📜 Completed processing chunk: ${file}${progressString}`,
         );
@@ -145,9 +145,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
 
       // Chunk into files of 1000 inscriptions each
       const chunkSize = 1000;
-      for (let i = 0; i < inscriptions.length; i += chunkSize) {
-        const chunk = inscriptions.slice(i, i + chunkSize);
-        const title = `${province} Part ${Math.floor(i / chunkSize) + 1}`;
+      for (let index = 0; index < inscriptions.length; index += chunkSize) {
+        const chunk = inscriptions.slice(index, index + chunkSize);
+        const title = `${province} Part ${Math.floor(index / chunkSize) + 1}`;
         const titleSlug = _.kebabCase(title);
 
         const textSlug = `${authorSlug}/${bookSlug}/${titleSlug}`;
@@ -160,14 +160,14 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         textEntity.metadata = { sourceUrl: `${bookSlug}/${titleSlug}.md` };
         bookText.childTexts.push(textEntity);
 
-        const frontmatterObj: Record<string, unknown> = {
+        const frontmatterObject: Record<string, unknown> = {
           author: authorSlug,
           text_metadata: { source_url: "https://db.edcs.eu" },
           title,
           type: "text",
         };
 
-        let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
+        let markdown = `---\n${YAML.stringify(frontmatterObject)}---\n\n`;
         markdown += `# ${title}\n\n`;
         markdown += `${chunk.join("\n\n")}\n`;
 

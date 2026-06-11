@@ -54,7 +54,7 @@ function BookmarksPage(): ReactNode {
     try {
       const result = await removeBookmark({ data: { entryId } });
       if (result.success) {
-        setBookmarks((prev) => prev.filter((b) => b.id !== entryId));
+        setBookmarks((previous) => previous.filter((b) => b.id !== entryId));
       }
     } catch (error_) {
       console.error("Failed to remove bookmark:", error_);

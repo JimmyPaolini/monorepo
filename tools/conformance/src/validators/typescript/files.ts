@@ -57,42 +57,42 @@ export function stringifyConformanceErrors(
           `     Template: ${path.relative(workspaceRoot, fileResult.templateFilePath)}`,
         );
 
-        fileResult.errors.forEach((err, i) => {
-          lines.push("", `     ${String(i + 1)}. ${err.message}`);
+        fileResult.errors.forEach((error, index) => {
+          lines.push("", `     ${String(index + 1)}. ${error.message}`);
 
           // Instance location
-          if (err.instanceLine !== undefined) {
+          if (error.instanceLine !== undefined) {
             const col =
-              err.instanceColumn === undefined
+              error.instanceColumn === undefined
                 ? ""
-                : `, Column ${String(err.instanceColumn)}`;
+                : `, Column ${String(error.instanceColumn)}`;
             lines.push(
-              `        Instance: Line ${String(err.instanceLine)}${col}`,
+              `        Instance: Line ${String(error.instanceLine)}${col}`,
             );
-          } else if (err.instancePath !== undefined) {
-            lines.push(`        Instance: JSON path "${err.instancePath}"`);
+          } else if (error.instancePath !== undefined) {
+            lines.push(`        Instance: JSON path "${error.instancePath}"`);
           }
 
           // Template location
-          if (err.templateLine !== undefined) {
+          if (error.templateLine !== undefined) {
             const col =
-              err.templateColumn === undefined
+              error.templateColumn === undefined
                 ? ""
-                : `, Column ${String(err.templateColumn)}`;
+                : `, Column ${String(error.templateColumn)}`;
             lines.push(
-              `        Template: Line ${String(err.templateLine)}${col}`,
+              `        Template: Line ${String(error.templateLine)}${col}`,
             );
-          } else if (err.templatePath !== undefined) {
-            lines.push(`        Template: JSON path "${err.templatePath}"`);
+          } else if (error.templatePath !== undefined) {
+            lines.push(`        Template: JSON path "${error.templatePath}"`);
           }
 
-          if (err.expected !== undefined) {
-            lines.push(`        Expected: \`${err.expected}\``);
+          if (error.expected !== undefined) {
+            lines.push(`        Expected: \`${error.expected}\``);
           }
-          if (err.actual !== undefined) {
-            lines.push(`        Actual  : \`${err.actual}\``);
+          if (error.actual !== undefined) {
+            lines.push(`        Actual  : \`${error.actual}\``);
           }
-          lines.push(`        Fix     : ${err.fix}`);
+          lines.push(`        Fix     : ${error.fix}`);
         });
       });
     },

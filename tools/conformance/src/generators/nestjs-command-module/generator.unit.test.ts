@@ -123,13 +123,13 @@ describe("generateNestjsCommandModule", () => {
         path.join(__dirname, "templates/__nameKebabCase__.command.ts"),
         "utf8",
       );
-      const vars: Record<string, unknown> = {
+      const variables: Record<string, unknown> = {
         nameCamelCase: "processor",
         nameKebabCase: "processor",
         namePascalCase: "Processor",
       };
       const result = validateConformance({
-        data: vars,
+        data: variables,
         filename: "processor.command.ts",
         instance: commandContent,
         template: templateContent,

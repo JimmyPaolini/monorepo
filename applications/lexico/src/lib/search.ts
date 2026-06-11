@@ -1,4 +1,4 @@
-import { createServerFn } from "@tanstack/react-start";
+import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 import type { EntryFull, EntrySearchResult } from "./types";
 
@@ -7,7 +7,7 @@ interface SearchInput {
   query: string;
 }
 
-export const searchEntries = createServerFn({ method: "GET" })
+export const searchEntries = createServerFunction({ method: "GET" })
   .inputValidator((data: SearchInput) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -20,7 +20,7 @@ interface GetEntryInput {
   id: string;
 }
 
-export const getEntry = createServerFn({ method: "GET" })
+export const getEntry = createServerFunction({ method: "GET" })
   .inputValidator((data: GetEntryInput) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await

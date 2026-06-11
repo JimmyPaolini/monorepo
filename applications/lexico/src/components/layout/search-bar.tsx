@@ -34,7 +34,7 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
       placeholder = "Search Latin or English...",
       value: controlledValue,
     },
-    ref,
+    reference,
   ) => {
     const [internalValue, setInternalValue] = React.useState(
       controlledValue || "",
@@ -62,7 +62,7 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={cn("flex w-full max-w-2xl items-center gap-2", className)}
       >
         <Input

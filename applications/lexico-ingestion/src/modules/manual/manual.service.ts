@@ -88,8 +88,8 @@ export class ManualService {
 
   private async ingestRomanNumerals(): Promise<void> {
     this.logger.log("🔢 Ingesting Roman numerals");
-    for (let i = 1; i < 4000; i++) {
-      const roman = this.numeralsService.toRoman(i).toLowerCase();
+    for (let index = 1; index < 4000; index++) {
+      const roman = this.numeralsService.toRoman(index).toLowerCase();
       const lexeme = buildRomanNumeralTemplate();
       lexeme.lemma = roman;
       if (lexeme.principalParts[0]) {
@@ -97,7 +97,7 @@ export class ManualService {
       }
       lexeme.translations = [
         new Translation(
-          `Roman numeral: ${i} (${numberToWords.toWords(i)})`,
+          `Roman numeral: ${index} (${numberToWords.toWords(index)})`,
           lexeme,
         ),
       ];

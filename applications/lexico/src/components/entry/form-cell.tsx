@@ -49,7 +49,7 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
       topLeftText,
       topRightText,
     },
-    ref,
+    reference,
   ) => {
     const isSearched =
       search && centerText.toLowerCase().includes(search.toLowerCase());
@@ -68,7 +68,7 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={cn(
           "relative flex h-12 items-stretch",
           borderClasses,

@@ -10,7 +10,7 @@ import type { ReactNode } from "react";
 /**
  * Props for PronunciationButton component that plays Latin audio.
  */
-interface PronunciationButtonProps {
+interface PronunciationButtonProperties {
   /** Additional class names */
   className?: string;
   /** Pronunciation dialect (classical or ecclesiastical) */
@@ -26,7 +26,7 @@ export function PronunciationButton({
   className,
   dialect = "classical",
   text,
-}: PronunciationButtonProps): ReactNode {
+}: PronunciationButtonProperties): ReactNode {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePlay = useCallback(async () => {
@@ -40,8 +40,8 @@ export function PronunciationButton({
         // Decode base64 audio and play
         const audioData = atob(result.audio);
         const audioArray = new Uint8Array(audioData.length);
-        for (let i = 0; i < audioData.length; i++) {
-          audioArray[i] = audioData.codePointAt(i) ?? 0;
+        for (let index = 0; index < audioData.length; index++) {
+          audioArray[index] = audioData.codePointAt(index) ?? 0;
         }
 
         const blob = new Blob([audioArray], { type: result.contentType });

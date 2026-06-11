@@ -71,8 +71,8 @@ export class PrincipalPartsService {
     principalParts.push(firstPP);
 
     for (const b of $(elt).children("b")) {
-      const prev = $(b).prev("i").text();
-      if (prev === "or") {
+      const previous = $(b).prev("i").text();
+      if (previous === "or") {
         const lastPrincipalPart = principalParts.pop();
         if (!lastPrincipalPart) continue;
         lastPrincipalPart.text = [
@@ -82,7 +82,7 @@ export class PrincipalPartsService {
         principalParts.push(lastPrincipalPart);
       } else {
         const pp = new PrincipalPart();
-        pp.name = prev;
+        pp.name = previous;
         pp.text = [$(b).text().toLowerCase()];
         pp.lexeme = lexeme;
         principalParts.push(pp);

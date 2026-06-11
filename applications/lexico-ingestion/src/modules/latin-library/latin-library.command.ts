@@ -41,8 +41,8 @@ export class LatinLibraryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
-  private async fetchAndSave(urlStr: string, host: string): Promise<string> {
-    const parsed = new URL(urlStr, host);
+  private async fetchAndSave(urlString: string, host: string): Promise<string> {
+    const parsed = new URL(urlString, host);
     let relative = parsed.pathname;
     if (relative.startsWith("/")) relative = relative.slice(1);
     if (!relative) relative = "index.html";
@@ -102,7 +102,7 @@ export class LatinLibraryCommand extends CommandRunner {
     $index("p>table")
       .first()
       .find("a")
-      .each((_i, a) => {
+      .each((_index, a) => {
         const href = $index(a).attr("href")?.trim();
         if (href && !href.includes("index.html")) {
           authorUrls.push(href);
@@ -125,7 +125,7 @@ export class LatinLibraryCommand extends CommandRunner {
         const catHtml = await this.fetchAndSave(new URL(href, host).href, host);
         const $cat = cheerio.load(catHtml);
 
-        $cat("table a").each((_i, a) => {
+        $cat("table a").each((_index, a) => {
           let childHref = $cat(a).attr("href")?.trim();
 
           // Fix malformed link in christian.html
@@ -178,25 +178,30 @@ export class LatinLibraryCommand extends CommandRunner {
 
     const worker = async (): Promise<void> => {
       while (queue.length > 0) {
-        const urlStr = queue.shift();
-        if (!urlStr) continue;
+        const urlString = queue.shift();
+        if (!urlString) continue;
 
         try {
-          const html = await this.fetchAndSave(urlStr, host);
+          const html = await this.fetchAndSave(urlString, host);
           if (!html) continue;
 
           // Only parse HTML files for more links
-          const parsed = new URL(urlStr);
-          const ext = path.extname(parsed.pathname).toLowerCase();
-          if (!ext || ext === ".html" || ext === ".htm" || ext === ".shtml") {
-            let baseUrl = urlStr;
-            if (!urlStr.endsWith("/") && !ext) {
+          const parsed = new URL(urlString);
+          const extension = path.extname(parsed.pathname).toLowerCase();
+          if (
+            !extension ||
+            extension === ".html" ||
+            extension === ".htm" ||
+            extension === ".shtml"
+          ) {
+            let baseUrl = urlString;
+            if (!urlString.endsWith("/") && !extension) {
               baseUrl += "/";
             }
 
             const $ = cheerio.load(html);
 
-            $("a").each((_i, a) => {
+            $("a").each((_index, a) => {
               const href = $(a).attr("href")?.trim();
               if (
                 !href ||
@@ -257,10 +262,12 @@ export class LatinLibraryCommand extends CommandRunner {
             error instanceof Error
               ? error.stack || error.message
               : String(error);
-          this.logger.error(`❌ Error processing ${urlStr}: ${String(error)}`);
+          this.logger.error(
+            `❌ Error processing ${urlString}: ${String(error)}`,
+          );
           await fs.appendFile(
             this.logFilePath,
-            `[${new Date().toISOString()}] ${urlStr}: ${errorMessage}\n`,
+            `[${new Date().toISOString()}] ${urlString}: ${errorMessage}\n`,
           );
         }
       }

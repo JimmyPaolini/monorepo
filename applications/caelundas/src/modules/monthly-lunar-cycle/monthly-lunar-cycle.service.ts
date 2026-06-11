@@ -431,9 +431,9 @@ export class MonthlyLunarCycleService {
     );
 
     // Pair consecutive lunar phases to create progressive events
-    for (let i = 0; i < sortedEvents.length - 1; i++) {
-      const entering = sortedEvents[i];
-      const exiting = sortedEvents[i + 1];
+    for (let index = 0; index < sortedEvents.length - 1; index++) {
+      const entering = sortedEvents[index];
+      const exiting = sortedEvents[index + 1];
       if (!entering || !exiting) {
         continue;
       }

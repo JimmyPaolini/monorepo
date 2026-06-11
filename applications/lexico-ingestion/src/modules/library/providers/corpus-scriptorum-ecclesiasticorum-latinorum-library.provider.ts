@@ -60,8 +60,8 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
     const authorsMap = new Map<string, Author>();
 
-    for (let i = 0; i < xmlPaths.length; i++) {
-      const xmlPath = xmlPaths[i];
+    for (let index = 0; index < xmlPaths.length; index++) {
+      const xmlPath = xmlPaths[index];
       if (!xmlPath) continue;
 
       this.logger.log(`📜 Starting processing: ${xmlPath}`);
@@ -82,7 +82,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
         const metadata: Record<string, unknown> = {};
         const editors = $("titleStmt editor")
-          .map((_, el) => $(el).text().trim())
+          .map((_, element) => $(element).text().trim())
           .get();
         if (editors.length > 0) metadata["editors"] = editors;
 
@@ -122,7 +122,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
         textEntity.type = "text";
         author.texts.push(textEntity);
 
-        const frontmatterObj: Record<string, unknown> = {
+        const frontmatterObject: Record<string, unknown> = {
           author: authorSlug,
           title: rawTitle,
           type: "text",
@@ -132,23 +132,26 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
           source_url: `https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/${relativeSourcePath}`,
         };
         if (Object.keys(textMetadata).length > 0) {
-          frontmatterObj["text_metadata"] = textMetadata;
+          frontmatterObject["text_metadata"] = textMetadata;
         }
 
-        let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
+        let markdown = `---\n${YAML.stringify(frontmatterObject)}---\n\n`;
         markdown += `# ${rawTitle}\n\n`;
 
         const paragraphs: string[] = [];
 
         $("body")
           .find("p, l, div[type='textpart']")
-          .each((_, elem) => {
-            const $el = $(elem);
-            if ($el[0]?.name === "div" && $el.find("p, l").length > 0) {
+          .each((_, element) => {
+            const $element = $(element);
+            if (
+              $element[0]?.name === "div" &&
+              $element.find("p, l").length > 0
+            ) {
               return;
             }
 
-            const $clone = $el.clone();
+            const $clone = $element.clone();
             $clone.find("note, app, rdg, lem").remove();
 
             let text = $clone.text().trim();
@@ -156,9 +159,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
             text = text.replaceAll(/\s+/g, " ");
 
-            const nAttr = $el.attr("n");
-            if (nAttr) {
-              text = `**${nAttr}** ${text}`;
+            const nAttribute = $element.attr("n");
+            if (nAttribute) {
+              text = `**${nAttribute}** ${text}`;
             }
 
             text = formatLineNumber(text);
@@ -182,7 +185,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
+        const progressString = ` (${(((index + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${index + 1}/${xmlPaths.length})`;
         this.logger.log(`📜 Completed processing: ${xmlPath}${progressString}`);
       } catch (error) {
         this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);

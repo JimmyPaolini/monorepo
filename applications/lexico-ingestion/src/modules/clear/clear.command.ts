@@ -93,9 +93,9 @@ export class ClearCommand extends CommandRunner {
     description: "Clear all dictionary entries, translations, and words",
     flags: "--dictionary [boolean]",
   })
-  parseDictionary(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseDictionary(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /** Parses the `--literature` flag; returns true/false. */
@@ -103,15 +103,15 @@ export class ClearCommand extends CommandRunner {
     description: "Clear all literature entries (authors, books, texts, lines)",
     flags: "--literature [boolean]",
   })
-  parseLiterature(val: string | undefined): boolean {
-    if (val === undefined) return true;
-    return val !== "false" && val !== "0";
+  parseLiterature(value: string | undefined): boolean {
+    if (value === undefined) return true;
+    return value !== "false" && value !== "0";
   }
 
   /** Runs the clear pipeline for the options provided. If no options are
    * specified, it prompts the user. */
   async run(
-    _passedParams: string[],
+    _passedParameters: string[],
     options: ClearCommandOptions,
   ): Promise<void> {
     if (options.dictionary === undefined && options.literature === undefined) {

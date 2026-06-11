@@ -89,7 +89,7 @@ export interface PronunciationDialect {
 /**
  *
  */
-export function EntryCard(props: EntryCardProps): ReactElement {
+export function EntryCard(properties: EntryCardProps): ReactElement {
   const {
     bookmarked,
     etymology,
@@ -104,7 +104,7 @@ export function EntryCard(props: EntryCardProps): ReactElement {
     translationsExpanded = false,
     // isLatinSearchResult = true,
     className,
-  } = props;
+  } = properties;
 
   // 🪝 Hooks
   const [accordionValue, setAccordionValue] = useState(

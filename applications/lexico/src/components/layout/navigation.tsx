@@ -80,7 +80,7 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
       onToggle,
       renderLink,
     },
-    ref,
+    reference,
   ) => {
     // Desktop: permanent sidebar, expands on hover
     // Mobile: drawer that slides in
@@ -103,7 +103,7 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
 
     const navContent = (
       <nav
-        ref={ref}
+        ref={reference}
         className={cn(
           "flex h-full flex-col bg-card transition-all duration-200",
           isExpanded ? "w-56" : "w-16",

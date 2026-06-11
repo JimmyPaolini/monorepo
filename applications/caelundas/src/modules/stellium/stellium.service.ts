@@ -136,13 +136,17 @@ export class StelliumService {
 
       // Verify all pairs are in conjunction
       let isStellium = true;
-      for (let i = 0; i < bodies.length && isStellium; i++) {
-        const bodyI = bodies[i];
+      for (let index = 0; index < bodies.length && isStellium; index++) {
+        const bodyI = bodies[index];
         if (!bodyI) {
           continue;
         }
-        for (let j = i + 1; j < bodies.length && isStellium; j++) {
-          const bodyJ = bodies[j];
+        for (
+          let index_ = index + 1;
+          index_ < bodies.length && isStellium;
+          index_++
+        ) {
+          const bodyJ = bodies[index_];
           if (!bodyJ) {
             continue;
           }
@@ -162,13 +166,13 @@ export class StelliumService {
           // Check if Stellium pattern exists in given edges
           (edges) => {
             // All pairs of bodies must be in conjunction
-            for (let i = 0; i < bodies.length; i++) {
-              const bodyI = bodies[i];
+            for (let index = 0; index < bodies.length; index++) {
+              const bodyI = bodies[index];
               if (!bodyI) {
                 continue;
               }
-              for (let j = i + 1; j < bodies.length; j++) {
-                const bodyJ = bodies[j];
+              for (let index_ = index + 1; index_ < bodies.length; index_++) {
+                const bodyJ = bodies[index_];
                 if (!bodyJ) {
                   continue;
                 }
@@ -199,12 +203,12 @@ export class StelliumService {
   /**
    * Create a stellium event
    */
-  private createStelliumEvent(params: {
+  private createStelliumEvent(parameters: {
     bodies: Body[];
     phase: AspectPhase;
     timestamp: Moment;
   }): Event {
-    const { bodies, phase, timestamp } = params;
+    const { bodies, phase, timestamp } = parameters;
 
     const bodiesCapitalized = bodies.map((b) => _.startCase(b));
     const bodySymbols = bodies.map((b) => symbolByBody[b]);
@@ -369,8 +373,8 @@ export class StelliumService {
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
 
-      for (let i = 0; i < sortedEvents.length; i++) {
-        const currentEvent = sortedEvents[i];
+      for (let index = 0; index < sortedEvents.length; index++) {
+        const currentEvent = sortedEvents[index];
         if (!currentEvent) {
           continue;
         }
@@ -381,8 +385,8 @@ export class StelliumService {
         }
 
         // Look for the next dissolving event
-        for (let j = i + 1; j < sortedEvents.length; j++) {
-          const potentialDissolvingEvent = sortedEvents[j];
+        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
+          const potentialDissolvingEvent = sortedEvents[index_];
           if (!potentialDissolvingEvent) {
             continue;
           }

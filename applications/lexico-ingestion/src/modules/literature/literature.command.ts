@@ -320,21 +320,21 @@ export class LiteratureCommand extends CommandRunner {
       await this.authorRepository.save(author);
     }
 
-    const textSaveObj: DeepPartial<Text> = {
+    const textSaveObject: DeepPartial<Text> = {
       author,
       slug: textSlug,
       title,
       type: "text",
     };
     if (parentText) {
-      textSaveObj.parentText = parentText;
+      textSaveObject.parentText = parentText;
     }
     if (frontmatterData["text_metadata"]) {
-      textSaveObj.metadata = frontmatterData["text_metadata"];
+      textSaveObject.metadata = frontmatterData["text_metadata"];
     }
 
     await this.textRepository.upsert(
-      textSaveObj as QueryDeepPartialEntity<Text>,
+      textSaveObject as QueryDeepPartialEntity<Text>,
       {
         conflictPaths: ["slug"],
         skipUpdateIfNoValuesChanged: true,
@@ -540,7 +540,10 @@ export class LiteratureCommand extends CommandRunner {
   }
 
   /** Runs the literature ingestion pipeline. */
-  async run(_args: string[], options: LiteratureCommandOptions): Promise<void> {
+  async run(
+    _arguments: string[],
+    options: LiteratureCommandOptions,
+  ): Promise<void> {
     this.logger.log(`📚 Starting literature ingestion...`);
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();

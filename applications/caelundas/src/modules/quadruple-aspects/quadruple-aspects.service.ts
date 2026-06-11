@@ -90,13 +90,13 @@ export class QuadrupleAspectsService {
     }
 
     // Try each pair of oppositions
-    for (let i = 0; i < oppositions.length; i++) {
-      const opp1 = oppositions[i];
+    for (let index = 0; index < oppositions.length; index++) {
+      const opp1 = oppositions[index];
       if (!opp1) {
         continue;
       }
-      for (let j = i + 1; j < oppositions.length; j++) {
-        const opp2 = oppositions[j];
+      for (let index_ = index + 1; index_ < oppositions.length; index_++) {
+        const opp2 = oppositions[index_];
         if (!opp2) {
           continue;
         }
@@ -284,17 +284,17 @@ export class QuadrupleAspectsService {
 
     // First find all grand trines (3 bodies all in trine with each other)
     const grandTrines: Set<Body>[] = [];
-    for (let i = 0; i < trines.length; i++) {
-      const trineI = trines[i];
+    for (let index = 0; index < trines.length; index++) {
+      const trineI = trines[index];
       if (!trineI) {
         continue;
       }
-      for (let j = i + 1; j < trines.length; j++) {
-        const trineJ = trines[j];
+      for (let index_ = index + 1; index_ < trines.length; index_++) {
+        const trineJ = trines[index_];
         if (!trineJ) {
           continue;
         }
-        for (let k = j + 1; k < trines.length; k++) {
+        for (let k = index_ + 1; k < trines.length; k++) {
           const trineK = trines[k];
           if (!trineK) {
             continue;
@@ -426,7 +426,7 @@ export class QuadrupleAspectsService {
   /**
    * Create a quadruple aspect event
    */
-  private getQuadrupleAspectEvent(params: {
+  private getQuadrupleAspectEvent(parameters: {
     body1: Body;
     body2: Body;
     body3: Body;
@@ -445,7 +445,7 @@ export class QuadrupleAspectsService {
       phase,
       quadrupleAspect,
       timestamp,
-    } = params;
+    } = parameters;
 
     const body1Capitalized = _.startCase(body1);
     const body2Capitalized = _.startCase(body2);
@@ -607,8 +607,8 @@ export class QuadrupleAspectsService {
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
 
-      for (let i = 0; i < sortedEvents.length; i++) {
-        const currentEvent = sortedEvents[i];
+      for (let index = 0; index < sortedEvents.length; index++) {
+        const currentEvent = sortedEvents[index];
         if (!currentEvent) {
           continue;
         }
@@ -619,8 +619,8 @@ export class QuadrupleAspectsService {
         }
 
         // Look for the next dissolving event
-        for (let j = i + 1; j < sortedEvents.length; j++) {
-          const potentialDissolvingEvent = sortedEvents[j];
+        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
+          const potentialDissolvingEvent = sortedEvents[index_];
           if (!potentialDissolvingEvent) {
             continue;
           }

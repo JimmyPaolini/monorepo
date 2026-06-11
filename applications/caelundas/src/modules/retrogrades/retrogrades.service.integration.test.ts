@@ -78,17 +78,20 @@ function createRetrogradeEphemeris(
     const bodyEphemeris: CoordinateEphemeris = {};
 
     for (let offset = 1; offset <= MARGIN_MINUTES; offset++) {
-      const prevTimestamp = minute
+      const previousTimestamp = minute
         .clone()
         .subtract(offset, "minutes")
         .toISOString();
       const nextTimestamp = minute.clone().add(offset, "minutes").toISOString();
-      const prevLongitude = isOverridden
+      const previousLongitude = isOverridden
         ? override.previous
         : DEFAULT_LONGITUDE;
       const nextLongitude = isOverridden ? override.next : DEFAULT_LONGITUDE;
 
-      bodyEphemeris[prevTimestamp] = { latitude: 0, longitude: prevLongitude };
+      bodyEphemeris[previousTimestamp] = {
+        latitude: 0,
+        longitude: previousLongitude,
+      };
       bodyEphemeris[nextTimestamp] = { latitude: 0, longitude: nextLongitude };
     }
 

@@ -25,7 +25,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@monorepo/lexico-components";
-import appCss from "@monorepo/lexico-components/styles/globals.css?url";
+import applicationCss from "@monorepo/lexico-components/styles/globals.css?url";
 
 import { Logo } from "../components/layout";
 
@@ -63,7 +63,7 @@ export const Route = createRootRoute({
   head: () => ({
     links: [
       { href: "/favicon.ico", rel: "icon" },
-      { href: appCss, rel: "stylesheet" },
+      { href: applicationCss, rel: "stylesheet" },
     ],
     meta: [
       {
@@ -89,7 +89,7 @@ export const Route = createRootRoute({
 /**
  * Props for the AppSidebar component.
  */
-interface AppSidebarProps {
+interface ApplicationSidebarProperties {
   /** Callback when hover state changes */
   onHoverChange: (hovered: boolean) => void;
 }
@@ -97,7 +97,7 @@ interface AppSidebarProps {
 /**
  * Props for the RootDocument component.
  */
-interface RootDocumentProps {
+interface RootDocumentProperties {
   /** Child elements to render */
   children: ReactNode;
 }
@@ -108,8 +108,10 @@ interface RootDocumentProps {
  * @param props - Component props
  * @returns React node
  */
-function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
-  const { onHoverChange } = props;
+function AppSidebar(
+  properties: Readonly<ApplicationSidebarProperties>,
+): ReactNode {
+  const { onHoverChange } = properties;
   const matches = useMatches();
   const currentPath = matches.at(-1)?.pathname ?? "/";
   const { isMobile } = useSidebar();
@@ -201,8 +203,8 @@ function RootComponent(): ReactNode {
  * @param props - Component props
  * @returns React node
  */
-function RootDocument(props: Readonly<RootDocumentProps>): ReactNode {
-  const { children } = props;
+function RootDocument(properties: Readonly<RootDocumentProperties>): ReactNode {
+  const { children } = properties;
   const [open, setOpen] = useState(false);
 
   return (

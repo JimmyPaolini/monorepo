@@ -65,11 +65,11 @@ describe("MonthlyLunarCycleService", () => {
     const ephemeris: IlluminationEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
-      const illumination = illuminations[i] ?? illuminations.at(-1) ?? 0;
+        .subtract(MARGIN_MINUTES - index, "minutes");
+      const illumination = illuminations[index] ?? illuminations.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         illumination,
       };

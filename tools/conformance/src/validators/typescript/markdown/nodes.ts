@@ -126,8 +126,8 @@ export function textMatches(
   const templateLines = templateText.split("\n");
   const instanceLines = instanceText.split("\n");
   if (templateLines.length !== instanceLines.length) return false;
-  return templateLines.every((tLine, i) => {
-    const iLine = instanceLines[i] ?? "";
-    return TODO_LINE_REGEX.test(tLine) || tLine === iLine;
+  return templateLines.every((tLine, index) => {
+    const indexLine = instanceLines[index] ?? "";
+    return TODO_LINE_REGEX.test(tLine) || tLine === indexLine;
   });
 }

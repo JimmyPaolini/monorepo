@@ -1,4 +1,4 @@
-import { createServerFn } from "@tanstack/react-start";
+import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 /**
  * Represents a user's saved text in the library.
@@ -22,7 +22,7 @@ export interface UserText {
 /**
  * Get all texts for the current user
  */
-export const getUserTexts = createServerFn({ method: "GET" }).handler(
+export const getUserTexts = createServerFunction({ method: "GET" }).handler(
   // eslint-disable-next-line @typescript-eslint/require-await
   async (): Promise<UserText[]> => {
     return [];
@@ -32,7 +32,7 @@ export const getUserTexts = createServerFn({ method: "GET" }).handler(
 /**
  * Create a new text for the current user
  */
-export const createUserText = createServerFn({ method: "POST" })
+export const createUserText = createServerFunction({ method: "POST" })
   .inputValidator((data: { text: string; title: string }) => data)
   .handler(
     async (): Promise<{
@@ -48,7 +48,7 @@ export const createUserText = createServerFn({ method: "POST" })
 /**
  * Update an existing text
  */
-export const updateUserText = createServerFn({ method: "POST" })
+export const updateUserText = createServerFunction({ method: "POST" })
   .inputValidator((data: { id: string; text: string; title: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -60,7 +60,7 @@ export const updateUserText = createServerFn({ method: "POST" })
 /**
  * Delete a text
  */
-export const deleteUserText = createServerFn({ method: "POST" })
+export const deleteUserText = createServerFunction({ method: "POST" })
   .inputValidator((data: { id: string }) => data)
   .handler(
     // eslint-disable-next-line @typescript-eslint/require-await

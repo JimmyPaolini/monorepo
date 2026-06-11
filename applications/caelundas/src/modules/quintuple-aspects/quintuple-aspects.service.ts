@@ -233,7 +233,7 @@ export class QuintupleAspectsService {
     const orderedBodies: Body[] = [start];
 
     // Follow the path through the star
-    for (let i = 0; i < 4; i++) {
+    for (let index = 0; index < 4; index++) {
       const currentConnections = connections.get(current);
       if (!currentConnections) {
         return null;
@@ -284,7 +284,7 @@ export class QuintupleAspectsService {
   /**
    * Create a quintuple aspect event
    */
-  private getQuintupleAspectEvent(params: {
+  private getQuintupleAspectEvent(parameters: {
     body1: Body;
     body2: Body;
     body3: Body;
@@ -303,7 +303,7 @@ export class QuintupleAspectsService {
       phase,
       quintupleAspect,
       timestamp,
-    } = params;
+    } = parameters;
 
     const body1Capitalized = _.startCase(body1);
     const body2Capitalized = _.startCase(body2);
@@ -435,8 +435,8 @@ export class QuintupleAspectsService {
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
 
-      for (let i = 0; i < sortedEvents.length; i++) {
-        const currentEvent = sortedEvents[i];
+      for (let index = 0; index < sortedEvents.length; index++) {
+        const currentEvent = sortedEvents[index];
         if (!currentEvent) {
           continue;
         }
@@ -447,8 +447,8 @@ export class QuintupleAspectsService {
         }
 
         // Look for the next dissolving event
-        for (let j = i + 1; j < sortedEvents.length; j++) {
-          const potentialDissolvingEvent = sortedEvents[j];
+        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
+          const potentialDissolvingEvent = sortedEvents[index_];
           if (!potentialDissolvingEvent) {
             continue;
           }

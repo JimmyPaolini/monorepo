@@ -69,6 +69,26 @@ dictionaryDefinitions:
   - name: tooling
     path: .cspell/tooling.txt
     addWords: true
+flagWords:
+  - a11y
+  - app
+  - auth
+  - ctx
+  - curr
+  - db
+  - idx
+  - param
+  - params
+  - pkg
+  - req
+  - res
+  - ret
+  - src
+  - stg
+  - tmp
+  - util
+  - utils
+  - val
 words:
   - amissa
   - apikey

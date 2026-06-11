@@ -195,11 +195,11 @@ export class TripleAspectsService {
     const bodiesArray = [...bodiesInTrines];
 
     // Check all combinations of 3 bodies
-    for (let i = 0; i < bodiesArray.length; i++) {
-      for (let j = i + 1; j < bodiesArray.length; j++) {
-        for (let k = j + 1; k < bodiesArray.length; k++) {
-          const body1 = bodiesArray[i];
-          const body2 = bodiesArray[j];
+    for (let index = 0; index < bodiesArray.length; index++) {
+      for (let index_ = index + 1; index_ < bodiesArray.length; index_++) {
+        for (let k = index_ + 1; k < bodiesArray.length; k++) {
+          const body1 = bodiesArray[index];
+          const body2 = bodiesArray[index_];
           const body3 = bodiesArray[k];
           if (!body1 || !body2 || !body3) {
             continue;
@@ -704,9 +704,9 @@ export class TripleAspectsService {
       // Pair forming and dissolving events
       const minLength = Math.min(formingEvents.length, dissolvingEvents.length);
 
-      for (let i = 0; i < minLength; i++) {
-        const forming = formingEvents[i];
-        const dissolving = dissolvingEvents[i];
+      for (let index = 0; index < minLength; index++) {
+        const forming = formingEvents[index];
+        const dissolving = dissolvingEvents[index];
         if (!forming || !dissolving) {
           continue;
         }

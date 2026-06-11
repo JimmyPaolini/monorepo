@@ -13,13 +13,13 @@ export interface LogoProps {
 }
 
 const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
-  ({ className, width = 320 }, ref) => {
+  ({ className, width = 320 }, reference) => {
     // Logo has 4:3 aspect ratio
     const height = width * (4 / 3);
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={cn("flex items-center justify-center", className)}
         style={{ height: `${height}px`, width: `${width}px` }}
       >

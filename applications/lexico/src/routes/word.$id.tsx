@@ -18,8 +18,8 @@ import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/word/$id")({
   component: WordPage,
-  loader: async ({ params }) => {
-    const entry = await getEntry({ data: { id: params.id } });
+  loader: async ({ params: parameters }) => {
+    const entry = await getEntry({ data: { id: parameters.id } });
     return { entry };
   },
 });

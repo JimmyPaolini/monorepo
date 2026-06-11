@@ -178,11 +178,12 @@ export class DictionaryCommand extends CommandRunner {
       this.translationsService.extractTranslationReferences(
         saved.translations ?? [],
       );
-    for (const refWord of referencedWords) {
-      if (!this.inProgressWords.has(refWord)) {
-        const refExists = await this.lexemesService.existsByLemma(refWord);
-        if (!refExists) {
-          await this.ingestLexeme(refWord);
+    for (const referenceWord of referencedWords) {
+      if (!this.inProgressWords.has(referenceWord)) {
+        const referenceExists =
+          await this.lexemesService.existsByLemma(referenceWord);
+        if (!referenceExists) {
+          await this.ingestLexeme(referenceWord);
         }
       }
     }
@@ -379,7 +380,10 @@ export class DictionaryCommand extends CommandRunner {
 
   /** Runs the dictionary ingestion for a single word when `--word` is given,
    * or processes all cached Wiktionary HTML files otherwise. */
-  async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
+  async run(
+    _arguments: string[],
+    options: DictionaryCommandOptions,
+  ): Promise<void> {
     this.logger.log(`📖 Ingesting dictionary...`);
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
