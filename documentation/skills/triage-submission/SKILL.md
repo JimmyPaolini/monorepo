@@ -434,3 +434,21 @@ Report a summary to the user covering:
 - [documentation/skills/create-pull-request/SKILL.md](../../../documentation/skills/create-pull-request/SKILL.md)
 - [documentation/skills/update-pull-request/SKILL.md](../../../documentation/skills/update-pull-request/SKILL.md)
 - [documentation/skills/submit-changes/SKILL.md](../../../documentation/skills/submit-changes/SKILL.md)
+
+## Root Cause & Prevention
+
+> **You are in triage mode because a proactive validation step was skipped.**
+>
+> After resolving these failures, remind the user: **use the [validate-code skill](../validate-code/SKILL.md) before committing to catch all of these issues before pre-commit hooks run.**
+
+Specifically, after every implementation task:
+
+```bash
+# Auto-fix format, lint, and unused-code issues
+pnpm exec nx affected --target=analyze-code --configuration=write --base=main
+
+# Verify all checks pass — do not commit until this is clean
+pnpm exec nx affected --target=analyze-code --configuration=check --base=main
+```
+
+Running this loop _before_ staging catches 100% of the pre-commit hook failures this skill handles — formatting, linting, typecheck, spell-check, unused code, and sync checks — without any pre-commit interruption.
