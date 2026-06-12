@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.0](https://github.com/JimmyPaolini/monorepo/compare/v1.9.0...v1.10.0) (2026-06-12)
+
+### ✨ Features
+
+* **lexico-ingestion:** ✨ implement multi-provider literature ingestion system ([#65](https://github.com/JimmyPaolini/monorepo/issues/65)) ([7a83390](https://github.com/JimmyPaolini/monorepo/commit/7a83390732bb0b70bccbab02aa1551da6e79f922))
+
 ## [1.9.0](https://github.com/JimmyPaolini/monorepo/compare/v1.8.0...v1.9.0) (2026-06-09)
 
 ### ✨ Features
