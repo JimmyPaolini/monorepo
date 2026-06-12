@@ -1,0 +1,106 @@
+---
+name: validate-code
+description: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
+license: MIT
+---
+
+# Validate Code
+
+Run the monorepo's full automated quality suite against your changes **before committing**. This prevents pre-commit hook failures, failed CI jobs, and wasted triage cycles.
+
+## When to Use This Skill
+
+- After finishing implementation of any task — TypeScript, Python, Markdown, YAML, JSON
+- Before invoking the [submit-changes skill](../submit-changes/SKILL.md)
+- When asked to "validate", "check code quality", "run linting", or "verify changes are clean"
+- Anytime you add new dependencies, exports, or files (Knip detects unused ones)
+
+## What `analyze-code` Covers
+
+The `analyze-code` Nx composite target fans out to all quality tools:
+
+| Tool | Purpose | Configuration |
+| ---- | ------- | ------------- |
+| `oxfmt` + `prettier` | Code formatting | `configuration/oxfmt.config.ts`, `configuration/prettier.config.ts` |
+| `eslint` + `oxlint` | Linting (TS/JS) | project `eslint.config.ts`, `configuration/oxlint.config.ts` |
+| `ruff` | Format + lint (Python) | `configuration/pyproject.toml` |
+| `tsc --noEmit` | TypeScript type checking | project `tsconfig.json` → `configuration/tsconfig.base.json` |
+| `pyright` + `ty` | Python type checking | `configuration/pyproject.toml` |
+| `knip` | Unused TS files, exports, deps | `configuration/knip.config.ts` |
+| `vulture` | Unused Python code | `configuration/vulture_whitelist.py` |
+| `cspell` | Spell checking | `configuration/cspell.config.yaml` |
+| `markdownlint` | Markdown linting | `configuration/.markdownlint-cli2.jsonc` |
+| `yamllint` | YAML linting | `configuration/yamllint.yaml` |
+
+## Validation Workflow
+
+### Step 1 — Auto-fix
+
+Run `analyze-code` in `write` mode to automatically fix all auto-fixable issues (formatting, linting, unused-code whitelist entries, sync checks):
+
+```bash
+pnpm exec nx affected --target=analyze-code --configuration=write --base=main
+```
+
+> For new/untracked files that `nx affected` won't detect, target the relevant project(s) directly:
+>
+> ```bash
+> pnpm exec nx run <project>:analyze-code --configuration=write
+> ```
+
+Review the changes made. If any files were modified, inspect them to ensure the auto-fixes are correct.
+
+### Step 2 — Verify
+
+Run `analyze-code` in `check` mode to confirm no issues remain:
+
+```bash
+pnpm exec nx affected --target=analyze-code --configuration=check --base=main
+```
+
+**All checks must pass before proceeding.** If any fail, triage each failure:
+
+- **Format/lint**: Fix the reported violations manually, then re-run.
+- **Typecheck**: Fix type errors — see [typescript-conventions skill](../typescript-conventions/SKILL.md) for patterns.
+- **Spell-check**: Either fix the typo, or add the word to the appropriate dictionary in `configuration/.cspell/`.
+- **Knip (unused code)**: Remove the unused export/file/dependency, or add an exception in `configuration/knip.config.ts`.
+- **Sync checks**: Run the relevant `write` variant (e.g., `nx run monorepo:sync-agent-skills:write`).
+
+See [triage-submission](../triage-submission/SKILL.md) for detailed per-tool fix instructions.
+
+### Step 3 — Done
+
+Once both `write` and `check` pass cleanly, code quality is confirmed. Proceed to commit or hand off.
+
+## Common Patterns
+
+### New TypeScript files added
+
+```bash
+# Target the specific project since affected may not pick up new files
+pnpm exec nx run <project>:analyze-code --configuration=write
+pnpm exec nx run <project>:analyze-code --configuration=check
+```
+
+### New skill or AGENTS.md edited
+
+```bash
+# Sync the agent skills table of contents
+pnpm exec nx run monorepo:sync-agent-skills:write
+pnpm exec nx run monorepo:sync-agent-skills:check
+```
+
+### New documentation/skills entry added
+
+New skills must live in BOTH:
+
+- `.github/skills/<skill-name>/SKILL.md` — loaded by GitHub Copilot
+- `documentation/skills/<skill-name>/SKILL.md` — identical copy, read by the sync script
+
+After creating both, run `nx run monorepo:sync-agent-skills:write` to update the AGENTS.md table of contents.
+
+## Resources
+
+- [triage-submission skill](../triage-submission/SKILL.md) — Detailed per-tool fix instructions for pre-commit failures
+- [triage-deployment skill](../triage-deployment/SKILL.md) — Detailed per-tool fix instructions for CI failures
+- [typescript-conventions skill](../typescript-conventions/SKILL.md) — TypeScript strict mode patterns

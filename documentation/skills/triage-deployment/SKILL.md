@@ -272,6 +272,24 @@ pnpm exec nx run monorepo:gitleaks
 pnpm exec nx affected -t scan-dependencies
 ```
 
+## Root Cause & Prevention
+
+> **You are in triage mode because a proactive validation step was skipped before the commit or push.**
+>
+> After resolving these CI failures, remind the user: **use the [validate-code skill](../validate-code/SKILL.md) after every implementation task to catch these issues locally before they reach CI.**
+
+Specifically, after every implementation task:
+
+```bash
+# Auto-fix format, lint, and unused-code issues
+pnpm exec nx affected --target=analyze-code --configuration=write --base=main
+
+# Verify all checks pass — do not push until this is clean
+pnpm exec nx affected --target=analyze-code --configuration=check --base=main
+```
+
+Running this loop locally catches 100% of `analyze-code` CI failures — typecheck, lint, format, spell-check, unused code, and sync checks — without waiting for CI to report them.
+
 ## Output
 
 Provide a concise summary after fixing:
