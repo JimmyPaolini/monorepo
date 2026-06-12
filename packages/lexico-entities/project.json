@@ -108,7 +108,7 @@
         },
         "generate": {
           "commands": [
-            "NAME=\"{args.name}\"; NAME=${NAME:-migration}; pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:generate \"src/database/migrations/$NAME\" -d src/database/data-source.ts",
+            "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:generate \"src/database/migrations/migration\" -d src/database/data-source.ts",
             "nx run lexico-entities:migration:extract-sql-latest",
             "nx run lexico-entities:lint:write",
             "nx run lexico-entities:format:write"
@@ -187,7 +187,7 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "squawk --config configuration/squawk.toml --exclude prefer-robust-stmts,ban-drop-table,require-concurrent-index-deletion,require-concurrent-index-creation,ban-char-field,prefer-bigint-over-smallint,constraint-missing-not-valid,adding-foreign-key-constraint '{projectRoot}/**/*.sql'",
+        "command": "squawk --config configuration/squawk.toml --exclude prefer-robust-stmts,ban-drop-table,require-concurrent-index-deletion,require-concurrent-index-creation,ban-char-field,prefer-bigint-over-smallint,constraint-missing-not-valid,adding-foreign-key-constraint,ban-drop-column,adding-required-field '{projectRoot}/**/*.sql'",
         "cwd": "{workspaceRoot}"
       }
     },

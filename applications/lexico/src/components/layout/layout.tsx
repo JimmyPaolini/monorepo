@@ -30,7 +30,7 @@ export interface LayoutProps {
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (
     { children, className, currentPath = "/", navItems, renderNavLink },
-    ref,
+    reference,
   ) => {
     const [isNavOpen, setNavOpen] = React.useState(false);
     const [isMobile, setMobile] = React.useState(false);
@@ -47,12 +47,12 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
     }, []);
 
     const toggleNav = (): void => {
-      setNavOpen((prev) => !prev);
+      setNavOpen((previous) => !previous);
     };
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className="flex min-h-screen bg-background"
       >
         {/* Navigation */}

@@ -83,7 +83,7 @@ hostnames:
     # lenormand
     - (.*\.)?lenormandreader\.com$ # all 36 card meanings, active as of 2026
     - (.*\.)?learnlenormand\.com$
-    - (.*\.)?marykgreer\.com$ # Mary K. Greer: scholarly cartomancy/lenormand history (18+ lenormand posts)
+    - (.*\.)?marykgreer\.com$ # Mary K. Greer: scholarly cartomancy/lenormand history (18+ posts)
 
     # astrology — sign/planet/house meanings and chart interpretation
     - (.*\.)?astro\.com$ # Astrodienst: professional-grade charts and interpretation texts
@@ -91,11 +91,11 @@ hostnames:
     - (.*\.)?astrostyle\.com$
     - (.*\.)?astrotheme\.com$ # celebrity chart database + in-depth planet interpretations
     - (.*\.)?astrology42\.com$
-    - (.*\.)?darkstarastrology\.com$ # fixed stars and asteroids — rare content not on mainstream sites
+    - (.*\.)?darkstarastrology\.com$ # fixed stars and asteroids — rare content
     - (.*\.)?astrologyhub\.com$
-    - (.*\.)?skyscript\.co\.uk$ # traditional/classical astrology; Lilly, Bonatti source commentary
+    - (.*\.)?skyscript\.co\.uk$ # traditional/classical astrology; Lilly, Bonatti commentary
     - (.*\.)?astro-seek\.com$ # aspect and transit calculators with textual interpretations
-    - (.*\.)?theoi\.com$ # Greek mythology site; included for asteroid names (Ceres, Pallas, Juno, Vesta)
+    - (.*\.)?theoi\.com$ # Greek mythology site; included for asteroid names (Ceres, Pallas, etc.)
 
     # chakras — energy body, kundalini, and Ayurvedic resonance content
     - (.*\.)?yogajournal\.com$

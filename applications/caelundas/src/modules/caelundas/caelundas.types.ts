@@ -500,11 +500,11 @@ export function capitalize<T extends string>(str: T): Capitalize<T> {
  */
 export function groupByToMap<K extends PropertyKey, T>(
   items: T[],
-  keyFn: (item: T) => K,
+  keyFunction: (item: T) => K,
 ): Map<K, T[]> {
   const map = new Map<K, T[]>();
   for (const item of items) {
-    const key = keyFn(item);
+    const key = keyFunction(item);
     const existing = map.get(key);
     if (existing) {
       existing.push(item);

@@ -54,7 +54,7 @@ function BookmarksPage(): ReactNode {
     try {
       const result = await removeBookmark({ data: { entryId } });
       if (result.success) {
-        setBookmarks((prev) => prev.filter((b) => b.id !== entryId));
+        setBookmarks((previous) => previous.filter((b) => b.id !== entryId));
       }
     } catch (error_) {
       console.error("Failed to remove bookmark:", error_);
@@ -104,8 +104,8 @@ function BookmarksPage(): ReactNode {
               </Link>
               <Button
                 className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={(event) => {
+                  event.preventDefault();
                   void handleRemoveBookmark(entry.id);
                 }}
                 size="icon"

@@ -5,9 +5,9 @@ import fs from "node:fs";
 import { beforeAll, beforeEach, vi } from "vitest";
 
 beforeAll(() => {
-  const outputDir = "./output";
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  const outputDirectory = "./output";
+  if (!fs.existsSync(outputDirectory)) {
+    fs.mkdirSync(outputDirectory, { recursive: true });
   }
 });
 

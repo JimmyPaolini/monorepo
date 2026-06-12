@@ -9,14 +9,13 @@ import { TranslationsModule } from "../translations/translations.module";
 import { WordsModule } from "../words/words.module";
 
 import { DictionaryCommand } from "./dictionary.command";
-import { DictionaryService } from "./dictionary.service";
 
 /**
  * TODO: Document the dictionary module.
  */
 @Module({
   controllers: [],
-  exports: [DictionaryService],
+  exports: [DictionaryCommand],
   imports: [
     FormsModule,
     LexemesModule,
@@ -26,6 +25,6 @@ import { DictionaryService } from "./dictionary.service";
     TranslationsModule,
     WordsModule,
   ],
-  providers: [DictionaryCommand, DictionaryService],
+  providers: [DictionaryCommand],
 })
 export class DictionaryModule {}

@@ -4,15 +4,20 @@ import { ConfigModule } from "@nestjs/config";
 import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 
 import { ClearModule } from "../clear/clear.module";
+import { CorpusScriptorumEcclesiasticorumLatinorumModule } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.module";
 import { DictionaryModule } from "../dictionary/dictionary.module";
+import { EpigraphikDatenbankClaussSlabyModule } from "../epigraphik-datenbank-clauss-slaby/epigraphik-datenbank-clauss-slaby.module";
+import { LatinLibraryModule } from "../latin-library/latin-library.module";
+import { LibraryModule } from "../library/library.module";
+import { LiteratureModule } from "../literature/literature.module";
 import { LoggerModule } from "../logger/logger.module";
 import { ManualModule } from "../manual/manual.module";
+import { PerseusModule } from "../perseus/perseus.module";
 import { WiktionaryModule } from "../wiktionary/wiktionary.module";
 import { WordsModule } from "../words/words.module";
 
 import { LexicoIngestionCommand } from "./lexico-ingestion.command";
 import { environmentSchema } from "./lexico-ingestion.constants";
-import { LexicoIngestionService } from "./lexico-ingestion.service";
 
 /**
  * Root application module for lexicoIngestion.
@@ -20,22 +25,28 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
  */
 @Module({
   controllers: [],
-  exports: [LexicoIngestionService],
+  exports: [LexicoIngestionCommand],
   imports: [
+    ClearModule,
     ConfigModule.forRoot({
       envFilePath: ".env",
       isGlobal: true,
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
-    LexicoDatabaseModule,
-    WiktionaryModule,
+    CorpusScriptorumEcclesiasticorumLatinorumModule,
     DictionaryModule,
-    WordsModule,
-    ManualModule,
-    ClearModule,
+    EpigraphikDatenbankClaussSlabyModule,
+    LatinLibraryModule,
+    LexicoDatabaseModule,
+    LibraryModule,
+    LiteratureModule,
     LoggerModule,
+    ManualModule,
+    PerseusModule,
+    WiktionaryModule,
+    WordsModule,
   ],
-  providers: [LexicoIngestionCommand, LexicoIngestionService],
+  providers: [LexicoIngestionCommand],
 })
 export class LexicoIngestionModule {}

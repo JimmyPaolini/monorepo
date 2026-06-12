@@ -162,8 +162,8 @@ export interface IdentifierProps {
  * @param props - Component props
  * @returns React element
  */
-export function Identifier(props: IdentifierProps): ReactElement {
-  const { className, identifier } = props;
+export function Identifier(properties: IdentifierProps): ReactElement {
+  const { className, identifier } = properties;
 
   const identifierLowercase = identifier.toLowerCase();
   const abbreviation =

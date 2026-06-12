@@ -114,8 +114,11 @@ describe("PerfectiveService", () => {
       service.detect(baseInput);
 
       expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledOnce();
-      const firstCallArg = ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];
-      expect(firstCallArg?.end.isAfter(firstCallArg.start)).toBe(true);
+      const firstCallArgument =
+        ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];
+      expect(firstCallArgument?.end.isAfter(firstCallArgument.start)).toBe(
+        true,
+      );
     });
 
     it("should accumulate events returned by sub-services across all minutes", () => {

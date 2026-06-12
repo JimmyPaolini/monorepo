@@ -1,3 +1,5 @@
 # 🙈 Ignore
 data/wiktionary
 data/wikipedia
+data/*-source
+output/**

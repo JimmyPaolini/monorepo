@@ -29,6 +29,12 @@ ignorePaths:
   - "**/routeTree.gen.ts"
   - "**/terraform.tfstate*"
   - "**/supabase/data.sql"
+  - "**/packages/lexico-components/src/components/**"
+  - "**/packages/lexico-components/src/hooks/**"
+  - "**/packages/lexico-components/src/lib/**"
+  - "**/applications/lexico-ingestion/data/**"
+  - "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts"
+  - "**/applications/lexico-ingestion/src/modules/library/library.constants.ts"
   - coverage
   - dist
   - documentation/planning/**
@@ -66,20 +72,32 @@ dictionaryDefinitions:
   - name: tooling
     path: .cspell/tooling.txt
     addWords: true
+flagWords: []
 words:
+  - amissa
   - apikey
+  - Biblia
+  - caes
+  - Canis
   - dataloaders
   - disambiguator
   - elipssis
+  - epubs
   - extensionless
   - futp
+  - gallico
   - hackathon
+  - Hrefs
   - Indo
+  - IVXLCDM
   - jimmypaolini
   - joor
   - killallnode
   - killallvscodeextensions
   - killport
+  - livius
+  - mcp
+  - MDCLXVI
   - multivalued
   - musescore
   - navs
@@ -88,11 +106,17 @@ words:
   - noqa
   - nums
   - oneline
+  - Pagina
+  - pagehead
+  - PGPASSWORD
+
   - paolini
   - querykey
   - reagent
   - satisfies
   - shiftsmart
+  - testamentum
+  - thelatinlibrary
   - timespan
   - tolower
   - toon

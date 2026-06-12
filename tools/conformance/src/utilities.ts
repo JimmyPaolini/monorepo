@@ -5,9 +5,9 @@ import { getProjects } from "@nx/devkit";
 import mustache from "mustache";
 import prompts from "prompts";
 
-import { converterByStringCase, humanReadableStringCase } from "./constants";
+import { converterByStringCase, humanReadableStringCase } from "./constants.js";
 
-import type { StringCaseValue } from "./types";
+import type { StringCaseValue } from "./types.js";
 import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 

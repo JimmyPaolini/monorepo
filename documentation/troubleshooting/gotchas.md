@@ -27,57 +27,6 @@ const first = items[0] ?? "default"; // ✅ Provide default value
 
 JavaScript config files (e.g., `prettier.config.js`, `vitest.config.js`) cannot use TypeScript type checking rules.
 
-## Supabase
-
-### Types Out of Sync After Schema Changes
-
-**Problem**: TypeScript errors after running migrations:
-
-```typescript
-// Error: Property 'new_column' does not exist on type 'Database'
-const { data } = await supabase.from("users").select("new_column");
-```
-
-**Solution**: Always regenerate types after schema changes:
-
-```bash
-# Run immediately after migrations
-nx run lexico:supabase:generate-types
-```
-
-**Prevention**: Add to migration workflow:
-
-```bash
-nx run lexico:supabase:database-diff    # Create migration
-nx run lexico:supabase:generate-types   # Regenerate types
-```
-
-### Local Supabase Not Starting
-
-**Problem**: `nx run lexico:supabase:start` hangs or fails.
-
-**Common causes**:
-
-1. **Docker not running**: Start Docker Desktop
-2. **Port conflicts**: Another process using ports 54321-54325
-3. **Stale containers**: Previous Supabase instance not stopped
-
-**Solution**:
-
-```bash
-# Stop existing Supabase containers
-nx run lexico:supabase:stop
-
-# Check for port conflicts
-lsof -i :54321
-
-# Restart Docker
-docker restart $(docker ps -q)
-
-# Start fresh
-nx run lexico:supabase:start
-```
-
 ## Docker & Kubernetes
 
 ### Docker Image Platform Mismatch
@@ -287,10 +236,10 @@ There are three hooks:
 | `commit-msg` | `nx run monorepo:commitlint` — validates commit message format |
 | `pre-push` | `nx run monorepo:validate-branch-name` — validates branch name pattern |
 
-**Reading the last pre-commit failure**: Output is always written to `last-lint-staged-output.txt` at the workspace root. Read it without re-running the hook:
+**Reading the last pre-commit failure**: Output is always written to `last-lint-staged-output.log` at the workspace root. Read it without re-running the hook:
 
 ```bash
-cat last-lint-staged-output.txt
+cat last-lint-staged-output.log
 ```
 
 **After applying auto-fixes**, validate with `--configuration=check` before staging — do NOT re-run `lint-staged` directly (it would stage fixes before you can review them):
@@ -454,5 +403,4 @@ echo $GITHUB_TOKEN | docker login ghcr.io -u <username> --password-stdin
 - [Tool Execution Model](../development/tool-execution-model.md) - Nx vs. direct tools
 - [Deployment Models](../architecture/deployment-models.md) - K8s Job/PVC issues
 - [Docker Workflows Skill](../skills/docker-workflows/SKILL.md) - Platform targeting
-- [Supabase Development Skill](../skills/supabase-development/SKILL.md) - Migration workflows
 - [TypeScript Conventions](../conventions/typescript.md) - Strict mode gotchas

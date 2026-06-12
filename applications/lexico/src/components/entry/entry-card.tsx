@@ -18,7 +18,7 @@ import { PrincipalParts } from "./principal-parts";
 import { Translations } from "./translations";
 import { VerbFormsTable } from "./verb-forms-table";
 
-import type { PartOfSpeech } from "../../lib/supabase";
+import type { PartOfSpeech } from "../../lib/types";
 import type { AdjectiveForm } from "./adjective-forms-table";
 import type { NounForm } from "./noun-forms-table";
 import type { Inflection, PrincipalPart } from "./principal-parts";
@@ -89,7 +89,7 @@ export interface PronunciationDialect {
 /**
  *
  */
-export function EntryCard(props: EntryCardProps): ReactElement {
+export function EntryCard(properties: EntryCardProps): ReactElement {
   const {
     bookmarked,
     etymology,
@@ -104,7 +104,7 @@ export function EntryCard(props: EntryCardProps): ReactElement {
     translationsExpanded = false,
     // isLatinSearchResult = true,
     className,
-  } = props;
+  } = properties;
 
   // 🪝 Hooks
   const [accordionValue, setAccordionValue] = useState(

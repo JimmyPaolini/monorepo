@@ -11,12 +11,23 @@
   ],
   "targets": {
     "analyze-code": {},
+    "build": {
+      "command": "echo 'lexico-ingestion is a development tool and does not require building'"
+    },
     "clean": {},
     "clear": {
       "description": "Clear ingested data from the database",
       "executor": "nx:run-commands",
       "options": {
         "command": "node --import @swc-node/register/esm-register src/main.ts clear",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "corpus-scriptorum-ecclesiasticorum-latinorum": {
+      "description": "Download CSEL XML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts corpus-scriptorum-ecclesiasticorum-latinorum",
         "cwd": "applications/lexico-ingestion"
       }
     },
@@ -29,10 +40,38 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
+    "epigraphik-datenbank-clauss-slaby": {
+      "description": "Download Epigraphik-Datenbank Clauss-Slaby raw JSON chunks",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts epigraphik-datenbank-clauss-slaby",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "eslint": {},
     "format": {},
     "knip": {},
+    "latin-library": {
+      "description": "Download The Latin Library HTML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts latin-library",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "library": {
+      "command": "node --import @swc-node/register/esm-register src/main.ts library",
+      "options": {
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "lint": {},
+    "literature": {
+      "command": "node --import @swc-node/register/esm-register src/main.ts literature",
+      "options": {
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "manual": {
       "description": "Ingest manually curated entries into the database",
       "executor": "nx:run-commands",
@@ -44,6 +83,14 @@
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
+    "perseus": {
+      "description": "Download Perseus XML files locally",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts perseus",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "prettier": {},
     "repl": {
       "description": "Start the LexicoIngestion application in REPL mode",
@@ -87,7 +134,11 @@
         "cwd": "{projectRoot}"
       }
     },
-    "type-coverage": {},
+    "type-coverage": {
+      "options": {
+        "command": "type-coverage --at-least 99 --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
+      }
+    },
     "typecheck": {},
     "wiktionary": {
       "description": "Ingest Wiktionary data into the database",

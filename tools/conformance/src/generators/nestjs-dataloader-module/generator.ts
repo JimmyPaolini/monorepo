@@ -1,0 +1,90 @@
+import { execSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { getProjects, workspaceRoot } from "@nx/devkit";
+import _ from "lodash";
+
+import { StringCase } from "../../types";
+import { generateFiles, resolveName, resolveProject } from "../../utilities";
+
+import type { GeneratorCallback, Tree } from "@nx/devkit";
+
+interface GenerateNestjsDataloaderModuleOptions {
+  name: string;
+  project?: string;
+}
+
+export const MODULES_DIRECTORY = "src/modules";
+export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+  new URL("templates", import.meta.url),
+);
+
+/**
+ * Generates a new NestJS DataLoader module with dataloader, types, and unit test files.
+ * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
+ *
+ * @param tree - The Nx virtual file system tree
+ * @param options - Configuration options for the NestJS DataLoader module generator
+ */
+export async function generateNestjsDataloaderModule(
+  tree: Tree,
+  options: GenerateNestjsDataloaderModuleOptions,
+): Promise<GeneratorCallback> {
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
+  });
+
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
+    name: options.name,
+    subject: "Module name",
+  });
+
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+
+  const directory = path.join(projectRoot, "src", "modules");
+
+  if (!tree.exists(directory)) {
+    throw new Error(
+      `Directory "${directory}" does not exist in project "${projectName}"`,
+    );
+  }
+
+  const targetPath = path.join(directory, nameKebabCase);
+  const substitutions = {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+
+  generateFiles({
+    instanceDirectoryPath: targetPath,
+    substitutions,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
+  });
+
+  const generatedFiles = tree
+    .children(targetPath)
+    .map((file) => path.join(targetPath, file));
+
+  return () => {
+    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
+      cwd: workspaceRoot,
+      stdio: "inherit",
+    });
+  };
+}

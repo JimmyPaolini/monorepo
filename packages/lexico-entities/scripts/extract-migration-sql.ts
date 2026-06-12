@@ -40,21 +40,21 @@ function extractSqlFromMethod(
       ts.isPropertyAccessExpression(node.expression) &&
       node.expression.name.text === "query"
     ) {
-      const firstArg = node.arguments[0];
-      if (firstArg === undefined) {
+      const firstArgument = node.arguments[0];
+      if (firstArgument === undefined) {
         ts.forEachChild(node, visit);
         return;
       }
 
       let sql: string | undefined;
 
-      if (ts.isStringLiteral(firstArg)) {
-        sql = firstArg.text;
-      } else if (ts.isNoSubstitutionTemplateLiteral(firstArg)) {
-        sql = firstArg.text;
-      } else if (ts.isTemplateLiteral(firstArg)) {
+      if (ts.isStringLiteral(firstArgument)) {
+        sql = firstArgument.text;
+      } else if (ts.isNoSubstitutionTemplateLiteral(firstArgument)) {
+        sql = firstArgument.text;
+      } else if (ts.isTemplateLiteral(firstArgument)) {
         console.warn(
-          `Warning: template literal with expressions found at ${sourceFile.fileName}:${sourceFile.getLineAndCharacterOfPosition(firstArg.getStart()).line + 1} — skipping`,
+          `Warning: template literal with expressions found at ${sourceFile.fileName}:${sourceFile.getLineAndCharacterOfPosition(firstArgument.getStart()).line + 1} — skipping`,
         );
       }
 
@@ -153,7 +153,7 @@ async function main(): Promise<void> {
 }
 
 function parseMode(): Mode {
-  const flag = process.argv.find((arg) => arg.startsWith("--mode="));
+  const flag = process.argv.find((argument) => argument.startsWith("--mode="));
   const value = flag?.split("=")[1];
   if (value === "all") return "all";
   return "latest";

@@ -4,7 +4,10 @@ import { cn } from "@monorepo/lexico-components";
 
 import { FormCell } from "./form-cell";
 
-import type { FormCellPosition, FormCellProps } from "./form-cell";
+import type {
+  FormCellPosition,
+  FormCellProps as FormCellProperties,
+} from "./form-cell";
 
 /**
  * Props for the FormsTable component that displays a grid of form cells.
@@ -13,16 +16,16 @@ export interface FormsTableProps {
   /** Additional class names */
   className?: string | undefined;
   /** Array of form cell data */
-  forms: Omit<FormCellProps, "position" | "search">[];
+  forms: Omit<FormCellProperties, "position" | "search">[];
   /** Search term for highlighting */
   search?: string | undefined;
 }
 
 const FormsTable = React.forwardRef<HTMLDivElement, FormsTableProps>(
-  ({ className, forms, search }, ref) => {
+  ({ className, forms, search }, reference) => {
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={cn("grid grid-cols-2 bg-card", className)}
       >
         {forms.map((form, index) => {

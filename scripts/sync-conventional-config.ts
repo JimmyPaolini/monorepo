@@ -40,6 +40,7 @@ const CONVENTIONAL_CONFIG = path.join(
 );
 const SETTINGS_FILE = path.join(WORKSPACE_ROOT, ".vscode/settings.json");
 const SKILL_FILES = [
+  path.join(WORKSPACE_ROOT, "documentation/skills/rename-branch/SKILL.md"),
   path.join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
   path.join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
   path.join(
@@ -300,8 +301,8 @@ function extractMarkerContent(
  */
 function formatScopesForSettings(scopes: Scope[]): string {
   return scopes
-    .map((scope, i) => {
-      const comma = i < scopes.length - 1 ? "," : "";
+    .map((scope, index) => {
+      const comma = index < scopes.length - 1 ? "," : "";
       return `    "${scope.name}"${comma} // ${scope.description}`;
     })
     .join("\n");

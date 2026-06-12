@@ -1,0 +1,51 @@
+---
+author: anonymous
+title: Epitaphium Ennodii
+type: text
+text_metadata:
+  publisher: Gerold
+  print_publication_date: "1882"
+  source_url: https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/phi9500/phi035/phi9500.phi035.opp-lat1.xml
+---
+
+# Epitaphium Ennodii
+
+**1** Ennodius uates lucis rediturus in ortum,
+
+**2** Hoc posuit tumulo corporis exuuias,
+
+**3** Clarus prole quidem, generosior ipse propinquis,
+
+**4** Quos functus laudum iussit habere diem.
+
+**5** Reddidit hos caelo uiuacibus ille figuris,
+
+**6** Cum fecit famae uiuere conloquiis.
+
+**7** Quid mirum si morte caret post busta superstes,
+
+**8** Qui consanguineos restituit superis ?
+
+**9** Quantus iste foret, mundi celebratur in Qui
+
+**10** Nec silet occidui cardinis oceanus:
+
+**11** Scismata coniunxit dudum discordia legi
+
+**12** Atque fidem Petri reddidit ecclesiis.
+
+**13** Pollens eloquio, doctrinae nobilis arte,
+
+**14** Restituit Christo innumeros populos.
+
+**15** Largus uel sapiens dispensatorque benignus,
+
+**16** Diuitias credens quas dedit esse suas.
+
+**17** Templa deo faciens hymnis decorauit et auro
+
+**18** Et paries functi dogmata nunc loquitur.
+
+**19** Depositus sub d. XVI. kal. augustas
+
+**20** Valerio V. C. consul.

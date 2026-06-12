@@ -50,9 +50,9 @@ export class ProgressiveUtilities {
 
     const pairs: [Event, Event][] = [];
 
-    for (let i = 0; i < pairCount; i++) {
-      const beginning = beginnings[i];
-      const ending = endings[i];
+    for (let index = 0; index < pairCount; index++) {
+      const beginning = beginnings[index];
+      const ending = endings[index];
       if (beginning !== undefined && ending !== undefined) {
         pairs.push([beginning, ending]);
       }

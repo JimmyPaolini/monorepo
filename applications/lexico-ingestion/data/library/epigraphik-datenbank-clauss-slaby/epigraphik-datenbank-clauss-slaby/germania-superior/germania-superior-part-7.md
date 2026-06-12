@@ -1,0 +1,2009 @@
+---
+author: epigraphik-datenbank-clauss-slaby
+text_metadata:
+  source_url: https://db.edcs.eu
+title: Germania superior Part 7
+type: text
+---
+
+# Germania superior Part 7
+
+**EDCS-38300941** X
+
+**EDCS-38300942** ?
+
+**EDCS-38300943** ?
+
+**EDCS-38300944** V
+
+**EDCS-38300945** ?
+
+**EDCS-38300946** A
+
+**EDCS-38300947** X
+
+**EDCS-38300948** ]O
+
+**EDCS-38300949** AV
+
+**EDCS-38300950** CI/N[
+
+**EDCS-38300951** ]LISS[
+
+**EDCS-38300952** AIA
+
+**EDCS-38300953** III X CIIIIIIII
+
+**EDCS-38300954** SV[
+
+**EDCS-38300955** SI/I[
+
+**EDCS-38300956** A
+
+**EDCS-38300957** ]SIIV[
+
+**EDCS-38300958** Iusta [
+
+**EDCS-38300959** X
+
+**EDCS-38300960** ]AP[
+
+**EDCS-38300961** V
+
+**EDCS-38300962** ?
+
+**EDCS-38300963** ]/ Gratia I/I[
+
+**EDCS-38300964** ]/III[
+
+**EDCS-38300965** ]NAT[
+
+**EDCS-38300966** A[
+
+**EDCS-38300967** A
+
+**EDCS-38300968** ?
+
+**EDCS-38300969** ?
+
+**EDCS-38300970** ?
+
+**EDCS-38300971** ?
+
+**EDCS-38300972** ]AC[
+
+**EDCS-38300973** ]D[
+
+**EDCS-38300974** OLA[
+
+**EDCS-38300975** ] Macetia
+
+**EDCS-38300976** ]RAR
+
+**EDCS-38300977** ?
+
+**EDCS-38300978** ]V[
+
+**EDCS-38300979** Metili
+
+**EDCS-38300980** ?
+
+**EDCS-38300981** ]IA BANA [
+
+**EDCS-38300982** ]A
+
+**EDCS-38300983** VIIRIVG
+
+**EDCS-38300984** ]M
+
+**EDCS-38300985** LIAPR/M[
+
+**EDCS-38300986** X
+
+**EDCS-38300987** Iul(i)
+
+**EDCS-38300988** X
+
+**EDCS-38300989** ?
+
+**EDCS-38300990** X
+
+**EDCS-38300991** ]M[
+
+**EDCS-38300992** ?
+
+**EDCS-38300993** CAR[
+
+**EDCS-38300994** MA
+
+**EDCS-38300995** ?
+
+**EDCS-38300996** ?
+
+**EDCS-38300997** ?
+
+**EDCS-38300998** X
+
+**EDCS-38300999** X
+
+**EDCS-38301000** F
+
+**EDCS-38301001** X
+
+**EDCS-38301002** X
+
+**EDCS-38301003** X
+
+**EDCS-38301004** ]/SA/V
+
+**EDCS-38301005** ]ILLISS[
+
+**EDCS-38301006** ?
+
+**EDCS-38301007** CLA
+
+**EDCS-38301008** CLIIMIIT[
+
+**EDCS-38301009** VIVA[
+
+**EDCS-38301010** ]DIV[
+
+**EDCS-38301011** ?
+
+**EDCS-38301012** ?
+
+**EDCS-38301013** ?
+
+**EDCS-38301014** ?
+
+**EDCS-38301015** M/V/P[
+
+**EDCS-38301016** ?
+
+**EDCS-38301017** BIT
+
+**EDCS-38301018** ?
+
+**EDCS-38301019** ]DI/O[
+
+**EDCS-38301020** ]/AX
+
+**EDCS-38301021** X
+
+**EDCS-38301022** ?
+
+**EDCS-38301023** ?
+
+**EDCS-38301024** HII
+
+**EDCS-38301025** ] Prim[
+
+**EDCS-38301026** L[
+
+**EDCS-38301027** ]/BITVMI
+
+**EDCS-38301028** ?
+
+**EDCS-38301029** DII[
+
+**EDCS-38301030** ?
+
+**EDCS-38301031** ]/V/X[
+
+**EDCS-38301032** A[3]B[
+
+**EDCS-38301033** ]SSA
+
+**EDCS-38301034** ?
+
+**EDCS-38301035** BI[3]B[
+
+**EDCS-38301036** ]GLARII
+
+**EDCS-38301037** X
+
+**EDCS-38301038** COR N/V[
+
+**EDCS-38301039** ?
+
+**EDCS-38301040** VA[
+
+**EDCS-38301041** I/I/LAA
+
+**EDCS-38301042** IX
+
+**EDCS-38301043** S/I
+
+**EDCS-38301044** S
+
+**EDCS-38301045** AI
+
+**EDCS-38301046** Publi[
+
+**EDCS-38301047** ?
+
+**EDCS-38301048** ?
+
+**EDCS-38301049** ]/I/TARI[
+
+**EDCS-38301050** ]/X/X/I/I [
+
+**EDCS-38301051** I/A/N[
+
+**EDCS-38301052** M
+
+**EDCS-38301053** Ver()
+
+**EDCS-38301054** X
+
+**EDCS-38301055** AS
+
+**EDCS-38301056** X
+
+**EDCS-38301057** X
+
+**EDCS-38301058** ]/M[
+
+**EDCS-38301059** VII[
+
+**EDCS-38301060** X
+
+**EDCS-38301061** III[
+
+**EDCS-38301062** SV[
+
+**EDCS-38301063** ]/E[
+
+**EDCS-38301064** XXV
+
+**EDCS-38301065** II
+
+**EDCS-38301066** ]PE[
+
+**EDCS-38301067** M[
+
+**EDCS-38301068** ?
+
+**EDCS-38301069** A[
+
+**EDCS-38301070** ]A
+
+**EDCS-38301071** ?
+
+**EDCS-38301072** ?
+
+**EDCS-38301073** TNP
+
+**EDCS-38301074** SV/L[
+
+**EDCS-38301075** A[
+
+**EDCS-38301076** CA[
+
+**EDCS-38301077** ]R
+
+**EDCS-38301078** ?
+
+**EDCS-38301079** Elvina[
+
+**EDCS-38301080** ]V[
+
+**EDCS-38301081** ?
+
+**EDCS-38301082** X
+
+**EDCS-38301083** T(esta) p(ondo) X[
+
+**EDCS-38301084** ?
+
+**EDCS-38301085** V/VR
+
+**EDCS-38301086** X
+
+**EDCS-38301087** Car[
+
+**EDCS-38301088** X
+
+**EDCS-38301089** ?
+
+**EDCS-38301090** ]IIII
+
+**EDCS-38301091** ?
+
+**EDCS-38301092** ?
+
+**EDCS-38301093** II
+
+**EDCS-38301094** X
+
+**EDCS-38301095** ?
+
+**EDCS-38301096** C[
+
+**EDCS-38301097** A / D
+
+**EDCS-38301098** CIIN
+
+**EDCS-38301099** ]BIILL[
+
+**EDCS-38301100** ]X[ / ]M[
+
+**EDCS-38301101** ]NII
+
+**EDCS-38301102** C[
+
+**EDCS-38301103** Sacardo
+
+**EDCS-38301104** X
+
+**EDCS-38301105** X
+
+**EDCS-38301106** ]/XX
+
+**EDCS-38301107** ]VOCAS/I[
+
+**EDCS-38301108** S/AL[
+
+**EDCS-38301109** ?
+
+**EDCS-38301110** ?
+
+**EDCS-38301111** A
+
+**EDCS-38301112** X
+
+**EDCS-38301113** A[
+
+**EDCS-38301114** ?
+
+**EDCS-38301115** ] Srona[e
+
+**EDCS-38301116** O/A
+
+**EDCS-38301117** ATII
+
+**EDCS-38301118** ?
+
+**EDCS-38301119** ]MA/C[
+
+**EDCS-38301120** X
+
+**EDCS-38301121** ?
+
+**EDCS-38301122** ?
+
+**EDCS-38301123** Drisco
+
+**EDCS-38301124** INN
+
+**EDCS-38301125** ]NO[
+
+**EDCS-38301126** X
+
+**EDCS-38301127** AV[
+
+**EDCS-38301128** ]tinu[s
+
+**EDCS-38301129** ]/TIIN[ / ]A[
+
+**EDCS-38301130** ?
+
+**EDCS-38301131** X
+
+**EDCS-38301132** ]A
+
+**EDCS-38301133** X
+
+**EDCS-38301134** ]IISS[
+
+**EDCS-38301135** A
+
+**EDCS-38301136** ?
+
+**EDCS-38301137** V
+
+**EDCS-38301138** X
+
+**EDCS-38301139** ]ATI/LAS
+
+**EDCS-38301140** ]/D/I/I[
+
+**EDCS-38301141** ]/A
+
+**EDCS-38301142** CIS
+
+**EDCS-38301143** ?
+
+**EDCS-38301144** Iull()
+
+**EDCS-38301145** ]verinus
+
+**EDCS-38301146** ] Vind/o[
+
+**EDCS-38301147** X
+
+**EDCS-38301148** ?
+
+**EDCS-38301149** X
+
+**EDCS-38301150** ]VS
+
+**EDCS-38301151** LI
+
+**EDCS-38301152** A[
+
+**EDCS-38301153** ?
+
+**EDCS-38301154** ?
+
+**EDCS-38301155** ]A[
+
+**EDCS-38301156** ]SC
+
+**EDCS-38301157** X
+
+**EDCS-38301158** ?
+
+**EDCS-38301159** V
+
+**EDCS-38301160** ?
+
+**EDCS-38301161** X
+
+**EDCS-38301162** AR /O/V/I/X[
+
+**EDCS-38301163** ?
+
+**EDCS-38301164** X
+
+**EDCS-38301165** ?
+
+**EDCS-38301166** ?
+
+**EDCS-38301167** ]BIIL[
+
+**EDCS-38301168** A[
+
+**EDCS-38301169** X
+
+**EDCS-38301170** ] Drisco
+
+**EDCS-38301171** ]/A[
+
+**EDCS-38301172** A
+
+**EDCS-38301173** ?
+
+**EDCS-38301174** ?
+
+**EDCS-38301175** P(ondo) XXV
+
+**EDCS-38301176** ]X[
+
+**EDCS-38301177** A[
+
+**EDCS-38301178** A
+
+**EDCS-38301179** Martialis
+
+**EDCS-38301180** M
+
+**EDCS-38301181** ?
+
+**EDCS-38301182** ]/I/A/R
+
+**EDCS-38301183** ]III s(emis)
+
+**EDCS-38301184** ]M[
+
+**EDCS-38301185** ?
+
+**EDCS-38301186** IR
+
+**EDCS-38301187** ?
+
+**EDCS-38301188** A
+
+**EDCS-38301189** A/AV
+
+**EDCS-38301190** ?
+
+**EDCS-38301191** X SS
+
+**EDCS-38301192** X
+
+**EDCS-38301193** X
+
+**EDCS-38301194** V
+
+**EDCS-38301195** ]CVIS[
+
+**EDCS-38301196** I[
+
+**EDCS-38301197** X
+
+**EDCS-38301198** ]M[
+
+**EDCS-38301199** ]LRO[
+
+**EDCS-38301200** ?
+
+**EDCS-38301201** ]VIII s(emis)
+
+**EDCS-38301202** ]/XX[
+
+**EDCS-38301203** ]XX/X[
+
+**EDCS-38301204** X
+
+**EDCS-38301205** ] Amandus
+
+**EDCS-38301206** ]N[
+
+**EDCS-38301207** ]M[
+
+**EDCS-38301208** X
+
+**EDCS-38301209** A
+
+**EDCS-38301210** ?
+
+**EDCS-38301211** V
+
+**EDCS-38301212** ]V[
+
+**EDCS-38301213** X
+
+**EDCS-38301214** MAT
+
+**EDCS-38301215** XIII
+
+**EDCS-38301216** ]/I/D[
+
+**EDCS-38301217** D[
+
+**EDCS-38301218** SVCVS
+
+**EDCS-38301219** ]/D
+
+**EDCS-38301220** ?
+
+**EDCS-38301221** ]IIII
+
+**EDCS-38301222** H[
+
+**EDCS-38301223** X
+
+**EDCS-38301224** ?
+
+**EDCS-38301225** ?
+
+**EDCS-38301226** ?
+
+**EDCS-38301227** ]NI S[
+
+**EDCS-38301228** X
+
+**EDCS-38301229** ?
+
+**EDCS-38301230** ?
+
+**EDCS-38301231** N[
+
+**EDCS-38301232** MA/R[
+
+**EDCS-38301233** ?
+
+**EDCS-38301234** ]A
+
+**EDCS-38301235** X
+
+**EDCS-38301236** ]PV
+
+**EDCS-38301237** ] Nigrinu[s
+
+**EDCS-38301238** A
+
+**EDCS-38301239** ]LIC[
+
+**EDCS-38301240** ?
+
+**EDCS-38301241** [3]BIBII
+
+**EDCS-38301242** ES[
+
+**EDCS-38301243** ?
+
+**EDCS-38301244** VI[
+
+**EDCS-38301245** VE[
+
+**EDCS-38301246** X
+
+**EDCS-38301247** ]F[
+
+**EDCS-38301248** ?
+
+**EDCS-38301249** SI[
+
+**EDCS-38301250** Flori
+
+**EDCS-38301251** X
+
+**EDCS-38301252** ?
+
+**EDCS-38301253** VA[
+
+**EDCS-38301254** ?
+
+**EDCS-38301255** M
+
+**EDCS-38301256** X
+
+**EDCS-38301257** H[
+
+**EDCS-38301258** ?
+
+**EDCS-38301259** X
+
+**EDCS-38301260** ?
+
+**EDCS-38301261** ]ASSOB[
+
+**EDCS-38301262** ]SII[
+
+**EDCS-38301263** Belli[
+
+**EDCS-38301264** ]B X[
+
+**EDCS-38301265** X
+
+**EDCS-38301266** ]A[
+
+**EDCS-38301267** ?
+
+**EDCS-38301268** /SII/D[3]
+
+**EDCS-38301269** MA[
+
+**EDCS-38301270** M[
+
+**EDCS-38301271** A
+
+**EDCS-38301272** BI[
+
+**EDCS-38301273** ?
+
+**EDCS-38301274** ?
+
+**EDCS-38301275** ?
+
+**EDCS-38301276** VI
+
+**EDCS-38301277** N
+
+**EDCS-38301278** ?
+
+**EDCS-38301279** A
+
+**EDCS-38301280** ]ianus II
+
+**EDCS-38301281** ]CA[
+
+**EDCS-38301282** X
+
+**EDCS-38301283** ]HAV
+
+**EDCS-38301284** MAR
+
+**EDCS-38301285** ] Seconis [
+
+**EDCS-38301286** ?
+
+**EDCS-38301287** ]O[
+
+**EDCS-38301288** ]/VIIT[
+
+**EDCS-38301289** ]S
+
+**EDCS-38301290** ?
+
+**EDCS-38301291** ASP IX
+
+**EDCS-38301292** A[
+
+**EDCS-38301293** ]T
+
+**EDCS-38301294** ?
+
+**EDCS-38301295** ] Drisco
+
+**EDCS-38301296** I/I/ID[
+
+**EDCS-38301297** X
+
+**EDCS-38301298** X
+
+**EDCS-38301299** ]LISSA[
+
+**EDCS-38301300** ?
+
+**EDCS-38301301** X
+
+**EDCS-38301302** ]inus hic bibet [
+
+**EDCS-38301303** ]TR[
+
+**EDCS-38301304** ]tina Poliu[3]AVIV[
+
+**EDCS-38301305** ?
+
+**EDCS-38301306** ]A /S[
+
+**EDCS-38301307** ]LA
+
+**EDCS-38301308** MATV
+
+**EDCS-38301309** ?
+
+**EDCS-38301310** ?
+
+**EDCS-38301311** ?
+
+**EDCS-38301312** X
+
+**EDCS-38301313** ?
+
+**EDCS-38301314** PI[
+
+**EDCS-38301315** IMV
+
+**EDCS-38301316** ]SA[
+
+**EDCS-38301317** X
+
+**EDCS-38301318** A[
+
+**EDCS-38301319** P/A/R
+
+**EDCS-38301320** DVA[
+
+**EDCS-38301321** D[
+
+**EDCS-38301322** ]H
+
+**EDCS-38301323** P
+
+**EDCS-38301324** X
+
+**EDCS-38301325** ?
+
+**EDCS-38301326** ]BV GA
+
+**EDCS-38301327** P
+
+**EDCS-38301328** ?
+
+**EDCS-38301329** II[
+
+**EDCS-38301330** A
+
+**EDCS-38301331** ]SMIALO[
+
+**EDCS-38301332** X
+
+**EDCS-38301333** ] TA/T[
+
+**EDCS-38301334** X
+
+**EDCS-38301335** ?
+
+**EDCS-38301336** X
+
+**EDCS-38301337** IT[
+
+**EDCS-38301338** VS
+
+**EDCS-38301339** ]SCO
+
+**EDCS-38301340** I
+
+**EDCS-38301341** X
+
+**EDCS-38301342** ]HI[
+
+**EDCS-38301343** ?
+
+**EDCS-38301344** X
+
+**EDCS-38301345** AV/G[
+
+**EDCS-38301346** ?
+
+**EDCS-38301347** ?
+
+**EDCS-38301348** BI[
+
+**EDCS-38301349** II
+
+**EDCS-38301350** MAX
+
+**EDCS-38301351** ]ntis
+
+**EDCS-38301352** Mari
+
+**EDCS-38301353** ?
+
+**EDCS-38301354** X
+
+**EDCS-38301355** X
+
+**EDCS-38301356** X
+
+**EDCS-38301357** C/A[
+
+**EDCS-38301358** BAN/I[
+
+**EDCS-38301359** LII
+
+**EDCS-38301360** ?
+
+**EDCS-38301361** V
+
+**EDCS-38301362** ] Faus[
+
+**EDCS-38301363** X
+
+**EDCS-38301364** ?
+
+**EDCS-38301365** V
+
+**EDCS-38301366** M
+
+**EDCS-38301367** ?
+
+**EDCS-38301368** ?
+
+**EDCS-38301369** ST
+
+**EDCS-38301370** ?
+
+**EDCS-38301371** ?
+
+**EDCS-38301372** ]II s(emis)
+
+**EDCS-38301373** X
+
+**EDCS-38301374** H
+
+**EDCS-38301375** C/L/IT[
+
+**EDCS-38301376** PR[
+
+**EDCS-38301377** ?
+
+**EDCS-38301378** ?
+
+**EDCS-38301379** ]A[
+
+**EDCS-38301380** ?
+
+**EDCS-38301381** ]OLLIO[
+
+**EDCS-38301382** ?
+
+**EDCS-38301383** M[
+
+**EDCS-38301384** ?
+
+**EDCS-38301385** ] Vitioni/s [
+
+**EDCS-38301386** ]/R/E
+
+**EDCS-38301387** ]X
+
+**EDCS-38301388** ]CAV
+
+**EDCS-38301389** ?
+
+**EDCS-38301390** A
+
+**EDCS-38301391** ?
+
+**EDCS-38301392** ?
+
+**EDCS-38301393** ]/X II[
+
+**EDCS-38301394** ] / t(esta) p(ondo) V s(emis) [
+
+**EDCS-38301395** A
+
+**EDCS-38301396** ?
+
+**EDCS-38301397** ?
+
+**EDCS-38301398** X
+
+**EDCS-38301399** Marti
+
+**EDCS-38301400** ]/PON
+
+**EDCS-38301401** ?
+
+**EDCS-38301402** ]/H
+
+**EDCS-38301403** X
+
+**EDCS-38301404** R[
+
+**EDCS-38301405** X
+
+**EDCS-38301406** ]X[
+
+**EDCS-38301407** Sacitta
+
+**EDCS-38301408** ?
+
+**EDCS-38301409** ]V
+
+**EDCS-38301410** MA
+
+**EDCS-38301411** P/O[
+
+**EDCS-38301412** P/O[
+
+**EDCS-38301413** V
+
+**EDCS-38301414** ?
+
+**EDCS-38301415** V[
+
+**EDCS-38301416** IIII
+
+**EDCS-38301417** X
+
+**EDCS-38301418** Cre[
+
+**EDCS-38301419** X
+
+**EDCS-38301420** ?
+
+**EDCS-38301421** Catulla[
+
+**EDCS-38301422** NIIKO [
+
+**EDCS-38301423** ?
+
+**EDCS-38301424** ?
+
+**EDCS-38301425** II
+
+**EDCS-38301426** ?
+
+**EDCS-38301427** /L/IV
+
+**EDCS-38301428** ] contubern[
+
+**EDCS-38301429** AX
+
+**EDCS-38301430** ?
+
+**EDCS-38301431** ?
+
+**EDCS-38301432** X
+
+**EDCS-38301433** ?
+
+**EDCS-38301434** M
+
+**EDCS-38301435** ]II[
+
+**EDCS-38301436** X
+
+**EDCS-38301437** ?
+
+**EDCS-38301438** ?
+
+**EDCS-38301439** M
+
+**EDCS-38301440** ]X[
+
+**EDCS-38301441** ?
+
+**EDCS-38301442** ]GAI[
+
+**EDCS-38301443** X
+
+**EDCS-38301444** ]Q
+
+**EDCS-38301445** ]DR[
+
+**EDCS-38301446** X
+
+**EDCS-38301447** PR/I[
+
+**EDCS-38301448** ]A[
+
+**EDCS-38301449** ?
+
+**EDCS-38301450** ?
+
+**EDCS-38301451** ?
+
+**EDCS-38301452** ?
+
+**EDCS-38301453** ?
+
+**EDCS-38301454** ?
+
+**EDCS-38301455** ?
+
+**EDCS-38301456** ?
+
+**EDCS-38301457** ]CIN/VS[
+
+**EDCS-38301458** Deo [
+
+**EDCS-38301459** ]AV
+
+**EDCS-38301460** G
+
+**EDCS-38301461** ]R X[
+
+**EDCS-38301462** ?
+
+**EDCS-38301463** ?
+
+**EDCS-38301464** ?
+
+**EDCS-38301465** ]M[
+
+**EDCS-38301466** ]IO/V[
+
+**EDCS-38301467** X
+
+**EDCS-38301468** Attilii
+
+**EDCS-38301469** X
+
+**EDCS-38301470** A
+
+**EDCS-38301471** ?
+
+**EDCS-38301472** A V
+
+**EDCS-38301473** SI/I[
+
+**EDCS-38301474** MA
+
+**EDCS-38301475** ?
+
+**EDCS-38301476** RII
+
+**EDCS-38301477** II
+
+**EDCS-38301478** X
+
+**EDCS-38301479** X
+
+**EDCS-38301480** ?
+
+**EDCS-38301481** ?
+
+**EDCS-38301482** ]/V
+
+**EDCS-38301483** M
+
+**EDCS-38301484** ]M
+
+**EDCS-38301485** X
+
+**EDCS-38301486** X
+
+**EDCS-38301487** ?
+
+**EDCS-38301488** ]VM[
+
+**EDCS-38301489** M
+
+**EDCS-38301490** ]IIR[
+
+**EDCS-38301491** X I
+
+**EDCS-38301492** ?
+
+**EDCS-38301493** L[
+
+**EDCS-38301494** ]V[
+
+**EDCS-38301495** X
+
+**EDCS-38301496** ]P
+
+**EDCS-38301497** V
+
+**EDCS-38301498** X
+
+**EDCS-38301499** ?
+
+**EDCS-38301500** ?
+
+**EDCS-38301501** X
+
+**EDCS-38301502** X
+
+**EDCS-38301503** X
+
+**EDCS-38301504** ?
+
+**EDCS-38301505** ?
+
+**EDCS-38301506** XX
+
+**EDCS-38301507** ]MAV[
+
+**EDCS-38301508** ?
+
+**EDCS-38301509** X
+
+**EDCS-38301510** X
+
+**EDCS-38301511** M[
+
+**EDCS-38301512** X
+
+**EDCS-38301513** II
+
+**EDCS-38301514** P(ondo) XX[
+
+**EDCS-38301515** ?
+
+**EDCS-38301516** ?
+
+**EDCS-38301517** ]R
+
+**EDCS-38301518** ?
+
+**EDCS-38301519** X
+
+**EDCS-38301520** ]SXIR[
+
+**EDCS-38301521** X
+
+**EDCS-38301522** ?
+
+**EDCS-38301523** Minuti Pixto[3]S
+
+**EDCS-38301524** ]XXIII / s(emis) [
+
+**EDCS-38301525** ?
+
+**EDCS-38301526** ?
+
+**EDCS-38301527** X
+
+**EDCS-38301528** PRI[
+
+**EDCS-38301529** C
+
+**EDCS-38301530** ]TAV[
+
+**EDCS-38301531** ?
+
+**EDCS-38301532** ?
+
+**EDCS-38301533** I[
+
+**EDCS-38301534** P
+
+**EDCS-38301535** X
+
+**EDCS-38301536** ?
+
+**EDCS-38301537** ?
+
+**EDCS-38301538** ]SVMO
+
+**EDCS-38301539** ?
+
+**EDCS-38301540** ]V
+
+**EDCS-38301541** CI/L
+
+**EDCS-38301542** AV
+
+**EDCS-38301543** Martie[
+
+**EDCS-38301544** ]M[3]BI/RI[
+
+**EDCS-38301545** T
+
+**EDCS-38301546** ]A
+
+**EDCS-38301547** X
+
+**EDCS-38301548** LM
+
+**EDCS-38301549** ]O
+
+**EDCS-38301550** ]II[
+
+**EDCS-38301551** N
+
+**EDCS-38301552** V
+
+**EDCS-38301553** TI
+
+**EDCS-38301554** IX
+
+**EDCS-38301555** ?
+
+**EDCS-38301556** X
+
+**EDCS-38301557** ]VIII[
+
+**EDCS-38301558** LIT
+
+**EDCS-38301559** A[
+
+**EDCS-38301560** V/A
+
+**EDCS-38301561** ]VATIS
+
+**EDCS-38301562** ]/R[
+
+**EDCS-38301563** ]N[
+
+**EDCS-38301564** ?
+
+**EDCS-38301565** X
+
+**EDCS-38301566** ]RIM[
+
+**EDCS-38301567** ?
+
+**EDCS-38301568** A
+
+**EDCS-38301569** ?
+
+**EDCS-38301570** T/I[3]B[
+
+**EDCS-38301571** ?
+
+**EDCS-38301572** AX
+
+**EDCS-38301573** Her[
+
+**EDCS-38301574** ] CA[
+
+**EDCS-38301575** Pri[
+
+**EDCS-38301576** ?
+
+**EDCS-38301577** XX
+
+**EDCS-38301578** XXX
+
+**EDCS-38301579** XI X/X/X [
+
+**EDCS-38301580** ?
+
+**EDCS-38301581** ]IS[
+
+**EDCS-38301582** ?
+
+**EDCS-38301583** ]/AV/P
+
+**EDCS-38301584** X
+
+**EDCS-38301585** ?
+
+**EDCS-38301586** T
+
+**EDCS-38301587** X
+
+**EDCS-38301588** ?
+
+**EDCS-38301589** ]IIII
+
+**EDCS-38301590** ] s(extarii?) III[
+
+**EDCS-38301591** ]M TRE[
+
+**EDCS-38301592** I A
+
+**EDCS-38301593** ]/CH
+
+**EDCS-38301594** A
+
+**EDCS-38301595** II
+
+**EDCS-38301596** C
+
+**EDCS-38301597** Facitta
+
+**EDCS-38301598** ]MARS
+
+**EDCS-38301599** A
+
+**EDCS-38301600** II I
+
+**EDCS-38301601** ]NI[
+
+**EDCS-38301602** I VII
+
+**EDCS-38301603** P
+
+**EDCS-38301604** ?
+
+**EDCS-38301605** X
+
+**EDCS-38301606** T
+
+**EDCS-38301607** ]E
+
+**EDCS-38301608** XII
+
+**EDCS-38301609** S[
+
+**EDCS-38301610** SA[
+
+**EDCS-38301611** ]IICA
+
+**EDCS-38301612** NT
+
+**EDCS-38301613** Verin()
+
+**EDCS-38301614** ?
+
+**EDCS-38301615** ?
+
+**EDCS-38301616** SED
+
+**EDCS-38301617** ]/M/X [
+
+**EDCS-38301618** X
+
+**EDCS-38301619** ]VIIR[
+
+**EDCS-38301620** TA
+
+**EDCS-38301621** X
+
+**EDCS-38301622** ?
+
+**EDCS-38301623** ?
+
+**EDCS-38301624** VA
+
+**EDCS-38301625** P[
+
+**EDCS-38301626** ] C[
+
+**EDCS-38301627** ]II[
+
+**EDCS-38301628** X
+
+**EDCS-38301629** MAR[
+
+**EDCS-38301630** ]A
+
+**EDCS-38301631** ]verinus [
+
+**EDCS-38301632** ]MIV[
+
+**EDCS-38301633** A
+
+**EDCS-38301634** X
+
+**EDCS-38301635** ?
+
+**EDCS-38301636** V
+
+**EDCS-38301637** /S/C/O[
+
+**EDCS-38301638** ?
+
+**EDCS-38301639** DRI[
+
+**EDCS-38301640** ]/T
+
+**EDCS-38301641** ?
+
+**EDCS-38301642** ?
+
+**EDCS-38301643** VI
+
+**EDCS-38301644** A
+
+**EDCS-38301645** ]ARINI[
+
+**EDCS-38301646** ?
+
+**EDCS-38301647** ]MAR[
+
+**EDCS-38301648** ]/PRIM[
+
+**EDCS-38301649** H[
+
+**EDCS-38301650** ?
+
+**EDCS-38301651** ]/A[
+
+**EDCS-38301652** Au]gustus [ / ]L S deae D[
+
+**EDCS-38301653** C/A/L/I
+
+**EDCS-38301654** N
+
+**EDCS-38301655** ?
+
+**EDCS-38301656** A[
+
+**EDCS-38301657** ]R
+
+**EDCS-38301658** X
+
+**EDCS-38301659** F/S
+
+**EDCS-38301660** X
+
+**EDCS-38301661** BL[
+
+**EDCS-38301662** V[
+
+**EDCS-38301663** SS
+
+**EDCS-38301664** ]V[
+
+**EDCS-38301665** X
+
+**EDCS-38301666** VII[
+
+**EDCS-38301667** ?
+
+**EDCS-38301668** Patturo [
+
+**EDCS-38301669** X
+
+**EDCS-38301670** ]IVL
+
+**EDCS-38301671** V
+
+**EDCS-38301672** ]MI[
+
+**EDCS-38301673** ?
+
+**EDCS-38301674** CVP[
+
+**EDCS-38301675** V
+
+**EDCS-38301676** Primi
+
+**EDCS-38301677** ?
+
+**EDCS-38301678** ]A
+
+**EDCS-38301679** S
+
+**EDCS-38301680** ?
+
+**EDCS-38301681** ?
+
+**EDCS-38301682** ?
+
+**EDCS-38301683** V
+
+**EDCS-38301684** X
+
+**EDCS-38301685** MRA
+
+**EDCS-38301686** ?
+
+**EDCS-38301687** X
+
+**EDCS-38301688** CA
+
+**EDCS-38301689** ?
+
+**EDCS-38301690** ?
+
+**EDCS-38301691** ]I/M[
+
+**EDCS-38301692** X
+
+**EDCS-38301693** ?
+
+**EDCS-38301694** X
+
+**EDCS-38301695** ]ARII[
+
+**EDCS-38301696** X
+
+**EDCS-38301697** ]/TIA DA/S[
+
+**EDCS-38301698** ]/A[
+
+**EDCS-38301699** A[
+
+**EDCS-38301700** ]N
+
+**EDCS-38301701** VO
+
+**EDCS-38301702** I/A
+
+**EDCS-38301703** ]V/R
+
+**EDCS-38301704** IVL
+
+**EDCS-38301705** M
+
+**EDCS-38301706** ?
+
+**EDCS-38301707** ] t(esta) p(ondo) X[
+
+**EDCS-38301708** ]VA[
+
+**EDCS-38301709** ?
+
+**EDCS-38301710** ]/I/I/CA/N[
+
+**EDCS-38301711** ?
+
+**EDCS-38301712** N
+
+**EDCS-38301713** ]XX IV[
+
+**EDCS-38301714** ?
+
+**EDCS-38301715** ?
+
+**EDCS-38301716** ]/A
+
+**EDCS-38301717** ?
+
+**EDCS-38301718** II
+
+**EDCS-38301719** ?
+
+**EDCS-38301720** ]anus
+
+**EDCS-38301721** ?
+
+**EDCS-38301722** ]T[
+
+**EDCS-38301723** A
+
+**EDCS-38301724** AV[
+
+**EDCS-38301725** A
+
+**EDCS-38301726** V RAV
+
+**EDCS-38301727** X
+
+**EDCS-38301728** ?
+
+**EDCS-38301729** K
+
+**EDCS-38301730** ?
+
+**EDCS-38301731** ?
+
+**EDCS-38301732** ?
+
+**EDCS-38301733** I/R/I/A / VSI
+
+**EDCS-38301734** CA
+
+**EDCS-38301735** ?
+
+**EDCS-38301736** ?
+
+**EDCS-38301737** ?
+
+**EDCS-38301738** X
+
+**EDCS-38301739** XX
+
+**EDCS-38301740** ]axilli
+
+**EDCS-38301741** ?
+
+**EDCS-38301742** ?
+
+**EDCS-38301743** ]R[
+
+**EDCS-38301744** V
+
+**EDCS-38301745** X
+
+**EDCS-38301746** ]SSA[
+
+**EDCS-38301747** /N/ISI/I/R [3]/NO
+
+**EDCS-38301748** Olla[
+
+**EDCS-38301749** X
+
+**EDCS-38301750** ]L/T/V P[
+
+**EDCS-38301751** A
+
+**EDCS-38301752** ]ILL[
+
+**EDCS-38301753** M[
+
+**EDCS-38301754** ] m(odius) I X[
+
+**EDCS-38301755** CET[
+
+**EDCS-38301756** Cap/i/to[
+
+**EDCS-38301757** ?
+
+**EDCS-38301758** ?
+
+**EDCS-38301759** PI
+
+**EDCS-38301760** X
+
+**EDCS-38301761** ?
+
+**EDCS-38301762** X
+
+**EDCS-38301763** SM[
+
+**EDCS-38301764** Belli[
+
+**EDCS-38301765** ]R
+
+**EDCS-38301766** ]LI
+
+**EDCS-38301767** X
+
+**EDCS-38301768** X
+
+**EDCS-38301769** ?
+
+**EDCS-38301770** IC
+
+**EDCS-38301771** X
+
+**EDCS-38301772** ?
+
+**EDCS-38301773** Bel[
+
+**EDCS-38301774** X
+
+**EDCS-38301775** SVII[
+
+**EDCS-38301776** ]XVIIII[
+
+**EDCS-38301777** Saturni[
+
+**EDCS-38301778** ] Regina[e
+
+**EDCS-38301779** Verin[
+
+**EDCS-38301780** VI
+
+**EDCS-38301781** ?
+
+**EDCS-38301782** X
+
+**EDCS-38301783** X
+
+**EDCS-38301784** ]VIII s(emis)
+
+**EDCS-38301785** II
+
+**EDCS-38301786** V
+
+**EDCS-38301787** ?
+
+**EDCS-38301788** ?
+
+**EDCS-38301789** ]IIT
+
+**EDCS-38301790** ?
+
+**EDCS-38301791** MASV
+
+**EDCS-38301792** P(ondo) IXX[
+
+**EDCS-38301793** XIIII
+
+**EDCS-38301794** ?
+
+**EDCS-38301795** X
+
+**EDCS-38301796** ]HON[
+
+**EDCS-38301797** ?
+
+**EDCS-38301798** X
+
+**EDCS-38301799** ]AM/D[
+
+**EDCS-38301800** X
+
+**EDCS-38301801** TA[
+
+**EDCS-38301802** ?
+
+**EDCS-38301803** XXXX
+
+**EDCS-38301804** ?
+
+**EDCS-38301805** ]MV[
+
+**EDCS-38301806** ]VS
+
+**EDCS-38301807** Secun[d
+
+**EDCS-38301808** ?
+
+**EDCS-38301809** ]A/S/S[
+
+**EDCS-38301810** ]VE[
+
+**EDCS-38301811** ?
+
+**EDCS-38301812** T(esta) p(ondo) VIIII
+
+**EDCS-38301813** IR[
+
+**EDCS-38301814** ]/N/I[
+
+**EDCS-38301815** ]/G/M[
+
+**EDCS-38301816** ]ITAI /S[
+
+**EDCS-38700260** Fib(u)lam Gnatae / qui involavit aut / qui melior est animi / conscis ut illum / aut illam aversum faci/ant di(i) sicut hoc est
+
+**EDCS-38700304** Mariu Cinnesuu / et eum q(u)i exin / co(n)ciliavit Aequa / a vita
+
+**EDCS-38700305** [M]ansu[e]t[us] / Se[3]ina / et omnes qui illi / as[u]nt et doc/[e]n[t illu]m
+
+**EDCS-38700306** Trad/o(?) Her(mem)
+
+**EDCS-38900292** ] / in dies XXX et quacumque duci/tur ibi sortem et usuras probas rec/te dari stipulatus est Sex(tus) Carisi/us Maximus quo spopondit L(ucius) Ha/terius Marius aes reddam ti/[b]i aut proc(uratori) aut heredi tuo / a[c]tum Vindonissae hib(ernis) leg(ionis) XI / VIII K(alendas) Febr(u)ar(ias) / Imp(eratore) Domitiano V(espasiani) f(ilio) Aug(usto) Ger(manico) XV M(arco) Coc/ceio Nerva II co(n)s(ulibus)
+
+**EDCS-38900293** ]icium / actum castr(is) Vindonissens(ibus) / VIIII K(alendas) Septembres / [Nonio] Aspren[ate Sextio Late]/rano co(n)s(ulibus) [
+
+**EDCS-38900294** P(ublio) Terentio Tertullo signif(ero) / |(centuria) Sever[i]ni leg(ionis) XI [C(laudiae)] / P(iae) F(idelis)
+
+**EDCS-38900295** Dabis Si[3] / |(centuria) Agricolae / a Dasumio Fam/[il]iari patri suo
+
+**EDCS-38900296** Caesio Coc[3] / |(centuria) Renni Aestivi / [
+
+**EDCS-38900297** Iusto / |(centuria) Satricanii
+
+**EDCS-38900298** A(ulo) L() X() / |(centuria) Feni a S(exto) Man/[
+
+**EDCS-38900299** ] / |(centuria) Marci Pii / [
+
+**EDCS-38900300** Dabis Su[3]/nio Patruino / |(centuria) Macri Cornel/ius Serenus / suus
+
+**EDCS-38900301** Raro arm⟦orum⟧ / cus(todi) |(centuria) Seve⟦r 3⟧
+
+**EDCS-38900302** ] turm(a) Raria(na) / [a] Valerio / [
+
+**EDCS-38900303** ] / Valenti
+
+**EDCS-38900304** ⟦Dabis Loro⟧ / ⟦|(centuria) Mariscani⟧
+
+**EDCS-38900305** Dabis P(ublio) [3]s[3]atio / Vitali |(centuria) Attii / Valentis N[
+
+**EDCS-38900306** ⟦6⟧
+
+**EDCS-38900307** ⟦Dabis Vindoinsae⟧
+
+**EDCS-38900308** Verv[3] / Pisto[
+
+**EDCS-38900309** Pr{r}imigenio Oclatio / a Primigenio Camer/io
+
+**EDCS-38900310** Dabs Antullo
+
+**EDCS-38900311** An[t]ullo XI / Norbus
+
+**EDCS-38900312** Quinto Aurelio
+
+**EDCS-38900313** ] Censor/[ino 3 a]b Octavio / [
+
+**EDCS-38900314** L(ucio) Iulio / [
+
+**EDCS-38900315** Salanicco da/[bis(?)
+
+**EDCS-38900318** C(aio) Val(erio) Lucio / [
+
+**EDCS-38900320** R(ei) p(ublicae) c(oloniae) C(laudiae) A(rae) A(grippinensium)
+
+**EDCS-38900321** ] mil(es) leg(ionis) XI |(centuria) ⟦
+
+**EDCS-38900322** ?
+
+**EDCS-38900323** ?
+
+**EDCS-38900324** [Dabis] / Q(uinto) Vest/[
+
+**EDCS-38900325** |(centuria) Pro]/culi(?) Vindo
+
+**EDCS-38900326** [Da]bis / CI[3]mio Vo/[
+
+**EDCS-38900327** ]o |(centuria) A(uli) Didii
+
+**EDCS-38900328** Dabis / [
+
+**EDCS-38900329** S(extus?) Vi() Vic()
+
+**EDCS-38900330** Silici dabis [
+
+**EDCS-38900331** Dabis Urbico(?)
+
+**EDCS-38900332** ]ario
+
+**EDCS-38900333** ] Rufo Prisco co(n)s(ulibus) a(nte) d(iem) VII K[al(endas)
+
+**EDCS-38900334** LXV
+
+**EDCS-38900335** ] |(centuria) Fabii M[
+
+**EDCS-38900336** ] / Severianus / [
+
+**EDCS-38900337** [3]ibio Sterio
+
+**EDCS-38900338** ] / |(centuria) Gemelli
+
+**EDCS-38900339** [D]abis Rar[o] / [
+
+**EDCS-38900340** C(aio) Acu[tio(?)
+
+**EDCS-38900342** ] / |(centuria) Bas(s)i / [
+
+**EDCS-38900343** Augustus / Imp(erator) Aug(ustus)
+
+**EDCS-38900344** Exemplar
+
+**EDCS-38900345** ] vale [
+
+**EDCS-39200766** [3]+[3]ΔΤΟΛ․[3] / [3]ΙΦΩΑΥΓΟΥΣΤ / [3]++++++ γλυκυτα/[τ3]+[+]ΩΕ[3] / [3]ΣΣ [ε]ὐσε/[βεστάτῳ 3]++[3] / [3]++[+]+++[3] / [3]Ν[3] / [6]
+
+**EDCS-39200767** Σ Σ Σ Λ
+
+**EDCS-39500551** ?
+
+**EDCS-39500556** Πρασήου
+
+**EDCS-39500780** [Θάλε]ια Ἡρακλῆ[ς Μουσῶν]
+
+**EDCS-39500944** Ἀρίστωνος
+
+**EDCS-39500945** Χορ(αύ)λου(?)
+
+**EDCS-39501147** Κανζα/πίου(?)
+
+**EDCS-39501148** Ῥούφου
+
+**EDCS-39900610** M[3] / B[3] / K[3] / K[3] / K[3] / I[
+
+**EDCS-39900648** ]ell[
+
+**EDCS-39900649** ] / Sept[3] / v(otum) [s(olvit) l(ibens) m(erito)]
+
+**EDCS-41100030** Sanctus / Hildulfus / Treviroru(m) / archiep(iscop)us
+
+**EDCS-41500063** ] / viv[s sibi(?)] et Fl(aviae) Se[verae(?)] co(n)iugi et [
+
+**EDCS-42600185** Amalricus
+
+**EDCS-42700560** Nasvaldus Nansa / vivat deo utere / felx Danilil
+
+**EDCS-43200115** Of(ficina) Abit[i]
+
+**EDCS-43200116** [Age]dillus f(ecit)
+
+**EDCS-43200117** Albani
+
+**EDCS-43200118** Of(ficina) Albani
+
+**EDCS-43200119** Of(ficina) Albani
+
+**EDCS-43200120** Albinus
+
+**EDCS-43200121** Albi
+
+**EDCS-43200122** Amabili[s]
+
+**EDCS-43200123** Of(ficina) Aman(di)
+
+**EDCS-43200124** Ammi[us]
+
+**EDCS-43200125** Anisatus f(ecit)
+
+**EDCS-43200126** [Ani]satu(s)
+
+**EDCS-43200127** Of(ficina) Apri
+
+**EDCS-43200128** Of(ficina) Apri
+
+**EDCS-43200129** Of(ficina) Apro(nis)
+
+**EDCS-43200130** C(ai) Salari Apti
+
+**EDCS-43200131** Sa(lari) Apt(i)
+
+**EDCS-43200132** Aquitan(i)
+
+**EDCS-43200133** Aquit(ani)
+
+**EDCS-43200134** Aquit(ani)
+
+**EDCS-43200135** Aqui(ani)
+
+**EDCS-43200136** Aui(ani)
+
+**EDCS-43200137** Of(ficina) Aquitan(i)
+
+**EDCS-43200138** Of(ficina) Aquitan(i)
+
+**EDCS-43200139** Of(ficina) Aquit(ani)
+
+**EDCS-43200140** Of(ficina) Aqui[t(ani)]
+
+**EDCS-43200141** Arda[c(i)]
+
+**EDCS-43200142** Of(f)i(cina) Ardac(i)
+
+**EDCS-43200143** [Of(ficina) Ar]daci
+
+**EDCS-43200144** O(fficina) Ardac(i)
+
+**EDCS-43200145** Atei
+
+**EDCS-43200146** Of(ficina) Attici
+
+**EDCS-43200147** T(iti) Auda(ci)
+
+**EDCS-43200148** [Augu]stalis
+
+**EDCS-43200149** Austri m(anu)
+
+**EDCS-43200150** Austrus
+
+**EDCS-43200151** AIT
+
+**EDCS-43200152** AIT
+
+**EDCS-43200153** AIT
+
+**EDCS-43200154** Avitus fec(it)
+
+**EDCS-43200155** Avitus f(ecit)
+
+**EDCS-43200156** [Avi]tus fe(cit)
+
+**EDCS-43200157** Balbini m(anu)
+
+**EDCS-43200158** Bassus
+
+**EDCS-43200159** Bass[us]
+
+**EDCS-43200160** Bassi
+
+**EDCS-43200161** Bassi
+
+**EDCS-43200162** Bassi
+
+**EDCS-43200163** Bassi
+
+**EDCS-43200164** [B]assi
+
+**EDCS-43200165** Bass(i)
+
+**EDCS-43200166** Bassi o(fficina)
+
+**EDCS-43200167** Of(ficina) Bassi
+
+**EDCS-43200168** Of(ficina) Bassi

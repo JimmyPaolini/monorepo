@@ -97,15 +97,16 @@ function applySync(
   }
 
   // Preserve config-specific remoteEnv variables from cloud config.
-  const cloudRemoteEnv = cloudConfig["remoteEnv"] as
+  const cloudRemoteEnvironment = cloudConfig["remoteEnv"] as
     | Record<string, unknown>
     | undefined;
-  const mergedRemoteEnv = mergedConfig["remoteEnv"] as
+  const mergedRemoteEnvironment = mergedConfig["remoteEnv"] as
     | Record<string, unknown>
     | undefined;
-  if (cloudRemoteEnv && mergedRemoteEnv) {
+  if (cloudRemoteEnvironment && mergedRemoteEnvironment) {
     for (const key of REMOTE_ENV_PRESERVED_KEYS) {
-      if (key in cloudRemoteEnv) mergedRemoteEnv[key] = cloudRemoteEnv[key];
+      if (key in cloudRemoteEnvironment)
+        mergedRemoteEnvironment[key] = cloudRemoteEnvironment[key];
     }
   }
 
@@ -113,12 +114,12 @@ function applySync(
   const localFeatures = localConfig.features ?? {};
   const cloudFeatures = cloudConfig.features ?? {};
   const mergedFeatures: Record<string, unknown> = {};
-  for (const [key, val] of Object.entries(localFeatures)) {
-    if (!isDockerFeatureKey(key)) mergedFeatures[key] = val;
+  for (const [key, value] of Object.entries(localFeatures)) {
+    if (!isDockerFeatureKey(key)) mergedFeatures[key] = value;
   }
   // Preserve the docker-related feature(s) from cloud config.
-  for (const [key, val] of Object.entries(cloudFeatures)) {
-    if (isDockerFeatureKey(key)) mergedFeatures[key] = val;
+  for (const [key, value] of Object.entries(cloudFeatures)) {
+    if (isDockerFeatureKey(key)) mergedFeatures[key] = value;
   }
   mergedConfig.features = mergedFeatures;
 

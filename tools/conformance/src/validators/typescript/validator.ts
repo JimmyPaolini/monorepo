@@ -2,6 +2,7 @@ import mustache from "mustache";
 import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
 
 import { validateDepthFirstSearch } from "./abstract-syntax-tree";
+import { validateAllComments } from "./comments";
 
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
@@ -17,9 +18,8 @@ import type { ConformanceError, ConformanceErrorLanguage } from "./types";
  * specifiers, and named declarations are all checked; empty method bodies and
  * array literals are not (recursion stops where the template has no children).
  *
- * Comments are validated in template order via the TypeScript trivia API. TODO
- * comments match loosely (any `// ... TODO ...` line); all others must match
- * exactly.
+ * Comments are validated in template order. TODO comments match loosely
+ * (any `// ... TODO ...` line); all others must match exactly.
  *
  * Use this function when `template` and `instance` are already in memory.
  */
@@ -57,7 +57,13 @@ export function validateTypescriptConformance(args: {
     templateNode: templateFile,
   });
 
-  return { errors };
+  const commentErrors = validateAllComments({
+    instanceFile,
+    language,
+    templateFile,
+  });
+
+  return { errors: [...errors, ...commentErrors] };
 }
 
 function resolveLanguage(filename: string): ConformanceErrorLanguage {

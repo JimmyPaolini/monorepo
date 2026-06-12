@@ -52,24 +52,25 @@ export class TranslationsService {
   /** Scans translation strings for `{*word*}` cross-reference patterns and
    * returns the unique set of referenced word strings. */
   extractTranslationReferences(translations: Translation[]): string[] {
-    const refs: string[] = [];
+    const references: string[] = [];
     for (const t of translations) {
-      for (const match of t.translation.matchAll(/\{\*(.+?)\*\}/g)) {
-        let ref = match[1] ?? "";
-        if (/\(.*\)/.test(ref)) ref = ref.replace(/ ?\(.*\)/, "");
-        if (ref) refs.push(ref);
+      for (const match of t.data.matchAll(/\{\*(.+?)\*\}/g)) {
+        let reference = match[1] ?? "";
+        if (/\(.*\)/.test(reference))
+          reference = reference.replace(/ ?\(.*\)/, "");
+        if (reference) references.push(reference);
       }
     }
-    return [...new Set(refs)];
+    return [...new Set(references)];
   }
 
   /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
   async findAllTranslationsWithReferences(take = 100): Promise<Translation[]> {
     return this.translationsRepository.find({
-      order: { translation: "ASC" as const },
+      order: { data: "ASC" as const },
       relations: { lexeme: true },
       take,
-      where: { translation: Like("%{*%*}%") },
+      where: { data: Like("%{*%*}%") },
     });
   }
 
@@ -80,7 +81,7 @@ export class TranslationsService {
   ): Promise<Translation[]> {
     return this.translationsRepository.find({
       relations: { lexeme: true },
-      where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
+      where: { data: Like("%{*%*}%"), lexeme: { id: lexemeId } },
     });
   }
 
@@ -115,14 +116,17 @@ export class TranslationsService {
         translation = `${translation} ${$(li)
           .find("span.form-of-definition-link")
           .toArray()
-          .map((ref: AnyNode) => `{*${this.normalize($(ref).text())}*}`)
+          .map(
+            (reference: AnyNode) =>
+              `{*${this.normalize($(reference).text())}*}`,
+          )
           .join(" ")}`;
       }
 
       translations.push(new Translation(translation, lexeme));
     }
 
-    translations = translations.filter((t) => !!t.translation);
+    translations = translations.filter((t) => !!t.data);
     return translations;
   }
 
@@ -136,7 +140,7 @@ export class TranslationsService {
     const existingTranslations = savedLexeme.translations ?? [];
     for (const translation of translations) {
       const existing = existingTranslations.find(
-        (t) => t.translation === translation.translation,
+        (t) => t.data === translation.data,
       );
       if (existing) {
         translation.id = existing.id;

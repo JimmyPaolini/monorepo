@@ -1,12 +1,15 @@
 set -e
 
-git restore --staged scripts/database/notebook.sql || true
+git restore --staged notepads/notepad.ts || true
+git restore --staged notepads/notepad.md || true
+git restore --staged notepads/notepad.py || true
+git restore --staged notepads/notepad.sql || true
 
 EXIT_CODE=0
 
-nx run monorepo:lint-staged > last-lint-staged-output.txt 2>&1 || EXIT_CODE=$?
+nx run monorepo:lint-staged > last-lint-staged-output.log 2>&1 || EXIT_CODE=$?
 
-LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.txt \
+LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.log \
   | grep -vE '\(node:[0-9]+\) Warning: The .NO_COLOR' \
   | grep -vE '\(Use .node --trace-warnings' \
   | grep -vE 'Your AI agent configuration is outdated' \
@@ -14,6 +17,6 @@ LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.txt \
   | perl -0777 -pe 's/\n{3,}/\n\n/g')
 
 printf "%s\n" "$LAST_LINT_STAGED_OUTPUT"
-printf "%s\n" "$LAST_LINT_STAGED_OUTPUT" > last-lint-staged-output.txt
+printf "%s\n" "$LAST_LINT_STAGED_OUTPUT" > last-lint-staged-output.log
 
 exit "$EXIT_CODE"

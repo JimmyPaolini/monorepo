@@ -52,7 +52,7 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 - **[conformance](tools/conformance)** - Nx generators for scaffolding code
 - **[infrastructure](infrastructure)** - Helm charts, Terraform, Kubernetes infrastructure
 - **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
-- **[lexico](applications/lexico)** - TanStack Start + Supabase dictionary web application
+- **[lexico](applications/lexico)** - TanStack Start dictionary web application
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
 - **[lexico-entities](packages/lexico-entities)** - Shared TypeORM entities and GraphQL types package
 - **[lexico-ingestion](applications/lexico-ingestion)** - NestJS CLI app for Latin dictionary data ingestion
@@ -90,6 +90,6 @@ Skills are specialized instruction files used by our automated agents, but they 
 - **Workflows:** [Git Commits](documentation/skills/commit-code/SKILL.md) / [PR Management](documentation/skills/create-pull-request/SKILL.md) / [Branch Naming](documentation/skills/checkout-branch/SKILL.md)
 - **Tooling:** [Nx Workspaces](documentation/skills/nx-workspace/SKILL.md) / [Generators](documentation/skills/nx-generate/SKILL.md) / [Task Running](documentation/skills/nx-run-tasks/SKILL.md)
 - **Infrastructure:** [Docker](documentation/skills/docker-workflows/SKILL.md) / [Kubernetes](documentation/skills/kubernetes-deployment/SKILL.md) / [Terraform](documentation/skills/mcp-terraform/SKILL.md)
-- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Supabase](documentation/skills/supabase-development/SKILL.md) / [Ephemeris Pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)
+- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Ephemeris Pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)
 
 Other important files include [CHANGELOG.md](CHANGELOG.md) and [SECURITY.md](SECURITY.md).

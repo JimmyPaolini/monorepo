@@ -1,6 +1,5 @@
 import { type Node, type SourceFile, SyntaxKind } from "typescript";
 
-import { validateComments } from "./comments";
 import {
   filterBySameKey,
   filterBySameKind,
@@ -31,12 +30,7 @@ export function validateDepthFirstSearch(args: {
 }): ConformanceError[] {
   const { instanceFile, instanceNode, language, templateNode } = args;
 
-  const errors: ConformanceError[] = validateComments({
-    instanceNode,
-    language,
-    side: "pos",
-    templateNode,
-  });
+  const errors: ConformanceError[] = [];
 
   const instanceChildren = getChildren(instanceNode);
   const templateChildren = getChildren(templateNode);
@@ -90,24 +84,6 @@ export function validateDepthFirstSearch(args: {
 
       errors.push(...fewestErrors);
     }
-  }
-
-  // Only scan "end" trivia for empty blocks (no template children). When a
-  // node has children, its trailing comments are either covered by the last
-  // child's own "end" scan or the next sibling's "pos" scan. Scanning from
-  // `templateNode.end` for non-empty nodes would re-check the same trivia
-  // region (e.g. Constructor.end == Block.end), reporting the same missing
-  // comments twice.
-  const lastTemplateChild = templateChildren.at(-1);
-  if (lastTemplateChild === undefined) {
-    errors.push(
-      ...validateComments({
-        instanceNode,
-        language,
-        side: "end",
-        templateNode,
-      }),
-    );
   }
 
   return errors;

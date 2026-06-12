@@ -4,8 +4,8 @@ import { fileURLToPath } from "node:url";
 import { formatFiles, type Tree } from "@nx/devkit";
 import _ from "lodash";
 
-import { StringCase } from "../../types";
-import { generateFiles, resolveName } from "../../utilities";
+import { StringCase } from "../../types.js";
+import { generateFiles, resolveName } from "../../utilities.js";
 
 interface GenerateNestjsCommandApplicationOptions {
   name?: string;

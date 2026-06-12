@@ -1001,7 +1001,7 @@ export class PhasesService {
       },
     );
 
-    const params = {
+    const parameters = {
       currentDistance,
       currentIllumination,
       currentLongitudePlanet,
@@ -1018,7 +1018,7 @@ export class PhasesService {
 
     const martianPhaseEvents: Event[] = [];
 
-    if (this.isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...parameters })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           phase: "morning rise",
@@ -1027,7 +1027,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...parameters })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           phase: "morning set",
@@ -1036,7 +1036,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...parameters })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           phase: "evening rise",
@@ -1045,7 +1045,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...parameters })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           phase: "evening set",
@@ -1189,7 +1189,7 @@ export class PhasesService {
       },
     );
 
-    const params = {
+    const parameters = {
       currentDistance,
       currentIllumination,
       currentLongitudePlanet,
@@ -1206,7 +1206,7 @@ export class PhasesService {
 
     const mercurianPhaseEvents: Event[] = [];
 
-    if (this.isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "morning rise",
@@ -1215,7 +1215,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isWesternBrightest({ ...params })) {
+    if (this.isWesternBrightest({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "western brightest",
@@ -1224,7 +1224,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isWesternElongation({ ...params })) {
+    if (this.isWesternElongation({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "western elongation",
@@ -1233,7 +1233,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "morning set",
@@ -1242,7 +1242,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "evening rise",
@@ -1251,7 +1251,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEasternElongation({ ...params })) {
+    if (this.isEasternElongation({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "eastern elongation",
@@ -1260,7 +1260,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEasternBrightest({ ...params })) {
+    if (this.isEasternBrightest({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "eastern brightest",
@@ -1269,7 +1269,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...parameters })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           phase: "evening set",
@@ -1415,7 +1415,7 @@ export class PhasesService {
       },
     );
 
-    const params = {
+    const parameters = {
       currentDistance,
       currentIllumination,
       currentLongitudePlanet,
@@ -1432,7 +1432,7 @@ export class PhasesService {
 
     const venusianPhaseEvents: Event[] = [];
 
-    if (this.isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "morning rise",
@@ -1441,7 +1441,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isWesternBrightest({ ...params })) {
+    if (this.isWesternBrightest({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "western brightest",
@@ -1450,7 +1450,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isWesternElongation({ ...params })) {
+    if (this.isWesternElongation({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "western elongation",
@@ -1459,7 +1459,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "morning set",
@@ -1468,7 +1468,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "evening rise",
@@ -1477,7 +1477,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEasternElongation({ ...params })) {
+    if (this.isEasternElongation({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "eastern elongation",
@@ -1486,7 +1486,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEasternBrightest({ ...params })) {
+    if (this.isEasternBrightest({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "eastern brightest",
@@ -1495,7 +1495,7 @@ export class PhasesService {
       );
     }
 
-    if (this.isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...parameters })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           phase: "evening set",

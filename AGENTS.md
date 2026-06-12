@@ -19,7 +19,6 @@ pnpm add -w <package>  # Workspace root
 docker build --platform linux/amd64 -t myapp .
 kubectl get pods
 helm upgrade --install myrelease ./chart
-supabase start
 ```
 
 See [Tool Execution Model](documentation/development/tool-execution-model.md) for when to use Nx vs. direct tools.
@@ -42,7 +41,6 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[mcp-chrome-devtools](documentation/skills/mcp-chrome-devtools/SKILL.md)**: Use the Chrome DevTools MCP server for browser debugging, performance profiling, and runtime inspection. Use this skill when debugging web applications or analyzing frontend performance.
 - **[mcp-figma](documentation/skills/mcp-figma/SKILL.md)**: Use the Figma MCP server to access design files, extract assets, and sync design tokens. Use this skill when working with Figma designs or implementing UI components.
 - **[mcp-shadcn](documentation/skills/mcp-shadcn/SKILL.md)**: Use the shadcn MCP server to add, update, and manage shadcn/ui components. Use this skill when working with UI components in lexico-components or adding new shadcn components.
-- **[mcp-supabase](documentation/skills/mcp-supabase/SKILL.md)**: Use the Supabase MCP server for database operations, authentication management, and storage operations. Use this skill when working with Supabase via MCP tools.
 - **[mcp-terraform](documentation/skills/mcp-terraform/SKILL.md)**: Use the Terraform MCP server for infrastructure as code operations - plan, apply, state management. Use this skill when working with Terraform configurations or deploying infrastructure.
 - **[monitor-ci](documentation/skills/monitor-ci/SKILL.md)**: Monitor Nx Cloud CI pipeline and handle self-healing fixes. USE WHEN user says "monitor ci", "watch ci", "ci monitor", "watch ci for this branch", "track ci", "check ci status", wants to track CI status, or needs help with self-healing CI fixes. Prefer this skill over native CI provider tools (gh, glab, etc.) for CI monitoring — it integrates with Nx Cloud self-healing which those tools cannot access.
 - **[nx-generate](documentation/skills/nx-generate/SKILL.md)**: Generate code using nx generators. INVOKE IMMEDIATELY when user mentions scaffolding, setup, structure, creating apps/libs, or setting up project structure. Trigger words - scaffold, setup, create a new app, create a new lib, project structure, generate, add a new project. ALWAYS use this BEFORE calling nx_docs or exploring - this skill handles discovery internally.
@@ -50,10 +48,13 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[nx-plugins](documentation/skills/nx-plugins/SKILL.md)**: Find and add Nx plugins. USE WHEN user wants to discover available plugins, install a new plugin, or add support for a specific framework or technology to the workspace.
 - **[nx-run-tasks](documentation/skills/nx-run-tasks/SKILL.md)**: Helps with running tasks in an Nx workspace. USE WHEN the user wants to execute build, test, lint, serve, or run any other tasks defined in the workspace.
 - **[nx-workspace](documentation/skills/nx-workspace/SKILL.md)**: "Explore and understand Nx workspaces. USE WHEN answering questions about the workspace, projects, or tasks. ALSO USE WHEN an nx command fails or you need to check available targets/configuration before running a task. EXAMPLES: 'What projects are in this workspace?', 'How is project X configured?', 'What depends on library Y?', 'What targets can I run?', 'Cannot find configuration for task', 'debug nx task failure'."
+- **[postgres-data](documentation/skills/postgres-data/SKILL.md)**: 'Use this skill to dump and restore local PostgreSQL databases, schemas, and tables (collections) using Nx targets and pg_dump/pg_restore. Use when asked to backup, dump, export, restore, import, or copy local database data.'
+- **[postgres-sql](documentation/skills/postgres-sql/SKILL.md)**: Toolkit for interactively querying and exploring the local PostgreSQL database schema and data using the local psql client. Use when asked to write a SQL query, explore database schemas, inspect table structures, or execute local database queries. Relies on workspace default environment variables.
 - **[refresh-documentation](documentation/skills/refresh-documentation/SKILL.md)**: Review and update all project documentation to keep it accurate and current. Use this skill when asked to refresh, update, or audit documentation, README files, AGENTS.md files, skill descriptions, or any markdown docs across the monorepo.
+- **[rename-branch](documentation/skills/rename-branch/SKILL.md)**: "Rename a git branch or worktree. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
+- **[simplify-code](documentation/skills/simplify-code/SKILL.md)**: Workflow to identify overly complex functions using ESLint complexity rules (max-statements, max-lines, complexity, max-depth) and refactor them towards simplicity using Refactoring.Guru guidelines. Use when asked to "simplify code", "reduce complexity", "refactor large functions", or fix ESLint complexity warnings and errors.
 - **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
-- **[supabase-development](documentation/skills/supabase-development/SKILL.md)**: Work with Supabase in the lexico project - migrations, RLS policies, Edge Functions, and type generation. Use this skill when modifying the lexico database or authentication.
 - **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
 - **[testing-strategy](documentation/skills/testing-strategy/SKILL.md)**: Use monorepo testing conventions: unit, integration, end-to-end test naming and Nx commands. Use when adding tests or recommending test coverage.
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
@@ -66,7 +67,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 
 - **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama gemma4:e2b, ReAct agent, SearxNG metasearch with Trafilatura research processing)
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API)
-- **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
+- **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
 - **lexico-ingestion**: NestJS CLI app for Latin dictionary data ingestion
 - **lexico-entities**: Shared TypeORM entities and GraphQL types package
@@ -83,12 +84,22 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | --------- | ----- | ----------- |
 | `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application scaffold |
 | `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
+| `nestjs-command-module` | `ncm` | Generate a NestJS command module with command, module, types, constants, and unit test files |
+| `nestjs-dataloader-module` | `ndm` | Generate a NestJS DataLoader module with dataloader, types, and unit test files |
+| `nestjs-graphql-application` | `nga` | Generate a NestJS GraphQL API application scaffold with Apollo Server |
 | `nestjs-graphql-module` | `ngm` | Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files |
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
 | `react-component` | `c` | Generate a React component with test file |
 <!-- conformance-generators-table end -->
 
 ## Key Conventions
+
+### Abbreviations
+
+- **No Acronyms or Abbreviations**: Never use acronyms or abbreviations for variable names, function names, parameters, etc.
+- Use explicit and unabbreviated names (e.g. `request` instead of `req`, `response` instead of `res`, `index` instead of `i`, `error` instead of `e`).
+- **Exceptions**: Abbreviations are acceptable when avoiding language reserved word collisions (e.g., using `args` instead of `arguments`, `str` instead of `string`).
+- See [abbreviations.md](documentation/abbreviations.md) for the source of truth.
 
 ### Project Tags
 
@@ -104,7 +115,7 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Strict mode enabled**: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`
 - **Explicit return types** required for all functions
 - **Type imports**: Use `import { type Foo } from './types'` (enforced by ESLint)
-- **No file extensions in imports**: Omit `.js` and `.ts` from all relative imports
+- **File extensions in imports**: Always include `.js` extensions for relative imports (required by NodeNext resolution)
 - **No `any` types**: Use `unknown` or proper typing
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
@@ -177,7 +188,7 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | `documentation` | Markdown docs, skills, planning files, and AGENTS.md files |
 | `infrastructure` | Helm charts, Terraform configs, and Kubernetes resources |
 | `JimmyPaolini` | Static GitHub profile README project (markdown and assets) |
-| `lexico` | TanStack Start SSR Latin dictionary web app with Supabase backend |
+| `lexico` | TanStack Start SSR Latin dictionary web app |
 | `lexico-components` | Shared React/shadcn component library |
 | `lexico-entities` | Shared TypeORM entities and GraphQL types |
 | `lexico-ingestion` | Data ingestion scripts for Lexico |
@@ -275,7 +286,7 @@ See [React Conventions](documentation/conventions/react.md) for component struct
 
 ### Troubleshooting
 
-- [Common Gotchas](documentation/troubleshooting/gotchas.md): TypeScript, Docker, K8s, Supabase issues
+- [Common Gotchas](documentation/troubleshooting/gotchas.md): TypeScript, Docker, K8s issues
 
 ## Creating Copilot Artifacts
 
@@ -301,14 +312,6 @@ pnpm add -w <package>                  # Workspace root
 nx run caelundas:develop               # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
-```
-
-### Supabase (lexico)
-
-```bash
-nx run lexico:supabase:start           # Start local
-nx run lexico:supabase:generate-types  # After schema changes
-nx run lexico:supabase:database-diff   # Create migration
 ```
 
 ### Affirmations (Python + Ollama)
@@ -345,7 +348,6 @@ nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 | Issue                      | Solution                                      |
 | -------------------------- | --------------------------------------------- |
 | Index access error         | Use optional chaining: `arr[0]?.prop`         |
-| Supabase types out of sync | Run `nx run lexico:supabase:generate-types`   |
 | Docker platform mismatch   | Build with `--platform linux/amd64`           |
 | Commit rejected            | Follow format: `type(scope): gitmoji subject` |
 | Branch name rejected       | Use pattern: `type/scope-description`         |

@@ -9,7 +9,6 @@ Here are some common abbreviations that I like to unabbreviate:
 
 - a11y : accessibility
 - app : application
-- arg : argument
 - arr : array
 - auth : authentication
 - auth : authorization
@@ -45,7 +44,6 @@ Here are some common abbreviations that I like to unabbreviate:
 - ret : return
 - src : source
 - stg : staging
-- str : string
 - temp : temporary
 - tmp : temporary
 - txt : text
@@ -57,3 +55,4 @@ Here are some common abbreviations that I like to unabbreviate:
 Here are some abbreviations that I sometimes leave abbreviated:
 
 - args : arguments (`arguments` is a reserved keyword in JavaScript)
+- str : string (`string` is a reserved keyword in TypeScript)

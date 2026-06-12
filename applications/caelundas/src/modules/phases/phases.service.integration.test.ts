@@ -70,13 +70,13 @@ describe("phases.events integration", () => {
     > = {};
 
     // Create data for MARGIN_MINUTES before, current, and MARGIN_MINUTES after
-    for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
-      const time = baseTime.clone().add(i, "minutes");
+    for (let index = -MARGIN_MINUTES; index <= MARGIN_MINUTES + 1; index++) {
+      const time = baseTime.clone().add(index, "minutes");
       ephemeris[time.toISOString()] = {
-        distance: config.distance + i * 0.001,
-        illumination: config.illumination + i * 0.01,
+        distance: config.distance + index * 0.001,
+        illumination: config.illumination + index * 0.01,
         latitude: 0,
-        longitude: config.longitude + i * step,
+        longitude: config.longitude + index * step,
       };
     }
 

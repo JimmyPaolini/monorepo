@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.0](https://github.com/JimmyPaolini/monorepo/compare/v1.9.0...v1.10.0) (2026-06-12)
+
+### ✨ Features
+
+* **lexico-ingestion:** ✨ implement multi-provider literature ingestion system ([#65](https://github.com/JimmyPaolini/monorepo/issues/65)) ([7a83390](https://github.com/JimmyPaolini/monorepo/commit/7a83390732bb0b70bccbab02aa1551da6e79f922))
+
+## [1.9.0](https://github.com/JimmyPaolini/monorepo/compare/v1.8.0...v1.9.0) (2026-06-09)
+
+### ✨ Features
+
+* **conformance:** ✨ add nestjs-graphql-application and supporting generators ([#63](https://github.com/JimmyPaolini/monorepo/issues/63)) ([4b07c18](https://github.com/JimmyPaolini/monorepo/commit/4b07c188b6cf93d87f256e9aa4e9725d0781752a))
+
 ## [1.8.0](https://github.com/JimmyPaolini/monorepo/compare/v1.7.0...v1.8.0) (2026-06-08)
 
 ### ✨ Features

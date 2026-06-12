@@ -1,13 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
-import { ManualService } from "../manual/manual.service";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
-import { DictionaryService } from "./dictionary.service";
+import { LexemesService } from "../lexemes/lexemes.service";
+import { LoggerService } from "../logger/logger.service";
+import { ManualService } from "../manual/manual.service";
+import { TranslationsService } from "../translations/translations.service";
+
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 
 interface DictionaryCommandOptions {
   endLemma?: null | string;
@@ -15,11 +20,11 @@ interface DictionaryCommandOptions {
 }
 
 /**
+ * TODO: Document the dictionary command.
  * Ingest dictionary entries from Wiktionary HTML data files.
  */
 @Command({
-  description:
-    "Process ingested Wiktionary HTML into structured dictionary lexemes",
+  description: "Run the dictionary command",
   name: "dictionary",
 })
 @Injectable()
@@ -27,26 +32,80 @@ export class DictionaryCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly dictionaryService: DictionaryService,
+    private readonly logger: LoggerService,
+    private readonly lexemesService: LexemesService,
+    private readonly translationsService: TranslationsService,
     private readonly manualService: ManualService,
   ) {
     super();
+    this.logger.setContext(DictionaryCommand.name);
+
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDirectory))
+      fs.mkdirSync(outputDirectory, { recursive: true });
+    this.logFilePath = path.join(
+      outputDirectory,
+      `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
 
-  private readonly logger = new Logger(DictionaryCommand.name);
+  private readonly dataDirectory = path.join(
+    process.cwd(),
+    "./data/wiktionary",
+  );
+  private fileIndex: Map<string, string> | null = null;
+  private readonly inProgressWords = new Set<string>();
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
+
+  private getFilePathForWord(word: string): null | string {
+    const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
+
+    // Exact match
+    const p = path.join(
+      this.dataDirectory,
+      `${this.escapeCapitals(fileWord)}.json`,
+    );
+    if (fs.existsSync(p)) return p;
+
+    // Build the case-insensitive index on first miss
+    if (this.fileIndex === null) {
+      this.fileIndex = new Map();
+      if (fs.existsSync(this.dataDirectory)) {
+        for (const file of fs.readdirSync(this.dataDirectory)) {
+          if (!file.endsWith(".json")) continue;
+          // Reverse escapeCapitals: Remove all '_' and lowercase the string
+          const normalized = file.replaceAll("_", "").toLowerCase();
+          this.fileIndex.set(normalized, file);
+        }
+      }
+    }
+
+    const fallbackFileName = this.fileIndex.get(
+      `${fileWord.toLowerCase()}.json`,
+    );
+    if (fallbackFileName) {
+      return path.join(this.dataDirectory, fallbackFileName);
+    }
+
+    return null;
+  }
+
   private getLemmaChoices(): { title: string; value: string }[] {
-    const dataDir = path.join(process.cwd(), "./data/wiktionary");
-    if (!fs.existsSync(dataDir)) return [];
+    const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
+    if (!fs.existsSync(dataDirectory)) return [];
 
     return fs
-      .readdirSync(dataDir)
+      .readdirSync(dataDirectory)
       .filter((file) => file.endsWith(".json"))
       .map((file) => {
         const title = file.replace(".json", "");
@@ -54,7 +113,203 @@ export class DictionaryCommand extends CommandRunner {
       });
   }
 
+  private async ingestTranslationReference(
+    translation: Translation,
+  ): Promise<void> {
+    const matches = [...translation.data.matchAll(/\{\*(.+?)\*\}/g)];
+    if (matches.length === 0) {
+      this.logger.warn(`⚠️ No reference found in: ${translation.data}`);
+      return;
+    }
+
+    const newTranslations: Translation[] = [];
+
+    for (const match of matches) {
+      let reference = match[1] ?? "";
+      if (/\(.*\)/.test(reference))
+        reference = reference.replace(/ ?\(.*\)/, "");
+
+      const lexemes =
+        await this.lexemesService.findLexemesByLemmaWithTranslations(
+          this.normalize(reference),
+        );
+
+      const lexeme =
+        lexemes.find(
+          (lexemeEntry) =>
+            lexemeEntry.partOfSpeech === translation.lexeme.partOfSpeech,
+        ) ?? lexemes[0];
+
+      if (!lexeme) {
+        this.logger.warn(`⚠️ No lexeme found for reference: ${reference}`);
+        continue;
+      }
+
+      const mapped = (lexeme.translations ?? []).map(
+        (t) => new Translation(t.data, translation.lexeme),
+      );
+      newTranslations.push(...mapped);
+    }
+
+    if (newTranslations.length > 0) {
+      await this.translationsService.saveTranslations(newTranslations);
+    }
+
+    translation.data = translation.data.replaceAll(/\{\*(.+?)\*\}/g, "").trim();
+    await this.translationsService.saveTranslations([translation]);
+  }
+
+  private loadWiktionaryPageForWord(word: string): null | WiktionaryPage {
+    const filePath = this.getFilePathForWord(word);
+    if (!filePath) {
+      this.logger.warn(`⚠️ No data file found for word: ${word}`);
+      return null;
+    }
+    const page = this.readWiktionaryPage(filePath);
+    if (!page) {
+      this.logger.warn(`⚠️ No data file found for word: ${word}`);
+      return null;
+    }
+    return page;
+  }
+
+  private normalize(str: string): string {
+    return str
+      .normalize("NFD")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  private async processTranslationReferences(saved: Lexeme): Promise<void> {
+    const referencedWords =
+      this.translationsService.extractTranslationReferences(
+        saved.translations ?? [],
+      );
+    for (const referenceWord of referencedWords) {
+      if (!this.inProgressWords.has(referenceWord)) {
+        const referenceExists =
+          await this.lexemesService.existsByLemma(referenceWord);
+        if (!referenceExists) {
+          await this.ingestLexeme(referenceWord);
+        }
+      }
+    }
+
+    const translations =
+      await this.translationsService.findTranslationsWithReferences(saved.id);
+    for (const translation of translations) {
+      await this.ingestTranslationReference(translation);
+    }
+  }
+
+  private readWiktionaryPage(filePath: string): null | WiktionaryPage {
+    if (!fs.existsSync(filePath)) return null;
+    const raw = fs.readFileSync(filePath, "utf8");
+    return JSON.parse(raw) as WiktionaryPage;
+  }
+
   // 🌎 Public Methods
+
+  /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
+   * parses each into structured `Entry` records, and saves them to the database. */
+  async ingestAll(startLemma?: string, endLemma?: string): Promise<void> {
+    if (!fs.existsSync(this.dataDirectory)) {
+      this.logger.warn(
+        `⚠️ Data directory not found: ${this.dataDirectory}. Please run Wikipedia dump extraction first.`,
+      );
+      return;
+    }
+
+    let files = fs
+      .readdirSync(this.dataDirectory)
+      .filter((f) => f.endsWith(".json"));
+
+    if (startLemma || endLemma) {
+      const startIndex = startLemma
+        ? files.findIndex((f) => f.replace(".json", "") === startLemma)
+        : 0;
+      const endIndex = endLemma
+        ? files.findIndex((f) => f.replace(".json", "") === endLemma)
+        : files.length - 1;
+
+      const start = Math.max(0, startIndex);
+      const end = endIndex === -1 ? files.length - 1 : endIndex;
+
+      files = files.slice(start, end + 1);
+    }
+
+    this.logger.log(`📖 Processing ${files.length} lexemes`);
+
+    let current = 0;
+    const total = files.length;
+
+    for (const file of files) {
+      current++;
+      try {
+        const filePath = path.join(this.dataDirectory, file);
+        const wiktionaryPage = this.readWiktionaryPage(filePath);
+        if (!wiktionaryPage) {
+          throw new Error("File missing or unreadable");
+        }
+        await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage, {
+          current,
+          total,
+        });
+      } catch (error: unknown) {
+        const errorMessage =
+          error instanceof Error ? error.stack || error.message : String(error);
+        this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
+        fs.appendFileSync(
+          this.logFilePath,
+          `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
+        );
+      }
+    }
+
+    this.logger.log("📖 Dictionary ingestion complete");
+  }
+
+  /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
+   * and persists them using upsert (idempotent). Loads the cached JSON file if
+   * `wiktionaryPage` is not supplied. */
+  async ingestLexeme(
+    word: string,
+    wiktionaryPage?: WiktionaryPage,
+    progress?: { current: number; total: number },
+  ): Promise<void> {
+    this.inProgressWords.add(word);
+    try {
+      if (!wiktionaryPage) {
+        const page = this.loadWiktionaryPageForWord(word);
+        if (!page) {
+          throw new Error(`File missing or unreadable for word: ${word}`);
+        }
+        wiktionaryPage = page;
+      }
+
+      if (!wiktionaryPage.html) {
+        throw new Error(`Missing HTML data in file for word: ${word}`);
+      }
+
+      const progressString = progress
+        ? ` (${((progress.current / progress.total) * 100).toFixed(2)}%, ${progress.current}/${progress.total})`
+        : "";
+
+      this.logger.log(`📝 Ingesting lexeme "${word}"${progressString}`);
+      const parsedLexemes =
+        await this.lexemesService.parseLexemes(wiktionaryPage);
+      for (const lexeme of parsedLexemes) {
+        const saved = await this.lexemesService.saveParsedLexeme(lexeme);
+        if (!saved) continue;
+
+        await this.processTranslationReferences(saved);
+      }
+      this.logger.log(`📝 Ingested lexeme "${word}"${progressString}`);
+    } finally {
+      this.inProgressWords.delete(word);
+    }
+  }
 
   /**
    *
@@ -135,8 +390,12 @@ export class DictionaryCommand extends CommandRunner {
 
   /** Runs the dictionary ingestion for a single word when `--word` is given,
    * or processes all cached Wiktionary HTML files otherwise. */
-  async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
+  async run(
+    _arguments: string[],
+    options: DictionaryCommandOptions,
+  ): Promise<void> {
     this.logger.log(`📖 Ingesting dictionary...`);
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
     const startLemma = await this.parseStartLemma(
@@ -147,7 +406,7 @@ export class DictionaryCommand extends CommandRunner {
       startLemma,
     );
 
-    await this.dictionaryService.ingestAll(startLemma, endLemma);
+    await this.ingestAll(startLemma, endLemma);
     await this.manualService.ingestManual();
 
     const endTime = performance.now();

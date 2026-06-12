@@ -581,7 +581,7 @@ export class EclipsesService {
       "previousDiameterSun",
     );
 
-    const params = {
+    const parameters = {
       currentDiameterMoon,
       currentDiameterSun,
       currentLatitudeMoon,
@@ -594,8 +594,8 @@ export class EclipsesService {
       previousLongitudeSun,
     };
 
-    const solarEclipsePhase = this.isSolarEclipse({ ...params });
-    const lunarEclipsePhase = this.isLunarEclipse({ ...params });
+    const solarEclipsePhase = this.isSolarEclipse({ ...parameters });
+    const lunarEclipsePhase = this.isLunarEclipse({ ...parameters });
 
     const eclipseEvents: Event[] = [];
 

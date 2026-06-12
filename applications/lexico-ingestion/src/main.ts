@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import { CommandFactory } from "nest-commander";
 
-import { LexicoIngestionModule } from "./modules/lexico-ingestion/lexico-ingestion.module.js";
-import { LoggerService } from "./modules/logger/logger.service.js";
+import { LexicoIngestionModule } from "./modules/lexico-ingestion/lexico-ingestion.module";
+import { LoggerService } from "./modules/logger/logger.service";
 
-import type { CommandFactoryRunOptions } from "nest-commander/src/command-factory.interface.js";
+import type { CommandFactoryRunOptions } from "nest-commander/src/command-factory.interface";
 
 async function main(): Promise<void> {
   const logger = new LoggerService();

@@ -71,21 +71,6 @@ helm list
 
 **Why?** Kubernetes manages cluster state, not workspace files. Nx cannot cache or track K8s resources.
 
-### Supabase CLI
-
-```bash
-# ✅ CORRECT: Supabase manages external database state
-supabase start
-supabase db push
-supabase db diff
-supabase gen types typescript --local > types.ts
-
-# Note: Nx targets wrap these (e.g., nx run lexico:supabase:start)
-# but the underlying Supabase CLI runs directly
-```
-
-**Why?** Supabase manages Docker containers and database migrations outside the Nx workspace.
-
 ### Git Operations
 
 ```bash
@@ -121,18 +106,12 @@ Many infrastructure tools have Nx target wrappers for convenience and consistenc
       "options": {
         "command": "docker build --platform linux/amd64 -t myapp ."
       }
-    },
-    "supabase:start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase start"
-      }
     }
   }
 }
 ```
 
-**Use the Nx wrapper when available** (e.g., `nx run lexico:supabase:start`) for:
+**Use the Nx wrapper when available** (e.g., `nx run caelundas:docker-build`) for:
 
 - Consistency with monorepo task execution patterns
 - Project-specific context (cwd, environment)
@@ -162,7 +141,7 @@ Many infrastructure tools have Nx target wrappers for convenience and consistenc
               │
          ┌────┴────┐
          │   YES   │   Use direct tool
-         │         │   (docker, kubectl, supabase, git, pnpm)
+         │         │   (docker, kubectl, git, pnpm)
          └─────────┘
 ```
 
@@ -175,7 +154,6 @@ Many infrastructure tools have Nx target wrappers for convenience and consistenc
 | Test affected      | `nx affected --target=test`            | Run tests for changed projects (workspace task) |
 | Build Docker image | `docker build -t myapp .`              | Creates external artifact (infrastructure)      |
 | Deploy to K8s      | `helm upgrade --install myapp ./chart` | Manages cluster resources (infrastructure)      |
-| Start Supabase     | `supabase start`                       | Manages Docker containers (infrastructure)      |
 | Install packages   | `pnpm install`                         | Manages dependencies (package manager)          |
 | Commit code        | `git commit -m "message"`              | Version control (not a build task)              |
 | Run dev server     | `nx run lexico:develop`                | Nx task that wraps Vite (workspace task)        |
@@ -232,21 +210,9 @@ docker build -t myapp .
 nx run caelundas:docker-build
 ```
 
-### ❌ Running Supabase via npm scripts
-
-```bash
-# WRONG: Adds indirection
-pnpm --filter lexico supabase:start
-```
-
-```bash
-# CORRECT: Use Nx wrapper
-nx run lexico:supabase:start
-```
-
 ## Summary
 
 - **Nx for workspace tasks**: build, lint, test, typecheck, format
-- **Direct tools for infrastructure**: docker, kubectl, helm, supabase, git, pnpm
+- **Direct tools for infrastructure**: docker, kubectl, helm, git, pnpm
 - **Use Nx wrappers when available** for consistency
 - **Never bypass Nx for cacheable tasks** (costs performance)

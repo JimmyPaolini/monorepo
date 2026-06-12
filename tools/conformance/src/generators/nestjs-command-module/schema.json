@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "properties": {
+    "name": {
+      "description": "The name of the module (kebab-case)",
+      "type": "string"
+    },
+    "project": {
+      "description": "The name of the project where the module will be generated",
+      "type": "string"
+    }
+  },
+  "required": ["name"],
+  "type": "object"
+}

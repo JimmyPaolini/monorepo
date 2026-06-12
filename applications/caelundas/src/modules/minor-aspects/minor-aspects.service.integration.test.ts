@@ -87,14 +87,14 @@ function createAspectEphemeris(
 
   for (const body of minorAspectBodies) {
     const override = overrides[body];
-    const prev = override?.previous ?? 100;
-    const curr = override?.current ?? 100;
+    const previous = override?.previous ?? 100;
+    const current = override?.current ?? 100;
     const next = override?.next ?? 100;
 
     ephemerisByBody[body] = {
-      [minute.toISOString()]: { latitude: 0, longitude: curr },
+      [minute.toISOString()]: { latitude: 0, longitude: current },
       [nextMinute.toISOString()]: { latitude: 0, longitude: next },
-      [previousMinute.toISOString()]: { latitude: 0, longitude: prev },
+      [previousMinute.toISOString()]: { latitude: 0, longitude: previous },
     };
   }
 

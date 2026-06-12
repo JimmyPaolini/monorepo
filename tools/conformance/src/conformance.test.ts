@@ -5,6 +5,9 @@ import { workspaceRoot } from "@nx/devkit";
 import { describe, expect, it } from "vitest";
 
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
+import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
+import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
+import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
 import {
   stringifyConformanceErrors,
@@ -25,12 +28,75 @@ interface ConformanceTemplateInstance {
 
 const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
   "generator:nestjs-command-application";
+const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
+  "generator:nestjs-graphql-application";
+const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
 
+function resolveNestjsModuleDirectories(
+  applications: { rootPath: string; tags: string[] }[],
+  tag: string,
+): string[] {
+  return applications
+    .filter((application) => application.tags.includes(tag))
+    .map((application) => {
+      return {
+        applicationName: path.basename(application.rootPath),
+        modulesPath: path.join(application.rootPath, "src", "modules"),
+      };
+    })
+    .filter(({ modulesPath }) => fs.existsSync(modulesPath))
+    .flatMap(({ applicationName, modulesPath }) =>
+      fs
+        .readdirSync(modulesPath, { withFileTypes: true })
+        .filter(
+          (entry) =>
+            entry.isDirectory() &&
+            entry.name !== applicationName &&
+            entry.name !== "logger",
+        )
+        .map((entry) => path.join(modulesPath, entry.name)),
+    );
+}
+
 function resolveTemplateInstances(): ConformanceTemplateInstance[] {
   const applications = resolveWorkspaceApplications();
-  return [
+  const allNestjsModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_APPLICATION_TAG,
+  );
+  const commandApplicationModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_COMMAND_APPLICATION_TAG,
+  );
+
+  const commandModules = commandApplicationModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+    ),
+  );
+
+  const graphqlModules = allNestjsModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+    ),
+  );
+
+  const serviceModules = allNestjsModules.filter(
+    (directoryPath) =>
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
+      ),
+  );
+
+  const instances: ConformanceTemplateInstance[] = [
     {
       instanceDirectoryPaths: applications
         .filter((application) =>
@@ -44,17 +110,36 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
     {
       instanceDirectoryPaths: applications
         .filter((application) =>
-          application.tags.includes(NESTJS_APPLICATION_TAG),
+          application.tags.includes(NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG),
         )
-        .map((application) => path.join(application.rootPath, "src", "modules"))
-        .filter((instancesDirectoryPath) =>
-          fs.existsSync(instancesDirectoryPath),
-        ),
-      instanceType: "multiple",
+        .map((application) => application.rootPath),
+      instanceType: "single",
+      template: "nestjs-graphql-application",
+      templateDirectoryPath: GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: commandModules,
+      instanceType: "single",
+      template: "nestjs-command-module",
+      templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: graphqlModules,
+      instanceType: "single",
+      template: "nestjs-graphql-module",
+      templateDirectoryPath: GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: serviceModules,
+      instanceType: "single",
       template: "nestjs-service-module",
       templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
     },
   ];
+
+  return instances.filter(
+    (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
+  );
 }
 
 function resolveWorkspaceApplications(): {
