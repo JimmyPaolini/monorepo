@@ -106,11 +106,11 @@ export class MathService {
         return;
       }
 
-      for (let i = start; i < array.length; i++) {
-        const element = array[i];
+      for (let index = start; index < array.length; index++) {
+        const element = array[index];
         if (element) {
           chosen.push(element);
-          combine(i + 1, chosen);
+          combine(index + 1, chosen);
           chosen.pop();
         }
       }

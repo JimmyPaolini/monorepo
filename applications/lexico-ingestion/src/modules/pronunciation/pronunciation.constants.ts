@@ -12,13 +12,16 @@ export const classicalPhonemes: Record<string, string> = {
   b: "B",
   c: "K",
   d: "D",
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   e: "E",
   ē: "EE",
   eu: "EU",
   f: "F",
   g: "G",
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   i: "I",
   ī: "II",
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   j: "J",
   k: "K",
   l: "L",
@@ -88,12 +91,14 @@ export const ecclesiasticalPhonemes: Record<string, string | string[][]> = {
   au: "au",
   b: "b",
   d: "d",
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   e: "e:",
   ē: "e:",
   ei: "ei",
   eu: "eu",
   f: "f",
   gn: "gn",
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   i: "i:",
   ī: "i:",
   k: "k",

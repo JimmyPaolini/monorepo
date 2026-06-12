@@ -11,6 +11,7 @@ const config: KnipConfig = {
     "**/node_modules/**",
     "**/.nx/**",
     "**/coverage/**",
+    "notepads/**",
   ],
 
   // Binaries invoked via project.json targets or scripts, not imported in code
@@ -39,6 +40,7 @@ const config: KnipConfig = {
     "commitlint-plugin-gitmoji", // commitlint plugin, referenced as string in plugins array
     "commitlint-plugin-tense", // commitlint plugin, referenced as string in plugins array
     "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
+    "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
     "stylelint-config-standard", // stylelint preset, referenced as string in extends array
     "stylelint-config-tailwindcss", // stylelint preset, referenced as string in extends array
     "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
@@ -131,9 +133,9 @@ const config: KnipConfig = {
 
     // lexico-components: Shared React component library (shadcn/ui)
     "packages/lexico-components": {
-      entry: ["src/index.ts", "src/components/**/*.tsx"],
-      project: ["src/**/*.ts", "src/**/*.tsx"],
+      entry: ["src/index.ts", "src/components/**/*.tsx", "vite.config.mts"],
       ignoreDependencies: ["tailwindcss-animate"],
+      project: ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"],
     },
 
     // lexico-entities: Shared TypeORM entities
@@ -160,6 +162,7 @@ const config: KnipConfig = {
       ignoreDependencies: [
         "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
         "tsx", // TypeScript executor CLI (not used; project uses @swc-node/register instead)
+        "vitest", // Knip misses vitest usage because tests are ignored
       ],
       project: "src/**/*.ts",
     },

@@ -1,7 +1,4 @@
 # 🙈 SQLFluff Ignore
 
-# Auto-generated Supabase files (large data dumps and remote schema snapshots)
-applications/lexico/supabase/*
-
 # Auto-generated TypeORM migrations
 packages/lexico-entities/src/database/migrations/*.sql

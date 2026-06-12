@@ -128,13 +128,13 @@ describe("generateNestjsGraphqlModule", () => {
         path.join(__dirname, "templates/__nameKebabCase__.resolver.ts"),
         "utf8",
       );
-      const vars: Record<string, unknown> = {
+      const variables: Record<string, unknown> = {
         nameCamelCase: "post",
         nameKebabCase: "post",
         namePascalCase: "Post",
       };
       const result = validateConformance({
-        data: vars,
+        data: variables,
         filename: "post.resolver.ts",
         instance: resolverContent,
         template: templateContent,

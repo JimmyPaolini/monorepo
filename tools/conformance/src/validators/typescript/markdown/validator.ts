@@ -260,10 +260,10 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
     }
     case "table": {
       if (isTable(template) && isTable(instance)) {
-        const tRow = template.children[0];
-        const iRow = instance.children[0];
-        if (tRow === undefined || iRow === undefined) return true;
-        return tRow.children.length === iRow.children.length;
+        const templateRow = template.children[0];
+        const instanceRow = instance.children[0];
+        if (templateRow === undefined || instanceRow === undefined) return true;
+        return templateRow.children.length === instanceRow.children.length;
       }
       return false;
     }

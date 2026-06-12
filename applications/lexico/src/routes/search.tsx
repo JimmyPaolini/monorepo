@@ -1,6 +1,11 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { noop } from "lodash";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef as useReference,
+  useState,
+} from "react";
 import { z } from "zod";
 
 import {
@@ -39,7 +44,7 @@ function SearchPage(): ReactNode {
   const [results, setResults] = useState<EntrySearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputReference = useReference<HTMLInputElement>(null);
 
   const debouncedQuery = useDebounce(query, 300);
   // Sync query state with URL
@@ -49,10 +54,10 @@ function SearchPage(): ReactNode {
 
   // Select all text in the input on mount
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.select();
+    if (inputReference.current) {
+      inputReference.current.select();
     }
-  }, []);
+  }, [inputReference]);
 
   // Update URL when debounced query changes
   useEffect(() => {
@@ -96,9 +101,9 @@ function SearchPage(): ReactNode {
     <div className="space-y-6">
       <div className="mx-auto max-w-2xl">
         <Input
-          ref={inputRef}
+          ref={inputReference}
           className="w-full text-lg"
-          onChange={(e) => setQuery(e.currentTarget.value)}
+          onChange={(event) => setQuery(event.currentTarget.value)}
           placeholder="Search Latin or English..."
           type="search"
           value={query}

@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormTabs } from "./form-tabs";
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps } from "./form-cell";
+import type { FormCellProps as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single conjugated form of a verb.
@@ -72,7 +72,7 @@ interface VerbFormGroup {
   tenses: {
     tense: string;
     voices: {
-      cells: FormCellProps[];
+      cells: FormCellProperties[];
       voice: string;
     }[];
   }[];
@@ -140,7 +140,7 @@ function groupVerbForms(forms: VerbForm[]): VerbFormGroup[] {
 /**
  * Restructure verb forms for a specific mood/tense/voice into cells
  */
-function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
+function restructureVerbForms(forms: VerbForm[]): FormCellProperties[] {
   // Group by person and number
   const byPersonNumber: Record<string, string> = {};
 
@@ -151,7 +151,7 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
     byPersonNumber[key] = form.form;
   }
 
-  const cells: FormCellProps[] = [];
+  const cells: FormCellProperties[] = [];
 
   // If no person/number (infinitives, gerunds, etc.), just show the forms
   const hasPerson = forms.some((f) => f.person);
@@ -193,7 +193,7 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
 }
 
 const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
-  ({ className, forms, search }, ref) => {
+  ({ className, forms, search }, reference) => {
     const grouped = React.useMemo(() => groupVerbForms(forms), [forms]);
 
     const [activeMood, setActiveMood] = React.useState(0);
@@ -224,7 +224,7 @@ const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
 
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={className}
       >
         {/* Mood tabs */}

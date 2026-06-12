@@ -61,12 +61,12 @@ export class PartOfSpeechService {
 
   // 🔏 Private Methods
 
-  private flattenForms(obj: unknown): string[] {
-    if (!obj) return [];
-    if (isUnknownArray(obj))
-      return obj.filter((v): v is string => typeof v === "string");
-    if (isRecord(obj)) {
-      return Object.values(obj).flatMap((val) => this.flattenForms(val));
+  private flattenForms(object: unknown): string[] {
+    if (!object) return [];
+    if (isUnknownArray(object))
+      return object.filter((v): v is string => typeof v === "string");
+    if (isRecord(object)) {
+      return Object.values(object).flatMap((value) => this.flattenForms(value));
     }
     return [];
   }
@@ -77,7 +77,9 @@ export class PartOfSpeechService {
   ): Inflection {
     const inflectionHtml = $(elt)
       .nextAll("div.mw-heading")
-      .filter((_: number, el: AnyNode) => /declension/i.test($(el).text()))
+      .filter((_: number, element: AnyNode) =>
+        /declension/i.test($(element).text()),
+      )
       .first()
       .next();
 
@@ -137,7 +139,9 @@ export class PartOfSpeechService {
   ): Inflection {
     const inflectionHtml = $(elt)
       .nextAll("div.mw-heading")
-      .filter((_: number, el: AnyNode) => /declension/i.test($(el).text()))
+      .filter((_: number, element: AnyNode) =>
+        /declension/i.test($(element).text()),
+      )
       .first()
       .next();
 
@@ -275,7 +279,9 @@ export class PartOfSpeechService {
         }
         const sumEntry = sumEsseFui[mood]?.[voice]?.[tense]?.[number]?.[person];
         if (sumEntry) {
-          return sumEntry.map((ext) => `${identifiers[0] ?? ""} ${ext}`);
+          return sumEntry.map(
+            (extension) => `${identifiers[0] ?? ""} ${extension}`,
+          );
         }
         return [cleaned];
       }
@@ -283,25 +289,29 @@ export class PartOfSpeechService {
     }
 
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    function findIdentifiers(i: number, j: number, tbl: string[][]): string[] {
+    function findIdentifiers(
+      index: number,
+      index_: number,
+      table_: string[][],
+    ): string[] {
       const identifiers = new Set<string>();
       // eslint-disable-next-line unicorn/consistent-function-scoping
       const isForm = (cell: string): boolean =>
         cell.includes("<span ") || cell.includes("—") || cell.includes(" + ");
 
-      let m = i;
-      while (m > 0 && isForm(tbl[m]?.[j] ?? "")) m--;
-      identifiers.add((tbl[m]?.[j] ?? "").toLowerCase().trim());
+      let m = index;
+      while (m > 0 && isForm(table_[m]?.[index_] ?? "")) m--;
+      identifiers.add((table_[m]?.[index_] ?? "").toLowerCase().trim());
       if (m - 1 >= 0)
-        identifiers.add((tbl[m - 1]?.[j] ?? "").toLowerCase().trim());
+        identifiers.add((table_[m - 1]?.[index_] ?? "").toLowerCase().trim());
 
-      let n = j;
-      while (n > 0 && isForm(tbl[i]?.[n] ?? "")) n--;
-      identifiers.add((tbl[i]?.[n] ?? "").toLowerCase().trim());
+      let n = index_;
+      while (n > 0 && isForm(table_[index]?.[n] ?? "")) n--;
+      identifiers.add((table_[index]?.[n] ?? "").toLowerCase().trim());
       if (n - 1 >= 0)
-        identifiers.add((tbl[i]?.[n - 1] ?? "").toLowerCase().trim());
+        identifiers.add((table_[index]?.[n - 1] ?? "").toLowerCase().trim());
 
-      identifiers.add((tbl[m]?.[n] ?? "").toLowerCase().trim());
+      identifiers.add((table_[m]?.[n] ?? "").toLowerCase().trim());
 
       return [...identifiers]
         .map((id) =>
@@ -316,13 +326,13 @@ export class PartOfSpeechService {
 
     const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
 
-    for (let i = 0; i < table.length; i++) {
-      const row = table[i] ?? [];
-      for (const [j, element] of row.entries()) {
+    for (let index = 0; index < table.length; index++) {
+      const row = table[index] ?? [];
+      for (const [index_, element] of row.entries()) {
         const cell = element;
         if (cell.includes("<span ") || cell.includes(" + ")) {
           const c = cheerio.load(cell);
-          const identifiers = findIdentifiers(i, j, table);
+          const identifiers = findIdentifiers(index, index_, table);
           const text = c.text();
           if (!/[A-Za-zāēīōūȳ\-\s]+/.test(text)) continue;
           disorganizedForms.push({
@@ -385,7 +395,9 @@ export class PartOfSpeechService {
   ): null | string[][] {
     const tableHtml = $(elt)
       .nextAll("div")
-      .filter((_: number, el: AnyNode) => $(el).find("table").length > 0)
+      .filter(
+        (_: number, element: AnyNode) => $(element).find("table").length > 0,
+      )
       .first()
       .find("table")
       .first();
@@ -397,8 +409,8 @@ export class PartOfSpeechService {
     let table: string[][] = $table("table").parsetable(true, true, false);
 
     // Transpose: table[col][row] → table[row][col]
-    table = (table[0] ?? []).map((_: unknown, i: number) =>
-      table.map((col: string[]) => col[i] ?? ""),
+    table = (table[0] ?? []).map((_: unknown, index: number) =>
+      table.map((col: string[]) => col[index] ?? ""),
     );
 
     table = table.map((tr: string[]) =>
@@ -427,9 +439,9 @@ export class PartOfSpeechService {
     }
 
     const findIdentifiers = (
-      i: number,
-      j: number,
-      tbl: string[][],
+      index: number,
+      index_: number,
+      table_: string[][],
     ): string[] => {
       const identifiers = new Set<string>();
       // eslint-disable-next-line unicorn/consistent-function-scoping
@@ -439,25 +451,31 @@ export class PartOfSpeechService {
         cell.includes(" + ") ||
         cell.length === 0;
 
-      let m = i;
-      while (m >= 0 && isForm(tbl[m]?.[j] ?? "")) m--;
-      while (m >= 0 && !isForm(tbl[m]?.[j] ?? "")) {
+      let m = index;
+      while (m >= 0 && isForm(table_[m]?.[index_] ?? "")) m--;
+      while (m >= 0 && !isForm(table_[m]?.[index_] ?? "")) {
         identifiers.add(
-          (tbl[m--]?.[j] ?? "").replaceAll(/[./]/g, "").toLowerCase().trim(),
+          (table_[m--]?.[index_] ?? "")
+            .replaceAll(/[./]/g, "")
+            .toLowerCase()
+            .trim(),
         );
       }
 
-      let n = j;
-      while (n >= 0 && isForm(tbl[i]?.[n] ?? "")) n--;
-      while (n >= 0 && !isForm(tbl[i]?.[n] ?? "")) {
+      let n = index_;
+      while (n >= 0 && isForm(table_[index]?.[n] ?? "")) n--;
+      while (n >= 0 && !isForm(table_[index]?.[n] ?? "")) {
         identifiers.add(
-          (tbl[i]?.[n--] ?? "").replaceAll(/[./]/g, "").toLowerCase().trim(),
+          (table_[index]?.[n--] ?? "")
+            .replaceAll(/[./]/g, "")
+            .toLowerCase()
+            .trim(),
         );
       }
 
       const nextM = m + 1;
       const nextN = n + 1;
-      const corner = tbl[nextM]?.[nextN] ?? "";
+      const corner = table_[nextM]?.[nextN] ?? "";
       if (["Plural", "Singular"].includes(corner)) {
         identifiers.add(corner.toLowerCase().trim());
       }
@@ -479,9 +497,9 @@ export class PartOfSpeechService {
 
     const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
 
-    for (let i = 0; i < table.length; i++) {
-      const row = table[i] ?? [];
-      for (const [j, element] of row.entries()) {
+    for (let index = 0; index < table.length; index++) {
+      const row = table[index] ?? [];
+      for (const [index_, element] of row.entries()) {
         const cell = element;
         if (cell.includes("<span ")) {
           const c = cheerio.load(cell);
@@ -491,7 +509,7 @@ export class PartOfSpeechService {
             .join(", ");
           if (!/[A-Za-zāēīōūȳ\-\s]+/.test(words)) continue;
           disorganizedForms.push({
-            identifiers: findIdentifiers(i, j, table),
+            identifiers: findIdentifiers(index, index_, table),
             word: parseWords(words),
           });
         }
@@ -507,21 +525,21 @@ export class PartOfSpeechService {
 
   private sortIdentifiers(
     inflection: { identifiers: string[]; word: string[] },
-    obj: Record<string, unknown>,
+    object: Record<string, unknown>,
   ): Record<string, unknown> {
     const identifier = inflection.identifiers.pop();
-    if (!identifier) return obj;
+    if (!identifier) return object;
     if (inflection.identifiers.length === 0) {
-      obj[identifier] = inflection.word;
-      return obj;
+      object[identifier] = inflection.word;
+      return object;
     } else {
-      if (!obj[identifier]) obj[identifier] = {};
-      const current = obj[identifier];
-      obj[identifier] = this.sortIdentifiers(
+      if (!object[identifier]) object[identifier] = {};
+      const current = object[identifier];
+      object[identifier] = this.sortIdentifiers(
         inflection,
         isRecord(current) ? current : {},
       );
-      return obj;
+      return object;
     }
   }
 

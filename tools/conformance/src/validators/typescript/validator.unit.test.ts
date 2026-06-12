@@ -239,23 +239,25 @@ describe("validateInstancesDirectory", () => {
 });
 
 describe("validateInstanceFile", () => {
-  let tmpDir: string;
+  let temporaryDirectory: string;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "validator-file-"));
+    temporaryDirectory = fs.mkdtempSync(
+      path.join(os.tmpdir(), "validator-file-"),
+    );
   });
 
   afterEach(() => {
-    fs.rmSync(tmpDir, { recursive: true });
+    fs.rmSync(temporaryDirectory, { recursive: true });
   });
 
   it("returns no errors when instance matches template", () => {
-    const templatePath = path.join(tmpDir, "template.service.ts");
+    const templatePath = path.join(temporaryDirectory, "template.service.ts");
     fs.writeFileSync(
       templatePath,
       "export class {{namePascalCase}}Service {}\n",
     );
-    const instancePath = path.join(tmpDir, "user.service.ts");
+    const instancePath = path.join(temporaryDirectory, "user.service.ts");
     fs.writeFileSync(instancePath, "export class UserService {}\n");
 
     const result = validateInstanceFile({
@@ -268,12 +270,12 @@ describe("validateInstanceFile", () => {
   });
 
   it("returns errors when instance is missing a required class", () => {
-    const templatePath = path.join(tmpDir, "template.service.ts");
+    const templatePath = path.join(temporaryDirectory, "template.service.ts");
     fs.writeFileSync(
       templatePath,
       "export class {{namePascalCase}}Service {}\n",
     );
-    const instancePath = path.join(tmpDir, "user.service.ts");
+    const instancePath = path.join(temporaryDirectory, "user.service.ts");
     fs.writeFileSync(instancePath, "export class WrongService {}\n");
 
     const result = validateInstanceFile({
@@ -289,9 +291,12 @@ describe("validateInstanceFile", () => {
   });
 
   it("returns missing file error when instance file does not exist", () => {
-    const templatePath = path.join(tmpDir, "user.service.ts");
+    const templatePath = path.join(temporaryDirectory, "user.service.ts");
     fs.writeFileSync(templatePath, "export class UserService {}\n");
-    const instancePath = path.join(tmpDir, "nonexistent.service.ts");
+    const instancePath = path.join(
+      temporaryDirectory,
+      "nonexistent.service.ts",
+    );
 
     const result = validateInstanceFile({
       data: {},
@@ -306,25 +311,27 @@ describe("validateInstanceFile", () => {
 });
 
 describe("validateInstanceDirectory", () => {
-  let baseDir: string;
+  let baseDirectory: string;
   let instanceDir: string;
-  let templateDir: string;
+  let templateDirectory: string;
 
   beforeEach(() => {
-    baseDir = fs.mkdtempSync(path.join(os.tmpdir(), "validator-dir-"));
-    instanceDir = path.join(baseDir, "user-auth");
+    baseDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "validator-dir-"));
+    instanceDir = path.join(baseDirectory, "user-auth");
     fs.mkdirSync(instanceDir);
-    templateDir = fs.mkdtempSync(path.join(os.tmpdir(), "validator-tpl-"));
+    templateDirectory = fs.mkdtempSync(
+      path.join(os.tmpdir(), "validator-tpl-"),
+    );
   });
 
   afterEach(() => {
-    fs.rmSync(baseDir, { recursive: true });
-    fs.rmSync(templateDir, { recursive: true });
+    fs.rmSync(baseDirectory, { recursive: true });
+    fs.rmSync(templateDirectory, { recursive: true });
   });
 
   it("returns directoryName equal to the directory basename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameKebabCase__.service.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.service.ts"),
       "// placeholder\n",
     );
     fs.writeFileSync(
@@ -334,7 +341,7 @@ describe("validateInstanceDirectory", () => {
 
     const result = validateInstanceDirectory({
       instanceDirectoryPath: instanceDir,
-      templateDirectoryPath: templateDir,
+      templateDirectoryPath: templateDirectory,
     });
 
     expect(result.directoryName).toBe("user-auth");
@@ -342,7 +349,7 @@ describe("validateInstanceDirectory", () => {
 
   it("resolves __fieldName__ tokens in template filename to instance filename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameKebabCase__.service.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.service.ts"),
       "export class {{namePascalCase}}Service {}\n",
     );
     fs.writeFileSync(
@@ -352,7 +359,7 @@ describe("validateInstanceDirectory", () => {
 
     const result = validateInstanceDirectory({
       instanceDirectoryPath: instanceDir,
-      templateDirectoryPath: templateDir,
+      templateDirectoryPath: templateDirectory,
     });
 
     expect(result.results).toHaveLength(1);
@@ -362,11 +369,11 @@ describe("validateInstanceDirectory", () => {
 
   it("returns one result per template file", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameKebabCase__.service.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.service.ts"),
       "// service\n",
     );
     fs.writeFileSync(
-      path.join(templateDir, "__nameKebabCase__.module.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.module.ts"),
       "// module\n",
     );
     fs.writeFileSync(
@@ -380,7 +387,7 @@ describe("validateInstanceDirectory", () => {
 
     const result = validateInstanceDirectory({
       instanceDirectoryPath: instanceDir,
-      templateDirectoryPath: templateDir,
+      templateDirectoryPath: templateDirectory,
     });
 
     expect(result.results).toHaveLength(2);
@@ -391,14 +398,14 @@ describe("validateInstanceDirectory", () => {
 
   it("reports missing file error when instance file is absent", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameKebabCase__.service.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.service.ts"),
       "export class UserAuthService {}\n",
     );
     // no instance files written
 
     const result = validateInstanceDirectory({
       instanceDirectoryPath: instanceDir,
-      templateDirectoryPath: templateDir,
+      templateDirectoryPath: templateDirectory,
     });
 
     expectErrorWithMessage(result.results[0]?.errors ?? [], "Missing file:");

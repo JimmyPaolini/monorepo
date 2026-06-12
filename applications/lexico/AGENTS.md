@@ -2,32 +2,21 @@
 
 ## Quick Start
 
-**Type**: SSR web app (TanStack Start + Supabase)
+**Type**: SSR web app (TanStack Start)
 
 **Purpose**: Latin word lookup with authentication, bookmarks, and personal library
 
 ### Run Locally
 
 ```bash
-nx run lexico:supabase:start
 nx run lexico:develop
 ```
-
-### After Schema Changes
-
-```bash
-nx run lexico:supabase:database-diff
-nx run lexico:supabase:generate-types
-```
-
-See [supabase-development skill](../../documentation/skills/supabase-development/SKILL.md) for full workflow.
 
 ## Architecture Overview
 
 ### Tech Stack
 
 - **Frontend**: React 19, TanStack Router (file-based routing)
-- **Backend**: Supabase (PostgreSQL + Auth + Edge Functions)
 - **SSR**: TanStack Start server functions
 - **Styling**: Tailwind CSS, shadcn/ui via [@monorepo/lexico-components](../../packages/lexico-components)
 
@@ -49,21 +38,13 @@ Generated route tree: [src/routeTree.gen.ts](src/routeTree.gen.ts) (auto-generat
 ### Authentication Flow
 
 ```text
-User → OAuth Provider → Supabase Auth → Server Cookie → RLS Policies
+User → OAuth Provider → Server Cookie
 ```
 
-- **Client**: [src/lib/supabase.ts](src/lib/supabase.ts) (OAuth redirects)
-- **Server**: [src/lib/supabase-server.ts](src/lib/supabase-server.ts) (cookie client)
 - **Auth helpers**: [src/lib/auth.ts](src/lib/auth.ts)
 - **Route guards**: TanStack Router `beforeLoad`
 
 See [tanstack-start-ssr skill](../../documentation/skills/tanstack-start-ssr/SKILL.md) for SSR patterns.
-
-## Data Model
-
-- Supabase migrations: [supabase/migrations/](supabase/migrations/)
-- Generated types: [src/lib/database.types.ts](src/lib/database.types.ts)
-- RLS policies: [supabase/migrations/20251203000002_rls_policies.sql](supabase/migrations/20251203000002_rls_policies.sql)
 
 ## Component Library Integration
 
@@ -81,13 +62,9 @@ See [Testing Strategy](../../documentation/code-quality/testing-strategy.md) for
 
 ## Troubleshooting
 
-See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Supabase, TypeScript, and Docker issues.
+See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for TypeScript and Docker issues.
 
 ## Key Files
 
 - [src/routes/](src/routes/): File-based routes
 - [src/lib/auth.ts](src/lib/auth.ts): Auth helpers
-- [src/lib/supabase.ts](src/lib/supabase.ts): Client Supabase setup
-- [src/lib/supabase-server.ts](src/lib/supabase-server.ts): Server Supabase setup
-- [src/lib/database.types.ts](src/lib/database.types.ts): Generated DB types
-- [supabase/config.toml](supabase/config.toml): Local Supabase configuration

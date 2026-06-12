@@ -113,7 +113,7 @@ export class LexemesService {
       return [];
     }
 
-    for (const [i, elt] of headwordElements.entries()) {
+    for (const [index, elt] of headwordElements.entries()) {
       const partOfSpeech = this.partOfSpeechService.getPartOfSpeech($, elt);
 
       if (!validPOS.has(partOfSpeech)) {
@@ -134,7 +134,7 @@ export class LexemesService {
 
       const lexeme = new Lexeme();
       lexeme.lemma = this.normalize(word);
-      lexeme.disambiguator = i;
+      lexeme.disambiguator = index;
       lexeme.partOfSpeech = partOfSpeech;
 
       try {
@@ -206,6 +206,9 @@ export class LexemesService {
     if (!savedLexeme) return null;
 
     if (lexeme.inflection) {
+      if (savedLexeme.inflection) {
+        lexeme.inflection.id = savedLexeme.inflection.id;
+      }
       lexeme.inflection.lexeme = savedLexeme;
       await lexeme.inflection.save();
       savedLexeme.inflection = lexeme.inflection;

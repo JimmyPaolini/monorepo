@@ -39,13 +39,25 @@ export class DictionaryCommand extends CommandRunner {
   ) {
     super();
     this.logger.setContext(DictionaryCommand.name);
+
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!fs.existsSync(outputDirectory))
+      fs.mkdirSync(outputDirectory, { recursive: true });
+    this.logFilePath = path.join(
+      outputDirectory,
+      `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
   }
 
   // 🔐 Private Fields
 
-  private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
+  private readonly dataDirectory = path.join(
+    process.cwd(),
+    "./data/wiktionary",
+  );
   private fileIndex: Map<string, string> | null = null;
   private readonly inProgressWords = new Set<string>();
+  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
@@ -59,14 +71,17 @@ export class DictionaryCommand extends CommandRunner {
     const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
 
     // Exact match
-    const p = path.join(this.dataDir, `${this.escapeCapitals(fileWord)}.json`);
+    const p = path.join(
+      this.dataDirectory,
+      `${this.escapeCapitals(fileWord)}.json`,
+    );
     if (fs.existsSync(p)) return p;
 
     // Build the case-insensitive index on first miss
     if (this.fileIndex === null) {
       this.fileIndex = new Map();
-      if (fs.existsSync(this.dataDir)) {
-        for (const file of fs.readdirSync(this.dataDir)) {
+      if (fs.existsSync(this.dataDirectory)) {
+        for (const file of fs.readdirSync(this.dataDirectory)) {
           if (!file.endsWith(".json")) continue;
           // Reverse escapeCapitals: Remove all '_' and lowercase the string
           const normalized = file.replaceAll("_", "").toLowerCase();
@@ -79,18 +94,18 @@ export class DictionaryCommand extends CommandRunner {
       `${fileWord.toLowerCase()}.json`,
     );
     if (fallbackFileName) {
-      return path.join(this.dataDir, fallbackFileName);
+      return path.join(this.dataDirectory, fallbackFileName);
     }
 
     return null;
   }
 
   private getLemmaChoices(): { title: string; value: string }[] {
-    const dataDir = path.join(process.cwd(), "./data/wiktionary");
-    if (!fs.existsSync(dataDir)) return [];
+    const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
+    if (!fs.existsSync(dataDirectory)) return [];
 
     return fs
-      .readdirSync(dataDir)
+      .readdirSync(dataDirectory)
       .filter((file) => file.endsWith(".json"))
       .map((file) => {
         const title = file.replace(".json", "");
@@ -101,9 +116,9 @@ export class DictionaryCommand extends CommandRunner {
   private async ingestTranslationReference(
     translation: Translation,
   ): Promise<void> {
-    const matches = [...translation.translation.matchAll(/\{\*(.+?)\*\}/g)];
+    const matches = [...translation.data.matchAll(/\{\*(.+?)\*\}/g)];
     if (matches.length === 0) {
-      this.logger.warn(`No reference found in: ${translation.translation}`);
+      this.logger.warn(`⚠️ No reference found in: ${translation.data}`);
       return;
     }
 
@@ -121,16 +136,17 @@ export class DictionaryCommand extends CommandRunner {
 
       const lexeme =
         lexemes.find(
-          (e) => e.partOfSpeech === translation.lexeme.partOfSpeech,
+          (lexemeEntry) =>
+            lexemeEntry.partOfSpeech === translation.lexeme.partOfSpeech,
         ) ?? lexemes[0];
 
       if (!lexeme) {
-        this.logger.warn(`No lexeme found for reference: ${reference}`);
+        this.logger.warn(`⚠️ No lexeme found for reference: ${reference}`);
         continue;
       }
 
       const mapped = (lexeme.translations ?? []).map(
-        (t) => new Translation(t.translation, translation.lexeme),
+        (t) => new Translation(t.data, translation.lexeme),
       );
       newTranslations.push(...mapped);
     }
@@ -139,21 +155,19 @@ export class DictionaryCommand extends CommandRunner {
       await this.translationsService.saveTranslations(newTranslations);
     }
 
-    translation.translation = translation.translation
-      .replaceAll(/\{\*(.+?)\*\}/g, "")
-      .trim();
+    translation.data = translation.data.replaceAll(/\{\*(.+?)\*\}/g, "").trim();
     await this.translationsService.saveTranslations([translation]);
   }
 
   private loadWiktionaryPageForWord(word: string): null | WiktionaryPage {
     const filePath = this.getFilePathForWord(word);
     if (!filePath) {
-      this.logger.warn(`No data file found for word: ${word}`);
+      this.logger.warn(`⚠️ No data file found for word: ${word}`);
       return null;
     }
     const page = this.readWiktionaryPage(filePath);
     if (!page) {
-      this.logger.warn(`No data file found for word: ${word}`);
+      this.logger.warn(`⚠️ No data file found for word: ${word}`);
       return null;
     }
     return page;
@@ -172,11 +186,12 @@ export class DictionaryCommand extends CommandRunner {
       this.translationsService.extractTranslationReferences(
         saved.translations ?? [],
       );
-    for (const refWord of referencedWords) {
-      if (!this.inProgressWords.has(refWord)) {
-        const refExists = await this.lexemesService.existsByLemma(refWord);
-        if (!refExists) {
-          await this.ingestLexeme(refWord);
+    for (const referenceWord of referencedWords) {
+      if (!this.inProgressWords.has(referenceWord)) {
+        const referenceExists =
+          await this.lexemesService.existsByLemma(referenceWord);
+        if (!referenceExists) {
+          await this.ingestLexeme(referenceWord);
         }
       }
     }
@@ -199,14 +214,16 @@ export class DictionaryCommand extends CommandRunner {
   /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
    * parses each into structured `Entry` records, and saves them to the database. */
   async ingestAll(startLemma?: string, endLemma?: string): Promise<void> {
-    if (!fs.existsSync(this.dataDir)) {
+    if (!fs.existsSync(this.dataDirectory)) {
       this.logger.warn(
-        `Data directory not found: ${this.dataDir}. Run 'wiktionary' command first.`,
+        `⚠️ Data directory not found: ${this.dataDirectory}. Please run Wikipedia dump extraction first.`,
       );
       return;
     }
 
-    let files = fs.readdirSync(this.dataDir).filter((f) => f.endsWith(".json"));
+    let files = fs
+      .readdirSync(this.dataDirectory)
+      .filter((f) => f.endsWith(".json"));
 
     if (startLemma || endLemma) {
       const startIndex = startLemma
@@ -230,15 +247,23 @@ export class DictionaryCommand extends CommandRunner {
     for (const file of files) {
       current++;
       try {
-        const filePath = path.join(this.dataDir, file);
+        const filePath = path.join(this.dataDirectory, file);
         const wiktionaryPage = this.readWiktionaryPage(filePath);
-        if (!wiktionaryPage) continue;
+        if (!wiktionaryPage) {
+          throw new Error("File missing or unreadable");
+        }
         await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage, {
           current,
           total,
         });
-      } catch (error) {
-        this.logger.error(`Failed to process ${file}: ${String(error)}`);
+      } catch (error: unknown) {
+        const errorMessage =
+          error instanceof Error ? error.stack || error.message : String(error);
+        this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
+        fs.appendFileSync(
+          this.logFilePath,
+          `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
+        );
       }
     }
 
@@ -257,13 +282,14 @@ export class DictionaryCommand extends CommandRunner {
     try {
       if (!wiktionaryPage) {
         const page = this.loadWiktionaryPageForWord(word);
-        if (!page) return;
+        if (!page) {
+          throw new Error(`File missing or unreadable for word: ${word}`);
+        }
         wiktionaryPage = page;
       }
 
       if (!wiktionaryPage.html) {
-        this.logger.warn(`No HTML for word: ${word}`);
-        return;
+        throw new Error(`Missing HTML data in file for word: ${word}`);
       }
 
       const progressString = progress
@@ -364,8 +390,12 @@ export class DictionaryCommand extends CommandRunner {
 
   /** Runs the dictionary ingestion for a single word when `--word` is given,
    * or processes all cached Wiktionary HTML files otherwise. */
-  async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
+  async run(
+    _arguments: string[],
+    options: DictionaryCommandOptions,
+  ): Promise<void> {
     this.logger.log(`📖 Ingesting dictionary...`);
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
     const startLemma = await this.parseStartLemma(

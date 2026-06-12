@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import { StringCase, type StringCaseValue } from "./types";
+import { StringCase, type StringCaseValue } from "./types.js";
 
 /** Maps each StringCaseValue to its human-readable display name. */
 export const humanReadableStringCase: Record<StringCaseValue, string> = {

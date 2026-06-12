@@ -8,7 +8,6 @@ This directory contains shell scripts for:
 
 - **Local setup** - macOS-specific initial monorepo configuration (in `local/`)
 - **Shell utilities** - Common terminal operations
-- **Database operations** - SQL utilities and queries
 
 ## Quick Start
 
@@ -373,19 +372,19 @@ See script for specific netstat usage patterns.
 
 See script for specific sed usage patterns and examples.
 
-## Database Scripts
+## Notepads
 
-### database/notepad.sql
+### notepads/notepad.sql
 
 **Purpose:** SQL queries and database utilities for notepad/notes functionality
 
-**Location:** `scripts/database/notepad.sql`
+**Location:** `notepads/notepad.sql`
 
 **Usage:**
 
 ```bash
 # Run SQL file
-psql -U username -d database -f scripts/database/notepad.sql
+psql -U username -d database -f notepads/notepad.sql
 
 # Or copy queries into database client
 ```
@@ -639,7 +638,7 @@ Verify sync:
 1. Create script in appropriate directory:
    - Core scripts: `scripts/`
    - Shell utilities: `scripts/shell/`
-   - Database queries: `scripts/database/`
+   - Notepads: `notepads/`
 
 2. Add shebang and description:
 

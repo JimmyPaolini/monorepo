@@ -273,8 +273,8 @@ describe("EphemerisService", () => {
       const nodeEphemeris = result["south lunar node"];
       expect(nodeEphemeris).toBeDefined();
       // All latitudes must be 0 for nodes
-      for (const val of Object.values(nodeEphemeris)) {
-        expect(val.latitude).toBe(0);
+      for (const value of Object.values(nodeEphemeris)) {
+        expect(value.latitude).toBe(0);
       }
     });
 
@@ -346,8 +346,8 @@ describe("EphemerisService", () => {
 
       const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
-      for (const val of Object.values(sunEphemeris)) {
-        expect(val.illumination).toBe(100);
+      for (const value of Object.values(sunEphemeris)) {
+        expect(value.illumination).toBe(100);
       }
     });
 
@@ -363,8 +363,8 @@ describe("EphemerisService", () => {
       const moonEphemeris = result.moon;
       expect(moonEphemeris).toBeDefined();
       // pheno_ut mock returns data[1] = 0.75 → illumination = 75
-      for (const val of Object.values(moonEphemeris)) {
-        expect(val.illumination).toBe(75);
+      for (const value of Object.values(moonEphemeris)) {
+        expect(value.illumination).toBe(75);
       }
     });
   });
@@ -383,8 +383,8 @@ describe("EphemerisService", () => {
       const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
       // pheno_ut mock returns data[3] = 0.5
-      for (const val of Object.values(sunEphemeris)) {
-        expect(val.diameter).toBe(0.5);
+      for (const value of Object.values(sunEphemeris)) {
+        expect(value.diameter).toBe(0.5);
       }
     });
   });
@@ -403,8 +403,8 @@ describe("EphemerisService", () => {
       const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
       // calc mock returns data[2] = 1.01
-      for (const val of Object.values(sunEphemeris)) {
-        expect(val.distance).toBe(1.01);
+      for (const value of Object.values(sunEphemeris)) {
+        expect(value.distance).toBe(1.01);
       }
     });
   });
@@ -461,8 +461,8 @@ describe("EphemerisService", () => {
 
       const illumination = result.illuminationEphemerisByBody.sun;
       expect(illumination).toBeDefined();
-      for (const val of Object.values(illumination)) {
-        expect(val.illumination).toBe(100);
+      for (const value of Object.values(illumination)) {
+        expect(value.illumination).toBe(100);
       }
     });
 
@@ -502,8 +502,8 @@ describe("EphemerisService", () => {
       const south = result.coordinateEphemerisByBody["south lunar node"];
       expect(north).toBeDefined();
       expect(south).toBeDefined();
-      for (const val of Object.values(north)) {
-        expect(val.latitude).toBe(0);
+      for (const value of Object.values(north)) {
+        expect(value.latitude).toBe(0);
       }
     });
   });

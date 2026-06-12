@@ -1,7 +1,16 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
+import {
+  Author,
+  Lexeme,
+  LexicoDatabaseModule,
+  Line,
+  Text,
+  Token,
+  Translation,
+  Word,
+} from "@monorepo/lexico-entities";
 
 import { ClearCommand } from "./clear.command";
 
@@ -11,7 +20,18 @@ import { ClearCommand } from "./clear.command";
 @Module({
   controllers: [],
   exports: [ClearCommand],
-  imports: [TypeOrmModule.forFeature([Lexeme, Translation, Word])],
+  imports: [
+    LexicoDatabaseModule,
+    TypeOrmModule.forFeature([
+      Lexeme,
+      Translation,
+      Word,
+      Line,
+      Text,
+      Author,
+      Token,
+    ]),
+  ],
   providers: [ClearCommand],
 })
 export class ClearModule {}

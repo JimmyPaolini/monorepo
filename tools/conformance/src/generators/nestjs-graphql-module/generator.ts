@@ -5,8 +5,8 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
-import { StringCase } from "../../types";
-import { generateFiles, resolveName, resolveProject } from "../../utilities";
+import { StringCase } from "../../types.js";
+import { generateFiles, resolveName, resolveProject } from "../../utilities.js";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 

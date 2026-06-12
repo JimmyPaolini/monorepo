@@ -108,7 +108,7 @@ describe("TranslationsService", () => {
 
       expect(translationsRepository.find).toHaveBeenCalledWith({
         relations: { lexeme: true },
-        where: { lexeme: { id: "amor:1" }, translation: Like("%{*%*}%") },
+        where: { data: Like("%{*%*}%"), lexeme: { id: "amor:1" } },
       });
     });
 
@@ -131,22 +131,22 @@ describe("TranslationsService", () => {
   describe("extractTranslationReferences", () => {
     it("should extract unique reference strings from translation text", () => {
       const lexeme = new Lexeme();
-      const refs = service.extractTranslationReferences([
+      const references = service.extractTranslationReferences([
         new Translation("{*amo*}", lexeme),
         new Translation("{*amicus*}", lexeme),
         new Translation("{*amo*}", lexeme),
       ]);
 
-      expect(refs).toEqual(["amo", "amicus"]);
+      expect(references).toEqual(["amo", "amicus"]);
     });
 
     it("should strip parenthetical qualifiers from references", () => {
       const lexeme = new Lexeme();
-      const refs = service.extractTranslationReferences([
+      const references = service.extractTranslationReferences([
         new Translation("{*amor (noun)*}", lexeme),
       ]);
 
-      expect(refs).toEqual(["amor"]);
+      expect(references).toEqual(["amor"]);
     });
   });
 });

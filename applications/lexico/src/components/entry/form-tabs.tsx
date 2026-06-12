@@ -27,13 +27,13 @@ export interface FormTabsProps {
 }
 
 const FormTabs = React.forwardRef<HTMLDivElement, FormTabsProps>(
-  ({ activeTab, children, className, onTabChange, tabs }, ref) => {
+  ({ activeTab, children, className, onTabChange, tabs }, reference) => {
     // Convert index to tab value string
     const activeValue = tabs[activeTab] ?? tabs[0] ?? "";
 
     return (
       <Tabs
-        ref={ref}
+        ref={reference}
         className={cn("w-full", className)}
         onValueChange={(value: string) => {
           const index = tabs.indexOf(value);

@@ -1,4 +1,4 @@
-import { ConsoleLogger, Injectable } from "@nestjs/common";
+import { ConsoleLogger, Injectable, Scope } from "@nestjs/common";
 import pino from "pino";
 
 /**
@@ -7,7 +7,7 @@ import pino from "pino";
  * with the originating class. Backed by pino for structured JSON output in
  * production and human-readable pretty-print in development.
  */
-@Injectable()
+@Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService extends ConsoleLogger {
   // 🏗 Dependency Injection
 

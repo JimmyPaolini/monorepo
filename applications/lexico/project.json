@@ -20,7 +20,6 @@
             "nx run lexico:lint:check",
             "nx run lexico:markdown-lint:check",
             "nx run lexico:spell-check",
-            "nx run lexico:squawk",
             "nx run lexico:type-coverage",
             "nx run lexico:typecheck",
             "nx run lexico:yaml-lint"
@@ -35,7 +34,6 @@
             "nx run lexico:lint:write",
             "nx run lexico:markdown-lint:write",
             "nx run lexico:spell-check",
-            "nx run lexico:squawk",
             "nx run lexico:type-coverage",
             "nx run lexico:typecheck",
             "nx run lexico:yaml-lint"
@@ -78,16 +76,14 @@
         "check": {
           "commands": [
             "nx run lexico:prettier:check",
-            "nx run lexico:oxfmt:check",
-            "nx run lexico:sqlfluff-format:check"
+            "nx run lexico:oxfmt:check"
           ],
           "parallel": true
         },
         "write": {
           "commands": [
             "nx run lexico:prettier:write",
-            "nx run lexico:oxfmt:write",
-            "nx run lexico:sqlfluff-format:write"
+            "nx run lexico:oxfmt:write"
           ],
           "parallel": false
         }
@@ -99,16 +95,14 @@
         "check": {
           "commands": [
             "nx run lexico:eslint:check",
-            "nx run lexico:oxlint:check",
-            "nx run lexico:sqlfluff-lint:check"
+            "nx run lexico:oxlint:check"
           ],
           "parallel": true
         },
         "write": {
           "commands": [
             "nx run lexico:eslint:write",
-            "nx run lexico:oxlint:write",
-            "nx run lexico:sqlfluff-lint:write"
+            "nx run lexico:oxlint:write"
           ],
           "parallel": false
         }
@@ -127,108 +121,11 @@
       }
     },
     "spell-check": {},
-    "sqlfluff-format": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "lint"
-        },
-        "write": {
-          "args": "fix"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.sql",
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "sqlfluff-lint": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "lint"
-        },
-        "write": {
-          "args": "fix"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.sql",
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "squawk": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.sql",
-        "{workspaceRoot}/configuration/squawk.toml",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "squawk --config configuration/squawk.toml --include=require-table-schema --exclude prefer-robust-stmts,require-timeout-settings,require-concurrent-index-creation,prefer-bigint-over-int --exclude-path applications/lexico/supabase/migrations/20251127225025_remote_schema.sql --exclude-path applications/lexico/supabase/migrations/20251127225309_remote_schema.sql {projectRoot}/supabase/migrations/*.sql",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "start": {
       "description": "Start the production server",
       "executor": "nx:run-commands",
       "options": {
         "command": "node .output/server/index.mjs",
-        "cwd": "applications/lexico"
-      }
-    },
-    "supabase:database-diff": {
-      "description": "Generate migration from local database changes",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db diff --use-migra-py",
-        "cwd": "applications/lexico"
-      }
-    },
-    "supabase:database-reset": {
-      "description": "Reset local database and apply all migrations",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db reset",
-        "cwd": "applications/lexico"
-      }
-    },
-    "supabase:generate-types": {
-      "description": "Generate TypeScript types from local Supabase schema",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
-        "cwd": "applications/lexico"
-      }
-    },
-    "supabase:start": {
-      "description": "Start local Supabase development environment",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase start",
-        "cwd": "applications/lexico"
-      }
-    },
-    "supabase:stop": {
-      "description": "Stop local Supabase development environment",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase stop",
         "cwd": "applications/lexico"
       }
     },

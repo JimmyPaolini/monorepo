@@ -195,7 +195,7 @@
     "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
     "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
     "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-    "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
+    "lexico", // TanStack Start SSR Latin dictionary web app
     "lexico-components", // Shared React/shadcn component library
     "lexico-entities", // Shared TypeORM entities and GraphQL types
     "lexico-ingestion", // Data ingestion scripts for Lexico
@@ -355,7 +355,9 @@
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.enable": true,
   "eslint.format.enable": false,
+  "eslint.nodePath": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0",
   "eslint.run": "onType",
+  "eslint.runtime": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin/node",
   "eslint.useFlatConfig": true,
   "eslint.validate": [
     "github-actions-workflow",
@@ -525,7 +527,7 @@
   "github.copilot.chat.reviewSelection.enabled": true,
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.searchSubagent.enabled": true,
-  "github.copilot.chat.searchSubagent.model": "Gemini 3.1 Pro Preview (gemini)",
+  "github.copilot.chat.searchSubagent.model": "Gemini 3 Flash Preview (gemini)",
   "github.copilot.chat.searchSubagent.useAgenticProxy": true,
   "github.copilot.chat.setupTests.enabled": true,
   "github.copilot.chat.switchAgent.enabled": true,
@@ -535,8 +537,8 @@
   "github.copilot.nextEditSuggestions.eagerness": "high",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
-  "github.copilot.nextEditSuggestions.preferredModel": "Gemini 3.1 Pro Preview (gemini)",
-  "github.copilot.selectedCompletionModel": "Gemini 3.1 Pro Preview (gemini)",
+  "github.copilot.nextEditSuggestions.preferredModel": "Gemini 3 Flash Preview (gemini)",
+  "github.copilot.selectedCompletionModel": "Gemini 3 Flash Preview (gemini)",
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -665,10 +667,10 @@
     "*.command.ts": "exe",
     "*.constant.ts": "3d",
     "*.constants.ts": "3d",
-    "*.dataloader.js": "graphcool",
-    "*.dataloader.ts": "graphcool",
-    "*.dataloaders.js": "graphcool",
-    "*.dataloaders.ts": "graphcool",
+    "*.dataloader.js": "tree",
+    "*.dataloader.ts": "tree",
+    "*.dataloaders.js": "tree",
+    "*.dataloaders.ts": "tree",
     "*.entities.js": "pawn",
     "*.entities.ts": "pawn",
     "*.entity.js": "pawn",
@@ -695,6 +697,10 @@
     "*.mongodb.js": "mint",
     "*.policy.ts": "authors",
     "*.processor.ts": "pipeline",
+    "*.provider.js": "capacitor",
+    "*.provider.ts": "capacitor",
+    "*.providers.js": "capacitor",
+    "*.providers.ts": "capacitor",
     "*.repository.ts": "database",
     "*.resolver.test.js": "test-ts",
     "*.resolver.test.ts": "test-js",
@@ -703,6 +709,7 @@
     "*.service.test.js": "test-ts",
     "*.service.test.ts": "test-ts",
     "*.service.ts": "brainfuck",
+    "*.services.ts": "brainfuck",
     "*.types.ts": "typescript-def",
     "*.utilities.ts": "gemini",
     "*.utils.ts": "gemini",
@@ -781,7 +788,7 @@
   "oxc.enable.oxfmt": true,
   "oxc.enable.oxlint": true,
   "oxc.fmt.configPath": "configuration/oxfmt.config.ts",
-  "oxc.path.node": "/Users/jimmypaolini/.nvm/versions/node/v22.22.2/bin/node",
+  "oxc.path.node": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin/node",
   "oxc.path.oxfmt": "node_modules/.bin/oxfmt",
   "oxc.useExecPath": false,
   "peacock.color": "#215732",
@@ -798,26 +805,6 @@
     "3000": {
       "label": "Lexico Dev Server",
       "onAutoForward": "notify"
-    },
-    "54321": {
-      "label": "Supabase API (PostgREST)",
-      "onAutoForward": "silent"
-    },
-    "54322": {
-      "label": "Supabase PostgreSQL",
-      "onAutoForward": "silent"
-    },
-    "54323": {
-      "label": "Supabase Studio",
-      "onAutoForward": "notify"
-    },
-    "54324": {
-      "label": "Supabase Inbucket (Email)",
-      "onAutoForward": "silent"
-    },
-    "54325": {
-      "label": "Supabase Analytics",
-      "onAutoForward": "silent"
     }
   },
   "ruff.interpreter": [
@@ -856,6 +843,7 @@
     "**coverage**": true,
     "**dist**": true,
     "**public**": true,
+    "applications/lexico-ingestion/data/library/*/*/**": true,
     "bower_components": true,
     "dist": true,
     "legacy": true,
@@ -877,6 +865,9 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "terminal.integrated.env.osx": {
+    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
   },
   "terraform.languageServer.args": ["serve"],
   "terraform.languageServer.enable": true,
@@ -921,7 +912,7 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 16,
-  "workbench.editor.pinnedTabSizing": "shrink",
+  "workbench.editor.pinnedTabSizing": "normal",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "workbench.editor.preferHistoryBasedLanguageDetection": false,
   "workbench.editor.showTabIndex": false,

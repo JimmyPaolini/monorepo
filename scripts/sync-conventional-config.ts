@@ -301,8 +301,8 @@ function extractMarkerContent(
  */
 function formatScopesForSettings(scopes: Scope[]): string {
   return scopes
-    .map((scope, i) => {
-      const comma = i < scopes.length - 1 ? "," : "";
+    .map((scope, index) => {
+      const comma = index < scopes.length - 1 ? "," : "";
       return `    "${scope.name}"${comma} // ${scope.description}`;
     })
     .join("\n");

@@ -22,7 +22,7 @@ vi.mock("fs", () => ({
   },
 }));
 
-interface EclipseArgs {
+interface EclipseArguments {
   currentDiameterMoon: number;
   currentDiameterSun: number;
   currentLatitudeMoon: number;
@@ -30,17 +30,17 @@ interface EclipseArgs {
   currentLongitudeMoon: number;
   currentLongitudeSun: number;
 }
-type EclipseFullArgs = EclipseArgs & {
+type EclipseFullArguments = EclipseArguments & {
   nextLongitudeMoon: number;
   nextLongitudeSun: number;
   previousLongitudeMoon: number;
   previousLongitudeSun: number;
 };
 interface ServicePrivate {
-  isLunarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
-  isLunarEclipseActive: (args: EclipseArgs) => boolean;
-  isSolarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
-  isSolarEclipseActive: (args: EclipseArgs) => boolean;
+  isLunarEclipse: (args: EclipseFullArguments) => EclipsePhase | null;
+  isLunarEclipseActive: (args: EclipseArguments) => boolean;
+  isSolarEclipse: (args: EclipseFullArguments) => EclipsePhase | null;
+  isSolarEclipseActive: (args: EclipseArguments) => boolean;
 }
 
 describe("EclipsesService", () => {
@@ -70,13 +70,13 @@ describe("EclipsesService", () => {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
+        .subtract(MARGIN_MINUTES - index, "minutes");
       ephemeris[minute.toISOString()] = {
-        latitude: latitudes[i] ?? latitudes.at(-1) ?? 0,
-        longitude: longitudes[i] ?? longitudes.at(-1) ?? 0,
+        latitude: latitudes[index] ?? latitudes.at(-1) ?? 0,
+        longitude: longitudes[index] ?? longitudes.at(-1) ?? 0,
       };
     }
 
@@ -91,12 +91,12 @@ describe("EclipsesService", () => {
     const ephemeris: DiameterEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
+        .subtract(MARGIN_MINUTES - index, "minutes");
       ephemeris[minute.toISOString()] = {
-        diameter: diameters[i] ?? diameters.at(-1) ?? 0,
+        diameter: diameters[index] ?? diameters.at(-1) ?? 0,
       };
     }
 

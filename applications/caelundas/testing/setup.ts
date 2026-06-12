@@ -12,9 +12,9 @@ import { beforeAll, beforeEach, vi } from "vitest";
 
 // Ensure output directory exists for database files (needed for integration tests)
 beforeAll(() => {
-  const outputDir = "./output";
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  const outputDirectory = "./output";
+  if (!fs.existsSync(outputDirectory)) {
+    fs.mkdirSync(outputDirectory, { recursive: true });
   }
 });
 

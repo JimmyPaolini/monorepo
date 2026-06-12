@@ -147,7 +147,9 @@ export class SextupleAspectsService {
   ): null | { eventMinute: Moment; phase: AspectPhase } {
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+      edges.filter(
+        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
+      );
 
     const currentFiltered = filterByBodies(currentAspectBodies);
     const previousFiltered = filterByBodies(previousAspectBodies);
@@ -269,36 +271,50 @@ export class SextupleAspectsService {
     }
 
     // Try all possible interleavings of the two trines
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
+    for (let index = 0; index < 3; index++) {
+      for (let index_ = 0; index_ < 3; index_++) {
         for (let k = 0; k < 3; k++) {
-          if (k === i) {
+          if (k === index) {
             continue;
           }
           for (let l = 0; l < 3; l++) {
-            if (l === j) {
+            if (l === index_) {
               continue;
             }
 
             // Try arrangement: trine1[i], trine2[j], trine1[k], trine2[l], trine1[remaining], trine2[remaining]
-            const i2 = [0, 1, 2].find((x) => x !== i && x !== k);
-            const j2 = [0, 1, 2].find((x) => x !== j && x !== l);
+            const index2 = [0, 1, 2].find((x) => x !== index && x !== k);
+            const index2_ = [0, 1, 2].find((x) => x !== index_ && x !== l);
 
-            if (i2 === undefined || j2 === undefined) {
+            if (index2 === undefined || index2_ === undefined) {
               continue;
             }
 
-            const t1i = trine1[i];
-            const t2j = trine2[j];
+            const t1index = trine1[index];
+            const t2index = trine2[index_];
             const t1k = trine1[k];
             const t2l = trine2[l];
-            const t1i2 = trine1[i2];
-            const t2j2 = trine2[j2];
-            if (!t1i || !t2j || !t1k || !t2l || !t1i2 || !t2j2) {
+            const t1index2 = trine1[index2];
+            const t2index2 = trine2[index2_];
+            if (
+              !t1index ||
+              !t2index ||
+              !t1k ||
+              !t2l ||
+              !t1index2 ||
+              !t2index2
+            ) {
               continue;
             }
 
-            const arrangement = [t1i, t2j, t1k, t2l, t1i2, t2j2];
+            const arrangement = [
+              t1index,
+              t2index,
+              t1k,
+              t2l,
+              t1index2,
+              t2index2,
+            ];
 
             // Check if this arrangement has all adjacent sextiles (forming hexagon)
             const a0 = arrangement[0];
@@ -333,7 +349,7 @@ export class SextupleAspectsService {
   /**
    * Create a sextuple aspect event
    */
-  private getSextupleAspectEvent(params: {
+  private getSextupleAspectEvent(parameters: {
     body1: Body;
     body2: Body;
     body3: Body;
@@ -354,7 +370,7 @@ export class SextupleAspectsService {
       phase,
       sextupleAspect,
       timestamp,
-    } = params;
+    } = parameters;
 
     const body1Capitalized = _.startCase(body1);
     const body2Capitalized = _.startCase(body2);
@@ -490,8 +506,8 @@ export class SextupleAspectsService {
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
 
-      for (let i = 0; i < sortedEvents.length; i++) {
-        const currentEvent = sortedEvents[i];
+      for (let index = 0; index < sortedEvents.length; index++) {
+        const currentEvent = sortedEvents[index];
         if (!currentEvent) {
           continue;
         }
@@ -502,8 +518,8 @@ export class SextupleAspectsService {
         }
 
         // Look for the next dissolving event
-        for (let j = i + 1; j < sortedEvents.length; j++) {
-          const potentialDissolvingEvent = sortedEvents[j];
+        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
+          const potentialDissolvingEvent = sortedEvents[index_];
           if (!potentialDissolvingEvent) {
             continue;
           }

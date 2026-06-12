@@ -3,7 +3,7 @@ import { builtinModules } from "node:module";
 import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 import { defineConfig } from "vite";
 
-import pkg from "./package.json" with { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 
 export default defineConfig({
   build: {
@@ -21,7 +21,7 @@ export default defineConfig({
       external: [
         ...builtinModules,
         ...builtinModules.map((m) => `node:${m}`),
-        ...Object.keys(pkg.dependencies),
+        ...Object.keys(packageJson.dependencies),
         /^@nestjs\/.*/,
         /^typeorm.*/,
       ],

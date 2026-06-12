@@ -1,0 +1,742 @@
+import { existsSync, mkdirSync } from "node:fs";
+import * as fs from "node:fs/promises";
+import path from "node:path";
+
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import _ from "lodash";
+import { toString } from "mdast-util-to-string";
+import { Command, CommandRunner, Option } from "nest-commander";
+import prompts from "prompts";
+import { remark } from "remark";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import { type DeepPartial, Repository } from "typeorm";
+import YAML from "yaml";
+
+import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
+
+import { LoggerService } from "../logger/logger.service";
+import { NumeralsService } from "../numerals/numerals.service";
+
+import { authorIdToName } from "./literature.constants";
+
+import type { LiteratureCommandOptions } from "./literature.types";
+import type { Paragraph, Root } from "mdast";
+import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
+
+/**
+ * Ingest local literature texts into the database.
+ */
+@Command({
+  description: "Run the literature command",
+  name: "literature",
+})
+@Injectable()
+export class LiteratureCommand extends CommandRunner {
+  // 🏗 Dependency Injection
+
+  constructor(
+    @InjectRepository(Author)
+    private readonly authorRepository: Repository<Author>,
+    @InjectRepository(Text)
+    private readonly textRepository: Repository<Text>,
+    @InjectRepository(Line)
+    private readonly lineRepository: Repository<Line>,
+    @InjectRepository(Token)
+    private readonly tokenRepository: Repository<Token>,
+    @InjectRepository(Word)
+    private readonly wordRepository: Repository<Word>,
+    private readonly logger: LoggerService,
+    private readonly numeralsService: NumeralsService,
+  ) {
+    super();
+    this.logger.setContext(LiteratureCommand.name);
+
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory))
+      mkdirSync(outputDirectory, { recursive: true });
+    this.logFilePath = path.join(
+      outputDirectory,
+      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+  }
+
+  // 🔐 Private Fields
+
+  private readonly logFilePath: string;
+  private readonly memoizedWordCache = new Map<string, null | string>();
+
+  // Ordered by priority
+  private readonly priorityProviders = [
+    "perseus",
+    "corpus-scriptorum-ecclesiasticorum-latinorum",
+    "thelatinlibrary",
+    "epigraphik-datenbank-clauss-slaby",
+  ];
+
+  private wordsCache: Map<string, string> | null = null;
+
+  // 🔒 Private Methods
+
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  private async getAuthorChoices(
+    provider?: string,
+  ): Promise<{ title: string; value: string }[]> {
+    const library = await this.scanLibrary();
+    const filtered = provider
+      ? library.filter((t) => t.provider === provider)
+      : library;
+    const authors = [...new Set(filtered.map((t) => t.authorSlug))].toSorted();
+    return authors.map((a) => ({ title: a, value: a }));
+  }
+
+  private async getProviderChoices(): Promise<
+    { title: string; value: string }[]
+  > {
+    const library = await this.scanLibrary();
+    const providers = [...new Set(library.map((t) => t.provider))].toSorted();
+    return providers.map((p) => ({ title: p, value: p }));
+  }
+
+  private async getTextChoices(
+    provider?: string,
+    authorSlug?: string,
+  ): Promise<{ title: string; value: string }[]> {
+    const library = await this.scanLibrary();
+    let filtered = library;
+    if (provider) filtered = filtered.filter((t) => t.provider === provider);
+    if (authorSlug)
+      filtered = filtered.filter((t) => t.authorSlug === authorSlug);
+
+    const textSlugs = [
+      ...new Set(
+        filtered.map((t) =>
+          [t.authorSlug, ...t.pathParts, t.textSlug].join("/"),
+        ),
+      ),
+    ].toSorted();
+    return textSlugs.map((t) => ({ title: t, value: t }));
+  }
+
+  private async getWordsCache(): Promise<Map<string, string>> {
+    if (!this.wordsCache) {
+      this.logger.log("📖 Caching dictionary words for token mapping...");
+      const words = await this.wordRepository.find({
+        select: { data: true, id: true },
+      });
+      this.wordsCache = new Map(words.map((w) => [w.data, w.id]));
+      this.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
+    }
+    return this.wordsCache;
+  }
+
+  private async ingestLines(text: Text, ast: Root): Promise<void> {
+    this.logger.log(`  📜 Parsing lines for ${text.title}`);
+
+    const wordMap = await this.getWordsCache();
+    const tokenEntities: DeepPartial<Token>[] = [];
+
+    const paragraphs = ast.children.filter(
+      (child): child is Paragraph => child.type === "paragraph",
+    );
+
+    if (paragraphs.length === 0) {
+      this.logger.warn(`⚠️ NO LINES in ${text.slug}`);
+    }
+
+    const lineEntities = paragraphs.map((para, index) => {
+      let label = `${index + 1}`;
+      let lineNodes = para.children;
+      const firstNode = lineNodes[0];
+
+      if (firstNode?.type === "strong") {
+        const strongNode = firstNode;
+        const rawLabel = toString(strongNode).trim();
+
+        // Extract the actual label if it's mixed with a title (e.g. "XXVII. Canis et...")
+        const labelMatch = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i.exec(
+          rawLabel,
+        );
+        if (labelMatch?.[1]) {
+          label = labelMatch[1];
+          if (/^[IVXLCDM]+$/i.test(label)) {
+            label = `${this.numeralsService.toDecimal(label)}`;
+          }
+
+          const remainder = labelMatch[2];
+          lineNodes = lineNodes.slice(1);
+
+          if (remainder) {
+            const newNode = {
+              type: "text",
+              value: `${remainder} `,
+            } as Extract<
+              Parameters<typeof lineNodes.unshift>[0],
+              { type: "text" }
+            >;
+            lineNodes.unshift(newNode);
+          }
+        } else {
+          // If it doesn't match a standard label format, just use the raw label if it fits, or fallback
+          if (rawLabel.length <= 32) {
+            label = rawLabel;
+            if (/^[IVXLCDM]+$/i.test(label)) {
+              label = `${this.numeralsService.toDecimal(label)}`;
+            }
+          }
+          lineNodes = lineNodes.slice(1);
+          // If we rejected the rawLabel as a label because it was too long, we should put it back in the text
+          if (rawLabel.length > 32) {
+            const newNode = {
+              type: "text",
+              value: `${rawLabel} `,
+            } as Extract<
+              Parameters<typeof lineNodes.unshift>[0],
+              { type: "text" }
+            >;
+            lineNodes.unshift(newNode);
+          }
+        }
+
+        const nextNode = lineNodes[0];
+        if (nextNode?.type === "text" && "value" in nextNode) {
+          nextNode.value = nextNode.value.replace(/^\s+/, "");
+        }
+      }
+
+      const lineText = toString({ children: lineNodes, type: "paragraph" });
+
+      return {
+        author: text.author,
+        data: lineText,
+        index,
+        label,
+        text,
+      };
+    });
+
+    const lineChunkSize = 1000;
+    const lineChunks = _.chunk(lineEntities, lineChunkSize);
+    await Promise.all(
+      lineChunks.map(async (chunk) =>
+        this.lineRepository.upsert(chunk as QueryDeepPartialEntity<Line>[], {
+          conflictPaths: ["text", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        }),
+      ),
+    );
+
+    const savedLines = await this.lineRepository.find({
+      loadEagerRelations: false,
+      order: { index: "ASC" },
+      select: { data: true, id: true, index: true },
+      where: { text: { id: text.id } },
+    });
+
+    this.logger.log(
+      `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
+    );
+
+    for (const line of savedLines) {
+      const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
+      tokenStrings.forEach((data, index) => {
+        const isPunctuation = !/^[\p{L}]+$/u.test(data);
+        let wordId: null | string = null;
+        if (!isPunctuation) {
+          if (this.memoizedWordCache.has(data)) {
+            wordId = this.memoizedWordCache.get(data) || null;
+          } else {
+            const normalized = this.escapeCapitals(this.normalize(data));
+            wordId = wordMap.get(normalized) || null;
+            this.memoizedWordCache.set(data, wordId);
+          }
+        }
+
+        tokenEntities.push({
+          author: text.author,
+          data,
+          index,
+          isPunctuation,
+          line,
+          text,
+          word: wordId ? { id: wordId } : null,
+        });
+      });
+    }
+
+    this.logger.log(
+      `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
+    );
+    const chunkSize = 2000;
+    const tokenChunks = _.chunk(tokenEntities, chunkSize);
+    await Promise.all(
+      tokenChunks.map(async (chunk) =>
+        this.tokenRepository.upsert(chunk as QueryDeepPartialEntity<Token>[], {
+          conflictPaths: ["line", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        }),
+      ),
+    );
+  }
+
+  private async ingestText(
+    author: Author,
+    parentText: Text | undefined,
+    title: string,
+    textSlugName: string,
+    textPath: string,
+  ): Promise<void> {
+    const textSlug = parentText
+      ? `${parentText.slug}/${textSlugName}`
+      : `${author.slug}/${textSlugName}`;
+
+    const content = await fs.readFile(textPath, "utf8");
+    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
+
+    let frontmatterData: Record<string, unknown> = {};
+    const yamlNode = ast.children.find((node) => node.type === "yaml") as
+      | undefined
+      | { value: string };
+    if (yamlNode?.value) {
+      try {
+        const parsed = YAML.parse(yamlNode.value) as null | Record<
+          string,
+          unknown
+        >;
+        if (parsed) {
+          frontmatterData = parsed;
+        }
+      } catch {
+        // ignore malformed YAML
+      }
+    }
+
+    if (frontmatterData["author_metadata"]) {
+      const existingMetadata =
+        (author.metadata as null | Record<string, unknown>) || {};
+      author.metadata = _.merge(
+        existingMetadata,
+        frontmatterData["author_metadata"],
+      );
+      await this.authorRepository.save(author);
+    }
+
+    const textSaveObject: DeepPartial<Text> = {
+      author,
+      slug: textSlug,
+      title,
+      type: "text",
+    };
+    if (parentText) {
+      textSaveObject.parentText = parentText;
+    }
+    if (frontmatterData["text_metadata"]) {
+      textSaveObject.metadata = frontmatterData["text_metadata"];
+    }
+
+    await this.textRepository.upsert(
+      textSaveObject as QueryDeepPartialEntity<Text>,
+      {
+        conflictPaths: ["slug"],
+        skipUpdateIfNoValuesChanged: true,
+      },
+    );
+
+    const text = await this.textRepository.findOneOrFail({
+      relations: { author: true },
+      where: { slug: textSlug },
+    });
+
+    await this.ingestLines(text, ast);
+  }
+
+  private normalize(str: string): string {
+    return str
+      .normalize("NFD")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  private async scanLibrary(): Promise<
+    {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[]
+  > {
+    const dataDirectory = path.resolve("data", "library");
+    const texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[] = [];
+
+    async function walk(
+      dir: string,
+      currentPathParts: string[],
+      providerName: string,
+      authorSlug: string,
+    ): Promise<void> {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          await walk(
+            path.join(dir, entry.name),
+            [...currentPathParts, entry.name],
+            providerName,
+            authorSlug,
+          );
+        } else if (entry.isFile() && entry.name.endsWith(".md")) {
+          texts.push({
+            authorSlug,
+            fullPath: path.join(dir, entry.name),
+            pathParts: currentPathParts,
+            provider: providerName,
+            textSlug: path.basename(entry.name, ".md"),
+            title: _.startCase(path.basename(entry.name, ".md")),
+          });
+        }
+      }
+    }
+
+    try {
+      const providers = await fs.readdir(dataDirectory, {
+        withFileTypes: true,
+      });
+      for (const provider of providers) {
+        if (!provider.isDirectory()) continue;
+        const providerName = provider.name;
+
+        const authors = await fs.readdir(
+          path.join(dataDirectory, providerName),
+          {
+            withFileTypes: true,
+          },
+        );
+        for (const author of authors) {
+          if (!author.isDirectory()) continue;
+          const authorSlug = author.name;
+
+          await walk(
+            path.join(dataDirectory, providerName, authorSlug),
+            [],
+            providerName,
+            authorSlug,
+          );
+        }
+      }
+    } catch {
+      // Ignore if data directory doesn't exist yet
+    }
+    return texts;
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   *
+   */
+  @Option({
+    description: "The author to ingest",
+    flags: "-a, --author [author]",
+  })
+  async parseAuthor(
+    author?: string,
+    provider?: string,
+  ): Promise<string | undefined> {
+    const choices = await this.getAuthorChoices(
+      typeof provider === "string" ? provider : undefined,
+    );
+    if (typeof author === "string" && author.trim() !== "") {
+      if (choices.some((choice) => choice.value === author)) {
+        return author;
+      } else {
+        throw new Error(`Author "${author}" not found in the dataset.`);
+      }
+    }
+
+    const response = (await prompts({
+      choices: [{ title: "All", value: "ALL" }, ...choices],
+      message: "Select the author",
+      name: "author",
+      type: "autocomplete",
+    })) as { author: string };
+
+    if (response.author === "ALL" || typeof response.author !== "string") {
+      return undefined;
+    }
+
+    return response.author;
+  }
+
+  /**
+   *
+   */
+  @Option({
+    description: "The provider to ingest from",
+    flags: "-p, --provider [provider]",
+  })
+  async parseProvider(provider?: string): Promise<string | undefined> {
+    const choices = await this.getProviderChoices();
+    if (typeof provider === "string" && provider.trim() !== "") {
+      if (choices.some((choice) => choice.value === provider)) {
+        return provider;
+      } else {
+        throw new Error(`Provider "${provider}" not found in the dataset.`);
+      }
+    }
+
+    const response = (await prompts({
+      choices: [{ title: "All", value: "ALL" }, ...choices],
+      message: "Select the provider",
+      name: "provider",
+      type: "autocomplete",
+    })) as { provider: string };
+
+    if (response.provider === "ALL" || typeof response.provider !== "string") {
+      return undefined;
+    }
+
+    return response.provider;
+  }
+
+  /**
+   *
+   */
+  @Option({
+    description: "The specific text to ingest",
+    flags: "-t, --text [text]",
+  })
+  async parseText(
+    text?: string,
+    provider?: string,
+    authorSlug?: string,
+  ): Promise<string | undefined> {
+    const choices = await this.getTextChoices(
+      typeof provider === "string" ? provider : undefined,
+      typeof authorSlug === "string" ? authorSlug : undefined,
+    );
+    if (typeof text === "string" && text.trim() !== "") {
+      if (choices.some((choice) => choice.value === text)) {
+        return text;
+      } else {
+        throw new Error(`Text "${text}" not found in the dataset.`);
+      }
+    }
+
+    const response = (await prompts({
+      choices: [{ title: "All", value: "ALL" }, ...choices],
+      message: "Select the text",
+      name: "text",
+      type: "autocomplete",
+    })) as { text: string };
+
+    if (response.text === "ALL" || typeof response.text !== "string") {
+      return undefined;
+    }
+
+    return response.text;
+  }
+
+  // 🌎 Public Methods
+
+  /** Runs the literature ingestion pipeline. */
+  async run(
+    _arguments: string[],
+    options: LiteratureCommandOptions,
+  ): Promise<void> {
+    this.logger.log(`📚 Starting literature ingestion...`);
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
+    const startTime = performance.now();
+
+    const library = await this.scanLibrary();
+    if (library.length === 0) {
+      this.logger.warn(`⚠️ No texts found in data/library directory.`);
+      return;
+    }
+
+    const provider = await this.parseProvider(options.provider ?? undefined);
+    const author = await this.parseAuthor(
+      options.author ?? undefined,
+      provider,
+    );
+    const text = await this.parseText(
+      options.text ?? undefined,
+      provider,
+      author,
+    );
+
+    let filtered = library;
+
+    if (provider) {
+      filtered = filtered.filter((t) => t.provider === provider);
+    }
+    if (author) {
+      filtered = filtered.filter((t) => t.authorSlug === author);
+    }
+    if (text) {
+      filtered = filtered.filter(
+        (t) => [t.authorSlug, ...t.pathParts, t.textSlug].join("/") === text,
+      );
+    }
+
+    // De-duplicate by selecting the highest priority provider for each text
+    const textMap = new Map<string, (typeof filtered)[0]>();
+
+    for (const t of filtered) {
+      const slug = [t.authorSlug, ...t.pathParts, t.textSlug].join("/");
+      const existing = textMap.get(slug);
+
+      if (existing) {
+        const existingPriority = this.priorityProviders.indexOf(
+          existing.provider,
+        );
+        const newPriority = this.priorityProviders.indexOf(t.provider);
+
+        // If the new provider has a higher priority (lower index, but not -1), or the existing provider is not in the priority list
+        if (
+          newPriority !== -1 &&
+          (existingPriority === -1 || newPriority < existingPriority)
+        ) {
+          textMap.set(slug, t);
+        }
+      } else {
+        textMap.set(slug, t);
+      }
+    }
+
+    const textsToIngest = [...textMap.values()];
+
+    this.logger.log(`📚 Selected ${textsToIngest.length} texts for ingestion.`);
+
+    // Group by author
+    const grouped = _.groupBy(textsToIngest, "authorSlug");
+    const authors = Object.entries(grouped);
+
+    let currentAuthor = 0;
+    const totalAuthors = authors.length;
+
+    for (const [authorSlug, texts] of authors) {
+      this.logger.log(`👤 Starting author: ${authorSlug}`);
+
+      await this.authorRepository.upsert(
+        {
+          name: authorIdToName[authorSlug] || _.startCase(authorSlug),
+          slug: authorSlug,
+        },
+        { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+      );
+
+      const authorEntity = await this.authorRepository.findOneOrFail({
+        where: { slug: authorSlug },
+      });
+
+      const parentTexts = new Map<string, Text>();
+
+      let currentText = 0;
+      const totalTexts = texts.length;
+
+      // Ensure all intermediate directories exist as Text entities sequentially
+      for (const t of texts) {
+        if (t.pathParts.length > 0) {
+          let currentPath = authorSlug;
+          for (const part of t.pathParts) {
+            const parentSlug = currentPath;
+            currentPath = `${currentPath}/${part}`;
+
+            if (!parentTexts.has(currentPath)) {
+              const pText = parentTexts.get(parentSlug);
+
+              await this.textRepository.upsert(
+                {
+                  author: authorEntity,
+                  parentText: pText,
+                  slug: currentPath,
+                  title: _.startCase(part),
+                  type: "book",
+                } as QueryDeepPartialEntity<Text>,
+                { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+              );
+
+              const newParent = await this.textRepository.findOneOrFail({
+                where: { slug: currentPath },
+              });
+              parentTexts.set(currentPath, newParent);
+            }
+          }
+        }
+      }
+
+      const textChunks = _.chunk(texts, 5);
+      for (const chunk of textChunks) {
+        await Promise.all(
+          chunk.map(async (t) => {
+            let parentText: Text | undefined;
+            if (t.pathParts.length > 0) {
+              const currentPath = [authorSlug, ...t.pathParts].join("/");
+              parentText = parentTexts.get(currentPath);
+            }
+
+            const hierarchy = parentText
+              ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
+              : "";
+            this.logger.log(
+              `  📜 Starting: ${hierarchy}${t.title} (from ${t.provider})`,
+            );
+
+            try {
+              await this.ingestText(
+                authorEntity,
+                parentText,
+                t.title,
+                t.textSlug,
+                t.fullPath,
+              );
+            } catch (error: unknown) {
+              const errorMessage =
+                error instanceof Error
+                  ? error.stack || error.message
+                  : String(error);
+              this.logger.error(
+                `❌ Failed to process ${hierarchy}${t.title} (from ${t.provider}): ${String(error)}`,
+              );
+              await fs.appendFile(
+                this.logFilePath,
+                `[${new Date().toISOString()}] ${t.fullPath}: ${errorMessage}\n`,
+              );
+            }
+
+            currentText++;
+            const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+            this.logger.log(
+              `  ✅ Completed: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
+            );
+          }),
+        );
+      }
+
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
+      this.logger.log(`👤 Completed author: ${authorSlug}${authorProgress}`);
+    }
+
+    const endTime = performance.now();
+    const duration = ((endTime - startTime) / 1000).toFixed(2);
+    this.logger.log(`📚 Literature ingestion complete in ${duration} seconds`);
+  }
+}

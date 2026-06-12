@@ -23,8 +23,8 @@ export interface TranslationsProps {
 /**
  *
  */
-export function Translations(props: TranslationsProps): ReactElement {
-  const { className, defaultOpen = false, translations } = props;
+export function Translations(properties: TranslationsProps): ReactElement {
+  const { className, defaultOpen = false, translations } = properties;
 
   // 🪝 Hooks
 

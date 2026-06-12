@@ -45,11 +45,11 @@ describe("RetrogradesService", () => {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
 
-    for (let i = 0; i < totalMinutes; i++) {
+    for (let index = 0; index < totalMinutes; index++) {
       const minute = currentMinute
         .clone()
-        .subtract(MARGIN_MINUTES - i, "minutes");
-      const longitude = longitudes[i] ?? longitudes.at(-1) ?? 0;
+        .subtract(MARGIN_MINUTES - index, "minutes");
+      const longitude = longitudes[index] ?? longitudes.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         latitude: 0,
         longitude,
@@ -66,14 +66,14 @@ describe("RetrogradesService", () => {
       // Mercury slowing down and then going retrograde
       // Longitudes increasing slower then decreasing (retrograde)
       const longitudes: number[] = [];
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
         // Previous: increasing toward maximum
-        longitudes.push(100 + i * 0.001);
+        longitudes.push(100 + index * 0.001);
       }
       longitudes.push(100 + MARGIN_MINUTES * 0.001); // Current at peak
-      for (let i = 0; i < MARGIN_MINUTES; i++) {
+      for (let index = 0; index < MARGIN_MINUTES; index++) {
         // Next: decreasing (retrograde)
-        longitudes.push(100 + MARGIN_MINUTES * 0.001 - (i + 1) * 0.001);
+        longitudes.push(100 + MARGIN_MINUTES * 0.001 - (index + 1) * 0.001);
       }
 
       const mercuryEphemeris = createCoordinateEphemeris(
@@ -83,8 +83,8 @@ describe("RetrogradesService", () => {
 
       // Create empty ephemeris for other bodies
       const emptyEphemeris: CoordinateEphemeris = {};
-      for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES; i++) {
-        const minute = currentMinute.clone().add(i, "minutes");
+      for (let index = -MARGIN_MINUTES; index <= MARGIN_MINUTES; index++) {
+        const minute = currentMinute.clone().add(index, "minutes");
         emptyEphemeris[minute.toISOString()] = { latitude: 0, longitude: 0 };
       }
 
@@ -126,8 +126,8 @@ describe("RetrogradesService", () => {
 
       // All planets moving direct (increasing longitude)
       const directLongitudes: number[] = [];
-      for (let i = 0; i < MARGIN_MINUTES * 2 + 1; i++) {
-        directLongitudes.push(100 + i * 0.01);
+      for (let index = 0; index < MARGIN_MINUTES * 2 + 1; index++) {
+        directLongitudes.push(100 + index * 0.01);
       }
 
       const directEphemeris = createCoordinateEphemeris(

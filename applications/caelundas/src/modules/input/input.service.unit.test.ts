@@ -24,32 +24,32 @@ describe("InputService", () => {
 
   describe("environmentSchema.parse", () => {
     it("should return validated environment with all fields provided", () => {
-      const env = environmentSchema.parse({
+      const environment = environmentSchema.parse({
         END_DATE: "2025-01-02",
         LATITUDE: "40.7128",
         LONGITUDE: "-74.006",
         OUTPUT_DIRECTORY: "./out",
         START_DATE: "2025-01-01",
       });
-      expect(env.LATITUDE).toBe(40.7128);
-      expect(env.LONGITUDE).toBe(-74.006);
-      expect(env.START_DATE).toBe("2025-01-01");
-      expect(env.END_DATE).toBe("2025-01-02");
-      expect(env.OUTPUT_DIRECTORY).toBe("./out");
+      expect(environment.LATITUDE).toBe(40.7128);
+      expect(environment.LONGITUDE).toBe(-74.006);
+      expect(environment.START_DATE).toBe("2025-01-01");
+      expect(environment.END_DATE).toBe("2025-01-02");
+      expect(environment.OUTPUT_DIRECTORY).toBe("./out");
     });
 
     it("should default OUTPUT_DIRECTORY to ./output when omitted", () => {
-      const env = environmentSchema.parse({});
-      expect(env.OUTPUT_DIRECTORY).toBe("./output");
+      const environment = environmentSchema.parse({});
+      expect(environment.OUTPUT_DIRECTORY).toBe("./output");
     });
 
     it("should coerce string coordinates to numbers", () => {
-      const env = environmentSchema.parse({
+      const environment = environmentSchema.parse({
         LATITUDE: "40.7128",
         LONGITUDE: "-74.006",
       });
-      expect(typeof env.LATITUDE).toBe("number");
-      expect(typeof env.LONGITUDE).toBe("number");
+      expect(typeof environment.LATITUDE).toBe("number");
+      expect(typeof environment.LONGITUDE).toBe("number");
     });
 
     it("should succeed when all fields are omitted", () => {
@@ -80,9 +80,9 @@ describe("InputService", () => {
   describe("parse", () => {
     mockDates();
 
-    function makeService(env: Partial<Environment>): InputService {
+    function makeService(environment: Partial<Environment>): InputService {
       const configService = {
-        get: vi.fn((key: string) => env[key as keyof Environment]),
+        get: vi.fn((key: string) => environment[key as keyof Environment]),
       } as unknown as ConfigService<Environment>;
       return new InputService(configService);
     }

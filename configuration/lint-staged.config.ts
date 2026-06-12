@@ -9,6 +9,19 @@
  */
 import { relative } from "node:path";
 
+import { APPLICATIONS_DIRECTORY } from "../tools/conformance/src/generators/nestjs-command-application/generator.js";
+import { MODULES_DIRECTORY } from "../tools/conformance/src/generators/nestjs-graphql-module/generator.js";
+
+const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
+const MODULES_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**/${MODULES_DIRECTORY}/**`;
+const APPLICATIONS_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**`;
+
+const CONFORMANCE_PATTERNS = [
+  TEMPLATE_PATTERN,
+  MODULES_INSTANCE_PATTERN,
+  APPLICATIONS_INSTANCE_PATTERN,
+] as const;
+
 const syncConventionalConfigFiles = [
   "configuration/conventional.config.cjs",
   ".vscode/settings.json",
@@ -140,6 +153,14 @@ const config = {
       `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
+
+  // ── Conformance tests ──
+  // Run conformance tests when generator templates or generated instances change
+  // to ensure generated code instances conform to their template definitions.
+  // Patterns are derived from generator configuration files (see tools/conformance/src/lint-staged-patterns.ts)
+  [`{${CONFORMANCE_PATTERNS.join(",")}}`]: () => [
+    "nx run conformance:test --outputStyle=dynamic-legacy",
+  ],
 
   // ── SQL files ──
   // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)

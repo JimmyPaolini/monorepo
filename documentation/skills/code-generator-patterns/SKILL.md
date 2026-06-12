@@ -430,14 +430,14 @@ describe("myGenerator", () => {
 ```typescript
 import { execSync } from "child_process";
 import { mkdtempSync, rmSync } from "fs";
-import { tmpdir } from "os";
+import { temporaryDirectory } from "os";
 import { join } from "path";
 
 describe("myGenerator (integration)", () => {
   let tempDir: string;
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), "nx-test-"));
+    tempDir = mkdtempSync(join(temporaryDirectory(), "nx-test-"));
 
     // Create minimal Nx workspace
     execSync("npx create-nx-workspace@latest test-workspace --preset=empty", {

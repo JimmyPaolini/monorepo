@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormTabs } from "./form-tabs";
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps } from "./form-cell";
+import type { FormCellProps as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single declined form of an adjective.
@@ -59,7 +59,7 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
 interface AdjectiveFormGroup {
   degree: string;
   genders: {
-    cells: FormCellProps[];
+    cells: FormCellProperties[];
     gender: string;
   }[];
 }
@@ -129,7 +129,9 @@ function groupByGender(forms: AdjectiveForm[]): AdjectiveFormGroup["genders"] {
 /**
  * Restructure adjective forms for a specific gender into cells
  */
-function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
+function restructureAdjectiveForms(
+  forms: AdjectiveForm[],
+): FormCellProperties[] {
   // Group by case
   const byCase: Record<string, { plural?: string; singular?: string }> = {};
 
@@ -149,7 +151,7 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
   // Filter to only cases that have data
   const activeCases = CASE_ORDER.filter((caseName) => byCase[caseName]);
 
-  const cells: FormCellProps[] = [];
+  const cells: FormCellProperties[] = [];
 
   for (const caseName of activeCases) {
     const caseData = byCase[caseName] || {};
@@ -174,7 +176,7 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
 const AdjectiveFormsTable = React.forwardRef<
   HTMLDivElement,
   AdjectiveFormsTableProps
->(({ className, forms, search }, ref) => {
+>(({ className, forms, search }, reference) => {
   const grouped = React.useMemo(() => groupAdjectiveForms(forms), [forms]);
 
   const [activeDegree, setActiveDegree] = React.useState(0);
@@ -223,7 +225,7 @@ const AdjectiveFormsTable = React.forwardRef<
 
   return (
     <div
-      ref={ref}
+      ref={reference}
       className={className}
     >
       {hasDegrees ? (

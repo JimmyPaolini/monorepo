@@ -40,10 +40,13 @@ export function validateJsonConformance(args: {
   const renderedTemplate = mustache.render(template, data);
 
   // Structural validation
-  const templateObj = parse(renderedTemplate) as JsonValue;
-  const instanceObj = parse(instance) as JsonValue;
+  const templateObject = parse(renderedTemplate) as JsonValue;
+  const instanceObject = parse(instance) as JsonValue;
 
-  const structuralErrors = validateDepthFirstSearch(templateObj, instanceObj);
+  const structuralErrors = validateDepthFirstSearch(
+    templateObject,
+    instanceObject,
+  );
 
   // Comment validation
   const commentErrors = validateComments({
@@ -58,9 +61,10 @@ export function validateJsonConformance(args: {
  * Formats a path array as a readable string (e.g. `["a", "b", 0]` → `"a.b[0]"`).
  */
 function formatPath(path: (number | string)[]): string {
-  return path.reduce<string>((acc, segment) => {
-    if (typeof segment === "number") return `${acc}[${String(segment)}]`;
-    return acc === "" ? segment : `${acc}.${segment}`;
+  return path.reduce<string>((accumulator, segment) => {
+    if (typeof segment === "number")
+      return `${accumulator}[${String(segment)}]`;
+    return accumulator === "" ? segment : `${accumulator}.${segment}`;
   }, "");
 }
 
@@ -79,20 +83,23 @@ function validateDepthFirstSearch(
   path: (number | string)[] = [],
 ): ConformanceError[] {
   if (Array.isArray(template) && Array.isArray(instance)) {
-    return template.flatMap((item, i) => {
-      const itemPath = formatPath([...path, i]);
-      return i >= instance.length
+    return template.flatMap((item, index) => {
+      const itemPath = formatPath([...path, index]);
+      return index >= instance.length
         ? [
             {
               errorType: "code" as const,
-              fix: `Add the missing array element at index ${String(i)} (path: "${itemPath}") to the instance file.`,
+              fix: `Add the missing array element at index ${String(index)} (path: "${itemPath}") to the instance file.`,
               instancePath: itemPath,
               language: "json" as const,
               message: `Missing required key: "${itemPath}"`,
               templatePath: itemPath,
             },
           ]
-        : validateDepthFirstSearch(item, instance[i] ?? null, [...path, i]);
+        : validateDepthFirstSearch(item, instance[index] ?? null, [
+            ...path,
+            index,
+          ]);
     });
   }
 

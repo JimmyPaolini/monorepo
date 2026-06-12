@@ -56,15 +56,15 @@ async function downloadFile(url: string, destination: string): Promise<void> {
           file.close();
           resolve();
         });
-        file.on("error", (err) => {
+        file.on("error", (error) => {
           file.close();
-          reject(err);
+          reject(error);
         });
       })
-      .on("error", (err) => {
+      .on("error", (error) => {
         file.close();
         if (existsSync(destination)) unlinkSync(destination);
-        reject(err);
+        reject(error);
       });
   });
 }

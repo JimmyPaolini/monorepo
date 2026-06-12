@@ -35,7 +35,7 @@ export function validateTextConformance(args: {
 
   const errors: ConformanceError[] = [];
   const templateLines = renderedTemplate.split("\n");
-  for (const [i, line] of templateLines.entries()) {
+  for (const [index, line] of templateLines.entries()) {
     const count = instanceLineCounts.get(line) ?? 0;
     if (count === 0) {
       errors.push({
@@ -44,7 +44,7 @@ export function validateTextConformance(args: {
         fix: `Add the line \`${line}\` to the instance file.`,
         language: "text",
         message: `Missing line: ${line}`,
-        templateLine: i + 1,
+        templateLine: index + 1,
       });
     } else {
       instanceLineCounts.set(line, count - 1);

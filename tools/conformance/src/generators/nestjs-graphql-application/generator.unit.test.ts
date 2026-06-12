@@ -44,11 +44,11 @@ describe("generateNestjsGraphqlApplication", () => {
       expect(projectJson).toContain('"framework:nestjs-graphql-api"');
       expect(projectJson).toContain('"framework:nestjs"');
 
-      const envDefault = tree.read(
+      const environmentDefault = tree.read(
         "applications/stellar-api/.env.default",
         "utf8",
       );
-      expect(envDefault).toContain("PORT=3000");
+      expect(environmentDefault).toContain("PORT=3000");
     });
 
     it("substitutes name variables in generated files", async () => {

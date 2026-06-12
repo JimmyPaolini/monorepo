@@ -42,18 +42,18 @@ function resolveNestjsModuleDirectories(
     .filter((application) => application.tags.includes(tag))
     .map((application) => {
       return {
-        appName: path.basename(application.rootPath),
+        applicationName: path.basename(application.rootPath),
         modulesPath: path.join(application.rootPath, "src", "modules"),
       };
     })
     .filter(({ modulesPath }) => fs.existsSync(modulesPath))
-    .flatMap(({ appName, modulesPath }) =>
+    .flatMap(({ applicationName, modulesPath }) =>
       fs
         .readdirSync(modulesPath, { withFileTypes: true })
         .filter(
           (entry) =>
             entry.isDirectory() &&
-            entry.name !== appName &&
+            entry.name !== applicationName &&
             entry.name !== "logger",
         )
         .map((entry) => path.join(modulesPath, entry.name)),
@@ -66,12 +66,12 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
     applications,
     NESTJS_APPLICATION_TAG,
   );
-  const commandAppModules = resolveNestjsModuleDirectories(
+  const commandApplicationModules = resolveNestjsModuleDirectories(
     applications,
     NESTJS_COMMAND_APPLICATION_TAG,
   );
 
-  const commandModules = commandAppModules.filter((directoryPath) =>
+  const commandModules = commandApplicationModules.filter((directoryPath) =>
     fs.existsSync(
       path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
     ),

@@ -1,10 +1,12 @@
 export { LexicoDatabaseModule } from "./database/lexico-database.module.js";
 export { LexicoNamingStrategy } from "./database/lexico-naming-strategy.js";
 export { AuditableEntity } from "./entities/Auditable.entity.js";
-export { AdjectivalForm } from "./entities/form/AdjectivalForm.entity.js";
-export { AdverbForm } from "./entities/form/AdverbForm.entity.js";
-export { FiniteVerbForm } from "./entities/form/FiniteVerbForm.entity.js";
-export { Form } from "./entities/form/Form.entity.js";
+export { CreatableEntity } from "./entities/Creatable.entity.js";
+export { DeletableEntity } from "./entities/Deletable.entity.js";
+export { AdjectivalForm } from "./entities/dictionary/form/AdjectivalForm.entity.js";
+export { AdverbForm } from "./entities/dictionary/form/AdverbForm.entity.js";
+export { FiniteVerbForm } from "./entities/dictionary/form/FiniteVerbForm.entity.js";
+export { Form } from "./entities/dictionary/form/Form.entity.js";
 export {
   formCaseValues,
   formDegreeValues,
@@ -17,7 +19,7 @@ export {
   formSupineCaseValues,
   formTenseValues,
   formVoiceValues,
-} from "./entities/form/Form.entity.js";
+} from "./entities/dictionary/form/Form.entity.js";
 export type {
   FormCase,
   FormDegree,
@@ -30,62 +32,68 @@ export type {
   FormSupineCase,
   FormTense,
   FormVoice,
-} from "./entities/form/Form.entity.js";
-export { GerundForm } from "./entities/form/GerundForm.entity.js";
-export { InfinitiveForm } from "./entities/form/InfinitiveForm.entity.js";
-export { NominalForm } from "./entities/form/NominalForm.entity.js";
-export { ParticipleForm } from "./entities/form/ParticipleForm.entity.js";
-export { SupineForm } from "./entities/form/SupineForm.entity.js";
+} from "./entities/dictionary/form/Form.entity.js";
+export { GerundForm } from "./entities/dictionary/form/GerundForm.entity.js";
+export { InfinitiveForm } from "./entities/dictionary/form/InfinitiveForm.entity.js";
+export { NominalForm } from "./entities/dictionary/form/NominalForm.entity.js";
+export { ParticipleForm } from "./entities/dictionary/form/ParticipleForm.entity.js";
+export { SupineForm } from "./entities/dictionary/form/SupineForm.entity.js";
 export {
   adjectiveDeclensionValues,
   adjectiveDegreeValues,
   AdjectiveInflection,
-} from "./entities/inflection/AdjectiveInflection.entity.js";
+} from "./entities/dictionary/inflection/AdjectiveInflection.entity.js";
 export type {
   AdjectiveDeclension,
   AdjectiveDegree,
-} from "./entities/inflection/AdjectiveInflection.entity.js";
+} from "./entities/dictionary/inflection/AdjectiveInflection.entity.js";
 export {
   adverbDegreeValues,
   AdverbInflection,
   adverbTypeValues,
-} from "./entities/inflection/AdverbInflection.entity.js";
+} from "./entities/dictionary/inflection/AdverbInflection.entity.js";
 export type {
   AdverbDegree,
   AdverbType,
-} from "./entities/inflection/AdverbInflection.entity.js";
-export { Inflection } from "./entities/inflection/Inflection.entity.js";
+} from "./entities/dictionary/inflection/AdverbInflection.entity.js";
+export { Inflection } from "./entities/dictionary/inflection/Inflection.entity.js";
 export {
   declensionEnumValues,
   nounDeclensionValues,
   nounGenderValues,
   NounInflection,
-} from "./entities/inflection/NounInflection.entity.js";
+} from "./entities/dictionary/inflection/NounInflection.entity.js";
 export type {
   NounDeclension,
   NounGender,
-} from "./entities/inflection/NounInflection.entity.js";
+} from "./entities/dictionary/inflection/NounInflection.entity.js";
 export {
   prepositionCaseValues,
   PrepositionInflection,
-} from "./entities/inflection/PrepositionInflection.entity.js";
-export type { PrepositionCase } from "./entities/inflection/PrepositionInflection.entity.js";
-export { Uninflected } from "./entities/inflection/Uninflected.entity.js";
+} from "./entities/dictionary/inflection/PrepositionInflection.entity.js";
+export type { PrepositionCase } from "./entities/dictionary/inflection/PrepositionInflection.entity.js";
+export { Uninflected } from "./entities/dictionary/inflection/Uninflected.entity.js";
 export {
   verbConjugationValues,
   VerbInflection,
-} from "./entities/inflection/VerbInflection.entity.js";
-export type { VerbConjugation } from "./entities/inflection/VerbInflection.entity.js";
-export { Lexeme } from "./entities/Lexeme.entity.js";
-export type { PartOfSpeech } from "./entities/PartOfSpeech.entity.js";
-export { partOfSpeechValues } from "./entities/PartOfSpeech.entity.js";
-export { PrincipalPart } from "./entities/PrincipalPart.entity.js";
+} from "./entities/dictionary/inflection/VerbInflection.entity.js";
+export type { VerbConjugation } from "./entities/dictionary/inflection/VerbInflection.entity.js";
+export { Lexeme } from "./entities/dictionary/Lexeme.entity.js";
+export type { PartOfSpeech } from "./entities/dictionary/PartOfSpeech.entity.js";
+export { partOfSpeechValues } from "./entities/dictionary/PartOfSpeech.entity.js";
+export { PrincipalPart } from "./entities/dictionary/PrincipalPart.entity.js";
 export {
   Pronunciation,
   pronunciationVariantValues,
-} from "./entities/Pronunciation.entity.js";
-export type { PronunciationVariant } from "./entities/Pronunciation.entity.js";
-export { Translation } from "./entities/Translation.entity.js";
-export { Word } from "./entities/Word.entity.js";
-export { WordForm } from "./entities/WordForm.entity.js";
-export { WordLexeme } from "./entities/WordLexeme.entity.js";
+} from "./entities/dictionary/Pronunciation.entity.js";
+export type { PronunciationVariant } from "./entities/dictionary/Pronunciation.entity.js";
+export { Translation } from "./entities/dictionary/Translation.entity.js";
+export { Word } from "./entities/dictionary/Word.entity.js";
+export { WordForm } from "./entities/dictionary/WordForm.entity.js";
+export { WordLexeme } from "./entities/dictionary/WordLexeme.entity.js";
+export { IdentifiableEntity } from "./entities/Identifiable.entity.js";
+export { Author } from "./entities/literature/Author.entity.js";
+export { Line } from "./entities/literature/Line.entity.js";
+export { Text } from "./entities/literature/Text.entity.js";
+export { Token } from "./entities/literature/Token.entity.js";
+export { UpdatableEntity } from "./entities/Updatable.entity.js";

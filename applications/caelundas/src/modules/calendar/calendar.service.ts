@@ -212,10 +212,10 @@ END:VCALENDAR
       name: "Caelundas 🔭",
       timezone: input.timezone,
     });
-    const outputDir =
+    const outputDirectory =
       this.configService.get<string>("OUTPUT_DIRECTORY") ?? "./output";
     await writeFile(
-      path.join(outputDir, calendarFilename),
+      path.join(outputDirectory, calendarFilename),
       new TextEncoder().encode(calendarFileContent),
     );
     this.logger.log(

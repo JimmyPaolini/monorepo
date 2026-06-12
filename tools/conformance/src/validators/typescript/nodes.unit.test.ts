@@ -145,9 +145,9 @@ describe("getKey", () => {
     const source = parseTypescript("const x = 42;\n");
     const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
-    const numLiteral = defined(decl.initializer);
-    expect(numLiteral.kind).toBe(SyntaxKind.NumericLiteral);
-    expect(getKey(numLiteral)).toBe("42");
+    const numberLiteral = defined(decl.initializer);
+    expect(numberLiteral.kind).toBe(SyntaxKind.NumericLiteral);
+    expect(getKey(numberLiteral)).toBe("42");
   });
 
   it("returns non-null text for BigIntLiteral node", () => {

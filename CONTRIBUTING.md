@@ -22,7 +22,6 @@ Thank you for contributing! This guide covers the development workflow, code sta
   - [Environment Variables](#environment-variables)
     - [Root (`.env.default`)](#root-envdefault)
     - [caelundas (`applications/caelundas/.env.default`)](#caelundas-applicationscaelundasenvdefault)
-    - [lexico (`applications/lexico/.env.default`)](#lexico-applicationslexicoenvdefault)
   - [Dependency Update Workflow](#dependency-update-workflow)
   - [Additional Resources](#additional-resources)
   - [Getting Help](#getting-help)
@@ -51,7 +50,7 @@ cd monorepo
 This script:
 
 - Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
-- Installs **Terraform**, **Supabase CLI**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
+- Installs **Terraform**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
 - Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
 - Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
 - Runs `pnpm install` and `uv sync` (Python venv for affirmations)
@@ -83,7 +82,6 @@ Alternatively, use the included dev container for a fully configured environment
 | Node.js      | 22.20.0                     | JavaScript runtime                                           |
 | pnpm         | 10.20.0                     | Package manager                                              |
 | Terraform    | latest                      | Infrastructure provisioning (Linode)                         |
-| Supabase CLI | latest                      | Database migrations, type generation                         |
 | kubectl      | latest                      | Kubernetes cluster management                                |
 | Helm         | latest                      | Kubernetes package manager                                   |
 | GitHub CLI   | latest                      | Repository operations                                        |
@@ -97,11 +95,6 @@ Alternatively, use the included dev container for a fully configured environment
 | 3001  | Open WebUI        | Notify       |
 | 8889  | SearxNG           | Notify       |
 | 11434 | Ollama API        | Silent       |
-| 54321 | Supabase API      | Silent       |
-| 54322 | PostgreSQL        | Silent       |
-| 54323 | Supabase Studio   | Notify       |
-| 54324 | Inbucket (Email)  | Silent       |
-| 54325 | Analytics         | Silent       |
 
 See [.devcontainer/README.md](.devcontainer/README.md) for detailed configuration and troubleshooting.
 
@@ -112,7 +105,7 @@ monorepo/
 ├── applications/           # Deployable applications
 │   ├── affirmations/      # Python LangChain + Ollama affirmation generator
 │   ├── caelundas/         # CLI ephemeris calendar generator
-│   ├── lexico/            # TanStack Start + Supabase web app
+│   ├── lexico/            # TanStack Start web app
 │   └── JimmyPaolini/      # Personal website
 ├── packages/              # Shared libraries
 │   └── lexico-components/ # React component library (shadcn/ui)
@@ -255,14 +248,6 @@ Each project uses `.env.default` files as templates for required environment var
 | `INITIAL_DELAY_MS`   | `1000`      | Initial retry backoff delay                   |
 | `MAX_DELAY_MS`       | `30000`     | Maximum retry backoff delay                   |
 | `BACKOFF_MULTIPLIER` | `2`         | Exponential backoff factor                    |
-
-### lexico (`applications/lexico/.env.default`)
-
-| Variable                    | Purpose                                                    |
-| --------------------------- | ---------------------------------------------------------- |
-| `SUPABASE_URL`              | Supabase project URL                                       |
-| `SUPABASE_ANON_KEY`         | Supabase anonymous/public key (safe for client)            |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only, never expose) |
 
 ## Dependency Update Workflow
 

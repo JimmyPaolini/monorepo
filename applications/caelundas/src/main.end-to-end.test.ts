@@ -365,8 +365,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     it("should generate correct combinations", async () => {
       const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
-      const getCombinations = <T>(arr: T[], k: number): T[][] =>
-        mathService.getCombinations(arr, k);
+      const getCombinations = <T>(array: T[], k: number): T[][] =>
+        mathService.getCombinations(array, k);
 
       const planets = ["sun", "moon", "mercury", "venus", "mars"];
 
