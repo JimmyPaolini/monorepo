@@ -16,12 +16,12 @@ import YAML from "yaml";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
-import { LoggerService } from "../logger/logger.service.js";
-import { NumeralsService } from "../numerals/numerals.service.js";
+import { LoggerService } from "../logger/logger.service";
+import { NumeralsService } from "../numerals/numerals.service";
 
-import { authorIdToName } from "./literature.constants.js";
+import { authorIdToName } from "./literature.constants";
 
-import type { LiteratureCommandOptions } from "./literature.types.js";
+import type { LiteratureCommandOptions } from "./literature.types";
 import type { Paragraph, Root } from "mdast";
 import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 
@@ -29,11 +29,13 @@ import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialE
  * Ingest local literature texts into the database.
  */
 @Command({
-  description: "Ingest local literature text files into the database",
+  description: "Run the literature command",
   name: "literature",
 })
 @Injectable()
 export class LiteratureCommand extends CommandRunner {
+  // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Author)
     private readonly authorRepository: Repository<Author>,
@@ -60,6 +62,8 @@ export class LiteratureCommand extends CommandRunner {
     );
   }
 
+  // 🔐 Private Fields
+
   private readonly logFilePath: string;
   private readonly memoizedWordCache = new Map<string, null | string>();
 
@@ -78,6 +82,10 @@ export class LiteratureCommand extends CommandRunner {
   private escapeCapitals(word: string): string {
     return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
   }
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
 
   private async getAuthorChoices(
     provider?: string,
@@ -544,6 +552,8 @@ export class LiteratureCommand extends CommandRunner {
 
     return response.text;
   }
+
+  // 🌎 Public Methods
 
   /** Runs the literature ingestion pipeline. */
   async run(

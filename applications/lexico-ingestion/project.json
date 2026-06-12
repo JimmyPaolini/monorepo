@@ -12,12 +12,7 @@
   "targets": {
     "analyze-code": {},
     "build": {
-      "description": "Build the application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts build",
-        "cwd": "applications/lexico-ingestion"
-      }
+      "command": "echo 'lexico-ingestion is a development tool and does not require building'"
     },
     "clean": {},
     "clear": {

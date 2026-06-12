@@ -4,6 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
+import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 import { NumeralsService } from "../numerals/numerals.service";
 
@@ -14,6 +15,7 @@ describe("LiteratureCommand", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         LiteratureCommand,
         {

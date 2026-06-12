@@ -11,7 +11,7 @@ import { LoggerService } from "../logger/logger.service";
  * Download raw JSON chunks from the Epigraphik-Datenbank Clauss-Slaby API.
  */
 @Command({
-  description: "Download Epigraphik-Datenbank Clauss-Slaby JSON chunks",
+  description: "Run the epigraphik-datenbank-clauss-slaby command",
   name: "epigraphik-datenbank-clauss-slaby",
 })
 @Injectable()

@@ -1,6 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LibraryCommand } from "./library.command";
@@ -14,6 +15,7 @@ describe("LibraryCommand", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
         LibraryCommand,
         {

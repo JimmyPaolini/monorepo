@@ -21,7 +21,7 @@ import type { Author } from "@monorepo/lexico-entities";
  * Scrape literature data from various sources to markdown files.
  */
 @Command({
-  description: "Run the library ingestion command",
+  description: "Run the library command",
   name: "library",
 })
 @Injectable()
@@ -53,13 +53,17 @@ export class LibraryCommand extends CommandRunner {
     );
   }
 
+  // 🔐 Private Fields
+
   private readonly logFilePath: string;
   private readonly providers: {
     ingest: (options?: { author?: string; text?: string }) => Promise<Author[]>;
     name: string;
   }[];
 
-  // 🔒 Private Methods
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
 
   private async getAuthorChoices(
     provider?: string,

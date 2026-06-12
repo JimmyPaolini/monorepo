@@ -1,4 +1,4 @@
-import { WordsModule } from "@lexico-ingestion/src/modules/words/words.module.js";
+import { WordsModule } from "@lexico-ingestion/src/modules/words/words.module";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 

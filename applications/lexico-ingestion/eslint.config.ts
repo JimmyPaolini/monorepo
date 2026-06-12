@@ -11,6 +11,7 @@ export default [
       "@nx/dependency-checks": [
         "error",
         {
+          ignoredDependencies: ["pg", "vitest"],
           ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
         },
       ],

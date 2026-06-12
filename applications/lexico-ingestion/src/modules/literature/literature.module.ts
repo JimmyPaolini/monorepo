@@ -10,15 +10,16 @@ import {
   Word,
 } from "@monorepo/lexico-entities";
 
-import { LoggerModule } from "../logger/logger.module.js";
-import { NumeralsModule } from "../numerals/numerals.module.js";
+import { LoggerModule } from "../logger/logger.module";
+import { NumeralsModule } from "../numerals/numerals.module";
 
-import { LiteratureCommand } from "./literature.command.js";
+import { LiteratureCommand } from "./literature.command";
 
 /**
  * Module for literature ingestion.
  */
 @Module({
+  controllers: [],
   exports: [LiteratureCommand],
   imports: [
     LexicoDatabaseModule,

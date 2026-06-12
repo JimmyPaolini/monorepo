@@ -11,7 +11,7 @@ import { LoggerService } from "../logger/logger.service";
  * Download raw XML chunks from the CSEL GitHub repository.
  */
 @Command({
-  description: "Download CSEL XML files locally",
+  description: "Run the corpus-scriptorum-ecclesiasticorum-latinorum command",
   name: "corpus-scriptorum-ecclesiasticorum-latinorum",
 })
 @Injectable()

@@ -14,7 +14,7 @@ import {
   Word,
 } from "@monorepo/lexico-entities";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
 interface ClearCommandOptions {
   dictionary?: boolean;

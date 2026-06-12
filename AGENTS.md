@@ -115,7 +115,7 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Strict mode enabled**: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`
 - **Explicit return types** required for all functions
 - **Type imports**: Use `import { type Foo } from './types'` (enforced by ESLint)
-- **No file extensions in imports**: Omit `.js` and `.ts` from all relative imports
+- **File extensions in imports**: Always include `.js` extensions for relative imports (required by NodeNext resolution)
 - **No `any` types**: Use `unknown` or proper typing
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.

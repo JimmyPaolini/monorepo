@@ -3,7 +3,7 @@ import { createServerFn as createServerFunction } from "@tanstack/react-start";
 /**
  * Represents a user's saved text in the library.
  */
-/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  *
  */
@@ -17,7 +17,6 @@ export interface UserText {
   /** ID of the user who owns the text */
   user_id: string;
 }
-/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Get all texts for the current user

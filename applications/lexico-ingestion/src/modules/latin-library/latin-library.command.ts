@@ -13,7 +13,7 @@ import { LoggerService } from "../logger/logger.service";
  * Download HTML files from The Latin Library.
  */
 @Command({
-  description: "Download The Latin Library HTML files locally",
+  description: "Run the latin-library command",
   name: "latin-library",
 })
 @Injectable()

@@ -11,7 +11,7 @@ import { LoggerService } from "../logger/logger.service";
  * Download raw XML chunks from the Perseus GitHub repository.
  */
 @Command({
-  description: "Download Perseus XML files locally",
+  description: "Run the perseus command",
   name: "perseus",
 })
 @Injectable()

@@ -15,9 +15,9 @@ export interface EntryFull {
   forms: Forms;
   id: string;
   inflection: Record<string, object>;
-  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+
   part_of_speech: PartOfSpeech;
-  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+
   principal_parts: PrincipalParts;
   pronunciation: Pronunciation;
   translations: string[];
@@ -31,9 +31,9 @@ export interface EntrySearchResult {
   forms: Forms;
   id: string;
   inflection: Record<string, object>;
-  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+
   part_of_speech: PartOfSpeech;
-  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+
   principal_parts: PrincipalParts;
   pronunciation: Pronunciation;
   similarities: number[];

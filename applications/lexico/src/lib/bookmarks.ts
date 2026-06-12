@@ -21,7 +21,6 @@ export interface BookmarkedEntry {
   /** Translation strings */
   translations: string[];
 }
-/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Get all bookmarked entries for the current user

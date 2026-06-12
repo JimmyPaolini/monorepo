@@ -36,7 +36,8 @@
     "@types/number-to-words": "^1.2.3",
     "@types/prompts": "^2.4.9",
     "@vitest/coverage-v8": "^4.1.7",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
   },
   "name": "lexico-ingestion",
   "type": "module",
