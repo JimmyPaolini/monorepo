@@ -60,7 +60,9 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
 - **[triage-deployment](documentation/skills/triage-deployment/SKILL.md)**: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
 - **[triage-submission](documentation/skills/triage-submission/SKILL.md)**: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
+- **[typescript-conventions](documentation/skills/typescript-conventions/SKILL.md)**: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, or the no-any rule. Covers strict mode flags, explicit return types, type import syntax, naming conventions, and error handling patterns.
 - **[update-pull-request](documentation/skills/update-pull-request/SKILL.md)**: Update an existing pull request's title and description to accurately reflect the implemented changes. Use this skill when asked to update, refresh, or rewrite a PR title or description, sync a PR with the latest changes, or when the PR description no longer matches the implementation.
+- **[validate-code](documentation/skills/validate-code/SKILL.md)**: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
 <!-- agent-skills-table-of-contents end -->
 
 ## Projects
@@ -91,6 +93,42 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
 | `react-component` | `c` | Generate a React component with test file |
 <!-- conformance-generators-table end -->
+
+## Code Quality & Validation
+
+**Every coding agent MUST run the `validate-code` skill before declaring any implementation task complete.** This is non-negotiable.
+
+```bash
+# Auto-fix all format, lint, and unused-code issues
+pnpm exec nx affected --target=analyze-code --configuration=write --base=main
+
+# Verify no issues remain — all checks must pass
+pnpm exec nx affected --target=analyze-code --configuration=check --base=main
+```
+
+For new/untracked files not yet picked up by `nx affected`:
+
+```bash
+pnpm exec nx run <project>:analyze-code --configuration=write
+pnpm exec nx run <project>:analyze-code --configuration=check
+```
+
+**Do not commit until both commands pass cleanly.** If they fail, use the [triage-submission skill](documentation/skills/triage-submission/SKILL.md) to diagnose and fix the errors.
+
+See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for the full validation workflow and per-tool fix guidance.
+
+### Quality Tools at a Glance
+
+| Tool | Covers | Config |
+| ---- | ------ | ------ |
+| `oxfmt` + `prettier` | Formatting | `configuration/oxfmt.config.ts`, `configuration/prettier.config.ts` |
+| `eslint` + `oxlint` | Linting (TS/JS) | project `eslint.config.ts`, `configuration/oxlint.config.ts` |
+| `ruff` | Formatting + linting (Python) | `configuration/pyproject.toml` |
+| `tsc` / `pyright` / `ty` | Type checking | project `tsconfig.json`, `configuration/tsconfig.base.json` |
+| `knip` / `vulture` | Unused code + deps | `configuration/knip.config.ts`, `configuration/vulture_whitelist.py` |
+| `cspell` | Spell checking | `configuration/cspell.config.yaml` |
+| `markdownlint` | Markdown lint | `configuration/.markdownlint-cli2.jsonc` |
+| `yamllint` | YAML lint | `configuration/yamllint.yaml` |
 
 ## Key Conventions
 
