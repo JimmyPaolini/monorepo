@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/JimmyPaolini/monorepo/compare/v1.10.0...v1.10.1) (2026-06-13)
+
+### 📝 Documentation
+
+* **documentation:** 📝 add proactive code validation skills and workflow gates ([#66](https://github.com/JimmyPaolini/monorepo/issues/66)) ([db88dfe](https://github.com/JimmyPaolini/monorepo/commit/db88dfe7679cf3ec212db9475613d8e82e2664f0))
+
+### 📦 Build System
+
+* **deps:** ⬆️ bump aiohttp from 3.13.5 to 3.14.0 in /applications/affirmations in the uv group across 1 directory ([#57](https://github.com/JimmyPaolini/monorepo/issues/57)) ([bc8a31e](https://github.com/JimmyPaolini/monorepo/commit/bc8a31e77c3e39bcba086156d9c896dfa7601317))
+
 ## [1.10.0](https://github.com/JimmyPaolini/monorepo/compare/v1.9.0...v1.10.0) (2026-06-12)
 
 ### ✨ Features
