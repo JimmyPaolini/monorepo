@@ -191,11 +191,12 @@
     "configuration", // Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)
     "conformance", // Code generator templates and conformance validation tests for generated instances
     "dependencies", // Dependency version changes (upgrades, additions, removals via pnpm)
+    "deps", // Dependency version changes (upgrades, additions, removals via pnpm)
     "deployments", // GitHub Actions workflows and CI/CD pipeline configuration
     "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
     "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
     "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-    "lexico", // TanStack Start SSR Latin dictionary web app
+    "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
     "lexico-components", // Shared React/shadcn component library
     "lexico-entities", // Shared TypeORM entities and GraphQL types
     "lexico-ingestion", // Data ingestion scripts for Lexico
@@ -715,6 +716,7 @@
     "*.utils.ts": "gemini",
     "auth.guard.js": "authors",
     "constants.ts": "3d",
+    "conventional.config.cjs": "commitlint",
     "database-client-config.json": "database",
     "devcontainer.json": "3d",
     "eslint.config.base.ts": "eslint",
@@ -731,6 +733,7 @@
     "settings.json": "settings",
     "tsconfig*.json": "tsconfig",
     "types.ts": "typescript-def",
+    "validate-branch-name.config.cjs": "commitlint",
     "vitest.config.base.ts": "vitest"
   },
   "material-icon-theme.folders.associations": {
@@ -864,10 +867,10 @@
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
   },
   "terminal.integrated.env.osx": {
-    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "terraform.languageServer.args": ["serve"],
   "terraform.languageServer.enable": true,

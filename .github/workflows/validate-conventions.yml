@@ -38,7 +38,7 @@ jobs:
           pnpm exec validate-branch-name -t "$BRANCH_NAME"
 
       - name: 📝 Validate Pull Request Title
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'dependabot/') && !startsWith(github.head_ref, 'renovate/')
         env:
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
           NODE_OPTIONS: --import=tsx
@@ -50,7 +50,7 @@ jobs:
           echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint --config configuration/commitlint.config.ts
 
       - name: 🪢 Validate Pull Request Body
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'dependabot/') && !startsWith(github.head_ref, 'renovate/')
         env:
           PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
         run: |

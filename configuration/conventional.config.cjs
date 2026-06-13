@@ -19,176 +19,181 @@
  */
 const types = [
   {
-    emoji: "✨",
     code: ":sparkles:",
-    name: "feat",
     description: "A new feature or capability that adds value for users",
+    emoji: "✨",
+    name: "feat",
   },
   {
-    emoji: "🐛",
     code: ":bug:",
-    name: "fix",
     description: "A bug fix that addresses a specific issue or problem",
+    emoji: "🐛",
+    name: "fix",
   },
   {
-    emoji: "📝",
     code: ":memo:",
-    name: "docs",
     description:
       "Documentation, AGENTS.md, SKILL.md, README, and planning files",
+    emoji: "📝",
+    name: "docs",
   },
   {
-    emoji: "🧪",
     code: ":test_tube:",
-    name: "test",
     description: "Adding or correcting unit, integration, or end-to-end tests",
+    emoji: "🧪",
+    name: "test",
   },
   {
-    emoji: "♻️",
     code: ":recycle:",
-    name: "refactor",
     description:
       "Code restructuring that neither fixes a bug nor adds a feature",
+    emoji: "♻️",
+    name: "refactor",
   },
   {
-    emoji: "🎨",
     code: ":art:",
-    name: "style",
     description:
       "Formatting, whitespace, or code structure changes with no semantic effect",
+    emoji: "🎨",
+    name: "style",
   },
   {
-    emoji: "⚡️",
     code: ":zap:",
-    name: "perf",
     description:
       "A code change that improves performance (caching, query optimization, etc.)",
+    emoji: "⚡️",
+    name: "perf",
   },
   {
-    emoji: "🔧",
     code: ":wrench:",
-    name: "chore",
     description:
       "Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.)",
+    emoji: "🔧",
+    name: "chore",
   },
   {
-    emoji: "👷",
     code: ":construction_worker:",
-    name: "ci",
     description:
       "GitHub Actions workflows, composite actions, and CI/CD scripts",
+    emoji: "👷",
+    name: "ci",
   },
   {
-    emoji: "📦️",
     code: ":package:",
-    name: "build",
     description:
       "Build system, Vite/Docker/Helm config, or external dependency integration",
+    emoji: "📦️",
+    name: "build",
   },
   {
-    emoji: "⏪️",
     code: ":rewind:",
-    name: "revert",
     description: "Reverts a previous commit",
+    emoji: "⏪️",
+    name: "revert",
   },
 ];
 
 const scopes = [
   {
-    name: "affirmations",
     description:
       "Python Jupyter notebook application for LangGraph affirmation generation",
+    name: "affirmations",
   },
   {
-    name: "applications",
     description:
       "Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.)",
+    name: "applications",
   },
   {
-    name: "caelundas",
     description:
       "Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)",
+    name: "caelundas",
   },
   {
-    name: "configuration",
     description:
       "Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)",
+    name: "configuration",
   },
   {
-    name: "conformance",
     description:
       "Code generator templates and conformance validation tests for generated instances",
+    name: "conformance",
   },
   {
-    name: "dependencies",
     description:
       "Dependency version changes (upgrades, additions, removals via pnpm)",
+    name: "dependencies",
   },
   {
-    name: "deployments",
+    description:
+      "Dependency version changes (upgrades, additions, removals via pnpm)",
+    name: "deps",
+  },
+  {
     description: "GitHub Actions workflows and CI/CD pipeline configuration",
+    name: "deployments",
   },
   {
-    name: "documentation",
     description: "Markdown docs, skills, planning files, and AGENTS.md files",
+    name: "documentation",
   },
   {
-    name: "infrastructure",
     description: "Helm charts, Terraform configs, and Kubernetes resources",
+    name: "infrastructure",
   },
   {
-    name: "JimmyPaolini",
     description: "Static GitHub profile README project (markdown and assets)",
+    name: "JimmyPaolini",
   },
   {
-    name: "lexico",
     description:
       "TanStack Start SSR Latin dictionary web app with Supabase backend",
+    name: "lexico",
   },
   {
-    name: "lexico-components",
     description: "Shared React/shadcn component library",
+    name: "lexico-components",
   },
   {
-    name: "lexico-entities",
     description: "Shared TypeORM entities and GraphQL types",
+    name: "lexico-entities",
   },
   {
-    name: "lexico-ingestion",
     description: "Data ingestion scripts for Lexico",
+    name: "lexico-ingestion",
   },
   {
-    name: "monorepo",
     description:
       "Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)",
+    name: "monorepo",
   },
   {
-    name: "no-release",
     description: "Escape hatch: suppress semantic-release for any commit type",
+    name: "no-release",
   },
   {
-    name: "packages",
     description: "Changes spanning multiple shared packages in packages/",
+    name: "packages",
   },
   {
-    name: "release",
     description:
       "Version bumps and release commits generated by semantic-release",
+    name: "release",
   },
   {
-    name: "scripts",
     description:
       "Shell and TypeScript scripts in scripts/ (sync, setup, utilities)",
+    name: "scripts",
   },
   {
-    name: "testing",
     description:
       "Vitest configuration, shared test utilities, and coverage setup",
+    name: "testing",
   },
   {
-    name: "tools",
     description: "Changes spanning multiple tool projects in tools/",
+    name: "tools",
   },
 ];
 
-module.exports = { types, scopes };
+module.exports = { scopes, types };
