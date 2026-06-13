@@ -23,6 +23,22 @@ These rules are non-negotiable:
 - **NEVER** auto-fix pre-commit failures — report the failure and stop
 - On any failure: **report the error and stop immediately**
 
+## Phase 0 — Pre-flight Validation
+
+**Before doing anything else**, verify the working tree is clean enough to commit. Run the [validate-code skill](../validate-code/SKILL.md):
+
+```bash
+# Auto-fix format, lint, and unused-code issues
+pnpm exec nx affected --target=analyze-code --configuration=write --base=main
+
+# Verify all checks pass
+pnpm exec nx affected --target=analyze-code --configuration=check --base=main
+```
+
+**If `check` fails**: Stop immediately. Fix the reported issues (see [triage-submission](../triage-submission/SKILL.md) for per-tool guidance), re-run `check` until it passes, then continue to Phase 1.
+
+**If `check` passes**: Proceed — the code is clean and ready to commit.
+
 ## Automatic Change Analysis
 
 Before executing any phases, analyze the working tree and staged changes:

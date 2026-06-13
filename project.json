@@ -501,7 +501,7 @@
           "command": "tsx scripts/sync-agent-skills.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -522,7 +522,7 @@
           "command": "tsx scripts/sync-conformance-generators.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that conformance generators table is synchronized from tools/conformance/generators.json into AGENTS.md (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -543,7 +543,7 @@
           "command": "tsx scripts/sync-conventional-config.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -565,7 +565,7 @@
           "command": "tsx scripts/sync-devcontainer-configuration.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that common fields in cloud devcontainer.json are in sync with the local config (check) or propagate them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -586,7 +586,7 @@
           "command": "tsx scripts/sync-pull-request-template.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that the PR template is synchronized from .github/PULL_REQUEST_TEMPLATE.md into skills and prompt files (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -609,7 +609,7 @@
           "command": "tsx .devcontainer/scripts/sync-vscode-extensions.ts write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and both devcontainer configurations (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
@@ -631,7 +631,7 @@
           "command": "tsx .devcontainer/scripts/sync-vscode-settings.ts write"
         }
       },
-      "defaultConfiguration": "check",
+      "defaultConfiguration": "write",
       "description": "Validate that VS Code Machine settings contain all workspace settings (check) or merge workspace settings into Machine settings (write)",
       "executor": "nx:run-commands",
       "inputs": ["{projectRoot}/.vscode/settings.json"],

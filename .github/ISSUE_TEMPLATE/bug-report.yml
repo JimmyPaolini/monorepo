@@ -22,6 +22,7 @@ body:
         - configuration
         - conformance
         - dependencies
+        - deps
         - deployments
         - documentation
         - infrastructure
