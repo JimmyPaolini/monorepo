@@ -151,7 +151,7 @@ Fix: Update the PR title in the GitHub UI.
 
 #### 🪢 Validate Pull Request Body
 
-Template: [.github/PULL_REQUEST_TEMPLATE.md](../../PULL_REQUEST_TEMPLATE.md)
+Template: [.github/PULL_REQUEST_TEMPLATE.md](../../../.github/PULL_REQUEST_TEMPLATE.md)
 
 Required sections (exact heading text): `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, `## 🔗 Related`
 

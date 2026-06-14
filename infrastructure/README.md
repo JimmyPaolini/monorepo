@@ -1,60 +1,41 @@
 # Infrastructure
 
-**Kubernetes deployment tools and cloud infrastructure configuration for the monorepo.**
+Shared infrastructure assets for the monorepo.
 
-> For detailed architecture, deployment patterns, Helm chart configuration, and troubleshooting, see [AGENTS.md](AGENTS.md).
+This directory currently contains a reusable Helm chart for Kubernetes jobs and
+Terraform configuration for cluster provisioning. The checked-in workspace does
+not currently expose application-specific Docker or Helm Nx targets.
 
 ## Contents
 
-| Directory                                  | Purpose                                                        |
-| ------------------------------------------ | -------------------------------------------------------------- |
-| [helm/kubernetes-job](helm/kubernetes-job) | Reusable Helm chart for batch job deployments with PVC storage |
-| [terraform/](terraform)                    | Linode LKE (Kubernetes) cluster provisioning                   |
+| Path | Purpose |
+| ---- | ------- |
+| `helm/kubernetes-job/` | Reusable Helm chart for batch-job style workloads |
+| `terraform/` | Terraform configuration for Kubernetes infrastructure |
 
-## Quick Start
+## Common Commands
 
-### Deploy Application with Helm
+### Helm
 
 ```bash
-# Build, push, and deploy
-nx run caelundas:docker-build
-nx run caelundas:docker-push
-nx run caelundas:helm-upgrade
-# → Release name: caelundas-20260125-143022
-
-# Monitor and retrieve output
-kubectl get jobs -l app.kubernetes.io/name=caelundas -w
-nx run caelundas:kubernetes-copy-files -- --release-name=caelundas-20260125-143022
-
-# Clean up
-nx run caelundas:helm-uninstall -- --release-name=caelundas-20260125-143022
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job \
+  --values infrastructure/helm/kubernetes-job/values/base.yaml
 ```
 
-### Provision Kubernetes Cluster
+### Terraform
 
 ```bash
 cd infrastructure/terraform
 terraform init
-terraform plan -var="linode_token=$LINODE_API_TOKEN"
-terraform apply -var="linode_token=$LINODE_API_TOKEN"
+terraform plan
+terraform apply
 ```
 
-## Deployment Pipeline
+## Notes
 
-```text
-Code → Docker Build → Push to GHCR → Helm Upgrade → K8s Job → Retrieve Output
-```
+- Use direct `docker`, `kubectl`, `helm`, and `terraform` commands when working
+  in this directory.
+- The chart under `helm/kubernetes-job/` is intended for batch jobs rather than
+  long-running deployments.
 
-1. **Build**: `nx run <app>:docker-build` (linux/amd64 platform)
-2. **Push**: `nx run <app>:docker-push` (to GHCR)
-3. **Secret**: `kubectl apply -f <app>/kubernetes/secret.yaml` (one-time)
-4. **Deploy**: `nx run <app>:helm-upgrade` (creates Job)
-5. **Monitor**: `kubectl get jobs -w`
-6. **Retrieve**: `nx run <app>:kubernetes-copy-files`
-7. **Clean**: `nx run <app>:helm-uninstall`
-
-## Documentation
-
-- **[AGENTS.md](AGENTS.md)**: Complete infrastructure architecture, Helm chart config, Terraform setup, troubleshooting
-- **[caelundas AGENTS.md](../applications/caelundas/AGENTS.md)**: Application deployment example
-- **[Main AGENTS.md](../AGENTS.md)**: Monorepo architecture and Nx workflows
+For architecture and workflow guidance, see [AGENTS.md](AGENTS.md).

@@ -51,10 +51,10 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 - **[caelundas](applications/caelundas)** - CLI ephemeris calendar generator with astronomical calculations
 - **[conformance](tools/conformance)** - Nx generators for scaffolding code
 - **[infrastructure](infrastructure)** - Helm charts, Terraform, Kubernetes infrastructure
-- **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
-- **[lexico](applications/lexico)** - TanStack Start dictionary web application
+- **JimmyPaolini** - Git submodule for the GitHub profile site (`applications/JimmyPaolini`)
+- **[lexico](applications/lexico)** - TanStack Start SSR dictionary interface with placeholder backend contracts
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
-- **[lexico-entities](packages/lexico-entities)** - Shared TypeORM entities and GraphQL types package
+- **[lexico-entities](packages/lexico-entities/README.md)** - Shared TypeORM entities and database helpers for Lexico projects
 - **[lexico-ingestion](applications/lexico-ingestion)** - NestJS CLI app for Latin dictionary data ingestion
 
 ## 📖 Documentation

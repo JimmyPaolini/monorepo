@@ -649,7 +649,7 @@ if (heapGrowth > 10000000) {
 
 ## Related Documentation
 
-- [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md) - Lexico architecture
+- [applications/lexico/AGENTS.md](../../../applications/lexico/AGENTS.md) - Lexico architecture
 - [tanstack-start-ssr skill](../tanstack-start-ssr/SKILL.md) - SSR debugging patterns
 - [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) - Official CDP docs
 
@@ -657,4 +657,4 @@ if (heapGrowth > 10000000) {
 
 - **tanstack-start-ssr skill** - For SSR debugging
 - **github-actions skill** - For CI/CD with browser testing
-- **mcp-supabase skill** - For backend debugging
+- **tool-execution-model skill** - For choosing between Nx wrappers and direct tooling

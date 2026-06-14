@@ -570,7 +570,7 @@ async function exportAllAssets(fileKey: string) {
 
 ## Related Documentation
 
-- [packages/lexico-components/AGENTS.md](../../packages/lexico-components/AGENTS.md) - Component library
+- [packages/lexico-components/AGENTS.md](../../../packages/lexico-components/AGENTS.md) - Component library
 - [mcp-shadcn skill](../mcp-shadcn/SKILL.md) - shadcn component management
 - [Figma API Documentation](https://www.figma.com/developers/api) - Official Figma API docs
 

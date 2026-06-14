@@ -18,7 +18,7 @@ The lexico application uses TanStack Start for:
 - **Streaming** for progressive data loading
 - **Cookie-based auth** compatible with Supabase
 
-For comprehensive patterns and examples, see [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md).
+For comprehensive patterns and examples, see [applications/lexico/AGENTS.md](../../../applications/lexico/AGENTS.md).
 
 ## Project Structure
 
@@ -581,9 +581,9 @@ function ContactForm() {
 
 ## Related Documentation
 
-- [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md) - Lexico architecture
+- [applications/lexico/AGENTS.md](../../../applications/lexico/AGENTS.md) - Lexico architecture
 - [TanStack Start Docs](https://tanstack.com/start) - Official documentation
-- [supabase-development skill](../supabase-development/SKILL.md) - Supabase integration
+- [applications/lexico/README.md](../../../applications/lexico/README.md) - Current Lexico feature snapshot
 
 ## Troubleshooting
 
@@ -595,12 +595,12 @@ function ContactForm() {
 
 **Cookies not persisting:**
 
-- Verify SUPABASE_URL and SUPABASE_ANON_KEY are set
-- Check cookie domain matches app domain
-- Ensure secure flag is appropriate for environment
+- Verify the server function or route is wired into the current app shell
+- Check cookie domain matches the app domain if you add auth later
+- Ensure secure flag usage matches the current environment
 
 **Type errors in loaders:**
 
-- Regenerate Supabase types: `nx run lexico:supabase:generate-types`
 - Check loader return type matches component expectations
 - Verify validator schema matches handler parameters
+- Keep route contracts aligned with the placeholder server functions in `src/lib/`

@@ -693,12 +693,12 @@ export async function componentGenerator(tree: Tree, options: ComponentSchema) {
 
 ## Related Documentation
 
-- [tools/conformance/AGENTS.md](../../tools/conformance/AGENTS.md) - Full generator guide
-- [tools/conformance/README.md](../../tools/conformance/README.md) - Usage examples
+- [tools/conformance/AGENTS.md](../../../tools/conformance/AGENTS.md) - Full generator guide
+- [tools/conformance/README.md](../../../tools/conformance/README.md) - Usage examples
 - [Nx Generator Docs](https://nx.dev/extending-nx/recipes/local-generators) - Official documentation
 
 ## Examples
 
 See existing generators for patterns:
 
-- [tools/conformance/src/generators/](../../tools/conformance/src/generators/) - Example generators
+- [tools/conformance/src/generators/](../../../tools/conformance/src/generators/) - Example generators

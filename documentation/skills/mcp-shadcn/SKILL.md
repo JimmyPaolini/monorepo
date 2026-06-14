@@ -485,13 +485,13 @@ When adding components used by lexico:
 
 ## Related Documentation
 
-- [packages/lexico-components/AGENTS.md](../../packages/lexico-components/AGENTS.md) - Component library architecture
-- [packages/lexico-components/README.md](../../packages/lexico-components/README.md) - Usage guide
+- [packages/lexico-components/AGENTS.md](../../../packages/lexico-components/AGENTS.md) - Component library architecture
+- [packages/lexico-components/README.md](../../../packages/lexico-components/README.md) - Usage guide
 - [shadcn/ui Documentation](https://ui.shadcn.com/) - Official shadcn/ui docs
 - [Radix UI Documentation](https://www.radix-ui.com/) - Primitive component docs
 
 ## See Also
 
-- **supabase-development skill** - For backend integration
+- **tanstack-start-ssr skill** - For route-level integration patterns
 - **tanstack-start-ssr skill** - For SSR patterns with components
 - **github-actions skill** - For CI/CD testing of components
