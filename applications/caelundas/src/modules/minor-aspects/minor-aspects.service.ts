@@ -26,6 +26,32 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
+interface AssembleMinorAspectEventArguments {
+  body1: Body;
+  body2: Body;
+  minorAspect: MinorAspect;
+  phase: AspectPhase;
+  timestamp: Moment;
+}
+
+interface DetectBodyPairAspectArguments {
+  body1: Body;
+  body2: Body;
+  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+  minute: Moment;
+  nextMinute: Moment;
+  previousMinute: Moment;
+}
+
+interface ExtractAspectComponentsResult {
+  aspect: MinorAspect;
+  aspectCapitalized: string;
+  body1: Body;
+  body1Capitalized: string;
+  body2: Body;
+  body2Capitalized: string;
+}
+
 /**
  * Detects and formats minor aspect events between celestial bodies.
  *
@@ -62,36 +88,36 @@ export class MinorAspectsService {
   // 🔏 Private Methods
 
   private assembleMinorAspectEvent(
-    body1: Body,
-    body2: Body,
-    minorAspect: MinorAspect,
-    phase: AspectPhase,
-    timestamp: Moment,
+    args: AssembleMinorAspectEventArguments,
   ): Event {
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const minorAspectSymbol = symbolByMinorAspect[minorAspect];
+    const { body1, body2, minorAspect, phase, timestamp } = args;
+    const body1Cap = capitalize(body1);
+    const body2Cap = capitalize(body2);
     const baseCategories = [
       "Astronomy",
       "Astrology",
       "Simple Aspect",
       "Minor Aspect",
-      body1Capitalized,
-      body2Capitalized,
+      body1Cap,
+      body2Cap,
       _.startCase(minorAspect),
     ];
     const { categories, description, phaseEmoji } = this.resolvePhaseDetails(
       phase,
-      body1Capitalized,
-      body2Capitalized,
+      body1Cap,
+      body2Cap,
       minorAspect,
       baseCategories,
     );
-    const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
+    const summary = `${phaseEmoji} ${symbolByBody[body1]} ${symbolByMinorAspect[minorAspect]} ${symbolByBody[body2]} ${description}`;
     this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-    return { categories, description, end: timestamp, start: timestamp, summary };
+    return {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
   }
 
   private buildGroupKey(event: Event): string {
@@ -122,7 +148,11 @@ export class MinorAspectsService {
     const aspectLower = aspectCapitalized.toLowerCase();
     const body1Lower = body1Capitalized.toLowerCase();
     const body2Lower = body2Capitalized.toLowerCase();
-    if (!isMinorAspect(aspectLower) || !isBody(body1Lower) || !isBody(body2Lower)) {
+    if (
+      !isMinorAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
       throw new Error(
         `Could not extract typed values from categories: ${categories.join(", ")}`,
       );
@@ -131,15 +161,30 @@ export class MinorAspectsService {
   }
 
   private detectBodyPairAspect(
-    body1: Body,
-    body2: Body,
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
-    previousMinute: Moment,
-    minute: Moment,
-    nextMinute: Moment,
+    args: DetectBodyPairAspectArguments,
   ): Event | null {
-    const win1 = this.getLongitudesWindowForBody(body1, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
-    const win2 = this.getLongitudesWindowForBody(body2, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
+    const {
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    } = args;
+    const win1 = this.getLongitudesWindowForBody(
+      body1,
+      coordinateEphemerisByBody,
+      previousMinute,
+      minute,
+      nextMinute,
+    );
+    const win2 = this.getLongitudesWindowForBody(
+      body2,
+      coordinateEphemerisByBody,
+      previousMinute,
+      minute,
+      nextMinute,
+    );
     const phase = this.detectPhaseFromWindows(win1, win2);
     if (!phase) {
       return null;
@@ -168,33 +213,37 @@ export class MinorAspectsService {
     });
   }
 
-  private extractAspectComponents(categories: string[]): {
-    aspect: MinorAspect;
-    aspectCapitalized: string;
-    body1: Body;
-    body1Capitalized: string;
-    body2: Body;
-    body2Capitalized: string;
-  } {
-    const bodiesCapitalized = _.sortBy(
-      categories.filter((category) =>
-        minorAspectBodies
-          .map((minorAspectBody) => _.startCase(minorAspectBody))
-          .includes(category),
-      ),
+  private extractAspectComponents(
+    categories: string[],
+  ): ExtractAspectComponentsResult {
+    const bodiesCap = categories
+      .filter((c: string) =>
+        minorAspectBodies.map((b: string) => _.startCase(b)).includes(c),
+      )
+      .toSorted();
+    const aspectCap = categories.find((c: string) =>
+      minorAspects.map((a: string) => _.startCase(a)).includes(c),
     );
-    const aspectCapitalized = categories.find((category) =>
-      minorAspects.map((minorAspect) => _.startCase(minorAspect)).includes(category),
-    );
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+    if (bodiesCap.length !== 2 || !aspectCap)
       throw new Error(
-        `Could not extract aspect info from categories: ${categories.join(", ")}`,
+        `Could not extract aspect info: ${categories.join(", ")}`,
       );
-    }
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const { aspect, body1, body2 } = this.castAspectComponentsToTypes(body1Capitalized, body2Capitalized, aspectCapitalized, categories);
-    return { aspect, aspectCapitalized, body1, body1Capitalized, body2, body2Capitalized };
+    const body1Cap = bodiesCap[0] ?? "";
+    const body2Cap = bodiesCap[1] ?? "";
+    const { aspect, body1, body2 } = this.castAspectComponentsToTypes(
+      body1Cap,
+      body2Cap,
+      aspectCap,
+      categories,
+    );
+    return {
+      aspect,
+      aspectCapitalized: aspectCap,
+      body1,
+      body1Capitalized: body1Cap,
+      body2,
+      body2Capitalized: body2Cap,
+    };
   }
 
   private getLongitudesWindowForBody(
@@ -330,7 +379,13 @@ export class MinorAspectsService {
       );
       throw new Error("No minor aspect found");
     }
-    return this.assembleMinorAspectEvent(body1, body2, minorAspect, phase, timestamp);
+    return this.assembleMinorAspectEvent({
+      body1,
+      body2,
+      minorAspect,
+      phase,
+      timestamp,
+    });
   }
 
   /**
@@ -368,14 +423,14 @@ export class MinorAspectsService {
         if (body1 === body2) {
           continue;
         }
-        const event = this.detectBodyPairAspect(
+        const event = this.detectBodyPairAspect({
           body1,
           body2,
           coordinateEphemerisByBody,
-          previousMinute,
           minute,
           nextMinute,
-        );
+          previousMinute,
+        });
         if (event) {
           minorAspectEvents.push(event);
         }

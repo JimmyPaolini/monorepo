@@ -379,10 +379,16 @@ export class MonthlyLunarCycleService {
       moonIlluminationEphemeris,
       minute,
     );
-    const illuminations = { currentIllumination, nextIlluminations, previousIlluminations };
     const monthlyLunarCycleEvents: Event[] = [];
     for (const lunarPhase of lunarPhases) {
-      if (this.isLunarPhase({ ...illuminations, lunarPhase })) {
+      if (
+        this.isLunarPhase({
+          currentIllumination,
+          lunarPhase,
+          nextIlluminations,
+          previousIlluminations,
+        })
+      ) {
         monthlyLunarCycleEvents.push(
           this.buildMonthlyLunarCycleEvent({ date: minute, lunarPhase }),
         );

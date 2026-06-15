@@ -9,43 +9,11 @@
  */
 import { relative } from "node:path";
 
-import { APPLICATIONS_DIRECTORY } from "../tools/conformance/src/generators/nestjs-command-application/generator.js";
-import { MODULES_DIRECTORY } from "../tools/conformance/src/generators/nestjs-graphql-module/generator.js";
-
-const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
-const MODULES_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**/${MODULES_DIRECTORY}/**`;
-const APPLICATIONS_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**`;
-
-const CONFORMANCE_PATTERNS = [
-  TEMPLATE_PATTERN,
-  MODULES_INSTANCE_PATTERN,
-  APPLICATIONS_INSTANCE_PATTERN,
-] as const;
-
-const syncConventionalConfigFiles = [
-  "configuration/conventional.config.cjs",
-  ".vscode/settings.json",
-  "documentation/skills/commit-code/SKILL.md",
-  "documentation/skills/checkout-branch/SKILL.md",
-  "documentation/skills/create-pull-request/SKILL.md",
-  ".github/prompts/submit-changes.prompt.md",
-  ".github/ISSUE_TEMPLATE/bug-report.yml",
-  ".github/ISSUE_TEMPLATE/feature-request.yml",
-];
-
-const syncPullRequestTemplateFiles = [
-  ".github/PULL_REQUEST_TEMPLATE.md",
-  "documentation/skills/create-pull-request/SKILL.md",
-  ".github/prompts/create-pull-request.prompt.md",
-  ".github/prompts/update-pull-request.prompt.md",
-];
-
-const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
-
-const syncConformanceGeneratorsFiles = [
-  "AGENTS.md",
-  "tools/conformance/generators.json",
-];
+import { SYNC_AGENT_SKILLS_FILES } from "../scripts/sync-agent-skills.js";
+import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../scripts/sync-conformance-generators.js";
+import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../scripts/sync-conventional-config.js";
+import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../scripts/sync-pull-request-template.js";
+import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants.js";
 
 function getPaths(files: string[]): string {
   return files.map((file) => relative(process.cwd(), file)).join(",");
@@ -77,19 +45,19 @@ const config = {
       "pnpm exec nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
     ],
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
-  [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
+  [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
   ],
   // Keep PR template in sync across skills and prompt files
-  [`{${syncPullRequestTemplateFiles.join(",")}}`]: () => [
+  [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
   ],
   // Keep agent skills table of contents in sync in AGENTS.md
-  [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
+  [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
   ],
   // Keep conformance generators table in sync in AGENTS.md
-  [`{${syncConformanceGeneratorsFiles.join(",")}}`]: () => [
+  [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
@@ -157,7 +125,7 @@ const config = {
   // ✅ Conformance tests
   // Run conformance tests when generator templates or generated instances change
   // to ensure generated code instances conform to their template definitions.
-  // Patterns are derived from generator configuration files (see tools/conformance/src/lint-staged-patterns.ts)
+  // Patterns are derived from generator configuration files (see tools/conformance/src/constants.ts)
   [`{${CONFORMANCE_PATTERNS.join(",")}}`]: () => [
     "pnpm exec nx run conformance:test --outputStyle=dynamic-legacy",
   ],

@@ -82,10 +82,22 @@ export class EclipsesService {
   ): Event[] {
     const events: Event[] = [];
     if (solarPhase) {
-      events.push(this.buildSolarEclipseEvent({ date: minute, frame: "geocentric", phase: solarPhase }));
+      events.push(
+        this.buildSolarEclipseEvent({
+          date: minute,
+          frame: "geocentric",
+          phase: solarPhase,
+        }),
+      );
     }
     if (lunarPhase) {
-      events.push(this.buildLunarEclipseEvent({ date: minute, frame: "geocentric", phase: lunarPhase }));
+      events.push(
+        this.buildLunarEclipseEvent({
+          date: minute,
+          frame: "geocentric",
+          phase: lunarPhase,
+        }),
+      );
     }
     return events;
   }
@@ -200,10 +212,22 @@ export class EclipsesService {
   } {
     return {
       currentDiameter: current.diameterSun + current.diameterMoon,
-      currentLatitudeAngle: this.mathService.getAngle(current.latitudeMoon, current.latitudeSun),
-      currentLongitudeAngle: this.mathService.getAngle(current.longitudeMoon, current.longitudeSun),
-      nextLongitudeAngle: this.mathService.getAngle(next.longitudeMoon, next.longitudeSun),
-      previousLongitudeAngle: this.mathService.getAngle(previous.longitudeMoon, previous.longitudeSun),
+      currentLatitudeAngle: this.mathService.getAngle(
+        current.latitudeMoon,
+        current.latitudeSun,
+      ),
+      currentLongitudeAngle: this.mathService.getAngle(
+        current.longitudeMoon,
+        current.longitudeSun,
+      ),
+      nextLongitudeAngle: this.mathService.getAngle(
+        next.longitudeMoon,
+        next.longitudeSun,
+      ),
+      previousLongitudeAngle: this.mathService.getAngle(
+        previous.longitudeMoon,
+        previous.longitudeSun,
+      ),
     };
   }
 
@@ -213,8 +237,16 @@ export class EclipsesService {
     sunDiameterEphemeris: DiameterEphemeris,
   ): { diameterMoon: number; diameterSun: number } {
     return {
-      diameterMoon: this.ephemerisService.getDiameterFromEphemeris(moonDiameterEphemeris, minuteIso, "currentDiameterMoon"),
-      diameterSun: this.ephemerisService.getDiameterFromEphemeris(sunDiameterEphemeris, minuteIso, "currentDiameterSun"),
+      diameterMoon: this.ephemerisService.getDiameterFromEphemeris(
+        moonDiameterEphemeris,
+        minuteIso,
+        "currentDiameterMoon",
+      ),
+      diameterSun: this.ephemerisService.getDiameterFromEphemeris(
+        sunDiameterEphemeris,
+        minuteIso,
+        "currentDiameterSun",
+      ),
     };
   }
 
@@ -222,12 +254,33 @@ export class EclipsesService {
     minuteIso: string,
     moonCoordinateEphemeris: CoordinateEphemeris,
     sunCoordinateEphemeris: CoordinateEphemeris,
-  ): { latitudeMoon: number; latitudeSun: number; longitudeMoon: number; longitudeSun: number } {
+  ): {
+    latitudeMoon: number;
+    latitudeSun: number;
+    longitudeMoon: number;
+    longitudeSun: number;
+  } {
     return {
-      latitudeMoon: this.ephemerisService.getCoordinateFromEphemeris(moonCoordinateEphemeris, minuteIso, "latitude"),
-      latitudeSun: this.ephemerisService.getCoordinateFromEphemeris(sunCoordinateEphemeris, minuteIso, "latitude"),
-      longitudeMoon: this.ephemerisService.getCoordinateFromEphemeris(moonCoordinateEphemeris, minuteIso, "longitude"),
-      longitudeSun: this.ephemerisService.getCoordinateFromEphemeris(sunCoordinateEphemeris, minuteIso, "longitude"),
+      latitudeMoon: this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        minuteIso,
+        "latitude",
+      ),
+      latitudeSun: this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minuteIso,
+        "latitude",
+      ),
+      longitudeMoon: this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        minuteIso,
+        "longitude",
+      ),
+      longitudeSun: this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minuteIso,
+        "longitude",
+      ),
     };
   }
 
@@ -238,10 +291,24 @@ export class EclipsesService {
     sunCoordinateEphemeris: CoordinateEphemeris;
     sunDiameterEphemeris: DiameterEphemeris;
   }): EclipseCoordinates {
-    const { minuteIso, moonCoordinateEphemeris, moonDiameterEphemeris, sunCoordinateEphemeris, sunDiameterEphemeris } = args;
+    const {
+      minuteIso,
+      moonCoordinateEphemeris,
+      moonDiameterEphemeris,
+      sunCoordinateEphemeris,
+      sunDiameterEphemeris,
+    } = args;
     return {
-      ...this.getEclipseCoordinateDiameters(minuteIso, moonDiameterEphemeris, sunDiameterEphemeris),
-      ...this.getEclipseCoordinateLatLons(minuteIso, moonCoordinateEphemeris, sunCoordinateEphemeris),
+      ...this.getEclipseCoordinateDiameters(
+        minuteIso,
+        moonDiameterEphemeris,
+        sunDiameterEphemeris,
+      ),
+      ...this.getEclipseCoordinateLatLons(
+        minuteIso,
+        moonCoordinateEphemeris,
+        sunCoordinateEphemeris,
+      ),
     };
   }
 
@@ -255,9 +322,21 @@ export class EclipsesService {
     lunarPhase: EclipsePhase | null;
     solarPhase: EclipsePhase | null;
   } {
-    const solarPhase = this.isSolarEclipse(args.currentCoordinates, args.previousCoordinates, args.nextCoordinates);
-    const lunarPhase = this.isLunarEclipse(args.currentCoordinates, args.previousCoordinates, args.nextCoordinates);
-    const events = this.buildGeocentricEclipseEvents(args.minute, solarPhase, lunarPhase);
+    const solarPhase = this.isSolarEclipse(
+      args.currentCoordinates,
+      args.previousCoordinates,
+      args.nextCoordinates,
+    );
+    const lunarPhase = this.isLunarEclipse(
+      args.currentCoordinates,
+      args.previousCoordinates,
+      args.nextCoordinates,
+    );
+    const events = this.buildGeocentricEclipseEvents(
+      args.minute,
+      solarPhase,
+      lunarPhase,
+    );
     return { events, lunarPhase, solarPhase };
   }
 
@@ -338,13 +417,26 @@ export class EclipsesService {
     previousVis: boolean;
   }): Event | null {
     const phase = this.getTopocentricPhase({
-      currentActive: this.isLunarTopocentricActive(args.currentCoordinates, args.currentVis),
+      currentActive: this.isLunarTopocentricActive(
+        args.currentCoordinates,
+        args.currentVis,
+      ),
       geocentricPhase: args.geocentricPhase,
-      nextActive: this.isLunarTopocentricActive(args.nextCoordinates, args.nextVis),
-      previousActive: this.isLunarTopocentricActive(args.previousCoordinates, args.previousVis),
+      nextActive: this.isLunarTopocentricActive(
+        args.nextCoordinates,
+        args.nextVis,
+      ),
+      previousActive: this.isLunarTopocentricActive(
+        args.previousCoordinates,
+        args.previousVis,
+      ),
     });
     return phase
-      ? this.buildLunarEclipseEvent({ date: args.minute, frame: "topocentric", phase })
+      ? this.buildLunarEclipseEvent({
+          date: args.minute,
+          frame: "topocentric",
+          phase,
+        })
       : null;
   }
 
@@ -423,13 +515,26 @@ export class EclipsesService {
     previousVis: boolean;
   }): Event | null {
     const phase = this.getTopocentricPhase({
-      currentActive: this.isSolarTopocentricActive(args.currentCoordinates, args.currentVis),
+      currentActive: this.isSolarTopocentricActive(
+        args.currentCoordinates,
+        args.currentVis,
+      ),
       geocentricPhase: args.geocentricPhase,
-      nextActive: this.isSolarTopocentricActive(args.nextCoordinates, args.nextVis),
-      previousActive: this.isSolarTopocentricActive(args.previousCoordinates, args.previousVis),
+      nextActive: this.isSolarTopocentricActive(
+        args.nextCoordinates,
+        args.nextVis,
+      ),
+      previousActive: this.isSolarTopocentricActive(
+        args.previousCoordinates,
+        args.previousVis,
+      ),
     });
     return phase
-      ? this.buildSolarEclipseEvent({ date: args.minute, frame: "topocentric", phase })
+      ? this.buildSolarEclipseEvent({
+          date: args.minute,
+          frame: "topocentric",
+          phase,
+        })
       : null;
   }
 
@@ -446,15 +551,25 @@ export class EclipsesService {
     const vis = this.getAllTopocentricVisibilities(args);
     const events: Event[] = [];
     const solarEvent = this.getSolarTopocentricEvent({
-      currentCoordinates: args.currentCoordinates, currentVis: vis.currentVis.isSolarVisible,
-      geocentricPhase: args.solarPhase, minute: args.minute, nextCoordinates: args.nextCoordinates,
-      nextVis: vis.nextVis.isSolarVisible, previousCoordinates: args.previousCoordinates, previousVis: vis.previousVis.isSolarVisible,
+      currentCoordinates: args.currentCoordinates,
+      currentVis: vis.currentVis.isSolarVisible,
+      geocentricPhase: args.solarPhase,
+      minute: args.minute,
+      nextCoordinates: args.nextCoordinates,
+      nextVis: vis.nextVis.isSolarVisible,
+      previousCoordinates: args.previousCoordinates,
+      previousVis: vis.previousVis.isSolarVisible,
     });
     if (solarEvent) events.push(solarEvent);
     const lunarEvent = this.getLunarTopocentricEvent({
-      currentCoordinates: args.currentCoordinates, currentVis: vis.currentVis.isLunarVisible,
-      geocentricPhase: args.lunarPhase, minute: args.minute, nextCoordinates: args.nextCoordinates,
-      nextVis: vis.nextVis.isLunarVisible, previousCoordinates: args.previousCoordinates, previousVis: vis.previousVis.isLunarVisible,
+      currentCoordinates: args.currentCoordinates,
+      currentVis: vis.currentVis.isLunarVisible,
+      geocentricPhase: args.lunarPhase,
+      minute: args.minute,
+      nextCoordinates: args.nextCoordinates,
+      nextVis: vis.nextVis.isLunarVisible,
+      previousCoordinates: args.previousCoordinates,
+      previousVis: vis.previousVis.isLunarVisible,
     });
     if (lunarEvent) events.push(lunarEvent);
     return events;
@@ -469,7 +584,10 @@ export class EclipsesService {
       nextCoordinates: EclipseCoordinates;
       previousCoordinates: EclipseCoordinates;
     },
-    geocentric: { lunarPhase: EclipsePhase | null; solarPhase: EclipsePhase | null },
+    geocentric: {
+      lunarPhase: EclipsePhase | null;
+      solarPhase: EclipsePhase | null;
+    },
   ): Event[] {
     return this.getTopocentricEvents({
       ...coords,
@@ -538,8 +656,13 @@ export class EclipsesService {
     previous: EclipseCoordinates,
     next: EclipseCoordinates,
   ): EclipsePhase | null {
-    const { currentDiameter, currentLatitudeAngle, currentLongitudeAngle, nextLongitudeAngle, previousLongitudeAngle } =
-      this.getEclipseAngles(current, previous, next);
+    const {
+      currentDiameter,
+      currentLatitudeAngle,
+      currentLongitudeAngle,
+      nextLongitudeAngle,
+      previousLongitudeAngle,
+    } = this.getEclipseAngles(current, previous, next);
     const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
     const isMaximumLongitudeAngle = this.mathService.isMaximum({
       current: currentLongitudeAngle,
@@ -611,8 +734,13 @@ export class EclipsesService {
     previous: EclipseCoordinates,
     next: EclipseCoordinates,
   ): EclipsePhase | null {
-    const { currentDiameter, currentLatitudeAngle, currentLongitudeAngle, nextLongitudeAngle, previousLongitudeAngle } =
-      this.getEclipseAngles(current, previous, next);
+    const {
+      currentDiameter,
+      currentLatitudeAngle,
+      currentLongitudeAngle,
+      nextLongitudeAngle,
+      previousLongitudeAngle,
+    } = this.getEclipseAngles(current, previous, next);
     const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
     const isMinimumLongitudeAngle = this.mathService.isMinimum({
       current: currentLongitudeAngle,
@@ -776,16 +904,24 @@ export class EclipsesService {
       sunCoordinateEphemeris: args.sunCoordinateEphemeris,
       sunDiameterEphemeris: args.sunDiameterEphemeris,
     });
-    const geocentric = this.getGeocentricEvents({ minute: args.minute, ...coords });
+    const geocentric = this.getGeocentricEvents({
+      minute: args.minute,
+      ...coords,
+    });
     const eclipseEvents: Event[] = [...geocentric.events];
-    if (args.moonAzimuthElevationEphemeris && args.sunAzimuthElevationEphemeris) {
-      eclipseEvents.push(...this.getTopocentricEventsForDetect(
-        args.minute,
-        args.moonAzimuthElevationEphemeris,
-        args.sunAzimuthElevationEphemeris,
-        coords,
-        geocentric,
-      ));
+    if (
+      args.moonAzimuthElevationEphemeris &&
+      args.sunAzimuthElevationEphemeris
+    ) {
+      eclipseEvents.push(
+        ...this.getTopocentricEventsForDetect(
+          args.minute,
+          args.moonAzimuthElevationEphemeris,
+          args.sunAzimuthElevationEphemeris,
+          coords,
+          geocentric,
+        ),
+      );
     }
     return eclipseEvents;
   }

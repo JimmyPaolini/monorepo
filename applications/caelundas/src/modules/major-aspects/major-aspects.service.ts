@@ -26,6 +26,34 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
+interface AssembleMajorAspectEventArguments {
+  body1: Body;
+  body1Capitalized: string;
+  body2: Body;
+  body2Capitalized: string;
+  majorAspect: MajorAspect;
+  phase: AspectPhase;
+  timestamp: Moment;
+}
+
+interface DetectAspectForBodyPairArguments {
+  body1: Body;
+  body2: Body;
+  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+  minute: Moment;
+  nextMinute: Moment;
+  previousMinute: Moment;
+}
+
+interface ExtractAspectPartsFromCategoriesResult {
+  aspect: MajorAspect;
+  aspectCapitalized: string;
+  body1: Body;
+  body1Capitalized: string;
+  body2: Body;
+  body2Capitalized: string;
+}
+
 /**
  * Detects and formats major aspect events between celestial bodies.
  *
@@ -69,27 +97,25 @@ export class MajorAspectsService {
 
   // 🔏 Private Methods
 
-  private assembleMajorAspectEvent(args: {
-    body1: Body;
-    body1Capitalized: string;
-    body2: Body;
-    body2Capitalized: string;
-    majorAspect: MajorAspect;
-    phase: AspectPhase;
-    timestamp: Moment;
-  }): Event {
-    const { body1, body1Capitalized, body2, body2Capitalized, majorAspect, phase, timestamp } =
-      args;
+  private assembleMajorAspectEvent(
+    args: AssembleMajorAspectEventArguments,
+  ): Event {
     const { categories, description, summary } = this.buildAspectEventParts(
-      body1,
-      body1Capitalized,
-      body2,
-      body2Capitalized,
-      majorAspect,
-      phase,
+      args.body1,
+      args.body1Capitalized,
+      args.body2,
+      args.body2Capitalized,
+      args.majorAspect,
+      args.phase,
     );
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-    return { categories, description, end: timestamp, start: timestamp, summary };
+    this.logger.log(`${summary} at ${args.timestamp.toISOString()}`);
+    return {
+      categories,
+      description,
+      end: args.timestamp,
+      start: args.timestamp,
+      summary,
+    };
   }
 
   private buildAspectEventParts(
@@ -128,7 +154,11 @@ export class MajorAspectsService {
     const aspectLower = aspectCapitalized.toLowerCase();
     const body1Lower = body1Capitalized.toLowerCase();
     const body2Lower = body2Capitalized.toLowerCase();
-    if (!isMajorAspect(aspectLower) || !isBody(body1Lower) || !isBody(body2Lower)) {
+    if (
+      !isMajorAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
       throw new Error(
         `Could not extract typed values from categories: ${categories.join(", ")}`,
       );
@@ -136,26 +166,32 @@ export class MajorAspectsService {
     return { aspect: aspectLower, body1: body1Lower, body2: body2Lower };
   }
 
-  private detectAspectForBodyPair(args: {
-    body1: Body;
-    body2: Body;
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-    minute: Moment;
-    nextMinute: Moment;
-    previousMinute: Moment;
-  }): Event | null {
-    const { body1, body2, coordinateEphemerisByBody, minute, nextMinute, previousMinute } = args;
-    const win1 = this.getLongitudesWindowForBody(body1, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
-    const win2 = this.getLongitudesWindowForBody(body2, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
+  private detectAspectForBodyPair(
+    args: DetectAspectForBodyPairArguments,
+  ): Event | null {
+    const win1 = this.getLongitudesWindowForBody(
+      args.body1,
+      args.coordinateEphemerisByBody,
+      args.previousMinute,
+      args.minute,
+      args.nextMinute,
+    );
+    const win2 = this.getLongitudesWindowForBody(
+      args.body2,
+      args.coordinateEphemerisByBody,
+      args.previousMinute,
+      args.minute,
+      args.nextMinute,
+    );
     const phase = this.detectPhaseFromWindows(win1, win2);
     if (!phase) return null;
     return this.buildMajorAspectEvent({
-      body1,
-      body2,
+      body1: args.body1,
+      body2: args.body2,
       longitudeBody1: win1.current,
       longitudeBody2: win2.current,
       phase,
-      timestamp: minute,
+      timestamp: args.minute,
     });
   }
 
@@ -173,14 +209,9 @@ export class MajorAspectsService {
     });
   }
 
-  private extractAspectPartsFromCategories(categories: string[]): {
-    aspect: MajorAspect;
-    aspectCapitalized: string;
-    body1: Body;
-    body1Capitalized: string;
-    body2: Body;
-    body2Capitalized: string;
-  } {
+  private extractAspectPartsFromCategories(
+    categories: string[],
+  ): ExtractAspectPartsFromCategoriesResult {
     const bodiesCapitalized = _.sortBy(
       categories.filter((category) =>
         majorAspectBodies
@@ -189,7 +220,9 @@ export class MajorAspectsService {
       ),
     );
     const aspectCapitalized = categories.find((category) =>
-      majorAspects.map((majorAspect) => _.startCase(majorAspect)).includes(category),
+      majorAspects
+        .map((majorAspect) => _.startCase(majorAspect))
+        .includes(category),
     );
     if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
       throw new Error(
@@ -198,8 +231,20 @@ export class MajorAspectsService {
     }
     const body1Capitalized = bodiesCapitalized[0] ?? "";
     const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const { aspect, body1, body2 } = this.castAspectPartsToTypes(body1Capitalized, body2Capitalized, aspectCapitalized, categories);
-    return { aspect, aspectCapitalized, body1, body1Capitalized, body2, body2Capitalized };
+    const { aspect, body1, body2 } = this.castAspectPartsToTypes(
+      body1Capitalized,
+      body2Capitalized,
+      aspectCapitalized,
+      categories,
+    );
+    return {
+      aspect,
+      aspectCapitalized,
+      body1,
+      body1Capitalized,
+      body2,
+      body2Capitalized,
+    };
   }
 
   private getAspectGroupKey(event: Event): string {

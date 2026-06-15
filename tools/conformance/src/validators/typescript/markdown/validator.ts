@@ -345,8 +345,9 @@ function pickBestCandidate(
 ): { bestCandidate: MdastNode; minimumErrors: ConformanceError[] } {
   let minimumErrors: ConformanceError[] = [];
   let minimumErrorCount = Infinity;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  let bestCandidate: MdastNode = candidates[0]!;
+  const first = candidates[0];
+  if (!first) throw new Error("candidates must not be empty");
+  let bestCandidate: MdastNode = first;
 
   for (const candidate of candidates) {
     const childErrors = validateMdastChildren(

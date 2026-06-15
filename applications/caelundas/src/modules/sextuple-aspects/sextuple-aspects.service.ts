@@ -27,6 +27,37 @@ import type { Moment } from "moment-timezone";
  * the hexagram configuration. Computes forming and dissolving phases by comparing
  * current and previous aspect sets.
  */
+interface BuildSextupleEventParameters {
+  aspectSymbol: string;
+  bodies: Body[];
+  bodiesSorted: string[];
+  phase: AspectPhase;
+  sextupleAspect: SextupleAspect;
+  symbols: string[];
+  timestamp: Moment;
+}
+
+interface ComposeHexagramsArguments {
+  currentAspectBodies: AspectBodies[];
+  minute: Moment;
+  previousAspectBodies: AspectBodies[];
+}
+
+interface GetSextupleAspectEventArguments {
+  body1: Body;
+  body2: Body;
+  body3: Body;
+  body4: Body;
+  body5: Body;
+  body6: Body;
+  phase: AspectPhase;
+  sextupleAspect: SextupleAspect;
+  timestamp: Moment;
+}
+
+/**
+ *
+ */
 @Injectable()
 export class SextupleAspectsService {
   // 🏗 Dependency Injection
@@ -39,32 +70,36 @@ export class SextupleAspectsService {
 
   // 🔏 Private Methods
 
+  private addConnection(map: Map<Body, Set<Body>>, b1: Body, b2: Body): void {
+    const s = map.get(b1);
+    if (s) s.add(b2);
+  }
+
   private buildAspectConnectionMaps(
     bodies: Body[],
     edges: AspectBodies[],
-  ): { sextileConnections: Map<Body, Set<Body>>; trineConnections: Map<Body, Set<Body>> } {
-    const trineConnections = new Map<Body, Set<Body>>();
-    const sextileConnections = new Map<Body, Set<Body>>();
-
-    for (const body of bodies) {
-      trineConnections.set(body, new Set());
-      sextileConnections.set(body, new Set());
-    }
-
+  ): {
+    sextileConnections: Map<Body, Set<Body>>;
+    trineConnections: Map<Body, Set<Body>>;
+  } {
+    const trineConnections = new Map<Body, Set<Body>>(
+      bodies.map((b) => [b, new Set()]),
+    );
+    const sextileConnections = new Map<Body, Set<Body>>(
+      bodies.map((b) => [b, new Set()]),
+    );
     for (const edge of edges) {
-      if (!bodies.includes(edge.bodies[0]) || !bodies.includes(edge.bodies[1])) {
-        continue;
-      }
-
+      const b0 = edge.bodies[0];
+      const b1 = edge.bodies[1];
+      if (!bodies.includes(b0) || !bodies.includes(b1)) continue;
       if (edge.aspect === "trine") {
-        trineConnections.get(edge.bodies[0])?.add(edge.bodies[1]);
-        trineConnections.get(edge.bodies[1])?.add(edge.bodies[0]);
+        this.addConnection(trineConnections, b0, b1);
+        this.addConnection(trineConnections, b1, b0);
       } else if (edge.aspect === "sextile") {
-        sextileConnections.get(edge.bodies[0])?.add(edge.bodies[1]);
-        sextileConnections.get(edge.bodies[1])?.add(edge.bodies[0]);
+        this.addConnection(sextileConnections, b0, b1);
+        this.addConnection(sextileConnections, b1, b0);
       }
     }
-
     return { sextileConnections, trineConnections };
   }
 
@@ -143,15 +178,9 @@ export class SextupleAspectsService {
     return `${phaseEmoji}${aspectSymbol} ${symbolChain} ${description}`;
   }
 
-  private buildSextupleEventFromParameters(parameters: {
-    aspectSymbol: string;
-    bodies: Body[];
-    bodiesSorted: string[];
-    phase: AspectPhase;
-    sextupleAspect: SextupleAspect;
-    symbols: string[];
-    timestamp: Moment;
-  }): Event {
+  private buildSextupleEventFromParameters(
+    parameters: BuildSextupleEventParameters,
+  ): Event {
     const {
       aspectSymbol,
       bodiesSorted,
@@ -174,32 +203,28 @@ export class SextupleAspectsService {
       phase,
     );
 
-    return { categories, description, end: timestamp, start: timestamp, summary };
+    return {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
   }
 
   private checkHexagonSextiles(
     arrangement: Body[],
     sextileConnections: Map<Body, Set<Body>>,
   ): boolean {
-    const a0 = arrangement[0];
-    const a1 = arrangement[1];
-    const a2 = arrangement[2];
-    const a3 = arrangement[3];
-    const a4 = arrangement[4];
-    const a5 = arrangement[5];
-
-    if (!a0 || !a1 || !a2 || !a3 || !a4 || !a5) {
-      return false;
+    if (arrangement.length !== 6) return false;
+    for (let index = 0; index < 6; index++) {
+      const current = arrangement[index];
+      const next = arrangement[(index + 1) % 6];
+      if (!current || !next) return false;
+      const conns = sextileConnections.get(current);
+      if (!conns?.has(next)) return false;
     }
-
-    return !!(
-      sextileConnections.get(a0)?.has(a1) &&
-      sextileConnections.get(a1)?.has(a2) &&
-      sextileConnections.get(a2)?.has(a3) &&
-      sextileConnections.get(a3)?.has(a4) &&
-      sextileConnections.get(a4)?.has(a5) &&
-      sextileConnections.get(a5)?.has(a0)
-    );
+    return true;
   }
 
   private collectTrineBodies(trines: AspectBodies[]): Body[] {
@@ -219,62 +244,22 @@ export class SextupleAspectsService {
    * A Hexagram consists of 6 bodies forming two interlocking Grand Trines
    * plus a hexagon of sextile connections.
    */
-  private composeHexagrams(args: {
-    currentAspectBodies: AspectBodies[];
-    minute: Moment;
-    previousAspectBodies: AspectBodies[];
-  }): Event[] {
+  private composeHexagrams(args: ComposeHexagramsArguments): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
-    const events: Event[] = [];
-
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
     const aspectsByType = this.groupAspectsByType(unionEdges);
     const trines = aspectsByType.get("trine") || [];
     const sextiles = aspectsByType.get("sextile") || [];
-
-    if (trines.length < 6 || sextiles.length < 6) {
-      return events;
-    }
-
+    if (trines.length < 6 || sextiles.length < 6) return [];
     const bodies = this.collectTrineBodies(trines);
-
-    if (bodies.length < 6) {
-      return events;
-    }
-
-    const combinations = this.mathService.getCombinations(bodies, 6);
-
-    for (const combo of combinations) {
-      const hexagramBodies = this.findHexagramPattern(combo, unionEdges);
-
-      if (!hexagramBodies) {
-        continue;
-      }
-
-      const result = this.determineCompoundPhaseFromSnapshots(
-        currentAspectBodies,
-        previousAspectBodies,
-        hexagramBodies,
-        minute,
-        (edges) => this.findHexagramPattern(hexagramBodies, edges) !== null,
-      );
-
-      if (!result) {
-        continue;
-      }
-
-      const event = this.buildHexagramEvent(
-        hexagramBodies,
-        result.phase,
-        result.eventMinute,
-      );
-
-      if (event) {
-        events.push(event);
-      }
-    }
-
-    return events;
+    if (bodies.length < 6) return [];
+    return this.processHexagramCombinations(
+      this.mathService.getCombinations(bodies, 6),
+      unionEdges,
+      currentAspectBodies,
+      previousAspectBodies,
+      minute,
+    );
   }
 
   private determineCompoundPhaseFromSnapshots(
@@ -316,41 +301,22 @@ export class SextupleAspectsService {
   ): Body[][] | null {
     const trineGroups: Body[][] = [];
     const visited = new Set<Body>();
-
     for (const body of bodies) {
-      if (visited.has(body)) {
-        continue;
-      }
-
-      const trineNeighbors = trineConnections.get(body);
-
-      if (trineNeighbors?.size !== 2) {
-        continue;
-      }
-
-      const neighbors = [...trineNeighbors];
-      const b1 = neighbors[0];
-      const b2 = neighbors[1];
-
-      if (!b1 || !b2) {
-        continue;
-      }
-
-      const b1Connections = trineConnections.get(b1);
-
-      if (b1Connections?.has(b2)) {
-        trineGroups.push([body, b1, b2]);
-        visited.add(body);
-        visited.add(b1);
-        visited.add(b2);
+      if (visited.has(body)) continue;
+      const trineNeighbors = this.getGrandTrineNeighbors(
+        body,
+        trineConnections,
+      );
+      if (trineNeighbors) {
+        const n0 = trineNeighbors[0];
+        const n1 = trineNeighbors[1];
+        if (n0 && n1) {
+          trineGroups.push([body, n0, n1]);
+          [body, n0, n1].forEach((b) => visited.add(b));
+        }
       }
     }
-
-    if (trineGroups.length !== 2) {
-      return null;
-    }
-
-    return trineGroups;
+    return trineGroups.length === 2 ? trineGroups : null;
   }
 
   /**
@@ -406,6 +372,20 @@ export class SextupleAspectsService {
     return null;
   }
 
+  private getGrandTrineNeighbors(
+    body: Body,
+    trineConnections: Map<Body, Set<Body>>,
+  ): Body[] | null {
+    const tNeighbors = trineConnections.get(body);
+    if (tNeighbors?.size !== 2) return null;
+    const neighbors = [...tNeighbors];
+    const n0 = neighbors[0];
+    const n1 = neighbors[1];
+    return n0 && n1 && this.isValidGrandTrine(trineConnections, n0, n1)
+      ? [n0, n1]
+      : null;
+  }
+
   private getPhaseEmoji(phase: AspectPhase): string {
     if (phase === "forming") {
       return "➡️ ";
@@ -421,19 +401,20 @@ export class SextupleAspectsService {
   /**
    * Create a sextuple aspect event
    */
-  private getSextupleAspectEvent(parameters: {
-    body1: Body;
-    body2: Body;
-    body3: Body;
-    body4: Body;
-    body5: Body;
-    body6: Body;
-    phase: AspectPhase;
-    sextupleAspect: SextupleAspect;
-    timestamp: Moment;
-  }): Event {
-    const { body1, body2, body3, body4, body5, body6, phase, sextupleAspect, timestamp } =
-      parameters;
+  private getSextupleAspectEvent(
+    parameters: GetSextupleAspectEventArguments,
+  ): Event {
+    const {
+      body1,
+      body2,
+      body3,
+      body4,
+      body5,
+      body6,
+      phase,
+      sextupleAspect,
+      timestamp,
+    } = parameters;
 
     const bodiesList = [body1, body2, body3, body4, body5, body6];
     const bodiesSorted = _.sortBy(bodiesList.map((b) => _.startCase(b)));
@@ -457,18 +438,14 @@ export class SextupleAspectsService {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
-  private groupSextupleEventsByKey(
-    events: Event[],
-  ): Record<string, Event[]> {
+  private groupSextupleEventsByKey(events: Event[]): Record<string, Event[]> {
     const sextupleAspectEvents = events.filter((event) =>
       event.categories.includes("Sextuple Aspect"),
     );
 
     return _.groupBy(sextupleAspectEvents, (event) => {
       const filteredPlanets = event.categories.filter((category) =>
-        sextupleAspectBodies
-          .map((b) => _.startCase(b))
-          .includes(category),
+        sextupleAspectBodies.map((b) => _.startCase(b)).includes(category),
       );
       const planets = _.sortBy(filteredPlanets);
       const aspect = event.categories.find((c) =>
@@ -479,6 +456,43 @@ export class SextupleAspectsService {
     });
   }
 
+  private isValidGrandTrine(
+    trineConnections: Map<Body, Set<Body>>,
+    b1: Body | undefined,
+    b2: Body | undefined,
+  ): boolean {
+    return !!(b1 && b2 && trineConnections.get(b1)?.has(b2));
+  }
+
+  private processHexagramCombinations(
+    combinations: Body[][],
+    unionEdges: AspectBodies[],
+    currentAspectBodies: AspectBodies[],
+    previousAspectBodies: AspectBodies[],
+    minute: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    for (const combo of combinations) {
+      const hexagramBodies = this.findHexagramPattern(combo, unionEdges);
+      if (!hexagramBodies) continue;
+      const result = this.determineCompoundPhaseFromSnapshots(
+        currentAspectBodies,
+        previousAspectBodies,
+        hexagramBodies,
+        minute,
+        (edges) => this.findHexagramPattern(hexagramBodies, edges) !== null,
+      );
+      if (!result) continue;
+      const event = this.buildHexagramEvent(
+        hexagramBodies,
+        result.phase,
+        result.eventMinute,
+      );
+      if (event) events.push(event);
+    }
+    return events;
+  }
+
   private tryHexagonArrangement(
     trine1: Body[],
     trine2: Body[],
@@ -486,33 +500,25 @@ export class SextupleAspectsService {
     index_: number,
     sextileConnections: Map<Body, Set<Body>>,
   ): Body[] | null {
-    for (let index__ = 0; index__ < 3; index__++) {
-      if (index__ === index) {
-        continue;
-      }
-
-      for (let l = 0; l < 3; l++) {
-        if (l === index_) {
-          continue;
-        }
-
+    for (const index__ of [0, 1, 2]) {
+      if (index__ === index) continue;
+      for (const l of [0, 1, 2]) {
+        if (l === index_) continue;
         const m = [0, 1, 2].find((x) => x !== index && x !== index__);
         const n = [0, 1, 2].find((x) => x !== index_ && x !== l);
-
-        if (m === undefined || n === undefined) {
-          continue;
-        }
-
-        const arrangement = [
-          trine1[index], trine2[index_], trine1[index__], trine2[l], trine1[m], trine2[n],
-        ];
-
-        if (this.checkHexagonSextiles(arrangement as Body[], sextileConnections)) {
-          return arrangement as Body[];
-        }
+        if (m === undefined || n === undefined) continue;
+        const t1_0 = trine1[index];
+        const t2_0 = trine2[index_];
+        const t1_1 = trine1[index__];
+        const t2_1 = trine2[l];
+        const t1_2 = trine1[m];
+        const t2_2 = trine2[n];
+        if (!t1_0 || !t2_0 || !t1_1 || !t2_1 || !t1_2 || !t2_2) continue;
+        const arrangement: Body[] = [t1_0, t2_0, t1_1, t2_1, t1_2, t2_2];
+        if (this.checkHexagonSextiles(arrangement, sextileConnections))
+          return arrangement;
       }
     }
-
     return null;
   }
 

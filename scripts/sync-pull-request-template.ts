@@ -19,20 +19,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const WORKSPACE_ROOT = path.join(__dirname, "..");
+
+export const SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES = [
+  "documentation/skills/create-pull-request/SKILL.md",
+  "documentation/skills/update-pull-request/SKILL.md",
+];
+
+export const SYNC_PULL_REQUEST_TEMPLATE_FILES = [
+  ".github/PULL_REQUEST_TEMPLATE.md",
+  ...SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES,
+];
+
 const TEMPLATE_FILE = path.join(
   WORKSPACE_ROOT,
   ".github/PULL_REQUEST_TEMPLATE.md",
 );
-const TARGET_FILES = [
-  path.join(
-    WORKSPACE_ROOT,
-    "documentation/skills/create-pull-request/SKILL.md",
-  ),
-  path.join(
-    WORKSPACE_ROOT,
-    "documentation/skills/update-pull-request/SKILL.md",
-  ),
-];
+const TARGET_FILES = SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES.map((f) =>
+  path.join(WORKSPACE_ROOT, f),
+);
 const MODE = process.argv[2] ?? "check";
 const MARKER = "pr-template";
 
@@ -77,42 +81,45 @@ function extractMarkerContent(
 
 // ─── Marker Utilities ─────────────────────────────────────────────────────────
 
+function handleCheckMode(templateContent: string): void {
+  let allInSync = true;
+  for (const targetFile of TARGET_FILES) {
+    if (!checkTargetSync(templateContent, targetFile)) {
+      allInSync = false;
+    }
+  }
+  if (!allInSync) {
+    console.log(
+      "💡 Run 'nx run monorepo:sync-pull-request-template:write' to sync",
+    );
+    process.exit(1);
+  }
+  console.log("✅ PR template is in sync");
+}
+
+function handleWriteMode(templateContent: string): void {
+  const outOfSyncTargets = TARGET_FILES.filter(
+    (targetFile) => !checkTargetSync(templateContent, targetFile),
+  );
+  if (outOfSyncTargets.length === 0) {
+    console.log("✅ Already in sync");
+  } else {
+    for (const targetFile of outOfSyncTargets) {
+      writeTargetSync(templateContent, targetFile);
+    }
+  }
+}
+
 function loadTemplate(): string {
   return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
 }
 
 function main(): void {
   const templateContent = loadTemplate();
-
   if (MODE === "check") {
-    let allInSync = true;
-
-    for (const targetFile of TARGET_FILES) {
-      if (!checkTargetSync(templateContent, targetFile)) {
-        allInSync = false;
-      }
-    }
-
-    if (!allInSync) {
-      console.log(
-        "💡 Run 'nx run monorepo:sync-pull-request-template:write' to sync",
-      );
-      process.exit(1);
-    }
-
-    console.log("✅ PR template is in sync");
+    handleCheckMode(templateContent);
   } else if (MODE === "write") {
-    const outOfSyncTargets = TARGET_FILES.filter(
-      (targetFile) => !checkTargetSync(templateContent, targetFile),
-    );
-
-    if (outOfSyncTargets.length === 0) {
-      console.log("✅ Already in sync");
-    } else {
-      for (const targetFile of outOfSyncTargets) {
-        writeTargetSync(templateContent, targetFile);
-      }
-    }
+    handleWriteMode(templateContent);
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
     console.error(
@@ -154,4 +161,6 @@ function writeTargetSync(templateContent: string, targetFile: string): void {
   console.log(`✅ ${targetName} PR template synced`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-pull-request-template.ts")) {
+  main();
+}

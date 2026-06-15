@@ -253,6 +253,23 @@
         "cwd": "{projectRoot}"
       }
     },
+    "measure-code": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/measure-code.ts --check"
+        },
+        "write": {
+          "command": "tsx scripts/measure-code.ts"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Analyze codebase and write README.md statistics badges",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "oxfmt": {
       "cache": true,
       "configurations": {
@@ -408,23 +425,6 @@
       "options": {
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
         "cwd": "{projectRoot}"
-      }
-    },
-    "measure-code": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/measure-code.ts --check"
-        },
-        "write": {
-          "command": "tsx scripts/measure-code.ts"
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Analyze codebase and write README.md statistics badges",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{workspaceRoot}"
       }
     },
     "scan-dependencies": {

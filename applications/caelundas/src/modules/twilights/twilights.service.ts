@@ -520,7 +520,10 @@ export class TwilightsService {
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
-    const elevations = this.getSunElevations(sunAzimuthElevationEphemeris, minute);
+    const elevations = this.getSunElevations(
+      sunAzimuthElevationEphemeris,
+      minute,
+    );
     return this.buildTwilightTransitionEvents(elevations, minute);
   }
 

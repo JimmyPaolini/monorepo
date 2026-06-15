@@ -26,6 +26,20 @@ import type { Moment } from "moment-timezone";
  * that form between four celestial bodies. Computes forming and dissolving phases
  * by comparing the current and previous minute's active aspect sets.
  */
+interface GetQuadrupleAspectEventArguments {
+  body1: Body;
+  body2: Body;
+  body3: Body;
+  body4: Body;
+  focalOrApexBody?: Body;
+  phase: AspectPhase;
+  quadrupleAspect: QuadrupleAspect;
+  timestamp: Moment;
+}
+
+/**
+ *
+ */
 @Injectable()
 export class QuadrupleAspectsService {
   // 🏗 Dependency Injection
@@ -228,20 +242,13 @@ export class QuadrupleAspectsService {
       if (!currentEvent) continue;
       if (!currentEvent.categories.includes("Forming")) continue;
 
-      for (
-        let index_ = index + 1;
-        index_ < sortedEvents.length;
-        index_++
-      ) {
+      for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
         const potentialDissolvingEvent = sortedEvents[index_];
         if (!potentialDissolvingEvent) continue;
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           progressiveEvents.push(
-            this.buildProgressiveEvent(
-              currentEvent,
-              potentialDissolvingEvent,
-            ),
+            this.buildProgressiveEvent(currentEvent, potentialDissolvingEvent),
           );
           break;
         }
@@ -416,11 +423,7 @@ export class QuadrupleAspectsService {
       for (let index_ = index + 1; index_ < trines.length; index_++) {
         const trineJ = trines[index_];
         if (!trineJ) continue;
-        for (
-          let index__ = index_ + 1;
-          index__ < trines.length;
-          index__++
-        ) {
+        for (let index__ = index_ + 1; index__ < trines.length; index__++) {
           const trineK = trines[index__];
           if (!trineK) continue;
           const grandTrine = this.checkTrineTriple(
@@ -446,17 +449,19 @@ export class QuadrupleAspectsService {
   /**
    * Create a quadruple aspect event
    */
-  private getQuadrupleAspectEvent(parameters: {
-    body1: Body;
-    body2: Body;
-    body3: Body;
-    body4: Body;
-    focalOrApexBody?: Body;
-    phase: AspectPhase;
-    quadrupleAspect: QuadrupleAspect;
-    timestamp: Moment;
-  }): Event {
-    const { body1, body2, body3, body4, focalOrApexBody, phase, quadrupleAspect, timestamp } = parameters;
+  private getQuadrupleAspectEvent(
+    parameters: GetQuadrupleAspectEventArguments,
+  ): Event {
+    const {
+      body1,
+      body2,
+      body3,
+      body4,
+      focalOrApexBody,
+      phase,
+      quadrupleAspect,
+      timestamp,
+    } = parameters;
     const b1 = _.startCase(body1);
     const b2 = _.startCase(body2);
     const b3 = _.startCase(body3);
@@ -471,9 +476,21 @@ export class QuadrupleAspectsService {
     const symbolsPart = `${symbolByBody[body1]}-${symbolByBody[body2]}-${symbolByBody[body3]}-${symbolByBody[body4]}`;
     const summary = `${phaseEmoji}${symbolByQuadrupleAspect[quadrupleAspect]} ${symbolsPart} ${description}`;
     const categories = this.makeQuadrupleAspectCategories(
-      quadrupleAspect, phase, b1, b2, b3, b4, focalOrApexBody,
+      quadrupleAspect,
+      phase,
+      b1,
+      b2,
+      b3,
+      b4,
+      focalOrApexBody,
     );
-    return { categories, description, end: timestamp, start: timestamp, summary };
+    return {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
   }
 
   private groupAspectsByType<T extends AspectBodies>(

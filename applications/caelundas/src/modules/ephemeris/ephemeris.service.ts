@@ -95,9 +95,20 @@ export class EphemerisService {
     observerLongitude: number;
     start: Moment;
   }): void {
-    const { allEntries, body, end, featureSets, observerLatitude, observerLongitude, start } = args;
+    const {
+      allEntries,
+      body,
+      end,
+      featureSets,
+      observerLatitude,
+      observerLongitude,
+      start,
+    } = args;
     if (this.isNode(body)) {
-      allEntries.coordinateEntries.push([body, this.computeNodeBodyMinutes({ body, end, start })]);
+      allEntries.coordinateEntries.push([
+        body,
+        this.computeNodeBodyMinutes({ body, end, start }),
+      ]);
       return;
     }
     const needsAzimuth = featureSets.azimuthElevationSet.has(body);
@@ -105,12 +116,27 @@ export class EphemerisService {
     const needsDiameter = featureSets.diameterSet.has(body);
     const needsDistance = featureSets.distanceSet.has(body);
     const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
-    const result = this.computeNonNodeBodyMinutes({ body, end, needsAzimuth, needsDiameter, needsDistance, needsIllumination, observerLatitude, observerLongitude, start, swissEphemerisConstant });
+    const result = this.computeNonNodeBodyMinutes({
+      body,
+      end,
+      needsAzimuth,
+      needsDiameter,
+      needsDistance,
+      needsIllumination,
+      observerLatitude,
+      observerLongitude,
+      start,
+      swissEphemerisConstant,
+    });
     allEntries.coordinateEntries.push([body, result.coordinateEphemeris]);
-    if (needsAzimuth) allEntries.azimuthEntries.push([body, result.azimuthElevationEphemeris]);
-    if (needsIllumination) allEntries.illuminationEntries.push([body, result.illuminationEphemeris]);
-    if (needsDiameter) allEntries.diameterEntries.push([body, result.diameterEphemeris]);
-    if (needsDistance) allEntries.distanceEntries.push([body, result.distanceEphemeris]);
+    if (needsAzimuth)
+      allEntries.azimuthEntries.push([body, result.azimuthElevationEphemeris]);
+    if (needsIllumination)
+      allEntries.illuminationEntries.push([body, result.illuminationEphemeris]);
+    if (needsDiameter)
+      allEntries.diameterEntries.push([body, result.diameterEphemeris]);
+    if (needsDistance)
+      allEntries.distanceEntries.push([body, result.distanceEphemeris]);
   }
 
   private buildEphemerisEntries(): EphemerisEntries {
@@ -322,7 +348,18 @@ export class EphemerisService {
     start: Moment;
     swissEphemerisConstant: number;
   }): EphemerisAccumulators {
-    const { body, end, needsAzimuth, needsDiameter, needsDistance, needsIllumination, observerLatitude, observerLongitude, start, swissEphemerisConstant } = args;
+    const {
+      body,
+      end,
+      needsAzimuth,
+      needsDiameter,
+      needsDistance,
+      needsIllumination,
+      observerLatitude,
+      observerLongitude,
+      start,
+      swissEphemerisConstant,
+    } = args;
     const accumulators: EphemerisAccumulators = {
       azimuthElevationEphemeris: {},
       coordinateEphemeris: {},
@@ -332,8 +369,16 @@ export class EphemerisService {
     };
     for (const date of this.generateMinutes(start, end)) {
       this.processNonNodeBodyMinute({
-        accumulators, body, date, needsAzimuth, needsDiameter,
-        needsDistance, needsIllumination, observerLatitude, observerLongitude, swissEphemerisConstant,
+        accumulators,
+        body,
+        date,
+        needsAzimuth,
+        needsDiameter,
+        needsDistance,
+        needsIllumination,
+        observerLatitude,
+        observerLongitude,
+        swissEphemerisConstant,
       });
     }
     return accumulators;
@@ -349,13 +394,28 @@ export class EphemerisService {
     swissEphemerisConstant: number;
     timestamp: string;
   }): void {
-    const { body, diameterEphemeris, illuminationEphemeris, julianDayUniversalTime, needsDiameter, needsIllumination, swissEphemerisConstant, timestamp } = args;
-    const result = pheno_ut(julianDayUniversalTime, swissEphemerisConstant, SWISS_EPHEMERIS_FLAGS);
+    const {
+      body,
+      diameterEphemeris,
+      illuminationEphemeris,
+      julianDayUniversalTime,
+      needsDiameter,
+      needsIllumination,
+      swissEphemerisConstant,
+      timestamp,
+    } = args;
+    const result = pheno_ut(
+      julianDayUniversalTime,
+      swissEphemerisConstant,
+      SWISS_EPHEMERIS_FLAGS,
+    );
     if (result.flag < 0) {
       throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
     }
-    if (needsIllumination) illuminationEphemeris[timestamp] = { illumination: result.data[1] * 100 };
-    if (needsDiameter) diameterEphemeris[timestamp] = { diameter: result.data[3] };
+    if (needsIllumination)
+      illuminationEphemeris[timestamp] = { illumination: result.data[1] * 100 };
+    if (needsDiameter)
+      diameterEphemeris[timestamp] = { diameter: result.data[3] };
   }
 
   private computePhenoForMinute(args: {
@@ -385,11 +445,26 @@ export class EphemerisService {
     swissEphemerisConstant: number;
     timestamp: string;
   }): void {
-    const { body, diameterEphemeris, illuminationEphemeris, julianDayUniversalTime, needsDiameter, needsIllumination, swissEphemerisConstant, timestamp } = args;
-    if (needsIllumination) illuminationEphemeris[timestamp] = { illumination: 100 };
+    const {
+      body,
+      diameterEphemeris,
+      illuminationEphemeris,
+      julianDayUniversalTime,
+      needsDiameter,
+      needsIllumination,
+      swissEphemerisConstant,
+      timestamp,
+    } = args;
+    if (needsIllumination)
+      illuminationEphemeris[timestamp] = { illumination: 100 };
     if (needsDiameter) {
-      const result = pheno_ut(julianDayUniversalTime, swissEphemerisConstant, SWISS_EPHEMERIS_FLAGS);
-      if (result.flag < 0) throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
+      const result = pheno_ut(
+        julianDayUniversalTime,
+        swissEphemerisConstant,
+        SWISS_EPHEMERIS_FLAGS,
+      );
+      if (result.flag < 0)
+        throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
       diameterEphemeris[timestamp] = { diameter: result.data[3] };
     }
   }
@@ -451,11 +526,15 @@ export class EphemerisService {
     illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
   } {
     return {
-      azimuthElevationEphemerisByBody: typedFromEntries(allEntries.azimuthEntries),
+      azimuthElevationEphemerisByBody: typedFromEntries(
+        allEntries.azimuthEntries,
+      ),
       coordinateEphemerisByBody: typedFromEntries(allEntries.coordinateEntries),
       diameterEphemerisByBody: typedFromEntries(allEntries.diameterEntries),
       distanceEphemerisByBody: typedFromEntries(allEntries.distanceEntries),
-      illuminationEphemerisByBody: typedFromEntries(allEntries.illuminationEntries),
+      illuminationEphemerisByBody: typedFromEntries(
+        allEntries.illuminationEntries,
+      ),
     };
   }
 
@@ -502,21 +581,49 @@ export class EphemerisService {
     observerLongitude: number;
     swissEphemerisConstant: number;
   }): void {
-    const { accumulators, body, date, needsAzimuth, needsDiameter, needsDistance, needsIllumination, observerLatitude, observerLongitude, swissEphemerisConstant } = args;
-    const { julianDayEphemerisTime, julianDayUniversalTime } = this.dateToJulianDays(date);
+    const {
+      accumulators,
+      body,
+      date,
+      needsAzimuth,
+      needsDiameter,
+      needsDistance,
+      needsIllumination,
+      observerLatitude,
+      observerLongitude,
+      swissEphemerisConstant,
+    } = args;
+    const { julianDayEphemerisTime, julianDayUniversalTime } =
+      this.dateToJulianDays(date);
     const timestamp = date.toISOString();
-    const { distance, latitude, longitude } = this.computeBodyCoordinates(body, julianDayEphemerisTime);
+    const { distance, latitude, longitude } = this.computeBodyCoordinates(
+      body,
+      julianDayEphemerisTime,
+    );
     accumulators.coordinateEphemeris[timestamp] = { latitude, longitude };
     if (needsDistance) accumulators.distanceEphemeris[timestamp] = { distance };
     if (needsAzimuth) {
-      accumulators.azimuthElevationEphemeris[timestamp] = this.computeAzimuthElevationForMinute({
-        body, distance, julianDayUniversalTime, latitude, longitude, observerLatitude, observerLongitude,
-      });
+      accumulators.azimuthElevationEphemeris[timestamp] =
+        this.computeAzimuthElevationForMinute({
+          body,
+          distance,
+          julianDayUniversalTime,
+          latitude,
+          longitude,
+          observerLatitude,
+          observerLongitude,
+        });
     }
     if (needsIllumination || needsDiameter) {
       this.computePhenoForMinute({
-        body, diameterEphemeris: accumulators.diameterEphemeris, illuminationEphemeris: accumulators.illuminationEphemeris,
-        julianDayUniversalTime, needsDiameter, needsIllumination, swissEphemerisConstant, timestamp,
+        body,
+        diameterEphemeris: accumulators.diameterEphemeris,
+        illuminationEphemeris: accumulators.illuminationEphemeris,
+        julianDayUniversalTime,
+        needsDiameter,
+        needsIllumination,
+        swissEphemerisConstant,
+        timestamp,
       });
     }
   }
@@ -555,12 +662,34 @@ export class EphemerisService {
     distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
     illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
   } {
-    const { azimuthElevationBodies, coordinateBodies, coordinates, diameterBodies, distanceBodies, end, illuminationBodies, start } = args;
+    const {
+      azimuthElevationBodies,
+      coordinateBodies,
+      coordinates,
+      diameterBodies,
+      distanceBodies,
+      end,
+      illuminationBodies,
+      start,
+    } = args;
     const [observerLongitude, observerLatitude] = coordinates;
-    const featureSets = this.buildEphemerisFeatureSets(azimuthElevationBodies, diameterBodies, distanceBodies, illuminationBodies);
+    const featureSets = this.buildEphemerisFeatureSets(
+      azimuthElevationBodies,
+      diameterBodies,
+      distanceBodies,
+      illuminationBodies,
+    );
     const allEntries = this.buildEphemerisEntries();
     for (const body of coordinateBodies) {
-      this.accumulateBodyEphemeris({ allEntries, body, end, featureSets, observerLatitude, observerLongitude, start });
+      this.accumulateBodyEphemeris({
+        allEntries,
+        body,
+        end,
+        featureSets,
+        observerLatitude,
+        observerLongitude,
+        start,
+      });
     }
     return this.entriesToEphemerides(allEntries);
   }

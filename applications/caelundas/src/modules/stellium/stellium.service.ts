@@ -142,15 +142,13 @@ export class StelliumService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const conjunctions = this.groupAspectsByType(unionEdges).get("conjunct") ?? [];
-
+    const conjunctions =
+      this.groupAspectsByType(unionEdges).get("conjunct") ?? [];
     if (conjunctions.length < 6) return [];
-
     const events: Event[] = [];
     for (const cluster of this.buildConjunctionClusters(conjunctions)) {
       const bodies = [...cluster];
       if (!this.allPairsConjunct(bodies, unionEdges)) continue;
-
       const result = this.determineCompoundPhaseFromSnapshots(
         currentAspectBodies,
         previousAspectBodies,
@@ -158,8 +156,7 @@ export class StelliumService {
         minute,
         (edges) => this.allPairsConjunct(bodies, edges),
       );
-
-      if (result) {
+      if (result)
         events.push(
           this.createStelliumEvent({
             bodies,
@@ -167,9 +164,7 @@ export class StelliumService {
             timestamp: result.eventMinute,
           }),
         );
-      }
     }
-
     return events;
   }
 
@@ -223,8 +218,12 @@ export class StelliumService {
         (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
       );
 
-    const currentExists = checkPatternExists(filterByBodies(currentAspectBodies));
-    const previousExists = checkPatternExists(filterByBodies(previousAspectBodies));
+    const currentExists = checkPatternExists(
+      filterByBodies(currentAspectBodies),
+    );
+    const previousExists = checkPatternExists(
+      filterByBodies(previousAspectBodies),
+    );
 
     if (currentExists && !previousExists) {
       return { eventMinute: currentMinute, phase: "forming" };
@@ -275,7 +274,9 @@ export class StelliumService {
       for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
         const dissolving = sortedEvents[index_];
         if (dissolving?.categories.includes("Dissolving")) {
-          result.push(this.buildProgressiveStelliumEvent(currentEvent, dissolving));
+          result.push(
+            this.buildProgressiveStelliumEvent(currentEvent, dissolving),
+          );
           break;
         }
       }

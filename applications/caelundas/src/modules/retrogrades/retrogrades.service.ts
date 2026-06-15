@@ -65,12 +65,20 @@ export class RetrogradesService {
     const longitudes = { currentLongitude, nextLongitudes, previousLongitudes };
     if (this.isRetrograde({ ...longitudes })) {
       events.push(
-        this.buildRetrogradeEvent({ body, direction: "retrograde", timestamp: minute }),
+        this.buildRetrogradeEvent({
+          body,
+          direction: "retrograde",
+          timestamp: minute,
+        }),
       );
     }
     if (this.isDirect({ ...longitudes })) {
       events.push(
-        this.buildRetrogradeEvent({ body, direction: "direct", timestamp: minute }),
+        this.buildRetrogradeEvent({
+          body,
+          direction: "direct",
+          timestamp: minute,
+        }),
       );
     }
     return events;
@@ -293,7 +301,9 @@ export class RetrogradesService {
     const retrogradeEvents: Event[] = [];
     for (const body of retrogradeBodies) {
       const ephemeris = coordinateEphemerisByBody[body];
-      retrogradeEvents.push(...this.detectBodyStations(body, ephemeris, minute));
+      retrogradeEvents.push(
+        ...this.detectBodyStations(body, ephemeris, minute),
+      );
     }
     return retrogradeEvents;
   }

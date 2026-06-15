@@ -18,6 +18,12 @@ import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+export const SYNC_CONFORMANCE_GENERATORS_FILES = [
+  "AGENTS.md",
+  "tools/conformance/generators.json",
+];
+
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const GENERATORS_FILE = path.join(
   WORKSPACE_ROOT,
@@ -168,4 +174,6 @@ function writeSync(generators: Generator[]): void {
   console.log(`✅ Updated AGENTS.md with ${generators.length} generators`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-conformance-generators.ts")) {
+  main();
+}

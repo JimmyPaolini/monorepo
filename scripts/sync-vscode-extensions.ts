@@ -66,7 +66,6 @@ function checkSync(
     unwantedRecommendations: devcontainerUnwantedRecommendations,
   } = devcontainer.customizations.vscode;
 
-  // Both extensions and recommendations in devcontainer should match recommendations from extensions.json
   const extensionsMatch = _.isEqual(
     _.sortBy([...recommendations]),
     _.sortBy([...devcontainerExtensions]),
@@ -116,37 +115,45 @@ function checkSync(
   return true;
 }
 
+function handleCheckMode(extensions: ExtensionsJson): void {
+  let allInSync = true;
+  for (const devcontainerFile of DEVCONTAINER_FILES) {
+    const devcontainer: DevcontainerJson = JSON5.parse(
+      readFileSync(devcontainerFile, "utf8"),
+    );
+    if (!checkSync(extensions, devcontainer, devcontainerFile)) {
+      allInSync = false;
+    }
+  }
+  if (!allInSync) process.exit(1);
+  console.log(
+    "✅ VS Code extensions are in sync with both devcontainer configurations",
+  );
+}
+
+function handleWriteMode(extensions: ExtensionsJson): void {
+  for (const devcontainerFile of DEVCONTAINER_FILES) {
+    const devcontainer: DevcontainerJson = JSON5.parse(
+      readFileSync(devcontainerFile, "utf8"),
+    );
+    if (checkSync(extensions, devcontainer, devcontainerFile)) {
+      const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
+      console.log(`✅ ${label} already in sync`);
+    } else {
+      writeSync(extensions, devcontainer, devcontainerFile);
+    }
+  }
+}
+
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
     readFileSync(EXTENSIONS_FILE, "utf8"),
   );
 
   if (MODE === "check") {
-    let allInSync = true;
-    for (const devcontainerFile of DEVCONTAINER_FILES) {
-      const devcontainer: DevcontainerJson = JSON5.parse(
-        readFileSync(devcontainerFile, "utf8"),
-      );
-      if (!checkSync(extensions, devcontainer, devcontainerFile)) {
-        allInSync = false;
-      }
-    }
-    if (!allInSync) process.exit(1);
-    console.log(
-      "✅ VS Code extensions are in sync with both devcontainer configurations",
-    );
+    handleCheckMode(extensions);
   } else if (MODE === "write") {
-    for (const devcontainerFile of DEVCONTAINER_FILES) {
-      const devcontainer: DevcontainerJson = JSON5.parse(
-        readFileSync(devcontainerFile, "utf8"),
-      );
-      if (checkSync(extensions, devcontainer, devcontainerFile)) {
-        const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
-        console.log(`✅ ${label} already in sync`);
-      } else {
-        writeSync(extensions, devcontainer, devcontainerFile);
-      }
-    }
+    handleWriteMode(extensions);
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
     console.error(

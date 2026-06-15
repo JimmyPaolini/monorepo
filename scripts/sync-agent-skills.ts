@@ -20,6 +20,12 @@ import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+export const SYNC_AGENT_SKILLS_FILES = [
+  "AGENTS.md",
+  "documentation/skills/**/*.md",
+];
+
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const SKILLS_DIR = path.join(WORKSPACE_ROOT, "documentation/skills");
 const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
@@ -197,4 +203,6 @@ function writeSync(skills: Skill[]): void {
   console.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-agent-skills.ts")) {
+  main();
+}

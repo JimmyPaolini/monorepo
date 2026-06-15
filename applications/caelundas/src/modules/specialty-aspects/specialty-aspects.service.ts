@@ -80,10 +80,24 @@ export class SpecialtyAspectsService {
     specialtyAspectSymbol: SpecialtyAspectSymbol;
     timestamp: Moment;
   }): Event {
-    const { body1Symbol, body2Symbol, categories, description, phaseEmoji, specialtyAspectSymbol, timestamp } = args;
+    const {
+      body1Symbol,
+      body2Symbol,
+      categories,
+      description,
+      phaseEmoji,
+      specialtyAspectSymbol,
+      timestamp,
+    } = args;
     const summary = `${phaseEmoji} ${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}`;
     this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-    return { categories, description, end: timestamp, start: timestamp, summary };
+    return {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
   }
 
   private detectBodyPairEvent(
@@ -95,7 +109,12 @@ export class SpecialtyAspectsService {
     nextMinute: Moment,
   ): Event | null {
     const longitudes = this.detectBodyPairLongitudes(
-      body1, body2, coordinateEphemerisByBody, previousMinute, minute, nextMinute,
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      previousMinute,
+      minute,
+      nextMinute,
     );
     const phase = this.detectAspectPhase(longitudes);
     if (!phase) return null;
@@ -117,17 +136,25 @@ export class SpecialtyAspectsService {
     minute: Moment,
     nextMinute: Moment,
   ): LongitudesWindow {
-    const { current: currentLongitudeBody1, next: nextLongitudeBody1, previous: previousLongitudeBody1 } =
-      this.getBodyLongitudesWindow(coordinateEphemerisByBody[body1], previousMinute, minute, nextMinute);
-    const { current: currentLongitudeBody2, next: nextLongitudeBody2, previous: previousLongitudeBody2 } =
-      this.getBodyLongitudesWindow(coordinateEphemerisByBody[body2], previousMinute, minute, nextMinute);
+    const w1 = this.getBodyLongitudesWindow(
+      coordinateEphemerisByBody[body1],
+      previousMinute,
+      minute,
+      nextMinute,
+    );
+    const w2 = this.getBodyLongitudesWindow(
+      coordinateEphemerisByBody[body2],
+      previousMinute,
+      minute,
+      nextMinute,
+    );
     return {
-      currentLongitudeBody1,
-      currentLongitudeBody2,
-      nextLongitudeBody1,
-      nextLongitudeBody2,
-      previousLongitudeBody1,
-      previousLongitudeBody2,
+      currentLongitudeBody1: w1.current,
+      currentLongitudeBody2: w2.current,
+      nextLongitudeBody1: w1.next,
+      nextLongitudeBody2: w2.next,
+      previousLongitudeBody1: w1.previous,
+      previousLongitudeBody2: w2.previous,
     };
   }
 
@@ -165,7 +192,11 @@ export class SpecialtyAspectsService {
     const aspectLower = aspectCapitalized.toLowerCase();
     const body1Lower = body1Capitalized.toLowerCase();
     const body2Lower = body2Capitalized.toLowerCase();
-    if (!isSpecialtyAspect(aspectLower) || !isBody(body1Lower) || !isBody(body2Lower)) {
+    if (
+      !isSpecialtyAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
       throw new Error(
         `Could not extract typed values from categories: ${categories.join(", ")}`,
       );
@@ -194,15 +225,23 @@ export class SpecialtyAspectsService {
     const { aspectCapitalized, body1Capitalized, body2Capitalized } =
       this.extractAspectBodiesFromCategories(beginning.categories);
     const { aspect, body1, body2 } = this.extractTypedAspectValues(
-      body1Capitalized, body2Capitalized, aspectCapitalized, beginning.categories,
+      body1Capitalized,
+      body2Capitalized,
+      aspectCapitalized,
+      beginning.categories,
     );
     const body1Symbol = symbolByBody[body1];
     const body2Symbol = symbolByBody[body2];
     const aspectSymbol = symbolBySpecialtyAspect[aspect];
     return {
       categories: [
-        "Astronomy", "Astrology", "Simple Aspect", "Specialty Aspect",
-        body1Capitalized, body2Capitalized, aspectCapitalized,
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Specialty Aspect",
+        body1Capitalized,
+        body2Capitalized,
+        aspectCapitalized,
       ],
       description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
       end: ending.start,
@@ -281,28 +320,44 @@ export class SpecialtyAspectsService {
     phase: AspectPhase;
     timestamp: Moment;
   }): Event {
-    const { body1, body2, longitudeBody1, longitudeBody2, phase, timestamp } = args;
-    const specialtyAspect = this.getSpecialtyAspect({ longitudeBody1, longitudeBody2 });
+    const { body1, body2, longitudeBody1, longitudeBody2, phase, timestamp } =
+      args;
+    const specialtyAspect = this.getSpecialtyAspect({
+      longitudeBody1,
+      longitudeBody2,
+    });
     if (!specialtyAspect) {
       this.logger.error(
         `No specialty aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
       );
       throw new Error("No specialty aspect found");
     }
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const specialtyAspectSymbol: SpecialtyAspectSymbol = symbolBySpecialtyAspect[specialtyAspect];
+    const b1Cap = capitalize(body1);
+    const b2Cap = capitalize(body2);
     const baseCategories = [
-      "Astronomy", "Astrology", "Simple Aspect", "Specialty Aspect",
-      body1Capitalized, body2Capitalized, _.startCase(specialtyAspect),
+      "Astronomy",
+      "Astrology",
+      "Simple Aspect",
+      "Specialty Aspect",
+      b1Cap,
+      b2Cap,
+      _.startCase(specialtyAspect),
     ];
     const { categories, description, phaseEmoji } = this.phaseFields(
-      phase, body1Capitalized, body2Capitalized, specialtyAspect, baseCategories,
+      phase,
+      b1Cap,
+      b2Cap,
+      specialtyAspect,
+      baseCategories,
     );
     return this.buildSpecialtyAspectEventFromParts({
-      body1Symbol, body2Symbol, categories, description, phaseEmoji, specialtyAspectSymbol, timestamp,
+      body1Symbol: symbolByBody[body1],
+      body2Symbol: symbolByBody[body2],
+      categories,
+      description,
+      phaseEmoji,
+      specialtyAspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
+      timestamp,
     });
   }
 
@@ -333,7 +388,12 @@ export class SpecialtyAspectsService {
       for (const body2 of specialtyAspectBodies.slice(index + 1)) {
         if (body1 === body2) continue;
         const event = this.detectBodyPairEvent(
-          body1, body2, coordinateEphemerisByBody, previousMinute, minute, nextMinute,
+          body1,
+          body2,
+          coordinateEphemerisByBody,
+          previousMinute,
+          minute,
+          nextMinute,
         );
         if (event) specialtyAspectEvents.push(event);
       }
