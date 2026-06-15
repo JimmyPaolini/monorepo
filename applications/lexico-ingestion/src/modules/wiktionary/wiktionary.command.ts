@@ -54,7 +54,10 @@ export class WiktionaryCommand extends CommandRunner {
   // 🔏 Private Methods
 
   private escapeCapitals(word: string): string {
-    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+    return word.replaceAll(
+      /[A-Z]/g,
+      (character) => `_${character.toLowerCase()}`,
+    );
   }
   private async fetchWithRetry(
     url: string,

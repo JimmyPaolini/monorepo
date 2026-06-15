@@ -48,24 +48,23 @@ export async function generateComponent(
     );
   }
 
-  const directory = path.join(projectRoot, "src", "components");
+  const componentsDirectory = path.join(projectRoot, "src", "components");
 
-  // Validate directory exists in workspace
-  if (!tree.exists(directory)) {
+  if (!tree.exists(componentsDirectory)) {
     throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
+      `Directory "${componentsDirectory}" does not exist in project "${projectName}"`,
     );
   }
 
-  const namePascalCase = _.upperFirst(_.camelCase(name));
-
   const filesPath = path.join(__dirname, "templates");
-  const substitutions = { namePascalCase };
+  const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
+
   generateFiles({
-    instanceDirectoryPath: directory,
+    instanceDirectoryPath: componentsDirectory,
     substitutions,
     templateDirectoryPath: filesPath,
     tree,
   });
+
   await formatFiles(tree);
 }

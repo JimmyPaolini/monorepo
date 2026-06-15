@@ -12,14 +12,6 @@ import type {
 } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-// #region 📏 Annual Solar Cycle
-
-// #region 🌞 Solar Apsis
-
-// #region 🕰️ Solstices, Equinoxes, Quarter days, Hexadecans
-
-// #region 🕑 Progressive Events
-
 /**
  * Detects key annual solar cycle events based on the Sun's ecliptic longitude and distance.
  *
@@ -803,7 +795,7 @@ export class AnnualSolarCycleService {
     return solarApsisEvents;
   }
 
-  // #region 📏 Annual Solar Cycle
+  // 📏 Annual Solar Cycle
 
   /**
    * Determines if the Sun is crossing the autumnal equinox point (180°).

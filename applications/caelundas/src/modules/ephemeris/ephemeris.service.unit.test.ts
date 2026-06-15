@@ -13,9 +13,7 @@ import type {
   IlluminationEphemeris,
 } from "./ephemeris.types";
 
-// ---------------------------------------------------------------------------
-// Mocks
-// ---------------------------------------------------------------------------
+// 🎭 Mocks
 
 vi.mock("sweph", () => ({
   azalt: vi.fn().mockReturnValue([180, 45, 44.8]),
@@ -72,9 +70,7 @@ vi.mock("sweph", () => ({
   }),
 }));
 
-// ---------------------------------------------------------------------------
-// Accessor tests (pure logic, no mocks needed)
-// ---------------------------------------------------------------------------
+// 🧪 Accessor tests (pure logic, no mocks needed)
 
 describe("EphemerisService", () => {
   function makeStart(): Moment {
@@ -98,7 +94,7 @@ describe("EphemerisService", () => {
     vi.clearAllMocks();
   });
 
-  // #region Accessor: getCoordinateFromEphemeris
+  // 🔎 Accessor: getCoordinateFromEphemeris
 
   describe("getCoordinateFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
@@ -125,7 +121,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region Accessor: getAzimuthElevationFromEphemeris
+  // 🔎 Accessor: getAzimuthElevationFromEphemeris
 
   describe("getAzimuthElevationFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
@@ -156,7 +152,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region Accessor: getIlluminationFromEphemeris
+  // 🔎 Accessor: getIlluminationFromEphemeris
 
   describe("getIlluminationFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
@@ -181,7 +177,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region Accessor: getDistanceFromEphemeris
+  // 🔎 Accessor: getDistanceFromEphemeris
 
   describe("getDistanceFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
@@ -202,7 +198,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region Accessor: getDiameterFromEphemeris
+  // 🔎 Accessor: getDiameterFromEphemeris
 
   describe("getDiameterFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
@@ -223,7 +219,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region getCoordinateEphemerisByBody
+  // 🔎 getCoordinateEphemerisByBody
 
   describe("getCoordinateEphemerisByBody", () => {
     it("returns coordinate ephemeris for a planet body", () => {
@@ -309,7 +305,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region getAzimuthElevationEphemerisByBody
+  // 🔎 getAzimuthElevationEphemerisByBody
 
   describe("getAzimuthElevationEphemerisByBody", () => {
     it("returns azimuth and elevation for sun", () => {
@@ -332,7 +328,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region getIlluminationEphemerisByBody
+  // 🔎 getIlluminationEphemerisByBody
 
   describe("getIlluminationEphemerisByBody", () => {
     it("returns 100 illumination for sun at every timestamp", () => {
@@ -369,7 +365,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region getDiameterEphemerisByBody
+  // 🔎 getDiameterEphemerisByBody
 
   describe("getDiameterEphemerisByBody", () => {
     it("returns diameter from pheno_ut data[3] for sun", () => {
@@ -389,7 +385,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region getDistanceEphemerisByBody
+  // 🔎 getDistanceEphemerisByBody
 
   describe("getDistanceEphemerisByBody", () => {
     it("returns distance from calc data[2]", () => {
@@ -409,7 +405,7 @@ describe("EphemerisService", () => {
     });
   });
 
-  // #region computeAllEphemerides
+  // 🔵 computeAllEphemerides
 
   describe("computeAllEphemerides", () => {
     it("returns all five ephemeris types", () => {

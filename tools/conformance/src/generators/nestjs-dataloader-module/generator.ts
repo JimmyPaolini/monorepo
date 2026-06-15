@@ -55,15 +55,15 @@ export async function generateNestjsDataloaderModule(
     );
   }
 
-  const directory = path.join(projectRoot, "src", "modules");
+  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
 
-  if (!tree.exists(directory)) {
+  if (!tree.exists(modulesDirectory)) {
     throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
+      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
     );
   }
 
-  const targetPath = path.join(directory, nameKebabCase);
+  const targetPath = path.join(modulesDirectory, nameKebabCase);
   const substitutions = {
     nameCamelCase: _.camelCase(nameKebabCase),
     nameKebabCase,

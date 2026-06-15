@@ -19,8 +19,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-// #region Progressive Events
-
 /**
  * Detects stellium configurations — concentrations of 4 or more bodies in close conjunction.
  *

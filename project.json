@@ -92,6 +92,15 @@
       "executor": "nx:run-commands",
       "options": {}
     },
+    "commit-msg": {
+      "cache": false,
+      "description": "Run the commit-msg git hook script (commitlint). Pass the commit message file via --edit=<path>.",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/commit-msg",
+        "cwd": "{projectRoot}"
+      }
+    },
     "commitlint": {
       "cache": false,
       "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook)",
@@ -105,10 +114,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "eslint {args} --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --config configuration/eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "eslint {args} --fix --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --fix --config configuration/eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
@@ -361,6 +370,24 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}"
+      }
+    },
+    "pre-commit": {
+      "cache": false,
+      "description": "Run the pre-commit git hook script (unstage notepads, lint-staged).",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/pre-commit",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "pre-push": {
+      "cache": false,
+      "description": "Run the pre-push git hook script (branch name validation).",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/pre-push",
+        "cwd": "{projectRoot}"
       }
     },
     "prettier": {

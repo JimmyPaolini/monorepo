@@ -65,12 +65,12 @@ export function stringifyConformanceErrors(
 
           // Instance location
           if (error.instanceLine !== undefined) {
-            const col =
+            const column =
               error.instanceColumn === undefined
                 ? ""
                 : `, Column ${String(error.instanceColumn)}`;
             lines.push(
-              `        Instance: Line ${String(error.instanceLine)}${col}`,
+              `        Instance: Line ${String(error.instanceLine)}${column}`,
             );
           } else if (error.instancePath !== undefined) {
             lines.push(`        Instance: JSON path "${error.instancePath}"`);
@@ -78,12 +78,12 @@ export function stringifyConformanceErrors(
 
           // Template location
           if (error.templateLine !== undefined) {
-            const col =
+            const column =
               error.templateColumn === undefined
                 ? ""
                 : `, Column ${String(error.templateColumn)}`;
             lines.push(
-              `        Template: Line ${String(error.templateLine)}${col}`,
+              `        Template: Line ${String(error.templateLine)}${column}`,
             );
           } else if (error.templatePath !== undefined) {
             lines.push(`        Template: JSON path "${error.templatePath}"`);

@@ -24,7 +24,7 @@ const tsconfigRootDir = path.resolve(
 );
 
 export default [
-  // ━━━━━━━━━━━━━━━━━━━ Global Ignores ━━━━━━━━━━━━━━━━━━━
+  // 🚫 Global Ignores
   // Patterns excluded from ALL linting (build output, generated code, locks)
   {
     ignores: [
@@ -77,7 +77,7 @@ export default [
     ],
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Base ESLint Recommended ━━━━━━━━━━━━━━━━━━━
+  // ✅ Base ESLint Recommended
   // Core ESLint recommended rules applied to all non-markdown source files
   {
     ...eslint.configs.recommended,
@@ -98,13 +98,13 @@ export default [
     ],
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Nx Plugin ━━━━━━━━━━━━━━━━━━━
+  // 🏗️ Nx Plugin
   // Module boundary enforcement and dependency validation
   ...nxPlugin.configs["flat/base"],
   ...nxPlugin.configs["flat/typescript"],
   ...nxPlugin.configs["flat/javascript"],
 
-  // ━━━━━━━━━━━━━━━━━━━ Unicorn Recommended Rules ━━━━━━━━━━━━━━━━━━━
+  // 🦄 Unicorn Recommended Rules
   // Code quality and modern JavaScript patterns
   {
     ...eslintPluginUnicorn.configs.recommended,
@@ -120,7 +120,7 @@ export default [
     ],
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Unicorn Rule Overrides ━━━━━━━━━━━━━━━━━━━
+  // 🦄 Unicorn Rule Overrides
   // Disable rules that conflict with existing conventions
   {
     files: [
@@ -138,20 +138,17 @@ export default [
       "unicorn/filename-case": "off",
       // null is used extensively in the codebase (React refs, database nulls, API contracts)
       "unicorn/no-null": "off",
-      // Common abbreviations are acceptable (ctx, env, req, res, db, fn)
+      // Abbreviations are banned per ESLint and CSpell config — only `args` and `str` are acceptable
       "unicorn/prevent-abbreviations": [
-        "error",
+        "warn",
         {
           allowList: {
+            // args: `arguments` is a reserved keyword in JavaScript
             args: true,
-            ctx: true,
-            db: true,
-            dir: true,
-            env: true,
-            envFilePath: true,
-            fn: true,
-            rel: true,
-            res: true,
+            // props: standard React convention for component properties parameter
+            props: true,
+            Props: true,
+            // str: `string` is a reserved keyword in TypeScript
             str: true,
           },
           checkDefaultAndNamespaceImports: true,
@@ -161,37 +158,61 @@ export default [
           checkShorthandProperties: true,
           checkVariables: true,
           ignore: [
-            String.raw`\.e2e$`,
-            String.raw`\.cjs$`,
-            String.raw`\.mjs$`,
-            String.raw`\.d\.ts$`,
-            String.raw`vite\.config\..*$`,
-            String.raw`vitest\.config\..*$`,
-            String.raw`eslint\.config\..*$`,
-            String.raw`package\.json`,
-            "AdjectiveFormsTableProps",
-            "EntryCardProps",
-            "FormCellProps",
-            "FormTabsProps",
-            "FormsTableProps",
-            "IdentifierProps",
-            "NounFormsTableProps",
-            "PrincipalPartsProps",
-            "TranslationsProps",
-            "VerbFormsTableProps",
-            "DeckProps",
-            "LayoutProps",
-            "LogoProps",
-            "NavigationProps",
-            "SearchBarProps",
+            /\.e2e$/,
+            /\.cjs$/,
+            /\.mjs$/,
+            /\.d\.ts$/,
+            /vite\.config\..*$/,
+            /vitest\.config\..*$/,
+            /eslint\.config\..*$/,
+            /package\.json/,
+            // React component prop type names use the standard `Props` suffix
+            /\w+Props$/,
           ],
           replacements: {
             app: { application: true },
+            arr: { array: true },
+            auth: { authentication: true, authorization: true },
+            bg: { background: true },
+            bool: { boolean: true },
+            char: { character: true },
+            col: { column: true },
+            ctx: { context: true },
+            cur: { current: true },
+            curr: { current: true },
+            db: { database: true },
+            dev: { development: true },
+            dir: { directory: true },
             e: { error: true, event: true },
+            el: { element: true },
+            env: { environment: true },
+            fn: { function: true },
+            hex: { hexadecimal: true },
             i: { index: true },
             idx: { index: true },
+            j: { index: true },
+            k: { index: true },
+            max: { maximum: true },
+            min: { minimum: true },
+            nav: { navigation: true },
+            num: { number: true },
+            obj: { object: true },
+            param: { parameter: true },
+            pkg: { package: true },
+            prod: { production: true },
+            prop: { property: true },
+            px: { pixel: true },
+            rel: { relative: true },
             req: { request: true },
+            res: { response: true },
+            ret: { return: true },
+            src: { source: true },
+            stg: { staging: true },
+            temp: { temporary: true },
             tmp: { temporary: true },
+            txt: { text: true },
+            util: { utility: true },
+            val: { value: true },
           },
         },
       ],
@@ -212,7 +233,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Unicorn Test File Relaxations ━━━━━━━━━━━━━━━━━━━
+  // 🦄 Unicorn Test File Relaxations
   // Allow test-specific patterns
   {
     files: ["**/*.test.ts", "**/*.spec.ts", "**/testing/**"],
@@ -226,7 +247,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Unicorn Config File Relaxations ━━━━━━━━━━━━━━━━━━━
+  // 🦄 Unicorn Config File Relaxations
   // Allow CommonJS patterns in config files
   {
     files: [
@@ -247,7 +268,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Main Configuration ━━━━━━━━━━━━━━━━━━━
+  // ⚙️ Main Configuration
   // Core rules for all TS/JS source files: module boundaries, import ordering,
   // strict TypeScript type safety, naming conventions, and best practices
   {
@@ -264,7 +285,7 @@ export default [
     ignores: [
       "lint-staged.config.ts",
       "prettier.config.ts",
-      "configuration/eslint.config.base.ts",
+      "configuration/eslint.config.ts",
     ],
     plugins: {
       "@typescript-eslint": tseslint.plugin,
@@ -279,9 +300,30 @@ export default [
         {
           allow: [],
           depConstraints: [
+            // Applications can only depend on workspace packages (not other apps or tools)
             {
-              onlyDependOnLibsWithTags: ["*"],
-              sourceTag: "*",
+              onlyDependOnLibsWithTags: ["type:package"],
+              sourceTag: "type:application",
+            },
+            // Packages cannot depend on applications (no upward dependencies)
+            {
+              notDependOnLibsWithTags: ["type:application"],
+              sourceTag: "type:package",
+            },
+            // Frontend (React) must not import backend (NestJS) code
+            {
+              notDependOnLibsWithTags: ["framework:nestjs"],
+              sourceTag: "framework:react",
+            },
+            // Domain isolation: caelundas cannot import lexico packages
+            {
+              notDependOnLibsWithTags: ["domain:lexico"],
+              sourceTag: "domain:caelundas",
+            },
+            // Domain isolation: lexico cannot import caelundas packages
+            {
+              notDependOnLibsWithTags: ["domain:caelundas"],
+              sourceTag: "domain:lexico",
             },
           ],
           enforceBuildableLibDependency: true,
@@ -293,6 +335,8 @@ export default [
       "import/namespace": "off", // TypeScript handles this
       "import/no-duplicates": "error",
       "import/no-named-as-default-member": "off", // TypeScript handles this
+      "import/no-relative-packages": "error",
+      "import/no-relative-parent-imports": "warn",
       "import/no-unresolved": "off", // TypeScript handles this
       "perfectionist/sort-array-includes": [
         "error",
@@ -544,8 +588,15 @@ export default [
         },
       ],
       "@typescript-eslint/only-throw-error": "error",
+      complexity: ["warn", { max: 8 }],
       curly: ["error", "all"],
       eqeqeq: ["error", "always"],
+      "max-depth": ["warn", { max: 4 }],
+      "max-lines-per-function": [
+        "warn",
+        { max: 32, skipBlankLines: true, skipComments: true },
+      ],
+      "max-statements": ["warn", { max: 16 }],
       "no-alert": "error",
       "no-debugger": "error",
       "no-duplicate-imports": "off", // import/no-duplicates handles this
@@ -560,7 +611,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ TypeScript Strict Type-Checked ━━━━━━━━━━━━━━━━━━━
+  // 🔷 TypeScript Strict Type-Checked
   // Enables strict + stylistic type-checked rule sets from typescript-eslint.
   // Requires parserOptions.projectService for type-aware linting.
   ...tseslint.configs.strictTypeChecked.map((config) => ({
@@ -598,7 +649,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ TSDoc / JSDoc Documentation ━━━━━━━━━━━━━━━━━━━
+  // 📚 TSDoc / JSDoc Documentation
   // Enforces TSDoc syntax and requires JSDoc on public declarations
   // (functions, methods, classes, interfaces, types, enums)
   {
@@ -641,7 +692,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ React / Hooks / Accessibility ━━━━━━━━━━━━━━━━━━━
+  // ⚛️ React / Hooks / Accessibility
   // @eslint-react/eslint-plugin: native ESLint 10+ support, TypeScript-first.
   // recommended-typescript covers: no-missing-key, no-array-index-key,
   // no-nested-component-definitions, dom/no-unsafe-target-blank,
@@ -683,7 +734,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Test Files ━━━━━━━━━━━━━━━━━━━
+  // 🧪 Test Files
   // Relaxed rules for test files: allow `any`, unsafe operations, and console
   {
     files: [
@@ -708,7 +759,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ JavaScript Config Files ━━━━━━━━━━━━━━━━━━━
+  // 🟨 JavaScript Config Files
   // Disables ALL type-checked rules for .js/.mjs/.cjs files since they
   // lack TypeScript type information (e.g., *.config.cjs, commitlint.config.ts)
   {
@@ -749,7 +800,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ JSON Files ━━━━━━━━━━━━━━━━━━━
+  // 📦 JSON Files
   // JSON/JSONC/JSON5 linting with style enforcement and Nx dependency checks
   ...jsoncPlugin.configs["flat/recommended-with-jsonc"].map((config) => ({
     ...config,
@@ -780,7 +831,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ JSONC Files ━━━━━━━━━━━━━━━━━━━
+  // 📦 JSONC Files
   // JSONC files support trailing commas; align with Prettier's trailingComma: "all" + jsonc parser
   {
     files: ["**/*.jsonc"],
@@ -789,7 +840,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ devcontainer.json files ━━━━━━━━━━━━━━━━━━━
+  // 🐳 devcontainer.json files
   // Allow line-separated groups in devcontainer.json for security audit tool flexibility
   {
     files: ["**/devcontainer.json"],
@@ -805,7 +856,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ YAML Files ━━━━━━━━━━━━━━━━━━━
+  // 📋 YAML Files
   // YAML/YML linting with indent, quoting, and best practice rules
   ...eslintPluginYml.configs["flat/standard"].map((config) => ({
     ...config,
@@ -842,8 +893,11 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Config File Overrides ━━━━━━━━━━━━━━━━━━━
-  // Allow workspace imports in *.config.* files without module boundary errors
+  // ⚙️ Config File Overrides
+  // Tooling config files use relative paths to import shared workspace config
+  // (e.g., eslint.config.ts, tailwind.config.cjs extending root config files).
+  // They cannot use npm scope resolution because the shared config files are not
+  // publishable packages — they live in configuration/ at the workspace root.
   {
     files: [
       "**/*.config.ts",
@@ -853,10 +907,11 @@ export default [
     ],
     rules: {
       "@nx/enforce-module-boundaries": "off",
+      "import/no-relative-packages": "off",
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Vitest Config Files ━━━━━━━━━━━━━━━━━━━
+  // 🔬 Vitest Config Files
   // Disable type-checked rules for vitest configs (circular dependency issues)
   {
     files: ["**/vitest.config.ts", "**/vitest.config.base.ts"],
@@ -872,10 +927,10 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Self-Config ━━━━━━━━━━━━━━━━━━━
-  // Relaxed rules for eslint.config.base.ts itself (plugin typing limitations)
+  // 🔧 Self-Config
+  // Relaxed rules for eslint.config.ts itself (plugin typing limitations)
   {
-    files: ["configuration/eslint.config.base.ts"],
+    files: ["configuration/eslint.config.ts"],
     plugins: {
       "@typescript-eslint": tseslint.plugin,
     },
@@ -887,7 +942,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Markdown Files ━━━━━━━━━━━━━━━━━━━
+  // 📝 Markdown Files
   // GitHub Flavored Markdown (GFM) with YAML frontmatter support
   {
     files: ["**/*.md"],
@@ -923,7 +978,7 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Prettier (must be last) ━━━━━━━━━━━━━━━━━━━
+  // 💅 Prettier (must be last)
   // Disables all formatting rules that conflict with Prettier
   eslintConfigPrettier,
   {

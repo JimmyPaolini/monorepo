@@ -5,7 +5,7 @@ import { Button, cn } from "@monorepo/lexico-components";
 
 import { Navigation } from "./navigation";
 
-import type { NavItem } from "./navigation";
+import type { NavItem as NavigationItem } from "./navigation";
 
 /**
  * Props for the Layout component that provides app structure with navigation.
@@ -18,10 +18,10 @@ export interface LayoutProps {
   /** Current pathname for navigation active state */
   currentPath?: string | undefined;
   /** Custom navigation items */
-  navItems?: NavItem[] | undefined;
+  navItems?: NavigationItem[] | undefined;
   /** Render prop for navigation links */
   renderNavLink: (
-    item: NavItem,
+    item: NavigationItem,
     isActive: boolean,
     children: React.ReactNode,
   ) => React.ReactNode;
@@ -29,10 +29,16 @@ export interface LayoutProps {
 
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (
-    { children, className, currentPath = "/", navItems, renderNavLink },
+    {
+      children,
+      className,
+      currentPath = "/",
+      navItems: navigationItems,
+      renderNavLink: renderNavigationLink,
+    },
     reference,
   ) => {
-    const [isNavOpen, setNavOpen] = React.useState(false);
+    const [isNavigationOpen, setNavigationOpen] = React.useState(false);
     const [isMobile, setMobile] = React.useState(false);
 
     // Handle responsive breakpoint
@@ -46,8 +52,8 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
       return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    const toggleNav = (): void => {
-      setNavOpen((previous) => !previous);
+    const toggleNavigation = (): void => {
+      setNavigationOpen((previous) => !previous);
     };
 
     return (
@@ -59,10 +65,10 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         <Navigation
           currentPath={currentPath}
           isMobile={isMobile}
-          isOpen={isNavOpen}
-          items={navItems}
-          onToggle={toggleNav}
-          renderLink={renderNavLink}
+          isOpen={isNavigationOpen}
+          items={navigationItems}
+          onToggle={toggleNavigation}
+          renderLink={renderNavigationLink}
         />
 
         {/* Main content */}
@@ -71,7 +77,7 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
           {isMobile && (
             <header className="sticky top-0 z-30 flex h-14 items-center border-b border-border bg-background px-4">
               <Button
-                onClick={toggleNav}
+                onClick={toggleNavigation}
                 size="icon"
                 variant="ghost"
               >

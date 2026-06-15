@@ -12,8 +12,6 @@ import type { Moment } from "moment-timezone";
 
 export type { Twilight } from "./twilights.types";
 
-// #region 🕑 Progressive Events
-
 /**
  * Detects solar twilight transition events based on the Sun's elevation angle.
  *

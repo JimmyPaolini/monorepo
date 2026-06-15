@@ -43,10 +43,6 @@ import type {
 // Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
 initializeSwissEphemeris();
 
-// #region Utilities
-
-// #region Coordinate Computation
-
 /**
  * Swiss Ephemeris computation service for caelundas.
  *

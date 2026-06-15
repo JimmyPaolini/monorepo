@@ -20,8 +20,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-// #region Progressive Events
-
 /**
  * Detects 6-body compound aspect configurations: the Hexagram (Star of David) pattern.
  *
@@ -273,8 +271,8 @@ export class SextupleAspectsService {
     // Try all possible interleavings of the two trines
     for (let index = 0; index < 3; index++) {
       for (let index_ = 0; index_ < 3; index_++) {
-        for (let k = 0; k < 3; k++) {
-          if (k === index) {
+        for (let index__ = 0; index__ < 3; index__++) {
+          if (index__ === index) {
             continue;
           }
           for (let l = 0; l < 3; l++) {
@@ -283,7 +281,7 @@ export class SextupleAspectsService {
             }
 
             // Try arrangement: trine1[i], trine2[j], trine1[k], trine2[l], trine1[remaining], trine2[remaining]
-            const index2 = [0, 1, 2].find((x) => x !== index && x !== k);
+            const index2 = [0, 1, 2].find((x) => x !== index && x !== index__);
             const index2_ = [0, 1, 2].find((x) => x !== index_ && x !== l);
 
             if (index2 === undefined || index2_ === undefined) {
@@ -292,14 +290,14 @@ export class SextupleAspectsService {
 
             const t1index = trine1[index];
             const t2index = trine2[index_];
-            const t1k = trine1[k];
+            const t1index_ = trine1[index__];
             const t2l = trine2[l];
             const t1index2 = trine1[index2];
             const t2index2 = trine2[index2_];
             if (
               !t1index ||
               !t2index ||
-              !t1k ||
+              !t1index_ ||
               !t2l ||
               !t1index2 ||
               !t2index2
@@ -310,7 +308,7 @@ export class SextupleAspectsService {
             const arrangement = [
               t1index,
               t2index,
-              t1k,
+              t1index_,
               t2l,
               t1index2,
               t2index2,

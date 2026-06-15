@@ -22,8 +22,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-// #region Progressive Events
-
 /**
  * Composes 3-body aspect patterns from the active 2-body aspect registry.
  *
@@ -199,10 +197,14 @@ export class TripleAspectsService {
     // Check all combinations of 3 bodies
     for (let index = 0; index < bodiesArray.length; index++) {
       for (let index_ = index + 1; index_ < bodiesArray.length; index_++) {
-        for (let k = index_ + 1; k < bodiesArray.length; k++) {
+        for (
+          let index__ = index_ + 1;
+          index__ < bodiesArray.length;
+          index__++
+        ) {
           const body1 = bodiesArray[index];
           const body2 = bodiesArray[index_];
-          const body3 = bodiesArray[k];
+          const body3 = bodiesArray[index__];
           if (!body1 || !body2 || !body3) {
             continue;
           }
@@ -704,9 +706,12 @@ export class TripleAspectsService {
       dissolvingEvents.sort((a, b) => a.start.valueOf() - b.start.valueOf());
 
       // Pair forming and dissolving events
-      const minLength = Math.min(formingEvents.length, dissolvingEvents.length);
+      const minimumLength = Math.min(
+        formingEvents.length,
+        dissolvingEvents.length,
+      );
 
-      for (let index = 0; index < minLength; index++) {
+      for (let index = 0; index < minimumLength; index++) {
         const forming = formingEvents[index];
         const dissolving = dissolvingEvents[index];
         if (!forming || !dissolving) {

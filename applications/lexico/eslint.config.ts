@@ -1,11 +1,16 @@
-import baseConfig from "../../configuration/eslint.config.base.ts";
+import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🛠️ Base Config
   ...baseConfig,
+
+  // 🚫 Project Ignores
   {
     // Ignore Supabase Edge Functions (Deno runtime, separate tsconfig) and generated files
     ignores: ["supabase/functions/**", "src/routeTree.gen.ts"],
   },
+
+  // 📦 Dependency Checks
   {
     files: ["**/*.json"],
     rules: {

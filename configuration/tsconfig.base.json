@@ -3,14 +3,14 @@
   // Projects extend this via their own tsconfig.json → { "extends": "../../tsconfig.base.json" }
   "compileOnSave": false,
   "compilerOptions": {
-    // ── Module System ──
+    // 📦 Module System
     "allowImportingTsExtensions": true,
-    // ── Strict Safety ──
+    // 🔒 Strict Safety
     // All strict flags are on; these additional flags catch more bugs:
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
 
-    // ── Build ──
+    // 🏗 Build
     "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -31,13 +31,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
-    // ── Monorepo Path Aliases ──
+    // 🗺️ Monorepo Path Aliases
     // Enables `import { Button } from "@monorepo/lexico-components"` across projects
     "paths": {
       "@monorepo/conformance/*": ["../tools/conformance/*"],
       "@monorepo/lexico-components": [
         "../packages/lexico-components/src/index.ts"
-      ]
+      ],
+      "monorepo/configuration/*": ["./*"]
     },
     "resolveJsonModule": true,
     "rootDir": "..",

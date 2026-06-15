@@ -1,10 +1,5 @@
 export { Deck, type DeckProps } from "./deck";
 export { Layout, type LayoutProps } from "./layout";
 export { Logo, type LogoProps } from "./logo";
-export {
-  defaultNavItems,
-  Navigation,
-  type NavigationProps,
-  type NavItem,
-} from "./navigation";
+export { Navigation, type NavigationProps, type NavItem } from "./navigation";
 export { SearchBar, type SearchBarProps } from "./search-bar";

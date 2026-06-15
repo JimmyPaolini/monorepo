@@ -48,7 +48,7 @@ export interface NavItem {
   label: string;
 }
 
-const defaultNavItems: NavItem[] = [
+const defaultNavigationItems: NavItem[] = [
   { href: "/", icon: <Search className="h-5 w-5" />, label: "Search" },
   {
     href: "/bookmarks",
@@ -76,7 +76,7 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
       currentPath = "/",
       isMobile = false,
       isOpen = false,
-      items = defaultNavItems,
+      items = defaultNavigationItems,
       onToggle,
       renderLink,
     },
@@ -101,7 +101,7 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
       }
     };
 
-    const navContent = (
+    const navigationContent = (
       <nav
         ref={reference}
         className={cn(
@@ -186,16 +186,16 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
               isOpen ? "translate-x-0" : "-translate-x-full",
             )}
           >
-            {navContent}
+            {navigationContent}
           </div>
         </>
       );
     }
 
     // Desktop: permanent sidebar
-    return navContent;
+    return navigationContent;
   },
 );
 Navigation.displayName = "Navigation";
 
-export { defaultNavItems, Navigation };
+export { Navigation };

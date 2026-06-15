@@ -65,7 +65,7 @@ const config: KnipConfig = {
         "configuration/vitest.config.ts",
         "configuration/commitlint.config.ts",
         "configuration/dependency-cruiser.cjs",
-        "configuration/eslint.config.base.ts",
+        "configuration/eslint.config.ts",
         "configuration/eslint.config.js",
         "configuration/lint-staged.config.ts",
         "configuration/oxfmt.config.ts",

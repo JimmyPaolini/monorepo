@@ -19,8 +19,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-// #region Progressive Events
-
 /**
  * Detects 4-body compound aspect configurations: Grand Cross and Kite patterns.
  *
@@ -294,8 +292,8 @@ export class QuadrupleAspectsService {
         if (!trineJ) {
           continue;
         }
-        for (let k = index_ + 1; k < trines.length; k++) {
-          const trineK = trines[k];
+        for (let index__ = index_ + 1; index__ < trines.length; index__++) {
+          const trineK = trines[index__];
           if (!trineK) {
             continue;
           }

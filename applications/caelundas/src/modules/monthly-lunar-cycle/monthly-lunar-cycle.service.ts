@@ -15,8 +15,6 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-// #region 🕑 Progressive Events
-
 /**
  * Detects monthly lunar cycle phase events using Moon illumination data.
  *

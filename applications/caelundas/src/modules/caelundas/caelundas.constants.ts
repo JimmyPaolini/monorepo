@@ -23,7 +23,7 @@ export function typedObjectKeys<T extends object>(object: T): (keyof T)[] {
   return Object.keys(object) as (keyof T)[];
 }
 
-// #region Signs 🪧
+// 🪧 Signs
 
 /**
  * Maps each zodiac sign to its Unicode symbol.
@@ -44,7 +44,7 @@ export const symbolBySign = {
   virgo: "♍︎",
 } as const;
 
-// #region Decans 🔟
+// 🔟 Decans
 
 /**
  * Maps each decan number (1-3) to its emoji representation.
@@ -56,7 +56,7 @@ export const symbolByDecan = {
   "3": "3️⃣",
 } as const;
 
-// #region Planets 🪐
+// 🪐 Planets
 
 /**
  * Maps each classical and modern planet to its Unicode symbol.
@@ -75,7 +75,7 @@ export const symbolByPlanet = {
   venus: "♀️",
 } as const;
 
-// #region Asteroids 💫
+// 💫 Asteroids
 
 /**
  * Maps each asteroid to its Unicode symbol.
@@ -90,7 +90,7 @@ export const symbolByAsteroid = {
   vesta: "⚶",
 } as const;
 
-// #region Comets ☄️
+// ☄️ Comets
 
 /**
  * Maps each comet to its emoji representation.
@@ -100,7 +100,7 @@ export const symbolByAsteroid = {
 //   halley: "☄",
 // } as const;
 
-// #region Nodes 🌕
+// 🌕 Nodes
 
 /**
  * Maps lunar nodes and lunar apsides to their symbols.
@@ -113,7 +113,7 @@ export const symbolByNode = {
   "south lunar node": "☋",
 } as const;
 
-// #region Bodies 🔭
+// 🔭 Bodies
 
 /**
  * Complete mapping of all celestial bodies to their symbols.
@@ -125,9 +125,9 @@ export const symbolByBody = {
   ...symbolByNode,
 } as const;
 
-// #region Aspects 🧭
+// 🧭 Aspects
 
-// #region Major Aspects 📐
+// 📐 Major Aspects
 
 /**
  * Maps each of the five Ptolemaic aspects to its Unicode symbol.
@@ -141,7 +141,7 @@ export const symbolByMajorAspect = {
   trine: "△",
 } as const;
 
-// #region Minor Aspects 🖇️
+// 🖇️ Minor Aspects
 
 /**
  * Maps each minor aspect to its Unicode symbol.
@@ -154,7 +154,7 @@ export const symbolByMinorAspect = {
   sesquiquadrate: "⚼",
 } as const;
 
-// #region Specialty Aspects 🧮
+// 🧮 Specialty Aspects
 
 /**
  * Maps each harmonic aspect to its symbol.
@@ -170,7 +170,7 @@ export const symbolBySpecialtyAspect = {
   undecile: "U",
 } as const;
 
-// #region Double Aspects 📐
+// 📐 Double Aspects
 
 /**
  * Complete mapping of all two-body aspects to their symbols.
@@ -182,7 +182,7 @@ export const symbolByAspect = {
   ...symbolBySpecialtyAspect,
 } as const;
 
-// #region Triple Aspects 🔺
+// 🔺 Triple Aspects
 
 /**
  * Maps three-planet aspect patterns to their symbols.
@@ -195,7 +195,7 @@ export const symbolByTripleAspect = {
   yod: "⚛",
 } as const;
 
-// #region Quadruple Aspects ✖️
+// ✖️ Quadruple Aspects
 
 /**
  * Maps four-planet aspect patterns to their symbols.
@@ -211,7 +211,7 @@ export const symbolByQuadrupleAspect = {
   "mystic rectangle": "🚪",
 } as const;
 
-// #region Quintuple Aspects ⭐
+// ⭐ Quintuple Aspects
 
 /**
  * Maps five-planet aspect patterns to their symbols.
@@ -221,7 +221,7 @@ export const symbolByQuintupleAspect = {
   pentagram: "⭐",
 } as const;
 
-// #region Sextuple Aspects 🔯
+// 🔯 Sextuple Aspects
 
 /**
  * Maps six-planet aspect patterns to their symbols.
@@ -231,7 +231,7 @@ export const symbolBySextupleAspect = {
   hexagram: "🔯",
 } as const;
 
-// #region Stellium ✨
+// ✨ Stellium
 
 /**
  * Maps stellium configurations to their emoji symbols.
@@ -251,7 +251,7 @@ export const symbolByStellium = {
   "undecuple stellium": "🌞",
 } as const;
 
-// #region Orbital Directions 🔁
+// 🔁 Orbital Directions
 
 /**
  * Maps orbital motion directions to their emoji symbols.
@@ -263,7 +263,7 @@ export const symbolByOrbitalDirection = {
   retrograde: "↩️",
 } as const;
 
-// #region Planetary Directions ⏫
+// ⏫ Planetary Directions
 
 // export const symbolByPlanetaryDirection = {
 //   rise: "🔼",
@@ -281,14 +281,14 @@ export const symbolByOrbitalDirection = {
 //   declination: "⏬",
 // } as const;
 
-// #region Directions 🧭
+// 🧭 Directions
 
 // export const symbolByDirection = {
 //   ...symbolByOrbitalDirection,
 //   ...symbolByPlanetaryDirection,
 // };
 
-// #region Positions 🌐
+// 🌐 Positions
 
 // export const symbolByApsis = {
 //   perihelion: "🔥",
@@ -311,7 +311,7 @@ export const symbolByOrbitalDirection = {
 //   imbolc: "🐑",
 // } as const;
 
-// #region Phases 🌓
+// 🌓 Phases
 
 /**
  * Maps lunar phases to their emoji representations.
@@ -328,7 +328,7 @@ export const symbolByLunarPhase = {
   "waxing gibbous": "🌔",
 } as const;
 
-// #region Venusian Phases ♀️
+// ♀️ Venusian Phases
 
 /**
  * Maps Venus's phases and synodic cycle events to their emoji combinations.
@@ -354,7 +354,7 @@ export const symbolByVenusianPhase = {
   "evening station": "🌇⏹️",
 } as const;
 
-// #region Mercurian Phases ☿️
+// ☿️ Mercurian Phases
 
 /**
  * Maps Mercury's phases and synodic cycle events to their emoji combinations.
@@ -380,7 +380,7 @@ export const symbolByMercurianPhase = {
   "evening set": "🌇↧",
 } as const;
 
-// #region Martian Phases ♂️
+// ♂️ Martian Phases
 
 /**
  * Maps Mars's phases and synodic cycle events to their emoji combinations.
@@ -415,7 +415,7 @@ export const symbolByMartianPhase = {
 //   ...symbolByMartianPhase,
 // } as const;
 
-// #region Houses 🏠
+// 🏠 Houses
 
 // export const symbolByHouse = {
 //   first: "1",
@@ -432,7 +432,7 @@ export const symbolByMartianPhase = {
 //   twelfth: "12",
 // } as const;
 
-// #region Event Phase Types 🔄
+// 🔄 Event Phase Types
 
 /**
  * Array of aspect lifecycle phases.
@@ -445,7 +445,7 @@ export const aspectPhases = ["forming", "perfective", "dissolving"] as const;
  */
 export const eclipsePhases = ["beginning", "maximum", "ending"] as const;
 
-// #region Body Arrays 🔭
+// 🔭 Body Arrays
 
 /**
  * Array of bodies that can exhibit retrograde motion.
@@ -524,7 +524,7 @@ export const aspectBodies = [
   "lunar apogee",
 ] as const;
 
-// #region Signs 🪧
+// 🪧 Signs
 
 /**
  * Array of all zodiac sign names in tropical zodiac order.
@@ -533,28 +533,28 @@ export const aspectBodies = [
 export const signs = typedObjectKeys(symbolBySign);
 // export const signSymbols: SignSymbol[] = Object.values(symbolBySign);
 
-// #region Decans 🔟
+// 🔟 Decans
 
 // export const decans = Object.keys(symbolByDecan) as Decan[];
 // export const decanSymbols: DecanSymbol[] = Object.values(symbolByDecan);
 
-// #region Planets 🪐
+// 🪐 Planets
 
 // export const planets = Object.keys(symbolByPlanet) as Planet[];
 // export const planetSymbols: PlanetSymbol[] = Object.values(symbolByPlanet);
 
-// #region Asteroids 💫
+// 💫 Asteroids
 
 // export const asteroids = Object.keys(symbolByAsteroid) as Asteroid[];
 // export const asteroidSymbols: AsteroidSymbol[] =
 //   Object.values(symbolByAsteroid);
 
-// #region Comets ☄️
+// ☄️ Comets
 
 // export const comets = Object.keys(symbolByComet) as Comet[];
 // export const cometSymbols: CometSymbol[] = Object.values(symbolByComet);
 
-// #region Nodes 🌕
+// 🌕 Nodes
 
 /**
  * Array of lunar node names.
@@ -563,7 +563,7 @@ export const signs = typedObjectKeys(symbolBySign);
 export const nodes = typedObjectKeys(symbolByNode);
 // export const nodeSymbols: NodeSymbol[] = Object.values(symbolByNode);
 
-// #region Bodies 🔭
+// 🔭 Bodies
 
 /**
  * Array of all tracked celestial bodies.
@@ -609,9 +609,9 @@ export const distanceBodies: DistanceEphemerisBody[] = [
   "mars",
 ];
 
-// #region Aspects 🧭
+// 🧭 Aspects
 
-// #region Major Aspects 📐
+// 📐 Major Aspects
 
 /**
  * Array of major aspect names.
@@ -621,7 +621,7 @@ export const majorAspects = typedObjectKeys(symbolByMajorAspect);
 // export const majorAspectSymbols: MajorAspectSymbol[] =
 //   Object.values(symbolByMajorAspect);
 
-// #region Minor Aspects 🖇️
+// 🖇️ Minor Aspects
 
 /**
  * Array of minor aspect names.
@@ -631,7 +631,7 @@ export const minorAspects = typedObjectKeys(symbolByMinorAspect);
 // export const minorAspectSymbols: MinorAspectSymbol[] =
 //   Object.values(symbolByMinorAspect);
 
-// #region Specialty Aspects 🧮
+// 🧮 Specialty Aspects
 
 /**
  * Array of specialty aspect names.
@@ -642,7 +642,7 @@ export const specialtyAspects = typedObjectKeys(symbolBySpecialtyAspect);
 //   symbolBySpecialtyAspect,
 // );
 
-// #region Double Aspects 📐
+// 📐 Double Aspects
 
 /**
  * Array of all aspect names.
@@ -651,7 +651,7 @@ export const specialtyAspects = typedObjectKeys(symbolBySpecialtyAspect);
 export const aspects = typedObjectKeys(symbolByAspect);
 // export const aspectSymbols: AspectSymbol[] = Object.values(symbolByAspect);
 
-// #region Aspect Orbs 🔮
+// 🔮 Aspect Orbs
 
 /**
  * Maps each major aspect to its exact angle in degrees.
@@ -744,7 +744,7 @@ export const orbByAspect: Record<Aspect, number> = {
   ...orbBySpecialtyAspect,
 };
 
-// #region Triple Aspects 🔺
+// 🔺 Triple Aspects
 
 // export const tripleAspects = Object.keys(
 //   symbolByTripleAspect,
@@ -752,7 +752,7 @@ export const orbByAspect: Record<Aspect, number> = {
 // export const tripleAspectSymbols: TripleAspectSymbol[] =
 //   Object.values(symbolByTripleAspect);
 
-// #region Quadruple Aspects ✖️
+// ✖️ Quadruple Aspects
 
 // export const quadrupleAspects = Object.keys(
 //   symbolByQuadrupleAspect,
@@ -761,7 +761,7 @@ export const orbByAspect: Record<Aspect, number> = {
 //   symbolByQuadrupleAspect,
 // );
 
-// #region Quintuple Aspects ⭐
+// ⭐ Quintuple Aspects
 
 // export const quintupleAspects = Object.keys(
 //   symbolByQuintupleAspect,
@@ -770,7 +770,7 @@ export const orbByAspect: Record<Aspect, number> = {
 //   symbolByQuintupleAspect,
 // );
 
-// #region Sextuple Aspects 🔯
+// 🔯 Sextuple Aspects
 
 // export const sextupleAspects = Object.keys(
 //   symbolBySextupleAspect,
@@ -779,13 +779,13 @@ export const orbByAspect: Record<Aspect, number> = {
 //   symbolBySextupleAspect,
 // );
 
-// #region Stellium ✨
+// ✨ Stellium
 
 // export const stelliums = Object.keys(symbolByStellium) as Stellium[];
 // export const stelliumSymbols: StelliumSymbol[] =
 //   Object.values(symbolByStellium);
 
-// #region Orbital Directions 🔁
+// 🔁 Orbital Directions
 
 // export const orbitalDirections = Object.keys(
 //   symbolByOrbitalDirection,
@@ -794,7 +794,7 @@ export const orbByAspect: Record<Aspect, number> = {
 //   symbolByOrbitalDirection,
 // );
 
-// #region Planetary Directions ⏫
+// ⏫ Planetary Directions
 
 // export const planetaryDirections = Object.keys(
 //   symbolByPlanetaryDirection,
@@ -802,13 +802,13 @@ export const orbByAspect: Record<Aspect, number> = {
 // export const planetaryDirectionSymbols: PlanetaryDirectionSymbol[] =
 //   Object.values(symbolByPlanetaryDirection);
 
-// #region Directions 🧭
+// 🧭 Directions
 
 // export const directions = Object.keys(symbolByDirection) as Direction[];
 // export const directionSymbols: DirectionSymbol[] =
 //   Object.values(symbolByDirection);
 
-// #region Positions 🌐
+// 🌐 Positions
 
 // export const apsides = Object.keys(symbolByApsis) as Apsis[];
 // export const apsisSymbols: ApsisSymbol[] = Object.values(symbolByApsis);
@@ -817,7 +817,7 @@ export const orbByAspect: Record<Aspect, number> = {
 // export const positionSymbols: PositionSymbol[] =
 //   Object.values(symbolByPosition);
 
-// #region Phases 🌓
+// 🌓 Phases
 
 /**
  * Array of lunar phase names in order through the lunar month.
@@ -826,7 +826,7 @@ export const lunarPhases = typedObjectKeys(symbolByLunarPhase);
 // export const lunarPhaseSymbols: LunarPhaseSymbol[] =
 //   Object.values(symbolByLunarPhase);
 
-// #region Venusian Phases ♀️
+// ♀️ Venusian Phases
 
 // export const venusianPhases = Object.keys(
 //   symbolByVenusianPhase,
@@ -835,7 +835,7 @@ export const lunarPhases = typedObjectKeys(symbolByLunarPhase);
 //   symbolByVenusianPhase,
 // );
 
-// #region Mercurian Phases ☿️
+// ☿️ Mercurian Phases
 
 // export const mercurianPhases = Object.keys(
 //   symbolByMercurianPhase,
@@ -844,7 +844,7 @@ export const lunarPhases = typedObjectKeys(symbolByLunarPhase);
 //   symbolByMercurianPhase,
 // );
 
-// #region Martian Phases ♂️
+// ♂️ Martian Phases
 
 // export const martianPhases = Object.keys(
 //   symbolByMartianPhase,
@@ -855,12 +855,12 @@ export const lunarPhases = typedObjectKeys(symbolByLunarPhase);
 // export const phases = Object.keys(symbolByPhase) as Phase[];
 // export const phaseSymbols: PhaseSymbol[] = Object.values(symbolByPhase);
 
-// #region Houses 🏠
+// 🏠 Houses
 
 // export const houses = Object.keys(symbolByHouse) as House[];
 // export const houseSymbols: HouseSymbol[] = Object.values(symbolByHouse);
 
-// #region Ephemeris ⏱️
+// ⏱️ Ephemeris
 
 /**
  * Margin in minutes added before/after date ranges for ephemeris queries (30).

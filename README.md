@@ -81,7 +81,7 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 - [Testing Strategy](documentation/code-quality/testing-strategy.md) - Unit, integration, and E2E testing approaches
 - [Error Handling](documentation/code-quality/error-handling.md) - Typed errors and boundary validations
 - [Context Engineering](documentation/development/context-engineering.md) - Building AI-friendly context
-- [Gitmoji](documentation/gitmoji.md) / [Abbreviations](documentation/abbreviations.md)
+- [Gitmoji](documentation/gitmoji.md)
 
 **🤖 Agent Skills (Domain Knowledge)**
 Skills are specialized instruction files used by our automated agents, but they also serve as excellent deep-dive documentation for human developers.

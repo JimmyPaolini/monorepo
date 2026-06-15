@@ -79,6 +79,9 @@
     "node": ">=24.16.0",
     "vscode": "^1.22.0"
   },
+  "exports": {
+    "./configuration/*": "./configuration/*"
+  },
   "keywords": [],
   "license": "MIT",
   "name": "monorepo",

@@ -410,7 +410,7 @@ export class PartOfSpeechService {
 
     // Transpose: table[col][row] → table[row][col]
     table = (table[0] ?? []).map((_: unknown, index: number) =>
-      table.map((col: string[]) => col[index] ?? ""),
+      table.map((column: string[]) => column[index] ?? ""),
     );
 
     table = table.map((tr: string[]) =>

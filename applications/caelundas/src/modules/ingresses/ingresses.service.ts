@@ -28,14 +28,6 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-// #region 🪧 Signs
-
-// #region 🔟 Decans
-
-// #region ⛰️ Peaks
-
-// #region 🕑 Progressive Events
-
 /**
  * Detects zodiacal ingress events for celestial bodies entering new signs, decans, or sign peaks.
  *
@@ -97,8 +89,8 @@ export class IngressesService {
    */
   static getSign(longitude: number): Sign {
     const entry = objectEntries(IngressesService.degreeRangeBySign).find(
-      ([, { max, min }]) => {
-        return longitude >= min && longitude < max;
+      ([, { max: maximum, min: minimum }]) => {
+        return longitude >= minimum && longitude < maximum;
       },
     );
     if (!entry) {
@@ -109,8 +101,8 @@ export class IngressesService {
 
   private getDecan(longitude: number): number {
     const sign = IngressesService.getSign(longitude);
-    const { min } = IngressesService.degreeRangeBySign[sign];
-    return Math.floor((longitude - min) / 10) + 1;
+    const { min: minimum } = IngressesService.degreeRangeBySign[sign];
+    return Math.floor((longitude - minimum) / 10) + 1;
   }
 
   private getSignIngressDurationEvent(
@@ -172,13 +164,14 @@ export class IngressesService {
     const { currentLongitude, previousLongitude } = args;
 
     const previousSign = IngressesService.getSign(previousLongitude);
-    const { min: previousMin } =
+    const { min: previousMinimum } =
       IngressesService.degreeRangeBySign[previousSign];
-    const previousDifference = previousLongitude - previousMin;
+    const previousDifference = previousLongitude - previousMinimum;
 
     const currentSign = IngressesService.getSign(currentLongitude);
-    const { min: currentMin } = IngressesService.degreeRangeBySign[currentSign];
-    const currentDifference = currentLongitude - currentMin;
+    const { min: currentMinimum } =
+      IngressesService.degreeRangeBySign[currentSign];
+    const currentDifference = currentLongitude - currentMinimum;
 
     return currentDifference >= 15 && previousDifference < 15;
   }

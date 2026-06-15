@@ -9,7 +9,8 @@
     "noEmit": true,
     "paths": {
       "@caelundas/*": ["./*"],
-      "@monorepo/conformance/*": ["../../tools/conformance/*"]
+      "@monorepo/conformance/*": ["../../tools/conformance/*"],
+      "monorepo/configuration/*": ["../../configuration/*"]
     },
     "target": "esnext",
     "types": ["node", "vitest/globals"]

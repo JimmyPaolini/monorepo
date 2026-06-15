@@ -336,8 +336,8 @@ function validateMdastChildren(
     }
 
     // Pick the candidate whose children produce the fewest errors.
-    let minErrors: ConformanceError[] = [];
-    let minErrorCount = Infinity;
+    let minimumErrors: ConformanceError[] = [];
+    let minimumErrorCount = Infinity;
     const firstCandidate = candidates.at(0);
     if (!firstCandidate) {
       return [];
@@ -350,15 +350,15 @@ function validateMdastChildren(
         templateGrandchildren,
         candidateChildren,
       );
-      if (childErrors.length < minErrorCount) {
-        minErrorCount = childErrors.length;
-        minErrors = childErrors;
+      if (childErrors.length < minimumErrorCount) {
+        minimumErrorCount = childErrors.length;
+        minimumErrors = childErrors;
         bestCandidate = candidate;
       }
     }
 
     lastMatchedInstanceNode = bestCandidate;
-    errors.push(...minErrors);
+    errors.push(...minimumErrors);
   }
 
   return errors;

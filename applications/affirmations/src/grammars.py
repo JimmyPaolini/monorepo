@@ -1320,9 +1320,7 @@ class Grammar(BaseModel):
         return self.slug
 
 
-# ---------------------------------------------------------------------------
-# Affirmation Grammars
-# ---------------------------------------------------------------------------
+# 📚 Affirmation Grammars
 
 PAST = Grammar(
     emoji="✅",

@@ -20,8 +20,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-// #region Progressive Events
-
 /**
  * Detects 5-body compound aspect configurations: the Pentagram pattern.
  *

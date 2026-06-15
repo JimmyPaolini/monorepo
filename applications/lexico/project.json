@@ -5,9 +5,11 @@
   "projectType": "application",
   "sourceRoot": "applications/lexico/src",
   "tags": [
+    "domain:lexico",
     "framework:react",
     "framework:tanstack-start",
-    "language:typescript"
+    "language:typescript",
+    "type:application"
   ],
   "targets": {
     "analyze-code": {

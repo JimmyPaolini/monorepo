@@ -403,9 +403,12 @@ export class FormsService {
       const matchIndex = existingForms.findIndex((ef) => {
         if (ef.constructor.name !== form.constructor.name) return false;
         const keys = Object.keys(form).filter(
-          (k) => !["createdAt", "id", "lexeme", "updatedAt"].includes(k),
+          (index) =>
+            !["createdAt", "id", "lexeme", "updatedAt"].includes(index),
         );
-        return keys.every((k) => Reflect.get(ef, k) === Reflect.get(form, k));
+        return keys.every(
+          (index) => Reflect.get(ef, index) === Reflect.get(form, index),
+        );
       });
 
       if (matchIndex !== -1) {

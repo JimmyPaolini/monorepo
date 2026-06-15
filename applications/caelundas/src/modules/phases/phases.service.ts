@@ -30,20 +30,6 @@ import type {
 } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-// #region ♀️ Venus
-
-// #region ☿ Mercury
-
-// #region ♂️ Mars
-
-// #region 🕑 Progressive Events
-
-// Venus progressive event creators
-
-// Mercury progressive event creators
-
-// Mars progressive event creators
-
 /**
  * Detects planetary phase events for the inner planets Venus, Mercury, and Mars.
  *
@@ -463,7 +449,7 @@ export class PhasesService {
     });
   }
 
-  // #region Position helpers
+  // 🔵 Position helpers
 
   private isEvening(args: Parameters<PhasesService["isEastern"]>[0]): boolean {
     return this.isEastern(args);
@@ -491,7 +477,7 @@ export class PhasesService {
     return this.isWestern(args);
   }
 
-  // #region Brightness helpers
+  // 🔵 Brightness helpers
 
   private isMorningRise(args: {
     currentLongitudePlanet: number;
@@ -574,7 +560,7 @@ export class PhasesService {
     return args.currentLongitudePlanet < args.currentLongitudeSun;
   }
 
-  // #region Elongation helpers
+  // 🔵 Elongation helpers
 
   private isWesternBrightest(args: {
     currentDistance: number;
@@ -646,7 +632,7 @@ export class PhasesService {
     return martianPhaseEvent;
   }
 
-  // #region Rise/Set helpers
+  // 🔵 Rise/Set helpers
 
   /**
    * Creates a calendar event for a specific Mercurian phase.

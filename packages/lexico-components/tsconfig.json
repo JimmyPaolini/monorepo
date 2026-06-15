@@ -7,7 +7,8 @@
     "moduleResolution": "Bundler",
     "outDir": "../../dist/out-tsc",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "monorepo/configuration/*": ["../../configuration/*"]
     },
     "types": ["node", "vite/client"]
   },

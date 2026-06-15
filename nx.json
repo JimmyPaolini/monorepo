@@ -71,10 +71,10 @@
   ],
   "projects": {
     "caelundas": {
-      "tags": ["language:typescript"]
+      "tags": ["domain:caelundas", "language:typescript", "type:application"]
     },
     "monorepo": {
-      "tags": ["language:typescript", "scripts"]
+      "tags": ["language:typescript", "type:tool"]
     }
   },
   "targetDefaults": {
@@ -180,7 +180,7 @@
       "defaultConfiguration": "check",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/configuration/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/eslint.config.ts",
         "sharedGlobals"
       ],
       "options": {
@@ -255,7 +255,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
-        "{workspaceRoot}/configuration/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/eslint.config.ts",
         "{workspaceRoot}/configuration/oxlint.config.ts",
         "sharedGlobals"
       ]

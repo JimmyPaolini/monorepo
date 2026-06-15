@@ -719,7 +719,7 @@
     "conventional.config.cjs": "commitlint",
     "database-client-config.json": "database",
     "devcontainer.json": "3d",
-    "eslint.config.base.ts": "eslint",
+    "eslint.config.ts": "eslint",
     "extensions.json": "cake",
     "jest.config.e2e.ts": "jest",
     "keybindings.json": "pawn",
@@ -872,6 +872,7 @@
   "terminal.integrated.env.osx": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
+  "terminal.integrated.scrollback": 32768,
   "terraform.languageServer.args": ["serve"],
   "terraform.languageServer.enable": true,
   "vitest.maximumConfigs": 24,

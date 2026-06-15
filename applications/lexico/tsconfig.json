@@ -13,7 +13,8 @@
       "@monorepo/lexico-components": [
         "../../packages/lexico-components/src/index.ts"
       ],
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "monorepo/configuration/*": ["../../configuration/*"]
     },
     "strict": true,
     "target": "ES2022",

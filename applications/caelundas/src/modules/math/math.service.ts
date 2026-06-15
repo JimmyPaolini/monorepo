@@ -97,11 +97,11 @@ export class MathService {
    * // Returns: [['Sun','Moon'], ['Sun','Mars'], ['Moon','Mars']]
    * ```
    */
-  getCombinations<T>(array: T[], k: number): T[][] {
+  getCombinations<T>(array: T[], index: number): T[][] {
     const result: T[][] = [];
 
     function combine(start: number, chosen: T[]): void {
-      if (chosen.length === k) {
+      if (chosen.length === index) {
         result.push([...chosen]);
         return;
       }

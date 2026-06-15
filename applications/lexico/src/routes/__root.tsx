@@ -31,13 +31,13 @@ import { Logo } from "../components/layout";
 
 import type { ReactNode } from "react";
 
-interface NavItem {
+interface NavigationItem {
   href: string;
   icon: ReactNode;
   label: string;
 }
 
-const navItems: NavItem[] = [
+const navigationItems: NavigationItem[] = [
   { href: "/search", icon: <Search className="h-5 w-5" />, label: "Search" },
   {
     href: "/bookmarks",
@@ -138,7 +138,7 @@ function ApplicationSidebar(
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {navItems.map((item) => {
+            {navigationItems.map((item) => {
               const isActive =
                 currentPath === item.href ||
                 (item.href === "/search" && currentPath === "/");

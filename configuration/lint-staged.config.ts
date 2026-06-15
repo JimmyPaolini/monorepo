@@ -52,7 +52,7 @@ function getPaths(files: string[]): string {
 }
 
 const config = {
-  // ── Lockfile integrity ──
+  // 🔒 Lockfile integrity
   // When package.json or workspace config changes, verify the lockfile is in sync
   "**/package.json": () => [
     "./scripts/check-lockfile.sh",
@@ -60,13 +60,13 @@ const config = {
   ],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
-  // ── Unused-code analysis configuration ──
+  // 🧹 Unused-code analysis configuration
   // Re-run the abstract clean target when the Knip config changes
   "configuration/knip.config.ts": () => [
     "nx run monorepo:clean:check --outputStyle=dynamic-legacy",
   ],
 
-  // ── Config synchronization ──
+  // 🔄 Config synchronization
   // Keep VS Code extensions list in sync between .vscode and local devcontainer config
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
     "nx run monorepo:sync-vscode-extensions:check --outputStyle=dynamic-legacy",
@@ -93,7 +93,7 @@ const config = {
     "nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
-  // ── TypeScript / JavaScript source files ──
+  // 📝 TypeScript / JavaScript source files
   // Runs format (oxfmt + prettier), lint (eslint + oxlint), typecheck, spell-check,
   // and clean (Knip for JS/TS unused files, dependencies, and exports) on affected projects.
   // nx affected includes monorepo when root-level files change.
@@ -103,7 +103,7 @@ const config = {
     ];
   },
 
-  // ── Jupyter notebooks ──
+  // 📓 Jupyter notebooks
   // Strip outputs first (nbstripout modifies in-place; lint-staged re-stages the
   // clean file), then run Ruff format/lint, typecheck, dead-code analysis, and spell-check.
   "*.ipynb": (files: string[]) => {
@@ -113,7 +113,7 @@ const config = {
     ];
   },
 
-  // ── Python files ──
+  // 🐍 Python files
   // Runs format (Ruff), lint (Ruff), typecheck, spell-check, and clean (Vulture for Python)
   "*.py": (files: string[]) => {
     return [
@@ -121,7 +121,7 @@ const config = {
     ];
   },
 
-  // ── JSON / HTML data files ──
+  // 📋 JSON / HTML data files
   // Runs format, lint, and spell-check
   "*.{json,jsonc,json5,html}": (files: string[]) => {
     return [
@@ -129,7 +129,7 @@ const config = {
     ];
   },
 
-  // ── CSS files ──
+  // 🎨 CSS files
   // Runs Stylelint, format, lint, and spell-check
   "*.css": (files: string[]) => {
     return [
@@ -137,7 +137,7 @@ const config = {
     ];
   },
 
-  // ── Markdown files ──
+  // 📄 Markdown files
   // Runs format, ESLint markdown plugin, markdownlint, and spell-check
   "*.{md,mdx}": (files: string[]) => {
     return [
@@ -145,7 +145,7 @@ const config = {
     ];
   },
 
-  // ── YAML files ──
+  // 🗂️ YAML files
   // Runs format, yamllint, and spell-check (GitHub Actions, Helm values, etc.)
   // pnpm-lock.yaml is excluded: it's auto-generated and should not be linted.
   "{*.yml,!(pnpm-lock).yaml}": (files: string[]) => {
@@ -154,7 +154,7 @@ const config = {
     ];
   },
 
-  // ── Conformance tests ──
+  // ✅ Conformance tests
   // Run conformance tests when generator templates or generated instances change
   // to ensure generated code instances conform to their template definitions.
   // Patterns are derived from generator configuration files (see tools/conformance/src/lint-staged-patterns.ts)
@@ -162,7 +162,7 @@ const config = {
     "nx run conformance:test --outputStyle=dynamic-legacy",
   ],
 
-  // ── SQL files ──
+  // 🗄️ SQL files
   // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)
   "*.sql": (files: string[]) => {
     return [

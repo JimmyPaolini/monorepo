@@ -7,7 +7,9 @@
     "framework:nest-commander",
     "framework:nestjs",
     "generator:nestjs-command-application",
-    "language:typescript"
+    "language:typescript",
+    "scope:caelundas",
+    "type:application"
   ],
   "targets": {
     "analyze-code": {},

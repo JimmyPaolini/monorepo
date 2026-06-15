@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "noEmit": true,
+    "paths": {
+      "monorepo/configuration/*": ["./configuration/*"]
+    },
     "skipLibCheck": true
   },
   "exclude": [

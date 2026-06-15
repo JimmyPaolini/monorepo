@@ -232,6 +232,26 @@ import { getUser } from "./api";
 import { getUser } from "./api.js";
 ```
 
+## Section Comments
+
+Use emoji section comments to organize code into logical groups. See the [commenting skill](../commenting/SKILL.md) for the full format, emoji reference, and anti-patterns.
+
+```typescript
+// ✅ CORRECT: emoji then capitalized section name
+// 🔧 Configuration
+
+const MAX_RETRIES = 3;
+
+// 🧪 Tests
+
+describe("...", () => { ... });
+
+// ❌ WRONG: dash dividers
+// ---------------------------------------------------------------------------
+// Configuration
+// ---------------------------------------------------------------------------
+```
+
 ## Verification
 
 After writing TypeScript, run the validation suite to catch issues early:
