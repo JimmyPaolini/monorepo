@@ -30,6 +30,21 @@ import type {
 } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
+interface PhaseParameters {
+  currentDistance: number;
+  currentIllumination: number;
+  currentLongitudePlanet: number;
+  currentLongitudeSun: number;
+  nextDistances: number[];
+  nextIlluminations: number[];
+  nextLongitudePlanet: number;
+  nextLongitudeSun: number;
+  previousDistances: number[];
+  previousIlluminations: number[];
+  previousLongitudePlanet: number;
+  previousLongitudeSun: number;
+}
+
 /**
  * Detects planetary phase events for the inner planets Venus, Mercury, and Mars.
  *
@@ -62,8 +77,280 @@ export class PhasesService {
 
   // 🔏 Private Methods
 
+  private detectMartianEvents(
+    coordinateEphemerisByBody: Record<CoordinateEphemerisBody, CoordinateEphemeris>,
+    distanceEphemerisByBody: Record<DistanceEphemerisBody, DistanceEphemeris>,
+    illuminationEphemerisByBody: Record<IlluminationEphemerisBody, IlluminationEphemeris>,
+    minute: Moment,
+  ): Event[] {
+    if (!planetaryPhaseBodies.includes("mars")) return [];
+    return this.getMartianPhaseEvents({
+      marsCoordinateEphemeris: coordinateEphemerisByBody.mars,
+      marsDistanceEphemeris: distanceEphemerisByBody.mars,
+      marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
+      minute,
+      sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+    });
+  }
+
+  private detectMartianPhases(parameters: PhaseParameters, minute: Moment): Event[] {
+    const events: Event[] = [];
+    const checks: [boolean, MartianPhase][] = [
+      [this.isMorningRise(parameters), "morning rise"],
+      [this.isMorningSet(parameters), "morning set"],
+      [this.isEveningRise(parameters), "evening rise"],
+      [this.isEveningSet(parameters), "evening set"],
+    ];
+    for (const [condition, phase] of checks) {
+      if (condition) {
+        events.push(this.buildMartianPhaseEvent({ phase, timestamp: minute }));
+      }
+    }
+    return events;
+  }
+
+  private detectMercurianEveningPhases(parameters: PhaseParameters, minute: Moment): Event[] {
+    const events: Event[] = [];
+    const checks: [boolean, MercurianPhase][] = [
+      [this.isEveningRise(parameters), "evening rise"],
+      [this.isEasternElongation(parameters), "eastern elongation"],
+      [this.isEasternBrightest(parameters), "eastern brightest"],
+      [this.isEveningSet(parameters), "evening set"],
+    ];
+    for (const [condition, phase] of checks) {
+      if (condition) {
+        events.push(this.buildMercurianPhaseEvent({ phase, timestamp: minute }));
+      }
+    }
+    return events;
+  }
+
+  private detectMercurianEvents(
+    coordinateEphemerisByBody: Record<CoordinateEphemerisBody, CoordinateEphemeris>,
+    distanceEphemerisByBody: Record<DistanceEphemerisBody, DistanceEphemeris>,
+    illuminationEphemerisByBody: Record<IlluminationEphemerisBody, IlluminationEphemeris>,
+    minute: Moment,
+  ): Event[] {
+    if (!planetaryPhaseBodies.includes("mercury")) return [];
+    return this.getMercurianPhaseEvents({
+      mercuryCoordinateEphemeris: coordinateEphemerisByBody.mercury,
+      mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
+      mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
+      minute,
+      sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+    });
+  }
+
+  /**
+   * Detects all Mercurian phase events at the current minute.
+   *
+   * Evaluates Mercury's position relative to the Sun, along with distance
+   * and illumination data, to identify phase transitions. Mercury changes
+   * phases more frequently than Venus due to its shorter orbital period.
+   *
+   * @param args - Detection parameters
+   * @param minute - The minute to check
+   * @param mercuryCoordinateEphemeris - Mercury position data
+   * @param mercuryDistanceEphemeris - Mercury distance from Earth
+   * @param mercuryIlluminationEphemeris - Mercury illumination percentage
+   * @param sunCoordinateEphemeris - Sun position for relative calculations
+   * @returns Array of detected Mercurian phase events
+   * @see {@link isMorningRise} for morning rise detection
+   * @see {@link isEasternElongation} for eastern elongation detection
+   */
+  private detectMercurianMorningPhases(parameters: PhaseParameters, minute: Moment): Event[] {
+    const events: Event[] = [];
+    const checks: [boolean, MercurianPhase][] = [
+      [this.isMorningRise(parameters), "morning rise"],
+      [this.isWesternBrightest(parameters), "western brightest"],
+      [this.isWesternElongation(parameters), "western elongation"],
+      [this.isMorningSet(parameters), "morning set"],
+    ];
+    for (const [condition, phase] of checks) {
+      if (condition) {
+        events.push(this.buildMercurianPhaseEvent({ phase, timestamp: minute }));
+      }
+    }
+    return events;
+  }
+
+  private detectVenusianEveningPhases(parameters: PhaseParameters, minute: Moment): Event[] {
+    const events: Event[] = [];
+    const checks: [boolean, VenusianPhase][] = [
+      [this.isEveningRise(parameters), "evening rise"],
+      [this.isEasternElongation(parameters), "eastern elongation"],
+      [this.isEasternBrightest(parameters), "eastern brightest"],
+      [this.isEveningSet(parameters), "evening set"],
+    ];
+    for (const [condition, phase] of checks) {
+      if (condition) {
+        events.push(this.buildVenusianPhaseEvent({ phase, timestamp: minute }));
+      }
+    }
+    return events;
+  }
+
+  /**
+   * Detects planetary phase events for Venus, Mercury, and Mars.
+   *
+   * Planetary phases track the visibility and brightness cycles of inner planets
+   * as they orbit the Sun from Earth's perspective:
+   * - Morning/Evening visibility (rise/set relative to Sun)
+   * - Maximum elongation (greatest angular separation from Sun)
+   * - Maximum brightness (optimal viewing conditions)
+   *
+   * These events are significant both astronomically (for observation planning)
+   * and astrologically (for timing and interpretation).
+   *
+   * @param args - Detection parameters
+   * @param minute - The minute to check for phase events
+   * @param coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
+   * @param distanceEphemerisByBody - Distance data for inner planets
+   * @param illuminationEphemerisByBody - Illumination data for phase calculations
+   * @returns Array of all detected planetary phase events at this minute
+   * @see {@link getVenusianPhaseEvents} for Venus-specific phases
+   * @see {@link getMercurianPhaseEvents} for Mercury-specific phases
+   * @see {@link getMartianPhaseEvents} for Mars-specific phases
+   */
+  private detectVenusianEvents(
+    coordinateEphemerisByBody: Record<CoordinateEphemerisBody, CoordinateEphemeris>,
+    distanceEphemerisByBody: Record<DistanceEphemerisBody, DistanceEphemeris>,
+    illuminationEphemerisByBody: Record<IlluminationEphemerisBody, IlluminationEphemeris>,
+    minute: Moment,
+  ): Event[] {
+    if (!planetaryPhaseBodies.includes("venus")) return [];
+    return this.getVenusianPhaseEvents({
+      minute,
+      sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+      venusCoordinateEphemeris: coordinateEphemerisByBody.venus,
+      venusDistanceEphemeris: distanceEphemerisByBody.venus,
+      venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
+    });
+  }
+
+  /**
+   * Detects all Venusian phase events at the current minute.
+   *
+   * Evaluates Venus's position relative to the Sun, along with distance
+   * and illumination data, to identify phase transitions. Uses a margin
+   * of minutes before and after for accurate extrema detection (brightest,
+   * elongation).
+   *
+   * @param args - Detection parameters
+   * @param minute - The minute to check
+   * @param venusCoordinateEphemeris - Venus position data
+   * @param venusDistanceEphemeris - Venus distance from Earth
+   * @param venusIlluminationEphemeris - Venus illumination percentage
+   * @param sunCoordinateEphemeris - Sun position for relative calculations
+   * @returns Array of detected Venusian phase events
+   * @see {@link isMorningRise} for morning rise detection
+   * @see {@link isWesternElongation} for western elongation detection
+   */
+  private detectVenusianMorningPhases(parameters: PhaseParameters, minute: Moment): Event[] {
+    const events: Event[] = [];
+    const checks: [boolean, VenusianPhase][] = [
+      [this.isMorningRise(parameters), "morning rise"],
+      [this.isWesternBrightest(parameters), "western brightest"],
+      [this.isWesternElongation(parameters), "western elongation"],
+      [this.isMorningSet(parameters), "morning set"],
+    ];
+    for (const [condition, phase] of checks) {
+      if (condition) {
+        events.push(this.buildVenusianPhaseEvent({ phase, timestamp: minute }));
+      }
+    }
+    return events;
+  }
+
+  private filterByCategory(events: Event[], category: string): Event[] {
+    return events.filter((event) => event.categories.includes(category));
+  }
+
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
+  }
+
+  /**
+   * Detects all Martian phase events at the current minute.
+   *
+   * Mars has a simpler visibility cycle than inner planets, tracking only
+   * rise and set times relative to the Sun. No elongation or brightness
+   * maxima are calculated since Mars can appear anywhere in the sky.
+   *
+   * @param args - Detection parameters
+   * @param minute - The minute to check
+   * @param marsCoordinateEphemeris - Mars position data
+   * @param marsDistanceEphemeris - Mars distance from Earth
+   * @param marsIlluminationEphemeris - Mars illumination percentage
+   * @param sunCoordinateEphemeris - Sun position for relative calculations
+   * @returns Array of detected Martian phase events
+   * @see {@link isMorningRise} for morning rise detection
+   * @see {@link isEveningSet} for evening set detection
+   */
+  private gatherCurrentEphemeris(
+    planetCoordinateEphemeris: CoordinateEphemeris,
+    sunCoordinateEphemeris: CoordinateEphemeris,
+    distanceEphemeris: DistanceEphemeris,
+    illuminationEphemeris: IlluminationEphemeris,
+    isoNow: string,
+  ): Pick<PhaseParameters, "currentDistance" | "currentIllumination" | "currentLongitudePlanet" | "currentLongitudeSun"> {
+    return {
+      currentDistance: this.ephemerisService.getDistanceFromEphemeris(distanceEphemeris, isoNow, "currentDistance"),
+      currentIllumination: this.ephemerisService.getIlluminationFromEphemeris(illuminationEphemeris, isoNow, "currentIllumination"),
+      currentLongitudePlanet: this.ephemerisService.getCoordinateFromEphemeris(planetCoordinateEphemeris, isoNow, "longitude"),
+      currentLongitudeSun: this.ephemerisService.getCoordinateFromEphemeris(sunCoordinateEphemeris, isoNow, "longitude"),
+    };
+  }
+
+  private gatherMarginEphemeris(
+    distanceEphemeris: DistanceEphemeris,
+    illuminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+    direction: "next" | "previous",
+  ): { distances: number[]; illuminations: number[] } {
+    const distances = Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const m = direction === "previous"
+        ? minute.clone().subtract(MARGIN_MINUTES - index, "minutes")
+        : minute.clone().add(index + 1, "minute");
+      return this.ephemerisService.getDistanceFromEphemeris(distanceEphemeris, m.toISOString(), `${direction}Distance`);
+    });
+    const illuminations = Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const m = direction === "previous"
+        ? minute.clone().subtract(MARGIN_MINUTES - index, "minutes")
+        : minute.clone().add(index + 1, "minute");
+      return this.ephemerisService.getIlluminationFromEphemeris(illuminationEphemeris, m.toISOString(), `${direction}Illumination`);
+    });
+    return { distances, illuminations };
+  }
+
+  private gatherPhaseParameters(
+    planetCoordinateEphemeris: CoordinateEphemeris,
+    sunCoordinateEphemeris: CoordinateEphemeris,
+    distanceEphemeris: DistanceEphemeris,
+    illuminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+  ): PhaseParameters {
+    const isoNow = minute.toISOString();
+    const isoPrevious = minute.clone().subtract(1, "minute").toISOString();
+    const isoNext = minute.clone().add(1, "minute").toISOString();
+
+    const current = this.gatherCurrentEphemeris(
+      planetCoordinateEphemeris, sunCoordinateEphemeris, distanceEphemeris, illuminationEphemeris, isoNow,
+    );
+    const previous = this.gatherMarginEphemeris(distanceEphemeris, illuminationEphemeris, minute, "previous");
+    const next = this.gatherMarginEphemeris(distanceEphemeris, illuminationEphemeris, minute, "next");
+
+    return {
+      ...current,
+      nextDistances: next.distances,
+      nextIlluminations: next.illuminations,
+      nextLongitudePlanet: this.ephemerisService.getCoordinateFromEphemeris(planetCoordinateEphemeris, isoNext, "longitude"),
+      nextLongitudeSun: this.ephemerisService.getCoordinateFromEphemeris(sunCoordinateEphemeris, isoNext, "longitude"),
+      previousDistances: previous.distances,
+      previousIlluminations: previous.illuminations,
+      previousLongitudePlanet: this.ephemerisService.getCoordinateFromEphemeris(planetCoordinateEphemeris, isoPrevious, "longitude"),
+      previousLongitudeSun: this.ephemerisService.getCoordinateFromEphemeris(sunCoordinateEphemeris, isoPrevious, "longitude"),
+    };
   }
 
   private getBrightness(args: {
@@ -80,54 +367,30 @@ export class PhasesService {
     nextIlluminations: number[];
     previousDistances: number[];
     previousIlluminations: number[];
-  }): {
-    currentBrightness: number;
-    nextBrightnesses: number[];
-    previousBrightnesses: number[];
-  } {
-    const {
-      currentDistance,
-      currentIllumination,
-      nextDistances,
-      nextIlluminations,
-      previousDistances,
-      previousIlluminations,
-    } = args;
+  }): { currentBrightness: number; nextBrightnesses: number[]; previousBrightnesses: number[] } {
+    const { currentDistance, currentIllumination, nextDistances, nextIlluminations, previousDistances, previousIlluminations } = args;
+    return this.getBrightnessesResult(currentDistance, currentIllumination, previousDistances, previousIlluminations, nextDistances, nextIlluminations);
+  }
 
-    const currentBrightness = this.getBrightness({
-      distance: currentDistance,
-      illumination: currentIllumination,
-    });
-
-    if (previousDistances.length !== previousIlluminations.length) {
-      throw new Error(
-        `previousDistances and previousIlluminations arrays must have the same length`,
-      );
-    }
-
-    const previousBrightnesses = previousDistances.map((distance, index) => {
-      const illumination = previousIlluminations[index];
-      if (illumination === undefined) {
-        throw new Error(`Missing illumination at index ${index}`);
-      }
-      return this.getBrightness({ distance, illumination });
-    });
-
-    if (nextDistances.length !== nextIlluminations.length) {
-      throw new Error(
-        `nextDistances and nextIlluminations arrays must have the same length`,
-      );
-    }
-
-    const nextBrightnesses = nextDistances.map((distance, index) => {
-      const illumination = nextIlluminations[index];
-      if (illumination === undefined) {
-        throw new Error(`Missing illumination at index ${index}`);
-      }
-      return this.getBrightness({ distance, illumination });
-    });
-
+  private getBrightnessesResult(
+    currentDistance: number,
+    currentIllumination: number,
+    previousDistances: number[],
+    previousIlluminations: number[],
+    nextDistances: number[],
+    nextIlluminations: number[],
+  ): { currentBrightness: number; nextBrightnesses: number[]; previousBrightnesses: number[] } {
+    const currentBrightness = this.getBrightness({ distance: currentDistance, illumination: currentIllumination });
+    const previousBrightnesses = this.mapBrightnessArray(previousDistances, previousIlluminations, "previous");
+    const nextBrightnesses = this.mapBrightnessArray(nextDistances, nextIlluminations, "next");
     return { currentBrightness, nextBrightnesses, previousBrightnesses };
+  }
+
+  private getElongationAngle(
+    longitudePlanet: number,
+    longitudeSun: number,
+  ): number {
+    return this.mathService.getAngle(longitudePlanet, longitudeSun);
   }
 
   private getMarsEveningVisibilityDurationEvent(
@@ -164,92 +427,62 @@ export class PhasesService {
     };
   }
 
+  private getMartianEveningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Evening Rise"),
+      this.filterByCategory(events, "Evening Set"),
+      "Mars Evening Visibility",
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getMarsEveningVisibilityDurationEvent(beginning, ending),
+    );
+  }
+
+  private getMartianMorningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Morning Rise"),
+      this.filterByCategory(events, "Morning Set"),
+      "Mars Morning Visibility",
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getMarsMorningVisibilityDurationEvent(beginning, ending),
+    );
+  }
+
   private getMartianPhaseProgressiveEvents(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
+    return [
+      ...this.getMartianMorningProgressiveEvents(events),
+      ...this.getMartianEveningProgressiveEvents(events),
+    ];
+  }
 
-    // Morning visibility: Morning Rise → Morning Set
-    const morningRiseEvents = events.filter((event) =>
-      event.categories.includes("Morning Rise"),
+  private getMercurianEveningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Evening Rise"),
+      this.filterByCategory(events, "Evening Set"),
+      "Mercury Evening Visibility",
     );
-    const morningSetEvents = events.filter((event) =>
-      event.categories.includes("Morning Set"),
+    return pairs.map(([beginning, ending]) =>
+      this.getMercuryEveningVisibilityDurationEvent(beginning, ending),
     );
-    const morningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        morningRiseEvents,
-        morningSetEvents,
-        "Mars Morning Visibility",
-      );
-    for (const [beginning, ending] of morningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getMarsMorningVisibilityDurationEvent(beginning, ending),
-      );
-    }
+  }
 
-    // Evening visibility: Evening Rise → Evening Set
-    const eveningRiseEvents = events.filter((event) =>
-      event.categories.includes("Evening Rise"),
+  private getMercurianMorningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Morning Rise"),
+      this.filterByCategory(events, "Morning Set"),
+      "Mercury Morning Visibility",
     );
-    const eveningSetEvents = events.filter((event) =>
-      event.categories.includes("Evening Set"),
+    return pairs.map(([beginning, ending]) =>
+      this.getMercuryMorningVisibilityDurationEvent(beginning, ending),
     );
-    const eveningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        eveningRiseEvents,
-        eveningSetEvents,
-        "Mars Evening Visibility",
-      );
-    for (const [beginning, ending] of eveningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getMarsEveningVisibilityDurationEvent(beginning, ending),
-      );
-    }
-
-    return progressiveEvents;
   }
 
   private getMercurianPhaseProgressiveEvents(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Morning visibility: Morning Rise → Morning Set
-    const morningRiseEvents = events.filter((event) =>
-      event.categories.includes("Morning Rise"),
-    );
-    const morningSetEvents = events.filter((event) =>
-      event.categories.includes("Morning Set"),
-    );
-    const morningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        morningRiseEvents,
-        morningSetEvents,
-        "Mercury Morning Visibility",
-      );
-    for (const [beginning, ending] of morningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getMercuryMorningVisibilityDurationEvent(beginning, ending),
-      );
-    }
-
-    // Evening visibility: Evening Rise → Evening Set
-    const eveningRiseEvents = events.filter((event) =>
-      event.categories.includes("Evening Rise"),
-    );
-    const eveningSetEvents = events.filter((event) =>
-      event.categories.includes("Evening Set"),
-    );
-    const eveningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        eveningRiseEvents,
-        eveningSetEvents,
-        "Mercury Evening Visibility",
-      );
-    for (const [beginning, ending] of eveningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getMercuryEveningVisibilityDurationEvent(beginning, ending),
-      );
-    }
-
-    return progressiveEvents;
+    return [
+      ...this.getMercurianMorningProgressiveEvents(events),
+      ...this.getMercurianEveningProgressiveEvents(events),
+    ];
   }
 
   private getMercuryEveningVisibilityDurationEvent(
@@ -303,48 +536,35 @@ export class PhasesService {
     };
   }
 
+  private getVenusianEveningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Evening Rise"),
+      this.filterByCategory(events, "Evening Set"),
+      "Venus Evening Visibility",
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getVenusEveningVisibilityDurationEvent(beginning, ending),
+    );
+  }
+
+  // 🔵 Position helpers
+
+  private getVenusianMorningProgressiveEvents(events: Event[]): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      this.filterByCategory(events, "Morning Rise"),
+      this.filterByCategory(events, "Morning Set"),
+      "Venus Morning Visibility",
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getVenusMorningVisibilityDurationEvent(beginning, ending),
+    );
+  }
+
   private getVenusianPhaseProgressiveEvents(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Morning visibility: Morning Rise → Morning Set
-    const morningRiseEvents = events.filter((event) =>
-      event.categories.includes("Morning Rise"),
-    );
-    const morningSetEvents = events.filter((event) =>
-      event.categories.includes("Morning Set"),
-    );
-    const morningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        morningRiseEvents,
-        morningSetEvents,
-        "Venus Morning Visibility",
-      );
-    for (const [beginning, ending] of morningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getVenusMorningVisibilityDurationEvent(beginning, ending),
-      );
-    }
-
-    // Evening visibility: Evening Rise → Evening Set
-    const eveningRiseEvents = events.filter((event) =>
-      event.categories.includes("Evening Rise"),
-    );
-    const eveningSetEvents = events.filter((event) =>
-      event.categories.includes("Evening Set"),
-    );
-    const eveningVisibilityPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        eveningRiseEvents,
-        eveningSetEvents,
-        "Venus Evening Visibility",
-      );
-    for (const [beginning, ending] of eveningVisibilityPairs) {
-      progressiveEvents.push(
-        this.getVenusEveningVisibilityDurationEvent(beginning, ending),
-      );
-    }
-
-    return progressiveEvents;
+    return [
+      ...this.getVenusianMorningProgressiveEvents(events),
+      ...this.getVenusianEveningProgressiveEvents(events),
+    ];
   }
 
   private getVenusMorningVisibilityDurationEvent(
@@ -380,6 +600,8 @@ export class PhasesService {
       currentBrightness >= Math.max(...nextBrightnesses)
     );
   }
+
+  // 🔵 Brightness helpers
 
   private isEastern(args: {
     currentLongitudePlanet: number;
@@ -429,31 +651,18 @@ export class PhasesService {
       previousLongitudeSun,
     } = args;
 
-    const currentAngle = this.mathService.getAngle(
-      currentLongitudePlanet,
-      currentLongitudeSun,
-    );
-    const nextAngle = this.mathService.getAngle(
-      nextLongitudePlanet,
-      nextLongitudeSun,
-    );
-    const previousAngle = this.mathService.getAngle(
-      previousLongitudePlanet,
-      previousLongitudeSun,
-    );
-
     return this.mathService.isMaximum({
-      current: currentAngle,
-      next: nextAngle,
-      previous: previousAngle,
+      current: this.getElongationAngle(currentLongitudePlanet, currentLongitudeSun),
+      next: this.getElongationAngle(nextLongitudePlanet, nextLongitudeSun),
+      previous: this.getElongationAngle(previousLongitudePlanet, previousLongitudeSun),
     });
   }
-
-  // 🔵 Position helpers
 
   private isEvening(args: Parameters<PhasesService["isEastern"]>[0]): boolean {
     return this.isEastern(args);
   }
+
+  // 🔵 Elongation helpers
 
   private isEveningRise(args: {
     currentLongitudePlanet: number;
@@ -473,11 +682,13 @@ export class PhasesService {
     return this.isEvening(args) && this.isSet(args);
   }
 
+  // 🌎 Public Methods
+
   private isMorning(args: Parameters<PhasesService["isWestern"]>[0]): boolean {
     return this.isWestern(args);
   }
 
-  // 🔵 Brightness helpers
+  // 🔵 Rise/Set helpers
 
   private isMorningRise(args: {
     currentLongitudePlanet: number;
@@ -560,8 +771,6 @@ export class PhasesService {
     return args.currentLongitudePlanet < args.currentLongitudeSun;
   }
 
-  // 🔵 Elongation helpers
-
   private isWesternBrightest(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -586,7 +795,24 @@ export class PhasesService {
     return this.isElongation(args) && this.isWestern(args);
   }
 
-  // 🌎 Public Methods
+  private mapBrightnessArray(
+    distances: number[],
+    illuminations: number[],
+    label: string,
+  ): number[] {
+    if (distances.length !== illuminations.length) {
+      throw new Error(
+        `${label} distances and illuminations arrays must have the same length`,
+      );
+    }
+    return distances.map((distance, index) => {
+      const illumination = illuminations[index];
+      if (illumination === undefined) {
+        throw new Error(`Missing illumination at index ${index}`);
+      }
+      return this.getBrightness({ distance, illumination });
+    });
+  }
 
   /**
    * Creates a calendar event for a specific Martian phase.
@@ -631,8 +857,6 @@ export class PhasesService {
     };
     return martianPhaseEvent;
   }
-
-  // 🔵 Rise/Set helpers
 
   /**
    * Creates a calendar event for a specific Mercurian phase.
@@ -724,26 +948,7 @@ export class PhasesService {
   }
 
   /**
-   * Detects planetary phase events for Venus, Mercury, and Mars.
    *
-   * Planetary phases track the visibility and brightness cycles of inner planets
-   * as they orbit the Sun from Earth's perspective:
-   * - Morning/Evening visibility (rise/set relative to Sun)
-   * - Maximum elongation (greatest angular separation from Sun)
-   * - Maximum brightness (optimal viewing conditions)
-   *
-   * These events are significant both astronomically (for observation planning)
-   * and astrologically (for timing and interpretation).
-   *
-   * @param args - Detection parameters
-   * @param minute - The minute to check for phase events
-   * @param coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
-   * @param distanceEphemerisByBody - Distance data for inner planets
-   * @param illuminationEphemerisByBody - Illumination data for phase calculations
-   * @returns Array of all detected planetary phase events at this minute
-   * @see {@link getVenusianPhaseEvents} for Venus-specific phases
-   * @see {@link getMercurianPhaseEvents} for Mercury-specific phases
-   * @see {@link getMartianPhaseEvents} for Mars-specific phases
    */
   detect(args: {
     coordinateEphemerisByBody: Record<
@@ -764,45 +969,11 @@ export class PhasesService {
       minute,
     } = args;
 
-    const planetaryPhaseEvents: Event[] = [];
-
-    if (planetaryPhaseBodies.includes("venus")) {
-      planetaryPhaseEvents.push(
-        ...this.getVenusianPhaseEvents({
-          minute,
-          sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-          venusCoordinateEphemeris: coordinateEphemerisByBody.venus,
-          venusDistanceEphemeris: distanceEphemerisByBody.venus,
-          venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
-        }),
-      );
-    }
-
-    if (planetaryPhaseBodies.includes("mercury")) {
-      planetaryPhaseEvents.push(
-        ...this.getMercurianPhaseEvents({
-          mercuryCoordinateEphemeris: coordinateEphemerisByBody.mercury,
-          mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
-          mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
-          minute,
-          sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-        }),
-      );
-    }
-
-    if (planetaryPhaseBodies.includes("mars")) {
-      planetaryPhaseEvents.push(
-        ...this.getMartianPhaseEvents({
-          marsCoordinateEphemeris: coordinateEphemerisByBody.mars,
-          marsDistanceEphemeris: distanceEphemerisByBody.mars,
-          marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
-          minute,
-          sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-        }),
-      );
-    }
-
-    return planetaryPhaseEvents;
+    return [
+      ...this.detectVenusianEvents(coordinateEphemerisByBody, distanceEphemerisByBody, illuminationEphemerisByBody, minute),
+      ...this.detectMercurianEvents(coordinateEphemerisByBody, distanceEphemerisByBody, illuminationEphemerisByBody, minute),
+      ...this.detectMartianEvents(coordinateEphemerisByBody, distanceEphemerisByBody, illuminationEphemerisByBody, minute),
+    ];
   }
 
   /**
@@ -856,21 +1027,7 @@ export class PhasesService {
   }
 
   /**
-   * Detects all Martian phase events at the current minute.
    *
-   * Mars has a simpler visibility cycle than inner planets, tracking only
-   * rise and set times relative to the Sun. No elongation or brightness
-   * maxima are calculated since Mars can appear anywhere in the sky.
-   *
-   * @param args - Detection parameters
-   * @param minute - The minute to check
-   * @param marsCoordinateEphemeris - Mars position data
-   * @param marsDistanceEphemeris - Mars distance from Earth
-   * @param marsIlluminationEphemeris - Mars illumination percentage
-   * @param sunCoordinateEphemeris - Sun position for relative calculations
-   * @returns Array of detected Martian phase events
-   * @see {@link isMorningRise} for morning rise detection
-   * @see {@link isEveningSet} for evening set detection
    */
   getMartianPhaseEvents(args: {
     marsCoordinateEphemeris: CoordinateEphemeris;
@@ -887,178 +1044,19 @@ export class PhasesService {
       sunCoordinateEphemeris,
     } = args;
 
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const currentLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        marsCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentIllumination =
-      this.ephemerisService.getIlluminationFromEphemeris(
-        marsIlluminationEphemeris,
-        minute.toISOString(),
-        "currentIllumination",
-      );
-    const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
-      marsDistanceEphemeris,
-      minute.toISOString(),
-      "currentDistance",
-    );
-
-    const previousLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        marsCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-    const previousLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-    const previousDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          marsDistanceEphemeris,
-          m.toISOString(),
-          "previousDistance",
-        );
-      },
-    );
-    const previousIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          marsIlluminationEphemeris,
-          m.toISOString(),
-          "previousIllumination",
-        );
-      },
-    );
-
-    const nextLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        marsCoordinateEphemeris,
-        nextMinute.toISOString(),
-        "longitude",
-      );
-    const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
+    const parameters = this.gatherPhaseParameters(
+      marsCoordinateEphemeris,
       sunCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
-    const nextDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          marsDistanceEphemeris,
-          m.toISOString(),
-          "nextDistance",
-        );
-      },
-    );
-    const nextIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          marsIlluminationEphemeris,
-          m.toISOString(),
-          "nextIllumination",
-        );
-      },
+      marsDistanceEphemeris,
+      marsIlluminationEphemeris,
+      minute,
     );
 
-    const parameters = {
-      currentDistance,
-      currentIllumination,
-      currentLongitudePlanet,
-      currentLongitudeSun,
-      nextDistances,
-      nextIlluminations,
-      nextLongitudePlanet,
-      nextLongitudeSun,
-      previousDistances,
-      previousIlluminations,
-      previousLongitudePlanet,
-      previousLongitudeSun,
-    };
-
-    const martianPhaseEvents: Event[] = [];
-
-    if (this.isMorningRise({ ...parameters })) {
-      martianPhaseEvents.push(
-        this.buildMartianPhaseEvent({
-          phase: "morning rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isMorningSet({ ...parameters })) {
-      martianPhaseEvents.push(
-        this.buildMartianPhaseEvent({
-          phase: "morning set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningRise({ ...parameters })) {
-      martianPhaseEvents.push(
-        this.buildMartianPhaseEvent({
-          phase: "evening rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningSet({ ...parameters })) {
-      martianPhaseEvents.push(
-        this.buildMartianPhaseEvent({
-          phase: "evening set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    return martianPhaseEvents;
+    return this.detectMartianPhases(parameters, minute);
   }
 
   /**
-   * Detects all Mercurian phase events at the current minute.
    *
-   * Evaluates Mercury's position relative to the Sun, along with distance
-   * and illumination data, to identify phase transitions. Mercury changes
-   * phases more frequently than Venus due to its shorter orbital period.
-   *
-   * @param args - Detection parameters
-   * @param minute - The minute to check
-   * @param mercuryCoordinateEphemeris - Mercury position data
-   * @param mercuryDistanceEphemeris - Mercury distance from Earth
-   * @param mercuryIlluminationEphemeris - Mercury illumination percentage
-   * @param sunCoordinateEphemeris - Sun position for relative calculations
-   * @returns Array of detected Mercurian phase events
-   * @see {@link isMorningRise} for morning rise detection
-   * @see {@link isEasternElongation} for eastern elongation detection
    */
   getMercurianPhaseEvents(args: {
     mercuryCoordinateEphemeris: CoordinateEphemeris;
@@ -1075,215 +1073,22 @@ export class PhasesService {
       sunCoordinateEphemeris,
     } = args;
 
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const currentLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        mercuryCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentIllumination =
-      this.ephemerisService.getIlluminationFromEphemeris(
-        mercuryIlluminationEphemeris,
-        minute.toISOString(),
-        "currentIllumination",
-      );
-    const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
-      mercuryDistanceEphemeris,
-      minute.toISOString(),
-      "currentDistance",
-    );
-
-    const previousLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        mercuryCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-    const previousLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-    const previousDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          mercuryDistanceEphemeris,
-          m.toISOString(),
-          "previousDistance",
-        );
-      },
-    );
-    const previousIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          mercuryIlluminationEphemeris,
-          m.toISOString(),
-          "previousIllumination",
-        );
-      },
-    );
-
-    const nextLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        mercuryCoordinateEphemeris,
-        nextMinute.toISOString(),
-        "longitude",
-      );
-    const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
+    const parameters = this.gatherPhaseParameters(
+      mercuryCoordinateEphemeris,
       sunCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
-    const nextDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          mercuryDistanceEphemeris,
-          m.toISOString(),
-          "nextDistance",
-        );
-      },
-    );
-    const nextIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          mercuryIlluminationEphemeris,
-          m.toISOString(),
-          "nextIllumination",
-        );
-      },
+      mercuryDistanceEphemeris,
+      mercuryIlluminationEphemeris,
+      minute,
     );
 
-    const parameters = {
-      currentDistance,
-      currentIllumination,
-      currentLongitudePlanet,
-      currentLongitudeSun,
-      nextDistances,
-      nextIlluminations,
-      nextLongitudePlanet,
-      nextLongitudeSun,
-      previousDistances,
-      previousIlluminations,
-      previousLongitudePlanet,
-      previousLongitudeSun,
-    };
-
-    const mercurianPhaseEvents: Event[] = [];
-
-    if (this.isMorningRise({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "morning rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isWesternBrightest({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "western brightest",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isWesternElongation({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "western elongation",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isMorningSet({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "morning set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningRise({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "evening rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEasternElongation({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "eastern elongation",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEasternBrightest({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "eastern brightest",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningSet({ ...parameters })) {
-      mercurianPhaseEvents.push(
-        this.buildMercurianPhaseEvent({
-          phase: "evening set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    return mercurianPhaseEvents;
+    return [
+      ...this.detectMercurianMorningPhases(parameters, minute),
+      ...this.detectMercurianEveningPhases(parameters, minute),
+    ];
   }
 
   /**
-   * Detects all Venusian phase events at the current minute.
    *
-   * Evaluates Venus's position relative to the Sun, along with distance
-   * and illumination data, to identify phase transitions. Uses a margin
-   * of minutes before and after for accurate extrema detection (brightest,
-   * elongation).
-   *
-   * @param args - Detection parameters
-   * @param minute - The minute to check
-   * @param venusCoordinateEphemeris - Venus position data
-   * @param venusDistanceEphemeris - Venus distance from Earth
-   * @param venusIlluminationEphemeris - Venus illumination percentage
-   * @param sunCoordinateEphemeris - Sun position for relative calculations
-   * @returns Array of detected Venusian phase events
-   * @see {@link isMorningRise} for morning rise detection
-   * @see {@link isWesternElongation} for western elongation detection
    */
   getVenusianPhaseEvents(args: {
     minute: Moment;
@@ -1300,196 +1105,17 @@ export class PhasesService {
       venusIlluminationEphemeris,
     } = args;
 
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const currentLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        venusCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-    const currentIllumination =
-      this.ephemerisService.getIlluminationFromEphemeris(
-        venusIlluminationEphemeris,
-        minute.toISOString(),
-        "currentIllumination",
-      );
-    const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
-      venusDistanceEphemeris,
-      minute.toISOString(),
-      "currentDistance",
-    );
-
-    const previousLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        venusCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-    const previousLongitudeSun =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        sunCoordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
-
-    const previousDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          venusDistanceEphemeris,
-          m.toISOString(),
-          "previousDistance",
-        );
-      },
-    );
-    const previousIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute
-          .clone()
-          .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          venusIlluminationEphemeris,
-          m.toISOString(),
-          "previousIllumination",
-        );
-      },
-    );
-
-    const nextLongitudePlanet =
-      this.ephemerisService.getCoordinateFromEphemeris(
-        venusCoordinateEphemeris,
-        nextMinute.toISOString(),
-        "longitude",
-      );
-    const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
+    const parameters = this.gatherPhaseParameters(
+      venusCoordinateEphemeris,
       sunCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
-    const nextDistances = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getDistanceFromEphemeris(
-          venusDistanceEphemeris,
-          m.toISOString(),
-          "nextDistance",
-        );
-      },
-    );
-    const nextIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minute");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          venusIlluminationEphemeris,
-          m.toISOString(),
-          "nextIllumination",
-        );
-      },
+      venusDistanceEphemeris,
+      venusIlluminationEphemeris,
+      minute,
     );
 
-    const parameters = {
-      currentDistance,
-      currentIllumination,
-      currentLongitudePlanet,
-      currentLongitudeSun,
-      nextDistances,
-      nextIlluminations,
-      nextLongitudePlanet,
-      nextLongitudeSun,
-      previousDistances,
-      previousIlluminations,
-      previousLongitudePlanet,
-      previousLongitudeSun,
-    };
-
-    const venusianPhaseEvents: Event[] = [];
-
-    if (this.isMorningRise({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "morning rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isWesternBrightest({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "western brightest",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isWesternElongation({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "western elongation",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isMorningSet({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "morning set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningRise({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "evening rise",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEasternElongation({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "eastern elongation",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEasternBrightest({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "eastern brightest",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    if (this.isEveningSet({ ...parameters })) {
-      venusianPhaseEvents.push(
-        this.buildVenusianPhaseEvent({
-          phase: "evening set",
-          timestamp: minute,
-        }),
-      );
-    }
-
-    return venusianPhaseEvents;
+    return [
+      ...this.detectVenusianMorningPhases(parameters, minute),
+      ...this.detectVenusianEveningPhases(parameters, minute),
+    ];
   }
 }

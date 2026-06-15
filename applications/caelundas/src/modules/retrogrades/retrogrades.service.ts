@@ -49,6 +49,61 @@ export class RetrogradesService {
 
   // 🔏 Private Methods
 
+  private detectBodyStations(
+    body: RetrogradeBody,
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      ephemeris,
+      minute.toISOString(),
+      "longitude",
+    );
+    const previousLongitudes = this.getPreviousLongitudes(ephemeris, minute);
+    const nextLongitudes = this.getNextLongitudes(ephemeris, minute);
+    const longitudes = { currentLongitude, nextLongitudes, previousLongitudes };
+    if (this.isRetrograde({ ...longitudes })) {
+      events.push(
+        this.buildRetrogradeEvent({ body, direction: "retrograde", timestamp: minute }),
+      );
+    }
+    if (this.isDirect({ ...longitudes })) {
+      events.push(
+        this.buildRetrogradeEvent({ body, direction: "direct", timestamp: minute }),
+      );
+    }
+    return events;
+  }
+
+  private getNextLongitudes(
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const date = minute.clone().add(index + 1, "minutes");
+      return this.ephemerisService.getCoordinateFromEphemeris(
+        ephemeris,
+        date.toISOString(),
+        "longitude",
+      );
+    });
+  }
+
+  private getPreviousLongitudes(
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const date = minute.clone().subtract(MARGIN_MINUTES - index, "minutes");
+      return this.ephemerisService.getCoordinateFromEphemeris(
+        ephemeris,
+        date.toISOString(),
+        "longitude",
+      );
+    });
+  }
+
   private getRetrogradeProgressiveEvent(
     beginningEvent: Event,
     endingEvent: Event,
@@ -99,35 +154,6 @@ export class RetrogradesService {
     return hasBeenRetrograde && willBeDirect;
   }
 
-  /**
-   * Creates a progressive event from paired retrograde and direct station events.
-   *
-   * Extracts the planet symbol from the beginning event summary and formats a
-   * progressive event showing the span of the retrograde period.
-   *
-   * @param beginningEvent - Stationary retrograde event (marks start of retrograde)
-   * @param endingEvent - Stationary direct event (marks end of retrograde)
-   * @param planet - Planet that was retrograde
-   * @returns Progressive event spanning the retrograde period
-   *
-   * @remarks
-   * - Duration spans from beginningEvent.start to endingEvent.start (not endingEvent.end)
-   * - Capitalizes planet name for display
-   * - Extracts symbol from beginning event summary (assumes first non-whitespace sequence)
-   * - Summary format: `[symbol] ↩️ [Planet] Retrograde`
-   * - Uses singular category "Retrogrades" (not "Retrograde" or "Direct")
-   * - Categories: Astronomy, Astrology, Retrogrades
-   *
-   * @example
-   * ```typescript
-   * const duration = getRetrogradeProgressiveEvent(
-   *   { summary: "☿ ↩️ Mercury Stationary Retrograde", start: Mar 15, ... },
-   *   { summary: "☿ ➡️ Mercury Stationary Direct", start: Apr 8, ... },
-   *   "mercury"
-   * );
-   * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
-   * ```
-   */
   private isRetrograde(args: {
     currentLongitude: number;
     nextLongitudes: number[];
@@ -265,65 +291,10 @@ export class RetrogradesService {
   }): Event[] {
     const { coordinateEphemerisByBody, minute } = args;
     const retrogradeEvents: Event[] = [];
-
     for (const body of retrogradeBodies) {
       const ephemeris = coordinateEphemerisByBody[body];
-
-      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
-        ephemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-
-      const previousLongitudes = Array.from(
-        { length: MARGIN_MINUTES },
-        (_, index) => {
-          const date = minute
-            .clone()
-            .subtract(MARGIN_MINUTES - index, "minutes");
-          return this.ephemerisService.getCoordinateFromEphemeris(
-            ephemeris,
-            date.toISOString(),
-            "longitude",
-          );
-        },
-      );
-
-      const nextLongitudes = Array.from(
-        { length: MARGIN_MINUTES },
-        (_, index) => {
-          const date = minute.clone().add(index + 1, "minutes");
-          return this.ephemerisService.getCoordinateFromEphemeris(
-            ephemeris,
-            date.toISOString(),
-            "longitude",
-          );
-        },
-      );
-
-      const timestamp = minute;
-      const longitudes = {
-        currentLongitude,
-        nextLongitudes,
-        previousLongitudes,
-      };
-
-      if (this.isRetrograde({ ...longitudes })) {
-        retrogradeEvents.push(
-          this.buildRetrogradeEvent({
-            body,
-            direction: "retrograde",
-            timestamp,
-          }),
-        );
-      }
-      if (this.isDirect({ ...longitudes })) {
-        retrogradeEvents.push(
-          this.buildRetrogradeEvent({ body, direction: "direct", timestamp }),
-        );
-      }
+      retrogradeEvents.push(...this.detectBodyStations(body, ephemeris, minute));
     }
-
     return retrogradeEvents;
   }
 

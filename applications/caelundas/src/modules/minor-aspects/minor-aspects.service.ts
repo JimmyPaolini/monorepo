@@ -61,49 +61,169 @@ export class MinorAspectsService {
 
   // 🔏 Private Methods
 
-  private getMinorAspectProgressiveEvent(
-    beginning: Event,
-    ending: Event,
+  private assembleMinorAspectEvent(
+    body1: Body,
+    body2: Body,
+    minorAspect: MinorAspect,
+    phase: AspectPhase,
+    timestamp: Moment,
   ): Event {
-    const bodiesCapitalized = _.sortBy(
-      beginning.categories.filter((category) =>
+    const body1Capitalized = capitalize(body1);
+    const body2Capitalized = capitalize(body2);
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const minorAspectSymbol = symbolByMinorAspect[minorAspect];
+    const baseCategories = [
+      "Astronomy",
+      "Astrology",
+      "Simple Aspect",
+      "Minor Aspect",
+      body1Capitalized,
+      body2Capitalized,
+      _.startCase(minorAspect),
+    ];
+    const { categories, description, phaseEmoji } = this.resolvePhaseDetails(
+      phase,
+      body1Capitalized,
+      body2Capitalized,
+      minorAspect,
+      baseCategories,
+    );
+    const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
+    return { categories, description, end: timestamp, start: timestamp, summary };
+  }
+
+  private buildGroupKey(event: Event): string {
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         minorAspectBodies
           .map((minorAspectBody) => _.startCase(minorAspectBody))
           .includes(category),
       ),
     );
-
-    const aspectCapitalized = beginning.categories.find((category) =>
+    const aspect = event.categories.find((category) =>
       minorAspects
         .map((minorAspect) => _.startCase(minorAspect))
         .includes(category),
     );
-
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
-      throw new Error(
-        `Could not extract aspect info from categories: ${beginning.categories.join(
-          ", ",
-        )}`,
-      );
+    if (planets.length === 2 && aspect) {
+      return `${planets[0]}-${aspect}-${planets[1]}`;
     }
+    return "";
+  }
 
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
+  private castAspectComponentsToTypes(
+    body1Capitalized: string,
+    body2Capitalized: string,
+    aspectCapitalized: string,
+    categories: string[],
+  ): { aspect: MinorAspect; body1: Body; body2: Body } {
     const aspectLower = aspectCapitalized.toLowerCase();
     const body1Lower = body1Capitalized.toLowerCase();
     const body2Lower = body2Capitalized.toLowerCase();
-    if (
-      !isMinorAspect(aspectLower) ||
-      !isBody(body1Lower) ||
-      !isBody(body2Lower)
-    ) {
+    if (!isMinorAspect(aspectLower) || !isBody(body1Lower) || !isBody(body2Lower)) {
       throw new Error(
-        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
+        `Could not extract typed values from categories: ${categories.join(", ")}`,
       );
     }
-    const aspect = aspectLower;
-    const body1 = body1Lower;
-    const body2 = body2Lower;
+    return { aspect: aspectLower, body1: body1Lower, body2: body2Lower };
+  }
+
+  private detectBodyPairAspect(
+    body1: Body,
+    body2: Body,
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+    previousMinute: Moment,
+    minute: Moment,
+    nextMinute: Moment,
+  ): Event | null {
+    const win1 = this.getLongitudesWindowForBody(body1, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
+    const win2 = this.getLongitudesWindowForBody(body2, coordinateEphemerisByBody, previousMinute, minute, nextMinute);
+    const phase = this.detectPhaseFromWindows(win1, win2);
+    if (!phase) {
+      return null;
+    }
+    return this.buildMinorAspectEvent({
+      body1,
+      body2,
+      longitudeBody1: win1.current,
+      longitudeBody2: win2.current,
+      phase,
+      timestamp: minute,
+    });
+  }
+
+  private detectPhaseFromWindows(
+    win1: { current: number; next: number; previous: number },
+    win2: { current: number; next: number; previous: number },
+  ): AspectPhase | null {
+    return this.detectAspectPhase({
+      currentLongitudeBody1: win1.current,
+      currentLongitudeBody2: win2.current,
+      nextLongitudeBody1: win1.next,
+      nextLongitudeBody2: win2.next,
+      previousLongitudeBody1: win1.previous,
+      previousLongitudeBody2: win2.previous,
+    });
+  }
+
+  private extractAspectComponents(categories: string[]): {
+    aspect: MinorAspect;
+    aspectCapitalized: string;
+    body1: Body;
+    body1Capitalized: string;
+    body2: Body;
+    body2Capitalized: string;
+  } {
+    const bodiesCapitalized = _.sortBy(
+      categories.filter((category) =>
+        minorAspectBodies
+          .map((minorAspectBody) => _.startCase(minorAspectBody))
+          .includes(category),
+      ),
+    );
+    const aspectCapitalized = categories.find((category) =>
+      minorAspects.map((minorAspect) => _.startCase(minorAspect)).includes(category),
+    );
+    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+      throw new Error(
+        `Could not extract aspect info from categories: ${categories.join(", ")}`,
+      );
+    }
+    const body1Capitalized = bodiesCapitalized[0] ?? "";
+    const body2Capitalized = bodiesCapitalized[1] ?? "";
+    const { aspect, body1, body2 } = this.castAspectComponentsToTypes(body1Capitalized, body2Capitalized, aspectCapitalized, categories);
+    return { aspect, aspectCapitalized, body1, body1Capitalized, body2, body2Capitalized };
+  }
+
+  private getLongitudesWindowForBody(
+    body: Body,
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+    previousMinute: Moment,
+    minute: Moment,
+    nextMinute: Moment,
+  ): { current: number; next: number; previous: number } {
+    return this.ephemerisService.getLongitudesWindow(
+      coordinateEphemerisByBody[body],
+      previousMinute,
+      minute,
+      nextMinute,
+    );
+  }
+
+  private getMinorAspectProgressiveEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    const {
+      aspect,
+      aspectCapitalized,
+      body1,
+      body1Capitalized,
+      body2,
+      body2Capitalized,
+    } = this.extractAspectComponents(beginning.categories);
 
     const body1Symbol = symbolByBody[body1];
     const body2Symbol = symbolByBody[body2];
@@ -124,6 +244,54 @@ export class MinorAspectsService {
       start: beginning.start,
       summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
     };
+  }
+
+  private processAspectGroup(key: string, groupEvents: Event[]): Event[] {
+    if (!key) {
+      return [];
+    }
+    const formingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Forming"),
+    );
+    const dissolvingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Dissolving"),
+    );
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      formingEvents,
+      dissolvingEvents,
+      `minor aspect ${key}`,
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getMinorAspectProgressiveEvent(beginning, ending),
+    );
+  }
+
+  private resolvePhaseDetails(
+    phase: AspectPhase,
+    body1Capitalized: string,
+    body2Capitalized: string,
+    minorAspect: MinorAspect,
+    baseCategories: string[],
+  ): { categories: string[]; description: string; phaseEmoji: string } {
+    if (phase === "perfective") {
+      return {
+        categories: [...baseCategories, "Perfective"],
+        description: `${body1Capitalized} perfective ${minorAspect} ${body2Capitalized}`,
+        phaseEmoji: "🎯",
+      };
+    } else if (phase === "forming") {
+      return {
+        categories: [...baseCategories, "Forming"],
+        description: `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}`,
+        phaseEmoji: "➡️",
+      };
+    } else {
+      return {
+        categories: [...baseCategories, "Dissolving"],
+        description: `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}`,
+        phaseEmoji: "⬅️",
+      };
+    }
   }
 
   // 🌎 Public Methods
@@ -162,55 +330,9 @@ export class MinorAspectsService {
       );
       throw new Error("No minor aspect found");
     }
-
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const minorAspectSymbol = symbolByMinorAspect[minorAspect];
-
-    let description: string;
-    let phaseEmoji: string;
-    let categories: string[];
-
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Minor Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(minorAspect),
-    ];
-
-    if (phase === "perfective") {
-      description = `${body1Capitalized} perfective ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "🎯";
-      categories = [...baseCategories, "Perfective"];
-    } else if (phase === "forming") {
-      description = `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "➡️";
-      categories = [...baseCategories, "Forming"];
-    } else {
-      description = `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "⬅️";
-      categories = [...baseCategories, "Dissolving"];
-    }
-
-    const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
-
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    const minorAspectEvent: Event = {
-      categories,
-      description,
-      end: timestamp,
-      start: timestamp,
-      summary,
-    };
-    return minorAspectEvent;
+    return this.assembleMinorAspectEvent(body1, body2, minorAspect, phase, timestamp);
   }
+
   /**
    * Detects minor aspect events within a single minute time window.
    *
@@ -236,10 +358,8 @@ export class MinorAspectsService {
     minute: Moment;
   }): Event[] {
     const { coordinateEphemerisByBody, minute } = args;
-
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
-
     const minorAspectEvents: Event[] = [];
 
     for (const body1 of minorAspectBodies) {
@@ -248,51 +368,16 @@ export class MinorAspectsService {
         if (body1 === body2) {
           continue;
         }
-
-        const ephemerisBody1 = coordinateEphemerisByBody[body1];
-        const ephemerisBody2 = coordinateEphemerisByBody[body2];
-
-        const {
-          current: currentLongitudeBody1,
-          next: nextLongitudeBody1,
-          previous: previousLongitudeBody1,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody1,
+        const event = this.detectBodyPairAspect(
+          body1,
+          body2,
+          coordinateEphemerisByBody,
           previousMinute,
           minute,
           nextMinute,
         );
-        const {
-          current: currentLongitudeBody2,
-          next: nextLongitudeBody2,
-          previous: previousLongitudeBody2,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody2,
-          previousMinute,
-          minute,
-          nextMinute,
-        );
-
-        const phase = this.detectAspectPhase({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
-        });
-
-        if (phase) {
-          minorAspectEvents.push(
-            this.buildMinorAspectEvent({
-              body1,
-              body2,
-              longitudeBody1: currentLongitudeBody1,
-              longitudeBody2: currentLongitudeBody2,
-              phase,
-              timestamp: minute,
-            }),
-          );
+        if (event) {
+          minorAspectEvents.push(event);
         }
       }
     }
@@ -312,59 +397,16 @@ export class MinorAspectsService {
    * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Filter to minor aspect events only
     const minorAspectEvents = events.filter((event) =>
       event.categories.includes("Minor Aspect"),
     );
+    const groupedEvents = _.groupBy(minorAspectEvents, (event) =>
+      this.buildGroupKey(event),
+    );
+    const progressiveEvents: Event[] = [];
 
-    // Group by body pair and aspect type using categories
-    const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
-      const planets = _.sortBy(
-        event.categories.filter((category) =>
-          minorAspectBodies
-            .map((minorAspectBody) => _.startCase(minorAspectBody))
-            .includes(category),
-        ),
-      );
-
-      const aspect = event.categories.find((category) =>
-        minorAspects
-          .map((minorAspect) => _.startCase(minorAspect))
-          .includes(category),
-      );
-
-      if (planets.length === 2 && aspect) {
-        return `${planets[0]}-${aspect}-${planets[1]}`;
-      }
-      return "";
-    });
-
-    // Process each group
     for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-      if (!key) {
-        continue;
-      }
-
-      const formingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Forming"),
-      );
-      const dissolvingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Dissolving"),
-      );
-
-      const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-        formingEvents,
-        dissolvingEvents,
-        `minor aspect ${key}`,
-      );
-
-      progressiveEvents.push(
-        ...pairs.map(([beginning, ending]) =>
-          this.getMinorAspectProgressiveEvent(beginning, ending),
-        ),
-      );
+      progressiveEvents.push(...this.processAspectGroup(key, groupEvents));
     }
 
     return progressiveEvents;

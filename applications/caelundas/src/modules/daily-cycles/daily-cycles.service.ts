@@ -47,6 +47,48 @@ export class DailyCyclesService {
 
   // 🔏 Private Methods
 
+  private getElevationAt(
+    ephemeris: AzimuthElevationEphemeris,
+    moment: Moment,
+  ): number {
+    return this.ephemerisService.getAzimuthElevationFromEphemeris(
+      ephemeris,
+      moment.toISOString(),
+      "elevation",
+    );
+  }
+
+  private getElevations(args: {
+    ephemeris: AzimuthElevationEphemeris;
+    minute: Moment;
+  }): {
+    current: number;
+    currentElevation: number;
+    next: number;
+    nextElevation: number;
+    previous: number;
+    previousElevation: number;
+  } {
+    const { ephemeris, minute } = args;
+    const previousElevation = this.getElevationAt(
+      ephemeris,
+      minute.clone().subtract(1, "minute"),
+    );
+    const currentElevation = this.getElevationAt(ephemeris, minute);
+    const nextElevation = this.getElevationAt(
+      ephemeris,
+      minute.clone().add(1, "minute"),
+    );
+    return {
+      current: currentElevation,
+      currentElevation,
+      next: nextElevation,
+      nextElevation,
+      previous: previousElevation,
+      previousElevation,
+    };
+  }
+
   private isRise(args: {
     currentElevation: number;
     previousElevation: number;
@@ -469,52 +511,23 @@ export class DailyCyclesService {
     moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, moonAzimuthElevationEphemeris } = args;
-
     const dailyLunarCycleEvents: Event[] = [];
-
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const currentElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-    const previousElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-    const nextElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        nextMinute.toISOString(),
-        "elevation",
-      );
-
-    const elevations = {
-      current: currentElevation,
-      currentElevation,
-      next: nextElevation,
-      nextElevation,
-      previous: previousElevation,
-      previousElevation,
-    };
-    const date = minute;
+    const elevations = this.getElevations({
+      ephemeris: moonAzimuthElevationEphemeris,
+      minute,
+    });
 
     if (this.isRise({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.buildMoonriseEvent(date));
+      dailyLunarCycleEvents.push(this.buildMoonriseEvent(minute));
     }
     if (this.mathService.isMaximum({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.buildLunarZenithEvent(date));
+      dailyLunarCycleEvents.push(this.buildLunarZenithEvent(minute));
     }
     if (this.isSet({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.buildMoonsetEvent(date));
+      dailyLunarCycleEvents.push(this.buildMoonsetEvent(minute));
     }
     if (this.mathService.isMinimum({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.buildLunarNadirEvent(date));
+      dailyLunarCycleEvents.push(this.buildLunarNadirEvent(minute));
     }
 
     return dailyLunarCycleEvents;
@@ -535,53 +548,23 @@ export class DailyCyclesService {
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
-
     const dailySolarCycleEvents: Event[] = [];
-
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const currentElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-    const previousElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-    const nextElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        nextMinute.toISOString(),
-        "elevation",
-      );
-
-    const elevations = {
-      current: currentElevation,
-      currentElevation,
-      next: nextElevation,
-      nextElevation,
-      previous: previousElevation,
-      previousElevation,
-    };
-
-    const date = minute;
+    const elevations = this.getElevations({
+      ephemeris: sunAzimuthElevationEphemeris,
+      minute,
+    });
 
     if (this.isRise({ ...elevations })) {
-      dailySolarCycleEvents.push(this.buildSunriseEvent(date));
+      dailySolarCycleEvents.push(this.buildSunriseEvent(minute));
     }
     if (this.mathService.isMaximum({ ...elevations })) {
-      dailySolarCycleEvents.push(this.buildSolarZenithEvent(date));
+      dailySolarCycleEvents.push(this.buildSolarZenithEvent(minute));
     }
     if (this.isSet({ ...elevations })) {
-      dailySolarCycleEvents.push(this.buildSunsetEvent(date));
+      dailySolarCycleEvents.push(this.buildSunsetEvent(minute));
     }
     if (this.mathService.isMinimum({ ...elevations })) {
-      dailySolarCycleEvents.push(this.buildSolarNadirEvent(date));
+      dailySolarCycleEvents.push(this.buildSolarNadirEvent(minute));
     }
 
     return dailySolarCycleEvents;

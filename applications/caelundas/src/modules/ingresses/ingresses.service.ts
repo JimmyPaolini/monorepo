@@ -22,6 +22,7 @@ import { LoggerService } from "../logger/logger.service";
 
 import type {
   Body,
+  Decan,
   Sign,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -61,20 +62,20 @@ export class IngressesService {
    */
   static readonly degreeRangeBySign: Record<
     Sign,
-    { max: number; min: number }
+    { maximum: number; minimum: number }
   > = {
-    aquarius: { max: 330, min: 300 },
-    aries: { max: 30, min: 0 },
-    cancer: { max: 120, min: 90 },
-    capricorn: { max: 300, min: 270 },
-    gemini: { max: 90, min: 60 },
-    leo: { max: 150, min: 120 },
-    libra: { max: 210, min: 180 },
-    pisces: { max: 360, min: 330 },
-    sagittarius: { max: 270, min: 240 },
-    scorpio: { max: 240, min: 210 },
-    taurus: { max: 60, min: 30 },
-    virgo: { max: 180, min: 150 },
+    aquarius: { maximum: 330, minimum: 300 },
+    aries: { maximum: 30, minimum: 0 },
+    cancer: { maximum: 120, minimum: 90 },
+    capricorn: { maximum: 300, minimum: 270 },
+    gemini: { maximum: 90, minimum: 60 },
+    leo: { maximum: 150, minimum: 120 },
+    libra: { maximum: 210, minimum: 180 },
+    pisces: { maximum: 360, minimum: 330 },
+    sagittarius: { maximum: 270, minimum: 240 },
+    scorpio: { maximum: 240, minimum: 210 },
+    taurus: { maximum: 60, minimum: 30 },
+    virgo: { maximum: 180, minimum: 150 },
   };
 
   // 🔏 Private Methods
@@ -89,7 +90,7 @@ export class IngressesService {
    */
   static getSign(longitude: number): Sign {
     const entry = objectEntries(IngressesService.degreeRangeBySign).find(
-      ([, { max: maximum, min: minimum }]) => {
+      ([, { maximum, minimum }]) => {
         return longitude >= minimum && longitude < maximum;
       },
     );
@@ -99,10 +100,115 @@ export class IngressesService {
     return entry[0];
   }
 
+  private buildDecanIngressEventObject(args: {
+    body: Body;
+    date: Moment;
+    longitude: number;
+  }): Event {
+    const { body, date, longitude } = args;
+    const sign = IngressesService.getSign(longitude);
+    const decan = this.resolveDecan(longitude);
+    const bodyCapitalized = capitalize(body);
+    const signCapitalized = capitalize(sign);
+    const description = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
+    const summary = `${symbolByBody[body]} → ${symbolBySign[sign]}${symbolByDecan[decan]} ${description}`;
+    return {
+      categories: [
+        ...IngressesService.categories,
+        "Decan",
+        bodyCapitalized,
+        signCapitalized,
+      ],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+  }
+
+  private buildProgressiveSpansForBody(
+    bodyCapitalized: string,
+    events: Event[],
+  ): Event[] {
+    const progressiveSpans: Event[] = [];
+    const sortedIngresses = _.sortBy(events, (event) => event.start.valueOf());
+    for (let index = 0; index < sortedIngresses.length - 1; index++) {
+      const entering = sortedIngresses[index];
+      const exiting = sortedIngresses[index + 1];
+      if (!entering || !exiting) {
+        continue;
+      }
+      progressiveSpans.push(
+        this.getSignIngressDurationEvent(entering, exiting, bodyCapitalized),
+      );
+    }
+    return progressiveSpans;
+  }
+
+  private extractSignAndBodyFromCategories(
+    categories: string[],
+    bodyCapitalized: string,
+  ): {
+    body: Body;
+    bodyCapitalized: string;
+    sign: Sign;
+    signCapitalized: string;
+  } {
+    const signCapitalized = categories.find((category) =>
+      signs.map((sign) => _.startCase(sign)).includes(category),
+    );
+    if (!signCapitalized) {
+      throw new Error(
+        `Could not extract sign from categories: ${categories.join(", ")}`,
+      );
+    }
+    const bodyLower = bodyCapitalized.toLowerCase();
+    const signLower = signCapitalized.toLowerCase();
+    if (!isBody(bodyLower) || !isSign(signLower)) {
+      throw new Error(
+        `Could not extract typed values from categories: ${categories.join(", ")}`,
+      );
+    }
+    return {
+      body: bodyLower,
+      bodyCapitalized,
+      sign: signLower,
+      signCapitalized,
+    };
+  }
+
+  private filterSignIngressEvents(events: Event[]): Event[] {
+    return events.filter(
+      (event) =>
+        event.categories.includes("Ingress") &&
+        !event.categories.includes("Decan") &&
+        !event.categories.includes("Peak"),
+    );
+  }
+
   private getDecan(longitude: number): number {
     const sign = IngressesService.getSign(longitude);
-    const { min: minimum } = IngressesService.degreeRangeBySign[sign];
+    const { minimum: minimum } = IngressesService.degreeRangeBySign[sign];
     return Math.floor((longitude - minimum) / 10) + 1;
+  }
+
+  private getLongitudes(args: {
+    coordinateEphemeris: CoordinateEphemeris;
+    minute: Moment;
+    previousMinute: Moment;
+  }): { currentLongitude: number; previousLongitude: number } {
+    const { coordinateEphemeris, minute, previousMinute } = args;
+    const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      minute.toISOString(),
+      "longitude",
+    );
+    const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      previousMinute.toISOString(),
+      "longitude",
+    );
+    return { currentLongitude, previousLongitude };
   }
 
   private getSignIngressDurationEvent(
@@ -110,30 +216,13 @@ export class IngressesService {
     exiting: Event,
     bodyCapitalized: string,
   ): Event {
-    // Extract the sign the body is entering
-    const signCapitalized = entering.categories.find((category) =>
-      signs.map((sign) => _.startCase(sign)).includes(category),
-    );
-
-    if (!signCapitalized) {
-      throw new Error(
-        `Could not extract sign from categories: ${entering.categories.join(", ")}`,
+    const { body, sign, signCapitalized } =
+      this.extractSignAndBodyFromCategories(
+        entering.categories,
+        bodyCapitalized,
       );
-    }
-
-    const bodyLower = bodyCapitalized.toLowerCase();
-    const signLower = signCapitalized.toLowerCase();
-    if (!isBody(bodyLower) || !isSign(signLower)) {
-      throw new Error(
-        `Could not extract typed values from categories: ${entering.categories.join(", ")}`,
-      );
-    }
-    const body = bodyLower;
-    const sign = signLower;
-
     const bodySymbol = symbolByBody[body];
     const signSymbol = symbolBySign[sign];
-
     return {
       categories: [
         "Astronomy",
@@ -147,6 +236,19 @@ export class IngressesService {
       start: entering.start,
       summary: `${bodySymbol} ${signSymbol} ${bodyCapitalized} in ${signCapitalized}`,
     };
+  }
+
+  private groupSignIngressEventsByBody(
+    events: Event[],
+  ): Record<string, Event[]> {
+    return _.groupBy(events, (event) => {
+      const bodyCapitalized = event.categories.find((category) =>
+        signIngressBodies
+          .map((signIngressBody) => _.startCase(signIngressBody))
+          .includes(category),
+      );
+      return bodyCapitalized || "";
+    });
   }
 
   private isDecanIngress(args: {
@@ -164,17 +266,19 @@ export class IngressesService {
     const { currentLongitude, previousLongitude } = args;
 
     const previousSign = IngressesService.getSign(previousLongitude);
-    const { min: previousMinimum } =
+    const { minimum: previousMinimum } =
       IngressesService.degreeRangeBySign[previousSign];
     const previousDifference = previousLongitude - previousMinimum;
 
     const currentSign = IngressesService.getSign(currentLongitude);
-    const { min: currentMinimum } =
+    const { minimum: currentMinimum } =
       IngressesService.degreeRangeBySign[currentSign];
     const currentDifference = currentLongitude - currentMinimum;
 
     return currentDifference >= 15 && previousDifference < 15;
   }
+
+  // 🌎 Public Methods
 
   private isSignIngress(args: {
     currentLongitude: number;
@@ -187,8 +291,6 @@ export class IngressesService {
     );
   }
 
-  // 🌎 Public Methods
-
   /**
    * Creates a decan ingress calendar event.
    *
@@ -198,44 +300,25 @@ export class IngressesService {
    * @param args - Body, ecliptic longitude, and date of the ingress
    * @returns Calendar event for the decan ingress
    */
+  private resolveDecan(longitude: number): Decan {
+    const decanString = String(this.getDecan(longitude));
+    if (!isDecan(decanString)) {
+      throw new Error(`Invalid decan value: ${decanString}`);
+    }
+    return decanString;
+  }
+
+  /**
+   *
+   */
   buildDecanIngressEvent(args: {
     body: Body;
     date: Moment;
     longitude: number;
   }): Event {
-    const { body, date, longitude } = args;
-    const sign = IngressesService.getSign(longitude);
-    const decanString = String(this.getDecan(longitude));
-    if (!isDecan(decanString)) {
-      throw new Error(`Invalid decan value: ${decanString}`);
-    }
-    const decan = decanString;
-    const bodyCapitalized = capitalize(body);
-    const signCapitalized = capitalize(sign);
-
-    const bodySymbol = symbolByBody[body];
-    const signSymbol = symbolBySign[sign];
-    const decanSymbol = symbolByDecan[decan];
-
-    const description = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
-    const summary = `${bodySymbol} → ${signSymbol}${decanSymbol} ${description}`;
-
-    this.logger.log(`${summary} at ${date.toISOString()}`);
-
-    const decanIngressEvent: Event = {
-      categories: [
-        ...IngressesService.categories,
-        "Decan",
-        bodyCapitalized,
-        signCapitalized,
-      ],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-
-    return decanIngressEvent;
+    const event = this.buildDecanIngressEventObject(args);
+    this.logger.log(`${event.summary} at ${args.date.toISOString()}`);
+    return event;
   }
 
   /**
@@ -351,25 +434,9 @@ export class IngressesService {
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
 
-    // Filter to sign ingress events only (exclude decan and peak)
-    const signIngressEvents = events.filter(
-      (event) =>
-        event.categories.includes("Ingress") &&
-        !event.categories.includes("Decan") &&
-        !event.categories.includes("Peak"),
-    );
+    const signIngressEvents = this.filterSignIngressEvents(events);
+    const groupedByBody = this.groupSignIngressEventsByBody(signIngressEvents);
 
-    // Group by body
-    const groupedByBody = _.groupBy(signIngressEvents, (event) => {
-      const bodyCapitalized = event.categories.find((category) =>
-        signIngressBodies
-          .map((signIngressBody) => _.startCase(signIngressBody))
-          .includes(category),
-      );
-      return bodyCapitalized || "";
-    });
-
-    // Process each body
     for (const [bodyCapitalized, bodyIngresses] of Object.entries(
       groupedByBody,
     )) {
@@ -377,23 +444,9 @@ export class IngressesService {
         continue;
       }
 
-      // Sort by time
-      const sortedIngresses = _.sortBy(bodyIngresses, (event) =>
-        event.start.valueOf(),
+      progressiveEvents.push(
+        ...this.buildProgressiveSpansForBody(bodyCapitalized, bodyIngresses),
       );
-
-      // Pair consecutive ingresses to create progressive events
-      for (let index = 0; index < sortedIngresses.length - 1; index++) {
-        const entering = sortedIngresses[index];
-        const exiting = sortedIngresses[index + 1];
-        if (!entering || !exiting) {
-          continue;
-        }
-
-        progressiveEvents.push(
-          this.getSignIngressDurationEvent(entering, exiting, bodyCapitalized),
-        );
-      }
     }
 
     return progressiveEvents;
@@ -426,17 +479,11 @@ export class IngressesService {
     for (const body of decanIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      const { currentLongitude, previousLongitude } = this.getLongitudes({
         coordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-      const previousLongitude =
-        this.ephemerisService.getCoordinateFromEphemeris(
-          coordinateEphemeris,
-          previousMinute.toISOString(),
-          "longitude",
-        );
+        minute,
+        previousMinute,
+      });
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;
@@ -480,17 +527,11 @@ export class IngressesService {
     for (const body of peakIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      const { currentLongitude, previousLongitude } = this.getLongitudes({
         coordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-      const previousLongitude =
-        this.ephemerisService.getCoordinateFromEphemeris(
-          coordinateEphemeris,
-          previousMinute.toISOString(),
-          "longitude",
-        );
+        minute,
+        previousMinute,
+      });
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;
@@ -537,17 +578,11 @@ export class IngressesService {
     for (const body of signIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      const { currentLongitude, previousLongitude } = this.getLongitudes({
         coordinateEphemeris,
-        minute.toISOString(),
-        "longitude",
-      );
-      const previousLongitude =
-        this.ephemerisService.getCoordinateFromEphemeris(
-          coordinateEphemeris,
-          previousMinute.toISOString(),
-          "longitude",
-        );
+        minute,
+        previousMinute,
+      });
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;

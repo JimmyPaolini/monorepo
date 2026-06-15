@@ -32,18 +32,53 @@ export async function generateNestjsGraphqlModule(
   tree: Tree,
   options: GenerateNestjsGraphqlModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: "Which project should the module be generated in?",
-  });
+  const { directory } = await resolveModuleDirectory(tree, options);
 
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: "What is the name of the module? (kebab-case)",
     name: options.name,
     subject: "Module name",
+  });
+
+  const targetPath = path.join(directory, nameKebabCase);
+
+  generateFiles({
+    instanceDirectoryPath: targetPath,
+    substitutions: buildNameSubstitutions(nameKebabCase),
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
+  });
+
+  const generatedFiles = tree
+    .children(targetPath)
+    .map((file) => path.join(targetPath, file));
+
+  return () => {
+    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
+      cwd: workspaceRoot,
+      stdio: "inherit",
+    });
+  };
+}
+
+function buildNameSubstitutions(nameKebabCase: string): Record<string, string> {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
+
+async function resolveModuleDirectory(
+  tree: Tree,
+  options: GenerateNestjsGraphqlModuleOptions,
+): Promise<{ directory: string; projectName: string }> {
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
   });
 
   const allProjects = getProjects(tree);
@@ -64,28 +99,5 @@ export async function generateNestjsGraphqlModule(
     );
   }
 
-  const targetPath = path.join(directory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((file) => path.join(targetPath, file));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
+  return { directory, projectName };
 }

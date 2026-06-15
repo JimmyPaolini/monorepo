@@ -145,6 +145,9 @@ export default [
           allowList: {
             // args: `arguments` is a reserved keyword in JavaScript
             args: true,
+            // envFilePath: NestJS ConfigModule.forRoot API property name (external interface contract)
+            envFilePath: true,
+            // k: single-letter property key for domain data tables (e.g. Latin praenomina)
             // props: standard React convention for component properties parameter
             props: true,
             Props: true,
@@ -755,6 +758,11 @@ export default [
       "@typescript-eslint/no-unsafe-member-access": "warn",
       "@typescript-eslint/no-unsafe-return": "warn",
       "@typescript-eslint/unbound-method": "off",
+      // it()/describe() callbacks are inherently large; these rules add no signal in tests
+      complexity: "off",
+      "max-depth": "off",
+      "max-lines-per-function": "off",
+      "max-statements": "off",
       "no-console": "off",
     },
   },
@@ -908,6 +916,9 @@ export default [
     rules: {
       "@nx/enforce-module-boundaries": "off",
       "import/no-relative-packages": "off",
+      "import/no-relative-parent-imports": "off",
+      // Config files often contain large inline object/array definitions
+      "max-lines-per-function": "off",
     },
   },
 
@@ -981,16 +992,6 @@ export default [
   // 💅 Prettier (must be last)
   // Disables all formatting rules that conflict with Prettier
   eslintConfigPrettier,
-  {
-    rules: {
-      "@typescript-eslint/naming-convention": "off",
-    },
-  },
-  {
-    rules: {
-      "@typescript-eslint/naming-convention": "off",
-    },
-  },
   {
     rules: {
       "@typescript-eslint/naming-convention": "off",

@@ -38,6 +38,22 @@ export async function generateComponent(
     subject: "Component name",
   });
 
+  const componentsDirectory = resolveComponentsDirectory(tree, projectName);
+
+  const filesPath = path.join(__dirname, "templates");
+  const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
+
+  generateFiles({
+    instanceDirectoryPath: componentsDirectory,
+    substitutions,
+    templateDirectoryPath: filesPath,
+    tree,
+  });
+
+  await formatFiles(tree);
+}
+
+function resolveComponentsDirectory(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);
   const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
@@ -56,15 +72,5 @@ export async function generateComponent(
     );
   }
 
-  const filesPath = path.join(__dirname, "templates");
-  const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
-
-  generateFiles({
-    instanceDirectoryPath: componentsDirectory,
-    substitutions,
-    templateDirectoryPath: filesPath,
-    tree,
-  });
-
-  await formatFiles(tree);
+  return componentsDirectory;
 }

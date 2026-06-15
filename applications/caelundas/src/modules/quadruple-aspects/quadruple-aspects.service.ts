@@ -38,6 +38,217 @@ export class QuadrupleAspectsService {
 
   // 🔏 Private Methods
 
+  private buildGrandCrossOppositeMap(
+    opp1: AspectBodies,
+    opp2: AspectBodies,
+  ): Map<Body, Body> {
+    return new Map<Body, Body>([
+      [opp1.bodies[0], opp1.bodies[1]],
+      [opp1.bodies[1], opp1.bodies[0]],
+      [opp2.bodies[0], opp2.bodies[1]],
+      [opp2.bodies[1], opp2.bodies[0]],
+    ]);
+  }
+
+  private buildProgressiveEvent(
+    formingEvent: Event,
+    dissolvingEvent: Event,
+  ): Event {
+    const categories = formingEvent.categories.filter(
+      (c) => c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
+    );
+    return {
+      categories,
+      description: formingEvent.description.replace(
+        / (forming|exact|dissolving)( \(.*\))?$/i,
+        "",
+      ),
+      end: dissolvingEvent.start,
+      start: formingEvent.start,
+      summary: formingEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
+    };
+  }
+
+  private buildQuadrupleAspectDescription(
+    bodiesSorted: string[],
+    quadrupleAspect: QuadrupleAspect,
+    phase: AspectPhase,
+    focalOrApexBody?: Body,
+  ): string {
+    const base = `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
+    return focalOrApexBody
+      ? `${base} (${_.startCase(focalOrApexBody)} focal)`
+      : base;
+  }
+
+  private checkGrandCrossPattern(
+    edges: AspectBodies[],
+    opp1: AspectBodies,
+    opp2: AspectBodies,
+    bodyList: Body[],
+  ): boolean {
+    const aspectsByType = this.groupAspectsByType(edges);
+    const oppositionsAtTime = aspectsByType.get("opposite") || [];
+    const squaresAtTime = aspectsByType.get("square") || [];
+
+    const hasOpp1 = this.haveAspect(
+      opp1.bodies[0],
+      opp1.bodies[1],
+      "opposite",
+      oppositionsAtTime,
+    );
+    const hasOpp2 = this.haveAspect(
+      opp2.bodies[0],
+      opp2.bodies[1],
+      "opposite",
+      oppositionsAtTime,
+    );
+    if (!hasOpp1 || !hasOpp2) return false;
+
+    const innerOppositeBodyMap = this.buildGrandCrossOppositeMap(opp1, opp2);
+    return this.verifyGrandCrossSquares(
+      bodyList,
+      innerOppositeBodyMap,
+      squaresAtTime,
+    );
+  }
+
+  private checkKitePattern(
+    edges: AspectBodies[],
+    baseBody: Body,
+    fourthBody: Body,
+    other0: Body,
+    other1: Body,
+  ): boolean {
+    return (
+      this.haveAspect(baseBody, fourthBody, "opposite", edges) &&
+      this.haveAspect(baseBody, other0, "trine", edges) &&
+      this.haveAspect(baseBody, other1, "trine", edges) &&
+      this.haveAspect(other0, other1, "trine", edges) &&
+      this.haveAspect(fourthBody, other0, "sextile", edges) &&
+      this.haveAspect(fourthBody, other1, "sextile", edges)
+    );
+  }
+
+  private checkTrineTriple(
+    trineI: AspectBodies,
+    trineJ: AspectBodies,
+    trineK: AspectBodies,
+    unionEdges: AspectBodies[],
+  ): null | Set<Body> {
+    const bodies = new Set<Body>([
+      trineI.bodies[0],
+      trineI.bodies[1],
+      trineJ.bodies[0],
+      trineJ.bodies[1],
+      trineK.bodies[0],
+      trineK.bodies[1],
+    ]);
+    if (bodies.size !== 3) return null;
+
+    const [body0, body1, body2] = [...bodies];
+    if (
+      body0 &&
+      body1 &&
+      body2 &&
+      this.haveAspect(body0, body1, "trine", unionEdges) &&
+      this.haveAspect(body0, body2, "trine", unionEdges) &&
+      this.haveAspect(body1, body2, "trine", unionEdges)
+    ) {
+      return bodies;
+    }
+    return null;
+  }
+
+  private collectGrandCrossesForOpp1(
+    opp1: AspectBodies,
+    oppositions: AspectBodies[],
+    startIndex: number,
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    unionEdges: AspectBodies[],
+    minute: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    for (let index_ = startIndex; index_ < oppositions.length; index_++) {
+      const opp2 = oppositions[index_];
+      if (!opp2) continue;
+      const event = this.tryBuildGrandCross(
+        opp1,
+        opp2,
+        current,
+        previous,
+        unionEdges,
+        minute,
+      );
+      if (event) events.push(event);
+    }
+    return events;
+  }
+
+  private collectKiteEventsForGrandTrine(
+    gtBodies: Set<Body>,
+    oppositions: AspectBodies[],
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    unionEdges: AspectBodies[],
+    minute: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    const gtList = [...gtBodies];
+
+    for (const baseBody of gtList) {
+      const otherTwo = gtList.filter((b) => b !== baseBody);
+      for (const opp of oppositions) {
+        const event = this.tryBuildKite(
+          baseBody,
+          otherTwo,
+          opp,
+          gtBodies,
+          current,
+          previous,
+          unionEdges,
+          minute,
+        );
+        if (event) events.push(event);
+      }
+    }
+
+    return events;
+  }
+
+  private collectProgressiveEventsFromGroup(
+    group: Event[],
+    progressiveEvents: Event[],
+  ): void {
+    const sortedEvents = _.sortBy(group, "start");
+
+    for (let index = 0; index < sortedEvents.length; index++) {
+      const currentEvent = sortedEvents[index];
+      if (!currentEvent) continue;
+      if (!currentEvent.categories.includes("Forming")) continue;
+
+      for (
+        let index_ = index + 1;
+        index_ < sortedEvents.length;
+        index_++
+      ) {
+        const potentialDissolvingEvent = sortedEvents[index_];
+        if (!potentialDissolvingEvent) continue;
+
+        if (potentialDissolvingEvent.categories.includes("Dissolving")) {
+          progressiveEvents.push(
+            this.buildProgressiveEvent(
+              currentEvent,
+              potentialDissolvingEvent,
+            ),
+          );
+          break;
+        }
+      }
+    }
+  }
+
   /**
    * Composes Grand Cross patterns from stored 2-body aspects.
    *
@@ -75,157 +286,26 @@ export class QuadrupleAspectsService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
-
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
     const aspectsByType = this.groupAspectsByType(unionEdges);
-
     const oppositions = aspectsByType.get("opposite") || [];
     const squares = aspectsByType.get("square") || [];
 
-    // Need at least 2 oppositions and 4 squares
-    if (oppositions.length < 2 || squares.length < 4) {
-      return events;
-    }
+    if (oppositions.length < 2 || squares.length < 4) return events;
 
-    // Try each pair of oppositions
     for (let index = 0; index < oppositions.length; index++) {
       const opp1 = oppositions[index];
-      if (!opp1) {
-        continue;
-      }
-      for (let index_ = index + 1; index_ < oppositions.length; index_++) {
-        const opp2 = oppositions[index_];
-        if (!opp2) {
-          continue;
-        }
-
-        // Collect all 4 unique bodies from both oppositions
-        const bodies = new Set<Body>([
-          opp1.bodies[0],
-          opp1.bodies[1],
-          opp2.bodies[0],
-          opp2.bodies[1],
-        ]);
-        if (bodies.size !== 4) {
-          continue;
-        }
-
-        const bodyList = [...bodies];
-
-        const oppositeBodyMap = new Map<Body, Body>([
-          [opp1.bodies[0], opp1.bodies[1]],
-          [opp1.bodies[1], opp1.bodies[0]],
-          [opp2.bodies[0], opp2.bodies[1]],
-          [opp2.bodies[1], opp2.bodies[0]],
-        ]);
-
-        // Verify all adjacent pairs (in cross configuration) are in square
-        let hasAllSquares = true;
-        for (const body of bodyList) {
-          // Find which body is opposite to this one
-          const oppositeBody = oppositeBodyMap.get(body) ?? null;
-
-          if (!oppositeBody) {
-            hasAllSquares = false;
-            break;
-          }
-
-          // This body should be square to the two bodies that are NOT opposite to it
-          const adjacentBodies = bodyList.filter(
-            (b) => b !== body && b !== oppositeBody,
-          );
-          for (const adjBody of adjacentBodies) {
-            if (!this.haveAspect(body, adjBody, "square", unionEdges)) {
-              hasAllSquares = false;
-              break;
-            }
-          }
-          if (!hasAllSquares) {
-            break;
-          }
-        }
-
-        if (hasAllSquares) {
-          // Found a Grand Cross - calculate phase
-          const result = this.determineCompoundPhaseFromSnapshots(
-            currentAspectBodies,
-            previousAspectBodies,
-            bodyList,
-            minute,
-            (edges) => {
-              // Verify all required aspects exist
-              const aspectsByType = this.groupAspectsByType(edges);
-              const oppositionsAtTime = aspectsByType.get("opposite") || [];
-              const squaresAtTime = aspectsByType.get("square") || [];
-
-              // Need the 2 specific oppositions
-              const hasOpp1 = this.haveAspect(
-                opp1.bodies[0],
-                opp1.bodies[1],
-                "opposite",
-                oppositionsAtTime,
-              );
-              const hasOpp2 = this.haveAspect(
-                opp2.bodies[0],
-                opp2.bodies[1],
-                "opposite",
-                oppositionsAtTime,
-              );
-              if (!hasOpp1 || !hasOpp2) {
-                return false;
-              }
-
-              // Verify all adjacent pairs are in square
-              const innerOppositeBodyMap = new Map<Body, Body>([
-                [opp1.bodies[0], opp1.bodies[1]],
-                [opp1.bodies[1], opp1.bodies[0]],
-                [opp2.bodies[0], opp2.bodies[1]],
-                [opp2.bodies[1], opp2.bodies[0]],
-              ]);
-              for (const body of bodyList) {
-                const oppositeBody = innerOppositeBodyMap.get(body) ?? null;
-
-                if (!oppositeBody) {
-                  return false;
-                }
-
-                const adjacentBodies = bodyList.filter(
-                  (b) => b !== body && b !== oppositeBody,
-                );
-                for (const adjBody of adjacentBodies) {
-                  if (
-                    !this.haveAspect(body, adjBody, "square", squaresAtTime)
-                  ) {
-                    return false;
-                  }
-                }
-              }
-
-              return true;
-            },
-          );
-
-          if (
-            result &&
-            bodyList[0] &&
-            bodyList[1] &&
-            bodyList[2] &&
-            bodyList[3]
-          ) {
-            events.push(
-              this.getQuadrupleAspectEvent({
-                body1: bodyList[0],
-                body2: bodyList[1],
-                body3: bodyList[2],
-                body4: bodyList[3],
-                phase: result.phase,
-                quadrupleAspect: "grand cross",
-                timestamp: result.eventMinute,
-              }),
-            );
-          }
-        }
-      }
+      if (!opp1) continue;
+      const found = this.collectGrandCrossesForOpp1(
+        opp1,
+        oppositions,
+        index + 1,
+        currentAspectBodies,
+        previousAspectBodies,
+        unionEdges,
+        minute,
+      );
+      events.push(...found);
     }
 
     return events;
@@ -268,10 +348,8 @@ export class QuadrupleAspectsService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
-
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
     const aspectsByType = this.groupAspectsByType(unionEdges);
-
     const trines = aspectsByType.get("trine") || [];
     const oppositions = aspectsByType.get("opposite") || [];
     const sextiles = aspectsByType.get("sextile") || [];
@@ -280,114 +358,17 @@ export class QuadrupleAspectsService {
       return events;
     }
 
-    // First find all grand trines (3 bodies all in trine with each other)
-    const grandTrines: Set<Body>[] = [];
-    for (let index = 0; index < trines.length; index++) {
-      const trineI = trines[index];
-      if (!trineI) {
-        continue;
-      }
-      for (let index_ = index + 1; index_ < trines.length; index_++) {
-        const trineJ = trines[index_];
-        if (!trineJ) {
-          continue;
-        }
-        for (let index__ = index_ + 1; index__ < trines.length; index__++) {
-          const trineK = trines[index__];
-          if (!trineK) {
-            continue;
-          }
-          const bodies = new Set<Body>([
-            trineI.bodies[0],
-            trineI.bodies[1],
-            trineJ.bodies[0],
-            trineJ.bodies[1],
-            trineK.bodies[0],
-            trineK.bodies[1],
-          ]);
-
-          if (bodies.size === 3) {
-            const bodyList = [...bodies];
-            const body0 = bodyList[0];
-            const body1 = bodyList[1];
-            const body2 = bodyList[2];
-            if (
-              body0 &&
-              body1 &&
-              body2 &&
-              this.haveAspect(body0, body1, "trine", unionEdges) &&
-              this.haveAspect(body0, body2, "trine", unionEdges) &&
-              this.haveAspect(body1, body2, "trine", unionEdges)
-            ) {
-              grandTrines.push(bodies);
-            }
-          }
-        }
-      }
-    }
-
-    // For each grand trine, look for a 4th body that forms a kite
+    const grandTrines = this.findGrandTrines(trines, unionEdges);
     for (const gtBodies of grandTrines) {
-      const gtList = [...gtBodies];
-
-      for (const baseBody of gtList) {
-        const otherTwo = gtList.filter((b) => b !== baseBody);
-
-        for (const opp of oppositions) {
-          if (!this.involvesBody(opp, baseBody)) {
-            continue;
-          }
-
-          const fourthBody = this.getOtherBody(opp, baseBody);
-          if (!fourthBody || gtBodies.has(fourthBody)) {
-            continue;
-          }
-
-          const other0 = otherTwo[0];
-          const other1 = otherTwo[1];
-          if (
-            other0 &&
-            other1 &&
-            this.haveAspect(fourthBody, other0, "sextile", unionEdges) &&
-            this.haveAspect(fourthBody, other1, "sextile", unionEdges)
-          ) {
-            // Found a Kite!
-            const bodies = [baseBody, other0, other1, fourthBody];
-
-            const result = this.determineCompoundPhaseFromSnapshots(
-              currentAspectBodies,
-              previousAspectBodies,
-              bodies,
-              minute,
-              (edges) => {
-                return (
-                  this.haveAspect(baseBody, fourthBody, "opposite", edges) &&
-                  this.haveAspect(baseBody, other0, "trine", edges) &&
-                  this.haveAspect(baseBody, other1, "trine", edges) &&
-                  this.haveAspect(other0, other1, "trine", edges) &&
-                  this.haveAspect(fourthBody, other0, "sextile", edges) &&
-                  this.haveAspect(fourthBody, other1, "sextile", edges)
-                );
-              },
-            );
-
-            if (result && bodies[0] && bodies[1] && bodies[2] && bodies[3]) {
-              events.push(
-                this.getQuadrupleAspectEvent({
-                  body1: bodies[0],
-                  body2: bodies[1],
-                  body3: bodies[2],
-                  body4: bodies[3],
-                  focalOrApexBody: fourthBody,
-                  phase: result.phase,
-                  quadrupleAspect: "kite",
-                  timestamp: result.eventMinute,
-                }),
-              );
-            }
-          }
-        }
-      }
+      const kiteEvents = this.collectKiteEventsForGrandTrine(
+        gtBodies,
+        oppositions,
+        currentAspectBodies,
+        previousAspectBodies,
+        unionEdges,
+        minute,
+      );
+      events.push(...kiteEvents);
     }
 
     return events;
@@ -408,7 +389,6 @@ export class QuadrupleAspectsService {
 
     const currentFiltered = filterByBodies(currentAspectBodies);
     const previousFiltered = filterByBodies(previousAspectBodies);
-
     const currentExists = checkPatternExists(currentFiltered);
     const previousExists = checkPatternExists(previousFiltered);
 
@@ -423,6 +403,46 @@ export class QuadrupleAspectsService {
     }
     return null;
   }
+
+  private findGrandTrines(
+    trines: AspectBodies[],
+    unionEdges: AspectBodies[],
+  ): Set<Body>[] {
+    const grandTrines: Set<Body>[] = [];
+
+    for (let index = 0; index < trines.length; index++) {
+      const trineI = trines[index];
+      if (!trineI) continue;
+      for (let index_ = index + 1; index_ < trines.length; index_++) {
+        const trineJ = trines[index_];
+        if (!trineJ) continue;
+        for (
+          let index__ = index_ + 1;
+          index__ < trines.length;
+          index__++
+        ) {
+          const trineK = trines[index__];
+          if (!trineK) continue;
+          const grandTrine = this.checkTrineTriple(
+            trineI,
+            trineJ,
+            trineK,
+            unionEdges,
+          );
+          if (grandTrine) grandTrines.push(grandTrine);
+        }
+      }
+    }
+
+    return grandTrines;
+  }
+
+  private getPhaseEmoji(phase: AspectPhase): string {
+    if (phase === "forming") return "➡️ ";
+    if (phase === "perfective") return "🎯 ";
+    return "⬅️ ";
+  }
+
   /**
    * Create a quadruple aspect event
    */
@@ -436,76 +456,24 @@ export class QuadrupleAspectsService {
     quadrupleAspect: QuadrupleAspect;
     timestamp: Moment;
   }): Event {
-    const {
-      body1,
-      body2,
-      body3,
-      body4,
-      focalOrApexBody,
-      phase,
+    const { body1, body2, body3, body4, focalOrApexBody, phase, quadrupleAspect, timestamp } = parameters;
+    const b1 = _.startCase(body1);
+    const b2 = _.startCase(body2);
+    const b3 = _.startCase(body3);
+    const b4 = _.startCase(body4);
+    const description = this.buildQuadrupleAspectDescription(
+      _.sortBy([b1, b2, b3, b4]),
       quadrupleAspect,
-      timestamp,
-    } = parameters;
-
-    const body1Capitalized = _.startCase(body1);
-    const body2Capitalized = _.startCase(body2);
-    const body3Capitalized = _.startCase(body3);
-    const body4Capitalized = _.startCase(body4);
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const body3Symbol = symbolByBody[body3];
-    const body4Symbol = symbolByBody[body4];
-    const quadrupleAspectSymbol = symbolByQuadrupleAspect[quadrupleAspect];
-
-    const bodiesSorted = _.sortBy([
-      body1Capitalized,
-      body2Capitalized,
-      body3Capitalized,
-      body4Capitalized,
-    ]);
-
-    const description = focalOrApexBody
-      ? `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase} (${_.startCase(
-          focalOrApexBody,
-        )} focal)`
-      : `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
-
-    let phaseEmoji: string;
-    if (phase === "forming") {
-      phaseEmoji = "➡️ ";
-    } else if (phase === "perfective") {
-      phaseEmoji = "🎯 ";
-    } else {
-      phaseEmoji = "⬅️ ";
-    }
-
-    const summary = `${phaseEmoji}${quadrupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol} ${description}`;
-
-    const categories = [
-      "Astronomy",
-      "Astrology",
-      "Compound Aspect",
-      "Quadruple Aspect",
-      _.startCase(quadrupleAspect),
-      _.startCase(phase),
-      body1Capitalized,
-      body2Capitalized,
-      body3Capitalized,
-      body4Capitalized,
-    ];
-
-    if (focalOrApexBody) {
-      categories.push(`${_.startCase(focalOrApexBody)} Focal`);
-    }
-
-    return {
-      categories,
-      description,
-      end: timestamp,
-      start: timestamp,
-      summary,
-    };
+      phase,
+      focalOrApexBody,
+    );
+    const phaseEmoji = this.getPhaseEmoji(phase);
+    const symbolsPart = `${symbolByBody[body1]}-${symbolByBody[body2]}-${symbolByBody[body3]}-${symbolByBody[body4]}`;
+    const summary = `${phaseEmoji}${symbolByQuadrupleAspect[quadrupleAspect]} ${symbolsPart} ${description}`;
+    const categories = this.makeQuadrupleAspectCategories(
+      quadrupleAspect, phase, b1, b2, b3, b4, focalOrApexBody,
+    );
+    return { categories, description, end: timestamp, start: timestamp, summary };
   }
 
   private groupAspectsByType<T extends AspectBodies>(
@@ -526,6 +494,203 @@ export class QuadrupleAspectsService {
         ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
           (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
     );
+  }
+
+  private makeProgressiveGroupKey(event: Event): string {
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
+        quadrupleAspectBodies
+          .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
+          .includes(category),
+      ),
+    );
+    const aspect = event.categories.find((category) =>
+      ["Grand Cross", "Kite"].includes(category),
+    );
+    return `${planets.join("-")}_${aspect}`;
+  }
+
+  private makeQuadrupleAspectCategories(
+    quadrupleAspect: QuadrupleAspect,
+    phase: AspectPhase,
+    body1Capitalized: string,
+    body2Capitalized: string,
+    body3Capitalized: string,
+    body4Capitalized: string,
+    focalOrApexBody?: Body,
+  ): string[] {
+    const categories = [
+      "Astronomy",
+      "Astrology",
+      "Compound Aspect",
+      "Quadruple Aspect",
+      _.startCase(quadrupleAspect),
+      _.startCase(phase),
+      body1Capitalized,
+      body2Capitalized,
+      body3Capitalized,
+      body4Capitalized,
+    ];
+    if (focalOrApexBody) {
+      categories.push(`${_.startCase(focalOrApexBody)} Focal`);
+    }
+    return categories;
+  }
+
+  private resolveGrandCrossEvent(
+    bodyList: Body[],
+    opp1: AspectBodies,
+    opp2: AspectBodies,
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    minute: Moment,
+  ): Event | null {
+    const result = this.determineCompoundPhaseFromSnapshots(
+      current,
+      previous,
+      bodyList,
+      minute,
+      (edges) => this.checkGrandCrossPattern(edges, opp1, opp2, bodyList),
+    );
+
+    if (result && bodyList[0] && bodyList[1] && bodyList[2] && bodyList[3]) {
+      return this.getQuadrupleAspectEvent({
+        body1: bodyList[0],
+        body2: bodyList[1],
+        body3: bodyList[2],
+        body4: bodyList[3],
+        phase: result.phase,
+        quadrupleAspect: "grand cross",
+        timestamp: result.eventMinute,
+      });
+    }
+
+    return null;
+  }
+
+  private resolveKiteEvent(
+    bodies: Body[],
+    baseBody: Body,
+    fourthBody: Body,
+    other0: Body,
+    other1: Body,
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    minute: Moment,
+  ): Event | null {
+    const result = this.determineCompoundPhaseFromSnapshots(
+      current,
+      previous,
+      bodies,
+      minute,
+      (edges) =>
+        this.checkKitePattern(edges, baseBody, fourthBody, other0, other1),
+    );
+
+    if (result && bodies[0] && bodies[1] && bodies[2] && bodies[3]) {
+      return this.getQuadrupleAspectEvent({
+        body1: bodies[0],
+        body2: bodies[1],
+        body3: bodies[2],
+        body4: bodies[3],
+        focalOrApexBody: fourthBody,
+        phase: result.phase,
+        quadrupleAspect: "kite",
+        timestamp: result.eventMinute,
+      });
+    }
+
+    return null;
+  }
+
+  private tryBuildGrandCross(
+    opp1: AspectBodies,
+    opp2: AspectBodies,
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    unionEdges: AspectBodies[],
+    minute: Moment,
+  ): Event | null {
+    const bodies = new Set<Body>([
+      opp1.bodies[0],
+      opp1.bodies[1],
+      opp2.bodies[0],
+      opp2.bodies[1],
+    ]);
+    if (bodies.size !== 4) return null;
+
+    const bodyList = [...bodies];
+    const oppositeBodyMap = this.buildGrandCrossOppositeMap(opp1, opp2);
+
+    if (!this.verifyGrandCrossSquares(bodyList, oppositeBodyMap, unionEdges)) {
+      return null;
+    }
+
+    return this.resolveGrandCrossEvent(
+      bodyList,
+      opp1,
+      opp2,
+      current,
+      previous,
+      minute,
+    );
+  }
+
+  private tryBuildKite(
+    baseBody: Body,
+    otherTwo: Body[],
+    opp: AspectBodies,
+    gtBodies: Set<Body>,
+    current: AspectBodies[],
+    previous: AspectBodies[],
+    unionEdges: AspectBodies[],
+    minute: Moment,
+  ): Event | null {
+    if (!this.involvesBody(opp, baseBody)) return null;
+
+    const fourthBody = this.getOtherBody(opp, baseBody);
+    if (!fourthBody || gtBodies.has(fourthBody)) return null;
+
+    const other0 = otherTwo[0];
+    const other1 = otherTwo[1];
+    if (!other0 || !other1) return null;
+
+    const hasSextiles =
+      this.haveAspect(fourthBody, other0, "sextile", unionEdges) &&
+      this.haveAspect(fourthBody, other1, "sextile", unionEdges);
+    if (!hasSextiles) return null;
+
+    return this.resolveKiteEvent(
+      [baseBody, other0, other1, fourthBody],
+      baseBody,
+      fourthBody,
+      other0,
+      other1,
+      current,
+      previous,
+      minute,
+    );
+  }
+
+  private verifyGrandCrossSquares(
+    bodyList: Body[],
+    oppositeBodyMap: Map<Body, Body>,
+    squareEdges: AspectBodies[],
+  ): boolean {
+    for (const body of bodyList) {
+      const oppositeBody = oppositeBodyMap.get(body) ?? null;
+      if (!oppositeBody) return false;
+
+      const adjacentBodies = bodyList.filter(
+        (b) => b !== body && b !== oppositeBody,
+      );
+      for (const adjBody of adjacentBodies) {
+        if (!this.haveAspect(body, adjBody, "square", squareEdges)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   // 🌎 Public Methods
@@ -581,72 +746,16 @@ export class QuadrupleAspectsService {
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
 
-    // Filter to quadruple aspect events only
     const quadrupleAspectEvents = events.filter((event) =>
       event.categories.includes("Quadruple Aspect"),
     );
 
-    // Group by body quartet and aspect type using categories
-    const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
-      const planets = _.sortBy(
-        event.categories.filter((category) =>
-          quadrupleAspectBodies
-            .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
-            .includes(category),
-        ),
-      );
+    const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) =>
+      this.makeProgressiveGroupKey(event),
+    );
 
-      const aspect = event.categories.find((category) =>
-        ["Grand Cross", "Kite"].includes(category),
-      );
-
-      return `${planets.join("-")}_${aspect}`;
-    });
-
-    // Process each group to find forming/dissolving pairs
     for (const group of Object.values(groupedEvents)) {
-      const sortedEvents = _.sortBy(group, "start");
-
-      for (let index = 0; index < sortedEvents.length; index++) {
-        const currentEvent = sortedEvents[index];
-        if (!currentEvent) {
-          continue;
-        }
-
-        // Skip if not a forming event
-        if (!currentEvent.categories.includes("Forming")) {
-          continue;
-        }
-
-        // Look for the next dissolving event
-        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
-          const potentialDissolvingEvent = sortedEvents[index_];
-          if (!potentialDissolvingEvent) {
-            continue;
-          }
-
-          if (potentialDissolvingEvent.categories.includes("Dissolving")) {
-            // Create progressive event
-            const categories = currentEvent.categories.filter(
-              (c) =>
-                c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
-            );
-
-            progressiveEvents.push({
-              categories,
-              description: currentEvent.description.replace(
-                / (forming|exact|dissolving)( \(.*\))?$/i,
-                "",
-              ),
-              end: potentialDissolvingEvent.start,
-              start: currentEvent.start,
-              summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
-            });
-
-            break; // Found the pair, move to next forming event
-          }
-        }
-      }
+      this.collectProgressiveEventsFromGroup(group, progressiveEvents);
     }
 
     return progressiveEvents;

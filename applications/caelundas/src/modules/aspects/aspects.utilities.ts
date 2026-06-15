@@ -30,6 +30,100 @@ export class AspectsUtilities {
 
   // 🔏 Private Methods
 
+  private computeAngles(args: {
+    currentLongitudeBody1: number;
+    currentLongitudeBody2: number;
+    nextLongitudeBody1: number;
+    nextLongitudeBody2: number;
+    previousLongitudeBody1: number;
+    previousLongitudeBody2: number;
+  }): { currentAngle: number; nextAngle: number; previousAngle: number } {
+    const {
+      currentLongitudeBody1,
+      currentLongitudeBody2,
+      nextLongitudeBody1,
+      nextLongitudeBody2,
+      previousLongitudeBody1,
+      previousLongitudeBody2,
+    } = args;
+    const previousAngle = this.mathService.getAngle(
+      previousLongitudeBody1,
+      previousLongitudeBody2,
+    );
+    const currentAngle = this.mathService.getAngle(
+      currentLongitudeBody1,
+      currentLongitudeBody2,
+    );
+    const nextAngle = this.mathService.getAngle(
+      nextLongitudeBody1,
+      nextLongitudeBody2,
+    );
+    return { currentAngle, nextAngle, previousAngle };
+  }
+
+  private getAspectPhase(
+    aspect: Aspect,
+    previousAngle: number,
+    currentAngle: number,
+    nextAngle: number,
+  ): AspectPhase | null {
+    const aspectAngle = angleByAspect[aspect];
+    const orb = orbByAspect[aspect];
+    const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
+    const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
+    const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
+    if (currentInOrb) {
+      const previousDiff = previousAngle - aspectAngle;
+      const currentDiff = currentAngle - aspectAngle;
+      const nextDiff = nextAngle - aspectAngle;
+      if (this.isPerfective(aspect, previousDiff, currentDiff, nextDiff)) {
+        return "perfective";
+      }
+    }
+    if (!previousInOrb && currentInOrb) return "forming";
+    if (currentInOrb && !nextInOrb) return "dissolving";
+    return null;
+  }
+
+  private isPerfective(
+    aspect: Aspect,
+    previousDifference: number,
+    currentDifference: number,
+    nextDifference: number,
+  ): boolean {
+    if (aspect === "conjunct") {
+      return this.isPerfectiveConjunct(
+        previousDifference,
+        currentDifference,
+        nextDifference,
+      );
+    }
+    return this.isPerfectiveNonConjunct(previousDifference, currentDifference);
+  }
+
+  private isPerfectiveConjunct(
+    previousDifference: number,
+    currentDifference: number,
+    nextDifference: number,
+  ): boolean {
+    return (
+      (previousDifference > currentDifference &&
+        nextDifference > currentDifference) ||
+      (previousDifference < currentDifference &&
+        nextDifference < currentDifference)
+    );
+  }
+
+  private isPerfectiveNonConjunct(
+    previousDifference: number,
+    currentDifference: number,
+  ): boolean {
+    return (
+      (previousDifference >= 0 && currentDifference <= 0) ||
+      (previousDifference <= 0 && currentDifference >= 0)
+    );
+  }
+
   // 🌎 Public Methods
 
   /**
@@ -54,70 +148,17 @@ export class AspectsUtilities {
     previousLongitudeBody2: number;
   }) => AspectPhase | null {
     return (args) => {
-      const {
-        currentLongitudeBody1,
-        currentLongitudeBody2,
-        nextLongitudeBody1,
-        nextLongitudeBody2,
-        previousLongitudeBody1,
-        previousLongitudeBody2,
-      } = args;
-
-      const previousAngle = this.mathService.getAngle(
-        previousLongitudeBody1,
-        previousLongitudeBody2,
-      );
-      const currentAngle = this.mathService.getAngle(
-        currentLongitudeBody1,
-        currentLongitudeBody2,
-      );
-      const nextAngle = this.mathService.getAngle(
-        nextLongitudeBody1,
-        nextLongitudeBody2,
-      );
-
+      const { currentAngle, nextAngle, previousAngle } =
+        this.computeAngles(args);
       for (const aspect of aspectsToDetect) {
-        const aspectAngle = angleByAspect[aspect];
-        const orb = orbByAspect[aspect];
-
-        const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
-        const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
-        const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
-
-        if (currentInOrb) {
-          const previousDifference = previousAngle - aspectAngle;
-          const currentDifference = currentAngle - aspectAngle;
-          const nextDifference = nextAngle - aspectAngle;
-
-          const isCrossing =
-            (previousDifference >= 0 && currentDifference <= 0) ||
-            (previousDifference <= 0 && currentDifference >= 0);
-
-          if (aspect === "conjunct") {
-            const isBouncing =
-              (previousDifference > currentDifference &&
-                nextDifference > currentDifference) ||
-              (previousDifference < currentDifference &&
-                nextDifference < currentDifference);
-            if (isBouncing) {
-              return "perfective";
-            }
-          } else {
-            if (isCrossing) {
-              return "perfective";
-            }
-          }
-        }
-
-        if (!previousInOrb && currentInOrb) {
-          return "forming";
-        }
-
-        if (currentInOrb && !nextInOrb) {
-          return "dissolving";
-        }
+        const phase = this.getAspectPhase(
+          aspect,
+          previousAngle,
+          currentAngle,
+          nextAngle,
+        );
+        if (phase !== null) return phase;
       }
-
       return null;
     };
   }

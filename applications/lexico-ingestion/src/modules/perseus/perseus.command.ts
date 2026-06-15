@@ -94,13 +94,15 @@ export class PerseusCommand extends CommandRunner {
 
       try {
         const fileUrl = host + xmlPath;
-        const res = await fetch(fileUrl);
-        if (!res.ok) {
-          this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${res.statusText}`);
+        const response = await fetch(fileUrl);
+        if (!response.ok) {
+          this.logger.warn(
+            `⚠️ Failed to fetch ${fileUrl}: ${response.statusText}`,
+          );
           continue;
         }
 
-        const xmlContent = await res.text();
+        const xmlContent = await response.text();
         await fs.writeFile(targetPath, xmlContent, "utf8");
         await new Promise((resolve) => setTimeout(resolve, 100)); // polite delay
       } catch (error: unknown) {

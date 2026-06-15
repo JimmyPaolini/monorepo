@@ -57,11 +57,65 @@ export class FormsService {
 
   // 🔐 Private Fields
 
-  private readonly transientWords = new WeakMap<Form, string[]>();
+  private readonly adjectivalFormsPosList = new Set<PartOfSpeech>([
+    "adjective",
+    "numeral",
+    "participle",
+    "suffix",
+  ]);
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  private readonly noFormsPosList = new Set<PartOfSpeech>([
+    "abbreviation",
+    "circumfix",
+    "conjunction",
+    "idiom",
+    "inflection",
+    "interfix",
+    "interjection",
+    "particle",
+    "phrase",
+    "prefix",
+    "preposition",
+    "proverb",
+  ]);
+
+  private readonly nominalFormsPosList = new Set<PartOfSpeech>([
+    "determiner",
+    "noun",
+    "pronoun",
+    "properNoun",
+  ]);
+
+  private readonly transientWords = new WeakMap<Form, string[]>();
+
+  private buildAdjectivalCaseForms(
+    caseMap: Record<string, unknown>,
+    formGender: "feminine" | "masculine" | "neuter",
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const caseKey of Object.keys(caseMap)) {
+      const formCase = formCaseValues.find((v) => v === caseKey);
+      if (!formCase) continue;
+
+      const numberMap = caseMap[caseKey];
+      if (!isRecord(numberMap)) continue;
+
+      forms.push(
+        ...this.buildAdjectivalNumberForms(
+          numberMap,
+          formGender,
+          formCase,
+          lexeme,
+        ),
+      );
+    }
+    return forms;
+  }
 
   private buildAdjectivalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
@@ -76,31 +130,34 @@ export class FormsService {
       const caseMap = rawForms[genderKey];
       if (!isRecord(caseMap)) continue;
 
-      for (const caseKey of Object.keys(caseMap)) {
-        const formCase = formCaseValues.find((v) => v === caseKey);
-        if (!formCase) continue;
-
-        const numberMap = caseMap[caseKey];
-        if (!isRecord(numberMap)) continue;
-
-        for (const numberKey of Object.keys(numberMap)) {
-          const formNumber = formNumberValues.find((v) => v === numberKey);
-          if (!formNumber) continue;
-
-          const words = numberMap[numberKey];
-          if (!isStringArray(words) || words.length === 0) continue;
-
-          const form = new AdjectivalForm();
-          form.lexeme = lexeme;
-          form.gender = formGender;
-          form.case = formCase;
-          form.number = formNumber;
-          this.setTransientWords(form, words);
-          forms.push(form);
-        }
-      }
+      forms.push(...this.buildAdjectivalCaseForms(caseMap, formGender, lexeme));
     }
 
+    return forms;
+  }
+
+  private buildAdjectivalNumberForms(
+    numberMap: Record<string, unknown>,
+    formGender: "feminine" | "masculine" | "neuter",
+    formCase: (typeof formCaseValues)[number],
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const numberKey of Object.keys(numberMap)) {
+      const formNumber = formNumberValues.find((v) => v === numberKey);
+      if (!formNumber) continue;
+
+      const words = numberMap[numberKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new AdjectivalForm();
+      form.lexeme = lexeme;
+      form.gender = formGender;
+      form.case = formCase;
+      form.number = formNumber;
+      this.setTransientWords(form, words);
+      forms.push(form);
+    }
     return forms;
   }
 
@@ -133,32 +190,129 @@ export class FormsService {
       const voiceData = moodData[voiceKey];
       if (!isRecord(voiceData)) continue;
 
-      for (const tenseKey of formTenseValues) {
-        const tenseData = voiceData[tenseKey];
-        if (!isRecord(tenseData)) continue;
-
-        for (const numberKey of formNumberValues) {
-          const numberData = tenseData[numberKey];
-          if (!isRecord(numberData)) continue;
-
-          for (const personKey of formPersonValues) {
-            const words = numberData[personKey];
-            if (!isStringArray(words) || words.length === 0) continue;
-
-            const form = new FiniteVerbForm();
-            form.lexeme = lexeme;
-            form.mood = mood;
-            form.voice = voiceKey;
-            form.tense = tenseKey;
-            form.number = numberKey;
-            form.person = personKey;
-            this.setTransientWords(form, words);
-            forms.push(form);
-          }
-        }
-      }
+      forms.push(
+        ...this.buildFiniteTenseForms(voiceData, mood, voiceKey, lexeme),
+      );
     }
 
+    return forms;
+  }
+
+  private buildFiniteNumberForms(
+    tenseData: Record<string, unknown>,
+    mood: FormMood,
+    voiceKey: (typeof formVoiceValues)[number],
+    tenseKey: (typeof formTenseValues)[number],
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const numberKey of formNumberValues) {
+      const numberData = tenseData[numberKey];
+      if (!isRecord(numberData)) continue;
+
+      forms.push(
+        ...this.buildFinitePersonForms(
+          numberData,
+          mood,
+          voiceKey,
+          tenseKey,
+          numberKey,
+          lexeme,
+        ),
+      );
+    }
+    return forms;
+  }
+
+  private buildFinitePersonForms(
+    numberData: Record<string, unknown>,
+    mood: FormMood,
+    voiceKey: (typeof formVoiceValues)[number],
+    tenseKey: (typeof formTenseValues)[number],
+    numberKey: (typeof formNumberValues)[number],
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const personKey of formPersonValues) {
+      const words = numberData[personKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new FiniteVerbForm();
+      form.lexeme = lexeme;
+      form.mood = mood;
+      form.voice = voiceKey;
+      form.tense = tenseKey;
+      form.number = numberKey;
+      form.person = personKey;
+      this.setTransientWords(form, words);
+      forms.push(form);
+    }
+    return forms;
+  }
+
+  private buildFiniteTenseForms(
+    voiceData: Record<string, unknown>,
+    mood: FormMood,
+    voiceKey: (typeof formVoiceValues)[number],
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const tenseKey of formTenseValues) {
+      const tenseData = voiceData[tenseKey];
+      if (!isRecord(tenseData)) continue;
+
+      forms.push(
+        ...this.buildFiniteNumberForms(
+          tenseData,
+          mood,
+          voiceKey,
+          tenseKey,
+          lexeme,
+        ),
+      );
+    }
+    return forms;
+  }
+
+  private buildGerundForms(
+    gerundData: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const caseKey of formGerundCaseValues) {
+      const words = gerundData[caseKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new GerundForm();
+      form.lexeme = lexeme;
+      form.case = caseKey;
+      this.setTransientWords(form, words);
+      forms.push(form);
+    }
+    return forms;
+  }
+
+  private buildInfinitiveForms(
+    infinitiveData: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const voiceKey of formVoiceValues) {
+      const voiceData = infinitiveData[voiceKey];
+      if (!isRecord(voiceData)) continue;
+
+      for (const tenseKey of formNonFiniteTenseValues) {
+        const words = voiceData[tenseKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new InfinitiveForm();
+        form.lexeme = lexeme;
+        form.voice = voiceKey;
+        form.tense = tenseKey;
+        this.setTransientWords(form, words);
+        forms.push(form);
+      }
+    }
     return forms;
   }
 
@@ -173,22 +327,32 @@ export class FormsService {
       const numberMap = rawForms[caseKey];
       if (!isRecord(numberMap)) continue;
 
-      for (const numberKey of Object.keys(numberMap)) {
-        const formNumber = formNumberValues.find((v) => v === numberKey);
-        if (!formNumber) continue;
-
-        const words = numberMap[numberKey];
-        if (!isStringArray(words) || words.length === 0) continue;
-
-        const form = new NominalForm();
-        form.lexeme = lexeme;
-        form.case = formCase;
-        form.number = formNumber;
-        this.setTransientWords(form, words);
-        forms.push(form);
-      }
+      forms.push(...this.buildNominalNumberForms(numberMap, formCase, lexeme));
     }
 
+    return forms;
+  }
+
+  private buildNominalNumberForms(
+    numberMap: Record<string, unknown>,
+    formCase: (typeof formCaseValues)[number],
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const numberKey of Object.keys(numberMap)) {
+      const formNumber = formNumberValues.find((v) => v === numberKey);
+      if (!formNumber) continue;
+
+      const words = numberMap[numberKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new NominalForm();
+      form.lexeme = lexeme;
+      form.case = formCase;
+      form.number = formNumber;
+      this.setTransientWords(form, words);
+      forms.push(form);
+    }
     return forms;
   }
 
@@ -200,42 +364,12 @@ export class FormsService {
 
     const infinitiveData = nonFinite["infinitive"];
     if (isRecord(infinitiveData)) {
-      for (const voiceKey of formVoiceValues) {
-        const voiceData = infinitiveData[voiceKey];
-        if (!isRecord(voiceData)) continue;
-
-        for (const tenseKey of formNonFiniteTenseValues) {
-          const words = voiceData[tenseKey];
-          if (!isStringArray(words) || words.length === 0) continue;
-
-          const form = new InfinitiveForm();
-          form.lexeme = lexeme;
-          form.voice = voiceKey;
-          form.tense = tenseKey;
-          this.setTransientWords(form, words);
-          forms.push(form);
-        }
-      }
+      forms.push(...this.buildInfinitiveForms(infinitiveData, lexeme));
     }
 
     const participleData = nonFinite["participle"];
     if (isRecord(participleData)) {
-      for (const voiceKey of formVoiceValues) {
-        const voiceData = participleData[voiceKey];
-        if (!isRecord(voiceData)) continue;
-
-        for (const tenseKey of formNonFiniteTenseValues) {
-          const words = voiceData[tenseKey];
-          if (!isStringArray(words) || words.length === 0) continue;
-
-          const form = new ParticipleForm();
-          form.lexeme = lexeme;
-          form.voice = voiceKey;
-          form.tense = tenseKey;
-          this.setTransientWords(form, words);
-          forms.push(form);
-        }
-      }
+      forms.push(...this.buildParticipleForms(participleData, lexeme));
     }
 
     return forms;
@@ -265,6 +399,48 @@ export class FormsService {
     return formsByWord;
   }
 
+  private buildParticipleForms(
+    participleData: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const voiceKey of formVoiceValues) {
+      const voiceData = participleData[voiceKey];
+      if (!isRecord(voiceData)) continue;
+
+      for (const tenseKey of formNonFiniteTenseValues) {
+        const words = voiceData[tenseKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new ParticipleForm();
+        form.lexeme = lexeme;
+        form.voice = voiceKey;
+        form.tense = tenseKey;
+        this.setTransientWords(form, words);
+        forms.push(form);
+      }
+    }
+    return forms;
+  }
+
+  private buildSupineForms(
+    supineData: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+    for (const caseKey of formSupineCaseValues) {
+      const words = supineData[caseKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new SupineForm();
+      form.lexeme = lexeme;
+      form.case = caseKey;
+      this.setTransientWords(form, words);
+      forms.push(form);
+    }
+    return forms;
+  }
+
   private buildVerbalNounForms(
     verbalNouns: Record<string, unknown>,
     lexeme: Lexeme,
@@ -273,34 +449,18 @@ export class FormsService {
 
     const gerundData = verbalNouns["gerund"];
     if (isRecord(gerundData)) {
-      for (const caseKey of formGerundCaseValues) {
-        const words = gerundData[caseKey];
-        if (!isStringArray(words) || words.length === 0) continue;
-
-        const form = new GerundForm();
-        form.lexeme = lexeme;
-        form.case = caseKey;
-        this.setTransientWords(form, words);
-        forms.push(form);
-      }
+      forms.push(...this.buildGerundForms(gerundData, lexeme));
     }
 
     const supineData = verbalNouns["supine"];
     if (isRecord(supineData)) {
-      for (const caseKey of formSupineCaseValues) {
-        const words = supineData[caseKey];
-        if (!isStringArray(words) || words.length === 0) continue;
-
-        const form = new SupineForm();
-        form.lexeme = lexeme;
-        form.case = caseKey;
-        this.setTransientWords(form, words);
-        forms.push(form);
-      }
+      forms.push(...this.buildSupineForms(supineData, lexeme));
     }
 
     return forms;
   }
+
+  // 🌎 Public Methods
 
   private buildVerbForms(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
@@ -331,74 +491,10 @@ export class FormsService {
     });
   }
 
-  private async saveNewForms(forms: Form[], lexeme: Lexeme): Promise<Form[]> {
-    for (const form of forms) {
-      form.lexeme = lexeme;
-    }
-    return this.formRepository.save(forms);
-  }
-
-  // 🌎 Public Methods
-
-  /**
-   * Builds Form entities from the raw parsed forms object for a given POS.
-   * Returns an empty array when rawForms is null or the POS has no form table.
-   */
-  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
-    if (!rawForms) return [];
-
-    switch (pos) {
-      case "abbreviation":
-      case "circumfix":
-      case "conjunction":
-      case "idiom":
-      case "inflection":
-      case "interfix":
-      case "interjection":
-      case "particle":
-      case "phrase":
-      case "prefix":
-      case "preposition":
-      case "proverb": {
-        return [];
-      }
-      case "adjective":
-      case "numeral":
-      case "participle":
-      case "suffix": {
-        return this.buildAdjectivalForms(rawForms, lexeme);
-      }
-      case "adverb": {
-        return this.buildAdverbForms(rawForms, lexeme);
-      }
-      case "determiner":
-      case "noun":
-      case "pronoun":
-      case "properNoun": {
-        return this.buildNominalForms(rawForms, lexeme);
-      }
-      case "verb": {
-        return this.buildVerbForms(rawForms, lexeme);
-      }
-    }
-  }
-  /**
-   * Saves Form entities for a Lexeme, then upserts Word rows and creates
-   * explicit WordLexeme and WordForm junction records.
-   *
-   * Deletes any Forms previously associated with this Lexeme for idempotency —
-   * the `onDelete: "CASCADE"` on WordForm.form means their WordForm rows are
-   * removed by the database automatically. Matches new forms with existing
-   * forms by properties to preserve IDs and avoid database churn.
-   *
-   * Uses batched DB operations: one upsert for all Word rows, one reload to
-   * collect their IDs, then two bulk inserts for the junction rows.
-   */
-  async ingestLexemeForms(forms: Form[], lexeme: Lexeme): Promise<void> {
-    // Query + Write: remove stale forms for idempotency (WordForms cascade-delete via FK).
-    const existingForms = await this.fetchExistingForms(lexeme.id);
-
-    // Attempt to match new forms to existing forms to preserve IDs
+  private matchAndPreserveExistingForms(
+    forms: Form[],
+    existingForms: Form[],
+  ): void {
     for (const form of forms) {
       const matchIndex = existingForms.findIndex((ef) => {
         if (ef.constructor.name !== form.constructor.name) return false;
@@ -420,25 +516,75 @@ export class FormsService {
         }
       }
     }
+  }
 
-    if (existingForms.length > 0)
+  private async saveNewForms(forms: Form[], lexeme: Lexeme): Promise<Form[]> {
+    for (const form of forms) {
+      form.lexeme = lexeme;
+    }
+    return this.formRepository.save(forms);
+  }
+
+  /**
+   * Builds Form entities from the raw parsed forms object for a given POS.
+   * Returns an empty array when rawForms is null or the POS has no form table.
+   */
+  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
+    if (!rawForms) return [];
+    if (this.noFormsPosList.has(pos)) return [];
+
+    if (this.adjectivalFormsPosList.has(pos)) {
+      return this.buildAdjectivalForms(rawForms, lexeme);
+    }
+
+    if (pos === "adverb") {
+      return this.buildAdverbForms(rawForms, lexeme);
+    }
+
+    if (this.nominalFormsPosList.has(pos)) {
+      return this.buildNominalForms(rawForms, lexeme);
+    }
+
+    if (pos === "verb") {
+      return this.buildVerbForms(rawForms, lexeme);
+    }
+
+    return [];
+  }
+
+  /**
+   * Saves Form entities for a Lexeme, then upserts Word rows and creates
+   * explicit WordLexeme and WordForm junction records.
+   *
+   * Deletes any Forms previously associated with this Lexeme for idempotency —
+   * the `onDelete: "CASCADE"` on WordForm.form means their WordForm rows are
+   * removed by the database automatically. Matches new forms with existing
+   * forms by properties to preserve IDs and avoid database churn.
+   *
+   * Uses batched DB operations: one upsert for all Word rows, one reload to
+   * collect their IDs, then two bulk inserts for the junction rows.
+   */
+  async ingestLexemeForms(forms: Form[], lexeme: Lexeme): Promise<void> {
+    const existingForms = await this.fetchExistingForms(lexeme.id);
+
+    this.matchAndPreserveExistingForms(forms, existingForms);
+
+    if (existingForms.length > 0) {
       await this.formRepository.remove(existingForms);
+    }
 
-    // Capture rawWords before save — transient field is not persisted.
     const rawWordsPerForm = forms.map((f) => this.transientWords.get(f) ?? []);
 
-    // Write
     const savedForms = await this.saveNewForms(forms, lexeme);
 
-    // Build
     const formsByWord = this.buildNormalizedWordMap(
       savedForms,
       rawWordsPerForm,
     );
-    if (formsByWord.size === 0) return;
 
-    // Write Words and Junctions
-    await this.wordsService.upsertWordsAndJunctions(formsByWord, lexeme);
+    if (formsByWord.size > 0) {
+      await this.wordsService.upsertWordsAndJunctions(formsByWord, lexeme);
+    }
   }
 
   /**

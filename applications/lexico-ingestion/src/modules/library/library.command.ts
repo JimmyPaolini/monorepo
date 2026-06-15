@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync } from "node:fs";
+import { Dirent, existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -101,6 +101,86 @@ export class LibraryCommand extends CommandRunner {
     return textSlugs.map((t) => ({ title: t, value: t }));
   }
 
+  private async parseIngestOptions(options: LibraryCommandOptions): Promise<{
+    author: string | undefined;
+    providerName: string | undefined;
+    text: string | undefined;
+  }> {
+    const providerName = await this.parseProvider(
+      options.provider ?? undefined,
+    );
+    const author = await this.parseAuthor(
+      options.author ?? undefined,
+      providerName,
+    );
+    const text = await this.parseText(
+      options.text ?? undefined,
+      providerName,
+      author,
+    );
+    return { author, providerName, text };
+  }
+
+  private async processProvider(
+    provider: {
+      ingest: (options?: {
+        author?: string;
+        text?: string;
+      }) => Promise<Author[]>;
+      name: string;
+    },
+    current: number,
+    total: number,
+    ingestOptions: { author?: string; text?: string },
+  ): Promise<void> {
+    const providerName = provider.name;
+    this.logger.log(`🏛️ Starting ingestion for provider: ${providerName}`);
+    try {
+      await provider.ingest(ingestOptions);
+
+      const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
+      this.logger.log(
+        `🏛️ Completed ingestion for provider: ${providerName}${progressString}`,
+      );
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      this.logger.error(
+        `❌ Error in provider ${providerName}`,
+        error instanceof Error ? error.stack : undefined,
+      );
+      await fs.appendFile(
+        this.logFilePath,
+        `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
+      );
+    }
+  }
+
+  private pushTextEntry(
+    directory: string,
+    entry: Dirent,
+    currentPathParts: string[],
+    providerName: string,
+    authorSlug: string,
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[],
+  ): void {
+    texts.push({
+      authorSlug,
+      fullPath: path.join(directory, entry.name),
+      pathParts: currentPathParts,
+      provider: providerName,
+      textSlug: path.basename(entry.name, ".md"),
+      title: _.startCase(path.basename(entry.name, ".md")),
+    });
+  }
+
   private async scanLibrary(): Promise<
     {
       authorSlug: string;
@@ -121,59 +201,13 @@ export class LibraryCommand extends CommandRunner {
       title: string;
     }[] = [];
 
-    async function walk(
-      dir: string,
-      currentPathParts: string[],
-      providerName: string,
-      authorSlug: string,
-    ): Promise<void> {
-      const entries = await fs.readdir(dir, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isDirectory()) {
-          await walk(
-            path.join(dir, entry.name),
-            [...currentPathParts, entry.name],
-            providerName,
-            authorSlug,
-          );
-        } else if (entry.isFile() && entry.name.endsWith(".md")) {
-          texts.push({
-            authorSlug,
-            fullPath: path.join(dir, entry.name),
-            pathParts: currentPathParts,
-            provider: providerName,
-            textSlug: path.basename(entry.name, ".md"),
-            title: _.startCase(path.basename(entry.name, ".md")),
-          });
-        }
-      }
-    }
-
     try {
       const providers = await fs.readdir(dataDirectory, {
         withFileTypes: true,
       });
       for (const provider of providers) {
         if (!provider.isDirectory()) continue;
-        const providerName = provider.name;
-
-        const authors = await fs.readdir(
-          path.join(dataDirectory, providerName),
-          {
-            withFileTypes: true,
-          },
-        );
-        for (const author of authors) {
-          if (!author.isDirectory()) continue;
-          const authorSlug = author.name;
-
-          await walk(
-            path.join(dataDirectory, providerName, authorSlug),
-            [],
-            providerName,
-            authorSlug,
-          );
-        }
+        await this.scanLibraryProvider(dataDirectory, provider.name, texts);
       }
     } catch {
       // Ignore if data directory doesn't exist yet
@@ -181,7 +215,92 @@ export class LibraryCommand extends CommandRunner {
     return texts;
   }
 
+  private async scanLibraryAuthor(
+    dataDirectory: string,
+    providerName: string,
+    authorSlug: string,
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[],
+  ): Promise<void> {
+    await this.walkLibraryDirectory(
+      path.join(dataDirectory, providerName, authorSlug),
+      [],
+      providerName,
+      authorSlug,
+      texts,
+    );
+  }
+
   // 🌎 Public Methods
+
+  private async scanLibraryProvider(
+    dataDirectory: string,
+    providerName: string,
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[],
+  ): Promise<void> {
+    const authors = await fs.readdir(path.join(dataDirectory, providerName), {
+      withFileTypes: true,
+    });
+    for (const author of authors) {
+      if (!author.isDirectory()) continue;
+      await this.scanLibraryAuthor(
+        dataDirectory,
+        providerName,
+        author.name,
+        texts,
+      );
+    }
+  }
+
+  private async walkLibraryDirectory(
+    directory: string,
+    currentPathParts: string[],
+    providerName: string,
+    authorSlug: string,
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[],
+  ): Promise<void> {
+    const entries = await fs.readdir(directory, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        await this.walkLibraryDirectory(
+          path.join(directory, entry.name),
+          [...currentPathParts, entry.name],
+          providerName,
+          authorSlug,
+          texts,
+        );
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        this.pushTextEntry(
+          directory,
+          entry,
+          currentPathParts,
+          providerName,
+          authorSlug,
+          texts,
+        );
+      }
+    }
+  }
 
   /**
    *
@@ -291,56 +410,26 @@ export class LibraryCommand extends CommandRunner {
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
-    // Create base data directory
     const dataPath = path.resolve("data", "library");
     await fs.mkdir(dataPath, { recursive: true });
 
-    const providerName = await this.parseProvider(
-      options.provider ?? undefined,
-    );
-    const author = await this.parseAuthor(
-      options.author ?? undefined,
-      providerName,
-    );
-    const text = await this.parseText(
-      options.text ?? undefined,
-      providerName,
-      author,
-    );
+    const { author, providerName, text } =
+      await this.parseIngestOptions(options);
 
     let providersToRun = this.providers;
     if (providerName) {
       providersToRun = providersToRun.filter((p) => p.name === providerName);
     }
 
-    let current = 0;
     const total = providersToRun.length;
+    const ingestOptions: { author?: string; text?: string } = {};
+    if (author) ingestOptions.author = author;
+    if (text) ingestOptions.text = text;
 
-    for (const provider of providersToRun) {
-      this.logger.log(`🏛️ Starting ingestion for provider: ${provider.name}`);
-      try {
-        const ingestOptions: { author?: string; text?: string } = {};
-        if (author) ingestOptions.author = author;
-        if (text) ingestOptions.text = text;
-
-        await provider.ingest(ingestOptions);
-
-        current++;
-        const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
-        this.logger.log(
-          `🏛️ Completed ingestion for provider: ${provider.name}${progressString}`,
-        );
-      } catch (error: unknown) {
-        const errorMessage =
-          error instanceof Error ? error.stack || error.message : String(error);
-        this.logger.error(
-          `❌ Error in provider ${provider.name}`,
-          error instanceof Error ? error.stack : undefined,
-        );
-        await fs.appendFile(
-          this.logFilePath,
-          `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
-        );
+    for (let current = 0; current < total; current++) {
+      const provider = providersToRun[current];
+      if (provider) {
+        await this.processProvider(provider, current + 1, total, ingestOptions);
       }
     }
 

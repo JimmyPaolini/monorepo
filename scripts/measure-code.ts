@@ -1,0 +1,356 @@
+import * as tsCompiler from "typescript";
+import { execSync } from "child_process";
+import * as fs from "fs";
+import * as path from "path";
+
+const CHECK_MODE = process.argv.includes("--check");
+
+// ── File discovery ────────────────────────────────────────────────────────────
+
+const TS_EXTENSIONS = new Set([".ts", ".tsx", ".mts", ".cts"]);
+const JS_EXTENSIONS = new Set([".js", ".jsx", ".mjs", ".cjs"]);
+const ALL_EXTENSIONS = new Set([...TS_EXTENSIONS, ...JS_EXTENSIONS]);
+
+const EXCLUDE_PATHS = [
+  "node_modules/",
+  "dist/",
+  ".nx/",
+  "build/",
+  "coverage/",
+  // Generator template stubs — not real source
+  "/templates/",
+];
+
+const trackedFiles = execSync("git ls-files")
+  .toString()
+  .trim()
+  .split("\n")
+  .filter(Boolean);
+
+const sourceFilePaths = trackedFiles.filter((filePath) => {
+  const extension = path.extname(filePath);
+  return (
+    ALL_EXTENSIONS.has(extension) &&
+    !EXCLUDE_PATHS.some((x) => filePath.includes(x))
+  );
+});
+
+const tsFilePaths = sourceFilePaths.filter((filePath) =>
+  TS_EXTENSIONS.has(path.extname(filePath)),
+);
+const jsFilePaths = sourceFilePaths.filter((filePath) =>
+  JS_EXTENSIONS.has(path.extname(filePath)),
+);
+
+const testFilePaths = sourceFilePaths.filter((filePath) =>
+  /\.(test|spec|unit\.test|integration\.test|end-to-end\.test)\.[cm]?[jt]sx?$/.test(
+    filePath,
+  ),
+);
+const nonTestSourceFilePaths = sourceFilePaths.filter(
+  (filePath) =>
+    !/\.(test|spec|unit\.test|integration\.test|end-to-end\.test)\.[cm]?[jt]sx?$/.test(
+      filePath,
+    ),
+);
+
+// ── TypeScript / JavaScript AST analysis (one file at a time) ────────────────
+
+// Uses the TypeScript compiler API directly rather than ts-morph so each
+// file's AST is created and discarded independently — memory stays O(1).
+
+const jsts = {
+  tsFiles: tsFilePaths.length,
+  jsFiles: jsFilePaths.length,
+  testFiles: testFilePaths.length,
+  lines: 0,
+  classes: 0,
+  functions: 0,
+  methods: 0,
+  interfaces: 0,
+  enums: 0,
+  constants: 0,
+  exported: 0,
+  imports: 0,
+  decorators: 0,
+  asyncFunctions: 0,
+  syncFunctions: 0,
+  genericDeclarations: 0,
+  externalPackages: new Set<string>(),
+  todos: 0,
+};
+
+function hasExportKeyword(node: tsCompiler.Node): boolean {
+  const modifiers = tsCompiler.canHaveModifiers(node)
+    ? tsCompiler.getModifiers(node)
+    : undefined;
+  return (
+    modifiers?.some((m) => m.kind === tsCompiler.SyntaxKind.ExportKeyword) ??
+    false
+  );
+}
+
+function hasAsyncKeyword(node: tsCompiler.Node): boolean {
+  const modifiers = tsCompiler.canHaveModifiers(node)
+    ? tsCompiler.getModifiers(node)
+    : undefined;
+  return (
+    modifiers?.some((m) => m.kind === tsCompiler.SyntaxKind.AsyncKeyword) ??
+    false
+  );
+}
+
+function hasTypeParameters(node: tsCompiler.Node): boolean {
+  return (
+    "typeParameters" in node &&
+    Array.isArray((node as any).typeParameters) &&
+    (node as any).typeParameters.length > 0
+  );
+}
+
+function walkNode(
+  node: tsCompiler.Node,
+  stats: typeof jsts,
+  insideClass: boolean,
+): void {
+  switch (node.kind) {
+    case tsCompiler.SyntaxKind.ClassDeclaration:
+    case tsCompiler.SyntaxKind.ClassExpression:
+      stats.classes++;
+      if (hasExportKeyword(node)) stats.exported++;
+      if (hasTypeParameters(node)) stats.genericDeclarations++;
+      tsCompiler.forEachChild(node, (child) => walkNode(child, stats, true));
+      return;
+
+    case tsCompiler.SyntaxKind.FunctionDeclaration:
+    case tsCompiler.SyntaxKind.FunctionExpression:
+    case tsCompiler.SyntaxKind.ArrowFunction:
+      if (insideClass) {
+        stats.methods++;
+      } else {
+        stats.functions++;
+        if (hasExportKeyword(node)) stats.exported++;
+      }
+      if (hasAsyncKeyword(node)) {
+        stats.asyncFunctions++;
+      } else {
+        stats.syncFunctions++;
+      }
+      if (hasTypeParameters(node)) stats.genericDeclarations++;
+      break;
+
+    case tsCompiler.SyntaxKind.MethodDeclaration:
+    case tsCompiler.SyntaxKind.GetAccessor:
+    case tsCompiler.SyntaxKind.SetAccessor:
+      stats.methods++;
+      if (hasAsyncKeyword(node)) {
+        stats.asyncFunctions++;
+      } else {
+        stats.syncFunctions++;
+      }
+      break;
+
+    case tsCompiler.SyntaxKind.InterfaceDeclaration:
+      stats.interfaces++;
+      if (hasExportKeyword(node)) stats.exported++;
+      if (hasTypeParameters(node)) stats.genericDeclarations++;
+      break;
+
+    case tsCompiler.SyntaxKind.TypeAliasDeclaration:
+      if (hasExportKeyword(node)) stats.exported++;
+      if (hasTypeParameters(node)) stats.genericDeclarations++;
+      break;
+
+    case tsCompiler.SyntaxKind.EnumDeclaration:
+      stats.enums++;
+      if (hasExportKeyword(node)) stats.exported++;
+      break;
+
+    case tsCompiler.SyntaxKind.VariableStatement: {
+      const statement = node as tsCompiler.VariableStatement;
+      const isConst =
+        (statement.declarationList.flags & tsCompiler.NodeFlags.Const) !== 0;
+      if (isConst) {
+        const count = statement.declarationList.declarations.length;
+        stats.constants += count;
+        if (hasExportKeyword(node)) stats.exported += count;
+      }
+      break;
+    }
+
+    case tsCompiler.SyntaxKind.ImportDeclaration: {
+      stats.imports++;
+      const importDecl = node as tsCompiler.ImportDeclaration;
+      const specifier = (importDecl.moduleSpecifier as tsCompiler.StringLiteral)
+        .text;
+      if (!specifier.startsWith(".") && !specifier.startsWith("/")) {
+        // Extract the package name (handle scoped packages like @org/pkg)
+        const packageName = specifier.startsWith("@")
+          ? specifier.split("/").slice(0, 2).join("/")
+          : (specifier.split("/")[0] ?? specifier);
+        stats.externalPackages.add(packageName);
+      }
+      break;
+    }
+
+    case tsCompiler.SyntaxKind.Decorator:
+      stats.decorators++;
+      break;
+  }
+
+  tsCompiler.forEachChild(node, (child) => walkNode(child, stats, insideClass));
+}
+
+for (const filePath of sourceFilePaths) {
+  const content = fs.readFileSync(filePath, "utf-8");
+  const extension = path.extname(filePath);
+  const isTsx = extension === ".tsx" || extension === ".jsx";
+  const isJs = JS_EXTENSIONS.has(extension);
+  const scriptKind = isTsx
+    ? tsCompiler.ScriptKind.TSX
+    : isJs
+      ? tsCompiler.ScriptKind.JS
+      : tsCompiler.ScriptKind.TS;
+
+  const sourceFile = tsCompiler.createSourceFile(
+    filePath,
+    content,
+    tsCompiler.ScriptTarget.Latest,
+    true, // setParentNodes — needed for parent checks in component detection
+    scriptKind,
+  );
+
+  jsts.lines += content.split("\n").length;
+
+  // Count TODO / FIXME in comments via full-text scan
+  jsts.todos += (
+    content.match(
+      /\/\/.*\b(?:TODO|FIXME)\b|\/\*[\s\S]*?\b(?:TODO|FIXME)\b[\s\S]*?\*\//g,
+    ) ?? []
+  ).length;
+
+  walkNode(sourceFile, jsts, false);
+}
+
+// ── Python analysis ──────────────────────────────────────────────────────────
+
+const py = JSON.parse(
+  execSync("uv run python scripts/measure-code.py").toString().trim(),
+) as {
+  files: number;
+  classes: number;
+  functions: number;
+  constants: number;
+  protocols: number;
+  imports: number;
+  decorators: number;
+  lines: number;
+};
+
+// ── Repo size ─────────────────────────────────────────────────────────────────
+
+let repoBytes = 0;
+for (const trackedFile of trackedFiles) {
+  try {
+    repoBytes += fs.statSync(trackedFile).size;
+  } catch {}
+}
+const repoSizeMiB = (repoBytes / 1024 / 1024).toFixed(1);
+
+// ── Last commit date ─────────────────────────────────────────────────────────
+
+const lastCommit = execSync("git log -1 --format=%as").toString().trim();
+
+// ── Folder count ─────────────────────────────────────────────────────────────
+
+const EXCLUDE_DIRS = new Set([
+  "node_modules",
+  ".git",
+  "dist",
+  ".nx",
+  "build",
+  "coverage",
+]);
+const countFolders = (dir: string): number =>
+  fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && !EXCLUDE_DIRS.has(entry.name))
+    .reduce(
+      (count, entry) => count + 1 + countFolders(`${dir}/${entry.name}`),
+      0,
+    );
+const folders = countFolders(".");
+
+// ── Badge builder ─────────────────────────────────────────────────────────────
+
+const encode = (s: string | number): string =>
+  String(s).replace(/-/g, "--").replace(/_/g, "__").replace(/ /g, "_");
+
+const badge = (label: string, value: number | string, color: string): string =>
+  `![${label}](https://img.shields.io/badge/${encode(label)}-${encode(value)}-${color}?style=flat-square)`;
+
+// ── Build the badge block ─────────────────────────────────────────────────────
+
+const badges = [
+  badge("Lines of Code", jsts.lines + py.lines, "22c55e"),
+  badge("Repo Size", `${repoSizeMiB} MiB`, "6b7280"),
+  badge("Last Commit", lastCommit, "f59e0b"),
+  badge("Folders", folders, "4a4a4a"),
+  badge("Source Files", jsts.tsFiles + jsts.jsFiles + py.files, "3178c6"),
+  badge("Test Files", jsts.testFiles, "10b981"),
+  badge("External Packages", jsts.externalPackages.size, "8b5cf6"),
+  badge("Classes", jsts.classes + py.classes, "7c3aed"),
+  badge("Functions", jsts.functions + jsts.methods + py.functions, "16a34a"),
+  badge("Sync Functions", jsts.syncFunctions, "4ade80"),
+  badge("Async Functions", jsts.asyncFunctions, "059669"),
+  badge("Interfaces", jsts.interfaces + py.protocols, "0ea5e9"),
+  badge("Generic Declarations", jsts.genericDeclarations, "0369a1"),
+  badge("Enums", jsts.enums, "f97316"),
+  badge("Constants", jsts.constants + py.constants, "dc2626"),
+  badge("Imports", jsts.imports + py.imports, "0284c7"),
+  badge("Decorators", jsts.decorators + py.decorators, "db2777"),
+  badge("Exported Symbols", jsts.exported, "ea580c"),
+  badge("TODO Comments", jsts.todos, "ca8a04"),
+].join("\n");
+
+const BLOCK = `<!-- CODE_STATISTICS_START -->\n${badges}\n<!-- CODE_STATISTICS_END -->`;
+
+// ── Write or check ────────────────────────────────────────────────────────────
+
+const readme = fs.readFileSync("README.md", "utf-8");
+
+if (!readme.includes("<!-- CODE_STATISTICS_START -->")) {
+  console.error(
+    "ERROR: README.md is missing <!-- CODE_STATISTICS_START --> marker.",
+  );
+  process.exit(1);
+}
+
+const current = readme.match(
+  /<!-- CODE_STATISTICS_START -->[\s\S]*?<!-- CODE_STATISTICS_END -->/,
+)?.[0];
+
+if (CHECK_MODE) {
+  if (current === BLOCK) {
+    console.log("✅ README code stats are up to date.");
+    process.exit(0);
+  } else {
+    console.error(
+      "❌ README code stats are stale.\n" +
+        "   Run `nx run monorepo:measure-code:write` locally and commit the result.\n\n" +
+        "   Expected:\n" +
+        BLOCK +
+        "\n\n" +
+        "   Found:\n" +
+        (current ?? "(no block found)"),
+    );
+    process.exit(1);
+  }
+} else {
+  const updated = readme.replace(
+    /<!-- CODE_STATISTICS_START -->[\s\S]*?<!-- CODE_STATISTICS_END -->/,
+    BLOCK,
+  );
+  fs.writeFileSync("README.md", updated, "utf-8");
+  console.log("✅ README.md code stats updated.");
+}

@@ -45,8 +45,8 @@ export class WiktionaryCommand extends CommandRunner {
   private readonly directory = path.join(process.cwd(), "./data/wiktionary");
   private readonly errorLogFilePath: string;
   private readonly host = "https://en.wiktionary.org";
-  private readonly maxRetries = 5;
-  private readonly maxRetryDelayMilliseconds = 60_000;
+  private readonly maximumRetries = 5;
+  private readonly maximumRetryDelayMilliseconds = 60_000;
   private readonly requestDelayMilliseconds = 500;
 
   // 🔑 Public Fields
@@ -61,7 +61,7 @@ export class WiktionaryCommand extends CommandRunner {
   }
   private async fetchWithRetry(
     url: string,
-    retries = this.maxRetries,
+    retries = this.maximumRetries,
   ): Promise<Response> {
     for (let attempt = 0; attempt <= retries; attempt++) {
       const response = await fetch(url);
@@ -71,7 +71,7 @@ export class WiktionaryCommand extends CommandRunner {
       const retryAfter = response.headers.get("Retry-After");
       const backoffMilliseconds = Math.min(
         retryAfter ? Number(retryAfter) * 1000 : 1000 * 2 ** attempt,
-        this.maxRetryDelayMilliseconds,
+        this.maximumRetryDelayMilliseconds,
       );
 
       this.logger.warn(

@@ -52,6 +52,85 @@ export class TwilightsService {
 
   // 🔏 Private Methods
 
+  private buildDawnProgressiveEvents(
+    astronomicalDawnEvents: Event[],
+    nauticalDawnEvents: Event[],
+    civilDawnEvents: Event[],
+  ): Event[] {
+    return [
+      ...this.pairAndBuild(
+        astronomicalDawnEvents,
+        nauticalDawnEvents,
+        "Astronomical Twilight (Morning)",
+        (beginning, ending) =>
+          this.getAstronomicalTwilightMorningDurationEvent(beginning, ending),
+      ),
+      ...this.pairAndBuild(
+        nauticalDawnEvents,
+        civilDawnEvents,
+        "Nautical Twilight (Morning)",
+        (beginning, ending) =>
+          this.getNauticalTwilightMorningDurationEvent(beginning, ending),
+      ),
+    ];
+  }
+
+  private buildDuskProgressiveEvents(
+    civilDawnEvents: Event[],
+    civilDuskEvents: Event[],
+    nauticalDuskEvents: Event[],
+    astronomicalDuskEvents: Event[],
+  ): Event[] {
+    return [
+      ...this.pairAndBuild(
+        civilDawnEvents,
+        civilDuskEvents,
+        "Daylight",
+        (beginning, ending) => this.getDaylightDurationEvent(beginning, ending),
+      ),
+      ...this.pairAndBuild(
+        civilDuskEvents,
+        nauticalDuskEvents,
+        "Nautical Twilight (Evening)",
+        (beginning, ending) =>
+          this.getNauticalTwilightEveningDurationEvent(beginning, ending),
+      ),
+      ...this.pairAndBuild(
+        nauticalDuskEvents,
+        astronomicalDuskEvents,
+        "Astronomical Twilight (Evening)",
+        (beginning, ending) =>
+          this.getAstronomicalTwilightEveningDurationEvent(beginning, ending),
+      ),
+    ];
+  }
+
+  private buildTwilightTransitionEvents(
+    elevations: { currentElevation: number; previousElevation: number },
+    date: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    if (this.isAstronomicalDawn({ ...elevations })) {
+      events.push(this.buildAstronomicalDawnEvent(date));
+    }
+    if (this.isNauticalDawn({ ...elevations })) {
+      events.push(this.buildNauticalDawnEvent(date));
+    }
+    if (this.isCivilDawn({ ...elevations })) {
+      events.push(this.buildCivilDawnEvent(date));
+    }
+    if (this.isCivilDusk({ ...elevations })) {
+      events.push(this.buildCivilDuskEvent(date));
+    }
+    if (this.isNauticalDusk({ ...elevations })) {
+      events.push(this.buildNauticalDuskEvent(date));
+    }
+    if (this.isAstronomicalDusk({ ...elevations })) {
+      events.push(this.buildAstronomicalDuskEvent(date));
+    }
+    return events;
+  }
+
   private getAstronomicalTwilightEveningDurationEvent(
     beginning: Event,
     ending: Event,
@@ -138,6 +217,26 @@ export class TwilightsService {
       start: beginning.start,
       summary: "🌃 Night",
     };
+  }
+
+  private getSunElevations(
+    sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
+    minute: Moment,
+  ): { currentElevation: number; previousElevation: number } {
+    const previousMinute = minute.clone().subtract(1, "minute");
+    const currentElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        minute.toISOString(),
+        "elevation",
+      );
+    const previousElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        previousMinute.toISOString(),
+        "elevation",
+      );
+    return { currentElevation, previousElevation };
   }
 
   private isAstronomicalDawn(args: {
@@ -230,6 +329,20 @@ export class TwilightsService {
       previousElevation,
       twilight: "nautical",
     });
+  }
+
+  private pairAndBuild(
+    beginnings: Event[],
+    endings: Event[],
+    label: string,
+    builder: (beginning: Event, ending: Event) => Event,
+  ): Event[] {
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      beginnings,
+      endings,
+      label,
+    );
+    return pairs.map(([beginning, ending]) => builder(beginning, ending));
   }
 
   // 🌎 Public Methods
@@ -390,9 +503,7 @@ export class TwilightsService {
    * - Nautical dawn/dusk (12° below horizon)
    * - Civil dawn/dusk (6° below horizon)
    *
-   * @param args - Configuration object
-   * @param currentMinute - The specific minute to analyze
-   * @param sunAzimuthElevationEphemeris - Pre-computed Sun position data
+   * @param args - Configuration object with minute and sunAzimuthElevationEphemeris
    * @returns Array of detected twilight events (0-1 events per minute)
    * @see {@link isAstronomicalDawn} and related functions for detection
    * @see {@link degreesByTwilight} for threshold definitions
@@ -409,47 +520,8 @@ export class TwilightsService {
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
-
-    const twilightEvents: Event[] = [];
-
-    const previousMinute = minute.clone().subtract(1, "minute");
-
-    const currentElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-    const previousElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-
-    const elevations = { currentElevation, previousElevation };
-    const date = minute;
-
-    if (this.isAstronomicalDawn({ ...elevations })) {
-      twilightEvents.push(this.buildAstronomicalDawnEvent(date));
-    }
-    if (this.isNauticalDawn({ ...elevations })) {
-      twilightEvents.push(this.buildNauticalDawnEvent(date));
-    }
-    if (this.isCivilDawn({ ...elevations })) {
-      twilightEvents.push(this.buildCivilDawnEvent(date));
-    }
-    if (this.isCivilDusk({ ...elevations })) {
-      twilightEvents.push(this.buildCivilDuskEvent(date));
-    }
-    if (this.isNauticalDusk({ ...elevations })) {
-      twilightEvents.push(this.buildNauticalDuskEvent(date));
-    }
-    if (this.isAstronomicalDusk({ ...elevations })) {
-      twilightEvents.push(this.buildAstronomicalDuskEvent(date));
-    }
-
-    return twilightEvents;
+    const elevations = this.getSunElevations(sunAzimuthElevationEphemeris, minute);
+    return this.buildTwilightTransitionEvents(elevations, minute);
   }
 
   /**
@@ -466,104 +538,37 @@ export class TwilightsService {
    * @see {@link pairProgressiveEvents} for pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Filter to twilight events only
     const twilightEvents = events.filter((event) =>
       event.categories.includes("Twilight"),
     );
+    const byCategory = (category: string): Event[] =>
+      twilightEvents.filter((event) => event.categories.includes(category));
 
-    // Astronomical Twilight (morning): Astronomical Dawn → Nautical Dawn
-    const astronomicalDawnEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Astronomical Dawn"),
-    );
-    const nauticalDawnEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Nautical Dawn"),
-    );
-    const astronomicalTwilightMorningPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
+    const astronomicalDawnEvents = byCategory("Astronomical Dawn");
+    const nauticalDawnEvents = byCategory("Nautical Dawn");
+    const civilDawnEvents = byCategory("Civil Dawn");
+    const civilDuskEvents = byCategory("Civil Dusk");
+    const nauticalDuskEvents = byCategory("Nautical Dusk");
+    const astronomicalDuskEvents = byCategory("Astronomical Dusk");
+
+    return [
+      ...this.buildDawnProgressiveEvents(
         astronomicalDawnEvents,
         nauticalDawnEvents,
-        "Astronomical Twilight (Morning)",
-      );
-    for (const [beginning, ending] of astronomicalTwilightMorningPairs) {
-      progressiveEvents.push(
-        this.getAstronomicalTwilightMorningDurationEvent(beginning, ending),
-      );
-    }
-
-    // Nautical Twilight (morning): Nautical Dawn → Civil Dawn
-    const civilDawnEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Civil Dawn"),
-    );
-    const nauticalTwilightMorningPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        nauticalDawnEvents,
         civilDawnEvents,
-        "Nautical Twilight (Morning)",
-      );
-    for (const [beginning, ending] of nauticalTwilightMorningPairs) {
-      progressiveEvents.push(
-        this.getNauticalTwilightMorningDurationEvent(beginning, ending),
-      );
-    }
-
-    // Daylight: Civil Dawn → Civil Dusk
-    const civilDuskEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Civil Dusk"),
-    );
-    const daylightPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
+      ),
+      ...this.buildDuskProgressiveEvents(
         civilDawnEvents,
         civilDuskEvents,
-        "Daylight",
-      );
-    for (const [beginning, ending] of daylightPairs) {
-      progressiveEvents.push(this.getDaylightDurationEvent(beginning, ending));
-    }
-
-    // Nautical Twilight (evening): Civil Dusk → Nautical Dusk
-    const nauticalDuskEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Nautical Dusk"),
-    );
-    const nauticalTwilightEveningPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        civilDuskEvents,
-        nauticalDuskEvents,
-        "Nautical Twilight (Evening)",
-      );
-    for (const [beginning, ending] of nauticalTwilightEveningPairs) {
-      progressiveEvents.push(
-        this.getNauticalTwilightEveningDurationEvent(beginning, ending),
-      );
-    }
-
-    // Astronomical Twilight (evening): Nautical Dusk → Astronomical Dusk
-    const astronomicalDuskEvents = twilightEvents.filter((event) =>
-      event.categories.includes("Astronomical Dusk"),
-    );
-    const astronomicalTwilightEveningPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
         nauticalDuskEvents,
         astronomicalDuskEvents,
-        "Astronomical Twilight (Evening)",
-      );
-    for (const [beginning, ending] of astronomicalTwilightEveningPairs) {
-      progressiveEvents.push(
-        this.getAstronomicalTwilightEveningDurationEvent(beginning, ending),
-      );
-    }
-
-    // Night: Astronomical Dusk → Astronomical Dawn (next day)
-    const nightPairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-      astronomicalDuskEvents,
-      astronomicalDawnEvents,
-      "Night",
-    );
-    for (const [beginning, ending] of nightPairs) {
-      progressiveEvents.push(this.getNightDurationEvent(beginning, ending));
-    }
-
-    return progressiveEvents;
+      ),
+      ...this.pairAndBuild(
+        astronomicalDuskEvents,
+        astronomicalDawnEvents,
+        "Night",
+        (beginning, ending) => this.getNightDurationEvent(beginning, ending),
+      ),
+    ];
   }
 }

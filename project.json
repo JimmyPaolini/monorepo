@@ -11,6 +11,7 @@
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:measure-code:check",
             "nx run {projectName}:spell-check",
             "nx run {projectName}:sync-agent-skills:check",
             "nx run {projectName}:sync-conventional-config:check",
@@ -27,6 +28,7 @@
             "nx run {projectName}:format:write",
             "nx run {projectName}:lint:write",
             "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:measure-code:write",
             "nx run {projectName}:spell-check",
             "nx run {projectName}:sync-agent-skills:write",
             "nx run {projectName}:sync-conventional-config:write",
@@ -406,6 +408,23 @@
       "options": {
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
         "cwd": "{projectRoot}"
+      }
+    },
+    "measure-code": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/measure-code.ts --check"
+        },
+        "write": {
+          "command": "tsx scripts/measure-code.ts"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Analyze codebase and write README.md statistics badges",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}"
       }
     },
     "scan-dependencies": {

@@ -4,17 +4,19 @@
   "projectType": "application",
   "sourceRoot": "applications/caelundas",
   "tags": [
+    "domain:caelundas",
     "framework:nest-commander",
     "framework:nestjs",
     "generator:nestjs-command-application",
     "language:typescript",
-    "scope:caelundas",
     "type:application"
   ],
   "targets": {
     "analyze-code": {},
     "clean": {},
-    "code-analysis": { "cache": false },
+    "code-analysis": {
+      "cache": false
+    },
     "dependency-cruiser": {},
     "download-ephemeris": {
       "cache": false,

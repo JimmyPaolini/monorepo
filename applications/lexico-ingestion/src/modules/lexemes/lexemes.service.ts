@@ -18,6 +18,8 @@ import { WordsService } from "../words/words.service";
 import { skipPOS, validPOS } from "./lexemes.constants";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
+import type { PartOfSpeech } from "@monorepo/lexico-entities";
+import type { AnyNode } from "domhandler";
 
 /**
  * Orchestrates Wiktionary HTML parsing into fully-populated Lexeme objects.
@@ -49,6 +51,57 @@ export class LexemesService {
 
   // 🔏 Private Methods
 
+  private async enrichLexeme(
+    lexeme: Lexeme,
+    $: cheerio.CheerioAPI,
+    elt: AnyNode,
+    firstPrincipalPartName: string,
+    partOfSpeech: PartOfSpeech,
+  ): Promise<void> {
+    const { macronizedWord, principalParts } =
+      this.principalPartsService.parsePrincipalParts(
+        lexeme,
+        $,
+        elt,
+        firstPrincipalPartName,
+      );
+    lexeme.principalParts = principalParts;
+
+    lexeme.inflection = this.partOfSpeechService.ingestInflection(
+      partOfSpeech,
+      $,
+      elt,
+      principalParts,
+    );
+
+    const translations = this.translationsService.parseTranslations(
+      $,
+      elt,
+      lexeme,
+    );
+    const { etymology, participleTranslation } =
+      this.etymologyService.parseEtymology($, elt, lexeme);
+    lexeme.etymology = etymology;
+    lexeme.translations = participleTranslation
+      ? [...translations, participleTranslation]
+      : translations;
+
+    lexeme.pronunciations = this.pronunciationService.parse(
+      $,
+      elt,
+      macronizedWord,
+    );
+
+    const rawForms = await this.partOfSpeechService.parseForms(
+      partOfSpeech,
+      $,
+      elt,
+      lexeme,
+      principalParts,
+    );
+    lexeme.forms = this.formsService.buildForms(partOfSpeech, rawForms, lexeme);
+  }
+
   private normalize(str: string): string {
     return str
       .normalize("NFD")
@@ -57,7 +110,108 @@ export class LexemesService {
       .trim();
   }
 
+  private async parseLexemeFromElement(
+    $: cheerio.CheerioAPI,
+    elt: AnyNode,
+    index: number,
+    word: string,
+  ): Promise<Lexeme | null> {
+    const partOfSpeech = this.partOfSpeechService.getPartOfSpeech($, elt);
+
+    if (!validPOS.has(partOfSpeech)) {
+      if (!skipPOS.has(partOfSpeech)) {
+        this.logger.debug(`Skipping POS "${partOfSpeech}" for: ${word}`);
+      }
+      return null;
+    }
+
+    const firstPrincipalPartName =
+      this.partOfSpeechService.getFirstPrincipalPartName(partOfSpeech);
+    if (firstPrincipalPartName === undefined) {
+      this.logger.debug(
+        `No principal-part name for POS "${partOfSpeech}" — skipping ${word}`,
+      );
+      return null;
+    }
+
+    const lexeme = new Lexeme();
+    lexeme.lemma = this.normalize(word);
+    lexeme.disambiguator = index;
+    lexeme.partOfSpeech = partOfSpeech;
+
+    try {
+      await this.enrichLexeme(
+        lexeme,
+        $,
+        elt,
+        firstPrincipalPartName,
+        partOfSpeech,
+      );
+      return lexeme;
+    } catch (error) {
+      this.logger.warn(
+        `Failed to parse ${lexeme.lemma}:${lexeme.disambiguator}: ${String(error)}`,
+      );
+      return null;
+    }
+  }
+
   // 🌎 Public Methods
+
+  private async saveInflection(
+    lexeme: Lexeme,
+    savedLexeme: Lexeme,
+  ): Promise<void> {
+    if (!lexeme.inflection) return;
+    if (savedLexeme.inflection) {
+      lexeme.inflection.id = savedLexeme.inflection.id;
+    }
+    lexeme.inflection.lexeme = savedLexeme;
+    await lexeme.inflection.save();
+    savedLexeme.inflection = lexeme.inflection;
+  }
+
+  private async saveLexemeRelations(
+    lexeme: Lexeme,
+    savedLexeme: Lexeme,
+  ): Promise<void> {
+    await this.saveInflection(lexeme, savedLexeme);
+
+    await this.principalPartsService.ingestLexemePrincipalParts(
+      savedLexeme,
+      lexeme.principalParts,
+    );
+
+    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
+      await this.pronunciationService.ingestLexemePronunciations(
+        savedLexeme,
+        lexeme.pronunciations,
+      );
+    }
+
+    await this.saveTranslations(lexeme, savedLexeme);
+
+    if (lexeme.forms.length > 0) {
+      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
+    }
+
+    await this.wordsService.ingestLexemeWords(savedLexeme);
+  }
+
+  private async saveTranslations(
+    lexeme: Lexeme,
+    savedLexeme: Lexeme,
+  ): Promise<void> {
+    if (lexeme.translations !== undefined && lexeme.translations !== null) {
+      const preparedTranslations =
+        this.translationsService.prepareTranslationsForSave(
+          savedLexeme,
+          lexeme.translations,
+        );
+      savedLexeme.translations = preparedTranslations;
+      await this.lexemeRepository.save(savedLexeme);
+    }
+  }
 
   /** Returns true if a lexeme matching `lemma` already exists in the DB. */
   async existsByLemma(lemma: string): Promise<boolean> {
@@ -114,83 +268,8 @@ export class LexemesService {
     }
 
     for (const [index, elt] of headwordElements.entries()) {
-      const partOfSpeech = this.partOfSpeechService.getPartOfSpeech($, elt);
-
-      if (!validPOS.has(partOfSpeech)) {
-        if (!skipPOS.has(partOfSpeech)) {
-          this.logger.debug(`Skipping POS "${partOfSpeech}" for: ${word}`);
-        }
-        continue;
-      }
-
-      const firstPrincipalPartName =
-        this.partOfSpeechService.getFirstPrincipalPartName(partOfSpeech);
-      if (firstPrincipalPartName === undefined) {
-        this.logger.debug(
-          `No principal-part name for POS "${partOfSpeech}" — skipping ${word}`,
-        );
-        continue;
-      }
-
-      const lexeme = new Lexeme();
-      lexeme.lemma = this.normalize(word);
-      lexeme.disambiguator = index;
-      lexeme.partOfSpeech = partOfSpeech;
-
-      try {
-        const { macronizedWord, principalParts } =
-          this.principalPartsService.parsePrincipalParts(
-            lexeme,
-            $,
-            elt,
-            firstPrincipalPartName,
-          );
-        lexeme.principalParts = principalParts;
-
-        lexeme.inflection = this.partOfSpeechService.ingestInflection(
-          partOfSpeech,
-          $,
-          elt,
-          principalParts,
-        );
-
-        const translations = this.translationsService.parseTranslations(
-          $,
-          elt,
-          lexeme,
-        );
-        const { etymology, participleTranslation } =
-          this.etymologyService.parseEtymology($, elt, lexeme);
-        lexeme.etymology = etymology;
-        lexeme.translations = participleTranslation
-          ? [...translations, participleTranslation]
-          : translations;
-
-        lexeme.pronunciations = this.pronunciationService.parse(
-          $,
-          elt,
-          macronizedWord,
-        );
-
-        const rawForms = await this.partOfSpeechService.parseForms(
-          partOfSpeech,
-          $,
-          elt,
-          lexeme,
-          principalParts,
-        );
-        lexeme.forms = this.formsService.buildForms(
-          partOfSpeech,
-          rawForms,
-          lexeme,
-        );
-
-        lexemes.push(lexeme);
-      } catch (error) {
-        this.logger.warn(
-          `Failed to parse ${lexeme.lemma}:${lexeme.disambiguator}: ${String(error)}`,
-        );
-      }
+      const lexeme = await this.parseLexemeFromElement($, elt, index, word);
+      if (lexeme) lexemes.push(lexeme);
     }
 
     return lexemes;
@@ -205,38 +284,8 @@ export class LexemesService {
     );
     if (!savedLexeme) return null;
 
-    if (lexeme.inflection) {
-      if (savedLexeme.inflection) {
-        lexeme.inflection.id = savedLexeme.inflection.id;
-      }
-      lexeme.inflection.lexeme = savedLexeme;
-      await lexeme.inflection.save();
-      savedLexeme.inflection = lexeme.inflection;
-    }
+    await this.saveLexemeRelations(lexeme, savedLexeme);
 
-    await this.principalPartsService.ingestLexemePrincipalParts(
-      savedLexeme,
-      lexeme.principalParts,
-    );
-    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
-      await this.pronunciationService.ingestLexemePronunciations(
-        savedLexeme,
-        lexeme.pronunciations,
-      );
-    }
-    if (lexeme.translations !== undefined && lexeme.translations !== null) {
-      const preparedTranslations =
-        this.translationsService.prepareTranslationsForSave(
-          savedLexeme,
-          lexeme.translations,
-        );
-      savedLexeme.translations = preparedTranslations;
-      await this.lexemeRepository.save(savedLexeme);
-    }
-    if (lexeme.forms.length > 0) {
-      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
-    }
-    await this.wordsService.ingestLexemeWords(savedLexeme);
     this.logger.debug(
       `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
     );

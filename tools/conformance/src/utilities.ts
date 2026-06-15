@@ -42,19 +42,7 @@ export function generateFiles(args: {
     const instanceName = resolveName(node.name);
     const instancePath = path.join(targetDirectoryPath, instanceName);
     const templatePath = path.join(templateDirectoryPath, node.name);
-
-    if (node.isDirectory()) {
-      generateFiles({
-        instanceDirectoryPath: instancePath,
-        substitutions,
-        templateDirectoryPath: templatePath,
-        tree,
-      });
-    } else {
-      const template = fs.readFileSync(templatePath, "utf8");
-      const instance = mustache.render(template, substitutions);
-      tree.write(instancePath, instance);
-    }
+    processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
 }
 
@@ -136,6 +124,28 @@ export async function resolveProject(args: {
   }
 
   return projectName;
+}
+
+function processFileNode(args: {
+  instancePath: string;
+  node: fs.Dirent;
+  substitutions: Record<string, string>;
+  templatePath: string;
+  tree: Tree;
+}): void {
+  const { instancePath, node, substitutions, templatePath, tree } = args;
+  if (node.isDirectory()) {
+    generateFiles({
+      instanceDirectoryPath: instancePath,
+      substitutions,
+      templateDirectoryPath: templatePath,
+      tree,
+    });
+  } else {
+    const template = fs.readFileSync(templatePath, "utf8");
+    const instance = mustache.render(template, substitutions);
+    tree.write(instancePath, instance);
+  }
 }
 
 /**

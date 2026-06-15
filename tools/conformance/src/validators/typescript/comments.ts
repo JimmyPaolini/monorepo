@@ -10,6 +10,13 @@ import { TODO_LINE_REGEX } from "./constants";
 
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
+interface CommentInfo {
+  column: number;
+  line: number;
+  pos: number;
+  text: string;
+}
+
 /**
  * Validates that every comment in the template file also appears in the
  * instance file in the same relative sequential order.
@@ -25,38 +32,37 @@ export function validateAllComments(args: {
 }): ConformanceError[] {
   const { instanceFile, language, templateFile } = args;
   const errors: ConformanceError[] = [];
-
   const templateComments = extractAllComments(templateFile);
   const instanceComments = extractAllComments(instanceFile);
-
   let startPosition = 0;
   for (const templateComment of templateComments) {
     const endPosition = instanceComments
       .slice(startPosition)
-      .findIndex((instanceComment): boolean => {
-        return TODO_LINE_REGEX.test(templateComment.text)
-          ? true
-          : instanceComment.text === templateComment.text;
-      });
-
+      .findIndex((c) => matchesTemplateComment(templateComment, c));
     if (endPosition === -1) {
-      errors.push({
-        errorType: "comment",
-        expected: templateComment.text,
-        fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
-        instanceColumn: 1,
-        instanceLine: 1,
-        language,
-        message: `Missing comment: "${templateComment.text}"`,
-        templateColumn: templateComment.column,
-        templateLine: templateComment.line,
-      });
+      errors.push(createMissingCommentError(templateComment, language));
     } else {
       startPosition += endPosition + 1;
     }
   }
-
   return errors;
+}
+
+function createMissingCommentError(
+  templateComment: CommentInfo,
+  language: ConformanceErrorLanguage,
+): ConformanceError {
+  return {
+    errorType: "comment",
+    expected: templateComment.text,
+    fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
+    instanceColumn: 1,
+    instanceLine: 1,
+    language,
+    message: `Missing comment: "${templateComment.text}"`,
+    templateColumn: templateComment.column,
+    templateLine: templateComment.line,
+  };
 }
 
 /**
@@ -94,4 +100,13 @@ function extractAllComments(
   extract(sourceFile);
 
   return [...commentsMap.values()].toSorted((a, b) => a.pos - b.pos);
+}
+
+function matchesTemplateComment(
+  templateComment: CommentInfo,
+  instanceComment: CommentInfo,
+): boolean {
+  return TODO_LINE_REGEX.test(templateComment.text)
+    ? true
+    : instanceComment.text === templateComment.text;
 }

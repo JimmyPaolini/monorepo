@@ -34,60 +34,70 @@ export async function generateNestjsServiceModule(
   tree: Tree,
   options: GenerateNestjsServiceModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
+  const { nameKebabCase, projectName } = await resolveProjectAndName(
     tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: "Which project should the module be generated in?",
-  });
-
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: "What is the name of the module? (kebab-case)",
-    name: options.name,
-    subject: "Module name",
-  });
-
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
-
-  if (!tree.exists(modulesDirectory)) {
-    throw new Error(
-      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
-    );
-  }
-
+    options,
+  );
+  const modulesDirectory = resolveValidatedModulesDirectory(tree, projectName);
   const targetPath = path.join(modulesDirectory, nameKebabCase);
   const substitutions = {
     nameCamelCase: _.camelCase(nameKebabCase),
     nameKebabCase,
     namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
   };
-
   generateFiles({
     instanceDirectoryPath: targetPath,
     substitutions,
     templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     tree,
   });
-
   const generatedFiles = tree
     .children(targetPath)
     .map((file) => path.join(targetPath, file));
-
   return () => {
     execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
       cwd: workspaceRoot,
       stdio: "inherit",
     });
   };
+}
+
+async function resolveProjectAndName(
+  tree: Tree,
+  options: GenerateNestjsServiceModuleOptions,
+): Promise<{ nameKebabCase: string; projectName: string }> {
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
+  });
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
+    name: options.name,
+    subject: "Module name",
+  });
+  return { nameKebabCase, projectName };
+}
+
+function resolveValidatedModulesDirectory(
+  tree: Tree,
+  projectName: string,
+): string {
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
+  if (!tree.exists(modulesDirectory)) {
+    throw new Error(
+      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
+    );
+  }
+  return modulesDirectory;
 }

@@ -58,7 +58,92 @@ export class LexicoIngestionCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  private async executeStages(
+    options: LexicoIngestionCommandOptions,
+  ): Promise<void> {
+    let step = 1;
+
+    if (options.wikipedia) {
+      this.logger.log(
+        `🗂️ Step ${step++}: Ingesting Wikipedia (Wiktionary) pages 🌐`,
+      );
+      await this.wiktionaryCommand.run();
+    }
+
+    if (options.dictionary) {
+      this.logger.log(`🗂️ Step ${step++}: Processing dictionary lexemes 📖`);
+      await this.dictionaryCommand.ingestAll();
+    }
+
+    if (options.librarySources) {
+      this.logger.log(`🗂️ Step ${step++}: Downloading library sources 📥`);
+      await this.runLibrarySourcesStage();
+    }
+
+    if (options.library) {
+      this.logger.log(`🗂️ Step ${step++}: Parsing library into markdown 📝`);
+      await this.libraryCommand.run([], {});
+    }
+
+    if (options.literature) {
+      this.logger.log(`🗂️ Step ${step}: Ingesting literature texts 📜`);
+      await this.literatureCommand.run([], {});
+    }
+  }
+
+  private async promptForMissingOptions(
+    options: LexicoIngestionCommandOptions,
+  ): Promise<void> {
+    options.wikipedia = await this.promptOption(
+      options.wikipedia,
+      "Run the Wikipedia (Wiktionary) stage?",
+      "wikipedia",
+    );
+    options.dictionary = await this.promptOption(
+      options.dictionary,
+      "Run the dictionary stage?",
+      "dictionary",
+    );
+    options.librarySources = await this.promptOption(
+      options.librarySources,
+      "Run the library sources stage?",
+      "librarySources",
+    );
+    options.library = await this.promptOption(
+      options.library,
+      "Run the library stage?",
+      "library",
+    );
+    options.literature = await this.promptOption(
+      options.literature,
+      "Run the literature stage?",
+      "literature",
+    );
+  }
+
   // 🌎 Public Methods
+
+  private async promptOption(
+    currentValue: boolean | undefined,
+    message: string,
+    name: string,
+  ): Promise<boolean> {
+    if (currentValue !== undefined) return currentValue;
+    const response = await prompts({
+      initial: true,
+      message,
+      name,
+      type: "confirm",
+    });
+    return response[name] as boolean;
+  }
+
+  private async runLibrarySourcesStage(): Promise<void> {
+    await this.perseusCommand.run();
+    await this.latinLibraryCommand.run();
+    await this.corpusScriptorumEcclesiasticorumLatinorumCommand.run();
+    await this.epigraphikDatenbankClaussSlabyCommand.run();
+  }
 
   /**
    *
@@ -128,90 +213,12 @@ export class LexicoIngestionCommand extends CommandRunner {
     _passedParameters: string[],
     options: LexicoIngestionCommandOptions,
   ): Promise<void> {
-    if (options.wikipedia === undefined) {
-      const response = await prompts({
-        initial: true,
-        message: "Run the Wikipedia (Wiktionary) stage?",
-        name: "wikipedia",
-        type: "confirm",
-      });
-      options.wikipedia = response.wikipedia as boolean;
-    }
-
-    if (options.dictionary === undefined) {
-      const response = await prompts({
-        initial: true,
-        message: "Run the dictionary stage?",
-        name: "dictionary",
-        type: "confirm",
-      });
-      options.dictionary = response.dictionary as boolean;
-    }
-
-    if (options.librarySources === undefined) {
-      const response = await prompts({
-        initial: true,
-        message: "Run the library sources stage?",
-        name: "librarySources",
-        type: "confirm",
-      });
-      options.librarySources = response.librarySources as boolean;
-    }
-
-    if (options.library === undefined) {
-      const response = await prompts({
-        initial: true,
-        message: "Run the library stage?",
-        name: "library",
-        type: "confirm",
-      });
-      options.library = response.library as boolean;
-    }
-
-    if (options.literature === undefined) {
-      const response = await prompts({
-        initial: true,
-        message: "Run the literature stage?",
-        name: "literature",
-        type: "confirm",
-      });
-      options.literature = response.literature as boolean;
-    }
+    await this.promptForMissingOptions(options);
 
     this.logger.log("🚀 Starting full ingestion pipeline");
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
 
-    let step = 1;
-
-    if (options.wikipedia) {
-      this.logger.log(
-        `🗂️ Step ${step++}: Ingesting Wikipedia (Wiktionary) pages 🌐`,
-      );
-      await this.wiktionaryCommand.run();
-    }
-
-    if (options.dictionary) {
-      this.logger.log(`🗂️ Step ${step++}: Processing dictionary lexemes 📖`);
-      await this.dictionaryCommand.ingestAll();
-    }
-
-    if (options.librarySources) {
-      this.logger.log(`🗂️ Step ${step++}: Downloading library sources 📥`);
-      await this.perseusCommand.run();
-      await this.latinLibraryCommand.run();
-      await this.corpusScriptorumEcclesiasticorumLatinorumCommand.run();
-      await this.epigraphikDatenbankClaussSlabyCommand.run();
-    }
-
-    if (options.library) {
-      this.logger.log(`🗂️ Step ${step++}: Parsing library into markdown 📝`);
-      await this.libraryCommand.run([], {});
-    }
-
-    if (options.literature) {
-      this.logger.log(`🗂️ Step ${step}: Ingesting literature texts 📜`);
-      await this.literatureCommand.run([], {});
-    }
+    await this.executeStages(options);
 
     this.logger.log("✅ Full ingestion pipeline complete 🎉");
   }

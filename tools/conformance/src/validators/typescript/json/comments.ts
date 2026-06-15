@@ -42,30 +42,56 @@ export function validateComments(args: {
 
   let startPosition = 0;
   for (const templateComment of templateComments) {
-    const index = instanceComments
-      .slice(startPosition)
-      .findIndex((instanceComment): boolean =>
-        TODO_LINE_REGEX.test(templateComment.text)
-          ? TODO_LINE_REGEX.test(instanceComment)
-          : instanceComment === templateComment.text,
-      );
+    const index = findMatchingComment(
+      instanceComments,
+      startPosition,
+      templateComment.text,
+    );
 
     if (index === -1) {
-      const templateLine = offsetToLine(templateText, templateComment.offset);
-      errors.push({
-        errorType: "comment",
-        expected: templateComment.text,
-        fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
-        language: "json",
-        message: `Missing comment: "${templateComment.text}"`,
-        templateLine,
-      });
+      errors.push(buildMissingCommentError(templateText, templateComment));
     } else {
       startPosition += index + 1;
     }
   }
 
   return errors;
+}
+
+/**
+ * Builds a ConformanceError for a template comment that could not be found in the instance.
+ */
+function buildMissingCommentError(
+  templateText: string,
+  templateComment: { offset: number; text: string },
+): ConformanceError {
+  const templateLine = offsetToLine(templateText, templateComment.offset);
+  return {
+    errorType: "comment",
+    expected: templateComment.text,
+    fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
+    language: "json",
+    message: `Missing comment: "${templateComment.text}"`,
+    templateLine,
+  };
+}
+
+/**
+ * Finds the first comment in `instanceComments` at or after `startPosition`
+ * that matches `templateText`, using loose matching for TODO comments.
+ */
+function findMatchingComment(
+  instanceComments: string[],
+  startPosition: number,
+  templateText: string,
+): number {
+  return instanceComments
+    .slice(startPosition)
+    .findIndex((instanceComment): boolean =>
+      TODO_LINE_REGEX.test(templateText)
+        ? TODO_LINE_REGEX.test(instanceComment)
+        : instanceComment === templateText,
+    );
 }
 
 /**

@@ -44,6 +44,68 @@ export class AnnualSolarCycleService {
 
   // 🔏 Private Methods
 
+  private getAdvancingProgressiveEvents(
+    aphelionEvents: Event[],
+    perihelionEvents: Event[],
+  ): Event[] {
+    const advancingPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        aphelionEvents,
+        perihelionEvents,
+        "Solar Advancing",
+      );
+    return advancingPairs.map(([beginning, ending]) =>
+      this.getSolarAdvancingDurationEvent(beginning, ending),
+    );
+  }
+
+  private getAutumnalToVernalEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    return [
+      ...this.getAutumnEvents(longitudes, date),
+      ...this.getWinterEvents(longitudes, date),
+    ];
+  }
+
+  // 🌎 Public Methods
+
+  private getAutumnEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    if (this.isAutumnalEquinox({ ...longitudes })) {
+      events.push(this.buildAutumnalEquinoxEvent(date));
+    }
+    if (this.isNinthHexadecan({ ...longitudes })) {
+      events.push(this.buildNinthHexadecanEvent(date));
+    }
+    if (this.isSamhain({ ...longitudes })) {
+      events.push(this.buildSamhainEvent(date));
+    }
+    if (this.isEleventhHexadecan({ ...longitudes })) {
+      events.push(this.buildEleventhHexadecanEvent(date));
+    }
+    return events;
+  }
+
+  private getRetreatingProgressiveEvents(
+    perihelionEvents: Event[],
+    aphelionEvents: Event[],
+  ): Event[] {
+    const retreatingPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        perihelionEvents,
+        aphelionEvents,
+        "Solar Retreating",
+      );
+    return retreatingPairs.map(([beginning, ending]) =>
+      this.getSolarRetreatingDurationEvent(beginning, ending),
+    );
+  }
+
   private getSolarAdvancingDurationEvent(
     beginning: Event,
     ending: Event,
@@ -55,6 +117,30 @@ export class AnnualSolarCycleService {
       start: beginning.start,
       summary: "☀️ 🔥 Solar Advancing",
     };
+  }
+
+  private getSolarDistances(
+    minute: Moment,
+    sunDistanceEphemeris: DistanceEphemeris,
+  ): { current: number; next: number; previous: number } {
+    const previousMinute = minute.clone().subtract(1, "minute");
+    const nextMinute = minute.clone().add(1, "minute");
+    const current = this.ephemerisService.getDistanceFromEphemeris(
+      sunDistanceEphemeris,
+      minute.toISOString(),
+      "distance",
+    );
+    const previous = this.ephemerisService.getDistanceFromEphemeris(
+      sunDistanceEphemeris,
+      previousMinute.toISOString(),
+      "distance",
+    );
+    const next = this.ephemerisService.getDistanceFromEphemeris(
+      sunDistanceEphemeris,
+      nextMinute.toISOString(),
+      "distance",
+    );
+    return { current, next, previous };
   }
 
   private getSolarRetreatingDurationEvent(
@@ -70,7 +156,75 @@ export class AnnualSolarCycleService {
     };
   }
 
-  // 🌎 Public Methods
+  private getSpringEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    if (this.isVernalEquinox({ ...longitudes })) {
+      events.push(this.buildVernalEquinoxEvent(date));
+    }
+    if (this.isFirstHexadecan({ ...longitudes })) {
+      events.push(this.buildFirstHexadecanEvent(date));
+    }
+    if (this.isBeltane({ ...longitudes })) {
+      events.push(this.buildBeltaneEvent(date));
+    }
+    if (this.isThirdHexadecan({ ...longitudes })) {
+      events.push(this.buildThirdHexadecanEvent(date));
+    }
+    return events;
+  }
+
+  private getSummerEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    if (this.isSummerSolstice({ ...longitudes })) {
+      events.push(this.buildSummerSolsticeEvent(date));
+    }
+    if (this.isFifthHexadecan({ ...longitudes })) {
+      events.push(this.buildFifthHexadecanEvent(date));
+    }
+    if (this.isLammas({ ...longitudes })) {
+      events.push(this.buildLammasEvent(date));
+    }
+    if (this.isSeventhHexadecan({ ...longitudes })) {
+      events.push(this.buildSeventhHexadecanEvent(date));
+    }
+    return events;
+  }
+
+  private getVernalToAutumnalEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    return [
+      ...this.getSpringEvents(longitudes, date),
+      ...this.getSummerEvents(longitudes, date),
+    ];
+  }
+
+  private getWinterEvents(
+    longitudes: { currentLongitude: number; previousLongitude: number },
+    date: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    if (this.isWinterSolstice({ ...longitudes })) {
+      events.push(this.buildWinterSolsticeEvent(date));
+    }
+    if (this.isThirteenthHexadecan({ ...longitudes })) {
+      events.push(this.buildThirteenthHexadecanEvent(date));
+    }
+    if (this.isImbolc({ ...longitudes })) {
+      events.push(this.buildImbolcEvent(date));
+    }
+    if (this.isFifteenthHexadecan({ ...longitudes })) {
+      events.push(this.buildFifteenthHexadecanEvent(date));
+    }
+    return events;
+  }
 
   /**
    * Creates an aphelion calendar event.
@@ -588,50 +742,19 @@ export class AnnualSolarCycleService {
    * so Earth moves faster when closer to the Sun (perihelion).
    */
   detectProgressive(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Filter to solar apsis events only
     const solarApsisEvents = events.filter((event) =>
       event.categories.includes("Annual Solar Cycle"),
     );
-
-    // Perihelion (closest to sun, moving fastest)
     const perihelionEvents = solarApsisEvents.filter((event) =>
       event.categories.includes("Perihelion"),
     );
-
-    // Aphelion (farthest from sun, moving slowest)
     const aphelionEvents = solarApsisEvents.filter((event) =>
       event.categories.includes("Aphelion"),
     );
-
-    // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
-    const advancingPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        aphelionEvents,
-        perihelionEvents,
-        "Solar Advancing",
-      );
-    for (const [beginning, ending] of advancingPairs) {
-      progressiveEvents.push(
-        this.getSolarAdvancingDurationEvent(beginning, ending),
-      );
-    }
-
-    // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
-    const retreatingPairs =
-      this.progressiveUtilitiesService.pairProgressiveEvents(
-        perihelionEvents,
-        aphelionEvents,
-        "Solar Retreating",
-      );
-    for (const [beginning, ending] of retreatingPairs) {
-      progressiveEvents.push(
-        this.getSolarRetreatingDurationEvent(beginning, ending),
-      );
-    }
-
-    return progressiveEvents;
+    return [
+      ...this.getAdvancingProgressiveEvents(aphelionEvents, perihelionEvents),
+      ...this.getRetreatingProgressiveEvents(perihelionEvents, aphelionEvents),
+    ];
   }
 
   /**
@@ -649,11 +772,7 @@ export class AnnualSolarCycleService {
     sunCoordinateEphemeris: CoordinateEphemeris;
   }): Event[] {
     const { minute, sunCoordinateEphemeris: ephemeris } = args;
-
     const previousMinute = minute.clone().subtract(1, "minute");
-
-    const annualSolarCycleEvents: Event[] = [];
-
     const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
       ephemeris,
       minute.toISOString(),
@@ -664,60 +783,11 @@ export class AnnualSolarCycleService {
       previousMinute.toISOString(),
       "longitude",
     );
-
     const longitudes = { currentLongitude, previousLongitude };
-    const date = minute;
-
-    if (this.isVernalEquinox({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildVernalEquinoxEvent(date));
-    }
-    if (this.isFirstHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildFirstHexadecanEvent(date));
-    }
-    if (this.isBeltane({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildBeltaneEvent(date));
-    }
-    if (this.isThirdHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildThirdHexadecanEvent(date));
-    }
-    if (this.isSummerSolstice({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildSummerSolsticeEvent(date));
-    }
-    if (this.isFifthHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildFifthHexadecanEvent(date));
-    }
-    if (this.isLammas({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildLammasEvent(date));
-    }
-    if (this.isSeventhHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildSeventhHexadecanEvent(date));
-    }
-    if (this.isAutumnalEquinox({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildAutumnalEquinoxEvent(date));
-    }
-    if (this.isNinthHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildNinthHexadecanEvent(date));
-    }
-    if (this.isSamhain({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildSamhainEvent(date));
-    }
-    if (this.isEleventhHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildEleventhHexadecanEvent(date));
-    }
-    if (this.isWinterSolstice({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildWinterSolsticeEvent(date));
-    }
-    if (this.isThirteenthHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildThirteenthHexadecanEvent(date));
-    }
-    if (this.isImbolc({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildImbolcEvent(date));
-    }
-    if (this.isFifteenthHexadecan({ ...longitudes })) {
-      annualSolarCycleEvents.push(this.buildFifteenthHexadecanEvent(date));
-    }
-
-    return annualSolarCycleEvents;
+    return [
+      ...this.getVernalToAutumnalEvents(longitudes, minute),
+      ...this.getAutumnalToVernalEvents(longitudes, minute),
+    ];
   }
 
   /**
@@ -754,44 +824,14 @@ export class AnnualSolarCycleService {
     sunDistanceEphemeris: DistanceEphemeris;
   }): Event[] {
     const { minute, sunDistanceEphemeris } = args;
-
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
+    const distances = this.getSolarDistances(minute, sunDistanceEphemeris);
     const solarApsisEvents: Event[] = [];
-
-    const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
-      sunDistanceEphemeris,
-      minute.toISOString(),
-      "distance",
-    );
-    const previousDistance = this.ephemerisService.getDistanceFromEphemeris(
-      sunDistanceEphemeris,
-      previousMinute.toISOString(),
-      "distance",
-    );
-    const nextDistance = this.ephemerisService.getDistanceFromEphemeris(
-      sunDistanceEphemeris,
-      nextMinute.toISOString(),
-      "distance",
-    );
-
-    const distances = {
-      current: currentDistance,
-      next: nextDistance,
-      previous: previousDistance,
-    };
-
-    const date = minute;
-
     if (this.mathService.isMaximum({ ...distances })) {
-      solarApsisEvents.push(this.buildAphelionEvent(date));
+      solarApsisEvents.push(this.buildAphelionEvent(minute));
     }
-
     if (this.mathService.isMinimum({ ...distances })) {
-      solarApsisEvents.push(this.buildPerihelionEvent(date));
+      solarApsisEvents.push(this.buildPerihelionEvent(minute));
     }
-
     return solarApsisEvents;
   }
 

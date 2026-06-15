@@ -45,6 +45,46 @@ export async function generateNestjsDataloaderModule(
     subject: "Module name",
   });
 
+  const modulesDirectory = resolveProjectRoot(tree, projectName);
+  const targetPath = path.join(modulesDirectory, nameKebabCase);
+  const substitutions = buildSubstitutions(nameKebabCase);
+
+  generateFiles({
+    instanceDirectoryPath: targetPath,
+    substitutions,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
+  });
+
+  const generatedFiles = tree
+    .children(targetPath)
+    .map((file) => path.join(targetPath, file));
+
+  return buildGeneratorCallback(generatedFiles);
+}
+
+function buildGeneratorCallback(generatedFiles: string[]): GeneratorCallback {
+  return () => {
+    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
+      cwd: workspaceRoot,
+      stdio: "inherit",
+    });
+  };
+}
+
+function buildSubstitutions(nameKebabCase: string): {
+  nameCamelCase: string;
+  nameKebabCase: string;
+  namePascalCase: string;
+} {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
+
+function resolveProjectRoot(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);
   const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
@@ -63,28 +103,5 @@ export async function generateNestjsDataloaderModule(
     );
   }
 
-  const targetPath = path.join(modulesDirectory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((file) => path.join(targetPath, file));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
+  return modulesDirectory;
 }

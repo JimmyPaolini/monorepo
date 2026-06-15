@@ -100,37 +100,46 @@ export class MonthlyLunarCycleService {
    * // Returns: { summary: "🌕 🌑 New Moon", start: Jan 1, end: Jan 8, categories: [..., "New"] }
    * ```
    */
-  private getMonthlyLunarCycleProgressiveEvent(
-    entering: Event,
-    exiting: Event,
-  ): Event | null {
-    const categories = entering.categories;
-
-    // Extract the lunar phase
+  private extractLunarPhaseFromCategories(
+    categories: string[],
+    enteringSummary: string,
+  ): LunarPhase | null {
     const capitalizedLunarPhases = new Set(
       lunarPhases.map((phase) => _.startCase(phase)),
     );
     const lunarPhaseCapitalized = categories.find((category) =>
       capitalizedLunarPhases.has(category),
     );
-
     if (!lunarPhaseCapitalized) {
       this.logger.warn(
         `⚠️ Could not extract lunar phase from categories: ${categories.join(
           ", ",
-        )} - skipping progressive event for ${entering.summary}`,
+        )} - skipping progressive event for ${enteringSummary}`,
       );
-      return null; // Skip this invalid event
+      return null;
     }
-
     const lunarPhaseLower = lunarPhaseCapitalized.toLowerCase();
     if (!isLunarPhase(lunarPhaseLower)) {
       this.logger.warn(`⚠️ Unknown lunar phase: ${lunarPhaseLower}`);
       return null;
     }
-    const lunarPhase = lunarPhaseLower;
-    const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
+    return lunarPhaseLower;
+  }
 
+  private getMonthlyLunarCycleProgressiveEvent(
+    entering: Event,
+    exiting: Event,
+  ): Event | null {
+    const categories = entering.categories;
+    const lunarPhase = this.extractLunarPhaseFromCategories(
+      categories,
+      entering.summary,
+    );
+    if (!lunarPhase) {
+      return null;
+    }
+    const lunarPhaseCapitalized = _.startCase(lunarPhase);
+    const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
     return {
       categories: [
         "Astronomy",
@@ -144,6 +153,34 @@ export class MonthlyLunarCycleService {
       start: entering.start,
       summary: `🌙 ${lunarPhaseSymbol} ${lunarPhaseCapitalized} Moon`,
     };
+  }
+
+  private getNextIlluminations(
+    moonIlluminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, marginIndex) => {
+      const m = minute.clone().add(marginIndex + 1, "minutes");
+      return this.ephemerisService.getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        m.toISOString(),
+        "nextIllumination",
+      );
+    });
+  }
+
+  private getPreviousIlluminations(
+    moonIlluminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, marginIndex) => {
+      const m = minute.clone().subtract(marginIndex + 1, "minutes");
+      return this.ephemerisService.getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        m.toISOString(),
+        "previousIllumination",
+      );
+    });
   }
 
   private isFullMoon(args: {
@@ -167,43 +204,22 @@ export class MonthlyLunarCycleService {
     previousIlluminations: number[];
   }): boolean {
     const { lunarPhase, ...illuminations } = args;
-
     if (lunarPhase === "new") {
       return this.isNewMoon({ ...illuminations });
     }
     if (lunarPhase === "full") {
       return this.isFullMoon({ ...illuminations });
     }
-
     const { currentIllumination, previousIlluminations } = illuminations;
     const previousIllumination = previousIlluminations[0];
     if (!previousIllumination) {
       return false;
     }
-
-    const illumination =
-      MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
-
-    const isWaxing = currentIllumination > previousIllumination;
-    const isWaning = currentIllumination < previousIllumination;
-    const isCrossingUp =
-      currentIllumination > illumination &&
-      previousIllumination <= illumination;
-    const isCrossingDown =
-      currentIllumination < illumination &&
-      previousIllumination >= illumination;
-    const isPhase = isCrossingUp || isCrossingDown;
-
-    const isWaxingLunarPhase = isPhase && isWaxing;
-    const isWaningLunarPhase = isPhase && isWaning;
-
-    if (MonthlyLunarCycleService.waxingPhases.has(lunarPhase)) {
-      return isWaxingLunarPhase;
-    }
-    if (MonthlyLunarCycleService.waningPhases.has(lunarPhase)) {
-      return isWaningLunarPhase;
-    }
-    return false;
+    return this.isQuarterPhase({
+      currentIllumination,
+      lunarPhase,
+      previousIllumination,
+    });
   }
 
   private isNewMoon(args: {
@@ -218,6 +234,32 @@ export class MonthlyLunarCycleService {
       currentIllumination <= Math.min(...nextIlluminations) &&
       currentIllumination < 50
     );
+  }
+
+  private isQuarterPhase(args: {
+    currentIllumination: number;
+    lunarPhase: LunarPhase;
+    previousIllumination: number;
+  }): boolean {
+    const { currentIllumination, lunarPhase, previousIllumination } = args;
+    const illumination =
+      MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
+    const isWaxing = currentIllumination > previousIllumination;
+    const isWaning = currentIllumination < previousIllumination;
+    const isCrossingUp =
+      currentIllumination > illumination &&
+      previousIllumination <= illumination;
+    const isCrossingDown =
+      currentIllumination < illumination &&
+      previousIllumination >= illumination;
+    const isPhase = isCrossingUp || isCrossingDown;
+    if (MonthlyLunarCycleService.waxingPhases.has(lunarPhase)) {
+      return isPhase && isWaxing;
+    }
+    if (MonthlyLunarCycleService.waningPhases.has(lunarPhase)) {
+      return isPhase && isWaning;
+    }
+    return false;
   }
 
   // 🌎 Public Methods
@@ -292,9 +334,7 @@ export class MonthlyLunarCycleService {
    * waxing), full (100%), and third quarter (50% waning). Uses {@link MARGIN_MINUTES}
    * window for robust extrema detection.
    *
-   * @param args - Ephemeris data and current time
-   * @param currentMinute - Time point to check for phase events (minute precision)
-   * @param moonIlluminationEphemeris - Pre-computed Moon illumination data
+   * @param args - Ephemeris data and current time, including minute and moonIlluminationEphemeris
    * @returns Array of calendar events for detected lunar phases (0-1 events per call)
    *
    * @remarks
@@ -325,55 +365,29 @@ export class MonthlyLunarCycleService {
     moonIlluminationEphemeris: IlluminationEphemeris;
   }): Event[] {
     const { minute, moonIlluminationEphemeris } = args;
-
-    const monthlyLunarCycleEvents: Event[] = [];
-
     const currentIllumination =
       this.ephemerisService.getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "currentIllumination",
       );
-
-    const previousIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().subtract(marginIndex + 1, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          moonIlluminationEphemeris,
-          m.toISOString(),
-          "previousIllumination",
-        );
-      },
+    const previousIlluminations = this.getPreviousIlluminations(
+      moonIlluminationEphemeris,
+      minute,
     );
-
-    const nextIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          moonIlluminationEphemeris,
-          m.toISOString(),
-          "nextIllumination",
-        );
-      },
+    const nextIlluminations = this.getNextIlluminations(
+      moonIlluminationEphemeris,
+      minute,
     );
-
+    const illuminations = { currentIllumination, nextIlluminations, previousIlluminations };
+    const monthlyLunarCycleEvents: Event[] = [];
     for (const lunarPhase of lunarPhases) {
-      if (
-        this.isLunarPhase({
-          currentIllumination,
-          lunarPhase,
-          nextIlluminations,
-          previousIlluminations,
-        })
-      ) {
+      if (this.isLunarPhase({ ...illuminations, lunarPhase })) {
         monthlyLunarCycleEvents.push(
           this.buildMonthlyLunarCycleEvent({ date: minute, lunarPhase }),
         );
       }
     }
-
     return monthlyLunarCycleEvents;
   }
 

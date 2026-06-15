@@ -63,6 +63,66 @@ export function validateMarkdownConformance(args: {
   return { errors };
 }
 
+// ---------------------------------------------------------------------------
+// buildError helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Lookup map: node type → function that returns the human-readable error
+ * message for a missing node of that type.  Using a map avoids a large
+ * switch statement, keeping `buildErrorMessage` below the complexity limit.
+ */
+const ERROR_MESSAGE_BUILDERS: Partial<
+  Record<MdastNode["type"], (node: MdastNode) => string>
+> = {
+  blockquote: (n) => `Expected blockquote: "${toString(n)}"`,
+  break: (n) => `Expected break: "${toString(n)}"`,
+  code: (n) =>
+    isCode(n)
+      ? `Expected code block (${n.lang ?? "(none)"}): "${n.value}"`
+      : `Expected code block`,
+  definition: (n) => `Expected definition: "${toString(n)}"`,
+  delete: (n) => `Expected strikethrough text: "${toString(n)}"`,
+  emphasis: (n) => `Expected italic text: "${toString(n)}"`,
+  footnoteDefinition: (n) => `Expected footnoteDefinition: "${toString(n)}"`,
+  footnoteReference: (n) => `Expected footnoteReference: "${toString(n)}"`,
+  heading: (n) =>
+    isHeading(n)
+      ? `Expected heading (h${n.depth}): "${toString(n)}"`
+      : `Expected heading: "${toString(n)}"`,
+  html: (n) =>
+    isHtml(n) ? `Expected HTML block: "${n.value}"` : `Expected HTML block`,
+  image: (n) =>
+    isImage(n)
+      ? `Expected image "${n.alt ?? ""}" at "${n.url}"`
+      : `Expected image`,
+  imageReference: (n) => `Expected imageReference: "${toString(n)}"`,
+  inlineCode: (n) =>
+    isInlineCode(n)
+      ? `Expected inline code: \`${n.value}\``
+      : `Expected inline code`,
+  inlineMath: (n) => `Expected inlineMath: "${toString(n)}"`,
+  link: (n) =>
+    isLink(n)
+      ? `Expected link to "${n.url}": "${toString(n)}"`
+      : `Expected link: "${toString(n)}"`,
+  linkReference: (n) => `Expected linkReference: "${toString(n)}"`,
+  list: (n) =>
+    isList(n)
+      ? `Expected ${n.ordered ? "ordered" : "unordered"} list`
+      : `Expected list`,
+  listItem: (n) => `Expected list item: "${toString(n)}"`,
+  math: (n) => `Expected math: "${toString(n)}"`,
+  paragraph: (n) => `Expected paragraph: "${toString(n)}"`,
+  strong: (n) => `Expected bold text: "${toString(n)}"`,
+  table: (_n) => `Expected table`,
+  tableCell: (n) => `Expected table cell: "${toString(n)}"`,
+  tableRow: (n) => `Expected table row: "${toString(n)}"`,
+  text: (n) => (isText(n) ? `Expected text: "${n.value}"` : `Expected text`),
+  thematicBreak: (_n) => `Expected thematic break (---)`,
+  yaml: (n) => `Expected yaml: "${toString(n)}"`,
+};
+
 /**
  * Builds a structured `ConformanceError` for a template node that could not be
  * found in the instance.
@@ -75,102 +135,186 @@ function buildError(
   node: MdastNode,
   instanceHint?: MdastNode,
 ): ConformanceError {
+  return {
+    errorType: "code",
+    fix: `Add the missing ${node.type} to the instance file. See the template for the expected content.`,
+    language: "markdown",
+    message: buildErrorMessage(node),
+    ...buildErrorPositions(node, instanceHint),
+  };
+}
+
+/** Returns the human-readable error message for a missing node. */
+function buildErrorMessage(node: MdastNode): string {
+  const builder = ERROR_MESSAGE_BUILDERS[node.type];
+  return builder ? builder(node) : `Expected ${node.type}: "${toString(node)}"`;
+}
+
+/** Assembles the optional position fields for a `ConformanceError`. */
+function buildErrorPositions(
+  node: MdastNode,
+  instanceHint: MdastNode | undefined,
+): Partial<ConformanceError> {
   const templateLine = node.position?.start.line;
   const templateColumn = node.position?.start.column;
-
-  // Point to the line after the last matched instance node as an insertion hint.
   const instanceLine =
     instanceHint === undefined
       ? undefined
       : (instanceHint.position?.end.line ?? 1) + 1;
   const instanceColumn = instanceLine === undefined ? undefined : 1;
-
-  function make(message: string): ConformanceError {
-    const base: ConformanceError = {
-      errorType: "code",
-      fix: `Add the missing ${node.type} to the instance file. See the template for the expected content.`,
-      language: "markdown",
-      message,
-    };
-    return {
-      ...base,
-      ...(instanceLine === undefined ? {} : { instanceLine }),
-      ...(instanceColumn === undefined ? {} : { instanceColumn }),
-      ...(templateLine === undefined ? {} : { templateLine }),
-      ...(templateColumn === undefined ? {} : { templateColumn }),
-    };
-  }
-
-  switch (node.type) {
-    case "blockquote": {
-      return make(`Expected blockquote: "${toString(node)}"`);
-    }
-    case "break":
-    case "definition":
-    case "footnoteDefinition":
-    case "footnoteReference":
-    case "imageReference":
-    case "inlineMath":
-    case "linkReference":
-    case "math":
-    case "yaml": {
-      return make(`Expected ${node.type}: "${toString(node)}"`);
-    }
-    case "code": {
-      const lang = node.lang ?? "(none)";
-      return make(`Expected code block (${lang}): "${node.value}"`);
-    }
-    case "delete": {
-      return make(`Expected strikethrough text: "${toString(node)}"`);
-    }
-    case "emphasis": {
-      return make(`Expected italic text: "${toString(node)}"`);
-    }
-    case "heading": {
-      return make(`Expected heading (h${node.depth}): "${toString(node)}"`);
-    }
-    case "html": {
-      return make(`Expected HTML block: "${node.value}"`);
-    }
-    case "image": {
-      const img = node;
-      return make(`Expected image "${img.alt ?? ""}" at "${img.url}"`);
-    }
-    case "inlineCode": {
-      return make(`Expected inline code: \`${node.value}\``);
-    }
-    case "link": {
-      return make(`Expected link to "${node.url}": "${toString(node)}"`);
-    }
-    case "list": {
-      return make(`Expected ${node.ordered ? "ordered" : "unordered"} list`);
-    }
-    case "listItem": {
-      return make(`Expected list item: "${toString(node)}"`);
-    }
-    case "paragraph": {
-      return make(`Expected paragraph: "${toString(node)}"`);
-    }
-    case "strong": {
-      return make(`Expected bold text: "${toString(node)}"`);
-    }
-    case "table": {
-      return make(`Expected table`);
-    }
-    case "tableCell": {
-      return make(`Expected table cell: "${toString(node)}"`);
-    }
-    case "tableRow": {
-      return make(`Expected table row: "${toString(node)}"`);
-    }
-    case "text": {
-      return make(`Expected text: "${node.value}"`);
-    }
-    case "thematicBreak": {
-      return make(`Expected thematic break (---)`);
-    }
-  }
+  return definedEntries({
+    instanceColumn,
+    instanceLine,
+    templateColumn,
+    templateLine,
+  });
 }
+
+/** Filters out undefined values from a record of optional position fields. */
+function definedEntries(
+  fields: Record<string, number | undefined>,
+): Partial<ConformanceError> {
+  return Object.fromEntries(
+    Object.entries(fields).filter(([, v]) => v !== undefined),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// nodesMatch helpers
+// ---------------------------------------------------------------------------
+
+/** Matches node types whose equality is determined purely by text content. */
+function matchByText(template: MdastNode, instance: MdastNode): boolean {
+  return textMatches(toString(template), toString(instance));
+}
+
+/** Matches a code node by language and value. */
+function matchCode(template: MdastNode, instance: MdastNode): boolean {
+  if (isCode(template) && isCode(instance)) {
+    return (
+      template.lang === instance.lang &&
+      textMatches(template.value, instance.value)
+    );
+  }
+  return false;
+}
+
+/** Matches a heading node by depth and text. */
+function matchHeading(template: MdastNode, instance: MdastNode): boolean {
+  if (isHeading(template) && isHeading(instance)) {
+    return (
+      template.depth === instance.depth &&
+      textMatches(toString(template), toString(instance))
+    );
+  }
+  return false;
+}
+
+/** Matches an html node by value. */
+function matchHtml(template: MdastNode, instance: MdastNode): boolean {
+  if (isHtml(template) && isHtml(instance)) {
+    return textMatches(template.value, instance.value);
+  }
+  return false;
+}
+
+/** Matches an image node by url and alt text. */
+function matchImage(template: MdastNode, instance: MdastNode): boolean {
+  if (isImage(template) && isImage(instance)) {
+    return (
+      textMatches(template.url, instance.url) &&
+      (template.alt ?? "") === (instance.alt ?? "")
+    );
+  }
+  return false;
+}
+
+/** Matches an inlineCode node by value. */
+function matchInlineCode(template: MdastNode, instance: MdastNode): boolean {
+  if (isInlineCode(template) && isInlineCode(instance)) {
+    return textMatches(template.value, instance.value);
+  }
+  return false;
+}
+
+/** Matches a link node by url and text content. */
+function matchLink(template: MdastNode, instance: MdastNode): boolean {
+  if (isLink(template) && isLink(instance)) {
+    return (
+      textMatches(template.url, instance.url) &&
+      textMatches(toString(template), toString(instance))
+    );
+  }
+  return false;
+}
+
+/** Matches a list node by ordered flag. */
+function matchList(template: MdastNode, instance: MdastNode): boolean {
+  if (isList(template) && isList(instance)) {
+    return template.ordered === instance.ordered;
+  }
+  return false;
+}
+
+/** Matches a table node by first-row column count. */
+function matchTable(template: MdastNode, instance: MdastNode): boolean {
+  if (isTable(template) && isTable(instance)) {
+    const templateRow = template.children[0];
+    const instanceRow = instance.children[0];
+    if (templateRow === undefined || instanceRow === undefined) return true;
+    return templateRow.children.length === instanceRow.children.length;
+  }
+  return false;
+}
+
+/** Matches a tableRow by child count so cell-level errors surface during recursion. */
+function matchTableRow(template: MdastNode, instance: MdastNode): boolean {
+  return getNodeChildren(template).length === getNodeChildren(instance).length;
+}
+
+/** Matches a text node by value. */
+function matchText(template: MdastNode, instance: MdastNode): boolean {
+  if (isText(template) && isText(instance)) {
+    return textMatches(template.value, instance.value);
+  }
+  return false;
+}
+
+/**
+ * Lookup map: node type → matcher function used by `nodesMatch`.
+ * Using a map instead of a switch avoids cyclomatic-complexity accumulation.
+ */
+const NODE_MATCHERS: Partial<
+  Record<MdastNode["type"], (t: MdastNode, index: MdastNode) => boolean>
+> = {
+  blockquote: matchByText,
+  break: matchByText,
+  code: matchCode,
+  definition: matchByText,
+  delete: matchByText,
+  emphasis: matchByText,
+  footnoteDefinition: matchByText,
+  footnoteReference: matchByText,
+  heading: matchHeading,
+  html: matchHtml,
+  image: matchImage,
+  imageReference: matchByText,
+  inlineCode: matchInlineCode,
+  inlineMath: matchByText,
+  link: matchLink,
+  linkReference: matchByText,
+  list: matchList,
+  listItem: matchByText,
+  math: matchByText,
+  paragraph: matchByText,
+  strong: matchByText,
+  table: matchTable,
+  tableCell: matchByText,
+  tableRow: matchTableRow,
+  text: matchText,
+  thematicBreak: () => true,
+  yaml: matchByText,
+};
 
 /**
  * Returns `true` when `instance` is a valid match for `template`. Matching
@@ -182,108 +326,98 @@ function buildError(
  */
 function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
   if (template.type !== instance.type) return false;
+  const matcher = NODE_MATCHERS[template.type];
+  return matcher ? matcher(template, instance) : false;
+}
 
-  switch (template.type) {
-    case "blockquote":
-    case "delete":
-    case "emphasis":
-    case "listItem":
-    case "paragraph":
-    case "strong":
-    case "tableCell": {
-      return textMatches(toString(template), toString(instance));
-    }
-    case "break":
-    case "definition":
-    case "footnoteDefinition":
-    case "footnoteReference":
-    case "imageReference":
-    case "inlineMath":
-    case "linkReference":
-    case "math":
-    case "yaml": {
-      return textMatches(toString(template), toString(instance));
-    }
-    case "code": {
-      if (isCode(template) && isCode(instance)) {
-        return (
-          template.lang === instance.lang &&
-          textMatches(template.value, instance.value)
-        );
-      }
-      return false;
-    }
-    case "heading": {
-      if (isHeading(template) && isHeading(instance)) {
-        return (
-          template.depth === instance.depth &&
-          textMatches(toString(template), toString(instance))
-        );
-      }
-      return false;
-    }
-    case "html": {
-      if (isHtml(template) && isHtml(instance)) {
-        return textMatches(template.value, instance.value);
-      }
-      return false;
-    }
-    case "image": {
-      if (isImage(template) && isImage(instance)) {
-        return (
-          textMatches(template.url, instance.url) &&
-          (template.alt ?? "") === (instance.alt ?? "")
-        );
-      }
-      return false;
-    }
-    case "inlineCode": {
-      if (isInlineCode(template) && isInlineCode(instance)) {
-        return textMatches(template.value, instance.value);
-      }
-      return false;
-    }
-    case "link": {
-      if (isLink(template) && isLink(instance)) {
-        return (
-          textMatches(template.url, instance.url) &&
-          textMatches(toString(template), toString(instance))
-        );
-      }
-      return false;
-    }
-    case "list": {
-      if (isList(template) && isList(instance)) {
-        return template.ordered === instance.ordered;
-      }
-      return false;
-    }
-    case "table": {
-      if (isTable(template) && isTable(instance)) {
-        const templateRow = template.children[0];
-        const instanceRow = instance.children[0];
-        if (templateRow === undefined || instanceRow === undefined) return true;
-        return templateRow.children.length === instanceRow.children.length;
-      }
-      return false;
-    }
-    case "tableRow": {
-      // Match rows by cell count so that cell-level errors surface during child
-      // recursion rather than being swallowed by a whole-row text mismatch.
-      return (
-        getNodeChildren(template).length === getNodeChildren(instance).length
-      );
-    }
-    case "text": {
-      if (isText(template) && isText(instance)) {
-        return textMatches(template.value, instance.value);
-      }
-      return false;
-    }
-    case "thematicBreak": {
-      return true;
+// ---------------------------------------------------------------------------
+// validateMdastChildren helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Among `candidates`, pick the one whose children produce the fewest errors
+ * when validated against `templateGrandchildren`.
+ * Returns `{ bestCandidate, minimumErrors }`.
+ */
+function pickBestCandidate(
+  templateGrandchildren: readonly MdastNode[],
+  candidates: readonly MdastNode[],
+): { bestCandidate: MdastNode; minimumErrors: ConformanceError[] } {
+  let minimumErrors: ConformanceError[] = [];
+  let minimumErrorCount = Infinity;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  let bestCandidate: MdastNode = candidates[0]!;
+
+  for (const candidate of candidates) {
+    const childErrors = validateMdastChildren(
+      templateGrandchildren,
+      getNodeChildren(candidate),
+    );
+    if (childErrors.length < minimumErrorCount) {
+      minimumErrorCount = childErrors.length;
+      minimumErrors = childErrors;
+      bestCandidate = candidate;
     }
   }
+
+  return { bestCandidate, minimumErrors };
+}
+
+/**
+ * Processes a single container `templateChild` against `instanceChildren`,
+ * returning the errors produced by the best-matching candidate and updating
+ * `lastMatchedInstanceNode`.
+ */
+function processContainerChild(
+  templateChild: MdastNode,
+  instanceChildren: readonly MdastNode[],
+  lastMatchedInstanceNode: MdastNode | undefined,
+): {
+  errors: ConformanceError[];
+  lastMatched: MdastNode | undefined;
+} {
+  const candidates = instanceChildren.filter((ic) =>
+    nodesMatch(templateChild, ic),
+  );
+
+  if (candidates.length === 0) {
+    return {
+      errors: [buildError(templateChild, lastMatchedInstanceNode)],
+      lastMatched: lastMatchedInstanceNode,
+    };
+  }
+
+  const templateGrandchildren = getNodeChildren(templateChild);
+  if (templateGrandchildren.length === 0) {
+    return { errors: [], lastMatched: candidates.at(-1) };
+  }
+
+  const { bestCandidate, minimumErrors } = pickBestCandidate(
+    templateGrandchildren,
+    candidates,
+  );
+  return { errors: minimumErrors, lastMatched: bestCandidate };
+}
+
+/** Processes a single leaf `templateChild` and returns updated match state. */
+function processLeafChild(
+  templateChild: MdastNode,
+  instanceChildren: readonly MdastNode[],
+  lastMatchedInstanceNode: MdastNode | undefined,
+): {
+  errors: ConformanceError[];
+  lastMatched: MdastNode | undefined;
+} {
+  const candidates = instanceChildren.filter((ic) =>
+    nodesMatch(templateChild, ic),
+  );
+  if (candidates.length === 0) {
+    return {
+      errors: [buildError(templateChild, lastMatchedInstanceNode)],
+      lastMatched: lastMatchedInstanceNode,
+    };
+  }
+  return { errors: [], lastMatched: candidates.at(-1) };
 }
 
 /**
@@ -305,60 +439,26 @@ function validateMdastChildren(
   instanceChildren: readonly MdastNode[],
 ): ConformanceError[] {
   const errors: ConformanceError[] = [];
-
-  // Track the last instance node that was successfully matched so that missing
-  // nodes can report a meaningful "insert after" instance location.
   let lastMatchedInstanceNode: MdastNode | undefined;
 
   for (const templateChild of templateChildren) {
-    // Plain text nodes are captured by the parent's textMatches — skip them.
     if (templateChild.type === "text") continue;
 
-    const candidates = instanceChildren.filter((ic) =>
-      nodesMatch(templateChild, ic),
-    );
+    const isContainer = CONTAINER_TYPES.has(templateChild.type);
+    const result = isContainer
+      ? processContainerChild(
+          templateChild,
+          instanceChildren,
+          lastMatchedInstanceNode,
+        )
+      : processLeafChild(
+          templateChild,
+          instanceChildren,
+          lastMatchedInstanceNode,
+        );
 
-    if (candidates.length === 0) {
-      errors.push(buildError(templateChild, lastMatchedInstanceNode));
-      continue;
-    }
-
-    // For leaf node types, a match is sufficient — no child recursion needed.
-    if (!CONTAINER_TYPES.has(templateChild.type)) {
-      lastMatchedInstanceNode = candidates.at(-1);
-      continue;
-    }
-
-    const templateGrandchildren = getNodeChildren(templateChild);
-    if (templateGrandchildren.length === 0) {
-      lastMatchedInstanceNode = candidates.at(-1);
-      continue;
-    }
-
-    // Pick the candidate whose children produce the fewest errors.
-    let minimumErrors: ConformanceError[] = [];
-    let minimumErrorCount = Infinity;
-    const firstCandidate = candidates.at(0);
-    if (!firstCandidate) {
-      return [];
-    }
-    let bestCandidate: MdastNode = firstCandidate;
-
-    for (const candidate of candidates) {
-      const candidateChildren = getNodeChildren(candidate);
-      const childErrors = validateMdastChildren(
-        templateGrandchildren,
-        candidateChildren,
-      );
-      if (childErrors.length < minimumErrorCount) {
-        minimumErrorCount = childErrors.length;
-        minimumErrors = childErrors;
-        bestCandidate = candidate;
-      }
-    }
-
-    lastMatchedInstanceNode = bestCandidate;
-    errors.push(...minimumErrors);
+    errors.push(...result.errors);
+    lastMatchedInstanceNode = result.lastMatched;
   }
 
   return errors;

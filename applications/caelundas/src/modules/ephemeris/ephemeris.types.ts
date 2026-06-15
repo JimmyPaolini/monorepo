@@ -77,6 +77,17 @@ export type DistanceEphemerisBody = Extract<
 >;
 
 /**
+ * Aggregated ephemeris data for all tracked bodies.
+ */
+export interface Ephemerides {
+  azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
+  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+  diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
+  distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+  illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+}
+
+/**
  * Time-indexed ephemeris of illumination fraction.
  *
  * Keys are ISO timestamps, values are illumination percentages (0-100).

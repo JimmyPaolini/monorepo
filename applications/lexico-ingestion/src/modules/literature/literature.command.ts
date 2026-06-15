@@ -390,16 +390,16 @@ export class LiteratureCommand extends CommandRunner {
     }[] = [];
 
     async function walk(
-      dir: string,
+      directory: string,
       currentPathParts: string[],
       providerName: string,
       authorSlug: string,
     ): Promise<void> {
-      const entries = await fs.readdir(dir, { withFileTypes: true });
+      const entries = await fs.readdir(directory, { withFileTypes: true });
       for (const entry of entries) {
         if (entry.isDirectory()) {
           await walk(
-            path.join(dir, entry.name),
+            path.join(directory, entry.name),
             [...currentPathParts, entry.name],
             providerName,
             authorSlug,
@@ -407,7 +407,7 @@ export class LiteratureCommand extends CommandRunner {
         } else if (entry.isFile() && entry.name.endsWith(".md")) {
           texts.push({
             authorSlug,
-            fullPath: path.join(dir, entry.name),
+            fullPath: path.join(directory, entry.name),
             pathParts: currentPathParts,
             provider: providerName,
             textSlug: path.basename(entry.name, ".md"),

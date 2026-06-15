@@ -46,45 +46,16 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
-  private async fetchChunk(start: number): Promise<boolean> {
-    const chunkFile = path.join(this.dataDirectory, `chunk-${start}.json`);
-
-    try {
-      // Check if file already exists
-      await fs.access(chunkFile);
-      this.logger.log(`⏭️ Chunk ${start} already exists, skipping.`);
-      return true; // continue to next chunk
-    } catch {
-      // File doesn't exist, proceed with download
-    }
-
+  private async downloadChunkData(
+    start: number,
+    chunkFile: string,
+  ): Promise<boolean> {
     this.logger.log(
       `📥 Fetching records ${start} to ${start + this.batchSize}...`,
     );
 
     try {
-      const res = await fetch(
-        `${this.host}?start=${start}&length=${this.batchSize}`,
-      );
-      if (!res.ok) {
-        this.logger.warn(`⚠️ Failed to fetch records: ${res.statusText}`);
-        return true; // continue trying next ones? or false to abort? let's continue.
-      }
-
-      const data = (await res.json()) as { data: unknown[] };
-
-      // Stop if there are no more records
-      // The API returns { data: [] } when empty
-      if (Array.isArray(data.data) && data.data.length === 0) {
-        this.logger.log(`🛑 No more records found after ${start}. Stopping.`);
-        return false; // Stop loop
-      }
-
-      await fs.writeFile(chunkFile, JSON.stringify(data, null, 2), "utf8");
-
-      // Small delay to be polite to the API
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      return true;
+      return await this.saveChunkData(start, chunkFile);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.stack || error.message : String(error);
@@ -97,6 +68,45 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       );
       return true;
     }
+  }
+
+  private async fetchChunk(start: number): Promise<boolean> {
+    const chunkFile = path.join(this.dataDirectory, `chunk-${start}.json`);
+
+    try {
+      await fs.access(chunkFile);
+      this.logger.log(`⏭️ Chunk ${start} already exists, skipping.`);
+      return true; // continue to next chunk
+    } catch {
+      // File doesn't exist, proceed with download
+    }
+
+    return this.downloadChunkData(start, chunkFile);
+  }
+
+  private async saveChunkData(
+    start: number,
+    chunkFile: string,
+  ): Promise<boolean> {
+    const response = await fetch(
+      `${this.host}?start=${start}&length=${this.batchSize}`,
+    );
+    if (!response.ok) {
+      this.logger.warn(`⚠️ Failed to fetch records: ${response.statusText}`);
+      return true;
+    }
+
+    const data = (await response.json()) as { data: unknown[] };
+
+    if (Array.isArray(data.data) && data.data.length === 0) {
+      this.logger.log(`🛑 No more records found after ${start}. Stopping.`);
+      return false;
+    }
+
+    await fs.writeFile(chunkFile, JSON.stringify(data, null, 2), "utf8");
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return true;
   }
 
   // 🌎 Public Methods

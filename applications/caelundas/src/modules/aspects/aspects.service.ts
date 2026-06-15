@@ -58,9 +58,98 @@ export class AspectsService {
 
   // 🔏 Private Methods
 
+  private applyEventToMap(
+    map: Map<string, AspectBodies>,
+    event: Event,
+    lowercaseBodies: string[],
+  ): void {
+    const parsed = this.parseSimpleAspectEvent(event, lowercaseBodies);
+    if (!parsed) return;
+    const { aspect, body1, body2, isDissolving } = parsed;
+    const key = this.makeKey(body1, body2, aspect);
+    if (isDissolving) {
+      map.delete(key);
+    } else if (!map.has(key)) {
+      map.set(key, { aspect, bodies: [body1, body2] });
+    }
+  }
+
+  private detectCompositeAspects(
+    currentAspectBodies: AspectBodies[],
+    minute: Moment,
+    previousAspectBodies: AspectBodies[],
+  ): Event[] {
+    const sharedArguments = {
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+    };
+    return [
+      ...this.tripleAspectsService.detect(sharedArguments),
+      ...this.quadrupleAspectsService.detect(sharedArguments),
+      ...this.quintupleAspectsService.detect(sharedArguments),
+      ...this.sextupleAspectsService.detect(sharedArguments),
+      ...this.stelliumService.detect(sharedArguments),
+    ];
+  }
+
+  private detectSimpleAspects(
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+    minute: Moment,
+  ): Event[] {
+    return [
+      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
+      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
+      ...this.specialtyAspectsService.detect({
+        coordinateEphemerisByBody,
+        minute,
+      }),
+    ];
+  }
+
+  private extractEventBodies(
+    normalizedCategories: string[],
+    lowercaseBodies: string[],
+  ): Body[] {
+    const eventBodies: Body[] = [];
+    for (const category of normalizedCategories) {
+      const bodyIndex = lowercaseBodies.indexOf(category);
+      if (bodyIndex !== -1) {
+        const body = bodies[bodyIndex];
+        if (body) {
+          eventBodies.push(body);
+        }
+      }
+    }
+    return eventBodies;
+  }
+
   private makeKey(body1: Body, body2: Body, aspect: Aspect): string {
     const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
     return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
+  }
+
+  private parseSimpleAspectEvent(
+    event: Event,
+    lowercaseBodies: string[],
+  ): null | {
+    aspect: Aspect;
+    body1: Body;
+    body2: Body;
+    isDissolving: boolean;
+  } {
+    const cats = event.categories.map((c) => c.toLowerCase().trim());
+    if (!cats.includes("simple aspect")) return null;
+    const isForming = cats.includes("forming");
+    const isDissolving = cats.includes("dissolving");
+    if (!isForming && !isDissolving) return null;
+    const eventBodies = this.extractEventBodies(cats, lowercaseBodies);
+    if (eventBodies.length !== 2) return null;
+    const aspect = cats.find((c): c is Aspect => isAspect(c));
+    const body1 = eventBodies[0];
+    const body2 = eventBodies[1];
+    if (!aspect || !body1 || !body2) return null;
+    return { aspect, body1, body2, isDissolving };
   }
 
   // 🌎 Public Methods
@@ -85,63 +174,10 @@ export class AspectsService {
         ab,
       ]),
     );
-
     const lowercaseBodies = bodies.map((body) => body.toLowerCase());
-
     for (const event of events) {
-      const normalizedCategories = event.categories.map((category) =>
-        category.toLowerCase().trim(),
-      );
-
-      if (!normalizedCategories.includes("simple aspect")) {
-        continue;
-      }
-
-      const isForming = normalizedCategories.includes("forming");
-      const isDissolving = normalizedCategories.includes("dissolving");
-
-      if (!isForming && !isDissolving) {
-        continue;
-      }
-
-      const eventBodies: Body[] = [];
-      for (const category of normalizedCategories) {
-        const bodyIndex = lowercaseBodies.indexOf(category);
-        if (bodyIndex !== -1) {
-          const body = bodies[bodyIndex];
-          if (body) {
-            eventBodies.push(body);
-          }
-        }
-      }
-
-      if (eventBodies.length !== 2) {
-        continue;
-      }
-
-      const aspect = normalizedCategories.find((category): category is Aspect =>
-        isAspect(category),
-      );
-
-      if (!aspect) {
-        continue;
-      }
-
-      const body1 = eventBodies[0];
-      const body2 = eventBodies[1];
-      if (!body1 || !body2) continue;
-      const key = this.makeKey(body1, body2, aspect);
-
-      if (isDissolving) {
-        map.delete(key);
-        continue;
-      }
-
-      if (!map.has(key)) {
-        map.set(key, { aspect, bodies: [body1, body2] });
-      }
+      this.applyEventToMap(map, event, lowercaseBodies);
     }
-
     return [...map.values()];
   }
 
@@ -161,50 +197,20 @@ export class AspectsService {
     previousAspectBodies: AspectBodies[];
   }): { aspectBodies: AspectBodies[]; events: Event[] } {
     const { coordinateEphemerisByBody, minute, previousAspectBodies } = args;
-
-    const simpleAspectEvents: Event[] = [
-      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.specialtyAspectsService.detect({
-        coordinateEphemerisByBody,
-        minute,
-      }),
-    ];
-
+    const simpleAspectEvents = this.detectSimpleAspects(
+      coordinateEphemerisByBody,
+      minute,
+    );
     const currentAspectBodies = this.computeAspectBodies(
       previousAspectBodies,
       simpleAspectEvents,
     );
-
-    const events: Event[] = [
-      ...simpleAspectEvents,
-      ...this.tripleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.quadrupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.quintupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.sextupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.stelliumService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-    ];
-
+    const compositeEvents = this.detectCompositeAspects(
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+    );
+    const events: Event[] = [...simpleAspectEvents, ...compositeEvents];
     return { aspectBodies: currentAspectBodies, events };
   }
 

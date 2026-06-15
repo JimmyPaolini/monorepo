@@ -1,5 +1,8 @@
 import {
+  type Decorator,
+  type ExportDeclaration,
   forEachChild,
+  type ImportDeclaration,
   isBigIntLiteral,
   isCallExpression,
   isDecorator,
@@ -76,60 +79,60 @@ export function getChildren(node: Node): Node[] {
  * when no key can be derived.
  */
 export function getKey(node: Node): null | string {
-  if (isImportDeclaration(node)) {
-    const { moduleSpecifier } = node;
-    return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
-  }
+  if (isImportDeclaration(node)) return getImportKey(node);
+  if (isExportDeclaration(node)) return getExportKey(node);
+  if (isDecorator(node)) return getDecoratorKey(node);
+  const literalKey = getLiteralKey(node);
+  if (literalKey !== undefined) return literalKey;
+  return getNamedNodeKey(node);
+}
 
-  if (isExportDeclaration(node)) {
-    const { moduleSpecifier } = node;
-    if (moduleSpecifier === undefined) return null;
-    return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
+function buildDecoratorName(callee: Node): null | string {
+  const parts: string[] = [];
+  let current: Node = callee;
+  while (isPropertyAccessExpression(current)) {
+    parts.unshift(current.name.text);
+    current = current.expression;
   }
+  if (!isIdentifier(current)) return null;
+  parts.unshift(current.text);
+  return parts.join(".");
+}
 
-  if (isDecorator(node)) {
-    const callee = isCallExpression(node.expression)
-      ? node.expression.expression
-      : node.expression;
-    const parts: string[] = [];
-    let current: Node = callee;
-    while (isPropertyAccessExpression(current)) {
-      parts.unshift(current.name.text);
-      current = current.expression;
-    }
-    if (!isIdentifier(current)) return null;
-    parts.unshift(current.text);
-    return parts.join(".");
-  }
+function getDecoratorKey(node: Decorator): null | string {
+  const callee = isCallExpression(node.expression)
+    ? node.expression.expression
+    : node.expression;
+  return buildDecoratorName(callee);
+}
 
-  if (isIdentifier(node)) {
-    return node.text;
-  }
+function getExportKey(node: ExportDeclaration): null | string {
+  const { moduleSpecifier } = node;
+  if (moduleSpecifier === undefined) return null;
+  return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
+}
 
-  if (isStringLiteral(node)) {
-    return node.text;
-  }
+function getImportKey(node: ImportDeclaration): null | string {
+  const { moduleSpecifier } = node;
+  return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
+}
 
-  if (isNumericLiteral(node)) {
-    return node.text;
-  }
+function getLiteralKey(node: Node): string | undefined {
+  if (isIdentifier(node)) return node.text;
+  if (isStringLiteral(node)) return node.text;
+  if (isNumericLiteral(node)) return node.text;
+  if (isBigIntLiteral(node)) return node.text;
+  if (isNoSubstitutionTemplateLiteral(node)) return node.text;
+  return undefined;
+}
 
-  if (isBigIntLiteral(node)) {
-    return node.text;
-  }
-
-  if (isNoSubstitutionTemplateLiteral(node)) {
-    return node.text;
-  }
-
+function getNamedNodeKey(node: Node): null | string {
   const nameNode = isNamedNode(node) ? node.name : undefined;
-  if (nameNode !== undefined) {
-    if (isIdentifier(nameNode)) return nameNode.text;
-    if (isPrivateIdentifier(nameNode)) return nameNode.text;
-    if (isStringLiteral(nameNode)) return nameNode.text;
-    if (isNumericLiteral(nameNode)) return nameNode.text;
-  }
-
+  if (nameNode === undefined) return null;
+  if (isIdentifier(nameNode)) return nameNode.text;
+  if (isPrivateIdentifier(nameNode)) return nameNode.text;
+  if (isStringLiteral(nameNode)) return nameNode.text;
+  if (isNumericLiteral(nameNode)) return nameNode.text;
   return null;
 }
 
