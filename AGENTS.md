@@ -314,7 +314,8 @@ See [React Conventions](documentation/conventions/react.md) for component struct
 
 ### Code Quality
 
-- [Code Commenting](documentation/code-quality/commenting.md): Writing self-explanatory code with minimal comments
+- [Commenting](documentation/skills/commenting/SKILL.md): Conventions for writing comments and section headers
+- [Section Comments](documentation/skills/section-comments/SKILL.md): Emoji section comment format reference
 
 ### Architecture
 

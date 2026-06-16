@@ -81,7 +81,7 @@ class TestMyService(unittest.TestCase): ...
 | 🌎 | Public methods |
 | 🎭 | Mocks |
 | 🧪 | Tests |
-| 🔗 | Relations, associations |
+| 🔗 | Relations, associations, links |
 | 🏷️ | Type aliases, interfaces |
 | ♟️ | Constants module |
 | 🔎 | Queries |
@@ -89,7 +89,6 @@ class TestMyService(unittest.TestCase): ...
 | 📋 | Headings, lists |
 | 📦 | Code blocks, packages |
 | 📝 | Paragraphs, docs |
-| 🔗 | Links |
 | 🖼️ | Images |
 | ✏️ | Inline formatting |
 | ✅ | Completed / passing |
