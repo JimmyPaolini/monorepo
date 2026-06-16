@@ -69,8 +69,6 @@ export class AnnualSolarCycleService {
     ];
   }
 
-  // 🌎 Public Methods
-
   private getAutumnEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -681,6 +679,8 @@ export class AnnualSolarCycleService {
     };
     return winterSolsticeEvent;
   }
+
+  // 🌎 Public Methods
 
   /**
    * Detects annual solar cycle events at a specific minute.

@@ -22,7 +22,6 @@ interface GenerateNestjsCommandModuleOptions {
  * @param tree - The Nx virtual file system tree
  * @param options - Configuration options for the NestJS command module generator
  */
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );

@@ -63,51 +63,35 @@ export class DailyCyclesService {
     minute: Moment;
   }): {
     current: number;
-    currentElevation: number;
     next: number;
-    nextElevation: number;
     previous: number;
-    previousElevation: number;
   } {
     const { ephemeris, minute } = args;
-    const previousElevation = this.getElevationAt(
+    const previous = this.getElevationAt(
       ephemeris,
       minute.clone().subtract(1, "minute"),
     );
-    const currentElevation = this.getElevationAt(ephemeris, minute);
-    const nextElevation = this.getElevationAt(
+    const current = this.getElevationAt(ephemeris, minute);
+    const next = this.getElevationAt(
       ephemeris,
       minute.clone().add(1, "minute"),
     );
-    return {
-      current: currentElevation,
-      currentElevation,
-      next: nextElevation,
-      nextElevation,
-      previous: previousElevation,
-      previousElevation,
-    };
+    return { current, next, previous };
   }
 
-  private isRise(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
+  private isRise(args: { current: number; previous: number }): boolean {
+    const { current, previous } = args;
     return (
-      currentElevation > -DailyCyclesService.sunRadiusDegrees &&
-      previousElevation < -DailyCyclesService.sunRadiusDegrees
+      current > -DailyCyclesService.sunRadiusDegrees &&
+      previous < -DailyCyclesService.sunRadiusDegrees
     );
   }
 
-  private isSet(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
+  private isSet(args: { current: number; previous: number }): boolean {
+    const { current, previous } = args;
     return (
-      currentElevation < -DailyCyclesService.sunRadiusDegrees &&
-      previousElevation > -DailyCyclesService.sunRadiusDegrees
+      current < -DailyCyclesService.sunRadiusDegrees &&
+      previous > -DailyCyclesService.sunRadiusDegrees
     );
   }
 

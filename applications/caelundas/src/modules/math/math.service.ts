@@ -86,7 +86,7 @@ export class MathService {
    * Uses recursive backtracking algorithm. Time complexity: O(n choose k).
    *
    * @param array - Source array of elements
-   * @param k - Number of elements to select in each combination
+   * @param combinationSize - Number of elements to select in each combination
    * @returns Array of all possible k-combinations
    *
    * @typeParam T - Type of elements in the array
@@ -97,20 +97,20 @@ export class MathService {
    * // Returns: [['Sun','Moon'], ['Sun','Mars'], ['Moon','Mars']]
    * ```
    */
-  getCombinations<T>(array: T[], index: number): T[][] {
+  getCombinations<T>(array: T[], combinationSize: number): T[][] {
     const result: T[][] = [];
 
     function combine(start: number, chosen: T[]): void {
-      if (chosen.length === index) {
+      if (chosen.length === combinationSize) {
         result.push([...chosen]);
         return;
       }
 
-      for (let index = start; index < array.length; index++) {
-        const element = array[index];
+      for (let position = start; position < array.length; position++) {
+        const element = array[position];
         if (element) {
           chosen.push(element);
-          combine(index + 1, chosen);
+          combine(position + 1, chosen);
           chosen.pop();
         }
       }

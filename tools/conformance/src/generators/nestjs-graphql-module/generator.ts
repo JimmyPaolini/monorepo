@@ -15,7 +15,6 @@ interface GenerateNestjsGraphqlModuleOptions {
   project?: string;
 }
 
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
