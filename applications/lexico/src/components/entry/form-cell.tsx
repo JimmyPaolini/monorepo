@@ -37,6 +37,20 @@ export interface FormCellProps {
   topRightText?: string | undefined;
 }
 
+/**
+ * Compute border classes for a form cell based on its grid position.
+ */
+function computeBorderClasses(position: FormCellPosition | undefined): string {
+  return cn(
+    "border-border/30",
+    position?.includes("top") && "border-t",
+    position?.includes("bottom") && "border-b",
+    position?.includes("Left") && "border-l",
+    position?.includes("Right") && "border-r",
+    "border-r border-b",
+  );
+}
+
 const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
   (
     {
@@ -54,17 +68,7 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
     const isSearched =
       search && centerText.toLowerCase().includes(search.toLowerCase());
     const showTooltip = centerText.length > 30 || centerText.includes("\n");
-
-    // Border classes based on position
-    const borderClasses = cn(
-      "border-border/30",
-      position?.includes("top") && "border-t",
-      position?.includes("bottom") && "border-b",
-      position?.includes("Left") && "border-l",
-      position?.includes("Right") && "border-r",
-      // Always add inner borders
-      "border-r border-b",
-    );
+    const borderClasses = computeBorderClasses(position);
 
     return (
       <div

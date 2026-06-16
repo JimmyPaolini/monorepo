@@ -143,8 +143,15 @@ const config: KnipConfig = {
       entry: [
         "src/index.ts",
         "scripts/**/*.ts",
-        "src/database/data-source.ts",
-        "src/database/migrations/**/*.ts",
+        "src/modules/database/data-source.ts",
+        "src/modules/database/migrations/**/*.ts",
+      ],
+      ignore: [
+        // TODO: re add these
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "src/modules/database/database.module.ts", // Conformance-generated module stub, not yet exported
+        "src/modules/entities/entities.module.ts", // Conformance-generated module stub, not yet exported
       ],
       project: ["src/**/*.ts", "scripts/**/*.ts"],
     },

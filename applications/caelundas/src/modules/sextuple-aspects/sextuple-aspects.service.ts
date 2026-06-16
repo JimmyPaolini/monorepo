@@ -493,6 +493,33 @@ export class SextupleAspectsService {
     return events;
   }
 
+  private tryArrangementForPair(
+    trine1: Body[],
+    trine2: Body[],
+    index: number,
+    index_: number,
+    index__: number,
+    l: number,
+    sextileConnections: Map<Body, Set<Body>>,
+  ): Body[] | null {
+    const m = [0, 1, 2].find((x) => x !== index && x !== index__);
+    const n = [0, 1, 2].find((x) => x !== index_ && x !== l);
+    if (m === undefined || n === undefined) return null;
+    const bodies = [
+      trine1[index],
+      trine2[index_],
+      trine1[index__],
+      trine2[l],
+      trine1[m],
+      trine2[n],
+    ];
+    if (bodies.includes(undefined)) return null;
+    const arrangement = bodies as Body[];
+    return this.checkHexagonSextiles(arrangement, sextileConnections)
+      ? arrangement
+      : null;
+  }
+
   private tryHexagonArrangement(
     trine1: Body[],
     trine2: Body[],
@@ -504,19 +531,16 @@ export class SextupleAspectsService {
       if (index__ === index) continue;
       for (const l of [0, 1, 2]) {
         if (l === index_) continue;
-        const m = [0, 1, 2].find((x) => x !== index && x !== index__);
-        const n = [0, 1, 2].find((x) => x !== index_ && x !== l);
-        if (m === undefined || n === undefined) continue;
-        const t1_0 = trine1[index];
-        const t2_0 = trine2[index_];
-        const t1_1 = trine1[index__];
-        const t2_1 = trine2[l];
-        const t1_2 = trine1[m];
-        const t2_2 = trine2[n];
-        if (!t1_0 || !t2_0 || !t1_1 || !t2_1 || !t1_2 || !t2_2) continue;
-        const arrangement: Body[] = [t1_0, t2_0, t1_1, t2_1, t1_2, t2_2];
-        if (this.checkHexagonSextiles(arrangement, sextileConnections))
-          return arrangement;
+        const result = this.tryArrangementForPair(
+          trine1,
+          trine2,
+          index,
+          index_,
+          index__,
+          l,
+          sextileConnections,
+        );
+        if (result !== null) return result;
       }
     }
     return null;

@@ -63,3 +63,6 @@ last-lint-staged-output.log
 applications/caelundas/output
 vite.config.*.timestamp*
 data/**
+
+# project-structure plugin cache
+projectStructure.cache.json

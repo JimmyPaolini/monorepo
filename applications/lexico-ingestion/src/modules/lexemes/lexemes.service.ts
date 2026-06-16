@@ -51,6 +51,18 @@ export class LexemesService {
 
   // 🔏 Private Methods
 
+  private buildLexeme(
+    word: string,
+    index: number,
+    partOfSpeech: PartOfSpeech,
+  ): Lexeme {
+    const lexeme = new Lexeme();
+    lexeme.lemma = this.normalize(word);
+    lexeme.disambiguator = index;
+    lexeme.partOfSpeech = partOfSpeech;
+    return lexeme;
+  }
+
   private async enrichLexeme(
     lexeme: Lexeme,
     $: cheerio.CheerioAPI,
@@ -134,10 +146,7 @@ export class LexemesService {
       return null;
     }
 
-    const lexeme = new Lexeme();
-    lexeme.lemma = this.normalize(word);
-    lexeme.disambiguator = index;
-    lexeme.partOfSpeech = partOfSpeech;
+    const lexeme = this.buildLexeme(word, index, partOfSpeech);
 
     try {
       await this.enrichLexeme(

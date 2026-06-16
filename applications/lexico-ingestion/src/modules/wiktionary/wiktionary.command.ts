@@ -11,6 +11,7 @@ import { categories } from "./wiktionary.constants";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 import type { Category } from "./wiktionary.types";
+import type { AnyNode, Element } from "domhandler";
 
 /**
  * TODO: Document the wiktionary command.
@@ -59,6 +60,18 @@ export class WiktionaryCommand extends CommandRunner {
       (character) => `_${character.toLowerCase()}`,
     );
   }
+  private async fetchCategoryPage(
+    urlPath: string,
+  ): Promise<cheerio.CheerioAPI> {
+    const response = await this.fetchWithRetry(this.host + urlPath);
+    if (!response.ok)
+      throw new Error(
+        `HTTP ${response.status.toString()} ${response.statusText}`,
+      );
+    const html = await response.text();
+    return cheerio.load(html);
+  }
+
   private async fetchWithRetry(
     url: string,
     retries = this.maximumRetries,
@@ -84,6 +97,22 @@ export class WiktionaryCommand extends CommandRunner {
     return fetch(url);
   }
 
+  private handleCategoryError(
+    category: Category,
+    urlPath: string,
+    error: unknown,
+  ): void {
+    const errorMessage =
+      error instanceof Error ? error.stack || error.message : String(error);
+    this.logger.error(
+      `❌ Error ingesting category "${category}" at url "${this.host}${urlPath}" - ${String(error)}`,
+    );
+    fs.appendFileSync(
+      this.errorLogFilePath,
+      `[${new Date().toISOString()}] category ${category}: ${errorMessage}\n`,
+    );
+  }
+
   private async ingestCategory(
     category: Category = "lemma",
     startPath?: string,
@@ -96,39 +125,12 @@ export class WiktionaryCommand extends CommandRunner {
     try {
       while (urlPath) {
         this.logger.log(`📄 Ingesting page "${this.host}${urlPath}"`);
-        const response = await this.fetchWithRetry(this.host + urlPath);
-        if (!response.ok)
-          throw new Error(
-            `HTTP ${response.status.toString()} ${response.statusText}`,
-          );
-        const html = await response.text();
-        const $ = cheerio.load(html);
+        const $ = await this.fetchCategoryPage(urlPath);
 
         for (const a of $(
           "#mw-pages div.mw-category > div.mw-category-group > ul > li a",
         )) {
-          const word = $(a).text();
-          const href = $(a).attr("href") ?? "";
-          if (/(Reconstruction:)|(Appendix:)/gi.test(word)) continue;
-          if (word.includes("/")) continue; // skip subpage entries (e.g. "a/languages A to L")
-          try {
-            await this.ingestWord(word, href, category);
-            await new Promise((resolve) =>
-              setTimeout(resolve, this.requestDelayMilliseconds),
-            );
-          } catch (wordError: unknown) {
-            const errorMessage =
-              wordError instanceof Error
-                ? wordError.stack || wordError.message
-                : String(wordError);
-            this.logger.error(
-              `❌ Error ingesting word "${word}" - ${String(wordError)}`,
-            );
-            fs.appendFileSync(
-              this.errorLogFilePath,
-              `[${new Date().toISOString()}] ${word}: ${errorMessage}\n`,
-            );
-          }
+          await this.processWiktionaryCategoryLink(a, $, category);
         }
 
         urlPath = $('a:contains("next page")').eq(0).attr("href") ?? "";
@@ -137,15 +139,7 @@ export class WiktionaryCommand extends CommandRunner {
       }
       this.logger.log(`🗂️ Ingested category "${category}"`);
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
-      this.logger.error(
-        `❌ Error ingesting category "${category}" at url "${this.host}${urlPath}" - ${String(error)}`,
-      );
-      fs.appendFileSync(
-        this.errorLogFilePath,
-        `[${new Date().toISOString()}] category ${category}: ${errorMessage}\n`,
-      );
+      this.handleCategoryError(category, urlPath, error);
     }
   }
 
@@ -168,29 +162,71 @@ export class WiktionaryCommand extends CommandRunner {
       return;
     }
 
-    const response = await this.fetchWithRetry(entry.href);
+    const parsed = await this.parseLatinSection(entry.href);
+    if (!parsed) {
+      this.logger.warn(`⚠️ "${entry.word}" - no latin entry in wiktionary`);
+      return;
+    }
+
+    this.saveWiktionaryEntry(entry, parsed.section, parsed.$);
+  }
+
+  private async parseLatinSection(href: string): Promise<null | {
+    $: cheerio.CheerioAPI;
+    section: cheerio.Cheerio<AnyNode>;
+  }> {
+    const response = await this.fetchWithRetry(href);
     if (!response.ok)
       throw new Error(
         `HTTP ${response.status.toString()} ${response.statusText}`,
       );
     const html = await response.text();
     const $ = cheerio.load(html);
-    // Wiktionary changed from <span id="Latin"> to <h2 id="Latin"> inside <div class="mw-heading mw-heading2">
-    // Sections are now separated by .mw-heading2 divs instead of <hr>
     const section = $("#Latin")
       .parent()
       .nextUntil(".mw-heading.mw-heading2, hr");
+    if (section.length === 0) return null;
+    return { $, section };
+  }
 
-    if (section.length === 0) {
-      this.logger.warn(`⚠️ "${entry.word}" - no latin entry in wiktionary`);
-      return;
+  private async processWiktionaryCategoryLink(
+    a: Element,
+    $: cheerio.CheerioAPI,
+    category: string,
+  ): Promise<void> {
+    const word = $(a).text();
+    const href = $(a).attr("href") ?? "";
+    if (/(Reconstruction:)|(Appendix:)/gi.test(word)) return;
+    if (word.includes("/")) return;
+    try {
+      await this.ingestWord(word, href, category);
+      await new Promise((resolve) =>
+        setTimeout(resolve, this.requestDelayMilliseconds),
+      );
+    } catch (wordError: unknown) {
+      const errorMessage =
+        wordError instanceof Error
+          ? wordError.stack || wordError.message
+          : String(wordError);
+      this.logger.error(
+        `❌ Error ingesting word "${word}" - ${String(wordError)}`,
+      );
+      fs.appendFileSync(
+        this.errorLogFilePath,
+        `[${new Date().toISOString()}] ${word}: ${errorMessage}\n`,
+      );
     }
+  }
 
+  private saveWiktionaryEntry(
+    entry: WiktionaryPage,
+    section: cheerio.Cheerio<AnyNode>,
+    $: cheerio.CheerioAPI,
+  ): void {
     const entryWithHtml: WiktionaryPage = {
       ...entry,
       html: `<div class="${entry.word}">${$.html(section)}</div>`,
     };
-
     const filePath = path.join(
       this.directory,
       `${this.escapeCapitals(entry.word)}.json`,

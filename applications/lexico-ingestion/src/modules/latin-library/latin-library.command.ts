@@ -42,6 +42,24 @@ export class LatinLibraryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  private async downloadAndSaveLatinLibraryFile(
+    parsedUrl: URL,
+    targetPath: string,
+  ): Promise<string> {
+    const response = await fetch(parsedUrl.href);
+    if (!response.ok) {
+      this.logger.warn(
+        `⚠️ Failed to fetch ${parsedUrl.href}: ${response.statusText}`,
+      );
+      return "";
+    }
+    const text = await response.text();
+    await fs.mkdir(path.dirname(targetPath), { recursive: true });
+    await fs.writeFile(targetPath, text, "utf8");
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    return text;
+  }
+
   private enqueueAuthorUrls(
     finalAuthorUrls: string[],
     host: string,
@@ -69,19 +87,7 @@ export class LatinLibraryCommand extends CommandRunner {
 
     this.logger.log(`📥 Downloading: ${parsed.href}`);
     try {
-      const response = await fetch(parsed.href);
-      if (!response.ok) {
-        this.logger.warn(
-          `⚠️ Failed to fetch ${parsed.href}: ${response.statusText}`,
-        );
-        return "";
-      }
-
-      const text = await response.text();
-      await fs.mkdir(path.dirname(targetPath), { recursive: true });
-      await fs.writeFile(targetPath, text, "utf8");
-      await new Promise((resolve) => setTimeout(resolve, 100)); // Polite delay
-      return text;
+      return await this.downloadAndSaveLatinLibraryFile(parsed, targetPath);
     } catch (error) {
       this.logger.error(
         `❌ Error downloading ${parsed.href}: ${String(error)}`,

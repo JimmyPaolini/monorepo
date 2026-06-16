@@ -30,6 +30,30 @@ export class PrincipalPartsService {
 
   // 🔏 Private Methods
 
+  private classifyPrincipalPart(
+    b: AnyNode,
+    $: cheerio.CheerioAPI,
+    lexeme: Lexeme,
+    principalParts: PrincipalPart[],
+  ): void {
+    const previous = $(b).prev("i").text();
+    if (previous === "or") {
+      const lastPrincipalPart = principalParts.pop();
+      if (!lastPrincipalPart) return;
+      lastPrincipalPart.text = [
+        ...lastPrincipalPart.text,
+        $(b).text().toLowerCase(),
+      ];
+      principalParts.push(lastPrincipalPart);
+    } else {
+      const pp = new PrincipalPart();
+      pp.name = previous;
+      pp.text = [$(b).text().toLowerCase()];
+      pp.lexeme = lexeme;
+      principalParts.push(pp);
+    }
+  }
+
   // 🌎 Public Methods
 
   /** Assigns the new principalParts onto the loaded entity
@@ -71,22 +95,7 @@ export class PrincipalPartsService {
     principalParts.push(firstPP);
 
     for (const b of $(elt).children("b")) {
-      const previous = $(b).prev("i").text();
-      if (previous === "or") {
-        const lastPrincipalPart = principalParts.pop();
-        if (!lastPrincipalPart) continue;
-        lastPrincipalPart.text = [
-          ...lastPrincipalPart.text,
-          $(b).text().toLowerCase(),
-        ];
-        principalParts.push(lastPrincipalPart);
-      } else {
-        const pp = new PrincipalPart();
-        pp.name = previous;
-        pp.text = [$(b).text().toLowerCase()];
-        pp.lexeme = lexeme;
-        principalParts.push(pp);
-      }
+      this.classifyPrincipalPart(b, $, lexeme, principalParts);
     }
 
     if (principalParts.length === 0) throw new Error("no principal parts");

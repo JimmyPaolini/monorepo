@@ -1,0 +1,373 @@
+{
+  "$schema": "node_modules/eslint-plugin-project-structure/folderStructure.schema.json",
+  "ignorePatterns": [
+    ".git",
+    ".nx",
+    ".venv",
+    "__pycache__",
+    "build",
+    "coverage",
+    "dist",
+    "node_modules",
+    "output",
+    "tmp"
+  ],
+  "rules": {
+    "any-file": {
+      "name": "*"
+    },
+    "kebab-case-folder": {
+      "children": [
+        {
+          "ruleId": "kebab-case-folder"
+        },
+        {
+          "ruleId": "any-file"
+        }
+      ],
+      "name": "^(?!(dir|err|req|res|utils|ctx|app)$)[a-z0-9-]+$"
+    },
+    "monorepo-project": {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "modules"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "components"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "lib"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "routes"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "hooks"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "styles"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "assets"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "generators"
+            },
+            {
+              "children": [
+                {
+                  "ruleId": "kebab-case-folder"
+                },
+                {
+                  "ruleId": "any-file"
+                }
+              ],
+              "name": "validators"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "src"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "testing"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "scripts"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "data"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "assets"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "coverage"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "output"
+        },
+        {
+          "children": [
+            {
+              "ruleId": "kebab-case-folder"
+            },
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": "public"
+        },
+        {
+          "ruleId": "any-file"
+        }
+      ],
+      "name": "^(?!(dir|err|req|res|utils|ctx|app)$)[a-z0-9-]+$"
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "ruleId": "monorepo-project"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "applications"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "monorepo-project"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "packages"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "monorepo-project"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "tools"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "configuration"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "infrastructure"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "scripts"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "data"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "documentation"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "notepads"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "monorepo-project"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "JimmyPaolini"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".github"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".vscode"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".husky"
+      },
+      {
+        "ruleId": "any-file"
+      }
+    ]
+  }
+}

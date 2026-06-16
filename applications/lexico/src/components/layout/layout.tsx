@@ -5,7 +5,7 @@ import { Button, cn } from "@monorepo/lexico-components";
 
 import { Navigation } from "./navigation";
 
-import type { NavItem as NavigationItem } from "./navigation";
+import type { NavigationItem } from "./navigation";
 
 /**
  * Props for the Layout component that provides app structure with navigation.

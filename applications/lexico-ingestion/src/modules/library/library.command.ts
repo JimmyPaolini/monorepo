@@ -65,6 +65,29 @@ export class LibraryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  private buildIngestParameters(
+    author: string | undefined,
+    providerName: string | undefined,
+    text: string | undefined,
+  ): {
+    filteredProviders: {
+      ingest: (options?: {
+        author?: string;
+        text?: string;
+      }) => Promise<Author[]>;
+      name: string;
+    }[];
+    ingestOptions: { author?: string; text?: string };
+  } {
+    const filteredProviders = providerName
+      ? this.providers.filter((p) => p.name === providerName)
+      : this.providers;
+    const ingestOptions: { author?: string; text?: string } = {};
+    if (author) ingestOptions.author = author;
+    if (text) ingestOptions.text = text;
+    return { filteredProviders, ingestOptions };
+  }
+
   private async getAuthorChoices(
     provider?: string,
   ): Promise<{ title: string; value: string }[]> {
@@ -215,6 +238,8 @@ export class LibraryCommand extends CommandRunner {
     return texts;
   }
 
+  // 🌎 Public Methods
+
   private async scanLibraryAuthor(
     dataDirectory: string,
     providerName: string,
@@ -236,8 +261,6 @@ export class LibraryCommand extends CommandRunner {
       texts,
     );
   }
-
-  // 🌎 Public Methods
 
   private async scanLibraryProvider(
     dataDirectory: string,
@@ -416,18 +439,15 @@ export class LibraryCommand extends CommandRunner {
     const { author, providerName, text } =
       await this.parseIngestOptions(options);
 
-    let providersToRun = this.providers;
-    if (providerName) {
-      providersToRun = providersToRun.filter((p) => p.name === providerName);
-    }
-
-    const total = providersToRun.length;
-    const ingestOptions: { author?: string; text?: string } = {};
-    if (author) ingestOptions.author = author;
-    if (text) ingestOptions.text = text;
+    const { filteredProviders, ingestOptions } = this.buildIngestParameters(
+      author,
+      providerName,
+      text,
+    );
+    const total = filteredProviders.length;
 
     for (let current = 0; current < total; current++) {
-      const provider = providersToRun[current];
+      const provider = filteredProviders[current];
       if (provider) {
         await this.processProvider(provider, current + 1, total, ingestOptions);
       }

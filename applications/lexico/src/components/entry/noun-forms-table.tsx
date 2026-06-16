@@ -49,18 +49,35 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
 };
 
 /**
+ * Build the singular + plural cell pair for one grammatical case.
+ */
+function buildNounCaseRow(
+  caseName: string,
+  caseData: { plural?: string; singular?: string },
+): [FormCellProperties, FormCellProperties] {
+  return [
+    {
+      centerText: caseData.singular || "-",
+      topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
+      topRightText: "SG",
+    },
+    {
+      centerText: caseData.plural || "-",
+      topRightText: "PL",
+    },
+  ];
+}
+
+/**
  * Restructure noun forms into a 2-column grid (singular, plural)
  * Each row is a case, columns are singular and plural
  */
 function restructureNounForms(forms: NounForm[]): FormCellProperties[] {
-  // Group by case
   const byCase: Record<string, { plural?: string; singular?: string }> = {};
 
   for (const form of forms) {
     const caseName = form.case.toLowerCase();
-    if (!byCase[caseName]) {
-      byCase[caseName] = {};
-    }
+    if (!byCase[caseName]) byCase[caseName] = {};
     const number = form.number.toLowerCase();
     if (number === "singular") {
       byCase[caseName].singular = form.form;
@@ -69,29 +86,9 @@ function restructureNounForms(forms: NounForm[]): FormCellProperties[] {
     }
   }
 
-  // Filter to only cases that have data (for vocative/locative)
-  const activeCases = CASE_ORDER.filter((caseName) => byCase[caseName]);
-
-  const cells: FormCellProperties[] = [];
-
-  for (const caseName of activeCases) {
-    const caseData = byCase[caseName] || {};
-
-    // Singular cell (left column)
-    cells.push(
-      {
-        centerText: caseData.singular || "-",
-        topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
-        topRightText: "SG",
-      },
-      {
-        centerText: caseData.plural || "-",
-        topRightText: "PL",
-      },
-    );
-  }
-
-  return cells;
+  return CASE_ORDER.filter((caseName) => byCase[caseName]).flatMap((caseName) =>
+    buildNounCaseRow(caseName, byCase[caseName] ?? {}),
+  );
 }
 
 const NounFormsTable = React.forwardRef<HTMLDivElement, NounFormsTableProps>(

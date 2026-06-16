@@ -87,6 +87,33 @@ export interface PronunciationDialect {
 }
 
 /**
+ * Props for EntryCardBody — the expandable content section of an entry card.
+ */
+interface EntryCardBodyProps {
+  accordionValue: string;
+  etymology?: null | string;
+  forms?: FormsData | null;
+  onAccordionChange: (value: string) => void;
+  pronunciation?: null | Pronunciation;
+  translations: string[];
+  translationsExpanded: boolean;
+}
+
+// 📋 Forms accordion section
+
+interface FormsAccordionItemProps {
+  forms: EntryCardBodyProps["forms"];
+  hasEtymology: boolean;
+}
+
+// 🔊 Pronunciation accordion section
+
+interface PronunciationAccordionItemProps {
+  hasNext: boolean;
+  pronunciation: EntryCardBodyProps["pronunciation"];
+}
+
+/**
  *
  */
 export function EntryCard(properties: EntryCardProps): ReactElement {
@@ -112,13 +139,6 @@ export function EntryCard(properties: EntryCardProps): ReactElement {
   );
 
   // 🏗 Setup
-  const hasPronunciation =
-    pronunciation?.classical || pronunciation?.ecclesiastical;
-
-  const hasForms = Boolean(forms);
-
-  // const hasTranslations = translations.length > 0;
-  // const hasExpandableTranslations = translations.length > 2;
 
   // 💪 Handlers
 
@@ -139,97 +159,140 @@ export function EntryCard(properties: EntryCardProps): ReactElement {
         />
       </CardHeader>
       <Separator />
-      <CardContent>
-        <Translations
-          defaultOpen={translationsExpanded}
-          translations={translations}
-        />
-        <Separator />
-        <Accordion
-          type="single"
-          collapsible
-          {...(accordionValue ? { value: accordionValue } : {})}
-          onValueChange={(value: string) => setAccordionValue(value || "")}
-        >
-          {/* Pronunciation Section */}
-          {hasPronunciation && (
-            <>
-              <AccordionItem
-                className="border-b-0"
-                value="pronunciation"
-              >
-                <AccordionTrigger className="px-4 text-sm font-medium">
-                  Pronunciation
-                </AccordionTrigger>
-                <AccordionContent className="px-4 space-y-2 text-sm pb-4">
-                  {pronunciation.classical?.phonetic && (
-                    <div className="flex items-start gap-2">
-                      <span className="font-medium text-muted-foreground">
-                        Classical:
-                      </span>
-                      <span className="font-mono">
-                        {pronunciation.classical.phonetic}
-                      </span>
-                    </div>
-                  )}
-                  {pronunciation.ecclesiastical?.phonetic && (
-                    <div className="flex items-start gap-2">
-                      <span className="font-medium text-muted-foreground">
-                        Ecclesiastical:
-                      </span>
-                      <span className="font-mono">
-                        {pronunciation.ecclesiastical.phonetic}
-                      </span>
-                    </div>
-                  )}
-                </AccordionContent>
-              </AccordionItem>
-              {(hasForms || etymology) && <Separator />}
-            </>
-          )}
-
-          {/* Forms Section */}
-          {forms && (
-            <>
-              <AccordionItem
-                className="border-b-0 group"
-                value="forms"
-              >
-                <AccordionTrigger className="px-4 text-sm font-medium">
-                  Forms
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4">
-                  {forms.type === "noun" && (
-                    <NounFormsTable forms={forms.forms} />
-                  )}
-                  {forms.type === "verb" && (
-                    <VerbFormsTable forms={forms.forms} />
-                  )}
-                  {forms.type === "adjective" && (
-                    <AdjectiveFormsTable forms={forms.forms} />
-                  )}
-                </AccordionContent>
-              </AccordionItem>
-              {etymology && <Separator />}
-            </>
-          )}
-
-          {/* Etymology Section */}
-          {etymology && (
-            <AccordionItem
-              className="border-b-0"
-              value="etymology"
-            >
-              <AccordionTrigger className="px-4 text-sm font-medium">
-                Etymology
-              </AccordionTrigger>
-              <AccordionContent className="px-4 pb-4">
-                <p className="text-sm text-foreground">{etymology}</p>
-              </AccordionContent>
-            </AccordionItem>
-          )}
-        </Accordion>
-      </CardContent>
+      <EntryCardBody
+        accordionValue={accordionValue}
+        {...(etymology !== undefined && { etymology })}
+        {...(forms !== undefined && { forms })}
+        onAccordionChange={setAccordionValue}
+        {...(pronunciation !== undefined && { pronunciation })}
+        translations={translations}
+        translationsExpanded={translationsExpanded}
+      />
     </Card>
+  );
+}
+
+/**
+ * Renders the main body of an EntryCard: translations, pronunciation, forms, and etymology.
+ */
+function EntryCardBody(properties: EntryCardBodyProps): ReactElement {
+  const {
+    accordionValue,
+    etymology,
+    forms,
+    onAccordionChange,
+    pronunciation,
+    translations,
+    translationsExpanded,
+  } = properties;
+
+  const hasEtymology = Boolean(etymology);
+
+  return (
+    <CardContent>
+      <Translations
+        defaultOpen={translationsExpanded}
+        translations={translations}
+      />
+      <Separator />
+      <Accordion
+        type="single"
+        collapsible
+        {...(accordionValue ? { value: accordionValue } : {})}
+        onValueChange={(value: string) => onAccordionChange(value || "")}
+      >
+        <PronunciationAccordionItem
+          hasNext={Boolean(forms) || hasEtymology}
+          pronunciation={pronunciation}
+        />
+        <FormsAccordionItem
+          forms={forms}
+          hasEtymology={hasEtymology}
+        />
+        {etymology && (
+          <AccordionItem
+            className="border-b-0"
+            value="etymology"
+          >
+            <AccordionTrigger className="px-4 text-sm font-medium">
+              Etymology
+            </AccordionTrigger>
+            <AccordionContent className="px-4 pb-4">
+              <p className="text-sm text-foreground">{etymology}</p>
+            </AccordionContent>
+          </AccordionItem>
+        )}
+      </Accordion>
+    </CardContent>
+  );
+}
+
+function FormsAccordionItem(
+  properties: FormsAccordionItemProps,
+): null | ReactElement {
+  const { forms, hasEtymology } = properties;
+  if (!forms) return null;
+
+  return (
+    <>
+      <AccordionItem
+        className="border-b-0 group"
+        value="forms"
+      >
+        <AccordionTrigger className="px-4 text-sm font-medium">
+          Forms
+        </AccordionTrigger>
+        <AccordionContent className="px-4 pb-4">
+          {forms.type === "noun" && <NounFormsTable forms={forms.forms} />}
+          {forms.type === "verb" && <VerbFormsTable forms={forms.forms} />}
+          {forms.type === "adjective" && (
+            <AdjectiveFormsTable forms={forms.forms} />
+          )}
+        </AccordionContent>
+      </AccordionItem>
+      {hasEtymology && <Separator />}
+    </>
+  );
+}
+
+function PronunciationAccordionItem(
+  properties: PronunciationAccordionItemProps,
+): null | ReactElement {
+  const { hasNext, pronunciation } = properties;
+  const classical = pronunciation?.classical;
+  const ecclesiastical = pronunciation?.ecclesiastical;
+
+  if (!classical && !ecclesiastical) return null;
+
+  return (
+    <>
+      <AccordionItem
+        className="border-b-0"
+        value="pronunciation"
+      >
+        <AccordionTrigger className="px-4 text-sm font-medium">
+          Pronunciation
+        </AccordionTrigger>
+        <AccordionContent className="px-4 space-y-2 text-sm pb-4">
+          {classical?.phonetic && (
+            <div className="flex items-start gap-2">
+              <span className="font-medium text-muted-foreground">
+                Classical:
+              </span>
+              <span className="font-mono">{classical.phonetic}</span>
+            </div>
+          )}
+          {ecclesiastical?.phonetic && (
+            <div className="flex items-start gap-2">
+              <span className="font-medium text-muted-foreground">
+                Ecclesiastical:
+              </span>
+              <span className="font-mono">{ecclesiastical.phonetic}</span>
+            </div>
+          )}
+        </AccordionContent>
+      </AccordionItem>
+      {hasNext && <Separator />}
+    </>
   );
 }

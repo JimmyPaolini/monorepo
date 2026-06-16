@@ -85,28 +85,15 @@ function checkSync(
     !unwantedRecommendationsMatch
   ) {
     console.log(`❌ VS Code extensions are out of sync in ${label}\n`);
-    if (!extensionsMatch) {
-      console.log(
-        "🔧 Differences in devcontainer extensions (should match recommendations):",
-      );
-      showDifference(recommendations, devcontainerExtensions);
-      console.log("");
-    }
-    if (!recommendationsMatch) {
-      console.log(
-        "📋 Differences in devcontainer recommendations (should match recommendations):",
-      );
-      showDifference(recommendations, devcontainerRecommendations);
-      console.log("");
-    }
-    if (!unwantedRecommendationsMatch) {
-      console.log("🚫 Differences in unwantedRecommendations:");
-      showDifference(
+    if (!extensionsMatch)
+      reportExtensionsDiff(recommendations, devcontainerExtensions);
+    if (!recommendationsMatch)
+      reportRecommendationsDiff(recommendations, devcontainerRecommendations);
+    if (!unwantedRecommendationsMatch)
+      reportUnwantedRecommendationsDiff(
         unwantedRecommendations,
         devcontainerUnwantedRecommendations,
       );
-      console.log("");
-    }
     console.log(
       "💡 Run 'nx run monorepo:sync-vscode-extensions:write' to sync both devcontainer configs",
     );
@@ -161,6 +148,37 @@ function main(): void {
     );
     process.exit(1);
   }
+}
+
+function reportExtensionsDiff(
+  recommendations: string[],
+  devcontainerExtensions: string[],
+): void {
+  console.log(
+    "🔧 Differences in devcontainer extensions (should match recommendations):",
+  );
+  showDifference(recommendations, devcontainerExtensions);
+  console.log("");
+}
+
+function reportRecommendationsDiff(
+  recommendations: string[],
+  devcontainerRecommendations: string[],
+): void {
+  console.log(
+    "📋 Differences in devcontainer recommendations (should match recommendations):",
+  );
+  showDifference(recommendations, devcontainerRecommendations);
+  console.log("");
+}
+
+function reportUnwantedRecommendationsDiff(
+  unwantedRecommendations: string[],
+  devcontainerUnwantedRecommendations: string[],
+): void {
+  console.log("🚫 Differences in unwantedRecommendations:");
+  showDifference(unwantedRecommendations, devcontainerUnwantedRecommendations);
+  console.log("");
 }
 
 function showDifference(source: string[], target: string[]): void {

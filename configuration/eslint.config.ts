@@ -11,6 +11,7 @@ import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import perfectionistPlugin from "eslint-plugin-perfectionist";
+import projectStructurePlugin from "eslint-plugin-project-structure";
 import tsdocPlugin from "eslint-plugin-tsdoc";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginYml from "eslint-plugin-yml";
@@ -75,6 +76,21 @@ export default [
       "documentation/skills/nx-workspace/**",
       "documentation/skills/link-workspace-packages/**",
     ],
+  },
+
+  // 📂 Project Structure
+  // Enforces folder architecture, kebab-case naming, and explicit abbreviation blocks
+  {
+    plugins: {
+      "project-structure": projectStructurePlugin,
+    },
+    rules: {
+      "project-structure/folder-structure": "warn",
+    },
+    settings: {
+      "project-structure/folder-structure-config-path":
+        "configuration/project-structure.json",
+    },
   },
 
   // ✅ Base ESLint Recommended
@@ -145,12 +161,16 @@ export default [
           allowList: {
             // args: `arguments` is a reserved keyword in JavaScript
             args: true,
+            // charSet: TanStack Router meta API property name (external interface contract)
+            charSet: true,
             // envFilePath: NestJS ConfigModule.forRoot API property name (external interface contract)
             envFilePath: true,
             // k: single-letter property key for domain data tables (e.g. Latin praenomina)
             // props: standard React convention for component properties parameter
             props: true,
             Props: true,
+            // rel: TanStack Router meta API property name (external interface contract)
+            rel: true,
             // str: `string` is a reserved keyword in TypeScript
             str: true,
           },
@@ -580,7 +600,6 @@ export default [
       "@typescript-eslint/switch-exhaustiveness-check": "error",
 
       // General best practices
-      // "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "@typescript-eslint/no-unused-expressions": "error",
       "@typescript-eslint/no-unused-vars": [
         "error",
@@ -601,6 +620,7 @@ export default [
       ],
       "max-statements": ["warn", { max: 16 }],
       "no-alert": "error",
+      "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "no-debugger": "error",
       "no-duplicate-imports": "off", // import/no-duplicates handles this
       "no-throw-literal": "off", // TypeScript ESLint handles this
@@ -763,6 +783,15 @@ export default [
       "max-depth": "off",
       "max-lines-per-function": "off",
       "max-statements": "off",
+      "no-console": "off",
+    },
+  },
+
+  // 📜 Scripts Folder
+  // Allow console statements in scripts — these are CLI utilities, not application code
+  {
+    files: ["scripts/**/*.{ts,mts,cts,js,mjs,cjs}"],
+    rules: {
       "no-console": "off",
     },
   },

@@ -14,6 +14,7 @@ import { isBookmarked, toggleBookmark } from "../lib/bookmarks";
 import { transformForms } from "../lib/forms";
 import { getEntry } from "../lib/search";
 
+import type { EntryFull } from "../lib/types";
 import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/word/$id")({
@@ -23,6 +24,42 @@ export const Route = createFileRoute("/word/$id")({
     return { entry };
   },
 });
+
+// 🔤 Pronunciation section sub-component
+
+interface WordFormsProps {
+  partOfSpeech: string;
+  rawForms: EntryFull["forms"];
+}
+
+interface WordPronunciationProps {
+  pronunciation: EntryFull["pronunciation"];
+  wordText: string;
+}
+
+// 📋 Forms section sub-component
+
+function WordForms(properties: WordFormsProps): ReactNode {
+  const { partOfSpeech, rawForms } = properties;
+  const transformed = transformForms(partOfSpeech, rawForms);
+
+  if (!transformed) return null;
+
+  return (
+    <section className="space-y-4">
+      <h2 className="text-2xl font-semibold">Forms</h2>
+      {transformed.type === "noun" && (
+        <NounFormsTable forms={transformed.forms} />
+      )}
+      {transformed.type === "verb" && (
+        <VerbFormsTable forms={transformed.forms} />
+      )}
+      {transformed.type === "adjective" && (
+        <AdjectiveFormsTable forms={transformed.forms} />
+      )}
+    </section>
+  );
+}
 
 /**
  * Word detail page component that displays full entry information.
@@ -65,11 +102,8 @@ function WordPage(): ReactNode {
     );
   }
 
-  // Transform forms data
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
-  const transformed = entry.forms
-    ? transformForms(entry.part_of_speech, entry.forms)
-    : null;
+  const hasPronunciation =
+    entry.pronunciation.classical ?? entry.pronunciation.ecclesiastical;
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-6">
@@ -127,69 +161,24 @@ function WordPage(): ReactNode {
           </ul>
         </section>
 
-        {/* Pronunciation section */}
-        {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- pronunciation can be null from DB */}
-        {entry.pronunciation &&
-          (entry.pronunciation.classical ||
-            entry.pronunciation.ecclesiastical) && (
-            <>
-              <Separator />
-              <section className="space-y-3">
-                <h2 className="text-2xl font-semibold">Pronunciation</h2>
-                <div className="space-y-3">
-                  {entry.pronunciation.classical?.phonetic && (
-                    <div className="flex items-center gap-3">
-                      <span className="min-w-32 font-medium text-muted-foreground">
-                        Classical:
-                      </span>
-                      <span className="font-mono text-lg">
-                        {entry.pronunciation.classical.phonetic}
-                      </span>
-                      <PronunciationButton
-                        dialect="classical"
-                        text={entry.principal_parts.present ?? entry.id}
-                      />
-                    </div>
-                  )}
-                  {entry.pronunciation.ecclesiastical?.phonetic && (
-                    <div className="flex items-center gap-3">
-                      <span className="min-w-32 font-medium text-muted-foreground">
-                        Ecclesiastical:
-                      </span>
-                      <span className="font-mono text-lg">
-                        {entry.pronunciation.ecclesiastical.phonetic}
-                      </span>
-                      <PronunciationButton
-                        dialect="ecclesiastical"
-                        text={entry.principal_parts.present ?? entry.id}
-                      />
-                    </div>
-                  )}
-                </div>
-              </section>
-            </>
-          )}
-
-        {/* Forms section */}
-        {transformed && (
+        {hasPronunciation && (
           <>
             <Separator />
-            <section className="space-y-4">
-              <h2 className="text-2xl font-semibold">Forms</h2>
-              {transformed.type === "noun" && (
-                <NounFormsTable forms={transformed.forms} />
-              )}
-              {transformed.type === "verb" && (
-                <VerbFormsTable forms={transformed.forms} />
-              )}
-              {transformed.type === "adjective" && (
-                <AdjectiveFormsTable forms={transformed.forms} />
-              )}
-            </section>
+            <WordPronunciation
+              pronunciation={entry.pronunciation}
+              wordText={entry.principal_parts.present ?? entry.id}
+            />
           </>
         )}
 
-        {/* Etymology section */}
+        <>
+          <Separator />
+          <WordForms
+            partOfSpeech={entry.part_of_speech}
+            rawForms={entry.forms}
+          />
+        </>
+
         {entry.etymology && (
           <>
             <Separator />
@@ -201,5 +190,44 @@ function WordPage(): ReactNode {
         )}
       </article>
     </div>
+  );
+}
+
+function WordPronunciation(properties: WordPronunciationProps): ReactNode {
+  const { pronunciation, wordText } = properties;
+  return (
+    <section className="space-y-3">
+      <h2 className="text-2xl font-semibold">Pronunciation</h2>
+      <div className="space-y-3">
+        {pronunciation.classical?.phonetic && (
+          <div className="flex items-center gap-3">
+            <span className="min-w-32 font-medium text-muted-foreground">
+              Classical:
+            </span>
+            <span className="font-mono text-lg">
+              {pronunciation.classical.phonetic}
+            </span>
+            <PronunciationButton
+              dialect="classical"
+              text={wordText}
+            />
+          </div>
+        )}
+        {pronunciation.ecclesiastical?.phonetic && (
+          <div className="flex items-center gap-3">
+            <span className="min-w-32 font-medium text-muted-foreground">
+              Ecclesiastical:
+            </span>
+            <span className="font-mono text-lg">
+              {pronunciation.ecclesiastical.phonetic}
+            </span>
+            <PronunciationButton
+              dialect="ecclesiastical"
+              text={wordText}
+            />
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

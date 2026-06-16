@@ -79,19 +79,7 @@ export function buildHicTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["hic"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["haec"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["hoc"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("hic", "haec", "hoc");
 
   lexeme.translations = [
     new Translation("he, she, it; ", lexeme),
@@ -140,19 +128,7 @@ export function buildIlleTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["ille"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["illa"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["illud"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("ille", "illa", "illud");
 
   lexeme.translations = [
     new Translation("that (thing); those (things)", lexeme),
@@ -204,19 +180,7 @@ export function buildOmnisTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["omnis"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["omnis"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["omne"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("omnis", "omnis", "omne");
 
   lexeme.translations = [new Translation("every (sg), all (pl)", lexeme)];
 
@@ -314,4 +278,24 @@ function buildAdjectivalForms(
     }
   }
   return forms;
+}
+
+function buildGenderedPrincipalParts(
+  masculine: string,
+  feminine: string,
+  neuter: string,
+): PrincipalPart[] {
+  const ppM = new PrincipalPart();
+  ppM.name = "masculine";
+  ppM.text = [masculine];
+
+  const ppF = new PrincipalPart();
+  ppF.name = "feminine";
+  ppF.text = [feminine];
+
+  const ppN = new PrincipalPart();
+  ppN.name = "neuter";
+  ppN.text = [neuter];
+
+  return [ppM, ppF, ppN];
 }

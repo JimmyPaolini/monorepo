@@ -166,13 +166,13 @@ function hasExportKeyword(node: tsCompiler.Node): boolean {
 }
 
 function hasTypeParameters(node: tsCompiler.Node): boolean {
-  const nodeWithTypeParams = node as tsCompiler.Node & {
+  const nodeWithTypeParameters = node as tsCompiler.Node & {
     typeParameters?: unknown[];
   };
   return (
     "typeParameters" in node &&
-    Array.isArray(nodeWithTypeParams.typeParameters) &&
-    nodeWithTypeParams.typeParameters.length > 0
+    Array.isArray(nodeWithTypeParameters.typeParameters) &&
+    nodeWithTypeParameters.typeParameters.length > 0
   );
 }
 

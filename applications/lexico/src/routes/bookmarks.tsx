@@ -21,6 +21,68 @@ export const Route = createFileRoute("/bookmarks")({
   component: BookmarksPage,
 });
 
+// 📚 Bookmark list sub-components
+
+interface BookmarkItemProps {
+  entry: BookmarkedEntry;
+  onRemove: (entryId: string) => void;
+}
+
+interface BookmarksListProps {
+  bookmarks: BookmarkedEntry[];
+  onRemove: (entryId: string) => void;
+}
+
+function BookmarkItem(properties: BookmarkItemProps): ReactNode {
+  const { entry, onRemove } = properties;
+  return (
+    <div className="group relative">
+      <Link
+        className="block transition-transform hover:scale-[1.01]"
+        params={{ id: entry.id }}
+        to="/word/$id"
+      >
+        <EntryCard
+          id={entry.id}
+          inflection={entry.inflection}
+          onBookmarkToggle={noop}
+          partOfSpeech={entry.part_of_speech}
+          principalParts={entry.principal_parts}
+          translations={entry.translations}
+          bookmarked
+        />
+      </Link>
+      <Button
+        className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
+        onClick={(event) => {
+          event.preventDefault();
+          onRemove(entry.id);
+        }}
+        size="icon"
+        title="Remove bookmark"
+        variant="ghost"
+      >
+        <BookmarkX className="h-5 w-5 text-muted-foreground hover:text-destructive" />
+      </Button>
+    </div>
+  );
+}
+
+function BookmarksList(properties: BookmarksListProps): ReactNode {
+  const { bookmarks, onRemove } = properties;
+  return (
+    <div className="mx-auto max-w-2xl space-y-4">
+      {bookmarks.map((entry) => (
+        <BookmarkItem
+          key={entry.id}
+          entry={entry}
+          onRemove={onRemove}
+        />
+      ))}
+    </div>
+  );
+}
+
 /**
  * Bookmarks page component that displays user's bookmarked entries.
  *
@@ -81,62 +143,34 @@ function BookmarksPage(): ReactNode {
       )}
 
       {!isLoading && !error && bookmarks.length > 0 && (
-        <div className="mx-auto max-w-2xl space-y-4">
-          {bookmarks.map((entry) => (
-            <div
-              key={entry.id}
-              className="group relative"
-            >
-              <Link
-                className="block transition-transform hover:scale-[1.01]"
-                params={{ id: entry.id }}
-                to="/word/$id"
-              >
-                <EntryCard
-                  id={entry.id}
-                  inflection={entry.inflection}
-                  onBookmarkToggle={noop}
-                  partOfSpeech={entry.part_of_speech}
-                  principalParts={entry.principal_parts}
-                  translations={entry.translations}
-                  bookmarked
-                />
-              </Link>
-              <Button
-                className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
-                onClick={(event) => {
-                  event.preventDefault();
-                  void handleRemoveBookmark(entry.id);
-                }}
-                size="icon"
-                title="Remove bookmark"
-                variant="ghost"
-              >
-                <BookmarkX className="h-5 w-5 text-muted-foreground hover:text-destructive" />
-              </Button>
-            </div>
-          ))}
-        </div>
+        <BookmarksList
+          bookmarks={bookmarks}
+          onRemove={(entryId) => void handleRemoveBookmark(entryId)}
+        />
       )}
 
-      {!isLoading && !error && bookmarks.length === 0 && (
-        <Card className="mx-auto max-w-2xl">
-          <CardHeader>
-            <CardTitle>No Bookmarks Yet</CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground">
-            <p>
-              Your bookmarked Latin words will appear here. Save words while
-              searching to build your vocabulary list.
-            </p>
-            <div className="mt-4">
-              <Link to="/search">
-                <Button variant="outline">Start Searching</Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+      {!isLoading && !error && bookmarks.length === 0 && <EmptyBookmarks />}
     </div>
+  );
+}
+
+function EmptyBookmarks(): ReactNode {
+  return (
+    <Card className="mx-auto max-w-2xl">
+      <CardHeader>
+        <CardTitle>No Bookmarks Yet</CardTitle>
+      </CardHeader>
+      <CardContent className="text-muted-foreground">
+        <p>
+          Your bookmarked Latin words will appear here. Save words while
+          searching to build your vocabulary list.
+        </p>
+        <div className="mt-4">
+          <Link to="/search">
+            <Button variant="outline">Start Searching</Button>
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -9,8 +9,8 @@
  *   --mode=all               Process all migrations
  *
  * Output:
- *   packages/lexico-entities/src/database/migrations/<name>-up.sql
- *   packages/lexico-entities/src/database/migrations/<name>-down.sql
+ *   packages/lexico-entities/src/modules/database/migrations/<name>-up.sql
+ *   packages/lexico-entities/src/modules/database/migrations/<name>-down.sql
  *
  * Usage (run from workspace root):
  *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts
@@ -23,10 +23,27 @@ import path from "node:path";
 import ts from "typescript";
 
 const MIGRATIONS_DIR =
-  "packages/lexico-entities/src/database/migrations" as const;
+  "packages/lexico-entities/src/modules/database/migrations" as const;
 const MIGRATION_GLOB = /^\d{13}-\w.*\.ts$/;
 
 type Mode = "all" | "latest";
+
+function extractSqlFromLiteral(
+  argument: ts.Expression,
+  sourceFile: ts.SourceFile,
+): string | undefined {
+  if (ts.isStringLiteral(argument)) return argument.text;
+  if (ts.isNoSubstitutionTemplateLiteral(argument)) return argument.text;
+  if (ts.isTemplateLiteral(argument)) {
+    const { line } = sourceFile.getLineAndCharacterOfPosition(
+      argument.getStart(),
+    );
+    console.warn(
+      `Warning: template literal with expressions found at ${sourceFile.fileName}:${line + 1} — skipping`,
+    );
+  }
+  return undefined;
+}
 
 function extractSqlFromMethod(
   method: ts.MethodDeclaration,
@@ -46,18 +63,7 @@ function extractSqlFromMethod(
         return;
       }
 
-      let sql: string | undefined;
-
-      if (ts.isStringLiteral(firstArgument)) {
-        sql = firstArgument.text;
-      } else if (ts.isNoSubstitutionTemplateLiteral(firstArgument)) {
-        sql = firstArgument.text;
-      } else if (ts.isTemplateLiteral(firstArgument)) {
-        console.warn(
-          `Warning: template literal with expressions found at ${sourceFile.fileName}:${sourceFile.getLineAndCharacterOfPosition(firstArgument.getStart()).line + 1} — skipping`,
-        );
-      }
-
+      const sql = extractSqlFromLiteral(firstArgument, sourceFile);
       if (sql !== undefined) {
         const trimmed = sql.trim();
         const normalized = trimmed.endsWith(";") ? trimmed : `${trimmed};`;

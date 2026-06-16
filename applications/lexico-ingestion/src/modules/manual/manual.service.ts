@@ -40,48 +40,58 @@ export class ManualService {
 
   // 🔏 Private Methods
 
+  private buildPraenomenLexeme(
+    abbreviation: string,
+    praenomen: { feminine?: string; masculine?: string },
+  ): Lexeme {
+    const lexeme = buildPraenomenAbbreviationTemplate();
+    lexeme.lemma = abbreviation;
+    if (lexeme.principalParts[0]) {
+      lexeme.principalParts[0].text = [abbreviation];
+    }
+    if (lexeme.principalParts[1]) {
+      lexeme.principalParts[1].text = [`${abbreviation}.`];
+    }
+    lexeme.translations = this.buildPraenomenTranslations(praenomen, lexeme);
+    const inflection = lexeme.inflection;
+    if (inflection && "gender" in inflection) {
+      inflection.gender = this.resolvePraenomenGender(praenomen);
+    }
+    return lexeme;
+  }
+
+  private buildPraenomenTranslations(
+    praenomen: { feminine?: string; masculine?: string },
+    lexeme: Lexeme,
+  ): Translation[] {
+    const translations: Translation[] = [];
+    if (praenomen.masculine) {
+      translations.push(
+        new Translation(
+          `Praenomen abbreviation: ${praenomen.masculine} (male)`,
+          lexeme,
+        ),
+      );
+    }
+    if (praenomen.feminine) {
+      translations.push(
+        new Translation(
+          `Praenomen abbreviation: ${praenomen.feminine} (female)`,
+          lexeme,
+        ),
+      );
+    }
+    return translations;
+  }
+
   private async ingestPraenomenAbbreviations(): Promise<void> {
     this.logger.log("🏷️ Ingesting praenomen abbreviations");
     for (const [abbreviation, praenomen] of Object.entries(
       PRAENOMEN_ABBREVIATIONS,
     )) {
-      const lexeme = buildPraenomenAbbreviationTemplate();
-      lexeme.lemma = abbreviation;
-      if (lexeme.principalParts[0]) {
-        lexeme.principalParts[0].text = [abbreviation];
-      }
-      if (lexeme.principalParts[1]) {
-        lexeme.principalParts[1].text = [`${abbreviation}.`];
-      }
-      lexeme.translations = [];
-      if (praenomen.masculine) {
-        lexeme.translations.push(
-          new Translation(
-            `Praenomen abbreviation: ${praenomen.masculine} (male)`,
-            lexeme,
-          ),
-        );
-      }
-      if (praenomen.feminine) {
-        lexeme.translations.push(
-          new Translation(
-            `Praenomen abbreviation: ${praenomen.feminine} (female)`,
-            lexeme,
-          ),
-        );
-      }
-
-      const inflection = lexeme.inflection;
-      if (inflection && "gender" in inflection) {
-        if (praenomen.masculine && !praenomen.feminine) {
-          inflection.gender = "masculine";
-        } else if (!praenomen.masculine && praenomen.feminine) {
-          inflection.gender = "feminine";
-        } else {
-          inflection.gender = "neuter";
-        }
-      }
-      await this.createManual(lexeme);
+      await this.createManual(
+        this.buildPraenomenLexeme(abbreviation, praenomen),
+      );
     }
     this.logger.log("🏷️ Ingested praenomen abbreviations");
   }
@@ -104,6 +114,15 @@ export class ManualService {
       await this.createManual(lexeme);
     }
     this.logger.log("🔢 Ingested Roman numerals");
+  }
+
+  private resolvePraenomenGender(praenomen: {
+    feminine?: string;
+    masculine?: string;
+  }): string {
+    if (praenomen.masculine && !praenomen.feminine) return "masculine";
+    if (!praenomen.masculine && praenomen.feminine) return "feminine";
+    return "neuter";
   }
 
   // 🌎 Public Methods

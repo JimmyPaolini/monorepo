@@ -36,11 +36,48 @@ export class WordsService {
 
   // 🔏 Private Methods
 
+  private buildWordFormValues(
+    formsByWord: Map<string, Set<Form>>,
+    wordMap: Map<string, Word>,
+  ): Partial<WordForm>[] {
+    const wordFormValues: Partial<WordForm>[] = [];
+    for (const [normalized, formSet] of formsByWord) {
+      const word = wordMap.get(normalized);
+      if (!word) continue;
+      for (const form of formSet) {
+        wordFormValues.push({
+          createdBy: LEXICO_INGESTION_BY_ID,
+          form,
+          updatedBy: LEXICO_INGESTION_BY_ID,
+          word,
+        });
+      }
+    }
+    return wordFormValues;
+  }
+
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       /[A-Z]/g,
       (character) => `_${character.toLowerCase()}`,
     );
+  }
+
+  private async insertWordFormChunks(
+    wordFormValues: Partial<WordForm>[],
+  ): Promise<void> {
+    if (wordFormValues.length === 0) return;
+    const chunkSize = 1000;
+    for (let index = 0; index < wordFormValues.length; index += chunkSize) {
+      const chunk = wordFormValues.slice(index, index + chunkSize);
+      await this.wordFormRepository
+        .createQueryBuilder()
+        .insert()
+        .into(WordForm)
+        .values(chunk)
+        .orIgnore()
+        .execute();
+    }
   }
 
   private normalize(str: string): string {
@@ -147,33 +184,8 @@ export class WordsService {
         .execute();
     }
 
-    const wordFormValues: Partial<WordForm>[] = [];
-    for (const [normalized, formSet] of formsByWord) {
-      const word = wordMap.get(normalized);
-      if (!word) continue;
-      for (const form of formSet) {
-        wordFormValues.push({
-          createdBy: LEXICO_INGESTION_BY_ID,
-          form,
-          updatedBy: LEXICO_INGESTION_BY_ID,
-          word,
-        });
-      }
-    }
-
-    if (wordFormValues.length > 0) {
-      // Chunk to avoid exceeding PostgreSQL parameter limits
-      const chunkSize = 1000;
-      for (let index = 0; index < wordFormValues.length; index += chunkSize) {
-        const chunk = wordFormValues.slice(index, index + chunkSize);
-        await this.wordFormRepository
-          .createQueryBuilder()
-          .insert()
-          .into(WordForm)
-          .values(chunk)
-          .orIgnore()
-          .execute();
-      }
-    }
+    await this.insertWordFormChunks(
+      this.buildWordFormValues(formsByWord, wordMap),
+    );
   }
 }

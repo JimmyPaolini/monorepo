@@ -110,6 +110,19 @@ export interface VerbInflection {
 }
 
 /**
+ * Props for the InflectionBadge sub-component.
+ */
+interface InflectionBadgeProps {
+  conjugation: string | undefined;
+  declension: string | undefined;
+  gender: string | undefined;
+  partOfSpeech: PartOfSpeech;
+  prepositionCase: string | undefined;
+}
+
+type InflectionLabelBuilder = (inflection: Inflection) => string;
+
+/**
  * Component that displays principal parts, part of speech, and inflection info.
  *
  * @param props - Component props
@@ -138,16 +151,6 @@ export function PrincipalParts(properties: PrincipalPartsProps): ReactElement {
     inflection as AdjectiveInflection | NounInflection | undefined
   )?.declension;
   const conjugation = (inflection as undefined | VerbInflection)?.conjugation;
-  const declensionIdentifier = declension
-    ? /declension/i.test(declension)
-      ? declension
-      : `${declension} declension`
-    : undefined;
-  const conjugationIdentifier = conjugation
-    ? /conjugation/i.test(conjugation)
-      ? conjugation
-      : `${conjugation} conjugation`
-    : undefined;
 
   // 💪 Handlers
 
@@ -165,47 +168,13 @@ export function PrincipalParts(properties: PrincipalPartsProps): ReactElement {
         <CardTitle className="text-2xl self-start flex-grow">
           {principalPartsLabel}
         </CardTitle>
-        {/* Identifier tags under principal parts */}
-        <CardDescription className="flex flex-wrap gap-1 pt-1">
-          <Identifier
-            className="text-xs"
-            identifier={partOfSpeech}
-          />
-          {/* Declension for nouns/proper nouns/adjectives */}
-          {(partOfSpeech === "noun" ||
-            partOfSpeech === "properNoun" ||
-            partOfSpeech === "adjective" ||
-            partOfSpeech === "numeral" ||
-            partOfSpeech === "suffix") &&
-            declensionIdentifier && (
-              <Identifier
-                className="text-xs"
-                identifier={declensionIdentifier}
-              />
-            )}
-          {/* Conjugation for verbs */}
-          {partOfSpeech === "verb" && conjugationIdentifier && (
-            <Identifier
-              className="text-xs"
-              identifier={conjugationIdentifier}
-            />
-          )}
-          {/* Gender for nouns/proper nouns */}
-          {(partOfSpeech === "noun" || partOfSpeech === "properNoun") &&
-            gender && (
-              <Identifier
-                className="text-xs"
-                identifier={gender}
-              />
-            )}
-          {/* Case for prepositions */}
-          {partOfSpeech === "preposition" && prepositionCase && (
-            <Identifier
-              className="text-xs"
-              identifier={prepositionCase}
-            />
-          )}
-        </CardDescription>
+        <InflectionBadge
+          conjugation={conjugation}
+          declension={declension}
+          gender={gender}
+          partOfSpeech={partOfSpeech}
+          prepositionCase={prepositionCase}
+        />
       </div>
 
       <Button
@@ -233,39 +202,140 @@ function getInflectionLabel(
 ): string {
   if (!inflection) return startCase(partOfSpeech).toLowerCase();
 
-  let label = "";
-
-  if (partOfSpeech === "noun" || partOfSpeech === "properNoun") {
-    const { declension, gender } = inflection as NounInflection;
-    if (declension && gender) label = `${declension} declension, ${gender}`;
-    else if (declension) label = `${declension} declension`;
-    else if (gender) label = gender;
-  } else if (partOfSpeech === "verb") {
-    const { conjugation } = inflection as VerbInflection;
-    if (conjugation) label = `${conjugation} conjugation`;
-  } else if (["adjective", "numeral", "suffix"].includes(partOfSpeech)) {
-    const { declension, degree } = inflection as AdjectiveInflection;
-    if (declension && degree) label = `${declension} declension, ${degree}`;
-    else if (declension) label = `${declension} declension`;
-    else if (degree) label = degree;
-  } else if (partOfSpeech === "adverb") {
-    const { degree, type } = inflection as AdverbInflection;
-    if (type && degree) label = `${type}, ${degree}`;
-    else if (type) label = type;
-    else if (degree) label = degree;
-  } else if (partOfSpeech === "preposition") {
-    const prepInflection = inflection as PrepositionInflection;
-    if (prepInflection.case) label = prepInflection.case;
-  } else {
-    const { other } = inflection as Uninflected;
-    if (other) label = other;
-  }
-
-  const result = `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
+  const label = buildInflectionLabel(inflection, partOfSpeech);
+  return `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
     /, ?$|^, ?/,
     "",
   );
-  return result;
+}
+
+// 🗺 Inflection label builders
+
+/**
+ * Renders the set of inflection identifier badges for an entry.
+ */
+function InflectionBadge(properties: InflectionBadgeProps): ReactElement {
+  const { conjugation, declension, gender, partOfSpeech, prepositionCase } =
+    properties;
+
+  const declensionIdentifier = declension
+    ? /declension/i.test(declension)
+      ? declension
+      : `${declension} declension`
+    : undefined;
+
+  const conjugationIdentifier = conjugation
+    ? /conjugation/i.test(conjugation)
+      ? conjugation
+      : `${conjugation} conjugation`
+    : undefined;
+
+  const showDeclension =
+    declensionIdentifier !== undefined &&
+    ["adjective", "noun", "numeral", "properNoun", "suffix"].includes(
+      partOfSpeech,
+    );
+  const showConjugation =
+    partOfSpeech === "verb" && conjugationIdentifier !== undefined;
+  const showGender =
+    ["noun", "properNoun"].includes(partOfSpeech) && gender !== undefined;
+  const showCase =
+    partOfSpeech === "preposition" && prepositionCase !== undefined;
+
+  return (
+    <CardDescription className="flex flex-wrap gap-1 pt-1">
+      <Identifier
+        className="text-xs"
+        identifier={partOfSpeech}
+      />
+      {showDeclension && (
+        <Identifier
+          className="text-xs"
+          identifier={declensionIdentifier}
+        />
+      )}
+      {showConjugation && (
+        <Identifier
+          className="text-xs"
+          identifier={conjugationIdentifier}
+        />
+      )}
+      {showGender && (
+        <Identifier
+          className="text-xs"
+          identifier={gender}
+        />
+      )}
+      {showCase && (
+        <Identifier
+          className="text-xs"
+          identifier={prepositionCase}
+        />
+      )}
+    </CardDescription>
+  );
+}
+
+const inflectionLabelBuilders: Partial<
+  Record<PartOfSpeech, InflectionLabelBuilder>
+> = {
+  adjective: (inflection) =>
+    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
+  adverb: (inflection) =>
+    buildAdverbInflectionLabel(inflection as AdverbInflection),
+  noun: (inflection) => buildNounInflectionLabel(inflection as NounInflection),
+  numeral: (inflection) =>
+    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
+  preposition: (inflection) =>
+    buildPrepositionInflectionLabel(inflection as PrepositionInflection),
+  properNoun: (inflection) =>
+    buildNounInflectionLabel(inflection as NounInflection),
+  suffix: (inflection) =>
+    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
+  verb: (inflection) => buildVerbInflectionLabel(inflection as VerbInflection),
+};
+
+function buildAdjectiveInflectionLabel(
+  inflection: AdjectiveInflection,
+): string {
+  const { declension, degree } = inflection;
+  if (declension && degree) return `${declension} declension, ${degree}`;
+  if (declension) return `${declension} declension`;
+  return degree ?? "";
+}
+
+function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
+  const { degree, type } = inflection;
+  if (type && degree) return `${type}, ${degree}`;
+  if (type) return type;
+  return degree ?? "";
+}
+
+function buildInflectionLabel(
+  inflection: Inflection,
+  partOfSpeech: PartOfSpeech,
+): string {
+  const builder = inflectionLabelBuilders[partOfSpeech];
+  return builder
+    ? builder(inflection)
+    : ((inflection as Uninflected).other ?? "");
+}
+
+function buildNounInflectionLabel(inflection: NounInflection): string {
+  const { declension, gender } = inflection;
+  if (declension && gender) return `${declension} declension, ${gender}`;
+  if (declension) return `${declension} declension`;
+  return gender ?? "";
+}
+
+function buildPrepositionInflectionLabel(
+  inflection: PrepositionInflection,
+): string {
+  return inflection.case ?? "";
+}
+
+function buildVerbInflectionLabel(inflection: VerbInflection): string {
+  return inflection.conjugation ? `${inflection.conjugation} conjugation` : "";
 }
 
 /**

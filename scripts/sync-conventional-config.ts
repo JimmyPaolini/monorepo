@@ -24,8 +24,6 @@ import { fileURLToPath } from "node:url";
 import JSON5 from "json5";
 import _ from "lodash";
 
-import type { Scope, Type } from "../configuration/conventional.config.d.cts";
-
 // ════════════════════════════════════════════════════════════════════════════
 // RUNTIME ENVIRONMENT & CONSTANTS
 // ════════════════════════════════════════════════════════════════════════════
@@ -87,7 +85,7 @@ interface ConventionalConfig {
   types: Type[];
 }
 
-/** Represents an entry with a value and description, used for markdown tables. */
+/** Entry with value and description for markdown tables. */
 interface EntryWithDescription {
   description: string;
   value: string;
@@ -116,6 +114,20 @@ interface ReleaseRule {
   revert?: boolean;
   scope?: string;
   type?: string;
+}
+
+/** Scope entry from conventional.config.cjs. */
+interface Scope {
+  description: string;
+  name: string;
+}
+
+/** Type entry from conventional.config.cjs. */
+interface Type {
+  code: string;
+  description: string;
+  emoji: string;
+  name: string;
 }
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -516,11 +528,14 @@ function handleWriteMode(
     console.log("✅ Already in sync");
     return;
   }
-  if (!settingsOk) writeSettingsSync(config.scopes);
-  for (const skillFile of outOfSyncSkills) writeSkillSync(config, skillFile);
-  for (const templateFile of outOfSyncTemplates)
-    writeIssueTemplateSync(scopeNames, templateFile);
-  if (!releaseConfigOk) writeReleaseConfigSync(config.types);
+  writeConventionalConfig({
+    config,
+    outOfSyncSkills,
+    outOfSyncTemplates,
+    releaseConfigOk,
+    scopeNames,
+    settingsOk,
+  });
 }
 
 /**
@@ -664,6 +679,28 @@ function showDifference(
     console.log(`  Extra in ${targetName} (${extra.length} items):`);
     extra.forEach((item) => console.log(`    - ${item}`));
   }
+}
+
+function writeConventionalConfig({
+  config,
+  outOfSyncSkills,
+  outOfSyncTemplates,
+  releaseConfigOk,
+  scopeNames,
+  settingsOk,
+}: {
+  config: ReturnType<typeof loadConventionalConfig>;
+  outOfSyncSkills: string[];
+  outOfSyncTemplates: string[];
+  releaseConfigOk: boolean;
+  scopeNames: string[];
+  settingsOk: boolean;
+}): void {
+  if (!settingsOk) writeSettingsSync(config.scopes);
+  for (const skillFile of outOfSyncSkills) writeSkillSync(config, skillFile);
+  for (const templateFile of outOfSyncTemplates)
+    writeIssueTemplateSync(scopeNames, templateFile);
+  if (!releaseConfigOk) writeReleaseConfigSync(config.types);
 }
 
 /**

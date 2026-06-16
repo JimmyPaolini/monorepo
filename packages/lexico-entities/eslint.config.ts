@@ -1,6 +1,9 @@
 import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🙈 Ignores
+  { ignores: ["src/modules/database/migrations/**"] },
+
   // 🛠️ Base Config
   ...baseConfig,
 

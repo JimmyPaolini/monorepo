@@ -22,8 +22,19 @@ import { NumeralsService } from "../numerals/numerals.service";
 import { authorIdToName } from "./literature.constants";
 
 import type { LiteratureCommandOptions } from "./literature.types";
-import type { Paragraph, Root } from "mdast";
+import type { Paragraph, PhrasingContent, Root, Strong } from "mdast";
 import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
+
+// 🏷️ Types
+
+interface LibraryEntry {
+  authorSlug: string;
+  fullPath: string;
+  pathParts: string[];
+  provider: string;
+  textSlug: string;
+  title: string;
+}
 
 /**
  * Ingest local literature texts into the database.
@@ -79,6 +90,85 @@ export class LiteratureCommand extends CommandRunner {
 
   // 🔒 Private Methods
 
+  private buildLineEntityFromParagraph(
+    para: Paragraph,
+    index: number,
+    text: Text,
+  ): DeepPartial<Line> {
+    let label = `${index + 1}`;
+    let lineNodes: PhrasingContent[] = [...para.children];
+    const firstNode = lineNodes[0];
+    if (firstNode?.type === "strong") {
+      const parsed = this.parseLabelFromStrongNode(firstNode, lineNodes);
+      label = parsed.label;
+      lineNodes = parsed.lineNodes;
+    }
+    const lineText = toString({ children: lineNodes, type: "paragraph" });
+    return { author: text.author, data: lineText, index, label, text };
+  }
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  private deduplicateByProvider(texts: LibraryEntry[]): LibraryEntry[] {
+    const textMap = new Map<string, LibraryEntry>();
+    for (const text of texts) {
+      const slug = [text.authorSlug, ...text.pathParts, text.textSlug].join(
+        "/",
+      );
+      const existing = textMap.get(slug);
+      if (existing) {
+        const existingPriority = this.priorityProviders.indexOf(
+          existing.provider,
+        );
+        const newPriority = this.priorityProviders.indexOf(text.provider);
+        if (
+          newPriority !== -1 &&
+          (existingPriority === -1 || newPriority < existingPriority)
+        ) {
+          textMap.set(slug, text);
+        }
+      } else {
+        textMap.set(slug, text);
+      }
+    }
+    return [...textMap.values()];
+  }
+
+  private async ensureParentTexts(
+    authorEntity: Author,
+    authorSlug: string,
+    texts: LibraryEntry[],
+  ): Promise<Map<string, Text>> {
+    const parentTexts = new Map<string, Text>();
+    for (const t of texts) {
+      if (t.pathParts.length === 0) continue;
+      let currentPath = authorSlug;
+      for (const part of t.pathParts) {
+        const parentSlug = currentPath;
+        currentPath = `${currentPath}/${part}`;
+        if (parentTexts.has(currentPath)) continue;
+        const pText = parentTexts.get(parentSlug);
+        await this.textRepository.upsert(
+          {
+            author: authorEntity,
+            parentText: pText,
+            slug: currentPath,
+            title: _.startCase(part),
+            type: "book",
+          } as QueryDeepPartialEntity<Text>,
+          { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+        );
+        const newParent = await this.textRepository.findOneOrFail({
+          where: { slug: currentPath },
+        });
+        parentTexts.set(currentPath, newParent);
+      }
+    }
+    return parentTexts;
+  }
+
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       /[A-Z]/g,
@@ -86,9 +176,34 @@ export class LiteratureCommand extends CommandRunner {
     );
   }
 
-  // 🔑 Public Fields
-
-  // 🔏 Private Methods
+  private extractTokensFromLine(
+    line: Line,
+    text: Text,
+    wordMap: Map<string, string>,
+  ): DeepPartial<Token>[] {
+    const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
+    return tokenStrings.map((data, index) => {
+      const isPunctuation = !/^[\p{L}]+$/u.test(data);
+      let wordId: null | string = null;
+      if (!isPunctuation) {
+        wordId = this.memoizedWordCache.get(data) || null;
+        if (!wordId) {
+          const normalized = this.escapeCapitals(this.normalize(data));
+          wordId = wordMap.get(normalized) || null;
+          this.memoizedWordCache.set(data, wordId);
+        }
+      }
+      return {
+        author: text.author,
+        data,
+        index,
+        isPunctuation,
+        line,
+        text,
+        word: wordId ? { id: wordId } : null,
+      };
+    });
+  }
 
   private async getAuthorChoices(
     provider?: string,
@@ -141,91 +256,313 @@ export class LiteratureCommand extends CommandRunner {
     return this.wordsCache;
   }
 
+  private async ingestAllAuthors(textsToIngest: LibraryEntry[]): Promise<void> {
+    const grouped = _.groupBy(textsToIngest, "authorSlug");
+    const authors = Object.entries(grouped);
+    let currentAuthor = 0;
+    const totalAuthors = authors.length;
+    for (const [authorSlug, texts] of authors) {
+      await this.ingestAuthorGroup(authorSlug, texts);
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
+      this.logger.log(`👤 Completed author: ${authorSlug}${authorProgress}`);
+    }
+  }
+
+  private async ingestAuthorGroup(
+    authorSlug: string,
+    texts: LibraryEntry[],
+  ): Promise<void> {
+    this.logger.log(`👤 Starting author: ${authorSlug}`);
+    await this.authorRepository.upsert(
+      {
+        name: authorIdToName[authorSlug] || _.startCase(authorSlug),
+        slug: authorSlug,
+      },
+      { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+    );
+    const authorEntity = await this.authorRepository.findOneOrFail({
+      where: { slug: authorSlug },
+    });
+    const parentTexts = await this.ensureParentTexts(
+      authorEntity,
+      authorSlug,
+      texts,
+    );
+    await this.ingestTextChunks(authorEntity, authorSlug, texts, parentTexts);
+  }
+
   private async ingestLines(text: Text, ast: Root): Promise<void> {
     this.logger.log(`  📜 Parsing lines for ${text.title}`);
-
     const wordMap = await this.getWordsCache();
     const tokenEntities: DeepPartial<Token>[] = [];
-
     const paragraphs = ast.children.filter(
       (child): child is Paragraph => child.type === "paragraph",
     );
-
-    if (paragraphs.length === 0) {
+    if (paragraphs.length === 0)
       this.logger.warn(`⚠️ NO LINES in ${text.slug}`);
+    const lineEntities = paragraphs.map((para, index) =>
+      this.buildLineEntityFromParagraph(para, index, text),
+    );
+    const savedLines = await this.upsertAndFetchLines(lineEntities, text);
+    this.logger.log(
+      `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
+    );
+    for (const line of savedLines) {
+      const tokens = this.extractTokensFromLine(line, text, wordMap);
+      tokenEntities.push(...tokens);
     }
+    await this.upsertTokens(tokenEntities, text);
+  }
 
-    const lineEntities = paragraphs.map((para, index) => {
-      let label = `${index + 1}`;
-      let lineNodes = para.children;
-      const firstNode = lineNodes[0];
+  private async ingestText(
+    author: Author,
+    parentText: Text | undefined,
+    title: string,
+    textSlugName: string,
+    textPath: string,
+  ): Promise<void> {
+    const textSlug = parentText
+      ? `${parentText.slug}/${textSlugName}`
+      : `${author.slug}/${textSlugName}`;
+    const content = await fs.readFile(textPath, "utf8");
+    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
+    const frontmatterData = this.parseFrontmatter(ast);
+    if (frontmatterData["author_metadata"]) {
+      const existingMetadata =
+        (author.metadata as null | Record<string, unknown>) || {};
+      author.metadata = _.merge(
+        existingMetadata,
+        frontmatterData["author_metadata"],
+      );
+      await this.authorRepository.save(author);
+    }
+    const text = await this.saveTextToDatabase(
+      author,
+      parentText,
+      textSlug,
+      title,
+      frontmatterData,
+    );
+    await this.ingestLines(text, ast);
+  }
 
-      if (firstNode?.type === "strong") {
-        const strongNode = firstNode;
-        const rawLabel = toString(strongNode).trim();
+  private async ingestTextChunks(
+    authorEntity: Author,
+    authorSlug: string,
+    texts: LibraryEntry[],
+    parentTexts: Map<string, Text>,
+  ): Promise<void> {
+    let currentText = 0;
+    const totalTexts = texts.length;
+    const textChunks = _.chunk(texts, 5);
+    for (const chunk of textChunks) {
+      await Promise.all(
+        chunk.map(async (t) => {
+          let parentText: Text | undefined;
+          if (t.pathParts.length > 0) {
+            const currentPath = [authorSlug, ...t.pathParts].join("/");
+            parentText = parentTexts.get(currentPath);
+          }
+          const hierarchy = parentText
+            ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
+            : "";
+          this.logger.log(
+            `  📜 Starting: ${hierarchy}${t.title} (from ${t.provider})`,
+          );
+          try {
+            await this.ingestText(
+              authorEntity,
+              parentText,
+              t.title,
+              t.textSlug,
+              t.fullPath,
+            );
+          } catch (error: unknown) {
+            const errorMessage =
+              error instanceof Error
+                ? error.stack || error.message
+                : String(error);
+            this.logger.error(
+              `❌ Failed to process ${hierarchy}${t.title} (from ${t.provider}): ${String(error)}`,
+            );
+            await fs.appendFile(
+              this.logFilePath,
+              `[${new Date().toISOString()}] ${t.fullPath}: ${errorMessage}\n`,
+            );
+          }
+          currentText++;
+          const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+          this.logger.log(
+            `  ✅ Completed: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
+          );
+        }),
+      );
+    }
+  }
 
-        // Extract the actual label if it's mixed with a title (e.g. "XXVII. Canis et...")
-        const labelMatch = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i.exec(
-          rawLabel,
+  private normalize(str: string): string {
+    return str
+      .normalize("NFD")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  private parseFrontmatter(ast: Root): Record<string, unknown> {
+    const yamlNode = ast.children.find((node) => node.type === "yaml") as
+      | undefined
+      | { value: string };
+    if (!yamlNode?.value) return {};
+    try {
+      const parsed = YAML.parse(yamlNode.value) as null | Record<
+        string,
+        unknown
+      >;
+      return parsed ?? {};
+    } catch {
+      return {};
+    }
+  }
+
+  private parseLabelFromStrongNode(
+    strongNode: Strong,
+    lineNodes: PhrasingContent[],
+  ): { label: string; lineNodes: PhrasingContent[] } {
+    const rawLabel = toString(strongNode).trim();
+    const labelMatch = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i.exec(
+      rawLabel,
+    );
+    if (labelMatch?.[1]) {
+      return this.parseStandardLabel(labelMatch, lineNodes);
+    }
+    return this.parseNonStandardLabel(rawLabel, lineNodes);
+  }
+
+  private parseNonStandardLabel(
+    rawLabel: string,
+    lineNodes: PhrasingContent[],
+  ): { label: string; lineNodes: PhrasingContent[] } {
+    let label = `${lineNodes.length + 1}`;
+    let resultNodes: PhrasingContent[] = lineNodes.slice(1);
+    if (rawLabel.length <= 32) {
+      label = /^[IVXLCDM]+$/i.test(rawLabel)
+        ? `${this.numeralsService.toDecimal(rawLabel)}`
+        : rawLabel;
+    } else {
+      resultNodes = [{ type: "text", value: `${rawLabel} ` }, ...resultNodes];
+    }
+    const nextNode = resultNodes[0];
+    if (nextNode?.type === "text" && "value" in nextNode) {
+      const textNode = nextNode as { type: "text"; value: string };
+      textNode.value = textNode.value.replace(/^\s+/, "");
+    }
+    return { label, lineNodes: resultNodes };
+  }
+
+  private parseStandardLabel(
+    labelMatch: RegExpExecArray,
+    lineNodes: PhrasingContent[],
+  ): { label: string; lineNodes: PhrasingContent[] } {
+    let label = labelMatch[1] ?? "";
+    if (/^[IVXLCDM]+$/i.test(label)) {
+      label = `${this.numeralsService.toDecimal(label)}`;
+    }
+    const remainder = labelMatch[2];
+    let resultNodes: PhrasingContent[] = lineNodes.slice(1);
+    if (remainder) {
+      resultNodes = [{ type: "text", value: `${remainder} ` }, ...resultNodes];
+    }
+    return { label, lineNodes: resultNodes };
+  }
+
+  // 🌎 Public Methods
+
+  private async saveTextToDatabase(
+    author: Author,
+    parentText: Text | undefined,
+    textSlug: string,
+    title: string,
+    frontmatterData: Record<string, unknown>,
+  ): Promise<Text> {
+    const textSaveObject: DeepPartial<Text> = {
+      author,
+      slug: textSlug,
+      title,
+      type: "text",
+    };
+    if (parentText) {
+      textSaveObject.parentText = parentText;
+    }
+    if (frontmatterData["text_metadata"]) {
+      textSaveObject.metadata = frontmatterData["text_metadata"];
+    }
+    await this.textRepository.upsert(
+      textSaveObject as QueryDeepPartialEntity<Text>,
+      {
+        conflictPaths: ["slug"],
+        skipUpdateIfNoValuesChanged: true,
+      },
+    );
+    return this.textRepository.findOneOrFail({
+      relations: { author: true },
+      where: { slug: textSlug },
+    });
+  }
+
+  private async scanLibrary(): Promise<LibraryEntry[]> {
+    const dataDirectory = path.resolve("data", "library");
+    const texts: LibraryEntry[] = [];
+    try {
+      const providers = await fs.readdir(dataDirectory, {
+        withFileTypes: true,
+      });
+      for (const provider of providers) {
+        if (!provider.isDirectory()) continue;
+        const providerName = provider.name;
+        const authors = await fs.readdir(
+          path.join(dataDirectory, providerName),
+          { withFileTypes: true },
         );
-        if (labelMatch?.[1]) {
-          label = labelMatch[1];
-          if (/^[IVXLCDM]+$/i.test(label)) {
-            label = `${this.numeralsService.toDecimal(label)}`;
-          }
-
-          const remainder = labelMatch[2];
-          lineNodes = lineNodes.slice(1);
-
-          if (remainder) {
-            const newNode = {
-              type: "text",
-              value: `${remainder} `,
-            } as Extract<
-              Parameters<typeof lineNodes.unshift>[0],
-              { type: "text" }
-            >;
-            lineNodes.unshift(newNode);
-          }
-        } else {
-          // If it doesn't match a standard label format, just use the raw label if it fits, or fallback
-          if (rawLabel.length <= 32) {
-            label = rawLabel;
-            if (/^[IVXLCDM]+$/i.test(label)) {
-              label = `${this.numeralsService.toDecimal(label)}`;
-            }
-          }
-          lineNodes = lineNodes.slice(1);
-          // If we rejected the rawLabel as a label because it was too long, we should put it back in the text
-          if (rawLabel.length > 32) {
-            const newNode = {
-              type: "text",
-              value: `${rawLabel} `,
-            } as Extract<
-              Parameters<typeof lineNodes.unshift>[0],
-              { type: "text" }
-            >;
-            lineNodes.unshift(newNode);
-          }
-        }
-
-        const nextNode = lineNodes[0];
-        if (nextNode?.type === "text" && "value" in nextNode) {
-          nextNode.value = nextNode.value.replace(/^\s+/, "");
+        for (const author of authors) {
+          if (!author.isDirectory()) continue;
+          const authorSlug = author.name;
+          await this.walkLibraryDirectory(
+            path.join(dataDirectory, providerName, authorSlug),
+            [],
+            providerName,
+            authorSlug,
+            texts,
+          );
         }
       }
+    } catch {
+      // Ignore if data directory doesn't exist yet
+    }
+    return texts;
+  }
 
-      const lineText = toString({ children: lineNodes, type: "paragraph" });
+  private selectTextsToIngest(
+    library: LibraryEntry[],
+    provider: string | undefined,
+    author: string | undefined,
+    text: string | undefined,
+  ): LibraryEntry[] {
+    let filtered = library;
+    if (provider) filtered = filtered.filter((t) => t.provider === provider);
+    if (author) filtered = filtered.filter((t) => t.authorSlug === author);
+    if (text) {
+      filtered = filtered.filter(
+        (t) => [t.authorSlug, ...t.pathParts, t.textSlug].join("/") === text,
+      );
+    }
+    return this.deduplicateByProvider(filtered);
+  }
 
-      return {
-        author: text.author,
-        data: lineText,
-        index,
-        label,
-        text,
-      };
-    });
-
+  private async upsertAndFetchLines(
+    lineEntities: DeepPartial<Line>[],
+    text: Text,
+  ): Promise<Line[]> {
     const lineChunkSize = 1000;
     const lineChunks = _.chunk(lineEntities, lineChunkSize);
     await Promise.all(
@@ -236,45 +573,18 @@ export class LiteratureCommand extends CommandRunner {
         }),
       ),
     );
-
-    const savedLines = await this.lineRepository.find({
+    return this.lineRepository.find({
       loadEagerRelations: false,
       order: { index: "ASC" },
       select: { data: true, id: true, index: true },
       where: { text: { id: text.id } },
     });
+  }
 
-    this.logger.log(
-      `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
-    );
-
-    for (const line of savedLines) {
-      const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
-      tokenStrings.forEach((data, index) => {
-        const isPunctuation = !/^[\p{L}]+$/u.test(data);
-        let wordId: null | string = null;
-        if (!isPunctuation) {
-          if (this.memoizedWordCache.has(data)) {
-            wordId = this.memoizedWordCache.get(data) || null;
-          } else {
-            const normalized = this.escapeCapitals(this.normalize(data));
-            wordId = wordMap.get(normalized) || null;
-            this.memoizedWordCache.set(data, wordId);
-          }
-        }
-
-        tokenEntities.push({
-          author: text.author,
-          data,
-          index,
-          isPunctuation,
-          line,
-          text,
-          word: wordId ? { id: wordId } : null,
-        });
-      });
-    }
-
+  private async upsertTokens(
+    tokenEntities: DeepPartial<Token>[],
+    text: Text,
+  ): Promise<void> {
     this.logger.log(
       `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
     );
@@ -290,166 +600,35 @@ export class LiteratureCommand extends CommandRunner {
     );
   }
 
-  private async ingestText(
-    author: Author,
-    parentText: Text | undefined,
-    title: string,
-    textSlugName: string,
-    textPath: string,
+  private async walkLibraryDirectory(
+    directory: string,
+    currentPathParts: string[],
+    providerName: string,
+    authorSlug: string,
+    texts: LibraryEntry[],
   ): Promise<void> {
-    const textSlug = parentText
-      ? `${parentText.slug}/${textSlugName}`
-      : `${author.slug}/${textSlugName}`;
-
-    const content = await fs.readFile(textPath, "utf8");
-    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
-
-    let frontmatterData: Record<string, unknown> = {};
-    const yamlNode = ast.children.find((node) => node.type === "yaml") as
-      | undefined
-      | { value: string };
-    if (yamlNode?.value) {
-      try {
-        const parsed = YAML.parse(yamlNode.value) as null | Record<
-          string,
-          unknown
-        >;
-        if (parsed) {
-          frontmatterData = parsed;
-        }
-      } catch {
-        // ignore malformed YAML
-      }
-    }
-
-    if (frontmatterData["author_metadata"]) {
-      const existingMetadata =
-        (author.metadata as null | Record<string, unknown>) || {};
-      author.metadata = _.merge(
-        existingMetadata,
-        frontmatterData["author_metadata"],
-      );
-      await this.authorRepository.save(author);
-    }
-
-    const textSaveObject: DeepPartial<Text> = {
-      author,
-      slug: textSlug,
-      title,
-      type: "text",
-    };
-    if (parentText) {
-      textSaveObject.parentText = parentText;
-    }
-    if (frontmatterData["text_metadata"]) {
-      textSaveObject.metadata = frontmatterData["text_metadata"];
-    }
-
-    await this.textRepository.upsert(
-      textSaveObject as QueryDeepPartialEntity<Text>,
-      {
-        conflictPaths: ["slug"],
-        skipUpdateIfNoValuesChanged: true,
-      },
-    );
-
-    const text = await this.textRepository.findOneOrFail({
-      relations: { author: true },
-      where: { slug: textSlug },
-    });
-
-    await this.ingestLines(text, ast);
-  }
-
-  private normalize(str: string): string {
-    return str
-      .normalize("NFD")
-      .replaceAll(/[\u0300-\u036F]/gu, "")
-      .toLowerCase()
-      .trim();
-  }
-
-  private async scanLibrary(): Promise<
-    {
-      authorSlug: string;
-      fullPath: string;
-      pathParts: string[];
-      provider: string;
-      textSlug: string;
-      title: string;
-    }[]
-  > {
-    const dataDirectory = path.resolve("data", "library");
-    const texts: {
-      authorSlug: string;
-      fullPath: string;
-      pathParts: string[];
-      provider: string;
-      textSlug: string;
-      title: string;
-    }[] = [];
-
-    async function walk(
-      directory: string,
-      currentPathParts: string[],
-      providerName: string,
-      authorSlug: string,
-    ): Promise<void> {
-      const entries = await fs.readdir(directory, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isDirectory()) {
-          await walk(
-            path.join(directory, entry.name),
-            [...currentPathParts, entry.name],
-            providerName,
-            authorSlug,
-          );
-        } else if (entry.isFile() && entry.name.endsWith(".md")) {
-          texts.push({
-            authorSlug,
-            fullPath: path.join(directory, entry.name),
-            pathParts: currentPathParts,
-            provider: providerName,
-            textSlug: path.basename(entry.name, ".md"),
-            title: _.startCase(path.basename(entry.name, ".md")),
-          });
-        }
-      }
-    }
-
-    try {
-      const providers = await fs.readdir(dataDirectory, {
-        withFileTypes: true,
-      });
-      for (const provider of providers) {
-        if (!provider.isDirectory()) continue;
-        const providerName = provider.name;
-
-        const authors = await fs.readdir(
-          path.join(dataDirectory, providerName),
-          {
-            withFileTypes: true,
-          },
+    const entries = await fs.readdir(directory, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        await this.walkLibraryDirectory(
+          path.join(directory, entry.name),
+          [...currentPathParts, entry.name],
+          providerName,
+          authorSlug,
+          texts,
         );
-        for (const author of authors) {
-          if (!author.isDirectory()) continue;
-          const authorSlug = author.name;
-
-          await walk(
-            path.join(dataDirectory, providerName, authorSlug),
-            [],
-            providerName,
-            authorSlug,
-          );
-        }
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        texts.push({
+          authorSlug,
+          fullPath: path.join(directory, entry.name),
+          pathParts: currentPathParts,
+          provider: providerName,
+          textSlug: path.basename(entry.name, ".md"),
+          title: _.startCase(path.basename(entry.name, ".md")),
+        });
       }
-    } catch {
-      // Ignore if data directory doesn't exist yet
     }
-    return texts;
   }
-
-  // 🌎 Public Methods
 
   /**
    *
@@ -566,13 +745,11 @@ export class LiteratureCommand extends CommandRunner {
     this.logger.log(`📚 Starting literature ingestion...`);
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
-
     const library = await this.scanLibrary();
     if (library.length === 0) {
       this.logger.warn(`⚠️ No texts found in data/library directory.`);
       return;
     }
-
     const provider = await this.parseProvider(options.provider ?? undefined);
     const author = await this.parseAuthor(
       options.author ?? undefined,
@@ -583,161 +760,14 @@ export class LiteratureCommand extends CommandRunner {
       provider,
       author,
     );
-
-    let filtered = library;
-
-    if (provider) {
-      filtered = filtered.filter((t) => t.provider === provider);
-    }
-    if (author) {
-      filtered = filtered.filter((t) => t.authorSlug === author);
-    }
-    if (text) {
-      filtered = filtered.filter(
-        (t) => [t.authorSlug, ...t.pathParts, t.textSlug].join("/") === text,
-      );
-    }
-
-    // De-duplicate by selecting the highest priority provider for each text
-    const textMap = new Map<string, (typeof filtered)[0]>();
-
-    for (const t of filtered) {
-      const slug = [t.authorSlug, ...t.pathParts, t.textSlug].join("/");
-      const existing = textMap.get(slug);
-
-      if (existing) {
-        const existingPriority = this.priorityProviders.indexOf(
-          existing.provider,
-        );
-        const newPriority = this.priorityProviders.indexOf(t.provider);
-
-        // If the new provider has a higher priority (lower index, but not -1), or the existing provider is not in the priority list
-        if (
-          newPriority !== -1 &&
-          (existingPriority === -1 || newPriority < existingPriority)
-        ) {
-          textMap.set(slug, t);
-        }
-      } else {
-        textMap.set(slug, t);
-      }
-    }
-
-    const textsToIngest = [...textMap.values()];
-
+    const textsToIngest = this.selectTextsToIngest(
+      library,
+      provider,
+      author,
+      text,
+    );
     this.logger.log(`📚 Selected ${textsToIngest.length} texts for ingestion.`);
-
-    // Group by author
-    const grouped = _.groupBy(textsToIngest, "authorSlug");
-    const authors = Object.entries(grouped);
-
-    let currentAuthor = 0;
-    const totalAuthors = authors.length;
-
-    for (const [authorSlug, texts] of authors) {
-      this.logger.log(`👤 Starting author: ${authorSlug}`);
-
-      await this.authorRepository.upsert(
-        {
-          name: authorIdToName[authorSlug] || _.startCase(authorSlug),
-          slug: authorSlug,
-        },
-        { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
-      );
-
-      const authorEntity = await this.authorRepository.findOneOrFail({
-        where: { slug: authorSlug },
-      });
-
-      const parentTexts = new Map<string, Text>();
-
-      let currentText = 0;
-      const totalTexts = texts.length;
-
-      // Ensure all intermediate directories exist as Text entities sequentially
-      for (const t of texts) {
-        if (t.pathParts.length > 0) {
-          let currentPath = authorSlug;
-          for (const part of t.pathParts) {
-            const parentSlug = currentPath;
-            currentPath = `${currentPath}/${part}`;
-
-            if (!parentTexts.has(currentPath)) {
-              const pText = parentTexts.get(parentSlug);
-
-              await this.textRepository.upsert(
-                {
-                  author: authorEntity,
-                  parentText: pText,
-                  slug: currentPath,
-                  title: _.startCase(part),
-                  type: "book",
-                } as QueryDeepPartialEntity<Text>,
-                { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
-              );
-
-              const newParent = await this.textRepository.findOneOrFail({
-                where: { slug: currentPath },
-              });
-              parentTexts.set(currentPath, newParent);
-            }
-          }
-        }
-      }
-
-      const textChunks = _.chunk(texts, 5);
-      for (const chunk of textChunks) {
-        await Promise.all(
-          chunk.map(async (t) => {
-            let parentText: Text | undefined;
-            if (t.pathParts.length > 0) {
-              const currentPath = [authorSlug, ...t.pathParts].join("/");
-              parentText = parentTexts.get(currentPath);
-            }
-
-            const hierarchy = parentText
-              ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
-              : "";
-            this.logger.log(
-              `  📜 Starting: ${hierarchy}${t.title} (from ${t.provider})`,
-            );
-
-            try {
-              await this.ingestText(
-                authorEntity,
-                parentText,
-                t.title,
-                t.textSlug,
-                t.fullPath,
-              );
-            } catch (error: unknown) {
-              const errorMessage =
-                error instanceof Error
-                  ? error.stack || error.message
-                  : String(error);
-              this.logger.error(
-                `❌ Failed to process ${hierarchy}${t.title} (from ${t.provider}): ${String(error)}`,
-              );
-              await fs.appendFile(
-                this.logFilePath,
-                `[${new Date().toISOString()}] ${t.fullPath}: ${errorMessage}\n`,
-              );
-            }
-
-            currentText++;
-            const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
-            this.logger.log(
-              `  ✅ Completed: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
-            );
-          }),
-        );
-      }
-
-      currentAuthor++;
-      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
-      this.logger.log(`👤 Completed author: ${authorSlug}${authorProgress}`);
-    }
-
+    await this.ingestAllAuthors(textsToIngest);
     const endTime = performance.now();
     const duration = ((endTime - startTime) / 1000).toFixed(2);
     this.logger.log(`📚 Literature ingestion complete in ${duration} seconds`);

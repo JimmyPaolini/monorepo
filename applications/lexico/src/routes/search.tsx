@@ -32,6 +32,25 @@ export const Route = createFileRoute("/search")({
   validateSearch: searchSchema,
 });
 
+// 🔍 Search results sub-components
+
+interface EmptyResultsProps {
+  query: string;
+}
+
+interface SearchResultsListProps {
+  results: EntrySearchResult[];
+}
+
+function EmptyResults(properties: EmptyResultsProps): ReactNode {
+  const { query } = properties;
+  return (
+    <div className="text-center text-muted-foreground">
+      <p>No results found for &quot;{query}&quot;</p>
+    </div>
+  );
+}
+
 /**
  * Search page component that allows users to search for Latin entries.
  *
@@ -123,64 +142,45 @@ function SearchPage(): ReactNode {
       )}
 
       {!isLoading && !error && results.length > 0 && (
-        <div className="mx-auto max-w-2xl space-y-4">
-          {results.map((entry) => {
-            // Transform forms for the entry card
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
-            const transformedForms = entry.forms
-              ? transformForms(entry.part_of_speech, entry.forms)
-              : null;
-
-            return (
-              <div key={entry.id}>
-                <EntryCard
-                  etymology={entry.etymology}
-                  forms={transformedForms}
-                  id={entry.id}
-                  inflection={entry.inflection}
-                  onBookmarkToggle={noop}
-                  partOfSpeech={entry.part_of_speech}
-                  principalParts={entry.principal_parts}
-                  pronunciation={entry.pronunciation}
-                  translations={entry.translations}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <SearchResultsList results={results} />
       )}
 
       {!isLoading && !error && query && results.length === 0 && (
-        <div className="text-center text-muted-foreground">
-          <p>No results found for &quot;{query}&quot;</p>
-        </div>
+        <EmptyResults query={query} />
       )}
 
-      {!query && (
-        <Card className="mx-auto max-w-2xl">
-          <CardHeader>
-            <CardTitle>Welcome to Lexico</CardTitle>
-          </CardHeader>
-          <CardContent className="text-muted-foreground">
-            <p>
-              Start typing to search the Latin dictionary. You can search for
-              Latin words to find their English translations, or search for
-              English words to find Latin equivalents.
-            </p>
-            <ul className="mt-4 list-inside list-disc space-y-1">
-              <li>
-                Search Latin words (e.g., &quot;amo&quot;, &quot;rex&quot;,
-                &quot;bellum&quot;)
-              </li>
-              <li>
-                Search English translations (e.g., &quot;love&quot;,
-                &quot;king&quot;, &quot;war&quot;)
-              </li>
-              <li>View word forms, conjugations, and declensions</li>
-            </ul>
-          </CardContent>
-        </Card>
-      )}
+      {!query && <WelcomeCard />}
+    </div>
+  );
+}
+
+function SearchResultsList(properties: SearchResultsListProps): ReactNode {
+  const { results } = properties;
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-4">
+      {results.map((entry) => {
+        const transformedForms = transformForms(
+          entry.part_of_speech,
+          entry.forms,
+        );
+
+        return (
+          <div key={entry.id}>
+            <EntryCard
+              etymology={entry.etymology}
+              forms={transformedForms}
+              id={entry.id}
+              inflection={entry.inflection}
+              onBookmarkToggle={noop}
+              partOfSpeech={entry.part_of_speech}
+              principalParts={entry.principal_parts}
+              pronunciation={entry.pronunciation}
+              translations={entry.translations}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -201,4 +201,32 @@ function useDebounce<T>(value: T, delay: number): T {
   }, [value, delay]);
 
   return debouncedValue;
+}
+
+function WelcomeCard(): ReactNode {
+  return (
+    <Card className="mx-auto max-w-2xl">
+      <CardHeader>
+        <CardTitle>Welcome to Lexico</CardTitle>
+      </CardHeader>
+      <CardContent className="text-muted-foreground">
+        <p>
+          Start typing to search the Latin dictionary. You can search for Latin
+          words to find their English translations, or search for English words
+          to find Latin equivalents.
+        </p>
+        <ul className="mt-4 list-inside list-disc space-y-1">
+          <li>
+            Search Latin words (e.g., &quot;amo&quot;, &quot;rex&quot;,
+            &quot;bellum&quot;)
+          </li>
+          <li>
+            Search English translations (e.g., &quot;love&quot;,
+            &quot;king&quot;, &quot;war&quot;)
+          </li>
+          <li>View word forms, conjugations, and declensions</li>
+        </ul>
+      </CardContent>
+    </Card>
+  );
 }
