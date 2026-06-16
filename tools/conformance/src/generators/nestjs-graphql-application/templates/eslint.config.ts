@@ -6,7 +6,7 @@ export default [
 
   // 📦 Dependency Checks
   {
-    files: ["**/*.{json}"],
+    files: ["**/*.json"],
     rules: {
       "@nx/dependency-checks": [
         "error",

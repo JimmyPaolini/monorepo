@@ -24,9 +24,7 @@ import { fileURLToPath } from "node:url";
 import JSON5 from "json5";
 import _ from "lodash";
 
-// ════════════════════════════════════════════════════════════════════════════
-// RUNTIME ENVIRONMENT & CONSTANTS
-// ════════════════════════════════════════════════════════════════════════════
+// 🔧 Runtime Environment & Constants
 
 const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
@@ -75,9 +73,7 @@ const MODE = process.argv[2] || "check";
  */
 const RELEASE_RULES_SPECIAL_TYPES = new Set(["revert"]);
 
-// ════════════════════════════════════════════════════════════════════════════
-// TYPE DEFINITIONS & INTERFACES
-// ════════════════════════════════════════════════════════════════════════════
+// 🗄️ Type Definitions & Interfaces
 
 /** Conventional commit configuration loaded from conventional.config.cjs. */
 interface ConventionalConfig {
@@ -130,9 +126,7 @@ interface Type {
   name: string;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// CONFIG LOADING HELPERS
-// ════════════════════════════════════════════════════════════════════════════
+// 🔩 Config Loading Helpers
 
 const capitalize = (s: string): string =>
   s.charAt(0).toUpperCase() + s.slice(1);
@@ -204,9 +198,7 @@ function checkAllTemplatesSync(scopeNames: string[]): boolean {
   return templatesOk;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// SETTINGS.JSON UTILITIES
-// ════════════════════════════════════════════════════════════════════════════
+// ⚙️ Settings.json Utilities
 
 /**
  * Validate that an issue template YAML file has up-to-date scope dropdown options.
@@ -345,9 +337,7 @@ function checkReleaseRulesSync(
   return true;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// SKILL.MD UTILITIES (Markdown Documentation)
-// ════════════════════════════════════════════════════════════════════════════
+// 📝 Skill.md Utilities
 
 /**
  * Validate that settings.json scopes match the source configuration.
@@ -413,9 +403,7 @@ function extractMarkerContent(
   return match?.[1];
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// RELEASE CONFIG UTILITIES
-// ════════════════════════════════════════════════════════════════════════════
+// 📦 Release Config Utilities
 
 /**
  * Generate the conventionalCommits.scopes array block for settings.json (JSONC).
@@ -546,9 +534,7 @@ function loadConventionalConfig(): ConventionalConfig {
   return require(CONVENTIONAL_CONFIG) as ConventionalConfig;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// ISSUE TEMPLATE UTILITIES (YAML Configuration)
-// ════════════════════════════════════════════════════════════════════════════
+// 🎫 Issue Template Utilities
 
 /**
  * Load release.config.cjs using require() since it's a CommonJS module.
@@ -617,9 +603,7 @@ function parseMarkdownTableValues(tableContent: string): string[] {
   return values;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// MARKER & COMPARISON UTILITIES
-// ════════════════════════════════════════════════════════════════════════════
+// 🔍 Marker & Comparison Utilities
 
 /**
  * Parse the settings.json (JSONC) file and extract the conventionalCommits.scopes array.
@@ -784,9 +768,7 @@ function writeSettingsSync(scopes: Scope[]): void {
   console.log("✅ settings.json scopes synced");
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// MAIN ENTRY POINT
-// ════════════════════════════════════════════════════════════════════════════
+// 🚀 Main Entry Point
 
 /**
  * Update a skill markdown file with the latest types and scopes tables.
