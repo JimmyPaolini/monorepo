@@ -16,14 +16,8 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isRise: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
-  isSet: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
+  isRise: (args: { current: number; previous: number }) => boolean;
+  isSet: (args: { current: number; previous: number }) => boolean;
 }
 
 describe("DailyCyclesService", () => {
