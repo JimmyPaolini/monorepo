@@ -174,7 +174,12 @@ export class LatinLibraryCommand extends CommandRunner {
   }
 
   private isIgnoredProtocol(href: string): boolean {
-    return href.startsWith("mailto:") || href.startsWith("javascript:");
+    return (
+      href.startsWith("mailto:") ||
+      href.startsWith("javascript:") ||
+      href.startsWith("data:") ||
+      href.startsWith("vbscript:")
+    );
   }
 
   private isInvalidExtension(href: string): boolean {

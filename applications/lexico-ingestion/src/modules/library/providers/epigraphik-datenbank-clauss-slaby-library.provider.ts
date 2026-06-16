@@ -109,7 +109,12 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     const provinz = object.provinz || "Unknown Province";
     const text = object.inschriften[0]?.[0];
     if (!text) return;
-    const cleanedText = text.replaceAll(/<[^>]*>?/gm, "");
+    let cleanedText = text;
+    let previousText: string;
+    do {
+      previousText = cleanedText;
+      cleanedText = cleanedText.replaceAll(/<[^>]*>?/gm, "");
+    } while (cleanedText !== previousText);
     const markdownLine = `**${recordId}** ${cleanedText}`;
     const provArray = provinceData.get(provinz) || [];
     provArray.push(markdownLine);
