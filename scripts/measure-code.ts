@@ -278,9 +278,9 @@ for (const trackedFile of trackedFiles) {
 const repoSizeMiB = (repoBytes / 1024 / 1024).toFixed(1);
 
 // 📅 Last commit date
-// Use today's date rather than `git log -1` so that the value written during a
-// pre-commit hook matches what CI calculates after the commit is created.
-const lastCommit = new Date().toISOString().slice(0, 10);
+const lastCommit = execSync("git log -1 --format=%cd --date=short HEAD")
+  .toString()
+  .trim();
 
 // 📂 Folder count
 

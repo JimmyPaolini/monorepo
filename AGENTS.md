@@ -54,7 +54,6 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[refresh-documentation](documentation/skills/refresh-documentation/SKILL.md)**: Review and update all project documentation to keep it accurate and current. Use this skill when asked to refresh, update, or audit documentation, README files, AGENTS.md files, skill descriptions, or any markdown docs across the monorepo.
 - **[rename-branch](documentation/skills/rename-branch/SKILL.md)**: "Rename a git branch or worktree. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
-- **[section-comments](documentation/skills/section-comments/SKILL.md)**: Write section comments using the emoji section comment format for TypeScript, Python, and any other language. USE WHEN adding section comments, organizing code into logical groups, or when asked about comment style conventions. Covers the correct format, emoji selection, capitalization, and anti-patterns to avoid (dash lines, ASCII art, #region blocks).
 - **[simplify-code](documentation/skills/simplify-code/SKILL.md)**: Workflow to identify overly complex functions using ESLint complexity rules (max-statements, max-lines, complexity, max-depth) and refactor them towards simplicity using Refactoring.Guru guidelines. Use when asked to "simplify code", "reduce complexity", "refactor large functions", or fix ESLint complexity warnings and errors.
 - **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
 - **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
@@ -314,8 +313,7 @@ See [React Conventions](documentation/conventions/react.md) for component struct
 
 ### Code Quality
 
-- [Commenting](documentation/skills/commenting/SKILL.md): Conventions for writing comments and section headers
-- [Section Comments](documentation/skills/section-comments/SKILL.md): Emoji section comment format reference
+- [Commenting](documentation/skills/commenting/SKILL.md): Conventions for writing comments, section headers, and emoji section format
 
 ### Architecture
 

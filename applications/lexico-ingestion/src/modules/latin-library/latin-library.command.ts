@@ -174,11 +174,12 @@ export class LatinLibraryCommand extends CommandRunner {
   }
 
   private isIgnoredProtocol(href: string): boolean {
+    const normalized = href.toLowerCase();
     return (
-      href.startsWith("mailto:") ||
-      href.startsWith("javascript:") ||
-      href.startsWith("data:") ||
-      href.startsWith("vbscript:")
+      normalized.startsWith("mailto:") ||
+      normalized.startsWith("javascript:") ||
+      normalized.startsWith("data:") ||
+      normalized.startsWith("vbscript:")
     );
   }
 

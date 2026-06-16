@@ -110,6 +110,10 @@ If a TODO is genuinely needed (tracked work), include a ticket reference:
 
 // Bad: plain section label with no emoji
 // Configuration
+
+// Bad: #region blocks
+//#region 🔧 Configuration
+//#endregion
 ```
 
 Use emoji section comments instead — see [Section Comments](#section-comments) below.
@@ -206,3 +210,11 @@ class TestMyService(unittest.TestCase): ...
 | 💬 | Blockquotes |
 | 📊 | Tables |
 | 📚 | Grammar groups, large topic areas |
+
+### Rules Summary
+
+1. Format: `// <emoji> <Section name>` (TypeScript/JS) or `# <emoji> <Section name>` (Python)
+2. Section name: capitalized first letter, short noun phrase
+3. Never wrap a section comment in dash lines or any other delimiter
+4. Never use `#region`/`#endregion` — plain emoji comments are sufficient
+5. Choose an emoji that conveys the section's purpose; consult the table above
