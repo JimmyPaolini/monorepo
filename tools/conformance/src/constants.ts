@@ -1,9 +1,9 @@
 import _ from "lodash";
 
-import { APPLICATIONS_DIRECTORY } from "./generators/nestjs-command-application/generator.js";
-import { MODULES_DIRECTORY } from "./generators/nestjs-graphql-module/generator.js";
 import { StringCase, type StringCaseValue } from "./types.js";
 
+export const APPLICATIONS_DIRECTORY = "applications";
+export const MODULES_DIRECTORY = "src/modules";
 const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
 const MODULES_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**/${MODULES_DIRECTORY}/**`;
 const APPLICATIONS_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**`;

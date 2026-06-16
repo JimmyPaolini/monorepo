@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
+import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
@@ -22,7 +23,6 @@ interface GenerateNestjsServiceModuleOptions {
  * @param tree - The Nx virtual file system tree
  * @param options - Configuration options for the NestJS service module generator
  */
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );

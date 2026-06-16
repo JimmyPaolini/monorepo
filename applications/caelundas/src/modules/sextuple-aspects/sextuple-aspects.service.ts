@@ -513,8 +513,10 @@ export class SextupleAspectsService {
       trine1[m],
       trine2[n],
     ];
-    if (bodies.includes(undefined)) return null;
-    const arrangement = bodies as Body[];
+    const arrangement = bodies.filter(
+      (body): body is Body => body !== undefined,
+    );
+    if (arrangement.length !== bodies.length) return null;
     return this.checkHexagonSextiles(arrangement, sextileConnections)
       ? arrangement
       : null;

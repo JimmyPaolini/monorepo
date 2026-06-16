@@ -359,52 +359,52 @@ describe("IngressesService", () => {
     describe("degreeRangeBySign", () => {
       it("should have correct ranges for all signs", () => {
         expect(IngressesService.degreeRangeBySign.aries).toEqual({
-          max: 30,
-          min: 0,
+          maximum: 30,
+          minimum: 0,
         });
         expect(IngressesService.degreeRangeBySign.taurus).toEqual({
-          max: 60,
-          min: 30,
+          maximum: 60,
+          minimum: 30,
         });
         expect(IngressesService.degreeRangeBySign.gemini).toEqual({
-          max: 90,
-          min: 60,
+          maximum: 90,
+          minimum: 60,
         });
         expect(IngressesService.degreeRangeBySign.cancer).toEqual({
-          max: 120,
-          min: 90,
+          maximum: 120,
+          minimum: 90,
         });
         expect(IngressesService.degreeRangeBySign.leo).toEqual({
-          max: 150,
-          min: 120,
+          maximum: 150,
+          minimum: 120,
         });
         expect(IngressesService.degreeRangeBySign.virgo).toEqual({
-          max: 180,
-          min: 150,
+          maximum: 180,
+          minimum: 150,
         });
         expect(IngressesService.degreeRangeBySign.libra).toEqual({
-          max: 210,
-          min: 180,
+          maximum: 210,
+          minimum: 180,
         });
         expect(IngressesService.degreeRangeBySign.scorpio).toEqual({
-          max: 240,
-          min: 210,
+          maximum: 240,
+          minimum: 210,
         });
         expect(IngressesService.degreeRangeBySign.sagittarius).toEqual({
-          max: 270,
-          min: 240,
+          maximum: 270,
+          minimum: 240,
         });
         expect(IngressesService.degreeRangeBySign.capricorn).toEqual({
-          max: 300,
-          min: 270,
+          maximum: 300,
+          minimum: 270,
         });
         expect(IngressesService.degreeRangeBySign.aquarius).toEqual({
-          max: 330,
-          min: 300,
+          maximum: 330,
+          minimum: 300,
         });
         expect(IngressesService.degreeRangeBySign.pisces).toEqual({
-          max: 360,
-          min: 330,
+          maximum: 360,
+          minimum: 330,
         });
       });
     });

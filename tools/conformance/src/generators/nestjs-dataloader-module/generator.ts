@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
+import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
@@ -15,7 +16,6 @@ interface GenerateNestjsDataloaderModuleOptions {
   project?: string;
 }
 
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );

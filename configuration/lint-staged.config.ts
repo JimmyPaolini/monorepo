@@ -60,6 +60,10 @@ const config = {
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
+  "*.{ts,tsx,js,jsx,mts,cts,cjs,mjs,py,ipynb}": () => [
+    "pnpm exec nx run monorepo:measure-code:write",
+    "git add README.md",
+  ],
 
   // 📝 TypeScript / JavaScript source files
   // Runs format (oxfmt + prettier), lint (eslint + oxlint), typecheck, spell-check,
@@ -138,14 +142,6 @@ const config = {
       `pnpm exec nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
-
-  // 📊 README Code Statistics
-  // Re-generate README stats whenever TypeScript or Python files change.
-  // The script writes README.md and we stage it so it's included in the commit.
-  "*.{ts,tsx,py}": () => [
-    "pnpm exec nx run monorepo:measure-code:write",
-    "git add README.md",
-  ],
 };
 
 export default config;

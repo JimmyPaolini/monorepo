@@ -4,14 +4,14 @@ import { fileURLToPath } from "node:url";
 import { formatFiles, type Tree } from "@nx/devkit";
 import _ from "lodash";
 
+import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types.js";
-import { generateFiles, resolveName } from "../../utilities.js";
+import { generateFiles, resolveName } from "../../utilities";
 
 interface GenerateNestjsCommandApplicationOptions {
   name?: string;
 }
 
-export const APPLICATIONS_DIRECTORY = "applications";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
