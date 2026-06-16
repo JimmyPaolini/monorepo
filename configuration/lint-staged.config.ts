@@ -60,7 +60,9 @@ const config = {
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
-  "*.{ts,tsx,js,jsx,mts,cts,cjs,mjs,py,ipynb}": () => [
+  // 📊 Code statistics — run on any staged file because folder/file counts change
+  // with any addition or deletion.
+  "**/*": () => [
     "pnpm exec nx run monorepo:measure-code:write",
     "git add README.md",
   ],

@@ -9,7 +9,7 @@
 [![Jupyter](https://img.shields.io/badge/Jupyter-1.1-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
 
 <!-- CODE_STATISTICS_START -->
-![Lines of Code](https://img.shields.io/badge/Lines_of_Code-77452-22c55e?style=flat-square)
+![Lines of Code](https://img.shields.io/badge/Lines_of_Code-77449-22c55e?style=flat-square)
 ![Repo Size](https://img.shields.io/badge/Repo_Size-148.5_MiB-6b7280?style=flat-square)
 ![Last Commit](https://img.shields.io/badge/Last_Commit-2026--06--16-f59e0b?style=flat-square)
 ![Folders](https://img.shields.io/badge/Folders-465-4a4a4a?style=flat-square)

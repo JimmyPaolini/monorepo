@@ -254,7 +254,7 @@
       }
     },
     "measure-code": {
-      "cache": true,
+      "cache": false,
       "configurations": {
         "check": {
           "command": "tsx scripts/measure-code.ts --check"
