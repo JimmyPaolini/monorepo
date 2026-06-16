@@ -106,7 +106,7 @@
   "chat.mcp.gallery.enabled": true,
   "chat.notifyWindowOnConfirmation": "always",
   "chat.notifyWindowOnResponseReceived": "always",
-  "chat.planAgent.defaultModel": "Gemini 3.1 Pro Preview (gemini)",
+  "chat.planAgent.defaultModel": "Claude Sonnet 4.6 (copilot)",
   "chat.promptFilesLocations": {
     ".github/prompts": true
   },
@@ -495,7 +495,7 @@
   "github.copilot.chat.enableUserPreferences": true,
   "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.githubMcpServer.enabled": true,
-  "github.copilot.chat.implementAgent.model": "Gemini 3.1 Pro Preview (gemini)",
+  "github.copilot.chat.implementAgent.model": "Claude Sonnet 4.6 (copilot)",
   "github.copilot.chat.inlineEdits.chatSessionContextProvider.enabled": true,
   "github.copilot.chat.inlineEdits.diagnosticsContextProvider.enabled": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
@@ -528,7 +528,7 @@
   "github.copilot.chat.reviewSelection.enabled": true,
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.searchSubagent.enabled": true,
-  "github.copilot.chat.searchSubagent.model": "Gemini 3 Flash Preview (gemini)",
+  "github.copilot.chat.searchSubagent.model": "Claude Haiku 4.5 (copilot)",
   "github.copilot.chat.searchSubagent.useAgenticProxy": true,
   "github.copilot.chat.setupTests.enabled": true,
   "github.copilot.chat.switchAgent.enabled": true,
@@ -538,8 +538,8 @@
   "github.copilot.nextEditSuggestions.eagerness": "high",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
-  "github.copilot.nextEditSuggestions.preferredModel": "Gemini 3 Flash Preview (gemini)",
-  "github.copilot.selectedCompletionModel": "Gemini 3 Flash Preview (gemini)",
+  "github.copilot.nextEditSuggestions.preferredModel": "Claude Haiku 4.5 (copilot)",
+  "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -867,10 +867,10 @@
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
-    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "terminal.integrated.env.osx": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
   },
   "terminal.integrated.scrollback": 32768,
   "terraform.languageServer.args": ["serve"],

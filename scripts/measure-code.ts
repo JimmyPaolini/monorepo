@@ -6,7 +6,7 @@ import * as tsCompiler from "typescript";
 
 const CHECK_MODE = process.argv.includes("--check");
 
-// ── File discovery ────────────────────────────────────────────────────────────
+// 🔎 File discovery
 
 const TS_EXTENSIONS = new Set([".cts", ".mts", ".ts", ".tsx"]);
 const JS_EXTENSIONS = new Set([".cjs", ".js", ".jsx", ".mjs"]);
@@ -49,7 +49,7 @@ const testFilePaths = sourceFilePaths.filter((filePath) =>
   ),
 );
 
-// ── TypeScript / JavaScript AST analysis (one file at a time) ────────────────
+// 🗄️ TypeScript / JavaScript AST analysis
 
 // Uses the TypeScript compiler API directly rather than ts-morph so each
 // file's AST is created and discarded independently — memory stays O(1).
@@ -250,7 +250,7 @@ for (const filePath of sourceFilePaths) {
   walkNode(sourceFile, jsts, false);
 }
 
-// ── Python analysis ──────────────────────────────────────────────────────────
+// 🐍 Python analysis
 
 const py = JSON.parse(
   execSync("uv run python scripts/measure-code.py").toString().trim(),
@@ -265,7 +265,7 @@ const py = JSON.parse(
   protocols: number;
 };
 
-// ── Repo size ─────────────────────────────────────────────────────────────────
+// 📊 Repo size
 
 let repoBytes = 0;
 for (const trackedFile of trackedFiles) {
@@ -277,31 +277,24 @@ for (const trackedFile of trackedFiles) {
 }
 const repoSizeMiB = (repoBytes / 1024 / 1024).toFixed(1);
 
-// ── Last commit date ─────────────────────────────────────────────────────────
+// 📅 Last commit date
 
 const lastCommit = execSync("git log -1 --format=%as").toString().trim();
 
-// ── Folder count ─────────────────────────────────────────────────────────────
+// 📂 Folder count
 
-const EXCLUDE_DIRS = new Set([
-  ".git",
-  ".nx",
-  "build",
-  "coverage",
-  "dist",
-  "node_modules",
-]);
-const countFolders = (directory: string): number =>
-  fs
-    .readdirSync(directory, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && !EXCLUDE_DIRS.has(entry.name))
-    .reduce(
-      (count, entry) => count + 1 + countFolders(`${directory}/${entry.name}`),
-      0,
-    );
-const folders = countFolders(".");
+// Derive from git-tracked files so the count is consistent across environments
+// (avoids counting untracked dirs like .venv, __pycache__, etc.)
+const trackedFolders = new Set<string>();
+for (const filePath of trackedFiles) {
+  const parts = filePath.split("/");
+  for (let index = 1; index < parts.length; index++) {
+    trackedFolders.add(parts.slice(0, index).join("/"));
+  }
+}
+const folders = trackedFolders.size;
 
-// ── Badge builder ─────────────────────────────────────────────────────────────
+// 🏷️ Badge builder
 
 const encode = (s: number | string): string =>
   String(s).replaceAll("-", "--").replaceAll("_", "__").replaceAll(" ", "_");
@@ -309,7 +302,7 @@ const encode = (s: number | string): string =>
 const badge = (label: string, value: number | string, color: string): string =>
   `![${label}](https://img.shields.io/badge/${encode(label)}-${encode(value)}-${color}?style=flat-square)`;
 
-// ── Build the badge block ─────────────────────────────────────────────────────
+// 📦 Badge block
 
 const badges = [
   badge("Lines of Code", jsts.lines + py.lines, "22c55e"),
@@ -335,7 +328,7 @@ const badges = [
 
 const BLOCK = `<!-- CODE_STATISTICS_START -->\n${badges}\n<!-- CODE_STATISTICS_END -->`;
 
-// ── Write or check ────────────────────────────────────────────────────────────
+// ✏️ Write or check
 
 const readme = fs.readFileSync("README.md", "utf8");
 

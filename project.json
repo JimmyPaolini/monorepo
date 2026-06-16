@@ -24,18 +24,18 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint:write",
             "nx run {projectName}:measure-code:write",
-            "nx run {projectName}:spell-check",
             "nx run {projectName}:sync-agent-skills:write",
             "nx run {projectName}:sync-conventional-config:write",
             "nx run {projectName}:sync-pull-request-template:write",
             "nx run {projectName}:sync-vscode-extensions:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:typecheck",
             "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck"
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:format:write"
           ],
           "parallel": false
         }
