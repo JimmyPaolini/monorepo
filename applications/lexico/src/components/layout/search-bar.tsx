@@ -4,7 +4,7 @@ import * as React from "react";
 import { Button, cn, Input } from "@monorepo/lexico-components";
 
 /**
- *
+ * Inputs for the search bar, supporting both controlled and uncontrolled text state.
  */
 export interface SearchBarProps {
   /** Additional class names */
@@ -22,7 +22,7 @@ export interface SearchBarProps {
 }
 
 /**
- * SearchBar component for performing searches with loading state.
+ * Search input with Enter/click submit handling and optional loading indicator.
  */
 const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
   (

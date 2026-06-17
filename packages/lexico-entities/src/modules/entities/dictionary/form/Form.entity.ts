@@ -7,7 +7,7 @@ import type { Lexeme } from "../Lexeme.entity.js";
 import type { WordForm } from "../WordForm.entity.js";
 
 /**
- *
+ * Supported grammatical case values for forms.
  */
 export const formCase = {
   ablative: "ablative",
@@ -17,7 +17,7 @@ export const formCase = {
   nominative: "nominative",
 } as const;
 /**
- *
+ * Union of allowed form case values.
  */
 export type FormCase = (typeof formCase)[keyof typeof formCase];
 
@@ -28,7 +28,7 @@ export const formNumber = {
   singular: "singular",
 } as const;
 /**
- *
+ * Union of allowed grammatical number values.
  */
 export type FormNumber = (typeof formNumber)[keyof typeof formNumber];
 export const formNumberValues = Object.values(formNumber) as FormNumber[];
@@ -39,7 +39,7 @@ export const formGender = {
   neuter: "neuter",
 } as const;
 /**
- *
+ * Union of allowed grammatical gender values.
  */
 export type FormGender = (typeof formGender)[keyof typeof formGender];
 export const formGenderValues = Object.values(formGender) as FormGender[];
@@ -50,7 +50,7 @@ export const formMood = {
   subjunctive: "subjunctive",
 } as const;
 /**
- *
+ * Union of allowed grammatical mood values.
  */
 export type FormMood = (typeof formMood)[keyof typeof formMood];
 export const formMoodValues = Object.values(formMood) as FormMood[];
@@ -60,7 +60,7 @@ export const formVoice = {
   passive: "passive",
 } as const;
 /**
- *
+ * Union of allowed grammatical voice values.
  */
 export type FormVoice = (typeof formVoice)[keyof typeof formVoice];
 export const formVoiceValues = Object.values(formVoice) as FormVoice[];
@@ -74,7 +74,7 @@ export const formTense = {
   present: "present",
 } as const;
 /**
- *
+ * Union of allowed finite tense values.
  */
 export type FormTense = (typeof formTense)[keyof typeof formTense];
 export const formTenseValues = Object.values(formTense) as FormTense[];
@@ -85,7 +85,7 @@ export const formPerson = {
   third: "third",
 } as const;
 /**
- *
+ * Union of allowed grammatical person values.
  */
 export type FormPerson = (typeof formPerson)[keyof typeof formPerson];
 export const formPersonValues = Object.values(formPerson) as FormPerson[];
@@ -96,7 +96,7 @@ export const formDegree = {
   superlative: "superlative",
 } as const;
 /**
- *
+ * Union of allowed degree-of-comparison values.
  */
 export type FormDegree = (typeof formDegree)[keyof typeof formDegree];
 export const formDegreeValues = Object.values(formDegree) as FormDegree[];
@@ -107,7 +107,7 @@ export const formNonFiniteTense = {
   present: "present",
 } as const;
 /**
- *
+ * Union of allowed non-finite tense values.
  */
 export type FormNonFiniteTense =
   (typeof formNonFiniteTense)[keyof typeof formNonFiniteTense];
@@ -122,7 +122,7 @@ export const formGerundCase = {
   genitive: "genitive",
 } as const;
 /**
- *
+ * Union of supported gerund case values.
  */
 export type FormGerundCase =
   (typeof formGerundCase)[keyof typeof formGerundCase];
@@ -135,7 +135,7 @@ export const formSupineCase = {
   accusative: "accusative",
 } as const;
 /**
- *
+ * Union of supported supine case values.
  */
 export type FormSupineCase =
   (typeof formSupineCase)[keyof typeof formSupineCase];
@@ -144,7 +144,7 @@ export const formSupineCaseValues = Object.values(
 ) as FormSupineCase[];
 
 /**
- *
+ * Base single-table-inheritance entity for all lexical forms.
  */
 @Entity({
   comment:

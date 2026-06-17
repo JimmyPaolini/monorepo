@@ -6,7 +6,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Builds twilight boundary events and derived interval events from paired transitions.
  */
 @Injectable()
 export class TwilightsBuilderService {
@@ -42,49 +42,49 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -18 degrees upward.
    */
   buildAstronomicalDawnEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Astronomical Dawn", "🌠");
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -18 degrees downward.
    */
   buildAstronomicalDuskEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Astronomical Dusk", "🌌");
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -6 degrees upward.
    */
   buildCivilDawnEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Civil Dawn", "🌄");
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -6 degrees downward.
    */
   buildCivilDuskEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Civil Dusk", "🌇");
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -12 degrees upward.
    */
   buildNauticalDawnEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Nautical Dawn", "🌅");
   }
 
   /**
-   *
+   * Builds the instant when Sun crosses -12 degrees downward.
    */
   buildNauticalDuskEvent(date: Moment): Event {
     return this.buildTransitionEvent(date, "Nautical Dusk", "🌉");
   }
 
   /**
-   *
+   * Builds evening astronomical-twilight interval from transition boundaries.
    */
   getAstronomicalTwilightEveningDurationEvent(
     beginning: Event,
@@ -104,7 +104,7 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds morning astronomical-twilight interval from transition boundaries.
    */
   getAstronomicalTwilightMorningDurationEvent(
     beginning: Event,
@@ -124,7 +124,7 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds daylight interval between civil dawn and civil dusk boundaries.
    */
   getDaylightDurationEvent(beginning: Event, ending: Event): Event {
     return {
@@ -140,7 +140,7 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds evening nautical-twilight interval from transition boundaries.
    */
   getNauticalTwilightEveningDurationEvent(
     beginning: Event,
@@ -160,7 +160,7 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds morning nautical-twilight interval from transition boundaries.
    */
   getNauticalTwilightMorningDurationEvent(
     beginning: Event,
@@ -180,7 +180,7 @@ export class TwilightsBuilderService {
   }
 
   /**
-   *
+   * Builds night interval spanning from astronomical dusk to next astronomical dawn.
    */
   getNightDurationEvent(beginning: Event, ending: Event): Event {
     return {

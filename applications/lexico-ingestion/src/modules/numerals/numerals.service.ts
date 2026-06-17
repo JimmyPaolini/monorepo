@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { ROMAN_VALUES } from "./numerals.constants";
 
 /**
- * Service to handle roman numerals.
+ * Converts between Roman numeral notation and decimal values used by ingestion flows.
  */
 @Injectable()
 export class NumeralsService {
@@ -20,7 +20,7 @@ export class NumeralsService {
   // 🌎 Public Methods
 
   /**
-   *
+   * Parses a Roman numeral string into its decimal integer value.
    */
   public toDecimal(roman: string): number {
     const upperRoman = roman.toUpperCase();
@@ -39,7 +39,7 @@ export class NumeralsService {
   }
 
   /**
-   *
+   * Converts a decimal integer (1-3999) into standard Roman numeral notation.
    */
   public toRoman(decimal: number): string {
     if (decimal < 1 || decimal > 3999) {

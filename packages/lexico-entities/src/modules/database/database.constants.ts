@@ -67,7 +67,7 @@ export const LEXICO_DATABASE_ENTITIES = [
  */
 export class LexicoNamingStrategy extends SnakeNamingStrategy {
   /**
-   *
+   * Builds a deterministic join table name from both entity table names.
    */
   override joinTableName(
     firstEntityName: string,
@@ -84,7 +84,7 @@ export class LexicoNamingStrategy extends SnakeNamingStrategy {
   }
 
   /**
-   *
+   * Converts a base table name to the pluralized table name used in the schema.
    */
   override tableName(targetName: string, userSpecifiedName: string): string {
     const baseTableName = super.tableName(targetName, userSpecifiedName);

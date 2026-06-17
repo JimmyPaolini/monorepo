@@ -6,7 +6,7 @@ import { AuditableEntity } from "../base/Auditable.entity.js";
 import type { Lexeme } from "./Lexeme.entity.js";
 
 /**
- *
+ * A named principal part associated with a lexeme.
  */
 @Entity({
   comment:

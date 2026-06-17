@@ -12,7 +12,7 @@ export const pronunciationVariant = {
 } as const;
 
 /**
- *
+ * Union of pronunciation variant values.
  */
 export type PronunciationVariant =
   (typeof pronunciationVariant)[keyof typeof pronunciationVariant];
@@ -22,7 +22,7 @@ export const pronunciationVariants = Object.values(
 ) as PronunciationVariant[];
 
 /**
- *
+ * A pronunciation record for a lexeme and pronunciation tradition.
  */
 @Entity({
   comment:

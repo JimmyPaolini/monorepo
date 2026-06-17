@@ -9,7 +9,7 @@ export const prepositionCase = {
   none: "",
 } as const;
 /**
- *
+ * Union of case values governed by prepositions.
  */
 export type PrepositionCase =
   (typeof prepositionCase)[keyof typeof prepositionCase];
@@ -18,7 +18,7 @@ export const prepositionCases = Object.values(
 ) as PrepositionCase[];
 
 /**
- *
+ * Inflection metadata for preposition lexemes.
  */
 @ChildEntity("preposition")
 @ObjectType({ implements: Inflection })

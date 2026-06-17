@@ -2,6 +2,9 @@
   "compilerOptions": {
     "noEmit": true,
     "paths": {
+      "eslint-plugin-better-max-params": [
+        "./configuration/types/eslint-plugin-better-max-params/index.d.ts"
+      ],
       "monorepo/configuration/*": ["./configuration/*"]
     },
     "skipLibCheck": true
@@ -14,7 +17,7 @@
     "tmp",
     "tools"
   ],
-  "extends": "./configuration/tsconfig.base.json",
+  "extends": "./configuration/tsconfig.json",
   "include": [
     "*.ts",
     ".devcontainer/scripts/**/*.ts",

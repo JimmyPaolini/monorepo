@@ -13,7 +13,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Orchestrates triple-aspect detection and progressive pairing across detector/composer services.
  */
 @Injectable()
 export class TripleAspectsService {
@@ -61,7 +61,7 @@ export class TripleAspectsService {
   }
 
   /**
-   *
+   * Detects all triple-aspect boundary events for the minute across supported patterns.
    */
   detect(args: {
     currentAspectBodies: AspectBodies[];
@@ -90,7 +90,7 @@ export class TripleAspectsService {
   }
 
   /**
-   *
+   * Builds duration events by pairing forming/dissolving events per triple-aspect group key.
    */
   detectProgressive(events: Event[]): Event[] {
     const tripleAspectEvents = events.filter((event) =>

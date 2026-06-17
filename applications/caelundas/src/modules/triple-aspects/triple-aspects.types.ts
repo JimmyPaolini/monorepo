@@ -5,7 +5,7 @@ import type {
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 
 /**
- *
+ * Typed body/aspect metadata extracted from a forming triple-aspect event for progressive output.
  */
 export interface ProgressiveBodiesMeta {
   aspect: TripleAspect;

@@ -13,7 +13,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects triple-aspect configurations (grand trine, T-square, yod) from aspect snapshots.
  */
 @Injectable()
 export class TripleAspectsDetectorService {
@@ -22,7 +22,7 @@ export class TripleAspectsDetectorService {
   ) {}
 
   /**
-   *
+   * Indexes aspect edges by aspect type for efficient pattern checks.
    */
   static groupAspectsByType<T extends AspectBodies>(
     edges: T[],
@@ -261,7 +261,7 @@ export class TripleAspectsDetectorService {
   }
 
   /**
-   *
+   * Detects grand trines by evaluating all unique body triplets connected by trines.
    */
   composeGrandTrines(args: {
     currentAspectBodies: AspectBodies[];
@@ -322,7 +322,7 @@ export class TripleAspectsDetectorService {
   }
 
   /**
-   *
+   * Detects T-squares from opposition baselines and shared square focal bodies.
    */
   composeTSquares(args: {
     currentAspectBodies: AspectBodies[];
@@ -376,7 +376,7 @@ export class TripleAspectsDetectorService {
   }
 
   /**
-   *
+   * Detects yods from sextile baselines and shared quincunx apex bodies.
    */
   composeYods(args: {
     currentAspectBodies: AspectBodies[];

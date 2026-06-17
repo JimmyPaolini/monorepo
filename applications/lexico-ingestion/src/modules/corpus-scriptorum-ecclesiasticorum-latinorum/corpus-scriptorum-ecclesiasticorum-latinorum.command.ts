@@ -8,7 +8,7 @@ import { Command, CommandRunner } from "nest-commander";
 import { LoggerService } from "../logger/logger.service";
 
 /**
- * Download raw XML chunks from the CSEL GitHub repository.
+ * Downloads and caches Latin XML sources from the OpenGreekAndLatin CSEL repository.
  */
 @Command({
   description: "Run the corpus-scriptorum-ecclesiasticorum-latinorum command",
@@ -48,7 +48,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
   // 🔏 Private Methods
 
   /**
-   * Downloads a single XML file
+   * Downloads one XML file unless it is already present in the local source cache.
    */
   private async downloadSourceXmlFileIfMissing(xmlPath: string): Promise<void> {
     const targetPath = path.join(this.sourceDataDirectory, xmlPath);
@@ -96,7 +96,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
   }
 
   /**
-   * Fetches the tree from GitHub
+   * Loads the Git tree payload used to discover downloadable XML blobs.
    */
   private async fetchTree(
     treeUrl: string,
@@ -120,7 +120,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
   // 🌎 Public Methods
 
   /**
-   *
+   * Downloads all eligible CSEL Latin XML source files into the local cache.
    */
   async run(): Promise<void> {
     const treeUrl =

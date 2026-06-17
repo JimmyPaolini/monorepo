@@ -24,7 +24,7 @@ export const partOfSpeech = {
 } as const;
 
 /**
- *
+ * Union of allowed part-of-speech string literals.
  */
 export type PartOfSpeech = (typeof partOfSpeech)[keyof typeof partOfSpeech];
 

@@ -8,7 +8,7 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Normalized inputs required to format one major-aspect boundary event.
  */
 export interface AssembleMajorAspectEventArguments {
   body1: Body;
@@ -21,7 +21,7 @@ export interface AssembleMajorAspectEventArguments {
 }
 
 /**
- *
+ * Three-minute longitude context for evaluating one body pair's major-aspect phase.
  */
 export interface DetectAspectForBodyPairArguments {
   body1: Body;
@@ -33,7 +33,7 @@ export interface DetectAspectForBodyPairArguments {
 }
 
 /**
- *
+ * Parsed body/aspect components recovered from a major-aspect event category list.
  */
 export interface ExtractAspectPartsFromCategoriesResult {
   aspect: MajorAspect;

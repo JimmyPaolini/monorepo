@@ -10,7 +10,7 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Per-minute ephemeris inputs required to evaluate planetary phase predicates.
  */
 export interface DetectPhaseArguments {
   coordinateEphemerisByBody: Record<
@@ -26,7 +26,7 @@ export interface DetectPhaseArguments {
 }
 
 /**
- *
+ * Sliding-window scalar values consumed by phase checks (rise/set, elongation, brightness).
  */
 export interface PhaseParameters {
   currentDistance: number;

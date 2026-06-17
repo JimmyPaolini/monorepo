@@ -13,7 +13,7 @@ export const nounDeclension = {
   third: "third",
 } as const;
 /**
- *
+ * Union of noun declension values.
  */
 export type NounDeclension =
   (typeof nounDeclension)[keyof typeof nounDeclension];
@@ -29,7 +29,7 @@ export const nounGender = {
   none: "",
 } as const;
 /**
- *
+ * Union of noun gender values.
  */
 export type NounGender = (typeof nounGender)[keyof typeof nounGender];
 export const nounGenders = Object.values(nounGender) as NounGender[];
@@ -42,7 +42,7 @@ export const inflectionDeclension = {
 export const inflectionDeclensionValues = Object.values(inflectionDeclension);
 
 /**
- *
+ * Inflection metadata for noun lexemes.
  */
 @ChildEntity("noun")
 @ObjectType({ implements: Inflection })

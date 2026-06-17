@@ -8,7 +8,7 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Inputs used to build one minor-aspect boundary event for a body pair.
  */
 export interface AssembleMinorAspectEventArguments {
   body1: Body;
@@ -19,7 +19,7 @@ export interface AssembleMinorAspectEventArguments {
 }
 
 /**
- *
+ * Three-minute longitude snapshots used to classify one body pair's minor-aspect phase.
  */
 export interface DetectBodyPairAspectArguments {
   body1: Body;
@@ -31,7 +31,7 @@ export interface DetectBodyPairAspectArguments {
 }
 
 /**
- *
+ * Typed aspect and body names parsed from an event's category labels.
  */
 export interface ExtractAspectComponentsResult {
   aspect: MinorAspect;

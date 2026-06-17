@@ -5,10 +5,7 @@ import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LibraryCommand } from "./library.command";
-import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
-import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
-import { LatinLibraryProvider } from "./providers/latin-library.provider";
-import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
+import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants.js";
 
 describe("LibraryCommand", () => {
   let command: LibraryCommand;
@@ -28,20 +25,19 @@ describe("LibraryCommand", () => {
           },
         },
         {
-          provide: CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider,
-          useValue: { ingest: vi.fn().mockResolvedValue([]) },
-        },
-        {
-          provide: EpigraphikDatenbankClaussSlabyLibraryProvider,
-          useValue: { ingest: vi.fn().mockResolvedValue([]) },
-        },
-        {
-          provide: LatinLibraryProvider,
-          useValue: { ingest: vi.fn().mockResolvedValue([]) },
-        },
-        {
-          provide: PerseusLibraryProvider,
-          useValue: { ingest: vi.fn().mockResolvedValue([]) },
+          provide: LIBRARY_PROVIDERS_TOKEN,
+          useValue: [
+            {
+              ingest: vi.fn().mockResolvedValue([]),
+              name: "corpus-scriptorum-ecclesiasticorum-latinorum",
+            },
+            {
+              ingest: vi.fn().mockResolvedValue([]),
+              name: "epigraphik-datenbank-clauss-slaby",
+            },
+            { ingest: vi.fn().mockResolvedValue([]), name: "thelatinlibrary" },
+            { ingest: vi.fn().mockResolvedValue([]), name: "perseus" },
+          ],
         },
       ],
     }).compile();

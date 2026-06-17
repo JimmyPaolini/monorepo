@@ -29,7 +29,7 @@ export class SextupleAspectsComposerService {
   // 🔏 Private Methods
 
   /**
-   *
+   * Adds connection.
    */
   addConnection(
     map: Map<Body, Set<Body>>,
@@ -41,7 +41,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds separate trine and sextile adjacency maps for candidate hexagram validation.
    */
   buildAspectConnectionMaps(
     bodies: Body[],
@@ -72,7 +72,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Emits a hexagram boundary event when exactly six ordered bodies are available.
    */
   buildHexagramEvent(
     hexagramBodies: Body[],
@@ -104,7 +104,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Converts a forming/dissolving sextuple pair into one duration event.
    */
   buildProgressiveSextupleEvent(forming: Event, dissolving: Event): Event {
     return {
@@ -122,7 +122,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds canonical categories used for grouping and progressive pairing.
    */
   buildSextupleAspectCategories(
     bodiesSorted: string[],
@@ -141,7 +141,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Formats summary as `phaseEmoji + aspectSymbol + symbolChain + description`.
    */
   buildSextupleAspectSummary(args: {
     aspectSymbol: string;
@@ -157,7 +157,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Materializes a finalized sextuple event from precomputed display fields.
    */
   buildSextupleEventFromParameters(
     eventArguments: BuildSextupleEventParameters,
@@ -194,7 +194,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Checks hexagon sextiles.
    */
   checkHexagonSextiles(
     arrangement: Body[],
@@ -212,7 +212,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Collects trine bodies.
    */
   collectTrineBodies(trines: AspectBodies[]): Body[] {
     const bodiesSet = new Set<Body>();
@@ -226,7 +226,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Finds grand trine pairs.
    */
   findGrandTrinePairs(
     bodies: Body[],
@@ -279,7 +279,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Finds valid hexagon arrangement.
    */
   findValidHexagonArrangement(
     trine1: Body[],
@@ -306,7 +306,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Returns the two trine neighbors only when they also trine each other.
    */
   getGrandTrineNeighbors(
     body: Body,
@@ -323,7 +323,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Maps phase to the event-summary marker prefix.
    */
   getPhaseEmoji(phase: AspectPhase): string {
     if (phase === "forming") {
@@ -338,7 +338,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   * Create a sextuple aspect event
+   * Creates one sextuple-aspect boundary event for the provided six bodies.
    */
   getSextupleAspectEvent(
     eventArguments: GetSextupleAspectEventArguments,
@@ -372,14 +372,14 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Groups aspects by type.
    */
   groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
   /**
-   *
+   * Groups sextuple events by key.
    */
   groupSextupleEventsByKey(events: Event[]): Record<string, Event[]> {
     const sextupleAspectEvents = events.filter((event) =>
@@ -400,7 +400,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Returns `true` when both bodies are defined and linked by a trine edge.
    */
   isValidGrandTrine(
     trineConnections: Map<Body, Set<Body>>,
@@ -415,7 +415,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Tries to arrangement for pair.
    */
   tryArrangementForPair(args: {
     index: number;
@@ -449,7 +449,7 @@ export class SextupleAspectsComposerService {
   }
 
   /**
-   *
+   * Tries to hexagon arrangement.
    */
   tryHexagonArrangement(args: {
     index: number;

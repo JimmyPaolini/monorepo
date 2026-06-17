@@ -2,23 +2,23 @@ import { Dirent, existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import _ from "lodash";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
-import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
-import { LatinLibraryProvider } from "./providers/latin-library.provider";
-import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
+import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants.js";
 
-import type { LibraryCommandOptions } from "./library.types";
-import type { Author } from "@monorepo/lexico-entities";
+import type {
+  LibraryCommandOptions,
+  LibrarySourceProvider,
+} from "./library.types.js";
 
 /**
- * Scrape literature data from various sources to markdown files.
+ * Runs configured library source providers and writes normalized markdown files
+ * into the local `data/library` tree.
  */
 @Command({
   description: "Run the library command",
@@ -30,19 +30,11 @@ export class LibraryCommand extends CommandRunner {
 
   constructor(
     private readonly logger: LoggerService,
-    corpusScriptorumEcclesiasticorumLatinorumProvider: CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider,
-    epigraphikDatenbankClaussSlabyProvider: EpigraphikDatenbankClaussSlabyLibraryProvider,
-    latinLibraryProvider: LatinLibraryProvider,
-    perseusProvider: PerseusLibraryProvider,
+    @Inject(LIBRARY_PROVIDERS_TOKEN)
+    private readonly providers: LibrarySourceProvider[],
   ) {
     super();
     this.logger.setContext(LibraryCommand.name);
-    this.providers = [
-      corpusScriptorumEcclesiasticorumLatinorumProvider,
-      epigraphikDatenbankClaussSlabyProvider,
-      latinLibraryProvider,
-      perseusProvider,
-    ];
 
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
@@ -56,10 +48,6 @@ export class LibraryCommand extends CommandRunner {
   // 🔐 Private Fields
 
   private readonly logFilePath: string;
-  private readonly providers: {
-    ingest: (options?: { author?: string; text?: string }) => Promise<Author[]>;
-    name: string;
-  }[];
 
   // 🔑 Public Fields
 
@@ -70,13 +58,7 @@ export class LibraryCommand extends CommandRunner {
     providerName: string | undefined,
     text: string | undefined,
   ): {
-    filteredProviders: {
-      ingest: (options?: {
-        author?: string;
-        text?: string;
-      }) => Promise<Author[]>;
-      name: string;
-    }[];
+    filteredProviders: LibrarySourceProvider[];
     ingestOptions: { author?: string; text?: string };
   } {
     const filteredProviders = providerName
@@ -147,13 +129,7 @@ export class LibraryCommand extends CommandRunner {
   private async processProvider(args: {
     current: number;
     ingestOptions: { author?: string; text?: string };
-    provider: {
-      ingest: (options?: {
-        author?: string;
-        text?: string;
-      }) => Promise<Author[]>;
-      name: string;
-    };
+    provider: LibrarySourceProvider;
     total: number;
   }): Promise<void> {
     const { current, ingestOptions, provider, total } = args;
@@ -338,7 +314,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--author` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The author to ingest",
@@ -371,7 +347,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--provider` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The provider to ingest from",
@@ -401,7 +377,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--text` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The specific text to ingest",
@@ -435,7 +411,9 @@ export class LibraryCommand extends CommandRunner {
     return response.text;
   }
 
-  /** Orchestrate ingestion from library sources */
+  /**
+   * Orchestrates provider execution with optional author/text scoping and progress logging.
+   */
   async run(
     _arguments: string[],
     options: LibraryCommandOptions,

@@ -100,7 +100,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Builds the decan ingress payload without logging side effects.
    */
   buildDecanIngressEventObject(args: {
     body: Body;
@@ -171,7 +171,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Converts ordered sign-ingress instants into contiguous per-sign duration spans.
    */
   buildProgressiveSpansForBody(
     bodyCapitalized: string,
@@ -235,7 +235,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Extracts sign and body from categories.
    */
   extractSignAndBodyFromCategories(
     categories: string[],
@@ -270,7 +270,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Keeps only sign-boundary ingress events, excluding decan and peak markers.
    */
   filterSignIngressEvents(events: Event[]): Event[] {
     return events.filter(
@@ -282,7 +282,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Maps longitude to decan number (1-3) relative to the current sign start degree.
    */
   getDecan(longitude: number): number {
     const sign = IngressesComposerService.getSign(longitude);
@@ -292,7 +292,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Retrieves current and previous longitudes for minute-boundary ingress checks.
    */
   getLongitudes(args: {
     coordinateEphemeris: CoordinateEphemeris;
@@ -314,7 +314,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Builds a progressive sign-stay event from entering and next-sign exit instants.
    */
   getSignIngressDurationEvent(
     entering: Event,
@@ -344,7 +344,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Groups sign ingress events by body.
    */
   groupSignIngressEventsByBody(events: Event[]): Record<string, Event[]> {
     return _.groupBy(events, (event) => {
@@ -358,7 +358,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Returns `true` when the decan index changes between consecutive minutes.
    */
   isDecanIngress(args: {
     currentLongitude: number;
@@ -369,7 +369,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Returns `true` when longitude crosses the in-sign midpoint threshold (15 degrees).
    */
   isPeakIngress(args: {
     currentLongitude: number;
@@ -391,7 +391,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Returns `true` when consecutive longitudes resolve to different zodiac signs.
    */
   isSignIngress(args: {
     currentLongitude: number;
@@ -405,7 +405,7 @@ export class IngressesComposerService {
   }
 
   /**
-   *
+   * Converts numeric decan to the validated `Decan` union and throws on invalid values.
    */
   resolveDecan(longitude: number): Decan {
     const decanString = String(this.getDecan(longitude));

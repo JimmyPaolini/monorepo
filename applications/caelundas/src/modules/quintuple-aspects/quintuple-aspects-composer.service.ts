@@ -33,7 +33,7 @@ export class QuintupleAspectsComposerService {
   // 🔏 Private Methods
 
   /**
-   *
+   * Emits a pentagram boundary event when exactly five ordered bodies are available.
    */
   buildPentagramEvent(
     pentagramBodies: Body[],
@@ -63,7 +63,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Converts a forming/dissolving pentagram pair into one duration event.
    */
   buildProgressiveQuintupleEvent(forming: Event, dissolving: Event): Event {
     return {
@@ -81,7 +81,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds adjacency lists for quintile edges restricted to the candidate body subset.
    */
   buildQuintileConnections(
     bodies: Body[],
@@ -108,7 +108,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds canonical categories used for grouping and downstream progressive pairing.
    */
   buildQuintupleAspectCategories(
     bodiesSorted: string[],
@@ -127,7 +127,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Formats summary as `phaseEmoji + aspectSymbol + symbolChain + description`.
    */
   buildQuintupleAspectSummary(args: {
     aspectSymbol: string;
@@ -143,7 +143,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Materializes a finalized quintuple event from precomputed display fields.
    */
   buildQuintupleEventFromParameters(
     eventArguments: BuildQuintupleEventParameters,
@@ -180,7 +180,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Collects quintile bodies.
    */
   collectQuintileBodies(quintiles: AspectBodies[]): Body[] {
     const bodiesSet = new Set<Body>();
@@ -216,7 +216,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Count unique quintile pairs.
    */
   countUniqueQuintilePairs(
     edges: AspectBodies[],
@@ -240,7 +240,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Determines compound phase from snapshots.
    */
   determineCompoundPhaseFromSnapshots(args: {
     checkPatternExists: (edges: AspectBodies[]) => boolean;
@@ -311,7 +311,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Maps phase to the event-summary marker prefix.
    */
   getPhaseEmoji(phase: AspectPhase): string {
     if (phase === "forming") {
@@ -325,7 +325,7 @@ export class QuintupleAspectsComposerService {
     return "⬅️ ";
   }
 
-  /** Create a quintuple aspect event */
+  /** Creates one quintuple-aspect boundary event for the provided five bodies. */
   getQuintupleAspectEvent(
     eventArguments: GetQuintupleAspectEventArguments,
   ): Event {
@@ -357,14 +357,14 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Groups aspects by type.
    */
   groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
   /**
-   *
+   * Groups quintuple events by key.
    */
   groupQuintupleEventsByKey(events: Event[]): Record<string, Event[]> {
     const quintupleAspectEvents = events.filter((event) =>
@@ -383,7 +383,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Processes pentagram combinations.
    */
   processPentagramCombinations(args: {
     combinations: Body[][];
@@ -426,7 +426,7 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   *
+   * Traverses pentagram path.
    */
   traversePentagramPath(
     connections: Map<Body, Set<Body>>,

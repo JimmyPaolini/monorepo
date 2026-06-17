@@ -8,7 +8,7 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Precomputed display and typing fields used to assemble a sextuple-aspect event.
  */
 export interface BuildSextupleEventParameters {
   aspectSymbol: string;
@@ -21,7 +21,7 @@ export interface BuildSextupleEventParameters {
 }
 
 /**
- *
+ * Adjacent snapshots plus minute context used for hexagram phase detection.
  */
 export interface ComposeHexagramsArguments {
   currentAspectBodies: AspectBodies[];
@@ -30,7 +30,7 @@ export interface ComposeHexagramsArguments {
 }
 
 /**
- *
+ * Bodies, phase, and timestamp needed for one sextuple-aspect boundary event.
  */
 export interface GetSextupleAspectEventArguments {
   body1: Body;

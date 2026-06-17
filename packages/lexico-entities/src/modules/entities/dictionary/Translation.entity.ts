@@ -6,7 +6,7 @@ import { AuditableEntity } from "../base/Auditable.entity.js";
 import type { Lexeme } from "./Lexeme.entity.js";
 
 /**
- *
+ * A single English translation linked to a lexeme.
  */
 @Entity({
   comment: "An English translation of a Latin dictionary entry",

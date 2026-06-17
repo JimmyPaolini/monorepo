@@ -81,7 +81,7 @@ export class IngressesService {
   // 🌎 Public Methods
 
   /**
-   *
+   * Delegates decan-ingress event construction to the composer service.
    */
   buildDecanIngressEvent(args: {
     body: Body;

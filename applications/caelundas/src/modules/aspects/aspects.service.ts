@@ -2,16 +2,18 @@ import { bodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { isAspect } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Inject, Injectable } from "@nestjs/common";
 
-import { MajorAspectsService } from "../major-aspects/major-aspects.service";
-import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
-import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
-import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
-import { SextupleAspectsService } from "../sextuple-aspects/sextuple-aspects.service";
-import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.service";
-import { StelliumService } from "../stellium/stellium.service";
-import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
+import {
+  COMPOSITE_ASPECT_DETECTORS_TOKEN,
+  PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
+  SIMPLE_ASPECT_DETECTORS_TOKEN,
+} from "./aspects.constants";
 
-import type { AspectBodies } from "./aspects.types";
+import type {
+  AspectBodies,
+  CompositeAspectDetector,
+  ProgressiveAspectDetector,
+  SimpleAspectDetector,
+} from "./aspects.types";
 import type {
   Aspect,
   Body,
@@ -34,22 +36,12 @@ export class AspectsService {
   // 🏗 Dependency Injection
 
   constructor(
-    @Inject(MajorAspectsService)
-    private readonly majorAspectsService: MajorAspectsService,
-    @Inject(MinorAspectsService)
-    private readonly minorAspectsService: MinorAspectsService,
-    @Inject(QuadrupleAspectsService)
-    private readonly quadrupleAspectsService: QuadrupleAspectsService,
-    @Inject(QuintupleAspectsService)
-    private readonly quintupleAspectsService: QuintupleAspectsService,
-    @Inject(SextupleAspectsService)
-    private readonly sextupleAspectsService: SextupleAspectsService,
-    @Inject(SpecialtyAspectsService)
-    private readonly specialtyAspectsService: SpecialtyAspectsService,
-    @Inject(StelliumService)
-    private readonly stelliumService: StelliumService,
-    @Inject(TripleAspectsService)
-    private readonly tripleAspectsService: TripleAspectsService,
+    @Inject(SIMPLE_ASPECT_DETECTORS_TOKEN)
+    private readonly simpleAspectDetectors: SimpleAspectDetector[],
+    @Inject(COMPOSITE_ASPECT_DETECTORS_TOKEN)
+    private readonly compositeAspectDetectors: CompositeAspectDetector[],
+    @Inject(PROGRESSIVE_ASPECT_DETECTORS_TOKEN)
+    private readonly progressiveAspectDetectors: ProgressiveAspectDetector[],
   ) {}
 
   // 🔐 Private Fields
@@ -84,27 +76,24 @@ export class AspectsService {
       minute,
       previousAspectBodies,
     };
-    return [
-      ...this.tripleAspectsService.detect(sharedArguments),
-      ...this.quadrupleAspectsService.detect(sharedArguments),
-      ...this.quintupleAspectsService.detect(sharedArguments),
-      ...this.sextupleAspectsService.detect(sharedArguments),
-      ...this.stelliumService.detect(sharedArguments),
-    ];
+    const detectedEvents: Event[] = [];
+    for (const compositeAspectDetector of this.compositeAspectDetectors) {
+      detectedEvents.push(...compositeAspectDetector.detect(sharedArguments));
+    }
+    return detectedEvents;
   }
 
   private detectSimpleAspects(
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
     minute: Moment,
   ): Event[] {
-    return [
-      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.specialtyAspectsService.detect({
-        coordinateEphemerisByBody,
-        minute,
-      }),
-    ];
+    const detectedEvents: Event[] = [];
+    for (const simpleAspectDetector of this.simpleAspectDetectors) {
+      detectedEvents.push(
+        ...simpleAspectDetector.detect({ coordinateEphemerisByBody, minute }),
+      );
+    }
+    return detectedEvents;
   }
 
   private extractEventBodies(
@@ -224,15 +213,12 @@ export class AspectsService {
    * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
    */
   detectProgressive(events: Event[]): Event[] {
-    return [
-      ...this.majorAspectsService.detectProgressive(events),
-      ...this.minorAspectsService.detectProgressive(events),
-      ...this.specialtyAspectsService.detectProgressive(events),
-      ...this.tripleAspectsService.detectProgressive(events),
-      ...this.quadrupleAspectsService.detectProgressive(events),
-      ...this.quintupleAspectsService.detectProgressive(events),
-      ...this.sextupleAspectsService.detectProgressive(events),
-      ...this.stelliumService.detectProgressive(events),
-    ];
+    const progressiveEvents: Event[] = [];
+    for (const progressiveAspectDetector of this.progressiveAspectDetectors) {
+      progressiveEvents.push(
+        ...progressiveAspectDetector.detectProgressive(events),
+      );
+    }
+    return progressiveEvents;
   }
 }

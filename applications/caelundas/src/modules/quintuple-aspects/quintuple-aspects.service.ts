@@ -8,7 +8,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects and pairs 5-body quintile patterns (pentagrams) from aspect snapshots.
  */
 @Injectable()
 export class QuintupleAspectsService {

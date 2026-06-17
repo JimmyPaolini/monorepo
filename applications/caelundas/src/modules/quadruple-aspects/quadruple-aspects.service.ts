@@ -9,7 +9,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects and pairs 4-body patterns (Grand Cross, Kite) from simple-aspect snapshots.
  */
 @Injectable()
 export class QuadrupleAspectsService {

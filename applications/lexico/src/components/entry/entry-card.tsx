@@ -25,7 +25,8 @@ import type { Inflection, PrincipalPart } from "./principal-parts";
 import type { VerbForm } from "./verb-forms-table";
 
 /**
- * Props for the EntryCard component that displays a lexical entry.
+ * Inputs for rendering one lexical entry with principal parts and expandable
+ * translation/pronunciation/forms sections.
  */
 export interface EntryCardProps {
   /** Whether entry is bookmarked */
@@ -57,7 +58,7 @@ export interface EntryCardProps {
 }
 
 /**
- * Union type for different word form data structures.
+ * Discriminated form payload used to choose the proper forms table renderer.
  */
 export type FormsData =
   | { forms: AdjectiveForm[]; type: "adjective" }
@@ -65,7 +66,7 @@ export type FormsData =
   | { forms: VerbForm[]; type: "verb" };
 
 /**
- * Pronunciation data for both Classical and Ecclesiastical Latin.
+ * Pronunciation payload keyed by supported Latin pronunciation traditions.
  */
 export interface Pronunciation {
   /** Classical Latin pronunciation */
@@ -75,7 +76,7 @@ export interface Pronunciation {
 }
 
 /**
- * Pronunciation data for a specific dialect.
+ * Phonetic and phonemic renderings for one pronunciation tradition.
  */
 export interface PronunciationDialect {
   /** Phoneme representation */
@@ -87,7 +88,7 @@ export interface PronunciationDialect {
 }
 
 /**
- * Props for EntryCardBody — the expandable content section of an entry card.
+ * Inputs for the collapsible detail area inside an entry card.
  */
 interface EntryCardBodyProps {
   accordionValue: string;
@@ -114,7 +115,7 @@ interface PronunciationAccordionItemProps {
 }
 
 /**
- *
+ * Renders a lexical entry card and wires accordion state for detail sections.
  */
 export function EntryCard(properties: EntryCardProps): ReactElement {
   const {
@@ -173,7 +174,7 @@ export function EntryCard(properties: EntryCardProps): ReactElement {
 }
 
 /**
- * Renders the main body of an EntryCard: translations, pronunciation, forms, and etymology.
+ * Renders translations and optional pronunciation/forms/etymology sections for one entry.
  */
 function EntryCardBody(properties: EntryCardBodyProps): ReactElement {
   const {

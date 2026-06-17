@@ -7,7 +7,8 @@ import type * as cheerio from "cheerio";
 import type { AnyNode } from "domhandler";
 
 /**
- * Service for parsing etymology data from Wiktionary HTML.
+ * Extracts etymology text near a headword section and derives participle-origin
+ * translations when that pattern appears in the prose.
  */
 @Injectable()
 export class EtymologyService {
@@ -24,14 +25,15 @@ export class EtymologyService {
   // 🌎 Public Methods
 
   /**
-   *
+   * Reads the nearest "Etymology" paragraph and returns its text plus an optional
+   * synthetic translation for "... participle of ..." descriptions.
    */
   public parse(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     lexeme: Lexeme,
     /**
-     *
+     * Reserved for future parser options.
      */
   ): { etymology: string; participleTranslation?: Translation } {
     const etymologyHeadingElement = $(elt)

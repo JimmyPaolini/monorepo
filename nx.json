@@ -36,7 +36,7 @@
     "pythonTests": ["{projectRoot}/testing/**/*.py"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/workflows/*.yml",
-      "{workspaceRoot}/configuration/tsconfig.base.json",
+      "{workspaceRoot}/configuration/tsconfig.json",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml"
     ],

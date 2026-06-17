@@ -10,7 +10,7 @@ import { Command, CommandRunner } from "nest-commander";
 import { LoggerService } from "../logger/logger.service";
 
 /**
- * Download HTML files from The Latin Library.
+ * Crawls The Latin Library and stores source HTML pages under `data/latin-library-source`.
  */
 @Command({
   description: "Run the latin-library command",
@@ -333,7 +333,7 @@ export class LatinLibraryCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
-   *
+   * Crawls The Latin Library and caches discovered HTML pages locally.
    */
   async run(): Promise<void> {
     const host = this.sourceHost;

@@ -8,7 +8,7 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Precomputed display and typing fields used to assemble a quintuple-aspect event.
  */
 export interface BuildQuintupleEventParameters {
   aspectSymbol: string;
@@ -21,7 +21,7 @@ export interface BuildQuintupleEventParameters {
 }
 
 /**
- *
+ * Adjacent snapshots plus minute context used for pentagram phase detection.
  */
 export interface ComposePentagramsArguments {
   currentAspectBodies: AspectBodies[];
@@ -30,7 +30,7 @@ export interface ComposePentagramsArguments {
 }
 
 /**
- *
+ * Bodies, phase, and timestamp needed for one quintuple-aspect boundary event.
  */
 export interface GetQuintupleAspectEventArguments {
   body1: Body;

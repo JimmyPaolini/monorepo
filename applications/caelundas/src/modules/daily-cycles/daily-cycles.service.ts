@@ -143,7 +143,7 @@ export class DailyCyclesService {
   }
 
   /**
-   *
+   * Runs both solar and lunar per-minute detectors and concatenates all hits.
    */
   detect(args: {
     minute: Moment;

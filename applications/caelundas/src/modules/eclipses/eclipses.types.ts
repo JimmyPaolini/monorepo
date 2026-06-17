@@ -1,6 +1,6 @@
 // 🏷️ Types
 /**
- *
+ * Per-minute Sun/Moon geometry used by eclipse phase and visibility predicates.
  */
 export interface EclipseCoordinates {
   diameterMoon: number;

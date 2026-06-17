@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
 import YAML from "yaml";
@@ -14,10 +15,15 @@ import {
 import type { AnyNode } from "domhandler";
 
 /**
- * Helper for building and parsing Latin Library author and text entities.
- * Encapsulates entity construction, HTML parsing, and metadata extraction.
+ * Normalizes Latin Library HTML into `Author`/`Text` entities and markdown-ready
+ * structures used by the library ingestion pipeline.
  */
+@Injectable()
 export class LatinLibraryBuilder {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔏 Private Methods
 
   private computeYear(
@@ -120,7 +126,7 @@ export class LatinLibraryBuilder {
   // 🔑 Public Methods
 
   /**
-   *
+   * Converts one category-page link into an `Author` entity when the href is ingestible.
    */
   buildCategoryAuthor(
     anchorElement: AnyNode,
@@ -145,7 +151,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Extracts root-index author links and maps them into normalized `Author` entities.
    */
   buildRootAuthors(html: string): Author[] {
     const $ = cheerio.load(html);
@@ -170,7 +176,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Builds a `Text` entity shell from a discovered work hyperlink.
    */
   buildTextEntityForLink(
     anchor: AnyNode,
@@ -188,7 +194,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Produces YAML frontmatter fields for an ingested work markdown document.
    */
   buildWorkFrontmatter(
     work: Text,
@@ -211,7 +217,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Renders final markdown, including frontmatter, headings, and cleaned paragraphs.
    */
   buildWorkMarkdownContent(args: {
     $work: cheerio.CheerioAPI;
@@ -236,7 +242,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Derives author metadata (display name and approximate dates) from author-page headings.
    */
   extractAuthorPageMetadata(
     $: cheerio.CheerioAPI,
@@ -258,7 +264,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Locates the nearest heading text used as the raw book/work grouping label.
    */
   findRawBookHeading(anchorElement: AnyNode, $: cheerio.CheerioAPI): string {
     const $anchor = $(anchorElement);
@@ -286,7 +292,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Computes the canonical storage slug for a text, including optional book hierarchy.
    */
   getTextSlug(work: Text, author: Author): string {
     const workBook = work.metadata?.["book"] as string | undefined;
@@ -297,7 +303,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Returns whether a link should be ignored because it is off-domain or self-referential.
    */
   isExternalOrSelfLink(absoluteUrl: string, authorUrlObject: URL): boolean {
     const parsedUrl = new URL(absoluteUrl);
@@ -308,7 +314,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Returns whether an href matches known navigation/category pages to skip.
    */
   isSkippedHref(href: string): boolean {
     const skippedPaths = [
@@ -324,7 +330,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Returns whether an href points to an HTML-like text page eligible for parsing.
    */
   isTextFileHref(href: string): boolean {
     const lower = href.toLowerCase();
@@ -336,7 +342,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Creates an `Author` entity populated with normalized identity and metadata.
    */
   makeAuthor(
     name: string,
@@ -352,7 +358,7 @@ export class LatinLibraryBuilder {
   }
 
   /**
-   *
+   * Extracts cleaned, line-normalized paragraph content from a work document.
    */
   parseWorkParagraphs($work: cheerio.CheerioAPI): string[] {
     let $containers = $work("p");

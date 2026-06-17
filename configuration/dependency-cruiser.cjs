@@ -119,7 +119,7 @@ module.exports = {
     },
     tsPreCompilationDeps: true,
     tsConfig: {
-      fileName: path.join(__dirname, "tsconfig.base.json"),
+      fileName: path.join(__dirname, "tsconfig.json"),
     },
     enhancedResolveOptions: {
       exportsFields: ["exports"],

@@ -47,7 +47,7 @@ export class MinorAspectsComposerService {
   // 🔏 Private Methods
 
   /**
-   *
+   * Assembles minor aspect event.
    */
   assembleMinorAspectEvent(args: AssembleMinorAspectEventArguments): Event {
     const { body1, body2, minorAspect, phase, timestamp } = args;
@@ -81,7 +81,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Builds a stable grouping key from sorted bodies plus aspect name for pairing.
    */
   buildGroupKey(event: Event): string {
     const bodiesCapitalized = _.sortBy(
@@ -103,7 +103,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Casts aspect components to types.
    */
   castAspectComponentsToTypes(args: {
     aspectCapitalized: string;
@@ -133,7 +133,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Extracts aspect components.
    */
   extractAspectComponents(categories: string[]): ExtractAspectComponentsResult {
     const bodiesCapitalized = categories
@@ -167,7 +167,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Returns previous/current/next longitudes for one body at minute resolution.
    */
   getLongitudesWindowForBody(args: {
     body: Body;
@@ -192,7 +192,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Creates one minor-aspect duration event from a matched forming/dissolving pair.
    */
   getMinorAspectProgressiveEvent(beginning: Event, ending: Event): Event {
     const {
@@ -226,7 +226,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Processes aspect group.
    */
   processAspectGroup(
     aspectGroupKey: string,
@@ -252,7 +252,7 @@ export class MinorAspectsComposerService {
   }
 
   /**
-   *
+   * Resolves phase details.
    */
   resolvePhaseDetails(args: {
     baseCategories: string[];

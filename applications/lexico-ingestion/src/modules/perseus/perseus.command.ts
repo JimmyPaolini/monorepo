@@ -8,7 +8,7 @@ import { Command, CommandRunner } from "nest-commander";
 import { LoggerService } from "../logger/logger.service";
 
 /**
- * Download raw XML chunks from the Perseus GitHub repository.
+ * Downloads and caches Latin XML sources from the Perseus canonical-latinLit repository.
  */
 @Command({
   description: "Run the perseus command",
@@ -116,7 +116,7 @@ export class PerseusCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
-   *
+   * Discovers eligible Perseus XML files and stores missing files in the local cache.
    */
   async run(): Promise<void> {
     const xmlPaths = await this.fetchSourceXmlPaths();

@@ -7,7 +7,7 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Required bodies, phase, and timestamp for emitting one quadruple-aspect event.
  */
 export interface GetQuadrupleAspectEventArguments {
   body1: Body;

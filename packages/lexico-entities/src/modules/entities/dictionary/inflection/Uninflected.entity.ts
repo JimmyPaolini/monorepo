@@ -4,7 +4,7 @@ import { ChildEntity } from "typeorm";
 import { Inflection } from "./Inflection.entity.js";
 
 /**
- *
+ * Inflection marker for lexemes that do not vary by inflection.
  */
 @ChildEntity("uninflected")
 @ObjectType({ implements: Inflection })

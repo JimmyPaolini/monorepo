@@ -1,0 +1,103 @@
+import * as fs from "node:fs/promises";
+
+import { Injectable } from "@nestjs/common";
+
+import type { LoggerService } from "../logger/logger.service.js";
+import type { IngestTextArguments, LibraryEntry } from "./literature.types.js";
+import type { Text } from "@monorepo/lexico-entities";
+
+/** Ingest a single text entry and emit consistent progress/error logs. */
+@Injectable()
+export class LiteratureTextIngestionService {
+  public constructor(private readonly logger: LoggerService) {
+    this.logger.setContext(LiteratureTextIngestionService.name);
+  }
+
+  private buildHierarchyPrefix(
+    authorSlug: string,
+    parentText: Text | undefined,
+  ): string {
+    if (!parentText) {
+      return "";
+    }
+
+    return `${parentText.slug.replace(`${authorSlug}/`, "")} / `;
+  }
+
+  /** Resolves the parent text for the current entry path, if present. */
+  private resolveParentText(args: {
+    authorSlug: string;
+    parentTexts: Map<string, Text>;
+    textEntry: LibraryEntry;
+  }): Text | undefined {
+    const { authorSlug, parentTexts, textEntry } = args;
+    if (textEntry.pathParts.length === 0) {
+      return undefined;
+    }
+
+    const currentPath = [authorSlug, ...textEntry.pathParts].join("/");
+    return parentTexts.get(currentPath);
+  }
+
+  /** Runs ingestion for one text entry with standardized start, error, and completion logs. */
+  public async ingestTextWithLogging(
+    dependencies: {
+      ingestText: (args: IngestTextArguments) => Promise<void>;
+    },
+    argumentsObject: {
+      authorEntity: IngestTextArguments["author"];
+      authorSlug: string;
+      currentText: number;
+      logFilePath: string;
+      parentTexts: Map<string, Text>;
+      textEntry: LibraryEntry;
+      totalTexts: number;
+    },
+  ): Promise<void> {
+    const {
+      authorEntity,
+      authorSlug,
+      currentText,
+      logFilePath,
+      parentTexts,
+      textEntry,
+      totalTexts,
+    } = argumentsObject;
+
+    const parentText = this.resolveParentText({
+      authorSlug,
+      parentTexts,
+      textEntry,
+    });
+    const hierarchy = this.buildHierarchyPrefix(authorSlug, parentText);
+
+    this.logger.log(
+      `  📜 Starting: ${hierarchy}${textEntry.title} (from ${textEntry.provider})`,
+    );
+
+    try {
+      await dependencies.ingestText({
+        author: authorEntity,
+        parentText,
+        textPath: textEntry.fullPath,
+        textSlugName: textEntry.textSlug,
+        title: textEntry.title,
+      });
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      this.logger.error(
+        `❌ Failed to process ${hierarchy}${textEntry.title} (from ${textEntry.provider}): ${String(error)}`,
+      );
+      await fs.appendFile(
+        logFilePath,
+        `[${new Date().toISOString()}] ${textEntry.fullPath}: ${errorMessage}\n`,
+      );
+    }
+
+    const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+    this.logger.log(
+      `  ✅ Completed: ${hierarchy}${textEntry.title} (from ${textEntry.provider})${textProgress}`,
+    );
+  }
+}

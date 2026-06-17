@@ -1,13 +1,13 @@
 import type { MigrationInterface, QueryRunner } from "typeorm";
 
 /**
- *
+ * Creates and drops the initial Lexico database schema.
  */
 export class Migration1781126991393 implements MigrationInterface {
   name = "Migration1781126991393";
 
   /**
-   *
+   * Reverts this migration by dropping tables, indexes, enums, and constraints.
    */
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
@@ -204,7 +204,7 @@ export class Migration1781126991393 implements MigrationInterface {
   }
 
   /**
-   *
+   * Applies this migration by creating tables, indexes, enums, and constraints.
    */
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(

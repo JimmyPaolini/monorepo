@@ -88,7 +88,7 @@ export interface Ephemerides {
 }
 
 /**
- *
+ * Mutable per-body stores filled minute-by-minute before being emitted as final ephemerides.
  */
 export interface EphemerisAccumulators {
   azimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -99,7 +99,7 @@ export interface EphemerisAccumulators {
 }
 
 /**
- *
+ * Tuples used by `typedFromEntries` to build strongly typed by-body ephemeris maps.
  */
 export interface EphemerisEntries {
   azimuthEntries: [Body, AzimuthElevationEphemeris][];
@@ -110,7 +110,7 @@ export interface EphemerisEntries {
 }
 
 /**
- *
+ * Optional feature-availability markers for bodies supported by each ephemeris type.
  */
 export interface EphemerisFeatureSets {
   azimuthElevationSet: Set<string>;

@@ -6,7 +6,6 @@ import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
-// @ts-ignore - no bundled type declarations for this plugin across all project references
 import betterMaxParamsPlugin from "eslint-plugin-better-max-params";
 import importPlugin from "eslint-plugin-import-x";
 import jsdocPlugin from "eslint-plugin-jsdoc";
@@ -676,6 +675,19 @@ export default [
     },
   },
 
+  // 🪺 Nest Module Provider Overrides
+  // NestJS module metadata can legitimately include provider factory functions
+  // with many injected dependencies; allow more parameters in *.module.ts files.
+  {
+    files: ["**/*.module.ts"],
+    rules: {
+      "better-max-params/better-max-params": [
+        "warn",
+        { constructor: 12, func: 12 },
+      ],
+    },
+  },
+
   // 🔷 TypeScript Strict Type-Checked
   // Enables strict + stylistic type-checked rule sets from typescript-eslint.
   // Requires parserOptions.projectService for type-aware linting.
@@ -735,6 +747,7 @@ export default [
       tsdoc: tsdocPlugin,
     },
     rules: {
+      "jsdoc/no-blank-blocks": "warn",
       "jsdoc/require-jsdoc": [
         "warn",
         {
@@ -899,6 +912,7 @@ export default [
   })),
   {
     files: ["**/*.json", "**/*.jsonc", "**/*.jsonl", "**/*.json5"],
+    ignores: ["projectStructure.cache.json"],
     rules: {
       // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",

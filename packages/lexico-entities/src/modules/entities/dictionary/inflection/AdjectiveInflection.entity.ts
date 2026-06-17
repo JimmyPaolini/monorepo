@@ -10,7 +10,7 @@ export const adjectiveDeclension = {
   third: "third",
 };
 /**
- *
+ * Union of adjective declension values.
  */
 export type AdjectiveDeclension =
   (typeof adjectiveDeclension)[keyof typeof adjectiveDeclension];
@@ -22,7 +22,7 @@ export const adjectiveDegree = {
   superlative: "superlative",
 } as const;
 /**
- *
+ * Union of adjective degree values.
  */
 export type AdjectiveDegree =
   (typeof adjectiveDegree)[keyof typeof adjectiveDegree];
@@ -31,7 +31,7 @@ export const adjectiveDegreeValues = Object.values(
 ) as AdjectiveDegree[];
 
 /**
- *
+ * Inflection metadata for adjective lexemes.
  */
 @ChildEntity("adjective")
 @ObjectType({ implements: Inflection })

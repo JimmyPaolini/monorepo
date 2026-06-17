@@ -370,7 +370,8 @@ export class MajorAspectsService {
   // 🌎 Public Methods
 
   /**
-   *
+   * Resolves the active major aspect for two bodies and assembles a typed event.
+   * Throws when no major aspect is within orb for the supplied longitudes.
    */
   buildMajorAspectEvent(args: {
     body1: Body;
@@ -401,7 +402,7 @@ export class MajorAspectsService {
   }
 
   /**
-   *
+   * Scans all unique major-body pairs for a forming/perfective/dissolving event at this minute.
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -429,7 +430,7 @@ export class MajorAspectsService {
   }
 
   /**
-   *
+   * Builds duration events by pairing forming and dissolving events per body-pair/aspect key.
    */
   detectProgressive(events: Event[]): Event[] {
     const majorAspectEvents = events.filter((event) =>

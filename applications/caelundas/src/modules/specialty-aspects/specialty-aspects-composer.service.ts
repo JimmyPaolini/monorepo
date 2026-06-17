@@ -43,7 +43,7 @@ export class SpecialtyAspectsComposerService {
   // 🔏 Private Methods
 
   /**
-   *
+   * Builds and logs one specialty-aspect boundary event from pre-resolved display parts.
    */
   buildSpecialtyAspectEventFromParts(args: {
     body1Symbol: string;
@@ -75,7 +75,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Extracts aspect bodies from categories.
    */
   extractAspectBodiesFromCategories(categories: string[]): {
     aspectCapitalized: string;
@@ -103,7 +103,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Extracts typed aspect values.
    */
   extractTypedAspectValues(args: {
     aspectCapitalized: string;
@@ -133,7 +133,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Returns previous/current/next longitudes for one body at minute resolution.
    */
   getBodyLongitudesWindow(args: {
     ephemeris: CoordinateEphemeris;
@@ -151,7 +151,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Creates one specialty-aspect duration event from a forming/dissolving pair.
    */
   getSpecialtyAspectProgressiveEvent(beginning: Event, ending: Event): Event {
     const { aspectCapitalized, body1Capitalized, body2Capitalized } =
@@ -183,7 +183,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Resolves categories, description, and emoji marker for the supplied phase.
    */
   phaseFields(args: {
     baseCategories: string[];
@@ -221,7 +221,7 @@ export class SpecialtyAspectsComposerService {
   }
 
   /**
-   *
+   * Builds a stable grouping key from sorted bodies plus specialty-aspect label.
    */
   specialtyAspectGroupKey(event: Event): string {
     const bodiesCapitalized = _.sortBy(

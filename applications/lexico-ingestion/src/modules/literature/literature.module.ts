@@ -14,6 +14,8 @@ import { LoggerModule } from "../logger/logger.module";
 import { NumeralsModule } from "../numerals/numerals.module";
 
 import { LiteratureCommand } from "./literature.command";
+import { LiteratureService } from "./literature.service";
+import { LiteratureTextIngestionService } from "./literature.text-ingestion.service";
 
 /**
  * Module for literature ingestion.
@@ -27,6 +29,10 @@ import { LiteratureCommand } from "./literature.command";
     LoggerModule,
     NumeralsModule,
   ],
-  providers: [LiteratureCommand],
+  providers: [
+    LiteratureCommand,
+    LiteratureService,
+    LiteratureTextIngestionService,
+  ],
 })
 export class LiteratureModule {}

@@ -17,18 +17,15 @@ interface GenerateNestjsServiceModuleOptions {
 }
 
 /**
- * Generates a new NestJS service module with module, service, types, constants, and unit test files.
- * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS service module generator
+ * Absolute path to the template directory used by this generator.
  */
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
 /**
- *
+ * Generates a service module under `<projectRoot>/src/modules/<name>` for a
+ * `framework:nestjs` project and schedules formatting for created files.
  */
 export async function generateNestjsServiceModule(
   tree: Tree,

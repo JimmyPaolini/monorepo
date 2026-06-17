@@ -6,7 +6,7 @@ import { TwilightsBuilderService } from "./twilights-builder.service.js";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 /**
- *
+ * Composes progressive twilight/daylight intervals by pairing ordered transition events.
  */
 @Injectable()
 export class TwilightsComposerService {
@@ -16,7 +16,7 @@ export class TwilightsComposerService {
   ) {}
 
   /**
-   *
+   * Builds morning twilight intervals from astronomical to nautical and nautical to civil.
    */
   buildDawnProgressiveEvents(
     astronomicalDawnEvents: Event[],
@@ -48,7 +48,7 @@ export class TwilightsComposerService {
   }
 
   /**
-   *
+   * Builds daytime/evening intervals: daylight, nautical twilight, astronomical twilight.
    */
   buildDuskProgressiveEvents(args: {
     astronomicalDuskEvents: Event[];
@@ -98,7 +98,7 @@ export class TwilightsComposerService {
   }
 
   /**
-   *
+   * Pairs beginnings/endings via progressive utilities and maps each pair through `builder`.
    */
   pairAndBuild(args: {
     beginnings: Event[];

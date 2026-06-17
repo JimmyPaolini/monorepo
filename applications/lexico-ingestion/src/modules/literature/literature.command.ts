@@ -1,18 +1,10 @@
-import { existsSync, mkdirSync } from "node:fs";
-import path from "node:path";
-
 import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
-import { Repository } from "typeorm";
-
-import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
-import { NumeralsService } from "../numerals/numerals.service";
 
-import { LiteratureIngestionHelper } from "./literature.ingestion.helper.js";
+import { LiteratureService } from "./literature.service.js";
 
 import type {
   LibraryEntry,
@@ -20,7 +12,8 @@ import type {
 } from "./literature.types.js";
 
 /**
- * Ingest local literature texts into the database.
+ * Ingests markdown texts from `data/library` into literature entities with
+ * provider-aware deduplication.
  */
 @Command({
   description: "Run the literature command",
@@ -31,44 +24,12 @@ export class LiteratureCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    @InjectRepository(Author)
-    private readonly authorRepository: Repository<Author>,
-    @InjectRepository(Text)
-    private readonly textRepository: Repository<Text>,
-    @InjectRepository(Line)
-    private readonly lineRepository: Repository<Line>,
-    @InjectRepository(Token)
-    private readonly tokenRepository: Repository<Token>,
-    @InjectRepository(Word)
-    private readonly wordRepository: Repository<Word>,
     private readonly logger: LoggerService,
-    private readonly numeralsService: NumeralsService,
+    private readonly helper: LiteratureService,
   ) {
     super();
     this.logger.setContext(LiteratureCommand.name);
-
-    const outputDirectory = path.join(process.cwd(), "output");
-    if (!existsSync(outputDirectory))
-      mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
-      outputDirectory,
-      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
-
-    this.helper = new LiteratureIngestionHelper({
-      authorRepository: this.authorRepository,
-      lineRepository: this.lineRepository,
-      logFilePath: this.logFilePath,
-      logger: this.logger,
-      numeralsService: this.numeralsService,
-      textRepository: this.textRepository,
-      tokenRepository: this.tokenRepository,
-      wordRepository: this.wordRepository,
-    });
   }
-  private readonly helper: LiteratureIngestionHelper;
-
-  private readonly logFilePath: string;
 
   // 🔐 Private Fields
 
@@ -172,7 +133,7 @@ export class LiteratureCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--author` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The author to ingest",
@@ -207,7 +168,7 @@ export class LiteratureCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--provider` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The provider to ingest from",
@@ -237,7 +198,7 @@ export class LiteratureCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--text` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The specific text to ingest",
@@ -275,7 +236,9 @@ export class LiteratureCommand extends CommandRunner {
 
   // 🌎 Public Methods
 
-  /** Runs the literature ingestion pipeline. */
+  /**
+   * Runs literature ingestion for the selected provider/author/text scope.
+   */
   async run(
     _arguments: string[],
     options: LiteratureCommandOptions,

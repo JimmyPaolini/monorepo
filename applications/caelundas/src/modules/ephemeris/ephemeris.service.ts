@@ -959,7 +959,7 @@ export class EphemerisService {
   }
 
   /**
-   *
+   * Computes per-body illumination series for the requested range via `computeIlluminationForBody`.
    */
   getIlluminationEphemerisByBody(args: {
     bodies: IlluminationEphemerisBody[];

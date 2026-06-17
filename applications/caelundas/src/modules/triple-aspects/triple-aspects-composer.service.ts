@@ -20,7 +20,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Builds triple-aspect events and progressive spans for grand trines, T-squares, and yods.
  */
 @Injectable()
 export class TripleAspectsComposerService {
@@ -29,7 +29,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Derives forming/dissolving phase by comparing pattern existence across two snapshots.
    */
   static determineCompoundPhaseFromSnapshots(args: {
     checkPatternExists: (edges: AspectBodies[]) => boolean;
@@ -73,7 +73,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Returns neighbors of `body` connected by the requested aspect type.
    */
   static findBodiesWithAspectTo(
     body: Body,
@@ -92,7 +92,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Returns `true` when an undirected body pair has the requested aspect in the edge set.
    */
   static haveAspect(args: {
     aspectType: Aspect;
@@ -314,7 +314,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds one triple-aspect duration event from a forming/dissolving pair.
    */
   buildProgressiveEvent(args: {
     aspectCapitalized: string;
@@ -360,7 +360,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds one triple-aspect boundary event with optional focal/apex metadata.
    */
   buildTripleAspectEvent(args: {
     body1: Body;
@@ -415,7 +415,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Builds a stable progressive grouping key from sorted bodies plus aspect label.
    */
   getProgressiveGroupKey(event: Event): string {
     const tripleAspectBodyNames = new Set(
@@ -437,7 +437,7 @@ export class TripleAspectsComposerService {
   }
 
   /**
-   *
+   * Pairs sorted forming/dissolving events for one triple-aspect group key.
    */
   pairProgressiveGroup(groupEvents: Event[]): Event[] {
     const formingEvents = groupEvents

@@ -9,7 +9,7 @@ import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects dawn/dusk boundary crossings by comparing consecutive Sun elevations to twilight thresholds.
  */
 @Injectable()
 export class TwilightsDetectorService {
@@ -25,7 +25,7 @@ export class TwilightsDetectorService {
   };
 
   /**
-   *
+   * Evaluates all twilight predicates for one minute and returns matching transition events.
    */
   buildTwilightTransitionEvents(
     elevations: { currentElevation: number; previousElevation: number },
@@ -68,7 +68,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Extracts current and previous-minute Sun elevations used by threshold crossing tests.
    */
   getSunElevations(
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
@@ -91,7 +91,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the astronomical threshold (-18 degrees) upward.
    */
   isAstronomicalDawn(args: {
     currentElevation: number;
@@ -101,7 +101,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the astronomical threshold (-18 degrees) downward.
    */
   isAstronomicalDusk(args: {
     currentElevation: number;
@@ -111,7 +111,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the civil threshold (-6 degrees) upward.
    */
   isCivilDawn(args: {
     currentElevation: number;
@@ -121,7 +121,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the civil threshold (-6 degrees) downward.
    */
   isCivilDusk(args: {
     currentElevation: number;
@@ -131,7 +131,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Generic upward threshold crossing predicate for the requested twilight band.
    */
   isDawn(args: {
     currentElevation: number;
@@ -144,7 +144,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Generic downward threshold crossing predicate for the requested twilight band.
    */
   isDusk(args: {
     currentElevation: number;
@@ -157,7 +157,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the nautical threshold (-12 degrees) upward.
    */
   isNauticalDawn(args: {
     currentElevation: number;
@@ -167,7 +167,7 @@ export class TwilightsDetectorService {
   }
 
   /**
-   *
+   * Returns `true` when elevation crosses the nautical threshold (-12 degrees) downward.
    */
   isNauticalDusk(args: {
     currentElevation: number;

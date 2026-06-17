@@ -65,7 +65,8 @@ export const PRAENOMEN_ABBREVIATIONS: Record<
 };
 
 /**
- *
+ * Creates a manual pronoun template for `hic` with predefined declension forms,
+ * principal parts, and canonical translations.
  */
 export function buildHicTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -114,7 +115,8 @@ export function buildHicTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a manual pronoun template for `ille` with predefined declension forms,
+ * principal parts, and canonical translations.
  */
 export function buildIlleTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -166,7 +168,8 @@ export function buildIlleTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a manual adjective template for `omnis` with third-declension forms
+ * and normalized translation text.
  */
 export function buildOmnisTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -215,7 +218,7 @@ export function buildOmnisTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a reusable noun template used to expand praenomen abbreviations.
  */
 export function buildPraenomenAbbreviationTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -238,7 +241,7 @@ export function buildPraenomenAbbreviationTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a reusable numeral template for manual Roman numeral entries.
  */
 export function buildRomanNumeralTemplate(): Lexeme {
   const lexeme = new Lexeme();

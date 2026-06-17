@@ -17,15 +17,12 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-/**
- * Pattern detection and event building helpers for {@link QuadrupleAspectsService}.
-
-/** Primitive helper methods for quadruple aspect pattern detection. */
+/** Primitive helper methods for quadruple-aspect pattern detection and event shaping. */
 export class QuadrupleAspectsBaseService {
   // 🔏 Private Methods
 
   /**
-   *
+   * Creates a bidirectional lookup of each opposition endpoint to its opposite body.
    */
   buildGrandCrossOppositeMap(
     opp1: AspectBodies,
@@ -40,7 +37,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Collapses forming+dissolving boundary events into one duration event.
    */
   buildProgressiveEvent(formingEvent: Event, dissolvingEvent: Event): Event {
     const categories = formingEvent.categories.filter(
@@ -59,7 +56,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Builds the human description and appends focal-body context when present.
    */
   buildQuadrupleAspectDescription(args: {
     bodiesSorted: string[];
@@ -75,7 +72,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Checks grand cross pattern.
    */
   checkGrandCrossPattern(args: {
     bodyList: Body[];
@@ -111,7 +108,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Checks kite pattern.
    */
   checkKitePattern(args: {
     baseBody: Body;
@@ -162,7 +159,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Checks trine triple.
    */
   checkTrineTriple(args: {
     trineI: AspectBodies;
@@ -206,7 +203,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Determines compound phase from snapshots.
    */
   determineCompoundPhaseFromSnapshots(args: {
     checkPatternExists: (edges: AspectBodies[]) => boolean;
@@ -246,7 +243,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Finds grand trines.
    */
   findGrandTrines(
     trines: AspectBodies[],
@@ -295,7 +292,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Maps aspect phase to the summary prefix marker.
    */
   getPhaseEmoji(phase: AspectPhase): string {
     if (phase === "forming") return "➡️ ";
@@ -304,7 +301,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   * Create a quadruple aspect event
+   * Creates one quadruple-aspect event with normalized categories and symbol-rich summary.
    */
   getQuadrupleAspectEvent(
     eventArguments: GetQuadrupleAspectEventArguments,
@@ -356,14 +353,14 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Groups aspects by type.
    */
   groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
   /**
-   *
+   * Returns `true` when an undirected body pair has the requested aspect in the edge set.
    */
   haveAspect(args: {
     aspectType: Aspect;
@@ -381,7 +378,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Makes progressive group key.
    */
   makeProgressiveGroupKey(event: Event): string {
     const planets = _.sortBy(
@@ -398,7 +395,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Makes quadruple aspect categories.
    */
   makeQuadrupleAspectCategories(args: {
     body1Capitalized: string;
@@ -437,7 +434,7 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   *
+   * Verifies grand cross squares.
    */
   verifyGrandCrossSquares(
     bodyList: Body[],

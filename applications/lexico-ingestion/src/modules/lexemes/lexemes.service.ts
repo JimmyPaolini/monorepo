@@ -22,9 +22,8 @@ import type { PartOfSpeech } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";
 
 /**
- * Orchestrates Wiktionary HTML parsing into fully-populated Lexeme objects.
- * Delegates POS detection, inflection, forms, and pronunciation to injected
- * services while inlining etymology, principal-parts, and translation logic.
+ * Coordinates conversion of Wiktionary headword sections into persisted `Lexeme`
+ * graphs, delegating specialized parsing to domain services.
  */
 @Injectable()
 export class LexemesService {
@@ -231,7 +230,9 @@ export class LexemesService {
     }
   }
 
-  /** Returns true if a lexeme matching `lemma` already exists in the DB. */
+  /**
+   * Returns whether at least one lexeme row already exists for the normalized lemma.
+   */
   async existsByLemma(lemma: string): Promise<boolean> {
     const count = await this.lexemeRepository
       .createQueryBuilder("lexeme")
@@ -241,7 +242,7 @@ export class LexemesService {
   }
 
   /**
-   *
+   * Reloads a saved lexeme by `(lemma, disambiguator)` with all related ingestion entities.
    */
   async fetchSavedLexeme(
     lemma: string,
@@ -258,7 +259,9 @@ export class LexemesService {
     });
   }
 
-  /** Finds all lexemes matching `lemma`, including their translations. */
+  /**
+   * Finds all lexeme variants for a lemma and eagerly loads translation rows.
+   */
   async findLexemesByLemmaWithTranslations(lemma: string): Promise<Lexeme[]> {
     return this.lexemeRepository
       .createQueryBuilder("lexeme")
@@ -268,8 +271,8 @@ export class LexemesService {
   }
 
   /**
-   * Parses Wiktionary HTML into fully-populated Lexeme objects using the
-   * `p:has(strong.Latn.headword)` selector strategy.
+   * Parses one Wiktionary page into lexemes by iterating `p:has(strong.Latn.headword)`
+   * sections and enriching each accepted part of speech.
    */
   async parseLexemes(wiktionaryPage: WiktionaryPage): Promise<Lexeme[]> {
     if (!wiktionaryPage.html) return [];
@@ -293,7 +296,10 @@ export class LexemesService {
     return lexemes;
   }
 
-  /** Persists a parsed Lexeme and its related entities. */
+  /**
+   * Upserts a parsed lexeme row, then persists related inflection, forms, pronunciations,
+   * principal parts, translations, and derived words.
+   */
   async saveParsedLexeme(lexeme: Lexeme): Promise<Lexeme | null> {
     await this.upsertLexeme(lexeme);
     const savedLexeme = await this.fetchSavedLexeme(
@@ -310,7 +316,9 @@ export class LexemesService {
     return savedLexeme;
   }
 
-  /** Upserts the Lexeme row. */
+  /**
+   * Writes the base lexeme row with ingestion attribution metadata.
+   */
   async upsertLexeme(lexeme: Lexeme): Promise<void> {
     lexeme.createdBy = LEXICO_INGESTION_BY_ID;
     lexeme.updatedBy = LEXICO_INGESTION_BY_ID;

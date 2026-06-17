@@ -12,7 +12,7 @@ import { Translation } from "./Translation.entity.js";
 import { WordLexeme } from "./WordLexeme.entity.js";
 
 /**
- *
+ * A normalized Latin dictionary entry and its related linguistic data.
  */
 @Entity({
   comment:

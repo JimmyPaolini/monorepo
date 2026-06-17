@@ -7,7 +7,7 @@ import { WordForm } from "./WordForm.entity.js";
 import { WordLexeme } from "./WordLexeme.entity.js";
 
 /**
- *
+ * A distinct written Latin word linked to forms and lexemes.
  */
 @Entity({
   comment: "A Latin word string that maps to one or more dictionary entries",

@@ -13,6 +13,9 @@
       "@monorepo/lexico-components": [
         "../../packages/lexico-components/src/index.ts"
       ],
+      "eslint-plugin-better-max-params": [
+        "../../configuration/types/eslint-plugin-better-max-params/index.d.ts"
+      ],
       "monorepo/configuration/*": ["../../configuration/*"],
       "~/*": ["./src/*"]
     },
@@ -35,7 +38,7 @@
     "src/**/*.test.ts",
     "src/**/*.test.tsx"
   ],
-  "extends": "../../configuration/tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.json",
   "include": [
     "eslint.config.ts",
     "src/**/*.js",

@@ -20,7 +20,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Collects grand crosses for opp1.
    */
   collectGrandCrossesForOpp1(args: {
     current: AspectBodies[];
@@ -58,7 +58,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Collects kite events for grand trine.
    */
   collectKiteEventsForGrandTrine(args: {
     current: AspectBodies[];
@@ -94,7 +94,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Collects progressive events from group.
    */
   collectProgressiveEventsFromGroup(
     group: Event[],
@@ -257,7 +257,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Resolves grand cross event.
    */
   resolveGrandCrossEvent(args: {
     bodyList: Body[];
@@ -293,7 +293,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Resolves kite event.
    */
   resolveKiteEvent(args: {
     baseBody: Body;
@@ -341,7 +341,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   }
 
   /**
-   *
+   * Tries to build grand cross.
    */
   tryBuildGrandCross(args: {
     current: AspectBodies[];
@@ -380,7 +380,7 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   // 🌎 Public Utilities
 
   /**
-   *
+   * Tries to build kite.
    */
   tryBuildKite(args: {
     baseBody: Body;

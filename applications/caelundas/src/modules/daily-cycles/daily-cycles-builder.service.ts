@@ -354,7 +354,7 @@ export class DailyCyclesBuilderService {
   }
 
   /**
-   *
+   * Reads elevation (degrees) for one timestamp from azimuth/elevation ephemeris.
    */
   getElevationAt(
     ephemeris: AzimuthElevationEphemeris,
@@ -368,7 +368,7 @@ export class DailyCyclesBuilderService {
   }
 
   /**
-   *
+   * Returns previous/current/next-minute elevation values used by extrema crossing logic.
    */
   getElevationWindow(args: {
     ephemeris: AzimuthElevationEphemeris;
@@ -392,7 +392,7 @@ export class DailyCyclesBuilderService {
   }
 
   /**
-   *
+   * Detects upward crossing of the effective horizon at -sunRadiusDegrees.
    */
   isRise(args: { current: number; previous: number }): boolean {
     const { current, previous } = args;
@@ -403,7 +403,7 @@ export class DailyCyclesBuilderService {
   }
 
   /**
-   *
+   * Detects downward crossing of the effective horizon at -sunRadiusDegrees.
    */
   isSet(args: { current: number; previous: number }): boolean {
     const { current, previous } = args;

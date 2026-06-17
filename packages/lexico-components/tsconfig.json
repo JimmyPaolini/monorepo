@@ -8,11 +8,14 @@
     "outDir": "../../dist/out-tsc",
     "paths": {
       "@/*": ["./src/*"],
+      "eslint-plugin-better-max-params": [
+        "../../configuration/types/eslint-plugin-better-max-params/index.d.ts"
+      ],
       "monorepo/configuration/*": ["../../configuration/*"]
     },
     "types": ["node", "vite/client"]
   },
-  "extends": "../../configuration/tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.json",
   "include": [
     "eslint.config.ts",
     "src/**/*.ts",

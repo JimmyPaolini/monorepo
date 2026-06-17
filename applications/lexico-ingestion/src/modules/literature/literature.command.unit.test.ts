@@ -1,14 +1,11 @@
 import { Test } from "@nestjs/testing";
-import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
-
-import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
 import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
-import { NumeralsService } from "../numerals/numerals.service";
 
 import { LiteratureCommand } from "./literature.command";
+import { LiteratureService } from "./literature.service";
 
 describe("LiteratureCommand", () => {
   let command: LiteratureCommand;
@@ -19,32 +16,12 @@ describe("LiteratureCommand", () => {
       providers: [
         LiteratureCommand,
         {
-          provide: getRepositoryToken(Author),
-          useValue: {},
-        },
-        {
-          provide: getRepositoryToken(Text),
-          useValue: {},
-        },
-        {
-          provide: getRepositoryToken(Line),
-          useValue: {},
-        },
-        {
-          provide: getRepositoryToken(Token),
-          useValue: {},
-        },
-        {
-          provide: getRepositoryToken(Word),
+          provide: LiteratureService,
           useValue: {},
         },
         {
           provide: LoggerService,
           useValue: { setContext: () => {} },
-        },
-        {
-          provide: NumeralsService,
-          useValue: { toDecimal: () => 1 },
         },
       ],
     }).compile();

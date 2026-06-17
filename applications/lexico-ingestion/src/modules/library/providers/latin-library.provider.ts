@@ -20,9 +20,10 @@ import type { AnyNode } from "domhandler";
  */
 @Injectable()
 export class LatinLibraryProvider {
-  constructor(private readonly logger: LoggerService) {}
-
-  private readonly builder = new LatinLibraryBuilder();
+  constructor(
+    private readonly builder: LatinLibraryBuilder,
+    private readonly logger: LoggerService,
+  ) {}
 
   readonly name = "thelatinlibrary";
 

@@ -12,7 +12,7 @@ export const verbConjugation = {
   thirdIo: "third-io",
 } as const;
 /**
- *
+ * Union of verb conjugation values.
  */
 export type VerbConjugation =
   (typeof verbConjugation)[keyof typeof verbConjugation];
@@ -21,7 +21,7 @@ export const verbConjugationValues = Object.values(
 ) as VerbConjugation[];
 
 /**
- *
+ * Inflection metadata for verb lexemes.
  */
 @ChildEntity("verb")
 @ObjectType({ implements: Inflection })

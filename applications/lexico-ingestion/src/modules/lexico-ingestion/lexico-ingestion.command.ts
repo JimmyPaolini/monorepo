@@ -15,10 +15,8 @@ import { WiktionaryCommand } from "../wiktionary/wiktionary.command";
 import type { LexicoIngestionCommandOptions } from "./lexico-ingestion.types";
 
 /**
- * CLI entry point for lexico-ingestion.
- * Root CLI entry point for lexicoIngestion.
- * Runs all ingestion steps in order when invoked without a sub-command.
- * Sub-commands: wiktionary, dictionary, words, manual, clear
+ * Root CLI pipeline command that prompts for missing stage flags and runs the
+ * selected ingestion stages in sequence.
  */
 @Command({
   description: "Run the lexico-ingestion command-line application",
@@ -137,7 +135,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Parses `--dictionary` as a boolean toggle (`false`/`0` disable the stage).
    */
   @Option({
     description: "Activate/deactivate the dictionary stage",
@@ -149,7 +147,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Parses `--library` as a boolean toggle (`false`/`0` disable the stage).
    */
   @Option({
     description: "Activate/deactivate the library stage",
@@ -161,7 +159,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Parses `--library-sources` as a boolean toggle (`false`/`0` disable the stage).
    */
   @Option({
     description: "Activate/deactivate the library sources stage",
@@ -173,7 +171,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Parses `--literature` as a boolean toggle (`false`/`0` disable the stage).
    */
   @Option({
     description: "Activate/deactivate the literature stage",
@@ -185,7 +183,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Parses `--wikipedia` as a boolean toggle (`false`/`0` disable the stage).
    */
   @Option({
     description: "Activate/deactivate the Wikipedia (Wiktionary) stage",
@@ -197,8 +195,7 @@ export class LexicoIngestionCommand extends CommandRunner {
   }
 
   /**
-   * Runs the full ingestion pipeline in order:
-   * wikipedia → dictionary → library sources → library → literature
+   * Executes the selected stage sequence after prompting for any unspecified toggles.
    */
   async run(
     _passedParameters: string[],

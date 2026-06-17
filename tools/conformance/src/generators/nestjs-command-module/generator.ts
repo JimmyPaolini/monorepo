@@ -16,18 +16,15 @@ interface GenerateNestjsCommandModuleOptions {
 }
 
 /**
- * Generates a new NestJS command module with command, module, types, constants, and unit test files.
- * Prompts for a project tagged `framework:nest-commander` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS command module generator
+ * Absolute path to the template directory used by this generator.
  */
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
 /**
- *
+ * Generates a command module under `<projectRoot>/src/modules/<name>` for a
+ * `framework:nest-commander` project and schedules formatting for created files.
  */
 export async function generateNestjsCommandModule(
   tree: Tree,

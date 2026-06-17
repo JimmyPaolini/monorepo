@@ -1,6 +1,9 @@
+import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import _ from "lodash";
 import { toString } from "mdast-util-to-string";
 import { remark } from "remark";
@@ -8,37 +11,66 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import YAML from "yaml";
 
-import { authorIdToName } from "./literature.constants.js";
-import { ingestTextEntryWithLogging } from "./literature.ingestion.text-entry.helper.js";
+import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
+
+import {
+  authorIdToName,
+  CAPITAL_LETTER_PATTERN,
+  COMBINING_MARKS_PATTERN,
+  DEFAULT_LINE_CHUNK_SIZE,
+  DEFAULT_TEXT_CHUNK_SIZE,
+  DEFAULT_TOKEN_CHUNK_SIZE,
+  LABEL_PATTERN,
+  LEADING_WHITESPACE_PATTERN,
+  ROMAN_NUMERAL_PATTERN,
+  TOKEN_SEGMENT_PATTERN,
+  WORD_TOKEN_PATTERN,
+} from "./literature.constants.js";
+import { LiteratureTextIngestionService } from "./literature.text-ingestion.service.js";
 
 import type { LoggerService } from "../logger/logger.service.js";
 import type { NumeralsService } from "../numerals/numerals.service.js";
-import type { LibraryEntry } from "./literature.types.js";
 import type {
-  Author,
-  Line,
-  Text,
-  Token,
-  Word,
-} from "@monorepo/lexico-entities";
+  IngestTextArguments,
+  LibraryEntry,
+  ParsedLabelResult,
+} from "./literature.types.js";
 import type { Paragraph, PhrasingContent, Root, Strong } from "mdast";
 import type { DeepPartial, Repository } from "typeorm";
 import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 
 /** Scans provider markdown files and ingests normalized literature data. */
-export class LiteratureIngestionHelper {
+@Injectable()
+export class LiteratureService {
   public constructor(
-    private readonly dependencies: {
-      authorRepository: Repository<Author>;
-      lineRepository: Repository<Line>;
-      logFilePath: string;
-      logger: LoggerService;
-      numeralsService: NumeralsService;
-      textRepository: Repository<Text>;
-      tokenRepository: Repository<Token>;
-      wordRepository: Repository<Word>;
-    },
-  ) {}
+    @InjectRepository(Author)
+    private readonly authorRepository: Repository<Author>,
+    @InjectRepository(Line)
+    private readonly lineRepository: Repository<Line>,
+    private readonly numeralsService: NumeralsService,
+    @InjectRepository(Text)
+    private readonly textRepository: Repository<Text>,
+    @InjectRepository(Token)
+    private readonly tokenRepository: Repository<Token>,
+    @InjectRepository(Word)
+    private readonly wordRepository: Repository<Word>,
+    private readonly literatureTextIngestionService: LiteratureTextIngestionService,
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(LiteratureService.name);
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory)) {
+      mkdirSync(outputDirectory, { recursive: true });
+    }
+
+    this.logFilePath = path.join(
+      outputDirectory,
+      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+  }
+
+  private readonly logFilePath: string;
+
   private readonly memoizedWordCache = new Map<string, null | string>();
   private wordsCache: Map<string, string> | null = null;
 
@@ -72,7 +104,7 @@ export class LiteratureIngestionHelper {
         currentPath = `${currentPath}/${part}`;
         if (parentTexts.has(currentPath)) continue;
         const parentText = parentTexts.get(parentSlug);
-        await this.dependencies.textRepository.upsert(
+        await this.textRepository.upsert(
           {
             author: authorEntity,
             parentText,
@@ -82,7 +114,7 @@ export class LiteratureIngestionHelper {
           } as QueryDeepPartialEntity<Text>,
           { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
         );
-        const newParent = await this.dependencies.textRepository.findOneOrFail({
+        const newParent = await this.textRepository.findOneOrFail({
           where: { slug: currentPath },
         });
         parentTexts.set(currentPath, newParent);
@@ -92,7 +124,7 @@ export class LiteratureIngestionHelper {
   }
   private escapeCapitals(word: string): string {
     return word.replaceAll(
-      /[A-Z]/g,
+      CAPITAL_LETTER_PATTERN,
       (character) => `_${character.toLowerCase()}`,
     );
   }
@@ -101,9 +133,9 @@ export class LiteratureIngestionHelper {
     text: Text,
     wordMap: Map<string, string>,
   ): DeepPartial<Token>[] {
-    const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
+    const tokenStrings = line.data.match(TOKEN_SEGMENT_PATTERN) || [];
     return tokenStrings.map((data, index) => {
-      const isPunctuation = !/^[\p{L}]+$/u.test(data);
+      const isPunctuation = !WORD_TOKEN_PATTERN.test(data);
       let wordId: null | string = null;
       if (!isPunctuation) {
         wordId = this.memoizedWordCache.get(data) || null;
@@ -126,14 +158,12 @@ export class LiteratureIngestionHelper {
   }
   private async getWordsCache(): Promise<Map<string, string>> {
     if (!this.wordsCache) {
-      this.dependencies.logger.log(
-        "📖 Caching dictionary words for token mapping...",
-      );
-      const words = await this.dependencies.wordRepository.find({
+      this.logger.log("📖 Caching dictionary words for token mapping...");
+      const words = await this.wordRepository.find({
         select: { data: true, id: true },
       });
       this.wordsCache = new Map(words.map((word) => [word.data, word.id]));
-      this.dependencies.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
+      this.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
     }
     return this.wordsCache;
   }
@@ -141,19 +171,17 @@ export class LiteratureIngestionHelper {
     authorSlug: string,
     texts: LibraryEntry[],
   ): Promise<void> {
-    this.dependencies.logger.log(`👤 Starting author: ${authorSlug}`);
-    await this.dependencies.authorRepository.upsert(
+    this.logger.log(`👤 Starting author: ${authorSlug}`);
+    await this.authorRepository.upsert(
       {
         name: authorIdToName[authorSlug] || _.startCase(authorSlug),
         slug: authorSlug,
       },
       { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
     );
-    const authorEntity = await this.dependencies.authorRepository.findOneOrFail(
-      {
-        where: { slug: authorSlug },
-      },
-    );
+    const authorEntity = await this.authorRepository.findOneOrFail({
+      where: { slug: authorSlug },
+    });
     const parentTexts = await this.ensureParentTexts(
       authorEntity,
       authorSlug,
@@ -167,19 +195,19 @@ export class LiteratureIngestionHelper {
     });
   }
   private async ingestLines(text: Text, ast: Root): Promise<void> {
-    this.dependencies.logger.log(`  📜 Parsing lines for ${text.title}`);
+    this.logger.log(`  📜 Parsing lines for ${text.title}`);
     const wordMap = await this.getWordsCache();
     const tokenEntities: DeepPartial<Token>[] = [];
     const paragraphs = ast.children.filter(
       (child): child is Paragraph => child.type === "paragraph",
     );
     if (paragraphs.length === 0)
-      this.dependencies.logger.warn(`⚠️ NO LINES in ${text.slug}`);
+      this.logger.warn(`⚠️ NO LINES in ${text.slug}`);
     const lineEntities = paragraphs.map((paragraph, index) =>
       this.buildLineEntityFromParagraph(paragraph, index, text),
     );
     const savedLines = await this.upsertAndFetchLines(lineEntities, text);
-    this.dependencies.logger.log(
+    this.logger.log(
       `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
     );
     for (const line of savedLines) {
@@ -188,13 +216,7 @@ export class LiteratureIngestionHelper {
     }
     await this.upsertTokens(tokenEntities, text);
   }
-  private async ingestText(args: {
-    author: Author;
-    parentText: Text | undefined;
-    textPath: string;
-    textSlugName: string;
-    title: string;
-  }): Promise<void> {
+  private async ingestText(args: IngestTextArguments): Promise<void> {
     const { author, parentText, textPath, textSlugName, title } = args;
     const textSlug = parentText
       ? `${parentText.slug}/${textSlugName}`
@@ -209,7 +231,7 @@ export class LiteratureIngestionHelper {
         existingMetadata,
         frontmatterData["author_metadata"],
       );
-      await this.dependencies.authorRepository.save(author);
+      await this.authorRepository.save(author);
     }
     const text = await this.saveTextToDatabase({
       author,
@@ -229,21 +251,20 @@ export class LiteratureIngestionHelper {
     const { authorEntity, authorSlug, parentTexts, texts } = args;
     let currentText = 0;
     const totalTexts = texts.length;
-    const textChunks = _.chunk(texts, 5);
+    const textChunks = _.chunk(texts, DEFAULT_TEXT_CHUNK_SIZE);
     for (const chunk of textChunks) {
       for (const textEntry of chunk) {
         currentText++;
-        await ingestTextEntryWithLogging(
+        await this.literatureTextIngestionService.ingestTextWithLogging(
           {
             ingestText: async (ingestArguments): Promise<void> =>
               this.ingestText(ingestArguments),
-            logger: this.dependencies.logger,
           },
           {
             authorEntity,
             authorSlug,
             currentText,
-            logFilePath: this.dependencies.logFilePath,
+            logFilePath: this.logFilePath,
             parentTexts,
             textEntry,
             totalTexts,
@@ -255,7 +276,7 @@ export class LiteratureIngestionHelper {
   private normalize(str: string): string {
     return str
       .normalize("NFD")
-      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .replaceAll(COMBINING_MARKS_PATTERN, "")
       .toLowerCase()
       .trim();
   }
@@ -277,11 +298,9 @@ export class LiteratureIngestionHelper {
   private parseLabelFromStrongNode(
     strongNode: Strong,
     lineNodes: PhrasingContent[],
-  ): { label: string; lineNodes: PhrasingContent[] } {
+  ): ParsedLabelResult {
     const rawLabel = toString(strongNode).trim();
-    const labelMatch = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i.exec(
-      rawLabel,
-    );
+    const labelMatch = LABEL_PATTERN.exec(rawLabel);
     if (labelMatch?.[1]) {
       return this.parseStandardLabel(labelMatch, lineNodes);
     }
@@ -290,12 +309,12 @@ export class LiteratureIngestionHelper {
   private parseNonStandardLabel(
     rawLabel: string,
     lineNodes: PhrasingContent[],
-  ): { label: string; lineNodes: PhrasingContent[] } {
+  ): ParsedLabelResult {
     let label = `${lineNodes.length + 1}`;
     let resultNodes: PhrasingContent[] = lineNodes.slice(1);
     if (rawLabel.length <= 32) {
-      label = /^[IVXLCDM]+$/i.test(rawLabel)
-        ? `${this.dependencies.numeralsService.toDecimal(rawLabel)}`
+      label = ROMAN_NUMERAL_PATTERN.test(rawLabel)
+        ? `${this.numeralsService.toDecimal(rawLabel)}`
         : rawLabel;
     } else {
       resultNodes = [{ type: "text", value: `${rawLabel} ` }, ...resultNodes];
@@ -303,17 +322,17 @@ export class LiteratureIngestionHelper {
     const nextNode = resultNodes[0];
     if (nextNode?.type === "text" && "value" in nextNode) {
       const textNode = nextNode as { type: "text"; value: string };
-      textNode.value = textNode.value.replace(/^\s+/, "");
+      textNode.value = textNode.value.replace(LEADING_WHITESPACE_PATTERN, "");
     }
     return { label, lineNodes: resultNodes };
   }
   private parseStandardLabel(
     labelMatch: RegExpExecArray,
     lineNodes: PhrasingContent[],
-  ): { label: string; lineNodes: PhrasingContent[] } {
+  ): ParsedLabelResult {
     let label = labelMatch[1] ?? "";
-    if (/^[IVXLCDM]+$/i.test(label)) {
-      label = `${this.dependencies.numeralsService.toDecimal(label)}`;
+    if (ROMAN_NUMERAL_PATTERN.test(label)) {
+      label = `${this.numeralsService.toDecimal(label)}`;
     }
     const remainder = labelMatch[2];
     let resultNodes: PhrasingContent[] = lineNodes.slice(1);
@@ -342,14 +361,14 @@ export class LiteratureIngestionHelper {
     if (frontmatterData["text_metadata"]) {
       textSaveObject.metadata = frontmatterData["text_metadata"];
     }
-    await this.dependencies.textRepository.upsert(
+    await this.textRepository.upsert(
       textSaveObject as QueryDeepPartialEntity<Text>,
       {
         conflictPaths: ["slug"],
         skipUpdateIfNoValuesChanged: true,
       },
     );
-    return this.dependencies.textRepository.findOneOrFail({
+    return this.textRepository.findOneOrFail({
       relations: { author: true },
       where: { slug: textSlug },
     });
@@ -358,20 +377,16 @@ export class LiteratureIngestionHelper {
     lineEntities: DeepPartial<Line>[],
     text: Text,
   ): Promise<Line[]> {
-    const lineChunkSize = 1000;
-    const lineChunks = _.chunk(lineEntities, lineChunkSize);
+    const lineChunks = _.chunk(lineEntities, DEFAULT_LINE_CHUNK_SIZE);
     await Promise.all(
       lineChunks.map(async (chunk) =>
-        this.dependencies.lineRepository.upsert(
-          chunk as QueryDeepPartialEntity<Line>[],
-          {
-            conflictPaths: ["text", "index"],
-            skipUpdateIfNoValuesChanged: true,
-          },
-        ),
+        this.lineRepository.upsert(chunk as QueryDeepPartialEntity<Line>[], {
+          conflictPaths: ["text", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        }),
       ),
     );
-    return this.dependencies.lineRepository.find({
+    return this.lineRepository.find({
       loadEagerRelations: false,
       order: { index: "ASC" },
       select: { data: true, id: true, index: true },
@@ -382,20 +397,16 @@ export class LiteratureIngestionHelper {
     tokenEntities: DeepPartial<Token>[],
     text: Text,
   ): Promise<void> {
-    this.dependencies.logger.log(
+    this.logger.log(
       `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
     );
-    const chunkSize = 2000;
-    const tokenChunks = _.chunk(tokenEntities, chunkSize);
+    const tokenChunks = _.chunk(tokenEntities, DEFAULT_TOKEN_CHUNK_SIZE);
     await Promise.all(
       tokenChunks.map(async (chunk) =>
-        this.dependencies.tokenRepository.upsert(
-          chunk as QueryDeepPartialEntity<Token>[],
-          {
-            conflictPaths: ["line", "index"],
-            skipUpdateIfNoValuesChanged: true,
-          },
-        ),
+        this.tokenRepository.upsert(chunk as QueryDeepPartialEntity<Token>[], {
+          conflictPaths: ["line", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        }),
       ),
     );
   }
@@ -441,9 +452,7 @@ export class LiteratureIngestionHelper {
       await this.ingestAuthorGroup(authorSlug, texts);
       currentAuthor++;
       const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
-      this.dependencies.logger.log(
-        `👤 Completed author: ${authorSlug}${authorProgress}`,
-      );
+      this.logger.log(`👤 Completed author: ${authorSlug}${authorProgress}`);
     }
   }
 

@@ -14,7 +14,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects and pairs 6-body trine/sextile structures (hexagrams) from aspect snapshots.
  */
 @Injectable()
 export class SextupleAspectsService {

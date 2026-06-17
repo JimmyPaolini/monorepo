@@ -34,7 +34,7 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
- *
+ * Detects Venus, Mercury, and Mars phase transitions from coordinate, distance, and illumination series.
  */
 @Injectable()
 export class PhasesService {
@@ -1117,7 +1117,7 @@ export class PhasesService {
   }
 
   /**
-   *
+   * Aggregates per-minute phase detections for Venus, Mercury, and Mars.
    */
   detect(args: DetectPhaseArguments): Event[] {
     const {
@@ -1199,7 +1199,7 @@ export class PhasesService {
   }
 
   /**
-   *
+   * Produces Martian phase events for one minute using precomputed phase parameters.
    */
   getMartianPhaseEvents(args: {
     marsCoordinateEphemeris: CoordinateEphemeris;
@@ -1228,7 +1228,7 @@ export class PhasesService {
   }
 
   /**
-   *
+   * Produces Mercurian morning/evening phase events for one minute.
    */
   getMercurianPhaseEvents(args: {
     mercuryCoordinateEphemeris: CoordinateEphemeris;
@@ -1260,7 +1260,7 @@ export class PhasesService {
   }
 
   /**
-   *
+   * Produces Venusian morning/evening phase events for one minute.
    */
   getVenusianPhaseEvents(args: {
     minute: Moment;

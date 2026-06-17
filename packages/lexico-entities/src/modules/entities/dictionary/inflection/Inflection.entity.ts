@@ -11,7 +11,7 @@ import {
 import type { Lexeme } from "../Lexeme.entity.js";
 
 /**
- *
+ * Base single-table-inheritance entity for inflection metadata.
  */
 @Entity({
   comment:

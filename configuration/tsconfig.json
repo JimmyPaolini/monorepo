@@ -1,6 +1,6 @@
 {
   // Base TypeScript configuration inherited by all projects in the monorepo.
-  // Projects extend this via their own tsconfig.json → { "extends": "../../tsconfig.base.json" }
+  // Projects extend this via their own tsconfig.json → { "extends": "../../configuration/tsconfig.json" }
   "compileOnSave": false,
   "compilerOptions": {
     // 📦 Module System
@@ -9,7 +9,6 @@
     // All strict flags are on; these additional flags catch more bugs:
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-
     // 🏗 Build
     "declaration": false,
     "emitDecoratorMetadata": true,
@@ -30,13 +29,15 @@
     "noUncheckedSideEffectImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
     // 🗺️ Monorepo Path Aliases
     // Enables `import { Button } from "@monorepo/lexico-components"` across projects
     "paths": {
       "@monorepo/conformance/*": ["../tools/conformance/*"],
       "@monorepo/lexico-components": [
         "../packages/lexico-components/src/index.ts"
+      ],
+      "eslint-plugin-better-max-params": [
+        "./types/eslint-plugin-better-max-params/index.d.ts"
       ],
       "monorepo/configuration/*": ["./*"]
     },

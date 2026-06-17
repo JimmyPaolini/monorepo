@@ -9,7 +9,7 @@ export const adverbType = {
   none: "",
 } as const;
 /**
- *
+ * Union of adverb functional type values.
  */
 export type AdverbType = (typeof adverbType)[keyof typeof adverbType];
 export const adverbTypes = Object.values(adverbType) as AdverbType[];
@@ -20,13 +20,13 @@ export const adverbDegree = {
   superlative: "superlative",
 } as const;
 /**
- *
+ * Union of adverb degree values.
  */
 export type AdverbDegree = (typeof adverbDegree)[keyof typeof adverbDegree];
 export const adverbDegrees = Object.values(adverbDegree) as AdverbDegree[];
 
 /**
- *
+ * Inflection metadata for adverb lexemes.
  */
 @ChildEntity("adverb")
 @ObjectType({ implements: Inflection })

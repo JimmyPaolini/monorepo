@@ -16,8 +16,8 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types"
 import type { DictionaryCommandOptions } from "./dictionary.types";
 
 /**
- * TODO: Document the dictionary command.
- * Ingest dictionary entries from Wiktionary HTML data files.
+ * Ingests cached Wiktionary pages into lexemes, resolves cross-translation references,
+ * and applies manual dictionary corrections.
  */
 @Command({
   description: "Run the dictionary command",
@@ -276,8 +276,10 @@ export class DictionaryCommand extends CommandRunner {
 
   // 🌎 Public Methods
 
-  /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
-   * parses each into structured `Entry` records, and saves them to the database. */
+  /**
+   * Iterates cached `data/wiktionary/*.json` pages within an optional lemma range
+   * and ingests each file into persisted lexeme data.
+   */
   async ingestAll(startLemma?: string, endLemma?: string): Promise<void> {
     if (!fs.existsSync(this.dataDirectory)) {
       this.logger.warn(
@@ -305,9 +307,10 @@ export class DictionaryCommand extends CommandRunner {
     this.logger.log("📖 Dictionary ingestion complete");
   }
 
-  /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
-   * and persists them using upsert (idempotent). Loads the cached JSON file if
-   * `wiktionaryPage` is not supplied. */
+  /**
+   * Ingests one lemma by parsing its Wiktionary HTML into lexemes, saving relations,
+   * and recursively resolving `*reference*` translations.
+   */
   async ingestLexeme(
     word: string,
     wiktionaryPage?: WiktionaryPage,
@@ -340,7 +343,7 @@ export class DictionaryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional end-lemma boundary, validating it against available cache files.
    */
   @Option({
     description: "The lemma to end ingestion at",
@@ -378,7 +381,7 @@ export class DictionaryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional start-lemma boundary, validating it against available cache files.
    */
   @Option({
     description: "The lemma to start ingestion from",
@@ -412,8 +415,9 @@ export class DictionaryCommand extends CommandRunner {
     return response.startLemma;
   }
 
-  /** Runs the dictionary ingestion for a single word when `--word` is given,
-   * or processes all cached Wiktionary HTML files otherwise. */
+  /**
+   * Runs full dictionary ingestion for the selected lemma range, then applies manual entries.
+   */
   async run(
     _arguments: string[],
     options: DictionaryCommandOptions,
