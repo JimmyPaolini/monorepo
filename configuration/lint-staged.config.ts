@@ -39,27 +39,33 @@ const config = {
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
     "pnpm exec nx run monorepo:sync-vscode-extensions:check --outputStyle=dynamic-legacy",
   ],
+
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
     () => [
       "pnpm exec nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
     ],
+
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
   ],
+
   // Keep PR template in sync across skills and prompt files
   [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
   ],
+
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
   ],
+
   // Keep conformance generators table in sync in AGENTS.md
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
     "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
+
   // 📊 Code statistics — run on any staged file because folder/file counts change
   // with any addition or deletion.
   "**/*": () => [

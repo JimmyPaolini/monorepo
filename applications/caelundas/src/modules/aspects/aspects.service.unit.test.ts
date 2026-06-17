@@ -1,4 +1,10 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { MinorAspectsHelperService } from "@caelundas/src/modules/minor-aspects/minor-aspects-helper.service";
+import { QuadrupleAspectsHelperService } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects-helper.service";
+import { QuintupleAspectsHelperService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-helper.service";
+import { SextupleAspectsHelperService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-helper.service";
+import { SpecialtyAspectsHelperService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-helper.service";
+import { TripleAspectsHelperService } from "@caelundas/src/modules/triple-aspects/triple-aspects-helper.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -33,13 +39,19 @@ describe("AspectsService", () => {
         MajorAspectsService,
         MathService,
         MinorAspectsService,
+        MinorAspectsHelperService,
         ProgressiveUtilities,
         QuadrupleAspectsService,
+        QuadrupleAspectsHelperService,
         QuintupleAspectsService,
+        QuintupleAspectsHelperService,
         SextupleAspectsService,
+        SextupleAspectsHelperService,
         SpecialtyAspectsService,
+        SpecialtyAspectsHelperService,
         StelliumService,
         TripleAspectsService,
+        TripleAspectsHelperService,
       ],
     }).compile();
 
