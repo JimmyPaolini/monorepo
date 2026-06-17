@@ -10,7 +10,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { IngressesHelperService } from "./ingresses-helper.service";
+import { IngressesComposerService } from "./ingresses-composer.service";
 import { IngressesService } from "./ingresses.service";
 
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -39,13 +39,13 @@ interface ServicePrivate {
 }
 describe("IngressesService", () => {
   let service: IngressesService;
-  let helperService: IngressesHelperService;
+  let helperService: IngressesComposerService;
   let s: ServicePrivate;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        IngressesHelperService,
+        IngressesComposerService,
         IngressesService,
         EphemerisService,
         LoggerService,
@@ -53,7 +53,7 @@ describe("IngressesService", () => {
       ],
     }).compile();
     service = await module.resolve(IngressesService);
-    helperService = await module.resolve(IngressesHelperService);
+    helperService = await module.resolve(IngressesComposerService);
     s = helperService;
   });
 

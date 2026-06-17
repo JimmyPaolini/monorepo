@@ -10,14 +10,14 @@ import type { Moment } from "moment-timezone";
 
 /** Event building and elevation detection helpers for {@link DailyCyclesService}. */
 @Injectable()
-export class DailyCyclesHelperService {
+export class DailyCyclesBuilderService {
   // 🏗 Dependency Injection
 
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
   ) {
-    this.logger.setContext(DailyCyclesHelperService.name);
+    this.logger.setContext(DailyCyclesBuilderService.name);
   }
 
   // 🔐 Private Fields
@@ -64,7 +64,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const lunarNadirEvent: Event = {
-      categories: DailyCyclesHelperService.lunarCategories,
+      categories: DailyCyclesBuilderService.lunarCategories,
       description,
       end: date,
       start: date,
@@ -98,7 +98,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const lunarZenithEvent: Event = {
-      categories: DailyCyclesHelperService.lunarCategories,
+      categories: DailyCyclesBuilderService.lunarCategories,
       description,
       end: date,
       start: date,
@@ -132,7 +132,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const moonriseEvent: Event = {
-      categories: DailyCyclesHelperService.lunarCategories,
+      categories: DailyCyclesBuilderService.lunarCategories,
       description,
       end: date,
       start: date,
@@ -166,7 +166,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const moonsetEvent: Event = {
-      categories: DailyCyclesHelperService.lunarCategories,
+      categories: DailyCyclesBuilderService.lunarCategories,
       description,
       end: date,
       start: date,
@@ -212,7 +212,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const solarNadirEvent: Event = {
-      categories: DailyCyclesHelperService.solarCategories,
+      categories: DailyCyclesBuilderService.solarCategories,
       description,
       end: date,
       start: date,
@@ -257,7 +257,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const solarZenithEvent: Event = {
-      categories: DailyCyclesHelperService.solarCategories,
+      categories: DailyCyclesBuilderService.solarCategories,
       description,
       end: date,
       start: date,
@@ -300,7 +300,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const sunriseEvent: Event = {
-      categories: DailyCyclesHelperService.solarCategories,
+      categories: DailyCyclesBuilderService.solarCategories,
       description,
       end: date,
       start: date,
@@ -344,7 +344,7 @@ export class DailyCyclesHelperService {
     this.logger.log(`${summary} at ${dateString}`);
 
     const sunsetEvent: Event = {
-      categories: DailyCyclesHelperService.solarCategories,
+      categories: DailyCyclesBuilderService.solarCategories,
       description,
       end: date,
       start: date,
@@ -356,10 +356,13 @@ export class DailyCyclesHelperService {
   /**
    *
    */
-  getElevationAt(ephemeris: AzimuthElevationEphemeris, moment: Moment): number {
+  getElevationAt(
+    ephemeris: AzimuthElevationEphemeris,
+    timestamp: Moment,
+  ): number {
     return this.ephemerisService.getAzimuthElevationFromEphemeris(
       ephemeris,
-      moment.toISOString(),
+      timestamp.toISOString(),
       "elevation",
     );
   }
@@ -367,7 +370,7 @@ export class DailyCyclesHelperService {
   /**
    *
    */
-  getElevations(args: {
+  getElevationWindow(args: {
     ephemeris: AzimuthElevationEphemeris;
     minute: Moment;
   }): {
@@ -394,8 +397,8 @@ export class DailyCyclesHelperService {
   isRise(args: { current: number; previous: number }): boolean {
     const { current, previous } = args;
     return (
-      current > -DailyCyclesHelperService.sunRadiusDegrees &&
-      previous < -DailyCyclesHelperService.sunRadiusDegrees
+      current > -DailyCyclesBuilderService.sunRadiusDegrees &&
+      previous < -DailyCyclesBuilderService.sunRadiusDegrees
     );
   }
 
@@ -405,8 +408,8 @@ export class DailyCyclesHelperService {
   isSet(args: { current: number; previous: number }): boolean {
     const { current, previous } = args;
     return (
-      current < -DailyCyclesHelperService.sunRadiusDegrees &&
-      previous > -DailyCyclesHelperService.sunRadiusDegrees
+      current < -DailyCyclesBuilderService.sunRadiusDegrees &&
+      previous > -DailyCyclesBuilderService.sunRadiusDegrees
     );
   }
 }

@@ -20,47 +20,6 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
   readonly name = "corpus-scriptorum-ecclesiasticorum-latinorum";
 
-  private async appendCselText(args: {
-    $: cheerio.CheerioAPI;
-    author: Author;
-    dataPath: string;
-    resolved: {
-      authorSlug: string;
-      metadata: Record<string, string>;
-      rawTitle: string;
-      relativeSourcePath: string;
-      titleSlug: string;
-    };
-  }): Promise<boolean> {
-    const { $, author, dataPath, resolved } = args;
-    const { authorSlug, metadata, rawTitle, relativeSourcePath, titleSlug } =
-      resolved;
-    const textEntity = this.createCselTextEntity({
-      metadata,
-      rawTitle,
-      relativeSourcePath,
-      titleSlug,
-    });
-    author.texts.push(textEntity);
-    const paragraphs = this.extractParagraphs($);
-    const markdown = this.buildCselTextContent({
-      authorSlug,
-      metadata,
-      paragraphs,
-      rawTitle,
-      relativeSourcePath,
-    });
-    if (!markdown) return false;
-    const authorDirectory = path.join(dataPath, authorSlug);
-    await fs.mkdir(authorDirectory, { recursive: true });
-    await fs.writeFile(
-      path.join(authorDirectory, `${titleSlug}.md`),
-      markdown,
-      "utf8",
-    );
-    return true;
-  }
-
   private buildCselTextContent(args: {
     authorSlug: string;
     metadata: Record<string, string>;
@@ -99,7 +58,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return false;
   }
 
-  private async collectCselXmlPaths(
+  private async collectSourceXmlPaths(
     sourceDataDirectory: string,
   ): Promise<null | string[]> {
     try {
@@ -201,7 +160,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return author;
   }
 
-  private logCselProgress(args: {
+  private logSourceProgress(args: {
     index: number;
     totalFiles: number;
     xmlPath: string;
@@ -211,7 +170,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     this.logger.log(`📜 Completed processing: ${xmlPath}${progressString}`);
   }
 
-  private async parseCselXmlFile(args: {
+  private async parseSourceXmlFile(args: {
     options: undefined | { author?: string; text?: string };
     sourceDataDirectory: string;
     xmlPath: string;
@@ -230,7 +189,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     const { options, sourceDataDirectory, xmlPath } = args;
     const xmlContent = await fs.readFile(xmlPath, "utf8");
     const $ = cheerio.load(xmlContent, { xml: true });
-    const resolved = this.resolveXmlMetadata({
+    const resolved = this.resolveSourceXmlMetadata({
       $,
       options,
       sourceDataDirectory,
@@ -242,7 +201,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return { $, resolved };
   }
 
-  private async processFile(args: {
+  private async processSourceXmlFile(args: {
     authorsMap: Map<string, Author>;
     dataPath: string;
     index: number;
@@ -262,7 +221,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     } = args;
     this.logger.log(`📜 Starting processing: ${xmlPath}`);
     try {
-      const parsedFile = await this.parseCselXmlFile({
+      const parsedFile = await this.parseSourceXmlFile({
         options,
         sourceDataDirectory,
         xmlPath,
@@ -278,7 +237,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
         rawAuthor,
         relativeSourcePath,
       });
-      const appended = await this.appendCselText({
+      const appended = await this.writeSourceTextForAuthor({
         $,
         author,
         dataPath,
@@ -293,13 +252,13 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
       await new Promise((resolve) => {
         setTimeout(resolve, 100);
       });
-      this.logCselProgress({ index, totalFiles, xmlPath });
+      this.logSourceProgress({ index, totalFiles, xmlPath });
     } catch (error) {
       this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);
     }
   }
 
-  private resolveXmlMetadata(args: {
+  private resolveSourceXmlMetadata(args: {
     $: cheerio.CheerioAPI;
     options: undefined | { author?: string; text?: string };
     sourceDataDirectory: string;
@@ -336,6 +295,47 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     };
   }
 
+  private async writeSourceTextForAuthor(args: {
+    $: cheerio.CheerioAPI;
+    author: Author;
+    dataPath: string;
+    resolved: {
+      authorSlug: string;
+      metadata: Record<string, string>;
+      rawTitle: string;
+      relativeSourcePath: string;
+      titleSlug: string;
+    };
+  }): Promise<boolean> {
+    const { $, author, dataPath, resolved } = args;
+    const { authorSlug, metadata, rawTitle, relativeSourcePath, titleSlug } =
+      resolved;
+    const textEntity = this.createCselTextEntity({
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
+    author.texts.push(textEntity);
+    const paragraphs = this.extractParagraphs($);
+    const markdown = this.buildCselTextContent({
+      authorSlug,
+      metadata,
+      paragraphs,
+      rawTitle,
+      relativeSourcePath,
+    });
+    if (!markdown) return false;
+    const authorDirectory = path.join(dataPath, authorSlug);
+    await fs.mkdir(authorDirectory, { recursive: true });
+    await fs.writeFile(
+      path.join(authorDirectory, `${titleSlug}.md`),
+      markdown,
+      "utf8",
+    );
+    return true;
+  }
+
   /**
    * Fetch authors, works, and output markdown files to the data directory.
    */
@@ -350,7 +350,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
       "corpus-scriptorum-ecclesiasticorum-latinorum-source",
     );
 
-    const xmlPaths = await this.collectCselXmlPaths(sourceDataDirectory);
+    const xmlPaths = await this.collectSourceXmlPaths(sourceDataDirectory);
     if (!xmlPaths) return [];
 
     this.logger.log(
@@ -366,7 +366,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
       const xmlPath = xmlPaths[index];
       if (!xmlPath) continue;
 
-      await this.processFile({
+      await this.processSourceXmlFile({
         authorsMap,
         dataPath,
         index,

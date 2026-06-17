@@ -3,7 +3,9 @@ import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
-import { TwilightsHelperService } from "./twilights-helper.service";
+import { TwilightsBuilderService } from "./twilights-builder.service";
+import { TwilightsComposerService } from "./twilights-composer.service";
+import { TwilightsDetectorService } from "./twilights-detector.service";
 import { TwilightsService } from "./twilights.service";
 
 /**
@@ -15,6 +17,11 @@ import { TwilightsService } from "./twilights.service";
   controllers: [],
   exports: [TwilightsService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
-  providers: [TwilightsHelperService, TwilightsService],
+  providers: [
+    TwilightsBuilderService,
+    TwilightsComposerService,
+    TwilightsDetectorService,
+    TwilightsService,
+  ],
 })
 export class TwilightsModule {}

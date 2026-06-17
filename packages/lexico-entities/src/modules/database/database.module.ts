@@ -1,14 +1,41 @@
 import { Module } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
+import {
+  LEXICO_DATABASE_ENTITIES,
+  LexicoNamingStrategy,
+} from "./database.constants.js";
 import { DatabaseService } from "./database.service.js";
 
 /**
- * TODO: Document the database module.
+ * Database module handling the TypeORM setup for Lexico.
  */
 @Module({
   controllers: [],
-  exports: [DatabaseService],
-  imports: [],
+  exports: [DatabaseService, TypeOrmModule],
+  imports: [
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configurationService: ConfigService) => ({
+        database: configurationService.get<string>("POSTGRES_DB", "postgres"),
+        entities: [...LEXICO_DATABASE_ENTITIES],
+        host: configurationService.get<string>("POSTGRES_HOST", "localhost"),
+        logging: false,
+        namingStrategy: new LexicoNamingStrategy(),
+        password: configurationService.get<string>(
+          "POSTGRES_PASSWORD",
+          "postgres",
+        ),
+        port: configurationService.get<number>("POSTGRES_PORT", 5432),
+        synchronize: true,
+        type: "postgres",
+        username: configurationService.get<string>("POSTGRES_USER", "postgres"),
+      }),
+    }),
+  ],
   providers: [DatabaseService],
 })
 export class DatabaseModule {}
+
+export { DatabaseModule as LexicoDatabaseModule };

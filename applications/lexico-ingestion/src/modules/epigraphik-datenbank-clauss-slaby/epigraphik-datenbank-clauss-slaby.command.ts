@@ -25,7 +25,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
       mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -34,13 +34,13 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   // 🔐 Private Fields
 
   private readonly batchSize = 1000;
-  private readonly dataDirectory = path.resolve(
+  private readonly errorLogFilePath: string;
+  private readonly limit = 1_000_000;
+  private readonly sourceDataDirectory = path.resolve(
     "data",
     "epigraphik-datenbank-clauss-slaby-source",
   );
-  private readonly host = "https://edcs.hist.uzh.ch/api/query";
-  private readonly limit = 1_000_000;
-  private readonly logFilePath: string;
+  private readonly sourceHost = "https://edcs.hist.uzh.ch/api/query";
 
   // 🔑 Public Fields
 
@@ -63,15 +63,18 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
         `❌ Error fetching chunk at ${start}: ${String(error)}`,
       );
       await fs.appendFile(
-        this.logFilePath,
+        this.errorLogFilePath,
         `[${new Date().toISOString()}] chunk-${start}: ${errorMessage}\n`,
       );
       return true;
     }
   }
 
-  private async fetchChunk(start: number): Promise<boolean> {
-    const chunkFile = path.join(this.dataDirectory, `chunk-${start}.json`);
+  private async downloadChunkIfMissing(start: number): Promise<boolean> {
+    const chunkFile = path.join(
+      this.sourceDataDirectory,
+      `chunk-${start}.json`,
+    );
 
     try {
       await fs.access(chunkFile);
@@ -89,7 +92,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     chunkFile: string,
   ): Promise<boolean> {
     const response = await fetch(
-      `${this.host}?start=${start}&length=${this.batchSize}`,
+      `${this.sourceHost}?start=${start}&length=${this.batchSize}`,
     );
     if (!response.ok) {
       this.logger.warn(`⚠️ Failed to fetch records: ${response.statusText}`);
@@ -116,16 +119,16 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   /** Runs the ingestion of epigraphs by downloading chunks to the filesystem */
   async run(): Promise<void> {
     this.logger.log(
-      `📁 Ensuring data directory exists at ${this.dataDirectory}`,
+      `📁 Ensuring data directory exists at ${this.sourceDataDirectory}`,
     );
-    await fs.mkdir(this.dataDirectory, { recursive: true });
+    await fs.mkdir(this.sourceDataDirectory, { recursive: true });
 
     this.logger.log(
       `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
     );
 
     for (let start = 0; start < this.limit; start += this.batchSize) {
-      const shouldContinue = await this.fetchChunk(start);
+      const shouldContinue = await this.downloadChunkIfMissing(start);
       if (!shouldContinue) {
         break;
       }

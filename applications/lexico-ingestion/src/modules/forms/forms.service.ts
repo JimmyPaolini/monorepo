@@ -26,20 +26,20 @@ export class FormsService {
     private readonly formRepository: Repository<Form>,
     private readonly wordsService: WordsService,
   ) {
-    this.formsBuilder = new FormsBuilderHelper((form, words) => {
-      this.transientWords.set(form, words);
+    this.formsEntityBuilder = new FormsBuilderHelper((form, words) => {
+      this.transientWordsByForm.set(form, words);
     });
   }
 
-  private readonly formsBuilder: FormsBuilderHelper;
+  private readonly formsEntityBuilder: FormsBuilderHelper;
 
   // 🔐 Private Fields
 
-  private readonly transientWords = new WeakMap<Form, string[]>();
+  private readonly transientWordsByForm = new WeakMap<Form, string[]>();
 
   // 🌎 Public Methods
 
-  private buildNormalizedWordMap(
+  private buildFormsByNormalizedWordMap(
     savedForms: Form[],
     rawWordsPerForm: string[][],
   ): Map<string, Set<Form>> {
@@ -63,13 +63,13 @@ export class FormsService {
     return formsByWord;
   }
 
-  private async fetchExistingForms(lexemeId: string): Promise<Form[]> {
+  private async findExistingFormsByLexemeId(lexemeId: string): Promise<Form[]> {
     return this.formRepository.find({
       where: { lexeme: { id: lexemeId } },
     });
   }
 
-  private matchAndPreserveExistingForms(
+  private preserveMatchingExistingFormIdentity(
     forms: Form[],
     existingForms: Form[],
   ): void {
@@ -96,7 +96,10 @@ export class FormsService {
     }
   }
 
-  private async saveNewForms(forms: Form[], lexeme: Lexeme): Promise<Form[]> {
+  private async saveFormsForLexeme(
+    forms: Form[],
+    lexeme: Lexeme,
+  ): Promise<Form[]> {
     for (const form of forms) {
       form.lexeme = lexeme;
     }
@@ -107,8 +110,16 @@ export class FormsService {
    * Builds Form entities from the raw parsed forms object for a given POS.
    * Returns an empty array when rawForms is null or the POS has no form table.
    */
-  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
-    return this.formsBuilder.buildForms(pos, rawForms, lexeme);
+  buildFormsForPartOfSpeech(
+    pos: PartOfSpeech,
+    rawForms: unknown,
+    lexeme: Lexeme,
+  ): Form[] {
+    return this.formsEntityBuilder.buildFormsForPartOfSpeech(
+      pos,
+      rawForms,
+      lexeme,
+    );
   }
 
   /**
@@ -124,19 +135,21 @@ export class FormsService {
    * collect their IDs, then two bulk inserts for the junction rows.
    */
   async ingestLexemeForms(forms: Form[], lexeme: Lexeme): Promise<void> {
-    const existingForms = await this.fetchExistingForms(lexeme.id);
+    const existingForms = await this.findExistingFormsByLexemeId(lexeme.id);
 
-    this.matchAndPreserveExistingForms(forms, existingForms);
+    this.preserveMatchingExistingFormIdentity(forms, existingForms);
 
     if (existingForms.length > 0) {
       await this.formRepository.remove(existingForms);
     }
 
-    const rawWordsPerForm = forms.map((f) => this.transientWords.get(f) ?? []);
+    const rawWordsPerForm = forms.map(
+      (form) => this.transientWordsByForm.get(form) ?? [],
+    );
 
-    const savedForms = await this.saveNewForms(forms, lexeme);
+    const savedForms = await this.saveFormsForLexeme(forms, lexeme);
 
-    const formsByWord = this.buildNormalizedWordMap(
+    const formsByWord = this.buildFormsByNormalizedWordMap(
       savedForms,
       rawWordsPerForm,
     );
@@ -152,6 +165,6 @@ export class FormsService {
    * persisted on the Form entity itself.
    */
   setTransientWords(form: Form, words: string[]): void {
-    this.transientWords.set(form, words);
+    this.transientWordsByForm.set(form, words);
   }
 }

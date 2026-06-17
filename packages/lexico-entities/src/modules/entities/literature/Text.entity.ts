@@ -8,7 +8,7 @@ import {
   OneToMany,
 } from "typeorm";
 
-import { AuditableEntity } from "../Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity.js";
 
 import type { Author } from "./Author.entity.js";
 import type { Line } from "./Line.entity.js";

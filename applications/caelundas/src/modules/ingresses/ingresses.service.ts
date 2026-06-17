@@ -6,7 +6,7 @@ import {
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 
-import { IngressesHelperService } from "./ingresses-helper.service.js";
+import { IngressesComposerService } from "./ingresses-composer.service.js";
 
 import type {
   Body,
@@ -26,7 +26,9 @@ import type { Moment } from "moment-timezone";
 export class IngressesService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly helperService: IngressesHelperService) {}
+  constructor(
+    private readonly ingressesComposerService: IngressesComposerService,
+  ) {}
 
   // 🔑 Public Fields
 
@@ -65,15 +67,15 @@ export class IngressesService {
    * @see {@link IngressesService.degreeRangeBySign} for sign boundaries
    */
   static getSign(longitude: number): Sign {
-    const entry = objectEntries(IngressesService.degreeRangeBySign).find(
-      ([, { maximum, minimum }]) => {
-        return longitude >= minimum && longitude < maximum;
-      },
-    );
-    if (!entry) {
+    const signDegreeRangeEntry = objectEntries(
+      IngressesService.degreeRangeBySign,
+    ).find(([, { maximum, minimum }]) => {
+      return longitude >= minimum && longitude < maximum;
+    });
+    if (!signDegreeRangeEntry) {
       throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
     }
-    return entry[0];
+    return signDegreeRangeEntry[0];
   }
 
   // 🌎 Public Methods
@@ -86,7 +88,7 @@ export class IngressesService {
     date: Moment;
     longitude: number;
   }): Event {
-    return this.helperService.buildDecanIngressEvent(args);
+    return this.ingressesComposerService.buildDecanIngressEvent(args);
   }
 
   /**
@@ -103,7 +105,7 @@ export class IngressesService {
     date: Moment;
     longitude: number;
   }): Event {
-    return this.helperService.buildPeakIngressEvent(args);
+    return this.ingressesComposerService.buildPeakIngressEvent(args);
   }
 
   /**
@@ -121,7 +123,7 @@ export class IngressesService {
     date: Moment;
     longitude: number;
   }): Event {
-    return this.helperService.buildSignIngressEvent(args);
+    return this.ingressesComposerService.buildSignIngressEvent(args);
   }
 
   /**
@@ -154,9 +156,11 @@ export class IngressesService {
     const progressiveEvents: Event[] = [];
 
     const signIngressEvents =
-      this.helperService.filterSignIngressEvents(events);
+      this.ingressesComposerService.filterSignIngressEvents(events);
     const groupedByBody =
-      this.helperService.groupSignIngressEventsByBody(signIngressEvents);
+      this.ingressesComposerService.groupSignIngressEventsByBody(
+        signIngressEvents,
+      );
 
     for (const [bodyCapitalized, bodyIngresses] of Object.entries(
       groupedByBody,
@@ -166,7 +170,7 @@ export class IngressesService {
       }
 
       progressiveEvents.push(
-        ...this.helperService.buildProgressiveSpansForBody(
+        ...this.ingressesComposerService.buildProgressiveSpansForBody(
           bodyCapitalized,
           bodyIngresses,
         ),
@@ -204,7 +208,7 @@ export class IngressesService {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
       const { currentLongitude, previousLongitude } =
-        this.helperService.getLongitudes({
+        this.ingressesComposerService.getLongitudes({
           coordinateEphemeris,
           minute,
           previousMinute,
@@ -218,17 +222,21 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (
-        !this.helperService.isSignIngress({
+        !this.ingressesComposerService.isSignIngress({
           currentLongitude,
           previousLongitude,
         }) &&
-        this.helperService.isDecanIngress({
+        this.ingressesComposerService.isDecanIngress({
           currentLongitude,
           previousLongitude,
         })
       ) {
         decanIngressEvents.push(
-          this.helperService.buildDecanIngressEvent({ body, date, longitude }),
+          this.ingressesComposerService.buildDecanIngressEvent({
+            body,
+            date,
+            longitude,
+          }),
         );
       }
     }
@@ -259,7 +267,7 @@ export class IngressesService {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
       const { currentLongitude, previousLongitude } =
-        this.helperService.getLongitudes({
+        this.ingressesComposerService.getLongitudes({
           coordinateEphemeris,
           minute,
           previousMinute,
@@ -273,13 +281,17 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (
-        this.helperService.isPeakIngress({
+        this.ingressesComposerService.isPeakIngress({
           currentLongitude,
           previousLongitude,
         })
       ) {
         peakIngressEvents.push(
-          this.helperService.buildPeakIngressEvent({ body, date, longitude }),
+          this.ingressesComposerService.buildPeakIngressEvent({
+            body,
+            date,
+            longitude,
+          }),
         );
       }
     }
@@ -316,7 +328,7 @@ export class IngressesService {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
       const { currentLongitude, previousLongitude } =
-        this.helperService.getLongitudes({
+        this.ingressesComposerService.getLongitudes({
           coordinateEphemeris,
           minute,
           previousMinute,
@@ -330,13 +342,17 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (
-        this.helperService.isSignIngress({
+        this.ingressesComposerService.isSignIngress({
           currentLongitude,
           previousLongitude,
         })
       ) {
         signIngressEvents.push(
-          this.helperService.buildSignIngressEvent({ body, date, longitude }),
+          this.ingressesComposerService.buildSignIngressEvent({
+            body,
+            date,
+            longitude,
+          }),
         );
       }
     }

@@ -27,7 +27,7 @@ import type { Moment } from "moment-timezone";
 
 /** Event building and pattern detection helpers for {@link QuintupleAspectsService}. */
 @Injectable()
-export class QuintupleAspectsHelperService {
+export class QuintupleAspectsComposerService {
   // 🏗 Dependency Injection
 
   constructor(private readonly mathService: MathService) {}
@@ -42,22 +42,22 @@ export class QuintupleAspectsHelperService {
     phase: AspectPhase,
     eventMinute: Moment,
   ): Event | null {
-    const b0 = pentagramBodies[0];
-    const b1 = pentagramBodies[1];
-    const b2 = pentagramBodies[2];
-    const b3 = pentagramBodies[3];
-    const b4 = pentagramBodies[4];
+    const body1 = pentagramBodies[0];
+    const body2 = pentagramBodies[1];
+    const body3 = pentagramBodies[2];
+    const body4 = pentagramBodies[3];
+    const body5 = pentagramBodies[4];
 
-    if (!b0 || !b1 || !b2 || !b3 || !b4) {
+    if (!body1 || !body2 || !body3 || !body4 || !body5) {
       return null;
     }
 
     return this.getQuintupleAspectEvent({
-      body1: b0,
-      body2: b1,
-      body3: b2,
-      body4: b3,
-      body5: b4,
+      body1,
+      body2,
+      body3,
+      body4,
+      body5,
       phase,
       quintupleAspect: "pentagram",
       timestamp: eventMinute,
@@ -148,7 +148,7 @@ export class QuintupleAspectsHelperService {
    *
    */
   buildQuintupleEventFromParameters(
-    parameters: BuildQuintupleEventParameters,
+    eventArguments: BuildQuintupleEventParameters,
   ): Event {
     const {
       aspectSymbol,
@@ -157,7 +157,7 @@ export class QuintupleAspectsHelperService {
       quintupleAspect,
       symbols,
       timestamp,
-    } = parameters;
+    } = eventArguments;
 
     const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
     const summary = this.buildQuintupleAspectSummary({
@@ -328,7 +328,9 @@ export class QuintupleAspectsHelperService {
   }
 
   /** Create a quintuple aspect event */
-  getQuintupleAspectEvent(parameters: GetQuintupleAspectEventArguments): Event {
+  getQuintupleAspectEvent(
+    eventArguments: GetQuintupleAspectEventArguments,
+  ): Event {
     const {
       body1,
       body2,
@@ -338,7 +340,7 @@ export class QuintupleAspectsHelperService {
       phase,
       quintupleAspect,
       timestamp,
-    } = parameters;
+    } = eventArguments;
 
     const bodiesList = [body1, body2, body3, body4, body5];
     const bodiesSorted = _.sortBy(bodiesList.map((b) => _.startCase(b)));
@@ -400,10 +402,13 @@ export class QuintupleAspectsHelperService {
       unionEdges,
     } = args;
     const events: Event[] = [];
-    for (const combo of combinations) {
-      const pentagramBodies = this.findPentagramPattern(combo, unionEdges);
+    for (const bodyCombination of combinations) {
+      const pentagramBodies = this.findPentagramPattern(
+        bodyCombination,
+        unionEdges,
+      );
       if (!pentagramBodies) continue;
-      const result = this.determineCompoundPhaseFromSnapshots({
+      const phaseTransition = this.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.findPentagramPattern(pentagramBodies, edges) !== null,
         currentAspectBodies,
@@ -411,11 +416,11 @@ export class QuintupleAspectsHelperService {
         patternBodies: pentagramBodies,
         previousAspectBodies,
       });
-      if (!result) continue;
+      if (!phaseTransition) continue;
       const event = this.buildPentagramEvent(
         pentagramBodies,
-        result.phase,
-        result.eventMinute,
+        phaseTransition.phase,
+        phaseTransition.eventMinute,
       );
       if (event) events.push(event);
     }
@@ -432,17 +437,17 @@ export class QuintupleAspectsHelperService {
     const start = bodies[0];
     if (!start) return null;
     const visited = new Set<Body>([start]);
-    let current = start;
+    let currentBody = start;
     const orderedBodies: Body[] = [start];
     for (let index = 0; index < 4; index++) {
-      const next = [...(connections.get(current) || [])].find(
+      const next = [...(connections.get(currentBody) || [])].find(
         (n) => !visited.has(n),
       );
       if (!next) return null;
       visited.add(next);
       orderedBodies.push(next);
-      current = next;
+      currentBody = next;
     }
-    return connections.get(current)?.has(start) ? orderedBodies : null;
+    return connections.get(currentBody)?.has(start) ? orderedBodies : null;
   }
 }

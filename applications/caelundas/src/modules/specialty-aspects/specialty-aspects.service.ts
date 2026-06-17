@@ -14,7 +14,7 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { SpecialtyAspectsHelperService } from "./specialty-aspects-helper.service.js";
+import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service.js";
 
 import type { LongitudesWindow } from "./specialty-aspects.types";
 import type {
@@ -42,7 +42,7 @@ export class SpecialtyAspectsService {
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly helperService: SpecialtyAspectsHelperService,
+    private readonly specialtyAspectsComposerService: SpecialtyAspectsComposerService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
     this.logger.setContext(SpecialtyAspectsService.name);
@@ -113,25 +113,27 @@ export class SpecialtyAspectsService {
       nextMinute,
       previousMinute,
     } = args;
-    const w1 = this.helperService.getBodyLongitudesWindow({
-      ephemeris: coordinateEphemerisByBody[body1],
-      minute,
-      nextMinute,
-      previousMinute,
-    });
-    const w2 = this.helperService.getBodyLongitudesWindow({
-      ephemeris: coordinateEphemerisByBody[body2],
-      minute,
-      nextMinute,
-      previousMinute,
-    });
+    const body1LongitudesWindow =
+      this.specialtyAspectsComposerService.getBodyLongitudesWindow({
+        ephemeris: coordinateEphemerisByBody[body1],
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const body2LongitudesWindow =
+      this.specialtyAspectsComposerService.getBodyLongitudesWindow({
+        ephemeris: coordinateEphemerisByBody[body2],
+        minute,
+        nextMinute,
+        previousMinute,
+      });
     return {
-      currentLongitudeBody1: w1.current,
-      currentLongitudeBody2: w2.current,
-      nextLongitudeBody1: w1.next,
-      nextLongitudeBody2: w2.next,
-      previousLongitudeBody1: w1.previous,
-      previousLongitudeBody2: w2.previous,
+      currentLongitudeBody1: body1LongitudesWindow.current,
+      currentLongitudeBody2: body2LongitudesWindow.current,
+      nextLongitudeBody1: body1LongitudesWindow.next,
+      nextLongitudeBody2: body2LongitudesWindow.next,
+      previousLongitudeBody1: body1LongitudesWindow.previous,
+      previousLongitudeBody2: body2LongitudesWindow.previous,
     };
   }
 
@@ -175,34 +177,36 @@ export class SpecialtyAspectsService {
       );
       throw new Error("No specialty aspect found");
     }
-    const b1Cap = capitalize(body1);
-    const b2Cap = capitalize(body2);
+    const body1Capitalized = capitalize(body1);
+    const body2Capitalized = capitalize(body2);
     const baseCategories = [
       "Astronomy",
       "Astrology",
       "Simple Aspect",
       "Specialty Aspect",
-      b1Cap,
-      b2Cap,
+      body1Capitalized,
+      body2Capitalized,
       _.startCase(specialtyAspect),
     ];
     const { categories, description, phaseEmoji } =
-      this.helperService.phaseFields({
+      this.specialtyAspectsComposerService.phaseFields({
         baseCategories,
-        body1Capitalized: b1Cap,
-        body2Capitalized: b2Cap,
+        body1Capitalized,
+        body2Capitalized,
         phase,
         specialtyAspect,
       });
-    return this.helperService.buildSpecialtyAspectEventFromParts({
-      body1Symbol: symbolByBody[body1],
-      body2Symbol: symbolByBody[body2],
-      categories,
-      description,
-      phaseEmoji,
-      specialtyAspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
-      timestamp,
-    });
+    return this.specialtyAspectsComposerService.buildSpecialtyAspectEventFromParts(
+      {
+        body1Symbol: symbolByBody[body1],
+        body2Symbol: symbolByBody[body2],
+        categories,
+        description,
+        phaseEmoji,
+        specialtyAspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
+        timestamp,
+      },
+    );
   }
 
   /**
@@ -263,7 +267,7 @@ export class SpecialtyAspectsService {
     );
 
     const groupedEvents = _.groupBy(specialtyAspectEvents, (event) =>
-      this.helperService.specialtyAspectGroupKey(event),
+      this.specialtyAspectsComposerService.specialtyAspectGroupKey(event),
     );
 
     const progressiveEvents: Event[] = [];
@@ -286,7 +290,7 @@ export class SpecialtyAspectsService {
 
       progressiveEvents.push(
         ...pairs.map(([beginning, ending]) =>
-          this.helperService.getSpecialtyAspectProgressiveEvent(
+          this.specialtyAspectsComposerService.getSpecialtyAspectProgressiveEvent(
             beginning,
             ending,
           ),

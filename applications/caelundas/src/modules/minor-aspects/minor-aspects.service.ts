@@ -6,7 +6,7 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { MinorAspectsHelperService } from "./minor-aspects-helper.service.js";
+import { MinorAspectsComposerService } from "./minor-aspects-composer.service.js";
 
 import type { DetectBodyPairAspectArguments } from "./minor-aspects.types";
 import type {
@@ -34,7 +34,7 @@ export class MinorAspectsService {
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly helperService: MinorAspectsHelperService,
+    private readonly minorAspectsComposerService: MinorAspectsComposerService,
   ) {
     this.logger.setContext(MinorAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
@@ -63,45 +63,50 @@ export class MinorAspectsService {
       nextMinute,
       previousMinute,
     } = args;
-    const win1 = this.helperService.getLongitudesWindowForBody({
-      body: body1,
-      coordinateEphemerisByBody,
-      minute,
-      nextMinute,
-      previousMinute,
-    });
-    const win2 = this.helperService.getLongitudesWindowForBody({
-      body: body2,
-      coordinateEphemerisByBody,
-      minute,
-      nextMinute,
-      previousMinute,
-    });
-    const phase = this.detectPhaseFromWindows(win1, win2);
+    const body1LongitudesWindow =
+      this.minorAspectsComposerService.getLongitudesWindowForBody({
+        body: body1,
+        coordinateEphemerisByBody,
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const body2LongitudesWindow =
+      this.minorAspectsComposerService.getLongitudesWindowForBody({
+        body: body2,
+        coordinateEphemerisByBody,
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const phase = this.detectPhaseFromWindows(
+      body1LongitudesWindow,
+      body2LongitudesWindow,
+    );
     if (!phase) {
       return null;
     }
     return this.buildMinorAspectEvent({
       body1,
       body2,
-      longitudeBody1: win1.current,
-      longitudeBody2: win2.current,
+      longitudeBody1: body1LongitudesWindow.current,
+      longitudeBody2: body2LongitudesWindow.current,
       phase,
       timestamp: minute,
     });
   }
 
   private detectPhaseFromWindows(
-    win1: { current: number; next: number; previous: number },
-    win2: { current: number; next: number; previous: number },
+    body1LongitudesWindow: { current: number; next: number; previous: number },
+    body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
     return this.detectAspectPhase({
-      currentLongitudeBody1: win1.current,
-      currentLongitudeBody2: win2.current,
-      nextLongitudeBody1: win1.next,
-      nextLongitudeBody2: win2.next,
-      previousLongitudeBody1: win1.previous,
-      previousLongitudeBody2: win2.previous,
+      currentLongitudeBody1: body1LongitudesWindow.current,
+      currentLongitudeBody2: body2LongitudesWindow.current,
+      nextLongitudeBody1: body1LongitudesWindow.next,
+      nextLongitudeBody2: body2LongitudesWindow.next,
+      previousLongitudeBody1: body1LongitudesWindow.previous,
+      previousLongitudeBody2: body2LongitudesWindow.previous,
     });
   }
 
@@ -141,7 +146,7 @@ export class MinorAspectsService {
       );
       throw new Error("No minor aspect found");
     }
-    return this.helperService.assembleMinorAspectEvent({
+    return this.minorAspectsComposerService.assembleMinorAspectEvent({
       body1,
       body2,
       minorAspect,
@@ -217,14 +222,19 @@ export class MinorAspectsService {
     const minorAspectEvents = events.filter((event) =>
       event.categories.includes("Minor Aspect"),
     );
-    const groupedEvents = _.groupBy(minorAspectEvents, (event) =>
-      this.helperService.buildGroupKey(event),
+    const groupedAspectEvents = _.groupBy(minorAspectEvents, (event) =>
+      this.minorAspectsComposerService.buildGroupKey(event),
     );
     const progressiveEvents: Event[] = [];
 
-    for (const [key, groupEvents] of Object.entries(groupedEvents)) {
+    for (const [aspectGroupKey, aspectGroupEvents] of Object.entries(
+      groupedAspectEvents,
+    )) {
       progressiveEvents.push(
-        ...this.helperService.processAspectGroup(key, groupEvents),
+        ...this.minorAspectsComposerService.processAspectGroup(
+          aspectGroupKey,
+          aspectGroupEvents,
+        ),
       );
     }
 

@@ -1,7 +1,9 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 
-import { TwilightsHelperService } from "./twilights-helper.service.js";
+import { TwilightsBuilderService } from "./twilights-builder.service.js";
+import { TwilightsComposerService } from "./twilights-composer.service.js";
+import { TwilightsDetectorService } from "./twilights-detector.service.js";
 
 import type { Twilight } from "./twilights.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -21,7 +23,11 @@ export type { Twilight } from "./twilights.types";
 export class TwilightsService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly helperService: TwilightsHelperService) {}
+  constructor(
+    private readonly twilightsBuilderService: TwilightsBuilderService,
+    private readonly twilightsComposerService: TwilightsComposerService,
+    private readonly twilightsDetectorService: TwilightsDetectorService,
+  ) {}
 
   // 🔑 Public Fields
 
@@ -47,7 +53,7 @@ export class TwilightsService {
    * @returns Calendar event for astronomical dawn
    */
   buildAstronomicalDawnEvent(date: Moment): Event {
-    return this.helperService.buildAstronomicalDawnEvent(date);
+    return this.twilightsBuilderService.buildAstronomicalDawnEvent(date);
   }
 
   /**
@@ -59,7 +65,7 @@ export class TwilightsService {
    * @returns Calendar event for astronomical dusk
    */
   buildAstronomicalDuskEvent(date: Moment): Event {
-    return this.helperService.buildAstronomicalDuskEvent(date);
+    return this.twilightsBuilderService.buildAstronomicalDuskEvent(date);
   }
 
   /**
@@ -71,7 +77,7 @@ export class TwilightsService {
    * @returns Calendar event for civil dawn
    */
   buildCivilDawnEvent(date: Moment): Event {
-    return this.helperService.buildCivilDawnEvent(date);
+    return this.twilightsBuilderService.buildCivilDawnEvent(date);
   }
 
   /**
@@ -83,7 +89,7 @@ export class TwilightsService {
    * @returns Calendar event for civil dusk
    */
   buildCivilDuskEvent(date: Moment): Event {
-    return this.helperService.buildCivilDuskEvent(date);
+    return this.twilightsBuilderService.buildCivilDuskEvent(date);
   }
 
   /**
@@ -95,7 +101,7 @@ export class TwilightsService {
    * @returns Calendar event for nautical dawn
    */
   buildNauticalDawnEvent(date: Moment): Event {
-    return this.helperService.buildNauticalDawnEvent(date);
+    return this.twilightsBuilderService.buildNauticalDawnEvent(date);
   }
 
   /**
@@ -107,7 +113,7 @@ export class TwilightsService {
    * @returns Calendar event for nautical dusk
    */
   buildNauticalDuskEvent(date: Moment): Event {
-    return this.helperService.buildNauticalDuskEvent(date);
+    return this.twilightsBuilderService.buildNauticalDuskEvent(date);
   }
 
   /**
@@ -135,11 +141,14 @@ export class TwilightsService {
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
-    const elevations = this.helperService.getSunElevations(
+    const sunElevationSnapshot = this.twilightsDetectorService.getSunElevations(
       sunAzimuthElevationEphemeris,
       minute,
     );
-    return this.helperService.buildTwilightTransitionEvents(elevations, minute);
+    return this.twilightsDetectorService.buildTwilightTransitionEvents(
+      sunElevationSnapshot,
+      minute,
+    );
   }
 
   /**
@@ -155,36 +164,38 @@ export class TwilightsService {
    * @returns Array of progressive events representing twilight spans
    * @see {@link pairProgressiveEvents} for pairing logic
    */
-  detectProgressive(events: Event[]): Event[] {
-    const twilightEvents = events.filter((event) =>
+  detectProgressive(detectedEvents: Event[]): Event[] {
+    const twilightCategoryEvents = detectedEvents.filter((event) =>
       event.categories.includes("Twilight"),
     );
-    const byCategory = (category: string): Event[] =>
-      twilightEvents.filter((event) => event.categories.includes(category));
+    const getEventsByCategory = (categoryName: string): Event[] =>
+      twilightCategoryEvents.filter((event) =>
+        event.categories.includes(categoryName),
+      );
 
-    const astronomicalDawnEvents = byCategory("Astronomical Dawn");
-    const nauticalDawnEvents = byCategory("Nautical Dawn");
-    const civilDawnEvents = byCategory("Civil Dawn");
-    const civilDuskEvents = byCategory("Civil Dusk");
-    const nauticalDuskEvents = byCategory("Nautical Dusk");
-    const astronomicalDuskEvents = byCategory("Astronomical Dusk");
+    const astronomicalDawnEvents = getEventsByCategory("Astronomical Dawn");
+    const nauticalDawnEvents = getEventsByCategory("Nautical Dawn");
+    const civilDawnEvents = getEventsByCategory("Civil Dawn");
+    const civilDuskEvents = getEventsByCategory("Civil Dusk");
+    const nauticalDuskEvents = getEventsByCategory("Nautical Dusk");
+    const astronomicalDuskEvents = getEventsByCategory("Astronomical Dusk");
 
     return [
-      ...this.helperService.buildDawnProgressiveEvents(
+      ...this.twilightsComposerService.buildDawnProgressiveEvents(
         astronomicalDawnEvents,
         nauticalDawnEvents,
         civilDawnEvents,
       ),
-      ...this.helperService.buildDuskProgressiveEvents({
+      ...this.twilightsComposerService.buildDuskProgressiveEvents({
         astronomicalDuskEvents,
         civilDawnEvents,
         civilDuskEvents,
         nauticalDuskEvents,
       }),
-      ...this.helperService.pairAndBuild({
+      ...this.twilightsComposerService.pairAndBuild({
         beginnings: astronomicalDuskEvents,
         builder: (beginning, ending) =>
-          this.helperService.getNightDurationEvent(beginning, ending),
+          this.twilightsBuilderService.getNightDurationEvent(beginning, ending),
         endings: astronomicalDawnEvents,
         label: "Night",
       }),

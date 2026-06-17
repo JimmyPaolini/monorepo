@@ -31,7 +31,7 @@ import type { Moment } from "moment-timezone";
 
 /** Event building and grouping helpers for {@link MinorAspectsService}. */
 @Injectable()
-export class MinorAspectsHelperService {
+export class MinorAspectsComposerService {
   // 🏗 Dependency Injection
 
   constructor(
@@ -39,7 +39,7 @@ export class MinorAspectsHelperService {
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
-    this.logger.setContext(MinorAspectsHelperService.name);
+    this.logger.setContext(MinorAspectsComposerService.name);
   }
 
   // 🔏 Private Methods
@@ -49,21 +49,21 @@ export class MinorAspectsHelperService {
    */
   assembleMinorAspectEvent(args: AssembleMinorAspectEventArguments): Event {
     const { body1, body2, minorAspect, phase, timestamp } = args;
-    const body1Cap = capitalize(body1);
-    const body2Cap = capitalize(body2);
+    const body1Capitalized = capitalize(body1);
+    const body2Capitalized = capitalize(body2);
     const baseCategories = [
       "Astronomy",
       "Astrology",
       "Simple Aspect",
       "Minor Aspect",
-      body1Cap,
-      body2Cap,
+      body1Capitalized,
+      body2Capitalized,
       _.startCase(minorAspect),
     ];
     const { categories, description, phaseEmoji } = this.resolvePhaseDetails({
       baseCategories,
-      body1Capitalized: body1Cap,
-      body2Capitalized: body2Cap,
+      body1Capitalized,
+      body2Capitalized,
       minorAspect,
       phase,
     });
@@ -82,20 +82,20 @@ export class MinorAspectsHelperService {
    *
    */
   buildGroupKey(event: Event): string {
-    const planets = _.sortBy(
+    const bodiesCapitalized = _.sortBy(
       event.categories.filter((category) =>
         minorAspectBodies
           .map((minorAspectBody) => _.startCase(minorAspectBody))
           .includes(category),
       ),
     );
-    const aspect = event.categories.find((category) =>
+    const aspectCapitalized = event.categories.find((category) =>
       minorAspects
         .map((minorAspect) => _.startCase(minorAspect))
         .includes(category),
     );
-    if (planets.length === 2 && aspect) {
-      return `${planets[0]}-${aspect}-${planets[1]}`;
+    if (bodiesCapitalized.length === 2 && aspectCapitalized) {
+      return `${bodiesCapitalized[0]}-${aspectCapitalized}-${bodiesCapitalized[1]}`;
     }
     return "";
   }
@@ -134,33 +134,33 @@ export class MinorAspectsHelperService {
    *
    */
   extractAspectComponents(categories: string[]): ExtractAspectComponentsResult {
-    const bodiesCap = categories
+    const bodiesCapitalized = categories
       .filter((c: string) =>
         minorAspectBodies.map((b: string) => _.startCase(b)).includes(c),
       )
       .toSorted();
-    const aspectCap = categories.find((c: string) =>
+    const aspectCapitalized = categories.find((c: string) =>
       minorAspects.map((a: string) => _.startCase(a)).includes(c),
     );
-    if (bodiesCap.length !== 2 || !aspectCap)
+    if (bodiesCapitalized.length !== 2 || !aspectCapitalized)
       throw new Error(
         `Could not extract aspect info: ${categories.join(", ")}`,
       );
-    const body1Cap = bodiesCap[0] ?? "";
-    const body2Cap = bodiesCap[1] ?? "";
+    const body1Capitalized = bodiesCapitalized[0] ?? "";
+    const body2Capitalized = bodiesCapitalized[1] ?? "";
     const { aspect, body1, body2 } = this.castAspectComponentsToTypes({
-      aspectCapitalized: aspectCap,
-      body1Capitalized: body1Cap,
-      body2Capitalized: body2Cap,
+      aspectCapitalized,
+      body1Capitalized,
+      body2Capitalized,
       categories,
     });
     return {
       aspect,
-      aspectCapitalized: aspectCap,
+      aspectCapitalized,
       body1,
-      body1Capitalized: body1Cap,
+      body1Capitalized,
       body2,
-      body2Capitalized: body2Cap,
+      body2Capitalized,
     };
   }
 
@@ -226,20 +226,23 @@ export class MinorAspectsHelperService {
   /**
    *
    */
-  processAspectGroup(key: string, groupEvents: Event[]): Event[] {
-    if (!key) {
+  processAspectGroup(
+    aspectGroupKey: string,
+    aspectGroupEvents: Event[],
+  ): Event[] {
+    if (!aspectGroupKey) {
       return [];
     }
-    const formingEvents = groupEvents.filter((event) =>
+    const formingEvents = aspectGroupEvents.filter((event) =>
       event.categories.includes("Forming"),
     );
-    const dissolvingEvents = groupEvents.filter((event) =>
+    const dissolvingEvents = aspectGroupEvents.filter((event) =>
       event.categories.includes("Dissolving"),
     );
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       formingEvents,
       dissolvingEvents,
-      `minor aspect ${key}`,
+      `minor aspect ${aspectGroupKey}`,
     );
     return pairs.map(([beginning, ending]) =>
       this.getMinorAspectProgressiveEvent(beginning, ending),

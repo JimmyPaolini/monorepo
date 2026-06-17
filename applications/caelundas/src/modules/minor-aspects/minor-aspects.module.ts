@@ -3,7 +3,7 @@ import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.modu
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
-import { MinorAspectsHelperService } from "./minor-aspects-helper.service";
+import { MinorAspectsComposerService } from "./minor-aspects-composer.service";
 import { MinorAspectsService } from "./minor-aspects.service";
 
 /**
@@ -19,6 +19,6 @@ import { MinorAspectsService } from "./minor-aspects.service";
     AspectsUtilitiesModule,
     ProgressiveUtilitiesModule,
   ],
-  providers: [MinorAspectsHelperService, MinorAspectsService],
+  providers: [MinorAspectsComposerService, MinorAspectsService],
 })
 export class MinorAspectsModule {}

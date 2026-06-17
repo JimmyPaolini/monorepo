@@ -27,7 +27,7 @@ export class LatinLibraryCommand extends CommandRunner {
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
       mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -35,8 +35,12 @@ export class LatinLibraryCommand extends CommandRunner {
 
   // 🔐 Private Fields
 
-  private readonly dataDirectory = path.resolve("data", "latin-library-source");
-  private readonly logFilePath: string;
+  private readonly errorLogFilePath: string;
+  private readonly sourceDataDirectory = path.resolve(
+    "data",
+    "latin-library-source",
+  );
+  private readonly sourceHost = "https://www.thelatinlibrary.com/";
 
   // 🔑 Public Fields
 
@@ -76,10 +80,13 @@ export class LatinLibraryCommand extends CommandRunner {
     }
   }
 
-  private async fetchAndSave(urlString: string, host: string): Promise<string> {
+  private async fetchAndCachePage(
+    urlString: string,
+    host: string,
+  ): Promise<string> {
     const parsed = new URL(urlString, host);
     const relative = this.getRelativePath(urlString, host);
-    const targetPath = path.join(this.dataDirectory, relative);
+    const targetPath = path.join(this.sourceDataDirectory, relative);
 
     try {
       return await fs.readFile(targetPath, "utf8");
@@ -162,7 +169,7 @@ export class LatinLibraryCommand extends CommandRunner {
     return relative;
   }
 
-  private isIgnoredFileName(href: string): boolean {
+  private isIgnoredLinkFileName(href: string): boolean {
     const ignoredFiles = [
       "index.html",
       "classics.html",
@@ -249,7 +256,10 @@ export class LatinLibraryCommand extends CommandRunner {
     host: string,
     finalAuthorUrls: string[],
   ): Promise<void> {
-    const catHtml = await this.fetchAndSave(new URL(href, host).href, host);
+    const catHtml = await this.fetchAndCachePage(
+      new URL(href, host).href,
+      host,
+    );
     const $cat = cheerio.load(catHtml);
 
     $cat("table a").each((_index, a) => {
@@ -296,7 +306,7 @@ export class LatinLibraryCommand extends CommandRunner {
     enqueue: (url: string) => void,
   ): Promise<void> {
     try {
-      const html = await this.fetchAndSave(urlString, host);
+      const html = await this.fetchAndCachePage(urlString, host);
       if (!html) return;
 
       if (this.isParsableHtmlExtension(urlString)) {
@@ -308,14 +318,14 @@ export class LatinLibraryCommand extends CommandRunner {
         error instanceof Error ? error.stack || error.message : String(error);
       this.logger.error(`❌ Error processing ${urlString}: ${String(error)}`);
       await fs.appendFile(
-        this.logFilePath,
+        this.errorLogFilePath,
         `[${new Date().toISOString()}] ${urlString}: ${errorMessage}\n`,
       );
     }
   }
 
   private shouldSkipLink(href: string): boolean {
-    if (this.isIgnoredFileName(href)) return true;
+    if (this.isIgnoredLinkFileName(href)) return true;
     if (this.isIgnoredProtocol(href)) return true;
     return this.isInvalidExtension(href);
   }
@@ -326,13 +336,13 @@ export class LatinLibraryCommand extends CommandRunner {
    *
    */
   async run(): Promise<void> {
-    const host = "https://www.thelatinlibrary.com/";
+    const host = this.sourceHost;
     this.logger.log(`🕷️ Starting to scrape The Latin Library from ${host}`);
 
-    await fs.mkdir(this.dataDirectory, { recursive: true });
+    await fs.mkdir(this.sourceDataDirectory, { recursive: true });
 
     // 1. Fetch index
-    const indexHtml = await this.fetchAndSave(host, host);
+    const indexHtml = await this.fetchAndCachePage(host, host);
 
     const authorUrls = this.getAuthorUrls(indexHtml);
     const finalAuthorUrls = await this.getFinalAuthorUrls(host, authorUrls);

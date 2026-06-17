@@ -13,8 +13,6 @@ import type { AnyNode } from "domhandler";
 export class EtymologyService {
   // 🏗 Dependency Injection
 
-  constructor() {}
-
   // 🔐 Private Fields
 
   // 🔑 Public Fields
@@ -26,7 +24,7 @@ export class EtymologyService {
   /**
    *
    */
-  public parseEtymology(
+  public parse(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     lexeme: Lexeme,
@@ -34,28 +32,31 @@ export class EtymologyService {
      *
      */
   ): { etymology: string; participleTranslation?: Translation } {
-    const etymologyHeaderDiv = $(elt)
+    const etymologyHeadingElement = $(elt)
       .prevAll("div.mw-heading")
       .filter((_index: number, element: AnyNode) =>
         /etymology/i.test($(element).text()),
       )
       .first();
 
-    if (etymologyHeaderDiv.length <= 0) return { etymology: "" };
+    if (etymologyHeadingElement.length <= 0) return { etymology: "" };
 
-    const etymologyP = etymologyHeaderDiv.nextAll("p").first();
-    if (etymologyP.length <= 0 || etymologyP.text().trim().length === 0) {
+    const etymologyParagraph = etymologyHeadingElement.nextAll("p").first();
+    if (
+      etymologyParagraph.length <= 0 ||
+      etymologyParagraph.text().trim().length === 0
+    ) {
       return { etymology: "" };
     }
 
-    const etymology = etymologyP.text().trim();
+    const etymology = etymologyParagraph.text().trim();
 
-    const participleMatch =
+    const participleTranslationMatch =
       /((present)|(perfect)|(future)) ((active)|(passive) )?participle (\(gerundive\) )?of [A-Za-z\u00C0-\u017F]+/i.exec(
         etymology,
       );
-    if (participleMatch) {
-      const text = _.upperFirst(participleMatch[0].trim());
+    if (participleTranslationMatch) {
+      const text = _.upperFirst(participleTranslationMatch[0].trim());
       return {
         etymology,
         participleTranslation: new Translation(text, lexeme),

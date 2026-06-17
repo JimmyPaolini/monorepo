@@ -3,18 +3,22 @@ import { ChildEntity, Column } from "typeorm";
 
 import { Inflection } from "./Inflection.entity.js";
 
-export const verbConjugationValues = [
-  "first",
-  "second",
-  "third",
-  "third-io",
-  "fourth",
-  "",
-] as const;
+export const verbConjugation = {
+  first: "first",
+  fourth: "fourth",
+  none: "",
+  second: "second",
+  third: "third",
+  thirdIo: "third-io",
+} as const;
 /**
  *
  */
-export type VerbConjugation = (typeof verbConjugationValues)[number];
+export type VerbConjugation =
+  (typeof verbConjugation)[keyof typeof verbConjugation];
+export const verbConjugationValues = Object.values(
+  verbConjugation,
+) as VerbConjugation[];
 
 /**
  *

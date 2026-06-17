@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { QuintupleAspectsHelperService } from "./quintuple-aspects-helper.service.js";
+import { QuintupleAspectsComposerService } from "./quintuple-aspects-composer.service.js";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -14,7 +14,9 @@ import type { Moment } from "moment-timezone";
 export class QuintupleAspectsService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly helperService: QuintupleAspectsHelperService) {}
+  constructor(
+    private readonly quintupleAspectsComposerService: QuintupleAspectsComposerService,
+  ) {}
 
   // 🌎 Public Methods
 
@@ -35,7 +37,7 @@ export class QuintupleAspectsService {
     previousAspectBodies: AspectBodies[];
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
-    return this.helperService.composePentagrams({
+    return this.quintupleAspectsComposerService.composePentagrams({
       currentAspectBodies,
       minute,
       previousAspectBodies,
@@ -53,7 +55,8 @@ export class QuintupleAspectsService {
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
-    const groupedEvents = this.helperService.groupQuintupleEventsByKey(events);
+    const groupedEvents =
+      this.quintupleAspectsComposerService.groupQuintupleEventsByKey(events);
 
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
@@ -65,8 +68,12 @@ export class QuintupleAspectsService {
           continue;
         }
 
-        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
-          const potentialDissolvingEvent = sortedEvents[index_];
+        for (
+          let secondIndex = index + 1;
+          secondIndex < sortedEvents.length;
+          secondIndex++
+        ) {
+          const potentialDissolvingEvent = sortedEvents[secondIndex];
 
           if (!potentialDissolvingEvent) {
             continue;
@@ -74,7 +81,7 @@ export class QuintupleAspectsService {
 
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             progressiveEvents.push(
-              this.helperService.buildProgressiveQuintupleEvent(
+              this.quintupleAspectsComposerService.buildProgressiveQuintupleEvent(
                 currentEvent,
                 potentialDissolvingEvent,
               ),

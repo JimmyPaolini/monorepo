@@ -12,7 +12,7 @@ import type { Moment } from "moment-timezone";
  * Pattern detection and event building helpers for {@link QuadrupleAspectsService}.
  */
 @Injectable()
-export class QuadrupleAspectsHelperService extends QuadrupleAspectsBaseService {
+export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService {
   // 🏗 Dependency Injection
 
   constructor() {

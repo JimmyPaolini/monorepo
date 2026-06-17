@@ -1,29 +1,31 @@
-export const partOfSpeechValues = [
-  "noun",
-  "properNoun",
-  "verb",
-  "adjective",
-  "participle",
-  "adverb",
-  "pronoun",
-  "determiner",
-  "preposition",
-  "conjunction",
-  "numeral",
-  "abbreviation",
-  "particle",
-  "interjection",
-  "prefix",
-  "suffix",
-  "interfix",
-  "circumfix",
-  "inflection",
-  "phrase",
-  "proverb",
-  "idiom",
-] as const;
+export const partOfSpeech = {
+  abbreviation: "abbreviation",
+  adjective: "adjective",
+  adverb: "adverb",
+  circumfix: "circumfix",
+  conjunction: "conjunction",
+  determiner: "determiner",
+  idiom: "idiom",
+  inflection: "inflection",
+  interfix: "interfix",
+  interjection: "interjection",
+  noun: "noun",
+  numeral: "numeral",
+  participle: "participle",
+  particle: "particle",
+  phrase: "phrase",
+  prefix: "prefix",
+  preposition: "preposition",
+  pronoun: "pronoun",
+  properNoun: "properNoun",
+  proverb: "proverb",
+  suffix: "suffix",
+  verb: "verb",
+} as const;
 
 /**
  *
  */
-export type PartOfSpeech = (typeof partOfSpeechValues)[number];
+export type PartOfSpeech = (typeof partOfSpeech)[keyof typeof partOfSpeech];
+
+export const partsOfSpeech = Object.values(partOfSpeech) as PartOfSpeech[];

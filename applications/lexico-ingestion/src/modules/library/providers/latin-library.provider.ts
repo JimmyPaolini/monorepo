@@ -121,7 +121,10 @@ export class LatinLibraryProvider {
         authors.push(author);
         continue;
       }
-      const catHtml = await this.readLocal(new URL(href, host).href, host);
+      const catHtml = await this.readSourceCacheFile(
+        new URL(href, host).href,
+        host,
+      );
       const $cat = cheerio.load(catHtml);
       cheerioTableParser($cat);
       $cat("table a").each((_index, a) => {
@@ -139,7 +142,10 @@ export class LatinLibraryProvider {
     const authorPath = author.metadata?.["sourceUrl"] as string;
     this.logger.log(`👤 Starting author metadata: ${nickname}`);
     const authorUrlObject = new URL(authorPath, host);
-    const authorText = await this.readLocal(authorUrlObject.href, host);
+    const authorText = await this.readSourceCacheFile(
+      authorUrlObject.href,
+      host,
+    );
     const $ = cheerio.load(authorText);
     const additionalMetadata = this.builder.extractAuthorPageMetadata(
       $,
@@ -202,7 +208,7 @@ export class LatinLibraryProvider {
     }
     this.logger.log(`📜 Starting work: ${textSlug}`);
     try {
-      const written = await this.writeWorkMarkdown({
+      const written = await this.writeWorkText({
         author,
         authorPath,
         host,
@@ -221,7 +227,10 @@ export class LatinLibraryProvider {
     }
   }
 
-  private async readLocal(urlString: string, host: string): Promise<string> {
+  private async readSourceCacheFile(
+    urlString: string,
+    host: string,
+  ): Promise<string> {
     const parsed = new URL(urlString, host);
     let relative = parsed.pathname;
     if (relative.startsWith("/")) relative = relative.slice(1);
@@ -231,7 +240,7 @@ export class LatinLibraryProvider {
     return fs.readFile(targetPath, "utf8");
   }
 
-  private async saveWorkMarkdown(args: {
+  private async saveWorkTextMarkdown(args: {
     authorPath: string;
     markdown: string;
     work: Text;
@@ -257,7 +266,7 @@ export class LatinLibraryProvider {
     }
   }
 
-  private async writeAuthorMarkdown(args: {
+  private async writeAuthorTexts(args: {
     author: Author;
     dataPath: string;
     host: string;
@@ -286,7 +295,7 @@ export class LatinLibraryProvider {
     }
   }
 
-  private async writeWorkMarkdown(args: {
+  private async writeWorkText(args: {
     author: Author;
     authorPath: string;
     host: string;
@@ -295,7 +304,7 @@ export class LatinLibraryProvider {
     const { author, authorPath, host, work } = args;
     const workBook = work.metadata?.["book"] as string | undefined;
     const workPath = work.metadata?.["sourceUrl"] as string;
-    const workHtml = await this.readLocal(workPath, host);
+    const workHtml = await this.readSourceCacheFile(workPath, host);
     const $work = cheerio.load(workHtml);
     const paragraphs = this.builder.parseWorkParagraphs($work);
     if (!hasValidTextContent(paragraphs)) {
@@ -309,7 +318,7 @@ export class LatinLibraryProvider {
       work,
       workBook,
     });
-    await this.saveWorkMarkdown({ authorPath, markdown, work, workBook });
+    await this.saveWorkTextMarkdown({ authorPath, markdown, work, workBook });
     return true;
   }
 
@@ -322,7 +331,7 @@ export class LatinLibraryProvider {
   }): Promise<Author[]> {
     const host = "https://www.thelatinlibrary.com/";
     this.logger.log(`🗂️ Reading Latin Library from local cache`);
-    const indexHtml = await this.readLocal(host, host);
+    const indexHtml = await this.readSourceCacheFile(host, host);
     const rootAuthors = this.buildRootAuthors(indexHtml);
     const authors = await this.expandCategoryAuthors(rootAuthors, host);
     authors.sort((a, b) =>
@@ -339,7 +348,7 @@ export class LatinLibraryProvider {
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
     for (const author of authors) {
-      await this.writeAuthorMarkdown({
+      await this.writeAuthorTexts({
         author,
         dataPath,
         host,

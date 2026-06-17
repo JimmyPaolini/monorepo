@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { IngressesHelperService } from "./ingresses-helper.service";
+import { IngressesComposerService } from "./ingresses-composer.service";
 import { IngressesService } from "./ingresses.service";
 
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -52,7 +52,7 @@ function createFullEphemeris(
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
 const loggerService = new LoggerService();
-const helperService = new IngressesHelperService(
+const helperService = new IngressesComposerService(
   loggerService,
   ephemerisService,
 );

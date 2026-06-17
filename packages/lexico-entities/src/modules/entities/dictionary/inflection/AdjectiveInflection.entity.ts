@@ -2,23 +2,33 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import { Inflection } from "./Inflection.entity.js";
-import { declensionEnumValues } from "./NounInflection.entity.js";
+import { inflectionDeclensionValues } from "./NounInflection.entity.js";
 
-export const adjectiveDeclensionValues = ["first/second", "third", ""] as const;
+export const adjectiveDeclension = {
+  firstSecond: "first/second",
+  none: "",
+  third: "third",
+};
 /**
  *
  */
-export type AdjectiveDeclension = (typeof adjectiveDeclensionValues)[number];
+export type AdjectiveDeclension =
+  (typeof adjectiveDeclension)[keyof typeof adjectiveDeclension];
+export const adjectiveDeclensionValues = Object.values(adjectiveDeclension);
 
-export const adjectiveDegreeValues = [
-  "positive",
-  "comparative",
-  "superlative",
-] as const;
+export const adjectiveDegree = {
+  comparative: "comparative",
+  positive: "positive",
+  superlative: "superlative",
+} as const;
 /**
  *
  */
-export type AdjectiveDegree = (typeof adjectiveDegreeValues)[number];
+export type AdjectiveDegree =
+  (typeof adjectiveDegree)[keyof typeof adjectiveDegree];
+export const adjectiveDegreeValues = Object.values(
+  adjectiveDegree,
+) as AdjectiveDegree[];
 
 /**
  *
@@ -29,7 +39,7 @@ export class AdjectiveInflection extends Inflection {
   @Column({
     comment: "Adjective declension class (first/second or third)",
     default: "",
-    enum: declensionEnumValues,
+    enum: inflectionDeclensionValues,
     type: "enum",
   })
   @Field(() => String)
@@ -43,11 +53,4 @@ export class AdjectiveInflection extends Inflection {
   })
   @Field(() => String)
   degree!: AdjectiveDegree;
-
-  @Column("text", {
-    comment: "Additional inflection notes",
-    nullable: true,
-  })
-  @Field(() => String, { nullable: true })
-  other?: string;
 }

@@ -2,7 +2,7 @@ import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.modu
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
 
-import { DailyCyclesHelperService } from "./daily-cycles-helper.service";
+import { DailyCyclesBuilderService } from "./daily-cycles-builder.service";
 import { DailyCyclesService } from "./daily-cycles.service";
 
 /**
@@ -14,6 +14,6 @@ import { DailyCyclesService } from "./daily-cycles.service";
   controllers: [],
   exports: [DailyCyclesService],
   imports: [EphemerisModule, MathModule],
-  providers: [DailyCyclesHelperService, DailyCyclesService],
+  providers: [DailyCyclesBuilderService, DailyCyclesService],
 })
 export class DailyCyclesModule {}

@@ -2,7 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { SextupleAspectsHelperService } from "./sextuple-aspects-helper.service";
+import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service";
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -21,7 +21,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 
 const service = new SextupleAspectsService(
-  new SextupleAspectsHelperService(),
+  new SextupleAspectsComposerService(),
   new MathService(),
 );
 

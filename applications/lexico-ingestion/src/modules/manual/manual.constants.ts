@@ -10,7 +10,7 @@ import {
   NounInflection,
   PrincipalPart,
   Translation,
-  Uninflected,
+  UninflectedInflection,
 } from "@monorepo/lexico-entities";
 
 export const MANUAL_LEXEMES_TO_DELETE = [
@@ -245,7 +245,7 @@ export function buildRomanNumeralTemplate(): Lexeme {
   lexeme.disambiguator = 100;
   lexeme.partOfSpeech = "numeral";
 
-  const inflection = new Uninflected();
+  const inflection = new UninflectedInflection();
   lexeme.inflection = inflection;
 
   const pp = new PrincipalPart();

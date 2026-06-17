@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { QuadrupleAspectsHelperService } from "./quadruple-aspects-helper.service.js";
+import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service.js";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -15,7 +15,9 @@ import type { Moment } from "moment-timezone";
 export class QuadrupleAspectsService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly helperService: QuadrupleAspectsHelperService) {}
+  constructor(
+    private readonly quadrupleAspectsComposerService: QuadrupleAspectsComposerService,
+  ) {}
 
   // 🌎 Public Methods
 
@@ -43,12 +45,12 @@ export class QuadrupleAspectsService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     return [
-      ...this.helperService.composeGrandCrosses({
+      ...this.quadrupleAspectsComposerService.composeGrandCrosses({
         currentAspectBodies,
         minute,
         previousAspectBodies,
       }),
-      ...this.helperService.composeKites({
+      ...this.quadrupleAspectsComposerService.composeKites({
         currentAspectBodies,
         minute,
         previousAspectBodies,
@@ -75,11 +77,11 @@ export class QuadrupleAspectsService {
     );
 
     const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) =>
-      this.helperService.makeProgressiveGroupKey(event),
+      this.quadrupleAspectsComposerService.makeProgressiveGroupKey(event),
     );
 
     for (const group of Object.values(groupedEvents)) {
-      this.helperService.collectProgressiveEventsFromGroup(
+      this.quadrupleAspectsComposerService.collectProgressiveEventsFromGroup(
         group,
         progressiveEvents,
       );

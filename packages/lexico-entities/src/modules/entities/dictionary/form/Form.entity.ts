@@ -1,7 +1,7 @@
 import { InterfaceType } from "@nestjs/graphql";
 import { Entity, Index, ManyToOne, OneToMany, TableInheritance } from "typeorm";
 
-import { AuditableEntity } from "../../Auditable.entity.js";
+import { AuditableEntity } from "../../base/Auditable.entity.js";
 
 import type { Lexeme } from "../Lexeme.entity.js";
 import type { WordForm } from "../WordForm.entity.js";
@@ -9,103 +9,139 @@ import type { WordForm } from "../WordForm.entity.js";
 /**
  *
  */
-export const formCaseValues = [
-  "nominative",
-  "genitive",
-  "dative",
-  "accusative",
-  "ablative",
-  "vocative",
-  "locative",
-] as const;
+export const formCase = {
+  ablative: "ablative",
+  accusative: "accusative",
+  dative: "dative",
+  genitive: "genitive",
+  nominative: "nominative",
+} as const;
 /**
  *
  */
-export type FormCase = (typeof formCaseValues)[number];
+export type FormCase = (typeof formCase)[keyof typeof formCase];
 
-export const formNumberValues = ["singular", "plural"] as const;
-/**
- *
- */
-export type FormNumber = (typeof formNumberValues)[number];
+export const formCaseValues = Object.values(formCase) as FormCase[];
 
-export const formGenderValues = ["masculine", "feminine", "neuter"] as const;
+export const formNumber = {
+  plural: "plural",
+  singular: "singular",
+} as const;
 /**
  *
  */
-export type FormGender = (typeof formGenderValues)[number];
+export type FormNumber = (typeof formNumber)[keyof typeof formNumber];
+export const formNumberValues = Object.values(formNumber) as FormNumber[];
 
-export const formMoodValues = [
-  "indicative",
-  "subjunctive",
-  "imperative",
-] as const;
+export const formGender = {
+  feminine: "feminine",
+  masculine: "masculine",
+  neuter: "neuter",
+} as const;
 /**
  *
  */
-export type FormMood = (typeof formMoodValues)[number];
+export type FormGender = (typeof formGender)[keyof typeof formGender];
+export const formGenderValues = Object.values(formGender) as FormGender[];
 
-export const formVoiceValues = ["active", "passive"] as const;
+export const formMood = {
+  imperative: "imperative",
+  indicative: "indicative",
+  subjunctive: "subjunctive",
+} as const;
 /**
  *
  */
-export type FormVoice = (typeof formVoiceValues)[number];
+export type FormMood = (typeof formMood)[keyof typeof formMood];
+export const formMoodValues = Object.values(formMood) as FormMood[];
 
-export const formTenseValues = [
-  "present",
-  "imperfect",
-  "future",
-  "perfect",
-  "pluperfect",
-  "futurePerfect",
-] as const;
+export const formVoice = {
+  active: "active",
+  passive: "passive",
+} as const;
 /**
  *
  */
-export type FormTense = (typeof formTenseValues)[number];
+export type FormVoice = (typeof formVoice)[keyof typeof formVoice];
+export const formVoiceValues = Object.values(formVoice) as FormVoice[];
 
-export const formPersonValues = ["first", "second", "third"] as const;
+export const formTense = {
+  future: "future",
+  futurePerfect: "futurePerfect",
+  imperfect: "imperfect",
+  perfect: "perfect",
+  pluperfect: "pluperfect",
+  present: "present",
+} as const;
 /**
  *
  */
-export type FormPerson = (typeof formPersonValues)[number];
+export type FormTense = (typeof formTense)[keyof typeof formTense];
+export const formTenseValues = Object.values(formTense) as FormTense[];
 
-export const formDegreeValues = [
-  "positive",
-  "comparative",
-  "superlative",
-] as const;
+export const formPerson = {
+  first: "first",
+  second: "second",
+  third: "third",
+} as const;
 /**
  *
  */
-export type FormDegree = (typeof formDegreeValues)[number];
+export type FormPerson = (typeof formPerson)[keyof typeof formPerson];
+export const formPersonValues = Object.values(formPerson) as FormPerson[];
 
-export const formNonFiniteTenseValues = [
-  "present",
-  "perfect",
-  "future",
-] as const;
+export const formDegree = {
+  comparative: "comparative",
+  positive: "positive",
+  superlative: "superlative",
+} as const;
 /**
  *
  */
-export type FormNonFiniteTense = (typeof formNonFiniteTenseValues)[number];
+export type FormDegree = (typeof formDegree)[keyof typeof formDegree];
+export const formDegreeValues = Object.values(formDegree) as FormDegree[];
 
-export const formGerundCaseValues = [
-  "genitive",
-  "dative",
-  "accusative",
-  "ablative",
-] as const;
+export const formNonFiniteTense = {
+  future: "future",
+  perfect: "perfect",
+  present: "present",
+} as const;
 /**
  *
  */
-export type FormGerundCase = (typeof formGerundCaseValues)[number];
+export type FormNonFiniteTense =
+  (typeof formNonFiniteTense)[keyof typeof formNonFiniteTense];
+export const formNonFiniteTenseValues = Object.values(
+  formNonFiniteTense,
+) as FormNonFiniteTense[];
 
-export const formSupineCaseValues = ["accusative", "ablative"] as const;
+export const formGerundCase = {
+  ablative: "ablative",
+  accusative: "accusative",
+  dative: "dative",
+  genitive: "genitive",
+} as const;
 /**
  *
  */
-export type FormSupineCase = (typeof formSupineCaseValues)[number];
+export type FormGerundCase =
+  (typeof formGerundCase)[keyof typeof formGerundCase];
+export const formGerundCaseValues = Object.values(
+  formGerundCase,
+) as FormGerundCase[];
+
+export const formSupineCase = {
+  ablative: "ablative",
+  accusative: "accusative",
+} as const;
+/**
+ *
+ */
+export type FormSupineCase =
+  (typeof formSupineCase)[keyof typeof formSupineCase];
+export const formSupineCaseValues = Object.values(
+  formSupineCase,
+) as FormSupineCase[];
 
 /**
  *

@@ -98,6 +98,13 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | `react-component` | `c` | Generate a React component with test file |
 <!-- conformance-generators-table end -->
 
+## Work Scope Discipline
+
+- Focus on one project at a time when coding or refactoring.
+- If a request spans multiple projects or scopes, complete the first project end-to-end before starting the next one.
+- If the work is truly independent across projects, split it into separate subagents or separate passes so each agent stays project-scoped.
+- Avoid mixing unrelated project changes in one context unless the task is explicitly orchestrating them.
+
 ## Code Quality & Validation
 
 **Every coding agent MUST run the `validate-code` skill before declaring any implementation task complete.** This is non-negotiable.

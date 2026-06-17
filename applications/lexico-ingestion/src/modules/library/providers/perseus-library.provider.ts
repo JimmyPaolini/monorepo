@@ -63,7 +63,7 @@ export class PerseusLibraryProvider {
     return paragraphs;
   }
 
-  private async collectXmlPaths(
+  private async collectSourceXmlPaths(
     sourceDataDirectory: string,
   ): Promise<string[]> {
     try {
@@ -187,7 +187,7 @@ export class PerseusLibraryProvider {
     return false;
   }
 
-  private async loadPerseusXml(args: { xmlPath: string }): Promise<{
+  private async loadSourceXmlFile(args: { xmlPath: string }): Promise<{
     $: cheerio.CheerioAPI;
     rawAuthor: string;
     rawTitle: string;
@@ -198,83 +198,6 @@ export class PerseusLibraryProvider {
       const rawAuthor = $("titleStmt author").first().text().trim();
       const rawTitle = $("titleStmt title").first().text().trim();
       return { $, rawAuthor, rawTitle };
-    });
-  }
-
-  private async parseAndWritePerseusFile(args: {
-    authorsMap: Map<string, Author>;
-    dataPath: string;
-    options?: { author?: string; text?: string };
-    sourceDataDirectory: string;
-    xmlPath: string;
-  }): Promise<void> {
-    const { authorsMap, dataPath, options, sourceDataDirectory, xmlPath } =
-      args;
-    const { $, rawAuthor, rawTitle } = await this.loadPerseusXml({ xmlPath });
-    if (!rawAuthor || !rawTitle) {
-      this.logger.warn(`⚠️ Missing metadata in ${xmlPath}`);
-      return;
-    }
-    if (this.isFilteredOut(rawAuthor, rawTitle, options)) {
-      return;
-    }
-    const relativeSourcePath = path.relative(sourceDataDirectory, xmlPath);
-    const authorSlug = _.kebabCase(rawAuthor);
-    const titleSlug = _.kebabCase(rawTitle);
-    const metadata = this.extractPerseusMetadata($, relativeSourcePath);
-    const author = this.getOrCreatePerseusAuthor({
-      authorSlug,
-      authorsMap,
-      rawAuthor,
-      relativeSourcePath,
-    });
-    await this.persistPerseusText({
-      $,
-      author,
-      authorSlug,
-      dataPath,
-      metadata,
-      rawTitle,
-      relativeSourcePath,
-      titleSlug,
-    });
-  }
-
-  private async persistPerseusText(args: {
-    $: cheerio.CheerioAPI;
-    author: Author;
-    authorSlug: string;
-    dataPath: string;
-    metadata: Record<string, unknown>;
-    rawTitle: string;
-    relativeSourcePath: string;
-    titleSlug: string;
-  }): Promise<void> {
-    const {
-      $,
-      author,
-      authorSlug,
-      dataPath,
-      metadata,
-      rawTitle,
-      relativeSourcePath,
-      titleSlug,
-    } = args;
-    this.addPerseusTextEntity({
-      author,
-      metadata,
-      rawTitle,
-      relativeSourcePath,
-      titleSlug,
-    });
-    await this.writePerseusMarkdown({
-      $,
-      authorSlug,
-      dataPath,
-      metadata,
-      rawTitle,
-      relativeSourcePath,
-      titleSlug,
     });
   }
 
@@ -332,7 +255,7 @@ export class PerseusLibraryProvider {
     } = args;
     this.logger.log(`📜 Starting processing: ${xmlPath}`);
     try {
-      await this.parseAndWritePerseusFile({
+      await this.processSourceXmlFile({
         authorsMap,
         dataPath,
         sourceDataDirectory,
@@ -344,6 +267,47 @@ export class PerseusLibraryProvider {
     } catch (error) {
       this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);
     }
+  }
+
+  private async processSourceXmlFile(args: {
+    authorsMap: Map<string, Author>;
+    dataPath: string;
+    options?: { author?: string; text?: string };
+    sourceDataDirectory: string;
+    xmlPath: string;
+  }): Promise<void> {
+    const { authorsMap, dataPath, options, sourceDataDirectory, xmlPath } =
+      args;
+    const { $, rawAuthor, rawTitle } = await this.loadSourceXmlFile({
+      xmlPath,
+    });
+    if (!rawAuthor || !rawTitle) {
+      this.logger.warn(`⚠️ Missing metadata in ${xmlPath}`);
+      return;
+    }
+    if (this.isFilteredOut(rawAuthor, rawTitle, options)) {
+      return;
+    }
+    const relativeSourcePath = path.relative(sourceDataDirectory, xmlPath);
+    const authorSlug = _.kebabCase(rawAuthor);
+    const titleSlug = _.kebabCase(rawTitle);
+    const metadata = this.extractPerseusMetadata($, relativeSourcePath);
+    const author = this.getOrCreatePerseusAuthor({
+      authorSlug,
+      authorsMap,
+      rawAuthor,
+      relativeSourcePath,
+    });
+    await this.writeSourceTextForAuthor({
+      $,
+      author,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
   }
 
   private processTextPartChildren(args: {
@@ -411,7 +375,7 @@ export class PerseusLibraryProvider {
     }
   }
 
-  private async writePerseusMarkdown(args: {
+  private async writeSourceMarkdownFiles(args: {
     $: cheerio.CheerioAPI;
     authorSlug: string;
     dataPath: string;
@@ -460,6 +424,44 @@ export class PerseusLibraryProvider {
     });
   }
 
+  private async writeSourceTextForAuthor(args: {
+    $: cheerio.CheerioAPI;
+    author: Author;
+    authorSlug: string;
+    dataPath: string;
+    metadata: Record<string, unknown>;
+    rawTitle: string;
+    relativeSourcePath: string;
+    titleSlug: string;
+  }): Promise<void> {
+    const {
+      $,
+      author,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    } = args;
+    this.addPerseusTextEntity({
+      author,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
+    await this.writeSourceMarkdownFiles({
+      $,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
+  }
+
   private async writeTextFiles(
     filesToWrite: { content: string; relativePath: string; title: string }[],
     authorDirectory: string,
@@ -485,7 +487,7 @@ export class PerseusLibraryProvider {
   }): Promise<Author[]> {
     this.logger.log(`🗂️ Ingesting Perseus from local data`);
     const sourceDataDirectory = path.resolve("data", "perseus-source");
-    const xmlPaths = await this.collectXmlPaths(sourceDataDirectory);
+    const xmlPaths = await this.collectSourceXmlPaths(sourceDataDirectory);
     if (xmlPaths.length === 0) {
       return [];
     }

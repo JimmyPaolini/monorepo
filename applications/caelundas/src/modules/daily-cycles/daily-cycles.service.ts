@@ -1,7 +1,7 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 
-import { DailyCyclesHelperService } from "./daily-cycles-helper.service.js";
+import { DailyCyclesBuilderService } from "./daily-cycles-builder.service.js";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -19,7 +19,7 @@ export class DailyCyclesService {
 
   constructor(
     private readonly mathService: MathService,
-    private readonly helperService: DailyCyclesHelperService,
+    private readonly dailyCyclesBuilderService: DailyCyclesBuilderService,
   ) {}
 
   // 🔑 Public Fields
@@ -76,7 +76,7 @@ export class DailyCyclesService {
    * @returns Calendar event for lunar nadir with emoji summary
    */
   buildLunarNadirEvent(date: Moment): Event {
-    return this.helperService.buildLunarNadirEvent(date);
+    return this.dailyCyclesBuilderService.buildLunarNadirEvent(date);
   }
 
   /**
@@ -85,7 +85,7 @@ export class DailyCyclesService {
    * @returns Calendar event for lunar zenith with emoji summary
    */
   buildLunarZenithEvent(date: Moment): Event {
-    return this.helperService.buildLunarZenithEvent(date);
+    return this.dailyCyclesBuilderService.buildLunarZenithEvent(date);
   }
 
   /**
@@ -94,7 +94,7 @@ export class DailyCyclesService {
    * @returns Calendar event for moonrise with emoji summary
    */
   buildMoonriseEvent(date: Moment): Event {
-    return this.helperService.buildMoonriseEvent(date);
+    return this.dailyCyclesBuilderService.buildMoonriseEvent(date);
   }
 
   /**
@@ -103,7 +103,7 @@ export class DailyCyclesService {
    * @returns Calendar event for moonset with emoji summary
    */
   buildMoonsetEvent(date: Moment): Event {
-    return this.helperService.buildMoonsetEvent(date);
+    return this.dailyCyclesBuilderService.buildMoonsetEvent(date);
   }
 
   /**
@@ -112,7 +112,7 @@ export class DailyCyclesService {
    * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSolarNadirEvent(date: Moment): Event {
-    return this.helperService.buildSolarNadirEvent(date);
+    return this.dailyCyclesBuilderService.buildSolarNadirEvent(date);
   }
 
   /**
@@ -121,7 +121,7 @@ export class DailyCyclesService {
    * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSolarZenithEvent(date: Moment): Event {
-    return this.helperService.buildSolarZenithEvent(date);
+    return this.dailyCyclesBuilderService.buildSolarZenithEvent(date);
   }
 
   /**
@@ -130,7 +130,7 @@ export class DailyCyclesService {
    * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSunriseEvent(date: Moment): Event {
-    return this.helperService.buildSunriseEvent(date);
+    return this.dailyCyclesBuilderService.buildSunriseEvent(date);
   }
 
   /**
@@ -139,7 +139,7 @@ export class DailyCyclesService {
    * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSunsetEvent(date: Moment): Event {
-    return this.helperService.buildSunsetEvent(date);
+    return this.dailyCyclesBuilderService.buildSunsetEvent(date);
   }
 
   /**
@@ -188,25 +188,29 @@ export class DailyCyclesService {
   }): Event[] {
     const { minute, moonAzimuthElevationEphemeris } = args;
     const dailyLunarCycleEvents: Event[] = [];
-    const elevations = this.helperService.getElevations({
+    const elevationWindow = this.dailyCyclesBuilderService.getElevationWindow({
       ephemeris: moonAzimuthElevationEphemeris,
       minute,
     });
 
-    if (this.helperService.isRise({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.helperService.buildMoonriseEvent(minute));
-    }
-    if (this.mathService.isMaximum({ ...elevations })) {
+    if (this.dailyCyclesBuilderService.isRise({ ...elevationWindow })) {
       dailyLunarCycleEvents.push(
-        this.helperService.buildLunarZenithEvent(minute),
+        this.dailyCyclesBuilderService.buildMoonriseEvent(minute),
       );
     }
-    if (this.helperService.isSet({ ...elevations })) {
-      dailyLunarCycleEvents.push(this.helperService.buildMoonsetEvent(minute));
-    }
-    if (this.mathService.isMinimum({ ...elevations })) {
+    if (this.mathService.isMaximum({ ...elevationWindow })) {
       dailyLunarCycleEvents.push(
-        this.helperService.buildLunarNadirEvent(minute),
+        this.dailyCyclesBuilderService.buildLunarZenithEvent(minute),
+      );
+    }
+    if (this.dailyCyclesBuilderService.isSet({ ...elevationWindow })) {
+      dailyLunarCycleEvents.push(
+        this.dailyCyclesBuilderService.buildMoonsetEvent(minute),
+      );
+    }
+    if (this.mathService.isMinimum({ ...elevationWindow })) {
+      dailyLunarCycleEvents.push(
+        this.dailyCyclesBuilderService.buildLunarNadirEvent(minute),
       );
     }
 
@@ -229,25 +233,29 @@ export class DailyCyclesService {
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
     const dailySolarCycleEvents: Event[] = [];
-    const elevations = this.helperService.getElevations({
+    const elevationWindow = this.dailyCyclesBuilderService.getElevationWindow({
       ephemeris: sunAzimuthElevationEphemeris,
       minute,
     });
 
-    if (this.helperService.isRise({ ...elevations })) {
-      dailySolarCycleEvents.push(this.helperService.buildSunriseEvent(minute));
-    }
-    if (this.mathService.isMaximum({ ...elevations })) {
+    if (this.dailyCyclesBuilderService.isRise({ ...elevationWindow })) {
       dailySolarCycleEvents.push(
-        this.helperService.buildSolarZenithEvent(minute),
+        this.dailyCyclesBuilderService.buildSunriseEvent(minute),
       );
     }
-    if (this.helperService.isSet({ ...elevations })) {
-      dailySolarCycleEvents.push(this.helperService.buildSunsetEvent(minute));
-    }
-    if (this.mathService.isMinimum({ ...elevations })) {
+    if (this.mathService.isMaximum({ ...elevationWindow })) {
       dailySolarCycleEvents.push(
-        this.helperService.buildSolarNadirEvent(minute),
+        this.dailyCyclesBuilderService.buildSolarZenithEvent(minute),
+      );
+    }
+    if (this.dailyCyclesBuilderService.isSet({ ...elevationWindow })) {
+      dailySolarCycleEvents.push(
+        this.dailyCyclesBuilderService.buildSunsetEvent(minute),
+      );
+    }
+    if (this.mathService.isMinimum({ ...elevationWindow })) {
+      dailySolarCycleEvents.push(
+        this.dailyCyclesBuilderService.buildSolarNadirEvent(minute),
       );
     }
 

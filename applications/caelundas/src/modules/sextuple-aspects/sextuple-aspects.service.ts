@@ -2,7 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { SextupleAspectsHelperService } from "./sextuple-aspects-helper.service.js";
+import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service.js";
 
 import type { ComposeHexagramsArguments } from "./sextuple-aspects.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -21,7 +21,7 @@ export class SextupleAspectsService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly helperService: SextupleAspectsHelperService,
+    private readonly sextupleAspectsComposerService: SextupleAspectsComposerService,
     private readonly mathService: MathService,
   ) {}
 
@@ -30,11 +30,13 @@ export class SextupleAspectsService {
   private composeHexagrams(args: ComposeHexagramsArguments): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = this.helperService.groupAspectsByType(unionEdges);
+    const aspectsByType =
+      this.sextupleAspectsComposerService.groupAspectsByType(unionEdges);
     const trines = aspectsByType.get("trine") || [];
     const sextiles = aspectsByType.get("sextile") || [];
     if (trines.length < 6 || sextiles.length < 6) return [];
-    const bodies = this.helperService.collectTrineBodies(trines);
+    const bodies =
+      this.sextupleAspectsComposerService.collectTrineBodies(trines);
     if (bodies.length < 6) return [];
     return this.processHexagramCombinations({
       combinations: this.mathService.getCombinations(bodies, 6),
@@ -100,26 +102,29 @@ export class SextupleAspectsService {
       unionEdges,
     } = args;
     const events: Event[] = [];
-    for (const combo of combinations) {
-      const hexagramBodies = this.helperService.findHexagramPattern(
-        combo,
-        unionEdges,
-      );
+    for (const bodyCombination of combinations) {
+      const hexagramBodies =
+        this.sextupleAspectsComposerService.findHexagramPattern(
+          bodyCombination,
+          unionEdges,
+        );
       if (!hexagramBodies) continue;
-      const result = this.determineCompoundPhaseFromSnapshots({
+      const phaseTransition = this.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
-          this.helperService.findHexagramPattern(hexagramBodies, edges) !==
-          null,
+          this.sextupleAspectsComposerService.findHexagramPattern(
+            hexagramBodies,
+            edges,
+          ) !== null,
         currentAspectBodies,
         currentMinute: minute,
         patternBodies: hexagramBodies,
         previousAspectBodies,
       });
-      if (!result) continue;
-      const event = this.helperService.buildHexagramEvent(
+      if (!phaseTransition) continue;
+      const event = this.sextupleAspectsComposerService.buildHexagramEvent(
         hexagramBodies,
-        result.phase,
-        result.eventMinute,
+        phaseTransition.phase,
+        phaseTransition.eventMinute,
       );
       if (event) events.push(event);
     }
@@ -162,7 +167,8 @@ export class SextupleAspectsService {
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
-    const groupedEvents = this.helperService.groupSextupleEventsByKey(events);
+    const groupedEvents =
+      this.sextupleAspectsComposerService.groupSextupleEventsByKey(events);
 
     for (const group of Object.values(groupedEvents)) {
       const sortedEvents = _.sortBy(group, "start");
@@ -174,8 +180,12 @@ export class SextupleAspectsService {
           continue;
         }
 
-        for (let index_ = index + 1; index_ < sortedEvents.length; index_++) {
-          const potentialDissolvingEvent = sortedEvents[index_];
+        for (
+          let secondIndex = index + 1;
+          secondIndex < sortedEvents.length;
+          secondIndex++
+        ) {
+          const potentialDissolvingEvent = sortedEvents[secondIndex];
 
           if (!potentialDissolvingEvent) {
             continue;
@@ -183,7 +193,7 @@ export class SextupleAspectsService {
 
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             progressiveEvents.push(
-              this.helperService.buildProgressiveSextupleEvent(
+              this.sextupleAspectsComposerService.buildProgressiveSextupleEvent(
                 currentEvent,
                 potentialDissolvingEvent,
               ),

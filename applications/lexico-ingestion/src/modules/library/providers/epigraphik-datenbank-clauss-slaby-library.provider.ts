@@ -29,7 +29,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
 
   // 🔏 Private Methods
 
-  private createEdcsAuthor(authorSlug: string, host: string): Author {
+  private createSourceAuthor(authorSlug: string, host: string): Author {
     const author = new Author();
     author.name = "Epigraphik-Datenbank Clauss-Slaby";
     author.slug = authorSlug;
@@ -58,7 +58,28 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return bookText;
   }
 
-  private async processEdcsChunkFile(args: {
+  private processEdcsRecord(
+    item: EpigraphikDatenbankClaussSlabyRecord,
+    provinceData: Map<string, string[]>,
+  ): void {
+    const object = item.obj;
+    const recordId = object["edcs-id"] || object.edcsId;
+    const provinz = object.provinz || "Unknown Province";
+    const text = object.inschriften[0]?.[0];
+    if (!text) return;
+    let cleanedText = text;
+    let previousText: string;
+    do {
+      previousText = cleanedText;
+      cleanedText = cleanedText.replaceAll(/<[^>]*>?/gm, "");
+    } while (cleanedText !== previousText);
+    const markdownLine = `**${recordId}** ${cleanedText}`;
+    const provArray = provinceData.get(provinz) || [];
+    provArray.push(markdownLine);
+    provinceData.set(provinz, provArray);
+  }
+
+  private async processSourceChunkFile(args: {
     file: string;
     index: number;
     provinceData: Map<string, string[]>;
@@ -83,7 +104,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     }
   }
 
-  private async processEdcsChunkPhase(
+  private async processSourceChunkPhase(
     chunkFiles: string[],
     sourceDataDirectory: string,
   ): Promise<Map<string, string[]>> {
@@ -91,7 +112,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     for (let index = 0; index < chunkFiles.length; index++) {
       const file = chunkFiles[index];
       if (!file) continue;
-      await this.processEdcsChunkFile({
+      await this.processSourceChunkFile({
         file,
         index,
         provinceData,
@@ -102,28 +123,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return provinceData;
   }
 
-  private processEdcsRecord(
-    item: EpigraphikDatenbankClaussSlabyRecord,
-    provinceData: Map<string, string[]>,
-  ): void {
-    const object = item.obj;
-    const recordId = object["edcs-id"] || object.edcsId;
-    const provinz = object.provinz || "Unknown Province";
-    const text = object.inschriften[0]?.[0];
-    if (!text) return;
-    let cleanedText = text;
-    let previousText: string;
-    do {
-      previousText = cleanedText;
-      cleanedText = cleanedText.replaceAll(/<[^>]*>?/gm, "");
-    } while (cleanedText !== previousText);
-    const markdownLine = `**${recordId}** ${cleanedText}`;
-    const provArray = provinceData.get(provinz) || [];
-    provArray.push(markdownLine);
-    provinceData.set(provinz, provArray);
-  }
-
-  private async readEdcsChunkFiles(
+  private async readSourceChunkFiles(
     sourceDataDirectory: string,
   ): Promise<null | string[]> {
     try {
@@ -271,7 +271,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     if (options?.author && authorSlug !== options.author) return [];
     const authorDirectory = path.join(dataPath, authorSlug);
     await fs.mkdir(authorDirectory, { recursive: true });
-    const author = this.createEdcsAuthor(authorSlug, host);
+    const author = this.createSourceAuthor(authorSlug, host);
     const sourceDataDirectory = path.resolve(
       "data",
       "epigraphik-datenbank-clauss-slaby-source",
@@ -279,9 +279,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     this.logger.log(
       `🗂️ Reading Epigraphik-Datenbank Clauss-Slaby chunks from ${sourceDataDirectory}`,
     );
-    const chunkFiles = await this.readEdcsChunkFiles(sourceDataDirectory);
+    const chunkFiles = await this.readSourceChunkFiles(sourceDataDirectory);
     if (!chunkFiles) return [];
-    const provinceData = await this.processEdcsChunkPhase(
+    const provinceData = await this.processSourceChunkPhase(
       chunkFiles,
       sourceDataDirectory,
     );

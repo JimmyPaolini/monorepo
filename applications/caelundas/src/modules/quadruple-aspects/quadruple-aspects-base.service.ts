@@ -104,10 +104,10 @@ export class QuadrupleAspectsBaseService {
     });
     if (!hasOpp1 || !hasOpp2) return false;
 
-    const innerOppositeBodyMap = this.buildGrandCrossOppositeMap(opp1, opp2);
+    const oppositeBodyMap = this.buildGrandCrossOppositeMap(opp1, opp2);
     return this.verifyGrandCrossSquares(
       bodyList,
-      innerOppositeBodyMap,
+      oppositeBodyMap,
       squaresAtTime,
     );
   }
@@ -308,7 +308,9 @@ export class QuadrupleAspectsBaseService {
   /**
    * Create a quadruple aspect event
    */
-  getQuadrupleAspectEvent(parameters: GetQuadrupleAspectEventArguments): Event {
+  getQuadrupleAspectEvent(
+    eventArguments: GetQuadrupleAspectEventArguments,
+  ): Event {
     const {
       body1,
       body2,
@@ -318,13 +320,18 @@ export class QuadrupleAspectsBaseService {
       phase,
       quadrupleAspect,
       timestamp,
-    } = parameters;
-    const b1 = _.startCase(body1);
-    const b2 = _.startCase(body2);
-    const b3 = _.startCase(body3);
-    const b4 = _.startCase(body4);
+    } = eventArguments;
+    const body1DisplayName = _.startCase(body1);
+    const body2DisplayName = _.startCase(body2);
+    const body3DisplayName = _.startCase(body3);
+    const body4DisplayName = _.startCase(body4);
     const description = this.buildQuadrupleAspectDescription({
-      bodiesSorted: _.sortBy([b1, b2, b3, b4]),
+      bodiesSorted: _.sortBy([
+        body1DisplayName,
+        body2DisplayName,
+        body3DisplayName,
+        body4DisplayName,
+      ]),
       focalOrApexBody,
       phase,
       quadrupleAspect,
@@ -333,10 +340,10 @@ export class QuadrupleAspectsBaseService {
     const symbolsPart = `${symbolByBody[body1]}-${symbolByBody[body2]}-${symbolByBody[body3]}-${symbolByBody[body4]}`;
     const summary = `${phaseEmoji}${symbolByQuadrupleAspect[quadrupleAspect]} ${symbolsPart} ${description}`;
     const categories = this.makeQuadrupleAspectCategories({
-      body1Capitalized: b1,
-      body2Capitalized: b2,
-      body3Capitalized: b3,
-      body4Capitalized: b4,
+      body1Capitalized: body1DisplayName,
+      body2Capitalized: body2DisplayName,
+      body3Capitalized: body3DisplayName,
+      body4Capitalized: body4DisplayName,
       focalOrApexBody,
       phase,
       quadrupleAspect,

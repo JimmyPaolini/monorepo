@@ -1,14 +1,11 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, OneToMany, OneToOne, Unique } from "typeorm";
 
-import { AuditableEntity } from "../Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity.js";
 
 import { Form } from "./form/Form.entity.js";
 import { Inflection } from "./inflection/Inflection.entity.js";
-import {
-  type PartOfSpeech,
-  partOfSpeechValues,
-} from "./PartOfSpeech.entity.js";
+import { type PartOfSpeech, partsOfSpeech } from "./PartOfSpeech.entity.js";
 import { PrincipalPart } from "./PrincipalPart.entity.js";
 import { Pronunciation } from "./Pronunciation.entity.js";
 import { Translation } from "./Translation.entity.js";
@@ -64,7 +61,7 @@ export class Lexeme extends AuditableEntity {
 
   @Column({
     comment: "Grammatical part of speech",
-    enum: partOfSpeechValues,
+    enum: partsOfSpeech,
     type: "enum",
   })
   @Field(() => String)

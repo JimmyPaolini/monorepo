@@ -39,7 +39,7 @@ export class DictionaryCommand extends CommandRunner {
     const outputDirectory = path.join(process.cwd(), "output");
     if (!fs.existsSync(outputDirectory))
       fs.mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -51,9 +51,9 @@ export class DictionaryCommand extends CommandRunner {
     process.cwd(),
     "./data/wiktionary",
   );
+  private readonly errorLogFilePath: string;
   private fileIndex: Map<string, string> | null = null;
   private readonly inProgressWords = new Set<string>();
-  private readonly logFilePath: string;
 
   // 🔑 Public Fields
 
@@ -66,7 +66,53 @@ export class DictionaryCommand extends CommandRunner {
     );
   }
 
-  private getFilePathForWord(word: string): null | string {
+  private getLemmaChoices(): { title: string; value: string }[] {
+    const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
+    if (!fs.existsSync(dataDirectory)) return [];
+
+    return fs
+      .readdirSync(dataDirectory)
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => {
+        const title = file.replace(".json", "");
+        return { title, value: title };
+      });
+  }
+
+  private getLemmaFileRange(
+    files: string[],
+    startLemma?: string,
+    endLemma?: string,
+  ): string[] {
+    if (!startLemma && !endLemma) return files;
+
+    const startIndex = startLemma
+      ? files.findIndex((f) => f.replace(".json", "") === startLemma)
+      : 0;
+    const endIndex = endLemma
+      ? files.findIndex((f) => f.replace(".json", "") === endLemma)
+      : files.length - 1;
+
+    const start = Math.max(0, startIndex);
+    const end = endIndex === -1 ? files.length - 1 : endIndex;
+
+    return files.slice(start, end + 1);
+  }
+
+  private getPageForLexeme(
+    word: string,
+    wiktionaryPage?: WiktionaryPage,
+  ): WiktionaryPage {
+    if (wiktionaryPage) return wiktionaryPage;
+
+    const page = this.loadWiktionaryPageForWord(word);
+    if (!page) {
+      throw new Error(`File missing or unreadable for word: ${word}`);
+    }
+    return page;
+  }
+
+  private getWiktionaryFilePathForWord(word: string): null | string {
     const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
 
     // Exact match
@@ -99,52 +145,6 @@ export class DictionaryCommand extends CommandRunner {
     return null;
   }
 
-  private getFilesRange(
-    files: string[],
-    startLemma?: string,
-    endLemma?: string,
-  ): string[] {
-    if (!startLemma && !endLemma) return files;
-
-    const startIndex = startLemma
-      ? files.findIndex((f) => f.replace(".json", "") === startLemma)
-      : 0;
-    const endIndex = endLemma
-      ? files.findIndex((f) => f.replace(".json", "") === endLemma)
-      : files.length - 1;
-
-    const start = Math.max(0, startIndex);
-    const end = endIndex === -1 ? files.length - 1 : endIndex;
-
-    return files.slice(start, end + 1);
-  }
-
-  private getLemmaChoices(): { title: string; value: string }[] {
-    const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
-    if (!fs.existsSync(dataDirectory)) return [];
-
-    return fs
-      .readdirSync(dataDirectory)
-      .filter((file) => file.endsWith(".json"))
-      .map((file) => {
-        const title = file.replace(".json", "");
-        return { title, value: title };
-      });
-  }
-
-  private getPageForLexeme(
-    word: string,
-    wiktionaryPage?: WiktionaryPage,
-  ): WiktionaryPage {
-    if (wiktionaryPage) return wiktionaryPage;
-
-    const page = this.loadWiktionaryPageForWord(word);
-    if (!page) {
-      throw new Error(`File missing or unreadable for word: ${word}`);
-    }
-    return page;
-  }
-
   private async ingestTranslationReference(
     translation: Translation,
   ): Promise<void> {
@@ -169,12 +169,12 @@ export class DictionaryCommand extends CommandRunner {
   }
 
   private loadWiktionaryPageForWord(word: string): null | WiktionaryPage {
-    const filePath = this.getFilePathForWord(word);
+    const filePath = this.getWiktionaryFilePathForWord(word);
     if (!filePath) {
       this.logger.warn(`⚠️ No data file found for word: ${word}`);
       return null;
     }
-    const page = this.readWiktionaryPage(filePath);
+    const page = this.readWiktionaryPageFromFile(filePath);
     if (!page) {
       this.logger.warn(`⚠️ No data file found for word: ${word}`);
       return null;
@@ -197,7 +197,7 @@ export class DictionaryCommand extends CommandRunner {
   ): Promise<void> {
     try {
       const filePath = path.join(this.dataDirectory, file);
-      const wiktionaryPage = this.readWiktionaryPage(filePath);
+      const wiktionaryPage = this.readWiktionaryPageFromFile(filePath);
       if (!wiktionaryPage) {
         throw new Error("File missing or unreadable");
       }
@@ -210,7 +210,7 @@ export class DictionaryCommand extends CommandRunner {
         error instanceof Error ? error.stack || error.message : String(error);
       this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
       fs.appendFileSync(
-        this.logFilePath,
+        this.errorLogFilePath,
         `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
       );
     }
@@ -268,13 +268,13 @@ export class DictionaryCommand extends CommandRunner {
     }
   }
 
-  // 🌎 Public Methods
-
-  private readWiktionaryPage(filePath: string): null | WiktionaryPage {
+  private readWiktionaryPageFromFile(filePath: string): null | WiktionaryPage {
     if (!fs.existsSync(filePath)) return null;
     const raw = fs.readFileSync(filePath, "utf8");
     return JSON.parse(raw) as WiktionaryPage;
   }
+
+  // 🌎 Public Methods
 
   /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
    * parses each into structured `Entry` records, and saves them to the database. */
@@ -288,9 +288,9 @@ export class DictionaryCommand extends CommandRunner {
 
     const allFiles = fs
       .readdirSync(this.dataDirectory)
-      .filter((f) => f.endsWith(".json"));
+      .filter((fileName) => fileName.endsWith(".json"));
 
-    const files = this.getFilesRange(allFiles, startLemma, endLemma);
+    const files = this.getLemmaFileRange(allFiles, startLemma, endLemma);
 
     this.logger.log(`📖 Processing ${files.length} lexemes`);
 

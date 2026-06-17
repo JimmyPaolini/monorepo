@@ -9,6 +9,7 @@ import remarkGfm from "remark-gfm";
 import YAML from "yaml";
 
 import { authorIdToName } from "./literature.constants.js";
+import { ingestTextEntryWithLogging } from "./literature.ingestion.text-entry.helper.js";
 
 import type { LoggerService } from "../logger/logger.service.js";
 import type { NumeralsService } from "../numerals/numerals.service.js";
@@ -27,7 +28,7 @@ import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialE
 /** Scans provider markdown files and ingests normalized literature data. */
 export class LiteratureIngestionHelper {
   public constructor(
-    private readonly options: {
+    private readonly dependencies: {
       authorRepository: Repository<Author>;
       lineRepository: Repository<Line>;
       logFilePath: string;
@@ -40,6 +41,7 @@ export class LiteratureIngestionHelper {
   ) {}
   private readonly memoizedWordCache = new Map<string, null | string>();
   private wordsCache: Map<string, string> | null = null;
+
   private buildLineEntityFromParagraph(
     paragraph: Paragraph,
     index: number,
@@ -70,7 +72,7 @@ export class LiteratureIngestionHelper {
         currentPath = `${currentPath}/${part}`;
         if (parentTexts.has(currentPath)) continue;
         const parentText = parentTexts.get(parentSlug);
-        await this.options.textRepository.upsert(
+        await this.dependencies.textRepository.upsert(
           {
             author: authorEntity,
             parentText,
@@ -80,7 +82,7 @@ export class LiteratureIngestionHelper {
           } as QueryDeepPartialEntity<Text>,
           { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
         );
-        const newParent = await this.options.textRepository.findOneOrFail({
+        const newParent = await this.dependencies.textRepository.findOneOrFail({
           where: { slug: currentPath },
         });
         parentTexts.set(currentPath, newParent);
@@ -124,14 +126,14 @@ export class LiteratureIngestionHelper {
   }
   private async getWordsCache(): Promise<Map<string, string>> {
     if (!this.wordsCache) {
-      this.options.logger.log(
+      this.dependencies.logger.log(
         "📖 Caching dictionary words for token mapping...",
       );
-      const words = await this.options.wordRepository.find({
+      const words = await this.dependencies.wordRepository.find({
         select: { data: true, id: true },
       });
       this.wordsCache = new Map(words.map((word) => [word.data, word.id]));
-      this.options.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
+      this.dependencies.logger.log(`📖 Cached ${this.wordsCache.size} words.`);
     }
     return this.wordsCache;
   }
@@ -139,17 +141,19 @@ export class LiteratureIngestionHelper {
     authorSlug: string,
     texts: LibraryEntry[],
   ): Promise<void> {
-    this.options.logger.log(`👤 Starting author: ${authorSlug}`);
-    await this.options.authorRepository.upsert(
+    this.dependencies.logger.log(`👤 Starting author: ${authorSlug}`);
+    await this.dependencies.authorRepository.upsert(
       {
         name: authorIdToName[authorSlug] || _.startCase(authorSlug),
         slug: authorSlug,
       },
       { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
     );
-    const authorEntity = await this.options.authorRepository.findOneOrFail({
-      where: { slug: authorSlug },
-    });
+    const authorEntity = await this.dependencies.authorRepository.findOneOrFail(
+      {
+        where: { slug: authorSlug },
+      },
+    );
     const parentTexts = await this.ensureParentTexts(
       authorEntity,
       authorSlug,
@@ -163,19 +167,19 @@ export class LiteratureIngestionHelper {
     });
   }
   private async ingestLines(text: Text, ast: Root): Promise<void> {
-    this.options.logger.log(`  📜 Parsing lines for ${text.title}`);
+    this.dependencies.logger.log(`  📜 Parsing lines for ${text.title}`);
     const wordMap = await this.getWordsCache();
     const tokenEntities: DeepPartial<Token>[] = [];
     const paragraphs = ast.children.filter(
       (child): child is Paragraph => child.type === "paragraph",
     );
     if (paragraphs.length === 0)
-      this.options.logger.warn(`⚠️ NO LINES in ${text.slug}`);
+      this.dependencies.logger.warn(`⚠️ NO LINES in ${text.slug}`);
     const lineEntities = paragraphs.map((paragraph, index) =>
       this.buildLineEntityFromParagraph(paragraph, index, text),
     );
     const savedLines = await this.upsertAndFetchLines(lineEntities, text);
-    this.options.logger.log(
+    this.dependencies.logger.log(
       `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
     );
     for (const line of savedLines) {
@@ -205,7 +209,7 @@ export class LiteratureIngestionHelper {
         existingMetadata,
         frontmatterData["author_metadata"],
       );
-      await this.options.authorRepository.save(author);
+      await this.dependencies.authorRepository.save(author);
     }
     const text = await this.saveTextToDatabase({
       author,
@@ -228,42 +232,22 @@ export class LiteratureIngestionHelper {
     const textChunks = _.chunk(texts, 5);
     for (const chunk of textChunks) {
       for (const textEntry of chunk) {
-        let parentText: Text | undefined;
-        if (textEntry.pathParts.length > 0) {
-          const currentPath = [authorSlug, ...textEntry.pathParts].join("/");
-          parentText = parentTexts.get(currentPath);
-        }
-        const hierarchy = parentText
-          ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
-          : "";
-        this.options.logger.log(
-          `  📜 Starting: ${hierarchy}${textEntry.title} (from ${textEntry.provider})`,
-        );
-        try {
-          await this.ingestText({
-            author: authorEntity,
-            parentText,
-            textPath: textEntry.fullPath,
-            textSlugName: textEntry.textSlug,
-            title: textEntry.title,
-          });
-        } catch (error: unknown) {
-          const errorMessage =
-            error instanceof Error
-              ? error.stack || error.message
-              : String(error);
-          this.options.logger.error(
-            `❌ Failed to process ${hierarchy}${textEntry.title} (from ${textEntry.provider}): ${String(error)}`,
-          );
-          await fs.appendFile(
-            this.options.logFilePath,
-            `[${new Date().toISOString()}] ${textEntry.fullPath}: ${errorMessage}\n`,
-          );
-        }
         currentText++;
-        const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
-        this.options.logger.log(
-          `  ✅ Completed: ${hierarchy}${textEntry.title} (from ${textEntry.provider})${textProgress}`,
+        await ingestTextEntryWithLogging(
+          {
+            ingestText: async (ingestArguments): Promise<void> =>
+              this.ingestText(ingestArguments),
+            logger: this.dependencies.logger,
+          },
+          {
+            authorEntity,
+            authorSlug,
+            currentText,
+            logFilePath: this.dependencies.logFilePath,
+            parentTexts,
+            textEntry,
+            totalTexts,
+          },
         );
       }
     }
@@ -311,7 +295,7 @@ export class LiteratureIngestionHelper {
     let resultNodes: PhrasingContent[] = lineNodes.slice(1);
     if (rawLabel.length <= 32) {
       label = /^[IVXLCDM]+$/i.test(rawLabel)
-        ? `${this.options.numeralsService.toDecimal(rawLabel)}`
+        ? `${this.dependencies.numeralsService.toDecimal(rawLabel)}`
         : rawLabel;
     } else {
       resultNodes = [{ type: "text", value: `${rawLabel} ` }, ...resultNodes];
@@ -329,7 +313,7 @@ export class LiteratureIngestionHelper {
   ): { label: string; lineNodes: PhrasingContent[] } {
     let label = labelMatch[1] ?? "";
     if (/^[IVXLCDM]+$/i.test(label)) {
-      label = `${this.options.numeralsService.toDecimal(label)}`;
+      label = `${this.dependencies.numeralsService.toDecimal(label)}`;
     }
     const remainder = labelMatch[2];
     let resultNodes: PhrasingContent[] = lineNodes.slice(1);
@@ -358,14 +342,14 @@ export class LiteratureIngestionHelper {
     if (frontmatterData["text_metadata"]) {
       textSaveObject.metadata = frontmatterData["text_metadata"];
     }
-    await this.options.textRepository.upsert(
+    await this.dependencies.textRepository.upsert(
       textSaveObject as QueryDeepPartialEntity<Text>,
       {
         conflictPaths: ["slug"],
         skipUpdateIfNoValuesChanged: true,
       },
     );
-    return this.options.textRepository.findOneOrFail({
+    return this.dependencies.textRepository.findOneOrFail({
       relations: { author: true },
       where: { slug: textSlug },
     });
@@ -378,7 +362,7 @@ export class LiteratureIngestionHelper {
     const lineChunks = _.chunk(lineEntities, lineChunkSize);
     await Promise.all(
       lineChunks.map(async (chunk) =>
-        this.options.lineRepository.upsert(
+        this.dependencies.lineRepository.upsert(
           chunk as QueryDeepPartialEntity<Line>[],
           {
             conflictPaths: ["text", "index"],
@@ -387,7 +371,7 @@ export class LiteratureIngestionHelper {
         ),
       ),
     );
-    return this.options.lineRepository.find({
+    return this.dependencies.lineRepository.find({
       loadEagerRelations: false,
       order: { index: "ASC" },
       select: { data: true, id: true, index: true },
@@ -398,14 +382,14 @@ export class LiteratureIngestionHelper {
     tokenEntities: DeepPartial<Token>[],
     text: Text,
   ): Promise<void> {
-    this.options.logger.log(
+    this.dependencies.logger.log(
       `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
     );
     const chunkSize = 2000;
     const tokenChunks = _.chunk(tokenEntities, chunkSize);
     await Promise.all(
       tokenChunks.map(async (chunk) =>
-        this.options.tokenRepository.upsert(
+        this.dependencies.tokenRepository.upsert(
           chunk as QueryDeepPartialEntity<Token>[],
           {
             conflictPaths: ["line", "index"],
@@ -457,7 +441,7 @@ export class LiteratureIngestionHelper {
       await this.ingestAuthorGroup(authorSlug, texts);
       currentAuthor++;
       const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
-      this.options.logger.log(
+      this.dependencies.logger.log(
         `👤 Completed author: ${authorSlug}${authorProgress}`,
       );
     }

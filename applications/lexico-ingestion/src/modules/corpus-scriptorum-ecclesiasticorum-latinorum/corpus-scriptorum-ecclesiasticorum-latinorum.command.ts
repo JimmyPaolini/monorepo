@@ -27,7 +27,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
       mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -35,11 +35,13 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
 
   // 🔐 Private Fields
 
-  private readonly dataDirectory = path.resolve(
+  private readonly errorLogFilePath: string;
+  private readonly sourceDataDirectory = path.resolve(
     "data",
     "corpus-scriptorum-ecclesiasticorum-latinorum-source",
   );
-  private readonly logFilePath: string;
+  private readonly sourceHost =
+    "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/";
 
   // 🔑 Public Fields
 
@@ -48,8 +50,8 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
   /**
    * Downloads a single XML file
    */
-  private async downloadFile(host: string, xmlPath: string): Promise<void> {
-    const targetPath = path.join(this.dataDirectory, xmlPath);
+  private async downloadSourceXmlFileIfMissing(xmlPath: string): Promise<void> {
+    const targetPath = path.join(this.sourceDataDirectory, xmlPath);
 
     try {
       await fs.access(targetPath);
@@ -63,17 +65,34 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     this.logger.log(`📥 Downloading: ${xmlPath}`);
 
     try {
-      const fileUrl = host + xmlPath;
-      await this.saveDownloadedFile(fileUrl, targetPath);
+      const fileUrl = this.sourceHost + xmlPath;
+      await this.fetchAndWriteXmlFile(fileUrl, targetPath);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.stack || error.message : String(error);
       this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
       await fs.appendFile(
-        this.logFilePath,
+        this.errorLogFilePath,
         `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
       );
     }
+  }
+
+  private async fetchAndWriteXmlFile(
+    fileUrl: string,
+    targetPath: string,
+  ): Promise<void> {
+    const response = await fetch(fileUrl);
+    if (!response.ok) {
+      this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${response.statusText}`);
+      return;
+    }
+
+    const xmlContent = await response.text();
+    await fs.writeFile(targetPath, xmlContent, "utf8");
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    }); // polite delay
   }
 
   /**
@@ -98,31 +117,12 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     return treeData.tree;
   }
 
-  private async saveDownloadedFile(
-    fileUrl: string,
-    targetPath: string,
-  ): Promise<void> {
-    const response = await fetch(fileUrl);
-    if (!response.ok) {
-      this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${response.statusText}`);
-      return;
-    }
-
-    const xmlContent = await response.text();
-    await fs.writeFile(targetPath, xmlContent, "utf8");
-    await new Promise((resolve) => {
-      setTimeout(resolve, 100);
-    }); // polite delay
-  }
-
   // 🌎 Public Methods
 
   /**
    *
    */
   async run(): Promise<void> {
-    const host =
-      "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/";
     const treeUrl =
       "https://api.github.com/repos/OpenGreekAndLatin/csel-dev/git/trees/master?recursive=1";
     const tree = await this.fetchTree(treeUrl);
@@ -140,10 +140,10 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       .map((node) => node.path);
 
     this.logger.log(`🗂️ Found ${xmlPaths.length} Latin XML files in CSEL repo`);
-    await fs.mkdir(this.dataDirectory, { recursive: true });
+    await fs.mkdir(this.sourceDataDirectory, { recursive: true });
 
     for (const xmlPath of xmlPaths) {
-      await this.downloadFile(host, xmlPath);
+      await this.downloadSourceXmlFileIfMissing(xmlPath);
     }
 
     this.logger.log("✅ Finished downloading CSEL source files.");

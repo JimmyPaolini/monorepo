@@ -1,6 +1,6 @@
 import { Entity, Index, ManyToOne } from "typeorm";
 
-import { AuditableEntity } from "../Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity.js";
 
 import type { Form } from "./form/Form.entity.js";
 import type { Word } from "./Word.entity.js";

@@ -3,21 +3,27 @@ import { ChildEntity, Column } from "typeorm";
 
 import { Inflection } from "./Inflection.entity.js";
 
-export const adverbTypeValues = ["descriptive", "conjunctional", ""] as const;
+export const adverbType = {
+  conjunctional: "conjunctional",
+  descriptive: "descriptive",
+  none: "",
+} as const;
 /**
  *
  */
-export type AdverbType = (typeof adverbTypeValues)[number];
+export type AdverbType = (typeof adverbType)[keyof typeof adverbType];
+export const adverbTypes = Object.values(adverbType) as AdverbType[];
 
-export const adverbDegreeValues = [
-  "positive",
-  "comparative",
-  "superlative",
-] as const;
+export const adverbDegree = {
+  comparative: "comparative",
+  positive: "positive",
+  superlative: "superlative",
+} as const;
 /**
  *
  */
-export type AdverbDegree = (typeof adverbDegreeValues)[number];
+export type AdverbDegree = (typeof adverbDegree)[keyof typeof adverbDegree];
+export const adverbDegrees = Object.values(adverbDegree) as AdverbDegree[];
 
 /**
  *
@@ -28,8 +34,7 @@ export class AdverbInflection extends Inflection {
   @Column({
     comment: "Functional type of the adverb (descriptive or conjunctional)",
     default: "",
-    enum: adverbTypeValues,
-    name: "adverb_type",
+    enum: adverbTypes,
     type: "enum",
   })
   @Field(() => String)
@@ -38,7 +43,7 @@ export class AdverbInflection extends Inflection {
   @Column({
     comment: "Degree of comparison (positive, comparative, superlative)",
     default: "positive",
-    enum: adverbDegreeValues,
+    enum: adverbDegrees,
     type: "enum",
   })
   @Field(() => String)

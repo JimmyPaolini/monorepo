@@ -28,14 +28,14 @@ import type { Moment } from "moment-timezone";
  * Event building and grouping helpers for {@link SpecialtyAspectsService}.
  */
 @Injectable()
-export class SpecialtyAspectsHelperService {
+export class SpecialtyAspectsComposerService {
   // 🏗 Dependency Injection
 
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
   ) {
-    this.logger.setContext(SpecialtyAspectsHelperService.name);
+    this.logger.setContext(SpecialtyAspectsComposerService.name);
   }
 
   // 🔏 Private Methods
@@ -222,16 +222,16 @@ export class SpecialtyAspectsHelperService {
    *
    */
   specialtyAspectGroupKey(event: Event): string {
-    const planets = _.sortBy(
+    const bodiesCapitalized = _.sortBy(
       event.categories.filter((category) =>
         specialtyAspectBodies.map((b) => _.startCase(b)).includes(category),
       ),
     );
-    const aspect = event.categories.find((category) =>
+    const aspectCapitalized = event.categories.find((category) =>
       specialtyAspects.map((a) => _.startCase(a)).includes(category),
     );
-    return planets.length === 2 && aspect
-      ? `${planets[0]}-${aspect}-${planets[1]}`
+    return bodiesCapitalized.length === 2 && aspectCapitalized
+      ? `${bodiesCapitalized[0]}-${aspectCapitalized}-${bodiesCapitalized[1]}`
       : "";
   }
 }

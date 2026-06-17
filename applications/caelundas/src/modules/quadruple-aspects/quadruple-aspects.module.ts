@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 
-import { QuadrupleAspectsHelperService } from "./quadruple-aspects-helper.service";
+import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
 /**
@@ -12,6 +12,6 @@ import { QuadrupleAspectsService } from "./quadruple-aspects.service";
   controllers: [],
   exports: [QuadrupleAspectsService],
   imports: [],
-  providers: [QuadrupleAspectsHelperService, QuadrupleAspectsService],
+  providers: [QuadrupleAspectsComposerService, QuadrupleAspectsService],
 })
 export class QuadrupleAspectsModule {}

@@ -4,7 +4,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
-import { SpecialtyAspectsHelperService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-helper.service";
+import { SpecialtyAspectsComposerService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-composer.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -29,7 +29,7 @@ describe("SpecialtyAspectsService", () => {
       providers: [
         LoggerService,
         SpecialtyAspectsService,
-        SpecialtyAspectsHelperService,
+        SpecialtyAspectsComposerService,
         AspectsUtilities,
         EphemerisService,
         MathService,

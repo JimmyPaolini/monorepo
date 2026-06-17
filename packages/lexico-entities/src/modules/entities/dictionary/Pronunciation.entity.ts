@@ -1,19 +1,25 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, JoinColumn, ManyToOne, Unique } from "typeorm";
 
-import { AuditableEntity } from "../Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity.js";
 
 import type { Lexeme } from "./Lexeme.entity.js";
 
-export const pronunciationVariantValues = [
-  "classical",
-  "ecclesiastical",
-  "vulgar",
-] as const;
+export const pronunciationVariant = {
+  classical: "classical",
+  ecclesiastical: "ecclesiastical",
+  vulgar: "vulgar",
+} as const;
+
 /**
  *
  */
-export type PronunciationVariant = (typeof pronunciationVariantValues)[number];
+export type PronunciationVariant =
+  (typeof pronunciationVariant)[keyof typeof pronunciationVariant];
+
+export const pronunciationVariants = Object.values(
+  pronunciationVariant,
+) as PronunciationVariant[];
 
 /**
  *
@@ -61,7 +67,7 @@ export class Pronunciation extends AuditableEntity {
 
   @Column({
     comment: "Pronunciation tradition (classical, ecclesiastical, or vulgar)",
-    enum: pronunciationVariantValues,
+    enum: pronunciationVariants,
     type: "enum",
   })
   @Field(() => String)

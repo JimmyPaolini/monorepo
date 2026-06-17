@@ -1,7 +1,7 @@
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
 
-import { SextupleAspectsHelperService } from "./sextuple-aspects-helper.service";
+import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service";
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
 /**
@@ -13,6 +13,6 @@ import { SextupleAspectsService } from "./sextuple-aspects.service";
   controllers: [],
   exports: [SextupleAspectsService],
   imports: [MathModule],
-  providers: [SextupleAspectsHelperService, SextupleAspectsService],
+  providers: [SextupleAspectsComposerService, SextupleAspectsService],
 })
 export class SextupleAspectsModule {}

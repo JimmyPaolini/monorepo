@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { QuadrupleAspectsHelperService } from "./quadruple-aspects-helper.service";
+import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -19,7 +19,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 
 const service = new QuadrupleAspectsService(
-  new QuadrupleAspectsHelperService(),
+  new QuadrupleAspectsComposerService(),
 );
 
 describe("quadruple-aspects.events integration", () => {

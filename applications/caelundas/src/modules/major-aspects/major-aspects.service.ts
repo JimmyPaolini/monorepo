@@ -160,43 +160,46 @@ export class MajorAspectsService {
   private detectAspectForBodyPair(
     args: DetectAspectForBodyPairArguments,
   ): Event | null {
-    const win1 = this.getLongitudesWindowForBody({
+    const body1LongitudesWindow = this.getLongitudesWindowForBody({
       body: args.body1,
       coordinateEphemerisByBody: args.coordinateEphemerisByBody,
       minute: args.minute,
       nextMinute: args.nextMinute,
       previousMinute: args.previousMinute,
     });
-    const win2 = this.getLongitudesWindowForBody({
+    const body2LongitudesWindow = this.getLongitudesWindowForBody({
       body: args.body2,
       coordinateEphemerisByBody: args.coordinateEphemerisByBody,
       minute: args.minute,
       nextMinute: args.nextMinute,
       previousMinute: args.previousMinute,
     });
-    const phase = this.detectPhaseFromWindows(win1, win2);
+    const phase = this.detectPhaseFromWindows(
+      body1LongitudesWindow,
+      body2LongitudesWindow,
+    );
     if (!phase) return null;
     return this.buildMajorAspectEvent({
       body1: args.body1,
       body2: args.body2,
-      longitudeBody1: win1.current,
-      longitudeBody2: win2.current,
+      longitudeBody1: body1LongitudesWindow.current,
+      longitudeBody2: body2LongitudesWindow.current,
       phase,
       timestamp: args.minute,
     });
   }
 
   private detectPhaseFromWindows(
-    win1: { current: number; next: number; previous: number },
-    win2: { current: number; next: number; previous: number },
+    body1LongitudesWindow: { current: number; next: number; previous: number },
+    body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
     return this.detectAspectPhase({
-      currentLongitudeBody1: win1.current,
-      currentLongitudeBody2: win2.current,
-      nextLongitudeBody1: win1.next,
-      nextLongitudeBody2: win2.next,
-      previousLongitudeBody1: win1.previous,
-      previousLongitudeBody2: win2.previous,
+      currentLongitudeBody1: body1LongitudesWindow.current,
+      currentLongitudeBody2: body2LongitudesWindow.current,
+      nextLongitudeBody1: body1LongitudesWindow.next,
+      nextLongitudeBody2: body2LongitudesWindow.next,
+      previousLongitudeBody1: body1LongitudesWindow.previous,
+      previousLongitudeBody2: body2LongitudesWindow.previous,
     });
   }
 
@@ -239,20 +242,20 @@ export class MajorAspectsService {
   }
 
   private getAspectGroupKey(event: Event): string {
-    const planets = _.sortBy(
+    const bodiesCapitalized = _.sortBy(
       event.categories.filter((category) =>
         majorAspectBodies
           .map((majorAspectBody) => _.startCase(majorAspectBody))
           .includes(category),
       ),
     );
-    const aspect = event.categories.find((category) =>
+    const aspectCapitalized = event.categories.find((category) =>
       majorAspects
         .map((majorAspect) => _.startCase(majorAspect))
         .includes(category),
     );
-    if (planets.length === 2 && aspect) {
-      return `${planets[0]}-${aspect}-${planets[1]}`;
+    if (bodiesCapitalized.length === 2 && aspectCapitalized) {
+      return `${bodiesCapitalized[0]}-${aspectCapitalized}-${bodiesCapitalized[1]}`;
     }
     return "";
   }
@@ -341,18 +344,21 @@ export class MajorAspectsService {
     };
   }
 
-  private processAspectGroup(key: string, groupEvents: Event[]): Event[] {
-    if (!key) return [];
-    const formingEvents = groupEvents.filter((event) =>
+  private processAspectGroup(
+    aspectGroupKey: string,
+    aspectGroupEvents: Event[],
+  ): Event[] {
+    if (!aspectGroupKey) return [];
+    const formingEvents = aspectGroupEvents.filter((event) =>
       event.categories.includes("Forming"),
     );
-    const dissolvingEvents = groupEvents.filter((event) =>
+    const dissolvingEvents = aspectGroupEvents.filter((event) =>
       event.categories.includes("Dissolving"),
     );
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       formingEvents,
       dissolvingEvents,
-      `major aspect ${key}`,
+      `major aspect ${aspectGroupKey}`,
     );
     return pairs.map(([beginning, ending]) =>
       this.getMajorAspectProgressiveEvent(beginning, ending),
@@ -427,12 +433,16 @@ export class MajorAspectsService {
     const majorAspectEvents = events.filter((event) =>
       event.categories.includes("Major Aspect"),
     );
-    const groupedEvents = _.groupBy(majorAspectEvents, (event) =>
+    const groupedAspectEvents = _.groupBy(majorAspectEvents, (event) =>
       this.getAspectGroupKey(event),
     );
     const progressiveEvents: Event[] = [];
-    for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-      progressiveEvents.push(...this.processAspectGroup(key, groupEvents));
+    for (const [aspectGroupKey, aspectGroupEvents] of Object.entries(
+      groupedAspectEvents,
+    )) {
+      progressiveEvents.push(
+        ...this.processAspectGroup(aspectGroupKey, aspectGroupEvents),
+      );
     }
     return progressiveEvents;
   }

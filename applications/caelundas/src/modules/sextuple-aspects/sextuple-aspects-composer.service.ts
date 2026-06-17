@@ -27,15 +27,19 @@ import type { Moment } from "moment-timezone";
  * Event building and geometry helpers for {@link SextupleAspectsService}.
  */
 @Injectable()
-export class SextupleAspectsHelperService {
+export class SextupleAspectsComposerService {
   // 🔏 Private Methods
 
   /**
    *
    */
-  addConnection(map: Map<Body, Set<Body>>, b1: Body, b2: Body): void {
-    const s = map.get(b1);
-    if (s) s.add(b2);
+  addConnection(
+    map: Map<Body, Set<Body>>,
+    firstBody: Body,
+    secondBody: Body,
+  ): void {
+    const connectedBodies = map.get(firstBody);
+    if (connectedBodies) connectedBodies.add(secondBody);
   }
 
   /**
@@ -55,15 +59,15 @@ export class SextupleAspectsHelperService {
       bodies.map((b) => [b, new Set()]),
     );
     for (const edge of edges) {
-      const b0 = edge.bodies[0];
-      const b1 = edge.bodies[1];
-      if (!bodies.includes(b0) || !bodies.includes(b1)) continue;
+      const firstBody = edge.bodies[0];
+      const secondBody = edge.bodies[1];
+      if (!bodies.includes(firstBody) || !bodies.includes(secondBody)) continue;
       if (edge.aspect === "trine") {
-        this.addConnection(trineConnections, b0, b1);
-        this.addConnection(trineConnections, b1, b0);
+        this.addConnection(trineConnections, firstBody, secondBody);
+        this.addConnection(trineConnections, secondBody, firstBody);
       } else if (edge.aspect === "sextile") {
-        this.addConnection(sextileConnections, b0, b1);
-        this.addConnection(sextileConnections, b1, b0);
+        this.addConnection(sextileConnections, firstBody, secondBody);
+        this.addConnection(sextileConnections, secondBody, firstBody);
       }
     }
     return { sextileConnections, trineConnections };
@@ -77,24 +81,24 @@ export class SextupleAspectsHelperService {
     phase: AspectPhase,
     eventMinute: Moment,
   ): Event | null {
-    const b0 = hexagramBodies[0];
-    const b1 = hexagramBodies[1];
-    const b2 = hexagramBodies[2];
-    const b3 = hexagramBodies[3];
-    const b4 = hexagramBodies[4];
-    const b5 = hexagramBodies[5];
+    const body1 = hexagramBodies[0];
+    const body2 = hexagramBodies[1];
+    const body3 = hexagramBodies[2];
+    const body4 = hexagramBodies[3];
+    const body5 = hexagramBodies[4];
+    const body6 = hexagramBodies[5];
 
-    if (!b0 || !b1 || !b2 || !b3 || !b4 || !b5) {
+    if (!body1 || !body2 || !body3 || !body4 || !body5 || !body6) {
       return null;
     }
 
     return this.getSextupleAspectEvent({
-      body1: b0,
-      body2: b1,
-      body3: b2,
-      body4: b3,
-      body5: b4,
-      body6: b5,
+      body1,
+      body2,
+      body3,
+      body4,
+      body5,
+      body6,
       phase,
       sextupleAspect: "hexagram",
       timestamp: eventMinute,
@@ -158,7 +162,7 @@ export class SextupleAspectsHelperService {
    *
    */
   buildSextupleEventFromParameters(
-    parameters: BuildSextupleEventParameters,
+    eventArguments: BuildSextupleEventParameters,
   ): Event {
     const {
       aspectSymbol,
@@ -167,7 +171,7 @@ export class SextupleAspectsHelperService {
       sextupleAspect,
       symbols,
       timestamp,
-    } = parameters;
+    } = eventArguments;
 
     const description = `${bodiesSorted.join(", ")} ${sextupleAspect} ${phase}`;
     const summary = this.buildSextupleAspectSummary({
@@ -203,8 +207,8 @@ export class SextupleAspectsHelperService {
       const current = arrangement[index];
       const next = arrangement[(index + 1) % 6];
       if (!current || !next) return false;
-      const conns = sextileConnections.get(current);
-      if (!conns?.has(next)) return false;
+      const sextileNeighbors = sextileConnections.get(current);
+      if (!sextileNeighbors?.has(next)) return false;
     }
     return true;
   }
@@ -338,7 +342,9 @@ export class SextupleAspectsHelperService {
   /**
    * Create a sextuple aspect event
    */
-  getSextupleAspectEvent(parameters: GetSextupleAspectEventArguments): Event {
+  getSextupleAspectEvent(
+    eventArguments: GetSextupleAspectEventArguments,
+  ): Event {
     const {
       body1,
       body2,
@@ -349,7 +355,7 @@ export class SextupleAspectsHelperService {
       phase,
       sextupleAspect,
       timestamp,
-    } = parameters;
+    } = eventArguments;
 
     const bodiesList = [body1, body2, body3, body4, body5, body6];
     const bodiesSorted = _.sortBy(bodiesList.map((b) => _.startCase(b)));
@@ -400,10 +406,14 @@ export class SextupleAspectsHelperService {
    */
   isValidGrandTrine(
     trineConnections: Map<Body, Set<Body>>,
-    b1: Body | undefined,
-    b2: Body | undefined,
+    firstBody: Body | undefined,
+    secondBody: Body | undefined,
   ): boolean {
-    return !!(b1 && b2 && trineConnections.get(b1)?.has(b2));
+    return !!(
+      firstBody &&
+      secondBody &&
+      trineConnections.get(firstBody)?.has(secondBody)
+    );
   }
 
   /**

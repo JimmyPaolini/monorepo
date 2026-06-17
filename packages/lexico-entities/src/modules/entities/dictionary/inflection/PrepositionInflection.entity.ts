@@ -3,11 +3,19 @@ import { ChildEntity, Column } from "typeorm";
 
 import { Inflection } from "./Inflection.entity.js";
 
-export const prepositionCaseValues = ["accusative", "ablative", ""] as const;
+export const prepositionCase = {
+  ablative: "ablative",
+  accusative: "accusative",
+  none: "",
+} as const;
 /**
  *
  */
-export type PrepositionCase = (typeof prepositionCaseValues)[number];
+export type PrepositionCase =
+  (typeof prepositionCase)[keyof typeof prepositionCase];
+export const prepositionCases = Object.values(
+  prepositionCase,
+) as PrepositionCase[];
 
 /**
  *
@@ -19,7 +27,7 @@ export class PrepositionInflection extends Inflection {
     comment:
       "Grammatical case governed by the preposition (accusative or ablative)",
     default: "",
-    enum: prepositionCaseValues,
+    enum: prepositionCases,
     type: "enum",
   })
   @Field(() => String)

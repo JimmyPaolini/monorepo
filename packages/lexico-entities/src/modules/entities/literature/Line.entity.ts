@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, ManyToOne, OneToMany } from "typeorm";
 
-import { AuditableEntity } from "../Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity.js";
 
 import type { Author } from "./Author.entity.js";
 import type { Text } from "./Text.entity.js";

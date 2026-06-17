@@ -29,19 +29,18 @@ import type { Moment } from "moment-timezone";
 
 /** Event building and ingress detection helpers for {@link IngressesService}. */
 @Injectable()
-export class IngressesHelperService {
+export class IngressesComposerService {
   // 🏗 Dependency Injection
 
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
   ) {
-    this.logger.setContext(IngressesHelperService.name);
+    this.logger.setContext(IngressesComposerService.name);
   }
 
   // 🔐 Private Fields
 
-  private static readonly categories = ["Astronomy", "Astrology", "Ingress"];
   private static readonly degreeRangeBySign: Record<
     Sign,
     { maximum: number; minimum: number }
@@ -59,19 +58,24 @@ export class IngressesHelperService {
     taurus: { maximum: 60, minimum: 30 },
     virgo: { maximum: 180, minimum: 150 },
   };
+  private static readonly ingressBaseCategories = [
+    "Astronomy",
+    "Astrology",
+    "Ingress",
+  ];
 
   // 🔏 Private Methods
 
   private static getSign(longitude: number): Sign {
-    const entry = objectEntries(IngressesHelperService.degreeRangeBySign).find(
-      ([, { maximum, minimum }]) => {
-        return longitude >= minimum && longitude < maximum;
-      },
-    );
-    if (!entry) {
+    const signDegreeRangeEntry = objectEntries(
+      IngressesComposerService.degreeRangeBySign,
+    ).find(([, { maximum, minimum }]) => {
+      return longitude >= minimum && longitude < maximum;
+    });
+    if (!signDegreeRangeEntry) {
       throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
     }
-    return entry[0];
+    return signDegreeRangeEntry[0];
   }
 
   /**
@@ -102,7 +106,7 @@ export class IngressesHelperService {
     longitude: number;
   }): Event {
     const { body, date, longitude } = args;
-    const sign = IngressesHelperService.getSign(longitude);
+    const sign = IngressesComposerService.getSign(longitude);
     const decan = this.resolveDecan(longitude);
     const bodyCapitalized = capitalize(body);
     const signCapitalized = capitalize(sign);
@@ -110,7 +114,7 @@ export class IngressesHelperService {
     const summary = `${symbolByBody[body]} → ${symbolBySign[sign]}${symbolByDecan[decan]} ${description}`;
     return {
       categories: [
-        ...IngressesHelperService.categories,
+        ...IngressesComposerService.ingressBaseCategories,
         "Decan",
         bodyCapitalized,
         signCapitalized,
@@ -137,7 +141,7 @@ export class IngressesHelperService {
     longitude: number;
   }): Event {
     const { body, date, longitude } = args;
-    const sign = IngressesHelperService.getSign(longitude);
+    const sign = IngressesComposerService.getSign(longitude);
     const bodyCapitalized = capitalize(body);
     const signCapitalized = capitalize(sign);
     const bodySymbol = symbolByBody[body];
@@ -150,7 +154,7 @@ export class IngressesHelperService {
 
     const peakIngressEvent: Event = {
       categories: [
-        ...IngressesHelperService.categories,
+        ...IngressesComposerService.ingressBaseCategories,
         "Peak",
         bodyCapitalized,
         signCapitalized,
@@ -202,7 +206,7 @@ export class IngressesHelperService {
     longitude: number;
   }): Event {
     const { body, date, longitude } = args;
-    const sign = IngressesHelperService.getSign(longitude);
+    const sign = IngressesComposerService.getSign(longitude);
     const bodyCapitalized = _.startCase(body);
     const signCapitalized = _.startCase(sign);
     const bodySymbol = symbolByBody[body];
@@ -215,7 +219,7 @@ export class IngressesHelperService {
 
     const signIngressEvent: Event = {
       categories: [
-        ...IngressesHelperService.categories,
+        ...IngressesComposerService.ingressBaseCategories,
         bodyCapitalized,
         signCapitalized,
       ],
@@ -279,8 +283,9 @@ export class IngressesHelperService {
    *
    */
   getDecan(longitude: number): number {
-    const sign = IngressesHelperService.getSign(longitude);
-    const { minimum: minimum } = IngressesHelperService.degreeRangeBySign[sign];
+    const sign = IngressesComposerService.getSign(longitude);
+    const { minimum: minimum } =
+      IngressesComposerService.degreeRangeBySign[sign];
     return Math.floor((longitude - minimum) / 10) + 1;
   }
 
@@ -370,14 +375,14 @@ export class IngressesHelperService {
   }): boolean {
     const { currentLongitude, previousLongitude } = args;
 
-    const previousSign = IngressesHelperService.getSign(previousLongitude);
+    const previousSign = IngressesComposerService.getSign(previousLongitude);
     const { minimum: previousMinimum } =
-      IngressesHelperService.degreeRangeBySign[previousSign];
+      IngressesComposerService.degreeRangeBySign[previousSign];
     const previousDifference = previousLongitude - previousMinimum;
 
-    const currentSign = IngressesHelperService.getSign(currentLongitude);
+    const currentSign = IngressesComposerService.getSign(currentLongitude);
     const { minimum: currentMinimum } =
-      IngressesHelperService.degreeRangeBySign[currentSign];
+      IngressesComposerService.degreeRangeBySign[currentSign];
     const currentDifference = currentLongitude - currentMinimum;
 
     return currentDifference >= 15 && previousDifference < 15;
@@ -392,8 +397,8 @@ export class IngressesHelperService {
   }): boolean {
     const { currentLongitude, previousLongitude } = args;
     return (
-      IngressesHelperService.getSign(currentLongitude) !==
-      IngressesHelperService.getSign(previousLongitude)
+      IngressesComposerService.getSign(currentLongitude) !==
+      IngressesComposerService.getSign(previousLongitude)
     );
   }
 

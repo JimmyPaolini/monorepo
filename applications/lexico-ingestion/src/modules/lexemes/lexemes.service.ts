@@ -92,8 +92,11 @@ export class LexemesService {
       elt,
       lexeme,
     );
-    const { etymology, participleTranslation } =
-      this.etymologyService.parseEtymology($, elt, lexeme);
+    const { etymology, participleTranslation } = this.etymologyService.parse(
+      $,
+      elt,
+      lexeme,
+    );
     lexeme.etymology = etymology;
     lexeme.translations = participleTranslation
       ? [...translations, participleTranslation]
@@ -112,7 +115,11 @@ export class LexemesService {
       pos: partOfSpeech,
       principalParts,
     });
-    lexeme.forms = this.formsService.buildForms(partOfSpeech, rawForms, lexeme);
+    lexeme.forms = this.formsService.buildFormsForPartOfSpeech(
+      partOfSpeech,
+      rawForms,
+      lexeme,
+    );
   }
 
   private normalize(str: string): string {
