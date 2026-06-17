@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import _ from "lodash";
 import { BookOpen, Edit, Plus, Trash2 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 
 import {
   Button,
@@ -22,12 +20,7 @@ import {
   Textarea,
 } from "@monorepo/lexico-components";
 
-import {
-  createUserText,
-  deleteUserText,
-  getUserTexts,
-  updateUserText,
-} from "../lib/library";
+import { useLibraryPage } from "./hooks/useLibraryPage.js";
 
 import type { UserText } from "../lib/library";
 import type { ReactNode } from "react";
@@ -63,27 +56,6 @@ interface LibraryEditDialogProps {
 interface LibraryEmptyStateProps {
   error: null | string;
   isLoading: boolean;
-  texts: UserText[];
-}
-
-interface LibraryPageState {
-  closeEdit: () => void;
-  editingText: null | UserText;
-  error: null | string;
-  formText: string;
-  formTitle: string;
-  handleCreate: () => Promise<void>;
-  handleDelete: (id: string) => Promise<void>;
-  handleUpdate: () => Promise<void>;
-  isCreateOpen: boolean;
-  isLoading: boolean;
-  isSubmitting: boolean;
-  openEdit: (text: UserText) => void;
-  selectedText: null | UserText;
-  setFormText: (value: string) => void;
-  setFormTitle: (value: string) => void;
-  setIsCreateOpen: (open: boolean) => void;
-  setSelectedText: (text: null | UserText) => void;
   texts: UserText[];
 }
 
@@ -453,133 +425,4 @@ function LibraryTextGrid({
       ))}
     </div>
   );
-}
-
-function useLibraryPage(): LibraryPageState {
-  const [texts, setTexts] = useState<UserText[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<null | string>(null);
-  const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [editingText, setEditingText] = useState<null | UserText>(null);
-  const [selectedText, setSelectedText] = useState<null | UserText>(null);
-  const [formTitle, setFormTitle] = useState("");
-  const [formText, setFormText] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const fetchTexts = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const data = await getUserTexts();
-      setTexts(data);
-    } catch (error_: unknown) {
-      const message =
-        error_ instanceof Error ? error_.message : "Failed to load texts";
-      setError(message);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    void fetchTexts();
-  }, [fetchTexts]);
-
-  const handleCreate = useCallback(async () => {
-    if (!formTitle.trim() || !formText.trim()) return;
-    setIsSubmitting(true);
-    try {
-      const result = await createUserText({
-        data: { text: formText, title: formTitle },
-      });
-      if (result.success && result.text) {
-        const newText = result.text;
-        setTexts((previous) =>
-          _.orderBy([...previous, newText], [(t) => t.title]),
-        );
-        setFormTitle("");
-        setFormText("");
-        setIsCreateOpen(false);
-      }
-    } catch (error_) {
-      console.error("Failed to create text:", error_);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [formTitle, formText]);
-
-  const handleUpdate = useCallback(async () => {
-    if (!editingText || !formTitle.trim() || !formText.trim()) return;
-    setIsSubmitting(true);
-    try {
-      const result = await updateUserText({
-        data: { id: editingText.id, text: formText, title: formTitle },
-      });
-      if (result.success) {
-        setTexts((previous) =>
-          _.orderBy(
-            previous.map((t) =>
-              t.id === editingText.id
-                ? { ...t, text: formText, title: formTitle }
-                : t,
-            ),
-            [(t) => t.title],
-          ),
-        );
-        setFormTitle("");
-        setFormText("");
-        setEditingText(null);
-      }
-    } catch (error_) {
-      console.error("Failed to update text:", error_);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [editingText, formTitle, formText]);
-
-  const handleDelete = useCallback(
-    async (id: string) => {
-      try {
-        const result = await deleteUserText({ data: { id } });
-        if (result.success) {
-          setTexts((previous) => previous.filter((t) => t.id !== id));
-          if (selectedText?.id === id) {
-            setSelectedText(null);
-          }
-        }
-      } catch (error_) {
-        console.error("Failed to delete text:", error_);
-      }
-    },
-    [selectedText],
-  );
-
-  return {
-    closeEdit: () => {
-      setFormTitle("");
-      setFormText("");
-      setEditingText(null);
-    },
-    editingText,
-    error,
-    formText,
-    formTitle,
-    handleCreate,
-    handleDelete,
-    handleUpdate,
-    isCreateOpen,
-    isLoading,
-    isSubmitting,
-    openEdit: (text: UserText) => {
-      setFormTitle(text.title);
-      setFormText(text.text);
-      setEditingText(text);
-    },
-    selectedText,
-    setFormText,
-    setFormTitle,
-    setIsCreateOpen,
-    setSelectedText,
-    texts,
-  };
 }

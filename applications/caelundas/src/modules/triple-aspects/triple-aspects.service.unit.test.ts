@@ -752,7 +752,12 @@ describe("TripleAspectsService", () => {
       ];
 
       expect(
-        TripleAspectsService.haveAspect("sun", "moon", "conjunct", edges),
+        TripleAspectsService.haveAspect({
+          aspectType: "conjunct",
+          body1: "sun",
+          body2: "moon",
+          edges,
+        }),
       ).toBe(true);
     });
 
@@ -765,7 +770,12 @@ describe("TripleAspectsService", () => {
       ];
 
       expect(
-        TripleAspectsService.haveAspect("moon", "sun", "conjunct", edges),
+        TripleAspectsService.haveAspect({
+          aspectType: "conjunct",
+          body1: "moon",
+          body2: "sun",
+          edges,
+        }),
       ).toBe(true);
     });
 
@@ -778,7 +788,12 @@ describe("TripleAspectsService", () => {
       ];
 
       expect(
-        TripleAspectsService.haveAspect("sun", "moon", "trine", edges),
+        TripleAspectsService.haveAspect({
+          aspectType: "trine",
+          body1: "sun",
+          body2: "moon",
+          edges,
+        }),
       ).toBe(false);
     });
 
@@ -791,7 +806,12 @@ describe("TripleAspectsService", () => {
       ];
 
       expect(
-        TripleAspectsService.haveAspect("mars", "jupiter", "conjunct", edges),
+        TripleAspectsService.haveAspect({
+          aspectType: "conjunct",
+          body1: "mars",
+          body2: "jupiter",
+          edges,
+        }),
       ).toBe(false);
     });
 
@@ -808,7 +828,12 @@ describe("TripleAspectsService", () => {
       ];
 
       expect(
-        TripleAspectsService.haveAspect("mars", "jupiter", "trine", edges),
+        TripleAspectsService.haveAspect({
+          aspectType: "trine",
+          body1: "mars",
+          body2: "jupiter",
+          edges,
+        }),
       ).toBe(true);
     });
   });

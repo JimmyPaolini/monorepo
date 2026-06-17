@@ -105,7 +105,9 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
     await fs.writeFile(chunkFile, JSON.stringify(data, null, 2), "utf8");
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
     return true;
   }
 

@@ -136,7 +136,7 @@ This plan adds six new static analysis tools to the monorepo, organized in three
 | TASK-044 | Update `AGENTS.md` to mention new tools in the "Common Gotchas" or relevant sections: Gitleaks for secret scanning, eslint-plugin-unicorn rule overrides, Sherif for monorepo hygiene                           |           |      |
 | TASK-045 | Run full CI pipeline locally: `nx run-many -t lint,typecheck,format,spell-check,markdown-lint --all --configuration=check` to verify no regressions                                                             |           |      |
 | TASK-046 | Run `pnpm dlx sherif@1.10.0` and `pnpm exec syncpack lint` to verify monorepo consistency after all changes                                                                                                     |           |      |
-| TASK-047 | Test pre-commit hook by staging a test file and running `pnpm exec lint-staged --no-stash` to verify new Stylelint/CSS integration                                                                              |           |      |
+| TASK-047 | Test pre-commit hook by staging a test file and running `pnpm exec lint-staged` to verify new Stylelint/CSS integration                                                                              |           |      |
 | TASK-048 | Test pre-push hook by verifying `gitleaks git --staged --verbose --redact --exit-code 1` runs successfully                                                                                                      |           |      |
 
 ## 3. Alternatives
@@ -190,7 +190,7 @@ This plan adds six new static analysis tools to the monorepo, organized in three
 - **TEST-005**: Run `pnpm exec syncpack lint` — verify exit code 0 after fixing version mismatches
 - **TEST-006**: Run `nx run lexico:stylelint` — verify CSS files pass Stylelint checks
 - **TEST-007**: Verify CI pipeline passes by pushing changes and checking all GitHub Actions workflow runs
-- **TEST-008**: Run `pnpm exec lint-staged --no-stash` with a staged `.css` file — verify Stylelint runs in pre-commit
+- **TEST-008**: Run `pnpm exec lint-staged` with a staged `.css` file — verify Stylelint runs in pre-commit
 - **TEST-009**: Run the updated `.husky/pre-push` hook — verify Gitleaks scans staged changes and `validate-branch-name` still runs
 - **TEST-010**: Run `nx run-many -t typecheck --all` — verify no TypeScript errors introduced by new dependencies or config changes
 

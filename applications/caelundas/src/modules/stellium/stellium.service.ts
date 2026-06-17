@@ -44,7 +44,15 @@ export class StelliumService {
       for (let index_ = index + 1; index_ < bodies.length; index_++) {
         const bodyJ = bodies[index_];
         if (!bodyJ) continue;
-        if (!this.haveAspect(bodyI, bodyJ, "conjunct", edges)) return false;
+        if (
+          !this.haveAspect({
+            aspectType: "conjunct",
+            body1: bodyI,
+            body2: bodyJ,
+            edges,
+          })
+        )
+          return false;
       }
     }
     return true;
@@ -149,13 +157,13 @@ export class StelliumService {
     for (const cluster of this.buildConjunctionClusters(conjunctions)) {
       const bodies = [...cluster];
       if (!this.allPairsConjunct(bodies, unionEdges)) continue;
-      const result = this.determineCompoundPhaseFromSnapshots(
+      const result = this.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) => this.allPairsConjunct(bodies, edges),
         currentAspectBodies,
+        currentMinute: minute,
+        patternBodies: bodies,
         previousAspectBodies,
-        bodies,
-        minute,
-        (edges) => this.allPairsConjunct(bodies, edges),
-      );
+      });
       if (result)
         events.push(
           this.createStelliumEvent({
@@ -205,13 +213,20 @@ export class StelliumService {
     };
   }
 
-  private determineCompoundPhaseFromSnapshots(
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    patternBodies: Body[],
-    currentMinute: Moment,
-    checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): null | { eventMinute: Moment; phase: AspectPhase } {
+  private determineCompoundPhaseFromSnapshots(args: {
+    checkPatternExists: (edges: AspectBodies[]) => boolean;
+    currentAspectBodies: AspectBodies[];
+    currentMinute: Moment;
+    patternBodies: Body[];
+    previousAspectBodies: AspectBodies[];
+  }): null | { eventMinute: Moment; phase: AspectPhase } {
+    const {
+      checkPatternExists,
+      currentAspectBodies,
+      currentMinute,
+      patternBodies,
+      previousAspectBodies,
+    } = args;
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
       edges.filter(
@@ -249,12 +264,13 @@ export class StelliumService {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
-  private haveAspect(
-    body1: Body,
-    body2: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): boolean {
+  private haveAspect(args: {
+    aspectType: Aspect;
+    body1: Body;
+    body2: Body;
+    edges: AspectBodies[];
+  }): boolean {
+    const { aspectType, body1, body2, edges } = args;
     return edges.some(
       (edge) =>
         edge.aspect === aspectType &&

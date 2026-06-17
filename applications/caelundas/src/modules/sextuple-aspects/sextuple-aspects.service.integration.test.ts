@@ -2,6 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
+import { SextupleAspectsHelperService } from "./sextuple-aspects-helper.service";
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -19,7 +20,10 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * - 6 sextiles connecting adjacent bodies: 0-1, 1-2, 2-3, 3-4, 4-5, 5-0
  */
 
-const service = new SextupleAspectsService(new MathService());
+const service = new SextupleAspectsService(
+  new SextupleAspectsHelperService(),
+  new MathService(),
+);
 
 describe("sextuple-aspects.events integration", () => {
   describe("Hexagram pattern detection with realistic timing", () => {

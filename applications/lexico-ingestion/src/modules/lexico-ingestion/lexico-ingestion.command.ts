@@ -12,16 +12,7 @@ import { LoggerService } from "../logger/logger.service";
 import { PerseusCommand } from "../perseus/perseus.command";
 import { WiktionaryCommand } from "../wiktionary/wiktionary.command";
 
-/**
- *
- */
-export interface LexicoIngestionCommandOptions {
-  dictionary?: boolean;
-  library?: boolean;
-  librarySources?: boolean;
-  literature?: boolean;
-  wikipedia?: boolean;
-}
+import type { LexicoIngestionCommandOptions } from "./lexico-ingestion.types";
 
 /**
  * CLI entry point for lexico-ingestion.

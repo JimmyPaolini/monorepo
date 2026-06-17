@@ -101,6 +101,7 @@ const config: KnipConfig = {
         "src/**/*.end-to-end.test.ts",
         "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
         "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "src/modules/caelundas/caelundas.body-types.ts", // Split-out type surface not yet adopted by the wider module graph
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],
@@ -145,6 +146,9 @@ const config: KnipConfig = {
         "scripts/**/*.ts",
         "src/modules/database/data-source.ts",
         "src/modules/database/migrations/**/*.ts",
+      ],
+      ignoreDependencies: [
+        "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
       ],
       ignore: [
         // TODO: re add these

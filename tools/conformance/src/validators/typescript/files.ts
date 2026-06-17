@@ -76,12 +76,12 @@ export function validateInstanceDirectory(args: {
     .map((node) => node.name);
 
   const results = templateFilenames.map((templateFilename) =>
-    resolveTemplateFile(
-      templateFilename,
+    resolveTemplateFile({
       data,
       instanceDirectoryPath,
       templateDirectoryPath,
-    ),
+      templateFilename,
+    }),
   );
 
   return { directoryName: name, results };
@@ -208,18 +208,18 @@ function formatErrorLines(error: ConformanceError, index: number): string[] {
   return [
     "",
     `     ${String(index + 1)}. ${error.message}`,
-    ...formatLocationLines(
-      "Instance",
-      error.instanceLine,
-      error.instanceColumn,
-      error.instancePath,
-    ),
-    ...formatLocationLines(
-      "Template",
-      error.templateLine,
-      error.templateColumn,
-      error.templatePath,
-    ),
+    ...formatLocationLines({
+      column: error.instanceColumn,
+      jsonPath: error.instancePath,
+      line: error.instanceLine,
+      prefix: "Instance",
+    }),
+    ...formatLocationLines({
+      column: error.templateColumn,
+      jsonPath: error.templatePath,
+      line: error.templateLine,
+      prefix: "Template",
+    }),
     ...(error.expected === undefined
       ? []
       : [`        Expected: \`${error.expected}\``]),
@@ -246,12 +246,13 @@ function formatFileResultLines(
   return [...header, ...errorLines];
 }
 
-function formatLocationLines(
-  prefix: string,
-  line: number | undefined,
-  column: number | undefined,
-  jsonPath: string | undefined,
-): string[] {
+function formatLocationLines(args: {
+  column: number | undefined;
+  jsonPath: string | undefined;
+  line: number | undefined;
+  prefix: string;
+}): string[] {
+  const { column, jsonPath, line, prefix } = args;
   if (line !== undefined) {
     const column_ = column === undefined ? "" : `, Column ${String(column)}`;
     return [`        ${prefix}: Line ${String(line)}${column_}`];
@@ -262,17 +263,23 @@ function formatLocationLines(
   return [];
 }
 
-function resolveTemplateFile(
-  templateFilename: string,
-  data: Record<string, unknown>,
-  instanceDirectoryPath: string,
-  templateDirectoryPath: string,
-): {
+function resolveTemplateFile(args: {
+  data: Record<string, unknown>;
+  instanceDirectoryPath: string;
+  templateDirectoryPath: string;
+  templateFilename: string;
+}): {
   errors: ConformanceError[];
   filename: string;
   instanceFilePath: string;
   templateFilePath: string;
 } {
+  const {
+    data,
+    instanceDirectoryPath,
+    templateDirectoryPath,
+    templateFilename,
+  } = args;
   const instanceFilename = templateFilename.replaceAll(
     /__(\w+)__/g,
     (_: string, field: string) => {

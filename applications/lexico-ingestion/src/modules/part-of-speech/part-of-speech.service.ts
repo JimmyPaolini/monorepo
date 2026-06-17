@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
-import cheerioTableParser from "cheerio-tableparser";
 
 import {
   adjectiveDeclensionValues,
@@ -30,19 +29,11 @@ import {
   genderRegex,
   nounDeclensionRegex,
   prepositionCaseRegex,
-  sumEsseFui,
   verbConjugationRegex,
 } from "./part-of-speech.constants";
+import { PartOfSpeechFormsParser } from "./part-of-speech.forms-parser.js";
 
 import type { AnyNode } from "domhandler";
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function isUnknownArray(value: unknown): value is unknown[] {
-  return Array.isArray(value);
-}
 
 /**
  * Resolves the part of speech from a Wiktionary HTML element, dispatches
@@ -120,6 +111,8 @@ export class PartOfSpeechService {
     verb: "verb",
   };
 
+  private readonly formsParser = new PartOfSpeechFormsParser();
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
@@ -152,82 +145,6 @@ export class PartOfSpeechService {
     noun.gender = nounGenderValues.find((v) => v === matchedGender) ?? "";
     noun.other = other;
     return noun;
-  }
-
-  private collectTableIdentifiers(
-    index: number,
-    index_: number,
-    table_: string[][],
-  ): Set<string> {
-    const { finalIndex: finalM, identifiers: columnIds } = this.scanTableAxis(
-      index,
-      (m) => table_[m]?.[index_] ?? "",
-    );
-    const { finalIndex: finalN, identifiers: rowIds } = this.scanTableAxis(
-      index_,
-      (n) => table_[index]?.[n] ?? "",
-    );
-    const corner = table_[finalM + 1]?.[finalN + 1] ?? "";
-    const cornerEntries: string[] = ["Plural", "Singular"].includes(corner)
-      ? [corner.toLowerCase().trim()]
-      : [];
-    return new Set([...columnIds, ...rowIds, ...cornerEntries]);
-  }
-
-  private findGenericIdentifiers(
-    index: number,
-    index_: number,
-    table_: string[][],
-    lexeme: Lexeme,
-  ): string[] {
-    const identifiers = this.collectTableIdentifiers(index, index_, table_);
-    if (
-      ["adjective", "numeral", "participle", "suffix"].includes(
-        lexeme.partOfSpeech,
-      )
-    ) {
-      return [
-        [...identifiers].find((id) => this.isNumber(id)) ?? "",
-        [...identifiers].find((id) => this.isCase(id)) ?? "",
-        [...identifiers].find((id) => this.isGender(id)) ?? "neuter",
-      ].filter(Boolean);
-    }
-    return [...identifiers];
-  }
-
-  private findVerbIdentifiers(
-    index: number,
-    index_: number,
-    table_: string[][],
-  ): string[] {
-    const { finalIndex: finalM, identifiers: columnIds } = this.scanVerbHeader(
-      index,
-      (m) => table_[m]?.[index_] ?? "",
-    );
-    const { finalIndex: finalN, identifiers: rowIds } = this.scanVerbHeader(
-      index_,
-      (n) => table_[index]?.[n] ?? "",
-    );
-    const cornerEntry = (table_[finalM]?.[finalN] ?? "").toLowerCase().trim();
-    return [...new Set([...columnIds, ...rowIds, cornerEntry])]
-      .map((id) =>
-        id
-          .replace(/future\s?perfect/i, "futurePerfect")
-          .replace("non-finite forms", "nonFinite")
-          .replace("verbal nouns", "verbalNouns")
-          .replace(/s$/, ""),
-      )
-      .filter(Boolean);
-  }
-
-  private flattenForms(object: unknown): string[] {
-    if (!object) return [];
-    if (isUnknownArray(object))
-      return object.filter((v): v is string => typeof v === "string");
-    if (isRecord(object)) {
-      return Object.values(object).flatMap((value) => this.flattenForms(value));
-    }
-    return [];
   }
 
   private getTextOrEmpty(part: PrincipalPart | undefined): string[] {
@@ -375,36 +292,6 @@ export class PartOfSpeechService {
     return adjectiveInflection;
   }
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async ingestVerbForms(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-  ): Promise<unknown> {
-    const table = this.parseFormTable($, elt);
-    if (!table) return null;
-
-    const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
-
-    for (let index = 0; index < table.length; index++) {
-      const row = table[index] ?? [];
-      for (const [index_, element] of row.entries()) {
-        this.processVerbFormRow(
-          index,
-          index_,
-          element,
-          table,
-          disorganizedForms,
-        );
-      }
-    }
-
-    const forms: Record<string, unknown> = {};
-    for (const inflection of structuredClone(disorganizedForms)) {
-      this.sortIdentifiers(inflection, forms);
-    }
-    return forms;
-  }
-
   private ingestVerbInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -428,259 +315,6 @@ export class PartOfSpeechService {
       verbConjugationValues.find((v) => v === finalConjugation) ?? "";
     verbInflection.other = other;
     return verbInflection;
-  }
-
-  private isCase(str: string): boolean {
-    return /^((nominative)|(genitive)|(dative)|(accusative)|(ablative)|(vocative)|(locative))$/i.test(
-      str,
-    );
-  }
-
-  private isGender(str: string): boolean {
-    return /^((masculine)|(feminine)|(neuter))$/i.test(str);
-  }
-
-  private isGenericFormCell(cell: string): boolean {
-    return (
-      cell.includes("<span ") ||
-      cell.includes("\u2014") ||
-      cell.includes(" + ") ||
-      cell.length === 0
-    );
-  }
-
-  private isNumber(str: string): boolean {
-    return /^((singular)|(plural))$/i.test(str);
-  }
-
-  private isVerbFormCell(cell: string): boolean {
-    return (
-      cell.includes("<span ") || cell.includes("\u2014") || cell.includes(" + ")
-    );
-  }
-
-  private lookupSumEsseFuiEntry(
-    mood: string,
-    voice: string,
-    tense: string,
-    number: string,
-    person: string,
-  ): string[] | undefined {
-    return sumEsseFui[mood]?.[voice]?.[tense]?.[number]?.[person];
-  }
-
-  private parseFormTable(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-  ): null | string[][] {
-    const tableHtml = $(elt)
-      .nextAll("div")
-      .filter(
-        (_: number, element: AnyNode) => $(element).find("table").length > 0,
-      )
-      .first()
-      .find("table")
-      .first();
-    if (tableHtml.length <= 0) return null;
-
-    const $table = cheerio.load($.html(tableHtml));
-    cheerioTableParser($table);
-
-    let table: string[][] = $table("table").parsetable(true, true, false);
-
-    // Transpose: table[col][row] → table[row][col]
-    table = (table[0] ?? []).map((_: unknown, index: number) =>
-      table.map((column: string[]) => column[index] ?? ""),
-    );
-
-    table = table.map((tr: string[]) =>
-      tr.map((tc: string) => {
-        const c = cheerio.load(tc);
-        if (c("span").length <= 0) return c.text().trim();
-        return c("body").html() ?? "";
-      }),
-    );
-
-    return table;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async parseGenericForms(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-  ): Promise<unknown> {
-    const table = this.parseFormTable($, elt);
-    if (!table) return null;
-
-    const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
-
-    for (let index = 0; index < table.length; index++) {
-      const row = table[index] ?? [];
-      for (const [index_, element] of row.entries()) {
-        const cell = element;
-        if (cell.includes("<span ")) {
-          const c = cheerio.load(cell);
-          const words = c("span")
-            .toArray()
-            .map((s: AnyNode) => c(s).text())
-            .join(", ");
-          if (!/[A-Za-zāēīōūȳ\-\s]+/.test(words)) continue;
-          disorganizedForms.push({
-            identifiers: this.findGenericIdentifiers(
-              index,
-              index_,
-              table,
-              lexeme,
-            ),
-            word: words
-              .trim()
-              .replaceAll(/[\d*]/g, "")
-              .toLowerCase()
-              .split(", "),
-          });
-        }
-      }
-    }
-
-    const forms: Record<string, unknown> = {};
-    for (const inflection of structuredClone(disorganizedForms)) {
-      this.sortIdentifiers(inflection, forms);
-    }
-    return forms;
-  }
-
-  private parseVerbWordCell(
-    cell: string,
-    number: string,
-    person: string,
-  ): string[] {
-    const cleaned = cell
-      .trim()
-      .replaceAll(/[\d*]+/g, "")
-      .toLowerCase();
-    if (cleaned.includes(", ")) return cleaned.split(", ");
-    if (cleaned.includes(" + "))
-      return this.resolveVerbSumEntry(cleaned, number, person);
-    return [cleaned];
-  }
-
-  private processVerbFormRow(
-    index: number,
-    index_: number,
-    cell: string,
-    table: string[][],
-    disorganizedForms: { identifiers: string[]; word: string[] }[],
-  ): void {
-    if (!cell.includes("<span ") && !cell.includes(" + ")) return;
-    const c = cheerio.load(cell);
-    const identifiers = this.findVerbIdentifiers(index, index_, table);
-    const text = c.text();
-    if (!/[A-Za-za\u0113\u012B\u014D\u016B\u0233\-\s]+/.test(text)) return;
-    disorganizedForms.push({
-      identifiers,
-      word: this.parseVerbWordCell(
-        text,
-        identifiers[1] ?? "",
-        identifiers[0] ?? "",
-      ),
-    });
-  }
-
-  private resolveVerbSumEntry(
-    cleaned: string,
-    number: string,
-    person: string,
-  ): string[] {
-    const moodValues = new Set([
-      "imperative",
-      "indicative",
-      "non-finite",
-      "subjunctive",
-      "verbal nouns",
-    ]);
-    const voiceValues = new Set(["active", "passive"]);
-    const tenseValues = new Set([
-      "future",
-      "future perfect",
-      "imperfect",
-      "perfect",
-      "pluperfect",
-      "present",
-    ]);
-    const identifiers = cleaned.split(" ");
-    let mood = "";
-    let voice = "";
-    let tense = "";
-    for (const identifier of identifiers) {
-      if (moodValues.has(identifier)) mood = identifier;
-      else if (voiceValues.has(identifier)) voice = identifier;
-      else if (tenseValues.has(identifier)) tense = identifier;
-    }
-    const sumEntry = this.lookupSumEsseFuiEntry(
-      mood,
-      voice,
-      tense,
-      number,
-      person,
-    );
-    if (sumEntry) {
-      return sumEntry.map(
-        (extension) => `${identifiers[0] ?? ""} ${extension}`,
-      );
-    }
-    return [cleaned];
-  }
-
-  private scanTableAxis(
-    startIndex: number,
-    cellGetter: (index: number) => string,
-  ): { finalIndex: number; identifiers: Set<string> } {
-    let index = startIndex;
-    const identifiers = new Set<string>();
-    while (index >= 0 && this.isGenericFormCell(cellGetter(index))) index--;
-    while (index >= 0 && !this.isGenericFormCell(cellGetter(index))) {
-      identifiers.add(
-        cellGetter(index--).replaceAll(/[./]/g, "").toLowerCase().trim(),
-      );
-    }
-    return { finalIndex: index, identifiers };
-  }
-
-  private scanVerbHeader(
-    startIndex: number,
-    getCell: (index: number) => string,
-  ): { finalIndex: number; identifiers: Set<string> } {
-    let index = startIndex;
-    while (index > 0 && this.isVerbFormCell(getCell(index))) index--;
-    const cells = [getCell(index).toLowerCase().trim()];
-    if (index - 1 >= 0)
-      cells.push(
-        getCell(index - 1)
-          .toLowerCase()
-          .trim(),
-      );
-    return { finalIndex: index, identifiers: new Set(cells) };
-  }
-
-  private sortIdentifiers(
-    inflection: { identifiers: string[]; word: string[] },
-    object: Record<string, unknown>,
-  ): Record<string, unknown> {
-    const identifier = inflection.identifiers.pop();
-    if (!identifier) return object;
-    if (inflection.identifiers.length === 0) {
-      object[identifier] = inflection.word;
-      return object;
-    } else {
-      if (!object[identifier]) object[identifier] = {};
-      const current = object[identifier];
-      object[identifier] = this.sortIdentifiers(
-        inflection,
-        isRecord(current) ? current : {},
-      );
-      return object;
-    }
   }
 
   // 🌎 Public Methods
@@ -712,12 +346,13 @@ export class PartOfSpeechService {
   /**
    * Dispatches to the appropriate inflection parser for the given POS.
    */
-  ingestInflection(
-    pos: PartOfSpeech,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    principalParts: PrincipalPart[],
-  ): Inflection {
+  ingestInflection(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    pos: PartOfSpeech;
+    principalParts: PrincipalPart[];
+  }): Inflection {
+    const { $, elt, pos, principalParts } = args;
     const group = PartOfSpeechService.INFLECTION_GROUP[pos];
     const handlers: Record<string, () => Inflection> = {
       adjective: () => this.ingestAdjectiveInflection($, elt),
@@ -736,18 +371,19 @@ export class PartOfSpeechService {
    * Parses forms for the given lexeme. Dispatches to POS-specific form parsers
    * for verbs and adverbs; falls back to the generic form-table parser.
    */
-  parseForms(
-    pos: PartOfSpeech,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-    principalParts: PrincipalPart[],
-  ): unknown {
+  parseForms(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    lexeme: Lexeme;
+    pos: PartOfSpeech;
+    principalParts: PrincipalPart[];
+  }): unknown {
+    const { $, elt, lexeme, pos, principalParts } = args;
     const group = PartOfSpeechService.FORMS_GROUP[pos];
     const handlers: Record<string, () => unknown> = {
       adverb: () => this.ingestAdverbForms(principalParts),
-      generic: async () => this.parseGenericForms($, elt, lexeme),
-      verb: async () => this.ingestVerbForms($, elt),
+      generic: () => this.formsParser.parseGenericForms({ $, elt, lexeme }),
+      verb: () => this.formsParser.parseVerbForms({ $, elt }),
     };
     return (handlers[group] ?? (() => null))();
   }

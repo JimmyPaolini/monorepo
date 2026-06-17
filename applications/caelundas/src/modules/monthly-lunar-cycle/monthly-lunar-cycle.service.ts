@@ -159,7 +159,7 @@ export class MonthlyLunarCycleService {
     moonIlluminationEphemeris: IlluminationEphemeris,
     minute: Moment,
   ): number[] {
-    return Array.from({ length: MARGIN_MINUTES }, (_, marginIndex) => {
+    return Array.from({ length: MARGIN_MINUTES }, (_index, marginIndex) => {
       const m = minute.clone().add(marginIndex + 1, "minutes");
       return this.ephemerisService.getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
@@ -173,7 +173,7 @@ export class MonthlyLunarCycleService {
     moonIlluminationEphemeris: IlluminationEphemeris,
     minute: Moment,
   ): number[] {
-    return Array.from({ length: MARGIN_MINUTES }, (_, marginIndex) => {
+    return Array.from({ length: MARGIN_MINUTES }, (_index, marginIndex) => {
       const m = minute.clone().subtract(marginIndex + 1, "minutes");
       return this.ephemerisService.getIlluminationFromEphemeris(
         moonIlluminationEphemeris,

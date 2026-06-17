@@ -10,6 +10,7 @@ import { describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { IngressesHelperService } from "./ingresses-helper.service";
 import { IngressesService } from "./ingresses.service";
 
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -50,7 +51,12 @@ function createFullEphemeris(
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const service = new IngressesService(new LoggerService(), ephemerisService);
+const loggerService = new LoggerService();
+const helperService = new IngressesHelperService(
+  loggerService,
+  ephemerisService,
+);
+const service = new IngressesService(helperService);
 
 describe("ingresses.events integration", () => {
   describe("service.getSignIngressEvents", () => {

@@ -75,6 +75,7 @@
   "chat.editRequests": "inline",
   "chat.edits2.enabled": true,
   "chat.experimental.useSkillAdherencePrompt": true,
+  "chat.exploreAgent.defaultModel": "Claude Haiku 4.5 (copilot)",
   "chat.extensionTools.enabled": true,
   "chat.hookFilesLocations": {
     ".claude/settings.json": false,
@@ -725,6 +726,7 @@
     "keybindings.json": "pawn",
     "lint-staged.config.ts": "lintstaged",
     "mcp.json": "copilot",
+    "Modelfile*": "ollama",
     "oxfmt.config.ts": "oxc",
     "oxlint.config.ts": "oxc",
     "pnpm.yaml": "pnpm",
@@ -867,10 +869,10 @@
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
   },
   "terminal.integrated.env.osx": {
-    "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "terminal.integrated.scrollback": 32768,
   "terraform.languageServer.args": ["serve"],

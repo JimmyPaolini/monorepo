@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 
+import { TripleAspectsHelperService } from "./triple-aspects-helper.service";
 import { TripleAspectsService } from "./triple-aspects.service";
 
 /**
@@ -11,6 +12,6 @@ import { TripleAspectsService } from "./triple-aspects.service";
   controllers: [],
   exports: [TripleAspectsService],
   imports: [],
-  providers: [TripleAspectsService],
+  providers: [TripleAspectsHelperService, TripleAspectsService],
 })
 export class TripleAspectsModule {}

@@ -3,6 +3,7 @@ import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.modu
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
+import { SpecialtyAspectsHelperService } from "./specialty-aspects-helper.service";
 import { SpecialtyAspectsService } from "./specialty-aspects.service";
 
 /**
@@ -18,6 +19,6 @@ import { SpecialtyAspectsService } from "./specialty-aspects.service";
     AspectsUtilitiesModule,
     ProgressiveUtilitiesModule,
   ],
-  providers: [SpecialtyAspectsService],
+  providers: [SpecialtyAspectsHelperService, SpecialtyAspectsService],
 })
 export class SpecialtyAspectsModule {}

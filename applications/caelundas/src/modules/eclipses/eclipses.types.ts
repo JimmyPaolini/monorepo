@@ -1,4 +1,15 @@
 // 🏷️ Types
+/**
+ *
+ */
+export interface EclipseCoordinates {
+  diameterMoon: number;
+  diameterSun: number;
+  latitudeMoon: number;
+  latitudeSun: number;
+  longitudeMoon: number;
+  longitudeSun: number;
+}
 
 /**
  * Reference frame for eclipse visibility reporting.

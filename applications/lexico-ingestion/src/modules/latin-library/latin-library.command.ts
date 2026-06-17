@@ -56,7 +56,9 @@ export class LatinLibraryCommand extends CommandRunner {
     const text = await response.text();
     await fs.mkdir(path.dirname(targetPath), { recursive: true });
     await fs.writeFile(targetPath, text, "utf8");
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
     return text;
   }
 

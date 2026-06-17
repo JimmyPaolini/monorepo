@@ -22,13 +22,14 @@ export class PerseusLibraryProvider {
 
   readonly name = "perseus";
 
-  private addPerseusTextEntity(
-    author: Author,
-    rawTitle: string,
-    titleSlug: string,
-    metadata: Record<string, unknown>,
-    relativeSourcePath: string,
-  ): void {
+  private addPerseusTextEntity(args: {
+    author: Author;
+    metadata: Record<string, unknown>;
+    rawTitle: string;
+    relativeSourcePath: string;
+    titleSlug: string;
+  }): void {
+    const { author, metadata, rawTitle, relativeSourcePath, titleSlug } = args;
     const textEntity = new Text();
     textEntity.metadata = { ...metadata, sourceUrl: relativeSourcePath };
     textEntity.title = rawTitle;
@@ -91,7 +92,7 @@ export class PerseusLibraryProvider {
   ): Record<string, unknown> {
     const metadata: Record<string, unknown> = {};
     const editors = $("titleStmt editor")
-      .map((_, element) => $(element).text().trim())
+      .map((_index, element) => $(element).text().trim())
       .get();
     if (editors.length > 0) {
       metadata["editors"] = editors;
@@ -117,43 +118,46 @@ export class PerseusLibraryProvider {
     return metadata;
   }
 
-  private extractTextNodes(
-    $element: cheerio.Cheerio<AnyNode>,
-    $: cheerio.CheerioAPI,
-    currentPath: string[],
-    currentTitle: string,
-    rawTitle: string,
-    filesToWrite: { content: string; relativePath: string; title: string }[],
-  ): void {
+  private extractTextNodes(args: {
+    $: cheerio.CheerioAPI;
+    $element: cheerio.Cheerio<AnyNode>;
+    currentPath: string[];
+    currentTitle: string;
+    filesToWrite: { content: string; relativePath: string; title: string }[];
+    rawTitle: string;
+  }): void {
+    const { $, $element, currentPath, currentTitle, filesToWrite, rawTitle } =
+      args;
     const children = $element.children("div[type='textpart']");
     if (children.length > 0) {
-      this.processTextPartChildren(
+      this.processTextPartChildren({
+        $,
         $element,
         children,
-        $,
         currentPath,
         currentTitle,
-        rawTitle,
         filesToWrite,
-      );
+        rawTitle,
+      });
     } else {
-      this.processLeafTextPart(
-        $element,
+      this.processLeafTextPart({
         $,
+        $element,
         currentPath,
         currentTitle,
-        rawTitle,
         filesToWrite,
-      );
+        rawTitle,
+      });
     }
   }
 
-  private getOrCreatePerseusAuthor(
-    authorsMap: Map<string, Author>,
-    rawAuthor: string,
-    authorSlug: string,
-    relativeSourcePath: string,
-  ): Author {
+  private getOrCreatePerseusAuthor(args: {
+    authorSlug: string;
+    authorsMap: Map<string, Author>;
+    rawAuthor: string;
+    relativeSourcePath: string;
+  }): Author {
+    const { authorSlug, authorsMap, rawAuthor, relativeSourcePath } = args;
     let author = authorsMap.get(authorSlug);
     if (!author) {
       author = new Author();
@@ -183,17 +187,30 @@ export class PerseusLibraryProvider {
     return false;
   }
 
-  private async parseAndWritePerseusFile(
-    xmlPath: string,
-    sourceDataDirectory: string,
-    dataPath: string,
-    authorsMap: Map<string, Author>,
-    options?: { author?: string; text?: string },
-  ): Promise<void> {
-    const xmlContent = await fs.readFile(xmlPath, "utf8");
-    const $ = cheerio.load(xmlContent, { xml: true });
-    const rawAuthor = $("titleStmt author").first().text().trim();
-    const rawTitle = $("titleStmt title").first().text().trim();
+  private async loadPerseusXml(args: { xmlPath: string }): Promise<{
+    $: cheerio.CheerioAPI;
+    rawAuthor: string;
+    rawTitle: string;
+  }> {
+    const { xmlPath } = args;
+    return fs.readFile(xmlPath, "utf8").then((xmlContent) => {
+      const $ = cheerio.load(xmlContent, { xml: true });
+      const rawAuthor = $("titleStmt author").first().text().trim();
+      const rawTitle = $("titleStmt title").first().text().trim();
+      return { $, rawAuthor, rawTitle };
+    });
+  }
+
+  private async parseAndWritePerseusFile(args: {
+    authorsMap: Map<string, Author>;
+    dataPath: string;
+    options?: { author?: string; text?: string };
+    sourceDataDirectory: string;
+    xmlPath: string;
+  }): Promise<void> {
+    const { authorsMap, dataPath, options, sourceDataDirectory, xmlPath } =
+      args;
+    const { $, rawAuthor, rawTitle } = await this.loadPerseusXml({ xmlPath });
     if (!rawAuthor || !rawTitle) {
       this.logger.warn(`⚠️ Missing metadata in ${xmlPath}`);
       return;
@@ -205,38 +222,72 @@ export class PerseusLibraryProvider {
     const authorSlug = _.kebabCase(rawAuthor);
     const titleSlug = _.kebabCase(rawTitle);
     const metadata = this.extractPerseusMetadata($, relativeSourcePath);
-    const author = this.getOrCreatePerseusAuthor(
+    const author = this.getOrCreatePerseusAuthor({
+      authorSlug,
       authorsMap,
       rawAuthor,
-      authorSlug,
       relativeSourcePath,
-    );
-    this.addPerseusTextEntity(
-      author,
-      rawTitle,
-      titleSlug,
-      metadata,
-      relativeSourcePath,
-    );
-    await this.writePerseusMarkdown(
-      dataPath,
-      authorSlug,
-      titleSlug,
-      rawTitle,
-      relativeSourcePath,
-      metadata,
+    });
+    await this.persistPerseusText({
       $,
-    );
+      author,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
   }
 
-  private processLeafTextPart(
-    $element: cheerio.Cheerio<AnyNode>,
-    $: cheerio.CheerioAPI,
-    currentPath: string[],
-    currentTitle: string,
-    rawTitle: string,
-    filesToWrite: { content: string; relativePath: string; title: string }[],
-  ): void {
+  private async persistPerseusText(args: {
+    $: cheerio.CheerioAPI;
+    author: Author;
+    authorSlug: string;
+    dataPath: string;
+    metadata: Record<string, unknown>;
+    rawTitle: string;
+    relativeSourcePath: string;
+    titleSlug: string;
+  }): Promise<void> {
+    const {
+      $,
+      author,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    } = args;
+    this.addPerseusTextEntity({
+      author,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
+    await this.writePerseusMarkdown({
+      $,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    });
+  }
+
+  private processLeafTextPart(args: {
+    $: cheerio.CheerioAPI;
+    $element: cheerio.Cheerio<AnyNode>;
+    currentPath: string[];
+    currentTitle: string;
+    filesToWrite: { content: string; relativePath: string; title: string }[];
+    rawTitle: string;
+  }): void {
+    const { $, $element, currentPath, currentTitle, filesToWrite, rawTitle } =
+      args;
     const paragraphs = this.collectParagraphsFromElements(
       $element.find("p, l"),
       $,
@@ -261,24 +312,33 @@ export class PerseusLibraryProvider {
     }
   }
 
-  private async processPerseusFile(
-    xmlPath: string,
-    index: number,
-    total: number,
-    sourceDataDirectory: string,
-    dataPath: string,
-    authorsMap: Map<string, Author>,
-    options?: { author?: string; text?: string },
-  ): Promise<void> {
+  private async processPerseusFile(args: {
+    authorsMap: Map<string, Author>;
+    dataPath: string;
+    index: number;
+    options?: { author?: string; text?: string };
+    sourceDataDirectory: string;
+    total: number;
+    xmlPath: string;
+  }): Promise<void> {
+    const {
+      authorsMap,
+      dataPath,
+      index,
+      options,
+      sourceDataDirectory,
+      total,
+      xmlPath,
+    } = args;
     this.logger.log(`📜 Starting processing: ${xmlPath}`);
     try {
-      await this.parseAndWritePerseusFile(
-        xmlPath,
-        sourceDataDirectory,
-        dataPath,
+      await this.parseAndWritePerseusFile({
         authorsMap,
-        options,
-      );
+        dataPath,
+        sourceDataDirectory,
+        xmlPath,
+        ...(options ? { options } : {}),
+      });
       const progress = ` (${(((index + 1) / total) * 100).toFixed(2)}%, ${index + 1}/${total})`;
       this.logger.log(`📜 Completed processing: ${xmlPath}${progress}`);
     } catch (error) {
@@ -286,15 +346,24 @@ export class PerseusLibraryProvider {
     }
   }
 
-  private processTextPartChildren(
-    $element: cheerio.Cheerio<AnyNode>,
-    children: cheerio.Cheerio<AnyNode>,
-    $: cheerio.CheerioAPI,
-    currentPath: string[],
-    currentTitle: string,
-    rawTitle: string,
-    filesToWrite: { content: string; relativePath: string; title: string }[],
-  ): void {
+  private processTextPartChildren(args: {
+    $: cheerio.CheerioAPI;
+    $element: cheerio.Cheerio<AnyNode>;
+    children: cheerio.Cheerio<AnyNode>;
+    currentPath: string[];
+    currentTitle: string;
+    filesToWrite: { content: string; relativePath: string; title: string }[];
+    rawTitle: string;
+  }): void {
+    const {
+      $,
+      $element,
+      children,
+      currentPath,
+      currentTitle,
+      filesToWrite,
+      rawTitle,
+    } = args;
     const skipKeywords = [
       "front",
       "preface",
@@ -319,14 +388,14 @@ export class PerseusLibraryProvider {
       const partTitle = n
         ? `${_.startCase(subtype)} ${n}`
         : _.startCase(subtype);
-      this.extractTextNodes(
-        $child,
+      this.extractTextNodes({
         $,
-        [...currentPath, partName],
-        partTitle,
-        rawTitle,
+        $element: $child,
+        currentPath: [...currentPath, partName],
+        currentTitle: partTitle,
         filesToWrite,
-      );
+        rawTitle,
+      });
     });
     const directParagraphs = this.collectParagraphsFromElements(
       $element.children("p, l"),
@@ -342,15 +411,24 @@ export class PerseusLibraryProvider {
     }
   }
 
-  private async writePerseusMarkdown(
-    dataPath: string,
-    authorSlug: string,
-    titleSlug: string,
-    rawTitle: string,
-    relativeSourcePath: string,
-    metadata: Record<string, unknown>,
-    $: cheerio.CheerioAPI,
-  ): Promise<void> {
+  private async writePerseusMarkdown(args: {
+    $: cheerio.CheerioAPI;
+    authorSlug: string;
+    dataPath: string;
+    metadata: Record<string, unknown>;
+    rawTitle: string;
+    relativeSourcePath: string;
+    titleSlug: string;
+  }): Promise<void> {
+    const {
+      $,
+      authorSlug,
+      dataPath,
+      metadata,
+      rawTitle,
+      relativeSourcePath,
+      titleSlug,
+    } = args;
     const frontmatterObject: Record<string, unknown> = {
       author: authorSlug,
       type: "text",
@@ -367,17 +445,19 @@ export class PerseusLibraryProvider {
       relativePath: string;
       title: string;
     }[] = [];
-    this.extractTextNodes(
-      $("body"),
+    this.extractTextNodes({
       $,
-      [titleSlug],
-      rawTitle,
-      rawTitle,
+      $element: $("body"),
+      currentPath: [titleSlug],
+      currentTitle: rawTitle,
       filesToWrite,
-    );
+      rawTitle,
+    });
     const authorDirectory = path.join(dataPath, authorSlug);
     await this.writeTextFiles(filesToWrite, authorDirectory, frontmatterObject);
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
   }
 
   private async writeTextFiles(
@@ -417,15 +497,15 @@ export class PerseusLibraryProvider {
       if (!xmlPath) {
         continue;
       }
-      await this.processPerseusFile(
-        xmlPath,
-        index,
-        xmlPaths.length,
-        sourceDataDirectory,
-        dataPath,
+      await this.processPerseusFile({
         authorsMap,
-        options,
-      );
+        dataPath,
+        index,
+        sourceDataDirectory,
+        total: xmlPaths.length,
+        xmlPath,
+        ...(options ? { options } : {}),
+      });
     }
     return [...authorsMap.values()];
   }

@@ -12,6 +12,7 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
+import type { ProgressiveBodiesMeta } from "./triple-aspects.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type {
   Aspect,
@@ -21,16 +22,6 @@ import type {
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
-
-interface ProgressiveBodiesMeta {
-  aspect: TripleAspect;
-  body1: Body;
-  body1Capitalized: string;
-  body2: Body;
-  body2Capitalized: string;
-  body3: Body;
-  body3Capitalized: string;
-}
 
 /**
  * Composes 3-body aspect patterns from the active 2-body aspect registry.
@@ -53,25 +44,33 @@ export class TripleAspectsService {
 
   // 🔏 Private Methods
 
-  private static buildTripleAspectDescription(
-    bodiesSorted: (string | undefined)[],
-    tripleAspect: TripleAspect,
-    phase: AspectPhase,
-    focalOrApexBody: Body | undefined,
-  ): string {
+  private static buildTripleAspectDescription(args: {
+    bodiesSorted: (string | undefined)[];
+    focalOrApexBody: Body | undefined;
+    phase: AspectPhase;
+    tripleAspect: TripleAspect;
+  }): string {
+    const { bodiesSorted, focalOrApexBody, phase, tripleAspect } = args;
     const base = `${bodiesSorted[0]}, ${bodiesSorted[1]}, ${bodiesSorted[2]} ${tripleAspect} ${phase}`;
     return focalOrApexBody
       ? `${base} (${_.startCase(focalOrApexBody)} focal)`
       : base;
   }
 
-  private static determineCompoundPhaseFromSnapshots(
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    patternBodies: Body[],
-    currentMinute: Moment,
-    checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): null | { eventMinute: Moment; phase: AspectPhase } {
+  private static determineCompoundPhaseFromSnapshots(args: {
+    checkPatternExists: (edges: AspectBodies[]) => boolean;
+    currentAspectBodies: AspectBodies[];
+    currentMinute: Moment;
+    patternBodies: Body[];
+    previousAspectBodies: AspectBodies[];
+  }): null | { eventMinute: Moment; phase: AspectPhase } {
+    const {
+      checkPatternExists,
+      currentAspectBodies,
+      currentMinute,
+      patternBodies,
+      previousAspectBodies,
+    } = args;
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
       edges.filter(
@@ -198,12 +197,13 @@ export class TripleAspectsService {
    * @param aspectType - The aspect angle category to check
    * @param edges - Active aspect relationships to search
    */
-  static haveAspect(
-    body1: Body,
-    body2: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): boolean {
+  static haveAspect(args: {
+    aspectType: Aspect;
+    body1: Body;
+    body2: Body;
+    edges: AspectBodies[];
+  }): boolean {
+    const { aspectType, body1, body2, edges } = args;
     return edges.some(
       (edge) =>
         edge.aspect === aspectType &&
@@ -216,42 +216,90 @@ export class TripleAspectsService {
     return edge.bodies[0] === body || edge.bodies[1] === body;
   }
 
-  private static isGrandTrine(
-    body1: Body,
-    body2: Body,
-    body3: Body,
-    edges: AspectBodies[],
-  ): boolean {
+  private static isGrandTrine(args: {
+    body1: Body;
+    body2: Body;
+    body3: Body;
+    edges: AspectBodies[];
+  }): boolean {
+    const { body1, body2, body3, edges } = args;
     return (
-      TripleAspectsService.haveAspect(body1, body2, "trine", edges) &&
-      TripleAspectsService.haveAspect(body1, body3, "trine", edges) &&
-      TripleAspectsService.haveAspect(body2, body3, "trine", edges)
+      TripleAspectsService.haveAspect({
+        aspectType: "trine",
+        body1,
+        body2,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "trine",
+        body1,
+        body2: body3,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "trine",
+        body1: body2,
+        body2: body3,
+        edges,
+      })
     );
   }
 
-  private static isTSquare(
-    body1: Body,
-    body2: Body,
-    focalBody: Body,
-    edges: AspectBodies[],
-  ): boolean {
+  private static isTSquare(args: {
+    body1: Body;
+    body2: Body;
+    edges: AspectBodies[];
+    focalBody: Body;
+  }): boolean {
+    const { body1, body2, edges, focalBody } = args;
     return (
-      TripleAspectsService.haveAspect(body1, body2, "opposite", edges) &&
-      TripleAspectsService.haveAspect(body1, focalBody, "square", edges) &&
-      TripleAspectsService.haveAspect(body2, focalBody, "square", edges)
+      TripleAspectsService.haveAspect({
+        aspectType: "opposite",
+        body1,
+        body2,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "square",
+        body1,
+        body2: focalBody,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "square",
+        body1: body2,
+        body2: focalBody,
+        edges,
+      })
     );
   }
 
-  private static isYod(
-    body1: Body,
-    body2: Body,
-    apexBody: Body,
-    edges: AspectBodies[],
-  ): boolean {
+  private static isYod(args: {
+    apexBody: Body;
+    body1: Body;
+    body2: Body;
+    edges: AspectBodies[];
+  }): boolean {
+    const { apexBody, body1, body2, edges } = args;
     return (
-      TripleAspectsService.haveAspect(body1, body2, "sextile", edges) &&
-      TripleAspectsService.haveAspect(body1, apexBody, "quincunx", edges) &&
-      TripleAspectsService.haveAspect(body2, apexBody, "quincunx", edges)
+      TripleAspectsService.haveAspect({
+        aspectType: "sextile",
+        body1,
+        body2,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "quincunx",
+        body1,
+        body2: apexBody,
+        edges,
+      }) &&
+      TripleAspectsService.haveAspect({
+        aspectType: "quincunx",
+        body1: body2,
+        body2: apexBody,
+        edges,
+      })
     );
   }
 
@@ -343,14 +391,22 @@ export class TripleAspectsService {
     };
   }
 
-  private buildTripleAspectCategories(
-    tripleAspect: TripleAspect,
-    phase: AspectPhase,
-    body1Capitalized: string,
-    body2Capitalized: string,
-    body3Capitalized: string,
-    focalOrApexBody: Body | undefined,
-  ): string[] {
+  private buildTripleAspectCategories(args: {
+    body1Capitalized: string;
+    body2Capitalized: string;
+    body3Capitalized: string;
+    focalOrApexBody: Body | undefined;
+    phase: AspectPhase;
+    tripleAspect: TripleAspect;
+  }): string[] {
+    const {
+      body1Capitalized,
+      body2Capitalized,
+      body3Capitalized,
+      focalOrApexBody,
+      phase,
+      tripleAspect,
+    } = args;
     const categories = [
       "Astronomy",
       "Astrology",
@@ -368,25 +424,37 @@ export class TripleAspectsService {
     return categories;
   }
 
-  private checkGrandTrineTriplet(
-    body1: Body,
-    body2: Body,
-    body3: Body,
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    minute: Moment,
-    trines: AspectBodies[],
-  ): Event | null {
-    if (!TripleAspectsService.isGrandTrine(body1, body2, body3, trines)) {
+  private checkGrandTrineTriplet(args: {
+    body1: Body;
+    body2: Body;
+    body3: Body;
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+    trines: AspectBodies[];
+  }): Event | null {
+    const {
+      body1,
+      body2,
+      body3,
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+      trines,
+    } = args;
+    if (
+      !TripleAspectsService.isGrandTrine({ body1, body2, body3, edges: trines })
+    ) {
       return null;
     }
-    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
+    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots({
+      checkPatternExists: (edges) =>
+        TripleAspectsService.isGrandTrine({ body1, body2, body3, edges }),
       currentAspectBodies,
+      currentMinute: minute,
+      patternBodies: [body1, body2, body3],
       previousAspectBodies,
-      [body1, body2, body3],
-      minute,
-      (edges) => TripleAspectsService.isGrandTrine(body1, body2, body3, edges),
-    );
+    });
     if (!result) {
       return null;
     }
@@ -400,25 +468,42 @@ export class TripleAspectsService {
     });
   }
 
-  private checkTSquareFocalBody(
-    body1: Body,
-    body2: Body,
-    focalBody: Body,
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    minute: Moment,
-    unionEdges: AspectBodies[],
-  ): Event | null {
-    if (!TripleAspectsService.isTSquare(body1, body2, focalBody, unionEdges)) {
+  private checkTSquareFocalBody(args: {
+    body1: Body;
+    body2: Body;
+    currentAspectBodies: AspectBodies[];
+    focalBody: Body;
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+    unionEdges: AspectBodies[];
+  }): Event | null {
+    const {
+      body1,
+      body2,
+      currentAspectBodies,
+      focalBody,
+      minute,
+      previousAspectBodies,
+      unionEdges,
+    } = args;
+    if (
+      !TripleAspectsService.isTSquare({
+        body1,
+        body2,
+        edges: unionEdges,
+        focalBody,
+      })
+    ) {
       return null;
     }
-    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
+    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots({
+      checkPatternExists: (edges) =>
+        TripleAspectsService.isTSquare({ body1, body2, edges, focalBody }),
       currentAspectBodies,
+      currentMinute: minute,
+      patternBodies: [body1, body2, focalBody],
       previousAspectBodies,
-      [body1, body2, focalBody],
-      minute,
-      (edges) => TripleAspectsService.isTSquare(body1, body2, focalBody, edges),
-    );
+    });
     if (!result) {
       return null;
     }
@@ -433,25 +518,37 @@ export class TripleAspectsService {
     });
   }
 
-  private checkYodApexBody(
-    body1: Body,
-    body2: Body,
-    apexBody: Body,
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    minute: Moment,
-    unionEdges: AspectBodies[],
-  ): Event | null {
-    if (!TripleAspectsService.isYod(body1, body2, apexBody, unionEdges)) {
+  private checkYodApexBody(args: {
+    apexBody: Body;
+    body1: Body;
+    body2: Body;
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+    unionEdges: AspectBodies[];
+  }): Event | null {
+    const {
+      apexBody,
+      body1,
+      body2,
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+      unionEdges,
+    } = args;
+    if (
+      !TripleAspectsService.isYod({ apexBody, body1, body2, edges: unionEdges })
+    ) {
       return null;
     }
-    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
+    const result = TripleAspectsService.determineCompoundPhaseFromSnapshots({
+      checkPatternExists: (edges) =>
+        TripleAspectsService.isYod({ apexBody, body1, body2, edges }),
       currentAspectBodies,
+      currentMinute: minute,
+      patternBodies: [body1, body2, apexBody],
       previousAspectBodies,
-      [body1, body2, apexBody],
-      minute,
-      (edges) => TripleAspectsService.isYod(body1, body2, apexBody, edges),
-    );
+    });
     if (!result) {
       return null;
     }
@@ -500,21 +597,28 @@ export class TripleAspectsService {
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
     const trines =
       TripleAspectsService.groupAspectsByType(unionEdges).get("trine") || [];
-    return this.composeGrandTrinesFromBodies(
-      trines,
+    return this.composeGrandTrinesFromBodies({
       currentAspectBodies,
-      previousAspectBodies,
       minute,
-    );
+      previousAspectBodies,
+      trines,
+    });
   }
 
-  private composeGrandTrinesFromArray(
-    bodiesArray: Body[],
-    trines: AspectBodies[],
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    minute: Moment,
-  ): Event[] {
+  private composeGrandTrinesFromArray(args: {
+    bodiesArray: Body[];
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+    trines: AspectBodies[];
+  }): Event[] {
+    const {
+      bodiesArray,
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+      trines,
+    } = args;
     const events: Event[] = [];
     for (let index = 0; index < bodiesArray.length; index++) {
       for (let index_ = index + 1; index_ < bodiesArray.length; index_++) {
@@ -527,15 +631,15 @@ export class TripleAspectsService {
           const body2 = bodiesArray[index_];
           const body3 = bodiesArray[index__];
           if (!body1 || !body2 || !body3) continue;
-          const event = this.checkGrandTrineTriplet(
+          const event = this.checkGrandTrineTriplet({
             body1,
             body2,
             body3,
             currentAspectBodies,
-            previousAspectBodies,
             minute,
+            previousAspectBodies,
             trines,
-          );
+          });
           if (event) events.push(event);
         }
       }
@@ -543,25 +647,26 @@ export class TripleAspectsService {
     return events;
   }
 
-  private composeGrandTrinesFromBodies(
-    trines: AspectBodies[],
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    minute: Moment,
-  ): Event[] {
+  private composeGrandTrinesFromBodies(args: {
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+    trines: AspectBodies[];
+  }): Event[] {
+    const { currentAspectBodies, minute, previousAspectBodies, trines } = args;
     const bodiesInTrines = new Set<Body>();
     for (const trine of trines) {
       bodiesInTrines.add(trine.bodies[0]);
       bodiesInTrines.add(trine.bodies[1]);
     }
     const bodiesArray = [...bodiesInTrines];
-    return this.composeGrandTrinesFromArray(
+    return this.composeGrandTrinesFromArray({
       bodiesArray,
-      trines,
       currentAspectBodies,
-      previousAspectBodies,
       minute,
-    );
+      previousAspectBodies,
+      trines,
+    });
   }
 
   /**
@@ -614,15 +719,15 @@ export class TripleAspectsService {
         squares,
       );
       for (const focalBody of _.intersection(s1, s2)) {
-        const event = this.checkTSquareFocalBody(
-          b1,
-          b2,
-          focalBody,
+        const event = this.checkTSquareFocalBody({
+          body1: b1,
+          body2: b2,
           currentAspectBodies,
-          previousAspectBodies,
+          focalBody,
           minute,
+          previousAspectBodies,
           unionEdges,
-        );
+        });
         if (event) events.push(event);
       }
     }
@@ -679,15 +784,15 @@ export class TripleAspectsService {
         quincunxes,
       );
       for (const apexBody of _.intersection(q1, q2)) {
-        const event = this.checkYodApexBody(
-          b1,
-          b2,
+        const event = this.checkYodApexBody({
           apexBody,
+          body1: b1,
+          body2: b2,
           currentAspectBodies,
-          previousAspectBodies,
           minute,
+          previousAspectBodies,
           unionEdges,
-        );
+        });
         if (event) events.push(event);
       }
     }
@@ -715,22 +820,22 @@ export class TripleAspectsService {
     const b1c = _.startCase(body1),
       b2c = _.startCase(body2),
       b3c = _.startCase(body3);
-    const description = TripleAspectsService.buildTripleAspectDescription(
-      _.sortBy([b1c, b2c, b3c]),
-      tripleAspect,
-      phase,
+    const description = TripleAspectsService.buildTripleAspectDescription({
+      bodiesSorted: _.sortBy([b1c, b2c, b3c]),
       focalOrApexBody,
-    );
+      phase,
+      tripleAspect,
+    });
     const summary = `${TripleAspectsService.getPhaseEmoji(phase)}${symbolByTripleAspect[tripleAspect]} ${symbolByBody[body1]}-${symbolByBody[body2]}-${symbolByBody[body3]} ${description}`;
     this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-    const categories = this.buildTripleAspectCategories(
-      tripleAspect,
-      phase,
-      b1c,
-      b2c,
-      b3c,
+    const categories = this.buildTripleAspectCategories({
+      body1Capitalized: b1c,
+      body2Capitalized: b2c,
+      body3Capitalized: b3c,
       focalOrApexBody,
-    );
+      phase,
+      tripleAspect,
+    });
     return {
       categories,
       description,

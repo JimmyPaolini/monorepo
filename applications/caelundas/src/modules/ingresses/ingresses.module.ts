@@ -1,6 +1,7 @@
 import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { Module } from "@nestjs/common";
 
+import { IngressesHelperService } from "./ingresses-helper.service";
 import { IngressesService } from "./ingresses.service";
 
 /**
@@ -12,6 +13,6 @@ import { IngressesService } from "./ingresses.service";
   controllers: [],
   exports: [IngressesService],
   imports: [EphemerisModule],
-  providers: [IngressesService],
+  providers: [IngressesHelperService, IngressesService],
 })
 export class IngressesModule {}

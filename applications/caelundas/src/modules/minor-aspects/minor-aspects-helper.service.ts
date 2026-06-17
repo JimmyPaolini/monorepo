@@ -1,0 +1,286 @@
+import {
+  minorAspects,
+  symbolByBody,
+  symbolByMinorAspect,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
+  capitalize,
+  isBody,
+  isMinorAspect,
+  minorAspectBodies,
+} from "@caelundas/src/modules/caelundas/caelundas.types";
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
+
+import { LoggerService } from "../logger/logger.service";
+
+import type {
+  AssembleMinorAspectEventArguments,
+  ExtractAspectComponentsResult,
+} from "./minor-aspects.types";
+import type {
+  AspectPhase,
+  Body,
+  MinorAspect,
+} from "@caelundas/src/modules/caelundas/caelundas.types";
+import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
+import type { Moment } from "moment-timezone";
+
+/** Event building and grouping helpers for {@link MinorAspectsService}. */
+@Injectable()
+export class MinorAspectsHelperService {
+  // 🏗 Dependency Injection
+
+  constructor(
+    private readonly logger: LoggerService,
+    private readonly ephemerisService: EphemerisService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+  ) {
+    this.logger.setContext(MinorAspectsHelperService.name);
+  }
+
+  // 🔏 Private Methods
+
+  /**
+   *
+   */
+  assembleMinorAspectEvent(args: AssembleMinorAspectEventArguments): Event {
+    const { body1, body2, minorAspect, phase, timestamp } = args;
+    const body1Cap = capitalize(body1);
+    const body2Cap = capitalize(body2);
+    const baseCategories = [
+      "Astronomy",
+      "Astrology",
+      "Simple Aspect",
+      "Minor Aspect",
+      body1Cap,
+      body2Cap,
+      _.startCase(minorAspect),
+    ];
+    const { categories, description, phaseEmoji } = this.resolvePhaseDetails({
+      baseCategories,
+      body1Capitalized: body1Cap,
+      body2Capitalized: body2Cap,
+      minorAspect,
+      phase,
+    });
+    const summary = `${phaseEmoji} ${symbolByBody[body1]} ${symbolByMinorAspect[minorAspect]} ${symbolByBody[body2]} ${description}`;
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
+    return {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
+  }
+
+  /**
+   *
+   */
+  buildGroupKey(event: Event): string {
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
+        minorAspectBodies
+          .map((minorAspectBody) => _.startCase(minorAspectBody))
+          .includes(category),
+      ),
+    );
+    const aspect = event.categories.find((category) =>
+      minorAspects
+        .map((minorAspect) => _.startCase(minorAspect))
+        .includes(category),
+    );
+    if (planets.length === 2 && aspect) {
+      return `${planets[0]}-${aspect}-${planets[1]}`;
+    }
+    return "";
+  }
+
+  /**
+   *
+   */
+  castAspectComponentsToTypes(args: {
+    aspectCapitalized: string;
+    body1Capitalized: string;
+    body2Capitalized: string;
+    categories: string[];
+  }): { aspect: MinorAspect; body1: Body; body2: Body } {
+    const {
+      aspectCapitalized,
+      body1Capitalized,
+      body2Capitalized,
+      categories,
+    } = args;
+    const aspectLower = aspectCapitalized.toLowerCase();
+    const body1Lower = body1Capitalized.toLowerCase();
+    const body2Lower = body2Capitalized.toLowerCase();
+    if (
+      !isMinorAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
+      throw new Error(
+        `Could not extract typed values from categories: ${categories.join(", ")}`,
+      );
+    }
+    return { aspect: aspectLower, body1: body1Lower, body2: body2Lower };
+  }
+
+  /**
+   *
+   */
+  extractAspectComponents(categories: string[]): ExtractAspectComponentsResult {
+    const bodiesCap = categories
+      .filter((c: string) =>
+        minorAspectBodies.map((b: string) => _.startCase(b)).includes(c),
+      )
+      .toSorted();
+    const aspectCap = categories.find((c: string) =>
+      minorAspects.map((a: string) => _.startCase(a)).includes(c),
+    );
+    if (bodiesCap.length !== 2 || !aspectCap)
+      throw new Error(
+        `Could not extract aspect info: ${categories.join(", ")}`,
+      );
+    const body1Cap = bodiesCap[0] ?? "";
+    const body2Cap = bodiesCap[1] ?? "";
+    const { aspect, body1, body2 } = this.castAspectComponentsToTypes({
+      aspectCapitalized: aspectCap,
+      body1Capitalized: body1Cap,
+      body2Capitalized: body2Cap,
+      categories,
+    });
+    return {
+      aspect,
+      aspectCapitalized: aspectCap,
+      body1,
+      body1Capitalized: body1Cap,
+      body2,
+      body2Capitalized: body2Cap,
+    };
+  }
+
+  /**
+   *
+   */
+  getLongitudesWindowForBody(args: {
+    body: Body;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+    nextMinute: Moment;
+    previousMinute: Moment;
+  }): { current: number; next: number; previous: number } {
+    const {
+      body,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    } = args;
+    return this.ephemerisService.getLongitudesWindow({
+      ephemeris: coordinateEphemerisByBody[body],
+      minute,
+      next: nextMinute,
+      previous: previousMinute,
+    });
+  }
+
+  /**
+   *
+   */
+  getMinorAspectProgressiveEvent(beginning: Event, ending: Event): Event {
+    const {
+      aspect,
+      aspectCapitalized,
+      body1,
+      body1Capitalized,
+      body2,
+      body2Capitalized,
+    } = this.extractAspectComponents(beginning.categories);
+
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const aspectSymbol = symbolByMinorAspect[aspect];
+
+    return {
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Minor Aspect",
+        body1Capitalized,
+        body2Capitalized,
+        aspectCapitalized,
+      ],
+      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
+      end: ending.start,
+      start: beginning.start,
+      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    };
+  }
+
+  /**
+   *
+   */
+  processAspectGroup(key: string, groupEvents: Event[]): Event[] {
+    if (!key) {
+      return [];
+    }
+    const formingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Forming"),
+    );
+    const dissolvingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Dissolving"),
+    );
+    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
+      formingEvents,
+      dissolvingEvents,
+      `minor aspect ${key}`,
+    );
+    return pairs.map(([beginning, ending]) =>
+      this.getMinorAspectProgressiveEvent(beginning, ending),
+    );
+  }
+
+  /**
+   *
+   */
+  resolvePhaseDetails(args: {
+    baseCategories: string[];
+    body1Capitalized: string;
+    body2Capitalized: string;
+    minorAspect: MinorAspect;
+    phase: AspectPhase;
+  }): { categories: string[]; description: string; phaseEmoji: string } {
+    const {
+      baseCategories,
+      body1Capitalized,
+      body2Capitalized,
+      minorAspect,
+      phase,
+    } = args;
+    if (phase === "perfective") {
+      return {
+        categories: [...baseCategories, "Perfective"],
+        description: `${body1Capitalized} perfective ${minorAspect} ${body2Capitalized}`,
+        phaseEmoji: "🎯",
+      };
+    }
+    if (phase === "forming") {
+      return {
+        categories: [...baseCategories, "Forming"],
+        description: `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}`,
+        phaseEmoji: "➡️",
+      };
+    }
+    return {
+      categories: [...baseCategories, "Dissolving"],
+      description: `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}`,
+      phaseEmoji: "⬅️",
+    };
+  }
+}

@@ -88,6 +88,38 @@ export interface Ephemerides {
 }
 
 /**
+ *
+ */
+export interface EphemerisAccumulators {
+  azimuthElevationEphemeris: AzimuthElevationEphemeris;
+  coordinateEphemeris: CoordinateEphemeris;
+  diameterEphemeris: DiameterEphemeris;
+  distanceEphemeris: DistanceEphemeris;
+  illuminationEphemeris: IlluminationEphemeris;
+}
+
+/**
+ *
+ */
+export interface EphemerisEntries {
+  azimuthEntries: [Body, AzimuthElevationEphemeris][];
+  coordinateEntries: [Body, CoordinateEphemeris][];
+  diameterEntries: [Body, DiameterEphemeris][];
+  distanceEntries: [Body, DistanceEphemeris][];
+  illuminationEntries: [Body, IlluminationEphemeris][];
+}
+
+/**
+ *
+ */
+export interface EphemerisFeatureSets {
+  azimuthElevationSet: Set<string>;
+  diameterSet: Set<string>;
+  distanceSet: Set<string>;
+  illuminationSet: Set<string>;
+}
+
+/**
  * Time-indexed ephemeris of illumination fraction.
  *
  * Keys are ISO timestamps, values are illumination percentages (0-100).

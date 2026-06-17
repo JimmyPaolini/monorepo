@@ -1,9 +1,9 @@
 import {
-  azimuthElevationBodies,
-  bodies,
-  diameterBodies,
-  distanceBodies,
-  illuminationBodies,
+  azimuthElevationBodies as allAzimuthElevationBodies,
+  bodies as allBodies,
+  diameterBodies as allDiameterBodies,
+  distanceBodies as allDistanceBodies,
+  illuminationBodies as allIlluminationBodies,
   nodes,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { typedFromEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -32,6 +32,9 @@ import type {
   DiameterEphemerisBody,
   DistanceEphemeris,
   DistanceEphemerisBody,
+  EphemerisAccumulators,
+  EphemerisEntries,
+  EphemerisFeatureSets,
   IlluminationEphemeris,
   IlluminationEphemerisBody,
 } from "./ephemeris.types";
@@ -42,29 +45,6 @@ import type {
 
 // Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
 initializeSwissEphemeris();
-
-interface EphemerisAccumulators {
-  azimuthElevationEphemeris: AzimuthElevationEphemeris;
-  coordinateEphemeris: CoordinateEphemeris;
-  diameterEphemeris: DiameterEphemeris;
-  distanceEphemeris: DistanceEphemeris;
-  illuminationEphemeris: IlluminationEphemeris;
-}
-
-interface EphemerisEntries {
-  azimuthEntries: [Body, AzimuthElevationEphemeris][];
-  coordinateEntries: [Body, CoordinateEphemeris][];
-  diameterEntries: [Body, DiameterEphemeris][];
-  distanceEntries: [Body, DistanceEphemeris][];
-  illuminationEntries: [Body, IlluminationEphemeris][];
-}
-
-interface EphemerisFeatureSets {
-  azimuthElevationSet: Set<string>;
-  diameterSet: Set<string>;
-  distanceSet: Set<string>;
-  illuminationSet: Set<string>;
-}
 
 /**
  * Swiss Ephemeris computation service for caelundas.
@@ -149,12 +129,18 @@ export class EphemerisService {
     };
   }
 
-  private buildEphemerisFeatureSets(
-    azimuthElevationBodies: AzimuthElevationEphemerisBody[],
-    diameterBodies: DiameterEphemerisBody[],
-    distanceBodies: DistanceEphemerisBody[],
-    illuminationBodies: IlluminationEphemerisBody[],
-  ): EphemerisFeatureSets {
+  private buildEphemerisFeatureSets(args: {
+    azimuthElevationBodies: AzimuthElevationEphemerisBody[];
+    diameterBodies: DiameterEphemerisBody[];
+    distanceBodies: DistanceEphemerisBody[];
+    illuminationBodies: IlluminationEphemerisBody[];
+  }): EphemerisFeatureSets {
+    const {
+      azimuthElevationBodies,
+      diameterBodies,
+      distanceBodies,
+      illuminationBodies,
+    } = args;
     return {
       azimuthElevationSet: new Set<string>(azimuthElevationBodies),
       diameterSet: new Set<string>(diameterBodies),
@@ -673,12 +659,12 @@ export class EphemerisService {
       start,
     } = args;
     const [observerLongitude, observerLatitude] = coordinates;
-    const featureSets = this.buildEphemerisFeatureSets(
+    const featureSets = this.buildEphemerisFeatureSets({
       azimuthElevationBodies,
       diameterBodies,
       distanceBodies,
       illuminationBodies,
-    );
+    });
     const allEntries = this.buildEphemerisEntries();
     for (const body of coordinateBodies) {
       this.accumulateBodyEphemeris({
@@ -961,13 +947,13 @@ export class EphemerisService {
     const { coordinates, end, start } = args;
 
     return this.computeAllEphemerides({
-      azimuthElevationBodies,
-      coordinateBodies: bodies,
+      azimuthElevationBodies: allAzimuthElevationBodies,
+      coordinateBodies: allBodies,
       coordinates,
-      diameterBodies,
-      distanceBodies,
+      diameterBodies: allDiameterBodies,
+      distanceBodies: allDistanceBodies,
       end,
-      illuminationBodies,
+      illuminationBodies: allIlluminationBodies,
       start,
     });
   }
@@ -1028,12 +1014,13 @@ export class EphemerisService {
    * @returns Object containing `previous`, `current`, and `next` longitude values in degrees
    * @throws When any of the three timestamps are missing from the ephemeris
    */
-  getLongitudesWindow(
-    ephemeris: CoordinateEphemeris,
-    previous: Moment,
-    minute: Moment,
-    next: Moment,
-  ): { current: number; next: number; previous: number } {
+  getLongitudesWindow(args: {
+    ephemeris: CoordinateEphemeris;
+    minute: Moment;
+    next: Moment;
+    previous: Moment;
+  }): { current: number; next: number; previous: number } {
+    const { ephemeris, minute, next, previous } = args;
     return {
       current: this.getCoordinateFromEphemeris(
         ephemeris,

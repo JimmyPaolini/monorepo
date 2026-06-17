@@ -72,7 +72,9 @@ export class PerseusCommand extends CommandRunner {
     }
     const xmlContent = await response.text();
     await fs.writeFile(targetPath, xmlContent, "utf8");
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
   }
 
   private async fetchPerseusXmlPaths(): Promise<null | string[]> {

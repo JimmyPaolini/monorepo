@@ -50,22 +50,43 @@ export class NumeralsService {
 
     let roman = "";
 
-    function convertDigit(
-      digit: number,
-      low: string,
-      mid: string,
-      top: string,
-    ): void {
+    function convertDigit(args: {
+      digit: number;
+      low: string;
+      mid: string;
+      top: string;
+    }): void {
+      const { digit, low, mid, top } = args;
       if (digit < 4) roman += low.repeat(digit);
       else if (digit === 4) roman += low + mid;
       else if (digit < 9) roman += mid + low.repeat(digit - 5);
       else if (digit === 9) roman += low + top;
     }
 
-    convertDigit(Math.floor((decimal % 10_000) / 1000), "M", "", "");
-    convertDigit(Math.floor((decimal % 1000) / 100), "C", "D", "M");
-    convertDigit(Math.floor((decimal % 100) / 10), "X", "L", "C");
-    convertDigit(Math.floor((decimal % 10) / 1), "I", "V", "X");
+    convertDigit({
+      digit: Math.floor((decimal % 10_000) / 1000),
+      low: "M",
+      mid: "",
+      top: "",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 1000) / 100),
+      low: "C",
+      mid: "D",
+      top: "M",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 100) / 10),
+      low: "X",
+      mid: "L",
+      top: "C",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 10) / 1),
+      low: "I",
+      mid: "V",
+      top: "X",
+    });
 
     return roman;
   }

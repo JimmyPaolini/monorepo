@@ -42,6 +42,7 @@
     ],
     "typescriptFiles": [
       "{projectRoot}/**/*.{ts,tsx,mts,cts}",
+      "{projectRoot}/**/*.json",
       "{projectRoot}/tsconfig*.json",
       "sharedGlobals"
     ]
@@ -491,7 +492,6 @@
     },
     "typecheck": {
       "cache": true,
-      "executor": "nx:run-commands",
       "inputs": [
         "^production",
         "typescriptFiles",
@@ -499,10 +499,7 @@
           "externalDependencies": ["typescript"]
         }
       ],
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
+      "outputs": []
     },
     "vulture": {
       "cache": true,

@@ -5,7 +5,7 @@ import { Injectable } from "@nestjs/common";
 
 import { LoggerService } from "../logger/logger.service";
 
-import type { EclipseFrame } from "./eclipses.types";
+import type { EclipseCoordinates, EclipseFrame } from "./eclipses.types";
 import type { EclipsePhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
@@ -14,15 +14,6 @@ import type {
   DiameterEphemeris,
 } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
-
-interface EclipseCoordinates {
-  diameterMoon: number;
-  diameterSun: number;
-  latitudeMoon: number;
-  latitudeSun: number;
-  longitudeMoon: number;
-  longitudeSun: number;
-}
 
 /**
  * Detects solar and lunar eclipse events using Sun and Moon positional and diameter data.
@@ -575,20 +566,27 @@ export class EclipsesService {
     return events;
   }
 
-  private getTopocentricEventsForDetect(
-    minute: Moment,
-    moonAzimuthElevationEphemeris: AzimuthElevationEphemeris,
-    sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
+  private getTopocentricEventsForDetect(args: {
     coords: {
       currentCoordinates: EclipseCoordinates;
       nextCoordinates: EclipseCoordinates;
       previousCoordinates: EclipseCoordinates;
-    },
+    };
     geocentric: {
       lunarPhase: EclipsePhase | null;
       solarPhase: EclipsePhase | null;
-    },
-  ): Event[] {
+    };
+    minute: Moment;
+    moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
+    sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
+  }): Event[] {
+    const {
+      coords,
+      geocentric,
+      minute,
+      moonAzimuthElevationEphemeris,
+      sunAzimuthElevationEphemeris,
+    } = args;
     return this.getTopocentricEvents({
       ...coords,
       lunarPhase: geocentric.lunarPhase,
@@ -914,13 +912,13 @@ export class EclipsesService {
       args.sunAzimuthElevationEphemeris
     ) {
       eclipseEvents.push(
-        ...this.getTopocentricEventsForDetect(
-          args.minute,
-          args.moonAzimuthElevationEphemeris,
-          args.sunAzimuthElevationEphemeris,
+        ...this.getTopocentricEventsForDetect({
           coords,
           geocentric,
-        ),
+          minute: args.minute,
+          moonAzimuthElevationEphemeris: args.moonAzimuthElevationEphemeris,
+          sunAzimuthElevationEphemeris: args.sunAzimuthElevationEphemeris,
+        }),
       );
     }
     return eclipseEvents;

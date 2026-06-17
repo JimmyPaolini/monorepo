@@ -81,7 +81,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
    */
   private async fetchTree(
     treeUrl: string,
-  ): Promise<undefined | { path: string; type: string }[]> {
+  ): Promise<null | { path: string; type: string }[]> {
     this.logger.log(`🌳 Fetching CSEL tree from ${treeUrl}`);
     const treeResponse = await fetch(treeUrl);
 
@@ -89,7 +89,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       this.logger.error(
         `❌ Failed to fetch CSEL tree: ${treeResponse.statusText}`,
       );
-      return;
+      return null;
     }
 
     const treeData = (await treeResponse.json()) as {
@@ -110,7 +110,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
 
     const xmlContent = await response.text();
     await fs.writeFile(targetPath, xmlContent, "utf8");
-    await new Promise((resolve) => setTimeout(resolve, 100)); // polite delay
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    }); // polite delay
   }
 
   // 🌎 Public Methods

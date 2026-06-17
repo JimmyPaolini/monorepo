@@ -36,7 +36,7 @@ export class EtymologyService {
   ): { etymology: string; participleTranslation?: Translation } {
     const etymologyHeaderDiv = $(elt)
       .prevAll("div.mw-heading")
-      .filter((_: number, element: AnyNode) =>
+      .filter((_index: number, element: AnyNode) =>
         /etymology/i.test($(element).text()),
       )
       .first();

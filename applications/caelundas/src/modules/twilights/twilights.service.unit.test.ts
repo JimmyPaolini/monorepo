@@ -6,6 +6,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { TwilightsHelperService } from "./twilights-helper.service";
 import { TwilightsService } from "./twilights.service";
 
 import type { Twilight } from "./twilights.service";
@@ -58,12 +59,14 @@ interface ServicePrivate {
 
 describe("TwilightsService", () => {
   let service: TwilightsService;
+  let helperService: TwilightsHelperService;
   let s: ServicePrivate;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         LoggerService,
+        TwilightsHelperService,
         TwilightsService,
         EphemerisService,
         MathService,
@@ -71,7 +74,8 @@ describe("TwilightsService", () => {
       ],
     }).compile();
     service = await module.resolve(TwilightsService);
-    s = service as unknown as ServicePrivate;
+    helperService = await module.resolve(TwilightsHelperService);
+    s = helperService;
   });
 
   describe("service.detect", () => {

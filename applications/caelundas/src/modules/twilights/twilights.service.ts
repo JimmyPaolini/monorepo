@@ -1,9 +1,7 @@
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
-import { LoggerService } from "../logger/logger.service";
+import { TwilightsHelperService } from "./twilights-helper.service.js";
 
 import type { Twilight } from "./twilights.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -23,17 +21,7 @@ export type { Twilight } from "./twilights.types";
 export class TwilightsService {
   // 🏗 Dependency Injection
 
-  constructor(
-    private readonly logger: LoggerService,
-    private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {
-    this.logger.setContext(TwilightsService.name);
-  }
-
-  // 🔐 Private Fields
-
-  private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
+  constructor(private readonly helperService: TwilightsHelperService) {}
 
   // 🔑 Public Fields
 
@@ -50,301 +38,6 @@ export class TwilightsService {
     "astronomical",
   ] as const satisfies readonly Twilight[];
 
-  // 🔏 Private Methods
-
-  private buildDawnProgressiveEvents(
-    astronomicalDawnEvents: Event[],
-    nauticalDawnEvents: Event[],
-    civilDawnEvents: Event[],
-  ): Event[] {
-    return [
-      ...this.pairAndBuild(
-        astronomicalDawnEvents,
-        nauticalDawnEvents,
-        "Astronomical Twilight (Morning)",
-        (beginning, ending) =>
-          this.getAstronomicalTwilightMorningDurationEvent(beginning, ending),
-      ),
-      ...this.pairAndBuild(
-        nauticalDawnEvents,
-        civilDawnEvents,
-        "Nautical Twilight (Morning)",
-        (beginning, ending) =>
-          this.getNauticalTwilightMorningDurationEvent(beginning, ending),
-      ),
-    ];
-  }
-
-  private buildDuskProgressiveEvents(
-    civilDawnEvents: Event[],
-    civilDuskEvents: Event[],
-    nauticalDuskEvents: Event[],
-    astronomicalDuskEvents: Event[],
-  ): Event[] {
-    return [
-      ...this.pairAndBuild(
-        civilDawnEvents,
-        civilDuskEvents,
-        "Daylight",
-        (beginning, ending) => this.getDaylightDurationEvent(beginning, ending),
-      ),
-      ...this.pairAndBuild(
-        civilDuskEvents,
-        nauticalDuskEvents,
-        "Nautical Twilight (Evening)",
-        (beginning, ending) =>
-          this.getNauticalTwilightEveningDurationEvent(beginning, ending),
-      ),
-      ...this.pairAndBuild(
-        nauticalDuskEvents,
-        astronomicalDuskEvents,
-        "Astronomical Twilight (Evening)",
-        (beginning, ending) =>
-          this.getAstronomicalTwilightEveningDurationEvent(beginning, ending),
-      ),
-    ];
-  }
-
-  private buildTwilightTransitionEvents(
-    elevations: { currentElevation: number; previousElevation: number },
-    date: Moment,
-  ): Event[] {
-    const events: Event[] = [];
-    if (this.isAstronomicalDawn({ ...elevations })) {
-      events.push(this.buildAstronomicalDawnEvent(date));
-    }
-    if (this.isNauticalDawn({ ...elevations })) {
-      events.push(this.buildNauticalDawnEvent(date));
-    }
-    if (this.isCivilDawn({ ...elevations })) {
-      events.push(this.buildCivilDawnEvent(date));
-    }
-    if (this.isCivilDusk({ ...elevations })) {
-      events.push(this.buildCivilDuskEvent(date));
-    }
-    if (this.isNauticalDusk({ ...elevations })) {
-      events.push(this.buildNauticalDuskEvent(date));
-    }
-    if (this.isAstronomicalDusk({ ...elevations })) {
-      events.push(this.buildAstronomicalDuskEvent(date));
-    }
-    return events;
-  }
-
-  private getAstronomicalTwilightEveningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      categories: [
-        ...TwilightsService.categories,
-        "Astronomical Twilight",
-        "Evening",
-      ],
-      description: "Astronomical Twilight (Evening)",
-      end: ending.start,
-      start: beginning.start,
-      summary: "🌌 Astronomical Twilight (Evening)",
-    };
-  }
-
-  private getAstronomicalTwilightMorningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      categories: [
-        ...TwilightsService.categories,
-        "Astronomical Twilight",
-        "Morning",
-      ],
-      description: "Astronomical Twilight (Morning)",
-      end: ending.start,
-      start: beginning.start,
-      summary: "🌠 Astronomical Twilight (Morning)",
-    };
-  }
-
-  private getDaylightDurationEvent(beginning: Event, ending: Event): Event {
-    return {
-      categories: [...TwilightsService.categories, "Daylight"],
-      description: "Daylight",
-      end: ending.start,
-      start: beginning.start,
-      summary: "☀️ Daylight",
-    };
-  }
-
-  private getNauticalTwilightEveningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      categories: [
-        ...TwilightsService.categories,
-        "Nautical Twilight",
-        "Evening",
-      ],
-      description: "Nautical Twilight (Evening)",
-      end: ending.start,
-      start: beginning.start,
-      summary: "🌉 Nautical Twilight (Evening)",
-    };
-  }
-
-  private getNauticalTwilightMorningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      categories: [
-        ...TwilightsService.categories,
-        "Nautical Twilight",
-        "Morning",
-      ],
-      description: "Nautical Twilight (Morning)",
-      end: ending.start,
-      start: beginning.start,
-      summary: "🌅 Nautical Twilight (Morning)",
-    };
-  }
-
-  private getNightDurationEvent(beginning: Event, ending: Event): Event {
-    return {
-      categories: [...TwilightsService.categories, "Night"],
-      description: "Night",
-      end: ending.start,
-      start: beginning.start,
-      summary: "🌃 Night",
-    };
-  }
-
-  private getSunElevations(
-    sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
-    minute: Moment,
-  ): { currentElevation: number; previousElevation: number } {
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const currentElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-    const previousElevation =
-      this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-    return { currentElevation, previousElevation };
-  }
-
-  private isAstronomicalDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "astronomical",
-    });
-  }
-
-  private isAstronomicalDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "astronomical",
-    });
-  }
-
-  private isCivilDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "civil",
-    });
-  }
-
-  private isCivilDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "civil",
-    });
-  }
-
-  private isDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-    twilight: Twilight;
-  }): boolean {
-    const { currentElevation, previousElevation, twilight } = args;
-    const degrees = TwilightsService.degreesByTwilight[twilight];
-    return currentElevation > -degrees && previousElevation < -degrees;
-  }
-
-  private isDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-    twilight: Twilight;
-  }): boolean {
-    const { currentElevation, previousElevation, twilight } = args;
-    const degrees = TwilightsService.degreesByTwilight[twilight];
-    return currentElevation < -degrees && previousElevation > -degrees;
-  }
-
-  private isNauticalDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "nautical",
-    });
-  }
-
-  private isNauticalDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "nautical",
-    });
-  }
-
-  private pairAndBuild(
-    beginnings: Event[],
-    endings: Event[],
-    label: string,
-    builder: (beginning: Event, ending: Event) => Event,
-  ): Event[] {
-    const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-      beginnings,
-      endings,
-      label,
-    );
-    return pairs.map(([beginning, ending]) => builder(beginning, ending));
-  }
-
   // 🌎 Public Methods
 
   /**
@@ -354,20 +47,7 @@ export class TwilightsService {
    * @returns Calendar event for astronomical dawn
    */
   buildAstronomicalDawnEvent(date: Moment): Event {
-    const description = "Astronomical Dawn";
-    const summary = `🌠 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const astronomicalDawnEvent: Event = {
-      categories: [...TwilightsService.categories, "Astronomical Dawn"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return astronomicalDawnEvent;
+    return this.helperService.buildAstronomicalDawnEvent(date);
   }
 
   /**
@@ -379,20 +59,7 @@ export class TwilightsService {
    * @returns Calendar event for astronomical dusk
    */
   buildAstronomicalDuskEvent(date: Moment): Event {
-    const description = "Astronomical Dusk";
-    const summary = `🌌 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const astronomicalDuskEvent: Event = {
-      categories: [...TwilightsService.categories, "Astronomical Dusk"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return astronomicalDuskEvent;
+    return this.helperService.buildAstronomicalDuskEvent(date);
   }
 
   /**
@@ -404,20 +71,7 @@ export class TwilightsService {
    * @returns Calendar event for civil dawn
    */
   buildCivilDawnEvent(date: Moment): Event {
-    const description = "Civil Dawn";
-    const summary = `🌄 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const civilDawnEvent: Event = {
-      categories: [...TwilightsService.categories, "Civil Dawn"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return civilDawnEvent;
+    return this.helperService.buildCivilDawnEvent(date);
   }
 
   /**
@@ -429,20 +83,7 @@ export class TwilightsService {
    * @returns Calendar event for civil dusk
    */
   buildCivilDuskEvent(date: Moment): Event {
-    const description = "Civil Dusk";
-    const summary = `🌇 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const civilDuskEvent: Event = {
-      categories: [...TwilightsService.categories, "Civil Dusk"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return civilDuskEvent;
+    return this.helperService.buildCivilDuskEvent(date);
   }
 
   /**
@@ -454,20 +95,7 @@ export class TwilightsService {
    * @returns Calendar event for nautical dawn
    */
   buildNauticalDawnEvent(date: Moment): Event {
-    const description = "Nautical Dawn";
-    const summary = `🌅 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const nauticalDawnEvent: Event = {
-      categories: [...TwilightsService.categories, "Nautical Dawn"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return nauticalDawnEvent;
+    return this.helperService.buildNauticalDawnEvent(date);
   }
 
   /**
@@ -479,20 +107,7 @@ export class TwilightsService {
    * @returns Calendar event for nautical dusk
    */
   buildNauticalDuskEvent(date: Moment): Event {
-    const description = "Nautical Dusk";
-    const summary = `🌉 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const nauticalDuskEvent: Event = {
-      categories: [...TwilightsService.categories, "Nautical Dusk"],
-      description,
-      end: date,
-      start: date,
-      summary,
-    };
-    return nauticalDuskEvent;
+    return this.helperService.buildNauticalDuskEvent(date);
   }
 
   /**
@@ -520,11 +135,11 @@ export class TwilightsService {
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
   }): Event[] {
     const { minute, sunAzimuthElevationEphemeris } = args;
-    const elevations = this.getSunElevations(
+    const elevations = this.helperService.getSunElevations(
       sunAzimuthElevationEphemeris,
       minute,
     );
-    return this.buildTwilightTransitionEvents(elevations, minute);
+    return this.helperService.buildTwilightTransitionEvents(elevations, minute);
   }
 
   /**
@@ -555,23 +170,24 @@ export class TwilightsService {
     const astronomicalDuskEvents = byCategory("Astronomical Dusk");
 
     return [
-      ...this.buildDawnProgressiveEvents(
+      ...this.helperService.buildDawnProgressiveEvents(
         astronomicalDawnEvents,
         nauticalDawnEvents,
         civilDawnEvents,
       ),
-      ...this.buildDuskProgressiveEvents(
+      ...this.helperService.buildDuskProgressiveEvents({
+        astronomicalDuskEvents,
         civilDawnEvents,
         civilDuskEvents,
         nauticalDuskEvents,
-        astronomicalDuskEvents,
-      ),
-      ...this.pairAndBuild(
-        astronomicalDuskEvents,
-        astronomicalDawnEvents,
-        "Night",
-        (beginning, ending) => this.getNightDurationEvent(beginning, ending),
-      ),
+      }),
+      ...this.helperService.pairAndBuild({
+        beginnings: astronomicalDuskEvents,
+        builder: (beginning, ending) =>
+          this.helperService.getNightDurationEvent(beginning, ending),
+        endings: astronomicalDawnEvents,
+        label: "Night",
+      }),
     ];
   }
 }

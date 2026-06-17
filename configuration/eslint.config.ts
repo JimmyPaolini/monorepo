@@ -6,6 +6,8 @@ import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
+// @ts-ignore - no bundled type declarations for this plugin across all project references
+import betterMaxParamsPlugin from "eslint-plugin-better-max-params";
 import importPlugin from "eslint-plugin-import-x";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
@@ -312,6 +314,7 @@ export default [
     ],
     plugins: {
       "@typescript-eslint": tseslint.plugin,
+      "better-max-params": betterMaxParamsPlugin,
       import: importPlugin,
       perfectionist: perfectionistPlugin,
     },
@@ -610,27 +613,66 @@ export default [
         },
       ],
       "@typescript-eslint/only-throw-error": "error",
+      "array-callback-return": "error",
+      "better-max-params/better-max-params": [
+        "warn",
+        { constructor: 12, func: 3 },
+      ],
       complexity: ["warn", { max: 8 }],
       curly: ["error", "all"],
       eqeqeq: ["error", "always"],
+      "grouped-accessor-pairs": ["error", "getBeforeSet"],
+      "max-classes-per-file": ["warn", { max: 1 }],
       "max-depth": ["warn", { max: 4 }],
-      "max-lines-per-function": [
-        "warn",
-        { max: 64, skipBlankLines: true, skipComments: true },
-      ],
+      "max-lines": ["warn", { max: 512 }],
+      "max-lines-per-function": ["warn", { max: 64 }],
+      "max-nested-callbacks": ["warn", { max: 3 }],
+      "max-params": "off", // replaced by better-max-params/better-max-params
       "max-statements": ["warn", { max: 16 }],
       "no-alert": "error",
       "no-console": ["warn", { allow: ["warn", "error", "info"] }],
+      "no-constructor-return": "error",
       "no-debugger": "error",
       "no-duplicate-imports": "off", // import/no-duplicates handles this
+      "no-else-return": ["warn", { allowElseIf: false }],
+      "no-implicit-coercion": ["error", { allow: ["!!"] }],
+      "no-lone-blocks": "error",
+      "no-loop-func": "off", // @typescript-eslint/no-loop-func handles this
+      "no-param-reassign": "warn",
+      "no-promise-executor-return": "error",
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "for..in iterates over the prototype chain. Use Object.{keys,values,entries} instead.",
+          selector: "ForInStatement",
+        },
+        {
+          message:
+            "Labels create confusing control flow. Use named functions or early returns instead.",
+          selector: "LabeledStatement",
+        },
+        {
+          message: "'with' is disallowed in strict mode.",
+          selector: "WithStatement",
+        },
+      ],
+      "no-self-compare": "error",
+      "no-shadow": "off", // @typescript-eslint/no-shadow handles this
       "no-throw-literal": "off", // TypeScript ESLint handles this
+      "no-unreachable-loop": "error",
       "no-unused-expressions": "off", // TypeScript ESLint handles this
       "no-unused-vars": "off", // TypeScript ESLint handles this
+      "no-useless-concat": "error",
+      "no-useless-return": "error",
       "no-var": "error",
       "object-shorthand": ["error", "always"],
       "prefer-arrow-callback": "error",
       "prefer-const": "error",
+      "prefer-object-spread": "error",
       "prefer-template": "error",
+      radix: "error",
+      yoda: ["error", "never"],
     },
   },
 
@@ -660,12 +702,15 @@ export default [
       "@typescript-eslint": tseslint.plugin,
     },
     rules: {
+      "@typescript-eslint/consistent-return": "error",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-extraneous-class": [
         "error",
         { allowWithDecorator: true },
       ],
+      "@typescript-eslint/no-loop-func": "error",
       "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/no-shadow": "error",
       "@typescript-eslint/no-useless-constructor": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
@@ -772,18 +817,26 @@ export default [
       "@typescript-eslint": tseslint.plugin,
     },
     rules: {
+      "@typescript-eslint/consistent-return": "off",
       "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-shadow": "off", // test scopes commonly shadow outer variables
       "@typescript-eslint/no-unsafe-assignment": "warn",
       "@typescript-eslint/no-unsafe-call": "warn",
       "@typescript-eslint/no-unsafe-member-access": "warn",
       "@typescript-eslint/no-unsafe-return": "warn",
       "@typescript-eslint/unbound-method": "off",
       // it()/describe() callbacks are inherently large; these rules add no signal in tests
+      "better-max-params/better-max-params": "off",
       complexity: "off",
+      "max-classes-per-file": "off",
       "max-depth": "off",
+      "max-lines": "off",
       "max-lines-per-function": "off",
+      "max-nested-callbacks": "off",
+      "max-params": "off",
       "max-statements": "off",
       "no-console": "off",
+      "no-param-reassign": "off", // mocks commonly mutate parameters
     },
   },
 
@@ -808,6 +861,7 @@ export default [
       "@typescript-eslint/no-require-imports": "off",
       // Disable ALL type-checked rules for JS files
       "@typescript-eslint/await-thenable": "off",
+      "@typescript-eslint/consistent-return": "off",
       "@typescript-eslint/consistent-type-exports": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -863,7 +917,7 @@ export default [
       "jsonc/sort-keys": [
         "error",
         "asc",
-        { caseSensitive: false, minKeys: 2, natural: true },
+        { caseSensitive: false, minKeys: 2, natural: false },
       ],
     },
   },
@@ -947,6 +1001,8 @@ export default [
       "import/no-relative-packages": "off",
       "import/no-relative-parent-imports": "off",
       // Config files often contain large inline object/array definitions
+      "max-classes-per-file": "off",
+      "max-lines": "off",
       "max-lines-per-function": "off",
     },
   },
@@ -1022,8 +1078,10 @@ export default [
   // Disables all formatting rules that conflict with Prettier
   eslintConfigPrettier,
   {
+    // Re-enable rules disabled by eslint-config-prettier that we still want enforced
     rules: {
       "@typescript-eslint/naming-convention": "off",
+      "no-multiple-empty-lines": ["warn", { max: 2, maxBOF: 0, maxEOF: 1 }],
     },
   },
 ] as ConfigWithExtends[];

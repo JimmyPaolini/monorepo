@@ -34,7 +34,7 @@ import type {
   symbolByVenusianPhase,
 } from "./caelundas.constants";
 
-// 🪧 Signs
+// #region Signs 🪧
 
 /**
  * Union of all two-body aspect types (major, minor, and specialty).
@@ -60,7 +60,7 @@ export type Aspect = keyof typeof symbolByAspect;
  */
 export type AspectPhase = (typeof aspectPhases)[number];
 
-// 🔟 Decans
+// #region Decans 🔟
 
 /**
  * Asteroids (minor planets) tracked for astrological significance.
@@ -77,7 +77,7 @@ export type Asteroid = keyof typeof symbolByAsteroid;
  */
 export type Body = keyof typeof symbolByBody;
 
-// 🪐 Planets
+// #region Planets 🪐
 
 /**
  * Unicode symbol representing a celestial body.
@@ -85,7 +85,7 @@ export type Body = keyof typeof symbolByBody;
 export type BodySymbol = (typeof symbolByBody)[Body];
 // export type PlanetSymbol = (typeof symbolByPlanet)[Planet];
 
-// 💫 Asteroids
+// #region Asteroids 💫
 
 /**
  * Decan representing a 10-degree subdivision within a zodiac sign.
@@ -95,7 +95,7 @@ export type BodySymbol = (typeof symbolByBody)[Body];
 export type Decan = keyof typeof symbolByDecan;
 // export type AsteroidSymbol = (typeof symbolByAsteroid)[Asteroid];
 
-// ☄️ Comets
+// #region Comets ☄️
 
 /**
  * Notable periodic comets tracked for ingress events.
@@ -105,7 +105,7 @@ export type Decan = keyof typeof symbolByDecan;
 // export type Comet = keyof typeof symbolByComet;
 // export type CometSymbol = (typeof symbolByComet)[Comet];
 
-// 🌕 Nodes
+// #region Nodes 🌕
 
 /**
  * Unicode symbol representing a decan subdivision.
@@ -113,7 +113,7 @@ export type Decan = keyof typeof symbolByDecan;
 export type DecanSymbol = (typeof symbolByDecan)[Decan];
 // export type NodeSymbol = (typeof symbolByNode)[Node];
 
-// 🔭 Bodies
+// #region Bodies 🔭
 
 /**
  * Phase of an eclipse event (partial, total, annular, or penumbral).
@@ -138,7 +138,7 @@ export type EclipsePhase = (typeof eclipsePhases)[number];
  */
 export type LunarPhase = keyof typeof symbolByLunarPhase;
 
-// 📐 Major Aspects
+// #region Major Aspects 📐
 
 /**
  * Major aspects representing primary angular relationships between bodies.
@@ -153,7 +153,7 @@ export type MajorAspect = keyof typeof symbolByMajorAspect;
  */
 export type MajorAspectSymbol = (typeof symbolByMajorAspect)[MajorAspect];
 
-// 🖇️ Minor Aspects
+// #region Minor Aspects 🖇️
 
 /**
  * Mars phase representing its illumination and visibility state from Earth.
@@ -171,7 +171,7 @@ export type MartianPhase = keyof typeof symbolByMartianPhase;
  */
 export type MercurianPhase = keyof typeof symbolByMercurianPhase;
 
-// 🧮 Specialty Aspects
+// #region Specialty Aspects 🧮
 
 /**
  * Minor aspects representing secondary angular relationships between bodies.
@@ -186,7 +186,7 @@ export type MinorAspect = keyof typeof symbolByMinorAspect;
  */
 export type MinorAspectSymbol = (typeof symbolByMinorAspect)[MinorAspect];
 
-// 📐 Double Aspects
+// #region Double Aspects 📐
 
 /**
  * Lunar nodes and apsides representing calculated points in the Moon's orbit.
@@ -197,7 +197,7 @@ export type MinorAspectSymbol = (typeof symbolByMinorAspect)[MinorAspect];
 export type Node = keyof typeof symbolByNode;
 // export type AspectSymbol = (typeof symbolByAspect)[Aspect];
 
-// 🔺 Triple Aspects
+// #region Triple Aspects 🔺
 
 /**
  * Direction of a planet's apparent motion relative to the zodiac.
@@ -207,7 +207,7 @@ export type Node = keyof typeof symbolByNode;
 export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
 // export type TripleAspectSymbol = (typeof symbolByTripleAspect)[TripleAspect];
 
-// ✖️ Quadruple Aspects
+// #region Quadruple Aspects ✖️
 
 /**
  * Unicode symbol representing an orbital direction.
@@ -217,7 +217,7 @@ export type OrbitalDirectionSymbol =
 // export type QuadrupleAspectSymbol =
 //   (typeof symbolByQuadrupleAspect)[QuadrupleAspect];
 
-// ⭐ Quintuple Aspects
+// #region Quintuple Aspects ⭐
 
 /**
  * Classical and modern planets tracked for ephemeris calculations.
@@ -229,7 +229,7 @@ export type Planet = keyof typeof symbolByPlanet;
 // export type QuintupleAspectSymbol =
 //   (typeof symbolByQuintupleAspect)[QuintupleAspect];
 
-// 🔯 Sextuple Aspects
+// #region Sextuple Aspects 🔯
 
 /**
  * Four-body aspect patterns formed by specific angular relationships.
@@ -249,12 +249,12 @@ export type QuadrupleAspect = keyof typeof symbolByQuadrupleAspect;
 // export type SextupleAspectSymbol =
 //   (typeof symbolBySextupleAspect)[SextupleAspect];
 
-// ✨ Stellium
+// #region Stellium ✨
 
 // export type Stellium = keyof typeof symbolByStellium;
 // export type StelliumSymbol = (typeof symbolByStellium)[Stellium];
 
-// 🔁 Orbital Directions
+// #region Orbital Directions 🔁
 
 /**
  * Five-body aspect patterns (rare geometric configurations).
@@ -295,7 +295,7 @@ export type RetrogradeBody = (typeof retrogradeBodies)[number];
 export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 // export type LunarPhaseSymbol = (typeof symbolByLunarPhase)[LunarPhase];
 
-// ♀️ Venusian Phases
+// #region Venusian Phases ♀️
 
 /**
  * Six-body aspect patterns (extremely rare geometric configurations).
@@ -322,14 +322,16 @@ export type SextupleAspect = keyof typeof symbolBySextupleAspect;
  */
 export type Sign = keyof typeof symbolBySign;
 
-// ☿️ Mercurian Phases
+// #region Mercurian Phases ☿️
 
 /**
  * Unicode symbol representing a zodiac sign.
  */
 export type SignSymbol = (typeof symbolBySign)[Sign];
 
-// ♂ Martian Phases
+// #endregion
+
+// #region Martian Phases ♂
 
 /**
  * Specialty aspects based on harmonic divisions of the zodiac circle.
@@ -339,7 +341,9 @@ export type SignSymbol = (typeof symbolBySign)[Sign];
  */
 export type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
 
-// 📐 Aspect Phases
+// #endregion
+
+// #region Aspect Phases 📐
 
 /**
  * Unicode symbol representing a specialty aspect.
@@ -359,7 +363,7 @@ export type SpecialtyAspectSymbol =
  */
 export type TripleAspect = keyof typeof symbolByTripleAspect;
 
-// 🔭 Body Types
+// #region Body Types 🔭
 
 /**
  * Venus phase representing its illumination and visibility state from Earth.
@@ -415,7 +419,7 @@ export type VenusianPhaseSymbol = (typeof symbolByVenusianPhase)[VenusianPhase];
 // export type Phase = keyof typeof symbolByPhase;
 // export type PhaseSymbol = (typeof symbolByPhase)[Phase];
 
-// 🏠 Houses
+// #region Houses 🏠
 
 // export type House = keyof typeof symbolByHouse;
 // export type HouseSymbol = (typeof symbolByHouse)[House];
@@ -456,7 +460,7 @@ export {
   typedObjectKeys,
 } from "./caelundas.constants";
 
-// 🛠️ Utilities
+// #region Utilities 🛠️
 
 /**
  * Uppercases the first character of a string literal type.

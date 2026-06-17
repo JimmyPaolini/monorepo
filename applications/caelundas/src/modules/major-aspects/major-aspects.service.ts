@@ -18,6 +18,11 @@ import _ from "lodash";
 import { LoggerService } from "../logger/logger.service";
 
 import type {
+  AssembleMajorAspectEventArguments,
+  DetectAspectForBodyPairArguments,
+  ExtractAspectPartsFromCategoriesResult,
+} from "./major-aspects.types";
+import type {
   AspectPhase,
   Body,
   MajorAspect,
@@ -25,34 +30,6 @@ import type {
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
-
-interface AssembleMajorAspectEventArguments {
-  body1: Body;
-  body1Capitalized: string;
-  body2: Body;
-  body2Capitalized: string;
-  majorAspect: MajorAspect;
-  phase: AspectPhase;
-  timestamp: Moment;
-}
-
-interface DetectAspectForBodyPairArguments {
-  body1: Body;
-  body2: Body;
-  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  minute: Moment;
-  nextMinute: Moment;
-  previousMinute: Moment;
-}
-
-interface ExtractAspectPartsFromCategoriesResult {
-  aspect: MajorAspect;
-  aspectCapitalized: string;
-  body1: Body;
-  body1Capitalized: string;
-  body2: Body;
-  body2Capitalized: string;
-}
 
 /**
  * Detects and formats major aspect events between celestial bodies.
@@ -100,14 +77,14 @@ export class MajorAspectsService {
   private assembleMajorAspectEvent(
     args: AssembleMajorAspectEventArguments,
   ): Event {
-    const { categories, description, summary } = this.buildAspectEventParts(
-      args.body1,
-      args.body1Capitalized,
-      args.body2,
-      args.body2Capitalized,
-      args.majorAspect,
-      args.phase,
-    );
+    const { categories, description, summary } = this.buildAspectEventParts({
+      body1: args.body1,
+      body1Capitalized: args.body1Capitalized,
+      body2: args.body2,
+      body2Capitalized: args.body2Capitalized,
+      majorAspect: args.majorAspect,
+      phase: args.phase,
+    });
     this.logger.log(`${summary} at ${args.timestamp.toISOString()}`);
     return {
       categories,
@@ -118,14 +95,22 @@ export class MajorAspectsService {
     };
   }
 
-  private buildAspectEventParts(
-    body1: Body,
-    body1Capitalized: string,
-    body2: Body,
-    body2Capitalized: string,
-    majorAspect: MajorAspect,
-    phase: AspectPhase,
-  ): { categories: string[]; description: string; summary: string } {
+  private buildAspectEventParts(args: {
+    body1: Body;
+    body1Capitalized: string;
+    body2: Body;
+    body2Capitalized: string;
+    majorAspect: MajorAspect;
+    phase: AspectPhase;
+  }): { categories: string[]; description: string; summary: string } {
+    const {
+      body1,
+      body1Capitalized,
+      body2,
+      body2Capitalized,
+      majorAspect,
+      phase,
+    } = args;
     const body1Symbol = symbolByBody[body1];
     const body2Symbol = symbolByBody[body2];
     const majorAspectSymbol = symbolByMajorAspect[majorAspect];
@@ -145,12 +130,18 @@ export class MajorAspectsService {
     return { categories, description, summary };
   }
 
-  private castAspectPartsToTypes(
-    body1Capitalized: string,
-    body2Capitalized: string,
-    aspectCapitalized: string,
-    categories: string[],
-  ): { aspect: MajorAspect; body1: Body; body2: Body } {
+  private castAspectPartsToTypes(args: {
+    aspectCapitalized: string;
+    body1Capitalized: string;
+    body2Capitalized: string;
+    categories: string[];
+  }): { aspect: MajorAspect; body1: Body; body2: Body } {
+    const {
+      aspectCapitalized,
+      body1Capitalized,
+      body2Capitalized,
+      categories,
+    } = args;
     const aspectLower = aspectCapitalized.toLowerCase();
     const body1Lower = body1Capitalized.toLowerCase();
     const body2Lower = body2Capitalized.toLowerCase();
@@ -169,20 +160,20 @@ export class MajorAspectsService {
   private detectAspectForBodyPair(
     args: DetectAspectForBodyPairArguments,
   ): Event | null {
-    const win1 = this.getLongitudesWindowForBody(
-      args.body1,
-      args.coordinateEphemerisByBody,
-      args.previousMinute,
-      args.minute,
-      args.nextMinute,
-    );
-    const win2 = this.getLongitudesWindowForBody(
-      args.body2,
-      args.coordinateEphemerisByBody,
-      args.previousMinute,
-      args.minute,
-      args.nextMinute,
-    );
+    const win1 = this.getLongitudesWindowForBody({
+      body: args.body1,
+      coordinateEphemerisByBody: args.coordinateEphemerisByBody,
+      minute: args.minute,
+      nextMinute: args.nextMinute,
+      previousMinute: args.previousMinute,
+    });
+    const win2 = this.getLongitudesWindowForBody({
+      body: args.body2,
+      coordinateEphemerisByBody: args.coordinateEphemerisByBody,
+      minute: args.minute,
+      nextMinute: args.nextMinute,
+      previousMinute: args.previousMinute,
+    });
     const phase = this.detectPhaseFromWindows(win1, win2);
     if (!phase) return null;
     return this.buildMajorAspectEvent({
@@ -231,12 +222,12 @@ export class MajorAspectsService {
     }
     const body1Capitalized = bodiesCapitalized[0] ?? "";
     const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const { aspect, body1, body2 } = this.castAspectPartsToTypes(
+    const { aspect, body1, body2 } = this.castAspectPartsToTypes({
+      aspectCapitalized,
       body1Capitalized,
       body2Capitalized,
-      aspectCapitalized,
       categories,
-    );
+    });
     return {
       aspect,
       aspectCapitalized,
@@ -266,19 +257,26 @@ export class MajorAspectsService {
     return "";
   }
 
-  private getLongitudesWindowForBody(
-    body: Body,
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
-    previousMinute: Moment,
-    minute: Moment,
-    nextMinute: Moment,
-  ): { current: number; next: number; previous: number } {
-    return this.ephemerisService.getLongitudesWindow(
-      coordinateEphemerisByBody[body],
-      previousMinute,
+  private getLongitudesWindowForBody(args: {
+    body: Body;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+    nextMinute: Moment;
+    previousMinute: Moment;
+  }): { current: number; next: number; previous: number } {
+    const {
+      body,
+      coordinateEphemerisByBody,
       minute,
       nextMinute,
-    );
+      previousMinute,
+    } = args;
+    return this.ephemerisService.getLongitudesWindow({
+      ephemeris: coordinateEphemerisByBody[body],
+      minute,
+      next: nextMinute,
+      previous: previousMinute,
+    });
   }
 
   /**

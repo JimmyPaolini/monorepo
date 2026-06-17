@@ -63,28 +63,29 @@ export class LexemesService {
     return lexeme;
   }
 
-  private async enrichLexeme(
-    lexeme: Lexeme,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    firstPrincipalPartName: string,
-    partOfSpeech: PartOfSpeech,
-  ): Promise<void> {
+  private async enrichLexeme(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    firstPrincipalPartName: string;
+    lexeme: Lexeme;
+    partOfSpeech: PartOfSpeech;
+  }): Promise<void> {
+    const { $, elt, firstPrincipalPartName, lexeme, partOfSpeech } = args;
     const { macronizedWord, principalParts } =
-      this.principalPartsService.parsePrincipalParts(
-        lexeme,
+      this.principalPartsService.parsePrincipalParts({
         $,
         elt,
         firstPrincipalPartName,
-      );
+        lexeme,
+      });
     lexeme.principalParts = principalParts;
 
-    lexeme.inflection = this.partOfSpeechService.ingestInflection(
-      partOfSpeech,
+    lexeme.inflection = this.partOfSpeechService.ingestInflection({
       $,
       elt,
+      pos: partOfSpeech,
       principalParts,
-    );
+    });
 
     const translations = this.translationsService.parseTranslations(
       $,
@@ -104,13 +105,13 @@ export class LexemesService {
       macronizedWord,
     );
 
-    const rawForms = await this.partOfSpeechService.parseForms(
-      partOfSpeech,
+    const rawForms = await this.partOfSpeechService.parseForms({
       $,
       elt,
       lexeme,
+      pos: partOfSpeech,
       principalParts,
-    );
+    });
     lexeme.forms = this.formsService.buildForms(partOfSpeech, rawForms, lexeme);
   }
 
@@ -122,12 +123,13 @@ export class LexemesService {
       .trim();
   }
 
-  private async parseLexemeFromElement(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    index: number,
-    word: string,
-  ): Promise<Lexeme | null> {
+  private async parseLexemeFromElement(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    index: number;
+    word: string;
+  }): Promise<Lexeme | null> {
+    const { $, elt, index, word } = args;
     const partOfSpeech = this.partOfSpeechService.getPartOfSpeech($, elt);
 
     if (!validPOS.has(partOfSpeech)) {
@@ -149,13 +151,13 @@ export class LexemesService {
     const lexeme = this.buildLexeme(word, index, partOfSpeech);
 
     try {
-      await this.enrichLexeme(
-        lexeme,
+      await this.enrichLexeme({
         $,
         elt,
         firstPrincipalPartName,
+        lexeme,
         partOfSpeech,
-      );
+      });
       return lexeme;
     } catch (error) {
       this.logger.warn(
@@ -277,7 +279,7 @@ export class LexemesService {
     }
 
     for (const [index, elt] of headwordElements.entries()) {
-      const lexeme = await this.parseLexemeFromElement($, elt, index, word);
+      const lexeme = await this.parseLexemeFromElement({ $, elt, index, word });
       if (lexeme) lexemes.push(lexeme);
     }
 

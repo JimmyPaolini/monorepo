@@ -90,7 +90,9 @@ export class WiktionaryCommand extends CommandRunner {
       this.logger.warn(
         `⏳ Rate limited — waiting ${(backoffMilliseconds / 1000).toFixed(1)}s (attempt ${attempt.toString()}/${retries.toString()})`,
       );
-      await new Promise((resolve) => setTimeout(resolve, backoffMilliseconds));
+      await new Promise((resolve) => {
+        setTimeout(resolve, backoffMilliseconds);
+      });
     }
 
     // Final attempt — let caller handle non-ok response
@@ -148,10 +150,11 @@ export class WiktionaryCommand extends CommandRunner {
     urlPath: string,
     category: string,
   ): Promise<void> {
-    if (!urlPath.includes("#Latin")) urlPath += "#Latin";
+    let resolvedUrlPath = urlPath;
+    if (!resolvedUrlPath.includes("#Latin")) resolvedUrlPath += "#Latin";
     const entry: WiktionaryPage = {
       category,
-      href: `${this.host}${urlPath}`,
+      href: `${this.host}${resolvedUrlPath}`,
       word,
     };
 
@@ -200,9 +203,9 @@ export class WiktionaryCommand extends CommandRunner {
     if (word.includes("/")) return;
     try {
       await this.ingestWord(word, href, category);
-      await new Promise((resolve) =>
-        setTimeout(resolve, this.requestDelayMilliseconds),
-      );
+      await new Promise((resolve) => {
+        setTimeout(resolve, this.requestDelayMilliseconds);
+      });
     } catch (wordError: unknown) {
       const errorMessage =
         wordError instanceof Error

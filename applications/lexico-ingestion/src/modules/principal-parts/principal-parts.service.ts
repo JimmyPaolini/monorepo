@@ -30,12 +30,13 @@ export class PrincipalPartsService {
 
   // 🔏 Private Methods
 
-  private classifyPrincipalPart(
-    b: AnyNode,
-    $: cheerio.CheerioAPI,
-    lexeme: Lexeme,
-    principalParts: PrincipalPart[],
-  ): void {
+  private classifyPrincipalPart(args: {
+    $: cheerio.CheerioAPI;
+    b: AnyNode;
+    lexeme: Lexeme;
+    principalParts: PrincipalPart[];
+  }): void {
+    const { $, b, lexeme, principalParts } = args;
     const previous = $(b).prev("i").text();
     if (previous === "or") {
       const lastPrincipalPart = principalParts.pop();
@@ -77,12 +78,13 @@ export class PrincipalPartsService {
   /**
    * Parses principal parts from the Wiktionary HTML element context.
    */
-  parsePrincipalParts(
-    lexeme: Lexeme,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    firstPrincipalPartName: string,
-  ): { macronizedWord: string; principalParts: PrincipalPart[] } {
+  parsePrincipalParts(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    firstPrincipalPartName: string;
+    lexeme: Lexeme;
+  }): { macronizedWord: string; principalParts: PrincipalPart[] } {
+    const { $, elt, firstPrincipalPartName, lexeme } = args;
     const principalParts: PrincipalPart[] = [];
 
     const firstPP = new PrincipalPart();
@@ -95,7 +97,7 @@ export class PrincipalPartsService {
     principalParts.push(firstPP);
 
     for (const b of $(elt).children("b")) {
-      this.classifyPrincipalPart(b, $, lexeme, principalParts);
+      this.classifyPrincipalPart({ $, b, lexeme, principalParts });
     }
 
     if (principalParts.length === 0) throw new Error("no principal parts");

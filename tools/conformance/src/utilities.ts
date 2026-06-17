@@ -30,7 +30,7 @@ export function generateFiles(args: {
     tree,
   } = args;
 
-  const resolveName = (name: string): string =>
+  const resolveTemplateName = (name: string): string =>
     name.replaceAll(
       /__(\w+)__/g,
       (token: string, field: string) => substitutions[field] ?? token,
@@ -39,7 +39,7 @@ export function generateFiles(args: {
   const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
 
   for (const node of nodes) {
-    const instanceName = resolveName(node.name);
+    const instanceName = resolveTemplateName(node.name);
     const instancePath = path.join(targetDirectoryPath, instanceName);
     const templatePath = path.join(templateDirectoryPath, node.name);
     processFileNode({ instancePath, node, substitutions, templatePath, tree });

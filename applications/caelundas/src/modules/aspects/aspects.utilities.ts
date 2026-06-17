@@ -61,12 +61,13 @@ export class AspectsUtilities {
     return { currentAngle, nextAngle, previousAngle };
   }
 
-  private getAspectPhase(
-    aspect: Aspect,
-    previousAngle: number,
-    currentAngle: number,
-    nextAngle: number,
-  ): AspectPhase | null {
+  private getAspectPhase(args: {
+    aspect: Aspect;
+    currentAngle: number;
+    nextAngle: number;
+    previousAngle: number;
+  }): AspectPhase | null {
+    const { aspect, currentAngle, nextAngle, previousAngle } = args;
     const aspectAngle = angleByAspect[aspect];
     const orb = orbByAspect[aspect];
     const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
@@ -76,7 +77,14 @@ export class AspectsUtilities {
       const previousDiff = previousAngle - aspectAngle;
       const currentDiff = currentAngle - aspectAngle;
       const nextDiff = nextAngle - aspectAngle;
-      if (this.isPerfective(aspect, previousDiff, currentDiff, nextDiff)) {
+      if (
+        this.isPerfective({
+          aspect,
+          currentDifference: currentDiff,
+          nextDifference: nextDiff,
+          previousDifference: previousDiff,
+        })
+      ) {
         return "perfective";
       }
     }
@@ -85,12 +93,14 @@ export class AspectsUtilities {
     return null;
   }
 
-  private isPerfective(
-    aspect: Aspect,
-    previousDifference: number,
-    currentDifference: number,
-    nextDifference: number,
-  ): boolean {
+  private isPerfective(args: {
+    aspect: Aspect;
+    currentDifference: number;
+    nextDifference: number;
+    previousDifference: number;
+  }): boolean {
+    const { aspect, currentDifference, nextDifference, previousDifference } =
+      args;
     if (aspect === "conjunct") {
       return this.isPerfectiveConjunct(
         previousDifference,
@@ -98,6 +108,7 @@ export class AspectsUtilities {
         nextDifference,
       );
     }
+
     return this.isPerfectiveNonConjunct(previousDifference, currentDifference);
   }
 
@@ -151,12 +162,12 @@ export class AspectsUtilities {
       const { currentAngle, nextAngle, previousAngle } =
         this.computeAngles(args);
       for (const aspect of aspectsToDetect) {
-        const phase = this.getAspectPhase(
+        const phase = this.getAspectPhase({
           aspect,
-          previousAngle,
           currentAngle,
           nextAngle,
-        );
+          previousAngle,
+        });
         if (phase !== null) return phase;
       }
       return null;

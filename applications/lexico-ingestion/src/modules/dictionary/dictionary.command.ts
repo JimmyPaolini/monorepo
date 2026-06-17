@@ -13,11 +13,7 @@ import { ManualService } from "../manual/manual.service";
 import { TranslationsService } from "../translations/translations.service";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
-
-interface DictionaryCommandOptions {
-  endLemma?: null | string;
-  startLemma?: null | string;
-}
+import type { DictionaryCommandOptions } from "./dictionary.types";
 
 /**
  * TODO: Document the dictionary command.
@@ -363,9 +359,8 @@ export class DictionaryCommand extends CommandRunner {
     if (typeof endLemma === "string") {
       if (choices.some((choice) => choice.value === endLemma)) {
         return endLemma;
-      } else {
-        throw new Error(`End lemma "${endLemma}" not found in the dataset.`);
       }
+      throw new Error(`End lemma "${endLemma}" not found in the dataset.`);
     }
 
     const response = (await prompts({
@@ -396,11 +391,8 @@ export class DictionaryCommand extends CommandRunner {
     if (typeof startLemma === "string") {
       if (choices.some((choice) => choice.value === startLemma)) {
         return startLemma;
-      } else {
-        throw new Error(
-          `Start lemma "${startLemma}" not found in the dataset.`,
-        );
       }
+      throw new Error(`Start lemma "${startLemma}" not found in the dataset.`);
     }
 
     const response = (await prompts({

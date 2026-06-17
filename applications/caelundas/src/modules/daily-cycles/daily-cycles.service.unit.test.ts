@@ -5,6 +5,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { DailyCyclesHelperService } from "./daily-cycles-helper.service";
 import { DailyCyclesService } from "./daily-cycles.service";
 
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -22,11 +23,13 @@ interface ServicePrivate {
 
 describe("DailyCyclesService", () => {
   let service: DailyCyclesService;
+  let helperService: DailyCyclesHelperService;
   let s: ServicePrivate;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        DailyCyclesHelperService,
         DailyCyclesService,
         EphemerisService,
         LoggerService,
@@ -34,7 +37,8 @@ describe("DailyCyclesService", () => {
       ],
     }).compile();
     service = await module.resolve(DailyCyclesService);
-    s = service as unknown as ServicePrivate;
+    helperService = await module.resolve(DailyCyclesHelperService);
+    s = helperService;
   });
 
   it("should be defined", () => {

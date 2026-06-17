@@ -2,6 +2,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
 
+import { QuadrupleAspectsHelperService } from "./quadruple-aspects-helper.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -12,7 +13,7 @@ describe("QuadrupleAspectsService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [QuadrupleAspectsService],
+      providers: [QuadrupleAspectsHelperService, QuadrupleAspectsService],
     }).compile();
     service = await module.resolve(QuadrupleAspectsService);
   });

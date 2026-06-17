@@ -52,12 +52,19 @@ export class PerfectiveService {
 
   // 🔏 Private Methods
 
-  private detectDayEvents(
-    date: Moment,
-    coordinates: Coordinates,
-    timezone: string,
-    previousAspectBodies: AspectBodies[],
-  ): { events: Event[]; previousAspectBodies: AspectBodies[] } {
+  private detectDayEvents(args: {
+    coordinates: Coordinates;
+    date: Moment;
+    previousAspectBodies: AspectBodies[];
+    timezone: string;
+  }): { events: Event[]; previousAspectBodies: AspectBodies[] } {
+    const {
+      coordinates,
+      date,
+      previousAspectBodies: initialAspectBodies,
+      timezone,
+    } = args;
+    let previousAspectBodies = initialAspectBodies;
     const startOfDay = date.clone().startOf("day");
     const endOfDay = date.clone().endOf("day");
     const ephemerides = this.ephemerisService.getEphemerides({
@@ -184,12 +191,12 @@ export class PerfectiveService {
       end,
       timezone,
     )) {
-      const result = this.detectDayEvents(
-        date,
+      const result = this.detectDayEvents({
         coordinates,
-        timezone,
+        date,
         previousAspectBodies,
-      );
+        timezone,
+      });
       previousAspectBodies = result.previousAspectBodies;
       perfectiveEvents.push(...result.events);
     }

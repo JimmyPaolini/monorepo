@@ -38,12 +38,13 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return author;
   }
 
-  private getOrCreateBookText(
-    province: string,
-    bookSlug: string,
-    booksMap: Map<string, Text>,
-    author: Author,
-  ): Text {
+  private getOrCreateBookText(args: {
+    author: Author;
+    bookSlug: string;
+    booksMap: Map<string, Text>;
+    province: string;
+  }): Text {
+    const { author, bookSlug, booksMap, province } = args;
     let bookText = booksMap.get(province);
     if (!bookText) {
       bookText = new Text();
@@ -57,13 +58,14 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return bookText;
   }
 
-  private async processEdcsChunkFile(
-    file: string,
-    sourceDataDirectory: string,
-    provinceData: Map<string, string[]>,
-    index: number,
-    total: number,
-  ): Promise<void> {
+  private async processEdcsChunkFile(args: {
+    file: string;
+    index: number;
+    provinceData: Map<string, string[]>;
+    sourceDataDirectory: string;
+    total: number;
+  }): Promise<void> {
+    const { file, index, provinceData, sourceDataDirectory, total } = args;
     this.logger.log(`📜 Starting processing chunk: ${file}`);
     try {
       const filePath = path.join(sourceDataDirectory, file);
@@ -89,13 +91,13 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     for (let index = 0; index < chunkFiles.length; index++) {
       const file = chunkFiles[index];
       if (!file) continue;
-      await this.processEdcsChunkFile(
+      await this.processEdcsChunkFile({
         file,
-        sourceDataDirectory,
-        provinceData,
         index,
-        chunkFiles.length,
-      );
+        provinceData,
+        sourceDataDirectory,
+        total: chunkFiles.length,
+      });
     }
     return provinceData;
   }
@@ -135,15 +137,24 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     }
   }
 
-  private async saveEdcsChunkFile(
-    chunk: string[],
-    title: string,
-    titleSlug: string,
-    bookSlug: string,
-    authorSlug: string,
-    bookDirectory: string,
-    bookText: Text,
-  ): Promise<void> {
+  private async saveEdcsChunkFile(args: {
+    authorSlug: string;
+    bookDirectory: string;
+    bookSlug: string;
+    bookText: Text;
+    chunk: string[];
+    title: string;
+    titleSlug: string;
+  }): Promise<void> {
+    const {
+      authorSlug,
+      bookDirectory,
+      bookSlug,
+      bookText,
+      chunk,
+      title,
+      titleSlug,
+    } = args;
     const textEntity = new Text();
     textEntity.type = "text";
     textEntity.title = title;
@@ -166,25 +177,34 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     );
   }
 
-  private async saveEdcsProvince(
-    province: string,
-    inscriptions: string[],
-    options: undefined | { text?: string },
-    authorSlug: string,
-    authorDirectory: string,
-    booksMap: Map<string, Text>,
-    author: Author,
-  ): Promise<void> {
+  private async saveEdcsProvince(args: {
+    author: Author;
+    authorDirectory: string;
+    authorSlug: string;
+    booksMap: Map<string, Text>;
+    inscriptions: string[];
+    options: undefined | { text?: string };
+    province: string;
+  }): Promise<void> {
+    const {
+      author,
+      authorDirectory,
+      authorSlug,
+      booksMap,
+      inscriptions,
+      options,
+      province,
+    } = args;
     this.logger.log(`🌍 Starting province: ${province}`);
     const bookSlug = _.kebabCase(province);
     const bookDirectory = path.join(authorDirectory, bookSlug);
     await fs.mkdir(bookDirectory, { recursive: true });
-    const bookText = this.getOrCreateBookText(
-      province,
+    const bookText = this.getOrCreateBookText({
+      author,
       bookSlug,
       booksMap,
-      author,
-    );
+      province,
+    });
     const chunkSize = 1000;
     for (let index = 0; index < inscriptions.length; index += chunkSize) {
       const chunk = inscriptions.slice(index, index + chunkSize);
@@ -192,40 +212,41 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       const titleSlug = _.kebabCase(title);
       const textSlug = `${authorSlug}/${bookSlug}/${titleSlug}`;
       if (options?.text && textSlug !== options.text) continue;
-      await this.saveEdcsChunkFile(
+      await this.saveEdcsChunkFile({
+        authorSlug,
+        bookDirectory,
+        bookSlug,
+        bookText,
         chunk,
         title,
         titleSlug,
-        bookSlug,
-        authorSlug,
-        bookDirectory,
-        bookText,
-      );
+      });
     }
     this.logger.log(`🌍 Completed province: ${province}`);
   }
 
-  private async saveEdcsProvincePhase(
-    provinceData: Map<string, string[]>,
-    options: undefined | { text?: string },
-    authorSlug: string,
-    author: Author,
-    authorDirectory: string,
-  ): Promise<void> {
+  private async saveEdcsProvincePhase(args: {
+    author: Author;
+    authorDirectory: string;
+    authorSlug: string;
+    options: undefined | { text?: string };
+    provinceData: Map<string, string[]>;
+  }): Promise<void> {
+    const { author, authorDirectory, authorSlug, options, provinceData } = args;
     const booksMap = new Map<string, Text>();
     const provinceEntries = [...provinceData.entries()];
     const totalProvinces = provinceEntries.length;
     let currentProvince = 0;
     for (const [province, inscriptions] of provinceEntries) {
-      await this.saveEdcsProvince(
-        province,
+      await this.saveEdcsProvince({
+        author,
+        authorDirectory,
+        authorSlug,
+        booksMap,
         inscriptions,
         options,
-        authorSlug,
-        authorDirectory,
-        booksMap,
-        author,
-      );
+        province,
+      });
       currentProvince++;
       const progress = ` (${((currentProvince / totalProvinces) * 100).toFixed(2)}%, ${currentProvince}/${totalProvinces})`;
       this.logger.log(`🌍 Completed province: ${province}${progress}`);
@@ -264,13 +285,13 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       chunkFiles,
       sourceDataDirectory,
     );
-    await this.saveEdcsProvincePhase(
-      provinceData,
-      options,
-      authorSlug,
+    await this.saveEdcsProvincePhase({
       author,
       authorDirectory,
-    );
+      authorSlug,
+      options,
+      provinceData,
+    });
     return [author];
   }
 }

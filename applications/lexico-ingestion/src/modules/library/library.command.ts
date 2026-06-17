@@ -144,18 +144,19 @@ export class LibraryCommand extends CommandRunner {
     return { author, providerName, text };
   }
 
-  private async processProvider(
+  private async processProvider(args: {
+    current: number;
+    ingestOptions: { author?: string; text?: string };
     provider: {
       ingest: (options?: {
         author?: string;
         text?: string;
       }) => Promise<Author[]>;
       name: string;
-    },
-    current: number,
-    total: number,
-    ingestOptions: { author?: string; text?: string },
-  ): Promise<void> {
+    };
+    total: number;
+  }): Promise<void> {
+    const { current, ingestOptions, provider, total } = args;
     const providerName = provider.name;
     this.logger.log(`🏛️ Starting ingestion for provider: ${providerName}`);
     try {
@@ -179,12 +180,12 @@ export class LibraryCommand extends CommandRunner {
     }
   }
 
-  private pushTextEntry(
-    directory: string,
-    entry: Dirent,
-    currentPathParts: string[],
-    providerName: string,
-    authorSlug: string,
+  private pushTextEntry(args: {
+    authorSlug: string;
+    currentPathParts: string[];
+    directory: string;
+    entry: Dirent;
+    providerName: string;
     texts: {
       authorSlug: string;
       fullPath: string;
@@ -192,8 +193,16 @@ export class LibraryCommand extends CommandRunner {
       provider: string;
       textSlug: string;
       title: string;
-    }[],
-  ): void {
+    }[];
+  }): void {
+    const {
+      authorSlug,
+      currentPathParts,
+      directory,
+      entry,
+      providerName,
+      texts,
+    } = args;
     texts.push({
       authorSlug,
       fullPath: path.join(directory, entry.name),
@@ -240,10 +249,10 @@ export class LibraryCommand extends CommandRunner {
 
   // 🌎 Public Methods
 
-  private async scanLibraryAuthor(
-    dataDirectory: string,
-    providerName: string,
-    authorSlug: string,
+  private async scanLibraryAuthor(args: {
+    authorSlug: string;
+    dataDirectory: string;
+    providerName: string;
     texts: {
       authorSlug: string;
       fullPath: string;
@@ -251,15 +260,16 @@ export class LibraryCommand extends CommandRunner {
       provider: string;
       textSlug: string;
       title: string;
-    }[],
-  ): Promise<void> {
-    await this.walkLibraryDirectory(
-      path.join(dataDirectory, providerName, authorSlug),
-      [],
-      providerName,
+    }[];
+  }): Promise<void> {
+    const { authorSlug, dataDirectory, providerName, texts } = args;
+    await this.walkLibraryDirectory({
       authorSlug,
+      currentPathParts: [],
+      directory: path.join(dataDirectory, providerName, authorSlug),
+      providerName,
       texts,
-    );
+    });
   }
 
   private async scanLibraryProvider(
@@ -279,20 +289,20 @@ export class LibraryCommand extends CommandRunner {
     });
     for (const author of authors) {
       if (!author.isDirectory()) continue;
-      await this.scanLibraryAuthor(
+      await this.scanLibraryAuthor({
+        authorSlug: author.name,
         dataDirectory,
         providerName,
-        author.name,
         texts,
-      );
+      });
     }
   }
 
-  private async walkLibraryDirectory(
-    directory: string,
-    currentPathParts: string[],
-    providerName: string,
-    authorSlug: string,
+  private async walkLibraryDirectory(args: {
+    authorSlug: string;
+    currentPathParts: string[];
+    directory: string;
+    providerName: string;
     texts: {
       authorSlug: string;
       fullPath: string;
@@ -300,27 +310,29 @@ export class LibraryCommand extends CommandRunner {
       provider: string;
       textSlug: string;
       title: string;
-    }[],
-  ): Promise<void> {
+    }[];
+  }): Promise<void> {
+    const { authorSlug, currentPathParts, directory, providerName, texts } =
+      args;
     const entries = await fs.readdir(directory, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory()) {
-        await this.walkLibraryDirectory(
-          path.join(directory, entry.name),
-          [...currentPathParts, entry.name],
-          providerName,
+        await this.walkLibraryDirectory({
           authorSlug,
+          currentPathParts: [...currentPathParts, entry.name],
+          directory: path.join(directory, entry.name),
+          providerName,
           texts,
-        );
+        });
       } else if (entry.isFile() && entry.name.endsWith(".md")) {
-        this.pushTextEntry(
+        this.pushTextEntry({
+          authorSlug,
+          currentPathParts,
           directory,
           entry,
-          currentPathParts,
           providerName,
-          authorSlug,
           texts,
-        );
+        });
       }
     }
   }
@@ -370,9 +382,8 @@ export class LibraryCommand extends CommandRunner {
     if (typeof provider === "string" && provider.trim() !== "") {
       if (choices.some((choice) => choice.value === provider)) {
         return provider;
-      } else {
-        throw new Error(`Provider "${provider}" not found.`);
       }
+      throw new Error(`Provider "${provider}" not found.`);
     }
 
     const response = (await prompts({
@@ -449,7 +460,12 @@ export class LibraryCommand extends CommandRunner {
     for (let current = 0; current < total; current++) {
       const provider = filteredProviders[current];
       if (provider) {
-        await this.processProvider(provider, current + 1, total, ingestOptions);
+        await this.processProvider({
+          current: current + 1,
+          ingestOptions,
+          provider,
+          total,
+        });
       }
     }
 
