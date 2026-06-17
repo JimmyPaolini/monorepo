@@ -160,7 +160,7 @@ describe("TripleAspectsService", () => {
     });
   });
 
-  it("is defined", () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
   });
 });

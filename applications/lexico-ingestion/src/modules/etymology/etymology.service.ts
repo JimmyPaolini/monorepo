@@ -13,6 +13,8 @@ import type { AnyNode } from "domhandler";
 export class EtymologyService {
   // 🏗 Dependency Injection
 
+  constructor() {}
+
   // 🔐 Private Fields
 
   // 🔑 Public Fields
