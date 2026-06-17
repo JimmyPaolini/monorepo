@@ -1,12 +1,12 @@
 import {
   MARGIN_MINUTES,
-  symbolByBody,
-  symbolByOrbitalDirection,
+  retrogradeBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
-  capitalize,
-  retrogradeBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+  symbolByBody,
+  symbolByOrbitalDirection,
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";

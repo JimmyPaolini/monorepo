@@ -1,13 +1,15 @@
 import {
+  aspectBodies as minorAspectBodies,
   minorAspects,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
   symbolByBody,
   symbolByMinorAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import {
   capitalize,
   isBody,
   isMinorAspect,
-  minorAspectBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";

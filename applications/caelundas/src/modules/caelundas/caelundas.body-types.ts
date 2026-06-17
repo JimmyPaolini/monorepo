@@ -3,6 +3,8 @@ import type {
   aspectPhases,
   eclipsePhases,
   retrogradeBodies,
+} from "./caelundas.constants.js";
+import type {
   symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
@@ -22,7 +24,7 @@ import type {
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
   symbolByVenusianPhase,
-} from "./caelundas.constants.js";
+} from "./caelundas.symbol-constants.js";
 
 // 🪧 Signs
 

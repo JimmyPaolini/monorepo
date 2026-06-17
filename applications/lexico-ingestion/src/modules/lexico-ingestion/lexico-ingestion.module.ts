@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 
-import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
+import { DatabaseModule } from "@monorepo/lexico-entities";
 
 import { ClearModule } from "../clear/clear.module";
 import { CorpusScriptorumEcclesiasticorumLatinorumModule } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.module";
@@ -38,7 +38,7 @@ import { environmentSchema } from "./lexico-ingestion.constants";
     DictionaryModule,
     EpigraphikDatenbankClaussSlabyModule,
     LatinLibraryModule,
-    LexicoDatabaseModule,
+    DatabaseModule,
     LibraryModule,
     LiteratureModule,
     LoggerModule,

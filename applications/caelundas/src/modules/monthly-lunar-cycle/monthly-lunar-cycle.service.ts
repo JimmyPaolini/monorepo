@@ -1,8 +1,8 @@
 import {
   lunarPhases,
   MARGIN_MINUTES,
-  symbolByLunarPhase,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { isLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";

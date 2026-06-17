@@ -1,12 +1,14 @@
 import {
+  aspectBodies as specialtyAspectBodies,
   specialtyAspects,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
   symbolByBody,
   symbolBySpecialtyAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import {
   isBody,
   isSpecialtyAspect,
-  specialtyAspectBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";

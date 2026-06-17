@@ -1,13 +1,13 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
+  aspectBodies as specialtyAspectBodies,
   specialtyAspects,
-  symbolByBody,
-  symbolBySpecialtyAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
-  capitalize,
-  specialtyAspectBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+  symbolByBody,
+  symbolBySpecialtyAspect,
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";

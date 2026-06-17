@@ -1,11 +1,9 @@
+import { aspectBodies as quadrupleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
   symbolByQuadrupleAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
-import {
-  groupByToMap,
-  quadrupleAspectBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
 import _ from "lodash";
 
 import type { GetQuadrupleAspectEventArguments } from "./quadruple-aspects.types";

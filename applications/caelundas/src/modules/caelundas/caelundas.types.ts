@@ -7,13 +7,15 @@ import {
   minorAspects,
   signs,
   specialtyAspects,
-  symbolByDecan,
 } from "./caelundas.constants";
+import { symbolByDecan } from "./caelundas.symbol-constants.js";
 
 import type {
   aspectPhases,
   eclipsePhases,
   retrogradeBodies,
+} from "./caelundas.constants";
+import type {
   symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
@@ -32,7 +34,7 @@ import type {
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
   symbolByVenusianPhase,
-} from "./caelundas.constants";
+} from "./caelundas.symbol-constants.js";
 
 // #region Signs 🪧
 
@@ -440,25 +442,6 @@ export type VenusianPhaseSymbol = (typeof symbolByVenusianPhase)[VenusianPhase];
 // export type QuintupleAspectBody = (typeof aspectBodies)[number];
 // export type SextupleAspectBody = (typeof aspectBodies)[number];
 // export type StelliumBody = (typeof aspectBodies)[number];
-
-// Re-export arrays from symbols for convenience
-export {
-  aspectPhases,
-  ingressBodies as decanIngressBodies,
-  aspectBodies as majorAspectBodies,
-  aspectBodies as minorAspectBodies,
-  ingressBodies as peakIngressBodies,
-  phaseBodies as planetaryPhaseBodies,
-  aspectBodies as quadrupleAspectBodies,
-  aspectBodies as quintupleAspectBodies,
-  retrogradeBodies,
-  aspectBodies as sextupleAspectBodies,
-  ingressBodies as signIngressBodies,
-  aspectBodies as specialtyAspectBodies,
-  aspectBodies as stelliumBodies,
-  aspectBodies as tripleAspectBodies,
-  typedObjectKeys,
-} from "./caelundas.constants";
 
 // #region Utilities 🛠️
 

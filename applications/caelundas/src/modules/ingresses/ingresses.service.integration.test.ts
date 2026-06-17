@@ -1,8 +1,8 @@
 import {
-  decanIngressBodies,
-  peakIngressBodies,
-  signIngressBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+  ingressBodies as decanIngressBodies,
+  ingressBodies as peakIngressBodies,
+  ingressBodies as signIngressBodies,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment, { type Moment } from "moment-timezone";

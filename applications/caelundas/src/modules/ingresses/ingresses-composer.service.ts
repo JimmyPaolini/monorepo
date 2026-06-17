@@ -1,16 +1,18 @@
 import {
+  ingressBodies as signIngressBodies,
   signs,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
   symbolByBody,
   symbolByDecan,
   symbolBySign,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import {
   capitalize,
   isBody,
   isDecan,
   isSign,
   objectEntries,
-  signIngressBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";

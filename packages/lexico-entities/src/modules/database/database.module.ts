@@ -37,5 +37,3 @@ import { DatabaseService } from "./database.service.js";
   providers: [DatabaseService],
 })
 export class DatabaseModule {}
-
-export { DatabaseModule as LexicoDatabaseModule };

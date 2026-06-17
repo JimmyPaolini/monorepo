@@ -1,9 +1,9 @@
 import {
-  decanIngressBodies,
-  objectEntries,
-  peakIngressBodies,
-  signIngressBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+  ingressBodies as decanIngressBodies,
+  ingressBodies as peakIngressBodies,
+  ingressBodies as signIngressBodies,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { objectEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 
 import { IngressesComposerService } from "./ingresses-composer.service.js";

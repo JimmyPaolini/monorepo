@@ -1,8 +1,8 @@
+import { aspectBodies as tripleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
   symbolByTripleAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { tripleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 

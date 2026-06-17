@@ -10,10 +10,10 @@
 import { relative } from "node:path";
 
 import { SYNC_AGENT_SKILLS_FILES } from "../scripts/sync-agent-skills.js";
+import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../scripts/sync-conventional-config.constants.js";
 import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../scripts/sync-conformance-generators.js";
 import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../scripts/sync-pull-request-template.js";
 import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants.js";
-import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../scripts/sync-conventional-config.helpers.ts";
 
 function getPaths(files: string[]): string {
   return files.map((file) => relative(process.cwd(), file)).join(",");

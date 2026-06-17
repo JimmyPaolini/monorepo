@@ -1,14 +1,16 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
+  aspectBodies as majorAspectBodies,
   majorAspects,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
   symbolByBody,
   symbolByMajorAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import {
   capitalize,
   isBody,
   isMajorAspect,
-  majorAspectBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";

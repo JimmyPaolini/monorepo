@@ -1,6 +1,8 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { minorAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+import {
+  aspectBodies as minorAspectBodies,
+  minorAspects,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 

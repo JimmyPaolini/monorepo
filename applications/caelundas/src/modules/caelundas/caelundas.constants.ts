@@ -18,30 +18,6 @@ import type {
   IlluminationEphemerisBody,
 } from "../ephemeris/ephemeris.types";
 
-export {
-  symbolByAspect,
-  symbolByAsteroid,
-  symbolByBody,
-  symbolByDecan,
-  symbolByLunarPhase,
-  symbolByMajorAspect,
-  symbolByMartianPhase,
-  symbolByMercurianPhase,
-  symbolByMinorAspect,
-  symbolByNode,
-  symbolByOrbitalDirection,
-  symbolByPlanet,
-  symbolByQuadrupleAspect,
-  symbolByQuintupleAspect,
-  symbolBySextupleAspect,
-  symbolBySign,
-  symbolBySpecialtyAspect,
-  symbolByStellium,
-  symbolByTripleAspect,
-  symbolByVenusianPhase,
-  typedObjectKeys,
-} from "./caelundas.symbol-constants.js";
-
 type Aspect = keyof typeof symbolByAspect;
 // Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
 type MajorAspect = keyof typeof symbolByMajorAspect;

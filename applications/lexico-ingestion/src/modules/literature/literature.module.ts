@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import {
   Author,
-  LexicoDatabaseModule,
+  DatabaseModule,
   Line,
   Text,
   Token,
@@ -22,7 +22,7 @@ import { LiteratureCommand } from "./literature.command";
   controllers: [],
   exports: [LiteratureCommand],
   imports: [
-    LexicoDatabaseModule,
+    DatabaseModule,
     TypeOrmModule.forFeature([Author, Text, Line, Token, Word]),
     LoggerModule,
     NumeralsModule,

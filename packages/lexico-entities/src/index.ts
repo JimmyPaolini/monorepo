@@ -1,6 +1,6 @@
 export { lexicoDataSource } from "./modules/database/data-source.js";
 export { LexicoNamingStrategy } from "./modules/database/database.constants.js";
-export { LexicoDatabaseModule } from "./modules/database/database.module.js";
+export { DatabaseModule } from "./modules/database/database.module.js";
 export { AuditableEntity } from "./modules/entities/base/Auditable.entity.js";
 export { CreatableEntity } from "./modules/entities/base/Creatable.entity.js";
 export { DeletableEntity } from "./modules/entities/base/Deletable.entity.js";

@@ -43,10 +43,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 
-export { SYNC_CONVENTIONAL_CONFIG_FILES } from "./sync-conventional-config.constants.js";
-export { SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES } from "./sync-conventional-config.constants.js";
-export { SYNC_CONVENTIONAL_CONFIG_SKILL_FILES } from "./sync-conventional-config.constants.js";
-
 const CONVENTIONAL_CONFIG = path.join(
   WORKSPACE_ROOT,
   "configuration/conventional.config.cjs",

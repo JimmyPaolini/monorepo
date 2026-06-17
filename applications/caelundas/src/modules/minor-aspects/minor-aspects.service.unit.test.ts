@@ -1,5 +1,5 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { aspectBodies as minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";

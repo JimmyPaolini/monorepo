@@ -1,10 +1,12 @@
 import {
   MARGIN_MINUTES,
+  phaseBodies as planetaryPhaseBodies,
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { planetaryPhaseBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
