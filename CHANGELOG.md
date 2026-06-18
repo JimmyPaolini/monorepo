@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.4](https://github.com/JimmyPaolini/monorepo/compare/v1.10.3...v1.10.4) (2026-06-18)
+
+### 📦 Build System
+
+* **deps:** bump the uv group across 1 directory with 5 updates ([#71](https://github.com/JimmyPaolini/monorepo/issues/71)) ([f288501](https://github.com/JimmyPaolini/monorepo/commit/f28850113f99aa5209a66dbda7bcf35f29171803))
+
+## [1.10.3](https://github.com/JimmyPaolini/monorepo/compare/v1.10.2...v1.10.3) (2026-06-18)
+
+### 📦 Build System
+
+* **deps:** bump @apollo/server from 4.13.0 to 5.5.1 in /tools/conformance/src/generators/nestjs-graphql-application/templates in the npm_and_yarn group across 1 directory ([#64](https://github.com/JimmyPaolini/monorepo/issues/64)) ([75096e3](https://github.com/JimmyPaolini/monorepo/commit/75096e3662e9244597f8fa0cda1762b834e5a528))
+* **deps:** bump tornado from 6.5.5 to 6.5.6 in /applications/affirmations in the uv group across 1 directory ([#67](https://github.com/JimmyPaolini/monorepo/issues/67)) ([dd76687](https://github.com/JimmyPaolini/monorepo/commit/dd76687045235ac7c55d2b9bff97222b3a0724fa))
+
 ## [1.10.2](https://github.com/JimmyPaolini/monorepo/compare/v1.10.1...v1.10.2) (2026-06-18)
 
 ### ♻️ Code Refactoring
