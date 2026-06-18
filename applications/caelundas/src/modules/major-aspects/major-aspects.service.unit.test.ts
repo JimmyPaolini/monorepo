@@ -38,8 +38,8 @@ describe("MajorAspectsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(MajorAspectsService);
-    aspectsUtilitiesService = module.get(AspectsUtilities);
+    service = await module.resolve(MajorAspectsService);
+    aspectsUtilitiesService = await module.resolve(AspectsUtilities);
   });
 
   it("should be defined", () => {

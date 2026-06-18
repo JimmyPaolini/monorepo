@@ -24,9 +24,9 @@ describe("TwilightsDetectorService", () => {
       ],
     }).compile();
 
-    service = module.get(TwilightsDetectorService);
-    void module.get(LoggerService);
-    ephemerisService = module.get(EphemerisService);
+    service = await module.resolve(TwilightsDetectorService);
+    await module.resolve(LoggerService);
+    ephemerisService = await module.resolve(EphemerisService);
 
     vi.mocked(
       ephemerisService.getAzimuthElevationFromEphemeris,

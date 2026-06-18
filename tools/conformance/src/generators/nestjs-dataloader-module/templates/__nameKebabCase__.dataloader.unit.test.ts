@@ -18,7 +18,7 @@ describe("{{namePascalCase}}DataLoader", () => {
       ],
     }).compile();
 
-    dataloader = module.get({{namePascalCase}}DataLoader);
+    dataloader = await module.resolve({{namePascalCase}}DataLoader);
   });
 
   it("should be defined", () => {

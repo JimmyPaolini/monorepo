@@ -27,8 +27,8 @@ describe("MajorAspectEventService", () => {
       ],
     }).compile();
 
-    service = module.get(MajorAspectEventService);
-    aspectsUtilitiesService = module.get(AspectsUtilities);
+    service = await module.resolve(MajorAspectEventService);
+    aspectsUtilitiesService = await module.resolve(AspectsUtilities);
   });
 
   it("should be defined", () => {

@@ -22,7 +22,7 @@ describe("TripleAspectsService", () => {
         TripleAspectsService,
       ],
     }).compile();
-    service = module.get(TripleAspectsService);
+    service = await module.resolve(TripleAspectsService);
   });
 
   describe("service.detect", () => {

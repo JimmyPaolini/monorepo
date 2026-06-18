@@ -20,8 +20,8 @@ describe("TripleAspectsComposerService", () => {
       ],
     }).compile();
 
-    service = module.get(TripleAspectsComposerService);
-    void module.get(LoggerService);
+    service = await module.resolve(TripleAspectsComposerService);
+    await module.resolve(LoggerService);
   });
 
   it("should be defined", () => {

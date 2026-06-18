@@ -61,10 +61,10 @@ describe("EphemerisCoordinateService", () => {
       ],
     }).compile();
 
-    service = module.get(EphemerisCoordinateService);
-    constantsService = module.get(EphemerisConstantsService);
-    timeService = module.get(EphemerisTimeService);
-    mathService = module.get(Object);
+    service = await module.resolve(EphemerisCoordinateService);
+    constantsService = await module.resolve(EphemerisConstantsService);
+    timeService = await module.resolve(EphemerisTimeService);
+    mathService = await module.resolve(Object);
 
     vi.mocked(
       constantsService.getSwissEphemerisConstantForBody,

@@ -48,12 +48,12 @@ describe("EphemerisAggregationService", () => {
       ],
     }).compile();
 
-    service = module.get(EphemerisAggregationService);
-    constantsService = module.get(EphemerisConstantsService);
-    coordinateService = module.get(EphemerisCoordinateService);
-    horizonService = module.get(EphemerisHorizonService);
-    void module.get(EphemerisPhenomenaService);
-    timeService = module.get(EphemerisTimeService);
+    service = await module.resolve(EphemerisAggregationService);
+    constantsService = await module.resolve(EphemerisConstantsService);
+    coordinateService = await module.resolve(EphemerisCoordinateService);
+    horizonService = await module.resolve(EphemerisHorizonService);
+    await module.resolve(EphemerisPhenomenaService);
+    timeService = await module.resolve(EphemerisTimeService);
 
     vi.mocked(
       constantsService.getSwissEphemerisConstantForBody,

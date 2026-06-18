@@ -20,8 +20,8 @@ describe("TwilightsBuilderService", () => {
       ],
     }).compile();
 
-    service = module.get(TwilightsBuilderService);
-    void module.get(LoggerService);
+    service = await module.resolve(TwilightsBuilderService);
+    await module.resolve(LoggerService);
   });
 
   it("should be defined", () => {

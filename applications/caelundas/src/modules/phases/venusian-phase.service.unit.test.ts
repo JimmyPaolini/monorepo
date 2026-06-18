@@ -91,10 +91,10 @@ describe("VenusianPhaseService", () => {
       ],
     }).compile();
 
-    service = module.get(VenusianPhaseService);
-    void module.get(LoggerService);
-    phaseCalculationService = module.get(PhaseCalculationService);
-    progressiveUtilitiesService = module.get(ProgressiveUtilities);
+    service = await module.resolve(VenusianPhaseService);
+    await module.resolve(LoggerService);
+    phaseCalculationService = await module.resolve(PhaseCalculationService);
+    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
 
     configurePhaseCalculationServiceMock(phaseCalculationService);
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);

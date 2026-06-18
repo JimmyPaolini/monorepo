@@ -35,10 +35,10 @@ describe("EclipseCalculationService", () => {
       ],
     }).compile();
 
-    service = module.get(EclipseCalculationService);
-    void module.get(LoggerService);
-    ephemerisService = module.get(EphemerisService);
-    eclipseEventService = module.get(EclipseEventService);
+    service = await module.resolve(EclipseCalculationService);
+    await module.resolve(LoggerService);
+    ephemerisService = await module.resolve(EphemerisService);
+    eclipseEventService = await module.resolve(EclipseEventService);
   });
 
   it("should be defined", () => {

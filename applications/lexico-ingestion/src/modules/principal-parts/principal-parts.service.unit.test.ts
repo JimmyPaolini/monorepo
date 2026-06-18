@@ -23,7 +23,7 @@ describe("PrincipalPartsService", () => {
       ],
     }).compile();
 
-    service = module.get(PrincipalPartsService);
+    service = await module.resolve(PrincipalPartsService);
   });
 
   it("should be defined", () => {

@@ -20,7 +20,7 @@ describe("QuintupleAspectsService", () => {
         MathService,
       ],
     }).compile();
-    service = module.get(QuintupleAspectsService);
+    service = await module.resolve(QuintupleAspectsService);
   });
 
   it("should be defined", () => {

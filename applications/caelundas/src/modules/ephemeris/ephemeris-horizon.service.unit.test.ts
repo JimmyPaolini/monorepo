@@ -39,9 +39,9 @@ describe("EphemerisHorizonService", () => {
       ],
     }).compile();
 
-    service = module.get(EphemerisHorizonService);
-    coordinateService = module.get(EphemerisCoordinateService);
-    timeService = module.get(EphemerisTimeService);
+    service = await module.resolve(EphemerisHorizonService);
+    coordinateService = await module.resolve(EphemerisCoordinateService);
+    timeService = await module.resolve(EphemerisTimeService);
 
     vi.mocked(coordinateService.getBodyCoordinatesWithDistance).mockReturnValue(
       {

@@ -26,9 +26,9 @@ describe("EclipseEventService", () => {
       ],
     }).compile();
 
-    service = module.get(EclipseEventService);
-    void module.get(LoggerService);
-    progressiveUtilitiesService = module.get(ProgressiveUtilities);
+    service = await module.resolve(EclipseEventService);
+    await module.resolve(LoggerService);
+    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
   });
 
   it("should be defined", () => {

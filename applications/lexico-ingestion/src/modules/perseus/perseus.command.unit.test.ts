@@ -14,7 +14,7 @@ describe("PerseusCommand", () => {
       providers: [PerseusCommand],
     }).compile();
 
-    command = module.get(PerseusCommand);
+    command = await module.resolve(PerseusCommand);
   });
 
   it("should be defined", () => {

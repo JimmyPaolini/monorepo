@@ -26,7 +26,7 @@ describe("LiteratureCommand", () => {
       ],
     }).compile();
 
-    command = module.get(LiteratureCommand);
+    command = await module.resolve(LiteratureCommand);
   });
 
   it("should be defined", () => {

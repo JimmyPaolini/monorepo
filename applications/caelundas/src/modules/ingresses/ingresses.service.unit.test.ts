@@ -52,8 +52,8 @@ describe("IngressesService", () => {
         MathService,
       ],
     }).compile();
-    service = module.get(IngressesService);
-    helperService = module.get(IngressesComposerService);
+    service = await module.resolve(IngressesService);
+    helperService = await module.resolve(IngressesComposerService);
     s = helperService;
   });
 

@@ -13,7 +13,7 @@ describe("FormsTransientWordsService", () => {
       providers: [FormsTransientWordsService],
     }).compile();
 
-    service = module.get(FormsTransientWordsService);
+    service = await module.resolve(FormsTransientWordsService);
   });
 
   it("should be defined", () => {

@@ -44,9 +44,9 @@ describe("EphemerisPhenomenaService", () => {
       ],
     }).compile();
 
-    service = module.get(EphemerisPhenomenaService);
-    constantsService = module.get(EphemerisConstantsService);
-    timeService = module.get(EphemerisTimeService);
+    service = await module.resolve(EphemerisPhenomenaService);
+    constantsService = await module.resolve(EphemerisConstantsService);
+    timeService = await module.resolve(EphemerisTimeService);
 
     vi.mocked(
       constantsService.getSwissEphemerisConstantForBody,

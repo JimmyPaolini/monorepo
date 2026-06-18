@@ -14,7 +14,7 @@ describe("{{namePascalCase}}Command", () => {
       providers: [{{namePascalCase}}Command],
     }).compile();
 
-    command = module.get({{namePascalCase}}Command);
+    command = await module.resolve({{namePascalCase}}Command);
   });
 
   it("should be defined", () => {

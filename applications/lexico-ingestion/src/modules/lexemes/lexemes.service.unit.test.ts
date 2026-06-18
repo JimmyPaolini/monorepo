@@ -44,7 +44,7 @@ describe("LexemesService", () => {
       ],
     }).compile();
 
-    service = module.get(LexemesService);
+    service = await module.resolve(LexemesService);
   });
 
   it("should be defined", () => {

@@ -26,7 +26,7 @@ describe("MajorAspectProgressiveService", () => {
       ],
     }).compile();
 
-    service = module.get(MajorAspectProgressiveService);
+    service = await module.resolve(MajorAspectProgressiveService);
   });
 
   it("should be defined", () => {

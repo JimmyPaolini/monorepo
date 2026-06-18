@@ -3,7 +3,6 @@ name: update-plan
 description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
 user-invocable: true
 argument-hint: "Provide the plan file path and any focus area to audit first."
-disable-model-invocation: true
 compatibility:
 	environments:
 		- vscode
@@ -35,6 +34,9 @@ Execute the following four phases in strict order. Do not skip any phase.
 ### 1.1 Read the Plan File
 
 Read the full plan file. Extract and index:
+
+- Tool option: use a file read tool.
+- CLI option: run `cat <plan-file>`.
 
 - **Frontmatter**: `name`, `description`, `created`, `updated`, `status`
 - **All phases** with their GOAL-XXX identifiers
@@ -137,6 +139,11 @@ Using the task verdicts and bug/file reports from Phase 2, determine the new pla
 ## Phase 4 — Write the Updated Plan
 
 Edit the plan file with precise, factual updates. Follow these rules strictly:
+
+- Tool option: use a file edit tool.
+- CLI option: use commands like `perl -0pi -e` or `sed -i ''` for targeted edits.
+
+Write updates only to the workspace plan file. Do not write to session memory or artifact storage paths (for example `/memories/session/...`). If workspace file write is unavailable, stop and report the blocker.
 
 ### 4.1 Update Frontmatter
 

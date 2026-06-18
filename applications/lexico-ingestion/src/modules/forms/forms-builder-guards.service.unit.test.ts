@@ -11,7 +11,7 @@ describe("FormsBuilderGuardsService", () => {
       providers: [FormsBuilderGuardsService],
     }).compile();
 
-    service = module.get(FormsBuilderGuardsService);
+    service = await module.resolve(FormsBuilderGuardsService);
   });
 
   it("should be defined", () => {

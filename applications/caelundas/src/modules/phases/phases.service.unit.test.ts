@@ -123,7 +123,7 @@ describe("PhasesService", () => {
       ],
     }).compile();
 
-    service = module.get(PhasesService);
+    service = await module.resolve(PhasesService);
   });
 
   beforeEach(() => {

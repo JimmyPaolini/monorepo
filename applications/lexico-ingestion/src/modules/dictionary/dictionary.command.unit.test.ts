@@ -60,9 +60,9 @@ describe("DictionaryCommand", () => {
       ],
     }).compile();
 
-    command = module.get(DictionaryCommand);
-    lexemesService = module.get(LexemesService);
-    translationsService = module.get(TranslationsService);
+    command = await module.resolve(DictionaryCommand);
+    lexemesService = await module.resolve(LexemesService);
+    translationsService = await module.resolve(TranslationsService);
   });
 
   beforeEach(() => {

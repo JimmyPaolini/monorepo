@@ -56,7 +56,7 @@ describe("EclipsesService", () => {
       ],
     }).compile();
 
-    service = module.get(EclipsesService);
+    service = await module.resolve(EclipsesService);
   });
 
   beforeEach(() => {

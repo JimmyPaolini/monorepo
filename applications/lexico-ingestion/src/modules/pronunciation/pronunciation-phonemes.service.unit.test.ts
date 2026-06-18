@@ -11,7 +11,7 @@ describe("PronunciationPhonemesService", () => {
       providers: [PronunciationPhonemesService],
     }).compile();
 
-    service = module.get(PronunciationPhonemesService);
+    service = await module.resolve(PronunciationPhonemesService);
   });
 
   it("should be defined", () => {

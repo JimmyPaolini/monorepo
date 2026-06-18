@@ -19,7 +19,7 @@ describe("InputService", () => {
         { provide: ConfigService, useValue: { get: vi.fn() } },
       ],
     }).compile();
-    service = module.get(InputService);
+    service = await module.resolve(InputService);
   });
 
   describe("environmentSchema.parse", () => {

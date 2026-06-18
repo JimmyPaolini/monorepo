@@ -21,8 +21,8 @@ describe("TripleAspectsDetectorService", () => {
       ],
     }).compile();
 
-    service = module.get(TripleAspectsDetectorService);
-    void module.get(LoggerService);
+    service = await module.resolve(TripleAspectsDetectorService);
+    await module.resolve(LoggerService);
   });
 
   it("should be defined", () => {

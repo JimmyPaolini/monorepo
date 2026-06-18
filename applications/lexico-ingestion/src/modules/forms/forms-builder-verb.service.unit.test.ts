@@ -19,7 +19,7 @@ describe("FormsBuilderVerbService", () => {
       ],
     }).compile();
 
-    service = module.get(FormsBuilderVerbService);
+    service = await module.resolve(FormsBuilderVerbService);
   });
 
   it("should be defined", () => {

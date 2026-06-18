@@ -23,8 +23,8 @@ describe("TwilightsComposerService", () => {
       ],
     }).compile();
 
-    service = module.get(TwilightsComposerService);
-    void module.get(LoggerService);
+    service = await module.resolve(TwilightsComposerService);
+    await module.resolve(LoggerService);
   });
 
   it("should be defined", () => {

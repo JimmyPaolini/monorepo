@@ -20,7 +20,7 @@ describe("QuadrupleAspectsService", () => {
         QuadrupleAspectsService,
       ],
     }).compile();
-    service = module.get(QuadrupleAspectsService);
+    service = await module.resolve(QuadrupleAspectsService);
   });
 
   it("should be defined", () => {

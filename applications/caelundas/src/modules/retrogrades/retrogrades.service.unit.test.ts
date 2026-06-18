@@ -33,7 +33,7 @@ describe("RetrogradesService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(RetrogradesService);
+    service = await module.resolve(RetrogradesService);
     s = service as unknown as ServicePrivate;
   });
 

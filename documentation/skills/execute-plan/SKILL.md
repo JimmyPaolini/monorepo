@@ -3,7 +3,6 @@ name: execute-plan
 description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
 user-invocable: true
 argument-hint: "Provide the plan file path and any execution boundaries (for example, stop after one phase)."
-disable-model-invocation: true
 compatibility:
    environments:
       - vscode
@@ -135,7 +134,12 @@ For each pending task, launch a subagent using this prompt (populate all placeho
 
 ### Post-Task: Mark Completion
 
-After each subagent reports success, immediately update the plan file using `#tool:edit/editFiles`:
+After each subagent reports success, immediately update the plan file in the workspace:
+
+- Tool option: use a file edit tool.
+- CLI option: use commands like `perl -0pi -e` or `sed -i ''` for targeted edits.
+
+Do not write task completion updates to session memory or artifact storage paths (for example `/memories/session/...`). If workspace file write is unavailable, stop and report the blocker.
 
 1. Add ✅ to the task's `Completed` column
 2. Set the `Date` column to the current UTC timestamp (format: `YYYY-MM-DDTHH:MM:SSZ`)
@@ -152,9 +156,14 @@ After all tasks in the selected phase are marked complete, run verification to c
 
 ### 4.1 Identify Verification Commands
 
-Use `#tool:nx-mcp-server/nx_project_details` for each affected project to discover its available targets. Then select the appropriate commands using this priority order:
+Discover available Nx targets for each affected project before selecting verification commands.
 
-1. **Prefer compound targets** that run multiple checks in one invocation — use `#tool:nx-mcp-server/nx_available_plugins` and inspect project targets for aggregates like `analyze-code` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
+- Tool option: use Nx workspace tools that expose project target metadata.
+- CLI option: run `pnpm nx show project <project-name> --json`.
+
+Then select the appropriate commands using this priority order:
+
+1. **Prefer compound targets** that run multiple checks in one invocation — inspect project targets for aggregates like `analyze-code` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
 2. **Use `nx affected`** over per-project commands when multiple projects are touched:
    `nx affected --target=<target> --base=main`
 3. **Fall back to individual targets** only when no compound target exists:

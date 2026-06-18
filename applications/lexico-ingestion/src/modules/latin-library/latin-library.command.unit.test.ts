@@ -14,7 +14,7 @@ describe("LatinLibraryCommand", () => {
       providers: [LatinLibraryCommand],
     }).compile();
 
-    command = module.get(LatinLibraryCommand);
+    command = await module.resolve(LatinLibraryCommand);
   });
 
   it("should be defined", () => {

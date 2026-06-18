@@ -3,7 +3,6 @@ name: change-plan
 description: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
 user-invocable: true
 argument-hint: "Provide the plan file path and describe the requested scope or approach change."
-disable-model-invocation: true
 compatibility:
 	environments:
 		- vscode
@@ -133,8 +132,10 @@ Use this as the external research sub-agent prompt:
 > Steps:
 >
 > 1. Identify all new or changed external libraries, frameworks, APIs, or tools referenced in the proposed change
-> 2. For each, use `#tool:context7` to look up its current documentation — focus on API references, configuration, and migration guides
-> 3. Use `#tool:web/fetch` to read changelogs, release notes, or GitHub issues that may affect the change
+> 2. For each dependency, gather current documentation using either option below:
+>    - Tool option: use the available Context7 documentation query tools.
+>    - CLI option: fetch official docs, changelogs, and release notes with commands like `curl -L <url>` and inspect local files with `rg`.
+> 3. Gather changelogs, release notes, or GitHub issues that may affect the change.
 > 4. Return a structured report with:
 >
 >    **External Research Summary**
@@ -149,7 +150,10 @@ After any launched sub-agents return, review their research summaries before pro
 
 **Skip this phase by default.** Only execute if the change description is ambiguous, introduces conflicting options, or Phase 2 research surfaced open questions that cannot be resolved without user input.
 
-**Use `#tool:vscode/askQuestions` to ask the user 2–4 focused clarifying questions.** Batch all questions into a single call. Provide the current plan's values as defaults so the user can confirm or override.
+Ask the user 2–4 focused clarifying questions. Batch all questions into a single interaction. Provide the current plan's values as defaults so the user can confirm or override.
+
+- Tool option: use an interactive question tool when available.
+- CLI/chat option: ask a numbered list of questions directly in chat.
 
 Questions must address gaps surfaced by impact classification and research:
 
@@ -164,7 +168,12 @@ After receiving answers, proceed to Phase 4.
 
 ## Phase 4 — Revision: Apply Changes to the Plan
 
-Edit the existing plan file using `#tool:edit/editFiles`. Follow these rules strictly.
+Edit the existing plan file directly in the workspace. Follow these rules strictly.
+
+- Tool option: use a file edit tool.
+- CLI option: use commands like `perl -0pi -e` or `sed -i ''` for targeted edits.
+
+Do not write revisions to session memory or artifact storage paths (for example `/memories/session/...`). If workspace file write is unavailable, stop and report the blocker.
 
 ### 4.1 Update Frontmatter
 
