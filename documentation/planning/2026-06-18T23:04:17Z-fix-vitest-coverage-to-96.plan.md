@@ -2,7 +2,7 @@
 name: Vitest Coverage 96 Percent
 description: Raise all Vitest coverage thresholds to 96 percent and expand tests until affected projects consistently meet the new floor.
 created: 2026-06-18T23:04:17Z
-updated: 2026-06-18T23:04:17Z
+updated: 2026-06-18T23:08:20Z
 status: 'Planned'
 ---
 
@@ -10,7 +10,7 @@ status: 'Planned'
 
 ![Status: Planned](https://img.shields.io/badge/status-Planned-blue)
 
-This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vitest entry points aligned with that floor, and adds focused tests to close the remaining gaps without weakening existing rules.
+This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vitest entry points aligned with that floor, and adds focused tests to close the remaining gaps without weakening existing rules. The latest coverage run showed the biggest gaps in `applications/caelundas` around `main.ts`, `minor-aspects-composer.service.ts`, `specialty-aspects-composer.service.ts`, `caelundas.command.ts`, `eclipse-calculation.service.ts`, and `eclipse-geometry.service.ts`; `applications/lexico-ingestion` still needs its `logger.service.unit.test.ts` failure resolved before its coverage table can be trusted end-to-end; `tools/conformance` surfaced a template mismatch around `nestjs-service-file`.
 
 ## 1. Requirements & Constraints
 
@@ -45,11 +45,11 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 
 | Task | Description | Completed | Date |
 | ---- | ----------- | --------- | ---- |
-| TASK-004 | Run Vitest coverage for `applications/caelundas` and identify the lowest-coverage source files, branches, and functions to target first. |  |  |
-| TASK-005 | Add focused unit tests for uncovered pure logic in `applications/caelundas/src/modules/**` and `applications/caelundas/src/main*.ts` where behavior is currently unasserted. |  |  |
-| TASK-006 | Expand `applications/caelundas` integration or end-to-end coverage for orchestration paths that unit tests cannot cover cleanly. |  |  |
-| TASK-007 | Run Vitest coverage for `tools/conformance` and add tests for uncovered generator utilities, templates, or helpers that are safe to exercise directly. |  |  |
-| TASK-008 | Run Vitest coverage for `applications/lexico-ingestion` and add tests for uncovered parsing, normalization, and module orchestration logic within its Vitest scope. |  |  |
+| TASK-004 | Run Vitest coverage for `applications/caelundas` and prioritize the lowest-coverage files first: `src/main.ts`, `src/modules/caelundas/caelundas.command.ts`, `src/modules/minor-aspects/minor-aspects-composer.service.ts`, `src/modules/specialty-aspects/specialty-aspects-composer.service.ts`, `src/modules/eclipses/eclipse-calculation.service.ts`, `src/modules/eclipses/eclipse-geometry.service.ts`, `src/modules/aspects/aspects.service.ts`, `src/modules/twilights/twilights.service.ts`, and `src/modules/logger/logger.service.ts`. |  |  |
+| TASK-005 | Add focused unit tests for uncovered pure logic in `applications/caelundas/src/main.ts`, `src/modules/caelundas/caelundas.command.ts`, and the aspect/composer services so each branch and edge case is asserted explicitly instead of depending on broad integration coverage. |  |  |
+| TASK-006 | Expand `applications/caelundas` integration or end-to-end coverage for orchestration paths in `eclipses`, `calendar`, and `ephemeris-coordinate` modules, especially for error branches, timezone boundaries, and empty-result handling that unit tests miss. |  |  |
+| TASK-007 | Run Vitest coverage for `tools/conformance`, then strengthen tests around the `nestjs-service-file` template and related generator validators so the logger service fixture and similar instances satisfy the conformance rules. |  |  |
+| TASK-008 | Run Vitest coverage for `applications/lexico-ingestion`, fix `src/modules/logger/logger.service.unit.test.ts` so the scoped provider uses the correct NestJS resolution path, then add tests for the remaining parsing, normalization, and command/module orchestration hotspots revealed by the next coverage run. |  |  |
 
 ### Implementation Phase 3 — Documentation and Verification
 
@@ -85,6 +85,10 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 - **FILE-007**: `applications/caelundas/src/**/*.test.ts` — primary test expansion surface.
 - **FILE-008**: `applications/lexico-ingestion/src/**/*.test.ts` — secondary test expansion surface.
 - **FILE-009**: `tools/conformance/src/**/*.test.ts` and `tools/conformance/src/**/testing/**/*.test.ts` — utility and generator test surface.
+- **FILE-010**: `applications/caelundas/src/modules/eclipses/eclipse-calculation.service.ts`, `applications/caelundas/src/modules/eclipses/eclipse-geometry.service.ts`, `applications/caelundas/src/modules/aspects/aspects.service.ts`, `applications/caelundas/src/modules/twilights/twilights.service.ts`, `applications/caelundas/src/modules/logger/logger.service.ts` — the first high-impact source files to strengthen for the 96 percent target.
+- **FILE-011**: `applications/caelundas/src/main.ts`, `applications/caelundas/src/modules/caelundas/caelundas.command.ts`, `applications/caelundas/src/modules/minor-aspects/minor-aspects-composer.service.ts`, `applications/caelundas/src/modules/specialty-aspects/specialty-aspects-composer.service.ts` — the lowest-coverage execution and composition paths.
+- **FILE-012**: `applications/lexico-ingestion/src/modules/logger/logger.service.unit.test.ts` — the blocked test that must be fixed before the project coverage run can expose its remaining hotspots.
+- **FILE-013**: `tools/conformance/src/generators/nestjs-service-file/templates/__nameKebabCase__.service.unit.test.ts` — the template implicated by the conformance failure.
 
 ## 6. Testing
 
