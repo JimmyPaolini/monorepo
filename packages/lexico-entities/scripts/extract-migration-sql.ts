@@ -6,15 +6,15 @@
  *
  * Modes:
  *   --mode=latest  (default) Process only the most recently generated migration
- *   --mode=all               Process all migrations
+ *   --mode=all               Process all migrations.
  *
  * Output:
- *   packages/lexico-entities/src/database/migrations/<name>-up.sql
- *   packages/lexico-entities/src/database/migrations/<name>-down.sql
+ *   packages/lexico-entities/src/modules/database/migrations/<name>-up.sql
+ *   packages/lexico-entities/src/modules/database/migrations/<name>-down.sql.
  *
  * Usage (run from workspace root):
  *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts
- *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all
+ *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all.
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -23,17 +23,46 @@ import path from "node:path";
 import ts from "typescript";
 
 const MIGRATIONS_DIR =
-  "packages/lexico-entities/src/database/migrations" as const;
+  "packages/lexico-entities/src/modules/database/migrations" as const;
 const MIGRATION_GLOB = /^\d{13}-\w.*\.ts$/;
 
+/**
+ * Describes behavior.
+ */
 type Mode = "all" | "latest";
 
+/**
+ * Extract sql from literal.
+ */
+function extractSqlFromLiteral(
+  argument: ts.Expression,
+  sourceFile: ts.SourceFile,
+): string | undefined {
+  if (ts.isStringLiteral(argument)) return argument.text;
+  if (ts.isNoSubstitutionTemplateLiteral(argument)) return argument.text;
+  if (ts.isTemplateLiteral(argument)) {
+    const { line } = sourceFile.getLineAndCharacterOfPosition(
+      argument.getStart(),
+    );
+    console.warn(
+      `Warning: template literal with expressions found at ${sourceFile.fileName}:${line + 1} — skipping`,
+    );
+  }
+  return undefined;
+}
+
+/**
+ * Extract sql from method.
+ */
 function extractSqlFromMethod(
   method: ts.MethodDeclaration,
   sourceFile: ts.SourceFile,
 ): string[] {
   const statements: string[] = [];
 
+  /**
+   * Visit.
+   */
   function visit(node: ts.Node): void {
     if (
       ts.isCallExpression(node) &&
@@ -46,18 +75,7 @@ function extractSqlFromMethod(
         return;
       }
 
-      let sql: string | undefined;
-
-      if (ts.isStringLiteral(firstArgument)) {
-        sql = firstArgument.text;
-      } else if (ts.isNoSubstitutionTemplateLiteral(firstArgument)) {
-        sql = firstArgument.text;
-      } else if (ts.isTemplateLiteral(firstArgument)) {
-        console.warn(
-          `Warning: template literal with expressions found at ${sourceFile.fileName}:${sourceFile.getLineAndCharacterOfPosition(firstArgument.getStart()).line + 1} — skipping`,
-        );
-      }
-
+      const sql = extractSqlFromLiteral(firstArgument, sourceFile);
       if (sql !== undefined) {
         const trimmed = sql.trim();
         const normalized = trimmed.endsWith(";") ? trimmed : `${trimmed};`;
@@ -72,6 +90,9 @@ function extractSqlFromMethod(
   return statements;
 }
 
+/**
+ * Extract sql from migration.
+ */
 function extractSqlFromMigration(
   source: string,
   filePath: string,
@@ -86,6 +107,9 @@ function extractSqlFromMigration(
   let upStatements: string[] = [];
   let downStatements: string[] = [];
 
+  /**
+   * Visit.
+   */
   function visit(node: ts.Node): void {
     if (ts.isClassDeclaration(node)) {
       for (const member of node.members) {
@@ -112,6 +136,9 @@ function extractSqlFromMigration(
   return { down: downStatements, up: upStatements };
 }
 
+/**
+ * Find migration files.
+ */
 async function findMigrationFiles(mode: Mode): Promise<string[]> {
   const entries = await readdir(MIGRATIONS_DIR);
   const sorted = entries.filter((f) => MIGRATION_GLOB.test(f)).toSorted();
@@ -131,6 +158,9 @@ async function findMigrationFiles(mode: Mode): Promise<string[]> {
   return sorted.map((f) => path.join(MIGRATIONS_DIR, f));
 }
 
+/**
+ * Main.
+ */
 async function main(): Promise<void> {
   const mode = parseMode();
   const migrationPaths = await findMigrationFiles(mode);
@@ -152,6 +182,9 @@ async function main(): Promise<void> {
   }
 }
 
+/**
+ * Parse mode.
+ */
 function parseMode(): Mode {
   const flag = process.argv.find((argument) => argument.startsWith("--mode="));
   const value = flag?.split("=")[1];
@@ -159,6 +192,9 @@ function parseMode(): Mode {
   return "latest";
 }
 
+/**
+ * Process migration file.
+ */
 async function processMigrationFile(
   file: string,
 ): Promise<{ downPath: string; upPath: string }> {

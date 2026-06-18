@@ -1,4 +1,5 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -13,7 +14,11 @@ describe("SextupleAspectsService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [SextupleAspectsService, MathService],
+      providers: [
+        SextupleAspectsService,
+        SextupleAspectsComposerService,
+        MathService,
+      ],
     }).compile();
     service = await module.resolve(SextupleAspectsService);
   });

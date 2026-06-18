@@ -3,7 +3,11 @@ import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
+import { MartianPhaseService } from "./martian-phase.service";
+import { MercurianPhaseService } from "./mercurian-phase.service";
+import { PhaseCalculationService } from "./phase-calculation.service";
 import { PhasesService } from "./phases.service";
+import { VenusianPhaseService } from "./venusian-phase.service";
 
 /**
  * NestJS module for inner-planet phase event detection.
@@ -14,6 +18,12 @@ import { PhasesService } from "./phases.service";
   controllers: [],
   exports: [PhasesService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
-  providers: [PhasesService],
+  providers: [
+    PhaseCalculationService,
+    VenusianPhaseService,
+    MercurianPhaseService,
+    MartianPhaseService,
+    PhasesService,
+  ],
 })
 export class PhasesModule {}

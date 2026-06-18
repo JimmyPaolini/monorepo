@@ -1,7 +1,13 @@
-import baseConfig from "../../configuration/eslint.config.base.ts";
+import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // �️ Base Config
   ...baseConfig,
+
+  // 🙈 Ignores
+  { ignores: ["src/modules/database/migrations/**"] },
+
+  // 📦 Dependency Checks
   {
     files: ["**/*.json"],
     rules: {

@@ -7,7 +7,11 @@ import { describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { MartianPhaseService } from "./martian-phase.service";
+import { MercurianPhaseService } from "./mercurian-phase.service";
+import { PhaseCalculationService } from "./phase-calculation.service";
 import { PhasesService } from "./phases.service";
+import { VenusianPhaseService } from "./venusian-phase.service";
 
 vi.mock("fs", () => ({
   default: {
@@ -17,11 +21,33 @@ vi.mock("fs", () => ({
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const service = new PhasesService(
-  new LoggerService(),
+const loggerService = new LoggerService();
+const progressiveUtilitiesService = new ProgressiveUtilities(loggerService);
+const phaseCalculationService = new PhaseCalculationService(
+  loggerService,
   ephemerisService,
   mathService,
-  new ProgressiveUtilities(new LoggerService()),
+);
+const venusianPhaseService = new VenusianPhaseService(
+  loggerService,
+  phaseCalculationService,
+  progressiveUtilitiesService,
+);
+const mercurianPhaseService = new MercurianPhaseService(
+  loggerService,
+  phaseCalculationService,
+  progressiveUtilitiesService,
+);
+const martianPhaseService = new MartianPhaseService(
+  loggerService,
+  phaseCalculationService,
+  progressiveUtilitiesService,
+);
+const service = new PhasesService(
+  loggerService,
+  venusianPhaseService,
+  mercurianPhaseService,
+  martianPhaseService,
 );
 
 describe("phases.events integration", () => {

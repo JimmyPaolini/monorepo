@@ -8,6 +8,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { Tree } from "@nx/devkit";
 
+/**
+ * Generate component options.
+ */
 interface GenerateComponentOptions {
   name: string;
   project?: string;
@@ -16,9 +19,6 @@ interface GenerateComponentOptions {
 /**
  * Generates a new React component with TypeScript and test files.
  * Prompts for a project tagged `framework:react` and places the component in `src/components`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the component generator
  */
 export async function generateComponent(
   tree: Tree,
@@ -38,6 +38,25 @@ export async function generateComponent(
     subject: "Component name",
   });
 
+  const componentsDirectory = resolveComponentsDirectory(tree, projectName);
+
+  const filesPath = path.join(__dirname, "templates");
+  const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
+
+  generateFiles({
+    instanceDirectoryPath: componentsDirectory,
+    substitutions,
+    templateDirectoryPath: filesPath,
+    tree,
+  });
+
+  await formatFiles(tree);
+}
+
+/**
+ * Resolve components directory.
+ */
+function resolveComponentsDirectory(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);
   const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
@@ -48,24 +67,13 @@ export async function generateComponent(
     );
   }
 
-  const directory = path.join(projectRoot, "src", "components");
+  const componentsDirectory = path.join(projectRoot, "src", "components");
 
-  // Validate directory exists in workspace
-  if (!tree.exists(directory)) {
+  if (!tree.exists(componentsDirectory)) {
     throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
+      `Directory "${componentsDirectory}" does not exist in project "${projectName}"`,
     );
   }
 
-  const namePascalCase = _.upperFirst(_.camelCase(name));
-
-  const filesPath = path.join(__dirname, "templates");
-  const substitutions = { namePascalCase };
-  generateFiles({
-    instanceDirectoryPath: directory,
-    substitutions,
-    templateDirectoryPath: filesPath,
-    tree,
-  });
-  await formatFiles(tree);
+  return componentsDirectory;
 }

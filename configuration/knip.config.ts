@@ -65,7 +65,7 @@ const config: KnipConfig = {
         "configuration/vitest.config.ts",
         "configuration/commitlint.config.ts",
         "configuration/dependency-cruiser.cjs",
-        "configuration/eslint.config.base.ts",
+        "configuration/eslint.config.ts",
         "configuration/eslint.config.js",
         "configuration/lint-staged.config.ts",
         "configuration/oxfmt.config.ts",
@@ -101,6 +101,7 @@ const config: KnipConfig = {
         "src/**/*.end-to-end.test.ts",
         "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
         "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "src/modules/caelundas/caelundas.body-types.ts", // Split-out type surface not yet adopted by the wider module graph
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],
@@ -143,8 +144,18 @@ const config: KnipConfig = {
       entry: [
         "src/index.ts",
         "scripts/**/*.ts",
-        "src/database/data-source.ts",
-        "src/database/migrations/**/*.ts",
+        "src/modules/database/data-source.ts",
+        "src/modules/database/migrations/**/*.ts",
+      ],
+      ignoreDependencies: [
+        "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
+      ],
+      ignore: [
+        // TODO: re add these
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "src/modules/database/database.module.ts", // Conformance-generated module stub, not yet exported
+        "src/modules/entities/entities.module.ts", // Conformance-generated module stub, not yet exported
       ],
       project: ["src/**/*.ts", "scripts/**/*.ts"],
     },

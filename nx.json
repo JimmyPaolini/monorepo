@@ -36,12 +36,13 @@
     "pythonTests": ["{projectRoot}/testing/**/*.py"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/workflows/*.yml",
-      "{workspaceRoot}/configuration/tsconfig.base.json",
+      "{workspaceRoot}/configuration/tsconfig.json",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml"
     ],
     "typescriptFiles": [
       "{projectRoot}/**/*.{ts,tsx,mts,cts}",
+      "{projectRoot}/**/*.json",
       "{projectRoot}/tsconfig*.json",
       "sharedGlobals"
     ]
@@ -71,10 +72,10 @@
   ],
   "projects": {
     "caelundas": {
-      "tags": ["language:typescript"]
+      "tags": ["domain:caelundas", "language:typescript", "type:application"]
     },
     "monorepo": {
-      "tags": ["language:typescript", "scripts"]
+      "tags": ["language:typescript", "type:tool"]
     }
   },
   "targetDefaults": {
@@ -180,7 +181,7 @@
       "defaultConfiguration": "check",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/configuration/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/eslint.config.ts",
         "sharedGlobals"
       ],
       "options": {
@@ -255,7 +256,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
-        "{workspaceRoot}/configuration/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/eslint.config.ts",
         "{workspaceRoot}/configuration/oxlint.config.ts",
         "sharedGlobals"
       ]
@@ -491,7 +492,6 @@
     },
     "typecheck": {
       "cache": true,
-      "executor": "nx:run-commands",
       "inputs": [
         "^production",
         "typescriptFiles",
@@ -499,10 +499,7 @@
           "externalDependencies": ["typescript"]
         }
       ],
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
+      "outputs": []
     },
     "vulture": {
       "cache": true,

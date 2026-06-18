@@ -139,7 +139,7 @@
     "key": "shift+cmd+v"
   },
   {
-    "command": "workbench.action.closeAllGroups",
+    "command": "workbench.action.closeUnpinnedEditors",
     "key": "shift+cmd+w"
   },
   {

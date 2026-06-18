@@ -372,6 +372,238 @@ const count = userInput || 10; // If userInput is 0, returns 10 (wrong!)
 const count = userInput ?? 10; // If userInput is 0, returns 0 (correct!)
 ```
 
+## Readonly Class Properties
+
+Properties that are never mutated after construction must be marked `readonly`.
+Enforced by ESLint `@typescript-eslint/prefer-readonly`.
+
+```typescript
+// ❌ WRONG: mutable property never assigned after construction
+class UserService {
+  private logger: Logger;
+  constructor(logger: Logger) {
+    this.logger = logger;
+  }
+}
+
+// ✅ CORRECT
+class UserService {
+  constructor(private readonly logger: Logger) {}
+}
+```
+
+## No Non-Null Assertions
+
+Never use `!` to force-unwrap nullable values. Use optional chaining or explicit guards.
+Enforced by ESLint `@typescript-eslint/no-non-null-assertion`.
+
+```typescript
+// ❌ WRONG
+const name = user!.name;
+
+// ✅ CORRECT
+const name = user?.name ?? "unknown";
+```
+
+## Exhaustive Switch Statements
+
+Switch statements on union types must handle every member.
+Enforced by ESLint `@typescript-eslint/switch-exhaustiveness-check`.
+
+```typescript
+type Status = "active" | "inactive" | "pending";
+
+// ❌ WRONG: missing "pending"
+switch (status) {
+  case "active": return enable();
+  case "inactive": return disable();
+}
+
+// ✅ CORRECT
+switch (status) {
+  case "active": return enable();
+  case "inactive": return disable();
+  case "pending": return queue();
+}
+```
+
+## Async Functions
+
+Functions that return a `Promise` must be declared `async`.
+Enforced by ESLint `@typescript-eslint/promise-function-async`.
+
+```typescript
+// ❌ WRONG
+function fetchUser(id: string): Promise<User> {
+  return apiClient.get(`/users/${id}`);
+}
+
+// ✅ CORRECT
+async function fetchUser(id: string): Promise<User> {
+  return apiClient.get(`/users/${id}`);
+}
+```
+
+## Handle All Promises
+
+Every Promise must be awaited or explicitly void-annotated.
+Enforced by ESLint `@typescript-eslint/no-floating-promises`.
+
+```typescript
+// ❌ WRONG: unhandled rejection silently swallowed
+sendEmail(user.email);
+
+// ✅ CORRECT: await it
+await sendEmail(user.email);
+
+// ✅ CORRECT: intentional fire-and-forget
+void sendEmail(user.email);
+```
+
+## Consistent Returns
+
+All code paths in a function must either return a value or none of them should.
+Enforced by ESLint `@typescript-eslint/consistent-return`.
+
+```typescript
+// ❌ WRONG: some paths return, one falls through
+function getLabel(status: string): string | undefined {
+  if (status === "active") return "Active";
+  if (status === "inactive") return "Inactive";
+}
+
+// ✅ CORRECT
+function getLabel(status: string): string {
+  if (status === "active") return "Active";
+  if (status === "inactive") return "Inactive";
+  return "Unknown";
+}
+```
+
+## Control Flow Best Practices
+
+### Always Use Curly Braces
+
+All `if`, `else`, `for`, and `while` blocks require curly braces.
+Enforced by ESLint `curly: "all"`.
+
+```typescript
+// ❌ WRONG
+if (condition) doSomething();
+
+// ✅ CORRECT
+if (condition) {
+  doSomething();
+}
+```
+
+### Early Returns (No Else After Return)
+
+When an `if` block returns, omit the `else`.
+Enforced by ESLint `no-else-return`.
+
+```typescript
+// ❌ WRONG
+if (isActive) {
+  return "active";
+} else {
+  return "inactive";
+}
+
+// ✅ CORRECT
+if (isActive) {
+  return "active";
+}
+return "inactive";
+```
+
+### Object Shorthand
+
+Use property shorthand when key and value names match.
+Enforced by ESLint `object-shorthand: "always"`.
+
+```typescript
+// ❌ WRONG
+const user = { name: name, age: age };
+
+// ✅ CORRECT
+const user = { name, age };
+```
+
+### Template Literals
+
+Use template literals instead of string concatenation.
+Enforced by ESLint `prefer-template`.
+
+```typescript
+// ❌ WRONG
+const greeting = "Hello, " + name + "!";
+
+// ✅ CORRECT
+const greeting = `Hello, ${name}!`;
+```
+
+## Function Parameter Limits
+
+Functions may have at most **3 parameters**. Group extras into an options object.
+Constructors may have up to 12 parameters (for NestJS dependency injection).
+Enforced by ESLint `better-max-params/better-max-params`.
+
+```typescript
+// ❌ WRONG: 4 parameters
+function createUser(name: string, email: string, role: string, age: number): User { ... }
+
+// ✅ CORRECT: options object
+interface CreateUserOptions {
+  age: number;
+  email: string;
+  name: string;
+  role: string;
+}
+function createUser(options: CreateUserOptions): User { ... }
+```
+
+## JSDoc on Public APIs
+
+Public functions, methods, classes, interfaces, types, and enums require JSDoc.
+Only add JSDoc when it provides context beyond the signature.
+Enforced by ESLint `jsdoc/require-jsdoc` and `tsdoc/syntax`.
+
+```typescript
+// ❌ WRONG: missing JSDoc on exported function
+export function parseLatinEntry(raw: string): DictionaryEntry { ... }
+
+// ❌ WRONG: JSDoc that just restates the signature
+/**
+ * Parses a Latin entry.
+ * @param raw - The raw string.
+ * @returns The entry.
+ */
+export function parseLatinEntry(raw: string): DictionaryEntry { ... }
+
+// ✅ CORRECT: JSDoc explains non-obvious behavior
+/**
+ * Parses a Lewis & Short dictionary entry from its raw XML representation.
+ * Entries with multiple headwords are split into separate {@link DictionaryEntry} objects.
+ */
+export function parseLatinEntry(raw: string): DictionaryEntry { ... }
+```
+
+## Code Complexity Limits
+
+| Limit | Threshold | ESLint Rule |
+| ----- | --------- | ----------- |
+| Lines per function | 64 | `max-lines-per-function` |
+| Statements per function | 16 | `max-statements` |
+| Cyclomatic complexity | 8 | `complexity` |
+| Nesting depth | 4 | `max-depth` |
+| Lines per file | 512 | `max-lines` |
+| Parameters per function | 3 | `better-max-params` |
+| Classes per file | 1 | `max-classes-per-file` |
+
+When these limits are exceeded, refactor using guard clauses, helper functions, and single-responsibility
+decomposition. See the [simplify-code skill](../skills/simplify-code/SKILL.md) for step-by-step guidance.
+
 ## Resources
 
 - [TypeScript Handbook: Strict Mode](https://www.typescriptlang.org/tsconfig#strict)

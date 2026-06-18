@@ -1,9 +1,9 @@
 import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 /**
- * Authenticated user
+ * Authenticated user.
  */
-export interface AuthUser {
+export interface AuthenticationUser {
   avatarUrl?: string;
   email: string;
   id: string;
@@ -15,7 +15,7 @@ export interface AuthUser {
  * Returns null if not authenticated.
  */
 export const getCurrentUser = createServerFunction({ method: "GET" }).handler(
-  async (): Promise<AuthUser | null> => {
+  async (): Promise<AuthenticationUser | null> => {
     await Promise.resolve();
     return null;
   },

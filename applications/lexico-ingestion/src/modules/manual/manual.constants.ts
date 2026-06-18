@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 // ♟️ Constants
 import {
   AdjectivalForm,
@@ -9,7 +10,7 @@ import {
   NounInflection,
   PrincipalPart,
   Translation,
-  Uninflected,
+  UninflectedInflection,
 } from "@monorepo/lexico-entities";
 
 export const MANUAL_LEXEMES_TO_DELETE = [
@@ -64,7 +65,8 @@ export const PRAENOMEN_ABBREVIATIONS: Record<
 };
 
 /**
- *
+ * Creates a manual pronoun template for `hic` with predefined declension forms,
+ * principal parts, and canonical translations.
  */
 export function buildHicTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -78,19 +80,7 @@ export function buildHicTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["hic"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["haec"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["hoc"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("hic", "haec", "hoc");
 
   lexeme.translations = [
     new Translation("he, she, it; ", lexeme),
@@ -125,7 +115,8 @@ export function buildHicTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a manual pronoun template for `ille` with predefined declension forms,
+ * principal parts, and canonical translations.
  */
 export function buildIlleTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -139,19 +130,7 @@ export function buildIlleTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["ille"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["illa"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["illud"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("ille", "illa", "illud");
 
   lexeme.translations = [
     new Translation("that (thing); those (things)", lexeme),
@@ -189,7 +168,8 @@ export function buildIlleTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a manual adjective template for `omnis` with third-declension forms
+ * and normalized translation text.
  */
 export function buildOmnisTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -203,19 +183,7 @@ export function buildOmnisTemplate(): Lexeme {
   inflection.degree = "positive";
   lexeme.inflection = inflection;
 
-  const ppM = new PrincipalPart();
-  ppM.name = "masculine";
-  ppM.text = ["omnis"];
-
-  const ppF = new PrincipalPart();
-  ppF.name = "feminine";
-  ppF.text = ["omnis"];
-
-  const ppN = new PrincipalPart();
-  ppN.name = "neuter";
-  ppN.text = ["omne"];
-
-  lexeme.principalParts = [ppM, ppF, ppN];
+  lexeme.principalParts = buildGenderedPrincipalParts("omnis", "omnis", "omne");
 
   lexeme.translations = [new Translation("every (sg), all (pl)", lexeme)];
 
@@ -250,7 +218,7 @@ export function buildOmnisTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a reusable noun template used to expand praenomen abbreviations.
  */
 export function buildPraenomenAbbreviationTemplate(): Lexeme {
   const lexeme = new Lexeme();
@@ -273,14 +241,14 @@ export function buildPraenomenAbbreviationTemplate(): Lexeme {
 }
 
 /**
- *
+ * Creates a reusable numeral template for manual Roman numeral entries.
  */
 export function buildRomanNumeralTemplate(): Lexeme {
   const lexeme = new Lexeme();
   lexeme.disambiguator = 100;
   lexeme.partOfSpeech = "numeral";
 
-  const inflection = new Uninflected();
+  const inflection = new UninflectedInflection();
   lexeme.inflection = inflection;
 
   const pp = new PrincipalPart();
@@ -291,6 +259,9 @@ export function buildRomanNumeralTemplate(): Lexeme {
   return lexeme;
 }
 
+/**
+ * Builds adjectival forms for manual lexeme ingestion.
+ */
 function buildAdjectivalForms(
   rawForms: Record<string, Record<string, Record<string, string[]>>>,
 ): AdjectivalForm[] {
@@ -313,4 +284,27 @@ function buildAdjectivalForms(
     }
   }
   return forms;
+}
+
+/**
+ * Builds gendered principal parts for manual lexeme ingestion.
+ */
+function buildGenderedPrincipalParts(
+  masculine: string,
+  feminine: string,
+  neuter: string,
+): PrincipalPart[] {
+  const ppM = new PrincipalPart();
+  ppM.name = "masculine";
+  ppM.text = [masculine];
+
+  const ppF = new PrincipalPart();
+  ppF.name = "feminine";
+  ppF.text = [feminine];
+
+  const ppN = new PrincipalPart();
+  ppN.name = "neuter";
+  ppN.text = [neuter];
+
+  return [ppM, ppF, ppN];
 }

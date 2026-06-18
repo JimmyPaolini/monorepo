@@ -48,9 +48,6 @@ export class MathService {
    * ecliptic circle. The result is always in the range [0, 180] degrees, as it
    * measures the shorter of the two possible arcs between the points.
    *
-   * @param longitude1 - First ecliptic longitude in degrees
-   * @param longitude2 - Second ecliptic longitude in degrees
-   * @returns Shortest angular distance between the two longitudes in degrees [0, 180]
    *
    * @remarks
    * Algorithm:
@@ -85,32 +82,27 @@ export class MathService {
    *
    * Uses recursive backtracking algorithm. Time complexity: O(n choose k).
    *
-   * @param array - Source array of elements
-   * @param k - Number of elements to select in each combination
-   * @returns Array of all possible k-combinations
-   *
-   * @typeParam T - Type of elements in the array
-   *
    * @example
    * ```typescript
    * mathService.getCombinations(['Sun', 'Moon', 'Mars'], 2);
    * // Returns: [['Sun','Moon'], ['Sun','Mars'], ['Moon','Mars']]
    * ```
    */
-  getCombinations<T>(array: T[], k: number): T[][] {
+  getCombinations<T>(array: T[], combinationSize: number): T[][] {
     const result: T[][] = [];
 
+    /** Recursively builds fixed-size combinations by extending the current selection in order. */
     function combine(start: number, chosen: T[]): void {
-      if (chosen.length === k) {
+      if (chosen.length === combinationSize) {
         result.push([...chosen]);
         return;
       }
 
-      for (let index = start; index < array.length; index++) {
-        const element = array[index];
+      for (let position = start; position < array.length; position++) {
+        const element = array[position];
         if (element) {
           chosen.push(element);
-          combine(index + 1, chosen);
+          combine(position + 1, chosen);
           chosen.pop();
         }
       }
@@ -123,8 +115,6 @@ export class MathService {
   /**
    * Determines whether a value is a local maximum in a discrete sequence.
    *
-   * @param args - Object containing current, previous, and next values for comparison
-   * @returns `true` if current is a local maximum (previous \< current \> next)
    *
    * @example
    * ```typescript
@@ -140,8 +130,6 @@ export class MathService {
   /**
    * Determines whether a value is a local minimum in a discrete sequence.
    *
-   * @param args - Object containing current, previous, and next values for comparison
-   * @returns `true` if current is a local minimum (previous \> current \< next)
    *
    * @example
    * ```typescript
@@ -157,8 +145,6 @@ export class MathService {
   /**
    * Normalizes an angle in degrees to the range [0, 360).
    *
-   * @param degrees - Angle in degrees (can be any real number)
-   * @returns Normalized angle in the range [0, 360)
    *
    * @example
    * ```typescript
@@ -177,9 +163,6 @@ export class MathService {
    * across the 0°/360° boundary. Essential for root-finding algorithms and aspect
    * detection. Unlike {@link normalizeDegrees}, can return values outside [0, 360).
    *
-   * @param current - Longitude to normalize
-   * @param reference - Reference longitude for comparison
-   * @returns Adjusted longitude in the range that minimizes distance from reference
    *
    * @example
    * ```typescript

@@ -8,7 +8,7 @@ import { Command, CommandRunner } from "nest-commander";
 import { LoggerService } from "../logger/logger.service";
 
 /**
- * Download raw XML chunks from the Perseus GitHub repository.
+ * Downloads and caches Latin XML sources from the Perseus canonical-latinLit repository.
  */
 @Command({
   description: "Run the perseus command",
@@ -25,7 +25,7 @@ export class PerseusCommand extends CommandRunner {
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
       mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `perseus-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -33,38 +33,89 @@ export class PerseusCommand extends CommandRunner {
 
   // 🔐 Private Fields
 
-  private readonly dataDirectory = path.resolve("data", "perseus-source");
-  private readonly logFilePath: string;
+  private readonly errorLogFilePath: string;
+  private readonly sourceDataDirectory = path.resolve("data", "perseus-source");
+  private readonly sourceHost =
+    "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/";
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
+  /**
+   * Append source download error log for Perseus source ingestion.
+   */
+  private async appendSourceDownloadErrorLog(
+    xmlPath: string,
+    error: unknown,
+  ): Promise<void> {
+    const errorMessage =
+      error instanceof Error ? error.stack || error.message : String(error);
+    this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
+    await fs.appendFile(
+      this.errorLogFilePath,
+      `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
+    );
+  }
 
   /**
-   *
+   * Download source xml file if missing for Perseus source ingestion.
    */
-  async run(): Promise<void> {
-    const host =
-      "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/";
+  private async downloadSourceXmlFileIfMissing(xmlPath: string): Promise<void> {
+    const targetPath = path.join(this.sourceDataDirectory, xmlPath);
+    try {
+      await fs.access(targetPath);
+      this.logger.log(`⏭️ Skipping already downloaded: ${xmlPath}`);
+      return;
+    } catch {
+      // file does not exist
+    }
+    await fs.mkdir(path.dirname(targetPath), { recursive: true });
+    this.logger.log(`📥 Downloading: ${xmlPath}`);
+    try {
+      await this.fetchAndWriteXmlFile(this.sourceHost + xmlPath, targetPath);
+    } catch (error: unknown) {
+      await this.appendSourceDownloadErrorLog(xmlPath, error);
+    }
+  }
+
+  /**
+   * Fetch and write xml file for Perseus source ingestion.
+   */
+  private async fetchAndWriteXmlFile(
+    fileUrl: string,
+    targetPath: string,
+  ): Promise<void> {
+    const response = await fetch(fileUrl);
+    if (!response.ok) {
+      this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${response.statusText}`);
+      return;
+    }
+    const xmlContent = await response.text();
+    await fs.writeFile(targetPath, xmlContent, "utf8");
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
+  }
+
+  /**
+   * Fetch source xml paths for Perseus source ingestion.
+   */
+  private async fetchSourceXmlPaths(): Promise<null | string[]> {
     const treeUrl =
       "https://api.github.com/repos/PerseusDL/canonical-latinLit/git/trees/master?recursive=1";
     this.logger.log(`🌳 Fetching Perseus tree from ${treeUrl}`);
     const treeResponse = await fetch(treeUrl);
-
     if (!treeResponse.ok) {
       this.logger.error(
         `❌ Failed to fetch Perseus tree: ${treeResponse.statusText}`,
       );
-      return;
+      return null;
     }
-
     const treeData = (await treeResponse.json()) as {
       tree: { path: string; type: string }[];
     };
-
-    const xmlPaths = treeData.tree
+    return treeData.tree
       .filter(
         (node) =>
           node.type === "blob" &&
@@ -72,46 +123,24 @@ export class PerseusCommand extends CommandRunner {
           node.path.includes("-lat"),
       )
       .map((node) => node.path);
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Discovers eligible Perseus XML files and stores missing files in the local cache.
+   */
+  async run(): Promise<void> {
+    const xmlPaths = await this.fetchSourceXmlPaths();
+    if (!xmlPaths) return;
 
     this.logger.log(
       `🗂️ Found ${xmlPaths.length} Latin XML files in Perseus repo`,
     );
-    await fs.mkdir(this.dataDirectory, { recursive: true });
+    await fs.mkdir(this.sourceDataDirectory, { recursive: true });
 
     for (const xmlPath of xmlPaths) {
-      const targetPath = path.join(this.dataDirectory, xmlPath);
-
-      try {
-        await fs.access(targetPath);
-        this.logger.log(`⏭️ Skipping already downloaded: ${xmlPath}`);
-        continue;
-      } catch {
-        // file does not exist
-      }
-
-      await fs.mkdir(path.dirname(targetPath), { recursive: true });
-      this.logger.log(`📥 Downloading: ${xmlPath}`);
-
-      try {
-        const fileUrl = host + xmlPath;
-        const res = await fetch(fileUrl);
-        if (!res.ok) {
-          this.logger.warn(`⚠️ Failed to fetch ${fileUrl}: ${res.statusText}`);
-          continue;
-        }
-
-        const xmlContent = await res.text();
-        await fs.writeFile(targetPath, xmlContent, "utf8");
-        await new Promise((resolve) => setTimeout(resolve, 100)); // polite delay
-      } catch (error: unknown) {
-        const errorMessage =
-          error instanceof Error ? error.stack || error.message : String(error);
-        this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
-        await fs.appendFile(
-          this.logFilePath,
-          `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
-        );
-      }
+      await this.downloadSourceXmlFileIfMissing(xmlPath);
     }
 
     this.logger.log("✅ Finished downloading Perseus source files.");

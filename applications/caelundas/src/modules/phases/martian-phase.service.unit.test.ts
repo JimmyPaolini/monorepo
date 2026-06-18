@@ -1,0 +1,185 @@
+import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import moment from "moment-timezone";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
+
+import { MartianPhaseService } from "./martian-phase.service";
+import {
+  MARS_EVENING_VISIBILITY_DESCRIPTION,
+  MARS_MORNING_VISIBILITY_DESCRIPTION,
+} from "./phases.constants";
+
+import type { PhaseParameters } from "./phases.types";
+import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
+
+const createTimestamp = (): moment.Moment =>
+  moment.utc("2024-06-01T06:00:00.000Z");
+
+const createPhaseParameters = (): PhaseParameters => ({
+  currentDistance: 1,
+  currentIllumination: 50,
+  currentLongitudePlanet: 100,
+  currentLongitudeSun: 90,
+  nextDistances: [1, 1],
+  nextIlluminations: [50, 50],
+  nextLongitudePlanet: 101,
+  nextLongitudeSun: 91,
+  previousDistances: [1, 1],
+  previousIlluminations: [50, 50],
+  previousLongitudePlanet: 99,
+  previousLongitudeSun: 89,
+});
+
+const createPhaseCalculationServiceStub = (): {
+  filterByCategory: ReturnType<typeof vi.fn>;
+  formatTimeZoneIso: ReturnType<typeof vi.fn>;
+  gatherPhaseParameters: ReturnType<typeof vi.fn>;
+  isEveningRise: ReturnType<typeof vi.fn>;
+  isEveningSet: ReturnType<typeof vi.fn>;
+  isMorningRise: ReturnType<typeof vi.fn>;
+  isMorningSet: ReturnType<typeof vi.fn>;
+} => ({
+  filterByCategory: vi.fn((events: Event[], category: string) =>
+    events.filter((event) => event.categories.includes(category)),
+  ),
+  formatTimeZoneIso: vi.fn(() => "2024-06-01T02:00:00-04:00"),
+  gatherPhaseParameters: vi.fn(() => createPhaseParameters()),
+  isEveningRise: vi.fn(() => false),
+  isEveningSet: vi.fn(() => false),
+  isMorningRise: vi.fn(() => false),
+  isMorningSet: vi.fn(() => false),
+});
+
+const createProgressiveUtilitiesStub = (): {
+  pairProgressiveEvents: ReturnType<typeof vi.fn>;
+} => ({
+  pairProgressiveEvents: vi.fn(() => []),
+});
+
+describe("MartianPhaseService", () => {
+  const logger = new LoggerService();
+  const phaseCalculationService = createPhaseCalculationServiceStub();
+  const progressiveUtilitiesService = createProgressiveUtilitiesStub();
+
+  const service = new MartianPhaseService(
+    logger,
+    phaseCalculationService as never,
+    progressiveUtilitiesService as never,
+  );
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  describe("buildMartianPhaseEvent", () => {
+    it("builds expected Mars phase event metadata", () => {
+      const timestamp = createTimestamp();
+
+      const event = service.buildMartianPhaseEvent({
+        phase: "morning rise",
+        timestamp,
+      });
+
+      expect(event.summary).toBe(
+        `♂️${symbolByMartianPhase["morning rise"]} Mars Morning Rise`,
+      );
+      expect(event.description).toBe("Mars Morning Rise");
+      expect(event.start).toEqual(timestamp);
+      expect(event.end).toEqual(timestamp);
+      expect(event.categories).toContain("Martian");
+      expect(event.categories).toContain("Morning Rise");
+    });
+  });
+
+  describe("getMartianPhaseEvents", () => {
+    it("emits rise/set Mars events when all checks pass", () => {
+      phaseCalculationService.isMorningRise.mockReturnValue(true);
+      phaseCalculationService.isMorningSet.mockReturnValue(true);
+      phaseCalculationService.isEveningRise.mockReturnValue(true);
+      phaseCalculationService.isEveningSet.mockReturnValue(true);
+
+      const timestamp = createTimestamp();
+
+      const events = service.getMartianPhaseEvents({
+        marsCoordinateEphemeris: {},
+        marsDistanceEphemeris: {},
+        marsIlluminationEphemeris: {},
+        minute: timestamp,
+        sunCoordinateEphemeris: {},
+      });
+
+      expect(events).toHaveLength(4);
+      expect(events.map((event) => event.description)).toEqual(
+        expect.arrayContaining([
+          "Mars Morning Rise",
+          "Mars Morning Set",
+          "Mars Evening Rise",
+          "Mars Evening Set",
+        ]),
+      );
+    });
+  });
+
+  describe("progressive visibility events", () => {
+    it("creates martian morning visibility duration events", () => {
+      const morningRise: Event = {
+        categories: ["Planetary Phase", "Martian", "Morning Rise"],
+        description: "Mars Morning Rise",
+        end: moment.utc("2024-01-01T00:00:00.000Z"),
+        start: moment.utc("2024-01-01T00:00:00.000Z"),
+        summary: "Mars Morning Rise",
+      };
+      const morningSet: Event = {
+        categories: ["Planetary Phase", "Martian", "Morning Set"],
+        description: "Mars Morning Set",
+        end: moment.utc("2024-01-02T00:00:00.000Z"),
+        start: moment.utc("2024-01-02T00:00:00.000Z"),
+        summary: "Mars Morning Set",
+      };
+      progressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([
+        [morningRise, morningSet],
+      ]);
+
+      const events = service.getMartianMorningProgressiveEvents([
+        morningRise,
+        morningSet,
+      ]);
+
+      expect(events).toHaveLength(1);
+      expect(events[0]?.description).toBe(MARS_MORNING_VISIBILITY_DESCRIPTION);
+      expect(events[0]?.start).toEqual(morningRise.start);
+      expect(events[0]?.end).toEqual(morningSet.start);
+    });
+
+    it("creates martian evening visibility duration events", () => {
+      const eveningRise: Event = {
+        categories: ["Planetary Phase", "Martian", "Evening Rise"],
+        description: "Mars Evening Rise",
+        end: moment.utc("2024-01-01T00:00:00.000Z"),
+        start: moment.utc("2024-01-01T00:00:00.000Z"),
+        summary: "Mars Evening Rise",
+      };
+      const eveningSet: Event = {
+        categories: ["Planetary Phase", "Martian", "Evening Set"],
+        description: "Mars Evening Set",
+        end: moment.utc("2024-01-02T00:00:00.000Z"),
+        start: moment.utc("2024-01-02T00:00:00.000Z"),
+        summary: "Mars Evening Set",
+      };
+      progressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([
+        [eveningRise, eveningSet],
+      ]);
+
+      const events = service.getMartianEveningProgressiveEvents([
+        eveningRise,
+        eveningSet,
+      ]);
+
+      expect(events).toHaveLength(1);
+      expect(events[0]?.description).toBe(MARS_EVENING_VISIBILITY_DESCRIPTION);
+      expect(events[0]?.start).toEqual(eveningRise.start);
+      expect(events[0]?.end).toEqual(eveningSet.start);
+    });
+  });
+});

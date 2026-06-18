@@ -10,62 +10,31 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs command module options.
+ */
 interface GenerateNestjsCommandModuleOptions {
   name: string;
   project?: string;
 }
 
 /**
- * Generates a new NestJS command module with command, module, types, constants, and unit test files.
- * Prompts for a project tagged `framework:nest-commander` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS command module generator
+ * Absolute path to the template directory used by this generator.
  */
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
 /**
- *
+ * Generates a command module under `<projectRoot>/src/modules/<name>` for a
+ * `framework:nest-commander` project and schedules formatting for created files.
  */
 export async function generateNestjsCommandModule(
   tree: Tree,
   options: GenerateNestjsCommandModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProject({
-    tag: "framework:nest-commander",
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: "Which project should the module be generated in?",
-  });
-
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: "What is the name of the module? (kebab-case)",
-    name: options.name,
-    subject: "Module name",
-  });
-
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const directory = path.join(projectRoot, "src", "modules");
-
-  // Validate directory exists in workspace
-  if (!tree.exists(directory)) {
-    throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
-    );
-  }
+  const { nameKebabCase, projectName } = await resolveInputs(tree, options);
+  const directory = resolveProjectDirectory(tree, projectName);
 
   const targetPath = path.join(directory, nameKebabCase);
   const substitutions = {
@@ -90,4 +59,54 @@ export async function generateNestjsCommandModule(
       cwd: workspaceRoot,
     });
   };
+}
+
+/**
+ * Resolve inputs.
+ */
+async function resolveInputs(
+  tree: Tree,
+  options: GenerateNestjsCommandModuleOptions,
+): Promise<{ nameKebabCase: string; projectName: string }> {
+  const projectName = await resolveProject({
+    tag: "framework:nest-commander",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
+  });
+
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
+    name: options.name,
+    subject: "Module name",
+  });
+
+  return { nameKebabCase, projectName };
+}
+
+/**
+ * Resolve project directory.
+ */
+function resolveProjectDirectory(tree: Tree, projectName: string): string {
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+
+  const directory = path.join(projectRoot, "src", "modules");
+
+  // Validate directory exists in workspace
+  if (!tree.exists(directory)) {
+    throw new Error(
+      `Directory "${directory}" does not exist in project "${projectName}"`,
+    );
+  }
+
+  return directory;
 }

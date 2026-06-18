@@ -1,22 +1,16 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
+  aspectBodies as minorAspectBodies,
   minorAspects,
-  symbolByBody,
-  symbolByMinorAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import {
-  capitalize,
-  isBody,
-  isMinorAspect,
-  minorAspectBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { MinorAspectsEventService } from "./minor-aspects-event.service";
+import { MinorAspectsProgressiveService } from "./minor-aspects-progressive.service";
+
+import type { DetectBodyPairAspectArguments } from "./minor-aspects.types";
 import type {
   AspectPhase,
   Body,
@@ -41,9 +35,9 @@ export class MinorAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    aspectsUtilitiesService: AspectsUtilities,
+    private readonly minorAspectsEventService: MinorAspectsEventService,
+    private readonly minorAspectsProgressiveService: MinorAspectsProgressiveService,
   ) {
     this.logger.setContext(MinorAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
@@ -61,69 +55,64 @@ export class MinorAspectsService {
 
   // 🔏 Private Methods
 
-  private getMinorAspectProgressiveEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    const bodiesCapitalized = _.sortBy(
-      beginning.categories.filter((category) =>
-        minorAspectBodies
-          .map((minorAspectBody) => _.startCase(minorAspectBody))
-          .includes(category),
-      ),
+  /** Detects a minor-aspect event for one body pair at a specific minute window. */
+  private detectBodyPairAspect(
+    args: DetectBodyPairAspectArguments,
+  ): Event | null {
+    const {
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    } = args;
+    const body1LongitudesWindow =
+      this.minorAspectsEventService.getLongitudesWindowForBody({
+        body: body1,
+        coordinateEphemerisByBody,
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const body2LongitudesWindow =
+      this.minorAspectsEventService.getLongitudesWindowForBody({
+        body: body2,
+        coordinateEphemerisByBody,
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const phase = this.detectPhaseFromWindows(
+      body1LongitudesWindow,
+      body2LongitudesWindow,
     );
-
-    const aspectCapitalized = beginning.categories.find((category) =>
-      minorAspects
-        .map((minorAspect) => _.startCase(minorAspect))
-        .includes(category),
-    );
-
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
-      throw new Error(
-        `Could not extract aspect info from categories: ${beginning.categories.join(
-          ", ",
-        )}`,
-      );
+    if (!phase) {
+      return null;
     }
+    return this.buildMinorAspectEvent({
+      body1,
+      body2,
+      longitudeBody1: body1LongitudesWindow.current,
+      longitudeBody2: body2LongitudesWindow.current,
+      phase,
+      timestamp: minute,
+    });
+  }
 
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const aspectLower = aspectCapitalized.toLowerCase();
-    const body1Lower = body1Capitalized.toLowerCase();
-    const body2Lower = body2Capitalized.toLowerCase();
-    if (
-      !isMinorAspect(aspectLower) ||
-      !isBody(body1Lower) ||
-      !isBody(body2Lower)
-    ) {
-      throw new Error(
-        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
-      );
-    }
-    const aspect = aspectLower;
-    const body1 = body1Lower;
-    const body2 = body2Lower;
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const aspectSymbol = symbolByMinorAspect[aspect];
-
-    return {
-      categories: [
-        "Astronomy",
-        "Astrology",
-        "Simple Aspect",
-        "Minor Aspect",
-        body1Capitalized,
-        body2Capitalized,
-        aspectCapitalized,
-      ],
-      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      end: ending.start,
-      start: beginning.start,
-      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
-    };
+  /** Derives minor-aspect phase by comparing three-minute longitude windows for both bodies. */
+  private detectPhaseFromWindows(
+    body1LongitudesWindow: { current: number; next: number; previous: number },
+    body2LongitudesWindow: { current: number; next: number; previous: number },
+  ): AspectPhase | null {
+    return this.detectAspectPhase({
+      currentLongitudeBody1: body1LongitudesWindow.current,
+      currentLongitudeBody2: body2LongitudesWindow.current,
+      nextLongitudeBody1: body1LongitudesWindow.next,
+      nextLongitudeBody2: body2LongitudesWindow.next,
+      previousLongitudeBody1: body1LongitudesWindow.previous,
+      previousLongitudeBody2: body2LongitudesWindow.previous,
+    });
   }
 
   // 🌎 Public Methods
@@ -134,15 +123,6 @@ export class MinorAspectsService {
    * Formats the event with appropriate emoji indicators, body symbols,
    * and categorization for filtering and organization.
    *
-   * @param args - Event parameters
-   * @param longitudeBody1 - Ecliptic longitude of first body in degrees
-   * @param longitudeBody2 - Ecliptic longitude of second body in degrees
-   * @param timestamp - Exact moment of the aspect phase
-   * @param body1 - First celestial body
-   * @param body2 - Second celestial body
-   * @param phase - Aspect phase: forming, exact, or dissolving
-   * @returns Formatted calendar event with summary, description, and categories
-   * @throws When no valid minor aspect is detected between the bodies
    * @see {@link getMinorAspect} for aspect type determination
    */
   buildMinorAspectEvent(args: {
@@ -162,55 +142,15 @@ export class MinorAspectsService {
       );
       throw new Error("No minor aspect found");
     }
-
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const minorAspectSymbol = symbolByMinorAspect[minorAspect];
-
-    let description: string;
-    let phaseEmoji: string;
-    let categories: string[];
-
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Minor Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(minorAspect),
-    ];
-
-    if (phase === "perfective") {
-      description = `${body1Capitalized} perfective ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "🎯";
-      categories = [...baseCategories, "Perfective"];
-    } else if (phase === "forming") {
-      description = `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "➡️";
-      categories = [...baseCategories, "Forming"];
-    } else {
-      description = `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}`;
-      phaseEmoji = "⬅️";
-      categories = [...baseCategories, "Dissolving"];
-    }
-
-    const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
-
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    const minorAspectEvent: Event = {
-      categories,
-      description,
-      end: timestamp,
-      start: timestamp,
-      summary,
-    };
-    return minorAspectEvent;
+    return this.minorAspectsEventService.assembleMinorAspectEvent({
+      body1,
+      body2,
+      minorAspect,
+      phase,
+      timestamp,
+    });
   }
+
   /**
    * Detects minor aspect events within a single minute time window.
    *
@@ -223,10 +163,6 @@ export class MinorAspectsService {
    * astrological interpretations. They use smaller orbs than major aspects
    * (typically ±2-3° vs ±8-10°).
    *
-   * @param args - Configuration object
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param minute - The minute to check for aspect events
-   * @returns Array of calendar events for all detected minor aspects at this minute
    * @see {@link getMinorAspect} for aspect type detection
    * @see {@link getMinorAspectPhase} for phase determination
    * @see {@link minorAspectBodies} for configured body list
@@ -236,10 +172,8 @@ export class MinorAspectsService {
     minute: Moment;
   }): Event[] {
     const { coordinateEphemerisByBody, minute } = args;
-
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
-
     const minorAspectEvents: Event[] = [];
 
     for (const body1 of minorAspectBodies) {
@@ -248,51 +182,16 @@ export class MinorAspectsService {
         if (body1 === body2) {
           continue;
         }
-
-        const ephemerisBody1 = coordinateEphemerisByBody[body1];
-        const ephemerisBody2 = coordinateEphemerisByBody[body2];
-
-        const {
-          current: currentLongitudeBody1,
-          next: nextLongitudeBody1,
-          previous: previousLongitudeBody1,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody1,
-          previousMinute,
+        const event = this.detectBodyPairAspect({
+          body1,
+          body2,
+          coordinateEphemerisByBody,
           minute,
           nextMinute,
-        );
-        const {
-          current: currentLongitudeBody2,
-          next: nextLongitudeBody2,
-          previous: previousLongitudeBody2,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody2,
           previousMinute,
-          minute,
-          nextMinute,
-        );
-
-        const phase = this.detectAspectPhase({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
         });
-
-        if (phase) {
-          minorAspectEvents.push(
-            this.buildMinorAspectEvent({
-              body1,
-              body2,
-              longitudeBody1: currentLongitudeBody1,
-              longitudeBody2: currentLongitudeBody2,
-              phase,
-              timestamp: minute,
-            }),
-          );
+        if (event) {
+          minorAspectEvents.push(event);
         }
       }
     }
@@ -307,98 +206,27 @@ export class MinorAspectsService {
    * to create events spanning the entire active period of each aspect.
    * Progressive events show when an aspect is in orb rather than just boundary moments.
    *
-   * @param events - All events to process (non-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Filter to minor aspect events only
-    const minorAspectEvents = events.filter((event) =>
-      event.categories.includes("Minor Aspect"),
-    );
-
-    // Group by body pair and aspect type using categories
-    const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
-      const planets = _.sortBy(
-        event.categories.filter((category) =>
-          minorAspectBodies
-            .map((minorAspectBody) => _.startCase(minorAspectBody))
-            .includes(category),
-        ),
-      );
-
-      const aspect = event.categories.find((category) =>
-        minorAspects
-          .map((minorAspect) => _.startCase(minorAspect))
-          .includes(category),
-      );
-
-      if (planets.length === 2 && aspect) {
-        return `${planets[0]}-${aspect}-${planets[1]}`;
-      }
-      return "";
-    });
-
-    // Process each group
-    for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-      if (!key) {
-        continue;
-      }
-
-      const formingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Forming"),
-      );
-      const dissolvingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Dissolving"),
-      );
-
-      const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-        formingEvents,
-        dissolvingEvents,
-        `minor aspect ${key}`,
-      );
-
-      progressiveEvents.push(
-        ...pairs.map(([beginning, ending]) =>
-          this.getMinorAspectProgressiveEvent(beginning, ending),
-        ),
-      );
-    }
-
-    return progressiveEvents;
+    return this.minorAspectsProgressiveService.detectProgressive(events);
   }
 
   /**
    * Returns the first minor aspect between two bodies, or `null` if none is within orb.
    *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
    */
   getMinorAspect(args: {
     longitudeBody1: number;
     longitudeBody2: number;
   }): MinorAspect | null {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of minorAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          aspect,
-          longitudeBody1,
-          longitudeBody2,
-        })
-      ) {
-        return aspect;
-      }
-    }
-    return null;
+    return this.minorAspectsEventService.getMinorAspect(args);
   }
 
   /**
    * Classifies the minor aspect phase (forming / perfective / dissolving) between two bodies
    * across three consecutive minutes, or `null` if no minor aspect is in progress.
    *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
    */
   getMinorAspectPhase(args: {
     currentLongitudeBody1: number;

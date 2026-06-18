@@ -4,10 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/lexico-components/src",
   "tags": [
+    "domain:lexico",
     "framework:react",
     "language:typescript",
-    "scope:shared",
-    "type:lib"
+    "type:package"
   ],
   "targets": {
     "analyze-code": {},

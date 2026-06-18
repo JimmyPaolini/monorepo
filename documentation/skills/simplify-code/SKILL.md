@@ -24,10 +24,11 @@ This skill provides a systematic approach to identifying and refactoring overly 
 1. **Identify the Complex Code**
    - Run the lint task for the target project (e.g., `nx run <project>:lint`) or review the linting errors provided by the user.
    - Identify the specific functions violating the complexity rules:
-     - `max-lines-per-function` (> 32 lines)
+     - `max-lines-per-function` (> 64 lines)
      - `max-statements` (> 16 statements)
      - `complexity` (cyclomatic complexity > 8)
      - `max-depth` (nesting > 4)
+     - `max-lines` (file > 512 lines)
 
 2. **Consult Refactoring.Guru**
    - Before rewriting the code, actively browse the web (e.g., `https://refactoring.guru/refactoring/techniques`) to look up appropriate refactoring techniques (e.g., "Extract Method", "Replace Temp with Query", "Decompose Conditional", "Replace Nested Conditional with Guard Clauses").

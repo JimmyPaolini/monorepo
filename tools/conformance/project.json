@@ -4,7 +4,7 @@
   "prefix": "lib",
   "projectType": "library",
   "sourceRoot": "tools/conformance/src",
-  "tags": ["language:python", "language:typescript", "type:util"],
+  "tags": ["language:python", "language:typescript", "type:tool"],
   "targets": {
     "analyze-code": {},
     "build": {

@@ -124,7 +124,7 @@ Python projects: `format` runs `ruff format` (config: [configuration/pyproject.t
 
 | Sub-target | Check command | Write command | Config file |
 | ---------- | ------------- | ------------- | ----------- |
-| `eslint` | `eslint . {args}` (cwd: projectRoot) | same with `--fix` | project `eslint.config.ts` which extends [configuration/eslint.config.base.ts](../../../configuration/eslint.config.base.ts) |
+| `eslint` | `eslint . {args}` (cwd: projectRoot) | same with `--fix` | project `eslint.config.ts` which extends [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
 | `oxlint` | `oxlint --config configuration/oxlint.config.ts {projectRoot}/src` (cwd: workspaceRoot) | same with `--fix` | [configuration/oxlint.config.ts](../../../configuration/oxlint.config.ts) |
 
 Python projects: `lint` runs `ruff check` (config: [configuration/pyproject.toml](../../../configuration/pyproject.toml))
@@ -412,7 +412,7 @@ Report a summary to the user covering:
 
 | Tool | Config File |
 | ---- | ----------- |
-| ESLint (base) | [configuration/eslint.config.base.ts](../../../configuration/eslint.config.base.ts) |
+| ESLint (base) | [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
 | oxlint | [configuration/oxlint.config.ts](../../../configuration/oxlint.config.ts) |
 | oxfmt | [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts) |
 | Prettier | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [.prettierignore](../../../.prettierignore) |

@@ -1,7 +1,5 @@
-import {
-  MARGIN_MINUTES,
-  symbolByLunarPhase,
-} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";

@@ -5,6 +5,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { DailyCyclesBuilderService } from "./daily-cycles-builder.service";
 import { DailyCyclesService } from "./daily-cycles.service";
 
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -16,23 +17,19 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isRise: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
-  isSet: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
+  isRise: (args: { current: number; previous: number }) => boolean;
+  isSet: (args: { current: number; previous: number }) => boolean;
 }
 
 describe("DailyCyclesService", () => {
   let service: DailyCyclesService;
+  let helperService: DailyCyclesBuilderService;
   let s: ServicePrivate;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        DailyCyclesBuilderService,
         DailyCyclesService,
         EphemerisService,
         LoggerService,
@@ -40,7 +37,8 @@ describe("DailyCyclesService", () => {
       ],
     }).compile();
     service = await module.resolve(DailyCyclesService);
-    s = service as unknown as ServicePrivate;
+    helperService = await module.resolve(DailyCyclesBuilderService);
+    s = helperService;
   });
 
   it("should be defined", () => {
@@ -465,8 +463,8 @@ describe("DailyCyclesService", () => {
       it("should return true when crossing above sun radius threshold", () => {
         // Rise occurs when elevation goes from below -DailyCyclesService.sunRadiusDegrees to above
         const result = s.isRise({
-          currentElevation: 0, // Above threshold
-          previousElevation: -0.5, // Below threshold (-0.2667)
+          current: 0, // Above threshold
+          previous: -0.5, // Below threshold (-0.2667)
         });
 
         expect(result).toBeTruthy();
@@ -474,8 +472,8 @@ describe("DailyCyclesService", () => {
 
       it("should return true at exact threshold crossing", () => {
         const result = s.isRise({
-          currentElevation: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
-          previousElevation: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
+          current: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
+          previous: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
         });
 
         expect(result).toBeTruthy();
@@ -483,8 +481,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when elevation stays below threshold", () => {
         const result = s.isRise({
-          currentElevation: -0.5,
-          previousElevation: -1,
+          current: -0.5,
+          previous: -1,
         });
 
         expect(result).toBeFalsy();
@@ -492,8 +490,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when elevation stays above threshold", () => {
         const result = s.isRise({
-          currentElevation: 1,
-          previousElevation: 0.5,
+          current: 1,
+          previous: 0.5,
         });
 
         expect(result).toBeFalsy();
@@ -501,8 +499,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when crossing threshold downward (set direction)", () => {
         const result = s.isRise({
-          currentElevation: -0.5, // Below threshold
-          previousElevation: 0, // Above threshold
+          current: -0.5, // Below threshold
+          previous: 0, // Above threshold
         });
 
         expect(result).toBeFalsy();
@@ -513,8 +511,8 @@ describe("DailyCyclesService", () => {
       it("should return true when crossing below sun radius threshold", () => {
         // Set occurs when elevation goes from above -DailyCyclesService.sunRadiusDegrees to below
         const result = s.isSet({
-          currentElevation: -0.5, // Below threshold
-          previousElevation: 0, // Above threshold
+          current: -0.5, // Below threshold
+          previous: 0, // Above threshold
         });
 
         expect(result).toBeTruthy();
@@ -522,8 +520,8 @@ describe("DailyCyclesService", () => {
 
       it("should return true at exact threshold crossing", () => {
         const result = s.isSet({
-          currentElevation: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
-          previousElevation: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
+          current: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
+          previous: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
         });
 
         expect(result).toBeTruthy();
@@ -531,8 +529,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when elevation stays above threshold", () => {
         const result = s.isSet({
-          currentElevation: 0.5,
-          previousElevation: 1,
+          current: 0.5,
+          previous: 1,
         });
 
         expect(result).toBeFalsy();
@@ -540,8 +538,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when elevation stays below threshold", () => {
         const result = s.isSet({
-          currentElevation: -1,
-          previousElevation: -0.5,
+          current: -1,
+          previous: -0.5,
         });
 
         expect(result).toBeFalsy();
@@ -549,8 +547,8 @@ describe("DailyCyclesService", () => {
 
       it("should return false when crossing threshold upward (rise direction)", () => {
         const result = s.isSet({
-          currentElevation: 0, // Above threshold
-          previousElevation: -0.5, // Below threshold
+          current: 0, // Above threshold
+          previous: -0.5, // Below threshold
         });
 
         expect(result).toBeFalsy();

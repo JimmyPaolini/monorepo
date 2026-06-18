@@ -8,7 +8,7 @@ import { getPronunciation } from "../lib/pronunciation";
 import type { ReactNode } from "react";
 
 /**
- * Props for PronunciationButton component that plays Latin audio.
+ * Properties for PronunciationButton component that plays Latin audio.
  */
 interface PronunciationButtonProperties {
   /** Additional class names */

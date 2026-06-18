@@ -7,13 +7,15 @@ import {
   minorAspects,
   signs,
   specialtyAspects,
-  symbolByDecan,
 } from "./caelundas.constants";
+import { symbolByDecan } from "./caelundas.symbol-constants";
 
 import type {
   aspectPhases,
   eclipsePhases,
   retrogradeBodies,
+} from "./caelundas.constants";
+import type {
   symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
@@ -32,10 +34,7 @@ import type {
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
   symbolByVenusianPhase,
-} from "./caelundas.constants";
-
-// #region Signs 🪧
-
+} from "./caelundas.symbol-constants";
 /**
  * Union of all two-body aspect types (major, minor, and specialty).
  */
@@ -93,27 +92,11 @@ export type BodySymbol = (typeof symbolByBody)[Body];
  * Each sign is divided into three decans (e.g., "aries 1", "aries 2", "aries 3").
  */
 export type Decan = keyof typeof symbolByDecan;
-// export type AsteroidSymbol = (typeof symbolByAsteroid)[Asteroid];
-
-// #region Comets ☄️
-
-/**
- * Notable periodic comets tracked for ingress events.
- *
- * Tracked for sign ingress but not aspects due to irregular visibility.
- */
-// export type Comet = keyof typeof symbolByComet;
-// export type CometSymbol = (typeof symbolByComet)[Comet];
-
-// #region Nodes 🌕
 
 /**
  * Unicode symbol representing a decan subdivision.
  */
 export type DecanSymbol = (typeof symbolByDecan)[Decan];
-// export type NodeSymbol = (typeof symbolByNode)[Node];
-
-// #region Bodies 🔭
 
 /**
  * Phase of an eclipse event (partial, total, annular, or penumbral).
@@ -138,8 +121,6 @@ export type EclipsePhase = (typeof eclipsePhases)[number];
  */
 export type LunarPhase = keyof typeof symbolByLunarPhase;
 
-// #region Major Aspects 📐
-
 /**
  * Major aspects representing primary angular relationships between bodies.
  *
@@ -152,8 +133,6 @@ export type MajorAspect = keyof typeof symbolByMajorAspect;
  * Unicode symbol representing a major aspect.
  */
 export type MajorAspectSymbol = (typeof symbolByMajorAspect)[MajorAspect];
-
-// #region Minor Aspects 🖇️
 
 /**
  * Mars phase representing its illumination and visibility state from Earth.
@@ -171,8 +150,6 @@ export type MartianPhase = keyof typeof symbolByMartianPhase;
  */
 export type MercurianPhase = keyof typeof symbolByMercurianPhase;
 
-// #region Specialty Aspects 🧮
-
 /**
  * Minor aspects representing secondary angular relationships between bodies.
  *
@@ -186,8 +163,6 @@ export type MinorAspect = keyof typeof symbolByMinorAspect;
  */
 export type MinorAspectSymbol = (typeof symbolByMinorAspect)[MinorAspect];
 
-// #region Double Aspects 📐
-
 /**
  * Lunar nodes and apsides representing calculated points in the Moon's orbit.
  *
@@ -195,9 +170,6 @@ export type MinorAspectSymbol = (typeof symbolByMinorAspect)[MinorAspect];
  * (closest/farthest points from Earth).
  */
 export type Node = keyof typeof symbolByNode;
-// export type AspectSymbol = (typeof symbolByAspect)[Aspect];
-
-// #region Triple Aspects 🔺
 
 /**
  * Direction of a planet's apparent motion relative to the zodiac.
@@ -205,19 +177,12 @@ export type Node = keyof typeof symbolByNode;
  * Values: "direct" (eastward), "retrograde" (westward), "stationary" (transition).
  */
 export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
-// export type TripleAspectSymbol = (typeof symbolByTripleAspect)[TripleAspect];
-
-// #region Quadruple Aspects ✖️
 
 /**
  * Unicode symbol representing an orbital direction.
  */
 export type OrbitalDirectionSymbol =
   (typeof symbolByOrbitalDirection)[OrbitalDirection];
-// export type QuadrupleAspectSymbol =
-//   (typeof symbolByQuadrupleAspect)[QuadrupleAspect];
-
-// #region Quintuple Aspects ⭐
 
 /**
  * Classical and modern planets tracked for ephemeris calculations.
@@ -226,10 +191,6 @@ export type OrbitalDirectionSymbol =
  * social planets (Jupiter, Saturn), and outer planets (Uranus, Neptune, Pluto).
  */
 export type Planet = keyof typeof symbolByPlanet;
-// export type QuintupleAspectSymbol =
-//   (typeof symbolByQuintupleAspect)[QuintupleAspect];
-
-// #region Sextuple Aspects 🔯
 
 /**
  * Four-body aspect patterns formed by specific angular relationships.
@@ -246,15 +207,6 @@ export type Planet = keyof typeof symbolByPlanet;
  * @see {@link getQuadrupleAspectEvents} for pattern detection
  */
 export type QuadrupleAspect = keyof typeof symbolByQuadrupleAspect;
-// export type SextupleAspectSymbol =
-//   (typeof symbolBySextupleAspect)[SextupleAspect];
-
-// #region Stellium ✨
-
-// export type Stellium = keyof typeof symbolByStellium;
-// export type StelliumSymbol = (typeof symbolByStellium)[Stellium];
-
-// #region Orbital Directions 🔁
 
 /**
  * Five-body aspect patterns (rare geometric configurations).
@@ -378,99 +330,11 @@ export type VenusianPhase = keyof typeof symbolByVenusianPhase;
  */
 export type VenusianPhaseSymbol = (typeof symbolByVenusianPhase)[VenusianPhase];
 
-// export type PhaseBody = (typeof phaseBodies)[number];
-// export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
-
-// export type SignIngressBody = (typeof ingressBodies)[number];
-// export type DecanIngressBody = (typeof ingressBodies)[number];
-// export type PeakIngressBody = (typeof ingressBodies)[number];
-
-// export type MajorAspectBody = (typeof aspectBodies)[number];
-// export type MinorAspectBody = (typeof aspectBodies)[number];
-// export type SpecialtyAspectBody = (typeof aspectBodies)[number];
-
-// export type TripleAspectBody = (typeof aspectBodies)[number];
-// export type QuadrupleAspectBody = (typeof aspectBodies)[number];
-// export type QuintupleAspectBody = (typeof aspectBodies)[number];
-// export type SextupleAspectBody = (typeof aspectBodies)[number];
-// export type StelliumBody = (typeof aspectBodies)[number];
-
-/**
- * Re-exported arrays of bodies for specific astronomical phenomena.
- *
- * These arrays define which celestial bodies participate in various types of events:
- * - aspectPhases: Phases of aspect lifecycle
- * - retrogradeBodies: Planets that exhibit retrograde motion
- * - planetaryPhaseBodies: Bodies with observable phase cycles (Moon, Venus, Mercury, Mars)
- * - signIngressBodies/decanIngressBodies/peakIngressBodies: Bodies tracked for zodiac ingress
- * - aspectBodies variants: Bodies included in aspect pattern detection
- *
- * @remarks
- * These arrays are used internally for filtering ephemeris queries and event detection.
- * Exported for type safety and validation in user code.
- */
-
-// export type Apsis = keyof typeof symbolByApsis;
-// export type ApsisSymbol = (typeof symbolByApsis)[Apsis];
-
-// export type Position = keyof typeof symbolByPosition;
-// export type PositionSymbol = (typeof symbolByPosition)[Position];
-
-// export type Phase = keyof typeof symbolByPhase;
-// export type PhaseSymbol = (typeof symbolByPhase)[Phase];
-
-// #region Houses 🏠
-
-// export type House = keyof typeof symbolByHouse;
-// export type HouseSymbol = (typeof symbolByHouse)[House];
-
-// export type PhaseBody = (typeof phaseBodies)[number];
-// export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
-
-// export type SignIngressBody = (typeof ingressBodies)[number];
-// export type DecanIngressBody = (typeof ingressBodies)[number];
-// export type PeakIngressBody = (typeof ingressBodies)[number];
-
-// export type MajorAspectBody = (typeof aspectBodies)[number];
-// export type MinorAspectBody = (typeof aspectBodies)[number];
-// export type SpecialtyAspectBody = (typeof aspectBodies)[number];
-
-// export type TripleAspectBody = (typeof aspectBodies)[number];
-// export type QuadrupleAspectBody = (typeof aspectBodies)[number];
-// export type QuintupleAspectBody = (typeof aspectBodies)[number];
-// export type SextupleAspectBody = (typeof aspectBodies)[number];
-// export type StelliumBody = (typeof aspectBodies)[number];
-
-// Re-export arrays from symbols for convenience
-export {
-  aspectPhases,
-  ingressBodies as decanIngressBodies,
-  aspectBodies as majorAspectBodies,
-  aspectBodies as minorAspectBodies,
-  ingressBodies as peakIngressBodies,
-  phaseBodies as planetaryPhaseBodies,
-  aspectBodies as quadrupleAspectBodies,
-  aspectBodies as quintupleAspectBodies,
-  retrogradeBodies,
-  aspectBodies as sextupleAspectBodies,
-  ingressBodies as signIngressBodies,
-  aspectBodies as specialtyAspectBodies,
-  aspectBodies as stelliumBodies,
-  aspectBodies as tripleAspectBodies,
-  typedObjectKeys,
-} from "./caelundas.constants";
-
-// #region Utilities 🛠️
-
 /**
  * Uppercases the first character of a string literal type.
  *
  * Mirrors `Capitalize<T>` at the value level. Prefer this over
  * `_.startCase` + `as Capitalize<T>` — the assertion is confined here.
- *
- * @param str - A string union member (e.g., `Body`, `Sign`)
- * @returns The same string with its first character uppercased
- *
  * @example
  * ```ts
  * const bodyCapitalized = capitalize(body);
@@ -487,10 +351,6 @@ export function capitalize<T extends string>(str: T): Capitalize<T> {
  *
  * Fully preserves the key type `K`, avoiding the `string`-widening that
  * `Object.entries(_.groupBy(...))` produces.
- *
- * @param items - Array to group
- * @param keyFn - Function that extracts the grouping key from each item
- * @returns A `Map` from key to all items sharing that key
  *
  * @example
  * ```ts
@@ -517,9 +377,6 @@ export function groupByToMap<K extends PropertyKey, T>(
 
 /**
  * Narrows an arbitrary string to the `Aspect` union at runtime.
- *
- * @param aspect - String to test
- * @returns `true` if `aspect` is a member of the `Aspect` union
  */
 export function isAspect(aspect: string): aspect is Aspect {
   return (aspects as readonly string[]).includes(aspect);
@@ -527,9 +384,6 @@ export function isAspect(aspect: string): aspect is Aspect {
 
 /**
  * Narrows an arbitrary string to the `Body` union at runtime.
- *
- * @param body - String to test
- * @returns `true` if `body` is a member of the `Body` union
  */
 export function isBody(body: string): body is Body {
   return (bodies as readonly string[]).includes(body);
@@ -537,9 +391,6 @@ export function isBody(body: string): body is Body {
 
 /**
  * Narrows an arbitrary string to the `Decan` union at runtime.
- *
- * @param decan - String to test
- * @returns `true` if `decan` is a member of the `Decan` union (`"1" | "2" | "3"`)
  */
 export function isDecan(decan: string): decan is Decan {
   return Object.hasOwn(symbolByDecan, decan);
@@ -551,9 +402,6 @@ export function isDecan(decan: string): decan is Decan {
  * Use instead of `value as keyof T` when indexing into a `const` object,
  * or in place of `key in obj` casts.
  *
- * @param object - Object to check membership against
- * @param key - Candidate key value
- * @returns `true` if `key` is a key of `obj`, narrowed to `keyof T`
  *
  * @example
  * ```ts
@@ -571,9 +419,6 @@ export function isKeyOf<T extends object>(
 
 /**
  * Narrows an arbitrary string to the `LunarPhase` union at runtime.
- *
- * @param lunarPhase - String to test
- * @returns `true` if `lunarPhase` is a member of the `LunarPhase` union
  */
 export function isLunarPhase(lunarPhase: string): lunarPhase is LunarPhase {
   return (lunarPhases as readonly string[]).includes(lunarPhase);
@@ -581,9 +426,6 @@ export function isLunarPhase(lunarPhase: string): lunarPhase is LunarPhase {
 
 /**
  * Narrows an arbitrary string to the `MajorAspect` union at runtime.
- *
- * @param majorAspect - String to test
- * @returns `true` if `majorAspect` is a member of the `MajorAspect` union
  */
 export function isMajorAspect(majorAspect: string): majorAspect is MajorAspect {
   return (majorAspects as readonly string[]).includes(majorAspect);
@@ -591,9 +433,6 @@ export function isMajorAspect(majorAspect: string): majorAspect is MajorAspect {
 
 /**
  * Narrows an arbitrary string to the `MinorAspect` union at runtime.
- *
- * @param minorAspect - String to test
- * @returns `true` if `minorAspect` is a member of the `MinorAspect` union
  */
 export function isMinorAspect(minorAspect: string): minorAspect is MinorAspect {
   return (minorAspects as readonly string[]).includes(minorAspect);
@@ -601,9 +440,6 @@ export function isMinorAspect(minorAspect: string): minorAspect is MinorAspect {
 
 /**
  * Narrows an arbitrary string to the `Sign` union at runtime.
- *
- * @param sign - String to test
- * @returns `true` if `sign` is a member of the `Sign` union
  */
 export function isSign(sign: string): sign is Sign {
   return (signs as readonly string[]).includes(sign);
@@ -611,9 +447,6 @@ export function isSign(sign: string): sign is Sign {
 
 /**
  * Narrows an arbitrary string to the `SpecialtyAspect` union at runtime.
- *
- * @param specialtyAspect - String to test
- * @returns `true` if `specialtyAspect` is a member of the `SpecialtyAspect` union
  */
 export function isSpecialtyAspect(
   specialtyAspect: string,
@@ -627,9 +460,6 @@ export function isSpecialtyAspect(
  * `Object.entries` always returns `[string, V][]` in the standard lib.
  * This wrapper narrows the key to `K` when the record is typed as
  * `Record<K, V>`.
- *
- * @param record - Object whose keys form a string union
- * @returns An array of `[K, V]` tuples
  *
  * @example
  * ```ts
@@ -650,9 +480,6 @@ export function objectEntries<K extends string, V>(
  * `Object.fromEntries()` always returns `Record<string, V>` by design, so a cast is
  * required to recover the typed key. This helper centralizes that cast in one place.
  *
- * @param entries - Array of `[K, V]` tuples
- * @returns A `Record<K, V>` built from the provided entries
- *
  * @example
  * ```ts
  * const record = typedFromEntries(bodies.map(body => [body, compute(body)]));
@@ -672,9 +499,6 @@ export function typedFromEntries<K extends string, V>(
  *
  * Inverse of {@link capitalize}. Use when round-tripping display strings
  * (e.g., category labels) back to their original union values.
- *
- * @param str - A capitalized string (e.g., `Capitalize<Body>`)
- * @returns The same string with its first character lowercased
  *
  * @example
  * ```ts

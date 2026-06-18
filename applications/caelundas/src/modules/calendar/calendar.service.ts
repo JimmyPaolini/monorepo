@@ -39,13 +39,33 @@ export class CalendarService {
 
   // 🔏 Private Methods
 
+  /** Builds VEVENT property lines, including optional location, GEO, URL, and metadata fields. */
+  private buildEventProperties(event: Event): string {
+    let properties = `SUMMARY:${event.summary}\nDESCRIPTION:${event.description}\nSTATUS:CONFIRMED\nCLASS:PUBLIC\nTRANSP:TRANSPARENT\nCATEGORIES:${event.categories.join(
+      ",",
+    )}`;
+    if (event.location) {
+      properties += `\nLOCATION:${event.location}`;
+    }
+    if (event.geography) {
+      properties += `\nGEO:${String(event.geography.latitude)};${String(event.geography.longitude)}`;
+    }
+    if (event.url) {
+      properties += `\nURL:${event.url}`;
+    }
+    if (event.priority !== undefined) {
+      properties += `\nPRIORITY:${String(event.priority)}`;
+    }
+    if (event.color) {
+      properties += `\nCOLOR:${event.color}`;
+    }
+    return properties;
+  }
+
+  // 🌎 Public Methods
+
   /**
    * Generates VTIMEZONE definition for iCalendar timezone support.
-   *
-   * @param timezone - IANA timezone identifier
-   * @returns VTIMEZONE component as a string
-   *
-   * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
    */
   private buildTimezoneContent(timezone: string): string {
     if (timezone === "America/New_York") {
@@ -76,17 +96,20 @@ TZID:${timezone}
 END:VTIMEZONE`;
   }
 
-  // 🌎 Public Methods
+  /** Generates a deterministic event identity string used as the VEVENT UID source. */
+  private generateUid(event: Event): string {
+    let id = `${event.summary}::${event.description}::${event.start.toISOString()}`;
+    if (!event.end.isSame(event.start)) {
+      id += `::${event.end.toISOString()}`;
+    }
+    return id;
+  }
 
   /**
    * Converts a single Event to VEVENT format for iCalendar inclusion.
    *
    * Generates an RFC 5545-compliant VEVENT component. UIDs are deterministic based on
    * event content to ensure idempotent imports.
-   *
-   * @param event - Event to convert
-   * @param timezone - IANA timezone identifier (defaults to "America/New_York")
-   * @returns VEVENT component as a string
    *
    * @see {@link buildFileContent} for VCALENDAR container generation
    */
@@ -95,50 +118,16 @@ END:VTIMEZONE`;
     const start = moment.tz(event.start, timezone).format("YYYYMMDDTHHmmss");
     const end = moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");
 
-    // Generate UID
-    let id = `${event.summary}::${event.description}::${event.start.toISOString()}`;
-    if (!event.end.isSame(event.start)) {
-      id += `::${event.end.toISOString()}`;
-    }
-
-    // Build VEVENT
-    let vevent = `BEGIN:VEVENT
-UID:${id}
+    return `BEGIN:VEVENT
+UID:${this.generateUid(event)}
 DTSTAMP:${createdAt}Z
-DTSTART;TZID=${timezone}:${start}`;
-
-    vevent += `\nDTEND;TZID=${timezone}:${end}`;
-
-    vevent += `
-SUMMARY:${event.summary}
-DESCRIPTION:${event.description}
-STATUS:CONFIRMED
-CLASS:PUBLIC
-TRANSP:TRANSPARENT
-CATEGORIES:${event.categories.join(",")}`;
-
-    if (event.location) {
-      vevent += `\nLOCATION:${event.location}`;
-    }
-    if (event.geography) {
-      vevent += `\nGEO:${event.geography.latitude};${event.geography.longitude}`;
-    }
-    if (event.url) {
-      vevent += `\nURL:${event.url}`;
-    }
-    if (event.priority !== undefined) {
-      vevent += `\nPRIORITY:${event.priority}`;
-    }
-    if (event.color) {
-      vevent += `\nCOLOR:${event.color}`;
-    }
-
-    vevent += `\nSEQUENCE:0
+DTSTART;TZID=${timezone}:${start}
+DTEND;TZID=${timezone}:${end}
+${this.buildEventProperties(event)}
+SEQUENCE:0
 LAST-MODIFIED:${createdAt}Z
 CREATED:${createdAt}Z
 END:VEVENT`;
-
-    return vevent;
   }
 
   /**
@@ -146,8 +135,6 @@ END:VEVENT`;
    *
    * Creates an RFC 5545-compliant VCALENDAR container with VTIMEZONE and VEVENT components.
    *
-   * @param parameters - Calendar generation configuration
-   * @returns Complete iCalendar file content as a string
    *
    * @see {@link buildEventContent} for individual VEVENT generation
    *
@@ -199,9 +186,6 @@ END:VCALENDAR
    * The filename encodes the input date range in ISO 8601 format. The output directory
    * is read from the `OUTPUT_DIRECTORY` environment variable, defaulting to `./output`.
    *
-   * @param events - Calendar events to include in the ICS file
-   * @param input - Validated input containing the date range and IANA timezone
-   * @returns Promise that resolves when the file has been written to disk
    */
   async write(events: Event[], input: Input): Promise<void> {
     const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;

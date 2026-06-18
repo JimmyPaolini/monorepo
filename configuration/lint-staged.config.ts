@@ -9,50 +9,18 @@
  */
 import { relative } from "node:path";
 
-import { APPLICATIONS_DIRECTORY } from "../tools/conformance/src/generators/nestjs-command-application/generator.js";
-import { MODULES_DIRECTORY } from "../tools/conformance/src/generators/nestjs-graphql-module/generator.js";
-
-const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
-const MODULES_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**/${MODULES_DIRECTORY}/**`;
-const APPLICATIONS_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**`;
-
-const CONFORMANCE_PATTERNS = [
-  TEMPLATE_PATTERN,
-  MODULES_INSTANCE_PATTERN,
-  APPLICATIONS_INSTANCE_PATTERN,
-] as const;
-
-const syncConventionalConfigFiles = [
-  "configuration/conventional.config.cjs",
-  ".vscode/settings.json",
-  "documentation/skills/commit-code/SKILL.md",
-  "documentation/skills/checkout-branch/SKILL.md",
-  "documentation/skills/create-pull-request/SKILL.md",
-  ".github/prompts/submit-changes.prompt.md",
-  ".github/ISSUE_TEMPLATE/bug-report.yml",
-  ".github/ISSUE_TEMPLATE/feature-request.yml",
-];
-
-const syncPullRequestTemplateFiles = [
-  ".github/PULL_REQUEST_TEMPLATE.md",
-  "documentation/skills/create-pull-request/SKILL.md",
-  ".github/prompts/create-pull-request.prompt.md",
-  ".github/prompts/update-pull-request.prompt.md",
-];
-
-const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
-
-const syncConformanceGeneratorsFiles = [
-  "AGENTS.md",
-  "tools/conformance/generators.json",
-];
+import { SYNC_AGENT_SKILLS_FILES } from "../scripts/sync-agent-skills";
+import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../scripts/sync-conventional-config.constants";
+import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../scripts/sync-conformance-generators";
+import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../scripts/sync-pull-request-template";
+import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants";
 
 function getPaths(files: string[]): string {
   return files.map((file) => relative(process.cwd(), file)).join(",");
 }
 
 const config = {
-  // ── Lockfile integrity ──
+  // 🔒 Lockfile integrity
   // When package.json or workspace config changes, verify the lockfile is in sync
   "**/package.json": () => [
     "./scripts/check-lockfile.sh",
@@ -60,114 +28,126 @@ const config = {
   ],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
-  // ── Unused-code analysis configuration ──
+  // 🧹 Unused-code analysis configuration
   // Re-run the abstract clean target when the Knip config changes
   "configuration/knip.config.ts": () => [
-    "nx run monorepo:clean:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:clean:check --outputStyle=dynamic-legacy",
   ],
 
-  // ── Config synchronization ──
+  // 🔄 Config synchronization
   // Keep VS Code extensions list in sync between .vscode and local devcontainer config
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
-    "nx run monorepo:sync-vscode-extensions:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:sync-vscode-extensions:check --outputStyle=dynamic-legacy",
   ],
+
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
     () => [
-      "nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
+      "pnpm exec nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
     ],
+
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
-  [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
-  ],
-  // Keep PR template in sync across skills and prompt files
-  [`{${syncPullRequestTemplateFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
-  ],
-  // Keep agent skills table of contents in sync in AGENTS.md
-  [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
-  ],
-  // Keep conformance generators table in sync in AGENTS.md
-  [`{${syncConformanceGeneratorsFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
+  [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: () => [
+    "pnpm exec nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
   ],
 
-  // ── TypeScript / JavaScript source files ──
+  // Keep PR template in sync across skills and prompt files
+  [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: () => [
+    "pnpm exec nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
+  ],
+
+  // Keep agent skills table of contents in sync in AGENTS.md
+  [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: () => [
+    "pnpm exec nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
+  ],
+
+  // Keep conformance generators table in sync in AGENTS.md
+  [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
+    "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
+  ],
+
+  // 📊 Code statistics — run on any staged file because folder/file counts change
+  // with any addition or deletion.
+  "**/*": () => [
+    "pnpm exec nx run monorepo:measure-code:write",
+    "git add README.md",
+  ],
+
+  // 📝 TypeScript / JavaScript source files
   // Runs format (oxfmt + prettier), lint (eslint + oxlint), typecheck, spell-check,
   // and clean (Knip for JS/TS unused files, dependencies, and exports) on affected projects.
   // nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [
-      `nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── Jupyter notebooks ──
+  // 📓 Jupyter notebooks
   // Strip outputs first (nbstripout modifies in-place; lint-staged re-stages the
   // clean file), then run Ruff format/lint, typecheck, dead-code analysis, and spell-check.
   "*.ipynb": (files: string[]) => {
     return [
-      `nx affected --target=nbstripout --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
-      `nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=nbstripout --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── Python files ──
+  // 🐍 Python files
   // Runs format (Ruff), lint (Ruff), typecheck, spell-check, and clean (Vulture for Python)
   "*.py": (files: string[]) => {
     return [
-      `nx affected --target=clean,format,lint,spell-check,typecheck --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=clean,format,lint,spell-check,typecheck --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── JSON / HTML data files ──
+  // 📋 JSON / HTML data files
   // Runs format, lint, and spell-check
   "*.{json,jsonc,json5,html}": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── CSS files ──
+  // 🎨 CSS files
   // Runs Stylelint, format, lint, and spell-check
   "*.css": (files: string[]) => {
     return [
-      `nx affected --target=stylelint,format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=stylelint,format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── Markdown files ──
+  // 📄 Markdown files
   // Runs format, ESLint markdown plugin, markdownlint, and spell-check
   "*.{md,mdx}": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── YAML files ──
+  // 🗂️ YAML files
   // Runs format, yamllint, and spell-check (GitHub Actions, Helm values, etc.)
   // pnpm-lock.yaml is excluded: it's auto-generated and should not be linted.
   "{*.yml,!(pnpm-lock).yaml}": (files: string[]) => {
     return [
-      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
-  // ── Conformance tests ──
+  // ✅ Conformance tests
   // Run conformance tests when generator templates or generated instances change
   // to ensure generated code instances conform to their template definitions.
-  // Patterns are derived from generator configuration files (see tools/conformance/src/lint-staged-patterns.ts)
+  // Patterns are derived from generator configuration files (see tools/conformance/src/constants.ts)
   [`{${CONFORMANCE_PATTERNS.join(",")}}`]: () => [
-    "nx run conformance:test --outputStyle=dynamic-legacy",
+    "pnpm exec nx run conformance:test --outputStyle=dynamic-legacy",
   ],
 
-  // ── SQL files ──
+  // 🗄️ SQL files
   // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)
   "*.sql": (files: string[]) => {
     return [
-      `nx affected --target=format,lint --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
-      `nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=format,lint --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 };

@@ -1,5 +1,5 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
@@ -8,6 +8,8 @@ import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { MajorAspectEventService } from "./major-aspect-event.service";
+import { MajorAspectProgressiveService } from "./major-aspect-progressive.service";
 import { MajorAspectsService } from "./major-aspects.service";
 
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
@@ -58,6 +60,8 @@ beforeAll(async () => {
     providers: [
       LoggerService,
       MajorAspectsService,
+      MajorAspectEventService,
+      MajorAspectProgressiveService,
       AspectsUtilities,
       EphemerisService,
       MathService,

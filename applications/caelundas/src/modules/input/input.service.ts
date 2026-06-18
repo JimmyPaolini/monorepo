@@ -33,7 +33,7 @@ export class InputService {
    * {@link ConfigService} and delegates to {@link inputSchema} for coercion,
    * timezone derivation, and date range validation.
    *
-   * @returns Validated input with coordinates, IANA timezone, and Moment date range
+   * @returns Validated input with coordinates, IANA timezone, and Moment date range.
    */
   parse(): Input {
     return inputSchema.parse({

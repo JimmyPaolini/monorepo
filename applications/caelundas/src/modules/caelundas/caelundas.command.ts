@@ -53,7 +53,7 @@ export class CaelundasCommand extends CommandRunner {
    * across the configured date range, merges and sorts the results by start time, then
    * writes the complete event set to an ICS file via {@link CalendarService}.
    *
-   * @returns Promise that resolves when the ICS file has been written
+   * @returns Promise that resolves when the ICS file has been written.
    */
   async run(): Promise<void> {
     const input = this.inputService.parse();

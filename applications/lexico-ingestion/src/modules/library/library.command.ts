@@ -1,24 +1,24 @@
-import { existsSync, mkdirSync } from "node:fs";
+import { Dirent, existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import _ from "lodash";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
-import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
-import { LatinLibraryProvider } from "./providers/latin-library.provider";
-import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
+import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants";
 
-import type { LibraryCommandOptions } from "./library.types";
-import type { Author } from "@monorepo/lexico-entities";
+import type {
+  LibraryCommandOptions,
+  LibrarySourceProvider,
+} from "./library.types";
 
 /**
- * Scrape literature data from various sources to markdown files.
+ * Runs configured library source providers and writes normalized markdown files
+ * into the local `data/library` tree.
  */
 @Command({
   description: "Run the library command",
@@ -30,19 +30,11 @@ export class LibraryCommand extends CommandRunner {
 
   constructor(
     private readonly logger: LoggerService,
-    corpusScriptorumEcclesiasticorumLatinorumProvider: CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider,
-    epigraphikDatenbankClaussSlabyProvider: EpigraphikDatenbankClaussSlabyLibraryProvider,
-    latinLibraryProvider: LatinLibraryProvider,
-    perseusProvider: PerseusLibraryProvider,
+    @Inject(LIBRARY_PROVIDERS_TOKEN)
+    private readonly providers: LibrarySourceProvider[],
   ) {
     super();
     this.logger.setContext(LibraryCommand.name);
-    this.providers = [
-      corpusScriptorumEcclesiasticorumLatinorumProvider,
-      epigraphikDatenbankClaussSlabyProvider,
-      latinLibraryProvider,
-      perseusProvider,
-    ];
 
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
@@ -56,15 +48,34 @@ export class LibraryCommand extends CommandRunner {
   // 🔐 Private Fields
 
   private readonly logFilePath: string;
-  private readonly providers: {
-    ingest: (options?: { author?: string; text?: string }) => Promise<Author[]>;
-    name: string;
-  }[];
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during library provider orchestration.
+   */
+  private buildIngestParameters(
+    author: string | undefined,
+    providerName: string | undefined,
+    text: string | undefined,
+  ): {
+    filteredProviders: LibrarySourceProvider[];
+    ingestOptions: { author?: string; text?: string };
+  } {
+    const filteredProviders = providerName
+      ? this.providers.filter((p) => p.name === providerName)
+      : this.providers;
+    const ingestOptions: { author?: string; text?: string } = {};
+    if (author) ingestOptions.author = author;
+    if (text) ingestOptions.text = text;
+    return { filteredProviders, ingestOptions };
+  }
+
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private async getAuthorChoices(
     provider?: string,
   ): Promise<{ title: string; value: string }[]> {
@@ -76,11 +87,17 @@ export class LibraryCommand extends CommandRunner {
     return authors.map((a) => ({ title: a, value: a }));
   }
 
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private getProviderChoices(): { title: string; value: string }[] {
     const providers = this.providers.map((p) => p.name).toSorted();
     return providers.map((p) => ({ title: p, value: p }));
   }
 
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private async getTextChoices(
     provider?: string,
     authorSlug?: string,
@@ -101,6 +118,101 @@ export class LibraryCommand extends CommandRunner {
     return textSlugs.map((t) => ({ title: t, value: t }));
   }
 
+  /**
+   * Parses and normalizes inputs for library provider orchestration.
+   */
+  private async parseIngestOptions(options: LibraryCommandOptions): Promise<{
+    author: string | undefined;
+    providerName: string | undefined;
+    text: string | undefined;
+  }> {
+    const providerName = await this.parseProvider(
+      options.provider ?? undefined,
+    );
+    const author = await this.parseAuthor(
+      options.author ?? undefined,
+      providerName,
+    );
+    const text = await this.parseText(
+      options.text ?? undefined,
+      providerName,
+      author,
+    );
+    return { author, providerName, text };
+  }
+
+  /**
+   * Processes one workflow step for library provider orchestration.
+   */
+  private async processProvider(args: {
+    current: number;
+    ingestOptions: { author?: string; text?: string };
+    provider: LibrarySourceProvider;
+    total: number;
+  }): Promise<void> {
+    const { current, ingestOptions, provider, total } = args;
+    const providerName = provider.name;
+    this.logger.log(`🏛️ Starting ingestion for provider: ${providerName}`);
+    try {
+      await provider.ingest(ingestOptions);
+
+      const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
+      this.logger.log(
+        `🏛️ Completed ingestion for provider: ${providerName}${progressString}`,
+      );
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      this.logger.error(
+        `❌ Error in provider ${providerName}`,
+        error instanceof Error ? error.stack : undefined,
+      );
+      await fs.appendFile(
+        this.logFilePath,
+        `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
+      );
+    }
+  }
+
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
+  private pushTextEntry(args: {
+    authorSlug: string;
+    currentPathParts: string[];
+    directory: string;
+    entry: Dirent;
+    providerName: string;
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[];
+  }): void {
+    const {
+      authorSlug,
+      currentPathParts,
+      directory,
+      entry,
+      providerName,
+      texts,
+    } = args;
+    texts.push({
+      authorSlug,
+      fullPath: path.join(directory, entry.name),
+      pathParts: currentPathParts,
+      provider: providerName,
+      textSlug: path.basename(entry.name, ".md"),
+      title: _.startCase(path.basename(entry.name, ".md")),
+    });
+  }
+
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
   private async scanLibrary(): Promise<
     {
       authorSlug: string;
@@ -121,59 +233,13 @@ export class LibraryCommand extends CommandRunner {
       title: string;
     }[] = [];
 
-    async function walk(
-      dir: string,
-      currentPathParts: string[],
-      providerName: string,
-      authorSlug: string,
-    ): Promise<void> {
-      const entries = await fs.readdir(dir, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isDirectory()) {
-          await walk(
-            path.join(dir, entry.name),
-            [...currentPathParts, entry.name],
-            providerName,
-            authorSlug,
-          );
-        } else if (entry.isFile() && entry.name.endsWith(".md")) {
-          texts.push({
-            authorSlug,
-            fullPath: path.join(dir, entry.name),
-            pathParts: currentPathParts,
-            provider: providerName,
-            textSlug: path.basename(entry.name, ".md"),
-            title: _.startCase(path.basename(entry.name, ".md")),
-          });
-        }
-      }
-    }
-
     try {
       const providers = await fs.readdir(dataDirectory, {
         withFileTypes: true,
       });
       for (const provider of providers) {
         if (!provider.isDirectory()) continue;
-        const providerName = provider.name;
-
-        const authors = await fs.readdir(
-          path.join(dataDirectory, providerName),
-          {
-            withFileTypes: true,
-          },
-        );
-        for (const author of authors) {
-          if (!author.isDirectory()) continue;
-          const authorSlug = author.name;
-
-          await walk(
-            path.join(dataDirectory, providerName, authorSlug),
-            [],
-            providerName,
-            authorSlug,
-          );
-        }
+        await this.scanLibraryProvider(dataDirectory, provider.name, texts);
       }
     } catch {
       // Ignore if data directory doesn't exist yet
@@ -184,7 +250,104 @@ export class LibraryCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
-   *
+   * Handles an internal workflow step for library provider orchestration.
+   */
+  private async scanLibraryAuthor(args: {
+    authorSlug: string;
+    dataDirectory: string;
+    providerName: string;
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[];
+  }): Promise<void> {
+    const { authorSlug, dataDirectory, providerName, texts } = args;
+    await this.walkLibraryDirectory({
+      authorSlug,
+      currentPathParts: [],
+      directory: path.join(dataDirectory, providerName, authorSlug),
+      providerName,
+      texts,
+    });
+  }
+
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
+  private async scanLibraryProvider(
+    dataDirectory: string,
+    providerName: string,
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[],
+  ): Promise<void> {
+    const authors = await fs.readdir(path.join(dataDirectory, providerName), {
+      withFileTypes: true,
+    });
+    for (const author of authors) {
+      if (!author.isDirectory()) continue;
+      await this.scanLibraryAuthor({
+        authorSlug: author.name,
+        dataDirectory,
+        providerName,
+        texts,
+      });
+    }
+  }
+
+  /**
+   * Processes one workflow step for library provider orchestration.
+   */
+  private async walkLibraryDirectory(args: {
+    authorSlug: string;
+    currentPathParts: string[];
+    directory: string;
+    providerName: string;
+    texts: {
+      authorSlug: string;
+      fullPath: string;
+      pathParts: string[];
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[];
+  }): Promise<void> {
+    const { authorSlug, currentPathParts, directory, providerName, texts } =
+      args;
+    const entries = await fs.readdir(directory, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        await this.walkLibraryDirectory({
+          authorSlug,
+          currentPathParts: [...currentPathParts, entry.name],
+          directory: path.join(directory, entry.name),
+          providerName,
+          texts,
+        });
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        this.pushTextEntry({
+          authorSlug,
+          currentPathParts,
+          directory,
+          entry,
+          providerName,
+          texts,
+        });
+      }
+    }
+  }
+
+  /**
+   * Resolves the optional `--author` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The author to ingest",
@@ -217,7 +380,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--provider` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The provider to ingest from",
@@ -228,9 +391,8 @@ export class LibraryCommand extends CommandRunner {
     if (typeof provider === "string" && provider.trim() !== "") {
       if (choices.some((choice) => choice.value === provider)) {
         return provider;
-      } else {
-        throw new Error(`Provider "${provider}" not found.`);
       }
+      throw new Error(`Provider "${provider}" not found.`);
     }
 
     const response = (await prompts({
@@ -248,7 +410,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   /**
-   *
+   * Resolves the optional `--text` filter from CLI input or interactive selection.
    */
   @Option({
     description: "The specific text to ingest",
@@ -282,7 +444,9 @@ export class LibraryCommand extends CommandRunner {
     return response.text;
   }
 
-  /** Orchestrate ingestion from library sources */
+  /**
+   * Orchestrates provider execution with optional author/text scoping and progress logging.
+   */
   async run(
     _arguments: string[],
     options: LibraryCommandOptions,
@@ -291,56 +455,28 @@ export class LibraryCommand extends CommandRunner {
     this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
-    // Create base data directory
     const dataPath = path.resolve("data", "library");
     await fs.mkdir(dataPath, { recursive: true });
 
-    const providerName = await this.parseProvider(
-      options.provider ?? undefined,
-    );
-    const author = await this.parseAuthor(
-      options.author ?? undefined,
-      providerName,
-    );
-    const text = await this.parseText(
-      options.text ?? undefined,
-      providerName,
+    const { author, providerName, text } =
+      await this.parseIngestOptions(options);
+
+    const { filteredProviders, ingestOptions } = this.buildIngestParameters(
       author,
+      providerName,
+      text,
     );
+    const total = filteredProviders.length;
 
-    let providersToRun = this.providers;
-    if (providerName) {
-      providersToRun = providersToRun.filter((p) => p.name === providerName);
-    }
-
-    let current = 0;
-    const total = providersToRun.length;
-
-    for (const provider of providersToRun) {
-      this.logger.log(`🏛️ Starting ingestion for provider: ${provider.name}`);
-      try {
-        const ingestOptions: { author?: string; text?: string } = {};
-        if (author) ingestOptions.author = author;
-        if (text) ingestOptions.text = text;
-
-        await provider.ingest(ingestOptions);
-
-        current++;
-        const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
-        this.logger.log(
-          `🏛️ Completed ingestion for provider: ${provider.name}${progressString}`,
-        );
-      } catch (error: unknown) {
-        const errorMessage =
-          error instanceof Error ? error.stack || error.message : String(error);
-        this.logger.error(
-          `❌ Error in provider ${provider.name}`,
-          error instanceof Error ? error.stack : undefined,
-        );
-        await fs.appendFile(
-          this.logFilePath,
-          `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
-        );
+    for (let current = 0; current < total; current++) {
+      const provider = filteredProviders[current];
+      if (provider) {
+        await this.processProvider({
+          current: current + 1,
+          ingestOptions,
+          provider,
+          total,
+        });
       }
     }
 

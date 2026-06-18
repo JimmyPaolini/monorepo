@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { ROMAN_VALUES } from "./numerals.constants";
 
 /**
- * Service to handle roman numerals.
+ * Converts between Roman numeral notation and decimal values used by ingestion flows.
  */
 @Injectable()
 export class NumeralsService {
@@ -20,7 +20,7 @@ export class NumeralsService {
   // 🌎 Public Methods
 
   /**
-   *
+   * Parses a Roman numeral string into its decimal integer value.
    */
   public toDecimal(roman: string): number {
     const upperRoman = roman.toUpperCase();
@@ -39,7 +39,7 @@ export class NumeralsService {
   }
 
   /**
-   *
+   * Converts a decimal integer (1-3999) into standard Roman numeral notation.
    */
   public toRoman(decimal: number): string {
     if (decimal < 1 || decimal > 3999) {
@@ -50,22 +50,46 @@ export class NumeralsService {
 
     let roman = "";
 
-    function convertDigit(
-      digit: number,
-      low: string,
-      mid: string,
-      top: string,
-    ): void {
+    /**
+     * Converts one decimal digit place into Roman numeral glyphs.
+     */
+    function convertDigit(args: {
+      digit: number;
+      low: string;
+      mid: string;
+      top: string;
+    }): void {
+      const { digit, low, mid, top } = args;
       if (digit < 4) roman += low.repeat(digit);
       else if (digit === 4) roman += low + mid;
       else if (digit < 9) roman += mid + low.repeat(digit - 5);
       else if (digit === 9) roman += low + top;
     }
 
-    convertDigit(Math.floor((decimal % 10_000) / 1000), "M", "", "");
-    convertDigit(Math.floor((decimal % 1000) / 100), "C", "D", "M");
-    convertDigit(Math.floor((decimal % 100) / 10), "X", "L", "C");
-    convertDigit(Math.floor((decimal % 10) / 1), "I", "V", "X");
+    convertDigit({
+      digit: Math.floor((decimal % 10_000) / 1000),
+      low: "M",
+      mid: "",
+      top: "",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 1000) / 100),
+      low: "C",
+      mid: "D",
+      top: "M",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 100) / 10),
+      low: "X",
+      mid: "L",
+      top: "C",
+    });
+    convertDigit({
+      digit: Math.floor((decimal % 10) / 1),
+      low: "I",
+      mid: "V",
+      top: "X",
+    });
 
     return roman;
   }

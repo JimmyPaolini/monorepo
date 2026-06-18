@@ -6,7 +6,6 @@
   "tags": [
     "generator:jupyter-notebook-application",
     "language:python",
-    "scope:{{name}}",
     "type:application"
   ],
   "targets": {

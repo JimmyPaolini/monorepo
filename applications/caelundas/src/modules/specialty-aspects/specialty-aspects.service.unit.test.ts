@@ -1,9 +1,11 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -28,6 +30,8 @@ describe("SpecialtyAspectsService", () => {
       providers: [
         LoggerService,
         SpecialtyAspectsService,
+        SpecialtyAspectsEventService,
+        SpecialtyAspectsProgressiveService,
         AspectsUtilities,
         EphemerisService,
         MathService,

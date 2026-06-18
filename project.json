@@ -11,6 +11,7 @@
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:measure-code:check",
             "nx run {projectName}:spell-check",
             "nx run {projectName}:sync-agent-skills:check",
             "nx run {projectName}:sync-conventional-config:check",
@@ -23,17 +24,18 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint:write",
-            "nx run {projectName}:spell-check",
+            "nx run {projectName}:measure-code:write",
             "nx run {projectName}:sync-agent-skills:write",
             "nx run {projectName}:sync-conventional-config:write",
             "nx run {projectName}:sync-pull-request-template:write",
             "nx run {projectName}:sync-vscode-extensions:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:typecheck",
             "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck"
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:format:write"
           ],
           "parallel": false
         }
@@ -92,6 +94,15 @@
       "executor": "nx:run-commands",
       "options": {}
     },
+    "commit-msg": {
+      "cache": false,
+      "description": "Run the commit-msg git hook script (commitlint). Pass the commit message file via --edit=<path>.",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/commit-msg",
+        "cwd": "{projectRoot}"
+      }
+    },
     "commitlint": {
       "cache": false,
       "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook)",
@@ -105,10 +116,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "eslint {args} --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --config configuration/eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "eslint {args} --fix --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --fix --config configuration/eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
@@ -213,7 +224,7 @@
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error --no-stash",
+        "command": "NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error",
         "cwd": "{projectRoot}"
       }
     },
@@ -241,6 +252,24 @@
       "options": {
         "cwd": "{projectRoot}"
       }
+    },
+    "measure-code": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/measure-code.ts --check"
+        },
+        "write": {
+          "command": "tsx scripts/measure-code.ts"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Analyze codebase and write README.md statistics badges",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}"
+      },
+      "outputs": ["{workspaceRoot}/README.md"]
     },
     "oxfmt": {
       "cache": true,
@@ -361,6 +390,24 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}"
+      }
+    },
+    "pre-commit": {
+      "cache": false,
+      "description": "Run the pre-commit git hook script (unstage notepads, lint-staged).",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/pre-commit",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "pre-push": {
+      "cache": false,
+      "description": "Run the pre-push git hook script (branch name validation).",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "sh configuration/.husky/pre-push",
+        "cwd": "{projectRoot}"
       }
     },
     "prettier": {
@@ -722,6 +769,7 @@
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files",
+      "executor": "nx:run-commands",
       "options": {
         "command": "tsc --noEmit -p tsconfig.json",
         "cwd": "{projectRoot}"

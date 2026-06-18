@@ -1,0 +1,34 @@
+import { InterfaceType } from "@nestjs/graphql";
+import { Entity, Index, ManyToOne, OneToMany, TableInheritance } from "typeorm";
+
+import { AuditableEntity } from "../../base/Auditable.entity";
+
+import type { Lexeme } from "../Lexeme.entity";
+import type { WordForm } from "../WordForm.entity";
+
+/**
+ * Base single-table-inheritance entity for all lexical forms.
+ */
+@Entity({
+  comment:
+    "Abstract base table for normalized inflected forms using single-table inheritance",
+  name: "forms",
+  schema: "public",
+})
+@InterfaceType()
+@TableInheritance({ column: { name: "type", type: "text" } })
+export class Form extends AuditableEntity {
+  // id, createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy inherited from AuditableEntity
+
+  @Index()
+  @ManyToOne("Lexeme", "forms", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  lexeme!: Lexeme;
+
+  // Inverse side of WordForm.form
+  @OneToMany("WordForm", "form")
+  wordForms!: WordForm[];
+}

@@ -1,33 +1,52 @@
 // ♟️ Constants
 
-import _ from "lodash";
-
 import {
   adjectiveDeclensionValues,
   adjectiveDegreeValues,
   nounDeclensionValues,
-  nounGenderValues,
+  nounGenders,
   type PartOfSpeech,
-  prepositionCaseValues,
+  prepositionCases,
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
 
+/**
+ * Returns only non-empty string values from unknown input.
+ */
+function compactStringValues(values: unknown): string[] {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+  return values.filter(
+    (value): value is string => typeof value === "string" && value.length > 0,
+  );
+}
+
+const adjectiveDeclensionValueList = compactStringValues(
+  adjectiveDeclensionValues,
+);
+const adjectiveDegreeValueList = compactStringValues(adjectiveDegreeValues);
+const nounDeclensionValueList = compactStringValues(nounDeclensionValues);
+const nounGenderValueList = compactStringValues(nounGenders);
+const prepositionCaseValueList = compactStringValues(prepositionCases);
+const verbConjugationValueList = compactStringValues(verbConjugationValues);
+
 // ♟️ POS regex constants
 export const nounDeclensionRegex = new RegExp(
-  _.compact(nounDeclensionValues).join("|"),
+  nounDeclensionValueList.join("|"),
 );
-export const genderRegex = new RegExp(_.compact(nounGenderValues).join("|"));
+export const genderRegex = new RegExp(nounGenderValueList.join("|"));
 export const adjectiveDeclensionRegex = new RegExp(
-  _.compact(adjectiveDeclensionValues).join("|"),
+  adjectiveDeclensionValueList.join("|"),
 );
 export const adjectiveDegreeRegex = new RegExp(
-  _.compact(adjectiveDegreeValues).join("|"),
+  adjectiveDegreeValueList.join("|"),
 );
 export const verbConjugationRegex = new RegExp(
-  _.compact(verbConjugationValues).join("|"),
+  verbConjugationValueList.join("|"),
 );
 export const prepositionCaseRegex = new RegExp(
-  _.compact(prepositionCaseValues).join("|"),
+  prepositionCaseValueList.join("|"),
 );
 
 // ♟️ First principal part name per POS
