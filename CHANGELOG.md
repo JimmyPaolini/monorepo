@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.4](https://github.com/JimmyPaolini/monorepo/compare/v1.10.3...v1.10.4) (2026-06-18)
+
+### 📦 Build System
+
+* **deps:** bump the uv group across 1 directory with 5 updates ([#71](https://github.com/JimmyPaolini/monorepo/issues/71)) ([f288501](https://github.com/JimmyPaolini/monorepo/commit/f28850113f99aa5209a66dbda7bcf35f29171803))
+
 ## [1.10.3](https://github.com/JimmyPaolini/monorepo/compare/v1.10.2...v1.10.3) (2026-06-18)
 
 ### 📦 Build System
