@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.0](https://github.com/JimmyPaolini/monorepo/compare/v1.10.4...v1.11.0) (2026-06-18)
+
+### ✨ Features
+
+* **conformance:** ✨ add nestjs service files conformance generator ([#70](https://github.com/JimmyPaolini/monorepo/issues/70)) ([944a965](https://github.com/JimmyPaolini/monorepo/commit/944a9650b9691879f4bf77541d88e1ad1189c7b7))
+
 ## [1.10.4](https://github.com/JimmyPaolini/monorepo/compare/v1.10.3...v1.10.4) (2026-06-18)
 
 ### 📦 Build System
