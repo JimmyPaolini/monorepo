@@ -9,7 +9,7 @@ import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PAT
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-module/generator";
-import { TEMPLATES_DIRECTORY_PATH as SERVICE_FILES_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-files/generator";
+import { TEMPLATES_DIRECTORY_PATH as SERVICE_FILES_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-file/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
 import { StringCase } from "./types";
 import {
@@ -225,7 +225,7 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
     {
       instanceDirectoryPaths: serviceFileModules,
       instanceType: "single",
-      template: "nestjs-service-files",
+      template: "nestjs-service-file",
       templateDirectoryPath: SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
     },
   ];
@@ -304,7 +304,7 @@ describe("generator template conformance", () => {
     });
   }
 
-  it("validates all NestJS service files and tests with nestjs-service-files templates", () => {
+  it("validates all NestJS service files and tests with nestjs-service-file templates", () => {
     const nestjsApplications = resolveWorkspaceApplications().filter(
       (application) => application.tags.includes(NESTJS_APPLICATION_TAG),
     );

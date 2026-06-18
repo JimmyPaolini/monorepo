@@ -37,11 +37,11 @@
       "factory": "./src/generators/nestjs-graphql-module/generator#generateNestjsGraphqlModule",
       "schema": "./src/generators/nestjs-graphql-module/schema.json"
     },
-    "nestjs-service-files": {
+    "nestjs-service-file": {
       "aliases": ["nsf"],
       "description": "Generate NestJS service and unit test files",
-      "factory": "./src/generators/nestjs-service-files/generator#generateNestjsServiceFiles",
-      "schema": "./src/generators/nestjs-service-files/schema.json"
+      "factory": "./src/generators/nestjs-service-file/generator#generateNestjsServiceFile",
+      "schema": "./src/generators/nestjs-service-file/schema.json"
     },
     "nestjs-service-module": {
       "aliases": ["nsm"],
