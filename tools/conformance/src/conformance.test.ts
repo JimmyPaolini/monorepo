@@ -1,19 +1,25 @@
-import fs from "node:fs";
+import fs, { globSync } from "node:fs";
 import path from "node:path";
 
 import { workspaceRoot } from "@nx/devkit";
 import { describe, expect, it } from "vitest";
 
+import { converterByStringCase } from "./constants";
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-module/generator";
+import { TEMPLATES_DIRECTORY_PATH as SERVICE_FILES_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-files/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
+import { StringCase } from "./types";
 import {
   stringifyConformanceErrors,
   validateInstanceDirectory,
+  validateInstanceFile,
   validateInstancesDirectory,
 } from "./validators/typescript/files";
+
+import type { InstanceDirectoryValidationResult } from "./validators/typescript/types";
 
 interface ConformanceTemplateInstance {
   /** Absolute instance paths to validate for this template. */
@@ -33,6 +39,14 @@ const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
+const SERVICE_TEMPLATE_FILE_PATH = path.join(
+  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+  "__nameKebabCase__.service.ts",
+);
+const SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH = path.join(
+  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+  "__nameKebabCase__.service.unit.test.ts",
+);
 
 function resolveNestjsModuleDirectories(
   applications: { rootPath: string; tags: string[] }[],
@@ -58,6 +72,61 @@ function resolveNestjsModuleDirectories(
         )
         .map((entry) => path.join(modulesPath, entry.name)),
     );
+}
+
+function resolveNestjsServiceFilePaths(
+  nestjsApplications: { rootPath: string; tags: string[] }[],
+): string[] {
+  return nestjsApplications.flatMap((application) => {
+    const serviceFilePaths = [
+      ...globSync(
+        path.join(application.rootPath, "src/modules/*/*.service.ts"),
+      ),
+      ...globSync(
+        path.join(application.rootPath, "src/modules/*/*.service.unit.test.ts"),
+      ),
+    ];
+    const serviceFilePathSet = new Set(serviceFilePaths);
+    return serviceFilePaths.filter((serviceFilePath) => {
+      const moduleName = path.basename(path.dirname(serviceFilePath));
+      const filename = path.basename(serviceFilePath);
+      const isModulePrimaryServiceFile =
+        filename === `${moduleName}.service.ts` ||
+        filename === `${moduleName}.service.unit.test.ts`;
+      if (!isModulePrimaryServiceFile) {
+        return false;
+      }
+      const matchingServiceFilePath = serviceFilePath.endsWith(
+        ".service.unit.test.ts",
+      )
+        ? serviceFilePath.replace(".service.unit.test.ts", ".service.ts")
+        : serviceFilePath.replace(".service.ts", ".service.unit.test.ts");
+      return serviceFilePathSet.has(matchingServiceFilePath);
+    });
+  });
+}
+
+function resolveServiceTemplateData(
+  serviceFilename: string,
+): Record<string, unknown> {
+  const serviceName = serviceFilename
+    .replace(".service.unit.test.ts", "")
+    .replace(".service.ts", "");
+  const nameKebabCase =
+    converterByStringCase[StringCase.KEBAB_CASE](serviceName);
+  return {
+    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+    nameKebabCase,
+    namePascalCase:
+      converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+  };
+}
+
+function resolveServiceTemplateFilePath(serviceFilePath: string): string {
+  if (serviceFilePath.endsWith(".service.unit.test.ts")) {
+    return SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH;
+  }
+  return SERVICE_TEMPLATE_FILE_PATH;
 }
 
 function resolveTemplateInstances(): ConformanceTemplateInstance[] {
@@ -90,6 +159,24 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       ) &&
       !fs.existsSync(
         path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
+      ),
+  );
+  const serviceFileModules = allNestjsModules.filter(
+    (directoryPath) =>
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
       ) &&
       fs.existsSync(
         path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
@@ -134,6 +221,12 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       instanceType: "single",
       template: "nestjs-service-module",
       templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: serviceFileModules,
+      instanceType: "single",
+      template: "nestjs-service-files",
+      templateDirectoryPath: SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
     },
   ];
 
@@ -210,4 +303,38 @@ describe("generator template conformance", () => {
       expect(errors).toBeNull();
     });
   }
+
+  it("validates all NestJS service files and tests with nestjs-service-files templates", () => {
+    const nestjsApplications = resolveWorkspaceApplications().filter(
+      (application) => application.tags.includes(NESTJS_APPLICATION_TAG),
+    );
+    const serviceFilePaths = resolveNestjsServiceFilePaths(nestjsApplications);
+
+    expect(serviceFilePaths.length).toBeGreaterThan(0);
+
+    const serviceFileValidationResults: InstanceDirectoryValidationResult[] =
+      serviceFilePaths.map((serviceFilePath) => {
+        const templateFilePath =
+          resolveServiceTemplateFilePath(serviceFilePath);
+        const validationResult = validateInstanceFile({
+          data: resolveServiceTemplateData(path.basename(serviceFilePath)),
+          instanceFilePath: serviceFilePath,
+          templateFilePath,
+        });
+        return {
+          directoryName: path.relative(
+            workspaceRoot,
+            path.dirname(serviceFilePath),
+          ),
+          results: [
+            {
+              ...validationResult,
+              filename: path.basename(serviceFilePath),
+            },
+          ],
+        };
+      });
+    const errors = stringifyConformanceErrors(serviceFileValidationResults);
+    expect(errors).toBeNull();
+  });
 });
