@@ -25,7 +25,7 @@ describe("PronunciationClassifierService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PronunciationClassifierService);
+    service = module.get(PronunciationClassifierService);
   });
 
   beforeEach(() => {

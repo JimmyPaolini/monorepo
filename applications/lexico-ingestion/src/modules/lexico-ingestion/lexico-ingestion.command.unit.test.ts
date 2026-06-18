@@ -37,7 +37,7 @@ describe("LexicoIngestionCommand", () => {
         { provide: WiktionaryCommand, useValue: {} },
       ],
     }).compile();
-    command = await module.resolve(LexicoIngestionCommand);
+    command = module.get(LexicoIngestionCommand);
   });
 
   it("should be defined", () => {

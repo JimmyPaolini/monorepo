@@ -21,7 +21,7 @@ describe("FormsBuilderOtherService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(FormsBuilderOtherService);
+    service = module.get(FormsBuilderOtherService);
   });
 
   it("should be defined", () => {

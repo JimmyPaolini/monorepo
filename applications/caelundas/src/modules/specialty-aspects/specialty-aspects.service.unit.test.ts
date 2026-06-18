@@ -38,7 +38,7 @@ describe("SpecialtyAspectsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = await module.resolve(SpecialtyAspectsService);
+    service = module.get(SpecialtyAspectsService);
   });
 
   it("should be defined", () => {

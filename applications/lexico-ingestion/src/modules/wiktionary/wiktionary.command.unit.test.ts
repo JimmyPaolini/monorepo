@@ -28,7 +28,7 @@ describe("WiktionaryCommand", () => {
       ],
     }).compile();
 
-    command = await module.resolve(WiktionaryCommand);
+    command = module.get(WiktionaryCommand);
   });
 
   it("should be defined", () => {

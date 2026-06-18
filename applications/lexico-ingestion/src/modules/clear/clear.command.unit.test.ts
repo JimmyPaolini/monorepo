@@ -34,7 +34,7 @@ describe("ClearCommand", () => {
       ],
     }).compile();
 
-    command = await module.resolve(ClearCommand);
+    command = module.get(ClearCommand);
   });
 
   it("should be defined", () => {

@@ -11,7 +11,7 @@ describe("PartOfSpeechService", () => {
       providers: [PartOfSpeechService],
     }).compile();
 
-    service = await module.resolve(PartOfSpeechService);
+    service = module.get(PartOfSpeechService);
   });
 
   it("should be defined", () => {

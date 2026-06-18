@@ -1,9 +1,9 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
-import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsDetectorService } from "./twilights-detector.service";
@@ -12,13 +12,30 @@ import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris
 
 describe("TwilightsDetectorService", () => {
   let service: TwilightsDetectorService;
+  let ephemerisService: EphemerisService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [TwilightsDetectorService],
+      providers: [
+        TwilightsDetectorService,
+        TwilightsBuilderService,
+        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+      ],
     }).compile();
 
-    service = await module.resolve(TwilightsDetectorService);
+    service = module.get(TwilightsDetectorService);
+    void module.get(LoggerService);
+    ephemerisService = module.get(EphemerisService);
+
+    vi.mocked(
+      ephemerisService.getAzimuthElevationFromEphemeris,
+    ).mockImplementation(
+      (
+        azimuthElevationEphemeris: AzimuthElevationEphemeris,
+        minuteIsoString: string,
+      ) => azimuthElevationEphemeris[minuteIsoString]?.elevation ?? 0,
+    );
   });
 
   it("should be defined", () => {
@@ -26,10 +43,7 @@ describe("TwilightsDetectorService", () => {
   });
 
   beforeEach(() => {
-    service = new TwilightsDetectorService(
-      new TwilightsBuilderService(new LoggerService()),
-      new EphemerisService(new MathService()),
-    );
+    vi.clearAllMocks();
   });
 
   describe("threshold predicates", () => {

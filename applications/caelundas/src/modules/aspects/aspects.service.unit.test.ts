@@ -148,7 +148,7 @@ describe("AspectsService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(AspectsService);
+    service = module.get(AspectsService);
   });
 
   it("should be defined", () => {

@@ -20,7 +20,7 @@ describe("PronunciationEcclesiasticalService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PronunciationEcclesiasticalService);
+    service = module.get(PronunciationEcclesiasticalService);
   });
 
   it("should be defined", () => {

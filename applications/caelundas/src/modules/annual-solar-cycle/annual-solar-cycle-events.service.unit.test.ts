@@ -18,7 +18,7 @@ describe("AnnualSolarCycleEventsService", () => {
     const module = await Test.createTestingModule({
       providers: [LoggerService, AnnualSolarCycleEventsService],
     }).compile();
-    service = await module.resolve(AnnualSolarCycleEventsService);
+    service = module.get(AnnualSolarCycleEventsService);
   });
 
   it("should be defined", () => {

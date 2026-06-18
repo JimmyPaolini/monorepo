@@ -11,7 +11,7 @@ describe("EphemerisConstantsService", () => {
       providers: [EphemerisConstantsService],
     }).compile();
 
-    service = await module.resolve(EphemerisConstantsService);
+    service = module.get(EphemerisConstantsService);
   });
 
   it("should be defined", () => {

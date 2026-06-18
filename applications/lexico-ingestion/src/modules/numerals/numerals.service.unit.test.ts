@@ -11,7 +11,7 @@ describe("NumeralsService", () => {
       providers: [NumeralsService],
     }).compile();
 
-    service = await module.resolve(NumeralsService);
+    service = module.get(NumeralsService);
   });
 
   it("should be defined", () => {

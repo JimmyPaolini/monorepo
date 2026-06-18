@@ -27,7 +27,7 @@ describe("EphemerisTimeService", () => {
       providers: [EphemerisTimeService],
     }).compile();
 
-    service = await module.resolve(EphemerisTimeService);
+    service = module.get(EphemerisTimeService);
   });
 
   it("should be defined", () => {

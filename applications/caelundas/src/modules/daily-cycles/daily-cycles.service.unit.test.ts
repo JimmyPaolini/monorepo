@@ -36,8 +36,8 @@ describe("DailyCyclesService", () => {
         MathService,
       ],
     }).compile();
-    service = await module.resolve(DailyCyclesService);
-    helperService = await module.resolve(DailyCyclesBuilderService);
+    service = module.get(DailyCyclesService);
+    helperService = module.get(DailyCyclesBuilderService);
     s = helperService;
   });
 

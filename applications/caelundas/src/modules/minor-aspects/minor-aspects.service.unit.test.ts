@@ -38,7 +38,7 @@ describe("MinorAspectsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = await module.resolve(MinorAspectsService);
+    service = module.get(MinorAspectsService);
   });
 
   it("should be defined", () => {

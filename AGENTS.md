@@ -35,6 +35,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[commit-code](documentation/skills/commit-code/SKILL.md)**: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
 - **[create-plan](documentation/skills/create-plan/SKILL.md)**: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
 - **[create-pull-request](documentation/skills/create-pull-request/SKILL.md)**: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
+- **[create-worktree](documentation/skills/create-worktree/SKILL.md)**: Create or attach git worktrees that follow this monorepo's branch naming conventions. Use when asked to create a worktree, derive a compliant branch name, validate a branch name before worktree creation, choose a worktree path, or avoid raw `git worktree add` commands.
 - **[docker-workflows](documentation/skills/docker-workflows/SKILL.md)**: Build and deploy Docker images in the monorepo - platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
 - **[ephemeris-pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)**: Understand the caelundas ephemeris calculation pipeline - NASA JPL API integration, astronomical event detection, and calendar generation. Use this skill when working on caelundas.
 - **[error-handling-patterns](documentation/skills/error-handling-patterns/SKILL.md)**: Apply monorepo error handling patterns: Zod validation at boundaries, typed errors, early returns, and retry/backoff. Use when implementing error handling or input validation.
@@ -269,6 +270,14 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | `tools` | Changes spanning multiple tool projects in tools/ |
 
 <!-- scopes-end -->
+
+#### Worktrees
+
+- When asked to create a Git worktree, derive or reuse a branch name that follows `<type>/<scope>-<description>`.
+- Validate the candidate branch first with `pnpm exec validate-branch-name -t "<branch-name>"`.
+- Prefer `bash documentation/skills/create-worktree/scripts/create-worktree.sh "<branch-name>" [base-branch] [worktree-path]` over raw `git worktree add`.
+- Default the worktree path to `../monorepo-worktrees/<branch-name-with-slashes-replaced-by-hyphens>` unless the user requests a different path.
+- If the branch already exists locally, attach a worktree to it instead of creating a second branch.
 
 #### Commit Messages
 

@@ -20,7 +20,7 @@ describe("SextupleAspectsService", () => {
         MathService,
       ],
     }).compile();
-    service = await module.resolve(SextupleAspectsService);
+    service = module.get(SextupleAspectsService);
   });
 
   describe("service.detect", () => {

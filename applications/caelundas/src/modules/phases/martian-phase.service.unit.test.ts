@@ -1,4 +1,6 @@
 import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -6,6 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { LoggerService } from "../logger/logger.service";
 
 import { MartianPhaseService } from "./martian-phase.service";
+import { PhaseCalculationService } from "./phase-calculation.service";
 import {
   MARS_EVENING_VISIBILITY_DESCRIPTION,
   MARS_MORNING_VISIBILITY_DESCRIPTION,
@@ -32,56 +35,70 @@ const createPhaseParameters = (): PhaseParameters => ({
   previousLongitudeSun: 89,
 });
 
-const createPhaseCalculationServiceStub = (): {
-  filterByCategory: ReturnType<typeof vi.fn>;
-  formatTimeZoneIso: ReturnType<typeof vi.fn>;
-  gatherPhaseParameters: ReturnType<typeof vi.fn>;
-  isEveningRise: ReturnType<typeof vi.fn>;
-  isEveningSet: ReturnType<typeof vi.fn>;
-  isMorningRise: ReturnType<typeof vi.fn>;
-  isMorningSet: ReturnType<typeof vi.fn>;
-} => ({
-  filterByCategory: vi.fn((events: Event[], category: string) =>
-    events.filter((event) => event.categories.includes(category)),
-  ),
-  formatTimeZoneIso: vi.fn(() => "2024-06-01T02:00:00-04:00"),
-  gatherPhaseParameters: vi.fn(() => createPhaseParameters()),
-  isEveningRise: vi.fn(() => false),
-  isEveningSet: vi.fn(() => false),
-  isMorningRise: vi.fn(() => false),
-  isMorningSet: vi.fn(() => false),
-});
+const configurePhaseCalculationServiceMock = (
+  phaseCalculationService: ReturnType<
+    typeof createMock<PhaseCalculationService>
+  >,
+): void => {
+  vi.mocked(phaseCalculationService.filterByCategory).mockImplementation(
+    (events: Event[], category: string) =>
+      events.filter((event) => event.categories.includes(category)),
+  );
+  vi.mocked(phaseCalculationService.formatTimeZoneIso).mockReturnValue(
+    "2024-06-01T02:00:00-04:00",
+  );
+  vi.mocked(phaseCalculationService.gatherPhaseParameters).mockReturnValue(
+    createPhaseParameters(),
+  );
+  vi.mocked(phaseCalculationService.isEveningRise).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isEveningSet).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isMorningRise).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isMorningSet).mockReturnValue(false);
+};
 
-const createProgressiveUtilitiesStub = (): {
-  pairProgressiveEvents: ReturnType<typeof vi.fn>;
-} => ({
-  pairProgressiveEvents: vi.fn(() => []),
-});
+const configureProgressiveUtilitiesMock = (
+  progressiveUtilities: ReturnType<typeof createMock<ProgressiveUtilities>>,
+): void => {
+  vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
+};
 
 describe("MartianPhaseService", () => {
   let service: MartianPhaseService;
+  let phaseCalculationService: ReturnType<
+    typeof createMock<PhaseCalculationService>
+  >;
+  let progressiveUtilitiesService: ReturnType<
+    typeof createMock<ProgressiveUtilities>
+  >;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [MartianPhaseService],
+      providers: [
+        MartianPhaseService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: PhaseCalculationService,
+          useValue: createMock<PhaseCalculationService>(),
+        },
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
     }).compile();
 
-    service = await module.resolve(MartianPhaseService);
+    service = module.get(MartianPhaseService);
+    void module.get(LoggerService);
+    phaseCalculationService = module.get(PhaseCalculationService);
+    progressiveUtilitiesService = module.get(ProgressiveUtilities);
+
+    configurePhaseCalculationServiceMock(phaseCalculationService);
+    configureProgressiveUtilitiesMock(progressiveUtilitiesService);
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
-
-  const logger = new LoggerService();
-  const phaseCalculationService = createPhaseCalculationServiceStub();
-  const progressiveUtilitiesService = createProgressiveUtilitiesStub();
-
-  const localService = new MartianPhaseService(
-    logger,
-    phaseCalculationService as never,
-    progressiveUtilitiesService as never,
-  );
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -91,7 +108,7 @@ describe("MartianPhaseService", () => {
     it("builds expected Mars phase event metadata", () => {
       const timestamp = createTimestamp();
 
-      const event = localService.buildMartianPhaseEvent({
+      const event = service.buildMartianPhaseEvent({
         phase: "morning rise",
         timestamp,
       });
@@ -116,7 +133,7 @@ describe("MartianPhaseService", () => {
 
       const timestamp = createTimestamp();
 
-      const events = localService.getMartianPhaseEvents({
+      const events = service.getMartianPhaseEvents({
         marsCoordinateEphemeris: {},
         marsDistanceEphemeris: {},
         marsIlluminationEphemeris: {},
@@ -156,7 +173,7 @@ describe("MartianPhaseService", () => {
         [morningRise, morningSet],
       ]);
 
-      const events = localService.getMartianMorningProgressiveEvents([
+      const events = service.getMartianMorningProgressiveEvents([
         morningRise,
         morningSet,
       ]);
@@ -186,7 +203,7 @@ describe("MartianPhaseService", () => {
         [eveningRise, eveningSet],
       ]);
 
-      const events = localService.getMartianEveningProgressiveEvents([
+      const events = service.getMartianEveningProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);

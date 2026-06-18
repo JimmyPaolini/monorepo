@@ -11,7 +11,7 @@ describe("PronunciationClassicalService", () => {
       providers: [PronunciationClassicalService],
     }).compile();
 
-    service = await module.resolve(PronunciationClassicalService);
+    service = module.get(PronunciationClassicalService);
   });
 
   it("should be defined", () => {

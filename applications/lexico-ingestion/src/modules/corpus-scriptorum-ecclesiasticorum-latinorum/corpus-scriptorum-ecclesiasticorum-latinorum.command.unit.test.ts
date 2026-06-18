@@ -14,9 +14,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumCommand", () => {
       providers: [CorpusScriptorumEcclesiasticorumLatinorumCommand],
     }).compile();
 
-    command = await module.resolve(
-      CorpusScriptorumEcclesiasticorumLatinorumCommand,
-    );
+    command = module.get(CorpusScriptorumEcclesiasticorumLatinorumCommand);
   });
 
   it("should be defined", () => {

@@ -11,7 +11,7 @@ describe("{{namePascalCase}}Service", () => {
       providers: [{{namePascalCase}}Service],
     }).compile();
 
-    service = await module.resolve({{namePascalCase}}Service);
+    service = module.get({{namePascalCase}}Service);
   });
 
   it("should be defined", () => {

@@ -11,7 +11,7 @@ describe("DatetimeService", () => {
     const module = await Test.createTestingModule({
       providers: [DatetimeService],
     }).compile();
-    service = await module.resolve(DatetimeService);
+    service = module.get(DatetimeService);
   });
 
   it("should be defined", () => {

@@ -133,7 +133,7 @@ describe("EphemerisService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(EphemerisService);
+    service = module.get(EphemerisService);
   });
 
   it("should be defined", () => {

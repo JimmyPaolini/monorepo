@@ -52,7 +52,7 @@ describe("FormsService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(FormsService);
+    service = module.get(FormsService);
     formRepository = module.get(getRepositoryToken(Form));
     wordFormRepository = module.get(getRepositoryToken(WordForm));
     wordsService = module.get(WordsService);

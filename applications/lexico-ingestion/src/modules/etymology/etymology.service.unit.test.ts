@@ -11,7 +11,7 @@ describe("EtymologyService", () => {
       providers: [EtymologyService],
     }).compile();
 
-    service = await module.resolve(EtymologyService);
+    service = module.get(EtymologyService);
   });
 
   it("should be defined", () => {

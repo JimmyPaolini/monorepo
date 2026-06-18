@@ -11,7 +11,7 @@ describe("LoggerService", () => {
       providers: [LoggerService],
     }).compile();
 
-    service = await module.resolve(LoggerService);
+    service = module.get(LoggerService);
   });
 
   it("should be defined", () => {

@@ -14,7 +14,7 @@ describe("EpigraphikDatenbankClaussSlabyCommand", () => {
       providers: [EpigraphikDatenbankClaussSlabyCommand],
     }).compile();
 
-    command = await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
+    command = module.get(EpigraphikDatenbankClaussSlabyCommand);
   });
 
   it("should be defined", () => {

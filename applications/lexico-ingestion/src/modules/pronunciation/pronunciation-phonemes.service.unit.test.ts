@@ -11,27 +11,21 @@ describe("PronunciationPhonemesService", () => {
       providers: [PronunciationPhonemesService],
     }).compile();
 
-    service = await module.resolve(PronunciationPhonemesService);
+    service = module.get(PronunciationPhonemesService);
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  const localService = new PronunciationPhonemesService();
-
-  it("should be defined", () => {
-    expect(localService).toBeDefined();
-  });
-
   it("should return a string phoneme when key points to string value", () => {
-    const value = localService.getStringPhoneme({ a: "a" }, "a");
+    const value = service.getStringPhoneme({ a: "a" }, "a");
 
     expect(value).toBe("a");
   });
 
   it("should return empty string when key points to nested value", () => {
-    const value = localService.getStringPhoneme({ a: [["a"]] }, "a");
+    const value = service.getStringPhoneme({ a: [["a"]] }, "a");
 
     expect(value).toBe("");
   });

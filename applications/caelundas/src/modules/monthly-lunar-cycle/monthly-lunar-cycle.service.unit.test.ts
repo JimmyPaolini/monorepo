@@ -51,7 +51,7 @@ describe("MonthlyLunarCycleService", () => {
         MathService,
       ],
     }).compile();
-    service = await module.resolve(MonthlyLunarCycleService);
+    service = module.get(MonthlyLunarCycleService);
     s = service as unknown as ServicePrivate;
   });
 

@@ -49,7 +49,7 @@ describe("PronunciationService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PronunciationService);
+    service = module.get(PronunciationService);
   });
 
   it("should be defined", () => {

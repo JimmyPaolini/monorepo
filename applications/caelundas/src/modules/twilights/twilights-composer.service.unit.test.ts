@@ -1,8 +1,9 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsComposerService } from "./twilights-composer.service";
@@ -14,10 +15,16 @@ describe("TwilightsComposerService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [TwilightsComposerService],
+      providers: [
+        TwilightsComposerService,
+        TwilightsBuilderService,
+        ProgressiveUtilities,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+      ],
     }).compile();
 
-    service = await module.resolve(TwilightsComposerService);
+    service = module.get(TwilightsComposerService);
+    void module.get(LoggerService);
   });
 
   it("should be defined", () => {
@@ -25,14 +32,7 @@ describe("TwilightsComposerService", () => {
   });
 
   beforeEach(() => {
-    const twilightsBuilderService = new TwilightsBuilderService(
-      new LoggerService(),
-    );
-    const progressiveUtilities = new ProgressiveUtilities(new LoggerService());
-    service = new TwilightsComposerService(
-      twilightsBuilderService,
-      progressiveUtilities,
-    );
+    vi.clearAllMocks();
   });
 
   describe("pairAndBuild", () => {

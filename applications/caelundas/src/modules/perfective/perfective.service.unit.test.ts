@@ -78,7 +78,7 @@ describe("PerfectiveService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PerfectiveService);
+    service = module.get(PerfectiveService);
   });
 
   beforeEach(() => {

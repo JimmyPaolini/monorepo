@@ -1,11 +1,12 @@
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 import { EphemerisHorizonService } from "./ephemeris-horizon.service";
+import { EphemerisTimeService } from "./ephemeris-time.service";
 
-import type { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
-import type { EphemerisTimeService } from "./ephemeris-time.service";
 import type * as Sweph from "sweph";
 
 vi.mock("sweph", async (importOriginal) => {
@@ -18,50 +19,61 @@ vi.mock("sweph", async (importOriginal) => {
 
 describe("EphemerisHorizonService", () => {
   let service: EphemerisHorizonService;
+  let coordinateService: ReturnType<
+    typeof createMock<EphemerisCoordinateService>
+  >;
+  let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [EphemerisHorizonService],
+      providers: [
+        EphemerisHorizonService,
+        {
+          provide: EphemerisCoordinateService,
+          useValue: createMock<EphemerisCoordinateService>(),
+        },
+        {
+          provide: EphemerisTimeService,
+          useValue: createMock<EphemerisTimeService>(),
+        },
+      ],
     }).compile();
 
-    service = await module.resolve(EphemerisHorizonService);
+    service = module.get(EphemerisHorizonService);
+    coordinateService = module.get(EphemerisCoordinateService);
+    timeService = module.get(EphemerisTimeService);
+
+    vi.mocked(coordinateService.getBodyCoordinatesWithDistance).mockReturnValue(
+      {
+        distance: 1.01,
+        latitude: -1.2,
+        longitude: 120.5,
+      },
+    );
+    vi.mocked(timeService.dateToJulianDays).mockReturnValue({
+      julianDayEphemerisTime: 2_460_395.5,
+      julianDayUniversalTime: 2_460_395.499_306,
+    });
+    vi.mocked(timeService.generateMinutes).mockImplementation(
+      (start: moment.Moment, end: moment.Moment) => {
+        const values: moment.Moment[] = [];
+        let current = start.clone();
+        while (current.valueOf() <= end.valueOf()) {
+          values.push(current.clone());
+          current = current.clone().add(1, "minute");
+        }
+        return values;
+      },
+    );
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  const coordinateService = {
-    getBodyCoordinatesWithDistance: vi.fn().mockReturnValue({
-      distance: 1.01,
-      latitude: -1.2,
-      longitude: 120.5,
-    }),
-  };
-  const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
-      julianDayEphemerisTime: 2_460_395.5,
-      julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
-      const values: moment.Moment[] = [];
-      let current = start.clone();
-      while (current.valueOf() <= end.valueOf()) {
-        values.push(current.clone());
-        current = current.clone().add(1, "minute");
-      }
-      return values;
-    }),
-  };
-
-  const localService = new EphemerisHorizonService(
-    coordinateService as unknown as EphemerisCoordinateService,
-    timeService as unknown as EphemerisTimeService,
-  );
-
   describe("computeAzimuthElevationForMinute", () => {
     it("returns azimuth/elevation from sweph azalt", () => {
-      const result = localService.computeAzimuthElevationForMinute({
+      const result = service.computeAzimuthElevationForMinute({
         body: "sun",
         distance: 1.01,
         julianDayUniversalTime: 2_460_395.499_306,
@@ -77,7 +89,7 @@ describe("EphemerisHorizonService", () => {
 
   describe("computeAzimuthElevationForBody", () => {
     it("returns minute-by-minute azimuth/elevation ephemeris", () => {
-      const result = localService.computeAzimuthElevationForBody({
+      const result = service.computeAzimuthElevationForBody({
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         observerLatitude: 40.7128,

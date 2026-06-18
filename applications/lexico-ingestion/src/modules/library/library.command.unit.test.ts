@@ -42,7 +42,7 @@ describe("LibraryCommand", () => {
       ],
     }).compile();
 
-    command = await module.resolve(LibraryCommand);
+    command = module.get(LibraryCommand);
   });
 
   it("should be defined", () => {

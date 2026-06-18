@@ -1,4 +1,6 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -6,6 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { LoggerService } from "../logger/logger.service";
 
 import { EclipseCalculationService } from "./eclipse-calculation.service";
+import { EclipseEventService } from "./eclipse-event.service";
 import { EclipseGeometryService } from "./eclipse-geometry.service";
 import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 
@@ -13,48 +16,34 @@ import type { EclipseCoordinates } from "./eclipses.types";
 
 describe("EclipseCalculationService", () => {
   let service: EclipseCalculationService;
+  let ephemerisService: ReturnType<typeof createMock<EphemerisService>>;
+  let eclipseEventService: ReturnType<typeof createMock<EclipseEventService>>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [EclipseCalculationService],
+      providers: [
+        EclipseCalculationService,
+        EclipseGeometryService,
+        EclipseTopocentricService,
+        MathService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        {
+          provide: EclipseEventService,
+          useValue: createMock<EclipseEventService>(),
+        },
+      ],
     }).compile();
 
-    service = await module.resolve(EclipseCalculationService);
+    service = module.get(EclipseCalculationService);
+    void module.get(LoggerService);
+    ephemerisService = module.get(EphemerisService);
+    eclipseEventService = module.get(EclipseEventService);
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
-
-  const logger = new LoggerService();
-  const ephemerisService = {
-    getAzimuthElevationFromEphemeris: vi.fn(),
-    getCoordinateFromEphemeris: vi.fn(),
-    getDiameterFromEphemeris: vi.fn(),
-  };
-  const geometryService = new EclipseGeometryService(
-    logger,
-    ephemerisService as never,
-    new MathService(),
-  );
-  const eclipseEventService = {
-    buildLunarEclipseEvent: vi.fn(),
-    buildSolarEclipseEvent: vi.fn(),
-  };
-  const topocentricService = new EclipseTopocentricService(
-    logger,
-    new MathService(),
-    geometryService,
-    eclipseEventService as never,
-  );
-
-  const localService = new EclipseCalculationService(
-    logger,
-    new MathService(),
-    geometryService,
-    topocentricService,
-    eclipseEventService as never,
-  );
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -62,7 +51,7 @@ describe("EclipseCalculationService", () => {
 
   describe("isSolarEclipse", () => {
     it("returns maximum at conjunction minimum", () => {
-      const result = localService.isSolarEclipse(
+      const result = service.isSolarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -93,7 +82,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("returns null when latitude exceeds eclipse diameter threshold", () => {
-      const result = localService.isSolarEclipse(
+      const result = service.isSolarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -126,7 +115,7 @@ describe("EclipseCalculationService", () => {
 
   describe("isLunarEclipse", () => {
     it("returns maximum at opposition maximum", () => {
-      const result = localService.isLunarEclipse(
+      const result = service.isLunarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -157,7 +146,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("returns null when not in opposition threshold", () => {
-      const result = localService.isLunarEclipse(
+      const result = service.isLunarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -190,7 +179,7 @@ describe("EclipseCalculationService", () => {
 
   describe("active-state helpers", () => {
     it("reports active solar eclipse overlap", () => {
-      const active = localService.isSolarEclipseActive({
+      const active = service.isSolarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -203,7 +192,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports inactive solar eclipse overlap", () => {
-      const active = localService.isSolarEclipseActive({
+      const active = service.isSolarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 5,
@@ -216,7 +205,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports active lunar eclipse overlap", () => {
-      const active = localService.isLunarEclipseActive({
+      const active = service.isLunarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -229,7 +218,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports inactive lunar eclipse overlap", () => {
-      const active = localService.isLunarEclipseActive({
+      const active = service.isLunarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -273,7 +262,7 @@ describe("EclipseCalculationService", () => {
         longitudeSun: 100,
       };
 
-      const events = localService.getTopocentricEventsForDetect({
+      const events = service.getTopocentricEventsForDetect({
         coordinates: {
           currentCoordinates: coordinates,
           nextCoordinates: { ...coordinates, longitudeMoon: 101 },

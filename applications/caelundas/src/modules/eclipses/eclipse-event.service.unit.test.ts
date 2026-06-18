@@ -1,3 +1,5 @@
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -10,28 +12,28 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("EclipseEventService", () => {
   let service: EclipseEventService;
+  let progressiveUtilitiesService: ProgressiveUtilities;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [EclipseEventService],
+      providers: [
+        EclipseEventService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
     }).compile();
 
-    service = await module.resolve(EclipseEventService);
+    service = module.get(EclipseEventService);
+    void module.get(LoggerService);
+    progressiveUtilitiesService = module.get(ProgressiveUtilities);
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
-
-  const logger = new LoggerService();
-  const progressiveUtilitiesService = {
-    pairProgressiveEvents: vi.fn(),
-  };
-
-  const localService = new EclipseEventService(
-    logger,
-    progressiveUtilitiesService as never,
-  );
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -41,7 +43,7 @@ describe("EclipseEventService", () => {
     it("builds geocentric solar eclipse event", () => {
       const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
 
-      const event = localService.buildSolarEclipseEvent({
+      const event = service.buildSolarEclipseEvent({
         date: timestamp,
         frame: "geocentric",
         phase: "beginning",
@@ -58,7 +60,7 @@ describe("EclipseEventService", () => {
     it("builds topocentric solar eclipse event", () => {
       const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
 
-      const event = localService.buildSolarEclipseEvent({
+      const event = service.buildSolarEclipseEvent({
         date: timestamp,
         frame: "topocentric",
         phase: "beginning",
@@ -76,7 +78,7 @@ describe("EclipseEventService", () => {
     it("builds geocentric lunar eclipse event", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
 
-      const event = localService.buildLunarEclipseEvent({
+      const event = service.buildLunarEclipseEvent({
         date: timestamp,
         frame: "geocentric",
         phase: "beginning",
@@ -93,7 +95,7 @@ describe("EclipseEventService", () => {
     it("builds topocentric lunar eclipse event", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
 
-      const event = localService.buildLunarEclipseEvent({
+      const event = service.buildLunarEclipseEvent({
         date: timestamp,
         frame: "topocentric",
         phase: "beginning",
@@ -162,13 +164,13 @@ describe("EclipseEventService", () => {
         summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
       };
 
-      progressiveUtilitiesService.pairProgressiveEvents
+      vi.mocked(progressiveUtilitiesService.pairProgressiveEvents)
         .mockReturnValueOnce([[lunarBeginning, lunarEnding]])
         .mockReturnValueOnce([[solarBeginning, solarEnding]])
         .mockReturnValueOnce([])
         .mockReturnValueOnce([]);
 
-      const progressiveEvents = localService.detectProgressive([
+      const progressiveEvents = service.detectProgressive([
         solarBeginning,
         solarEnding,
         lunarBeginning,
@@ -198,13 +200,13 @@ describe("EclipseEventService", () => {
     });
 
     it("returns empty array when no eclipse events exist", () => {
-      progressiveUtilitiesService.pairProgressiveEvents
+      vi.mocked(progressiveUtilitiesService.pairProgressiveEvents)
         .mockReturnValueOnce([])
         .mockReturnValueOnce([])
         .mockReturnValueOnce([])
         .mockReturnValueOnce([]);
 
-      const result = localService.detectProgressive([
+      const result = service.detectProgressive([
         {
           categories: ["Astronomy"],
           description: "Unrelated",

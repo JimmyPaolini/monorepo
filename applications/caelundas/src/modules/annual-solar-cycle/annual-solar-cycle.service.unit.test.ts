@@ -36,7 +36,7 @@ describe("AnnualSolarCycleService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = await module.resolve(AnnualSolarCycleService);
+    service = module.get(AnnualSolarCycleService);
   });
 
   function createCoordinateEphemeris(

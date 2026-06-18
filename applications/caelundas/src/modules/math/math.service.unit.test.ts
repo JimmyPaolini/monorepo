@@ -10,7 +10,7 @@ describe("MathService", () => {
     const module = await Test.createTestingModule({
       providers: [MathService],
     }).compile();
-    service = await module.resolve(MathService);
+    service = module.get(MathService);
   });
 
   it("should be defined", () => {

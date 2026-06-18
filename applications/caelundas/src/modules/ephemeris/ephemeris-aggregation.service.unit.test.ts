@@ -1,82 +1,104 @@
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
-
-import type { EphemerisConstantsService } from "./ephemeris-constants.service";
-import type { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
-import type { EphemerisHorizonService } from "./ephemeris-horizon.service";
-import type { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
-import type { EphemerisTimeService } from "./ephemeris-time.service";
+import { EphemerisConstantsService } from "./ephemeris-constants.service";
+import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
+import { EphemerisHorizonService } from "./ephemeris-horizon.service";
+import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
+import { EphemerisTimeService } from "./ephemeris-time.service";
 
 describe("EphemerisAggregationService", () => {
   let service: EphemerisAggregationService;
+  let constantsService: ReturnType<
+    typeof createMock<EphemerisConstantsService>
+  >;
+  let coordinateService: ReturnType<
+    typeof createMock<EphemerisCoordinateService>
+  >;
+  let horizonService: ReturnType<typeof createMock<EphemerisHorizonService>>;
+  let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [EphemerisAggregationService],
+      providers: [
+        EphemerisAggregationService,
+        {
+          provide: EphemerisConstantsService,
+          useValue: createMock<EphemerisConstantsService>(),
+        },
+        {
+          provide: EphemerisCoordinateService,
+          useValue: createMock<EphemerisCoordinateService>(),
+        },
+        {
+          provide: EphemerisHorizonService,
+          useValue: createMock<EphemerisHorizonService>(),
+        },
+        {
+          provide: EphemerisPhenomenaService,
+          useValue: createMock<EphemerisPhenomenaService>(),
+        },
+        {
+          provide: EphemerisTimeService,
+          useValue: createMock<EphemerisTimeService>(),
+        },
+      ],
     }).compile();
 
-    service = await module.resolve(EphemerisAggregationService);
+    service = module.get(EphemerisAggregationService);
+    constantsService = module.get(EphemerisConstantsService);
+    coordinateService = module.get(EphemerisCoordinateService);
+    horizonService = module.get(EphemerisHorizonService);
+    void module.get(EphemerisPhenomenaService);
+    timeService = module.get(EphemerisTimeService);
+
+    vi.mocked(
+      constantsService.getSwissEphemerisConstantForBody,
+    ).mockReturnValue(0);
+    vi.mocked(constantsService.isNode).mockImplementation(
+      (body: string) => body.includes("node") || body === "lunar perigee",
+    );
+    vi.mocked(coordinateService.computeNodeBodyMinutes).mockReturnValue({
+      "2024-03-21T00:00:00.000Z": { latitude: 0, longitude: 45 },
+    });
+    vi.mocked(coordinateService.getBodyCoordinatesWithDistance).mockReturnValue(
+      {
+        distance: 1.01,
+        latitude: -1.2,
+        longitude: 120.5,
+      },
+    );
+    vi.mocked(horizonService.computeAzimuthElevationForMinute).mockReturnValue({
+      azimuth: 180,
+      elevation: 44.8,
+    });
+    vi.mocked(timeService.dateToJulianDays).mockReturnValue({
+      julianDayEphemerisTime: 2_460_395.5,
+      julianDayUniversalTime: 2_460_395.499_306,
+    });
+    vi.mocked(timeService.generateMinutes).mockImplementation(
+      (start: moment.Moment, end: moment.Moment) => {
+        const values: moment.Moment[] = [];
+        let current = start.clone();
+        while (current.valueOf() <= end.valueOf()) {
+          values.push(current.clone());
+          current = current.clone().add(1, "minute");
+        }
+        return values;
+      },
+    );
   });
 
   it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  const constantsService = {
-    getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
-    isNode: vi.fn(
-      (body: string) => body.includes("node") || body === "lunar perigee",
-    ),
-  };
-  const coordinateService = {
-    computeNodeBodyMinutes: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { latitude: 0, longitude: 45 },
-    }),
-    getBodyCoordinatesWithDistance: vi.fn().mockReturnValue({
-      distance: 1.01,
-      latitude: -1.2,
-      longitude: 120.5,
-    }),
-  };
-  const horizonService = {
-    computeAzimuthElevationForMinute: vi.fn().mockReturnValue({
-      azimuth: 180,
-      elevation: 44.8,
-    }),
-  };
-  const phenomenaService = {
-    computePhenoForMinute: vi.fn(),
-  };
-  const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
-      julianDayEphemerisTime: 2_460_395.5,
-      julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
-      const values: moment.Moment[] = [];
-      let current = start.clone();
-      while (current.valueOf() <= end.valueOf()) {
-        values.push(current.clone());
-        current = current.clone().add(1, "minute");
-      }
-      return values;
-    }),
-  };
-
-  const localService = new EphemerisAggregationService(
-    constantsService as unknown as EphemerisConstantsService,
-    coordinateService as unknown as EphemerisCoordinateService,
-    horizonService as unknown as EphemerisHorizonService,
-    phenomenaService as unknown as EphemerisPhenomenaService,
-    timeService as unknown as EphemerisTimeService,
-  );
-
   describe("buildEphemerisFeatureSets", () => {
     it("creates body lookup sets", () => {
-      const result = localService.buildEphemerisFeatureSets({
+      const result = service.buildEphemerisFeatureSets({
         azimuthElevationBodies: ["sun"],
         diameterBodies: ["moon"],
         distanceBodies: ["sun"],
@@ -92,7 +114,7 @@ describe("EphemerisAggregationService", () => {
 
   describe("buildEphemerisEntries", () => {
     it("creates empty entry arrays", () => {
-      const result = localService.buildEphemerisEntries();
+      const result = service.buildEphemerisEntries();
 
       expect(result.azimuthEntries).toHaveLength(0);
       expect(result.coordinateEntries).toHaveLength(0);
@@ -104,15 +126,15 @@ describe("EphemerisAggregationService", () => {
 
   describe("accumulateBodyEphemeris", () => {
     it("accumulates node coordinates through node path", () => {
-      const allEntries = localService.buildEphemerisEntries();
-      const featureSets = localService.buildEphemerisFeatureSets({
+      const allEntries = service.buildEphemerisEntries();
+      const featureSets = service.buildEphemerisFeatureSets({
         azimuthElevationBodies: [],
         diameterBodies: [],
         distanceBodies: [],
         illuminationBodies: [],
       });
 
-      localService.accumulateBodyEphemeris({
+      service.accumulateBodyEphemeris({
         allEntries,
         body: "north lunar node",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -127,15 +149,15 @@ describe("EphemerisAggregationService", () => {
     });
 
     it("accumulates non-node coordinate and requested feature entries", () => {
-      const allEntries = localService.buildEphemerisEntries();
-      const featureSets = localService.buildEphemerisFeatureSets({
+      const allEntries = service.buildEphemerisEntries();
+      const featureSets = service.buildEphemerisFeatureSets({
         azimuthElevationBodies: ["sun"],
         diameterBodies: ["sun"],
         distanceBodies: ["sun"],
         illuminationBodies: ["sun"],
       });
 
-      localService.accumulateBodyEphemeris({
+      service.accumulateBodyEphemeris({
         allEntries,
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -155,13 +177,13 @@ describe("EphemerisAggregationService", () => {
 
   describe("entriesToEphemerides", () => {
     it("converts entries arrays into by-body records", () => {
-      const entries = localService.buildEphemerisEntries();
+      const entries = service.buildEphemerisEntries();
       entries.coordinateEntries.push([
         "sun",
         { "2024-03-21T00:00:00.000Z": { latitude: -1.2, longitude: 120.5 } },
       ]);
 
-      const result = localService.entriesToEphemerides(entries);
+      const result = service.entriesToEphemerides(entries);
 
       expect(result.coordinateEphemerisByBody.sun).toBeDefined();
     });

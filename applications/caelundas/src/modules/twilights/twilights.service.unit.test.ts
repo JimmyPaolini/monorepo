@@ -30,7 +30,7 @@ describe("TwilightsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = await module.resolve(TwilightsService);
+    service = module.get(TwilightsService);
   });
 
   describe("service.detect", () => {

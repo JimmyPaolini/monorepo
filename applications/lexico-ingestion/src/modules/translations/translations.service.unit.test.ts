@@ -57,7 +57,7 @@ describe("TranslationsService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(TranslationsService);
+    service = module.get(TranslationsService);
     translationsRepository = module.get(getRepositoryToken(Translation));
   });
 

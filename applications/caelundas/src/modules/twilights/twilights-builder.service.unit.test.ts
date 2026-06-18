@@ -1,6 +1,7 @@
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -13,10 +14,14 @@ describe("TwilightsBuilderService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [TwilightsBuilderService],
+      providers: [
+        TwilightsBuilderService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+      ],
     }).compile();
 
-    service = await module.resolve(TwilightsBuilderService);
+    service = module.get(TwilightsBuilderService);
+    void module.get(LoggerService);
   });
 
   it("should be defined", () => {
@@ -39,7 +44,7 @@ describe("TwilightsBuilderService", () => {
   };
 
   beforeEach(() => {
-    service = new TwilightsBuilderService(new LoggerService());
+    vi.clearAllMocks();
   });
 
   describe("transition events", () => {

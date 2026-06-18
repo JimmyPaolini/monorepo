@@ -60,7 +60,7 @@ describe("DictionaryCommand", () => {
       ],
     }).compile();
 
-    command = await module.resolve(DictionaryCommand);
+    command = module.get(DictionaryCommand);
     lexemesService = module.get(LexemesService);
     translationsService = module.get(TranslationsService);
   });

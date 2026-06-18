@@ -24,7 +24,7 @@ describe("CaelundasCommand", () => {
       ],
     }).compile();
 
-    command = await module.resolve(CaelundasCommand);
+    command = module.get(CaelundasCommand);
   });
 
   it("should be defined", () => {

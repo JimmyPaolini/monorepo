@@ -21,7 +21,7 @@ describe("CalendarService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(CalendarService);
+    service = module.get(CalendarService);
   });
 
   mockDates();

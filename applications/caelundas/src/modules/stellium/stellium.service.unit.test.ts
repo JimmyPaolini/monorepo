@@ -14,7 +14,7 @@ describe("StelliumService", () => {
     const module = await Test.createTestingModule({
       providers: [StelliumService],
     }).compile();
-    service = await module.resolve(StelliumService);
+    service = module.get(StelliumService);
   });
 
   describe("service.detect", () => {

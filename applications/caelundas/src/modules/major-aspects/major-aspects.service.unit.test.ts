@@ -38,7 +38,7 @@ describe("MajorAspectsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = await module.resolve(MajorAspectsService);
+    service = module.get(MajorAspectsService);
     aspectsUtilitiesService = module.get(AspectsUtilities);
   });
 
