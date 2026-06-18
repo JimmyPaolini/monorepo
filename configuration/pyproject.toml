@@ -1,5 +1,5 @@
 # Root pyproject.toml — shared Python tool configuration and workspace-level dev tools.
-# Mirrors tsconfig.base.json / eslint.config.base.ts pattern.
+# Mirrors tsconfig.base.json / eslint.config.ts pattern.
 #
 # Python projects extend this via [tool.ruff] extend = "../../configuration/pyproject.toml"
 

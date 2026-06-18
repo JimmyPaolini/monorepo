@@ -2,6 +2,26 @@
 
 export const LITERATURE_CONSTANTS = {};
 
+export const DEFAULT_TEXT_CHUNK_SIZE = 5;
+
+export const DEFAULT_LINE_CHUNK_SIZE = 1000;
+
+export const DEFAULT_TOKEN_CHUNK_SIZE = 2000;
+
+export const LABEL_PATTERN = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i;
+
+export const ROMAN_NUMERAL_PATTERN = /^[IVXLCDM]+$/i;
+
+export const LEADING_WHITESPACE_PATTERN = /^\s+/;
+
+export const CAPITAL_LETTER_PATTERN = /[A-Z]/g;
+
+export const TOKEN_SEGMENT_PATTERN = /[\p{L}]+|[^\p{L}\s]+/gu;
+
+export const WORD_TOKEN_PATTERN = /^[\p{L}]+$/u;
+
+export const COMBINING_MARKS_PATTERN = /[\u0300-\u036F]/gu;
+
 export const authorIdToName: Record<string, string> = {
   ammianus: "ammianus marcellinus",
   apuleius: "lucius apuleius madaurensis",

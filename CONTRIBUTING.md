@@ -151,7 +151,7 @@ nx affected --target=test
 - **React**: React 19, TanStack Router, shadcn/ui via `@monorepo/lexico-components`, Tailwind CSS
 - **Documentation**: TSDoc for public APIs, update docs with code changes
 
-See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
+See [eslint.config.ts](configuration/eslint.config.ts) for complete rules.
 
 ## Git Hooks (Husky)
 

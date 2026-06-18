@@ -77,6 +77,49 @@ export type DistanceEphemerisBody = Extract<
 >;
 
 /**
+ * Aggregated ephemeris data for all tracked bodies.
+ */
+export interface Ephemerides {
+  azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
+  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+  diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
+  distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+  illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+}
+
+/**
+ * Mutable per-body stores filled minute-by-minute before being emitted as final ephemerides.
+ */
+export interface EphemerisAccumulators {
+  azimuthElevationEphemeris: AzimuthElevationEphemeris;
+  coordinateEphemeris: CoordinateEphemeris;
+  diameterEphemeris: DiameterEphemeris;
+  distanceEphemeris: DistanceEphemeris;
+  illuminationEphemeris: IlluminationEphemeris;
+}
+
+/**
+ * Tuples used by `typedFromEntries` to build strongly typed by-body ephemeris maps.
+ */
+export interface EphemerisEntries {
+  azimuthEntries: [Body, AzimuthElevationEphemeris][];
+  coordinateEntries: [Body, CoordinateEphemeris][];
+  diameterEntries: [Body, DiameterEphemeris][];
+  distanceEntries: [Body, DistanceEphemeris][];
+  illuminationEntries: [Body, IlluminationEphemeris][];
+}
+
+/**
+ * Optional feature-availability markers for bodies supported by each ephemeris type.
+ */
+export interface EphemerisFeatureSets {
+  azimuthElevationSet: Set<string>;
+  diameterSet: Set<string>;
+  distanceSet: Set<string>;
+  illuminationSet: Set<string>;
+}
+
+/**
  * Time-indexed ephemeris of illumination fraction.
  *
  * Keys are ISO timestamps, values are illumination percentages (0-100).

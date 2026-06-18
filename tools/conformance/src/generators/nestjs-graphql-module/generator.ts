@@ -5,17 +5,19 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
-import { StringCase } from "../../types.js";
-import { generateFiles, resolveName, resolveProject } from "../../utilities.js";
+import { StringCase } from "../../types";
+import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs graphql module options.
+ */
 interface GenerateNestjsGraphqlModuleOptions {
   name: string;
   project?: string;
 }
 
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
@@ -24,26 +26,64 @@ export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
  * Generates a new NestJS GraphQL module with resolver, entities, inputs, args,
  * service, types, constants, and unit test files.
  * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS GraphQL module generator
  */
 export async function generateNestjsGraphqlModule(
   tree: Tree,
   options: GenerateNestjsGraphqlModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: "Which project should the module be generated in?",
-  });
+  const { directory } = await resolveModuleDirectory(tree, options);
 
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: "What is the name of the module? (kebab-case)",
     name: options.name,
     subject: "Module name",
+  });
+
+  const targetPath = path.join(directory, nameKebabCase);
+
+  generateFiles({
+    instanceDirectoryPath: targetPath,
+    substitutions: buildNameSubstitutions(nameKebabCase),
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
+  });
+
+  const generatedFiles = tree
+    .children(targetPath)
+    .map((file) => path.join(targetPath, file));
+
+  return () => {
+    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
+      cwd: workspaceRoot,
+      stdio: "inherit",
+    });
+  };
+}
+
+/**
+ * Build name substitutions.
+ */
+function buildNameSubstitutions(nameKebabCase: string): Record<string, string> {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
+
+/**
+ * Resolve module directory.
+ */
+async function resolveModuleDirectory(
+  tree: Tree,
+  options: GenerateNestjsGraphqlModuleOptions,
+): Promise<{ directory: string; projectName: string }> {
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
   });
 
   const allProjects = getProjects(tree);
@@ -64,28 +104,5 @@ export async function generateNestjsGraphqlModule(
     );
   }
 
-  const targetPath = path.join(directory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((file) => path.join(targetPath, file));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
+  return { directory, projectName };
 }

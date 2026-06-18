@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
+import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
 import { TripleAspectsService } from "./triple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -19,7 +21,9 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * in only current or only previous, so phase detection fires exactly once.
  */
 
-const service = new TripleAspectsService(new LoggerService());
+const composerService = new TripleAspectsComposerService(new LoggerService());
+const detectorService = new TripleAspectsDetectorService(composerService);
+const service = new TripleAspectsService(composerService, detectorService);
 
 describe("triple-aspects.events integration", () => {
   describe("T-Square pattern", () => {

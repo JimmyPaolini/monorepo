@@ -5,90 +5,105 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
+import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs service module options.
+ */
 interface GenerateNestjsServiceModuleOptions {
   name: string;
   project?: string;
 }
 
 /**
- * Generates a new NestJS service module with module, service, types, constants, and unit test files.
- * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS service module generator
+ * Absolute path to the template directory used by this generator.
  */
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
 /**
- *
+ * Generates a service module under `<projectRoot>/src/modules/<name>` for a
+ * `framework:nestjs` project and schedules formatting for created files.
  */
 export async function generateNestjsServiceModule(
   tree: Tree,
   options: GenerateNestjsServiceModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
+  const { nameKebabCase, projectName } = await resolveProjectAndName(
     tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: "Which project should the module be generated in?",
-  });
-
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: "What is the name of the module? (kebab-case)",
-    name: options.name,
-    subject: "Module name",
-  });
-
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const directory = path.join(projectRoot, "src", "modules");
-
-  // Validate directory exists in workspace
-  if (!tree.exists(directory)) {
-    throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  const targetPath = path.join(directory, nameKebabCase);
+    options,
+  );
+  const modulesDirectory = resolveValidatedModulesDirectory(tree, projectName);
+  const targetPath = path.join(modulesDirectory, nameKebabCase);
   const substitutions = {
     nameCamelCase: _.camelCase(nameKebabCase),
     nameKebabCase,
     namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
   };
-
   generateFiles({
     instanceDirectoryPath: targetPath,
     substitutions,
     templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     tree,
   });
-
   const generatedFiles = tree
     .children(targetPath)
     .map((file) => path.join(targetPath, file));
-
   return () => {
     execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
       cwd: workspaceRoot,
       stdio: "inherit",
     });
   };
+}
+
+/**
+ * Resolve project and name.
+ */
+async function resolveProjectAndName(
+  tree: Tree,
+  options: GenerateNestjsServiceModuleOptions,
+): Promise<{ nameKebabCase: string; projectName: string }> {
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the module be generated in?",
+  });
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
+    name: options.name,
+    subject: "Module name",
+  });
+  return { nameKebabCase, projectName };
+}
+
+/**
+ * Resolve validated modules directory.
+ */
+function resolveValidatedModulesDirectory(
+  tree: Tree,
+  projectName: string,
+): string {
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
+  if (!tree.exists(modulesDirectory)) {
+    throw new Error(
+      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
+    );
+  }
+  return modulesDirectory;
 }

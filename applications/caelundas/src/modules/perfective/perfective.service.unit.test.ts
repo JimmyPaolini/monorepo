@@ -54,7 +54,11 @@ describe("PerfectiveService", () => {
   const monthlyLunarCycleMock = { detect: vi.fn() };
   const annualSolarCycleMock = { detect: vi.fn() };
   const twilightsMock = { detect: vi.fn() };
-  const phasesMock = { detect: vi.fn() };
+  const phasesMock = {
+    getMartianPhaseEvents: vi.fn(() => []),
+    getMercurianPhaseEvents: vi.fn(() => []),
+    getVenusianPhaseEvents: vi.fn(() => []),
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -144,10 +148,13 @@ describe("PerfectiveService", () => {
         monthlyLunarCycleMock,
         annualSolarCycleMock,
         twilightsMock,
-        phasesMock,
       ]) {
         subMock.detect.mockReturnValue([]);
       }
+
+      phasesMock.getMartianPhaseEvents.mockReturnValue([]);
+      phasesMock.getMercurianPhaseEvents.mockReturnValue([]);
+      phasesMock.getVenusianPhaseEvents.mockReturnValue([]);
 
       const result = service.detect(baseInput);
 

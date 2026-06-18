@@ -1,24 +1,28 @@
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
-import cheerioTableParser from "cheerio-tableparser";
 
 import {
+  type AdjectiveDeclension,
   adjectiveDeclensionValues,
+  type AdjectiveDegree,
   adjectiveDegreeValues,
   AdjectiveInflection,
   AdverbInflection,
-  type AdverbType,
   type Inflection,
   type Lexeme,
+  type NounDeclension,
   nounDeclensionValues,
-  nounGenderValues,
+  type NounGender,
+  nounGenders,
   NounInflection,
   type PartOfSpeech,
-  partOfSpeechValues,
-  prepositionCaseValues,
+  partOfSpeechEnumValues,
+  type PrepositionCase,
+  prepositionCases,
   PrepositionInflection,
   type PrincipalPart,
-  Uninflected,
+  UninflectedInflection,
+  type VerbConjugation,
   verbConjugationValues,
   VerbInflection,
 } from "@monorepo/lexico-entities";
@@ -30,18 +34,40 @@ import {
   genderRegex,
   nounDeclensionRegex,
   prepositionCaseRegex,
-  sumEsseFui,
   verbConjugationRegex,
 } from "./part-of-speech.constants";
+import { PartOfSpeechFormsParser } from "./part-of-speech.forms-parser";
 
 import type { AnyNode } from "domhandler";
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
+const adjectiveDeclensionValueList = normalizeStringArray(
+  adjectiveDeclensionValues,
+);
+const adjectiveDegreeValueList = normalizeStringArray(adjectiveDegreeValues);
+const nounDeclensionValueList = normalizeStringArray(nounDeclensionValues);
+const nounGenderValueList = normalizeStringArray(nounGenders);
+const partOfSpeechValueList = normalizeStringArray(partOfSpeechEnumValues);
+const prepositionCaseValueList = normalizeStringArray(prepositionCases);
+const verbConjugationValueList = normalizeStringArray(verbConjugationValues);
+
+/**
+ * Declaration for part-of-speech parsing.
+ */
+function findTypedValue<ValueType extends string>(
+  values: readonly ValueType[],
+  candidate: string,
+): undefined | ValueType {
+  return values.find((value) => value === candidate);
 }
 
-function isUnknownArray(value: unknown): value is unknown[] {
-  return Array.isArray(value);
+/**
+ * Normalizes input values used by part-of-speech parsing.
+ */
+function normalizeStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value.filter((item): item is string => typeof item === "string");
 }
 
 /**
@@ -57,20 +83,125 @@ export class PartOfSpeechService {
 
   // 🔐 Private Fields
 
+  private static readonly FORMS_GROUP: Record<
+    PartOfSpeech,
+    "adverb" | "generic" | "verb"
+  > = {
+    abbreviation: "generic",
+    adjective: "generic",
+    adverb: "adverb",
+    circumfix: "generic",
+    conjunction: "generic",
+    determiner: "generic",
+    idiom: "generic",
+    inflection: "generic",
+    interfix: "generic",
+    interjection: "generic",
+    noun: "generic",
+    numeral: "generic",
+    participle: "generic",
+    particle: "generic",
+    phrase: "generic",
+    prefix: "generic",
+    preposition: "generic",
+    pronoun: "generic",
+    properNoun: "generic",
+    proverb: "generic",
+    suffix: "generic",
+    verb: "verb",
+  };
+
+  private static readonly INFLECTION_GROUP: Record<
+    PartOfSpeech,
+    | "adjective"
+    | "adverb"
+    | "noun"
+    | "prefix"
+    | "preposition"
+    | "pronoun"
+    | "uninflected"
+    | "verb"
+  > = {
+    abbreviation: "uninflected",
+    adjective: "adjective",
+    adverb: "adverb",
+    circumfix: "prefix",
+    conjunction: "uninflected",
+    determiner: "pronoun",
+    idiom: "uninflected",
+    inflection: "uninflected",
+    interfix: "prefix",
+    interjection: "uninflected",
+    noun: "noun",
+    numeral: "adjective",
+    participle: "adjective",
+    particle: "uninflected",
+    phrase: "uninflected",
+    prefix: "prefix",
+    preposition: "preposition",
+    pronoun: "pronoun",
+    properNoun: "noun",
+    proverb: "uninflected",
+    suffix: "adjective",
+    verb: "verb",
+  };
+
+  private readonly formsParser = new PartOfSpeechFormsParser();
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
-  private flattenForms(object: unknown): string[] {
-    if (!object) return [];
-    if (isUnknownArray(object))
-      return object.filter((v): v is string => typeof v === "string");
-    if (isRecord(object)) {
-      return Object.values(object).flatMap((value) => this.flattenForms(value));
-    }
-    return [];
+  /**
+   * Builds adjective inflection for part-of-speech parsing.
+   */
+  private buildAdjectiveInflection(declension: string): AdjectiveInflection {
+    const degree = declension.match(adjectiveDegreeRegex)?.[0] ?? "positive";
+    const matchedDeclension =
+      declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
+    const adj = new AdjectiveInflection();
+    adj.declension =
+      (findTypedValue(adjectiveDeclensionValueList, matchedDeclension) as
+        | AdjectiveDeclension
+        | undefined) ?? "";
+    adj.degree =
+      (findTypedValue(adjectiveDegreeValueList, degree) as
+        | AdjectiveDegree
+        | undefined) ?? "positive";
+    return adj;
   }
 
+  /**
+   * Builds noun inflection for part-of-speech parsing.
+   */
+  private buildNounInflection(
+    declension: string,
+    gender: string,
+  ): NounInflection {
+    const matchedDeclension = declension.match(nounDeclensionRegex)?.[0] ?? "";
+    const matchedGender = gender.match(genderRegex)?.[0] ?? "";
+    const noun = new NounInflection();
+    noun.declension =
+      (findTypedValue(nounDeclensionValueList, matchedDeclension) as
+        | NounDeclension
+        | undefined) ?? "";
+    noun.gender =
+      (findTypedValue(nounGenderValueList, matchedGender) as
+        | NounGender
+        | undefined) ?? "";
+    return noun;
+  }
+
+  /**
+   * Gets text or empty used by part-of-speech parsing.
+   */
+  private getTextOrEmpty(part: PrincipalPart | undefined): string[] {
+    return part?.text ?? [];
+  }
+
+  /**
+   * Ingests adjective inflection in the part-of-speech parsing pipeline.
+   */
   private ingestAdjectiveInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -83,9 +214,9 @@ export class PartOfSpeechService {
       .first()
       .next();
 
-    if (inflectionHtml.length === 0) return new Uninflected();
+    if (inflectionHtml.length === 0) return new UninflectedInflection();
 
-    let declension = inflectionHtml
+    const declension = inflectionHtml
       .text()
       .replaceAll(
         /(-declension)|(declension)|(adjective)|(participle)|(numeral)|[.\d[\]]/gi,
@@ -95,44 +226,46 @@ export class PartOfSpeechService {
       .toLowerCase()
       .trim();
 
-    if (declension.length === 0) return new Uninflected();
+    if (declension.length === 0) return new UninflectedInflection();
 
-    const other = declension;
-    const degree = declension.match(adjectiveDegreeRegex)?.[0] ?? "positive";
-    declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
-
-    const adj = new AdjectiveInflection();
-    adj.declension =
-      adjectiveDeclensionValues.find((v) => v === declension) ?? "";
-    adj.degree = adjectiveDegreeValues.find((v) => v === degree) ?? "positive";
-    adj.other = other;
-    return adj;
+    return this.buildAdjectiveInflection(declension);
   }
 
+  /**
+   * Ingests adverb forms in the part-of-speech parsing pipeline.
+   */
   private ingestAdverbForms(principalParts: PrincipalPart[]): unknown {
     const forms: Record<string, string[]> = {
-      positive: principalParts[0]?.text ?? [],
+      positive: this.getTextOrEmpty(principalParts[0]),
     };
     if (principalParts.length >= 2)
-      forms["comparative"] = principalParts[1]?.text ?? [];
+      forms["comparative"] = this.getTextOrEmpty(principalParts[1]);
     if (principalParts.length >= 3)
-      forms["superlative"] = principalParts[2]?.text ?? [];
+      forms["superlative"] = this.getTextOrEmpty(principalParts[2]);
     return forms;
   }
 
+  /**
+   * Ingests adverb inflection in the part-of-speech parsing pipeline.
+   */
   private ingestAdverbInflection(principalParts: PrincipalPart[]): Inflection {
-    const type: AdverbType =
-      principalParts.length > 1 ? "descriptive" : "conjunctional";
     const adverbInflection = new AdverbInflection();
-    adverbInflection.adverbType = type;
+    adverbInflection.adverbType =
+      principalParts.length > 1 ? "descriptive" : "conjunctional";
     adverbInflection.degree = "positive";
     return adverbInflection;
   }
 
+  /**
+   * Ingests conjunction inflection in the part-of-speech parsing pipeline.
+   */
   private ingestConjunctionInflection(): Inflection {
-    return new Uninflected();
+    return new UninflectedInflection();
   }
 
+  /**
+   * Ingests noun inflection in the part-of-speech parsing pipeline.
+   */
   private ingestNounInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -145,7 +278,7 @@ export class PartOfSpeechService {
       .first()
       .next();
 
-    if (inflectionHtml.length === 0) return new Uninflected();
+    if (inflectionHtml.length === 0) return new UninflectedInflection();
 
     const declension = inflectionHtml
       .text()
@@ -163,24 +296,21 @@ export class PartOfSpeechService {
       .replace("pl", "plural");
 
     if (declension.length === 0 && gender.length === 0)
-      return new Uninflected();
+      return new UninflectedInflection();
 
-    const other = `${declension}, ${gender}`;
-    const matchedDeclension = declension.match(nounDeclensionRegex)?.[0] ?? "";
-    const matchedGender = gender.match(genderRegex)?.[0] ?? "";
-
-    const noun = new NounInflection();
-    noun.declension =
-      nounDeclensionValues.find((v) => v === matchedDeclension) ?? "";
-    noun.gender = nounGenderValues.find((v) => v === matchedGender) ?? "";
-    noun.other = other;
-    return noun;
+    return this.buildNounInflection(declension, gender);
   }
 
+  /**
+   * Ingests prefix inflection in the part-of-speech parsing pipeline.
+   */
   private ingestPrefixInflection(): Inflection {
-    return new Uninflected();
+    return new UninflectedInflection();
   }
 
+  /**
+   * Ingests preposition inflection in the part-of-speech parsing pipeline.
+   */
   private ingestPrepositionInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -197,16 +327,21 @@ export class PartOfSpeechService {
     const prepositionCase = other.match(prepositionCaseRegex)?.[0] ?? "";
     const prepositionInflection = new PrepositionInflection();
     prepositionInflection.case =
-      prepositionCaseValues.find((v) => v === prepositionCase) ?? "";
+      (findTypedValue(prepositionCaseValueList, prepositionCase) as
+        | PrepositionCase
+        | undefined) ?? "";
     prepositionInflection.other = other;
     return prepositionInflection;
   }
 
+  /**
+   * Ingests pronoun inflection in the part-of-speech parsing pipeline.
+   */
   private ingestPronounInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
   ): Inflection {
-    if (!$(elt).text().includes(";")) return new Uninflected();
+    if (!$(elt).text().includes(";")) return new UninflectedInflection();
 
     let declension = ($(elt).text().split("; ")[1] ?? "")
       .replace("pronoun", "")
@@ -215,146 +350,27 @@ export class PartOfSpeechService {
       .replaceAll(/\s+/g, " ")
       .trim();
 
-    if (declension.length === 0) return new Uninflected();
+    if (declension.length === 0) return new UninflectedInflection();
 
     declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
 
     const adjectiveInflection = new AdjectiveInflection();
     adjectiveInflection.declension =
-      adjectiveDeclensionValues.find((v) => v === declension) ?? "";
+      (findTypedValue(adjectiveDeclensionValueList, declension) as
+        | AdjectiveDeclension
+        | undefined) ?? "";
     adjectiveInflection.degree = "positive";
     return adjectiveInflection;
   }
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async ingestVerbForms(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-  ): Promise<unknown> {
-    const table = this.parseFormTable($, elt);
-    if (!table) return null;
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    function parseWords(
-      cell: string,
-      number: string,
-      person: string,
-    ): string[] {
-      // eslint-disable-next-line unicorn/consistent-function-scoping
-      const isMood = (w: string): boolean =>
-        [
-          "imperative",
-          "indicative",
-          "non-finite",
-          "subjunctive",
-          "verbal nouns",
-        ].includes(w);
-      // eslint-disable-next-line unicorn/consistent-function-scoping
-      const isVoice = (w: string): boolean => ["active", "passive"].includes(w);
-      // eslint-disable-next-line unicorn/consistent-function-scoping
-      const isTense = (w: string): boolean =>
-        [
-          "future",
-          "future perfect",
-          "imperfect",
-          "perfect",
-          "pluperfect",
-          "present",
-        ].includes(w);
-
-      const cleaned = cell
-        .trim()
-        .replaceAll(/[\d*]+/g, "")
-        .toLowerCase();
-      if (cleaned.includes(", ")) return cleaned.split(", ");
-      if (cleaned.includes(" + ")) {
-        const identifiers = cleaned.split(" ");
-        let mood = "";
-        let voice = "";
-        let tense = "";
-        for (const identifier of identifiers) {
-          if (isMood(identifier)) mood = identifier;
-          else if (isVoice(identifier)) voice = identifier;
-          else if (isTense(identifier)) tense = identifier;
-        }
-        const sumEntry = sumEsseFui[mood]?.[voice]?.[tense]?.[number]?.[person];
-        if (sumEntry) {
-          return sumEntry.map(
-            (extension) => `${identifiers[0] ?? ""} ${extension}`,
-          );
-        }
-        return [cleaned];
-      }
-      return [cleaned];
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    function findIdentifiers(
-      index: number,
-      index_: number,
-      table_: string[][],
-    ): string[] {
-      const identifiers = new Set<string>();
-      // eslint-disable-next-line unicorn/consistent-function-scoping
-      const isForm = (cell: string): boolean =>
-        cell.includes("<span ") || cell.includes("—") || cell.includes(" + ");
-
-      let m = index;
-      while (m > 0 && isForm(table_[m]?.[index_] ?? "")) m--;
-      identifiers.add((table_[m]?.[index_] ?? "").toLowerCase().trim());
-      if (m - 1 >= 0)
-        identifiers.add((table_[m - 1]?.[index_] ?? "").toLowerCase().trim());
-
-      let n = index_;
-      while (n > 0 && isForm(table_[index]?.[n] ?? "")) n--;
-      identifiers.add((table_[index]?.[n] ?? "").toLowerCase().trim());
-      if (n - 1 >= 0)
-        identifiers.add((table_[index]?.[n - 1] ?? "").toLowerCase().trim());
-
-      identifiers.add((table_[m]?.[n] ?? "").toLowerCase().trim());
-
-      return [...identifiers]
-        .map((id) =>
-          id
-            .replace(/future\s?perfect/i, "futurePerfect")
-            .replace("non-finite forms", "nonFinite")
-            .replace("verbal nouns", "verbalNouns")
-            .replace(/s$/, ""),
-        )
-        .filter(Boolean);
-    }
-
-    const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
-
-    for (let index = 0; index < table.length; index++) {
-      const row = table[index] ?? [];
-      for (const [index_, element] of row.entries()) {
-        const cell = element;
-        if (cell.includes("<span ") || cell.includes(" + ")) {
-          const c = cheerio.load(cell);
-          const identifiers = findIdentifiers(index, index_, table);
-          const text = c.text();
-          if (!/[A-Za-zāēīōūȳ\-\s]+/.test(text)) continue;
-          disorganizedForms.push({
-            identifiers,
-            word: parseWords(text, identifiers[1] ?? "", identifiers[0] ?? ""),
-          });
-        }
-      }
-    }
-
-    const forms: Record<string, unknown> = {};
-    for (const inflection of structuredClone(disorganizedForms)) {
-      this.sortIdentifiers(inflection, forms);
-    }
-    return forms;
-  }
-
+  /**
+   * Ingests verb inflection in the part-of-speech parsing pipeline.
+   */
   private ingestVerbInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
   ): Inflection {
-    if (!$(elt).text().includes(";")) return new Uninflected();
+    if (!$(elt).text().includes(";")) return new UninflectedInflection();
 
     let conjugation = $(elt).text().trim().split("; ")[1] ?? "";
     conjugation = conjugation
@@ -370,177 +386,11 @@ export class PartOfSpeechService {
 
     const verbInflection = new VerbInflection();
     verbInflection.conjugation =
-      verbConjugationValues.find((v) => v === finalConjugation) ?? "";
+      (findTypedValue(verbConjugationValueList, finalConjugation) as
+        | undefined
+        | VerbConjugation) ?? "";
     verbInflection.other = other;
     return verbInflection;
-  }
-
-  private isCase(str: string): boolean {
-    return /^((nominative)|(genitive)|(dative)|(accusative)|(ablative)|(vocative)|(locative))$/i.test(
-      str,
-    );
-  }
-
-  private isGender(str: string): boolean {
-    return /^((masculine)|(feminine)|(neuter))$/i.test(str);
-  }
-
-  private isNumber(str: string): boolean {
-    return /^((singular)|(plural))$/i.test(str);
-  }
-
-  private parseFormTable(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-  ): null | string[][] {
-    const tableHtml = $(elt)
-      .nextAll("div")
-      .filter(
-        (_: number, element: AnyNode) => $(element).find("table").length > 0,
-      )
-      .first()
-      .find("table")
-      .first();
-    if (tableHtml.length <= 0) return null;
-
-    const $table = cheerio.load($.html(tableHtml));
-    cheerioTableParser($table);
-
-    let table: string[][] = $table("table").parsetable(true, true, false);
-
-    // Transpose: table[col][row] → table[row][col]
-    table = (table[0] ?? []).map((_: unknown, index: number) =>
-      table.map((col: string[]) => col[index] ?? ""),
-    );
-
-    table = table.map((tr: string[]) =>
-      tr.map((tc: string) => {
-        const c = cheerio.load(tc);
-        if (c("span").length <= 0) return c.text().trim();
-        return c("body").html() ?? "";
-      }),
-    );
-
-    return table;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async parseGenericForms(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-  ): Promise<unknown> {
-    const table = this.parseFormTable($, elt);
-    if (!table) return null;
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    function parseWords(cell: string): string[] {
-      return cell.trim().replaceAll(/[\d*]/g, "").toLowerCase().split(", ");
-    }
-
-    const findIdentifiers = (
-      index: number,
-      index_: number,
-      table_: string[][],
-    ): string[] => {
-      const identifiers = new Set<string>();
-      // eslint-disable-next-line unicorn/consistent-function-scoping
-      const isForm = (cell: string): boolean =>
-        cell.includes("<span ") ||
-        cell.includes("—") ||
-        cell.includes(" + ") ||
-        cell.length === 0;
-
-      let m = index;
-      while (m >= 0 && isForm(table_[m]?.[index_] ?? "")) m--;
-      while (m >= 0 && !isForm(table_[m]?.[index_] ?? "")) {
-        identifiers.add(
-          (table_[m--]?.[index_] ?? "")
-            .replaceAll(/[./]/g, "")
-            .toLowerCase()
-            .trim(),
-        );
-      }
-
-      let n = index_;
-      while (n >= 0 && isForm(table_[index]?.[n] ?? "")) n--;
-      while (n >= 0 && !isForm(table_[index]?.[n] ?? "")) {
-        identifiers.add(
-          (table_[index]?.[n--] ?? "")
-            .replaceAll(/[./]/g, "")
-            .toLowerCase()
-            .trim(),
-        );
-      }
-
-      const nextM = m + 1;
-      const nextN = n + 1;
-      const corner = table_[nextM]?.[nextN] ?? "";
-      if (["Plural", "Singular"].includes(corner)) {
-        identifiers.add(corner.toLowerCase().trim());
-      }
-
-      if (
-        ["adjective", "numeral", "participle", "suffix"].includes(
-          lexeme.partOfSpeech,
-        )
-      ) {
-        return [
-          [...identifiers].find((id) => this.isNumber(id)) ?? "",
-          [...identifiers].find((id) => this.isCase(id)) ?? "",
-          [...identifiers].find((id) => this.isGender(id)) ?? "neuter",
-        ].filter(Boolean);
-      }
-
-      return [...identifiers];
-    };
-
-    const disorganizedForms: { identifiers: string[]; word: string[] }[] = [];
-
-    for (let index = 0; index < table.length; index++) {
-      const row = table[index] ?? [];
-      for (const [index_, element] of row.entries()) {
-        const cell = element;
-        if (cell.includes("<span ")) {
-          const c = cheerio.load(cell);
-          const words = c("span")
-            .toArray()
-            .map((s: AnyNode) => c(s).text())
-            .join(", ");
-          if (!/[A-Za-zāēīōūȳ\-\s]+/.test(words)) continue;
-          disorganizedForms.push({
-            identifiers: findIdentifiers(index, index_, table),
-            word: parseWords(words),
-          });
-        }
-      }
-    }
-
-    const forms: Record<string, unknown> = {};
-    for (const inflection of structuredClone(disorganizedForms)) {
-      this.sortIdentifiers(inflection, forms);
-    }
-    return forms;
-  }
-
-  private sortIdentifiers(
-    inflection: { identifiers: string[]; word: string[] },
-    object: Record<string, unknown>,
-  ): Record<string, unknown> {
-    const identifier = inflection.identifiers.pop();
-    if (!identifier) return object;
-    if (inflection.identifiers.length === 0) {
-      object[identifier] = inflection.word;
-      return object;
-    } else {
-      if (!object[identifier]) object[identifier] = {};
-      const current = object[identifier];
-      object[identifier] = this.sortIdentifiers(
-        inflection,
-        isRecord(current) ? current : {},
-      );
-      return object;
-    }
   }
 
   // 🌎 Public Methods
@@ -566,100 +416,53 @@ export class PartOfSpeechService {
       .replaceAll(/(\[edit])|\d+/g, "")
       .trim()
       .replace("proper noun", "properNoun");
-    return partOfSpeechValues.find((v) => v === text) ?? "phrase";
+    return partOfSpeechValueList.includes(text)
+      ? (text as PartOfSpeech)
+      : "phrase";
   }
 
   /**
    * Dispatches to the appropriate inflection parser for the given POS.
    */
-  ingestInflection(
-    pos: PartOfSpeech,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    principalParts: PrincipalPart[],
-  ): Inflection {
-    switch (pos) {
-      case "abbreviation":
-      case "conjunction":
-      case "idiom":
-      case "inflection":
-      case "interjection":
-      case "particle":
-      case "phrase":
-      case "proverb": {
-        return this.ingestConjunctionInflection();
-      }
-      case "adjective":
-      case "numeral":
-      case "participle":
-      case "suffix": {
-        return this.ingestAdjectiveInflection($, elt);
-      }
-      case "adverb": {
-        return this.ingestAdverbInflection(principalParts);
-      }
-      case "circumfix":
-      case "interfix":
-      case "prefix": {
-        return this.ingestPrefixInflection();
-      }
-      case "determiner":
-      case "pronoun": {
-        return this.ingestPronounInflection($, elt);
-      }
-      case "noun":
-      case "properNoun": {
-        return this.ingestNounInflection($, elt);
-      }
-      case "preposition": {
-        return this.ingestPrepositionInflection($, elt);
-      }
-      case "verb": {
-        return this.ingestVerbInflection($, elt);
-      }
-    }
+  ingestInflection(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    pos: PartOfSpeech;
+    principalParts: PrincipalPart[];
+  }): Inflection {
+    const { $, elt, pos, principalParts } = args;
+    const group = PartOfSpeechService.INFLECTION_GROUP[pos];
+    const handlers: Record<string, () => Inflection> = {
+      adjective: () => this.ingestAdjectiveInflection($, elt),
+      adverb: () => this.ingestAdverbInflection(principalParts),
+      noun: () => this.ingestNounInflection($, elt),
+      prefix: () => this.ingestPrefixInflection(),
+      preposition: () => this.ingestPrepositionInflection($, elt),
+      pronoun: () => this.ingestPronounInflection($, elt),
+      uninflected: () => this.ingestConjunctionInflection(),
+      verb: () => this.ingestVerbInflection($, elt),
+    };
+    return (handlers[group] ?? (() => this.ingestConjunctionInflection()))();
   }
 
   /**
    * Parses forms for the given lexeme. Dispatches to POS-specific form parsers
    * for verbs and adverbs; falls back to the generic form-table parser.
    */
-  async parseForms(
-    pos: PartOfSpeech,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-    principalParts: PrincipalPart[],
-  ): Promise<unknown> {
-    switch (pos) {
-      case "abbreviation":
-      case "adjective":
-      case "circumfix":
-      case "conjunction":
-      case "determiner":
-      case "idiom":
-      case "inflection":
-      case "interfix":
-      case "interjection":
-      case "noun":
-      case "numeral":
-      case "participle":
-      case "particle":
-      case "phrase":
-      case "prefix":
-      case "preposition":
-      case "pronoun":
-      case "properNoun":
-      case "proverb":
-      case "suffix": {
-        return this.parseGenericForms($, elt, lexeme);
-      }
-      case "adverb": {
-        return this.ingestAdverbForms(principalParts);
-      }
-      case "verb": {
-        return this.ingestVerbForms($, elt);
-      }
-    }
+  parseForms(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    lexeme: Lexeme;
+    pos: PartOfSpeech;
+    principalParts: PrincipalPart[];
+  }): unknown {
+    const { $, elt, lexeme, pos, principalParts } = args;
+    const group = PartOfSpeechService.FORMS_GROUP[pos];
+    const handlers: Record<string, () => unknown> = {
+      adverb: () => this.ingestAdverbForms(principalParts),
+      generic: () => this.formsParser.parseGenericForms({ $, elt, lexeme }),
+      verb: () => this.formsParser.parseVerbForms({ $, elt }),
+    };
+    return (handlers[group] ?? (() => null))();
   }
 }

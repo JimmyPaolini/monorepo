@@ -5,9 +5,9 @@ import { getProjects } from "@nx/devkit";
 import mustache from "mustache";
 import prompts from "prompts";
 
-import { converterByStringCase, humanReadableStringCase } from "./constants.js";
+import { converterByStringCase, humanReadableStringCase } from "./constants";
 
-import type { StringCaseValue } from "./types.js";
+import type { StringCaseValue } from "./types";
 import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 
@@ -30,7 +30,7 @@ export function generateFiles(args: {
     tree,
   } = args;
 
-  const resolveName = (name: string): string =>
+  const resolveTemplateName = (name: string): string =>
     name.replaceAll(
       /__(\w+)__/g,
       (token: string, field: string) => substitutions[field] ?? token,
@@ -39,22 +39,10 @@ export function generateFiles(args: {
   const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
 
   for (const node of nodes) {
-    const instanceName = resolveName(node.name);
+    const instanceName = resolveTemplateName(node.name);
     const instancePath = path.join(targetDirectoryPath, instanceName);
     const templatePath = path.join(templateDirectoryPath, node.name);
-
-    if (node.isDirectory()) {
-      generateFiles({
-        instanceDirectoryPath: instancePath,
-        substitutions,
-        templateDirectoryPath: templatePath,
-        tree,
-      });
-    } else {
-      const template = fs.readFileSync(templatePath, "utf8");
-      const instance = mustache.render(template, substitutions);
-      tree.write(instancePath, instance);
-    }
+    processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
 }
 
@@ -136,6 +124,31 @@ export async function resolveProject(args: {
   }
 
   return projectName;
+}
+
+/**
+ * Process file node.
+ */
+function processFileNode(args: {
+  instancePath: string;
+  node: fs.Dirent;
+  substitutions: Record<string, string>;
+  templatePath: string;
+  tree: Tree;
+}): void {
+  const { instancePath, node, substitutions, templatePath, tree } = args;
+  if (node.isDirectory()) {
+    generateFiles({
+      instanceDirectoryPath: instancePath,
+      substitutions,
+      templateDirectoryPath: templatePath,
+      tree,
+    });
+  } else {
+    const template = fs.readFileSync(templatePath, "utf8");
+    const instance = mustache.render(template, substitutions);
+    tree.write(instancePath, instance);
+  }
 }
 
 /**

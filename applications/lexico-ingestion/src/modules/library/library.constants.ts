@@ -1,5 +1,7 @@
 // ♟️ Constants
 
+export const LIBRARY_PROVIDERS_TOKEN = "LIBRARY_PROVIDERS_TOKEN";
+
 export const authorIdToName: Record<string, string> = {
   ammianus: "ammianus marcellinus",
   apuleius: "lucius apuleius madaurensis",

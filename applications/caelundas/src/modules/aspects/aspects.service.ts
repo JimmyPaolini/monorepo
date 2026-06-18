@@ -2,16 +2,18 @@ import { bodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { isAspect } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Inject, Injectable } from "@nestjs/common";
 
-import { MajorAspectsService } from "../major-aspects/major-aspects.service";
-import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
-import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
-import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
-import { SextupleAspectsService } from "../sextuple-aspects/sextuple-aspects.service";
-import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.service";
-import { StelliumService } from "../stellium/stellium.service";
-import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
+import {
+  COMPOSITE_ASPECT_DETECTORS_TOKEN,
+  PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
+  SIMPLE_ASPECT_DETECTORS_TOKEN,
+} from "./aspects.constants";
 
-import type { AspectBodies } from "./aspects.types";
+import type {
+  AspectBodies,
+  CompositeAspectDetector,
+  ProgressiveAspectDetector,
+  SimpleAspectDetector,
+} from "./aspects.types";
 import type {
   Aspect,
   Body,
@@ -34,22 +36,12 @@ export class AspectsService {
   // 🏗 Dependency Injection
 
   constructor(
-    @Inject(MajorAspectsService)
-    private readonly majorAspectsService: MajorAspectsService,
-    @Inject(MinorAspectsService)
-    private readonly minorAspectsService: MinorAspectsService,
-    @Inject(QuadrupleAspectsService)
-    private readonly quadrupleAspectsService: QuadrupleAspectsService,
-    @Inject(QuintupleAspectsService)
-    private readonly quintupleAspectsService: QuintupleAspectsService,
-    @Inject(SextupleAspectsService)
-    private readonly sextupleAspectsService: SextupleAspectsService,
-    @Inject(SpecialtyAspectsService)
-    private readonly specialtyAspectsService: SpecialtyAspectsService,
-    @Inject(StelliumService)
-    private readonly stelliumService: StelliumService,
-    @Inject(TripleAspectsService)
-    private readonly tripleAspectsService: TripleAspectsService,
+    @Inject(SIMPLE_ASPECT_DETECTORS_TOKEN)
+    private readonly simpleAspectDetectors: SimpleAspectDetector[],
+    @Inject(COMPOSITE_ASPECT_DETECTORS_TOKEN)
+    private readonly compositeAspectDetectors: CompositeAspectDetector[],
+    @Inject(PROGRESSIVE_ASPECT_DETECTORS_TOKEN)
+    private readonly progressiveAspectDetectors: ProgressiveAspectDetector[],
   ) {}
 
   // 🔐 Private Fields
@@ -58,9 +50,101 @@ export class AspectsService {
 
   // 🔏 Private Methods
 
+  /** Applies a forming or dissolving simple-aspect event to the active aspect snapshot map. */
+  private applyEventToMap(
+    map: Map<string, AspectBodies>,
+    event: Event,
+    lowercaseBodies: string[],
+  ): void {
+    const parsed = this.parseSimpleAspectEvent(event, lowercaseBodies);
+    if (!parsed) return;
+    const { aspect, body1, body2, isDissolving } = parsed;
+    const key = this.makeKey(body1, body2, aspect);
+    if (isDissolving) {
+      map.delete(key);
+    } else if (!map.has(key)) {
+      map.set(key, { aspect, bodies: [body1, body2] });
+    }
+  }
+
+  /** Runs composite-aspect detectors against current and previous aspect-body snapshots. */
+  private detectCompositeAspects(
+    currentAspectBodies: AspectBodies[],
+    minute: Moment,
+    previousAspectBodies: AspectBodies[],
+  ): Event[] {
+    const sharedArguments = {
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+    };
+    const detectedEvents: Event[] = [];
+    for (const compositeAspectDetector of this.compositeAspectDetectors) {
+      detectedEvents.push(...compositeAspectDetector.detect(sharedArguments));
+    }
+    return detectedEvents;
+  }
+
+  /** Runs all simple-aspect detectors for a minute and flattens their detected events. */
+  private detectSimpleAspects(
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+    minute: Moment,
+  ): Event[] {
+    const detectedEvents: Event[] = [];
+    for (const simpleAspectDetector of this.simpleAspectDetectors) {
+      detectedEvents.push(
+        ...simpleAspectDetector.detect({ coordinateEphemerisByBody, minute }),
+      );
+    }
+    return detectedEvents;
+  }
+
+  /** Extracts celestial bodies referenced in normalized event categories. */
+  private extractEventBodies(
+    normalizedCategories: string[],
+    lowercaseBodies: string[],
+  ): Body[] {
+    const eventBodies: Body[] = [];
+    for (const category of normalizedCategories) {
+      const bodyIndex = lowercaseBodies.indexOf(category);
+      if (bodyIndex !== -1) {
+        const body = bodies[bodyIndex];
+        if (body) {
+          eventBodies.push(body);
+        }
+      }
+    }
+    return eventBodies;
+  }
+
+  /** Creates an order-insensitive compound key for a body pair and aspect type. */
   private makeKey(body1: Body, body2: Body, aspect: Aspect): string {
     const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
     return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
+  }
+
+  /** Parses a simple-aspect event into typed bodies, aspect, and phase direction flags. */
+  private parseSimpleAspectEvent(
+    event: Event,
+    lowercaseBodies: string[],
+  ): null | {
+    aspect: Aspect;
+    body1: Body;
+    body2: Body;
+    isDissolving: boolean;
+  } {
+    const cats = event.categories.map((c) => c.toLowerCase().trim());
+    if (!cats.includes("simple aspect")) return null;
+    const isForming = cats.includes("forming");
+    const isDissolving = cats.includes("dissolving");
+    if (!isForming && !isDissolving) return null;
+    const eventBodies = this.extractEventBodies(cats, lowercaseBodies);
+    if (eventBodies.length !== 2) return null;
+    const aspect = cats.find((c): c is Aspect => isAspect(c));
+    const body1 = eventBodies[0];
+    const body2 = eventBodies[1];
+    if (!aspect || !body1 || !body2) return null;
+    return { aspect, body1, body2, isDissolving };
   }
 
   // 🌎 Public Methods
@@ -71,9 +155,6 @@ export class AspectsService {
    * Starting from `previousAspectBodies`, adds any new forming aspects and removes any
    * aspects that have dissolved, based on the "Simple Aspect" events in `events`.
    *
-   * @param previousAspectBodies - Active aspects from the previous minute
-   * @param events - Instantaneous events detected at the current minute
-   * @returns Updated list of currently active 2-body aspects
    */
   computeAspectBodies(
     previousAspectBodies: AspectBodies[],
@@ -85,63 +166,10 @@ export class AspectsService {
         ab,
       ]),
     );
-
     const lowercaseBodies = bodies.map((body) => body.toLowerCase());
-
     for (const event of events) {
-      const normalizedCategories = event.categories.map((category) =>
-        category.toLowerCase().trim(),
-      );
-
-      if (!normalizedCategories.includes("simple aspect")) {
-        continue;
-      }
-
-      const isForming = normalizedCategories.includes("forming");
-      const isDissolving = normalizedCategories.includes("dissolving");
-
-      if (!isForming && !isDissolving) {
-        continue;
-      }
-
-      const eventBodies: Body[] = [];
-      for (const category of normalizedCategories) {
-        const bodyIndex = lowercaseBodies.indexOf(category);
-        if (bodyIndex !== -1) {
-          const body = bodies[bodyIndex];
-          if (body) {
-            eventBodies.push(body);
-          }
-        }
-      }
-
-      if (eventBodies.length !== 2) {
-        continue;
-      }
-
-      const aspect = normalizedCategories.find((category): category is Aspect =>
-        isAspect(category),
-      );
-
-      if (!aspect) {
-        continue;
-      }
-
-      const body1 = eventBodies[0];
-      const body2 = eventBodies[1];
-      if (!body1 || !body2) continue;
-      const key = this.makeKey(body1, body2, aspect);
-
-      if (isDissolving) {
-        map.delete(key);
-        continue;
-      }
-
-      if (!map.has(key)) {
-        map.set(key, { aspect, bodies: [body1, body2] });
-      }
+      this.applyEventToMap(map, event, lowercaseBodies);
     }
-
     return [...map.values()];
   }
 
@@ -152,8 +180,6 @@ export class AspectsService {
    * updated active-aspect registry and uses it to detect composite configurations
    * (triple, quadruple, quintuple, sextuple, stellium).
    *
-   * @param args - Ephemeris data, target minute, and the currently active aspect bodies
-   * @returns Detected calendar events and the updated active-aspect registry
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -161,50 +187,20 @@ export class AspectsService {
     previousAspectBodies: AspectBodies[];
   }): { aspectBodies: AspectBodies[]; events: Event[] } {
     const { coordinateEphemerisByBody, minute, previousAspectBodies } = args;
-
-    const simpleAspectEvents: Event[] = [
-      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.specialtyAspectsService.detect({
-        coordinateEphemerisByBody,
-        minute,
-      }),
-    ];
-
+    const simpleAspectEvents = this.detectSimpleAspects(
+      coordinateEphemerisByBody,
+      minute,
+    );
     const currentAspectBodies = this.computeAspectBodies(
       previousAspectBodies,
       simpleAspectEvents,
     );
-
-    const events: Event[] = [
-      ...simpleAspectEvents,
-      ...this.tripleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.quadrupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.quintupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.sextupleAspectsService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-      ...this.stelliumService.detect({
-        currentAspectBodies,
-        minute,
-        previousAspectBodies,
-      }),
-    ];
-
+    const compositeEvents = this.detectCompositeAspects(
+      currentAspectBodies,
+      minute,
+      previousAspectBodies,
+    );
+    const events: Event[] = [...simpleAspectEvents, ...compositeEvents];
     return { aspectBodies: currentAspectBodies, events };
   }
 
@@ -214,19 +210,14 @@ export class AspectsService {
    * Delegates to each sub-service so that every aspect category produces progressive
    * events spanning its full in-orb period.
    *
-   * @param events - Instantaneous events accumulated over a complete date range
-   * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
    */
   detectProgressive(events: Event[]): Event[] {
-    return [
-      ...this.majorAspectsService.detectProgressive(events),
-      ...this.minorAspectsService.detectProgressive(events),
-      ...this.specialtyAspectsService.detectProgressive(events),
-      ...this.tripleAspectsService.detectProgressive(events),
-      ...this.quadrupleAspectsService.detectProgressive(events),
-      ...this.quintupleAspectsService.detectProgressive(events),
-      ...this.sextupleAspectsService.detectProgressive(events),
-      ...this.stelliumService.detectProgressive(events),
-    ];
+    const progressiveEvents: Event[] = [];
+    for (const progressiveAspectDetector of this.progressiveAspectDetectors) {
+      progressiveEvents.push(
+        ...progressiveAspectDetector.detectProgressive(events),
+      );
+    }
+    return progressiveEvents;
   }
 }

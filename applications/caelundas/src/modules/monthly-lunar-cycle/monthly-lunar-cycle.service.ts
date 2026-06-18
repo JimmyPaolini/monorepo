@@ -1,8 +1,8 @@
 import {
   lunarPhases,
   MARGIN_MINUTES,
-  symbolByLunarPhase,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { isLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
@@ -14,8 +14,6 @@ import type { LunarPhase } from "@caelundas/src/modules/caelundas/caelundas.type
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
-
-// #region 🕑 Progressive Events
 
 /**
  * Detects monthly lunar cycle phase events using Moon illumination data.
@@ -78,10 +76,6 @@ export class MonthlyLunarCycleService {
    * Extracts the lunar phase from the entering event categories and formats a
    * progressive event showing the span of time Moon remains in that phase.
    *
-   * @param entering - Phase event marking the start of this phase period
-   * @param exiting - Next phase event marking the end of this phase period
-   * @returns Progressive event spanning the phase period, or null if phase cannot be extracted
-   *
    * @remarks
    * - Duration spans from entering.start to exiting.start (not exiting.end)
    * - Extracts phase from categories by matching against {@link lunarPhases}
@@ -102,37 +96,49 @@ export class MonthlyLunarCycleService {
    * // Returns: { summary: "🌕 🌑 New Moon", start: Jan 1, end: Jan 8, categories: [..., "New"] }
    * ```
    */
-  private getMonthlyLunarCycleProgressiveEvent(
-    entering: Event,
-    exiting: Event,
-  ): Event | null {
-    const categories = entering.categories;
-
-    // Extract the lunar phase
+  private extractLunarPhaseFromCategories(
+    categories: string[],
+    enteringSummary: string,
+  ): LunarPhase | null {
     const capitalizedLunarPhases = new Set(
       lunarPhases.map((phase) => _.startCase(phase)),
     );
     const lunarPhaseCapitalized = categories.find((category) =>
       capitalizedLunarPhases.has(category),
     );
-
     if (!lunarPhaseCapitalized) {
       this.logger.warn(
         `⚠️ Could not extract lunar phase from categories: ${categories.join(
           ", ",
-        )} - skipping progressive event for ${entering.summary}`,
+        )} - skipping progressive event for ${enteringSummary}`,
       );
-      return null; // Skip this invalid event
+      return null;
     }
-
     const lunarPhaseLower = lunarPhaseCapitalized.toLowerCase();
     if (!isLunarPhase(lunarPhaseLower)) {
       this.logger.warn(`⚠️ Unknown lunar phase: ${lunarPhaseLower}`);
       return null;
     }
-    const lunarPhase = lunarPhaseLower;
-    const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
+    return lunarPhaseLower;
+  }
 
+  /**
+   * Derives monthly lunar cycle progressive event.
+   */
+  private getMonthlyLunarCycleProgressiveEvent(
+    entering: Event,
+    exiting: Event,
+  ): Event | null {
+    const categories = entering.categories;
+    const lunarPhase = this.extractLunarPhaseFromCategories(
+      categories,
+      entering.summary,
+    );
+    if (!lunarPhase) {
+      return null;
+    }
+    const lunarPhaseCapitalized = _.startCase(lunarPhase);
+    const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
     return {
       categories: [
         "Astronomy",
@@ -148,6 +154,43 @@ export class MonthlyLunarCycleService {
     };
   }
 
+  /**
+   * Derives next illuminations.
+   */
+  private getNextIlluminations(
+    moonIlluminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_index, marginIndex) => {
+      const m = minute.clone().add(marginIndex + 1, "minutes");
+      return this.ephemerisService.getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        m.toISOString(),
+        "nextIllumination",
+      );
+    });
+  }
+
+  /**
+   * Derives previous illuminations.
+   */
+  private getPreviousIlluminations(
+    moonIlluminationEphemeris: IlluminationEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_index, marginIndex) => {
+      const m = minute.clone().subtract(marginIndex + 1, "minutes");
+      return this.ephemerisService.getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        m.toISOString(),
+        "previousIllumination",
+      );
+    });
+  }
+
+  /**
+   * Determines whether full moon.
+   */
   private isFullMoon(args: {
     currentIllumination: number;
     nextIlluminations: number[];
@@ -162,6 +205,9 @@ export class MonthlyLunarCycleService {
     );
   }
 
+  /**
+   * Determines whether lunar phase.
+   */
   private isLunarPhase(args: {
     currentIllumination: number;
     lunarPhase: LunarPhase;
@@ -169,45 +215,27 @@ export class MonthlyLunarCycleService {
     previousIlluminations: number[];
   }): boolean {
     const { lunarPhase, ...illuminations } = args;
-
     if (lunarPhase === "new") {
       return this.isNewMoon({ ...illuminations });
     }
     if (lunarPhase === "full") {
       return this.isFullMoon({ ...illuminations });
     }
-
     const { currentIllumination, previousIlluminations } = illuminations;
     const previousIllumination = previousIlluminations[0];
     if (!previousIllumination) {
       return false;
     }
-
-    const illumination =
-      MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
-
-    const isWaxing = currentIllumination > previousIllumination;
-    const isWaning = currentIllumination < previousIllumination;
-    const isCrossingUp =
-      currentIllumination > illumination &&
-      previousIllumination <= illumination;
-    const isCrossingDown =
-      currentIllumination < illumination &&
-      previousIllumination >= illumination;
-    const isPhase = isCrossingUp || isCrossingDown;
-
-    const isWaxingLunarPhase = isPhase && isWaxing;
-    const isWaningLunarPhase = isPhase && isWaning;
-
-    if (MonthlyLunarCycleService.waxingPhases.has(lunarPhase)) {
-      return isWaxingLunarPhase;
-    }
-    if (MonthlyLunarCycleService.waningPhases.has(lunarPhase)) {
-      return isWaningLunarPhase;
-    }
-    return false;
+    return this.isQuarterPhase({
+      currentIllumination,
+      lunarPhase,
+      previousIllumination,
+    });
   }
 
+  /**
+   * Determines whether new moon.
+   */
   private isNewMoon(args: {
     currentIllumination: number;
     nextIlluminations: number[];
@@ -222,6 +250,35 @@ export class MonthlyLunarCycleService {
     );
   }
 
+  /**
+   * Determines whether quarter phase.
+   */
+  private isQuarterPhase(args: {
+    currentIllumination: number;
+    lunarPhase: LunarPhase;
+    previousIllumination: number;
+  }): boolean {
+    const { currentIllumination, lunarPhase, previousIllumination } = args;
+    const illumination =
+      MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
+    const isWaxing = currentIllumination > previousIllumination;
+    const isWaning = currentIllumination < previousIllumination;
+    const isCrossingUp =
+      currentIllumination > illumination &&
+      previousIllumination <= illumination;
+    const isCrossingDown =
+      currentIllumination < illumination &&
+      previousIllumination >= illumination;
+    const isPhase = isCrossingUp || isCrossingDown;
+    if (MonthlyLunarCycleService.waxingPhases.has(lunarPhase)) {
+      return isPhase && isWaxing;
+    }
+    if (MonthlyLunarCycleService.waningPhases.has(lunarPhase)) {
+      return isPhase && isWaning;
+    }
+    return false;
+  }
+
   // 🌎 Public Methods
 
   /**
@@ -230,11 +287,6 @@ export class MonthlyLunarCycleService {
    * Generates a calendar event with Unicode Moon phase symbols and descriptive text.
    * Each phase has a unique symbol (🌑 new, 🌓 first, 🌕 full, 🌗 third) for visual
    * distinction in calendar applications.
-   *
-   * @param args - Lunar phase event parameters
-   * @param date - Exact time of the lunar phase
-   * @param lunarPhase - Phase type: "new", "first", "full", or "third"
-   * @returns Calendar event with summary, description, and phase-specific categories
    *
    * @remarks
    * - Summary format: `🌕 [phaseSymbol] [Phase] Moon`
@@ -294,10 +346,6 @@ export class MonthlyLunarCycleService {
    * waxing), full (100%), and third quarter (50% waning). Uses {@link MARGIN_MINUTES}
    * window for robust extrema detection.
    *
-   * @param args - Ephemeris data and current time
-   * @param currentMinute - Time point to check for phase events (minute precision)
-   * @param moonIlluminationEphemeris - Pre-computed Moon illumination data
-   * @returns Array of calendar events for detected lunar phases (0-1 events per call)
    *
    * @remarks
    * - Checks all four {@link lunarPhases}: new, first, full, third
@@ -327,40 +375,21 @@ export class MonthlyLunarCycleService {
     moonIlluminationEphemeris: IlluminationEphemeris;
   }): Event[] {
     const { minute, moonIlluminationEphemeris } = args;
-
-    const monthlyLunarCycleEvents: Event[] = [];
-
     const currentIllumination =
       this.ephemerisService.getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "currentIllumination",
       );
-
-    const previousIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().subtract(marginIndex + 1, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          moonIlluminationEphemeris,
-          m.toISOString(),
-          "previousIllumination",
-        );
-      },
+    const previousIlluminations = this.getPreviousIlluminations(
+      moonIlluminationEphemeris,
+      minute,
     );
-
-    const nextIlluminations = Array.from(
-      { length: MARGIN_MINUTES },
-      (_, marginIndex) => {
-        const m = minute.clone().add(marginIndex + 1, "minutes");
-        return this.ephemerisService.getIlluminationFromEphemeris(
-          moonIlluminationEphemeris,
-          m.toISOString(),
-          "nextIllumination",
-        );
-      },
+    const nextIlluminations = this.getNextIlluminations(
+      moonIlluminationEphemeris,
+      minute,
     );
-
+    const monthlyLunarCycleEvents: Event[] = [];
     for (const lunarPhase of lunarPhases) {
       if (
         this.isLunarPhase({
@@ -375,7 +404,6 @@ export class MonthlyLunarCycleService {
         );
       }
     }
-
     return monthlyLunarCycleEvents;
   }
 
@@ -385,9 +413,6 @@ export class MonthlyLunarCycleService {
    * Pairs consecutive lunar phase events to create progressive events spanning the
    * period between phases. This shows how long Moon remains in each phase state
    * (roughly 7.4 days per phase on average).
-   *
-   * @param events - Array of all calendar events (will be filtered to lunar cycles)
-   * @returns Array of progressive events spanning lunar phase periods
    *
    * @remarks
    * - Filters to events with "Monthly Lunar Cycle" category

@@ -2,6 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
+import { QuintupleAspectsComposerService } from "./quintuple-aspects-composer.service";
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -18,7 +19,9 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * needed for pattern detection.
  */
 
-const service = new QuintupleAspectsService(new MathService());
+const service = new QuintupleAspectsService(
+  new QuintupleAspectsComposerService(new MathService()),
+);
 
 describe("quintuple-aspects.events integration", () => {
   describe("Pentagram pattern detection with realistic timing", () => {

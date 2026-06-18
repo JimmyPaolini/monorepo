@@ -1,29 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import _ from "lodash";
 import { Repository } from "typeorm";
 
 import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  classicalDevocalize,
-  classicalPhonemes,
-  classicalSubstitutions,
-  ecclesiasticalPhonemes,
-} from "./pronunciation.constants";
+import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { classicalSubstitutions } from "./pronunciation.constants";
 
+import type {
+  PronunciationBuildDefaultContext,
+  PronunciationPhoneme,
+} from "./pronunciation.types";
 import type { AnyNode } from "domhandler";
-
-function getStringPhoneme(
-  map: Record<string, string | string[][]>,
-  key: string,
-): string {
-  const value = map[key];
-  return typeof value === "string" ? value : "";
-}
 
 /**
  * Parses Classical and Ecclesiastical Latin pronunciation from
@@ -37,6 +28,7 @@ export class PronunciationService {
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
     private readonly logger: LoggerService,
+    private readonly classifier: PronunciationClassifier,
   ) {
     this.logger.setContext(PronunciationService.name);
   }
@@ -45,15 +37,31 @@ export class PronunciationService {
 
   // 🔑 Public Fields
 
-  // 🔏 Private Methods
+  /**
+   * Builds default pronunciation for pronunciation parsing.
+   */
+  private buildDefaultPronunciation({
+    phonemes,
+    variant,
+  }: PronunciationBuildDefaultContext): Pronunciation {
+    const pronunciation = new Pronunciation();
+    pronunciation.variant = variant;
+    pronunciation.phonemes = phonemes;
+    pronunciation.phonemic = null;
+    pronunciation.phonetic = null;
+    return pronunciation;
+  }
 
-  private buildPronunciations(phonemes: (string | string[][])[]): string[] {
+  /**
+   * Builds pronunciations for pronunciation parsing.
+   */
+  private buildPronunciations(phonemes: PronunciationPhoneme[]): string[] {
     const pronunciations: string[] = [];
 
-    function build(
-      previous: (string | string[][])[],
-      next: (string | string[][])[],
-    ): void {
+    /**
+     * Builds  for pronunciation parsing.
+     */
+    function build(previous: string[], next: PronunciationPhoneme[]): void {
       if (next.length === 0) {
         pronunciations.push(previous.join(" "));
         return;
@@ -75,249 +83,72 @@ export class PronunciationService {
     return pronunciations;
   }
 
+  /**
+   * Gets classical phonemes used by pronunciation parsing.
+   */
   private getClassicalPhonemes(wordString: string): string {
+    let normalizedWordString = wordString;
     for (const [pattern, replacement] of Object.entries(
       classicalSubstitutions,
     )) {
-      wordString = wordString.replace(new RegExp(pattern), replacement);
+      normalizedWordString = normalizedWordString.replace(
+        new RegExp(pattern),
+        replacement,
+      );
     }
-
     // eslint-disable-next-line @typescript-eslint/no-misused-spread
-    const word = [...wordString.toLowerCase()];
+    const word = [...normalizedWordString.toLowerCase()];
     const isVowel = (index: number): boolean =>
       index >= 0 &&
       index < word.length &&
       // eslint-disable-next-line @typescript-eslint/no-misused-spread
       [..."aeiouāēīōūȳ"].includes(word[index] ?? "");
-
     const phonemes: string[] = [];
     for (let index = 0; index < word.length; index++) {
       const ch = word[index] ?? "";
-      switch (ch) {
-        case "h": {
-          if (
-            index === 0 ||
-            (isVowel(index + 1) && index - 1 >= 0 && word[index - 1] !== "r")
-          ) {
-            phonemes.push("H");
-          }
-          break;
-        }
-        case "i": {
-          if (isVowel(index + 1) && (index === 0 || isVowel(index - 1)))
-            phonemes.push("J");
-          else phonemes.push(classicalPhonemes[ch] ?? "");
-          break;
-        }
-        case "j": {
-          if (
-            !isVowel(index - 1) &&
-            ["l", "m", "n", "q", "t"].includes(word[index - 1] ?? "")
-          ) {
-            phonemes.push("I");
-          } else phonemes.push(classicalPhonemes[ch] ?? "");
-          break;
-        }
-        case "n": {
-          if (
-            !isVowel(index + 1) &&
-            ["c", "g", "q", "x"].includes(word[index + 1] ?? "")
-          ) {
-            phonemes.push("NG");
-          } else phonemes.push(classicalPhonemes[ch] ?? "");
-          break;
-        }
-        default: {
-          if (Object.hasOwn(classicalDevocalize, ch)) {
-            if (
-              index + 1 < word.length &&
-              ["c", "f", "k", "p", "q", "s", "t"].includes(
-                word[index + 1] ?? "",
-              )
-            ) {
-              phonemes.push(classicalDevocalize[ch] ?? "");
-            } else phonemes.push(classicalPhonemes[ch] ?? "");
-          } else if (
-            index + 2 < word.length &&
-            classicalPhonemes[
-              ch + (word[index + 1] ?? "") + (word[index + 2] ?? "")
-            ]
-          ) {
-            phonemes.push(
-              classicalPhonemes[
-                ch + (word[++index] ?? "") + (word[++index] ?? "")
-              ] ?? "",
-            );
-          } else if (
-            index + 1 < word.length &&
-            classicalPhonemes[ch + (word[index + 1] ?? "")]
-          ) {
-            phonemes.push(classicalPhonemes[ch + (word[++index] ?? "")] ?? "");
-          } else {
-            phonemes.push(classicalPhonemes[ch] ?? "");
-          }
-        }
-      }
+      index = this.classifier.processClassicalCharacter({
+        ch,
+        index,
+        isVowel,
+        phonemes,
+        word,
+      });
     }
-
     return phonemes.join(" ");
   }
 
+  /**
+   * Gets ecclesiastical phonemes used by pronunciation parsing.
+   */
   private getEcclesiasticalPhonemes(
     wordString: string,
-  ): (string | string[][])[] {
-    const phonemes: (string | string[][])[] = [];
+  ): PronunciationPhoneme[] {
+    const phonemes: PronunciationPhoneme[] = [];
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const isVowel = (letter: string): boolean =>
       ["a", "e", "i", "o", "u"].includes(letter);
     // eslint-disable-next-line @typescript-eslint/no-misused-spread
     const word = [...wordString];
-
     for (let index = 0; index < word.length; index++) {
       const ch = word[index] ?? "";
-      switch (ch) {
-        case "c": {
-          if (
-            (index + 1 < word.length &&
-              ["e", "i", "y"].includes(word[index + 1] ?? "")) ||
-            (index + 2 < word.length &&
-              ["ae", "oe"].includes(
-                (word[index + 1] ?? "") + (word[index + 2] ?? ""),
-              ))
-          ) {
-            phonemes.push("ch");
-          } else if (index + 1 < word.length && word[index + 1] === "c") {
-            phonemes.push("ch");
-            index++;
-          } else phonemes.push("k");
-          break;
-        }
-        case "g": {
-          if (
-            (index + 2 < word.length &&
-              ["ae", "oe"].includes(
-                (word[index + 1] ?? "") + (word[index + 2] ?? ""),
-              )) ||
-            ["e", "i", "y"].includes(word[index + 1] ?? "")
-          ) {
-            phonemes.push("dg");
-          } else if (index + 1 < word.length && word[index + 1] === "g") {
-            phonemes.push("dg");
-            index++;
-          } else phonemes.push("g");
-          break;
-        }
-        case "h": {
-          if (
-            (index - 2 >= 0 &&
-              index + 1 < word.length &&
-              wordString.slice(index - 2, index + 2) === "mihi") ||
-            (index - 2 >= 0 &&
-              index + 2 < word.length &&
-              wordString.slice(index - 2, index + 3) === "nihil")
-          ) {
-            phonemes.push("k");
-          }
-          break;
-        }
-        case "i": {
-          if (
-            index === 0 &&
-            index + 1 < word.length &&
-            isVowel(word[index + 1] ?? "")
-          ) {
-            phonemes.push("j");
-          } else if (
-            index - 1 > 0 &&
-            index + 1 < word.length &&
-            isVowel(word[index - 1] ?? "") &&
-            isVowel(word[index + 1] ?? "")
-          ) {
-            phonemes.push("j");
-          } else phonemes.push(getStringPhoneme(ecclesiasticalPhonemes, "i"));
-          break;
-        }
-        case "s": {
-          if (
-            index > 0 &&
-            isVowel(word[index - 1] ?? "") &&
-            isVowel(word[index + 1] ?? "")
-          ) {
-            phonemes.push("z");
-          } else if (
-            index + 2 < word.length &&
-            ["ce", "ci"].includes(
-              (word[index + 1] ?? "") + (word[index + 2] ?? ""),
-            )
-          ) {
-            phonemes.push("sh");
-            index++;
-          } else phonemes.push("s");
-          if (word[index + 1] === "s") index++;
-          break;
-        }
-        case "t": {
-          if (word[index + 1] === "i") phonemes.push("ts");
-          else phonemes.push("t");
-          break;
-        }
-        case "x": {
-          if (
-            index > 0 &&
-            isVowel(word[index - 1] ?? "") &&
-            isVowel(word[index + 1] ?? "")
-          ) {
-            phonemes.push("gz");
-          } else if (
-            index + 2 < word.length &&
-            ["ce", "ci"].includes(
-              (word[index + 1] ?? "") + (word[index + 2] ?? ""),
-            )
-          ) {
-            phonemes.push("ksh");
-            index++;
-          } else phonemes.push("ks");
-          break;
-        }
-        default: {
-          if (ecclesiasticalPhonemes[ch + (word[index + 1] ?? "")]) {
-            phonemes.push(
-              getStringPhoneme(
-                ecclesiasticalPhonemes,
-                ch + (word[++index] ?? ""),
-              ),
-            );
-          } else {
-            phonemes.push(getStringPhoneme(ecclesiasticalPhonemes, ch));
-          }
-        }
-      }
+      index = this.classifier.processEcclesiasticalCharacter({
+        ch,
+        index,
+        isVowel,
+        phonemes,
+        word,
+        wordString,
+      });
     }
-
     return phonemes;
   }
 
+  /**
+   * Gets ecclesiastical pronunciations used by pronunciation parsing.
+   */
   private getEcclesiasticalPronunciations(word: string): string[] {
     return this.buildPronunciations(this.getEcclesiasticalPhonemes(word));
   }
-
-  private parsePhonics(
-    pronunciations: string[],
-  ): Pick<Pronunciation, "phonemic" | "phonetic"> {
-    const parsed: Pick<Pronunciation, "phonemic" | "phonetic"> = {
-      phonemic: null,
-      phonetic: null,
-    };
-    for (const pronunciation of pronunciations) {
-      if (/\/.*\//.test(pronunciation)) {
-        parsed.phonemic = pronunciation.trim();
-      } else if (/\[.*\]/.test(pronunciation)) {
-        parsed.phonetic = pronunciation.trim();
-      }
-    }
-    return parsed;
-  }
-
   // 🌎 Public Methods
 
   /**
@@ -351,53 +182,25 @@ export class PronunciationService {
     elt: AnyNode,
     macronizedWord: string,
   ): Pronunciation[] {
-    const classical = new Pronunciation();
-    classical.variant = "classical";
-    classical.phonemes = this.getClassicalPhonemes(macronizedWord);
-    classical.phonemic = null;
-    classical.phonetic = null;
-
-    const ecclesiastical = new Pronunciation();
-    ecclesiastical.variant = "ecclesiastical";
-    ecclesiastical.phonemes =
-      this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? null;
-    ecclesiastical.phonemic = null;
-    ecclesiastical.phonetic = null;
-
-    const vulgar = new Pronunciation();
-    vulgar.variant = "vulgar";
-    vulgar.phonemes = null;
-    vulgar.phonemic = null;
-    vulgar.phonetic = null;
-
-    const pronunciationHeader = $(elt)
-      .prevAll("div.mw-heading")
-      .filter((_: number, element: AnyNode) =>
-        /pronunciation/i.test($(element).text()),
-      )
-      .first();
-    if (pronunciationHeader.length <= 0)
-      return [classical, ecclesiastical, vulgar];
-
-    for (const pr of pronunciationHeader.next("ul").children()) {
-      if (/^audio/i.test($(pr).text())) continue;
-
-      const pronunciationsText = $(pr)
-        .text()
-        .split("IPA(key):")[1]
-        ?.split(", ");
-      if (!pronunciationsText) continue;
-
-      const anchorText = $(pr).find("a").text();
-      if (anchorText.includes("Classical")) {
-        _.assign(classical, this.parsePhonics(pronunciationsText));
-      } else if (anchorText.includes("Ecclesiastical")) {
-        _.assign(ecclesiastical, this.parsePhonics(pronunciationsText));
-      } else if (anchorText.includes("Vulgar")) {
-        _.assign(vulgar, this.parsePhonics(pronunciationsText));
-      }
-    }
-
+    const classical = this.buildDefaultPronunciation({
+      phonemes: this.getClassicalPhonemes(macronizedWord),
+      variant: "classical",
+    });
+    const ecclesiastical = this.buildDefaultPronunciation({
+      phonemes: this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? null,
+      variant: "ecclesiastical",
+    });
+    const vulgar = this.buildDefaultPronunciation({
+      phonemes: null,
+      variant: "vulgar",
+    });
+    this.classifier.applyWiktionaryPronunciations({
+      $,
+      classical,
+      ecclesiastical,
+      elt,
+      vulgar,
+    });
     return [classical, ecclesiastical, vulgar];
   }
 }

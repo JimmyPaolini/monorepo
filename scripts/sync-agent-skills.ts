@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 
 /**
- * Sync agent skills table of contents into AGENTS.md
+ * Sync agent skills table of contents into AGENTS.md.
  *
  * Reads all SKILL.md files from documentation/skills/, extracts YAML frontmatter
  * (name and description), and generates a markdown table of contents that is
@@ -9,7 +9,7 @@
  *
  * Usage: pnpm exec nx run monorepo:sync-agent-skills [check|write]
  *   check (default): Validate that AGENTS.md has up-to-date skills table, exit 1 if not
- *   write: Update AGENTS.md with generated skills table
+ *   write: Update AGENTS.md with generated skills table.
  */
 
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -20,11 +20,20 @@ import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+export const SYNC_AGENT_SKILLS_FILES = [
+  "AGENTS.md",
+  "documentation/skills/**/*.md",
+];
+
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const SKILLS_DIR = path.join(WORKSPACE_ROOT, "documentation/skills");
 const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
 const MODE = process.argv[2] || "check";
 
+/**
+ * Parsed skill metadata used to render the AGENTS.md skills table of contents.
+ */
 interface Skill {
   description: string;
   filePath: string;
@@ -32,7 +41,7 @@ interface Skill {
 }
 
 /**
- * Check if the generated content matches the stored content
+ * Check if the generated content matches the stored content.
  */
 function checkSync(skills: Skill[]): boolean {
   const generatedTable = generateSkillsTable(skills);
@@ -59,7 +68,7 @@ function checkSync(skills: Skill[]): boolean {
 }
 
 /**
- * Extract YAML frontmatter from markdown content
+ * Extract YAML frontmatter from markdown content.
  */
 function extractFrontmatter(content: string): Record<string, string> {
   const match = /^---\n([\s\S]*?)\n---/.exec(content);
@@ -81,7 +90,7 @@ function extractFrontmatter(content: string): Record<string, string> {
 }
 
 /**
- * Generate markdown table of skills
+ * Generate markdown table of skills.
  */
 function generateSkillsTable(skills: Skill[]): string {
   const rows = skills.map((skill) => {
@@ -93,7 +102,7 @@ function generateSkillsTable(skills: Skill[]): string {
 }
 
 /**
- * Main entry point
+ * Main entry point.
  */
 function main(): void {
   try {
@@ -117,7 +126,7 @@ function main(): void {
 }
 
 /**
- * Read AGENTS.md and extract existing content and generated section
+ * Read AGENTS.md and extract existing content and generated section.
  */
 function readAgentsFile(): {
   afterMarker: string;
@@ -151,7 +160,7 @@ function readAgentsFile(): {
 }
 
 /**
- * Read all skills from documentation/skills/
+ * Read all skills from documentation/skills/.
  */
 function readSkills(): Skill[] {
   const skills: Skill[] = [];
@@ -184,7 +193,7 @@ function readSkills(): Skill[] {
 }
 
 /**
- * Write the generated content to AGENTS.md
+ * Write the generated content to AGENTS.md.
  */
 function writeSync(skills: Skill[]): void {
   console.log("🔄 Generating skills table of contents...");
@@ -197,4 +206,6 @@ function writeSync(skills: Skill[]): void {
   console.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-agent-skills.ts")) {
+  main();
+}

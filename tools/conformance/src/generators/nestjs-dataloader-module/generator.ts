@@ -5,17 +5,20 @@ import { fileURLToPath } from "node:url";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
+import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs dataloader module options.
+ */
 interface GenerateNestjsDataloaderModuleOptions {
   name: string;
   project?: string;
 }
 
-export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
@@ -23,9 +26,6 @@ export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
 /**
  * Generates a new NestJS DataLoader module with dataloader, types, and unit test files.
  * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS DataLoader module generator
  */
 export async function generateNestjsDataloaderModule(
   tree: Tree,
@@ -45,30 +45,9 @@ export async function generateNestjsDataloaderModule(
     subject: "Module name",
   });
 
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const directory = path.join(projectRoot, "src", "modules");
-
-  if (!tree.exists(directory)) {
-    throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  const targetPath = path.join(directory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
+  const modulesDirectory = resolveProjectRoot(tree, projectName);
+  const targetPath = path.join(modulesDirectory, nameKebabCase);
+  const substitutions = buildSubstitutions(nameKebabCase);
 
   generateFiles({
     instanceDirectoryPath: targetPath,
@@ -81,10 +60,57 @@ export async function generateNestjsDataloaderModule(
     .children(targetPath)
     .map((file) => path.join(targetPath, file));
 
+  return buildGeneratorCallback(generatedFiles);
+}
+
+/**
+ * Build generator callback.
+ */
+function buildGeneratorCallback(generatedFiles: string[]): GeneratorCallback {
   return () => {
     execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
       cwd: workspaceRoot,
       stdio: "inherit",
     });
   };
+}
+
+/**
+ * Build substitutions.
+ */
+function buildSubstitutions(nameKebabCase: string): {
+  nameCamelCase: string;
+  nameKebabCase: string;
+  namePascalCase: string;
+} {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
+
+/**
+ * Resolve project root.
+ */
+function resolveProjectRoot(tree: Tree, projectName: string): string {
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+
+  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
+
+  if (!tree.exists(modulesDirectory)) {
+    throw new Error(
+      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
+    );
+  }
+
+  return modulesDirectory;
 }

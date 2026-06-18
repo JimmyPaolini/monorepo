@@ -1,10 +1,16 @@
-import baseConfig from "../../configuration/eslint.config.base.ts";
+import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🛠️ Base Config
   ...baseConfig,
+
+  // 🚫 Project Ignores
+  // Exclude large ingested data files
   {
     ignores: ["data/**"],
   },
+
+  // 📦 Dependency Checks
   {
     files: ["**/*.json"],
     rules: {

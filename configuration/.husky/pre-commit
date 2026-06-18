@@ -1,3 +1,6 @@
+HOOK_TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S %z')
+printf '[%s] pre-commit\n' "$HOOK_TIMESTAMP"
+
 set -e
 
 git restore --staged notepads/notepad.ts || true
@@ -17,6 +20,6 @@ LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.log \
   | perl -0777 -pe 's/\n{3,}/\n\n/g')
 
 printf "%s\n" "$LAST_LINT_STAGED_OUTPUT"
-printf "%s\n" "$LAST_LINT_STAGED_OUTPUT" > last-lint-staged-output.log
+printf '[%s] pre-commit\n%s\n' "$HOOK_TIMESTAMP" "$LAST_LINT_STAGED_OUTPUT" > last-lint-staged-output.log
 
 exit "$EXIT_CODE"

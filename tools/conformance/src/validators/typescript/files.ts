@@ -33,75 +33,15 @@ export function stringifyConformanceErrors(
   const directoriesWithErrors = results.filter((result) =>
     result.results.some((fileResult) => fileResult.errors.length > 0),
   );
-
   if (directoriesWithErrors.length === 0) return null;
 
-  const lines: string[] = [];
-
-  const directoryCount = directoriesWithErrors.length;
-  lines.push(
-    `Conformance validation failed — ${String(directoryCount)} director${directoryCount === 1 ? "y" : "ies"} with errors.`,
+  const count = directoriesWithErrors.length;
+  const header = `Conformance validation failed — ${String(count)} director${count === 1 ? "y" : "ies"} with errors.`;
+  const body = directoriesWithErrors.flatMap(
+    ({ directoryName, results: fileResults }, index) =>
+      formatDirectoryLines(directoryName, fileResults, index),
   );
-
-  directoriesWithErrors.forEach(
-    ({ directoryName, results: fileResults }, directoryIndex) => {
-      const failingFiles = fileResults.filter((r) => r.errors.length > 0);
-
-      lines.push(
-        "",
-        `${String(directoryIndex + 1)}. directory: ${directoryName}`,
-      );
-
-      failingFiles.forEach((fileResult, fileIndex) => {
-        lines.push(
-          "",
-          `  ${String(fileIndex + 1)}. file: ${fileResult.filename}`,
-          `     Instance: ${path.relative(workspaceRoot, fileResult.instanceFilePath)}`,
-          `     Template: ${path.relative(workspaceRoot, fileResult.templateFilePath)}`,
-        );
-
-        fileResult.errors.forEach((error, index) => {
-          lines.push("", `     ${String(index + 1)}. ${error.message}`);
-
-          // Instance location
-          if (error.instanceLine !== undefined) {
-            const col =
-              error.instanceColumn === undefined
-                ? ""
-                : `, Column ${String(error.instanceColumn)}`;
-            lines.push(
-              `        Instance: Line ${String(error.instanceLine)}${col}`,
-            );
-          } else if (error.instancePath !== undefined) {
-            lines.push(`        Instance: JSON path "${error.instancePath}"`);
-          }
-
-          // Template location
-          if (error.templateLine !== undefined) {
-            const col =
-              error.templateColumn === undefined
-                ? ""
-                : `, Column ${String(error.templateColumn)}`;
-            lines.push(
-              `        Template: Line ${String(error.templateLine)}${col}`,
-            );
-          } else if (error.templatePath !== undefined) {
-            lines.push(`        Template: JSON path "${error.templatePath}"`);
-          }
-
-          if (error.expected !== undefined) {
-            lines.push(`        Expected: \`${error.expected}\``);
-          }
-          if (error.actual !== undefined) {
-            lines.push(`        Actual  : \`${error.actual}\``);
-          }
-          lines.push(`        Fix     : ${error.fix}`);
-        });
-      });
-    },
-  );
-
-  return lines.join("\n");
+  return [header, ...body].join("\n");
 }
 
 /**
@@ -119,7 +59,6 @@ export function stringifyConformanceErrors(
  * method bodies, constructor arguments, and array contents do not produce
  * false failures — only structurally required template nodes are enforced.
  *
- * @returns The instance directory's basename and one result entry per template
  * file, each carrying the resolved filename and any validation errors.
  */
 export function validateInstanceDirectory(args: {
@@ -128,38 +67,21 @@ export function validateInstanceDirectory(args: {
 }): InstanceDirectoryValidationResult {
   const { instanceDirectoryPath, templateDirectoryPath } = args;
   const name = path.basename(instanceDirectoryPath);
-
-  const data = {
-    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
-    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
-    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
-    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
-  };
+  const data = buildNameData(name);
 
   const templateFilenames = fs
     .readdirSync(templateDirectoryPath, { withFileTypes: true })
     .filter((node) => node.isFile())
     .map((node) => node.name);
 
-  const results = templateFilenames.map((templateFilename) => {
-    const instanceFilename = templateFilename.replaceAll(
-      /__(\w+)__/g,
-      (_: string, field: string) => {
-        const value = (data as Record<string, unknown>)[field];
-        return typeof value === "string" ? value : "";
-      },
-    );
-    const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
-    const templateFilePath = path.join(templateDirectoryPath, templateFilename);
-    return {
-      filename: instanceFilename,
-      ...validateInstanceFile({
-        data,
-        instanceFilePath,
-        templateFilePath,
-      }),
-    };
-  });
+  const results = templateFilenames.map((templateFilename) =>
+    resolveTemplateFile({
+      data,
+      instanceDirectoryPath,
+      templateDirectoryPath,
+      templateFilename,
+    }),
+  );
 
   return { directoryName: name, results };
 }
@@ -187,52 +109,17 @@ export function validateInstanceFile(args: {
     const template = fs.readFileSync(templateFilePath, "utf8");
     const filename = path.basename(instanceFilePath);
     const extension = filename.slice(filename.lastIndexOf("."));
-
-    let errors: ConformanceError[];
-    if (extension === ".json") {
-      ({ errors } = validateJsonConformance({
-        data,
-        filename,
-        instance,
-        template,
-      }));
-    } else if (extension === ".md") {
-      ({ errors } = validateMarkdownConformance({
-        data,
-        filename,
-        instance,
-        template,
-      }));
-    } else if (TS_EXTENSIONS.has(extension)) {
-      ({ errors } = validateTypescriptConformance({
-        data,
-        filename,
-        instance,
-        template,
-      }));
-    } else {
-      ({ errors } = validateTextConformance({
-        data,
-        filename,
-        instance,
-        template,
-      }));
-    }
-
+    const { errors } = selectValidator({
+      data,
+      extension,
+      filename,
+      instance,
+      template,
+    });
     return { errors, instanceFilePath, templateFilePath };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return {
-        errors: [
-          {
-            errorType: "file",
-            fix: `Create the file using the generator or manually based on the template at ${templateFilePath}`,
-            message: `Missing file: ${instanceFilePath}`,
-          },
-        ],
-        instanceFilePath,
-        templateFilePath,
-      };
+      return buildMissingFileError(instanceFilePath, templateFilePath);
     }
     throw error;
   }
@@ -245,10 +132,6 @@ export function validateInstanceFile(args: {
  * Intended for conformance test suites that need to check an entire
  * `src/modules/` tree (or equivalent) in one call rather than iterating
  * subdirectories manually.
- *
- * @param args - Validation arguments.
- *
- * @returns One result entry per instance subdirectory, in filesystem order.
  */
 export function validateInstancesDirectory(args: {
   excludeDirectories?: string[];
@@ -268,4 +151,190 @@ export function validateInstancesDirectory(args: {
         templateDirectoryPath,
       }),
     );
+}
+
+/**
+ * Build missing file error.
+ */
+function buildMissingFileError(
+  instanceFilePath: string,
+  templateFilePath: string,
+): {
+  errors: ConformanceError[];
+  instanceFilePath: string;
+  templateFilePath: string;
+} {
+  return {
+    errors: [
+      {
+        errorType: "file",
+        fix: `Create the file using the generator or manually based on the template at ${templateFilePath}`,
+        message: `Missing file: ${instanceFilePath}`,
+      },
+    ],
+    instanceFilePath,
+    templateFilePath,
+  };
+}
+
+/**
+ * Build name data.
+ */
+function buildNameData(name: string): Record<string, string> {
+  return {
+    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
+    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
+    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
+    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
+  };
+}
+
+/**
+ * Format directory lines.
+ */
+function formatDirectoryLines(
+  directoryName: string,
+  fileResults: InstanceDirectoryValidationResult["results"],
+  directoryIndex: number,
+): string[] {
+  const failingFiles = fileResults.filter((r) => r.errors.length > 0);
+  const header = [
+    "",
+    `${String(directoryIndex + 1)}. directory: ${directoryName}`,
+  ];
+  const fileLines = failingFiles.flatMap((fileResult, index) =>
+    formatFileResultLines(fileResult, index),
+  );
+  return [...header, ...fileLines];
+}
+
+/**
+ * Format error lines.
+ */
+function formatErrorLines(error: ConformanceError, index: number): string[] {
+  return [
+    "",
+    `     ${String(index + 1)}. ${error.message}`,
+    ...formatLocationLines({
+      column: error.instanceColumn,
+      jsonPath: error.instancePath,
+      line: error.instanceLine,
+      prefix: "Instance",
+    }),
+    ...formatLocationLines({
+      column: error.templateColumn,
+      jsonPath: error.templatePath,
+      line: error.templateLine,
+      prefix: "Template",
+    }),
+    ...(error.expected === undefined
+      ? []
+      : [`        Expected: \`${error.expected}\``]),
+    ...(error.actual === undefined
+      ? []
+      : [`        Actual  : \`${error.actual}\``]),
+    `        Fix     : ${error.fix}`,
+  ];
+}
+
+/**
+ * Format file result lines.
+ */
+function formatFileResultLines(
+  fileResult: InstanceDirectoryValidationResult["results"][number],
+  fileIndex: number,
+): string[] {
+  const header = [
+    "",
+    `  ${String(fileIndex + 1)}. file: ${fileResult.filename}`,
+    `     Instance: ${path.relative(workspaceRoot, fileResult.instanceFilePath)}`,
+    `     Template: ${path.relative(workspaceRoot, fileResult.templateFilePath)}`,
+  ];
+  const errorLines = fileResult.errors.flatMap((error, index) =>
+    formatErrorLines(error, index),
+  );
+  return [...header, ...errorLines];
+}
+
+/**
+ * Format location lines.
+ */
+function formatLocationLines(args: {
+  column: number | undefined;
+  jsonPath: string | undefined;
+  line: number | undefined;
+  prefix: string;
+}): string[] {
+  const { column, jsonPath, line, prefix } = args;
+  if (line !== undefined) {
+    const column_ = column === undefined ? "" : `, Column ${String(column)}`;
+    return [`        ${prefix}: Line ${String(line)}${column_}`];
+  }
+  if (jsonPath !== undefined) {
+    return [`        ${prefix}: JSON path "${jsonPath}"`];
+  }
+  return [];
+}
+
+/**
+ * Resolve template file.
+ */
+function resolveTemplateFile(args: {
+  data: Record<string, unknown>;
+  instanceDirectoryPath: string;
+  templateDirectoryPath: string;
+  templateFilename: string;
+}): {
+  errors: ConformanceError[];
+  filename: string;
+  instanceFilePath: string;
+  templateFilePath: string;
+} {
+  const {
+    data,
+    instanceDirectoryPath,
+    templateDirectoryPath,
+    templateFilename,
+  } = args;
+  const instanceFilename = templateFilename.replaceAll(
+    /__(\w+)__/g,
+    (_: string, field: string) => {
+      const value = data[field];
+      return typeof value === "string" ? value : "";
+    },
+  );
+  const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
+  const templateFilePath = path.join(templateDirectoryPath, templateFilename);
+  return {
+    filename: instanceFilename,
+    ...validateInstanceFile({ data, instanceFilePath, templateFilePath }),
+  };
+}
+
+/**
+ * Select validator.
+ */
+function selectValidator(args: {
+  data: Record<string, unknown>;
+  extension: string;
+  filename: string;
+  instance: string;
+  template: string;
+}): { errors: ConformanceError[] } {
+  const { data, extension, filename, instance, template } = args;
+  if (extension === ".json") {
+    return validateJsonConformance({ data, filename, instance, template });
+  }
+  if (extension === ".md") {
+    return validateMarkdownConformance({ data, filename, instance, template });
+  }
+  if (TS_EXTENSIONS.has(extension)) {
+    return validateTypescriptConformance({
+      data,
+      filename,
+      instance,
+      template,
+    });
+  }
+  return validateTextConformance({ data, filename, instance, template });
 }

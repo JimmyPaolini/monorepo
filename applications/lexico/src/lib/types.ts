@@ -1,5 +1,5 @@
 /**
- * Adjective declension forms organized by gender.
+ * Adjective/adjectival-pronoun forms grouped by grammatical gender.
  */
 export interface AdjectiveForms {
   feminine?: NounForms;
@@ -8,7 +8,7 @@ export interface AdjectiveForms {
 }
 
 /**
- * Full entry data from database (for individual entry pages).
+ * Full entry payload used by entry-detail views.
  */
 export interface EntryFull {
   etymology: null | string;
@@ -24,7 +24,7 @@ export interface EntryFull {
 }
 
 /**
- *
+ * Entry payload returned by search endpoints, including match metadata.
  */
 export interface EntrySearchResult {
   etymology: null | string;
@@ -42,7 +42,7 @@ export interface EntrySearchResult {
 }
 
 /**
- * Union type for all form structures.
+ * Union of form payload variants returned by lexical APIs.
  */
 export type Forms =
   | AdjectiveForms
@@ -51,7 +51,7 @@ export type Forms =
   | VerbForms;
 
 /**
- * Noun declension forms organized by case and number.
+ * Nominal forms grouped by case, then singular/plural.
  */
 export interface NounForms {
   ablative?: NumberGroup;
@@ -64,7 +64,7 @@ export interface NounForms {
 }
 
 /**
- * Number grouping (singular and plural).
+ * Number split for a case slot (singular vs plural spellings).
  */
 export interface NumberGroup {
   plural?: string[];
@@ -72,7 +72,7 @@ export interface NumberGroup {
 }
 
 /**
- * Part of speech classification for lexical entries.
+ * Supported part-of-speech labels emitted by lexical APIs.
  */
 export type PartOfSpeech =
   | "adjective"
@@ -88,7 +88,7 @@ export type PartOfSpeech =
   | "verb";
 
 /**
- * Principal parts of a lexical entry (e.g., nominative/genitive for nouns).
+ * Principal-part slots used across noun, adjective, and verb paradigms.
  */
 export interface PrincipalParts {
   /** Additional principal parts */
@@ -108,7 +108,7 @@ export interface PrincipalParts {
 }
 
 /**
- * Pronunciation data for both Classical and Ecclesiastical Latin.
+ * Pronunciation values keyed by tradition.
  */
 export interface Pronunciation {
   /** Classical Latin pronunciation */
@@ -118,7 +118,7 @@ export interface Pronunciation {
 }
 
 /**
- * Pronunciation data for a specific Latin dialect.
+ * IPA-like pronunciation fields for one tradition.
  */
 export interface PronunciationDialect {
   /** Phoneme representation */
@@ -130,7 +130,7 @@ export interface PronunciationDialect {
 }
 
 /**
- * Complete verb conjugation forms organized by mood, tense, voice.
+ * Verb paradigms grouped by mood and voice with finite/non-finite branches.
  */
 export interface VerbForms {
   imperative?: {
@@ -156,7 +156,7 @@ export interface VerbForms {
 }
 
 /**
- * Gerund forms by case.
+ * Gerund spellings grouped by case.
  */
 interface GerundForms {
   ablative?: string[];
@@ -166,7 +166,7 @@ interface GerundForms {
 }
 
 /**
- * Person grouping for imperative forms (second and third person only).
+ * Imperative person slots (second and third) for singular/plural.
  */
 interface ImperativePersonGroup {
   plural?: { second?: string[]; third?: string[] };
@@ -174,7 +174,7 @@ interface ImperativePersonGroup {
 }
 
 /**
- * Tense group for imperative forms.
+ * Imperative tense grouping.
  */
 interface ImperativeTenses {
   future?: ImperativePersonGroup;
@@ -182,7 +182,7 @@ interface ImperativeTenses {
 }
 
 /**
- * Infinitive forms by voice and tense.
+ * Infinitive forms grouped by voice and tense.
  */
 interface InfinitiveGroup {
   active?: { future?: string[]; perfect?: string[]; present?: string[] };
@@ -190,7 +190,7 @@ interface InfinitiveGroup {
 }
 
 /**
- * Participle forms by voice and tense.
+ * Participle forms grouped by voice and tense.
  */
 interface ParticipleGroup {
   active?: { future?: string[]; present?: string[] };
@@ -198,7 +198,7 @@ interface ParticipleGroup {
 }
 
 /**
- * Person grouping (first, second, third).
+ * Finite-verb person slots.
  */
 interface PersonGroup {
   first?: string[];
@@ -207,7 +207,7 @@ interface PersonGroup {
 }
 
 /**
- * Person-number grouping for finite verb forms.
+ * Finite-verb forms grouped by grammatical number.
  */
 interface PersonNumberGroup {
   plural?: PersonGroup;
@@ -215,7 +215,7 @@ interface PersonNumberGroup {
 }
 
 /**
- * Tense group for subjunctive forms.
+ * Subjunctive tense grouping.
  */
 interface SubjunctiveTenses {
   imperfect?: PersonNumberGroup;
@@ -225,11 +225,7 @@ interface SubjunctiveTenses {
 }
 
 /**
- * Entry search result from Supabase RPC search function.
- */
-
-/**
- * Supine forms by case.
+ * Supine spellings grouped by case.
  */
 interface SupineForms {
   ablative?: string[];
@@ -237,7 +233,7 @@ interface SupineForms {
 }
 
 /**
- * Tense group for indicative forms (active or passive voice).
+ * Indicative tense grouping for one voice.
  */
 interface TenseGroup {
   future?: PersonNumberGroup;

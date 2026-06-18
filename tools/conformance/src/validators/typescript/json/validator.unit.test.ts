@@ -38,7 +38,7 @@ describe("validateJsonConformance — structural checks", () => {
       instance,
       template,
     });
-    expectErrorWithMessage(result.errors, 'Missing required key: "version"');
+    expectErrorWithMessage(result.errors, 'Missing required value: "version"');
   });
 
   it("returns error when instance value differs from template value", () => {
@@ -91,7 +91,7 @@ describe("validateJsonConformance — structural checks", () => {
     });
     expectErrorWithMessage(
       result.errors,
-      'Missing required key: "scripts.build"',
+      'Missing required value: "scripts.build"',
     );
   });
 
@@ -107,7 +107,7 @@ describe("validateJsonConformance — structural checks", () => {
     expect(result.errors).toEqual([]);
   });
 
-  it("returns error for missing array element value change at index", () => {
+  it("returns error for missing array element", () => {
     const template = `{ "tags": ["nestjs", "typescript"] }`;
     const instance = `{ "tags": ["nestjs"] }`;
     const result = validateJsonConformance({
@@ -116,7 +116,55 @@ describe("validateJsonConformance — structural checks", () => {
       instance,
       template,
     });
-    expect(result.errors.length).toBeGreaterThan(0);
+    expectErrorWithMessage(result.errors, '"typescript"');
+  });
+
+  it("returns no errors when instance array has all template values", () => {
+    const template = `{ "tags": ["nestjs", "typescript"] }`;
+    const instance = `{ "tags": ["nestjs", "typescript"] }`;
+    const result = validateJsonConformance({
+      data: {},
+      filename: "project.json",
+      instance,
+      template,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("returns no errors when instance array has extra values beyond template", () => {
+    const template = `{ "tags": ["nestjs", "typescript"] }`;
+    const instance = `{ "tags": ["nestjs", "typescript", "extra-tag"] }`;
+    const result = validateJsonConformance({
+      data: {},
+      filename: "project.json",
+      instance,
+      template,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("returns no errors when template values appear in a different order", () => {
+    const template = `{ "tags": ["nestjs", "typescript"] }`;
+    const instance = `{ "tags": ["typescript", "nestjs"] }`;
+    const result = validateJsonConformance({
+      data: {},
+      filename: "project.json",
+      instance,
+      template,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("returns no errors when extra tags are prepended before template tags", () => {
+    const template = `{ "tags": ["framework:nestjs", "language:typescript"] }`;
+    const instance = `{ "tags": ["domain:lexico", "framework:nestjs", "language:typescript", "type:application"] }`;
+    const result = validateJsonConformance({
+      data: {},
+      filename: "project.json",
+      instance,
+      template,
+    });
+    expect(result.errors).toEqual([]);
   });
 
   it("returns no errors for empty objects", () => {
@@ -305,5 +353,134 @@ describe("validateComments", () => {
         templateText: '{\n  // TODO: placeholder\n  "a": 1\n}',
       }),
     ).toEqual([]);
+  });
+});
+
+describe("validateJsonConformance — array primitive type coverage", () => {
+  it("passes when null is present in instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "items": [null, "other"] }`,
+      template: `{ "items": [null] }`,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("fails when null is absent from instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "items": ["other"] }`,
+      template: `{ "items": [null] }`,
+    });
+    expect(result.errors.length).toBeGreaterThan(0);
+  });
+
+  it("passes when number is present in instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "codes": [200, 404] }`,
+      template: `{ "codes": [200] }`,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("fails when number is absent from instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "codes": [404] }`,
+      template: `{ "codes": [200] }`,
+    });
+    expect(result.errors.length).toBeGreaterThan(0);
+  });
+
+  it("passes when boolean true is present in instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "flags": [true, false] }`,
+      template: `{ "flags": [true] }`,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("fails when boolean true is absent from instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "flags": [false] }`,
+      template: `{ "flags": [true] }`,
+    });
+    expect(result.errors.length).toBeGreaterThan(0);
+  });
+});
+
+describe("validateJsonConformance — arrays of objects (best-match semantics)", () => {
+  it("passes when object in template array is found in instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "targets": [{ "executor": "nx:run-commands" }] }`,
+      template: `{ "targets": [{ "executor": "nx:run-commands" }] }`,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("reports missing key from closest-matching object in instance array", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "targets": [{ "executor": "nx:run-commands" }] }`,
+      template: `{ "targets": [{ "executor": "nx:run-commands", "options": {} }] }`,
+    });
+    expectErrorWithMessage(result.errors, '"targets[0].options"');
+  });
+
+  it("selects the best-matching instance object when multiple candidates exist", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{
+        "targets": [
+          { "extra": "unrelated" },
+          { "executor": "nx:run-commands" }
+        ]
+      }`,
+      template: `{ "targets": [{ "executor": "nx:run-commands", "options": {} }] }`,
+    });
+    // First object has 2 errors (missing executor + options); second has 1 error (missing options).
+    // Best-match picks the second, so only "options" is reported.
+    expect(result.errors).toHaveLength(1);
+    expect(
+      result.errors[0]?.instancePath ?? result.errors[0]?.message,
+    ).toContain("options");
+  });
+
+  it("passes when template array is empty regardless of instance array contents", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{ "items": ["a", "b", "c"] }`,
+      template: `{ "items": [] }`,
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("passes when instance array has extra objects beyond the template", () => {
+    const result = validateJsonConformance({
+      data: {},
+      filename: "x.json",
+      instance: `{
+        "targets": [
+          { "executor": "nx:run-commands" },
+          { "executor": "extra" }
+        ]
+      }`,
+      template: `{ "targets": [{ "executor": "nx:run-commands" }] }`,
+    });
+    expect(result.errors).toEqual([]);
   });
 });

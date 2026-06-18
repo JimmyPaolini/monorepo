@@ -241,6 +241,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
         await import("./modules/major-aspects/major-aspects.service");
+      const { MajorAspectEventService } =
+        await import("./modules/major-aspects/major-aspect-event.service");
+      const { MajorAspectProgressiveService } =
+        await import("./modules/major-aspects/major-aspect-progressive.service");
       const { AspectsUtilities } =
         await import("./modules/aspects/aspects.utilities");
       const { EphemerisService } =
@@ -249,11 +253,23 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const { ProgressiveUtilities } =
         await import("./modules/progressive/progressive.utilities");
       const mathService = new MathService();
+      const aspectsUtilitiesService = new AspectsUtilities(mathService);
+      const progressiveUtilitiesService = new ProgressiveUtilities(
+        new LoggerService(),
+      );
+      const majorAspectEventService = new MajorAspectEventService(
+        new LoggerService(),
+        aspectsUtilitiesService,
+      );
+      const majorAspectProgressiveService = new MajorAspectProgressiveService(
+        progressiveUtilitiesService,
+      );
       const service = new MajorAspectsService(
         new LoggerService(),
-        new AspectsUtilities(mathService),
+        aspectsUtilitiesService,
         new EphemerisService(mathService),
-        new ProgressiveUtilities(new LoggerService()),
+        majorAspectEventService,
+        majorAspectProgressiveService,
       );
 
       // Test exact aspects

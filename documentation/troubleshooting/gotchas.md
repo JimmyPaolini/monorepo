@@ -23,7 +23,7 @@ const first = items[0] ?? "default"; // ✅ Provide default value
 
 **Problem**: Type-checked ESLint rules don't work in `.js` config files.
 
-**Solution**: This is expected. See [eslint.config.base.ts](../../eslint.config.base.ts) — type-checked rules are disabled for `.js`, `.cjs`, `.mjs` files.
+**Solution**: This is expected. See [eslint.config.ts](../../configuration/eslint.config.ts) — type-checked rules are disabled for `.js`, `.cjs`, `.mjs` files.
 
 JavaScript config files (e.g., `prettier.config.js`, `vitest.config.js`) cannot use TypeScript type checking rules.
 

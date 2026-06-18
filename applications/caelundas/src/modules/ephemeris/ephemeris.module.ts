@@ -1,6 +1,12 @@
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
 
+import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
+import { EphemerisConstantsService } from "./ephemeris-constants.service";
+import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
+import { EphemerisHorizonService } from "./ephemeris-horizon.service";
+import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
+import { EphemerisTimeService } from "./ephemeris-time.service";
 import { EphemerisService } from "./ephemeris.service";
 
 /**
@@ -11,6 +17,14 @@ import { EphemerisService } from "./ephemeris.service";
   controllers: [],
   exports: [EphemerisService],
   imports: [MathModule],
-  providers: [EphemerisService],
+  providers: [
+    EphemerisTimeService,
+    EphemerisConstantsService,
+    EphemerisCoordinateService,
+    EphemerisPhenomenaService,
+    EphemerisHorizonService,
+    EphemerisAggregationService,
+    EphemerisService,
+  ],
 })
 export class EphemerisModule {}

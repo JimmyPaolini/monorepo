@@ -1,10 +1,16 @@
-import baseConfig from "../../configuration/eslint.config.base.ts";
+import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🛠️ Base Config
   ...baseConfig,
+
+  // 🚫 Project Ignores
+  // Exclude scaffold template files (these are not linted as project source)
   {
     ignores: ["**/templates/**"],
   },
+
+  // 📦 Dependency Checks
   {
     files: ["**/*.json"],
     rules: {

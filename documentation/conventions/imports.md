@@ -16,11 +16,13 @@ ESLint plugin `eslint-plugin-perfectionist` automatically sorts imports in this 
 
 **Enforced by**: ESLint rule `perfectionist/sort-imports`
 
-## No File Extensions
+## File Extensions
 
-Always omit file extensions (`.js`, `.ts`, `.tsx`) from relative imports.
+Relative imports should **not include file extensions**. The workspace uses **Bundler** module resolution, which supports extensionless imports.
 
-### ✅ Correct
+**Enforced by**: TypeScript compiler (Bundler resolution)
+
+### ✅ Correct Extension Usage
 
 ```typescript
 import { getUserProfile } from "../api/user";
@@ -31,7 +33,25 @@ import { UserCard } from "./user-card";
 
 ```typescript
 import { getUserProfile } from "../api/user.js";
-import { UserCard } from "./user-card.tsx";
+import { UserCard } from "./user-card.js";
+```
+
+## No Parent Directory Imports
+
+Avoid importing from parent directories (`../`). Use `@monorepo/*` path mappings instead.
+
+**Enforced by**: ESLint rule `import/no-relative-parent-imports` (warning)
+
+### ✅ Correct Alias Usage
+
+```typescript
+import { getUserProfile } from "@monorepo/lexico-entities";
+```
+
+### ❌ Avoid
+
+```typescript
+import { getUserProfile } from "../../packages/lexico-entities/src/user";
 ```
 
 ## Examples
@@ -67,12 +87,12 @@ import { type ApiResponse } from "./types";
 ### ❌ Incorrect Import Order
 
 ```typescript
-// WRONG: Mixed order, no grouping
+// WRONG: Mixed order, no grouping, includes .js extensions
 import { Button } from "@monorepo/lexico-components";
 import { format } from "date-fns";
-import { type User } from "./types";
+import { type User } from "./types.js";
 import { readFile } from "node:fs/promises";
-import { getUserProfile } from "../api/user";
+import { getUserProfile } from "../api/user.js";
 ```
 
 Auto-fix with:

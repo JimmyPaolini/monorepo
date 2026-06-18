@@ -6,12 +6,12 @@ import { z } from "zod";
 /**
  * Earliest supported date for ephemeris calculations, based on NASA JPL DE431 data.
  */
-export const minDate = "1900-01-01";
+export const minimumDate = "1900-01-01";
 
 /**
  * Latest supported date for ephemeris calculations, based on NASA JPL DE431 data.
  */
-export const maxDate = "2100-12-31";
+export const maximumDate = "2100-12-31";
 
 /**
  * Zod schema for raw environment variable validation.
@@ -25,7 +25,7 @@ export const maxDate = "2100-12-31";
  * - `LONGITUDE` — Observer longitude in decimal degrees (-180 to 180)
  * - `START_DATE` — Ephemeris start date in `YYYY-MM-DD` format
  * - `END_DATE` — Ephemeris end date in `YYYY-MM-DD` format
- * - `OUTPUT_DIRECTORY` — Directory path for generated calendar files (default: `./output`)
+ * - `OUTPUT_DIRECTORY` — Directory path for generated calendar files (default: `./output`).
  */
 export const environmentSchema = z.object({
   END_DATE: z
@@ -50,15 +50,15 @@ export const environmentSchema = z.object({
  * **Validation rules:**
  * 1. Latitude must be between -90 and 90
  * 2. Longitude must be between -180 and 180
- * 3. Start date must be \>= {@link minDate}
- * 4. Start date must be \<= {@link maxDate}
- * 5. End date must be \>= {@link minDate}
- * 6. End date must be \<= {@link maxDate}
- * 7. End date must be strictly after start date
+ * 3. Start date must be \>= {@link minimumDate}
+ * 4. Start date must be \<= {@link maximumDate}
+ * 5. End date must be \>= {@link minimumDate}
+ * 6. End date must be \<= {@link maximumDate}
+ * 7. End date must be strictly after start date.
  *
  * **Default values:**
  * - Location: Philadelphia, PA (39.949309°N, 75.17169°W)
- * - Date range: Previous month to next month (2-month window centered on today)
+ * - Date range: Previous month to next month (2-month window centered on today).
  *
  * @see {@link https://github.com/photostructure/tz-lookup} for timezone lookup algorithm
  * @see {@link https://zod.dev} for Zod schema documentation
@@ -92,17 +92,17 @@ export const inputSchema = z
       timezone,
     };
   })
-  .refine((data) => data.start.isSameOrAfter(moment(minDate)), {
-    message: `Start date must be on or after ${minDate}`,
+  .refine((data) => data.start.isSameOrAfter(moment(minimumDate)), {
+    message: `Start date must be on or after ${minimumDate}`,
   })
-  .refine((data) => data.start.isSameOrBefore(moment(maxDate)), {
-    message: `Start date must be on or before ${maxDate}`,
+  .refine((data) => data.start.isSameOrBefore(moment(maximumDate)), {
+    message: `Start date must be on or before ${maximumDate}`,
   })
-  .refine((data) => data.end.isSameOrAfter(moment(minDate)), {
-    message: `End date must be on or after ${minDate}`,
+  .refine((data) => data.end.isSameOrAfter(moment(minimumDate)), {
+    message: `End date must be on or after ${minimumDate}`,
   })
-  .refine((data) => data.end.isSameOrBefore(moment(maxDate)), {
-    message: `End date must be on or before ${maxDate}`,
+  .refine((data) => data.end.isSameOrBefore(moment(maximumDate)), {
+    message: `End date must be on or before ${maximumDate}`,
   })
   .refine((data) => data.end.isAfter(data.start), {
     message: "End date must be after start date",

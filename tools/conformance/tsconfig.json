@@ -5,7 +5,7 @@
     "noEmit": true
   },
   "exclude": ["**/templates/**", "dist", "node_modules"],
-  "extends": "../../configuration/tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.json",
   "include": [
     "eslint.config.ts",
     "src/**/*.ts",

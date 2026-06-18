@@ -4,23 +4,23 @@ import { fileURLToPath } from "node:url";
 import { formatFiles, type Tree } from "@nx/devkit";
 import _ from "lodash";
 
+import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
+/**
+ * Generate nestjs graphql application options.
+ */
 interface GenerateNestjsGraphqlApplicationOptions {
   name?: string;
 }
 
-export const APPLICATIONS_DIRECTORY = "applications";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
 /**
  * Generates a new NestJS GraphQL API application scaffold.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS GraphQL application
  */
 export async function generateNestjsGraphqlApplication(
   tree: Tree,

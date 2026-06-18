@@ -1,4 +1,4 @@
 # 🙈 SQLFluff Ignore
 
 # Auto-generated TypeORM migrations
-packages/lexico-entities/src/database/migrations/*.sql
+packages/lexico-entities/src/modules/database/migrations/*.sql

@@ -4,10 +4,12 @@
   "projectType": "application",
   "sourceRoot": "applications/lexico-ingestion",
   "tags": [
+    "domain:lexico",
     "framework:nest-commander",
     "framework:nestjs",
     "generator:nestjs-command-application",
-    "language:typescript"
+    "language:typescript",
+    "type:application"
   ],
   "targets": {
     "analyze-code": {},

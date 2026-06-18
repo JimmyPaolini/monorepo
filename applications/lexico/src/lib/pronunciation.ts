@@ -1,12 +1,15 @@
 import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
+/**
+ * Pronunciation result.
+ */
 interface PronunciationResult {
   audio: string;
   contentType: string;
 }
 
 /**
- * Get pronunciation audio for a Latin text
+ * Get pronunciation audio for a Latin text.
  */
 export const getPronunciation = createServerFunction({ method: "POST" })
   .validator(

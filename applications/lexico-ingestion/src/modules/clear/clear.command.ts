@@ -16,10 +16,7 @@ import {
 
 import { LoggerService } from "../logger/logger.service";
 
-interface ClearCommandOptions {
-  dictionary?: boolean;
-  literature?: boolean;
-}
+import type { ClearCommandOptions } from "./clear.types";
 
 /**
  * Clears dictionary and literature data from the database.

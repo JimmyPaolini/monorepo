@@ -1,11 +1,7 @@
 import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 /**
- * Represents a user's saved text in the library.
- */
-
-/**
- *
+ * Serialized text document owned by a user in the personal library feature.
  */
 export interface UserText {
   /** Text UUID */
@@ -19,7 +15,7 @@ export interface UserText {
 }
 
 /**
- * Get all texts for the current user
+ * Server function placeholder for listing texts in the current user's library.
  */
 export const getUserTexts = createServerFunction({ method: "GET" }).handler(
   // eslint-disable-next-line @typescript-eslint/require-await
@@ -29,7 +25,7 @@ export const getUserTexts = createServerFunction({ method: "GET" }).handler(
 );
 
 /**
- * Create a new text for the current user
+ * Server function placeholder for creating a user-owned text document.
  */
 export const createUserText = createServerFunction({ method: "POST" })
   .validator((data: { text: string; title: string }) => data)
@@ -45,7 +41,7 @@ export const createUserText = createServerFunction({ method: "POST" })
   );
 
 /**
- * Update an existing text
+ * Server function placeholder for updating an existing user text.
  */
 export const updateUserText = createServerFunction({ method: "POST" })
   .validator((data: { id: string; text: string; title: string }) => data)
@@ -57,7 +53,7 @@ export const updateUserText = createServerFunction({ method: "POST" })
   );
 
 /**
- * Delete a text
+ * Server function placeholder for deleting a user text by id.
  */
 export const deleteUserText = createServerFunction({ method: "POST" })
   .validator((data: { id: string }) => data)

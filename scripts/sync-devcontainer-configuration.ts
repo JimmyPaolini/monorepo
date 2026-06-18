@@ -5,28 +5,28 @@
  *
  * Architecture:
  *   Primary:   .devcontainer/local/devcontainer.json  — source of truth for common fields
- *   Secondary: .devcontainer/cloud/devcontainer.json  — edit Docker feature / runArgs directly
+ *   Secondary: .devcontainer/cloud/devcontainer.json  — edit Docker feature / runArgs directly.
  *
  * Both configs are edited directly for their environment-specific fields.
  * This script keeps the shared fields in sync so they only need to be maintained once.
  *
  * Synced fields (local → cloud, local wins):
  *   $schema, containerUser, customizations, forwardPorts, image, portsAttributes,
- *   postAttachCommand, postCreateCommand, remoteEnv, remoteUser, waitFor
+ *   postAttachCommand, postCreateCommand, remoteEnv, remoteUser, waitFor.
  *
  * Merged fields (local is canonical, but config-specific entries are preserved):
  *   features  — shared features synced from local; docker feature in each config is preserved
- *   remoteEnv — synced from local; MONOREPO_ENVIRONMENT preserved per-config
+ *   remoteEnv — synced from local; MONOREPO_ENVIRONMENT preserved per-config.
  *
  * Cloud-only fields (cloud is source of truth, skipped during check and sync):
- *   mounts    — only used in the cloud config; local config has no mounts
+ *   mounts    — only used in the cloud config; local config has no mounts.
  *
  * Preserved fields in cloud (cloud is source of truth):
- *   name, runArgs  (and any other top-level keys not listed above)
+ *   name, runArgs  (and any other top-level keys not listed above).
  *
  * Usage: tsx scripts/sync-devcontainer-configuration.ts [check|write]
  *   check (default): Validate that cloud has correct common fields from local, exit 1 if not
- *   write: Propagate common fields from local into cloud
+ *   write: Propagate common fields from local into cloud.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -75,6 +75,9 @@ const MODE = process.argv[2] ?? "check";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+/**
+ * Minimal shape required for devcontainer synchronization and comparison.
+ */
 interface DevcontainerConfig {
   [key: string]: unknown;
   features?: Record<string, unknown>;
@@ -84,44 +87,18 @@ interface DevcontainerConfig {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+/**
+ * Builds the expected cloud configuration by applying sync and preservation rules.
+ */
 function applySync(
   localConfig: DevcontainerConfig,
   cloudConfig: DevcontainerConfig,
 ): DevcontainerConfig {
   const mergedConfig: DevcontainerConfig = { ...cloudConfig };
 
-  // Overwrite verbatim-synced fields from local config.
-  for (const key of SYNCED_KEYS) {
-    if (key in localConfig) mergedConfig[key] = localConfig[key];
-    else Reflect.deleteProperty(mergedConfig, key);
-  }
-
-  // Preserve config-specific remoteEnv variables from cloud config.
-  const cloudRemoteEnvironment = cloudConfig["remoteEnv"] as
-    | Record<string, unknown>
-    | undefined;
-  const mergedRemoteEnvironment = mergedConfig["remoteEnv"] as
-    | Record<string, unknown>
-    | undefined;
-  if (cloudRemoteEnvironment && mergedRemoteEnvironment) {
-    for (const key of REMOTE_ENV_PRESERVED_KEYS) {
-      if (key in cloudRemoteEnvironment)
-        mergedRemoteEnvironment[key] = cloudRemoteEnvironment[key];
-    }
-  }
-
-  // Features: sync all non-docker features from local; preserve each config's docker feature.
-  const localFeatures = localConfig.features ?? {};
-  const cloudFeatures = cloudConfig.features ?? {};
-  const mergedFeatures: Record<string, unknown> = {};
-  for (const [key, value] of Object.entries(localFeatures)) {
-    if (!isDockerFeatureKey(key)) mergedFeatures[key] = value;
-  }
-  // Preserve the docker-related feature(s) from cloud config.
-  for (const [key, value] of Object.entries(cloudFeatures)) {
-    if (isDockerFeatureKey(key)) mergedFeatures[key] = value;
-  }
-  mergedConfig.features = mergedFeatures;
+  syncVerbatimFields(localConfig, mergedConfig);
+  preserveRemoteEnvironment(cloudConfig, mergedConfig);
+  syncFeatures(localConfig, cloudConfig, mergedConfig);
 
   // Cloud-only fields: restore cloud config's values so they are never modified.
   for (const key of CLOUD_ONLY_KEYS) {
@@ -132,8 +109,9 @@ function applySync(
   return mergedConfig;
 }
 
-// ─── Sync ─────────────────────────────────────────────────────────────────────
-
+/**
+ * Compares the current cloud config file against the expected synchronized config.
+ */
 function check(
   expectedConfig: DevcontainerConfig,
   cloudConfigFile: string,
@@ -152,33 +130,25 @@ function check(
     `❌ ${relativeFilePath} has common fields out of sync with local config\n`,
   );
 
-  const expectedFields = expectedConfigCopy as Record<string, unknown>;
-  const currentFields = currentConfig as Record<string, unknown>;
-  const allFieldKeys = new Set([
-    ...Object.keys(expectedFields),
-    ...Object.keys(currentFields),
-  ]);
-  for (const key of allFieldKeys) {
-    if (CLOUD_ONLY_KEYS.has(key)) continue;
-    if (!_.isEqual(expectedFields[key], currentFields[key])) {
-      console.log(`  Field '${key}' differs:`);
-      console.log(`    Expected: ${JSON.stringify(expectedFields[key])}`);
-      console.log(`    Got:      ${JSON.stringify(currentFields[key])}`);
-    }
-  }
+  reportDifferences(expectedConfigCopy, currentConfig);
+
   console.log("");
   console.log(`  Run: nx run monorepo:sync-devcontainer-configuration:write`);
   return false;
 }
 
-// ─── Check / Write ────────────────────────────────────────────────────────────
-
+/**
+ * Identifies Docker feature keys that should remain environment-specific.
+ */
 function isDockerFeatureKey(key: string): boolean {
   return (
     key.includes("docker-in-docker") || key.includes("docker-outside-of-docker")
   );
 }
 
+/**
+ * Entrypoint that runs either verification or write synchronization mode.
+ */
 function main(): void {
   const localConfig: DevcontainerConfig = JSON5.parse(
     readFileSync(LOCAL_CONFIG_FILE, "utf8"),
@@ -203,8 +173,93 @@ function main(): void {
   }
 }
 
+// ─── Sync ─────────────────────────────────────────────────────────────────────
+
+/**
+ * Restores config-specific remote environment keys after shared fields are synced.
+ */
+function preserveRemoteEnvironment(
+  cloudConfig: DevcontainerConfig,
+  mergedConfig: DevcontainerConfig,
+): void {
+  const cloudRemoteEnvironment = cloudConfig["remoteEnv"] as
+    | Record<string, unknown>
+    | undefined;
+  const mergedRemoteEnvironment = mergedConfig["remoteEnv"] as
+    | Record<string, unknown>
+    | undefined;
+
+  if (!cloudRemoteEnvironment || !mergedRemoteEnvironment) return;
+
+  for (const key of REMOTE_ENV_PRESERVED_KEYS) {
+    if (key in cloudRemoteEnvironment) {
+      mergedRemoteEnvironment[key] = cloudRemoteEnvironment[key];
+    }
+  }
+}
+
+/**
+ * Prints a per-field diff for expected versus current cloud configuration values.
+ */
+function reportDifferences(
+  expectedFields: Record<string, unknown>,
+  currentFields: Record<string, unknown>,
+): void {
+  const allFieldKeys = new Set([
+    ...Object.keys(expectedFields),
+    ...Object.keys(currentFields),
+  ]);
+  for (const key of allFieldKeys) {
+    if (CLOUD_ONLY_KEYS.has(key)) continue;
+    if (!_.isEqual(expectedFields[key], currentFields[key])) {
+      console.log(`  Field '${key}' differs:`);
+      console.log(`    Expected: ${JSON.stringify(expectedFields[key])}`);
+      console.log(`    Got:      ${JSON.stringify(currentFields[key])}`);
+    }
+  }
+}
+
+// ─── Check / Write ────────────────────────────────────────────────────────────
+
+/**
+ * Merges features by taking shared features from local and Docker features from cloud.
+ */
+function syncFeatures(
+  localConfig: DevcontainerConfig,
+  cloudConfig: DevcontainerConfig,
+  mergedConfig: DevcontainerConfig,
+): void {
+  const localFeatures = localConfig.features ?? {};
+  const cloudFeatures = cloudConfig.features ?? {};
+  const mergedFeatures: Record<string, unknown> = {};
+
+  for (const [key, value] of Object.entries(localFeatures)) {
+    if (!isDockerFeatureKey(key)) mergedFeatures[key] = value;
+  }
+  for (const [key, value] of Object.entries(cloudFeatures)) {
+    if (isDockerFeatureKey(key)) mergedFeatures[key] = value;
+  }
+  mergedConfig.features = mergedFeatures;
+}
+
+/**
+ * Copies synced top-level keys from local into the merged cloud configuration.
+ */
+function syncVerbatimFields(
+  localConfig: DevcontainerConfig,
+  mergedConfig: DevcontainerConfig,
+): void {
+  for (const key of SYNCED_KEYS) {
+    if (key in localConfig) mergedConfig[key] = localConfig[key];
+    else Reflect.deleteProperty(mergedConfig, key);
+  }
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
+/**
+ * Writes the synchronized cloud devcontainer configuration back to disk.
+ */
 function write(
   mergedConfig: DevcontainerConfig,
   cloudConfigFile: string,

@@ -5,6 +5,9 @@ import { validateComments } from "./comments";
 
 import type { ConformanceError } from "../types";
 
+/**
+ * Describes behavior.
+ */
 type JsonValue =
   | boolean
   | JsonValue[]
@@ -58,6 +61,40 @@ export function validateJsonConformance(args: {
 }
 
 /**
+ * Build mismatch error.
+ */
+function buildMismatchError(
+  path: string,
+  template: JsonValue,
+  instance: JsonValue,
+): ConformanceError {
+  return {
+    actual: JSON.stringify(instance),
+    errorType: "code",
+    expected: JSON.stringify(template),
+    fix: `Change the value at "${path}" in the instance file to ${JSON.stringify(template)}.`,
+    instancePath: path,
+    language: "json",
+    message: `Key "${path}": expected ${JSON.stringify(template)}, got ${JSON.stringify(instance)}`,
+    templatePath: path,
+  };
+}
+
+/**
+ * Build missing error.
+ */
+function buildMissingError(itemPath: string): ConformanceError {
+  return {
+    errorType: "code",
+    fix: `Add the missing value at "${itemPath}" to the instance file.`,
+    instancePath: itemPath,
+    language: "json",
+    message: `Missing required value: "${itemPath}"`,
+    templatePath: itemPath,
+  };
+}
+
+/**
  * Formats a path array as a readable string (e.g. `["a", "b", 0]` → `"a.b[0]"`).
  */
 function formatPath(path: (number | string)[]): string {
@@ -68,14 +105,28 @@ function formatPath(path: (number | string)[]): string {
   }, "");
 }
 
+/**
+ * Is json object.
+ */
 function isJsonObject(value: JsonValue): value is Record<string, JsonValue> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
 /**
+ * Is json primitive.
+ */
+function isJsonPrimitive(
+  value: JsonValue,
+): value is boolean | null | number | string {
+  return value === null || typeof value !== "object";
+}
+
+/**
  * Recursively compares `template` against `instance`, returning structured
  * `ConformanceError` objects for any missing keys or mismatched values. Extra
- * keys in the instance are silently allowed (superset semantics).
+ * keys in the instance are silently allowed (superset semantics). Arrays use
+ * membership semantics: every template item must appear in the instance, but
+ * order and extra items are allowed.
  */
 function validateDepthFirstSearch(
   template: JsonValue,
@@ -83,63 +134,64 @@ function validateDepthFirstSearch(
   path: (number | string)[] = [],
 ): ConformanceError[] {
   if (Array.isArray(template) && Array.isArray(instance)) {
-    return template.flatMap((item, index) => {
-      const itemPath = formatPath([...path, index]);
-      return index >= instance.length
-        ? [
-            {
-              errorType: "code" as const,
-              fix: `Add the missing array element at index ${String(index)} (path: "${itemPath}") to the instance file.`,
-              instancePath: itemPath,
-              language: "json" as const,
-              message: `Missing required key: "${itemPath}"`,
-              templatePath: itemPath,
-            },
-          ]
-        : validateDepthFirstSearch(item, instance[index] ?? null, [
-            ...path,
-            index,
-          ]);
-    });
+    return validateJsonArrays(template, instance, path);
   }
 
   if (isJsonObject(template) && isJsonObject(instance)) {
-    return Object.keys(template).flatMap((key) => {
-      const keyPath = formatPath([...path, key]);
-      return key in instance
-        ? validateDepthFirstSearch(
-            template[key] ?? null,
-            instance[key] ?? null,
-            [...path, key],
-          )
-        : [
-            {
-              errorType: "code" as const,
-              fix: `Add the missing key "${keyPath}" to the instance file.`,
-              instancePath: keyPath,
-              language: "json" as const,
-              message: `Missing required key: "${keyPath}"`,
-              templatePath: keyPath,
-            },
-          ];
-    });
+    return validateJsonObjects(template, instance, path);
   }
 
   if (template !== instance) {
-    const currentPath = formatPath(path);
-    return [
-      {
-        actual: JSON.stringify(instance),
-        errorType: "code" as const,
-        expected: JSON.stringify(template),
-        fix: `Change the value at "${currentPath}" in the instance file to ${JSON.stringify(template)}.`,
-        instancePath: currentPath,
-        language: "json" as const,
-        message: `Key "${currentPath}": expected ${JSON.stringify(template)}, got ${JSON.stringify(instance)}`,
-        templatePath: currentPath,
-      },
-    ];
+    return [buildMismatchError(formatPath(path), template, instance)];
   }
 
   return [];
+}
+
+/**
+ * Validate json arrays.
+ */
+function validateJsonArrays(
+  template: JsonValue[],
+  instance: JsonValue[],
+  path: (number | string)[],
+): ConformanceError[] {
+  return template.flatMap((templateItem) => {
+    const p = formatPath(path);
+    if (isJsonPrimitive(templateItem)) {
+      return instance.includes(templateItem)
+        ? []
+        : [buildMissingError(`${p}[${JSON.stringify(templateItem)}]`)];
+    }
+    // For objects/arrays, find an instance element with the fewest errors
+    if (instance.length === 0) {
+      return [buildMissingError(p)];
+    }
+    const candidateErrors = instance.map((instanceItem, index) =>
+      validateDepthFirstSearch(templateItem, instanceItem, [...path, index]),
+    );
+    const best = candidateErrors.reduce((minimum, current) =>
+      current.length < minimum.length ? current : minimum,
+    );
+    return best;
+  });
+}
+
+/**
+ * Validate json objects.
+ */
+function validateJsonObjects(
+  template: Record<string, JsonValue>,
+  instance: Record<string, JsonValue>,
+  path: (number | string)[],
+): ConformanceError[] {
+  return Object.keys(template).flatMap((key) => {
+    const p = formatPath([...path, key]);
+    return key in instance
+      ? validateDepthFirstSearch(template[key] ?? null, instance[key] ?? null, [
+          ...path,
+          key,
+        ])
+      : [buildMissingError(p)];
+  });
 }

@@ -1,6 +1,18 @@
 import _ from "lodash";
 
-import { StringCase, type StringCaseValue } from "./types.js";
+import { StringCase, type StringCaseValue } from "./types";
+
+export const APPLICATIONS_DIRECTORY = "applications";
+export const MODULES_DIRECTORY = "src/modules";
+const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
+const MODULES_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**/${MODULES_DIRECTORY}/**`;
+const APPLICATIONS_INSTANCE_PATTERN = `${APPLICATIONS_DIRECTORY}/**`;
+
+export const CONFORMANCE_PATTERNS = [
+  TEMPLATE_PATTERN,
+  MODULES_INSTANCE_PATTERN,
+  APPLICATIONS_INSTANCE_PATTERN,
+] as const;
 
 /** Maps each StringCaseValue to its human-readable display name. */
 export const humanReadableStringCase: Record<StringCaseValue, string> = {

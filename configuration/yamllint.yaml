@@ -33,7 +33,7 @@ rules:
     level: warning # Warning only to match ESLint behavior
 
   quoted-strings:
-    quote-type: double # Matches yml/quotes in eslint.config.base.ts
+    quote-type: double # Matches yml/quotes in eslint.config.ts
     required: only-when-needed
 
   comments-indentation: enable
