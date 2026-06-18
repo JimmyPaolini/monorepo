@@ -1,70 +1,69 @@
-# Lexico: Latin Dictionary Web Application
+# Lexico: TanStack Start SSR Application
 
 ## Quick Start
 
-**Type**: SSR web app (TanStack Start)
+**Type**: SSR web application (React 19 + TanStack Start)
 
-**Purpose**: Latin word lookup with authentication, bookmarks, and personal library
+**Purpose**: Provide a Latin dictionary user interface backed by TanStack Start
+routes and shared UI components.
 
 ### Run Locally
 
 ```bash
-nx run lexico:develop
+pnpm nx run lexico:develop
 ```
 
 ## Architecture Overview
 
 ### Tech Stack
 
-- **Frontend**: React 19, TanStack Router (file-based routing)
-- **SSR**: TanStack Start server functions
-- **Styling**: Tailwind CSS, shadcn/ui via [@monorepo/lexico-components](../../packages/lexico-components)
+- **Framework**: TanStack Start + TanStack Router
+- **UI**: `@monorepo/lexico-components`
+- **Styling**: Tailwind CSS 4
+- **Language**: Strict TypeScript
 
-### File-Based Routes
+### Current Application Surface
 
-```text
-routes/
-├── __root.tsx              # Root layout (HTML shell, providers)
-├── index.tsx               # /
-├── search.tsx              # /search
-├── word.$id.tsx            # /word/:id
-├── bookmarks.tsx           # /bookmarks (auth)
-├── library.tsx             # /library (auth)
-└── settings.tsx            # /settings (auth)
+- `src/routes/search.tsx` — dictionary search UI
+- `src/routes/word.$id.tsx` — entry detail route
+- `src/routes/bookmarks.tsx`, `library.tsx`, `settings.tsx`, `tools.tsx` —
+  supporting routes and placeholders
+- `src/lib/search.ts` — search server functions
+- `src/lib/auth.ts`, `bookmarks.ts`, `library.ts`, `pronunciation.ts` —
+  placeholder server-function contracts for future backend integration
+
+## Development
+
+### Key Commands
+
+```bash
+pnpm nx run lexico:develop
+pnpm nx run lexico:build
+pnpm nx run lexico:preview
+pnpm nx run lexico:start
+pnpm nx run lexico:lint
+pnpm nx run lexico:typecheck
+pnpm nx run lexico:bundlesize
+pnpm nx run lexico:analyze-code --configuration=check
 ```
 
-Generated route tree: [src/routeTree.gen.ts](src/routeTree.gen.ts) (auto-generated, never edit)
+### Important Constraints
 
-### Authentication Flow
-
-```text
-User → OAuth Provider → Server Cookie
-```
-
-- **Auth helpers**: [src/lib/auth.ts](src/lib/auth.ts)
-- **Route guards**: TanStack Router `beforeLoad`
-
-See [tanstack-start-ssr skill](../../documentation/skills/tanstack-start-ssr/SKILL.md) for SSR patterns.
-
-## Component Library Integration
-
-Always import shared UI from `@monorepo/lexico-components` and never duplicate UI code.
-
-```tsx
-import { Button, Card, Input } from "@monorepo/lexico-components";
-```
-
-See [React Conventions](../../documentation/conventions/react.md) and [lexico-components AGENTS](../../packages/lexico-components/AGENTS.md).
-
-## Testing
-
-See [Testing Strategy](../../documentation/code-quality/testing-strategy.md) for unit/integration/E2E patterns.
-
-## Troubleshooting
-
-See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for TypeScript and Docker issues.
+- The current project configuration does **not** include any Supabase Nx
+  targets.
+- Documentation or code changes should describe the checked-in placeholder
+  server functions accurately; do not document production auth, bookmarks, or
+  pronunciation behavior as implemented when the handlers still return stubs.
+- Keep all shared UI in `@monorepo/lexico-components` instead of duplicating
+  components locally.
 
 ## Key Files
 
-- [src/routes/](src/routes/): File-based routes
-- [src/lib/auth.ts](src/lib/auth.ts): Auth helpers
+- `src/router.tsx` — router entrypoint
+- `src/routeTree.gen.ts` — generated route tree
+- `src/routes/` — file-based routes
+- `src/lib/search.ts` — search contract
+- `src/lib/auth.ts` — auth contract
+- `src/lib/bookmarks.ts` — bookmark contract
+- `src/lib/library.ts` — personal library contract
+- `src/lib/pronunciation.ts` — pronunciation contract

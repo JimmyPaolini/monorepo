@@ -34,7 +34,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[commit-code](documentation/skills/commit-code/SKILL.md)**: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
 - **[create-pull-request](documentation/skills/create-pull-request/SKILL.md)**: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
 - **[docker-workflows](documentation/skills/docker-workflows/SKILL.md)**: Build and deploy Docker images in the monorepo - platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
-- **[ephemeris-pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)**: Understand the caelundas ephemeris calculation pipeline - NASA JPL API integration, astronomical event detection, and calendar generation. Use this skill when working on caelundas.
+- **[ephemeris-pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)**: Understand the caelundas ephemeris calculation pipeline - Swiss Ephemeris integration, astronomical event detection, and calendar generation. Use this skill when working on caelundas.
 - **[error-handling-patterns](documentation/skills/error-handling-patterns/SKILL.md)**: Apply monorepo error handling patterns: Zod validation at boundaries, typed errors, early returns, and retry/backoff. Use when implementing error handling or input validation.
 - **[github-actions](documentation/skills/github-actions/SKILL.md)**: Build and test GitHub Actions workflows in this monorepo. Covers the composite action pattern and workflow templates. Use this skill when creating, modifying, or testing GitHub Actions workflows.
 - **[imports-conventions](documentation/skills/imports-conventions/SKILL.md)**: Import organization conventions for TypeScript in this monorepo. Use when writing or reviewing imports, when ESLint reports import order errors, when asked about monorepo path aliases, type-only imports, or named vs default exports. Covers auto-sorted import order, Bundler extensionless imports, relative parent import avoidance, and the monorepo namespace.
@@ -72,12 +72,12 @@ Specialized domain knowledge for working on specific systems or patterns:
 ## Projects
 
 - **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama gemma4:e2b, ReAct agent, SearxNG metasearch with Trafilatura research processing)
-- **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API)
-- **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start)
+- **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (Swiss Ephemeris)
+- **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start) with placeholder backend contracts
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
-- **lexico-ingestion**: NestJS CLI app for Latin dictionary data ingestion
-- **lexico-entities**: Shared TypeORM entities and GraphQL types package
-- **JimmyPaolini**: Portfolio website
+- **[lexico-ingestion](applications/lexico-ingestion/AGENTS.md)**: NestJS CLI app for Latin dictionary and literature ingestion
+- **[lexico-entities](packages/lexico-entities/AGENTS.md)**: Shared TypeORM entities and database helpers for Lexico projects
+- **JimmyPaolini**: Git submodule for the profile website at `applications/JimmyPaolini`
 - **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
 - **[conformance](tools/conformance/AGENTS.md)**: Nx generators for scaffolding code
 
@@ -242,7 +242,7 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | ----- | ----------- |
 | `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
 | `applications` | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
-| `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
+| `caelundas` | Node.js CLI for astronomical calendar generation (Swiss Ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
 | `conformance` | Code generator templates and conformance validation tests for generated instances |
 | `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
@@ -372,7 +372,7 @@ pnpm add -w <package>                  # Workspace root
 ### Running Tasks
 
 ```bash
-nx run caelundas:develop               # Single project
+nx run caelundas:start                 # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
 ```

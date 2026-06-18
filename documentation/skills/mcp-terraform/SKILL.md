@@ -745,8 +745,8 @@ mcp_terraform_force_unlock({
 
 ## Related Documentation
 
-- [infrastructure/AGENTS.md](../../infrastructure/AGENTS.md) - Infrastructure architecture
-- [infrastructure/README.md](../../infrastructure/README.md) - Infrastructure overview
+- [infrastructure/AGENTS.md](../../../infrastructure/AGENTS.md) - Infrastructure architecture
+- [infrastructure/README.md](../../../infrastructure/README.md) - Infrastructure overview
 - [kubernetes-deployment skill](../kubernetes-deployment/SKILL.md) - K8s patterns
 - [Terraform Documentation](https://www.terraform.io/docs) - Official Terraform docs
 

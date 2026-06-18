@@ -68,11 +68,11 @@ These operate on external systems (container registry, cluster state, database c
 When an Nx target exists, prefer it for consistency:
 
 ```bash
-nx run caelundas:docker-build
-nx run lexico:supabase:start
+pnpm nx run caelundas:start
+docker build --platform linux/amd64 -t myapp .
 ```
 
-These targets still invoke the underlying CLI, but centralize configuration.
+When an Nx target exists, it centralizes workspace-specific configuration. Use the direct CLI when no Nx wrapper exists.
 
 ## Decision Flow
 

@@ -117,7 +117,7 @@ The devcontainer handles equivalent setup automatically.
 
 **What it does:**
 
-- Creates `.env` from `.env.default` for root, lexico, and caelundas (if not already present)
+- Creates `.env` from `.env.default` for any project that currently ships one (root and caelundas in this repository)
 - Appends `LOCAL_WORKSPACE_FOLDER=$(pwd)` to root `.env` for docker-compose volume mounts
 - Sources `.env` file and exports environment variables
 
@@ -471,7 +471,7 @@ git clone https://github.com/JimmyPaolini/monorepo.git
 cd monorepo
 
 # 2. Create .env file
-cp .env.example .env
+cp .env.default .env
 # Edit .env with your values
 
 # 3. Run setup
@@ -594,7 +594,7 @@ ls -la .env
 Create from example if missing:
 
 ```bash
-cp .env.example .env
+cp .env.default .env
 ```
 
 Source utilities to load environment:

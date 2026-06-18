@@ -55,7 +55,7 @@ This skill teaches how to name Git branches for this monorepo. All branch names 
 | ----- | ----------- |
 | `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
 | `applications` | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
-| `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
+| `caelundas` | Node.js CLI for astronomical calendar generation (Swiss Ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
 | `conformance` | Code generator templates and conformance validation tests for generated instances |
 | `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
