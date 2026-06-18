@@ -1,11 +1,25 @@
 ---
-agent: "agent"
-description: "Read an existing implementation plan, explore the codebase to assess progress, and update the plan to reflect reality."
-model: "Claude Sonnet 4.6 (copilot)"
-name: "update-plan"
-argument-hint: "Path to the plan file to update (e.g. documentation/planning/2026-03-09-feature-lexico-auth-1.plan.md)"
-tools:
-  [vscode/askQuestions, read, agent, edit/editFiles, search, "nx-mcp-server/*"]
+name: update-plan
+description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
+user-invocable: true
+argument-hint: "Provide the plan file path and any focus area to audit first."
+disable-model-invocation: true
+compatibility:
+	environments:
+		- vscode
+		- github-copilot
+		- copilot-cli
+context:
+	requires:
+		- documentation/planning/**/*.plan.md
+	optional:
+		- AGENTS.md
+		- nx.json
+metadata:
+	domain: planning
+	lifecycle-stage: update
+	owner: monorepo
+license: MIT
 ---
 
 # Update Implementation Plan
@@ -15,8 +29,6 @@ You are a senior software architect and technical auditor with deep knowledge of
 Your goal is to update the implementation plan at: **`${input:PlanFile:documentation/planning/YYYY-MM-DD-type-scope-N.plan.md}`**
 
 Execute the following four phases in strict order. Do not skip any phase.
-
----
 
 ## Phase 1 — Load & Understand the Plan
 
@@ -41,8 +53,6 @@ Partition all tasks into three buckets:
 | `Pending`   | No checkmark — requires codebase verification                                |
 | `Uncertain` | Has ✅ but also a "Known Bug" or "will fail" note — requires re-verification |
 
----
-
 ## Phase 2 — Codebase Investigation
 
 **Launch a `runSubagent` sub-agent** to investigate the codebase against every pending and uncertain task. This sub-agent must not modify any files — only observe and report.
@@ -51,24 +61,24 @@ Use this as the sub-agent prompt:
 
 > You are a codebase auditor. Your task is to verify which tasks from an implementation plan have been completed in the codebase, and to describe exactly how each task was implemented — including any differences from the plan. Do NOT modify any files.
 >
-> Plan: **[insert plan name]**
-> Plan file: **[insert plan file path]**
+> Plan: **{plan name}**
+> Plan file: **{plan file path}**
 >
 > **Pending & Uncertain Tasks to verify:**
-> [Insert each TASK-XXX identifier, its description, and any "Known Bug" notes verbatim]
+> {insert each TASK-XXX identifier, its description, and any "Known Bug" notes verbatim}
 >
 > **Expected files (FILE-XXX):**
-> [Insert each FILE-XXX entry verbatim]
+> {insert each FILE-XXX entry verbatim}
 >
 > **Requirements these tasks must satisfy (REQ-, CON-, GUD-, PAT-):**
-> [Insert all requirements verbatim]
+> {insert all requirements verbatim}
 >
 > **Investigation steps:**
 >
 > 1. For each FILE-XXX entry: check whether the file exists at the specified path. If it exists, read enough content to assess correctness (functions present, class structure, key logic).
 > 2. For each pending TASK-XXX: search the codebase for evidence that the task was implemented — look for the specific function names, class names, state keys, node names, and file paths mentioned in the task description.
 > 3. For each uncertain TASK-XXX (has ✅ but also has a known bug note): verify whether the known bug has been fixed or remains unresolved.
-> 4. Check test files for any tests marked as failing or skipped (look for `pytest.mark.skip`, `// @ts-ignore`, `xtest`, `xit`, `it.skip`, comments like "will fail").
+> 4. Check test files for any tests marked as failing or skipped (look for `pytest.mark.skip`, `// @ts-ignore`, `test`, `it`, `it.skip`, comments like "will fail").
 > 5. For each TASK-XXX, produce a verdict:
 >    - `IMPLEMENTED` — The task is complete and matches the description
 >    - `IMPLEMENTED_DIFFERENTLY` — The task is done but the implementation differs from the plan in a material way. Describe exactly what was built (names, structure, approach) so the plan description can be rewritten to match.
@@ -79,13 +89,13 @@ Use this as the sub-agent prompt:
 >
 > **Return a structured report:**
 >
-> ```
+```text
 > ## Task Verdicts
 >
 > | Task     | Verdict                  | Evidence / Notes                              |
 > | -------- | ------------------------ | --------------------------------------------- |
 > | TASK-XXX | IMPLEMENTED              | Found in src/foo.py lines 10–30               |
-> | TASK-XXX | IMPLEMENTED_DIFFERENTLY  | Plan said `bar()` but code has `baz()` — [full description of actual implementation] |
+> | TASK-XXX | IMPLEMENTED_DIFFERENTLY  | Plan said `bar()` but code has `baz()` — {full description of actual implementation} |
 > | TASK-XXX | NOT_IMPLEMENTED          | No matching file or function found            |
 > | TASK-XXX | BUG_UNRESOLVED           | content.strip(re) still present in output.py  |
 >
@@ -104,7 +114,7 @@ Use this as the sub-agent prompt:
 >
 > ## New Files Not in Plan
 >
-> - [List any files relevant to plan tasks that exist in the codebase but were not listed in FILE-XXX entries]
+> - {list any files relevant to plan tasks that exist in the codebase but were not listed in FILE-XXX entries}
 >
 > ## Open Items
 >
@@ -112,8 +122,6 @@ Use this as the sub-agent prompt:
 > ```
 
 After the sub-agent returns, review its report. If any verdicts are ambiguous or the sub-agent flagged open items, do targeted file reads yourself to resolve them before proceeding.
-
----
 
 ## Phase 3 — Determine Overall Plan Status
 
@@ -125,8 +133,6 @@ Using the task verdicts and bug/file reports from Phase 2, determine the new pla
 | At least one task is `NOT_IMPLEMENTED` or `PARTIALLY_IMPLEMENTED`       | `In progress` |
 | No tasks have been implemented yet                                      | `Planned`     |
 | Plan was previously marked `Completed` but bugs remain `BUG_UNRESOLVED` | `In progress` |
-
----
 
 ## Phase 4 — Write the Updated Plan
 
@@ -204,29 +210,27 @@ In the `## 5. Files` section (or equivalent), for each FILE-XXX entry:
 - Do NOT modify requirements, constraints, alternatives, or dependencies sections unless a specific task verdict requires it
 - Do NOT reorder, merge, or restructure sections — follow the plan's existing layout exactly
 
----
-
 ## Output Summary
 
 After writing the updated plan, produce a brief summary in chat:
 
-```
+```text
 ## Plan Update Summary
 
-**Plan**: [plan name]
-**File**: [plan file path]
-**Previous Status**: [old status]  →  **New Status**: [new status]
+**Plan**: {plan name}
+**File**: {plan file path}
+**Previous Status**: {old status} →  **New Status**: {new status}
 
 ### Tasks Updated
 - ✅ Marked complete: TASK-XXX, TASK-XXX
-- ✏️ Description updated to match implementation: TASK-XXX ([one-line summary of change])
+- ✏️ Description updated to match implementation: TASK-XXX ({one-line summary of change})
 - 🐛 Bug resolved: TASK-XXX
 - 🐛 Bug still open: TASK-XXX
 - ⬜ Still pending: TASK-XXX, TASK-XXX
 
 ### Files Added
-- FILE-NNN: [path] (new, not in original plan)
+- FILE-NNN: {path} (new, not in original plan)
 
 ### Remaining Work
-[Bullet list of pending tasks by phase, or "None — plan is complete."]
+{bullet list of pending tasks by phase, or "None — plan is complete."}
 ```

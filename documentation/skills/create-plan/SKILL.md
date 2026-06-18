@@ -1,21 +1,25 @@
 ---
-agent: "agent"
-description: "Create an implementation plan file for new features, fixes, or refactors."
-model: "Claude Sonnet 4.6 (copilot)"
-name: "create-plan"
-argument-hint: "Outline the outcome to achieve"
-tools:
-  [
-    vscode/askQuestions,
-    vscode/memory,
-    read,
-    agent,
-    edit/createFile,
-    edit/editFiles,
-    search,
-    web,
-    "context7/*",
-  ]
+name: create-plan
+description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
+user-invocable: true
+argument-hint: "Describe the plan purpose, scope boundaries, and key constraints."
+disable-model-invocation: true
+compatibility:
+   environments:
+      - vscode
+      - github-copilot
+      - copilot-cli
+context:
+   requires:
+      - documentation/planning/**/*.plan.md
+   optional:
+      - AGENTS.md
+      - nx.json
+metadata:
+   domain: planning
+   lifecycle-stage: create
+   owner: monorepo
+license: MIT
 ---
 
 # Create Implementation Plan
@@ -25,8 +29,6 @@ You are a senior software architect and technical planning expert with deep know
 Your goal is to create a new implementation plan file for: **`${input:PlanPurpose}`**
 
 Execute the following four phases in strict order. Do not skip any phase.
-
----
 
 ## Phase 1 — Discovery: Research
 
@@ -83,8 +85,6 @@ Use this as the external research sub-agent prompt:
 
 After both sub-agents return, review their research summaries before proceeding to Phase 2.
 
----
-
 ## Phase 2 — Alignment: Clarifying Questions
 
 **Use `#tool:vscode/askQuestions` to ask the user 2–4 focused clarifying questions** before writing the plan. Batch all questions into a single call. Provide sensible defaults or suggestions wherever possible so users can confirm quickly.
@@ -99,8 +99,6 @@ Questions must address:
 Do not ask questions whose answers are already determinable from the codebase research. Do not ask more than 4 questions per round.
 
 After receiving answers, proceed to Phase 3.
-
----
 
 ## Phase 3 — Design: Plan Generation
 
@@ -134,20 +132,16 @@ Synthesize research findings from Phase 1 and user answers from Phase 2 into the
 
 The status of a new plan is always `Planned`.
 
----
-
 ## Plan Output Template
 
 Populate every section of this template. No section may be omitted or left as placeholder text.
 
 ```md
----
 name: [Concise Title Describing the Package Implementation Plan's Goal]
 description: [Short description of the plan's purpose]
 created: [YYYY-MM-DDTHH:MM:SSZ]
 updated: [YYYY-MM-DDTHH:MM:SSZ]
 status: 'Completed'|'In progress'|'Planned'
----
 
 # Introduction
 
@@ -228,8 +222,6 @@ status: 'Completed'|'In progress'|'Planned'
 [Link to related spec 1]
 [Link to relevant external documentation]
 ```
-
----
 
 ## Phase 4 — Iteration: Plan Updates
 
