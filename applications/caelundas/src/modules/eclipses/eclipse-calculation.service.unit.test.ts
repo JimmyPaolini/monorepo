@@ -276,4 +276,355 @@ describe("EclipseCalculationService", () => {
       expect(events.length).toBeGreaterThan(0);
     });
   });
+
+  describe("delegation helpers", () => {
+    it("delegates eclipse coordinate sampling and topocentric activity", () => {
+      const coordinates = {
+        currentCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 100,
+          longitudeSun: 100,
+        },
+        nextCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 101,
+          longitudeSun: 100,
+        },
+        previousCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 99,
+          longitudeSun: 100,
+        },
+      };
+      vi.spyOn(geometryService, "getAllEclipseCoordinates").mockReturnValue(
+        coordinates as never,
+      );
+      vi.spyOn(topocentricService, "isLunarTopocentricActive").mockReturnValue(
+        true,
+      );
+      vi.spyOn(topocentricService, "isSolarTopocentricActive").mockReturnValue(
+        false,
+      );
+
+      expect(
+        service.getAllEclipseCoordinates({
+          minute: moment.utc("2024-04-08T18:00:00.000Z"),
+          moonCoordinateEphemeris: {},
+          moonDiameterEphemeris: {},
+          sunCoordinateEphemeris: {},
+          sunDiameterEphemeris: {},
+        }),
+      ).toEqual(coordinates);
+      expect(geometryService.getAllEclipseCoordinates).toHaveBeenCalled();
+
+      expect(service.isLunarTopocentricActive(coordinates.currentCoordinates, true)).toBe(
+        true,
+      );
+      expect(service.isSolarTopocentricActive(coordinates.currentCoordinates, true)).toBe(
+        false,
+      );
+    });
+  });
+
+  describe("branch coverage", () => {
+    const mockedGeometryService = {
+      getEclipseAngles: vi.fn(),
+      getAllEclipseCoordinates: vi.fn(),
+    };
+    const mockedTopocentricService = {
+      getTopocentricEvents: vi.fn(),
+      isLunarEclipseActive: vi.fn(),
+      isLunarTopocentricActive: vi.fn(),
+      isSolarEclipseActive: vi.fn(),
+      isSolarTopocentricActive: vi.fn(),
+    };
+    const mockedEventService = {
+      buildLunarEclipseEvent: vi.fn(),
+      buildSolarEclipseEvent: vi.fn(),
+    };
+    const mockedMathService = {
+      isMaximum: vi.fn(),
+      isMinimum: vi.fn(),
+    };
+    const branchService = new EclipseCalculationService(
+      new LoggerService(),
+      mockedMathService as never,
+      mockedGeometryService as never,
+      mockedTopocentricService as never,
+      mockedEventService as never,
+    );
+
+    beforeEach(() => {
+      vi.restoreAllMocks();
+      vi.clearAllMocks();
+    });
+
+    it("builds geocentric events for both eclipse phases", () => {
+      const minute = moment.utc("2024-04-08T18:00:00.000Z");
+      const solarEvent = {
+        categories: ["Eclipse", "Solar"],
+        description: "Solar",
+        end: minute,
+        start: minute,
+        summary: "Solar",
+      } as Event;
+      const lunarEvent = {
+        categories: ["Eclipse", "Lunar"],
+        description: "Lunar",
+        end: minute,
+        start: minute,
+        summary: "Lunar",
+      } as Event;
+
+      mockedEventService.buildSolarEclipseEvent.mockReturnValue(solarEvent);
+      mockedEventService.buildLunarEclipseEvent.mockReturnValue(lunarEvent);
+
+      vi.spyOn(branchService, "isSolarEclipse").mockReturnValue("beginning");
+      vi.spyOn(branchService, "isLunarEclipse").mockReturnValue("ending");
+
+      expect(
+        branchService.getGeocentricEvents({
+          currentCoordinates: {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 100,
+            longitudeSun: 100,
+          },
+          minute,
+          nextCoordinates: {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 101,
+            longitudeSun: 101,
+          },
+          previousCoordinates: {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 99,
+            longitudeSun: 99,
+          },
+        }),
+      ).toEqual({
+        events: [solarEvent, lunarEvent],
+        lunarPhase: "ending",
+        solarPhase: "beginning",
+      });
+      expect(mockedEventService.buildSolarEclipseEvent).toHaveBeenCalledWith({
+        date: minute,
+        frame: "geocentric",
+        phase: "beginning",
+      });
+      expect(mockedEventService.buildLunarEclipseEvent).toHaveBeenCalledWith({
+        date: minute,
+        frame: "geocentric",
+        phase: "ending",
+      });
+    });
+
+    it("classifies solar eclipse beginning and ending", () => {
+      mockedGeometryService.getEclipseAngles.mockReturnValue({
+        currentDiameter: 10,
+        currentLatitudeAngle: 1,
+        currentLongitudeAngle: 9,
+        nextLongitudeAngle: 8,
+        previousLongitudeAngle: 12,
+      });
+      mockedMathService.isMinimum.mockReturnValue(false);
+
+      expect(
+        branchService.isSolarEclipse(
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 100,
+            longitudeSun: 90,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 95,
+            longitudeSun: 85,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 105,
+            longitudeSun: 95,
+          },
+        ),
+      ).toBe("beginning");
+
+      mockedGeometryService.getEclipseAngles.mockReturnValue({
+        currentDiameter: 10,
+        currentLatitudeAngle: 1,
+        currentLongitudeAngle: 9,
+        nextLongitudeAngle: 12,
+        previousLongitudeAngle: 8,
+      });
+
+      expect(
+        branchService.isSolarEclipse(
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 100,
+            longitudeSun: 90,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 95,
+            longitudeSun: 85,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 105,
+            longitudeSun: 95,
+          },
+        ),
+      ).toBe("ending");
+
+      mockedGeometryService.getEclipseAngles.mockReturnValue({
+        currentDiameter: 10,
+        currentLatitudeAngle: 20,
+        currentLongitudeAngle: 9,
+        nextLongitudeAngle: 12,
+        previousLongitudeAngle: 8,
+      });
+
+      expect(
+        branchService.isSolarEclipse(
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 100,
+            longitudeSun: 90,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 95,
+            longitudeSun: 85,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 105,
+            longitudeSun: 95,
+          },
+        ),
+      ).toBeNull();
+    });
+
+    it("classifies lunar eclipse beginning and ending", () => {
+      mockedGeometryService.getEclipseAngles.mockReturnValue({
+        currentDiameter: 10,
+        currentLatitudeAngle: 1,
+        currentLongitudeAngle: 171,
+        nextLongitudeAngle: 172,
+        previousLongitudeAngle: 169,
+      });
+      mockedMathService.isMaximum.mockReturnValue(false);
+
+      expect(
+        branchService.isLunarEclipse(
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 280,
+            longitudeSun: 100,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 279,
+            longitudeSun: 100,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 281,
+            longitudeSun: 100,
+          },
+        ),
+      ).toBe("beginning");
+
+      mockedGeometryService.getEclipseAngles.mockReturnValue({
+        currentDiameter: 10,
+        currentLatitudeAngle: 1,
+        currentLongitudeAngle: 171,
+        nextLongitudeAngle: 169,
+        previousLongitudeAngle: 172,
+      });
+
+      expect(
+        branchService.isLunarEclipse(
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 280,
+            longitudeSun: 100,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 279,
+            longitudeSun: 100,
+          },
+          {
+            diameterMoon: 0.5,
+            diameterSun: 0.5,
+            latitudeMoon: 0,
+            latitudeSun: 0,
+            longitudeMoon: 281,
+            longitudeSun: 100,
+          },
+        ),
+      ).toBe("ending");
+    });
+  });
 });

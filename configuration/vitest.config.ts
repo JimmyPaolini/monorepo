@@ -13,10 +13,10 @@ export default defineConfig({
       // Coverage thresholds — tests fail if coverage drops below these percentages.
       // See documentation/vitest.md for rationale and per-project override guidance.
       thresholds: {
-        lines: 80,
-        functions: 80,
-        branches: 80,
-        statements: 80,
+        lines: 96,
+        functions: 96,
+        branches: 96,
+        statements: 96,
       },
     },
     // Allow tests to pass when there are no test files

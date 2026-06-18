@@ -325,6 +325,21 @@ describe("SpecialtyAspectsService", () => {
       });
     });
 
+    describe("phase helpers", () => {
+      it("delegates specialty phase detection", () => {
+        expect(
+          service.getSpecialtyAspectPhase({
+            currentLongitudeBody1: 0,
+            currentLongitudeBody2: 72,
+            nextLongitudeBody1: 1,
+            nextLongitudeBody2: 73,
+            previousLongitudeBody1: 359,
+            previousLongitudeBody2: 71,
+          }),
+        ).toBe("perfective");
+      });
+    });
+
     describe("getSpecialtyAspectEvent", () => {
       it("should create perfective quintile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");

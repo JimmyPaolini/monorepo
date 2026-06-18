@@ -105,6 +105,20 @@ describe("TripleAspectsService", () => {
       expect(progressiveEvents[0]?.description).toContain("t-square");
       expect(progressiveEvents[0]?.categories).toContain("Triple Aspect");
     });
+
+    it("skips events without a progressive group key", () => {
+      const events = service.detectProgressive([
+        {
+          categories: ["Astronomy", "Astrology", "Triple Aspect", "Forming"],
+          description: "Invalid triple aspect",
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          summary: "Invalid triple aspect",
+        },
+      ]);
+
+      expect(events).toEqual([]);
+    });
   });
 
   describe("compatibility static wrappers", () => {

@@ -20,6 +20,10 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
+  extractLunarPhaseFromCategories: (
+    categories: string[],
+    enteringSummary: string,
+  ) => LunarPhase | null;
   isFullMoon: (args: {
     currentIllumination: number;
     nextIlluminations: number[];
@@ -446,6 +450,44 @@ describe("MonthlyLunarCycleService", () => {
       });
     });
 
+    describe("extractLunarPhaseFromCategories", () => {
+      it("should warn and return null when no lunar phase category is present", () => {
+        const warnSpy = vi
+          .spyOn(LoggerService.prototype, "warn")
+          .mockImplementation(() => undefined);
+
+        const result = s.extractLunarPhaseFromCategories(
+          ["Astronomy", "Astrology"],
+          "Invalid event",
+        );
+
+        expect(result).toBeNull();
+        expect(warnSpy).toHaveBeenCalledWith(
+          expect.stringContaining("Could not extract lunar phase"),
+        );
+
+        warnSpy.mockRestore();
+      });
+
+      it("should warn and return null when the lunar phase is invalid", () => {
+        const warnSpy = vi
+          .spyOn(LoggerService.prototype, "warn")
+          .mockImplementation(() => undefined);
+
+        const result = s.extractLunarPhaseFromCategories(
+          ["Astronomy", "Astrology", "Monthly Lunar Cycle", "Lunar", "Fake"],
+          "Invalid event",
+        );
+
+        expect(result).toBeNull();
+        expect(warnSpy).toHaveBeenCalledWith(
+          expect.stringContaining("Could not extract lunar phase"),
+        );
+
+        warnSpy.mockRestore();
+      });
+    });
+
     describe("isFullMoon", () => {
       it("should return true at full moon (maximum illumination)", () => {
         const result = s.isFullMoon({
@@ -489,6 +531,17 @@ describe("MonthlyLunarCycleService", () => {
     });
 
     describe("isLunarPhase", () => {
+      it("should return false when quarter phases lack a previous illumination", () => {
+        const result = s.isLunarPhase({
+          currentIllumination: 51,
+          lunarPhase: "first quarter",
+          nextIlluminations: [53],
+          previousIlluminations: [],
+        });
+
+        expect(result).toBe(false);
+      });
+
       describe("new moon phase", () => {
         it("should delegate to isNewMoon", () => {
           const result = s.isLunarPhase({

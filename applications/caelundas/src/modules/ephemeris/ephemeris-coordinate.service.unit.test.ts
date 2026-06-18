@@ -1,5 +1,6 @@
 import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
+import { calc, nod_aps_ut } from "sweph";
 
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 
@@ -90,6 +91,52 @@ describe("EphemerisCoordinateService", () => {
       for (const value of Object.values(result)) {
         expect(value.latitude).toBe(0);
       }
+    });
+
+    it("returns lunar perigee coordinates for each minute", () => {
+      const result = service.computeNodeBodyMinutes({
+        body: "lunar perigee",
+        end: moment.utc("2024-03-21T00:00:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
+
+      expect(Object.keys(result)).toHaveLength(1);
+      expect(Object.values(result)[0]).toEqual({
+        latitude: 0,
+        longitude: 90,
+      });
+    });
+  });
+
+  describe("error handling", () => {
+    it("throws when calc fails for a body", () => {
+      vi.mocked(calc).mockReturnValueOnce({
+        data: [0, 0, 0, 0, 0, 0],
+        error: "calc failed",
+        flag: -1,
+      } as never);
+
+      expect(() => service.computeBodyCoordinate("sun", 2_460_395.5)).toThrow(
+        "calc failed for sun: calc failed",
+      );
+    });
+
+    it("throws when lunar perigee calculation fails", () => {
+      vi.mocked(nod_aps_ut).mockReturnValueOnce({
+        data: {
+          perihelion: [0, 0, 0, 0, 0, 0],
+        },
+        error: "nod_aps_ut failed",
+        flag: -1,
+      } as never);
+
+      expect(() =>
+        service.computeNodeBodyMinutes({
+          body: "lunar perigee",
+          end: moment.utc("2024-03-21T00:00:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      ).toThrow("nod_aps_ut failed for lunar perigee: nod_aps_ut failed");
     });
   });
 });

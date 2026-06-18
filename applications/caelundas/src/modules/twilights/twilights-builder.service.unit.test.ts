@@ -30,6 +30,15 @@ describe("TwilightsBuilderService", () => {
   });
 
   describe("transition events", () => {
+    it("builds Astronomical Dawn event", () => {
+      const date = moment.utc("2024-03-21T05:00:00.000Z");
+      const event = service.buildAstronomicalDawnEvent(date);
+
+      expect(event.summary).toBe("🌠 Astronomical Dawn");
+      expect(event.description).toBe("Astronomical Dawn");
+      expect(event.categories).toContain("Astronomical Dawn");
+    });
+
     it("builds Civil Dawn event", () => {
       const date = moment.utc("2024-03-21T06:00:00.000Z");
       const event = service.buildCivilDawnEvent(date);
@@ -56,6 +65,15 @@ describe("TwilightsBuilderService", () => {
       expect(event.categories).toContain("Astronomical Dusk");
     });
 
+    it("builds Civil Dusk event", () => {
+      const date = moment.utc("2024-03-21T18:00:00.000Z");
+      const event = service.buildCivilDuskEvent(date);
+
+      expect(event.summary).toBe("🌇 Civil Dusk");
+      expect(event.description).toBe("Civil Dusk");
+      expect(event.categories).toContain("Civil Dusk");
+    });
+
     it("builds Nautical Dawn event", () => {
       const date = moment.utc("2024-03-21T05:30:00.000Z");
       const event = service.buildNauticalDawnEvent(date);
@@ -63,6 +81,15 @@ describe("TwilightsBuilderService", () => {
       expect(event.summary).toBe("🌅 Nautical Dawn");
       expect(event.description).toBe("Nautical Dawn");
       expect(event.categories).toContain("Nautical Dawn");
+    });
+
+    it("builds Nautical Dusk event", () => {
+      const date = moment.utc("2024-03-21T19:00:00.000Z");
+      const event = service.buildNauticalDuskEvent(date);
+
+      expect(event.summary).toBe("🌉 Nautical Dusk");
+      expect(event.description).toBe("Nautical Dusk");
+      expect(event.categories).toContain("Nautical Dusk");
     });
   });
 
@@ -97,6 +124,17 @@ describe("TwilightsBuilderService", () => {
       expect(event.description).toBe("Astronomical Twilight (Morning)");
       expect(event.categories).toContain("Astronomical Twilight");
       expect(event.categories).toContain("Morning");
+    });
+
+    it("builds Astronomical Twilight (Evening) duration event", () => {
+      const event = service.getAstronomicalTwilightEveningDurationEvent(
+        beginningEvent,
+        endingEvent,
+      );
+
+      expect(event.description).toBe("Astronomical Twilight (Evening)");
+      expect(event.categories).toContain("Astronomical Twilight");
+      expect(event.categories).toContain("Evening");
     });
 
     it("builds Nautical Twilight (Evening) duration event", () => {

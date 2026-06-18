@@ -207,6 +207,96 @@ describe("AnnualSolarCycleEventsService", () => {
     });
   });
 
+  describe("Seasonal event groups", () => {
+    it("should collect spring and summer events when thresholds are crossed", () => {
+      const minute = moment.utc("2024-03-20T03:06:00.000Z");
+      const cases = [
+        {
+          expectedDescription: "Vernal Equinox",
+          longitudes: { currentLongitude: 1, previousLongitude: 359 },
+        },
+        {
+          expectedDescription: "First Hexadecan",
+          longitudes: { currentLongitude: 23, previousLongitude: 22 },
+        },
+        {
+          expectedDescription: "Beltane",
+          longitudes: { currentLongitude: 46, previousLongitude: 44 },
+        },
+        {
+          expectedDescription: "Third Hexadecan",
+          longitudes: { currentLongitude: 68, previousLongitude: 67 },
+        },
+        {
+          expectedDescription: "Summer Solstice",
+          longitudes: { currentLongitude: 91, previousLongitude: 89 },
+        },
+        {
+          expectedDescription: "Fifth Hexadecan",
+          longitudes: { currentLongitude: 113, previousLongitude: 112 },
+        },
+        {
+          expectedDescription: "Lammas",
+          longitudes: { currentLongitude: 136, previousLongitude: 134 },
+        },
+        {
+          expectedDescription: "Seventh Hexadecan",
+          longitudes: { currentLongitude: 158, previousLongitude: 157 },
+        },
+      ] as const;
+
+      for (const { expectedDescription, longitudes } of cases) {
+        const events = service.getVernalToAutumnalEvents(longitudes, minute);
+        expect(events).toHaveLength(1);
+        expect(events[0]?.description).toBe(expectedDescription);
+      }
+    });
+
+    it("should collect autumn and winter events when thresholds are crossed", () => {
+      const minute = moment.utc("2024-09-22T12:43:00.000Z");
+      const cases = [
+        {
+          expectedDescription: "Autumnal Equinox",
+          longitudes: { currentLongitude: 181, previousLongitude: 179 },
+        },
+        {
+          expectedDescription: "Ninth Hexadecan",
+          longitudes: { currentLongitude: 203, previousLongitude: 202 },
+        },
+        {
+          expectedDescription: "Samhain",
+          longitudes: { currentLongitude: 226, previousLongitude: 224 },
+        },
+        {
+          expectedDescription: "Eleventh Hexadecan",
+          longitudes: { currentLongitude: 248, previousLongitude: 247 },
+        },
+        {
+          expectedDescription: "Winter Solstice",
+          longitudes: { currentLongitude: 271, previousLongitude: 269 },
+        },
+        {
+          expectedDescription: "Thirteenth Hexadecan",
+          longitudes: { currentLongitude: 293, previousLongitude: 292 },
+        },
+        {
+          expectedDescription: "Imbolc",
+          longitudes: { currentLongitude: 316, previousLongitude: 314 },
+        },
+        {
+          expectedDescription: "Fifteenth Hexadecan",
+          longitudes: { currentLongitude: 338, previousLongitude: 337 },
+        },
+      ] as const;
+
+      for (const { expectedDescription, longitudes } of cases) {
+        const events = service.getAutumnalToVernalEvents(longitudes, minute);
+        expect(events).toHaveLength(1);
+        expect(events[0]?.description).toBe(expectedDescription);
+      }
+    });
+  });
+
   describe("Longitude thresholds", () => {
     it("should return true when crossing 0° (from Pisces to Aries)", () => {
       const result = service.isVernalEquinox({

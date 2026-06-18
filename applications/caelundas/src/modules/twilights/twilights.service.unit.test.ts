@@ -4,7 +4,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsComposerService } from "./twilights-composer.service";
@@ -124,6 +124,130 @@ describe("TwilightsService", () => {
       expect(TwilightsService.degreesByTwilight.nautical).toBe(12);
       expect(TwilightsService.degreesByTwilight.astronomical).toBe(18);
       expect(TwilightsService.sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
+    });
+  });
+
+  describe("delegation", () => {
+    const buildEvent = (description: string): Event => {
+      const timestamp = moment.utc("2024-03-21T00:00:00.000Z");
+      return {
+        categories: ["Twilight"],
+        description,
+        end: timestamp,
+        start: timestamp,
+        summary: description,
+      };
+    };
+
+    it("delegates builder methods to the wrapped service", () => {
+      const mockBuilderService = {
+        buildAstronomicalDawnEvent: vi.fn().mockReturnValue(buildEvent("AD")),
+        buildAstronomicalDuskEvent: vi.fn().mockReturnValue(buildEvent("ADK")),
+        buildCivilDawnEvent: vi.fn().mockReturnValue(buildEvent("CD")),
+        buildCivilDuskEvent: vi.fn().mockReturnValue(buildEvent("CDK")),
+        buildNauticalDawnEvent: vi.fn().mockReturnValue(buildEvent("ND")),
+        buildNauticalDuskEvent: vi.fn().mockReturnValue(buildEvent("NDK")),
+      };
+      const mockComposerService = {
+        buildDawnProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dawn")]),
+        buildDuskProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dusk")]),
+        pairAndBuild: vi.fn().mockReturnValue([buildEvent("pair")]),
+      };
+      const mockDetectorService = {
+        buildTwilightTransitionEvents: vi
+          .fn()
+          .mockReturnValue([buildEvent("transition")]),
+        getSunElevations: vi.fn().mockReturnValue({}),
+      };
+      const delegatedService = new TwilightsService(
+        mockBuilderService as never,
+        mockComposerService as never,
+        mockDetectorService as never,
+      );
+      const timestamp = moment.utc("2024-03-21T06:00:00.000Z");
+
+      expect(delegatedService.buildAstronomicalDawnEvent(timestamp)).toEqual(
+        buildEvent("AD"),
+      );
+      expect(delegatedService.buildAstronomicalDuskEvent(timestamp)).toEqual(
+        buildEvent("ADK"),
+      );
+      expect(delegatedService.buildCivilDawnEvent(timestamp)).toEqual(
+        buildEvent("CD"),
+      );
+      expect(delegatedService.buildCivilDuskEvent(timestamp)).toEqual(
+        buildEvent("CDK"),
+      );
+      expect(delegatedService.buildNauticalDawnEvent(timestamp)).toEqual(
+        buildEvent("ND"),
+      );
+      expect(delegatedService.buildNauticalDuskEvent(timestamp)).toEqual(
+        buildEvent("NDK"),
+      );
+      expect(mockBuilderService.buildAstronomicalDawnEvent).toHaveBeenCalledWith(
+        timestamp,
+      );
+      expect(mockBuilderService.buildNauticalDuskEvent).toHaveBeenCalledWith(
+        timestamp,
+      );
+    });
+
+    it("delegates detection and progressive pairing", () => {
+      const mockBuilderService = {
+        buildAstronomicalDawnEvent: vi.fn(),
+        buildAstronomicalDuskEvent: vi.fn(),
+        buildCivilDawnEvent: vi.fn(),
+        buildCivilDuskEvent: vi.fn(),
+        buildNauticalDawnEvent: vi.fn(),
+        buildNauticalDuskEvent: vi.fn(),
+      };
+      const mockTransitionEvents = [buildEvent("transition")];
+      const mockComposerService = {
+        buildDawnProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dawn")]),
+        buildDuskProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dusk")]),
+        pairAndBuild: vi.fn().mockReturnValue([buildEvent("pair")]),
+      };
+      const mockDetectorService = {
+        buildTwilightTransitionEvents: vi
+          .fn()
+          .mockReturnValue(mockTransitionEvents),
+        getSunElevations: vi.fn().mockReturnValue({}),
+      };
+      const delegatedService = new TwilightsService(
+        mockBuilderService as never,
+        mockComposerService as never,
+        mockDetectorService as never,
+      );
+      const minute = moment.utc("2024-03-21T06:00:00.000Z");
+      const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
+        [minute.toISOString()]: { azimuth: 180, elevation: -6 },
+      };
+
+      expect(
+        delegatedService.detect({ minute, sunAzimuthElevationEphemeris }),
+      ).toEqual(mockTransitionEvents);
+      expect(mockDetectorService.getSunElevations).toHaveBeenCalledWith(
+        sunAzimuthElevationEphemeris,
+        minute,
+      );
+      expect(
+        delegatedService.detectProgressive([
+          {
+            categories: ["Twilight", "Astronomical Dawn"],
+            description: "Astronomical Dawn",
+            end: minute,
+            start: minute,
+            summary: "Astronomical Dawn",
+          },
+          {
+            categories: ["Twilight", "Astronomical Dusk"],
+            description: "Astronomical Dusk",
+            end: minute,
+            start: minute,
+            summary: "Astronomical Dusk",
+          },
+        ]),
+      ).toEqual([buildEvent("dawn"), buildEvent("dusk"), buildEvent("pair")]);
     });
   });
 

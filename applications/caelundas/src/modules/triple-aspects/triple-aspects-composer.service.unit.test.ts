@@ -130,4 +130,128 @@ describe("TripleAspectsComposerService", () => {
       expect(progressiveEvents[0]?.categories).not.toContain("Dissolving");
     });
   });
+
+  describe("progressive helpers", () => {
+    it("derives progressive keys and phases", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const forming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Grand Trine",
+          "Forming",
+          "Moon",
+          "Sun",
+          "Mars",
+          "Mars Focal",
+        ],
+        description: "Moon, Sun, Mars grand trine forming",
+        end: minute,
+        start: minute,
+        summary: "➡️ ✶ Moon-Sun-Mars Moon, Sun, Mars grand trine forming",
+      } as Event;
+      const dissolving = {
+        ...forming,
+        categories: forming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Moon, Sun, Mars grand trine dissolving",
+        start: minute.clone().add(1, "hour"),
+        end: minute.clone().add(1, "hour"),
+        summary:
+          "⬅️ ✶ Moon-Sun-Mars Moon, Sun, Mars grand trine dissolving",
+      } as Event;
+
+      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) => edges.length > 0,
+        currentAspectBodies: [
+          { aspect: "trine", bodies: ["moon", "sun"] },
+        ],
+        currentMinute: minute,
+        patternBodies: ["moon", "sun", "mars"],
+        previousAspectBodies: [],
+      })).toEqual({ eventMinute: minute, phase: "forming" });
+
+      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) => edges.length > 0,
+        currentAspectBodies: [],
+        currentMinute: minute,
+        patternBodies: ["moon", "sun", "mars"],
+        previousAspectBodies: [
+          { aspect: "trine", bodies: ["moon", "sun"] },
+        ],
+      })?.phase).toBe("dissolving");
+
+      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) => edges.length > 0,
+        currentAspectBodies: [
+          { aspect: "trine", bodies: ["moon", "sun"] },
+        ],
+        currentMinute: minute,
+        patternBodies: ["moon", "sun", "mars"],
+        previousAspectBodies: [
+          { aspect: "trine", bodies: ["moon", "sun"] },
+        ],
+      })).toBeNull();
+
+      expect(
+        service.getProgressiveGroupKey(forming),
+      ).toBe("Mars-Moon-Sun-Grand Trine");
+      expect(service.getProgressiveGroupKey({ ...forming, categories: ["Moon"] })).toBe("");
+
+      expect(service.pairProgressiveGroup([forming, dissolving])).toHaveLength(1);
+      expect(
+        service.pairProgressiveGroup([
+          { ...forming, start: minute, end: minute },
+          { ...dissolving, start: minute },
+        ]),
+      ).toHaveLength(0);
+
+      expect(
+        service.buildProgressiveEvent({
+          aspectCapitalized: "Mystery Aspect",
+          dissolving,
+          forming,
+        }),
+      ).toBeNull();
+
+      expect(
+        service.buildProgressiveEvent({
+          aspectCapitalized: "Grand Trine",
+          dissolving,
+          forming: {
+            ...forming,
+            categories: forming.categories.map((category) =>
+              category === "Mars" ? "Ceres" : category,
+            ),
+          } as Event,
+        }),
+      ).toBeNull();
+
+      const yodProgressiveEvent = service.buildProgressiveEvent({
+        aspectCapitalized: "Yod",
+        dissolving,
+        forming: {
+          ...forming,
+          categories: forming.categories.map((category) =>
+            category === "Mars Focal" ? "Mars Focal" : category,
+          ),
+        } as Event,
+      });
+      expect(yodProgressiveEvent?.summary).toContain("(apex: Mars)");
+
+      expect(
+        service.buildProgressiveEvent({
+          aspectCapitalized: "Grand Trine",
+          dissolving,
+          forming: {
+            ...forming,
+            categories: ["Astronomy", "Astrology", "Compound Aspect"],
+          } as Event,
+        }),
+      ).toBeNull();
+    });
+  });
 });

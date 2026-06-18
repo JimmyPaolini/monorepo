@@ -14,7 +14,7 @@ import { TripleAspectsComposerService } from "@caelundas/src/modules/triple-aspe
 import { TripleAspectsDetectorService } from "@caelundas/src/modules/triple-aspects/triple-aspects-detector.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisService } from "../ephemeris/ephemeris.service";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
@@ -329,6 +329,85 @@ describe("AspectsService", () => {
       ]);
 
       expect(afterForming).toHaveLength(1);
+    });
+  });
+
+  describe("delegation", () => {
+    it("combines detector outputs and progressive events", () => {
+      const minute = moment.utc("2026-01-21T12:00:00Z");
+      const simpleEvent = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Simple Aspect",
+          "Major Aspect",
+          "Sun",
+          "Moon",
+          "Conjunct",
+          "Forming",
+        ],
+        description: "Sun forming conjunct Moon",
+        end: minute,
+        start: minute,
+        summary: "Sun forming conjunct Moon",
+      } satisfies Event;
+      const compositeEvent = {
+        categories: ["Astronomy", "Astrology", "Composite"],
+        description: "Composite",
+        end: minute,
+        start: minute,
+        summary: "Composite",
+      } satisfies Event;
+      const progressiveEvent = {
+        categories: ["Astronomy", "Astrology", "Progressive"],
+        description: "Progressive",
+        end: minute,
+        start: minute,
+        summary: "Progressive",
+      } satisfies Event;
+
+      const mockSimpleAspectDetector = {
+        detect: vi.fn().mockReturnValue([simpleEvent]),
+      };
+      const mockCompositeAspectDetector = {
+        detect: vi.fn().mockReturnValue([compositeEvent]),
+      };
+      const mockProgressiveAspectDetector = {
+        detectProgressive: vi.fn().mockReturnValue([progressiveEvent]),
+      };
+      const delegatedService = new AspectsService(
+        [mockSimpleAspectDetector as never],
+        [mockCompositeAspectDetector as never],
+        [mockProgressiveAspectDetector as never],
+      );
+      const coordinateEphemerisByBody = {} as Record<
+        import("@caelundas/src/modules/caelundas/caelundas.types").Body,
+        import("@caelundas/src/modules/ephemeris/ephemeris.types").CoordinateEphemeris
+      >;
+
+      const detectResult = delegatedService.detect({
+        coordinateEphemerisByBody,
+        minute,
+        previousAspectBodies: [],
+      });
+
+      expect(mockSimpleAspectDetector.detect).toHaveBeenCalledWith({
+        coordinateEphemerisByBody,
+        minute,
+      });
+      expect(mockCompositeAspectDetector.detect).toHaveBeenCalledWith({
+        currentAspectBodies: [{ aspect: "conjunct", bodies: ["sun", "moon"] }],
+        minute,
+        previousAspectBodies: [],
+      });
+      expect(detectResult.events).toEqual([simpleEvent, compositeEvent]);
+
+      expect(delegatedService.detectProgressive([simpleEvent])).toEqual([
+        progressiveEvent,
+      ]);
+      expect(mockProgressiveAspectDetector.detectProgressive).toHaveBeenCalledWith(
+        [simpleEvent],
+      );
     });
   });
 });
