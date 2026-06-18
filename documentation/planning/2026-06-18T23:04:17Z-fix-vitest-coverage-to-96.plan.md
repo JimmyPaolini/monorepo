@@ -2,7 +2,7 @@
 name: Vitest Coverage 96 Percent
 description: Raise all Vitest coverage thresholds to 96 percent and expand tests until affected projects consistently meet the new floor.
 created: 2026-06-18T23:04:17Z
-updated: 2026-06-18T23:08:20Z
+updated: 2026-06-18T23:12:58Z
 status: 'Planned'
 ---
 
@@ -10,7 +10,7 @@ status: 'Planned'
 
 ![Status: Planned](https://img.shields.io/badge/status-Planned-blue)
 
-This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vitest entry points aligned with that floor, and adds focused tests to close the remaining gaps without weakening existing rules. The latest coverage run showed the biggest gaps in `applications/caelundas` around `main.ts`, `minor-aspects-composer.service.ts`, `specialty-aspects-composer.service.ts`, `caelundas.command.ts`, `eclipse-calculation.service.ts`, and `eclipse-geometry.service.ts`; `applications/lexico-ingestion` still needs its `logger.service.unit.test.ts` failure resolved before its coverage table can be trusted end-to-end; `tools/conformance` surfaced a template mismatch around `nestjs-service-file`.
+This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vitest entry points aligned with that floor, and adds focused tests to close the remaining gaps without weakening existing rules. The latest coverage run showed the biggest gaps in `applications/caelundas` around `main.ts`, `minor-aspects-composer.service.ts`, `specialty-aspects-composer.service.ts`, `caelundas.command.ts`, `eclipse-calculation.service.ts`, and `eclipse-geometry.service.ts`; the full `caelundas` report still has 103 files below 96 percent, including many `*.module.ts`, `*.constants.ts`, and `*.types.ts` files that need direct import or wiring tests; `applications/lexico-ingestion` still needs its `logger.service.unit.test.ts` failure resolved before its coverage table can be trusted end-to-end; `tools/conformance` surfaced a template mismatch around `nestjs-service-file`.
 
 ## 1. Requirements & Constraints
 
@@ -61,20 +61,153 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 | TASK-010 | Re-run the affected Vitest coverage commands until the workspace-level coverage gate passes with the new threshold. |  |  |
 | TASK-011 | Capture any remaining uncovered hotspots in the plan for follow-up if a file cannot reasonably reach 96 percent without design changes. |  |  |
 
-## 3. Alternatives
+## 3. Coverage Hotspot Matrix
+
+### 3.1 `applications/caelundas` entry points and composition
+
+- `src/main.ts`
+- `src/modules/caelundas/caelundas.command.ts`
+- `src/modules/minor-aspects/minor-aspects-composer.service.ts`
+- `src/modules/specialty-aspects/specialty-aspects-composer.service.ts`
+
+Strategy: add CLI smoke tests, early-return tests, and error-path assertions for command parsing and minute-loop orchestration.
+
+### 3.2 `applications/caelundas` executable services
+
+- `src/modules/eclipses/eclipse-calculation.service.ts`
+- `src/modules/eclipses/eclipse-geometry.service.ts`
+- `src/modules/aspects/aspects.service.ts`
+- `src/modules/twilights/twilights.service.ts`
+- `src/modules/ephemeris/ephemeris-coordinate.service.ts`
+- `src/modules/annual-solar-cycle/annual-solar-cycle-events.service.ts`
+- `src/modules/logger/logger.service.ts`
+- `src/modules/calendar/calendar.service.ts`
+- `src/modules/eclipses/eclipse-topocentric.service.ts`
+- `src/modules/triple-aspects/triple-aspects-composer.service.ts`
+- `src/modules/twilights/twilights-builder.service.ts`
+- `src/modules/ephemeris/ephemeris-phenomena.service.ts`
+- `src/modules/twilights/twilights-detector.service.ts`
+- `src/modules/ephemeris/ephemeris.service.ts`
+- `src/modules/specialty-aspects/specialty-aspects-progressive.service.ts`
+- `src/modules/major-aspects/major-aspect-progressive.service.ts`
+- `src/modules/minor-aspects/minor-aspects-progressive.service.ts`
+- `src/modules/triple-aspects/triple-aspects.service.ts`
+- `src/modules/monthly-lunar-cycle/monthly-lunar-cycle.service.ts`
+- `src/modules/triple-aspects/triple-aspects-detector.service.ts`
+- `src/modules/ingresses/ingresses-composer.service.ts`
+- `src/modules/quintuple-aspects/quintuple-aspects.service.ts`
+- `src/modules/phases/phase-calculation.service.ts`
+
+Strategy: add table-driven unit tests for branches, null/empty inputs, timezone edges, and error handling paths that currently remain uncovered.
+
+### 3.3 `applications/caelundas` structural files
+
+- `src/modules/annual-solar-cycle/annual-solar-cycle.module.ts`
+- `src/modules/aspects/aspects.module.ts`
+- `src/modules/aspects/aspects.utilities.module.ts`
+- `src/modules/caelundas/caelundas.module.ts`
+- `src/modules/calendar/calendar.module.ts`
+- `src/modules/daily-cycles/daily-cycles.module.ts`
+- `src/modules/datetime/datetime.module.ts`
+- `src/modules/eclipses/eclipses.module.ts`
+- `src/modules/ephemeris/ephemeris.module.ts`
+- `src/modules/ingresses/ingresses.module.ts`
+- `src/modules/input/input.module.ts`
+- `src/modules/logger/logger.module.ts`
+- `src/modules/major-aspects/major-aspects.module.ts`
+- `src/modules/math/math.module.ts`
+- `src/modules/minor-aspects/minor-aspects.module.ts`
+- `src/modules/monthly-lunar-cycle/monthly-lunar-cycle.module.ts`
+- `src/modules/perfective/perfective.module.ts`
+- `src/modules/phases/phases.module.ts`
+- `src/modules/progressive/progressive.module.ts`
+- `src/modules/progressive/progressive.utilities.module.ts`
+- `src/modules/quadruple-aspects/quadruple-aspects.module.ts`
+- `src/modules/quintuple-aspects/quintuple-aspects.module.ts`
+- `src/modules/retrogrades/retrogrades.module.ts`
+- `src/modules/sextuple-aspects/sextuple-aspects.module.ts`
+- `src/modules/specialty-aspects/specialty-aspects.module.ts`
+- `src/modules/stellium/stellium.module.ts`
+- `src/modules/triple-aspects/triple-aspects.module.ts`
+- `src/modules/twilights/twilights.module.ts`
+
+Strategy: add Nest module instantiation tests or provider-registration smoke tests so each module file executes in a real testing container.
+
+### 3.4 `applications/caelundas` constant and type files
+
+- `src/modules/calendar/calendar.constants.ts`
+- `src/modules/daily-cycles/daily-cycles.constants.ts`
+- `src/modules/datetime/datetime.constants.ts`
+- `src/modules/eclipses/eclipses.constants.ts`
+- `src/modules/ingresses/ingresses.constants.ts`
+- `src/modules/logger/logger.constants.ts`
+- `src/modules/major-aspects/major-aspects.constants.ts`
+- `src/modules/math/math.constants.ts`
+- `src/modules/minor-aspects/minor-aspects.constants.ts`
+- `src/modules/monthly-lunar-cycle/monthly-lunar-cycle.constants.ts`
+- `src/modules/perfective/perfective.constants.ts`
+- `src/modules/progressive/progressive.constants.ts`
+- `src/modules/quadruple-aspects/quadruple-aspects.constants.ts`
+- `src/modules/quintuple-aspects/quintuple-aspects.constants.ts`
+- `src/modules/retrogrades/retrogrades.constants.ts`
+- `src/modules/sextuple-aspects/sextuple-aspects.constants.ts`
+- `src/modules/specialty-aspects/specialty-aspects.constants.ts`
+- `src/modules/stellium/stellium.constants.ts`
+- `src/modules/triple-aspects/triple-aspects.constants.ts`
+- `src/modules/twilights/twilights.constants.ts`
+- `src/modules/annual-solar-cycle/annual-solar-cycle.types.ts`
+- `src/modules/aspects/aspects.types.ts`
+- `src/modules/caelundas/caelundas.body-types.ts`
+- `src/modules/calendar/calendar.types.ts`
+- `src/modules/daily-cycles/daily-cycles.types.ts`
+- `src/modules/datetime/datetime.types.ts`
+- `src/modules/eclipses/eclipses.types.ts`
+- `src/modules/ephemeris/ephemeris.internal.types.ts`
+- `src/modules/ephemeris/ephemeris.types.ts`
+- `src/modules/ingresses/ingresses.types.ts`
+- `src/modules/input/input.types.ts`
+- `src/modules/logger/logger.types.ts`
+- `src/modules/major-aspects/major-aspects.types.ts`
+- `src/modules/math/math.types.ts`
+- `src/modules/minor-aspects/minor-aspects.types.ts`
+- `src/modules/monthly-lunar-cycle/monthly-lunar-cycle.types.ts`
+- `src/modules/perfective/perfective.types.ts`
+- `src/modules/phases/phases.types.ts`
+- `src/modules/progressive/progressive.types.ts`
+- `src/modules/quadruple-aspects/quadruple-aspects.types.ts`
+- `src/modules/quintuple-aspects/quintuple-aspects.types.ts`
+- `src/modules/retrogrades/retrogrades.types.ts`
+- `src/modules/sextuple-aspects/sextuple-aspects.types.ts`
+- `src/modules/specialty-aspects/specialty-aspects.types.ts`
+- `src/modules/stellium/stellium.types.ts`
+- `src/modules/triple-aspects/triple-aspects.types.ts`
+- `src/modules/twilights/twilights.types.ts`
+- `src/modules/caelundas/caelundas.types.ts`
+
+Strategy: add focused import-and-assertion tests for runtime constants and cover type-bearing source files indirectly through the executable modules that consume them.
+
+### 3.5 Cross-project blockers
+
+- `applications/lexico-ingestion/src/modules/logger/logger.service.unit.test.ts`
+- `tools/conformance/src/conformance.test.ts`
+- `tools/conformance/src/generators/nestjs-service-file/templates/__nameKebabCase__.service.unit.test.ts`
+
+Strategy: fix the scoped-provider retrieval in `lexico-ingestion`, then rerun coverage so the remaining sub-96 files can be measured; update the conformance template or validator harness so the generated logger fixture matches the expected NestJS service-file pattern.
+
+## 4. Alternatives
 
 - **ALT-001**: Lower the threshold per project instead of raising shared coverage rules. Rejected because it weakens the quality bar and hides inconsistent test quality.
 - **ALT-002**: Add broad snapshot tests to inflate coverage quickly. Rejected because they do not reliably improve behavioral confidence.
 - **ALT-003**: Exempt low-coverage files from thresholds. Rejected because the goal is to improve coverage, not bypass it.
 
-## 4. Dependencies
+## 5. Dependencies
 
 - **DEP-001**: Shared Vitest configuration in `configuration/vitest.config.ts`.
 - **DEP-002**: Vitest project configs for `applications/caelundas`, `applications/lexico-ingestion`, and `tools/conformance`.
 - **DEP-003**: Existing CI coverage workflow in `.github/workflows/test-coverage.yml`.
 - **DEP-004**: Test data, fixtures, and helpers already present in each Vitest-enabled project.
 
-## 5. Files
+## 6. Files
 
 - **FILE-001**: `configuration/vitest.config.ts` — shared threshold source.
 - **FILE-002**: `applications/caelundas/vitest.config.ts` — project Vitest config to verify alignment.
@@ -90,7 +223,7 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 - **FILE-012**: `applications/lexico-ingestion/src/modules/logger/logger.service.unit.test.ts` — the blocked test that must be fixed before the project coverage run can expose its remaining hotspots.
 - **FILE-013**: `tools/conformance/src/generators/nestjs-service-file/templates/__nameKebabCase__.service.unit.test.ts` — the template implicated by the conformance failure.
 
-## 6. Testing
+## 7. Testing
 
 - **TEST-001**: Run `pnpm exec nx run caelundas:test:coverage` or the equivalent Nx coverage target used in the workspace and confirm it passes at 96 percent.
 - **TEST-002**: Run `pnpm exec nx run lexico-ingestion:test:coverage` and confirm the project passes at 96 percent.
@@ -98,7 +231,7 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 - **TEST-004**: Run `pnpm exec nx affected --target=test --parallel=3 --configuration=coverage` to validate the CI-shaped path.
 - **TEST-005**: Re-run the affected project tests after each test batch to verify the added assertions increase coverage without introducing regressions.
 
-## 7. Risks & Assumptions
+## 8. Risks & Assumptions
 
 - **RISK-001**: Some uncovered lines may be inside generated templates or glue code that cannot reasonably reach 96 percent without structural refactors.
 - **RISK-002**: Coverage may surface brittle or overly broad modules that need small refactors before meaningful tests can be written.
@@ -106,7 +239,7 @@ This plan raises the shared Vitest coverage floor to 96 percent, keeps all Vites
 - **ASSUMPTION-001**: The existing Vitest project split is the correct boundary for coverage work and does not need restructuring.
 - **ASSUMPTION-002**: The current CI workflow already exercises the right coverage commands; only the threshold value and tests need attention.
 
-## 8. Related Specifications / Further Reading
+## 9. Related Specifications / Further Reading
 
 - `configuration/vitest.config.ts`
 - `.github/workflows/test-coverage.yml`
