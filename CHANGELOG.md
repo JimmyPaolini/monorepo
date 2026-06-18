@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/JimmyPaolini/monorepo/compare/v1.10.1...v1.10.2) (2026-06-18)
+
+### ♻️ Code Refactoring
+
+* **monorepo:** ♻️ standardize naming and lint configuration ([#69](https://github.com/JimmyPaolini/monorepo/issues/69)) ([6306eb6](https://github.com/JimmyPaolini/monorepo/commit/6306eb6cbe5e12d4e29fcb00a0d2ae960ccb7a9e))
+
 ## [1.10.1](https://github.com/JimmyPaolini/monorepo/compare/v1.10.0...v1.10.1) (2026-06-13)
 
 ### 📝 Documentation
