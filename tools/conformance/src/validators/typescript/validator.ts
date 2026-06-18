@@ -1,5 +1,10 @@
 import mustache from "mustache";
-import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
+import {
+  createSourceFile,
+  ScriptKind,
+  ScriptTarget,
+  type SourceFile,
+} from "typescript";
 
 import { validateDepthFirstSearch } from "./abstract-syntax-tree";
 import { validateAllComments } from "./comments";
@@ -35,20 +40,9 @@ export function validateTypescriptConformance(args: {
 
   const scriptKind = resolveScriptKind(filename);
   const language = resolveLanguage(filename);
-  const templateFile = createSourceFile(
-    filename,
-    mustache.render(template, data),
-    ScriptTarget.Latest,
-    true,
-    scriptKind,
-  );
-  const instanceFile = createSourceFile(
-    filename,
-    instance,
-    ScriptTarget.Latest,
-    true,
-    scriptKind,
-  );
+  const renderedTemplate = mustache.render(template, data);
+  const templateFile = parseSourceFile(filename, renderedTemplate, scriptKind);
+  const instanceFile = parseSourceFile(filename, instance, scriptKind);
 
   const errors = validateDepthFirstSearch({
     instanceFile,
@@ -66,6 +60,26 @@ export function validateTypescriptConformance(args: {
   return { errors: [...errors, ...commentErrors] };
 }
 
+/**
+ * Parse source file.
+ */
+function parseSourceFile(
+  filename: string,
+  content: string,
+  scriptKind: ScriptKind,
+): SourceFile {
+  return createSourceFile(
+    filename,
+    content,
+    ScriptTarget.Latest,
+    true,
+    scriptKind,
+  );
+}
+
+/**
+ * Resolve language.
+ */
 function resolveLanguage(filename: string): ConformanceErrorLanguage {
   const extension = filename.slice(filename.lastIndexOf("."));
   switch (extension) {
@@ -85,6 +99,9 @@ function resolveLanguage(filename: string): ConformanceErrorLanguage {
   }
 }
 
+/**
+ * Resolve script kind.
+ */
 function resolveScriptKind(filename: string): ScriptKind {
   const extension = filename.slice(filename.lastIndexOf("."));
   switch (extension) {

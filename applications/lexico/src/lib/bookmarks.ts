@@ -3,11 +3,7 @@ import { createServerFn as createServerFunction } from "@tanstack/react-start";
 import type { PartOfSpeech, PrincipalParts } from "./types";
 
 /**
- * Represents a bookmarked lexical entry from the database.
- */
-
-/**
- *
+ * Serialized entry shape returned by bookmark server functions.
  */
 export interface BookmarkedEntry {
   /** Entry UUID */
@@ -23,7 +19,7 @@ export interface BookmarkedEntry {
 }
 
 /**
- * Get all bookmarked entries for the current user
+ * Server function placeholder for listing the current user's bookmarked entries.
  */
 export const getBookmarks = createServerFunction({ method: "GET" }).handler(
   // eslint-disable-next-line @typescript-eslint/require-await
@@ -33,7 +29,7 @@ export const getBookmarks = createServerFunction({ method: "GET" }).handler(
 );
 
 /**
- * Check if an entry is bookmarked by the current user
+ * Server function placeholder for checking bookmark status of a single entry.
  */
 export const isBookmarked = createServerFunction({ method: "GET" })
   .validator((data: { entryId: string }) => data)
@@ -45,7 +41,7 @@ export const isBookmarked = createServerFunction({ method: "GET" })
   );
 
 /**
- * Add a bookmark for the current user
+ * Server function placeholder for creating a bookmark for one entry.
  */
 export const addBookmark = createServerFunction({ method: "POST" })
   .validator((data: { entryId: string }) => data)
@@ -57,7 +53,7 @@ export const addBookmark = createServerFunction({ method: "POST" })
   );
 
 /**
- * Remove a bookmark for the current user
+ * Server function placeholder for removing a bookmark for one entry.
  */
 export const removeBookmark = createServerFunction({ method: "POST" })
   .validator((data: { entryId: string }) => data)
@@ -69,7 +65,7 @@ export const removeBookmark = createServerFunction({ method: "POST" })
   );
 
 /**
- * Toggle bookmark status for an entry
+ * Server function placeholder for toggling bookmark state and returning the new status.
  */
 export const toggleBookmark = createServerFunction({ method: "POST" })
   .validator((data: { entryId: string }) => data)

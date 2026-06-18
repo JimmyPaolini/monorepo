@@ -1,27 +1,20 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
+  aspectBodies as specialtyAspectBodies,
   specialtyAspects,
-  symbolByBody,
-  symbolBySpecialtyAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import {
-  capitalize,
-  isBody,
-  isSpecialtyAspect,
-  specialtyAspectBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { SpecialtyAspectsEventService } from "./specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
+
+import type { LongitudesWindow } from "./specialty-aspects.types";
 import type {
   AspectPhase,
   Body,
   SpecialtyAspect,
-  SpecialtyAspectSymbol,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -42,9 +35,9 @@ export class SpecialtyAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    aspectsUtilitiesService: AspectsUtilities,
+    private readonly specialtyAspectsEventService: SpecialtyAspectsEventService,
+    private readonly specialtyAspectsProgressiveService: SpecialtyAspectsProgressiveService,
   ) {
     this.logger.setContext(SpecialtyAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
@@ -62,68 +55,81 @@ export class SpecialtyAspectsService {
 
   // 🔏 Private Methods
 
-  private getSpecialtyAspectProgressiveEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    const bodiesCapitalized = _.sortBy(
-      beginning.categories.filter((category) =>
-        specialtyAspectBodies
-          .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
-          .includes(category),
-      ),
-    );
+  /** Detects a specialty-aspect event for one body pair using three-point longitude sampling. */
+  private detectBodyPairEvent(args: {
+    body1: Body;
+    body2: Body;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+    nextMinute: Moment;
+    previousMinute: Moment;
+  }): Event | null {
+    const {
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    } = args;
+    const longitudes = this.detectBodyPairLongitudes({
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    });
+    const phase = this.detectAspectPhase(longitudes);
+    if (!phase) return null;
+    return this.buildSpecialtyAspectEvent({
+      body1,
+      body2,
+      longitudeBody1: longitudes.currentLongitudeBody1,
+      longitudeBody2: longitudes.currentLongitudeBody2,
+      phase,
+      timestamp: minute,
+    });
+  }
 
-    const aspectCapitalized = beginning.categories.find((category) =>
-      specialtyAspects
-        .map((specialtyAspect) => _.startCase(specialtyAspect))
-        .includes(category),
-    );
-
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
-      throw new Error(
-        `Could not extract aspect info from categories: ${beginning.categories.join(
-          ", ",
-        )}`,
-      );
-    }
-
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const aspectLower = aspectCapitalized.toLowerCase();
-    const body1Lower = body1Capitalized.toLowerCase();
-    const body2Lower = body2Capitalized.toLowerCase();
-    if (
-      !isSpecialtyAspect(aspectLower) ||
-      !isBody(body1Lower) ||
-      !isBody(body2Lower)
-    ) {
-      throw new Error(
-        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
-      );
-    }
-    const aspect = aspectLower;
-    const body1 = body1Lower;
-    const body2 = body2Lower;
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const aspectSymbol = symbolBySpecialtyAspect[aspect];
-
+  /** Reads previous/current/next longitudes for a body pair from coordinate ephemerides. */
+  private detectBodyPairLongitudes(args: {
+    body1: Body;
+    body2: Body;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+    nextMinute: Moment;
+    previousMinute: Moment;
+  }): LongitudesWindow {
+    const {
+      body1,
+      body2,
+      coordinateEphemerisByBody,
+      minute,
+      nextMinute,
+      previousMinute,
+    } = args;
+    const body1LongitudesWindow =
+      this.specialtyAspectsEventService.getBodyLongitudesWindow({
+        ephemeris: coordinateEphemerisByBody[body1],
+        minute,
+        nextMinute,
+        previousMinute,
+      });
+    const body2LongitudesWindow =
+      this.specialtyAspectsEventService.getBodyLongitudesWindow({
+        ephemeris: coordinateEphemerisByBody[body2],
+        minute,
+        nextMinute,
+        previousMinute,
+      });
     return {
-      categories: [
-        "Astronomy",
-        "Astrology",
-        "Simple Aspect",
-        "Specialty Aspect",
-        body1Capitalized,
-        body2Capitalized,
-        aspectCapitalized,
-      ],
-      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      end: ending.start,
-      start: beginning.start,
-      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+      currentLongitudeBody1: body1LongitudesWindow.current,
+      currentLongitudeBody2: body2LongitudesWindow.current,
+      nextLongitudeBody1: body1LongitudesWindow.next,
+      nextLongitudeBody2: body2LongitudesWindow.next,
+      previousLongitudeBody1: body1LongitudesWindow.previous,
+      previousLongitudeBody2: body2LongitudesWindow.previous,
     };
   }
 
@@ -136,15 +142,6 @@ export class SpecialtyAspectsService {
    * and categorization. Specialty aspects use distinct Unicode symbols
    * for each aspect type.
    *
-   * @param args - Event parameters
-   * @param longitudeBody1 - Ecliptic longitude of first body in degrees
-   * @param longitudeBody2 - Ecliptic longitude of second body in degrees
-   * @param timestamp - Exact moment of the aspect phase
-   * @param body1 - First celestial body
-   * @param body2 - Second celestial body
-   * @param phase - Aspect phase: forming, exact, or dissolving
-   * @returns Formatted calendar event with summary, description, and categories
-   * @throws When no valid specialty aspect is detected between the bodies
    * @see {@link getSpecialtyAspect} for aspect type determination
    */
   buildSpecialtyAspectEvent(args: {
@@ -167,56 +164,15 @@ export class SpecialtyAspectsService {
       );
       throw new Error("No specialty aspect found");
     }
-
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const specialtyAspectSymbol: SpecialtyAspectSymbol =
-      symbolBySpecialtyAspect[specialtyAspect];
-
-    let description: string;
-    let phaseEmoji: string;
-    let categories: string[];
-
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Specialty Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(specialtyAspect),
-    ];
-
-    if (phase === "perfective") {
-      description = `${body1Capitalized} perfective ${specialtyAspect} ${body2Capitalized}`;
-      phaseEmoji = "🎯";
-      categories = [...baseCategories, "Perfective"];
-    } else if (phase === "forming") {
-      description = `${body1Capitalized} forming ${specialtyAspect} ${body2Capitalized}`;
-      phaseEmoji = "➡️";
-      categories = [...baseCategories, "Forming"];
-    } else {
-      description = `${body1Capitalized} dissolving ${specialtyAspect} ${body2Capitalized}`;
-      phaseEmoji = "⬅️";
-      categories = [...baseCategories, "Dissolving"];
-    }
-
-    const summary = `${phaseEmoji} ${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}`;
-
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    const specialtyAspectEvent: Event = {
-      categories,
-      description,
-      end: timestamp,
-      start: timestamp,
-      summary,
-    };
-    return specialtyAspectEvent;
+    return this.specialtyAspectsEventService.assembleSpecialtyAspectEvent({
+      body1,
+      body2,
+      phase,
+      specialtyAspect,
+      timestamp,
+    });
   }
+
   /**
    * Detects specialty aspect events within a single minute time window.
    *
@@ -225,74 +181,29 @@ export class SpecialtyAspectsService {
    * the phase (forming, exact, or dissolving) based on comparison with
    * adjacent minutes.
    *
-   * @param args - Configuration object
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param currentMinute - The minute to check for aspect events
-   * @returns Array of calendar events for all detected specialty aspects at this minute
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
     const { coordinateEphemerisByBody, minute } = args;
-
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
-
     const specialtyAspectEvents: Event[] = [];
 
     for (const body1 of specialtyAspectBodies) {
       const index = specialtyAspectBodies.indexOf(body1);
       for (const body2 of specialtyAspectBodies.slice(index + 1)) {
-        if (body1 === body2) {
-          continue;
-        }
-
-        const ephemerisBody1 = coordinateEphemerisByBody[body1];
-        const ephemerisBody2 = coordinateEphemerisByBody[body2];
-
-        const {
-          current: currentLongitudeBody1,
-          next: nextLongitudeBody1,
-          previous: previousLongitudeBody1,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody1,
-          previousMinute,
+        if (body1 === body2) continue;
+        const event = this.detectBodyPairEvent({
+          body1,
+          body2,
+          coordinateEphemerisByBody,
           minute,
           nextMinute,
-        );
-        const {
-          current: currentLongitudeBody2,
-          next: nextLongitudeBody2,
-          previous: previousLongitudeBody2,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody2,
           previousMinute,
-          minute,
-          nextMinute,
-        );
-
-        const phase = this.detectAspectPhase({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
         });
-
-        if (phase) {
-          specialtyAspectEvents.push(
-            this.buildSpecialtyAspectEvent({
-              body1,
-              body2,
-              longitudeBody1: currentLongitudeBody1,
-              longitudeBody2: currentLongitudeBody2,
-              phase,
-              timestamp: minute,
-            }),
-          );
-        }
+        if (event) specialtyAspectEvents.push(event);
       }
     }
 
@@ -306,98 +217,27 @@ export class SpecialtyAspectsService {
    * to create events spanning the entire active period of each aspect.
    * Progressive events show when an aspect is in orb rather than just boundary moments.
    *
-   * @param events - All events to process (non-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const progressiveEvents: Event[] = [];
-
-    // Filter to specialty aspect events only
-    const specialtyAspectEvents = events.filter((event) =>
-      event.categories.includes("Specialty Aspect"),
-    );
-
-    // Group by body pair and aspect type using categories
-    const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
-      const planets = _.sortBy(
-        event.categories.filter((category) =>
-          specialtyAspectBodies
-            .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
-            .includes(category),
-        ),
-      );
-
-      const aspect = event.categories.find((category) =>
-        specialtyAspects
-          .map((specialtyAspect) => _.startCase(specialtyAspect))
-          .includes(category),
-      );
-
-      if (planets.length === 2 && aspect) {
-        return `${planets[0]}-${aspect}-${planets[1]}`;
-      }
-      return "";
-    });
-
-    // Process each group
-    for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-      if (!key) {
-        continue;
-      }
-
-      const formingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Forming"),
-      );
-      const dissolvingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Dissolving"),
-      );
-
-      const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-        formingEvents,
-        dissolvingEvents,
-        `specialty aspect ${key}`,
-      );
-
-      progressiveEvents.push(
-        ...pairs.map(([beginning, ending]) =>
-          this.getSpecialtyAspectProgressiveEvent(beginning, ending),
-        ),
-      );
-    }
-
-    return progressiveEvents;
+    return this.specialtyAspectsProgressiveService.detectProgressive(events);
   }
 
   /**
    * Returns the first specialty aspect between two bodies, or `null` if none is within orb.
    *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
    */
   getSpecialtyAspect(args: {
     longitudeBody1: number;
     longitudeBody2: number;
   }): null | SpecialtyAspect {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of specialtyAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          aspect,
-          longitudeBody1,
-          longitudeBody2,
-        })
-      ) {
-        return aspect;
-      }
-    }
-    return null;
+    return this.specialtyAspectsEventService.getSpecialtyAspect(args);
   }
 
   /**
    * Classifies the specialty aspect phase (forming / perfective / dissolving) between two bodies
    * across three consecutive minutes, or `null` if no specialty aspect is in progress.
    *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
    */
   getSpecialtyAspectPhase(args: {
     currentLongitudeBody1: number;

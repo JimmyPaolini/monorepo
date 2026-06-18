@@ -30,12 +30,14 @@ Specialized domain knowledge for working on specific systems or patterns:
 <!-- agent-skills-table-of-contents start -->
 - **[checkout-branch](documentation/skills/checkout-branch/SKILL.md)**: Create and validate Git branch names following this monorepo's Conventional Commits naming convention. Use this skill when creating branches, renaming branches, or when asked about branch naming rules and validation.
 - **[code-generator-patterns](documentation/skills/code-generator-patterns/SKILL.md)**: Create and extend Nx generators using templates, prompts, and file generation. Use this skill when building new generators or modifying the generator framework.
+- **[commenting](documentation/skills/commenting/SKILL.md)**: Apply monorepo commenting conventions for TypeScript, Python, and any language. USE WHEN writing or reviewing comments, adding section comments, organizing code into logical groups, or asked about comment style. Covers when to comment, how to write good comments, section comment format (emoji + capitalized name), emoji reference table, and anti-patterns to avoid (obvious comments, redundant JSDoc, TODO lint bypasses, dash-line dividers).
 - **[commit-code](documentation/skills/commit-code/SKILL.md)**: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
 - **[create-pull-request](documentation/skills/create-pull-request/SKILL.md)**: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
 - **[docker-workflows](documentation/skills/docker-workflows/SKILL.md)**: Build and deploy Docker images in the monorepo - platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
 - **[ephemeris-pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)**: Understand the caelundas ephemeris calculation pipeline - NASA JPL API integration, astronomical event detection, and calendar generation. Use this skill when working on caelundas.
 - **[error-handling-patterns](documentation/skills/error-handling-patterns/SKILL.md)**: Apply monorepo error handling patterns: Zod validation at boundaries, typed errors, early returns, and retry/backoff. Use when implementing error handling or input validation.
 - **[github-actions](documentation/skills/github-actions/SKILL.md)**: Build and test GitHub Actions workflows in this monorepo. Covers the composite action pattern and workflow templates. Use this skill when creating, modifying, or testing GitHub Actions workflows.
+- **[imports-conventions](documentation/skills/imports-conventions/SKILL.md)**: Import organization conventions for TypeScript in this monorepo. Use when writing or reviewing imports, when ESLint reports import order errors, when asked about monorepo path aliases, type-only imports, or named vs default exports. Covers auto-sorted import order, Bundler extensionless imports, relative parent import avoidance, and the monorepo namespace.
 - **[kubernetes-deployment](documentation/skills/kubernetes-deployment/SKILL.md)**: Deploy applications to Kubernetes using Helm charts, manage PVCs, and work with K8s jobs. Use this skill when deploying caelundas or managing Kubernetes resources.
 - **[link-workspace-packages](documentation/skills/link-workspace-packages/SKILL.md)**: 'Link workspace packages in monorepos (npm, yarn, pnpm, bun). USE WHEN: (1) you just created or generated new packages and need to wire up their dependencies, (2) user imports from a sibling package and needs to add it as a dependency, (3) you get resolution errors for workspace packages (@org/*) like "cannot find module", "failed to resolve import", "TS2307", or "cannot resolve". DO NOT patch around with tsconfig paths or manual package.json edits - use the package manager''s workspace commands to fix actual linking.'
 - **[mcp-chrome-devtools](documentation/skills/mcp-chrome-devtools/SKILL.md)**: Use the Chrome DevTools MCP server for browser debugging, performance profiling, and runtime inspection. Use this skill when debugging web applications or analyzing frontend performance.
@@ -50,6 +52,8 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[nx-workspace](documentation/skills/nx-workspace/SKILL.md)**: "Explore and understand Nx workspaces. USE WHEN answering questions about the workspace, projects, or tasks. ALSO USE WHEN an nx command fails or you need to check available targets/configuration before running a task. EXAMPLES: 'What projects are in this workspace?', 'How is project X configured?', 'What depends on library Y?', 'What targets can I run?', 'Cannot find configuration for task', 'debug nx task failure'."
 - **[postgres-data](documentation/skills/postgres-data/SKILL.md)**: 'Use this skill to dump and restore local PostgreSQL databases, schemas, and tables (collections) using Nx targets and pg_dump/pg_restore. Use when asked to backup, dump, export, restore, import, or copy local database data.'
 - **[postgres-sql](documentation/skills/postgres-sql/SKILL.md)**: Toolkit for interactively querying and exploring the local PostgreSQL database schema and data using the local psql client. Use when asked to write a SQL query, explore database schemas, inspect table structures, or execute local database queries. Relies on workspace default environment variables.
+- **[python-conventions](documentation/skills/python-conventions/SKILL.md)**: Python project conventions for this monorepo. Use when creating a new Python project, configuring Python tools (ruff, pyright, ty, pytest, bandit, vulture), writing or reviewing pyproject.toml, setting up Nx targets for Python, or asked about Python tooling setup, uv, or the language:python tag. Covers the project.json pattern, pyproject.toml structure, targetDefaults, tool execution via uv run, and ty pre-1.0 configuration rules.
+- **[react-conventions](documentation/skills/react-conventions/SKILL.md)**: React coding conventions for this monorepo. Use when writing or reviewing React components, when asked about component structure, section ordering, Tailwind CSS usage, state management patterns, conditional rendering, list rendering, or React 19 conventions. Covers component section layout (🔖🧩🪝🏗💪🏁🎨), Tailwind CSS with theme tokens, TanStack Router file-based routing, lexico-components usage, and testing with Vitest + RTL.
 - **[refresh-documentation](documentation/skills/refresh-documentation/SKILL.md)**: Review and update all project documentation to keep it accurate and current. Use this skill when asked to refresh, update, or audit documentation, README files, AGENTS.md files, skill descriptions, or any markdown docs across the monorepo.
 - **[rename-branch](documentation/skills/rename-branch/SKILL.md)**: "Rename a git branch or worktree. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
@@ -60,7 +64,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
 - **[triage-deployment](documentation/skills/triage-deployment/SKILL.md)**: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
 - **[triage-submission](documentation/skills/triage-submission/SKILL.md)**: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-- **[typescript-conventions](documentation/skills/typescript-conventions/SKILL.md)**: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, or the no-any rule. Covers strict mode flags, explicit return types, type import syntax, naming conventions, and error handling patterns.
+- **[typescript-conventions](documentation/skills/typescript-conventions/SKILL.md)**: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, the no-any rule, async functions, floating promises, exhaustive switches, readonly properties, or non-null assertions. Covers strict mode flags, explicit return types, type import syntax, naming conventions, error handling, and common gotchas.
 - **[update-pull-request](documentation/skills/update-pull-request/SKILL.md)**: Update an existing pull request's title and description to accurately reflect the implemented changes. Use this skill when asked to update, refresh, or rewrite a PR title or description, sync a PR with the latest changes, or when the PR description no longer matches the implementation.
 - **[validate-code](documentation/skills/validate-code/SKILL.md)**: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
 <!-- agent-skills-table-of-contents end -->
@@ -93,6 +97,13 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
 | `react-component` | `c` | Generate a React component with test file |
 <!-- conformance-generators-table end -->
+
+## Work Scope Discipline
+
+- Focus on one project at a time when coding or refactoring.
+- If a request spans multiple projects or scopes, complete the first project end-to-end before starting the next one.
+- If the work is truly independent across projects, split it into separate subagents or separate passes so each agent stays project-scoped.
+- Avoid mixing unrelated project changes in one context unless the task is explicitly orchestrating them.
 
 ## Code Quality & Validation
 
@@ -137,7 +148,7 @@ See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for t
 - **No Acronyms or Abbreviations**: Never use acronyms or abbreviations for variable names, function names, parameters, etc.
 - Use explicit and unabbreviated names (e.g. `request` instead of `req`, `response` instead of `res`, `index` instead of `i`, `error` instead of `e`).
 - **Exceptions**: Abbreviations are acceptable when avoiding language reserved word collisions (e.g., using `args` instead of `arguments`, `str` instead of `string`).
-- See [abbreviations.md](documentation/abbreviations.md) for the source of truth.
+- Abbreviation rules are enforced by ESLint (`unicorn/prevent-abbreviations`) and CSpell (`flagWords`).
 
 ### Project Tags
 
@@ -155,6 +166,19 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Type imports**: Use `import { type Foo } from './types'` (enforced by ESLint)
 - **File extensions in imports**: Always include `.js` extensions for relative imports (required by NodeNext resolution)
 - **No `any` types**: Use `unknown` or proper typing
+- **No non-null assertions**: Never use `!` — use optional chaining or explicit guards
+- **Readonly class properties**: Mark all never-mutated class properties as `readonly`
+- **Exhaustive switches**: All switch statements on union types must handle every member
+- **Async functions**: All functions returning `Promise` must use the `async` keyword
+- **No floating promises**: Every Promise must be awaited or explicitly `void`-annotated
+- **Consistent returns**: All code paths must uniformly return or not return a value
+- **Curly braces**: Always use `{}` for `if`/`else`/`for`/`while` — no single-line forms
+- **Early returns**: Remove `else` after a `return` — use guard clauses
+- **Object shorthand**: Use `{ name }` instead of `{ name: name }`
+- **Template literals**: Use `` `Hello ${name}` `` instead of `"Hello " + name`
+- **Max 3 function parameters**: Group extras into an options object (constructors: 12)
+- **JSDoc on public APIs**: Public functions, classes, methods, interfaces, types, and enums must have JSDoc — only when it adds non-obvious context
+- **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [commenting skill](documentation/skills/commenting/SKILL.md).
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
 
@@ -311,7 +335,7 @@ See [React Conventions](documentation/conventions/react.md) for component struct
 
 ### Code Quality
 
-- [Code Commenting](documentation/code-quality/commenting.md): Writing self-explanatory code with minimal comments
+- [Commenting](documentation/skills/commenting/SKILL.md): Conventions for writing comments, section headers, and emoji section format
 
 ### Architecture
 

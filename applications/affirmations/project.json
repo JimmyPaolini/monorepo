@@ -4,9 +4,9 @@
   "projectType": "application",
   "sourceRoot": "applications/affirmations/src",
   "tags": [
+    "domain:affirmations",
     "generator:jupyter-notebook-application",
     "language:python",
-    "scope:affirmations",
     "type:application"
   ],
   "targets": {

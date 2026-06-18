@@ -10,7 +10,8 @@ import { LoggerService } from "../logger/logger.service";
 import type { AnyNode } from "domhandler";
 
 /**
- * Service for handling Lexeme principal parts.
+ * Parses Wiktionary HTML to extract a lexeme's principal parts and persists
+ * them with TypeORM cascade diffing to avoid orphaned records.
  */
 @Injectable()
 export class PrincipalPartsService {
@@ -29,6 +30,34 @@ export class PrincipalPartsService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  /**
+   * Classifies principal part for principal-part parsing.
+   */
+  private classifyPrincipalPart(args: {
+    $: cheerio.CheerioAPI;
+    b: AnyNode;
+    lexeme: Lexeme;
+    principalParts: PrincipalPart[];
+  }): void {
+    const { $, b, lexeme, principalParts } = args;
+    const previous = $(b).prev("i").text();
+    if (previous === "or") {
+      const lastPrincipalPart = principalParts.pop();
+      if (!lastPrincipalPart) return;
+      lastPrincipalPart.text = [
+        ...lastPrincipalPart.text,
+        $(b).text().toLowerCase(),
+      ];
+      principalParts.push(lastPrincipalPart);
+    } else {
+      const pp = new PrincipalPart();
+      pp.name = previous;
+      pp.text = [$(b).text().toLowerCase()];
+      pp.lexeme = lexeme;
+      principalParts.push(pp);
+    }
+  }
 
   // 🌎 Public Methods
 
@@ -53,12 +82,13 @@ export class PrincipalPartsService {
   /**
    * Parses principal parts from the Wiktionary HTML element context.
    */
-  parsePrincipalParts(
-    lexeme: Lexeme,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    firstPrincipalPartName: string,
-  ): { macronizedWord: string; principalParts: PrincipalPart[] } {
+  parsePrincipalParts(args: {
+    $: cheerio.CheerioAPI;
+    elt: AnyNode;
+    firstPrincipalPartName: string;
+    lexeme: Lexeme;
+  }): { macronizedWord: string; principalParts: PrincipalPart[] } {
+    const { $, elt, firstPrincipalPartName, lexeme } = args;
     const principalParts: PrincipalPart[] = [];
 
     const firstPP = new PrincipalPart();
@@ -71,22 +101,7 @@ export class PrincipalPartsService {
     principalParts.push(firstPP);
 
     for (const b of $(elt).children("b")) {
-      const previous = $(b).prev("i").text();
-      if (previous === "or") {
-        const lastPrincipalPart = principalParts.pop();
-        if (!lastPrincipalPart) continue;
-        lastPrincipalPart.text = [
-          ...lastPrincipalPart.text,
-          $(b).text().toLowerCase(),
-        ];
-        principalParts.push(lastPrincipalPart);
-      } else {
-        const pp = new PrincipalPart();
-        pp.name = previous;
-        pp.text = [$(b).text().toLowerCase()];
-        pp.lexeme = lexeme;
-        principalParts.push(pp);
-      }
+      this.classifyPrincipalPart({ $, b, lexeme, principalParts });
     }
 
     if (principalParts.length === 0) throw new Error("no principal parts");

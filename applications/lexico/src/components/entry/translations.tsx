@@ -9,9 +9,9 @@ import { cn } from "@monorepo/lexico-components";
 import type { ReactElement } from "react";
 
 /**
- * Props for the Translations component that displays entry translations.
+ * Inputs for rendering translation bullets with optional collapsible overflow.
  */
-export interface TranslationsProps {
+export interface TranslationsProperties {
   /** Additional class names */
   className?: string;
   /** Whether translations are expanded by default */
@@ -21,9 +21,9 @@ export interface TranslationsProps {
 }
 
 /**
- *
+ * Renders translations inline, collapsing entries after the first two when expandable.
  */
-export function Translations(properties: TranslationsProps): ReactElement {
+export function Translations(properties: TranslationsProperties): ReactElement {
   const { className, defaultOpen = false, translations } = properties;
 
   // 🪝 Hooks

@@ -3,15 +3,18 @@ import { fileURLToPath } from "node:url";
 
 import { formatFiles, type Tree } from "@nx/devkit";
 
+import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
+/**
+ * Generate jupyter notebook application options.
+ */
 interface GenerateJupyterNotebookApplicationOptions {
   description?: string;
   name?: string;
 }
 
-const APPLICATIONS_DIRECTORY = "applications";
 const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );

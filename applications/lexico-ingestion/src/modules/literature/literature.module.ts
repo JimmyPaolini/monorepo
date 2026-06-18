@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import {
   Author,
-  LexicoDatabaseModule,
+  DatabaseModule,
   Line,
   Text,
   Token,
@@ -13,7 +13,10 @@ import {
 import { LoggerModule } from "../logger/logger.module";
 import { NumeralsModule } from "../numerals/numerals.module";
 
+import { LiteratureLibraryScanService } from "./literature-library-scan.service";
 import { LiteratureCommand } from "./literature.command";
+import { LiteratureService } from "./literature.service";
+import { LiteratureTextIngestionService } from "./literature.text-ingestion.service";
 
 /**
  * Module for literature ingestion.
@@ -22,11 +25,16 @@ import { LiteratureCommand } from "./literature.command";
   controllers: [],
   exports: [LiteratureCommand],
   imports: [
-    LexicoDatabaseModule,
+    DatabaseModule,
     TypeOrmModule.forFeature([Author, Text, Line, Token, Word]),
     LoggerModule,
     NumeralsModule,
   ],
-  providers: [LiteratureCommand],
+  providers: [
+    LiteratureCommand,
+    LiteratureLibraryScanService,
+    LiteratureService,
+    LiteratureTextIngestionService,
+  ],
 })
 export class LiteratureModule {}

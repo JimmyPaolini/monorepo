@@ -1,10 +1,16 @@
-import baseConfig from "../../configuration/eslint.config.base.ts";
+import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🛠️ Base Config
   ...baseConfig,
+
+  // 🚫 Project Ignores
+  // Exclude shadcn/ui generated components (auto-generated, not hand-authored)
   {
     ignores: ["src/components/**", "src/lib/**", "src/hooks/**"],
   },
+
+  // 📦 Dependency Checks
   {
     files: ["**/*.json"],
     rules: {

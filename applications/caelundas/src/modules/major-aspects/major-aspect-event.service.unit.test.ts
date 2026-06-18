@@ -1,0 +1,332 @@
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { MathService } from "@caelundas/src/modules/math/math.service";
+import { Test } from "@nestjs/testing";
+import moment from "moment-timezone";
+import { beforeAll, describe, expect, it, vi } from "vitest";
+
+import { MajorAspectEventService } from "./major-aspect-event.service";
+
+vi.mock("fs", () => ({
+  default: {
+    writeFileSync: vi.fn(),
+  },
+}));
+
+describe("MajorAspectEventService", () => {
+  let service: MajorAspectEventService;
+  let aspectsUtilitiesService: AspectsUtilities;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        MajorAspectEventService,
+        AspectsUtilities,
+        MathService,
+      ],
+    }).compile();
+
+    service = await module.resolve(MajorAspectEventService);
+    aspectsUtilitiesService = module.get(AspectsUtilities);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("buildMajorAspectEvent", () => {
+    it("should create perfective conjunction event", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "sun",
+        body2: "moon",
+        longitudeBody1: 0,
+        longitudeBody2: 0,
+        phase: "perfective",
+        timestamp,
+      });
+
+      expect(event.summary).toContain("🎯");
+      expect(event.summary).toContain("☀️");
+      expect(event.summary).toContain("🌙");
+      expect(event.summary).toContain("☌");
+      expect(event.description).toBe("Sun perfective conjunct Moon");
+      expect(event.categories).toContain("Astronomy");
+      expect(event.categories).toContain("Astrology");
+      expect(event.categories).toContain("Major Aspect");
+      expect(event.categories).toContain("Sun");
+      expect(event.categories).toContain("Moon");
+      expect(event.categories).toContain("Conjunct");
+      expect(event.categories).toContain("Perfective");
+      expect(event.start).toEqual(timestamp);
+      expect(event.end).toEqual(timestamp);
+    });
+
+    it("should create forming opposition event", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "sun",
+        body2: "mars",
+        longitudeBody1: 0,
+        longitudeBody2: 178,
+        phase: "forming",
+        timestamp,
+      });
+
+      expect(event.summary).toContain("➡️");
+      expect(event.summary).toContain("☀️");
+      expect(event.summary).toContain("♂️");
+      expect(event.summary).toContain("☍");
+      expect(event.description).toBe("Sun forming opposite Mars");
+      expect(event.categories).toContain("Forming");
+      expect(event.categories).toContain("Opposite");
+    });
+
+    it("should create dissolving trine event", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "venus",
+        body2: "jupiter",
+        longitudeBody1: 0,
+        longitudeBody2: 122,
+        phase: "dissolving",
+        timestamp,
+      });
+
+      expect(event.summary).toContain("⬅️");
+      expect(event.summary).toContain("♀️");
+      expect(event.summary).toContain("♃");
+      expect(event.summary).toContain("△");
+      expect(event.description).toBe("Venus dissolving trine Jupiter");
+      expect(event.categories).toContain("Dissolving");
+      expect(event.categories).toContain("Trine");
+      expect(event.categories).toContain("Venus");
+      expect(event.categories).toContain("Jupiter");
+    });
+
+    it("should create square event", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "mercury",
+        body2: "saturn",
+        longitudeBody1: 0,
+        longitudeBody2: 90,
+        phase: "perfective",
+        timestamp,
+      });
+
+      expect(event.summary).toContain("☿");
+      expect(event.summary).toContain("♄");
+      expect(event.summary).toContain("□");
+      expect(event.description).toBe("Mercury perfective square Saturn");
+      expect(event.categories).toContain("Square");
+    });
+
+    it("should create sextile event", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "moon",
+        body2: "uranus",
+        longitudeBody1: 0,
+        longitudeBody2: 60,
+        phase: "perfective",
+        timestamp,
+      });
+
+      expect(event.summary).toContain("🌙");
+      expect(event.summary).toContain("♅");
+      expect(event.summary).toContain("⚹");
+      expect(event.description).toBe("Moon perfective sextile Uranus");
+      expect(event.categories).toContain("Sextile");
+    });
+
+    it("should throw error when no major aspect is found", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+
+      expect(() =>
+        service.buildMajorAspectEvent({
+          body1: "sun",
+          body2: "moon",
+          longitudeBody1: 0,
+          longitudeBody2: 45,
+          phase: "perfective",
+          timestamp,
+        }),
+      ).toThrow("No major aspect found");
+    });
+
+    it("should handle wrapped longitudes (near 360/0 degrees)", () => {
+      const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+      const event = service.buildMajorAspectEvent({
+        body1: "sun",
+        body2: "moon",
+        longitudeBody1: 358,
+        longitudeBody2: 2,
+        phase: "perfective",
+        timestamp,
+      });
+
+      expect(event.description).toContain("conjunct");
+    });
+  });
+
+  describe("isAspect", () => {
+    it("should return true for conjunction within orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
+          longitudeBody1: 0,
+          longitudeBody2: 5,
+        }),
+      ).toBe(true);
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
+          longitudeBody1: 100,
+          longitudeBody2: 105,
+        }),
+      ).toBe(true);
+    });
+
+    it("should return false for conjunction outside orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
+          longitudeBody1: 0,
+          longitudeBody2: 10,
+        }),
+      ).toBe(false);
+    });
+
+    it("should return true for opposition within orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "opposite",
+          longitudeBody1: 0,
+          longitudeBody2: 180,
+        }),
+      ).toBe(true);
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "opposite",
+          longitudeBody1: 0,
+          longitudeBody2: 175,
+        }),
+      ).toBe(true);
+    });
+
+    it("should return true for trine within orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "trine",
+          longitudeBody1: 0,
+          longitudeBody2: 120,
+        }),
+      ).toBe(true);
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "trine",
+          longitudeBody1: 0,
+          longitudeBody2: 115,
+        }),
+      ).toBe(true);
+    });
+
+    it("should return true for square within orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "square",
+          longitudeBody1: 0,
+          longitudeBody2: 90,
+        }),
+      ).toBe(true);
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "square",
+          longitudeBody1: 0,
+          longitudeBody2: 85,
+        }),
+      ).toBe(true);
+    });
+
+    it("should return true for sextile within orb", () => {
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "sextile",
+          longitudeBody1: 0,
+          longitudeBody2: 60,
+        }),
+      ).toBe(true);
+      expect(
+        aspectsUtilitiesService.isAspect({
+          aspect: "sextile",
+          longitudeBody1: 0,
+          longitudeBody2: 57,
+        }),
+      ).toBe(true);
+    });
+  });
+
+  describe("getMajorAspect", () => {
+    it("should return conjunct for bodies at same longitude", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 }),
+      ).toBe("conjunct");
+    });
+
+    it("should return conjunct for bodies within conjunction orb", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 }),
+      ).toBe("conjunct");
+    });
+
+    it("should return opposite for bodies 180° apart", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 }),
+      ).toBe("opposite");
+    });
+
+    it("should return trine for bodies 120° apart", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+      ).toBe("trine");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 240 }),
+      ).toBe("trine");
+    });
+
+    it("should return square for bodies 90° apart", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 }),
+      ).toBe("square");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 270 }),
+      ).toBe("square");
+    });
+
+    it("should return sextile for bodies 60° apart", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 }),
+      ).toBe("sextile");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 300 }),
+      ).toBe("sextile");
+    });
+
+    it("should return null when no major aspect is within orb", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
+      ).toBeNull();
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
+      ).toBeNull();
+    });
+
+    it("should handle wrapping around 360°", () => {
+      expect(
+        service.getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 }),
+      ).toBe("conjunct");
+    });
+  });
+});

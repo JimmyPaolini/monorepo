@@ -2,9 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { validateMarkdownConformance } from "./validator";
 
-// ---------------------------------------------------------------------------
-// Helpers & shared fixtures
-// ---------------------------------------------------------------------------
+// 🔧 Helpers & shared fixtures
 
 const README_TEMPLATE = `# {{namePascalCase}}
 
@@ -59,9 +57,7 @@ function validate(args: {
   }).errors.map((e) => e.message);
 }
 
-// ---------------------------------------------------------------------------
-// Heading validation
-// ---------------------------------------------------------------------------
+// 📋 Heading validation
 
 describe("validateMarkdownConformance — headings", () => {
   it("returns no errors when the instance matches the rendered template", () => {
@@ -119,9 +115,7 @@ describe("validateMarkdownConformance — headings", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Code block validation
-// ---------------------------------------------------------------------------
+// 📦 Code block validation
 
 describe("validateMarkdownConformance — code blocks", () => {
   it("returns no errors when all code blocks are present", () => {
@@ -173,9 +167,7 @@ describe("validateMarkdownConformance — code blocks", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Paragraph validation
-// ---------------------------------------------------------------------------
+// 📝 Paragraph validation
 
 describe("validateMarkdownConformance — paragraphs", () => {
   it("returns no errors when all paragraphs are present", () => {
@@ -201,9 +193,7 @@ describe("validateMarkdownConformance — paragraphs", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// List validation
-// ---------------------------------------------------------------------------
+// 📋 List validation
 
 describe("validateMarkdownConformance — lists", () => {
   it("returns no errors when all list items are present", () => {
@@ -240,9 +230,7 @@ describe("validateMarkdownConformance — lists", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Blockquote validation
-// ---------------------------------------------------------------------------
+// 💬 Blockquote validation
 
 describe("validateMarkdownConformance — blockquotes", () => {
   it("returns no errors when the blockquote is present", () => {
@@ -260,9 +248,7 @@ describe("validateMarkdownConformance — blockquotes", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Table validation
-// ---------------------------------------------------------------------------
+// 📊 Table validation
 
 describe("validateMarkdownConformance — tables", () => {
   it("returns no errors when the table is present with matching columns", () => {
@@ -291,9 +277,7 @@ describe("validateMarkdownConformance — tables", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Thematic break validation
-// ---------------------------------------------------------------------------
+// ➖ Thematic break validation
 
 describe("validateMarkdownConformance — thematic breaks", () => {
   it("returns no errors when the thematic break is present", () => {
@@ -313,9 +297,7 @@ describe("validateMarkdownConformance — thematic breaks", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Link validation
-// ---------------------------------------------------------------------------
+// 🔗 Link validation
 
 describe("validateMarkdownConformance — links", () => {
   it("returns no errors when the link is present with the correct URL", () => {
@@ -348,9 +330,7 @@ describe("validateMarkdownConformance — links", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Image validation
-// ---------------------------------------------------------------------------
+// 🖼️ Image validation
 
 describe("validateMarkdownConformance — images", () => {
   it("returns no errors when the image is present", () => {
@@ -372,9 +352,7 @@ describe("validateMarkdownConformance — images", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Inline formatting validation
-// ---------------------------------------------------------------------------
+// ✏️ Inline formatting validation
 
 describe("validateMarkdownConformance — inline formatting", () => {
   it("returns no errors when bold text is present", () => {
@@ -426,9 +404,7 @@ describe("validateMarkdownConformance — inline formatting", () => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// TODO line relaxation
-// ---------------------------------------------------------------------------
+// ✅ TODO line relaxation
 
 describe("validateMarkdownConformance — TODO lines", () => {
   it("accepts any content on a TODO line in a code block", () => {

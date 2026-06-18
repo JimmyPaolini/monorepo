@@ -526,4 +526,168 @@ describe("collectConformanceErrors", () => {
     expect(output).toContain("error A");
     expect(output).toContain("error C");
   });
+
+  it("includes line and column in output when present on error", () => {
+    const results = [
+      {
+        directoryName: "user",
+        results: [
+          {
+            errors: [
+              {
+                errorType: "code" as const,
+                fix: "Add missing node.",
+                instanceColumn: 4,
+                instanceLine: 10,
+                message: "Missing something",
+                templateColumn: 0,
+                templateLine: 5,
+              },
+            ],
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+          },
+        ],
+      },
+    ];
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("Line 10");
+    expect(output).toContain("Column 4");
+  });
+
+  it("includes JSON path in output when instancePath is set", () => {
+    const results = [
+      {
+        directoryName: "app",
+        results: [
+          {
+            errors: [
+              {
+                errorType: "code" as const,
+                fix: "Add the key.",
+                instancePath: "scripts.build",
+                message: "Missing key",
+                templatePath: "scripts.build",
+              },
+            ],
+            filename: "package.json",
+            instanceFilePath: "/tmp/app/package.json",
+            templateFilePath: "/tmp/tpl/package.json",
+          },
+        ],
+      },
+    ];
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain('JSON path "scripts.build"');
+  });
+
+  it("includes expected and actual values in output when both are set", () => {
+    const results = [
+      {
+        directoryName: "app",
+        results: [
+          {
+            errors: [
+              {
+                actual: '"old-value"',
+                errorType: "code" as const,
+                expected: '"new-value"',
+                fix: "Change the value.",
+                instancePath: "name",
+                message: "Value mismatch",
+                templatePath: "name",
+              },
+            ],
+            filename: "package.json",
+            instanceFilePath: "/tmp/app/package.json",
+            templateFilePath: "/tmp/tpl/package.json",
+          },
+        ],
+      },
+    ];
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("Expected:");
+    expect(output).toContain("new-value");
+    expect(output).toContain("Actual");
+    expect(output).toContain("old-value");
+  });
+});
+
+describe("validateInstanceFile — extension routing", () => {
+  let temporaryDirectory: string;
+
+  beforeEach(() => {
+    temporaryDirectory = fs.mkdtempSync(
+      path.join(os.tmpdir(), "validator-ext-"),
+    );
+  });
+
+  afterEach(() => {
+    fs.rmSync(temporaryDirectory, { recursive: true });
+  });
+
+  it("routes .json files to the JSON validator", () => {
+    const templatePath = path.join(temporaryDirectory, "package.json");
+    fs.writeFileSync(templatePath, `{ "name": "required-name" }`);
+    const instancePath = path.join(temporaryDirectory, "package.json");
+    fs.writeFileSync(instancePath, `{ "name": "required-name" }`);
+
+    const result = validateInstanceFile({
+      data: {},
+      instanceFilePath: instancePath,
+      templateFilePath: templatePath,
+    });
+
+    expect(result.errors).toEqual([]);
+  });
+
+  it("reports a JSON conformance error when a required key is missing", () => {
+    const templateDirectory = path.join(temporaryDirectory, "template");
+    const instanceDirectory = path.join(temporaryDirectory, "instance");
+    fs.mkdirSync(templateDirectory);
+    fs.mkdirSync(instanceDirectory);
+    const templatePath = path.join(templateDirectory, "project.json");
+    fs.writeFileSync(templatePath, `{ "version": "1.0.0" }`);
+    const instancePath = path.join(instanceDirectory, "project.json");
+    fs.writeFileSync(instancePath, `{ "name": "my-app" }`);
+
+    const result = validateInstanceFile({
+      data: {},
+      instanceFilePath: instancePath,
+      templateFilePath: templatePath,
+    });
+
+    expect(result.errors.length).toBeGreaterThan(0);
+  });
+
+  it("routes .md files to the markdown/text validator without throwing", () => {
+    const templatePath = path.join(temporaryDirectory, "README.md");
+    fs.writeFileSync(templatePath, "# My App\n");
+    const instancePath = path.join(temporaryDirectory, "README.md");
+    fs.writeFileSync(instancePath, "# My App\n");
+
+    const result = validateInstanceFile({
+      data: {},
+      instanceFilePath: instancePath,
+      templateFilePath: templatePath,
+    });
+
+    expect(result.errors).toEqual([]);
+  });
+
+  it("routes unknown extensions to the text validator without throwing", () => {
+    const templatePath = path.join(temporaryDirectory, "config.txt");
+    fs.writeFileSync(templatePath, "hello world");
+    const instancePath = path.join(temporaryDirectory, "config.txt");
+    fs.writeFileSync(instancePath, "hello world");
+
+    const result = validateInstanceFile({
+      data: {},
+      instanceFilePath: instancePath,
+      templateFilePath: templatePath,
+    });
+
+    expect(result.errors).toEqual([]);
+  });
 });

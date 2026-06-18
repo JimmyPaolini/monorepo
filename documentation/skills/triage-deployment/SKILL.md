@@ -73,7 +73,7 @@ The `analyze-code` composite target fans out to per-project sub-targets. Identif
 | Sub-target | Underlying tool | Config file |
 | --- | --- | --- |
 | `typecheck` | `tsc --noEmit` | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
-| `lint` | ESLint | Per-project `eslint.config.ts`, base: [configuration/eslint.config.base.ts](../../../configuration/eslint.config.base.ts) |
+| `lint` | ESLint | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
 | `format` | prettier + oxfmt | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
 | `spell-check` | cspell | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml) |
 | `knip` | knip | [configuration/knip.config.ts](../../../configuration/knip.config.ts) |

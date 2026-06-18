@@ -203,3 +203,7 @@ timotejroiko
 #endregion
 smallint
 stmts
+rglob
+splitlines
+isupper
+jsts

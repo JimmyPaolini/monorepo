@@ -10,6 +10,18 @@ import {
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
 /**
+ * Resolved error location.
+ */
+interface ResolvedErrorLocation {
+  breadcrumb: string;
+  instanceCharacter: number;
+  instanceLine: number;
+  snippet: string;
+  templateCharacter: number;
+  templateLine: number;
+}
+
+/**
  * Recursively walks the template and instance ASTs in lock-step, verifying
  * that every node present in the template also exists somewhere in the instance
  * at the same depth (superset semantics — the instance may contain extra nodes).
@@ -29,64 +41,52 @@ export function validateDepthFirstSearch(args: {
   templateNode: Node;
 }): ConformanceError[] {
   const { instanceFile, instanceNode, language, templateNode } = args;
-
-  const errors: ConformanceError[] = [];
-
   const instanceChildren = getChildren(instanceNode);
   const templateChildren = getChildren(templateNode);
-
+  const errors: ConformanceError[] = [];
   for (const templateChild of templateChildren) {
-    if (getKey(templateChild) !== null) {
-      // Keyed child: match by identity key.
-      const match = filterBySameKey(instanceChildren, templateChild)[0] ?? null;
-      if (match === null) {
-        errors.push(
-          buildError({ instanceFile, instanceNode, language, templateChild }),
-        );
-      } else {
-        errors.push(
-          ...validateDepthFirstSearch({
-            instanceFile,
-            instanceNode: match,
-            language,
-            templateNode: templateChild,
-          }),
-        );
-      }
-      continue;
-    }
-
-    // Keyless child: match by kind, picking the candidate with the fewest errors.
-    const instanceChildrenSameKind = filterBySameKind(
-      instanceChildren,
-      templateChild,
+    errors.push(
+      ...validateTemplateChild({
+        instanceChildren,
+        instanceFile,
+        instanceNode,
+        language,
+        templateChild,
+      }),
     );
-
-    if (instanceChildrenSameKind.length === 0) {
-      errors.push(
-        buildError({ instanceFile, instanceNode, language, templateChild }),
-      );
-    } else {
-      const fewestErrors = instanceChildrenSameKind
-        .map((instanceChildSameKind) =>
-          validateDepthFirstSearch({
-            instanceFile,
-            instanceNode: instanceChildSameKind,
-            language,
-            templateNode: templateChild,
-          }),
-        )
-        .reduce((fewestErrors, instanceChildErrors) =>
-          instanceChildErrors.length < fewestErrors.length
-            ? instanceChildErrors
-            : fewestErrors,
-        );
-
-      errors.push(...fewestErrors);
-    }
   }
-
   return errors;
+}
+
+/**
+ * Build error.
+ */
+function buildError(args: {
+  instanceFile: SourceFile;
+  instanceNode: Node;
+  language: ConformanceErrorLanguage;
+  templateChild: Node;
+}): ConformanceError {
+  const { instanceFile, instanceNode, language, templateChild } = args;
+  const {
+    breadcrumb,
+    instanceCharacter,
+    instanceLine,
+    snippet,
+    templateCharacter,
+    templateLine,
+  } = resolveErrorLocations({ instanceFile, instanceNode, templateChild });
+  return {
+    errorType: "code",
+    fix: `Add the missing ${breadcrumb} to the instance file. See the template for the expected structure.`,
+    instanceColumn: instanceCharacter + 1,
+    instanceLine: instanceLine + 1,
+    language,
+    message: `Missing ${breadcrumb}`,
+    templateColumn: templateCharacter + 1,
+    templateLine: templateLine + 1,
+    ...(snippet.length > 0 ? { expected: snippet } : {}),
+  };
 }
 
 /**
@@ -99,47 +99,132 @@ export function validateDepthFirstSearch(args: {
  * - The `SyntaxKind` name of the missing node and its identity key when present.
  * - A condensed snippet of the template node's text as the `expected` value.
  */
-function buildError(args: {
+function resolveErrorLocations(args: {
+  instanceFile: SourceFile;
+  instanceNode: Node;
+  templateChild: Node;
+}): ResolvedErrorLocation {
+  const { instanceFile, instanceNode, templateChild } = args;
+  const templateFile = templateChild.getSourceFile();
+  const instancePos = instanceFile.getLineAndCharacterOfPosition(
+    instanceNode.getStart(instanceFile),
+  );
+  const templatePos = templateFile.getLineAndCharacterOfPosition(
+    templateChild.getStart(),
+  );
+  const kind =
+    (SyntaxKind[templateChild.kind] as string | undefined) ??
+    `SyntaxKind(${String(templateChild.kind)})`;
+  const key = getKey(templateChild);
+  return {
+    breadcrumb: key === null ? kind : `${kind} "${key}"`,
+    instanceCharacter: instancePos.character,
+    instanceLine: instancePos.line,
+    snippet: templateChild
+      .getText(templateFile)
+      .replaceAll(/\s+/gu, " ")
+      .trim(),
+    templateCharacter: templatePos.character,
+    templateLine: templatePos.line,
+  };
+}
+
+/**
+ * Validate keyed child.
+ */
+function validateKeyedChild(args: {
+  instanceChildren: Node[];
   instanceFile: SourceFile;
   instanceNode: Node;
   language: ConformanceErrorLanguage;
   templateChild: Node;
-}): ConformanceError {
-  const { instanceFile, instanceNode, language, templateChild } = args;
-
-  const templateChildKey = getKey(templateChild);
-
-  const { character: instanceCharacter, line: instanceLine } =
-    instanceFile.getLineAndCharacterOfPosition(
-      instanceNode.getStart(instanceFile),
-    );
-
-  const templateFile = templateChild.getSourceFile();
-  const { character: templateCharacter, line: templateLine } =
-    templateFile.getLineAndCharacterOfPosition(templateChild.getStart());
-
-  const kind =
-    (SyntaxKind[templateChild.kind] as string | undefined) ??
-    `SyntaxKind(${String(templateChild.kind)})`;
-
-  const breadcrumb =
-    templateChildKey === null ? kind : `${kind} "${templateChildKey}"`;
-
-  const snippet = templateChild
-    .getText(templateFile)
-    .replaceAll(/\s+/gu, " ")
-    .trim();
-
-  const error: ConformanceError = {
-    errorType: "code",
-    fix: `Add the missing ${breadcrumb} to the instance file. See the template for the expected structure.`,
-    instanceColumn: instanceCharacter + 1,
-    instanceLine: instanceLine + 1,
+}): ConformanceError[] {
+  const {
+    instanceChildren,
+    instanceFile,
+    instanceNode,
     language,
-    message: `Missing ${breadcrumb}`,
-    templateColumn: templateCharacter + 1,
-    templateLine: templateLine + 1,
-    ...(snippet.length > 0 ? { expected: snippet } : {}),
-  };
-  return error;
+    templateChild,
+  } = args;
+
+  const match = filterBySameKey(instanceChildren, templateChild)[0] ?? null;
+  if (match === null) {
+    return [
+      buildError({ instanceFile, instanceNode, language, templateChild }),
+    ];
+  }
+
+  return validateDepthFirstSearch({
+    instanceFile,
+    instanceNode: match,
+    language,
+    templateNode: templateChild,
+  });
+}
+
+/**
+ * Validate keyless child.
+ */
+function validateKeylessChild(args: {
+  instanceChildren: Node[];
+  instanceFile: SourceFile;
+  instanceNode: Node;
+  language: ConformanceErrorLanguage;
+  templateChild: Node;
+}): ConformanceError[] {
+  const sameKind = filterBySameKind(args.instanceChildren, args.templateChild);
+
+  if (sameKind.length === 0) {
+    return [buildError(args)];
+  }
+
+  return sameKind
+    .map((child) =>
+      validateDepthFirstSearch({
+        instanceFile: args.instanceFile,
+        instanceNode: child,
+        language: args.language,
+        templateNode: args.templateChild,
+      }),
+    )
+    .reduce((minimumErrors, currentErrors) =>
+      currentErrors.length < minimumErrors.length
+        ? currentErrors
+        : minimumErrors,
+    );
+}
+
+/**
+ * Validate template child.
+ */
+function validateTemplateChild(args: {
+  instanceChildren: Node[];
+  instanceFile: SourceFile;
+  instanceNode: Node;
+  language: ConformanceErrorLanguage;
+  templateChild: Node;
+}): ConformanceError[] {
+  const {
+    instanceChildren,
+    instanceFile,
+    instanceNode,
+    language,
+    templateChild,
+  } = args;
+  if (getKey(templateChild) !== null) {
+    return validateKeyedChild({
+      instanceChildren,
+      instanceFile,
+      instanceNode,
+      language,
+      templateChild,
+    });
+  }
+  return validateKeylessChild({
+    instanceChildren,
+    instanceFile,
+    instanceNode,
+    language,
+    templateChild,
+  });
 }

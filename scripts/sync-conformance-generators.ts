@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 
 /**
- * Sync conformance generators table into AGENTS.md
+ * Sync conformance generators table into AGENTS.md.
  *
  * Reads tools/conformance/generators.json, extracts generator names, aliases,
  * and descriptions, and generates a markdown table that is injected into the
@@ -9,7 +9,7 @@
  *
  * Usage: pnpm exec nx run monorepo:sync-conformance-generators [check|write]
  *   check (default): Validate that AGENTS.md has up-to-date generators table, exit 1 if not
- *   write: Update AGENTS.md with generated generators table
+ *   write: Update AGENTS.md with generated generators table.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -18,6 +18,12 @@ import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+export const SYNC_CONFORMANCE_GENERATORS_FILES = [
+  "AGENTS.md",
+  "tools/conformance/generators.json",
+];
+
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const GENERATORS_FILE = path.join(
   WORKSPACE_ROOT,
@@ -26,12 +32,18 @@ const GENERATORS_FILE = path.join(
 const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
 const MODE = process.argv[2] ?? "check";
 
+/**
+ * Metadata for a conformance generator rendered in the AGENTS.md table.
+ */
 interface Generator {
   aliases: string[];
   description: string;
   name: string;
 }
 
+/**
+ * Shape of tools/conformance/generators.json consumed by this sync script.
+ */
 interface GeneratorsJson {
   generators: Record<
     string,
@@ -40,7 +52,7 @@ interface GeneratorsJson {
 }
 
 /**
- * Check if the generated content matches the stored content
+ * Check if the generated content matches the stored content.
  */
 function checkSync(generators: Generator[]): boolean {
   const generatedTable = generateGeneratorsTable(generators);
@@ -70,7 +82,7 @@ function checkSync(generators: Generator[]): boolean {
 }
 
 /**
- * Generate markdown table of generators
+ * Generate markdown table of generators.
  */
 function generateGeneratorsTable(generators: Generator[]): string {
   const header =
@@ -83,7 +95,7 @@ function generateGeneratorsTable(generators: Generator[]): string {
 }
 
 /**
- * Main entry point
+ * Main entry point.
  */
 function main(): void {
   try {
@@ -107,7 +119,7 @@ function main(): void {
 }
 
 /**
- * Read AGENTS.md and extract content around the generated section
+ * Read AGENTS.md and extract content around the generated section.
  */
 function readAgentsFile(): {
   afterMarker: string;
@@ -141,7 +153,7 @@ function readAgentsFile(): {
 }
 
 /**
- * Read generators from tools/conformance/generators.json
+ * Read generators from tools/conformance/generators.json.
  */
 function readGenerators(): Generator[] {
   const content = readFileSync(GENERATORS_FILE, "utf8");
@@ -155,7 +167,7 @@ function readGenerators(): Generator[] {
 }
 
 /**
- * Write the generated content to AGENTS.md
+ * Write the generated content to AGENTS.md.
  */
 function writeSync(generators: Generator[]): void {
   console.log("🔄 Generating conformance generators table...");
@@ -168,4 +180,6 @@ function writeSync(generators: Generator[]): void {
   console.log(`✅ Updated AGENTS.md with ${generators.length} generators`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-conformance-generators.ts")) {
+  main();
+}

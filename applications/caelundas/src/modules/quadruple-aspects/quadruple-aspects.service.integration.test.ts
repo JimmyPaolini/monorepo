@@ -1,6 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
+import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -17,7 +18,9 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * in only current or only previous, so phase detection fires exactly once.
  */
 
-const service = new QuadrupleAspectsService();
+const service = new QuadrupleAspectsService(
+  new QuadrupleAspectsComposerService(),
+);
 
 describe("quadruple-aspects.events integration", () => {
   describe("Grand Cross pattern", () => {

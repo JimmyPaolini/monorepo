@@ -11,7 +11,7 @@
     "types": ["node"]
   },
   "exclude": ["dist", "node_modules"],
-  "extends": "../../configuration/tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.json",
   "include": [
     "*.config.mts",
     "eslint.config.ts",

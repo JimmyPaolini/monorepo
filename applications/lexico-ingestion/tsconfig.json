@@ -9,13 +9,16 @@
     "noEmit": true,
     "paths": {
       "@lexico-ingestion/*": ["./*"],
-      "@monorepo/conformance/*": ["../../tools/conformance/*"]
+      "eslint-plugin-better-max-params": [
+        "../../configuration/types/eslint-plugin-better-max-params/index.d.ts"
+      ],
+      "monorepo/configuration/*": ["../../configuration/*"]
     },
     "target": "esnext",
     "types": ["node", "vitest/globals"]
   },
   "exclude": ["dist", "node_modules", "output"],
-  "extends": "../../configuration/tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.json",
   "include": [
     "eslint.config.ts",
     "scripts/**/*.ts",

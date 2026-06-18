@@ -1,12 +1,12 @@
 import {
   MARGIN_MINUTES,
-  symbolByBody,
-  symbolByOrbitalDirection,
+  retrogradeBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
-  capitalize,
-  retrogradeBodies,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+  symbolByBody,
+  symbolByOrbitalDirection,
+} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -23,10 +23,10 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 import type { Moment } from "moment-timezone";
 
 /**
- * Standard categories for retrograde/direct station events.
+ * Detects planetary retrograde and direct station events from minute-by-minute ecliptic longitude series.
  *
- * Base categories applied to all station events before adding direction-specific
- * categories ("Retrograde" or "Direct").
+ * Identifies stationary points where a planet's apparent motion reverses direction, emitting
+ * "Stationary Retrograde" and "Stationary Direct" boundary events as well as progressive duration spans.
  */
 @Injectable()
 export class RetrogradesService {
@@ -49,6 +49,81 @@ export class RetrogradesService {
 
   // 🔏 Private Methods
 
+  /**
+   * Detects body stations.
+   */
+  private detectBodyStations(
+    body: RetrogradeBody,
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): Event[] {
+    const events: Event[] = [];
+    const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
+      ephemeris,
+      minute.toISOString(),
+      "longitude",
+    );
+    const previousLongitudes = this.getPreviousLongitudes(ephemeris, minute);
+    const nextLongitudes = this.getNextLongitudes(ephemeris, minute);
+    const longitudes = { currentLongitude, nextLongitudes, previousLongitudes };
+    if (this.isRetrograde({ ...longitudes })) {
+      events.push(
+        this.buildRetrogradeEvent({
+          body,
+          direction: "retrograde",
+          timestamp: minute,
+        }),
+      );
+    }
+    if (this.isDirect({ ...longitudes })) {
+      events.push(
+        this.buildRetrogradeEvent({
+          body,
+          direction: "direct",
+          timestamp: minute,
+        }),
+      );
+    }
+    return events;
+  }
+
+  /**
+   * Derives next longitudes.
+   */
+  private getNextLongitudes(
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const date = minute.clone().add(index + 1, "minutes");
+      return this.ephemerisService.getCoordinateFromEphemeris(
+        ephemeris,
+        date.toISOString(),
+        "longitude",
+      );
+    });
+  }
+
+  /**
+   * Derives previous longitudes.
+   */
+  private getPreviousLongitudes(
+    ephemeris: CoordinateEphemeris,
+    minute: Moment,
+  ): number[] {
+    return Array.from({ length: MARGIN_MINUTES }, (_, index) => {
+      const date = minute.clone().subtract(MARGIN_MINUTES - index, "minutes");
+      return this.ephemerisService.getCoordinateFromEphemeris(
+        ephemeris,
+        date.toISOString(),
+        "longitude",
+      );
+    });
+  }
+
+  /**
+   * Derives retrograde progressive event.
+   */
   private getRetrogradeProgressiveEvent(
     beginningEvent: Event,
     endingEvent: Event,
@@ -72,6 +147,9 @@ export class RetrogradesService {
     };
   }
 
+  /**
+   * Determines whether direct.
+   */
   private isDirect(args: {
     currentLongitude: number;
     nextLongitudes: number[];
@@ -100,33 +178,7 @@ export class RetrogradesService {
   }
 
   /**
-   * Creates a progressive event from paired retrograde and direct station events.
-   *
-   * Extracts the planet symbol from the beginning event summary and formats a
-   * progressive event showing the span of the retrograde period.
-   *
-   * @param beginningEvent - Stationary retrograde event (marks start of retrograde)
-   * @param endingEvent - Stationary direct event (marks end of retrograde)
-   * @param planet - Planet that was retrograde
-   * @returns Progressive event spanning the retrograde period
-   *
-   * @remarks
-   * - Duration spans from beginningEvent.start to endingEvent.start (not endingEvent.end)
-   * - Capitalizes planet name for display
-   * - Extracts symbol from beginning event summary (assumes first non-whitespace sequence)
-   * - Summary format: `[symbol] ↩️ [Planet] Retrograde`
-   * - Uses singular category "Retrogrades" (not "Retrograde" or "Direct")
-   * - Categories: Astronomy, Astrology, Retrogrades
-   *
-   * @example
-   * ```typescript
-   * const duration = getRetrogradeProgressiveEvent(
-   *   { summary: "☿ ↩️ Mercury Stationary Retrograde", start: Mar 15, ... },
-   *   { summary: "☿ ➡️ Mercury Stationary Direct", start: Apr 8, ... },
-   *   "mercury"
-   * );
-   * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
-   * ```
+   * Determines whether retrograde.
    */
   private isRetrograde(args: {
     currentLongitude: number;
@@ -163,12 +215,6 @@ export class RetrogradesService {
    * Generates a calendar event with Unicode symbols and descriptive text for a
    * planetary stationary point. Events are categorized by direction to distinguish
    * retrograde stations from direct stations.
-   *
-   * @param args - Station event parameters
-   * @param body - Celestial body entering station (e.g., "mercury", "venus", "mars")
-   * @param timestamp - Exact time of the stationary point
-   * @param direction - Orbital direction: "retrograde" or "direct"
-   * @returns Calendar event with summary, description, and direction-specific categories
    *
    * @remarks
    * - Summary format: `[bodySymbol] [directionSymbol] [Body] Stationary [Direction]`
@@ -232,10 +278,6 @@ export class RetrogradesService {
    * transition between direct and retrograde motion. Uses a sliding window of
    * {@link MARGIN_MINUTES} to detect direction reversals in ecliptic longitude.
    *
-   * @param args - Ephemeris data and current time
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris for retrograde-capable bodies
-   * @param currentMinute - Time point to check for station events (minute precision)
-   * @returns Array of calendar events for detected stationary points (retrograde or direct)
    *
    * @remarks
    * - Checks only {@link retrogradeBodies} (Mercury through Pluto, excluding Sun/Moon)
@@ -265,65 +307,12 @@ export class RetrogradesService {
   }): Event[] {
     const { coordinateEphemerisByBody, minute } = args;
     const retrogradeEvents: Event[] = [];
-
     for (const body of retrogradeBodies) {
       const ephemeris = coordinateEphemerisByBody[body];
-
-      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
-        ephemeris,
-        minute.toISOString(),
-        "longitude",
+      retrogradeEvents.push(
+        ...this.detectBodyStations(body, ephemeris, minute),
       );
-
-      const previousLongitudes = Array.from(
-        { length: MARGIN_MINUTES },
-        (_, index) => {
-          const date = minute
-            .clone()
-            .subtract(MARGIN_MINUTES - index, "minutes");
-          return this.ephemerisService.getCoordinateFromEphemeris(
-            ephemeris,
-            date.toISOString(),
-            "longitude",
-          );
-        },
-      );
-
-      const nextLongitudes = Array.from(
-        { length: MARGIN_MINUTES },
-        (_, index) => {
-          const date = minute.clone().add(index + 1, "minutes");
-          return this.ephemerisService.getCoordinateFromEphemeris(
-            ephemeris,
-            date.toISOString(),
-            "longitude",
-          );
-        },
-      );
-
-      const timestamp = minute;
-      const longitudes = {
-        currentLongitude,
-        nextLongitudes,
-        previousLongitudes,
-      };
-
-      if (this.isRetrograde({ ...longitudes })) {
-        retrogradeEvents.push(
-          this.buildRetrogradeEvent({
-            body,
-            direction: "retrograde",
-            timestamp,
-          }),
-        );
-      }
-      if (this.isDirect({ ...longitudes })) {
-        retrogradeEvents.push(
-          this.buildRetrogradeEvent({ body, direction: "direct", timestamp }),
-        );
-      }
     }
-
     return retrogradeEvents;
   }
 
@@ -334,8 +323,6 @@ export class RetrogradesService {
    * to create progressive events spanning the retrograde period. This shows the full
    * span of time when a planet appears to move backward.
    *
-   * @param events - Array of all calendar events (will be filtered to direction events)
-   * @returns Array of progressive events spanning retrograde periods
    *
    * @remarks
    * - Filters to events with "Direction" category

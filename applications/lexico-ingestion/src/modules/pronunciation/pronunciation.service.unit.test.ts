@@ -6,6 +6,10 @@ import { Lexeme } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { PronunciationClassicalService } from "./pronunciation-classical.service";
+import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
+import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 import { PronunciationService } from "./pronunciation.service";
 
 describe("PronunciationService", () => {
@@ -19,6 +23,28 @@ describe("PronunciationService", () => {
         {
           provide: LoggerService,
           useValue: { log: () => {}, setContext: () => {} },
+        },
+        {
+          provide: PronunciationClassicalService,
+          useValue: { processClassicalCharacter: () => 0 },
+        },
+        {
+          provide: PronunciationPhonemesService,
+          useValue: { getStringPhoneme: () => "" },
+        },
+        {
+          provide: PronunciationEcclesiasticalService,
+          useValue: {
+            processEcclesiasticalCharacter: () => 0,
+          },
+        },
+        {
+          provide: PronunciationClassifier,
+          useValue: {
+            applyWiktionaryPronunciations: () => {},
+            processClassicalCharacter: () => 0,
+            processEcclesiasticalCharacter: () => 0,
+          },
         },
       ],
     }).compile();

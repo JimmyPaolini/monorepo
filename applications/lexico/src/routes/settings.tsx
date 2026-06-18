@@ -17,6 +17,9 @@ export const Route = createFileRoute("/settings")({
   component: SettingsPage,
 });
 
+/**
+ * Handle sign in.
+ */
 async function handleSignIn(): Promise<void> {
   const redirectTo = `${location.origin}/settings`;
   const { url } = await getGoogleSignInUrl({ data: { redirectTo } });
@@ -28,7 +31,7 @@ async function handleSignIn(): Promise<void> {
 /**
  * Settings page component for user account management.
  *
- * @returns React node
+ * @returns React node.
  */
 function SettingsPage(): ReactNode {
   const router = useRouter();
@@ -40,13 +43,6 @@ function SettingsPage(): ReactNode {
   };
 
   const handleDeleteAccount = async (): Promise<void> => {
-    // eslint-disable-next-line no-alert -- confirmation dialog required for destructive action
-    const confirmed = confirm(
-      "Are you sure you want to delete your account? This action cannot be undone.",
-    );
-    if (!confirmed) {
-      return;
-    }
     await deleteAccount();
     await router.invalidate();
     await router.navigate({ to: "/" });

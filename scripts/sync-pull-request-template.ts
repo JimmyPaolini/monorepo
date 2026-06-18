@@ -4,11 +4,11 @@
  * Sync PR template from .github/PULL_REQUEST_TEMPLATE.md into:
  * - documentation/skills/create-pull-request/SKILL.md
  * - .github/prompts/create-pull-request.prompt.md
- * - .github/prompts/update-pull-request.prompt.md
+ * - .github/prompts/update-pull-request.prompt.md.
  *
  * Usage: tsx scripts/sync-pull-request-template.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
- *   write: Update targets from PULL_REQUEST_TEMPLATE.md
+ *   write: Update targets from PULL_REQUEST_TEMPLATE.md.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -19,25 +19,32 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const WORKSPACE_ROOT = path.join(__dirname, "..");
+
+export const SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES = [
+  "documentation/skills/create-pull-request/SKILL.md",
+  "documentation/skills/update-pull-request/SKILL.md",
+];
+
+export const SYNC_PULL_REQUEST_TEMPLATE_FILES = [
+  ".github/PULL_REQUEST_TEMPLATE.md",
+  ...SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES,
+];
+
 const TEMPLATE_FILE = path.join(
   WORKSPACE_ROOT,
   ".github/PULL_REQUEST_TEMPLATE.md",
 );
-const TARGET_FILES = [
-  path.join(
-    WORKSPACE_ROOT,
-    "documentation/skills/create-pull-request/SKILL.md",
-  ),
-  path.join(
-    WORKSPACE_ROOT,
-    "documentation/skills/update-pull-request/SKILL.md",
-  ),
-];
+const TARGET_FILES = SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES.map((f) =>
+  path.join(WORKSPACE_ROOT, f),
+);
 const MODE = process.argv[2] ?? "check";
 const MARKER = "pr-template";
 
 // ─── Template Loading ─────────────────────────────────────────────────────────
 
+/**
+ * Validates that a target file's embedded PR template block matches the source template.
+ */
 function checkTargetSync(templateContent: string, targetFile: string): boolean {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
   const fileContent = readFileSync(targetFile, "utf8");
@@ -77,42 +84,57 @@ function extractMarkerContent(
 
 // ─── Marker Utilities ─────────────────────────────────────────────────────────
 
+/**
+ * Runs synchronization checks for all PR-template target files.
+ */
+function handleCheckMode(templateContent: string): void {
+  let allInSync = true;
+  for (const targetFile of TARGET_FILES) {
+    if (!checkTargetSync(templateContent, targetFile)) {
+      allInSync = false;
+    }
+  }
+  if (!allInSync) {
+    console.log(
+      "💡 Run 'nx run monorepo:sync-pull-request-template:write' to sync",
+    );
+    process.exit(1);
+  }
+  console.log("✅ PR template is in sync");
+}
+
+/**
+ * Updates only target files whose PR-template blocks are out of sync.
+ */
+function handleWriteMode(templateContent: string): void {
+  const outOfSyncTargets = TARGET_FILES.filter(
+    (targetFile) => !checkTargetSync(templateContent, targetFile),
+  );
+  if (outOfSyncTargets.length === 0) {
+    console.log("✅ Already in sync");
+  } else {
+    for (const targetFile of outOfSyncTargets) {
+      writeTargetSync(templateContent, targetFile);
+    }
+  }
+}
+
+/**
+ * Loads the canonical PR template from .github/PULL_REQUEST_TEMPLATE.md.
+ */
 function loadTemplate(): string {
   return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
 }
 
+/**
+ * Script entrypoint that dispatches to check or write mode.
+ */
 function main(): void {
   const templateContent = loadTemplate();
-
   if (MODE === "check") {
-    let allInSync = true;
-
-    for (const targetFile of TARGET_FILES) {
-      if (!checkTargetSync(templateContent, targetFile)) {
-        allInSync = false;
-      }
-    }
-
-    if (!allInSync) {
-      console.log(
-        "💡 Run 'nx run monorepo:sync-pull-request-template:write' to sync",
-      );
-      process.exit(1);
-    }
-
-    console.log("✅ PR template is in sync");
+    handleCheckMode(templateContent);
   } else if (MODE === "write") {
-    const outOfSyncTargets = TARGET_FILES.filter(
-      (targetFile) => !checkTargetSync(templateContent, targetFile),
-    );
-
-    if (outOfSyncTargets.length === 0) {
-      console.log("✅ Already in sync");
-    } else {
-      for (const targetFile of outOfSyncTargets) {
-        writeTargetSync(templateContent, targetFile);
-      }
-    }
+    handleWriteMode(templateContent);
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
     console.error(
@@ -138,10 +160,16 @@ function replaceMarkerContent(
   return content.replace(pattern, `$1\n${newContent}\n\n$2`);
 }
 
+/**
+ * Wraps raw markdown content in a fenced markdown code block.
+ */
 function wrapInCodeBlock(content: string): string {
   return `\`\`\`markdown\n${content}\n\`\`\``;
 }
 
+/**
+ * Replaces the target file's marker section with the current template code block.
+ */
 function writeTargetSync(templateContent: string, targetFile: string): void {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
   console.log(`🔄 Syncing ${targetName} PR template...`);
@@ -154,4 +182,6 @@ function writeTargetSync(templateContent: string, targetFile: string): void {
   console.log(`✅ ${targetName} PR template synced`);
 }
 
-main();
+if (process.argv[1]?.endsWith("sync-pull-request-template.ts")) {
+  main();
+}

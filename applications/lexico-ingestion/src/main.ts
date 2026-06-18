@@ -6,6 +6,7 @@ import { LoggerService } from "./modules/logger/logger.service";
 
 import type { CommandFactoryRunOptions } from "nest-commander/src/command-factory.interface";
 
+/** Bootstraps the NestJS CommandFactory with buffered logs routed through a pino `LoggerService`. */
 async function main(): Promise<void> {
   const logger = new LoggerService();
   logger.setContext("CommandFactory");

@@ -16,7 +16,7 @@ import type {
  * Two entry points are provided:
  * - {@link AspectsUtilities#isAspect}: point-in-time orb check
  * - {@link AspectsUtilities#getIsAspect}: factory that returns a phase-classification
- *   function (forming / perfective / dissolving) for a given set of aspects
+ *   function (forming / perfective / dissolving) for a given set of aspects.
  */
 @Injectable()
 export class AspectsUtilities {
@@ -30,6 +30,116 @@ export class AspectsUtilities {
 
   // 🔏 Private Methods
 
+  /** Computes previous, current, and next separation angles for a two-body longitude window. */
+  private computeAngles(args: {
+    currentLongitudeBody1: number;
+    currentLongitudeBody2: number;
+    nextLongitudeBody1: number;
+    nextLongitudeBody2: number;
+    previousLongitudeBody1: number;
+    previousLongitudeBody2: number;
+  }): { currentAngle: number; nextAngle: number; previousAngle: number } {
+    const {
+      currentLongitudeBody1,
+      currentLongitudeBody2,
+      nextLongitudeBody1,
+      nextLongitudeBody2,
+      previousLongitudeBody1,
+      previousLongitudeBody2,
+    } = args;
+    const previousAngle = this.mathService.getAngle(
+      previousLongitudeBody1,
+      previousLongitudeBody2,
+    );
+    const currentAngle = this.mathService.getAngle(
+      currentLongitudeBody1,
+      currentLongitudeBody2,
+    );
+    const nextAngle = this.mathService.getAngle(
+      nextLongitudeBody1,
+      nextLongitudeBody2,
+    );
+    return { currentAngle, nextAngle, previousAngle };
+  }
+
+  /** Resolves whether the aspect is entering, exacting, or leaving orb at the current minute. */
+  private getAspectPhase(args: {
+    aspect: Aspect;
+    currentAngle: number;
+    nextAngle: number;
+    previousAngle: number;
+  }): AspectPhase | null {
+    const { aspect, currentAngle, nextAngle, previousAngle } = args;
+    const aspectAngle = angleByAspect[aspect];
+    const orb = orbByAspect[aspect];
+    const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
+    const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
+    const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
+    if (currentInOrb) {
+      const previousDiff = previousAngle - aspectAngle;
+      const currentDiff = currentAngle - aspectAngle;
+      const nextDiff = nextAngle - aspectAngle;
+      if (
+        this.isPerfective({
+          aspect,
+          currentDifference: currentDiff,
+          nextDifference: nextDiff,
+          previousDifference: previousDiff,
+        })
+      ) {
+        return "perfective";
+      }
+    }
+    if (!previousInOrb && currentInOrb) return "forming";
+    if (currentInOrb && !nextInOrb) return "dissolving";
+    return null;
+  }
+
+  /** Checks whether the aspect is exact at the current minute based on angular trend. */
+  private isPerfective(args: {
+    aspect: Aspect;
+    currentDifference: number;
+    nextDifference: number;
+    previousDifference: number;
+  }): boolean {
+    const { aspect, currentDifference, nextDifference, previousDifference } =
+      args;
+    if (aspect === "conjunct") {
+      return this.isPerfectiveConjunct(
+        previousDifference,
+        currentDifference,
+        nextDifference,
+      );
+    }
+
+    return this.isPerfectiveNonConjunct(previousDifference, currentDifference);
+  }
+
+  /** Uses local-angle minima to detect exact conjunctions where wrap-around can occur. */
+  private isPerfectiveConjunct(
+    previousDifference: number,
+    currentDifference: number,
+    nextDifference: number,
+  ): boolean {
+    return (
+      (previousDifference > currentDifference &&
+        nextDifference > currentDifference) ||
+      (previousDifference < currentDifference &&
+        nextDifference < currentDifference)
+    );
+  }
+
+  /** Detects non-conjunction perfection by checking zero-crossing of aspect-angle difference. */
+  private isPerfectiveNonConjunct(
+    previousDifference: number,
+    currentDifference: number,
+  ): boolean {
+    return (
+      (previousDifference >= 0 && currentDifference <= 0) ||
+      (previousDifference <= 0 && currentDifference >= 0)
+    );
+  }
+
   // 🌎 Public Methods
 
   /**
@@ -40,8 +150,7 @@ export class AspectsUtilities {
    * "dissolving". Conjunction uses a local-minimum bounce test; all other
    * aspects use a sign-crossing test.
    *
-   * @param aspectsToDetect - Aspects to test for
-   * @returns Phase-detection function for the given aspect set
+   * @returns Phase-detection function for the given aspect set.
    */
   getIsAspect(
     aspectsToDetect: Aspect[],
@@ -54,70 +163,17 @@ export class AspectsUtilities {
     previousLongitudeBody2: number;
   }) => AspectPhase | null {
     return (args) => {
-      const {
-        currentLongitudeBody1,
-        currentLongitudeBody2,
-        nextLongitudeBody1,
-        nextLongitudeBody2,
-        previousLongitudeBody1,
-        previousLongitudeBody2,
-      } = args;
-
-      const previousAngle = this.mathService.getAngle(
-        previousLongitudeBody1,
-        previousLongitudeBody2,
-      );
-      const currentAngle = this.mathService.getAngle(
-        currentLongitudeBody1,
-        currentLongitudeBody2,
-      );
-      const nextAngle = this.mathService.getAngle(
-        nextLongitudeBody1,
-        nextLongitudeBody2,
-      );
-
+      const { currentAngle, nextAngle, previousAngle } =
+        this.computeAngles(args);
       for (const aspect of aspectsToDetect) {
-        const aspectAngle = angleByAspect[aspect];
-        const orb = orbByAspect[aspect];
-
-        const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
-        const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
-        const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
-
-        if (currentInOrb) {
-          const previousDifference = previousAngle - aspectAngle;
-          const currentDifference = currentAngle - aspectAngle;
-          const nextDifference = nextAngle - aspectAngle;
-
-          const isCrossing =
-            (previousDifference >= 0 && currentDifference <= 0) ||
-            (previousDifference <= 0 && currentDifference >= 0);
-
-          if (aspect === "conjunct") {
-            const isBouncing =
-              (previousDifference > currentDifference &&
-                nextDifference > currentDifference) ||
-              (previousDifference < currentDifference &&
-                nextDifference < currentDifference);
-            if (isBouncing) {
-              return "perfective";
-            }
-          } else {
-            if (isCrossing) {
-              return "perfective";
-            }
-          }
-        }
-
-        if (!previousInOrb && currentInOrb) {
-          return "forming";
-        }
-
-        if (currentInOrb && !nextInOrb) {
-          return "dissolving";
-        }
+        const phase = this.getAspectPhase({
+          aspect,
+          currentAngle,
+          nextAngle,
+          previousAngle,
+        });
+        if (phase !== null) return phase;
       }
-
       return null;
     };
   }
@@ -125,8 +181,6 @@ export class AspectsUtilities {
   /**
    * Returns `true` when the angular separation between two bodies falls within
    * the configured orb for the given aspect.
-   *
-   * @param args - `longitudeBody1`, `longitudeBody2` (ecliptic degrees), and `aspect` type to test
    */
   isAspect(args: {
     aspect: Aspect;

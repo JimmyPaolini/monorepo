@@ -32,21 +32,45 @@ def _validate_dfs(template, instance, path=None) -> list[ConformanceError]:
         path = []
     errors = []
     if isinstance(template, list) and isinstance(instance, list):
-        for i, item in enumerate(template):
-            item_path = _format_path([*path, i])
-            if i >= len(instance):
-                errors.append(
-                    ConformanceError(
-                        error_type="code",
-                        language="json",
-                        message=f'Missing required key: "{item_path}"',
-                        instance_path=item_path,
-                        template_path=item_path,
-                        fix=f'Add the missing array element at index {i} (path: "{item_path}") to the instance file.',
+        for template_item in template:
+            current_path = _format_path(path)
+            if isinstance(template_item, (bool, int, float, str, type(None))):
+                if template_item not in instance:
+                    item_path = (
+                        f"{current_path}[{json.dumps(template_item)}]"
+                        if current_path
+                        else f"[{json.dumps(template_item)}]"
                     )
-                )
+                    errors.append(
+                        ConformanceError(
+                            error_type="code",
+                            language="json",
+                            message=f'Missing required value: "{item_path}"',
+                            instance_path=item_path,
+                            template_path=item_path,
+                            fix=f'Add the missing value at "{item_path}" to the instance file.',
+                        )
+                    )
             else:
-                errors.extend(_validate_dfs(item, instance[i], [*path, i]))
+                if not instance:
+                    errors.append(
+                        ConformanceError(
+                            error_type="code",
+                            language="json",
+                            message=f'Missing required value: "{current_path}"',
+                            instance_path=current_path,
+                            template_path=current_path,
+                            fix=f'Add the missing value at "{current_path}" to the instance file.',
+                        )
+                    )
+                else:
+                    candidate_errors = []
+                    for i, instance_item in enumerate(instance):
+                        candidate_errors.append(
+                            _validate_dfs(template_item, instance_item, [*path, i])
+                        )
+                    best = min(candidate_errors, key=len)
+                    errors.extend(best)
     elif isinstance(template, dict) and isinstance(instance, dict):
         for key in template:
             key_path = _format_path([*path, key])

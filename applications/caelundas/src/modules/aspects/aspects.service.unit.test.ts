@@ -1,4 +1,17 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { MajorAspectEventService } from "@caelundas/src/modules/major-aspects/major-aspect-event.service";
+import { MajorAspectProgressiveService } from "@caelundas/src/modules/major-aspects/major-aspect-progressive.service";
+import { MinorAspectsComposerService } from "@caelundas/src/modules/minor-aspects/minor-aspects-composer.service";
+import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
+import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
+import { QuadrupleAspectsComposerService } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects-composer.service";
+import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-composer.service";
+import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
+import { SpecialtyAspectsComposerService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-composer.service";
+import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
+import { TripleAspectsComposerService } from "@caelundas/src/modules/triple-aspects/triple-aspects-composer.service";
+import { TripleAspectsDetectorService } from "@caelundas/src/modules/triple-aspects/triple-aspects-detector.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -15,6 +28,11 @@ import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.
 import { StelliumService } from "../stellium/stellium.service";
 import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
 
+import {
+  COMPOSITE_ASPECT_DETECTORS_TOKEN,
+  PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
+  SIMPLE_ASPECT_DETECTORS_TOKEN,
+} from "./aspects.constants";
 import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";
 
@@ -31,15 +49,100 @@ describe("AspectsService", () => {
         AspectsUtilities,
         EphemerisService,
         MajorAspectsService,
+        MajorAspectEventService,
+        MajorAspectProgressiveService,
         MathService,
         MinorAspectsService,
+        MinorAspectsComposerService,
+        MinorAspectsEventService,
+        MinorAspectsProgressiveService,
         ProgressiveUtilities,
         QuadrupleAspectsService,
+        QuadrupleAspectsComposerService,
         QuintupleAspectsService,
+        QuintupleAspectsComposerService,
         SextupleAspectsService,
+        SextupleAspectsComposerService,
         SpecialtyAspectsService,
+        SpecialtyAspectsComposerService,
+        SpecialtyAspectsEventService,
+        SpecialtyAspectsProgressiveService,
         StelliumService,
         TripleAspectsService,
+        TripleAspectsComposerService,
+        TripleAspectsDetectorService,
+        {
+          inject: [
+            MajorAspectsService,
+            MinorAspectsService,
+            SpecialtyAspectsService,
+          ],
+          provide: SIMPLE_ASPECT_DETECTORS_TOKEN,
+          useFactory: (
+            majorAspectsService: MajorAspectsService,
+            minorAspectsService: MinorAspectsService,
+            specialtyAspectsService: SpecialtyAspectsService,
+          ) => [
+            majorAspectsService,
+            minorAspectsService,
+            specialtyAspectsService,
+          ],
+        },
+        {
+          inject: [
+            TripleAspectsService,
+            QuadrupleAspectsService,
+            QuintupleAspectsService,
+            SextupleAspectsService,
+            StelliumService,
+          ],
+          provide: COMPOSITE_ASPECT_DETECTORS_TOKEN,
+          useFactory: (
+            tripleAspectsService: TripleAspectsService,
+            quadrupleAspectsService: QuadrupleAspectsService,
+            quintupleAspectsService: QuintupleAspectsService,
+            sextupleAspectsService: SextupleAspectsService,
+            stelliumService: StelliumService,
+          ) => [
+            tripleAspectsService,
+            quadrupleAspectsService,
+            quintupleAspectsService,
+            sextupleAspectsService,
+            stelliumService,
+          ],
+        },
+        {
+          inject: [
+            MajorAspectsService,
+            MinorAspectsService,
+            SpecialtyAspectsService,
+            TripleAspectsService,
+            QuadrupleAspectsService,
+            QuintupleAspectsService,
+            SextupleAspectsService,
+            StelliumService,
+          ],
+          provide: PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
+          useFactory: (
+            majorAspectsService: MajorAspectsService,
+            minorAspectsService: MinorAspectsService,
+            specialtyAspectsService: SpecialtyAspectsService,
+            tripleAspectsService: TripleAspectsService,
+            quadrupleAspectsService: QuadrupleAspectsService,
+            quintupleAspectsService: QuintupleAspectsService,
+            sextupleAspectsService: SextupleAspectsService,
+            stelliumService: StelliumService,
+          ) => [
+            majorAspectsService,
+            minorAspectsService,
+            specialtyAspectsService,
+            tripleAspectsService,
+            quadrupleAspectsService,
+            quintupleAspectsService,
+            sextupleAspectsService,
+            stelliumService,
+          ],
+        },
       ],
     }).compile();
 

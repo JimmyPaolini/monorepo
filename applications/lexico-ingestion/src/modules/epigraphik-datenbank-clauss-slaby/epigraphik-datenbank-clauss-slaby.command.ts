@@ -25,7 +25,7 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     const outputDirectory = path.join(process.cwd(), "output");
     if (!existsSync(outputDirectory))
       mkdirSync(outputDirectory, { recursive: true });
-    this.logFilePath = path.join(
+    this.errorLogFilePath = path.join(
       outputDirectory,
       `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
     );
@@ -34,57 +34,31 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   // 🔐 Private Fields
 
   private readonly batchSize = 1000;
-  private readonly dataDirectory = path.resolve(
+  private readonly errorLogFilePath: string;
+  private readonly limit = 1_000_000;
+  private readonly sourceDataDirectory = path.resolve(
     "data",
     "epigraphik-datenbank-clauss-slaby-source",
   );
-  private readonly host = "https://edcs.hist.uzh.ch/api/query";
-  private readonly limit = 1_000_000;
-  private readonly logFilePath: string;
+  private readonly sourceHost = "https://edcs.hist.uzh.ch/api/query";
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
-  private async fetchChunk(start: number): Promise<boolean> {
-    const chunkFile = path.join(this.dataDirectory, `chunk-${start}.json`);
-
-    try {
-      // Check if file already exists
-      await fs.access(chunkFile);
-      this.logger.log(`⏭️ Chunk ${start} already exists, skipping.`);
-      return true; // continue to next chunk
-    } catch {
-      // File doesn't exist, proceed with download
-    }
-
+  /**
+   * Handles an internal workflow step for EDCS chunk ingestion.
+   */
+  private async downloadChunkData(
+    start: number,
+    chunkFile: string,
+  ): Promise<boolean> {
     this.logger.log(
       `📥 Fetching records ${start} to ${start + this.batchSize}...`,
     );
 
     try {
-      const res = await fetch(
-        `${this.host}?start=${start}&length=${this.batchSize}`,
-      );
-      if (!res.ok) {
-        this.logger.warn(`⚠️ Failed to fetch records: ${res.statusText}`);
-        return true; // continue trying next ones? or false to abort? let's continue.
-      }
-
-      const data = (await res.json()) as { data: unknown[] };
-
-      // Stop if there are no more records
-      // The API returns { data: [] } when empty
-      if (Array.isArray(data.data) && data.data.length === 0) {
-        this.logger.log(`🛑 No more records found after ${start}. Stopping.`);
-        return false; // Stop loop
-      }
-
-      await fs.writeFile(chunkFile, JSON.stringify(data, null, 2), "utf8");
-
-      // Small delay to be polite to the API
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      return true;
+      return await this.saveChunkData(start, chunkFile);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.stack || error.message : String(error);
@@ -92,11 +66,61 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
         `❌ Error fetching chunk at ${start}: ${String(error)}`,
       );
       await fs.appendFile(
-        this.logFilePath,
+        this.errorLogFilePath,
         `[${new Date().toISOString()}] chunk-${start}: ${errorMessage}\n`,
       );
       return true;
     }
+  }
+
+  /**
+   * Handles an internal workflow step for EDCS chunk ingestion.
+   */
+  private async downloadChunkIfMissing(start: number): Promise<boolean> {
+    const chunkFile = path.join(
+      this.sourceDataDirectory,
+      `chunk-${start}.json`,
+    );
+
+    try {
+      await fs.access(chunkFile);
+      this.logger.log(`⏭️ Chunk ${start} already exists, skipping.`);
+      return true; // continue to next chunk
+    } catch {
+      // File doesn't exist, proceed with download
+    }
+
+    return this.downloadChunkData(start, chunkFile);
+  }
+
+  /**
+   * Persists generated output for EDCS chunk ingestion.
+   */
+  private async saveChunkData(
+    start: number,
+    chunkFile: string,
+  ): Promise<boolean> {
+    const response = await fetch(
+      `${this.sourceHost}?start=${start}&length=${this.batchSize}`,
+    );
+    if (!response.ok) {
+      this.logger.warn(`⚠️ Failed to fetch records: ${response.statusText}`);
+      return true;
+    }
+
+    const data = (await response.json()) as { data: unknown[] };
+
+    if (Array.isArray(data.data) && data.data.length === 0) {
+      this.logger.log(`🛑 No more records found after ${start}. Stopping.`);
+      return false;
+    }
+
+    await fs.writeFile(chunkFile, JSON.stringify(data, null, 2), "utf8");
+
+    await new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
+    return true;
   }
 
   // 🌎 Public Methods
@@ -104,16 +128,16 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
   /** Runs the ingestion of epigraphs by downloading chunks to the filesystem */
   async run(): Promise<void> {
     this.logger.log(
-      `📁 Ensuring data directory exists at ${this.dataDirectory}`,
+      `📁 Ensuring data directory exists at ${this.sourceDataDirectory}`,
     );
-    await fs.mkdir(this.dataDirectory, { recursive: true });
+    await fs.mkdir(this.sourceDataDirectory, { recursive: true });
 
     this.logger.log(
       `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
     );
 
     for (let start = 0; start < this.limit; start += this.batchSize) {
-      const shouldContinue = await this.fetchChunk(start);
+      const shouldContinue = await this.downloadChunkIfMissing(start);
       if (!shouldContinue) {
         break;
       }

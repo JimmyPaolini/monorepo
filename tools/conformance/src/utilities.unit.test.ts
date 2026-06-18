@@ -12,7 +12,7 @@ import {
   getProjectsWithTag,
   resolveName,
   resolveProject,
-} from "./utilities.js";
+} from "./utilities";
 
 import type { Tree } from "@nx/devkit";
 

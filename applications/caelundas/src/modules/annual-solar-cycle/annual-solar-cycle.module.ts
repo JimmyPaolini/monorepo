@@ -3,6 +3,7 @@ import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
+import { AnnualSolarCycleEventsService } from "./annual-solar-cycle-events.service.js";
 import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
 
 /**
@@ -14,6 +15,6 @@ import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
   controllers: [],
   exports: [AnnualSolarCycleService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
-  providers: [AnnualSolarCycleService],
+  providers: [AnnualSolarCycleEventsService, AnnualSolarCycleService],
 })
 export class AnnualSolarCycleModule {}

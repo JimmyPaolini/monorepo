@@ -3,7 +3,7 @@
  *
  * Two discriminating fields identify the error category:
  * - `errorType` — what kind of element is missing
- * - `language` — which validator / file format produced the error
+ * - `language` — which validator / file format produced the error.
  *
  * All errors represent a *missing* element; there is no separate action field.
  */
