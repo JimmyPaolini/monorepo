@@ -9,6 +9,7 @@ EXCLUDE = {
     "dist",
     "build",
     "coverage",
+    "notepads",
     ".venv",
     "__pycache__",
     ".git",

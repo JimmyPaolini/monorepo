@@ -18,6 +18,7 @@ const EXCLUDE_PATHS = [
   ".nx/",
   "build/",
   "coverage/",
+  "notepads/",
   // Generator template stubs — not real source
   "/templates/",
 ];
@@ -28,7 +29,12 @@ const trackedFiles = execSync("git ls-files")
   .split("\n")
   .filter(Boolean);
 
-const sourceFilePaths = trackedFiles.filter((filePath) => {
+const measuredTrackedFiles = trackedFiles.filter(
+  (filePath) =>
+    !EXCLUDE_PATHS.some((excludedPath) => filePath.includes(excludedPath)),
+);
+
+const sourceFilePaths = measuredTrackedFiles.filter((filePath) => {
   const extension = path.extname(filePath);
   return (
     ALL_EXTENSIONS.has(extension) &&
@@ -304,7 +310,7 @@ const py = JSON.parse(
 // 📊 Repo size
 
 let repoBytes = 0;
-for (const trackedFile of trackedFiles) {
+for (const trackedFile of measuredTrackedFiles) {
   try {
     repoBytes += fs.statSync(trackedFile).size;
   } catch {
@@ -323,7 +329,7 @@ const lastCommit = execSync("git log -1 --format=%cd --date=short HEAD")
 // Derive from git-tracked files so the count is consistent across environments
 // (avoids counting untracked dirs like .venv, __pycache__, etc.)
 const trackedFolders = new Set<string>();
-for (const filePath of trackedFiles) {
+for (const filePath of measuredTrackedFiles) {
   const parts = filePath.split("/");
   for (let index = 1; index < parts.length; index++) {
     trackedFolders.add(parts.slice(0, index).join("/"));
