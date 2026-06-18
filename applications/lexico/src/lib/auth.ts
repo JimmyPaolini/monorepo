@@ -1,7 +1,7 @@
 import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 /**
- * Authenticated user
+ * Authenticated user.
  */
 export interface AuthenticationUser {
   avatarUrl?: string;

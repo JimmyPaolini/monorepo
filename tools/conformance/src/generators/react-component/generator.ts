@@ -8,6 +8,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { Tree } from "@nx/devkit";
 
+/**
+ * Generate component options.
+ */
 interface GenerateComponentOptions {
   name: string;
   project?: string;
@@ -16,9 +19,6 @@ interface GenerateComponentOptions {
 /**
  * Generates a new React component with TypeScript and test files.
  * Prompts for a project tagged `framework:react` and places the component in `src/components`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the component generator
  */
 export async function generateComponent(
   tree: Tree,
@@ -53,6 +53,9 @@ export async function generateComponent(
   await formatFiles(tree);
 }
 
+/**
+ * Resolve components directory.
+ */
 function resolveComponentsDirectory(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);

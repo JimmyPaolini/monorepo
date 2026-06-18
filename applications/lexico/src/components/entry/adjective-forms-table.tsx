@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormTabs } from "./form-tabs";
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps as FormCellProperties } from "./form-cell";
+import type { FormCellProperties as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single declined form of an adjective.
@@ -22,9 +22,9 @@ export interface AdjectiveForm {
 }
 
 /**
- * Props for the AdjectiveFormsTable component.
+ * Properties for the AdjectiveFormsTable component.
  */
-export interface AdjectiveFormsTableProps {
+export interface AdjectiveFormsTableProperties {
   /** Additional class names */
   className?: string | undefined;
   /** Adjective forms data */
@@ -57,7 +57,7 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
 };
 
 /**
- *
+ * Adjective form group.
  */
 interface AdjectiveFormGroup {
   degree: string;
@@ -65,6 +65,53 @@ interface AdjectiveFormGroup {
     cells: FormCellProperties[];
     gender: string;
   }[];
+}
+
+/**
+ * Render adjective forms with degree and gender tab navigation.
+ */
+function AdjectiveFormsTable(
+  properties: AdjectiveFormsTableProperties,
+): null | React.ReactElement {
+  const { className, forms, search } = properties;
+  const grouped = React.useMemo(() => groupAdjectiveForms(forms), [forms]);
+
+  const [activeDegree, setActiveDegree] = React.useState(0);
+  const [activeGender, setActiveGender] = React.useState(0);
+
+  const handleDegreeChange = (index: number): void => {
+    setActiveDegree(index);
+    setActiveGender(0);
+  };
+
+  if (grouped.length === 0) {
+    return null;
+  }
+
+  const currentDegree = grouped[activeDegree];
+  const degreeTabs = grouped.map((group) => group.degree);
+  const genderContent = renderAdjectiveGenderContent({
+    activeGender,
+    currentDegree,
+    search,
+    setActiveGender,
+  });
+
+  if (grouped.length > 1) {
+    return (
+      <div className={className}>
+        <FormTabs
+          activeTab={activeDegree}
+          onTabChange={handleDegreeChange}
+          tabs={degreeTabs}
+        >
+          {genderContent}
+        </FormTabs>
+      </div>
+    );
+  }
+
+  return <div className={className}>{genderContent}</div>;
 }
 
 /**
@@ -113,7 +160,7 @@ function buildDegreeGroupsFromForms(
 }
 
 /**
- * Group adjective forms by degree -> gender for tabs
+ * Group adjective forms by degree -\> gender for tabs.
  */
 function groupAdjectiveForms(forms: AdjectiveForm[]): AdjectiveFormGroup[] {
   if (!forms.some((form) => form.degree)) {
@@ -123,7 +170,7 @@ function groupAdjectiveForms(forms: AdjectiveForm[]): AdjectiveFormGroup[] {
 }
 
 /**
- * Group forms by gender and restructure into cells
+ * Group forms by gender and restructure into cells.
  */
 function groupByGender(forms: AdjectiveForm[]): AdjectiveFormGroup["genders"] {
   const grouped: Record<string, AdjectiveForm[]> = {};
@@ -151,12 +198,13 @@ function groupByGender(forms: AdjectiveForm[]): AdjectiveFormGroup["genders"] {
 /**
  * Render the gender tabs (and forms table) for the currently selected degree.
  */
-function renderAdjectiveGenderContent(
-  currentDegree: AdjectiveFormGroup | undefined,
-  activeGender: number,
-  setActiveGender: (index: number) => void,
-  search: string | undefined,
-): null | React.ReactElement {
+function renderAdjectiveGenderContent(args: {
+  activeGender: number;
+  currentDegree: AdjectiveFormGroup | undefined;
+  search: string | undefined;
+  setActiveGender: (index: number) => void;
+}): null | React.ReactElement {
+  const { activeGender, currentDegree, search, setActiveGender } = args;
   const genderTabs =
     currentDegree?.genders.map((gender) => gender.gender) ?? [];
   const currentGender = currentDegree?.genders[activeGender];
@@ -183,7 +231,7 @@ function renderAdjectiveGenderContent(
 }
 
 /**
- * Restructure adjective forms for a specific gender into cells
+ * Restructure adjective forms for a specific gender into cells.
  */
 function restructureAdjectiveForms(
   forms: AdjectiveForm[],
@@ -205,59 +253,5 @@ function restructureAdjectiveForms(
     buildAdjectiveCaseRow(caseName, byCase[caseName] ?? {}),
   );
 }
-
-const AdjectiveFormsTable = React.forwardRef<
-  HTMLDivElement,
-  AdjectiveFormsTableProps
->(({ className, forms, search }, reference) => {
-  const grouped = React.useMemo(() => groupAdjectiveForms(forms), [forms]);
-
-  const [activeDegree, setActiveDegree] = React.useState(0);
-  const [activeGender, setActiveGender] = React.useState(0);
-
-  React.useEffect(() => {
-    setActiveGender(0);
-  }, [activeDegree]);
-
-  if (grouped.length === 0) {
-    return null;
-  }
-
-  const currentDegree = grouped[activeDegree];
-  const degreeTabs = grouped.map((group) => group.degree);
-  const genderContent = renderAdjectiveGenderContent(
-    currentDegree,
-    activeGender,
-    setActiveGender,
-    search,
-  );
-
-  if (grouped.length > 1) {
-    return (
-      <div
-        ref={reference}
-        className={className}
-      >
-        <FormTabs
-          activeTab={activeDegree}
-          onTabChange={setActiveDegree}
-          tabs={degreeTabs}
-        >
-          {genderContent}
-        </FormTabs>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      ref={reference}
-      className={className}
-    >
-      {genderContent}
-    </div>
-  );
-});
-AdjectiveFormsTable.displayName = "AdjectiveFormsTable";
 
 export { AdjectiveFormsTable, groupAdjectiveForms, restructureAdjectiveForms };

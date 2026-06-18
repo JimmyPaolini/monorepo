@@ -10,7 +10,8 @@ import {
 
 import { WordsService } from "../words/words.service";
 
-import { FormsBuilderHelper } from "./forms-builder.helper";
+import { FormsBuilderHelper } from "./forms-builder-other.service";
+import { FormsTransientWordsService } from "./forms-transient-words.service";
 
 /**
  * Builds Form entities from raw parsed forms and persists them along with
@@ -21,21 +22,18 @@ import { FormsBuilderHelper } from "./forms-builder.helper";
 export class FormsService {
   // 🏗 Dependency Injection
 
+  // 🔐 Private Fields
+
+  /**
+   * Initializes service with repository and helper provider.
+   */
   constructor(
     @InjectRepository(Form)
     private readonly formRepository: Repository<Form>,
     private readonly wordsService: WordsService,
-  ) {
-    this.formsEntityBuilder = new FormsBuilderHelper((form, words) => {
-      this.transientWordsByForm.set(form, words);
-    });
-  }
-
-  private readonly formsEntityBuilder: FormsBuilderHelper;
-
-  // 🔐 Private Fields
-
-  private readonly transientWordsByForm = new WeakMap<Form, string[]>();
+    private readonly formsEntityBuilder: FormsBuilderHelper,
+    private readonly transientWordsService: FormsTransientWordsService,
+  ) {}
 
   // 🌎 Public Methods
 
@@ -155,8 +153,8 @@ export class FormsService {
       await this.formRepository.remove(existingForms);
     }
 
-    const rawWordsPerForm = forms.map(
-      (form) => this.transientWordsByForm.get(form) ?? [],
+    const rawWordsPerForm = forms.map((form) =>
+      this.transientWordsService.getTransientWords(form),
     );
 
     const savedForms = await this.saveFormsForLexeme(forms, lexeme);
@@ -177,6 +175,6 @@ export class FormsService {
    * persisted on the Form entity itself.
    */
   setTransientWords(form: Form, words: string[]): void {
-    this.transientWordsByForm.set(form, words);
+    this.transientWordsService.setTransientWords(form, words);
   }
 }

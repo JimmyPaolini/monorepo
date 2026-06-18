@@ -37,7 +37,7 @@ export interface LibraryPageState {
 
 // 🔧 State Initialization
 /**
- *
+ * Library page hook state.
  */
 interface LibraryPageHookState {
   editingText: null | UserText;
@@ -79,57 +79,63 @@ export function useLibraryPage(): LibraryPageState {
 
   const handleCreate = useCallback(
     async () =>
-      createTextAsync(
-        state.formTitle,
-        state.formText,
-        state.setTexts,
-        state.setFormTitle,
-        state.setFormText,
-        state.setIsCreateOpen,
-        state.setIsSubmitting,
-      ),
+      createTextAsync({
+        formText: state.formText,
+        formTitle: state.formTitle,
+        setFormText: state.setFormText,
+        setFormTitle: state.setFormTitle,
+        setIsCreateOpen: state.setIsCreateOpen,
+        setIsSubmitting: state.setIsSubmitting,
+        setTexts: state.setTexts,
+      }),
     [state.formTitle, state.formText],
   );
 
   const handleUpdate = useCallback(
     async () =>
-      updateTextAsync(
-        state.editingText,
-        state.formTitle,
-        state.formText,
-        state.setTexts,
-        state.setFormTitle,
-        state.setFormText,
-        state.setEditingText,
-        state.setIsSubmitting,
-      ),
+      updateTextAsync({
+        editingText: state.editingText,
+        formText: state.formText,
+        formTitle: state.formTitle,
+        setEditingText: state.setEditingText,
+        setFormText: state.setFormText,
+        setFormTitle: state.setFormTitle,
+        setIsSubmitting: state.setIsSubmitting,
+        setTexts: state.setTexts,
+      }),
     [state.editingText, state.formTitle, state.formText],
   );
 
   const handleDelete = useCallback(
     async (id: string) =>
-      deleteTextAsync(
+      deleteTextAsync({
         id,
-        state.selectedText,
-        state.setTexts,
-        state.setSelectedText,
-      ),
+        selectedText: state.selectedText,
+        setSelectedText: state.setSelectedText,
+        setTexts: state.setTexts,
+      }),
     [state.selectedText],
   );
 
-  return buildLibraryPageState(state, handleCreate, handleUpdate, handleDelete);
+  return buildLibraryPageState({
+    handleCreate,
+    handleDelete,
+    handleUpdate,
+    state,
+  });
 }
 
 // 🔧 State Builder
 /**
- *
+ * Maps internal hook state and handlers to the external LibraryPageState contract.
  */
-function buildLibraryPageState(
-  state: LibraryPageHookState,
-  handleCreate: () => Promise<void>,
-  handleUpdate: () => Promise<void>,
-  handleDelete: (id: string) => Promise<void>,
-): LibraryPageState {
+function buildLibraryPageState(args: {
+  handleCreate: () => Promise<void>;
+  handleDelete: (id: string) => Promise<void>;
+  handleUpdate: () => Promise<void>;
+  state: LibraryPageHookState;
+}): LibraryPageState {
+  const { handleCreate, handleDelete, handleUpdate, state } = args;
   return {
     closeEdit: () => {
       state.setFormTitle("");
@@ -162,17 +168,26 @@ function buildLibraryPageState(
 
 // 🔧 Create Handler
 /**
- *
+ * Creates a new user text and updates local state after a successful mutation.
  */
-async function createTextAsync(
-  formTitle: string,
-  formText: string,
-  setTexts: (function_: (previous: UserText[]) => UserText[]) => void,
-  setFormTitle: (title: string) => void,
-  setFormText: (text: string) => void,
-  setIsCreateOpen: (open: boolean) => void,
-  setIsSubmitting: (submitting: boolean) => void,
-): Promise<void> {
+async function createTextAsync(args: {
+  formText: string;
+  formTitle: string;
+  setFormText: (text: string) => void;
+  setFormTitle: (title: string) => void;
+  setIsCreateOpen: (open: boolean) => void;
+  setIsSubmitting: (submitting: boolean) => void;
+  setTexts: (function_: (previous: UserText[]) => UserText[]) => void;
+}): Promise<void> {
+  const {
+    formText,
+    formTitle,
+    setFormText,
+    setFormTitle,
+    setIsCreateOpen,
+    setIsSubmitting,
+    setTexts,
+  } = args;
   if (!formTitle.trim() || !formText.trim()) return;
   setIsSubmitting(true);
   try {
@@ -198,14 +213,15 @@ async function createTextAsync(
 
 // 🔧 Delete Handler
 /**
- *
+ * Deletes a user text and clears selection when the deleted text was active.
  */
-async function deleteTextAsync(
-  id: string,
-  selectedText: null | UserText,
-  setTexts: (function_: (previous: UserText[]) => UserText[]) => void,
-  setSelectedText: (text: null | UserText) => void,
-): Promise<void> {
+async function deleteTextAsync(args: {
+  id: string;
+  selectedText: null | UserText;
+  setSelectedText: (text: null | UserText) => void;
+  setTexts: (function_: (previous: UserText[]) => UserText[]) => void;
+}): Promise<void> {
+  const { id, selectedText, setSelectedText, setTexts } = args;
   try {
     const result = await deleteUserText({ data: { id } });
     if (result.success) {
@@ -221,7 +237,7 @@ async function deleteTextAsync(
 
 // 🔧 Fetch Handler
 /**
- *
+ * Loads all user texts and updates loading and error state accordingly.
  */
 async function fetchTextsAsync(
   setTexts: (texts: UserText[]) => void,
@@ -244,18 +260,28 @@ async function fetchTextsAsync(
 
 // 🔧 Update Handler
 /**
- *
+ * Updates the currently edited text and synchronizes the local sorted collection.
  */
-async function updateTextAsync(
-  editingText: null | UserText,
-  formTitle: string,
-  formText: string,
-  setTexts: (function_: (previous: UserText[]) => UserText[]) => void,
-  setFormTitle: (title: string) => void,
-  setFormText: (text: string) => void,
-  setEditingText: (text: null | UserText) => void,
-  setIsSubmitting: (submitting: boolean) => void,
-): Promise<void> {
+async function updateTextAsync(args: {
+  editingText: null | UserText;
+  formText: string;
+  formTitle: string;
+  setEditingText: (text: null | UserText) => void;
+  setFormText: (text: string) => void;
+  setFormTitle: (title: string) => void;
+  setIsSubmitting: (submitting: boolean) => void;
+  setTexts: (function_: (previous: UserText[]) => UserText[]) => void;
+}): Promise<void> {
+  const {
+    editingText,
+    formText,
+    formTitle,
+    setEditingText,
+    setFormText,
+    setFormTitle,
+    setIsSubmitting,
+    setTexts,
+  } = args;
   if (!editingText || !formTitle.trim() || !formText.trim()) return;
   setIsSubmitting(true);
   try {
@@ -284,7 +310,7 @@ async function updateTextAsync(
 }
 
 /**
- *
+ * Initializes all local state used by the library page hook.
  */
 function useLibraryPageStateInitialization(): LibraryPageHookState {
   const [texts, setTexts] = useState<UserText[]>([]);

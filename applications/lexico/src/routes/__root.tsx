@@ -32,7 +32,7 @@ import { Logo } from "../components/layout";
 import type { ReactNode } from "react";
 
 /**
- *
+ * Navigation item.
  */
 interface NavigationItem {
   href: string;
@@ -90,7 +90,7 @@ export const Route = createRootRoute({
 });
 
 /**
- * Props for the ApplicationSidebar component.
+ * Properties for the ApplicationSidebar component.
  */
 interface ApplicationSidebarProperties {
   /** Callback when hover state changes */
@@ -98,7 +98,7 @@ interface ApplicationSidebarProperties {
 }
 
 /**
- * Props for the RootDocument component.
+ * Properties for the RootDocument component.
  */
 interface RootDocumentProperties {
   /** Child elements to render */
@@ -108,8 +108,6 @@ interface RootDocumentProperties {
 /**
  * Application sidebar component with navigation items.
  *
- * @param props - Component props
- * @returns React node
  */
 function ApplicationSidebar(
   properties: Readonly<ApplicationSidebarProperties>,
@@ -170,7 +168,6 @@ function ApplicationSidebar(
 /**
  * 404 Not Found page component.
  *
- * @returns React node
  */
 function NotFound(): ReactNode {
   return (
@@ -190,7 +187,6 @@ function NotFound(): ReactNode {
 /**
  * Root component that wraps the entire application.
  *
- * @returns React node
  */
 function RootComponent(): ReactNode {
   return (
@@ -203,8 +199,6 @@ function RootComponent(): ReactNode {
 /**
  * Root document component that provides HTML structure and sidebar.
  *
- * @param props - Component props
- * @returns React node
  */
 function RootDocument(properties: Readonly<RootDocumentProperties>): ReactNode {
   const { children } = properties;

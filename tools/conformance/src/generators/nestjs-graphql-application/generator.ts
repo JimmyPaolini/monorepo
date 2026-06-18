@@ -8,6 +8,9 @@ import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
+/**
+ * Generate nestjs graphql application options.
+ */
 interface GenerateNestjsGraphqlApplicationOptions {
   name?: string;
 }
@@ -18,9 +21,6 @@ export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
 
 /**
  * Generates a new NestJS GraphQL API application scaffold.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS GraphQL application
  */
 export async function generateNestjsGraphqlApplication(
   tree: Tree,

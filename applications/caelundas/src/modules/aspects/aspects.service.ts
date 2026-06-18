@@ -155,9 +155,6 @@ export class AspectsService {
    * Starting from `previousAspectBodies`, adds any new forming aspects and removes any
    * aspects that have dissolved, based on the "Simple Aspect" events in `events`.
    *
-   * @param previousAspectBodies - Active aspects from the previous minute
-   * @param events - Instantaneous events detected at the current minute
-   * @returns Updated list of currently active 2-body aspects
    */
   computeAspectBodies(
     previousAspectBodies: AspectBodies[],
@@ -183,8 +180,6 @@ export class AspectsService {
    * updated active-aspect registry and uses it to detect composite configurations
    * (triple, quadruple, quintuple, sextuple, stellium).
    *
-   * @param args - Ephemeris data, target minute, and the currently active aspect bodies
-   * @returns Detected calendar events and the updated active-aspect registry
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -215,8 +210,6 @@ export class AspectsService {
    * Delegates to each sub-service so that every aspect category produces progressive
    * events spanning its full in-orb period.
    *
-   * @param events - Instantaneous events accumulated over a complete date range
-   * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];

@@ -181,30 +181,20 @@ function checkMarkerSync(args: {
   skillContent: string;
   skillName: string;
 }): boolean {
-  const { config, marker, skillContent, skillName } = args;
-  const markerContent = extractMarkerContent(skillContent, marker);
-  if (!markerContent) {
-    console.log(
-      `❌ ${skillName} missing <!-- ${marker}-start/end --> markers\n`,
-    );
+  const markerValues = readMarkerValues(args);
+  if (!markerValues) {
     return false;
   }
-  const skillValues = parseMarkdownTableValues(markerContent);
+  const { config, marker, skillName } = args;
+  const { skillValues } = markerValues;
   const sourceValues = getSourceValuesForMarker({ config, marker });
-  const sortedSource = _.sortBy([...sourceValues]);
-  const sortedSkill = _.sortBy([...skillValues]);
-  if (!_.isEqual(sortedSource, sortedSkill)) {
-    console.log(`❌ ${skillName} ${marker} table is out of sync\n`);
-    showDifference(sourceValues, skillValues, skillName);
-    return false;
-  }
-  if (!_.isEqual(sourceValues, skillValues)) {
-    console.log(
-      `🔀 ${skillName} ${marker} have matching values but different ordering\n`,
-    );
-    return false;
-  }
-  return true;
+
+  return validateMarkerValues({
+    marker,
+    skillName,
+    skillValues,
+    sourceValues,
+  });
 }
 
 /**
@@ -219,6 +209,28 @@ function getSourceValuesForMarker(args: {
     return config.types.map((type) => type.name);
   }
   return config.scopes.map((scope) => scope.name);
+}
+
+/**
+ * Reads and parses the marker table values from a skill file.
+ */
+function readMarkerValues(args: {
+  marker: "scopes" | "types";
+  skillContent: string;
+  skillName: string;
+}): undefined | { skillValues: string[] } {
+  const { marker, skillContent, skillName } = args;
+  const markerContent = extractMarkerContent(skillContent, marker);
+  if (!markerContent) {
+    console.log(
+      `❌ ${skillName} missing <!-- ${marker}-start/end --> markers\n`,
+    );
+    return undefined;
+  }
+
+  return {
+    skillValues: parseMarkdownTableValues(markerContent),
+  };
 }
 
 /**
@@ -240,4 +252,30 @@ function showDifference(
     console.log(`  Extra in ${targetName} (${extra.length} items):`);
     extra.forEach((item) => console.log(`    - ${item}`));
   }
+}
+
+/**
+ * Compares marker values for both set equality and stable ordering.
+ */
+function validateMarkerValues(args: {
+  marker: "scopes" | "types";
+  skillName: string;
+  skillValues: string[];
+  sourceValues: string[];
+}): boolean {
+  const { marker, skillName, skillValues, sourceValues } = args;
+  const sortedSource = _.sortBy([...sourceValues]);
+  const sortedSkill = _.sortBy([...skillValues]);
+  if (!_.isEqual(sortedSource, sortedSkill)) {
+    console.log(`❌ ${skillName} ${marker} table is out of sync\n`);
+    showDifference(sourceValues, skillValues, skillName);
+    return false;
+  }
+  if (!_.isEqual(sourceValues, skillValues)) {
+    console.log(
+      `🔀 ${skillName} ${marker} have matching values but different ordering\n`,
+    );
+    return false;
+  }
+  return true;
 }

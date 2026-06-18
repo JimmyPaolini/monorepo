@@ -4,11 +4,11 @@
  * Sync PR template from .github/PULL_REQUEST_TEMPLATE.md into:
  * - documentation/skills/create-pull-request/SKILL.md
  * - .github/prompts/create-pull-request.prompt.md
- * - .github/prompts/update-pull-request.prompt.md
+ * - .github/prompts/update-pull-request.prompt.md.
  *
  * Usage: tsx scripts/sync-pull-request-template.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
- *   write: Update targets from PULL_REQUEST_TEMPLATE.md
+ *   write: Update targets from PULL_REQUEST_TEMPLATE.md.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -43,7 +43,7 @@ const MARKER = "pr-template";
 // ─── Template Loading ─────────────────────────────────────────────────────────
 
 /**
- *
+ * Validates that a target file's embedded PR template block matches the source template.
  */
 function checkTargetSync(templateContent: string, targetFile: string): boolean {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
@@ -85,7 +85,7 @@ function extractMarkerContent(
 // ─── Marker Utilities ─────────────────────────────────────────────────────────
 
 /**
- *
+ * Runs synchronization checks for all PR-template target files.
  */
 function handleCheckMode(templateContent: string): void {
   let allInSync = true;
@@ -104,7 +104,7 @@ function handleCheckMode(templateContent: string): void {
 }
 
 /**
- *
+ * Updates only target files whose PR-template blocks are out of sync.
  */
 function handleWriteMode(templateContent: string): void {
   const outOfSyncTargets = TARGET_FILES.filter(
@@ -120,14 +120,14 @@ function handleWriteMode(templateContent: string): void {
 }
 
 /**
- *
+ * Loads the canonical PR template from .github/PULL_REQUEST_TEMPLATE.md.
  */
 function loadTemplate(): string {
   return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
 }
 
 /**
- *
+ * Script entrypoint that dispatches to check or write mode.
  */
 function main(): void {
   const templateContent = loadTemplate();
@@ -161,14 +161,14 @@ function replaceMarkerContent(
 }
 
 /**
- *
+ * Wraps raw markdown content in a fenced markdown code block.
  */
 function wrapInCodeBlock(content: string): string {
   return `\`\`\`markdown\n${content}\n\`\`\``;
 }
 
 /**
- *
+ * Replaces the target file's marker section with the current template code block.
  */
 function writeTargetSync(templateContent: string, targetFile: string): void {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);

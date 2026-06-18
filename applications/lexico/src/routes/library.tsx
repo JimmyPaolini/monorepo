@@ -32,9 +32,9 @@ export const Route = createFileRoute("/library")({
 // 📐 Component interfaces
 
 /**
- *
+ * Library create dialog props.
  */
-interface LibraryCreateDialogProps {
+interface LibraryCreateDialogProperties {
   formText: string;
   formTitle: string;
   isCreateOpen: boolean;
@@ -46,9 +46,9 @@ interface LibraryCreateDialogProps {
 }
 
 /**
- *
+ * Library edit dialog props.
  */
-interface LibraryEditDialogProps {
+interface LibraryEditDialogProperties {
   editingText: null | UserText;
   formText: string;
   formTitle: string;
@@ -60,26 +60,26 @@ interface LibraryEditDialogProps {
 }
 
 /**
- *
+ * Library empty state props.
  */
-interface LibraryEmptyStateProps {
+interface LibraryEmptyStateProperties {
   error: null | string;
   isLoading: boolean;
   texts: UserText[];
 }
 
 /**
- *
+ * Library selected view props.
  */
-interface LibrarySelectedViewProps {
+interface LibrarySelectedViewProperties {
   onBack: () => void;
   selectedText: null | UserText;
 }
 
 /**
- *
+ * Library text card props.
  */
-interface LibraryTextCardProps {
+interface LibraryTextCardProperties {
   onDelete: (id: string) => Promise<void>;
   onEdit: (text: UserText) => void;
   onSelect: (text: UserText) => void;
@@ -87,9 +87,9 @@ interface LibraryTextCardProps {
 }
 
 /**
- *
+ * Library text grid props.
  */
-interface LibraryTextGridProps {
+interface LibraryTextGridProperties {
   error: null | string;
   isLoading: boolean;
   onDelete: (id: string) => Promise<void>;
@@ -102,7 +102,7 @@ interface LibraryTextGridProps {
 // 🧩 Components
 
 /**
- *
+ * Library create dialog.
  */
 function LibraryCreateDialog({
   formText,
@@ -113,7 +113,7 @@ function LibraryCreateDialog({
   onFormTextChange,
   onFormTitleChange,
   onOpenChange,
-}: LibraryCreateDialogProps): ReactNode {
+}: LibraryCreateDialogProperties): ReactNode {
   return (
     <Dialog
       onOpenChange={onOpenChange}
@@ -173,7 +173,7 @@ function LibraryCreateDialog({
 }
 
 /**
- *
+ * Library edit dialog.
  */
 function LibraryEditDialog({
   editingText,
@@ -184,7 +184,7 @@ function LibraryEditDialog({
   onFormTextChange,
   onFormTitleChange,
   onUpdateConfirm,
-}: LibraryEditDialogProps): ReactNode {
+}: LibraryEditDialogProperties): ReactNode {
   return (
     <Dialog
       onOpenChange={(open) => !open && onClose()}
@@ -236,13 +236,13 @@ function LibraryEditDialog({
 }
 
 /**
- *
+ * Library empty state.
  */
 function LibraryEmptyState({
   error,
   isLoading,
   texts,
-}: LibraryEmptyStateProps): ReactNode {
+}: LibraryEmptyStateProperties): ReactNode {
   if (isLoading || error || texts.length > 0) {
     return null;
   }
@@ -265,7 +265,7 @@ function LibraryEmptyState({
 /**
  * Library page component that displays and manages user's saved texts.
  *
- * @returns React node
+ * @returns React node.
  */
 function LibraryPage(): ReactNode {
   const {
@@ -350,12 +350,12 @@ function LibraryPage(): ReactNode {
 }
 
 /**
- *
+ * Library selected view.
  */
 function LibrarySelectedView({
   onBack,
   selectedText,
-}: LibrarySelectedViewProps): ReactNode {
+}: LibrarySelectedViewProperties): ReactNode {
   if (!selectedText) {
     return null;
   }
@@ -383,14 +383,14 @@ function LibrarySelectedView({
 }
 
 /**
- *
+ * Library text card.
  */
 function LibraryTextCard({
   onDelete,
   onEdit,
   onSelect,
   text,
-}: LibraryTextCardProps): ReactNode {
+}: LibraryTextCardProperties): ReactNode {
   return (
     <Card
       className="cursor-pointer transition-transform hover:scale-[1.02]"
@@ -433,7 +433,7 @@ function LibraryTextCard({
 }
 
 /**
- *
+ * Library text grid.
  */
 function LibraryTextGrid({
   error,
@@ -443,7 +443,7 @@ function LibraryTextGrid({
   onSelect,
   selectedText,
   texts,
-}: LibraryTextGridProps): ReactNode {
+}: LibraryTextGridProperties): ReactNode {
   if (isLoading || error || texts.length === 0 || selectedText) {
     return null;
   }

@@ -183,6 +183,34 @@ export class TripleAspectsDetectorService {
   }
 
   /**
+   * Enumerates unique ordered body triplets.
+   */
+  private getUniqueBodyTriplets(bodies: Body[]): [Body, Body, Body][] {
+    const triplets: [Body, Body, Body][] = [];
+    for (let index = 0; index < bodies.length; index++) {
+      for (
+        let secondIndex = index + 1;
+        secondIndex < bodies.length;
+        secondIndex++
+      ) {
+        for (
+          let thirdIndex = secondIndex + 1;
+          thirdIndex < bodies.length;
+          thirdIndex++
+        ) {
+          const body1 = bodies[index];
+          const body2 = bodies[secondIndex];
+          const body3 = bodies[thirdIndex];
+          if (body1 && body2 && body3) {
+            triplets.push([body1, body2, body3]);
+          }
+        }
+      }
+    }
+    return triplets;
+  }
+
+  /**
    * Determines whether grand trine.
    */
   private isGrandTrine(args: {
@@ -302,37 +330,20 @@ export class TripleAspectsDetectorService {
     const bodiesArray = [...bodiesInTrines];
     const events: Event[] = [];
 
-    for (let index = 0; index < bodiesArray.length; index++) {
-      for (
-        let secondIndex = index + 1;
-        secondIndex < bodiesArray.length;
-        secondIndex++
-      ) {
-        for (
-          let thirdIndex = secondIndex + 1;
-          thirdIndex < bodiesArray.length;
-          thirdIndex++
-        ) {
-          const body1 = bodiesArray[index];
-          const body2 = bodiesArray[secondIndex];
-          const body3 = bodiesArray[thirdIndex];
-          if (!body1 || !body2 || !body3) {
-            continue;
-          }
-
-          const event = this.checkGrandTrineTriplet({
-            body1,
-            body2,
-            body3,
-            currentAspectBodies,
-            minute,
-            previousAspectBodies,
-            trines,
-          });
-          if (event) {
-            events.push(event);
-          }
-        }
+    for (const [body1, body2, body3] of this.getUniqueBodyTriplets(
+      bodiesArray,
+    )) {
+      const event = this.checkGrandTrineTriplet({
+        body1,
+        body2,
+        body3,
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+        trines,
+      });
+      if (event) {
+        events.push(event);
       }
     }
 

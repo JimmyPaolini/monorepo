@@ -89,8 +89,6 @@ export class IngressesComposerService {
    * A decan ingress occurs when a body crosses into one of the three 10° subdivisions
    * within a zodiac sign, each associated with a sub-ruler and decan symbol.
    *
-   * @param args - Body, ecliptic longitude, and date of the ingress
-   * @returns Calendar event for the decan ingress
    */
   buildDecanIngressEvent(args: {
     body: Body;
@@ -137,8 +135,6 @@ export class IngressesComposerService {
    * Marks when a celestial body reaches the 15° midpoint of its current zodiac sign,
    * representing the peak expression of that sign's energy.
    *
-   * @param args - Body, ecliptic longitude, and date of the peak
-   * @returns Calendar event for the sign peak ingress
    */
   buildPeakIngressEvent(args: {
     body: Body;
@@ -198,11 +194,6 @@ export class IngressesComposerService {
   /**
    * Creates a zodiac sign ingress calendar event.
    *
-   * @param args - Configuration object
-   * @param date - Precise UTC time of ingress
-   * @param longitude - Ecliptic longitude in degrees (0-360)
-   * @param body - Celestial body entering new sign
-   * @returns Calendar event for sign ingress with body and sign symbols
    * @see {@link getSign} to derive sign from longitude
    */
   buildSignIngressEvent(args: {

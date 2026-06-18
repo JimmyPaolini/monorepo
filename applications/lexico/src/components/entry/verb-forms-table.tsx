@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormTabs } from "./form-tabs";
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps as FormCellProperties } from "./form-cell";
+import type { FormCellProperties as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single conjugated form of a verb.
@@ -24,9 +24,9 @@ export interface VerbForm {
 }
 
 /**
- * Props for the VerbFormsTable component.
+ * Properties for the VerbFormsTable component.
  */
-export interface VerbFormsTableProps {
+export interface VerbFormsTableProperties {
   /** Additional class names */
   className?: string | undefined;
   /** Verb forms data */
@@ -68,7 +68,7 @@ const NUMBER_ABBREVIATIONS: Record<string, string> = {
 };
 
 /**
- *
+ * Verb form group.
  */
 interface VerbFormGroup {
   mood: string;
@@ -134,7 +134,7 @@ function buildVerbFormTenses(
 }
 
 /**
- * Build a nested record of mood -> tense -> voice -> VerbForm[].
+ * Build a nested record of mood -\> tense -\> voice -\> VerbForm[].
  */
 function buildVerbGroupRecord(
   forms: VerbForm[],
@@ -160,7 +160,7 @@ function buildVerbGroupRecord(
 }
 
 /**
- * Group verb forms by mood -> tense -> voice for nested tabs
+ * Group verb forms by mood -\> tense -\> voice for nested tabs.
  */
 function groupVerbForms(forms: VerbForm[]): VerbFormGroup[] {
   const grouped = buildVerbGroupRecord(forms);
@@ -178,16 +178,26 @@ function groupVerbForms(forms: VerbForm[]): VerbFormGroup[] {
 /**
  * Render inner tense/voice tab hierarchy for a given state selection.
  */
-function renderVerbFormContent(
-  currentVoice: undefined | VerbFormGroup["tenses"][0]["voices"][0],
-  tenseTabs: string[],
-  voiceTabs: string[],
-  activeTense: number,
-  activeVoice: number,
-  setActiveTense: (index: number) => void,
-  setActiveVoice: (index: number) => void,
-  search: string | undefined,
-): null | React.ReactElement {
+function renderVerbFormContent(args: {
+  activeTense: number;
+  activeVoice: number;
+  currentVoice: undefined | VerbFormGroup["tenses"][0]["voices"][0];
+  search: string | undefined;
+  setActiveTense: (index: number) => void;
+  setActiveVoice: (index: number) => void;
+  tenseTabs: string[];
+  voiceTabs: string[];
+}): null | React.ReactElement {
+  const {
+    activeTense,
+    activeVoice,
+    currentVoice,
+    search,
+    setActiveTense,
+    setActiveVoice,
+    tenseTabs,
+    voiceTabs,
+  } = args;
   const formsTable = currentVoice ? (
     <FormsTable
       forms={currentVoice.cells}
@@ -224,7 +234,7 @@ function renderVerbFormContent(
 }
 
 /**
- * Restructure verb forms for a specific mood/tense/voice into cells
+ * Restructure verb forms for a specific mood/tense/voice into cells.
  */
 function restructureVerbForms(forms: VerbForm[]): FormCellProperties[] {
   const byPersonNumber: Record<string, string> = {};
@@ -245,61 +255,62 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProperties[] {
   );
 }
 
-const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
-  ({ className, forms, search }, reference) => {
-    const grouped = React.useMemo(() => groupVerbForms(forms), [forms]);
+/**
+ * Render verb forms with mood, tense, and voice tab navigation.
+ */
+function VerbFormsTable(
+  properties: VerbFormsTableProperties,
+): null | React.ReactElement {
+  const { className, forms, search } = properties;
+  const grouped = React.useMemo(() => groupVerbForms(forms), [forms]);
 
-    const [activeMood, setActiveMood] = React.useState(0);
-    const [activeTense, setActiveTense] = React.useState(0);
-    const [activeVoice, setActiveVoice] = React.useState(0);
+  const [activeMood, setActiveMood] = React.useState(0);
+  const [activeTense, setActiveTense] = React.useState(0);
+  const [activeVoice, setActiveVoice] = React.useState(0);
 
-    // Reset child tabs when parent changes
-    React.useEffect(() => {
-      setActiveTense(0);
-      setActiveVoice(0);
-    }, [activeMood]);
+  const handleMoodChange = (index: number): void => {
+    setActiveMood(index);
+    setActiveTense(0);
+    setActiveVoice(0);
+  };
 
-    React.useEffect(() => {
-      setActiveVoice(0);
-    }, [activeTense]);
+  const handleTenseChange = (index: number): void => {
+    setActiveTense(index);
+    setActiveVoice(0);
+  };
 
-    if (grouped.length === 0) {
-      return null;
-    }
+  if (grouped.length === 0) {
+    return null;
+  }
 
-    const currentMood = grouped[activeMood];
-    const currentTense = currentMood?.tenses[activeTense];
-    const currentVoice = currentTense?.voices[activeVoice];
+  const currentMood = grouped[activeMood];
+  const currentTense = currentMood?.tenses[activeTense];
+  const currentVoice = currentTense?.voices[activeVoice];
 
-    const moodTabs = grouped.map((group) => group.mood);
-    const tenseTabs = currentMood?.tenses.map((tense) => tense.tense) ?? [];
-    const voiceTabs = currentTense?.voices.map((voice) => voice.voice) ?? [];
+  const moodTabs = grouped.map((group) => group.mood);
+  const tenseTabs = currentMood?.tenses.map((tense) => tense.tense) ?? [];
+  const voiceTabs = currentTense?.voices.map((voice) => voice.voice) ?? [];
 
-    return (
-      <div
-        ref={reference}
-        className={className}
+  return (
+    <div className={className}>
+      <FormTabs
+        activeTab={activeMood}
+        onTabChange={handleMoodChange}
+        tabs={moodTabs}
       >
-        <FormTabs
-          activeTab={activeMood}
-          onTabChange={setActiveMood}
-          tabs={moodTabs}
-        >
-          {renderVerbFormContent(
-            currentVoice,
-            tenseTabs,
-            voiceTabs,
-            activeTense,
-            activeVoice,
-            setActiveTense,
-            setActiveVoice,
-            search,
-          )}
-        </FormTabs>
-      </div>
-    );
-  },
-);
-VerbFormsTable.displayName = "VerbFormsTable";
+        {renderVerbFormContent({
+          activeTense,
+          activeVoice,
+          currentVoice,
+          search,
+          setActiveTense: handleTenseChange,
+          setActiveVoice,
+          tenseTabs,
+          voiceTabs,
+        })}
+      </FormTabs>
+    </div>
+  );
+}
 
 export { groupVerbForms, restructureVerbForms, VerbFormsTable };

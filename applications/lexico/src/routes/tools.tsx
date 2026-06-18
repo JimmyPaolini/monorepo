@@ -16,7 +16,7 @@ export const Route = createFileRoute("/tools")({
 /**
  * Tools page component displaying available Latin learning utilities.
  *
- * @returns React node
+ * @returns React node.
  */
 function ToolsPage(): ReactNode {
   return (

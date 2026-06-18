@@ -155,9 +155,9 @@ const identifierStyles: Record<
 };
 
 /**
- * Props for the Identifier component that displays labeled badges.
+ * Properties for the Identifier component that displays labeled badges.
  */
-export interface IdentifierProps {
+export interface IdentifierProperties {
   /** Additional class names */
   className?: string;
   /** The identifier name (e.g., "noun", "nominative", "singular") */
@@ -167,10 +167,8 @@ export interface IdentifierProps {
 /**
  * Badge component that displays abbreviated identifiers with tooltips.
  *
- * @param props - Component props
- * @returns React element
  */
-export function Identifier(properties: IdentifierProps): ReactElement {
+export function Identifier(properties: IdentifierProperties): ReactElement {
   const { className, identifier } = properties;
 
   const identifierLowercase = identifier.toLowerCase();

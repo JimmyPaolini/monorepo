@@ -26,7 +26,7 @@ export class EtymologyService {
 
   /**
    * Reads the nearest "Etymology" paragraph and returns its text plus an optional
-   * synthetic translation for "... participle of ..." descriptions.
+   * synthetic translation for "... Participle of ..." descriptions.
    */
   public parse(
     $: cheerio.CheerioAPI,

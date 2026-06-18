@@ -26,14 +26,11 @@ export class QuadrupleAspectsService {
    *
    * Analyzes combinations of simple aspects to identify 4-body patterns:
    * - Grand Cross (2 oppositions + 4 squares)
-   * - Kite (Grand Trine + opposition + 2 sextiles)
+   * - Kite (Grand Trine + opposition + 2 sextiles).
    *
    * These rare configurations represent major life themes and turning points,
    * indicating either intense challenge (Grand Cross) or channeled talent (Kite).
    *
-   * @param aspectEvents - Previously detected simple aspect events
-   * @param minute - The minute to check for quadruple aspect patterns
-   * @returns Array of all detected quadruple aspect events at this minute
    * @see {@link parseAspectEvents} for extracting aspect relationships
    * @see {@link composeGrandCrosses} for Grand Cross detection
    * @see {@link composeKites} for Kite detection
@@ -66,8 +63,6 @@ export class QuadrupleAspectsService {
    * Progressive events show when a pattern is in effect rather than just
    * boundary moments.
    *
-   * @param events - All events to process (non-quadruple-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -93,9 +88,6 @@ export class QuadrupleAspectsService {
   /**
    * Returns the other body in an aspect edge relative to the given body.
    *
-   * @param edge - An active 2-body aspect relationship
-   * @param body - The reference body
-   * @returns The other body, or `null` if the given body is not in the edge
    */
   getOtherBody(edge: AspectBodies, body: Body): Body | null {
     if (edge.bodies[0] === body) {
@@ -110,8 +102,6 @@ export class QuadrupleAspectsService {
   /**
    * Returns `true` if the given aspect edge involves the specified celestial body.
    *
-   * @param edge - An active 2-body aspect relationship
-   * @param body - The body to check for involvement
    */
   involvesBody(edge: AspectBodies, body: Body): boolean {
     return edge.bodies[0] === body || edge.bodies[1] === body;

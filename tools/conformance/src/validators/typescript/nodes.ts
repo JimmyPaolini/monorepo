@@ -21,7 +21,7 @@ import {
 /**
  * Returns all nodes from `nodes` whose identity key matches `templateNode`,
  * which must be keyed. The length of the result signals path ambiguity:
- * zero or one
+ * zero or one.
  */
 export function filterBySameKey(
   instanceNodes: Node[],
@@ -87,6 +87,9 @@ export function getKey(node: Node): null | string {
   return getNamedNodeKey(node);
 }
 
+/**
+ * Build decorator name.
+ */
 function buildDecoratorName(callee: Node): null | string {
   const parts: string[] = [];
   let current: Node = callee;
@@ -99,6 +102,9 @@ function buildDecoratorName(callee: Node): null | string {
   return parts.join(".");
 }
 
+/**
+ * Get decorator key.
+ */
 function getDecoratorKey(node: Decorator): null | string {
   const callee = isCallExpression(node.expression)
     ? node.expression.expression
@@ -106,17 +112,26 @@ function getDecoratorKey(node: Decorator): null | string {
   return buildDecoratorName(callee);
 }
 
+/**
+ * Get export key.
+ */
 function getExportKey(node: ExportDeclaration): null | string {
   const { moduleSpecifier } = node;
   if (moduleSpecifier === undefined) return null;
   return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
 }
 
+/**
+ * Get import key.
+ */
 function getImportKey(node: ImportDeclaration): null | string {
   const { moduleSpecifier } = node;
   return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
 }
 
+/**
+ * Get literal key.
+ */
 function getLiteralKey(node: Node): string | undefined {
   if (isIdentifier(node)) return node.text;
   if (isStringLiteral(node)) return node.text;
@@ -126,6 +141,9 @@ function getLiteralKey(node: Node): string | undefined {
   return undefined;
 }
 
+/**
+ * Get named node key.
+ */
 function getNamedNodeKey(node: Node): null | string {
   const nameNode = isNamedNode(node) ? node.name : undefined;
   if (nameNode === undefined) return null;
@@ -144,7 +162,7 @@ function getNamedNodeKey(node: Node): null | string {
  * string is the node's *identity key*. A node is **keyless** when `null` is
  * returned; it must instead be matched by its kind and structural content.
  *
- * Keyed nodes — representative TypeScript syntax and the identity key returned:
+ * Keyed nodes — representative TypeScript syntax and the identity key returned:.
  * ```typescript
  * import { Injectable } from '@nestjs/common' // ImportDeclaration → "@nestjs/common"
  * @Injectable()                                // Decorator         → "Injectable"
@@ -167,7 +185,7 @@ function getNamedNodeKey(node: Node): null | string {
  * - `Identifier` → the identifier text
  * - `StringLiteral` / `NumericLiteral` / `BigIntLiteral` / `NoSubstitutionTemplateLiteral` → the literal value text
  * - Named declarations (class, function, method, etc.) → the `.name` text, supporting
- *   `Identifier`, `PrivateIdentifier`, `StringLiteral`, and `NumericLiteral` name nodes
+ *   `Identifier`, `PrivateIdentifier`, `StringLiteral`, and `NumericLiteral` name nodes.
  *
  * Nodes that return `null` — anonymous expressions, blocks, type nodes, and
  * other structural containers — must be matched by position or by recursive

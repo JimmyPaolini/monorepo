@@ -8,7 +8,7 @@ import { afterEach, beforeEach, vi } from "vitest";
  *
  * Instead, copy these patterns directly in your test files:
  *
- * For event tests that write to database and filesystem:
+ * For event tests that write to database and filesystem:.
  * ```ts
  * vi.mock("../../database.utilities", () => ({
  *   upsertEvents: vi.fn(),
@@ -47,7 +47,7 @@ export const DEFAULT_TEST_DATE = new Date("2025-06-15T12:00:00Z");
  * Sets up fake timers with a fixed system time before each test
  * and restores real timers after each test.
  *
- * Usage in test files:
+ * Usage in test files:.
  * ```ts
  * import { mockDates } from '../testing/mocks'
  *
@@ -56,8 +56,6 @@ export const DEFAULT_TEST_DATE = new Date("2025-06-15T12:00:00Z");
  *   // your tests here
  * })
  * ```
- *
- * @param date - Optional custom date to use instead of DEFAULT_TEST_DATE
  */
 export function mockDates(date: Date = DEFAULT_TEST_DATE): void {
   beforeEach(() => {

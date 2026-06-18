@@ -18,7 +18,7 @@ export const Route = createFileRoute("/settings")({
 });
 
 /**
- *
+ * Handle sign in.
  */
 async function handleSignIn(): Promise<void> {
   const redirectTo = `${location.origin}/settings`;
@@ -31,7 +31,7 @@ async function handleSignIn(): Promise<void> {
 /**
  * Settings page component for user account management.
  *
- * @returns React node
+ * @returns React node.
  */
 function SettingsPage(): ReactNode {
   const router = useRouter();

@@ -8,6 +8,7 @@ import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./prov
 import { EpigraphikDatenbankClaussSlabyLibraryProvider } from "./providers/epigraphik-datenbank-clauss-slaby-library.provider";
 import { LatinLibraryBuilder } from "./providers/latin-library.builder";
 import { LatinLibraryProvider } from "./providers/latin-library.provider";
+import { PerseusLibraryTextExtractionProvider } from "./providers/perseus-library-text-extraction.provider";
 import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
 
 import type { LibrarySourceProvider } from "./library.types";
@@ -26,6 +27,7 @@ import type { LibrarySourceProvider } from "./library.types";
     LatinLibraryBuilder,
     LatinLibraryProvider,
     PerseusLibraryProvider,
+    PerseusLibraryTextExtractionProvider,
     {
       inject: [
         CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider,

@@ -6,15 +6,15 @@
  *
  * Modes:
  *   --mode=latest  (default) Process only the most recently generated migration
- *   --mode=all               Process all migrations
+ *   --mode=all               Process all migrations.
  *
  * Output:
  *   packages/lexico-entities/src/modules/database/migrations/<name>-up.sql
- *   packages/lexico-entities/src/modules/database/migrations/<name>-down.sql
+ *   packages/lexico-entities/src/modules/database/migrations/<name>-down.sql.
  *
  * Usage (run from workspace root):
  *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts
- *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all
+ *   pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all.
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -27,12 +27,12 @@ const MIGRATIONS_DIR =
 const MIGRATION_GLOB = /^\d{13}-\w.*\.ts$/;
 
 /**
- *
+ * Describes behavior.
  */
 type Mode = "all" | "latest";
 
 /**
- *
+ * Extract sql from literal.
  */
 function extractSqlFromLiteral(
   argument: ts.Expression,
@@ -52,7 +52,7 @@ function extractSqlFromLiteral(
 }
 
 /**
- *
+ * Extract sql from method.
  */
 function extractSqlFromMethod(
   method: ts.MethodDeclaration,
@@ -61,7 +61,7 @@ function extractSqlFromMethod(
   const statements: string[] = [];
 
   /**
-   *
+   * Visit.
    */
   function visit(node: ts.Node): void {
     if (
@@ -91,7 +91,7 @@ function extractSqlFromMethod(
 }
 
 /**
- *
+ * Extract sql from migration.
  */
 function extractSqlFromMigration(
   source: string,
@@ -108,7 +108,7 @@ function extractSqlFromMigration(
   let downStatements: string[] = [];
 
   /**
-   *
+   * Visit.
    */
   function visit(node: ts.Node): void {
     if (ts.isClassDeclaration(node)) {
@@ -137,7 +137,7 @@ function extractSqlFromMigration(
 }
 
 /**
- *
+ * Find migration files.
  */
 async function findMigrationFiles(mode: Mode): Promise<string[]> {
   const entries = await readdir(MIGRATIONS_DIR);
@@ -159,7 +159,7 @@ async function findMigrationFiles(mode: Mode): Promise<string[]> {
 }
 
 /**
- *
+ * Main.
  */
 async function main(): Promise<void> {
   const mode = parseMode();
@@ -183,7 +183,7 @@ async function main(): Promise<void> {
 }
 
 /**
- *
+ * Parse mode.
  */
 function parseMode(): Mode {
   const flag = process.argv.find((argument) => argument.startsWith("--mode="));
@@ -193,7 +193,7 @@ function parseMode(): Mode {
 }
 
 /**
- *
+ * Process migration file.
  */
 async function processMigrationFile(
   file: string,

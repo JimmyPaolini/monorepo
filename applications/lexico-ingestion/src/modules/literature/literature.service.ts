@@ -16,6 +16,7 @@ import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 import { LoggerService } from "../logger/logger.service";
 import { NumeralsService } from "../numerals/numerals.service";
 
+import { LiteratureLibraryScanService } from "./literature-library-scan.service";
 import {
   authorIdToName,
   CAPITAL_LETTER_PATTERN,
@@ -55,6 +56,7 @@ export class LiteratureService {
     private readonly tokenRepository: Repository<Token>,
     @InjectRepository(Word)
     private readonly wordRepository: Repository<Word>,
+    private readonly literatureLibraryScanService: LiteratureLibraryScanService,
     private readonly literatureTextIngestionService: LiteratureTextIngestionService,
     private readonly logger: LoggerService,
   ) {
@@ -462,41 +464,6 @@ export class LiteratureService {
       ),
     );
   }
-  /**
-   * Walk library directory for literature ingestion.
-   */
-  private async walkLibraryDirectory(args: {
-    authorSlug: string;
-    currentPathParts: string[];
-    directory: string;
-    providerName: string;
-    texts: LibraryEntry[];
-  }): Promise<void> {
-    const { authorSlug, currentPathParts, directory, providerName, texts } =
-      args;
-    const entries = await fs.readdir(directory, { withFileTypes: true });
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        await this.walkLibraryDirectory({
-          authorSlug,
-          currentPathParts: [...currentPathParts, entry.name],
-          directory: path.join(directory, entry.name),
-          providerName,
-          texts,
-        });
-      } else if (entry.isFile() && entry.name.endsWith(".md")) {
-        texts.push({
-          authorSlug,
-          fullPath: path.join(directory, entry.name),
-          pathParts: currentPathParts,
-          provider: providerName,
-          textSlug: path.basename(entry.name, ".md"),
-          title: _.startCase(path.basename(entry.name, ".md")),
-        });
-      }
-    }
-  }
-
   /** Ingests all selected texts grouped by author. */
   public async ingestAllAuthors(textsToIngest: LibraryEntry[]): Promise<void> {
     const grouped = _.groupBy(textsToIngest, "authorSlug");
@@ -513,36 +480,6 @@ export class LiteratureService {
 
   /** Scans the local library directory and returns discovered text entries. */
   public async scanLibrary(): Promise<LibraryEntry[]> {
-    const dataDirectory = path.resolve("data", "library");
-    const texts: LibraryEntry[] = [];
-    try {
-      const providers = await fs.readdir(dataDirectory, {
-        withFileTypes: true,
-      });
-      for (const provider of providers) {
-        if (!provider.isDirectory()) continue;
-        const providerName = provider.name;
-        const authors = await fs.readdir(
-          path.join(dataDirectory, providerName),
-          {
-            withFileTypes: true,
-          },
-        );
-        for (const author of authors) {
-          if (!author.isDirectory()) continue;
-          const authorSlug = author.name;
-          await this.walkLibraryDirectory({
-            authorSlug,
-            currentPathParts: [],
-            directory: path.join(dataDirectory, providerName, authorSlug),
-            providerName,
-            texts,
-          });
-        }
-      }
-    } catch {
-      // Ignore if data directory doesn't exist yet
-    }
-    return texts;
+    return this.literatureLibraryScanService.scanLibrary();
   }
 }

@@ -164,11 +164,26 @@ export class PerfectiveService {
         sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
         sunDistanceEphemeris: distanceEphemerisByBody.sun,
       }),
-      ...this.phasesService.detect({
-        coordinateEphemerisByBody,
-        distanceEphemerisByBody,
-        illuminationEphemerisByBody,
+      ...this.phasesService.getMartianPhaseEvents({
+        marsCoordinateEphemeris: coordinateEphemerisByBody.mars,
+        marsDistanceEphemeris: distanceEphemerisByBody.mars,
+        marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
         minute,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+      }),
+      ...this.phasesService.getMercurianPhaseEvents({
+        mercuryCoordinateEphemeris: coordinateEphemerisByBody.mercury,
+        mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
+        mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
+        minute,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+      }),
+      ...this.phasesService.getVenusianPhaseEvents({
+        minute,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+        venusCoordinateEphemeris: coordinateEphemerisByBody.venus,
+        venusDistanceEphemeris: distanceEphemerisByBody.venus,
+        venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
       }),
     ];
   }
@@ -181,9 +196,6 @@ export class PerfectiveService {
    * Iterates day-by-day, computes per-day ephemerides, then scans minute-by-minute
    * to identify aspects, eclipses, retrogrades, ingresses, daily solar/lunar cycle events,
    * monthly lunar phases, annual solar cycle events, and twilight transitions.
-   *
-   * @param input - Date range, coordinates, and timezone for detection
-   * @returns Flat array of all detected calendar events
    */
   detect(input: Input): Event[] {
     const { end, latitude, longitude, start, timezone } = input;

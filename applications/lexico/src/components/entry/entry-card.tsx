@@ -28,7 +28,7 @@ import type { VerbForm } from "./verb-forms-table";
  * Inputs for rendering one lexical entry with principal parts and expandable
  * translation/pronunciation/forms sections.
  */
-export interface EntryCardProps {
+export interface EntryCardProperties {
   /** Whether entry is bookmarked */
   bookmarked?: boolean;
   /** Additional class names */
@@ -90,7 +90,7 @@ export interface PronunciationDialect {
 /**
  * Inputs for the collapsible detail area inside an entry card.
  */
-interface EntryCardBodyProps {
+interface EntryCardBodyProperties {
   accordionValue: string;
   etymology?: null | string;
   forms?: FormsData | null;
@@ -103,27 +103,27 @@ interface EntryCardBodyProps {
 // 📋 Forms accordion section
 
 /**
- *
+ * Forms accordion item props.
  */
-interface FormsAccordionItemProps {
-  forms: EntryCardBodyProps["forms"];
+interface FormsAccordionItemProperties {
+  forms: EntryCardBodyProperties["forms"];
   hasEtymology: boolean;
 }
 
 // 🔊 Pronunciation accordion section
 
 /**
- *
+ * Pronunciation accordion item props.
  */
-interface PronunciationAccordionItemProps {
+interface PronunciationAccordionItemProperties {
   hasNext: boolean;
-  pronunciation: EntryCardBodyProps["pronunciation"];
+  pronunciation: EntryCardBodyProperties["pronunciation"];
 }
 
 /**
  * Renders a lexical entry card and wires accordion state for detail sections.
  */
-export function EntryCard(properties: EntryCardProps): ReactElement {
+export function EntryCard(properties: EntryCardProperties): ReactElement {
   const {
     bookmarked,
     etymology,
@@ -182,7 +182,7 @@ export function EntryCard(properties: EntryCardProps): ReactElement {
 /**
  * Renders translations and optional pronunciation/forms/etymology sections for one entry.
  */
-function EntryCardBody(properties: EntryCardBodyProps): ReactElement {
+function EntryCardBody(properties: EntryCardBodyProperties): ReactElement {
   const {
     accordionValue,
     etymology,
@@ -235,10 +235,10 @@ function EntryCardBody(properties: EntryCardBodyProps): ReactElement {
 }
 
 /**
- *
+ * Forms accordion item.
  */
 function FormsAccordionItem(
-  properties: FormsAccordionItemProps,
+  properties: FormsAccordionItemProperties,
 ): null | ReactElement {
   const { forms, hasEtymology } = properties;
   if (!forms) return null;
@@ -266,10 +266,10 @@ function FormsAccordionItem(
 }
 
 /**
- *
+ * Pronunciation accordion item.
  */
 function PronunciationAccordionItem(
-  properties: PronunciationAccordionItemProps,
+  properties: PronunciationAccordionItemProperties,
 ): null | ReactElement {
   const { hasNext, pronunciation } = properties;
   const classical = pronunciation?.classical;

@@ -7,6 +7,9 @@ import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
+/**
+ * Generate jupyter notebook application options.
+ */
 interface GenerateJupyterNotebookApplicationOptions {
   description?: string;
   name?: string;

@@ -3,7 +3,8 @@ import { aspectBodies as minorAspectBodies } from "@caelundas/src/modules/caelun
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { MinorAspectsComposerService } from "@caelundas/src/modules/minor-aspects/minor-aspects-composer.service";
+import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
+import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -57,7 +58,8 @@ beforeAll(async () => {
     providers: [
       LoggerService,
       MinorAspectsService,
-      MinorAspectsComposerService,
+      MinorAspectsEventService,
+      MinorAspectsProgressiveService,
       AspectsUtilities,
       EphemerisService,
       MathService,

@@ -60,6 +60,9 @@ export function validateTypescriptConformance(args: {
   return { errors: [...errors, ...commentErrors] };
 }
 
+/**
+ * Parse source file.
+ */
 function parseSourceFile(
   filename: string,
   content: string,
@@ -74,6 +77,9 @@ function parseSourceFile(
   );
 }
 
+/**
+ * Resolve language.
+ */
 function resolveLanguage(filename: string): ConformanceErrorLanguage {
   const extension = filename.slice(filename.lastIndexOf("."));
   switch (extension) {
@@ -93,6 +99,9 @@ function resolveLanguage(filename: string): ConformanceErrorLanguage {
   }
 }
 
+/**
+ * Resolve script kind.
+ */
 function resolveScriptKind(filename: string): ScriptKind {
   const extension = filename.slice(filename.lastIndexOf("."));
   switch (extension) {

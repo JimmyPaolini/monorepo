@@ -36,10 +36,6 @@ export class DailyCyclesService {
    * (local maximum elevation), sunset (elevation crosses 0° downward), and solar
    * nadir (local minimum elevation).
    *
-   * @param args - Ephemeris data and current time
-   * @param currentMinute - Time point to check for solar events (minute precision)
-   * @param sunAzimuthElevationEphemeris - Pre-computed Sun position data with azimuth/elevation
-   * @returns Array of calendar events for detected solar cycle points (0-1 events per call)
    *
    * @remarks
    * - Uses ±1 minute window (previous, current, next) for event detection
@@ -72,8 +68,6 @@ export class DailyCyclesService {
    */
   /**
    * Creates a lunar nadir calendar event.
-   * @param date - Precise UTC time of lunar nadir
-   * @returns Calendar event for lunar nadir with emoji summary
    */
   buildLunarNadirEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildLunarNadirEvent(date);
@@ -81,8 +75,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a lunar zenith (culmination) calendar event.
-   * @param date - Precise UTC time of lunar zenith
-   * @returns Calendar event for lunar zenith with emoji summary
    */
   buildLunarZenithEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildLunarZenithEvent(date);
@@ -90,8 +82,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a moonrise calendar event.
-   * @param date - Precise UTC time of moonrise
-   * @returns Calendar event for moonrise with emoji summary
    */
   buildMoonriseEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildMoonriseEvent(date);
@@ -99,8 +89,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a moonset calendar event.
-   * @param date - Precise UTC time of moonset
-   * @returns Calendar event for moonset with emoji summary
    */
   buildMoonsetEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildMoonsetEvent(date);
@@ -108,8 +96,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a formatted calendar event for solar nadir (solar midnight).
-   * @param date - Exact time of solar nadir
-   * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSolarNadirEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildSolarNadirEvent(date);
@@ -117,8 +103,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a formatted calendar event for solar zenith (solar noon).
-   * @param date - Exact time of solar zenith
-   * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSolarZenithEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildSolarZenithEvent(date);
@@ -126,8 +110,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a formatted calendar event for sunrise.
-   * @param date - Exact time of sunrise
-   * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSunriseEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildSunriseEvent(date);
@@ -135,8 +117,6 @@ export class DailyCyclesService {
 
   /**
    * Creates a formatted calendar event for sunset.
-   * @param date - Exact time of sunset
-   * @returns Calendar event with summary, description, and standard solar cycle categories
    */
   buildSunsetEvent(date: Moment): Event {
     return this.dailyCyclesBuilderService.buildSunsetEvent(date);
@@ -165,10 +145,6 @@ export class DailyCyclesService {
    * (lowest point below horizon). Uses elevation thresholds accounting for the Moon's
    * apparent diameter.
    *
-   * @param args - Configuration object
-   * @param currentMinute - The specific minute to analyze
-   * @param moonAzimuthElevationEphemeris - Pre-computed Moon azimuth/elevation data
-   * @returns Array of detected lunar cycle events (0-4 events per minute)
    * @see {@link getAzimuthElevationFromEphemeris} for ephemeris data retrieval
    * @see {@link isRise} for rise detection algorithm
    * @see {@link isSet} for set detection algorithm
@@ -224,8 +200,6 @@ export class DailyCyclesService {
    * sunset (elevation crosses 0° downward), and solar nadir (local minimum) by comparing
    * elevation values at the previous, current, and next minute.
    *
-   * @param args - Sun azimuth/elevation ephemeris and the current minute to analyze
-   * @returns Array of detected solar cycle events (0-1 events per minute)
    */
   getDailySolarCycleEvents(args: {
     minute: Moment;

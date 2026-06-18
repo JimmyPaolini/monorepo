@@ -10,6 +10,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs graphql module options.
+ */
 interface GenerateNestjsGraphqlModuleOptions {
   name: string;
   project?: string;
@@ -23,9 +26,6 @@ export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
  * Generates a new NestJS GraphQL module with resolver, entities, inputs, args,
  * service, types, constants, and unit test files.
  * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS GraphQL module generator
  */
 export async function generateNestjsGraphqlModule(
   tree: Tree,
@@ -61,6 +61,9 @@ export async function generateNestjsGraphqlModule(
   };
 }
 
+/**
+ * Build name substitutions.
+ */
 function buildNameSubstitutions(nameKebabCase: string): Record<string, string> {
   return {
     nameCamelCase: _.camelCase(nameKebabCase),
@@ -69,6 +72,9 @@ function buildNameSubstitutions(nameKebabCase: string): Record<string, string> {
   };
 }
 
+/**
+ * Resolve module directory.
+ */
 async function resolveModuleDirectory(
   tree: Tree,
   options: GenerateNestjsGraphqlModuleOptions,

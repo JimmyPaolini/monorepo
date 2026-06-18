@@ -111,7 +111,7 @@ export interface Type {
 }
 
 /**
- *
+ * Shared values derived once per run and passed to mode handlers.
  */
 interface SyncContext {
   config: ConventionalConfig;

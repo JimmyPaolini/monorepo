@@ -5,15 +5,28 @@ import { Lexeme } from "@monorepo/lexico-entities";
 
 import { LoggerModule } from "../logger/logger.module";
 
+import { PronunciationClassicalService } from "./pronunciation-classical.service";
+import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
+import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 import { PronunciationService } from "./pronunciation.service";
 
 /**
- * TODO: Document the pronunciation module.
+ * Pronunciation parsing and variant classification module.
+ *
+ * Manages classification of Latin pronunciation phonemes for both
+ * Classical and Ecclesiastical traditions, along with Wiktionary IPA integration.
  */
 @Module({
   controllers: [],
   exports: [PronunciationService],
   imports: [TypeOrmModule.forFeature([Lexeme]), LoggerModule],
-  providers: [PronunciationService],
+  providers: [
+    PronunciationPhonemesService,
+    PronunciationClassicalService,
+    PronunciationEcclesiasticalService,
+    PronunciationClassifier,
+    PronunciationService,
+  ],
 })
 export class PronunciationModule {}

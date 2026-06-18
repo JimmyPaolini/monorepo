@@ -3,18 +3,12 @@ import {
   aspectBodies as specialtyAspectBodies,
   specialtyAspects,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import {
-  symbolByBody,
-  symbolBySpecialtyAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service";
+import { SpecialtyAspectsEventService } from "./specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
 
 import type { LongitudesWindow } from "./specialty-aspects.types";
 import type {
@@ -41,9 +35,9 @@ export class SpecialtyAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly specialtyAspectsComposerService: SpecialtyAspectsComposerService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    aspectsUtilitiesService: AspectsUtilities,
+    private readonly specialtyAspectsEventService: SpecialtyAspectsEventService,
+    private readonly specialtyAspectsProgressiveService: SpecialtyAspectsProgressiveService,
   ) {
     this.logger.setContext(SpecialtyAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
@@ -116,14 +110,14 @@ export class SpecialtyAspectsService {
       previousMinute,
     } = args;
     const body1LongitudesWindow =
-      this.specialtyAspectsComposerService.getBodyLongitudesWindow({
+      this.specialtyAspectsEventService.getBodyLongitudesWindow({
         ephemeris: coordinateEphemerisByBody[body1],
         minute,
         nextMinute,
         previousMinute,
       });
     const body2LongitudesWindow =
-      this.specialtyAspectsComposerService.getBodyLongitudesWindow({
+      this.specialtyAspectsEventService.getBodyLongitudesWindow({
         ephemeris: coordinateEphemerisByBody[body2],
         minute,
         nextMinute,
@@ -148,15 +142,6 @@ export class SpecialtyAspectsService {
    * and categorization. Specialty aspects use distinct Unicode symbols
    * for each aspect type.
    *
-   * @param args - Event parameters
-   * @param longitudeBody1 - Ecliptic longitude of first body in degrees
-   * @param longitudeBody2 - Ecliptic longitude of second body in degrees
-   * @param timestamp - Exact moment of the aspect phase
-   * @param body1 - First celestial body
-   * @param body2 - Second celestial body
-   * @param phase - Aspect phase: forming, exact, or dissolving
-   * @returns Formatted calendar event with summary, description, and categories
-   * @throws When no valid specialty aspect is detected between the bodies
    * @see {@link getSpecialtyAspect} for aspect type determination
    */
   buildSpecialtyAspectEvent(args: {
@@ -179,36 +164,13 @@ export class SpecialtyAspectsService {
       );
       throw new Error("No specialty aspect found");
     }
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Specialty Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(specialtyAspect),
-    ];
-    const { categories, description, phaseEmoji } =
-      this.specialtyAspectsComposerService.phaseFields({
-        baseCategories,
-        body1Capitalized,
-        body2Capitalized,
-        phase,
-        specialtyAspect,
-      });
-    return this.specialtyAspectsComposerService.buildSpecialtyAspectEventFromParts(
-      {
-        body1Symbol: symbolByBody[body1],
-        body2Symbol: symbolByBody[body2],
-        categories,
-        description,
-        phaseEmoji,
-        specialtyAspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
-        timestamp,
-      },
-    );
+    return this.specialtyAspectsEventService.assembleSpecialtyAspectEvent({
+      body1,
+      body2,
+      phase,
+      specialtyAspect,
+      timestamp,
+    });
   }
 
   /**
@@ -219,10 +181,6 @@ export class SpecialtyAspectsService {
    * the phase (forming, exact, or dissolving) based on comparison with
    * adjacent minutes.
    *
-   * @param args - Configuration object
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param currentMinute - The minute to check for aspect events
-   * @returns Array of calendar events for all detected specialty aspects at this minute
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -259,79 +217,27 @@ export class SpecialtyAspectsService {
    * to create events spanning the entire active period of each aspect.
    * Progressive events show when an aspect is in orb rather than just boundary moments.
    *
-   * @param events - All events to process (non-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const specialtyAspectEvents = events.filter((event) =>
-      event.categories.includes("Specialty Aspect"),
-    );
-
-    const groupedEvents = _.groupBy(specialtyAspectEvents, (event) =>
-      this.specialtyAspectsComposerService.specialtyAspectGroupKey(event),
-    );
-
-    const progressiveEvents: Event[] = [];
-
-    for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-      if (!key) continue;
-
-      const formingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Forming"),
-      );
-      const dissolvingEvents = groupEvents.filter((event) =>
-        event.categories.includes("Dissolving"),
-      );
-
-      const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
-        formingEvents,
-        dissolvingEvents,
-        `specialty aspect ${key}`,
-      );
-
-      progressiveEvents.push(
-        ...pairs.map(([beginning, ending]) =>
-          this.specialtyAspectsComposerService.getSpecialtyAspectProgressiveEvent(
-            beginning,
-            ending,
-          ),
-        ),
-      );
-    }
-
-    return progressiveEvents;
+    return this.specialtyAspectsProgressiveService.detectProgressive(events);
   }
 
   /**
    * Returns the first specialty aspect between two bodies, or `null` if none is within orb.
    *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
    */
   getSpecialtyAspect(args: {
     longitudeBody1: number;
     longitudeBody2: number;
   }): null | SpecialtyAspect {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of specialtyAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          aspect,
-          longitudeBody1,
-          longitudeBody2,
-        })
-      ) {
-        return aspect;
-      }
-    }
-    return null;
+    return this.specialtyAspectsEventService.getSpecialtyAspect(args);
   }
 
   /**
    * Classifies the specialty aspect phase (forming / perfective / dissolving) between two bodies
    * across three consecutive minutes, or `null` if no specialty aspect is in progress.
    *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
    */
   getSpecialtyAspectPhase(args: {
     currentLongitudeBody1: number;

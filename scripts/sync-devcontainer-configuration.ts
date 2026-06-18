@@ -5,28 +5,28 @@
  *
  * Architecture:
  *   Primary:   .devcontainer/local/devcontainer.json  — source of truth for common fields
- *   Secondary: .devcontainer/cloud/devcontainer.json  — edit Docker feature / runArgs directly
+ *   Secondary: .devcontainer/cloud/devcontainer.json  — edit Docker feature / runArgs directly.
  *
  * Both configs are edited directly for their environment-specific fields.
  * This script keeps the shared fields in sync so they only need to be maintained once.
  *
  * Synced fields (local → cloud, local wins):
  *   $schema, containerUser, customizations, forwardPorts, image, portsAttributes,
- *   postAttachCommand, postCreateCommand, remoteEnv, remoteUser, waitFor
+ *   postAttachCommand, postCreateCommand, remoteEnv, remoteUser, waitFor.
  *
  * Merged fields (local is canonical, but config-specific entries are preserved):
  *   features  — shared features synced from local; docker feature in each config is preserved
- *   remoteEnv — synced from local; MONOREPO_ENVIRONMENT preserved per-config
+ *   remoteEnv — synced from local; MONOREPO_ENVIRONMENT preserved per-config.
  *
  * Cloud-only fields (cloud is source of truth, skipped during check and sync):
- *   mounts    — only used in the cloud config; local config has no mounts
+ *   mounts    — only used in the cloud config; local config has no mounts.
  *
  * Preserved fields in cloud (cloud is source of truth):
- *   name, runArgs  (and any other top-level keys not listed above)
+ *   name, runArgs  (and any other top-level keys not listed above).
  *
  * Usage: tsx scripts/sync-devcontainer-configuration.ts [check|write]
  *   check (default): Validate that cloud has correct common fields from local, exit 1 if not
- *   write: Propagate common fields from local into cloud
+ *   write: Propagate common fields from local into cloud.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -76,7 +76,7 @@ const MODE = process.argv[2] ?? "check";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 /**
- *
+ * Minimal shape required for devcontainer synchronization and comparison.
  */
 interface DevcontainerConfig {
   [key: string]: unknown;
@@ -88,7 +88,7 @@ interface DevcontainerConfig {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 /**
- *
+ * Builds the expected cloud configuration by applying sync and preservation rules.
  */
 function applySync(
   localConfig: DevcontainerConfig,
@@ -110,7 +110,7 @@ function applySync(
 }
 
 /**
- *
+ * Compares the current cloud config file against the expected synchronized config.
  */
 function check(
   expectedConfig: DevcontainerConfig,
@@ -138,7 +138,7 @@ function check(
 }
 
 /**
- *
+ * Identifies Docker feature keys that should remain environment-specific.
  */
 function isDockerFeatureKey(key: string): boolean {
   return (
@@ -147,7 +147,7 @@ function isDockerFeatureKey(key: string): boolean {
 }
 
 /**
- *
+ * Entrypoint that runs either verification or write synchronization mode.
  */
 function main(): void {
   const localConfig: DevcontainerConfig = JSON5.parse(
@@ -176,7 +176,7 @@ function main(): void {
 // ─── Sync ─────────────────────────────────────────────────────────────────────
 
 /**
- *
+ * Restores config-specific remote environment keys after shared fields are synced.
  */
 function preserveRemoteEnvironment(
   cloudConfig: DevcontainerConfig,
@@ -199,7 +199,7 @@ function preserveRemoteEnvironment(
 }
 
 /**
- *
+ * Prints a per-field diff for expected versus current cloud configuration values.
  */
 function reportDifferences(
   expectedFields: Record<string, unknown>,
@@ -222,7 +222,7 @@ function reportDifferences(
 // ─── Check / Write ────────────────────────────────────────────────────────────
 
 /**
- *
+ * Merges features by taking shared features from local and Docker features from cloud.
  */
 function syncFeatures(
   localConfig: DevcontainerConfig,
@@ -243,7 +243,7 @@ function syncFeatures(
 }
 
 /**
- *
+ * Copies synced top-level keys from local into the merged cloud configuration.
  */
 function syncVerbatimFields(
   localConfig: DevcontainerConfig,
@@ -258,7 +258,7 @@ function syncVerbatimFields(
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 /**
- *
+ * Writes the synchronized cloud devcontainer configuration back to disk.
  */
 function write(
   mergedConfig: DevcontainerConfig,

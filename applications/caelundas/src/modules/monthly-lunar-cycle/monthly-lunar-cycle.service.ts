@@ -76,10 +76,6 @@ export class MonthlyLunarCycleService {
    * Extracts the lunar phase from the entering event categories and formats a
    * progressive event showing the span of time Moon remains in that phase.
    *
-   * @param entering - Phase event marking the start of this phase period
-   * @param exiting - Next phase event marking the end of this phase period
-   * @returns Progressive event spanning the phase period, or null if phase cannot be extracted
-   *
    * @remarks
    * - Duration spans from entering.start to exiting.start (not exiting.end)
    * - Extracts phase from categories by matching against {@link lunarPhases}
@@ -292,11 +288,6 @@ export class MonthlyLunarCycleService {
    * Each phase has a unique symbol (🌑 new, 🌓 first, 🌕 full, 🌗 third) for visual
    * distinction in calendar applications.
    *
-   * @param args - Lunar phase event parameters
-   * @param date - Exact time of the lunar phase
-   * @param lunarPhase - Phase type: "new", "first", "full", or "third"
-   * @returns Calendar event with summary, description, and phase-specific categories
-   *
    * @remarks
    * - Summary format: `🌕 [phaseSymbol] [Phase] Moon`
    * - Example new: "🌕 🌑 New Moon"
@@ -355,8 +346,6 @@ export class MonthlyLunarCycleService {
    * waxing), full (100%), and third quarter (50% waning). Uses {@link MARGIN_MINUTES}
    * window for robust extrema detection.
    *
-   * @param args - Ephemeris data and current time, including minute and moonIlluminationEphemeris
-   * @returns Array of calendar events for detected lunar phases (0-1 events per call)
    *
    * @remarks
    * - Checks all four {@link lunarPhases}: new, first, full, third
@@ -424,9 +413,6 @@ export class MonthlyLunarCycleService {
    * Pairs consecutive lunar phase events to create progressive events spanning the
    * period between phases. This shows how long Moon remains in each phase state
    * (roughly 7.4 days per phase on average).
-   *
-   * @param events - Array of all calendar events (will be filtered to lunar cycles)
-   * @returns Array of progressive events spanning lunar phase periods
    *
    * @remarks
    * - Filters to events with "Monthly Lunar Cycle" category

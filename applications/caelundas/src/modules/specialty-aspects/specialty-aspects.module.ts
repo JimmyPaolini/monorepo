@@ -3,7 +3,8 @@ import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.modu
 import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/progressive.utilities.module";
 import { Module } from "@nestjs/common";
 
-import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service";
+import { SpecialtyAspectsEventService } from "./specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
 import { SpecialtyAspectsService } from "./specialty-aspects.service";
 
 /**
@@ -19,6 +20,10 @@ import { SpecialtyAspectsService } from "./specialty-aspects.service";
     AspectsUtilitiesModule,
     ProgressiveUtilitiesModule,
   ],
-  providers: [SpecialtyAspectsComposerService, SpecialtyAspectsService],
+  providers: [
+    SpecialtyAspectsEventService,
+    SpecialtyAspectsProgressiveService,
+    SpecialtyAspectsService,
+  ],
 })
 export class SpecialtyAspectsModule {}

@@ -142,9 +142,6 @@ export class SextupleAspectsService {
    * Currently detects the Hexagram (Star of David) pattern, which is one
    * of the rarest and most spiritually significant configurations.
    *
-   * @param aspectEvents - Previously detected simple aspect events
-   * @param minute - The minute to check for sextuple aspect patterns
-   * @returns Array of all detected sextuple aspect events at this minute
    */
   detect(args: {
     currentAspectBodies: AspectBodies[];
@@ -165,8 +162,6 @@ export class SextupleAspectsService {
    * Pairs forming and dissolving events for the same body sextet and
    * pattern type to create events spanning the entire active period.
    *
-   * @param events - All events to process (non-sextuple-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];

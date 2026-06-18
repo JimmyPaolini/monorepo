@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { FormsTable } from "./forms-table";
 
-import type { FormCellProps as FormCellProperties } from "./form-cell";
+import type { FormCellProperties as FormCellProperties } from "./form-cell";
 
 /**
  * Represents a single declined form of a noun.
@@ -17,9 +17,9 @@ export interface NounForm {
 }
 
 /**
- * Props for the NounFormsTable component.
+ * Properties for the NounFormsTable component.
  */
-export interface NounFormsTableProps {
+export interface NounFormsTableProperties {
   /** Additional class names */
   className?: string | undefined;
   /** Noun forms data */
@@ -69,8 +69,27 @@ function buildNounCaseRow(
 }
 
 /**
+ * Render noun forms in a singular/plural table.
+ */
+function NounFormsTable(
+  properties: NounFormsTableProperties,
+): React.ReactElement {
+  const { className, forms, search } = properties;
+  const cells = React.useMemo(() => restructureNounForms(forms), [forms]);
+
+  return (
+    <div className={className}>
+      <FormsTable
+        forms={cells}
+        search={search}
+      />
+    </div>
+  );
+}
+
+/**
  * Restructure noun forms into a 2-column grid (singular, plural)
- * Each row is a case, columns are singular and plural
+ * Each row is a case, columns are singular and plural.
  */
 function restructureNounForms(forms: NounForm[]): FormCellProperties[] {
   const byCase: Record<string, { plural?: string; singular?: string }> = {};
@@ -90,24 +109,5 @@ function restructureNounForms(forms: NounForm[]): FormCellProperties[] {
     buildNounCaseRow(caseName, byCase[caseName] ?? {}),
   );
 }
-
-const NounFormsTable = React.forwardRef<HTMLDivElement, NounFormsTableProps>(
-  ({ className, forms, search }, reference) => {
-    const cells = React.useMemo(() => restructureNounForms(forms), [forms]);
-
-    return (
-      <div
-        ref={reference}
-        className={className}
-      >
-        <FormsTable
-          forms={cells}
-          search={search}
-        />
-      </div>
-    );
-  },
-);
-NounFormsTable.displayName = "NounFormsTable";
 
 export { NounFormsTable, restructureNounForms };

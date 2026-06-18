@@ -45,7 +45,7 @@ const SUBJUNCTIVE_TENSE_ORDER = [
 const VOICE_ORDER = ["active", "passive"] as const;
 
 /**
- *
+ * Person number record.
  */
 interface PersonNumberRecord {
   plural?: Partial<Record<"first" | "second" | "third", string[]>>;
@@ -53,7 +53,7 @@ interface PersonNumberRecord {
 }
 
 /**
- *
+ * Describes behavior.
  */
 type TransformResult =
   | null
@@ -62,7 +62,7 @@ type TransformResult =
   | { forms: VerbForm[]; type: "verb" };
 
 /**
- * Convert nested adjective forms from database to flat array for AdjectiveFormsTable
+ * Convert nested adjective forms from database to flat array for AdjectiveFormsTable.
  */
 export function transformAdjectiveForms(
   forms: AdjectiveForms,
@@ -95,7 +95,7 @@ export function transformAdjectiveForms(
 }
 
 /**
- * Transform forms based on part of speech
+ * Transform forms based on part of speech.
  */
 export function transformForms(
   partOfSpeech: string,
@@ -110,7 +110,7 @@ export function transformForms(
 }
 
 /**
- * Convert nested noun forms from database to flat array for NounFormsTable
+ * Convert nested noun forms from database to flat array for NounFormsTable.
  */
 export function transformNounForms(forms: NounForms): NounForm[] {
   const result: NounForm[] = [];
@@ -135,7 +135,7 @@ export function transformNounForms(forms: NounForms): NounForm[] {
 }
 
 /**
- * Convert nested verb forms from database to flat array for VerbFormsTable
+ * Convert nested verb forms from database to flat array for VerbFormsTable.
  */
 export function transformVerbForms(forms: VerbForms): VerbForm[] {
   return [
@@ -193,12 +193,13 @@ function collectInfinitiveForms(
 /**
  * Collect participle tense forms for one voice into result array.
  */
-function collectParticipialTenseForms<T extends string>(
-  tenseMap: Partial<Record<T, string[]>>,
-  tenses: readonly T[],
-  voice: string,
-  result: VerbForm[],
-): void {
+function collectParticipialTenseForms<T extends string>(args: {
+  result: VerbForm[];
+  tenseMap: Partial<Record<T, string[]>>;
+  tenses: readonly T[];
+  voice: string;
+}): void {
+  const { result, tenseMap, tenses, voice } = args;
   for (const tense of tenses) {
     const formArray = tenseMap[tense];
     if (!formArray?.length) continue;
@@ -219,35 +220,36 @@ function collectParticipleForms(
   result: VerbForm[],
 ): void {
   if (participle.active) {
-    collectParticipialTenseForms(
-      participle.active,
-      ["present", "future"] as const,
-      "active",
+    collectParticipialTenseForms({
       result,
-    );
+      tenseMap: participle.active,
+      tenses: ["present", "future"] as const,
+      voice: "active",
+    });
   }
 
   if (participle.passive) {
-    collectParticipialTenseForms(
-      participle.passive,
-      ["perfect", "future"] as const,
-      "passive",
+    collectParticipialTenseForms({
       result,
-    );
+      tenseMap: participle.passive,
+      tenses: ["perfect", "future"] as const,
+      voice: "passive",
+    });
   }
 }
 
 /**
  * Collect finite verb forms from a number/person structure into result array.
  */
-function collectPersonNumberForms(
-  tenseData: PersonNumberRecord,
-  mood: string,
-  voice: string,
-  tense: string,
-  persons: readonly ("first" | "second" | "third")[],
-  result: VerbForm[],
-): void {
+function collectPersonNumberForms(args: {
+  mood: string;
+  persons: readonly ("first" | "second" | "third")[];
+  result: VerbForm[];
+  tense: string;
+  tenseData: PersonNumberRecord;
+  voice: string;
+}): void {
+  const { mood, persons, result, tense, tenseData, voice } = args;
   for (const number of NUMBER_ORDER) {
     const numberData = tenseData[number];
     if (!numberData) continue;
@@ -271,12 +273,13 @@ function collectPersonNumberForms(
 /**
  * Collect verbal noun case forms (gerund or supine) into result array.
  */
-function collectVerbalNounCaseForms<T extends string>(
-  caseForms: Partial<Record<T, string[]>>,
-  cases: readonly T[],
-  mood: string,
-  result: VerbForm[],
-): void {
+function collectVerbalNounCaseForms<T extends string>(args: {
+  caseForms: Partial<Record<T, string[]>>;
+  cases: readonly T[];
+  mood: string;
+  result: VerbForm[];
+}): void {
+  const { caseForms, cases, mood, result } = args;
   for (const caseName of cases) {
     const formArray = caseForms[caseName];
     if (!formArray || formArray.length === 0) continue;
@@ -309,7 +312,7 @@ function dispatchFormTransform(pos: string, forms: Forms): TransformResult {
 }
 
 /**
- * Determine if forms are adjective forms (has gender keys)
+ * Determine if forms are adjective forms (has gender keys).
  */
 function isAdjectiveForms(forms: Forms): forms is AdjectiveForms {
   return "masculine" in forms || "feminine" in forms || "neuter" in forms;
@@ -323,7 +326,7 @@ function isAdjectivePos(pos: string): boolean {
 }
 
 /**
- * Determine if forms are noun forms (has case keys directly with number groups)
+ * Determine if forms are noun forms (has case keys directly with number groups).
  */
 function isNounForms(forms: Forms): forms is NounForms {
   if ("masculine" in forms || "feminine" in forms || "neuter" in forms)
@@ -345,7 +348,7 @@ function isNounPos(pos: string): boolean {
 }
 
 /**
- * Determine if forms are verb forms
+ * Determine if forms are verb forms.
  */
 function isVerbForms(forms: Forms): forms is VerbForms {
   return (
@@ -357,7 +360,7 @@ function isVerbForms(forms: Forms): forms is VerbForms {
 }
 
 /**
- * Helper to get person display string
+ * Helper to get person display string.
  */
 function personDisplay(person: string): string {
   switch (person) {
@@ -390,14 +393,14 @@ function transformImperativeForms(forms: VerbForms): VerbForm[] {
     for (const tense of ["present", "future"] as const) {
       const tenseData = voiceData[tense];
       if (!tenseData) continue;
-      collectPersonNumberForms(
-        tenseData,
-        "imperative",
-        voice,
-        tense,
-        ["second", "third"],
+      collectPersonNumberForms({
+        mood: "imperative",
+        persons: ["second", "third"],
         result,
-      );
+        tense,
+        tenseData,
+        voice,
+      });
     }
   }
 
@@ -418,14 +421,14 @@ function transformIndicativeForms(forms: VerbForms): VerbForm[] {
     for (const tense of INDICATIVE_TENSE_ORDER) {
       const tenseData = voiceData[tense];
       if (!tenseData) continue;
-      collectPersonNumberForms(
-        tenseData,
-        "indicative",
-        voice,
-        tense,
-        PERSON_ORDER,
+      collectPersonNumberForms({
+        mood: "indicative",
+        persons: PERSON_ORDER,
         result,
-      );
+        tense,
+        tenseData,
+        voice,
+      });
     }
   }
 
@@ -464,14 +467,14 @@ function transformSubjunctiveForms(forms: VerbForms): VerbForm[] {
     for (const tense of SUBJUNCTIVE_TENSE_ORDER) {
       const tenseData = voiceData[tense];
       if (!tenseData) continue;
-      collectPersonNumberForms(
-        tenseData,
-        "subjunctive",
-        voice,
-        tense,
-        PERSON_ORDER,
+      collectPersonNumberForms({
+        mood: "subjunctive",
+        persons: PERSON_ORDER,
         result,
-      );
+        tense,
+        tenseData,
+        voice,
+      });
     }
   }
 
@@ -486,21 +489,21 @@ function transformVerbalNounForms(forms: VerbForms): VerbForm[] {
   if (!forms.verbalNoun) return result;
 
   if (forms.verbalNoun.gerund) {
-    collectVerbalNounCaseForms(
-      forms.verbalNoun.gerund,
-      ["genitive", "dative", "accusative", "ablative"] as const,
-      "gerund",
+    collectVerbalNounCaseForms({
+      caseForms: forms.verbalNoun.gerund,
+      cases: ["genitive", "dative", "accusative", "ablative"] as const,
+      mood: "gerund",
       result,
-    );
+    });
   }
 
   if (forms.verbalNoun.supine) {
-    collectVerbalNounCaseForms(
-      forms.verbalNoun.supine,
-      ["accusative", "ablative"] as const,
-      "supine",
+    collectVerbalNounCaseForms({
+      caseForms: forms.verbalNoun.supine,
+      cases: ["accusative", "ablative"] as const,
+      mood: "supine",
       result,
-    );
+    });
   }
 
   return result;

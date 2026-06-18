@@ -49,8 +49,6 @@ export class TwilightsService {
   /**
    * Creates an astronomical dawn calendar event.
    * Marks when the sky begins to lighten (Sun at -18° elevation).
-   * @param date - Precise UTC time
-   * @returns Calendar event for astronomical dawn
    */
   buildAstronomicalDawnEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildAstronomicalDawnEvent(date);
@@ -61,8 +59,6 @@ export class TwilightsService {
    *
    * Marks when the sky is dark enough for astronomical observation (Sun at −18° elevation).
    *
-   * @param date - Precise UTC time of astronomical dusk
-   * @returns Calendar event for astronomical dusk
    */
   buildAstronomicalDuskEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildAstronomicalDuskEvent(date);
@@ -73,8 +69,6 @@ export class TwilightsService {
    *
    * Marks when outdoor activities are possible without artificial light (Sun at −6° elevation).
    *
-   * @param date - Precise UTC time of civil dawn
-   * @returns Calendar event for civil dawn
    */
   buildCivilDawnEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildCivilDawnEvent(date);
@@ -85,8 +79,6 @@ export class TwilightsService {
    *
    * Marks when artificial light becomes necessary for outdoor activities (Sun at −6° elevation).
    *
-   * @param date - Precise UTC time of civil dusk
-   * @returns Calendar event for civil dusk
    */
   buildCivilDuskEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildCivilDuskEvent(date);
@@ -97,8 +89,6 @@ export class TwilightsService {
    *
    * Marks when the horizon becomes visible at sea (Sun at −12° elevation).
    *
-   * @param date - Precise UTC time of nautical dawn
-   * @returns Calendar event for nautical dawn
    */
   buildNauticalDawnEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildNauticalDawnEvent(date);
@@ -109,8 +99,6 @@ export class TwilightsService {
    *
    * Marks when the sea horizon becomes indistinguishable (Sun at −12° elevation).
    *
-   * @param date - Precise UTC time of nautical dusk
-   * @returns Calendar event for nautical dusk
    */
   buildNauticalDuskEvent(date: Moment): Event {
     return this.twilightsBuilderService.buildNauticalDuskEvent(date);
@@ -122,10 +110,8 @@ export class TwilightsService {
    * Identifies six daily twilight transitions based on solar depression angles:
    * - Astronomical dawn/dusk (18° below horizon)
    * - Nautical dawn/dusk (12° below horizon)
-   * - Civil dawn/dusk (6° below horizon)
+   * - Civil dawn/dusk (6° below horizon).
    *
-   * @param args - Configuration object with minute and sunAzimuthElevationEphemeris
-   * @returns Array of detected twilight events (0-1 events per minute)
    * @see {@link isAstronomicalDawn} and related functions for detection
    * @see {@link degreesByTwilight} for threshold definitions
    *
@@ -158,10 +144,8 @@ export class TwilightsService {
    * - Astronomical twilight (morning/evening)
    * - Nautical twilight (morning/evening)
    * - Daylight (civil dawn to civil dusk)
-   * - Night (astronomical dusk to astronomical dawn)
+   * - Night (astronomical dusk to astronomical dawn).
    *
-   * @param events - Array of all twilight events
-   * @returns Array of progressive events representing twilight spans
    * @see {@link pairProgressiveEvents} for pairing logic
    */
   detectProgressive(detectedEvents: Event[]): Event[] {

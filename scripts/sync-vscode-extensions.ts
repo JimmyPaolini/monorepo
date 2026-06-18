@@ -5,20 +5,20 @@
  *
  * Source: .vscode/extensions.json
  *   - recommendations: Extensions to recommend (gets copied to BOTH arrays below)
- *   - unwantedRecommendations: Extensions to discourage
+ *   - unwantedRecommendations: Extensions to discourage.
  *
  * Targets:
  *   - .devcontainer/local/devcontainer.json
- *   - .devcontainer/cloud/devcontainer.json
+ *   - .devcontainer/cloud/devcontainer.json.
  *
  * Each target receives:
  *   - extensions: Auto-installed in devcontainers (copied from recommendations)
  *   - recommendations: Shown as suggestions (copied from recommendations)
- *   - unwantedRecommendations: Extensions to discourage (copied as-is)
+ *   - unwantedRecommendations: Extensions to discourage (copied as-is).
  *
  * Usage: tsx scripts/sync-vscode-extensions.ts [check|write]
  *   check (default): Validate that both configs are in sync with extensions.json, exit 1 if not
- *   write: Update both devcontainer.json files from extensions.json
+ *   write: Update both devcontainer.json files from extensions.json.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -39,7 +39,7 @@ const DEVCONTAINER_FILES = [
 const MODE = process.argv[2] || "check";
 
 /**
- *
+ * Minimal devcontainer shape used to compare and update VS Code extension lists.
  */
 interface DevcontainerJson {
   customizations: {
@@ -52,7 +52,7 @@ interface DevcontainerJson {
 }
 
 /**
- *
+ * Canonical extension recommendation lists loaded from .vscode/extensions.json.
  */
 interface ExtensionsJson {
   recommendations: string[];
@@ -60,7 +60,7 @@ interface ExtensionsJson {
 }
 
 /**
- *
+ * Compares one devcontainer's extension fields against the canonical extension lists.
  */
 function checkSync(
   extensions: ExtensionsJson,
@@ -112,7 +112,7 @@ function checkSync(
 }
 
 /**
- *
+ * Verifies both devcontainer files are synchronized with .vscode/extensions.json.
  */
 function handleCheckMode(extensions: ExtensionsJson): void {
   let allInSync = true;
@@ -131,7 +131,7 @@ function handleCheckMode(extensions: ExtensionsJson): void {
 }
 
 /**
- *
+ * Writes extension updates to each devcontainer file when mismatches are detected.
  */
 function handleWriteMode(extensions: ExtensionsJson): void {
   for (const devcontainerFile of DEVCONTAINER_FILES) {
@@ -148,7 +148,7 @@ function handleWriteMode(extensions: ExtensionsJson): void {
 }
 
 /**
- *
+ * Script entrypoint that reads the source extension manifest and runs the selected mode.
  */
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
@@ -169,7 +169,7 @@ function main(): void {
 }
 
 /**
- *
+ * Reports differences for the auto-installed devcontainer extension list.
  */
 function reportExtensionsDiff(
   recommendations: string[],
@@ -183,7 +183,7 @@ function reportExtensionsDiff(
 }
 
 /**
- *
+ * Reports differences for the devcontainer recommendations list.
  */
 function reportRecommendationsDiff(
   recommendations: string[],
@@ -197,7 +197,7 @@ function reportRecommendationsDiff(
 }
 
 /**
- *
+ * Reports differences for the devcontainer unwantedRecommendations list.
  */
 function reportUnwantedRecommendationsDiff(
   unwantedRecommendations: string[],
@@ -209,7 +209,7 @@ function reportUnwantedRecommendationsDiff(
 }
 
 /**
- *
+ * Prints missing and extra extension identifiers for a compared list.
  */
 function showDifference(source: string[], target: string[]): void {
   const missing = _.difference(source, target);
@@ -226,7 +226,7 @@ function showDifference(source: string[], target: string[]): void {
 }
 
 /**
- *
+ * Updates a devcontainer file so its extension fields match the source manifest.
  */
 function writeSync(
   extensions: ExtensionsJson,

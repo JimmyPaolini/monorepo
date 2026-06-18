@@ -16,7 +16,7 @@ import type {
  * Two entry points are provided:
  * - {@link AspectsUtilities#isAspect}: point-in-time orb check
  * - {@link AspectsUtilities#getIsAspect}: factory that returns a phase-classification
- *   function (forming / perfective / dissolving) for a given set of aspects
+ *   function (forming / perfective / dissolving) for a given set of aspects.
  */
 @Injectable()
 export class AspectsUtilities {
@@ -150,8 +150,7 @@ export class AspectsUtilities {
    * "dissolving". Conjunction uses a local-minimum bounce test; all other
    * aspects use a sign-crossing test.
    *
-   * @param aspectsToDetect - Aspects to test for
-   * @returns Phase-detection function for the given aspect set
+   * @returns Phase-detection function for the given aspect set.
    */
   getIsAspect(
     aspectsToDetect: Aspect[],
@@ -182,8 +181,6 @@ export class AspectsUtilities {
   /**
    * Returns `true` when the angular separation between two bodies falls within
    * the configured orb for the given aspect.
-   *
-   * @param args - `longitudeBody1`, `longitudeBody2` (ecliptic degrees), and `aspect` type to test
    */
   isAspect(args: {
     aspect: Aspect;

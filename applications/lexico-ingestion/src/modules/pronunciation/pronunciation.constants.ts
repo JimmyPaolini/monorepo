@@ -1,8 +1,13 @@
 /* eslint-disable unicorn/prevent-abbreviations */
+import type {
+  ClassicalPhonemeMap,
+  EcclesiasticalPhonemeMap,
+} from "./pronunciation.types";
+
 // ♟️ Constants
 
 // ♟️ Classical Latin phoneme maps
-export const classicalPhonemes: Record<string, string> = {
+export const classicalPhonemes: ClassicalPhonemeMap = {
   " ": "_",
   "-": "",
   ".": "_",
@@ -81,7 +86,7 @@ export const classicalDevocalize: Record<string, string> = {
 };
 
 // ♟️ Ecclesiastical Latin phoneme map
-export const ecclesiasticalPhonemes: Record<string, string | string[][]> = {
+export const ecclesiasticalPhonemes: EcclesiasticalPhonemeMap = {
   " ": "_",
   a: "a:",
   ā: "a:",

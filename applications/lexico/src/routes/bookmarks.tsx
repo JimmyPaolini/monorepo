@@ -24,25 +24,25 @@ export const Route = createFileRoute("/bookmarks")({
 // 📚 Bookmark list sub-components
 
 /**
- *
+ * Bookmark item props.
  */
-interface BookmarkItemProps {
+interface BookmarkItemProperties {
   entry: BookmarkedEntry;
   onRemove: (entryId: string) => void;
 }
 
 /**
- *
+ * Bookmarks list props.
  */
-interface BookmarksListProps {
+interface BookmarksListProperties {
   bookmarks: BookmarkedEntry[];
   onRemove: (entryId: string) => void;
 }
 
 /**
- *
+ * Bookmark item.
  */
-function BookmarkItem(properties: BookmarkItemProps): ReactNode {
+function BookmarkItem(properties: BookmarkItemProperties): ReactNode {
   const { entry, onRemove } = properties;
   return (
     <div className="group relative">
@@ -78,9 +78,9 @@ function BookmarkItem(properties: BookmarkItemProps): ReactNode {
 }
 
 /**
- *
+ * Bookmarks list.
  */
-function BookmarksList(properties: BookmarksListProps): ReactNode {
+function BookmarksList(properties: BookmarksListProperties): ReactNode {
   const { bookmarks, onRemove } = properties;
   return (
     <div className="mx-auto max-w-2xl space-y-4">
@@ -98,7 +98,7 @@ function BookmarksList(properties: BookmarksListProps): ReactNode {
 /**
  * Bookmarks page component that displays user's bookmarked entries.
  *
- * @returns React node
+ * @returns React node.
  */
 function BookmarksPage(): ReactNode {
   const [bookmarks, setBookmarks] = useState<BookmarkedEntry[]>([]);
@@ -167,7 +167,7 @@ function BookmarksPage(): ReactNode {
 }
 
 /**
- *
+ * Empty bookmarks.
  */
 function EmptyBookmarks(): ReactNode {
   return (

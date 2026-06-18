@@ -7,9 +7,13 @@ import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { PronunciationClassifier } from "./pronunciation.classifier";
+import { PronunciationClassifier } from "./pronunciation-classifier.service";
 import { classicalSubstitutions } from "./pronunciation.constants";
 
+import type {
+  PronunciationBuildDefaultContext,
+  PronunciationPhoneme,
+} from "./pronunciation.types";
 import type { AnyNode } from "domhandler";
 
 /**
@@ -24,11 +28,10 @@ export class PronunciationService {
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
     private readonly logger: LoggerService,
+    private readonly classifier: PronunciationClassifier,
   ) {
     this.logger.setContext(PronunciationService.name);
   }
-
-  private readonly classifier = new PronunciationClassifier();
 
   // 🔐 Private Fields
 
@@ -37,10 +40,10 @@ export class PronunciationService {
   /**
    * Builds default pronunciation for pronunciation parsing.
    */
-  private buildDefaultPronunciation(
-    variant: "classical" | "ecclesiastical" | "vulgar",
-    phonemes: null | string,
-  ): Pronunciation {
+  private buildDefaultPronunciation({
+    phonemes,
+    variant,
+  }: PronunciationBuildDefaultContext): Pronunciation {
     const pronunciation = new Pronunciation();
     pronunciation.variant = variant;
     pronunciation.phonemes = phonemes;
@@ -52,16 +55,13 @@ export class PronunciationService {
   /**
    * Builds pronunciations for pronunciation parsing.
    */
-  private buildPronunciations(phonemes: (string | string[][])[]): string[] {
+  private buildPronunciations(phonemes: PronunciationPhoneme[]): string[] {
     const pronunciations: string[] = [];
 
     /**
      * Builds  for pronunciation parsing.
      */
-    function build(
-      previous: (string | string[][])[],
-      next: (string | string[][])[],
-    ): void {
+    function build(previous: string[], next: PronunciationPhoneme[]): void {
       if (next.length === 0) {
         pronunciations.push(previous.join(" "));
         return;
@@ -122,8 +122,8 @@ export class PronunciationService {
    */
   private getEcclesiasticalPhonemes(
     wordString: string,
-  ): (string | string[][])[] {
-    const phonemes: (string | string[][])[] = [];
+  ): PronunciationPhoneme[] {
+    const phonemes: PronunciationPhoneme[] = [];
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const isVowel = (letter: string): boolean =>
       ["a", "e", "i", "o", "u"].includes(letter);
@@ -182,15 +182,18 @@ export class PronunciationService {
     elt: AnyNode,
     macronizedWord: string,
   ): Pronunciation[] {
-    const classical = this.buildDefaultPronunciation(
-      "classical",
-      this.getClassicalPhonemes(macronizedWord),
-    );
-    const ecclesiastical = this.buildDefaultPronunciation(
-      "ecclesiastical",
-      this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? null,
-    );
-    const vulgar = this.buildDefaultPronunciation("vulgar", null);
+    const classical = this.buildDefaultPronunciation({
+      phonemes: this.getClassicalPhonemes(macronizedWord),
+      variant: "classical",
+    });
+    const ecclesiastical = this.buildDefaultPronunciation({
+      phonemes: this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? null,
+      variant: "ecclesiastical",
+    });
+    const vulgar = this.buildDefaultPronunciation({
+      phonemes: null,
+      variant: "vulgar",
+    });
     this.classifier.applyWiktionaryPronunciations({
       $,
       classical,

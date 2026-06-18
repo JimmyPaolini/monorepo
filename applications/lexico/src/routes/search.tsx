@@ -35,23 +35,23 @@ export const Route = createFileRoute("/search")({
 // 🔍 Search results sub-components
 
 /**
- *
+ * Empty results props.
  */
-interface EmptyResultsProps {
+interface EmptyResultsProperties {
   query: string;
 }
 
 /**
- *
+ * Search results list props.
  */
-interface SearchResultsListProps {
+interface SearchResultsListProperties {
   results: EntrySearchResult[];
 }
 
 /**
- *
+ * Empty results.
  */
-function EmptyResults(properties: EmptyResultsProps): ReactNode {
+function EmptyResults(properties: EmptyResultsProperties): ReactNode {
   const { query } = properties;
   return (
     <div className="text-center text-muted-foreground">
@@ -63,7 +63,7 @@ function EmptyResults(properties: EmptyResultsProps): ReactNode {
 /**
  * Search page component that allows users to search for Latin entries.
  *
- * @returns React node
+ * @returns React node.
  */
 function SearchPage(): ReactNode {
   const navigate = useNavigate({ from: "/search" });
@@ -75,10 +75,6 @@ function SearchPage(): ReactNode {
   const inputReference = useReference<HTMLInputElement>(null);
 
   const debouncedQuery = useDebounce(query, 300);
-  // Sync query state with URL
-  useEffect(() => {
-    setQuery(urlQuery ?? "");
-  }, [urlQuery]);
 
   // Select all text in the input on mount
   useEffect(() => {
@@ -164,9 +160,9 @@ function SearchPage(): ReactNode {
 }
 
 /**
- *
+ * Search results list.
  */
-function SearchResultsList(properties: SearchResultsListProps): ReactNode {
+function SearchResultsList(properties: SearchResultsListProperties): ReactNode {
   const { results } = properties;
 
   return (
@@ -200,9 +196,9 @@ function SearchResultsList(properties: SearchResultsListProps): ReactNode {
 /**
  * Custom hook that debounces a value by the specified delay.
  *
- * @param value - Value to debounce
- * @param delay - Delay in milliseconds
- * @returns Debounced value
+ * @param value - Value to debounce.
+ * @param delay - Delay in milliseconds.
+ * @returns Debounced value.
  */
 function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
@@ -216,7 +212,7 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 /**
- *
+ * Welcome card.
  */
 function WelcomeCard(): ReactNode {
   return (

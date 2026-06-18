@@ -5,7 +5,7 @@ import { routeTree } from "./routeTree.gen";
 /**
  * Creates and configures the application router.
  *
- * @returns Configured TanStack Router instance
+ * @returns Configured TanStack Router instance.
  */
 export function getRouter(): Router<typeof routeTree> {
   const router = createRouter({
@@ -19,7 +19,7 @@ export function getRouter(): Router<typeof routeTree> {
 
 declare module "@tanstack/react-router" {
   /**
-   *
+   * Register.
    */
   interface Register {
     router: ReturnType<typeof getRouter>;

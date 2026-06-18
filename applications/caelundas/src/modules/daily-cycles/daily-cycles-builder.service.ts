@@ -46,8 +46,8 @@ export class DailyCyclesBuilderService {
    * the horizon (anti-culmination). This is when the Moon is on the opposite
    * side of the celestial sphere from zenith.
    *
-   * @param date - Precise UTC time of lunar nadir
-   * @returns Calendar event for lunar nadir with emoji summary
+   * @param date - Precise UTC time of lunar nadir.
+   * @returns Calendar event for lunar nadir with emoji summary.
    * @see {@link isMinimum} for minimum detection algorithm
    *
    * @example
@@ -80,8 +80,8 @@ export class DailyCyclesBuilderService {
    * above the horizon (transit of the local meridian). This is when the Moon
    * appears most prominent in the sky from the observer's location.
    *
-   * @param date - Precise UTC time of lunar zenith
-   * @returns Calendar event for lunar zenith with emoji summary
+   * @param date - Precise UTC time of lunar zenith.
+   * @returns Calendar event for lunar zenith with emoji summary.
    * @see {@link isMaximum} for maximum detection algorithm
    *
    * @example
@@ -114,8 +114,8 @@ export class DailyCyclesBuilderService {
    * visible. The timing accounts for the Moon's apparent radius (~16 arcminutes)
    * to mark the moment the upper limb appears above the horizon.
    *
-   * @param date - Precise UTC time of moonrise
-   * @returns Calendar event for moonrise with emoji summary
+   * @param date - Precise UTC time of moonrise.
+   * @returns Calendar event for moonrise with emoji summary.
    * @see {@link isRise} for rise detection criteria
    *
    * @example
@@ -148,8 +148,8 @@ export class DailyCyclesBuilderService {
    * from view. The timing accounts for the Moon's apparent radius to mark when
    * the upper limb dips below the horizon.
    *
-   * @param date - Precise UTC time of moonset
-   * @returns Calendar event for moonset with emoji summary
+   * @param date - Precise UTC time of moonset.
+   * @returns Calendar event for moonset with emoji summary.
    * @see {@link isSet} for set detection criteria
    *
    * @example
@@ -182,8 +182,8 @@ export class DailyCyclesBuilderService {
    * below the horizon (local minimum elevation). This occurs near local solar midnight,
    * when Sun crosses the anti-meridian (north-south line through nadir, opposite of zenith).
    *
-   * @param date - Exact time of solar nadir
-   * @returns Calendar event with summary, description, and standard solar cycle categories
+   * @param date - Exact time of solar nadir.
+   * @returns Calendar event with summary, description, and standard solar cycle categories.
    *
    * @remarks
    * - Summary: "☀️ ⬇️ Solar Nadir"
@@ -228,8 +228,8 @@ export class DailyCyclesBuilderService {
    * in the sky (local maximum elevation). This occurs near local solar noon, when
    * Sun crosses the meridian (north-south line through zenith and nadir).
    *
-   * @param date - Exact time of solar zenith
-   * @returns Calendar event with summary, description, and standard solar cycle categories
+   * @param date - Exact time of solar zenith.
+   * @returns Calendar event with summary, description, and standard solar cycle categories.
    *
    * @remarks
    * - Summary: "☀️ ⬆️ Solar Zenith"
@@ -272,8 +272,8 @@ export class DailyCyclesBuilderService {
    * Generates a calendar event marking the moment when Sun's center crosses the
    * horizon moving upward (geometric sunrise, not accounting for atmospheric refraction).
    *
-   * @param date - Exact time of sunrise
-   * @returns Calendar event with summary, description, and standard solar cycle categories
+   * @param date - Exact time of sunrise.
+   * @returns Calendar event with summary, description, and standard solar cycle categories.
    *
    * @remarks
    * - Summary: "☀️ 🔼 Sunrise"
@@ -315,8 +315,8 @@ export class DailyCyclesBuilderService {
    * Generates a calendar event marking the moment when Sun's center crosses the
    * horizon moving downward (geometric sunset, not accounting for atmospheric refraction).
    *
-   * @param date - Exact time of sunset
-   * @returns Calendar event with summary, description, and standard solar cycle categories
+   * @param date - Exact time of sunset.
+   * @returns Calendar event with summary, description, and standard solar cycle categories.
    *
    * @remarks
    * - Summary: "☀️ 🔽 Sunset"

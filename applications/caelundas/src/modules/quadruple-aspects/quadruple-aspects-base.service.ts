@@ -276,10 +276,6 @@ export class QuadrupleAspectsBaseService {
 
   /**
    * Returns the other body in an aspect edge relative to the given body.
-   *
-   * @param edge - An active 2-body aspect relationship
-   * @param body - The reference body
-   * @returns The other body, or `null` if the given body is not in the edge
    */
   getOtherBody(edge: AspectBodies, body: Body): Body | null {
     if (edge.bodies[0] === body) {

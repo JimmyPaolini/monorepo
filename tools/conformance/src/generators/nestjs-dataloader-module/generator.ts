@@ -11,6 +11,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs dataloader module options.
+ */
 interface GenerateNestjsDataloaderModuleOptions {
   name: string;
   project?: string;
@@ -23,9 +26,6 @@ export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
 /**
  * Generates a new NestJS DataLoader module with dataloader, types, and unit test files.
  * Prompts for a project tagged `framework:nestjs` and places the module in `src/modules`.
- *
- * @param tree - The Nx virtual file system tree
- * @param options - Configuration options for the NestJS DataLoader module generator
  */
 export async function generateNestjsDataloaderModule(
   tree: Tree,
@@ -63,6 +63,9 @@ export async function generateNestjsDataloaderModule(
   return buildGeneratorCallback(generatedFiles);
 }
 
+/**
+ * Build generator callback.
+ */
 function buildGeneratorCallback(generatedFiles: string[]): GeneratorCallback {
   return () => {
     execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
@@ -72,6 +75,9 @@ function buildGeneratorCallback(generatedFiles: string[]): GeneratorCallback {
   };
 }
 
+/**
+ * Build substitutions.
+ */
 function buildSubstitutions(nameKebabCase: string): {
   nameCamelCase: string;
   nameKebabCase: string;
@@ -84,6 +90,9 @@ function buildSubstitutions(nameKebabCase: string): {
   };
 }
 
+/**
+ * Resolve project root.
+ */
 function resolveProjectRoot(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);

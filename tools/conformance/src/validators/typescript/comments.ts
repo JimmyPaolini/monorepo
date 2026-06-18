@@ -10,6 +10,9 @@ import { TODO_LINE_REGEX } from "./constants";
 
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
+/**
+ * Comment info.
+ */
 interface CommentInfo {
   column: number;
   line: number;
@@ -48,6 +51,9 @@ export function validateAllComments(args: {
   return errors;
 }
 
+/**
+ * Create missing comment error.
+ */
 function createMissingCommentError(
   templateComment: CommentInfo,
   language: ConformanceErrorLanguage,
@@ -77,6 +83,9 @@ function extractAllComments(
     { column: number; line: number; pos: number; text: string }
   >();
 
+  /**
+   * Extract.
+   */
   function extract(node: Node): void {
     const leading = getLeadingCommentRanges(text, node.pos) ?? [];
     const trailing = getTrailingCommentRanges(text, node.end) ?? [];
@@ -102,6 +111,9 @@ function extractAllComments(
   return [...commentsMap.values()].toSorted((a, b) => a.pos - b.pos);
 }
 
+/**
+ * Matches template comment.
+ */
 function matchesTemplateComment(
   templateComment: CommentInfo,
   instanceComment: CommentInfo,

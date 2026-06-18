@@ -74,9 +74,9 @@ export interface PrincipalPart {
 }
 
 /**
- * Props for the PrincipalParts component that displays entry header information.
+ * Properties for the PrincipalParts component that displays entry header information.
  */
-export interface PrincipalPartsProps {
+export interface PrincipalPartsProperties {
   bookmarked?: boolean | undefined;
   /** Callback when bookmark is toggled */
   /** Additional class names */
@@ -110,9 +110,9 @@ export interface VerbInflection {
 }
 
 /**
- * Props for the InflectionBadge sub-component.
+ * Properties for the InflectionBadge sub-component.
  */
-interface InflectionBadgeProps {
+interface InflectionBadgeProperties {
   conjugation: string | undefined;
   declension: string | undefined;
   gender: string | undefined;
@@ -121,17 +121,16 @@ interface InflectionBadgeProps {
 }
 
 /**
- *
+ * Describes behavior.
  */
 type InflectionLabelBuilder = (inflection: Inflection) => string;
 
 /**
  * Component that displays principal parts, part of speech, and inflection info.
- *
- * @param props - Component props
- * @returns React element
  */
-export function PrincipalParts(properties: PrincipalPartsProps): ReactElement {
+export function PrincipalParts(
+  properties: PrincipalPartsProperties,
+): ReactElement {
   const {
     bookmarked,
     className,
@@ -195,9 +194,6 @@ export function PrincipalParts(properties: PrincipalPartsProps): ReactElement {
 /**
  * Gets a human-readable inflection label for display.
  *
- * @param inflection - Inflection data for the entry
- * @param partOfSpeech - Part of speech of the entry
- * @returns Formatted label string (e.g., "first declension, feminine")
  */
 function getInflectionLabel(
   inflection: Inflection | null | undefined,
@@ -217,7 +213,7 @@ function getInflectionLabel(
 /**
  * Renders the set of inflection identifier badges for an entry.
  */
-function InflectionBadge(properties: InflectionBadgeProps): ReactElement {
+function InflectionBadge(properties: InflectionBadgeProperties): ReactElement {
   const { conjugation, declension, gender, partOfSpeech, prepositionCase } =
     properties;
 
@@ -299,7 +295,7 @@ const inflectionLabelBuilders: Partial<
 };
 
 /**
- *
+ * Build adjective inflection label.
  */
 function buildAdjectiveInflectionLabel(
   inflection: AdjectiveInflection,
@@ -311,7 +307,7 @@ function buildAdjectiveInflectionLabel(
 }
 
 /**
- *
+ * Build adverb inflection label.
  */
 function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
   const { degree, type } = inflection;
@@ -321,7 +317,7 @@ function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
 }
 
 /**
- *
+ * Build inflection label.
  */
 function buildInflectionLabel(
   inflection: Inflection,
@@ -334,7 +330,7 @@ function buildInflectionLabel(
 }
 
 /**
- *
+ * Build noun inflection label.
  */
 function buildNounInflectionLabel(inflection: NounInflection): string {
   const { declension, gender } = inflection;
@@ -344,7 +340,7 @@ function buildNounInflectionLabel(inflection: NounInflection): string {
 }
 
 /**
- *
+ * Build preposition inflection label.
  */
 function buildPrepositionInflectionLabel(
   inflection: PrepositionInflection,
@@ -353,7 +349,7 @@ function buildPrepositionInflectionLabel(
 }
 
 /**
- *
+ * Build verb inflection label.
  */
 function buildVerbInflectionLabel(inflection: VerbInflection): string {
   return inflection.conjugation ? `${inflection.conjugation} conjugation` : "";
@@ -362,8 +358,6 @@ function buildVerbInflectionLabel(inflection: VerbInflection): string {
 /**
  * Gets a formatted label from principal parts data.
  *
- * @param principalParts - Principal parts array or object
- * @returns Comma-separated string of principal parts
  */
 function getPrincipalPartsLabel(
   principalParts: PrincipalPart[] | Record<string, string | undefined>,

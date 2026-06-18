@@ -302,7 +302,7 @@ export const pronunciationVariants = Object.values(
 /**
  * Custom TypeORM naming strategy that extends SnakeNamingStrategy with:
  * - Automatic pluralization of table names
- * - Join table names formed from the two table names combined alphabetically in snake_case
+ * - Join table names formed from the two table names combined alphabetically in snake_case.
  */
 export class LexicoNamingStrategy extends SnakeNamingStrategy {
   /**

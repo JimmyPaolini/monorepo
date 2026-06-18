@@ -10,6 +10,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs command module options.
+ */
 interface GenerateNestjsCommandModuleOptions {
   name: string;
   project?: string;
@@ -58,6 +61,9 @@ export async function generateNestjsCommandModule(
   };
 }
 
+/**
+ * Resolve inputs.
+ */
 async function resolveInputs(
   tree: Tree,
   options: GenerateNestjsCommandModuleOptions,
@@ -79,6 +85,9 @@ async function resolveInputs(
   return { nameKebabCase, projectName };
 }
 
+/**
+ * Resolve project directory.
+ */
 function resolveProjectDirectory(tree: Tree, projectName: string): string {
   const allProjects = getProjects(tree);
   const projectConfig = allProjects.get(projectName);

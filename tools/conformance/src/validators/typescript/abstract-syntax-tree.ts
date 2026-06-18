@@ -9,6 +9,9 @@ import {
 
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
+/**
+ * Resolved error location.
+ */
 interface ResolvedErrorLocation {
   breadcrumb: string;
   instanceCharacter: number;
@@ -55,6 +58,9 @@ export function validateDepthFirstSearch(args: {
   return errors;
 }
 
+/**
+ * Build error.
+ */
 function buildError(args: {
   instanceFile: SourceFile;
   instanceNode: Node;
@@ -123,6 +129,9 @@ function resolveErrorLocations(args: {
   };
 }
 
+/**
+ * Validate keyed child.
+ */
 function validateKeyedChild(args: {
   instanceChildren: Node[];
   instanceFile: SourceFile;
@@ -153,6 +162,9 @@ function validateKeyedChild(args: {
   });
 }
 
+/**
+ * Validate keyless child.
+ */
 function validateKeylessChild(args: {
   instanceChildren: Node[];
   instanceFile: SourceFile;
@@ -182,6 +194,9 @@ function validateKeylessChild(args: {
     );
 }
 
+/**
+ * Validate template child.
+ */
 function validateTemplateChild(args: {
   instanceChildren: Node[];
   instanceFile: SourceFile;

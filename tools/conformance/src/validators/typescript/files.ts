@@ -59,7 +59,6 @@ export function stringifyConformanceErrors(
  * method bodies, constructor arguments, and array contents do not produce
  * false failures — only structurally required template nodes are enforced.
  *
- * @returns The instance directory's basename and one result entry per template
  * file, each carrying the resolved filename and any validation errors.
  */
 export function validateInstanceDirectory(args: {
@@ -133,10 +132,6 @@ export function validateInstanceFile(args: {
  * Intended for conformance test suites that need to check an entire
  * `src/modules/` tree (or equivalent) in one call rather than iterating
  * subdirectories manually.
- *
- * @param args - Validation arguments.
- *
- * @returns One result entry per instance subdirectory, in filesystem order.
  */
 export function validateInstancesDirectory(args: {
   excludeDirectories?: string[];
@@ -158,6 +153,9 @@ export function validateInstancesDirectory(args: {
     );
 }
 
+/**
+ * Build missing file error.
+ */
 function buildMissingFileError(
   instanceFilePath: string,
   templateFilePath: string,
@@ -179,6 +177,9 @@ function buildMissingFileError(
   };
 }
 
+/**
+ * Build name data.
+ */
 function buildNameData(name: string): Record<string, string> {
   return {
     nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
@@ -188,6 +189,9 @@ function buildNameData(name: string): Record<string, string> {
   };
 }
 
+/**
+ * Format directory lines.
+ */
 function formatDirectoryLines(
   directoryName: string,
   fileResults: InstanceDirectoryValidationResult["results"],
@@ -204,6 +208,9 @@ function formatDirectoryLines(
   return [...header, ...fileLines];
 }
 
+/**
+ * Format error lines.
+ */
 function formatErrorLines(error: ConformanceError, index: number): string[] {
   return [
     "",
@@ -230,6 +237,9 @@ function formatErrorLines(error: ConformanceError, index: number): string[] {
   ];
 }
 
+/**
+ * Format file result lines.
+ */
 function formatFileResultLines(
   fileResult: InstanceDirectoryValidationResult["results"][number],
   fileIndex: number,
@@ -246,6 +256,9 @@ function formatFileResultLines(
   return [...header, ...errorLines];
 }
 
+/**
+ * Format location lines.
+ */
 function formatLocationLines(args: {
   column: number | undefined;
   jsonPath: string | undefined;
@@ -263,6 +276,9 @@ function formatLocationLines(args: {
   return [];
 }
 
+/**
+ * Resolve template file.
+ */
 function resolveTemplateFile(args: {
   data: Record<string, unknown>;
   instanceDirectoryPath: string;
@@ -295,6 +311,9 @@ function resolveTemplateFile(args: {
   };
 }
 
+/**
+ * Select validator.
+ */
 function selectValidator(args: {
   data: Record<string, unknown>;
   extension: string;

@@ -126,9 +126,9 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
    *
    * A Grand Cross is an intense configuration consisting of:
    * - 2 oppositions (180°) at right angles to each other
-   * - 4 squares (90°) connecting adjacent bodies
+   * - 4 squares (90°) connecting adjacent bodies.
    *
-   * Visual pattern:
+   * Visual pattern:.
    * ```
    *     Body1
    *       |
@@ -146,9 +146,6 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
    * of four conflicting forces. Often indicates major life challenges
    * and potential for significant achievement.
    *
-   * @param allEdges - All aspect edges across time for phase detection
-   * @param minute - The minute to check for Grand Cross patterns
-   * @returns Array of Grand Cross events detected at this minute
    * @see {@link determineMultiBodyPhase} for phase calculation
    */
   composeGrandCrosses(args: {
@@ -189,9 +186,9 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
    * A Kite is a mixed configuration consisting of:
    * - 1 Grand Trine (3 trines forming a triangle)
    * - 1 opposition from one trine body to a fourth focal body
-   * - 2 sextiles from the focal body to the other two trine bodies
+   * - 2 sextiles from the focal body to the other two trine bodies.
    *
-   * Visual pattern:
+   * Visual pattern:.
    * ```
    *        Body1
    *        /   \
@@ -208,9 +205,6 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
    * Grand Trine, creating a configuration that balances ease with drive.
    * Often indicates talent with opportunity for manifestation.
    *
-   * @param allEdges - All aspect edges across time for phase detection
-   * @param minute - The minute to check for Kite patterns
-   * @returns Array of Kite events detected at this minute
    * @see {@link determineMultiBodyPhase} for phase calculation
    */
   composeKites(args: {
@@ -249,8 +243,6 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
   /**
    * Returns `true` if the given aspect edge involves the specified celestial body.
    *
-   * @param edge - An active 2-body aspect relationship
-   * @param body - The body to check for involvement
    */
   involvesBody(edge: AspectBodies, body: Body): boolean {
     return edge.bodies[0] === body || edge.bodies[1] === body;

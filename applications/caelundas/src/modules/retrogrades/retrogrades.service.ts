@@ -216,12 +216,6 @@ export class RetrogradesService {
    * planetary stationary point. Events are categorized by direction to distinguish
    * retrograde stations from direct stations.
    *
-   * @param args - Station event parameters
-   * @param body - Celestial body entering station (e.g., "mercury", "venus", "mars")
-   * @param timestamp - Exact time of the stationary point
-   * @param direction - Orbital direction: "retrograde" or "direct"
-   * @returns Calendar event with summary, description, and direction-specific categories
-   *
    * @remarks
    * - Summary format: `[bodySymbol] [directionSymbol] [Body] Stationary [Direction]`
    * - Example retrograde: "☿ ↩️ Mercury Stationary Retrograde"
@@ -284,10 +278,6 @@ export class RetrogradesService {
    * transition between direct and retrograde motion. Uses a sliding window of
    * {@link MARGIN_MINUTES} to detect direction reversals in ecliptic longitude.
    *
-   * @param args - Ephemeris data and current time
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris for retrograde-capable bodies
-   * @param currentMinute - Time point to check for station events (minute precision)
-   * @returns Array of calendar events for detected stationary points (retrograde or direct)
    *
    * @remarks
    * - Checks only {@link retrogradeBodies} (Mercury through Pluto, excluding Sun/Moon)
@@ -333,8 +323,6 @@ export class RetrogradesService {
    * to create progressive events spanning the retrograde period. This shows the full
    * span of time when a planet appears to move backward.
    *
-   * @param events - Array of all calendar events (will be filtered to direction events)
-   * @returns Array of progressive events spanning retrograde periods
    *
    * @remarks
    * - Filters to events with "Direction" category

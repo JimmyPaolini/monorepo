@@ -66,11 +66,6 @@ export class CalendarService {
 
   /**
    * Generates VTIMEZONE definition for iCalendar timezone support.
-   *
-   * @param timezone - IANA timezone identifier
-   * @returns VTIMEZONE component as a string
-   *
-   * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
    */
   private buildTimezoneContent(timezone: string): string {
     if (timezone === "America/New_York") {
@@ -116,10 +111,6 @@ END:VTIMEZONE`;
    * Generates an RFC 5545-compliant VEVENT component. UIDs are deterministic based on
    * event content to ensure idempotent imports.
    *
-   * @param event - Event to convert
-   * @param timezone - IANA timezone identifier (defaults to "America/New_York")
-   * @returns VEVENT component as a string
-   *
    * @see {@link buildFileContent} for VCALENDAR container generation
    */
   buildEventContent(event: Event, timezone = "America/New_York"): string {
@@ -144,8 +135,6 @@ END:VEVENT`;
    *
    * Creates an RFC 5545-compliant VCALENDAR container with VTIMEZONE and VEVENT components.
    *
-   * @param parameters - Calendar generation configuration
-   * @returns Complete iCalendar file content as a string
    *
    * @see {@link buildEventContent} for individual VEVENT generation
    *
@@ -197,9 +186,6 @@ END:VCALENDAR
    * The filename encodes the input date range in ISO 8601 format. The output directory
    * is read from the `OUTPUT_DIRECTORY` environment variable, defaulting to `./output`.
    *
-   * @param events - Calendar events to include in the ICS file
-   * @param input - Validated input containing the date range and IANA timezone
-   * @returns Promise that resolves when the file has been written to disk
    */
   async write(events: Event[], input: Input): Promise<void> {
     const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;

@@ -25,7 +25,7 @@ export const maximumDate = "2100-12-31";
  * - `LONGITUDE` — Observer longitude in decimal degrees (-180 to 180)
  * - `START_DATE` — Ephemeris start date in `YYYY-MM-DD` format
  * - `END_DATE` — Ephemeris end date in `YYYY-MM-DD` format
- * - `OUTPUT_DIRECTORY` — Directory path for generated calendar files (default: `./output`)
+ * - `OUTPUT_DIRECTORY` — Directory path for generated calendar files (default: `./output`).
  */
 export const environmentSchema = z.object({
   END_DATE: z
@@ -54,11 +54,11 @@ export const environmentSchema = z.object({
  * 4. Start date must be \<= {@link maximumDate}
  * 5. End date must be \>= {@link minimumDate}
  * 6. End date must be \<= {@link maximumDate}
- * 7. End date must be strictly after start date
+ * 7. End date must be strictly after start date.
  *
  * **Default values:**
  * - Location: Philadelphia, PA (39.949309°N, 75.17169°W)
- * - Date range: Previous month to next month (2-month window centered on today)
+ * - Date range: Previous month to next month (2-month window centered on today).
  *
  * @see {@link https://github.com/photostructure/tz-lookup} for timezone lookup algorithm
  * @see {@link https://zod.dev} for Zod schema documentation

@@ -16,9 +16,9 @@ export type FormCellPosition =
   | "topRight";
 
 /**
- * Props for the FormCell component that displays a single form with labels.
+ * Properties for the FormCell component that displays a single form with labels.
  */
-export interface FormCellProps {
+export interface FormCellProperties {
   /** Bottom-left label (e.g., for extra context) */
   bottomLeftText?: string | undefined;
   /** Bottom-right label (e.g., for extra context) */
@@ -51,83 +51,80 @@ function computeBorderClasses(position: FormCellPosition | undefined): string {
   );
 }
 
-const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
-  (
-    {
-      bottomLeftText,
-      bottomRightText,
-      centerText,
-      className,
-      position,
-      search,
-      topLeftText,
-      topRightText,
-    },
-    reference,
-  ) => {
-    const isSearched =
-      search && centerText.toLowerCase().includes(search.toLowerCase());
-    const showTooltip = centerText.length > 30 || centerText.includes("\n");
-    const borderClasses = computeBorderClasses(position);
+/**
+ * Render a single grid cell with optional corner identifiers.
+ */
+function FormCell(properties: FormCellProperties): React.ReactElement {
+  const {
+    bottomLeftText,
+    bottomRightText,
+    centerText,
+    className,
+    position,
+    search,
+    topLeftText,
+    topRightText,
+  } = properties;
+  const isSearched =
+    search && centerText.toLowerCase().includes(search.toLowerCase());
+  const showTooltip = centerText.length > 30 || centerText.includes("\n");
+  const borderClasses = computeBorderClasses(position);
 
-    return (
-      <div
-        ref={reference}
-        className={cn(
-          "relative flex h-12 items-stretch",
-          borderClasses,
-          isSearched ? "bg-muted" : "bg-card",
-          className,
+  return (
+    <div
+      className={cn(
+        "relative flex h-12 items-stretch",
+        borderClasses,
+        isSearched ? "bg-muted" : "bg-card",
+        className,
+      )}
+      title={showTooltip ? centerText : undefined}
+    >
+      {/* Left sidebar */}
+      <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
+        {topLeftText && (
+          <Identifier
+            className="text-sm"
+            identifier={topLeftText}
+          />
         )}
-        title={showTooltip ? centerText : undefined}
-      >
-        {/* Left sidebar */}
-        <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
-          {topLeftText && (
-            <Identifier
-              className="text-sm"
-              identifier={topLeftText}
-            />
-          )}
-          {bottomLeftText && (
-            <Identifier
-              className="text-sm"
-              identifier={bottomLeftText}
-            />
-          )}
-        </div>
-
-        {/* Center text */}
-        <div className="flex flex-1 items-center justify-center overflow-hidden px-1">
-          <span
-            className={cn(
-              "truncate text-center text-sm",
-              centerText === "-" ? "text-muted-foreground" : "text-foreground",
-            )}
-          >
-            {centerText}
-          </span>
-        </div>
-
-        {/* Right sidebar */}
-        <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
-          {topRightText && (
-            <Identifier
-              className="text-sm"
-              identifier={topRightText}
-            />
-          )}
-          {bottomRightText && (
-            <Identifier
-              className="text-sm"
-              identifier={bottomRightText}
-            />
-          )}
-        </div>
+        {bottomLeftText && (
+          <Identifier
+            className="text-sm"
+            identifier={bottomLeftText}
+          />
+        )}
       </div>
-    );
-  },
-);
-FormCell.displayName = "FormCell";
+
+      {/* Center text */}
+      <div className="flex flex-1 items-center justify-center overflow-hidden px-1">
+        <span
+          className={cn(
+            "truncate text-center text-sm",
+            centerText === "-" ? "text-muted-foreground" : "text-foreground",
+          )}
+        >
+          {centerText}
+        </span>
+      </div>
+
+      {/* Right sidebar */}
+      <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
+        {topRightText && (
+          <Identifier
+            className="text-sm"
+            identifier={topRightText}
+          />
+        )}
+        {bottomRightText && (
+          <Identifier
+            className="text-sm"
+            identifier={bottomRightText}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
 
 export { FormCell };

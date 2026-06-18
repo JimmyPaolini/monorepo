@@ -18,8 +18,6 @@ export const DEFAULT_TEST_DATE = new Date("2025-03-20T14:46:00Z");
  *   // your tests here
  * })
  * ```
- *
- * @param date - Optional custom date to use instead of DEFAULT_TEST_DATE
  */
 export function mockDates(date: Date = DEFAULT_TEST_DATE): void {
   beforeEach(() => {

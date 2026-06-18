@@ -1,9 +1,15 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { MajorAspectEventService } from "@caelundas/src/modules/major-aspects/major-aspect-event.service";
+import { MajorAspectProgressiveService } from "@caelundas/src/modules/major-aspects/major-aspect-progressive.service";
 import { MinorAspectsComposerService } from "@caelundas/src/modules/minor-aspects/minor-aspects-composer.service";
+import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
+import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
 import { QuadrupleAspectsComposerService } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects-composer.service";
 import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-composer.service";
 import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
 import { SpecialtyAspectsComposerService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-composer.service";
+import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
+import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
 import { TripleAspectsComposerService } from "@caelundas/src/modules/triple-aspects/triple-aspects-composer.service";
 import { TripleAspectsDetectorService } from "@caelundas/src/modules/triple-aspects/triple-aspects-detector.service";
 import { Test } from "@nestjs/testing";
@@ -43,9 +49,13 @@ describe("AspectsService", () => {
         AspectsUtilities,
         EphemerisService,
         MajorAspectsService,
+        MajorAspectEventService,
+        MajorAspectProgressiveService,
         MathService,
         MinorAspectsService,
         MinorAspectsComposerService,
+        MinorAspectsEventService,
+        MinorAspectsProgressiveService,
         ProgressiveUtilities,
         QuadrupleAspectsService,
         QuadrupleAspectsComposerService,
@@ -55,6 +65,8 @@ describe("AspectsService", () => {
         SextupleAspectsComposerService,
         SpecialtyAspectsService,
         SpecialtyAspectsComposerService,
+        SpecialtyAspectsEventService,
+        SpecialtyAspectsProgressiveService,
         StelliumService,
         TripleAspectsService,
         TripleAspectsComposerService,

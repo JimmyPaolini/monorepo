@@ -9,16 +9,21 @@ import YAML from "yaml";
 import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
-import { formatLineNumber, hasValidTextContent } from "../library.utilities";
 
-import type { AnyNode } from "domhandler";
+import {
+  PerseusLibraryTextExtractionProvider,
+  type PerseusMarkdownFile,
+} from "./perseus-library-text-extraction.provider";
 
 /**
  * Provider for ingesting Perseus DL Latin texts.
  */
 @Injectable()
 export class PerseusLibraryProvider {
-  constructor(private readonly logger: LoggerService) {}
+  constructor(
+    private readonly perseusLibraryTextExtractionProvider: PerseusLibraryTextExtractionProvider,
+    private readonly logger: LoggerService,
+  ) {}
 
   readonly name = "perseus";
 
@@ -42,32 +47,6 @@ export class PerseusLibraryProvider {
   }
 
   // 🔏 Private Methods
-
-  /**
-   * Extracts normalized content for Perseus XML ingestion.
-   */
-  private collectParagraphsFromElements(
-    elements: cheerio.Cheerio<AnyNode>,
-    $: cheerio.CheerioAPI,
-  ): string[] {
-    const paragraphs: string[] = [];
-    elements.each((_index: number, pElement: unknown) => {
-      const $clone = $(pElement as string).clone();
-      $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
-      let text = $clone.text().trim();
-      if (!text) {
-        return;
-      }
-      const nAttribute = $(pElement as string).attr("n");
-      if (nAttribute) {
-        text = `**${nAttribute}** ${text}`;
-      }
-      text = formatLineNumber(text);
-      text = text.replaceAll(/\s+/g, " ");
-      paragraphs.push(text);
-    });
-    return paragraphs;
-  }
 
   /**
    * Extracts normalized content for Perseus XML ingestion.
@@ -131,42 +110,6 @@ export class PerseusLibraryProvider {
   }
 
   /**
-   * Extracts normalized content for Perseus XML ingestion.
-   */
-  private extractTextNodes(args: {
-    $: cheerio.CheerioAPI;
-    $element: cheerio.Cheerio<AnyNode>;
-    currentPath: string[];
-    currentTitle: string;
-    filesToWrite: { content: string; relativePath: string; title: string }[];
-    rawTitle: string;
-  }): void {
-    const { $, $element, currentPath, currentTitle, filesToWrite, rawTitle } =
-      args;
-    const children = $element.children("div[type='textpart']");
-    if (children.length > 0) {
-      this.processTextPartChildren({
-        $,
-        $element,
-        children,
-        currentPath,
-        currentTitle,
-        filesToWrite,
-        rawTitle,
-      });
-    } else {
-      this.processLeafTextPart({
-        $,
-        $element,
-        currentPath,
-        currentTitle,
-        filesToWrite,
-        rawTitle,
-      });
-    }
-  }
-
-  /**
    * Resolves derived values needed by Perseus XML ingestion.
    */
   private getOrCreatePerseusAuthor(args: {
@@ -223,43 +166,6 @@ export class PerseusLibraryProvider {
       const rawTitle = $("titleStmt title").first().text().trim();
       return { $, rawAuthor, rawTitle };
     });
-  }
-
-  /**
-   * Processes one workflow step for Perseus XML ingestion.
-   */
-  private processLeafTextPart(args: {
-    $: cheerio.CheerioAPI;
-    $element: cheerio.Cheerio<AnyNode>;
-    currentPath: string[];
-    currentTitle: string;
-    filesToWrite: { content: string; relativePath: string; title: string }[];
-    rawTitle: string;
-  }): void {
-    const { $, $element, currentPath, currentTitle, filesToWrite, rawTitle } =
-      args;
-    const paragraphs = this.collectParagraphsFromElements(
-      $element.find("p, l"),
-      $,
-    );
-    if (paragraphs.length === 0) {
-      const $clone = $element.clone();
-      $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
-      let text = $clone.text().trim();
-      if (text) {
-        const formatted = formatLineNumber(text);
-        text = formatted.replaceAll(/\s+/g, " ");
-        paragraphs.push(text);
-      }
-    }
-    if (paragraphs.length > 0 && hasValidTextContent(paragraphs)) {
-      const fileTitle = currentPath.length > 1 ? currentTitle : rawTitle;
-      filesToWrite.push({
-        content: paragraphs.join("\n\n"),
-        relativePath: `${currentPath.join("/")}.md`,
-        title: fileTitle,
-      });
-    }
   }
 
   /**
@@ -344,74 +250,6 @@ export class PerseusLibraryProvider {
   }
 
   /**
-   * Processes one workflow step for Perseus XML ingestion.
-   */
-  private processTextPartChildren(args: {
-    $: cheerio.CheerioAPI;
-    $element: cheerio.Cheerio<AnyNode>;
-    children: cheerio.Cheerio<AnyNode>;
-    currentPath: string[];
-    currentTitle: string;
-    filesToWrite: { content: string; relativePath: string; title: string }[];
-    rawTitle: string;
-  }): void {
-    const {
-      $,
-      $element,
-      children,
-      currentPath,
-      currentTitle,
-      filesToWrite,
-      rawTitle,
-    } = args;
-    const skipKeywords = [
-      "front",
-      "preface",
-      "introduction",
-      "cast",
-      "subject",
-      "index",
-    ];
-    children.each((_index: number, child: unknown) => {
-      const $child = $(child as string);
-      const subtype = $child.attr("subtype") || "section";
-      const n = $child.attr("n") || "";
-      if (
-        skipKeywords.some(
-          (kw) =>
-            subtype.toLowerCase().includes(kw) || n.toLowerCase().includes(kw),
-        )
-      ) {
-        return;
-      }
-      const partName = _.kebabCase(n ? `${subtype} ${n}` : subtype);
-      const partTitle = n
-        ? `${_.startCase(subtype)} ${n}`
-        : _.startCase(subtype);
-      this.extractTextNodes({
-        $,
-        $element: $child,
-        currentPath: [...currentPath, partName],
-        currentTitle: partTitle,
-        filesToWrite,
-        rawTitle,
-      });
-    });
-    const directParagraphs = this.collectParagraphsFromElements(
-      $element.children("p, l"),
-      $,
-    );
-    if (directParagraphs.length > 0 && hasValidTextContent(directParagraphs)) {
-      const fileTitle = currentPath.length > 1 ? currentTitle : rawTitle;
-      filesToWrite.push({
-        content: directParagraphs.join("\n\n"),
-        relativePath: [...currentPath, "index.md"].join("/"),
-        title: fileTitle,
-      });
-    }
-  }
-
-  /**
    * Persists generated output for Perseus XML ingestion.
    */
   private async writeSourceMarkdownFiles(args: {
@@ -443,12 +281,8 @@ export class PerseusLibraryProvider {
     if (Object.keys(textMetadata).length > 0) {
       frontmatterObject["text_metadata"] = textMetadata;
     }
-    const filesToWrite: {
-      content: string;
-      relativePath: string;
-      title: string;
-    }[] = [];
-    this.extractTextNodes({
+    const filesToWrite: PerseusMarkdownFile[] = [];
+    this.perseusLibraryTextExtractionProvider.extractTextNodes({
       $,
       $element: $("body"),
       currentPath: [titleSlug],
@@ -508,7 +342,7 @@ export class PerseusLibraryProvider {
    * Persists generated output for Perseus XML ingestion.
    */
   private async writeTextFiles(
-    filesToWrite: { content: string; relativePath: string; title: string }[],
+    filesToWrite: PerseusMarkdownFile[],
     authorDirectory: string,
     frontmatterObject: Record<string, unknown>,
   ): Promise<void> {

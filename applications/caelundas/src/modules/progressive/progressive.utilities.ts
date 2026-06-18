@@ -29,11 +29,6 @@ export class ProgressiveUtilities {
 
   /**
    * Pairs beginning and ending events into tuples.
-   *
-   * @param beginnings - Array of events marking the start of a progressive event
-   * @param endings - Array of events marking the end of a progressive event
-   * @param label - Descriptive label used in warning messages when counts differ
-   * @returns Array of [beginning, ending] tuples
    */
   pairProgressiveEvents(
     beginnings: Event[],

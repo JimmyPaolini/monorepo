@@ -13,9 +13,11 @@ XLII
 aeiouāēīōūȳ
 appia
 appius
+amas
 aula
 aulus
 caeso
+cena
 circumfix
 decima
 decimo
@@ -183,6 +185,7 @@ Musisque
 Deoque
 musisque
 deoque
+devocalized
 CSEL
 textpart
 Edcs

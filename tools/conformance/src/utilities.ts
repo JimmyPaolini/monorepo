@@ -126,6 +126,9 @@ export async function resolveProject(args: {
   return projectName;
 }
 
+/**
+ * Process file node.
+ */
 function processFileNode(args: {
   instancePath: string;
   node: fs.Dirent;

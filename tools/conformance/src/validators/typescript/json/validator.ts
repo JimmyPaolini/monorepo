@@ -5,6 +5,9 @@ import { validateComments } from "./comments";
 
 import type { ConformanceError } from "../types";
 
+/**
+ * Describes behavior.
+ */
 type JsonValue =
   | boolean
   | JsonValue[]
@@ -57,6 +60,9 @@ export function validateJsonConformance(args: {
   return { errors: [...structuralErrors, ...commentErrors] };
 }
 
+/**
+ * Build mismatch error.
+ */
 function buildMismatchError(
   path: string,
   template: JsonValue,
@@ -74,6 +80,9 @@ function buildMismatchError(
   };
 }
 
+/**
+ * Build missing error.
+ */
 function buildMissingError(itemPath: string): ConformanceError {
   return {
     errorType: "code",
@@ -96,10 +105,16 @@ function formatPath(path: (number | string)[]): string {
   }, "");
 }
 
+/**
+ * Is json object.
+ */
 function isJsonObject(value: JsonValue): value is Record<string, JsonValue> {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+/**
+ * Is json primitive.
+ */
 function isJsonPrimitive(
   value: JsonValue,
 ): value is boolean | null | number | string {
@@ -133,6 +148,9 @@ function validateDepthFirstSearch(
   return [];
 }
 
+/**
+ * Validate json arrays.
+ */
 function validateJsonArrays(
   template: JsonValue[],
   instance: JsonValue[],
@@ -159,6 +177,9 @@ function validateJsonArrays(
   });
 }
 
+/**
+ * Validate json objects.
+ */
 function validateJsonObjects(
   template: Record<string, JsonValue>,
   instance: Record<string, JsonValue>,

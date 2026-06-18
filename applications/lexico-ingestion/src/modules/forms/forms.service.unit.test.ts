@@ -14,6 +14,8 @@ import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 
 import { WordsService } from "../words/words.service";
 
+import { FormsBuilderHelper } from "./forms-builder-other.service";
+import { FormsTransientWordsService } from "./forms-transient-words.service";
 import { FormsService } from "./forms.service";
 
 import type { Repository } from "typeorm";
@@ -42,6 +44,11 @@ describe("FormsService", () => {
             upsertWordsAndJunctions: vi.fn().mockResolvedValue(new Map()),
           },
         },
+        {
+          provide: FormsBuilderHelper,
+          useValue: { buildFormsForPartOfSpeech: vi.fn() },
+        },
+        FormsTransientWordsService,
       ],
     }).compile();
 

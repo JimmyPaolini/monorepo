@@ -166,10 +166,6 @@ export default [
             charSet: true,
             // envFilePath: NestJS ConfigModule.forRoot API property name (external interface contract)
             envFilePath: true,
-            // k: single-letter property key for domain data tables (e.g. Latin praenomina)
-            // props: standard React convention for component properties parameter
-            props: true,
-            Props: true,
             // rel: TanStack Router meta API property name (external interface contract)
             rel: true,
             // str: `string` is a reserved keyword in TypeScript
@@ -614,20 +610,20 @@ export default [
       "@typescript-eslint/only-throw-error": "error",
       "array-callback-return": "error",
       "better-max-params/better-max-params": [
-        "warn",
+        "error",
         { constructor: 12, func: 3 },
       ],
       complexity: ["warn", { max: 8 }],
       curly: ["error", "all"],
       eqeqeq: ["error", "always"],
       "grouped-accessor-pairs": ["error", "getBeforeSet"],
-      "max-classes-per-file": ["warn", { max: 1 }],
-      "max-depth": ["warn", { max: 4 }],
-      "max-lines": ["warn", { max: 512 }],
-      "max-lines-per-function": ["warn", { max: 64 }],
-      "max-nested-callbacks": ["warn", { max: 3 }],
+      "max-classes-per-file": ["error", { max: 1 }],
+      "max-depth": ["error", { max: 4 }],
+      "max-lines": ["error", { max: 512 }],
+      "max-lines-per-function": ["error", { max: 64 }],
+      "max-nested-callbacks": ["error", { max: 3 }],
       "max-params": "off", // replaced by better-max-params/better-max-params
-      "max-statements": ["warn", { max: 16 }],
+      "max-statements": ["error", { max: 16 }],
       "no-alert": "error",
       "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "no-constructor-return": "error",
@@ -730,8 +726,8 @@ export default [
   },
 
   // 📚 TSDoc / JSDoc Documentation
-  // Enforces TSDoc syntax and requires JSDoc on public declarations
-  // (functions, methods, classes, interfaces, types, enums)
+  // Enforces TSDoc syntax, broad JSDoc coverage (including private APIs),
+  // TypeScript-aware tag hygiene, and sentence-quality descriptions.
   {
     files: ["**/*.ts", "**/*.tsx"],
     ignores: [
@@ -747,9 +743,11 @@ export default [
       tsdoc: tsdocPlugin,
     },
     rules: {
-      "jsdoc/no-blank-blocks": "warn",
+      "jsdoc/check-tag-names": ["warn", { typed: true }],
+      "jsdoc/no-blank-blocks": "error",
+      "jsdoc/require-description": "warn",
       "jsdoc/require-jsdoc": [
-        "warn",
+        "error",
         {
           checkConstructors: false,
           contexts: [
@@ -771,6 +769,7 @@ export default [
       ],
       "tsdoc/syntax": "warn",
     },
+    settings: { jsdoc: { mode: "typescript" } },
   },
 
   // ⚛️ React / Hooks / Accessibility

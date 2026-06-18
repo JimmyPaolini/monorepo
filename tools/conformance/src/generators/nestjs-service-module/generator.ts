@@ -11,6 +11,9 @@ import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
+/**
+ * Generate nestjs service module options.
+ */
 interface GenerateNestjsServiceModuleOptions {
   name: string;
   project?: string;
@@ -59,6 +62,9 @@ export async function generateNestjsServiceModule(
   };
 }
 
+/**
+ * Resolve project and name.
+ */
 async function resolveProjectAndName(
   tree: Tree,
   options: GenerateNestjsServiceModuleOptions,
@@ -78,6 +84,9 @@ async function resolveProjectAndName(
   return { nameKebabCase, projectName };
 }
 
+/**
+ * Resolve validated modules directory.
+ */
 function resolveValidatedModulesDirectory(
   tree: Tree,
   projectName: string,

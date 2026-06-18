@@ -4,11 +4,11 @@ import {
   minorAspects,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { MinorAspectsComposerService } from "./minor-aspects-composer.service";
+import { MinorAspectsEventService } from "./minor-aspects-event.service";
+import { MinorAspectsProgressiveService } from "./minor-aspects-progressive.service";
 
 import type { DetectBodyPairAspectArguments } from "./minor-aspects.types";
 import type {
@@ -35,8 +35,9 @@ export class MinorAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly minorAspectsComposerService: MinorAspectsComposerService,
+    aspectsUtilitiesService: AspectsUtilities,
+    private readonly minorAspectsEventService: MinorAspectsEventService,
+    private readonly minorAspectsProgressiveService: MinorAspectsProgressiveService,
   ) {
     this.logger.setContext(MinorAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
@@ -67,7 +68,7 @@ export class MinorAspectsService {
       previousMinute,
     } = args;
     const body1LongitudesWindow =
-      this.minorAspectsComposerService.getLongitudesWindowForBody({
+      this.minorAspectsEventService.getLongitudesWindowForBody({
         body: body1,
         coordinateEphemerisByBody,
         minute,
@@ -75,7 +76,7 @@ export class MinorAspectsService {
         previousMinute,
       });
     const body2LongitudesWindow =
-      this.minorAspectsComposerService.getLongitudesWindowForBody({
+      this.minorAspectsEventService.getLongitudesWindowForBody({
         body: body2,
         coordinateEphemerisByBody,
         minute,
@@ -122,15 +123,6 @@ export class MinorAspectsService {
    * Formats the event with appropriate emoji indicators, body symbols,
    * and categorization for filtering and organization.
    *
-   * @param args - Event parameters
-   * @param longitudeBody1 - Ecliptic longitude of first body in degrees
-   * @param longitudeBody2 - Ecliptic longitude of second body in degrees
-   * @param timestamp - Exact moment of the aspect phase
-   * @param body1 - First celestial body
-   * @param body2 - Second celestial body
-   * @param phase - Aspect phase: forming, exact, or dissolving
-   * @returns Formatted calendar event with summary, description, and categories
-   * @throws When no valid minor aspect is detected between the bodies
    * @see {@link getMinorAspect} for aspect type determination
    */
   buildMinorAspectEvent(args: {
@@ -150,7 +142,7 @@ export class MinorAspectsService {
       );
       throw new Error("No minor aspect found");
     }
-    return this.minorAspectsComposerService.assembleMinorAspectEvent({
+    return this.minorAspectsEventService.assembleMinorAspectEvent({
       body1,
       body2,
       minorAspect,
@@ -171,10 +163,6 @@ export class MinorAspectsService {
    * astrological interpretations. They use smaller orbs than major aspects
    * (typically ±2-3° vs ±8-10°).
    *
-   * @param args - Configuration object
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param minute - The minute to check for aspect events
-   * @returns Array of calendar events for all detected minor aspects at this minute
    * @see {@link getMinorAspect} for aspect type detection
    * @see {@link getMinorAspectPhase} for phase determination
    * @see {@link minorAspectBodies} for configured body list
@@ -218,62 +206,27 @@ export class MinorAspectsService {
    * to create events spanning the entire active period of each aspect.
    * Progressive events show when an aspect is in orb rather than just boundary moments.
    *
-   * @param events - All events to process (non-aspect events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
-    const minorAspectEvents = events.filter((event) =>
-      event.categories.includes("Minor Aspect"),
-    );
-    const groupedAspectEvents = _.groupBy(minorAspectEvents, (event) =>
-      this.minorAspectsComposerService.buildGroupKey(event),
-    );
-    const progressiveEvents: Event[] = [];
-
-    for (const [aspectGroupKey, aspectGroupEvents] of Object.entries(
-      groupedAspectEvents,
-    )) {
-      progressiveEvents.push(
-        ...this.minorAspectsComposerService.processAspectGroup(
-          aspectGroupKey,
-          aspectGroupEvents,
-        ),
-      );
-    }
-
-    return progressiveEvents;
+    return this.minorAspectsProgressiveService.detectProgressive(events);
   }
 
   /**
    * Returns the first minor aspect between two bodies, or `null` if none is within orb.
    *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
    */
   getMinorAspect(args: {
     longitudeBody1: number;
     longitudeBody2: number;
   }): MinorAspect | null {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of minorAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          aspect,
-          longitudeBody1,
-          longitudeBody2,
-        })
-      ) {
-        return aspect;
-      }
-    }
-    return null;
+    return this.minorAspectsEventService.getMinorAspect(args);
   }
 
   /**
    * Classifies the minor aspect phase (forming / perfective / dissolving) between two bodies
    * across three consecutive minutes, or `null` if no minor aspect is in progress.
    *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
    */
   getMinorAspectPhase(args: {
     currentLongitudeBody1: number;

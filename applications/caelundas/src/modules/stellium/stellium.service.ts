@@ -142,16 +142,12 @@ export class StelliumService {
    * - Starts with each unvisited body
    * - Breadth-first search to find all transitively conjunct bodies
    * - Validates that all pairs in cluster are directly conjunct
-   * - Only accepts clusters with 4+ bodies
+   * - Only accepts clusters with 4+ bodies.
    *
    * Stelliums represent focused energy and emphasis in a particular
    * area of life or zodiac sign. The concentration of planetary energies
    * can indicate both talent and challenge in the associated domain.
    *
-   * @param currentAspectBodies - Active aspect relationships at the current minute
-   * @param previousAspectBodies - Active aspect relationships at the previous minute
-   * @param minute - The minute to check for Stellium patterns
-   * @returns Array of Stellium events detected at this minute
    * @see {@link determineCompoundPhaseFromSnapshots} for phase calculation
    * @see {@link haveAspect} for verifying conjunction relationships
    */
@@ -189,7 +185,7 @@ export class StelliumService {
   }
 
   /**
-   * Create a stellium event
+   * Create a stellium event.
    */
   private createStelliumEvent(parameters: {
     bodies: Body[];
@@ -365,10 +361,6 @@ export class StelliumService {
    * and validates that each cluster forms a complete stellium (all pairs
    * must be in conjunction, not just transitively connected).
    *
-   * @param currentAspectBodies - Active aspect relationships at the current minute
-   * @param previousAspectBodies - Active aspect relationships at the previous minute
-   * @param minute - The minute to check for stellium patterns
-   * @returns Array of all detected stellium events at this minute
    * @see {@link composeStelliums} for stellium detection logic
    */
   detect(args: {
@@ -394,8 +386,6 @@ export class StelliumService {
    * Progressive events show when a stellium is in effect rather than just
    * boundary moments.
    *
-   * @param events - All events to process (non-stellium events are filtered out)
-   * @returns Array of progressive events spanning from forming to dissolving
    */
   detectProgressive(events: Event[]): Event[] {
     const stelliumEvents = events.filter((event) =>

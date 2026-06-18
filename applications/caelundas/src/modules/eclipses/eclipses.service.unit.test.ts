@@ -1,683 +1,261 @@
-import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
-import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
-import moment, { type Moment } from "moment-timezone";
+import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { LoggerService } from "../logger/logger.service";
+
+import { EclipseCalculationService } from "./eclipse-calculation.service";
+import { EclipseEventService } from "./eclipse-event.service";
 import { EclipsesService } from "./eclipses.service";
 
-import type { EclipsePhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
-import type {
-  CoordinateEphemeris,
-  DiameterEphemeris,
-} from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
-vi.mock("fs", () => ({
-  default: {
-    writeFileSync: vi.fn(),
-  },
-}));
-
-interface Coordinates {
-  diameterMoon: number;
-  diameterSun: number;
-  latitudeMoon: number;
-  latitudeSun: number;
-  longitudeMoon: number;
-  longitudeSun: number;
-}
-interface ServicePrivate {
-  isLunarEclipse: (
-    current: Coordinates,
-    previous: Coordinates,
-    next: Coordinates,
-  ) => EclipsePhase | null;
-  isLunarEclipseActive: (current: Coordinates) => boolean;
-  isSolarEclipse: (
-    current: Coordinates,
-    previous: Coordinates,
-    next: Coordinates,
-  ) => EclipsePhase | null;
-  isSolarEclipseActive: (current: Coordinates) => boolean;
-}
+const createEvent = (description: string, categories: string[]): Event => {
+  const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
+  return {
+    categories,
+    description,
+    end: timestamp,
+    start: timestamp,
+    summary: description,
+  };
+};
 
 describe("EclipsesService", () => {
   let service: EclipsesService;
-  let s: ServicePrivate;
+  const logger = new LoggerService();
+
+  const eclipseCalculationService = {
+    getAllEclipseCoordinates: vi.fn(),
+    getGeocentricEvents: vi.fn(),
+    getTopocentricEventsForDetect: vi.fn(),
+  };
+
+  const eclipseEventService = {
+    buildLunarEclipseEvent: vi.fn(),
+    buildSolarEclipseEvent: vi.fn(),
+    detectProgressive: vi.fn(),
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        LoggerService,
         EclipsesService,
-        EphemerisService,
-        MathService,
-        ProgressiveUtilities,
+        {
+          provide: LoggerService,
+          useValue: logger,
+        },
+        {
+          provide: EclipseCalculationService,
+          useValue: eclipseCalculationService,
+        },
+        {
+          provide: EclipseEventService,
+          useValue: eclipseEventService,
+        },
       ],
     }).compile();
+
     service = await module.resolve(EclipsesService);
-    s = service as unknown as ServicePrivate;
   });
 
-  // Helper to create coordinate ephemeris
-  function createCoordinateEphemeris(
-    currentMinute: Moment,
-    longitudes: number[],
-    latitudes: number[],
-  ): CoordinateEphemeris {
-    const ephemeris: CoordinateEphemeris = {};
-    const totalMinutes = MARGIN_MINUTES * 2 + 1;
-
-    for (let index = 0; index < totalMinutes; index++) {
-      const minute = currentMinute
-        .clone()
-        .subtract(MARGIN_MINUTES - index, "minutes");
-      ephemeris[minute.toISOString()] = {
-        latitude: latitudes[index] ?? latitudes.at(-1) ?? 0,
-        longitude: longitudes[index] ?? longitudes.at(-1) ?? 0,
-      };
-    }
-
-    return ephemeris;
-  }
-
-  // Helper to create diameter ephemeris
-  function createDiameterEphemeris(
-    currentMinute: Moment,
-    diameters: number[],
-  ): DiameterEphemeris {
-    const ephemeris: DiameterEphemeris = {};
-    const totalMinutes = MARGIN_MINUTES * 2 + 1;
-
-    for (let index = 0; index < totalMinutes; index++) {
-      const minute = currentMinute
-        .clone()
-        .subtract(MARGIN_MINUTES - index, "minutes");
-      ephemeris[minute.toISOString()] = {
-        diameter: diameters[index] ?? diameters.at(-1) ?? 0,
-      };
-    }
-
-    return ephemeris;
-  }
-
-  describe("service.detect", () => {
-    it("should return empty array when no eclipse occurs", () => {
-      const currentMinute = moment.utc("2024-03-01T12:00:00.000Z");
-
-      // No eclipse: sun and moon far apart
-      const sunLongitudes = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(0);
-      const moonLongitudes = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(90);
-      const sunLatitudes = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(0);
-      const moonLatitudes = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(5);
-      const sunDiameters = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(0.533);
-      const moonDiameters = Array.from<number>({
-        length: MARGIN_MINUTES * 2 + 1,
-      }).fill(0.518);
-
-      const moonCoordinateEphemeris = createCoordinateEphemeris(
-        currentMinute,
-        moonLongitudes,
-        moonLatitudes,
-      );
-      const sunCoordinateEphemeris = createCoordinateEphemeris(
-        currentMinute,
-        sunLongitudes,
-        sunLatitudes,
-      );
-      const moonDiameterEphemeris = createDiameterEphemeris(
-        currentMinute,
-        moonDiameters,
-      );
-      const sunDiameterEphemeris = createDiameterEphemeris(
-        currentMinute,
-        sunDiameters,
-      );
-
-      const events = service.detect({
-        minute: currentMinute,
-        moonCoordinateEphemeris,
-        moonDiameterEphemeris,
-        sunCoordinateEphemeris,
-        sunDiameterEphemeris,
-      });
-
-      expect(events).toHaveLength(0);
-    });
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
 
-  describe("getSolarEclipseEvent", () => {
-    it("should create a solar eclipse beginning event with correct structure", () => {
-      const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
-
-      const event = service.buildSolarEclipseEvent({
-        date: timestamp,
-        frame: "geocentric",
-        phase: "beginning",
-      });
-
-      expect(event.summary).toBe("🌐 ☀️🐉▶️ Solar Eclipse begins");
-      expect(event.description).toBe("Solar Eclipse begins (Geocentric)");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
-      expect(event.categories).toContain("Astronomy");
-      expect(event.categories).toContain("Astrology");
-      expect(event.categories).toContain("Eclipse");
-      expect(event.categories).toContain("Solar");
-      expect(event.categories).toContain("Geocentric");
-    });
-
-    it("should create a solar eclipse maximum event with correct structure", () => {
-      const timestamp = moment.utc("2024-04-08T18:30:00.000Z");
-
-      const event = service.buildSolarEclipseEvent({
-        date: timestamp,
-        frame: "geocentric",
-        phase: "maximum",
-      });
-
-      expect(event.summary).toBe("🌐 ☀️🐉🎯 Solar Eclipse maximum");
-      expect(event.description).toBe("Solar Eclipse maximum (Geocentric)");
-      expect(event.categories).toContain("Solar");
-    });
-
-    it("should create a solar eclipse ending event with correct structure", () => {
-      const timestamp = moment.utc("2024-04-08T19:00:00.000Z");
-
-      const event = service.buildSolarEclipseEvent({
-        date: timestamp,
-        frame: "geocentric",
-        phase: "ending",
-      });
-
-      expect(event.summary).toBe("🌐 ☀️🐉◀️ Solar Eclipse ends");
-      expect(event.description).toBe("Solar Eclipse ends (Geocentric)");
-      expect(event.categories).toContain("Solar");
-    });
-  });
-
-  describe("getLunarEclipseEvent", () => {
-    it("should create a lunar eclipse beginning event with correct structure", () => {
+  describe("buildLunarEclipseEvent", () => {
+    it("delegates lunar event building", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
+      const expectedEvent = createEvent("Lunar Eclipse begins", ["Eclipse"]);
+      eclipseEventService.buildLunarEclipseEvent.mockReturnValue(expectedEvent);
 
-      const event = service.buildLunarEclipseEvent({
+      const result = service.buildLunarEclipseEvent({
         date: timestamp,
         frame: "geocentric",
         phase: "beginning",
       });
 
-      expect(event.summary).toBe("🌐 🌙🐉▶️ Lunar Eclipse begins");
-      expect(event.description).toBe("Lunar Eclipse begins (Geocentric)");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
-      expect(event.categories).toContain("Astronomy");
-      expect(event.categories).toContain("Astrology");
-      expect(event.categories).toContain("Eclipse");
-      expect(event.categories).toContain("Lunar");
-      expect(event.categories).toContain("Geocentric");
-    });
-
-    it("should create a lunar eclipse maximum event with correct structure", () => {
-      const timestamp = moment.utc("2024-09-18T02:30:00.000Z");
-
-      const event = service.buildLunarEclipseEvent({
+      expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenCalledWith({
         date: timestamp,
         frame: "geocentric",
-        phase: "maximum",
+        phase: "beginning",
       });
-
-      expect(event.summary).toBe("🌐 🌙🐉🎯 Lunar Eclipse maximum");
-      expect(event.description).toBe("Lunar Eclipse maximum (Geocentric)");
-      expect(event.categories).toContain("Lunar");
-    });
-
-    it("should create a lunar eclipse ending event with correct structure", () => {
-      const timestamp = moment.utc("2024-09-18T03:00:00.000Z");
-
-      const event = service.buildLunarEclipseEvent({
-        date: timestamp,
-        frame: "geocentric",
-        phase: "ending",
-      });
-
-      expect(event.summary).toBe("🌐 🌙🐉◀️ Lunar Eclipse ends");
-      expect(event.description).toBe("Lunar Eclipse ends (Geocentric)");
-      expect(event.categories).toContain("Lunar");
+      expect(result).toEqual(expectedEvent);
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should create solar eclipse progressive event from beginning to ending", () => {
-      const beginningEvent: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Solar",
-          "Geocentric",
-        ],
-        description: "Solar Eclipse begins (Geocentric)",
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
-      };
-      const endingEvent: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Solar",
-          "Geocentric",
-        ],
-        description: "Solar Eclipse ends (Geocentric)",
-        end: moment.utc("2024-04-08T19:00:00.000Z"),
-        start: moment.utc("2024-04-08T19:00:00.000Z"),
-        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
-      };
+  describe("buildSolarEclipseEvent", () => {
+    it("delegates solar event building", () => {
+      const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
+      const expectedEvent = createEvent("Solar Eclipse begins", ["Eclipse"]);
+      eclipseEventService.buildSolarEclipseEvent.mockReturnValue(expectedEvent);
 
-      const progressiveEvents = service.detectProgressive([
-        beginningEvent,
-        endingEvent,
-      ]);
+      const result = service.buildSolarEclipseEvent({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "beginning",
+      });
 
-      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
-      const solarDuration = progressiveEvents.find(
-        (e) =>
-          e.description.includes("Solar Eclipse") &&
-          !e.description.includes("begins") &&
-          !e.description.includes("ends"),
-      );
-      expect(solarDuration).toBeDefined();
-      if (solarDuration) {
-        expect(solarDuration.start).toEqual(beginningEvent.start);
-        expect(solarDuration.end).toEqual(endingEvent.start);
-        expect(solarDuration.summary).toBe(
-          "🌐 ☀️🐉 Solar Eclipse (Geocentric)",
-        );
-        expect(solarDuration.description).toBe("Solar Eclipse (Geocentric)");
-        expect(solarDuration.categories).toContain("Solar");
-      }
-    });
-
-    it("should create lunar eclipse progressive event from beginning to ending", () => {
-      const beginningEvent: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Lunar",
-          "Geocentric",
-        ],
-        description: "Lunar Eclipse begins (Geocentric)",
-        end: moment.utc("2024-09-18T02:00:00.000Z"),
-        start: moment.utc("2024-09-18T02:00:00.000Z"),
-        summary: "� 🌙🐉▶️ Lunar Eclipse begins",
-      };
-      const endingEvent: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Lunar",
-          "Geocentric",
-        ],
-        description: "Lunar Eclipse ends (Geocentric)",
-        end: moment.utc("2024-09-18T03:00:00.000Z"),
-        start: moment.utc("2024-09-18T03:00:00.000Z"),
-        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
-      };
-
-      const progressiveEvents = service.detectProgressive([
-        beginningEvent,
-        endingEvent,
-      ]);
-
-      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
-      const lunarDuration = progressiveEvents.find(
-        (e) =>
-          e.description.includes("Lunar Eclipse") &&
-          !e.description.includes("begins") &&
-          !e.description.includes("ends"),
-      );
-      expect(lunarDuration).toBeDefined();
-      if (lunarDuration) {
-        expect(lunarDuration.start).toEqual(beginningEvent.start);
-        expect(lunarDuration.end).toEqual(endingEvent.start);
-        expect(lunarDuration.summary).toBe(
-          "🌐 🌙🐉 Lunar Eclipse (Geocentric)",
-        );
-        expect(lunarDuration.description).toBe("Lunar Eclipse (Geocentric)");
-        expect(lunarDuration.categories).toContain("Lunar");
-      }
-    });
-
-    it("should return empty array when no eclipse events provided", () => {
-      const progressiveEvents = service.detectProgressive([]);
-
-      expect(progressiveEvents).toHaveLength(0);
-    });
-
-    it("should handle both solar and lunar eclipses together", () => {
-      const solarBegin: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Solar",
-          "Geocentric",
-        ],
-        description: "Solar Eclipse begins (Geocentric)",
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
-      };
-      const solarEnd: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Solar",
-          "Geocentric",
-        ],
-        description: "Solar Eclipse ends (Geocentric)",
-        end: moment.utc("2024-04-08T19:00:00.000Z"),
-        start: moment.utc("2024-04-08T19:00:00.000Z"),
-        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
-      };
-      const lunarBegin: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Lunar",
-          "Geocentric",
-        ],
-        description: "Lunar Eclipse begins (Geocentric)",
-        end: moment.utc("2024-09-18T02:00:00.000Z"),
-        start: moment.utc("2024-09-18T02:00:00.000Z"),
-        summary: "🌐 🌙🐉▶️ Lunar Eclipse begins",
-      };
-      const lunarEnd: Event = {
-        categories: [
-          "Astronomy",
-          "Astrology",
-          "Eclipse",
-          "Lunar",
-          "Geocentric",
-        ],
-        description: "Lunar Eclipse ends (Geocentric)",
-        end: moment.utc("2024-09-18T03:00:00.000Z"),
-        start: moment.utc("2024-09-18T03:00:00.000Z"),
-        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
-      };
-
-      const progressiveEvents = service.detectProgressive([
-        solarBegin,
-        solarEnd,
-        lunarBegin,
-        lunarEnd,
-      ]);
-
-      // Should have progressive events for both solar and lunar
-      expect(progressiveEvents.length).toBeGreaterThanOrEqual(2);
-
-      const solarDuration = progressiveEvents.find((e) =>
-        e.categories.includes("Solar"),
-      );
-      const lunarDuration = progressiveEvents.find((e) =>
-        e.categories.includes("Lunar"),
-      );
-
-      expect(solarDuration).toBeDefined();
-      expect(lunarDuration).toBeDefined();
-    });
-
-    it("should filter out non-eclipse events", () => {
-      const nonEclipseEvent: Event = {
-        categories: ["Astronomy", "Something Else"],
-        description: "Not an eclipse",
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "Some other event",
-      };
-
-      const progressiveEvents = service.detectProgressive([nonEclipseEvent]);
-
-      expect(progressiveEvents).toHaveLength(0);
+      expect(eclipseEventService.buildSolarEclipseEvent).toHaveBeenCalledWith({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "beginning",
+      });
+      expect(result).toEqual(expectedEvent);
     });
   });
 
-  describe("private utility methods", () => {
-    beforeEach(() => {
-      vi.restoreAllMocks();
-    });
-
-    const defaultCoordinates: Coordinates = {
-      diameterMoon: 0.5,
-      diameterSun: 0.5,
-      latitudeMoon: 0,
-      latitudeSun: 0,
-      longitudeMoon: 0,
-      longitudeSun: 0,
-    };
-    const emptyCoordinates: Coordinates = {
-      diameterMoon: 0,
-      diameterSun: 0,
-      latitudeMoon: 0,
-      latitudeSun: 0,
-      longitudeMoon: 0,
-      longitudeSun: 0,
-    };
-
-    describe("isSolarEclipse", () => {
-      it("should return 'maximum' at solar eclipse maximum", () => {
-        const result = s.isSolarEclipse(
-          { ...defaultCoordinates, longitudeMoon: 100, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 99, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 101, longitudeSun: 100 },
-        );
-        expect(result).toBe("maximum");
-      });
-
-      it("should return 'beginning' when eclipse starts", () => {
-        const diameter = 0.5 + 0.5;
-        const result = s.isSolarEclipse(
-          {
-            ...defaultCoordinates,
-            longitudeMoon: 100 + diameter * 0.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + diameter * 1.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + diameter * 0.3,
-            longitudeSun: 100,
-          },
-        );
-        expect(result).toBe("beginning");
-      });
-
-      it("should return 'ending' when eclipse ends", () => {
-        const diameter = 0.5 + 0.5;
-        const result = s.isSolarEclipse(
-          {
-            ...defaultCoordinates,
-            longitudeMoon: 100 + diameter * 0.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + diameter * 0.3,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + diameter * 1.5,
-            longitudeSun: 100,
-          },
-        );
-        expect(result).toBe("ending");
-      });
-
-      it("should return null when latitude too far for eclipse", () => {
-        const result = s.isSolarEclipse(
-          {
-            ...defaultCoordinates,
-            latitudeMoon: 5,
-            longitudeMoon: 100,
-            longitudeSun: 100,
-          },
-          { ...emptyCoordinates, longitudeMoon: 99, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 101, longitudeSun: 100 },
-        );
-        expect(result).toBeNull();
-      });
-
-      it("should return null when not at conjunction", () => {
-        const result = s.isSolarEclipse(
-          { ...defaultCoordinates, longitudeMoon: 190, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 189, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 191, longitudeSun: 100 },
-        );
-        expect(result).toBeNull();
-      });
-    });
-
-    describe("isLunarEclipse", () => {
-      it("should return 'maximum' at lunar eclipse maximum", () => {
-        const result = s.isLunarEclipse(
-          { ...defaultCoordinates, longitudeMoon: 280, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 279, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 281, longitudeSun: 100 },
-        );
-        expect(result).toBe("maximum");
-      });
-
-      it("should return 'beginning' when lunar eclipse starts", () => {
-        const diameter = 0.5 + 0.5;
-        const oppositionThreshold = 180 - diameter;
-        const result = s.isLunarEclipse(
-          {
-            ...defaultCoordinates,
-            longitudeMoon: 100 + oppositionThreshold + 0.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + oppositionThreshold - 0.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + oppositionThreshold + 1,
-            longitudeSun: 100,
-          },
-        );
-        expect(result).toBe("beginning");
-      });
-
-      it("should return 'ending' when lunar eclipse ends", () => {
-        const diameter = 0.5 + 0.5;
-        const oppositionThreshold = 180 - diameter;
-        const result = s.isLunarEclipse(
-          {
-            ...defaultCoordinates,
-            longitudeMoon: 100 + oppositionThreshold + 0.5,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + oppositionThreshold + 1,
-            longitudeSun: 100,
-          },
-          {
-            ...emptyCoordinates,
-            longitudeMoon: 100 + oppositionThreshold - 0.5,
-            longitudeSun: 100,
-          },
-        );
-        expect(result).toBe("ending");
-      });
-
-      it("should return null when latitude too far for eclipse", () => {
-        const result = s.isLunarEclipse(
-          {
-            ...defaultCoordinates,
-            latitudeMoon: 5,
-            longitudeMoon: 280,
-            longitudeSun: 100,
-          },
-          { ...emptyCoordinates, longitudeMoon: 279, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 281, longitudeSun: 100 },
-        );
-        expect(result).toBeNull();
-      });
-
-      it("should return null when not at opposition", () => {
-        const result = s.isLunarEclipse(
-          { ...defaultCoordinates, longitudeMoon: 150, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 149, longitudeSun: 100 },
-          { ...emptyCoordinates, longitudeMoon: 151, longitudeSun: 100 },
-        );
-        expect(result).toBeNull();
-      });
-    });
-
-    describe("active-state helpers", () => {
-      it("should report active solar eclipse overlap", () => {
-        const active = s.isSolarEclipseActive({
-          ...defaultCoordinates,
-          longitudeMoon: 100.4,
-          longitudeSun: 100,
-        });
-        expect(active).toBe(true);
-      });
-
-      it("should report inactive solar eclipse overlap", () => {
-        const active = s.isSolarEclipseActive({
-          ...defaultCoordinates,
-          latitudeMoon: 5,
+  describe("detect", () => {
+    it("combines geocentric and topocentric events when visibility ephemeris is provided", () => {
+      const coordinates = {
+        currentCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
           longitudeMoon: 100,
           longitudeSun: 100,
-        });
-        expect(active).toBe(false);
+        },
+        nextCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 101,
+          longitudeSun: 100,
+        },
+        previousCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 99,
+          longitudeSun: 100,
+        },
+      };
+      const geocentricEvent = createEvent("Solar Eclipse begins", [
+        "Astronomy",
+        "Astrology",
+        "Eclipse",
+        "Solar",
+        "Geocentric",
+      ]);
+      const topocentricEvent = createEvent("Solar Eclipse begins", [
+        "Astronomy",
+        "Astrology",
+        "Eclipse",
+        "Solar",
+        "Topocentric Visibility",
+      ]);
+
+      eclipseCalculationService.getAllEclipseCoordinates.mockReturnValue(
+        coordinates,
+      );
+      eclipseCalculationService.getGeocentricEvents.mockReturnValue({
+        events: [geocentricEvent],
+        lunarPhase: null,
+        solarPhase: "beginning",
+      });
+      eclipseCalculationService.getTopocentricEventsForDetect.mockReturnValue([
+        topocentricEvent,
+      ]);
+
+      const minute = moment.utc("2024-04-08T18:00:00.000Z");
+      const result = service.detect({
+        minute,
+        moonAzimuthElevationEphemeris: {},
+        moonCoordinateEphemeris: {},
+        moonDiameterEphemeris: {},
+        sunAzimuthElevationEphemeris: {},
+        sunCoordinateEphemeris: {},
+        sunDiameterEphemeris: {},
       });
 
-      it("should report active lunar eclipse overlap", () => {
-        const active = s.isLunarEclipseActive({
-          ...defaultCoordinates,
-          longitudeMoon: 279.5,
+      expect(result).toEqual([geocentricEvent, topocentricEvent]);
+      expect(
+        eclipseCalculationService.getTopocentricEventsForDetect,
+      ).toHaveBeenCalledTimes(1);
+    });
+
+    it("returns only geocentric events when visibility ephemeris is omitted", () => {
+      const geocentricEvent = createEvent("Lunar Eclipse maximum", [
+        "Astronomy",
+        "Astrology",
+        "Eclipse",
+        "Lunar",
+        "Geocentric",
+      ]);
+      eclipseCalculationService.getAllEclipseCoordinates.mockReturnValue({
+        currentCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 280,
           longitudeSun: 100,
-        });
-        expect(active).toBe(true);
+        },
+        nextCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 281,
+          longitudeSun: 100,
+        },
+        previousCoordinates: {
+          diameterMoon: 0.5,
+          diameterSun: 0.5,
+          latitudeMoon: 0,
+          latitudeSun: 0,
+          longitudeMoon: 279,
+          longitudeSun: 100,
+        },
+      });
+      eclipseCalculationService.getGeocentricEvents.mockReturnValue({
+        events: [geocentricEvent],
+        lunarPhase: "maximum",
+        solarPhase: null,
+      });
+      eclipseCalculationService.getTopocentricEventsForDetect.mockReturnValue(
+        [],
+      );
+
+      const minute = moment.utc("2024-09-18T02:30:00.000Z");
+      const result = service.detect({
+        minute,
+        moonCoordinateEphemeris: {},
+        moonDiameterEphemeris: {},
+        sunCoordinateEphemeris: {},
+        sunDiameterEphemeris: {},
       });
 
-      it("should report inactive lunar eclipse overlap", () => {
-        const active = s.isLunarEclipseActive({
-          ...defaultCoordinates,
-          longitudeMoon: 250,
-          longitudeSun: 100,
-        });
-        expect(active).toBe(false);
-      });
+      expect(result).toEqual([geocentricEvent]);
+      expect(
+        eclipseCalculationService.getTopocentricEventsForDetect,
+      ).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("detectProgressive", () => {
+    it("delegates progressive eclipse event synthesis", () => {
+      const sourceEvent = createEvent("Solar Eclipse begins", [
+        "Astronomy",
+        "Astrology",
+        "Eclipse",
+      ]);
+      const progressiveEvent = createEvent("Solar Eclipse (Geocentric)", [
+        "Astronomy",
+        "Astrology",
+        "Eclipse",
+      ]);
+      eclipseEventService.detectProgressive.mockReturnValue([progressiveEvent]);
+
+      const result = service.detectProgressive([sourceEvent]);
+
+      expect(eclipseEventService.detectProgressive).toHaveBeenCalledWith([
+        sourceEvent,
+      ]);
+      expect(result).toEqual([progressiveEvent]);
     });
   });
 

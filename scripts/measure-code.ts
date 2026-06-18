@@ -76,7 +76,7 @@ const jsts = {
 };
 
 /**
- *
+ * Records class declarations and tracks export and generic usage metrics.
  */
 function handleClass(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.classes++;
@@ -85,7 +85,7 @@ function handleClass(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Records enum declarations and whether they are exported.
  */
 function handleEnum(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.enums++;
@@ -93,7 +93,7 @@ function handleEnum(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Records function-like declarations and splits counts by scope and async usage.
  */
 function handleFunction(
   node: tsCompiler.Node,
@@ -111,7 +111,7 @@ function handleFunction(
 }
 
 /**
- *
+ * Records imports and tracks referenced external package names.
  */
 function handleImport(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.imports++;
@@ -127,7 +127,7 @@ function handleImport(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Records interface declarations with export and generic metadata.
  */
 function handleInterface(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.interfaces++;
@@ -136,7 +136,7 @@ function handleInterface(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Records methods and accessors while capturing async usage.
  */
 function handleMethodOrAccessor(
   node: tsCompiler.Node,
@@ -148,7 +148,7 @@ function handleMethodOrAccessor(
 }
 
 /**
- *
+ * Records type alias export and generic metadata.
  */
 function handleTypeAlias(node: tsCompiler.Node, stats: typeof jsts): void {
   if (hasExportKeyword(node)) stats.exported++;
@@ -156,7 +156,7 @@ function handleTypeAlias(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Records constant variable declarations and exported constant counts.
  */
 function handleVariable(node: tsCompiler.Node, stats: typeof jsts): void {
   const statement = node as tsCompiler.VariableStatement;
@@ -170,7 +170,7 @@ function handleVariable(node: tsCompiler.Node, stats: typeof jsts): void {
 }
 
 /**
- *
+ * Returns true when a node includes the async modifier.
  */
 function hasAsyncKeyword(node: tsCompiler.Node): boolean {
   const modifiers = tsCompiler.canHaveModifiers(node)
@@ -183,7 +183,7 @@ function hasAsyncKeyword(node: tsCompiler.Node): boolean {
 }
 
 /**
- *
+ * Returns true when a node includes the export modifier.
  */
 function hasExportKeyword(node: tsCompiler.Node): boolean {
   const modifiers = tsCompiler.canHaveModifiers(node)
@@ -196,7 +196,7 @@ function hasExportKeyword(node: tsCompiler.Node): boolean {
 }
 
 /**
- *
+ * Returns true when a declaration includes at least one type parameter.
  */
 function hasTypeParameters(node: tsCompiler.Node): boolean {
   const nodeWithTypeParameters = node as tsCompiler.Node & {
@@ -240,7 +240,7 @@ const nodeHandlers: Partial<
 };
 
 /**
- *
+ * Traverses the AST and dispatches each node to a metric-specific handler.
  */
 function walkNode(
   node: tsCompiler.Node,

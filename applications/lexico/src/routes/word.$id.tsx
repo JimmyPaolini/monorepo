@@ -28,17 +28,17 @@ export const Route = createFileRoute("/word/$id")({
 // 🔤 Pronunciation section sub-component
 
 /**
- *
+ * Word forms props.
  */
-interface WordFormsProps {
+interface WordFormsProperties {
   partOfSpeech: string;
   rawForms: EntryFull["forms"];
 }
 
 /**
- *
+ * Word pronunciation props.
  */
-interface WordPronunciationProps {
+interface WordPronunciationProperties {
   pronunciation: EntryFull["pronunciation"];
   wordText: string;
 }
@@ -46,9 +46,9 @@ interface WordPronunciationProps {
 // 📋 Forms section sub-component
 
 /**
- *
+ * Word forms.
  */
-function WordForms(properties: WordFormsProps): ReactNode {
+function WordForms(properties: WordFormsProperties): ReactNode {
   const { partOfSpeech, rawForms } = properties;
   const transformed = transformForms(partOfSpeech, rawForms);
 
@@ -73,7 +73,7 @@ function WordForms(properties: WordFormsProps): ReactNode {
 /**
  * Word detail page component that displays full entry information.
  *
- * @returns React node
+ * @returns React node.
  */
 function WordPage(): ReactNode {
   const loaderData = Route.useLoaderData();
@@ -203,9 +203,9 @@ function WordPage(): ReactNode {
 }
 
 /**
- *
+ * Word pronunciation.
  */
-function WordPronunciation(properties: WordPronunciationProps): ReactNode {
+function WordPronunciation(properties: WordPronunciationProperties): ReactNode {
   const { pronunciation, wordText } = properties;
   return (
     <section className="space-y-3">
