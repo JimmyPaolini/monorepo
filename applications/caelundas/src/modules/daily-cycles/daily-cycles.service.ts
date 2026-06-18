@@ -1,7 +1,7 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 
-import { DailyCyclesBuilderService } from "./daily-cycles-builder.service.js";
+import { DailyCyclesBuilderService } from "./daily-cycles-builder.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";

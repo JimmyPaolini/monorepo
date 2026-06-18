@@ -11,7 +11,7 @@ import { Author, Text } from "@monorepo/lexico-entities";
 import { LoggerService } from "../../logger/logger.service";
 import { hasValidTextContent } from "../library.utilities";
 
-import { LatinLibraryBuilder } from "./latin-library.builder.js";
+import { LatinLibraryBuilder } from "./latin-library.builder";
 
 import type { AnyNode } from "domhandler";
 
@@ -29,6 +29,9 @@ export class LatinLibraryProvider {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during Latin Library provider ingestion.
+   */
   private addFallbackText(author: Author, authorUrlObject: URL): void {
     const fallback = new Text();
     fallback.title = author.metadata?.["nickname"] as string;
@@ -38,6 +41,9 @@ export class LatinLibraryProvider {
     author.texts = [fallback];
   }
 
+  /**
+   * Builds structured data used during Latin Library provider ingestion.
+   */
   private addTextToBook(args: {
     author: Author;
     book: string;
@@ -62,6 +68,9 @@ export class LatinLibraryProvider {
     bookText.childTexts.push(textEntity);
   }
 
+  /**
+   * Builds structured data used during Latin Library provider ingestion.
+   */
   private buildCategoryAuthor(
     anchorElement: AnyNode,
     $cat: cheerio.CheerioAPI,
@@ -69,10 +78,16 @@ export class LatinLibraryProvider {
     return this.builder.buildCategoryAuthor(anchorElement, $cat);
   }
 
+  /**
+   * Builds structured data used during Latin Library provider ingestion.
+   */
   private buildRootAuthors(html: string): Author[] {
     return this.builder.buildRootAuthors(html);
   }
 
+  /**
+   * Handles an internal workflow step for Latin Library provider ingestion.
+   */
   private cleanupAuthorMetadata(author: Author): void {
     if (author.metadata) {
       delete author.metadata["nickname"];
@@ -90,6 +105,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Extracts normalized content for Latin Library provider ingestion.
+   */
   private collectAuthorTexts(
     author: Author,
     $: cheerio.CheerioAPI,
@@ -104,6 +122,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Handles an internal workflow step for Latin Library provider ingestion.
+   */
   private async expandCategoryAuthors(
     rootAuthors: Author[],
     host: string,
@@ -138,6 +159,9 @@ export class LatinLibraryProvider {
     return authors;
   }
 
+  /**
+   * Processes one workflow step for Latin Library provider ingestion.
+   */
   private async processAuthorPage(author: Author, host: string): Promise<void> {
     const nickname = author.metadata?.["nickname"] as string;
     const authorPath = author.metadata?.["sourceUrl"] as string;
@@ -159,6 +183,9 @@ export class LatinLibraryProvider {
     this.logger.log(`👤 Completed author metadata: ${nickname}`);
   }
 
+  /**
+   * Processes one workflow step for Latin Library provider ingestion.
+   */
   private processTextLink(args: {
     $: cheerio.CheerioAPI;
     anchor: AnyNode;
@@ -193,6 +220,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Processes one workflow step for Latin Library provider ingestion.
+   */
   private async processWork(args: {
     author: Author;
     authorPath: string;
@@ -228,6 +258,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Loads source data required by Latin Library provider ingestion.
+   */
   private async readSourceCacheFile(
     urlString: string,
     host: string,
@@ -241,6 +274,9 @@ export class LatinLibraryProvider {
     return fs.readFile(targetPath, "utf8");
   }
 
+  /**
+   * Persists generated output for Latin Library provider ingestion.
+   */
   private async saveWorkTextMarkdown(args: {
     authorPath: string;
     markdown: string;
@@ -267,6 +303,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Persists generated output for Latin Library provider ingestion.
+   */
   private async writeAuthorTexts(args: {
     author: Author;
     dataPath: string;
@@ -296,6 +335,9 @@ export class LatinLibraryProvider {
     }
   }
 
+  /**
+   * Persists generated output for Latin Library provider ingestion.
+   */
   private async writeWorkText(args: {
     author: Author;
     authorPath: string;

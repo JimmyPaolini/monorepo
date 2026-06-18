@@ -14,11 +14,9 @@ import type { Category } from "./wiktionary.types";
 import type { AnyNode, Element } from "domhandler";
 
 /**
- * TODO: Document the wiktionary command.
- * Ingest all Latin Wiktionary pages.
- * Provides Wiktionary entry fetching and parsing utilities.
- * Uses Cheerio for DOM querying with `unknown` typing to work around
- * TypeScript resolution issues with cheerio's type exports.
+ * Downloads all Latin Wiktionary category pages and stores each article's
+ * HTML as a JSON file under `./data/wiktionary`, following pagination until
+ * every page in every configured category is exhausted.
  */
 @Command({
   description: "Run the wiktionary command",
@@ -54,12 +52,18 @@ export class WiktionaryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Escape capitals for Wiktionary ingestion.
+   */
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       /[A-Z]/g,
       (character) => `_${character.toLowerCase()}`,
     );
   }
+  /**
+   * Fetch category page for Wiktionary ingestion.
+   */
   private async fetchCategoryPage(
     urlPath: string,
   ): Promise<cheerio.CheerioAPI> {
@@ -72,6 +76,9 @@ export class WiktionaryCommand extends CommandRunner {
     return cheerio.load(html);
   }
 
+  /**
+   * Fetch with retry for Wiktionary ingestion.
+   */
   private async fetchWithRetry(
     url: string,
     retries = this.maximumRetries,
@@ -99,6 +106,9 @@ export class WiktionaryCommand extends CommandRunner {
     return fetch(url);
   }
 
+  /**
+   * Handle category error for Wiktionary ingestion.
+   */
   private handleCategoryError(
     category: Category,
     urlPath: string,
@@ -115,6 +125,9 @@ export class WiktionaryCommand extends CommandRunner {
     );
   }
 
+  /**
+   * Ingests category in the Wiktionary ingestion pipeline.
+   */
   private async ingestCategory(
     category: Category = "lemma",
     startPath?: string,
@@ -145,6 +158,9 @@ export class WiktionaryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Ingests word in the Wiktionary ingestion pipeline.
+   */
   private async ingestWord(
     word: string,
     urlPath: string,
@@ -174,6 +190,9 @@ export class WiktionaryCommand extends CommandRunner {
     this.saveWiktionaryEntry(entry, parsed.section, parsed.$);
   }
 
+  /**
+   * Parses latin section during Wiktionary ingestion.
+   */
   private async parseLatinSection(href: string): Promise<null | {
     $: cheerio.CheerioAPI;
     section: cheerio.Cheerio<AnyNode>;
@@ -192,6 +211,9 @@ export class WiktionaryCommand extends CommandRunner {
     return { $, section };
   }
 
+  /**
+   * Processes wiktionary category link during Wiktionary ingestion.
+   */
   private async processWiktionaryCategoryLink(
     a: Element,
     $: cheerio.CheerioAPI,
@@ -221,6 +243,9 @@ export class WiktionaryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Save wiktionary entry for Wiktionary ingestion.
+   */
   private saveWiktionaryEntry(
     entry: WiktionaryPage,
     section: cheerio.Cheerio<AnyNode>,

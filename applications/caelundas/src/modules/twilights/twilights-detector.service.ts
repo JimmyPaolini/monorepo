@@ -1,7 +1,7 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 
-import { TwilightsBuilderService } from "./twilights-builder.service.js";
+import { TwilightsBuilderService } from "./twilights-builder.service";
 
 import type { Twilight } from "./twilights.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

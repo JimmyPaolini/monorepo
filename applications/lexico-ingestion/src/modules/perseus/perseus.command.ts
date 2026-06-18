@@ -42,6 +42,9 @@ export class PerseusCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Append source download error log for Perseus source ingestion.
+   */
   private async appendSourceDownloadErrorLog(
     xmlPath: string,
     error: unknown,
@@ -55,6 +58,9 @@ export class PerseusCommand extends CommandRunner {
     );
   }
 
+  /**
+   * Download source xml file if missing for Perseus source ingestion.
+   */
   private async downloadSourceXmlFileIfMissing(xmlPath: string): Promise<void> {
     const targetPath = path.join(this.sourceDataDirectory, xmlPath);
     try {
@@ -73,6 +79,9 @@ export class PerseusCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Fetch and write xml file for Perseus source ingestion.
+   */
   private async fetchAndWriteXmlFile(
     fileUrl: string,
     targetPath: string,
@@ -89,6 +98,9 @@ export class PerseusCommand extends CommandRunner {
     });
   }
 
+  /**
+   * Fetch source xml paths for Perseus source ingestion.
+   */
   private async fetchSourceXmlPaths(): Promise<null | string[]> {
     const treeUrl =
       "https://api.github.com/repos/PerseusDL/canonical-latinLit/git/trees/master?recursive=1";

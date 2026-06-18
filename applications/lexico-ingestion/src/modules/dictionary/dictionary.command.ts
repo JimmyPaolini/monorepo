@@ -59,6 +59,9 @@ export class DictionaryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Parses and normalizes inputs for dictionary ingestion.
+   */
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       /[A-Z]/g,
@@ -66,6 +69,9 @@ export class DictionaryCommand extends CommandRunner {
     );
   }
 
+  /**
+   * Resolves derived values needed by dictionary ingestion.
+   */
   private getLemmaChoices(): { title: string; value: string }[] {
     const dataDirectory = path.join(process.cwd(), "./data/wiktionary");
     if (!fs.existsSync(dataDirectory)) return [];
@@ -79,6 +85,9 @@ export class DictionaryCommand extends CommandRunner {
       });
   }
 
+  /**
+   * Resolves derived values needed by dictionary ingestion.
+   */
   private getLemmaFileRange(
     files: string[],
     startLemma?: string,
@@ -99,6 +108,9 @@ export class DictionaryCommand extends CommandRunner {
     return files.slice(start, end + 1);
   }
 
+  /**
+   * Resolves derived values needed by dictionary ingestion.
+   */
   private getPageForLexeme(
     word: string,
     wiktionaryPage?: WiktionaryPage,
@@ -112,6 +124,9 @@ export class DictionaryCommand extends CommandRunner {
     return page;
   }
 
+  /**
+   * Resolves derived values needed by dictionary ingestion.
+   */
   private getWiktionaryFilePathForWord(word: string): null | string {
     const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
 
@@ -145,6 +160,9 @@ export class DictionaryCommand extends CommandRunner {
     return null;
   }
 
+  /**
+   * Handles an internal workflow step for dictionary ingestion.
+   */
   private async ingestTranslationReference(
     translation: Translation,
   ): Promise<void> {
@@ -168,6 +186,9 @@ export class DictionaryCommand extends CommandRunner {
     await this.translationsService.saveTranslations([translation]);
   }
 
+  /**
+   * Loads source data required by dictionary ingestion.
+   */
   private loadWiktionaryPageForWord(word: string): null | WiktionaryPage {
     const filePath = this.getWiktionaryFilePathForWord(word);
     if (!filePath) {
@@ -182,6 +203,9 @@ export class DictionaryCommand extends CommandRunner {
     return page;
   }
 
+  /**
+   * Parses and normalizes inputs for dictionary ingestion.
+   */
   private normalize(str: string): string {
     return str
       .normalize("NFD")
@@ -190,6 +214,9 @@ export class DictionaryCommand extends CommandRunner {
       .trim();
   }
 
+  /**
+   * Processes one workflow step for dictionary ingestion.
+   */
   private async processFile(
     file: string,
     current: number,
@@ -216,6 +243,9 @@ export class DictionaryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Processes one workflow step for dictionary ingestion.
+   */
   private async processTranslationMatch(
     match: RegExpMatchArray,
     translation: Translation,
@@ -246,6 +276,9 @@ export class DictionaryCommand extends CommandRunner {
     newTranslations.push(...mapped);
   }
 
+  /**
+   * Processes one workflow step for dictionary ingestion.
+   */
   private async processTranslationReferences(saved: Lexeme): Promise<void> {
     const referencedWords =
       this.translationsService.extractTranslationReferences(
@@ -268,6 +301,9 @@ export class DictionaryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Loads source data required by dictionary ingestion.
+   */
   private readWiktionaryPageFromFile(filePath: string): null | WiktionaryPage {
     if (!fs.existsSync(filePath)) return null;
     const raw = fs.readFileSync(filePath, "utf8");

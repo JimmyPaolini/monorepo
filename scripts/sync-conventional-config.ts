@@ -1,4 +1,4 @@
-import { main } from "./sync-conventional-config.helpers.js";
+import { main } from "./sync-conventional-config.helpers";
 
 // 🌎 Public methods
 

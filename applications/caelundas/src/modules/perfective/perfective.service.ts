@@ -52,6 +52,7 @@ export class PerfectiveService {
 
   // 🔏 Private Methods
 
+  /** Sweeps one day minute-by-minute, aggregating perfective events and rolling aspect state forward. */
   private detectDayEvents(args: {
     coordinates: Coordinates;
     date: Moment;
@@ -89,6 +90,7 @@ export class PerfectiveService {
     return { events, previousAspectBodies };
   }
 
+  /** Detects all minute-level event families and returns both events and updated aspect-body state. */
   private detectMinuteEvents(
     minute: Moment,
     ephemerides: Ephemerides,
@@ -108,6 +110,7 @@ export class PerfectiveService {
     return { aspectBodies, events };
   }
 
+  /** Detects local observational phenomena such as eclipses, crossings, twilights, and rises/sets. */
   private detectObservationalEvents(
     minute: Moment,
     ephemerides: Ephemerides,
@@ -139,6 +142,7 @@ export class PerfectiveService {
     ];
   }
 
+  /** Detects orbital-state events such as retrogrades, ingresses, lunar phases, and annual markers. */
   private detectOrbitalEvents(
     minute: Moment,
     ephemerides: Ephemerides,

@@ -50,6 +50,9 @@ export class NumeralsService {
 
     let roman = "";
 
+    /**
+     * Converts one decimal digit place into Roman numeral glyphs.
+     */
     function convertDigit(args: {
       digit: number;
       low: string;

@@ -1,9 +1,9 @@
 import { Entity, Index, ManyToOne } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import type { Form } from "./form/Form.entity.js";
-import type { Word } from "./Word.entity.js";
+import type { Form } from "./form/Form.entity";
+import type { Word } from "./Word.entity";
 
 /**
  * Explicit junction entity linking a normalized Latin word string to the

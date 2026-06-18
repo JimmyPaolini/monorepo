@@ -38,6 +38,9 @@ const DEVCONTAINER_FILES = [
 ];
 const MODE = process.argv[2] || "check";
 
+/**
+ *
+ */
 interface DevcontainerJson {
   customizations: {
     vscode: {
@@ -48,11 +51,17 @@ interface DevcontainerJson {
   };
 }
 
+/**
+ *
+ */
 interface ExtensionsJson {
   recommendations: string[];
   unwantedRecommendations: string[];
 }
 
+/**
+ *
+ */
 function checkSync(
   extensions: ExtensionsJson,
   devcontainer: DevcontainerJson,
@@ -102,6 +111,9 @@ function checkSync(
   return true;
 }
 
+/**
+ *
+ */
 function handleCheckMode(extensions: ExtensionsJson): void {
   let allInSync = true;
   for (const devcontainerFile of DEVCONTAINER_FILES) {
@@ -118,6 +130,9 @@ function handleCheckMode(extensions: ExtensionsJson): void {
   );
 }
 
+/**
+ *
+ */
 function handleWriteMode(extensions: ExtensionsJson): void {
   for (const devcontainerFile of DEVCONTAINER_FILES) {
     const devcontainer: DevcontainerJson = JSON5.parse(
@@ -132,6 +147,9 @@ function handleWriteMode(extensions: ExtensionsJson): void {
   }
 }
 
+/**
+ *
+ */
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
     readFileSync(EXTENSIONS_FILE, "utf8"),
@@ -150,6 +168,9 @@ function main(): void {
   }
 }
 
+/**
+ *
+ */
 function reportExtensionsDiff(
   recommendations: string[],
   devcontainerExtensions: string[],
@@ -161,6 +182,9 @@ function reportExtensionsDiff(
   console.log("");
 }
 
+/**
+ *
+ */
 function reportRecommendationsDiff(
   recommendations: string[],
   devcontainerRecommendations: string[],
@@ -172,6 +196,9 @@ function reportRecommendationsDiff(
   console.log("");
 }
 
+/**
+ *
+ */
 function reportUnwantedRecommendationsDiff(
   unwantedRecommendations: string[],
   devcontainerUnwantedRecommendations: string[],
@@ -181,6 +208,9 @@ function reportUnwantedRecommendationsDiff(
   console.log("");
 }
 
+/**
+ *
+ */
 function showDifference(source: string[], target: string[]): void {
   const missing = _.difference(source, target);
   const extra = _.difference(target, source);
@@ -195,6 +225,9 @@ function showDifference(source: string[], target: string[]): void {
   }
 }
 
+/**
+ *
+ */
 function writeSync(
   extensions: ExtensionsJson,
   devcontainer: DevcontainerJson,

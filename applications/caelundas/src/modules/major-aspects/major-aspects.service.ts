@@ -76,6 +76,9 @@ export class MajorAspectsService {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles assemble major aspect event.
+   */
   private assembleMajorAspectEvent(
     args: AssembleMajorAspectEventArguments,
   ): Event {
@@ -97,6 +100,9 @@ export class MajorAspectsService {
     };
   }
 
+  /**
+   * Builds aspect event parts.
+   */
   private buildAspectEventParts(args: {
     body1: Body;
     body1Capitalized: string;
@@ -132,6 +138,9 @@ export class MajorAspectsService {
     return { categories, description, summary };
   }
 
+  /**
+   * Handles cast aspect parts to types.
+   */
   private castAspectPartsToTypes(args: {
     aspectCapitalized: string;
     body1Capitalized: string;
@@ -159,6 +168,9 @@ export class MajorAspectsService {
     return { aspect: aspectLower, body1: body1Lower, body2: body2Lower };
   }
 
+  /**
+   * Detects aspect for body pair.
+   */
   private detectAspectForBodyPair(
     args: DetectAspectForBodyPairArguments,
   ): Event | null {
@@ -191,6 +203,9 @@ export class MajorAspectsService {
     });
   }
 
+  /**
+   * Detects phase from windows.
+   */
   private detectPhaseFromWindows(
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },
@@ -205,6 +220,9 @@ export class MajorAspectsService {
     });
   }
 
+  /**
+   * Extracts aspect parts from categories.
+   */
   private extractAspectPartsFromCategories(
     categories: string[],
   ): ExtractAspectPartsFromCategoriesResult {
@@ -243,6 +261,9 @@ export class MajorAspectsService {
     };
   }
 
+  /**
+   * Derives aspect group key.
+   */
   private getAspectGroupKey(event: Event): string {
     const bodiesCapitalized = _.sortBy(
       event.categories.filter((category) =>
@@ -262,6 +283,9 @@ export class MajorAspectsService {
     return "";
   }
 
+  /**
+   * Derives longitudes window for body.
+   */
   private getLongitudesWindowForBody(args: {
     body: Body;
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -346,6 +370,9 @@ export class MajorAspectsService {
     };
   }
 
+  /**
+   * Processes aspect group.
+   */
   private processAspectGroup(
     aspectGroupKey: string,
     aspectGroupEvents: Event[],

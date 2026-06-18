@@ -26,8 +26,14 @@ const MIGRATIONS_DIR =
   "packages/lexico-entities/src/modules/database/migrations" as const;
 const MIGRATION_GLOB = /^\d{13}-\w.*\.ts$/;
 
+/**
+ *
+ */
 type Mode = "all" | "latest";
 
+/**
+ *
+ */
 function extractSqlFromLiteral(
   argument: ts.Expression,
   sourceFile: ts.SourceFile,
@@ -45,12 +51,18 @@ function extractSqlFromLiteral(
   return undefined;
 }
 
+/**
+ *
+ */
 function extractSqlFromMethod(
   method: ts.MethodDeclaration,
   sourceFile: ts.SourceFile,
 ): string[] {
   const statements: string[] = [];
 
+  /**
+   *
+   */
   function visit(node: ts.Node): void {
     if (
       ts.isCallExpression(node) &&
@@ -78,6 +90,9 @@ function extractSqlFromMethod(
   return statements;
 }
 
+/**
+ *
+ */
 function extractSqlFromMigration(
   source: string,
   filePath: string,
@@ -92,6 +107,9 @@ function extractSqlFromMigration(
   let upStatements: string[] = [];
   let downStatements: string[] = [];
 
+  /**
+   *
+   */
   function visit(node: ts.Node): void {
     if (ts.isClassDeclaration(node)) {
       for (const member of node.members) {
@@ -118,6 +136,9 @@ function extractSqlFromMigration(
   return { down: downStatements, up: upStatements };
 }
 
+/**
+ *
+ */
 async function findMigrationFiles(mode: Mode): Promise<string[]> {
   const entries = await readdir(MIGRATIONS_DIR);
   const sorted = entries.filter((f) => MIGRATION_GLOB.test(f)).toSorted();
@@ -137,6 +158,9 @@ async function findMigrationFiles(mode: Mode): Promise<string[]> {
   return sorted.map((f) => path.join(MIGRATIONS_DIR, f));
 }
 
+/**
+ *
+ */
 async function main(): Promise<void> {
   const mode = parseMode();
   const migrationPaths = await findMigrationFiles(mode);
@@ -158,6 +182,9 @@ async function main(): Promise<void> {
   }
 }
 
+/**
+ *
+ */
 function parseMode(): Mode {
   const flag = process.argv.find((argument) => argument.startsWith("--mode="));
   const value = flag?.split("=")[1];
@@ -165,6 +192,9 @@ function parseMode(): Mode {
   return "latest";
 }
 
+/**
+ *
+ */
 async function processMigrationFile(
   file: string,
 ): Promise<{ downPath: string; upPath: string }> {

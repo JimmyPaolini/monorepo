@@ -2,7 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service.js";
+import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service";
 
 import type { ComposeHexagramsArguments } from "./sextuple-aspects.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -27,6 +27,7 @@ export class SextupleAspectsService {
 
   // 🔏 Private Methods
 
+  /** Builds sextuple-aspect hexagram events from trine and sextile edge snapshots. */
   private composeHexagrams(args: ComposeHexagramsArguments): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -47,6 +48,7 @@ export class SextupleAspectsService {
     });
   }
 
+  /** Determines forming or dissolving phase by comparing pattern presence across minute snapshots. */
   private determineCompoundPhaseFromSnapshots(args: {
     checkPatternExists: (edges: AspectBodies[]) => boolean;
     currentAspectBodies: AspectBodies[];
@@ -87,6 +89,7 @@ export class SextupleAspectsService {
     return null;
   }
 
+  /** Evaluates candidate six-body sets and emits events for valid hexagram configurations. */
   private processHexagramCombinations(args: {
     combinations: Body[][];
     currentAspectBodies: AspectBodies[];

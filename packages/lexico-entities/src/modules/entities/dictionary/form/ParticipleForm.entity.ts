@@ -2,12 +2,13 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import {
-  Form,
   type FormNonFiniteTense,
   formNonFiniteTenseValues,
   type FormVoice,
   formVoiceValues,
-} from "./Form.entity.js";
+} from "../../../database/database.constants";
+
+import { Form } from "./Form.entity";
 
 /** A non-finite participial form (voice + tense). */
 @ChildEntity("participle")

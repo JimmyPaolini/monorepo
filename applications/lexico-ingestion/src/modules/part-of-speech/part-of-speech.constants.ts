@@ -10,6 +10,9 @@ import {
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
 
+/**
+ * Returns only non-empty string values from unknown input.
+ */
 function compactStringValues(values: unknown): string[] {
   if (!Array.isArray(values)) {
     return [];

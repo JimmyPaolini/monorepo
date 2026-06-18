@@ -62,6 +62,9 @@ export class PhasesService {
 
   // 🔏 Private Methods
 
+  /**
+   * Detects martian events.
+   */
   private detectMartianEvents(args: {
     coordinateEphemerisByBody: Record<
       CoordinateEphemerisBody,
@@ -90,6 +93,9 @@ export class PhasesService {
     });
   }
 
+  /**
+   * Detects martian phases.
+   */
   private detectMartianPhases(
     parameters: PhaseParameters,
     minute: Moment,
@@ -109,6 +115,9 @@ export class PhasesService {
     return events;
   }
 
+  /**
+   * Detects mercurian evening phases.
+   */
   private detectMercurianEveningPhases(
     parameters: PhaseParameters,
     minute: Moment,
@@ -130,6 +139,9 @@ export class PhasesService {
     return events;
   }
 
+  /**
+   * Detects mercurian events.
+   */
   private detectMercurianEvents(args: {
     coordinateEphemerisByBody: Record<
       CoordinateEphemerisBody,
@@ -196,6 +208,9 @@ export class PhasesService {
     return events;
   }
 
+  /**
+   * Detects venusian evening phases.
+   */
   private detectVenusianEveningPhases(
     parameters: PhaseParameters,
     minute: Moment,
@@ -302,10 +317,16 @@ export class PhasesService {
     return events;
   }
 
+  /**
+   * Handles filter by category.
+   */
   private filterByCategory(events: Event[], category: string): Event[] {
     return events.filter((event) => event.categories.includes(category));
   }
 
+  /**
+   * Formats time zone iso.
+   */
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
   }
@@ -371,6 +392,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Collects margin ephemeris.
+   */
   private gatherMarginEphemeris(args: {
     direction: "next" | "previous";
     distanceEphemeris: DistanceEphemeris;
@@ -410,6 +434,9 @@ export class PhasesService {
     return { distances, illuminations };
   }
 
+  /**
+   * Collects phase parameters.
+   */
   private gatherPhaseParameters(args: {
     distanceEphemeris: DistanceEphemeris;
     illuminationEphemeris: IlluminationEphemeris;
@@ -475,6 +502,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives brightness.
+   */
   private getBrightness(args: {
     distance: number;
     illumination: number;
@@ -482,6 +512,9 @@ export class PhasesService {
     return args.illumination / args.distance ** 2;
   }
 
+  /**
+   * Derives brightnesses.
+   */
   private getBrightnesses(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -512,6 +545,9 @@ export class PhasesService {
     });
   }
 
+  /**
+   * Derives brightnesses result.
+   */
   private getBrightnessesResult(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -549,6 +585,9 @@ export class PhasesService {
     return { currentBrightness, nextBrightnesses, previousBrightnesses };
   }
 
+  /**
+   * Derives elongation angle.
+   */
   private getElongationAngle(
     longitudePlanet: number,
     longitudeSun: number,
@@ -556,6 +595,9 @@ export class PhasesService {
     return this.mathService.getAngle(longitudePlanet, longitudeSun);
   }
 
+  /**
+   * Derives mars evening visibility duration event.
+   */
   private getMarsEveningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -573,6 +615,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives mars morning visibility duration event.
+   */
   private getMarsMorningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -590,6 +635,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives martian evening progressive events.
+   */
   private getMartianEveningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Evening Rise"),
@@ -601,6 +649,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Derives martian morning progressive events.
+   */
   private getMartianMorningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Morning Rise"),
@@ -612,6 +663,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Derives martian phase progressive events.
+   */
   private getMartianPhaseProgressiveEvents(events: Event[]): Event[] {
     return [
       ...this.getMartianMorningProgressiveEvents(events),
@@ -619,6 +673,9 @@ export class PhasesService {
     ];
   }
 
+  /**
+   * Derives mercurian evening progressive events.
+   */
   private getMercurianEveningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Evening Rise"),
@@ -630,6 +687,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Derives mercurian morning progressive events.
+   */
   private getMercurianMorningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Morning Rise"),
@@ -641,6 +701,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Derives mercurian phase progressive events.
+   */
   private getMercurianPhaseProgressiveEvents(events: Event[]): Event[] {
     return [
       ...this.getMercurianMorningProgressiveEvents(events),
@@ -648,6 +711,9 @@ export class PhasesService {
     ];
   }
 
+  /**
+   * Derives mercury evening visibility duration event.
+   */
   private getMercuryEveningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -665,6 +731,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives mercury morning visibility duration event.
+   */
   private getMercuryMorningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -682,6 +751,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives venus evening visibility duration event.
+   */
   private getVenusEveningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -699,6 +771,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Derives venusian evening progressive events.
+   */
   private getVenusianEveningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Evening Rise"),
@@ -712,6 +787,9 @@ export class PhasesService {
 
   // 🔵 Position helpers
 
+  /**
+   * Derives venusian morning progressive events.
+   */
   private getVenusianMorningProgressiveEvents(events: Event[]): Event[] {
     const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
       this.filterByCategory(events, "Morning Rise"),
@@ -723,6 +801,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Derives venusian phase progressive events.
+   */
   private getVenusianPhaseProgressiveEvents(events: Event[]): Event[] {
     return [
       ...this.getVenusianMorningProgressiveEvents(events),
@@ -730,6 +811,9 @@ export class PhasesService {
     ];
   }
 
+  /**
+   * Derives venus morning visibility duration event.
+   */
   private getVenusMorningVisibilityDurationEvent(
     beginning: Event,
     ending: Event,
@@ -747,6 +831,9 @@ export class PhasesService {
     };
   }
 
+  /**
+   * Determines whether brightest.
+   */
   private isBrightest(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -766,6 +853,9 @@ export class PhasesService {
 
   // 🔵 Brightness helpers
 
+  /**
+   * Determines whether eastern.
+   */
   private isEastern(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -773,6 +863,9 @@ export class PhasesService {
     return args.currentLongitudePlanet > args.currentLongitudeSun;
   }
 
+  /**
+   * Determines whether eastern brightest.
+   */
   private isEasternBrightest(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -786,6 +879,9 @@ export class PhasesService {
     return this.isEastern(args) && this.isBrightest(args);
   }
 
+  /**
+   * Determines whether eastern elongation.
+   */
   private isEasternElongation(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -797,6 +893,9 @@ export class PhasesService {
     return this.isElongation(args) && this.isEastern(args);
   }
 
+  /**
+   * Determines whether elongation.
+   */
   private isElongation(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -827,12 +926,18 @@ export class PhasesService {
     });
   }
 
+  /**
+   * Determines whether evening.
+   */
   private isEvening(args: Parameters<PhasesService["isEastern"]>[0]): boolean {
     return this.isEastern(args);
   }
 
   // 🔵 Elongation helpers
 
+  /**
+   * Determines whether evening rise.
+   */
   private isEveningRise(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -842,6 +947,9 @@ export class PhasesService {
     return this.isEvening(args) && this.isRise(args);
   }
 
+  /**
+   * Determines whether evening set.
+   */
   private isEveningSet(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -853,12 +961,18 @@ export class PhasesService {
 
   // 🌎 Public Methods
 
+  /**
+   * Determines whether morning.
+   */
   private isMorning(args: Parameters<PhasesService["isWestern"]>[0]): boolean {
     return this.isWestern(args);
   }
 
   // 🔵 Rise/Set helpers
 
+  /**
+   * Determines whether morning rise.
+   */
   private isMorningRise(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -868,6 +982,9 @@ export class PhasesService {
     return this.isMorning(args) && this.isRise(args);
   }
 
+  /**
+   * Determines whether morning set.
+   */
   private isMorningSet(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -877,6 +994,9 @@ export class PhasesService {
     return this.isMorning(args) && this.isSet(args);
   }
 
+  /**
+   * Determines whether rise.
+   */
   private isRise(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -905,6 +1025,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Determines whether set.
+   */
   private isSet(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -933,6 +1056,9 @@ export class PhasesService {
     );
   }
 
+  /**
+   * Determines whether western.
+   */
   private isWestern(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -940,6 +1066,9 @@ export class PhasesService {
     return args.currentLongitudePlanet < args.currentLongitudeSun;
   }
 
+  /**
+   * Determines whether western brightest.
+   */
   private isWesternBrightest(args: {
     currentDistance: number;
     currentIllumination: number;
@@ -953,6 +1082,9 @@ export class PhasesService {
     return this.isWestern(args) && this.isBrightest(args);
   }
 
+  /**
+   * Determines whether western elongation.
+   */
   private isWesternElongation(args: {
     currentLongitudePlanet: number;
     currentLongitudeSun: number;
@@ -964,6 +1096,9 @@ export class PhasesService {
     return this.isElongation(args) && this.isWestern(args);
   }
 
+  /**
+   * Handles map brightness array.
+   */
   private mapBrightnessArray(
     distances: number[],
     illuminations: number[],

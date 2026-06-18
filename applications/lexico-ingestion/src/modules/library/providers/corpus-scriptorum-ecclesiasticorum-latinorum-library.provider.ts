@@ -20,6 +20,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
   readonly name = "corpus-scriptorum-ecclesiasticorum-latinorum";
 
+  /**
+   * Builds structured data used during CSEL library text generation.
+   */
   private buildCselTextContent(args: {
     authorSlug: string;
     metadata: Record<string, string>;
@@ -48,6 +51,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return markdown;
   }
 
+  /**
+   * Returns whether the current input should proceed in CSEL library text generation.
+   */
   private checkTextFilter(
     options: undefined | { author?: string; text?: string },
     authorSlug: string,
@@ -58,6 +64,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return false;
   }
 
+  /**
+   * Extracts normalized content for CSEL library text generation.
+   */
   private async collectSourceXmlPaths(
     sourceDataDirectory: string,
   ): Promise<null | string[]> {
@@ -77,6 +86,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     }
   }
 
+  /**
+   * Builds structured data used during CSEL library text generation.
+   */
   private createCselTextEntity(args: {
     metadata: Record<string, string>;
     rawTitle: string;
@@ -92,6 +104,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return textEntity;
   }
 
+  /**
+   * Extracts normalized content for CSEL library text generation.
+   */
   private extractParagraphs($: cheerio.CheerioAPI): string[] {
     const paragraphs: string[] = [];
     $("body")
@@ -121,6 +136,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return paragraphs;
   }
 
+  /**
+   * Resolves derived values needed by CSEL library text generation.
+   */
   private getMetadata($: cheerio.CheerioAPI): Record<string, string> {
     const metadata: Record<string, string> = {};
     const editors = $("titleStmt editor")
@@ -141,6 +159,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return metadata;
   }
 
+  /**
+   * Resolves derived values needed by CSEL library text generation.
+   */
   private getOrCreateAuthor(args: {
     authorSlug: string;
     authorsMap: Map<string, Author>;
@@ -160,6 +181,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return author;
   }
 
+  /**
+   * Handles an internal workflow step for CSEL library text generation.
+   */
   private logSourceProgress(args: {
     index: number;
     totalFiles: number;
@@ -170,6 +194,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     this.logger.log(`📜 Completed processing: ${xmlPath}${progressString}`);
   }
 
+  /**
+   * Parses and normalizes inputs for CSEL library text generation.
+   */
   private async parseSourceXmlFile(args: {
     options: undefined | { author?: string; text?: string };
     sourceDataDirectory: string;
@@ -201,6 +228,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     return { $, resolved };
   }
 
+  /**
+   * Processes one workflow step for CSEL library text generation.
+   */
   private async processSourceXmlFile(args: {
     authorsMap: Map<string, Author>;
     dataPath: string;
@@ -258,6 +288,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     }
   }
 
+  /**
+   * Resolves derived values needed by CSEL library text generation.
+   */
   private resolveSourceXmlMetadata(args: {
     $: cheerio.CheerioAPI;
     options: undefined | { author?: string; text?: string };
@@ -295,6 +328,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     };
   }
 
+  /**
+   * Persists generated output for CSEL library text generation.
+   */
   private async writeSourceTextForAuthor(args: {
     $: cheerio.CheerioAPI;
     author: Author;

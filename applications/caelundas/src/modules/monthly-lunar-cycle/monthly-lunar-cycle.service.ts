@@ -126,6 +126,9 @@ export class MonthlyLunarCycleService {
     return lunarPhaseLower;
   }
 
+  /**
+   * Derives monthly lunar cycle progressive event.
+   */
   private getMonthlyLunarCycleProgressiveEvent(
     entering: Event,
     exiting: Event,
@@ -155,6 +158,9 @@ export class MonthlyLunarCycleService {
     };
   }
 
+  /**
+   * Derives next illuminations.
+   */
   private getNextIlluminations(
     moonIlluminationEphemeris: IlluminationEphemeris,
     minute: Moment,
@@ -169,6 +175,9 @@ export class MonthlyLunarCycleService {
     });
   }
 
+  /**
+   * Derives previous illuminations.
+   */
   private getPreviousIlluminations(
     moonIlluminationEphemeris: IlluminationEphemeris,
     minute: Moment,
@@ -183,6 +192,9 @@ export class MonthlyLunarCycleService {
     });
   }
 
+  /**
+   * Determines whether full moon.
+   */
   private isFullMoon(args: {
     currentIllumination: number;
     nextIlluminations: number[];
@@ -197,6 +209,9 @@ export class MonthlyLunarCycleService {
     );
   }
 
+  /**
+   * Determines whether lunar phase.
+   */
   private isLunarPhase(args: {
     currentIllumination: number;
     lunarPhase: LunarPhase;
@@ -222,6 +237,9 @@ export class MonthlyLunarCycleService {
     });
   }
 
+  /**
+   * Determines whether new moon.
+   */
   private isNewMoon(args: {
     currentIllumination: number;
     nextIlluminations: number[];
@@ -236,6 +254,9 @@ export class MonthlyLunarCycleService {
     );
   }
 
+  /**
+   * Determines whether quarter phase.
+   */
   private isQuarterPhase(args: {
     currentIllumination: number;
     lunarPhase: LunarPhase;

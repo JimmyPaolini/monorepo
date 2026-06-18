@@ -32,12 +32,18 @@ const GENERATORS_FILE = path.join(
 const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
 const MODE = process.argv[2] ?? "check";
 
+/**
+ *
+ */
 interface Generator {
   aliases: string[];
   description: string;
   name: string;
 }
 
+/**
+ *
+ */
 interface GeneratorsJson {
   generators: Record<
     string,

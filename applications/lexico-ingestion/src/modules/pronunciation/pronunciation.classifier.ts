@@ -4,7 +4,7 @@ import {
   classicalDevocalize,
   classicalPhonemes,
   ecclesiasticalPhonemes,
-} from "./pronunciation.constants.js";
+} from "./pronunciation.constants";
 
 import type { Pronunciation } from "@monorepo/lexico-entities";
 import type * as cheerio from "cheerio";
@@ -16,6 +16,9 @@ import type { AnyNode } from "domhandler";
 export class PronunciationClassifier {
   // 🔏 Public Methods
 
+  /**
+   * Classifies classical h for pronunciation parsing.
+   */
   private classifyClassicalH(args: {
     index: number;
     isVowel: (index: number) => boolean;
@@ -31,6 +34,9 @@ export class PronunciationClassifier {
     }
   }
 
+  /**
+   * Classifies classical i for pronunciation parsing.
+   */
   private classifyClassicalI(args: {
     ch: string;
     index: number;
@@ -43,6 +49,9 @@ export class PronunciationClassifier {
     else phonemes.push(classicalPhonemes[ch] ?? "");
   }
 
+  /**
+   * Classifies classical j for pronunciation parsing.
+   */
   private classifyClassicalJ(args: {
     ch: string;
     index: number;
@@ -59,6 +68,9 @@ export class PronunciationClassifier {
     } else phonemes.push(classicalPhonemes[ch] ?? "");
   }
 
+  /**
+   * Classifies classical n for pronunciation parsing.
+   */
   private classifyClassicalN(args: {
     ch: string;
     index: number;
@@ -75,6 +87,9 @@ export class PronunciationClassifier {
     } else phonemes.push(classicalPhonemes[ch] ?? "");
   }
 
+  /**
+   * Classifies ecclesiastical c for pronunciation parsing.
+   */
   private classifyEcclesiasticalC(
     index: number,
     word: string[],
@@ -93,6 +108,9 @@ export class PronunciationClassifier {
     return nextIndex;
   }
 
+  /**
+   * Classifies ecclesiastical g for pronunciation parsing.
+   */
   private classifyEcclesiasticalG(
     index: number,
     word: string[],
@@ -111,6 +129,9 @@ export class PronunciationClassifier {
     return nextIndex;
   }
 
+  /**
+   * Classifies ecclesiastical h for pronunciation parsing.
+   */
   private classifyEcclesiasticalH(args: {
     index: number;
     phonemes: (string | string[][])[];
@@ -130,6 +151,9 @@ export class PronunciationClassifier {
     }
   }
 
+  /**
+   * Classifies ecclesiastical i for pronunciation parsing.
+   */
   private classifyEcclesiasticalI(args: {
     index: number;
     isVowel: (letter: string) => boolean;
@@ -141,6 +165,9 @@ export class PronunciationClassifier {
     else phonemes.push(getStringPhoneme(ecclesiasticalPhonemes, "i"));
   }
 
+  /**
+   * Classifies ecclesiastical s for pronunciation parsing.
+   */
   private classifyEcclesiasticalS(args: {
     index: number;
     isVowel: (letter: string) => boolean;
@@ -159,6 +186,9 @@ export class PronunciationClassifier {
     return nextIndex;
   }
 
+  /**
+   * Classifies ecclesiastical t for pronunciation parsing.
+   */
   private classifyEcclesiasticalT(
     index: number,
     word: string[],
@@ -168,6 +198,9 @@ export class PronunciationClassifier {
     else phonemes.push("t");
   }
 
+  /**
+   * Classifies ecclesiastical x for pronunciation parsing.
+   */
   private classifyEcclesiasticalX(args: {
     index: number;
     isVowel: (letter: string) => boolean;
@@ -185,6 +218,9 @@ export class PronunciationClassifier {
     return nextIndex;
   }
 
+  /**
+   * Checks whether between vowels in pronunciation parsing logic.
+   */
   private isBetweenVowels(
     index: number,
     word: string[],
@@ -197,6 +233,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether ecclesiastical vocal i in pronunciation parsing logic.
+   */
   private isEcclesiasticalVocalI(
     index: number,
     word: string[],
@@ -208,6 +247,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether initial vocal i in pronunciation parsing logic.
+   */
   private isInitialVocalI(
     index: number,
     word: string[],
@@ -218,6 +260,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether inter vocalic i in pronunciation parsing logic.
+   */
   private isInterVocalicI(
     index: number,
     word: string[],
@@ -231,6 +276,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether the consonant c should be pronounced as palatalized.
+   */
   private isPalatalizedCConsonant(index: number, word: string[]): boolean {
     const nextCharacter = word[index + 1] ?? "";
     const nextTwoChars = nextCharacter + (word[index + 2] ?? "");
@@ -240,6 +288,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether the consonant g should be pronounced as palatalized.
+   */
   private isPalatalizedGConsonant(index: number, word: string[]): boolean {
     const nextCharacter = word[index + 1] ?? "";
     const nextTwoChars = nextCharacter + (word[index + 2] ?? "");
@@ -249,6 +300,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Checks whether sc consonant in pronunciation parsing logic.
+   */
   private isScConsonant(index: number, word: string[]): boolean {
     return (
       index + 2 < word.length &&
@@ -256,6 +310,9 @@ export class PronunciationClassifier {
     );
   }
 
+  /**
+   * Looks up classical devocalize character used by pronunciation parsing.
+   */
   private lookupClassicalDevocalizeCharacter(args: {
     ch: string;
     index: number;
@@ -272,6 +329,9 @@ export class PronunciationClassifier {
     } else phonemes.push(classicalPhonemes[ch] ?? "");
   }
 
+  /**
+   * Looks up multi character phoneme used by pronunciation parsing.
+   */
   private lookupMultiCharacterPhoneme(args: {
     ch: string;
     index: number;
@@ -295,6 +355,9 @@ export class PronunciationClassifier {
     return index;
   }
 
+  /**
+   * Parses phonics during pronunciation parsing.
+   */
   private parsePhonics(
     pronunciations: string[],
   ): Pick<Pronunciation, "phonemic" | "phonetic"> {
@@ -312,6 +375,9 @@ export class PronunciationClassifier {
     return parsed;
   }
 
+  /**
+   * Processes classical default character during pronunciation parsing.
+   */
   private processClassicalDefaultCharacter(args: {
     ch: string;
     index: number;
@@ -326,6 +392,9 @@ export class PronunciationClassifier {
     return this.lookupMultiCharacterPhoneme({ ch, index, phonemes, word });
   }
 
+  /**
+   * Processes ecclesiastical default character during pronunciation parsing.
+   */
   private processEcclesiasticalDefaultCharacter(args: {
     ch: string;
     index: number;
@@ -343,6 +412,9 @@ export class PronunciationClassifier {
     return index;
   }
 
+  /**
+   * Update variant pronunciation for pronunciation parsing.
+   */
   private updateVariantPronunciation(args: {
     anchorText: string;
     classical: Pronunciation;
@@ -494,6 +566,9 @@ export class PronunciationClassifier {
   }
 }
 
+/**
+ * Gets string phoneme used by pronunciation parsing.
+ */
 function getStringPhoneme(
   map: Record<string, string | string[][]>,
   key: string,

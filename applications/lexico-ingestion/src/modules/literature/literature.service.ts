@@ -13,6 +13,9 @@ import YAML from "yaml";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
+import { LoggerService } from "../logger/logger.service";
+import { NumeralsService } from "../numerals/numerals.service";
+
 import {
   authorIdToName,
   CAPITAL_LETTER_PATTERN,
@@ -25,16 +28,14 @@ import {
   ROMAN_NUMERAL_PATTERN,
   TOKEN_SEGMENT_PATTERN,
   WORD_TOKEN_PATTERN,
-} from "./literature.constants.js";
-import { LiteratureTextIngestionService } from "./literature.text-ingestion.service.js";
+} from "./literature.constants";
+import { LiteratureTextIngestionService } from "./literature.text-ingestion.service";
 
-import type { LoggerService } from "../logger/logger.service.js";
-import type { NumeralsService } from "../numerals/numerals.service.js";
 import type {
   IngestTextArguments,
   LibraryEntry,
   ParsedLabelResult,
-} from "./literature.types.js";
+} from "./literature.types";
 import type { Paragraph, PhrasingContent, Root, Strong } from "mdast";
 import type { DeepPartial, Repository } from "typeorm";
 import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
@@ -74,6 +75,9 @@ export class LiteratureService {
   private readonly memoizedWordCache = new Map<string, null | string>();
   private wordsCache: Map<string, string> | null = null;
 
+  /**
+   * Builds line entity from paragraph for literature ingestion.
+   */
   private buildLineEntityFromParagraph(
     paragraph: Paragraph,
     index: number,
@@ -90,6 +94,9 @@ export class LiteratureService {
     const lineText = toString({ children: lineNodes, type: "paragraph" });
     return { author: text.author, data: lineText, index, label, text };
   }
+  /**
+   * Ensure parent texts for literature ingestion.
+   */
   private async ensureParentTexts(
     authorEntity: Author,
     authorSlug: string,
@@ -122,12 +129,18 @@ export class LiteratureService {
     }
     return parentTexts;
   }
+  /**
+   * Escape capitals for literature ingestion.
+   */
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       CAPITAL_LETTER_PATTERN,
       (character) => `_${character.toLowerCase()}`,
     );
   }
+  /**
+   * Extracts tokens from line from literature ingestion input.
+   */
   private extractTokensFromLine(
     line: Line,
     text: Text,
@@ -156,6 +169,9 @@ export class LiteratureService {
       };
     });
   }
+  /**
+   * Gets words cache used by literature ingestion.
+   */
   private async getWordsCache(): Promise<Map<string, string>> {
     if (!this.wordsCache) {
       this.logger.log("📖 Caching dictionary words for token mapping...");
@@ -167,6 +183,9 @@ export class LiteratureService {
     }
     return this.wordsCache;
   }
+  /**
+   * Ingests author group in the literature ingestion pipeline.
+   */
   private async ingestAuthorGroup(
     authorSlug: string,
     texts: LibraryEntry[],
@@ -194,6 +213,9 @@ export class LiteratureService {
       texts,
     });
   }
+  /**
+   * Ingests lines in the literature ingestion pipeline.
+   */
   private async ingestLines(text: Text, ast: Root): Promise<void> {
     this.logger.log(`  📜 Parsing lines for ${text.title}`);
     const wordMap = await this.getWordsCache();
@@ -216,6 +238,9 @@ export class LiteratureService {
     }
     await this.upsertTokens(tokenEntities, text);
   }
+  /**
+   * Ingests text in the literature ingestion pipeline.
+   */
   private async ingestText(args: IngestTextArguments): Promise<void> {
     const { author, parentText, textPath, textSlugName, title } = args;
     const textSlug = parentText
@@ -242,6 +267,9 @@ export class LiteratureService {
     });
     await this.ingestLines(text, ast);
   }
+  /**
+   * Ingests text chunks in the literature ingestion pipeline.
+   */
   private async ingestTextChunks(args: {
     authorEntity: Author;
     authorSlug: string;
@@ -273,6 +301,9 @@ export class LiteratureService {
       }
     }
   }
+  /**
+   * Normalizes input values used by literature ingestion.
+   */
   private normalize(str: string): string {
     return str
       .normalize("NFD")
@@ -280,6 +311,9 @@ export class LiteratureService {
       .toLowerCase()
       .trim();
   }
+  /**
+   * Parses frontmatter during literature ingestion.
+   */
   private parseFrontmatter(ast: Root): Record<string, unknown> {
     const yamlNode = ast.children.find((node) => node.type === "yaml") as
       | undefined
@@ -295,6 +329,9 @@ export class LiteratureService {
       return {};
     }
   }
+  /**
+   * Parses label from strong node during literature ingestion.
+   */
   private parseLabelFromStrongNode(
     strongNode: Strong,
     lineNodes: PhrasingContent[],
@@ -306,6 +343,9 @@ export class LiteratureService {
     }
     return this.parseNonStandardLabel(rawLabel, lineNodes);
   }
+  /**
+   * Parses non standard label during literature ingestion.
+   */
   private parseNonStandardLabel(
     rawLabel: string,
     lineNodes: PhrasingContent[],
@@ -326,6 +366,9 @@ export class LiteratureService {
     }
     return { label, lineNodes: resultNodes };
   }
+  /**
+   * Parses standard label during literature ingestion.
+   */
   private parseStandardLabel(
     labelMatch: RegExpExecArray,
     lineNodes: PhrasingContent[],
@@ -341,6 +384,9 @@ export class LiteratureService {
     }
     return { label, lineNodes: resultNodes };
   }
+  /**
+   * Save text to database for literature ingestion.
+   */
   private async saveTextToDatabase(args: {
     author: Author;
     frontmatterData: Record<string, unknown>;
@@ -373,6 +419,9 @@ export class LiteratureService {
       where: { slug: textSlug },
     });
   }
+  /**
+   * Upsert and fetch lines for literature ingestion.
+   */
   private async upsertAndFetchLines(
     lineEntities: DeepPartial<Line>[],
     text: Text,
@@ -393,6 +442,9 @@ export class LiteratureService {
       where: { text: { id: text.id } },
     });
   }
+  /**
+   * Upsert tokens for literature ingestion.
+   */
   private async upsertTokens(
     tokenEntities: DeepPartial<Token>[],
     text: Text,
@@ -410,6 +462,9 @@ export class LiteratureService {
       ),
     );
   }
+  /**
+   * Walk library directory for literature ingestion.
+   */
   private async walkLibraryDirectory(args: {
     authorSlug: string;
     currentPathParts: string[];

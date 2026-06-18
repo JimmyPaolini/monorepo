@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service.js";
+import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";

@@ -44,11 +44,17 @@ const SUBJUNCTIVE_TENSE_ORDER = [
 // Voice order
 const VOICE_ORDER = ["active", "passive"] as const;
 
+/**
+ *
+ */
 interface PersonNumberRecord {
   plural?: Partial<Record<"first" | "second" | "third", string[]>>;
   singular?: Partial<Record<"first" | "second" | "third", string[]>>;
 }
 
+/**
+ *
+ */
 type TransformResult =
   | null
   | { forms: AdjectiveForm[]; type: "adjective" }

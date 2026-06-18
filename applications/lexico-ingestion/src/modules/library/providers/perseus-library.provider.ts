@@ -22,6 +22,9 @@ export class PerseusLibraryProvider {
 
   readonly name = "perseus";
 
+  /**
+   * Builds structured data used during Perseus XML ingestion.
+   */
   private addPerseusTextEntity(args: {
     author: Author;
     metadata: Record<string, unknown>;
@@ -40,6 +43,9 @@ export class PerseusLibraryProvider {
 
   // 🔏 Private Methods
 
+  /**
+   * Extracts normalized content for Perseus XML ingestion.
+   */
   private collectParagraphsFromElements(
     elements: cheerio.Cheerio<AnyNode>,
     $: cheerio.CheerioAPI,
@@ -63,6 +69,9 @@ export class PerseusLibraryProvider {
     return paragraphs;
   }
 
+  /**
+   * Extracts normalized content for Perseus XML ingestion.
+   */
   private async collectSourceXmlPaths(
     sourceDataDirectory: string,
   ): Promise<string[]> {
@@ -86,6 +95,9 @@ export class PerseusLibraryProvider {
     }
   }
 
+  /**
+   * Extracts normalized content for Perseus XML ingestion.
+   */
   private extractPerseusMetadata(
     $: cheerio.CheerioAPI,
     relativeSourcePath: string,
@@ -118,6 +130,9 @@ export class PerseusLibraryProvider {
     return metadata;
   }
 
+  /**
+   * Extracts normalized content for Perseus XML ingestion.
+   */
   private extractTextNodes(args: {
     $: cheerio.CheerioAPI;
     $element: cheerio.Cheerio<AnyNode>;
@@ -151,6 +166,9 @@ export class PerseusLibraryProvider {
     }
   }
 
+  /**
+   * Resolves derived values needed by Perseus XML ingestion.
+   */
   private getOrCreatePerseusAuthor(args: {
     authorSlug: string;
     authorsMap: Map<string, Author>;
@@ -170,6 +188,9 @@ export class PerseusLibraryProvider {
     return author;
   }
 
+  /**
+   * Returns whether the current input should proceed in Perseus XML ingestion.
+   */
   private isFilteredOut(
     rawAuthor: string,
     rawTitle: string,
@@ -187,6 +208,9 @@ export class PerseusLibraryProvider {
     return false;
   }
 
+  /**
+   * Loads source data required by Perseus XML ingestion.
+   */
   private async loadSourceXmlFile(args: { xmlPath: string }): Promise<{
     $: cheerio.CheerioAPI;
     rawAuthor: string;
@@ -201,6 +225,9 @@ export class PerseusLibraryProvider {
     });
   }
 
+  /**
+   * Processes one workflow step for Perseus XML ingestion.
+   */
   private processLeafTextPart(args: {
     $: cheerio.CheerioAPI;
     $element: cheerio.Cheerio<AnyNode>;
@@ -235,6 +262,9 @@ export class PerseusLibraryProvider {
     }
   }
 
+  /**
+   * Processes one workflow step for Perseus XML ingestion.
+   */
   private async processPerseusFile(args: {
     authorsMap: Map<string, Author>;
     dataPath: string;
@@ -269,6 +299,9 @@ export class PerseusLibraryProvider {
     }
   }
 
+  /**
+   * Processes one workflow step for Perseus XML ingestion.
+   */
   private async processSourceXmlFile(args: {
     authorsMap: Map<string, Author>;
     dataPath: string;
@@ -310,6 +343,9 @@ export class PerseusLibraryProvider {
     });
   }
 
+  /**
+   * Processes one workflow step for Perseus XML ingestion.
+   */
   private processTextPartChildren(args: {
     $: cheerio.CheerioAPI;
     $element: cheerio.Cheerio<AnyNode>;
@@ -375,6 +411,9 @@ export class PerseusLibraryProvider {
     }
   }
 
+  /**
+   * Persists generated output for Perseus XML ingestion.
+   */
   private async writeSourceMarkdownFiles(args: {
     $: cheerio.CheerioAPI;
     authorSlug: string;
@@ -424,6 +463,9 @@ export class PerseusLibraryProvider {
     });
   }
 
+  /**
+   * Persists generated output for Perseus XML ingestion.
+   */
   private async writeSourceTextForAuthor(args: {
     $: cheerio.CheerioAPI;
     author: Author;
@@ -462,6 +504,9 @@ export class PerseusLibraryProvider {
     });
   }
 
+  /**
+   * Persists generated output for Perseus XML ingestion.
+   */
   private async writeTextFiles(
     filesToWrite: { content: string; relativePath: string; title: string }[],
     authorDirectory: string,

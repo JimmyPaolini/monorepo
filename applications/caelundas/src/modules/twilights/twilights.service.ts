@@ -1,9 +1,9 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 
-import { TwilightsBuilderService } from "./twilights-builder.service.js";
-import { TwilightsComposerService } from "./twilights-composer.service.js";
-import { TwilightsDetectorService } from "./twilights-detector.service.js";
+import { TwilightsBuilderService } from "./twilights-builder.service";
+import { TwilightsComposerService } from "./twilights-composer.service";
+import { TwilightsDetectorService } from "./twilights-detector.service";
 
 import type { Twilight } from "./twilights.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

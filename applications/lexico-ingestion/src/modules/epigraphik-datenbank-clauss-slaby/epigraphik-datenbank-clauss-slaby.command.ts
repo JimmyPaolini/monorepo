@@ -46,6 +46,9 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles an internal workflow step for EDCS chunk ingestion.
+   */
   private async downloadChunkData(
     start: number,
     chunkFile: string,
@@ -70,6 +73,9 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Handles an internal workflow step for EDCS chunk ingestion.
+   */
   private async downloadChunkIfMissing(start: number): Promise<boolean> {
     const chunkFile = path.join(
       this.sourceDataDirectory,
@@ -87,6 +93,9 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     return this.downloadChunkData(start, chunkFile);
   }
 
+  /**
+   * Persists generated output for EDCS chunk ingestion.
+   */
   private async saveChunkData(
     start: number,
     chunkFile: string,

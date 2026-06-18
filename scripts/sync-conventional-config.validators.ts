@@ -10,14 +10,14 @@ import _ from "lodash";
 import {
   SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES,
   SYNC_CONVENTIONAL_CONFIG_SKILL_FILES,
-} from "./sync-conventional-config.constants.js";
+} from "./sync-conventional-config.constants";
 import {
   extractMarkerContent,
   parseIssueTemplateScopes,
   parseMarkdownTableValues,
-} from "./sync-conventional-config.io.js";
+} from "./sync-conventional-config.io";
 
-import type { ConventionalConfig } from "./sync-conventional-config.helpers.js";
+import type { ConventionalConfig } from "./sync-conventional-config.helpers";
 
 const WORKSPACE_ROOT = path.join(
   path.dirname(new URL(import.meta.url).pathname),

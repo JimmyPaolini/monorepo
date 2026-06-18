@@ -46,6 +46,9 @@ export class LatinLibraryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles an internal workflow step for Latin Library source crawling.
+   */
   private async downloadAndSaveLatinLibraryFile(
     parsedUrl: URL,
     targetPath: string,
@@ -66,6 +69,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return text;
   }
 
+  /**
+   * Handles an internal workflow step for Latin Library source crawling.
+   */
   private enqueueAuthorUrls(
     finalAuthorUrls: string[],
     host: string,
@@ -80,6 +86,9 @@ export class LatinLibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Loads source data required by Latin Library source crawling.
+   */
   private async fetchAndCachePage(
     urlString: string,
     host: string,
@@ -105,6 +114,9 @@ export class LatinLibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Resolves derived values needed by Latin Library source crawling.
+   */
   private getAuthorUrls(indexHtml: string): string[] {
     const $index = cheerio.load(indexHtml);
     cheerioTableParser($index);
@@ -124,6 +136,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return authorUrls;
   }
 
+  /**
+   * Resolves derived values needed by Latin Library source crawling.
+   */
   private getBaseUrl(urlString: string): string {
     const parsed = new URL(urlString);
     const extension = path.extname(parsed.pathname).toLowerCase();
@@ -134,6 +149,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return baseUrl;
   }
 
+  /**
+   * Resolves derived values needed by Latin Library source crawling.
+   */
   private async getFinalAuthorUrls(
     host: string,
     authorUrls: string[],
@@ -159,6 +177,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return finalAuthorUrls;
   }
 
+  /**
+   * Resolves derived values needed by Latin Library source crawling.
+   */
   private getRelativePath(urlString: string, host: string): string {
     const parsed = new URL(urlString, host);
     let relative = parsed.pathname;
@@ -169,6 +190,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return relative;
   }
 
+  /**
+   * Returns whether the current input should proceed in Latin Library source crawling.
+   */
   private isIgnoredLinkFileName(href: string): boolean {
     const ignoredFiles = [
       "index.html",
@@ -182,6 +206,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return ignoredFiles.some((f) => href.includes(f));
   }
 
+  /**
+   * Returns whether the current input should proceed in Latin Library source crawling.
+   */
   private isIgnoredProtocol(href: string): boolean {
     const normalized = href.toLowerCase();
     return (
@@ -192,6 +219,9 @@ export class LatinLibraryCommand extends CommandRunner {
     );
   }
 
+  /**
+   * Returns whether the current input should proceed in Latin Library source crawling.
+   */
   private isInvalidExtension(href: string): boolean {
     const normalizedHref = href.toLowerCase();
     const allowedExtensions = [".html", ".htm", ".shtml"];
@@ -203,6 +233,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return !hasAllowedExtension && !isDirectory;
   }
 
+  /**
+   * Returns whether the current input should proceed in Latin Library source crawling.
+   */
   private isParsableHtmlExtension(urlString: string): boolean {
     const parsed = new URL(urlString);
     const extension = path.extname(parsed.pathname).toLowerCase();
@@ -214,6 +247,9 @@ export class LatinLibraryCommand extends CommandRunner {
     );
   }
 
+  /**
+   * Returns whether the current input should proceed in Latin Library source crawling.
+   */
   private isSkipPath(nextParsed: URL): boolean {
     const skipPaths = [
       "/ll1/",
@@ -236,6 +272,9 @@ export class LatinLibraryCommand extends CommandRunner {
     return skipPaths.some((p) => nextParsed.pathname.startsWith(p));
   }
 
+  /**
+   * Parses and normalizes inputs for Latin Library source crawling.
+   */
   private parseHtmlForLinks(
     html: string,
     baseUrl: string,
@@ -251,6 +290,9 @@ export class LatinLibraryCommand extends CommandRunner {
     });
   }
 
+  /**
+   * Processes one workflow step for Latin Library source crawling.
+   */
   private async processCategoryHref(
     href: string,
     host: string,
@@ -282,6 +324,9 @@ export class LatinLibraryCommand extends CommandRunner {
     });
   }
 
+  /**
+   * Processes one workflow step for Latin Library source crawling.
+   */
   private processLink(
     href: string,
     baseUrl: string,
@@ -300,6 +345,9 @@ export class LatinLibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Processes one workflow step for Latin Library source crawling.
+   */
   private async processQueueUrl(
     urlString: string,
     host: string,
@@ -324,6 +372,9 @@ export class LatinLibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Handles an internal workflow step for Latin Library source crawling.
+   */
   private shouldSkipLink(href: string): boolean {
     if (this.isIgnoredLinkFileName(href)) return true;
     if (this.isIgnoredProtocol(href)) return true;

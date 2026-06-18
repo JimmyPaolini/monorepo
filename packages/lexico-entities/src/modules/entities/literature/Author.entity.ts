@@ -1,9 +1,9 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, OneToMany } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import type { Text } from "./Text.entity.js";
+import type { Text } from "./Text.entity";
 
 /**
  * Represents an author of Latin literature.

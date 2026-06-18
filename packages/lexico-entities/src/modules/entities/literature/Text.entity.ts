@@ -8,10 +8,10 @@ import {
   OneToMany,
 } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import type { Author } from "./Author.entity.js";
-import type { Line } from "./Line.entity.js";
+import type { Author } from "./Author.entity";
+import type { Line } from "./Line.entity";
 
 /**
  * Represents a text or a collection of texts (like a book or corpus).

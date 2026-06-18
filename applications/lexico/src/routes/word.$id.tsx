@@ -27,11 +27,17 @@ export const Route = createFileRoute("/word/$id")({
 
 // 🔤 Pronunciation section sub-component
 
+/**
+ *
+ */
 interface WordFormsProps {
   partOfSpeech: string;
   rawForms: EntryFull["forms"];
 }
 
+/**
+ *
+ */
 interface WordPronunciationProps {
   pronunciation: EntryFull["pronunciation"];
   wordText: string;
@@ -39,6 +45,9 @@ interface WordPronunciationProps {
 
 // 📋 Forms section sub-component
 
+/**
+ *
+ */
 function WordForms(properties: WordFormsProps): ReactNode {
   const { partOfSpeech, rawForms } = properties;
   const transformed = transformForms(partOfSpeech, rawForms);
@@ -193,6 +202,9 @@ function WordPage(): ReactNode {
   );
 }
 
+/**
+ *
+ */
 function WordPronunciation(properties: WordPronunciationProps): ReactNode {
   const { pronunciation, wordText } = properties;
   return (

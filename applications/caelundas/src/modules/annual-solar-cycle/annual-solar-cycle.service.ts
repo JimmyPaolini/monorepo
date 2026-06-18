@@ -44,6 +44,7 @@ export class AnnualSolarCycleService {
 
   // 🔏 Private Methods
 
+  /** Pairs aphelion-to-perihelion markers into Solar Advancing duration events. */
   private getAdvancingProgressiveEvents(
     aphelionEvents: Event[],
     perihelionEvents: Event[],
@@ -59,6 +60,7 @@ export class AnnualSolarCycleService {
     );
   }
 
+  /** Collects autumn and winter detections for the descending half of the solar year. */
   private getAutumnalToVernalEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -69,6 +71,7 @@ export class AnnualSolarCycleService {
     ];
   }
 
+  /** Detects autumnal-equinox through Samhain transition markers for the current minute. */
   private getAutumnEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -89,6 +92,7 @@ export class AnnualSolarCycleService {
     return events;
   }
 
+  /** Pairs perihelion-to-aphelion markers into Solar Retreating duration events. */
   private getRetreatingProgressiveEvents(
     perihelionEvents: Event[],
     aphelionEvents: Event[],
@@ -104,6 +108,7 @@ export class AnnualSolarCycleService {
     );
   }
 
+  /** Builds the progressive span event for Earth moving from aphelion toward perihelion. */
   private getSolarAdvancingDurationEvent(
     beginning: Event,
     ending: Event,
@@ -117,6 +122,7 @@ export class AnnualSolarCycleService {
     };
   }
 
+  /** Samples Sun-Earth distance at previous, current, and next minute for extrema checks. */
   private getSolarDistances(
     minute: Moment,
     sunDistanceEphemeris: DistanceEphemeris,
@@ -141,6 +147,7 @@ export class AnnualSolarCycleService {
     return { current, next, previous };
   }
 
+  /** Builds the progressive span event for Earth moving from perihelion toward aphelion. */
   private getSolarRetreatingDurationEvent(
     beginning: Event,
     ending: Event,
@@ -154,6 +161,7 @@ export class AnnualSolarCycleService {
     };
   }
 
+  /** Detects vernal-equinox through Beltane spring markers for the current minute. */
   private getSpringEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -174,6 +182,7 @@ export class AnnualSolarCycleService {
     return events;
   }
 
+  /** Detects summer-solstice through Lammas summer markers for the current minute. */
   private getSummerEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -194,6 +203,7 @@ export class AnnualSolarCycleService {
     return events;
   }
 
+  /** Collects spring and summer detections for the ascending half of the solar year. */
   private getVernalToAutumnalEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,
@@ -204,6 +214,7 @@ export class AnnualSolarCycleService {
     ];
   }
 
+  /** Detects winter-solstice through Imbolc winter markers for the current minute. */
   private getWinterEvents(
     longitudes: { currentLongitude: number; previousLongitude: number },
     date: Moment,

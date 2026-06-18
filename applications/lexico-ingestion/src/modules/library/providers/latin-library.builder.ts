@@ -26,6 +26,9 @@ export class LatinLibraryBuilder {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles an internal workflow step for Latin Library document normalization.
+   */
   private computeYear(
     yearString: string | undefined,
     eraString: string,
@@ -34,6 +37,9 @@ export class LatinLibraryBuilder {
     return eraString.toUpperCase().includes("B") ? -year : year;
   }
 
+  /**
+   * Extracts normalized content for Latin Library document normalization.
+   */
   private extractAuthorDates(h2Text: string): Record<string, number> {
     const dateMatch =
       /(\d+)\s*(B\.?C\.?|A\.?D\.?)?\s*[-\u2013]\s*(?:c\.\s*)?(\d+)\s*(B\.?C\.?|A\.?D\.?)?/i.exec(
@@ -52,6 +58,9 @@ export class LatinLibraryBuilder {
     };
   }
 
+  /**
+   * Extracts normalized content for Latin Library document normalization.
+   */
   private extractLinesFromParagraph(
     paragraphElement: AnyNode,
     $work: cheerio.CheerioAPI,
@@ -73,6 +82,9 @@ export class LatinLibraryBuilder {
     return this.extractParagraphLines(paraText);
   }
 
+  /**
+   * Extracts normalized content for Latin Library document normalization.
+   */
   private extractParagraphLines(paraText: string): string[] {
     const lines = paraText.split("\n");
     const result: string[] = [];
@@ -98,6 +110,9 @@ export class LatinLibraryBuilder {
     return result;
   }
 
+  /**
+   * Parses and normalizes inputs for Latin Library document normalization.
+   */
   private parseParagraphHtml(paraHtml: string): string {
     const processedHtml = paraHtml.replaceAll(/<br\s*\/?>/gi, "\n");
     const $ = cheerio.load(processedHtml);

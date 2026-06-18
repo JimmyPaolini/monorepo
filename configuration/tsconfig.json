@@ -19,8 +19,8 @@
     "importHelpers": true,
     "isolatedModules": true, // Required for tools like esbuild/swc that compile files independently
     "lib": ["ES2025"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,

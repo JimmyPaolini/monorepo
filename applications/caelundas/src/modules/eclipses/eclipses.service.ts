@@ -42,6 +42,9 @@ export class EclipsesService {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds eclipse event.
+   */
   private buildEclipseEvent(args: {
     body: "Lunar" | "Solar";
     date: Moment;
@@ -66,6 +69,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Builds geocentric eclipse events.
+   */
   private buildGeocentricEclipseEvents(
     minute: Moment,
     solarPhase: EclipsePhase | null,
@@ -93,6 +99,9 @@ export class EclipsesService {
     return events;
   }
 
+  /**
+   * Detects progressive frame.
+   */
   private detectProgressiveFrame(
     eclipseEvents: Event[],
     frameLabel: "Geocentric" | "Topocentric Visibility",
@@ -123,10 +132,16 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Formats time zone iso.
+   */
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
   }
 
+  /**
+   * Derives all eclipse coordinates.
+   */
   private getAllEclipseCoordinates(args: {
     minute: Moment;
     moonCoordinateEphemeris: CoordinateEphemeris;
@@ -162,6 +177,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives all topocentric visibilities.
+   */
   private getAllTopocentricVisibilities(args: {
     minute: Moment;
     moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -190,6 +208,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives eclipse angles.
+   */
   private getEclipseAngles(
     current: EclipseCoordinates,
     previous: EclipseCoordinates,
@@ -222,6 +243,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives eclipse coordinate diameters.
+   */
   private getEclipseCoordinateDiameters(
     minuteIso: string,
     moonDiameterEphemeris: DiameterEphemeris,
@@ -241,6 +265,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives eclipse coordinate lat lons.
+   */
   private getEclipseCoordinateLatLons(
     minuteIso: string,
     moonCoordinateEphemeris: CoordinateEphemeris,
@@ -275,6 +302,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives eclipse coordinates.
+   */
   private getEclipseCoordinates(args: {
     minuteIso: string;
     moonCoordinateEphemeris: CoordinateEphemeris;
@@ -303,6 +333,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives geocentric events.
+   */
   private getGeocentricEvents(args: {
     currentCoordinates: EclipseCoordinates;
     minute: Moment;
@@ -331,6 +364,9 @@ export class EclipsesService {
     return { events, lunarPhase, solarPhase };
   }
 
+  /**
+   * Derives lunar eclipse duration event.
+   */
   private getLunarEclipseDurationEvent(
     beginning: Event,
     ending: Event,
@@ -346,6 +382,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives lunar eclipse phase.
+   */
   private getLunarEclipsePhase(args: {
     currentDiameter: number;
     currentLongitudeAngle: number;
@@ -375,6 +414,9 @@ export class EclipsesService {
     return null;
   }
 
+  /**
+   * Derives lunar eclipse phase labels.
+   */
   private getLunarEclipsePhaseLabels(phase: EclipsePhase): {
     description: string;
     summary: string;
@@ -397,6 +439,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives lunar topocentric event.
+   */
   private getLunarTopocentricEvent(args: {
     currentCoordinates: EclipseCoordinates;
     currentVis: boolean;
@@ -431,6 +476,9 @@ export class EclipsesService {
       : null;
   }
 
+  /**
+   * Derives solar eclipse duration event.
+   */
   private getSolarEclipseDurationEvent(
     beginning: Event,
     ending: Event,
@@ -446,6 +494,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives solar eclipse phase.
+   */
   private getSolarEclipsePhase(args: {
     currentDiameter: number;
     currentLongitudeAngle: number;
@@ -473,6 +524,9 @@ export class EclipsesService {
     return null;
   }
 
+  /**
+   * Derives solar eclipse phase labels.
+   */
   private getSolarEclipsePhaseLabels(phase: EclipsePhase): {
     description: string;
     summary: string;
@@ -495,6 +549,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Derives solar topocentric event.
+   */
   private getSolarTopocentricEvent(args: {
     currentCoordinates: EclipseCoordinates;
     currentVis: boolean;
@@ -529,6 +586,9 @@ export class EclipsesService {
       : null;
   }
 
+  /**
+   * Derives topocentric events.
+   */
   private getTopocentricEvents(args: {
     currentCoordinates: EclipseCoordinates;
     lunarPhase: EclipsePhase | null;
@@ -566,6 +626,9 @@ export class EclipsesService {
     return events;
   }
 
+  /**
+   * Derives topocentric events for detect.
+   */
   private getTopocentricEventsForDetect(args: {
     coords: {
       currentCoordinates: EclipseCoordinates;
@@ -597,6 +660,9 @@ export class EclipsesService {
     });
   }
 
+  /**
+   * Derives topocentric phase.
+   */
   private getTopocentricPhase(args: {
     currentActive: boolean;
     geocentricPhase: EclipsePhase | null;
@@ -621,6 +687,9 @@ export class EclipsesService {
     return null;
   }
 
+  /**
+   * Derives topocentric visibility.
+   */
   private getTopocentricVisibility(args: {
     minuteIso: string;
     moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -649,6 +718,9 @@ export class EclipsesService {
     };
   }
 
+  /**
+   * Determines whether lunar eclipse.
+   */
   private isLunarEclipse(
     current: EclipseCoordinates,
     previous: EclipseCoordinates,
@@ -677,6 +749,9 @@ export class EclipsesService {
     });
   }
 
+  /**
+   * Determines whether lunar eclipse active.
+   */
   private isLunarEclipseActive(current: EclipseCoordinates): boolean {
     const currentLongitudeAngle = this.mathService.getAngle(
       current.longitudeMoon,
@@ -695,6 +770,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether lunar eclipse beginning.
+   */
   private isLunarEclipseBeginning(
     args: { currentLongitudeAngle: number; previousLongitudeAngle: number },
     threshold: number,
@@ -708,6 +786,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether lunar eclipse ending.
+   */
   private isLunarEclipseEnding(
     args: { currentLongitudeAngle: number; nextLongitudeAngle: number },
     threshold: number,
@@ -720,6 +801,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether lunar topocentric active.
+   */
   private isLunarTopocentricActive(
     coordinates: EclipseCoordinates,
     isVisible: boolean,
@@ -727,6 +811,9 @@ export class EclipsesService {
     return this.isLunarEclipseActive(coordinates) && isVisible;
   }
 
+  /**
+   * Determines whether solar eclipse.
+   */
   private isSolarEclipse(
     current: EclipseCoordinates,
     previous: EclipseCoordinates,
@@ -755,6 +842,9 @@ export class EclipsesService {
     });
   }
 
+  /**
+   * Determines whether solar eclipse active.
+   */
   private isSolarEclipseActive(current: EclipseCoordinates): boolean {
     const currentLongitudeAngle = this.mathService.getAngle(
       current.longitudeMoon,
@@ -772,6 +862,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether solar eclipse beginning.
+   */
   private isSolarEclipseBeginning(
     args: { currentLongitudeAngle: number; previousLongitudeAngle: number },
     threshold: number,
@@ -785,6 +878,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether solar eclipse ending.
+   */
   private isSolarEclipseEnding(
     args: { currentLongitudeAngle: number; nextLongitudeAngle: number },
     threshold: number,
@@ -797,6 +893,9 @@ export class EclipsesService {
     );
   }
 
+  /**
+   * Determines whether solar topocentric active.
+   */
   private isSolarTopocentricActive(
     coordinates: EclipseCoordinates,
     isVisible: boolean,

@@ -66,6 +66,9 @@ export class EphemerisService {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles accumulate body ephemeris.
+   */
   private accumulateBodyEphemeris(args: {
     allEntries: EphemerisEntries;
     body: Body;
@@ -119,6 +122,9 @@ export class EphemerisService {
       allEntries.distanceEntries.push([body, result.distanceEphemeris]);
   }
 
+  /**
+   * Builds ephemeris entries.
+   */
   private buildEphemerisEntries(): EphemerisEntries {
     return {
       azimuthEntries: [],
@@ -129,6 +135,9 @@ export class EphemerisService {
     };
   }
 
+  /**
+   * Builds ephemeris feature sets.
+   */
   private buildEphemerisFeatureSets(args: {
     azimuthElevationBodies: AzimuthElevationEphemerisBody[];
     diameterBodies: DiameterEphemerisBody[];
@@ -149,6 +158,9 @@ export class EphemerisService {
     };
   }
 
+  /**
+   * Computes azimuth elevation for body.
+   */
   private computeAzimuthElevationForBody(args: {
     body: AzimuthElevationEphemerisBody;
     end: Moment;
@@ -178,6 +190,9 @@ export class EphemerisService {
     return ephemeris;
   }
 
+  /**
+   * Computes azimuth elevation for minute.
+   */
   private computeAzimuthElevationForMinute(args: {
     body: Exclude<Body, Node>;
     distance: number;
@@ -206,6 +221,9 @@ export class EphemerisService {
     return { azimuth: azaltResult[0], elevation: azaltResult[2] };
   }
 
+  /**
+   * Computes body coordinate.
+   */
   private computeBodyCoordinate(
     body: Exclude<Body, Node>,
     julianDayEphemerisTime: number,
@@ -214,6 +232,9 @@ export class EphemerisService {
     return { latitude: coords.latitude, longitude: coords.longitude };
   }
 
+  /**
+   * Computes body coordinates.
+   */
   private computeBodyCoordinates(
     body: Exclude<Body, Node>,
     julianDayEphemerisTime: number,
@@ -272,6 +293,9 @@ export class EphemerisService {
     return ephemeris;
   }
 
+  /**
+   * Computes lunar perigee coordinate.
+   */
   private computeLunarPerigeeCoordinate(julianDayUniversalTime: number): {
     latitude: number;
     longitude: number;
@@ -291,6 +315,9 @@ export class EphemerisService {
     };
   }
 
+  /**
+   * Computes node body minutes.
+   */
   private computeNodeBodyMinutes(args: {
     body: Node;
     end: Moment;
@@ -311,6 +338,9 @@ export class EphemerisService {
     return coordinateEphemeris;
   }
 
+  /**
+   * Computes node coordinate.
+   */
   private computeNodeCoordinate(
     node: Node,
     julianDayEphemerisTime: number,
@@ -322,6 +352,9 @@ export class EphemerisService {
     return this.computeRegularNodeCoordinate(node, julianDayEphemerisTime);
   }
 
+  /**
+   * Computes non node body minutes.
+   */
   private computeNonNodeBodyMinutes(args: {
     body: Exclude<Body, Node>;
     end: Moment;
@@ -370,6 +403,9 @@ export class EphemerisService {
     return accumulators;
   }
 
+  /**
+   * Computes pheno for body minute.
+   */
   private computePhenoForBodyMinute(args: {
     body: Exclude<Body, Node>;
     diameterEphemeris: DiameterEphemeris;
@@ -404,6 +440,9 @@ export class EphemerisService {
       diameterEphemeris[timestamp] = { diameter: result.data[3] };
   }
 
+  /**
+   * Computes pheno for minute.
+   */
   private computePhenoForMinute(args: {
     body: Exclude<Body, Node>;
     diameterEphemeris: DiameterEphemeris;
@@ -421,6 +460,9 @@ export class EphemerisService {
     }
   }
 
+  /**
+   * Computes pheno for sun minute.
+   */
   private computePhenoForSunMinute(args: {
     body: Exclude<Body, Node>;
     diameterEphemeris: DiameterEphemeris;
@@ -455,6 +497,9 @@ export class EphemerisService {
     }
   }
 
+  /**
+   * Computes regular node coordinate.
+   */
   private computeRegularNodeCoordinate(
     node: Node,
     julianDayEphemerisTime: number,
@@ -480,6 +525,9 @@ export class EphemerisService {
     return { latitude: 0, longitude };
   }
 
+  /**
+   * Handles date to julian days.
+   */
   private dateToJulianDays(date: Moment): {
     julianDayEphemerisTime: number;
     julianDayUniversalTime: number;
@@ -504,6 +552,9 @@ export class EphemerisService {
     };
   }
 
+  /**
+   * Handles entries to ephemerides.
+   */
   private entriesToEphemerides(allEntries: EphemerisEntries): {
     azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -524,6 +575,9 @@ export class EphemerisService {
     };
   }
 
+  /**
+   * Handles internal helper logic.
+   */
   private *generateMinutes(start: Moment, end: Moment): Generator<Moment> {
     const endMs = end.valueOf();
     let currentMs = start.valueOf();
@@ -533,6 +587,9 @@ export class EphemerisService {
     }
   }
 
+  /**
+   * Derives swiss ephemeris constant for body.
+   */
   private getSwissEphemerisConstantForBody(body: Exclude<Body, Node>): number {
     const planetConst = (
       swissEphemerisConstantByPlanet as Partial<Record<string, number>>
@@ -551,10 +608,16 @@ export class EphemerisService {
     );
   }
 
+  /**
+   * Determines whether node.
+   */
   private isNode(body: string): body is Node {
     return this.nodeSet.has(body);
   }
 
+  /**
+   * Processes non node body minute.
+   */
   private processNonNodeBodyMinute(args: {
     accumulators: EphemerisAccumulators;
     body: Exclude<Body, Node>;

@@ -50,6 +50,9 @@ export class LexemesService {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during lexeme parsing and persistence.
+   */
   private buildLexeme(
     word: string,
     index: number,
@@ -62,6 +65,9 @@ export class LexemesService {
     return lexeme;
   }
 
+  /**
+   * Handles an internal workflow step for lexeme parsing and persistence.
+   */
   private async enrichLexeme(args: {
     $: cheerio.CheerioAPI;
     elt: AnyNode;
@@ -121,6 +127,9 @@ export class LexemesService {
     );
   }
 
+  /**
+   * Parses and normalizes inputs for lexeme parsing and persistence.
+   */
   private normalize(str: string): string {
     return str
       .normalize("NFD")
@@ -129,6 +138,9 @@ export class LexemesService {
       .trim();
   }
 
+  /**
+   * Parses and normalizes inputs for lexeme parsing and persistence.
+   */
   private async parseLexemeFromElement(args: {
     $: cheerio.CheerioAPI;
     elt: AnyNode;
@@ -175,6 +187,9 @@ export class LexemesService {
 
   // 🌎 Public Methods
 
+  /**
+   * Persists generated output for lexeme parsing and persistence.
+   */
   private async saveInflection(
     lexeme: Lexeme,
     savedLexeme: Lexeme,
@@ -188,6 +203,9 @@ export class LexemesService {
     savedLexeme.inflection = lexeme.inflection;
   }
 
+  /**
+   * Persists generated output for lexeme parsing and persistence.
+   */
   private async saveLexemeRelations(
     lexeme: Lexeme,
     savedLexeme: Lexeme,
@@ -215,6 +233,9 @@ export class LexemesService {
     await this.wordsService.ingestLexemeWords(savedLexeme);
   }
 
+  /**
+   * Persists generated output for lexeme parsing and persistence.
+   */
   private async saveTranslations(
     lexeme: Lexeme,
     savedLexeme: Lexeme,

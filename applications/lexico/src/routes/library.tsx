@@ -20,7 +20,7 @@ import {
   Textarea,
 } from "@monorepo/lexico-components";
 
-import { useLibraryPage } from "./hooks/useLibraryPage.js";
+import { useLibraryPage } from "./hooks/useLibraryPage";
 
 import type { UserText } from "../lib/library";
 import type { ReactNode } from "react";
@@ -31,6 +31,9 @@ export const Route = createFileRoute("/library")({
 
 // 📐 Component interfaces
 
+/**
+ *
+ */
 interface LibraryCreateDialogProps {
   formText: string;
   formTitle: string;
@@ -42,6 +45,9 @@ interface LibraryCreateDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
+/**
+ *
+ */
 interface LibraryEditDialogProps {
   editingText: null | UserText;
   formText: string;
@@ -53,17 +59,26 @@ interface LibraryEditDialogProps {
   onUpdateConfirm: () => Promise<void>;
 }
 
+/**
+ *
+ */
 interface LibraryEmptyStateProps {
   error: null | string;
   isLoading: boolean;
   texts: UserText[];
 }
 
+/**
+ *
+ */
 interface LibrarySelectedViewProps {
   onBack: () => void;
   selectedText: null | UserText;
 }
 
+/**
+ *
+ */
 interface LibraryTextCardProps {
   onDelete: (id: string) => Promise<void>;
   onEdit: (text: UserText) => void;
@@ -71,6 +86,9 @@ interface LibraryTextCardProps {
   text: UserText;
 }
 
+/**
+ *
+ */
 interface LibraryTextGridProps {
   error: null | string;
   isLoading: boolean;
@@ -83,6 +101,9 @@ interface LibraryTextGridProps {
 
 // 🧩 Components
 
+/**
+ *
+ */
 function LibraryCreateDialog({
   formText,
   formTitle,
@@ -151,6 +172,9 @@ function LibraryCreateDialog({
   );
 }
 
+/**
+ *
+ */
 function LibraryEditDialog({
   editingText,
   formText,
@@ -211,6 +235,9 @@ function LibraryEditDialog({
   );
 }
 
+/**
+ *
+ */
 function LibraryEmptyState({
   error,
   isLoading,
@@ -322,6 +349,9 @@ function LibraryPage(): ReactNode {
   );
 }
 
+/**
+ *
+ */
 function LibrarySelectedView({
   onBack,
   selectedText,
@@ -352,6 +382,9 @@ function LibrarySelectedView({
   );
 }
 
+/**
+ *
+ */
 function LibraryTextCard({
   onDelete,
   onEdit,
@@ -399,6 +432,9 @@ function LibraryTextCard({
   );
 }
 
+/**
+ *
+ */
 function LibraryTextGrid({
   error,
   isLoading,

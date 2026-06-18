@@ -30,6 +30,7 @@ export class AspectsUtilities {
 
   // 🔏 Private Methods
 
+  /** Computes previous, current, and next separation angles for a two-body longitude window. */
   private computeAngles(args: {
     currentLongitudeBody1: number;
     currentLongitudeBody2: number;
@@ -61,6 +62,7 @@ export class AspectsUtilities {
     return { currentAngle, nextAngle, previousAngle };
   }
 
+  /** Resolves whether the aspect is entering, exacting, or leaving orb at the current minute. */
   private getAspectPhase(args: {
     aspect: Aspect;
     currentAngle: number;
@@ -93,6 +95,7 @@ export class AspectsUtilities {
     return null;
   }
 
+  /** Checks whether the aspect is exact at the current minute based on angular trend. */
   private isPerfective(args: {
     aspect: Aspect;
     currentDifference: number;
@@ -112,6 +115,7 @@ export class AspectsUtilities {
     return this.isPerfectiveNonConjunct(previousDifference, currentDifference);
   }
 
+  /** Uses local-angle minima to detect exact conjunctions where wrap-around can occur. */
   private isPerfectiveConjunct(
     previousDifference: number,
     currentDifference: number,
@@ -125,6 +129,7 @@ export class AspectsUtilities {
     );
   }
 
+  /** Detects non-conjunction perfection by checking zero-crossing of aspect-angle difference. */
   private isPerfectiveNonConjunct(
     previousDifference: number,
     currentDifference: number,

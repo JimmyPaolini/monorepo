@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, UpdateDateColumn } from "typeorm";
 
-import { CreatableEntity } from "./Creatable.entity.js";
+import { CreatableEntity } from "./Creatable.entity";
 
 /** Base class providing update tracking columns */
 @ObjectType({ isAbstract: true })

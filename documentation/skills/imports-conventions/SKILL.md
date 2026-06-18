@@ -1,6 +1,6 @@
 ---
 name: imports-conventions
-description: Import organization conventions for TypeScript in this monorepo. Use when writing or reviewing imports, when ESLint reports import order errors, when asked about monorepo path aliases, type-only imports, file extensions in imports, or named vs default exports. Covers auto-sorted import order, NodeNext .js extensions, relative parent import avoidance, and the monorepo namespace.
+description: Import organization conventions for TypeScript in this monorepo. Use when writing or reviewing imports, when ESLint reports import order errors, when asked about monorepo path aliases, type-only imports, or named vs default exports. Covers auto-sorted import order, Bundler extensionless imports, relative parent import avoidance, and the monorepo namespace.
 license: MIT
 ---
 
@@ -37,14 +37,14 @@ import { z } from "zod";
 import { Button, Card } from "@monorepo/lexico-components";
 
 // 4. Parent imports
-import { getUserProfile } from "../api/user.js";
+import { getUserProfile } from "../api/user";
 
 // 5. Sibling imports
-import { UserCard } from "./user-card.js";
+import { UserCard } from "./user-card";
 
 // 6. Type imports (separate group)
-import { type User } from "../types/user.js";
-import { type ApiResponse } from "./types.js";
+import { type User } from "../types/user";
+import { type ApiResponse } from "./types";
 ```
 
 ### ❌ Incorrect Import Order
@@ -60,16 +60,16 @@ import { getUserProfile } from "../api/user.js";
 
 ## File Extensions
 
-Always include `.js` extensions for relative imports. The workspace uses **NodeNext** module resolution which requires explicit extensions.
+Relative imports should **not include file extensions**. The workspace uses **Bundler** module resolution which supports extensionless imports.
 
 ```typescript
-// ✅ CORRECT
-import { getUserProfile } from "../api/user.js";
-import { UserCard } from "./user-card.js";
-
-// ❌ WRONG: missing .js extension
+// ✅ CORRECT: Extensionless imports
 import { getUserProfile } from "../api/user";
 import { UserCard } from "./user-card";
+
+// ❌ WRONG: Include file extensions
+import { getUserProfile } from "../api/user.js";
+import { UserCard } from "./user-card.js";
 ```
 
 ## No Parent Directory Imports
@@ -81,7 +81,7 @@ Avoid `../` imports. Use `@monorepo/*` path mappings instead. Enforced by ESLint
 import { getUserProfile } from "@monorepo/lexico-entities";
 
 // ❌ AVOID
-import { getUserProfile } from "../../packages/lexico-entities/src/user.js";
+import { getUserProfile } from "../../packages/lexico-entities/src/user";
 ```
 
 ## @monorepo/* Path Mappings

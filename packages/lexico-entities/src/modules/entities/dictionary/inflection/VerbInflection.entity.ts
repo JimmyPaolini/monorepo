@@ -1,24 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
-import { Inflection } from "./Inflection.entity.js";
+import {
+  type VerbConjugation,
+  verbConjugationValues,
+} from "../../../database/database.constants";
 
-export const verbConjugation = {
-  first: "first",
-  fourth: "fourth",
-  none: "",
-  second: "second",
-  third: "third",
-  thirdIo: "third-io",
-} as const;
-/**
- * Union of verb conjugation values.
- */
-export type VerbConjugation =
-  (typeof verbConjugation)[keyof typeof verbConjugation];
-export const verbConjugationValues = Object.values(
-  verbConjugation,
-) as VerbConjugation[];
+import { Inflection } from "./Inflection.entity";
 
 /**
  * Inflection metadata for verb lexemes.

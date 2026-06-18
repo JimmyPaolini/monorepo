@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import cheerioTableParser from "cheerio-tableparser";
 
-import { sumEsseFui } from "./part-of-speech.constants.js";
+import { sumEsseFui } from "./part-of-speech.constants";
 
 import type { Lexeme } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";
@@ -10,6 +10,9 @@ import type { AnyNode } from "domhandler";
  * Parses Wiktionary inflection tables into nested form objects.
  */
 export class PartOfSpeechFormsParser {
+  /**
+   * Collects table identifiers required by part-of-speech parsing.
+   */
   private collectTableIdentifiers(
     index: number,
     index_: number,
@@ -30,6 +33,9 @@ export class PartOfSpeechFormsParser {
     return new Set([...columnIds, ...rowIds, ...cornerEntries]);
   }
 
+  /**
+   * Finds generic identifiers for part-of-speech parsing workflows.
+   */
   private findGenericIdentifiers(args: {
     index: number;
     index_: number;
@@ -52,6 +58,9 @@ export class PartOfSpeechFormsParser {
     return [...identifiers];
   }
 
+  /**
+   * Finds verb identifiers for part-of-speech parsing workflows.
+   */
   private findVerbIdentifiers(
     index: number,
     index_: number,
@@ -77,16 +86,25 @@ export class PartOfSpeechFormsParser {
       .filter(Boolean);
   }
 
+  /**
+   * Checks whether case in part-of-speech parsing logic.
+   */
   private isCase(str: string): boolean {
     return /^((nominative)|(genitive)|(dative)|(accusative)|(ablative)|(vocative)|(locative))$/i.test(
       str,
     );
   }
 
+  /**
+   * Checks whether gender in part-of-speech parsing logic.
+   */
   private isGender(str: string): boolean {
     return /^((masculine)|(feminine)|(neuter))$/i.test(str);
   }
 
+  /**
+   * Checks whether generic form cell in part-of-speech parsing logic.
+   */
   private isGenericFormCell(cell: string): boolean {
     return (
       cell.includes("<span ") ||
@@ -96,16 +114,25 @@ export class PartOfSpeechFormsParser {
     );
   }
 
+  /**
+   * Checks whether number in part-of-speech parsing logic.
+   */
   private isNumber(str: string): boolean {
     return /^((singular)|(plural))$/i.test(str);
   }
 
+  /**
+   * Checks whether verb form cell in part-of-speech parsing logic.
+   */
   private isVerbFormCell(cell: string): boolean {
     return (
       cell.includes("<span ") || cell.includes("\u2014") || cell.includes(" + ")
     );
   }
 
+  /**
+   * Looks up sum esse fui entry used by part-of-speech parsing.
+   */
   private lookupSumEsseFuiEntry(args: {
     mood: string;
     number: string;
@@ -117,6 +144,9 @@ export class PartOfSpeechFormsParser {
     return sumEsseFui[mood]?.[voice]?.[tense]?.[number]?.[person];
   }
 
+  /**
+   * Parses form table during part-of-speech parsing.
+   */
   private parseFormTable(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -152,6 +182,9 @@ export class PartOfSpeechFormsParser {
     return table;
   }
 
+  /**
+   * Parses verb word cell during part-of-speech parsing.
+   */
   private parseVerbWordCell(
     cell: string,
     number: string,
@@ -167,6 +200,9 @@ export class PartOfSpeechFormsParser {
     return [cleaned];
   }
 
+  /**
+   * Processes verb form row during part-of-speech parsing.
+   */
   private processVerbFormRow(args: {
     cell: string;
     disorganizedForms: { identifiers: string[]; word: string[] }[];
@@ -190,6 +226,9 @@ export class PartOfSpeechFormsParser {
     });
   }
 
+  /**
+   * Resolves verb sum entry for part-of-speech parsing.
+   */
   private resolveVerbSumEntry(
     cleaned: string,
     number: string,
@@ -235,6 +274,9 @@ export class PartOfSpeechFormsParser {
     return [cleaned];
   }
 
+  /**
+   * Scans table axis for part-of-speech parsing context.
+   */
   private scanTableAxis(
     startIndex: number,
     cellGetter: (index: number) => string,
@@ -250,6 +292,9 @@ export class PartOfSpeechFormsParser {
     return { finalIndex: index, identifiers };
   }
 
+  /**
+   * Scans verb header for part-of-speech parsing context.
+   */
   private scanVerbHeader(
     startIndex: number,
     getCell: (index: number) => string,
@@ -266,6 +311,9 @@ export class PartOfSpeechFormsParser {
     return { finalIndex: index, identifiers: new Set(cells) };
   }
 
+  /**
+   * Sorts identifiers into nested part-of-speech parsing structures.
+   */
   private sortIdentifiers(
     inflection: { identifiers: string[]; word: string[] },
     object: Record<string, unknown>,
@@ -363,6 +411,9 @@ export class PartOfSpeechFormsParser {
   }
 }
 
+/**
+ * Checks whether record in part-of-speech parsing logic.
+ */
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }

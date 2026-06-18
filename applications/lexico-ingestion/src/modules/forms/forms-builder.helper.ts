@@ -72,6 +72,9 @@ export class FormsBuilderHelper {
 
   // 🔑 Public Methods
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildAdjectivalCaseForms(
     caseMap: Record<string, unknown>,
     formGender: "feminine" | "masculine" | "neuter",
@@ -100,6 +103,9 @@ export class FormsBuilderHelper {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildAdjectivalFormsFromRaw(
     rawForms: unknown,
     lexeme: Lexeme,
@@ -122,6 +128,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildAdjectivalNumberForms(args: {
     formCase: (typeof formCaseValues)[number];
     formGender: "feminine" | "masculine" | "neuter";
@@ -149,6 +158,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildAdverbFormsFromRaw(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
     if (!isRecord(rawForms)) return forms;
@@ -164,6 +176,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildFiniteMoodForms(
     moodData: Record<string, unknown>,
     mood: FormMood,
@@ -189,6 +204,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildFiniteNumberForms(args: {
     lexeme: Lexeme;
     mood: FormMood;
@@ -216,6 +234,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildFinitePersonForms(args: {
     lexeme: Lexeme;
     mood: FormMood;
@@ -246,6 +267,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildFiniteTenseForms(args: {
     lexeme: Lexeme;
     mood: FormMood;
@@ -271,6 +295,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildGerundForms(
     gerundData: Record<string, unknown>,
     lexeme: Lexeme,
@@ -291,6 +318,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildInfinitiveForms(
     infinitiveData: Record<string, unknown>,
     lexeme: Lexeme,
@@ -312,6 +342,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildNominalFormsFromRaw(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
     if (!isRecord(rawForms)) return forms;
@@ -334,6 +367,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildNominalNumberForms(args: {
     formCase: (typeof formCaseValues)[number];
     lexeme: Lexeme;
@@ -359,6 +395,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildParticipleFormsFromRaw(
     participleData: Record<string, unknown>,
     lexeme: Lexeme,
@@ -391,6 +430,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildSupineForms(
     supineData: Record<string, unknown>,
     lexeme: Lexeme,
@@ -411,6 +453,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildVerbFormsFromRaw(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
     if (!isRecord(rawForms)) return forms;
@@ -435,6 +480,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildVerbNonFiniteForms(
     nonFiniteData: Record<string, unknown>,
     lexeme: Lexeme,
@@ -454,6 +502,9 @@ export class FormsBuilderHelper {
     return forms;
   }
 
+  /**
+   * Builds structured data used during form entity building.
+   */
   private buildVerbNounForms(
     verbalNouns: Record<string, unknown>,
     lexeme: Lexeme,
@@ -505,54 +556,87 @@ export class FormsBuilderHelper {
   }
 }
 
+/**
+ * Narrows a string to a supported grammatical case value.
+ */
 function isFormCase(value: string): value is (typeof formCaseValues)[number] {
   return formCaseValueList.includes(value);
 }
 
+/**
+ * Narrows a string to one of the canonical grammatical gender values.
+ */
 function isFormGender(
   value: string,
 ): value is "feminine" | "masculine" | "neuter" {
   return value === "feminine" || value === "masculine" || value === "neuter";
 }
 
+/**
+ * Narrows a string to a supported finite mood value.
+ */
 function isFormMood(value: string): value is FormMood {
   return formMoodValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported non-finite tense value.
+ */
 function isFormNonFiniteTense(value: string): value is FormNonFiniteTense {
   return formNonFiniteTenseValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported grammatical number value.
+ */
 function isFormNumber(
   value: string,
 ): value is (typeof formNumberValues)[number] {
   return formNumberValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported grammatical person value.
+ */
 function isFormPerson(
   value: string,
 ): value is (typeof formPersonValues)[number] {
   return formPersonValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported finite tense value.
+ */
 function isFormTense(value: string): value is FormTense {
   return formTenseValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported voice value.
+ */
 function isFormVoice(value: string): value is (typeof formVoiceValues)[number] {
   return formVoiceValueList.includes(value);
 }
 
+/**
+ * Narrows a string to a supported gerund case value.
+ */
 function isGerundCase(
   value: string,
 ): value is (typeof formGerundCaseValues)[number] {
   return formGerundCaseValueList.includes(value);
 }
 
+/**
+ * Guards unknown values as plain object records.
+ */
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+/**
+ * Guards unknown values as arrays containing only strings.
+ */
 function isStringArray(value: unknown): value is string[] {
   return (
     Array.isArray(value) &&
@@ -560,12 +644,18 @@ function isStringArray(value: unknown): value is string[] {
   );
 }
 
+/**
+ * Narrows a string to a supported supine case value.
+ */
 function isSupineCase(
   value: string,
 ): value is (typeof formSupineCaseValues)[number] {
   return formSupineCaseValueList.includes(value);
 }
 
+/**
+ * Normalizes mixed arrays to string-only arrays used by type guards.
+ */
 function normalizeStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) {
     return [];

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { QuintupleAspectsComposerService } from "./quintuple-aspects-composer.service.js";
+import { QuintupleAspectsComposerService } from "./quintuple-aspects-composer.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

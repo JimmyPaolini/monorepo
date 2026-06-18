@@ -56,6 +56,9 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
   vocative: "Voc.",
 };
 
+/**
+ *
+ */
 interface AdjectiveFormGroup {
   degree: string;
   genders: {

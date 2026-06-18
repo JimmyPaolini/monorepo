@@ -47,6 +47,9 @@ export class LexicoIngestionCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Processes one workflow step for root ingestion pipeline execution.
+   */
   private async executeStages(
     options: LexicoIngestionCommandOptions,
   ): Promise<void> {
@@ -80,6 +83,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Prompts for missing CLI options used by root ingestion pipeline execution.
+   */
   private async promptForMissingOptions(
     options: LexicoIngestionCommandOptions,
   ): Promise<void> {
@@ -112,6 +118,9 @@ export class LexicoIngestionCommand extends CommandRunner {
 
   // 🌎 Public Methods
 
+  /**
+   * Prompts for missing CLI options used by root ingestion pipeline execution.
+   */
   private async promptOption(
     currentValue: boolean | undefined,
     message: string,
@@ -127,6 +136,9 @@ export class LexicoIngestionCommand extends CommandRunner {
     return response[name] as boolean;
   }
 
+  /**
+   * Handles an internal workflow step for root ingestion pipeline execution.
+   */
   private async runLibrarySourcesStage(): Promise<void> {
     await this.perseusCommand.run();
     await this.latinLibraryCommand.run();

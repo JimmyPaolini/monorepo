@@ -1,29 +1,14 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
-import { Inflection } from "./Inflection.entity.js";
+import {
+  type AdverbDegree,
+  adverbDegrees,
+  type AdverbType,
+  adverbTypes,
+} from "../../../database/database.constants";
 
-export const adverbType = {
-  conjunctional: "conjunctional",
-  descriptive: "descriptive",
-  none: "",
-} as const;
-/**
- * Union of adverb functional type values.
- */
-export type AdverbType = (typeof adverbType)[keyof typeof adverbType];
-export const adverbTypes = Object.values(adverbType) as AdverbType[];
-
-export const adverbDegree = {
-  comparative: "comparative",
-  positive: "positive",
-  superlative: "superlative",
-} as const;
-/**
- * Union of adverb degree values.
- */
-export type AdverbDegree = (typeof adverbDegree)[keyof typeof adverbDegree];
-export const adverbDegrees = Object.values(adverbDegree) as AdverbDegree[];
+import { Inflection } from "./Inflection.entity";
 
 /**
  * Inflection metadata for adverb lexemes.

@@ -35,10 +35,16 @@ export class TranslationsService {
 
   // 🔏 Private Methods
 
+  /**
+   * Capitalize first letter for translation parsing.
+   */
   private capitalizeFirstLetter(str: string): string {
     return _.upperFirst(str);
   }
 
+  /**
+   * Normalizes input values used by translation parsing.
+   */
   private normalize(str: string): string {
     return str
       .normalize("NFD")

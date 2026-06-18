@@ -2,7 +2,7 @@ import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { TripleAspectsComposerService } from "./triple-aspects-composer.service.js";
+import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type {
@@ -30,6 +30,9 @@ export class TripleAspectsDetectorService {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
+  /**
+   * Handles check grand trine triplet.
+   */
   private checkGrandTrineTriplet(args: {
     body1: Body;
     body2: Body;
@@ -77,6 +80,9 @@ export class TripleAspectsDetectorService {
     });
   }
 
+  /**
+   * Handles the t square pattern check for a candidate focal body.
+   */
   private checkTSquareFocalBody(args: {
     body1: Body;
     body2: Body;
@@ -125,6 +131,9 @@ export class TripleAspectsDetectorService {
     });
   }
 
+  /**
+   * Handles check yod apex body.
+   */
   private checkYodApexBody(args: {
     apexBody: Body;
     body1: Body;
@@ -173,6 +182,9 @@ export class TripleAspectsDetectorService {
     });
   }
 
+  /**
+   * Determines whether grand trine.
+   */
   private isGrandTrine(args: {
     body1: Body;
     body2: Body;
@@ -202,6 +214,9 @@ export class TripleAspectsDetectorService {
     );
   }
 
+  /**
+   * Determines whether the current edge set forms a t square pattern.
+   */
   private isTSquare(args: {
     body1: Body;
     body2: Body;
@@ -231,6 +246,9 @@ export class TripleAspectsDetectorService {
     );
   }
 
+  /**
+   * Determines whether yod.
+   */
   private isYod(args: {
     apexBody: Body;
     body1: Body;

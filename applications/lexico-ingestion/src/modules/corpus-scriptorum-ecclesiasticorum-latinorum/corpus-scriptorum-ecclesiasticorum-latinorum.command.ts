@@ -78,6 +78,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     }
   }
 
+  /**
+   * Loads source data required by CSEL source ingestion.
+   */
   private async fetchAndWriteXmlFile(
     fileUrl: string,
     targetPath: string,

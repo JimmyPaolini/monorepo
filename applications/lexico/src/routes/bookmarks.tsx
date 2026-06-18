@@ -23,16 +23,25 @@ export const Route = createFileRoute("/bookmarks")({
 
 // 📚 Bookmark list sub-components
 
+/**
+ *
+ */
 interface BookmarkItemProps {
   entry: BookmarkedEntry;
   onRemove: (entryId: string) => void;
 }
 
+/**
+ *
+ */
 interface BookmarksListProps {
   bookmarks: BookmarkedEntry[];
   onRemove: (entryId: string) => void;
 }
 
+/**
+ *
+ */
 function BookmarkItem(properties: BookmarkItemProps): ReactNode {
   const { entry, onRemove } = properties;
   return (
@@ -68,6 +77,9 @@ function BookmarkItem(properties: BookmarkItemProps): ReactNode {
   );
 }
 
+/**
+ *
+ */
 function BookmarksList(properties: BookmarksListProps): ReactNode {
   const { bookmarks, onRemove } = properties;
   return (
@@ -154,6 +166,9 @@ function BookmarksPage(): ReactNode {
   );
 }
 
+/**
+ *
+ */
 function EmptyBookmarks(): ReactNode {
   return (
     <Card className="mx-auto max-w-2xl">

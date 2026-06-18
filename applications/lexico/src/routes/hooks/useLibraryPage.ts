@@ -36,6 +36,9 @@ export interface LibraryPageState {
 }
 
 // 🔧 State Initialization
+/**
+ *
+ */
 interface LibraryPageHookState {
   editingText: null | UserText;
   error: null | string;
@@ -118,6 +121,9 @@ export function useLibraryPage(): LibraryPageState {
 }
 
 // 🔧 State Builder
+/**
+ *
+ */
 function buildLibraryPageState(
   state: LibraryPageHookState,
   handleCreate: () => Promise<void>,
@@ -155,6 +161,9 @@ function buildLibraryPageState(
 }
 
 // 🔧 Create Handler
+/**
+ *
+ */
 async function createTextAsync(
   formTitle: string,
   formText: string,
@@ -188,6 +197,9 @@ async function createTextAsync(
 }
 
 // 🔧 Delete Handler
+/**
+ *
+ */
 async function deleteTextAsync(
   id: string,
   selectedText: null | UserText,
@@ -208,6 +220,9 @@ async function deleteTextAsync(
 }
 
 // 🔧 Fetch Handler
+/**
+ *
+ */
 async function fetchTextsAsync(
   setTexts: (texts: UserText[]) => void,
   setIsLoading: (loading: boolean) => void,
@@ -228,6 +243,9 @@ async function fetchTextsAsync(
 }
 
 // 🔧 Update Handler
+/**
+ *
+ */
 async function updateTextAsync(
   editingText: null | UserText,
   formTitle: string,
@@ -265,6 +283,9 @@ async function updateTextAsync(
   }
 }
 
+/**
+ *
+ */
 function useLibraryPageStateInitialization(): LibraryPageHookState {
   const [texts, setTexts] = useState<UserText[]>([]);
   const [isLoading, setIsLoading] = useState(true);

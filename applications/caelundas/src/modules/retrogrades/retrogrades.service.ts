@@ -23,10 +23,10 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 import type { Moment } from "moment-timezone";
 
 /**
- * Standard categories for retrograde/direct station events.
+ * Detects planetary retrograde and direct station events from minute-by-minute ecliptic longitude series.
  *
- * Base categories applied to all station events before adding direction-specific
- * categories ("Retrograde" or "Direct").
+ * Identifies stationary points where a planet's apparent motion reverses direction, emitting
+ * "Stationary Retrograde" and "Stationary Direct" boundary events as well as progressive duration spans.
  */
 @Injectable()
 export class RetrogradesService {
@@ -49,6 +49,9 @@ export class RetrogradesService {
 
   // 🔏 Private Methods
 
+  /**
+   * Detects body stations.
+   */
   private detectBodyStations(
     body: RetrogradeBody,
     ephemeris: CoordinateEphemeris,
@@ -84,6 +87,9 @@ export class RetrogradesService {
     return events;
   }
 
+  /**
+   * Derives next longitudes.
+   */
   private getNextLongitudes(
     ephemeris: CoordinateEphemeris,
     minute: Moment,
@@ -98,6 +104,9 @@ export class RetrogradesService {
     });
   }
 
+  /**
+   * Derives previous longitudes.
+   */
   private getPreviousLongitudes(
     ephemeris: CoordinateEphemeris,
     minute: Moment,
@@ -112,6 +121,9 @@ export class RetrogradesService {
     });
   }
 
+  /**
+   * Derives retrograde progressive event.
+   */
   private getRetrogradeProgressiveEvent(
     beginningEvent: Event,
     endingEvent: Event,
@@ -135,6 +147,9 @@ export class RetrogradesService {
     };
   }
 
+  /**
+   * Determines whether direct.
+   */
   private isDirect(args: {
     currentLongitude: number;
     nextLongitudes: number[];
@@ -162,6 +177,9 @@ export class RetrogradesService {
     return hasBeenRetrograde && willBeDirect;
   }
 
+  /**
+   * Determines whether retrograde.
+   */
   private isRetrograde(args: {
     currentLongitude: number;
     nextLongitudes: number[];

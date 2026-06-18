@@ -18,23 +18,22 @@ ESLint plugin `eslint-plugin-perfectionist` automatically sorts imports in this 
 
 ## File Extensions
 
-Always include `.js` extensions for relative imports. The workspace uses NodeNext module
-resolution, which requires explicit file extensions.
+Relative imports should **not include file extensions**. The workspace uses **Bundler** module resolution, which supports extensionless imports.
 
-**Enforced by**: TypeScript compiler (NodeNext resolution)
+**Enforced by**: TypeScript compiler (Bundler resolution)
 
 ### ✅ Correct Extension Usage
 
 ```typescript
-import { getUserProfile } from "../api/user.js";
-import { UserCard } from "./user-card.js";
+import { getUserProfile } from "../api/user";
+import { UserCard } from "./user-card";
 ```
 
 ### ❌ Incorrect
 
 ```typescript
-import { getUserProfile } from "../api/user";
-import { UserCard } from "./user-card";
+import { getUserProfile } from "../api/user.js";
+import { UserCard } from "./user-card.js";
 ```
 
 ## No Parent Directory Imports
@@ -52,7 +51,7 @@ import { getUserProfile } from "@monorepo/lexico-entities";
 ### ❌ Avoid
 
 ```typescript
-import { getUserProfile } from "../../packages/lexico-entities/src/user.js";
+import { getUserProfile } from "../../packages/lexico-entities/src/user";
 ```
 
 ## Examples
@@ -73,22 +72,22 @@ import React from "react";
 import { Button, Card } from "@monorepo/lexico-components";
 
 // 4. Parent imports
-import { getUserProfile } from "../api/user.js";
-import { formatCurrency } from "../utils/format.js";
+import { getUserProfile } from "../api/user";
+import { formatCurrency } from "../utils/format";
 
 // 5. Sibling imports
-import { UserCard } from "./user-card.js";
-import { config } from "./config.js";
+import { UserCard } from "./user-card";
+import { config } from "./config";
 
 // 6. Type imports (separate group)
-import { type User } from "../types/user.js";
-import { type ApiResponse } from "./types.js";
+import { type User } from "../types/user";
+import { type ApiResponse } from "./types";
 ```
 
 ### ❌ Incorrect Import Order
 
 ```typescript
-// WRONG: Mixed order, no grouping, missing .js extensions
+// WRONG: Mixed order, no grouping, includes .js extensions
 import { Button } from "@monorepo/lexico-components";
 import { format } from "date-fns";
 import { type User } from "./types.js";

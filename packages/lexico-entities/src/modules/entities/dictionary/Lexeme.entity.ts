@@ -1,15 +1,15 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, OneToMany, OneToOne, Unique } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import { Form } from "./form/Form.entity.js";
-import { Inflection } from "./inflection/Inflection.entity.js";
-import { type PartOfSpeech, partsOfSpeech } from "./PartOfSpeech.entity.js";
-import { PrincipalPart } from "./PrincipalPart.entity.js";
-import { Pronunciation } from "./Pronunciation.entity.js";
-import { Translation } from "./Translation.entity.js";
-import { WordLexeme } from "./WordLexeme.entity.js";
+import { Form } from "./form/Form.entity";
+import { Inflection } from "./inflection/Inflection.entity";
+import { type PartOfSpeech, partsOfSpeech } from "./PartOfSpeech.entity";
+import { PrincipalPart } from "./PrincipalPart.entity";
+import { Pronunciation } from "./Pronunciation.entity";
+import { Translation } from "./Translation.entity";
+import { WordLexeme } from "./WordLexeme.entity";
 
 /**
  * A normalized Latin dictionary entry and its related linguistic data.

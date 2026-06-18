@@ -34,14 +34,23 @@ export const Route = createFileRoute("/search")({
 
 // 🔍 Search results sub-components
 
+/**
+ *
+ */
 interface EmptyResultsProps {
   query: string;
 }
 
+/**
+ *
+ */
 interface SearchResultsListProps {
   results: EntrySearchResult[];
 }
 
+/**
+ *
+ */
 function EmptyResults(properties: EmptyResultsProps): ReactNode {
   const { query } = properties;
   return (
@@ -154,6 +163,9 @@ function SearchPage(): ReactNode {
   );
 }
 
+/**
+ *
+ */
 function SearchResultsList(properties: SearchResultsListProps): ReactNode {
   const { results } = properties;
 
@@ -203,6 +215,9 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue;
 }
 
+/**
+ *
+ */
 function WelcomeCard(): ReactNode {
   return (
     <Card className="mx-auto max-w-2xl">

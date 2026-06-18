@@ -2,8 +2,9 @@ import * as fs from "node:fs/promises";
 
 import { Injectable } from "@nestjs/common";
 
-import type { LoggerService } from "../logger/logger.service.js";
-import type { IngestTextArguments, LibraryEntry } from "./literature.types.js";
+import { LoggerService } from "../logger/logger.service";
+
+import type { IngestTextArguments, LibraryEntry } from "./literature.types";
 import type { Text } from "@monorepo/lexico-entities";
 
 /** Ingest a single text entry and emit consistent progress/error logs. */
@@ -13,6 +14,9 @@ export class LiteratureTextIngestionService {
     this.logger.setContext(LiteratureTextIngestionService.name);
   }
 
+  /**
+   * Builds hierarchy prefix for literature ingestion.
+   */
   private buildHierarchyPrefix(
     authorSlug: string,
     parentText: Text | undefined,

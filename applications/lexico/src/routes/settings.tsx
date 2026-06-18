@@ -17,6 +17,9 @@ export const Route = createFileRoute("/settings")({
   component: SettingsPage,
 });
 
+/**
+ *
+ */
 async function handleSignIn(): Promise<void> {
   const redirectTo = `${location.origin}/settings`;
   const { url } = await getGoogleSignInUrl({ data: { redirectTo } });

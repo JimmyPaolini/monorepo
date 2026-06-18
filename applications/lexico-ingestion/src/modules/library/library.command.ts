@@ -9,12 +9,12 @@ import prompts from "prompts";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants.js";
+import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants";
 
 import type {
   LibraryCommandOptions,
   LibrarySourceProvider,
-} from "./library.types.js";
+} from "./library.types";
 
 /**
  * Runs configured library source providers and writes normalized markdown files
@@ -53,6 +53,9 @@ export class LibraryCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during library provider orchestration.
+   */
   private buildIngestParameters(
     author: string | undefined,
     providerName: string | undefined,
@@ -70,6 +73,9 @@ export class LibraryCommand extends CommandRunner {
     return { filteredProviders, ingestOptions };
   }
 
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private async getAuthorChoices(
     provider?: string,
   ): Promise<{ title: string; value: string }[]> {
@@ -81,11 +87,17 @@ export class LibraryCommand extends CommandRunner {
     return authors.map((a) => ({ title: a, value: a }));
   }
 
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private getProviderChoices(): { title: string; value: string }[] {
     const providers = this.providers.map((p) => p.name).toSorted();
     return providers.map((p) => ({ title: p, value: p }));
   }
 
+  /**
+   * Resolves derived values needed by library provider orchestration.
+   */
   private async getTextChoices(
     provider?: string,
     authorSlug?: string,
@@ -106,6 +118,9 @@ export class LibraryCommand extends CommandRunner {
     return textSlugs.map((t) => ({ title: t, value: t }));
   }
 
+  /**
+   * Parses and normalizes inputs for library provider orchestration.
+   */
   private async parseIngestOptions(options: LibraryCommandOptions): Promise<{
     author: string | undefined;
     providerName: string | undefined;
@@ -126,6 +141,9 @@ export class LibraryCommand extends CommandRunner {
     return { author, providerName, text };
   }
 
+  /**
+   * Processes one workflow step for library provider orchestration.
+   */
   private async processProvider(args: {
     current: number;
     ingestOptions: { author?: string; text?: string };
@@ -156,6 +174,9 @@ export class LibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
   private pushTextEntry(args: {
     authorSlug: string;
     currentPathParts: string[];
@@ -189,6 +210,9 @@ export class LibraryCommand extends CommandRunner {
     });
   }
 
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
   private async scanLibrary(): Promise<
     {
       authorSlug: string;
@@ -225,6 +249,9 @@ export class LibraryCommand extends CommandRunner {
 
   // 🌎 Public Methods
 
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
   private async scanLibraryAuthor(args: {
     authorSlug: string;
     dataDirectory: string;
@@ -248,6 +275,9 @@ export class LibraryCommand extends CommandRunner {
     });
   }
 
+  /**
+   * Handles an internal workflow step for library provider orchestration.
+   */
   private async scanLibraryProvider(
     dataDirectory: string,
     providerName: string,
@@ -274,6 +304,9 @@ export class LibraryCommand extends CommandRunner {
     }
   }
 
+  /**
+   * Processes one workflow step for library provider orchestration.
+   */
   private async walkLibraryDirectory(args: {
     authorSlug: string;
     currentPathParts: string[];

@@ -2,10 +2,11 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import {
-  Form,
   type FormSupineCase,
   formSupineCaseValues,
-} from "./Form.entity.js";
+} from "../../../database/database.constants";
+
+import { Form } from "./Form.entity";
 
 /** A verbal noun supine form (accusative or ablative case). */
 @ChildEntity("supine")

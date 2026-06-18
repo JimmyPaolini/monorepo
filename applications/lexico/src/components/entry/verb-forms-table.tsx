@@ -67,6 +67,9 @@ const NUMBER_ABBREVIATIONS: Record<string, string> = {
   singular: "SG",
 };
 
+/**
+ *
+ */
 interface VerbFormGroup {
   mood: string;
   tenses: {

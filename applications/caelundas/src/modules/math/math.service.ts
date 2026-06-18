@@ -100,6 +100,7 @@ export class MathService {
   getCombinations<T>(array: T[], combinationSize: number): T[][] {
     const result: T[][] = [];
 
+    /** Recursively builds fixed-size combinations by extending the current selection in order. */
     function combine(start: number, chosen: T[]): void {
       if (chosen.length === combinationSize) {
         result.push([...chosen]);

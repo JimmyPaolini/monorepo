@@ -10,7 +10,7 @@ import {
 
 import { WordsService } from "../words/words.service";
 
-import { FormsBuilderHelper } from "./forms-builder.helper.js";
+import { FormsBuilderHelper } from "./forms-builder.helper";
 
 /**
  * Builds Form entities from raw parsed forms and persists them along with
@@ -39,6 +39,9 @@ export class FormsService {
 
   // 🌎 Public Methods
 
+  /**
+   * Builds structured data used during form persistence.
+   */
   private buildFormsByNormalizedWordMap(
     savedForms: Form[],
     rawWordsPerForm: string[][],
@@ -63,12 +66,18 @@ export class FormsService {
     return formsByWord;
   }
 
+  /**
+   * Handles an internal workflow step for form persistence.
+   */
   private async findExistingFormsByLexemeId(lexemeId: string): Promise<Form[]> {
     return this.formRepository.find({
       where: { lexeme: { id: lexemeId } },
     });
   }
 
+  /**
+   * Handles an internal workflow step for form persistence.
+   */
   private preserveMatchingExistingFormIdentity(
     forms: Form[],
     existingForms: Form[],
@@ -96,6 +105,9 @@ export class FormsService {
     }
   }
 
+  /**
+   * Persists generated output for form persistence.
+   */
   private async saveFormsForLexeme(
     forms: Form[],
     lexeme: Lexeme,

@@ -259,6 +259,9 @@ export function buildRomanNumeralTemplate(): Lexeme {
   return lexeme;
 }
 
+/**
+ * Builds adjectival forms for manual lexeme ingestion.
+ */
 function buildAdjectivalForms(
   rawForms: Record<string, Record<string, Record<string, string[]>>>,
 ): AdjectivalForm[] {
@@ -283,6 +286,9 @@ function buildAdjectivalForms(
   return forms;
 }
 
+/**
+ * Builds gendered principal parts for manual lexeme ingestion.
+ */
 function buildGenderedPrincipalParts(
   masculine: string,
   feminine: string,

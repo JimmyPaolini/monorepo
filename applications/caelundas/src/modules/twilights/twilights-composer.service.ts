@@ -1,7 +1,7 @@
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
-import { TwilightsBuilderService } from "./twilights-builder.service.js";
+import { TwilightsBuilderService } from "./twilights-builder.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 

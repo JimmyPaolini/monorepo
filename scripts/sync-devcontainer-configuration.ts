@@ -75,6 +75,9 @@ const MODE = process.argv[2] ?? "check";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 interface DevcontainerConfig {
   [key: string]: unknown;
   features?: Record<string, unknown>;
@@ -84,6 +87,9 @@ interface DevcontainerConfig {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function applySync(
   localConfig: DevcontainerConfig,
   cloudConfig: DevcontainerConfig,
@@ -103,6 +109,9 @@ function applySync(
   return mergedConfig;
 }
 
+/**
+ *
+ */
 function check(
   expectedConfig: DevcontainerConfig,
   cloudConfigFile: string,
@@ -128,12 +137,18 @@ function check(
   return false;
 }
 
+/**
+ *
+ */
 function isDockerFeatureKey(key: string): boolean {
   return (
     key.includes("docker-in-docker") || key.includes("docker-outside-of-docker")
   );
 }
 
+/**
+ *
+ */
 function main(): void {
   const localConfig: DevcontainerConfig = JSON5.parse(
     readFileSync(LOCAL_CONFIG_FILE, "utf8"),
@@ -160,6 +175,9 @@ function main(): void {
 
 // ─── Sync ─────────────────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function preserveRemoteEnvironment(
   cloudConfig: DevcontainerConfig,
   mergedConfig: DevcontainerConfig,
@@ -180,6 +198,9 @@ function preserveRemoteEnvironment(
   }
 }
 
+/**
+ *
+ */
 function reportDifferences(
   expectedFields: Record<string, unknown>,
   currentFields: Record<string, unknown>,
@@ -200,6 +221,9 @@ function reportDifferences(
 
 // ─── Check / Write ────────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function syncFeatures(
   localConfig: DevcontainerConfig,
   cloudConfig: DevcontainerConfig,
@@ -218,6 +242,9 @@ function syncFeatures(
   mergedConfig.features = mergedFeatures;
 }
 
+/**
+ *
+ */
 function syncVerbatimFields(
   localConfig: DevcontainerConfig,
   mergedConfig: DevcontainerConfig,
@@ -230,6 +257,9 @@ function syncVerbatimFields(
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function write(
   mergedConfig: DevcontainerConfig,
   cloudConfigFile: string,

@@ -8,7 +8,7 @@ import {
   symbolBySign,
   symbolBySpecialtyAspect,
   typedObjectKeys,
-} from "./caelundas.symbol-constants.js";
+} from "./caelundas.symbol-constants";
 
 // ♟️ Constants
 import type {
@@ -18,10 +18,14 @@ import type {
   IlluminationEphemerisBody,
 } from "../ephemeris/ephemeris.types";
 
+/** Union of all supported aspect keys from the combined aspect symbol map. */
 type Aspect = keyof typeof symbolByAspect;
 // Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
+/** Union of major aspect keys derived from the major-aspect symbol map. */
 type MajorAspect = keyof typeof symbolByMajorAspect;
+/** Union of minor aspect keys derived from the minor-aspect symbol map. */
 type MinorAspect = keyof typeof symbolByMinorAspect;
+/** Union of specialty aspect keys derived from the specialty-aspect symbol map. */
 type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
 
 // export const symbolByPhase = {

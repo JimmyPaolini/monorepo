@@ -5,7 +5,7 @@ import { formatFiles, type Tree } from "@nx/devkit";
 import _ from "lodash";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
-import { StringCase } from "../../types.js";
+import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
 interface GenerateNestjsCommandApplicationOptions {

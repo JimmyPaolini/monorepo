@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { DatabaseService } from "./database.service.js";
+import { DatabaseService } from "./database.service";
 
 describe("DatabaseService", () => {
   let service: DatabaseService;

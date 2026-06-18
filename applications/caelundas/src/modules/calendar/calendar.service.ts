@@ -39,6 +39,7 @@ export class CalendarService {
 
   // 🔏 Private Methods
 
+  /** Builds VEVENT property lines, including optional location, GEO, URL, and metadata fields. */
   private buildEventProperties(event: Event): string {
     let properties = `SUMMARY:${event.summary}\nDESCRIPTION:${event.description}\nSTATUS:CONFIRMED\nCLASS:PUBLIC\nTRANSP:TRANSPARENT\nCATEGORIES:${event.categories.join(
       ",",
@@ -100,6 +101,7 @@ TZID:${timezone}
 END:VTIMEZONE`;
   }
 
+  /** Generates a deterministic event identity string used as the VEVENT UID source. */
   private generateUid(event: Event): string {
     let id = `${event.summary}::${event.description}::${event.start.toISOString()}`;
     if (!event.end.isSame(event.start)) {

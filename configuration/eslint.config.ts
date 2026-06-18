@@ -759,7 +759,7 @@ export default [
           ],
           exemptEmptyConstructors: true,
           exemptEmptyFunctions: false,
-          publicOnly: true,
+          publicOnly: false,
           require: {
             ArrowFunctionExpression: false,
             ClassDeclaration: true,

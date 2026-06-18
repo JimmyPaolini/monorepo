@@ -102,6 +102,9 @@ interface EntryCardBodyProps {
 
 // 📋 Forms accordion section
 
+/**
+ *
+ */
 interface FormsAccordionItemProps {
   forms: EntryCardBodyProps["forms"];
   hasEtymology: boolean;
@@ -109,6 +112,9 @@ interface FormsAccordionItemProps {
 
 // 🔊 Pronunciation accordion section
 
+/**
+ *
+ */
 interface PronunciationAccordionItemProps {
   hasNext: boolean;
   pronunciation: EntryCardBodyProps["pronunciation"];
@@ -228,6 +234,9 @@ function EntryCardBody(properties: EntryCardBodyProps): ReactElement {
   );
 }
 
+/**
+ *
+ */
 function FormsAccordionItem(
   properties: FormsAccordionItemProps,
 ): null | ReactElement {
@@ -256,6 +265,9 @@ function FormsAccordionItem(
   );
 }
 
+/**
+ *
+ */
 function PronunciationAccordionItem(
   properties: PronunciationAccordionItemProps,
 ): null | ReactElement {

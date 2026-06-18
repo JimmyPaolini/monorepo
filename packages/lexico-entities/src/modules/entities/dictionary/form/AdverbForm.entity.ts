@@ -1,7 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
-import { Form, type FormDegree, formDegreeValues } from "./Form.entity.js";
+import {
+  type FormDegree,
+  formDegreeValues,
+} from "../../../database/database.constants";
+
+import { Form } from "./Form.entity";
 
 /** An adverb form at a specific degree (positive, comparative, superlative). */
 @ChildEntity("adverb")

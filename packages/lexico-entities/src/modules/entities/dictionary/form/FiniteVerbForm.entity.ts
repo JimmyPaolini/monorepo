@@ -2,7 +2,6 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import {
-  Form,
   type FormMood,
   formMoodValues,
   type FormNumber,
@@ -13,7 +12,9 @@ import {
   formTenseValues,
   type FormVoice,
   formVoiceValues,
-} from "./Form.entity.js";
+} from "../../../database/database.constants";
+
+import { Form } from "./Form.entity";
 
 /** A finite verb form (indicative, subjunctive, or imperative). */
 @ChildEntity("finite-verb")

@@ -37,6 +37,9 @@ export class StelliumService {
 
   // 🔏 Private Methods
 
+  /**
+   * Handles all pairs conjunct.
+   */
   private allPairsConjunct(bodies: Body[], edges: AspectBodies[]): boolean {
     for (let index = 0; index < bodies.length; index++) {
       const bodyI = bodies[index];
@@ -58,6 +61,9 @@ export class StelliumService {
     return true;
   }
 
+  /**
+   * Handles bfs cluster.
+   */
   private bfsCluster(
     startBody: Body,
     conjunctions: AspectBodies[],
@@ -82,6 +88,9 @@ export class StelliumService {
     return cluster;
   }
 
+  /**
+   * Builds conjunction clusters.
+   */
   private buildConjunctionClusters(conjunctions: AspectBodies[]): Set<Body>[] {
     const clusters: Set<Body>[] = [];
     const visited = new Set<Body>();
@@ -101,6 +110,9 @@ export class StelliumService {
     return clusters;
   }
 
+  /**
+   * Builds progressive stellium event.
+   */
   private buildProgressiveStelliumEvent(
     forming: Event,
     dissolving: Event,
@@ -213,6 +225,9 @@ export class StelliumService {
     };
   }
 
+  /**
+   * Handles determine compound phase from snapshots.
+   */
   private determineCompoundPhaseFromSnapshots(args: {
     checkPatternExists: (edges: AspectBodies[]) => boolean;
     currentAspectBodies: AspectBodies[];
@@ -252,18 +267,27 @@ export class StelliumService {
     return null;
   }
 
+  /**
+   * Derives neighbor.
+   */
   private getNeighbor(edge: AspectBodies, current: Body): Body | null {
     if (edge.bodies[0] === current) return edge.bodies[1];
     if (edge.bodies[1] === current) return edge.bodies[0];
     return null;
   }
 
+  /**
+   * Groups aspects by type.
+   */
   private groupAspectsByType<T extends AspectBodies>(
     edges: T[],
   ): Map<Aspect, T[]> {
     return groupByToMap(edges, (edge) => edge.aspect);
   }
 
+  /**
+   * Handles have aspect.
+   */
   private haveAspect(args: {
     aspectType: Aspect;
     body1: Body;
@@ -279,6 +303,9 @@ export class StelliumService {
     );
   }
 
+  /**
+   * Pairs stellium group.
+   */
   private pairStelliumGroup(group: Event[]): Event[] {
     const result: Event[] = [];
     const sortedEvents = _.sortBy(group, "start");
@@ -301,12 +328,18 @@ export class StelliumService {
     return result;
   }
 
+  /**
+   * Handles phase emoji for.
+   */
   private phaseEmojiFor(phase: AspectPhase): string {
     if (phase === "forming") return "➡️ ";
     if (phase === "perfective") return "🎯 ";
     return "⬅️ ";
   }
 
+  /**
+   * Handles stellium group key.
+   */
   private stelliumGroupKey(event: Event): string {
     const planets = _.sortBy(
       event.categories.filter((category) =>

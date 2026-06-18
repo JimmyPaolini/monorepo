@@ -75,17 +75,26 @@ const jsts = {
   tsFiles: tsFilePaths.length,
 };
 
+/**
+ *
+ */
 function handleClass(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.classes++;
   if (hasExportKeyword(node)) stats.exported++;
   if (hasTypeParameters(node)) stats.genericDeclarations++;
 }
 
+/**
+ *
+ */
 function handleEnum(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.enums++;
   if (hasExportKeyword(node)) stats.exported++;
 }
 
+/**
+ *
+ */
 function handleFunction(
   node: tsCompiler.Node,
   stats: typeof jsts,
@@ -101,6 +110,9 @@ function handleFunction(
   if (hasTypeParameters(node)) stats.genericDeclarations++;
 }
 
+/**
+ *
+ */
 function handleImport(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.imports++;
   const importDecl = node as tsCompiler.ImportDeclaration;
@@ -114,12 +126,18 @@ function handleImport(node: tsCompiler.Node, stats: typeof jsts): void {
   }
 }
 
+/**
+ *
+ */
 function handleInterface(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.interfaces++;
   if (hasExportKeyword(node)) stats.exported++;
   if (hasTypeParameters(node)) stats.genericDeclarations++;
 }
 
+/**
+ *
+ */
 function handleMethodOrAccessor(
   node: tsCompiler.Node,
   stats: typeof jsts,
@@ -129,11 +147,17 @@ function handleMethodOrAccessor(
   else stats.syncFunctions++;
 }
 
+/**
+ *
+ */
 function handleTypeAlias(node: tsCompiler.Node, stats: typeof jsts): void {
   if (hasExportKeyword(node)) stats.exported++;
   if (hasTypeParameters(node)) stats.genericDeclarations++;
 }
 
+/**
+ *
+ */
 function handleVariable(node: tsCompiler.Node, stats: typeof jsts): void {
   const statement = node as tsCompiler.VariableStatement;
   const isConst =
@@ -145,6 +169,9 @@ function handleVariable(node: tsCompiler.Node, stats: typeof jsts): void {
   }
 }
 
+/**
+ *
+ */
 function hasAsyncKeyword(node: tsCompiler.Node): boolean {
   const modifiers = tsCompiler.canHaveModifiers(node)
     ? tsCompiler.getModifiers(node)
@@ -155,6 +182,9 @@ function hasAsyncKeyword(node: tsCompiler.Node): boolean {
   );
 }
 
+/**
+ *
+ */
 function hasExportKeyword(node: tsCompiler.Node): boolean {
   const modifiers = tsCompiler.canHaveModifiers(node)
     ? tsCompiler.getModifiers(node)
@@ -165,6 +195,9 @@ function hasExportKeyword(node: tsCompiler.Node): boolean {
   );
 }
 
+/**
+ *
+ */
 function hasTypeParameters(node: tsCompiler.Node): boolean {
   const nodeWithTypeParameters = node as tsCompiler.Node & {
     typeParameters?: unknown[];
@@ -206,6 +239,9 @@ const nodeHandlers: Partial<
   [tsCompiler.SyntaxKind.VariableStatement]: handleVariable,
 };
 
+/**
+ *
+ */
 function walkNode(
   node: tsCompiler.Node,
   stats: typeof jsts,

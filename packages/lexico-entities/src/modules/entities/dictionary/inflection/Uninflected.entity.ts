@@ -1,7 +1,7 @@
 import { ObjectType } from "@nestjs/graphql";
 import { ChildEntity } from "typeorm";
 
-import { Inflection } from "./Inflection.entity.js";
+import { Inflection } from "./Inflection.entity";
 
 /**
  * Inflection marker for lexemes that do not vary by inflection.

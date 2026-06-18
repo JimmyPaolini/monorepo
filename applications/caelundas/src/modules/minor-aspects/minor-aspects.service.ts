@@ -8,7 +8,7 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { MinorAspectsComposerService } from "./minor-aspects-composer.service.js";
+import { MinorAspectsComposerService } from "./minor-aspects-composer.service";
 
 import type { DetectBodyPairAspectArguments } from "./minor-aspects.types";
 import type {
@@ -54,6 +54,7 @@ export class MinorAspectsService {
 
   // 🔏 Private Methods
 
+  /** Detects a minor-aspect event for one body pair at a specific minute window. */
   private detectBodyPairAspect(
     args: DetectBodyPairAspectArguments,
   ): Event | null {
@@ -98,6 +99,7 @@ export class MinorAspectsService {
     });
   }
 
+  /** Derives minor-aspect phase by comparing three-minute longitude windows for both bodies. */
   private detectPhaseFromWindows(
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },

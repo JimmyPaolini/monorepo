@@ -10,7 +10,8 @@ import { LoggerService } from "../logger/logger.service";
 import type { AnyNode } from "domhandler";
 
 /**
- * Service for handling Lexeme principal parts.
+ * Parses Wiktionary HTML to extract a lexeme's principal parts and persists
+ * them with TypeORM cascade diffing to avoid orphaned records.
  */
 @Injectable()
 export class PrincipalPartsService {
@@ -30,6 +31,9 @@ export class PrincipalPartsService {
 
   // 🔏 Private Methods
 
+  /**
+   * Classifies principal part for principal-part parsing.
+   */
   private classifyPrincipalPart(args: {
     $: cheerio.CheerioAPI;
     b: AnyNode;

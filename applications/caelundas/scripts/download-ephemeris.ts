@@ -14,8 +14,14 @@ const ephemerisFilenames = [
   "semo_18.se1",
 ] as const;
 
+/**
+ * Supported Swiss Ephemeris archive filenames downloaded for local calculations.
+ */
 type EphemerisFilename = (typeof ephemerisFilenames)[number];
 
+/**
+ * Downloads required ephemeris data files into the local data directory.
+ */
 async function downloadEphemerisFiles(): Promise<void> {
   await mkdir(EPHEMERIS_DIRECTORY, { recursive: true });
 
@@ -36,6 +42,9 @@ async function downloadEphemerisFiles(): Promise<void> {
   console.log("🧮 All ephemeris files ready.");
 }
 
+/**
+ * Streams a remote ephemeris file to disk and removes partial files on failure.
+ */
 async function downloadFile(url: string, destination: string): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     const file = createWriteStream(destination);

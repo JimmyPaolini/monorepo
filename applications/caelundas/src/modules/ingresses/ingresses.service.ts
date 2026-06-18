@@ -6,7 +6,7 @@ import {
 import { objectEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 
-import { IngressesComposerService } from "./ingresses-composer.service.js";
+import { IngressesComposerService } from "./ingresses-composer.service";
 
 import type {
   Body,

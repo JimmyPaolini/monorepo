@@ -1,11 +1,11 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, ManyToOne, OneToMany } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import type { Author } from "./Author.entity.js";
-import type { Text } from "./Text.entity.js";
-import type { Token } from "./Token.entity.js";
+import type { Author } from "./Author.entity";
+import type { Text } from "./Text.entity";
+import type { Token } from "./Token.entity";
 
 /**
  * Represents a single line of text from a classical Latin work.

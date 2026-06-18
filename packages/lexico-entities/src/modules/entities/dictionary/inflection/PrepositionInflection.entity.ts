@@ -1,21 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
-import { Inflection } from "./Inflection.entity.js";
+import {
+  type PrepositionCase,
+  prepositionCases,
+} from "../../../database/database.constants";
 
-export const prepositionCase = {
-  ablative: "ablative",
-  accusative: "accusative",
-  none: "",
-} as const;
-/**
- * Union of case values governed by prepositions.
- */
-export type PrepositionCase =
-  (typeof prepositionCase)[keyof typeof prepositionCase];
-export const prepositionCases = Object.values(
-  prepositionCase,
-) as PrepositionCase[];
+import { Inflection } from "./Inflection.entity";
 
 /**
  * Inflection metadata for preposition lexemes.

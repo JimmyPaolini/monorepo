@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import { StringCase, type StringCaseValue } from "./types.js";
+import { StringCase, type StringCaseValue } from "./types";
 
 export const APPLICATIONS_DIRECTORY = "applications";
 export const MODULES_DIRECTORY = "src/modules";

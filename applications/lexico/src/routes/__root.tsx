@@ -31,6 +31,9 @@ import { Logo } from "../components/layout";
 
 import type { ReactNode } from "react";
 
+/**
+ *
+ */
 interface NavigationItem {
   href: string;
   icon: ReactNode;

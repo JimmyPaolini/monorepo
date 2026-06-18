@@ -50,6 +50,7 @@ export class AspectsService {
 
   // 🔏 Private Methods
 
+  /** Applies a forming or dissolving simple-aspect event to the active aspect snapshot map. */
   private applyEventToMap(
     map: Map<string, AspectBodies>,
     event: Event,
@@ -66,6 +67,7 @@ export class AspectsService {
     }
   }
 
+  /** Runs composite-aspect detectors against current and previous aspect-body snapshots. */
   private detectCompositeAspects(
     currentAspectBodies: AspectBodies[],
     minute: Moment,
@@ -83,6 +85,7 @@ export class AspectsService {
     return detectedEvents;
   }
 
+  /** Runs all simple-aspect detectors for a minute and flattens their detected events. */
   private detectSimpleAspects(
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
     minute: Moment,
@@ -96,6 +99,7 @@ export class AspectsService {
     return detectedEvents;
   }
 
+  /** Extracts celestial bodies referenced in normalized event categories. */
   private extractEventBodies(
     normalizedCategories: string[],
     lowercaseBodies: string[],
@@ -113,11 +117,13 @@ export class AspectsService {
     return eventBodies;
   }
 
+  /** Creates an order-insensitive compound key for a body pair and aspect type. */
   private makeKey(body1: Body, body2: Body, aspect: Aspect): string {
     const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
     return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
   }
 
+  /** Parses a simple-aspect event into typed bodies, aspect, and phase direction flags. */
   private parseSimpleAspectEvent(
     event: Event,
     lowercaseBodies: string[],

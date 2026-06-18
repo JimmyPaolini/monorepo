@@ -2,11 +2,9 @@ import { Module } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import {
-  LEXICO_DATABASE_ENTITIES,
-  LexicoNamingStrategy,
-} from "./database.constants.js";
-import { DatabaseService } from "./database.service.js";
+import { LEXICO_DATABASE_ENTITIES } from "./data-source";
+import { LexicoNamingStrategy } from "./database.constants";
+import { DatabaseService } from "./database.service";
 
 /**
  * Database module handling the TypeORM setup for Lexico.

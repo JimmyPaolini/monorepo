@@ -20,6 +20,7 @@ export class TwilightsBuilderService {
     "Twilight",
   ];
 
+  /** Creates a timestamped twilight transition event and logs the detected boundary. */
   private buildTransitionEvent(
     date: Moment,
     description: string,

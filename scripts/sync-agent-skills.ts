@@ -31,6 +31,9 @@ const SKILLS_DIR = path.join(WORKSPACE_ROOT, "documentation/skills");
 const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
 const MODE = process.argv[2] || "check";
 
+/**
+ *
+ */
 interface Skill {
   description: string;
   filePath: string;

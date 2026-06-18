@@ -4,12 +4,12 @@ import prompts from "prompts";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { LiteratureService } from "./literature.service.js";
+import { LiteratureService } from "./literature.service";
 
 import type {
   LibraryEntry,
   LiteratureCommandOptions,
-} from "./literature.types.js";
+} from "./literature.types";
 
 /**
  * Ingests markdown texts from `data/library` into literature entities with
@@ -37,6 +37,9 @@ export class LiteratureCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Deduplicate by provider for literature ingestion.
+   */
   private deduplicateByProvider(texts: LibraryEntry[]): LibraryEntry[] {
     const priorityProviders = [
       "perseus",
@@ -66,6 +69,9 @@ export class LiteratureCommand extends CommandRunner {
     return [...textMap.values()];
   }
 
+  /**
+   * Gets author choices used by literature ingestion.
+   */
   private async getAuthorChoices(
     provider?: string,
   ): Promise<{ title: string; value: string }[]> {
@@ -79,6 +85,9 @@ export class LiteratureCommand extends CommandRunner {
     return authors.map((author) => ({ title: author, value: author }));
   }
 
+  /**
+   * Gets provider choices used by literature ingestion.
+   */
   private async getProviderChoices(): Promise<
     { title: string; value: string }[]
   > {
@@ -89,6 +98,9 @@ export class LiteratureCommand extends CommandRunner {
     return providers.map((provider) => ({ title: provider, value: provider }));
   }
 
+  /**
+   * Gets text choices used by literature ingestion.
+   */
   private async getTextChoices(
     provider?: string,
     authorSlug?: string,
@@ -110,6 +122,9 @@ export class LiteratureCommand extends CommandRunner {
     return textSlugs.map((textSlug) => ({ title: textSlug, value: textSlug }));
   }
 
+  /**
+   * Select texts to ingest for literature ingestion.
+   */
   private selectTextsToIngest(args: {
     author: string | undefined;
     library: LibraryEntry[];

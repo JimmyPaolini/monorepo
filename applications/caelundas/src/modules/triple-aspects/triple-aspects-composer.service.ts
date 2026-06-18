@@ -6,7 +6,7 @@ import {
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
 import type { ProgressiveBodiesMeta } from "./triple-aspects.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -109,6 +109,9 @@ export class TripleAspectsComposerService {
     );
   }
 
+  /**
+   * Builds progressive bodies meta.
+   */
   private buildProgressiveBodiesMeta(
     forming: Event,
     aspectCapitalized: string,
@@ -135,6 +138,9 @@ export class TripleAspectsComposerService {
     return this.resolveProgressiveMeta(bodiesCapitalized, aspect);
   }
 
+  /**
+   * Builds triple aspect categories.
+   */
   private buildTripleAspectCategories(args: {
     body1Capitalized: string;
     body2Capitalized: string;
@@ -171,6 +177,9 @@ export class TripleAspectsComposerService {
     return categories;
   }
 
+  /**
+   * Builds triple aspect description.
+   */
   private buildTripleAspectDescription(args: {
     bodiesSorted: (string | undefined)[];
     focalOrApexBody: Body | undefined;
@@ -184,6 +193,9 @@ export class TripleAspectsComposerService {
       : base;
   }
 
+  /**
+   * Derives focal extra info.
+   */
   private getFocalExtraInfo(
     formingCategories: string[],
     aspect: TripleAspect,
@@ -205,6 +217,9 @@ export class TripleAspectsComposerService {
     return "";
   }
 
+  /**
+   * Derives phase emoji.
+   */
   private getPhaseEmoji(phase: AspectPhase): string {
     if (phase === "forming") {
       return "➡️ ";
@@ -215,6 +230,9 @@ export class TripleAspectsComposerService {
     return "🎯 ";
   }
 
+  /**
+   * Pairs progressive group pairs.
+   */
   private pairProgressiveGroupPairs(
     formingEvents: Event[],
     dissolvingEvents: Event[],
@@ -257,6 +275,9 @@ export class TripleAspectsComposerService {
     return results;
   }
 
+  /**
+   * Resolves aspect type.
+   */
   private resolveAspectType(aspectCapitalized: string): null | TripleAspect {
     if (aspectCapitalized === "Grand Trine") {
       return "grand trine";
@@ -270,6 +291,9 @@ export class TripleAspectsComposerService {
     return null;
   }
 
+  /**
+   * Resolves progressive meta.
+   */
   private resolveProgressiveMeta(
     bodiesCapitalized: string[],
     aspect: TripleAspect,

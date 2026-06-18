@@ -1,12 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 
-import { AuditableEntity } from "../base/Auditable.entity.js";
+import { AuditableEntity } from "../base/Auditable.entity";
 
-import type { Word } from "../dictionary/Word.entity.js";
-import type { Author } from "./Author.entity.js";
-import type { Line } from "./Line.entity.js";
-import type { Text } from "./Text.entity.js";
+import type { Word } from "../dictionary/Word.entity";
+import type { Author } from "./Author.entity";
+import type { Line } from "./Line.entity";
+import type { Text } from "./Text.entity";
 
 /**
  * Represents a single token (word or punctuation) parsed from a line of text.

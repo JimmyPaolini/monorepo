@@ -13,7 +13,7 @@ import type {
   ReleaseConfig,
   Scope,
   Type,
-} from "./sync-conventional-config.helpers.js";
+} from "./sync-conventional-config.helpers";
 
 const WORKSPACE_ROOT = path.join(
   path.dirname(new URL(import.meta.url).pathname),

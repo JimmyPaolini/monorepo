@@ -5,7 +5,7 @@ import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LibraryCommand } from "./library.command";
-import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants.js";
+import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants";
 
 describe("LibraryCommand", () => {
   let command: LibraryCommand;

@@ -2,14 +2,15 @@ import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import {
-  Form,
   type FormCase,
   formCaseValues,
   type FormGender,
   formGenderValues,
   type FormNumber,
   formNumberValues,
-} from "./Form.entity.js";
+} from "../../../database/database.constants";
+
+import { Form } from "./Form.entity";
 
 /** A declined form for an adjective (gender + case + number). */
 @ChildEntity("adjectival")

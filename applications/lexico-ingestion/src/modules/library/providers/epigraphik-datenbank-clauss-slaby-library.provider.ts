@@ -9,6 +9,10 @@ import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
 
+/**
+ * Shape of a single record in the raw JSON chunks returned by the EDCS API.
+ * `inschriften` is a sparse tuple where index 0 carries the raw inscription text (possibly HTML-tagged).
+ */
 interface EpigraphikDatenbankClaussSlabyRecord {
   obj: {
     "edcs-id"?: string;
@@ -29,6 +33,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds structured data used during EDCS library ingestion.
+   */
   private createSourceAuthor(authorSlug: string, host: string): Author {
     const author = new Author();
     author.name = "Epigraphik-Datenbank Clauss-Slaby";
@@ -38,6 +45,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return author;
   }
 
+  /**
+   * Resolves derived values needed by EDCS library ingestion.
+   */
   private getOrCreateBookText(args: {
     author: Author;
     bookSlug: string;
@@ -58,6 +68,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return bookText;
   }
 
+  /**
+   * Processes one workflow step for EDCS library ingestion.
+   */
   private processEdcsRecord(
     item: EpigraphikDatenbankClaussSlabyRecord,
     provinceData: Map<string, string[]>,
@@ -79,6 +92,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     provinceData.set(provinz, provArray);
   }
 
+  /**
+   * Processes one workflow step for EDCS library ingestion.
+   */
   private async processSourceChunkFile(args: {
     file: string;
     index: number;
@@ -104,6 +120,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     }
   }
 
+  /**
+   * Processes one workflow step for EDCS library ingestion.
+   */
   private async processSourceChunkPhase(
     chunkFiles: string[],
     sourceDataDirectory: string,
@@ -123,6 +142,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     return provinceData;
   }
 
+  /**
+   * Loads source data required by EDCS library ingestion.
+   */
   private async readSourceChunkFiles(
     sourceDataDirectory: string,
   ): Promise<null | string[]> {
@@ -137,6 +159,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     }
   }
 
+  /**
+   * Persists generated output for EDCS library ingestion.
+   */
   private async saveEdcsChunkFile(args: {
     authorSlug: string;
     bookDirectory: string;
@@ -177,6 +202,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     );
   }
 
+  /**
+   * Persists generated output for EDCS library ingestion.
+   */
   private async saveEdcsProvince(args: {
     author: Author;
     authorDirectory: string;
@@ -225,6 +253,9 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     this.logger.log(`🌍 Completed province: ${province}`);
   }
 
+  /**
+   * Persists generated output for EDCS library ingestion.
+   */
   private async saveEdcsProvincePhase(args: {
     author: Author;
     authorDirectory: string;

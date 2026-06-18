@@ -40,6 +40,9 @@ export class ManualService {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds praenomen lexeme for manual lexeme ingestion.
+   */
   private buildPraenomenLexeme(
     abbreviation: string,
     praenomen: { feminine?: string; masculine?: string },
@@ -60,6 +63,9 @@ export class ManualService {
     return lexeme;
   }
 
+  /**
+   * Builds praenomen translations for manual lexeme ingestion.
+   */
   private buildPraenomenTranslations(
     praenomen: { feminine?: string; masculine?: string },
     lexeme: Lexeme,
@@ -84,6 +90,9 @@ export class ManualService {
     return translations;
   }
 
+  /**
+   * Ingests praenomen abbreviations in the manual lexeme ingestion pipeline.
+   */
   private async ingestPraenomenAbbreviations(): Promise<void> {
     this.logger.log("🏷️ Ingesting praenomen abbreviations");
     for (const [abbreviation, praenomen] of Object.entries(
@@ -96,6 +105,9 @@ export class ManualService {
     this.logger.log("🏷️ Ingested praenomen abbreviations");
   }
 
+  /**
+   * Ingests roman numerals in the manual lexeme ingestion pipeline.
+   */
   private async ingestRomanNumerals(): Promise<void> {
     this.logger.log("🔢 Ingesting Roman numerals");
     for (let index = 1; index < 4000; index++) {
@@ -116,6 +128,9 @@ export class ManualService {
     this.logger.log("🔢 Ingested Roman numerals");
   }
 
+  /**
+   * Resolves praenomen gender for manual lexeme ingestion.
+   */
   private resolvePraenomenGender(praenomen: {
     feminine?: string;
     masculine?: string;

@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, DeleteDateColumn } from "typeorm";
 
-import { UpdatableEntity } from "./Updatable.entity.js";
+import { UpdatableEntity } from "./Updatable.entity";
 
 /** Base class providing deletion tracking columns */
 @ObjectType({ isAbstract: true })

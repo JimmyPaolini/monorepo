@@ -120,6 +120,9 @@ interface InflectionBadgeProps {
   prepositionCase: string | undefined;
 }
 
+/**
+ *
+ */
 type InflectionLabelBuilder = (inflection: Inflection) => string;
 
 /**
@@ -295,6 +298,9 @@ const inflectionLabelBuilders: Partial<
   verb: (inflection) => buildVerbInflectionLabel(inflection as VerbInflection),
 };
 
+/**
+ *
+ */
 function buildAdjectiveInflectionLabel(
   inflection: AdjectiveInflection,
 ): string {
@@ -304,6 +310,9 @@ function buildAdjectiveInflectionLabel(
   return degree ?? "";
 }
 
+/**
+ *
+ */
 function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
   const { degree, type } = inflection;
   if (type && degree) return `${type}, ${degree}`;
@@ -311,6 +320,9 @@ function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
   return degree ?? "";
 }
 
+/**
+ *
+ */
 function buildInflectionLabel(
   inflection: Inflection,
   partOfSpeech: PartOfSpeech,
@@ -321,6 +333,9 @@ function buildInflectionLabel(
     : ((inflection as Uninflected).other ?? "");
 }
 
+/**
+ *
+ */
 function buildNounInflectionLabel(inflection: NounInflection): string {
   const { declension, gender } = inflection;
   if (declension && gender) return `${declension} declension, ${gender}`;
@@ -328,12 +343,18 @@ function buildNounInflectionLabel(inflection: NounInflection): string {
   return gender ?? "";
 }
 
+/**
+ *
+ */
 function buildPrepositionInflectionLabel(
   inflection: PrepositionInflection,
 ): string {
   return inflection.case ?? "";
 }
 
+/**
+ *
+ */
 function buildVerbInflectionLabel(inflection: VerbInflection): string {
   return inflection.conjugation ? `${inflection.conjugation} conjugation` : "";
 }

@@ -42,6 +42,9 @@ const MARKER = "pr-template";
 
 // ─── Template Loading ─────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function checkTargetSync(templateContent: string, targetFile: string): boolean {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
   const fileContent = readFileSync(targetFile, "utf8");
@@ -81,6 +84,9 @@ function extractMarkerContent(
 
 // ─── Marker Utilities ─────────────────────────────────────────────────────────
 
+/**
+ *
+ */
 function handleCheckMode(templateContent: string): void {
   let allInSync = true;
   for (const targetFile of TARGET_FILES) {
@@ -97,6 +103,9 @@ function handleCheckMode(templateContent: string): void {
   console.log("✅ PR template is in sync");
 }
 
+/**
+ *
+ */
 function handleWriteMode(templateContent: string): void {
   const outOfSyncTargets = TARGET_FILES.filter(
     (targetFile) => !checkTargetSync(templateContent, targetFile),
@@ -110,10 +119,16 @@ function handleWriteMode(templateContent: string): void {
   }
 }
 
+/**
+ *
+ */
 function loadTemplate(): string {
   return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
 }
 
+/**
+ *
+ */
 function main(): void {
   const templateContent = loadTemplate();
   if (MODE === "check") {
@@ -145,10 +160,16 @@ function replaceMarkerContent(
   return content.replace(pattern, `$1\n${newContent}\n\n$2`);
 }
 
+/**
+ *
+ */
 function wrapInCodeBlock(content: string): string {
   return `\`\`\`markdown\n${content}\n\`\`\``;
 }
 
+/**
+ *
+ */
 function writeTargetSync(templateContent: string, targetFile: string): void {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
   console.log(`🔄 Syncing ${targetName} PR template...`);

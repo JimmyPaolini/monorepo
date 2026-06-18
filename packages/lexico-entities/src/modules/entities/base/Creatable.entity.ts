@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, CreateDateColumn } from "typeorm";
 
-import { IdentifiableEntity } from "./Identifiable.entity.js";
+import { IdentifiableEntity } from "./Identifiable.entity";
 
 /** Base class providing creation tracking columns */
 @ObjectType({ isAbstract: true })

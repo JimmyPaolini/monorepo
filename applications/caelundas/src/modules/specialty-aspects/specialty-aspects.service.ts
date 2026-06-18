@@ -14,7 +14,7 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service.js";
+import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service";
 
 import type { LongitudesWindow } from "./specialty-aspects.types";
 import type {
@@ -61,6 +61,7 @@ export class SpecialtyAspectsService {
 
   // 🔏 Private Methods
 
+  /** Detects a specialty-aspect event for one body pair using three-point longitude sampling. */
   private detectBodyPairEvent(args: {
     body1: Body;
     body2: Body;
@@ -97,6 +98,7 @@ export class SpecialtyAspectsService {
     });
   }
 
+  /** Reads previous/current/next longitudes for a body pair from coordinate ephemerides. */
   private detectBodyPairLongitudes(args: {
     body1: Body;
     body2: Body;

@@ -2,6 +2,9 @@ import { createServerFn as createServerFunction } from "@tanstack/react-start";
 
 import type { EntryFull, EntrySearchResult } from "./types";
 
+/**
+ *
+ */
 interface SearchInput {
   language?: "auto" | "english" | "latin";
   query: string;
@@ -16,6 +19,9 @@ export const searchEntries = createServerFunction({ method: "GET" })
     },
   );
 
+/**
+ *
+ */
 interface GetEntryInput {
   id: string;
 }

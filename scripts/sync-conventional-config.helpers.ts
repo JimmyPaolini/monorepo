@@ -16,7 +16,7 @@ import _ from "lodash";
 import {
   SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES,
   SYNC_CONVENTIONAL_CONFIG_SKILL_FILES,
-} from "./sync-conventional-config.constants.js";
+} from "./sync-conventional-config.constants";
 import {
   getPresetConfigTypes,
   getReleaseRulesTypes,
@@ -25,7 +25,7 @@ import {
   writeReleaseConfigSync,
   writeSettingsSync,
   writeSkillSync,
-} from "./sync-conventional-config.io.js";
+} from "./sync-conventional-config.io";
 import {
   checkAllSkillsSync,
   checkAllTemplatesSync,
@@ -34,7 +34,7 @@ import {
   checkReleaseRulesSync,
   checkSettingsSync,
   checkSkillSync,
-} from "./sync-conventional-config.validators.js";
+} from "./sync-conventional-config.validators";
 
 // 🔧 Runtime Environment & Constants
 
@@ -110,6 +110,9 @@ export interface Type {
   name: string;
 }
 
+/**
+ *
+ */
 interface SyncContext {
   config: ConventionalConfig;
   scopeNames: string[];

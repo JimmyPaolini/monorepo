@@ -8,7 +8,7 @@ import {
   signs,
   specialtyAspects,
 } from "./caelundas.constants";
-import { symbolByDecan } from "./caelundas.symbol-constants.js";
+import { symbolByDecan } from "./caelundas.symbol-constants";
 
 import type {
   aspectPhases,
@@ -34,7 +34,7 @@ import type {
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
   symbolByVenusianPhase,
-} from "./caelundas.symbol-constants.js";
+} from "./caelundas.symbol-constants";
 
 // #region Signs 🪧
 

@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 
-import { EntitiesService } from "./entities.service.js";
+import { EntitiesService } from "./entities.service";
 
 /**
  * TODO: Document the entities module.

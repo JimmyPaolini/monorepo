@@ -36,6 +36,9 @@ export class WordsService {
 
   // 🔏 Private Methods
 
+  /**
+   * Builds word form values for word indexing.
+   */
   private buildWordFormValues(
     formsByWord: Map<string, Set<Form>>,
     wordMap: Map<string, Word>,
@@ -56,6 +59,9 @@ export class WordsService {
     return wordFormValues;
   }
 
+  /**
+   * Escape capitals for word indexing.
+   */
   private escapeCapitals(word: string): string {
     return word.replaceAll(
       /[A-Z]/g,
@@ -63,6 +69,9 @@ export class WordsService {
     );
   }
 
+  /**
+   * Insert word form chunks for word indexing.
+   */
   private async insertWordFormChunks(
     wordFormValues: Partial<WordForm>[],
   ): Promise<void> {
@@ -80,6 +89,9 @@ export class WordsService {
     }
   }
 
+  /**
+   * Normalizes input values used by word indexing.
+   */
   private normalize(str: string): string {
     return str
       .normalize("NFD")

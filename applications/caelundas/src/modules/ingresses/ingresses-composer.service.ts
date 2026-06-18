@@ -68,6 +68,9 @@ export class IngressesComposerService {
 
   // 🔏 Private Methods
 
+  /**
+   * Maps an ecliptic longitude to its containing zodiac sign range.
+   */
   private static getSign(longitude: number): Sign {
     const signDegreeRangeEntry = objectEntries(
       IngressesComposerService.degreeRangeBySign,

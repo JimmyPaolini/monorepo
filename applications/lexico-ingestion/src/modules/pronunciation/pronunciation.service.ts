@@ -5,10 +5,10 @@ import { Repository } from "typeorm";
 
 import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
-import { PronunciationClassifier } from "./pronunciation.classifier.js";
-import { classicalSubstitutions } from "./pronunciation.constants.js";
+import { PronunciationClassifier } from "./pronunciation.classifier";
+import { classicalSubstitutions } from "./pronunciation.constants";
 
 import type { AnyNode } from "domhandler";
 
@@ -34,6 +34,9 @@ export class PronunciationService {
 
   // 🔑 Public Fields
 
+  /**
+   * Builds default pronunciation for pronunciation parsing.
+   */
   private buildDefaultPronunciation(
     variant: "classical" | "ecclesiastical" | "vulgar",
     phonemes: null | string,
@@ -46,9 +49,15 @@ export class PronunciationService {
     return pronunciation;
   }
 
+  /**
+   * Builds pronunciations for pronunciation parsing.
+   */
   private buildPronunciations(phonemes: (string | string[][])[]): string[] {
     const pronunciations: string[] = [];
 
+    /**
+     * Builds  for pronunciation parsing.
+     */
     function build(
       previous: (string | string[][])[],
       next: (string | string[][])[],
@@ -74,6 +83,9 @@ export class PronunciationService {
     return pronunciations;
   }
 
+  /**
+   * Gets classical phonemes used by pronunciation parsing.
+   */
   private getClassicalPhonemes(wordString: string): string {
     let normalizedWordString = wordString;
     for (const [pattern, replacement] of Object.entries(
@@ -105,6 +117,9 @@ export class PronunciationService {
     return phonemes.join(" ");
   }
 
+  /**
+   * Gets ecclesiastical phonemes used by pronunciation parsing.
+   */
   private getEcclesiasticalPhonemes(
     wordString: string,
   ): (string | string[][])[] {
@@ -128,6 +143,9 @@ export class PronunciationService {
     return phonemes;
   }
 
+  /**
+   * Gets ecclesiastical pronunciations used by pronunciation parsing.
+   */
   private getEcclesiasticalPronunciations(word: string): string[] {
     return this.buildPronunciations(this.getEcclesiasticalPhonemes(word));
   }
