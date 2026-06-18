@@ -1,5 +1,8 @@
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -8,15 +11,29 @@ import { EclipseEventService } from "./eclipse-event.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("EclipseEventService", () => {
-  const logger = new LoggerService();
-  const progressiveUtilitiesService = {
-    pairProgressiveEvents: vi.fn(),
-  };
+  let service: EclipseEventService;
+  let progressiveUtilitiesService: ProgressiveUtilities;
 
-  const service = new EclipseEventService(
-    logger,
-    progressiveUtilitiesService as never,
-  );
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EclipseEventService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(EclipseEventService);
+    await module.resolve(LoggerService);
+    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -147,7 +164,7 @@ describe("EclipseEventService", () => {
         summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
       };
 
-      progressiveUtilitiesService.pairProgressiveEvents
+      vi.mocked(progressiveUtilitiesService.pairProgressiveEvents)
         .mockReturnValueOnce([[lunarBeginning, lunarEnding]])
         .mockReturnValueOnce([[solarBeginning, solarEnding]])
         .mockReturnValueOnce([])
@@ -183,7 +200,7 @@ describe("EclipseEventService", () => {
     });
 
     it("returns empty array when no eclipse events exist", () => {
-      progressiveUtilitiesService.pairProgressiveEvents
+      vi.mocked(progressiveUtilitiesService.pairProgressiveEvents)
         .mockReturnValueOnce([])
         .mockReturnValueOnce([])
         .mockReturnValueOnce([])

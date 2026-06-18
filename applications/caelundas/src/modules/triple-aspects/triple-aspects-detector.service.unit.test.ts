@@ -1,6 +1,8 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
@@ -10,11 +12,25 @@ import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.servic
 describe("TripleAspectsDetectorService", () => {
   let service: TripleAspectsDetectorService;
 
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        TripleAspectsDetectorService,
+        TripleAspectsComposerService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+      ],
+    }).compile();
+
+    service = await module.resolve(TripleAspectsDetectorService);
+    await module.resolve(LoggerService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   beforeEach(() => {
-    const tripleAspectsComposerService = new TripleAspectsComposerService(
-      new LoggerService(),
-    );
-    service = new TripleAspectsDetectorService(tripleAspectsComposerService);
+    vi.clearAllMocks();
   });
 
   describe("groupAspectsByType", () => {

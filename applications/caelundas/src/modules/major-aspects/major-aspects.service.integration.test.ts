@@ -68,7 +68,7 @@ beforeAll(async () => {
       ProgressiveUtilities,
     ],
   }).compile();
-  service = module.get(MajorAspectsService);
+  service = await module.resolve(MajorAspectsService);
 });
 
 /**

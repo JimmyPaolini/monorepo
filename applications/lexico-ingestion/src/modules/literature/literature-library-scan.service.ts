@@ -11,6 +11,10 @@ import type { LibraryEntry } from "./literature.types";
  */
 @Injectable()
 export class LiteratureLibraryScanService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Recursively walks one provider directory and collects markdown entries.
    */

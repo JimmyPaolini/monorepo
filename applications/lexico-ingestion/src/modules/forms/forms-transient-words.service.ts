@@ -7,6 +7,10 @@ import type { Form } from "@monorepo/lexico-entities";
  */
 @Injectable()
 export class FormsTransientWordsService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   private readonly transientWordsByForm = new WeakMap<Form, string[]>();
 
   /**

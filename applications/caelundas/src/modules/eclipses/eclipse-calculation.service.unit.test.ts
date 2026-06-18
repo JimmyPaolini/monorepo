@@ -1,45 +1,49 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { EclipseCalculationService } from "./eclipse-calculation.service";
+import { EclipseEventService } from "./eclipse-event.service";
 import { EclipseGeometryService } from "./eclipse-geometry.service";
 import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 
 import type { EclipseCoordinates } from "./eclipses.types";
 
 describe("EclipseCalculationService", () => {
-  const logger = new LoggerService();
-  const ephemerisService = {
-    getAzimuthElevationFromEphemeris: vi.fn(),
-    getCoordinateFromEphemeris: vi.fn(),
-    getDiameterFromEphemeris: vi.fn(),
-  };
-  const geometryService = new EclipseGeometryService(
-    logger,
-    ephemerisService as never,
-    new MathService(),
-  );
-  const eclipseEventService = {
-    buildLunarEclipseEvent: vi.fn(),
-    buildSolarEclipseEvent: vi.fn(),
-  };
-  const topocentricService = new EclipseTopocentricService(
-    logger,
-    new MathService(),
-    geometryService,
-    eclipseEventService as never,
-  );
+  let service: EclipseCalculationService;
+  let ephemerisService: ReturnType<typeof createMock<EphemerisService>>;
+  let eclipseEventService: ReturnType<typeof createMock<EclipseEventService>>;
 
-  const service = new EclipseCalculationService(
-    logger,
-    new MathService(),
-    geometryService,
-    topocentricService,
-    eclipseEventService as never,
-  );
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EclipseCalculationService,
+        EclipseGeometryService,
+        EclipseTopocentricService,
+        MathService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        {
+          provide: EclipseEventService,
+          useValue: createMock<EclipseEventService>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(EclipseCalculationService);
+    await module.resolve(LoggerService);
+    ephemerisService = await module.resolve(EphemerisService);
+    eclipseEventService = await module.resolve(EclipseEventService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();

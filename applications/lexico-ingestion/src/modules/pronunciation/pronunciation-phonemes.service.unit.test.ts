@@ -1,9 +1,18 @@
-import { describe, expect, it } from "vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 
 describe("PronunciationPhonemesService", () => {
-  const service = new PronunciationPhonemesService();
+  let service: PronunciationPhonemesService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [PronunciationPhonemesService],
+    }).compile();
+
+    service = await module.resolve(PronunciationPhonemesService);
+  });
 
   it("should be defined", () => {
     expect(service).toBeDefined();

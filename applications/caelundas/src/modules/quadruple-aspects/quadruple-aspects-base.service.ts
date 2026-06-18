@@ -4,6 +4,7 @@ import {
   symbolByQuadrupleAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
 import type { GetQuadrupleAspectEventArguments } from "./quadruple-aspects.types";
@@ -18,7 +19,12 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /** Primitive helper methods for quadruple-aspect pattern detection and event shaping. */
+@Injectable()
 export class QuadrupleAspectsBaseService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔏 Private Methods
 
   /**

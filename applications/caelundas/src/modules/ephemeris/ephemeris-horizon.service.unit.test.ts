@@ -1,10 +1,12 @@
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 import { EphemerisHorizonService } from "./ephemeris-horizon.service";
+import { EphemerisTimeService } from "./ephemeris-time.service";
 
-import type { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
-import type { EphemerisTimeService } from "./ephemeris-time.service";
 import type * as Sweph from "sweph";
 
 vi.mock("sweph", async (importOriginal) => {
@@ -16,33 +18,58 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisHorizonService", () => {
-  const coordinateService = {
-    getBodyCoordinatesWithDistance: vi.fn().mockReturnValue({
-      distance: 1.01,
-      latitude: -1.2,
-      longitude: 120.5,
-    }),
-  };
-  const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
+  let service: EphemerisHorizonService;
+  let coordinateService: ReturnType<
+    typeof createMock<EphemerisCoordinateService>
+  >;
+  let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EphemerisHorizonService,
+        {
+          provide: EphemerisCoordinateService,
+          useValue: createMock<EphemerisCoordinateService>(),
+        },
+        {
+          provide: EphemerisTimeService,
+          useValue: createMock<EphemerisTimeService>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(EphemerisHorizonService);
+    coordinateService = await module.resolve(EphemerisCoordinateService);
+    timeService = await module.resolve(EphemerisTimeService);
+
+    vi.mocked(coordinateService.getBodyCoordinatesWithDistance).mockReturnValue(
+      {
+        distance: 1.01,
+        latitude: -1.2,
+        longitude: 120.5,
+      },
+    );
+    vi.mocked(timeService.dateToJulianDays).mockReturnValue({
       julianDayEphemerisTime: 2_460_395.5,
       julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
-      const values: moment.Moment[] = [];
-      let current = start.clone();
-      while (current.valueOf() <= end.valueOf()) {
-        values.push(current.clone());
-        current = current.clone().add(1, "minute");
-      }
-      return values;
-    }),
-  };
+    });
+    vi.mocked(timeService.generateMinutes).mockImplementation(
+      (start: moment.Moment, end: moment.Moment) => {
+        const values: moment.Moment[] = [];
+        let current = start.clone();
+        while (current.valueOf() <= end.valueOf()) {
+          values.push(current.clone());
+          current = current.clone().add(1, "minute");
+        }
+        return values;
+      },
+    );
+  });
 
-  const service = new EphemerisHorizonService(
-    coordinateService as unknown as EphemerisCoordinateService,
-    timeService as unknown as EphemerisTimeService,
-  );
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   describe("computeAzimuthElevationForMinute", () => {
     it("returns azimuth/elevation from sweph azalt", () => {

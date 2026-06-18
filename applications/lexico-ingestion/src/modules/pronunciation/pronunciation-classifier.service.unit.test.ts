@@ -2,18 +2,18 @@ import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PronunciationClassicalService } from "./pronunciation-classical.service";
-import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationClassifierService } from "./pronunciation-classifier.service";
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 
-describe("PronunciationClassifier", () => {
-  let service: PronunciationClassifier;
+describe("PronunciationClassifierService", () => {
+  let service: PronunciationClassifierService;
   const processClassicalCharacter = vi.fn();
   const processEcclesiasticalCharacter = vi.fn();
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        PronunciationClassifier,
+        PronunciationClassifierService,
         {
           provide: PronunciationClassicalService,
           useValue: { processClassicalCharacter },
@@ -25,7 +25,7 @@ describe("PronunciationClassifier", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PronunciationClassifier);
+    service = await module.resolve(PronunciationClassifierService);
   });
 
   beforeEach(() => {

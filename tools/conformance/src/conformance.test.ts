@@ -1,19 +1,25 @@
-import fs from "node:fs";
+import fs, { globSync } from "node:fs";
 import path from "node:path";
 
 import { workspaceRoot } from "@nx/devkit";
 import { describe, expect, it } from "vitest";
 
+import { converterByStringCase } from "./constants";
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-module/generator";
+import { TEMPLATES_DIRECTORY_PATH as SERVICE_FILES_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-file/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
+import { StringCase } from "./types";
 import {
   stringifyConformanceErrors,
   validateInstanceDirectory,
+  validateInstanceFile,
   validateInstancesDirectory,
 } from "./validators/typescript/files";
+
+import type { InstanceDirectoryValidationResult } from "./validators/typescript/types";
 
 interface ConformanceTemplateInstance {
   /** Absolute instance paths to validate for this template. */
@@ -33,6 +39,14 @@ const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
+const SERVICE_TEMPLATE_FILE_PATH = path.join(
+  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+  "__nameKebabCase__.service.ts",
+);
+const SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH = path.join(
+  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+  "__nameKebabCase__.service.unit.test.ts",
+);
 
 function resolveNestjsModuleDirectories(
   applications: { rootPath: string; tags: string[] }[],
@@ -58,88 +72,6 @@ function resolveNestjsModuleDirectories(
         )
         .map((entry) => path.join(modulesPath, entry.name)),
     );
-}
-
-function resolveTemplateInstances(): ConformanceTemplateInstance[] {
-  const applications = resolveWorkspaceApplications();
-  const allNestjsModules = resolveNestjsModuleDirectories(
-    applications,
-    NESTJS_APPLICATION_TAG,
-  );
-  const commandApplicationModules = resolveNestjsModuleDirectories(
-    applications,
-    NESTJS_COMMAND_APPLICATION_TAG,
-  );
-
-  const commandModules = commandApplicationModules.filter((directoryPath) =>
-    fs.existsSync(
-      path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-    ),
-  );
-
-  const graphqlModules = allNestjsModules.filter((directoryPath) =>
-    fs.existsSync(
-      path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
-    ),
-  );
-
-  const serviceModules = allNestjsModules.filter(
-    (directoryPath) =>
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-      ) &&
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
-      ) &&
-      fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
-      ),
-  );
-
-  const instances: ConformanceTemplateInstance[] = [
-    {
-      instanceDirectoryPaths: applications
-        .filter((application) =>
-          application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
-        )
-        .map((application) => application.rootPath),
-      instanceType: "single",
-      template: "nestjs-command-application",
-      templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
-    },
-    {
-      instanceDirectoryPaths: applications
-        .filter((application) =>
-          application.tags.includes(NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG),
-        )
-        .map((application) => application.rootPath),
-      instanceType: "single",
-      template: "nestjs-graphql-application",
-      templateDirectoryPath: GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
-    },
-    {
-      instanceDirectoryPaths: commandModules,
-      instanceType: "single",
-      template: "nestjs-command-module",
-      templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
-    },
-    {
-      instanceDirectoryPaths: graphqlModules,
-      instanceType: "single",
-      template: "nestjs-graphql-module",
-      templateDirectoryPath: GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH,
-    },
-    {
-      instanceDirectoryPaths: serviceModules,
-      instanceType: "single",
-      template: "nestjs-service-module",
-      templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
-    },
-  ];
-
-  return instances.filter(
-    (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
-  );
 }
 
 function resolveWorkspaceApplications(): {
@@ -186,7 +118,111 @@ function resolveWorkspaceApplications(): {
 }
 
 describe("generator template conformance", () => {
-  for (const conformanceCase of resolveTemplateInstances()) {
+  const applications = resolveWorkspaceApplications();
+  const allNestjsModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_APPLICATION_TAG,
+  );
+  const commandApplicationModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_COMMAND_APPLICATION_TAG,
+  );
+
+  const commandModules = commandApplicationModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+    ),
+  );
+
+  const graphqlModules = allNestjsModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+    ),
+  );
+
+  const serviceModules = allNestjsModules.filter(
+    (directoryPath) =>
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
+      ),
+  );
+  const serviceFileModules = allNestjsModules.filter(
+    (directoryPath) =>
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
+      ),
+  );
+
+  const conformanceTemplateInstances: ConformanceTemplateInstance[] = [
+    {
+      instanceDirectoryPaths: applications
+        .filter((application) =>
+          application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
+        )
+        .map((application) => application.rootPath),
+      instanceType: "single",
+      template: "nestjs-command-application",
+      templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: applications
+        .filter((application) =>
+          application.tags.includes(NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG),
+        )
+        .map((application) => application.rootPath),
+      instanceType: "single",
+      template: "nestjs-graphql-application",
+      templateDirectoryPath: GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: commandModules,
+      instanceType: "single",
+      template: "nestjs-command-module",
+      templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: graphqlModules,
+      instanceType: "single",
+      template: "nestjs-graphql-module",
+      templateDirectoryPath: GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: serviceModules,
+      instanceType: "single",
+      template: "nestjs-service-module",
+      templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: serviceFileModules,
+      instanceType: "single",
+      template: "nestjs-service-file",
+      templateDirectoryPath: SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+    },
+  ];
+
+  const conformanceCases = conformanceTemplateInstances.filter(
+    (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
+  );
+
+  for (const conformanceCase of conformanceCases) {
     it(`validates "${conformanceCase.template}" generated instances`, () => {
       const results =
         conformanceCase.instanceType === "single"
@@ -210,4 +246,65 @@ describe("generator template conformance", () => {
       expect(errors).toBeNull();
     });
   }
+
+  it("validates all NestJS service files and tests with nestjs-service-file templates", () => {
+    const nestjsApplications = applications.filter((application) =>
+      application.tags.includes(NESTJS_APPLICATION_TAG),
+    );
+    const serviceFilePaths = nestjsApplications.flatMap((application) => {
+      return [
+        ...globSync(
+          path.join(application.rootPath, "src/modules/*/*.service.ts"),
+        ),
+        ...globSync(
+          path.join(
+            application.rootPath,
+            "src/modules/*/*.service.unit.test.ts",
+          ),
+        ),
+      ];
+    });
+
+    expect(serviceFilePaths.length).toBeGreaterThan(0);
+
+    const serviceFileValidationResults: InstanceDirectoryValidationResult[] =
+      serviceFilePaths.map((serviceFilePath) => {
+        const templateFilePath = serviceFilePath.endsWith(
+          ".service.unit.test.ts",
+        )
+          ? SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH
+          : SERVICE_TEMPLATE_FILE_PATH;
+        const serviceName = path
+          .basename(serviceFilePath)
+          .replace(".service.unit.test.ts", "")
+          .replace(".service.ts", "");
+        const nameKebabCase =
+          converterByStringCase[StringCase.KEBAB_CASE](serviceName);
+        const validationResult = validateInstanceFile({
+          data: {
+            nameCamelCase:
+              converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+            nameKebabCase,
+            namePascalCase:
+              converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+          },
+          instanceFilePath: serviceFilePath,
+          templateFilePath,
+        });
+        return {
+          directoryName: path.relative(
+            workspaceRoot,
+            path.dirname(serviceFilePath),
+          ),
+          results: [
+            {
+              ...validationResult,
+              filename: path.basename(serviceFilePath),
+            },
+          ],
+        };
+      });
+    const errors = stringifyConformanceErrors(serviceFileValidationResults);
+    expect(errors).toBeNull();
+  });
 });

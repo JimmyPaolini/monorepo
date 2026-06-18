@@ -20,7 +20,7 @@ import type { AnyNode } from "domhandler";
  * while handling classical pronunciation rules and shared parsing logic.
  */
 @Injectable()
-export class PronunciationClassifier {
+export class PronunciationClassifierService {
   // 🏗 Dependency Injection
 
   /**
@@ -125,3 +125,5 @@ export class PronunciationClassifier {
     return this.ecclesiasticalService.processEcclesiasticalCharacter(args);
   }
 }
+
+export { PronunciationClassifierService as PronunciationClassifier };

@@ -17,6 +17,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TripleAspectsDetectorService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly tripleAspectsComposerService: TripleAspectsComposerService,
   ) {}

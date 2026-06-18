@@ -57,7 +57,7 @@ describe("ProgressiveService", () => {
     }).compile();
 
     service = await module.resolve(ProgressiveService);
-    utilitiesService = module.get(ProgressiveUtilities);
+    utilitiesService = await module.resolve(ProgressiveUtilities);
   });
 
   beforeEach(() => {

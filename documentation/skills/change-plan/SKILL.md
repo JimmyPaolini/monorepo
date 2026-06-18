@@ -1,22 +1,24 @@
 ---
-agent: "agent"
-description: "Revise an existing implementation plan by selectively re-running discovery, alignment, and design phases to incorporate new requirements, scope changes, or corrected assumptions."
-model: "Claude Sonnet 4.6 (copilot)"
-name: "change-plan"
-argument-hint: "Describe what to change about the plan"
-tools:
-  [
-    vscode/extensions,
-    vscode/askQuestions,
-    vscode/memory,
-    vscode/switchAgent,
-    read,
-    agent,
-    edit/editFiles,
-    search,
-    web,
-    "context7/*",
-  ]
+name: change-plan
+description: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
+user-invocable: true
+argument-hint: "Provide the plan file path and describe the requested scope or approach change."
+compatibility:
+	environments:
+		- vscode
+		- github-copilot
+		- copilot-cli
+context:
+	requires:
+		- documentation/planning/**/*.plan.md
+	optional:
+		- AGENTS.md
+		- nx.json
+metadata:
+	domain: planning
+	lifecycle-stage: change
+	owner: monorepo
+license: MIT
 ---
 
 # Change Implementation Plan
@@ -28,8 +30,6 @@ Your goal is to revise the implementation plan at: **`${input:PlanFile:documenta
 The user wants to change: **`${input:ChangeDescription}`**
 
 Phase 1 and the final two phases (Revision and Confirmation) always execute. Phases 2 (Discovery) and 3 (Alignment) are **optional** — skip them unless the change genuinely requires new research or user clarification. Most changes go straight from Comprehension to Revision.
-
----
 
 ## Phase 1 — Comprehension: Load & Understand the Plan
 
@@ -75,8 +75,6 @@ Based on the impact classification, decide which optional phases to execute:
 | Change is a straightforward task-level edit (reword, reorder, add/remove a specific task) | ❌ Skip             | ❌ Skip             |
 | Change is metadata-only (rename, fix typo, update status)                                 | ❌ Skip             | ❌ Skip             |
 
----
-
 ## Phase 2 — Discovery: Targeted Research (Conditional)
 
 **Skip this phase by default.** Only execute if Phase 1.3 determined the change introduces new technologies, libraries, or architectural patterns that require research beyond what the existing plan already contains.
@@ -96,7 +94,7 @@ Use this as the sub-agent prompt:
 
 > You are a codebase researcher. Your task is to gather information needed to revise an existing implementation plan.
 >
-> **Existing plan**: [insert plan name and file path]
+> **Existing plan**: {plan name} ({plan file path})
 > **Proposed change**: ${input:ChangeDescription}
 >
 > Do NOT implement anything. Only gather and report information.
@@ -126,7 +124,7 @@ Use this as the external research sub-agent prompt:
 
 > You are a documentation researcher. Your task is to gather external documentation relevant to a proposed change to an implementation plan.
 >
-> **Existing plan**: [insert plan name]
+> **Existing plan**: {plan name}
 > **Proposed change**: ${input:ChangeDescription}
 >
 > Do NOT implement anything. Only gather and report information.
@@ -134,8 +132,10 @@ Use this as the external research sub-agent prompt:
 > Steps:
 >
 > 1. Identify all new or changed external libraries, frameworks, APIs, or tools referenced in the proposed change
-> 2. For each, use `#tool:context7` to look up its current documentation — focus on API references, configuration, and migration guides
-> 3. Use `#tool:web/fetch` to read changelogs, release notes, or GitHub issues that may affect the change
+> 2. For each dependency, gather current documentation using either option below:
+>    - Tool option: use the available Context7 documentation query tools.
+>    - CLI option: fetch official docs, changelogs, and release notes with commands like `curl -L <url>` and inspect local files with `rg`.
+> 3. Gather changelogs, release notes, or GitHub issues that may affect the change.
 > 4. Return a structured report with:
 >
 >    **External Research Summary**
@@ -146,13 +146,14 @@ Use this as the external research sub-agent prompt:
 
 After any launched sub-agents return, review their research summaries before proceeding. If neither sub-agent was needed, proceed directly to Phase 3.
 
----
-
 ## Phase 3 — Alignment: Clarifying Questions (Conditional)
 
 **Skip this phase by default.** Only execute if the change description is ambiguous, introduces conflicting options, or Phase 2 research surfaced open questions that cannot be resolved without user input.
 
-**Use `#tool:vscode/askQuestions` to ask the user 2–4 focused clarifying questions.** Batch all questions into a single call. Provide the current plan's values as defaults so the user can confirm or override.
+Ask the user 2–4 focused clarifying questions. Batch all questions into a single interaction. Provide the current plan's values as defaults so the user can confirm or override.
+
+- Tool option: use an interactive question tool when available.
+- CLI/chat option: ask a numbered list of questions directly in chat.
 
 Questions must address gaps surfaced by impact classification and research:
 
@@ -165,11 +166,14 @@ Do not ask questions whose answers are already clear from the change description
 
 After receiving answers, proceed to Phase 4.
 
----
-
 ## Phase 4 — Revision: Apply Changes to the Plan
 
-Edit the existing plan file using `#tool:edit/editFiles`. Follow these rules strictly.
+Edit the existing plan file directly in the workspace. Follow these rules strictly.
+
+- Tool option: use a file edit tool.
+- CLI option: use commands like `perl -0pi -e` or `sed -i ''` for targeted edits.
+
+Do not write revisions to session memory or artifact storage paths (for example `/memories/session/...`). If workspace file write is unavailable, stop and report the blocker.
 
 ### 4.1 Update Frontmatter
 
@@ -240,28 +244,26 @@ Apply the user's change to the appropriate sections. For each section, follow th
 - Do NOT renumber identifiers — IDs are stable across plan revisions
 - Preserve all completed task markers (✅) and dates unless the change explicitly invalidates them
 
----
-
 ## Phase 5 — Confirmation: Summary
 
 After writing the updated plan, produce a brief summary:
 
-```
+```text
 ## Change Summary
 
-Plan: [plan name]
-File: [plan file path]
-Status: [previous status] → [new status]
+Plan: {plan name}
+File: {plan file path}
+Status: {previous status} → {new status}
 
 ### Changes Applied
-- [Concise description of each change made, referencing identifiers]
+- {concise description of each change made, referencing identifiers}
 
 ### Sections Modified
-- [List of section numbers that were edited]
+- {list of section numbers that were edited}
 
 ### Completed Work Affected
-- [List any completed tasks that were invalidated, or "None — all completed work preserved"]
+- {list any completed tasks that were invalidated, or "None — all completed work preserved"}
 
 ### Next Steps
-- [Suggestions: re-run execute-plan, review specific tasks, etc.]
+- {suggestions: re-run execute-plan, review specific tasks, etc.}
 ```

@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import { QuadrupleAspectsBaseService } from "./quadruple-aspects-base.service";
 import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
@@ -16,6 +17,7 @@ export class QuadrupleAspectsService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly quadrupleAspectsBaseService: QuadrupleAspectsBaseService,
     private readonly quadrupleAspectsComposerService: QuadrupleAspectsComposerService,
   ) {}
 
@@ -72,7 +74,7 @@ export class QuadrupleAspectsService {
     );
 
     const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) =>
-      this.quadrupleAspectsComposerService.makeProgressiveGroupKey(event),
+      this.quadrupleAspectsBaseService.makeProgressiveGroupKey(event),
     );
 
     for (const group of Object.values(groupedEvents)) {
@@ -90,13 +92,7 @@ export class QuadrupleAspectsService {
    *
    */
   getOtherBody(edge: AspectBodies, body: Body): Body | null {
-    if (edge.bodies[0] === body) {
-      return edge.bodies[1];
-    }
-    if (edge.bodies[1] === body) {
-      return edge.bodies[0];
-    }
-    return null;
+    return this.quadrupleAspectsBaseService.getOtherBody(edge, body);
   }
 
   /**

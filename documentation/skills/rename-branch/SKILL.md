@@ -1,15 +1,15 @@
 ---
 name: rename-branch
-description: "Rename a git branch or worktree. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
+description: "Rename a git branch. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 ---
 
 # Rename Branch
 
-This skill provides a standardized workflow for renaming a Git branch or worktree to comply with the repository's Conventional Commits naming conventions (`<type>/<scope>-<description>`).
+This skill provides a standardized workflow for renaming a Git branch to comply with the repository's Conventional Commits naming conventions (`<type>/<scope>-<description>`).
 
 ## When to Use This Skill
 
-- When the user asks to "rename this branch", "give this branch a better name", or "rename worktree".
+- When the user asks to "rename this branch" or "give this branch a better name".
 - When a branch name is rejected by a pre-push hook or CI validation and needs to be fixed.
 - When the user wants the agent to automatically deduce a conventional branch name based on the current local changes.
 
@@ -19,7 +19,7 @@ When invoked, perform the following steps sequentially:
 
 ### 1. Analyze Changes
 
-Use the terminal to understand what the branch or worktree is doing:
+Use the terminal to understand what the branch is doing:
 
 - Check the current branch: `git branch --show-current`
 - Compare with the default branch to see what changed: `git diff --name-status main...HEAD`
@@ -84,7 +84,7 @@ _Note: If multiple scopes are touched, prefer `monorepo`, `applications`, `packa
 
 ### 3. Create a Backup (Safety First)
 
-Be very cautious before taking any destructive actions (renaming, deleting remote branches, or moving worktrees). Always create a temporary backup branch to ensure no work is lost:
+Be very cautious before taking any destructive actions (renaming or deleting remote branches). Always create a temporary backup branch to ensure no work is lost:
 
 ```bash
 git branch "backup/$(git branch --show-current)"
@@ -94,22 +94,8 @@ git branch "backup/$(git branch --show-current)"
 
 Proceed automatically with the best determined name without asking the user for permission. Run the appropriate Git commands to rename the branch.
 
-**For a regular branch:**
-
 ```bash
 git branch -m <type>/<scope>-<description>
-```
-
-**For a Git worktree:**
-Git worktrees are tied to a specific path and branch. To rename the branch checked out in a worktree:
-
-1. Rename the branch: `git branch -m <new-branch-name>`
-2. Rename the worktree directory to match the new branch name:
-
-```bash
-# Navigate out of the worktree if currently inside it
-# Note: You cannot move a worktree while you are inside its directory
-git worktree move <old-path> <new-path>
 ```
 
 ### 5. Update Remote (If Applicable)

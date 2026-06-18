@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "@nestjs/common": "^11.1.23",
+    "@nestjs/common": "^11.1.26",
     "@nestjs/config": "^4.0.4",
-    "@nestjs/core": "^11.1.23",
+    "@nestjs/core": "^11.1.26",
     "@photostructure/tz-lookup": "^11.5.0",
     "lodash": "^4.18.1",
     "moment": "^2.30.1",
@@ -17,7 +17,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@nestjs/testing": "^11.1.23",
+    "@golevelup/ts-vitest": "^4.0.0",
+    "@nestjs/testing": "^11.1.26",
     "@nx/eslint-plugin": "^22.7.3",
     "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.40",
