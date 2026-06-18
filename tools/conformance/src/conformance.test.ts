@@ -74,62 +74,50 @@ function resolveNestjsModuleDirectories(
     );
 }
 
-function resolveNestjsServiceFilePaths(
-  nestjsApplications: { rootPath: string; tags: string[] }[],
-): string[] {
-  return nestjsApplications.flatMap((application) => {
-    const serviceFilePaths = [
-      ...globSync(
-        path.join(application.rootPath, "src/modules/*/*.service.ts"),
-      ),
-      ...globSync(
-        path.join(application.rootPath, "src/modules/*/*.service.unit.test.ts"),
-      ),
-    ];
-    const serviceFilePathSet = new Set(serviceFilePaths);
-    return serviceFilePaths.filter((serviceFilePath) => {
-      const moduleName = path.basename(path.dirname(serviceFilePath));
-      const filename = path.basename(serviceFilePath);
-      const isModulePrimaryServiceFile =
-        filename === `${moduleName}.service.ts` ||
-        filename === `${moduleName}.service.unit.test.ts`;
-      if (!isModulePrimaryServiceFile) {
-        return false;
+function resolveWorkspaceApplications(): {
+  rootPath: string;
+  tags: string[];
+}[] {
+  return fs
+    .readdirSync(APPLICATIONS_DIRECTORY_PATH, {
+      withFileTypes: true,
+    })
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        fs.existsSync(
+          path.join(APPLICATIONS_DIRECTORY_PATH, entry.name, "project.json"),
+        ),
+    )
+    .map((entry) => {
+      const rootPath = path.join(APPLICATIONS_DIRECTORY_PATH, entry.name);
+      const projectConfigurationPath = path.join(rootPath, "project.json");
+      let projectConfiguration: {
+        tags?: string[];
+      };
+      try {
+        projectConfiguration = JSON.parse(
+          fs.readFileSync(projectConfigurationPath, "utf8"),
+        ) as {
+          tags?: string[];
+        };
+      } catch (error) {
+        throw new Error(
+          `Unable to parse project configuration at "${projectConfigurationPath}"`,
+          {
+            cause: error,
+          },
+        );
       }
-      const matchingServiceFilePath = serviceFilePath.endsWith(
-        ".service.unit.test.ts",
-      )
-        ? serviceFilePath.replace(".service.unit.test.ts", ".service.ts")
-        : serviceFilePath.replace(".service.ts", ".service.unit.test.ts");
-      return serviceFilePathSet.has(matchingServiceFilePath);
+
+      return {
+        rootPath,
+        tags: projectConfiguration.tags ?? [],
+      };
     });
-  });
 }
 
-function resolveServiceTemplateData(
-  serviceFilename: string,
-): Record<string, unknown> {
-  const serviceName = serviceFilename
-    .replace(".service.unit.test.ts", "")
-    .replace(".service.ts", "");
-  const nameKebabCase =
-    converterByStringCase[StringCase.KEBAB_CASE](serviceName);
-  return {
-    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
-    nameKebabCase,
-    namePascalCase:
-      converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
-  };
-}
-
-function resolveServiceTemplateFilePath(serviceFilePath: string): string {
-  if (serviceFilePath.endsWith(".service.unit.test.ts")) {
-    return SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH;
-  }
-  return SERVICE_TEMPLATE_FILE_PATH;
-}
-
-function resolveTemplateInstances(): ConformanceTemplateInstance[] {
+describe("generator template conformance", () => {
   const applications = resolveWorkspaceApplications();
   const allNestjsModules = resolveNestjsModuleDirectories(
     applications,
@@ -183,7 +171,7 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       ),
   );
 
-  const instances: ConformanceTemplateInstance[] = [
+  const conformanceTemplateInstances: ConformanceTemplateInstance[] = [
     {
       instanceDirectoryPaths: applications
         .filter((application) =>
@@ -230,56 +218,11 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
     },
   ];
 
-  return instances.filter(
+  const conformanceCases = conformanceTemplateInstances.filter(
     (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
   );
-}
 
-function resolveWorkspaceApplications(): {
-  rootPath: string;
-  tags: string[];
-}[] {
-  return fs
-    .readdirSync(APPLICATIONS_DIRECTORY_PATH, {
-      withFileTypes: true,
-    })
-    .filter(
-      (entry) =>
-        entry.isDirectory() &&
-        fs.existsSync(
-          path.join(APPLICATIONS_DIRECTORY_PATH, entry.name, "project.json"),
-        ),
-    )
-    .map((entry) => {
-      const rootPath = path.join(APPLICATIONS_DIRECTORY_PATH, entry.name);
-      const projectConfigurationPath = path.join(rootPath, "project.json");
-      let projectConfiguration: {
-        tags?: string[];
-      };
-      try {
-        projectConfiguration = JSON.parse(
-          fs.readFileSync(projectConfigurationPath, "utf8"),
-        ) as {
-          tags?: string[];
-        };
-      } catch (error) {
-        throw new Error(
-          `Unable to parse project configuration at "${projectConfigurationPath}"`,
-          {
-            cause: error,
-          },
-        );
-      }
-
-      return {
-        rootPath,
-        tags: projectConfiguration.tags ?? [],
-      };
-    });
-}
-
-describe("generator template conformance", () => {
-  for (const conformanceCase of resolveTemplateInstances()) {
+  for (const conformanceCase of conformanceCases) {
     it(`validates "${conformanceCase.template}" generated instances`, () => {
       const results =
         conformanceCase.instanceType === "single"
@@ -305,19 +248,46 @@ describe("generator template conformance", () => {
   }
 
   it("validates all NestJS service files and tests with nestjs-service-file templates", () => {
-    const nestjsApplications = resolveWorkspaceApplications().filter(
-      (application) => application.tags.includes(NESTJS_APPLICATION_TAG),
+    const nestjsApplications = applications.filter((application) =>
+      application.tags.includes(NESTJS_APPLICATION_TAG),
     );
-    const serviceFilePaths = resolveNestjsServiceFilePaths(nestjsApplications);
+    const serviceFilePaths = nestjsApplications.flatMap((application) => {
+      return [
+        ...globSync(
+          path.join(application.rootPath, "src/modules/*/*.service.ts"),
+        ),
+        ...globSync(
+          path.join(
+            application.rootPath,
+            "src/modules/*/*.service.unit.test.ts",
+          ),
+        ),
+      ];
+    });
 
     expect(serviceFilePaths.length).toBeGreaterThan(0);
 
     const serviceFileValidationResults: InstanceDirectoryValidationResult[] =
       serviceFilePaths.map((serviceFilePath) => {
-        const templateFilePath =
-          resolveServiceTemplateFilePath(serviceFilePath);
+        const templateFilePath = serviceFilePath.endsWith(
+          ".service.unit.test.ts",
+        )
+          ? SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH
+          : SERVICE_TEMPLATE_FILE_PATH;
+        const serviceName = path
+          .basename(serviceFilePath)
+          .replace(".service.unit.test.ts", "")
+          .replace(".service.ts", "");
+        const nameKebabCase =
+          converterByStringCase[StringCase.KEBAB_CASE](serviceName);
         const validationResult = validateInstanceFile({
-          data: resolveServiceTemplateData(path.basename(serviceFilePath)),
+          data: {
+            nameCamelCase:
+              converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+            nameKebabCase,
+            namePascalCase:
+              converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+          },
           instanceFilePath: serviceFilePath,
           templateFilePath,
         });
