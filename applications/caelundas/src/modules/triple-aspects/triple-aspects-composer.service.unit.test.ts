@@ -1,6 +1,7 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 
@@ -9,6 +10,18 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("TripleAspectsComposerService", () => {
   let service: TripleAspectsComposerService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [TripleAspectsComposerService],
+    }).compile();
+
+    service = await module.resolve(TripleAspectsComposerService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     service = new TripleAspectsComposerService(new LoggerService());

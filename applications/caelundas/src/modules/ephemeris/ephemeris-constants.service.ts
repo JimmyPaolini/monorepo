@@ -16,6 +16,10 @@ import type {
  */
 @Injectable()
 export class EphemerisConstantsService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔐 Private Fields
 
   private readonly nodeSet: ReadonlySet<string> = new Set<string>(nodes);

@@ -1,5 +1,6 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -9,6 +10,18 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("TwilightsBuilderService", () => {
   let service: TwilightsBuilderService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [TwilightsBuilderService],
+    }).compile();
+
+    service = await module.resolve(TwilightsBuilderService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   const beginningEvent: Event = {
     categories: ["Twilight"],

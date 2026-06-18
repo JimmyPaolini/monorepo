@@ -1,6 +1,7 @@
 import { symbolByVenusianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -66,11 +67,25 @@ const createProgressiveUtilitiesStub = (): {
 });
 
 describe("VenusianPhaseService", () => {
+  let service: VenusianPhaseService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [VenusianPhaseService],
+    }).compile();
+
+    service = await module.resolve(VenusianPhaseService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const logger = new LoggerService();
   const phaseCalculationService = createPhaseCalculationServiceStub();
   const progressiveUtilitiesService = createProgressiveUtilitiesStub();
 
-  const service = new VenusianPhaseService(
+  const localService = new VenusianPhaseService(
     logger,
     phaseCalculationService as never,
     progressiveUtilitiesService as never,
@@ -84,7 +99,7 @@ describe("VenusianPhaseService", () => {
     it("builds expected Venus phase event metadata", () => {
       const timestamp = createTimestamp();
 
-      const event = service.buildVenusianPhaseEvent({
+      const event = localService.buildVenusianPhaseEvent({
         phase: "morning rise",
         timestamp,
       });
@@ -113,7 +128,7 @@ describe("VenusianPhaseService", () => {
 
       const timestamp = createTimestamp();
 
-      const events = service.getVenusianPhaseEvents({
+      const events = localService.getVenusianPhaseEvents({
         minute: timestamp,
         sunCoordinateEphemeris: {},
         venusCoordinateEphemeris: {},
@@ -157,7 +172,7 @@ describe("VenusianPhaseService", () => {
         [morningRise, morningSet],
       ]);
 
-      const events = service.getVenusianMorningProgressiveEvents([
+      const events = localService.getVenusianMorningProgressiveEvents([
         morningRise,
         morningSet,
       ]);
@@ -187,7 +202,7 @@ describe("VenusianPhaseService", () => {
         [eveningRise, eveningSet],
       ]);
 
-      const events = service.getVenusianEveningProgressiveEvents([
+      const events = localService.getVenusianEveningProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);

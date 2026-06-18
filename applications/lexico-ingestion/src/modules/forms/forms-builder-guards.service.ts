@@ -31,7 +31,11 @@ import type {
  * Type guard provider for raw form parsing inputs.
  */
 @Injectable()
-export class FormsBuilderGuardsProvider {
+export class FormsBuilderGuardsService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Narrows a string to a supported grammatical case value.
    */
@@ -126,3 +130,5 @@ export class FormsBuilderGuardsProvider {
     return formSupineCaseValueList.includes(value);
   }
 }
+
+export { FormsBuilderGuardsService as FormsBuilderGuardsProvider };

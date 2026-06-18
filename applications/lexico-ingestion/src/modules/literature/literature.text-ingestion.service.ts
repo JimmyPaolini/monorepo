@@ -10,6 +10,8 @@ import type { Text } from "@monorepo/lexico-entities";
 /** Ingest a single text entry and emit consistent progress/error logs. */
 @Injectable()
 export class LiteratureTextIngestionService {
+  // 🏗 Dependency Injection
+
   public constructor(private readonly logger: LoggerService) {
     this.logger.setContext(LiteratureTextIngestionService.name);
   }

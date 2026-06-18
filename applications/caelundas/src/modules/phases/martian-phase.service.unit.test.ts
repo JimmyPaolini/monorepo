@@ -1,6 +1,7 @@
 import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -58,11 +59,25 @@ const createProgressiveUtilitiesStub = (): {
 });
 
 describe("MartianPhaseService", () => {
+  let service: MartianPhaseService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [MartianPhaseService],
+    }).compile();
+
+    service = await module.resolve(MartianPhaseService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const logger = new LoggerService();
   const phaseCalculationService = createPhaseCalculationServiceStub();
   const progressiveUtilitiesService = createProgressiveUtilitiesStub();
 
-  const service = new MartianPhaseService(
+  const localService = new MartianPhaseService(
     logger,
     phaseCalculationService as never,
     progressiveUtilitiesService as never,
@@ -76,7 +91,7 @@ describe("MartianPhaseService", () => {
     it("builds expected Mars phase event metadata", () => {
       const timestamp = createTimestamp();
 
-      const event = service.buildMartianPhaseEvent({
+      const event = localService.buildMartianPhaseEvent({
         phase: "morning rise",
         timestamp,
       });
@@ -101,7 +116,7 @@ describe("MartianPhaseService", () => {
 
       const timestamp = createTimestamp();
 
-      const events = service.getMartianPhaseEvents({
+      const events = localService.getMartianPhaseEvents({
         marsCoordinateEphemeris: {},
         marsDistanceEphemeris: {},
         marsIlluminationEphemeris: {},
@@ -141,7 +156,7 @@ describe("MartianPhaseService", () => {
         [morningRise, morningSet],
       ]);
 
-      const events = service.getMartianMorningProgressiveEvents([
+      const events = localService.getMartianMorningProgressiveEvents([
         morningRise,
         morningSet,
       ]);
@@ -171,7 +186,7 @@ describe("MartianPhaseService", () => {
         [eveningRise, eveningSet],
       ]);
 
-      const events = service.getMartianEveningProgressiveEvents([
+      const events = localService.getMartianEveningProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);

@@ -17,6 +17,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class EclipseTopocentricService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly mathService: MathService,

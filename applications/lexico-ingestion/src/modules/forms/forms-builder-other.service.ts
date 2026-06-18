@@ -34,7 +34,9 @@ import type { FormGender } from "./forms.types";
  * rules for adjectives, adverbs, and nominals.
  */
 @Injectable()
-export class FormsBuilderHelper {
+export class FormsBuilderOtherService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly guards: FormsBuilderGuardsProvider,
     private readonly formsBuilderVerbProvider: FormsBuilderVerbProvider,
@@ -498,3 +500,5 @@ export class FormsBuilderHelper {
     return [];
   }
 }
+
+export { FormsBuilderOtherService as FormsBuilderHelper };

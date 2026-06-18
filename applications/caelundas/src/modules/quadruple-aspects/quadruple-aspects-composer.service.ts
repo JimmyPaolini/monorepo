@@ -12,12 +12,12 @@ import type { Moment } from "moment-timezone";
  * Pattern detection and event building helpers for {@link QuadrupleAspectsService}.
  */
 @Injectable()
-export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService {
+export class QuadrupleAspectsComposerService {
   // 🏗 Dependency Injection
 
-  constructor() {
-    super();
-  }
+  constructor(
+    private readonly quadrupleAspectsBaseService: QuadrupleAspectsBaseService,
+  ) {}
 
   /**
    * Collects grand crosses for opp1.
@@ -113,7 +113,10 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           progressiveEvents.push(
-            this.buildProgressiveEvent(currentEvent, potentialDissolvingEvent),
+            this.quadrupleAspectsBaseService.buildProgressiveEvent(
+              currentEvent,
+              potentialDissolvingEvent,
+            ),
           );
           break;
         }
@@ -156,7 +159,8 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = this.groupAspectsByType(unionEdges);
+    const aspectsByType =
+      this.quadrupleAspectsBaseService.groupAspectsByType(unionEdges);
     const oppositions = aspectsByType.get("opposite") || [];
     const squares = aspectsByType.get("square") || [];
 
@@ -215,7 +219,8 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = this.groupAspectsByType(unionEdges);
+    const aspectsByType =
+      this.quadrupleAspectsBaseService.groupAspectsByType(unionEdges);
     const trines = aspectsByType.get("trine") || [];
     const oppositions = aspectsByType.get("opposite") || [];
     const sextiles = aspectsByType.get("sextile") || [];
@@ -224,7 +229,10 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
       return events;
     }
 
-    const grandTrines = this.findGrandTrines(trines, unionEdges);
+    const grandTrines = this.quadrupleAspectsBaseService.findGrandTrines(
+      trines,
+      unionEdges,
+    );
     for (const gtBodies of grandTrines) {
       const kiteEvents = this.collectKiteEventsForGrandTrine({
         current: currentAspectBodies,
@@ -260,17 +268,23 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     previous: AspectBodies[];
   }): Event | null {
     const { bodyList, current, minute, opp1, opp2, previous } = args;
-    const result = this.determineCompoundPhaseFromSnapshots({
-      checkPatternExists: (edges) =>
-        this.checkGrandCrossPattern({ bodyList, edges, opp1, opp2 }),
-      currentAspectBodies: current,
-      currentMinute: minute,
-      patternBodies: bodyList,
-      previousAspectBodies: previous,
-    });
+    const result =
+      this.quadrupleAspectsBaseService.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) =>
+          this.quadrupleAspectsBaseService.checkGrandCrossPattern({
+            bodyList,
+            edges,
+            opp1,
+            opp2,
+          }),
+        currentAspectBodies: current,
+        currentMinute: minute,
+        patternBodies: bodyList,
+        previousAspectBodies: previous,
+      });
 
     if (result && bodyList[0] && bodyList[1] && bodyList[2] && bodyList[3]) {
-      return this.getQuadrupleAspectEvent({
+      return this.quadrupleAspectsBaseService.getQuadrupleAspectEvent({
         body1: bodyList[0],
         body2: bodyList[1],
         body3: bodyList[2],
@@ -307,17 +321,24 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
       other1,
       previous,
     } = args;
-    const result = this.determineCompoundPhaseFromSnapshots({
-      checkPatternExists: (edges) =>
-        this.checkKitePattern({ baseBody, edges, fourthBody, other0, other1 }),
-      currentAspectBodies: current,
-      currentMinute: minute,
-      patternBodies: bodies,
-      previousAspectBodies: previous,
-    });
+    const result =
+      this.quadrupleAspectsBaseService.determineCompoundPhaseFromSnapshots({
+        checkPatternExists: (edges) =>
+          this.quadrupleAspectsBaseService.checkKitePattern({
+            baseBody,
+            edges,
+            fourthBody,
+            other0,
+            other1,
+          }),
+        currentAspectBodies: current,
+        currentMinute: minute,
+        patternBodies: bodies,
+        previousAspectBodies: previous,
+      });
 
     if (result && bodies[0] && bodies[1] && bodies[2] && bodies[3]) {
-      return this.getQuadrupleAspectEvent({
+      return this.quadrupleAspectsBaseService.getQuadrupleAspectEvent({
         body1: bodies[0],
         body2: bodies[1],
         body3: bodies[2],
@@ -353,9 +374,16 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     if (bodies.size !== 4) return null;
 
     const bodyList = [...bodies];
-    const oppositeBodyMap = this.buildGrandCrossOppositeMap(opp1, opp2);
+    const oppositeBodyMap =
+      this.quadrupleAspectsBaseService.buildGrandCrossOppositeMap(opp1, opp2);
 
-    if (!this.verifyGrandCrossSquares(bodyList, oppositeBodyMap, unionEdges)) {
+    if (
+      !this.quadrupleAspectsBaseService.verifyGrandCrossSquares(
+        bodyList,
+        oppositeBodyMap,
+        unionEdges,
+      )
+    ) {
       return null;
     }
 
@@ -396,7 +424,10 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     } = args;
     if (!this.involvesBody(opp, baseBody)) return null;
 
-    const fourthBody = this.getOtherBody(opp, baseBody);
+    const fourthBody = this.quadrupleAspectsBaseService.getOtherBody(
+      opp,
+      baseBody,
+    );
     if (!fourthBody || gtBodies.has(fourthBody)) return null;
 
     const other0 = otherTwo[0];
@@ -404,13 +435,13 @@ export class QuadrupleAspectsComposerService extends QuadrupleAspectsBaseService
     if (!other0 || !other1) return null;
 
     const hasSextiles =
-      this.haveAspect({
+      this.quadrupleAspectsBaseService.haveAspect({
         aspectType: "sextile",
         body1: fourthBody,
         body2: other0,
         edges: unionEdges,
       }) &&
-      this.haveAspect({
+      this.quadrupleAspectsBaseService.haveAspect({
         aspectType: "sextile",
         body1: fourthBody,
         body2: other1,

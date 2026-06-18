@@ -1,5 +1,6 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -8,12 +9,26 @@ import { EclipseEventService } from "./eclipse-event.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("EclipseEventService", () => {
+  let service: EclipseEventService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EclipseEventService],
+    }).compile();
+
+    service = await module.resolve(EclipseEventService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const logger = new LoggerService();
   const progressiveUtilitiesService = {
     pairProgressiveEvents: vi.fn(),
   };
 
-  const service = new EclipseEventService(
+  const localService = new EclipseEventService(
     logger,
     progressiveUtilitiesService as never,
   );
@@ -26,7 +41,7 @@ describe("EclipseEventService", () => {
     it("builds geocentric solar eclipse event", () => {
       const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
 
-      const event = service.buildSolarEclipseEvent({
+      const event = localService.buildSolarEclipseEvent({
         date: timestamp,
         frame: "geocentric",
         phase: "beginning",
@@ -43,7 +58,7 @@ describe("EclipseEventService", () => {
     it("builds topocentric solar eclipse event", () => {
       const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
 
-      const event = service.buildSolarEclipseEvent({
+      const event = localService.buildSolarEclipseEvent({
         date: timestamp,
         frame: "topocentric",
         phase: "beginning",
@@ -61,7 +76,7 @@ describe("EclipseEventService", () => {
     it("builds geocentric lunar eclipse event", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
 
-      const event = service.buildLunarEclipseEvent({
+      const event = localService.buildLunarEclipseEvent({
         date: timestamp,
         frame: "geocentric",
         phase: "beginning",
@@ -78,7 +93,7 @@ describe("EclipseEventService", () => {
     it("builds topocentric lunar eclipse event", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
 
-      const event = service.buildLunarEclipseEvent({
+      const event = localService.buildLunarEclipseEvent({
         date: timestamp,
         frame: "topocentric",
         phase: "beginning",
@@ -153,7 +168,7 @@ describe("EclipseEventService", () => {
         .mockReturnValueOnce([])
         .mockReturnValueOnce([]);
 
-      const progressiveEvents = service.detectProgressive([
+      const progressiveEvents = localService.detectProgressive([
         solarBeginning,
         solarEnding,
         lunarBeginning,
@@ -189,7 +204,7 @@ describe("EclipseEventService", () => {
         .mockReturnValueOnce([])
         .mockReturnValueOnce([]);
 
-      const result = service.detectProgressive([
+      const result = localService.detectProgressive([
         {
           categories: ["Astronomy"],
           description: "Unrelated",

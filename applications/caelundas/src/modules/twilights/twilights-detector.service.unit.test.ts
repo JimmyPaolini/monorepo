@@ -1,8 +1,9 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsDetectorService } from "./twilights-detector.service";
@@ -11,6 +12,18 @@ import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris
 
 describe("TwilightsDetectorService", () => {
   let service: TwilightsDetectorService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [TwilightsDetectorService],
+    }).compile();
+
+    service = await module.resolve(TwilightsDetectorService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     service = new TwilightsDetectorService(

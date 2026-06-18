@@ -1,5 +1,6 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 
@@ -27,6 +28,20 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisCoordinateService", () => {
+  let service: EphemerisCoordinateService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisCoordinateService],
+    }).compile();
+
+    service = await module.resolve(EphemerisCoordinateService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const constantsService = {
     getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
   };
@@ -49,7 +64,7 @@ describe("EphemerisCoordinateService", () => {
     normalizeDegrees: vi.fn((degree: number) => degree),
   };
 
-  const service = new EphemerisCoordinateService(
+  const localService = new EphemerisCoordinateService(
     constantsService as unknown as EphemerisConstantsService,
     timeService as unknown as EphemerisTimeService,
     mathService,
@@ -57,7 +72,7 @@ describe("EphemerisCoordinateService", () => {
 
   describe("computeBodyCoordinate", () => {
     it("returns longitude and latitude from calc", () => {
-      const result = service.computeBodyCoordinate("sun", 2_460_395.5);
+      const result = localService.computeBodyCoordinate("sun", 2_460_395.5);
 
       expect(result).toEqual({ latitude: -1.2, longitude: 120.5 });
     });
@@ -65,7 +80,7 @@ describe("EphemerisCoordinateService", () => {
 
   describe("computeDistanceForBody", () => {
     it("returns distance ephemeris by minute", () => {
-      const result = service.computeDistanceForBody({
+      const result = localService.computeDistanceForBody({
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
@@ -80,7 +95,7 @@ describe("EphemerisCoordinateService", () => {
 
   describe("computeNodeBodyMinutes", () => {
     it("returns node coordinates for each minute", () => {
-      const result = service.computeNodeBodyMinutes({
+      const result = localService.computeNodeBodyMinutes({
         body: "north lunar node",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),

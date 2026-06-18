@@ -1,9 +1,24 @@
-import { describe, expect, it } from "vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, describe, expect, it } from "vitest";
 
-import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
+import { FormsBuilderGuardsService } from "./forms-builder-guards.service";
 
-describe("FormsBuilderGuardsProvider", () => {
-  const guardsProvider = new FormsBuilderGuardsProvider();
+describe("FormsBuilderGuardsService", () => {
+  let service: FormsBuilderGuardsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [FormsBuilderGuardsService],
+    }).compile();
+
+    service = await module.resolve(FormsBuilderGuardsService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  const guardsProvider = new FormsBuilderGuardsService();
 
   it("should be defined", () => {
     expect(guardsProvider).toBeDefined();

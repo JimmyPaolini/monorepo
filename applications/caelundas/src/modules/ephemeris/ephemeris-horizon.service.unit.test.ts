@@ -1,5 +1,6 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisHorizonService } from "./ephemeris-horizon.service";
 
@@ -16,6 +17,20 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisHorizonService", () => {
+  let service: EphemerisHorizonService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisHorizonService],
+    }).compile();
+
+    service = await module.resolve(EphemerisHorizonService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const coordinateService = {
     getBodyCoordinatesWithDistance: vi.fn().mockReturnValue({
       distance: 1.01,
@@ -39,14 +54,14 @@ describe("EphemerisHorizonService", () => {
     }),
   };
 
-  const service = new EphemerisHorizonService(
+  const localService = new EphemerisHorizonService(
     coordinateService as unknown as EphemerisCoordinateService,
     timeService as unknown as EphemerisTimeService,
   );
 
   describe("computeAzimuthElevationForMinute", () => {
     it("returns azimuth/elevation from sweph azalt", () => {
-      const result = service.computeAzimuthElevationForMinute({
+      const result = localService.computeAzimuthElevationForMinute({
         body: "sun",
         distance: 1.01,
         julianDayUniversalTime: 2_460_395.499_306,
@@ -62,7 +77,7 @@ describe("EphemerisHorizonService", () => {
 
   describe("computeAzimuthElevationForBody", () => {
     it("returns minute-by-minute azimuth/elevation ephemeris", () => {
-      const result = service.computeAzimuthElevationForBody({
+      const result = localService.computeAzimuthElevationForBody({
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         observerLatitude: 40.7128,

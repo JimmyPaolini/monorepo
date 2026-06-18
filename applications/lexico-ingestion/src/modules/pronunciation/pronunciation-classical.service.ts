@@ -15,6 +15,10 @@ import type {
  */
 @Injectable()
 export class PronunciationClassicalService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Classifies and adds the classical H phoneme based on surrounding vowels.
    */

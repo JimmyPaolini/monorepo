@@ -1,6 +1,7 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { utc_to_jd } from "sweph";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisTimeService } from "./ephemeris-time.service";
 
@@ -19,7 +20,19 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisTimeService", () => {
-  const service = new EphemerisTimeService();
+  let service: EphemerisTimeService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisTimeService],
+    }).compile();
+
+    service = await module.resolve(EphemerisTimeService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   describe("dateToJulianDays", () => {
     it("returns julian day values from sweph", () => {

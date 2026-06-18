@@ -10,6 +10,8 @@ import type { PronunciationEcclesiasticalCharacterContext } from "./pronunciatio
  */
 @Injectable()
 export class PronunciationEcclesiasticalService {
+  // 🏗 Dependency Injection
+
   constructor(private readonly phonemesService: PronunciationPhonemesService) {}
 
   /**

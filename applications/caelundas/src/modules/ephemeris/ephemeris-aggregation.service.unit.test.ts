@@ -1,5 +1,6 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 
@@ -10,6 +11,20 @@ import type { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
 import type { EphemerisTimeService } from "./ephemeris-time.service";
 
 describe("EphemerisAggregationService", () => {
+  let service: EphemerisAggregationService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisAggregationService],
+    }).compile();
+
+    service = await module.resolve(EphemerisAggregationService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const constantsService = {
     getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
     isNode: vi.fn(
@@ -51,7 +66,7 @@ describe("EphemerisAggregationService", () => {
     }),
   };
 
-  const service = new EphemerisAggregationService(
+  const localService = new EphemerisAggregationService(
     constantsService as unknown as EphemerisConstantsService,
     coordinateService as unknown as EphemerisCoordinateService,
     horizonService as unknown as EphemerisHorizonService,
@@ -61,7 +76,7 @@ describe("EphemerisAggregationService", () => {
 
   describe("buildEphemerisFeatureSets", () => {
     it("creates body lookup sets", () => {
-      const result = service.buildEphemerisFeatureSets({
+      const result = localService.buildEphemerisFeatureSets({
         azimuthElevationBodies: ["sun"],
         diameterBodies: ["moon"],
         distanceBodies: ["sun"],
@@ -77,7 +92,7 @@ describe("EphemerisAggregationService", () => {
 
   describe("buildEphemerisEntries", () => {
     it("creates empty entry arrays", () => {
-      const result = service.buildEphemerisEntries();
+      const result = localService.buildEphemerisEntries();
 
       expect(result.azimuthEntries).toHaveLength(0);
       expect(result.coordinateEntries).toHaveLength(0);
@@ -89,15 +104,15 @@ describe("EphemerisAggregationService", () => {
 
   describe("accumulateBodyEphemeris", () => {
     it("accumulates node coordinates through node path", () => {
-      const allEntries = service.buildEphemerisEntries();
-      const featureSets = service.buildEphemerisFeatureSets({
+      const allEntries = localService.buildEphemerisEntries();
+      const featureSets = localService.buildEphemerisFeatureSets({
         azimuthElevationBodies: [],
         diameterBodies: [],
         distanceBodies: [],
         illuminationBodies: [],
       });
 
-      service.accumulateBodyEphemeris({
+      localService.accumulateBodyEphemeris({
         allEntries,
         body: "north lunar node",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -112,15 +127,15 @@ describe("EphemerisAggregationService", () => {
     });
 
     it("accumulates non-node coordinate and requested feature entries", () => {
-      const allEntries = service.buildEphemerisEntries();
-      const featureSets = service.buildEphemerisFeatureSets({
+      const allEntries = localService.buildEphemerisEntries();
+      const featureSets = localService.buildEphemerisFeatureSets({
         azimuthElevationBodies: ["sun"],
         diameterBodies: ["sun"],
         distanceBodies: ["sun"],
         illuminationBodies: ["sun"],
       });
 
-      service.accumulateBodyEphemeris({
+      localService.accumulateBodyEphemeris({
         allEntries,
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -140,13 +155,13 @@ describe("EphemerisAggregationService", () => {
 
   describe("entriesToEphemerides", () => {
     it("converts entries arrays into by-body records", () => {
-      const entries = service.buildEphemerisEntries();
+      const entries = localService.buildEphemerisEntries();
       entries.coordinateEntries.push([
         "sun",
         { "2024-03-21T00:00:00.000Z": { latitude: -1.2, longitude: 120.5 } },
       ]);
 
-      const result = service.entriesToEphemerides(entries);
+      const result = localService.entriesToEphemerides(entries);
 
       expect(result.coordinateEphemerisByBody.sun).toBeDefined();
     });

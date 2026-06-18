@@ -1,6 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
+import { QuadrupleAspectsBaseService } from "./quadruple-aspects-base.service";
 import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
@@ -18,8 +19,10 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * in only current or only previous, so phase detection fires exactly once.
  */
 
+const quadrupleAspectsBaseService = new QuadrupleAspectsBaseService();
 const service = new QuadrupleAspectsService(
-  new QuadrupleAspectsComposerService(),
+  quadrupleAspectsBaseService,
+  new QuadrupleAspectsComposerService(quadrupleAspectsBaseService),
 );
 
 describe("quadruple-aspects.events integration", () => {

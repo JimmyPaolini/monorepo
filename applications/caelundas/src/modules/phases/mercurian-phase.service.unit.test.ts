@@ -1,6 +1,7 @@
 import { symbolByMercurianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -66,11 +67,25 @@ const createProgressiveUtilitiesStub = (): {
 });
 
 describe("MercurianPhaseService", () => {
+  let service: MercurianPhaseService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [MercurianPhaseService],
+    }).compile();
+
+    service = await module.resolve(MercurianPhaseService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const logger = new LoggerService();
   const phaseCalculationService = createPhaseCalculationServiceStub();
   const progressiveUtilitiesService = createProgressiveUtilitiesStub();
 
-  const service = new MercurianPhaseService(
+  const localService = new MercurianPhaseService(
     logger,
     phaseCalculationService as never,
     progressiveUtilitiesService as never,
@@ -84,7 +99,7 @@ describe("MercurianPhaseService", () => {
     it("builds expected Mercury phase event metadata", () => {
       const timestamp = createTimestamp();
 
-      const event = service.buildMercurianPhaseEvent({
+      const event = localService.buildMercurianPhaseEvent({
         phase: "morning rise",
         timestamp,
       });
@@ -113,7 +128,7 @@ describe("MercurianPhaseService", () => {
 
       const timestamp = createTimestamp();
 
-      const events = service.getMercurianPhaseEvents({
+      const events = localService.getMercurianPhaseEvents({
         mercuryCoordinateEphemeris: {},
         mercuryDistanceEphemeris: {},
         mercuryIlluminationEphemeris: {},
@@ -157,7 +172,7 @@ describe("MercurianPhaseService", () => {
         [morningRise, morningSet],
       ]);
 
-      const events = service.getMercurianMorningProgressiveEvents([
+      const events = localService.getMercurianMorningProgressiveEvents([
         morningRise,
         morningSet,
       ]);
@@ -189,7 +204,7 @@ describe("MercurianPhaseService", () => {
         [eveningRise, eveningSet],
       ]);
 
-      const events = service.getMercurianEveningProgressiveEvents([
+      const events = localService.getMercurianEveningProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);

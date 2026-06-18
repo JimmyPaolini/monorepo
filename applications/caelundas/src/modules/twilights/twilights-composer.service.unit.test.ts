@@ -1,7 +1,8 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsComposerService } from "./twilights-composer.service";
@@ -10,6 +11,18 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("TwilightsComposerService", () => {
   let service: TwilightsComposerService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [TwilightsComposerService],
+    }).compile();
+
+    service = await module.resolve(TwilightsComposerService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     const twilightsBuilderService = new TwilightsBuilderService(

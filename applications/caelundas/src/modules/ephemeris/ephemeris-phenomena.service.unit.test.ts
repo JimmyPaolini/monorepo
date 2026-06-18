@@ -1,6 +1,7 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { pheno_ut } from "sweph";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
 
@@ -21,6 +22,20 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisPhenomenaService", () => {
+  let service: EphemerisPhenomenaService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisPhenomenaService],
+    }).compile();
+
+    service = await module.resolve(EphemerisPhenomenaService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const constantsService = {
     getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
   };
@@ -40,14 +55,14 @@ describe("EphemerisPhenomenaService", () => {
     }),
   };
 
-  const service = new EphemerisPhenomenaService(
+  const localService = new EphemerisPhenomenaService(
     constantsService as unknown as EphemerisConstantsService,
     timeService as unknown as EphemerisTimeService,
   );
 
   describe("computeIlluminationForBody", () => {
     it("returns 100 for sun", () => {
-      const result = service.computeIlluminationForBody({
+      const result = localService.computeIlluminationForBody({
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
@@ -59,7 +74,7 @@ describe("EphemerisPhenomenaService", () => {
     });
 
     it("returns pheno illumination percent for moon", () => {
-      const result = service.computeIlluminationForBody({
+      const result = localService.computeIlluminationForBody({
         body: "moon",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
@@ -73,7 +88,7 @@ describe("EphemerisPhenomenaService", () => {
 
   describe("computeDiameterForBody", () => {
     it("returns diameter from pheno data[3]", () => {
-      const result = service.computeDiameterForBody({
+      const result = localService.computeDiameterForBody({
         body: "sun",
         end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
@@ -89,7 +104,7 @@ describe("EphemerisPhenomenaService", () => {
     it("sets sun illumination and diameter", () => {
       const illuminationEphemeris = {};
       const diameterEphemeris = {};
-      service.computePhenoForMinute({
+      localService.computePhenoForMinute({
         body: "sun",
         diameterEphemeris,
         illuminationEphemeris,
@@ -116,7 +131,7 @@ describe("EphemerisPhenomenaService", () => {
       });
 
       expect(() =>
-        service.computePhenoForMinute({
+        localService.computePhenoForMinute({
           body: "moon",
           diameterEphemeris: {},
           illuminationEphemeris: {},

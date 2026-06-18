@@ -10,6 +10,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TwilightsBuilderService {
+  // 🏗 Dependency Injection
+
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(TwilightsBuilderService.name);
   }

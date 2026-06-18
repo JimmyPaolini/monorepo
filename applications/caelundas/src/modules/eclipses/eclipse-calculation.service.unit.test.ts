@@ -1,6 +1,7 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -11,6 +12,20 @@ import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 import type { EclipseCoordinates } from "./eclipses.types";
 
 describe("EclipseCalculationService", () => {
+  let service: EclipseCalculationService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EclipseCalculationService],
+    }).compile();
+
+    service = await module.resolve(EclipseCalculationService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   const logger = new LoggerService();
   const ephemerisService = {
     getAzimuthElevationFromEphemeris: vi.fn(),
@@ -33,7 +48,7 @@ describe("EclipseCalculationService", () => {
     eclipseEventService as never,
   );
 
-  const service = new EclipseCalculationService(
+  const localService = new EclipseCalculationService(
     logger,
     new MathService(),
     geometryService,
@@ -47,7 +62,7 @@ describe("EclipseCalculationService", () => {
 
   describe("isSolarEclipse", () => {
     it("returns maximum at conjunction minimum", () => {
-      const result = service.isSolarEclipse(
+      const result = localService.isSolarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -78,7 +93,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("returns null when latitude exceeds eclipse diameter threshold", () => {
-      const result = service.isSolarEclipse(
+      const result = localService.isSolarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -111,7 +126,7 @@ describe("EclipseCalculationService", () => {
 
   describe("isLunarEclipse", () => {
     it("returns maximum at opposition maximum", () => {
-      const result = service.isLunarEclipse(
+      const result = localService.isLunarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -142,7 +157,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("returns null when not in opposition threshold", () => {
-      const result = service.isLunarEclipse(
+      const result = localService.isLunarEclipse(
         {
           diameterMoon: 0.5,
           diameterSun: 0.5,
@@ -175,7 +190,7 @@ describe("EclipseCalculationService", () => {
 
   describe("active-state helpers", () => {
     it("reports active solar eclipse overlap", () => {
-      const active = service.isSolarEclipseActive({
+      const active = localService.isSolarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -188,7 +203,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports inactive solar eclipse overlap", () => {
-      const active = service.isSolarEclipseActive({
+      const active = localService.isSolarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 5,
@@ -201,7 +216,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports active lunar eclipse overlap", () => {
-      const active = service.isLunarEclipseActive({
+      const active = localService.isLunarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -214,7 +229,7 @@ describe("EclipseCalculationService", () => {
     });
 
     it("reports inactive lunar eclipse overlap", () => {
-      const active = service.isLunarEclipseActive({
+      const active = localService.isLunarEclipseActive({
         diameterMoon: 0.5,
         diameterSun: 0.5,
         latitudeMoon: 0,
@@ -258,7 +273,7 @@ describe("EclipseCalculationService", () => {
         longitudeSun: 100,
       };
 
-      const events = service.getTopocentricEventsForDetect({
+      const events = localService.getTopocentricEventsForDetect({
         coordinates: {
           currentCoordinates: coordinates,
           nextCoordinates: { ...coordinates, longitudeMoon: 101 },
