@@ -49,3 +49,37 @@ jobs:
             packages/**/type-coverage-report.txt
             tools/**/type-coverage-report.txt
           retention-days: 30
+
+      - name: 🌾 Generate Fallow Config
+        if: always()
+        run: pnpm exec nx run monorepo:fallow-config
+
+      - name: 🌾 Fallow Dead Code (advisory)
+        if: always()
+        continue-on-error: true
+        run: |
+          pnpm exec nx run monorepo:fallow-dead-code -- --format json > fallow-dead-code.json 2>&1 || true
+
+      - name: 🌾 Fallow Health (advisory)
+        if: always()
+        continue-on-error: true
+        run: |
+          pnpm exec nx run monorepo:fallow-health -- --format json > fallow-health.json 2>&1 || true
+
+      - name: 🌾 Fallow Audit — PR Regression Gate (advisory)
+        if: always() && github.event_name == 'pull_request'
+        continue-on-error: true
+        run: |
+          pnpm exec nx run monorepo:fallow-audit -- --format json > fallow-audit.json 2>&1 || true
+
+      - name: 📊 Upload Fallow Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fallow-reports
+          path: |
+            fallow-dead-code.json
+            fallow-health.json
+            fallow-audit.json
+          if-no-files-found: ignore
+          retention-days: 30

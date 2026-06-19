@@ -219,6 +219,61 @@
         "sharedGlobals"
       ]
     },
+    "fallow-audit": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.fallowrc.jsonc",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-config": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/configuration/fallow.config.mjs",
+        "{workspaceRoot}/scripts/generate-fallow-config.mjs",
+        "sharedGlobals"
+      ],
+      "outputs": ["{workspaceRoot}/.fallowrc.jsonc"]
+    },
+    "fallow-dead-code": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.fallowrc.jsonc",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-dupes": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.fallowrc.jsonc",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-health": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.fallowrc.jsonc",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "sharedGlobals"
+      ]
+    },
+    "fallow": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.fallowrc.jsonc",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "sharedGlobals"
+      ]
+    },
     "knip": {
       "cache": true,
       "configurations": {

@@ -66,3 +66,6 @@ data/**
 
 # project-structure plugin cache
 projectStructure.cache.json
+
+# fallow — generated from configuration/fallow.config.mjs
+.fallowrc.jsonc
