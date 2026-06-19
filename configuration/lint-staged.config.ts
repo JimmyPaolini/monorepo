@@ -34,9 +34,8 @@ const config = {
     "pnpm exec nx run monorepo:clean:check --outputStyle=dynamic-legacy",
   ],
 
-  // Re-generate .fallowrc.jsonc and run advisory dead-code check when fallow config changes
-  "configuration/fallow.config.mjs": () => [
-    "pnpm exec nx run monorepo:fallow-config --outputStyle=dynamic-legacy",
+  // Run advisory dead-code check when fallow config changes
+  ".fallowrc.jsonc": () => [
     "pnpm exec nx run monorepo:fallow-dead-code --outputStyle=dynamic-legacy",
   ],
 

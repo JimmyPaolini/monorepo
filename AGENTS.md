@@ -149,7 +149,7 @@ See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for t
 | `ruff` | Formatting + linting (Python) | `configuration/pyproject.toml` |
 | `tsc` / `pyright` / `ty` | Type checking | project `tsconfig.json`, `configuration/tsconfig.base.json` |
 | `knip` / `vulture` | Unused code + deps | `configuration/knip.config.ts`, `configuration/vulture_whitelist.py` |
-| `fallow` | Dead code + duplication + complexity (advisory) | `configuration/fallow.config.mjs` |
+| `fallow` | Dead code + duplication + complexity (advisory) | `.fallowrc.jsonc` |
 | `cspell` | Spell checking | `configuration/cspell.config.yaml` |
 | `markdownlint` | Markdown lint | `configuration/.markdownlint-cli2.jsonc` |
 | `yamllint` | YAML lint | `configuration/yamllint.yaml` |

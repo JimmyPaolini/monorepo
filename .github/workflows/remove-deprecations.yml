@@ -44,7 +44,6 @@ jobs:
           FALLOW_APPLY: "false"
         run: |
           pnpm exec nx run monorepo:clean:write || true
-          pnpm exec nx run monorepo:fallow-config || true
           # Safe dry-run only.
           # Previews fallow changes without modifying files.
           pnpm exec nx run monorepo:fallow-fix:check || true

@@ -228,16 +228,6 @@
         "sharedGlobals"
       ]
     },
-    "fallow-config": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/fallow.config.mjs",
-        "{workspaceRoot}/scripts/generate-fallow-config.mjs",
-        "sharedGlobals"
-      ],
-      "outputs": ["{workspaceRoot}/.fallowrc.jsonc"]
-    },
     "fallow-dead-code": {
       "cache": true,
       "executor": "nx:run-commands",

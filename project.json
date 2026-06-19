@@ -173,24 +173,8 @@
         "cwd": "{projectRoot}"
       }
     },
-    "fallow-config": {
-      "cache": true,
-      "description": "Serialize configuration/fallow.config.mjs → .fallowrc.jsonc for fallow CLI",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/fallow.config.mjs",
-        "{workspaceRoot}/scripts/generate-fallow-config.mjs",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "node scripts/generate-fallow-config.mjs",
-        "cwd": "{workspaceRoot}"
-      },
-      "outputs": ["{workspaceRoot}/.fallowrc.jsonc"]
-    },
     "fallow": {
       "cache": true,
-      "dependsOn": ["fallow-config"],
       "description": "Run all fallow static analyses (dead-code, dupes, health) in advisory mode",
       "executor": "nx:run-commands",
       "inputs": [
@@ -205,7 +189,6 @@
     },
     "fallow-dead-code": {
       "cache": true,
-      "dependsOn": ["fallow-config"],
       "description": "Fallow dead-code analysis (unused files, exports, deps, circular deps) — advisory",
       "executor": "nx:run-commands",
       "inputs": [
@@ -220,7 +203,6 @@
     },
     "fallow-dupes": {
       "cache": true,
-      "dependsOn": ["fallow-config"],
       "description": "Fallow code duplication analysis — advisory",
       "executor": "nx:run-commands",
       "inputs": [
@@ -244,7 +226,6 @@
         }
       },
       "defaultConfiguration": "check",
-      "dependsOn": ["fallow-config"],
       "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview.",
       "executor": "nx:run-commands",
       "inputs": [
@@ -258,7 +239,6 @@
     },
     "fallow-health": {
       "cache": true,
-      "dependsOn": ["fallow-config"],
       "description": "Fallow code health analysis (complexity, hotspots, maintainability) — advisory",
       "executor": "nx:run-commands",
       "inputs": [
@@ -273,7 +253,6 @@
     },
     "fallow-audit": {
       "cache": false,
-      "dependsOn": ["fallow-config"],
       "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
       "executor": "nx:run-commands",
       "inputs": [
