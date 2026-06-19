@@ -21,7 +21,7 @@ export default defineConfig(() => ({
     },
     outDir: "../../dist/packages/lexico-components",
     reportCompressedSize: true,
-    rollupOptions: {
+    rolldownOptions: {
       external: ["react", "react-dom", "react/jsx-runtime", /^@radix-ui\/.*/],
       output: {
         globals: {

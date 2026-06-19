@@ -17,7 +17,7 @@ export default defineConfig({
     },
     outDir: "dist/packages/lexico-entities",
     reportCompressedSize: true,
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         ...builtinModules,
         ...builtinModules.map((m) => `node:${m}`),
