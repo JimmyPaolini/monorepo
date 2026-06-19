@@ -1,9 +1,30 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
 
 import { PhaseCalculationService } from "./phase-calculation.service";
 
 describe("PhaseCalculationService", () => {
+  let service: PhaseCalculationService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        PhaseCalculationService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        { provide: MathService, useValue: createMock<MathService>() },
+      ],
+    }).compile();
+
+    service = await module.resolve(PhaseCalculationService);
+  });
+
   const logger = {
     setContext: vi.fn(),
   };
@@ -17,7 +38,7 @@ describe("PhaseCalculationService", () => {
     isMaximum: vi.fn(),
   };
 
-  const service = new PhaseCalculationService(
+  const mockService = new PhaseCalculationService(
     logger as never,
     ephemerisService as never,
     mathService as never,
@@ -28,7 +49,7 @@ describe("PhaseCalculationService", () => {
   });
 
   it("derives brightness values from current and margin samples", () => {
-    const brightnesses = service.getBrightnesses({
+    const brightnesses = mockService.getBrightnesses({
       currentDistance: 2,
       currentIllumination: 8,
       nextDistances: [2, 4],
@@ -44,7 +65,7 @@ describe("PhaseCalculationService", () => {
 
   it("throws when brightness distance and illumination lengths differ", () => {
     expect(() =>
-      service.getBrightnesses({
+      mockService.getBrightnesses({
         currentDistance: 2,
         currentIllumination: 8,
         nextDistances: [2, 4],
@@ -57,7 +78,7 @@ describe("PhaseCalculationService", () => {
 
   it("throws when a brightness illumination sample is missing", () => {
     expect(() =>
-      service.getBrightnesses({
+      mockService.getBrightnesses({
         currentDistance: 2,
         currentIllumination: 8,
         nextDistances: [2, 4],
@@ -71,7 +92,7 @@ describe("PhaseCalculationService", () => {
   it("detects rise and set threshold crossings", () => {
     mathService.getAngle.mockReturnValueOnce(5).mockReturnValueOnce(7);
     expect(
-      service.isRise({
+      mockService.isRise({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         previousLongitudePlanet: 9,
@@ -81,7 +102,7 @@ describe("PhaseCalculationService", () => {
 
     mathService.getAngle.mockReturnValueOnce(7).mockReturnValueOnce(5);
     expect(
-      service.isSet({
+      mockService.isSet({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         previousLongitudePlanet: 9,
@@ -94,7 +115,7 @@ describe("PhaseCalculationService", () => {
     mathService.getAngle.mockReturnValueOnce(11).mockReturnValueOnce(13).mockReturnValueOnce(9);
     mathService.isMaximum.mockReturnValueOnce(true);
 
-    const isElongation = service.isElongation({
+    const isElongation = mockService.isElongation({
       currentLongitudePlanet: 10,
       currentLongitudeSun: 4,
       nextLongitudePlanet: 11,
@@ -112,11 +133,15 @@ describe("PhaseCalculationService", () => {
   });
 
   it("combines directional and brightness checks", () => {
-    const isEasternSpy = vi.spyOn(service, "isEastern").mockReturnValue(true);
-    const isBrightestSpy = vi.spyOn(service, "isBrightest").mockReturnValue(false);
+    const isEasternSpy = vi
+      .spyOn(mockService, "isEastern")
+      .mockReturnValue(true);
+    const isBrightestSpy = vi
+      .spyOn(mockService, "isBrightest")
+      .mockReturnValue(false);
 
     expect(
-      service.isEasternBrightest({
+      mockService.isEasternBrightest({
         currentDistance: 2,
         currentIllumination: 8,
         currentLongitudePlanet: 10,
@@ -137,12 +162,18 @@ describe("PhaseCalculationService", () => {
   });
 
   it("returns true for eastern and western elongation helper combinations", () => {
-    const isElongationSpy = vi.spyOn(service, "isElongation").mockReturnValue(true);
-    const isEasternSpy = vi.spyOn(service, "isEastern").mockReturnValue(true);
-    const isWesternSpy = vi.spyOn(service, "isWestern").mockReturnValue(true);
+    const isElongationSpy = vi
+      .spyOn(mockService, "isElongation")
+      .mockReturnValue(true);
+    const isEasternSpy = vi
+      .spyOn(mockService, "isEastern")
+      .mockReturnValue(true);
+    const isWesternSpy = vi
+      .spyOn(mockService, "isWestern")
+      .mockReturnValue(true);
 
     expect(
-      service.isEasternElongation({
+      mockService.isEasternElongation({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         nextLongitudePlanet: 11,
@@ -152,7 +183,7 @@ describe("PhaseCalculationService", () => {
       }),
     ).toBe(true);
     expect(
-      service.isWesternElongation({
+      mockService.isWesternElongation({
         currentLongitudePlanet: 2,
         currentLongitudeSun: 4,
         nextLongitudePlanet: 3,
@@ -169,7 +200,7 @@ describe("PhaseCalculationService", () => {
 
   it("identifies brightest samples when current brightness exceeds surrounding values", () => {
     expect(
-      service.isBrightest({
+      mockService.isBrightest({
         currentDistance: 1,
         currentIllumination: 10,
         nextDistances: [1, 1],
@@ -181,7 +212,7 @@ describe("PhaseCalculationService", () => {
   });
 
   it("formats timezone-aware ISO timestamps", () => {
-    const value = service.formatTimeZoneIso(
+    const value = mockService.formatTimeZoneIso(
       moment.utc("2024-03-21T12:00:00.000Z"),
       "America/New_York",
     );
@@ -190,7 +221,7 @@ describe("PhaseCalculationService", () => {
   });
 
   it("filters events by category membership", () => {
-    const result = service.filterByCategory(
+    const result = mockService.filterByCategory(
       [
         {
           categories: ["Astronomy", "Target"],
@@ -212,5 +243,9 @@ describe("PhaseCalculationService", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0]?.description).toBe("match");
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

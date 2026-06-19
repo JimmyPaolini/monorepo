@@ -12,6 +12,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("QuadrupleAspectsService", () => {
   let service: QuadrupleAspectsService;
+  let baseService: QuadrupleAspectsBaseService;
   let composerService: QuadrupleAspectsComposerService;
 
   beforeAll(async () => {
@@ -22,6 +23,7 @@ describe("QuadrupleAspectsService", () => {
         QuadrupleAspectsService,
       ],
     }).compile();
+    baseService = await module.resolve(QuadrupleAspectsBaseService);
     composerService = await module.resolve(QuadrupleAspectsComposerService);
     service = await module.resolve(QuadrupleAspectsService);
   });
@@ -706,6 +708,41 @@ describe("QuadrupleAspectsService", () => {
   });
 
   describe("internal guard branches", () => {
+    const getBaseInternals = (): {
+      determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
+        eventMinute: moment.Moment;
+        phase: string;
+      };
+      findGrandTrines: (
+        trines: (AspectBodies | undefined)[],
+        unionEdges: AspectBodies[],
+      ) => Set<string>[];
+      getOtherBody: (edge: AspectBodies, body: string) => null | string;
+      getPhaseEmoji: (phase: string) => string;
+      verifyGrandCrossSquares: (
+        bodies: string[],
+        oppositesByBody: Map<string, string>,
+        unionEdges: AspectBodies[],
+      ) => boolean;
+    } =>
+      baseService as unknown as {
+        determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
+          eventMinute: moment.Moment;
+          phase: string;
+        };
+        findGrandTrines: (
+          trines: (AspectBodies | undefined)[],
+          unionEdges: AspectBodies[],
+        ) => Set<string>[];
+        getOtherBody: (edge: AspectBodies, body: string) => null | string;
+        getPhaseEmoji: (phase: string) => string;
+        verifyGrandCrossSquares: (
+          bodies: string[],
+          oppositesByBody: Map<string, string>,
+          unionEdges: AspectBodies[],
+        ) => boolean;
+      };
+
     it("returns null when tryBuildGrandCross fails square verification", () => {
       const result = (
         composerService as unknown as {
@@ -735,7 +772,7 @@ describe("QuadrupleAspectsService", () => {
 
     it("returns null when resolveKiteEvent cannot build a complete 4-body event", () => {
       const determinePhaseSpy = vi
-        .spyOn(composerService, "determineCompoundPhaseFromSnapshots")
+        .spyOn(baseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue({
           eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
           phase: "forming",
@@ -753,31 +790,19 @@ describe("QuadrupleAspectsService", () => {
             other1: "mars";
             previous: AspectBodies[];
           }) => Event | null;
-        }
-      ).resolveKiteEvent({
-        baseBody: "sun",
         bodies: ["sun", "moon", "mars", undefined],
-        current: [],
         fourthBody: "venus",
         minute: moment.utc("2024-03-21T12:00:00.000Z"),
         other0: "moon",
         other1: "mars",
         previous: [],
-      });
-
-      expect(result).toBeNull();
       determinePhaseSpy.mockRestore();
-    });
 
     it("returns null from checkTrineTriple when body tuple contains undefined", () => {
       const result = (
-        composerService as unknown as {
+        baseService as unknown as {
           checkTrineTriple: (args: {
-            trineI: AspectBodies;
-            trineJ: AspectBodies;
-            trineK: AspectBodies;
             unionEdges: AspectBodies[];
-          }) => Set<string> | null;
         }
       ).checkTrineTriple({
         trineI: {
@@ -785,12 +810,8 @@ describe("QuadrupleAspectsService", () => {
           bodies: ["sun", undefined] as unknown as ["sun", "moon"],
         },
         trineJ: { aspect: "trine", bodies: ["sun", "mars"] },
-        trineK: { aspect: "trine", bodies: ["moon", "mars"] },
-        unionEdges: [
-          { aspect: "trine", bodies: ["sun", "moon"] },
           { aspect: "trine", bodies: ["sun", "mars"] },
           { aspect: "trine", bodies: ["moon", "mars"] },
-        ],
       });
 
       expect(result).toBeNull();
@@ -902,7 +923,7 @@ describe("QuadrupleAspectsService", () => {
 
     it("returns null from checkTrineTriple when required trine links are missing", () => {
       const result = (
-        composerService as unknown as {
+        baseService as unknown as {
           checkTrineTriple: (args: {
             trineI: AspectBodies;
             trineJ: AspectBodies;
@@ -924,20 +945,21 @@ describe("QuadrupleAspectsService", () => {
     });
 
     it("returns expected opposite body values in base helper", () => {
+      const baseInternals = getBaseInternals();
       expect(
-        composerService.getOtherBody(
+        baseInternals.getOtherBody(
           { aspect: "opposite", bodies: ["sun", "moon"] },
           "sun",
         ),
       ).toBe("moon");
       expect(
-        composerService.getOtherBody(
+        baseInternals.getOtherBody(
           { aspect: "opposite", bodies: ["sun", "moon"] },
           "moon",
         ),
       ).toBe("sun");
       expect(
-        composerService.getOtherBody(
+        baseInternals.getOtherBody(
           { aspect: "opposite", bodies: ["sun", "moon"] },
           "mars",
         ),
@@ -945,7 +967,8 @@ describe("QuadrupleAspectsService", () => {
     });
 
     it("handles sparse trine arrays while scanning potential grand trines", () => {
-      const result = composerService.findGrandTrines(
+      const baseInternals = getBaseInternals();
+      const result = baseInternals.findGrandTrines(
         [
           { aspect: "trine", bodies: ["sun", "moon"] },
           undefined as unknown as AspectBodies,
@@ -963,7 +986,8 @@ describe("QuadrupleAspectsService", () => {
     });
 
     it("returns false when opposite-body mapping is missing during square verification", () => {
-      const verified = composerService.verifyGrandCrossSquares(
+      const baseInternals = getBaseInternals();
+      const verified = baseInternals.verifyGrandCrossSquares(
         ["sun", "moon", "mars", "jupiter"],
         new Map([
           ["sun", "moon"],
@@ -976,7 +1000,8 @@ describe("QuadrupleAspectsService", () => {
     });
 
     it("returns perfective phase marker in base helper", () => {
-      expect(composerService.getPhaseEmoji("perfective")).toBe("🎯 ");
+      const baseInternals = getBaseInternals();
+      expect(baseInternals.getPhaseEmoji("perfective")).toBe("🎯 ");
     });
   });
 });

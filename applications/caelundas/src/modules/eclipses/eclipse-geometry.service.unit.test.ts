@@ -1,11 +1,33 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { EclipseGeometryService } from "./eclipse-geometry.service";
 
 describe("EclipseGeometryService", () => {
+  let service: EclipseGeometryService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EclipseGeometryService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: EphemerisService,
+          useValue: createMock<EphemerisService>(),
+        },
+        { provide: MathService, useValue: createMock<MathService>() },
+      ],
+    }).compile();
+
+    service = await module.resolve(EclipseGeometryService);
+  });
+
   const ephemerisService = {
     getAzimuthElevationFromEphemeris: vi.fn(),
     getCoordinateFromEphemeris: vi.fn(),
@@ -19,7 +41,7 @@ describe("EclipseGeometryService", () => {
     normalizeDegrees: vi.fn((value: number) => value),
   };
 
-  const service = new EclipseGeometryService(
+  const mockService = new EclipseGeometryService(
     new LoggerService(),
     ephemerisService as never,
     mathService as never,
@@ -74,7 +96,7 @@ describe("EclipseGeometryService", () => {
     );
 
     expect(
-      service.getAllEclipseCoordinates({
+      mockService.getAllEclipseCoordinates({
         minute,
         moonCoordinateEphemeris: {},
         moonDiameterEphemeris: {},
@@ -127,7 +149,7 @@ describe("EclipseGeometryService", () => {
     );
 
     expect(
-      service.getAllTopocentricVisibilities({
+      mockService.getAllTopocentricVisibilities({
         minute,
         moonAzimuthElevationEphemeris: {},
         sunAzimuthElevationEphemeris: {},
@@ -167,7 +189,7 @@ describe("EclipseGeometryService", () => {
     };
 
     expect(
-      service.getEclipseAngles(
+      mockService.getEclipseAngles(
         currentCoordinates,
         previousCoordinates,
         nextCoordinates,
@@ -179,5 +201,9 @@ describe("EclipseGeometryService", () => {
       nextLongitudeAngle: 10,
       previousLongitudeAngle: 10,
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

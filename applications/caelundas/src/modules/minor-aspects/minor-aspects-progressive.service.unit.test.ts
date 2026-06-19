@@ -1,17 +1,38 @@
-import moment from "moment-timezone";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import _ from "lodash";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import moment from "moment-timezone";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MinorAspectsProgressiveService } from "./minor-aspects-progressive.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("MinorAspectsProgressiveService", () => {
+  let service: MinorAspectsProgressiveService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MinorAspectsProgressiveService,
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(MinorAspectsProgressiveService);
+  });
+
   const progressiveUtilitiesService = {
     pairProgressiveEvents: vi.fn(),
   };
-  const service = new MinorAspectsProgressiveService(progressiveUtilitiesService as never);
-  const privateService = service as unknown as {
+  const mockService = new MinorAspectsProgressiveService(
+    progressiveUtilitiesService as never,
+  );
+  const privateService = mockService as unknown as {
     castAspectComponentsToTypes: (args: {
       aspectCapitalized: string;
       body1Capitalized: string;
@@ -64,7 +85,10 @@ describe("MinorAspectsProgressiveService", () => {
       [formingEvent, dissolvingEvent],
     ]);
 
-    const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
+    const progressiveEvents = mockService.detectProgressive([
+      formingEvent,
+      dissolvingEvent,
+    ]);
 
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon semisquare Sun");
@@ -76,7 +100,7 @@ describe("MinorAspectsProgressiveService", () => {
 
   it("returns empty key for invalid categories", () => {
     expect(
-      service.buildGroupKey({
+      mockService.buildGroupKey({
         categories: ["Astronomy", "Astrology", "Minor Aspect"],
         description: "invalid",
         end: moment.utc("2024-03-21T10:00:00.000Z"),
@@ -128,5 +152,9 @@ describe("MinorAspectsProgressiveService", () => {
     );
 
     sortBySpy.mockRestore();
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

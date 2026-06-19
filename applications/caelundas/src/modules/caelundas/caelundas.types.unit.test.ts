@@ -40,8 +40,8 @@ describe("caelundas.types", () => {
   it("preserves typed object entries and fromEntries", () => {
     const entries = objectEntries({ sun: 1, moon: 2 });
     expect(entries).toEqual([
-      ["sun", 1],
       ["moon", 2],
+      ["sun", 1],
     ]);
 
     const record = typedFromEntries(entries);

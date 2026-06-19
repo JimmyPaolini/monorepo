@@ -1,18 +1,39 @@
-import moment from "moment-timezone";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import _ from "lodash";
-import { describe, expect, it, vi } from "vitest";
+import moment from "moment-timezone";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("SpecialtyAspectsProgressiveService", () => {
+  let service: SpecialtyAspectsProgressiveService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        SpecialtyAspectsProgressiveService,
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(SpecialtyAspectsProgressiveService);
+  });
+
   const progressiveUtilitiesService = {
     pairProgressiveEvents: vi.fn(),
   };
 
-  const service = new SpecialtyAspectsProgressiveService(progressiveUtilitiesService as never);
-  const specialtyAspectsProgressiveService = service as unknown as {
+  const mockService = new SpecialtyAspectsProgressiveService(
+    progressiveUtilitiesService as never,
+  );
+  const specialtyAspectsProgressiveService = mockService as unknown as {
     extractTypedAspectValues: (args: {
       aspectCapitalized: string;
       body1Capitalized: string;
@@ -155,7 +176,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
       ],
     ]);
 
-    const progressiveEvents = service.detectProgressive([
+    const progressiveEvents = mockService.detectProgressive([
       {
         categories: [
           "Astronomy",
@@ -194,5 +215,9 @@ describe("SpecialtyAspectsProgressiveService", () => {
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon quintile Sun");
     expect(progressiveEvents[0]?.summary).toContain("Moon quintile Sun");
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

@@ -1,9 +1,31 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
 
 import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service";
 
 describe("SpecialtyAspectsComposerService", () => {
+  let service: SpecialtyAspectsComposerService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        SpecialtyAspectsComposerService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: EphemerisService,
+          useValue: createMock<EphemerisService>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(SpecialtyAspectsComposerService);
+  });
+
   const mockLogger = {
     error: vi.fn(),
     log: vi.fn(),
@@ -17,7 +39,7 @@ describe("SpecialtyAspectsComposerService", () => {
     }),
   };
 
-  const service = new SpecialtyAspectsComposerService(
+  const mockService = new SpecialtyAspectsComposerService(
     mockLogger as never,
     mockEphemerisService as never,
   );
@@ -30,7 +52,7 @@ describe("SpecialtyAspectsComposerService", () => {
     const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
 
     expect(
-      service.buildSpecialtyAspectEventFromParts({
+      mockService.buildSpecialtyAspectEventFromParts({
         body1Symbol: "☀️",
         body2Symbol: "🌙",
         categories: ["Astronomy", "Astrology", "Specialty Aspect"],
@@ -53,7 +75,7 @@ describe("SpecialtyAspectsComposerService", () => {
 
   it("extracts and casts aspect components", () => {
     expect(
-      service.extractAspectBodiesFromCategories([
+      mockService.extractAspectBodiesFromCategories([
         "Astronomy",
         "Astrology",
         "Specialty Aspect",
@@ -68,7 +90,7 @@ describe("SpecialtyAspectsComposerService", () => {
     });
 
     expect(
-      service.extractTypedAspectValues({
+      mockService.extractTypedAspectValues({
         aspectCapitalized: "Quintile",
         body1Capitalized: "Moon",
         body2Capitalized: "Sun",
@@ -110,50 +132,61 @@ describe("SpecialtyAspectsComposerService", () => {
       end: minute.clone().add(1, "hour"),
     };
 
-    expect(service.phaseFields({
-      baseCategories: ["Astronomy", "Astrology"],
-      body1Capitalized: "Moon",
-      body2Capitalized: "Sun",
-      phase: "forming",
-      specialtyAspect: "quintile",
-    })).toEqual(
+    expect(
+      mockService.phaseFields({
+        baseCategories: ["Astronomy", "Astrology"],
+        body1Capitalized: "Moon",
+        body2Capitalized: "Sun",
+        phase: "forming",
+        specialtyAspect: "quintile",
+      }),
+    ).toEqual(
       expect.objectContaining({
         description: "Moon forming quintile Sun",
         phaseEmoji: "➡️",
       }),
     );
-    expect(service.phaseFields({
-      baseCategories: ["Astronomy", "Astrology"],
-      body1Capitalized: "Moon",
-      body2Capitalized: "Sun",
-      phase: "perfective",
-      specialtyAspect: "quintile",
-    })).toEqual(
+    expect(
+      mockService.phaseFields({
+        baseCategories: ["Astronomy", "Astrology"],
+        body1Capitalized: "Moon",
+        body2Capitalized: "Sun",
+        phase: "perfective",
+        specialtyAspect: "quintile",
+      }),
+    ).toEqual(
       expect.objectContaining({
         description: "Moon perfective quintile Sun",
         phaseEmoji: "🎯",
       }),
     );
-    expect(service.phaseFields({
-      baseCategories: ["Astronomy", "Astrology"],
-      body1Capitalized: "Moon",
-      body2Capitalized: "Sun",
-      phase: "dissolving",
-      specialtyAspect: "quintile",
-    })).toEqual(
+    expect(
+      mockService.phaseFields({
+        baseCategories: ["Astronomy", "Astrology"],
+        body1Capitalized: "Moon",
+        body2Capitalized: "Sun",
+        phase: "dissolving",
+        specialtyAspect: "quintile",
+      }),
+    ).toEqual(
       expect.objectContaining({
         description: "Moon dissolving quintile Sun",
         phaseEmoji: "⬅️",
       }),
     );
 
-    expect(service.specialtyAspectGroupKey(beginning)).toBe(
+    expect(mockService.specialtyAspectGroupKey(beginning)).toBe(
       "Moon-Quintile-Sun",
     );
-    expect(service.specialtyAspectGroupKey({ ...beginning, categories: ["Moon"] })).toBe("");
+    expect(
+      mockService.specialtyAspectGroupKey({
+        ...beginning,
+        categories: ["Moon"],
+      }),
+    ).toBe("");
 
     expect(
-      service.getSpecialtyAspectProgressiveEvent(beginning, ending),
+      mockService.getSpecialtyAspectProgressiveEvent(beginning, ending),
     ).toEqual(
       expect.objectContaining({
         description: "Moon quintile Sun",
@@ -162,7 +195,7 @@ describe("SpecialtyAspectsComposerService", () => {
     );
 
     expect(
-      service.getBodyLongitudesWindow({
+      mockService.getBodyLongitudesWindow({
         ephemeris: {},
         minute,
         nextMinute: minute.clone().add(1, "minute"),
@@ -173,7 +206,7 @@ describe("SpecialtyAspectsComposerService", () => {
 
   it("rejects invalid input and formats grouped events", () => {
     expect(() =>
-      service.extractTypedAspectValues({
+      mockService.extractTypedAspectValues({
         aspectCapitalized: "Not An Aspect",
         body1Capitalized: "Moon",
         body2Capitalized: "Sun",
@@ -182,10 +215,10 @@ describe("SpecialtyAspectsComposerService", () => {
     ).toThrow("Could not extract typed values");
 
     expect(() =>
-      service.extractAspectBodiesFromCategories(["Moon"]),
+      mockService.extractAspectBodiesFromCategories(["Moon"]),
     ).toThrow("Could not extract aspect info");
     expect(() =>
-      service.getSpecialtyAspectProgressiveEvent(
+      mockService.getSpecialtyAspectProgressiveEvent(
         {
           categories: ["Astronomy", "Astrology", "Specialty Aspect", "Moon"],
           description: "Invalid",
@@ -202,5 +235,9 @@ describe("SpecialtyAspectsComposerService", () => {
         },
       ),
     ).toThrow("Could not extract aspect info");
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

@@ -1,9 +1,36 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
 
 import { MinorAspectsComposerService } from "./minor-aspects-composer.service";
 
 describe("MinorAspectsComposerService", () => {
+  let service: MinorAspectsComposerService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MinorAspectsComposerService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: EphemerisService,
+          useValue: createMock<EphemerisService>(),
+        },
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(MinorAspectsComposerService);
+  });
+
   const mockLogger = {
     error: vi.fn(),
     log: vi.fn(),
@@ -20,7 +47,7 @@ describe("MinorAspectsComposerService", () => {
     pairProgressiveEvents: vi.fn(),
   };
 
-  const service = new MinorAspectsComposerService(
+  const mockService = new MinorAspectsComposerService(
     mockLogger as never,
     mockEphemerisService as never,
     mockProgressiveUtilitiesService as never,
@@ -34,7 +61,7 @@ describe("MinorAspectsComposerService", () => {
     const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
 
     expect(
-      service.assembleMinorAspectEvent({
+      mockService.assembleMinorAspectEvent({
         body1: "sun",
         body2: "moon",
         minorAspect: "semisextile",
@@ -50,7 +77,7 @@ describe("MinorAspectsComposerService", () => {
     );
 
     expect(
-      service.assembleMinorAspectEvent({
+      mockService.assembleMinorAspectEvent({
         body1: "sun",
         body2: "moon",
         minorAspect: "semisextile",
@@ -66,7 +93,7 @@ describe("MinorAspectsComposerService", () => {
     );
 
     expect(
-      service.assembleMinorAspectEvent({
+      mockService.assembleMinorAspectEvent({
         body1: "sun",
         body2: "moon",
         minorAspect: "semisextile",
@@ -84,7 +111,7 @@ describe("MinorAspectsComposerService", () => {
 
   it("extracts and casts aspect components", () => {
     expect(
-      service.extractAspectComponents([
+      mockService.extractAspectComponents([
         "Astronomy",
         "Astrology",
         "Simple Aspect",
@@ -103,7 +130,7 @@ describe("MinorAspectsComposerService", () => {
     });
 
     expect(
-      service.castAspectComponentsToTypes({
+      mockService.castAspectComponentsToTypes({
         aspectCapitalized: "Semisextile",
         body1Capitalized: "Moon",
         body2Capitalized: "Sun",
@@ -115,9 +142,13 @@ describe("MinorAspectsComposerService", () => {
       body2: "sun",
     });
 
-    expect(() => service.extractAspectComponents(["Astronomy", "Minor Aspect", "Moon"])).toThrow(
-      "Could not extract aspect info",
-    );
+    expect(() =>
+      mockService.extractAspectComponents([
+        "Astronomy",
+        "Minor Aspect",
+        "Moon",
+      ]),
+    ).toThrow("Could not extract aspect info");
   });
 
   it("builds progressive events and grouping keys", () => {
@@ -151,19 +182,30 @@ describe("MinorAspectsComposerService", () => {
 
     mockProgressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([[beginning, ending]]);
 
-    expect(service.buildGroupKey(beginning)).toBe("Moon-Semisextile-Sun");
-    expect(service.buildGroupKey({ ...beginning, categories: ["Moon"] })).toBe("");
+    expect(mockService.buildGroupKey(beginning)).toBe("Moon-Semisextile-Sun");
+    expect(
+      mockService.buildGroupKey({ ...beginning, categories: ["Moon"] }),
+    ).toBe("");
 
-    expect(service.getMinorAspectProgressiveEvent(beginning, ending)).toEqual(
+    expect(
+      mockService.getMinorAspectProgressiveEvent(beginning, ending),
+    ).toEqual(
       expect.objectContaining({
         categories: expect.arrayContaining(["Minor Aspect", "Semisextile"]),
         description: "Moon semisextile Sun",
       }),
     );
 
-    expect(service.processAspectGroup("Moon-Semisextile-Sun", [beginning, ending])).toHaveLength(1);
-    expect(service.processAspectGroup("", [beginning, ending])).toEqual([]);
-    expect(mockProgressiveUtilitiesService.pairProgressiveEvents).toHaveBeenCalledWith(
+    expect(
+      mockService.processAspectGroup("Moon-Semisextile-Sun", [
+        beginning,
+        ending,
+      ]),
+    ).toHaveLength(1);
+    expect(mockService.processAspectGroup("", [beginning, ending])).toEqual([]);
+    expect(
+      mockProgressiveUtilitiesService.pairProgressiveEvents,
+    ).toHaveBeenCalledWith(
       [beginning],
       [ending],
       "minor aspect Moon-Semisextile-Sun",
@@ -172,7 +214,7 @@ describe("MinorAspectsComposerService", () => {
 
   it("reads longitudes from ephemerides and rejects invalid input", () => {
     expect(
-      service.getLongitudesWindowForBody({
+      mockService.getLongitudesWindowForBody({
         body: "sun",
         coordinateEphemerisByBody: { sun: {} as never },
         minute: moment.utc("2024-03-21T12:00:00.000Z"),
@@ -182,12 +224,16 @@ describe("MinorAspectsComposerService", () => {
     ).toEqual({ current: 10, next: 11, previous: 9 });
 
     expect(() =>
-      service.castAspectComponentsToTypes({
+      mockService.castAspectComponentsToTypes({
         aspectCapitalized: "Not An Aspect",
         body1Capitalized: "Moon",
         body2Capitalized: "Sun",
         categories: ["Moon", "Sun"],
       }),
     ).toThrow("Could not extract typed values");
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });
