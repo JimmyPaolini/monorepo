@@ -1,4 +1,5 @@
 import moment from "moment-timezone";
+import _ from "lodash";
 import { describe, expect, it, vi } from "vitest";
 
 import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
@@ -10,10 +11,14 @@ describe("SpecialtyAspectsProgressiveService", () => {
     pairProgressiveEvents: vi.fn(),
   };
 
-  const service = new SpecialtyAspectsProgressiveService(
-    progressiveUtilitiesService as never,
-  );
+  const service = new SpecialtyAspectsProgressiveService(progressiveUtilitiesService as never);
   const specialtyAspectsProgressiveService = service as unknown as {
+    extractTypedAspectValues: (args: {
+      aspectCapitalized: string;
+      body1Capitalized: string;
+      body2Capitalized: string;
+      categories: string[];
+    }) => { aspect: string; body1: string; body2: string };
     getSpecialtyAspectProgressiveEvent: (beginning: Event, ending: Event) => Event;
     processAspectGroup: (aspectGroupKey: string, aspectGroupEvents: Event[]) => Event[];
     specialtyAspectGroupKey: (event: Event) => string;
@@ -32,33 +37,21 @@ describe("SpecialtyAspectsProgressiveService", () => {
   });
 
   it("returns an empty array for an empty progressive group key", () => {
-    expect(specialtyAspectsProgressiveService.processAspectGroup("", [])).toEqual(
-      [],
-    );
+    expect(specialtyAspectsProgressiveService.processAspectGroup("", [])).toEqual([]);
   });
 
   it("throws when categories do not include a complete specialty aspect", () => {
     expect(() =>
       specialtyAspectsProgressiveService.getSpecialtyAspectProgressiveEvent(
         {
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Specialty Aspect",
-            "Sun",
-          ],
+          categories: ["Astronomy", "Astrology", "Specialty Aspect", "Sun"],
           description: "Invalid beginning",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
           summary: "Invalid beginning",
         } as Event,
         {
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Specialty Aspect",
-            "Sun",
-          ],
+          categories: ["Astronomy", "Astrology", "Specialty Aspect", "Sun"],
           description: "Invalid ending",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
@@ -66,6 +59,62 @@ describe("SpecialtyAspectsProgressiveService", () => {
         } as Event,
       ),
     ).toThrow("Could not extract aspect info from categories");
+  });
+
+  it("throws when extracted specialty values cannot be cast to typed values", () => {
+    expect(() =>
+      specialtyAspectsProgressiveService.extractTypedAspectValues({
+        aspectCapitalized: "Not Specialty",
+        body1Capitalized: "Sun",
+        body2Capitalized: "Moon",
+        categories: ["Not Specialty", "Sun", "Moon"],
+      }),
+    ).toThrow("Could not extract typed values from categories");
+  });
+
+  it("falls back to empty body strings when sorted bodies include undefined", () => {
+    const sortBySpy = vi
+      .spyOn(_, "sortBy")
+      .mockReturnValue([undefined, "Moon"] as unknown as string[]);
+
+    expect(() =>
+      specialtyAspectsProgressiveService.getSpecialtyAspectProgressiveEvent(
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Simple Aspect",
+            "Specialty Aspect",
+            "Sun",
+            "Moon",
+            "Quintile",
+            "Forming",
+          ],
+          description: "invalid beginning",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "invalid beginning",
+        } as Event,
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Simple Aspect",
+            "Specialty Aspect",
+            "Sun",
+            "Moon",
+            "Quintile",
+            "Dissolving",
+          ],
+          description: "invalid ending",
+          end: moment.utc("2024-03-21T11:00:00.000Z"),
+          start: moment.utc("2024-03-21T11:00:00.000Z"),
+          summary: "invalid ending",
+        } as Event,
+      ),
+    ).toThrow("Could not extract typed values from categories");
+
+    sortBySpy.mockRestore();
   });
 
   it("creates progressive events from grouped forming and dissolving events", () => {

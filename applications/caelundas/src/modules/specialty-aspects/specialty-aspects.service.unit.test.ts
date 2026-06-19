@@ -47,16 +47,12 @@ describe("SpecialtyAspectsService", () => {
 
   describe("specialty-aspects.events", () => {
     describe("service.detect", () => {
-      const createEphemeris = (
-        longitudes: Record<string, number>,
-      ): CoordinateEphemeris => {
+      const createEphemeris = (longitudes: Record<string, number>): CoordinateEphemeris => {
         const ephemeris: CoordinateEphemeris = {};
         Object.keys(longitudes).forEach((timestamp) => {
           const longitude = longitudes[timestamp];
           if (longitude === undefined) {
-            throw new Error(
-              `longitude is undefined for timestamp ${timestamp}`,
-            );
+            throw new Error(`longitude is undefined for timestamp ${timestamp}`);
           }
           ephemeris[timestamp] = {
             latitude: 0,
@@ -243,12 +239,10 @@ describe("SpecialtyAspectsService", () => {
 
         expect(events.length).toBeGreaterThanOrEqual(2);
         const sunMercuryAspect = events.find(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Mercury"),
+          (e) => e.description.includes("Sun") && e.description.includes("Mercury"),
         );
         const sunVenusAspect = events.find(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Venus"),
+          (e) => e.description.includes("Sun") && e.description.includes("Venus"),
         );
         expect(sunMercuryAspect).toBeDefined();
         expect(sunVenusAspect).toBeDefined();
@@ -263,15 +257,12 @@ describe("SpecialtyAspectsService", () => {
         // Specialty aspects have tight orbs (1-2°), so spacing within 10° avoids all aspects
         // Positions: 50° through 60° (10° span, no pairs will match specialty aspect angles)
         const safeLongitudes = [
-          50, 52, 54, 56, 58, 60, 51, 53, 55, 57, 59, 50.5, 52.5, 54.5, 56.5,
-          58.5, 60.5, 51.5, 53.5,
+          50, 52, 54, 56, 58, 60, 51, 53, 55, 57, 59, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5, 51.5,
+          53.5,
         ];
         const allBodies = specialtyAspectBodies;
 
-        const coordinateEphemerisByBody = {} as Record<
-          Body,
-          CoordinateEphemeris
-        >;
+        const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
@@ -317,11 +308,33 @@ describe("SpecialtyAspectsService", () => {
         });
 
         const sunMercuryEvents = events.filter(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Mercury"),
+          (e) => e.description.includes("Sun") && e.description.includes("Mercury"),
         );
 
         expect(sunMercuryEvents.length).toBe(1);
+      });
+
+      it("skips duplicate body entries while iterating specialty body pairs", () => {
+        const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
+        const previousMinute = currentMinute.clone().subtract(1, "minute");
+        const nextMinute = currentMinute.clone().add(1, "minute");
+        const coordinateEphemerisByBody = createDefaultEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+        );
+
+        specialtyAspectBodies.push("sun");
+        try {
+          expect(
+            service.detect({
+              coordinateEphemerisByBody,
+              minute: currentMinute,
+            }),
+          ).toEqual([]);
+        } finally {
+          specialtyAspectBodies.pop();
+        }
       });
     });
 
@@ -484,10 +497,7 @@ describe("SpecialtyAspectsService", () => {
           summary: "⬅️ ☀️ ⬠ ☿ Sun dissolving quintile Mercury",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
         expect(progressiveEvents[0]).toBeDefined();
@@ -500,13 +510,7 @@ describe("SpecialtyAspectsService", () => {
 
       it("should handle multiple aspect types for same body pair", () => {
         const quintileForming: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Quintile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Quintile", "Forming"],
           description: "Sun forming quintile Mercury",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
@@ -514,13 +518,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const quintileDissolving: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Quintile",
-            "Dissolving",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Quintile", "Dissolving"],
           description: "Sun dissolving quintile Mercury",
           end: moment.utc("2024-03-21T14:00:00.000Z"),
           start: moment.utc("2024-03-21T14:00:00.000Z"),
@@ -528,13 +526,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const biquintileForming: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Biquintile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Biquintile", "Forming"],
           description: "Sun forming biquintile Mercury",
           end: moment.utc("2024-03-22T10:00:00.000Z"),
           start: moment.utc("2024-03-22T10:00:00.000Z"),
@@ -542,13 +534,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const biquintileDissolving: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Biquintile",
-            "Dissolving",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Biquintile", "Dissolving"],
           description: "Sun dissolving biquintile Mercury",
           end: moment.utc("2024-03-22T14:00:00.000Z"),
           start: moment.utc("2024-03-22T14:00:00.000Z"),
@@ -563,23 +549,13 @@ describe("SpecialtyAspectsService", () => {
         ]);
 
         expect(progressiveEvents.length).toBe(2);
-        expect(
-          progressiveEvents.find((e) => e.description.includes("quintile")),
-        ).toBeDefined();
-        expect(
-          progressiveEvents.find((e) => e.description.includes("biquintile")),
-        ).toBeDefined();
+        expect(progressiveEvents.find((e) => e.description.includes("quintile"))).toBeDefined();
+        expect(progressiveEvents.find((e) => e.description.includes("biquintile"))).toBeDefined();
       });
 
       it("should handle multiple body pairs", () => {
         const sunMercuryForming: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Quintile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Quintile", "Forming"],
           description: "Sun forming quintile Mercury",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
@@ -587,13 +563,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const sunMercuryDissolving: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Mercury",
-            "Quintile",
-            "Dissolving",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Mercury", "Quintile", "Dissolving"],
           description: "Sun dissolving quintile Mercury",
           end: moment.utc("2024-03-21T14:00:00.000Z"),
           start: moment.utc("2024-03-21T14:00:00.000Z"),
@@ -601,13 +571,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const venusMarForming: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Venus",
-            "Mars",
-            "Septile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Venus", "Mars", "Septile", "Forming"],
           description: "Venus forming septile Mars",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
@@ -615,13 +579,7 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const venusMarDissolving: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Venus",
-            "Mars",
-            "Septile",
-            "Dissolving",
-          ],
+          categories: ["Specialty Aspect", "Venus", "Mars", "Septile", "Dissolving"],
           description: "Venus dissolving septile Mars",
           end: moment.utc("2024-03-21T15:00:00.000Z"),
           start: moment.utc("2024-03-21T15:00:00.000Z"),
@@ -638,28 +596,19 @@ describe("SpecialtyAspectsService", () => {
         expect(progressiveEvents.length).toBe(2);
         expect(
           progressiveEvents.find(
-            (e) =>
-              e.description.includes("Sun") &&
-              e.description.includes("Mercury"),
+            (e) => e.description.includes("Sun") && e.description.includes("Mercury"),
           ),
         ).toBeDefined();
         expect(
           progressiveEvents.find(
-            (e) =>
-              e.description.includes("Venus") && e.description.includes("Mars"),
+            (e) => e.description.includes("Venus") && e.description.includes("Mars"),
           ),
         ).toBeDefined();
       });
 
       it("should filter out non-specialty-aspect events", () => {
         const specialtyAspectEvent: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Sun",
-            "Moon",
-            "Quintile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Sun", "Moon", "Quintile", "Forming"],
           description: "Sun forming quintile Moon",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
@@ -679,11 +628,9 @@ describe("SpecialtyAspectsService", () => {
           nonSpecialtyAspectEvent,
         ]);
 
-        expect(
-          progressiveEvents.every((e) =>
-            e.categories.includes("Specialty Aspect"),
-          ),
-        ).toBe(true);
+        expect(progressiveEvents.every((e) => e.categories.includes("Specialty Aspect"))).toBe(
+          true,
+        );
       });
 
       it("should handle empty events array", () => {
@@ -693,13 +640,7 @@ describe("SpecialtyAspectsService", () => {
 
       it("should sort body names alphabetically in progressive event", () => {
         const formingEvent: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Venus",
-            "Mars",
-            "Quintile",
-            "Forming",
-          ],
+          categories: ["Specialty Aspect", "Venus", "Mars", "Quintile", "Forming"],
           description: "Venus forming quintile Mars",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
@@ -707,23 +648,14 @@ describe("SpecialtyAspectsService", () => {
         };
 
         const dissolvingEvent: Event = {
-          categories: [
-            "Specialty Aspect",
-            "Venus",
-            "Mars",
-            "Quintile",
-            "Dissolving",
-          ],
+          categories: ["Specialty Aspect", "Venus", "Mars", "Quintile", "Dissolving"],
           description: "Venus dissolving quintile Mars",
           end: moment.utc("2024-03-21T14:00:00.000Z"),
           start: moment.utc("2024-03-21T14:00:00.000Z"),
           summary: "dissolving",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
         expect(progressiveEvents[0]).toBeDefined();
@@ -743,21 +675,19 @@ describe("SpecialtyAspectsService", () => {
 
   describe("getSpecialtyAspect", () => {
     it("should return quintile for bodies 72° apart", () => {
-      expect(
-        service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 }),
-      ).toBe("quintile");
+      expect(service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 })).toBe(
+        "quintile",
+      );
     });
 
     it("should return biquintile for bodies 144° apart", () => {
-      expect(
-        service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 }),
-      ).toBe("biquintile");
+      expect(service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 })).toBe(
+        "biquintile",
+      );
     });
 
     it("should return null when no specialty aspect is within orb", () => {
-      expect(
-        service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
-      ).toBeNull();
+      expect(service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 })).toBeNull();
     });
   });
 });

@@ -492,6 +492,45 @@ describe("QuintupleAspectsService", () => {
       expect(progressiveEvents.length).toBe(0);
     });
 
+    it("should ignore non-dissolving follow-up events in progressive pairing", () => {
+      const formingEvent: Event = {
+        categories: [
+          "Quintuple Aspect",
+          "Pentagram",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+        ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
+      };
+      const nonDissolvingEvent: Event = {
+        categories: [
+          "Quintuple Aspect",
+          "Pentagram",
+          "Perfective",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+        ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram exact",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram exact",
+      };
+
+      const progressiveEvents = service.detectProgressive([formingEvent, nonDissolvingEvent]);
+
+      expect(progressiveEvents).toHaveLength(0);
+    });
+
     it("should remove phase emojis from summary", () => {
       const formingEvent: Event = {
         categories: [
@@ -573,6 +612,137 @@ describe("QuintupleAspectsService", () => {
       expect(progressiveEvents.length).toBe(1);
       expect(progressiveEvents[0]?.description).not.toMatch(/(forming|dissolving|exact)$/i);
       expect(progressiveEvents[0]?.description).toContain("pentagram");
+    });
+  });
+
+  describe("composer guard branches", () => {
+    const getComposer = (): QuintupleAspectsComposerService =>
+      (
+        service as unknown as {
+          quintupleAspectsComposerService: QuintupleAspectsComposerService;
+        }
+      ).quintupleAspectsComposerService;
+
+    it("returns null when pentagram event receives fewer than five bodies", () => {
+      expect(
+        getComposer().buildPentagramEvent(
+          ["sun", "moon", "mars", "jupiter"],
+          "forming",
+          moment.utc("2024-03-21T12:00:00.000Z"),
+        ),
+      ).toBeNull();
+    });
+
+    it("returns null when pentagram traversal cannot produce an ordered path", () => {
+      const traverseSpy = vi
+        .spyOn(getComposer(), "traversePentagramPath")
+        .mockReturnValue(null);
+
+      const pattern = getComposer().findPentagramPattern(
+        ["sun", "moon", "mars", "jupiter", "venus"],
+        [
+          { aspect: "quintile", bodies: ["sun", "moon"] },
+          { aspect: "quintile", bodies: ["moon", "mars"] },
+          { aspect: "quintile", bodies: ["mars", "jupiter"] },
+          { aspect: "quintile", bodies: ["jupiter", "venus"] },
+          { aspect: "quintile", bodies: ["venus", "sun"] },
+        ],
+      );
+
+      expect(pattern).toBeNull();
+      traverseSpy.mockRestore();
+    });
+
+    it("returns null when ordered pentagram has unexpected quintile pair count", () => {
+      const countSpy = vi.spyOn(getComposer(), "countUniqueQuintilePairs").mockReturnValue(4);
+
+      const pattern = getComposer().findPentagramPattern(
+        ["sun", "moon", "mars", "jupiter", "venus"],
+        [
+          { aspect: "quintile", bodies: ["sun", "moon"] },
+          { aspect: "quintile", bodies: ["moon", "mars"] },
+          { aspect: "quintile", bodies: ["mars", "jupiter"] },
+          { aspect: "quintile", bodies: ["jupiter", "venus"] },
+          { aspect: "quintile", bodies: ["venus", "sun"] },
+        ],
+      );
+
+      expect(pattern).toBeNull();
+      countSpy.mockRestore();
+    });
+
+    it("returns perfective phase emoji in composer helper", () => {
+      expect(getComposer().getPhaseEmoji("perfective")).toBe("🎯 ");
+    });
+
+    it("returns no pentagrams when fewer than five unique bodies are present", () => {
+      const events = getComposer().composePentagrams({
+        currentAspectBodies: [
+          { aspect: "quintile", bodies: ["sun", "moon"] },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "mars"] },
+          { aspect: "quintile", bodies: ["sun", "venus"] },
+          { aspect: "quintile", bodies: ["moon", "venus"] },
+        ],
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        previousAspectBodies: [],
+      });
+
+      expect(events).toEqual([]);
+    });
+
+    it("skips null pentagram events when a phase transition has no materialized boundary event", () => {
+      const findPatternSpy = vi
+        .spyOn(getComposer(), "findPentagramPattern")
+        .mockReturnValue(["sun", "moon", "mars", "jupiter", "venus"]);
+      const determinePhaseSpy = vi
+        .spyOn(getComposer(), "determineCompoundPhaseFromSnapshots")
+        .mockReturnValue({
+          eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
+          phase: "forming",
+        });
+      const buildEventSpy = vi.spyOn(getComposer(), "buildPentagramEvent").mockReturnValue(null);
+
+      const events = getComposer().processPentagramCombinations({
+        combinations: [["sun", "moon", "mars", "jupiter", "venus"]],
+        currentAspectBodies: [],
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        previousAspectBodies: [],
+        unionEdges: [],
+      });
+
+      expect(events).toEqual([]);
+
+      findPatternSpy.mockRestore();
+      determinePhaseSpy.mockRestore();
+      buildEventSpy.mockRestore();
+    });
+
+    it("returns null when pentagram traversal cannot find a new unvisited node", () => {
+      const traversal = getComposer().traversePentagramPath(
+        new Map([
+          ["sun", new Set(["moon"])],
+          ["moon", new Set(["sun"])],
+        ]) as unknown as Map<string, Set<string>>,
+        ["sun", "moon", "mars", "jupiter", "venus"] as unknown as string[],
+      );
+
+      expect(traversal).toBeNull();
+    });
+
+    it("returns null when pentagram traversal does not close back to start", () => {
+      const traversal = getComposer().traversePentagramPath(
+        new Map([
+          ["sun", new Set(["moon", "venus"])],
+          ["moon", new Set(["sun", "mars"])],
+          ["mars", new Set(["moon", "jupiter"])],
+          ["jupiter", new Set(["mars", "venus"])],
+          ["venus", new Set(["jupiter"])],
+        ]) as unknown as Map<string, Set<string>>,
+        ["sun", "moon", "mars", "jupiter", "venus"] as unknown as string[],
+      );
+
+      expect(traversal).toBeNull();
     });
   });
 });

@@ -47,9 +47,7 @@ describe("MinorAspectsService", () => {
 
   describe("minor-aspects.events", () => {
     describe("service.detect", () => {
-      const createEphemeris = (
-        longitudes: Record<string, number>,
-      ): CoordinateEphemeris => {
+      const createEphemeris = (longitudes: Record<string, number>): CoordinateEphemeris => {
         return Object.fromEntries(
           Object.entries(longitudes).map(([timestamp, longitude]) => [
             timestamp,
@@ -163,15 +161,12 @@ describe("MinorAspectsService", () => {
 
         // Use clustered positions to avoid accidental aspects from default ephemeris
         const safeLongitudes = [
-          200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 201, 203, 205,
-          207, 209, 211, 213, 215,
+          200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 201, 203, 205, 207, 209, 211, 213,
+          215,
         ];
         const allBodies = minorAspectBodies;
 
-        const coordinateEphemerisByBody = {} as Record<
-          Body,
-          CoordinateEphemeris
-        >;
+        const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
@@ -245,12 +240,10 @@ describe("MinorAspectsService", () => {
 
         expect(events.length).toBeGreaterThanOrEqual(2);
         const sunMercuryAspect = events.find(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Mercury"),
+          (e) => e.description.includes("Sun") && e.description.includes("Mercury"),
         );
         const sunVenusAspect = events.find(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Venus"),
+          (e) => e.description.includes("Sun") && e.description.includes("Venus"),
         );
         expect(sunMercuryAspect).toBeDefined();
         expect(sunVenusAspect).toBeDefined();
@@ -266,15 +259,11 @@ describe("MinorAspectsService", () => {
         // If all bodies are within a ~20° range, no pairs will have angles matching minor aspects
         // Positions: 50° through 70° (20° span, all angles < 28° which is outside all aspect orbs)
         const safeLongitudes = [
-          50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61,
-          63, 65,
+          50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61, 63, 65,
         ];
         const allBodies = minorAspectBodies;
 
-        const coordinateEphemerisByBody = {} as Record<
-          Body,
-          CoordinateEphemeris
-        >;
+        const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
@@ -320,10 +309,32 @@ describe("MinorAspectsService", () => {
         });
 
         const sunMercuryEvents = events.filter(
-          (e) =>
-            e.description.includes("Sun") && e.description.includes("Mercury"),
+          (e) => e.description.includes("Sun") && e.description.includes("Mercury"),
         );
         expect(sunMercuryEvents).toHaveLength(1);
+      });
+
+      it("skips duplicate body entries when scanning body pairs", () => {
+        const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
+        const previousMinute = currentMinute.clone().subtract(1, "minute");
+        const nextMinute = currentMinute.clone().add(1, "minute");
+        const coordinateEphemerisByBody = createDefaultEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+        );
+
+        minorAspectBodies.push("sun");
+        try {
+          expect(
+            service.detect({
+              coordinateEphemerisByBody,
+              minute: currentMinute,
+            }),
+          ).toEqual([]);
+        } finally {
+          minorAspectBodies.pop();
+        }
       });
     });
 
@@ -448,15 +459,7 @@ describe("MinorAspectsService", () => {
         timestamp: Moment,
       ): Event => {
         return {
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Minor Aspect",
-            body1,
-            body2,
-            aspect,
-            phase,
-          ],
+          categories: ["Astronomy", "Astrology", "Minor Aspect", body1, body2, aspect, phase],
           description: `${body1} ${phase.toLowerCase()} ${aspect.toLowerCase()} ${body2}`,
           end: timestamp,
           start: timestamp,
@@ -598,11 +601,7 @@ describe("MinorAspectsService", () => {
           summary: "Sunrise",
         };
 
-        const events = [
-          minorAspectForming,
-          minorAspectDissolving,
-          nonAspectEvent,
-        ];
+        const events = [minorAspectForming, minorAspectDissolving, nonAspectEvent];
         const progressiveEvents = service.detectProgressive(events);
 
         expect(progressiveEvents).toHaveLength(1);
@@ -643,36 +642,26 @@ describe("MinorAspectsService", () => {
 
   describe("getMinorAspect", () => {
     it("should return semisextile for bodies 30° apart", () => {
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 }),
-      ).toBe("semisextile");
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 })).toBe("semisextile");
     });
 
     it("should return semisquare for bodies 45° apart", () => {
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 }),
-      ).toBe("semisquare");
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 })).toBe("semisquare");
     });
 
     it("should return sesquiquadrate for bodies 135° apart", () => {
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 }),
-      ).toBe("sesquiquadrate");
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 })).toBe(
+        "sesquiquadrate",
+      );
     });
 
     it("should return quincunx for bodies 150° apart", () => {
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
-      ).toBe("quincunx");
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 })).toBe("quincunx");
     });
 
     it("should return null when no minor aspect is within orb", () => {
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
-      ).toBeNull();
-      expect(
-        service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
-      ).toBeNull();
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 })).toBeNull();
+      expect(service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBeNull();
     });
   });
 

@@ -72,21 +72,13 @@ describe("AspectsService", () => {
         TripleAspectsComposerService,
         TripleAspectsDetectorService,
         {
-          inject: [
-            MajorAspectsService,
-            MinorAspectsService,
-            SpecialtyAspectsService,
-          ],
+          inject: [MajorAspectsService, MinorAspectsService, SpecialtyAspectsService],
           provide: SIMPLE_ASPECT_DETECTORS_TOKEN,
           useFactory: (
             majorAspectsService: MajorAspectsService,
             minorAspectsService: MinorAspectsService,
             specialtyAspectsService: SpecialtyAspectsService,
-          ) => [
-            majorAspectsService,
-            minorAspectsService,
-            specialtyAspectsService,
-          ],
+          ) => [majorAspectsService, minorAspectsService, specialtyAspectsService],
         },
         {
           inject: [
@@ -306,6 +298,98 @@ describe("AspectsService", () => {
       expect(result).toEqual([]);
     });
 
+    it("skips simple-aspect events without forming or dissolving phase", () => {
+      const result = service.computeAspectBodies(
+        [],
+        [
+          {
+            categories: [
+              "Astronomy",
+              "Astrology",
+              "Simple Aspect",
+              "Major Aspect",
+              "Sun",
+              "Moon",
+              "Conjunct",
+            ],
+            description: "",
+            end: timestamp,
+            start: timestamp,
+            summary: "Sun conjunct Moon",
+          },
+        ],
+      );
+
+      expect(result).toEqual([]);
+    });
+
+    it("skips simple-aspect events with invalid aspect names", () => {
+      const result = service.computeAspectBodies(
+        [],
+        [
+          {
+            categories: [
+              "Astronomy",
+              "Astrology",
+              "Simple Aspect",
+              "Major Aspect",
+              "Sun",
+              "Moon",
+              "NotAnAspect",
+              "Forming",
+            ],
+            description: "",
+            end: timestamp,
+            start: timestamp,
+            summary: "Invalid",
+          },
+        ],
+      );
+
+      expect(result).toEqual([]);
+    });
+
+    it("skips simple-aspect events that do not include exactly two bodies", () => {
+      const result = service.computeAspectBodies(
+        [],
+        [
+          {
+            categories: [
+              "Astronomy",
+              "Astrology",
+              "Simple Aspect",
+              "Major Aspect",
+              "Sun",
+              "Conjunct",
+              "Forming",
+            ],
+            description: "",
+            end: timestamp,
+            start: timestamp,
+            summary: "Invalid body count",
+          },
+        ],
+      );
+
+      expect(result).toEqual([]);
+    });
+
+    it("does not duplicate an already-active forming aspect", () => {
+      const result = service.computeAspectBodies(
+        [{ aspect: "conjunct", bodies: ["sun", "moon"] }],
+        [
+          createAspectEvent({
+            aspectType: "Conjunct",
+            body1: "Sun",
+            body2: "Moon",
+            phase: "Forming",
+          }),
+        ],
+      );
+
+      expect(result).toEqual([{ aspect: "conjunct", bodies: ["sun", "moon"] }]);
+    });
+
     it("does not mutate the previous state array", () => {
       const afterForming = service.computeAspectBodies(
         [],
@@ -402,12 +486,8 @@ describe("AspectsService", () => {
       });
       expect(detectResult.events).toEqual([simpleEvent, compositeEvent]);
 
-      expect(delegatedService.detectProgressive([simpleEvent])).toEqual([
-        progressiveEvent,
-      ]);
-      expect(mockProgressiveAspectDetector.detectProgressive).toHaveBeenCalledWith(
-        [simpleEvent],
-      );
+      expect(delegatedService.detectProgressive([simpleEvent])).toEqual([progressiveEvent]);
+      expect(mockProgressiveAspectDetector.detectProgressive).toHaveBeenCalledWith([simpleEvent]);
     });
   });
 });

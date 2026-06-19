@@ -894,5 +894,84 @@ describe("QuadrupleAspectsService", () => {
 
       expect(result).toBeNull();
     });
+
+    it("returns null from checkTrineTriple when required trine links are missing", () => {
+      const result = (
+        composerService as unknown as {
+          checkTrineTriple: (args: {
+            trineI: AspectBodies;
+            trineJ: AspectBodies;
+            trineK: AspectBodies;
+            unionEdges: AspectBodies[];
+          }) => Set<string> | null;
+        }
+      ).checkTrineTriple({
+        trineI: { aspect: "trine", bodies: ["sun", "moon"] },
+        trineJ: { aspect: "trine", bodies: ["sun", "mars"] },
+        trineK: { aspect: "trine", bodies: ["moon", "mars"] },
+        unionEdges: [
+          { aspect: "trine", bodies: ["sun", "moon"] },
+          { aspect: "trine", bodies: ["sun", "mars"] },
+        ],
+      });
+
+      expect(result).toBeNull();
+    });
+
+    it("returns expected opposite body values in base helper", () => {
+      expect(
+        composerService.getOtherBody(
+          { aspect: "opposite", bodies: ["sun", "moon"] },
+          "sun",
+        ),
+      ).toBe("moon");
+      expect(
+        composerService.getOtherBody(
+          { aspect: "opposite", bodies: ["sun", "moon"] },
+          "moon",
+        ),
+      ).toBe("sun");
+      expect(
+        composerService.getOtherBody(
+          { aspect: "opposite", bodies: ["sun", "moon"] },
+          "mars",
+        ),
+      ).toBeNull();
+    });
+
+    it("handles sparse trine arrays while scanning potential grand trines", () => {
+      const result = composerService.findGrandTrines(
+        [
+          { aspect: "trine", bodies: ["sun", "moon"] },
+          undefined as unknown as AspectBodies,
+          { aspect: "trine", bodies: ["sun", "mars"] },
+          { aspect: "trine", bodies: ["moon", "mars"] },
+        ],
+        [
+          { aspect: "trine", bodies: ["sun", "moon"] },
+          { aspect: "trine", bodies: ["sun", "mars"] },
+          { aspect: "trine", bodies: ["moon", "mars"] },
+        ],
+      );
+
+      expect(result).toHaveLength(1);
+    });
+
+    it("returns false when opposite-body mapping is missing during square verification", () => {
+      const verified = composerService.verifyGrandCrossSquares(
+        ["sun", "moon", "mars", "jupiter"],
+        new Map([
+          ["sun", "moon"],
+          ["moon", "sun"],
+        ]) as unknown as Map<string, string>,
+        [],
+      );
+
+      expect(verified).toBe(false);
+    });
+
+    it("returns perfective phase marker in base helper", () => {
+      expect(composerService.getPhaseEmoji("perfective")).toBe("🎯 ");
+    });
   });
 });
