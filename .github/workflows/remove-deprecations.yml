@@ -40,8 +40,20 @@ jobs:
           fi
 
       - name: ✂️ Remove Deprecations
+        env:
+          FALLOW_APPLY: "false"
         run: |
           pnpm exec nx run monorepo:clean:write || true
+          pnpm exec nx run monorepo:fallow-config || true
+          # Safe dry-run only.
+          # Previews fallow changes without modifying files.
+          pnpm exec nx run monorepo:fallow-fix:check || true
+          # Apply mode is disabled by default.
+          # Set FALLOW_APPLY=true to enable fallow-fix:write.
+          # Set or keep FALLOW_APPLY=false for immediate rollback.
+          if [[ "${FALLOW_APPLY:-false}" == "true" ]]; then
+            pnpm exec nx run monorepo:fallow-fix:write || true
+          fi
 
       - name: 🔐 Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v6
@@ -64,10 +76,10 @@ jobs:
 
             ## 📝 Details
 
-            - Remove unused files detected by knip
-            - Remove unused exports from files detected by knip
-            - Remove unused dependencies from package.json files
-              detected by knip
+            - Remove unused files and exports surfaced by knip and fallow
+            - Preview fallow auto-fix candidates with `fallow fix --dry-run`
+            - Optionally apply fallow auto-fix when `FALLOW_APPLY=true`
+            - Remove unused dependencies from package manifests via existing clean tooling
 
             ## 🧪 Testing
 

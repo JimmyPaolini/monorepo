@@ -2,13 +2,13 @@
 name: Fallow Code Quality Integration Plan
 description: Integrate fallow static analysis into monorepo quality workflows with advisory-first CI and permanent knip parallelism.
 created: 2026-06-19T13:34:23Z
-updated: 2026-06-19T13:47:19Z
-status: "In progress"
+updated: 2026-06-19T14:57:36Z
+status: "Completed"
 ---
 
 # Introduction
 
-![Status: In progress](https://img.shields.io/badge/status-In_progress-yellow)
+![Status: Completed](https://img.shields.io/badge/status-Completed-brightgreen)
 
 This plan introduces `fallow` as an additional static analysis tool across local development, Nx workflows, CI, and automated cleanup workflows. The rollout is advisory-first for CI, uses static-only features (no runtime license/coverage setup), and keeps `knip` in permanent parallel operation.
 
@@ -60,10 +60,10 @@ This plan introduces `fallow` as an additional static analysis tool across local
 
 | Task     | Description | Completed | Date |
 | -------- | ----------- | --------- | ---- |
-| TASK-009 | Update `/configuration/lint-staged.config.ts` to include non-blocking/advisory fallow checks for staged TS/JS changes where practical (JSON output for tooling parity). |  |  |
-| TASK-010 | Update `/.github/workflows/analyze-code.yml` to execute fallow analysis in advisory mode and upload machine-readable artifacts (JSON/SARIF) when available. |  |  |
-| TASK-011 | Add or update CI reporting behavior so fallow findings are visible in workflow logs/artifacts without failing the job during initial adoption. |  |  |
-| TASK-012 | Add CI command scoping strategy for PRs (`fallow audit` on changed code) while keeping full-repo scans available for scheduled/manual workflows. |  |  |
+| TASK-009 | Update `/configuration/lint-staged.config.ts` to include non-blocking/advisory fallow checks for staged TS/JS changes where practical (JSON output for tooling parity). | ✅ | 2026-06-19T14:51:49Z |
+| TASK-010 | Update `/.github/workflows/analyze-code.yml` to execute fallow analysis in advisory mode and upload machine-readable artifacts (JSON/SARIF) when available. | ✅ | 2026-06-19T14:51:49Z |
+| TASK-011 | Add or update CI reporting behavior so fallow findings are visible in workflow logs/artifacts without failing the job during initial adoption. | ✅ | 2026-06-19T14:51:49Z |
+| TASK-012 | Add CI command scoping strategy for PRs (`fallow audit` on changed code) while keeping full-repo scans available for scheduled/manual workflows. | ✅ | 2026-06-19T14:51:49Z |
 
 ### Implementation Phase 4
 
@@ -71,10 +71,10 @@ This plan introduces `fallow` as an additional static analysis tool across local
 
 | Task     | Description | Completed | Date |
 | -------- | ----------- | --------- | ---- |
-| TASK-013 | Update `/.github/workflows/remove-deprecations.yml` to include fallow cleanup analysis (`fallow fix --dry-run` and/or controlled apply mode) alongside existing clean/knip workflow intent. |  |  |
-| TASK-014 | Update workflow PR body text to reflect mixed knip + fallow cleanup sources (avoid stale “detected by knip only” wording). |  |  |
-| TASK-015 | Ensure signed automated PR flow and branch conventions remain unchanged after adding fallow commands. |  |  |
-| TASK-016 | Add rollback toggles or guarded flags so automated cleanup can quickly disable fallow apply behavior if false positives are discovered. |  |  |
+| TASK-013 | Update `/.github/workflows/remove-deprecations.yml` to include fallow cleanup analysis (`fallow fix --dry-run` and/or controlled apply mode) alongside existing clean/knip workflow intent. | ✅ | 2026-06-19T14:57:36Z |
+| TASK-014 | Update workflow PR body text to reflect mixed knip + fallow cleanup sources (avoid stale “detected by knip only” wording). | ✅ | 2026-06-19T14:57:36Z |
+| TASK-015 | Ensure signed automated PR flow and branch conventions remain unchanged after adding fallow commands. | ✅ | 2026-06-19T14:57:36Z |
+| TASK-016 | Add rollback toggles or guarded flags so automated cleanup can quickly disable fallow apply behavior if false positives are discovered. | ✅ | 2026-06-19T14:57:36Z |
 
 ## 3. Alternatives
 
