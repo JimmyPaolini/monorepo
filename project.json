@@ -19,7 +19,8 @@
             "nx run {projectName}:type-coverage",
             "nx run {projectName}:typecheck",
             "nx run {projectName}:fallow-dead-code",
-            "nx run {projectName}:fallow-health"
+            "nx run {projectName}:fallow-health",
+            "nx run {projectName}:fallow-audit"
           ],
           "parallel": true
         },
@@ -38,7 +39,8 @@
             "nx run {projectName}:markdown-lint:write",
             "nx run {projectName}:format:write",
             "nx run {projectName}:fallow-dead-code",
-            "nx run {projectName}:fallow-health"
+            "nx run {projectName}:fallow-health",
+            "nx run {projectName}:fallow-audit"
           ],
           "parallel": false
         }

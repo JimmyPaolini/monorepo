@@ -166,10 +166,10 @@ const config = {
     mode: "mild",
 
     // Minimum token count for a clone pair to be reported
-    minTokens: 50,
+    minTokens: 48,
 
     // Minimum line count for a clone pair to be reported
-    minLines: 5,
+    minLines: 6,
   },
 
   // 🏥 Health
@@ -180,11 +180,11 @@ const config = {
   health: {
     // McCabe cyclomatic complexity — number of linearly independent paths
     // through a function. Tighten toward 10 as the codebase improves.
-    maxCyclomatic: 20,
+    maxCyclomatic: 8,
 
     // Cognitive complexity (Sonar model) — how hard the code is to understand.
     // Tighten toward 10 as refactoring progresses.
-    maxCognitive: 15,
+    maxCognitive: 12,
   },
 
   // 🔒 Audit
@@ -195,7 +195,7 @@ const config = {
   audit: {
     // "new-only" — fail only when a PR introduces NEW violations.
     // "all"      — fail when any violation exists (use after full cleanup).
-    gate: "new-only",
+    gate: "all",
   },
 
   // 🪟 Exports used in file
