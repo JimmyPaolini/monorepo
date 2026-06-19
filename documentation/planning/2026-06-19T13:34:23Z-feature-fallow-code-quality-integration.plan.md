@@ -39,7 +39,7 @@ This plan introduces `fallow` as an additional static analysis tool across local
 | Task     | Description | Completed | Date |
 | -------- | ----------- | --------- | ---- |
 | TASK-001 | Add `fallow` as a root `devDependency` in `/package.json` and update `/pnpm-lock.yaml`. | ✅ | 2026-06-19T13:47:19Z |
-| TASK-002 | Create root fallow config (`/.fallowrc.jsonc` preferred) with schema reference, monorepo-aware `entry`/`ignorePatterns`, and rules for unused files/exports/types, duplication, and health scoring. | ✅ | 2026-06-19T13:47:19Z |
+| TASK-002 | Create fallow config (`/configuration/fallow.config.jsonc`) with schema reference, monorepo-aware `entry`/`ignorePatterns`, and rules for unused files/exports/types, duplication, and health scoring. | ✅ | 2026-06-19T13:47:19Z |
 | TASK-003 | Add initial suppression policy (`ignoreDependencies`, `ignoreExports`, `ignoreExportsUsedInFile`) mapped from existing workspace conventions and known generated-file patterns. | ✅ | 2026-06-19T13:47:19Z |
 | TASK-004 | Document fallow config intent and operational expectations in inline comments and relevant developer docs sections that discuss code-quality tooling. | ✅ | 2026-06-19T13:47:19Z |
 
@@ -94,7 +94,7 @@ This plan introduces `fallow` as an additional static analysis tool across local
 
 - **FILE-001**: `/package.json` — add `fallow` dependency and scripts if needed.
 - **FILE-002**: `/pnpm-lock.yaml` — lockfile update for new dependency.
-- **FILE-003**: `/.fallowrc.jsonc` (or `fallow.toml`) — primary fallow configuration.
+- **FILE-003**: `/configuration/fallow.config.jsonc` (or `fallow.toml`) — primary fallow configuration.
 - **FILE-004**: `/project.json` — root Nx targets for fallow commands and composites.
 - **FILE-005**: `/nx.json` — target defaults/inputs adjustments for fallow task caching.
 - **FILE-006**: `/configuration/lint-staged.config.ts` — staged-file integration.

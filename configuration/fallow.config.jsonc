@@ -17,7 +17,7 @@
     "configuration/syncpack.config.cjs",
     "scripts/**/*.{js,mjs,ts,sh}",
     ".devcontainer/scripts/**/*.{js,mjs,ts,sh}",
-    "**/src/main.ts"
+    "**/src/main.ts",
   ],
   "ignorePatterns": [
     "**/dist/**",
@@ -66,7 +66,7 @@
     ".github/copilot-instructions.md",
     "**/src/**/*.constants.ts",
     "**/src/**/*.types.ts",
-    "**/testing/**"
+    "**/testing/**",
   ],
   "rules": {
     "unused-files": "warn",
@@ -75,19 +75,19 @@
     "unused-dependencies": "warn",
     "circular-dependencies": "warn",
     "unresolved-imports": "warn",
-    "private-type-leaks": "off"
+    "private-type-leaks": "off",
   },
   "duplicates": {
     "mode": "mild",
     "minTokens": 48,
-    "minLines": 6
+    "minLines": 6,
   },
   "health": {
     "maxCyclomatic": 8,
-    "maxCognitive": 12
+    "maxCognitive": 12,
   },
   "audit": {
-    "gate": "all"
+    "gate": "all",
   },
   "ignoreExportsUsedInFile": true,
   "ignoreDependencies": [
@@ -115,51 +115,37 @@
     "tslib",
     "tsx",
     "unplugin-swc",
-    "vitest"
+    "vitest",
   ],
   "ignoreExports": [
     {
       "file": "**/src/routeTree.gen.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/lib/database.types.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/lib/auth.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/lib/bookmarks.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/lib/supabase.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/modules/database/database.module.ts",
-      "exports": [
-        "*"
-      ]
+      "exports": ["*"],
     },
     {
       "file": "**/src/modules/entities/entities.module.ts",
-      "exports": [
-        "*"
-      ]
-    }
+      "exports": ["*"],
+    },
   ],
-  "publicPackages": []
+  "publicPackages": [],
 }

@@ -134,6 +134,98 @@
         "cwd": "{projectRoot}"
       }
     },
+    "fallow": {
+      "cache": true,
+      "description": "Run all fallow static analyses (dead-code, dupes, health) in advisory mode",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-audit": {
+      "cache": false,
+      "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow audit --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-dead-code": {
+      "cache": true,
+      "description": "Fallow dead-code analysis (unused files, exports, deps, circular deps) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow dead-code --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-dupes": {
+      "cache": true,
+      "description": "Fallow code duplication analysis — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow dupes --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-fix": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "fallow fix --dry-run --config configuration/fallow.config.jsonc"
+        },
+        "write": {
+          "command": "fallow fix --yes --config configuration/fallow.config.jsonc"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview.",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-health": {
+      "cache": true,
+      "description": "Fallow code health analysis (complexity, hotspots, maintainability) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow health --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "format": {
       "configurations": {
         "check": {
@@ -171,98 +263,6 @@
       "options": {
         "command": "gitleaks git --staged --verbose --redact --config configuration/gitleaks.toml --gitleaks-ignore-path configuration",
         "cwd": "{projectRoot}"
-      }
-    },
-    "fallow": {
-      "cache": true,
-      "description": "Run all fallow static analyses (dead-code, dupes, health) in advisory mode",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "fallow --config .fallowrc.jsonc || true",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "fallow-dead-code": {
-      "cache": true,
-      "description": "Fallow dead-code analysis (unused files, exports, deps, circular deps) — advisory",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "fallow dead-code --config .fallowrc.jsonc || true",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "fallow-dupes": {
-      "cache": true,
-      "description": "Fallow code duplication analysis — advisory",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "fallow dupes --config .fallowrc.jsonc || true",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "fallow-fix": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "fallow fix --dry-run --config .fallowrc.jsonc"
-        },
-        "write": {
-          "command": "fallow fix --yes --config .fallowrc.jsonc"
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview.",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "fallow-health": {
-      "cache": true,
-      "description": "Fallow code health analysis (complexity, hotspots, maintainability) — advisory",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "fallow health --config .fallowrc.jsonc || true",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "fallow-audit": {
-      "cache": false,
-      "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.fallowrc.jsonc",
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "fallow audit --config .fallowrc.jsonc || true",
-        "cwd": "{workspaceRoot}"
       }
     },
     "knip": {

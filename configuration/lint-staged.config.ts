@@ -35,7 +35,7 @@ const config = {
   ],
 
   // Run advisory dead-code check when fallow config changes
-  ".fallowrc.jsonc": () => [
+  "configuration/fallow.config.jsonc": () => [
     "pnpm exec nx run monorepo:fallow-dead-code --outputStyle=dynamic-legacy",
   ],
 

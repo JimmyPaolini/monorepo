@@ -17,6 +17,7 @@ devdeps
 devkit
 glab
 hushy
+hotspots
 lintstagedrc
 monorepo
 myapp

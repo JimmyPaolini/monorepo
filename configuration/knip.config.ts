@@ -70,7 +70,7 @@ const config: KnipConfig = {
         "configuration/lint-staged.config.ts",
         "configuration/oxfmt.config.ts",
         "configuration/oxlint.config.ts",
-        ".fallowrc.jsonc", // fallow static analysis config
+        "configuration/fallow.config.jsonc", // fallow static analysis config
         "configuration/prettier.config.ts",
         "configuration/stylelint.config.cjs",
         "configuration/syncpack.config.cjs",
