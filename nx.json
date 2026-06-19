@@ -68,6 +68,9 @@
         "targetName": "eslint"
       },
       "plugin": "@nx/eslint/plugin"
+    },
+    {
+      "plugin": "@nx/vitest"
     }
   ],
   "projects": {

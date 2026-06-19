@@ -1,11 +1,11 @@
 /// <reference types='vitest' />
 import path from "node:path";
 
-import { nxCopyAssetsPlugin } from "@nx/vite/plugins/nx-copy-assets.plugin";
-import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { viteStaticCopy } from "vite-plugin-static-copy";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(() => ({
   build: {
@@ -21,7 +21,7 @@ export default defineConfig(() => ({
     },
     outDir: "../../dist/packages/lexico-components",
     reportCompressedSize: true,
-    rollupOptions: {
+    rolldownOptions: {
       external: ["react", "react-dom", "react/jsx-runtime", /^@radix-ui\/.*/],
       output: {
         globals: {
@@ -34,8 +34,10 @@ export default defineConfig(() => ({
   cacheDir: "../../node_modules/.vite/packages/lexico-components",
   plugins: [
     react(),
-    nxViteTsPaths(),
-    nxCopyAssetsPlugin(["*.md"]),
+    tsconfigPaths(),
+    viteStaticCopy({
+      targets: [{ dest: ".", src: "*.md" }],
+    }),
     dts({
       entryRoot: "src",
       pathsToAliases: false,

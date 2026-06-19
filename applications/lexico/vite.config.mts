@@ -16,9 +16,6 @@ export default defineConfig({
     rolldownOptions: {
       external: ["expo-sqlite"],
     },
-    rollupOptions: {
-      external: ["expo-sqlite"],
-    },
   },
   cacheDir: "../../node_modules/.vite/applications/lexico",
   css: {
