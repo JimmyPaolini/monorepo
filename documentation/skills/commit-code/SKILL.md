@@ -213,13 +213,18 @@ feat(lexico): 💥 migrate to new auth API
 
 ### Committing from the Command Line
 
-Since footer sections are forbidden, commits should not include footers. Body must be omitted unless it consists entirely of `Co-authored-by` trailers:
+Since footer sections are forbidden, commits should not include footers. Body must be omitted unless it consists entirely of `Co-authored-by` trailers.
+
+Commits must also be GPG-signed and verified:
 
 ```bash
-git commit -m "feat(monorepo): ✨ add new feature"
+bash scripts/git/check-commit-signing-configuration.sh
+export GPG_TTY="$(tty)"
+git commit -S -m "feat(monorepo): ✨ add new feature"
+git verify-commit HEAD
 ```
 
-Use the `-m` flag with your complete commit message in the proper format.
+Use the signing configuration check script first, then use `-S`, and fail immediately if `git verify-commit HEAD` does not succeed.
 
 ### Common Pitfalls
 
@@ -263,7 +268,8 @@ All rules defined in [../commitlint.config.ts](../../../configuration/commitlint
 Commit messages are validated by:
 
 1. **Husky pre-commit hook** — Runs commitlint locally before commit
-2. **GitHub Actions CI** — Validates all commits in PRs
+2. **Husky pre-push hook** — Rejects unsigned or unverifiable commits before push
+3. **GitHub Actions CI** — Validates all commits in PRs
 
 Configuration files:
 
@@ -283,6 +289,7 @@ Configuration files:
 - Scope: lowercase, from allowed list
 - Subject: lowercase, imperative, no period, <72 chars
 - Header: <128 chars total (count prefix + subject!)
+- Signing: commit with `-S`, then verify `HEAD` using `git verify-commit`
 - Body: forbidden (only `Co-authored-by` trailers allowed, added automatically by tools)
 - Footer: forbidden
 - NEVER list multiple changes with commas/"and" — summarize or split commits
@@ -302,3 +309,5 @@ refactor(project): ♻️ refactor code
 - [Gitmoji Guide](https://gitmoji.dev)
 - [commitlint](https://commitlint.js.org/)
 - [gitmoji.md](../../gitmoji.md) — Full emoji reference
+- [check-commit-signing-configuration.sh](../../../scripts/git/check-commit-signing-configuration.sh) — Validates signing prerequisites before commit
+- [check-push-commit-signatures.sh](../../../scripts/git/check-push-commit-signatures.sh) — Validates pushed commits are signed
