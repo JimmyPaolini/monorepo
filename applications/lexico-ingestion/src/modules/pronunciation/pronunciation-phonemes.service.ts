@@ -7,6 +7,10 @@ import type { EcclesiasticalPhonemeMap } from "./pronunciation.types";
  */
 @Injectable()
 export class PronunciationPhonemesService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Gets a string phoneme from a mixed phoneme map or returns an empty string.
    */

@@ -4,22 +4,22 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { Lexeme } from "@monorepo/lexico-entities";
 
 import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
-import { FormsBuilderVerbProvider } from "./forms-builder-verb.service";
+import { FormsBuilderVerbService } from "./forms-builder-verb.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
-describe("FormsBuilderVerbProvider", () => {
-  let service: FormsBuilderVerbProvider;
+describe("FormsBuilderVerbService", () => {
+  let service: FormsBuilderVerbService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        FormsBuilderVerbProvider,
+        FormsBuilderVerbService,
         FormsBuilderGuardsProvider,
         FormsTransientWordsService,
       ],
     }).compile();
 
-    service = await module.resolve(FormsBuilderVerbProvider);
+    service = await module.resolve(FormsBuilderVerbService);
   });
 
   it("should be defined", () => {

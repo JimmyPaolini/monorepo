@@ -1,11 +1,20 @@
-import { describe, expect, it } from "vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { Form } from "@monorepo/lexico-entities";
 
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
 describe("FormsTransientWordsService", () => {
-  const service = new FormsTransientWordsService();
+  let service: FormsTransientWordsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [FormsTransientWordsService],
+    }).compile();
+
+    service = await module.resolve(FormsTransientWordsService);
+  });
 
   it("should be defined", () => {
     expect(service).toBeDefined();

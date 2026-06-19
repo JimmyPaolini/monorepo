@@ -21,7 +21,9 @@ import type {
  * Service responsible for building verb forms based on raw morphological data and applying necessary transformations.
  */
 @Injectable()
-export class FormsBuilderVerbProvider {
+export class FormsBuilderVerbService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly guards: FormsBuilderGuardsProvider,
     private readonly transientWordsService: FormsTransientWordsService,
@@ -171,3 +173,5 @@ export class FormsBuilderVerbProvider {
     return forms;
   }
 }
+
+export { FormsBuilderVerbService as FormsBuilderVerbProvider };

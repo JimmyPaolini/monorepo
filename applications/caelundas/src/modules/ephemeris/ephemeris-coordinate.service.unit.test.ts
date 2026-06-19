@@ -1,11 +1,13 @@
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
 import { calc, nod_aps_ut } from "sweph";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { EphemerisConstantsService } from "./ephemeris-constants.service";
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
+import { EphemerisTimeService } from "./ephemeris-time.service";
 
-import type { EphemerisConstantsService } from "./ephemeris-constants.service";
-import type { EphemerisTimeService } from "./ephemeris-time.service";
 import type * as Sweph from "sweph";
 
 vi.mock("sweph", async (importOriginal) => {
@@ -28,33 +30,69 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 describe("EphemerisCoordinateService", () => {
-  const constantsService = {
-    getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
-  };
-  const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
+  let service: EphemerisCoordinateService;
+  let constantsService: ReturnType<
+    typeof createMock<EphemerisConstantsService>
+  >;
+  let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
+  let mathService: ReturnType<
+    typeof createMock<{
+      normalizeDegrees: (degree: number) => number;
+    }>
+  >;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EphemerisCoordinateService,
+        {
+          provide: EphemerisConstantsService,
+          useValue: createMock<EphemerisConstantsService>(),
+        },
+        {
+          provide: EphemerisTimeService,
+          useValue: createMock<EphemerisTimeService>(),
+        },
+        {
+          provide: Object,
+          useValue: createMock<{
+            normalizeDegrees: (degree: number) => number;
+          }>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(EphemerisCoordinateService);
+    constantsService = await module.resolve(EphemerisConstantsService);
+    timeService = await module.resolve(EphemerisTimeService);
+    mathService = await module.resolve(Object);
+
+    vi.mocked(
+      constantsService.getSwissEphemerisConstantForBody,
+    ).mockReturnValue(0);
+    vi.mocked(timeService.dateToJulianDays).mockReturnValue({
       julianDayEphemerisTime: 2_460_395.5,
       julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
-      const values: moment.Moment[] = [];
-      let current = start.clone();
-      while (current.valueOf() <= end.valueOf()) {
-        values.push(current.clone());
-        current = current.clone().add(1, "minute");
-      }
-      return values;
-    }),
-  };
-  const mathService = {
-    normalizeDegrees: vi.fn((degree: number) => degree),
-  };
+    });
+    vi.mocked(timeService.generateMinutes).mockImplementation(
+      (start: moment.Moment, end: moment.Moment) => {
+        const values: moment.Moment[] = [];
+        let current = start.clone();
+        while (current.valueOf() <= end.valueOf()) {
+          values.push(current.clone());
+          current = current.clone().add(1, "minute");
+        }
+        return values;
+      },
+    );
+    vi.mocked(mathService.normalizeDegrees).mockImplementation(
+      (degree: number) => degree,
+    );
+  });
 
-  const service = new EphemerisCoordinateService(
-    constantsService as unknown as EphemerisConstantsService,
-    timeService as unknown as EphemerisTimeService,
-    mathService,
-  );
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   describe("computeBodyCoordinate", () => {
     it("returns longitude and latitude from calc", () => {

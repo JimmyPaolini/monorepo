@@ -11,7 +11,7 @@ import type { JulianDays } from "./ephemeris.internal.types";
  */
 @Injectable()
 export class EphemerisTimeService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
 
   constructor() {}
 

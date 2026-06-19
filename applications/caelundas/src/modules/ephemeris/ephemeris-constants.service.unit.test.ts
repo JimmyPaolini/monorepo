@@ -1,9 +1,22 @@
-import { describe, expect, it } from "vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 
 describe("EphemerisConstantsService", () => {
-  const service = new EphemerisConstantsService();
+  let service: EphemerisConstantsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EphemerisConstantsService],
+    }).compile();
+
+    service = await module.resolve(EphemerisConstantsService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   describe("isNode", () => {
     it("returns true for node bodies", () => {

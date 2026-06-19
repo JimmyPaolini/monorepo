@@ -3,6 +3,7 @@ import _ from "lodash";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { QuadrupleAspectsBaseService } from "./quadruple-aspects-base.service";
 import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
@@ -15,7 +16,11 @@ describe("QuadrupleAspectsService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [QuadrupleAspectsComposerService, QuadrupleAspectsService],
+      providers: [
+        QuadrupleAspectsBaseService,
+        QuadrupleAspectsComposerService,
+        QuadrupleAspectsService,
+      ],
     }).compile();
     composerService = await module.resolve(QuadrupleAspectsComposerService);
     service = await module.resolve(QuadrupleAspectsService);

@@ -1,6 +1,6 @@
 ---
 name: submit-changes
-description: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
+description: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Includes branch-name conformance checks and automatic branch rename when needed. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
 license: MIT
 ---
 
@@ -43,8 +43,6 @@ These values drive the branch name, commit message, and PR title throughout all 
 
 ## Phase 1 — Branch
 
-**Skip if:** Already on a non-`main` branch.
-
 1. Check current branch: `git rev-parse --abbrev-ref HEAD`
 2. If on `main`, create and switch to a new branch following [checkout-branch conventions](../checkout-branch/SKILL.md):
 
@@ -52,7 +50,14 @@ These values drive the branch name, commit message, and PR title throughout all 
    git checkout -b <type>/<scope>-<description>
    ```
 
-3. Push to remote and set upstream:
+3. Validate branch-name conformance for the current branch:
+
+   ```bash
+   pnpm exec validate-branch-name -t "<branch>"
+   ```
+
+4. If validation fails, run the [rename-branch skill](../rename-branch/SKILL.md) to derive and apply a compliant branch name, then re-run validation.
+5. Push to remote and set upstream:
 
    ```bash
    git push --set-upstream origin <branch>
@@ -129,5 +134,6 @@ After completing all phases, print a summary table:
 ## Resources
 
 - [checkout-branch skill](../checkout-branch/SKILL.md) — Branch naming conventions
+- [rename-branch skill](../rename-branch/SKILL.md) — Rename non-conforming branches before commit/push
 - [commit-code skill](../commit-code/SKILL.md) — Commit message format, types, scopes, gitmoji
 - [create-pull-request skill](../create-pull-request/SKILL.md) — PR conventions and description template

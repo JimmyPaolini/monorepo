@@ -43,7 +43,7 @@ beforeAll(async () => {
       MathService,
     ],
   }).compile();
-  service = module.get(MonthlyLunarCycleService);
+  service = await module.resolve(MonthlyLunarCycleService);
 });
 
 /**

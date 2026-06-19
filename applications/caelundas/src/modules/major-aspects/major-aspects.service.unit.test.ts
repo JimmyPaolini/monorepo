@@ -39,7 +39,7 @@ describe("MajorAspectsService", () => {
       ],
     }).compile();
     service = await module.resolve(MajorAspectsService);
-    aspectsUtilitiesService = module.get(AspectsUtilities);
+    aspectsUtilitiesService = await module.resolve(AspectsUtilities);
   });
 
   it("should be defined", () => {

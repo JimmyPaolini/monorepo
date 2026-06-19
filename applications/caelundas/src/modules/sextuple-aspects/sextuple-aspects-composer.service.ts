@@ -26,6 +26,10 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class SextupleAspectsComposerService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔏 Private Methods
 
   /**

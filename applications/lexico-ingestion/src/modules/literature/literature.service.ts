@@ -44,6 +44,8 @@ import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialE
 /** Scans provider markdown files and ingests normalized literature data. */
 @Injectable()
 export class LiteratureService {
+  // 🏗 Dependency Injection
+
   public constructor(
     @InjectRepository(Author)
     private readonly authorRepository: Repository<Author>,

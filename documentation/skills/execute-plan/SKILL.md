@@ -1,23 +1,24 @@
 ---
-agent: "agent"
-description: "Execute an implementation plan by dispatching each task to a focused subagent, tracking completion, and verifying the result."
-model: "Claude Sonnet 4.6 (copilot)"
-name: "execute-plan"
-argument-hint: "Path to the plan file to execute (e.g. documentation/planning/2026-03-09-feature-lexico-auth-1.plan.md)"
-tools:
-  [
-    vscode,
-    execute,
-    read,
-    agent,
-    browser,
-    edit,
-    search,
-    web,
-    "nx-mcp-server/*",
-    "pylance-mcp-server/*",
-    todo,
-  ]
+name: execute-plan
+description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
+user-invocable: true
+argument-hint: "Provide the plan file path and any execution boundaries (for example, stop after one phase)."
+compatibility:
+   environments:
+      - vscode
+      - github-copilot
+      - copilot-cli
+context:
+   requires:
+      - documentation/planning/**/*.plan.md
+   optional:
+      - AGENTS.md
+      - nx.json
+metadata:
+   domain: planning
+   lifecycle-stage: execute
+   owner: monorepo
+license: MIT
 ---
 
 # Execute Implementation Plan
@@ -27,8 +28,6 @@ You are a senior engineering lead and autonomous execution agent with expert-lev
 Your goal is to execute the implementation plan at: **`${input:PlanFile:documentation/planning/YYYY-MM-DD-type-scope-N.plan.md}`**
 
 Execute the following four phases in strict order. Do not skip any phase.
-
----
 
 ## Phase 1 — Load & Analyze Plan
 
@@ -59,8 +58,6 @@ If a blocking dependency is unresolved, report it and ask the user how to procee
 
 Automatically select the **first phase that contains any pending tasks** (no checkmark in the Completed column). Do not ask the user — proceed immediately.
 
----
-
 ## Phase 2 — Pre-Execution Context Gathering
 
 Before dispatching any subagent, launch **one context-gathering subagent** that reads shared context once so individual task subagents stay focused.
@@ -69,13 +66,13 @@ Use this as the context subagent prompt:
 
 > You are a codebase context gatherer. Your task is to read shared context needed to execute tasks in an implementation plan. Do NOT implement anything.
 >
-> Plan file: **[insert plan file path]**
+> Plan file: **{insert plan file path}**
 >
 > Tasks to be executed:
-> **[insert list of pending TASK-XXX identifiers and their descriptions]**
+> **{insert list of pending TASK-XXX identifiers and their descriptions}**
 >
 > Requirements to follow:
-> **[insert all REQ-, SEC-, CON-, GUD-, PAT- items from the plan]**
+> **{insert all REQ-, SEC-, CON-, GUD-, PAT- items from the plan}**
 >
 > Steps:
 >
@@ -89,8 +86,6 @@ Use this as the context subagent prompt:
 >    - **Gotchas**: any constraints from AGENTS.md or code structure that subagents must respect
 
 After the context subagent returns, proceed to Phase 3.
-
----
 
 ## Phase 3 — Task Execution
 
@@ -108,18 +103,18 @@ For each pending task, launch a subagent using this prompt (populate all placeho
 
 > You are a focused implementation agent. Your sole responsibility is to complete exactly one task.
 >
-> **Task**: [TASK-XXX] — [full task description from the plan]
+> **Task**: {TASK-XXX} — {full task description from the plan}
 >
 > **Plan context**:
 >
-> - Plan: [plan name]
-> - Phase goal: [GOAL-XXX description]
+> - Plan: {plan name}
+> - Phase goal: {GOAL-XXX description}
 >
 > **Requirements to follow** (non-negotiable):
-> [paste all REQ-, SEC-, CON-, GUD-, PAT- items from the plan]
+> {paste all REQ-, SEC-, CON-, GUD-, PAT- items from the plan}
 >
 > **Codebase context** (from context-gathering subagent):
-> [paste the relevant sections of the Context Report]
+> {paste the relevant sections of the Context Report}
 >
 > **Scope constraints**:
 >
@@ -139,7 +134,12 @@ For each pending task, launch a subagent using this prompt (populate all placeho
 
 ### Post-Task: Mark Completion
 
-After each subagent reports success, immediately update the plan file using `#tool:edit/editFiles`:
+After each subagent reports success, immediately update the plan file in the workspace:
+
+- Tool option: use a file edit tool.
+- CLI option: use commands like `perl -0pi -e` or `sed -i ''` for targeted edits.
+
+Do not write task completion updates to session memory or artifact storage paths (for example `/memories/session/...`). If workspace file write is unavailable, stop and report the blocker.
 
 1. Add ✅ to the task's `Completed` column
 2. Set the `Date` column to the current UTC timestamp (format: `YYYY-MM-DDTHH:MM:SSZ`)
@@ -150,26 +150,29 @@ After each subagent reports success, immediately update the plan file using `#to
 
 If a subagent reports a failure or partial completion, **stop execution**, report the issue clearly, and ask the user how to proceed. Do not skip tasks or mark them complete unless the subagent confirmed success.
 
----
-
 ## Phase 4 — Verification
 
 After all tasks in the selected phase are marked complete, run verification to confirm nothing is broken.
 
 ### 4.1 Identify Verification Commands
 
-Use `#tool:nx-mcp-server/nx_project_details` for each affected project to discover its available targets. Then select the appropriate commands using this priority order:
+Discover available Nx targets for each affected project before selecting verification commands.
 
-1. **Prefer compound targets** that run multiple checks in one invocation — use `#tool:nx-mcp-server/nx_available_plugins` and inspect project targets for aggregates like `analyze-code` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
+- Tool option: use Nx workspace tools that expose project target metadata.
+- CLI option: run `pnpm nx show project <project-name> --json`.
+
+Then select the appropriate commands using this priority order:
+
+1. **Prefer compound targets** that run multiple checks in one invocation — inspect project targets for aggregates like `analyze-code` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
 2. **Use `nx affected`** over per-project commands when multiple projects are touched:
    `nx affected --target=<target> --base=main`
 3. **Fall back to individual targets** only when no compound target exists:
 
-| Check      | Command                          |
-| ---------- | -------------------------------- |
-| Analysis   | `nx run <project>:analyze-code` |
-| Unit tests | `nx run <project>:test:unit`     |
-| Build      | `nx run <project>:build`         |
+| Check | Command |
+| --- | --- |
+| Analysis | `nx run <project>:analyze-code` |
+| Unit tests | `nx run <project>:test:unit` |
+| Build | `nx run <project>:build` |
 
 Run only the checks relevant to the files changed. Skip build verification if no compiled output or bundled artifact was modified.
 
@@ -182,21 +185,21 @@ Run only the checks relevant to the files changed. Skip build verification if no
 
 Conclude with a brief execution summary:
 
-```
+```text
 ## Execution Summary
 
-Phase executed: [phase name]
-Tasks completed: [N of M]
-Plan status: [Planned | In progress | Completed]
+Phase executed: {phase name}
+Tasks completed: {N of M}
+Plan status: {Planned | In progress | Completed}
 
 ### Completed Tasks
-- [TASK-XXX]: [description] ✅
-- [TASK-XXX]: [description] ✅
+- {TASK-XXX}: {description} ✅
+- {TASK-XXX}: {description} ✅
 
 ### Verification
-- [check name]: ✅ passed / ❌ failed
-  [error detail if failed]
+- {check name}: ✅ passed / ❌ failed
+   {error detail if failed}
 
 ### Next Steps
-[remaining phases or tasks, or "Plan complete — all tasks done."]
+{remaining phases or tasks, or "Plan complete — all tasks done."}
 ```

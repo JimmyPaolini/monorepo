@@ -1,10 +1,14 @@
 import { symbolByMercurianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { MercurianPhaseService } from "./mercurian-phase.service";
+import { PhaseCalculationService } from "./phase-calculation.service";
 import {
   MERCURY_EVENING_VISIBILITY_DESCRIPTION,
   MERCURY_MORNING_VISIBILITY_DESCRIPTION,
@@ -31,50 +35,74 @@ const createPhaseParameters = (): PhaseParameters => ({
   previousLongitudeSun: 89,
 });
 
-const createPhaseCalculationServiceStub = (): {
-  filterByCategory: ReturnType<typeof vi.fn>;
-  formatTimeZoneIso: ReturnType<typeof vi.fn>;
-  gatherPhaseParameters: ReturnType<typeof vi.fn>;
-  isEasternBrightest: ReturnType<typeof vi.fn>;
-  isEasternElongation: ReturnType<typeof vi.fn>;
-  isEveningRise: ReturnType<typeof vi.fn>;
-  isEveningSet: ReturnType<typeof vi.fn>;
-  isMorningRise: ReturnType<typeof vi.fn>;
-  isMorningSet: ReturnType<typeof vi.fn>;
-  isWesternBrightest: ReturnType<typeof vi.fn>;
-  isWesternElongation: ReturnType<typeof vi.fn>;
-} => ({
-  filterByCategory: vi.fn((events: Event[], category: string) =>
-    events.filter((event) => event.categories.includes(category)),
-  ),
-  formatTimeZoneIso: vi.fn(() => "2024-01-20T01:00:00-05:00"),
-  gatherPhaseParameters: vi.fn(() => createPhaseParameters()),
-  isEasternBrightest: vi.fn(() => false),
-  isEasternElongation: vi.fn(() => false),
-  isEveningRise: vi.fn(() => false),
-  isEveningSet: vi.fn(() => false),
-  isMorningRise: vi.fn(() => false),
-  isMorningSet: vi.fn(() => false),
-  isWesternBrightest: vi.fn(() => false),
-  isWesternElongation: vi.fn(() => false),
-});
+const configurePhaseCalculationServiceMock = (
+  phaseCalculationService: ReturnType<
+    typeof createMock<PhaseCalculationService>
+  >,
+): void => {
+  vi.mocked(phaseCalculationService.filterByCategory).mockImplementation(
+    (events: Event[], category: string) =>
+      events.filter((event) => event.categories.includes(category)),
+  );
+  vi.mocked(phaseCalculationService.formatTimeZoneIso).mockReturnValue(
+    "2024-01-20T01:00:00-05:00",
+  );
+  vi.mocked(phaseCalculationService.gatherPhaseParameters).mockReturnValue(
+    createPhaseParameters(),
+  );
+  vi.mocked(phaseCalculationService.isEasternBrightest).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isEasternElongation).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isEveningRise).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isEveningSet).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isMorningRise).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isMorningSet).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isWesternBrightest).mockReturnValue(false);
+  vi.mocked(phaseCalculationService.isWesternElongation).mockReturnValue(false);
+};
 
-const createProgressiveUtilitiesStub = (): {
-  pairProgressiveEvents: ReturnType<typeof vi.fn>;
-} => ({
-  pairProgressiveEvents: vi.fn(() => []),
-});
+const configureProgressiveUtilitiesMock = (
+  progressiveUtilities: ReturnType<typeof createMock<ProgressiveUtilities>>,
+): void => {
+  vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
+};
 
 describe("MercurianPhaseService", () => {
-  const logger = new LoggerService();
-  const phaseCalculationService = createPhaseCalculationServiceStub();
-  const progressiveUtilitiesService = createProgressiveUtilitiesStub();
+  let service: MercurianPhaseService;
+  let phaseCalculationService: ReturnType<
+    typeof createMock<PhaseCalculationService>
+  >;
+  let progressiveUtilitiesService: ReturnType<
+    typeof createMock<ProgressiveUtilities>
+  >;
 
-  const service = new MercurianPhaseService(
-    logger,
-    phaseCalculationService as never,
-    progressiveUtilitiesService as never,
-  );
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MercurianPhaseService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        {
+          provide: PhaseCalculationService,
+          useValue: createMock<PhaseCalculationService>(),
+        },
+        {
+          provide: ProgressiveUtilities,
+          useValue: createMock<ProgressiveUtilities>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(MercurianPhaseService);
+    await module.resolve(LoggerService);
+    phaseCalculationService = await module.resolve(PhaseCalculationService);
+    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+
+    configurePhaseCalculationServiceMock(phaseCalculationService);
+    configureProgressiveUtilitiesMock(progressiveUtilitiesService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();

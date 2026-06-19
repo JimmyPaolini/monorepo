@@ -24,119 +24,6 @@ documentation/skills/
 └── skills@ -> ../documentation/skills  (Claude Code)
 ```
 
-## Available Skills
-
-### Domain-Specific Skills
-
-**[code-generator-patterns](code-generator-patterns/SKILL.md)**
-
-- Creating Nx generators with templates and prompts
-- Generator framework patterns
-- File generation and modification
-
-**[ephemeris-pipeline](ephemeris-pipeline/SKILL.md)**
-
-- NASA JPL API integration
-- Astronomical calculations
-- Event detection algorithms
-- Calendar generation
-
-**[tanstack-start-ssr](tanstack-start-ssr/SKILL.md)**
-
-- TanStack Start server-side rendering
-- File-based routing patterns
-- Server functions and data loading
-- SSR debugging
-
-**[supabase-development](supabase-development/SKILL.md)**
-
-- Supabase migrations and schema management
-- Row-Level Security (RLS) policies
-- Edge Functions development
-- Database type generation
-
-### Infrastructure Skills
-
-**[kubernetes-deployment](kubernetes-deployment/SKILL.md)**
-
-- Helm chart patterns
-- K8s resource management
-- PVC and job workflows
-- Deployment troubleshooting
-
-**[docker-workflows](docker-workflows/SKILL.md)**
-
-- Multi-stage Docker builds
-- Platform targeting (linux/amd64)
-- GHCR integration
-- Container optimization
-
-### MCP Server Skills
-
-**[mcp-shadcn](mcp-shadcn/SKILL.md)**
-
-- Adding and updating shadcn/ui components
-- Component customization
-- Registry management
-
-**[mcp-supabase](mcp-supabase/SKILL.md)**
-
-- Database operations via MCP
-- Migration management
-- RLS policy management
-- Edge Functions via MCP
-
-**[mcp-chrome-devtools](mcp-chrome-devtools/SKILL.md)**
-
-- Browser debugging via Chrome DevTools Protocol
-- Performance profiling
-- Network inspection
-- DOM manipulation
-
-**[mcp-figma](mcp-figma/SKILL.md)**
-
-- Design file access
-- Asset extraction
-- Design token sync
-- Component specification parsing
-
-**[mcp-terraform](mcp-terraform/SKILL.md)**
-
-- Infrastructure as code via MCP
-- Plan and apply workflows
-- State management
-- Multi-environment deployment
-
-### Process Skills
-
-**[checkout-branch](checkout-branch/SKILL.md)**
-
-- Git branch naming conventions
-- Type/scope/description format
-- Validation and troubleshooting
-- Renaming invalid branches
-
-**[commit-code](commit-code/SKILL.md)**
-
-- Conventional Commits format
-- Gitmoji integration
-- Scope selection
-- Subject line rules (50 char max)
-
-**[create-pull-request](create-pull-request/SKILL.md)**
-
-- PR title and description conventions
-- PR creation workflow with GitHub CLI and MCP tools
-- CI requirements and checks
-- Issue linking and review requests
-
-**[github-actions](github-actions/SKILL.md)**
-
-- Workflow creation and testing
-- Composite actions
-- Nx integration
-- Cache management
-
 ## Skill File Format
 
 Each skill follows this structure:
@@ -145,6 +32,13 @@ Each skill follows this structure:
 ---
 name: skill-name
 description: Brief description of when to use this skill
+argument-hint: Optional hint for AI agents about expected arguments
+context: Optional additional context for AI agents
+compatibility: Optional notes on which agents or tools this skill is compatible with
+user-invocable: true/false (whether this skill should be directly invocable by users)
+disable-model-invocation: true/false (whether AI agents should avoid invoking this skill automatically)
+metadata:
+  additional-field: Any additional structured data relevant to the skill
 license: MIT
 ---
 

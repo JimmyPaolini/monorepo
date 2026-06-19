@@ -13,6 +13,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TwilightsDetectorService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly twilightsBuilderService: TwilightsBuilderService,
     private readonly ephemerisService: EphemerisService,

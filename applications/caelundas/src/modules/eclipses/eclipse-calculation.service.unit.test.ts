@@ -1,10 +1,14 @@
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { EclipseCalculationService } from "./eclipse-calculation.service";
+import { EclipseEventService } from "./eclipse-event.service";
 import { EclipseGeometryService } from "./eclipse-geometry.service";
 import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 
@@ -12,35 +16,54 @@ import type { EclipseCoordinates } from "./eclipses.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("EclipseCalculationService", () => {
-  const logger = new LoggerService();
-  const ephemerisService = {
-    getAzimuthElevationFromEphemeris: vi.fn(),
-    getCoordinateFromEphemeris: vi.fn(),
-    getDiameterFromEphemeris: vi.fn(),
+  let service: EclipseCalculationService;
+  let ephemerisService: ReturnType<typeof createMock<EphemerisService>>;
+  let eclipseEventService: ReturnType<typeof createMock<EclipseEventService>>;
+  const mockedGeometryService = {
+    getEclipseAngles: vi.fn(),
+    getAllEclipseCoordinates: vi.fn(),
   };
-  const geometryService = new EclipseGeometryService(
-    logger,
-    ephemerisService as never,
-    new MathService(),
-  );
-  const eclipseEventService = {
+  const mockedTopocentricService = {
+    getTopocentricEvents: vi.fn(),
+    isLunarEclipseActive: vi.fn(),
+    isLunarTopocentricActive: vi.fn(),
+    isSolarEclipseActive: vi.fn(),
+    isSolarTopocentricActive: vi.fn(),
+  };
+  const mockedEventService = {
     buildLunarEclipseEvent: vi.fn(),
     buildSolarEclipseEvent: vi.fn(),
   };
-  const topocentricService = new EclipseTopocentricService(
-    logger,
-    new MathService(),
-    geometryService,
-    eclipseEventService as never,
-  );
+  const mockedMathService = {
+    isMaximum: vi.fn(),
+    isMinimum: vi.fn(),
+  };
 
-  const service = new EclipseCalculationService(
-    logger,
-    new MathService(),
-    geometryService,
-    topocentricService,
-    eclipseEventService as never,
-  );
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EclipseCalculationService,
+        EclipseGeometryService,
+        EclipseTopocentricService,
+        MathService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        {
+          provide: EclipseEventService,
+          useValue: createMock<EclipseEventService>(),
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(EclipseCalculationService);
+    await module.resolve(LoggerService);
+    ephemerisService = await module.resolve(EphemerisService);
+    eclipseEventService = await module.resolve(EclipseEventService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -280,6 +303,13 @@ describe("EclipseCalculationService", () => {
 
   describe("delegation helpers", () => {
     it("delegates eclipse coordinate sampling and topocentric activity", () => {
+      const localGeometryService = {
+        getAllEclipseCoordinates: vi.fn(),
+      };
+      const localTopocentricService = {
+        isLunarTopocentricActive: vi.fn(),
+        isSolarTopocentricActive: vi.fn(),
+      };
       const coordinates = {
         currentCoordinates: {
           diameterMoon: 0.5,
@@ -306,9 +336,18 @@ describe("EclipseCalculationService", () => {
           longitudeSun: 100,
         },
       };
-      vi.spyOn(geometryService, "getAllEclipseCoordinates").mockReturnValue(coordinates as never);
-      vi.spyOn(topocentricService, "isLunarTopocentricActive").mockReturnValue(true);
-      vi.spyOn(topocentricService, "isSolarTopocentricActive").mockReturnValue(false);
+      vi.spyOn(
+        localGeometryService,
+        "getAllEclipseCoordinates",
+      ).mockReturnValue(coordinates as never);
+      vi.spyOn(
+        localTopocentricService,
+        "isLunarTopocentricActive",
+      ).mockReturnValue(true);
+      vi.spyOn(
+        localTopocentricService,
+        "isSolarTopocentricActive",
+      ).mockReturnValue(false);
 
       expect(
         service.getAllEclipseCoordinates({
@@ -319,33 +358,18 @@ describe("EclipseCalculationService", () => {
           sunDiameterEphemeris: {},
         }),
       ).toEqual(coordinates);
-      expect(geometryService.getAllEclipseCoordinates).toHaveBeenCalled();
+      expect(localGeometryService.getAllEclipseCoordinates).toHaveBeenCalled();
 
-      expect(service.isLunarTopocentricActive(coordinates.currentCoordinates, true)).toBe(true);
-      expect(service.isSolarTopocentricActive(coordinates.currentCoordinates, true)).toBe(false);
+      expect(
+        service.isLunarTopocentricActive(coordinates.currentCoordinates, true),
+      ).toBe(true);
+      expect(
+        service.isSolarTopocentricActive(coordinates.currentCoordinates, true),
+      ).toBe(false);
     });
   });
 
   describe("branch coverage", () => {
-    const mockedGeometryService = {
-      getEclipseAngles: vi.fn(),
-      getAllEclipseCoordinates: vi.fn(),
-    };
-    const mockedTopocentricService = {
-      getTopocentricEvents: vi.fn(),
-      isLunarEclipseActive: vi.fn(),
-      isLunarTopocentricActive: vi.fn(),
-      isSolarEclipseActive: vi.fn(),
-      isSolarTopocentricActive: vi.fn(),
-    };
-    const mockedEventService = {
-      buildLunarEclipseEvent: vi.fn(),
-      buildSolarEclipseEvent: vi.fn(),
-    };
-    const mockedMathService = {
-      isMaximum: vi.fn(),
-      isMinimum: vi.fn(),
-    };
     const branchService = new EclipseCalculationService(
       new LoggerService(),
       mockedMathService as never,

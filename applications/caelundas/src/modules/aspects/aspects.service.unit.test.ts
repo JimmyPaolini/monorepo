@@ -4,6 +4,7 @@ import { MajorAspectProgressiveService } from "@caelundas/src/modules/major-aspe
 import { MinorAspectsComposerService } from "@caelundas/src/modules/minor-aspects/minor-aspects-composer.service";
 import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
 import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
+import { QuadrupleAspectsBaseService } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects-base.service";
 import { QuadrupleAspectsComposerService } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects-composer.service";
 import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-composer.service";
 import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
@@ -58,6 +59,7 @@ describe("AspectsService", () => {
         MinorAspectsProgressiveService,
         ProgressiveUtilities,
         QuadrupleAspectsService,
+        QuadrupleAspectsBaseService,
         QuadrupleAspectsComposerService,
         QuintupleAspectsService,
         QuintupleAspectsComposerService,

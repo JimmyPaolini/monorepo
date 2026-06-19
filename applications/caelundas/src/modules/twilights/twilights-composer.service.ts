@@ -10,6 +10,8 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 @Injectable()
 export class TwilightsComposerService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly twilightsBuilderService: TwilightsBuilderService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
