@@ -3,6 +3,9 @@ printf '[%s] pre-commit\n' "$HOOK_TIMESTAMP"
 
 set -e
 
+REPOSITORY_ROOT="$(git rev-parse --show-toplevel)"
+"$REPOSITORY_ROOT/scripts/git/check-commit-signing-configuration.sh"
+
 git restore --staged notepads/notepad.ts || true
 git restore --staged notepads/notepad.md || true
 git restore --staged notepads/notepad.py || true
