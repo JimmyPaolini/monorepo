@@ -1,6 +1,7 @@
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
@@ -10,11 +11,13 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("QuadrupleAspectsService", () => {
   let service: QuadrupleAspectsService;
+  let composerService: QuadrupleAspectsComposerService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [QuadrupleAspectsComposerService, QuadrupleAspectsService],
     }).compile();
+    composerService = await module.resolve(QuadrupleAspectsComposerService);
     service = await module.resolve(QuadrupleAspectsService);
   });
 
@@ -46,9 +49,7 @@ describe("QuadrupleAspectsService", () => {
           });
 
           expect(events.length).toBeGreaterThanOrEqual(1);
-          const grandCross = events.find((e) =>
-            e.categories.includes("Grand Cross"),
-          );
+          const grandCross = events.find((e) => e.categories.includes("Grand Cross"));
           expect(grandCross).toBeDefined();
           expect(grandCross?.description).toContain("grand cross");
           expect(grandCross?.categories).toContain("Sun");
@@ -77,9 +78,7 @@ describe("QuadrupleAspectsService", () => {
           });
 
           expect(events.length).toBeGreaterThanOrEqual(1);
-          const grandCross = events.find((e) =>
-            e.categories.includes("Grand Cross"),
-          );
+          const grandCross = events.find((e) => e.categories.includes("Grand Cross"));
           expect(grandCross).toBeDefined();
           expect(grandCross?.categories).toContain("Forming");
         });
@@ -104,9 +103,7 @@ describe("QuadrupleAspectsService", () => {
           });
 
           expect(events.length).toBeGreaterThanOrEqual(1);
-          const grandCross = events.find((e) =>
-            e.categories.includes("Grand Cross"),
-          );
+          const grandCross = events.find((e) => e.categories.includes("Grand Cross"));
           expect(grandCross).toBeDefined();
           expect(grandCross?.categories).toContain("Dissolving");
         });
@@ -127,9 +124,7 @@ describe("QuadrupleAspectsService", () => {
             previousAspectBodies,
           });
 
-          const grandCross = events.find((e) =>
-            e.categories.includes("Grand Cross"),
-          );
+          const grandCross = events.find((e) => e.categories.includes("Grand Cross"));
           expect(grandCross).toBeUndefined();
         });
       });
@@ -283,10 +278,7 @@ describe("QuadrupleAspectsService", () => {
           summary: "Grand Cross dissolving",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
         expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
@@ -329,15 +321,7 @@ describe("QuadrupleAspectsService", () => {
         };
 
         const kiteForming: Event = {
-          categories: [
-            "Quadruple Aspect",
-            "Kite",
-            "Forming",
-            "Sun",
-            "Moon",
-            "Mars",
-            "Venus",
-          ],
+          categories: ["Quadruple Aspect", "Kite", "Forming", "Sun", "Moon", "Mars", "Venus"],
           description: "Mars, Moon, Sun, Venus kite forming (Venus focal)",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
@@ -345,15 +329,7 @@ describe("QuadrupleAspectsService", () => {
         };
 
         const kiteDissolving: Event = {
-          categories: [
-            "Quadruple Aspect",
-            "Kite",
-            "Dissolving",
-            "Sun",
-            "Moon",
-            "Mars",
-            "Venus",
-          ],
+          categories: ["Quadruple Aspect", "Kite", "Dissolving", "Sun", "Moon", "Mars", "Venus"],
           description: "Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
           end: moment.utc("2024-03-21T15:00:00.000Z"),
           start: moment.utc("2024-03-21T15:00:00.000Z"),
@@ -368,12 +344,8 @@ describe("QuadrupleAspectsService", () => {
         ]);
 
         expect(progressiveEvents.length).toBe(2);
-        expect(
-          progressiveEvents.find((e) => e.description.includes("grand cross")),
-        ).toBeDefined();
-        expect(
-          progressiveEvents.find((e) => e.description.includes("kite")),
-        ).toBeDefined();
+        expect(progressiveEvents.find((e) => e.description.includes("grand cross"))).toBeDefined();
+        expect(progressiveEvents.find((e) => e.description.includes("kite"))).toBeDefined();
       });
 
       it("should handle multiple body quartets", () => {
@@ -499,11 +471,9 @@ describe("QuadrupleAspectsService", () => {
           nonQuadrupleAspectEvent,
         ]);
 
-        expect(
-          progressiveEvents.every((e) =>
-            e.categories.includes("Quadruple Aspect"),
-          ),
-        ).toBe(true);
+        expect(progressiveEvents.every((e) => e.categories.includes("Quadruple Aspect"))).toBe(
+          true,
+        );
       });
 
       it("should handle empty events array", () => {
@@ -544,10 +514,7 @@ describe("QuadrupleAspectsService", () => {
           summary: "Grand Cross forming",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          dissolvingEvent,
-          formingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([dissolvingEvent, formingEvent]);
 
         expect(progressiveEvents.length).toBe(0);
       });
@@ -585,10 +552,7 @@ describe("QuadrupleAspectsService", () => {
           summary: "⬅️ Grand Cross dissolving",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
         expect(progressiveEvents[0]?.summary).toBe("Grand Cross forming");
@@ -627,15 +591,10 @@ describe("QuadrupleAspectsService", () => {
           summary: "Grand Cross dissolving",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
-        expect(progressiveEvents[0]?.description).not.toMatch(
-          /(forming|dissolving|perfective)/i,
-        );
+        expect(progressiveEvents[0]?.description).not.toMatch(/(forming|dissolving|perfective)/i);
       });
 
       it("should preserve focal body information in description", () => {
@@ -673,10 +632,7 @@ describe("QuadrupleAspectsService", () => {
           summary: "Kite dissolving",
         };
 
-        const progressiveEvents = service.detectProgressive([
-          formingEvent,
-          dissolvingEvent,
-        ]);
+        const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
         expect(progressiveEvents.length).toBe(1);
         // Focal info should be removed by the regex that removes phase text with optional focal info
@@ -741,6 +697,202 @@ describe("QuadrupleAspectsService", () => {
       };
 
       expect(service.getOtherBody(edge, "mars")).toBeNull();
+    });
+  });
+
+  describe("internal guard branches", () => {
+    it("returns null when tryBuildGrandCross fails square verification", () => {
+      const result = (
+        composerService as unknown as {
+          tryBuildGrandCross: (args: {
+            current: AspectBodies[];
+            minute: moment.Moment;
+            opp1: AspectBodies;
+            opp2: AspectBodies;
+            previous: AspectBodies[];
+            unionEdges: AspectBodies[];
+          }) => Event | null;
+        }
+      ).tryBuildGrandCross({
+        current: [],
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        opp1: { aspect: "opposite", bodies: ["sun", "moon"] },
+        opp2: { aspect: "opposite", bodies: ["mars", "jupiter"] },
+        previous: [],
+        unionEdges: [
+          { aspect: "opposite", bodies: ["sun", "moon"] },
+          { aspect: "opposite", bodies: ["mars", "jupiter"] },
+        ],
+      });
+
+      expect(result).toBeNull();
+    });
+
+    it("returns null when resolveKiteEvent cannot build a complete 4-body event", () => {
+      const determinePhaseSpy = vi
+        .spyOn(composerService, "determineCompoundPhaseFromSnapshots")
+        .mockReturnValue({
+          eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
+          phase: "forming",
+        });
+
+      const result = (
+        composerService as unknown as {
+          resolveKiteEvent: (args: {
+            baseBody: "sun";
+            bodies: Array<"sun" | "moon" | "mars" | undefined>;
+            current: AspectBodies[];
+            fourthBody: "venus";
+            minute: moment.Moment;
+            other0: "moon";
+            other1: "mars";
+            previous: AspectBodies[];
+          }) => Event | null;
+        }
+      ).resolveKiteEvent({
+        baseBody: "sun",
+        bodies: ["sun", "moon", "mars", undefined],
+        current: [],
+        fourthBody: "venus",
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        other0: "moon",
+        other1: "mars",
+        previous: [],
+      });
+
+      expect(result).toBeNull();
+      determinePhaseSpy.mockRestore();
+    });
+
+    it("returns null from checkTrineTriple when body tuple contains undefined", () => {
+      const result = (
+        composerService as unknown as {
+          checkTrineTriple: (args: {
+            trineI: AspectBodies;
+            trineJ: AspectBodies;
+            trineK: AspectBodies;
+            unionEdges: AspectBodies[];
+          }) => Set<string> | null;
+        }
+      ).checkTrineTriple({
+        trineI: {
+          aspect: "trine",
+          bodies: ["sun", undefined] as unknown as ["sun", "moon"],
+        },
+        trineJ: { aspect: "trine", bodies: ["sun", "mars"] },
+        trineK: { aspect: "trine", bodies: ["moon", "mars"] },
+        unionEdges: [
+          { aspect: "trine", bodies: ["sun", "moon"] },
+          { aspect: "trine", bodies: ["sun", "mars"] },
+          { aspect: "trine", bodies: ["moon", "mars"] },
+        ],
+      });
+
+      expect(result).toBeNull();
+    });
+
+    it("skips undefined opposite entries while collecting grand crosses", () => {
+      const events = composerService.collectGrandCrossesForOpp1({
+        current: [],
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        opp1: { aspect: "opposite", bodies: ["sun", "moon"] },
+        oppositions: [
+          undefined as unknown as AspectBodies,
+          { aspect: "opposite", bodies: ["mars", "jupiter"] },
+        ],
+        previous: [],
+        startIndex: 0,
+        unionEdges: [],
+      });
+
+      expect(events).toEqual([]);
+    });
+
+    it("handles undefined sorted events while collecting progressive group events", () => {
+      const progressiveEvents: Event[] = [];
+      const sortBySpy = vi.spyOn(_, "sortBy").mockReturnValue([
+        {
+          categories: [
+            "Quadruple Aspect",
+            "Grand Cross",
+            "Forming",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Jupiter",
+          ],
+          description: "Sun, Moon, Mars, Jupiter grand cross forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "➡️ Grand Cross forming",
+        },
+        undefined,
+        {
+          categories: [
+            "Quadruple Aspect",
+            "Grand Cross",
+            "Dissolving",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Jupiter",
+          ],
+          description: "Sun, Moon, Mars, Jupiter grand cross dissolving",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "⬅️ Grand Cross dissolving",
+        },
+      ] as unknown as Event[]);
+
+      composerService.collectProgressiveEventsFromGroup([], progressiveEvents);
+
+      expect(progressiveEvents).toHaveLength(1);
+      sortBySpy.mockRestore();
+    });
+
+    it("returns null from tryBuildKite when focal body is already in grand-trine set", () => {
+      const result = composerService.tryBuildKite({
+        baseBody: "sun",
+        current: [],
+        gtBodies: new Set(["sun", "moon", "mars"]),
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        opp: { aspect: "opposite", bodies: ["sun", "moon"] },
+        otherTwo: ["moon", "mars"],
+        previous: [],
+        unionEdges: [],
+      });
+
+      expect(result).toBeNull();
+    });
+
+    it("returns null from tryBuildKite when one supporting body is missing", () => {
+      const result = composerService.tryBuildKite({
+        baseBody: "sun",
+        current: [],
+        gtBodies: new Set(["sun", "moon", "mars"]),
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        opp: { aspect: "opposite", bodies: ["sun", "venus"] },
+        otherTwo: ["moon"] as unknown as ["moon", "mars"],
+        previous: [],
+        unionEdges: [],
+      });
+
+      expect(result).toBeNull();
+    });
+
+    it("returns null from tryBuildKite when sextiles are missing", () => {
+      const result = composerService.tryBuildKite({
+        baseBody: "sun",
+        current: [],
+        gtBodies: new Set(["sun", "moon", "mars"]),
+        minute: moment.utc("2024-03-21T12:00:00.000Z"),
+        opp: { aspect: "opposite", bodies: ["sun", "venus"] },
+        otherTwo: ["moon", "mars"],
+        previous: [],
+        unionEdges: [{ aspect: "sextile", bodies: ["venus", "moon"] }],
+      });
+
+      expect(result).toBeNull();
     });
   });
 });

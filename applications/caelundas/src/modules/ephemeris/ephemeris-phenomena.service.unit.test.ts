@@ -83,6 +83,22 @@ describe("EphemerisPhenomenaService", () => {
         expect(value.diameter).toBe(0.5);
       }
     });
+
+    it("throws when pheno diameter calculation fails", () => {
+      vi.mocked(pheno_ut).mockReturnValueOnce({
+        data: [0, 0, 0, 0, 0],
+        error: "diameter failure",
+        flag: -1,
+      });
+
+      expect(() =>
+        service.computeDiameterForBody({
+          body: "moon",
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      ).toThrow("pheno_ut failed for moon: diameter failure");
+    });
   });
 
   describe("computePhenoForMinute", () => {
@@ -108,6 +124,48 @@ describe("EphemerisPhenomenaService", () => {
       });
     });
 
+    it("throws when sun diameter calculation fails", () => {
+      vi.mocked(pheno_ut).mockReturnValueOnce({
+        data: [0, 0, 0, 0, 0],
+        error: "sun diameter failure",
+        flag: -1,
+      });
+
+      expect(() =>
+        service.computePhenoForMinute({
+          body: "sun",
+          diameterEphemeris: {},
+          illuminationEphemeris: {},
+          julianDayUniversalTime: 2_460_395.499_306,
+          needsDiameter: true,
+          needsIllumination: true,
+          swissEphemerisConstant: 0,
+          timestamp: "2024-03-21T00:00:00.000Z",
+        }),
+      ).toThrow("pheno_ut failed for sun: sun diameter failure");
+    });
+
+    it("writes only sun illumination when diameter is not requested", () => {
+      const illuminationEphemeris = {};
+      const diameterEphemeris = {};
+
+      service.computePhenoForMinute({
+        body: "sun",
+        diameterEphemeris,
+        illuminationEphemeris,
+        julianDayUniversalTime: 2_460_395.499_306,
+        needsDiameter: false,
+        needsIllumination: true,
+        swissEphemerisConstant: 0,
+        timestamp: "2024-03-21T00:00:00.000Z",
+      });
+
+      expect(illuminationEphemeris).toEqual({
+        "2024-03-21T00:00:00.000Z": { illumination: 100 },
+      });
+      expect(diameterEphemeris).toEqual({});
+    });
+
     it("throws when pheno fails", () => {
       vi.mocked(pheno_ut).mockReturnValueOnce({
         data: [0, 0, 0, 0, 0],
@@ -127,6 +185,66 @@ describe("EphemerisPhenomenaService", () => {
           timestamp: "2024-03-21T00:00:00.000Z",
         }),
       ).toThrow("pheno_ut failed for moon");
+    });
+
+    it("writes only requested non-sun outputs for pheno", () => {
+      const illuminationEphemeris = {};
+      const diameterEphemeris = {};
+
+      service.computePhenoForMinute({
+        body: "moon",
+        diameterEphemeris,
+        illuminationEphemeris,
+        julianDayUniversalTime: 2_460_395.499_306,
+        needsDiameter: false,
+        needsIllumination: true,
+        swissEphemerisConstant: 0,
+        timestamp: "2024-03-21T00:00:00.000Z",
+      });
+
+      expect(illuminationEphemeris).toEqual({
+        "2024-03-21T00:00:00.000Z": { illumination: 75 },
+      });
+      expect(diameterEphemeris).toEqual({});
+    });
+
+    it("writes diameter only when illumination is not requested", () => {
+      const illuminationEphemeris = {};
+      const diameterEphemeris = {};
+
+      service.computePhenoForMinute({
+        body: "moon",
+        diameterEphemeris,
+        illuminationEphemeris,
+        julianDayUniversalTime: 2_460_395.499_306,
+        needsDiameter: true,
+        needsIllumination: false,
+        swissEphemerisConstant: 0,
+        timestamp: "2024-03-21T00:00:00.000Z",
+      });
+
+      expect(illuminationEphemeris).toEqual({});
+      expect(diameterEphemeris).toEqual({
+        "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
+      });
+    });
+  });
+
+  describe("computeIlluminationForBody", () => {
+    it("throws when non-sun illumination pheno fails", () => {
+      vi.mocked(pheno_ut).mockReturnValueOnce({
+        data: [0, 0, 0, 0, 0],
+        error: "illumination failure",
+        flag: -1,
+      });
+
+      expect(() =>
+        service.computeIlluminationForBody({
+          body: "moon",
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      ).toThrow("pheno_ut failed for moon: illumination failure");
     });
   });
 });

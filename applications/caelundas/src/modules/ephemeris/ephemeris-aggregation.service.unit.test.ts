@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 
@@ -12,9 +12,7 @@ import type { EphemerisTimeService } from "./ephemeris-time.service";
 describe("EphemerisAggregationService", () => {
   const constantsService = {
     getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
-    isNode: vi.fn(
-      (body: string) => body.includes("node") || body === "lunar perigee",
-    ),
+    isNode: vi.fn((body: string) => body.includes("node") || body === "lunar perigee"),
   };
   const coordinateService = {
     computeNodeBodyMinutes: vi.fn().mockReturnValue({
@@ -58,6 +56,10 @@ describe("EphemerisAggregationService", () => {
     phenomenaService as unknown as EphemerisPhenomenaService,
     timeService as unknown as EphemerisTimeService,
   );
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
 
   describe("buildEphemerisFeatureSets", () => {
     it("creates body lookup sets", () => {
@@ -135,6 +137,34 @@ describe("EphemerisAggregationService", () => {
       expect(allEntries.diameterEntries).toHaveLength(1);
       expect(allEntries.distanceEntries).toHaveLength(1);
       expect(allEntries.illuminationEntries).toHaveLength(1);
+    });
+
+    it("skips optional ephemeris entries when no feature sets are requested", () => {
+      const allEntries = service.buildEphemerisEntries();
+      const featureSets = service.buildEphemerisFeatureSets({
+        azimuthElevationBodies: [],
+        diameterBodies: [],
+        distanceBodies: [],
+        illuminationBodies: [],
+      });
+
+      service.accumulateBodyEphemeris({
+        allEntries,
+        body: "sun",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        featureSets,
+        observerLatitude: 40.7128,
+        observerLongitude: -74.006,
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
+
+      expect(allEntries.coordinateEntries).toHaveLength(1);
+      expect(allEntries.azimuthEntries).toHaveLength(0);
+      expect(allEntries.diameterEntries).toHaveLength(0);
+      expect(allEntries.distanceEntries).toHaveLength(0);
+      expect(allEntries.illuminationEntries).toHaveLength(0);
+      expect(horizonService.computeAzimuthElevationForMinute).not.toHaveBeenCalled();
+      expect(phenomenaService.computePhenoForMinute).not.toHaveBeenCalled();
     });
   });
 

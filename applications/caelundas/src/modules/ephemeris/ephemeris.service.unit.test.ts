@@ -54,9 +54,7 @@ describe("EphemerisService", () => {
   };
 
   const coordinateService = {
-    computeBodyCoordinate: vi
-      .fn()
-      .mockReturnValue({ latitude: -1.2, longitude: 120.5 }),
+    computeBodyCoordinate: vi.fn().mockReturnValue({ latitude: -1.2, longitude: 120.5 }),
     computeDistanceForBody: vi.fn().mockReturnValue({
       "2024-03-21T00:00:00.000Z": { distance: 1.01 },
     }),
@@ -66,9 +64,7 @@ describe("EphemerisService", () => {
   };
 
   const constantsService = {
-    isNode: vi.fn(
-      (body: string) => body.includes("node") || body === "lunar perigee",
-    ),
+    isNode: vi.fn((body: string) => body.includes("node") || body === "lunar perigee"),
   };
 
   const horizonService = {
@@ -147,11 +143,7 @@ describe("EphemerisService", () => {
       };
 
       expect(
-        service.getAzimuthElevationFromEphemeris(
-          ephemeris,
-          "2024-03-21T00:00:00.000Z",
-          "azimuth",
-        ),
+        service.getAzimuthElevationFromEphemeris(ephemeris, "2024-03-21T00:00:00.000Z", "azimuth"),
       ).toBe(180);
     });
 
@@ -161,11 +153,7 @@ describe("EphemerisService", () => {
       };
 
       expect(
-        service.getCoordinateFromEphemeris(
-          ephemeris,
-          "2024-03-21T00:00:00.000Z",
-          "longitude",
-        ),
+        service.getCoordinateFromEphemeris(ephemeris, "2024-03-21T00:00:00.000Z", "longitude"),
       ).toBe(120.5);
     });
 
@@ -175,11 +163,7 @@ describe("EphemerisService", () => {
       };
 
       expect(
-        service.getDiameterFromEphemeris(
-          ephemeris,
-          "2024-03-21T00:00:00.000Z",
-          "diameter",
-        ),
+        service.getDiameterFromEphemeris(ephemeris, "2024-03-21T00:00:00.000Z", "diameter"),
       ).toBe(0.5);
     });
 
@@ -189,11 +173,7 @@ describe("EphemerisService", () => {
       };
 
       expect(
-        service.getDistanceFromEphemeris(
-          ephemeris,
-          "2024-03-21T00:00:00.000Z",
-          "distance",
-        ),
+        service.getDistanceFromEphemeris(ephemeris, "2024-03-21T00:00:00.000Z", "distance"),
       ).toBe(1.01);
     });
 
@@ -203,18 +183,38 @@ describe("EphemerisService", () => {
       };
 
       expect(
-        service.getIlluminationFromEphemeris(
-          ephemeris,
-          "2024-03-21T00:00:00.000Z",
-          "illumination",
-        ),
+        service.getIlluminationFromEphemeris(ephemeris, "2024-03-21T00:00:00.000Z", "illumination"),
       ).toBe(75);
     });
 
     it("throws when accessor timestamp is missing", () => {
-      expect(() =>
-        service.getCoordinateFromEphemeris({}, "missing", "longitude"),
-      ).toThrow("Missing longitude at missing");
+      expect(() => service.getCoordinateFromEphemeris({}, "missing", "longitude")).toThrow(
+        "Missing longitude at missing",
+      );
+    });
+
+    it("throws when azimuth/elevation accessor timestamp is missing", () => {
+      expect(() => service.getAzimuthElevationFromEphemeris({}, "missing", "elevation")).toThrow(
+        "Missing elevation at missing",
+      );
+    });
+
+    it("throws when diameter accessor timestamp is missing", () => {
+      expect(() => service.getDiameterFromEphemeris({}, "missing", "diameter")).toThrow(
+        "Missing diameter at missing",
+      );
+    });
+
+    it("throws when distance accessor timestamp is missing", () => {
+      expect(() => service.getDistanceFromEphemeris({}, "missing", "distance")).toThrow(
+        "Missing distance at missing",
+      );
+    });
+
+    it("throws when illumination accessor timestamp is missing", () => {
+      expect(() => service.getIlluminationFromEphemeris({}, "missing", "illumination")).toThrow(
+        "Missing illumination at missing",
+      );
     });
   });
 
@@ -231,9 +231,7 @@ describe("EphemerisService", () => {
         start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
 
-      expect(
-        aggregationService.buildEphemerisFeatureSets,
-      ).toHaveBeenCalledOnce();
+      expect(aggregationService.buildEphemerisFeatureSets).toHaveBeenCalledOnce();
       expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalled();
       expect(aggregationService.entriesToEphemerides).toHaveBeenCalledOnce();
     });
@@ -247,9 +245,7 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(
-        horizonService.computeAzimuthElevationForBody,
-      ).toHaveBeenCalledOnce();
+      expect(horizonService.computeAzimuthElevationForBody).toHaveBeenCalledOnce();
       expect(result.sun).toBeDefined();
     });
 
@@ -262,9 +258,7 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(
-        phenomenaService.computeIlluminationForBody,
-      ).toHaveBeenCalledOnce();
+      expect(phenomenaService.computeIlluminationForBody).toHaveBeenCalledOnce();
       expect(result.moon).toBeDefined();
     });
 
@@ -316,6 +310,96 @@ describe("EphemerisService", () => {
       });
 
       expect(spy).toHaveBeenCalledOnce();
+    });
+  });
+
+  describe("missing dependency guards", () => {
+    it("throws when aggregation service is unavailable", () => {
+      const unavailableService = new EphemerisService(undefined);
+
+      expect(() =>
+        unavailableService.computeAllEphemerides({
+          azimuthElevationBodies: ["sun"],
+          coordinateBodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          diameterBodies: ["sun"],
+          distanceBodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          illuminationBodies: ["sun"],
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      ).toThrow("EphemerisAggregationService is not available");
+    });
+
+    it("throws when required specialized services are unavailable", () => {
+      const unavailableService = new EphemerisService(aggregationService as never);
+
+      expect(() =>
+        unavailableService.getCoordinateEphemerisByBody({
+          bodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisConstantsService is not available");
+
+      expect(() =>
+        unavailableService.getAzimuthElevationEphemerisByBody({
+          bodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisHorizonService is not available");
+
+      expect(() =>
+        unavailableService.getIlluminationEphemerisByBody({
+          bodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisPhenomenaService is not available");
+    });
+
+    it("throws when coordinate service is unavailable for node coordinates", () => {
+      const missingCoordinateService = new EphemerisService(
+        aggregationService as never,
+        undefined,
+        {
+          isNode: vi.fn().mockReturnValue(true),
+        } as never,
+      );
+
+      expect(() =>
+        missingCoordinateService.getCoordinateEphemerisByBody({
+          bodies: ["north lunar node"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisCoordinateService is not available");
+    });
+
+    it("throws when time service is unavailable for non-node coordinates", () => {
+      const missingTimeService = new EphemerisService(
+        aggregationService as never,
+        coordinateService as never,
+        {
+          isNode: vi.fn().mockReturnValue(false),
+        } as never,
+      );
+
+      expect(() =>
+        missingTimeService.getCoordinateEphemerisByBody({
+          bodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisTimeService is not available");
     });
   });
 

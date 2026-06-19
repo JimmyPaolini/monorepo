@@ -7,6 +7,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment from "moment";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -24,18 +25,9 @@ vi.mock("fs", () => ({
 
 interface ServicePrivate {
   getDecan: (longitude: number) => number;
-  isDecanIngress: (args: {
-    currentLongitude: number;
-    previousLongitude: number;
-  }) => boolean;
-  isPeakIngress: (args: {
-    currentLongitude: number;
-    previousLongitude: number;
-  }) => boolean;
-  isSignIngress: (args: {
-    currentLongitude: number;
-    previousLongitude: number;
-  }) => boolean;
+  isDecanIngress: (args: { currentLongitude: number; previousLongitude: number }) => boolean;
+  isPeakIngress: (args: { currentLongitude: number; previousLongitude: number }) => boolean;
+  isSignIngress: (args: { currentLongitude: number; previousLongitude: number }) => boolean;
 }
 describe("IngressesService", () => {
   let service: IngressesService;
@@ -338,12 +330,8 @@ describe("IngressesService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(
-        moment.utc("2024-03-20T03:06:00.000Z"),
-      );
-      expect(progressiveEvents[0]?.end).toEqual(
-        moment.utc("2024-04-19T15:00:00.000Z"),
-      );
+      expect(progressiveEvents[0]?.start).toEqual(moment.utc("2024-03-20T03:06:00.000Z"));
+      expect(progressiveEvents[0]?.end).toEqual(moment.utc("2024-04-19T15:00:00.000Z"));
       expect(progressiveEvents[0]?.categories).toContain("Sun");
       expect(progressiveEvents[0]?.categories).toContain("Aries");
     });
@@ -466,25 +454,61 @@ describe("IngressesService", () => {
       });
     });
 
+    describe("composer edge cases", () => {
+      it("should skip progressive span creation when entering or exiting event is missing", () => {
+        const sortBySpy = vi.spyOn(_, "sortBy").mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+            description: "Sun ingress Aries",
+            end: moment.utc("2024-03-20T03:06:00.000Z"),
+            start: moment.utc("2024-03-20T03:06:00.000Z"),
+            summary: "Sun ingress Aries",
+          },
+          undefined,
+        ] as unknown as never[]);
+
+        expect(helperService.buildProgressiveSpansForBody("Sun", [])).toEqual([]);
+        sortBySpy.mockRestore();
+      });
+
+      it("should throw when sign cannot be extracted from categories", () => {
+        expect(() =>
+          helperService.extractSignAndBodyFromCategories(
+            ["Astronomy", "Astrology", "Ingress", "Sun"],
+            "Sun",
+          ),
+        ).toThrow("Could not extract sign from categories");
+      });
+
+      it("should throw when extracted categories cannot be cast to typed values", () => {
+        expect(() =>
+          helperService.extractSignAndBodyFromCategories(
+            ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+            "NotABody",
+          ),
+        ).toThrow("Could not extract typed values from categories");
+      });
+
+      it("should throw when decan value is invalid", () => {
+        const getDecanSpy = vi.spyOn(helperService, "getDecan").mockReturnValue(4);
+
+        expect(() => helperService.resolveDecan(10)).toThrow("Invalid decan value: 4");
+
+        getDecanSpy.mockRestore();
+      });
+    });
+
     describe("isSignIngress", () => {
       it("should return true when crossing sign boundary", () => {
-        expect(
-          s.isSignIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
-        ).toBe(true);
+        expect(s.isSignIngress({ currentLongitude: 30.1, previousLongitude: 29.9 })).toBe(true);
 
-        expect(
-          s.isSignIngress({ currentLongitude: 0.1, previousLongitude: 359.9 }),
-        ).toBe(true);
+        expect(s.isSignIngress({ currentLongitude: 0.1, previousLongitude: 359.9 })).toBe(true);
       });
 
       it("should return false when staying in same sign", () => {
-        expect(
-          s.isSignIngress({ currentLongitude: 16, previousLongitude: 15 }),
-        ).toBe(false);
+        expect(s.isSignIngress({ currentLongitude: 16, previousLongitude: 15 })).toBe(false);
 
-        expect(
-          s.isSignIngress({ currentLongitude: 29.5, previousLongitude: 29 }),
-        ).toBe(false);
+        expect(s.isSignIngress({ currentLongitude: 29.5, previousLongitude: 29 })).toBe(false);
       });
     });
 
@@ -513,57 +537,37 @@ describe("IngressesService", () => {
 
     describe("isDecanIngress", () => {
       it("should return true when crossing decan boundary within same sign", () => {
-        expect(
-          s.isDecanIngress({ currentLongitude: 10.1, previousLongitude: 9.9 }),
-        ).toBe(true);
+        expect(s.isDecanIngress({ currentLongitude: 10.1, previousLongitude: 9.9 })).toBe(true);
 
-        expect(
-          s.isDecanIngress({ currentLongitude: 20.1, previousLongitude: 19.9 }),
-        ).toBe(true);
+        expect(s.isDecanIngress({ currentLongitude: 20.1, previousLongitude: 19.9 })).toBe(true);
       });
 
       it("should return true when crossing sign boundary (also decan boundary)", () => {
-        expect(
-          s.isDecanIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
-        ).toBe(true);
+        expect(s.isDecanIngress({ currentLongitude: 30.1, previousLongitude: 29.9 })).toBe(true);
       });
 
       it("should return false when staying in same decan", () => {
-        expect(
-          s.isDecanIngress({ currentLongitude: 6, previousLongitude: 5 }),
-        ).toBe(false);
+        expect(s.isDecanIngress({ currentLongitude: 6, previousLongitude: 5 })).toBe(false);
 
-        expect(
-          s.isDecanIngress({ currentLongitude: 16, previousLongitude: 15 }),
-        ).toBe(false);
+        expect(s.isDecanIngress({ currentLongitude: 16, previousLongitude: 15 })).toBe(false);
       });
     });
 
     describe("isPeakIngress", () => {
       it("should return true when crossing 15 degrees within a sign", () => {
-        expect(
-          s.isPeakIngress({ currentLongitude: 15.1, previousLongitude: 14.9 }),
-        ).toBe(true);
+        expect(s.isPeakIngress({ currentLongitude: 15.1, previousLongitude: 14.9 })).toBe(true);
 
-        expect(
-          s.isPeakIngress({ currentLongitude: 45.1, previousLongitude: 44.9 }),
-        ).toBe(true);
+        expect(s.isPeakIngress({ currentLongitude: 45.1, previousLongitude: 44.9 })).toBe(true);
       });
 
       it("should return false when not crossing 15 degrees", () => {
-        expect(
-          s.isPeakIngress({ currentLongitude: 11, previousLongitude: 10 }),
-        ).toBe(false);
+        expect(s.isPeakIngress({ currentLongitude: 11, previousLongitude: 10 })).toBe(false);
 
-        expect(
-          s.isPeakIngress({ currentLongitude: 17, previousLongitude: 16 }),
-        ).toBe(false);
+        expect(s.isPeakIngress({ currentLongitude: 17, previousLongitude: 16 })).toBe(false);
       });
 
       it("should return false when crossing sign boundary (not peak)", () => {
-        expect(
-          s.isPeakIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
-        ).toBe(false);
+        expect(s.isPeakIngress({ currentLongitude: 30.1, previousLongitude: 29.9 })).toBe(false);
       });
     });
   });

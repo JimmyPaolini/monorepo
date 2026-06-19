@@ -114,6 +114,10 @@ describe("MinorAspectsComposerService", () => {
       body1: "moon",
       body2: "sun",
     });
+
+    expect(() => service.extractAspectComponents(["Astronomy", "Minor Aspect", "Moon"])).toThrow(
+      "Could not extract aspect info",
+    );
   });
 
   it("builds progressive events and grouping keys", () => {
@@ -145,16 +149,10 @@ describe("MinorAspectsComposerService", () => {
       end: minute.clone().add(1, "hour"),
     };
 
-    mockProgressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([
-      [beginning, ending],
-    ]);
+    mockProgressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([[beginning, ending]]);
 
-    expect(service.buildGroupKey(beginning)).toBe(
-      "Moon-Semisextile-Sun",
-    );
-    expect(service.buildGroupKey({ ...beginning, categories: ["Moon"] })).toBe(
-      "",
-    );
+    expect(service.buildGroupKey(beginning)).toBe("Moon-Semisextile-Sun");
+    expect(service.buildGroupKey({ ...beginning, categories: ["Moon"] })).toBe("");
 
     expect(service.getMinorAspectProgressiveEvent(beginning, ending)).toEqual(
       expect.objectContaining({
@@ -163,15 +161,13 @@ describe("MinorAspectsComposerService", () => {
       }),
     );
 
-    expect(
-      service.processAspectGroup("Moon-Semisextile-Sun", [
-        beginning,
-        ending,
-      ]),
-    ).toHaveLength(1);
-    expect(
-      mockProgressiveUtilitiesService.pairProgressiveEvents,
-    ).toHaveBeenCalledWith([beginning], [ending], "minor aspect Moon-Semisextile-Sun");
+    expect(service.processAspectGroup("Moon-Semisextile-Sun", [beginning, ending])).toHaveLength(1);
+    expect(service.processAspectGroup("", [beginning, ending])).toEqual([]);
+    expect(mockProgressiveUtilitiesService.pairProgressiveEvents).toHaveBeenCalledWith(
+      [beginning],
+      [ending],
+      "minor aspect Moon-Semisextile-Sun",
+    );
   });
 
   it("reads longitudes from ephemerides and rejects invalid input", () => {

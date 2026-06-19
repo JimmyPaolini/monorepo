@@ -1,8 +1,9 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
@@ -14,11 +15,7 @@ describe("QuintupleAspectsService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        QuintupleAspectsService,
-        QuintupleAspectsComposerService,
-        MathService,
-      ],
+      providers: [QuintupleAspectsService, QuintupleAspectsComposerService, MathService],
     }).compile();
     service = await module.resolve(QuintupleAspectsService);
   });
@@ -123,9 +120,7 @@ describe("QuintupleAspectsService", () => {
           previousAspectBodies,
         });
 
-        const pentagram = events.find((e) =>
-          e.categories.includes("Pentagram"),
-        );
+        const pentagram = events.find((e) => e.categories.includes("Pentagram"));
         expect(pentagram).toBeUndefined();
       });
 
@@ -144,9 +139,7 @@ describe("QuintupleAspectsService", () => {
           previousAspectBodies,
         });
 
-        const pentagram = events.find((e) =>
-          e.categories.includes("Pentagram"),
-        );
+        const pentagram = events.find((e) => e.categories.includes("Pentagram"));
         expect(pentagram).toBeUndefined();
       });
     });
@@ -247,10 +240,7 @@ describe("QuintupleAspectsService", () => {
         summary: "Pentagram dissolving",
       };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
       expect(progressiveEvents.length).toBe(1);
       expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
@@ -305,8 +295,7 @@ describe("QuintupleAspectsService", () => {
           "Neptune",
           "Pluto",
         ],
-        description:
-          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram forming",
+        description: "Mercury, Saturn, Uranus, Neptune, Pluto pentagram forming",
         end: moment.utc("2024-03-21T11:00:00.000Z"),
         start: moment.utc("2024-03-21T11:00:00.000Z"),
         summary: "Pentagram forming",
@@ -323,8 +312,7 @@ describe("QuintupleAspectsService", () => {
           "Neptune",
           "Pluto",
         ],
-        description:
-          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram dissolving",
+        description: "Mercury, Saturn, Uranus, Neptune, Pluto pentagram dissolving",
         end: moment.utc("2024-03-21T15:00:00.000Z"),
         start: moment.utc("2024-03-21T15:00:00.000Z"),
         summary: "Pentagram dissolving",
@@ -391,16 +379,77 @@ describe("QuintupleAspectsService", () => {
         nonQuintupleAspectEvent,
       ]);
 
-      expect(
-        progressiveEvents.every((e) =>
-          e.categories.includes("Quintuple Aspect"),
-        ),
-      ).toBe(true);
+      expect(progressiveEvents.every((e) => e.categories.includes("Quintuple Aspect"))).toBe(true);
     });
 
     it("should handle empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
       expect(progressiveEvents.length).toBe(0);
+    });
+
+    it("should skip undefined candidate events in grouped progressive pairing", () => {
+      const formingEvent: Event = {
+        categories: [
+          "Quintuple Aspect",
+          "Pentagram",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+        ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
+      };
+      const dissolvingEvent: Event = {
+        categories: [
+          "Quintuple Aspect",
+          "Pentagram",
+          "Dissolving",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+        ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram dissolving",
+      };
+
+      const composer = (
+        service as unknown as {
+          quintupleAspectsComposerService: QuintupleAspectsComposerService;
+        }
+      ).quintupleAspectsComposerService;
+      const sortBySpy = vi
+        .spyOn(_, "sortBy")
+        .mockReturnValue([formingEvent, undefined, dissolvingEvent] as unknown as Event[]);
+      const groupSpy = vi.spyOn(composer, "groupQuintupleEventsByKey").mockReturnValue({
+        key: [formingEvent, undefined, dissolvingEvent] as unknown as Event[],
+      });
+      const progressiveBuilderSpy = vi
+        .spyOn(composer, "buildProgressiveQuintupleEvent")
+        .mockReturnValue({
+          categories: ["Quintuple Aspect", "Pentagram"],
+          description: "Pentagram duration",
+          end: dissolvingEvent.start,
+          start: formingEvent.start,
+          summary: "Pentagram duration",
+        });
+
+      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
+
+      expect(progressiveEvents).toHaveLength(1);
+      expect(progressiveBuilderSpy).toHaveBeenCalledWith(formingEvent, dissolvingEvent);
+
+      sortBySpy.mockRestore();
+      groupSpy.mockRestore();
+      progressiveBuilderSpy.mockRestore();
     });
 
     it("should skip progressive when dissolving comes before forming", () => {
@@ -438,10 +487,7 @@ describe("QuintupleAspectsService", () => {
         summary: "Pentagram forming",
       };
 
-      const progressiveEvents = service.detectProgressive([
-        dissolvingEvent,
-        formingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([dissolvingEvent, formingEvent]);
 
       expect(progressiveEvents.length).toBe(0);
     });
@@ -481,10 +527,7 @@ describe("QuintupleAspectsService", () => {
         summary: "⬅️ Pentagram dissolving",
       };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
       expect(progressiveEvents.length).toBe(1);
       expect(progressiveEvents[0]?.summary).toBe("Pentagram forming");
@@ -525,15 +568,10 @@ describe("QuintupleAspectsService", () => {
         summary: "Pentagram dissolving",
       };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
       expect(progressiveEvents.length).toBe(1);
-      expect(progressiveEvents[0]?.description).not.toMatch(
-        /(forming|dissolving|exact)$/i,
-      );
+      expect(progressiveEvents[0]?.description).not.toMatch(/(forming|dissolving|exact)$/i);
       expect(progressiveEvents[0]?.description).toContain("pentagram");
     });
   });

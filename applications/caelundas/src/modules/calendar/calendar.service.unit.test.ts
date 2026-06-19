@@ -1,3 +1,5 @@
+import { writeFile } from "node:fs/promises";
+
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { mockDates } from "@caelundas/testing/mocks";
 import { ConfigService } from "@nestjs/config";
@@ -9,15 +11,26 @@ import { CalendarService } from "./calendar.service";
 
 import type { Event } from "./calendar.types";
 
+vi.mock("node:fs/promises", () => ({
+  writeFile: vi.fn(),
+}));
+
 describe("CalendarService", () => {
   let service: CalendarService;
+  const configService = {
+    get: vi.fn().mockReturnValue("./output"),
+  };
+  const logger = new LoggerService();
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        LoggerService,
+        {
+          provide: LoggerService,
+          useValue: logger,
+        },
         CalendarService,
-        { provide: ConfigService, useValue: { get: vi.fn() } },
+        { provide: ConfigService, useValue: configService },
       ],
     }).compile();
 
@@ -49,9 +62,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("STATUS:CONFIRMED");
       expect(vevent).toContain("CLASS:PUBLIC");
       expect(vevent).toContain("TRANSP:TRANSPARENT");
-      expect(vevent).toContain(
-        "CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries",
-      );
+      expect(vevent).toContain("CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries");
     });
 
     it("should include optional location when provided", () => {
@@ -133,10 +144,7 @@ describe("CalendarService", () => {
     });
 
     it("should use provided timezone", () => {
-      const vevent = service.buildEventContent(
-        baseEvent,
-        "America/Los_Angeles",
-      );
+      const vevent = service.buildEventContent(baseEvent, "America/Los_Angeles");
 
       expect(vevent).toContain("DTSTART;TZID=America/Los_Angeles:");
       expect(vevent).toContain("DTEND;TZID=America/Los_Angeles:");
@@ -172,9 +180,7 @@ describe("CalendarService", () => {
       expect(calendar).toContain("BEGIN:VCALENDAR");
       expect(calendar).toContain("END:VCALENDAR");
       expect(calendar).toContain("VERSION:2.0");
-      expect(calendar).toContain(
-        "PRODID:-//Caelundas//Astronomical Calendar//EN",
-      );
+      expect(calendar).toContain("PRODID:-//Caelundas//Astronomical Calendar//EN");
       expect(calendar).toContain("CALSCALE:GREGORIAN");
       expect(calendar).toContain("METHOD:PUBLISH");
       expect(calendar).toContain("X-WR-CALNAME:Test Calendar");
@@ -203,6 +209,21 @@ describe("CalendarService", () => {
       expect(calendar).toContain("BEGIN:VTIMEZONE");
       expect(calendar).toContain("TZID:America/New_York");
       expect(calendar).toContain("END:VTIMEZONE");
+    });
+
+    it("should include basic timezone content for non-New-York timezone", () => {
+      const calendar = service.buildFileContent({
+        description: "A test calendar description",
+        events: sampleEvents,
+        name: "Test Calendar",
+        timezone: "UTC",
+      });
+
+      expect(calendar).toContain("X-WR-TIMEZONE:UTC");
+      expect(calendar).toContain("BEGIN:VTIMEZONE");
+      expect(calendar).toContain("TZID:UTC");
+      expect(calendar).toContain("END:VTIMEZONE");
+      expect(calendar).not.toContain("BEGIN:DAYLIGHT");
     });
 
     it("should include all events", () => {
@@ -246,6 +267,74 @@ describe("CalendarService", () => {
       expect(calendar).toContain("END:STANDARD");
       expect(calendar).toContain("TZNAME:EDT");
       expect(calendar).toContain("TZNAME:EST");
+    });
+
+    it("should omit optional calendar description and timezone fields when absent", () => {
+      const calendar = service.buildFileContent({
+        description: undefined,
+        events: sampleEvents,
+        name: "No Optional Fields",
+        timezone: undefined,
+      });
+
+      expect(calendar).toContain("X-WR-CALNAME:No Optional Fields");
+      expect(calendar).not.toContain("X-WR-CALDESC:");
+      expect(calendar).not.toContain("X-WR-TIMEZONE:");
+      expect(calendar).not.toContain("BEGIN:VTIMEZONE");
+    });
+  });
+
+  describe("write", () => {
+    it("writes ICS output to configured directory", async () => {
+      const logSpy = vi.spyOn(logger, "log").mockImplementation(() => undefined);
+
+      const events: Event[] = [
+        {
+          categories: ["Astronomy"],
+          description: "Sample event",
+          end: moment.tz("2025-03-20T09:06:00", "America/New_York"),
+          start: moment.tz("2025-03-20T09:06:00", "America/New_York"),
+          summary: "Sample event",
+        },
+      ];
+
+      await service.write(events, {
+        end: moment.tz("2025-03-21T00:00:00", "America/New_York"),
+        limit: undefined,
+        start: moment.tz("2025-03-20T00:00:00", "America/New_York"),
+        timezone: "America/New_York",
+      });
+
+      expect(configService.get).toHaveBeenCalledWith("OUTPUT_DIRECTORY");
+      expect(writeFile).toHaveBeenCalledOnce();
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining("Wrote 1 events to file"),
+      );
+    });
+
+    it("falls back to default output directory when config is missing", async () => {
+      configService.get.mockReturnValueOnce(undefined);
+
+      await service.write(
+        [
+          {
+            categories: ["Astronomy"],
+            description: "Fallback output test",
+            end: moment.tz("2025-03-20T10:00:00", "America/New_York"),
+            start: moment.tz("2025-03-20T10:00:00", "America/New_York"),
+            summary: "Fallback output test",
+          },
+        ],
+        {
+          end: moment.tz("2025-03-21T00:00:00", "America/New_York"),
+          limit: undefined,
+          start: moment.tz("2025-03-20T00:00:00", "America/New_York"),
+          timezone: "America/New_York",
+        },
+      );
+
+      expect(writeFile).toHaveBeenCalled();
+      expect(vi.mocked(writeFile).mock.calls.at(-1)?.[0]).toContain("output/");
     });
   });
 

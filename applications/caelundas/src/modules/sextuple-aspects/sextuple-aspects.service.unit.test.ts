@@ -2,7 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
@@ -11,15 +11,13 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe("SextupleAspectsService", () => {
   let service: SextupleAspectsService;
+  let composerService: SextupleAspectsComposerService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [
-        SextupleAspectsService,
-        SextupleAspectsComposerService,
-        MathService,
-      ],
+      providers: [SextupleAspectsService, SextupleAspectsComposerService, MathService],
     }).compile();
+    composerService = await module.resolve(SextupleAspectsComposerService);
     service = await module.resolve(SextupleAspectsService);
   });
 
@@ -262,8 +260,7 @@ describe("SextupleAspectsService", () => {
         description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         end: moment.utc("2024-03-21T10:00:00.000Z"),
         start: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary:
-          "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+        summary: "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
       };
 
       const dissolvingEvent: Event = {
@@ -281,18 +278,13 @@ describe("SextupleAspectsService", () => {
           "Sun",
           "Venus",
         ],
-        description:
-          "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+        description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         end: moment.utc("2024-03-21T14:00:00.000Z"),
         start: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary:
-          "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+        summary: "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
       };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
@@ -328,8 +320,7 @@ describe("SextupleAspectsService", () => {
         description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         end: moment.utc("2024-03-21T10:00:00.000Z"),
         start: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary:
-          "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+        summary: "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
       };
 
       const progressiveEvents = service.detectProgressive([formingEvent]);
@@ -353,12 +344,10 @@ describe("SextupleAspectsService", () => {
           "Sun",
           "Venus",
         ],
-        description:
-          "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+        description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         end: moment.utc("2024-03-21T14:00:00.000Z"),
         start: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary:
-          "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+        summary: "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([dissolvingEvent]);
@@ -383,12 +372,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary:
-            "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          summary: "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         },
         {
           categories: [
@@ -405,12 +392,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
           end: moment.utc("2024-03-21T14:00:00.000Z"),
           start: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary:
-            "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          summary: "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         },
         {
           categories: [
@@ -427,12 +412,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
           end: moment.utc("2024-03-22T10:00:00.000Z"),
           start: moment.utc("2024-03-22T10:00:00.000Z"),
-          summary:
-            "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          summary: "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         },
         {
           categories: [
@@ -449,30 +432,20 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
           end: moment.utc("2024-03-22T14:00:00.000Z"),
           start: moment.utc("2024-03-22T14:00:00.000Z"),
-          summary:
-            "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          summary: "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         },
       ];
 
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(2);
-      expect(progressiveEvents[0]?.start).toEqual(
-        moment.utc("2024-03-21T10:00:00.000Z"),
-      );
-      expect(progressiveEvents[0]?.end).toEqual(
-        moment.utc("2024-03-21T14:00:00.000Z"),
-      );
-      expect(progressiveEvents[1]?.start).toEqual(
-        moment.utc("2024-03-22T10:00:00.000Z"),
-      );
-      expect(progressiveEvents[1]?.end).toEqual(
-        moment.utc("2024-03-22T14:00:00.000Z"),
-      );
+      expect(progressiveEvents[0]?.start).toEqual(moment.utc("2024-03-21T10:00:00.000Z"));
+      expect(progressiveEvents[0]?.end).toEqual(moment.utc("2024-03-21T14:00:00.000Z"));
+      expect(progressiveEvents[1]?.start).toEqual(moment.utc("2024-03-22T10:00:00.000Z"));
+      expect(progressiveEvents[1]?.end).toEqual(moment.utc("2024-03-22T14:00:00.000Z"));
     });
 
     it("should handle different body combinations separately", () => {
@@ -493,12 +466,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary:
-            "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+          summary: "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         },
         {
           categories: [
@@ -515,12 +486,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Venus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
           end: moment.utc("2024-03-21T14:00:00.000Z"),
           start: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary:
-            "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+          summary: "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         },
         // Different body combination
         {
@@ -538,12 +507,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Uranus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram forming",
+          description: "Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram forming",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
-          summary:
-            "➡️ ✡ ☉-☽-♂-♃-♆-♅ Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram forming",
+          summary: "➡️ ✡ ☉-☽-♂-♃-♆-♅ Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram forming",
         },
         {
           categories: [
@@ -560,12 +527,10 @@ describe("SextupleAspectsService", () => {
             "Sun",
             "Uranus",
           ],
-          description:
-            "Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram dissolving",
+          description: "Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram dissolving",
           end: moment.utc("2024-03-21T15:00:00.000Z"),
           start: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary:
-            "⬅️ ✡ ☉-☽-♂-♃-♆-♅ Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram dissolving",
+          summary: "⬅️ ✡ ☉-☽-♂-♃-♆-♅ Jupiter, Mars, Moon, Neptune, Sun, Uranus hexagram dissolving",
         },
       ];
 
@@ -576,6 +541,39 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents[0]?.categories).toContain("Venus");
       expect(progressiveEvents[1]?.categories).toContain("Neptune");
       expect(progressiveEvents[1]?.categories).toContain("Uranus");
+    });
+
+    describe("composer guard branches", () => {
+      it("returns null when buildHexagramEvent receives fewer than six bodies", () => {
+        expect(
+          composerService.buildHexagramEvent(
+            ["sun", "moon", "mars", "jupiter", "venus"],
+            "forming",
+            moment.utc("2024-03-21T12:00:00.000Z"),
+          ),
+        ).toBeNull();
+      });
+
+      it("returns null when grand-trine pair extraction produces an incomplete pair", () => {
+        const findGrandTrinePairsSpy = vi
+          .spyOn(composerService, "findGrandTrinePairs")
+          .mockReturnValue([
+            undefined as unknown as string[],
+            ["sun", "moon", "mars"],
+          ] as unknown as string[][]);
+
+        const pattern = composerService.findHexagramPattern(
+          ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
+          [],
+        );
+
+        expect(pattern).toBeNull();
+        findGrandTrinePairsSpy.mockRestore();
+      });
+
+      it("returns perfective phase emoji", () => {
+        expect(composerService.getPhaseEmoji("perfective")).toBe("🎯 ");
+      });
     });
   });
 
