@@ -19,7 +19,7 @@
   "devDependencies": {
     "@golevelup/ts-vitest": "^4.0.0",
     "@nestjs/testing": "^11.1.26",
-    "@nx/eslint-plugin": "^22.7.3",
+    "@nx/eslint-plugin": "^23.0.0",
     "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.40",
     "@swc/helpers": "^0.5.21",

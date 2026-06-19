@@ -12,11 +12,12 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^11.1.26",
-    "@nx/vite": "^22.7.3",
+    "@nx/vite": "^23.0.0",
     "@types/node": "^25.9.1",
     "@types/pluralize": "^0.0.33",
     "typescript": "^6.0.3",
-    "vite": "^8.0.14"
+    "vite": "^8.0.14",
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "exports": {
     ".": {
