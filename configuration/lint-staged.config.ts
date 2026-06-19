@@ -66,13 +66,6 @@ const config = {
     "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
-  // 📊 Code statistics — run on any staged file because folder/file counts change
-  // with any addition or deletion.
-  "**/*": () => [
-    "pnpm exec nx run monorepo:measure-code:write",
-    "git add README.md",
-  ],
-
   // 📝 TypeScript / JavaScript source files
   // Runs format (oxfmt + prettier), lint (eslint + oxlint), typecheck, spell-check,
   // and clean (Knip for JS/TS unused files, dependencies, and exports) on affected projects.
@@ -150,6 +143,13 @@ const config = {
       `pnpm exec nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
+
+  // 📊 Code statistics — run on any staged file because folder/file counts change
+  // with any addition or deletion.
+  "**/*": () => [
+    "pnpm exec nx run monorepo:measure-code:write",
+    "git add README.md",
+  ],
 };
 
 export default config;
