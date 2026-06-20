@@ -40,7 +40,9 @@ describe("EclipseTopocentricService", () => {
     setContext: vi.fn(),
   };
   const mathService = {
-    getAngle: vi.fn((value1: number, value2: number) => Math.abs(value1 - value2)),
+    getAngle: vi.fn((value1: number, value2: number) =>
+      Math.abs(value1 - value2),
+    ),
   };
   const eclipseGeometryService = {
     getAllTopocentricVisibilities: vi.fn(),
@@ -169,11 +171,13 @@ describe("EclipseTopocentricService", () => {
     });
 
     expect(endingEvents).toHaveLength(1);
-    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith({
-      date: expect.any(Object),
-      frame: "topocentric",
-      phase: "ending",
-    });
+    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith(
+      {
+        date: expect.any(Object),
+        frame: "topocentric",
+        phase: "ending",
+      },
+    );
 
     eclipseGeometryService.getAllTopocentricVisibilities.mockReturnValueOnce({
       currentVisibility: { isLunarVisible: true, isSolarVisible: false },
@@ -201,11 +205,13 @@ describe("EclipseTopocentricService", () => {
     });
 
     expect(maximumEvents).toHaveLength(1);
-    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith({
-      date: expect.any(Object),
-      frame: "topocentric",
-      phase: "maximum",
-    });
+    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith(
+      {
+        date: expect.any(Object),
+        frame: "topocentric",
+        phase: "maximum",
+      },
+    );
   });
 
   it("returns no events when topocentric activity is inactive", () => {

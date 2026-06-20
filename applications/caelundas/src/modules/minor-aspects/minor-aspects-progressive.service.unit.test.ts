@@ -40,7 +40,10 @@ describe("MinorAspectsProgressiveService", () => {
       categories: string[];
     }) => { aspect: string; body1: string; body2: string };
     getMinorAspectProgressiveEvent: (beginning: Event, ending: Event) => Event;
-    processAspectGroup: (aspectGroupKey: string, aspectGroupEvents: Event[]) => Event[];
+    processAspectGroup: (
+      aspectGroupKey: string,
+      aspectGroupEvents: Event[],
+    ) => Event[];
   };
 
   beforeEach(() => {
@@ -119,9 +122,9 @@ describe("MinorAspectsProgressiveService", () => {
       summary: "invalid",
     };
 
-    expect(() => privateService.getMinorAspectProgressiveEvent(invalidEvent, invalidEvent)).toThrow(
-      "Could not extract aspect info from categories",
-    );
+    expect(() =>
+      privateService.getMinorAspectProgressiveEvent(invalidEvent, invalidEvent),
+    ).toThrow("Could not extract aspect info from categories");
   });
 
   it("throws when type casting receives invalid minor-aspect values", () => {
@@ -140,16 +143,22 @@ describe("MinorAspectsProgressiveService", () => {
       .spyOn(_, "sortBy")
       .mockReturnValue([undefined, "Moon"] as unknown as string[]);
     const invalidEvent: Event = {
-      categories: ["Astronomy", "Astrology", "Minor Aspect", "Semisquare", "Moon"],
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Minor Aspect",
+        "Semisquare",
+        "Moon",
+      ],
       description: "invalid",
       end: moment.utc("2024-03-21T10:00:00.000Z"),
       start: moment.utc("2024-03-21T10:00:00.000Z"),
       summary: "invalid",
     };
 
-    expect(() => privateService.getMinorAspectProgressiveEvent(invalidEvent, invalidEvent)).toThrow(
-      "Could not extract typed values from categories",
-    );
+    expect(() =>
+      privateService.getMinorAspectProgressiveEvent(invalidEvent, invalidEvent),
+    ).toThrow("Could not extract typed values from categories");
 
     sortBySpy.mockRestore();
   });

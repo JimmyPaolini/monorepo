@@ -73,7 +73,9 @@ describe("PhaseCalculationService", () => {
         previousDistances: [2, 1],
         previousIlluminations: [8, 2],
       }),
-    ).toThrow("next distances and illuminations arrays must have the same length");
+    ).toThrow(
+      "next distances and illuminations arrays must have the same length",
+    );
   });
 
   it("throws when a brightness illumination sample is missing", () => {
@@ -112,7 +114,10 @@ describe("PhaseCalculationService", () => {
   });
 
   it("evaluates elongation maxima from previous/current/next angles", () => {
-    mathService.getAngle.mockReturnValueOnce(11).mockReturnValueOnce(13).mockReturnValueOnce(9);
+    mathService.getAngle
+      .mockReturnValueOnce(11)
+      .mockReturnValueOnce(13)
+      .mockReturnValueOnce(9);
     mathService.isMaximum.mockReturnValueOnce(true);
 
     const isElongation = mockService.isElongation({

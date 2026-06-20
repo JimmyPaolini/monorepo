@@ -180,7 +180,9 @@ describe("MinorAspectsComposerService", () => {
       end: minute.clone().add(1, "hour"),
     };
 
-    mockProgressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([[beginning, ending]]);
+    mockProgressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([
+      [beginning, ending],
+    ]);
 
     expect(mockService.buildGroupKey(beginning)).toBe("Moon-Semisextile-Sun");
     expect(

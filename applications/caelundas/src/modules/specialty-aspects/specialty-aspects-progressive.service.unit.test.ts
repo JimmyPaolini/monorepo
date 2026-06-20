@@ -40,8 +40,14 @@ describe("SpecialtyAspectsProgressiveService", () => {
       body2Capitalized: string;
       categories: string[];
     }) => { aspect: string; body1: string; body2: string };
-    getSpecialtyAspectProgressiveEvent: (beginning: Event, ending: Event) => Event;
-    processAspectGroup: (aspectGroupKey: string, aspectGroupEvents: Event[]) => Event[];
+    getSpecialtyAspectProgressiveEvent: (
+      beginning: Event,
+      ending: Event,
+    ) => Event;
+    processAspectGroup: (
+      aspectGroupKey: string,
+      aspectGroupEvents: Event[],
+    ) => Event[];
     specialtyAspectGroupKey: (event: Event) => string;
   };
 
@@ -58,7 +64,9 @@ describe("SpecialtyAspectsProgressiveService", () => {
   });
 
   it("returns an empty array for an empty progressive group key", () => {
-    expect(specialtyAspectsProgressiveService.processAspectGroup("", [])).toEqual([]);
+    expect(
+      specialtyAspectsProgressiveService.processAspectGroup("", []),
+    ).toEqual([]);
   });
 
   it("throws when categories do not include a complete specialty aspect", () => {
@@ -211,7 +219,9 @@ describe("SpecialtyAspectsProgressiveService", () => {
       } as Event,
     ]);
 
-    expect(progressiveUtilitiesService.pairProgressiveEvents).toHaveBeenCalled();
+    expect(
+      progressiveUtilitiesService.pairProgressiveEvents,
+    ).toHaveBeenCalled();
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon quintile Sun");
     expect(progressiveEvents[0]?.summary).toContain("Moon quintile Sun");
