@@ -64,12 +64,8 @@ describe("ProgressiveService", () => {
     vi.clearAllMocks();
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("detect", () => {
-    it("should return an empty array when all sub-services return nothing", () => {
+    it("returns an empty array when all sub-services return nothing", () => {
       for (const subMock of [
         annualSolarCycleMock,
         aspectsMock,
@@ -88,7 +84,7 @@ describe("ProgressiveService", () => {
       expect(result).toEqual([]);
     });
 
-    it("should aggregate events from all sub-services into a single flat array", () => {
+    it("aggregates events from all sub-services into a single flat array", () => {
       const aspectEvent = makeEvent("aspect");
       const retrogradeEvent = makeEvent("retrograde");
       const eclipseEvent = makeEvent("eclipse");
@@ -110,7 +106,7 @@ describe("ProgressiveService", () => {
       expect(result).toHaveLength(3);
     });
 
-    it("should forward the perfective events array to every sub-service", () => {
+    it("forwards the perfective events array to every sub-service", () => {
       const perfectiveEvents = [makeEvent("perfective")];
 
       for (const subMock of [
@@ -145,14 +141,18 @@ describe("ProgressiveService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("pairProgressiveEvents", () => {
-    it("should return an empty array when both inputs are empty", () => {
+    it("returns an empty array when both inputs are empty", () => {
       const result = utilitiesService.pairProgressiveEvents([], [], "test");
 
       expect(result).toEqual([]);
     });
 
-    it("should pair beginnings with their corresponding endings", () => {
+    it("pairs beginnings with their corresponding endings", () => {
       const beginning1 = makeEvent("beginning-1");
       const ending1 = makeEvent("ending-1");
       const beginning2 = makeEvent("beginning-2");
@@ -170,7 +170,7 @@ describe("ProgressiveService", () => {
       ]);
     });
 
-    it("should truncate to the shorter list when counts differ", () => {
+    it("truncates to the shorter list when counts differ", () => {
       const beginning1 = makeEvent("beginning-1");
       const beginning2 = makeEvent("beginning-2");
       const ending1 = makeEvent("ending-1");
@@ -185,7 +185,7 @@ describe("ProgressiveService", () => {
       expect(result[0]).toEqual([beginning1, ending1]);
     });
 
-    it("should emit a console warning when beginning and ending counts differ", () => {
+    it("emits a console warning when beginning and ending counts differ", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
         .mockImplementation(() => undefined);
@@ -201,7 +201,7 @@ describe("ProgressiveService", () => {
       warnSpy.mockRestore();
     });
 
-    it("should not warn when counts are equal", () => {
+    it("does not warn when counts are equal", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
         .mockImplementation(() => undefined);

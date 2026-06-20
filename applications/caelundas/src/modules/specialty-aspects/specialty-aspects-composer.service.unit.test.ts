@@ -48,6 +48,9 @@ describe("SpecialtyAspectsComposerService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("assembles boundary events for every phase", () => {
     const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
 
@@ -235,9 +238,5 @@ describe("SpecialtyAspectsComposerService", () => {
         },
       ),
     ).toThrow("Could not extract aspect info");
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

@@ -50,6 +50,9 @@ describe("MinorAspectsProgressiveService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("builds progressive events from forming and dissolving minor aspects", () => {
     const formingEvent: Event = {
       categories: [
@@ -161,9 +164,5 @@ describe("MinorAspectsProgressiveService", () => {
     ).toThrow("Could not extract typed values from categories");
 
     sortBySpy.mockRestore();
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

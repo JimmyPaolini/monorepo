@@ -24,12 +24,12 @@ describe("TripleAspectsComposerService", () => {
     await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("static aspect helpers", () => {
@@ -270,6 +270,154 @@ describe("TripleAspectsComposerService", () => {
           } as Event,
         }),
       ).toBeNull();
+    });
+
+    it("returns the dissolving phase emoji", () => {
+      const internals = service as unknown as {
+        getPhaseEmoji: (phase: string) => string;
+      };
+
+      expect(internals.getPhaseEmoji("dissolving")).toBe("⬅️ ");
+    });
+
+    it("returns the perfective phase emoji", () => {
+      const internals = service as unknown as {
+        getPhaseEmoji: (phase: string) => string;
+      };
+
+      expect(internals.getPhaseEmoji("perfective")).toBe("🎯 ");
+    });
+
+    it("skips progressive pairs without a recognized aspect label", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const forming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+        ],
+        description: "Sun, Moon, Mars forming",
+        end: minute,
+        start: minute,
+        summary: "⬅️ Sun-Moon-Mars",
+      } as Event;
+      const dissolving = {
+        ...forming,
+        categories: forming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Sun, Moon, Mars dissolving",
+        end: minute.clone().add(1, "hour"),
+        start: minute.clone().add(1, "hour"),
+        summary: "⬅️ Sun-Moon-Mars",
+      };
+
+      expect(service.pairProgressiveGroup([forming, dissolving])).toHaveLength(
+        0,
+      );
+    });
+
+    it("skips sparse progressive pairs", () => {
+      const internals = service as unknown as {
+        pairProgressiveGroupPairs: (
+          formingEvents: (Event | undefined)[],
+          dissolvingEvents: (Event | undefined)[],
+        ) => Event[];
+        resolveAspectType: (aspectCapitalized: string) => null;
+        resolveProgressiveMeta: (
+          bodiesCapitalized: string[],
+          aspect: "grand trine" | "t-square" | "yod",
+        ) => null;
+      };
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const forming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Grand Trine",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+        ],
+        description: "Sun, Moon, Mars grand trine forming",
+        end: minute,
+        start: minute,
+        summary: "➡️ ✶ Sun-Moon-Mars",
+      } as Event;
+      const dissolving = {
+        ...forming,
+        categories: forming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Sun, Moon, Mars grand trine dissolving",
+        end: minute.clone().add(1, "hour"),
+        start: minute.clone().add(1, "hour"),
+        summary: "⬅️ ✶ Sun-Moon-Mars",
+      };
+
+      expect(
+        internals.pairProgressiveGroupPairs([undefined], [dissolving]),
+      ).toHaveLength(0);
+      expect(internals.resolveAspectType("Mystery Aspect")).toBeNull();
+      expect(
+        internals.resolveProgressiveMeta(["Sun", "Moon", "Ceres"], "yod"),
+      ).toBeNull();
+    });
+
+    it("sorts grouped events before pairing progressive triples", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const laterForming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Grand Trine",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+        ],
+        description: "Sun, Moon, Mars grand trine forming",
+        end: minute.clone().add(1, "hour"),
+        start: minute.clone().add(1, "hour"),
+        summary: "➡️ ✶ Sun-Moon-Mars",
+      } as Event;
+      const earlierDissolving = {
+        ...laterForming,
+        categories: laterForming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Sun, Moon, Mars grand trine dissolving",
+        end: minute,
+        start: minute,
+        summary: "⬅️ ✶ Sun-Moon-Mars",
+      };
+
+      expect(
+        service.pairProgressiveGroup([laterForming, earlierDissolving]),
+      ).toHaveLength(0);
+    });
+
+    it("returns null when progressive bodies are incomplete", () => {
+      const internals = service as unknown as {
+        resolveProgressiveMeta: (
+          bodiesCapitalized: string[],
+          aspect: "grand trine" | "t-square" | "yod",
+        ) => null;
+      };
+
+      expect(internals.resolveProgressiveMeta(["Sun", "Moon"], "yod")).toBe(
+        null,
+      );
     });
   });
 });

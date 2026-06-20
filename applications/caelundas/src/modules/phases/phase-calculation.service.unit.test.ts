@@ -48,6 +48,9 @@ describe("PhaseCalculationService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("derives brightness values from current and margin samples", () => {
     const brightnesses = mockService.getBrightnesses({
       currentDistance: 2,
@@ -248,9 +251,5 @@ describe("PhaseCalculationService", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0]?.description).toBe("match");
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

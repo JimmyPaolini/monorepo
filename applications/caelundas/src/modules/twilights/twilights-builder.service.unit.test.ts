@@ -24,10 +24,6 @@ describe("TwilightsBuilderService", () => {
     await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   const beginningEvent: Event = {
     categories: ["Twilight"],
     description: "Beginning",
@@ -45,6 +41,10 @@ describe("TwilightsBuilderService", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("transition events", () => {

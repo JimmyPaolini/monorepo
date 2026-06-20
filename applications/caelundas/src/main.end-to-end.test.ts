@@ -40,7 +40,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("ICS file generation", () => {
-    it("should generate valid ICS file structure", () => {
+    it("generates valid ICS file structure", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -104,7 +104,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(veventCount).toBe(2);
     });
 
-    it("should include timezone definitions", () => {
+    it("includes timezone definitions", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -134,7 +134,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(calendar).toContain("END:STANDARD");
     });
 
-    it("should handle events with all optional fields", () => {
+    it("handles events with all optional fields", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -169,7 +169,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("input validation e2e", () => {
-    it("should validate and transform coordinates correctly", async () => {
+    it("validates and transform coordinates correctly", async () => {
       const { inputSchema } = await import("./modules/input/input.constants");
 
       const result = inputSchema.parse({
@@ -186,7 +186,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(moment.isMoment(result.end)).toBe(true);
     });
 
-    it("should infer correct timezone for different locations", async () => {
+    it("infers correct timezone for different locations", async () => {
       const { inputSchema } = await import("./modules/input/input.constants");
 
       // Tokyo
@@ -219,7 +219,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("event detection e2e", () => {
-    it("should correctly identify zodiac signs from longitude", async () => {
+    it("correctly identify zodiac signs from longitude", async () => {
       const { IngressesService } =
         await import("./modules/ingresses/ingresses.service");
 
@@ -238,7 +238,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(IngressesService.getSign(330)).toBe("pisces");
     });
 
-    it("should correctly identify aspects from angular separation", async () => {
+    it("correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
         await import("./modules/major-aspects/major-aspects.service");
       const { MajorAspectEventService } =
@@ -298,7 +298,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       ).toBe("opposite"); // 5° orb
     });
 
-    it("should calculate progressive event pairs correctly", async () => {
+    it("calculates progressive event pairs correctly", async () => {
       const { ProgressiveUtilities } =
         await import("./modules/progressive/progressive.utilities");
 
@@ -357,7 +357,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("math utilities e2e", () => {
-    it("should normalize degrees correctly across edge cases", async () => {
+    it("normalizes degrees correctly across edge cases", async () => {
       const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const normalizeDegrees = (d: number): number =>
@@ -378,7 +378,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(getAngle(10, 350)).toBe(20);
     });
 
-    it("should generate correct combinations", async () => {
+    it("generates correct combinations", async () => {
       const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const getCombinations = <T>(array: T[], k: number): T[][] =>

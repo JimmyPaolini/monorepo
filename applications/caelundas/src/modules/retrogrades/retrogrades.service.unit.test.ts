@@ -59,8 +59,8 @@ describe("RetrogradesService", () => {
     return ephemeris;
   }
 
-  describe("service.detect", () => {
-    it("should detect retrograde station when longitude starts decreasing", () => {
+  describe("detect", () => {
+    it("detects retrograde station when longitude starts decreasing", () => {
       const currentMinute = moment.utc("2024-04-01T12:00:00.000Z");
 
       // Mercury slowing down and then going retrograde
@@ -121,7 +121,7 @@ describe("RetrogradesService", () => {
       expect(mercuryRetrograde).toBeDefined();
     });
 
-    it("should return empty array when no retrograde events occur", () => {
+    it("returns empty array when no retrograde events occur", () => {
       const currentMinute = moment.utc("2024-04-01T12:00:00.000Z");
 
       // All planets moving direct (increasing longitude)
@@ -164,8 +164,12 @@ describe("RetrogradesService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("getRetrogradeEvent", () => {
-    it("should create a retrograde event with correct structure", () => {
+    it("creates a retrograde event with correct structure", () => {
       const timestamp = moment.utc("2024-04-01T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -184,7 +188,7 @@ describe("RetrogradesService", () => {
       expect(event.categories).toContain("Retrograde");
     });
 
-    it("should create a direct event with correct structure", () => {
+    it("creates a direct event with correct structure", () => {
       const timestamp = moment.utc("2024-04-25T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -199,7 +203,7 @@ describe("RetrogradesService", () => {
       expect(event.categories).not.toContain("Retrograde");
     });
 
-    it("should use correct symbol for Venus", () => {
+    it("uses correct symbol for Venus", () => {
       const timestamp = moment.utc("2024-07-22T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -211,7 +215,7 @@ describe("RetrogradesService", () => {
       expect(event.summary).toBe("♀️ ↩️ Venus Stationary Retrograde");
     });
 
-    it("should use correct symbol for Mars", () => {
+    it("uses correct symbol for Mars", () => {
       const timestamp = moment.utc("2024-12-06T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -223,7 +227,7 @@ describe("RetrogradesService", () => {
       expect(event.summary).toBe("♂️ ↩️ Mars Stationary Retrograde");
     });
 
-    it("should use correct symbol for Jupiter", () => {
+    it("uses correct symbol for Jupiter", () => {
       const timestamp = moment.utc("2024-10-09T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -235,7 +239,7 @@ describe("RetrogradesService", () => {
       expect(event.summary).toBe("♃ ↩️ Jupiter Stationary Retrograde");
     });
 
-    it("should use correct symbol for Saturn", () => {
+    it("uses correct symbol for Saturn", () => {
       const timestamp = moment.utc("2024-06-29T12:00:00.000Z");
 
       const event = service.buildRetrogradeEvent({
@@ -248,8 +252,8 @@ describe("RetrogradesService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should create progressive event from retrograde to direct", () => {
+  describe("detectProgressive", () => {
+    it("creates progressive event from retrograde to direct", () => {
       const retrogradeEvent: Event = {
         categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
         description: "Mercury Stationary Retrograde",
@@ -286,13 +290,45 @@ describe("RetrogradesService", () => {
       }
     });
 
-    it("should return empty array when no direction events provided", () => {
+    it("omits the symbol when the source summary is empty", () => {
+      const internals = service as unknown as {
+        getRetrogradeProgressiveEvent: (
+          beginningEvent: Event,
+          endingEvent: Event,
+          planet: "mercury",
+        ) => Event;
+      };
+      const beginningEvent: Event = {
+        categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
+        description: "Mercury Stationary Retrograde",
+        end: moment.utc("2024-04-01T12:00:00.000Z"),
+        start: moment.utc("2024-04-01T12:00:00.000Z"),
+        summary: "",
+      };
+      const endingEvent: Event = {
+        categories: ["Astronomy", "Astrology", "Direction", "Direct"],
+        description: "Mercury Stationary Direct",
+        end: moment.utc("2024-04-25T12:00:00.000Z"),
+        start: moment.utc("2024-04-25T12:00:00.000Z"),
+        summary: "☿ ↪️ Mercury Stationary Direct",
+      };
+
+      expect(
+        internals.getRetrogradeProgressiveEvent(
+          beginningEvent,
+          endingEvent,
+          "mercury",
+        ).summary,
+      ).toBe(" ↩️ Mercury Retrograde");
+    });
+
+    it("returns empty array when no direction events provided", () => {
       const progressiveEvents = service.detectProgressive([]);
 
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should handle multiple planets retrograde periods", () => {
+    it("handles multiple planets retrograde periods", () => {
       const mercuryRetrograde: Event = {
         categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
         description: "Mercury Stationary Retrograde",
@@ -348,7 +384,7 @@ describe("RetrogradesService", () => {
   }
 
   describe("isRetrograde", () => {
-    it("should return true when planet stations retrograde", () => {
+    it("returns true when planet stations retrograde", () => {
       const result = s.isRetrograde({
         currentLongitude: 100,
         nextLongitudes: [100, 99], // Will be same or decreasing (retrograde)
@@ -358,7 +394,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when planet continues direct motion", () => {
+    it("returns false when planet continues direct motion", () => {
       const result = s.isRetrograde({
         currentLongitude: 100,
         nextLongitudes: [101, 102],
@@ -368,7 +404,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return false when planet is already retrograde", () => {
+    it("returns false when planet is already retrograde", () => {
       const result = s.isRetrograde({
         currentLongitude: 100,
         nextLongitudes: [99, 98],
@@ -378,7 +414,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should handle 0/360 boundary crossing correctly", () => {
+    it("handles 0/360 boundary crossing correctly", () => {
       const result = s.isRetrograde({
         currentLongitude: 5,
         nextLongitudes: [5, 4], // Will be retrograde
@@ -388,7 +424,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not all previous longitudes indicate direct motion", () => {
+    it("returns false when not all previous longitudes indicate direct motion", () => {
       const result = s.isRetrograde({
         currentLongitude: 100,
         nextLongitudes: [100, 99],
@@ -398,7 +434,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return false when not all next longitudes indicate retrograde", () => {
+    it("returns false when not all next longitudes indicate retrograde", () => {
       const result = s.isRetrograde({
         currentLongitude: 100,
         nextLongitudes: [99, 101], // Mixed - not all retrograde
@@ -410,7 +446,7 @@ describe("RetrogradesService", () => {
   });
 
   describe("isDirect", () => {
-    it("should return true when planet stations direct", () => {
+    it("returns true when planet stations direct", () => {
       const result = s.isDirect({
         currentLongitude: 100,
         nextLongitudes: [100, 101], // Will be same or increasing (direct)
@@ -420,7 +456,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when planet continues retrograde motion", () => {
+    it("returns false when planet continues retrograde motion", () => {
       const result = s.isDirect({
         currentLongitude: 100,
         nextLongitudes: [99, 98],
@@ -430,7 +466,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return false when planet is already direct", () => {
+    it("returns false when planet is already direct", () => {
       const result = s.isDirect({
         currentLongitude: 100,
         nextLongitudes: [101, 102],
@@ -440,7 +476,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should handle 0/360 boundary crossing correctly", () => {
+    it("handles 0/360 boundary crossing correctly", () => {
       const result = s.isDirect({
         currentLongitude: 355,
         nextLongitudes: [355, 356], // Will be direct
@@ -450,7 +486,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not all previous longitudes indicate retrograde motion", () => {
+    it("returns false when not all previous longitudes indicate retrograde motion", () => {
       const result = s.isDirect({
         currentLongitude: 100,
         nextLongitudes: [100, 101],
@@ -460,7 +496,7 @@ describe("RetrogradesService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return false when not all next longitudes indicate direct motion", () => {
+    it("returns false when not all next longitudes indicate direct motion", () => {
       const result = s.isDirect({
         currentLongitude: 100,
         nextLongitudes: [101, 99], // Mixed - not all direct
@@ -469,9 +505,5 @@ describe("RetrogradesService", () => {
 
       expect(result).toBe(false);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

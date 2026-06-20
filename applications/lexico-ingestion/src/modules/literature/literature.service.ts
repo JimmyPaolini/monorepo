@@ -17,6 +17,7 @@ import { LoggerService } from "../logger/logger.service";
 import { NumeralsService } from "../numerals/numerals.service";
 
 import { LiteratureLibraryScanService } from "./literature-library-scan.service";
+import { LiteratureTextIngestionService } from "./literature-text-ingestion.service";
 import {
   authorIdToName,
   CAPITAL_LETTER_PATTERN,
@@ -30,7 +31,6 @@ import {
   TOKEN_SEGMENT_PATTERN,
   WORD_TOKEN_PATTERN,
 } from "./literature.constants";
-import { LiteratureTextIngestionService } from "./literature.text-ingestion.service";
 
 import type {
   IngestTextArguments,

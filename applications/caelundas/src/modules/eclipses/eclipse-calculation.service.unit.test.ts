@@ -61,12 +61,12 @@ describe("EclipseCalculationService", () => {
     eclipseEventService = await module.resolve(EclipseEventService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("isSolarEclipse", () => {

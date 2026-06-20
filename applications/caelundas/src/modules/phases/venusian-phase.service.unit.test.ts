@@ -100,12 +100,12 @@ describe("VenusianPhaseService", () => {
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildVenusianPhaseEvent", () => {
@@ -165,7 +165,7 @@ describe("VenusianPhaseService", () => {
     });
   });
 
-  describe("progressive visibility events", () => {
+  describe("getVenusianPhaseProgressiveEvents", () => {
     it("creates venusian morning visibility duration events", () => {
       const morningRise: Event = {
         categories: ["Planetary Phase", "Venusian", "Morning Rise"],

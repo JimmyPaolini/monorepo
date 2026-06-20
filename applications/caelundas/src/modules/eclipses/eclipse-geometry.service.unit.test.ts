@@ -51,6 +51,9 @@ describe("EclipseGeometryService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("samples eclipse coordinates around the current minute", () => {
     const minute = moment.utc("2024-04-08T18:00:00.000Z");
     const currentIso = minute.toISOString();
@@ -201,9 +204,5 @@ describe("EclipseGeometryService", () => {
       nextLongitudeAngle: 10,
       previousLongitudeAngle: 10,
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

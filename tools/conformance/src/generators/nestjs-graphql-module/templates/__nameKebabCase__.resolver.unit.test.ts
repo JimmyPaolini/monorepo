@@ -18,7 +18,7 @@ describe("{{namePascalCase}}Resolver", () => {
     resolver = await module.resolve({{namePascalCase}}Resolver);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(resolver).toBeDefined();
   });
 });

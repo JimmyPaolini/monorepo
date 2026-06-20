@@ -26,8 +26,8 @@ const service = new SextupleAspectsService(
 );
 
 describe("sextuple-aspects.events integration", () => {
-  describe("Hexagram pattern detection with realistic timing", () => {
-    it("should detect forming Hexagram when pattern first appears", () => {
+  describe("Hexagram pattern detection", () => {
+    it("detects forming Hexagram when pattern first appears", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
       // Previous minute (18:41): Pattern does NOT exist yet
@@ -89,7 +89,7 @@ describe("sextuple-aspects.events integration", () => {
       expect(events[0]?.summary).toContain("🔯"); // Hexagram symbol
     });
 
-    it("should detect dissolving Hexagram when pattern breaks apart", () => {
+    it("detects dissolving Hexagram when pattern breaks apart", () => {
       const currentMinute = moment.utc("2024-09-22T19:00:00.000Z");
 
       // Previous minute (18:59): Pattern EXISTS
@@ -144,7 +144,7 @@ describe("sextuple-aspects.events integration", () => {
       expect(events[0]?.summary).toContain("⬅️"); // Dissolving emoji
     });
 
-    it("should create progressive event from forming/dissolving Hexagram pair", () => {
+    it("creates progressive event from forming/dissolving Hexagram pair", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -214,8 +214,8 @@ describe("sextuple-aspects.events integration", () => {
     });
   });
 
-  describe("Hexagram with different body combinations", () => {
-    it("should detect Hexagram with outer planets", () => {
+  describe("Hexagram body combination scenarios", () => {
+    it("detects Hexagram with outer planets", () => {
       const currentMinute = moment.utc("2024-12-05T11:30:00.000Z");
 
       // Mars trine Jupiter starts at currentMinute (forming trigger) -> currentAspectBodies only
@@ -271,8 +271,8 @@ describe("sextuple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge cases with realistic timing", () => {
-    it("should not detect Hexagram with incomplete first grand trine", () => {
+  describe("Edge case scenarios", () => {
+    it("does not detect Hexagram with incomplete first grand trine", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
       // First grand trine INCOMPLETE: missing Jupiter-Mars trine
@@ -304,7 +304,7 @@ describe("sextuple-aspects.events integration", () => {
       expect(events).toHaveLength(0);
     });
 
-    it("should not detect Hexagram with incomplete sextile ring", () => {
+    it("does not detect Hexagram with incomplete sextile ring", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
       // Both grand trines complete, but sextile ring incomplete

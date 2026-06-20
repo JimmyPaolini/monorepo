@@ -25,6 +25,7 @@ describe("FormsService", () => {
   let formRepository: Mocked<Repository<Form>>;
   let wordFormRepository: Mocked<Repository<WordForm>>;
   let wordsService: Mocked<WordsService>;
+  let formsBuilderHelper: Mocked<FormsBuilderHelper>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -56,13 +57,14 @@ describe("FormsService", () => {
     formRepository = await module.resolve(getRepositoryToken(Form));
     wordFormRepository = await module.resolve(getRepositoryToken(WordForm));
     wordsService = await module.resolve(WordsService);
+    formsBuilderHelper = await module.resolve(FormsBuilderHelper);
   });
 
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
@@ -126,6 +128,117 @@ describe("FormsService", () => {
       await service.ingestLexemeForms([form], lexeme);
 
       expect(wordsService.upsertWordsAndJunctions).not.toHaveBeenCalled();
+    });
+
+    it("should preserve matching existing form identity", async () => {
+      const lexeme = new Lexeme();
+      lexeme.id = "lexeme-id";
+
+      const existingForm = new NominalForm();
+      existingForm.id = "existing-id";
+      existingForm.createdAt = new Date("2024-01-01");
+      existingForm.updatedAt = new Date("2024-01-02");
+
+      const newForm = new NominalForm();
+      service.setTransientWords(newForm, ["amō"]);
+
+      formRepository.find.mockResolvedValue([existingForm]);
+      formRepository.save.mockImplementation(
+        async (formsToSave) => await Promise.resolve(formsToSave as Form),
+      );
+
+      await service.ingestLexemeForms([newForm], lexeme);
+
+      expect(formRepository.remove).not.toHaveBeenCalled();
+      expect(newForm.id).toBe("existing-id");
+      expect(newForm.createdAt).toEqual(new Date("2024-01-01"));
+      expect(newForm.updatedAt).toEqual(new Date("2024-01-02"));
+    });
+
+    it("should normalize diacritics and aggregate forms by normalized word", async () => {
+      const lexeme = new Lexeme();
+      lexeme.id = "lexeme-id";
+
+      const firstForm = new NominalForm();
+      const secondForm = new NominalForm();
+      service.setTransientWords(firstForm, [" amō ", "-amo", "123"]);
+      service.setTransientWords(secondForm, ["amo"]);
+
+      formRepository.find.mockResolvedValue([]);
+      formRepository.save.mockResolvedValue([
+        firstForm,
+        secondForm,
+      ] as unknown as Form);
+
+      await service.ingestLexemeForms([firstForm, secondForm], lexeme);
+
+      expect(wordsService.upsertWordsAndJunctions).toHaveBeenCalledTimes(1);
+      const [formsByWord] =
+        wordsService.upsertWordsAndJunctions.mock.calls[0] ?? [];
+      if (!(formsByWord instanceof Map)) {
+        throw new TypeError("Expected Map argument");
+      }
+      expect(formsByWord.has("amo")).toBe(true);
+      expect(formsByWord.has("-amo")).toBe(true);
+    });
+  });
+
+  describe("buildFormsForPartOfSpeech", () => {
+    it("should delegate to FormsBuilderHelper", () => {
+      const lexeme = new Lexeme();
+      const builtForms = [new NominalForm()];
+      formsBuilderHelper.buildFormsForPartOfSpeech.mockReturnValue(builtForms);
+
+      const result = service.buildFormsForPartOfSpeech(
+        "noun",
+        { any: "value" },
+        lexeme,
+      );
+
+      expect(formsBuilderHelper.buildFormsForPartOfSpeech).toHaveBeenCalledWith(
+        "noun",
+        { any: "value" },
+        lexeme,
+      );
+      expect(result).toBe(builtForms);
+    });
+  });
+
+  describe("private guard branches", () => {
+    it("should skip saved forms that have no raw words entry", () => {
+      const savedForm = new NominalForm();
+
+      const formsByNormalizedWord = (
+        service as unknown as {
+          buildFormsByNormalizedWordMap: (
+            savedForms: Form[],
+            rawWordsPerForm: string[][],
+          ) => Map<string, Set<Form>>;
+        }
+      ).buildFormsByNormalizedWordMap([savedForm], []);
+
+      expect(formsByNormalizedWord.size).toBe(0);
+    });
+
+    it("should ignore undefined splice results while preserving identities", () => {
+      const newForm = new NominalForm();
+      const existingForm = new NominalForm();
+
+      const existingForms = [existingForm];
+      vi.spyOn(existingForms, "splice").mockReturnValue([
+        undefined as unknown as NominalForm,
+      ]);
+
+      (
+        service as unknown as {
+          preserveMatchingExistingFormIdentity: (
+            forms: Form[],
+            existingFormsToPreserve: Form[],
+          ) => void;
+        }
+      ).preserveMatchingExistingFormIdentity([newForm], existingForms);
+
+      expect(newForm.id).toBeUndefined();
     });
   });
 });

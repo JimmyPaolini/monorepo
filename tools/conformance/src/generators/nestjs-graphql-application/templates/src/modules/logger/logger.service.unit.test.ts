@@ -14,7 +14,7 @@ describe("LoggerService", () => {
     service = await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 });

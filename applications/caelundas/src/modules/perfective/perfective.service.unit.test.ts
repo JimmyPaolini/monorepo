@@ -85,12 +85,12 @@ describe("PerfectiveService", () => {
     vi.clearAllMocks();
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
   describe("detect", () => {
-    it("should return an empty array when no dates are generated", () => {
+    it("returns an empty array when no dates are generated", () => {
       datetimeMock.generateDates.mockReturnValue([]);
 
       const result = service.detect(baseInput);
@@ -98,7 +98,7 @@ describe("PerfectiveService", () => {
       expect(result).toEqual([]);
     });
 
-    it("should return an empty array when no minutes are generated within a day", () => {
+    it("returns an empty array when no minutes are generated within a day", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       datetimeMock.generateDates.mockReturnValue([date]);
       ephemerisAggMock.getEphemerides.mockReturnValue(emptyEphemerides);
@@ -109,7 +109,7 @@ describe("PerfectiveService", () => {
       expect(result).toEqual([]);
     });
 
-    it("should request ephemerides with MARGIN_MINUTES padding around the day", () => {
+    it("requests ephemerides with MARGIN_MINUTES padding around the day", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       datetimeMock.generateDates.mockReturnValue([date]);
       ephemerisAggMock.getEphemerides.mockReturnValue(emptyEphemerides);
@@ -125,7 +125,7 @@ describe("PerfectiveService", () => {
       );
     });
 
-    it("should accumulate events returned by sub-services across all minutes", () => {
+    it("accumulates events returned by sub-services across all minutes", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       const minute1 = date.clone().startOf("day");
       const minute2 = date.clone().startOf("day").add(1, "minute");

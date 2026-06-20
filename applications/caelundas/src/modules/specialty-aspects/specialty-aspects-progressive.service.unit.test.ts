@@ -51,6 +51,9 @@ describe("SpecialtyAspectsProgressiveService", () => {
     specialtyAspectGroupKey: (event: Event) => string;
   };
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("returns an empty group key for incomplete categories", () => {
     expect(
       specialtyAspectsProgressiveService.specialtyAspectGroupKey({
@@ -225,9 +228,5 @@ describe("SpecialtyAspectsProgressiveService", () => {
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon quintile Sun");
     expect(progressiveEvents[0]?.summary).toContain("Moon quintile Sun");
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

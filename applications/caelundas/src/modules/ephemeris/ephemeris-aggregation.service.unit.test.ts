@@ -93,12 +93,12 @@ describe("EphemerisAggregationService", () => {
     );
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildEphemerisFeatureSets", () => {

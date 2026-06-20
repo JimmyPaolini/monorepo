@@ -25,7 +25,11 @@ describe("TripleAspectsService", () => {
     service = await module.resolve(TripleAspectsService);
   });
 
-  describe("service.detect", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
     it("returns no events when both snapshots are empty", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const events = service.detect({
@@ -56,7 +60,7 @@ describe("TripleAspectsService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
+  describe("detectProgressive", () => {
     it("creates progressive event from matching forming and dissolving pair", () => {
       const formingEvent: Event = {
         categories: [
@@ -172,9 +176,5 @@ describe("TripleAspectsService", () => {
         }),
       ).toBe(true);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

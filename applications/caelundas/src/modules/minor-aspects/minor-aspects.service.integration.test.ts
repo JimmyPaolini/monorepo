@@ -108,7 +108,7 @@ function createAspectEphemeris(
 describe("minor-aspects.events integration", () => {
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
-  it("should detect a forming quincunx when Moon crosses into the 3° orb of 150°", () => {
+  it("detects a forming quincunx when Moon crosses into the 3° orb of 150°", () => {
     // Sun at 0° constant; Moon moves from 154° (outside 3° orb of 150°) toward the aspect
     // getAngle(0,154)=154 → |154-150|=4 > 3 → NOT in orb prev
     // getAngle(0,152.5)=152.5 → |152.5-150|=2.5 ≤ 3 → IN ORB curr
@@ -131,7 +131,7 @@ describe("minor-aspects.events integration", () => {
     expect(formingQuincunx?.start).toEqual(minute);
   });
 
-  it("should detect a perfective sesquiquadrate when Mercury crosses the exact 135° aspect angle", () => {
+  it("detects a perfective sesquiquadrate when Mercury crosses the exact 135° aspect angle", () => {
     // Sun at 0° constant; Mercury passes through exactly 135° (sesquiquadrate, 2° orb)
     // prevDiff = 136-135 = +1, currDiff = 135-135 = 0, nextDiff = 134-135 = -1
     // Phase: isCrossing (sign change from positive to negative) → "perfective"
@@ -153,7 +153,7 @@ describe("minor-aspects.events integration", () => {
     expect(perfectiveSesquiquadrate?.start).toEqual(minute);
   });
 
-  it("should detect a dissolving semisextile when Venus exits the 2° orb of 30°", () => {
+  it("detects a dissolving semisextile when Venus exits the 2° orb of 30°", () => {
     // Sun at 0° constant; Venus moves away from the semisextile threshold
     // getAngle(0,31)=31 → |31-30|=1 ≤ 2 → IN ORB prev
     // getAngle(0,31.8)=31.8 → |31.8-30|=1.8 ≤ 2 → IN ORB curr
@@ -177,7 +177,7 @@ describe("minor-aspects.events integration", () => {
     expect(dissolvingSemisextile?.start).toEqual(minute);
   });
 
-  it("should return no events when all body longitudes are constant at 100°", () => {
+  it("returns no events when all body longitudes are constant at 100°", () => {
     // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
     // No aspect angle is at 0°, so all pairs are far outside every minor aspect orb.
     const coordinateEphemerisByBody = createAspectEphemeris(minute);

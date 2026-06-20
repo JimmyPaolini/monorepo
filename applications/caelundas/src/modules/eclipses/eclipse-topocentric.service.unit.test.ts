@@ -90,6 +90,9 @@ describe("EclipseTopocentricService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
   it("detects solar and lunar topocentric activity predicates", () => {
     expect(mockService.isSolarEclipseActive(solarActiveCoordinates)).toBe(true);
     expect(mockService.isSolarEclipseActive(inactiveCoordinates)).toBe(false);
@@ -233,9 +236,5 @@ describe("EclipseTopocentricService", () => {
     });
 
     expect(events).toEqual([]);
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

@@ -110,7 +110,7 @@ function createAspectEphemeris(
 describe("major-aspects.events integration", () => {
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
-  it("should detect a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {
+  it("detects a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {
     // Sun is placed at 200° (constant) so no Sun-centric pairs produce major aspects.
     // Mercury stays at 0° constant; Venus passes through exactly 120° (trine, 6° orb).
     // prevDiff = getAngle(0,121) - 120 = +1, currDiff = getAngle(0,120) - 120 = 0,
@@ -136,7 +136,7 @@ describe("major-aspects.events integration", () => {
     expect(events).toHaveLength(1);
   });
 
-  it("should detect multiple simultaneous aspect events in a single detect() call", () => {
+  it("detects multiple simultaneous aspect events in a single detect() call", () => {
     // Sun at 0°; Moon approaches from 350°→352°→354° (forming conjunction with Sun):
     //   prev: getAngle(0,350)=10° (outside 8° orb), curr: getAngle(0,352)=8° (enters orb, ≤8°)
     // Mercury moves from 93°→94°→97° (dissolving square with Sun):
@@ -171,7 +171,7 @@ describe("major-aspects.events integration", () => {
     expect(dissolvingSquare?.categories).toContain("Dissolving");
   });
 
-  it("should return no events when all body longitudes are constant at 100°", () => {
+  it("returns no events when all body longitudes are constant at 100°", () => {
     // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
     // Conjunction check: isBouncing requires a strict local extremum — constant data
     // has no minimum or maximum, so zero events are produced.

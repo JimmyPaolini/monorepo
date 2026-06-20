@@ -113,7 +113,7 @@ function createRetrogradeEphemeris(
 describe("retrogrades.events integration", () => {
   const minute = moment.utc("2024-09-09T12:00:00.000Z");
 
-  it("should detect a Mercury retrograde station when longitude reaches a maximum", () => {
+  it("detects a Mercury retrograde station when longitude reaches a maximum", () => {
     // isRetrograde: ALL normalizeForComparison(prev, curr) < curr
     //               AND ALL normalizeForComparison(next, curr) <= curr
     // Mercury longitude peaks at 100.0 — all previous and next values are 99.5
@@ -133,7 +133,7 @@ describe("retrogrades.events integration", () => {
     expect(events[0]?.start).toEqual(minute);
   });
 
-  it("should detect a Mercury direct station when longitude reaches a minimum", () => {
+  it("detects a Mercury direct station when longitude reaches a minimum", () => {
     // isDirect: ALL normalizeForComparison(prev, curr) > curr
     //           AND ALL normalizeForComparison(next, curr) >= curr
     // Mercury longitude bottoms at 100.0 — all previous and next values are 100.5
@@ -153,7 +153,7 @@ describe("retrogrades.events integration", () => {
     expect(events[0]?.start).toEqual(minute);
   });
 
-  it("should return no events when all planetary longitudes are constant", () => {
+  it("returns no events when all planetary longitudes are constant", () => {
     // Constant longitude of 100° fails both station conditions:
     //   isRetrograde requires prev < curr; 100 < 100 is false
     //   isDirect requires prev > curr; 100 > 100 is false

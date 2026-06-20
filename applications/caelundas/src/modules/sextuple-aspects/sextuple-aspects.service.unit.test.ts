@@ -22,9 +22,13 @@ describe("SextupleAspectsService", () => {
     service = await module.resolve(SextupleAspectsService);
   });
 
-  describe("service.detect", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
     describe("Hexagram composition", () => {
-      it("should not generate perfective Hexagram events (only forming/dissolving)", () => {
+      it("does not generate perfective Hexagram events (only forming/dissolving)", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Hexagram: 6 bodies forming two interlocking grand trines
@@ -60,7 +64,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should handle aspects that start and end at same time", () => {
+      it("handles aspects that start and end at same time", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Pattern doesn't exist at 11:59, exists at 12:00, doesn't exist at 12:01
@@ -95,7 +99,7 @@ describe("SextupleAspectsService", () => {
         expect(Array.isArray(events)).toBe(true);
       });
 
-      it("should return empty array when insufficient trines exist", () => {
+      it("returns empty array when insufficient trines exist", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 4 trines (need 6 for hexagram)
@@ -117,7 +121,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return empty array when insufficient sextiles exist", () => {
+      it("returns empty array when insufficient sextiles exist", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 6 trines but only 3 sextiles (need 6)
@@ -146,7 +150,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return empty array when fewer than 6 bodies involved", () => {
+      it("returns empty array when fewer than 6 bodies involved", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 5 bodies (Sun, Moon, Mars, Jupiter, Venus)
@@ -205,7 +209,7 @@ describe("SextupleAspectsService", () => {
         collectTrineBodiesSpy.mockRestore();
       });
 
-      it("should return empty array for invalid aspect events", () => {
+      it("returns empty array for invalid aspect events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         const currentAspectBodies: AspectBodies[] = [];
@@ -220,7 +224,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should process complete hexagram pattern without errors", () => {
+      it("processes complete hexagram pattern without errors", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Complete hexagram starting at 12:00 (not at 11:59)
@@ -256,14 +260,14 @@ describe("SextupleAspectsService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should return empty array for empty input", () => {
+  describe("detectProgressive", () => {
+    it("returns empty array for empty input", () => {
       const events = service.detectProgressive([]);
 
       expect(events).toHaveLength(0);
     });
 
-    it("should return empty array when no sextuple aspect events exist", () => {
+    it("returns empty array when no sextuple aspect events exist", () => {
       const events: Event[] = [
         {
           categories: ["Astronomy", "Astrology", "Simple Aspect"],
@@ -279,7 +283,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should create progressive event from forming to dissolving pair", () => {
+    it("creates progressive event from forming to dissolving pair", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -339,7 +343,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents[0]?.categories).not.toContain("Dissolving");
     });
 
-    it("should not create progressive event when only forming exists", () => {
+    it("does not create progressive event when only forming exists", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -366,7 +370,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should not create progressive event when only dissolving exists", () => {
+    it("does not create progressive event when only dissolving exists", () => {
       const dissolvingEvent: Event = {
         categories: [
           "Astronomy",
@@ -393,7 +397,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should handle multiple forming/dissolving pairs", () => {
+    it("handles multiple forming/dissolving pairs", () => {
       const events: Event[] = [
         {
           categories: [
@@ -486,7 +490,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents[1]?.end).toEqual(moment.utc("2024-03-22T14:00:00.000Z"));
     });
 
-    it("should handle different body combinations separately", () => {
+    it("handles different body combinations separately", () => {
       const events: Event[] = [
         // First body combination
         {
@@ -689,7 +693,7 @@ describe("SextupleAspectsService", () => {
       groupedSpy.mockRestore();
     });
 
-    describe("composer guard branches", () => {
+    describe("detect guard branches", () => {
       it("adds and skips adjacency connections based on body membership and aspect type", () => {
         const { sextileConnections, trineConnections } = composerService.buildAspectConnectionMaps(
           ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
@@ -918,9 +922,5 @@ describe("SextupleAspectsService", () => {
         buildHexagramSpy.mockRestore();
       });
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

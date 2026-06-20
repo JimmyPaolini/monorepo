@@ -130,6 +130,10 @@ describe("PhasesService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("detect", () => {
     it("delegates event detection to all planet-specific services", () => {
       venusianPhaseService.getVenusianPhaseEvents.mockReturnValue([
@@ -221,9 +225,5 @@ describe("PhasesService", () => {
 
       expect(result).toEqual([]);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

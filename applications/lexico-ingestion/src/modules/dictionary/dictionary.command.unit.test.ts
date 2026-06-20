@@ -1,15 +1,7 @@
 import { Test } from "@nestjs/testing";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { type Inflection, Lexeme } from "@monorepo/lexico-entities";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerModule } from "../logger/logger.module";
@@ -21,186 +13,1343 @@ import { DictionaryCommand } from "./dictionary.command";
 
 describe("DictionaryCommand", () => {
   let command: DictionaryCommand;
-  let lexemesService: Mocked<LexemesService>;
-  let translationsService: Mocked<TranslationsService>;
 
   beforeAll(async () => {
-    const mockLexemesService = {
-      existsByLemma: vi.fn().mockResolvedValue(true),
-      parseLexemes: vi.fn(),
-      saveParsedLexeme: vi.fn().mockResolvedValue(undefined),
-    };
-
-    const mockTranslationsService = {
-      extractTranslationReferences: vi.fn().mockReturnValue([]),
-      findTranslationsWithReferences: vi.fn().mockResolvedValue([]),
-    };
-
     const module = await Test.createTestingModule({
       imports: [LoggerModule],
       providers: [
         DictionaryCommand,
-        { provide: LexemesService, useValue: mockLexemesService },
-        {
-          provide: TranslationsService,
-          useValue: mockTranslationsService,
-        },
-        { provide: ManualService, useValue: {} },
         {
           provide: LoggerService,
-          useValue: {
-            debug: vi.fn(),
-            error: vi.fn(),
-            log: vi.fn(),
-            setContext: vi.fn(),
-            verbose: vi.fn(),
-            warn: vi.fn(),
-          },
+          useValue: createLoggerServiceMock(),
+        },
+        {
+          provide: LexemesService,
+          useValue: createLexemesServiceMock(),
+        },
+        {
+          provide: TranslationsService,
+          useValue: createTranslationsServiceMock(),
+        },
+        {
+          provide: ManualService,
+          useValue: createManualServiceMock(),
         },
       ],
     }).compile();
 
     command = await module.resolve(DictionaryCommand);
-    lexemesService = await module.resolve(LexemesService);
-    translationsService = await module.resolve(TranslationsService);
   });
 
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(command).toBeDefined();
   });
+});
 
-  describe("ingestLexeme", () => {
-    it("should upsert a new lexeme on first ingestion", async () => {
-      const newLexeme = new Lexeme();
-      newLexeme.id = "new-id";
-      newLexeme.lemma = "amō";
-      newLexeme.disambiguator = 0;
-      newLexeme.partOfSpeech = "verb";
-      newLexeme.etymology = "Indo-European *h₂em-";
-      newLexeme.inflection = null;
-      newLexeme.principalParts = [];
-      newLexeme.pronunciations = [];
-      newLexeme.translations = [];
-      newLexeme.forms = [];
+// cspell:ignore amare cano
 
-      vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([newLexeme]);
-      lexemesService.saveParsedLexeme.mockResolvedValue(newLexeme);
-      translationsService.extractTranslationReferences.mockReturnValue([]);
+const { promptsMock } = vi.hoisted(() => ({
+  promptsMock: vi.fn(),
+}));
 
-      await command.ingestLexeme("amo", {
+const {
+  appendFileSyncMock,
+  existsSyncMock,
+  mkdirSyncMock,
+  readdirSyncMock,
+  readFileSyncMock,
+} = vi.hoisted(() => ({
+  appendFileSyncMock: vi.fn(),
+  existsSyncMock: vi.fn(),
+  mkdirSyncMock: vi.fn(),
+  readdirSyncMock: vi.fn(),
+  readFileSyncMock: vi.fn(),
+}));
+
+vi.mock("prompts", () => ({
+  default: promptsMock,
+}));
+
+vi.mock("node:fs", () => ({
+  default: {
+    appendFileSync: appendFileSyncMock,
+    existsSync: existsSyncMock,
+    mkdirSync: mkdirSyncMock,
+    readdirSync: readdirSyncMock,
+    readFileSync: readFileSyncMock,
+  },
+}));
+
+function createLexemesServiceMock(): {
+  existsByLemma: ReturnType<typeof vi.fn>;
+  findLexemesByLemmaWithTranslations: ReturnType<typeof vi.fn>;
+  parseLexemes: ReturnType<typeof vi.fn>;
+  saveParsedLexeme: ReturnType<typeof vi.fn>;
+} {
+  return {
+    existsByLemma: vi.fn(),
+    findLexemesByLemmaWithTranslations: vi.fn(),
+    parseLexemes: vi.fn(),
+    saveParsedLexeme: vi.fn(),
+  };
+}
+
+function createLoggerServiceMock(): {
+  error: ReturnType<typeof vi.fn>;
+  log: ReturnType<typeof vi.fn>;
+  setContext: ReturnType<typeof vi.fn>;
+  warn: ReturnType<typeof vi.fn>;
+} {
+  return {
+    error: vi.fn(),
+    log: vi.fn(),
+    setContext: vi.fn(),
+    warn: vi.fn(),
+  };
+}
+
+function createManualServiceMock(): {
+  ingestManual: ReturnType<typeof vi.fn>;
+} {
+  return {
+    ingestManual: vi.fn(),
+  };
+}
+
+function createTranslationsServiceMock(): {
+  extractTranslationReferences: ReturnType<typeof vi.fn>;
+  findTranslationsWithReferences: ReturnType<typeof vi.fn>;
+  saveTranslations: ReturnType<typeof vi.fn>;
+} {
+  return {
+    extractTranslationReferences: vi.fn(),
+    findTranslationsWithReferences: vi.fn(),
+    saveTranslations: vi.fn(),
+  };
+}
+
+describe("DictionaryCommand", () => {
+  let command: DictionaryCommand;
+
+  const lexemesService = {
+    existsByLemma: vi.fn(),
+    findLexemesByLemmaWithTranslations: vi.fn(),
+    parseLexemes: vi.fn(),
+    saveParsedLexeme: vi.fn(),
+  };
+
+  const translationsService = {
+    extractTranslationReferences: vi.fn(),
+    findTranslationsWithReferences: vi.fn(),
+    saveTranslations: vi.fn(),
+  };
+
+  const manualService = {
+    ingestManual: vi.fn(),
+  };
+
+  const loggerService = {
+    error: vi.fn(),
+    log: vi.fn(),
+    setContext: vi.fn(),
+    warn: vi.fn(),
+  };
+
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    existsSyncMock.mockReturnValue(true);
+    readdirSyncMock.mockReturnValue([]);
+    readFileSyncMock.mockReturnValue(
+      JSON.stringify({
         category: "Latin",
         href: "/wiki/amo",
-        html: "<html>test</html>",
-        word: "amō",
-      });
+        html: "<html>amo</html>",
+        word: "amo",
+      }),
+    );
 
-      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
+    promptsMock.mockResolvedValue({ startLemma: null });
+
+    lexemesService.existsByLemma.mockResolvedValue(true);
+    lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValue([]);
+    lexemesService.parseLexemes.mockResolvedValue([]);
+    lexemesService.saveParsedLexeme.mockResolvedValue(undefined);
+
+    translationsService.extractTranslationReferences.mockReturnValue([]);
+    translationsService.findTranslationsWithReferences.mockResolvedValue([]);
+    translationsService.saveTranslations.mockResolvedValue(undefined);
+
+    manualService.ingestManual.mockResolvedValue(undefined);
+
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        DictionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: loggerService,
+        },
+        {
+          provide: LexemesService,
+          useValue: lexemesService,
+        },
+        {
+          provide: TranslationsService,
+          useValue: translationsService,
+        },
+        {
+          provide: ManualService,
+          useValue: manualService,
+        },
+      ],
+    }).compile();
+
+    command = await moduleRef.resolve(DictionaryCommand);
+  });
+
+  it("is defined", () => {
+    expect(command).toBeDefined();
+    expect(loggerService.setContext).toHaveBeenCalledWith("DictionaryCommand");
+  });
+
+  it("should create output directory when it does not exist", async () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (typeof inputPath === "string" && inputPath.endsWith("/output")) {
+        return false;
+      }
+      return true;
     });
 
-    it("should upsert lexeme and manage relations", async () => {
-      const existingLexeme = new Lexeme();
-      existingLexeme.id = "existing-id";
-      existingLexeme.lemma = "amō";
-      existingLexeme.disambiguator = 0;
-      existingLexeme.partOfSpeech = "verb";
-      existingLexeme.etymology = "Old etymology";
-      existingLexeme.principalParts = [];
-      existingLexeme.pronunciations = [];
-      existingLexeme.translations = [];
-      existingLexeme.forms = [];
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        DictionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: loggerService,
+        },
+        {
+          provide: LexemesService,
+          useValue: lexemesService,
+        },
+        {
+          provide: TranslationsService,
+          useValue: translationsService,
+        },
+        {
+          provide: ManualService,
+          useValue: manualService,
+        },
+      ],
+    }).compile();
 
-      const updatedLexeme = new Lexeme();
-      updatedLexeme.id = "existing-id";
-      updatedLexeme.lemma = "amō";
-      updatedLexeme.disambiguator = 0;
-      updatedLexeme.partOfSpeech = "verb";
-      updatedLexeme.etymology = "New etymology";
-      updatedLexeme.principalParts = [];
-      updatedLexeme.pronunciations = [];
-      updatedLexeme.translations = [];
-      updatedLexeme.forms = [];
+    await moduleRef.resolve(DictionaryCommand);
 
-      vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([
-        updatedLexeme,
-      ]);
+    expect(mkdirSyncMock).toHaveBeenCalledWith(
+      expect.stringContaining("output"),
+      { recursive: true },
+    );
+  });
 
-      lexemesService.saveParsedLexeme.mockResolvedValue(updatedLexeme);
-      translationsService.extractTranslationReferences.mockReturnValue([]);
+  it("should parse start and end lemma options", async () => {
+    readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
 
-      await command.ingestLexeme("amo", {
+    await expect(command.parseStartLemma("amo")).resolves.toBe("amo");
+    await expect(command.parseEndLemma("cano", "amo")).resolves.toBe("cano");
+
+    await expect(command.parseStartLemma("missing")).rejects.toThrow(
+      'Start lemma "missing" not found in the dataset.',
+    );
+
+    await expect(command.parseEndLemma("missing", "amo")).rejects.toThrow(
+      'End lemma "missing" not found in the dataset.',
+    );
+  });
+
+  it("should return undefined for empty start and end lemma options", async () => {
+    await expect(command.parseStartLemma(undefined)).resolves.toBeUndefined();
+    await expect(
+      command.parseEndLemma(undefined, undefined),
+    ).resolves.toBeUndefined();
+  });
+
+  it("should return empty lemma choices when data directory does not exist", () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (
+        typeof inputPath === "string" &&
+        inputPath.endsWith("data/wiktionary")
+      ) {
+        return false;
+      }
+      return true;
+    });
+
+    const choices = (
+      command as unknown as {
+        getLemmaChoices: () => { title: string; value: string }[];
+      }
+    ).getLemmaChoices();
+
+    expect(choices).toEqual([]);
+  });
+
+  it("should build lemma choices from json files only", () => {
+    readdirSyncMock.mockReturnValue(["amo.json", "bellum.txt", "cano.json"]);
+
+    const choices = (
+      command as unknown as {
+        getLemmaChoices: () => { title: string; value: string }[];
+      }
+    ).getLemmaChoices();
+
+    expect(choices).toEqual([
+      { title: "amo", value: "amo" },
+      { title: "cano", value: "cano" },
+    ]);
+  });
+
+  it("should clamp lemma range when start or end lemma are missing", () => {
+    const files = ["amo.json", "bellum.json", "cano.json"];
+
+    const selected = (
+      command as unknown as {
+        getLemmaFileRange: (
+          values: string[],
+          startLemma?: string,
+          endLemma?: string,
+        ) => string[];
+      }
+    ).getLemmaFileRange(files, "missing", "missing");
+
+    expect(selected).toEqual(files);
+  });
+
+  it("should resolve lemma range when only start lemma is provided", () => {
+    const files = ["amo.json", "bellum.json", "cano.json"];
+
+    const selected = (
+      command as unknown as {
+        getLemmaFileRange: (
+          values: string[],
+          startLemma?: string,
+          endLemma?: string,
+        ) => string[];
+      }
+    ).getLemmaFileRange(files, "bellum");
+
+    expect(selected).toEqual(["bellum.json", "cano.json"]);
+  });
+
+  it("should resolve lemma range when only end lemma is provided", () => {
+    const files = ["amo.json", "bellum.json", "cano.json"];
+
+    const selected = (
+      command as unknown as {
+        getLemmaFileRange: (
+          values: string[],
+          startLemma?: string,
+          endLemma?: string,
+        ) => string[];
+      }
+    ).getLemmaFileRange(files, undefined, "bellum");
+
+    expect(selected).toEqual(["amo.json", "bellum.json"]);
+  });
+
+  it("should resolve wiktionary file path using case-insensitive fallback index", () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (typeof inputPath !== "string") {
+        return false;
+      }
+
+      if (inputPath.endsWith("_Amo.json")) {
+        return false;
+      }
+
+      if (inputPath.endsWith("data/wiktionary")) {
+        return true;
+      }
+
+      return true;
+    });
+    readdirSyncMock.mockReturnValue(["_amo.json", "notes.txt"]);
+
+    const filePath = (
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      }
+    ).getWiktionaryFilePathForWord("Amo");
+
+    expect(filePath).toEqual(expect.stringContaining("_amo.json"));
+  });
+
+  it("should return null wiktionary file path when index cannot be built", () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (typeof inputPath !== "string") {
+        return false;
+      }
+
+      if (inputPath.endsWith("data/wiktionary")) {
+        return false;
+      }
+
+      return false;
+    });
+
+    const filePath = (
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      }
+    ).getWiktionaryFilePathForWord("Amo");
+
+    expect(filePath).toBeNull();
+  });
+
+  it("should resolve start and end lemmas through prompt selection", async () => {
+    readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
+    promptsMock
+      .mockResolvedValueOnce({ startLemma: "amo" })
+      .mockResolvedValueOnce({ endLemma: "cano" });
+
+    const startLemma = await command.parseStartLemma({} as unknown as string);
+    const endLemma = await command.parseEndLemma(
+      {} as unknown as string,
+      startLemma ?? null,
+    );
+
+    expect(startLemma).toBe("amo");
+    expect(endLemma).toBe("cano");
+  });
+
+  it("should return undefined when prompt returns null", async () => {
+    readdirSyncMock.mockReturnValue(["amo.json"]);
+    promptsMock
+      .mockResolvedValueOnce({ startLemma: null })
+      .mockResolvedValueOnce({ endLemma: null });
+
+    const startLemma = await command.parseStartLemma({} as unknown as string);
+    const endLemma = await command.parseEndLemma(
+      {} as unknown as string,
+      startLemma ?? null,
+    );
+
+    expect(startLemma).toBeUndefined();
+    expect(endLemma).toBeUndefined();
+  });
+
+  it("should ingest all files in configured lemma range", async () => {
+    readdirSyncMock.mockReturnValue([
+      "amo.json",
+      "bellum.json",
+      "cano.json",
+      "ignore.txt",
+    ]);
+
+    const processFileSpy = vi
+      .spyOn(
+        command as unknown as {
+          processFile: (
+            file: string,
+            current: number,
+            total: number,
+          ) => Promise<void>;
+        },
+        "processFile",
+      )
+      .mockResolvedValue(undefined);
+
+    await command.ingestAll("bellum", "cano");
+
+    expect(processFileSpy).toHaveBeenCalledTimes(2);
+    expect(processFileSpy).toHaveBeenNthCalledWith(1, "bellum.json", 1, 2);
+    expect(processFileSpy).toHaveBeenNthCalledWith(2, "cano.json", 2, 2);
+  });
+
+  it("should warn when data directory is missing in ingestAll", async () => {
+    existsSyncMock.mockReturnValue(false);
+
+    await command.ingestAll();
+
+    expect(loggerService.warn).toHaveBeenCalledTimes(1);
+  });
+
+  it("should process file and append error log on read failure", async () => {
+    const readWiktionaryPageFromFileSpy = vi
+      .spyOn(
+        command as unknown as {
+          readWiktionaryPageFromFile: (filePath: string) => null | {
+            category: string;
+            href: string;
+            html: string;
+            word: string;
+          };
+        },
+        "readWiktionaryPageFromFile",
+      )
+      .mockReturnValueOnce(null);
+
+    await (
+      command as unknown as {
+        processFile: (
+          file: string,
+          current: number,
+          total: number,
+        ) => Promise<void>;
+      }
+    ).processFile("amo.json", 1, 1);
+
+    expect(readWiktionaryPageFromFileSpy).toHaveBeenCalledTimes(1);
+    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(appendFileSyncMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("should process file and ingest page on success", async () => {
+    const ingestLexemeSpy = vi
+      .spyOn(command, "ingestLexeme")
+      .mockResolvedValue(undefined);
+
+    await (
+      command as unknown as {
+        processFile: (
+          file: string,
+          current: number,
+          total: number,
+        ) => Promise<void>;
+      }
+    ).processFile("amo.json", 1, 2);
+
+    expect(ingestLexemeSpy).toHaveBeenCalledWith(
+      "amo",
+      expect.objectContaining({ word: "amo" }),
+      { current: 1, total: 2 },
+    );
+  });
+
+  it("should resolve wiktionary file path by exact and indexed fallback", () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (typeof inputPath === "string" && inputPath.endsWith("_amo.json")) {
+        return false;
+      }
+      if (
+        typeof inputPath === "string" &&
+        inputPath.includes("data/wiktionary")
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    readdirSyncMock.mockReturnValueOnce(["_a_m_o.json"]);
+
+    const filePath = (
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      }
+    ).getWiktionaryFilePathForWord("Amo");
+
+    expect(filePath).toContain("_a_m_o.json");
+  });
+
+  it("should return null wiktionary file path when no index match exists", () => {
+    existsSyncMock.mockImplementation((inputPath: unknown) => {
+      if (typeof inputPath === "string" && inputPath.endsWith("_amo.json")) {
+        return false;
+      }
+      if (
+        typeof inputPath === "string" &&
+        inputPath.includes("data/wiktionary")
+      ) {
+        return true;
+      }
+      return false;
+    });
+    readdirSyncMock.mockReturnValueOnce(["_b_e_l_l_u_m.json"]);
+
+    const filePath = (
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      }
+    ).getWiktionaryFilePathForWord("Amo");
+
+    expect(filePath).toBeNull();
+  });
+
+  it("should use provided wiktionary page without loading from disk", () => {
+    const loadSpy = vi.spyOn(
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      },
+      "loadWiktionaryPageForWord",
+    );
+
+    const providedPage = {
+      category: "Latin",
+      href: "/wiki/amo",
+      html: "<html>amo</html>",
+      word: "amo",
+    };
+
+    const page = (
+      command as unknown as {
+        getPageForLexeme: (
+          word: string,
+          wiktionaryPage?: {
+            category: string;
+            href: string;
+            html: string;
+            word: string;
+          },
+        ) => {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).getPageForLexeme("amo", providedPage);
+
+    expect(page).toEqual(providedPage);
+    expect(loadSpy).not.toHaveBeenCalled();
+  });
+
+  it("should return null when wiktionary file does not exist", () => {
+    existsSyncMock.mockReturnValue(false);
+
+    const page = (
+      command as unknown as {
+        readWiktionaryPageFromFile: (filePath: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).readWiktionaryPageFromFile("/tmp/missing.json");
+
+    expect(page).toBeNull();
+  });
+
+  it("should return null and warn when wiktionary page data cannot be loaded", () => {
+    const getWiktionaryFilePathForWordSpy = vi
+      .spyOn(
+        command as unknown as {
+          getWiktionaryFilePathForWord: (word: string) => null | string;
+        },
+        "getWiktionaryFilePathForWord",
+      )
+      .mockReturnValueOnce(null);
+
+    const loadWiktionaryPageForWord = (
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).loadWiktionaryPageForWord.bind(command);
+
+    const page = loadWiktionaryPageForWord("missing");
+
+    expect(getWiktionaryFilePathForWordSpy).toHaveBeenCalledWith("missing");
+    expect(page).toBeNull();
+    expect(loggerService.warn).toHaveBeenCalledWith(
+      "⚠️ No data file found for word: missing",
+    );
+  });
+
+  it("should return null and warn when wiktionary file exists but page read fails", () => {
+    vi.spyOn(
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      },
+      "getWiktionaryFilePathForWord",
+    ).mockReturnValueOnce("/tmp/amo.json");
+
+    vi.spyOn(
+      command as unknown as {
+        readWiktionaryPageFromFile: (filePath: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      },
+      "readWiktionaryPageFromFile",
+    ).mockReturnValueOnce(null);
+
+    const page = (
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).loadWiktionaryPageForWord("amo");
+
+    expect(page).toBeNull();
+    expect(loggerService.warn).toHaveBeenCalledWith(
+      "⚠️ No data file found for word: amo",
+    );
+  });
+
+  it("should load and return wiktionary page data when file path and read succeed", () => {
+    vi.spyOn(
+      command as unknown as {
+        getWiktionaryFilePathForWord: (word: string) => null | string;
+      },
+      "getWiktionaryFilePathForWord",
+    ).mockReturnValueOnce("/tmp/amo.json");
+
+    const expectedPage = {
+      category: "Latin",
+      href: "/wiki/amo",
+      html: "<html>amo</html>",
+      word: "amo",
+    };
+
+    vi.spyOn(
+      command as unknown as {
+        readWiktionaryPageFromFile: (filePath: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      },
+      "readWiktionaryPageFromFile",
+    ).mockReturnValueOnce(expectedPage);
+
+    const page = (
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).loadWiktionaryPageForWord("amo");
+
+    expect(page).toEqual(expectedPage);
+  });
+
+  it("should load and return page in getPageForLexeme when no page is provided", () => {
+    const expectedPage = {
+      category: "Latin",
+      href: "/wiki/amo",
+      html: "<html>amo</html>",
+      word: "amo",
+    };
+
+    vi.spyOn(
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      },
+      "loadWiktionaryPageForWord",
+    ).mockReturnValueOnce(expectedPage);
+
+    const page = (
+      command as unknown as {
+        getPageForLexeme: (
+          word: string,
+          wiktionaryPage?: {
+            category: string;
+            href: string;
+            html: string;
+            word: string;
+          },
+        ) => {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      }
+    ).getPageForLexeme("amo");
+
+    expect(page).toEqual(expectedPage);
+  });
+
+  it("should throw when page lookup fails during getPageForLexeme", () => {
+    vi.spyOn(
+      command as unknown as {
+        loadWiktionaryPageForWord: (word: string) => null | {
+          category: string;
+          href: string;
+          html: string;
+          word: string;
+        };
+      },
+      "loadWiktionaryPageForWord",
+    ).mockReturnValueOnce(null);
+
+    expect(() =>
+      (
+        command as unknown as {
+          getPageForLexeme: (
+            word: string,
+            wiktionaryPage?: {
+              category: string;
+              href: string;
+              html: string;
+              word: string;
+            },
+          ) => {
+            category: string;
+            href: string;
+            html: string;
+            word: string;
+          };
+        }
+      ).getPageForLexeme("missing"),
+    ).toThrow("File missing or unreadable for word: missing");
+  });
+
+  it("should process translation matches and map translations", async () => {
+    const parentLexeme = new Lexeme();
+    parentLexeme.id = "parent";
+    parentLexeme.lemma = "amo";
+    parentLexeme.partOfSpeech = "verb";
+    parentLexeme.disambiguator = 0;
+    parentLexeme.principalParts = [];
+    parentLexeme.pronunciations = [];
+    parentLexeme.forms = [];
+    parentLexeme.translations = [];
+    parentLexeme.inflection = null;
+
+    const referencedLexeme = new Lexeme();
+    referencedLexeme.id = "ref";
+    referencedLexeme.lemma = "amare";
+    referencedLexeme.partOfSpeech = "verb";
+    referencedLexeme.disambiguator = 0;
+    referencedLexeme.principalParts = [];
+    referencedLexeme.pronunciations = [];
+    referencedLexeme.forms = [];
+    referencedLexeme.inflection = null;
+    referencedLexeme.translations = [
+      new Translation("to love", referencedLexeme),
+    ];
+
+    lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValueOnce([
+      referencedLexeme,
+    ]);
+
+    const targetTranslation = new Translation("{*amare*}", parentLexeme);
+
+    await (
+      command as unknown as {
+        ingestTranslationReference: (translation: Translation) => Promise<void>;
+      }
+    ).ingestTranslationReference(targetTranslation);
+
+    expect(translationsService.saveTranslations).toHaveBeenCalledTimes(2);
+    expect(targetTranslation.data).toBe("");
+  });
+
+  it("should warn when translation has no reference markers", async () => {
+    const parentLexeme = new Lexeme();
+    parentLexeme.id = "parent";
+    parentLexeme.lemma = "amo";
+    parentLexeme.partOfSpeech = "verb";
+    parentLexeme.disambiguator = 0;
+    parentLexeme.principalParts = [];
+    parentLexeme.pronunciations = [];
+    parentLexeme.forms = [];
+    parentLexeme.translations = [];
+    parentLexeme.inflection = null;
+
+    const plainTranslation = new Translation("simple text", parentLexeme);
+
+    await (
+      command as unknown as {
+        ingestTranslationReference: (translation: Translation) => Promise<void>;
+      }
+    ).ingestTranslationReference(plainTranslation);
+
+    expect(loggerService.warn).toHaveBeenCalledWith(
+      "⚠️ No reference found in: simple text",
+    );
+  });
+
+  it("should warn when translation reference has no matching lexeme", async () => {
+    const parentLexeme = new Lexeme();
+    parentLexeme.id = "parent";
+    parentLexeme.lemma = "amo";
+    parentLexeme.partOfSpeech = "verb";
+    parentLexeme.disambiguator = 0;
+    parentLexeme.principalParts = [];
+    parentLexeme.pronunciations = [];
+    parentLexeme.forms = [];
+    parentLexeme.translations = [];
+    parentLexeme.inflection = null;
+
+    lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValueOnce([]);
+
+    const targetTranslation = new Translation("{*unknown*}", parentLexeme);
+
+    await (
+      command as unknown as {
+        ingestTranslationReference: (translation: Translation) => Promise<void>;
+      }
+    ).ingestTranslationReference(targetTranslation);
+
+    expect(loggerService.warn).toHaveBeenCalledWith(
+      "⚠️ No lexeme found for reference: unknown",
+    );
+  });
+
+  it("should process translation references by ingesting missing lexemes", async () => {
+    const savedLexeme = new Lexeme();
+    savedLexeme.id = "saved";
+    savedLexeme.lemma = "amo";
+    savedLexeme.partOfSpeech = "verb";
+    savedLexeme.disambiguator = 0;
+    savedLexeme.principalParts = [];
+    savedLexeme.pronunciations = [];
+    savedLexeme.forms = [];
+    savedLexeme.translations = [];
+    savedLexeme.inflection = null;
+
+    translationsService.extractTranslationReferences.mockReturnValueOnce([
+      "ref-word",
+    ]);
+    lexemesService.existsByLemma.mockResolvedValueOnce(false);
+    translationsService.findTranslationsWithReferences.mockResolvedValueOnce([
+      new Translation("{*amare*}", savedLexeme),
+    ]);
+
+    const ingestLexemeSpy = vi
+      .spyOn(command, "ingestLexeme")
+      .mockResolvedValue(undefined);
+    const ingestTranslationReferenceSpy = vi
+      .spyOn(
+        command as unknown as {
+          ingestTranslationReference: (
+            translation: Translation,
+          ) => Promise<void>;
+        },
+        "ingestTranslationReference",
+      )
+      .mockResolvedValue(undefined);
+
+    await (
+      command as unknown as {
+        processTranslationReferences: (saved: Lexeme) => Promise<void>;
+      }
+    ).processTranslationReferences(savedLexeme);
+
+    expect(ingestLexemeSpy).toHaveBeenCalledWith("ref-word");
+    expect(ingestTranslationReferenceSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("should ingest lexeme with provided page and resolve references", async () => {
+    const savedLexeme = new Lexeme();
+    savedLexeme.id = "saved";
+    savedLexeme.lemma = "amo";
+    savedLexeme.partOfSpeech = "verb";
+    savedLexeme.disambiguator = 0;
+    savedLexeme.principalParts = [];
+    savedLexeme.pronunciations = [];
+    savedLexeme.forms = [];
+    savedLexeme.translations = [];
+    savedLexeme.inflection = null;
+
+    lexemesService.parseLexemes.mockResolvedValueOnce([savedLexeme]);
+    lexemesService.saveParsedLexeme.mockResolvedValueOnce(savedLexeme);
+
+    const processTranslationReferencesSpy = vi
+      .spyOn(
+        command as unknown as {
+          processTranslationReferences: (saved: Lexeme) => Promise<void>;
+        },
+        "processTranslationReferences",
+      )
+      .mockResolvedValue(undefined);
+
+    await command.ingestLexeme(
+      "amo",
+      {
         category: "Latin",
         href: "/wiki/amo",
-        html: "<html>test</html>",
-        word: "amō",
-      });
+        html: "<html>amo</html>",
+        word: "amo",
+      },
+      { current: 1, total: 2 },
+    );
 
-      // Should call saveParsedLexeme
-      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(
-        updatedLexeme,
-      );
+    expect(lexemesService.parseLexemes).toHaveBeenCalledTimes(1);
+    expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(savedLexeme);
+    expect(processTranslationReferencesSpy).toHaveBeenCalledWith(savedLexeme);
+  });
+
+  it("should skip translation-reference processing when parsed lexeme is not saved", async () => {
+    const parsedLexeme = new Lexeme();
+    parsedLexeme.lemma = "amo";
+    parsedLexeme.partOfSpeech = "verb";
+    parsedLexeme.disambiguator = 0;
+    parsedLexeme.principalParts = [];
+    parsedLexeme.pronunciations = [];
+    parsedLexeme.forms = [];
+    parsedLexeme.translations = [];
+    parsedLexeme.inflection = null;
+
+    lexemesService.parseLexemes.mockResolvedValueOnce([parsedLexeme]);
+    lexemesService.saveParsedLexeme.mockResolvedValueOnce(null);
+
+    const processTranslationReferencesSpy = vi.spyOn(
+      command as unknown as {
+        processTranslationReferences: (saved: Lexeme) => Promise<void>;
+      },
+      "processTranslationReferences",
+    );
+
+    await command.ingestLexeme("amo", {
+      category: "Latin",
+      href: "/wiki/amo",
+      html: "<html>amo</html>",
+      word: "amo",
     });
 
-    it("should handle inflection separately before upsert", async () => {
-      const inflectionMock = {
-        save: vi.fn().mockResolvedValue(undefined),
-      } as unknown as Inflection;
+    expect(processTranslationReferencesSpy).not.toHaveBeenCalled();
+  });
 
-      const newLexeme = new Lexeme();
-      newLexeme.id = "new-id";
-      newLexeme.lemma = "amō";
-      newLexeme.disambiguator = 0;
-      newLexeme.partOfSpeech = "verb";
-      newLexeme.inflection = inflectionMock;
-      newLexeme.principalParts = [];
-      newLexeme.pronunciations = [];
-      newLexeme.translations = [];
-      newLexeme.forms = [];
-
-      lexemesService.parseLexemes.mockResolvedValue([newLexeme]);
-      lexemesService.saveParsedLexeme.mockResolvedValue(newLexeme);
-
-      await command.ingestLexeme("amo", {
+  it("should throw for lexeme ingestion when html is missing", async () => {
+    await expect(
+      command.ingestLexeme("amo", {
         category: "Latin",
         href: "/wiki/amo",
-        html: "<html>test</html>",
-        word: "amō",
-      });
+        html: "",
+        word: "amo",
+      }),
+    ).rejects.toThrow("Missing HTML data in file for word: amo");
+  });
 
-      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
+  it("should run dictionary ingestion and manual ingestion", async () => {
+    const parseStartLemmaSpy = vi
+      .spyOn(command, "parseStartLemma")
+      .mockResolvedValueOnce("amo");
+
+    const parseEndLemmaSpy = vi
+      .spyOn(command, "parseEndLemma")
+      .mockResolvedValueOnce("bellum");
+
+    const ingestAllSpy = vi
+      .spyOn(command, "ingestAll")
+      .mockResolvedValue(undefined);
+
+    await command.run([], {
+      endLemma: "bellum",
+      startLemma: "amo",
     });
 
-    it("should resolve translation references for the lexeme after persisting", async () => {
-      const savedLexeme = new Lexeme();
-      savedLexeme.id = "amor:1";
-      savedLexeme.lemma = "amor";
-      savedLexeme.disambiguator = 0;
-      savedLexeme.partOfSpeech = "noun";
-      savedLexeme.inflection = null;
-      savedLexeme.principalParts = [];
-      savedLexeme.pronunciations = [];
-      savedLexeme.translations = [];
-      savedLexeme.forms = [];
+    expect(parseStartLemmaSpy).toHaveBeenCalledWith("amo");
+    expect(parseEndLemmaSpy).toHaveBeenCalledWith("bellum", "amo");
+    expect(ingestAllSpy).toHaveBeenCalledWith("amo", "bellum");
+    expect(manualService.ingestManual).toHaveBeenCalledTimes(1);
+  });
 
-      lexemesService.parseLexemes.mockResolvedValue([savedLexeme]);
-      lexemesService.saveParsedLexeme.mockResolvedValue(savedLexeme);
-      translationsService.extractTranslationReferences.mockReturnValue(["amō"]);
-      lexemesService.existsByLemma.mockResolvedValue(true);
+  it("should pass undefined options through run option parsing", async () => {
+    const parseStartLemmaSpy = vi
+      .spyOn(command, "parseStartLemma")
+      .mockResolvedValueOnce(undefined);
 
-      await command.ingestLexeme("amor", {
-        category: "Latin",
-        href: "/wiki/amor",
-        html: "<html>test</html>",
-        word: "amor",
+    const parseEndLemmaSpy = vi
+      .spyOn(command, "parseEndLemma")
+      .mockResolvedValueOnce(undefined);
+
+    const ingestAllSpy = vi
+      .spyOn(command, "ingestAll")
+      .mockResolvedValue(undefined);
+
+    await command.run([], {});
+
+    expect(parseStartLemmaSpy).toHaveBeenCalledWith(undefined);
+    expect(parseEndLemmaSpy).toHaveBeenCalledWith(undefined, undefined);
+    expect(ingestAllSpy).toHaveBeenCalledWith(undefined, undefined);
+  });
+
+  describe("error handling and branch guard behavior", () => {
+    describe("processFile", () => {
+      it("should append stringified non-Error failures to the error log", async () => {
+        vi.spyOn(command, "ingestLexeme").mockRejectedValueOnce(
+          "string-failure",
+        );
+
+        await (
+          command as unknown as {
+            processFile: (
+              file: string,
+              current: number,
+              total: number,
+            ) => Promise<void>;
+          }
+        ).processFile("amo.json", 1, 1);
+
+        expect(loggerService.error).toHaveBeenCalledWith(
+          "❌ Failed to process amo.json: string-failure",
+        );
+        expect(appendFileSyncMock).toHaveBeenCalledWith(
+          expect.any(String),
+          expect.stringContaining("amo.json: string-failure\n"),
+        );
       });
 
-      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(savedLexeme);
-      expect(
-        translationsService.findTranslationsWithReferences,
-      ).toHaveBeenCalledWith("amor:1");
+      it("should fall back to error.message when an Error has no stack", async () => {
+        const errorWithoutStack = new Error("message-only");
+        errorWithoutStack.stack = "";
+
+        vi.spyOn(command, "ingestLexeme").mockRejectedValueOnce(
+          errorWithoutStack,
+        );
+
+        await (
+          command as unknown as {
+            processFile: (
+              file: string,
+              current: number,
+              total: number,
+            ) => Promise<void>;
+          }
+        ).processFile("amo.json", 1, 1);
+
+        expect(appendFileSyncMock).toHaveBeenCalledWith(
+          expect.any(String),
+          expect.stringContaining("amo.json: message-only\n"),
+        );
+      });
+    });
+
+    describe("ingestTranslationReference", () => {
+      it("should normalize parenthetical references and map fallback lexeme translations", async () => {
+        const parentLexeme = new Lexeme();
+        parentLexeme.id = "parent";
+        parentLexeme.lemma = "amo";
+        parentLexeme.partOfSpeech = "verb";
+        parentLexeme.disambiguator = 0;
+        parentLexeme.principalParts = [];
+        parentLexeme.pronunciations = [];
+        parentLexeme.forms = [];
+        parentLexeme.translations = [];
+        parentLexeme.inflection = null;
+
+        const fallbackLexeme = new Lexeme();
+        fallbackLexeme.id = "fallback";
+        fallbackLexeme.lemma = "amare";
+        fallbackLexeme.partOfSpeech = "noun";
+        fallbackLexeme.disambiguator = 0;
+        fallbackLexeme.principalParts = [];
+        fallbackLexeme.pronunciations = [];
+        fallbackLexeme.forms = [];
+        fallbackLexeme.inflection = null;
+        fallbackLexeme.translations = [
+          new Translation("to love", fallbackLexeme),
+        ];
+
+        lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValueOnce(
+          [fallbackLexeme],
+        );
+
+        const targetTranslation = new Translation(
+          "{*amare (figurative)*}",
+          parentLexeme,
+        );
+
+        await (
+          command as unknown as {
+            ingestTranslationReference: (
+              translation: Translation,
+            ) => Promise<void>;
+          }
+        ).ingestTranslationReference(targetTranslation);
+
+        expect(
+          lexemesService.findLexemesByLemmaWithTranslations,
+        ).toHaveBeenCalledWith("amare");
+        expect(translationsService.saveTranslations).toHaveBeenNthCalledWith(
+          1,
+          [expect.objectContaining({ data: "to love" })],
+        );
+      });
+
+      it("should skip creating mapped translations when fallback lexeme has no translations", async () => {
+        const parentLexeme = new Lexeme();
+        parentLexeme.id = "parent";
+        parentLexeme.lemma = "amo";
+        parentLexeme.partOfSpeech = "verb";
+        parentLexeme.disambiguator = 0;
+        parentLexeme.principalParts = [];
+        parentLexeme.pronunciations = [];
+        parentLexeme.forms = [];
+        parentLexeme.translations = [];
+        parentLexeme.inflection = null;
+
+        const fallbackLexeme = new Lexeme();
+        fallbackLexeme.id = "fallback";
+        fallbackLexeme.lemma = "amare";
+        fallbackLexeme.partOfSpeech = "noun";
+        fallbackLexeme.disambiguator = 0;
+        fallbackLexeme.principalParts = [];
+        fallbackLexeme.pronunciations = [];
+        fallbackLexeme.forms = [];
+        fallbackLexeme.inflection = null;
+        (
+          fallbackLexeme as unknown as {
+            translations?: null | Translation[];
+          }
+        ).translations = null;
+
+        lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValueOnce(
+          [fallbackLexeme],
+        );
+
+        const targetTranslation = new Translation("{*amare*}", parentLexeme);
+
+        await (
+          command as unknown as {
+            ingestTranslationReference: (
+              translation: Translation,
+            ) => Promise<void>;
+          }
+        ).ingestTranslationReference(targetTranslation);
+
+        expect(translationsService.saveTranslations).toHaveBeenCalledTimes(1);
+        expect(translationsService.saveTranslations).toHaveBeenCalledWith([
+          targetTranslation,
+        ]);
+      });
+
+      it("should handle missing regex capture groups by treating the reference as empty", async () => {
+        const parentLexeme = new Lexeme();
+        parentLexeme.id = "parent";
+        parentLexeme.lemma = "amo";
+        parentLexeme.partOfSpeech = "verb";
+        parentLexeme.disambiguator = 0;
+        parentLexeme.principalParts = [];
+        parentLexeme.pronunciations = [];
+        parentLexeme.forms = [];
+        parentLexeme.translations = [];
+        parentLexeme.inflection = null;
+
+        const targetTranslation = new Translation("{*amare*}", parentLexeme);
+        const newTranslations: Translation[] = [];
+
+        lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValueOnce(
+          [],
+        );
+
+        await (
+          command as unknown as {
+            processTranslationMatch: (
+              match: RegExpMatchArray,
+              translation: Translation,
+              mappedTranslations: Translation[],
+            ) => Promise<void>;
+          }
+        ).processTranslationMatch(
+          ["{*amare*}"] as unknown as RegExpMatchArray,
+          targetTranslation,
+          newTranslations,
+        );
+
+        expect(
+          lexemesService.findLexemesByLemmaWithTranslations,
+        ).toHaveBeenCalledWith("");
+        expect(loggerService.warn).toHaveBeenCalledWith(
+          "⚠️ No lexeme found for reference: ",
+        );
+      });
+    });
+
+    describe("processTranslationReferences", () => {
+      it("should skip recursive ingestion for in-progress and existing reference words", async () => {
+        const savedLexeme = new Lexeme();
+        savedLexeme.id = "saved";
+        savedLexeme.lemma = "amo";
+        savedLexeme.partOfSpeech = "verb";
+        savedLexeme.disambiguator = 0;
+        savedLexeme.principalParts = [];
+        savedLexeme.pronunciations = [];
+        savedLexeme.forms = [];
+        savedLexeme.translations = [];
+        savedLexeme.inflection = null;
+
+        (
+          command as unknown as {
+            inProgressWords: Set<string>;
+          }
+        ).inProgressWords.add("in-progress");
+
+        translationsService.extractTranslationReferences.mockReturnValueOnce([
+          "in-progress",
+          "existing-word",
+        ]);
+        lexemesService.existsByLemma.mockResolvedValueOnce(true);
+        translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
+          [],
+        );
+
+        const ingestLexemeSpy = vi
+          .spyOn(command, "ingestLexeme")
+          .mockResolvedValue(undefined);
+
+        await (
+          command as unknown as {
+            processTranslationReferences: (saved: Lexeme) => Promise<void>;
+          }
+        ).processTranslationReferences(savedLexeme);
+
+        expect(lexemesService.existsByLemma).toHaveBeenCalledTimes(1);
+        expect(lexemesService.existsByLemma).toHaveBeenCalledWith(
+          "existing-word",
+        );
+        expect(ingestLexemeSpy).not.toHaveBeenCalled();
+      });
+
+      it("should extract references from an empty list when saved translations are null", async () => {
+        const savedLexeme = new Lexeme();
+        savedLexeme.id = "saved";
+        savedLexeme.lemma = "amo";
+        savedLexeme.partOfSpeech = "verb";
+        savedLexeme.disambiguator = 0;
+        savedLexeme.principalParts = [];
+        savedLexeme.pronunciations = [];
+        savedLexeme.forms = [];
+        (
+          savedLexeme as unknown as {
+            translations?: null | Translation[];
+          }
+        ).translations = null;
+        savedLexeme.inflection = null;
+
+        translationsService.extractTranslationReferences.mockReturnValueOnce(
+          [],
+        );
+        translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
+          [],
+        );
+
+        await (
+          command as unknown as {
+            processTranslationReferences: (saved: Lexeme) => Promise<void>;
+          }
+        ).processTranslationReferences(savedLexeme);
+
+        expect(
+          translationsService.extractTranslationReferences,
+        ).toHaveBeenCalledWith([]);
+      });
     });
   });
 });

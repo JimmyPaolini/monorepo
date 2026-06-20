@@ -32,6 +32,18 @@ nx run <project>:test:end-to-end
 nx affected --target=test --base=main
 ```
 
+## Coverage Verification
+
+When a task includes coverage goals (or CI enforces coverage thresholds), run:
+
+```bash
+nx run <project>:test --configuration=coverage
+```
+
+Key practice: after structural test refactors (renaming, regrouping, helper extraction), always re-run coverage to verify no threshold regression.
+
+If branch coverage is just below threshold, add focused tests for uncovered guard/fallback branches first (for example undefined/null guards, sparse-array fallbacks, and error-only paths).
+
 ## References
 
 - [Testing Strategy](../../code-quality/testing-strategy.md)

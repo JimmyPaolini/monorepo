@@ -21,7 +21,7 @@ describe("{{namePascalCase}}DataLoader", () => {
     dataloader = await module.resolve({{namePascalCase}}DataLoader);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(dataloader).toBeDefined();
   });
 });

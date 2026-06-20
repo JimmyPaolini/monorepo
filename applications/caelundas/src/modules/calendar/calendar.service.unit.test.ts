@@ -48,7 +48,7 @@ describe("CalendarService", () => {
       summary: "☀️ → ♈ Sun ingress Aries",
     };
 
-    it("should generate valid VEVENT structure", () => {
+    it("generates valid VEVENT structure", () => {
       const vevent = service.buildEventContent(baseEvent);
 
       expect(vevent).toContain("BEGIN:VEVENT");
@@ -62,10 +62,12 @@ describe("CalendarService", () => {
       expect(vevent).toContain("STATUS:CONFIRMED");
       expect(vevent).toContain("CLASS:PUBLIC");
       expect(vevent).toContain("TRANSP:TRANSPARENT");
-      expect(vevent).toContain("CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries");
+      expect(vevent).toContain(
+        "CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries",
+      );
     });
 
-    it("should include optional location when provided", () => {
+    it("includes optional location when provided", () => {
       const eventWithLocation: Event = {
         ...baseEvent,
         location: "Philadelphia, PA",
@@ -75,7 +77,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("LOCATION:Philadelphia, PA");
     });
 
-    it("should include geography when provided", () => {
+    it("includes geography when provided", () => {
       const eventWithGeo: Event = {
         ...baseEvent,
         geography: { latitude: 39.9526, longitude: -75.1652 },
@@ -85,7 +87,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("GEO:39.9526;-75.1652");
     });
 
-    it("should include URL when provided", () => {
+    it("includes URL when provided", () => {
       const eventWithUrl: Event = {
         ...baseEvent,
         url: "https://example.com/event",
@@ -95,7 +97,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("URL:https://example.com/event");
     });
 
-    it("should include priority when provided", () => {
+    it("includes priority when provided", () => {
       const eventWithPriority: Event = {
         ...baseEvent,
         priority: 1,
@@ -105,7 +107,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("PRIORITY:1");
     });
 
-    it("should include color when provided", () => {
+    it("includes color when provided", () => {
       const eventWithColor: Event = {
         ...baseEvent,
         color: "red",
@@ -115,7 +117,7 @@ describe("CalendarService", () => {
       expect(vevent).toContain("COLOR:red");
     });
 
-    it("should generate unique UID based on event details", () => {
+    it("generates unique UID based on event details", () => {
       const vevent = service.buildEventContent(baseEvent);
       const uidMatch = /UID:(.+)/.exec(vevent);
 
@@ -126,7 +128,7 @@ describe("CalendarService", () => {
       }
     });
 
-    it("should handle events with different start and end times", () => {
+    it("handles events with different start and end times", () => {
       const durationEvent: Event = {
         ...baseEvent,
         end: moment.utc("2025-04-20T09:06:00Z"),
@@ -143,12 +145,19 @@ describe("CalendarService", () => {
       expect(vevent).toContain("DTEND");
     });
 
-    it("should use provided timezone", () => {
-      const vevent = service.buildEventContent(baseEvent, "America/Los_Angeles");
+    it("uses provided timezone", () => {
+      const vevent = service.buildEventContent(
+        baseEvent,
+        "America/Los_Angeles",
+      );
 
       expect(vevent).toContain("DTSTART;TZID=America/Los_Angeles:");
       expect(vevent).toContain("DTEND;TZID=America/Los_Angeles:");
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildFileContent", () => {
@@ -169,7 +178,7 @@ describe("CalendarService", () => {
       },
     ];
 
-    it("should generate valid VCALENDAR structure", () => {
+    it("generates valid VCALENDAR structure", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -180,13 +189,15 @@ describe("CalendarService", () => {
       expect(calendar).toContain("BEGIN:VCALENDAR");
       expect(calendar).toContain("END:VCALENDAR");
       expect(calendar).toContain("VERSION:2.0");
-      expect(calendar).toContain("PRODID:-//Caelundas//Astronomical Calendar//EN");
+      expect(calendar).toContain(
+        "PRODID:-//Caelundas//Astronomical Calendar//EN",
+      );
       expect(calendar).toContain("CALSCALE:GREGORIAN");
       expect(calendar).toContain("METHOD:PUBLISH");
       expect(calendar).toContain("X-WR-CALNAME:Test Calendar");
     });
 
-    it("should include calendar description when provided", () => {
+    it("includes calendar description when provided", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -197,7 +208,7 @@ describe("CalendarService", () => {
       expect(calendar).toContain("X-WR-CALDESC:A test calendar description");
     });
 
-    it("should include timezone definition", () => {
+    it("includes timezone definition", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -211,7 +222,7 @@ describe("CalendarService", () => {
       expect(calendar).toContain("END:VTIMEZONE");
     });
 
-    it("should include basic timezone content for non-New-York timezone", () => {
+    it("includes basic timezone content for non-New-York timezone", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -226,7 +237,7 @@ describe("CalendarService", () => {
       expect(calendar).not.toContain("BEGIN:DAYLIGHT");
     });
 
-    it("should include all events", () => {
+    it("includes all events", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -240,7 +251,7 @@ describe("CalendarService", () => {
       expect((calendar.match(/END:VEVENT/g) || []).length).toBe(2);
     });
 
-    it("should handle empty events array", () => {
+    it("handles empty events array", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: [],
@@ -253,7 +264,7 @@ describe("CalendarService", () => {
       expect(calendar).not.toContain("BEGIN:VEVENT");
     });
 
-    it("should include daylight saving time rules for New York", () => {
+    it("includes daylight saving time rules for New York", () => {
       const calendar = service.buildFileContent({
         description: "A test calendar description",
         events: sampleEvents,
@@ -269,13 +280,11 @@ describe("CalendarService", () => {
       expect(calendar).toContain("TZNAME:EST");
     });
 
-    it("should omit optional calendar description and timezone fields when absent", () => {
+    it("omits optional calendar description and timezone fields when absent", () => {
       const calendar = service.buildFileContent({
-        description: undefined,
         events: sampleEvents,
         name: "No Optional Fields",
-        timezone: undefined,
-      });
+      } as never);
 
       expect(calendar).toContain("X-WR-CALNAME:No Optional Fields");
       expect(calendar).not.toContain("X-WR-CALDESC:");
@@ -286,7 +295,9 @@ describe("CalendarService", () => {
 
   describe("write", () => {
     it("writes ICS output to configured directory", async () => {
-      const logSpy = vi.spyOn(logger, "log").mockImplementation(() => undefined);
+      const logSpy = vi
+        .spyOn(logger, "log")
+        .mockImplementation(() => undefined);
 
       const events: Event[] = [
         {
@@ -300,7 +311,8 @@ describe("CalendarService", () => {
 
       await service.write(events, {
         end: moment.tz("2025-03-21T00:00:00", "America/New_York"),
-        limit: undefined,
+        latitude: 40.7128,
+        longitude: -74.006,
         start: moment.tz("2025-03-20T00:00:00", "America/New_York"),
         timezone: "America/New_York",
       });
@@ -327,7 +339,8 @@ describe("CalendarService", () => {
         ],
         {
           end: moment.tz("2025-03-21T00:00:00", "America/New_York"),
-          limit: undefined,
+          latitude: 40.7128,
+          longitude: -74.006,
           start: moment.tz("2025-03-20T00:00:00", "America/New_York"),
           timezone: "America/New_York",
         },
@@ -336,9 +349,5 @@ describe("CalendarService", () => {
       expect(writeFile).toHaveBeenCalled();
       expect(vi.mocked(writeFile).mock.calls.at(-1)?.[0]).toContain("output/");
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

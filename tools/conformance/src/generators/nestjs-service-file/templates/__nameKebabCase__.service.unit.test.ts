@@ -14,7 +14,7 @@ describe("{{namePascalCase}}Service", () => {
     service = await module.resolve({{namePascalCase}}Service);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 });

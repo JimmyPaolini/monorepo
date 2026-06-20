@@ -100,12 +100,12 @@ describe("MercurianPhaseService", () => {
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildMercurianPhaseEvent", () => {
@@ -165,7 +165,7 @@ describe("MercurianPhaseService", () => {
     });
   });
 
-  describe("progressive visibility events", () => {
+  describe("getMercurianPhaseProgressiveEvents", () => {
     it("creates mercurian morning visibility duration events", () => {
       const morningRise: Event = {
         categories: ["Planetary Phase", "Mercurian", "Morning Rise"],

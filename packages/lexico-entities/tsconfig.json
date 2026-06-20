@@ -16,6 +16,8 @@
     "*.config.mts",
     "eslint.config.ts",
     "scripts/**/*.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "testing/**/*.ts",
+    "vitest.config.ts"
   ]
 }

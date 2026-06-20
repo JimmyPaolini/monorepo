@@ -132,10 +132,6 @@ describe("EphemerisService", () => {
     service = await module.resolve(EphemerisService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("accessors", () => {
     it("returns azimuth/elevation values", () => {
       const ephemeris: AzimuthElevationEphemeris = {
@@ -216,6 +212,10 @@ describe("EphemerisService", () => {
         "Missing illumination at missing",
       );
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("facade delegation", () => {

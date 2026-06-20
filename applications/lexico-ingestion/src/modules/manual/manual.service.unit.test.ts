@@ -1,34 +1,206 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, describe, expect, it } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
 
 import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
 import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
+import { MANUAL_LEXEMES_TO_DELETE } from "./manual.constants";
 import { ManualService } from "./manual.service";
 
 describe("ManualService", () => {
   let service: ManualService;
 
+  let lexemesRepository: Mocked<any>;
+  let wordsService: Mocked<WordsService>;
+  let numeralsService: Mocked<NumeralsService>;
+
   beforeAll(async () => {
+    const mockLexemesRepository = {
+      delete: vi.fn().mockResolvedValue({ affected: 1 }),
+      save: vi.fn(),
+    };
+
+    const mockWordsService = {
+      ingestLexemeWords: vi.fn().mockResolvedValue(undefined),
+    };
+
+    const mockNumeralsService = {
+      toRoman: vi.fn((num: number) => {
+        const romanNumerals: Record<number, string> = {
+          1: "I",
+          2: "II",
+          3: "III",
+          4: "IV",
+          5: "V",
+          10: "X",
+        };
+        return romanNumerals[num] ?? "X";
+      }),
+    };
+
     const module = await Test.createTestingModule({
       providers: [
         ManualService,
-        WordsService,
-        { provide: getRepositoryToken(Lexeme), useValue: {} },
+        {
+          provide: getRepositoryToken(Lexeme),
+          useValue: mockLexemesRepository,
+        },
+        { provide: WordsService, useValue: mockWordsService },
+        { provide: NumeralsService, useValue: mockNumeralsService },
         { provide: getRepositoryToken(Word), useValue: {} },
         { provide: getRepositoryToken(WordLexeme), useValue: {} },
         { provide: getRepositoryToken(WordForm), useValue: {} },
-        { provide: NumeralsService, useValue: { toRoman: () => "I" } },
       ],
     }).compile();
 
     service = await module.resolve(ManualService);
+    lexemesRepository = await module.resolve(getRepositoryToken(Lexeme));
+    wordsService = await module.resolve(WordsService);
+    numeralsService = await module.resolve(NumeralsService);
   });
 
-  it("should be defined", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
     expect(service).toBeDefined();
+  });
+
+  describe("createManual", () => {
+    it("should delete existing lexeme before saving", async () => {
+      const lexeme = new Lexeme();
+      lexeme.lemma = "amō";
+      lexeme.disambiguator = 0;
+
+      lexemesRepository.save.mockResolvedValue(lexeme);
+
+      await service.createManual(lexeme);
+
+      expect(lexemesRepository.delete).toHaveBeenCalledWith({
+        disambiguator: 0,
+        lemma: "amō",
+      });
+    });
+
+    it("should save the lexeme to repository", async () => {
+      const lexeme = new Lexeme();
+      lexeme.lemma = "rosa";
+      lexeme.disambiguator = 0;
+
+      lexemesRepository.save.mockResolvedValue(lexeme);
+
+      await service.createManual(lexeme);
+
+      expect(lexemesRepository.save).toHaveBeenCalledWith(lexeme, {
+        reload: false,
+      });
+    });
+
+    it("should ingest words for the created lexeme", async () => {
+      const lexeme = new Lexeme();
+      lexeme.lemma = "amor";
+      lexeme.disambiguator = 1;
+
+      lexemesRepository.save.mockResolvedValue(lexeme);
+
+      await service.createManual(lexeme);
+
+      expect(wordsService.ingestLexemeWords).toHaveBeenCalledWith(lexeme);
+    });
+  });
+
+  describe("deleteManual", () => {
+    it("should delete lexeme by lemma and disambiguator", async () => {
+      await service.deleteManual("vir", 2);
+
+      expect(lexemesRepository.delete).toHaveBeenCalledWith({
+        disambiguator: 2,
+        lemma: "vir",
+      });
+    });
+  });
+
+  describe("ingestManual", () => {
+    it("should delete all stale lexemes from MANUAL_LEXEMES_TO_DELETE", async () => {
+      lexemesRepository.save.mockResolvedValue(new Lexeme());
+
+      await service.ingestManual();
+
+      for (const { disambiguator, lemma } of MANUAL_LEXEMES_TO_DELETE) {
+        expect(lexemesRepository.delete).toHaveBeenCalledWith(
+          expect.objectContaining({
+            disambiguator,
+            lemma,
+          }),
+        );
+      }
+    });
+
+    it("should save lexemes multiple times for all manual entries", async () => {
+      lexemesRepository.save.mockResolvedValue(new Lexeme());
+
+      await service.ingestManual();
+
+      // Verify save was called many times
+      expect(lexemesRepository.save.mock.calls.length).toBeGreaterThan(3);
+    });
+
+    it("should ingest words for all created lexemes", async () => {
+      lexemesRepository.save.mockResolvedValue(new Lexeme());
+
+      await service.ingestManual();
+
+      expect(wordsService.ingestLexemeWords).toHaveBeenCalled();
+    });
+
+    it("should generate Roman numerals", async () => {
+      lexemesRepository.save.mockResolvedValue(new Lexeme());
+
+      await service.ingestManual();
+
+      // Verify that toRoman was called for Roman numeral generation
+      expect(numeralsService.toRoman).toHaveBeenCalled();
+    });
+  });
+
+  describe("resolvePraenomenGender", () => {
+    it("returns masculine when only masculine value is present", () => {
+      const gender = (
+        service as unknown as {
+          resolvePraenomenGender: (praenomen: {
+            feminine?: string;
+            masculine?: string;
+          }) => string;
+        }
+      ).resolvePraenomenGender({ masculine: "Marcus" });
+
+      expect(gender).toBe("masculine");
+    });
+
+    it("returns feminine when only feminine value is present", () => {
+      const gender = (
+        service as unknown as {
+          resolvePraenomenGender: (praenomen: {
+            feminine?: string;
+            masculine?: string;
+          }) => string;
+        }
+      ).resolvePraenomenGender({ feminine: "Marcia" });
+
+      expect(gender).toBe("feminine");
+    });
   });
 });

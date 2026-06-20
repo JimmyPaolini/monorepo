@@ -26,8 +26,8 @@ const detectorService = new TripleAspectsDetectorService(composerService);
 const service = new TripleAspectsService(composerService, detectorService);
 
 describe("triple-aspects.events integration", () => {
-  describe("T-Square pattern", () => {
-    it("should detect forming T-Square when the final aspect completes the pattern", () => {
+  describe("T-Square pattern detection", () => {
+    it("detects forming T-Square when the final aspect completes the pattern", () => {
       const currentMinute = moment.utc("2024-06-15T14:30:00.000Z");
 
       // Opposition is new in current — it's the unique edge in the union, preventing
@@ -63,7 +63,7 @@ describe("triple-aspects.events integration", () => {
       expect(events[0]?.start).toEqual(currentMinute);
     });
 
-    it("should detect dissolving T-Square when a required aspect ends", () => {
+    it("detects dissolving T-Square when a required aspect ends", () => {
       const currentMinute = moment.utc("2024-06-15T16:00:00.000Z");
 
       // Opposition ended in current — it's the unique edge in the union, preventing
@@ -97,7 +97,7 @@ describe("triple-aspects.events integration", () => {
       );
     });
 
-    it("should produce a progressive T-Square event spanning from forming to dissolving", () => {
+    it("produces a progressive T-Square event spanning from forming to dissolving", () => {
       const formingStart = moment.utc("2024-06-15T14:30:00.000Z");
       const dissolvingStart = moment.utc("2024-06-15T16:00:00.000Z");
 
@@ -164,8 +164,8 @@ describe("triple-aspects.events integration", () => {
     });
   });
 
-  describe("Yod pattern", () => {
-    it("should detect forming Yod when the second quincunx completes the pattern", () => {
+  describe("Yod pattern detection", () => {
+    it("detects forming Yod when the second quincunx completes the pattern", () => {
       const currentMinute = moment.utc("2024-07-20T10:15:00.000Z");
 
       // Sextile is new in current — it's the unique edge in the union, preventing
@@ -201,7 +201,7 @@ describe("triple-aspects.events integration", () => {
       expect(events[0]?.start).toEqual(currentMinute);
     });
 
-    it("should detect dissolving Yod when a required aspect ends", () => {
+    it("detects dissolving Yod when a required aspect ends", () => {
       const currentMinute = moment.utc("2024-07-20T14:00:00.000Z");
 
       // Sextile ended in current — it's the unique edge in the union, preventing
@@ -236,8 +236,8 @@ describe("triple-aspects.events integration", () => {
     });
   });
 
-  describe("Grand Trine pattern", () => {
-    it("should detect forming Grand Trine when the third trine completes the triangle", () => {
+  describe("Grand Trine pattern detection", () => {
+    it("detects forming Grand Trine when the third trine completes the triangle", () => {
       const currentMinute = moment.utc("2024-08-05T09:00:00.000Z");
 
       // Sun-Mars trine is new in current → forming boundary
@@ -272,7 +272,7 @@ describe("triple-aspects.events integration", () => {
       expect(events[0]?.start).toEqual(currentMinute);
     });
 
-    it("should detect dissolving Grand Trine when a trine aspect ends", () => {
+    it("detects dissolving Grand Trine when a trine aspect ends", () => {
       const currentMinute = moment.utc("2024-08-05T12:00:00.000Z");
 
       // Sun-Mars trine ended → dissolving boundary
@@ -304,7 +304,7 @@ describe("triple-aspects.events integration", () => {
       );
     });
 
-    it("should produce a progressive Grand Trine event spanning from forming to dissolving", () => {
+    it("produces a progressive Grand Trine event spanning from forming to dissolving", () => {
       const formingStart = moment.utc("2024-08-05T09:00:00.000Z");
       const dissolvingStart = moment.utc("2024-08-05T12:00:00.000Z");
 
@@ -367,8 +367,8 @@ describe("triple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge cases", () => {
-    it("should not detect Grand Trine with only 2 trines (incomplete pattern)", () => {
+  describe("Edge case scenarios", () => {
+    it("does not detect Grand Trine with only 2 trines (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-09-01T08:00:00.000Z");
 
       const currentAspectBodies: AspectBodies[] = [
@@ -389,7 +389,7 @@ describe("triple-aspects.events integration", () => {
       expect(events).toHaveLength(0);
     });
 
-    it("should not detect Grand Trine when aspect type is wrong (sextiles instead of trines)", () => {
+    it("does not detect Grand Trine when aspect type is wrong (sextiles instead of trines)", () => {
       const currentMinute = moment.utc("2024-09-01T10:00:00.000Z");
 
       const currentAspectBodies: AspectBodies[] = [
@@ -411,7 +411,7 @@ describe("triple-aspects.events integration", () => {
       expect(grandTrineEvents).toHaveLength(0);
     });
 
-    it("should not detect T-Square when using trines instead of squares", () => {
+    it("does not detect T-Square when using trines instead of squares", () => {
       const currentMinute = moment.utc("2024-09-01T12:00:00.000Z");
 
       // Opposition exists but trines instead of squares (no T-Square)
@@ -437,7 +437,7 @@ describe("triple-aspects.events integration", () => {
       expect(tSquareEvents).toHaveLength(0);
     });
 
-    it("should detect Grand Trine with outer planets", () => {
+    it("detects Grand Trine with outer planets", () => {
       const currentMinute = moment.utc("2024-10-01T06:00:00.000Z");
 
       // Jupiter-Saturn-Neptune grand trine (outer planets)

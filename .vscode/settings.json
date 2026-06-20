@@ -869,10 +869,8 @@
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.env.osx": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "PATH": "/Users/jimmypaolini/.nvm/versions/node/v24.16.0/bin:${env:PATH}"
-  },
-  "terminal.integrated.env.osx": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "terminal.integrated.scrollback": 32768,
   "terraform.languageServer.args": ["serve"],

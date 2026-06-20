@@ -30,10 +30,6 @@ describe("EphemerisTimeService", () => {
     service = await module.resolve(EphemerisTimeService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("dateToJulianDays", () => {
     it("returns julian day values from sweph", () => {
       const result = service.dateToJulianDays(
@@ -55,6 +51,10 @@ describe("EphemerisTimeService", () => {
         service.dateToJulianDays(moment.utc("2024-03-21T00:00:00.000Z")),
       ).toThrow("utc_to_jd failed");
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("generateMinutes", () => {

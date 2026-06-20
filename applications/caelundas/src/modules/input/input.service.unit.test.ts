@@ -22,8 +22,12 @@ describe("InputService", () => {
     service = await module.resolve(InputService);
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("environmentSchema.parse", () => {
-    it("should return validated environment with all fields provided", () => {
+    it("returns validated environment with all fields provided", () => {
       const environment = environmentSchema.parse({
         END_DATE: "2025-01-02",
         LATITUDE: "40.7128",
@@ -38,12 +42,12 @@ describe("InputService", () => {
       expect(environment.OUTPUT_DIRECTORY).toBe("./out");
     });
 
-    it("should default OUTPUT_DIRECTORY to ./output when omitted", () => {
+    it("defaults OUTPUT_DIRECTORY to ./output when omitted", () => {
       const environment = environmentSchema.parse({});
       expect(environment.OUTPUT_DIRECTORY).toBe("./output");
     });
 
-    it("should coerce string coordinates to numbers", () => {
+    it("coerces string coordinates to numbers", () => {
       const environment = environmentSchema.parse({
         LATITUDE: "40.7128",
         LONGITUDE: "-74.006",
@@ -52,25 +56,25 @@ describe("InputService", () => {
       expect(typeof environment.LONGITUDE).toBe("number");
     });
 
-    it("should succeed when all fields are omitted", () => {
+    it("succeeds when all fields are omitted", () => {
       expect(() => environmentSchema.parse({})).not.toThrow();
     });
 
-    it("should throw when LATITUDE is out of range", () => {
+    it("throws when LATITUDE is out of range", () => {
       expect(() => environmentSchema.parse({ LATITUDE: "91" })).toThrow();
     });
 
-    it("should throw when LONGITUDE is out of range", () => {
+    it("throws when LONGITUDE is out of range", () => {
       expect(() => environmentSchema.parse({ LONGITUDE: "181" })).toThrow();
     });
 
-    it("should throw when START_DATE format is invalid", () => {
+    it("throws when START_DATE format is invalid", () => {
       expect(() =>
         environmentSchema.parse({ START_DATE: "01-01-2025" }),
       ).toThrow();
     });
 
-    it("should throw when END_DATE format is invalid", () => {
+    it("throws when END_DATE format is invalid", () => {
       expect(() =>
         environmentSchema.parse({ END_DATE: "not-a-date" }),
       ).toThrow();
@@ -87,7 +91,7 @@ describe("InputService", () => {
       return new InputService(configService);
     }
 
-    it("should parse valid environment into an Input domain object", () => {
+    it("parses valid environment into an Input domain object", () => {
       const service = makeService({
         END_DATE: "2025-01-02",
         LATITUDE: 40.7128,
@@ -102,7 +106,7 @@ describe("InputService", () => {
       expect(moment.isMoment(result.end)).toBe(true);
     });
 
-    it("should use Philadelphia defaults when coordinates are omitted", () => {
+    it("uses Philadelphia defaults when coordinates are omitted", () => {
       const service = makeService({
         END_DATE: "2025-01-02",
         START_DATE: "2025-01-01",
@@ -112,13 +116,13 @@ describe("InputService", () => {
       expect(result.longitude).toBe(-75.171_69);
     });
 
-    it("should use default date range when dates are omitted", () => {
+    it("uses default date range when dates are omitted", () => {
       const service = makeService({});
       const result = service.parse();
       expect(result.start.valueOf()).toBeLessThan(result.end.valueOf());
     });
 
-    it("should throw when end date is before start date", () => {
+    it("throws when end date is before start date", () => {
       const service = makeService({
         END_DATE: "2025-03-20",
         LATITUDE: 40,
@@ -134,7 +138,7 @@ describe("InputService", () => {
     mockDates();
 
     describe("latitude validation", () => {
-      it("should accept valid latitudes", () => {
+      it("accepts valid latitudes", () => {
         const result = inputSchema.parse({
           endDate: "2025-01-02",
           latitude: "40.7128",
@@ -144,7 +148,7 @@ describe("InputService", () => {
         expect(result.latitude).toBe(40.7128);
       });
 
-      it("should accept boundary latitudes", () => {
+      it("accepts boundary latitudes", () => {
         expect(
           inputSchema.parse({
             endDate: "2025-01-02",
@@ -164,7 +168,7 @@ describe("InputService", () => {
         ).toBe(90);
       });
 
-      it("should reject latitudes outside valid range", () => {
+      it("rejects latitudes outside valid range", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "2025-01-02",
@@ -184,7 +188,7 @@ describe("InputService", () => {
         ).toThrow();
       });
 
-      it("should use default latitude when not provided", () => {
+      it("uses default latitude when not provided", () => {
         const result = inputSchema.parse({
           endDate: "2025-01-02",
           startDate: "2025-01-01",
@@ -194,7 +198,7 @@ describe("InputService", () => {
     });
 
     describe("longitude validation", () => {
-      it("should accept valid longitudes", () => {
+      it("accepts valid longitudes", () => {
         const result = inputSchema.parse({
           endDate: "2025-01-02",
           latitude: "40.7128",
@@ -204,7 +208,7 @@ describe("InputService", () => {
         expect(result.longitude).toBe(-74.006);
       });
 
-      it("should accept boundary longitudes", () => {
+      it("accepts boundary longitudes", () => {
         expect(
           inputSchema.parse({
             endDate: "2025-01-02",
@@ -224,7 +228,7 @@ describe("InputService", () => {
         ).toBe(180);
       });
 
-      it("should reject longitudes outside valid range", () => {
+      it("rejects longitudes outside valid range", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "2025-01-02",
@@ -244,7 +248,7 @@ describe("InputService", () => {
         ).toThrow();
       });
 
-      it("should use default longitude when not provided", () => {
+      it("uses default longitude when not provided", () => {
         const result = inputSchema.parse({
           endDate: "2025-01-02",
           startDate: "2025-01-01",
@@ -254,7 +258,7 @@ describe("InputService", () => {
     });
 
     describe("timezone inference", () => {
-      it("should infer timezone from coordinates", () => {
+      it("infers timezone from coordinates", () => {
         // New York coordinates
         const nyResult = inputSchema.parse({
           endDate: "2025-01-02",
@@ -285,7 +289,7 @@ describe("InputService", () => {
     });
 
     describe("date validation", () => {
-      it("should parse valid date strings", () => {
+      it("parses valid date strings", () => {
         const result = inputSchema.parse({
           endDate: "2025-03-21",
           latitude: "40",
@@ -297,7 +301,7 @@ describe("InputService", () => {
         expect(moment.isMoment(result.end)).toBe(true);
       });
 
-      it("should require end date after start date", () => {
+      it("requires end date after start date", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "2025-03-20",
@@ -308,7 +312,7 @@ describe("InputService", () => {
         ).toThrow();
       });
 
-      it("should reject identical start and end dates", () => {
+      it("rejects identical start and end dates", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "2025-03-20",
@@ -319,7 +323,7 @@ describe("InputService", () => {
         ).toThrow();
       });
 
-      it("should reject dates before 1900", () => {
+      it("rejects dates before 1900", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "1900-01-02",
@@ -330,7 +334,7 @@ describe("InputService", () => {
         ).toThrow();
       });
 
-      it("should reject dates after 2100", () => {
+      it("rejects dates after 2100", () => {
         expect(() =>
           inputSchema.parse({
             endDate: "2101-01-01",
@@ -343,7 +347,7 @@ describe("InputService", () => {
     });
 
     describe("default date values", () => {
-      it("should default to 1 month before and after current date", () => {
+      it("defaults to 1 month before and after current date", () => {
         const result = inputSchema.parse({});
 
         // Verify start is before end
@@ -358,7 +362,7 @@ describe("InputService", () => {
     });
 
     describe("coercion", () => {
-      it("should coerce string latitude/longitude to numbers", () => {
+      it("coerces string latitude/longitude to numbers", () => {
         const result = inputSchema.parse({
           endDate: "2025-01-02",
           latitude: "40.7128",
@@ -370,9 +374,5 @@ describe("InputService", () => {
         expect(typeof result.longitude).toBe("number");
       });
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

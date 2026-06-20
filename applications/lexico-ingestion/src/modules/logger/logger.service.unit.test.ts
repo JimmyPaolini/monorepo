@@ -1,10 +1,30 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
 describe("LoggerService", () => {
+  interface LoggerChildMock {
+    debug: ReturnType<typeof vi.fn>;
+    error: ReturnType<typeof vi.fn>;
+    info: ReturnType<typeof vi.fn>;
+    trace: ReturnType<typeof vi.fn>;
+    warn: ReturnType<typeof vi.fn>;
+  }
+
   let service: LoggerService;
+
+  const createLoggerChildMock = (): LoggerChildMock => ({
+    debug: vi.fn(),
+    error: vi.fn(),
+    info: vi.fn(),
+    trace: vi.fn(),
+    warn: vi.fn(),
+  });
+
+  const setLoggerChildMock = (loggerChildMock: LoggerChildMock): void => {
+    (service as unknown as { child: LoggerChildMock }).child = loggerChildMock;
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -14,7 +34,158 @@ describe("LoggerService", () => {
     service = await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
     expect(service).toBeDefined();
+  });
+
+  describe("setContext", () => {
+    it("should apply context to subsequent log calls", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestService");
+      setLoggerChildMock(loggerChildMock);
+      service.log("message");
+
+      expect(loggerChildMock.info).toHaveBeenCalledWith(
+        { context: "TestService" },
+        "message",
+      );
+    });
+  });
+
+  describe("log", () => {
+    it("should log message with current context", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Test message";
+
+      service.log(message);
+
+      expect(loggerChildMock.info).toHaveBeenCalledWith(
+        { context: "TestContext" },
+        "Test message",
+      );
+    });
+
+    it("should stringify non-string messages", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = { data: "test" };
+
+      service.log(message);
+
+      expect(loggerChildMock.info).toHaveBeenCalledWith(
+        { context: "TestContext" },
+        "[object Object]",
+      );
+    });
+
+    it("should prefer provided context over instance context", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("InstanceContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Test";
+      const customContext = "CustomContext";
+
+      service.log(message, customContext);
+
+      expect(loggerChildMock.info).toHaveBeenCalledWith(
+        { context: "CustomContext" },
+        "Test",
+      );
+    });
+  });
+
+  describe("debug", () => {
+    it("should log debug messages with current context", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Debug message";
+
+      service.debug(message);
+
+      expect(loggerChildMock.debug).toHaveBeenCalledWith(
+        { context: "TestContext" },
+        "Debug message",
+      );
+    });
+  });
+
+  describe("warn", () => {
+    it("should log warning messages with current context", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Warning message";
+
+      service.warn(message);
+
+      expect(loggerChildMock.warn).toHaveBeenCalledWith(
+        { context: "TestContext" },
+        "Warning message",
+      );
+    });
+  });
+
+  describe("error", () => {
+    it("should log error messages with optional stack trace", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Error message";
+      const stack = "Error: test stack trace";
+
+      service.error(message, stack);
+
+      expect(loggerChildMock.error).toHaveBeenCalledWith(
+        { context: "TestContext", stack },
+        "Error message",
+      );
+    });
+
+    it("should log error without stack trace", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("ErrorContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "An error";
+
+      service.error(message);
+
+      expect(loggerChildMock.error).toHaveBeenCalledWith(
+        { context: "ErrorContext", stack: undefined },
+        "An error",
+      );
+    });
+  });
+
+  describe("verbose", () => {
+    it("should log verbose messages at trace level", () => {
+      const loggerChildMock = createLoggerChildMock();
+
+      service.setContext("TestContext");
+      setLoggerChildMock(loggerChildMock);
+      const message = "Verbose message";
+
+      service.verbose(message);
+
+      expect(loggerChildMock.trace).toHaveBeenCalledWith(
+        { context: "TestContext" },
+        "Verbose message",
+      );
+    });
   });
 });

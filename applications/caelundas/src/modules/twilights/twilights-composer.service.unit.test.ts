@@ -27,12 +27,12 @@ describe("TwilightsComposerService", () => {
     await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("pairAndBuild", () => {
@@ -69,6 +69,39 @@ describe("TwilightsComposerService", () => {
       expect(pairedEvents[0]?.description).toBe("Daylight");
       expect(pairedEvents[0]?.start).toEqual(civilDawn.start);
       expect(pairedEvents[0]?.end).toEqual(civilDusk.start);
+    });
+
+    it("returns one pair when the counts differ", () => {
+      const civilDawn: Event = {
+        categories: ["Twilight", "Civil Dawn"],
+        description: "Civil Dawn",
+        end: moment.utc("2024-03-21T06:00:00.000Z"),
+        start: moment.utc("2024-03-21T06:00:00.000Z"),
+        summary: "Civil Dawn",
+      };
+      const civilDusk: Event = {
+        categories: ["Twilight", "Civil Dusk"],
+        description: "Civil Dusk",
+        end: moment.utc("2024-03-21T19:00:00.000Z"),
+        start: moment.utc("2024-03-21T19:00:00.000Z"),
+        summary: "Civil Dusk",
+      };
+
+      const pairedEvents = service.pairAndBuild({
+        beginnings: [civilDawn, civilDawn],
+        builder: (beginning, ending) => ({
+          categories: ["Twilight", "Daylight"],
+          description: `${beginning.description} to ${ending.description}`,
+          end: ending.start,
+          start: beginning.start,
+          summary: "Daylight",
+        }),
+        endings: [civilDusk],
+        label: "Daylight",
+      });
+
+      expect(pairedEvents).toHaveLength(1);
+      expect(pairedEvents[0]?.description).toBe("Civil Dawn to Civil Dusk");
     });
   });
 

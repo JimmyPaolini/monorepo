@@ -143,10 +143,6 @@ describe("AspectsService", () => {
     service = await module.resolve(AspectsService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("computeAspectBodies", () => {
     const timestamp = moment.utc("2026-01-21T12:00:00Z");
 
@@ -418,7 +414,11 @@ describe("AspectsService", () => {
     });
   });
 
-  describe("delegation", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
     it("combines detector outputs and progressive events", () => {
       const minute = moment.utc("2026-01-21T12:00:00Z");
       const simpleEvent = {

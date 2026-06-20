@@ -48,7 +48,7 @@ describe("MajorAspectProgressiveService", () => {
     };
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
@@ -67,7 +67,7 @@ describe("MajorAspectProgressiveService", () => {
       summary: `${body1} ${aspect} ${body2}`,
     });
 
-    it("should create progressive events from forming and dissolving pairs", () => {
+    it("creates progressive events from forming and dissolving pairs", () => {
       const forming = createMajorAspectEvent(
         "Sun",
         "Mercury",
@@ -96,7 +96,7 @@ describe("MajorAspectProgressiveService", () => {
       expect(progressiveEvents[0]?.summary).toContain("☌");
     });
 
-    it("should handle multiple aspect types for same body pair", () => {
+    it("handles multiple aspect types for same body pair", () => {
       const formingConjunct = createMajorAspectEvent(
         "Sun",
         "Mercury",
@@ -144,7 +144,7 @@ describe("MajorAspectProgressiveService", () => {
       expect(oppositeDuration).toBeDefined();
     });
 
-    it("should handle multiple body pairs", () => {
+    it("handles multiple body pairs", () => {
       const sunMercuryForming = createMajorAspectEvent(
         "Sun",
         "Mercury",
@@ -184,7 +184,7 @@ describe("MajorAspectProgressiveService", () => {
       expect(progressiveEvents).toHaveLength(2);
     });
 
-    it("should filter out non-major-aspect events", () => {
+    it("filters out non-major-aspect events", () => {
       const majorAspectForming = createMajorAspectEvent(
         "Sun",
         "Venus",
@@ -216,17 +216,17 @@ describe("MajorAspectProgressiveService", () => {
       expect(progressiveEvents).toHaveLength(1);
     });
 
-    it("should handle empty events array", () => {
+    it("handles empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should skip processing when aspect group key is empty", () => {
+    it("skips processing when aspect group key is empty", () => {
       const progressiveEvents = privateService.processAspectGroup("", []);
       expect(progressiveEvents).toEqual([]);
     });
 
-    it("should return empty key when group categories are incomplete", () => {
+    it("returns empty key when group categories are incomplete", () => {
       expect(
         privateService.getAspectGroupKey({
           categories: ["Astronomy", "Astrology", "Major Aspect"],
@@ -238,7 +238,7 @@ describe("MajorAspectProgressiveService", () => {
       ).toBe("");
     });
 
-    it("should throw when categories cannot extract aspect info", () => {
+    it("throws when categories cannot extract aspect info", () => {
       const invalidEvent: Event = {
         categories: ["Astronomy", "Astrology", "Major Aspect", "Sun"],
         description: "invalid",
@@ -252,7 +252,7 @@ describe("MajorAspectProgressiveService", () => {
       ).toThrow("Could not extract aspect info from categories");
     });
 
-    it("should throw when type casting receives invalid category values", () => {
+    it("throws when type casting receives invalid category values", () => {
       expect(() =>
         privateService.castAspectPartsToTypes({
           aspectCapitalized: "Invalid Aspect",
@@ -263,7 +263,7 @@ describe("MajorAspectProgressiveService", () => {
       ).toThrow("Could not extract typed values from categories");
     });
 
-    it("should handle undefined sorted body entries before type casting", () => {
+    it("handles undefined sorted body entries before type casting", () => {
       const sortBySpy = vi
         .spyOn(_, "sortBy")
         .mockReturnValue([undefined, "Moon"] as unknown as string[]);
@@ -282,7 +282,7 @@ describe("MajorAspectProgressiveService", () => {
       sortBySpy.mockRestore();
     });
 
-    it("should sort body names alphabetically in progressive event", () => {
+    it("sorts body names alphabetically in progressive event", () => {
       const forming = createMajorAspectEvent(
         "Venus",
         "Sun",

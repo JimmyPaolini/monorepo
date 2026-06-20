@@ -68,10 +68,6 @@ describe("EphemerisPhenomenaService", () => {
     );
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("computeIlluminationForBody", () => {
     it("returns 100 for sun", () => {
       const result = service.computeIlluminationForBody({
@@ -96,6 +92,10 @@ describe("EphemerisPhenomenaService", () => {
         expect(value.illumination).toBe(75);
       }
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("computeDiameterForBody", () => {

@@ -26,8 +26,8 @@ const service = new QuadrupleAspectsService(
 );
 
 describe("quadruple-aspects.events integration", () => {
-  describe("Grand Cross pattern", () => {
-    it("should detect forming Grand Cross when the final square completes the pattern", () => {
+  describe("Grand Cross pattern detection", () => {
+    it("detects forming Grand Cross when the final square completes the pattern", () => {
       const currentMinute = moment.utc("2024-06-15T14:30:00.000Z");
 
       // Both oppositions are new in current — keeping oppositions out of previous
@@ -69,7 +69,7 @@ describe("quadruple-aspects.events integration", () => {
       expect(events[0]?.start).toEqual(currentMinute);
     });
 
-    it("should detect dissolving Grand Cross when a required square ends", () => {
+    it("detects dissolving Grand Cross when a required square ends", () => {
       const currentMinute = moment.utc("2024-06-15T18:00:00.000Z");
 
       // Both oppositions ended in current — keeping oppositions out of current
@@ -108,7 +108,7 @@ describe("quadruple-aspects.events integration", () => {
       );
     });
 
-    it("should produce a progressive Grand Cross event spanning from forming to dissolving", () => {
+    it("produces a progressive Grand Cross event spanning from forming to dissolving", () => {
       const formingStart = moment.utc("2024-06-15T14:30:00.000Z");
       const dissolvingStart = moment.utc("2024-06-15T18:00:00.000Z");
 
@@ -176,8 +176,8 @@ describe("quadruple-aspects.events integration", () => {
     });
   });
 
-  describe("Kite pattern", () => {
-    it("should detect forming Kite when the opposition to the focal body completes the pattern", () => {
+  describe("Kite pattern detection", () => {
+    it("detects forming Kite when the opposition to the focal body completes the pattern", () => {
       const currentMinute = moment.utc("2024-07-20T10:00:00.000Z");
 
       // Grand Trine + Kite aspects all new in current. Keeping trines out of
@@ -218,7 +218,7 @@ describe("quadruple-aspects.events integration", () => {
       expect(events[0]?.start).toEqual(currentMinute);
     });
 
-    it("should detect dissolving Kite when the focal opposition ends", () => {
+    it("detects dissolving Kite when the focal opposition ends", () => {
       const currentMinute = moment.utc("2024-07-20T14:00:00.000Z");
 
       // Grand Trine + opposition ended in current. Keeping trines out of current
@@ -256,7 +256,7 @@ describe("quadruple-aspects.events integration", () => {
       );
     });
 
-    it("should produce a progressive Kite event spanning from forming to dissolving", () => {
+    it("produces a progressive Kite event spanning from forming to dissolving", () => {
       const formingStart = moment.utc("2024-07-20T10:00:00.000Z");
       const dissolvingStart = moment.utc("2024-07-20T14:00:00.000Z");
 
@@ -324,8 +324,8 @@ describe("quadruple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge cases", () => {
-    it("should not detect Grand Cross with only 1 opposition (incomplete pattern)", () => {
+  describe("Edge case scenarios", () => {
+    it("does not detect Grand Cross with only 1 opposition (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-09-01T08:00:00.000Z");
 
       // Only one opposition — need 2 for a Grand Cross
@@ -350,7 +350,7 @@ describe("quadruple-aspects.events integration", () => {
       expect(grandCrossEvents).toHaveLength(0);
     });
 
-    it("should not detect Kite without a Grand Trine base", () => {
+    it("does not detect Kite without a Grand Trine base", () => {
       const currentMinute = moment.utc("2024-09-01T10:00:00.000Z");
 
       // Kite-specific aspects but no Grand Trine (no trines at all)
@@ -371,7 +371,7 @@ describe("quadruple-aspects.events integration", () => {
       expect(kiteEvents).toHaveLength(0);
     });
 
-    it("should not detect Grand Cross when squares are replaced with trines", () => {
+    it("does not detect Grand Cross when squares are replaced with trines", () => {
       const currentMinute = moment.utc("2024-09-01T12:00:00.000Z");
 
       // Two oppositions but connections are trines, not squares

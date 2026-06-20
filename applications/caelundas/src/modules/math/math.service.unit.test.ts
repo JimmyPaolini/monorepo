@@ -13,27 +13,27 @@ describe("MathService", () => {
     service = await module.resolve(MathService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("static constants", () => {
-    it("should have correct arcseconds per degree", () => {
+    it("has correct arcseconds per degree", () => {
       expect(MathService.arcsecondsPerArcminute).toBe(60);
       expect(MathService.arcminutesPerDegree).toBe(60);
       expect(MathService.arcsecondsPerDegree).toBe(3600);
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("normalizeDegrees", () => {
-    it("should return the same value for degrees within 0-360", () => {
+    it("returns the same value for degrees within 0-360", () => {
       expect(service.normalizeDegrees(0)).toBe(0);
       expect(service.normalizeDegrees(45)).toBe(45);
       expect(service.normalizeDegrees(180)).toBe(180);
       expect(service.normalizeDegrees(359)).toBe(359);
     });
 
-    it("should wrap degrees >= 360 to 0-360 range", () => {
+    it("wraps degrees >= 360 to 0-360 range", () => {
       expect(service.normalizeDegrees(360)).toBe(0);
       expect(service.normalizeDegrees(361)).toBe(1);
       expect(service.normalizeDegrees(450)).toBe(90);
@@ -41,7 +41,7 @@ describe("MathService", () => {
       expect(service.normalizeDegrees(725)).toBe(5);
     });
 
-    it("should wrap negative degrees to 0-360 range", () => {
+    it("wraps negative degrees to 0-360 range", () => {
       expect(service.normalizeDegrees(-1)).toBe(359);
       expect(service.normalizeDegrees(-10)).toBe(350);
       expect(service.normalizeDegrees(-90)).toBe(270);
@@ -52,26 +52,26 @@ describe("MathService", () => {
   });
 
   describe("getAngle", () => {
-    it("should return 0 for identical longitudes", () => {
+    it("returns 0 for identical longitudes", () => {
       expect(service.getAngle(0, 0)).toBe(0);
       expect(service.getAngle(45, 45)).toBe(45 - 45);
       expect(service.getAngle(180, 180)).toBe(0);
     });
 
-    it("should return the smaller angle between two longitudes", () => {
+    it("returns the smaller angle between two longitudes", () => {
       expect(service.getAngle(0, 90)).toBe(90);
       expect(service.getAngle(90, 0)).toBe(90);
       expect(service.getAngle(0, 180)).toBe(180);
       expect(service.getAngle(180, 0)).toBe(180);
     });
 
-    it("should handle angles > 180 by returning the shorter path", () => {
+    it("handles angles > 180 by returning the shorter path", () => {
       expect(service.getAngle(0, 270)).toBe(90); // Shorter path is 90 degrees
       expect(service.getAngle(10, 350)).toBe(20); // Shorter path is 20 degrees
       expect(service.getAngle(350, 10)).toBe(20);
     });
 
-    it("should handle unnormalized longitudes", () => {
+    it("handles unnormalized longitudes", () => {
       expect(service.getAngle(360, 0)).toBe(0);
       expect(service.getAngle(-90, 90)).toBe(180);
       expect(service.getAngle(450, 90)).toBe(0); // 450 normalizes to 90
@@ -79,13 +79,13 @@ describe("MathService", () => {
   });
 
   describe("normalizeForComparison", () => {
-    it("should return current unchanged when difference is <= 180", () => {
+    it("returns current unchanged when difference is <= 180", () => {
       expect(service.normalizeForComparison(50, 100)).toBe(50);
       expect(service.normalizeForComparison(100, 50)).toBe(100);
       expect(service.normalizeForComparison(180, 0)).toBe(180);
     });
 
-    it("should adjust current when crossing the 0/360 boundary", () => {
+    it("adjusts current when crossing the 0/360 boundary", () => {
       // The function adjusts current relative to reference
       // When current=350 and reference=10, diff=340 > 180
       // Since 350 > 10, it subtracts 360 from current
@@ -98,7 +98,7 @@ describe("MathService", () => {
   });
 
   describe("isMaximum", () => {
-    it("should return true when current is greater than both neighbors", () => {
+    it("returns true when current is greater than both neighbors", () => {
       expect(
         service.isMaximum({ current: 10, next: 5, previous: 5 }),
       ).toBeTruthy();
@@ -107,7 +107,7 @@ describe("MathService", () => {
       ).toBeTruthy();
     });
 
-    it("should return false when current is not a maximum", () => {
+    it("returns false when current is not a maximum", () => {
       expect(
         service.isMaximum({ current: 5, next: 10, previous: 10 }),
       ).toBeFalsy();
@@ -124,7 +124,7 @@ describe("MathService", () => {
   });
 
   describe("isMinimum", () => {
-    it("should return true when current is less than both neighbors", () => {
+    it("returns true when current is less than both neighbors", () => {
       expect(
         service.isMinimum({ current: 5, next: 10, previous: 10 }),
       ).toBeTruthy();
@@ -133,7 +133,7 @@ describe("MathService", () => {
       ).toBeTruthy();
     });
 
-    it("should return false when current is not a minimum", () => {
+    it("returns false when current is not a minimum", () => {
       expect(
         service.isMinimum({ current: 10, next: 5, previous: 5 }),
       ).toBeFalsy();
@@ -150,15 +150,15 @@ describe("MathService", () => {
   });
 
   describe("getCombinations", () => {
-    it("should return empty array for k=0", () => {
+    it("returns empty array for k=0", () => {
       expect(service.getCombinations([1, 2, 3], 0)).toEqual([[]]);
     });
 
-    it("should return single-element combinations for k=1", () => {
+    it("returns single-element combinations for k=1", () => {
       expect(service.getCombinations([1, 2, 3], 1)).toEqual([[1], [2], [3]]);
     });
 
-    it("should return pairs for k=2", () => {
+    it("returns pairs for k=2", () => {
       expect(service.getCombinations([1, 2, 3], 2)).toEqual([
         [1, 2],
         [1, 3],
@@ -166,7 +166,7 @@ describe("MathService", () => {
       ]);
     });
 
-    it("should return triplets for k=3", () => {
+    it("returns triplets for k=3", () => {
       expect(service.getCombinations([1, 2, 3, 4], 3)).toEqual([
         [1, 2, 3],
         [1, 2, 4],
@@ -175,15 +175,15 @@ describe("MathService", () => {
       ]);
     });
 
-    it("should return the full array when k equals array length", () => {
+    it("returns the full array when k equals array length", () => {
       expect(service.getCombinations([1, 2, 3], 3)).toEqual([[1, 2, 3]]);
     });
 
-    it("should return empty array when k > array length", () => {
+    it("returns empty array when k > array length", () => {
       expect(service.getCombinations([1, 2], 3)).toEqual([]);
     });
 
-    it("should work with string arrays", () => {
+    it("works with string arrays", () => {
       expect(service.getCombinations(["a", "b", "c"], 2)).toEqual([
         ["a", "b"],
         ["a", "c"],

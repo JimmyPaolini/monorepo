@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { environmentSchema } from "./modules/lexico-ingestion/lexico-ingestion.constants";
 
 describe("environment schema e2e", () => {
-  it("allows an empty schema by default", () => {
+  it("should parse an empty environment schema with defaults", () => {
     expect(environmentSchema.parse({})).toEqual({
       POSTGRES_DB: "postgres",
       POSTGRES_HOST: "localhost",

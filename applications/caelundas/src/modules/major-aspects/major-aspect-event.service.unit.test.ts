@@ -31,12 +31,8 @@ describe("MajorAspectEventService", () => {
     aspectsUtilitiesService = await module.resolve(AspectsUtilities);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("buildMajorAspectEvent", () => {
-    it("should create perfective conjunction event", () => {
+    it("creates perfective conjunction event", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "sun",
@@ -63,7 +59,7 @@ describe("MajorAspectEventService", () => {
       expect(event.end).toEqual(timestamp);
     });
 
-    it("should create forming opposition event", () => {
+    it("creates forming opposition event", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "sun",
@@ -83,7 +79,7 @@ describe("MajorAspectEventService", () => {
       expect(event.categories).toContain("Opposite");
     });
 
-    it("should create dissolving trine event", () => {
+    it("creates dissolving trine event", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "venus",
@@ -105,7 +101,7 @@ describe("MajorAspectEventService", () => {
       expect(event.categories).toContain("Jupiter");
     });
 
-    it("should create square event", () => {
+    it("creates square event", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "mercury",
@@ -123,7 +119,7 @@ describe("MajorAspectEventService", () => {
       expect(event.categories).toContain("Square");
     });
 
-    it("should create sextile event", () => {
+    it("creates sextile event", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "moon",
@@ -141,7 +137,7 @@ describe("MajorAspectEventService", () => {
       expect(event.categories).toContain("Sextile");
     });
 
-    it("should throw error when no major aspect is found", () => {
+    it("throws error when no major aspect is found", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
 
       expect(() =>
@@ -156,7 +152,7 @@ describe("MajorAspectEventService", () => {
       ).toThrow("No major aspect found");
     });
 
-    it("should handle wrapped longitudes (near 360/0 degrees)", () => {
+    it("handles wrapped longitudes (near 360/0 degrees)", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
       const event = service.buildMajorAspectEvent({
         body1: "sun",
@@ -171,8 +167,12 @@ describe("MajorAspectEventService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("isAspect", () => {
-    it("should return true for conjunction within orb", () => {
+    it("returns true for conjunction within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "conjunct",
@@ -189,7 +189,7 @@ describe("MajorAspectEventService", () => {
       ).toBe(true);
     });
 
-    it("should return false for conjunction outside orb", () => {
+    it("returns false for conjunction outside orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "conjunct",
@@ -199,7 +199,7 @@ describe("MajorAspectEventService", () => {
       ).toBe(false);
     });
 
-    it("should return true for opposition within orb", () => {
+    it("returns true for opposition within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "opposite",
@@ -216,7 +216,7 @@ describe("MajorAspectEventService", () => {
       ).toBe(true);
     });
 
-    it("should return true for trine within orb", () => {
+    it("returns true for trine within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "trine",
@@ -233,7 +233,7 @@ describe("MajorAspectEventService", () => {
       ).toBe(true);
     });
 
-    it("should return true for square within orb", () => {
+    it("returns true for square within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "square",
@@ -250,7 +250,7 @@ describe("MajorAspectEventService", () => {
       ).toBe(true);
     });
 
-    it("should return true for sextile within orb", () => {
+    it("returns true for sextile within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
           aspect: "sextile",
@@ -269,25 +269,25 @@ describe("MajorAspectEventService", () => {
   });
 
   describe("getMajorAspect", () => {
-    it("should return conjunct for bodies at same longitude", () => {
+    it("returns conjunct for bodies at same longitude", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 }),
       ).toBe("conjunct");
     });
 
-    it("should return conjunct for bodies within conjunction orb", () => {
+    it("returns conjunct for bodies within conjunction orb", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 }),
       ).toBe("conjunct");
     });
 
-    it("should return opposite for bodies 180° apart", () => {
+    it("returns opposite for bodies 180° apart", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 }),
       ).toBe("opposite");
     });
 
-    it("should return trine for bodies 120° apart", () => {
+    it("returns trine for bodies 120° apart", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
       ).toBe("trine");
@@ -296,7 +296,7 @@ describe("MajorAspectEventService", () => {
       ).toBe("trine");
     });
 
-    it("should return square for bodies 90° apart", () => {
+    it("returns square for bodies 90° apart", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 }),
       ).toBe("square");
@@ -305,7 +305,7 @@ describe("MajorAspectEventService", () => {
       ).toBe("square");
     });
 
-    it("should return sextile for bodies 60° apart", () => {
+    it("returns sextile for bodies 60° apart", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 }),
       ).toBe("sextile");
@@ -314,7 +314,7 @@ describe("MajorAspectEventService", () => {
       ).toBe("sextile");
     });
 
-    it("should return null when no major aspect is within orb", () => {
+    it("returns null when no major aspect is within orb", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
       ).toBeNull();
@@ -323,7 +323,7 @@ describe("MajorAspectEventService", () => {
       ).toBeNull();
     });
 
-    it("should handle wrapping around 360°", () => {
+    it("handles wrapping around 360°", () => {
       expect(
         service.getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 }),
       ).toBe("conjunct");

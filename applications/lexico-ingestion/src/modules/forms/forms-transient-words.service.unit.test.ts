@@ -16,7 +16,7 @@ describe("FormsTransientWordsService", () => {
     service = await module.resolve(FormsTransientWordsService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 

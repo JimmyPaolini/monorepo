@@ -1,7 +1,8 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerModule } from "../logger/logger.module";
+import { LoggerService } from "../logger/logger.service";
 
 import { EpigraphikDatenbankClaussSlabyCommand } from "./epigraphik-datenbank-clauss-slaby.command";
 
@@ -11,13 +12,292 @@ describe("EpigraphikDatenbankClaussSlabyCommand", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [LoggerModule],
-      providers: [EpigraphikDatenbankClaussSlabyCommand],
+      providers: [
+        EpigraphikDatenbankClaussSlabyCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
     }).compile();
 
     command = await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(command).toBeDefined();
+  });
+});
+
+const {
+  accessMock,
+  appendFileMock,
+  existsSyncMock,
+  mkdirMock,
+  mkdirSyncMock,
+  writeFileMock,
+} = vi.hoisted(() => ({
+  accessMock: vi.fn(),
+  appendFileMock: vi.fn(),
+  existsSyncMock: vi.fn(),
+  mkdirMock: vi.fn(),
+  mkdirSyncMock: vi.fn(),
+  writeFileMock: vi.fn(),
+}));
+
+vi.mock("node:fs", () => ({
+  existsSync: existsSyncMock,
+  mkdirSync: mkdirSyncMock,
+}));
+
+vi.mock("node:fs/promises", () => ({
+  access: accessMock,
+  appendFile: appendFileMock,
+  mkdir: mkdirMock,
+  writeFile: writeFileMock,
+}));
+
+function createLoggerServiceMock(): {
+  error: ReturnType<typeof vi.fn>;
+  log: ReturnType<typeof vi.fn>;
+  setContext: ReturnType<typeof vi.fn>;
+  warn: ReturnType<typeof vi.fn>;
+} {
+  return {
+    error: vi.fn(),
+    log: vi.fn(),
+    setContext: vi.fn(),
+    warn: vi.fn(),
+  };
+}
+
+describe("EpigraphikDatenbankClaussSlabyCommand", () => {
+  let command: EpigraphikDatenbankClaussSlabyCommand;
+
+  const loggerService = {
+    error: vi.fn(),
+    log: vi.fn(),
+    setContext: vi.fn(),
+    warn: vi.fn(),
+  };
+
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    existsSyncMock.mockReturnValue(true);
+    mkdirMock.mockResolvedValue(undefined);
+    appendFileMock.mockResolvedValue(undefined);
+    writeFileMock.mockResolvedValue(undefined);
+
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        EpigraphikDatenbankClaussSlabyCommand,
+        {
+          provide: LoggerService,
+          useValue: loggerService,
+        },
+      ],
+    }).compile();
+
+    command = await moduleRef.resolve(EpigraphikDatenbankClaussSlabyCommand);
+  });
+
+  it("is defined", () => {
+    expect(command).toBeDefined();
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      "EpigraphikDatenbankClaussSlabyCommand",
+    );
+  });
+
+  it("should create output directory when it does not exist", async () => {
+    existsSyncMock.mockReturnValue(false);
+
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        EpigraphikDatenbankClaussSlabyCommand,
+        {
+          provide: LoggerService,
+          useValue: loggerService,
+        },
+      ],
+    }).compile();
+
+    await moduleRef.resolve(EpigraphikDatenbankClaussSlabyCommand);
+
+    expect(mkdirSyncMock).toHaveBeenCalledWith(expect.any(String), {
+      recursive: true,
+    });
+  });
+
+  it("should save chunk data and stop when payload has no records", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          await Promise.resolve({
+            json: async () => await Promise.resolve({ data: [] }),
+            ok: true,
+          }),
+      ),
+    );
+
+    const shouldContinue = await (
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      }
+    ).saveChunkData(0, "/tmp/chunk-0.json");
+
+    expect(shouldContinue).toBe(false);
+    expect(writeFileMock).not.toHaveBeenCalled();
+  });
+
+  it("should save chunk data and continue when fetch is successful", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          await Promise.resolve({
+            json: async () => await Promise.resolve({ data: [{ id: 1 }] }),
+            ok: true,
+          }),
+      ),
+    );
+
+    const shouldContinue = await (
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      }
+    ).saveChunkData(1000, "/tmp/chunk-1000.json");
+
+    expect(shouldContinue).toBe(true);
+    expect(writeFileMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("should warn and continue when save chunk response is not ok", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(
+        async () =>
+          await Promise.resolve({
+            ok: false,
+            statusText: "Too Many Requests",
+          }),
+      ),
+    );
+
+    const shouldContinue = await (
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      }
+    ).saveChunkData(2000, "/tmp/chunk-2000.json");
+
+    expect(shouldContinue).toBe(true);
+    expect(loggerService.warn).toHaveBeenCalledWith(
+      "⚠️ Failed to fetch records: Too Many Requests",
+    );
+  });
+
+  it("should skip chunk download when chunk file already exists", async () => {
+    accessMock.mockResolvedValueOnce(undefined);
+
+    const result = await (
+      command as unknown as {
+        downloadChunkIfMissing: (start: number) => Promise<boolean>;
+      }
+    ).downloadChunkIfMissing(0);
+
+    expect(result).toBe(true);
+    expect(loggerService.log).toHaveBeenCalledWith(
+      "⏭️ Chunk 0 already exists, skipping.",
+    );
+  });
+
+  it("should download missing chunk through chunk-data workflow", async () => {
+    accessMock.mockRejectedValueOnce(new Error("missing"));
+
+    vi.spyOn(
+      command as unknown as {
+        downloadChunkData: (
+          start: number,
+          chunkFile: string,
+        ) => Promise<boolean>;
+      },
+      "downloadChunkData",
+    ).mockResolvedValueOnce(false);
+
+    const result = await (
+      command as unknown as {
+        downloadChunkIfMissing: (start: number) => Promise<boolean>;
+      }
+    ).downloadChunkIfMissing(1000);
+
+    expect(result).toBe(false);
+  });
+
+  it("should handle chunk download errors and append error log", async () => {
+    vi.spyOn(
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      },
+      "saveChunkData",
+    ).mockRejectedValueOnce(new Error("network"));
+
+    const result = await (
+      command as unknown as {
+        downloadChunkData: (
+          start: number,
+          chunkFile: string,
+        ) => Promise<boolean>;
+      }
+    ).downloadChunkData(0, "/tmp/chunk-0.json");
+
+    expect(result).toBe(true);
+    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(appendFileMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("should stringify non-Error failures when chunk download throws", async () => {
+    vi.spyOn(
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      },
+      "saveChunkData",
+    ).mockRejectedValueOnce("network-failure");
+
+    const result = await (
+      command as unknown as {
+        downloadChunkData: (
+          start: number,
+          chunkFile: string,
+        ) => Promise<boolean>;
+      }
+    ).downloadChunkData(0, "/tmp/chunk-0.json");
+
+    expect(result).toBe(true);
+    expect(loggerService.error).toHaveBeenCalledWith(
+      "❌ Error fetching chunk at 0: network-failure",
+    );
+    expect(appendFileMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("should run and stop when a chunk signals no further data", async () => {
+    const downloadSpy = vi
+      .spyOn(
+        command as unknown as {
+          downloadChunkIfMissing: (start: number) => Promise<boolean>;
+        },
+        "downloadChunkIfMissing",
+      )
+      .mockResolvedValueOnce(true)
+      .mockResolvedValueOnce(false);
+
+    await command.run();
+
+    expect(mkdirMock).toHaveBeenCalledTimes(1);
+    expect(downloadSpy).toHaveBeenCalledTimes(2);
+    expect(downloadSpy).toHaveBeenNthCalledWith(1, 0);
+    expect(downloadSpy).toHaveBeenNthCalledWith(2, 1000);
+    expect(loggerService.log).toHaveBeenCalledWith(
+      "✅ Finished downloading chunks.",
+    );
   });
 });

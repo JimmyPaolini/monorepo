@@ -67,10 +67,6 @@ describe("EphemerisHorizonService", () => {
     );
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("computeAzimuthElevationForMinute", () => {
     it("returns azimuth/elevation from sweph azalt", () => {
       const result = service.computeAzimuthElevationForMinute({
@@ -85,6 +81,10 @@ describe("EphemerisHorizonService", () => {
 
       expect(result).toEqual({ azimuth: 180, elevation: 44.8 });
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("computeAzimuthElevationForBody", () => {

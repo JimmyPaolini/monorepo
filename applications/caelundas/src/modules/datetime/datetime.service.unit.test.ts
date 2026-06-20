@@ -14,10 +14,6 @@ describe("DatetimeService", () => {
     service = await module.resolve(DatetimeService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("generateMinutes", () => {
     it("yields the start moment when start equals end", () => {
       const start = moment.utc("2024-03-21T00:00:00.000Z");
@@ -52,6 +48,10 @@ describe("DatetimeService", () => {
       const result = [...service.generateMinutes(start, end)];
       expect(result).toHaveLength(0);
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("generateDates", () => {

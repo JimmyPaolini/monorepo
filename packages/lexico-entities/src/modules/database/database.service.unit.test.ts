@@ -14,7 +14,7 @@ describe("DatabaseService", () => {
     service = module.get(DatabaseService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 });

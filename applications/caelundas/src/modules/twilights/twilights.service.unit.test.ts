@@ -33,7 +33,11 @@ describe("TwilightsService", () => {
     service = await module.resolve(TwilightsService);
   });
 
-  describe("service.detect", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
     it("detects civil dawn transition", () => {
       const currentMinute = moment.utc("2024-03-21T06:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -68,7 +72,7 @@ describe("TwilightsService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
+  describe("detectProgressive", () => {
     it("builds Daylight and Night progressive spans", () => {
       const astronomicalDawn: Event = {
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dawn"],
@@ -113,7 +117,7 @@ describe("TwilightsService", () => {
     });
   });
 
-  describe("public constants", () => {
+  describe("static constants", () => {
     it("exposes twilight thresholds and constants", () => {
       expect(TwilightsService.twilights).toEqual([
         "civil",
@@ -127,7 +131,7 @@ describe("TwilightsService", () => {
     });
   });
 
-  describe("delegation", () => {
+  describe("detect delegation", () => {
     const buildEvent = (description: string): Event => {
       const timestamp = moment.utc("2024-03-21T00:00:00.000Z");
       return {
@@ -249,9 +253,5 @@ describe("TwilightsService", () => {
         ]),
       ).toEqual([buildEvent("dawn"), buildEvent("dusk"), buildEvent("pair")]);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

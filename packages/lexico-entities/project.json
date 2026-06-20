@@ -192,6 +192,35 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "test": {
+      "cache": true,
+      "configurations": {
+        "coverage": {
+          "args": "run --coverage"
+        },
+        "integration": {
+          "args": "run integration.test.ts"
+        },
+        "unit": {
+          "args": "run unit.test.ts"
+        },
+        "watch": {
+          "args": ""
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.test.ts",
+        "{projectRoot}/**/*.ts",
+        "{workspaceRoot}/configuration/vitest.config.ts",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "vitest {args}",
+        "cwd": "{projectRoot}"
+      }
+    },
     "type-coverage": {},
     "typecheck": {},
     "yaml-lint": {}

@@ -14,10 +14,6 @@ describe("EphemerisConstantsService", () => {
     service = await module.resolve(EphemerisConstantsService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("isNode", () => {
     it("returns true for node bodies", () => {
       expect(service.isNode("north lunar node")).toBe(true);
@@ -29,6 +25,10 @@ describe("EphemerisConstantsService", () => {
       expect(service.isNode("sun")).toBe(false);
       expect(service.isNode("moon")).toBe(false);
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("getSwissEphemerisConstantForBody", () => {

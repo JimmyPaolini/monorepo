@@ -27,7 +27,7 @@ describe("CaelundasCommand", () => {
     command = await module.resolve(CaelundasCommand);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(command).toBeDefined();
   });
 });

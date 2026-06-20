@@ -41,13 +41,9 @@ describe("DailyCyclesService", () => {
     s = helperService;
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("dailySolarCycle.events", () => {
-    describe("service.detect", () => {
-      it("should detect sunrise event when sun rises above horizon", () => {
+    describe("detect", () => {
+      it("detects sunrise event when sun rises above horizon", () => {
         const currentMinute = moment.utc("2024-03-21T06:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -69,7 +65,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Solar");
       });
 
-      it("should detect sunset event when sun sets below horizon", () => {
+      it("detects sunset event when sun sets below horizon", () => {
         const currentMinute = moment.utc("2024-03-21T18:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -91,7 +87,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Solar");
       });
 
-      it("should detect solar zenith when sun reaches maximum elevation", () => {
+      it("detects solar zenith when sun reaches maximum elevation", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -113,7 +109,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Daily Solar Cycle");
       });
 
-      it("should detect solar nadir when sun reaches minimum elevation", () => {
+      it("detects solar nadir when sun reaches minimum elevation", () => {
         const currentMinute = moment.utc("2024-03-22T00:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -135,7 +131,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Daily Solar Cycle");
       });
 
-      it("should return empty array when no events occur", () => {
+      it("returns empty array when no events occur", () => {
         const currentMinute = moment.utc("2024-03-21T10:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -155,7 +151,7 @@ describe("DailyCyclesService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return multiple events if they occur at the same minute", () => {
+      it("returns multiple events if they occur at the same minute", () => {
         const currentMinute = moment.utc("2024-03-21T06:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -178,7 +174,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getSunriseEvent", () => {
-      it("should create a sunrise event with correct structure", () => {
+      it("creates a sunrise event with correct structure", () => {
         const date = moment.utc("2024-03-21T06:30:00.000Z");
 
         const event = service.buildSunriseEvent(date);
@@ -194,7 +190,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getSolarZenithEvent", () => {
-      it("should create a solar zenith event with correct structure", () => {
+      it("creates a solar zenith event with correct structure", () => {
         const date = moment.utc("2024-03-21T12:00:00.000Z");
 
         const event = service.buildSolarZenithEvent(date);
@@ -210,7 +206,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getSunsetEvent", () => {
-      it("should create a sunset event with correct structure", () => {
+      it("creates a sunset event with correct structure", () => {
         const date = moment.utc("2024-03-21T18:30:00.000Z");
 
         const event = service.buildSunsetEvent(date);
@@ -226,7 +222,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getSolarNadirEvent", () => {
-      it("should create a solar nadir event with correct structure", () => {
+      it("creates a solar nadir event with correct structure", () => {
         const date = moment.utc("2024-03-22T00:00:00.000Z");
 
         const event = service.buildSolarNadirEvent(date);
@@ -242,9 +238,13 @@ describe("DailyCyclesService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("dailyLunarCycle.events", () => {
-    describe("service.detect", () => {
-      it("should detect moonrise event when moon rises above horizon", () => {
+    describe("detect", () => {
+      it("detects moonrise event when moon rises above horizon", () => {
         const currentMinute = moment.utc("2024-03-21T20:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -267,7 +267,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Lunar");
       });
 
-      it("should detect moonset event when moon sets below horizon", () => {
+      it("detects moonset event when moon sets below horizon", () => {
         const currentMinute = moment.utc("2024-03-22T06:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -290,7 +290,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Lunar");
       });
 
-      it("should detect lunar zenith when moon reaches maximum elevation", () => {
+      it("detects lunar zenith when moon reaches maximum elevation", () => {
         const currentMinute = moment.utc("2024-03-22T01:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -313,7 +313,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Daily Lunar Cycle");
       });
 
-      it("should detect lunar nadir when moon reaches minimum elevation", () => {
+      it("detects lunar nadir when moon reaches minimum elevation", () => {
         const currentMinute = moment.utc("2024-03-21T13:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -336,7 +336,7 @@ describe("DailyCyclesService", () => {
         expect(events[0]?.categories).toContain("Daily Lunar Cycle");
       });
 
-      it("should return empty array when no events occur", () => {
+      it("returns empty array when no events occur", () => {
         const currentMinute = moment.utc("2024-03-21T22:00:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -356,7 +356,7 @@ describe("DailyCyclesService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should handle multiple events at once", () => {
+      it("handles multiple events at once", () => {
         const currentMinute = moment.utc("2024-03-21T20:30:00.000Z");
         const previousMinute = currentMinute.clone().subtract(1, "minute");
         const nextMinute = currentMinute.clone().add(1, "minute");
@@ -382,7 +382,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getMoonriseEvent", () => {
-      it("should create a moonrise event with correct structure", () => {
+      it("creates a moonrise event with correct structure", () => {
         const date = moment.utc("2024-03-21T20:30:00.000Z");
 
         const event = service.buildMoonriseEvent(date);
@@ -398,7 +398,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getLunarZenithEvent", () => {
-      it("should create a lunar zenith event with correct structure", () => {
+      it("creates a lunar zenith event with correct structure", () => {
         const date = moment.utc("2024-03-22T01:00:00.000Z");
 
         const event = service.buildLunarZenithEvent(date);
@@ -414,7 +414,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getMoonsetEvent", () => {
-      it("should create a moonset event with correct structure", () => {
+      it("creates a moonset event with correct structure", () => {
         const date = moment.utc("2024-03-22T06:30:00.000Z");
 
         const event = service.buildMoonsetEvent(date);
@@ -430,7 +430,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("getLunarNadirEvent", () => {
-      it("should create a lunar nadir event with correct structure", () => {
+      it("creates a lunar nadir event with correct structure", () => {
         const date = moment.utc("2024-03-21T13:00:00.000Z");
 
         const event = service.buildLunarNadirEvent(date);
@@ -452,7 +452,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("DailyCyclesService.sunRadiusDegrees", () => {
-      it("should have correct value for sun radius", () => {
+      it("has correct value for sun radius", () => {
         // Sun radius is 16 arcminutes, 60 arcminutes per degree
         expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
         expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(0.2667, 3);
@@ -460,7 +460,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("isRise", () => {
-      it("should return true when crossing above sun radius threshold", () => {
+      it("returns true when crossing above sun radius threshold", () => {
         // Rise occurs when elevation goes from below -DailyCyclesService.sunRadiusDegrees to above
         const result = s.isRise({
           current: 0, // Above threshold
@@ -470,7 +470,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeTruthy();
       });
 
-      it("should return true at exact threshold crossing", () => {
+      it("returns true at exact threshold crossing", () => {
         const result = s.isRise({
           current: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
           previous: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
@@ -479,7 +479,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeTruthy();
       });
 
-      it("should return false when elevation stays below threshold", () => {
+      it("returns false when elevation stays below threshold", () => {
         const result = s.isRise({
           current: -0.5,
           previous: -1,
@@ -488,7 +488,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeFalsy();
       });
 
-      it("should return false when elevation stays above threshold", () => {
+      it("returns false when elevation stays above threshold", () => {
         const result = s.isRise({
           current: 1,
           previous: 0.5,
@@ -497,7 +497,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeFalsy();
       });
 
-      it("should return false when crossing threshold downward (set direction)", () => {
+      it("returns false when crossing threshold downward (set direction)", () => {
         const result = s.isRise({
           current: -0.5, // Below threshold
           previous: 0, // Above threshold
@@ -508,7 +508,7 @@ describe("DailyCyclesService", () => {
     });
 
     describe("isSet", () => {
-      it("should return true when crossing below sun radius threshold", () => {
+      it("returns true when crossing below sun radius threshold", () => {
         // Set occurs when elevation goes from above -DailyCyclesService.sunRadiusDegrees to below
         const result = s.isSet({
           current: -0.5, // Below threshold
@@ -518,7 +518,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeTruthy();
       });
 
-      it("should return true at exact threshold crossing", () => {
+      it("returns true at exact threshold crossing", () => {
         const result = s.isSet({
           current: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
           previous: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
@@ -527,7 +527,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeTruthy();
       });
 
-      it("should return false when elevation stays above threshold", () => {
+      it("returns false when elevation stays above threshold", () => {
         const result = s.isSet({
           current: 0.5,
           previous: 1,
@@ -536,7 +536,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeFalsy();
       });
 
-      it("should return false when elevation stays below threshold", () => {
+      it("returns false when elevation stays below threshold", () => {
         const result = s.isSet({
           current: -1,
           previous: -0.5,
@@ -545,7 +545,7 @@ describe("DailyCyclesService", () => {
         expect(result).toBeFalsy();
       });
 
-      it("should return false when crossing threshold upward (rise direction)", () => {
+      it("returns false when crossing threshold upward (rise direction)", () => {
         const result = s.isSet({
           current: 0, // Above threshold
           previous: -0.5, // Below threshold

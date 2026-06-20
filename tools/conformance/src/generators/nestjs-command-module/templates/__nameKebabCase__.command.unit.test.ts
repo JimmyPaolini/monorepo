@@ -17,7 +17,7 @@ describe("{{namePascalCase}}Command", () => {
     command = await module.resolve({{namePascalCase}}Command);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(command).toBeDefined();
   });
 });

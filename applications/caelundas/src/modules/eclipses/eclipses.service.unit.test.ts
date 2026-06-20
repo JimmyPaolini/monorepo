@@ -63,6 +63,10 @@ describe("EclipsesService", () => {
     vi.clearAllMocks();
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("buildLunarEclipseEvent", () => {
     it("delegates lunar event building", () => {
       const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
@@ -257,9 +261,5 @@ describe("EclipsesService", () => {
       ]);
       expect(result).toEqual([progressiveEvent]);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

@@ -90,16 +90,16 @@ describe("EphemerisCoordinateService", () => {
     );
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("computeBodyCoordinate", () => {
     it("returns longitude and latitude from calc", () => {
       const result = service.computeBodyCoordinate("sun", 2_460_395.5);
 
       expect(result).toEqual({ latitude: -1.2, longitude: 120.5 });
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("computeDistanceForBody", () => {
