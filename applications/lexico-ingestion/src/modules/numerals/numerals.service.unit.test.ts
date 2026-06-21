@@ -50,8 +50,12 @@ describe("NumeralsService", () => {
     });
 
     it("should throw for numbers out of range", () => {
-      expect(() => service.toRoman(0)).toThrow();
-      expect(() => service.toRoman(4000)).toThrow();
+      expect(() => service.toRoman(0)).toThrow(
+        "value must be between 1 and 3999",
+      );
+      expect(() => service.toRoman(4000)).toThrow(
+        "value must be between 1 and 3999",
+      );
     });
   });
 });

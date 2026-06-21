@@ -1,3 +1,5 @@
+/* eslint-disable vitest/require-top-level-describe */
+
 import {
   type ClassDeclaration,
   createSourceFile,

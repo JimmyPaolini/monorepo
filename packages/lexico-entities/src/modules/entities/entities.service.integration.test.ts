@@ -409,11 +409,9 @@ describe("entity integration schema", () => {
   });
 
   it("creates the expected tables, indexes, and uniqueness constraints", async () => {
-    await verifyDatabaseSchema();
+    await expect(verifyDatabaseSchema()).resolves.toBeUndefined();
   });
-});
 
-describe("Entity database operations", () => {
   // cspell:ignore Metadatas Participlial
 
   it("should have all registered entities", () => {

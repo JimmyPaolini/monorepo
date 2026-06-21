@@ -26,16 +26,21 @@ describe("main", () => {
     await import("./main");
 
     expect(mockCommandFactoryRun).toHaveBeenCalledTimes(1);
-    expect(mockCommandFactoryRun.mock.calls[0]?.[0]?.name).toBe(
-      CaelundasModule.name,
-    );
+    const firstCall = mockCommandFactoryRun.mock.calls[0] as
+      | [object, object]
+      | undefined;
+    const module = firstCall?.[0] as undefined | { name?: string };
+    expect(module?.name).toBe(CaelundasModule.name);
 
-    const options = mockCommandFactoryRun.mock.calls[0]?.[1] as {
-      bufferLogs?: boolean;
-      logger?: unknown;
-    };
+    const options = firstCall?.[1] as
+      | undefined
+      | {
+          bufferLogs?: boolean;
+          logger?: unknown;
+        };
 
-    expect(options?.bufferLogs).toBe(true);
-    expect(options?.logger).toBeDefined();
+    if (options === undefined) throw new Error("options is undefined");
+    expect(options.bufferLogs).toBe(true);
+    expect(options.logger).toBeDefined();
   });
 });

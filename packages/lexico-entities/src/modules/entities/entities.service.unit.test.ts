@@ -1126,21 +1126,23 @@ describe("ENTITY_EXPECTATIONS", () => {
   });
 
   it("covers every registered entity exactly once", () => {
-    assertEntityRegistryMatches(
-      Object.values(ENTITY_EXPECTATIONS).map(
-        (entityExpectation) => entityExpectation.entityClass,
-      ),
-      LEXICO_DATABASE_ENTITIES,
-    );
+    expect(() => {
+      assertEntityRegistryMatches(
+        Object.values(ENTITY_EXPECTATIONS).map(
+          (entityExpectation) => entityExpectation.entityClass,
+        ),
+        LEXICO_DATABASE_ENTITIES,
+      );
 
-    assertExactSet(
-      Object.keys(ENTITY_EXPECTATIONS),
-      LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
-      {
-        label: "entity expectation coverage",
-        toComparableString: (value) => value,
-      },
-    );
+      assertExactSet(
+        Object.keys(ENTITY_EXPECTATIONS),
+        LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
+        {
+          label: "entity expectation coverage",
+          toComparableString: (value) => value,
+        },
+      );
+    }).not.toThrow();
   });
 
   it("defines a canonical metadata expectation surface", () => {
@@ -1156,7 +1158,9 @@ describe("ENTITY_EXPECTATIONS", () => {
 describe("entity metadata definitions", () => {
   for (const entityExpectation of Object.values(ENTITY_EXPECTATIONS)) {
     it(`${entityExpectation.entityClass.name} matches its metadata contract`, () => {
-      verifyEntityDefinitionExpectation(entityExpectation);
+      expect(() => {
+        verifyEntityDefinitionExpectation(entityExpectation);
+      }).not.toThrow();
     });
   }
 });
@@ -1171,14 +1175,16 @@ describe("entity relation contracts", () => {
   });
 
   it("covers every registered entity exactly once in relation expectations", () => {
-    assertExactSet(
-      Object.keys(ENTITY_RELATION_EXPECTATIONS),
-      LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
-      {
-        label: "entity relation expectation coverage",
-        toComparableString: (value) => value,
-      },
-    );
+    expect(() => {
+      assertExactSet(
+        Object.keys(ENTITY_RELATION_EXPECTATIONS),
+        LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
+        {
+          label: "entity relation expectation coverage",
+          toComparableString: (value) => value,
+        },
+      );
+    }).not.toThrow();
   });
 
   for (const [entityName, relationExpectations] of Object.entries(
@@ -1187,7 +1193,9 @@ describe("entity relation contracts", () => {
     it(`${entityName} relation definitions match their contract`, () => {
       const entityClass = getRegisteredEntityClass(entityName);
 
-      verifyRelationExpectations(entityClass, relationExpectations);
+      expect(() => {
+        verifyRelationExpectations(entityClass, relationExpectations);
+      }).not.toThrow();
     });
   }
 });
@@ -1202,21 +1210,25 @@ describe("entity inheritance contracts", () => {
   });
 
   it("covers every registered inheritance entity exactly once", () => {
-    assertExactSet(
-      getRegisteredInheritanceEntityNames(),
-      Object.keys(ENTITY_INHERITANCE_EXPECTATIONS),
-      {
-        label: "entity inheritance expectation coverage",
-        toComparableString: (value) => value,
-      },
-    );
+    expect(() => {
+      assertExactSet(
+        getRegisteredInheritanceEntityNames(),
+        Object.keys(ENTITY_INHERITANCE_EXPECTATIONS),
+        {
+          label: "entity inheritance expectation coverage",
+          toComparableString: (value) => value,
+        },
+      );
+    }).not.toThrow();
   });
 
   for (const entityInheritanceExpectation of Object.values(
     ENTITY_INHERITANCE_EXPECTATIONS,
   )) {
     it(`${entityInheritanceExpectation.entityClass.name} inheritance metadata matches its contract`, () => {
-      verifyEntityInheritanceExpectation(entityInheritanceExpectation);
+      expect(() => {
+        verifyEntityInheritanceExpectation(entityInheritanceExpectation);
+      }).not.toThrow();
     });
   }
 });
@@ -1270,19 +1282,24 @@ describe("entity decorator callback metadata", () => {
 
     expect(relationMetadataList.length).toBeGreaterThan(0);
 
+    const resolvedRelationTypes: unknown[] = [];
+    const resolvedInverseSideProperties: unknown[] = [];
+
     for (const relationMetadata of relationMetadataList) {
       if (typeof relationMetadata.type === "function") {
         const relationType: unknown = relationMetadata.type;
-        expect(relationType).toBeDefined();
+        resolvedRelationTypes.push(relationType);
       }
 
       if (typeof relationMetadata.inverseSideProperty === "function") {
         const inverseSideProperty: unknown =
           relationMetadata.inverseSideProperty(createRelationProxy());
-
-        expect(inverseSideProperty).toBeDefined();
+        resolvedInverseSideProperties.push(inverseSideProperty);
       }
     }
+
+    expect(resolvedRelationTypes).not.toContain(undefined);
+    expect(resolvedInverseSideProperties).not.toContain(undefined);
   });
 
   it("ensures all relation targets map to registered entities", () => {

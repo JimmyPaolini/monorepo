@@ -465,9 +465,9 @@ describe("IngressesService", () => {
       });
 
       it("throws for longitude outside 0-360 range", () => {
-        expect(() => IngressesService.getSign(360)).toThrow();
-        expect(() => IngressesService.getSign(-1)).toThrow();
-        expect(() => IngressesService.getSign(400)).toThrow();
+        expect(() => IngressesService.getSign(360)).toThrow(/longitude/i);
+        expect(() => IngressesService.getSign(-1)).toThrow(/longitude/i);
+        expect(() => IngressesService.getSign(400)).toThrow(/longitude/i);
       });
     });
 

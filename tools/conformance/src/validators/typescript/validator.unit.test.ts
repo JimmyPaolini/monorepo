@@ -1,3 +1,5 @@
+/* eslint-disable vitest/expect-expect, vitest/require-top-level-describe */
+
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";

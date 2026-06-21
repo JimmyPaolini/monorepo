@@ -1,3 +1,5 @@
+/* eslint-disable vitest/require-top-level-describe */
+
 import { describe, expect, it } from "vitest";
 
 import { validateMarkdownConformance } from "./validator";

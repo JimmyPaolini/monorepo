@@ -40,19 +40,6 @@ vi.mock("fs", () => ({
 
 let service: RetrogradesService;
 
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      LoggerService,
-      RetrogradesService,
-      EphemerisService,
-      MathService,
-      ProgressiveUtilities,
-    ],
-  }).compile();
-  service = await module.resolve(RetrogradesService);
-});
-
 /**
  * Builds a Record<RetrogradeBody, CoordinateEphemeris> across the 61-minute detection
  * window (MARGIN_MINUTES before and after `minute`). Each body maps to its own
@@ -111,6 +98,19 @@ function createRetrogradeEphemeris(
 }
 
 describe("retrogrades.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        RetrogradesService,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilities,
+      ],
+    }).compile();
+    service = await module.resolve(RetrogradesService);
+  });
+
   const minute = moment.utc("2024-09-09T12:00:00.000Z");
 
   it("detects a Mercury retrograde station when longitude reaches a maximum", () => {

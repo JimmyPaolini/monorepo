@@ -55,22 +55,6 @@ vi.mock("fs", () => ({
 
 let service: MajorAspectsService;
 
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      LoggerService,
-      MajorAspectsService,
-      MajorAspectEventService,
-      MajorAspectProgressiveService,
-      AspectsUtilities,
-      EphemerisService,
-      MathService,
-      ProgressiveUtilities,
-    ],
-  }).compile();
-  service = await module.resolve(MajorAspectsService);
-});
-
 /**
  * Builds a CoordinateEphemeris record for all majorAspectBodies across three timestamps.
  *
@@ -108,6 +92,22 @@ function createAspectEphemeris(
 }
 
 describe("major-aspects.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        MajorAspectsService,
+        MajorAspectEventService,
+        MajorAspectProgressiveService,
+        AspectsUtilities,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilities,
+      ],
+    }).compile();
+    service = await module.resolve(MajorAspectsService);
+  });
+
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
   it("detects a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {

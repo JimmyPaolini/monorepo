@@ -282,12 +282,13 @@ describe("RetrogradesService", () => {
           e.description.includes("Mercury") &&
           e.description.includes("Retrograde"),
       );
-      expect(mercuryDuration).toBeDefined();
-      if (mercuryDuration) {
-        expect(mercuryDuration.start).toEqual(retrogradeEvent.start);
-        expect(mercuryDuration.end).toEqual(directEvent.start);
-        expect(mercuryDuration.summary).toContain("Retrograde");
-      }
+      expect(mercuryDuration).toEqual(
+        expect.objectContaining({
+          end: directEvent.start,
+          start: retrogradeEvent.start,
+        }),
+      );
+      expect(mercuryDuration?.summary).toContain("Retrograde");
     });
 
     it("omits the symbol when the source summary is empty", () => {

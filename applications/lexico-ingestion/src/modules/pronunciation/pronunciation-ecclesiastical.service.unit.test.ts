@@ -29,12 +29,12 @@ describe("PronunciationEcclesiasticalService", () => {
     service = await module.resolve(PronunciationEcclesiasticalService);
   });
 
-  it("is defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   it("should classify c before e as ch", () => {

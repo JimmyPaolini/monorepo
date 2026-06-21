@@ -14,7 +14,10 @@ describe("PerseusCommand", () => {
       imports: [LoggerModule],
       providers: [
         PerseusCommand,
-        { provide: LoggerService, useValue: createLoggerServiceMock() },
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
       ],
     }).compile();
 

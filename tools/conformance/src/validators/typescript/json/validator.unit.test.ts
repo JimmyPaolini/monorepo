@@ -1,3 +1,5 @@
+/* eslint-disable vitest/expect-expect, vitest/require-top-level-describe */
+
 import { describe, expect, it } from "vitest";
 
 import { expectErrorWithMessage } from "../test-helpers";

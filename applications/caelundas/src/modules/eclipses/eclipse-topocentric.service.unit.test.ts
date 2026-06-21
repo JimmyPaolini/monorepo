@@ -2,7 +2,15 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -36,27 +44,30 @@ describe("EclipseTopocentricService", () => {
     service = await module.resolve(EclipseTopocentricService);
   });
 
-  const logger = {
+  const logger: LoggerService = {
     setContext: vi.fn(),
-  };
-  const mathService = {
+  } as unknown as LoggerService;
+
+  const mathService: MathService = {
     getAngle: vi.fn((value1: number, value2: number) =>
       Math.abs(value1 - value2),
     ),
-  };
-  const eclipseGeometryService = {
+  } as unknown as MathService;
+
+  const eclipseGeometryService: Mocked<EclipseGeometryService> = {
     getAllTopocentricVisibilities: vi.fn(),
-  };
-  const eclipseEventService = {
+  } as unknown as Mocked<EclipseGeometryService>;
+
+  const eclipseEventService: Mocked<EclipseEventService> = {
     buildLunarEclipseEvent: vi.fn(),
     buildSolarEclipseEvent: vi.fn(),
-  };
+  } as unknown as Mocked<EclipseEventService>;
 
   const mockService = new EclipseTopocentricService(
-    logger as never,
-    mathService as never,
-    eclipseGeometryService as never,
-    eclipseEventService as never,
+    logger,
+    mathService,
+    eclipseGeometryService,
+    eclipseEventService,
   );
 
   const solarActiveCoordinates: EclipseCoordinates = {

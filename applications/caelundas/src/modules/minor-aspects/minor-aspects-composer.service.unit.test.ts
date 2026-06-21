@@ -3,7 +3,15 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -31,26 +39,26 @@ describe("MinorAspectsComposerService", () => {
     service = await module.resolve(MinorAspectsComposerService);
   });
 
-  const mockLogger = {
+  const mockLogger: LoggerService = {
     error: vi.fn(),
     log: vi.fn(),
     setContext: vi.fn(),
-  };
-  const mockEphemerisService = {
+  } as unknown as LoggerService;
+  const mockEphemerisService: EphemerisService = {
     getLongitudesWindow: vi.fn().mockReturnValue({
       current: 10,
       next: 11,
       previous: 9,
     }),
-  };
-  const mockProgressiveUtilitiesService = {
+  } as unknown as EphemerisService;
+  const mockProgressiveUtilitiesService: Mocked<ProgressiveUtilities> = {
     pairProgressiveEvents: vi.fn(),
-  };
+  } as unknown as Mocked<ProgressiveUtilities>;
 
   const mockService = new MinorAspectsComposerService(
-    mockLogger as never,
-    mockEphemerisService as never,
-    mockProgressiveUtilitiesService as never,
+    mockLogger,
+    mockEphemerisService,
+    mockProgressiveUtilitiesService,
   );
 
   beforeEach(() => {

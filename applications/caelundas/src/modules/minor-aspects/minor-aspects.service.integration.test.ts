@@ -53,22 +53,6 @@ vi.mock("fs", () => ({
 
 let service: MinorAspectsService;
 
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      LoggerService,
-      MinorAspectsService,
-      MinorAspectsEventService,
-      MinorAspectsProgressiveService,
-      AspectsUtilities,
-      EphemerisService,
-      MathService,
-      ProgressiveUtilities,
-    ],
-  }).compile();
-  service = await module.resolve(MinorAspectsService);
-});
-
 /**
  * Builds a CoordinateEphemeris record for all minorAspectBodies across three timestamps.
  *
@@ -106,6 +90,22 @@ function createAspectEphemeris(
 }
 
 describe("minor-aspects.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        MinorAspectsService,
+        MinorAspectsEventService,
+        MinorAspectsProgressiveService,
+        AspectsUtilities,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilities,
+      ],
+    }).compile();
+    service = await module.resolve(MinorAspectsService);
+  });
+
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
   it("detects a forming quincunx when Moon crosses into the 3° orb of 150°", () => {

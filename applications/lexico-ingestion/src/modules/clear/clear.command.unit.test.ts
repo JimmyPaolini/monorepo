@@ -25,34 +25,9 @@ describe("ClearCommand", () => {
       imports: [LoggerModule],
       providers: [
         ClearCommand,
-        { provide: LoggerService, useValue: createLoggerServiceMock() },
         {
-          provide: getRepositoryToken(Lexeme),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Translation),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Word),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Line),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Text),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Author),
-          useValue: createRepositoryMock().repositoryMock,
-        },
-        {
-          provide: getRepositoryToken(Token),
-          useValue: createRepositoryMock().repositoryMock,
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
         },
       ],
     }).compile();

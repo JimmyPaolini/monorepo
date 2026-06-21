@@ -5,6 +5,7 @@ import eslintReact from "@eslint-react/eslint-plugin";
 import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
+import vitestPlugin from "@vitest/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import betterMaxParamsPlugin from "eslint-plugin-better-max-params";
 import importPlugin from "eslint-plugin-import-x";
@@ -818,17 +819,22 @@ export default [
   // Relaxed rules for test files: allow `any`, unsafe operations, and console
   {
     files: [
-      "**/*.spec.ts",
-      "**/*.spec.tsx",
       "**/*.test.ts",
       "**/*.test.tsx",
       "**/testing/**/*.{ts,tsx,mts,cts,js,mjs,cjs,jsx}",
       "**/__tests__/**/*.{ts,tsx,mts,cts,js,mjs,cjs,jsx}",
     ],
+    languageOptions: {
+      globals: {
+        ...vitestPlugin.environments.env.globals,
+      },
+    },
     plugins: {
       "@typescript-eslint": tseslint.plugin,
+      vitest: vitestPlugin,
     },
     rules: {
+      ...vitestPlugin.configs.recommended.rules,
       "@typescript-eslint/consistent-return": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-shadow": "off", // test scopes commonly shadow outer variables
@@ -849,6 +855,63 @@ export default [
       "max-statements": "off",
       "no-console": "off",
       "no-param-reassign": "off", // mocks commonly mutate parameters
+      "vitest/max-nested-describe": ["error", { max: 3 }],
+      "vitest/consistent-test-it": "error",
+      "vitest/consistent-vitest-vi": "error",
+      "vitest/no-commented-out-tests": "error",
+      "vitest/no-disabled-tests": "error",
+      "vitest/no-duplicate-hooks": "error",
+      "vitest/no-focused-tests": "error",
+      "vitest/no-identical-title": "error",
+      "vitest/no-test-prefixes": "error",
+      "vitest/no-standalone-expect": "error",
+      "vitest/no-test-return-statement": "error",
+      "vitest/prefer-hooks-in-order": "error",
+      "vitest/prefer-hooks-on-top": "error",
+      "vitest/require-awaited-expect-poll": "error",
+      "vitest/require-top-level-describe": [
+        "error",
+        { maxNumberOfTopLevelDescribes: 1 },
+      ],
+      "vitest/require-to-throw-message": "error",
+      "vitest/unbound-method": "error",
+      "vitest/valid-describe-callback": "error",
+      "vitest/valid-expect": "error",
+      "vitest/valid-expect-in-promise": "error",
+    },
+    settings: {
+      vitest: {
+        typecheck: true,
+      },
+    },
+  },
+
+  // 🧪 Test Setup Files
+  // Setup/mocks files execute global hooks via Vitest setupFiles and are not test suites.
+  {
+    files: ["**/testing/setup.ts", "**/testing/mocks.ts"],
+    rules: {
+      "vitest/require-top-level-describe": "off",
+    },
+  },
+
+  // 🧪 Generated Command Unit Tests
+  // Current conformance template includes an initial bootstrap describe block.
+  {
+    files: ["**/*.command.unit.test.ts"],
+    rules: {
+      "vitest/no-identical-title": "off",
+      "vitest/require-top-level-describe": "off",
+    },
+  },
+
+  // 🧪 Generated Service Unit Tests
+  // Current conformance template includes an initial bootstrap describe block.
+  {
+    files: ["**/*.service.unit.test.ts"],
+    rules: {
+      "vitest/no-identical-title": "off",
+      "vitest/require-top-level-describe": "off",
     },
   },
 

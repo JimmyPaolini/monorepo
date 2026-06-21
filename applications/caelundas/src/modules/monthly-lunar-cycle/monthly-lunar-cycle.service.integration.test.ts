@@ -34,18 +34,6 @@ vi.mock("fs", () => ({
 
 let service: MonthlyLunarCycleService;
 
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      MonthlyLunarCycleService,
-      EphemerisService,
-      LoggerService,
-      MathService,
-    ],
-  }).compile();
-  service = await module.resolve(MonthlyLunarCycleService);
-});
-
 /**
  * Builds an IlluminationEphemeris covering `minute ± MARGIN_MINUTES` (61 timestamps).
  * Each window region receives its own uniform illumination value so that boundary
@@ -73,6 +61,18 @@ function createIlluminationEphemeris(
 }
 
 describe("monthly-lunar-cycle.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MonthlyLunarCycleService,
+        EphemerisService,
+        LoggerService,
+        MathService,
+      ],
+    }).compile();
+    service = await module.resolve(MonthlyLunarCycleService);
+  });
+
   const minute = moment.utc("2024-01-11T00:00:00.000Z");
 
   it("detects a new moon at the illumination minimum below 50", () => {

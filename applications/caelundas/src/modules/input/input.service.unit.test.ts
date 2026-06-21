@@ -61,23 +61,27 @@ describe("InputService", () => {
     });
 
     it("throws when LATITUDE is out of range", () => {
-      expect(() => environmentSchema.parse({ LATITUDE: "91" })).toThrow();
+      expect(() => environmentSchema.parse({ LATITUDE: "91" })).toThrow(
+        /latitude/i,
+      );
     });
 
     it("throws when LONGITUDE is out of range", () => {
-      expect(() => environmentSchema.parse({ LONGITUDE: "181" })).toThrow();
+      expect(() => environmentSchema.parse({ LONGITUDE: "181" })).toThrow(
+        /longitude/i,
+      );
     });
 
     it("throws when START_DATE format is invalid", () => {
       expect(() =>
         environmentSchema.parse({ START_DATE: "01-01-2025" }),
-      ).toThrow();
+      ).toThrow(/date/i);
     });
 
     it("throws when END_DATE format is invalid", () => {
-      expect(() =>
-        environmentSchema.parse({ END_DATE: "not-a-date" }),
-      ).toThrow();
+      expect(() => environmentSchema.parse({ END_DATE: "not-a-date" })).toThrow(
+        /date/i,
+      );
     });
   });
 
@@ -129,7 +133,7 @@ describe("InputService", () => {
         LONGITUDE: -74,
         START_DATE: "2025-03-21",
       });
-      expect(() => service.parse()).toThrow();
+      expect(() => service.parse()).toThrow(/start|end date/i);
     });
   });
 
@@ -176,7 +180,7 @@ describe("InputService", () => {
             longitude: "0",
             startDate: "2025-01-01",
           }),
-        ).toThrow();
+        ).toThrow(/latitude/i);
 
         expect(() =>
           inputSchema.parse({
@@ -185,7 +189,7 @@ describe("InputService", () => {
             longitude: "0",
             startDate: "2025-01-01",
           }),
-        ).toThrow();
+        ).toThrow(/latitude/i);
       });
 
       it("uses default latitude when not provided", () => {
@@ -236,7 +240,7 @@ describe("InputService", () => {
             longitude: "181",
             startDate: "2025-01-01",
           }),
-        ).toThrow();
+        ).toThrow(/longitude/i);
 
         expect(() =>
           inputSchema.parse({
@@ -245,7 +249,7 @@ describe("InputService", () => {
             longitude: "-181",
             startDate: "2025-01-01",
           }),
-        ).toThrow();
+        ).toThrow(/longitude/i);
       });
 
       it("uses default longitude when not provided", () => {
@@ -309,7 +313,7 @@ describe("InputService", () => {
             longitude: "-74",
             startDate: "2025-03-21",
           }),
-        ).toThrow();
+        ).toThrow(/end date must be after start date/i);
       });
 
       it("rejects identical start and end dates", () => {
@@ -320,7 +324,7 @@ describe("InputService", () => {
             longitude: "-74",
             startDate: "2025-03-20",
           }),
-        ).toThrow();
+        ).toThrow(/end date must be after start date/i);
       });
 
       it("rejects dates before 1900", () => {
@@ -331,7 +335,7 @@ describe("InputService", () => {
             longitude: "-74",
             startDate: "1899-12-31",
           }),
-        ).toThrow();
+        ).toThrow(/must be between year 1900 and 2100/i);
       });
 
       it("rejects dates after 2100", () => {
@@ -342,7 +346,7 @@ describe("InputService", () => {
             longitude: "-74",
             startDate: "2100-12-30",
           }),
-        ).toThrow();
+        ).toThrow(/must be between year 1900 and 2100/i);
       });
     });
 
