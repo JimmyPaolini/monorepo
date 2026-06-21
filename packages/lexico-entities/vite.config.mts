@@ -1,7 +1,7 @@
 import { builtinModules } from "node:module";
 
-import { nxViteTsPaths } from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
 import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 import packageJson from "./package.json" with { type: "json" };
 
@@ -17,7 +17,7 @@ export default defineConfig({
     },
     outDir: "dist/packages/lexico-entities",
     reportCompressedSize: true,
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         ...builtinModules,
         ...builtinModules.map((m) => `node:${m}`),
@@ -27,5 +27,5 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [nxViteTsPaths()],
+  plugins: [tsconfigPaths()],
 });

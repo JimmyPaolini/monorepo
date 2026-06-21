@@ -63,7 +63,14 @@
       }
     },
     "type-coverage": {},
-    "typecheck": {},
+    "typecheck": {
+      "description": "Run TypeScript type checking",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
     "yaml-lint": {}
   }
 }

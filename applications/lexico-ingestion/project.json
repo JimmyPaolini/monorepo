@@ -141,7 +141,14 @@
         "command": "type-coverage --at-least 99 --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
       }
     },
-    "typecheck": {},
+    "typecheck": {
+      "description": "Run TypeScript type checking",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
     "wiktionary": {
       "description": "Ingest Wiktionary data into the database",
       "executor": "nx:run-commands",

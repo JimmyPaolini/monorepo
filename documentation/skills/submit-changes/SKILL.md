@@ -20,6 +20,7 @@ These rules are non-negotiable:
 
 - **NEVER** run destructive commands (`git reset`, `git clean`, `git checkout -- .`, `git push --force`, `git rebase`)
 - **NEVER** bypass hooks with `--no-verify`
+- **NEVER** disable signing with `--no-gpg-sign`
 - **NEVER** auto-fix pre-commit failures — report the failure and stop
 - On any failure: **report the error and stop immediately**
 
@@ -77,10 +78,23 @@ Branch name format: `<type>/<scope>-<description>` (kebab-case, 2–4 keyword de
 
 2. Compose commit message: `<type>(<scope>): <gitmoji> <subject>` — single line, max 128 chars, no body/footer
 
-3. Commit:
+3. Validate signing configuration:
 
    ```bash
-   git commit -m "<type>(<scope>): <gitmoji> <subject>"
+   bash scripts/git/check-commit-signing-configuration.sh
+   ```
+
+4. Commit with signing enabled:
+
+   ```bash
+   export GPG_TTY="$(tty)"
+   git commit -S -m "<type>(<scope>): <gitmoji> <subject>"
+   ```
+
+5. Verify the new commit signature:
+
+   ```bash
+   git verify-commit HEAD
    ```
 
 ### If pre-commit hooks fail
@@ -88,6 +102,12 @@ Branch name format: `<type>/<scope>-<description>` (kebab-case, 2–4 keyword de
 **Stop immediately.** Report the hook output so the user can see what failed. Do **NOT** apply fixes or proceed to push.
 
 ### If commit succeeds
+
+Re-check signatures before push:
+
+```bash
+bash scripts/git/check-push-commit-signatures.sh
+```
 
 Push to remote:
 
@@ -137,3 +157,5 @@ After completing all phases, print a summary table:
 - [rename-branch skill](../rename-branch/SKILL.md) — Rename non-conforming branches before commit/push
 - [commit-code skill](../commit-code/SKILL.md) — Commit message format, types, scopes, gitmoji
 - [create-pull-request skill](../create-pull-request/SKILL.md) — PR conventions and description template
+- [check-commit-signing-configuration.sh](../../../scripts/git/check-commit-signing-configuration.sh) — Validates signing prerequisites before commit
+- [check-push-commit-signatures.sh](../../../scripts/git/check-push-commit-signatures.sh) — Validates pushed commits are signed
