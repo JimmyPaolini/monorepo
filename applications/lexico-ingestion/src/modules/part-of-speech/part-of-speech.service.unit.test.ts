@@ -776,7 +776,7 @@ describe(PartOfSpeechService, () => {
         principalParts: [],
       });
 
-      expect(parseGenericFormsSpy).toHaveBeenCalledWith();
+      expect(parseGenericFormsSpy).toHaveBeenCalledTimes(1);
       expect(forms).toStrictEqual({ noun: ["word"] });
     });
 
@@ -811,7 +811,7 @@ describe(PartOfSpeechService, () => {
         principalParts: [],
       });
 
-      expect(parseVerbFormsSpy).toHaveBeenCalledWith();
+      expect(parseVerbFormsSpy).toHaveBeenCalledTimes(1);
       expect(forms).toStrictEqual({ indicative: ["amō"] });
     });
 

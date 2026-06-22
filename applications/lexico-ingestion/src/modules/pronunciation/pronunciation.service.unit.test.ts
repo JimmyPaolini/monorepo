@@ -305,9 +305,13 @@ describe(PronunciationService, () => {
     it("should create Pronunciation entities with variant and phonemes", () => {
       const result = parseWord("rosa");
 
+      expect(result).toHaveLength(3);
+
       result.forEach((pronunciation) => {
         expect(pronunciation).toBeInstanceOf(Pronunciation);
-        expect(pronunciation.variant).toBe(true);
+        expect(pronunciation.variant).toMatch(
+          /^(classical|ecclesiastical|vulgar)$/,
+        );
         expect(pronunciation.phonemic).toBeNull();
         expect(pronunciation.phonetic).toBeNull();
       });
@@ -318,7 +322,9 @@ describe(PronunciationService, () => {
 
       expect(result).toHaveLength(3);
 
-      result.forEach((p) => expect(p.variant).toBe(true));
+      result.forEach((p) => {
+        expect(p.variant).toMatch(/^(classical|ecclesiastical|vulgar)$/);
+      });
     });
 
     it("should handle word with diacritics", () => {
@@ -419,7 +425,7 @@ describe(PronunciationService, () => {
         ecclesiastical,
       ]);
 
-      expect(lexemeRepository.save).toHaveBeenCalledWith();
+      expect(lexemeRepository.save).toHaveBeenCalledWith(lexeme);
 
       const savedCall = lexemeRepository.save.mock.calls[0] as
         | [Lexeme]
@@ -441,7 +447,7 @@ describe(PronunciationService, () => {
 
       await service.ingestLexemePronunciations(lexeme, [pronunciation]);
 
-      expect(lexemeRepository.save).toHaveBeenCalledWith();
+      expect(lexemeRepository.save).toHaveBeenCalledWith(lexeme);
     });
 
     it("should match pronunciations by variant to preserve IDs", async () => {

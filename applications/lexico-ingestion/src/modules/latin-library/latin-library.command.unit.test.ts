@@ -643,7 +643,7 @@ describe(LatinLibraryCommand, () => {
 
     expect(firstResult).toBe("<html>ok</html>");
     expect(secondResult).toBe("");
-    expect(mkdirMock).toHaveBeenCalledWith();
+    expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(writeFileMock).toHaveBeenCalledWith(
       "/tmp/vergil/index.html",
       "<html>ok</html>",

@@ -51,10 +51,10 @@ describe(NumeralsService, () => {
 
     it("should throw for numbers out of range", () => {
       expect(() => service.toRoman(0)).toThrow(
-        "value must be between 1 and 3999",
+        /Decimal 0 is out of range for Roman numerals/,
       );
       expect(() => service.toRoman(4000)).toThrow(
-        "value must be between 1 and 3999",
+        /Decimal 4000 is out of range for Roman numerals/,
       );
     });
   });

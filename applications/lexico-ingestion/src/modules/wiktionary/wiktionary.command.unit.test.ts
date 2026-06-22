@@ -419,7 +419,7 @@ describe(WiktionaryCommand, () => {
 
     expect(response.status).toBe(429);
     expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(loggerService.warn).toHaveBeenCalledWith();
+    expect(loggerService.warn).toHaveBeenCalledTimes(2);
 
     vi.useRealTimers();
   });

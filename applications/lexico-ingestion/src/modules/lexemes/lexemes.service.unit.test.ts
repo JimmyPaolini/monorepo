@@ -581,7 +581,7 @@ describe(LexemesService, () => {
 
     expect(
       principalPartsService.ingestLexemePrincipalParts,
-    ).toHaveBeenCalledWith();
+    ).toHaveBeenCalledWith(savedLexeme, lexeme.principalParts);
     expect(formsService.ingestLexemeForms).toHaveBeenCalledWith(
       lexeme.forms,
       savedLexeme,

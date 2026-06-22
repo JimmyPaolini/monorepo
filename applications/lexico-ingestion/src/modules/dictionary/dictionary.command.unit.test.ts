@@ -404,7 +404,7 @@ describe(DictionaryCommand, () => {
     readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
     promptsMock
       .mockResolvedValueOnce({ startLemma: "amo" })
-      .mockResolvedValueOnce({ startLemma: "cano" });
+      .mockResolvedValueOnce({ endLemma: "cano" });
 
     const startLemma = await command.parseStartLemma({} as unknown as string);
     const endLemma = await command.parseEndLemma(
