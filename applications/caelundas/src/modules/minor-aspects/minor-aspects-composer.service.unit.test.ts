@@ -79,7 +79,16 @@ describe(MinorAspectsComposerService, () => {
       }),
     ).toStrictEqual(
       expect.objectContaining({
-        categories: expect.arrayContaining(["Perfective", "Minor Aspect"]),
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Simple Aspect",
+          "Minor Aspect",
+          "Moon",
+          "Sun",
+          "Semisextile",
+          "Perfective",
+        ],
         description: "Sun perfective semisextile Moon",
         summary: "🎯 ☀️ ⚺ 🌙 Sun perfective semisextile Moon",
       }),
@@ -95,7 +104,16 @@ describe(MinorAspectsComposerService, () => {
       }),
     ).toStrictEqual(
       expect.objectContaining({
-        categories: expect.arrayContaining(["Forming"]),
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Simple Aspect",
+          "Minor Aspect",
+          "Moon",
+          "Sun",
+          "Semisextile",
+          "Forming",
+        ],
         description: "Sun forming semisextile Moon",
         summary: "➡️ ☀️ ⚺ 🌙 Sun forming semisextile Moon",
       }),
@@ -111,7 +129,16 @@ describe(MinorAspectsComposerService, () => {
       }),
     ).toStrictEqual(
       expect.objectContaining({
-        categories: expect.arrayContaining(["Dissolving"]),
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Simple Aspect",
+          "Minor Aspect",
+          "Moon",
+          "Sun",
+          "Semisextile",
+          "Dissolving",
+        ],
         description: "Sun dissolving semisextile Moon",
         summary: "⬅️ ☀️ ⚺ 🌙 Sun dissolving semisextile Moon",
       }),
@@ -202,7 +229,15 @@ describe(MinorAspectsComposerService, () => {
       mockService.getMinorAspectProgressiveEvent(beginning, ending),
     ).toStrictEqual(
       expect.objectContaining({
-        categories: expect.arrayContaining(["Minor Aspect", "Semisextile"]),
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Simple Aspect",
+          "Minor Aspect",
+          "Moon",
+          "Sun",
+          "Semisextile",
+        ],
         description: "Moon semisextile Sun",
       }),
     );

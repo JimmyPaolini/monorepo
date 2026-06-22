@@ -41,10 +41,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -131,7 +131,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   it("should fetch tree and return null on response failure", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             ok: false,
@@ -157,7 +157,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   it("should fetch tree and return nodes on success", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             json: async () =>
@@ -189,7 +189,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   it("should fetch and write xml file on successful response", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             ok: true,
@@ -217,7 +217,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   it("should warn and skip write on failed xml response", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             ok: false,

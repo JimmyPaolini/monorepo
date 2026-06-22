@@ -22,24 +22,22 @@ describe(CaelundasModule, () => {
     expect(CaelundasModule).toBeDefined();
     expect(mockForRoot).toHaveBeenCalledTimes(1);
 
-    const firstCall = mockForRoot.mock.calls[0] as [object] | undefined;
-    const options = firstCall?.[0] as
-      | undefined
-      | {
-          envFilePath?: string;
-          isGlobal?: boolean;
-          validate?: (config: Record<string, unknown>) => unknown;
-        };
+    const firstCall = mockForRoot.mock.calls[0] as
+      | [
+          {
+            envFilePath?: string;
+            isGlobal?: boolean;
+            validate?: (config: Record<string, unknown>) => unknown;
+          },
+        ]
+      | undefined;
+    const options = firstCall?.[0];
 
     if (options === undefined) throw new Error("options is undefined");
 
-    expect(options).toStrictEqual(
-      expect.objectContaining({
-        envFilePath: ".env",
-        isGlobal: true,
-        validate: expect.any(Function),
-      }),
-    );
+    expect(options.envFilePath).toBe(".env");
+    expect(options.isGlobal).toBe(true);
+    expect(typeof options.validate).toBe("function");
     expect(options.validate?.({})).toStrictEqual({
       OUTPUT_DIRECTORY: "./output",
     });

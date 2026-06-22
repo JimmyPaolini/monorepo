@@ -564,23 +564,33 @@ describe(PerseusLibraryProvider, () => {
     await vi.runAllTimersAsync();
     await writePromise;
 
+    const firstCallArguments = writeTextFilesSpy.mock.calls[0];
+
     expect(extractTextNodesSpy).toHaveBeenCalledTimes(1);
-    expect(writeTextFilesSpy).toHaveBeenCalledWith(
+    expect(firstCallArguments).toBeDefined();
+    expect(firstCallArguments?.[1]).toBe("/tmp/library/perseus/vergil");
+    expect(firstCallArguments?.[0]).toStrictEqual(
       expect.arrayContaining([
         expect.objectContaining({
           relativePath: "aeneid/book-1.md",
           title: "Book 1",
         }),
       ]),
-      "/tmp/library/perseus/vergil",
-      expect.objectContaining({
-        author: "vergil",
-        text_metadata: expect.objectContaining({
-          source_url:
-            "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/phi0959/source.xml",
-        }),
-        type: "text",
-      }),
+    );
+
+    const metadata = firstCallArguments?.[2] as {
+      author?: string;
+      text_metadata?: { source_url?: string };
+      type?: string;
+    };
+
+    expect(metadata).toBeDefined();
+
+    expect(metadata.author).toBe("vergil");
+
+    expect(metadata.type).toBe("text");
+    expect(metadata.text_metadata?.source_url).toBe(
+      "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/phi0959/source.xml",
     );
 
     vi.useRealTimers();

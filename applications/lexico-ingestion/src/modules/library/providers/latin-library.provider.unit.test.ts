@@ -173,10 +173,10 @@ describe(LatinLibraryProvider, () => {
       .fn<(href: string) => boolean>()
       .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(false) as never;
     latinLibraryBuilder.findRawBookHeading = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("book i") as never;
 
     const textEntity = new Text();
@@ -187,7 +187,7 @@ describe(LatinLibraryProvider, () => {
     textEntity.type = "text";
 
     latinLibraryBuilder.buildTextEntityForLink = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(textEntity) as never;
 
     (
@@ -231,7 +231,7 @@ describe(LatinLibraryProvider, () => {
     ).mockResolvedValue("<html><body></body></html>");
 
     latinLibraryBuilder.extractAuthorPageMetadata = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue({}) as never;
 
     const collectAuthorTextsSpy = vi
@@ -281,7 +281,7 @@ describe(LatinLibraryProvider, () => {
     ).mockResolvedValue("<html><body></body></html>");
 
     latinLibraryBuilder.extractAuthorPageMetadata = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue({ period: "Classical" }) as never;
 
     vi.spyOn(
@@ -387,7 +387,7 @@ describe(LatinLibraryProvider, () => {
     author.texts = [];
 
     latinLibraryBuilder.buildRootAuthors = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue([author]) as never;
 
     const authors = (
@@ -417,7 +417,7 @@ describe(LatinLibraryProvider, () => {
     author.texts = [];
 
     latinLibraryBuilder.buildCategoryAuthor = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(author) as never;
 
     const result = (
@@ -455,7 +455,7 @@ describe(LatinLibraryProvider, () => {
       .fn<(href: string) => boolean>()
       .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(true) as never;
 
     (
@@ -498,10 +498,10 @@ describe(LatinLibraryProvider, () => {
       .fn<(href: string) => boolean>()
       .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(false) as never;
     latinLibraryBuilder.findRawBookHeading = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(undefined) as never;
 
     const textEntity = new Text();
@@ -511,7 +511,7 @@ describe(LatinLibraryProvider, () => {
     textEntity.metadata = { sourceUrl: "aeneid.html" };
 
     latinLibraryBuilder.buildTextEntityForLink = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(textEntity) as never;
 
     (
@@ -558,7 +558,7 @@ describe(LatinLibraryProvider, () => {
       .mockResolvedValue("<html><body></body></html>");
 
     latinLibraryBuilder.parseWorkParagraphs = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue([]) as never;
 
     const result = await (
@@ -604,10 +604,10 @@ describe(LatinLibraryProvider, () => {
     ).mockResolvedValue("<html><body><p>arma virumque cano</p></body></html>");
 
     latinLibraryBuilder.parseWorkParagraphs = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(["arma virumque cano"]) as never;
     latinLibraryBuilder.buildWorkMarkdownContent = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("# Aeneid\n\narma virumque cano") as never;
 
     const saveWorkTextMarkdownSpy = vi
@@ -646,7 +646,7 @@ describe(LatinLibraryProvider, () => {
 
   it("should process work and log completion progress", async () => {
     latinLibraryBuilder.getTextSlug = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("vergil/aeneid") as never;
 
     vi.spyOn(
@@ -702,7 +702,7 @@ describe(LatinLibraryProvider, () => {
 
   it("should stop processWork before completion log when writeWorkText returns false", async () => {
     latinLibraryBuilder.getTextSlug = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("vergil/aeneid") as never;
 
     vi.spyOn(
@@ -762,7 +762,7 @@ describe(LatinLibraryProvider, () => {
 
   it("should skip processWork when text filter does not match", async () => {
     latinLibraryBuilder.getTextSlug = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("vergil/aeneid") as never;
 
     const writeWorkTextSpy = vi.spyOn(
@@ -811,7 +811,7 @@ describe(LatinLibraryProvider, () => {
 
   it("should log error when processWork write step throws", async () => {
     latinLibraryBuilder.getTextSlug = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("vergil/aeneid") as never;
 
     vi.spyOn(
@@ -869,7 +869,7 @@ describe(LatinLibraryProvider, () => {
 
   it("should log provider errors without stack when processWork rejects with non-Error", async () => {
     latinLibraryBuilder.getTextSlug = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue("vergil/aeneid") as never;
 
     vi.spyOn(
@@ -1173,7 +1173,7 @@ describe(LatinLibraryProvider, () => {
     );
 
     latinLibraryBuilder.buildCategoryAuthor = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(expandedAuthor) as never;
 
     const authors = await (
@@ -1214,7 +1214,7 @@ describe(LatinLibraryProvider, () => {
     );
 
     latinLibraryBuilder.buildCategoryAuthor = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockReturnValue(null) as never;
 
     const authors = await (

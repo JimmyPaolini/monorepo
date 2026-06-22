@@ -8,10 +8,10 @@ import { PerseusCommand } from "./perseus.command";
 
 const { accessMock, appendFileMock, mkdirMock, writeFileMock } = vi.hoisted(
   () => ({
-    accessMock: vi.fn(),
-    appendFileMock: vi.fn(),
-    mkdirMock: vi.fn(),
-    writeFileMock: vi.fn(),
+    accessMock: vi.fn<(...parameters: unknown[]) => unknown>(),
+    appendFileMock: vi.fn<(...parameters: unknown[]) => unknown>(),
+    mkdirMock: vi.fn<(...parameters: unknown[]) => unknown>(),
+    writeFileMock: vi.fn<(...parameters: unknown[]) => unknown>(),
   }),
 );
 
@@ -33,10 +33,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -45,10 +45,10 @@ describe(PerseusCommand, () => {
   let perseusCommand: PerseusCommand;
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 
   beforeAll(async () => {
@@ -96,7 +96,7 @@ describe(PerseusCommand, () => {
   it("should return null and log error when tree fetch fails", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({ ok: false, statusText: "Not Found" }),
       ),
@@ -126,7 +126,7 @@ describe(PerseusCommand, () => {
 
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             json: async () => await Promise.resolve(jsonResponse),
@@ -239,7 +239,7 @@ describe(PerseusCommand, () => {
   it("should warn and return on non-ok xml fetch", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({ ok: false, statusText: "Forbidden" }),
       ),
@@ -264,7 +264,7 @@ describe(PerseusCommand, () => {
     vi.useFakeTimers();
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             ok: true,

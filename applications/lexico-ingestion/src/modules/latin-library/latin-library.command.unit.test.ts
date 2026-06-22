@@ -29,10 +29,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -603,7 +603,7 @@ describe(LatinLibraryCommand, () => {
     vi.stubGlobal(
       "fetch",
       vi
-        .fn()
+        .fn<(...parameters: unknown[]) => unknown>()
         .mockResolvedValueOnce({
           ok: true,
           text: async () => await Promise.resolve("<html>ok</html>"),

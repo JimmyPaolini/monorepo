@@ -39,10 +39,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -757,10 +757,14 @@ describe(LibraryCommand, () => {
 
   it("should process provider and append log on failure", async () => {
     const failingProvider = {
-      ingest: vi.fn(async () => {
-        await Promise.resolve();
-        throw new Error("provider failed");
-      }),
+      ingest: vi
+        .fn<
+          (options?: { author?: string; text?: string }) => Promise<Author[]>
+        >()
+        .mockImplementation(async () => {
+          await Promise.resolve();
+          throw new Error("provider failed");
+        }),
       name: "failing-provider",
     } satisfies LibrarySourceProvider;
 
@@ -786,12 +790,16 @@ describe(LibraryCommand, () => {
 
   it("should use provider error message when stack is empty", async () => {
     const failingProvider = {
-      ingest: vi.fn(async () => {
-        await Promise.resolve();
-        const providerError = new Error("provider message fallback");
-        providerError.stack = "";
-        throw providerError;
-      }),
+      ingest: vi
+        .fn<
+          (options?: { author?: string; text?: string }) => Promise<Author[]>
+        >()
+        .mockImplementation(async () => {
+          await Promise.resolve();
+          const providerError = new Error("provider message fallback");
+          providerError.stack = "";
+          throw providerError;
+        }),
       name: "message-provider",
     } satisfies LibrarySourceProvider;
 

@@ -33,10 +33,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -68,10 +68,10 @@ describe(WiktionaryCommand, () => {
   };
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 
   beforeEach(async () => {
@@ -291,7 +291,9 @@ describe(WiktionaryCommand, () => {
   it("should return non-429 response immediately in retry fetch", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(async () => await Promise.resolve({ status: 200 })),
+      vi.fn<(...parameters: unknown[]) => unknown>(
+        async () => await Promise.resolve({ status: 200 }),
+      ),
     );
 
     const response = await (
@@ -359,7 +361,7 @@ describe(WiktionaryCommand, () => {
   it("should retry after rate limit and then return success response", async () => {
     vi.useFakeTimers();
     const fetchMock = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockResolvedValueOnce({
         headers: { get: () => "0" },
         status: 429,
@@ -389,7 +391,7 @@ describe(WiktionaryCommand, () => {
   it("should perform final fetch when retries are exhausted", async () => {
     vi.useFakeTimers();
     const fetchMock = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockResolvedValueOnce({
         headers: { get: () => null },
         status: 429,
@@ -427,7 +429,7 @@ describe(WiktionaryCommand, () => {
   it("should honor Retry-After and cap delay at maximum retry delay", async () => {
     vi.useFakeTimers();
     const fetchMock = vi
-      .fn()
+      .fn<(...parameters: unknown[]) => unknown>()
       .mockResolvedValueOnce({
         headers: { get: () => "120" },
         status: 429,

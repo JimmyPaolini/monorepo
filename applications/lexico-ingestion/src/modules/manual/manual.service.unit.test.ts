@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -16,7 +15,16 @@ import type { Mocked } from "vitest";
 describe(ManualService, () => {
   let service: ManualService;
 
-  let lexemesRepository: Mocked<any>;
+  interface LexemesRepositoryMock {
+    delete: ReturnType<
+      typeof vi.fn<(criteria: unknown) => Promise<{ affected: number }>>
+    >;
+    save: ReturnType<
+      typeof vi.fn<(lexeme: Lexeme, options?: unknown) => Promise<Lexeme>>
+    >;
+  }
+
+  let lexemesRepository: LexemesRepositoryMock;
   let wordsService: Mocked<WordsService>;
   let numeralsService: Mocked<NumeralsService>;
 
@@ -64,7 +72,9 @@ describe(ManualService, () => {
     }).compile();
 
     service = await module.resolve(ManualService);
-    lexemesRepository = await module.resolve(getRepositoryToken(Lexeme));
+    lexemesRepository = await module.resolve<LexemesRepositoryMock>(
+      getRepositoryToken(Lexeme),
+    );
     wordsService = await module.resolve(WordsService);
     numeralsService = await module.resolve(NumeralsService);
   });

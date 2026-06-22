@@ -31,9 +31,9 @@ describe(LiteratureTextIngestionService, () => {
         {
           provide: LoggerService,
           useValue: {
-            error: vi.fn(),
-            log: vi.fn(),
-            setContext: vi.fn(),
+            error: vi.fn<(...parameters: unknown[]) => unknown>(),
+            log: vi.fn<(...parameters: unknown[]) => unknown>(),
+            setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
           },
         },
       ],
@@ -66,7 +66,9 @@ describe(LiteratureTextIngestionService, () => {
 
   describe("ingestTextWithLogging", () => {
     it("logs start and completion for root text entry", async () => {
-      const ingestTextMock = vi.fn(async (): Promise<void> => {});
+      const ingestTextMock = vi.fn<
+        (args: IngestTextArguments) => Promise<void>
+      >(async (): Promise<void> => {});
       const authorEntity = new Author();
       const textEntry: LibraryEntry = {
         authorSlug: "author",
@@ -109,7 +111,9 @@ describe(LiteratureTextIngestionService, () => {
     });
 
     it("resolves parent text hierarchy in logs and ingest arguments", async () => {
-      const ingestTextMock = vi.fn(async (): Promise<void> => {});
+      const ingestTextMock = vi.fn<
+        (args: IngestTextArguments) => Promise<void>
+      >(async (): Promise<void> => {});
       const authorEntity = new Author();
       const parentText = new Text();
       parentText.slug = "author/book-1";
@@ -154,7 +158,9 @@ describe(LiteratureTextIngestionService, () => {
     });
 
     it("logs and appends error details when ingestion fails", async () => {
-      const ingestTextMock = vi.fn(
+      const ingestTextMock = vi.fn<
+        (args: IngestTextArguments) => Promise<void>
+      >(
         async (): Promise<void> =>
           await Promise.reject(new Error("ingestion failed")),
       );
@@ -239,9 +245,9 @@ describe(LiteratureTextIngestionService, () => {
       const error = new Error("ingestion failed without stack");
       error.stack = "";
 
-      const ingestTextMock = vi.fn(
-        async (): Promise<void> => await Promise.reject(error),
-      );
+      const ingestTextMock = vi.fn<
+        (args: IngestTextArguments) => Promise<void>
+      >(async (): Promise<void> => await Promise.reject(error));
       const authorEntity = new Author();
       const textEntry: LibraryEntry = {
         authorSlug: "author",

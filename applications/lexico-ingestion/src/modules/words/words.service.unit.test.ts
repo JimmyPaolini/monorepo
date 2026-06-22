@@ -1,5 +1,4 @@
 /* cspell:ignore amāvī amāre */
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -17,34 +16,50 @@ import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.con
 
 import { WordsService } from "./words.service";
 
-import type { Mocked } from "vitest";
-
 describe(WordsService, () => {
+  interface MockQueryBuilder {
+    execute: ReturnType<typeof vi.fn<() => Promise<void>>>;
+    insert: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+    into: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+    orIgnore: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+    values: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+  }
+
+  interface WordRepositoryMock {
+    createQueryBuilder: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+    find: ReturnType<typeof vi.fn<() => Promise<Word[]>>>;
+    upsert: ReturnType<
+      typeof vi.fn<
+        (entity: unknown, conflictOptions: unknown) => Promise<unknown>
+      >
+    >;
+  }
+
+  interface WordJunctionRepositoryMock {
+    createQueryBuilder: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
+  }
+
   let service: WordsService;
-  let wordRepository: Mocked<any>;
-  let wordLexemeRepository: Mocked<any>;
-  let wordFormRepository: Mocked<any>;
+  let wordRepository: WordRepositoryMock;
+  let wordLexemeRepository: WordJunctionRepositoryMock;
+  let wordFormRepository: WordJunctionRepositoryMock;
 
   beforeAll(async () => {
-    const createMockQueryBuilder = (): {
-      execute: any;
-      insert: any;
-      into: any;
-      orIgnore: any;
-      values: any;
-    } => {
-      const self = {
+    const createMockQueryBuilder = (): MockQueryBuilder => {
+      const self: MockQueryBuilder = {
         execute: vi.fn<() => Promise<void>>().mockResolvedValue(undefined),
-        insert: vi.fn(() => self),
-        into: vi.fn(() => self),
-        orIgnore: vi.fn(() => self),
-        values: vi.fn(() => self),
+        insert: vi.fn<() => MockQueryBuilder>(() => self),
+        into: vi.fn<() => MockQueryBuilder>(() => self),
+        orIgnore: vi.fn<() => MockQueryBuilder>(() => self),
+        values: vi.fn<() => MockQueryBuilder>(() => self),
       };
       return self;
     };
 
     const mockWordRepository = {
-      createQueryBuilder: vi.fn(() => createMockQueryBuilder()),
+      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
+        createMockQueryBuilder(),
+      ),
       find: vi.fn<() => Promise<Word[]>>(),
       upsert:
         vi.fn<
@@ -53,11 +68,15 @@ describe(WordsService, () => {
     };
 
     const mockWordLexemeRepository = {
-      createQueryBuilder: vi.fn(() => createMockQueryBuilder()),
+      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
+        createMockQueryBuilder(),
+      ),
     };
 
     const mockWordFormRepository = {
-      createQueryBuilder: vi.fn(() => createMockQueryBuilder()),
+      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
+        createMockQueryBuilder(),
+      ),
     };
 
     const module = await Test.createTestingModule({
@@ -76,9 +95,15 @@ describe(WordsService, () => {
     }).compile();
 
     service = await module.resolve(WordsService);
-    wordRepository = await module.resolve(getRepositoryToken(Word));
-    wordLexemeRepository = await module.resolve(getRepositoryToken(WordLexeme));
-    wordFormRepository = await module.resolve(getRepositoryToken(WordForm));
+    wordRepository = await module.resolve<WordRepositoryMock>(
+      getRepositoryToken(Word),
+    );
+    wordLexemeRepository = await module.resolve<WordJunctionRepositoryMock>(
+      getRepositoryToken(WordLexeme),
+    );
+    wordFormRepository = await module.resolve<WordJunctionRepositoryMock>(
+      getRepositoryToken(WordForm),
+    );
   });
 
   beforeEach(() => {
@@ -190,7 +215,7 @@ describe(WordsService, () => {
           expect.objectContaining({ data: "amo" }),
           expect.objectContaining({ data: "amare" }),
         ]),
-        expect.any(Object),
+        expect.anything(),
       );
     });
 
@@ -233,7 +258,7 @@ describe(WordsService, () => {
 
       expect(wordRepository.upsert).toHaveBeenCalledWith(
         expect.arrayContaining([expect.objectContaining({ data: "julius" })]),
-        expect.any(Object),
+        expect.anything(),
       );
     });
 

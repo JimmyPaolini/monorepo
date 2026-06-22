@@ -339,7 +339,7 @@ describe(EclipseCalculationService, () => {
       ).toStrictEqual(coordinates);
       expect(geometryService.getAllEclipseCoordinates).toHaveBeenCalledWith(
         expect.objectContaining({
-          minute: expect.any(Object), // moment object
+          minute: moment.utc("2024-04-08T18:00:00.000Z"),
           moonCoordinateEphemeris: {},
           moonDiameterEphemeris: {},
           sunCoordinateEphemeris: {},

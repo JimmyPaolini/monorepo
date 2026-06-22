@@ -108,9 +108,9 @@ describe(PronunciationService, () => {
       processClassicalCharacter: vi.fn<(context: ClassicalContext) => number>(
         (context: ClassicalContext) => context.index,
       ),
-      processEcclesiasticalCharacter: vi.fn(
-        (context: EcclesiasticalContext) => context.index,
-      ),
+      processEcclesiasticalCharacter: vi.fn<
+        (context: EcclesiasticalContext) => number
+      >((context: EcclesiasticalContext) => context.index),
     };
     loggerService = {
       log: vi.fn<(...parameters: unknown[]) => void>(),
@@ -291,15 +291,23 @@ describe(PronunciationService, () => {
 
       service.parse($, elt, "amō");
 
-      expect(classifier.applyWiktionaryPronunciations).toHaveBeenCalledWith(
-        expect.objectContaining({
-          $,
-          classical: expect.any(Object),
-          ecclesiastical: expect.any(Object),
-          elt,
-          vulgar: expect.any(Object),
-        }),
-      );
+      const firstCallArguments = classifier.applyWiktionaryPronunciations.mock
+        .calls[0]?.[0] as
+        | undefined
+        | {
+            $: unknown;
+            classical: unknown;
+            ecclesiastical: unknown;
+            elt: unknown;
+            vulgar: unknown;
+          };
+
+      expect(firstCallArguments).toBeDefined();
+      expect(firstCallArguments?.$).toBe($);
+      expect(firstCallArguments?.elt).toBe(elt);
+      expect(firstCallArguments?.classical).toBeDefined();
+      expect(firstCallArguments?.ecclesiastical).toBeDefined();
+      expect(firstCallArguments?.vulgar).toBeDefined();
     });
 
     it("should create Pronunciation entities with variant and phonemes", () => {

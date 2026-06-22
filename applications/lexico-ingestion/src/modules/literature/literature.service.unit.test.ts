@@ -106,30 +106,60 @@ describe(LiteratureService, () => {
         LiteratureService,
         {
           provide: getRepositoryToken(Author),
-          useValue: { findOneOrFail: vi.fn(), save: vi.fn(), upsert: vi.fn() },
+          useValue: {
+            findOneOrFail: vi.fn<(...parameters: unknown[]) => unknown>(),
+            save: vi.fn<(...parameters: unknown[]) => unknown>(),
+            upsert: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
         {
           provide: getRepositoryToken(Line),
-          useValue: { find: vi.fn(), upsert: vi.fn() },
+          useValue: {
+            find: vi.fn<(...parameters: unknown[]) => unknown>(),
+            upsert: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
-        { provide: NumeralsService, useValue: { toDecimal: vi.fn() } },
+        {
+          provide: NumeralsService,
+          useValue: {
+            toDecimal: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
+        },
         {
           provide: getRepositoryToken(Text),
-          useValue: { findOneOrFail: vi.fn(), upsert: vi.fn() },
+          useValue: {
+            findOneOrFail: vi.fn<(...parameters: unknown[]) => unknown>(),
+            upsert: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
-        { provide: getRepositoryToken(Token), useValue: { upsert: vi.fn() } },
-        { provide: getRepositoryToken(Word), useValue: { find: vi.fn() } },
+        {
+          provide: getRepositoryToken(Token),
+          useValue: { upsert: vi.fn<(...parameters: unknown[]) => unknown>() },
+        },
+        {
+          provide: getRepositoryToken(Word),
+          useValue: { find: vi.fn<(...parameters: unknown[]) => unknown>() },
+        },
         {
           provide: LiteratureLibraryScanService,
-          useValue: { scanLibrary: vi.fn() },
+          useValue: {
+            scanLibrary: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
         {
           provide: LiteratureTextIngestionService,
-          useValue: { ingestTextWithLogging: vi.fn() },
+          useValue: {
+            ingestTextWithLogging:
+              vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
         {
           provide: LoggerService,
-          useValue: { log: vi.fn(), setContext: vi.fn(), warn: vi.fn() },
+          useValue: {
+            log: vi.fn<(...parameters: unknown[]) => unknown>(),
+            setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+            warn: vi.fn<(...parameters: unknown[]) => unknown>(),
+          },
         },
       ],
     }).compile();
@@ -1117,7 +1147,7 @@ describe(LiteratureService, () => {
         name: "Unknown Author",
         slug: "unknown-author",
       }),
-      expect.any(Object),
+      expect.objectContaining({}),
     );
     expect(ensureParentTextsSpy).toHaveBeenCalledTimes(1);
     expect(ingestTextChunksSpy).toHaveBeenCalledTimes(1);
@@ -1149,13 +1179,20 @@ describe(LiteratureService, () => {
       title: "Aeneid",
     });
 
-    expect(textRepository.upsert).toHaveBeenCalledWith(
-      expect.objectContaining({
-        metadata: { meter: "dactylic hexameter" },
-        parentText: expect.objectContaining({ id: "parent-id" }),
-      }),
-      expect.any(Object),
-    );
+    const upsertCallArguments = textRepository.upsert.mock.calls[0] as
+      | [
+          {
+            metadata?: { meter?: string };
+            parentText?: { id?: string };
+          },
+          unknown,
+        ]
+      | undefined;
+
+    expect(upsertCallArguments).toBeDefined();
+    expect(upsertCallArguments?.[0].metadata?.meter).toBe("dactylic hexameter");
+    expect(upsertCallArguments?.[0].parentText?.id).toBe("parent-id");
+    expect(upsertCallArguments?.[1]).toBeDefined();
   });
 
   it("should ingest text by parsing frontmatter and lines", async () => {

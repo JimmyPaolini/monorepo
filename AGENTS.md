@@ -134,6 +134,8 @@ pnpm exec nx run <project>:analyze-code --configuration=check
 
 **Do not commit until both commands pass cleanly.** If they fail, use the [triage-submission skill](documentation/skills/triage-submission/SKILL.md) to diagnose and fix the errors.
 
+**Never silence errors with disable comments or configuration changes.** Do not use `// eslint-disable`, `// eslint-disable-next-line`, `// @ts-ignore`, `// @ts-expect-error`, `/* eslint-disable */`, `nocheck`, or similar suppression comments to work around lint or type errors. Do not loosen TypeScript `compilerOptions` (e.g. enabling `skipLibCheck`, disabling `strict` flags) or add ESLint `ignores`/`rules` overrides to suppress specific errors. Instead, triage the root cause and fix the code. Suppression is only permitted when the user explicitly requests it.
+
 See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for the full validation workflow and per-tool fix guidance.
 
 ### Quality Tools at a Glance
@@ -213,6 +215,8 @@ See [Testing Strategy](documentation/code-quality/testing-strategy.md) for patte
 ### Git Workflow
 
 **Never bypass git hooks** with `--no-verify` — fix the underlying issue instead.
+
+**Never suppress lint or type errors** with disable comments (`eslint-disable`, `@ts-ignore`, `@ts-expect-error`, `nocheck`) or by loosening configuration — triage and fix the code instead. Suppression is only permitted when the user explicitly requests it.
 
 #### Branch Names
 

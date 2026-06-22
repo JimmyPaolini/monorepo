@@ -241,7 +241,13 @@ describe(AnnualSolarCycleService, () => {
 
       expect(advancingDuration).toStrictEqual(
         expect.objectContaining({
-          categories: expect.arrayContaining(["Advancing"]),
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Annual Solar Cycle",
+            "Solar",
+            "Advancing",
+          ],
           description: "Solar Advancing (Aphelion to Perihelion)",
           end: perihelionEvent.start,
           start: aphelionEvent.start,
@@ -291,7 +297,13 @@ describe(AnnualSolarCycleService, () => {
 
       expect(retreatingDuration).toStrictEqual(
         expect.objectContaining({
-          categories: expect.arrayContaining(["Retreating"]),
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Annual Solar Cycle",
+            "Solar",
+            "Retreating",
+          ],
           description: "Solar Retreating (Perihelion to Aphelion)",
           end: aphelionEvent.start,
           start: perihelionEvent.start,

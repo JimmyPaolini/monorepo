@@ -152,8 +152,8 @@ describe(EphemerisAggregationService, () => {
       expect(allEntries.coordinateEntries).toHaveLength(1);
       expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith({
         body: "north lunar node",
-        end: expect.any(Object),
-        start: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
     });
 

@@ -52,10 +52,11 @@ function createLexemesServiceMock(): {
   saveParsedLexeme: ReturnType<typeof vi.fn>;
 } {
   return {
-    existsByLemma: vi.fn(),
-    findLexemesByLemmaWithTranslations: vi.fn(),
-    parseLexemes: vi.fn(),
-    saveParsedLexeme: vi.fn(),
+    existsByLemma: vi.fn<(...parameters: unknown[]) => unknown>(),
+    findLexemesByLemmaWithTranslations:
+      vi.fn<(...parameters: unknown[]) => unknown>(),
+    parseLexemes: vi.fn<(...parameters: unknown[]) => unknown>(),
+    saveParsedLexeme: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -66,10 +67,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -77,7 +78,7 @@ function createManualServiceMock(): {
   ingestManual: ReturnType<typeof vi.fn>;
 } {
   return {
-    ingestManual: vi.fn(),
+    ingestManual: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -87,9 +88,11 @@ function createTranslationsServiceMock(): {
   saveTranslations: ReturnType<typeof vi.fn>;
 } {
   return {
-    extractTranslationReferences: vi.fn(),
-    findTranslationsWithReferences: vi.fn(),
-    saveTranslations: vi.fn(),
+    extractTranslationReferences:
+      vi.fn<(...parameters: unknown[]) => unknown>(),
+    findTranslationsWithReferences:
+      vi.fn<(...parameters: unknown[]) => unknown>(),
+    saveTranslations: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 

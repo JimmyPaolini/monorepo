@@ -22,8 +22,8 @@ function createLiteratureServiceMock(): {
   scanLibrary: ReturnType<typeof vi.fn>;
 } {
   return {
-    ingestAllAuthors: vi.fn(),
-    scanLibrary: vi.fn(),
+    ingestAllAuthors: vi.fn<(...parameters: unknown[]) => unknown>(),
+    scanLibrary: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -33,9 +33,9 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 

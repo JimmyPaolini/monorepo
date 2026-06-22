@@ -354,16 +354,25 @@ describe(EphemerisService, () => {
       expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalledWith(
         expect.objectContaining({
           body: "sun",
-          end: expect.any(Object),
-          featureSets: expect.any(Object),
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          featureSets: {
+            azimuthElevationSet: new Set(["sun"]),
+            diameterSet: new Set(["sun"]),
+            distanceSet: new Set(["sun"]),
+            illuminationSet: new Set(["sun"]),
+          },
           observerLatitude: 40.7128,
           observerLongitude: -74.006,
-          start: expect.any(Object),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
         }),
       );
-      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWith(
-        expect.any(Object),
-      );
+      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWith({
+        azimuthEntries: [],
+        coordinateEntries: [],
+        diameterEntries: [],
+        distanceEntries: [],
+        illuminationEntries: [],
+      });
     });
 
     it("delegates azimuth/elevation by body to horizon service", () => {
@@ -379,10 +388,10 @@ describe(EphemerisService, () => {
         horizonService.computeAzimuthElevationForBody,
       ).toHaveBeenCalledWith({
         body: "sun",
-        end: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
         observerLatitude: 40.7128,
         observerLongitude: -74.006,
-        start: expect.any(Object),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
       expect(result.sun).toBeDefined();
     });
@@ -398,8 +407,8 @@ describe(EphemerisService, () => {
 
       expect(phenomenaService.computeIlluminationForBody).toHaveBeenCalledWith({
         body: "moon",
-        end: expect.any(Object),
-        start: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
       expect(result.moon).toBeDefined();
     });
@@ -414,8 +423,8 @@ describe(EphemerisService, () => {
 
       expect(phenomenaService.computeDiameterForBody).toHaveBeenCalledWith({
         body: "sun",
-        end: expect.any(Object),
-        start: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
       expect(result.sun).toBeDefined();
     });
@@ -430,8 +439,8 @@ describe(EphemerisService, () => {
 
       expect(coordinateService.computeDistanceForBody).toHaveBeenCalledWith({
         body: "sun",
-        end: expect.any(Object),
-        start: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
       expect(result.sun).toBeDefined();
     });
@@ -446,12 +455,12 @@ describe(EphemerisService, () => {
 
       expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith({
         body: "north lunar node",
-        end: expect.any(Object),
-        start: expect.any(Object),
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
       expect(coordinateService.computeBodyCoordinate).toHaveBeenCalledWith(
         "sun",
-        expect.any(Number),
+        2_460_395.5,
       );
       expect(result["north lunar node"]).toBeDefined();
       expect(result.sun).toBeDefined();
@@ -467,14 +476,33 @@ describe(EphemerisService, () => {
       });
 
       expect(spy).toHaveBeenCalledWith({
-        azimuthElevationBodies: expect.any(Array),
-        coordinateBodies: expect.any(Array),
+        azimuthElevationBodies: ["sun", "moon"],
+        coordinateBodies: [
+          "sun",
+          "moon",
+          "mercury",
+          "venus",
+          "mars",
+          "jupiter",
+          "saturn",
+          "uranus",
+          "neptune",
+          "pluto",
+          "chiron",
+          "lilith",
+          "ceres",
+          "pallas",
+          "juno",
+          "vesta",
+          "north lunar node",
+          "lunar apogee",
+        ],
         coordinates: [-74.006, 40.7128],
-        diameterBodies: expect.any(Array),
-        distanceBodies: expect.any(Array),
-        end: expect.any(Object),
-        illuminationBodies: expect.any(Array),
-        start: expect.any(Object),
+        diameterBodies: ["sun", "moon"],
+        distanceBodies: ["sun", "mercury", "venus", "mars"],
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        illuminationBodies: ["moon", "mercury", "venus", "mars"],
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
     });
   });

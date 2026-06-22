@@ -35,14 +35,20 @@ describe("manualService edge branches", () => {
 
     const service = new ManualService(
       {
-        delete: vi.fn(async () => await Promise.resolve()),
-        save: vi.fn(async (lexeme: Lexeme) => await Promise.resolve(lexeme)),
+        delete: vi.fn<(criteria: unknown) => Promise<void>>(
+          async () => await Promise.resolve(),
+        ),
+        save: vi.fn<(lexeme: Lexeme) => Promise<Lexeme>>(
+          async (lexeme: Lexeme) => await Promise.resolve(lexeme),
+        ),
       } as never,
       {
-        ingestLexemeWords: vi.fn(async () => await Promise.resolve()),
+        ingestLexemeWords: vi.fn<(lexeme: Lexeme) => Promise<void>>(
+          async () => await Promise.resolve(),
+        ),
       } as never,
       {
-        toRoman: vi.fn(String),
+        toRoman: vi.fn<(value: number | string) => string>(String),
       } as never,
     ) as unknown as ManualServiceInstance;
 
@@ -116,14 +122,20 @@ describe("manualService edge branches", () => {
 
     const service = new ManualService(
       {
-        delete: vi.fn(async () => await Promise.resolve()),
-        save: vi.fn(async (lexeme: Lexeme) => await Promise.resolve(lexeme)),
+        delete: vi.fn<(criteria: unknown) => Promise<void>>(
+          async () => await Promise.resolve(),
+        ),
+        save: vi.fn<(lexeme: Lexeme) => Promise<Lexeme>>(
+          async (lexeme: Lexeme) => await Promise.resolve(lexeme),
+        ),
       } as never,
       {
-        ingestLexemeWords: vi.fn(async () => await Promise.resolve()),
+        ingestLexemeWords: vi.fn<(lexeme: Lexeme) => Promise<void>>(
+          async () => await Promise.resolve(),
+        ),
       } as never,
       {
-        toRoman: vi.fn(String),
+        toRoman: vi.fn<(value: number | string) => string>(String),
       } as never,
     ) as unknown as ManualServiceInstance;
 

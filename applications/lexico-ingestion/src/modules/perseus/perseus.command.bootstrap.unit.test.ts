@@ -46,7 +46,9 @@ describe("perseusCommand constructor and logging branches", () => {
   });
 
   it("stringifies non-Error values in download error logging", async () => {
-    const appendFileMock = vi.fn(async () => await Promise.resolve());
+    const appendFileMock = vi.fn<(...parameters: unknown[]) => unknown>(
+      async () => await Promise.resolve(),
+    );
 
     vi.doMock("node:fs", () => ({
       existsSync: vi.fn<() => boolean>(() => true),

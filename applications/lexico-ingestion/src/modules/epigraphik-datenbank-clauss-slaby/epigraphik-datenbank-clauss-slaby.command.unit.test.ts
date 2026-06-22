@@ -41,10 +41,10 @@ function createLoggerServiceMock(): {
   warn: ReturnType<typeof vi.fn>;
 } {
   return {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => unknown>(),
+    log: vi.fn<(...parameters: unknown[]) => unknown>(),
+    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
+    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
   };
 }
 
@@ -127,7 +127,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
   it("should save chunk data and stop when payload has no records", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             json: async () => await Promise.resolve({ data: [] }),
@@ -149,7 +149,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
   it("should save chunk data and continue when fetch is successful", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             json: async () => await Promise.resolve({ data: [{ id: 1 }] }),
@@ -171,7 +171,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
   it("should warn and continue when save chunk response is not ok", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(
+      vi.fn<(...parameters: unknown[]) => unknown>(
         async () =>
           await Promise.resolve({
             ok: false,

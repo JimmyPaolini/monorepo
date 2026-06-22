@@ -143,8 +143,16 @@ describe(PerfectiveService, () => {
       expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({
           coordinates: [-75.1652, 39.9526],
-          end: expect.any(Object),
-          start: expect.any(Object),
+          end: moment
+            .tz("2025-06-15", "America/New_York")
+            .endOf("day")
+            .clone()
+            .add(60, "minutes"),
+          start: moment
+            .tz("2025-06-15", "America/New_York")
+            .startOf("day")
+            .clone()
+            .subtract(60, "minutes"),
           timezone: "America/New_York",
         }),
       );

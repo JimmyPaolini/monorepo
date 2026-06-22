@@ -338,13 +338,12 @@ describe(FormsBuilderOtherService, () => {
       new Lexeme(),
     );
 
+    const firstCallArguments = providerSpy.mock.calls[0]?.[0];
+
     expect(forms).toStrictEqual([delegatedParticiple]);
-    expect(providerSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        lexeme: expect.any(Lexeme),
-        participleData: expect.any(Object),
-      }),
-    );
+    expect(firstCallArguments).toBeDefined();
+    expect(firstCallArguments?.lexeme).toBeInstanceOf(Lexeme);
+    expect(firstCallArguments?.participleData).toBeDefined();
   });
 
   it("should ignore invalid finite number keys and non-record values", () => {
