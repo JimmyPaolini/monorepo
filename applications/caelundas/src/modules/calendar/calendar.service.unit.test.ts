@@ -312,7 +312,7 @@ describe(CalendarService, () => {
       });
 
       expect(configService.get).toHaveBeenCalledWith("OUTPUT_DIRECTORY");
-      expect(writeFile).toHaveBeenCalledWithWith(
+      expect(writeFile).toHaveBeenCalledWith(
         expect.stringContaining("caelundas_"),
         expect.any(Uint8Array),
       );
@@ -338,7 +338,8 @@ describe(CalendarService, () => {
           end: moment.tz("2025-03-21T00:00:00", "America/New_York"),
           latitude: 40.7128,
           longitude: -74.006,
-          start: moment.tz("2025-03-20T00:00:00", "America/New_YortoHaveBeenCalledWithimezone: "America/New_York",
+          start: moment.tz("2025-03-20T00:00:00", "America/New_York"),
+          timezone: "America/New_York",
         },
       );
 
