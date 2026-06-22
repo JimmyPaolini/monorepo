@@ -372,6 +372,44 @@ const badges = [
 
 const BLOCK = `<!-- CODE_STATISTICS_START -->\n${badges}\n<!-- CODE_STATISTICS_END -->`;
 
+// 🧹 Difference calculation
+
+/**
+ * Generates a difference comparing expected and actual content using the system diff command.
+ */
+function calculateDifference(expected: string, actual: string): string {
+  const temporaryDirectory = fs.mkdtempSync(
+    path.join(__dirname, "..", ".tmp-"),
+  );
+  const expectedFile = path.join(temporaryDirectory, "expected.txt");
+  const actualFile = path.join(temporaryDirectory, "actual.txt");
+
+  fs.writeFileSync(expectedFile, expected, "utf8");
+  fs.writeFileSync(actualFile, actual, "utf8");
+
+  try {
+    return execSync(`diff -u "${actualFile}" "${expectedFile}"`, {
+      encoding: "utf8",
+      stdio: "pipe",
+    });
+  } catch (error: unknown) {
+    // diff exits with status 1 when files differ; capture the output anyway
+    const executionError = error as Record<string, unknown>;
+    if (executionError["status"] === 1) {
+      const standardOutput = executionError["stdout"];
+      return typeof standardOutput === "string" ? standardOutput : "";
+    }
+
+    throw error;
+  } finally {
+    try {
+      fs.rmSync(temporaryDirectory, { recursive: true });
+    } catch {
+      /* ignore cleanup errors */
+    }
+  }
+}
+
 // ✏️ Write or check
 
 const readme = fs.readFileSync("README.md", "utf8");
@@ -392,11 +430,13 @@ if (CHECK_MODE) {
     console.log("✅ README code stats are up to date.");
     process.exit(0);
   } else {
+    const actualContent = current ?? "(no block found)";
+    const difference = calculateDifference(BLOCK, actualContent);
     console.error(
       `❌ README code stats are stale.\n` +
-        `   Run \`nx run monorepo:measure-code:write\` locally and commit the result.\n\n` +
-        `   Expected:\n${BLOCK}\n\n` +
-        `   Found:\n${current ?? "(no block found)"}`,
+        `   Run \`nx run monorepo:measure-code:write\` locally and commit the result.\n\n${
+          difference
+        }`,
     );
     process.exit(1);
   }
