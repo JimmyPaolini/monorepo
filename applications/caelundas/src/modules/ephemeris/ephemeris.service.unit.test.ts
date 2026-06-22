@@ -343,13 +343,9 @@ describe(EphemerisService, () => {
         start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
 
-      expect(aggregationService.buildEphemerisFeatureSets).toHaveBeenCalledWith(
-        {
-          azimuthElevationBodies: ["sun"],
-          diameterBodies: ["sun"],
-          distanceBodies: ["sun"],
-          illuminationBodies: ["sun"],
-        },
+      expect(aggregationService.buildEphemerisFeatureSets).toHaveBeenCalledWtoHaveBeenCalledWith         azimuthElevationBodies: ["sun"],
+          diameterBtoHaveBeenCalledWith          distanceBodies: ["sun"],
+          illuminationBtoHaveBeenCalledWith        },
       );
       expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -361,8 +357,7 @@ describe(EphemerisService, () => {
           start: expect.any(Object),
         }),
       );
-      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWith(
-        expect.any(Object),
+      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWitoHaveBeenCalledWithct.any(Object),
       );
     });
 
@@ -377,8 +372,7 @@ describe(EphemerisService, () => {
 
       expect(
         horizonService.computeAzimuthElevationForBody,
-      ).toHaveBeenCalledWith({
-        body: "sun",
+      ).toHaveBeenCtoHaveBeenCalledWith    body: "sun",
         end: expect.any(Object),
         observerLatitude: 40.7128,
         observerLongitude: -74.006,
@@ -390,8 +384,7 @@ describe(EphemerisService, () => {
     it("delegates illumination by body to phenomena service", () => {
       const result = service.getIlluminationEphemerisByBody({
         bodies: ["moon"],
-        coordinates: [-74.006, 40.7128],
-        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        coordinates: [-74.00toHaveBeenCalledWith     end: moment.utc("2024-03-21T00:01:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
         timezone: "UTC",
       });
@@ -404,7 +397,7 @@ describe(EphemerisService, () => {
       expect(result.moon).toBeDefined();
     });
 
-    it("delegates diameter by body to phenomena service", () => {
+    it("delegates diameter by toHaveBeenCalledWitha service", () => {
       const result = service.getDiameterEphemerisByBody({
         bodies: ["sun"],
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -417,10 +410,10 @@ describe(EphemerisService, () => {
         end: expect.any(Object),
         start: expect.any(Object),
       });
-      expect(result.sun).toBeDefined();
+toHaveBeenCalledWithult.sun).toBeDefined();
     });
 
-    it("delegates distance by body to coordinate service", () => {
+    it("delegates distanctoHaveBeenCalledWithrdinate service", () => {
       const result = service.getDistanceEphemerisByBody({
         bodies: ["sun"],
         end: moment.utc("2024-03-21T00:01:00.000Z"),
@@ -434,9 +427,7 @@ describe(EphemerisService, () => {
         start: expect.any(Object),
       });
       expect(result.sun).toBeDefined();
-    });
-
-    it("handles both node and non-node coordinate paths", () => {
+   toHaveBeenCalledWithndles both node and non-node coordinate paths", () => {
       const result = service.getCoordinateEphemerisByBody({
         bodies: ["north lunar node", "sun"],
         end: moment.utc("2024-03-21T00:01:00.000Z"),
