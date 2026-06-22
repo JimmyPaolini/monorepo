@@ -337,7 +337,15 @@ describe(EclipseCalculationService, () => {
           sunDiameterEphemeris: {},
         }),
       ).toStrictEqual(coordinates);
-      expect(geometryService.getAllEclipseCoordinates).toHaveBeenCalledWith();
+      expect(geometryService.getAllEclipseCoordinates).toHaveBeenCalledWith(
+        expect.objectContaining({
+          minute: expect.any(Object), // moment object
+          moonCoordinateEphemeris: {},
+          moonDiameterEphemeris: {},
+          sunCoordinateEphemeris: {},
+          sunDiameterEphemeris: {},
+        }),
+      );
 
       expect(
         service.isLunarTopocentricActive(coordinates.currentCoordinates, true),

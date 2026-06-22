@@ -150,7 +150,11 @@ describe(EphemerisAggregationService, () => {
       });
 
       expect(allEntries.coordinateEntries).toHaveLength(1);
-      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith();
+      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith({
+        body: "north lunar node",
+        end: expect.any(Object),
+        start: expect.any(Object),
+      });
     });
 
     it("accumulates non-node coordinate and requested feature entries", () => {

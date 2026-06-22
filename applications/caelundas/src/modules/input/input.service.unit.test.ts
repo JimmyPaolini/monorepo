@@ -355,7 +355,7 @@ describe(InputService, () => {
             longitude: "-74",
             startDate: "1899-12-31",
           }),
-        ).toThrow(/must be between year 1900 and 2100/i);
+        ).toThrow(/Start date must be on or after 1900-01-01/i);
       });
 
       it("rejects dates after 2100", () => {
@@ -366,7 +366,7 @@ describe(InputService, () => {
             longitude: "-74",
             startDate: "2100-12-30",
           }),
-        ).toThrow(/must be between year 1900 and 2100/i);
+        ).toThrow(/End date must be on or before 2100-12-31/i);
       });
     });
 

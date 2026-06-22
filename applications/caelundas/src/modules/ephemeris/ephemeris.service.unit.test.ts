@@ -343,11 +343,27 @@ describe(EphemerisService, () => {
         start: moment.utc("2024-03-21T00:00:00.000Z"),
       });
 
-      expect(
-        aggregationService.buildEphemerisFeatureSets,
-      ).toHaveBeenCalledWith();
-      expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalledWith();
-      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWith();
+      expect(aggregationService.buildEphemerisFeatureSets).toHaveBeenCalledWith(
+        {
+          azimuthElevationBodies: ["sun"],
+          diameterBodies: ["sun"],
+          distanceBodies: ["sun"],
+          illuminationBodies: ["sun"],
+        },
+      );
+      expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalledWith(
+        expect.objectContaining({
+          body: "sun",
+          end: expect.any(Object),
+          featureSets: expect.any(Object),
+          observerLatitude: 40.7128,
+          observerLongitude: -74.006,
+          start: expect.any(Object),
+        }),
+      );
+      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledWith(
+        expect.any(Object),
+      );
     });
 
     it("delegates azimuth/elevation by body to horizon service", () => {
@@ -361,7 +377,13 @@ describe(EphemerisService, () => {
 
       expect(
         horizonService.computeAzimuthElevationForBody,
-      ).toHaveBeenCalledWith();
+      ).toHaveBeenCalledWith({
+        body: "sun",
+        end: expect.any(Object),
+        observerLatitude: 40.7128,
+        observerLongitude: -74.006,
+        start: expect.any(Object),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -374,9 +396,11 @@ describe(EphemerisService, () => {
         timezone: "UTC",
       });
 
-      expect(
-        phenomenaService.computeIlluminationForBody,
-      ).toHaveBeenCalledWith();
+      expect(phenomenaService.computeIlluminationForBody).toHaveBeenCalledWith({
+        body: "moon",
+        end: expect.any(Object),
+        start: expect.any(Object),
+      });
       expect(result.moon).toBeDefined();
     });
 
@@ -388,7 +412,11 @@ describe(EphemerisService, () => {
         timezone: "UTC",
       });
 
-      expect(phenomenaService.computeDiameterForBody).toHaveBeenCalledWith();
+      expect(phenomenaService.computeDiameterForBody).toHaveBeenCalledWith({
+        body: "sun",
+        end: expect.any(Object),
+        start: expect.any(Object),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -400,7 +428,11 @@ describe(EphemerisService, () => {
         timezone: "UTC",
       });
 
-      expect(coordinateService.computeDistanceForBody).toHaveBeenCalledWith();
+      expect(coordinateService.computeDistanceForBody).toHaveBeenCalledWith({
+        body: "sun",
+        end: expect.any(Object),
+        start: expect.any(Object),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -412,8 +444,15 @@ describe(EphemerisService, () => {
         timezone: "UTC",
       });
 
-      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith();
-      expect(coordinateService.computeBodyCoordinate).toHaveBeenCalledWith();
+      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith({
+        body: "north lunar node",
+        end: expect.any(Object),
+        start: expect.any(Object),
+      });
+      expect(coordinateService.computeBodyCoordinate).toHaveBeenCalledWith(
+        "sun",
+        expect.any(Number),
+      );
       expect(result["north lunar node"]).toBeDefined();
       expect(result.sun).toBeDefined();
     });
@@ -427,7 +466,16 @@ describe(EphemerisService, () => {
         timezone: "UTC",
       });
 
-      expect(spy).toHaveBeenCalledWith();
+      expect(spy).toHaveBeenCalledWith({
+        azimuthElevationBodies: expect.any(Array),
+        coordinateBodies: expect.any(Array),
+        coordinates: [-74.006, 40.7128],
+        diameterBodies: expect.any(Array),
+        distanceBodies: expect.any(Array),
+        end: expect.any(Object),
+        illuminationBodies: expect.any(Array),
+        start: expect.any(Object),
+      });
     });
   });
 

@@ -312,7 +312,10 @@ describe(CalendarService, () => {
       });
 
       expect(configService.get).toHaveBeenCalledWith("OUTPUT_DIRECTORY");
-      expect(writeFile).toHaveBeenCalledWith();
+      expect(writeFile).toHaveBeenCalledWith(
+        expect.stringContaining("caelundas_"),
+        expect.any(Uint8Array),
+      );
       expect(logSpy).toHaveBeenCalledWith(
         expect.stringContaining("Wrote 1 events to file"),
       );
@@ -340,7 +343,10 @@ describe(CalendarService, () => {
         },
       );
 
-      expect(writeFile).toHaveBeenCalledWith();
+      expect(writeFile).toHaveBeenCalledWith(
+        expect.stringContaining("output/"),
+        expect.any(Uint8Array),
+      );
       expect(vi.mocked(writeFile).mock.calls.at(-1)?.[0]).toContain("output/");
     });
   });

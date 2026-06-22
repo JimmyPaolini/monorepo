@@ -226,7 +226,11 @@ describe(SpecialtyAspectsProgressiveService, () => {
 
     expect(
       progressiveUtilitiesService.pairProgressiveEvents,
-    ).toHaveBeenCalledWith();
+    ).toHaveBeenCalledWith(
+      expect.arrayContaining([expect.any(Object)]),
+      expect.arrayContaining([expect.any(Object)]),
+      expect.stringContaining("specialty aspect"),
+    );
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon quintile Sun");
     expect(progressiveEvents[0]?.summary).toContain("Moon quintile Sun");

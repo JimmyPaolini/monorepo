@@ -140,7 +140,14 @@ describe(PerfectiveService, () => {
 
       service.detect(baseInput);
 
-      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledWith();
+      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledWith(
+        expect.objectContaining({
+          coordinates: [-75.1652, 39.9526],
+          end: expect.any(Object),
+          start: expect.any(Object),
+          timezone: "America/New_York",
+        }),
+      );
 
       const firstCallArgument =
         ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];

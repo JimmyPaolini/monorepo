@@ -180,7 +180,7 @@ describe("ephemeris.constants", () => {
 
       initializeSwissEphemeris();
 
-      expect(setEphemerisPath).toHaveBeenCalledWith();
+      expect(setEphemerisPath).toHaveBeenCalledWith("./data/ephemeris");
     });
   });
 });
