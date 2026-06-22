@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 
-describe("{{namePascalCase}}Service", () => {
+describe({{namePascalCase}}Service, () => {
   let service: {{namePascalCase}}Service;
 
   beforeAll(async () => {

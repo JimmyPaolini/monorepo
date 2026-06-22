@@ -1,5 +1,5 @@
 import { Test } from "@nestjs/testing";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.command";
 import { DictionaryCommand } from "../dictionary/dictionary.command";
@@ -16,51 +16,51 @@ import { LexicoIngestionCommand } from "./lexico-ingestion.command";
 import type { LexicoIngestionCommandOptions } from "./lexico-ingestion.types";
 
 const { promptsMock } = vi.hoisted(() => ({
-  promptsMock: vi.fn(),
+  promptsMock: vi.fn<() => Promise<Record<string, boolean>>>(),
 }));
 
 vi.mock("prompts", () => ({
   default: promptsMock,
 }));
 
-describe("LexicoIngestionCommand", () => {
+describe(LexicoIngestionCommand, () => {
   let lexicoIngestionCommand: LexicoIngestionCommand;
 
   const loggerService = {
-    log: vi.fn(),
-    setContext: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
   };
 
   const corpusScriptorumEcclesiasticorumLatinorumCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const dictionaryCommand = {
-    ingestAll: vi.fn(async () => {}),
+    ingestAll: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const epigraphikDatenbankClaussSlabyCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const latinLibraryCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const libraryCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const literatureCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const perseusCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const wiktionaryCommand = {
-    run: vi.fn(async () => {}),
+    run: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   beforeEach(async () => {

@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
-describe("PerseusCommand constructor and logging branches", () => {
+describe("perseusCommand constructor and logging branches", () => {
   afterEach(() => {
     vi.resetModules();
     vi.doUnmock("node:fs");
@@ -8,27 +8,33 @@ describe("PerseusCommand constructor and logging branches", () => {
   });
 
   it("creates output directory when constructor detects it is missing", async () => {
-    const mkdirSyncMock = vi.fn();
+    const mkdirSyncMock = vi.fn<(...args: unknown[]) => void>();
 
     vi.doMock("node:fs", () => ({
-      existsSync: vi.fn(() => false),
+      existsSync: vi.fn<() => boolean>(() => false),
       mkdirSync: mkdirSyncMock,
     }));
 
     vi.doMock("node:fs/promises", () => ({
-      access: vi.fn(async () => await Promise.resolve()),
-      appendFile: vi.fn(async () => await Promise.resolve()),
-      mkdir: vi.fn(async () => await Promise.resolve()),
-      writeFile: vi.fn(async () => await Promise.resolve()),
+      access: vi.fn<() => Promise<void>>(async () => await Promise.resolve()),
+      appendFile: vi.fn<() => Promise<void>>(
+        async () => await Promise.resolve(),
+      ),
+      mkdir: vi.fn<() => Promise<string | undefined>>(
+        async () => await Promise.resolve(undefined),
+      ),
+      writeFile: vi.fn<() => Promise<void>>(
+        async () => await Promise.resolve(),
+      ),
     }));
 
     const { PerseusCommand } = await import("./perseus.command");
 
     const logger = {
-      error: vi.fn(),
-      log: vi.fn(),
-      setContext: vi.fn(),
-      warn: vi.fn(),
+      error: vi.fn<(...parameters: unknown[]) => void>(),
+      log: vi.fn<(...parameters: unknown[]) => void>(),
+      setContext: vi.fn<(context: string) => void>(),
+      warn: vi.fn<(...parameters: unknown[]) => void>(),
     };
 
     const command = new PerseusCommand(logger as never);
@@ -43,24 +49,28 @@ describe("PerseusCommand constructor and logging branches", () => {
     const appendFileMock = vi.fn(async () => await Promise.resolve());
 
     vi.doMock("node:fs", () => ({
-      existsSync: vi.fn(() => true),
-      mkdirSync: vi.fn(),
+      existsSync: vi.fn<() => boolean>(() => true),
+      mkdirSync: vi.fn<(...args: unknown[]) => void>(),
     }));
 
     vi.doMock("node:fs/promises", () => ({
-      access: vi.fn(async () => await Promise.resolve()),
+      access: vi.fn<() => Promise<void>>(async () => await Promise.resolve()),
       appendFile: appendFileMock,
-      mkdir: vi.fn(async () => await Promise.resolve()),
-      writeFile: vi.fn(async () => await Promise.resolve()),
+      mkdir: vi.fn<() => Promise<string | undefined>>(
+        async () => await Promise.resolve(undefined),
+      ),
+      writeFile: vi.fn<() => Promise<void>>(
+        async () => await Promise.resolve(),
+      ),
     }));
 
     const { PerseusCommand } = await import("./perseus.command");
 
     const logger = {
-      error: vi.fn(),
-      log: vi.fn(),
-      setContext: vi.fn(),
-      warn: vi.fn(),
+      error: vi.fn<(...parameters: unknown[]) => void>(),
+      log: vi.fn<(...parameters: unknown[]) => void>(),
+      setContext: vi.fn<(context: string) => void>(),
+      warn: vi.fn<(...parameters: unknown[]) => void>(),
     };
 
     const command = new PerseusCommand(logger as never);

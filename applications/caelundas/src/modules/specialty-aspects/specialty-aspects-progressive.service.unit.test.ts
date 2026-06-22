@@ -3,13 +3,13 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("SpecialtyAspectsProgressiveService", () => {
+describe(SpecialtyAspectsProgressiveService, () => {
   let service: SpecialtyAspectsProgressiveService;
 
   beforeAll(async () => {
@@ -27,7 +27,8 @@ describe("SpecialtyAspectsProgressiveService", () => {
   });
 
   const progressiveUtilitiesService = {
-    pairProgressiveEvents: vi.fn(),
+    pairProgressiveEvents:
+      vi.fn<ProgressiveUtilities["pairProgressiveEvents"]>(),
   };
 
   const mockService = new SpecialtyAspectsProgressiveService(
@@ -54,6 +55,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("returns an empty group key for incomplete categories", () => {
     expect(
       specialtyAspectsProgressiveService.specialtyAspectGroupKey({
@@ -69,7 +71,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
   it("returns an empty array for an empty progressive group key", () => {
     expect(
       specialtyAspectsProgressiveService.processAspectGroup("", []),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it("throws when categories do not include a complete specialty aspect", () => {
@@ -167,7 +169,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
           summary: "⬠ Sun quintile Moon",
-        } as Event,
+        },
         {
           categories: [
             "Astronomy",
@@ -183,7 +185,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
           summary: "⬠ Sun quintile Moon",
-        } as Event,
+        },
       ],
     ]);
 
@@ -224,7 +226,7 @@ describe("SpecialtyAspectsProgressiveService", () => {
 
     expect(
       progressiveUtilitiesService.pairProgressiveEvents,
-    ).toHaveBeenCalled();
+    ).toHaveBeenCalledWith();
     expect(progressiveEvents).toHaveLength(1);
     expect(progressiveEvents[0]?.description).toBe("Moon quintile Sun");
     expect(progressiveEvents[0]?.summary).toContain("Moon quintile Sun");

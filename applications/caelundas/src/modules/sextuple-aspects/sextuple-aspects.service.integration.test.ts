@@ -26,7 +26,7 @@ const service = new SextupleAspectsService(
 );
 
 describe("sextuple-aspects.events integration", () => {
-  describe("Hexagram pattern detection", () => {
+  describe("hexagram pattern detection", () => {
     it("detects forming Hexagram when pattern first appears", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
@@ -197,10 +197,10 @@ describe("sextuple-aspects.events integration", () => {
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-09-22T18:42:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-09-22T19:00:00.000Z"),
       );
       expect(progressiveEvents[0]?.categories).toContain("Sextuple Aspect");
@@ -214,7 +214,7 @@ describe("sextuple-aspects.events integration", () => {
     });
   });
 
-  describe("Hexagram body combination scenarios", () => {
+  describe("hexagram body combination scenarios", () => {
     it("detects Hexagram with outer planets", () => {
       const currentMinute = moment.utc("2024-12-05T11:30:00.000Z");
 
@@ -271,7 +271,7 @@ describe("sextuple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge case scenarios", () => {
+  describe("edge case scenarios", () => {
     it("does not detect Hexagram with incomplete first grand trine", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 

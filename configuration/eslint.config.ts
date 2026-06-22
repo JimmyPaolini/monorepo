@@ -202,6 +202,7 @@ export default [
             cur: { current: true },
             curr: { current: true },
             db: { database: true },
+            decl: { declaration: true },
             dev: { development: true },
             dir: { directory: true },
             e: { error: true, event: true },
@@ -257,7 +258,7 @@ export default [
   // 🦄 Unicorn Test File Relaxations
   // Allow test-specific patterns
   {
-    files: ["**/*.test.ts", "**/*.spec.ts", "**/testing/**"],
+    files: ["**/*.test.ts", "**/testing/**"],
     rules: {
       // Test helpers are often defined inline for clarity
       "unicorn/consistent-function-scoping": "off",
@@ -734,8 +735,6 @@ export default [
     ignores: [
       "**/*.test.ts",
       "**/*.test.tsx",
-      "**/*.spec.ts",
-      "**/*.spec.tsx",
       "lint-staged.config.ts",
       "prettier.config.ts",
     ],
@@ -843,7 +842,6 @@ export default [
       "@typescript-eslint/no-unsafe-member-access": "warn",
       "@typescript-eslint/no-unsafe-return": "warn",
       "@typescript-eslint/unbound-method": "off",
-      // it()/describe() callbacks are inherently large; these rules add no signal in tests
       "better-max-params/better-max-params": "off",
       complexity: "off",
       "max-classes-per-file": "off",
@@ -855,25 +853,79 @@ export default [
       "max-statements": "off",
       "no-console": "off",
       "no-param-reassign": "off", // mocks commonly mutate parameters
-      "vitest/max-nested-describe": ["error", { max: 3 }],
+      "vitest/consistent-each-for": [
+        "error",
+        {
+          describe: "each",
+          it: "each",
+          suite: "each",
+          test: "each",
+        },
+      ],
+      "vitest/consistent-test-filename": "error",
       "vitest/consistent-test-it": "error",
       "vitest/consistent-vitest-vi": "error",
+      "vitest/hoisted-apis-on-top": "error",
+      "vitest/max-nested-describe": ["error", { max: 3 }],
+      "vitest/no-alias-methods": "error",
       "vitest/no-commented-out-tests": "error",
       "vitest/no-disabled-tests": "error",
       "vitest/no-duplicate-hooks": "error",
       "vitest/no-focused-tests": "error",
       "vitest/no-identical-title": "error",
-      "vitest/no-test-prefixes": "error",
+      "vitest/no-import-node-test": "error",
+      "vitest/no-restricted-matchers": [
+        "error",
+        {
+          toBeFalsy:
+            "Use toBe(false) or a more specific matcher for clearer assertions.",
+          toBeTruthy:
+            "Use toBe(true) or a more specific matcher for clearer assertions.",
+        },
+      ],
       "vitest/no-standalone-expect": "error",
+      "vitest/no-test-prefixes": "error",
       "vitest/no-test-return-statement": "error",
+      "vitest/no-unneeded-async-expect-function": "error",
+      "vitest/padding-around-after-all-blocks": "error",
+      "vitest/padding-around-after-each-blocks": "error",
+      "vitest/padding-around-all": "error",
+      "vitest/padding-around-before-all-blocks": "error",
+      "vitest/padding-around-before-each-blocks": "error",
+      "vitest/padding-around-describe-blocks": "error",
+      "vitest/padding-around-expect-groups": "error",
+      "vitest/padding-around-test-blocks": "error",
+      "vitest/prefer-called-exactly-once-with": "error",
+      "vitest/prefer-called-times": "error",
+      "vitest/prefer-called-with": "error",
+      "vitest/prefer-comparison-matcher": "error",
+      "vitest/prefer-describe-function-title": "error",
+      "vitest/prefer-each": "error",
+      "vitest/prefer-equality-matcher": "error",
+      "vitest/prefer-expect-assertions": "off",
+      "vitest/prefer-expect-resolves": "error",
       "vitest/prefer-hooks-in-order": "error",
       "vitest/prefer-hooks-on-top": "error",
+      "vitest/prefer-importing-vitest-globals": "error",
+      "vitest/prefer-lowercase-title": "error",
+      "vitest/prefer-mock-promise-shorthand": "error",
+      "vitest/prefer-mock-return-shorthand": "error",
+      "vitest/prefer-strict-equal": "error",
+      "vitest/prefer-to-be": "error",
+      "vitest/prefer-to-contain": "error",
+      "vitest/prefer-to-have-been-called-times": "error",
+      "vitest/prefer-to-have-length": "error",
+      "vitest/prefer-vi-mocked": "error",
       "vitest/require-awaited-expect-poll": "error",
+      "vitest/require-mock-type-parameters": [
+        "warn",
+        { checkImportFunctions: false },
+      ],
+      "vitest/require-to-throw-message": "error",
       "vitest/require-top-level-describe": [
         "error",
         { maxNumberOfTopLevelDescribes: 1 },
       ],
-      "vitest/require-to-throw-message": "error",
       "vitest/unbound-method": "error",
       "vitest/valid-describe-callback": "error",
       "vitest/valid-expect": "error",
@@ -891,26 +943,6 @@ export default [
   {
     files: ["**/testing/setup.ts", "**/testing/mocks.ts"],
     rules: {
-      "vitest/require-top-level-describe": "off",
-    },
-  },
-
-  // 🧪 Generated Command Unit Tests
-  // Current conformance template includes an initial bootstrap describe block.
-  {
-    files: ["**/*.command.unit.test.ts"],
-    rules: {
-      "vitest/no-identical-title": "off",
-      "vitest/require-top-level-describe": "off",
-    },
-  },
-
-  // 🧪 Generated Service Unit Tests
-  // Current conformance template includes an initial bootstrap describe block.
-  {
-    files: ["**/*.service.unit.test.ts"],
-    rules: {
-      "vitest/no-identical-title": "off",
       "vitest/require-top-level-describe": "off",
     },
   },

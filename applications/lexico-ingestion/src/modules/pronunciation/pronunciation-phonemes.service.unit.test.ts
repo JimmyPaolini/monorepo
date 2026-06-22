@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 
-describe("PronunciationPhonemesService", () => {
+describe(PronunciationPhonemesService, () => {
   let service: PronunciationPhonemesService;
 
   beforeAll(async () => {

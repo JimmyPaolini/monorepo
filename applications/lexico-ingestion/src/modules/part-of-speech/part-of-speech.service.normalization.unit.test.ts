@@ -1,9 +1,9 @@
 import * as cheerio from "cheerio";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import type { AnyNode } from "domhandler";
 
-describe("PartOfSpeechService normalization guards", () => {
+describe("partOfSpeechService normalization guards", () => {
   afterEach(() => {
     vi.resetModules();
     vi.doUnmock("@monorepo/lexico-entities");
@@ -44,6 +44,7 @@ describe("PartOfSpeechService normalization guards", () => {
     `);
 
     const entryNode = $("#entry").get(0);
+
     expect(entryNode).toBeDefined();
 
     const partOfSpeech = service.getPartOfSpeech($, entryNode as AnyNode);

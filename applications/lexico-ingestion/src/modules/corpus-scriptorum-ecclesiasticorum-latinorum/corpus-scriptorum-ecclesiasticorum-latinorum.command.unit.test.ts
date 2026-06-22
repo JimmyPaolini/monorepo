@@ -6,31 +6,6 @@ import { LoggerService } from "../logger/logger.service";
 
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "./corpus-scriptorum-ecclesiasticorum-latinorum.command";
 
-describe("CorpusScriptorumEcclesiasticorumLatinorumCommand", () => {
-  let command: CorpusScriptorumEcclesiasticorumLatinorumCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        CorpusScriptorumEcclesiasticorumLatinorumCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(
-      CorpusScriptorumEcclesiasticorumLatinorumCommand,
-    );
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const {
   accessMock,
   appendFileMock,
@@ -39,12 +14,12 @@ const {
   mkdirSyncMock,
   writeFileMock,
 } = vi.hoisted(() => ({
-  accessMock: vi.fn(),
-  appendFileMock: vi.fn(),
-  existsSyncMock: vi.fn(),
-  mkdirMock: vi.fn(),
-  mkdirSyncMock: vi.fn(),
-  writeFileMock: vi.fn(),
+  accessMock: vi.fn<() => Promise<void>>(),
+  appendFileMock: vi.fn<() => Promise<void>>(),
+  existsSyncMock: vi.fn<() => boolean>(),
+  mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+  mkdirSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+  writeFileMock: vi.fn<() => Promise<void>>(),
 }));
 
 vi.mock("node:fs", () => ({
@@ -73,15 +48,32 @@ function createLoggerServiceMock(): {
   };
 }
 
-describe("CorpusScriptorumEcclesiasticorumLatinorumCommand", () => {
+describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   let command: CorpusScriptorumEcclesiasticorumLatinorumCommand;
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        CorpusScriptorumEcclesiasticorumLatinorumCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(
+      CorpusScriptorumEcclesiasticorumLatinorumCommand,
+    );
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -106,6 +98,10 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
     expect(command).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith(
       "CorpusScriptorumEcclesiasticorumLatinorumCommand",
@@ -184,7 +180,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumCommand", () => {
       }
     ).fetchTree("https://example.com/tree");
 
-    expect(result).toEqual([
+    expect(result).toStrictEqual([
       { path: "data/foo.xml", type: "blob" },
       { path: "README.md", type: "blob" },
     ]);

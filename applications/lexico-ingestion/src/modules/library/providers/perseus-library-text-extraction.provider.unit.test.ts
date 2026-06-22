@@ -8,7 +8,7 @@ import { PerseusLibraryTextExtractionProvider } from "./perseus-library-text-ext
 import type { PerseusMarkdownFile } from "./perseus-library-text-extraction.provider";
 import type { AnyNode } from "domhandler";
 
-describe("PerseusLibraryTextExtractionProvider", () => {
+describe(PerseusLibraryTextExtractionProvider, () => {
   const perseusLibraryTextExtractionProvider =
     new PerseusLibraryTextExtractionProvider();
 
@@ -44,7 +44,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
 
     const descriptor = getTextPartDescriptor(child);
 
-    expect(descriptor).toEqual(
+    expect(descriptor).toStrictEqual(
       expect.objectContaining({
         partName: "book-1",
         partTitle: "Book 1",
@@ -68,7 +68,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
       }
     ).getTextPartDescriptor(child);
 
-    expect(descriptor).toEqual(
+    expect(descriptor).toStrictEqual(
       expect.objectContaining({
         partName: "section",
         partTitle: "Section",
@@ -116,7 +116,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
 
     const paragraphs = collectParagraphsFromElements(page("p, l"), page);
 
-    expect(paragraphs).toEqual(["**1** arma virumque", "cano"]);
+    expect(paragraphs).toStrictEqual(["**1** arma virumque", "cano"]);
   });
 
   it("should skip empty paragraphs after cleanup", () => {
@@ -138,7 +138,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
 
     const paragraphs = collectParagraphsFromElements(page("p"), page);
 
-    expect(paragraphs).toEqual(["arma virumque"]);
+    expect(paragraphs).toStrictEqual(["arma virumque"]);
   });
 
   it("should process leaf text part and push markdown file", () => {
@@ -166,7 +166,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
       rawTitle: "Aeneid",
     });
 
-    expect(filesToWrite).toEqual([
+    expect(filesToWrite).toStrictEqual([
       {
         content: "**2** litora multum",
         relativePath: "aeneid/book-1.md",
@@ -200,7 +200,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
       rawTitle: "Aeneid",
     });
 
-    expect(filesToWrite).toEqual([
+    expect(filesToWrite).toStrictEqual([
       {
         content: "line 10",
         relativePath: "aeneid/book-2.md",
@@ -272,7 +272,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
       rawTitle: "Aeneid",
     });
 
-    expect(filesToWrite).toEqual(
+    expect(filesToWrite).toStrictEqual(
       expect.arrayContaining([
         expect.objectContaining({
           relativePath: "aeneid/book-0/index.md",
@@ -348,7 +348,7 @@ describe("PerseusLibraryTextExtractionProvider", () => {
       rawTitle: "Aeneid",
     });
 
-    expect(filesToWrite).toEqual(
+    expect(filesToWrite).toStrictEqual(
       expect.arrayContaining([expect.objectContaining({ title: "Aeneid" })]),
     );
   });

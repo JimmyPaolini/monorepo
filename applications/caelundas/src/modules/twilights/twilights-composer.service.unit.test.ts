@@ -3,14 +3,14 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsComposerService } from "./twilights-composer.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("TwilightsComposerService", () => {
+describe(TwilightsComposerService, () => {
   let service: TwilightsComposerService;
 
   beforeAll(async () => {
@@ -67,8 +67,8 @@ describe("TwilightsComposerService", () => {
 
       expect(pairedEvents).toHaveLength(1);
       expect(pairedEvents[0]?.description).toBe("Daylight");
-      expect(pairedEvents[0]?.start).toEqual(civilDawn.start);
-      expect(pairedEvents[0]?.end).toEqual(civilDusk.start);
+      expect(pairedEvents[0]?.start).toStrictEqual(civilDawn.start);
+      expect(pairedEvents[0]?.end).toStrictEqual(civilDusk.start);
     });
 
     it("returns one pair when the counts differ", () => {

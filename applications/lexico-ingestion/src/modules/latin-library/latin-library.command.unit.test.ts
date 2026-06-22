@@ -6,35 +6,12 @@ import { LoggerService } from "../logger/logger.service";
 
 import { LatinLibraryCommand } from "./latin-library.command";
 
-describe("LatinLibraryCommand", () => {
-  let command: LatinLibraryCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        LatinLibraryCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(LatinLibraryCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const { appendFileMock, mkdirMock, readFileMock, writeFileMock } = vi.hoisted(
   () => ({
-    appendFileMock: vi.fn(),
-    mkdirMock: vi.fn(),
-    readFileMock: vi.fn(),
-    writeFileMock: vi.fn(),
+    appendFileMock: vi.fn<() => Promise<void>>(),
+    mkdirMock: vi.fn<() => Promise<void>>(),
+    readFileMock: vi.fn<() => Promise<string>>(),
+    writeFileMock: vi.fn<() => Promise<void>>(),
   }),
 );
 
@@ -59,15 +36,31 @@ function createLoggerServiceMock(): {
   };
 }
 
-describe("LatinLibraryCommand", () => {
+describe(LatinLibraryCommand, () => {
+  let command: LatinLibraryCommand;
   let latinLibraryCommand: LatinLibraryCommand;
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        LatinLibraryCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(LatinLibraryCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -88,6 +81,10 @@ describe("LatinLibraryCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
     expect(latinLibraryCommand).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith(
       "LatinLibraryCommand",
@@ -220,7 +217,7 @@ describe("LatinLibraryCommand", () => {
   });
 
   it("should process link and enqueue only allowed in-host urls", () => {
-    const enqueue = vi.fn();
+    const enqueue = vi.fn<(url: string) => void>();
 
     const processLink = (
       latinLibraryCommand as unknown as {
@@ -284,7 +281,7 @@ describe("LatinLibraryCommand", () => {
     ).processQueueUrl(
       "https://www.thelatinlibrary.com/vergil/",
       "https://www.thelatinlibrary.com/",
-      vi.fn(),
+      vi.fn<(url: string) => void>(),
     );
 
     expect(fetchAndCachePageSpy).toHaveBeenCalledTimes(1);
@@ -302,7 +299,7 @@ describe("LatinLibraryCommand", () => {
       '<html><body><a href="aeneid.html">Aeneid</a></body></html>',
     );
 
-    const enqueue = vi.fn();
+    const enqueue = vi.fn<(url: string) => void>();
 
     await (
       latinLibraryCommand as unknown as {
@@ -324,7 +321,7 @@ describe("LatinLibraryCommand", () => {
   });
 
   it("should ignore anchors without href when parsing html links", () => {
-    const enqueue = vi.fn();
+    const enqueue = vi.fn<(url: string) => void>();
 
     (
       latinLibraryCommand as unknown as {
@@ -378,7 +375,7 @@ describe("LatinLibraryCommand", () => {
     ).processQueueUrl(
       "https://www.thelatinlibrary.com/archive.pdf",
       "https://www.thelatinlibrary.com/",
-      vi.fn(),
+      vi.fn<(url: string) => void>(),
     );
 
     expect(parseHtmlForLinksSpy).not.toHaveBeenCalled();
@@ -414,7 +411,7 @@ describe("LatinLibraryCommand", () => {
     ).processQueueUrl(
       "https://www.thelatinlibrary.com/vergil/",
       "https://www.thelatinlibrary.com/",
-      vi.fn(),
+      vi.fn<(url: string) => void>(),
     );
 
     expect(parseHtmlForLinksSpy).not.toHaveBeenCalled();
@@ -429,7 +426,7 @@ describe("LatinLibraryCommand", () => {
       '<p><table><tr><td><a href="vergil/">Vergil</a></td><td><a href="index.html">Index</a></td><td><a href="christian.html">Christian</a></td></tr></table></p>',
     );
 
-    expect(authorUrls).toEqual(["vergil/", "christian.html"]);
+    expect(authorUrls).toStrictEqual(["vergil/", "christian.html"]);
 
     vi.spyOn(
       latinLibraryCommand as unknown as {
@@ -454,7 +451,7 @@ describe("LatinLibraryCommand", () => {
       }
     ).getFinalAuthorUrls("https://www.thelatinlibrary.com/", authorUrls);
 
-    expect(finalAuthorUrls).toEqual(["vergil/", "bible.html"]);
+    expect(finalAuthorUrls).toStrictEqual(["vergil/", "bible.html"]);
   });
 
   it("should enqueue author urls with trailing slash normalization", () => {
@@ -476,7 +473,7 @@ describe("LatinLibraryCommand", () => {
       },
     );
 
-    expect(queue).toEqual([
+    expect(queue).toStrictEqual([
       "https://www.thelatinlibrary.com/vergil/",
       "https://www.thelatinlibrary.com/ovid/",
       "https://www.thelatinlibrary.com/catullus.html",
@@ -509,7 +506,7 @@ describe("LatinLibraryCommand", () => {
       finalAuthorUrls,
     );
 
-    expect(finalAuthorUrls).toEqual(["bible.html"]);
+    expect(finalAuthorUrls).toStrictEqual(["bible.html"]);
   });
 
   it("should normalize leading slash links found in category pages", async () => {
@@ -538,7 +535,7 @@ describe("LatinLibraryCommand", () => {
       finalAuthorUrls,
     );
 
-    expect(finalAuthorUrls).toEqual(["vergil.html"]);
+    expect(finalAuthorUrls).toStrictEqual(["vergil.html"]);
   });
 
   it("should append stringified non-Error failures in queue processing", async () => {
@@ -560,7 +557,7 @@ describe("LatinLibraryCommand", () => {
     ).processQueueUrl(
       "https://www.thelatinlibrary.com/vergil/",
       "https://www.thelatinlibrary.com/",
-      vi.fn(),
+      vi.fn<(url: string) => void>(),
     );
 
     expect(loggerService.error).toHaveBeenCalledWith(
@@ -591,7 +588,7 @@ describe("LatinLibraryCommand", () => {
     ).processQueueUrl(
       "https://www.thelatinlibrary.com/vergil/",
       "https://www.thelatinlibrary.com/",
-      vi.fn(),
+      vi.fn<(url: string) => void>(),
     );
 
     expect(appendFileMock).toHaveBeenCalledWith(
@@ -646,7 +643,7 @@ describe("LatinLibraryCommand", () => {
 
     expect(firstResult).toBe("<html>ok</html>");
     expect(secondResult).toBe("");
-    expect(mkdirMock).toHaveBeenCalled();
+    expect(mkdirMock).toHaveBeenCalledWith();
     expect(writeFileMock).toHaveBeenCalledWith(
       "/tmp/vergil/index.html",
       "<html>ok</html>",
@@ -655,6 +652,7 @@ describe("LatinLibraryCommand", () => {
     expect(loggerService.warn).toHaveBeenCalledWith(
       "⚠️ Failed to fetch https://www.thelatinlibrary.com/ovid/index.html: Not Found",
     );
+
     vi.useRealTimers();
   });
 

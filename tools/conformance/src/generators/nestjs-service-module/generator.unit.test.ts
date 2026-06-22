@@ -16,7 +16,7 @@ const PROJECT_NAME = "my-app";
 const PROJECT_ROOT = "applications/my-app";
 const MODULES_DIR = `${PROJECT_ROOT}/src/modules`;
 
-describe("generateNestjsServiceModule", () => {
+describe(generateNestjsServiceModule, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -36,13 +36,12 @@ describe("generateNestjsServiceModule", () => {
       });
 
       const base = `${MODULES_DIR}/calculator`;
-      expect(tree.exists(`${base}/calculator.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/calculator.service.ts`)).toBeTruthy();
-      expect(
-        tree.exists(`${base}/calculator.service.unit.test.ts`),
-      ).toBeTruthy();
-      expect(tree.exists(`${base}/calculator.types.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/calculator.constants.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/calculator.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/calculator.service.ts`)).toBe(true);
+      expect(tree.exists(`${base}/calculator.service.unit.test.ts`)).toBe(true);
+      expect(tree.exists(`${base}/calculator.types.ts`)).toBe(true);
+      expect(tree.exists(`${base}/calculator.constants.ts`)).toBe(true);
     });
 
     it("should use camelCase for directory and file names from kebab-case input", async () => {
@@ -52,8 +51,9 @@ describe("generateNestjsServiceModule", () => {
       });
 
       const base = `${MODULES_DIR}/my-service`;
-      expect(tree.exists(`${base}/my-service.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/my-service.service.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/my-service.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/my-service.service.ts`)).toBe(true);
     });
 
     it("should use PascalCase class names in generated module file", async () => {
@@ -66,6 +66,7 @@ describe("generateNestjsServiceModule", () => {
         `${MODULES_DIR}/calculator/calculator.module.ts`,
         "utf8",
       );
+
       expect(moduleContent).toContain("CalculatorService");
       expect(moduleContent).toContain("CalculatorModule");
     });
@@ -80,6 +81,7 @@ describe("generateNestjsServiceModule", () => {
         `${MODULES_DIR}/calculator/calculator.service.ts`,
         "utf8",
       );
+
       expect(serviceContent).toContain("CalculatorService");
     });
 
@@ -93,6 +95,7 @@ describe("generateNestjsServiceModule", () => {
         `${MODULES_DIR}/calculator/calculator.module.ts`,
         "utf8",
       );
+
       expect(moduleContent).toContain("TODO: Document the calculator module.");
     });
 
@@ -106,6 +109,7 @@ describe("generateNestjsServiceModule", () => {
         `${MODULES_DIR}/calculator/calculator.service.ts`,
         "utf8",
       );
+
       expect(serviceContent).toContain(
         "TODO: Document the calculator service.",
       );
@@ -135,8 +139,9 @@ describe("generateNestjsServiceModule", () => {
         instance: serviceContent,
         template: templateContent,
       });
-      expect(result.errors).toEqual([]);
-      expect(result.errors.length === 0).toBe(true);
+
+      expect(result.errors).toStrictEqual([]);
+      expect(result.errors).toHaveLength(0);
     });
   });
 

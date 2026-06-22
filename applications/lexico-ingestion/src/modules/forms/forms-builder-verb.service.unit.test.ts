@@ -9,7 +9,7 @@ import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
 import { FormsBuilderVerbService } from "./forms-builder-verb.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
-describe("FormsBuilderVerbService", () => {
+describe(FormsBuilderVerbService, () => {
   let service: FormsBuilderVerbService;
   let transientWordsService: FormsTransientWordsService;
 
@@ -41,11 +41,14 @@ describe("FormsBuilderVerbService", () => {
   });
 
   it("is defined", () => {
+    expect.hasAssertions();
     expect(service).toBeDefined();
   });
 
   describe("buildFinitePersonForms", () => {
     it("should build finite person forms from valid person data", () => {
+      expect.hasAssertions();
+
       const forms = buildFiniteForms({
         first: ["amo"],
         invalid: ["x"],
@@ -55,6 +58,8 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should skip finite person forms when words are invalid", () => {
+      expect.hasAssertions();
+
       const forms = buildFiniteForms({
         first: [],
         second: "amo",
@@ -64,17 +69,23 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should attach transient words on finite forms", () => {
+      expect.hasAssertions();
+
       const forms = buildFiniteForms({
         first: ["amo"],
       });
 
       expect(forms).toHaveLength(1);
+
       const firstForm = forms[0];
+
       expect(firstForm).toBeDefined();
+
       if (!firstForm) {
         throw new Error("Expected finite form to exist");
       }
-      expect(transientWordsService.getTransientWords(firstForm)).toEqual([
+
+      expect(transientWordsService.getTransientWords(firstForm)).toStrictEqual([
         "amo",
       ]);
     });
@@ -82,6 +93,8 @@ describe("FormsBuilderVerbService", () => {
 
   describe("buildParticipleFormsFromRaw", () => {
     it("should build participle forms and apply tense", () => {
+      expect.hasAssertions();
+
       const forms = service.buildParticipleFormsFromRaw({
         buildAdjectivalCaseForms: () => {
           const participleForm = new ParticipleForm();
@@ -105,6 +118,8 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should skip invalid participle tense and gender branches", () => {
+      expect.hasAssertions();
+
       const forms = service.buildParticipleFormsFromRaw({
         buildAdjectivalCaseForms: () => [new ParticipleForm()],
         lexeme: createLexeme(),
@@ -130,6 +145,8 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should skip participle entries when tense data is not an object", () => {
+      expect.hasAssertions();
+
       const forms = service.buildParticipleFormsFromRaw({
         buildAdjectivalCaseForms: () => [new ParticipleForm()],
         lexeme: createLexeme(),
@@ -142,6 +159,8 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should skip participle entries when gender case map is not an object", () => {
+      expect.hasAssertions();
+
       const forms = service.buildParticipleFormsFromRaw({
         buildAdjectivalCaseForms: () => [new ParticipleForm()],
         lexeme: createLexeme(),
@@ -156,6 +175,8 @@ describe("FormsBuilderVerbService", () => {
     });
 
     it("should apply tense only to participle forms", () => {
+      expect.hasAssertions();
+
       const nonParticipleForm = {
         lexeme: createLexeme(),
       } as unknown as ParticipleForm;

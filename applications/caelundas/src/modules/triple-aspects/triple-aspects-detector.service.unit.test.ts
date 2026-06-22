@@ -2,14 +2,14 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 
-describe("TripleAspectsDetectorService", () => {
+describe(TripleAspectsDetectorService, () => {
   let service: TripleAspectsDetectorService;
   let privateService: {
     checkTSquareFocalBody: (args: {
@@ -110,7 +110,8 @@ describe("TripleAspectsDetectorService", () => {
         previousAspectBodies: [],
       });
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
+
       determinePhaseSpy.mockRestore();
     });
 
@@ -165,7 +166,7 @@ describe("TripleAspectsDetectorService", () => {
         previousAspectBodies: [],
       });
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
     });
 
     it("returns no Yod events when phase transition cannot be determined", () => {
@@ -188,7 +189,8 @@ describe("TripleAspectsDetectorService", () => {
         previousAspectBodies: [],
       });
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
+
       determinePhaseSpy.mockRestore();
     });
 
@@ -250,7 +252,8 @@ describe("TripleAspectsDetectorService", () => {
         previousAspectBodies: [],
       });
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
+
       determinePhaseSpy.mockRestore();
     });
   });

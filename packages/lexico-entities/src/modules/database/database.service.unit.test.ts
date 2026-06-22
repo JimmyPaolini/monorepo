@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { DatabaseService } from "./database.service";
 
-describe("DatabaseService", () => {
+describe(DatabaseService, () => {
   let service: DatabaseService;
 
   beforeAll(async () => {

@@ -2,7 +2,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { calc, nod_aps_ut } from "sweph";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
@@ -14,22 +14,22 @@ vi.mock("sweph", async (importOriginal) => {
   const original = await importOriginal<typeof Sweph>();
   return {
     ...original,
-    calc: vi.fn().mockReturnValue({
+    calc: vi.fn<typeof calc>().mockReturnValue({
       data: [120.5, -1.2, 1.01, 0, 0, 0],
       error: "",
       flag: 258,
     }),
-    nod_aps_ut: vi.fn().mockReturnValue({
+    nod_aps_ut: vi.fn<typeof nod_aps_ut>().mockReturnValue({
       data: {
         perihelion: [90, 0, 0, 0, 0, 0],
-      },
+      } as never,
       error: "",
       flag: 258,
     }),
   };
 });
 
-describe("EphemerisCoordinateService", () => {
+describe(EphemerisCoordinateService, () => {
   let service: EphemerisCoordinateService;
   let constantsService: ReturnType<
     typeof createMock<EphemerisConstantsService>
@@ -94,7 +94,7 @@ describe("EphemerisCoordinateService", () => {
     it("returns longitude and latitude from calc", () => {
       const result = service.computeBodyCoordinate("sun", 2_460_395.5);
 
-      expect(result).toEqual({ latitude: -1.2, longitude: 120.5 });
+      expect(result).toStrictEqual({ latitude: -1.2, longitude: 120.5 });
     });
   });
 
@@ -111,6 +111,7 @@ describe("EphemerisCoordinateService", () => {
       });
 
       expect(Object.keys(result)).toHaveLength(2);
+
       for (const value of Object.values(result)) {
         expect(value.distance).toBe(1.01);
       }
@@ -126,6 +127,7 @@ describe("EphemerisCoordinateService", () => {
       });
 
       expect(Object.keys(result)).toHaveLength(2);
+
       for (const value of Object.values(result)) {
         expect(value.latitude).toBe(0);
       }
@@ -139,7 +141,7 @@ describe("EphemerisCoordinateService", () => {
       });
 
       expect(Object.keys(result)).toHaveLength(1);
-      expect(Object.values(result)[0]).toEqual({
+      expect(Object.values(result)[0]).toStrictEqual({
         latitude: 0,
         longitude: 90,
       });

@@ -26,7 +26,7 @@ const detectorService = new TripleAspectsDetectorService(composerService);
 const service = new TripleAspectsService(composerService, detectorService);
 
 describe("triple-aspects.events integration", () => {
-  describe("T-Square pattern detection", () => {
+  describe("t-Square pattern detection", () => {
     it("detects forming T-Square when the final aspect completes the pattern", () => {
       const currentMinute = moment.utc("2024-06-15T14:30:00.000Z");
 
@@ -60,7 +60,7 @@ describe("triple-aspects.events integration", () => {
       );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("⊤");
-      expect(events[0]?.start).toEqual(currentMinute);
+      expect(events[0]?.start).toStrictEqual(currentMinute);
     });
 
     it("detects dissolving T-Square when a required aspect ends", () => {
@@ -92,7 +92,7 @@ describe("triple-aspects.events integration", () => {
         "Mars, Moon, Sun t-square dissolving (Mars focal)",
       );
       expect(events[0]?.summary).toContain("⬅️");
-      expect(events[0]?.start).toEqual(
+      expect(events[0]?.start).toStrictEqual(
         currentMinute.clone().subtract(1, "minute"),
       );
     });
@@ -146,8 +146,8 @@ describe("triple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingStart);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingStart);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingStart);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingStart);
       expect(progressiveEvents[0]?.categories).toContain("Triple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("T Square");
       expect(progressiveEvents[0]?.categories).toContain("Mars");
@@ -164,7 +164,7 @@ describe("triple-aspects.events integration", () => {
     });
   });
 
-  describe("Yod pattern detection", () => {
+  describe("yod pattern detection", () => {
     it("detects forming Yod when the second quincunx completes the pattern", () => {
       const currentMinute = moment.utc("2024-07-20T10:15:00.000Z");
 
@@ -198,7 +198,7 @@ describe("triple-aspects.events integration", () => {
       );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("⚛");
-      expect(events[0]?.start).toEqual(currentMinute);
+      expect(events[0]?.start).toStrictEqual(currentMinute);
     });
 
     it("detects dissolving Yod when a required aspect ends", () => {
@@ -230,13 +230,13 @@ describe("triple-aspects.events integration", () => {
         "Jupiter, Saturn, Venus yod dissolving (Saturn focal)",
       );
       expect(events[0]?.summary).toContain("⬅️");
-      expect(events[0]?.start).toEqual(
+      expect(events[0]?.start).toStrictEqual(
         currentMinute.clone().subtract(1, "minute"),
       );
     });
   });
 
-  describe("Grand Trine pattern detection", () => {
+  describe("grand Trine pattern detection", () => {
     it("detects forming Grand Trine when the third trine completes the triangle", () => {
       const currentMinute = moment.utc("2024-08-05T09:00:00.000Z");
 
@@ -269,7 +269,7 @@ describe("triple-aspects.events integration", () => {
       );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("△");
-      expect(events[0]?.start).toEqual(currentMinute);
+      expect(events[0]?.start).toStrictEqual(currentMinute);
     });
 
     it("detects dissolving Grand Trine when a trine aspect ends", () => {
@@ -299,7 +299,7 @@ describe("triple-aspects.events integration", () => {
         "Mars, Moon, Sun grand trine dissolving",
       );
       expect(events[0]?.summary).toContain("⬅️");
-      expect(events[0]?.start).toEqual(
+      expect(events[0]?.start).toStrictEqual(
         currentMinute.clone().subtract(1, "minute"),
       );
     });
@@ -350,8 +350,8 @@ describe("triple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingStart);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingStart);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingStart);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingStart);
       expect(progressiveEvents[0]?.categories).toContain("Triple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Grand Trine");
       expect(progressiveEvents[0]?.categories).toContain("Mars");
@@ -367,7 +367,7 @@ describe("triple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge case scenarios", () => {
+  describe("edge case scenarios", () => {
     it("does not detect Grand Trine with only 2 trines (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-09-01T08:00:00.000Z");
 
@@ -408,6 +408,7 @@ describe("triple-aspects.events integration", () => {
       const grandTrineEvents = events.filter((e) =>
         e.categories.includes("Grand Trine"),
       );
+
       expect(grandTrineEvents).toHaveLength(0);
     });
 
@@ -434,6 +435,7 @@ describe("triple-aspects.events integration", () => {
       const tSquareEvents = events.filter((e) =>
         e.categories.includes("T Square"),
       );
+
       expect(tSquareEvents).toHaveLength(0);
     });
 

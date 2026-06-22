@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 
-describe("EphemerisConstantsService", () => {
+describe(EphemerisConstantsService, () => {
   let service: EphemerisConstantsService;
 
   beforeAll(async () => {

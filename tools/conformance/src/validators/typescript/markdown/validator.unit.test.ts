@@ -69,14 +69,15 @@ describe("validateMarkdownConformance — headings", () => {
         instance: README_RENDERED,
         template: README_TEMPLATE,
       }),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it("returns no errors when the instance is a superset (extra heading added)", () => {
     const instance = `${README_RENDERED}\n## Contributing\n\nSee CONTRIBUTING.md.\n`;
+
     expect(
       validate({ data: README_DATA, instance, template: README_TEMPLATE }),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it("returns an error when a required heading is missing", () => {
@@ -86,7 +87,8 @@ describe("validateMarkdownConformance — headings", () => {
       instance,
       template: README_TEMPLATE,
     });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('heading (h2): "Start"'),
       ]),
@@ -100,7 +102,8 @@ describe("validateMarkdownConformance — headings", () => {
       instance,
       template: `# {{name}}\n\nSome text.\n`,
     });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected heading (h1): "StellarCli"'),
       ]),
@@ -113,7 +116,8 @@ describe("validateMarkdownConformance — headings", () => {
       instance: `# StellarCli\n`,
       template: `# {{namePascalCase}}\n`,
     });
-    expect(errors).toEqual([]);
+
+    expect(errors).toStrictEqual([]);
   });
 });
 
@@ -127,7 +131,7 @@ describe("validateMarkdownConformance — code blocks", () => {
         instance: README_RENDERED,
         template: README_TEMPLATE,
       }),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it("returns an error when a required code block is missing", () => {
@@ -137,7 +141,8 @@ describe("validateMarkdownConformance — code blocks", () => {
       instance,
       template: README_TEMPLATE,
     });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining("Expected code block (bash)"),
       ]),
@@ -151,7 +156,8 @@ describe("validateMarkdownConformance — code blocks", () => {
       instance,
       template: `# StellarCli\n\nText.\n\n## Start\n\n\`\`\`bash\nnx run stellar-cli:start\n\`\`\`\n`,
     });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining("Expected code block (bash)"),
       ]),
@@ -165,7 +171,7 @@ describe("validateMarkdownConformance — code blocks", () => {
         instance: README_RENDERED,
         template: README_TEMPLATE,
       }),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 });
 
@@ -179,7 +185,7 @@ describe("validateMarkdownConformance — paragraphs", () => {
         instance: README_RENDERED,
         template: README_TEMPLATE,
       }),
-    ).toEqual([]);
+    ).toStrictEqual([]);
   });
 
   it("returns an error when a required paragraph is missing", () => {
@@ -189,7 +195,8 @@ describe("validateMarkdownConformance — paragraphs", () => {
       instance,
       template: README_TEMPLATE,
     });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([expect.stringContaining("Expected paragraph")]),
     );
   });
@@ -200,20 +207,23 @@ describe("validateMarkdownConformance — paragraphs", () => {
 describe("validateMarkdownConformance — lists", () => {
   it("returns no errors when all list items are present", () => {
     const template = `- item one\n- item two\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns no errors when the instance list has extra items (superset)", () => {
     const template = `- item one\n- item two\n`;
     const instance = `- item one\n- item two\n- item three\n`;
-    expect(validate({ instance, template })).toEqual([]);
+
+    expect(validate({ instance, template })).toStrictEqual([]);
   });
 
   it("returns an error when a required list item is missing", () => {
     const template = `- item one\n- item two\n`;
     const instance = `- item one\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected list item: "item two"'),
       ]),
@@ -224,7 +234,8 @@ describe("validateMarkdownConformance — lists", () => {
     const template = `1. first\n2. second\n`;
     const instance = `- first\n- second\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining("Expected ordered list"),
       ]),
@@ -237,14 +248,16 @@ describe("validateMarkdownConformance — lists", () => {
 describe("validateMarkdownConformance — blockquotes", () => {
   it("returns no errors when the blockquote is present", () => {
     const template = `> Some important note.\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when a required blockquote is missing", () => {
     const template = `> Some important note.\n`;
     const instance = `Just a paragraph.\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([expect.stringContaining("Expected blockquote")]),
     );
   });
@@ -255,14 +268,16 @@ describe("validateMarkdownConformance — blockquotes", () => {
 describe("validateMarkdownConformance — tables", () => {
   it("returns no errors when the table is present with matching columns", () => {
     const template = `| Name | Version |\n| --- | --- |\n| node | 22 |\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when the table is missing", () => {
     const template = `| Name | Version |\n| --- | --- |\n| node | 22 |\n`;
     const instance = `No table here.\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([expect.stringContaining("Expected table")]),
     );
   });
@@ -271,7 +286,8 @@ describe("validateMarkdownConformance — tables", () => {
     const template = `| Name | Version |\n| --- | --- |\n| node | 22 |\n`;
     const instance = `| Name | Version |\n| --- | --- |\n| node | 21 |\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected table cell: "22"'),
       ]),
@@ -284,14 +300,16 @@ describe("validateMarkdownConformance — tables", () => {
 describe("validateMarkdownConformance — thematic breaks", () => {
   it("returns no errors when the thematic break is present", () => {
     const template = `Before\n\n---\n\nAfter\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when the thematic break is missing", () => {
     const template = `Before\n\n---\n\nAfter\n`;
     const instance = `Before\n\nAfter\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining("Expected thematic break (---)"),
       ]),
@@ -304,7 +322,8 @@ describe("validateMarkdownConformance — thematic breaks", () => {
 describe("validateMarkdownConformance — links", () => {
   it("returns no errors when the link is present with the correct URL", () => {
     const template = `[Click here](https://example.com)\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when a required link is missing", () => {
@@ -313,7 +332,8 @@ describe("validateMarkdownConformance — links", () => {
     // the paragraph matches so validation recurses into inline children.
     const instance = `Click here\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected link to "https://example.com"'),
       ]),
@@ -324,7 +344,8 @@ describe("validateMarkdownConformance — links", () => {
     const template = `[Click here](https://example.com)\n`;
     const instance = `[Click here](https://other.com)\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected link to "https://example.com"'),
       ]),
@@ -337,7 +358,8 @@ describe("validateMarkdownConformance — links", () => {
 describe("validateMarkdownConformance — images", () => {
   it("returns no errors when the image is present", () => {
     const template = `![Logo](https://example.com/logo.png)\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when a required image is missing", () => {
@@ -346,7 +368,8 @@ describe("validateMarkdownConformance — images", () => {
     // the paragraph matches so validation recurses into inline children.
     const instance = `Logo\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected image "Logo"'),
       ]),
@@ -359,14 +382,16 @@ describe("validateMarkdownConformance — images", () => {
 describe("validateMarkdownConformance — inline formatting", () => {
   it("returns no errors when bold text is present", () => {
     const template = `This is **important**.\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when required bold text is missing from the paragraph", () => {
     const template = `This is **important**.\n`;
     const instance = `This is important.\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected bold text: "important"'),
       ]),
@@ -375,14 +400,16 @@ describe("validateMarkdownConformance — inline formatting", () => {
 
   it("returns no errors when italic text is present", () => {
     const template = `This is *emphasized*.\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when required italic text is missing", () => {
     const template = `This is *emphasized*.\n`;
     const instance = `This is emphasized.\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining('Expected italic text: "emphasized"'),
       ]),
@@ -391,14 +418,16 @@ describe("validateMarkdownConformance — inline formatting", () => {
 
   it("returns no errors when inline code is present", () => {
     const template = `Run \`nx build\` first.\n`;
-    expect(validate({ instance: template, template })).toEqual([]);
+
+    expect(validate({ instance: template, template })).toStrictEqual([]);
   });
 
   it("returns an error when required inline code is missing", () => {
     const template = `Run \`nx build\` first.\n`;
     const instance = `Run nx build first.\n`;
     const errors = validate({ instance, template });
-    expect(errors).toEqual(
+
+    expect(errors).toStrictEqual(
       expect.arrayContaining([
         expect.stringContaining("Expected inline code: `nx build`"),
       ]),
@@ -412,12 +441,14 @@ describe("validateMarkdownConformance — TODO lines", () => {
   it("accepts any content on a TODO line in a code block", () => {
     const template = `\`\`\`bash\n# TODO: fill in your command here\nnx run app:start\n\`\`\`\n`;
     const instance = `\`\`\`bash\nnx run my-custom-app:start\nnx run app:start\n\`\`\`\n`;
-    expect(validate({ instance, template })).toEqual([]);
+
+    expect(validate({ instance, template })).toStrictEqual([]);
   });
 
   it("accepts any content on a TODO line in a paragraph", () => {
     const template = `TODO: describe what this app does.\n`;
     const instance = `This app does something amazing.\n`;
-    expect(validate({ instance, template })).toEqual([]);
+
+    expect(validate({ instance, template })).toStrictEqual([]);
   });
 });

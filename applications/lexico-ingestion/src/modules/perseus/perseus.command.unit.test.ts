@@ -6,29 +6,6 @@ import { LoggerService } from "../logger/logger.service";
 
 import { PerseusCommand } from "./perseus.command";
 
-describe("PerseusCommand", () => {
-  let command: PerseusCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        PerseusCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(PerseusCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const { accessMock, appendFileMock, mkdirMock, writeFileMock } = vi.hoisted(
   () => ({
     accessMock: vi.fn(),
@@ -63,7 +40,8 @@ function createLoggerServiceMock(): {
   };
 }
 
-describe("PerseusCommand", () => {
+describe(PerseusCommand, () => {
+  let command: PerseusCommand;
   let perseusCommand: PerseusCommand;
 
   const loggerService = {
@@ -72,6 +50,21 @@ describe("PerseusCommand", () => {
     setContext: vi.fn(),
     warn: vi.fn(),
   };
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        PerseusCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(PerseusCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -91,6 +84,11 @@ describe("PerseusCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
+    expect.hasAssertions();
     expect(perseusCommand).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("PerseusCommand");
   });
@@ -143,7 +141,7 @@ describe("PerseusCommand", () => {
       }
     ).fetchSourceXmlPaths();
 
-    expect(result).toEqual(["a/file-lat.xml"]);
+    expect(result).toStrictEqual(["a/file-lat.xml"]);
   });
 
   it("should append error log details", async () => {
@@ -292,6 +290,7 @@ describe("PerseusCommand", () => {
       "<xml/>",
       "utf8",
     );
+
     vi.useRealTimers();
   });
 

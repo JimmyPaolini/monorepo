@@ -2,15 +2,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -20,8 +12,9 @@ import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 
 import type { EclipseCoordinates } from "./eclipses.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
+import type { Mocked } from "vitest";
 
-describe("EclipseTopocentricService", () => {
+describe(EclipseTopocentricService, () => {
   let service: EclipseTopocentricService;
 
   beforeAll(async () => {
@@ -45,22 +38,25 @@ describe("EclipseTopocentricService", () => {
   });
 
   const logger: LoggerService = {
-    setContext: vi.fn(),
+    setContext: vi.fn<LoggerService["setContext"]>(),
   } as unknown as LoggerService;
 
   const mathService: MathService = {
-    getAngle: vi.fn((value1: number, value2: number) =>
+    getAngle: vi.fn<MathService["getAngle"]>((value1: number, value2: number) =>
       Math.abs(value1 - value2),
     ),
   } as unknown as MathService;
 
   const eclipseGeometryService: Mocked<EclipseGeometryService> = {
-    getAllTopocentricVisibilities: vi.fn(),
+    getAllTopocentricVisibilities:
+      vi.fn<EclipseGeometryService["getAllTopocentricVisibilities"]>(),
   } as unknown as Mocked<EclipseGeometryService>;
 
   const eclipseEventService: Mocked<EclipseEventService> = {
-    buildLunarEclipseEvent: vi.fn(),
-    buildSolarEclipseEvent: vi.fn(),
+    buildLunarEclipseEvent:
+      vi.fn<EclipseEventService["buildLunarEclipseEvent"]>(),
+    buildSolarEclipseEvent:
+      vi.fn<EclipseEventService["buildSolarEclipseEvent"]>(),
   } as unknown as Mocked<EclipseEventService>;
 
   const mockService = new EclipseTopocentricService(
@@ -104,6 +100,7 @@ describe("EclipseTopocentricService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("detects solar and lunar topocentric activity predicates", () => {
     expect(mockService.isSolarEclipseActive(solarActiveCoordinates)).toBe(true);
     expect(mockService.isSolarEclipseActive(inactiveCoordinates)).toBe(false);
@@ -149,12 +146,15 @@ describe("EclipseTopocentricService", () => {
       sunAzimuthElevationEphemeris: {},
     });
 
-    expect(eclipseEventService.buildSolarEclipseEvent).toHaveBeenCalledWith({
-      date: expect.any(Object),
+    const firstSolarEventCall =
+      eclipseEventService.buildSolarEclipseEvent.mock.calls[0]?.[0];
+
+    expect(firstSolarEventCall).toMatchObject({
       frame: "topocentric",
       phase: "beginning",
     });
-    expect(eclipseEventService.buildLunarEclipseEvent).not.toHaveBeenCalled();
+    expect(firstSolarEventCall?.date).toBeDefined();
+    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenCalledTimes(0);
     expect(events).toHaveLength(1);
   });
 
@@ -185,13 +185,15 @@ describe("EclipseTopocentricService", () => {
     });
 
     expect(endingEvents).toHaveLength(1);
-    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith(
-      {
-        date: expect.any(Object),
-        frame: "topocentric",
-        phase: "ending",
-      },
-    );
+
+    const endingEventCall =
+      eclipseEventService.buildLunarEclipseEvent.mock.calls.at(-1)?.[0];
+
+    expect(endingEventCall).toMatchObject({
+      frame: "topocentric",
+      phase: "ending",
+    });
+    expect(endingEventCall?.date).toBeDefined();
 
     eclipseGeometryService.getAllTopocentricVisibilities.mockReturnValueOnce({
       currentVisibility: { isLunarVisible: true, isSolarVisible: false },
@@ -219,13 +221,15 @@ describe("EclipseTopocentricService", () => {
     });
 
     expect(maximumEvents).toHaveLength(1);
-    expect(eclipseEventService.buildLunarEclipseEvent).toHaveBeenLastCalledWith(
-      {
-        date: expect.any(Object),
-        frame: "topocentric",
-        phase: "maximum",
-      },
-    );
+
+    const maximumEventCall =
+      eclipseEventService.buildLunarEclipseEvent.mock.calls.at(-1)?.[0];
+
+    expect(maximumEventCall).toMatchObject({
+      frame: "topocentric",
+      phase: "maximum",
+    });
+    expect(maximumEventCall?.date).toBeDefined();
   });
 
   it("returns no events when topocentric activity is inactive", () => {
@@ -246,6 +250,6 @@ describe("EclipseTopocentricService", () => {
       sunAzimuthElevationEphemeris: {},
     });
 
-    expect(events).toEqual([]);
+    expect(events).toStrictEqual([]);
   });
 });

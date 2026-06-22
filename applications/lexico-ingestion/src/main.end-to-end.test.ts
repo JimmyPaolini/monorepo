@@ -4,7 +4,7 @@ import { environmentSchema } from "./modules/lexico-ingestion/lexico-ingestion.c
 
 describe("environment schema e2e", () => {
   it("should parse an empty environment schema with defaults", () => {
-    expect(environmentSchema.parse({})).toEqual({
+    expect(environmentSchema.parse({})).toStrictEqual({
       POSTGRES_DB: "postgres",
       POSTGRES_HOST: "localhost",
       POSTGRES_PASSWORD: "postgres",

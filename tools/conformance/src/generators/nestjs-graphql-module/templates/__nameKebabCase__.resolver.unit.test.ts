@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { {{namePascalCase}}Resolver } from "./{{nameKebabCase}}.resolver";
 import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 
-describe("{{namePascalCase}}Resolver", () => {
+describe({{namePascalCase}}Resolver, () => {
   let resolver: {{namePascalCase}}Resolver;
 
   beforeAll(async () => {
@@ -19,6 +19,6 @@ describe("{{namePascalCase}}Resolver", () => {
   });
 
   it("is defined", () => {
-    expect(resolver).toBeDefined();
+        expect(command).toBeDefined();
   });
 });

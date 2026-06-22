@@ -2,21 +2,24 @@ import { mockDates } from "@caelundas/testing/mocks";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { environmentSchema, inputSchema } from "./input.constants";
 import { InputService } from "./input.service";
 
 import type { Environment } from "./input.types";
 
-describe("InputService", () => {
+describe(InputService, () => {
   let service: InputService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         InputService,
-        { provide: ConfigService, useValue: { get: vi.fn() } },
+        {
+          provide: ConfigService,
+          useValue: { get: vi.fn<ConfigService["get"]>() },
+        },
       ],
     }).compile();
     service = await module.resolve(InputService);
@@ -35,6 +38,7 @@ describe("InputService", () => {
         OUTPUT_DIRECTORY: "./out",
         START_DATE: "2025-01-01",
       });
+
       expect(environment.LATITUDE).toBe(40.7128);
       expect(environment.LONGITUDE).toBe(-74.006);
       expect(environment.START_DATE).toBe("2025-01-01");
@@ -44,6 +48,7 @@ describe("InputService", () => {
 
     it("defaults OUTPUT_DIRECTORY to ./output when omitted", () => {
       const environment = environmentSchema.parse({});
+
       expect(environment.OUTPUT_DIRECTORY).toBe("./output");
     });
 
@@ -52,6 +57,7 @@ describe("InputService", () => {
         LATITUDE: "40.7128",
         LONGITUDE: "-74.006",
       });
+
       expect(typeof environment.LATITUDE).toBe("number");
       expect(typeof environment.LONGITUDE).toBe("number");
     });
@@ -90,7 +96,9 @@ describe("InputService", () => {
 
     function makeService(environment: Partial<Environment>): InputService {
       const configService = {
-        get: vi.fn((key: string) => environment[key as keyof Environment]),
+        get: vi.fn<ConfigService<Environment>["get"]>(
+          (key: string) => environment[key as keyof Environment],
+        ),
       } as unknown as ConfigService<Environment>;
       return new InputService(configService);
     }
@@ -103,6 +111,7 @@ describe("InputService", () => {
         START_DATE: "2025-01-01",
       });
       const result = service.parse();
+
       expect(result.latitude).toBe(40.7128);
       expect(result.longitude).toBe(-74.006);
       expect(result.timezone).toBe("America/New_York");
@@ -116,6 +125,7 @@ describe("InputService", () => {
         START_DATE: "2025-01-01",
       });
       const result = service.parse();
+
       expect(result.latitude).toBe(39.949_309);
       expect(result.longitude).toBe(-75.171_69);
     });
@@ -123,6 +133,7 @@ describe("InputService", () => {
     it("uses default date range when dates are omitted", () => {
       const service = makeService({});
       const result = service.parse();
+
       expect(result.start.valueOf()).toBeLessThan(result.end.valueOf());
     });
 
@@ -133,6 +144,7 @@ describe("InputService", () => {
         LONGITUDE: -74,
         START_DATE: "2025-03-21",
       });
+
       expect(() => service.parse()).toThrow(/start|end date/i);
     });
   });
@@ -149,6 +161,7 @@ describe("InputService", () => {
           longitude: "-74.006",
           startDate: "2025-01-01",
         });
+
         expect(result.latitude).toBe(40.7128);
       });
 
@@ -197,6 +210,7 @@ describe("InputService", () => {
           endDate: "2025-01-02",
           startDate: "2025-01-01",
         });
+
         expect(result.latitude).toBe(39.949_309); // Philadelphia
       });
     });
@@ -209,6 +223,7 @@ describe("InputService", () => {
           longitude: "-74.006",
           startDate: "2025-01-01",
         });
+
         expect(result.longitude).toBe(-74.006);
       });
 
@@ -257,19 +272,22 @@ describe("InputService", () => {
           endDate: "2025-01-02",
           startDate: "2025-01-01",
         });
+
         expect(result.longitude).toBe(-75.171_69); // Philadelphia
       });
     });
 
     describe("timezone inference", () => {
       it("infers timezone from coordinates", () => {
-        // New York coordinates
+        expect.hasAssertions(); // New York coordinates
+
         const nyResult = inputSchema.parse({
           endDate: "2025-01-02",
           latitude: "40.7128",
           longitude: "-74.006",
           startDate: "2025-01-01",
         });
+
         expect(nyResult.timezone).toBe("America/New_York");
 
         // Los Angeles coordinates
@@ -279,6 +297,7 @@ describe("InputService", () => {
           longitude: "-118.2437",
           startDate: "2025-01-01",
         });
+
         expect(laResult.timezone).toBe("America/Los_Angeles");
 
         // London coordinates
@@ -288,6 +307,7 @@ describe("InputService", () => {
           longitude: "-0.1278",
           startDate: "2025-01-01",
         });
+
         expect(londonResult.timezone).toBe("Europe/London");
       });
     });
@@ -356,10 +376,12 @@ describe("InputService", () => {
 
         // Verify start is before end
         expect(result.start.valueOf()).toBeLessThan(result.end.valueOf());
+
         // Verify approximately 2 months span
         const diffDays =
           (result.end.valueOf() - result.start.valueOf()) /
           (1000 * 60 * 60 * 24);
+
         expect(diffDays).toBeGreaterThan(50); // ~2 months
         expect(diffDays).toBeLessThan(70);
       });

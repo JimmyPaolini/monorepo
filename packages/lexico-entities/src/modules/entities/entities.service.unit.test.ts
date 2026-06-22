@@ -1,5 +1,5 @@
-import "reflect-metadata";
 import { Test } from "@nestjs/testing";
+import "reflect-metadata";
 import { DataSource, getMetadataArgsStorage } from "typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
 
@@ -288,7 +288,7 @@ function verifyColumnExpectations(
 
     if (columnExpectation.enumValues !== undefined) {
       expect(normalizeColumnType(columnMetadata.type)).toBe("enum");
-      expect(normalizeEnumValues(columnMetadata.enum)).toEqual(
+      expect(normalizeEnumValues(columnMetadata.enum)).toStrictEqual(
         normalizeStringArray(columnExpectation.enumValues),
       );
     }
@@ -331,7 +331,9 @@ function verifyEntityDefinitionExpectation(
         (columnMetadata) => columnMetadata.propertyName,
       ),
     ),
-  ).toEqual(normalizeStringArray(entityExpectation.primaryKeyPropertyNames));
+  ).toStrictEqual(
+    normalizeStringArray(entityExpectation.primaryKeyPropertyNames),
+  );
 
   verifyColumnExpectations(entityExpectation);
 }
@@ -1100,345 +1102,348 @@ const ENTITY_INHERITANCE_EXPECTATIONS = {
   }),
 } satisfies Readonly<Record<string, EntityInheritanceExpectation>>;
 
-describe("EntitiesService", () => {
-  let service: EntitiesService;
+describe("entities service metadata contracts", () => {
+  describe(EntitiesService, () => {
+    let service: EntitiesService;
 
-  beforeAll(async (): Promise<void> => {
-    const module = await Test.createTestingModule({
-      providers: [EntitiesService],
-    }).compile();
+    beforeAll(async (): Promise<void> => {
+      const module = await Test.createTestingModule({
+        providers: [EntitiesService],
+      }).compile();
 
-    service = module.get(EntitiesService);
-  });
-
-  it("is defined", () => {
-    expect(service).toBeDefined();
-  });
-});
-
-describe("ENTITY_EXPECTATIONS", () => {
-  beforeAll(async (): Promise<void> => {
-    if (metadataDataSource.entityMetadatas.length > 0) {
-      return;
-    }
-
-    await metadataDataSource.buildMetadataForTests();
-  });
-
-  it("covers every registered entity exactly once", () => {
-    expect(() => {
-      assertEntityRegistryMatches(
-        Object.values(ENTITY_EXPECTATIONS).map(
-          (entityExpectation) => entityExpectation.entityClass,
-        ),
-        LEXICO_DATABASE_ENTITIES,
-      );
-
-      assertExactSet(
-        Object.keys(ENTITY_EXPECTATIONS),
-        LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
-        {
-          label: "entity expectation coverage",
-          toComparableString: (value) => value,
-        },
-      );
-    }).not.toThrow();
-  });
-
-  it("defines a canonical metadata expectation surface", () => {
-    for (const entityExpectation of Object.values(ENTITY_EXPECTATIONS)) {
-      expect(entityExpectation.entityClass.name).toBeTypeOf("string");
-      expect(entityExpectation.tableName).toBeTypeOf("string");
-      expect(entityExpectation.primaryKeyPropertyNames).toEqual(["id"]);
-      expect(Object.keys(entityExpectation.columns).length).toBeGreaterThan(0);
-    }
-  });
-});
-
-describe("entity metadata definitions", () => {
-  for (const entityExpectation of Object.values(ENTITY_EXPECTATIONS)) {
-    it(`${entityExpectation.entityClass.name} matches its metadata contract`, () => {
-      expect(() => {
-        verifyEntityDefinitionExpectation(entityExpectation);
-      }).not.toThrow();
+      service = module.get(EntitiesService);
     });
-  }
-});
 
-describe("entity relation contracts", () => {
-  beforeAll(async (): Promise<void> => {
-    if (metadataDataSource.entityMetadatas.length > 0) {
-      return;
-    }
-
-    await metadataDataSource.buildMetadataForTests();
-  });
-
-  it("covers every registered entity exactly once in relation expectations", () => {
-    expect(() => {
-      assertExactSet(
-        Object.keys(ENTITY_RELATION_EXPECTATIONS),
-        LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
-        {
-          label: "entity relation expectation coverage",
-          toComparableString: (value) => value,
-        },
-      );
-    }).not.toThrow();
-  });
-
-  for (const [entityName, relationExpectations] of Object.entries(
-    ENTITY_RELATION_EXPECTATIONS,
-  )) {
-    it(`${entityName} relation definitions match their contract`, () => {
-      const entityClass = getRegisteredEntityClass(entityName);
-
-      expect(() => {
-        verifyRelationExpectations(entityClass, relationExpectations);
-      }).not.toThrow();
+    it("is defined", () => {
+      expect(service).toBeDefined();
     });
-  }
-});
-
-describe("entity inheritance contracts", () => {
-  beforeAll(async (): Promise<void> => {
-    if (metadataDataSource.entityMetadatas.length > 0) {
-      return;
-    }
-
-    await metadataDataSource.buildMetadataForTests();
   });
 
-  it("covers every registered inheritance entity exactly once", () => {
-    expect(() => {
-      assertExactSet(
-        getRegisteredInheritanceEntityNames(),
-        Object.keys(ENTITY_INHERITANCE_EXPECTATIONS),
-        {
-          label: "entity inheritance expectation coverage",
-          toComparableString: (value) => value,
-        },
-      );
-    }).not.toThrow();
-  });
-
-  for (const entityInheritanceExpectation of Object.values(
-    ENTITY_INHERITANCE_EXPECTATIONS,
-  )) {
-    it(`${entityInheritanceExpectation.entityClass.name} inheritance metadata matches its contract`, () => {
-      expect(() => {
-        verifyEntityInheritanceExpectation(entityInheritanceExpectation);
-      }).not.toThrow();
-    });
-  }
-});
-
-type EntityRelationMetadata = ReturnType<
-  typeof getMetadataArgsStorage
->["relations"][number];
-type RelationMetadataWithTarget = Pick<
-  EntityRelationMetadata,
-  "inverseSideProperty" | "propertyName" | "target" | "type"
->;
-
-function createRelationProxy(): Record<string, string> {
-  return new Proxy<Record<string, string>>(
-    {},
-    {
-      get: (_target, propertyName) => String(propertyName),
-    },
-  );
-}
-
-function getRelationMetadataForKnownEntities(): readonly RelationMetadataWithTarget[] {
-  const metadataStorage = getMetadataArgsStorage();
-
-  return metadataStorage.relations.filter((relationMetadata) =>
-    isKnownEntityTargetForCallbacks(relationMetadata.target),
-  );
-}
-
-function isKnownEntityTargetForCallbacks(
-  relationTarget: EntityRelationMetadata["target"],
-): boolean {
-  if (typeof relationTarget === "string") {
-    return LEXICO_DATABASE_ENTITIES.some(
-      (entityClass) => entityClass.name === relationTarget,
-    );
-  }
-
-  if (typeof relationTarget === "function") {
-    return LEXICO_DATABASE_ENTITIES.some(
-      (entityClass) => entityClass.name === relationTarget.name,
-    );
-  }
-
-  return false;
-}
-
-describe("entity decorator callback metadata", () => {
-  it("resolves relation callbacks for all registered entity relations", () => {
-    const relationMetadataList = getRelationMetadataForKnownEntities();
-
-    expect(relationMetadataList.length).toBeGreaterThan(0);
-
-    const resolvedRelationTypes: unknown[] = [];
-    const resolvedInverseSideProperties: unknown[] = [];
-
-    for (const relationMetadata of relationMetadataList) {
-      if (typeof relationMetadata.type === "function") {
-        const relationType: unknown = relationMetadata.type;
-        resolvedRelationTypes.push(relationType);
+  describe("eNTITY_EXPECTATIONS", () => {
+    beforeAll(async (): Promise<void> => {
+      if (metadataDataSource.entityMetadatas.length > 0) {
+        return;
       }
 
-      if (typeof relationMetadata.inverseSideProperty === "function") {
-        const inverseSideProperty: unknown =
-          relationMetadata.inverseSideProperty(createRelationProxy());
-        resolvedInverseSideProperties.push(inverseSideProperty);
+      await metadataDataSource.buildMetadataForTests();
+    });
+
+    it("covers every registered entity exactly once", () => {
+      expect(() => {
+        assertEntityRegistryMatches(
+          Object.values(ENTITY_EXPECTATIONS).map(
+            (entityExpectation) => entityExpectation.entityClass,
+          ),
+          LEXICO_DATABASE_ENTITIES,
+        );
+
+        assertExactSet(
+          Object.keys(ENTITY_EXPECTATIONS),
+          LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
+          {
+            label: "entity expectation coverage",
+            toComparableString: (value) => value,
+          },
+        );
+      }).not.toThrow();
+    });
+
+    it("defines a canonical metadata expectation surface", () => {
+      for (const entityExpectation of Object.values(ENTITY_EXPECTATIONS)) {
+        expect(entityExpectation.entityClass.name).toBeTypeOf("string");
+        expect(entityExpectation.tableName).toBeTypeOf("string");
+        expect(entityExpectation.primaryKeyPropertyNames).toStrictEqual(["id"]);
+        expect(Object.keys(entityExpectation.columns).length).toBeGreaterThan(
+          0,
+        );
       }
-    }
-
-    expect(resolvedRelationTypes).not.toContain(undefined);
-    expect(resolvedInverseSideProperties).not.toContain(undefined);
+    });
   });
 
-  it("ensures all relation targets map to registered entities", () => {
-    const relationMetadataList = getRelationMetadataForKnownEntities();
-
-    const unmatchedRelationTargets: string[] = [];
-
-    for (const relationMetadata of relationMetadataList) {
-      if (isKnownEntityTargetForCallbacks(relationMetadata.target)) {
-        continue;
-      }
-
-      unmatchedRelationTargets.push(relationMetadata.propertyName);
-    }
-
-    expect(unmatchedRelationTargets).toStrictEqual([]);
-  });
-});
-
-class UndecoratedEntity {
-  public readonly marker = "undecorated";
-}
-
-describe("entity-definition-assertions branches", () => {
-  const authorEntityClass = getRegisteredEntityClass("Author");
-  const textEntityClass = getRegisteredEntityClass("Text");
-  const baseRelationMetadata = getEntityRelationMetadata(
-    textEntityClass,
-    "author",
-  );
-
-  it("should validate exact sets when values match", () => {
-    expect(() => {
-      assertExactSet(["b", "a", "a"], ["a", "b"], {
-        label: "letters",
-        toComparableString: (value) => value,
-      });
-    }).not.toThrow();
-  });
-
-  it("should fail exact set assertion when values differ", () => {
-    expect(() => {
-      assertExactSet(["a"], ["a", "b"], {
-        label: "letters",
-        toComparableString: (value) => value,
-      });
-    }).toThrow(/Set assertion failed for letters/);
-  });
-
-  it("should render <empty> for expected values in set failures", () => {
-    expect(() => {
-      assertExactSet(["a"], [], {
-        label: "letters",
-        toComparableString: (value) => value,
-      });
-    }).toThrow(/Expected: <empty>/);
-  });
-
-  it("should render <empty> for received values in set failures", () => {
-    expect(() => {
-      assertExactSet([], ["a"], {
-        label: "letters",
-        toComparableString: (value) => value,
-      });
-    }).toThrow(/Received: <empty>/);
-  });
-
-  it("should validate entity registry when classes match", () => {
-    expect(() => {
-      assertEntityRegistryMatches(
-        [authorEntityClass, textEntityClass],
-        [textEntityClass, authorEntityClass],
-      );
-    }).not.toThrow();
-  });
-
-  it("should fail entity registry when duplicates exist", () => {
-    expect(() => {
-      assertEntityRegistryMatches(
-        [authorEntityClass, textEntityClass, authorEntityClass],
-        [authorEntityClass, textEntityClass],
-      );
-    }).toThrow(/duplicate classes/);
-  });
-
-  it("should return relation metadata for a known relation", () => {
-    const relationMetadata = getEntityRelationMetadata(
-      textEntityClass,
-      "author",
-    );
-
-    expect(relationMetadata.propertyName).toBe("author");
-  });
-
-  it("should fail relation metadata lookup for unknown relation", () => {
-    expect(() => {
-      getEntityRelationMetadata(textEntityClass, "missingRelation");
-    }).toThrow(/Missing relation 'missingRelation'/);
-  });
-
-  it("should return table metadata for an entity", () => {
-    const tableMetadata = getEntityTableMetadata(authorEntityClass);
-
-    expect(tableMetadata.name).toBe("authors");
-  });
-
-  it("should fail table metadata lookup for an undecorated entity", () => {
-    expect(() => {
-      getEntityTableMetadata(UndecoratedEntity);
-    }).toThrow(/Missing table metadata/);
-  });
-
-  it("should validate relation options with scalar values", () => {
-    const relationMetadata = getEntityRelationMetadata(
-      textEntityClass,
-      "author",
-    );
-
-    expect(() => {
-      assertRelationOptions(relationMetadata, {
-        eager: true,
-      });
-    }).not.toThrow();
-  });
-
-  it("should validate relation options with cascade arrays", () => {
-    const relationMetadata = {
-      ...baseRelationMetadata,
-      options: {
-        ...baseRelationMetadata.options,
-        cascade: ["insert", "update"],
+  describe("entity metadata definitions", () => {
+    it.each(Object.values(ENTITY_EXPECTATIONS))(
+      "$entityClass.name matches its metadata contract",
+      (entityExpectation) => {
+        expect(() => {
+          verifyEntityDefinitionExpectation(entityExpectation);
+        }).not.toThrow();
       },
-      propertyName: "testRelation",
-    } satisfies Parameters<typeof assertRelationOptions>[0];
+    );
+  });
 
-    expect(() => {
-      assertRelationOptions(relationMetadata, {
-        cascade: ["update", "insert"],
-      });
-    }).not.toThrow();
+  describe("entity relation contracts", () => {
+    beforeAll(async (): Promise<void> => {
+      if (metadataDataSource.entityMetadatas.length > 0) {
+        return;
+      }
+
+      await metadataDataSource.buildMetadataForTests();
+    });
+
+    it("covers every registered entity exactly once in relation expectations", () => {
+      expect(() => {
+        assertExactSet(
+          Object.keys(ENTITY_RELATION_EXPECTATIONS),
+          LEXICO_DATABASE_ENTITIES.map((entityClass) => entityClass.name),
+          {
+            label: "entity relation expectation coverage",
+            toComparableString: (value) => value,
+          },
+        );
+      }).not.toThrow();
+    });
+
+    it.each(Object.entries(ENTITY_RELATION_EXPECTATIONS))(
+      "%s relation definitions match their contract",
+      (entityName, relationExpectations) => {
+        const entityClass = getRegisteredEntityClass(entityName);
+
+        expect(() => {
+          verifyRelationExpectations(entityClass, relationExpectations);
+        }).not.toThrow();
+      },
+    );
+  });
+
+  describe("entity inheritance contracts", () => {
+    beforeAll(async (): Promise<void> => {
+      if (metadataDataSource.entityMetadatas.length > 0) {
+        return;
+      }
+
+      await metadataDataSource.buildMetadataForTests();
+    });
+
+    it("covers every registered inheritance entity exactly once", () => {
+      expect(() => {
+        assertExactSet(
+          getRegisteredInheritanceEntityNames(),
+          Object.keys(ENTITY_INHERITANCE_EXPECTATIONS),
+          {
+            label: "entity inheritance expectation coverage",
+            toComparableString: (value) => value,
+          },
+        );
+      }).not.toThrow();
+    });
+
+    it.each(Object.values(ENTITY_INHERITANCE_EXPECTATIONS))(
+      "$entityClass.name inheritance metadata matches its contract",
+      (entityInheritanceExpectation) => {
+        expect(() => {
+          verifyEntityInheritanceExpectation(entityInheritanceExpectation);
+        }).not.toThrow();
+      },
+    );
+  });
+
+  type EntityRelationMetadata = ReturnType<
+    typeof getMetadataArgsStorage
+  >["relations"][number];
+  type RelationMetadataWithTarget = Pick<
+    EntityRelationMetadata,
+    "inverseSideProperty" | "propertyName" | "target" | "type"
+  >;
+
+  function createRelationProxy(): Record<string, string> {
+    return new Proxy<Record<string, string>>(
+      {},
+      {
+        get: (_target, propertyName) => String(propertyName),
+      },
+    );
+  }
+
+  function getRelationMetadataForKnownEntities(): readonly RelationMetadataWithTarget[] {
+    const metadataStorage = getMetadataArgsStorage();
+
+    return metadataStorage.relations.filter((relationMetadata) =>
+      isKnownEntityTargetForCallbacks(relationMetadata.target),
+    );
+  }
+
+  function isKnownEntityTargetForCallbacks(
+    relationTarget: EntityRelationMetadata["target"],
+  ): boolean {
+    if (typeof relationTarget === "string") {
+      return LEXICO_DATABASE_ENTITIES.some(
+        (entityClass) => entityClass.name === relationTarget,
+      );
+    }
+
+    if (typeof relationTarget === "function") {
+      return LEXICO_DATABASE_ENTITIES.some(
+        (entityClass) => entityClass.name === relationTarget.name,
+      );
+    }
+
+    return false;
+  }
+
+  describe("entity decorator callback metadata", () => {
+    it("resolves relation callbacks for all registered entity relations", () => {
+      const relationMetadataList = getRelationMetadataForKnownEntities();
+
+      expect(relationMetadataList.length).toBeGreaterThan(0);
+
+      const resolvedRelationTypes: unknown[] = [];
+      const resolvedInverseSideProperties: unknown[] = [];
+
+      for (const relationMetadata of relationMetadataList) {
+        if (typeof relationMetadata.type === "function") {
+          const relationType: unknown = relationMetadata.type;
+          resolvedRelationTypes.push(relationType);
+        }
+
+        if (typeof relationMetadata.inverseSideProperty === "function") {
+          const inverseSideProperty: unknown =
+            relationMetadata.inverseSideProperty(createRelationProxy());
+          resolvedInverseSideProperties.push(inverseSideProperty);
+        }
+      }
+
+      expect(resolvedRelationTypes).not.toContain(undefined);
+      expect(resolvedInverseSideProperties).not.toContain(undefined);
+    });
+
+    it("ensures all relation targets map to registered entities", () => {
+      const relationMetadataList = getRelationMetadataForKnownEntities();
+
+      const unmatchedRelationTargets: string[] = [];
+
+      for (const relationMetadata of relationMetadataList) {
+        if (isKnownEntityTargetForCallbacks(relationMetadata.target)) {
+          continue;
+        }
+
+        unmatchedRelationTargets.push(relationMetadata.propertyName);
+      }
+
+      expect(unmatchedRelationTargets).toStrictEqual([]);
+    });
+  });
+
+  class UndecoratedEntity {
+    public readonly marker = "undecorated";
+  }
+
+  describe("entity-definition-assertions branches", () => {
+    const authorEntityClass = getRegisteredEntityClass("Author");
+    const textEntityClass = getRegisteredEntityClass("Text");
+    const baseRelationMetadata = getEntityRelationMetadata(
+      textEntityClass,
+      "author",
+    );
+
+    it("should validate exact sets when values match", () => {
+      expect(() => {
+        assertExactSet(["b", "a", "a"], ["a", "b"], {
+          label: "letters",
+          toComparableString: (value) => value,
+        });
+      }).not.toThrow();
+    });
+
+    it("should fail exact set assertion when values differ", () => {
+      expect(() => {
+        assertExactSet(["a"], ["a", "b"], {
+          label: "letters",
+          toComparableString: (value) => value,
+        });
+      }).toThrow(/Set assertion failed for letters/);
+    });
+
+    it("should render <empty> for expected values in set failures", () => {
+      expect(() => {
+        assertExactSet(["a"], [], {
+          label: "letters",
+          toComparableString: (value) => value,
+        });
+      }).toThrow(/Expected: <empty>/);
+    });
+
+    it("should render <empty> for received values in set failures", () => {
+      expect(() => {
+        assertExactSet([], ["a"], {
+          label: "letters",
+          toComparableString: (value) => value,
+        });
+      }).toThrow(/Received: <empty>/);
+    });
+
+    it("should validate entity registry when classes match", () => {
+      expect(() => {
+        assertEntityRegistryMatches(
+          [authorEntityClass, textEntityClass],
+          [textEntityClass, authorEntityClass],
+        );
+      }).not.toThrow();
+    });
+
+    it("should fail entity registry when duplicates exist", () => {
+      expect(() => {
+        assertEntityRegistryMatches(
+          [authorEntityClass, textEntityClass, authorEntityClass],
+          [authorEntityClass, textEntityClass],
+        );
+      }).toThrow(/duplicate classes/);
+    });
+
+    it("should return relation metadata for a known relation", () => {
+      const relationMetadata = getEntityRelationMetadata(
+        textEntityClass,
+        "author",
+      );
+
+      expect(relationMetadata.propertyName).toBe("author");
+    });
+
+    it("should fail relation metadata lookup for unknown relation", () => {
+      expect(() => {
+        getEntityRelationMetadata(textEntityClass, "missingRelation");
+      }).toThrow(/Missing relation 'missingRelation'/);
+    });
+
+    it("should return table metadata for an entity", () => {
+      const tableMetadata = getEntityTableMetadata(authorEntityClass);
+
+      expect(tableMetadata.name).toBe("authors");
+    });
+
+    it("should fail table metadata lookup for an undecorated entity", () => {
+      expect(() => {
+        getEntityTableMetadata(UndecoratedEntity);
+      }).toThrow(/Missing table metadata/);
+    });
+
+    it("should validate relation options with scalar values", () => {
+      const relationMetadata = getEntityRelationMetadata(
+        textEntityClass,
+        "author",
+      );
+
+      expect(() => {
+        assertRelationOptions(relationMetadata, {
+          eager: true,
+        });
+      }).not.toThrow();
+    });
+
+    it("should validate relation options with cascade arrays", () => {
+      const relationMetadata = {
+        ...baseRelationMetadata,
+        options: {
+          ...baseRelationMetadata.options,
+          cascade: ["insert", "update"],
+        },
+        propertyName: "testRelation",
+      } satisfies Parameters<typeof assertRelationOptions>[0];
+
+      expect(() => {
+        assertRelationOptions(relationMetadata, {
+          cascade: ["update", "insert"],
+        });
+      }).not.toThrow();
+    });
   });
 });

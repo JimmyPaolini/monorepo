@@ -9,32 +9,8 @@ import { LiteratureService } from "./literature.service";
 
 import type { LibraryEntry } from "./literature.types";
 
-describe("LiteratureCommand", () => {
-  let command: LiteratureCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        LiteratureCommand,
-        {
-          provide: LiteratureService,
-          useValue: createLiteratureServiceMock(),
-        },
-        { provide: LoggerService, useValue: createLoggerServiceMock() },
-      ],
-    }).compile();
-
-    command = await module.resolve(LiteratureCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const { promptsMock } = vi.hoisted(() => ({
-  promptsMock: vi.fn(),
+  promptsMock: vi.fn<() => Promise<Record<string, unknown>>>(),
 }));
 
 vi.mock("prompts", () => ({
@@ -63,7 +39,7 @@ function createLoggerServiceMock(): {
   };
 }
 
-describe("LiteratureCommand", () => {
+describe(LiteratureCommand, () => {
   let command: LiteratureCommand;
 
   const library: LibraryEntry[] = [
@@ -94,15 +70,31 @@ describe("LiteratureCommand", () => {
   ];
 
   const loggerService = {
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
 
   const literatureService = {
-    ingestAllAuthors: vi.fn(),
-    scanLibrary: vi.fn(),
+    ingestAllAuthors: vi.fn<(texts: LibraryEntry[]) => Promise<void>>(),
+    scanLibrary: vi.fn<() => Promise<LibraryEntry[]>>(),
   };
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        LiteratureCommand,
+        {
+          provide: LiteratureService,
+          useValue: createLiteratureServiceMock(),
+        },
+        { provide: LoggerService, useValue: createLoggerServiceMock() },
+      ],
+    }).compile();
+
+    command = await module.resolve(LiteratureCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -120,6 +112,10 @@ describe("LiteratureCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
     expect(command).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("LiteratureCommand");
   });
@@ -260,7 +256,7 @@ describe("LiteratureCommand", () => {
 
     const choices = await getTextChoices("thelatinlibrary", undefined);
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "vergil/vergil/aeneid", value: "vergil/vergil/aeneid" },
     ]);
   });
@@ -279,7 +275,7 @@ describe("LiteratureCommand", () => {
 
     const choices = await getTextChoices(undefined, "ovid");
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "ovid/ovid/metamorphoses", value: "ovid/ovid/metamorphoses" },
     ]);
   });
@@ -396,8 +392,9 @@ describe("LiteratureCommand", () => {
     expect(parseTextSpy).toHaveBeenCalledWith(undefined, "perseus", "vergil");
 
     expect(literatureService.ingestAllAuthors).toHaveBeenCalledTimes(1);
-    const ingestedTexts = literatureService.ingestAllAuthors.mock
-      .calls[0]?.[0] as LibraryEntry[] | undefined;
+
+    const ingestedTexts = literatureService.ingestAllAuthors.mock.calls[0]?.[0];
+
     expect(ingestedTexts).toBeDefined();
     expect(ingestedTexts).toHaveLength(1);
     expect(ingestedTexts?.[0]?.provider).toBe("perseus");

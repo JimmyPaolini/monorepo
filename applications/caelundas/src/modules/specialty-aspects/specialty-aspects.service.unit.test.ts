@@ -8,7 +8,7 @@ import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-a
 import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { SpecialtyAspectsService } from "./specialty-aspects.service";
 
@@ -18,11 +18,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("SpecialtyAspectsService", () => {
+describe(SpecialtyAspectsService, () => {
   let service: SpecialtyAspectsService;
 
   beforeAll(async () => {
@@ -109,6 +109,7 @@ describe("SpecialtyAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const quintileEvent = events.find(
         (e) =>
           e.description.includes("quintile") &&
@@ -116,6 +117,7 @@ describe("SpecialtyAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Mercury"),
       );
+
       expect(quintileEvent).toBeDefined();
     });
 
@@ -149,6 +151,7 @@ describe("SpecialtyAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const formingQuintile = events.find(
         (e) =>
           e.description.includes("quintile") &&
@@ -156,6 +159,7 @@ describe("SpecialtyAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Venus"),
       );
+
       expect(formingQuintile).toBeDefined();
     });
 
@@ -189,6 +193,7 @@ describe("SpecialtyAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const dissolvingNovile = events.find(
         (e) =>
           e.description.includes("novile") &&
@@ -196,6 +201,7 @@ describe("SpecialtyAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Mars"),
       );
+
       expect(dissolvingNovile).toBeDefined();
     });
 
@@ -235,6 +241,7 @@ describe("SpecialtyAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
+
       const sunMercuryAspect = events.find(
         (e) =>
           e.description.includes("Sun") && e.description.includes("Mercury"),
@@ -242,6 +249,7 @@ describe("SpecialtyAspectsService", () => {
       const sunVenusAspect = events.find(
         (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
+
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
     });
@@ -275,7 +283,7 @@ describe("SpecialtyAspectsService", () => {
         minute: currentMinute,
       });
 
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
 
     it("does not create duplicate events for same body pair", () => {
@@ -310,7 +318,7 @@ describe("SpecialtyAspectsService", () => {
           e.description.includes("Sun") && e.description.includes("Mercury"),
       );
 
-      expect(sunMercuryEvents.length).toBe(1);
+      expect(sunMercuryEvents).toHaveLength(1);
     });
 
     it("skips duplicate body entries while iterating specialty body pairs", () => {
@@ -330,7 +338,7 @@ describe("SpecialtyAspectsService", () => {
             coordinateEphemerisByBody,
             minute: currentMinute,
           }),
-        ).toEqual([]);
+        ).toStrictEqual([]);
       } finally {
         (specialtyAspectBodies as unknown as string[]).pop();
       }
@@ -434,6 +442,7 @@ describe("SpecialtyAspectsService", () => {
 
     it("throws error when no specialty aspect is found", () => {
       const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
+
       expect(() =>
         service.buildSpecialtyAspectEvent({
           body1: "sun",
@@ -501,10 +510,10 @@ describe("SpecialtyAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
+      expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
-      expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingEvent.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingEvent.start);
       expect(progressiveEvents[0]?.description).toBe("Mercury quintile Sun");
       expect(progressiveEvents[0]?.categories).toContain("Simple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Specialty Aspect");
@@ -574,7 +583,7 @@ describe("SpecialtyAspectsService", () => {
         biquintileDissolving,
       ]);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
       expect(
         progressiveEvents.find((e) => e.description.includes("quintile")),
       ).toBeDefined();
@@ -641,7 +650,7 @@ describe("SpecialtyAspectsService", () => {
         venusMarDissolving,
       ]);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
       expect(
         progressiveEvents.find(
           (e) =>
@@ -687,7 +696,8 @@ describe("SpecialtyAspectsService", () => {
 
     it("handles empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
-      expect(progressiveEvents.length).toBe(0);
+
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("sorts body names alphabetically in progressive event", () => {
@@ -724,17 +734,19 @@ describe("SpecialtyAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
+      expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
       // Mars comes before Venus alphabetically
       expect(progressiveEvents[0]?.categories).toContain("Mars");
       expect(progressiveEvents[0]?.categories).toContain("Venus");
+
       const categories = progressiveEvents[0]?.categories;
       if (!categories) {
         throw new Error("categories is undefined");
       }
       const marsIndex = categories.indexOf("Mars");
       const venusIndex = categories.indexOf("Venus");
+
       expect(marsIndex).toBeLessThan(venusIndex);
     });
   });

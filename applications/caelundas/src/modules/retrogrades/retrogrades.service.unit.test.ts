@@ -5,7 +5,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { RetrogradesService } from "./retrogrades.service";
 
@@ -15,11 +15,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("RetrogradesService", () => {
+describe(RetrogradesService, () => {
   let service: RetrogradesService;
   let s: ServicePrivate;
 
@@ -118,6 +118,7 @@ describe("RetrogradesService", () => {
           e.description.includes("Mercury") &&
           e.description.includes("Retrograde"),
       );
+
       expect(mercuryRetrograde).toBeDefined();
     });
 
@@ -180,8 +181,8 @@ describe("RetrogradesService", () => {
 
       expect(event.summary).toBe("☿ ↩️ Mercury Stationary Retrograde");
       expect(event.description).toBe("Mercury Stationary Retrograde");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Direction");
@@ -282,7 +283,8 @@ describe("RetrogradesService", () => {
           e.description.includes("Mercury") &&
           e.description.includes("Retrograde"),
       );
-      expect(mercuryDuration).toEqual(
+
+      expect(mercuryDuration).toStrictEqual(
         expect.objectContaining({
           end: directEvent.start,
           start: retrogradeEvent.start,

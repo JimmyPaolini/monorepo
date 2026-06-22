@@ -10,7 +10,7 @@ const PROJECT_NAME = "my-app";
 const PROJECT_ROOT = "applications/my-app";
 const MODULES_DIR = `${PROJECT_ROOT}/src/modules`;
 
-describe("generateNestjsDataloaderModule", () => {
+describe(generateNestjsDataloaderModule, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -30,11 +30,12 @@ describe("generateNestjsDataloaderModule", () => {
       });
 
       const base = `${MODULES_DIR}/post`;
-      expect(tree.exists(`${base}/post.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.dataloader.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.dataloader.unit.test.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.types.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.constants.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/post.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.dataloader.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.dataloader.unit.test.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.types.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.constants.ts`)).toBe(true);
     });
 
     it("should use PascalCase class names in generated module file", async () => {
@@ -44,6 +45,7 @@ describe("generateNestjsDataloaderModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.module.ts`, "utf8");
+
       expect(content).toContain("PostDataLoader");
       expect(content).toContain("PostModule");
     });

@@ -11,8 +11,18 @@ import { LiteratureTextIngestionService } from "./literature-text-ingestion.serv
 
 import type { IngestTextArguments, LibraryEntry } from "./literature.types";
 
-describe("LiteratureTextIngestionService", () => {
+vi.mock("node:fs/promises", () => ({
+  appendFile: vi.fn<() => Promise<void>>(),
+}));
+
+describe(LiteratureTextIngestionService, () => {
   let service: LiteratureTextIngestionService;
+
+  const loggerMock = {
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -32,30 +42,16 @@ describe("LiteratureTextIngestionService", () => {
     service = await module.resolve(LiteratureTextIngestionService);
   });
 
-  it("is defined", () => {
-    expect(service).toBeDefined();
-  });
-});
-
-vi.mock("node:fs/promises", () => ({
-  appendFile: vi.fn(),
-}));
-
-describe("LiteratureTextIngestionService", () => {
-  const loggerMock = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-  };
-
-  let service: LiteratureTextIngestionService;
-
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(appendFile).mockResolvedValue(undefined);
     service = new LiteratureTextIngestionService(
       loggerMock as unknown as LoggerService,
     );
+  });
+
+  it("should define conformance service", () => {
+    expect(service).toBeDefined();
   });
 
   it("is defined", () => {

@@ -3,7 +3,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { DailyCyclesBuilderService } from "./daily-cycles-builder.service";
 import { DailyCyclesService } from "./daily-cycles.service";
@@ -12,7 +12,7 @@ import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -21,7 +21,7 @@ interface ServicePrivate {
   isSet: (args: { current: number; previous: number }) => boolean;
 }
 
-describe("DailyCyclesService", () => {
+describe(DailyCyclesService, () => {
   let service: DailyCyclesService;
   let helperService: DailyCyclesBuilderService;
   let s: ServicePrivate;
@@ -181,8 +181,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("☀️ 🔼 Sunrise");
         expect(event.description).toBe("Sunrise");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Solar Cycle");
         expect(event.categories).toContain("Solar");
@@ -197,8 +197,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("☀️ ⏫ Solar Zenith");
         expect(event.description).toBe("Solar Zenith");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Solar Cycle");
         expect(event.categories).toContain("Solar");
@@ -213,8 +213,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("☀️ 🔽 Sunset");
         expect(event.description).toBe("Sunset");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Solar Cycle");
         expect(event.categories).toContain("Solar");
@@ -229,8 +229,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("☀️ ⏬ Solar Nadir");
         expect(event.description).toBe("Solar Nadir");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Solar Cycle");
         expect(event.categories).toContain("Solar");
@@ -389,8 +389,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("🌙 🔼 Moonrise");
         expect(event.description).toBe("Moonrise");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Lunar Cycle");
         expect(event.categories).toContain("Lunar");
@@ -405,8 +405,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("🌙 ⏫ Lunar Zenith");
         expect(event.description).toBe("Lunar Zenith");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Lunar Cycle");
         expect(event.categories).toContain("Lunar");
@@ -421,8 +421,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("🌙 🔽 Moonset");
         expect(event.description).toBe("Moonset");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Lunar Cycle");
         expect(event.categories).toContain("Lunar");
@@ -437,8 +437,8 @@ describe("DailyCyclesService", () => {
 
         expect(event.summary).toBe("🌙 ⏬ Lunar Nadir");
         expect(event.description).toBe("Lunar Nadir");
-        expect(event.start).toEqual(date);
-        expect(event.end).toEqual(date);
+        expect(event.start).toStrictEqual(date);
+        expect(event.end).toStrictEqual(date);
         expect(event.categories).toContain("Astronomy");
         expect(event.categories).toContain("Daily Lunar Cycle");
         expect(event.categories).toContain("Lunar");
@@ -451,9 +451,9 @@ describe("DailyCyclesService", () => {
       vi.restoreAllMocks();
     });
 
-    describe("DailyCyclesService.sunRadiusDegrees", () => {
+    describe("dailyCyclesService.sunRadiusDegrees", () => {
       it("has correct value for sun radius", () => {
-        // Sun radius is 16 arcminutes, 60 arcminutes per degree
+        expect.hasAssertions(); // Sun radius is 16 arcminutes, 60 arcminutes per degree
         expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
         expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(0.2667, 3);
       });
@@ -461,13 +461,14 @@ describe("DailyCyclesService", () => {
 
     describe("isRise", () => {
       it("returns true when crossing above sun radius threshold", () => {
-        // Rise occurs when elevation goes from below -DailyCyclesService.sunRadiusDegrees to above
+        expect.hasAssertions(); // Rise occurs when elevation goes from below -DailyCyclesService.sunRadiusDegrees to above
+
         const result = s.isRise({
           current: 0, // Above threshold
           previous: -0.5, // Below threshold (-0.2667)
         });
 
-        expect(result).toBeTruthy();
+        expect(result).toBe(true);
       });
 
       it("returns true at exact threshold crossing", () => {
@@ -476,7 +477,7 @@ describe("DailyCyclesService", () => {
           previous: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
         });
 
-        expect(result).toBeTruthy();
+        expect(result).toBe(true);
       });
 
       it("returns false when elevation stays below threshold", () => {
@@ -485,7 +486,7 @@ describe("DailyCyclesService", () => {
           previous: -1,
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
 
       it("returns false when elevation stays above threshold", () => {
@@ -494,7 +495,7 @@ describe("DailyCyclesService", () => {
           previous: 0.5,
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
 
       it("returns false when crossing threshold downward (set direction)", () => {
@@ -503,19 +504,20 @@ describe("DailyCyclesService", () => {
           previous: 0, // Above threshold
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
     });
 
     describe("isSet", () => {
       it("returns true when crossing below sun radius threshold", () => {
-        // Set occurs when elevation goes from above -DailyCyclesService.sunRadiusDegrees to below
+        expect.hasAssertions(); // Set occurs when elevation goes from above -DailyCyclesService.sunRadiusDegrees to below
+
         const result = s.isSet({
           current: -0.5, // Below threshold
           previous: 0, // Above threshold
         });
 
-        expect(result).toBeTruthy();
+        expect(result).toBe(true);
       });
 
       it("returns true at exact threshold crossing", () => {
@@ -524,7 +526,7 @@ describe("DailyCyclesService", () => {
           previous: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
         });
 
-        expect(result).toBeTruthy();
+        expect(result).toBe(true);
       });
 
       it("returns false when elevation stays above threshold", () => {
@@ -533,7 +535,7 @@ describe("DailyCyclesService", () => {
           previous: 1,
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
 
       it("returns false when elevation stays below threshold", () => {
@@ -542,7 +544,7 @@ describe("DailyCyclesService", () => {
           previous: -0.5,
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
 
       it("returns false when crossing threshold upward (rise direction)", () => {
@@ -551,7 +553,7 @@ describe("DailyCyclesService", () => {
           previous: -0.5, // Below threshold
         });
 
-        expect(result).toBeFalsy();
+        expect(result).toBe(false);
       });
     });
   });

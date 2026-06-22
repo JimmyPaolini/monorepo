@@ -3,7 +3,7 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -62,7 +62,7 @@ const configureProgressiveUtilitiesMock = (
   vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
 };
 
-describe("MartianPhaseService", () => {
+describe(MartianPhaseService, () => {
   let service: MartianPhaseService;
   let phaseCalculationService: ReturnType<
     typeof createMock<PhaseCalculationService>
@@ -117,8 +117,8 @@ describe("MartianPhaseService", () => {
         `♂️${symbolByMartianPhase["morning rise"]} Mars Morning Rise`,
       );
       expect(event.description).toBe("Mars Morning Rise");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Martian");
       expect(event.categories).toContain("Morning Rise");
     });
@@ -142,7 +142,7 @@ describe("MartianPhaseService", () => {
       });
 
       expect(events).toHaveLength(4);
-      expect(events.map((event) => event.description)).toEqual(
+      expect(events.map((event) => event.description)).toStrictEqual(
         expect.arrayContaining([
           "Mars Morning Rise",
           "Mars Morning Set",
@@ -180,8 +180,8 @@ describe("MartianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(MARS_MORNING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(morningRise.start);
-      expect(events[0]?.end).toEqual(morningSet.start);
+      expect(events[0]?.start).toStrictEqual(morningRise.start);
+      expect(events[0]?.end).toStrictEqual(morningSet.start);
     });
 
     it("creates martian evening visibility duration events", () => {
@@ -210,8 +210,8 @@ describe("MartianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(MARS_EVENING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(eveningRise.start);
-      expect(events[0]?.end).toEqual(eveningSet.start);
+      expect(events[0]?.start).toStrictEqual(eveningRise.start);
+      expect(events[0]?.end).toStrictEqual(eveningSet.start);
     });
   });
 });

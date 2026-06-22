@@ -1,14 +1,6 @@
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 
@@ -19,8 +11,9 @@ import { FormsTransientWordsService } from "./forms-transient-words.service";
 import { FormsService } from "./forms.service";
 
 import type { Repository } from "typeorm";
+import type { Mocked } from "vitest";
 
-describe("FormsService", () => {
+describe(FormsService, () => {
   let service: FormsService;
   let formRepository: Mocked<Repository<Form>>;
   let wordFormRepository: Mocked<Repository<WordForm>>;
@@ -33,21 +26,39 @@ describe("FormsService", () => {
         FormsService,
         {
           provide: getRepositoryToken(Form),
-          useValue: { find: vi.fn(), remove: vi.fn(), save: vi.fn() },
+          useValue: {
+            find: vi.fn<(options?: unknown) => Promise<Form[]>>(),
+            remove: vi.fn<(entities: Form[]) => Promise<Form>>(),
+            save: vi.fn<(entities?: unknown) => Promise<Form>>(),
+          },
         },
         {
           provide: getRepositoryToken(WordForm),
-          useValue: { save: vi.fn() },
+          useValue: {
+            save: vi.fn<(entities?: unknown) => Promise<WordForm>>(),
+          },
         },
         {
           provide: WordsService,
           useValue: {
-            upsertWordsAndJunctions: vi.fn().mockResolvedValue(new Map()),
+            upsertWordsAndJunctions: vi
+              .fn<
+                (
+                  formsByNormalizedWord: Map<string, Set<Form>>,
+                  lexeme: Lexeme,
+                ) => Promise<void>
+              >()
+              .mockResolvedValue(undefined),
           },
         },
         {
           provide: FormsBuilderHelper,
-          useValue: { buildFormsForPartOfSpeech: vi.fn() },
+          useValue: {
+            buildFormsForPartOfSpeech:
+              vi.fn<
+                (partOfSpeech: string, data: unknown, lexeme: Lexeme) => Form[]
+              >(),
+          },
         },
         FormsTransientWordsService,
       ],
@@ -85,11 +96,16 @@ describe("FormsService", () => {
 
       await service.ingestLexemeForms([newForm], lexeme);
 
-      expect(formRepository.find).toHaveBeenCalledWith({
+      const formRepositoryFindCall = formRepository.find.mock.calls[0]?.[0];
+
+      expect(formRepositoryFindCall).toStrictEqual({
         where: { lexeme: { id: "lexeme-id" } },
       });
-      expect(formRepository.remove).toHaveBeenCalledWith([existingForm]);
-      expect(formRepository.save).toHaveBeenCalled();
+
+      const formRepositoryRemoveCall = formRepository.remove.mock.calls[0]?.[0];
+
+      expect(formRepositoryRemoveCall).toStrictEqual([existingForm]);
+      expect(formRepository.save.mock.calls.length).toBeGreaterThan(0);
     });
 
     it("should upsert word records for normalized raw words", async () => {
@@ -109,10 +125,11 @@ describe("FormsService", () => {
 
       await service.ingestLexemeForms([form], lexeme);
 
-      expect(wordsService.upsertWordsAndJunctions).toHaveBeenCalledWith(
-        expect.any(Map),
-        lexeme,
-      );
+      const upsertWordsAndJunctionsCall =
+        wordsService.upsertWordsAndJunctions.mock.calls[0];
+
+      expect(upsertWordsAndJunctionsCall?.[0]).toBeInstanceOf(Map);
+      expect(upsertWordsAndJunctionsCall?.[1]).toBe(lexeme);
     });
 
     it("should skip word upsert when no valid normalized words exist", async () => {
@@ -127,7 +144,7 @@ describe("FormsService", () => {
 
       await service.ingestLexemeForms([form], lexeme);
 
-      expect(wordsService.upsertWordsAndJunctions).not.toHaveBeenCalled();
+      expect(wordsService.upsertWordsAndJunctions).toHaveBeenCalledTimes(0);
     });
 
     it("should preserve matching existing form identity", async () => {
@@ -149,10 +166,10 @@ describe("FormsService", () => {
 
       await service.ingestLexemeForms([newForm], lexeme);
 
-      expect(formRepository.remove).not.toHaveBeenCalled();
+      expect(formRepository.remove).toHaveBeenCalledTimes(0);
       expect(newForm.id).toBe("existing-id");
-      expect(newForm.createdAt).toEqual(new Date("2024-01-01"));
-      expect(newForm.updatedAt).toEqual(new Date("2024-01-02"));
+      expect(newForm.createdAt).toStrictEqual(new Date("2024-01-01"));
+      expect(newForm.updatedAt).toStrictEqual(new Date("2024-01-02"));
     });
 
     it("should normalize diacritics and aggregate forms by normalized word", async () => {
@@ -173,11 +190,13 @@ describe("FormsService", () => {
       await service.ingestLexemeForms([firstForm, secondForm], lexeme);
 
       expect(wordsService.upsertWordsAndJunctions).toHaveBeenCalledTimes(1);
+
       const [formsByWord] =
         wordsService.upsertWordsAndJunctions.mock.calls[0] ?? [];
       if (!(formsByWord instanceof Map)) {
         throw new TypeError("Expected Map argument");
       }
+
       expect(formsByWord.has("amo")).toBe(true);
       expect(formsByWord.has("-amo")).toBe(true);
     });
@@ -195,11 +214,10 @@ describe("FormsService", () => {
         lexeme,
       );
 
-      expect(formsBuilderHelper.buildFormsForPartOfSpeech).toHaveBeenCalledWith(
-        "noun",
-        { any: "value" },
-        lexeme,
-      );
+      const buildFormsCall =
+        formsBuilderHelper.buildFormsForPartOfSpeech.mock.calls[0];
+
+      expect(buildFormsCall).toStrictEqual(["noun", { any: "value" }, lexeme]);
       expect(result).toBe(builtForms);
     });
   });

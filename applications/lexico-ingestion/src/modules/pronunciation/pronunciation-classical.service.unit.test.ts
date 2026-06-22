@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { PronunciationClassicalService } from "./pronunciation-classical.service";
 
-describe("PronunciationClassicalService", () => {
+describe(PronunciationClassicalService, () => {
   let service: PronunciationClassicalService;
 
   beforeAll(async () => {
@@ -46,7 +46,7 @@ describe("PronunciationClassicalService", () => {
       });
 
       expect(nextIndex).toBe(2);
-      expect(phonemes).toEqual([]);
+      expect(phonemes).toStrictEqual([]);
     });
 
     it("should return the same index for a single default character", () => {
@@ -121,7 +121,7 @@ describe("PronunciationClassicalService", () => {
       });
 
       expect(nextIndex).toBe(1);
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should classify j as I after certain consonants", () => {
@@ -256,7 +256,7 @@ describe("PronunciationClassicalService", () => {
       });
 
       expect(nextIndex).toBe(0);
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should use one-character lookup for digraphs", () => {
@@ -271,7 +271,7 @@ describe("PronunciationClassicalService", () => {
       });
 
       expect(nextIndex).toBeGreaterThanOrEqual(0);
-      expect(phonemes.length).toBe(1);
+      expect(phonemes).toHaveLength(1);
     });
 
     it("should use one-character map for ae and advance index", () => {
@@ -301,7 +301,7 @@ describe("PronunciationClassicalService", () => {
       });
 
       expect(nextIndex).toBe(0);
-      expect(phonemes.length).toBe(1);
+      expect(phonemes).toHaveLength(1);
     });
 
     it("should use one-character lookup branch when two-character lookahead is unavailable", () => {
@@ -342,7 +342,7 @@ describe("PronunciationClassicalService", () => {
         word: ["a", "?", "b"],
       });
 
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should fallback to empty phoneme for unknown private j classification", () => {
@@ -366,7 +366,7 @@ describe("PronunciationClassicalService", () => {
         word: ["a", "?", "a"],
       });
 
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should fallback to empty phoneme for unknown private n classification", () => {
@@ -390,7 +390,7 @@ describe("PronunciationClassicalService", () => {
         word: ["?", "a"],
       });
 
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should fallback to empty phoneme for unknown private devocalize character", () => {
@@ -412,7 +412,7 @@ describe("PronunciationClassicalService", () => {
         word: ["?", "s"],
       });
 
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
 
     it("should fallback to empty phoneme in private devocalize else path", () => {
@@ -434,7 +434,7 @@ describe("PronunciationClassicalService", () => {
         word: ["?", "a"],
       });
 
-      expect(phonemes).toEqual([""]);
+      expect(phonemes).toStrictEqual([""]);
     });
   });
 });

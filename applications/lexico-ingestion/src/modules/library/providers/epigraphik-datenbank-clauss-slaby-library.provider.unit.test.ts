@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
 
@@ -8,10 +8,10 @@ import type { LoggerService } from "../../logger/logger.service";
 
 const { mkdirMock, readdirMock, readFileMock, writeFileMock } = vi.hoisted(
   () => ({
-    mkdirMock: vi.fn(),
-    readdirMock: vi.fn(),
-    readFileMock: vi.fn(),
-    writeFileMock: vi.fn(),
+    mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+    readdirMock: vi.fn<() => Promise<string[]>>(),
+    readFileMock: vi.fn<() => Promise<string>>(),
+    writeFileMock: vi.fn<() => Promise<void>>(),
   }),
 );
 
@@ -22,11 +22,11 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
+describe(EpigraphikDatenbankClaussSlabyLibraryProvider, () => {
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   } as unknown as LoggerService;
 
   const epigraphikDatenbankClaussSlabyLibraryProvider =
@@ -53,7 +53,7 @@ describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
 
     expect(author.slug).toBe("epigraphik-datenbank-clauss-slaby");
     expect(author.name).toBe("Epigraphik-Datenbank Clauss-Slaby");
-    expect(author.metadata).toEqual(
+    expect(author.metadata).toStrictEqual(
       expect.objectContaining({
         sourceUrl: "https://edcs.hist.uzh.ch/api/query",
       }),
@@ -88,7 +88,7 @@ describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
       provinceData,
     );
 
-    expect(provinceData.get("Roma")).toEqual(["**EDCS-1** AVE ROMA"]);
+    expect(provinceData.get("Roma")).toStrictEqual(["**EDCS-1** AVE ROMA"]);
   });
 
   it("should skip EDCS record when inscription text is missing", () => {
@@ -177,7 +177,7 @@ describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
     readdirMock.mockRejectedValueOnce(new Error("missing"));
     const missing = await readSourceChunkFiles("/tmp/missing");
 
-    expect(files).toEqual(["chunk-0.json", "chunk-1.json"]);
+    expect(files).toStrictEqual(["chunk-0.json", "chunk-1.json"]);
     expect(missing).toBeNull();
   });
 
@@ -407,7 +407,7 @@ describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
     const authors =
       await epigraphikDatenbankClaussSlabyLibraryProvider.ingest();
 
-    expect(authors).toEqual([]);
+    expect(authors).toStrictEqual([]);
   });
 
   it("should return empty when author filter does not match", async () => {
@@ -415,6 +415,6 @@ describe("EpigraphikDatenbankClaussSlabyLibraryProvider", () => {
       author: "other-provider",
     });
 
-    expect(authors).toEqual([]);
+    expect(authors).toStrictEqual([]);
   });
 });

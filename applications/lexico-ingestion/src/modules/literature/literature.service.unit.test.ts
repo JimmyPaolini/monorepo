@@ -11,103 +11,131 @@ import { LiteratureLibraryScanService } from "./literature-library-scan.service"
 import { LiteratureTextIngestionService } from "./literature-text-ingestion.service";
 import { LiteratureService } from "./literature.service";
 
-import type { LibraryEntry } from "./literature.types";
-
-describe("LiteratureService", () => {
-  let service: LiteratureService;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        LiteratureService,
-        { provide: getRepositoryToken(Author), useValue: {} },
-        { provide: getRepositoryToken(Line), useValue: {} },
-        { provide: NumeralsService, useValue: {} },
-        { provide: getRepositoryToken(Text), useValue: {} },
-        { provide: getRepositoryToken(Token), useValue: {} },
-        { provide: getRepositoryToken(Word), useValue: {} },
-        { provide: LiteratureLibraryScanService, useValue: {} },
-        { provide: LiteratureTextIngestionService, useValue: {} },
-        {
-          provide: LoggerService,
-          useValue: {
-            log: vi.fn(),
-            setContext: vi.fn(),
-            warn: vi.fn(),
-          },
-        },
-      ],
-    }).compile();
-
-    service = await module.resolve(LiteratureService);
-  });
-
-  it("is defined", () => {
-    expect(service).toBeDefined();
-  });
-});
+import type { IngestTextArguments, LibraryEntry } from "./literature.types";
 
 // cspell:ignore arma cano proemium virumque
 
 const { existsSyncMock, mkdirSyncMock, readFileMock } = vi.hoisted(() => ({
-  existsSyncMock: vi.fn(),
-  mkdirSyncMock: vi.fn(),
-  readFileMock: vi.fn(),
+  existsSyncMock: vi.fn<() => boolean>(),
+  mkdirSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+  readFileMock: vi.fn<() => Promise<string>>(),
+}));
+const { existsSync, mkdirSync } = vi.hoisted(() => ({
+  existsSync: existsSyncMock,
+  mkdirSync: mkdirSyncMock,
 }));
 
 vi.mock("node:fs", () => ({
-  existsSync: existsSyncMock,
-  mkdirSync: mkdirSyncMock,
+  existsSync,
+  mkdirSync,
 }));
 
 vi.mock("node:fs/promises", () => ({
   readFile: readFileMock,
 }));
 
-describe("LiteratureService", () => {
+describe(LiteratureService, () => {
+  let service: LiteratureService;
+
   const authorRepository = {
-    findOneOrFail: vi.fn(),
-    save: vi.fn(),
-    upsert: vi.fn(),
+    findOneOrFail: vi.fn<() => Promise<Author | undefined>>(),
+    save: vi.fn<(entity: Author) => Promise<Author>>(),
+    upsert:
+      vi.fn<(entity: unknown, conflictOptions: unknown) => Promise<unknown>>(),
   };
 
   const lineRepository = {
-    find: vi.fn(),
-    upsert: vi.fn(),
+    find: vi.fn<() => Promise<Line[]>>(),
+    upsert:
+      vi.fn<(entity: unknown, conflictOptions: unknown) => Promise<unknown>>(),
   };
 
   const textRepository = {
-    findOneOrFail: vi.fn(),
-    upsert: vi.fn(),
+    findOneOrFail: vi.fn<() => Promise<Text>>(),
+    upsert:
+      vi.fn<(entity: unknown, conflictOptions: unknown) => Promise<unknown>>(),
   };
 
   const tokenRepository = {
-    upsert: vi.fn(),
+    upsert:
+      vi.fn<(entity: unknown, conflictOptions: unknown) => Promise<unknown>>(),
   };
 
   const wordRepository = {
-    find: vi.fn(),
+    find: vi.fn<() => Promise<Word[]>>(),
   };
 
   const loggerService = {
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
 
   const numeralsService = {
-    toDecimal: vi.fn(),
+    toDecimal: vi.fn<(roman: string) => number>(),
   };
 
   const literatureLibraryScanService = {
-    scanLibrary: vi.fn(),
+    scanLibrary: vi.fn<() => Promise<LibraryEntry[]>>(),
   };
 
   const literatureTextIngestionService = {
-    ingestTextWithLogging: vi.fn(),
+    ingestTextWithLogging: vi.fn<
+      (
+        dependencies: {
+          ingestText: (args: IngestTextArguments) => Promise<void>;
+        },
+        argumentsObject: {
+          authorEntity: IngestTextArguments["author"];
+          authorSlug: string;
+          currentText: number;
+          logFilePath: string;
+          parentTexts: Map<string, Text>;
+          textEntry: LibraryEntry;
+          totalTexts: number;
+        },
+      ) => Promise<void>
+    >(),
   };
 
   let literatureService: LiteratureService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LiteratureService,
+        {
+          provide: getRepositoryToken(Author),
+          useValue: { findOneOrFail: vi.fn(), save: vi.fn(), upsert: vi.fn() },
+        },
+        {
+          provide: getRepositoryToken(Line),
+          useValue: { find: vi.fn(), upsert: vi.fn() },
+        },
+        { provide: NumeralsService, useValue: { toDecimal: vi.fn() } },
+        {
+          provide: getRepositoryToken(Text),
+          useValue: { findOneOrFail: vi.fn(), upsert: vi.fn() },
+        },
+        { provide: getRepositoryToken(Token), useValue: { upsert: vi.fn() } },
+        { provide: getRepositoryToken(Word), useValue: { find: vi.fn() } },
+        {
+          provide: LiteratureLibraryScanService,
+          useValue: { scanLibrary: vi.fn() },
+        },
+        {
+          provide: LiteratureTextIngestionService,
+          useValue: { ingestTextWithLogging: vi.fn() },
+        },
+        {
+          provide: LoggerService,
+          useValue: { log: vi.fn(), setContext: vi.fn(), warn: vi.fn() },
+        },
+      ],
+    }).compile();
+
+    service = await module.resolve(LiteratureService);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -116,8 +144,11 @@ describe("LiteratureService", () => {
     authorRepository.findOneOrFail.mockResolvedValue({
       id: "author-id",
       slug: "vergil",
-    });
-    authorRepository.save.mockResolvedValue(undefined);
+    } as unknown as Author);
+    authorRepository.save.mockResolvedValue({
+      id: "author-id",
+      slug: "vergil",
+    } as unknown as Author);
     authorRepository.upsert.mockResolvedValue(undefined);
 
     lineRepository.find.mockResolvedValue([]);
@@ -128,7 +159,7 @@ describe("LiteratureService", () => {
       id: "text-id",
       slug: "vergil/aeneid",
       title: "Aeneid",
-    });
+    } as unknown as Text);
     textRepository.upsert.mockResolvedValue(undefined);
 
     tokenRepository.upsert.mockResolvedValue(undefined);
@@ -164,6 +195,10 @@ describe("LiteratureService", () => {
     }).compile();
 
     literatureService = await moduleRef.resolve(LiteratureService);
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   it("should set logger context on construction", () => {
@@ -224,8 +259,8 @@ describe("LiteratureService", () => {
       type: "root",
     });
 
-    expect(parsed).toEqual({ text_metadata: { genre: "epic" } });
-    expect(fallback).toEqual({});
+    expect(parsed).toStrictEqual({ text_metadata: { genre: "epic" } });
+    expect(fallback).toStrictEqual({});
   });
 
   it("should return empty frontmatter when yaml node is missing", () => {
@@ -243,7 +278,7 @@ describe("LiteratureService", () => {
       type: "root",
     });
 
-    expect(parsed).toEqual({});
+    expect(parsed).toStrictEqual({});
   });
 
   it("should return empty frontmatter when yaml parses to null", () => {
@@ -261,7 +296,7 @@ describe("LiteratureService", () => {
       type: "root",
     });
 
-    expect(parsed).toEqual({});
+    expect(parsed).toStrictEqual({});
   });
 
   it("should parse labels from strong nodes", () => {
@@ -310,7 +345,10 @@ describe("LiteratureService", () => {
 
     expect(standard.label).toBe("4");
     expect(nonStandard.label).toBe("proemium");
-    expect(nonStandard.lineNodes[0]).toEqual({ type: "text", value: "cano" });
+    expect(nonStandard.lineNodes[0]).toStrictEqual({
+      type: "text",
+      value: "cano",
+    });
   });
 
   it("should keep oversized non-standard label as line content", () => {
@@ -345,7 +383,7 @@ describe("LiteratureService", () => {
     );
 
     expect(parsed.label).toBe("3");
-    expect(parsed.lineNodes[0]).toEqual({
+    expect(parsed.lineNodes[0]).toStrictEqual({
       type: "text",
       value: `${longLabel} `,
     });
@@ -382,7 +420,7 @@ describe("LiteratureService", () => {
     );
 
     expect(parsed.label).toBe("12");
-    expect(parsed.lineNodes[0]).toEqual({
+    expect(parsed.lineNodes[0]).toStrictEqual({
       type: "text",
       value: ") remainder ",
     });
@@ -419,7 +457,7 @@ describe("LiteratureService", () => {
     );
 
     expect(parsed.label).toBe("4");
-    expect(parsed.lineNodes[0]).toEqual({ type: "text", value: " next" });
+    expect(parsed.lineNodes[0]).toStrictEqual({ type: "text", value: " next" });
   });
 
   it("should parse roman numeral through parseNonStandardLabel", () => {
@@ -467,7 +505,7 @@ describe("LiteratureService", () => {
     ]);
 
     expect(parsed.label).toBe("");
-    expect(parsed.lineNodes[0]).toEqual({ type: "text", value: "tail " });
+    expect(parsed.lineNodes[0]).toStrictEqual({ type: "text", value: "tail " });
   });
 
   it("should preserve nodes when next parsed node is not text", () => {
@@ -504,7 +542,7 @@ describe("LiteratureService", () => {
     );
 
     expect(parsed.label).toBe("proemium");
-    expect(parsed.lineNodes[0]).toEqual({
+    expect(parsed.lineNodes[0]).toStrictEqual({
       children: [{ type: "text", value: "not-text-node" }],
       type: "strong",
     });
@@ -556,7 +594,7 @@ describe("LiteratureService", () => {
     wordRepository.find.mockResolvedValueOnce([
       { data: "amo", id: "word-1" },
       { data: "cano", id: "word-2" },
-    ]);
+    ] as unknown as Word[]);
 
     const getWordsCache = (
       literatureService as unknown as {
@@ -644,7 +682,7 @@ describe("LiteratureService", () => {
 
     const tokens = extractTokensFromLine(line, text, new Map());
 
-    expect(tokens).toEqual([]);
+    expect(tokens).toStrictEqual([]);
   });
 
   it("should leave token word null when normalized word is missing from map", () => {
@@ -714,7 +752,7 @@ describe("LiteratureService", () => {
       new Map([["amo", "word-9"]]),
     );
 
-    expect(tokens[0]?.word).toEqual({ id: "word-9" });
+    expect(tokens[0]?.word).toStrictEqual({ id: "word-9" });
   });
 
   it("should escape capitals using underscore notation", () => {
@@ -765,15 +803,15 @@ describe("LiteratureService", () => {
       wordMap,
     );
 
-    expect(firstTokens[0]?.word).toEqual({ id: "word-1" });
-    expect(secondTokens[0]?.word).toEqual({ id: "word-1" });
+    expect(firstTokens[0]?.word).toStrictEqual({ id: "word-1" });
+    expect(secondTokens[0]?.word).toStrictEqual({ id: "word-1" });
   });
 
   it("should upsert lines and then upsert token chunks", async () => {
     lineRepository.find.mockResolvedValueOnce([
       { data: "amo", id: "line-1", index: 0 },
       { data: "cano", id: "line-2", index: 1 },
-    ]);
+    ] as unknown as Line[]);
 
     const text = {
       author: { slug: "vergil" },
@@ -946,13 +984,13 @@ describe("LiteratureService", () => {
         id: "book-1-id",
         slug: "vergil/book-1",
         title: "Book 1",
-      })
+      } as unknown as Text)
       .mockResolvedValueOnce({
         author: { slug: "vergil" },
         id: "book-1-a-id",
         slug: "vergil/book-1/section-a",
         title: "Section A",
-      });
+      } as unknown as Text);
 
     const parentTexts = await (
       literatureService as unknown as {
@@ -962,7 +1000,7 @@ describe("LiteratureService", () => {
           texts: LibraryEntry[],
         ) => Promise<Map<string, Text>>;
       }
-    ).ensureParentTexts({ slug: "vergil" } as Author, "vergil", [
+    ).ensureParentTexts({ slug: "vergil" } as unknown as Author, "vergil", [
       {
         authorSlug: "vergil",
         fullPath: "/tmp/vergil/book-1/section-a.md",
@@ -984,13 +1022,13 @@ describe("LiteratureService", () => {
         id: "book-1-id",
         slug: "vergil/book-1",
         title: "Book 1",
-      })
+      } as unknown as Text)
       .mockResolvedValueOnce({
         author: { slug: "vergil" },
         id: "book-1-a-id",
         slug: "vergil/book-1/section-a",
         title: "Section A",
-      });
+      } as unknown as Text);
 
     const parentTexts = await (
       literatureService as unknown as {
@@ -1000,7 +1038,7 @@ describe("LiteratureService", () => {
           texts: LibraryEntry[],
         ) => Promise<Map<string, Text>>;
       }
-    ).ensureParentTexts({ slug: "vergil" } as Author, "vergil", [
+    ).ensureParentTexts({ slug: "vergil" } as unknown as Author, "vergil", [
       {
         authorSlug: "vergil",
         fullPath: "/tmp/vergil/book-1/section-a.md",
@@ -1063,7 +1101,7 @@ describe("LiteratureService", () => {
     authorRepository.findOneOrFail.mockResolvedValueOnce({
       id: "author-id",
       slug: "unknown-author",
-    });
+    } as unknown as Author);
 
     await (
       literatureService as unknown as {
@@ -1091,7 +1129,7 @@ describe("LiteratureService", () => {
       id: "text-id",
       slug: "vergil/book-1/aeneid",
       title: "Aeneid",
-    });
+    } as unknown as Text);
 
     await (
       literatureService as unknown as {
@@ -1104,7 +1142,7 @@ describe("LiteratureService", () => {
         }) => Promise<Text>;
       }
     ).saveTextToDatabase({
-      author: { slug: "vergil" } as Author,
+      author: { slug: "vergil" } as unknown as Author,
       frontmatterData: { text_metadata: { meter: "dactylic hexameter" } },
       parentText: { id: "parent-id", slug: "vergil/book-1" } as Text,
       textSlug: "vergil/book-1/aeneid",
@@ -1138,7 +1176,7 @@ describe("LiteratureService", () => {
       id: "text-id",
       slug: "vergil/aeneid",
       title: "Aeneid",
-    });
+    } as unknown as Text);
 
     readFileMock.mockResolvedValueOnce(
       `---\ntext_metadata:\n  genre: epic\n---\n\nI. arma virumque cano`,
@@ -1155,7 +1193,7 @@ describe("LiteratureService", () => {
         }) => Promise<void>;
       }
     ).ingestText({
-      author: { slug: "vergil" } as Author,
+      author: { slug: "vergil" } as unknown as Author,
       textPath: "/tmp/aeneid.md",
       textSlugName: "aeneid",
       title: "Aeneid",
@@ -1205,7 +1243,10 @@ describe("LiteratureService", () => {
     });
 
     expect(authorRepository.save).toHaveBeenCalledWith(author);
-    expect(author.metadata).toEqual({ era: "classical", region: "italy" });
+    expect(author.metadata).toStrictEqual({
+      era: "classical",
+      region: "italy",
+    });
     expect(ingestLinesSpy).toHaveBeenCalledTimes(1);
   });
 
@@ -1228,24 +1269,22 @@ describe("LiteratureService", () => {
     literatureTextIngestionService.ingestTextWithLogging.mockImplementation(
       async (
         ingestTextDelegate: {
-          ingestText: (args: {
-            author: Author;
-            parentText?: Text;
-            textPath: string;
-            textSlugName: string;
-            title: string;
-          }) => Promise<void>;
+          ingestText: (args: IngestTextArguments) => Promise<void>;
         },
         payload: {
           authorEntity: Author;
+          authorSlug: string;
+          currentText: number;
+          logFilePath: string;
           parentTexts: Map<string, Text>;
           textEntry: LibraryEntry;
+          totalTexts: number;
         },
       ) => {
         const parentText = payload.parentTexts.get("vergil");
         await ingestTextDelegate.ingestText({
           author: payload.authorEntity,
-          ...(parentText ? { parentText } : {}),
+          parentText,
           textPath: payload.textEntry.fullPath,
           textSlugName: payload.textEntry.textSlug,
           title: payload.textEntry.title,
@@ -1321,7 +1360,7 @@ describe("LiteratureService", () => {
     const result = await literatureService.scanLibrary();
     await literatureService.ingestAllAuthors(entries);
 
-    expect(result).toEqual(entries);
+    expect(result).toStrictEqual(entries);
     expect(ingestAuthorGroupSpy).toHaveBeenCalledTimes(2);
   });
 });

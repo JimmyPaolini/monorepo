@@ -4,7 +4,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsComposerService } from "./twilights-composer.service";
@@ -13,8 +13,9 @@ import { TwilightsService } from "./twilights.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
+import type { Moment } from "moment-timezone";
 
-describe("TwilightsService", () => {
+describe(TwilightsService, () => {
   let service: TwilightsService;
 
   beforeAll(async () => {
@@ -119,7 +120,7 @@ describe("TwilightsService", () => {
 
   describe("static constants", () => {
     it("exposes twilight thresholds and constants", () => {
-      expect(TwilightsService.twilights).toEqual([
+      expect(TwilightsService.twilights).toStrictEqual([
         "civil",
         "nautical",
         "astronomical",
@@ -145,23 +146,76 @@ describe("TwilightsService", () => {
 
     it("delegates builder methods to the wrapped service", () => {
       const mockBuilderService = {
-        buildAstronomicalDawnEvent: vi.fn().mockReturnValue(buildEvent("AD")),
-        buildAstronomicalDuskEvent: vi.fn().mockReturnValue(buildEvent("ADK")),
-        buildCivilDawnEvent: vi.fn().mockReturnValue(buildEvent("CD")),
-        buildCivilDuskEvent: vi.fn().mockReturnValue(buildEvent("CDK")),
-        buildNauticalDawnEvent: vi.fn().mockReturnValue(buildEvent("ND")),
-        buildNauticalDuskEvent: vi.fn().mockReturnValue(buildEvent("NDK")),
+        buildAstronomicalDawnEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("AD")),
+        buildAstronomicalDuskEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("ADK")),
+        buildCivilDawnEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("CD")),
+        buildCivilDuskEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("CDK")),
+        buildNauticalDawnEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("ND")),
+        buildNauticalDuskEvent: vi
+          .fn<(date: Moment) => Event>()
+          .mockReturnValue(buildEvent("NDK")),
       };
       const mockComposerService = {
-        buildDawnProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dawn")]),
-        buildDuskProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dusk")]),
-        pairAndBuild: vi.fn().mockReturnValue([buildEvent("pair")]),
+        buildDawnProgressiveEvents: vi
+          .fn<
+            (
+              astronomicalDawnEvents: Event[],
+              nauticalDawnEvents: Event[],
+              civilDawnEvents: Event[],
+            ) => Event[]
+          >()
+          .mockReturnValue([buildEvent("dawn")]),
+        buildDuskProgressiveEvents: vi
+          .fn<
+            (args: {
+              astronomicalDuskEvents: Event[];
+              civilDawnEvents: Event[];
+              civilDuskEvents: Event[];
+              nauticalDuskEvents: Event[];
+            }) => Event[]
+          >()
+          .mockReturnValue([buildEvent("dusk")]),
+        pairAndBuild: vi
+          .fn<
+            (args: {
+              beginnings: Event[];
+              builder: (beginning: Event, ending: Event) => Event;
+              endings: Event[];
+              label: string;
+            }) => Event[]
+          >()
+          .mockReturnValue([buildEvent("pair")]),
       };
       const mockDetectorService = {
         buildTwilightTransitionEvents: vi
-          .fn()
+          .fn<
+            (
+              elevations: {
+                currentElevation: number;
+                previousElevation: number;
+              },
+              date: Moment,
+            ) => Event[]
+          >()
           .mockReturnValue([buildEvent("transition")]),
-        getSunElevations: vi.fn().mockReturnValue({}),
+        getSunElevations: vi
+          .fn<
+            (
+              sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
+              minute: Moment,
+            ) => { currentElevation: number; previousElevation: number }
+          >()
+          .mockReturnValue({ currentElevation: 0, previousElevation: 0 }),
       };
       const delegatedService = new TwilightsService(
         mockBuilderService as never,
@@ -170,27 +224,27 @@ describe("TwilightsService", () => {
       );
       const timestamp = moment.utc("2024-03-21T06:00:00.000Z");
 
-      expect(delegatedService.buildAstronomicalDawnEvent(timestamp)).toEqual(
-        buildEvent("AD"),
-      );
-      expect(delegatedService.buildAstronomicalDuskEvent(timestamp)).toEqual(
-        buildEvent("ADK"),
-      );
-      expect(delegatedService.buildCivilDawnEvent(timestamp)).toEqual(
+      expect(
+        delegatedService.buildAstronomicalDawnEvent(timestamp),
+      ).toStrictEqual(buildEvent("AD"));
+      expect(
+        delegatedService.buildAstronomicalDuskEvent(timestamp),
+      ).toStrictEqual(buildEvent("ADK"));
+      expect(delegatedService.buildCivilDawnEvent(timestamp)).toStrictEqual(
         buildEvent("CD"),
       );
-      expect(delegatedService.buildCivilDuskEvent(timestamp)).toEqual(
+      expect(delegatedService.buildCivilDuskEvent(timestamp)).toStrictEqual(
         buildEvent("CDK"),
       );
-      expect(delegatedService.buildNauticalDawnEvent(timestamp)).toEqual(
+      expect(delegatedService.buildNauticalDawnEvent(timestamp)).toStrictEqual(
         buildEvent("ND"),
       );
-      expect(delegatedService.buildNauticalDuskEvent(timestamp)).toEqual(
+      expect(delegatedService.buildNauticalDuskEvent(timestamp)).toStrictEqual(
         buildEvent("NDK"),
       );
-      expect(mockBuilderService.buildAstronomicalDawnEvent).toHaveBeenCalledWith(
-        timestamp,
-      );
+      expect(
+        mockBuilderService.buildAstronomicalDawnEvent,
+      ).toHaveBeenCalledWith(timestamp);
       expect(mockBuilderService.buildNauticalDuskEvent).toHaveBeenCalledWith(
         timestamp,
       );
@@ -198,24 +252,65 @@ describe("TwilightsService", () => {
 
     it("delegates detection and progressive pairing", () => {
       const mockBuilderService = {
-        buildAstronomicalDawnEvent: vi.fn(),
-        buildAstronomicalDuskEvent: vi.fn(),
-        buildCivilDawnEvent: vi.fn(),
-        buildCivilDuskEvent: vi.fn(),
-        buildNauticalDawnEvent: vi.fn(),
-        buildNauticalDuskEvent: vi.fn(),
+        buildAstronomicalDawnEvent: vi.fn<(date: Moment) => Event>(),
+        buildAstronomicalDuskEvent: vi.fn<(date: Moment) => Event>(),
+        buildCivilDawnEvent: vi.fn<(date: Moment) => Event>(),
+        buildCivilDuskEvent: vi.fn<(date: Moment) => Event>(),
+        buildNauticalDawnEvent: vi.fn<(date: Moment) => Event>(),
+        buildNauticalDuskEvent: vi.fn<(date: Moment) => Event>(),
       };
       const mockTransitionEvents = [buildEvent("transition")];
       const mockComposerService = {
-        buildDawnProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dawn")]),
-        buildDuskProgressiveEvents: vi.fn().mockReturnValue([buildEvent("dusk")]),
-        pairAndBuild: vi.fn().mockReturnValue([buildEvent("pair")]),
+        buildDawnProgressiveEvents: vi
+          .fn<
+            (
+              astronomicalDawnEvents: Event[],
+              nauticalDawnEvents: Event[],
+              civilDawnEvents: Event[],
+            ) => Event[]
+          >()
+          .mockReturnValue([buildEvent("dawn")]),
+        buildDuskProgressiveEvents: vi
+          .fn<
+            (args: {
+              astronomicalDuskEvents: Event[];
+              civilDawnEvents: Event[];
+              civilDuskEvents: Event[];
+              nauticalDuskEvents: Event[];
+            }) => Event[]
+          >()
+          .mockReturnValue([buildEvent("dusk")]),
+        pairAndBuild: vi
+          .fn<
+            (args: {
+              beginnings: Event[];
+              builder: (beginning: Event, ending: Event) => Event;
+              endings: Event[];
+              label: string;
+            }) => Event[]
+          >()
+          .mockReturnValue([buildEvent("pair")]),
       };
       const mockDetectorService = {
         buildTwilightTransitionEvents: vi
-          .fn()
+          .fn<
+            (
+              elevations: {
+                currentElevation: number;
+                previousElevation: number;
+              },
+              date: Moment,
+            ) => Event[]
+          >()
           .mockReturnValue(mockTransitionEvents),
-        getSunElevations: vi.fn().mockReturnValue({}),
+        getSunElevations: vi
+          .fn<
+            (
+              sunAzimuthElevationEphemeris: AzimuthElevationEphemeris,
+              minute: Moment,
+            ) => { currentElevation: number; previousElevation: number }
+          >()
+          .mockReturnValue({ currentElevation: 0, previousElevation: 0 }),
       };
       const delegatedService = new TwilightsService(
         mockBuilderService as never,
@@ -229,7 +324,7 @@ describe("TwilightsService", () => {
 
       expect(
         delegatedService.detect({ minute, sunAzimuthElevationEphemeris }),
-      ).toEqual(mockTransitionEvents);
+      ).toStrictEqual(mockTransitionEvents);
       expect(mockDetectorService.getSunElevations).toHaveBeenCalledWith(
         sunAzimuthElevationEphemeris,
         minute,
@@ -251,7 +346,11 @@ describe("TwilightsService", () => {
             summary: "Astronomical Dusk",
           },
         ]),
-      ).toEqual([buildEvent("dawn"), buildEvent("dusk"), buildEvent("pair")]);
+      ).toStrictEqual([
+        buildEvent("dawn"),
+        buildEvent("dusk"),
+        buildEvent("pair"),
+      ]);
     });
   });
 });

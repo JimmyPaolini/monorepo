@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import { Lexeme } from "@monorepo/lexico-entities";
 
@@ -10,7 +10,7 @@ interface ManualServiceInstance {
   ingestRomanNumerals: () => Promise<void>;
 }
 
-describe("ManualService edge branches", () => {
+describe("manualService edge branches", () => {
   afterEach(() => {
     vi.resetModules();
     vi.doUnmock("./manual.constants");
@@ -51,7 +51,7 @@ describe("ManualService edge branches", () => {
     });
 
     expect(result.lemma).toBe("abbr");
-    expect(result.principalParts).toEqual([]);
+    expect(result.principalParts).toStrictEqual([]);
   });
 
   it("handles templates with inflection object that has no gender field", async () => {
@@ -74,14 +74,18 @@ describe("ManualService edge branches", () => {
 
     const service = new ManualService(
       {
-        delete: vi.fn(async () => await Promise.resolve()),
-        save: vi.fn(async (lexeme: Lexeme) => await Promise.resolve(lexeme)),
+        delete: vi.fn<() => Promise<void>>(async () => await Promise.resolve()),
+        save: vi.fn<(lexeme: Lexeme) => Promise<Lexeme>>(
+          async (lexeme: Lexeme) => await Promise.resolve(lexeme),
+        ),
       } as never,
       {
-        ingestLexemeWords: vi.fn(async () => await Promise.resolve()),
+        ingestLexemeWords: vi.fn<() => Promise<void>>(
+          async () => await Promise.resolve(),
+        ),
       } as never,
       {
-        toRoman: vi.fn(String),
+        toRoman: vi.fn<(value: number | string) => string>(String),
       } as never,
     ) as unknown as ManualServiceInstance;
 
@@ -90,7 +94,7 @@ describe("ManualService edge branches", () => {
     });
 
     expect(result.lemma).toBe("abbr");
-    expect(result.inflection).toEqual({});
+    expect(result.inflection).toStrictEqual({});
   });
 
   it("skips principal-part assignment when roman template has no primary part", async () => {

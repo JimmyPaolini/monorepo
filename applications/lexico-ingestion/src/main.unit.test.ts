@@ -1,8 +1,8 @@
 import { CommandFactory } from "nest-commander";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
-const setContextMock = vi.fn();
-const loggerConstructorMock = vi.fn();
+const setContextMock = vi.fn<(context: string) => void>();
+const loggerConstructorMock = vi.fn<() => void>();
 
 vi.mock("./modules/logger/logger.service", () => ({
   LoggerService: class MockLoggerService {

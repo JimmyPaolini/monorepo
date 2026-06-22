@@ -9,7 +9,7 @@ import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrograd
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { ProgressiveService } from "./progressive.service";
 import { ProgressiveUtilities } from "./progressive.utilities";
@@ -26,18 +26,34 @@ function makeEvent(summary: string): Event {
   };
 }
 
-describe("ProgressiveService", () => {
+describe(ProgressiveService, () => {
   let service: ProgressiveService;
   let utilitiesService: ProgressiveUtilities;
 
-  const annualSolarCycleMock = { detectProgressive: vi.fn() };
-  const aspectsMock = { detectProgressive: vi.fn() };
-  const eclipsesMock = { detectProgressive: vi.fn() };
-  const ingressesMock = { detectProgressive: vi.fn() };
-  const monthlyLunarCycleMock = { detectProgressive: vi.fn() };
-  const phasesMock = { detectProgressive: vi.fn() };
-  const retrogradesMock = { detectProgressive: vi.fn() };
-  const twilightsMock = { detectProgressive: vi.fn() };
+  const annualSolarCycleMock = {
+    detectProgressive: vi.fn<AnnualSolarCycleService["detectProgressive"]>(),
+  };
+  const aspectsMock = {
+    detectProgressive: vi.fn<AspectsService["detectProgressive"]>(),
+  };
+  const eclipsesMock = {
+    detectProgressive: vi.fn<EclipsesService["detectProgressive"]>(),
+  };
+  const ingressesMock = {
+    detectProgressive: vi.fn<IngressesService["detectProgressive"]>(),
+  };
+  const monthlyLunarCycleMock = {
+    detectProgressive: vi.fn<MonthlyLunarCycleService["detectProgressive"]>(),
+  };
+  const phasesMock = {
+    detectProgressive: vi.fn<PhasesService["detectProgressive"]>(),
+  };
+  const retrogradesMock = {
+    detectProgressive: vi.fn<RetrogradesService["detectProgressive"]>(),
+  };
+  const twilightsMock = {
+    detectProgressive: vi.fn<TwilightsService["detectProgressive"]>(),
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -81,7 +97,7 @@ describe("ProgressiveService", () => {
 
       const result = service.detect([]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("aggregates events from all sub-services into a single flat array", () => {
@@ -149,7 +165,7 @@ describe("ProgressiveService", () => {
     it("returns an empty array when both inputs are empty", () => {
       const result = utilitiesService.pairProgressiveEvents([], [], "test");
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("pairs beginnings with their corresponding endings", () => {
@@ -164,7 +180,7 @@ describe("ProgressiveService", () => {
         "test",
       );
 
-      expect(result).toEqual([
+      expect(result).toStrictEqual([
         [beginning1, ending1],
         [beginning2, ending2],
       ]);
@@ -182,13 +198,13 @@ describe("ProgressiveService", () => {
       );
 
       expect(result).toHaveLength(1);
-      expect(result[0]).toEqual([beginning1, ending1]);
+      expect(result[0]).toStrictEqual([beginning1, ending1]);
     });
 
     it("emits a console warning when beginning and ending counts differ", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
-        .mockImplementation(() => undefined);
+        .mockReturnValue(undefined);
 
       utilitiesService.pairProgressiveEvents(
         [makeEvent("a"), makeEvent("b")],
@@ -204,7 +220,7 @@ describe("ProgressiveService", () => {
     it("does not warn when counts are equal", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
-        .mockImplementation(() => undefined);
+        .mockReturnValue(undefined);
 
       utilitiesService.pairProgressiveEvents(
         [makeEvent("a")],

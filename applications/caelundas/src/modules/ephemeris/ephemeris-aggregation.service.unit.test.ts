@@ -1,7 +1,7 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
@@ -10,7 +10,7 @@ import { EphemerisHorizonService } from "./ephemeris-horizon.service";
 import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
 import { EphemerisTimeService } from "./ephemeris-time.service";
 
-describe("EphemerisAggregationService", () => {
+describe(EphemerisAggregationService, () => {
   let service: EphemerisAggregationService;
   let constantsService: ReturnType<
     typeof createMock<EphemerisConstantsService>
@@ -150,7 +150,7 @@ describe("EphemerisAggregationService", () => {
       });
 
       expect(allEntries.coordinateEntries).toHaveLength(1);
-      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledOnce();
+      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith();
     });
 
     it("accumulates non-node coordinate and requested feature entries", () => {

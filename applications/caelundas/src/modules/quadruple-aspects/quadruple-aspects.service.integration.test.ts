@@ -26,7 +26,7 @@ const service = new QuadrupleAspectsService(
 );
 
 describe("quadruple-aspects.events integration", () => {
-  describe("Grand Cross pattern detection", () => {
+  describe("grand Cross pattern detection", () => {
     it("detects forming Grand Cross when the final square completes the pattern", () => {
       const currentMinute = moment.utc("2024-06-15T14:30:00.000Z");
 
@@ -66,7 +66,7 @@ describe("quadruple-aspects.events integration", () => {
       );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("➕");
-      expect(events[0]?.start).toEqual(currentMinute);
+      expect(events[0]?.start).toStrictEqual(currentMinute);
     });
 
     it("detects dissolving Grand Cross when a required square ends", () => {
@@ -103,7 +103,7 @@ describe("quadruple-aspects.events integration", () => {
         "Jupiter, Mars, Moon, Sun grand cross dissolving",
       );
       expect(events[0]?.summary).toContain("⬅️");
-      expect(events[0]?.start).toEqual(
+      expect(events[0]?.start).toStrictEqual(
         currentMinute.clone().subtract(1, "minute"),
       );
     });
@@ -158,8 +158,8 @@ describe("quadruple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingStart);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingStart);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingStart);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingStart);
       expect(progressiveEvents[0]?.categories).toContain("Quadruple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Grand Cross");
       expect(progressiveEvents[0]?.categories).toContain("Jupiter");
@@ -176,7 +176,7 @@ describe("quadruple-aspects.events integration", () => {
     });
   });
 
-  describe("Kite pattern detection", () => {
+  describe("kite pattern detection", () => {
     it("detects forming Kite when the opposition to the focal body completes the pattern", () => {
       const currentMinute = moment.utc("2024-07-20T10:00:00.000Z");
 
@@ -215,7 +215,7 @@ describe("quadruple-aspects.events integration", () => {
       );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("🪁");
-      expect(events[0]?.start).toEqual(currentMinute);
+      expect(events[0]?.start).toStrictEqual(currentMinute);
     });
 
     it("detects dissolving Kite when the focal opposition ends", () => {
@@ -251,7 +251,7 @@ describe("quadruple-aspects.events integration", () => {
         "Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
       );
       expect(events[0]?.summary).toContain("⬅️");
-      expect(events[0]?.start).toEqual(
+      expect(events[0]?.start).toStrictEqual(
         currentMinute.clone().subtract(1, "minute"),
       );
     });
@@ -308,8 +308,8 @@ describe("quadruple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingStart);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingStart);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingStart);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingStart);
       expect(progressiveEvents[0]?.categories).toContain("Quadruple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Kite");
       expect(progressiveEvents[0]?.categories).toContain("Venus");
@@ -324,7 +324,7 @@ describe("quadruple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge case scenarios", () => {
+  describe("edge case scenarios", () => {
     it("does not detect Grand Cross with only 1 opposition (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-09-01T08:00:00.000Z");
 
@@ -347,6 +347,7 @@ describe("quadruple-aspects.events integration", () => {
       const grandCrossEvents = events.filter((e) =>
         e.categories.includes("Grand Cross"),
       );
+
       expect(grandCrossEvents).toHaveLength(0);
     });
 
@@ -368,6 +369,7 @@ describe("quadruple-aspects.events integration", () => {
       });
 
       const kiteEvents = events.filter((e) => e.categories.includes("Kite"));
+
       expect(kiteEvents).toHaveLength(0);
     });
 
@@ -400,6 +402,7 @@ describe("quadruple-aspects.events integration", () => {
       const grandCrossEvents = events.filter((e) =>
         e.categories.includes("Grand Cross"),
       );
+
       expect(grandCrossEvents).toHaveLength(0);
     });
   });

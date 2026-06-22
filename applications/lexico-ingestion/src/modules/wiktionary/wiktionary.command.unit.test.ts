@@ -9,35 +9,12 @@ import { WiktionaryCommand } from "./wiktionary.command";
 
 import type { AnyNode, Element } from "domhandler";
 
-describe("WiktionaryCommand", () => {
-  let command: WiktionaryCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        WiktionaryCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(WiktionaryCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const { appendFileSyncMock, existsSyncMock, mkdirSyncMock, writeFileSyncMock } =
   vi.hoisted(() => ({
-    appendFileSyncMock: vi.fn(),
-    existsSyncMock: vi.fn(),
-    mkdirSyncMock: vi.fn(),
-    writeFileSyncMock: vi.fn(),
+    appendFileSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+    existsSyncMock: vi.fn<() => boolean>(),
+    mkdirSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+    writeFileSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
   }));
 
 vi.mock("node:fs", () => ({
@@ -63,8 +40,24 @@ function createLoggerServiceMock(): {
   };
 }
 
-describe("WiktionaryCommand", () => {
+describe(WiktionaryCommand, () => {
+  let command: WiktionaryCommand;
   let wiktionaryCommand: WiktionaryCommand;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        WiktionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(WiktionaryCommand);
+  });
 
   const getRequiredElement = (element: Element | undefined): Element => {
     if (!element) {
@@ -99,6 +92,11 @@ describe("WiktionaryCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
+    expect.hasAssertions();
     expect(wiktionaryCommand).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("WiktionaryCommand");
   });
@@ -355,7 +353,7 @@ describe("WiktionaryCommand", () => {
       }
     ).fetchCategoryPage("/wiki/start");
 
-    expect(page("#mw-pages").length).toBe(1);
+    expect(page("#mw-pages")).toHaveLength(1);
   });
 
   it("should retry after rate limit and then return success response", async () => {
@@ -384,6 +382,7 @@ describe("WiktionaryCommand", () => {
 
     expect(response.status).toBe(200);
     expect(fetchMock).toHaveBeenCalledTimes(2);
+
     vi.useRealTimers();
   });
 
@@ -420,7 +419,8 @@ describe("WiktionaryCommand", () => {
 
     expect(response.status).toBe(429);
     expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(loggerService.warn).toHaveBeenCalled();
+    expect(loggerService.warn).toHaveBeenCalledWith();
+
     vi.useRealTimers();
   });
 
@@ -452,6 +452,7 @@ describe("WiktionaryCommand", () => {
     expect(loggerService.warn).toHaveBeenCalledWith(
       expect.stringContaining("60.0s"),
     );
+
     vi.useRealTimers();
   });
 
@@ -643,6 +644,7 @@ describe("WiktionaryCommand", () => {
     await promise;
 
     expect(ingestWordSpy).toHaveBeenCalledWith("amo", "/wiki/amo", "lemma");
+
     vi.useRealTimers();
   });
 
@@ -910,6 +912,7 @@ describe("WiktionaryCommand", () => {
     await processPromise;
 
     expect(ingestWordSpy).toHaveBeenCalledWith("amo", "", "lemma");
+
     vi.useRealTimers();
   });
 

@@ -1,14 +1,14 @@
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { ProgressiveUtilities } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("ProgressiveUtilities", () => {
+describe(ProgressiveUtilities, () => {
   const logger = {
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(message: string) => void>(),
   };
   const service = new ProgressiveUtilities(logger as never);
 
@@ -30,7 +30,7 @@ describe("ProgressiveUtilities", () => {
 
     const pairs = service.pairProgressiveEvents([beginning], [ending], "matching");
 
-    expect(pairs).toEqual([[beginning, ending]]);
+    expect(pairs).toStrictEqual([[beginning, ending]]);
     expect(logger.warn).not.toHaveBeenCalled();
   });
 
@@ -46,7 +46,7 @@ describe("ProgressiveUtilities", () => {
       "unequal",
     );
 
-    expect(pairs).toEqual([[beginning, ending]]);
+    expect(pairs).toStrictEqual([[beginning, ending]]);
     expect(logger.warn).toHaveBeenCalledWith(
       'pairProgressiveEvents: unequal counts for "unequal": 2 beginnings, 3 endings',
     );

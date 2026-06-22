@@ -1,23 +1,26 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 import { EphemerisHorizonService } from "./ephemeris-horizon.service";
 import { EphemerisTimeService } from "./ephemeris-time.service";
 
+import type { azalt } from "sweph";
 import type * as Sweph from "sweph";
 
 vi.mock("sweph", async (importOriginal) => {
   const original = await importOriginal<typeof Sweph>();
   return {
     ...original,
-    azalt: vi.fn().mockReturnValue([180, 45, 44.8]),
+    azalt: vi
+      .fn<(...args: Parameters<typeof azalt>) => ReturnType<typeof azalt>>()
+      .mockReturnValue([180, 45, 44.8]),
   };
 });
 
-describe("EphemerisHorizonService", () => {
+describe(EphemerisHorizonService, () => {
   let service: EphemerisHorizonService;
   let coordinateService: ReturnType<
     typeof createMock<EphemerisCoordinateService>
@@ -79,7 +82,7 @@ describe("EphemerisHorizonService", () => {
         observerLongitude: -74.006,
       });
 
-      expect(result).toEqual({ azimuth: 180, elevation: 44.8 });
+      expect(result).toStrictEqual({ azimuth: 180, elevation: 44.8 });
     });
   });
 
@@ -98,6 +101,7 @@ describe("EphemerisHorizonService", () => {
       });
 
       expect(Object.keys(result)).toHaveLength(2);
+
       for (const value of Object.values(result)) {
         expect(value.azimuth).toBe(180);
         expect(value.elevation).toBe(44.8);

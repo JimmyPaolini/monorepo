@@ -16,7 +16,7 @@ const PROJECT_NAME = "my-app";
 const PROJECT_ROOT = "applications/my-app";
 const MODULES_DIR = `${PROJECT_ROOT}/src/modules`;
 
-describe("generateNestjsGraphqlModule", () => {
+describe(generateNestjsGraphqlModule, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -36,13 +36,14 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const base = `${MODULES_DIR}/post`;
-      expect(tree.exists(`${base}/post.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.resolver.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.resolver.unit.test.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.entities.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.factories.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.types.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.constants.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/post.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.resolver.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.resolver.unit.test.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.entities.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.factories.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.types.ts`)).toBe(true);
+      expect(tree.exists(`${base}/post.constants.ts`)).toBe(true);
     });
 
     it("should handle multi-word kebab-case names", async () => {
@@ -52,8 +53,9 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const base = `${MODULES_DIR}/blog-post`;
-      expect(tree.exists(`${base}/blog-post.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/blog-post.resolver.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/blog-post.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/blog-post.resolver.ts`)).toBe(true);
     });
 
     it("should use PascalCase class names in generated module file", async () => {
@@ -63,6 +65,7 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.module.ts`, "utf8");
+
       expect(content).toContain("PostService");
       expect(content).toContain("PostResolver");
       expect(content).toContain("PostModule");
@@ -75,6 +78,7 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.resolver.ts`, "utf8");
+
       expect(content).toContain("PostResolver");
       expect(content).toContain("PostService");
     });
@@ -86,6 +90,7 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.entities.ts`, "utf8");
+
       expect(content).toContain("Post");
     });
 
@@ -99,6 +104,7 @@ describe("generateNestjsGraphqlModule", () => {
         `${MODULES_DIR}/post/post.factories.ts`,
         "utf8",
       );
+
       expect(content).toContain("CreatePostInput");
       expect(content).toContain("UpdatePostInput");
       expect(content).toContain("DeletePostInput");
@@ -112,6 +118,7 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.module.ts`, "utf8");
+
       expect(content).toContain("TODO: Document the post module.");
     });
 
@@ -139,7 +146,8 @@ describe("generateNestjsGraphqlModule", () => {
         instance: resolverContent,
         template: templateContent,
       });
-      expect(result.errors).toEqual([]);
+
+      expect(result.errors).toStrictEqual([]);
     });
   });
 

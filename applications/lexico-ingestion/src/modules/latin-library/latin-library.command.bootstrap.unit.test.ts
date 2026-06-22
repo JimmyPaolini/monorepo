@@ -1,16 +1,16 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import type { LoggerService } from "../logger/logger.service";
 
-describe("LatinLibraryCommand constructor bootstrap", () => {
+describe("latinLibraryCommand constructor bootstrap", () => {
   afterEach(() => {
     vi.resetModules();
     vi.doUnmock("node:fs");
   });
 
   it("creates the output directory when it does not exist", async () => {
-    const existsSync = vi.fn(() => false);
-    const mkdirSync = vi.fn();
+    const existsSync = vi.fn<() => boolean>(() => false);
+    const mkdirSync = vi.fn<() => void>();
 
     vi.doMock("node:fs", () => ({
       existsSync,
@@ -20,10 +20,10 @@ describe("LatinLibraryCommand constructor bootstrap", () => {
     const { LatinLibraryCommand } = await import("./latin-library.command");
 
     const logger = {
-      error: vi.fn(),
-      log: vi.fn(),
-      setContext: vi.fn(),
-      warn: vi.fn(),
+      error: vi.fn<(...parameters: unknown[]) => void>(),
+      log: vi.fn<(...parameters: unknown[]) => void>(),
+      setContext: vi.fn<(context: string) => void>(),
+      warn: vi.fn<(...parameters: unknown[]) => void>(),
     };
 
     const command = new LatinLibraryCommand(logger as unknown as LoggerService);

@@ -7,14 +7,14 @@ import { StelliumService } from "./stellium.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("StelliumService", () => {
+describe(StelliumService, () => {
   let service: StelliumService;
   let privateService: {
     determineCompoundPhaseFromSnapshots: (args: {
       checkPatternExists: (edges: AspectBodies[]) => boolean;
       currentAspectBodies: AspectBodies[];
       currentMinute: unknown;
-      patternBodies: Array<"moon" | "sun">;
+      patternBodies: ("moon" | "sun")[];
       previousAspectBodies: AspectBodies[];
     }) => null | { eventMinute: { toISOString: () => string }; phase: string };
     phaseEmojiFor: (phase: "dissolving" | "forming" | "perfective") => string;
@@ -33,7 +33,7 @@ describe("StelliumService", () => {
   });
 
   describe("detect", () => {
-    describe("Stellium composition", () => {
+    describe("stellium composition", () => {
       it("does not generate perfective Stellium events (only forming/dissolving)", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
@@ -83,7 +83,9 @@ describe("StelliumService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const stellium = events.find((e) => e.categories.includes("Stellium"));
+
         expect(stellium).toBeDefined();
         expect(stellium?.categories).toContain("Forming");
         expect(stellium?.categories).toContain("4 Body");
@@ -199,7 +201,9 @@ describe("StelliumService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const stellium = events.find((e) => e.categories.includes("Stellium"));
+
         expect(stellium).toBeDefined();
         expect(stellium?.categories).toContain("Astronomy");
         expect(stellium?.categories).toContain("Astrology");
@@ -239,7 +243,9 @@ describe("StelliumService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const stellium = events.find((e) => e.categories.includes("5 Body"));
+
         expect(stellium).toBeDefined();
         expect(stellium?.categories).toContain("Stellium");
         expect(stellium?.categories).toContain("5 Body");
@@ -377,13 +383,20 @@ describe("StelliumService", () => {
         summary: "⬅️ ✨ ☉-☽-♂-♀ Mars, Moon, Sun, Venus stellium dissolving",
       };
 
-      const progressiveEvents = service.detectProgressive([formingEvent, dissolvingEvent]);
+      const progressiveEvents = service.detectProgressive([
+        formingEvent,
+        dissolvingEvent,
+      ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingEvent.start);
-      expect(progressiveEvents[0]?.summary).toContain("Mars, Moon, Sun, Venus stellium");
-      expect(progressiveEvents[0]?.description).toBe("Mars, Moon, Sun, Venus stellium");
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingEvent.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingEvent.start);
+      expect(progressiveEvents[0]?.summary).toContain(
+        "Mars, Moon, Sun, Venus stellium",
+      );
+      expect(progressiveEvents[0]?.description).toBe(
+        "Mars, Moon, Sun, Venus stellium",
+      );
       expect(progressiveEvents[0]?.categories).not.toContain("Forming");
       expect(progressiveEvents[0]?.categories).not.toContain("Dissolving");
     });
@@ -517,10 +530,18 @@ describe("StelliumService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(2);
-      expect(progressiveEvents[0]?.start).toEqual(moment.utc("2024-03-21T10:00:00.000Z"));
-      expect(progressiveEvents[0]?.end).toEqual(moment.utc("2024-03-21T14:00:00.000Z"));
-      expect(progressiveEvents[1]?.start).toEqual(moment.utc("2024-03-22T10:00:00.000Z"));
-      expect(progressiveEvents[1]?.end).toEqual(moment.utc("2024-03-22T14:00:00.000Z"));
+      expect(progressiveEvents[0]?.start).toStrictEqual(
+        moment.utc("2024-03-21T10:00:00.000Z"),
+      );
+      expect(progressiveEvents[0]?.end).toStrictEqual(
+        moment.utc("2024-03-21T14:00:00.000Z"),
+      );
+      expect(progressiveEvents[1]?.start).toStrictEqual(
+        moment.utc("2024-03-22T10:00:00.000Z"),
+      );
+      expect(progressiveEvents[1]?.end).toStrictEqual(
+        moment.utc("2024-03-22T14:00:00.000Z"),
+      );
     });
 
     it("handles different body combinations separately", () => {
@@ -597,7 +618,8 @@ describe("StelliumService", () => {
           description: "Jupiter, Mars, Saturn, Sun stellium dissolving",
           end: moment.utc("2024-03-21T15:00:00.000Z"),
           start: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary: "⬅️ ✨ ☉-♂-♃-♄ Jupiter, Mars, Saturn, Sun stellium dissolving",
+          summary:
+            "⬅️ ✨ ☉-♂-♃-♄ Jupiter, Mars, Saturn, Sun stellium dissolving",
         },
       ];
 
@@ -667,7 +689,8 @@ describe("StelliumService", () => {
           description: "Jupiter, Mars, Moon, Sun, Venus stellium forming",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
-          summary: "➡️ ✨ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus stellium forming",
+          summary:
+            "➡️ ✨ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus stellium forming",
         },
         {
           categories: [
@@ -686,7 +709,8 @@ describe("StelliumService", () => {
           description: "Jupiter, Mars, Moon, Sun, Venus stellium dissolving",
           end: moment.utc("2024-03-21T15:00:00.000Z"),
           start: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary: "⬅️ ✨ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus stellium dissolving",
+          summary:
+            "⬅️ ✨ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus stellium dissolving",
         },
       ];
 

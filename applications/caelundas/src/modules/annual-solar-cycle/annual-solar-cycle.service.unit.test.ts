@@ -5,7 +5,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { AnnualSolarCycleEventsService } from "./annual-solar-cycle-events.service";
 import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
@@ -18,11 +18,11 @@ import type {
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("AnnualSolarCycleService", () => {
+describe(AnnualSolarCycleService, () => {
   let service: AnnualSolarCycleService;
 
   beforeAll(async () => {
@@ -132,10 +132,12 @@ describe("AnnualSolarCycleService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const aphelionEvent = events.find((e) =>
         e.description.includes("Aphelion"),
       );
-      expect(aphelionEvent).toEqual(
+
+      expect(aphelionEvent).toStrictEqual(
         expect.objectContaining({ summary: "☀️ ❄️ Solar Aphelion" }),
       );
     });
@@ -164,10 +166,12 @@ describe("AnnualSolarCycleService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const perihelionEvent = events.find((e) =>
         e.description.includes("Perihelion"),
       );
-      expect(perihelionEvent).toEqual(
+
+      expect(perihelionEvent).toStrictEqual(
         expect.objectContaining({ summary: "☀️ 🔥 Solar Perihelion" }),
       );
     });
@@ -230,10 +234,12 @@ describe("AnnualSolarCycleService", () => {
       ]);
 
       expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+
       const advancingDuration = progressiveEvents.find((e) =>
         e.description.includes("Advancing"),
       );
-      expect(advancingDuration).toEqual(
+
+      expect(advancingDuration).toStrictEqual(
         expect.objectContaining({
           categories: expect.arrayContaining(["Advancing"]),
           description: "Solar Advancing (Aphelion to Perihelion)",
@@ -278,10 +284,12 @@ describe("AnnualSolarCycleService", () => {
       ]);
 
       expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+
       const retreatingDuration = progressiveEvents.find((e) =>
         e.description.includes("Retreating"),
       );
-      expect(retreatingDuration).toEqual(
+
+      expect(retreatingDuration).toStrictEqual(
         expect.objectContaining({
           categories: expect.arrayContaining(["Retreating"]),
           description: "Solar Retreating (Perihelion to Aphelion)",

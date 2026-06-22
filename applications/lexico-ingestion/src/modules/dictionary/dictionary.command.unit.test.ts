@@ -11,45 +11,10 @@ import { TranslationsService } from "../translations/translations.service";
 
 import { DictionaryCommand } from "./dictionary.command";
 
-describe("DictionaryCommand", () => {
-  let command: DictionaryCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        DictionaryCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-        {
-          provide: LexemesService,
-          useValue: createLexemesServiceMock(),
-        },
-        {
-          provide: TranslationsService,
-          useValue: createTranslationsServiceMock(),
-        },
-        {
-          provide: ManualService,
-          useValue: createManualServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(DictionaryCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 // cspell:ignore amare cano
 
 const { promptsMock } = vi.hoisted(() => ({
-  promptsMock: vi.fn(),
+  promptsMock: vi.fn<() => Promise<Record<string, null | string>>>(),
 }));
 
 const {
@@ -59,11 +24,11 @@ const {
   readdirSyncMock,
   readFileSyncMock,
 } = vi.hoisted(() => ({
-  appendFileSyncMock: vi.fn(),
-  existsSyncMock: vi.fn(),
-  mkdirSyncMock: vi.fn(),
-  readdirSyncMock: vi.fn(),
-  readFileSyncMock: vi.fn(),
+  appendFileSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+  existsSyncMock: vi.fn<() => boolean>(),
+  mkdirSyncMock: vi.fn<(...parameters: unknown[]) => void>(),
+  readdirSyncMock: vi.fn<() => string[]>(),
+  readFileSyncMock: vi.fn<() => string>(),
 }));
 
 vi.mock("prompts", () => ({
@@ -128,32 +93,60 @@ function createTranslationsServiceMock(): {
   };
 }
 
-describe("DictionaryCommand", () => {
+describe(DictionaryCommand, () => {
   let command: DictionaryCommand;
 
   const lexemesService = {
-    existsByLemma: vi.fn(),
-    findLexemesByLemmaWithTranslations: vi.fn(),
-    parseLexemes: vi.fn(),
-    saveParsedLexeme: vi.fn(),
+    existsByLemma: vi.fn<(lemma: string) => Promise<boolean>>(),
+    findLexemesByLemmaWithTranslations:
+      vi.fn<(lemma: string) => Promise<Lexeme[]>>(),
+    parseLexemes: vi.fn<() => Promise<Lexeme[]>>(),
+    saveParsedLexeme: vi.fn<(lexeme: Lexeme) => Promise<Lexeme | null>>(),
   };
 
   const translationsService = {
-    extractTranslationReferences: vi.fn(),
-    findTranslationsWithReferences: vi.fn(),
-    saveTranslations: vi.fn(),
+    extractTranslationReferences: vi.fn<(data: unknown) => string[]>(),
+    findTranslationsWithReferences: vi.fn<() => Promise<Translation[]>>(),
+    saveTranslations: vi.fn<() => Promise<void>>(),
   };
 
   const manualService = {
-    ingestManual: vi.fn(),
+    ingestManual: vi.fn<() => Promise<void>>(),
   };
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        DictionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+        {
+          provide: LexemesService,
+          useValue: createLexemesServiceMock(),
+        },
+        {
+          provide: TranslationsService,
+          useValue: createTranslationsServiceMock(),
+        },
+        {
+          provide: ManualService,
+          useValue: createManualServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(DictionaryCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -173,7 +166,7 @@ describe("DictionaryCommand", () => {
     lexemesService.existsByLemma.mockResolvedValue(true);
     lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValue([]);
     lexemesService.parseLexemes.mockResolvedValue([]);
-    lexemesService.saveParsedLexeme.mockResolvedValue(undefined);
+    lexemesService.saveParsedLexeme.mockResolvedValue(null);
 
     translationsService.extractTranslationReferences.mockReturnValue([]);
     translationsService.findTranslationsWithReferences.mockResolvedValue([]);
@@ -208,11 +201,15 @@ describe("DictionaryCommand", () => {
 
   it("is defined", () => {
     expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
+    expect(command).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("DictionaryCommand");
   });
 
   it("should create output directory when it does not exist", async () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (typeof inputPath === "string" && inputPath.endsWith("/output")) {
         return false;
       }
@@ -272,7 +269,7 @@ describe("DictionaryCommand", () => {
   });
 
   it("should return empty lemma choices when data directory does not exist", () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (
         typeof inputPath === "string" &&
         inputPath.endsWith("data/wiktionary")
@@ -288,7 +285,7 @@ describe("DictionaryCommand", () => {
       }
     ).getLemmaChoices();
 
-    expect(choices).toEqual([]);
+    expect(choices).toStrictEqual([]);
   });
 
   it("should build lemma choices from json files only", () => {
@@ -300,7 +297,7 @@ describe("DictionaryCommand", () => {
       }
     ).getLemmaChoices();
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "amo", value: "amo" },
       { title: "cano", value: "cano" },
     ]);
@@ -319,7 +316,7 @@ describe("DictionaryCommand", () => {
       }
     ).getLemmaFileRange(files, "missing", "missing");
 
-    expect(selected).toEqual(files);
+    expect(selected).toStrictEqual(files);
   });
 
   it("should resolve lemma range when only start lemma is provided", () => {
@@ -335,7 +332,7 @@ describe("DictionaryCommand", () => {
       }
     ).getLemmaFileRange(files, "bellum");
 
-    expect(selected).toEqual(["bellum.json", "cano.json"]);
+    expect(selected).toStrictEqual(["bellum.json", "cano.json"]);
   });
 
   it("should resolve lemma range when only end lemma is provided", () => {
@@ -351,11 +348,11 @@ describe("DictionaryCommand", () => {
       }
     ).getLemmaFileRange(files, undefined, "bellum");
 
-    expect(selected).toEqual(["amo.json", "bellum.json"]);
+    expect(selected).toStrictEqual(["amo.json", "bellum.json"]);
   });
 
   it("should resolve wiktionary file path using case-insensitive fallback index", () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (typeof inputPath !== "string") {
         return false;
       }
@@ -378,11 +375,11 @@ describe("DictionaryCommand", () => {
       }
     ).getWiktionaryFilePathForWord("Amo");
 
-    expect(filePath).toEqual(expect.stringContaining("_amo.json"));
+    expect(filePath).toStrictEqual(expect.stringContaining("_amo.json"));
   });
 
   it("should return null wiktionary file path when index cannot be built", () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (typeof inputPath !== "string") {
         return false;
       }
@@ -407,7 +404,7 @@ describe("DictionaryCommand", () => {
     readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
     promptsMock
       .mockResolvedValueOnce({ startLemma: "amo" })
-      .mockResolvedValueOnce({ endLemma: "cano" });
+      .mockResolvedValueOnce({ startLemma: "cano" });
 
     const startLemma = await command.parseStartLemma({} as unknown as string);
     const endLemma = await command.parseEndLemma(
@@ -423,7 +420,7 @@ describe("DictionaryCommand", () => {
     readdirSyncMock.mockReturnValue(["amo.json"]);
     promptsMock
       .mockResolvedValueOnce({ startLemma: null })
-      .mockResolvedValueOnce({ endLemma: null });
+      .mockResolvedValueOnce({ startLemma: null });
 
     const startLemma = await command.parseStartLemma({} as unknown as string);
     const endLemma = await command.parseEndLemma(
@@ -524,7 +521,7 @@ describe("DictionaryCommand", () => {
   });
 
   it("should resolve wiktionary file path by exact and indexed fallback", () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (typeof inputPath === "string" && inputPath.endsWith("_amo.json")) {
         return false;
       }
@@ -549,7 +546,7 @@ describe("DictionaryCommand", () => {
   });
 
   it("should return null wiktionary file path when no index match exists", () => {
-    existsSyncMock.mockImplementation((inputPath: unknown) => {
+    existsSyncMock.mockImplementation((inputPath?: unknown) => {
       if (typeof inputPath === "string" && inputPath.endsWith("_amo.json")) {
         return false;
       }
@@ -611,7 +608,7 @@ describe("DictionaryCommand", () => {
       }
     ).getPageForLexeme("amo", providedPage);
 
-    expect(page).toEqual(providedPage);
+    expect(page).toStrictEqual(providedPage);
     expect(loadSpy).not.toHaveBeenCalled();
   });
 
@@ -737,7 +734,7 @@ describe("DictionaryCommand", () => {
       }
     ).loadWiktionaryPageForWord("amo");
 
-    expect(page).toEqual(expectedPage);
+    expect(page).toStrictEqual(expectedPage);
   });
 
   it("should load and return page in getPageForLexeme when no page is provided", () => {
@@ -779,7 +776,7 @@ describe("DictionaryCommand", () => {
       }
     ).getPageForLexeme("amo");
 
-    expect(page).toEqual(expectedPage);
+    expect(page).toStrictEqual(expectedPage);
   });
 
   it("should throw when page lookup fails during getPageForLexeme", () => {
@@ -1271,85 +1268,83 @@ describe("DictionaryCommand", () => {
         );
       });
     });
+  });
 
-    describe("processTranslationReferences", () => {
-      it("should skip recursive ingestion for in-progress and existing reference words", async () => {
-        const savedLexeme = new Lexeme();
-        savedLexeme.id = "saved";
-        savedLexeme.lemma = "amo";
-        savedLexeme.partOfSpeech = "verb";
-        savedLexeme.disambiguator = 0;
-        savedLexeme.principalParts = [];
-        savedLexeme.pronunciations = [];
-        savedLexeme.forms = [];
-        savedLexeme.translations = [];
-        savedLexeme.inflection = null;
+  describe("processTranslationReferences", () => {
+    it("should skip recursive ingestion for in-progress and existing reference words", async () => {
+      const savedLexeme = new Lexeme();
+      savedLexeme.id = "saved";
+      savedLexeme.lemma = "amo";
+      savedLexeme.partOfSpeech = "verb";
+      savedLexeme.disambiguator = 0;
+      savedLexeme.principalParts = [];
+      savedLexeme.pronunciations = [];
+      savedLexeme.forms = [];
+      savedLexeme.translations = [];
+      savedLexeme.inflection = null;
 
-        (
-          command as unknown as {
-            inProgressWords: Set<string>;
-          }
-        ).inProgressWords.add("in-progress");
+      (
+        command as unknown as {
+          inProgressWords: Set<string>;
+        }
+      ).inProgressWords.add("in-progress");
 
-        translationsService.extractTranslationReferences.mockReturnValueOnce([
-          "in-progress",
-          "existing-word",
-        ]);
-        lexemesService.existsByLemma.mockResolvedValueOnce(true);
-        translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
-          [],
-        );
+      translationsService.extractTranslationReferences.mockReturnValueOnce([
+        "in-progress",
+        "existing-word",
+      ]);
+      lexemesService.existsByLemma.mockResolvedValueOnce(true);
+      translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
+        [],
+      );
 
-        const ingestLexemeSpy = vi
-          .spyOn(command, "ingestLexeme")
-          .mockResolvedValue(undefined);
+      const ingestLexemeSpy = vi
+        .spyOn(command, "ingestLexeme")
+        .mockResolvedValue(undefined);
 
-        await (
-          command as unknown as {
-            processTranslationReferences: (saved: Lexeme) => Promise<void>;
-          }
-        ).processTranslationReferences(savedLexeme);
+      await (
+        command as unknown as {
+          processTranslationReferences: (saved: Lexeme) => Promise<void>;
+        }
+      ).processTranslationReferences(savedLexeme);
 
-        expect(lexemesService.existsByLemma).toHaveBeenCalledTimes(1);
-        expect(lexemesService.existsByLemma).toHaveBeenCalledWith(
-          "existing-word",
-        );
-        expect(ingestLexemeSpy).not.toHaveBeenCalled();
-      });
+      expect(lexemesService.existsByLemma).toHaveBeenCalledTimes(1);
+      expect(lexemesService.existsByLemma).toHaveBeenCalledWith(
+        "existing-word",
+      );
+      expect(ingestLexemeSpy).not.toHaveBeenCalled();
+    });
 
-      it("should extract references from an empty list when saved translations are null", async () => {
-        const savedLexeme = new Lexeme();
-        savedLexeme.id = "saved";
-        savedLexeme.lemma = "amo";
-        savedLexeme.partOfSpeech = "verb";
-        savedLexeme.disambiguator = 0;
-        savedLexeme.principalParts = [];
-        savedLexeme.pronunciations = [];
-        savedLexeme.forms = [];
-        (
-          savedLexeme as unknown as {
-            translations?: null | Translation[];
-          }
-        ).translations = null;
-        savedLexeme.inflection = null;
+    it("should extract references from an empty list when saved translations are null", async () => {
+      const savedLexeme = new Lexeme();
+      savedLexeme.id = "saved";
+      savedLexeme.lemma = "amo";
+      savedLexeme.partOfSpeech = "verb";
+      savedLexeme.disambiguator = 0;
+      savedLexeme.principalParts = [];
+      savedLexeme.pronunciations = [];
+      savedLexeme.forms = [];
+      (
+        savedLexeme as unknown as {
+          translations?: null | Translation[];
+        }
+      ).translations = null;
+      savedLexeme.inflection = null;
 
-        translationsService.extractTranslationReferences.mockReturnValueOnce(
-          [],
-        );
-        translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
-          [],
-        );
+      translationsService.extractTranslationReferences.mockReturnValueOnce([]);
+      translationsService.findTranslationsWithReferences.mockResolvedValueOnce(
+        [],
+      );
 
-        await (
-          command as unknown as {
-            processTranslationReferences: (saved: Lexeme) => Promise<void>;
-          }
-        ).processTranslationReferences(savedLexeme);
+      await (
+        command as unknown as {
+          processTranslationReferences: (saved: Lexeme) => Promise<void>;
+        }
+      ).processTranslationReferences(savedLexeme);
 
-        expect(
-          translationsService.extractTranslationReferences,
-        ).toHaveBeenCalledWith([]);
-      });
+      expect(
+        translationsService.extractTranslationReferences,
+      ).toHaveBeenCalledWith([]);
     });
   });
 });

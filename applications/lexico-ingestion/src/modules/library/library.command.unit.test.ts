@@ -10,42 +10,16 @@ import { LibraryCommand } from "./library.command";
 import { LIBRARY_PROVIDERS_TOKEN } from "./library.constants";
 
 import type { LibrarySourceProvider } from "./library.types";
-
-describe("LibraryCommand", () => {
-  let command: LibraryCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        LibraryCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-        {
-          provide: LIBRARY_PROVIDERS_TOKEN,
-          useValue: createProviders(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(LibraryCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
+import type { Author } from "@monorepo/lexico-entities";
 
 const { appendFileMock, mkdirMock, readdirMock } = vi.hoisted(() => ({
-  appendFileMock: vi.fn(),
-  mkdirMock: vi.fn(),
-  readdirMock: vi.fn(),
+  appendFileMock: vi.fn<() => Promise<void>>(),
+  mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+  readdirMock: vi.fn<() => Promise<unknown[]>>(),
 }));
 
 const { promptsMock } = vi.hoisted(() => ({
-  promptsMock: vi.fn(),
+  promptsMock: vi.fn<() => Promise<Record<string, unknown>>>(),
 }));
 
 vi.mock("node:fs/promises", () => ({
@@ -75,37 +49,65 @@ function createLoggerServiceMock(): {
 function createProviders(): LibrarySourceProvider[] {
   return [
     {
-      ingest: vi.fn(async () => await Promise.resolve([])),
+      ingest: vi.fn<
+        (options?: { author?: string; text?: string }) => Promise<Author[]>
+      >(async () => await Promise.resolve([])),
       name: "perseus",
     },
     {
-      ingest: vi.fn(async () => await Promise.resolve([])),
+      ingest: vi.fn<
+        (options?: { author?: string; text?: string }) => Promise<Author[]>
+      >(async () => await Promise.resolve([])),
       name: "thelatinlibrary",
     },
   ];
 }
 
-describe("LibraryCommand", () => {
+describe(LibraryCommand, () => {
+  let command: LibraryCommand;
   let libraryCommand: LibraryCommand;
 
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
 
   const providerPerseus = {
-    ingest: vi.fn(async () => await Promise.resolve([])),
+    ingest: vi.fn<
+      (options?: { author?: string; text?: string }) => Promise<Author[]>
+    >(async () => await Promise.resolve([])),
     name: "perseus",
   } satisfies LibrarySourceProvider;
 
   const providerLatinLibrary = {
-    ingest: vi.fn(async () => await Promise.resolve([])),
+    ingest: vi.fn<
+      (options?: { author?: string; text?: string }) => Promise<Author[]>
+    >(async () => await Promise.resolve([])),
     name: "thelatinlibrary",
   } satisfies LibrarySourceProvider;
 
   const providers = [providerPerseus, providerLatinLibrary];
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        LibraryCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+        {
+          provide: LIBRARY_PROVIDERS_TOKEN,
+          useValue: createProviders(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(LibraryCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -131,6 +133,10 @@ describe("LibraryCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
     expect(libraryCommand).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("LibraryCommand");
   });
@@ -397,7 +403,7 @@ describe("LibraryCommand", () => {
 
     expect(result.filteredProviders).toHaveLength(1);
     expect(result.filteredProviders[0]?.name).toBe("perseus");
-    expect(result.ingestOptions).toEqual({
+    expect(result.ingestOptions).toStrictEqual({
       author: "vergil",
       text: "vergil/aeneid",
     });
@@ -418,7 +424,7 @@ describe("LibraryCommand", () => {
     ).buildIngestParameters(undefined, undefined, undefined);
 
     expect(result.filteredProviders).toHaveLength(2);
-    expect(result.ingestOptions).toEqual({});
+    expect(result.ingestOptions).toStrictEqual({});
   });
 
   it("should build provider choices sorted by provider name", () => {
@@ -428,7 +434,7 @@ describe("LibraryCommand", () => {
       }
     ).getProviderChoices();
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "perseus", value: "perseus" },
       { title: "thelatinlibrary", value: "thelatinlibrary" },
     ]);
@@ -484,7 +490,7 @@ describe("LibraryCommand", () => {
       }
     ).getAuthorChoices("perseus");
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "cicero", value: "cicero" },
       { title: "vergil", value: "vergil" },
     ]);
@@ -540,7 +546,7 @@ describe("LibraryCommand", () => {
       }
     ).getAuthorChoices();
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "cicero", value: "cicero" },
       { title: "vergil", value: "vergil" },
     ]);
@@ -597,7 +603,7 @@ describe("LibraryCommand", () => {
       }
     ).getTextChoices("perseus", "vergil");
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       { title: "vergil/epic/aeneid", value: "vergil/epic/aeneid" },
       { title: "vergil/minor/culex", value: "vergil/minor/culex" },
     ]);
@@ -646,7 +652,7 @@ describe("LibraryCommand", () => {
       }
     ).getTextChoices();
 
-    expect(choices).toEqual([
+    expect(choices).toStrictEqual([
       {
         title: "cicero/oratory/de-oratore",
         value: "cicero/oratory/de-oratore",
@@ -680,7 +686,7 @@ describe("LibraryCommand", () => {
       text: "vergil/aeneid",
     });
 
-    expect(parsed).toEqual({
+    expect(parsed).toStrictEqual({
       author: "vergil",
       providerName: "perseus",
       text: "vergil/aeneid",
@@ -719,7 +725,7 @@ describe("LibraryCommand", () => {
     expect(parseProviderSpy).toHaveBeenCalledWith(undefined);
     expect(parseAuthorSpy).toHaveBeenCalledWith(undefined, undefined);
     expect(parseTextSpy).toHaveBeenCalledWith(undefined, undefined, undefined);
-    expect(parsed).toEqual({
+    expect(parsed).toStrictEqual({
       author: undefined,
       providerName: undefined,
       text: undefined,
@@ -813,7 +819,11 @@ describe("LibraryCommand", () => {
 
   it("should process provider failures and append error logs", async () => {
     const failingProvider = {
-      ingest: vi.fn().mockRejectedValue("provider failed"),
+      ingest: vi
+        .fn<
+          (options?: { author?: string; text?: string }) => Promise<Author[]>
+        >()
+        .mockRejectedValue("provider failed"),
       name: "string-provider",
     } satisfies LibrarySourceProvider;
 
@@ -887,7 +897,7 @@ describe("LibraryCommand", () => {
       texts,
     });
 
-    expect(texts).toEqual([
+    expect(texts).toStrictEqual([
       expect.objectContaining({
         authorSlug: "vergil",
         pathParts: ["epic"],
@@ -1024,18 +1034,18 @@ describe("LibraryCommand", () => {
     readdirMock
       .mockResolvedValueOnce([
         createDirent({ isDirectory: true, name: "perseus" }),
-      ])
+      ] as unknown[])
       .mockResolvedValueOnce([
         createDirent({ isDirectory: true, name: "vergil" }),
-      ])
+      ] as unknown[])
       .mockResolvedValueOnce([
         createDirent({ isDirectory: true, name: "epic" }),
         createDirent({ isDirectory: false, name: "ignored.txt" }),
-      ])
+      ] as unknown[])
       .mockResolvedValueOnce([
         createDirent({ isDirectory: false, name: "aeneid.md" }),
         createDirent({ isDirectory: false, name: "notes.txt" }),
-      ]);
+      ] as unknown[]);
 
     const result = await (
       libraryCommand as unknown as {
@@ -1053,7 +1063,7 @@ describe("LibraryCommand", () => {
     ).scanLibrary();
 
     expect(result).toHaveLength(1);
-    expect(result[0]).toEqual(
+    expect(result[0]).toStrictEqual(
       expect.objectContaining({
         authorSlug: "vergil",
         pathParts: ["epic"],
@@ -1080,8 +1090,8 @@ describe("LibraryCommand", () => {
     readdirMock
       .mockResolvedValueOnce([
         createDirent({ isDirectory: false, name: "README.md" }),
-      ])
-      .mockResolvedValueOnce([]);
+      ] as unknown[])
+      .mockResolvedValueOnce([] as unknown[]);
 
     const scanLibraryProviderSpy = vi
       .spyOn(
@@ -1114,7 +1124,7 @@ describe("LibraryCommand", () => {
       }
     ).scanLibrary();
 
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
   });
 
   it("should skip non-directory authors when scanning provider directory", async () => {
@@ -1135,7 +1145,7 @@ describe("LibraryCommand", () => {
     readdirMock.mockResolvedValueOnce([
       createDirent({ isDirectory: false, name: "README.md" }),
       createDirent({ isDirectory: true, name: "vergil" }),
-    ]);
+    ] as unknown[]);
 
     const scanLibraryAuthorSpy = vi
       .spyOn(

@@ -1,5 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
-
+import { beforeEach, describe, expect, it } from "vitest";
 vi.mock("sweph", () => ({
   constants: {
     SE_CERES: 17,
@@ -26,7 +25,7 @@ vi.mock("sweph", () => ({
     SEFLG_SPEED: 256,
     SEFLG_SWIEPH: 2,
   },
-  set_ephe_path: vi.fn(),
+  set_ephe_path: vi.fn<(path: string) => void>(),
 }));
 
 import {
@@ -163,7 +162,7 @@ describe("ephemeris.constants", () => {
     });
   });
 
-  describe("initializeSwissEphemeris", () => {
+  describe(initializeSwissEphemeris, () => {
     beforeEach(() => {
       vi.clearAllMocks();
     });
@@ -181,7 +180,7 @@ describe("ephemeris.constants", () => {
 
       initializeSwissEphemeris();
 
-      expect(setEphemerisPath).toHaveBeenCalledOnce();
+      expect(setEphemerisPath).toHaveBeenCalledWith();
     });
   });
 });

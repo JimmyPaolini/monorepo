@@ -1,7 +1,7 @@
 /* cspell:ignore amandum amare amans amatu celeriter rosae */
 
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import {
   AdjectivalForm,
@@ -19,7 +19,7 @@ import { FormsTransientWordsService } from "./forms-transient-words.service";
 
 import type { FormsBuilderGuardsService } from "./forms-builder-guards.service";
 
-describe("FormsBuilderOtherService", () => {
+describe(FormsBuilderOtherService, () => {
   let service: FormsBuilderOtherService;
   let transientWordsService: FormsTransientWordsService;
 
@@ -43,20 +43,25 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("is defined", () => {
+    expect.hasAssertions();
     expect(service).toBeDefined();
   });
 
   it("should return empty array for unsupported part of speech", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "preposition",
       { forms: ["ad"] },
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should build adverb forms for adverb part of speech", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "adverb",
       { forms: ["bene"] },
@@ -67,12 +72,16 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should return empty forms when raw forms are null", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech("noun", null, new Lexeme());
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should build nominal forms for noun part of speech", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "noun",
       {
@@ -88,6 +97,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should ignore invalid nominal cases and numbers", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "noun",
       {
@@ -105,6 +116,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should build adjectival forms for adjective part of speech", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "adjective",
       {
@@ -122,6 +135,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should ignore invalid adjective gender maps", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "adjective",
       {
@@ -138,6 +153,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should build finite verb forms", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "verb",
       {
@@ -158,6 +175,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should build non-finite and verbal noun verb forms", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "verb",
       {
@@ -182,6 +201,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should attach transient words on built forms", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "adverb",
       { forms: ["celeriter"] },
@@ -189,17 +210,23 @@ describe("FormsBuilderOtherService", () => {
     );
 
     expect(forms).toHaveLength(1);
+
     const firstForm = forms[0];
+
     expect(firstForm).toBeDefined();
+
     if (!firstForm) {
       throw new Error("Expected adverb form to exist");
     }
-    expect(transientWordsService.getTransientWords(firstForm)).toEqual([
+
+    expect(transientWordsService.getTransientWords(firstForm)).toStrictEqual([
       "celeriter",
     ]);
   });
 
   it("should return empty adjectival number forms for invalid case key", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildAdjectivalNumberForms: (args: {
@@ -216,10 +243,12 @@ describe("FormsBuilderOtherService", () => {
       numberMap: { singular: ["bonus"] },
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should return empty nominal number forms for invalid case key", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildNominalNumberForms: (args: {
@@ -234,10 +263,12 @@ describe("FormsBuilderOtherService", () => {
       numberMap: { singular: ["rosa"] },
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should build participle forms from non-finite verb data", () => {
+    expect.hasAssertions();
+
     const delegatedParticiple = new AdjectivalForm();
     vi.spyOn(
       service as unknown as {
@@ -259,20 +290,24 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([delegatedParticiple]);
+    expect(forms).toStrictEqual([delegatedParticiple]);
   });
 
   it("should return empty forms for unknown part-of-speech values", () => {
+    expect.hasAssertions();
+
     const forms = service.buildFormsForPartOfSpeech(
       "not-a-pos" as PartOfSpeech,
       { forms: ["x"] },
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should delegate participle data to the verb provider", () => {
+    expect.hasAssertions();
+
     const delegatedParticiple = new AdjectivalForm();
     const injectedVerbProvider = (
       service as unknown as {
@@ -303,7 +338,7 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([delegatedParticiple]);
+    expect(forms).toStrictEqual([delegatedParticiple]);
     expect(providerSpy).toHaveBeenCalledWith(
       expect.objectContaining({
         lexeme: expect.any(Lexeme),
@@ -313,6 +348,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should ignore invalid finite number keys and non-record values", () => {
+    expect.hasAssertions();
+
     const buildFinitePersonFormsSpy = vi.spyOn(
       service as unknown as {
         buildFinitePersonForms: (args: {
@@ -348,11 +385,13 @@ describe("FormsBuilderOtherService", () => {
       voiceKey: "active",
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildFinitePersonFormsSpy).not.toHaveBeenCalled();
   });
 
   it("should build verb noun forms when gerund and supine maps are present", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildVerbNounForms: (
@@ -372,10 +411,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms.length).toBe(2);
+    expect(forms).toHaveLength(2);
   });
 
   it("should build infinitive forms when non-finite tense and words are valid", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildInfinitiveForms: (
         infinitiveData: Record<string, unknown>,
@@ -402,6 +443,8 @@ describe("FormsBuilderOtherService", () => {
   });
 
   it("should dispatch finite mood forms only when mood data is a record", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildFiniteMoodForms: (
         moodData: Record<string, unknown>,
@@ -430,11 +473,13 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildFiniteMoodFormsSpy).toHaveBeenCalledTimes(1);
   });
 
   it("should dispatch gerund and supine builders when verbal noun values are records", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildGerundForms: (
         gerundData: Record<string, unknown>,
@@ -465,12 +510,14 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildGerundFormsSpy).toHaveBeenCalledTimes(1);
     expect(buildSupineFormsSpy).toHaveBeenCalledTimes(1);
   });
 
   it("should return empty verb forms when raw forms is not a record", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildVerbFormsFromRaw: (rawForms: unknown, lexeme: Lexeme) => unknown[];
     };
@@ -480,10 +527,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip non-record mood and verbal noun values in verb builders", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildFiniteMoodForms: (
         moodData: Record<string, unknown>,
@@ -536,14 +585,16 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
-    expect(verbalNounForms).toEqual([]);
+    expect(forms).toStrictEqual([]);
+    expect(verbalNounForms).toStrictEqual([]);
     expect(finiteMoodSpy).not.toHaveBeenCalled();
     expect(gerundSpy).not.toHaveBeenCalled();
     expect(supineSpy).not.toHaveBeenCalled();
   });
 
   it("should return empty finite person forms for invalid number key", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildFinitePersonForms: (args: {
@@ -564,10 +615,12 @@ describe("FormsBuilderOtherService", () => {
       voiceKey: "active",
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should return empty finite person forms for invalid tense key", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildFinitePersonForms: (args: {
@@ -588,10 +641,12 @@ describe("FormsBuilderOtherService", () => {
       voiceKey: "active",
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should return empty finite person forms for invalid voice key", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildFinitePersonForms: (args: {
@@ -612,10 +667,12 @@ describe("FormsBuilderOtherService", () => {
       voiceKey: "invalid-voice",
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip non-record infinitive and participle non-finite entries", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildInfinitiveForms: (
         infinitiveData: Record<string, unknown>,
@@ -648,12 +705,14 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(infinitiveSpy).not.toHaveBeenCalled();
     expect(participleSpy).not.toHaveBeenCalled();
   });
 
   it("should ignore invalid and empty gerund entries", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildGerundForms: (
@@ -669,10 +728,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should ignore invalid and empty supine entries", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildSupineForms: (
@@ -688,10 +749,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip invalid adjectival case keys and non-record case maps", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildAdjectivalCaseForms: (
         caseMap: Record<string, unknown>,
@@ -721,21 +784,25 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildAdjectivalCaseFormsSpy).not.toHaveBeenCalled();
   });
 
   it("should return empty nominal forms when raw nominal payload is not a record", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildNominalFormsFromRaw: (rawForms: unknown, lexeme: Lexeme) => Form[];
       }
     ).buildNominalFormsFromRaw("not-a-record", new Lexeme());
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip invalid voice and non-record voice payloads in finite mood forms", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildFiniteMoodForms: (
         moodData: Record<string, unknown>,
@@ -764,11 +831,13 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildFiniteTenseFormsSpy).not.toHaveBeenCalled();
   });
 
   it("should skip invalid tense and non-record tense payloads in finite tense forms", () => {
+    expect.hasAssertions();
+
     const serviceWithInternals = service as unknown as {
       buildFiniteNumberForms: (args: {
         lexeme: Lexeme;
@@ -800,11 +869,13 @@ describe("FormsBuilderOtherService", () => {
       voiceKey: "active",
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
     expect(buildFiniteNumberFormsSpy).not.toHaveBeenCalled();
   });
 
   it("should skip invalid and empty infinitive entries", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildInfinitiveForms: (
@@ -820,10 +891,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip invalid adjectival case keys and non-record case values", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildAdjectivalCaseForms: (
@@ -841,10 +914,12 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should return empty adjectival forms when raw payload is not a record", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildAdjectivalFormsFromRaw: (
@@ -854,10 +929,12 @@ describe("FormsBuilderOtherService", () => {
       }
     ).buildAdjectivalFormsFromRaw(undefined, new Lexeme());
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should skip invalid and non-array adjectival number entries", () => {
+    expect.hasAssertions();
+
     const forms = (
       service as unknown as {
         buildAdjectivalNumberForms: (args: {
@@ -877,10 +954,12 @@ describe("FormsBuilderOtherService", () => {
       },
     });
 
-    expect(forms).toEqual([]);
+    expect(forms).toStrictEqual([]);
   });
 
   it("should return empty adverb forms when raw payload is invalid", () => {
+    expect.hasAssertions();
+
     const buildAdverbFormsFromRaw = (
       service as unknown as {
         buildAdverbFormsFromRaw: (rawForms: unknown, lexeme: Lexeme) => Form[];
@@ -893,11 +972,13 @@ describe("FormsBuilderOtherService", () => {
       new Lexeme(),
     );
 
-    expect(invalidRawForms).toEqual([]);
-    expect(invalidWords).toEqual([]);
+    expect(invalidRawForms).toStrictEqual([]);
+    expect(invalidWords).toStrictEqual([]);
   });
 
   it("should skip non-record and non-array nominal entries", () => {
+    expect.hasAssertions();
+
     const formsFromRaw = (
       service as unknown as {
         buildNominalFormsFromRaw: (rawForms: unknown, lexeme: Lexeme) => Form[];
@@ -925,7 +1006,7 @@ describe("FormsBuilderOtherService", () => {
       },
     });
 
-    expect(formsFromRaw).toEqual([]);
-    expect(formsFromNumbers).toEqual([]);
+    expect(formsFromRaw).toStrictEqual([]);
+    expect(formsFromNumbers).toStrictEqual([]);
   });
 });

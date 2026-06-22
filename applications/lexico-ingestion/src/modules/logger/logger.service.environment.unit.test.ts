@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
-describe("LoggerService environment initialization", () => {
+describe("loggerService environment initialization", () => {
   const originalNodeEnvironment = process.env["NODE_ENV"];
 
   afterEach(() => {

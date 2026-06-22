@@ -1,7 +1,8 @@
-import { describe, expect, it, vi } from "vitest";
-
+import { describe, expect, it } from "vitest";
 const { mockForRoot } = vi.hoisted(() => ({
-  mockForRoot: vi.fn((options: unknown) => options),
+  mockForRoot: vi.fn<(options: unknown) => unknown>(
+    (options: unknown) => options,
+  ),
 }));
 
 vi.mock("@nestjs/config", async (importOriginal) => {
@@ -16,7 +17,7 @@ vi.mock("@nestjs/config", async (importOriginal) => {
 
 import { CaelundasModule } from "./caelundas.module";
 
-describe("CaelundasModule", () => {
+describe(CaelundasModule, () => {
   it("configures the global env validator", () => {
     expect(CaelundasModule).toBeDefined();
     expect(mockForRoot).toHaveBeenCalledTimes(1);
@@ -31,13 +32,16 @@ describe("CaelundasModule", () => {
         };
 
     if (options === undefined) throw new Error("options is undefined");
-    expect(options).toEqual(
+
+    expect(options).toStrictEqual(
       expect.objectContaining({
         envFilePath: ".env",
         isGlobal: true,
         validate: expect.any(Function),
       }),
     );
-    expect(options.validate?.({})).toEqual({ OUTPUT_DIRECTORY: "./output" });
+    expect(options.validate?.({})).toStrictEqual({
+      OUTPUT_DIRECTORY: "./output",
+    });
   });
 });

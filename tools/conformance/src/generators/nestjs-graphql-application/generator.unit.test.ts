@@ -5,7 +5,7 @@ import { generateNestjsGraphqlApplication } from "./generator";
 
 import type { Tree } from "@nx/devkit";
 
-describe("generateNestjsGraphqlApplication", () => {
+describe(generateNestjsGraphqlApplication, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -19,16 +19,17 @@ describe("generateNestjsGraphqlApplication", () => {
       });
 
       const base = "applications/stellar-api";
-      expect(tree.exists(`${base}/project.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/package.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/tsconfig.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/eslint.config.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/vitest.config.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/logger/logger.service.ts`),
-      ).toBeTruthy();
-      expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/project.json`)).toBe(true);
+      expect(tree.exists(`${base}/package.json`)).toBe(true);
+      expect(tree.exists(`${base}/tsconfig.json`)).toBe(true);
+      expect(tree.exists(`${base}/eslint.config.ts`)).toBe(true);
+      expect(tree.exists(`${base}/vitest.config.ts`)).toBe(true);
+      expect(tree.exists(`${base}/src/main.ts`)).toBe(true);
+      expect(tree.exists(`${base}/src/modules/logger/logger.service.ts`)).toBe(
+        true,
+      );
+      expect(tree.exists(`${base}/testing/setup.ts`)).toBe(true);
     });
 
     it("writes expected project tags and GraphQL metadata", async () => {
@@ -40,6 +41,7 @@ describe("generateNestjsGraphqlApplication", () => {
         "applications/stellar-api/project.json",
         "utf8",
       );
+
       expect(projectJson).toContain('"generator:nestjs-graphql-application"');
       expect(projectJson).toContain('"framework:nestjs-graphql-api"');
       expect(projectJson).toContain('"framework:nestjs"');
@@ -48,6 +50,7 @@ describe("generateNestjsGraphqlApplication", () => {
         "applications/stellar-api/.env.default",
         "utf8",
       );
+
       expect(environmentDefault).toContain("PORT=3000");
     });
 
@@ -57,6 +60,7 @@ describe("generateNestjsGraphqlApplication", () => {
       });
 
       const mainTs = tree.read("applications/my-api/src/main.ts", "utf8");
+
       expect(mainTs).toContain("MyApiModule");
     });
   });

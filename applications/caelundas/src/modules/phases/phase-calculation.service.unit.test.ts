@@ -3,13 +3,13 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { PhaseCalculationService } from "./phase-calculation.service";
 
-describe("PhaseCalculationService", () => {
+describe(PhaseCalculationService, () => {
   let service: PhaseCalculationService;
 
   beforeAll(async () => {
@@ -26,16 +26,19 @@ describe("PhaseCalculationService", () => {
   });
 
   const logger = {
-    setContext: vi.fn(),
+    setContext: vi.fn<LoggerService["setContext"]>(),
   };
   const ephemerisService = {
-    getCoordinateFromEphemeris: vi.fn(),
-    getDistanceFromEphemeris: vi.fn(),
-    getIlluminationFromEphemeris: vi.fn(),
+    getCoordinateFromEphemeris:
+      vi.fn<EphemerisService["getCoordinateFromEphemeris"]>(),
+    getDistanceFromEphemeris:
+      vi.fn<EphemerisService["getDistanceFromEphemeris"]>(),
+    getIlluminationFromEphemeris:
+      vi.fn<EphemerisService["getIlluminationFromEphemeris"]>(),
   };
   const mathService = {
-    getAngle: vi.fn(),
-    isMaximum: vi.fn(),
+    getAngle: vi.fn<MathService["getAngle"]>(),
+    isMaximum: vi.fn<MathService["isMaximum"]>(),
   };
 
   const mockService = new PhaseCalculationService(
@@ -51,6 +54,7 @@ describe("PhaseCalculationService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("derives brightness values from current and margin samples", () => {
     const brightnesses = mockService.getBrightnesses({
       currentDistance: 2,
@@ -62,8 +66,8 @@ describe("PhaseCalculationService", () => {
     });
 
     expect(brightnesses.currentBrightness).toBe(2);
-    expect(brightnesses.nextBrightnesses).toEqual([2, 0.5]);
-    expect(brightnesses.previousBrightnesses).toEqual([2, 2]);
+    expect(brightnesses.nextBrightnesses).toStrictEqual([2, 0.5]);
+    expect(brightnesses.previousBrightnesses).toStrictEqual([2, 2]);
   });
 
   it("throws when brightness distance and illumination lengths differ", () => {
@@ -96,6 +100,7 @@ describe("PhaseCalculationService", () => {
 
   it("detects rise and set threshold crossings", () => {
     mathService.getAngle.mockReturnValueOnce(5).mockReturnValueOnce(7);
+
     expect(
       mockService.isRise({
         currentLongitudePlanet: 10,
@@ -106,6 +111,7 @@ describe("PhaseCalculationService", () => {
     ).toBe(true);
 
     mathService.getAngle.mockReturnValueOnce(7).mockReturnValueOnce(5);
+
     expect(
       mockService.isSet({
         currentLongitudePlanet: 10,

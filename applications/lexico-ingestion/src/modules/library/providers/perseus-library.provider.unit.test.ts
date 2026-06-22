@@ -6,14 +6,18 @@ import { Author } from "@monorepo/lexico-entities";
 import { PerseusLibraryProvider } from "./perseus-library.provider";
 
 import type { LoggerService } from "../../logger/logger.service";
-import type { PerseusLibraryTextExtractionProvider } from "./perseus-library-text-extraction.provider";
+import type {
+  PerseusLibraryTextExtractionProvider,
+  PerseusMarkdownFile,
+} from "./perseus-library-text-extraction.provider";
+import type { AnyNode } from "domhandler";
 
 const { mkdirMock, readdirMock, readFileMock, writeFileMock } = vi.hoisted(
   () => ({
-    mkdirMock: vi.fn(),
-    readdirMock: vi.fn(),
-    readFileMock: vi.fn(),
-    writeFileMock: vi.fn(),
+    mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+    readdirMock: vi.fn<() => Promise<unknown[]>>(),
+    readFileMock: vi.fn<() => Promise<string>>(),
+    writeFileMock: vi.fn<() => Promise<void>>(),
   }),
 );
 
@@ -24,15 +28,25 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-describe("PerseusLibraryProvider", () => {
+describe(PerseusLibraryProvider, () => {
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   } as unknown as LoggerService;
 
   const perseusLibraryTextExtractionProvider = {
-    extractTextNodes: vi.fn(),
+    extractTextNodes:
+      vi.fn<
+        (args: {
+          $: cheerio.CheerioAPI;
+          $element: cheerio.Cheerio<AnyNode>;
+          currentPath: string[];
+          currentTitle: string;
+          filesToWrite: PerseusMarkdownFile[];
+          rawTitle: string;
+        }) => void
+      >(),
   } as unknown as PerseusLibraryTextExtractionProvider;
 
   const perseusLibraryProvider = new PerseusLibraryProvider(
@@ -91,7 +105,7 @@ describe("PerseusLibraryProvider", () => {
       "phi0959/phi006/perseus-lat2/phi0959.phi006.perseus-lat2.xml",
     );
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         cts_urn: "urn:cts:latinLit:phi0959.phi006.perseus-lat2",
         editors: ["Editor One"],
@@ -113,7 +127,7 @@ describe("PerseusLibraryProvider", () => {
         name: "folder",
         parentPath: "/tmp/perseus",
       },
-    ]);
+    ] as unknown[]);
 
     const collectSourceXmlPaths = (
       perseusLibraryProvider as unknown as {
@@ -128,8 +142,8 @@ describe("PerseusLibraryProvider", () => {
     readdirMock.mockRejectedValueOnce(new Error("missing"));
     const missing = await collectSourceXmlPaths("/tmp/missing");
 
-    expect(paths).toEqual(["/tmp/perseus/aeneid.xml"]);
-    expect(missing).toEqual([]);
+    expect(paths).toStrictEqual(["/tmp/perseus/aeneid.xml"]);
+    expect(missing).toStrictEqual([]);
   });
 
   it("should load source xml file and extract author and title", async () => {
@@ -426,7 +440,9 @@ describe("PerseusLibraryProvider", () => {
       xmlPath: "/tmp/perseus/aeneid.xml",
     });
 
-    expect((loggerService.log as ReturnType<typeof vi.fn>).mock.calls).toEqual(
+    expect(
+      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
+    ).toStrictEqual(
       expect.arrayContaining([
         ["📜 Starting processing: /tmp/perseus/aeneid.xml"],
         ["📜 Completed processing: /tmp/perseus/aeneid.xml (50.00%, 1/2)"],
@@ -469,7 +485,9 @@ describe("PerseusLibraryProvider", () => {
       xmlPath: "/tmp/perseus/bad.xml",
     });
 
-    expect((loggerService.warn as ReturnType<typeof vi.fn>).mock.calls).toEqual(
+    expect(
+      (loggerService.warn as ReturnType<typeof vi.fn>).mock.calls,
+    ).toStrictEqual(
       expect.arrayContaining([
         [expect.stringContaining("⚠️ Error processing /tmp/perseus/bad.xml")],
       ]),
@@ -501,27 +519,25 @@ describe("PerseusLibraryProvider", () => {
 
     vi.useFakeTimers();
 
-    (
-      perseusLibraryTextExtractionProvider.extractTextNodes as ReturnType<
-        typeof vi.fn
-      >
-    ).mockImplementation(
-      ({
-        filesToWrite,
-      }: {
-        filesToWrite: {
-          content: string;
-          relativePath: string;
-          title: string;
-        }[];
-      }) => {
-        filesToWrite.push({
-          content: "Sample text",
-          relativePath: "aeneid/book-1.md",
-          title: "Book 1",
-        });
-      },
-    );
+    const extractTextNodesSpy = vi
+      .spyOn(perseusLibraryTextExtractionProvider, "extractTextNodes")
+      .mockImplementation(
+        ({
+          filesToWrite,
+        }: {
+          filesToWrite: {
+            content: string;
+            relativePath: string;
+            title: string;
+          }[];
+        }) => {
+          filesToWrite.push({
+            content: "Sample text",
+            relativePath: "aeneid/book-1.md",
+            title: "Book 1",
+          });
+        },
+      );
 
     const writePromise = (
       perseusLibraryProvider as unknown as {
@@ -548,13 +564,7 @@ describe("PerseusLibraryProvider", () => {
     await vi.runAllTimersAsync();
     await writePromise;
 
-    expect(
-      (
-        perseusLibraryTextExtractionProvider.extractTextNodes as ReturnType<
-          typeof vi.fn
-        >
-      ).mock.calls.length,
-    ).toBe(1);
+    expect(extractTextNodesSpy).toHaveBeenCalledTimes(1);
     expect(writeTextFilesSpy).toHaveBeenCalledWith(
       expect.arrayContaining([
         expect.objectContaining({
@@ -572,6 +582,7 @@ describe("PerseusLibraryProvider", () => {
         type: "text",
       }),
     );
+
     vi.useRealTimers();
   });
 

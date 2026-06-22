@@ -24,7 +24,17 @@ When invoked to resolve conflicts, follow these exact steps sequentially:
 
 Before modifying any files or resolving conflicts, **always create a backup branch** of the current state.
 
-- Use `git branch <current-branch-name>-backup` to save the current state.
+- **Default first approach:** run the [backup-code](../backup-code/SKILL.md) skill before any merge/rebase conflict work. This is the preferred path.
+- Inline/manual fallback: create the backup branch directly with the same naming convention if `backup-code` is not used.
+
+- Use the naming template `backup/{branch_name}/{iso_timestamp}` to save the current state. Example:
+
+  ```bash
+  branch_name="$(git branch --show-current)"
+  iso_timestamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+  git branch "backup/${branch_name}/${iso_timestamp}"
+  ```
+
 - **Caution:** Be very careful around taking any destructive actions (e.g., `git reset --hard`, `git checkout --`). Having a backup branch ensures work can be safely recovered if the merge resolution goes awry.
 
 ### 2. Analyze Current Branch Purpose
@@ -68,3 +78,5 @@ Once all conflicts are resolved and staged, **do not commit**. Provide the user 
 | Unclear intent | If the purpose of either branch is ambiguous, ask the user for clarification before attempting to resolve the code. |
 | Complex structural conflicts | If a file was heavily refactored on one branch and modified on the other, take time to map the modifications to the new structure before resolving. |
 | Overwhelming number of conflicts | If there are too many conflicts to handle reliably in one go, ask the user if they want to tackle them file-by-file or abort (`git merge --abort`). |
+
+If conflict resolution goes wrong after staging or committing, use [restore-code](../restore-code/SKILL.md) to recover from the backup artifact.

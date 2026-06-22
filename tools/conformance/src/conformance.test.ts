@@ -222,8 +222,9 @@ describe("generator template conformance", () => {
     (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
   );
 
-  for (const conformanceCase of conformanceCases) {
-    it(`validates "${conformanceCase.template}" generated instances`, () => {
+  it.each(conformanceCases)(
+    'validates "$template" generated instances',
+    (conformanceCase) => {
       const results =
         conformanceCase.instanceType === "single"
           ? conformanceCase.instanceDirectoryPaths.map(
@@ -242,10 +243,12 @@ describe("generator template conformance", () => {
             );
 
       expect(results.length).toBeGreaterThan(0);
+
       const errors = stringifyConformanceErrors(results);
+
       expect(errors).toBeNull();
-    });
-  }
+    },
+  );
 
   it("validates all NestJS service files and tests with nestjs-service-file templates", () => {
     const nestjsApplications = applications.filter((application) =>
@@ -305,6 +308,7 @@ describe("generator template conformance", () => {
         };
       });
     const errors = stringifyConformanceErrors(serviceFileValidationResults);
+
     expect(errors).toBeNull();
   });
 });

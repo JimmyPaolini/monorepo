@@ -4,6 +4,7 @@ import { environmentSchema } from "./modules/{{nameKebabCase}}/{{nameKebabCase}}
 
 describe("environment schema e2e", () => {
   it("allows an empty schema by default", () => {
-    expect(environmentSchema.parse({})).toEqual({});
+
+    expect.hasAssertions();    expect(environmentSchema.parse({})).toStrictEqual({});
   });
 });

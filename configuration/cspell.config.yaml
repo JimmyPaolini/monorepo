@@ -108,6 +108,8 @@ words:
   - Biblia
   - caes
   - Canis
+  - checkpointing
+  - codemods
   - dataloaders
   - disambiguator
   - elipssis
@@ -119,6 +121,7 @@ words:
   - hackathon
   - Hrefs
   - Indo
+  - inspectable
   - IVXLCDM
   - jimmypaolini
   - joor
@@ -143,6 +146,7 @@ words:
   - paolini
   - querykey
   - reagent
+  - reflog
   - satisfies
   - shiftsmart
   - testamentum

@@ -10,7 +10,7 @@ const PROJECT_NAME = "my-app";
 const PROJECT_ROOT = "applications/my-app";
 const COMPONENTS_DIR = `${PROJECT_ROOT}/src/components`;
 
-describe("generateComponent", () => {
+describe(generateComponent, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -29,8 +29,8 @@ describe("generateComponent", () => {
         project: PROJECT_NAME,
       });
 
-      expect(tree.exists(`${COMPONENTS_DIR}/Button.tsx`)).toBeTruthy();
-      expect(tree.exists(`${COMPONENTS_DIR}/Button.test.tsx`)).toBeTruthy();
+      expect(tree.exists(`${COMPONENTS_DIR}/Button.tsx`)).toBe(true);
+      expect(tree.exists(`${COMPONENTS_DIR}/Button.test.tsx`)).toBe(true);
     });
 
     it("should use PascalCase component name in generated component file", async () => {
@@ -43,6 +43,7 @@ describe("generateComponent", () => {
         `${COMPONENTS_DIR}/Button.tsx`,
         "utf8",
       );
+
       expect(componentContent).toContain("ButtonProps");
       expect(componentContent).toContain("export const Button");
     });
@@ -57,6 +58,7 @@ describe("generateComponent", () => {
         `${COMPONENTS_DIR}/Button.test.tsx`,
         "utf8",
       );
+
       expect(testContent).toContain("Button");
       expect(testContent).toContain("ButtonProps");
     });
@@ -67,8 +69,8 @@ describe("generateComponent", () => {
         project: PROJECT_NAME,
       });
 
-      expect(tree.exists(`${COMPONENTS_DIR}/MyButton.tsx`)).toBeTruthy();
-      expect(tree.exists(`${COMPONENTS_DIR}/MyButton.test.tsx`)).toBeTruthy();
+      expect(tree.exists(`${COMPONENTS_DIR}/MyButton.tsx`)).toBe(true);
+      expect(tree.exists(`${COMPONENTS_DIR}/MyButton.test.tsx`)).toBe(true);
     });
   });
 

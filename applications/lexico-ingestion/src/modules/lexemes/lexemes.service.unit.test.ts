@@ -1,9 +1,15 @@
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
-import { Lexeme, Translation } from "@monorepo/lexico-entities";
+import {
+  type Form,
+  Lexeme,
+  type PrincipalPart,
+  type Pronunciation,
+  Translation,
+} from "@monorepo/lexico-entities";
 
 import { EtymologyService } from "../etymology/etymology.service";
 import { FormsService } from "../forms/forms.service";
@@ -18,33 +24,33 @@ import { LexemesService } from "./lexemes.service";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 
-describe("LexemesService", () => {
+describe(LexemesService, () => {
   let service: LexemesService;
   let lexemesService: LexemesService;
 
   const queryBuilder = {
-    getCount: vi.fn(),
-    getMany: vi.fn(),
-    leftJoinAndSelect: vi.fn(),
-    where: vi.fn(),
+    getCount: vi.fn<() => Promise<number>>(),
+    getMany: vi.fn<() => Promise<Lexeme[]>>(),
+    leftJoinAndSelect: vi.fn<() => unknown>(),
+    where: vi.fn<() => unknown>(),
   };
-  queryBuilder.leftJoinAndSelect.mockImplementation(() => queryBuilder);
-  queryBuilder.where.mockImplementation(() => queryBuilder);
+  queryBuilder.leftJoinAndSelect.mockReturnValue(queryBuilder);
+  queryBuilder.where.mockReturnValue(queryBuilder);
 
   const lexemeRepository = {
-    createQueryBuilder: vi.fn(() => queryBuilder),
-    findOne: vi.fn(),
-    save: vi.fn(),
-    upsert: vi.fn(),
+    createQueryBuilder: vi.fn<() => typeof queryBuilder>(() => queryBuilder),
+    findOne: vi.fn<() => Promise<Lexeme | null>>(),
+    save: vi.fn<(entity: Lexeme) => Promise<Lexeme>>(),
+    upsert: vi.fn<(entity: unknown, options: unknown) => Promise<unknown>>(),
   };
 
   const loggerService = {
-    debug: vi.fn(),
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
-    verbose: vi.fn(),
-    warn: vi.fn(),
+    debug: vi.fn<(...parameters: unknown[]) => void>(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
+    verbose: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   };
 
   const etymologyService = {
@@ -54,39 +60,41 @@ describe("LexemesService", () => {
   };
 
   const formsService = {
-    buildFormsForPartOfSpeech: vi.fn(() => []),
-    ingestLexemeForms: vi.fn(async () => {}),
+    buildFormsForPartOfSpeech: vi.fn<() => Form[]>(() => []),
+    ingestLexemeForms: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   const partOfSpeechService = {
-    getFirstPrincipalPartName: vi.fn(() => "first"),
-    getPartOfSpeech: vi.fn(() => "noun"),
-    ingestInflection: vi.fn(() => null),
-    parseForms: vi.fn(() => ({})),
+    getFirstPrincipalPartName: vi.fn<() => string>(() => "first"),
+    getPartOfSpeech: vi.fn<() => string>(() => "noun"),
+    ingestInflection: vi.fn<() => null>(() => null),
+    parseForms: vi.fn<() => unknown>(() => ({})),
   };
 
   const principalPartsService = {
-    ingestLexemePrincipalParts: vi.fn(async () => {}),
-    parsePrincipalParts: vi.fn(() => ({
+    ingestLexemePrincipalParts: vi.fn<() => Promise<void>>(async () => {}),
+    parsePrincipalParts: vi.fn<
+      () => { macronizedWord: string; principalParts: PrincipalPart[] }
+    >(() => ({
       macronizedWord: "amo",
       principalParts: [],
     })),
   };
 
   const pronunciationService = {
-    ingestLexemePronunciations: vi.fn(async () => {}),
-    parse: vi.fn(() => []),
+    ingestLexemePronunciations: vi.fn<() => Promise<void>>(async () => {}),
+    parse: vi.fn<() => Pronunciation[]>(() => []),
   };
 
   const translationsService = {
     parseTranslations: vi.fn<() => Translation[]>(() => []),
-    prepareTranslationsForSave: vi.fn(
-      (_savedLexeme, translations) => translations,
-    ),
+    prepareTranslationsForSave: vi.fn<
+      (savedLexeme: Lexeme, translations: Translation[]) => Translation[]
+    >((_savedLexeme, translations) => translations),
   };
 
   const wordsService = {
-    ingestLexemeWords: vi.fn(async () => {}),
+    ingestLexemeWords: vi.fn<() => Promise<void>>(async () => {}),
   };
 
   beforeAll(async () => {
@@ -173,7 +181,7 @@ describe("LexemesService", () => {
     const result =
       await lexemesService.findLexemesByLemmaWithTranslations("amo");
 
-    expect(result).toEqual([lexeme]);
+    expect(result).toStrictEqual([lexeme]);
     expect(queryBuilder.leftJoinAndSelect).toHaveBeenCalledWith(
       "lexeme.translations",
       "translations",
@@ -187,7 +195,7 @@ describe("LexemesService", () => {
       word: "amo",
     });
 
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
   });
 
   it("should return empty parse result when no headwords are present", async () => {
@@ -200,7 +208,7 @@ describe("LexemesService", () => {
 
     const result = await lexemesService.parseLexemes(page);
 
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
     expect(loggerService.warn).toHaveBeenCalledWith(
       "No headwords found for: amo",
     );
@@ -231,7 +239,7 @@ describe("LexemesService", () => {
 
     const result = await lexemesService.parseLexemes(page);
 
-    expect(result).toEqual([parsedLexeme]);
+    expect(result).toStrictEqual([parsedLexeme]);
     expect(parseLexemeFromElementSpy).toHaveBeenCalledTimes(1);
   });
 
@@ -257,7 +265,7 @@ describe("LexemesService", () => {
 
     const result = await lexemesService.parseLexemes(page);
 
-    expect(result).toEqual([]);
+    expect(result).toStrictEqual([]);
   });
 
   it("should upsert lexeme with ingestion metadata", async () => {
@@ -456,11 +464,14 @@ describe("LexemesService", () => {
   it("should save inflection relation when inflection exists", async () => {
     const lexeme = new Lexeme();
     const savedLexeme = new Lexeme();
+    const saveInflectionMock = vi
+      .fn<() => Promise<void>>()
+      .mockResolvedValue(undefined);
 
     const inflection = {
       id: "",
       lexeme: undefined,
-      save: vi.fn().mockResolvedValue(undefined),
+      save: saveInflectionMock,
     } as unknown as NonNullable<Lexeme["inflection"]>;
 
     const savedInflection = {
@@ -480,9 +491,7 @@ describe("LexemesService", () => {
     ).saveInflection(lexeme, savedLexeme);
 
     expect(inflection.id).toBe("existing-id");
-    expect(
-      (inflection.save as ReturnType<typeof vi.fn>).mock.calls.length,
-    ).toBe(1);
+    expect(saveInflectionMock).toHaveBeenCalledTimes(1);
   });
 
   it("should return early from saveInflection when no inflection exists", async () => {
@@ -570,7 +579,9 @@ describe("LexemesService", () => {
       }
     ).saveLexemeRelations(lexeme, savedLexeme);
 
-    expect(principalPartsService.ingestLexemePrincipalParts).toHaveBeenCalled();
+    expect(
+      principalPartsService.ingestLexemePrincipalParts,
+    ).toHaveBeenCalledWith();
     expect(formsService.ingestLexemeForms).toHaveBeenCalledWith(
       lexeme.forms,
       savedLexeme,
@@ -651,7 +662,7 @@ describe("LexemesService", () => {
       partOfSpeech: "verb",
     });
 
-    expect(lexeme.translations).toEqual([
+    expect(lexeme.translations).toStrictEqual([
       primaryTranslation,
       participleTranslation,
     ]);

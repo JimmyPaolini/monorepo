@@ -5,20 +5,20 @@ import { mockDates } from "@caelundas/testing/mocks";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { CalendarService } from "./calendar.service";
 
 import type { Event } from "./calendar.types";
 
 vi.mock("node:fs/promises", () => ({
-  writeFile: vi.fn(),
+  writeFile: vi.fn<typeof writeFile>(),
 }));
 
-describe("CalendarService", () => {
+describe(CalendarService, () => {
   let service: CalendarService;
   const configService = {
-    get: vi.fn().mockReturnValue("./output"),
+    get: vi.fn<ConfigService["get"]>().mockReturnValue("./output"),
   };
   const logger = new LoggerService();
 
@@ -134,6 +134,7 @@ describe("CalendarService", () => {
 
       // UID should include both start and end when they differ
       const uid = /UID:(.+)/.exec(vevent)?.[1] ?? "";
+
       expect(uid).toContain(durationEvent.summary);
       // Verify both DTSTART and DTEND are present with different values
       expect(vevent).toContain("DTSTART");
@@ -242,8 +243,8 @@ describe("CalendarService", () => {
 
       expect(calendar).toContain("SUMMARY:Vernal Equinox");
       expect(calendar).toContain("SUMMARY:Full Moon");
-      expect((calendar.match(/BEGIN:VEVENT/g) || []).length).toBe(2);
-      expect((calendar.match(/END:VEVENT/g) || []).length).toBe(2);
+      expect(calendar.match(/BEGIN:VEVENT/g) || []).toHaveLength(2);
+      expect(calendar.match(/END:VEVENT/g) || []).toHaveLength(2);
     });
 
     it("handles empty events array", () => {
@@ -290,9 +291,7 @@ describe("CalendarService", () => {
 
   describe("write", () => {
     it("writes ICS output to configured directory", async () => {
-      const logSpy = vi
-        .spyOn(logger, "log")
-        .mockImplementation(() => undefined);
+      const logSpy = vi.spyOn(logger, "log").mockReturnValue(undefined);
 
       const events: Event[] = [
         {
@@ -313,7 +312,7 @@ describe("CalendarService", () => {
       });
 
       expect(configService.get).toHaveBeenCalledWith("OUTPUT_DIRECTORY");
-      expect(writeFile).toHaveBeenCalledOnce();
+      expect(writeFile).toHaveBeenCalledWith();
       expect(logSpy).toHaveBeenCalledWith(
         expect.stringContaining("Wrote 1 events to file"),
       );
@@ -341,7 +340,7 @@ describe("CalendarService", () => {
         },
       );
 
-      expect(writeFile).toHaveBeenCalled();
+      expect(writeFile).toHaveBeenCalledWith();
       expect(vi.mocked(writeFile).mock.calls.at(-1)?.[0]).toContain("output/");
     });
   });

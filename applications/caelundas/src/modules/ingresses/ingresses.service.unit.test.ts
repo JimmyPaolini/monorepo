@@ -9,7 +9,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { IngressesComposerService } from "./ingresses-composer.service";
 import { IngressesService } from "./ingresses.service";
@@ -19,7 +19,7 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -38,7 +38,8 @@ interface ServicePrivate {
     previousLongitude: number;
   }) => boolean;
 }
-describe("IngressesService", () => {
+
+describe(IngressesService, () => {
   let service: IngressesService;
   let helperService: IngressesComposerService;
   let s: ServicePrivate;
@@ -343,10 +344,10 @@ describe("IngressesService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-03-20T03:06:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-04-19T15:00:00.000Z"),
       );
       expect(progressiveEvents[0]?.categories).toContain("Sun");
@@ -367,51 +368,51 @@ describe("IngressesService", () => {
 
     describe("degreeRangeBySign", () => {
       it("has correct ranges for all signs", () => {
-        expect(IngressesService.degreeRangeBySign.aries).toEqual({
+        expect(IngressesService.degreeRangeBySign.aries).toStrictEqual({
           maximum: 30,
           minimum: 0,
         });
-        expect(IngressesService.degreeRangeBySign.taurus).toEqual({
+        expect(IngressesService.degreeRangeBySign.taurus).toStrictEqual({
           maximum: 60,
           minimum: 30,
         });
-        expect(IngressesService.degreeRangeBySign.gemini).toEqual({
+        expect(IngressesService.degreeRangeBySign.gemini).toStrictEqual({
           maximum: 90,
           minimum: 60,
         });
-        expect(IngressesService.degreeRangeBySign.cancer).toEqual({
+        expect(IngressesService.degreeRangeBySign.cancer).toStrictEqual({
           maximum: 120,
           minimum: 90,
         });
-        expect(IngressesService.degreeRangeBySign.leo).toEqual({
+        expect(IngressesService.degreeRangeBySign.leo).toStrictEqual({
           maximum: 150,
           minimum: 120,
         });
-        expect(IngressesService.degreeRangeBySign.virgo).toEqual({
+        expect(IngressesService.degreeRangeBySign.virgo).toStrictEqual({
           maximum: 180,
           minimum: 150,
         });
-        expect(IngressesService.degreeRangeBySign.libra).toEqual({
+        expect(IngressesService.degreeRangeBySign.libra).toStrictEqual({
           maximum: 210,
           minimum: 180,
         });
-        expect(IngressesService.degreeRangeBySign.scorpio).toEqual({
+        expect(IngressesService.degreeRangeBySign.scorpio).toStrictEqual({
           maximum: 240,
           minimum: 210,
         });
-        expect(IngressesService.degreeRangeBySign.sagittarius).toEqual({
+        expect(IngressesService.degreeRangeBySign.sagittarius).toStrictEqual({
           maximum: 270,
           minimum: 240,
         });
-        expect(IngressesService.degreeRangeBySign.capricorn).toEqual({
+        expect(IngressesService.degreeRangeBySign.capricorn).toStrictEqual({
           maximum: 300,
           minimum: 270,
         });
-        expect(IngressesService.degreeRangeBySign.aquarius).toEqual({
+        expect(IngressesService.degreeRangeBySign.aquarius).toStrictEqual({
           maximum: 330,
           minimum: 300,
         });
-        expect(IngressesService.degreeRangeBySign.pisces).toEqual({
+        expect(IngressesService.degreeRangeBySign.pisces).toStrictEqual({
           maximum: 360,
           minimum: 330,
         });
@@ -484,9 +485,10 @@ describe("IngressesService", () => {
           undefined,
         ] as unknown);
 
-        expect(helperService.buildProgressiveSpansForBody("Sun", [])).toEqual(
-          [],
-        );
+        expect(
+          helperService.buildProgressiveSpansForBody("Sun", []),
+        ).toStrictEqual([]);
+
         sortBySpy.mockRestore();
       });
 

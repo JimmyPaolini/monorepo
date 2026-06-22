@@ -1,6 +1,6 @@
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -21,20 +21,25 @@ const createEvent = (description: string, categories: string[]): Event => {
   };
 };
 
-describe("EclipsesService", () => {
+describe(EclipsesService, () => {
   let service: EclipsesService;
   const logger = new LoggerService();
 
   const eclipseCalculationService = {
-    getAllEclipseCoordinates: vi.fn(),
-    getGeocentricEvents: vi.fn(),
-    getTopocentricEventsForDetect: vi.fn(),
+    getAllEclipseCoordinates:
+      vi.fn<EclipseCalculationService["getAllEclipseCoordinates"]>(),
+    getGeocentricEvents:
+      vi.fn<EclipseCalculationService["getGeocentricEvents"]>(),
+    getTopocentricEventsForDetect:
+      vi.fn<EclipseCalculationService["getTopocentricEventsForDetect"]>(),
   };
 
   const eclipseEventService = {
-    buildLunarEclipseEvent: vi.fn(),
-    buildSolarEclipseEvent: vi.fn(),
-    detectProgressive: vi.fn(),
+    buildLunarEclipseEvent:
+      vi.fn<EclipseEventService["buildLunarEclipseEvent"]>(),
+    buildSolarEclipseEvent:
+      vi.fn<EclipseEventService["buildSolarEclipseEvent"]>(),
+    detectProgressive: vi.fn<EclipseEventService["detectProgressive"]>(),
   };
 
   beforeAll(async () => {
@@ -84,7 +89,7 @@ describe("EclipsesService", () => {
         frame: "geocentric",
         phase: "beginning",
       });
-      expect(result).toEqual(expectedEvent);
+      expect(result).toStrictEqual(expectedEvent);
     });
   });
 
@@ -105,7 +110,7 @@ describe("EclipsesService", () => {
         frame: "geocentric",
         phase: "beginning",
       });
-      expect(result).toEqual(expectedEvent);
+      expect(result).toStrictEqual(expectedEvent);
     });
   });
 
@@ -175,7 +180,7 @@ describe("EclipsesService", () => {
         sunDiameterEphemeris: {},
       });
 
-      expect(result).toEqual([geocentricEvent, topocentricEvent]);
+      expect(result).toStrictEqual([geocentricEvent, topocentricEvent]);
       expect(
         eclipseCalculationService.getTopocentricEventsForDetect,
       ).toHaveBeenCalledTimes(1);
@@ -233,7 +238,7 @@ describe("EclipsesService", () => {
         sunDiameterEphemeris: {},
       });
 
-      expect(result).toEqual([geocentricEvent]);
+      expect(result).toStrictEqual([geocentricEvent]);
       expect(
         eclipseCalculationService.getTopocentricEventsForDetect,
       ).not.toHaveBeenCalled();
@@ -259,7 +264,7 @@ describe("EclipsesService", () => {
       expect(eclipseEventService.detectProgressive).toHaveBeenCalledWith([
         sourceEvent,
       ]);
-      expect(result).toEqual([progressiveEvent]);
+      expect(result).toStrictEqual([progressiveEvent]);
     });
   });
 });

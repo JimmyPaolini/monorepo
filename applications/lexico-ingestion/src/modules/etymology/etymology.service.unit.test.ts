@@ -20,7 +20,7 @@ function getElementByIdentifierOrThrow(
   throw new Error(`Expected element ${identifier} to exist in test markup`);
 }
 
-describe("EtymologyService", () => {
+describe(EtymologyService, () => {
   let service: EtymologyService;
 
   beforeAll(async () => {
@@ -45,7 +45,7 @@ describe("EtymologyService", () => {
 
       const result = service.parse($, element, new Lexeme());
 
-      expect(result).toEqual({ etymology: "" });
+      expect(result).toStrictEqual({ etymology: "" });
     });
 
     it("returns empty etymology when etymology heading has no paragraph", () => {
@@ -57,7 +57,7 @@ describe("EtymologyService", () => {
 
       const result = service.parse($, element, new Lexeme());
 
-      expect(result).toEqual({ etymology: "" });
+      expect(result).toStrictEqual({ etymology: "" });
     });
 
     it("returns empty etymology when etymology paragraph is blank", () => {
@@ -70,7 +70,7 @@ describe("EtymologyService", () => {
 
       const result = service.parse($, element, new Lexeme());
 
-      expect(result).toEqual({ etymology: "" });
+      expect(result).toStrictEqual({ etymology: "" });
     });
 
     it("returns etymology text without synthetic translation when no participle pattern exists", () => {
@@ -83,7 +83,7 @@ describe("EtymologyService", () => {
 
       const result = service.parse($, element, new Lexeme());
 
-      expect(result).toEqual({
+      expect(result).toStrictEqual({
         etymology: "Borrowed from an earlier source.",
       });
     });

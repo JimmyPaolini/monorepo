@@ -3,7 +3,7 @@
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
@@ -17,7 +17,7 @@ import { PronunciationService } from "./pronunciation.service";
 
 import type { AnyNode } from "domhandler";
 
-describe("PronunciationService", () => {
+describe(PronunciationService, () => {
   interface ClassicalContext {
     ch: string;
     index: number;
@@ -101,11 +101,11 @@ describe("PronunciationService", () => {
 
   beforeAll(async () => {
     lexemeRepository = {
-      save: vi.fn(),
+      save: vi.fn<(entity: Lexeme) => Promise<Lexeme>>(),
     };
     classifier = {
-      applyWiktionaryPronunciations: vi.fn(),
-      processClassicalCharacter: vi.fn(
+      applyWiktionaryPronunciations: vi.fn<() => void>(),
+      processClassicalCharacter: vi.fn<(context: ClassicalContext) => number>(
         (context: ClassicalContext) => context.index,
       ),
       processEcclesiasticalCharacter: vi.fn(
@@ -113,8 +113,8 @@ describe("PronunciationService", () => {
       ),
     };
     loggerService = {
-      log: vi.fn(),
-      setContext: vi.fn(),
+      log: vi.fn<(...parameters: unknown[]) => void>(),
+      setContext: vi.fn<(context: string) => void>(),
     };
 
     const module = await Test.createTestingModule({
@@ -160,7 +160,7 @@ describe("PronunciationService", () => {
           "e",
         ]);
 
-      expect(pronunciations).toEqual(
+      expect(pronunciations).toStrictEqual(
         expect.arrayContaining(["a b e", "a c d e"]),
       );
     });
@@ -169,7 +169,7 @@ describe("PronunciationService", () => {
       const pronunciations =
         getPronunciationServicePrivates().buildPronunciations([undefined]);
 
-      expect(pronunciations).toEqual([]);
+      expect(pronunciations).toStrictEqual([]);
     });
 
     it("computes classical phonemes with classifier callback", () => {
@@ -177,6 +177,7 @@ describe("PronunciationService", () => {
         (context: ClassicalContext) => {
           expect(context.isVowel(0)).toBe(true);
           expect(context.isVowel(-1)).toBe(false);
+
           context.phonemes.push(context.ch);
           return context.index;
         },
@@ -227,6 +228,7 @@ describe("PronunciationService", () => {
         (context: EcclesiasticalContext) => {
           expect(context.isVowel("a")).toBe(true);
           expect(context.isVowel("z")).toBe(false);
+
           context.phonemes.push(context.ch);
           return context.index;
         },
@@ -235,7 +237,7 @@ describe("PronunciationService", () => {
       const phonemes =
         getPronunciationServicePrivates().getEcclesiasticalPhonemes("a");
 
-      expect(phonemes).toEqual(["a"]);
+      expect(phonemes).toStrictEqual(["a"]);
       expect(classifier.processEcclesiasticalCharacter).toHaveBeenCalledTimes(
         1,
       );
@@ -252,7 +254,7 @@ describe("PronunciationService", () => {
       const phonemes =
         getPronunciationServicePrivates().getEcclesiasticalPhonemes("roma");
 
-      expect(phonemes).toEqual(["r", "m"]);
+      expect(phonemes).toStrictEqual(["r", "m"]);
       expect(classifier.processEcclesiasticalCharacter).toHaveBeenCalledTimes(
         2,
       );
@@ -305,7 +307,7 @@ describe("PronunciationService", () => {
 
       result.forEach((pronunciation) => {
         expect(pronunciation).toBeInstanceOf(Pronunciation);
-        expect(pronunciation.variant).toBeTruthy();
+        expect(pronunciation.variant).toBe(true);
         expect(pronunciation.phonemic).toBeNull();
         expect(pronunciation.phonetic).toBeNull();
       });
@@ -315,7 +317,8 @@ describe("PronunciationService", () => {
       const result = parseWord("");
 
       expect(result).toHaveLength(3);
-      result.forEach((p) => expect(p.variant).toBeTruthy());
+
+      result.forEach((p) => expect(p.variant).toBe(true));
     });
 
     it("should handle word with diacritics", () => {
@@ -328,7 +331,7 @@ describe("PronunciationService", () => {
     it("should return three pronunciation variants in correct order", () => {
       const result = parseWord("amicus");
 
-      expect(result.length).toBe(3);
+      expect(result).toHaveLength(3);
       expect(result[0]?.variant).toBe("classical");
       expect(result[1]?.variant).toBe("ecclesiastical");
       expect(result[2]?.variant).toBe("vulgar");
@@ -416,11 +419,13 @@ describe("PronunciationService", () => {
         ecclesiastical,
       ]);
 
-      expect(lexemeRepository.save).toHaveBeenCalled();
+      expect(lexemeRepository.save).toHaveBeenCalledWith();
+
       const savedCall = lexemeRepository.save.mock.calls[0] as
         | [Lexeme]
         | undefined;
       const savedLexeme = savedCall?.[0];
+
       expect(savedLexeme?.pronunciations).toHaveLength(2);
     });
 
@@ -436,7 +441,7 @@ describe("PronunciationService", () => {
 
       await service.ingestLexemePronunciations(lexeme, [pronunciation]);
 
-      expect(lexemeRepository.save).toHaveBeenCalled();
+      expect(lexemeRepository.save).toHaveBeenCalledWith();
     });
 
     it("should match pronunciations by variant to preserve IDs", async () => {

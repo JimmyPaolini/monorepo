@@ -9,7 +9,7 @@ import { ProgressiveService } from "../progressive/progressive.service";
 
 import { CaelundasCommand } from "./caelundas.command";
 
-describe("CaelundasCommand", () => {
+describe(CaelundasCommand, () => {
   let command: CaelundasCommand;
 
   beforeAll(async () => {

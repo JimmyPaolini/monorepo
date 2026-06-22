@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { QuadrupleAspectsBaseService } from "./quadruple-aspects-base.service";
 import { QuadrupleAspectsComposerService } from "./quadruple-aspects-composer.service";
@@ -10,7 +10,7 @@ import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("QuadrupleAspectsService", () => {
+describe(QuadrupleAspectsService, () => {
   let service: QuadrupleAspectsService;
   let baseService: QuadrupleAspectsBaseService;
   let composerService: QuadrupleAspectsComposerService;
@@ -29,7 +29,7 @@ describe("QuadrupleAspectsService", () => {
   });
 
   describe("detect", () => {
-    describe("Grand Cross composition", () => {
+    describe("grand Cross composition", () => {
       it("detects Grand Cross from 2 oppositions and 4 squares", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Grand Cross: Sun opposite Moon, Mars opposite Jupiter
@@ -51,9 +51,11 @@ describe("QuadrupleAspectsService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
         );
+
         expect(grandCross).toBeDefined();
         expect(grandCross?.description).toContain("grand cross");
         expect(grandCross?.categories).toContain("Sun");
@@ -82,9 +84,11 @@ describe("QuadrupleAspectsService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
         );
+
         expect(grandCross).toBeDefined();
         expect(grandCross?.categories).toContain("Forming");
       });
@@ -109,9 +113,11 @@ describe("QuadrupleAspectsService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
         );
+
         expect(grandCross).toBeDefined();
         expect(grandCross?.categories).toContain("Dissolving");
       });
@@ -135,11 +141,12 @@ describe("QuadrupleAspectsService", () => {
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
         );
+
         expect(grandCross).toBeUndefined();
       });
     });
 
-    describe("Kite composition", () => {
+    describe("kite composition", () => {
       it("detects Kite from Grand Trine plus opposition and sextiles", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Kite: Grand Trine (Sun-Moon-Mars) + Venus opposite Sun + Venus sextile Moon/Mars
@@ -160,7 +167,9 @@ describe("QuadrupleAspectsService", () => {
         });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
+
         const kite = events.find((e) => e.categories.includes("Kite"));
+
         expect(kite).toBeDefined();
         expect(kite?.description).toContain("kite");
         expect(kite?.categories).toContain("Sun");
@@ -188,6 +197,7 @@ describe("QuadrupleAspectsService", () => {
         });
 
         const kite = events.find((e) => e.categories.includes("Kite"));
+
         expect(kite).toBeUndefined();
       });
     });
@@ -199,7 +209,8 @@ describe("QuadrupleAspectsService", () => {
         minute: currentMinute,
         previousAspectBodies: [],
       });
-      expect(events.length).toBe(0);
+
+      expect(events).toHaveLength(0);
     });
 
     it("filters events outside current time window", () => {
@@ -214,7 +225,8 @@ describe("QuadrupleAspectsService", () => {
         minute: currentMinute,
         previousAspectBodies,
       });
-      expect(events.length).toBe(0);
+
+      expect(events).toHaveLength(0);
     });
 
     it("does not generate events for progressive aspects spanning multiple hours", () => {
@@ -244,7 +256,7 @@ describe("QuadrupleAspectsService", () => {
       });
 
       // No events - pattern exists in prev/current/next minutes
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
   });
 
@@ -293,9 +305,9 @@ describe("QuadrupleAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(progressiveEvents).toHaveLength(1);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingEvent.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingEvent.start);
       expect(progressiveEvents[0]?.description).toContain("grand cross");
       expect(progressiveEvents[0]?.categories).toContain("Quadruple Aspect");
     });
@@ -372,7 +384,7 @@ describe("QuadrupleAspectsService", () => {
         kiteDissolving,
       ]);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
       expect(
         progressiveEvents.find((e) => e.description.includes("grand cross")),
       ).toBeDefined();
@@ -453,7 +465,7 @@ describe("QuadrupleAspectsService", () => {
         quartet2Dissolving,
       ]);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
       expect(
         progressiveEvents.find(
           (e) =>
@@ -513,7 +525,8 @@ describe("QuadrupleAspectsService", () => {
 
     it("handles empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
-      expect(progressiveEvents.length).toBe(0);
+
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("skips progressive when dissolving comes before forming", () => {
@@ -554,7 +567,7 @@ describe("QuadrupleAspectsService", () => {
         formingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("removes phase emojis from summary", () => {
@@ -595,7 +608,7 @@ describe("QuadrupleAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
+      expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]?.summary).toBe("Grand Cross forming");
     });
 
@@ -637,7 +650,7 @@ describe("QuadrupleAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
+      expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]?.description).not.toMatch(
         /(forming|dissolving|perfective)/i,
       );
@@ -683,7 +696,7 @@ describe("QuadrupleAspectsService", () => {
         dissolvingEvent,
       ]);
 
-      expect(progressiveEvents.length).toBe(1);
+      expect(progressiveEvents).toHaveLength(1);
       // Focal info should be removed by the regex that removes phase text with optional focal info
       expect(progressiveEvents[0]?.description).not.toContain("forming");
       expect(progressiveEvents[0]?.description).not.toContain("dissolving");
@@ -913,6 +926,7 @@ describe("QuadrupleAspectsService", () => {
       });
 
       expect(result).toBeNull();
+
       determinePhaseSpy.mockRestore();
     });
 
@@ -957,7 +971,7 @@ describe("QuadrupleAspectsService", () => {
         unionEdges: [],
       });
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
     });
 
     it("handles undefined sorted events while collecting progressive group events", () => {
@@ -999,6 +1013,7 @@ describe("QuadrupleAspectsService", () => {
       composerService.collectProgressiveEventsFromGroup([], progressiveEvents);
 
       expect(progressiveEvents).toHaveLength(1);
+
       sortBySpy.mockRestore();
     });
 
@@ -1072,6 +1087,7 @@ describe("QuadrupleAspectsService", () => {
 
     it("returns expected opposite body values in base helper", () => {
       const baseInternals = getBaseInternals();
+
       expect(
         baseInternals.getOtherBody(
           { aspect: "opposite", bodies: ["sun", "moon"] },
@@ -1127,6 +1143,7 @@ describe("QuadrupleAspectsService", () => {
 
     it("returns perfective phase marker in base helper", () => {
       const baseInternals = getBaseInternals();
+
       expect(baseInternals.getPhaseEmoji("perfective")).toBe("🎯 ");
     });
 

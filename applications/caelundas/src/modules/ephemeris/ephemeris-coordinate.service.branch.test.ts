@@ -1,20 +1,24 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
-import { calc } from "sweph";
+import { calc, type nod_aps_ut } from "sweph";
+import { describe, expect, it } from "vitest";
 
 vi.mock("sweph", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("sweph")>();
+  const importedModule = await importOriginal();
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
   return {
     ...actual,
-    calc: vi.fn().mockReturnValue({
+    calc: vi.fn<typeof calc>().mockReturnValue({
       data: [120.5, -1.2, 1.01, 0, 0, 0],
       error: "",
       flag: 258,
     }),
-    nod_aps_ut: vi.fn().mockReturnValue({
+    nod_aps_ut: vi.fn<typeof nod_aps_ut>().mockReturnValue({
       data: {
         perihelion: [90, 0, 0, 0, 0, 0],
-      },
+      } as never,
       error: "",
       flag: 258,
     }),
@@ -22,7 +26,11 @@ vi.mock("sweph", async (importOriginal) => {
 });
 
 vi.mock("./ephemeris.constants", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("./ephemeris.constants")>();
+  const importedModule = await importOriginal();
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
   return {
     ...actual,
     swissEphemerisConstantByNode: {
@@ -36,16 +44,26 @@ vi.mock("./ephemeris.constants", async (importOriginal) => {
 
 import { EphemerisCoordinateService } from "./ephemeris-coordinate.service";
 
-describe("EphemerisCoordinateService branch coverage", () => {
+import type { MathService } from "../math/math.service";
+import type { EphemerisConstantsService } from "./ephemeris-constants.service";
+import type { EphemerisTimeService } from "./ephemeris-time.service";
+
+describe("ephemerisCoordinateService branch coverage", () => {
   const constantsService = {
-    getSwissEphemerisConstantForBody: vi.fn().mockReturnValue(0),
+    getSwissEphemerisConstantForBody: vi
+      .fn<EphemerisConstantsService["getSwissEphemerisConstantForBody"]>()
+      .mockReturnValue(0),
   };
   const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
-      julianDayEphemerisTime: 2_460_395.5,
-      julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
+    dateToJulianDays: vi
+      .fn<EphemerisTimeService["dateToJulianDays"]>()
+      .mockReturnValue({
+        julianDayEphemerisTime: 2_460_395.5,
+        julianDayUniversalTime: 2_460_395.499_306,
+      }),
+    generateMinutes: vi.fn<
+      (start: moment.Moment, end: moment.Moment) => Iterable<moment.Moment>
+    >((start: moment.Moment, end: moment.Moment) => {
       const values: moment.Moment[] = [];
       let current = start.clone();
       while (current.valueOf() <= end.valueOf()) {
@@ -56,7 +74,9 @@ describe("EphemerisCoordinateService branch coverage", () => {
     }),
   };
   const mathService = {
-    normalizeDegrees: vi.fn((degree: number) => degree),
+    normalizeDegrees: vi.fn<MathService["normalizeDegrees"]>(
+      (degree: number) => degree,
+    ),
   };
 
   const service = new EphemerisCoordinateService(
@@ -72,7 +92,9 @@ describe("EphemerisCoordinateService branch coverage", () => {
         end: moment.utc("2024-03-21T00:00:00.000Z"),
         start: moment.utc("2024-03-21T00:00:00.000Z"),
       }),
-    ).toThrow("No Swiss Ephemeris constant configured for node: north lunar node");
+    ).toThrow(
+      "No Swiss Ephemeris constant configured for node: north lunar node",
+    );
   });
 
   it("throws when a regular node calculation fails", () => {

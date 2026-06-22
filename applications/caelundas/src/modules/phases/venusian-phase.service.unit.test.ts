@@ -3,7 +3,7 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -66,7 +66,7 @@ const configureProgressiveUtilitiesMock = (
   vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
 };
 
-describe("VenusianPhaseService", () => {
+describe(VenusianPhaseService, () => {
   let service: VenusianPhaseService;
   let phaseCalculationService: ReturnType<
     typeof createMock<PhaseCalculationService>
@@ -121,8 +121,8 @@ describe("VenusianPhaseService", () => {
         `♀️${symbolByVenusianPhase["morning rise"]} Venus Morning Rise`,
       );
       expect(event.description).toBe("Venus Morning Rise");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Venusian");
       expect(event.categories).toContain("Morning Rise");
     });
@@ -150,7 +150,7 @@ describe("VenusianPhaseService", () => {
       });
 
       expect(events).toHaveLength(8);
-      expect(events.map((event) => event.description)).toEqual(
+      expect(events.map((event) => event.description)).toStrictEqual(
         expect.arrayContaining([
           "Venus Morning Rise",
           "Venus Western Brightest",
@@ -192,8 +192,8 @@ describe("VenusianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(VENUS_MORNING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(morningRise.start);
-      expect(events[0]?.end).toEqual(morningSet.start);
+      expect(events[0]?.start).toStrictEqual(morningRise.start);
+      expect(events[0]?.end).toStrictEqual(morningSet.start);
     });
 
     it("creates venusian evening visibility duration events", () => {
@@ -222,8 +222,8 @@ describe("VenusianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(VENUS_EVENING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(eveningRise.start);
-      expect(events[0]?.end).toEqual(eveningSet.start);
+      expect(events[0]?.start).toStrictEqual(eveningRise.start);
+      expect(events[0]?.end).toStrictEqual(eveningSet.start);
     });
   });
 });

@@ -15,7 +15,7 @@ import { TripleAspectsComposerService } from "@caelundas/src/modules/triple-aspe
 import { TripleAspectsDetectorService } from "@caelundas/src/modules/triple-aspects/triple-aspects-detector.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisService } from "../ephemeris/ephemeris.service";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
@@ -37,9 +37,16 @@ import {
 import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";
 
+import type {
+  CompositeAspectDetector,
+  ProgressiveAspectDetector,
+  SimpleAspectDetector,
+} from "./aspects.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
-describe("AspectsService", () => {
+describe(AspectsService, () => {
   let service: AspectsService;
 
   beforeAll(async () => {
@@ -74,13 +81,21 @@ describe("AspectsService", () => {
         TripleAspectsComposerService,
         TripleAspectsDetectorService,
         {
-          inject: [MajorAspectsService, MinorAspectsService, SpecialtyAspectsService],
+          inject: [
+            MajorAspectsService,
+            MinorAspectsService,
+            SpecialtyAspectsService,
+          ],
           provide: SIMPLE_ASPECT_DETECTORS_TOKEN,
           useFactory: (
             majorAspectsService: MajorAspectsService,
             minorAspectsService: MinorAspectsService,
             specialtyAspectsService: SpecialtyAspectsService,
-          ) => [majorAspectsService, minorAspectsService, specialtyAspectsService],
+          ) => [
+            majorAspectsService,
+            minorAspectsService,
+            specialtyAspectsService,
+          ],
         },
         {
           inject: [
@@ -171,7 +186,7 @@ describe("AspectsService", () => {
     }
 
     it("returns empty array when given no previous state and no events", () => {
-      expect(service.computeAspectBodies([], [])).toEqual([]);
+      expect(service.computeAspectBodies([], [])).toStrictEqual([]);
     });
 
     it("adds an aspect on forming and ignores perfective", () => {
@@ -193,7 +208,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([
+      expect(result).toStrictEqual([
         {
           aspect: "conjunct",
           bodies: ["sun", "moon"],
@@ -223,7 +238,7 @@ describe("AspectsService", () => {
         }),
       ]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("uses canonical key regardless of body order", () => {
@@ -248,7 +263,7 @@ describe("AspectsService", () => {
         }),
       ]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("tracks different aspect types for the same pair", () => {
@@ -271,7 +286,7 @@ describe("AspectsService", () => {
       );
 
       expect(result).toHaveLength(2);
-      expect(result).toEqual(
+      expect(result).toStrictEqual(
         expect.arrayContaining([
           { aspect: "conjunct", bodies: ["sun", "moon"] },
           { aspect: "sextile", bodies: ["sun", "moon"] },
@@ -293,7 +308,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("skips simple-aspect events without forming or dissolving phase", () => {
@@ -318,7 +333,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("skips simple-aspect events with invalid aspect names", () => {
@@ -344,7 +359,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("skips simple-aspect events that do not include exactly two bodies", () => {
@@ -369,7 +384,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("does not duplicate an already-active forming aspect", () => {
@@ -385,7 +400,9 @@ describe("AspectsService", () => {
         ],
       );
 
-      expect(result).toEqual([{ aspect: "conjunct", bodies: ["sun", "moon"] }]);
+      expect(result).toStrictEqual([
+        { aspect: "conjunct", bodies: ["sun", "moon"] },
+      ]);
     });
 
     it("does not mutate the previous state array", () => {
@@ -453,23 +470,26 @@ describe("AspectsService", () => {
       } satisfies Event;
 
       const mockSimpleAspectDetector = {
-        detect: vi.fn().mockReturnValue([simpleEvent]),
+        detect: vi
+          .fn<SimpleAspectDetector["detect"]>()
+          .mockReturnValue([simpleEvent]),
       };
       const mockCompositeAspectDetector = {
-        detect: vi.fn().mockReturnValue([compositeEvent]),
+        detect: vi
+          .fn<CompositeAspectDetector["detect"]>()
+          .mockReturnValue([compositeEvent]),
       };
       const mockProgressiveAspectDetector = {
-        detectProgressive: vi.fn().mockReturnValue([progressiveEvent]),
+        detectProgressive: vi
+          .fn<ProgressiveAspectDetector["detectProgressive"]>()
+          .mockReturnValue([progressiveEvent]),
       };
       const delegatedService = new AspectsService(
-        [mockSimpleAspectDetector as never],
-        [mockCompositeAspectDetector as never],
-        [mockProgressiveAspectDetector as never],
+        [mockSimpleAspectDetector],
+        [mockCompositeAspectDetector],
+        [mockProgressiveAspectDetector],
       );
-      const coordinateEphemerisByBody = {} as Record<
-        import("@caelundas/src/modules/caelundas/caelundas.types").Body,
-        import("@caelundas/src/modules/ephemeris/ephemeris.types").CoordinateEphemeris
-      >;
+      const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
 
       const detectResult = delegatedService.detect({
         coordinateEphemerisByBody,
@@ -486,10 +506,14 @@ describe("AspectsService", () => {
         minute,
         previousAspectBodies: [],
       });
-      expect(detectResult.events).toEqual([simpleEvent, compositeEvent]);
+      expect(detectResult.events).toStrictEqual([simpleEvent, compositeEvent]);
 
-      expect(delegatedService.detectProgressive([simpleEvent])).toEqual([progressiveEvent]);
-      expect(mockProgressiveAspectDetector.detectProgressive).toHaveBeenCalledWith([simpleEvent]);
+      expect(delegatedService.detectProgressive([simpleEvent])).toStrictEqual([
+        progressiveEvent,
+      ]);
+      expect(
+        mockProgressiveAspectDetector.detectProgressive,
+      ).toHaveBeenCalledWith([simpleEvent]);
     });
   });
 });

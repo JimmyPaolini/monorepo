@@ -5,24 +5,8 @@ import { LiteratureLibraryScanService } from "./literature-library-scan.service"
 
 import type { Dirent } from "node:fs";
 
-describe("LiteratureLibraryScanService", () => {
-  let service: LiteratureLibraryScanService;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      providers: [LiteratureLibraryScanService],
-    }).compile();
-
-    service = await module.resolve(LiteratureLibraryScanService);
-  });
-
-  it("is defined", () => {
-    expect(service).toBeDefined();
-  });
-});
-
 vi.mock("node:fs/promises", () => ({
-  readdir: vi.fn(),
+  readdir: vi.fn<() => Promise<Dirent[]>>(),
 }));
 
 function createDirectoryEntry(name: string): Dirent {
@@ -41,9 +25,17 @@ function createFileEntry(name: string): Dirent {
   } as Dirent;
 }
 
-describe("LiteratureLibraryScanService", () => {
+describe(LiteratureLibraryScanService, () => {
   let service: LiteratureLibraryScanService;
   let readdirMock: ReturnType<typeof vi.fn>;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [LiteratureLibraryScanService],
+    }).compile();
+
+    service = await module.resolve(LiteratureLibraryScanService);
+  });
 
   beforeEach(async () => {
     vi.resetModules();
@@ -52,6 +44,10 @@ describe("LiteratureLibraryScanService", () => {
     readdirMock.mockReset();
 
     service = new LiteratureLibraryScanService();
+  });
+
+  it("should define conformance service", () => {
+    expect(service).toBeDefined();
   });
 
   it("is defined", () => {
@@ -64,7 +60,7 @@ describe("LiteratureLibraryScanService", () => {
 
       const entries = await service.scanLibrary();
 
-      expect(entries).toEqual([]);
+      expect(entries).toStrictEqual([]);
     });
 
     it("recursively collects markdown files and ignores non-markdown files", async () => {
@@ -94,7 +90,7 @@ describe("LiteratureLibraryScanService", () => {
       const entries = await service.scanLibrary();
 
       expect(entries).toHaveLength(2);
-      expect(entries).toEqual(
+      expect(entries).toStrictEqual(
         expect.arrayContaining([
           expect.objectContaining({
             authorSlug: "virgil",

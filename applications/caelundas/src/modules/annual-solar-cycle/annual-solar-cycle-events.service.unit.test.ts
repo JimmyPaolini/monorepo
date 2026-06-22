@@ -1,17 +1,17 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { AnnualSolarCycleEventsService } from "./annual-solar-cycle-events.service";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("AnnualSolarCycleEventsService", () => {
+describe(AnnualSolarCycleEventsService, () => {
   let service: AnnualSolarCycleEventsService;
 
   beforeAll(async () => {
@@ -21,7 +21,7 @@ describe("AnnualSolarCycleEventsService", () => {
     service = await module.resolve(AnnualSolarCycleEventsService);
   });
 
-  describe("Solar cycle event builders", () => {
+  describe("solar cycle event builders", () => {
     it("creates vernal equinox event with correct structure", () => {
       const timestamp = moment.utc("2024-03-20T03:06:00.000Z");
 
@@ -29,8 +29,8 @@ describe("AnnualSolarCycleEventsService", () => {
 
       expect(event.summary).toBe("🌸 Vernal Equinox");
       expect(event.description).toBe("Vernal Equinox");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Annual Solar Cycle");
@@ -187,8 +187,8 @@ describe("AnnualSolarCycleEventsService", () => {
 
       expect(event.summary).toBe("☀️ ❄️ Solar Aphelion");
       expect(event.description).toBe("Solar Aphelion");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Annual Solar Cycle");
@@ -211,7 +211,7 @@ describe("AnnualSolarCycleEventsService", () => {
     expect(service).toBeDefined();
   });
 
-  describe("Seasonal event groups", () => {
+  describe("seasonal event groups", () => {
     it("collects spring and summer events when thresholds are crossed", () => {
       const minute = moment.utc("2024-03-20T03:06:00.000Z");
       const cases = [
@@ -251,6 +251,7 @@ describe("AnnualSolarCycleEventsService", () => {
 
       for (const { expectedDescription, longitudes } of cases) {
         const events = service.getVernalToAutumnalEvents(longitudes, minute);
+
         expect(events).toHaveLength(1);
         expect(events[0]?.description).toBe(expectedDescription);
       }
@@ -295,13 +296,14 @@ describe("AnnualSolarCycleEventsService", () => {
 
       for (const { expectedDescription, longitudes } of cases) {
         const events = service.getAutumnalToVernalEvents(longitudes, minute);
+
         expect(events).toHaveLength(1);
         expect(events[0]?.description).toBe(expectedDescription);
       }
     });
   });
 
-  describe("Longitude thresholds", () => {
+  describe("longitude thresholds", () => {
     it("returns true when crossing 0° (from Pisces to Aries)", () => {
       const result = service.isVernalEquinox({
         currentLongitude: 1,

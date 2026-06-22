@@ -2,7 +2,7 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -10,7 +10,7 @@ import { EclipseEventService } from "./eclipse-event.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("EclipseEventService", () => {
+describe(EclipseEventService, () => {
   let service: EclipseEventService;
   let progressiveUtilitiesService: ProgressiveUtilities;
 
@@ -53,8 +53,8 @@ describe("EclipseEventService", () => {
       expect(event.description).toBe("Solar Eclipse begins (Geocentric)");
       expect(event.categories).toContain("Solar");
       expect(event.categories).toContain("Geocentric");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("builds topocentric solar eclipse event", () => {
@@ -106,8 +106,8 @@ describe("EclipseEventService", () => {
       expect(event.description).toBe("Lunar Eclipse begins (Geocentric)");
       expect(event.categories).toContain("Lunar");
       expect(event.categories).toContain("Geocentric");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("builds topocentric lunar eclipse event", () => {
@@ -214,6 +214,7 @@ describe("EclipseEventService", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(2);
+
       const solarDurationEvent = progressiveEvents.find((event) =>
         event.categories.includes("Solar"),
       );
@@ -252,7 +253,7 @@ describe("EclipseEventService", () => {
         },
       ]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
   });
 });

@@ -3,17 +3,17 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MajorAspectEventService } from "./major-aspect-event.service";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("MajorAspectEventService", () => {
+describe(MajorAspectEventService, () => {
   let service: MajorAspectEventService;
   let aspectsUtilitiesService: AspectsUtilities;
 
@@ -55,8 +55,8 @@ describe("MajorAspectEventService", () => {
       expect(event.categories).toContain("Moon");
       expect(event.categories).toContain("Conjunct");
       expect(event.categories).toContain("Perfective");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("creates forming opposition event", () => {

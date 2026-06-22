@@ -1,9 +1,9 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
-describe("LoggerService", () => {
+describe(LoggerService, () => {
   interface LoggerChildMock {
     debug: ReturnType<typeof vi.fn>;
     error: ReturnType<typeof vi.fn>;
@@ -15,11 +15,11 @@ describe("LoggerService", () => {
   let service: LoggerService;
 
   const createLoggerChildMock = (): LoggerChildMock => ({
-    debug: vi.fn(),
-    error: vi.fn(),
-    info: vi.fn(),
-    trace: vi.fn(),
-    warn: vi.fn(),
+    debug: vi.fn<(...parameters: unknown[]) => void>(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    info: vi.fn<(...parameters: unknown[]) => void>(),
+    trace: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   });
 
   const setLoggerChildMock = (loggerChildMock: LoggerChildMock): void => {

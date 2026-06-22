@@ -2,7 +2,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { pheno_ut } from "sweph";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
@@ -14,15 +14,15 @@ vi.mock("sweph", async (importOriginal) => {
   const original = await importOriginal<typeof Sweph>();
   return {
     ...original,
-    pheno_ut: vi.fn().mockReturnValue({
-      data: [0, 0.75, 0, 0.5, 0, 0],
+    pheno_ut: vi.fn<typeof pheno_ut>().mockReturnValue({
+      data: [0, 0.75, 0, 0.5, 0, 0] as never,
       error: "",
       flag: 258,
     }),
   };
 });
 
-describe("EphemerisPhenomenaService", () => {
+describe(EphemerisPhenomenaService, () => {
   let service: EphemerisPhenomenaService;
   let constantsService: ReturnType<
     typeof createMock<EphemerisConstantsService>
@@ -143,10 +143,10 @@ describe("EphemerisPhenomenaService", () => {
         timestamp: "2024-03-21T00:00:00.000Z",
       });
 
-      expect(illuminationEphemeris).toEqual({
+      expect(illuminationEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { illumination: 100 },
       });
-      expect(diameterEphemeris).toEqual({
+      expect(diameterEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
       });
     });
@@ -187,10 +187,10 @@ describe("EphemerisPhenomenaService", () => {
         timestamp: "2024-03-21T00:00:00.000Z",
       });
 
-      expect(illuminationEphemeris).toEqual({
+      expect(illuminationEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { illumination: 100 },
       });
-      expect(diameterEphemeris).toEqual({});
+      expect(diameterEphemeris).toStrictEqual({});
     });
 
     it("throws when pheno fails", () => {
@@ -229,10 +229,10 @@ describe("EphemerisPhenomenaService", () => {
         timestamp: "2024-03-21T00:00:00.000Z",
       });
 
-      expect(illuminationEphemeris).toEqual({
+      expect(illuminationEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { illumination: 75 },
       });
-      expect(diameterEphemeris).toEqual({});
+      expect(diameterEphemeris).toStrictEqual({});
     });
 
     it("writes diameter only when illumination is not requested", () => {
@@ -250,14 +250,14 @@ describe("EphemerisPhenomenaService", () => {
         timestamp: "2024-03-21T00:00:00.000Z",
       });
 
-      expect(illuminationEphemeris).toEqual({});
-      expect(diameterEphemeris).toEqual({
+      expect(illuminationEphemeris).toStrictEqual({});
+      expect(diameterEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
       });
     });
   });
 
-  describe("computeIlluminationForBody", () => {
+  describe("computeIlluminationForBody error handling", () => {
     it("throws when non-sun illumination pheno fails", () => {
       vi.mocked(pheno_ut).mockReturnValueOnce({
         data: [0, 0, 0, 0, 0],

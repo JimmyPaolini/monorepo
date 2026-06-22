@@ -8,7 +8,7 @@ import {
 } from "./library.utilities";
 
 describe("library.utilities", () => {
-  describe("cleanBoilerplate", () => {
+  describe(cleanBoilerplate, () => {
     it("removes known boilerplate phrases and trims whitespace", () => {
       const text =
         "  The Latin Library text from The Classics Page Neo-Latin  ";
@@ -27,7 +27,7 @@ describe("library.utilities", () => {
     });
   });
 
-  describe("formatLineNumber", () => {
+  describe(formatLineNumber, () => {
     it("moves end-of-line number to the front in bold", () => {
       const formattedLine = formatLineNumber("sample text line   42");
 
@@ -71,7 +71,7 @@ describe("library.utilities", () => {
     });
   });
 
-  describe("hasValidTextContent", () => {
+  describe(hasValidTextContent, () => {
     it("returns false for empty paragraph list", () => {
       const validTextContent = hasValidTextContent([]);
 
@@ -91,7 +91,7 @@ describe("library.utilities", () => {
     });
   });
 
-  describe("isEnglishBoilerplate", () => {
+  describe(isEnglishBoilerplate, () => {
     it("returns false when line has no words", () => {
       const englishBoilerplate = isEnglishBoilerplate("123 --");
 

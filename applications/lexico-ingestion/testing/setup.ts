@@ -1,8 +1,7 @@
-import "reflect-metadata";
-
 import fs from "node:fs";
 
-import { beforeAll, beforeEach, vi } from "vitest";
+import "reflect-metadata";
+import { beforeAll, beforeEach } from "vitest";
 
 beforeAll(() => {
   const outputDirectory = "./output";

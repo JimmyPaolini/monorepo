@@ -8,7 +8,7 @@ import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-asp
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MinorAspectsService } from "./minor-aspects.service";
 
@@ -47,7 +47,7 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -109,7 +109,8 @@ describe("minor-aspects.events integration", () => {
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
   it("detects a forming quincunx when Moon crosses into the 3° orb of 150°", () => {
-    // Sun at 0° constant; Moon moves from 154° (outside 3° orb of 150°) toward the aspect
+    expect.hasAssertions(); // Sun at 0° constant; Moon moves from 154° (outside 3° orb of 150°) toward the aspect
+
     // getAngle(0,154)=154 → |154-150|=4 > 3 → NOT in orb prev
     // getAngle(0,152.5)=152.5 → |152.5-150|=2.5 ≤ 3 → IN ORB curr
     // Phase: !previousInOrb && currentInOrb → "forming"
@@ -126,13 +127,15 @@ describe("minor-aspects.events integration", () => {
         e.description.includes("Sun") &&
         e.description.includes("Moon"),
     );
+
     expect(formingQuincunx).toBeDefined();
     expect(formingQuincunx?.categories).toContain("Forming");
-    expect(formingQuincunx?.start).toEqual(minute);
+    expect(formingQuincunx?.start).toStrictEqual(minute);
   });
 
   it("detects a perfective sesquiquadrate when Mercury crosses the exact 135° aspect angle", () => {
-    // Sun at 0° constant; Mercury passes through exactly 135° (sesquiquadrate, 2° orb)
+    expect.hasAssertions(); // Sun at 0° constant; Mercury passes through exactly 135° (sesquiquadrate, 2° orb)
+
     // prevDiff = 136-135 = +1, currDiff = 135-135 = 0, nextDiff = 134-135 = -1
     // Phase: isCrossing (sign change from positive to negative) → "perfective"
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
@@ -148,13 +151,15 @@ describe("minor-aspects.events integration", () => {
         e.description.includes("Sun") &&
         e.description.includes("Mercury"),
     );
+
     expect(perfectiveSesquiquadrate).toBeDefined();
     expect(perfectiveSesquiquadrate?.categories).toContain("Perfective");
-    expect(perfectiveSesquiquadrate?.start).toEqual(minute);
+    expect(perfectiveSesquiquadrate?.start).toStrictEqual(minute);
   });
 
   it("detects a dissolving semisextile when Venus exits the 2° orb of 30°", () => {
-    // Sun at 0° constant; Venus moves away from the semisextile threshold
+    expect.hasAssertions(); // Sun at 0° constant; Venus moves away from the semisextile threshold
+
     // getAngle(0,31)=31 → |31-30|=1 ≤ 2 → IN ORB prev
     // getAngle(0,31.8)=31.8 → |31.8-30|=1.8 ≤ 2 → IN ORB curr
     // getAngle(0,32.2)=32.2 → |32.2-30|=2.2 > 2 → exits orb next
@@ -172,13 +177,15 @@ describe("minor-aspects.events integration", () => {
         e.description.includes("Sun") &&
         e.description.includes("Venus"),
     );
+
     expect(dissolvingSemisextile).toBeDefined();
     expect(dissolvingSemisextile?.categories).toContain("Dissolving");
-    expect(dissolvingSemisextile?.start).toEqual(minute);
+    expect(dissolvingSemisextile?.start).toStrictEqual(minute);
   });
 
   it("returns no events when all body longitudes are constant at 100°", () => {
-    // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
+    expect.hasAssertions(); // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
+
     // No aspect angle is at 0°, so all pairs are far outside every minor aspect orb.
     const coordinateEphemerisByBody = createAspectEphemeris(minute);
 

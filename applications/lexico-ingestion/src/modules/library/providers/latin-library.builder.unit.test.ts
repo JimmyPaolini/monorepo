@@ -9,10 +9,12 @@ import type { AnyNode } from "domhandler";
 
 // cspell:ignore alphabeta arma bibliasacra cano litora maro multum narma proemium secundus tertius vergilius virumque
 
-describe("LatinLibraryBuilder", () => {
+describe(LatinLibraryBuilder, () => {
   const latinLibraryBuilder = new LatinLibraryBuilder();
 
   it("should build root authors and skip index links", () => {
+    expect.hasAssertions();
+
     const html = `
       <p>
         <table>
@@ -28,12 +30,14 @@ describe("LatinLibraryBuilder", () => {
 
     expect(authors).toHaveLength(1);
     expect(authors[0]?.slug).toBe("vergil");
-    expect(authors[0]?.metadata).toEqual(
+    expect(authors[0]?.metadata).toStrictEqual(
       expect.objectContaining({ sourceUrl: "vergil.html" }),
     );
   });
 
   it("should build category author and normalize leading slash", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(
       `<table><tr><td><a href="/bible.html">Biblia Sacra</a></td></tr></table>`,
     );
@@ -44,12 +48,14 @@ describe("LatinLibraryBuilder", () => {
       : null;
 
     expect(author?.slug).toBe("biblia-sacra");
-    expect(author?.metadata).toEqual(
+    expect(author?.metadata).toStrictEqual(
       expect.objectContaining({ sourceUrl: "bible.html" }),
     );
   });
 
   it("should skip invalid category author href values", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(
       `<table><tr><td><a href="index.html">Index</a></td></tr></table>`,
     );
@@ -63,6 +69,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should return null category author when href is missing", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`<table><tr><td><a>Vergil</a></td></tr></table>`);
     const anchorElement = page("a").first().get(0);
 
@@ -74,6 +82,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should return null category author for blank nickname", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(
       `<table><tr><td><a href="vergil.html">   </a></td></tr></table>`,
     );
@@ -87,6 +97,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should parse author metadata including date ranges", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1 class="pagehead">Publius Vergilius Maro</h1>
       <h2 class="date">70 B.C. - 19 B.C.</h2>
@@ -97,7 +109,7 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         birth_year: -70,
         death_year: -19,
@@ -107,6 +119,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should infer start era from end era when start era is omitted", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1>Publius Vergilius Maro</h1>
       <h2>70 - 19 B.C.</h2>
@@ -117,7 +131,7 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         birth_year: -70,
         death_year: -19,
@@ -127,6 +141,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should infer A.D. start era when omitted and end era is A.D.", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1>Publius Vergilius Maro</h1>
       <h2>70 - 19 A.D.</h2>
@@ -137,7 +153,7 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         birth_year: 70,
         death_year: 19,
@@ -147,6 +163,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should default end era to A.D. when omitted", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1>Publius Vergilius Maro</h1>
       <h2>70 A.D. - 19</h2>
@@ -157,7 +175,7 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         birth_year: 70,
         death_year: 19,
@@ -167,6 +185,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should extract paragraph lines with pending labels", () => {
+    expect.hasAssertions();
+
     const extractParagraphLines = (
       latinLibraryBuilder as unknown as {
         extractParagraphLines: (paragraphText: string) => string[];
@@ -177,10 +197,12 @@ describe("LatinLibraryBuilder", () => {
       "IV\narma virumque cano\nThe Latin Library",
     );
 
-    expect(lines).toEqual(["**IV** arma virumque cano"]);
+    expect(lines).toStrictEqual(["**IV** arma virumque cano"]);
   });
 
   it("should build text entity from anchor", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`<a href="aeneid.html">aeneid</a>`);
     const anchorElement = page("a").first().get(0);
 
@@ -196,7 +218,7 @@ describe("LatinLibraryBuilder", () => {
 
     expect(textEntity.title).toBe("Aeneid");
     expect(textEntity.slug).toBe("aeneid");
-    expect(textEntity.metadata).toEqual(
+    expect(textEntity.metadata).toStrictEqual(
       expect.objectContaining({
         sourceUrl: "https://www.thelatinlibrary.com/aeneid.html",
       }),
@@ -204,6 +226,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should build text entity with empty title when anchor text is blank", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`<a href="aeneid.html">   </a>`);
     const anchorElement = page("a").first().get(0);
 
@@ -222,6 +246,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should build frontmatter without author metadata when metadata is absent", () => {
+    expect.hasAssertions();
+
     const author = new Author();
     author.slug = "vergil";
     author.metadata = null;
@@ -236,7 +262,7 @@ describe("LatinLibraryBuilder", () => {
       undefined,
     );
 
-    expect(frontmatter).toEqual(
+    expect(frontmatter).toStrictEqual(
       expect.objectContaining({
         author: "vergil",
         title: "Aeneid",
@@ -247,6 +273,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should build markdown content and include scraper note for tiny pages", () => {
+    expect.hasAssertions();
+
     const author = new Author();
     author.slug = "vergil";
     author.metadata = { sourceUrl: "vergil.html" };
@@ -272,6 +300,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should build markdown content with work book heading and no scraper note", () => {
+    expect.hasAssertions();
+
     const author = new Author();
     author.slug = "vergil";
     author.metadata = { sourceUrl: "vergil.html" };
@@ -299,6 +329,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should omit full_name metadata for missing pages", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1 class="pagehead">Pagina amissa</h1>
       <h2 class="date"></h2>
@@ -309,10 +341,12 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual({});
+    expect(metadata).toStrictEqual({});
   });
 
   it("should find raw book headings from nearby heading and table fallback", () => {
+    expect.hasAssertions();
+
     const directHeadingPage = cheerio.load(`
       <h3>liber primus</h3>
       <div>
@@ -358,6 +392,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should compute text slug with and without book", () => {
+    expect.hasAssertions();
+
     const author = new Author();
     author.slug = "vergil";
 
@@ -377,6 +413,7 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should classify links for skipping and file eligibility", () => {
+    expect.hasAssertions();
     expect(latinLibraryBuilder.isSkippedHref("index.html")).toBe(true);
     expect(latinLibraryBuilder.isSkippedHref("author/work.html")).toBe(false);
 
@@ -386,6 +423,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should identify external or self links", () => {
+    expect.hasAssertions();
+
     const authorUrlObject = new URL(
       "https://www.thelatinlibrary.com/vergil.html",
     );
@@ -413,6 +452,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should parse work paragraphs and format numbered lines", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <body>
         <p>1</p>
@@ -429,6 +470,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should parse work paragraphs from div.page fallback", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <body>
         <div class="page">III<br/>arma virumque</div>
@@ -437,10 +480,12 @@ describe("LatinLibraryBuilder", () => {
 
     const paragraphs = latinLibraryBuilder.parseWorkParagraphs(page);
 
-    expect(paragraphs).toEqual(["**III** arma virumque"]);
+    expect(paragraphs).toStrictEqual(["**III** arma virumque"]);
   });
 
   it("should parse work paragraphs from body fallback when page div is missing", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <body>
         V<br/>litora multum
@@ -449,10 +494,12 @@ describe("LatinLibraryBuilder", () => {
 
     const paragraphs = latinLibraryBuilder.parseWorkParagraphs(page);
 
-    expect(paragraphs).toEqual(["**V** litora multum"]);
+    expect(paragraphs).toStrictEqual(["**V** litora multum"]);
   });
 
   it("should skip pagehead and empty paragraphs when parsing work paragraphs", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <body>
         <p class="pagehead">Header text</p>
@@ -462,10 +509,12 @@ describe("LatinLibraryBuilder", () => {
 
     const paragraphs = latinLibraryBuilder.parseWorkParagraphs(page);
 
-    expect(paragraphs).toEqual([]);
+    expect(paragraphs).toStrictEqual([]);
   });
 
   it("should include non-bold tag text when parsing paragraph html", () => {
+    expect.hasAssertions();
+
     const parseParagraphHtml = (
       latinLibraryBuilder as unknown as {
         parseParagraphHtml: (paragraphHtml: string) => string;
@@ -479,6 +528,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should ignore non-tag and non-text nodes when parsing paragraph html", () => {
+    expect.hasAssertions();
+
     const parseParagraphHtml = (
       latinLibraryBuilder as unknown as {
         parseParagraphHtml: (paragraphHtml: string) => string;
@@ -491,6 +542,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should ignore blank bold segments when parsing paragraph html", () => {
+    expect.hasAssertions();
+
     const parseParagraphHtml = (
       latinLibraryBuilder as unknown as {
         parseParagraphHtml: (paragraphHtml: string) => string;
@@ -503,6 +556,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should find raw book heading after skipping empty previous siblings", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h4>liber tertius</h4>
       <div></div>
@@ -528,6 +583,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should return empty raw book heading when anchor is not within a table", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <div>
         <a href="work.html">work</a>
@@ -545,6 +602,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should keep raw book heading empty when table has no previous heading sibling", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <table>
         <tr>
@@ -566,6 +625,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should skip paragraph extraction when paragraph has many links", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <body>
         <p>
@@ -579,10 +640,12 @@ describe("LatinLibraryBuilder", () => {
 
     const paragraphs = latinLibraryBuilder.parseWorkParagraphs(page);
 
-    expect(paragraphs).toEqual([]);
+    expect(paragraphs).toStrictEqual([]);
   });
 
   it("should return empty date metadata when no date range is present", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(`
       <h1 class="pagehead">Vergil</h1>
       <h2 class="date">unknown date</h2>
@@ -593,10 +656,12 @@ describe("LatinLibraryBuilder", () => {
       "vergil",
     );
 
-    expect(metadata).toEqual({});
+    expect(metadata).toStrictEqual({});
   });
 
   it("should skip root author links without href", () => {
+    expect.hasAssertions();
+
     const html = `
       <p>
         <table>
@@ -615,6 +680,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should keep category author href unchanged when it has no leading slash", () => {
+    expect.hasAssertions();
+
     const page = cheerio.load(
       `<table><tr><td><a href="vergil.html">Vergil</a></td></tr></table>`,
     );
@@ -624,12 +691,14 @@ describe("LatinLibraryBuilder", () => {
       ? latinLibraryBuilder.buildCategoryAuthor(anchorElement, page)
       : null;
 
-    expect(author?.metadata).toEqual(
+    expect(author?.metadata).toStrictEqual(
       expect.objectContaining({ sourceUrl: "vergil.html" }),
     );
   });
 
   it("should default missing year string to zero in private computeYear", () => {
+    expect.hasAssertions();
+
     const computeYear = (
       latinLibraryBuilder as unknown as {
         computeYear: (
@@ -643,6 +712,8 @@ describe("LatinLibraryBuilder", () => {
   });
 
   it("should process text nodes in extractLinesFromParagraph when html is null", () => {
+    expect.hasAssertions();
+
     const extractLinesFromParagraph = (
       latinLibraryBuilder as unknown as {
         extractLinesFromParagraph: (
@@ -661,6 +732,6 @@ describe("LatinLibraryBuilder", () => {
 
     const lines = extractLinesFromParagraph(textNode, page);
 
-    expect(lines).toEqual([]);
+    expect(lines).toStrictEqual([]);
   });
 });

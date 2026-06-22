@@ -38,14 +38,16 @@ describe("caelundas.types", () => {
   });
 
   it("preserves typed object entries and fromEntries", () => {
-    const entries = objectEntries({ sun: 1, moon: 2 });
-    expect(entries).toEqual([
+    const entries = objectEntries({ moon: 2, sun: 1 });
+
+    expect(entries).toStrictEqual([
       ["moon", 2],
       ["sun", 1],
     ]);
 
     const record = typedFromEntries(entries);
-    expect(record).toEqual({ moon: 2, sun: 1 });
+
+    expect(record).toStrictEqual({ moon: 2, sun: 1 });
   });
 
   it("recognizes valid celestial keys", () => {
@@ -71,7 +73,7 @@ describe("caelundas.types", () => {
   });
 
   it("checks object keys safely", () => {
-    const object = { sun: 1, moon: 2 };
+    const object = { moon: 2, sun: 1 };
 
     expect(isKeyOf(object, "sun")).toBe(true);
     expect(isKeyOf(object, "mars")).toBe(false);

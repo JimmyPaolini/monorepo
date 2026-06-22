@@ -10,7 +10,7 @@ import { TripleAspectsService } from "./triple-aspects.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("TripleAspectsService", () => {
+describe(TripleAspectsService, () => {
   let service: TripleAspectsService;
 
   beforeAll(async () => {
@@ -121,7 +121,7 @@ describe("TripleAspectsService", () => {
         },
       ]);
 
-      expect(events).toEqual([]);
+      expect(events).toStrictEqual([]);
     });
   });
 
@@ -134,6 +134,7 @@ describe("TripleAspectsService", () => {
       ];
 
       const grouped = TripleAspectsService.groupAspectsByType(edges);
+
       expect(grouped.get("conjunct")?.length).toBe(2);
       expect(grouped.get("trine")?.length).toBe(1);
     });

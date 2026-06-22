@@ -5,7 +5,7 @@ import { NumeralsService } from "./numerals.service";
 
 // cspell:ignore LVIII MMMDCCCLXXXVIII
 
-describe("NumeralsService", () => {
+describe(NumeralsService, () => {
   let service: NumeralsService;
 
   beforeAll(async () => {

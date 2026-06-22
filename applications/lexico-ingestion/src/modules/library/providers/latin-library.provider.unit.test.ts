@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { Author, Text } from "@monorepo/lexico-entities";
 
@@ -10,9 +10,9 @@ import type { LatinLibraryBuilder } from "./latin-library.builder";
 import type { AnyNode } from "domhandler";
 
 const { mkdirMock, readFileMock, writeFileMock } = vi.hoisted(() => ({
-  mkdirMock: vi.fn(),
-  readFileMock: vi.fn(),
-  writeFileMock: vi.fn(),
+  mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+  readFileMock: vi.fn<() => Promise<string>>(),
+  writeFileMock: vi.fn<() => Promise<void>>(),
 }));
 
 vi.mock("node:fs/promises", () => ({
@@ -23,25 +23,30 @@ vi.mock("node:fs/promises", () => ({
 
 // cspell:ignore arma cano narma virumque
 
-describe("LatinLibraryProvider", () => {
+describe(LatinLibraryProvider, () => {
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   } as unknown as LoggerService;
 
   const latinLibraryBuilder = {
-    buildCategoryAuthor: vi.fn(),
-    buildRootAuthors: vi.fn(),
-    buildTextEntityForLink: vi.fn(),
-    buildWorkMarkdownContent: vi.fn(),
-    extractAuthorPageMetadata: vi.fn(),
-    findRawBookHeading: vi.fn(),
-    getTextSlug: vi.fn(),
-    isExternalOrSelfLink: vi.fn(),
-    isSkippedHref: vi.fn(),
-    isTextFileHref: vi.fn(),
-    parseWorkParagraphs: vi.fn(),
+    buildCategoryAuthor:
+      vi.fn<
+        (html: string, authorUrl: URL, $: cheerio.CheerioAPI) => Author | null
+      >(),
+    buildRootAuthors: vi.fn<(html: string) => Author[]>(),
+    buildTextEntityForLink: vi.fn<(href: string, author: Author) => Text>(),
+    buildWorkMarkdownContent: vi.fn<() => Record<string, unknown>>(),
+    extractAuthorPageMetadata: vi.fn<() => Record<string, unknown>>(),
+    findRawBookHeading:
+      vi.fn<(anchorElement: AnyNode, $: cheerio.CheerioAPI) => string>(),
+    getTextSlug: vi.fn<(work: Text, author: Author) => string>(),
+    isExternalOrSelfLink:
+      vi.fn<(absoluteUrl: string, authorUrlObject: URL) => boolean>(),
+    isSkippedHref: vi.fn<(href: string) => boolean>(),
+    isTextFileHref: vi.fn<(href: string) => boolean>(),
+    parseWorkParagraphs: vi.fn<($work: cheerio.CheerioAPI) => string[]>(),
   } as unknown as LatinLibraryBuilder;
 
   const latinLibraryProvider = new LatinLibraryProvider(
@@ -89,7 +94,7 @@ describe("LatinLibraryProvider", () => {
     expect(author.texts).toHaveLength(1);
     expect(author.texts[0]?.type).toBe("book");
     expect(author.texts[0]?.childTexts[0]?.title).toBe("Aeneid");
-    expect(author.texts[0]?.childTexts[0]?.metadata).toEqual(
+    expect(author.texts[0]?.childTexts[0]?.metadata).toStrictEqual(
       expect.objectContaining({ book: "Book I" }),
     );
   });
@@ -120,7 +125,7 @@ describe("LatinLibraryProvider", () => {
       textEntity,
     });
 
-    expect(textEntity.metadata).toEqual({ book: "Book II" });
+    expect(textEntity.metadata).toStrictEqual({ book: "Book II" });
   });
 
   it("should cleanup author and child metadata", () => {
@@ -161,8 +166,12 @@ describe("LatinLibraryProvider", () => {
     author.slug = "vergil";
     author.texts = [];
 
-    latinLibraryBuilder.isSkippedHref = vi.fn().mockReturnValue(false) as never;
-    latinLibraryBuilder.isTextFileHref = vi.fn().mockReturnValue(true) as never;
+    latinLibraryBuilder.isSkippedHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(false);
+    latinLibraryBuilder.isTextFileHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
       .fn()
       .mockReturnValue(false) as never;
@@ -247,7 +256,7 @@ describe("LatinLibraryProvider", () => {
       }
     ).processAuthorPage(author, "https://www.thelatinlibrary.com/");
 
-    expect(author.metadata).toEqual({
+    expect(author.metadata).toStrictEqual({
       nickname: "vergil",
       sourceUrl: "vergil.html",
     });
@@ -295,7 +304,7 @@ describe("LatinLibraryProvider", () => {
       }
     ).processAuthorPage(author, "https://www.thelatinlibrary.com/");
 
-    expect(author.metadata).toEqual({
+    expect(author.metadata).toStrictEqual({
       nickname: "vergil",
       period: "Classical",
       sourceUrl: "vergil.html",
@@ -314,7 +323,9 @@ describe("LatinLibraryProvider", () => {
     author.slug = "vergil";
     author.texts = [];
 
-    latinLibraryBuilder.isSkippedHref = vi.fn().mockReturnValue(true) as never;
+    latinLibraryBuilder.isSkippedHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(true);
 
     (
       latinLibraryProvider as unknown as {
@@ -385,7 +396,7 @@ describe("LatinLibraryProvider", () => {
       }
     ).buildRootAuthors("<html></html>");
 
-    expect(authors).toEqual([author]);
+    expect(authors).toStrictEqual([author]);
     expect(latinLibraryBuilder.buildRootAuthors).toHaveBeenCalledWith(
       "<html></html>",
     );
@@ -437,8 +448,12 @@ describe("LatinLibraryProvider", () => {
     author.slug = "vergil";
     author.texts = [];
 
-    latinLibraryBuilder.isSkippedHref = vi.fn().mockReturnValue(false) as never;
-    latinLibraryBuilder.isTextFileHref = vi.fn().mockReturnValue(true) as never;
+    latinLibraryBuilder.isSkippedHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(false);
+    latinLibraryBuilder.isTextFileHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
       .fn()
       .mockReturnValue(true) as never;
@@ -476,8 +491,12 @@ describe("LatinLibraryProvider", () => {
     author.slug = "vergil";
     author.texts = [];
 
-    latinLibraryBuilder.isSkippedHref = vi.fn().mockReturnValue(false) as never;
-    latinLibraryBuilder.isTextFileHref = vi.fn().mockReturnValue(true) as never;
+    latinLibraryBuilder.isSkippedHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(false);
+    latinLibraryBuilder.isTextFileHref = vi
+      .fn<(href: string) => boolean>()
+      .mockReturnValue(true);
     latinLibraryBuilder.isExternalOrSelfLink = vi
       .fn()
       .mockReturnValue(false) as never;
@@ -671,7 +690,9 @@ describe("LatinLibraryProvider", () => {
       work,
     });
 
-    expect((loggerService.log as ReturnType<typeof vi.fn>).mock.calls).toEqual(
+    expect(
+      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
+    ).toStrictEqual(
       expect.arrayContaining([
         ["📜 Starting work: vergil/aeneid"],
         ["📜 Completed work: vergil/aeneid (50.00%, 1/2)"],
@@ -725,12 +746,14 @@ describe("LatinLibraryProvider", () => {
       work,
     });
 
-    expect((loggerService.log as ReturnType<typeof vi.fn>).mock.calls).toEqual(
+    expect(
+      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
+    ).toStrictEqual(
       expect.arrayContaining([["📜 Starting work: vergil/aeneid"]]),
     );
     expect(
       (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
-    ).not.toEqual(
+    ).not.toStrictEqual(
       expect.arrayContaining([
         ["📜 Completed work: vergil/aeneid (50.00%, 1/2)"],
       ]),
@@ -834,7 +857,7 @@ describe("LatinLibraryProvider", () => {
 
     expect(
       (loggerService.error as ReturnType<typeof vi.fn>).mock.calls,
-    ).toEqual(
+    ).toStrictEqual(
       expect.arrayContaining([
         [
           expect.stringContaining("❌ Failed to fetch work Aeneid"),
@@ -1017,7 +1040,7 @@ describe("LatinLibraryProvider", () => {
 
     expect(author.texts).toHaveLength(1);
     expect(author.texts[0]?.title).toBe("Vergil");
-    expect(author.texts[0]?.metadata).toEqual(
+    expect(author.texts[0]?.metadata).toStrictEqual(
       expect.objectContaining({
         sourceUrl: "https://www.thelatinlibrary.com/vergil.html",
       }),
@@ -1042,7 +1065,7 @@ describe("LatinLibraryProvider", () => {
       }
     ).cleanupAuthorMetadata(author);
 
-    expect(text.metadata).toEqual({ sourceUrl: "georgics.html" });
+    expect(text.metadata).toStrictEqual({ sourceUrl: "georgics.html" });
   });
 
   it("should skip cleanup when child and direct text metadata are missing", () => {
@@ -1206,7 +1229,7 @@ describe("LatinLibraryProvider", () => {
       "https://www.thelatinlibrary.com/",
     );
 
-    expect(authors).toEqual([]);
+    expect(authors).toStrictEqual([]);
   });
 
   it("should keep non-category authors without category expansion", async () => {
@@ -1518,8 +1541,10 @@ describe("LatinLibraryProvider", () => {
     await latinLibraryProvider.ingest();
 
     expect(writeAuthorTextsSpy).toHaveBeenCalledTimes(2);
+
     for (const callArguments of writeAuthorTextsSpy.mock.calls) {
       const argumentObject = callArguments[0];
+
       expect(argumentObject.options).toBeUndefined();
     }
   });

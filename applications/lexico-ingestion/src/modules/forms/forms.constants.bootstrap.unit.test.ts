@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 describe("forms.constants normalization guards", () => {
   afterEach(() => {
@@ -18,7 +18,7 @@ describe("forms.constants normalization guards", () => {
 
     const constants = await import("./forms.constants");
 
-    expect(constants.formCaseValueList).toEqual([]);
+    expect(constants.formCaseValueList).toStrictEqual([]);
   });
 
   it("filters non-string values from mixed form enums", async () => {
@@ -33,6 +33,9 @@ describe("forms.constants normalization guards", () => {
 
     const constants = await import("./forms.constants");
 
-    expect(constants.formCaseValueList).toEqual(["nominative", "genitive"]);
+    expect(constants.formCaseValueList).toStrictEqual([
+      "nominative",
+      "genitive",
+    ]);
   });
 });

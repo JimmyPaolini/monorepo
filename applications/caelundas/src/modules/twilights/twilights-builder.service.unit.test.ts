@@ -1,7 +1,7 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -9,7 +9,7 @@ import { TwilightsBuilderService } from "./twilights-builder.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("TwilightsBuilderService", () => {
+describe(TwilightsBuilderService, () => {
   let service: TwilightsBuilderService;
 
   beforeAll(async () => {
@@ -44,11 +44,14 @@ describe("TwilightsBuilderService", () => {
   });
 
   it("is defined", () => {
+    expect.hasAssertions();
     expect(service).toBeDefined();
   });
 
   describe("transition events", () => {
     it("builds Astronomical Dawn event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T05:00:00.000Z");
       const event = service.buildAstronomicalDawnEvent(date);
 
@@ -58,14 +61,16 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Civil Dawn event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T06:00:00.000Z");
       const event = service.buildCivilDawnEvent(date);
 
       expect(event.summary).toBe("🌄 Civil Dawn");
       expect(event.description).toBe("Civil Dawn");
-      expect(event.start).toEqual(date);
-      expect(event.end).toEqual(date);
-      expect(event.categories).toEqual([
+      expect(event.start).toStrictEqual(date);
+      expect(event.end).toStrictEqual(date);
+      expect(event.categories).toStrictEqual([
         "Astronomy",
         "Astrology",
         "Twilight",
@@ -74,6 +79,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Astronomical Dusk event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T20:00:00.000Z");
       const event = service.buildAstronomicalDuskEvent(date);
 
@@ -84,6 +91,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Civil Dusk event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T18:00:00.000Z");
       const event = service.buildCivilDuskEvent(date);
 
@@ -93,6 +102,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Nautical Dawn event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T05:30:00.000Z");
       const event = service.buildNauticalDawnEvent(date);
 
@@ -102,6 +113,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Nautical Dusk event", () => {
+      expect.hasAssertions();
+
       const date = moment.utc("2024-03-21T19:00:00.000Z");
       const event = service.buildNauticalDuskEvent(date);
 
@@ -113,6 +126,8 @@ describe("TwilightsBuilderService", () => {
 
   describe("duration events", () => {
     it("builds Daylight duration event", () => {
+      expect.hasAssertions();
+
       const event = service.getDaylightDurationEvent(
         beginningEvent,
         endingEvent,
@@ -120,12 +135,14 @@ describe("TwilightsBuilderService", () => {
 
       expect(event.summary).toBe("☀️ Daylight");
       expect(event.description).toBe("Daylight");
-      expect(event.start).toEqual(beginningEvent.start);
-      expect(event.end).toEqual(endingEvent.start);
+      expect(event.start).toStrictEqual(beginningEvent.start);
+      expect(event.end).toStrictEqual(endingEvent.start);
       expect(event.categories).toContain("Daylight");
     });
 
     it("builds Night duration event", () => {
+      expect.hasAssertions();
+
       const event = service.getNightDurationEvent(beginningEvent, endingEvent);
 
       expect(event.summary).toBe("🌃 Night");
@@ -134,6 +151,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Astronomical Twilight (Morning) duration event", () => {
+      expect.hasAssertions();
+
       const event = service.getAstronomicalTwilightMorningDurationEvent(
         beginningEvent,
         endingEvent,
@@ -145,6 +164,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Astronomical Twilight (Evening) duration event", () => {
+      expect.hasAssertions();
+
       const event = service.getAstronomicalTwilightEveningDurationEvent(
         beginningEvent,
         endingEvent,
@@ -156,6 +177,8 @@ describe("TwilightsBuilderService", () => {
     });
 
     it("builds Nautical Twilight (Evening) duration event", () => {
+      expect.hasAssertions();
+
       const event = service.getNauticalTwilightEveningDurationEvent(
         beginningEvent,
         endingEvent,

@@ -7,7 +7,7 @@ import { generateJupyterNotebookApplication } from "./generator";
 
 import type { Tree } from "@nx/devkit";
 
-describe("generateJupyterNotebookApplication", () => {
+describe(generateJupyterNotebookApplication, () => {
   let tree: Tree;
 
   beforeEach(() => {

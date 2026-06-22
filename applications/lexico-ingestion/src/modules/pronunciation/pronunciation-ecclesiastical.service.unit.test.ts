@@ -1,17 +1,19 @@
 /* cspell:ignore scen */
 
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 
 import type { PronunciationPhoneme } from "./pronunciation.types";
 
-describe("PronunciationEcclesiasticalService", () => {
+describe(PronunciationEcclesiasticalService, () => {
   let service: PronunciationEcclesiasticalService;
   const vowels = new Set(["a", "e", "i", "o", "u"]);
-  const getStringPhoneme = vi.fn((_map: unknown, key: string) => key);
+  const getStringPhoneme = vi.fn<(_map: unknown, key: string) => string>(
+    (_map: unknown, key: string) => key,
+  );
 
   const isLatinVowel = (letter: string): boolean => vowels.has(letter);
 
@@ -416,7 +418,7 @@ describe("PronunciationEcclesiasticalService", () => {
     });
 
     expect(nextIndex).toBe(1);
-    expect(phonemes).toEqual([]);
+    expect(phonemes).toStrictEqual([]);
   });
 
   it("should lookup one-character ecclesiastical phoneme and advance index", () => {

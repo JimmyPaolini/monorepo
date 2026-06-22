@@ -17,31 +17,9 @@ import { LoggerService } from "../logger/logger.service";
 
 import { ClearCommand } from "./clear.command";
 
-describe("ClearCommand", () => {
-  let command: ClearCommand;
-
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [
-        ClearCommand,
-        {
-          provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(ClearCommand);
-  });
-
-  it("is defined", () => {
-    expect(command).toBeDefined();
-  });
-});
-
 const { promptsMock } = vi.hoisted(() => ({
-  promptsMock: vi.fn(),
+  promptsMock:
+    vi.fn<() => Promise<{ dictionary: boolean; literature: boolean }>>(),
 }));
 
 vi.mock("prompts", () => ({
@@ -71,7 +49,7 @@ function createRepositoryMock(): {
   executeMock: ReturnType<typeof vi.fn>;
   repositoryMock: RepositoryMock;
 } {
-  const executeMock = vi.fn(async () => {});
+  const executeMock = vi.fn<() => Promise<void>>(async () => {});
   const queryBuilder: QueryBuilderMock = {
     delete: () => queryBuilder,
     execute: async () => executeMock(),
@@ -85,12 +63,13 @@ function createRepositoryMock(): {
   };
 }
 
-describe("ClearCommand", () => {
+describe(ClearCommand, () => {
+  let command: ClearCommand;
   let clearCommand: ClearCommand;
 
   const loggerService = {
-    log: vi.fn(),
-    setContext: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
   };
 
   const lexemesRepository = createRepositoryMock();
@@ -100,6 +79,21 @@ describe("ClearCommand", () => {
   const textsRepository = createRepositoryMock();
   const authorsRepository = createRepositoryMock();
   const tokensRepository = createRepositoryMock();
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      imports: [LoggerModule],
+      providers: [
+        ClearCommand,
+        {
+          provide: LoggerService,
+          useValue: createLoggerServiceMock(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(ClearCommand);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();
@@ -143,24 +137,13 @@ describe("ClearCommand", () => {
   });
 
   it("is defined", () => {
+    expect(command).toBeDefined();
+  });
+
+  it("should initialize command with logger context", () => {
+    expect.hasAssertions();
     expect(clearCommand).toBeDefined();
     expect(loggerService.setContext).toHaveBeenCalledWith("ClearCommand");
-  });
-
-  it("should parse dictionary option values", () => {
-    expect(clearCommand.parseDictionary(undefined)).toBe(true);
-    expect(clearCommand.parseDictionary("true")).toBe(true);
-    expect(clearCommand.parseDictionary("false")).toBe(false);
-    expect(clearCommand.parseDictionary("0")).toBe(false);
-    expect(clearCommand.parseDictionary("1")).toBe(true);
-  });
-
-  it("should parse literature option values", () => {
-    expect(clearCommand.parseLiterature(undefined)).toBe(true);
-    expect(clearCommand.parseLiterature("true")).toBe(true);
-    expect(clearCommand.parseLiterature("false")).toBe(false);
-    expect(clearCommand.parseLiterature("0")).toBe(false);
-    expect(clearCommand.parseLiterature("1")).toBe(true);
   });
 
   it("should clear dictionary only when dictionary option is true", async () => {

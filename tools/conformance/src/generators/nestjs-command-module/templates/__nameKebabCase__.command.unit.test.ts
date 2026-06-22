@@ -5,7 +5,7 @@ import { LoggerModule } from "../logger/logger.module";
 
 import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
 
-describe("{{namePascalCase}}Command", () => {
+describe({{namePascalCase}}Command, () => {
   let command: {{namePascalCase}}Command;
 
   beforeAll(async () => {

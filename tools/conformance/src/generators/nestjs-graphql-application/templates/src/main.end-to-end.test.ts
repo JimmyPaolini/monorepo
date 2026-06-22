@@ -4,6 +4,7 @@ import { environmentSchema } from "./modules/{{nameKebabCase}}/{{nameKebabCase}}
 
 describe("environment schema e2e", () => {
   it("applies defaults for an empty config", () => {
-    expect(environmentSchema.parse({})).toEqual({ PORT: 3000 });
+
+    expect.hasAssertions();    expect(environmentSchema.parse({})).toStrictEqual({ PORT: 3000 });
   });
 });

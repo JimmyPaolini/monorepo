@@ -5,7 +5,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 
@@ -15,7 +15,7 @@ import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/eph
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -52,7 +52,7 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-describe("MonthlyLunarCycleService", () => {
+describe(MonthlyLunarCycleService, () => {
   let service: MonthlyLunarCycleService;
   let s: ServicePrivate;
 
@@ -128,8 +128,8 @@ describe("MonthlyLunarCycleService", () => {
 
       expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.new} New Moon`);
       expect(event.description).toBe("New Moon");
-      expect(event.start).toEqual(date);
-      expect(event.end).toEqual(date);
+      expect(event.start).toStrictEqual(date);
+      expect(event.end).toStrictEqual(date);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Monthly Lunar Cycle");
@@ -290,19 +290,19 @@ describe("MonthlyLunarCycleService", () => {
       ]);
 
       // Should have progressive events between phases
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
 
       expect(progressiveEvents[0]).toBeDefined();
       expect(progressiveEvents[1]).toBeDefined();
 
       // First duration: New → Waxing Crescent
-      expect(progressiveEvents[0]?.start).toEqual(newMoon.start);
-      expect(progressiveEvents[0]?.end).toEqual(waxingCrescent.start);
+      expect(progressiveEvents[0]?.start).toStrictEqual(newMoon.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(waxingCrescent.start);
       expect(progressiveEvents[0]?.description).toBe("New Moon");
 
       // Second duration: Waxing Crescent → First Quarter
-      expect(progressiveEvents[1]?.start).toEqual(waxingCrescent.start);
-      expect(progressiveEvents[1]?.end).toEqual(firstQuarter.start);
+      expect(progressiveEvents[1]?.start).toStrictEqual(waxingCrescent.start);
+      expect(progressiveEvents[1]?.end).toStrictEqual(firstQuarter.start);
       expect(progressiveEvents[1]?.description).toBe("Waxing Crescent Moon");
     });
 
@@ -348,7 +348,7 @@ describe("MonthlyLunarCycleService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       // Should have 7 progressive events (between 8 phases)
-      expect(progressiveEvents.length).toBe(7);
+      expect(progressiveEvents).toHaveLength(7);
     });
 
     it("warns and skip events with invalid categories", () => {
@@ -375,7 +375,7 @@ describe("MonthlyLunarCycleService", () => {
 
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
-        .mockImplementation(() => undefined);
+        .mockReturnValue(undefined);
 
       const progressiveEvents = service.detectProgressive([
         invalidEvent,
@@ -468,7 +468,7 @@ describe("MonthlyLunarCycleService", () => {
       it("warns and return null when no lunar phase category is present", () => {
         const warnSpy = vi
           .spyOn(LoggerService.prototype, "warn")
-          .mockImplementation(() => undefined);
+          .mockReturnValue(undefined);
 
         const result = s.extractLunarPhaseFromCategories(
           ["Astronomy", "Astrology"],
@@ -486,7 +486,7 @@ describe("MonthlyLunarCycleService", () => {
       it("warns and return null when the lunar phase is invalid", () => {
         const warnSpy = vi
           .spyOn(LoggerService.prototype, "warn")
-          .mockImplementation(() => undefined);
+          .mockReturnValue(undefined);
 
         const result = s.extractLunarPhaseFromCategories(
           ["Astronomy", "Astrology", "Monthly Lunar Cycle", "Lunar", "Fake"],

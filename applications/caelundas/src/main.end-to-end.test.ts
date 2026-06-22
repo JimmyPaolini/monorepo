@@ -39,7 +39,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     }
   });
 
-  describe("ICS file generation", () => {
+  describe("iCS file generation", () => {
     it("generates valid ICS file structure", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
@@ -101,6 +101,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       // Verify event count
       const veventCount = (content.match(/BEGIN:VEVENT/g) ?? []).length;
+
       expect(veventCount).toBe(2);
     });
 
@@ -196,6 +197,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "139.6503",
         startDate: "2025-01-01",
       });
+
       expect(tokyoResult.timezone).toBe("Asia/Tokyo");
 
       // London
@@ -205,6 +207,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "-0.1278",
         startDate: "2025-01-01",
       });
+
       expect(londonResult.timezone).toBe("Europe/London");
 
       // Sydney
@@ -214,6 +217,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "151.2093",
         startDate: "2025-01-01",
       });
+
       expect(sydneyResult.timezone).toBe("Australia/Sydney");
     });
   });
@@ -340,7 +344,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         new LoggerService(),
       ).pairProgressiveEvents(beginnings, endings, "test");
 
-      expect(pairs.length).toBe(2);
+      expect(pairs).toHaveLength(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(
         "2025-03-01T10:00:00.000Z",
       );
@@ -388,15 +392,18 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       // Get all pairs
       const pairs = getCombinations(planets, 2);
-      expect(pairs.length).toBe(10); // C(5,2) = 10
+
+      expect(pairs).toHaveLength(10); // C(5,2) = 10
 
       // Get all triplets
       const triplets = getCombinations(planets, 3);
-      expect(triplets.length).toBe(10); // C(5,3) = 10
+
+      expect(triplets).toHaveLength(10); // C(5,3) = 10
 
       // Verify no duplicates in pairs
       const pairStrings = pairs.map((p) => _.sortBy(p).join("-"));
       const uniquePairs = new Set(pairStrings);
+
       expect(uniquePairs.size).toBe(10);
     });
   });

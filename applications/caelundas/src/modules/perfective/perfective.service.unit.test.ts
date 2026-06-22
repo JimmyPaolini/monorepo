@@ -11,15 +11,22 @@ import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrograd
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { PerfectiveService } from "./perfective.service";
 
+import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Input } from "@caelundas/src/modules/input/input.types";
+import type {
+  MartianPhaseEventArguments,
+  MercurianPhaseEventArguments,
+  VenusianPhaseEventArguments,
+} from "@caelundas/src/modules/phases/phases.types";
+import type { Moment } from "moment-timezone";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -39,25 +46,41 @@ const emptyEphemerides = {
   illuminationEphemerisByBody: {} as never,
 };
 
-describe("PerfectiveService", () => {
+describe(PerfectiveService, () => {
   let service: PerfectiveService;
 
-  const datetimeMock = { generateDates: vi.fn(), generateMinutes: vi.fn() };
+  const datetimeMock = {
+    generateDates:
+      vi.fn<
+        (start: Moment, end: Moment, timezone: string) => Iterable<Moment>
+      >(),
+    generateMinutes: vi.fn<(start: Moment, end: Moment) => Iterable<Moment>>(),
+  };
   const ephemerisAggMock = {
     getEphemerides: vi.fn<EphemerisService["getEphemerides"]>(),
   };
-  const aspectsMock = { detect: vi.fn() };
-  const eclipsesMock = { detect: vi.fn() };
-  const retrogradesMock = { detect: vi.fn() };
-  const ingressesMock = { detect: vi.fn() };
-  const dailyCyclesMock = { detect: vi.fn() };
-  const monthlyLunarCycleMock = { detect: vi.fn() };
-  const annualSolarCycleMock = { detect: vi.fn() };
-  const twilightsMock = { detect: vi.fn() };
+  const aspectsMock = { detect: vi.fn<AspectsService["detect"]>() };
+  const eclipsesMock = { detect: vi.fn<EclipsesService["detect"]>() };
+  const retrogradesMock = { detect: vi.fn<RetrogradesService["detect"]>() };
+  const ingressesMock = { detect: vi.fn<IngressesService["detect"]>() };
+  const dailyCyclesMock = { detect: vi.fn<DailyCyclesService["detect"]>() };
+  const monthlyLunarCycleMock = {
+    detect: vi.fn<MonthlyLunarCycleService["detect"]>(),
+  };
+  const annualSolarCycleMock = {
+    detect: vi.fn<AnnualSolarCycleService["detect"]>(),
+  };
+  const twilightsMock = { detect: vi.fn<TwilightsService["detect"]>() };
   const phasesMock = {
-    getMartianPhaseEvents: vi.fn(() => []),
-    getMercurianPhaseEvents: vi.fn(() => []),
-    getVenusianPhaseEvents: vi.fn(() => []),
+    getMartianPhaseEvents: vi.fn<(args: MartianPhaseEventArguments) => Event[]>(
+      () => [],
+    ),
+    getMercurianPhaseEvents: vi.fn<
+      (args: MercurianPhaseEventArguments) => Event[]
+    >(() => []),
+    getVenusianPhaseEvents: vi.fn<
+      (args: VenusianPhaseEventArguments) => Event[]
+    >(() => []),
   };
 
   beforeAll(async () => {
@@ -95,7 +118,7 @@ describe("PerfectiveService", () => {
 
       const result = service.detect(baseInput);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("returns an empty array when no minutes are generated within a day", () => {
@@ -106,7 +129,7 @@ describe("PerfectiveService", () => {
 
       const result = service.detect(baseInput);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("requests ephemerides with MARGIN_MINUTES padding around the day", () => {
@@ -117,9 +140,11 @@ describe("PerfectiveService", () => {
 
       service.detect(baseInput);
 
-      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledOnce();
+      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledWith();
+
       const firstCallArgument =
         ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];
+
       expect(firstCallArgument?.end.isAfter(firstCallArgument.start)).toBe(
         true,
       );

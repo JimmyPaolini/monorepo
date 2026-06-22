@@ -2,15 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   type Form,
@@ -25,7 +17,9 @@ import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.con
 
 import { WordsService } from "./words.service";
 
-describe("WordsService", () => {
+import type { Mocked } from "vitest";
+
+describe(WordsService, () => {
   let service: WordsService;
   let wordRepository: Mocked<any>;
   let wordLexemeRepository: Mocked<any>;
@@ -40,7 +34,7 @@ describe("WordsService", () => {
       values: any;
     } => {
       const self = {
-        execute: vi.fn().mockResolvedValue({}),
+        execute: vi.fn<() => Promise<void>>().mockResolvedValue(undefined),
         insert: vi.fn(() => self),
         into: vi.fn(() => self),
         orIgnore: vi.fn(() => self),
@@ -51,8 +45,11 @@ describe("WordsService", () => {
 
     const mockWordRepository = {
       createQueryBuilder: vi.fn(() => createMockQueryBuilder()),
-      find: vi.fn(),
-      upsert: vi.fn(),
+      find: vi.fn<() => Promise<Word[]>>(),
+      upsert:
+        vi.fn<
+          (entity: unknown, conflictOptions: unknown) => Promise<unknown>
+        >(),
     };
 
     const mockWordLexemeRepository = {
@@ -106,7 +103,7 @@ describe("WordsService", () => {
 
       const result = service.getLexemeWords(lexeme);
 
-      expect(result).toEqual(["amo", "amare", "amavi"]);
+      expect(result).toStrictEqual(["amo", "amare", "amavi"]);
     });
 
     it("should return empty array when no principal parts", () => {
@@ -115,7 +112,7 @@ describe("WordsService", () => {
 
       const result = service.getLexemeWords(lexeme);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("should flatten multiple text entries from principal parts", () => {
@@ -129,7 +126,7 @@ describe("WordsService", () => {
 
       const result = service.getLexemeWords(lexeme);
 
-      expect(result).toEqual(["amo", "amō", "amare", "amāre"]);
+      expect(result).toStrictEqual(["amo", "amō", "amare", "amāre"]);
     });
   });
 
@@ -214,7 +211,7 @@ describe("WordsService", () => {
 
       await service.ingestLexemeWords(lexeme);
 
-      expect(wordLexemeRepository.createQueryBuilder).toHaveBeenCalled();
+      expect(wordLexemeRepository.createQueryBuilder).toHaveBeenCalledWith();
     });
 
     it("should escape capital letters during normalization", async () => {
@@ -306,7 +303,7 @@ describe("WordsService", () => {
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);
 
-      expect(wordLexemeRepository.createQueryBuilder).toHaveBeenCalled();
+      expect(wordLexemeRepository.createQueryBuilder).toHaveBeenCalledWith();
     });
 
     it("should link form to word via WordForm junction", async () => {
@@ -330,7 +327,7 @@ describe("WordsService", () => {
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);
 
-      expect(wordFormRepository.createQueryBuilder).toHaveBeenCalled();
+      expect(wordFormRepository.createQueryBuilder).toHaveBeenCalledWith();
     });
 
     it("should batch large sets of word forms", async () => {

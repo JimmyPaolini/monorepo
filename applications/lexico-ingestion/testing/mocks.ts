@@ -1,8 +1,8 @@
-import { afterEach, beforeEach, vi } from "vitest";
-
 /**
  * Default test date used across time-sensitive tests.
  */
+
+import { afterEach, beforeEach } from "vitest";
 export const DEFAULT_TEST_DATE = new Date("2025-03-20T14:46:00Z");
 
 /**

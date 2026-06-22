@@ -2,13 +2,13 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { SpecialtyAspectsComposerService } from "./specialty-aspects-composer.service";
 
-describe("SpecialtyAspectsComposerService", () => {
+describe(SpecialtyAspectsComposerService, () => {
   let service: SpecialtyAspectsComposerService;
 
   beforeAll(async () => {
@@ -27,16 +27,18 @@ describe("SpecialtyAspectsComposerService", () => {
   });
 
   const mockLogger = {
-    error: vi.fn(),
-    log: vi.fn(),
-    setContext: vi.fn(),
+    error: vi.fn<LoggerService["error"]>(),
+    log: vi.fn<LoggerService["log"]>(),
+    setContext: vi.fn<LoggerService["setContext"]>(),
   };
   const mockEphemerisService = {
-    getLongitudesWindow: vi.fn().mockReturnValue({
-      current: 72,
-      next: 73,
-      previous: 71,
-    }),
+    getLongitudesWindow: vi
+      .fn<EphemerisService["getLongitudesWindow"]>()
+      .mockReturnValue({
+        current: 72,
+        next: 73,
+        previous: 71,
+      }),
   };
 
   const mockService = new SpecialtyAspectsComposerService(
@@ -51,6 +53,7 @@ describe("SpecialtyAspectsComposerService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("assembles boundary events for every phase", () => {
     const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
 
@@ -64,7 +67,7 @@ describe("SpecialtyAspectsComposerService", () => {
         specialtyAspectSymbol: "⬠",
         timestamp,
       }),
-    ).toEqual(
+    ).toStrictEqual(
       expect.objectContaining({
         description: "Sun quintile Moon",
         summary: "🎯 ☀️ ⬠ 🌙 Sun quintile Moon",
@@ -86,7 +89,7 @@ describe("SpecialtyAspectsComposerService", () => {
         "Sun",
         "Quintile",
       ]),
-    ).toEqual({
+    ).toStrictEqual({
       aspectCapitalized: "Quintile",
       body1Capitalized: "Moon",
       body2Capitalized: "Sun",
@@ -99,7 +102,7 @@ describe("SpecialtyAspectsComposerService", () => {
         body2Capitalized: "Sun",
         categories: ["Quintile", "Moon", "Sun"],
       }),
-    ).toEqual({
+    ).toStrictEqual({
       aspect: "quintile",
       body1: "moon",
       body2: "sun",
@@ -143,7 +146,7 @@ describe("SpecialtyAspectsComposerService", () => {
         phase: "forming",
         specialtyAspect: "quintile",
       }),
-    ).toEqual(
+    ).toStrictEqual(
       expect.objectContaining({
         description: "Moon forming quintile Sun",
         phaseEmoji: "➡️",
@@ -157,7 +160,7 @@ describe("SpecialtyAspectsComposerService", () => {
         phase: "perfective",
         specialtyAspect: "quintile",
       }),
-    ).toEqual(
+    ).toStrictEqual(
       expect.objectContaining({
         description: "Moon perfective quintile Sun",
         phaseEmoji: "🎯",
@@ -171,7 +174,7 @@ describe("SpecialtyAspectsComposerService", () => {
         phase: "dissolving",
         specialtyAspect: "quintile",
       }),
-    ).toEqual(
+    ).toStrictEqual(
       expect.objectContaining({
         description: "Moon dissolving quintile Sun",
         phaseEmoji: "⬅️",
@@ -190,7 +193,7 @@ describe("SpecialtyAspectsComposerService", () => {
 
     expect(
       mockService.getSpecialtyAspectProgressiveEvent(beginning, ending),
-    ).toEqual(
+    ).toStrictEqual(
       expect.objectContaining({
         description: "Moon quintile Sun",
         summary: "🌙⬠☀️ Moon quintile Sun",
@@ -204,7 +207,7 @@ describe("SpecialtyAspectsComposerService", () => {
         nextMinute: minute.clone().add(1, "minute"),
         previousMinute: minute.clone().subtract(1, "minute"),
       }),
-    ).toEqual({ current: 72, next: 73, previous: 71 });
+    ).toStrictEqual({ current: 72, next: 73, previous: 71 });
   });
 
   it("rejects invalid input and formats grouped events", () => {

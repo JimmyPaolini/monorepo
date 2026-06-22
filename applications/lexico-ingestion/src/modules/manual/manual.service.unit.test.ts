@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
@@ -19,7 +11,9 @@ import { WordsService } from "../words/words.service";
 import { MANUAL_LEXEMES_TO_DELETE } from "./manual.constants";
 import { ManualService } from "./manual.service";
 
-describe("ManualService", () => {
+import type { Mocked } from "vitest";
+
+describe(ManualService, () => {
   let service: ManualService;
 
   let lexemesRepository: Mocked<any>;
@@ -28,16 +22,20 @@ describe("ManualService", () => {
 
   beforeAll(async () => {
     const mockLexemesRepository = {
-      delete: vi.fn().mockResolvedValue({ affected: 1 }),
-      save: vi.fn(),
+      delete: vi
+        .fn<(criteria: unknown) => Promise<{ affected: number }>>()
+        .mockResolvedValue({ affected: 1 }),
+      save: vi.fn<(lexeme: Lexeme, options?: unknown) => Promise<Lexeme>>(),
     };
 
     const mockWordsService = {
-      ingestLexemeWords: vi.fn().mockResolvedValue(undefined),
+      ingestLexemeWords: vi
+        .fn<(lexeme?: Lexeme) => Promise<void>>()
+        .mockResolvedValue(undefined),
     };
 
     const mockNumeralsService = {
-      toRoman: vi.fn((num: number) => {
+      toRoman: vi.fn<(numberValue: number) => string>((numberValue) => {
         const romanNumerals: Record<number, string> = {
           1: "I",
           2: "II",
@@ -46,7 +44,7 @@ describe("ManualService", () => {
           5: "V",
           10: "X",
         };
-        return romanNumerals[num] ?? "X";
+        return romanNumerals[numberValue] ?? "X";
       }),
     };
 
@@ -118,7 +116,10 @@ describe("ManualService", () => {
 
       await service.createManual(lexeme);
 
-      expect(wordsService.ingestLexemeWords).toHaveBeenCalledWith(lexeme);
+      const ingestLexemeWordsCall =
+        wordsService.ingestLexemeWords.mock.calls[0]?.[0];
+
+      expect(ingestLexemeWordsCall).toBe(lexeme);
     });
   });
 
@@ -163,7 +164,9 @@ describe("ManualService", () => {
 
       await service.ingestManual();
 
-      expect(wordsService.ingestLexemeWords).toHaveBeenCalled();
+      const ingestLexemeWordsCalls = wordsService.ingestLexemeWords.mock.calls;
+
+      expect(ingestLexemeWordsCalls.length).toBeGreaterThan(0);
     });
 
     it("should generate Roman numerals", async () => {
@@ -172,7 +175,9 @@ describe("ManualService", () => {
       await service.ingestManual();
 
       // Verify that toRoman was called for Roman numeral generation
-      expect(numeralsService.toRoman).toHaveBeenCalled();
+      const toRomanCalls = numeralsService.toRoman.mock.calls;
+
+      expect(toRomanCalls.length).toBeGreaterThan(0);
     });
   });
 

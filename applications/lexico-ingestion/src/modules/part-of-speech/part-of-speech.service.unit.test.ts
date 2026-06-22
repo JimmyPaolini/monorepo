@@ -2,7 +2,7 @@
 
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import {
   AdjectiveInflection,
@@ -18,7 +18,7 @@ import { PartOfSpeechService } from "./part-of-speech.service";
 import type { Lexeme, PrincipalPart } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";
 
-describe("PartOfSpeechService", () => {
+describe(PartOfSpeechService, () => {
   let service: PartOfSpeechService;
 
   beforeAll(async () => {
@@ -700,7 +700,7 @@ describe("PartOfSpeechService", () => {
         ] as PrincipalPart[],
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         comparative: ["quicker"],
         positive: ["quickly"],
         superlative: ["quickest"],
@@ -721,7 +721,7 @@ describe("PartOfSpeechService", () => {
         principalParts: [{ text: ["quickly"] }] as PrincipalPart[],
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         positive: ["quickly"],
       });
     });
@@ -740,7 +740,7 @@ describe("PartOfSpeechService", () => {
         principalParts: [],
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         positive: [],
       });
     });
@@ -765,6 +765,7 @@ describe("PartOfSpeechService", () => {
 
       const $ = cheerio.load('<p id="entry">word</p>');
       const entryNode = $("#entry").get(0);
+
       expect(entryNode).toBeDefined();
 
       const forms = service.parseForms({
@@ -775,8 +776,8 @@ describe("PartOfSpeechService", () => {
         principalParts: [],
       });
 
-      expect(parseGenericFormsSpy).toHaveBeenCalled();
-      expect(forms).toEqual({ noun: ["word"] });
+      expect(parseGenericFormsSpy).toHaveBeenCalledWith();
+      expect(forms).toStrictEqual({ noun: ["word"] });
     });
 
     it("dispatches verb forms parsing", () => {
@@ -799,6 +800,7 @@ describe("PartOfSpeechService", () => {
 
       const $ = cheerio.load('<p id="entry">amō</p>');
       const entryNode = $("#entry").get(0);
+
       expect(entryNode).toBeDefined();
 
       const forms = service.parseForms({
@@ -809,8 +811,8 @@ describe("PartOfSpeechService", () => {
         principalParts: [],
       });
 
-      expect(parseVerbFormsSpy).toHaveBeenCalled();
-      expect(forms).toEqual({ indicative: ["amō"] });
+      expect(parseVerbFormsSpy).toHaveBeenCalledWith();
+      expect(forms).toStrictEqual({ indicative: ["amō"] });
     });
 
     it("returns null for unknown forms group", () => {
@@ -875,6 +877,7 @@ describe("PartOfSpeechService", () => {
 
       const $ = cheerio.load('<p id="entry">word</p>');
       const entryNode = $("#entry").get(0);
+
       expect(entryNode).toBeDefined();
 
       for (const partOfSpeech of genericPartsOfSpeech) {
@@ -886,7 +889,7 @@ describe("PartOfSpeechService", () => {
           principalParts: [],
         });
 
-        expect(forms).toEqual({ generic: ["word"] });
+        expect(forms).toStrictEqual({ generic: ["word"] });
       }
 
       expect(parseGenericFormsSpy.mock.calls.length - initialCallCount).toBe(
@@ -899,6 +902,7 @@ describe("PartOfSpeechService", () => {
         '<p id="entry">entry; third declension pronoun</p>',
       );
       const entryNode = $("#entry").get(0);
+
       expect(entryNode).toBeDefined();
 
       const mappedPartsOfSpeech: Parameters<

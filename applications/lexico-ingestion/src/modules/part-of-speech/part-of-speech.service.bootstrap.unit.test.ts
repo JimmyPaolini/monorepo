@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
-describe("PartOfSpeechService module initialization", () => {
+describe("partOfSpeechService module initialization", () => {
   afterEach(() => {
     vi.resetModules();
     vi.doUnmock("./part-of-speech.constants");

@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { Lexeme, PrincipalPart } from "@monorepo/lexico-entities";
 
@@ -23,12 +23,12 @@ function getElementByIdentifierOrThrow(
   throw new Error(`Expected element ${identifier} to exist in test markup`);
 }
 
-describe("PrincipalPartsService", () => {
+describe(PrincipalPartsService, () => {
   let service: PrincipalPartsService;
-  const saveMock = vi.fn();
+  const saveMock = vi.fn<(entity: Lexeme) => Promise<Lexeme>>();
   const loggerMock = {
-    log: vi.fn(),
-    setContext: vi.fn(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    setContext: vi.fn<(context: string) => void>(),
   };
 
   beforeAll(async () => {
@@ -96,7 +96,7 @@ describe("PrincipalPartsService", () => {
 
       expect(incomingPresent.id).toBe("existing-present-id");
       expect(incomingPerfect.id).toBeUndefined();
-      expect(savedLexeme.principalParts).toEqual([
+      expect(savedLexeme.principalParts).toStrictEqual([
         incomingPresent,
         incomingPerfect,
       ]);
@@ -118,7 +118,7 @@ describe("PrincipalPartsService", () => {
       await service.ingestLexemePrincipalParts(savedLexeme, [incomingPerfect]);
 
       expect(incomingPerfect.id).toBeUndefined();
-      expect(savedLexeme.principalParts).toEqual([incomingPerfect]);
+      expect(savedLexeme.principalParts).toStrictEqual([incomingPerfect]);
       expect(saveMock).toHaveBeenCalledWith(savedLexeme);
     });
   });
@@ -144,11 +144,11 @@ describe("PrincipalPartsService", () => {
       expect(result.macronizedWord).toBe("write");
       expect(result.principalParts).toHaveLength(3);
       expect(result.principalParts[0]?.name).toBe("present");
-      expect(result.principalParts[0]?.text).toEqual(["write"]);
+      expect(result.principalParts[0]?.text).toStrictEqual(["write"]);
       expect(result.principalParts[1]?.name).toBe("infinitive");
-      expect(result.principalParts[1]?.text).toEqual(["writing"]);
+      expect(result.principalParts[1]?.text).toStrictEqual(["writing"]);
       expect(result.principalParts[2]?.name).toBe("perfect");
-      expect(result.principalParts[2]?.text).toEqual(["written"]);
+      expect(result.principalParts[2]?.text).toStrictEqual(["written"]);
     });
 
     it("merges alternate forms when previous label is 'or'", () => {
@@ -170,7 +170,10 @@ describe("PrincipalPartsService", () => {
 
       expect(result.principalParts).toHaveLength(2);
       expect(result.principalParts[1]?.name).toBe("perfect");
-      expect(result.principalParts[1]?.text).toEqual(["written", "wrote"]);
+      expect(result.principalParts[1]?.text).toStrictEqual([
+        "written",
+        "wrote",
+      ]);
     });
 
     it("ignores 'or' when there is no previous principal part to merge", () => {
@@ -190,7 +193,7 @@ describe("PrincipalPartsService", () => {
 
       expect(result.principalParts).toHaveLength(1);
       expect(result.principalParts[0]?.name).toBe("present");
-      expect(result.principalParts[0]?.text).toEqual(["wrote"]);
+      expect(result.principalParts[0]?.text).toStrictEqual(["wrote"]);
       expect(result.macronizedWord).toBe("wrote");
     });
 
@@ -210,7 +213,7 @@ describe("PrincipalPartsService", () => {
       });
 
       expect(result.principalParts[0]?.name).toBe("present");
-      expect(result.principalParts[0]?.text).toEqual([]);
+      expect(result.principalParts[0]?.text).toStrictEqual([]);
       expect(result.macronizedWord).toBe("");
     });
 

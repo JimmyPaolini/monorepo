@@ -4,15 +4,7 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import { Like, type Repository } from "typeorm";
-import {
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mocked,
-  vi,
-} from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
@@ -20,14 +12,16 @@ import { LoggerService } from "../logger/logger.service";
 
 import { TranslationsService } from "./translations.service";
 
-describe("TranslationsService", () => {
+import type { Mocked } from "vitest";
+
+describe(TranslationsService, () => {
   let service: TranslationsService;
   let translationsRepository: Mocked<Repository<Translation>>;
 
   beforeAll(async () => {
     const mockTranslationsRepository = {
-      find: vi.fn(),
-      save: vi.fn(),
+      find: vi.fn<(options?: unknown) => Promise<Translation[]>>(),
+      save: vi.fn<(translations: Translation[]) => Promise<Translation[]>>(),
     };
 
     const module = await Test.createTestingModule({
@@ -40,12 +34,12 @@ describe("TranslationsService", () => {
         {
           provide: LoggerService,
           useValue: {
-            debug: vi.fn(),
-            error: vi.fn(),
-            log: vi.fn(),
-            setContext: vi.fn(),
-            verbose: vi.fn(),
-            warn: vi.fn(),
+            debug: vi.fn<(...parameters: unknown[]) => void>(),
+            error: vi.fn<(...parameters: unknown[]) => void>(),
+            log: vi.fn<(...parameters: unknown[]) => void>(),
+            setContext: vi.fn<(...parameters: unknown[]) => void>(),
+            verbose: vi.fn<(...parameters: unknown[]) => void>(),
+            warn: vi.fn<(...parameters: unknown[]) => void>(),
           },
         },
       ],
@@ -74,7 +68,7 @@ describe("TranslationsService", () => {
         new Translation("{*amo*}", lexeme),
       ]);
 
-      expect(references).toEqual(["amo", "amicus"]);
+      expect(references).toStrictEqual(["amo", "amicus"]);
     });
 
     it("should strip parenthetical qualifiers from references", () => {
@@ -83,7 +77,7 @@ describe("TranslationsService", () => {
         new Translation("{*amor (noun)*}", lexeme),
       ]);
 
-      expect(references).toEqual(["amor"]);
+      expect(references).toStrictEqual(["amor"]);
     });
 
     it("should handle multiple references in a single translation", () => {
@@ -92,7 +86,7 @@ describe("TranslationsService", () => {
         new Translation("{*amo*} {*amicus*}", lexeme),
       ]);
 
-      expect(references).toEqual(["amo", "amicus"]);
+      expect(references).toStrictEqual(["amo", "amicus"]);
     });
 
     it("should handle references with spaces and parentheses", () => {
@@ -101,7 +95,7 @@ describe("TranslationsService", () => {
         new Translation("{*amor (gen. -oris)*}", lexeme),
       ]);
 
-      expect(references).toEqual(["amor"]);
+      expect(references).toStrictEqual(["amor"]);
     });
 
     it("should return empty array when no references exist", () => {
@@ -110,7 +104,7 @@ describe("TranslationsService", () => {
         new Translation("a plain translation", lexeme),
       ]);
 
-      expect(references).toEqual([]);
+      expect(references).toStrictEqual([]);
     });
 
     it("should ignore empty reference after removing parenthetical qualifier", () => {
@@ -119,7 +113,7 @@ describe("TranslationsService", () => {
         new Translation("{*(noun)*}", lexeme),
       ]);
 
-      expect(references).toEqual([]);
+      expect(references).toStrictEqual([]);
     });
   });
 
@@ -142,8 +136,8 @@ describe("TranslationsService", () => {
       ]);
 
       expect(prepared[0]?.id).toBe("1");
-      expect(prepared[0]?.createdAt).toEqual(new Date("2024-01-01"));
-      expect(prepared[0]?.updatedAt).toEqual(new Date("2024-01-02"));
+      expect(prepared[0]?.createdAt).toStrictEqual(new Date("2024-01-01"));
+      expect(prepared[0]?.updatedAt).toStrictEqual(new Date("2024-01-02"));
     });
 
     it("should allow empty translation array", () => {
@@ -154,7 +148,7 @@ describe("TranslationsService", () => {
 
       const prepared = service.prepareTranslationsForSave(lexeme, []);
 
-      expect(prepared).toEqual([]);
+      expect(prepared).toStrictEqual([]);
     });
 
     it("should not modify translations with no existing match", () => {
@@ -192,7 +186,9 @@ describe("TranslationsService", () => {
 
       await service.findTranslationsWithReferences("amor:1");
 
-      expect(translationsRepository.find).toHaveBeenCalledWith({
+      const findByLexemeCall = translationsRepository.find.mock.calls[0]?.[0];
+
+      expect(findByLexemeCall).toStrictEqual({
         relations: { lexeme: true },
         where: { data: Like("%{*%*}%"), lexeme: { id: "amor:1" } },
       });
@@ -209,7 +205,7 @@ describe("TranslationsService", () => {
 
       const result = await service.findTranslationsWithReferences("amor:1");
 
-      expect(result).toEqual([t1, t2]);
+      expect(result).toStrictEqual([t1, t2]);
     });
   });
 
@@ -220,7 +216,9 @@ describe("TranslationsService", () => {
 
       await service.findAllTranslationsWithReferences();
 
-      expect(translationsRepository.find).toHaveBeenCalledWith({
+      const defaultFindCall = translationsRepository.find.mock.calls[0]?.[0];
+
+      expect(defaultFindCall).toStrictEqual({
         order: { data: "ASC" },
         relations: { lexeme: true },
         take: 100,
@@ -234,7 +232,9 @@ describe("TranslationsService", () => {
 
       await service.findAllTranslationsWithReferences(50);
 
-      expect(translationsRepository.find).toHaveBeenCalledWith({
+      const customTakeFindCall = translationsRepository.find.mock.calls[0]?.[0];
+
+      expect(customTakeFindCall).toStrictEqual({
         order: { data: "ASC" },
         relations: { lexeme: true },
         take: 50,
@@ -255,8 +255,10 @@ describe("TranslationsService", () => {
 
       const result = await service.saveTranslations(translations);
 
-      expect(translationsRepository.save).toHaveBeenCalledWith(translations);
-      expect(result).toEqual(translations);
+      const saveCall = translationsRepository.save.mock.calls[0]?.[0];
+
+      expect(saveCall).toBe(translations);
+      expect(result).toStrictEqual(translations);
     });
 
     it("should handle empty array", async () => {
@@ -264,8 +266,10 @@ describe("TranslationsService", () => {
 
       const result = await service.saveTranslations([]);
 
-      expect(translationsRepository.save).toHaveBeenCalledWith([]);
-      expect(result).toEqual([]);
+      const emptySaveCall = translationsRepository.save.mock.calls[0]?.[0];
+
+      expect(emptySaveCall).toStrictEqual([]);
+      expect(result).toStrictEqual([]);
     });
   });
 
@@ -278,10 +282,10 @@ describe("TranslationsService", () => {
 
       const result = service.parseTranslations($, elt, lexeme);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
-    it("should parse translations from li elements", () => {
+    it("should parse translations from list elements", () => {
       const html = `
         <div>
           <p>Translations</p>
@@ -427,7 +431,7 @@ describe("TranslationsService", () => {
 
       const result = service.parseTranslations($, elt, lexeme);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
     it("should append normalized references for form-of translations", () => {

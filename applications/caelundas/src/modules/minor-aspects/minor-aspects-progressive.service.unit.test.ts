@@ -3,13 +3,13 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { MinorAspectsProgressiveService } from "./minor-aspects-progressive.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("MinorAspectsProgressiveService", () => {
+describe(MinorAspectsProgressiveService, () => {
   let service: MinorAspectsProgressiveService;
 
   beforeAll(async () => {
@@ -27,7 +27,8 @@ describe("MinorAspectsProgressiveService", () => {
   });
 
   const progressiveUtilitiesService = {
-    pairProgressiveEvents: vi.fn(),
+    pairProgressiveEvents:
+      vi.fn<ProgressiveUtilities["pairProgressiveEvents"]>(),
   };
   const mockService = new MinorAspectsProgressiveService(
     progressiveUtilitiesService as never,
@@ -53,6 +54,7 @@ describe("MinorAspectsProgressiveService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("builds progressive events from forming and dissolving minor aspects", () => {
     const formingEvent: Event = {
       categories: [
@@ -101,7 +103,7 @@ describe("MinorAspectsProgressiveService", () => {
   });
 
   it("returns empty when aspect group key is empty", () => {
-    expect(privateService.processAspectGroup("", [])).toEqual([]);
+    expect(privateService.processAspectGroup("", [])).toStrictEqual([]);
   });
 
   it("returns empty key for invalid categories", () => {

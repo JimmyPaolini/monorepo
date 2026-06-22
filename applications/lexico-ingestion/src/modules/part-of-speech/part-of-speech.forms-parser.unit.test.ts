@@ -1,12 +1,12 @@
 import * as cheerio from "cheerio";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { PartOfSpeechFormsParser } from "./part-of-speech.forms-parser";
 
 import type { Lexeme } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";
 
-describe("PartOfSpeechFormsParser", () => {
+describe(PartOfSpeechFormsParser, () => {
   let parser: PartOfSpeechFormsParser;
 
   beforeEach(() => {
@@ -53,7 +53,7 @@ describe("PartOfSpeechFormsParser", () => {
         lexeme: { partOfSpeech: "adjective" } as Lexeme,
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         neuter: {
           accusative: { plural: ["bonum"] },
           nominative: { plural: ["bonus"] },
@@ -80,7 +80,7 @@ describe("PartOfSpeechFormsParser", () => {
         lexeme: { partOfSpeech: "noun" } as Lexeme,
       });
 
-      expect(forms).toEqual({});
+      expect(forms).toStrictEqual({});
     });
 
     it("handles sparse generic form tables without row entries", () => {
@@ -107,7 +107,7 @@ describe("PartOfSpeechFormsParser", () => {
         lexeme: { partOfSpeech: "noun" } as Lexeme,
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         nominative: ["bonus"],
       });
     });
@@ -170,7 +170,7 @@ describe("PartOfSpeechFormsParser", () => {
         elt: cheerio.load("<p />")("p").get(0) as AnyNode,
       });
 
-      expect(forms).toEqual({
+      expect(forms).toStrictEqual({
         indicative: {
           future: ["future-form"],
           present: ["present-form"],
@@ -198,7 +198,7 @@ describe("PartOfSpeechFormsParser", () => {
         elt: cheerio.load("<p />")("p").get(0) as AnyNode,
       });
 
-      expect(forms).toEqual({});
+      expect(forms).toStrictEqual({});
     });
   });
 
@@ -218,7 +218,7 @@ describe("PartOfSpeechFormsParser", () => {
         "first",
       );
 
-      expect(words).toEqual(["sample sum"]);
+      expect(words).toStrictEqual(["sample sum"]);
     });
 
     it("returns original input when lookup does not exist", () => {
@@ -236,7 +236,7 @@ describe("PartOfSpeechFormsParser", () => {
         "first",
       );
 
-      expect(words).toEqual(["sample unknown voice tense"]);
+      expect(words).toStrictEqual(["sample unknown voice tense"]);
     });
   });
 
@@ -252,15 +252,15 @@ describe("PartOfSpeechFormsParser", () => {
 
       expect(
         parserWithPrivates.parseVerbWordCell("amo, amas", "singular", "first"),
-      ).toEqual(["amo", "amas"]);
+      ).toStrictEqual(["amo", "amas"]);
 
       expect(
         parserWithPrivates.parseVerbWordCell("sample +", "singular", "first"),
-      ).toEqual(expect.arrayContaining([expect.any(String)]));
+      ).toStrictEqual(expect.arrayContaining([expect.any(String)]));
 
       expect(
         parserWithPrivates.parseVerbWordCell("amo", "plural", "first"),
-      ).toEqual(["amo"]);
+      ).toStrictEqual(["amo"]);
     });
 
     it("finds generic identifiers for adjective and noun", () => {
@@ -292,7 +292,7 @@ describe("PartOfSpeechFormsParser", () => {
         table_: table,
       });
 
-      expect(adjectiveIdentifiers).toEqual(
+      expect(adjectiveIdentifiers).toStrictEqual(
         expect.arrayContaining(["nominative", "neuter"]),
       );
       expect(["plural", "singular"]).toContain(adjectiveIdentifiers[0]);
@@ -325,7 +325,7 @@ describe("PartOfSpeechFormsParser", () => {
         table_: [[""]],
       });
 
-      expect(identifiers).toEqual(["masculine"]);
+      expect(identifiers).toStrictEqual(["masculine"]);
     });
 
     it("finds and normalizes verb identifiers", () => {
@@ -344,7 +344,7 @@ describe("PartOfSpeechFormsParser", () => {
 
       const identifiers = parserWithPrivates.findVerbIdentifiers(1, 1, table);
 
-      expect(identifiers).toEqual(
+      expect(identifiers).toStrictEqual(
         expect.arrayContaining(["futurePerfect", "first", "indicative"]),
       );
     });
@@ -362,7 +362,7 @@ describe("PartOfSpeechFormsParser", () => {
         ["indicative", "present"],
       ]);
 
-      expect(identifiers).toEqual(["indicative"]);
+      expect(identifiers).toStrictEqual(["indicative"]);
     });
 
     it("normalizes non-finite and verbal nouns verb identifiers", () => {
@@ -381,7 +381,7 @@ describe("PartOfSpeechFormsParser", () => {
 
       const identifiers = parserWithPrivates.findVerbIdentifiers(1, 1, table);
 
-      expect(identifiers).toEqual(
+      expect(identifiers).toStrictEqual(
         expect.arrayContaining(["nonFinite", "verbalNoun", "first"]),
       );
     });
@@ -418,7 +418,7 @@ describe("PartOfSpeechFormsParser", () => {
         table,
       });
 
-      expect(disorganizedForms.length).toBe(1);
+      expect(disorganizedForms).toHaveLength(1);
     });
 
     it("processes plus-sign verb rows without span markup", () => {
@@ -443,7 +443,7 @@ describe("PartOfSpeechFormsParser", () => {
         table,
       });
 
-      expect(disorganizedForms.length).toBe(1);
+      expect(disorganizedForms).toHaveLength(1);
       expect(disorganizedForms[0]?.word.length).toBeGreaterThan(0);
     });
 
@@ -472,7 +472,7 @@ describe("PartOfSpeechFormsParser", () => {
         table,
       });
 
-      expect(disorganizedForms).toEqual([]);
+      expect(disorganizedForms).toStrictEqual([]);
     });
 
     it("scans table axis and verb headers", () => {
@@ -532,7 +532,7 @@ describe("PartOfSpeechFormsParser", () => {
       });
 
       expect(header.finalIndex).toBe(0);
-      expect(header.identifiers).toEqual(new Set(["indicative"]));
+      expect(header.identifiers).toStrictEqual(new Set(["indicative"]));
     });
 
     it("sorts identifiers into nested object", () => {
@@ -551,7 +551,7 @@ describe("PartOfSpeechFormsParser", () => {
         {},
       );
 
-      expect(sorted).toEqual({
+      expect(sorted).toStrictEqual({
         present: {
           indicative: ["amo"],
         },
@@ -576,7 +576,7 @@ describe("PartOfSpeechFormsParser", () => {
       );
 
       expect(sorted).toBe(base);
-      expect(sorted).toEqual({ keep: "value" });
+      expect(sorted).toStrictEqual({ keep: "value" });
     });
 
     it("replaces non-record intermediate values while sorting identifiers", () => {
@@ -595,7 +595,7 @@ describe("PartOfSpeechFormsParser", () => {
         { present: "invalid-branch" },
       );
 
-      expect(sorted).toEqual({
+      expect(sorted).toStrictEqual({
         present: {
           indicative: ["amo"],
         },
@@ -642,7 +642,7 @@ describe("PartOfSpeechFormsParser", () => {
 
       const table = parserWithPrivates.parseFormTable($, entryNode);
 
-      expect(table).toEqual([]);
+      expect(table).toStrictEqual([]);
     });
 
     it("fills sparse transposed table cells with empty strings", () => {
@@ -663,7 +663,7 @@ describe("PartOfSpeechFormsParser", () => {
 
       const table = parserWithPrivates.parseFormTable($, entryNode);
 
-      expect(table).toEqual([
+      expect(table).toStrictEqual([
         ["A", "B"],
         ["x", ""],
       ]);
@@ -682,7 +682,9 @@ describe("PartOfSpeechFormsParser", () => {
         ["nominative", "plural"],
       ]);
 
-      expect([...identifiers]).toEqual(expect.arrayContaining(["nominative"]));
+      expect([...identifiers]).toStrictEqual(
+        expect.arrayContaining(["nominative"]),
+      );
     });
   });
 });

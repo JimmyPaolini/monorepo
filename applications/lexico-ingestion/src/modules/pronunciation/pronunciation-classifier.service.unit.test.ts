@@ -2,7 +2,7 @@
 
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { Pronunciation } from "@monorepo/lexico-entities";
 
@@ -10,12 +10,18 @@ import { PronunciationClassicalService } from "./pronunciation-classical.service
 import { PronunciationClassifierService } from "./pronunciation-classifier.service";
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 
+import type {
+  PronunciationClassicalCharacterContext,
+  PronunciationEcclesiasticalCharacterContext,
+} from "./pronunciation.types";
 import type { AnyNode } from "domhandler";
 
-describe("PronunciationClassifierService", () => {
+describe(PronunciationClassifierService, () => {
   let service: PronunciationClassifierService;
-  const processClassicalCharacter = vi.fn();
-  const processEcclesiasticalCharacter = vi.fn();
+  const processClassicalCharacter =
+    vi.fn<(args: PronunciationClassicalCharacterContext) => number>();
+  const processEcclesiasticalCharacter =
+    vi.fn<(args: PronunciationEcclesiasticalCharacterContext) => number>();
 
   const createPronunciation = (): Pronunciation => {
     const pronunciation = new Pronunciation();

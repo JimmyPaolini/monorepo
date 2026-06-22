@@ -1,6 +1,7 @@
-set -euo pipefail
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S %z')
+printf '[%s] pre-push\n' "$TIMESTAMP"
 
-printf '[%s] pre-push\n' "$(date '+%Y-%m-%d %H:%M:%S %z')"
+set -e
 
 nx run monorepo:validate-branch-name
 

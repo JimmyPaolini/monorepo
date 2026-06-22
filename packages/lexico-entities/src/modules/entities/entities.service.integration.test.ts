@@ -1,5 +1,5 @@
-import "reflect-metadata";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import "reflect-metadata";
 
 import {
   createIntegrationTestDatabaseResources,
@@ -343,7 +343,7 @@ async function verifyDatabaseSchema(): Promise<void> {
     (tableName) => tableName !== TYPEORM_METADATA_TABLE_NAME,
   );
 
-  expect(relevantTableNames).toEqual(
+  expect(relevantTableNames).toStrictEqual(
     normalizeStringArray(
       Object.values(ENTITY_INTEGRATION_EXPECTATIONS).map(
         (expectation) => expectation.tableName,
@@ -416,6 +416,7 @@ describe("entity integration schema", () => {
 
   it("should have all registered entities", () => {
     const entityMetadataList = integrationDataSource.entityMetadatas;
+
     expect(entityMetadataList.length).toBeGreaterThan(0);
     expect(
       entityMetadataList.map((entityMetadata) => entityMetadata.name),

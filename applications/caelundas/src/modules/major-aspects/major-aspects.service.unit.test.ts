@@ -6,7 +6,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MajorAspectEventService } from "./major-aspect-event.service";
 import { MajorAspectProgressiveService } from "./major-aspect-progressive.service";
@@ -17,11 +17,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("MajorAspectsService", () => {
+describe(MajorAspectsService, () => {
   let service: MajorAspectsService;
   let aspectsUtilitiesService: AspectsUtilities;
 
@@ -103,18 +103,21 @@ describe("MajorAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const conjunctionEvent = events.find(
         (e) =>
           e.description.includes("conjunct") &&
           e.description.includes("Sun") &&
           e.description.includes("Mercury"),
       );
+
       expect(conjunctionEvent).toBeDefined();
       expect(conjunctionEvent?.categories).toContain("Perfective");
     });
 
     it("detects forming aspect", () => {
-      // Test context provides debugging info and task metadata
+      expect.hasAssertions(); // Test context provides debugging info and task metadata
+
       // Useful for logging test names in complex scenarios
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -150,6 +153,7 @@ describe("MajorAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Venus"),
       );
+
       expect(formingOpposition).toBeDefined();
     });
 
@@ -188,6 +192,7 @@ describe("MajorAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Mars"),
       );
+
       expect(dissolvingTrine).toBeDefined();
     });
 
@@ -224,6 +229,7 @@ describe("MajorAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
+
       const sunMercuryAspect = events.find(
         (e) =>
           e.description.includes("Sun") && e.description.includes("Mercury"),
@@ -231,6 +237,7 @@ describe("MajorAspectsService", () => {
       const sunVenusAspect = events.find(
         (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
+
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
     });
@@ -300,6 +307,7 @@ describe("MajorAspectsService", () => {
         (e) =>
           e.description.includes("Sun") && e.description.includes("Jupiter"),
       );
+
       expect(sunJupiterEvents).toHaveLength(1);
     });
   });
@@ -419,6 +427,7 @@ describe("MajorAspectsService", () => {
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 171,
       });
+
       expect(phase).toBe("forming");
     });
 
@@ -431,6 +440,7 @@ describe("MajorAspectsService", () => {
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 185,
       });
+
       expect(phase).toBe("dissolving");
     });
 
@@ -443,6 +453,7 @@ describe("MajorAspectsService", () => {
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 179,
       });
+
       expect(phase).toBe("perfective");
     });
 
@@ -455,6 +466,7 @@ describe("MajorAspectsService", () => {
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 45,
       });
+
       expect(phase).toBeNull();
     });
   });

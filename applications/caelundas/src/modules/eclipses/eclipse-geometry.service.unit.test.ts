@@ -3,13 +3,13 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { EclipseGeometryService } from "./eclipse-geometry.service";
 
-describe("EclipseGeometryService", () => {
+describe(EclipseGeometryService, () => {
   let service: EclipseGeometryService;
 
   beforeAll(async () => {
@@ -29,16 +29,23 @@ describe("EclipseGeometryService", () => {
   });
 
   const ephemerisService = {
-    getAzimuthElevationFromEphemeris: vi.fn(),
-    getCoordinateFromEphemeris: vi.fn(),
-    getDiameterFromEphemeris: vi.fn(),
+    getAzimuthElevationFromEphemeris:
+      vi.fn<EphemerisService["getAzimuthElevationFromEphemeris"]>(),
+    getCoordinateFromEphemeris:
+      vi.fn<EphemerisService["getCoordinateFromEphemeris"]>(),
+    getDiameterFromEphemeris:
+      vi.fn<EphemerisService["getDiameterFromEphemeris"]>(),
   };
 
   const mathService = {
-    getAngle: vi.fn((first: number, second: number) => first - second),
-    isMaximum: vi.fn(),
-    isMinimum: vi.fn(),
-    normalizeDegrees: vi.fn((value: number) => value),
+    getAngle: vi.fn<MathService["getAngle"]>(
+      (first: number, second: number) => first - second,
+    ),
+    isMaximum: vi.fn<MathService["isMaximum"]>(),
+    isMinimum: vi.fn<MathService["isMinimum"]>(),
+    normalizeDegrees: vi.fn<MathService["normalizeDegrees"]>(
+      (value: number) => value,
+    ),
   };
 
   const mockService = new EclipseGeometryService(
@@ -54,6 +61,7 @@ describe("EclipseGeometryService", () => {
   it("is defined", () => {
     expect(service).toBeDefined();
   });
+
   it("samples eclipse coordinates around the current minute", () => {
     const minute = moment.utc("2024-04-08T18:00:00.000Z");
     const currentIso = minute.toISOString();
@@ -106,7 +114,7 @@ describe("EclipseGeometryService", () => {
         sunCoordinateEphemeris: {},
         sunDiameterEphemeris: {},
       }),
-    ).toEqual({
+    ).toStrictEqual({
       currentCoordinates: {
         diameterMoon: 0.4,
         diameterSun: 0.5,
@@ -157,7 +165,7 @@ describe("EclipseGeometryService", () => {
         moonAzimuthElevationEphemeris: {},
         sunAzimuthElevationEphemeris: {},
       }),
-    ).toEqual({
+    ).toStrictEqual({
       currentVisibility: {
         isLunarVisible: true,
         isSolarVisible: true,
@@ -197,7 +205,7 @@ describe("EclipseGeometryService", () => {
         previousCoordinates,
         nextCoordinates,
       ),
-    ).toEqual({
+    ).toStrictEqual({
       currentDiameter: 0.9,
       currentLatitudeAngle: -1,
       currentLongitudeAngle: 10,

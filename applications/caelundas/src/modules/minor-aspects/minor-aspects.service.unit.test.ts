@@ -8,7 +8,7 @@ import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-asp
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MinorAspectsService } from "./minor-aspects.service";
 
@@ -18,11 +18,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("MinorAspectsService", () => {
+describe(MinorAspectsService, () => {
   let service: MinorAspectsService;
 
   beforeAll(async () => {
@@ -103,6 +103,7 @@ describe("MinorAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const semisextileEvent = events.find(
         (e) =>
           e.description.includes("semisextile") &&
@@ -110,6 +111,7 @@ describe("MinorAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Mercury"),
       );
+
       expect(semisextileEvent).toBeDefined();
     });
 
@@ -148,6 +150,7 @@ describe("MinorAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Venus"),
       );
+
       expect(formingSemisquare).toBeDefined();
     });
 
@@ -197,6 +200,7 @@ describe("MinorAspectsService", () => {
           e.description.includes("Sun") &&
           e.description.includes("Mars"),
       );
+
       expect(dissolvingQuincunx).toBeDefined();
     });
 
@@ -236,6 +240,7 @@ describe("MinorAspectsService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
+
       const sunMercuryAspect = events.find(
         (e) =>
           e.description.includes("Sun") && e.description.includes("Mercury"),
@@ -243,6 +248,7 @@ describe("MinorAspectsService", () => {
       const sunVenusAspect = events.find(
         (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
+
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
     });
@@ -311,6 +317,7 @@ describe("MinorAspectsService", () => {
         (e) =>
           e.description.includes("Sun") && e.description.includes("Mercury"),
       );
+
       expect(sunMercuryEvents).toHaveLength(1);
     });
 
@@ -331,7 +338,7 @@ describe("MinorAspectsService", () => {
             coordinateEphemerisByBody,
             minute: currentMinute,
           }),
-        ).toEqual([]);
+        ).toStrictEqual([]);
       } finally {
         (minorAspectBodies as unknown as string[]).pop();
       }
@@ -362,8 +369,8 @@ describe("MinorAspectsService", () => {
       expect(event.categories).toContain("Moon");
       expect(event.categories).toContain("Semisextile");
       expect(event.categories).toContain("Perfective");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("creates forming semisquare event", () => {
@@ -476,7 +483,8 @@ describe("MinorAspectsService", () => {
     };
 
     it("creates progressive events from forming and dissolving pairs", () => {
-      // Note: Categories must use Start Case for body/aspect names to match _.startCase() conversion
+      expect.hasAssertions(); // Note: Categories must use Start Case for body/aspect names to match _.startCase() conversion
+
       const forming = createMinorAspectEvent(
         "Sun",
         "Mercury",
@@ -497,8 +505,8 @@ describe("MinorAspectsService", () => {
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
-      expect(progressiveEvents[0]?.start).toEqual(forming.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolving.start);
+      expect(progressiveEvents[0]?.start).toStrictEqual(forming.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolving.start);
       expect(progressiveEvents[0]?.description).toContain("semisextile");
       expect(progressiveEvents[0]?.categories).toContain("Minor Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Simple Aspect");
@@ -621,6 +629,7 @@ describe("MinorAspectsService", () => {
 
     it("handles empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
+
       expect(progressiveEvents).toHaveLength(0);
     });
 
@@ -700,6 +709,7 @@ describe("MinorAspectsService", () => {
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 27,
       });
+
       expect(phase).toBe("forming");
     });
   });

@@ -86,8 +86,12 @@ _Note: If multiple scopes are touched, prefer `monorepo`, `applications`, `packa
 
 Be very cautious before taking any destructive actions (renaming or deleting remote branches). Always create a temporary backup branch to ensure no work is lost:
 
+Preferred approach: invoke [backup-code](../backup-code/SKILL.md) before renaming so backup creation and recovery commands are documented.
+
 ```bash
-git branch "backup/$(git branch --show-current)"
+branch_name="$(git branch --show-current)"
+iso_timestamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+git branch "backup/${branch_name}/${iso_timestamp}"
 ```
 
 ### 4. Execute the Rename
@@ -107,16 +111,18 @@ git push origin -u <new-branch-name>
 git push origin --delete <old-branch-name>
 ```
 
+If remote cleanup or rename operations are incorrect, use [restore-code](../restore-code/SKILL.md) with the backup branch to recover safely.
+
 ## Example Scenarios
 
 ### Scenario 1: Uncommitted feature in lexico
 
 - _Changes_: Modified `applications/lexico/src/components/Button.tsx`
 - _Derived Name_: `feat/lexico-button-component`
-- _Action_: `git branch backup/old-name`, then `git branch -m feat/lexico-button-component`
+- _Action_: `git branch backup/old-name/2026-06-22T12-00-00Z`, then `git branch -m feat/lexico-button-component`
 
 ### Scenario 2: Pushed bugfix in caelundas
 
 - _Changes_: Modified `applications/caelundas/src/utils/time.ts` (already pushed as `fix-time`)
 - _Derived Name_: `fix/caelundas-time-calculation`
-- _Action_: `git branch backup/fix-time`, then `git branch -m fix/caelundas-time-calculation`, push new, and delete old remote.
+- _Action_: `git branch backup/fix-time/2026-06-22T12-00-00Z`, then `git branch -m fix/caelundas-time-calculation`, push new, and delete old remote.

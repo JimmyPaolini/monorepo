@@ -18,7 +18,7 @@ import {
 
 import type { Tree } from "@nx/devkit";
 
-describe("getProjectsWithTag", () => {
+describe(getProjectsWithTag, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -42,6 +42,7 @@ describe("getProjectsWithTag", () => {
 
   it("should return only projects with the given tag", () => {
     const result = getProjectsWithTag({ tag: "framework:nestjs", tree });
+
     expect(result).toContain("nestjs-app");
     expect(result).toContain("another-nestjs-app");
     expect(result).not.toContain("plain-app");
@@ -50,11 +51,13 @@ describe("getProjectsWithTag", () => {
 
   it("should return an empty array when no projects have the tag", () => {
     const result = getProjectsWithTag({ tag: "framework:unknown", tree });
+
     expect(result).toHaveLength(0);
   });
 
   it("should match only the exact tag and not partial matches", () => {
     const result = getProjectsWithTag({ tag: "framework", tree });
+
     expect(result).toHaveLength(0);
   });
 
@@ -64,6 +67,7 @@ describe("getProjectsWithTag", () => {
       tag: "framework:nestjs",
       tree: emptyTree,
     });
+
     expect(result).toHaveLength(0);
   });
 });
@@ -90,11 +94,13 @@ describe("resolveProjectByTag", () => {
       tag: "framework:nestjs",
       tree,
     });
+
     expect(result).toBe("nestjs-app");
   });
 
   it("should throw when no projects with the tag exist", async () => {
     const emptyTree = createTreeWithEmptyWorkspace();
+
     await expect(
       resolveProject({
         message: "Select a project",
@@ -146,6 +152,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "myService",
       });
+
       expect(result).toBe("myService");
     });
 
@@ -155,6 +162,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "calculator",
       });
+
       expect(result).toBe("calculator");
     });
 
@@ -260,6 +268,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "MyService",
       });
+
       expect(result).toBe("MyService");
     });
 
@@ -295,6 +304,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "my_service",
       });
+
       expect(result).toBe("my_service");
     });
 
@@ -304,6 +314,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "calculator",
       });
+
       expect(result).toBe("calculator");
     });
 
@@ -339,6 +350,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "my-service",
       });
+
       expect(result).toBe("my-service");
     });
 
@@ -348,6 +360,7 @@ describe("resolveNameByCase", () => {
         message: "Enter a name",
         name: "calculator",
       });
+
       expect(result).toBe("calculator");
     });
 

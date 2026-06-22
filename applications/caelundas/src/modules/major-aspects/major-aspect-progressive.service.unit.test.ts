@@ -3,7 +3,7 @@ import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progres
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MajorAspectProgressiveService } from "./major-aspect-progressive.service";
 
@@ -11,11 +11,11 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("MajorAspectProgressiveService", () => {
+describe(MajorAspectProgressiveService, () => {
   let service: MajorAspectProgressiveService;
   let privateService: {
     castAspectPartsToTypes: (args: {
@@ -87,8 +87,8 @@ describe("MajorAspectProgressiveService", () => {
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
-      expect(progressiveEvents[0]?.start).toEqual(forming.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolving.start);
+      expect(progressiveEvents[0]?.start).toStrictEqual(forming.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolving.start);
       expect(progressiveEvents[0]?.categories).toContain("Simple Aspect");
       expect(progressiveEvents[0]?.categories).toContain("Major Aspect");
       expect(progressiveEvents[0]?.summary).toContain("☀️");
@@ -134,12 +134,14 @@ describe("MajorAspectProgressiveService", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(2);
+
       const conjunctDuration = progressiveEvents.find((event) =>
         event.description.includes("conjunct"),
       );
       const oppositeDuration = progressiveEvents.find((event) =>
         event.description.includes("opposite"),
       );
+
       expect(conjunctDuration).toBeDefined();
       expect(oppositeDuration).toBeDefined();
     });
@@ -218,12 +220,14 @@ describe("MajorAspectProgressiveService", () => {
 
     it("handles empty events array", () => {
       const progressiveEvents = service.detectProgressive([]);
+
       expect(progressiveEvents).toHaveLength(0);
     });
 
     it("skips processing when aspect group key is empty", () => {
       const progressiveEvents = privateService.processAspectGroup("", []);
-      expect(progressiveEvents).toEqual([]);
+
+      expect(progressiveEvents).toStrictEqual([]);
     });
 
     it("returns empty key when group categories are incomplete", () => {

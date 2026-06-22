@@ -77,7 +77,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Aries");
       expect(events[0]?.categories).toContain("Ingress");
@@ -102,7 +102,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Moon");
       expect(events[0]?.categories).toContain("Gemini");
     });
@@ -121,7 +121,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
   });
 
@@ -143,7 +143,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Decan");
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Aries");
@@ -167,7 +167,7 @@ describe("ingresses.events integration", () => {
       });
 
       // Should be 0 because sign ingress takes precedence
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
   });
 
@@ -189,7 +189,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Peak");
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Taurus");
@@ -224,7 +224,7 @@ describe("ingresses.events integration", () => {
 
       const progressiveEvents = service.detectProgressive(events);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
 
       // First duration: Sun in Aries
       expect(progressiveEvents[0]?.start.toISOString()).toBe(
@@ -280,7 +280,7 @@ describe("ingresses.events integration", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       // Should have: Sun in Aquarius, Moon in Gemini
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
 
       const sunDuration = progressiveEvents.find((e) =>
         e.categories.includes("Sun"),

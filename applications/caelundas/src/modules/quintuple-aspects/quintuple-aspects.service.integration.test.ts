@@ -24,7 +24,7 @@ const service = new QuintupleAspectsService(
 );
 
 describe("quintuple-aspects.events integration", () => {
-  describe("Pentagram pattern detection", () => {
+  describe("pentagram pattern detection", () => {
     it("detects forming Pentagram when pattern first appears", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
@@ -151,10 +151,10 @@ describe("quintuple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-06-15T14:23:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-06-15T14:30:00.000Z"),
       );
       expect(progressiveEvents[0]?.categories).toContain("Quintuple Aspect");
@@ -168,7 +168,7 @@ describe("quintuple-aspects.events integration", () => {
     });
   });
 
-  describe("Pentagram body combination scenarios", () => {
+  describe("pentagram body combination scenarios", () => {
     it("detects Pentagram with outer planets", () => {
       const currentMinute = moment.utc("2024-08-10T09:15:00.000Z");
 
@@ -204,7 +204,7 @@ describe("quintuple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge case scenarios", () => {
+  describe("edge case scenarios", () => {
     it("does not detect Pentagram with only 4 quintiles (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 

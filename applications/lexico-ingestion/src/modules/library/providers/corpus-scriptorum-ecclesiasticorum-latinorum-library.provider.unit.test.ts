@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
 
@@ -9,10 +9,10 @@ import type { LoggerService } from "../../logger/logger.service";
 
 const { mkdirMock, readdirMock, readFileMock, writeFileMock } = vi.hoisted(
   () => ({
-    mkdirMock: vi.fn(),
-    readdirMock: vi.fn(),
-    readFileMock: vi.fn(),
-    writeFileMock: vi.fn(),
+    mkdirMock: vi.fn<() => Promise<string | undefined>>(),
+    readdirMock: vi.fn<() => Promise<unknown[]>>(),
+    readFileMock: vi.fn<() => Promise<string>>(),
+    writeFileMock: vi.fn<() => Promise<void>>(),
   }),
 );
 
@@ -23,11 +23,11 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
+describe(CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider, () => {
   const loggerService = {
-    error: vi.fn(),
-    log: vi.fn(),
-    warn: vi.fn(),
+    error: vi.fn<(...parameters: unknown[]) => void>(),
+    log: vi.fn<(...parameters: unknown[]) => void>(),
+    warn: vi.fn<(...parameters: unknown[]) => void>(),
   } as unknown as LoggerService;
 
   const corpusScriptorumEcclesiasticorumLatinorumLibraryProvider =
@@ -111,14 +111,14 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
     const metadata = getMetadata(page);
     const paragraphs = extractParagraphs(page);
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         editors: "Editor One, Editor Two",
         print_publication_date: "1900",
         publisher: "Publisher",
       }),
     );
-    expect(paragraphs).toEqual(["**1** sample content", "verse"]);
+    expect(paragraphs).toStrictEqual(["**1** sample content", "verse"]);
   });
 
   it("should skip empty paragraphs after note cleanup", () => {
@@ -142,7 +142,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
 
     const paragraphs = extractParagraphs(page);
 
-    expect(paragraphs).toEqual(["kept line"]);
+    expect(paragraphs).toStrictEqual(["kept line"]);
   });
 
   it("should extract metadata using fallback sourceDesc selectors", () => {
@@ -167,7 +167,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
 
     const metadata = getMetadata(page);
 
-    expect(metadata).toEqual(
+    expect(metadata).toStrictEqual(
       expect.objectContaining({
         editors: "Editor",
         print_publication_date: "1899",
@@ -197,7 +197,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
 
     const paragraphs = extractParagraphs(page);
 
-    expect(paragraphs).toEqual(["nested", "outer text"]);
+    expect(paragraphs).toStrictEqual(["nested", "outer text"]);
   });
 
   it("should build markdown content and return null for invalid text", () => {
@@ -259,7 +259,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
 
     expect(textEntity.title).toBe("Aeneid");
     expect(textEntity.slug).toBe("aeneid");
-    expect(textEntity.metadata).toEqual(
+    expect(textEntity.metadata).toStrictEqual(
       expect.objectContaining({
         publisher: "Publisher",
         sourceUrl: "data/aeneid.xml",
@@ -279,7 +279,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
         name: "folder",
         parentPath: "/tmp/csel/data",
       },
-    ]);
+    ] as unknown[]);
 
     const collectSourceXmlPaths = (
       corpusScriptorumEcclesiasticorumLatinorumLibraryProvider as unknown as {
@@ -296,7 +296,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
     readdirMock.mockRejectedValueOnce(new Error("missing"));
     const missing = await collectSourceXmlPaths("/tmp/csel/missing");
 
-    expect(paths).toEqual(["/tmp/csel/data/aeneid.xml"]);
+    expect(paths).toStrictEqual(["/tmp/csel/data/aeneid.xml"]);
     expect(missing).toBeNull();
   });
 
@@ -381,7 +381,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
       xmlPath: "/tmp/csel/data/unknown.xml",
     });
 
-    expect(resolved).toEqual(
+    expect(resolved).toStrictEqual(
       expect.objectContaining({
         authorSlug: "unknown-author",
         rawAuthor: "Unknown Author",
@@ -603,6 +603,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
     expect(loggerService.log).toHaveBeenCalledWith(
       expect.stringContaining("📜 Completed processing: /tmp/csel/aeneid.xml"),
     );
+
     vi.useRealTimers();
   });
 
@@ -832,7 +833,7 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
     const authors =
       await corpusScriptorumEcclesiasticorumLatinorumLibraryProvider.ingest();
 
-    expect(authors).toEqual([]);
+    expect(authors).toStrictEqual([]);
   });
 
   it("should skip undefined xml entries during ingest loop", async () => {
@@ -872,6 +873,6 @@ describe("CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider", () => {
     expect(processSourceXmlFileSpy).toHaveBeenCalledWith(
       expect.objectContaining({ xmlPath: "/tmp/csel/data/aeneid.xml" }),
     );
-    expect(authors).toEqual([]);
+    expect(authors).toStrictEqual([]);
   });
 });

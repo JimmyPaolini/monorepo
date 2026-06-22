@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { utc_to_jd } from "sweph";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisTimeService } from "./ephemeris-time.service";
 
@@ -11,7 +11,7 @@ vi.mock("sweph", async (importOriginal) => {
   const original = await importOriginal<typeof Sweph>();
   return {
     ...original,
-    utc_to_jd: vi.fn().mockReturnValue({
+    utc_to_jd: vi.fn<typeof utc_to_jd>().mockReturnValue({
       data: [2_460_395.5, 2_460_395.499_306],
       error: "",
       flag: 0,
@@ -19,7 +19,7 @@ vi.mock("sweph", async (importOriginal) => {
   };
 });
 
-describe("EphemerisTimeService", () => {
+describe(EphemerisTimeService, () => {
   let service: EphemerisTimeService;
 
   beforeAll(async () => {

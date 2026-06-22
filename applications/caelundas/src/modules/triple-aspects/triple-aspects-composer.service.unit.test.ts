@@ -2,14 +2,14 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("TripleAspectsComposerService", () => {
+describe(TripleAspectsComposerService, () => {
   let service: TripleAspectsComposerService;
 
   beforeAll(async () => {
@@ -94,7 +94,7 @@ describe("TripleAspectsComposerService", () => {
       expect(event.categories).toContain("T Square");
       expect(event.categories).toContain("Forming");
       expect(event.categories).toContain("Mars Focal");
-      expect(event.start).toEqual(minute);
+      expect(event.start).toStrictEqual(minute);
     });
 
     it("pairs forming and dissolving events into one progressive event", () => {
@@ -176,53 +176,54 @@ describe("TripleAspectsComposerService", () => {
           category === "Forming" ? "Dissolving" : category,
         ),
         description: "Moon, Sun, Mars grand trine dissolving",
-        start: minute.clone().add(1, "hour"),
         end: minute.clone().add(1, "hour"),
-        summary:
-          "⬅️ ✶ Moon-Sun-Mars Moon, Sun, Mars grand trine dissolving",
-      } as Event;
-
-      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) => edges.length > 0,
-        currentAspectBodies: [
-          { aspect: "trine", bodies: ["moon", "sun"] },
-        ],
-        currentMinute: minute,
-        patternBodies: ["moon", "sun", "mars"],
-        previousAspectBodies: [],
-      })).toEqual({ eventMinute: minute, phase: "forming" });
-
-      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) => edges.length > 0,
-        currentAspectBodies: [],
-        currentMinute: minute,
-        patternBodies: ["moon", "sun", "mars"],
-        previousAspectBodies: [
-          { aspect: "trine", bodies: ["moon", "sun"] },
-        ],
-      })?.phase).toBe("dissolving");
-
-      expect(TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) => edges.length > 0,
-        currentAspectBodies: [
-          { aspect: "trine", bodies: ["moon", "sun"] },
-        ],
-        currentMinute: minute,
-        patternBodies: ["moon", "sun", "mars"],
-        previousAspectBodies: [
-          { aspect: "trine", bodies: ["moon", "sun"] },
-        ],
-      })).toBeNull();
+        start: minute.clone().add(1, "hour"),
+        summary: "⬅️ ✶ Moon-Sun-Mars Moon, Sun, Mars grand trine dissolving",
+      };
 
       expect(
-        service.getProgressiveGroupKey(forming),
-      ).toBe("Mars-Moon-Sun-Grand Trine");
-      expect(service.getProgressiveGroupKey({ ...forming, categories: ["Moon"] })).toBe("");
+        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) => edges.length > 0,
+          currentAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
+          currentMinute: minute,
+          patternBodies: ["moon", "sun", "mars"],
+          previousAspectBodies: [],
+        }),
+      ).toStrictEqual({ eventMinute: minute, phase: "forming" });
 
-      expect(service.pairProgressiveGroup([forming, dissolving])).toHaveLength(1);
+      expect(
+        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) => edges.length > 0,
+          currentAspectBodies: [],
+          currentMinute: minute,
+          patternBodies: ["moon", "sun", "mars"],
+          previousAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
+        })?.phase,
+      ).toBe("dissolving");
+
+      expect(
+        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) => edges.length > 0,
+          currentAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
+          currentMinute: minute,
+          patternBodies: ["moon", "sun", "mars"],
+          previousAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
+        }),
+      ).toBeNull();
+
+      expect(service.getProgressiveGroupKey(forming)).toBe(
+        "Mars-Moon-Sun-Grand Trine",
+      );
+      expect(
+        service.getProgressiveGroupKey({ ...forming, categories: ["Moon"] }),
+      ).toBe("");
+
+      expect(service.pairProgressiveGroup([forming, dissolving])).toHaveLength(
+        1,
+      );
       expect(
         service.pairProgressiveGroup([
-          { ...forming, start: minute, end: minute },
+          { ...forming, end: minute, start: minute },
           { ...dissolving, start: minute },
         ]),
       ).toHaveLength(0);
@@ -244,7 +245,7 @@ describe("TripleAspectsComposerService", () => {
             categories: forming.categories.map((category) =>
               category === "Mars" ? "Ceres" : category,
             ),
-          } as Event,
+          },
         }),
       ).toBeNull();
 
@@ -256,8 +257,9 @@ describe("TripleAspectsComposerService", () => {
           categories: forming.categories.map((category) =>
             category === "Mars Focal" ? "Mars Focal" : category,
           ),
-        } as Event,
+        },
       });
+
       expect(yodProgressiveEvent?.summary).toContain("(apex: Mars)");
 
       expect(
@@ -267,7 +269,7 @@ describe("TripleAspectsComposerService", () => {
           forming: {
             ...forming,
             categories: ["Astronomy", "Astrology", "Compound Aspect"],
-          } as Event,
+          },
         }),
       ).toBeNull();
     });
@@ -415,9 +417,9 @@ describe("TripleAspectsComposerService", () => {
         ) => null;
       };
 
-      expect(internals.resolveProgressiveMeta(["Sun", "Moon"], "yod")).toBe(
-        null,
-      );
+      expect(
+        internals.resolveProgressiveMeta(["Sun", "Moon"], "yod"),
+      ).toBeNull();
     });
   });
 });
