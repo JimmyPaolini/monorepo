@@ -1,3 +1,4 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { describe, expect, it } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
@@ -23,14 +24,10 @@ vi.mock("node:fs/promises", () => ({
 }));
 
 describe(EpigraphikDatenbankClaussSlabyLibraryProvider, () => {
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  } as unknown as LoggerService;
+  const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
 
   const epigraphikDatenbankClaussSlabyLibraryProvider =
-    new EpigraphikDatenbankClaussSlabyLibraryProvider(loggerService);
+    new EpigraphikDatenbankClaussSlabyLibraryProvider(logger);
 
   it("should initialize the provider instance", () => {
     expect(epigraphikDatenbankClaussSlabyLibraryProvider).toBeDefined();
@@ -240,7 +237,7 @@ describe(EpigraphikDatenbankClaussSlabyLibraryProvider, () => {
       total: 1,
     });
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       expect.stringContaining("⚠️ Error reading chunk file chunk-1.json"),
     );
   });

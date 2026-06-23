@@ -1,5 +1,5 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { createMock } from "@golevelup/ts-vitest";
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -12,59 +12,48 @@ import { EclipseTopocentricService } from "./eclipse-topocentric.service";
 
 import type { EclipseCoordinates } from "./eclipses.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
-import type { Mocked } from "vitest";
 
 describe(EclipseTopocentricService, () => {
   let service: EclipseTopocentricService;
+  let eclipseGeometryService: DeepMocked<EclipseGeometryService>;
+  let eclipseEventService: DeepMocked<EclipseEventService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         EclipseTopocentricService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
-        { provide: MathService, useValue: createMock<MathService>() },
+        {
+          provide: MathService,
+          useValue: createMock<MathService>({
+            getAngle: vi.fn<MathService["getAngle"]>(
+              (value1: number, value2: number) => Math.abs(value1 - value2),
+            ),
+          }),
+        },
         {
           provide: EclipseGeometryService,
-          useValue: createMock<EclipseGeometryService>(),
+          useValue: createMock<EclipseGeometryService>({
+            getAllTopocentricVisibilities:
+              vi.fn<EclipseGeometryService["getAllTopocentricVisibilities"]>(),
+          }),
         },
         {
           provide: EclipseEventService,
-          useValue: createMock<EclipseEventService>(),
+          useValue: createMock<EclipseEventService>({
+            buildLunarEclipseEvent:
+              vi.fn<EclipseEventService["buildLunarEclipseEvent"]>(),
+            buildSolarEclipseEvent:
+              vi.fn<EclipseEventService["buildSolarEclipseEvent"]>(),
+          }),
         },
       ],
     }).compile();
 
     service = await module.resolve(EclipseTopocentricService);
+    eclipseGeometryService = module.get(EclipseGeometryService);
+    eclipseEventService = module.get(EclipseEventService);
   });
-
-  const logger: LoggerService = {
-    setContext: vi.fn<LoggerService["setContext"]>(),
-  } as unknown as LoggerService;
-
-  const mathService: MathService = {
-    getAngle: vi.fn<MathService["getAngle"]>((value1: number, value2: number) =>
-      Math.abs(value1 - value2),
-    ),
-  } as unknown as MathService;
-
-  const eclipseGeometryService: Mocked<EclipseGeometryService> = {
-    getAllTopocentricVisibilities:
-      vi.fn<EclipseGeometryService["getAllTopocentricVisibilities"]>(),
-  } as unknown as Mocked<EclipseGeometryService>;
-
-  const eclipseEventService: Mocked<EclipseEventService> = {
-    buildLunarEclipseEvent:
-      vi.fn<EclipseEventService["buildLunarEclipseEvent"]>(),
-    buildSolarEclipseEvent:
-      vi.fn<EclipseEventService["buildSolarEclipseEvent"]>(),
-  } as unknown as Mocked<EclipseEventService>;
-
-  const mockService = new EclipseTopocentricService(
-    logger,
-    mathService,
-    eclipseGeometryService,
-    eclipseEventService,
-  );
 
   const solarActiveCoordinates: EclipseCoordinates = {
     diameterMoon: 0.6,
@@ -102,22 +91,22 @@ describe(EclipseTopocentricService, () => {
   });
 
   it("detects solar and lunar topocentric activity predicates", () => {
-    expect(mockService.isSolarEclipseActive(solarActiveCoordinates)).toBe(true);
-    expect(mockService.isSolarEclipseActive(inactiveCoordinates)).toBe(false);
+    expect(service.isSolarEclipseActive(solarActiveCoordinates)).toBe(true);
+    expect(service.isSolarEclipseActive(inactiveCoordinates)).toBe(false);
+    expect(service.isSolarTopocentricActive(solarActiveCoordinates, true)).toBe(
+      true,
+    );
     expect(
-      mockService.isSolarTopocentricActive(solarActiveCoordinates, true),
-    ).toBe(true);
-    expect(
-      mockService.isSolarTopocentricActive(solarActiveCoordinates, false),
+      service.isSolarTopocentricActive(solarActiveCoordinates, false),
     ).toBe(false);
 
-    expect(mockService.isLunarEclipseActive(lunarActiveCoordinates)).toBe(true);
-    expect(mockService.isLunarEclipseActive(inactiveCoordinates)).toBe(false);
+    expect(service.isLunarEclipseActive(lunarActiveCoordinates)).toBe(true);
+    expect(service.isLunarEclipseActive(inactiveCoordinates)).toBe(false);
+    expect(service.isLunarTopocentricActive(lunarActiveCoordinates, true)).toBe(
+      true,
+    );
     expect(
-      mockService.isLunarTopocentricActive(lunarActiveCoordinates, true),
-    ).toBe(true);
-    expect(
-      mockService.isLunarTopocentricActive(lunarActiveCoordinates, false),
+      service.isLunarTopocentricActive(lunarActiveCoordinates, false),
     ).toBe(false);
   });
 
@@ -135,7 +124,7 @@ describe(EclipseTopocentricService, () => {
       start: moment.utc("2024-03-21T12:00:00.000Z"),
       summary: "Solar",
     } satisfies Event);
-    const events = mockService.getTopocentricEvents({
+    const events = service.getTopocentricEvents({
       currentCoordinates: solarActiveCoordinates,
       lunarPhase: "beginning",
       minute: moment.utc("2024-03-21T12:00:00.000Z"),
@@ -173,7 +162,7 @@ describe(EclipseTopocentricService, () => {
       summary: "Lunar ends",
     } satisfies Event);
 
-    const endingEvents = mockService.getTopocentricEvents({
+    const endingEvents = service.getTopocentricEvents({
       currentCoordinates: lunarActiveCoordinates,
       lunarPhase: "maximum",
       minute: moment.utc("2024-03-21T12:01:00.000Z"),
@@ -209,7 +198,7 @@ describe(EclipseTopocentricService, () => {
       summary: "Lunar max",
     } satisfies Event);
 
-    const maximumEvents = mockService.getTopocentricEvents({
+    const maximumEvents = service.getTopocentricEvents({
       currentCoordinates: lunarActiveCoordinates,
       lunarPhase: "maximum",
       minute: moment.utc("2024-03-21T12:02:00.000Z"),
@@ -239,7 +228,7 @@ describe(EclipseTopocentricService, () => {
       previousVisibility: { isLunarVisible: true, isSolarVisible: true },
     });
 
-    const events = mockService.getTopocentricEvents({
+    const events = service.getTopocentricEvents({
       currentCoordinates: inactiveCoordinates,
       lunarPhase: "maximum",
       minute: moment.utc("2024-03-21T12:03:00.000Z"),

@@ -1,7 +1,6 @@
-/* cspell:ignore amāvī amāre */
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import {
   type Form,
@@ -12,102 +11,49 @@ import {
   WordLexeme,
 } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants";
 
 import { WordsService } from "./words.service";
 
+import type { DeepMocked } from "@golevelup/ts-vitest";
+import type { InsertResult, Repository } from "typeorm";
+
 describe(WordsService, () => {
-  interface MockQueryBuilder {
-    execute: ReturnType<typeof vi.fn<() => Promise<void>>>;
-    insert: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-    into: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-    orIgnore: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-    values: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-  }
-
-  interface WordRepositoryMock {
-    createQueryBuilder: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-    find: ReturnType<typeof vi.fn<() => Promise<Word[]>>>;
-    upsert: ReturnType<
-      typeof vi.fn<
-        (entity: unknown, conflictOptions: unknown) => Promise<unknown>
-      >
-    >;
-  }
-
-  interface WordJunctionRepositoryMock {
-    createQueryBuilder: ReturnType<typeof vi.fn<() => MockQueryBuilder>>;
-  }
-
   let service: WordsService;
-  let wordRepository: WordRepositoryMock;
-  let wordLexemeRepository: WordJunctionRepositoryMock;
-  let wordFormRepository: WordJunctionRepositoryMock;
+  let wordRepository: DeepMocked<Repository<Word>>;
+  let wordLexemeRepository: DeepMocked<Repository<WordLexeme>>;
+  let wordFormRepository: DeepMocked<Repository<WordForm>>;
+
+  const mockInsertResult: InsertResult = {
+    generatedMaps: [],
+    identifiers: [],
+    raw: [],
+  };
 
   beforeAll(async () => {
-    const createMockQueryBuilder = (): MockQueryBuilder => {
-      const self: MockQueryBuilder = {
-        execute: vi.fn<() => Promise<void>>().mockResolvedValue(undefined),
-        insert: vi.fn<() => MockQueryBuilder>(() => self),
-        into: vi.fn<() => MockQueryBuilder>(() => self),
-        orIgnore: vi.fn<() => MockQueryBuilder>(() => self),
-        values: vi.fn<() => MockQueryBuilder>(() => self),
-      };
-      return self;
-    };
-
-    const mockWordRepository = {
-      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
-        createMockQueryBuilder(),
-      ),
-      find: vi.fn<() => Promise<Word[]>>(),
-      upsert:
-        vi.fn<
-          (entity: unknown, conflictOptions: unknown) => Promise<unknown>
-        >(),
-    };
-
-    const mockWordLexemeRepository = {
-      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
-        createMockQueryBuilder(),
-      ),
-    };
-
-    const mockWordFormRepository = {
-      createQueryBuilder: vi.fn<() => MockQueryBuilder>(() =>
-        createMockQueryBuilder(),
-      ),
-    };
-
     const module = await Test.createTestingModule({
       providers: [
         WordsService,
-        { provide: getRepositoryToken(Word), useValue: mockWordRepository },
+        {
+          provide: getRepositoryToken(Word),
+          useValue: createRepositoryMock<Word>(),
+        },
         {
           provide: getRepositoryToken(WordLexeme),
-          useValue: mockWordLexemeRepository,
+          useValue: createRepositoryMock<WordLexeme>(),
         },
         {
           provide: getRepositoryToken(WordForm),
-          useValue: mockWordFormRepository,
+          useValue: createRepositoryMock<WordForm>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(WordsService);
-    wordRepository = await module.resolve<WordRepositoryMock>(
-      getRepositoryToken(Word),
-    );
-    wordLexemeRepository = await module.resolve<WordJunctionRepositoryMock>(
-      getRepositoryToken(WordLexeme),
-    );
-    wordFormRepository = await module.resolve<WordJunctionRepositoryMock>(
-      getRepositoryToken(WordForm),
-    );
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
+    wordRepository = module.get(getRepositoryToken(Word));
+    wordLexemeRepository = module.get(getRepositoryToken(WordLexeme));
+    wordFormRepository = module.get(getRepositoryToken(WordForm));
   });
 
   it("is defined", () => {
@@ -174,7 +120,7 @@ describe(WordsService, () => {
       word2.id = "2";
       word2.data = "amare";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word1, word2]);
 
       await service.ingestLexemeWords(lexeme);
@@ -205,7 +151,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "amo";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.ingestLexemeWords(lexeme);
@@ -231,7 +177,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "rosa";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.ingestLexemeWords(lexeme);
@@ -251,7 +197,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "_julius";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.ingestLexemeWords(lexeme);
@@ -278,7 +224,7 @@ describe(WordsService, () => {
       const lexeme = new Lexeme();
       lexeme.id = "amor:1";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([]);
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);
@@ -323,7 +269,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "rosa";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);
@@ -347,7 +293,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "rosa";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);
@@ -375,7 +321,7 @@ describe(WordsService, () => {
       word.id = "1";
       word.data = "rosa";
 
-      wordRepository.upsert.mockResolvedValue({});
+      wordRepository.upsert.mockResolvedValue(mockInsertResult);
       wordRepository.find.mockResolvedValue([word]);
 
       await service.upsertWordsAndJunctions(formsByWord, lexeme);

@@ -39,7 +39,6 @@ describe(FormsBuilderOtherService, () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
-    vi.clearAllMocks();
   });
 
   it("is defined", () => {

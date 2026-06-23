@@ -1,8 +1,6 @@
-/* cspell:ignore keˈli tʃeˈli äˈmiːkʊs */
-
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { Pronunciation } from "@monorepo/lexico-entities";
 
@@ -55,10 +53,6 @@ describe(PronunciationClassifierService, () => {
     }).compile();
 
     service = await module.resolve(PronunciationClassifierService);
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
   });
 
   it("is defined", () => {

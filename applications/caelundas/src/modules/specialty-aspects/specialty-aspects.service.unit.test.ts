@@ -3,7 +3,7 @@ import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/ca
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
 import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
 import { Test } from "@nestjs/testing";
@@ -35,7 +35,7 @@ describe(SpecialtyAspectsService, () => {
         AspectsUtilities,
         EphemerisService,
         MathService,
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
     service = await module.resolve(SpecialtyAspectsService);

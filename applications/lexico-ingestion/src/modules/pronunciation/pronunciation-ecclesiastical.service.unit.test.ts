@@ -1,7 +1,5 @@
-/* cspell:ignore scen */
-
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
@@ -29,10 +27,6 @@ describe(PronunciationEcclesiasticalService, () => {
     }).compile();
 
     service = await module.resolve(PronunciationEcclesiasticalService);
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
   });
 
   it("is defined", () => {

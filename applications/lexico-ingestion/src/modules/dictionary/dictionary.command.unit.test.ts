@@ -1,17 +1,17 @@
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
 import { LexemesService } from "../lexemes/lexemes.service";
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 import { ManualService } from "../manual/manual.service";
 import { TranslationsService } from "../translations/translations.service";
 
 import { DictionaryCommand } from "./dictionary.command";
 
-// cspell:ignore amare cano
+import type { DeepMocked } from "@golevelup/ts-vitest";
 
 const { promptsMock } = vi.hoisted(() => ({
   promptsMock: vi.fn<() => Promise<Record<string, null | string>>>(),
@@ -45,57 +45,6 @@ vi.mock("node:fs", () => ({
   },
 }));
 
-function createLexemesServiceMock(): {
-  existsByLemma: ReturnType<typeof vi.fn>;
-  findLexemesByLemmaWithTranslations: ReturnType<typeof vi.fn>;
-  parseLexemes: ReturnType<typeof vi.fn>;
-  saveParsedLexeme: ReturnType<typeof vi.fn>;
-} {
-  return {
-    existsByLemma: vi.fn<(...parameters: unknown[]) => unknown>(),
-    findLexemesByLemmaWithTranslations:
-      vi.fn<(...parameters: unknown[]) => unknown>(),
-    parseLexemes: vi.fn<(...parameters: unknown[]) => unknown>(),
-    saveParsedLexeme: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
-function createManualServiceMock(): {
-  ingestManual: ReturnType<typeof vi.fn>;
-} {
-  return {
-    ingestManual: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
-function createTranslationsServiceMock(): {
-  extractTranslationReferences: ReturnType<typeof vi.fn>;
-  findTranslationsWithReferences: ReturnType<typeof vi.fn>;
-  saveTranslations: ReturnType<typeof vi.fn>;
-} {
-  return {
-    extractTranslationReferences:
-      vi.fn<(...parameters: unknown[]) => unknown>(),
-    findTranslationsWithReferences:
-      vi.fn<(...parameters: unknown[]) => unknown>(),
-    saveTranslations: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(DictionaryCommand, () => {
   let command: DictionaryCommand;
 
@@ -116,43 +65,45 @@ describe(DictionaryCommand, () => {
   const manualService = {
     ingestManual: vi.fn<() => Promise<void>>(),
   };
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         DictionaryCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
         {
           provide: LexemesService,
-          useValue: createLexemesServiceMock(),
+          useValue: lexemesService,
         },
         {
           provide: TranslationsService,
-          useValue: createTranslationsServiceMock(),
+          useValue: translationsService,
         },
         {
           provide: ManualService,
-          useValue: createManualServiceMock(),
+          useValue: manualService,
         },
       ],
     }).compile();
 
     command = await module.resolve(DictionaryCommand);
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
+
+    (
+      command as unknown as {
+        fileIndex: Map<string, string> | null;
+      }
+    ).fileIndex = null;
+
     existsSyncMock.mockReturnValue(true);
     readdirSyncMock.mockReturnValue([]);
     readFileSyncMock.mockReturnValue(
@@ -176,39 +127,38 @@ describe(DictionaryCommand, () => {
     translationsService.saveTranslations.mockResolvedValue(undefined);
 
     manualService.ingestManual.mockResolvedValue(undefined);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        DictionaryCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
-        },
-        {
-          provide: LexemesService,
-          useValue: lexemesService,
-        },
-        {
-          provide: TranslationsService,
-          useValue: translationsService,
-        },
-        {
-          provide: ManualService,
-          useValue: manualService,
-        },
-      ],
-    }).compile();
-
-    command = await moduleRef.resolve(DictionaryCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(command).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("DictionaryCommand");
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        DictionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: LexemesService,
+          useValue: createMock<LexemesService>(),
+        },
+        {
+          provide: TranslationsService,
+          useValue: createMock<TranslationsService>(),
+        },
+        {
+          provide: ManualService,
+          useValue: createMock<ManualService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("DictionaryCommand");
   });
 
   it("should create output directory when it does not exist", async () => {
@@ -219,12 +169,12 @@ describe(DictionaryCommand, () => {
       return true;
     });
 
-    const moduleRef = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         DictionaryCommand,
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
         {
           provide: LexemesService,
@@ -241,7 +191,7 @@ describe(DictionaryCommand, () => {
       ],
     }).compile();
 
-    await moduleRef.resolve(DictionaryCommand);
+    await module.resolve(DictionaryCommand);
 
     expect(mkdirSyncMock).toHaveBeenCalledWith(
       expect.stringContaining("output"),
@@ -468,7 +418,7 @@ describe(DictionaryCommand, () => {
 
     await command.ingestAll();
 
-    expect(loggerService.warn).toHaveBeenCalledTimes(1);
+    expect(logger.warn).toHaveBeenCalledTimes(1);
   });
 
   it("should process file and append error log on read failure", async () => {
@@ -497,7 +447,7 @@ describe(DictionaryCommand, () => {
     ).processFile("amo.json", 1, 1);
 
     expect(readWiktionaryPageFromFileSpy).toHaveBeenCalledTimes(1);
-    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledTimes(1);
     expect(appendFileSyncMock).toHaveBeenCalledTimes(1);
   });
 
@@ -657,7 +607,7 @@ describe(DictionaryCommand, () => {
 
     expect(getWiktionaryFilePathForWordSpy).toHaveBeenCalledWith("missing");
     expect(page).toBeNull();
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ No data file found for word: missing",
     );
   });
@@ -694,7 +644,7 @@ describe(DictionaryCommand, () => {
     ).loadWiktionaryPageForWord("amo");
 
     expect(page).toBeNull();
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ No data file found for word: amo",
     );
   });
@@ -878,7 +828,7 @@ describe(DictionaryCommand, () => {
       }
     ).ingestTranslationReference(plainTranslation);
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ No reference found in: simple text",
     );
   });
@@ -905,7 +855,7 @@ describe(DictionaryCommand, () => {
       }
     ).ingestTranslationReference(targetTranslation);
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ No lexeme found for reference: unknown",
     );
   });
@@ -1097,7 +1047,7 @@ describe(DictionaryCommand, () => {
           }
         ).processFile("amo.json", 1, 1);
 
-        expect(loggerService.error).toHaveBeenCalledWith(
+        expect(logger.error).toHaveBeenCalledWith(
           "❌ Failed to process amo.json: string-failure",
         );
         expect(appendFileSyncMock).toHaveBeenCalledWith(
@@ -1266,7 +1216,7 @@ describe(DictionaryCommand, () => {
         expect(
           lexemesService.findLexemesByLemmaWithTranslations,
         ).toHaveBeenCalledWith("");
-        expect(loggerService.warn).toHaveBeenCalledWith(
+        expect(logger.warn).toHaveBeenCalledWith(
           "⚠️ No lexeme found for reference: ",
         );
       });

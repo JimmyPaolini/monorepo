@@ -1,3 +1,4 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import * as cheerio from "cheerio";
 import { beforeEach, describe, expect, it } from "vitest";
 
@@ -21,14 +22,8 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-// cspell:ignore arma cano narma virumque
-
 describe(LatinLibraryProvider, () => {
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  } as unknown as LoggerService;
+  const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
 
   const latinLibraryBuilder = {
     buildCategoryAuthor:
@@ -51,7 +46,7 @@ describe(LatinLibraryProvider, () => {
 
   const latinLibraryProvider = new LatinLibraryProvider(
     latinLibraryBuilder,
-    loggerService,
+    logger,
   );
 
   beforeEach(() => {
@@ -690,9 +685,7 @@ describe(LatinLibraryProvider, () => {
       work,
     });
 
-    expect(
-      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
-    ).toStrictEqual(
+    expect((logger.log as ReturnType<typeof vi.fn>).mock.calls).toStrictEqual(
       expect.arrayContaining([
         ["📜 Starting work: vergil/aeneid"],
         ["📜 Completed work: vergil/aeneid (50.00%, 1/2)"],
@@ -746,13 +739,11 @@ describe(LatinLibraryProvider, () => {
       work,
     });
 
-    expect(
-      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
-    ).toStrictEqual(
+    expect((logger.log as ReturnType<typeof vi.fn>).mock.calls).toStrictEqual(
       expect.arrayContaining([["📜 Starting work: vergil/aeneid"]]),
     );
     expect(
-      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
+      (logger.log as ReturnType<typeof vi.fn>).mock.calls,
     ).not.toStrictEqual(
       expect.arrayContaining([
         ["📜 Completed work: vergil/aeneid (50.00%, 1/2)"],
@@ -855,9 +846,7 @@ describe(LatinLibraryProvider, () => {
       work,
     });
 
-    expect(
-      (loggerService.error as ReturnType<typeof vi.fn>).mock.calls,
-    ).toStrictEqual(
+    expect((logger.error as ReturnType<typeof vi.fn>).mock.calls).toStrictEqual(
       expect.arrayContaining([
         [
           expect.stringContaining("❌ Failed to fetch work Aeneid"),
@@ -913,7 +902,7 @@ describe(LatinLibraryProvider, () => {
       work,
     });
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Failed to fetch work Aeneid",
       undefined,
     );

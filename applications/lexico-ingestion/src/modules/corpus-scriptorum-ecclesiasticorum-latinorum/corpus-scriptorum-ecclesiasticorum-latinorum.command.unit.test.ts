@@ -1,7 +1,7 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "./corpus-scriptorum-ecclesiasticorum-latinorum.command";
@@ -34,38 +34,17 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   let command: CorpusScriptorumEcclesiasticorumLatinorumCommand;
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         CorpusScriptorumEcclesiasticorumLatinorumCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
@@ -73,37 +52,47 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     command = await module.resolve(
       CorpusScriptorumEcclesiasticorumLatinorumCommand,
     );
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
-    vi.clearAllMocks();
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+
+    accessMock.mockClear();
+    appendFileMock.mockClear();
+    existsSyncMock.mockClear();
+    mkdirMock.mockClear();
+    mkdirSyncMock.mockClear();
+    writeFileMock.mockClear();
+    logger.log.mockClear();
+    logger.warn.mockClear();
+    logger.error.mockClear();
+
     existsSyncMock.mockReturnValue(true);
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        CorpusScriptorumEcclesiasticorumLatinorumCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
-        },
-      ],
-    }).compile();
-
-    command = await moduleRef.resolve(
-      CorpusScriptorumEcclesiasticorumLatinorumCommand,
-    );
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(command).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith(
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        CorpusScriptorumEcclesiasticorumLatinorumCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith(
       "CorpusScriptorumEcclesiasticorumLatinorumCommand",
     );
   });
@@ -111,17 +100,17 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   it("should create output directory when it does not exist", async () => {
     existsSyncMock.mockReturnValue(false);
 
-    const moduleRef = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         CorpusScriptorumEcclesiasticorumLatinorumCommand,
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
-    await moduleRef.resolve(CorpusScriptorumEcclesiasticorumLatinorumCommand);
+    await module.resolve(CorpusScriptorumEcclesiasticorumLatinorumCommand);
 
     expect(mkdirSyncMock).toHaveBeenCalledWith(expect.any(String), {
       recursive: true,
@@ -149,7 +138,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     ).fetchTree("https://example.com/tree");
 
     expect(result).toBeNull();
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Failed to fetch CSEL tree: Bad Request",
     );
   });
@@ -235,7 +224,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
       }
     ).fetchAndWriteXmlFile("https://example.com/file.xml", "/tmp/file.xml");
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ Failed to fetch https://example.com/file.xml: Not Found",
     );
     expect(writeFileMock).not.toHaveBeenCalled();
@@ -250,7 +239,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
       }
     ).downloadSourceXmlFileIfMissing("data/author/work.xml");
 
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "⏭️ Skipping already downloaded: data/author/work.xml",
     );
   });
@@ -278,7 +267,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
 
     expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(fetchAndWriteXmlFileSpy).toHaveBeenCalledTimes(1);
-    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledTimes(1);
     expect(appendFileMock).toHaveBeenCalledTimes(1);
   });
 
@@ -301,7 +290,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
       }
     ).downloadSourceXmlFileIfMissing("data/author/work.xml");
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error downloading data/author/work.xml: network-failure",
     );
     expect(appendFileMock).toHaveBeenCalledTimes(1);
@@ -336,7 +325,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(downloadSpy).toHaveBeenCalledTimes(1);
     expect(downloadSpy).toHaveBeenCalledWith("data/author/work.xml");
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "✅ Finished downloading CSEL source files.",
     );
   });

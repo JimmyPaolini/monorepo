@@ -1,16 +1,17 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { ProgressiveUtilities } from "./progressive.utilities";
+import { LoggerService } from "../logger/logger.service";
+
+import { ProgressiveUtilitiesService } from "./progressive-utilities.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe(ProgressiveUtilities, () => {
-  const logger = {
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(message: string) => void>(),
-  };
-  const service = new ProgressiveUtilities(logger as never);
+describe(ProgressiveUtilitiesService, () => {
+  let service: ProgressiveUtilitiesService;
+  let logger: DeepMocked<LoggerService>;
 
   const createEvent = (iso: string): Event => ({
     categories: ["Astronomy"],
@@ -20,8 +21,24 @@ describe(ProgressiveUtilities, () => {
     summary: "Event",
   });
 
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        ProgressiveUtilitiesService,
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+      ],
+    }).compile();
+
+    service = await module.resolve(ProgressiveUtilitiesService);
+    logger = await module.resolve(LoggerService);
+  });
+
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   it("pairs matching beginnings and endings", () => {

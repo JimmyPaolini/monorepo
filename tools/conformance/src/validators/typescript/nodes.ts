@@ -1,12 +1,14 @@
 import {
   type Decorator,
   type ExportDeclaration,
+  type Expression,
   forEachChild,
   type ImportDeclaration,
   isBigIntLiteral,
   isCallExpression,
   isDecorator,
   isExportDeclaration,
+  isExpressionStatement,
   isIdentifier,
   isImportDeclaration,
   isNoSubstitutionTemplateLiteral,
@@ -82,6 +84,10 @@ export function getKey(node: Node): null | string {
   if (isImportDeclaration(node)) return getImportKey(node);
   if (isExportDeclaration(node)) return getExportKey(node);
   if (isDecorator(node)) return getDecoratorKey(node);
+  if (isExpressionStatement(node)) {
+    const expressionStatementKey = getExpressionStatementKey(node.expression);
+    if (expressionStatementKey !== null) return expressionStatementKey;
+  }
   const literalKey = getLiteralKey(node);
   if (literalKey !== undefined) return literalKey;
   return getNamedNodeKey(node);
@@ -119,6 +125,23 @@ function getExportKey(node: ExportDeclaration): null | string {
   const { moduleSpecifier } = node;
   if (moduleSpecifier === undefined) return null;
   return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
+}
+
+/**
+ * Build expression statement key.
+ */
+function getExpressionStatementKey(expression: Expression): null | string {
+  if (!isCallExpression(expression)) return null;
+  const calleeName = buildDecoratorName(expression.expression);
+  if (calleeName === null) return null;
+
+  const firstArgument = expression.arguments[0];
+  if (firstArgument === undefined) return calleeName;
+
+  const firstArgumentKey = getLiteralKey(firstArgument);
+  return firstArgumentKey === undefined
+    ? calleeName
+    : `${calleeName}:${firstArgumentKey}`;
 }
 
 /**

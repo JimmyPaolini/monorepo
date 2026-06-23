@@ -1,3 +1,4 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import * as cheerio from "cheerio";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -29,11 +30,7 @@ vi.mock("node:fs/promises", () => ({
 }));
 
 describe(PerseusLibraryProvider, () => {
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  } as unknown as LoggerService;
+  const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
 
   const perseusLibraryTextExtractionProvider = {
     extractTextNodes:
@@ -51,7 +48,7 @@ describe(PerseusLibraryProvider, () => {
 
   const perseusLibraryProvider = new PerseusLibraryProvider(
     perseusLibraryTextExtractionProvider,
-    loggerService,
+    logger,
   );
 
   beforeEach(() => {
@@ -440,9 +437,7 @@ describe(PerseusLibraryProvider, () => {
       xmlPath: "/tmp/perseus/aeneid.xml",
     });
 
-    expect(
-      (loggerService.log as ReturnType<typeof vi.fn>).mock.calls,
-    ).toStrictEqual(
+    expect((logger.log as ReturnType<typeof vi.fn>).mock.calls).toStrictEqual(
       expect.arrayContaining([
         ["📜 Starting processing: /tmp/perseus/aeneid.xml"],
         ["📜 Completed processing: /tmp/perseus/aeneid.xml (50.00%, 1/2)"],
@@ -485,9 +480,7 @@ describe(PerseusLibraryProvider, () => {
       xmlPath: "/tmp/perseus/bad.xml",
     });
 
-    expect(
-      (loggerService.warn as ReturnType<typeof vi.fn>).mock.calls,
-    ).toStrictEqual(
+    expect((logger.warn as ReturnType<typeof vi.fn>).mock.calls).toStrictEqual(
       expect.arrayContaining([
         [expect.stringContaining("⚠️ Error processing /tmp/perseus/bad.xml")],
       ]),

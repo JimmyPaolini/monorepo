@@ -240,6 +240,9 @@ importers:
 
   applications/caelundas:
     dependencies:
+      '@golevelup/ts-vitest':
+        specifier: ^4.0.0
+        version: 4.0.0
       '@nestjs/common':
         specifier: ^11.1.26
         version: 11.1.26(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -286,9 +289,6 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
-      '@golevelup/ts-vitest':
-        specifier: ^4.0.0
-        version: 4.0.0
       '@nestjs/testing':
         specifier: ^11.1.26
         version: 11.1.26(@nestjs/common@11.1.26(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.26(@nestjs/common@11.1.26(reflect-metadata@0.2.2)(rxjs@7.8.2))(reflect-metadata@0.2.2)(rxjs@7.8.2))
@@ -392,6 +392,9 @@ importers:
 
   applications/lexico-ingestion:
     dependencies:
+      '@golevelup/ts-vitest':
+        specifier: ^4.0.0
+        version: 4.0.0
       '@monorepo/lexico-entities':
         specifier: workspace:*
         version: link:../../packages/lexico-entities

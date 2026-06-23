@@ -19,6 +19,7 @@ beforeAll(() => {
 
 // Suppress console output in tests by default
 beforeEach(() => {
+  vi.clearAllMocks();
   vi.spyOn(console, "log").mockImplementation(noop);
   vi.spyOn(console, "error").mockImplementation(noop);
   vi.spyOn(console, "warn").mockImplementation(noop);

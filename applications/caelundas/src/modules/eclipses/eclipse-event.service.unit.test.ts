@@ -1,4 +1,4 @@
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -12,7 +12,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(EclipseEventService, () => {
   let service: EclipseEventService;
-  let progressiveUtilitiesService: ProgressiveUtilities;
+  let progressiveUtilitiesService: ProgressiveUtilitiesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -20,15 +20,17 @@ describe(EclipseEventService, () => {
         EclipseEventService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(EclipseEventService);
     await module.resolve(LoggerService);
-    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+    progressiveUtilitiesService = await module.resolve(
+      ProgressiveUtilitiesService,
+    );
   });
 
   beforeEach(() => {

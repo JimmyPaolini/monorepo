@@ -1,7 +1,8 @@
+import {createMock} from '@golevelup/ts-vitest';
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
+import { LoggerService } from '../logger/logger.service';
 
 import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
 
@@ -10,8 +11,13 @@ describe({{namePascalCase}}Command, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
-      providers: [{{namePascalCase}}Command],
+      providers: [
+        {{namePascalCase}}Command,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
     }).compile();
 
     command = await module.resolve({{namePascalCase}}Command);
@@ -19,5 +25,21 @@ describe({{namePascalCase}}Command, () => {
 
   it("is defined", () => {
     expect(command).toBeDefined();
+  });
+
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        {{namePascalCase}}Command,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("{{namePascalCase}}Command");
   });
 });

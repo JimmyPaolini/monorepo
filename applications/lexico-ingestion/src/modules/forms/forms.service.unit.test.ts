@@ -1,9 +1,11 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { WordsService } from "../words/words.service";
 
 import { FormsBuilderHelper } from "./forms-builder-other.service";
@@ -15,8 +17,8 @@ import type { Mocked } from "vitest";
 
 describe(FormsService, () => {
   let service: FormsService;
-  let formRepository: Mocked<Repository<Form>>;
-  let wordFormRepository: Mocked<Repository<WordForm>>;
+  let formRepository: DeepMocked<Repository<Form>>;
+  let wordFormRepository: DeepMocked<Repository<WordForm>>;
   let wordsService: Mocked<WordsService>;
   let formsBuilderHelper: Mocked<FormsBuilderHelper>;
 
@@ -26,21 +28,15 @@ describe(FormsService, () => {
         FormsService,
         {
           provide: getRepositoryToken(Form),
-          useValue: {
-            find: vi.fn<(options?: unknown) => Promise<Form[]>>(),
-            remove: vi.fn<(entities: Form[]) => Promise<Form>>(),
-            save: vi.fn<(entities?: unknown) => Promise<Form>>(),
-          },
+          useValue: createRepositoryMock<Form>(),
         },
         {
           provide: getRepositoryToken(WordForm),
-          useValue: {
-            save: vi.fn<(entities?: unknown) => Promise<WordForm>>(),
-          },
+          useValue: createRepositoryMock<WordForm>(),
         },
         {
           provide: WordsService,
-          useValue: {
+          useValue: createMock<WordsService>({
             upsertWordsAndJunctions: vi
               .fn<
                 (
@@ -49,30 +45,26 @@ describe(FormsService, () => {
                 ) => Promise<void>
               >()
               .mockResolvedValue(undefined),
-          },
+          }),
         },
         {
           provide: FormsBuilderHelper,
-          useValue: {
+          useValue: createMock<FormsBuilderHelper>({
             buildFormsForPartOfSpeech:
               vi.fn<
                 (partOfSpeech: string, data: unknown, lexeme: Lexeme) => Form[]
               >(),
-          },
+          }),
         },
         FormsTransientWordsService,
       ],
     }).compile();
 
     service = await module.resolve(FormsService);
-    formRepository = await module.resolve(getRepositoryToken(Form));
-    wordFormRepository = await module.resolve(getRepositoryToken(WordForm));
-    wordsService = await module.resolve(WordsService);
-    formsBuilderHelper = await module.resolve(FormsBuilderHelper);
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
+    formRepository = module.get(getRepositoryToken(Form));
+    wordFormRepository = module.get(getRepositoryToken(WordForm));
+    wordsService = module.get(WordsService);
+    formsBuilderHelper = module.get(FormsBuilderHelper);
   });
 
   it("is defined", () => {

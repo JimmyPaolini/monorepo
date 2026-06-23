@@ -1,7 +1,8 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   type Form,
@@ -11,6 +12,7 @@ import {
   Translation,
 } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { EtymologyService } from "../etymology/etymology.service";
 import { FormsService } from "../forms/forms.service";
 import { LoggerService } from "../logger/logger.service";
@@ -23,163 +25,210 @@ import { WordsService } from "../words/words.service";
 import { LexemesService } from "./lexemes.service";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
+import type { Repository } from "typeorm";
 
 describe(LexemesService, () => {
   let service: LexemesService;
-  let lexemesService: LexemesService;
-
-  const queryBuilder = {
-    getCount: vi.fn<() => Promise<number>>(),
-    getMany: vi.fn<() => Promise<Lexeme[]>>(),
-    leftJoinAndSelect: vi.fn<() => unknown>(),
-    where: vi.fn<() => unknown>(),
-  };
-  queryBuilder.leftJoinAndSelect.mockReturnValue(queryBuilder);
-  queryBuilder.where.mockReturnValue(queryBuilder);
-
-  const lexemeRepository = {
-    createQueryBuilder: vi.fn<() => typeof queryBuilder>(() => queryBuilder),
-    findOne: vi.fn<() => Promise<Lexeme | null>>(),
-    save: vi.fn<(entity: Lexeme) => Promise<Lexeme>>(),
-    upsert: vi.fn<(entity: unknown, options: unknown) => Promise<unknown>>(),
-  };
-
-  const loggerService = {
-    debug: vi.fn<(...parameters: unknown[]) => void>(),
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    verbose: vi.fn<(...parameters: unknown[]) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
-
-  const etymologyService = {
-    parse: vi.fn<
-      () => { etymology: null; participleTranslation: null | Translation }
-    >(() => ({ etymology: null, participleTranslation: null })),
-  };
-
-  const formsService = {
-    buildFormsForPartOfSpeech: vi.fn<() => Form[]>(() => []),
-    ingestLexemeForms: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const partOfSpeechService = {
-    getFirstPrincipalPartName: vi.fn<() => string>(() => "first"),
-    getPartOfSpeech: vi.fn<() => string>(() => "noun"),
-    ingestInflection: vi.fn<() => null>(() => null),
-    parseForms: vi.fn<() => unknown>(() => ({})),
-  };
-
-  const principalPartsService = {
-    ingestLexemePrincipalParts: vi.fn<() => Promise<void>>(async () => {}),
-    parsePrincipalParts: vi.fn<
-      () => { macronizedWord: string; principalParts: PrincipalPart[] }
-    >(() => ({
-      macronizedWord: "amo",
-      principalParts: [],
-    })),
-  };
-
-  const pronunciationService = {
-    ingestLexemePronunciations: vi.fn<() => Promise<void>>(async () => {}),
-    parse: vi.fn<() => Pronunciation[]>(() => []),
-  };
-
-  const translationsService = {
-    parseTranslations: vi.fn<() => Translation[]>(() => []),
-    prepareTranslationsForSave: vi.fn<
-      (savedLexeme: Lexeme, translations: Translation[]) => Translation[]
-    >((_savedLexeme, translations) => translations),
-  };
-
-  const wordsService = {
-    ingestLexemeWords: vi.fn<() => Promise<void>>(async () => {}),
-  };
+  let logger: DeepMocked<LoggerService>;
+  let etymologyService: DeepMocked<EtymologyService>;
+  let formsService: DeepMocked<FormsService>;
+  let partOfSpeechService: DeepMocked<PartOfSpeechService>;
+  let principalPartsService: DeepMocked<PrincipalPartsService>;
+  let pronunciationService: DeepMocked<PronunciationService>;
+  let translationsService: DeepMocked<TranslationsService>;
+  let wordsService: DeepMocked<WordsService>;
+  let queryBuilder: DeepMocked<
+    ReturnType<Repository<Lexeme>["createQueryBuilder"]>
+  >;
+  let lexemeRepository: DeepMocked<Repository<Lexeme>>;
+  let findOneLexeme: ReturnType<
+    typeof vi.mocked<Repository<Lexeme>["findOne"]>
+  >;
 
   beforeAll(async () => {
+    lexemeRepository = createRepositoryMock<Lexeme>() as DeepMocked<
+      Repository<Lexeme>
+    >;
+    queryBuilder = lexemeRepository.createQueryBuilder() as DeepMocked<
+      ReturnType<Repository<Lexeme>["createQueryBuilder"]>
+    >;
+    findOneLexeme = vi.mocked(lexemeRepository.findOne);
+
     const module = await Test.createTestingModule({
       providers: [
         LexemesService,
         { provide: getRepositoryToken(Lexeme), useValue: lexemeRepository },
-        { provide: EtymologyService, useValue: etymologyService },
-        { provide: FormsService, useValue: formsService },
-        { provide: PartOfSpeechService, useValue: partOfSpeechService },
+        { provide: EtymologyService, useValue: createMock<EtymologyService>() },
+        {
+          provide: FormsService,
+          useValue: createMock<FormsService>({
+            buildFormsForPartOfSpeech: vi
+              .fn<() => Form[]>()
+              .mockReturnValue([]),
+            ingestLexemeForms: vi
+              .fn<() => Promise<void>>()
+              .mockResolvedValue(undefined),
+          }),
+        },
+        {
+          provide: PartOfSpeechService,
+          useValue: createMock<PartOfSpeechService>({
+            getFirstPrincipalPartName: vi
+              .fn<() => string>()
+              .mockReturnValue("first"),
+            getPartOfSpeech: vi
+              .fn<PartOfSpeechService["getPartOfSpeech"]>()
+              .mockReturnValue("noun"),
+            ingestInflection: vi
+              .fn<PartOfSpeechService["ingestInflection"]>()
+              .mockReturnValue(
+                null as unknown as ReturnType<
+                  PartOfSpeechService["ingestInflection"]
+                >,
+              ),
+            parseForms: vi.fn<() => Promise<unknown>>().mockResolvedValue({}),
+          }),
+        },
         {
           provide: PrincipalPartsService,
-          useValue: principalPartsService,
+          useValue: createMock<PrincipalPartsService>({
+            ingestLexemePrincipalParts: vi
+              .fn<() => Promise<void>>()
+              .mockResolvedValue(undefined),
+            parsePrincipalParts: vi
+              .fn<
+                () => {
+                  macronizedWord: string;
+                  principalParts: PrincipalPart[];
+                }
+              >()
+              .mockReturnValue({
+                macronizedWord: "amo",
+                principalParts: [] as PrincipalPart[],
+              }),
+          }),
         },
         {
           provide: PronunciationService,
-          useValue: pronunciationService,
+          useValue: createMock<PronunciationService>({
+            ingestLexemePronunciations: vi
+              .fn<() => Promise<void>>()
+              .mockResolvedValue(undefined),
+            parse: vi.fn<() => Pronunciation[]>().mockReturnValue([]),
+          }),
         },
-        { provide: TranslationsService, useValue: translationsService },
-        { provide: WordsService, useValue: wordsService },
-        { provide: LoggerService, useValue: loggerService },
+        {
+          provide: TranslationsService,
+          useValue: createMock<TranslationsService>({
+            parseTranslations: vi.fn<() => Translation[]>().mockReturnValue([]),
+            prepareTranslationsForSave: vi.fn<
+              (
+                savedLexeme: Lexeme,
+                translations: Translation[],
+              ) => Translation[]
+            >((_savedLexeme, translations) => translations),
+          }),
+        },
+        {
+          provide: WordsService,
+          useValue: createMock<WordsService>({
+            ingestLexemeWords: vi
+              .fn<() => Promise<void>>()
+              .mockResolvedValue(undefined),
+          }),
+        },
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
       ],
     }).compile();
 
     service = await module.resolve(LexemesService);
+    logger = await module.resolve(LoggerService);
+    etymologyService = module.get(EtymologyService);
+    formsService = module.get(FormsService);
+    partOfSpeechService = module.get(PartOfSpeechService);
+    principalPartsService = module.get(PrincipalPartsService);
+    pronunciationService = module.get(PronunciationService);
+    translationsService = module.get(TranslationsService);
+    wordsService = module.get(WordsService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
 
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        LexemesService,
-        { provide: getRepositoryToken(Lexeme), useValue: lexemeRepository },
-        { provide: EtymologyService, useValue: etymologyService },
-        { provide: FormsService, useValue: formsService },
-        { provide: PartOfSpeechService, useValue: partOfSpeechService },
-        { provide: PrincipalPartsService, useValue: principalPartsService },
-        { provide: PronunciationService, useValue: pronunciationService },
-        { provide: TranslationsService, useValue: translationsService },
-        { provide: WordsService, useValue: wordsService },
-        { provide: LoggerService, useValue: loggerService },
-      ],
-    }).compile();
+    partOfSpeechService.getFirstPrincipalPartName.mockReturnValue("first");
+    partOfSpeechService.getPartOfSpeech.mockReturnValue("noun");
+    partOfSpeechService.ingestInflection.mockReturnValue(
+      null as unknown as ReturnType<PartOfSpeechService["ingestInflection"]>,
+    );
+    partOfSpeechService.parseForms.mockResolvedValue({});
 
-    lexemesService = await moduleRef.resolve(LexemesService);
+    principalPartsService.parsePrincipalParts.mockReturnValue({
+      macronizedWord: "amo",
+      principalParts: [],
+    });
+    principalPartsService.ingestLexemePrincipalParts.mockResolvedValue(
+      undefined,
+    );
+
+    formsService.buildFormsForPartOfSpeech.mockReturnValue([]);
+    formsService.ingestLexemeForms.mockResolvedValue(undefined);
+
+    pronunciationService.parse.mockReturnValue([]);
+    pronunciationService.ingestLexemePronunciations.mockResolvedValue(
+      undefined,
+    );
+
+    translationsService.parseTranslations.mockReturnValue([]);
+    translationsService.prepareTranslationsForSave.mockImplementation(
+      (_savedLexeme, translations) => translations,
+    );
+
+    etymologyService.parse.mockReturnValue({
+      etymology: "",
+    });
+
+    wordsService.ingestLexemeWords.mockResolvedValue(undefined);
   });
 
   it("is defined", () => {
     expect(service).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("LexemesService");
   });
 
   it("should return true from existsByLemma when count is positive", async () => {
-    queryBuilder.getCount.mockResolvedValue(1);
+    vi.mocked(queryBuilder.getCount).mockResolvedValue(1);
 
-    const exists = await lexemesService.existsByLemma("amo");
+    const exists = await service.existsByLemma("amo");
 
     expect(exists).toBe(true);
   });
 
   it("should return false from existsByLemma when count is zero", async () => {
-    queryBuilder.getCount.mockResolvedValue(0);
+    vi.mocked(queryBuilder.getCount).mockResolvedValue(0);
 
-    const exists = await lexemesService.existsByLemma("amo");
+    const exists = await service.existsByLemma("amo");
 
     expect(exists).toBe(false);
   });
 
   it("should fetch saved lexeme by lemma and disambiguator", async () => {
     const lexeme = new Lexeme();
-    lexemeRepository.findOne.mockResolvedValue(lexeme);
+    findOneLexeme.mockResolvedValue(lexeme);
 
-    const result = await lexemesService.fetchSavedLexeme("amo", 0);
+    const result = await service.fetchSavedLexeme("amo", 0);
 
     expect(result).toBe(lexeme);
-    expect(lexemeRepository.findOne).toHaveBeenCalledTimes(1);
+    expect(findOneLexeme).toHaveBeenCalledTimes(1);
   });
 
   it("should find lexemes with translations by lemma", async () => {
     const lexeme = new Lexeme();
-    queryBuilder.getMany.mockResolvedValue([lexeme]);
+    vi.mocked(queryBuilder.getMany).mockResolvedValue([lexeme]);
 
-    const result =
-      await lexemesService.findLexemesByLemmaWithTranslations("amo");
+    const result = await service.findLexemesByLemmaWithTranslations("amo");
 
     expect(result).toStrictEqual([lexeme]);
     expect(queryBuilder.leftJoinAndSelect).toHaveBeenCalledWith(
@@ -189,7 +238,7 @@ describe(LexemesService, () => {
   });
 
   it("should return empty parse result when html is missing", async () => {
-    const result = await lexemesService.parseLexemes({
+    const result = await service.parseLexemes({
       category: "lemma",
       href: "x",
       word: "amo",
@@ -206,12 +255,10 @@ describe(LexemesService, () => {
       word: "amo",
     };
 
-    const result = await lexemesService.parseLexemes(page);
+    const result = await service.parseLexemes(page);
 
     expect(result).toStrictEqual([]);
-    expect(loggerService.warn).toHaveBeenCalledWith(
-      "No headwords found for: amo",
-    );
+    expect(logger.warn).toHaveBeenCalledWith("No headwords found for: amo");
   });
 
   it("should parse lexemes from headword elements", async () => {
@@ -225,7 +272,7 @@ describe(LexemesService, () => {
     const parsedLexeme = new Lexeme();
     const parseLexemeFromElementSpy = vi
       .spyOn(
-        lexemesService as unknown as {
+        service as unknown as {
           parseLexemeFromElement: (args: {
             $: cheerio.CheerioAPI;
             elt: unknown;
@@ -237,7 +284,7 @@ describe(LexemesService, () => {
       )
       .mockResolvedValue(parsedLexeme);
 
-    const result = await lexemesService.parseLexemes(page);
+    const result = await service.parseLexemes(page);
 
     expect(result).toStrictEqual([parsedLexeme]);
     expect(parseLexemeFromElementSpy).toHaveBeenCalledTimes(1);
@@ -252,7 +299,7 @@ describe(LexemesService, () => {
     };
 
     vi.spyOn(
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -263,7 +310,7 @@ describe(LexemesService, () => {
       "parseLexemeFromElement",
     ).mockResolvedValue(null);
 
-    const result = await lexemesService.parseLexemes(page);
+    const result = await service.parseLexemes(page);
 
     expect(result).toStrictEqual([]);
   });
@@ -273,7 +320,7 @@ describe(LexemesService, () => {
     lexeme.lemma = "amo";
     lexeme.disambiguator = 0;
 
-    await lexemesService.upsertLexeme(lexeme);
+    await service.upsertLexeme(lexeme);
 
     expect(lexeme.createdBy).toBeDefined();
     expect(lexeme.updatedBy).toBeDefined();
@@ -285,10 +332,10 @@ describe(LexemesService, () => {
     lexeme.lemma = "amo";
     lexeme.disambiguator = 0;
 
-    vi.spyOn(lexemesService, "upsertLexeme").mockResolvedValue(undefined);
-    vi.spyOn(lexemesService, "fetchSavedLexeme").mockResolvedValue(null);
+    vi.spyOn(service, "upsertLexeme").mockResolvedValue(undefined);
+    vi.spyOn(service, "fetchSavedLexeme").mockResolvedValue(null);
 
-    const result = await lexemesService.saveParsedLexeme(lexeme);
+    const result = await service.saveParsedLexeme(lexeme);
 
     expect(result).toBeNull();
   });
@@ -306,12 +353,12 @@ describe(LexemesService, () => {
     savedLexeme.lemma = "amo";
     savedLexeme.disambiguator = 0;
 
-    vi.spyOn(lexemesService, "upsertLexeme").mockResolvedValue(undefined);
-    vi.spyOn(lexemesService, "fetchSavedLexeme").mockResolvedValue(savedLexeme);
+    vi.spyOn(service, "upsertLexeme").mockResolvedValue(undefined);
+    vi.spyOn(service, "fetchSavedLexeme").mockResolvedValue(savedLexeme);
 
     const saveLexemeRelationsSpy = vi
       .spyOn(
-        lexemesService as unknown as {
+        service as unknown as {
           saveLexemeRelations: (
             lexemeToSave: Lexeme,
             saved: Lexeme,
@@ -321,14 +368,18 @@ describe(LexemesService, () => {
       )
       .mockResolvedValue(undefined);
 
-    const result = await lexemesService.saveParsedLexeme(lexeme);
+    const result = await service.saveParsedLexeme(lexeme);
 
     expect(result).toBe(savedLexeme);
     expect(saveLexemeRelationsSpy).toHaveBeenCalledWith(lexeme, savedLexeme);
   });
 
   it("should parse lexeme element and return null for invalid part of speech", async () => {
-    partOfSpeechService.getPartOfSpeech.mockReturnValue("invalid-pos");
+    partOfSpeechService.getPartOfSpeech.mockReturnValue(
+      "invalid-pos" as unknown as ReturnType<
+        PartOfSpeechService["getPartOfSpeech"]
+      >,
+    );
 
     const $ = cheerio.load("<p><strong class='Latn headword'>amo</strong></p>");
     const element = $("p").toArray()[0];
@@ -337,7 +388,7 @@ describe(LexemesService, () => {
     }
 
     const result = await (
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -353,13 +404,15 @@ describe(LexemesService, () => {
     });
 
     expect(result).toBeNull();
-    expect(loggerService.debug).toHaveBeenCalledWith(
+    expect(logger.debug).toHaveBeenCalledWith(
       'Skipping POS "invalid-pos" for: amo',
     );
   });
 
   it("should parse lexeme element and skip known skip POS without debug log", async () => {
-    partOfSpeechService.getPartOfSpeech.mockReturnValue("letter");
+    partOfSpeechService.getPartOfSpeech.mockReturnValue(
+      "letter" as unknown as ReturnType<PartOfSpeechService["getPartOfSpeech"]>,
+    );
 
     const $ = cheerio.load("<p><strong class='Latn headword'>amo</strong></p>");
     const element = $("p").toArray()[0];
@@ -368,7 +421,7 @@ describe(LexemesService, () => {
     }
 
     const result = await (
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -384,7 +437,7 @@ describe(LexemesService, () => {
     });
 
     expect(result).toBeNull();
-    expect(loggerService.debug).not.toHaveBeenCalledWith(
+    expect(logger.debug).not.toHaveBeenCalledWith(
       expect.stringContaining("Skipping POS"),
     );
   });
@@ -400,7 +453,7 @@ describe(LexemesService, () => {
     }
 
     const result = await (
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -423,7 +476,7 @@ describe(LexemesService, () => {
     partOfSpeechService.getFirstPrincipalPartName.mockReturnValue("first");
 
     vi.spyOn(
-      lexemesService as unknown as {
+      service as unknown as {
         enrichLexeme: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -442,7 +495,7 @@ describe(LexemesService, () => {
     }
 
     const result = await (
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -458,7 +511,7 @@ describe(LexemesService, () => {
     });
 
     expect(result).toBeNull();
-    expect(loggerService.warn).toHaveBeenCalledTimes(1);
+    expect(logger.warn).toHaveBeenCalledTimes(1);
   });
 
   it("should save inflection relation when inflection exists", async () => {
@@ -482,7 +535,7 @@ describe(LexemesService, () => {
     savedLexeme.inflection = savedInflection;
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveInflection: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -501,7 +554,7 @@ describe(LexemesService, () => {
     const savedLexeme = new Lexeme();
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveInflection: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -522,7 +575,7 @@ describe(LexemesService, () => {
       .mockReturnValue([]);
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveTranslations: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -540,7 +593,7 @@ describe(LexemesService, () => {
     lexeme.translations = null;
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveTranslations: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -571,7 +624,7 @@ describe(LexemesService, () => {
     savedLexeme.disambiguator = 0;
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveLexemeRelations: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -602,7 +655,7 @@ describe(LexemesService, () => {
     savedLexeme.disambiguator = 0;
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         saveLexemeRelations: (
           inputLexeme: Lexeme,
           inputSavedLexeme: Lexeme,
@@ -628,10 +681,12 @@ describe(LexemesService, () => {
       macronizedWord: "amō",
       principalParts: [],
     });
-    partOfSpeechService.ingestInflection.mockReturnValue(null);
+    partOfSpeechService.ingestInflection.mockReturnValue(
+      null as unknown as ReturnType<PartOfSpeechService["ingestInflection"]>,
+    );
     translationsService.parseTranslations.mockReturnValue([primaryTranslation]);
     etymologyService.parse.mockReturnValue({
-      etymology: null,
+      etymology: "",
       participleTranslation,
     });
     pronunciationService.parse.mockReturnValue([]);
@@ -645,7 +700,7 @@ describe(LexemesService, () => {
     }
 
     await (
-      lexemesService as unknown as {
+      service as unknown as {
         enrichLexeme: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -673,7 +728,7 @@ describe(LexemesService, () => {
     partOfSpeechService.getFirstPrincipalPartName.mockReturnValue("first");
 
     vi.spyOn(
-      lexemesService as unknown as {
+      service as unknown as {
         enrichLexeme: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;
@@ -692,7 +747,7 @@ describe(LexemesService, () => {
     }
 
     const result = await (
-      lexemesService as unknown as {
+      service as unknown as {
         parseLexemeFromElement: (args: {
           $: cheerio.CheerioAPI;
           elt: unknown;

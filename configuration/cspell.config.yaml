@@ -103,51 +103,68 @@ dictionaryDefinitions:
 #   - util
 #   - val
 words:
+  - Amīcus
   - amissa
   - apikey
+  - arma
   - Biblia
   - caes
+  - cano
   - Canis
   - checkpointing
   - codemods
   - dataloaders
+  - dēlektō
   - disambiguator
   - elipssis
   - epubs
   - extensionless
+  - fortior
   - futp
   - gallico
   - golevelup
   - hackathon
+  - hotspot
+  - hotspots
   - Hrefs
   - Indo
   - inspectable
   - IVXLCDM
   - jimmypaolini
   - joor
+  - keˈli
   - killallnode
   - killallvscodeextensions
   - killport
+  - litora
   - livius
+  - LVIII
   - mcp
   - MDCLXVI
+  - MMMDCCCLXXXVIII
+  - multum
   - multivalued
   - musescore
+  - narma
   - navs
   - nindent
   - nonf
   - noqa
   - nums
   - oneline
+  - Oratore
+  - oratore
+  - oris
   - Pagina
   - pagehead
   - PGPASSWORD
-
+  - proemium
   - paolini
   - querykey
   - reagent
   - reflog
   - satisfies
+  - scen
   - shiftsmart
   - testamentum
   - thelatinlibrary
@@ -155,7 +172,13 @@ words:
   - tolower
   - toon
   - toupper
+  - tʃeˈli
   - unrs
+  - unknowncase
+  - unstub
+  - virumque
+  - äˈmiːkʊs
+  - uncapitalizes
   - upenn
   - verbing
 enableFiletypes:

@@ -1,7 +1,7 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LatinLibraryCommand } from "./latin-library.command";
@@ -22,81 +22,59 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(LatinLibraryCommand, () => {
   let command: LatinLibraryCommand;
-  let latinLibraryCommand: LatinLibraryCommand;
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         LatinLibraryCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     command = await module.resolve(LatinLibraryCommand);
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
+    vi.unstubAllGlobals();
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        LatinLibraryCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
-        },
-      ],
-    }).compile();
-
-    latinLibraryCommand = await moduleRef.resolve(LatinLibraryCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(latinLibraryCommand).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith(
-      "LatinLibraryCommand",
-    );
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LatinLibraryCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("LatinLibraryCommand");
   });
 
   it("should skip ignored link filenames", () => {
     const shouldSkipLink = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         shouldSkipLink: (href: string) => boolean;
       }
-    ).shouldSkipLink.bind(latinLibraryCommand);
+    ).shouldSkipLink.bind(command);
 
     expect(shouldSkipLink("index.html")).toBe(true);
     expect(shouldSkipLink("mailto:hello@example.com")).toBe(true);
@@ -107,16 +85,16 @@ describe(LatinLibraryCommand, () => {
 
   it("should derive relative paths and base urls", () => {
     const getRelativePath = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getRelativePath: (urlString: string, host: string) => string;
       }
-    ).getRelativePath.bind(latinLibraryCommand);
+    ).getRelativePath.bind(command);
 
     const getBaseUrl = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getBaseUrl: (urlString: string) => string;
       }
-    ).getBaseUrl.bind(latinLibraryCommand);
+    ).getBaseUrl.bind(command);
 
     expect(
       getRelativePath(
@@ -149,7 +127,7 @@ describe(LatinLibraryCommand, () => {
     readFileMock.mockResolvedValueOnce("cached html");
 
     const result = await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       }
     ).fetchAndCachePage(
@@ -158,7 +136,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     expect(result).toBe("cached html");
-    expect(loggerService.log).not.toHaveBeenCalledWith(
+    expect(logger.log).not.toHaveBeenCalledWith(
       expect.stringContaining("Downloading"),
     );
   });
@@ -167,7 +145,7 @@ describe(LatinLibraryCommand, () => {
     readFileMock.mockRejectedValueOnce(new Error("missing"));
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         downloadAndSaveLatinLibraryFile: (
           parsedUrl: URL,
           targetPath: string,
@@ -177,7 +155,7 @@ describe(LatinLibraryCommand, () => {
     ).mockResolvedValueOnce("downloaded html");
 
     const firstResult = await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       }
     ).fetchAndCachePage(
@@ -186,13 +164,13 @@ describe(LatinLibraryCommand, () => {
     );
 
     expect(firstResult).toBe("downloaded html");
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "📥 Downloading: https://www.thelatinlibrary.com/vergil/index.html",
     );
 
     readFileMock.mockRejectedValueOnce(new Error("missing"));
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         downloadAndSaveLatinLibraryFile: (
           parsedUrl: URL,
           targetPath: string,
@@ -202,7 +180,7 @@ describe(LatinLibraryCommand, () => {
     ).mockRejectedValueOnce(new Error("network error"));
 
     const secondResult = await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       }
     ).fetchAndCachePage(
@@ -211,7 +189,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     expect(secondResult).toBe("");
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error downloading https://www.thelatinlibrary.com/ovid/index.html: Error: network error",
     );
   });
@@ -220,14 +198,14 @@ describe(LatinLibraryCommand, () => {
     const enqueue = vi.fn<(url: string) => void>();
 
     const processLink = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processLink: (
           href: string,
           baseUrl: string,
           enqueue: (url: string) => void,
         ) => void;
       }
-    ).processLink.bind(latinLibraryCommand);
+    ).processLink.bind(command);
 
     processLink(
       "index.html",
@@ -260,7 +238,7 @@ describe(LatinLibraryCommand, () => {
   it("should process queue url and append error log on failure", async () => {
     const fetchAndCachePageSpy = vi
       .spyOn(
-        latinLibraryCommand as unknown as {
+        command as unknown as {
           fetchAndCachePage: (
             urlString: string,
             host: string,
@@ -271,7 +249,7 @@ describe(LatinLibraryCommand, () => {
       .mockRejectedValueOnce(new Error("queue failure"));
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -285,13 +263,13 @@ describe(LatinLibraryCommand, () => {
     );
 
     expect(fetchAndCachePageSpy).toHaveBeenCalledTimes(1);
-    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledTimes(1);
     expect(appendFileMock).toHaveBeenCalledTimes(1);
   });
 
   it("should process queue url html and extract links", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
@@ -302,7 +280,7 @@ describe(LatinLibraryCommand, () => {
     const enqueue = vi.fn<(url: string) => void>();
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -324,7 +302,7 @@ describe(LatinLibraryCommand, () => {
     const enqueue = vi.fn<(url: string) => void>();
 
     (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         parseHtmlForLinks: (
           html: string,
           baseUrl: string,
@@ -345,7 +323,7 @@ describe(LatinLibraryCommand, () => {
 
   it("should not parse links for non-html extension queue urls", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
@@ -354,7 +332,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     const parseHtmlForLinksSpy = vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         parseHtmlForLinks: (
           html: string,
           baseUrl: string,
@@ -365,7 +343,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -383,14 +361,14 @@ describe(LatinLibraryCommand, () => {
 
   it("should return early when queue fetch returns empty html", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
     ).mockResolvedValueOnce("");
 
     const parseHtmlForLinksSpy = vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         parseHtmlForLinks: (
           html: string,
           baseUrl: string,
@@ -401,7 +379,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -419,7 +397,7 @@ describe(LatinLibraryCommand, () => {
 
   it("should extract author urls and flatten category urls", async () => {
     const authorUrls = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getAuthorUrls: (indexHtml: string) => string[];
       }
     ).getAuthorUrls(
@@ -429,7 +407,7 @@ describe(LatinLibraryCommand, () => {
     expect(authorUrls).toStrictEqual(["vergil/", "christian.html"]);
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processCategoryHref: (
           href: string,
           host: string,
@@ -443,7 +421,7 @@ describe(LatinLibraryCommand, () => {
     });
 
     const finalAuthorUrls = await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getFinalAuthorUrls: (
           host: string,
           authorUrls: string[],
@@ -458,7 +436,7 @@ describe(LatinLibraryCommand, () => {
     const queue: string[] = [];
 
     (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         enqueueAuthorUrls: (
           finalAuthorUrls: string[],
           host: string,
@@ -482,7 +460,7 @@ describe(LatinLibraryCommand, () => {
 
   it("should fix malformed Biblia Sacra link in category page", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
@@ -493,7 +471,7 @@ describe(LatinLibraryCommand, () => {
     const finalAuthorUrls: string[] = [];
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processCategoryHref: (
           href: string,
           host: string,
@@ -511,7 +489,7 @@ describe(LatinLibraryCommand, () => {
 
   it("should normalize leading slash links found in category pages", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
@@ -522,7 +500,7 @@ describe(LatinLibraryCommand, () => {
     const finalAuthorUrls: string[] = [];
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processCategoryHref: (
           href: string,
           host: string,
@@ -540,14 +518,14 @@ describe(LatinLibraryCommand, () => {
 
   it("should append stringified non-Error failures in queue processing", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
     ).mockRejectedValueOnce("queue failed");
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -560,7 +538,7 @@ describe(LatinLibraryCommand, () => {
       vi.fn<(url: string) => void>(),
     );
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error processing https://www.thelatinlibrary.com/vergil/: queue failed",
     );
     expect(appendFileMock).toHaveBeenCalledTimes(1);
@@ -571,14 +549,14 @@ describe(LatinLibraryCommand, () => {
     queueError.stack = "";
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
     ).mockRejectedValueOnce(queueError);
 
     await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         processQueueUrl: (
           urlString: string,
           host: string,
@@ -615,7 +593,7 @@ describe(LatinLibraryCommand, () => {
     );
 
     const firstPromise = (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         downloadAndSaveLatinLibraryFile: (
           parsedUrl: URL,
           targetPath: string,
@@ -630,7 +608,7 @@ describe(LatinLibraryCommand, () => {
     const firstResult = await firstPromise;
 
     const secondResult = await (
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         downloadAndSaveLatinLibraryFile: (
           parsedUrl: URL,
           targetPath: string,
@@ -649,7 +627,7 @@ describe(LatinLibraryCommand, () => {
       "<html>ok</html>",
       "utf8",
     );
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ Failed to fetch https://www.thelatinlibrary.com/ovid/index.html: Not Found",
     );
 
@@ -658,21 +636,21 @@ describe(LatinLibraryCommand, () => {
 
   it("should run crawler and complete workflow", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
     ).mockResolvedValueOnce("<html><body></body></html>");
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getAuthorUrls: (indexHtml: string) => string[];
       },
       "getAuthorUrls",
     ).mockReturnValueOnce(["vergil/"]);
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getFinalAuthorUrls: (
           host: string,
           authorUrls: string[],
@@ -683,7 +661,7 @@ describe(LatinLibraryCommand, () => {
 
     const processQueueUrlSpy = vi
       .spyOn(
-        latinLibraryCommand as unknown as {
+        command as unknown as {
           processQueueUrl: (
             urlString: string,
             host: string,
@@ -694,32 +672,32 @@ describe(LatinLibraryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await latinLibraryCommand.run();
+    await command.run();
 
     expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(processQueueUrlSpy).toHaveBeenCalledTimes(1);
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "✅ Finished scraping The Latin Library.",
     );
   });
 
   it("should process duplicated author urls only once in run queue", async () => {
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         fetchAndCachePage: (urlString: string, host: string) => Promise<string>;
       },
       "fetchAndCachePage",
     ).mockResolvedValueOnce("<html><body></body></html>");
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getAuthorUrls: (indexHtml: string) => string[];
       },
       "getAuthorUrls",
     ).mockReturnValueOnce(["vergil/", "vergil/"]);
 
     vi.spyOn(
-      latinLibraryCommand as unknown as {
+      command as unknown as {
         getFinalAuthorUrls: (
           host: string,
           authorUrls: string[],
@@ -730,7 +708,7 @@ describe(LatinLibraryCommand, () => {
 
     const processQueueUrlSpy = vi
       .spyOn(
-        latinLibraryCommand as unknown as {
+        command as unknown as {
           processQueueUrl: (
             urlString: string,
             host: string,
@@ -741,7 +719,7 @@ describe(LatinLibraryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await latinLibraryCommand.run();
+    await command.run();
 
     expect(processQueueUrlSpy).toHaveBeenCalledTimes(1);
     expect(processQueueUrlSpy).toHaveBeenCalledWith(

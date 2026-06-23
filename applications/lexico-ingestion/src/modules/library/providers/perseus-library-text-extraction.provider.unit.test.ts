@@ -1,5 +1,3 @@
-/* cspell:ignore arma cano litora multum proemium virumque */
-
 import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 

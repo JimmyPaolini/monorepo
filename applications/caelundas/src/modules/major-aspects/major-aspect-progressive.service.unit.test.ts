@@ -1,5 +1,5 @@
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment, { type Moment } from "moment-timezone";
@@ -26,12 +26,19 @@ describe(MajorAspectProgressiveService, () => {
     }) => { aspect: string; body1: string; body2: string };
     getAspectGroupKey: (event: Event) => string;
     getMajorAspectProgressiveEvent: (beginning: Event, ending: Event) => Event;
-    processAspectGroup: (aspectGroupKey: string, aspectGroupEvents: Event[]) => Event[];
+    processAspectGroup: (
+      aspectGroupKey: string,
+      aspectGroupEvents: Event[],
+    ) => Event[];
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [LoggerService, ProgressiveUtilities, MajorAspectProgressiveService],
+      providers: [
+        LoggerService,
+        ProgressiveUtilitiesService,
+        MajorAspectProgressiveService,
+      ],
     }).compile();
 
     service = await module.resolve(MajorAspectProgressiveService);
@@ -43,8 +50,14 @@ describe(MajorAspectProgressiveService, () => {
         categories: string[];
       }) => { aspect: string; body1: string; body2: string };
       getAspectGroupKey: (event: Event) => string;
-      getMajorAspectProgressiveEvent: (beginning: Event, ending: Event) => Event;
-      processAspectGroup: (aspectGroupKey: string, aspectGroupEvents: Event[]) => Event[];
+      getMajorAspectProgressiveEvent: (
+        beginning: Event,
+        ending: Event,
+      ) => Event;
+      processAspectGroup: (
+        aspectGroupKey: string,
+        aspectGroupEvents: Event[],
+      ) => Event[];
     };
   });
 
@@ -60,7 +73,15 @@ describe(MajorAspectProgressiveService, () => {
       phase: string,
       timestamp: Moment,
     ): Event => ({
-      categories: ["Astronomy", "Astrology", "Major Aspect", body1, body2, aspect, phase],
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Major Aspect",
+        body1,
+        body2,
+        aspect,
+        phase,
+      ],
       description: `${body1} ${phase} ${aspect} ${body2}`,
       end: timestamp,
       start: timestamp,
@@ -83,7 +104,10 @@ describe(MajorAspectProgressiveService, () => {
         moment.utc("2024-03-21T14:00:00.000Z"),
       );
 
-      const progressiveEvents = service.detectProgressive([forming, dissolving]);
+      const progressiveEvents = service.detectProgressive([
+        forming,
+        dissolving,
+      ]);
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();
@@ -252,7 +276,10 @@ describe(MajorAspectProgressiveService, () => {
       };
 
       expect(() =>
-        privateService.getMajorAspectProgressiveEvent(invalidEvent, invalidEvent),
+        privateService.getMajorAspectProgressiveEvent(
+          invalidEvent,
+          invalidEvent,
+        ),
       ).toThrow("Could not extract aspect info from categories");
     });
 
@@ -270,9 +297,15 @@ describe(MajorAspectProgressiveService, () => {
     it("handles undefined sorted body entries before type casting", () => {
       const sortBySpy = vi
         .spyOn(_, "sortBy")
-        .mockReturnValue([undefined, "Moon"] as unknown as string[]);
+        .mockReturnValue([undefined, "Moon"] as unknown);
       const eventWithAspect: Event = {
-        categories: ["Astronomy", "Astrology", "Major Aspect", "Conjunct", "Moon"],
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Major Aspect",
+          "Conjunct",
+          "Moon",
+        ],
         description: "invalid",
         end: moment.utc("2024-03-21T14:00:00.000Z"),
         start: moment.utc("2024-03-21T14:00:00.000Z"),
@@ -280,7 +313,10 @@ describe(MajorAspectProgressiveService, () => {
       };
 
       expect(() =>
-        privateService.getMajorAspectProgressiveEvent(eventWithAspect, eventWithAspect),
+        privateService.getMajorAspectProgressiveEvent(
+          eventWithAspect,
+          eventWithAspect,
+        ),
       ).toThrow("Could not extract typed values from categories");
 
       sortBySpy.mockRestore();
@@ -302,7 +338,10 @@ describe(MajorAspectProgressiveService, () => {
         moment.utc("2024-03-21T14:00:00.000Z"),
       );
 
-      const progressiveEvents = service.detectProgressive([forming, dissolving]);
+      const progressiveEvents = service.detectProgressive([
+        forming,
+        dissolving,
+      ]);
 
       expect(progressiveEvents).toHaveLength(1);
       expect(progressiveEvents[0]).toBeDefined();

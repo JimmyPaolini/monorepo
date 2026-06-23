@@ -46,10 +46,6 @@ describe(LiteratureLibraryScanService, () => {
     service = new LiteratureLibraryScanService();
   });
 
-  it("should define conformance service", () => {
-    expect(service).toBeDefined();
-  });
-
   it("is defined", () => {
     expect(service).toBeDefined();
   });

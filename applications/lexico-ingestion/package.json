@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@golevelup/ts-vitest": "^4.0.0",
     "@monorepo/lexico-entities": "workspace:*",
     "@nestjs/common": "^11.1.26",
     "@nestjs/config": "^4.0.4",

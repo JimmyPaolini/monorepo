@@ -1,7 +1,11 @@
+import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { PerseusCommand } from "./perseus.command";
@@ -26,71 +30,54 @@ interface FetchJsonResponse {
   tree: { path: string; type: string }[];
 }
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(PerseusCommand, () => {
   let command: PerseusCommand;
-  let perseusCommand: PerseusCommand;
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         PerseusCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     command = await module.resolve(PerseusCommand);
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
+    vi.unstubAllGlobals();
+    vi.useRealTimers();
     accessMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     mkdirMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        PerseusCommand,
-        { provide: LoggerService, useValue: loggerService },
-      ],
-    }).compile();
-
-    perseusCommand = await moduleRef.resolve(PerseusCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect.hasAssertions();
-    expect(perseusCommand).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("PerseusCommand");
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        PerseusCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("PerseusCommand");
   });
 
   it("should return null and log error when tree fetch fails", async () => {
@@ -103,13 +90,13 @@ describe(PerseusCommand, () => {
     );
 
     const result = await (
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchSourceXmlPaths: () => Promise<null | string[]>;
       }
     ).fetchSourceXmlPaths();
 
     expect(result).toBeNull();
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Failed to fetch Perseus tree: Not Found",
     );
   });
@@ -136,7 +123,7 @@ describe(PerseusCommand, () => {
     );
 
     const result = await (
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchSourceXmlPaths: () => Promise<null | string[]>;
       }
     ).fetchSourceXmlPaths();
@@ -146,7 +133,7 @@ describe(PerseusCommand, () => {
 
   it("should append error log details", async () => {
     await (
-      perseusCommand as unknown as {
+      command as unknown as {
         appendSourceDownloadErrorLog: (
           xmlPath: string,
           error: unknown,
@@ -154,7 +141,7 @@ describe(PerseusCommand, () => {
       }
     ).appendSourceDownloadErrorLog("a/file-lat.xml", new Error("boom"));
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error downloading a/file-lat.xml: Error: boom",
     );
     expect(appendFileMock).toHaveBeenCalledTimes(1);
@@ -164,12 +151,12 @@ describe(PerseusCommand, () => {
     accessMock.mockResolvedValue(undefined);
 
     await (
-      perseusCommand as unknown as {
+      command as unknown as {
         downloadSourceXmlFileIfMissing: (xmlPath: string) => Promise<void>;
       }
     ).downloadSourceXmlFileIfMissing("a/file-lat.xml");
 
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "⏭️ Skipping already downloaded: a/file-lat.xml",
     );
   });
@@ -179,7 +166,7 @@ describe(PerseusCommand, () => {
 
     const fetchAndWriteSpy = vi
       .spyOn(
-        perseusCommand as unknown as {
+        command as unknown as {
           fetchAndWriteXmlFile: (
             fileUrl: string,
             targetPath: string,
@@ -190,7 +177,7 @@ describe(PerseusCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      perseusCommand as unknown as {
+      command as unknown as {
         downloadSourceXmlFileIfMissing: (xmlPath: string) => Promise<void>;
       }
     ).downloadSourceXmlFileIfMissing("a/file-lat.xml");
@@ -203,7 +190,7 @@ describe(PerseusCommand, () => {
     accessMock.mockRejectedValue(new Error("missing"));
 
     vi.spyOn(
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchAndWriteXmlFile: (
           fileUrl: string,
           targetPath: string,
@@ -214,7 +201,7 @@ describe(PerseusCommand, () => {
 
     const appendErrorSpy = vi
       .spyOn(
-        perseusCommand as unknown as {
+        command as unknown as {
           appendSourceDownloadErrorLog: (
             xmlPath: string,
             error: unknown,
@@ -225,7 +212,7 @@ describe(PerseusCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      perseusCommand as unknown as {
+      command as unknown as {
         downloadSourceXmlFileIfMissing: (xmlPath: string) => Promise<void>;
       }
     ).downloadSourceXmlFileIfMissing("a/file-lat.xml");
@@ -246,7 +233,7 @@ describe(PerseusCommand, () => {
     );
 
     await (
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchAndWriteXmlFile: (
           fileUrl: string,
           targetPath: string,
@@ -254,7 +241,7 @@ describe(PerseusCommand, () => {
       }
     ).fetchAndWriteXmlFile("https://example.com/file.xml", "/tmp/file.xml");
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ Failed to fetch https://example.com/file.xml: Forbidden",
     );
     expect(writeFileMock).not.toHaveBeenCalled();
@@ -274,7 +261,7 @@ describe(PerseusCommand, () => {
     );
 
     const writePromise = (
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchAndWriteXmlFile: (
           fileUrl: string,
           targetPath: string,
@@ -296,27 +283,27 @@ describe(PerseusCommand, () => {
 
   it("should return early from run when xml paths are null", async () => {
     vi.spyOn(
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchSourceXmlPaths: () => Promise<null | string[]>;
       },
       "fetchSourceXmlPaths",
     ).mockResolvedValue(null);
 
     const downloadSpy = vi.spyOn(
-      perseusCommand as unknown as {
+      command as unknown as {
         downloadSourceXmlFileIfMissing: (xmlPath: string) => Promise<void>;
       },
       "downloadSourceXmlFileIfMissing",
     );
 
-    await perseusCommand.run();
+    await command.run();
 
     expect(downloadSpy).not.toHaveBeenCalled();
   });
 
   it("should process every discovered xml path in run", async () => {
     vi.spyOn(
-      perseusCommand as unknown as {
+      command as unknown as {
         fetchSourceXmlPaths: () => Promise<null | string[]>;
       },
       "fetchSourceXmlPaths",
@@ -324,18 +311,57 @@ describe(PerseusCommand, () => {
 
     const downloadSpy = vi
       .spyOn(
-        perseusCommand as unknown as {
+        command as unknown as {
           downloadSourceXmlFileIfMissing: (xmlPath: string) => Promise<void>;
         },
         "downloadSourceXmlFileIfMissing",
       )
       .mockResolvedValue(undefined);
 
-    await perseusCommand.run();
+    await command.run();
 
     expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(downloadSpy).toHaveBeenCalledTimes(2);
     expect(downloadSpy).toHaveBeenNthCalledWith(1, "a/file-lat.xml");
     expect(downloadSpy).toHaveBeenNthCalledWith(2, "b/other-lat.xml");
+  });
+
+  it("creates output directory when constructor detects it is missing", () => {
+    const previousWorkingDirectory = process.cwd();
+    const temporaryDirectory = mkdtempSync(
+      path.join(os.tmpdir(), "perseus-command-"),
+    );
+
+    try {
+      process.chdir(temporaryDirectory);
+
+      const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
+      const newCommand = new PerseusCommand(logger);
+
+      expect(newCommand).toBeDefined();
+      expect(existsSync(path.join(temporaryDirectory, "output"))).toBe(true);
+    } finally {
+      process.chdir(previousWorkingDirectory);
+      rmSync(temporaryDirectory, { force: true, recursive: true });
+    }
+  });
+
+  it("stringifies non-Error values in download error logging", async () => {
+    await (
+      command as unknown as {
+        appendSourceDownloadErrorLog: (
+          xmlPath: string,
+          error: unknown,
+        ) => Promise<void>;
+      }
+    ).appendSourceDownloadErrorLog("a/file-lat.xml", "text failure");
+
+    expect(logger.error).toHaveBeenCalledWith(
+      "❌ Error downloading a/file-lat.xml: text failure",
+    );
+    expect(appendFileMock).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.stringContaining("text failure"),
+    );
   });
 });

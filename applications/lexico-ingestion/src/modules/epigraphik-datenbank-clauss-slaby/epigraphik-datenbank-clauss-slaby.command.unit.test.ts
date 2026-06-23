@@ -1,7 +1,7 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { EpigraphikDatenbankClaussSlabyCommand } from "./epigraphik-datenbank-clauss-slaby.command";
@@ -34,72 +34,53 @@ vi.mock("node:fs/promises", () => ({
   writeFile: writeFileMock,
 }));
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(EpigraphikDatenbankClaussSlabyCommand, () => {
   let command: EpigraphikDatenbankClaussSlabyCommand;
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         EpigraphikDatenbankClaussSlabyCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     command = await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
+    vi.unstubAllGlobals();
     existsSyncMock.mockReturnValue(true);
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        EpigraphikDatenbankClaussSlabyCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
-        },
-      ],
-    }).compile();
-
-    command = await moduleRef.resolve(EpigraphikDatenbankClaussSlabyCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(command).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith(
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        EpigraphikDatenbankClaussSlabyCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith(
       "EpigraphikDatenbankClaussSlabyCommand",
     );
   });
@@ -107,17 +88,17 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
   it("should create output directory when it does not exist", async () => {
     existsSyncMock.mockReturnValue(false);
 
-    const moduleRef = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         EpigraphikDatenbankClaussSlabyCommand,
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
-    await moduleRef.resolve(EpigraphikDatenbankClaussSlabyCommand);
+    await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
 
     expect(mkdirSyncMock).toHaveBeenCalledWith(expect.any(String), {
       recursive: true,
@@ -187,7 +168,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     ).saveChunkData(2000, "/tmp/chunk-2000.json");
 
     expect(shouldContinue).toBe(true);
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ Failed to fetch records: Too Many Requests",
     );
   });
@@ -202,7 +183,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     ).downloadChunkIfMissing(0);
 
     expect(result).toBe(true);
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "⏭️ Chunk 0 already exists, skipping.",
     );
   });
@@ -247,7 +228,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     ).downloadChunkData(0, "/tmp/chunk-0.json");
 
     expect(result).toBe(true);
-    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledTimes(1);
     expect(appendFileMock).toHaveBeenCalledTimes(1);
   });
 
@@ -269,7 +250,7 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     ).downloadChunkData(0, "/tmp/chunk-0.json");
 
     expect(result).toBe(true);
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error fetching chunk at 0: network-failure",
     );
     expect(appendFileMock).toHaveBeenCalledTimes(1);
@@ -292,8 +273,6 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     expect(downloadSpy).toHaveBeenCalledTimes(2);
     expect(downloadSpy).toHaveBeenNthCalledWith(1, 0);
     expect(downloadSpy).toHaveBeenNthCalledWith(2, 1000);
-    expect(loggerService.log).toHaveBeenCalledWith(
-      "✅ Finished downloading chunks.",
-    );
+    expect(logger.log).toHaveBeenCalledWith("✅ Finished downloading chunks.");
   });
 });

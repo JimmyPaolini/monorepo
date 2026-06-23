@@ -39,8 +39,6 @@ import {
 
 import { EntitiesService } from "./entities.service";
 
-// cspell:ignore buildMetadatas Metadatas indisunique attname indkey attnum relnamespace indrelid indexrelid attrelid nspname relname indisprimary
-
 class MetadataDataSource extends DataSource {
   public async buildMetadataForTests(): Promise<void> {
     await this.buildMetadatas();

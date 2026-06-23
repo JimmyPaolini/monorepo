@@ -1,9 +1,11 @@
-/* cspell:ignore oratore */
+import { existsSync, mkdirSync, mkdtempSync, rmSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LibraryCommand } from "./library.command";
@@ -32,20 +34,6 @@ vi.mock("prompts", () => ({
   default: promptsMock,
 }));
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 function createProviders(): LibrarySourceProvider[] {
   return [
     {
@@ -65,62 +53,27 @@ function createProviders(): LibrarySourceProvider[] {
 
 describe(LibraryCommand, () => {
   let command: LibraryCommand;
-  let libraryCommand: LibraryCommand;
-
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
-
-  const providerPerseus = {
-    ingest: vi.fn<
-      (options?: { author?: string; text?: string }) => Promise<Author[]>
-    >(async () => await Promise.resolve([])),
-    name: "perseus",
-  } satisfies LibrarySourceProvider;
-
-  const providerLatinLibrary = {
-    ingest: vi.fn<
-      (options?: { author?: string; text?: string }) => Promise<Author[]>
-    >(async () => await Promise.resolve([])),
-    name: "thelatinlibrary",
-  } satisfies LibrarySourceProvider;
-
-  const providers = [providerPerseus, providerLatinLibrary];
+  let logger: DeepMocked<LoggerService>;
+  let providerPerseus: LibrarySourceProvider;
+  let providers: LibrarySourceProvider[];
 
   beforeAll(async () => {
+    providers = createProviders();
+    const perseusProvider = providers.find(
+      (provider) => provider.name === "perseus",
+    );
+    if (!perseusProvider) {
+      throw new Error("Expected perseus provider");
+    }
+
+    providerPerseus = perseusProvider;
+
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         LibraryCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
-        },
-        {
-          provide: LIBRARY_PROVIDERS_TOKEN,
-          useValue: createProviders(),
-        },
-      ],
-    }).compile();
-
-    command = await module.resolve(LibraryCommand);
-  });
-
-  beforeEach(async () => {
-    vi.clearAllMocks();
-    mkdirMock.mockResolvedValue(undefined);
-    appendFileMock.mockResolvedValue(undefined);
-    promptsMock.mockResolvedValue({ provider: "ALL" });
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        LibraryCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
         {
           provide: LIBRARY_PROVIDERS_TOKEN,
@@ -129,37 +82,61 @@ describe(LibraryCommand, () => {
       ],
     }).compile();
 
-    libraryCommand = await moduleRef.resolve(LibraryCommand);
+    command = await module.resolve(LibraryCommand);
+    logger = await module.resolve(LoggerService);
+  });
+
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    vi.clearAllMocks();
+    mkdirMock.mockResolvedValue(undefined);
+    appendFileMock.mockResolvedValue(undefined);
+    promptsMock.mockResolvedValue({ provider: "ALL" });
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(libraryCommand).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("LibraryCommand");
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LibraryCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: LIBRARY_PROVIDERS_TOKEN,
+          useValue: [],
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("LibraryCommand");
   });
 
   it("should parse provider from valid explicit option", async () => {
-    const providerName = await libraryCommand.parseProvider("perseus");
+    const providerName = await command.parseProvider("perseus");
 
     expect(providerName).toBe("perseus");
     expect(promptsMock).not.toHaveBeenCalled();
   });
 
   it("should throw for invalid explicit provider", async () => {
-    await expect(libraryCommand.parseProvider("invalid")).rejects.toThrow(
+    await expect(command.parseProvider("invalid")).rejects.toThrow(
       'Provider "invalid" not found.',
     );
   });
 
   it("should parse provider interactively and support all option", async () => {
     promptsMock.mockResolvedValueOnce({ provider: "ALL" });
-    const providerAll = await libraryCommand.parseProvider(undefined);
+    const providerAll = await command.parseProvider(undefined);
 
     promptsMock.mockResolvedValueOnce({ provider: "perseus" });
-    const providerSelected = await libraryCommand.parseProvider(undefined);
+    const providerSelected = await command.parseProvider(undefined);
 
     expect(providerAll).toBeUndefined();
     expect(providerSelected).toBe("perseus");
@@ -167,7 +144,7 @@ describe(LibraryCommand, () => {
 
   it("should parse author and text explicit values without validation", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getAuthorChoices: (
           provider?: string,
         ) => Promise<{ title: string; value: string }[]>;
@@ -176,7 +153,7 @@ describe(LibraryCommand, () => {
     ).mockResolvedValue([{ title: "vergil", value: "vergil" }]);
 
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getTextChoices: (
           provider?: string,
           authorSlug?: string,
@@ -185,8 +162,8 @@ describe(LibraryCommand, () => {
       "getTextChoices",
     ).mockResolvedValue([{ title: "vergil/aeneid", value: "vergil/aeneid" }]);
 
-    const author = await libraryCommand.parseAuthor("custom-author", "perseus");
-    const text = await libraryCommand.parseText(
+    const author = await command.parseAuthor("custom-author", "perseus");
+    const text = await command.parseText(
       "custom/text",
       "perseus",
       "custom-author",
@@ -199,7 +176,7 @@ describe(LibraryCommand, () => {
   it("should prompt for author when explicit author is empty", async () => {
     const getAuthorChoicesSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           getAuthorChoices: (
             provider?: string,
           ) => Promise<{ title: string; value: string }[]>;
@@ -209,7 +186,7 @@ describe(LibraryCommand, () => {
       .mockResolvedValue([{ title: "vergil", value: "vergil" }]);
     promptsMock.mockResolvedValueOnce({ author: "vergil" });
 
-    const author = await libraryCommand.parseAuthor("", "perseus");
+    const author = await command.parseAuthor("", "perseus");
 
     expect(getAuthorChoicesSpy).toHaveBeenCalledWith("perseus");
     expect(author).toBe("vergil");
@@ -218,7 +195,7 @@ describe(LibraryCommand, () => {
   it("should prompt for text when explicit text is empty", async () => {
     const getTextChoicesSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           getTextChoices: (
             provider?: string,
             authorSlug?: string,
@@ -231,7 +208,7 @@ describe(LibraryCommand, () => {
       ]);
     promptsMock.mockResolvedValueOnce({ text: "vergil/epic/aeneid" });
 
-    const text = await libraryCommand.parseText("", "perseus", "vergil");
+    const text = await command.parseText("", "perseus", "vergil");
 
     expect(getTextChoicesSpy).toHaveBeenCalledWith("perseus", "vergil");
     expect(text).toBe("vergil/epic/aeneid");
@@ -240,7 +217,7 @@ describe(LibraryCommand, () => {
   it("should normalize non-string provider parameter for parseAuthor", async () => {
     const getAuthorChoicesSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           getAuthorChoices: (
             provider?: string,
           ) => Promise<{ title: string; value: string }[]>;
@@ -252,7 +229,7 @@ describe(LibraryCommand, () => {
     promptsMock.mockResolvedValueOnce({ author: "ALL" });
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         parseAuthor: (
           author?: string,
           provider?: unknown,
@@ -265,7 +242,7 @@ describe(LibraryCommand, () => {
 
   it("should parse author and text interactively", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getAuthorChoices: (
           provider?: string,
         ) => Promise<{ title: string; value: string }[]>;
@@ -274,7 +251,7 @@ describe(LibraryCommand, () => {
     ).mockResolvedValue([{ title: "vergil", value: "vergil" }]);
 
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getTextChoices: (
           provider?: string,
           authorSlug?: string,
@@ -284,23 +261,16 @@ describe(LibraryCommand, () => {
     ).mockResolvedValue([{ title: "vergil/aeneid", value: "vergil/aeneid" }]);
 
     promptsMock.mockResolvedValueOnce({ author: "ALL" });
-    const authorAll = await libraryCommand.parseAuthor(undefined, "perseus");
+    const authorAll = await command.parseAuthor(undefined, "perseus");
 
     promptsMock.mockResolvedValueOnce({ author: "vergil" });
-    const authorSelected = await libraryCommand.parseAuthor(
-      undefined,
-      "perseus",
-    );
+    const authorSelected = await command.parseAuthor(undefined, "perseus");
 
     promptsMock.mockResolvedValueOnce({ text: "ALL" });
-    const textAll = await libraryCommand.parseText(
-      undefined,
-      "perseus",
-      "vergil",
-    );
+    const textAll = await command.parseText(undefined, "perseus", "vergil");
 
     promptsMock.mockResolvedValueOnce({ text: "vergil/aeneid" });
-    const textSelected = await libraryCommand.parseText(
+    const textSelected = await command.parseText(
       undefined,
       "perseus",
       "vergil",
@@ -314,7 +284,7 @@ describe(LibraryCommand, () => {
 
   it("should return undefined when interactive author response is not a string", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getAuthorChoices: (
           provider?: string,
         ) => Promise<{ title: string; value: string }[]>;
@@ -324,7 +294,7 @@ describe(LibraryCommand, () => {
 
     promptsMock.mockResolvedValueOnce({ author: 123 });
 
-    const parsed = await libraryCommand.parseAuthor(undefined, "perseus");
+    const parsed = await command.parseAuthor(undefined, "perseus");
 
     expect(parsed).toBeUndefined();
   });
@@ -332,14 +302,14 @@ describe(LibraryCommand, () => {
   it("should return undefined when interactive provider response is not a string", async () => {
     promptsMock.mockResolvedValueOnce({ provider: 123 });
 
-    const parsed = await libraryCommand.parseProvider(undefined);
+    const parsed = await command.parseProvider(undefined);
 
     expect(parsed).toBeUndefined();
   });
 
   it("should return undefined when interactive text response is not a string", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         getTextChoices: (
           provider?: string,
           authorSlug?: string,
@@ -350,11 +320,7 @@ describe(LibraryCommand, () => {
 
     promptsMock.mockResolvedValueOnce({ text: 123 });
 
-    const parsed = await libraryCommand.parseText(
-      undefined,
-      "perseus",
-      "vergil",
-    );
+    const parsed = await command.parseText(undefined, "perseus", "vergil");
 
     expect(parsed).toBeUndefined();
   });
@@ -362,7 +328,7 @@ describe(LibraryCommand, () => {
   it("should normalize non-string provider and author parameters for parseText", async () => {
     const getTextChoicesSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           getTextChoices: (
             provider?: string,
             authorSlug?: string,
@@ -375,7 +341,7 @@ describe(LibraryCommand, () => {
     promptsMock.mockResolvedValueOnce({ text: "ALL" });
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         parseText: (
           text?: string,
           provider?: unknown,
@@ -389,7 +355,7 @@ describe(LibraryCommand, () => {
 
   it("should build ingest parameters with filtering", () => {
     const result = (
-      libraryCommand as unknown as {
+      command as unknown as {
         buildIngestParameters: (
           author: string | undefined,
           providerName: string | undefined,
@@ -411,7 +377,7 @@ describe(LibraryCommand, () => {
 
   it("should build ingest parameters without optional filters", () => {
     const result = (
-      libraryCommand as unknown as {
+      command as unknown as {
         buildIngestParameters: (
           author: string | undefined,
           providerName: string | undefined,
@@ -429,7 +395,7 @@ describe(LibraryCommand, () => {
 
   it("should build provider choices sorted by provider name", () => {
     const choices = (
-      libraryCommand as unknown as {
+      command as unknown as {
         getProviderChoices: () => { title: string; value: string }[];
       }
     ).getProviderChoices();
@@ -442,7 +408,7 @@ describe(LibraryCommand, () => {
 
   it("should derive unique sorted author choices with provider filter", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<
           {
             authorSlug: string;
@@ -483,7 +449,7 @@ describe(LibraryCommand, () => {
     ]);
 
     const choices = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         getAuthorChoices: (
           provider?: string,
         ) => Promise<{ title: string; value: string }[]>;
@@ -498,7 +464,7 @@ describe(LibraryCommand, () => {
 
   it("should derive unique sorted author choices without provider filter", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<
           {
             authorSlug: string;
@@ -539,7 +505,7 @@ describe(LibraryCommand, () => {
     ]);
 
     const choices = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         getAuthorChoices: (
           provider?: string,
         ) => Promise<{ title: string; value: string }[]>;
@@ -554,7 +520,7 @@ describe(LibraryCommand, () => {
 
   it("should derive text choices filtered by provider and author", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<
           {
             authorSlug: string;
@@ -595,7 +561,7 @@ describe(LibraryCommand, () => {
     ]);
 
     const choices = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         getTextChoices: (
           provider?: string,
           authorSlug?: string,
@@ -611,7 +577,7 @@ describe(LibraryCommand, () => {
 
   it("should derive text choices without provider or author filters", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<
           {
             authorSlug: string;
@@ -644,7 +610,7 @@ describe(LibraryCommand, () => {
     ]);
 
     const choices = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         getTextChoices: (
           provider?: string,
           authorSlug?: string,
@@ -662,14 +628,12 @@ describe(LibraryCommand, () => {
   });
 
   it("should parse ingest options by delegating provider, author, and text parsing", async () => {
-    vi.spyOn(libraryCommand, "parseProvider").mockResolvedValueOnce("perseus");
-    vi.spyOn(libraryCommand, "parseAuthor").mockResolvedValueOnce("vergil");
-    vi.spyOn(libraryCommand, "parseText").mockResolvedValueOnce(
-      "vergil/aeneid",
-    );
+    vi.spyOn(command, "parseProvider").mockResolvedValueOnce("perseus");
+    vi.spyOn(command, "parseAuthor").mockResolvedValueOnce("vergil");
+    vi.spyOn(command, "parseText").mockResolvedValueOnce("vergil/aeneid");
 
     const parsed = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         parseIngestOptions: (options: {
           author?: null | string;
           provider?: null | string;
@@ -695,17 +659,17 @@ describe(LibraryCommand, () => {
 
   it("should parse ingest options by normalizing null values to undefined", async () => {
     const parseProviderSpy = vi
-      .spyOn(libraryCommand, "parseProvider")
+      .spyOn(command, "parseProvider")
       .mockResolvedValueOnce(undefined);
     const parseAuthorSpy = vi
-      .spyOn(libraryCommand, "parseAuthor")
+      .spyOn(command, "parseAuthor")
       .mockResolvedValueOnce(undefined);
     const parseTextSpy = vi
-      .spyOn(libraryCommand, "parseText")
+      .spyOn(command, "parseText")
       .mockResolvedValueOnce(undefined);
 
     const parsed = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         parseIngestOptions: (options: {
           author?: null | string;
           provider?: null | string;
@@ -734,7 +698,7 @@ describe(LibraryCommand, () => {
 
   it("should process provider and log completion on success", async () => {
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         processProvider: (args: {
           current: number;
           ingestOptions: { author?: string; text?: string };
@@ -750,7 +714,7 @@ describe(LibraryCommand, () => {
     });
 
     expect(providerPerseus.ingest).toHaveBeenCalledWith({ author: "vergil" });
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "🏛️ Completed ingestion for provider: perseus (50.00%, 1/2)",
     );
   });
@@ -769,7 +733,7 @@ describe(LibraryCommand, () => {
     } satisfies LibrarySourceProvider;
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         processProvider: (args: {
           current: number;
           ingestOptions: { author?: string; text?: string };
@@ -784,7 +748,7 @@ describe(LibraryCommand, () => {
       total: 1,
     });
 
-    expect(loggerService.error).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledTimes(1);
     expect(appendFileMock).toHaveBeenCalledTimes(1);
   });
 
@@ -804,7 +768,7 @@ describe(LibraryCommand, () => {
     } satisfies LibrarySourceProvider;
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         processProvider: (args: {
           current: number;
           ingestOptions: { author?: string; text?: string };
@@ -836,7 +800,7 @@ describe(LibraryCommand, () => {
     } satisfies LibrarySourceProvider;
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         processProvider: (args: {
           current: number;
           ingestOptions: { author?: string; text?: string };
@@ -851,7 +815,7 @@ describe(LibraryCommand, () => {
       total: 1,
     });
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       "❌ Error in provider string-provider",
       undefined,
     );
@@ -872,7 +836,7 @@ describe(LibraryCommand, () => {
     }[] = [];
 
     (
-      libraryCommand as unknown as {
+      command as unknown as {
         pushTextEntry: (args: {
           authorSlug: string;
           currentPathParts: string[];
@@ -918,7 +882,7 @@ describe(LibraryCommand, () => {
 
   it("should run with parsed options and process filtered providers", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         parseIngestOptions: (options: {
           author?: null | string;
           provider?: null | string;
@@ -938,7 +902,7 @@ describe(LibraryCommand, () => {
 
     const processProviderSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           processProvider: (args: {
             current: number;
             ingestOptions: { author?: string; text?: string };
@@ -950,7 +914,7 @@ describe(LibraryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await libraryCommand.run([], {});
+    await command.run([], {});
 
     expect(mkdirMock).toHaveBeenCalledTimes(1);
     expect(processProviderSpy).toHaveBeenCalledTimes(1);
@@ -964,7 +928,7 @@ describe(LibraryCommand, () => {
 
   it("should skip undefined provider entries in run iteration", async () => {
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         parseIngestOptions: (options: {
           author?: null | string;
           provider?: null | string;
@@ -983,7 +947,7 @@ describe(LibraryCommand, () => {
     });
 
     vi.spyOn(
-      libraryCommand as unknown as {
+      command as unknown as {
         buildIngestParameters: (
           author: string | undefined,
           providerName: string | undefined,
@@ -1001,7 +965,7 @@ describe(LibraryCommand, () => {
 
     const processProviderSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           processProvider: (args: {
             current: number;
             ingestOptions: { author?: string; text?: string };
@@ -1013,7 +977,7 @@ describe(LibraryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await libraryCommand.run([], {});
+    await command.run([], {});
 
     expect(processProviderSpy).toHaveBeenCalledTimes(1);
     expect(processProviderSpy).toHaveBeenCalledWith(
@@ -1056,7 +1020,7 @@ describe(LibraryCommand, () => {
       ] as unknown[]);
 
     const result = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<
           {
             authorSlug: string;
@@ -1103,7 +1067,7 @@ describe(LibraryCommand, () => {
 
     const scanLibraryProviderSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           scanLibraryProvider: (
             dataDirectory: string,
             providerName: string,
@@ -1115,7 +1079,7 @@ describe(LibraryCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<unknown[]>;
       }
     ).scanLibrary();
@@ -1127,7 +1091,7 @@ describe(LibraryCommand, () => {
     readdirMock.mockRejectedValueOnce(new Error("missing directory"));
 
     const result = await (
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibrary: () => Promise<unknown[]>;
       }
     ).scanLibrary();
@@ -1157,7 +1121,7 @@ describe(LibraryCommand, () => {
 
     const scanLibraryAuthorSpy = vi
       .spyOn(
-        libraryCommand as unknown as {
+        command as unknown as {
           scanLibraryAuthor: (args: {
             authorSlug: string;
             dataDirectory: string;
@@ -1170,7 +1134,7 @@ describe(LibraryCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      libraryCommand as unknown as {
+      command as unknown as {
         scanLibraryProvider: (
           dataDirectory: string,
           providerName: string,
@@ -1186,5 +1150,47 @@ describe(LibraryCommand, () => {
         providerName: "perseus",
       }),
     );
+  });
+
+  it("creates output directory when missing", () => {
+    const previousWorkingDirectory = process.cwd();
+    const temporaryDirectory = mkdtempSync(
+      path.join(os.tmpdir(), "library-command-"),
+    );
+
+    try {
+      process.chdir(temporaryDirectory);
+
+      const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
+      const command = new LibraryCommand(logger, []);
+
+      expect(command).toBeDefined();
+      expect(existsSync(path.join(temporaryDirectory, "output"))).toBe(true);
+    } finally {
+      process.chdir(previousWorkingDirectory);
+      rmSync(temporaryDirectory, { force: true, recursive: true });
+    }
+  });
+
+  it("initializes when output directory already exists", () => {
+    const previousWorkingDirectory = process.cwd();
+    const temporaryDirectory = mkdtempSync(
+      path.join(os.tmpdir(), "library-command-"),
+    );
+    const outputDirectory = path.join(temporaryDirectory, "output");
+
+    try {
+      mkdirSync(outputDirectory, { recursive: true });
+      process.chdir(temporaryDirectory);
+
+      const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
+      const command = new LibraryCommand(logger, []);
+
+      expect(command).toBeDefined();
+      expect(existsSync(outputDirectory)).toBe(true);
+    } finally {
+      process.chdir(previousWorkingDirectory);
+      rmSync(temporaryDirectory, { force: true, recursive: true });
+    }
   });
 });

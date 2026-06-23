@@ -1,5 +1,5 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
@@ -32,10 +32,6 @@ describe(LoggerService, () => {
     }).compile();
 
     service = await module.resolve(LoggerService);
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
   });
 
   it("is defined", () => {

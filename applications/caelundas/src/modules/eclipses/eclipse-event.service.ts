@@ -1,4 +1,4 @@
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 
 import { LoggerService } from "../logger/logger.service";
@@ -17,7 +17,7 @@ export class EclipseEventService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.logger.setContext(EclipseEventService.name);
   }

@@ -1,86 +1,80 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
 import { MANUAL_LEXEMES_TO_DELETE } from "./manual.constants";
 import { ManualService } from "./manual.service";
 
+import type { Repository } from "typeorm";
 import type { Mocked } from "vitest";
 
 describe(ManualService, () => {
   let service: ManualService;
 
-  interface LexemesRepositoryMock {
-    delete: ReturnType<
-      typeof vi.fn<(criteria: unknown) => Promise<{ affected: number }>>
-    >;
-    save: ReturnType<
-      typeof vi.fn<(lexeme: Lexeme, options?: unknown) => Promise<Lexeme>>
-    >;
-  }
-
-  let lexemesRepository: LexemesRepositoryMock;
+  let lexemesRepository: DeepMocked<Repository<Lexeme>>;
   let wordsService: Mocked<WordsService>;
   let numeralsService: Mocked<NumeralsService>;
 
   beforeAll(async () => {
-    const mockLexemesRepository = {
-      delete: vi
-        .fn<(criteria: unknown) => Promise<{ affected: number }>>()
-        .mockResolvedValue({ affected: 1 }),
-      save: vi.fn<(lexeme: Lexeme, options?: unknown) => Promise<Lexeme>>(),
-    };
-
-    const mockWordsService = {
-      ingestLexemeWords: vi
-        .fn<(lexeme?: Lexeme) => Promise<void>>()
-        .mockResolvedValue(undefined),
-    };
-
-    const mockNumeralsService = {
-      toRoman: vi.fn<(numberValue: number) => string>((numberValue) => {
-        const romanNumerals: Record<number, string> = {
-          1: "I",
-          2: "II",
-          3: "III",
-          4: "IV",
-          5: "V",
-          10: "X",
-        };
-        return romanNumerals[numberValue] ?? "X";
-      }),
-    };
-
     const module = await Test.createTestingModule({
       providers: [
         ManualService,
         {
           provide: getRepositoryToken(Lexeme),
-          useValue: mockLexemesRepository,
+          useValue: createRepositoryMock<Lexeme>(),
         },
-        { provide: WordsService, useValue: mockWordsService },
-        { provide: NumeralsService, useValue: mockNumeralsService },
-        { provide: getRepositoryToken(Word), useValue: {} },
-        { provide: getRepositoryToken(WordLexeme), useValue: {} },
-        { provide: getRepositoryToken(WordForm), useValue: {} },
+        {
+          provide: WordsService,
+          useValue: createMock<WordsService>({
+            ingestLexemeWords: vi
+              .fn<(lexeme?: Lexeme) => Promise<void>>()
+              .mockResolvedValue(undefined),
+          }),
+        },
+        {
+          provide: NumeralsService,
+          useValue: createMock<NumeralsService>({
+            toRoman: vi.fn<(numberValue: number) => string>((numberValue) => {
+              const romanNumerals: Record<number, string> = {
+                1: "I",
+                2: "II",
+                3: "III",
+                4: "IV",
+                5: "V",
+                10: "X",
+              };
+              return romanNumerals[numberValue] ?? "X";
+            }),
+          }),
+        },
+        {
+          provide: getRepositoryToken(Word),
+          useValue: createRepositoryMock<Word>(),
+        },
+        {
+          provide: getRepositoryToken(WordLexeme),
+          useValue: createRepositoryMock<WordLexeme>(),
+        },
+        {
+          provide: getRepositoryToken(WordForm),
+          useValue: createRepositoryMock<WordForm>(),
+        },
       ],
     }).compile();
 
     service = await module.resolve(ManualService);
-    lexemesRepository = await module.resolve<LexemesRepositoryMock>(
-      getRepositoryToken(Lexeme),
-    );
-    wordsService = await module.resolve(WordsService);
-    numeralsService = await module.resolve(NumeralsService);
-  });
+    lexemesRepository = module.get(getRepositoryToken(Lexeme));
+    wordsService = module.get(WordsService);
+    numeralsService = module.get(NumeralsService);
 
-  beforeEach(() => {
-    vi.clearAllMocks();
+    lexemesRepository.delete.mockResolvedValue({ affected: 1, raw: [] });
   });
 
   it("is defined", () => {

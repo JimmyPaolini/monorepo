@@ -9,6 +9,9 @@
     "noEmit": true,
     "paths": {
       "@caelundas/*": ["./*"],
+      "@golevelup/ts-vitest": [
+        "./node_modules/@golevelup/ts-vitest/lib/index.d.ts"
+      ],
       "eslint-plugin-better-max-params": [
         "../../configuration/types/eslint-plugin-better-max-params/index.d.ts"
       ],

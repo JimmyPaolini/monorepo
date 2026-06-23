@@ -1,8 +1,8 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { WiktionaryCommand } from "./wiktionary.command";
@@ -26,37 +26,30 @@ vi.mock("node:fs", () => ({
   },
 }));
 
-function createLoggerServiceMock(): {
-  error: ReturnType<typeof vi.fn>;
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(WiktionaryCommand, () => {
   let command: WiktionaryCommand;
-  let wiktionaryCommand: WiktionaryCommand;
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         WiktionaryCommand,
         {
           provide: LoggerService,
-          useValue: createLoggerServiceMock(),
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     command = await module.resolve(WiktionaryCommand);
+    logger = await module.resolve(LoggerService);
+  });
+
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    vi.clearAllMocks();
+    vi.unstubAllGlobals();
+    existsSyncMock.mockReturnValue(true);
   });
 
   const getRequiredElement = (element: Element | undefined): Element => {
@@ -67,61 +60,50 @@ describe(WiktionaryCommand, () => {
     return element;
   };
 
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => unknown>(),
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-
-  beforeEach(async () => {
-    vi.clearAllMocks();
-    existsSyncMock.mockReturnValue(true);
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        WiktionaryCommand,
-        {
-          provide: LoggerService,
-          useValue: loggerService,
-        },
-      ],
-    }).compile();
-
-    wiktionaryCommand = await moduleRef.resolve(WiktionaryCommand);
-  });
-
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect.hasAssertions();
-    expect(wiktionaryCommand).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("WiktionaryCommand");
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        WiktionaryCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("WiktionaryCommand");
   });
 
   it("should create output directory when missing", async () => {
     existsSyncMock.mockReturnValueOnce(false);
 
-    const moduleRef = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         WiktionaryCommand,
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
-    await moduleRef.resolve(WiktionaryCommand);
+    const isolatedLogger = await module.resolve(LoggerService);
+    await module.resolve(WiktionaryCommand);
+
+    expect(isolatedLogger).toBeDefined();
 
     expect(mkdirSyncMock).toHaveBeenCalledTimes(1);
   });
 
   it("should escape capitals with underscore", () => {
     const escaped = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         escapeCapitals: (word: string) => string;
       }
     ).escapeCapitals("AbCd");
@@ -139,7 +121,7 @@ describe(WiktionaryCommand, () => {
     const section = $("#Latin");
 
     (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         saveWiktionaryEntry: (
           entryToSave: { category: string; href: string; word: string },
           sectionToSave: cheerio.Cheerio<AnyNode>,
@@ -149,12 +131,12 @@ describe(WiktionaryCommand, () => {
     ).saveWiktionaryEntry(entry, section, $);
 
     expect(writeFileSyncMock).toHaveBeenCalledTimes(1);
-    expect(loggerService.log).toHaveBeenCalledWith('💬 Ingested word "Amo"');
+    expect(logger.log).toHaveBeenCalledWith('💬 Ingested word "Amo"');
   });
 
   it("should skip reconstruction and appendix links", async () => {
     const ingestWordSpy = vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -170,7 +152,7 @@ describe(WiktionaryCommand, () => {
     const a = getRequiredElement($("a").get(0));
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -184,7 +166,7 @@ describe(WiktionaryCommand, () => {
 
   it("should skip links with slash in word", async () => {
     const ingestWordSpy = vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -198,7 +180,7 @@ describe(WiktionaryCommand, () => {
     const a = getRequiredElement($("a").get(0));
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -212,7 +194,7 @@ describe(WiktionaryCommand, () => {
 
   it("should warn when href points to index page", async () => {
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -221,14 +203,12 @@ describe(WiktionaryCommand, () => {
       }
     ).ingestWord("amo", "/w/index.php?title=amo", "lemma");
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
-      '⚠️ "amo" - no wiktionary page',
-    );
+    expect(logger.warn).toHaveBeenCalledWith('⚠️ "amo" - no wiktionary page');
   });
 
   it("should warn when latin section is missing", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         parseLatinSection: (href: string) => Promise<null | {
           $: cheerio.CheerioAPI;
           section: cheerio.Cheerio<AnyNode>;
@@ -238,7 +218,7 @@ describe(WiktionaryCommand, () => {
     ).mockResolvedValue(null);
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -247,7 +227,7 @@ describe(WiktionaryCommand, () => {
       }
     ).ingestWord("amo", "/wiki/amo", "lemma");
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       '⚠️ "amo" - no latin entry in wiktionary',
     );
   });
@@ -255,7 +235,7 @@ describe(WiktionaryCommand, () => {
   it("should save entry when latin section exists", async () => {
     const $ = cheerio.load('<div id="Latin"><p>latin content</p></div>');
     const saveWiktionaryEntrySpy = vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         saveWiktionaryEntry: (
           entry: { category: string; href: string; word: string },
           section: cheerio.Cheerio<AnyNode>,
@@ -266,7 +246,7 @@ describe(WiktionaryCommand, () => {
     );
 
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         parseLatinSection: (href: string) => Promise<null | {
           $: cheerio.CheerioAPI;
           section: cheerio.Cheerio<AnyNode>;
@@ -276,7 +256,7 @@ describe(WiktionaryCommand, () => {
     ).mockResolvedValue({ $, section: $("#Latin") });
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -297,7 +277,7 @@ describe(WiktionaryCommand, () => {
     );
 
     const response = await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -310,7 +290,7 @@ describe(WiktionaryCommand, () => {
 
   it("should throw when category page response is not ok", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -325,7 +305,7 @@ describe(WiktionaryCommand, () => {
 
     await expect(
       (
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           fetchCategoryPage: (urlPath: string) => Promise<cheerio.CheerioAPI>;
         }
       ).fetchCategoryPage("/wiki/start"),
@@ -334,7 +314,7 @@ describe(WiktionaryCommand, () => {
 
   it("should parse and return category page html when response is ok", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -350,7 +330,7 @@ describe(WiktionaryCommand, () => {
     });
 
     const page = await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchCategoryPage: (urlPath: string) => Promise<cheerio.CheerioAPI>;
       }
     ).fetchCategoryPage("/wiki/start");
@@ -371,7 +351,7 @@ describe(WiktionaryCommand, () => {
     vi.stubGlobal("fetch", fetchMock);
 
     const responsePromise = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -408,7 +388,7 @@ describe(WiktionaryCommand, () => {
     vi.stubGlobal("fetch", fetchMock);
 
     const responsePromise = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -421,7 +401,7 @@ describe(WiktionaryCommand, () => {
 
     expect(response.status).toBe(429);
     expect(fetchMock).toHaveBeenCalledTimes(3);
-    expect(loggerService.warn).toHaveBeenCalledTimes(2);
+    expect(logger.warn).toHaveBeenCalledTimes(2);
 
     vi.useRealTimers();
   });
@@ -439,7 +419,7 @@ describe(WiktionaryCommand, () => {
     vi.stubGlobal("fetch", fetchMock);
 
     const responsePromise = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -451,16 +431,14 @@ describe(WiktionaryCommand, () => {
     const response = await responsePromise;
 
     expect(response.status).toBe(200);
-    expect(loggerService.warn).toHaveBeenCalledWith(
-      expect.stringContaining("60.0s"),
-    );
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining("60.0s"));
 
     vi.useRealTimers();
   });
 
   it("should throw when latin section request is not ok", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -475,7 +453,7 @@ describe(WiktionaryCommand, () => {
 
     await expect(
       (
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           parseLatinSection: (href: string) => Promise<null | {
             $: cheerio.CheerioAPI;
             section: cheerio.Cheerio<AnyNode>;
@@ -487,7 +465,7 @@ describe(WiktionaryCommand, () => {
 
   it("should parse latin section when response contains latin heading", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -503,7 +481,7 @@ describe(WiktionaryCommand, () => {
     });
 
     const parsed = await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         parseLatinSection: (href: string) => Promise<null | {
           $: cheerio.CheerioAPI;
           section: cheerio.Cheerio<AnyNode>;
@@ -517,7 +495,7 @@ describe(WiktionaryCommand, () => {
 
   it("should return null when latin section cannot be found", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchWithRetry: (
           url: string,
           retries?: number,
@@ -531,7 +509,7 @@ describe(WiktionaryCommand, () => {
     });
 
     const parsed = await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         parseLatinSection: (href: string) => Promise<null | {
           $: cheerio.CheerioAPI;
           section: cheerio.Cheerio<AnyNode>;
@@ -544,7 +522,7 @@ describe(WiktionaryCommand, () => {
 
   it("should append error log when word ingestion fails", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -561,7 +539,7 @@ describe(WiktionaryCommand, () => {
     }
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -570,7 +548,7 @@ describe(WiktionaryCommand, () => {
       }
     ).processWiktionaryCategoryLink(anchor, $, "lemma");
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       '❌ Error ingesting word "amo" - Error: word failure',
     );
     expect(appendFileSyncMock).toHaveBeenCalledTimes(1);
@@ -578,7 +556,7 @@ describe(WiktionaryCommand, () => {
 
   it("should append error log when word ingestion fails with non-Error value", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -595,7 +573,7 @@ describe(WiktionaryCommand, () => {
     }
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -604,7 +582,7 @@ describe(WiktionaryCommand, () => {
       }
     ).processWiktionaryCategoryLink(anchor, cheerioApi, "lemma");
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       '❌ Error ingesting word "amo" - word failure string',
     );
     expect(appendFileSyncMock).toHaveBeenCalledTimes(1);
@@ -615,7 +593,7 @@ describe(WiktionaryCommand, () => {
 
     const ingestWordSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           ingestWord: (
             word: string,
             urlPath: string,
@@ -633,7 +611,7 @@ describe(WiktionaryCommand, () => {
     }
 
     const promise = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -652,14 +630,14 @@ describe(WiktionaryCommand, () => {
 
   it("should append error log when category ingestion fails", async () => {
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchCategoryPage: (urlPath: string) => Promise<cheerio.CheerioAPI>;
       },
       "fetchCategoryPage",
     ).mockRejectedValue(new Error("category failure"));
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestCategory: (
           category: "lemma",
           startPath?: string,
@@ -667,7 +645,7 @@ describe(WiktionaryCommand, () => {
       }
     ).ingestCategory("lemma", "/wiki/start");
 
-    expect(loggerService.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledWith(
       expect.stringContaining('❌ Error ingesting category "lemma"'),
     );
     expect(appendFileSyncMock).toHaveBeenCalledTimes(1);
@@ -678,7 +656,7 @@ describe(WiktionaryCommand, () => {
     categoryError.stack = "";
 
     (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         handleCategoryError: (
           category: "lemma",
           urlPath: string,
@@ -706,7 +684,7 @@ describe(WiktionaryCommand, () => {
     `);
 
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         fetchCategoryPage: (urlPath: string) => Promise<cheerio.CheerioAPI>;
       },
       "fetchCategoryPage",
@@ -714,7 +692,7 @@ describe(WiktionaryCommand, () => {
 
     const processLinkSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           processWiktionaryCategoryLink: (
             element: Element,
             cheerioApi: cheerio.CheerioAPI,
@@ -726,7 +704,7 @@ describe(WiktionaryCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestCategory: (
           category: "lemma",
           startPath?: string,
@@ -760,7 +738,7 @@ describe(WiktionaryCommand, () => {
 
     const fetchCategoryPageSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           fetchCategoryPage: (urlPath: string) => Promise<cheerio.CheerioAPI>;
         },
         "fetchCategoryPage",
@@ -770,7 +748,7 @@ describe(WiktionaryCommand, () => {
 
     const processLinkSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           processWiktionaryCategoryLink: (
             element: Element,
             cheerioApi: cheerio.CheerioAPI,
@@ -782,7 +760,7 @@ describe(WiktionaryCommand, () => {
       .mockResolvedValue(undefined);
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestCategory: (
           category: "lemma",
           startPath?: string,
@@ -803,7 +781,7 @@ describe(WiktionaryCommand, () => {
 
     const ingestCategorySpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           ingestCategory: (
             category: string,
             startPath?: string,
@@ -813,7 +791,7 @@ describe(WiktionaryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await wiktionaryCommand.ingestWiktionary();
+    await command.ingestWiktionary();
 
     expect(mkdirSyncMock).toHaveBeenCalledTimes(1);
     expect(ingestCategorySpy).toHaveBeenCalledTimes(4);
@@ -824,7 +802,7 @@ describe(WiktionaryCommand, () => {
 
     const ingestCategorySpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           ingestCategory: (
             category: string,
             startPath?: string,
@@ -834,7 +812,7 @@ describe(WiktionaryCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await wiktionaryCommand.ingestWiktionary();
+    await command.ingestWiktionary();
 
     expect(mkdirSyncMock).not.toHaveBeenCalled();
     expect(ingestCategorySpy).toHaveBeenCalledTimes(4);
@@ -842,10 +820,10 @@ describe(WiktionaryCommand, () => {
 
   it("should delegate run to ingestWiktionary", async () => {
     const ingestWiktionarySpy = vi
-      .spyOn(wiktionaryCommand, "ingestWiktionary")
+      .spyOn(command, "ingestWiktionary")
       .mockResolvedValue(undefined);
 
-    await wiktionaryCommand.run();
+    await command.run();
 
     expect(ingestWiktionarySpy).toHaveBeenCalledTimes(1);
   });
@@ -853,7 +831,7 @@ describe(WiktionaryCommand, () => {
   it("should not append #Latin when href already includes it", async () => {
     const parseLatinSectionSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           parseLatinSection: (href: string) => Promise<null | {
             $: cheerio.CheerioAPI;
             section: cheerio.Cheerio<AnyNode>;
@@ -864,7 +842,7 @@ describe(WiktionaryCommand, () => {
       .mockResolvedValue(null);
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -883,7 +861,7 @@ describe(WiktionaryCommand, () => {
 
     const ingestWordSpy = vi
       .spyOn(
-        wiktionaryCommand as unknown as {
+        command as unknown as {
           ingestWord: (
             word: string,
             urlPath: string,
@@ -901,7 +879,7 @@ describe(WiktionaryCommand, () => {
     }
 
     const processPromise = (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,
@@ -923,7 +901,7 @@ describe(WiktionaryCommand, () => {
     wordError.stack = "";
 
     vi.spyOn(
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         ingestWord: (
           word: string,
           urlPath: string,
@@ -940,7 +918,7 @@ describe(WiktionaryCommand, () => {
     }
 
     await (
-      wiktionaryCommand as unknown as {
+      command as unknown as {
         processWiktionaryCategoryLink: (
           element: Element,
           cheerioApi: cheerio.CheerioAPI,

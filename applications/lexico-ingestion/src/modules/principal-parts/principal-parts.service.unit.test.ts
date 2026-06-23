@@ -1,15 +1,18 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { Lexeme, PrincipalPart } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { PrincipalPartsService } from "./principal-parts.service";
 
 import type { AnyNode } from "domhandler";
+import type { Repository } from "typeorm";
 
 function getElementByIdentifierOrThrow(
   $: cheerio.CheerioAPI,
@@ -25,42 +28,27 @@ function getElementByIdentifierOrThrow(
 
 describe(PrincipalPartsService, () => {
   let service: PrincipalPartsService;
-  const saveMock = vi.fn<(entity: Lexeme) => Promise<Lexeme>>();
-  const loggerMock = {
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-  };
+  let lexemeRepository: DeepMocked<Repository<Lexeme>>;
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         PrincipalPartsService,
-        { provide: getRepositoryToken(Lexeme), useValue: { save: saveMock } },
+        {
+          provide: getRepositoryToken(Lexeme),
+          useValue: createRepositoryMock<Lexeme>(),
+        },
         {
           provide: LoggerService,
-          useValue: loggerMock,
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(PrincipalPartsService);
-  });
-
-  beforeEach(async () => {
-    vi.clearAllMocks();
-
-    const module = await Test.createTestingModule({
-      providers: [
-        PrincipalPartsService,
-        { provide: getRepositoryToken(Lexeme), useValue: { save: saveMock } },
-        {
-          provide: LoggerService,
-          useValue: loggerMock,
-        },
-      ],
-    }).compile();
-
-    service = await module.resolve(PrincipalPartsService);
+    logger = await module.resolve(LoggerService);
+    lexemeRepository = module.get(getRepositoryToken(Lexeme));
   });
 
   it("is defined", () => {
@@ -68,9 +56,13 @@ describe(PrincipalPartsService, () => {
   });
 
   it("sets logger context during service construction", () => {
-    expect(loggerMock.setContext).toHaveBeenCalledWith(
-      PrincipalPartsService.name,
+    const initializedService = new PrincipalPartsService(
+      lexemeRepository,
+      logger,
     );
+
+    expect(initializedService).toBeDefined();
+    expect(logger.setContext).toHaveBeenCalledWith(PrincipalPartsService.name);
   });
 
   describe("ingestLexemePrincipalParts", () => {
@@ -100,7 +92,7 @@ describe(PrincipalPartsService, () => {
         incomingPresent,
         incomingPerfect,
       ]);
-      expect(saveMock).toHaveBeenCalledWith(savedLexeme);
+      expect(lexemeRepository.save).toHaveBeenCalledWith(savedLexeme);
     });
 
     it("keeps incoming IDs undefined when no existing principal part matches", async () => {
@@ -119,7 +111,7 @@ describe(PrincipalPartsService, () => {
 
       expect(incomingPerfect.id).toBeUndefined();
       expect(savedLexeme.principalParts).toStrictEqual([incomingPerfect]);
-      expect(saveMock).toHaveBeenCalledWith(savedLexeme);
+      expect(lexemeRepository.save).toHaveBeenCalledWith(savedLexeme);
     });
   });
 

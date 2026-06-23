@@ -1,58 +1,38 @@
-/* cspell:ignore amīcus oris */
-
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import { Like, type Repository } from "typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
+import { createRepositoryMock } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { TranslationsService } from "./translations.service";
 
-import type { Mocked } from "vitest";
-
 describe(TranslationsService, () => {
   let service: TranslationsService;
-  let translationsRepository: Mocked<Repository<Translation>>;
+  let translationsRepository: DeepMocked<Repository<Translation>>;
 
   beforeAll(async () => {
-    const mockTranslationsRepository = {
-      find: vi.fn<(options?: unknown) => Promise<Translation[]>>(),
-      save: vi.fn<(translations: Translation[]) => Promise<Translation[]>>(),
-    };
-
     const module = await Test.createTestingModule({
       providers: [
         TranslationsService,
         {
           provide: getRepositoryToken(Translation),
-          useValue: mockTranslationsRepository,
+          useValue: createRepositoryMock<Translation>(),
         },
         {
           provide: LoggerService,
-          useValue: {
-            debug: vi.fn<(...parameters: unknown[]) => void>(),
-            error: vi.fn<(...parameters: unknown[]) => void>(),
-            log: vi.fn<(...parameters: unknown[]) => void>(),
-            setContext: vi.fn<(...parameters: unknown[]) => void>(),
-            verbose: vi.fn<(...parameters: unknown[]) => void>(),
-            warn: vi.fn<(...parameters: unknown[]) => void>(),
-          },
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(TranslationsService);
-    translationsRepository = await module.resolve(
-      getRepositoryToken(Translation),
-    );
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
+    translationsRepository = module.get(getRepositoryToken(Translation));
   });
 
   it("is defined", () => {

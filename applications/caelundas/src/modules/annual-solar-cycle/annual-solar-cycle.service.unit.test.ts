@@ -2,7 +2,7 @@ import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.const
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -33,7 +33,7 @@ describe(AnnualSolarCycleService, () => {
         AnnualSolarCycleEventsService,
         EphemerisService,
         MathService,
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
     service = await module.resolve(AnnualSolarCycleService);

@@ -1,7 +1,7 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
@@ -21,30 +21,30 @@ vi.mock("fs", () => ({
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const loggerService = new LoggerService();
-const progressiveUtilitiesService = new ProgressiveUtilities(loggerService);
+const logger = new LoggerService();
+const progressiveUtilitiesService = new ProgressiveUtilitiesService(logger);
 const phaseCalculationService = new PhaseCalculationService(
-  loggerService,
+  logger,
   ephemerisService,
   mathService,
 );
 const venusianPhaseService = new VenusianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const mercurianPhaseService = new MercurianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const martianPhaseService = new MartianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const service = new PhasesService(
-  loggerService,
+  logger,
   venusianPhaseService,
   mercurianPhaseService,
   martianPhaseService,

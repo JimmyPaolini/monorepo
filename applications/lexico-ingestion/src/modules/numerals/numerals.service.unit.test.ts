@@ -3,8 +3,6 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { NumeralsService } from "./numerals.service";
 
-// cspell:ignore LVIII MMMDCCCLXXXVIII
-
 describe(NumeralsService, () => {
   let service: NumeralsService;
 

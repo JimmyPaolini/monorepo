@@ -1,5 +1,6 @@
 import { appendFile } from "node:fs/promises";
 
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -17,12 +18,7 @@ vi.mock("node:fs/promises", () => ({
 
 describe(LiteratureTextIngestionService, () => {
   let service: LiteratureTextIngestionService;
-
-  const loggerMock = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-  };
+  let logger: DeepMocked<LoggerService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -30,28 +26,17 @@ describe(LiteratureTextIngestionService, () => {
         LiteratureTextIngestionService,
         {
           provide: LoggerService,
-          useValue: {
-            error: vi.fn<(...parameters: unknown[]) => unknown>(),
-            log: vi.fn<(...parameters: unknown[]) => unknown>(),
-            setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-          },
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(LiteratureTextIngestionService);
+    logger = await module.resolve(LoggerService);
   });
 
   beforeEach(() => {
-    vi.clearAllMocks();
     vi.mocked(appendFile).mockResolvedValue(undefined);
-    service = new LiteratureTextIngestionService(
-      loggerMock as unknown as LoggerService,
-    );
-  });
-
-  it("should define conformance service", () => {
-    expect(service).toBeDefined();
   });
 
   it("is defined", () => {
@@ -59,7 +44,10 @@ describe(LiteratureTextIngestionService, () => {
   });
 
   it("sets logger context during construction", () => {
-    expect(loggerMock.setContext).toHaveBeenCalledWith(
+    const initializedService = new LiteratureTextIngestionService(logger);
+
+    expect(initializedService).toBeDefined();
+    expect(logger.setContext).toHaveBeenCalledWith(
       LiteratureTextIngestionService.name,
     );
   });
@@ -101,13 +89,13 @@ describe(LiteratureTextIngestionService, () => {
         textSlugName: "work",
         title: "Work",
       });
-      expect(loggerMock.log).toHaveBeenCalledWith(
+      expect(logger.log).toHaveBeenCalledWith(
         "  📜 Starting: Work (from provider)",
       );
-      expect(loggerMock.log).toHaveBeenCalledWith(
+      expect(logger.log).toHaveBeenCalledWith(
         "  ✅ Completed: Work (from provider) (50.00%, 1/2)",
       );
-      expect(loggerMock.error).not.toHaveBeenCalled();
+      expect(logger.error).not.toHaveBeenCalled();
     });
 
     it("resolves parent text hierarchy in logs and ingest arguments", async () => {
@@ -149,10 +137,10 @@ describe(LiteratureTextIngestionService, () => {
         textSlugName: "chapter-1",
         title: "Chapter 1",
       });
-      expect(loggerMock.log).toHaveBeenCalledWith(
+      expect(logger.log).toHaveBeenCalledWith(
         "  📜 Starting: book-1 / Chapter 1 (from provider)",
       );
-      expect(loggerMock.log).toHaveBeenCalledWith(
+      expect(logger.log).toHaveBeenCalledWith(
         "  ✅ Completed: book-1 / Chapter 1 (from provider) (100.00%, 2/2)",
       );
     });
@@ -189,14 +177,14 @@ describe(LiteratureTextIngestionService, () => {
         },
       );
 
-      expect(loggerMock.error).toHaveBeenCalledWith(
+      expect(logger.error).toHaveBeenCalledWith(
         "❌ Failed to process Work (from provider): Error: ingestion failed",
       );
       expect(appendFile).toHaveBeenCalledWith(
         "/tmp/literature-errors.log",
         expect.stringContaining("data/library/provider/author/work.md"),
       );
-      expect(loggerMock.log).toHaveBeenCalledWith(
+      expect(logger.log).toHaveBeenCalledWith(
         "  ✅ Completed: Work (from provider) (100.00%, 1/1)",
       );
     });
@@ -230,7 +218,7 @@ describe(LiteratureTextIngestionService, () => {
         },
       );
 
-      expect(loggerMock.error).toHaveBeenCalledWith(
+      expect(logger.error).toHaveBeenCalledWith(
         "❌ Failed to process Work (from provider): ingestion failed",
       );
       expect(appendFile).toHaveBeenCalledWith(

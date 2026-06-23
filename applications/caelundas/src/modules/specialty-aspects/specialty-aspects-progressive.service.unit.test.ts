@@ -1,4 +1,4 @@
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
@@ -17,8 +17,8 @@ describe(SpecialtyAspectsProgressiveService, () => {
       providers: [
         SpecialtyAspectsProgressiveService,
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
@@ -28,7 +28,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
 
   const progressiveUtilitiesService = {
     pairProgressiveEvents:
-      vi.fn<ProgressiveUtilities["pairProgressiveEvents"]>(),
+      vi.fn<ProgressiveUtilitiesService["pairProgressiveEvents"]>(),
   };
 
   const mockService = new SpecialtyAspectsProgressiveService(

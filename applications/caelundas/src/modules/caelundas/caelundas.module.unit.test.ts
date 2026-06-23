@@ -1,39 +1,35 @@
-import { describe, expect, it } from "vitest";
-const { mockForRoot } = vi.hoisted(() => ({
-  mockForRoot: vi.fn<(options: unknown) => unknown>(
-    (options: unknown) => options,
-  ),
-}));
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
-vi.mock("@nestjs/config", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@nestjs/config")>();
-  return {
-    ...actual,
-    ConfigModule: {
-      forRoot: mockForRoot,
-    },
-  };
-});
+type ConfigOptions =
+  | undefined
+  | {
+      envFilePath?: string | string[];
+      isGlobal?: boolean;
+      validate?: (config: Record<string, unknown>) => unknown;
+    };
 
-import { CaelundasModule } from "./caelundas.module";
+describe("caelundas module", () => {
+  let caelundasModule: unknown;
+  let configOptions: ConfigOptions;
 
-describe(CaelundasModule, () => {
+  beforeAll(async () => {
+    vi.resetModules();
+    const importedConfigModule = await import("@nestjs/config");
+    const forRootSpy = vi.spyOn(importedConfigModule.ConfigModule, "forRoot");
+
+    const importedModule = await import("./caelundas.module");
+    caelundasModule = importedModule.CaelundasModule;
+    configOptions = forRootSpy.mock.calls[0]?.[0];
+  });
+
   it("configures the global env validator", () => {
-    expect(CaelundasModule).toBeDefined();
-    expect(mockForRoot).toHaveBeenCalledTimes(1);
+    expect(caelundasModule).toBeDefined();
 
-    const firstCall = mockForRoot.mock.calls[0] as
-      | [
-          {
-            envFilePath?: string;
-            isGlobal?: boolean;
-            validate?: (config: Record<string, unknown>) => unknown;
-          },
-        ]
-      | undefined;
-    const options = firstCall?.[0];
+    const options = configOptions;
 
-    if (options === undefined) throw new Error("options is undefined");
+    if (options === undefined) {
+      throw new Error("options is undefined");
+    }
 
     expect(options.envFilePath).toBe(".env");
     expect(options.isGlobal).toBe(true);

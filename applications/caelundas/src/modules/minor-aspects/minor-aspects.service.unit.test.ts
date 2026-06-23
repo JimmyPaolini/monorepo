@@ -5,7 +5,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
 import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -35,7 +35,7 @@ describe(MinorAspectsService, () => {
         AspectsUtilities,
         EphemerisService,
         MathService,
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
     service = await module.resolve(MinorAspectsService);

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-describe("loggerService environment initialization", () => {
+describe("logger environment initialization", () => {
   const originalNodeEnvironment = process.env["NODE_ENV"];
 
   afterEach(() => {
@@ -17,11 +17,11 @@ describe("loggerService environment initialization", () => {
     vi.resetModules();
 
     const { LoggerService } = await import("./logger.service");
-    const loggerService = new LoggerService();
+    const logger = new LoggerService();
 
     expect(() => {
-      loggerService.setContext("ProductionTestContext");
-      loggerService.log("production message");
+      logger.setContext("ProductionTestContext");
+      logger.log("production message");
     }).not.toThrow();
   });
 
@@ -30,11 +30,11 @@ describe("loggerService environment initialization", () => {
     vi.resetModules();
 
     const { LoggerService } = await import("./logger.service");
-    const loggerService = new LoggerService();
+    const logger = new LoggerService();
 
     expect(() => {
-      loggerService.setContext("DevelopmentTestContext");
-      loggerService.log("development message");
+      logger.setContext("DevelopmentTestContext");
+      logger.log("development message");
     }).not.toThrow();
   });
 });

@@ -11,8 +11,8 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 
+import { ProgressiveUtilitiesService } from "./progressive-utilities.service";
 import { ProgressiveService } from "./progressive.service";
-import { ProgressiveUtilities } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -28,7 +28,7 @@ function makeEvent(summary: string): Event {
 
 describe(ProgressiveService, () => {
   let service: ProgressiveService;
-  let utilitiesService: ProgressiveUtilities;
+  let utilitiesService: ProgressiveUtilitiesService;
 
   const annualSolarCycleMock = {
     detectProgressive: vi.fn<AnnualSolarCycleService["detectProgressive"]>(),
@@ -68,12 +68,12 @@ describe(ProgressiveService, () => {
         { provide: PhasesService, useValue: phasesMock },
         { provide: RetrogradesService, useValue: retrogradesMock },
         { provide: TwilightsService, useValue: twilightsMock },
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
 
     service = await module.resolve(ProgressiveService);
-    utilitiesService = await module.resolve(ProgressiveUtilities);
+    utilitiesService = await module.resolve(ProgressiveUtilitiesService);
   });
 
   beforeEach(() => {

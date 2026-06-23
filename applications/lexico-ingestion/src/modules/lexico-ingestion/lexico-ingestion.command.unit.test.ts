@@ -1,5 +1,6 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.command";
 import { DictionaryCommand } from "../dictionary/dictionary.command";
@@ -24,104 +25,103 @@ vi.mock("prompts", () => ({
 }));
 
 describe(LexicoIngestionCommand, () => {
-  let lexicoIngestionCommand: LexicoIngestionCommand;
+  let command: LexicoIngestionCommand;
+  let logger: DeepMocked<LoggerService>;
+  let corpusScriptorumEcclesiasticorumLatinorumCommand: DeepMocked<CorpusScriptorumEcclesiasticorumLatinorumCommand>;
+  let dictionaryCommand: DeepMocked<DictionaryCommand>;
+  let epigraphikDatenbankClaussSlabyCommand: DeepMocked<EpigraphikDatenbankClaussSlabyCommand>;
+  let latinLibraryCommand: DeepMocked<LatinLibraryCommand>;
+  let libraryCommand: DeepMocked<LibraryCommand>;
+  let literatureCommand: DeepMocked<LiteratureCommand>;
+  let perseusCommand: DeepMocked<PerseusCommand>;
+  let wiktionaryCommand: DeepMocked<WiktionaryCommand>;
 
-  const loggerService = {
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-  };
-
-  const corpusScriptorumEcclesiasticorumLatinorumCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const dictionaryCommand = {
-    ingestAll: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const epigraphikDatenbankClaussSlabyCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const latinLibraryCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const libraryCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const literatureCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const perseusCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  const wiktionaryCommand = {
-    run: vi.fn<() => Promise<void>>(async () => {}),
-  };
-
-  beforeEach(async () => {
-    vi.clearAllMocks();
+  beforeAll(async () => {
     promptsMock.mockResolvedValue({ value: true });
 
-    const moduleRef = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       providers: [
         LexicoIngestionCommand,
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
         {
           provide: CorpusScriptorumEcclesiasticorumLatinorumCommand,
-          useValue: corpusScriptorumEcclesiasticorumLatinorumCommand,
+          useValue:
+            createMock<CorpusScriptorumEcclesiasticorumLatinorumCommand>(),
         },
-        { provide: DictionaryCommand, useValue: dictionaryCommand },
+        {
+          provide: DictionaryCommand,
+          useValue: createMock<DictionaryCommand>(),
+        },
         {
           provide: EpigraphikDatenbankClaussSlabyCommand,
-          useValue: epigraphikDatenbankClaussSlabyCommand,
+          useValue: createMock<EpigraphikDatenbankClaussSlabyCommand>(),
         },
-        { provide: LatinLibraryCommand, useValue: latinLibraryCommand },
-        { provide: LibraryCommand, useValue: libraryCommand },
-        { provide: LiteratureCommand, useValue: literatureCommand },
-        { provide: PerseusCommand, useValue: perseusCommand },
-        { provide: WiktionaryCommand, useValue: wiktionaryCommand },
+        {
+          provide: LatinLibraryCommand,
+          useValue: createMock<LatinLibraryCommand>(),
+        },
+        { provide: LibraryCommand, useValue: createMock<LibraryCommand>() },
+        {
+          provide: LiteratureCommand,
+          useValue: createMock<LiteratureCommand>(),
+        },
+        { provide: PerseusCommand, useValue: createMock<PerseusCommand>() },
+        {
+          provide: WiktionaryCommand,
+          useValue: createMock<WiktionaryCommand>(),
+        },
       ],
     }).compile();
 
-    lexicoIngestionCommand = await moduleRef.resolve(LexicoIngestionCommand);
+    command = await module.resolve(LexicoIngestionCommand);
+    logger = await module.resolve(LoggerService);
+    corpusScriptorumEcclesiasticorumLatinorumCommand = module.get(
+      CorpusScriptorumEcclesiasticorumLatinorumCommand,
+    );
+    dictionaryCommand = module.get(DictionaryCommand);
+    epigraphikDatenbankClaussSlabyCommand = module.get(
+      EpigraphikDatenbankClaussSlabyCommand,
+    );
+    latinLibraryCommand = module.get(LatinLibraryCommand);
+    libraryCommand = module.get(LibraryCommand);
+    literatureCommand = module.get(LiteratureCommand);
+    perseusCommand = module.get(PerseusCommand);
+    wiktionaryCommand = module.get(WiktionaryCommand);
+  });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    promptsMock.mockResolvedValue({ value: true });
   });
 
   it("is defined", () => {
-    expect(lexicoIngestionCommand).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith(
-      "LexicoIngestionCommand",
-    );
+    expect(command).toBeDefined();
   });
 
   it("should parse all boolean options", () => {
-    expect(lexicoIngestionCommand.parseWikipedia(undefined)).toBe(true);
-    expect(lexicoIngestionCommand.parseWikipedia("false")).toBe(false);
-    expect(lexicoIngestionCommand.parseWikipedia("0")).toBe(false);
+    expect(command.parseWikipedia(undefined)).toBe(true);
+    expect(command.parseWikipedia("false")).toBe(false);
+    expect(command.parseWikipedia("0")).toBe(false);
 
-    expect(lexicoIngestionCommand.parseDictionary(undefined)).toBe(true);
-    expect(lexicoIngestionCommand.parseDictionary("false")).toBe(false);
+    expect(command.parseDictionary(undefined)).toBe(true);
+    expect(command.parseDictionary("false")).toBe(false);
 
-    expect(lexicoIngestionCommand.parseLibrarySources(undefined)).toBe(true);
-    expect(lexicoIngestionCommand.parseLibrarySources("0")).toBe(false);
+    expect(command.parseLibrarySources(undefined)).toBe(true);
+    expect(command.parseLibrarySources("0")).toBe(false);
 
-    expect(lexicoIngestionCommand.parseLibrary(undefined)).toBe(true);
-    expect(lexicoIngestionCommand.parseLibrary("false")).toBe(false);
+    expect(command.parseLibrary(undefined)).toBe(true);
+    expect(command.parseLibrary("false")).toBe(false);
 
-    expect(lexicoIngestionCommand.parseLiterature(undefined)).toBe(true);
-    expect(lexicoIngestionCommand.parseLiterature("0")).toBe(false);
+    expect(command.parseLiterature(undefined)).toBe(true);
+    expect(command.parseLiterature("0")).toBe(false);
   });
 
   it("should return provided prompt option values without prompting", async () => {
     const result = await (
-      lexicoIngestionCommand as unknown as {
+      command as unknown as {
         promptOption: (
           currentValue: boolean | undefined,
           message: string,
@@ -138,7 +138,7 @@ describe(LexicoIngestionCommand, () => {
     promptsMock.mockResolvedValue({ wikipedia: false });
 
     const result = await (
-      lexicoIngestionCommand as unknown as {
+      command as unknown as {
         promptOption: (
           currentValue: boolean | undefined,
           message: string,
@@ -162,7 +162,7 @@ describe(LexicoIngestionCommand, () => {
 
     const promptForMissingOptionsSpy = vi
       .spyOn(
-        lexicoIngestionCommand as unknown as {
+        command as unknown as {
           promptForMissingOptions: (
             optionsToPrompt: LexicoIngestionCommandOptions,
           ) => Promise<void>;
@@ -171,7 +171,7 @@ describe(LexicoIngestionCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await lexicoIngestionCommand.run([], options);
+    await command.run([], options);
 
     expect(promptForMissingOptionsSpy).toHaveBeenCalledWith(options);
     expect(wiktionaryCommand.run).toHaveBeenCalledTimes(1);
@@ -184,7 +184,7 @@ describe(LexicoIngestionCommand, () => {
     expect(epigraphikDatenbankClaussSlabyCommand.run).toHaveBeenCalledTimes(1);
     expect(libraryCommand.run).toHaveBeenCalledWith([], {});
     expect(literatureCommand.run).toHaveBeenCalledWith([], {});
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "✅ Full ingestion pipeline complete 🎉",
     );
   });
@@ -200,7 +200,7 @@ describe(LexicoIngestionCommand, () => {
 
     const promptForMissingOptionsSpy = vi
       .spyOn(
-        lexicoIngestionCommand as unknown as {
+        command as unknown as {
           promptForMissingOptions: (
             optionsToPrompt: LexicoIngestionCommandOptions,
           ) => Promise<void>;
@@ -209,7 +209,7 @@ describe(LexicoIngestionCommand, () => {
       )
       .mockResolvedValue(undefined);
 
-    await lexicoIngestionCommand.run([], options);
+    await command.run([], options);
 
     expect(promptForMissingOptionsSpy).toHaveBeenCalledWith(options);
     expect(wiktionaryCommand.run).not.toHaveBeenCalled();
@@ -221,7 +221,7 @@ describe(LexicoIngestionCommand, () => {
 
   it("should run only library sources stage helper", async () => {
     await (
-      lexicoIngestionCommand as unknown as {
+      command as unknown as {
         runLibrarySourcesStage: () => Promise<void>;
       }
     ).runLibrarySourcesStage();

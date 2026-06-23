@@ -1,4 +1,4 @@
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
@@ -14,7 +14,7 @@ export class TwilightsComposerService {
 
   constructor(
     private readonly twilightsBuilderService: TwilightsBuilderService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {}
 
   /**

@@ -51,11 +51,8 @@ function createFullEphemeris(
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const loggerService = new LoggerService();
-const helperService = new IngressesComposerService(
-  loggerService,
-  ephemerisService,
-);
+const logger = new LoggerService();
+const helperService = new IngressesComposerService(logger, ephemerisService);
 const service = new IngressesService(helperService);
 
 describe("ingresses.events integration", () => {

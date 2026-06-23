@@ -1,5 +1,5 @@
 import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -57,7 +57,9 @@ const configurePhaseCalculationServiceMock = (
 };
 
 const configureProgressiveUtilitiesMock = (
-  progressiveUtilities: ReturnType<typeof createMock<ProgressiveUtilities>>,
+  progressiveUtilities: ReturnType<
+    typeof createMock<ProgressiveUtilitiesService>
+  >,
 ): void => {
   vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
 };
@@ -68,7 +70,7 @@ describe(MartianPhaseService, () => {
     typeof createMock<PhaseCalculationService>
   >;
   let progressiveUtilitiesService: ReturnType<
-    typeof createMock<ProgressiveUtilities>
+    typeof createMock<ProgressiveUtilitiesService>
   >;
 
   beforeAll(async () => {
@@ -81,8 +83,8 @@ describe(MartianPhaseService, () => {
           useValue: createMock<PhaseCalculationService>(),
         },
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
@@ -90,7 +92,9 @@ describe(MartianPhaseService, () => {
     service = await module.resolve(MartianPhaseService);
     await module.resolve(LoggerService);
     phaseCalculationService = await module.resolve(PhaseCalculationService);
-    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+    progressiveUtilitiesService = await module.resolve(
+      ProgressiveUtilitiesService,
+    );
 
     configurePhaseCalculationServiceMock(phaseCalculationService);
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);

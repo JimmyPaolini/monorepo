@@ -1,7 +1,7 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
 import { LiteratureCommand } from "./literature.command";
@@ -17,30 +17,9 @@ vi.mock("prompts", () => ({
   default: promptsMock,
 }));
 
-function createLiteratureServiceMock(): {
-  ingestAllAuthors: ReturnType<typeof vi.fn>;
-  scanLibrary: ReturnType<typeof vi.fn>;
-} {
-  return {
-    ingestAllAuthors: vi.fn<(...parameters: unknown[]) => unknown>(),
-    scanLibrary: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
-function createLoggerServiceMock(): {
-  log: ReturnType<typeof vi.fn>;
-  setContext: ReturnType<typeof vi.fn>;
-  warn: ReturnType<typeof vi.fn>;
-} {
-  return {
-    log: vi.fn<(...parameters: unknown[]) => unknown>(),
-    setContext: vi.fn<(...parameters: unknown[]) => unknown>(),
-    warn: vi.fn<(...parameters: unknown[]) => unknown>(),
-  };
-}
-
 describe(LiteratureCommand, () => {
   let command: LiteratureCommand;
+  let logger: DeepMocked<LoggerService>;
 
   const library: LibraryEntry[] = [
     {
@@ -69,12 +48,6 @@ describe(LiteratureCommand, () => {
     },
   ];
 
-  const loggerService = {
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    setContext: vi.fn<(context: string) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  };
-
   const literatureService = {
     ingestAllAuthors: vi.fn<(texts: LibraryEntry[]) => Promise<void>>(),
     scanLibrary: vi.fn<() => Promise<LibraryEntry[]>>(),
@@ -82,42 +55,51 @@ describe(LiteratureCommand, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      imports: [LoggerModule],
       providers: [
         LiteratureCommand,
         {
           provide: LiteratureService,
-          useValue: createLiteratureServiceMock(),
+          useValue: literatureService,
         },
-        { provide: LoggerService, useValue: createLoggerServiceMock() },
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
       ],
     }).compile();
 
     command = await module.resolve(LiteratureCommand);
+    logger = await module.resolve(LoggerService);
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
     vi.clearAllMocks();
     promptsMock.mockResolvedValue({ provider: "ALL" });
-
-    const moduleRef = await Test.createTestingModule({
-      providers: [
-        LiteratureCommand,
-        { provide: LiteratureService, useValue: literatureService },
-        { provide: LoggerService, useValue: loggerService },
-      ],
-    }).compile();
-
-    command = await moduleRef.resolve(LiteratureCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("should initialize command with logger context", () => {
-    expect(command).toBeDefined();
-    expect(loggerService.setContext).toHaveBeenCalledWith("LiteratureCommand");
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LiteratureCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: LiteratureService,
+          useValue: createMock<LiteratureService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("LiteratureCommand");
   });
 
   it("should parse provider from explicit valid option", async () => {
@@ -399,10 +381,10 @@ describe(LiteratureCommand, () => {
     expect(ingestedTexts).toHaveLength(1);
     expect(ingestedTexts?.[0]?.provider).toBe("perseus");
 
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       "📚 Starting literature ingestion...",
     );
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       expect.stringContaining("📚 Literature ingestion complete in"),
     );
   });
@@ -412,7 +394,7 @@ describe(LiteratureCommand, () => {
 
     await command.run([], {});
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ No texts found in data/library directory.",
     );
     expect(literatureService.ingestAllAuthors).not.toHaveBeenCalled();

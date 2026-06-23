@@ -254,11 +254,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const { EphemerisService } =
         await import("./modules/ephemeris/ephemeris.service");
       const { MathService } = await import("./modules/math/math.service");
-      const { ProgressiveUtilities } =
-        await import("./modules/progressive/progressive.utilities");
+      const { ProgressiveUtilitiesService } =
+        await import("./modules/progressive/progressive-utilities.service");
       const mathService = new MathService();
       const aspectsUtilitiesService = new AspectsUtilities(mathService);
-      const progressiveUtilitiesService = new ProgressiveUtilities(
+      const progressiveUtilitiesService = new ProgressiveUtilitiesService(
         new LoggerService(),
       );
       const majorAspectEventService = new MajorAspectEventService(
@@ -303,8 +303,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("calculates progressive event pairs correctly", async () => {
-      const { ProgressiveUtilities } =
-        await import("./modules/progressive/progressive.utilities");
+      const { ProgressiveUtilitiesService } =
+        await import("./modules/progressive/progressive-utilities.service");
 
       const beginnings = [
         {
@@ -340,7 +340,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = new ProgressiveUtilities(
+      const pairs = new ProgressiveUtilitiesService(
         new LoggerService(),
       ).pairProgressiveEvents(beginnings, endings, "test");
 

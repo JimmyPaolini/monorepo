@@ -1,9 +1,9 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
+import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "@lexico-ingestion/src/modules/library/providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
 import * as cheerio from "cheerio";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
-
-import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "./corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
 
 import type { LoggerService } from "../../logger/logger.service";
 
@@ -24,18 +24,13 @@ vi.mock("node:fs/promises", () => ({
 }));
 
 describe(CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider, () => {
-  const loggerService = {
-    error: vi.fn<(...parameters: unknown[]) => void>(),
-    log: vi.fn<(...parameters: unknown[]) => void>(),
-    warn: vi.fn<(...parameters: unknown[]) => void>(),
-  } as unknown as LoggerService;
+  const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
 
   const corpusScriptorumEcclesiasticorumLatinorumLibraryProvider =
-    new CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider(loggerService);
+    new CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider(logger);
 
   beforeEach(() => {
     vi.restoreAllMocks();
-    vi.clearAllMocks();
   });
 
   it("should initialize the provider instance", () => {
@@ -511,7 +506,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider, () => {
       xmlPath: "/tmp/csel/aeneid.xml",
     });
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       expect.stringContaining("⚠️ Error processing /tmp/csel/aeneid.xml"),
     );
   });
@@ -600,7 +595,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider, () => {
     await vi.runAllTimersAsync();
     await promise;
 
-    expect(loggerService.log).toHaveBeenCalledWith(
+    expect(logger.log).toHaveBeenCalledWith(
       expect.stringContaining("📜 Completed processing: /tmp/csel/aeneid.xml"),
     );
 
@@ -685,7 +680,7 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider, () => {
       xmlPath: "/tmp/csel/aeneid.xml",
     });
 
-    expect(loggerService.warn).toHaveBeenCalledWith(
+    expect(logger.warn).toHaveBeenCalledWith(
       "⚠️ Skipping empty or invalid text: vergil/aeneid",
     );
   });

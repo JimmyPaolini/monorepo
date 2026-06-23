@@ -9,7 +9,7 @@ import {
 import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 
 import { LoggerService } from "../logger/logger.service";
@@ -36,7 +36,7 @@ export class RetrogradesService {
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.logger.setContext(RetrogradesService.name);
   }

@@ -1,9 +1,12 @@
 import * as cheerio from "cheerio";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+import { loadCheerioElement } from "../../../testing/mocks";
 
 import { PartOfSpeechFormsParser } from "./part-of-speech.forms-parser";
 
 import type { Lexeme } from "@monorepo/lexico-entities";
+import type { CheerioAPI } from "cheerio";
 import type { AnyNode } from "domhandler";
 
 describe(PartOfSpeechFormsParser, () => {
@@ -19,14 +22,14 @@ describe(PartOfSpeechFormsParser, () => {
 
   describe("parseGenericForms", () => {
     it("returns null when no form table exists", () => {
-      const $ = cheerio.load('<p id="entry">word</p>');
-      const entryNode = $("#entry").get(0);
-
-      expect(entryNode).toBeDefined();
+      const { $, element } = loadCheerioElement(
+        '<p id="entry">word</p>',
+        "#entry",
+      );
 
       const forms = parser.parseGenericForms({
         $,
-        elt: entryNode as AnyNode,
+        elt: element,
         lexeme: { partOfSpeech: "noun" } as Lexeme,
       });
 
@@ -35,10 +38,7 @@ describe(PartOfSpeechFormsParser, () => {
 
     it("builds nested identifier structure for adjective forms", () => {
       const parserWithPrivates = parser as unknown as {
-        parseFormTable: (
-          $: cheerio.CheerioAPI,
-          elt: AnyNode,
-        ) => null | string[][];
+        parseFormTable: ($: CheerioAPI, elt: AnyNode) => null | string[][];
       };
 
       vi.spyOn(parserWithPrivates, "parseFormTable").mockReturnValue([
@@ -47,9 +47,11 @@ describe(PartOfSpeechFormsParser, () => {
         ["Accusative", '<span class="Latn" lang="la">bonum</span>'],
       ]);
 
+      const { $, element } = loadCheerioElement("<p />", "p");
+
       const forms = parser.parseGenericForms({
-        $: cheerio.load("<p />"),
-        elt: cheerio.load("<p />")("p").get(0) as AnyNode,
+        $,
+        elt: element,
         lexeme: { partOfSpeech: "adjective" } as Lexeme,
       });
 

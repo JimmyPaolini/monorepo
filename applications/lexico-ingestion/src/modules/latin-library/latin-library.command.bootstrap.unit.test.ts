@@ -1,3 +1,4 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { afterEach, describe, expect, it } from "vitest";
 
 import type { LoggerService } from "../logger/logger.service";
@@ -19,14 +20,9 @@ describe("latinLibraryCommand constructor bootstrap", () => {
 
     const { LatinLibraryCommand } = await import("./latin-library.command");
 
-    const logger = {
-      error: vi.fn<(...parameters: unknown[]) => void>(),
-      log: vi.fn<(...parameters: unknown[]) => void>(),
-      setContext: vi.fn<(context: string) => void>(),
-      warn: vi.fn<(...parameters: unknown[]) => void>(),
-    };
+    const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
 
-    const command = new LatinLibraryCommand(logger as unknown as LoggerService);
+    const command = new LatinLibraryCommand(logger);
 
     expect(command).toBeDefined();
     expect(existsSync).toHaveBeenCalledTimes(1);

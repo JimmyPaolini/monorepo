@@ -12,7 +12,7 @@ import {
   isMinorAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -39,7 +39,7 @@ export class MinorAspectsComposerService {
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.logger.setContext(MinorAspectsComposerService.name);
   }

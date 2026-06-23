@@ -1,12 +1,11 @@
-/* cspell:ignore amāre dēlektō */
-
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import * as cheerio from "cheerio";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
+import { loadCheerioWithRoot } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { PronunciationClassicalService } from "./pronunciation-classical.service";
@@ -15,38 +14,15 @@ import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastic
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 import { PronunciationService } from "./pronunciation.service";
 
+import type {
+  PronunciationClassicalCharacterContext,
+  PronunciationEcclesiasticalCharacterContext,
+} from "./pronunciation.types";
+import type { CheerioAPI } from "cheerio";
 import type { AnyNode } from "domhandler";
+import type { Repository } from "typeorm";
 
 describe(PronunciationService, () => {
-  interface ClassicalContext {
-    ch: string;
-    index: number;
-    isVowel: (index: number) => boolean;
-    phonemes: string[];
-  }
-
-  interface EcclesiasticalContext {
-    ch: string;
-    index: number;
-    isVowel: (letter: string) => boolean;
-    phonemes: string[];
-  }
-
-  interface PronunciationClassifierMock {
-    applyWiktionaryPronunciations: ReturnType<typeof vi.fn>;
-    processClassicalCharacter: ReturnType<typeof vi.fn>;
-    processEcclesiasticalCharacter: ReturnType<typeof vi.fn>;
-  }
-
-  interface LexemeRepositoryMock {
-    save: ReturnType<typeof vi.fn>;
-  }
-
-  interface LoggerServiceMock {
-    log: ReturnType<typeof vi.fn>;
-    setContext: ReturnType<typeof vi.fn>;
-  }
-
   interface PronunciationServicePrivates {
     buildPronunciations: (phonemes: unknown[]) => string[];
     getClassicalPhonemes: (word: string) => string;
@@ -55,32 +31,22 @@ describe(PronunciationService, () => {
   }
 
   interface ParseContext {
-    $: cheerio.CheerioAPI;
+    $: CheerioAPI;
     elt: AnyNode;
   }
 
   let service: PronunciationService;
-  let lexemeRepository: LexemeRepositoryMock;
-  let classifier: PronunciationClassifierMock;
-  let loggerService: LoggerServiceMock;
-
-  const getRequiredRootNode = ($: cheerio.CheerioAPI): AnyNode => {
-    const rootNode = $.root().get(0);
-    if (!rootNode) {
-      throw new Error("Expected root node");
-    }
-
-    return rootNode;
-  };
+  let lexemeRepository: DeepMocked<Repository<Lexeme>>;
+  let pronunciationClassifier: DeepMocked<PronunciationClassifier>;
 
   const getPronunciationServicePrivates = (): PronunciationServicePrivates =>
     service as unknown as PronunciationServicePrivates;
 
   const createParseContext = (): ParseContext => {
-    const $ = cheerio.load("<div></div>");
+    const { $, rootElement } = loadCheerioWithRoot("<div></div>");
     return {
       $,
-      elt: getRequiredRootNode($),
+      elt: rootElement,
     };
   };
 
@@ -100,51 +66,39 @@ describe(PronunciationService, () => {
   };
 
   beforeAll(async () => {
-    lexemeRepository = {
-      save: vi.fn<(entity: Lexeme) => Promise<Lexeme>>(),
-    };
-    classifier = {
-      applyWiktionaryPronunciations: vi.fn<() => void>(),
-      processClassicalCharacter: vi.fn<(context: ClassicalContext) => number>(
-        (context: ClassicalContext) => context.index,
-      ),
-      processEcclesiasticalCharacter: vi.fn<
-        (context: EcclesiasticalContext) => number
-      >((context: EcclesiasticalContext) => context.index),
-    };
-    loggerService = {
-      log: vi.fn<(...parameters: unknown[]) => void>(),
-      setContext: vi.fn<(context: string) => void>(),
-    };
+    lexemeRepository = createMock<Repository<Lexeme>>() satisfies DeepMocked<
+      Repository<Lexeme>
+    >;
+    pronunciationClassifier = createMock<PronunciationClassifier>();
 
     const module = await Test.createTestingModule({
       providers: [
         PronunciationService,
         { provide: getRepositoryToken(Lexeme), useValue: lexemeRepository },
-        { provide: LoggerService, useValue: loggerService },
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
         {
           provide: PronunciationClassicalService,
-          useValue: { processClassicalCharacter: () => 0 },
+          useValue: createMock<PronunciationClassicalService>({
+            processClassicalCharacter: () => 0,
+          }),
         },
         {
           provide: PronunciationPhonemesService,
-          useValue: { getStringPhoneme: () => "" },
+          useValue: createMock<PronunciationPhonemesService>({
+            getStringPhoneme: () => "",
+          }),
         },
         {
           provide: PronunciationEcclesiasticalService,
-          useValue: {
+          useValue: createMock<PronunciationEcclesiasticalService>({
             processEcclesiasticalCharacter: () => 0,
-          },
+          }),
         },
-        { provide: PronunciationClassifier, useValue: classifier },
+        { provide: PronunciationClassifier, useValue: pronunciationClassifier },
       ],
     }).compile();
 
     service = await module.resolve(PronunciationService);
-  });
-
-  beforeEach(() => {
-    vi.clearAllMocks();
   });
 
   it("is defined", () => {
@@ -172,9 +126,9 @@ describe(PronunciationService, () => {
       expect(pronunciations).toStrictEqual([]);
     });
 
-    it("computes classical phonemes with classifier callback", () => {
-      classifier.processClassicalCharacter.mockImplementationOnce(
-        (context: ClassicalContext) => {
+    it("computes classical phonemes with pronunciationClassifier callback", () => {
+      pronunciationClassifier.processClassicalCharacter.mockImplementationOnce(
+        (context: PronunciationClassicalCharacterContext) => {
           expect(context.isVowel(0)).toBe(true);
           expect(context.isVowel(-1)).toBe(false);
 
@@ -187,12 +141,14 @@ describe(PronunciationService, () => {
         getPronunciationServicePrivates().getClassicalPhonemes("ā");
 
       expect(phonemes).toBe("ā");
-      expect(classifier.processClassicalCharacter).toHaveBeenCalledTimes(1);
+      expect(
+        pronunciationClassifier.processClassicalCharacter,
+      ).toHaveBeenCalledTimes(1);
     });
 
-    it("applies classical substitutions before classifier processing", () => {
-      classifier.processClassicalCharacter.mockImplementation(
-        (context: ClassicalContext) => {
+    it("applies classical substitutions before pronunciationClassifier processing", () => {
+      pronunciationClassifier.processClassicalCharacter.mockImplementation(
+        (context: PronunciationClassicalCharacterContext) => {
           context.phonemes.push(context.ch);
           return context.index;
         },
@@ -202,15 +158,17 @@ describe(PronunciationService, () => {
         getPronunciationServicePrivates().getClassicalPhonemes("ph");
 
       expect(phonemes).toBe("p");
-      expect(classifier.processClassicalCharacter).toHaveBeenCalledTimes(1);
-      expect(classifier.processClassicalCharacter).toHaveBeenCalledWith(
-        expect.objectContaining({ ch: "p" }),
-      );
+      expect(
+        pronunciationClassifier.processClassicalCharacter,
+      ).toHaveBeenCalledTimes(1);
+      expect(
+        pronunciationClassifier.processClassicalCharacter,
+      ).toHaveBeenCalledWith(expect.objectContaining({ ch: "p" }));
     });
 
     it("supports index jumps in classical processing loop", () => {
-      classifier.processClassicalCharacter.mockImplementation(
-        (context: ClassicalContext) => {
+      pronunciationClassifier.processClassicalCharacter.mockImplementation(
+        (context: PronunciationClassicalCharacterContext) => {
           context.phonemes.push(context.ch);
           return context.index + 1;
         },
@@ -220,12 +178,14 @@ describe(PronunciationService, () => {
         getPronunciationServicePrivates().getClassicalPhonemes("abcd");
 
       expect(phonemes).toBe("a c");
-      expect(classifier.processClassicalCharacter).toHaveBeenCalledTimes(2);
+      expect(
+        pronunciationClassifier.processClassicalCharacter,
+      ).toHaveBeenCalledTimes(2);
     });
 
-    it("computes ecclesiastical phonemes with classifier callback", () => {
-      classifier.processEcclesiasticalCharacter.mockImplementationOnce(
-        (context: EcclesiasticalContext) => {
+    it("computes ecclesiastical phonemes with pronunciationClassifier callback", () => {
+      pronunciationClassifier.processEcclesiasticalCharacter.mockImplementationOnce(
+        (context: PronunciationEcclesiasticalCharacterContext) => {
           expect(context.isVowel("a")).toBe(true);
           expect(context.isVowel("z")).toBe(false);
 
@@ -238,14 +198,14 @@ describe(PronunciationService, () => {
         getPronunciationServicePrivates().getEcclesiasticalPhonemes("a");
 
       expect(phonemes).toStrictEqual(["a"]);
-      expect(classifier.processEcclesiasticalCharacter).toHaveBeenCalledTimes(
-        1,
-      );
+      expect(
+        pronunciationClassifier.processEcclesiasticalCharacter,
+      ).toHaveBeenCalledTimes(1);
     });
 
     it("supports index jumps in ecclesiastical processing loop", () => {
-      classifier.processEcclesiasticalCharacter.mockImplementation(
-        (context: EcclesiasticalContext) => {
+      pronunciationClassifier.processEcclesiasticalCharacter.mockImplementation(
+        (context: PronunciationEcclesiasticalCharacterContext) => {
           context.phonemes.push(context.ch);
           return context.index + 1;
         },
@@ -255,9 +215,9 @@ describe(PronunciationService, () => {
         getPronunciationServicePrivates().getEcclesiasticalPhonemes("roma");
 
       expect(phonemes).toStrictEqual(["r", "m"]);
-      expect(classifier.processEcclesiasticalCharacter).toHaveBeenCalledTimes(
-        2,
-      );
+      expect(
+        pronunciationClassifier.processEcclesiasticalCharacter,
+      ).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -291,8 +251,8 @@ describe(PronunciationService, () => {
 
       service.parse($, elt, "amō");
 
-      const firstCallArguments = classifier.applyWiktionaryPronunciations.mock
-        .calls[0]?.[0] as
+      const firstCallArguments = pronunciationClassifier
+        .applyWiktionaryPronunciations.mock.calls[0]?.[0] as
         | undefined
         | {
             $: unknown;

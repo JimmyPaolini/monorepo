@@ -1,7 +1,5 @@
 import { getMetadataArgsStorage } from "typeorm";
 
-// cspell:ignore fulltext
-
 /** Represents an entity class constructor used by the metadata assertions. */
 export type EntityClass = abstract new (
   ...constructorArguments: never[]

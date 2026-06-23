@@ -52,7 +52,6 @@ src/
       <domain>.types.ts
       <domain>.constants.ts
       <domain>.<tier>.test.ts
-    conformance.integration.test.ts # Structural conformance checks
 testing/                            # Shared test utilities
 ```
 
@@ -218,10 +217,10 @@ export class {{namePascalCase}}Module {}
 
 ### Conformance check
 
-The test in `src/modules/conformance.integration.test.ts` validates that every sub-directory in `src/modules/` matches the generator template's file structure. Run it to catch missing files:
+Conformance checks are run centrally from `tools/conformance/src/conformance.test.ts`, which validates generated and existing module structures against templates across the workspace (including generated command applications).
 
 ```bash
-nx run {{nameKebabCase}}:test:integration
+nx run conformance:test
 ```
 
 ## Best Practices

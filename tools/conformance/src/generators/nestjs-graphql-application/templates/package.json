@@ -21,6 +21,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@golevelup/ts-vitest": "^4.0.0",
     "@faker-js/faker": "^9.8.0",
     "@nestjs/testing": "^11.1.26",
     "@nx/eslint-plugin": "^23.0.0",

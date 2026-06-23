@@ -210,6 +210,27 @@ describe(getKey, () => {
     expect(ctor.kind).toBe(SyntaxKind.Constructor);
     expect(getKey(ctor)).toBeNull();
   });
+
+  it("returns call-expression key with first argument for ExpressionStatement", () => {
+    const source = parseTypescript('describe("suite", () => {});\n');
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("describe:suite");
+  });
+
+  it("returns qualified call-expression key with first argument", () => {
+    const source = parseTypescript('vi.mock("node:fs", () => ({}));\n');
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("vi.mock:node:fs");
+  });
+
+  it("returns callee key including identifier first argument", () => {
+    const source = parseTypescript("describe(suiteName, () => {});\n");
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("describe:suiteName");
+  });
 });
 
 describe(filterBySameKey, () => {

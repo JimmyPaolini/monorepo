@@ -8,8 +8,6 @@ import {
 
 import type { DataSource } from "typeorm";
 
-// cspell:ignore indisunique attname indkey attnum relnamespace indrelid indexrelid attrelid nspname relname indisprimary
-
 interface EntityIntegrationExpectation {
   readonly representativeIndexes: readonly (readonly string[])[];
   readonly representativeUniqueConstraints: readonly (readonly string[])[];
@@ -411,8 +409,6 @@ describe("entity integration schema", () => {
   it("creates the expected tables, indexes, and uniqueness constraints", async () => {
     await expect(verifyDatabaseSchema()).resolves.toBeUndefined();
   });
-
-  // cspell:ignore Metadatas Participlial
 
   it("should have all registered entities", () => {
     const entityMetadataList = integrationDataSource.entityMetadatas;

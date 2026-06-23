@@ -147,12 +147,12 @@ describe(PerfectiveService, () => {
             .tz("2025-06-15", "America/New_York")
             .endOf("day")
             .clone()
-            .add(60, "minutes"),
+            .add(30, "minutes"),
           start: moment
             .tz("2025-06-15", "America/New_York")
             .startOf("day")
             .clone()
-            .subtract(60, "minutes"),
+            .subtract(30, "minutes"),
           timezone: "America/New_York",
         }),
       );

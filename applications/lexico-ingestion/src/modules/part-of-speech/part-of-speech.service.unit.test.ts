@@ -1,5 +1,3 @@
-/* cspell:ignore fortior unknowncase */
-
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
 import { beforeAll, describe, expect, it } from "vitest";

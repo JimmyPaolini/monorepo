@@ -3,14 +3,24 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
 import { PhaseCalculationService } from "./phase-calculation.service";
 
+import type { DeepMocked } from "@golevelup/ts-vitest";
+
+const configureMathServiceMock = (
+  mathService: DeepMocked<MathService>,
+): void => {
+  vi.mocked(mathService.getAngle).mockReturnValue(0);
+  vi.mocked(mathService.isMaximum).mockReturnValue(false);
+};
+
 describe(PhaseCalculationService, () => {
   let service: PhaseCalculationService;
+  let mathService: DeepMocked<MathService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -23,29 +33,10 @@ describe(PhaseCalculationService, () => {
     }).compile();
 
     service = await module.resolve(PhaseCalculationService);
+    mathService = module.get(MathService);
+
+    configureMathServiceMock(mathService);
   });
-
-  const logger = {
-    setContext: vi.fn<LoggerService["setContext"]>(),
-  };
-  const ephemerisService = {
-    getCoordinateFromEphemeris:
-      vi.fn<EphemerisService["getCoordinateFromEphemeris"]>(),
-    getDistanceFromEphemeris:
-      vi.fn<EphemerisService["getDistanceFromEphemeris"]>(),
-    getIlluminationFromEphemeris:
-      vi.fn<EphemerisService["getIlluminationFromEphemeris"]>(),
-  };
-  const mathService = {
-    getAngle: vi.fn<MathService["getAngle"]>(),
-    isMaximum: vi.fn<MathService["isMaximum"]>(),
-  };
-
-  const mockService = new PhaseCalculationService(
-    logger as never,
-    ephemerisService as never,
-    mathService as never,
-  );
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -56,7 +47,7 @@ describe(PhaseCalculationService, () => {
   });
 
   it("derives brightness values from current and margin samples", () => {
-    const brightnesses = mockService.getBrightnesses({
+    const brightnesses = service.getBrightnesses({
       currentDistance: 2,
       currentIllumination: 8,
       nextDistances: [2, 4],
@@ -72,7 +63,7 @@ describe(PhaseCalculationService, () => {
 
   it("throws when brightness distance and illumination lengths differ", () => {
     expect(() =>
-      mockService.getBrightnesses({
+      service.getBrightnesses({
         currentDistance: 2,
         currentIllumination: 8,
         nextDistances: [2, 4],
@@ -87,7 +78,7 @@ describe(PhaseCalculationService, () => {
 
   it("throws when a brightness illumination sample is missing", () => {
     expect(() =>
-      mockService.getBrightnesses({
+      service.getBrightnesses({
         currentDistance: 2,
         currentIllumination: 8,
         nextDistances: [2, 4],
@@ -102,7 +93,7 @@ describe(PhaseCalculationService, () => {
     mathService.getAngle.mockReturnValueOnce(5).mockReturnValueOnce(7);
 
     expect(
-      mockService.isRise({
+      service.isRise({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         previousLongitudePlanet: 9,
@@ -113,7 +104,7 @@ describe(PhaseCalculationService, () => {
     mathService.getAngle.mockReturnValueOnce(7).mockReturnValueOnce(5);
 
     expect(
-      mockService.isSet({
+      service.isSet({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         previousLongitudePlanet: 9,
@@ -129,7 +120,7 @@ describe(PhaseCalculationService, () => {
       .mockReturnValueOnce(9);
     mathService.isMaximum.mockReturnValueOnce(true);
 
-    const isElongation = mockService.isElongation({
+    const isElongation = service.isElongation({
       currentLongitudePlanet: 10,
       currentLongitudeSun: 4,
       nextLongitudePlanet: 11,
@@ -147,15 +138,13 @@ describe(PhaseCalculationService, () => {
   });
 
   it("combines directional and brightness checks", () => {
-    const isEasternSpy = vi
-      .spyOn(mockService, "isEastern")
-      .mockReturnValue(true);
+    const isEasternSpy = vi.spyOn(service, "isEastern").mockReturnValue(true);
     const isBrightestSpy = vi
-      .spyOn(mockService, "isBrightest")
+      .spyOn(service, "isBrightest")
       .mockReturnValue(false);
 
     expect(
-      mockService.isEasternBrightest({
+      service.isEasternBrightest({
         currentDistance: 2,
         currentIllumination: 8,
         currentLongitudePlanet: 10,
@@ -177,17 +166,13 @@ describe(PhaseCalculationService, () => {
 
   it("returns true for eastern and western elongation helper combinations", () => {
     const isElongationSpy = vi
-      .spyOn(mockService, "isElongation")
+      .spyOn(service, "isElongation")
       .mockReturnValue(true);
-    const isEasternSpy = vi
-      .spyOn(mockService, "isEastern")
-      .mockReturnValue(true);
-    const isWesternSpy = vi
-      .spyOn(mockService, "isWestern")
-      .mockReturnValue(true);
+    const isEasternSpy = vi.spyOn(service, "isEastern").mockReturnValue(true);
+    const isWesternSpy = vi.spyOn(service, "isWestern").mockReturnValue(true);
 
     expect(
-      mockService.isEasternElongation({
+      service.isEasternElongation({
         currentLongitudePlanet: 10,
         currentLongitudeSun: 4,
         nextLongitudePlanet: 11,
@@ -197,7 +182,7 @@ describe(PhaseCalculationService, () => {
       }),
     ).toBe(true);
     expect(
-      mockService.isWesternElongation({
+      service.isWesternElongation({
         currentLongitudePlanet: 2,
         currentLongitudeSun: 4,
         nextLongitudePlanet: 3,
@@ -214,7 +199,7 @@ describe(PhaseCalculationService, () => {
 
   it("identifies brightest samples when current brightness exceeds surrounding values", () => {
     expect(
-      mockService.isBrightest({
+      service.isBrightest({
         currentDistance: 1,
         currentIllumination: 10,
         nextDistances: [1, 1],
@@ -226,7 +211,7 @@ describe(PhaseCalculationService, () => {
   });
 
   it("formats timezone-aware ISO timestamps", () => {
-    const value = mockService.formatTimeZoneIso(
+    const value = service.formatTimeZoneIso(
       moment.utc("2024-03-21T12:00:00.000Z"),
       "America/New_York",
     );
@@ -235,7 +220,7 @@ describe(PhaseCalculationService, () => {
   });
 
   it("filters events by category membership", () => {
-    const result = mockService.filterByCategory(
+    const result = service.filterByCategory(
       [
         {
           categories: ["Astronomy", "Target"],
