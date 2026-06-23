@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 
-describe("PronunciationPhonemesService", () => {
+describe(PronunciationPhonemesService, () => {
   let service: PronunciationPhonemesService;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe("PronunciationPhonemesService", () => {
     service = await module.resolve(PronunciationPhonemesService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
@@ -26,6 +26,21 @@ describe("PronunciationPhonemesService", () => {
 
   it("should return empty string when key points to nested value", () => {
     const value = service.getStringPhoneme({ a: [["a"]] }, "a");
+
+    expect(value).toBe("");
+  });
+
+  it("should return empty string when key is missing", () => {
+    const value = service.getStringPhoneme({ a: "a" }, "missing");
+
+    expect(value).toBe("");
+  });
+
+  it("should return empty string when value is null", () => {
+    const value = service.getStringPhoneme(
+      { a: null } as unknown as Record<string, string | string[][]>,
+      "a",
+    );
 
     expect(value).toBe("");
   });

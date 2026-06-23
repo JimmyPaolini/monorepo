@@ -1,7 +1,7 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
@@ -15,36 +15,36 @@ import { VenusianPhaseService } from "./venusian-phase.service";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const loggerService = new LoggerService();
-const progressiveUtilitiesService = new ProgressiveUtilities(loggerService);
+const logger = new LoggerService();
+const progressiveUtilitiesService = new ProgressiveUtilitiesService(logger);
 const phaseCalculationService = new PhaseCalculationService(
-  loggerService,
+  logger,
   ephemerisService,
   mathService,
 );
 const venusianPhaseService = new VenusianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const mercurianPhaseService = new MercurianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const martianPhaseService = new MartianPhaseService(
-  loggerService,
+  logger,
   phaseCalculationService,
   progressiveUtilitiesService,
 );
 const service = new PhasesService(
-  loggerService,
+  logger,
   venusianPhaseService,
   mercurianPhaseService,
   martianPhaseService,
@@ -109,9 +109,10 @@ describe("phases.events integration", () => {
     return ephemeris;
   }
 
-  describe("service.getVenusianPhaseEvents", () => {
-    it("should detect Venus Morning Set when angular gap closes through the threshold", () => {
-      // Venus west of Sun (morning sky), Venus moves faster than Sun so the gap
+  describe("getVenusianPhaseEvents", () => {
+    it("detects Venus Morning Set when angular gap closes through the threshold", () => {
+      expect.hasAssertions(); // Venus west of Sun (morning sky), Venus moves faster than Sun so the gap
+
       // decreases from 6.05° (i=-1) to 6.0° (i=0) — crosses the 6° threshold ↓
       const currentMinute = moment.utc("2024-01-15T06:00:00.000Z");
 
@@ -141,14 +142,16 @@ describe("phases.events integration", () => {
       const morningSetEvent = events.find((e) =>
         e.categories.includes("Morning Set"),
       );
+
       expect(morningSetEvent).toBeDefined();
       expect(morningSetEvent?.categories).toContain("Venusian");
       expect(morningSetEvent?.description).toBe("Venus Morning Set");
-      expect(morningSetEvent?.start).toEqual(currentMinute);
+      expect(morningSetEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should detect Venus Evening Rise when angular gap opens through the threshold", () => {
-      // Venus east of Sun (evening sky), Venus moves faster than Sun so the gap
+    it("detects Venus Evening Rise when angular gap opens through the threshold", () => {
+      expect.hasAssertions(); // Venus east of Sun (evening sky), Venus moves faster than Sun so the gap
+
       // grows from 5.95° (i=-1) to 6.0° (i=0) — crosses the 6° threshold ↑
       const currentMinute = moment.utc("2024-06-15T18:00:00.000Z");
 
@@ -178,14 +181,16 @@ describe("phases.events integration", () => {
       const eveningRiseEvent = events.find((e) =>
         e.categories.includes("Evening Rise"),
       );
+
       expect(eveningRiseEvent).toBeDefined();
       expect(eveningRiseEvent?.categories).toContain("Venusian");
       expect(eveningRiseEvent?.description).toBe("Venus Evening Rise");
-      expect(eveningRiseEvent?.start).toEqual(currentMinute);
+      expect(eveningRiseEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should return no events when the angular gap is constant and far from the threshold", () => {
-      // Same step rate for both bodies → constant angle, never crosses threshold
+    it("returns no events when the angular gap is constant and far from the threshold", () => {
+      expect.hasAssertions(); // Same step rate for both bodies → constant angle, never crosses threshold
+
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       const venusEphemeris = createMockEphemeris(currentMinute, {
@@ -214,9 +219,10 @@ describe("phases.events integration", () => {
     });
   });
 
-  describe("service.getMercurianPhaseEvents", () => {
-    it("should detect Mercury Morning Set when the gap closes through the threshold", () => {
-      // Same geometry as Venus Morning Set — Mercury west of Sun, gap 6.05→6.0
+  describe("getMercurianPhaseEvents", () => {
+    it("detects Mercury Morning Set when the gap closes through the threshold", () => {
+      expect.hasAssertions(); // Same geometry as Venus Morning Set — Mercury west of Sun, gap 6.05→6.0
+
       const currentMinute = moment.utc("2024-02-15T06:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
@@ -244,14 +250,16 @@ describe("phases.events integration", () => {
       const morningSetEvent = events.find((e) =>
         e.categories.includes("Morning Set"),
       );
+
       expect(morningSetEvent).toBeDefined();
       expect(morningSetEvent?.categories).toContain("Mercurian");
       expect(morningSetEvent?.description).toBe("Mercury Morning Set");
-      expect(morningSetEvent?.start).toEqual(currentMinute);
+      expect(morningSetEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should detect Mercury Evening Rise when the gap opens through the threshold", () => {
-      // Mercury east of Sun, gap 5.95→6.0
+    it("detects Mercury Evening Rise when the gap opens through the threshold", () => {
+      expect.hasAssertions(); // Mercury east of Sun, gap 5.95→6.0
+
       const currentMinute = moment.utc("2024-04-15T18:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
@@ -279,13 +287,14 @@ describe("phases.events integration", () => {
       const eveningRiseEvent = events.find((e) =>
         e.categories.includes("Evening Rise"),
       );
+
       expect(eveningRiseEvent).toBeDefined();
       expect(eveningRiseEvent?.categories).toContain("Mercurian");
       expect(eveningRiseEvent?.description).toBe("Mercury Evening Rise");
-      expect(eveningRiseEvent?.start).toEqual(currentMinute);
+      expect(eveningRiseEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should return no events when the angular gap is constant and far from the threshold", () => {
+    it("returns no events when the angular gap is constant and far from the threshold", () => {
       const currentMinute = moment.utc("2024-05-15T12:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
@@ -314,9 +323,10 @@ describe("phases.events integration", () => {
     });
   });
 
-  describe("service.getMartianPhaseEvents", () => {
-    it("should detect Mars Morning Set when the gap closes through the threshold", () => {
-      // Mars west of Sun, gap 6.05→6.0
+  describe("getMartianPhaseEvents", () => {
+    it("detects Mars Morning Set when the gap closes through the threshold", () => {
+      expect.hasAssertions(); // Mars west of Sun, gap 6.05→6.0
+
       const currentMinute = moment.utc("2024-06-01T06:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
@@ -344,14 +354,16 @@ describe("phases.events integration", () => {
       const morningSetEvent = events.find((e) =>
         e.categories.includes("Morning Set"),
       );
+
       expect(morningSetEvent).toBeDefined();
       expect(morningSetEvent?.categories).toContain("Martian");
       expect(morningSetEvent?.description).toBe("Mars Morning Set");
-      expect(morningSetEvent?.start).toEqual(currentMinute);
+      expect(morningSetEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should detect Mars Evening Rise when the gap opens through the threshold", () => {
-      // Mars east of Sun, gap 5.95→6.0
+    it("detects Mars Evening Rise when the gap opens through the threshold", () => {
+      expect.hasAssertions(); // Mars east of Sun, gap 5.95→6.0
+
       const currentMinute = moment.utc("2024-08-01T18:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
@@ -379,13 +391,14 @@ describe("phases.events integration", () => {
       const eveningRiseEvent = events.find((e) =>
         e.categories.includes("Evening Rise"),
       );
+
       expect(eveningRiseEvent).toBeDefined();
       expect(eveningRiseEvent?.categories).toContain("Martian");
       expect(eveningRiseEvent?.description).toBe("Mars Evening Rise");
-      expect(eveningRiseEvent?.start).toEqual(currentMinute);
+      expect(eveningRiseEvent?.start).toStrictEqual(currentMinute);
     });
 
-    it("should return no events when the angular gap is constant and far from the threshold", () => {
+    it("returns no events when the angular gap is constant and far from the threshold", () => {
       const currentMinute = moment.utc("2024-09-15T12:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {

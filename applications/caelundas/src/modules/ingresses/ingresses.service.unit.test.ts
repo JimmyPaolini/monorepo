@@ -7,6 +7,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment from "moment";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -18,7 +19,7 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -37,7 +38,8 @@ interface ServicePrivate {
     previousLongitude: number;
   }) => boolean;
 }
-describe("IngressesService", () => {
+
+describe(IngressesService, () => {
   let service: IngressesService;
   let helperService: IngressesComposerService;
   let s: ServicePrivate;
@@ -57,8 +59,12 @@ describe("IngressesService", () => {
     s = helperService;
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("getSignIngressEvent", () => {
-    it("should create a sign ingress event for Sun entering Aries", () => {
+    it("creates a sign ingress event for Sun entering Aries", () => {
       const event = service.buildSignIngressEvent({
         body: "sun",
         date: moment.utc("2024-03-20T03:06:00.000Z"),
@@ -80,7 +86,7 @@ describe("IngressesService", () => {
       expect(event.categories).toContain("Sun");
     });
 
-    it("should create a sign ingress event for Moon entering Taurus", () => {
+    it("creates a sign ingress event for Moon entering Taurus", () => {
       const event = service.buildSignIngressEvent({
         body: "moon",
         date: moment.utc("2024-03-15T12:30:00.000Z"),
@@ -95,7 +101,7 @@ describe("IngressesService", () => {
   });
 
   describe("getSignIngressEvents", () => {
-    it("should detect sign ingress when longitude crosses sign boundary", () => {
+    it("detects sign ingress when longitude crosses sign boundary", () => {
       const currentMinute = moment("2024-03-20T03:06:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -127,7 +133,7 @@ describe("IngressesService", () => {
       expect(events[0]?.categories).toContain("Sun");
     });
 
-    it("should not detect ingress when no boundary is crossed", () => {
+    it("does not detect ingress when no boundary is crossed", () => {
       const currentMinute = moment("2024-03-15T12:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -159,7 +165,7 @@ describe("IngressesService", () => {
   });
 
   describe("getDecanIngressEvent", () => {
-    it("should create a decan ingress event", () => {
+    it("creates a decan ingress event", () => {
       const event = service.buildDecanIngressEvent({
         body: "venus",
         date: moment.utc("2024-04-05T10:00:00.000Z"),
@@ -177,7 +183,7 @@ describe("IngressesService", () => {
   });
 
   describe("getDecanIngressEvents", () => {
-    it("should detect decan ingress but exclude sign ingress", () => {
+    it("detects decan ingress but exclude sign ingress", () => {
       const currentMinute = moment("2024-04-05T10:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -208,7 +214,7 @@ describe("IngressesService", () => {
       expect(events[0]?.categories).toContain("Decan");
     });
 
-    it("should not detect ingress when no decan boundary is crossed", () => {
+    it("does not detect ingress when no decan boundary is crossed", () => {
       const currentMinute = moment("2024-04-10T12:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -240,7 +246,7 @@ describe("IngressesService", () => {
   });
 
   describe("getPeakIngressEvent", () => {
-    it("should create a peak ingress event", () => {
+    it("creates a peak ingress event", () => {
       const event = service.buildPeakIngressEvent({
         body: "mars",
         date: moment.utc("2024-06-15T16:00:00.000Z"),
@@ -258,7 +264,7 @@ describe("IngressesService", () => {
   });
 
   describe("getPeakIngressEvents", () => {
-    it("should detect peak ingress when crossing 15° midpoint", () => {
+    it("detects peak ingress when crossing 15° midpoint", () => {
       const currentMinute = moment("2024-06-15T16:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -289,7 +295,7 @@ describe("IngressesService", () => {
       expect(events[0]?.categories).toContain("Peak");
     });
 
-    it("should not detect ingress when no peak boundary is crossed", () => {
+    it("does not detect ingress when no peak boundary is crossed", () => {
       const currentMinute = moment("2024-06-20T12:00:00.000Z");
       const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -321,7 +327,7 @@ describe("IngressesService", () => {
   });
 
   describe("getSignIngressProgressiveEvents", () => {
-    it("should create progressive events for consecutive sign ingresses", () => {
+    it("creates progressive events for consecutive sign ingresses", () => {
       const events = [
         service.buildSignIngressEvent({
           body: "sun",
@@ -338,20 +344,120 @@ describe("IngressesService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-03-20T03:06:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-04-19T15:00:00.000Z"),
       );
       expect(progressiveEvents[0]?.categories).toContain("Sun");
       expect(progressiveEvents[0]?.categories).toContain("Aries");
     });
 
-    it("should handle empty array", () => {
+    it("handles empty array", () => {
       const progressiveEvents = service.detectProgressive([]);
 
       expect(progressiveEvents).toHaveLength(0);
+    });
+
+    it("aggregates sign, decan, and peak ingress detection results", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const detectSignSpy = vi
+        .spyOn(service, "getSignIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sign"],
+            description: "sign ingress",
+            end: minute,
+            start: minute,
+            summary: "sign",
+          },
+        ]);
+      const detectDecanSpy = vi
+        .spyOn(service, "getDecanIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Decan"],
+            description: "decan ingress",
+            end: minute,
+            start: minute,
+            summary: "decan",
+          },
+        ]);
+      const detectPeakSpy = vi
+        .spyOn(service, "getPeakIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Peak"],
+            description: "peak ingress",
+            end: minute,
+            start: minute,
+            summary: "peak",
+          },
+        ]);
+
+      const events = service.detect({
+        coordinateEphemerisByBody: {} as Record<Body, CoordinateEphemeris>,
+        minute,
+      });
+
+      expect(events).toHaveLength(3);
+
+      detectSignSpy.mockRestore();
+      detectDecanSpy.mockRestore();
+      detectPeakSpy.mockRestore();
+    });
+
+    it("skips progressive processing for empty body group keys", () => {
+      const groupedByBodySpy = vi
+        .spyOn(helperService, "groupSignIngressEventsByBody")
+        .mockReturnValue({
+          "": [
+            {
+              categories: ["Astronomy", "Astrology", "Ingress", "Aries"],
+              description: "anonymous ingress",
+              end: moment.utc("2024-03-21T12:00:00.000Z"),
+              start: moment.utc("2024-03-21T12:00:00.000Z"),
+              summary: "anonymous ingress",
+            },
+          ],
+          Sun: [
+            {
+              categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+              description: "sun ingress aries",
+              end: moment.utc("2024-03-21T12:00:00.000Z"),
+              start: moment.utc("2024-03-21T12:00:00.000Z"),
+              summary: "sun ingress aries",
+            },
+          ],
+        });
+      const filterSignIngressEventsSpy = vi
+        .spyOn(helperService, "filterSignIngressEvents")
+        .mockReturnValue([]);
+      const buildProgressiveSpansForBodySpy = vi
+        .spyOn(helperService, "buildProgressiveSpansForBody")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sun"],
+            description: "sun span",
+            end: moment.utc("2024-03-22T12:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            summary: "sun span",
+          },
+        ]);
+
+      const progressiveEvents = service.detectProgressive([]);
+
+      expect(progressiveEvents).toHaveLength(1);
+      expect(buildProgressiveSpansForBodySpy).toHaveBeenCalledTimes(1);
+      expect(buildProgressiveSpansForBodySpy).toHaveBeenCalledWith(
+        "Sun",
+        expect.any(Array),
+      );
+
+      groupedByBodySpy.mockRestore();
+      filterSignIngressEventsSpy.mockRestore();
+      buildProgressiveSpansForBodySpy.mockRestore();
     });
   });
 
@@ -361,52 +467,52 @@ describe("IngressesService", () => {
     });
 
     describe("degreeRangeBySign", () => {
-      it("should have correct ranges for all signs", () => {
-        expect(IngressesService.degreeRangeBySign.aries).toEqual({
+      it("has correct ranges for all signs", () => {
+        expect(IngressesService.degreeRangeBySign.aries).toStrictEqual({
           maximum: 30,
           minimum: 0,
         });
-        expect(IngressesService.degreeRangeBySign.taurus).toEqual({
+        expect(IngressesService.degreeRangeBySign.taurus).toStrictEqual({
           maximum: 60,
           minimum: 30,
         });
-        expect(IngressesService.degreeRangeBySign.gemini).toEqual({
+        expect(IngressesService.degreeRangeBySign.gemini).toStrictEqual({
           maximum: 90,
           minimum: 60,
         });
-        expect(IngressesService.degreeRangeBySign.cancer).toEqual({
+        expect(IngressesService.degreeRangeBySign.cancer).toStrictEqual({
           maximum: 120,
           minimum: 90,
         });
-        expect(IngressesService.degreeRangeBySign.leo).toEqual({
+        expect(IngressesService.degreeRangeBySign.leo).toStrictEqual({
           maximum: 150,
           minimum: 120,
         });
-        expect(IngressesService.degreeRangeBySign.virgo).toEqual({
+        expect(IngressesService.degreeRangeBySign.virgo).toStrictEqual({
           maximum: 180,
           minimum: 150,
         });
-        expect(IngressesService.degreeRangeBySign.libra).toEqual({
+        expect(IngressesService.degreeRangeBySign.libra).toStrictEqual({
           maximum: 210,
           minimum: 180,
         });
-        expect(IngressesService.degreeRangeBySign.scorpio).toEqual({
+        expect(IngressesService.degreeRangeBySign.scorpio).toStrictEqual({
           maximum: 240,
           minimum: 210,
         });
-        expect(IngressesService.degreeRangeBySign.sagittarius).toEqual({
+        expect(IngressesService.degreeRangeBySign.sagittarius).toStrictEqual({
           maximum: 270,
           minimum: 240,
         });
-        expect(IngressesService.degreeRangeBySign.capricorn).toEqual({
+        expect(IngressesService.degreeRangeBySign.capricorn).toStrictEqual({
           maximum: 300,
           minimum: 270,
         });
-        expect(IngressesService.degreeRangeBySign.aquarius).toEqual({
+        expect(IngressesService.degreeRangeBySign.aquarius).toStrictEqual({
           maximum: 330,
           minimum: 300,
         });
-        expect(IngressesService.degreeRangeBySign.pisces).toEqual({
+        expect(IngressesService.degreeRangeBySign.pisces).toStrictEqual({
           maximum: 360,
           minimum: 330,
         });
@@ -414,7 +520,7 @@ describe("IngressesService", () => {
     });
 
     describe("getSign", () => {
-      it("should return correct sign for start of each sign", () => {
+      it("returns correct sign for start of each sign", () => {
         expect(IngressesService.getSign(0)).toBe("aries");
         expect(IngressesService.getSign(30)).toBe("taurus");
         expect(IngressesService.getSign(60)).toBe("gemini");
@@ -429,7 +535,7 @@ describe("IngressesService", () => {
         expect(IngressesService.getSign(330)).toBe("pisces");
       });
 
-      it("should return correct sign for middle of each sign", () => {
+      it("returns correct sign for middle of each sign", () => {
         expect(IngressesService.getSign(15)).toBe("aries");
         expect(IngressesService.getSign(45)).toBe("taurus");
         expect(IngressesService.getSign(75)).toBe("gemini");
@@ -444,7 +550,7 @@ describe("IngressesService", () => {
         expect(IngressesService.getSign(345)).toBe("pisces");
       });
 
-      it("should return correct sign for end of each sign (exclusive)", () => {
+      it("returns correct sign for end of each sign (exclusive)", () => {
         expect(IngressesService.getSign(29.99)).toBe("aries");
         expect(IngressesService.getSign(59.99)).toBe("taurus");
         expect(IngressesService.getSign(89.99)).toBe("gemini");
@@ -459,15 +565,90 @@ describe("IngressesService", () => {
         expect(IngressesService.getSign(359.99)).toBe("pisces");
       });
 
-      it("should throw for longitude outside 0-360 range", () => {
-        expect(() => IngressesService.getSign(360)).toThrow();
-        expect(() => IngressesService.getSign(-1)).toThrow();
-        expect(() => IngressesService.getSign(400)).toThrow();
+      it("throws for longitude outside 0-360 range", () => {
+        expect(() => IngressesService.getSign(360)).toThrow(/longitude/i);
+        expect(() => IngressesService.getSign(-1)).toThrow(/longitude/i);
+        expect(() => IngressesService.getSign(400)).toThrow(/longitude/i);
+      });
+    });
+
+    describe("composer edge cases", () => {
+      it("throws when building sign ingress for an out-of-range longitude", () => {
+        expect(() =>
+          helperService.buildSignIngressEvent({
+            body: "sun",
+            date: moment.utc("2024-03-20T03:06:00.000Z"),
+            longitude: 360,
+          }),
+        ).toThrow(/longitude/i);
+      });
+
+      it("skips progressive span creation when entering or exiting event is missing", () => {
+        const sortBySpy = vi.spyOn(_, "sortBy").mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+            description: "Sun ingress Aries",
+            end: moment.utc("2024-03-20T03:06:00.000Z"),
+            start: moment.utc("2024-03-20T03:06:00.000Z"),
+            summary: "Sun ingress Aries",
+          },
+          undefined,
+        ] as unknown);
+
+        expect(
+          helperService.buildProgressiveSpansForBody("Sun", []),
+        ).toStrictEqual([]);
+
+        sortBySpy.mockRestore();
+      });
+
+      it("groups ingress events without a known body under an empty key", () => {
+        const groupedEvents = helperService.groupSignIngressEventsByBody([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Aries"],
+            description: "Anonymous ingress",
+            end: moment.utc("2024-03-20T03:06:00.000Z"),
+            start: moment.utc("2024-03-20T03:06:00.000Z"),
+            summary: "Anonymous ingress",
+          },
+        ]);
+
+        expect(groupedEvents[""]).toHaveLength(1);
+      });
+
+      it("throws when sign cannot be extracted from categories", () => {
+        expect(() =>
+          helperService.extractSignAndBodyFromCategories(
+            ["Astronomy", "Astrology", "Ingress", "Sun"],
+            "Sun",
+          ),
+        ).toThrow("Could not extract sign from categories");
+      });
+
+      it("throws when extracted categories cannot be cast to typed values", () => {
+        expect(() =>
+          helperService.extractSignAndBodyFromCategories(
+            ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+            "NotABody",
+          ),
+        ).toThrow("Could not extract typed values from categories");
+      });
+
+      it("throws when decan value is invalid", () => {
+        const getDecanSpy = vi
+          .spyOn(helperService, "getDecan")
+          .mockReturnValue(4);
+
+        expect(() => helperService.resolveDecan(10)).toThrow(
+          "Invalid decan value: 4",
+        );
+
+        getDecanSpy.mockRestore();
       });
     });
 
     describe("isSignIngress", () => {
-      it("should return true when crossing sign boundary", () => {
+      it("returns true when crossing sign boundary", () => {
         expect(
           s.isSignIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(true);
@@ -477,7 +658,7 @@ describe("IngressesService", () => {
         ).toBe(true);
       });
 
-      it("should return false when staying in same sign", () => {
+      it("returns false when staying in same sign", () => {
         expect(
           s.isSignIngress({ currentLongitude: 16, previousLongitude: 15 }),
         ).toBe(false);
@@ -489,21 +670,21 @@ describe("IngressesService", () => {
     });
 
     describe("getDecan", () => {
-      it("should return decan 1 for degrees 0-9 within a sign", () => {
+      it("returns decan 1 for degrees 0-9 within a sign", () => {
         expect(s.getDecan(0)).toBe(1);
         expect(s.getDecan(9)).toBe(1);
         expect(s.getDecan(30)).toBe(1);
         expect(s.getDecan(39)).toBe(1);
       });
 
-      it("should return decan 2 for degrees 10-19 within a sign", () => {
+      it("returns decan 2 for degrees 10-19 within a sign", () => {
         expect(s.getDecan(10)).toBe(2);
         expect(s.getDecan(19)).toBe(2);
         expect(s.getDecan(40)).toBe(2);
         expect(s.getDecan(49)).toBe(2);
       });
 
-      it("should return decan 3 for degrees 20-29 within a sign", () => {
+      it("returns decan 3 for degrees 20-29 within a sign", () => {
         expect(s.getDecan(20)).toBe(3);
         expect(s.getDecan(29)).toBe(3);
         expect(s.getDecan(50)).toBe(3);
@@ -512,7 +693,7 @@ describe("IngressesService", () => {
     });
 
     describe("isDecanIngress", () => {
-      it("should return true when crossing decan boundary within same sign", () => {
+      it("returns true when crossing decan boundary within same sign", () => {
         expect(
           s.isDecanIngress({ currentLongitude: 10.1, previousLongitude: 9.9 }),
         ).toBe(true);
@@ -522,13 +703,13 @@ describe("IngressesService", () => {
         ).toBe(true);
       });
 
-      it("should return true when crossing sign boundary (also decan boundary)", () => {
+      it("returns true when crossing sign boundary (also decan boundary)", () => {
         expect(
           s.isDecanIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(true);
       });
 
-      it("should return false when staying in same decan", () => {
+      it("returns false when staying in same decan", () => {
         expect(
           s.isDecanIngress({ currentLongitude: 6, previousLongitude: 5 }),
         ).toBe(false);
@@ -540,7 +721,7 @@ describe("IngressesService", () => {
     });
 
     describe("isPeakIngress", () => {
-      it("should return true when crossing 15 degrees within a sign", () => {
+      it("returns true when crossing 15 degrees within a sign", () => {
         expect(
           s.isPeakIngress({ currentLongitude: 15.1, previousLongitude: 14.9 }),
         ).toBe(true);
@@ -550,7 +731,7 @@ describe("IngressesService", () => {
         ).toBe(true);
       });
 
-      it("should return false when not crossing 15 degrees", () => {
+      it("returns false when not crossing 15 degrees", () => {
         expect(
           s.isPeakIngress({ currentLongitude: 11, previousLongitude: 10 }),
         ).toBe(false);
@@ -560,15 +741,11 @@ describe("IngressesService", () => {
         ).toBe(false);
       });
 
-      it("should return false when crossing sign boundary (not peak)", () => {
+      it("returns false when crossing sign boundary (not peak)", () => {
         expect(
           s.isPeakIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(false);
       });
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

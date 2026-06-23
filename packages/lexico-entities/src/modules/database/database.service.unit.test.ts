@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { DatabaseService } from "./database.service";
 
-describe("DatabaseService", () => {
+describe(DatabaseService, () => {
   let service: DatabaseService;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe("DatabaseService", () => {
     service = module.get(DatabaseService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 });

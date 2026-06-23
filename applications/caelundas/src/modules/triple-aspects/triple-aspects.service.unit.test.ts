@@ -10,7 +10,7 @@ import { TripleAspectsService } from "./triple-aspects.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("TripleAspectsService", () => {
+describe(TripleAspectsService, () => {
   let service: TripleAspectsService;
 
   beforeAll(async () => {
@@ -25,7 +25,11 @@ describe("TripleAspectsService", () => {
     service = await module.resolve(TripleAspectsService);
   });
 
-  describe("service.detect", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
     it("returns no events when both snapshots are empty", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const events = service.detect({
@@ -56,7 +60,7 @@ describe("TripleAspectsService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
+  describe("detectProgressive", () => {
     it("creates progressive event from matching forming and dissolving pair", () => {
       const formingEvent: Event = {
         categories: [
@@ -105,6 +109,20 @@ describe("TripleAspectsService", () => {
       expect(progressiveEvents[0]?.description).toContain("t-square");
       expect(progressiveEvents[0]?.categories).toContain("Triple Aspect");
     });
+
+    it("skips events without a progressive group key", () => {
+      const events = service.detectProgressive([
+        {
+          categories: ["Astronomy", "Astrology", "Triple Aspect", "Forming"],
+          description: "Invalid triple aspect",
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          summary: "Invalid triple aspect",
+        },
+      ]);
+
+      expect(events).toStrictEqual([]);
+    });
   });
 
   describe("compatibility static wrappers", () => {
@@ -116,6 +134,7 @@ describe("TripleAspectsService", () => {
       ];
 
       const grouped = TripleAspectsService.groupAspectsByType(edges);
+
       expect(grouped.get("conjunct")?.length).toBe(2);
       expect(grouped.get("trine")?.length).toBe(1);
     });
@@ -158,9 +177,5 @@ describe("TripleAspectsService", () => {
         }),
       ).toBe(true);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

@@ -24,8 +24,8 @@ const service = new QuintupleAspectsService(
 );
 
 describe("quintuple-aspects.events integration", () => {
-  describe("Pentagram pattern detection with realistic timing", () => {
-    it("should detect forming Pentagram when pattern first appears", () => {
+  describe("pentagram pattern detection", () => {
+    it("detects forming Pentagram when pattern first appears", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
       // Previous minute (14:22): Pattern does NOT exist yet - Sun-Mars quintile hasn't started
@@ -67,7 +67,7 @@ describe("quintuple-aspects.events integration", () => {
       expect(events[0]?.summary).toContain("⭐"); // Pentagram symbol
     });
 
-    it("should detect dissolving Pentagram when pattern breaks apart", () => {
+    it("detects dissolving Pentagram when pattern breaks apart", () => {
       const currentMinute = moment.utc("2024-06-15T14:30:00.000Z");
 
       // Previous minute (14:29): Pattern EXISTS - all quintiles still active
@@ -102,7 +102,7 @@ describe("quintuple-aspects.events integration", () => {
       expect(events[0]?.summary).toContain("⬅️"); // Dissolving emoji
     });
 
-    it("should create progressive event from forming/dissolving Pentagram pair", () => {
+    it("creates progressive event from forming/dissolving Pentagram pair", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -151,10 +151,10 @@ describe("quintuple-aspects.events integration", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-06-15T14:23:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-06-15T14:30:00.000Z"),
       );
       expect(progressiveEvents[0]?.categories).toContain("Quintuple Aspect");
@@ -168,8 +168,8 @@ describe("quintuple-aspects.events integration", () => {
     });
   });
 
-  describe("Pentagram with different body combinations", () => {
-    it("should detect Pentagram with outer planets", () => {
+  describe("pentagram body combination scenarios", () => {
+    it("detects Pentagram with outer planets", () => {
       const currentMinute = moment.utc("2024-08-10T09:15:00.000Z");
 
       // Saturn-Neptune forming; others stable
@@ -204,8 +204,8 @@ describe("quintuple-aspects.events integration", () => {
     });
   });
 
-  describe("Edge cases with realistic timing", () => {
-    it("should not detect Pentagram with only 4 quintiles (incomplete pattern)", () => {
+  describe("edge case scenarios", () => {
+    it("does not detect Pentagram with only 4 quintiles (incomplete pattern)", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
       // Missing the 5th quintile needed to complete the pentagram
@@ -232,7 +232,7 @@ describe("quintuple-aspects.events integration", () => {
       expect(events).toHaveLength(0);
     });
 
-    it("should not detect Pentagram when pattern has wrong aspect types", () => {
+    it("does not detect Pentagram when pattern has wrong aspect types", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
       // Has 5 edges but one is a sextile instead of quintile

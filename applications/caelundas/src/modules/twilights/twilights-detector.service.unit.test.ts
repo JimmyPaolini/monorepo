@@ -10,7 +10,7 @@ import { TwilightsDetectorService } from "./twilights-detector.service";
 
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
-describe("TwilightsDetectorService", () => {
+describe(TwilightsDetectorService, () => {
   let service: TwilightsDetectorService;
   let ephemerisService: EphemerisService;
 
@@ -38,12 +38,12 @@ describe("TwilightsDetectorService", () => {
     );
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("threshold predicates", () => {
@@ -152,6 +152,42 @@ describe("TwilightsDetectorService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe("Civil Dawn");
+    });
+
+    it("builds multiple dawn transitions when elevation crosses all thresholds upward", () => {
+      const minute = moment.utc("2024-03-21T06:00:00.000Z");
+      const events = service.buildTwilightTransitionEvents(
+        {
+          currentElevation: -5,
+          previousElevation: -19,
+        },
+        minute,
+      );
+
+      expect(events).toHaveLength(3);
+      expect(events.map((event) => event.description)).toStrictEqual([
+        "Astronomical Dawn",
+        "Nautical Dawn",
+        "Civil Dawn",
+      ]);
+    });
+
+    it("builds multiple dusk transitions when elevation crosses all thresholds downward", () => {
+      const minute = moment.utc("2024-03-21T18:00:00.000Z");
+      const events = service.buildTwilightTransitionEvents(
+        {
+          currentElevation: -19,
+          previousElevation: -5,
+        },
+        minute,
+      );
+
+      expect(events).toHaveLength(3);
+      expect(events.map((event) => event.description)).toStrictEqual([
+        "Civil Dusk",
+        "Nautical Dusk",
+        "Astronomical Dusk",
+      ]);
     });
 
     it("returns no events when no threshold is crossed", () => {

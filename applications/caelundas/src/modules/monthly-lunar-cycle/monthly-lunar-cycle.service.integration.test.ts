@@ -28,23 +28,11 @@ import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/eph
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
 let service: MonthlyLunarCycleService;
-
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      MonthlyLunarCycleService,
-      EphemerisService,
-      LoggerService,
-      MathService,
-    ],
-  }).compile();
-  service = await module.resolve(MonthlyLunarCycleService);
-});
 
 /**
  * Builds an IlluminationEphemeris covering `minute ± MARGIN_MINUTES` (61 timestamps).
@@ -73,10 +61,23 @@ function createIlluminationEphemeris(
 }
 
 describe("monthly-lunar-cycle.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        MonthlyLunarCycleService,
+        EphemerisService,
+        LoggerService,
+        MathService,
+      ],
+    }).compile();
+    service = await module.resolve(MonthlyLunarCycleService);
+  });
+
   const minute = moment.utc("2024-01-11T00:00:00.000Z");
 
-  it("should detect a new moon at the illumination minimum below 50", () => {
-    // isNewMoon: current < min(prev30) AND current <= min(next30) AND current < 50
+  it("detects a new moon at the illumination minimum below 50", () => {
+    expect.hasAssertions(); // isNewMoon: current < min(prev30) AND current <= min(next30) AND current < 50
+
     // Illumination reaches a local minimum of 0.5, well below the 50 threshold
     const ephemeris = createIlluminationEphemeris(minute, {
       current: 0.5,
@@ -93,11 +94,12 @@ describe("monthly-lunar-cycle.events integration", () => {
     expect(events[0]?.categories).toContain("Lunar");
     expect(events[0]?.categories).toContain("New");
     expect(events[0]?.summary).toContain("New Moon");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should detect a full moon at the illumination maximum above 50", () => {
-    // isFullMoon: current > max(prev30) AND current >= max(next30) AND current > 50
+  it("detects a full moon at the illumination maximum above 50", () => {
+    expect.hasAssertions(); // isFullMoon: current > max(prev30) AND current >= max(next30) AND current > 50
+
     // Illumination reaches a local maximum of 100, well above the 50 threshold
     const ephemeris = createIlluminationEphemeris(minute, {
       current: 100,
@@ -114,11 +116,12 @@ describe("monthly-lunar-cycle.events integration", () => {
     expect(events[0]?.categories).toContain("Lunar");
     expect(events[0]?.categories).toContain("Full");
     expect(events[0]?.summary).toContain("Full Moon");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should detect a first quarter moon when illumination crosses 50 while waxing", () => {
-    // isFirstQuarter: isWaxing (current > prev[0]) AND isCrossingUp (current > 50 AND prev[0] <= 50)
+  it("detects a first quarter moon when illumination crosses 50 while waxing", () => {
+    expect.hasAssertions(); // isFirstQuarter: isWaxing (current > prev[0]) AND isCrossingUp (current > 50 AND prev[0] <= 50)
+
     // prev[0] is the immediately preceding minute (offset=1), checked by the service
     // next > current ensures the moon is still waxing and not at a local max (no full moon)
     const ephemeris = createIlluminationEphemeris(minute, {
@@ -136,11 +139,12 @@ describe("monthly-lunar-cycle.events integration", () => {
     expect(events[0]?.categories).toContain("Lunar");
     expect(events[0]?.categories).toContain("First Quarter");
     expect(events[0]?.summary).toContain("First Quarter Moon");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should detect a last quarter moon when illumination crosses 50 while waning", () => {
-    // isLastQuarter: isWaning (current < prev[0]) AND isCrossingDown (current < 50 AND prev[0] >= 50)
+  it("detects a last quarter moon when illumination crosses 50 while waning", () => {
+    expect.hasAssertions(); // isLastQuarter: isWaning (current < prev[0]) AND isCrossingDown (current < 50 AND prev[0] >= 50)
+
     // next < current ensures the moon is still waning and not at a local min (no new moon)
     const ephemeris = createIlluminationEphemeris(minute, {
       current: 49.5,
@@ -157,11 +161,12 @@ describe("monthly-lunar-cycle.events integration", () => {
     expect(events[0]?.categories).toContain("Lunar");
     expect(events[0]?.categories).toContain("Last Quarter");
     expect(events[0]?.summary).toContain("Last Quarter Moon");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should return no events when illumination is flat across the full window", () => {
-    // Constant illumination at 50 — not a local min/max, no threshold crossing
+  it("returns no events when illumination is flat across the full window", () => {
+    expect.hasAssertions(); // Constant illumination at 50 — not a local min/max, no threshold crossing
+
     const ephemeris = createIlluminationEphemeris(minute, {
       current: 50,
       next: 50,

@@ -1,3 +1,4 @@
+import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -12,95 +13,33 @@ import { EphemerisService } from "./ephemeris.service";
 
 import type * as EphemerisConstantsModule from "./ephemeris.constants";
 import type {
+  EphemerisEntries,
+  EphemerisFeatureSets,
+  JulianDays,
+} from "./ephemeris.internal.types";
+import type {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
   DiameterEphemeris,
   DistanceEphemeris,
   IlluminationEphemeris,
 } from "./ephemeris.types";
+import type { Moment } from "moment-timezone";
 
 vi.mock("./ephemeris.constants", async (importOriginal) => {
   const original = await importOriginal<typeof EphemerisConstantsModule>();
   return {
     ...original,
-    initializeSwissEphemeris: vi.fn(),
+    initializeSwissEphemeris: vi.fn<() => void>(),
   };
 });
 
-describe("EphemerisService", () => {
+describe(EphemerisService, () => {
   let service: EphemerisService;
-  const aggregationService = {
-    accumulateBodyEphemeris: vi.fn(),
-    buildEphemerisEntries: vi.fn().mockReturnValue({
-      azimuthEntries: [],
-      coordinateEntries: [],
-      diameterEntries: [],
-      distanceEntries: [],
-      illuminationEntries: [],
-    }),
-    buildEphemerisFeatureSets: vi.fn().mockReturnValue({
-      azimuthElevationSet: new Set(["sun"]),
-      diameterSet: new Set(["sun"]),
-      distanceSet: new Set(["sun"]),
-      illuminationSet: new Set(["sun"]),
-    }),
-    entriesToEphemerides: vi.fn().mockReturnValue({
-      azimuthElevationEphemerisByBody: {},
-      coordinateEphemerisByBody: {},
-      diameterEphemerisByBody: {},
-      distanceEphemerisByBody: {},
-      illuminationEphemerisByBody: {},
-    }),
-  };
-
-  const coordinateService = {
-    computeBodyCoordinate: vi
-      .fn()
-      .mockReturnValue({ latitude: -1.2, longitude: 120.5 }),
-    computeDistanceForBody: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { distance: 1.01 },
-    }),
-    computeNodeBodyMinutes: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { latitude: 0, longitude: 45 },
-    }),
-  };
-
-  const constantsService = {
-    isNode: vi.fn(
-      (body: string) => body.includes("node") || body === "lunar perigee",
-    ),
-  };
-
-  const horizonService = {
-    computeAzimuthElevationForBody: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { azimuth: 180, elevation: 44.8 },
-    }),
-  };
-
-  const phenomenaService = {
-    computeDiameterForBody: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
-    }),
-    computeIlluminationForBody: vi.fn().mockReturnValue({
-      "2024-03-21T00:00:00.000Z": { illumination: 75 },
-    }),
-  };
-
-  const timeService = {
-    dateToJulianDays: vi.fn().mockReturnValue({
-      julianDayEphemerisTime: 2_460_395.5,
-      julianDayUniversalTime: 2_460_395.499_306,
-    }),
-    generateMinutes: vi.fn((start: moment.Moment, end: moment.Moment) => {
-      const values: moment.Moment[] = [];
-      let current = start.clone();
-      while (current.valueOf() <= end.valueOf()) {
-        values.push(current.clone());
-        current = current.clone().add(1, "minute");
-      }
-      return values;
-    }),
-  };
+  let ephemerisAggregationService: DeepMocked<EphemerisAggregationService>;
+  let ephemerisCoordinateService: DeepMocked<EphemerisCoordinateService>;
+  let ephemerisHorizonService: DeepMocked<EphemerisHorizonService>;
+  let ephemerisPhenomenaService: DeepMocked<EphemerisPhenomenaService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -108,36 +47,193 @@ describe("EphemerisService", () => {
         EphemerisService,
         {
           provide: EphemerisAggregationService,
-          useValue: aggregationService,
+          useValue: createMock<EphemerisAggregationService>({
+            accumulateBodyEphemeris:
+              vi.fn<
+                (args: {
+                  allEntries: EphemerisEntries;
+                  body: string;
+                  end: Moment;
+                  featureSets: EphemerisFeatureSets;
+                  observerLatitude: number;
+                  observerLongitude: number;
+                  start: Moment;
+                }) => void
+              >(),
+            buildEphemerisEntries: vi
+              .fn<() => EphemerisEntries>()
+              .mockReturnValue({
+                azimuthEntries: [],
+                coordinateEntries: [],
+                diameterEntries: [],
+                distanceEntries: [],
+                illuminationEntries: [],
+              }),
+            buildEphemerisFeatureSets: vi
+              .fn<
+                (args: {
+                  azimuthElevationBodies: string[];
+                  diameterBodies: string[];
+                  distanceBodies: string[];
+                  illuminationBodies: string[];
+                }) => EphemerisFeatureSets
+              >()
+              .mockReturnValue({
+                azimuthElevationSet: new Set(["sun"]),
+                diameterSet: new Set(["sun"]),
+                distanceSet: new Set(["sun"]),
+                illuminationSet: new Set(["sun"]),
+              }),
+            entriesToEphemerides: vi
+              .fn<
+                (allEntries: EphemerisEntries) => {
+                  azimuthElevationEphemerisByBody: Record<
+                    string,
+                    AzimuthElevationEphemeris
+                  >;
+                  coordinateEphemerisByBody: Record<
+                    string,
+                    CoordinateEphemeris
+                  >;
+                  diameterEphemerisByBody: Record<string, DiameterEphemeris>;
+                  distanceEphemerisByBody: Record<string, DistanceEphemeris>;
+                  illuminationEphemerisByBody: Record<
+                    string,
+                    IlluminationEphemeris
+                  >;
+                }
+              >()
+              .mockReturnValue({
+                azimuthElevationEphemerisByBody: {},
+                coordinateEphemerisByBody: {},
+                diameterEphemerisByBody: {},
+                distanceEphemerisByBody: {},
+                illuminationEphemerisByBody: {},
+              }),
+          }),
         },
         {
           provide: EphemerisCoordinateService,
-          useValue: coordinateService,
+          useValue: createMock<EphemerisCoordinateService>({
+            computeBodyCoordinate: vi
+              .fn<
+                (
+                  body: string,
+                  julianDayEphemerisTime: number,
+                ) => { latitude: number; longitude: number }
+              >()
+              .mockReturnValue({ latitude: -1.2, longitude: 120.5 }),
+            computeDistanceForBody: vi
+              .fn<
+                (args: {
+                  body: string;
+                  end: Moment;
+                  start: Moment;
+                }) => DistanceEphemeris
+              >()
+              .mockReturnValue({
+                "2024-03-21T00:00:00.000Z": { distance: 1.01 },
+              }),
+            computeNodeBodyMinutes: vi
+              .fn<
+                (args: {
+                  body: string;
+                  end: Moment;
+                  start: Moment;
+                }) => CoordinateEphemeris
+              >()
+              .mockReturnValue({
+                "2024-03-21T00:00:00.000Z": { latitude: 0, longitude: 45 },
+              }),
+          }),
         },
         {
           provide: EphemerisConstantsService,
-          useValue: constantsService,
+          useValue: createMock<EphemerisConstantsService>({
+            isNode: vi.fn<(body: string) => boolean>(
+              (body: string) =>
+                body.includes("node") || body === "lunar perigee",
+            ),
+          }),
         },
         {
           provide: EphemerisHorizonService,
-          useValue: horizonService,
+          useValue: createMock<EphemerisHorizonService>({
+            computeAzimuthElevationForBody: vi
+              .fn<
+                (args: {
+                  body: string;
+                  end: Moment;
+                  observerLatitude: number;
+                  observerLongitude: number;
+                  start: Moment;
+                }) => AzimuthElevationEphemeris
+              >()
+              .mockReturnValue({
+                "2024-03-21T00:00:00.000Z": { azimuth: 180, elevation: 44.8 },
+              }),
+          }),
         },
         {
           provide: EphemerisPhenomenaService,
-          useValue: phenomenaService,
+          useValue: createMock<EphemerisPhenomenaService>({
+            computeDiameterForBody: vi
+              .fn<
+                (args: {
+                  body: string;
+                  end: Moment;
+                  start: Moment;
+                }) => DiameterEphemeris
+              >()
+              .mockReturnValue({
+                "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
+              }),
+            computeIlluminationForBody: vi
+              .fn<
+                (args: {
+                  body: string;
+                  end: Moment;
+                  start: Moment;
+                }) => IlluminationEphemeris
+              >()
+              .mockReturnValue({
+                "2024-03-21T00:00:00.000Z": { illumination: 75 },
+              }),
+          }),
         },
         {
           provide: EphemerisTimeService,
-          useValue: timeService,
+          useValue: createMock<EphemerisTimeService>({
+            dateToJulianDays: vi
+              .fn<(date: Moment) => JulianDays>()
+              .mockReturnValue({
+                julianDayEphemerisTime: 2_460_395.5,
+                julianDayUniversalTime: 2_460_395.499_306,
+              }),
+            generateMinutes: vi.fn<
+              (
+                start: moment.Moment,
+                end: moment.Moment,
+              ) => Iterable<moment.Moment>
+            >((start: moment.Moment, end: moment.Moment) => {
+              const values: moment.Moment[] = [];
+              let current = start.clone();
+              while (current.valueOf() <= end.valueOf()) {
+                values.push(current.clone());
+                current = current.clone().add(1, "minute");
+              }
+              return values;
+            }),
+          }),
         },
       ],
     }).compile();
 
     service = await module.resolve(EphemerisService);
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
+    ephemerisAggregationService = module.get(EphemerisAggregationService);
+    ephemerisPhenomenaService = module.get(EphemerisPhenomenaService);
+    ephemerisHorizonService = module.get(EphemerisHorizonService);
+    ephemerisCoordinateService = module.get(EphemerisCoordinateService);
   });
 
   describe("accessors", () => {
@@ -216,6 +312,34 @@ describe("EphemerisService", () => {
         service.getCoordinateFromEphemeris({}, "missing", "longitude"),
       ).toThrow("Missing longitude at missing");
     });
+
+    it("throws when azimuth/elevation accessor timestamp is missing", () => {
+      expect(() =>
+        service.getAzimuthElevationFromEphemeris({}, "missing", "elevation"),
+      ).toThrow("Missing elevation at missing");
+    });
+
+    it("throws when diameter accessor timestamp is missing", () => {
+      expect(() =>
+        service.getDiameterFromEphemeris({}, "missing", "diameter"),
+      ).toThrow("Missing diameter at missing");
+    });
+
+    it("throws when distance accessor timestamp is missing", () => {
+      expect(() =>
+        service.getDistanceFromEphemeris({}, "missing", "distance"),
+      ).toThrow("Missing distance at missing");
+    });
+
+    it("throws when illumination accessor timestamp is missing", () => {
+      expect(() =>
+        service.getIlluminationFromEphemeris({}, "missing", "illumination"),
+      ).toThrow("Missing illumination at missing");
+    });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("facade delegation", () => {
@@ -232,10 +356,39 @@ describe("EphemerisService", () => {
       });
 
       expect(
-        aggregationService.buildEphemerisFeatureSets,
-      ).toHaveBeenCalledOnce();
-      expect(aggregationService.accumulateBodyEphemeris).toHaveBeenCalled();
-      expect(aggregationService.entriesToEphemerides).toHaveBeenCalledOnce();
+        ephemerisAggregationService.buildEphemerisFeatureSets,
+      ).toHaveBeenCalledWith({
+        azimuthElevationBodies: ["sun"],
+        diameterBodies: ["sun"],
+        distanceBodies: ["sun"],
+        illuminationBodies: ["sun"],
+      });
+      expect(
+        ephemerisAggregationService.accumulateBodyEphemeris,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          body: "sun",
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          featureSets: {
+            azimuthElevationSet: new Set(["sun"]),
+            diameterSet: new Set(["sun"]),
+            distanceSet: new Set(["sun"]),
+            illuminationSet: new Set(["sun"]),
+          },
+          observerLatitude: 40.7128,
+          observerLongitude: -74.006,
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      );
+      expect(
+        ephemerisAggregationService.entriesToEphemerides,
+      ).toHaveBeenCalledWith({
+        azimuthEntries: [],
+        coordinateEntries: [],
+        diameterEntries: [],
+        distanceEntries: [],
+        illuminationEntries: [],
+      });
     });
 
     it("delegates azimuth/elevation by body to horizon service", () => {
@@ -248,8 +401,14 @@ describe("EphemerisService", () => {
       });
 
       expect(
-        horizonService.computeAzimuthElevationForBody,
-      ).toHaveBeenCalledOnce();
+        ephemerisHorizonService.computeAzimuthElevationForBody,
+      ).toHaveBeenCalledWith({
+        body: "sun",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        observerLatitude: 40.7128,
+        observerLongitude: -74.006,
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -263,8 +422,12 @@ describe("EphemerisService", () => {
       });
 
       expect(
-        phenomenaService.computeIlluminationForBody,
-      ).toHaveBeenCalledOnce();
+        ephemerisPhenomenaService.computeIlluminationForBody,
+      ).toHaveBeenCalledWith({
+        body: "moon",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
       expect(result.moon).toBeDefined();
     });
 
@@ -276,7 +439,13 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(phenomenaService.computeDiameterForBody).toHaveBeenCalledOnce();
+      expect(
+        ephemerisPhenomenaService.computeDiameterForBody,
+      ).toHaveBeenCalledWith({
+        body: "sun",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -288,7 +457,13 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(coordinateService.computeDistanceForBody).toHaveBeenCalledOnce();
+      expect(
+        ephemerisCoordinateService.computeDistanceForBody,
+      ).toHaveBeenCalledWith({
+        body: "sun",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
       expect(result.sun).toBeDefined();
     });
 
@@ -300,8 +475,16 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledOnce();
-      expect(coordinateService.computeBodyCoordinate).toHaveBeenCalled();
+      expect(
+        ephemerisCoordinateService.computeNodeBodyMinutes,
+      ).toHaveBeenCalledWith({
+        body: "north lunar node",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
+      expect(
+        ephemerisCoordinateService.computeBodyCoordinate,
+      ).toHaveBeenCalledWith("sun", 2_460_395.5);
       expect(result["north lunar node"]).toBeDefined();
       expect(result.sun).toBeDefined();
     });
@@ -315,7 +498,129 @@ describe("EphemerisService", () => {
         timezone: "UTC",
       });
 
-      expect(spy).toHaveBeenCalledOnce();
+      expect(spy).toHaveBeenCalledWith({
+        azimuthElevationBodies: ["sun", "moon"],
+        coordinateBodies: [
+          "jupiter",
+          "mars",
+          "mercury",
+          "moon",
+          "neptune",
+          "pluto",
+          "saturn",
+          "sun",
+          "uranus",
+          "venus",
+          "ceres",
+          "chiron",
+          "juno",
+          "lilith",
+          "pallas",
+          "vesta",
+          "lunar apogee",
+          "lunar perigee",
+          "north lunar node",
+          "south lunar node",
+        ],
+        coordinates: [-74.006, 40.7128],
+        diameterBodies: ["sun", "moon"],
+        distanceBodies: ["sun", "mercury", "venus", "mars"],
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        illuminationBodies: ["moon", "mercury", "venus", "mars"],
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
+    });
+  });
+
+  describe("missing dependency guards", () => {
+    it("throws when aggregation service is unavailable", () => {
+      const unavailableService = new EphemerisService(undefined);
+
+      expect(() =>
+        unavailableService.computeAllEphemerides({
+          azimuthElevationBodies: ["sun"],
+          coordinateBodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          diameterBodies: ["sun"],
+          distanceBodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          illuminationBodies: ["sun"],
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+        }),
+      ).toThrow("EphemerisAggregationService is not available");
+    });
+
+    it("throws when required specialized services are unavailable", () => {
+      const unavailableService = new EphemerisService(
+        ephemerisAggregationService,
+      );
+
+      expect(() =>
+        unavailableService.getCoordinateEphemerisByBody({
+          bodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisConstantsService is not available");
+
+      expect(() =>
+        unavailableService.getAzimuthElevationEphemerisByBody({
+          bodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisHorizonService is not available");
+
+      expect(() =>
+        unavailableService.getIlluminationEphemerisByBody({
+          bodies: ["sun"],
+          coordinates: [-74.006, 40.7128],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisPhenomenaService is not available");
+    });
+
+    it("throws when coordinate service is unavailable for node coordinates", () => {
+      const missingCoordinateService = new EphemerisService(
+        ephemerisAggregationService,
+        undefined,
+        {
+          isNode: vi.fn<(body: string) => boolean>().mockReturnValue(true),
+        } as never,
+      );
+
+      expect(() =>
+        missingCoordinateService.getCoordinateEphemerisByBody({
+          bodies: ["north lunar node"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisCoordinateService is not available");
+    });
+
+    it("throws when time service is unavailable for non-node coordinates", () => {
+      const missingTimeService = new EphemerisService(
+        ephemerisAggregationService,
+        ephemerisCoordinateService,
+        {
+          isNode: vi.fn<(body: string) => boolean>().mockReturnValue(false),
+        } as never,
+      );
+
+      expect(() =>
+        missingTimeService.getCoordinateEphemerisByBody({
+          bodies: ["sun"],
+          end: moment.utc("2024-03-21T00:01:00.000Z"),
+          start: moment.utc("2024-03-21T00:00:00.000Z"),
+          timezone: "UTC",
+        }),
+      ).toThrow("EphemerisTimeService is not available");
     });
   });
 
@@ -334,7 +639,7 @@ describe("EphemerisService", () => {
         previous: moment.utc("2024-03-21T00:00:00.000Z"),
       });
 
-      expect(result).toEqual({ current: 20, next: 30, previous: 10 });
+      expect(result).toStrictEqual({ current: 20, next: 30, previous: 10 });
     });
   });
 });

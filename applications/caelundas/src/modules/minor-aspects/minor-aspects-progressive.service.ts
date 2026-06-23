@@ -10,7 +10,7 @@ import {
   isBody,
   isMinorAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -29,7 +29,7 @@ export class MinorAspectsProgressiveService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {}
 
   // 🔏 Private Methods

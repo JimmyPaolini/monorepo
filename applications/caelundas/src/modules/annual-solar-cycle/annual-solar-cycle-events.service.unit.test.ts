@@ -7,11 +7,11 @@ import { AnnualSolarCycleEventsService } from "./annual-solar-cycle-events.servi
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("AnnualSolarCycleEventsService", () => {
+describe(AnnualSolarCycleEventsService, () => {
   let service: AnnualSolarCycleEventsService;
 
   beforeAll(async () => {
@@ -21,27 +21,23 @@ describe("AnnualSolarCycleEventsService", () => {
     service = await module.resolve(AnnualSolarCycleEventsService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
-  describe("Solar cycle event builders", () => {
-    it("should create vernal equinox event with correct structure", () => {
+  describe("solar cycle event builders", () => {
+    it("creates vernal equinox event with correct structure", () => {
       const timestamp = moment.utc("2024-03-20T03:06:00.000Z");
 
       const event = service.buildVernalEquinoxEvent(timestamp);
 
       expect(event.summary).toBe("🌸 Vernal Equinox");
       expect(event.description).toBe("Vernal Equinox");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Annual Solar Cycle");
       expect(event.categories).toContain("Solar");
     });
 
-    it("should create summer solstice event with correct structure", () => {
+    it("creates summer solstice event with correct structure", () => {
       const timestamp = moment.utc("2024-06-20T20:50:00.000Z");
 
       const event = service.buildSummerSolsticeEvent(timestamp);
@@ -51,7 +47,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create autumnal equinox event with correct structure", () => {
+    it("creates autumnal equinox event with correct structure", () => {
       const timestamp = moment.utc("2024-09-22T12:43:00.000Z");
 
       const event = service.buildAutumnalEquinoxEvent(timestamp);
@@ -61,7 +57,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create winter solstice event with correct structure", () => {
+    it("creates winter solstice event with correct structure", () => {
       const timestamp = moment.utc("2024-12-21T09:20:00.000Z");
 
       const event = service.buildWinterSolsticeEvent(timestamp);
@@ -71,7 +67,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create Imbolc event with correct structure", () => {
+    it("creates Imbolc event with correct structure", () => {
       const timestamp = moment.utc("2024-02-04T12:00:00.000Z");
 
       const event = service.buildImbolcEvent(timestamp);
@@ -81,7 +77,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create Beltane event with correct structure", () => {
+    it("creates Beltane event with correct structure", () => {
       const timestamp = moment.utc("2024-05-05T12:00:00.000Z");
 
       const event = service.buildBeltaneEvent(timestamp);
@@ -91,7 +87,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create Lammas event with correct structure", () => {
+    it("creates Lammas event with correct structure", () => {
       const timestamp = moment.utc("2024-08-07T12:00:00.000Z");
 
       const event = service.buildLammasEvent(timestamp);
@@ -101,7 +97,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create Samhain event with correct structure", () => {
+    it("creates Samhain event with correct structure", () => {
       const timestamp = moment.utc("2024-11-07T12:00:00.000Z");
 
       const event = service.buildSamhainEvent(timestamp);
@@ -111,7 +107,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create first hexadecan event with correct structure", () => {
+    it("creates first hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-03-27T12:00:00.000Z");
 
       const event = service.buildFirstHexadecanEvent(timestamp);
@@ -121,7 +117,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Annual Solar Cycle");
     });
 
-    it("should create third hexadecan event with correct structure", () => {
+    it("creates third hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-04-12T12:00:00.000Z");
 
       const event = service.buildThirdHexadecanEvent(timestamp);
@@ -130,7 +126,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Third Hexadecan");
     });
 
-    it("should create fifth hexadecan event with correct structure", () => {
+    it("creates fifth hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-06-28T12:00:00.000Z");
 
       const event = service.buildFifthHexadecanEvent(timestamp);
@@ -139,7 +135,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Fifth Hexadecan");
     });
 
-    it("should create seventh hexadecan event with correct structure", () => {
+    it("creates seventh hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-08-14T12:00:00.000Z");
 
       const event = service.buildSeventhHexadecanEvent(timestamp);
@@ -148,7 +144,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Seventh Hexadecan");
     });
 
-    it("should create ninth hexadecan event with correct structure", () => {
+    it("creates ninth hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-09-30T12:00:00.000Z");
 
       const event = service.buildNinthHexadecanEvent(timestamp);
@@ -157,7 +153,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Ninth Hexadecan");
     });
 
-    it("should create eleventh hexadecan event with correct structure", () => {
+    it("creates eleventh hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-11-14T12:00:00.000Z");
 
       const event = service.buildEleventhHexadecanEvent(timestamp);
@@ -166,7 +162,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Eleventh Hexadecan");
     });
 
-    it("should create thirteenth hexadecan event with correct structure", () => {
+    it("creates thirteenth hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-12-29T12:00:00.000Z");
 
       const event = service.buildThirteenthHexadecanEvent(timestamp);
@@ -175,7 +171,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Thirteenth Hexadecan");
     });
 
-    it("should create fifteenth hexadecan event with correct structure", () => {
+    it("creates fifteenth hexadecan event with correct structure", () => {
       const timestamp = moment.utc("2024-02-12T12:00:00.000Z");
 
       const event = service.buildFifteenthHexadecanEvent(timestamp);
@@ -184,15 +180,15 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.description).toBe("Fifteenth Hexadecan");
     });
 
-    it("should create aphelion event with correct structure", () => {
+    it("creates aphelion event with correct structure", () => {
       const timestamp = moment.utc("2024-07-05T12:00:00.000Z");
 
       const event = service.buildAphelionEvent(timestamp);
 
       expect(event.summary).toBe("☀️ ❄️ Solar Aphelion");
       expect(event.description).toBe("Solar Aphelion");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Astrology");
       expect(event.categories).toContain("Annual Solar Cycle");
@@ -200,7 +196,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(event.categories).toContain("Aphelion");
     });
 
-    it("should create perihelion event with correct structure", () => {
+    it("creates perihelion event with correct structure", () => {
       const timestamp = moment.utc("2024-01-03T12:00:00.000Z");
 
       const event = service.buildPerihelionEvent(timestamp);
@@ -211,8 +207,104 @@ describe("AnnualSolarCycleEventsService", () => {
     });
   });
 
-  describe("Longitude thresholds", () => {
-    it("should return true when crossing 0° (from Pisces to Aries)", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("seasonal event groups", () => {
+    it("collects spring and summer events when thresholds are crossed", () => {
+      const minute = moment.utc("2024-03-20T03:06:00.000Z");
+      const cases = [
+        {
+          expectedDescription: "Vernal Equinox",
+          longitudes: { currentLongitude: 1, previousLongitude: 359 },
+        },
+        {
+          expectedDescription: "First Hexadecan",
+          longitudes: { currentLongitude: 23, previousLongitude: 22 },
+        },
+        {
+          expectedDescription: "Beltane",
+          longitudes: { currentLongitude: 46, previousLongitude: 44 },
+        },
+        {
+          expectedDescription: "Third Hexadecan",
+          longitudes: { currentLongitude: 68, previousLongitude: 67 },
+        },
+        {
+          expectedDescription: "Summer Solstice",
+          longitudes: { currentLongitude: 91, previousLongitude: 89 },
+        },
+        {
+          expectedDescription: "Fifth Hexadecan",
+          longitudes: { currentLongitude: 113, previousLongitude: 112 },
+        },
+        {
+          expectedDescription: "Lammas",
+          longitudes: { currentLongitude: 136, previousLongitude: 134 },
+        },
+        {
+          expectedDescription: "Seventh Hexadecan",
+          longitudes: { currentLongitude: 158, previousLongitude: 157 },
+        },
+      ] as const;
+
+      for (const { expectedDescription, longitudes } of cases) {
+        const events = service.getVernalToAutumnalEvents(longitudes, minute);
+
+        expect(events).toHaveLength(1);
+        expect(events[0]?.description).toBe(expectedDescription);
+      }
+    });
+
+    it("collects autumn and winter events when thresholds are crossed", () => {
+      const minute = moment.utc("2024-09-22T12:43:00.000Z");
+      const cases = [
+        {
+          expectedDescription: "Autumnal Equinox",
+          longitudes: { currentLongitude: 181, previousLongitude: 179 },
+        },
+        {
+          expectedDescription: "Ninth Hexadecan",
+          longitudes: { currentLongitude: 203, previousLongitude: 202 },
+        },
+        {
+          expectedDescription: "Samhain",
+          longitudes: { currentLongitude: 226, previousLongitude: 224 },
+        },
+        {
+          expectedDescription: "Eleventh Hexadecan",
+          longitudes: { currentLongitude: 248, previousLongitude: 247 },
+        },
+        {
+          expectedDescription: "Winter Solstice",
+          longitudes: { currentLongitude: 271, previousLongitude: 269 },
+        },
+        {
+          expectedDescription: "Thirteenth Hexadecan",
+          longitudes: { currentLongitude: 293, previousLongitude: 292 },
+        },
+        {
+          expectedDescription: "Imbolc",
+          longitudes: { currentLongitude: 316, previousLongitude: 314 },
+        },
+        {
+          expectedDescription: "Fifteenth Hexadecan",
+          longitudes: { currentLongitude: 338, previousLongitude: 337 },
+        },
+      ] as const;
+
+      for (const { expectedDescription, longitudes } of cases) {
+        const events = service.getAutumnalToVernalEvents(longitudes, minute);
+
+        expect(events).toHaveLength(1);
+        expect(events[0]?.description).toBe(expectedDescription);
+      }
+    });
+  });
+
+  describe("longitude thresholds", () => {
+    it("returns true when crossing 0° (from Pisces to Aries)", () => {
       const result = service.isVernalEquinox({
         currentLongitude: 1,
         previousLongitude: 359,
@@ -221,7 +313,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing the boundary", () => {
+    it("returns false when not crossing the boundary", () => {
       const result = service.isVernalEquinox({
         currentLongitude: 10,
         previousLongitude: 5,
@@ -230,7 +322,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 22.5°", () => {
+    it("returns true when crossing 22.5°", () => {
       const result = service.isFirstHexadecan({
         currentLongitude: 23,
         previousLongitude: 22,
@@ -239,7 +331,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 22.5°", () => {
+    it("returns false when not crossing 22.5°", () => {
       const result = service.isFirstHexadecan({
         currentLongitude: 21,
         previousLongitude: 20,
@@ -248,7 +340,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 45°", () => {
+    it("returns true when crossing 45°", () => {
       const result = service.isBeltane({
         currentLongitude: 46,
         previousLongitude: 44,
@@ -257,7 +349,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 45°", () => {
+    it("returns false when not crossing 45°", () => {
       const result = service.isBeltane({
         currentLongitude: 44,
         previousLongitude: 43,
@@ -266,7 +358,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 67.5°", () => {
+    it("returns true when crossing 67.5°", () => {
       const result = service.isThirdHexadecan({
         currentLongitude: 68,
         previousLongitude: 67,
@@ -275,7 +367,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 67.5°", () => {
+    it("returns false when not crossing 67.5°", () => {
       const result = service.isThirdHexadecan({
         currentLongitude: 66,
         previousLongitude: 65,
@@ -284,7 +376,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 90°", () => {
+    it("returns true when crossing 90°", () => {
       const result = service.isSummerSolstice({
         currentLongitude: 91,
         previousLongitude: 89,
@@ -293,7 +385,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 90°", () => {
+    it("returns false when not crossing 90°", () => {
       const result = service.isSummerSolstice({
         currentLongitude: 88,
         previousLongitude: 87,
@@ -302,7 +394,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 112.5°", () => {
+    it("returns true when crossing 112.5°", () => {
       const result = service.isFifthHexadecan({
         currentLongitude: 113,
         previousLongitude: 112,
@@ -311,7 +403,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 112.5°", () => {
+    it("returns false when not crossing 112.5°", () => {
       const result = service.isFifthHexadecan({
         currentLongitude: 111,
         previousLongitude: 110,
@@ -320,7 +412,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 135°", () => {
+    it("returns true when crossing 135°", () => {
       const result = service.isLammas({
         currentLongitude: 136,
         previousLongitude: 134,
@@ -329,7 +421,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 135°", () => {
+    it("returns false when not crossing 135°", () => {
       const result = service.isLammas({
         currentLongitude: 133,
         previousLongitude: 132,
@@ -338,7 +430,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 157.5°", () => {
+    it("returns true when crossing 157.5°", () => {
       const result = service.isSeventhHexadecan({
         currentLongitude: 158,
         previousLongitude: 157,
@@ -347,7 +439,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 157.5°", () => {
+    it("returns false when not crossing 157.5°", () => {
       const result = service.isSeventhHexadecan({
         currentLongitude: 156,
         previousLongitude: 155,
@@ -356,7 +448,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 180°", () => {
+    it("returns true when crossing 180°", () => {
       const result = service.isAutumnalEquinox({
         currentLongitude: 181,
         previousLongitude: 179,
@@ -365,7 +457,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 180°", () => {
+    it("returns false when not crossing 180°", () => {
       const result = service.isAutumnalEquinox({
         currentLongitude: 178,
         previousLongitude: 177,
@@ -374,7 +466,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 202.5°", () => {
+    it("returns true when crossing 202.5°", () => {
       const result = service.isNinthHexadecan({
         currentLongitude: 203,
         previousLongitude: 202,
@@ -383,7 +475,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 202.5°", () => {
+    it("returns false when not crossing 202.5°", () => {
       const result = service.isNinthHexadecan({
         currentLongitude: 201,
         previousLongitude: 200,
@@ -392,7 +484,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 225°", () => {
+    it("returns true when crossing 225°", () => {
       const result = service.isSamhain({
         currentLongitude: 226,
         previousLongitude: 224,
@@ -401,7 +493,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 225°", () => {
+    it("returns false when not crossing 225°", () => {
       const result = service.isSamhain({
         currentLongitude: 223,
         previousLongitude: 222,
@@ -410,7 +502,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 247.5°", () => {
+    it("returns true when crossing 247.5°", () => {
       const result = service.isEleventhHexadecan({
         currentLongitude: 248,
         previousLongitude: 247,
@@ -419,7 +511,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 247.5°", () => {
+    it("returns false when not crossing 247.5°", () => {
       const result = service.isEleventhHexadecan({
         currentLongitude: 246,
         previousLongitude: 245,
@@ -428,7 +520,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 270°", () => {
+    it("returns true when crossing 270°", () => {
       const result = service.isWinterSolstice({
         currentLongitude: 271,
         previousLongitude: 269,
@@ -437,7 +529,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 270°", () => {
+    it("returns false when not crossing 270°", () => {
       const result = service.isWinterSolstice({
         currentLongitude: 268,
         previousLongitude: 267,
@@ -446,7 +538,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 292.5°", () => {
+    it("returns true when crossing 292.5°", () => {
       const result = service.isThirteenthHexadecan({
         currentLongitude: 293,
         previousLongitude: 292,
@@ -455,7 +547,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 292.5°", () => {
+    it("returns false when not crossing 292.5°", () => {
       const result = service.isThirteenthHexadecan({
         currentLongitude: 291,
         previousLongitude: 290,
@@ -464,7 +556,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 315°", () => {
+    it("returns true when crossing 315°", () => {
       const result = service.isImbolc({
         currentLongitude: 316,
         previousLongitude: 314,
@@ -473,7 +565,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 315°", () => {
+    it("returns false when not crossing 315°", () => {
       const result = service.isImbolc({
         currentLongitude: 313,
         previousLongitude: 312,
@@ -482,7 +574,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(false);
     });
 
-    it("should return true when crossing 337.5°", () => {
+    it("returns true when crossing 337.5°", () => {
       const result = service.isFifteenthHexadecan({
         currentLongitude: 338,
         previousLongitude: 337,
@@ -491,7 +583,7 @@ describe("AnnualSolarCycleEventsService", () => {
       expect(result).toBe(true);
     });
 
-    it("should return false when not crossing 337.5°", () => {
+    it("returns false when not crossing 337.5°", () => {
       const result = service.isFifteenthHexadecan({
         currentLongitude: 336,
         previousLongitude: 335,

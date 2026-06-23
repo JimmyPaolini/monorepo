@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, vi } from "vitest";
-
 /**
  * Common mock pattern documentation for event tests.
  *
@@ -25,6 +23,8 @@ import { afterEach, beforeEach, vi } from "vitest";
  * - All event generation tests (aspects, phases, ingresses, eclipses, etc.)
  * - Tests that call writeMajorAspectEvents, writePhaseEvents, etc.
  */
+
+import { afterEach, beforeEach, vi } from "vitest";
 export const MOCK_PATTERNS = {
   databaseUtilities: `vi.mock("../../database.utilities", () => ({
   upsertEvents: vi.fn(),

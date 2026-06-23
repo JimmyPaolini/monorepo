@@ -12,11 +12,11 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * importing the standalone utility function directly.
  */
 @Injectable()
-export class ProgressiveUtilities {
+export class ProgressiveUtilitiesService {
   // 🏗 Dependency Injection
 
   constructor(private readonly logger: LoggerService) {
-    this.logger.setContext(ProgressiveUtilities.name);
+    this.logger.setContext(ProgressiveUtilitiesService.name);
   }
 
   // 🔐 Private Fields

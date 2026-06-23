@@ -1,3 +1,4 @@
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
@@ -9,25 +10,31 @@ import { ProgressiveService } from "../progressive/progressive.service";
 
 import { CaelundasCommand } from "./caelundas.command";
 
-describe("CaelundasCommand", () => {
+describe(CaelundasCommand, () => {
   let command: CaelundasCommand;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         CaelundasCommand,
-        { provide: LoggerService, useValue: { setContext: () => {} } },
-        { provide: InputService, useValue: {} },
-        { provide: PerfectiveService, useValue: {} },
-        { provide: ProgressiveService, useValue: {} },
-        { provide: CalendarService, useValue: {} },
+        { provide: LoggerService, useValue: createMock<LoggerService>() },
+        { provide: InputService, useValue: createMock<InputService>() },
+        {
+          provide: PerfectiveService,
+          useValue: createMock<PerfectiveService>(),
+        },
+        {
+          provide: ProgressiveService,
+          useValue: createMock<ProgressiveService>(),
+        },
+        { provide: CalendarService, useValue: createMock<CalendarService>() },
       ],
     }).compile();
 
     command = await module.resolve(CaelundasCommand);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(command).toBeDefined();
   });
 });

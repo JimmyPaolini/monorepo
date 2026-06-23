@@ -39,8 +39,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     }
   });
 
-  describe("ICS file generation", () => {
-    it("should generate valid ICS file structure", () => {
+  describe("iCS file generation", () => {
+    it("generates valid ICS file structure", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -101,10 +101,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       // Verify event count
       const veventCount = (content.match(/BEGIN:VEVENT/g) ?? []).length;
+
       expect(veventCount).toBe(2);
     });
 
-    it("should include timezone definitions", () => {
+    it("includes timezone definitions", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -134,7 +135,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(calendar).toContain("END:STANDARD");
     });
 
-    it("should handle events with all optional fields", () => {
+    it("handles events with all optional fields", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -169,7 +170,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("input validation e2e", () => {
-    it("should validate and transform coordinates correctly", async () => {
+    it("validates and transform coordinates correctly", async () => {
       const { inputSchema } = await import("./modules/input/input.constants");
 
       const result = inputSchema.parse({
@@ -186,7 +187,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(moment.isMoment(result.end)).toBe(true);
     });
 
-    it("should infer correct timezone for different locations", async () => {
+    it("infers correct timezone for different locations", async () => {
       const { inputSchema } = await import("./modules/input/input.constants");
 
       // Tokyo
@@ -196,6 +197,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "139.6503",
         startDate: "2025-01-01",
       });
+
       expect(tokyoResult.timezone).toBe("Asia/Tokyo");
 
       // London
@@ -205,6 +207,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "-0.1278",
         startDate: "2025-01-01",
       });
+
       expect(londonResult.timezone).toBe("Europe/London");
 
       // Sydney
@@ -214,12 +217,13 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         longitude: "151.2093",
         startDate: "2025-01-01",
       });
+
       expect(sydneyResult.timezone).toBe("Australia/Sydney");
     });
   });
 
   describe("event detection e2e", () => {
-    it("should correctly identify zodiac signs from longitude", async () => {
+    it("correctly identify zodiac signs from longitude", async () => {
       const { IngressesService } =
         await import("./modules/ingresses/ingresses.service");
 
@@ -238,7 +242,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(IngressesService.getSign(330)).toBe("pisces");
     });
 
-    it("should correctly identify aspects from angular separation", async () => {
+    it("correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
         await import("./modules/major-aspects/major-aspects.service");
       const { MajorAspectEventService } =
@@ -250,11 +254,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const { EphemerisService } =
         await import("./modules/ephemeris/ephemeris.service");
       const { MathService } = await import("./modules/math/math.service");
-      const { ProgressiveUtilities } =
-        await import("./modules/progressive/progressive.utilities");
+      const { ProgressiveUtilitiesService } =
+        await import("./modules/progressive/progressive-utilities.service");
       const mathService = new MathService();
       const aspectsUtilitiesService = new AspectsUtilities(mathService);
-      const progressiveUtilitiesService = new ProgressiveUtilities(
+      const progressiveUtilitiesService = new ProgressiveUtilitiesService(
         new LoggerService(),
       );
       const majorAspectEventService = new MajorAspectEventService(
@@ -298,9 +302,9 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       ).toBe("opposite"); // 5° orb
     });
 
-    it("should calculate progressive event pairs correctly", async () => {
-      const { ProgressiveUtilities } =
-        await import("./modules/progressive/progressive.utilities");
+    it("calculates progressive event pairs correctly", async () => {
+      const { ProgressiveUtilitiesService } =
+        await import("./modules/progressive/progressive-utilities.service");
 
       const beginnings = [
         {
@@ -336,11 +340,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = new ProgressiveUtilities(
+      const pairs = new ProgressiveUtilitiesService(
         new LoggerService(),
       ).pairProgressiveEvents(beginnings, endings, "test");
 
-      expect(pairs.length).toBe(2);
+      expect(pairs).toHaveLength(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(
         "2025-03-01T10:00:00.000Z",
       );
@@ -357,7 +361,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("math utilities e2e", () => {
-    it("should normalize degrees correctly across edge cases", async () => {
+    it("normalizes degrees correctly across edge cases", async () => {
       const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const normalizeDegrees = (d: number): number =>
@@ -378,7 +382,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(getAngle(10, 350)).toBe(20);
     });
 
-    it("should generate correct combinations", async () => {
+    it("generates correct combinations", async () => {
       const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const getCombinations = <T>(array: T[], k: number): T[][] =>
@@ -388,15 +392,18 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       // Get all pairs
       const pairs = getCombinations(planets, 2);
-      expect(pairs.length).toBe(10); // C(5,2) = 10
+
+      expect(pairs).toHaveLength(10); // C(5,2) = 10
 
       // Get all triplets
       const triplets = getCombinations(planets, 3);
-      expect(triplets.length).toBe(10); // C(5,3) = 10
+
+      expect(triplets).toHaveLength(10); // C(5,3) = 10
 
       // Verify no duplicates in pairs
       const pairStrings = pairs.map((p) => _.sortBy(p).join("-"));
       const uniquePairs = new Set(pairStrings);
+
       expect(uniquePairs.size).toBe(10);
     });
   });

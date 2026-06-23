@@ -72,6 +72,16 @@ See [triage-submission](../triage-submission/SKILL.md) for detailed per-tool fix
 
 Once both `write` and `check` pass cleanly, code quality is confirmed. Proceed to commit or hand off.
 
+### Step 4 — Coverage Gate (when required)
+
+`analyze-code` does not enforce Vitest coverage thresholds. If the task, project, or CI requires a coverage target, run the coverage configuration explicitly after Step 3:
+
+```bash
+pnpm exec nx run <project>:test --configuration=coverage
+```
+
+If the threshold fails by a small margin, prioritize adding targeted tests for uncovered guard branches (`if (!value)`, fallback paths, sparse/undefined handling) instead of broad test rewrites.
+
 ## Common Patterns
 
 ### New TypeScript files added
@@ -80,6 +90,17 @@ Once both `write` and `check` pass cleanly, code quality is confirmed. Proceed t
 # Target the specific project since affected may not pick up new files
 pnpm exec nx run <project>:analyze-code --configuration=write
 pnpm exec nx run <project>:analyze-code --configuration=check
+```
+
+### Refactor-heavy test changes
+
+```bash
+# 1) Auto-fix + quality checks
+pnpm exec nx run <project>:analyze-code --configuration=write
+pnpm exec nx run <project>:analyze-code --configuration=check
+
+# 2) Re-verify coverage gates explicitly
+pnpm exec nx run <project>:test --configuration=coverage
 ```
 
 ### New skill or AGENTS.md edited

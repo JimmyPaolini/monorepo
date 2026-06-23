@@ -133,7 +133,7 @@ Python projects: `lint` runs `ruff check` (config: [configuration/pyproject.toml
 
 | Project type | Command | Config |
 | ------------ | ------- | ------ |
-| TypeScript | `tsc --noEmit` (cwd: projectRoot) | project `tsconfig.json` extends [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
+| TypeScript | `tsc --noEmit` (cwd: projectRoot) | project `tsconfig.json` extends [configuration/tsconfig.json](../../../configuration/tsconfig.json) |
 | Python (`pyright`) | `uv run pyright src/` (cwd: projectRoot) | [configuration/pyproject.toml](../../../configuration/pyproject.toml) |
 | Python (`ty`) | `uv run ty check src/` (cwd: projectRoot) | [configuration/pyproject.toml](../../../configuration/pyproject.toml) |
 
@@ -416,7 +416,7 @@ Report a summary to the user covering:
 | oxlint | [configuration/oxlint.config.ts](../../../configuration/oxlint.config.ts) |
 | oxfmt | [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts) |
 | Prettier | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [.prettierignore](../../../.prettierignore) |
-| TypeScript (base) | [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
+| TypeScript (base) | [configuration/tsconfig.json](../../../configuration/tsconfig.json) |
 | cspell | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml) |
 | markdownlint | [configuration/.markdownlint-cli2.jsonc](../../../configuration/.markdownlint-cli2.jsonc) |
 | yamllint | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml) |

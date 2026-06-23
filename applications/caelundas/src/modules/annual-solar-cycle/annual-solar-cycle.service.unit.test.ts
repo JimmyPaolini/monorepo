@@ -2,7 +2,7 @@ import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.const
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -18,11 +18,11 @@ import type {
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
-describe("AnnualSolarCycleService", () => {
+describe(AnnualSolarCycleService, () => {
   let service: AnnualSolarCycleService;
 
   beforeAll(async () => {
@@ -33,7 +33,7 @@ describe("AnnualSolarCycleService", () => {
         AnnualSolarCycleEventsService,
         EphemerisService,
         MathService,
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
     service = await module.resolve(AnnualSolarCycleService);
@@ -81,7 +81,7 @@ describe("AnnualSolarCycleService", () => {
   }
 
   describe("getAnnualSolarCycleEvents/getSolarApsisEvents", () => {
-    it("should return empty array when no annual solar cycle events occur", () => {
+    it("returns empty array when no annual solar cycle events occur", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // No event: sun at some random longitude
@@ -103,8 +103,12 @@ describe("AnnualSolarCycleService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("getSolarApsisEvents", () => {
-    it("should detect aphelion when distance is at maximum", () => {
+    it("detects aphelion when distance is at maximum", () => {
       const currentMinute = moment.utc("2024-07-05T12:00:00.000Z");
 
       // Distance increasing then decreasing (maximum at current)
@@ -128,16 +132,17 @@ describe("AnnualSolarCycleService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const aphelionEvent = events.find((e) =>
         e.description.includes("Aphelion"),
       );
-      expect(aphelionEvent).toBeDefined();
-      if (aphelionEvent) {
-        expect(aphelionEvent.summary).toBe("☀️ ❄️ Solar Aphelion");
-      }
+
+      expect(aphelionEvent).toStrictEqual(
+        expect.objectContaining({ summary: "☀️ ❄️ Solar Aphelion" }),
+      );
     });
 
-    it("should detect perihelion when distance is at minimum", () => {
+    it("detects perihelion when distance is at minimum", () => {
       const currentMinute = moment.utc("2024-01-03T12:00:00.000Z");
 
       // Distance decreasing then increasing (minimum at current)
@@ -161,16 +166,17 @@ describe("AnnualSolarCycleService", () => {
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
+
       const perihelionEvent = events.find((e) =>
         e.description.includes("Perihelion"),
       );
-      expect(perihelionEvent).toBeDefined();
-      if (perihelionEvent) {
-        expect(perihelionEvent.summary).toBe("☀️ 🔥 Solar Perihelion");
-      }
+
+      expect(perihelionEvent).toStrictEqual(
+        expect.objectContaining({ summary: "☀️ 🔥 Solar Perihelion" }),
+      );
     });
 
-    it("should return empty array when no apsis events occur", () => {
+    it("returns empty array when no apsis events occur", () => {
       const currentMinute = moment.utc("2024-04-15T12:00:00.000Z");
 
       // Distance constantly increasing (no extrema)
@@ -193,8 +199,8 @@ describe("AnnualSolarCycleService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should create advancing progressive event from aphelion to perihelion", () => {
+  describe("detectProgressive", () => {
+    it("creates advancing progressive event from aphelion to perihelion", () => {
       const aphelionEvent: Event = {
         categories: [
           "Astronomy",
@@ -222,28 +228,35 @@ describe("AnnualSolarCycleService", () => {
         summary: "☀️ 🔥 Solar Perihelion",
       };
 
-      const progressiveEvents = service.detectProgressive([
+      const progressiveEvents: Event[] = service.detectProgressive([
         aphelionEvent,
         perihelionEvent,
       ]);
 
       expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+
       const advancingDuration = progressiveEvents.find((e) =>
         e.description.includes("Advancing"),
       );
-      expect(advancingDuration).toBeDefined();
-      if (advancingDuration) {
-        expect(advancingDuration.start).toEqual(aphelionEvent.start);
-        expect(advancingDuration.end).toEqual(perihelionEvent.start);
-        expect(advancingDuration.summary).toBe("☀️ 🔥 Solar Advancing");
-        expect(advancingDuration.description).toBe(
-          "Solar Advancing (Aphelion to Perihelion)",
-        );
-        expect(advancingDuration.categories).toContain("Advancing");
-      }
+
+      expect(advancingDuration).toStrictEqual(
+        expect.objectContaining({
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Annual Solar Cycle",
+            "Solar",
+            "Advancing",
+          ],
+          description: "Solar Advancing (Aphelion to Perihelion)",
+          end: perihelionEvent.start,
+          start: aphelionEvent.start,
+          summary: "☀️ 🔥 Solar Advancing",
+        }),
+      );
     });
 
-    it("should create retreating progressive event from perihelion to aphelion", () => {
+    it("creates retreating progressive event from perihelion to aphelion", () => {
       const perihelionEvent: Event = {
         categories: [
           "Astronomy",
@@ -271,34 +284,41 @@ describe("AnnualSolarCycleService", () => {
         summary: "☀️ ❄️ Solar Aphelion",
       };
 
-      const progressiveEvents = service.detectProgressive([
+      const progressiveEvents: Event[] = service.detectProgressive([
         perihelionEvent,
         aphelionEvent,
       ]);
 
       expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+
       const retreatingDuration = progressiveEvents.find((e) =>
         e.description.includes("Retreating"),
       );
-      expect(retreatingDuration).toBeDefined();
-      if (retreatingDuration) {
-        expect(retreatingDuration.start).toEqual(perihelionEvent.start);
-        expect(retreatingDuration.end).toEqual(aphelionEvent.start);
-        expect(retreatingDuration.summary).toBe("☀️ ❄️ Solar Retreating");
-        expect(retreatingDuration.description).toBe(
-          "Solar Retreating (Perihelion to Aphelion)",
-        );
-        expect(retreatingDuration.categories).toContain("Retreating");
-      }
+
+      expect(retreatingDuration).toStrictEqual(
+        expect.objectContaining({
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Annual Solar Cycle",
+            "Solar",
+            "Retreating",
+          ],
+          description: "Solar Retreating (Perihelion to Aphelion)",
+          end: aphelionEvent.start,
+          start: perihelionEvent.start,
+          summary: "☀️ ❄️ Solar Retreating",
+        }),
+      );
     });
 
-    it("should return empty array when no apsis events provided", () => {
+    it("returns empty array when no apsis events provided", () => {
       const progressiveEvents = service.detectProgressive([]);
 
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should handle full year cycle with both advancing and retreating", () => {
+    it("handles full year cycle with both advancing and retreating", () => {
       const perihelion1: Event = {
         categories: [
           "Astronomy",
@@ -359,7 +379,7 @@ describe("AnnualSolarCycleService", () => {
       expect(advancing).toBeDefined();
     });
 
-    it("should filter out non-annual solar cycle events", () => {
+    it("filters out non-annual solar cycle events", () => {
       const nonApsisEvent: Event = {
         categories: ["Astronomy", "Something Else"],
         description: "Not an apsis event",
@@ -372,9 +392,5 @@ describe("AnnualSolarCycleService", () => {
 
       expect(progressiveEvents).toHaveLength(0);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

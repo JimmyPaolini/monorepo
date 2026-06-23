@@ -51,16 +51,13 @@ function createFullEphemeris(
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const loggerService = new LoggerService();
-const helperService = new IngressesComposerService(
-  loggerService,
-  ephemerisService,
-);
+const logger = new LoggerService();
+const helperService = new IngressesComposerService(logger, ephemerisService);
 const service = new IngressesService(helperService);
 
 describe("ingresses.events integration", () => {
   describe("service.getSignIngressEvents", () => {
-    it("should detect Sun entering Aries (Vernal Equinox)", () => {
+    it("detects Sun entering Aries (Vernal Equinox)", () => {
       const baseTime = moment.utc("2025-03-20T09:06:00Z");
 
       // Sun crossing from Pisces (359.9°) to Aries (0.1°)
@@ -77,7 +74,7 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Aries");
       expect(events[0]?.categories).toContain("Ingress");
@@ -85,7 +82,7 @@ describe("ingresses.events integration", () => {
       expect(events[0]?.summary).toContain("♈");
     });
 
-    it("should detect Moon sign changes", () => {
+    it("detects Moon sign changes", () => {
       const baseTime = moment.utc("2025-01-15T18:30:00Z");
 
       // Moon crossing from Taurus (59.9°) to Gemini (60.1°)
@@ -102,12 +99,12 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Moon");
       expect(events[0]?.categories).toContain("Gemini");
     });
 
-    it("should not generate event when body stays in same sign", () => {
+    it("does not generate event when body stays in same sign", () => {
       const baseTime = moment.utc("2025-02-10T12:00:00Z");
 
       // All bodies stay in their default positions (no boundary crossings)
@@ -121,12 +118,12 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
   });
 
   describe("service.getDecanIngressEvents", () => {
-    it("should detect decan change within same sign", () => {
+    it("detects decan change within same sign", () => {
       const baseTime = moment.utc("2025-04-05T16:00:00Z");
 
       // Sun crossing from decan 1 (9.9°) to decan 2 (10.1°) in Aries
@@ -143,13 +140,13 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Decan");
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Aries");
     });
 
-    it("should NOT generate decan event when crossing sign boundary (sign event takes precedence)", () => {
+    it("does not generate decan event when crossing sign boundary (sign event takes precedence)", () => {
       const baseTime = moment.utc("2025-04-19T22:00:00Z");
 
       // Sun crossing from Aries (29.9°) to Taurus (30.1°)
@@ -167,12 +164,12 @@ describe("ingresses.events integration", () => {
       });
 
       // Should be 0 because sign ingress takes precedence
-      expect(events.length).toBe(0);
+      expect(events).toHaveLength(0);
     });
   });
 
   describe("service.getPeakIngressEvents", () => {
-    it("should detect peak ingress at 15° within a sign", () => {
+    it("detects peak ingress at 15° within a sign", () => {
       const baseTime = moment.utc("2025-05-05T08:00:00Z");
 
       // Sun crossing 15° in Taurus (30 + 15 = 45°)
@@ -189,15 +186,15 @@ describe("ingresses.events integration", () => {
         minute: baseTime,
       });
 
-      expect(events.length).toBe(1);
+      expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Peak");
       expect(events[0]?.categories).toContain("Sun");
       expect(events[0]?.categories).toContain("Taurus");
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should create progressive events from consecutive sign ingresses", () => {
+  describe("detectProgressive", () => {
+    it("creates progressive events from consecutive sign ingresses", () => {
       const events: Event[] = [
         {
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
@@ -224,7 +221,7 @@ describe("ingresses.events integration", () => {
 
       const progressiveEvents = service.detectProgressive(events);
 
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
 
       // First duration: Sun in Aries
       expect(progressiveEvents[0]?.start.toISOString()).toBe(
@@ -245,7 +242,7 @@ describe("ingresses.events integration", () => {
       );
     });
 
-    it("should handle events for multiple bodies separately", () => {
+    it("handles events for multiple bodies separately", () => {
       const events: Event[] = [
         {
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aquarius"],
@@ -280,7 +277,7 @@ describe("ingresses.events integration", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       // Should have: Sun in Aquarius, Moon in Gemini
-      expect(progressiveEvents.length).toBe(2);
+      expect(progressiveEvents).toHaveLength(2);
 
       const sunDuration = progressiveEvents.find((e) =>
         e.categories.includes("Sun"),

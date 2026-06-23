@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
-describe("LoggerService", () => {
+describe(LoggerService, () => {
   let service: LoggerService;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe("LoggerService", () => {
     service = await module.resolve(LoggerService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
+  it("is defined", () => {
+        expect(command).toBeDefined();
   });
 });

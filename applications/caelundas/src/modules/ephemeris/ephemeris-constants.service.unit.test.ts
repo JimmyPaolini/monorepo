@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 
-describe("EphemerisConstantsService", () => {
+describe(EphemerisConstantsService, () => {
   let service: EphemerisConstantsService;
 
   beforeAll(async () => {
@@ -12,10 +12,6 @@ describe("EphemerisConstantsService", () => {
     }).compile();
 
     service = await module.resolve(EphemerisConstantsService);
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 
   describe("isNode", () => {
@@ -29,6 +25,10 @@ describe("EphemerisConstantsService", () => {
       expect(service.isNode("sun")).toBe(false);
       expect(service.isNode("moon")).toBe(false);
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("getSwissEphemerisConstantForBody", () => {

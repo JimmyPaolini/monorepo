@@ -15,11 +15,18 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PerfectiveService } from "./perfective.service";
 
+import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Input } from "@caelundas/src/modules/input/input.types";
+import type {
+  MartianPhaseEventArguments,
+  MercurianPhaseEventArguments,
+  VenusianPhaseEventArguments,
+} from "@caelundas/src/modules/phases/phases.types";
+import type { Moment } from "moment-timezone";
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
@@ -39,25 +46,41 @@ const emptyEphemerides = {
   illuminationEphemerisByBody: {} as never,
 };
 
-describe("PerfectiveService", () => {
+describe(PerfectiveService, () => {
   let service: PerfectiveService;
 
-  const datetimeMock = { generateDates: vi.fn(), generateMinutes: vi.fn() };
+  const datetimeMock = {
+    generateDates:
+      vi.fn<
+        (start: Moment, end: Moment, timezone: string) => Iterable<Moment>
+      >(),
+    generateMinutes: vi.fn<(start: Moment, end: Moment) => Iterable<Moment>>(),
+  };
   const ephemerisAggMock = {
     getEphemerides: vi.fn<EphemerisService["getEphemerides"]>(),
   };
-  const aspectsMock = { detect: vi.fn() };
-  const eclipsesMock = { detect: vi.fn() };
-  const retrogradesMock = { detect: vi.fn() };
-  const ingressesMock = { detect: vi.fn() };
-  const dailyCyclesMock = { detect: vi.fn() };
-  const monthlyLunarCycleMock = { detect: vi.fn() };
-  const annualSolarCycleMock = { detect: vi.fn() };
-  const twilightsMock = { detect: vi.fn() };
+  const aspectsMock = { detect: vi.fn<AspectsService["detect"]>() };
+  const eclipsesMock = { detect: vi.fn<EclipsesService["detect"]>() };
+  const retrogradesMock = { detect: vi.fn<RetrogradesService["detect"]>() };
+  const ingressesMock = { detect: vi.fn<IngressesService["detect"]>() };
+  const dailyCyclesMock = { detect: vi.fn<DailyCyclesService["detect"]>() };
+  const monthlyLunarCycleMock = {
+    detect: vi.fn<MonthlyLunarCycleService["detect"]>(),
+  };
+  const annualSolarCycleMock = {
+    detect: vi.fn<AnnualSolarCycleService["detect"]>(),
+  };
+  const twilightsMock = { detect: vi.fn<TwilightsService["detect"]>() };
   const phasesMock = {
-    getMartianPhaseEvents: vi.fn(() => []),
-    getMercurianPhaseEvents: vi.fn(() => []),
-    getVenusianPhaseEvents: vi.fn(() => []),
+    getMartianPhaseEvents: vi.fn<(args: MartianPhaseEventArguments) => Event[]>(
+      () => [],
+    ),
+    getMercurianPhaseEvents: vi.fn<
+      (args: MercurianPhaseEventArguments) => Event[]
+    >(() => []),
+    getVenusianPhaseEvents: vi.fn<
+      (args: VenusianPhaseEventArguments) => Event[]
+    >(() => []),
   };
 
   beforeAll(async () => {
@@ -85,20 +108,20 @@ describe("PerfectiveService", () => {
     vi.clearAllMocks();
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
   describe("detect", () => {
-    it("should return an empty array when no dates are generated", () => {
+    it("returns an empty array when no dates are generated", () => {
       datetimeMock.generateDates.mockReturnValue([]);
 
       const result = service.detect(baseInput);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
-    it("should return an empty array when no minutes are generated within a day", () => {
+    it("returns an empty array when no minutes are generated within a day", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       datetimeMock.generateDates.mockReturnValue([date]);
       ephemerisAggMock.getEphemerides.mockReturnValue(emptyEphemerides);
@@ -106,10 +129,10 @@ describe("PerfectiveService", () => {
 
       const result = service.detect(baseInput);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
-    it("should request ephemerides with MARGIN_MINUTES padding around the day", () => {
+    it("requests ephemerides with MARGIN_MINUTES padding around the day", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       datetimeMock.generateDates.mockReturnValue([date]);
       ephemerisAggMock.getEphemerides.mockReturnValue(emptyEphemerides);
@@ -117,15 +140,32 @@ describe("PerfectiveService", () => {
 
       service.detect(baseInput);
 
-      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledOnce();
+      expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledWith(
+        expect.objectContaining({
+          coordinates: [-75.1652, 39.9526],
+          end: moment
+            .tz("2025-06-15", "America/New_York")
+            .endOf("day")
+            .clone()
+            .add(30, "minutes"),
+          start: moment
+            .tz("2025-06-15", "America/New_York")
+            .startOf("day")
+            .clone()
+            .subtract(30, "minutes"),
+          timezone: "America/New_York",
+        }),
+      );
+
       const firstCallArgument =
         ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];
+
       expect(firstCallArgument?.end.isAfter(firstCallArgument.start)).toBe(
         true,
       );
     });
 
-    it("should accumulate events returned by sub-services across all minutes", () => {
+    it("accumulates events returned by sub-services across all minutes", () => {
       const date = moment.tz("2025-06-15", "America/New_York");
       const minute1 = date.clone().startOf("day");
       const minute2 = date.clone().startOf("day").add(1, "minute");

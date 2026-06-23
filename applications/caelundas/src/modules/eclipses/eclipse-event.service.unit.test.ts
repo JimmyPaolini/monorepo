@@ -1,4 +1,4 @@
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -10,9 +10,9 @@ import { EclipseEventService } from "./eclipse-event.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("EclipseEventService", () => {
+describe(EclipseEventService, () => {
   let service: EclipseEventService;
-  let progressiveUtilitiesService: ProgressiveUtilities;
+  let progressiveUtilitiesService: ProgressiveUtilitiesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -20,23 +20,25 @@ describe("EclipseEventService", () => {
         EclipseEventService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
 
     service = await module.resolve(EclipseEventService);
     await module.resolve(LoggerService);
-    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
+    progressiveUtilitiesService = await module.resolve(
+      ProgressiveUtilitiesService,
+    );
   });
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildSolarEclipseEvent", () => {
@@ -53,8 +55,8 @@ describe("EclipseEventService", () => {
       expect(event.description).toBe("Solar Eclipse begins (Geocentric)");
       expect(event.categories).toContain("Solar");
       expect(event.categories).toContain("Geocentric");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("builds topocentric solar eclipse event", () => {
@@ -72,6 +74,24 @@ describe("EclipseEventService", () => {
       );
       expect(event.categories).toContain("Topocentric Visibility");
     });
+
+    it("builds maximum and ending solar eclipse events", () => {
+      const timestamp = moment.utc("2024-04-08T18:00:00.000Z");
+
+      const maximumEvent = service.buildSolarEclipseEvent({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "maximum",
+      });
+      const endingEvent = service.buildSolarEclipseEvent({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "ending",
+      });
+
+      expect(maximumEvent.summary).toContain("Solar Eclipse maximum");
+      expect(endingEvent.summary).toContain("Solar Eclipse ends");
+    });
   });
 
   describe("buildLunarEclipseEvent", () => {
@@ -88,8 +108,8 @@ describe("EclipseEventService", () => {
       expect(event.description).toBe("Lunar Eclipse begins (Geocentric)");
       expect(event.categories).toContain("Lunar");
       expect(event.categories).toContain("Geocentric");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
     });
 
     it("builds topocentric lunar eclipse event", () => {
@@ -106,6 +126,24 @@ describe("EclipseEventService", () => {
         "Lunar Eclipse begins (Topocentric Visibility)",
       );
       expect(event.categories).toContain("Topocentric Visibility");
+    });
+
+    it("builds maximum and ending lunar eclipse events", () => {
+      const timestamp = moment.utc("2024-09-18T02:00:00.000Z");
+
+      const maximumEvent = service.buildLunarEclipseEvent({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "maximum",
+      });
+      const endingEvent = service.buildLunarEclipseEvent({
+        date: timestamp,
+        frame: "geocentric",
+        phase: "ending",
+      });
+
+      expect(maximumEvent.summary).toContain("Lunar Eclipse maximum");
+      expect(endingEvent.summary).toContain("Lunar Eclipse ends");
     });
   });
 
@@ -178,6 +216,7 @@ describe("EclipseEventService", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(2);
+
       const solarDurationEvent = progressiveEvents.find((event) =>
         event.categories.includes("Solar"),
       );
@@ -216,7 +255,97 @@ describe("EclipseEventService", () => {
         },
       ]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
+    });
+
+    it("creates topocentric progressive events for solar and lunar eclipse ranges", () => {
+      const solarBeginning: Event = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Eclipse",
+          "Solar",
+          "Topocentric Visibility",
+        ],
+        description: "Solar Eclipse begins (Topocentric Visibility)",
+        end: moment.utc("2024-04-08T18:00:00.000Z"),
+        start: moment.utc("2024-04-08T18:00:00.000Z"),
+        summary: "📍 ☀️🐉▶️ Solar Eclipse begins",
+      };
+      const solarEnding: Event = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Eclipse",
+          "Solar",
+          "Topocentric Visibility",
+        ],
+        description: "Solar Eclipse ends (Topocentric Visibility)",
+        end: moment.utc("2024-04-08T19:00:00.000Z"),
+        start: moment.utc("2024-04-08T19:00:00.000Z"),
+        summary: "📍 ☀️🐉◀️ Solar Eclipse ends",
+      };
+      const lunarBeginning: Event = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Eclipse",
+          "Lunar",
+          "Topocentric Visibility",
+        ],
+        description: "Lunar Eclipse begins (Topocentric Visibility)",
+        end: moment.utc("2024-09-18T02:00:00.000Z"),
+        start: moment.utc("2024-09-18T02:00:00.000Z"),
+        summary: "📍 🌙🐉▶️ Lunar Eclipse begins",
+      };
+      const lunarEnding: Event = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Eclipse",
+          "Lunar",
+          "Topocentric Visibility",
+        ],
+        description: "Lunar Eclipse ends (Topocentric Visibility)",
+        end: moment.utc("2024-09-18T03:00:00.000Z"),
+        start: moment.utc("2024-09-18T03:00:00.000Z"),
+        summary: "📍 🌙🐉◀️ Lunar Eclipse ends",
+      };
+
+      vi.mocked(progressiveUtilitiesService.pairProgressiveEvents)
+        .mockReturnValueOnce([])
+        .mockReturnValueOnce([])
+        .mockReturnValueOnce([[lunarBeginning, lunarEnding]])
+        .mockReturnValueOnce([[solarBeginning, solarEnding]]);
+
+      const progressiveEvents = service.detectProgressive([
+        solarBeginning,
+        solarEnding,
+        lunarBeginning,
+        lunarEnding,
+      ]);
+
+      expect(progressiveEvents).toHaveLength(2);
+
+      const solarDurationEvent = progressiveEvents.find((event) =>
+        event.categories.includes("Solar"),
+      );
+      const lunarDurationEvent = progressiveEvents.find((event) =>
+        event.categories.includes("Lunar"),
+      );
+
+      expect(solarDurationEvent?.description).toBe(
+        "Solar Eclipse (Topocentric Visibility)",
+      );
+      expect(solarDurationEvent?.summary).toBe(
+        "📍 ☀️🐉 Solar Eclipse (Topocentric Visibility)",
+      );
+      expect(lunarDurationEvent?.description).toBe(
+        "Lunar Eclipse (Topocentric Visibility)",
+      );
+      expect(lunarDurationEvent?.summary).toBe(
+        "📍 🌙🐉 Lunar Eclipse (Topocentric Visibility)",
+      );
     });
   });
 });

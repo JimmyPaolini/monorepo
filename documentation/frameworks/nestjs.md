@@ -314,7 +314,7 @@ describe("UsersService", () => {
     jest.spyOn(repository, "create").mockReturnValue(user as User);
     jest.spyOn(repository, "save").mockResolvedValue(user as User);
 
-    expect(await service.create(createUserDto)).toEqual(user);
+    expect(await service.create(createUserDto)).toStrictEqual(user);
   });
 });
 ```

@@ -81,23 +81,29 @@ const createMockPhaseInputs = (): DetectPlanetaryEventsArguments => {
   };
 };
 
-describe("PhasesService", () => {
+describe(PhasesService, () => {
   let service: PhasesService;
   const logger = new LoggerService();
 
   const venusianPhaseService = {
-    getVenusianPhaseEvents: vi.fn(),
-    getVenusianPhaseProgressiveEvents: vi.fn(),
+    getVenusianPhaseEvents:
+      vi.fn<VenusianPhaseService["getVenusianPhaseEvents"]>(),
+    getVenusianPhaseProgressiveEvents:
+      vi.fn<VenusianPhaseService["getVenusianPhaseProgressiveEvents"]>(),
   };
 
   const mercurianPhaseService = {
-    getMercurianPhaseEvents: vi.fn(),
-    getMercurianPhaseProgressiveEvents: vi.fn(),
+    getMercurianPhaseEvents:
+      vi.fn<MercurianPhaseService["getMercurianPhaseEvents"]>(),
+    getMercurianPhaseProgressiveEvents:
+      vi.fn<MercurianPhaseService["getMercurianPhaseProgressiveEvents"]>(),
   };
 
   const martianPhaseService = {
-    getMartianPhaseEvents: vi.fn(),
-    getMartianPhaseProgressiveEvents: vi.fn(),
+    getMartianPhaseEvents:
+      vi.fn<MartianPhaseService["getMartianPhaseEvents"]>(),
+    getMartianPhaseProgressiveEvents:
+      vi.fn<MartianPhaseService["getMartianPhaseProgressiveEvents"]>(),
   };
 
   beforeAll(async () => {
@@ -128,6 +134,10 @@ describe("PhasesService", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("detect", () => {
@@ -199,7 +209,7 @@ describe("PhasesService", () => {
       expect(
         martianPhaseService.getMartianPhaseProgressiveEvents,
       ).toHaveBeenCalledTimes(1);
-      expect(result).toEqual([
+      expect(result).toStrictEqual([
         venusianProgressiveEvent,
         mercurianProgressiveEvent,
         martianProgressiveEvent,
@@ -219,11 +229,7 @@ describe("PhasesService", () => {
         createEvent("Unrelated Event", ["Astronomy"]),
       ]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 });

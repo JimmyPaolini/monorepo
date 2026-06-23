@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { DatetimeService } from "./datetime.service";
 
-describe("DatetimeService", () => {
+describe(DatetimeService, () => {
   let service: DatetimeService;
 
   beforeAll(async () => {
@@ -14,14 +14,11 @@ describe("DatetimeService", () => {
     service = await module.resolve(DatetimeService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("generateMinutes", () => {
     it("yields the start moment when start equals end", () => {
       const start = moment.utc("2024-03-21T00:00:00.000Z");
       const result = [...service.generateMinutes(start, start.clone())];
+
       expect(result).toHaveLength(1);
       expect(result[0]?.toISOString()).toBe(start.toISOString());
     });
@@ -30,6 +27,7 @@ describe("DatetimeService", () => {
       const start = moment.utc("2024-03-21T00:00:00.000Z");
       const end = moment.utc("2024-03-21T00:03:00.000Z");
       const result = [...service.generateMinutes(start, end)];
+
       expect(result).toHaveLength(4);
       expect(result[0]?.toISOString()).toBe("2024-03-21T00:00:00.000Z");
       expect(result[1]?.toISOString()).toBe("2024-03-21T00:01:00.000Z");
@@ -50,8 +48,13 @@ describe("DatetimeService", () => {
       const start = moment.utc("2024-03-21T00:05:00.000Z");
       const end = moment.utc("2024-03-21T00:00:00.000Z");
       const result = [...service.generateMinutes(start, end)];
+
       expect(result).toHaveLength(0);
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("generateDates", () => {
@@ -59,6 +62,7 @@ describe("DatetimeService", () => {
       const timezone = "America/New_York";
       const start = moment.tz("2024-03-21", timezone);
       const result = [...service.generateDates(start, start.clone(), timezone)];
+
       expect(result).toHaveLength(1);
       expect(result[0]?.format("YYYY-MM-DD")).toBe("2024-03-21");
     });
@@ -68,6 +72,7 @@ describe("DatetimeService", () => {
       const start = moment.tz("2024-03-21", timezone);
       const end = moment.tz("2024-03-23", timezone);
       const result = [...service.generateDates(start, end, timezone)];
+
       expect(result).toHaveLength(3);
       expect(result[0]?.format("YYYY-MM-DD")).toBe("2024-03-21");
       expect(result[1]?.format("YYYY-MM-DD")).toBe("2024-03-22");
@@ -91,6 +96,7 @@ describe("DatetimeService", () => {
       const start = moment.tz("2024-03-23", timezone);
       const end = moment.tz("2024-03-21", timezone);
       const result = [...service.generateDates(start, end, timezone)];
+
       expect(result).toHaveLength(0);
     });
 
@@ -99,6 +105,7 @@ describe("DatetimeService", () => {
       const start = moment.utc("2024-01-01");
       const end = moment.utc("2024-01-03");
       const result = [...service.generateDates(start, end, timezone)];
+
       expect(result).toHaveLength(3);
       expect(result[0]?.format("YYYY-MM-DD")).toBe("2024-01-01");
       expect(result[2]?.format("YYYY-MM-DD")).toBe("2024-01-03");

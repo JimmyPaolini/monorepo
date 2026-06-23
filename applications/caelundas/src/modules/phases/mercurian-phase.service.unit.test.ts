@@ -1,5 +1,5 @@
 import { symbolByMercurianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -61,18 +61,20 @@ const configurePhaseCalculationServiceMock = (
 };
 
 const configureProgressiveUtilitiesMock = (
-  progressiveUtilities: ReturnType<typeof createMock<ProgressiveUtilities>>,
+  progressiveUtilities: ReturnType<
+    typeof createMock<ProgressiveUtilitiesService>
+  >,
 ): void => {
   vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
 };
 
-describe("MercurianPhaseService", () => {
+describe(MercurianPhaseService, () => {
   let service: MercurianPhaseService;
   let phaseCalculationService: ReturnType<
     typeof createMock<PhaseCalculationService>
   >;
   let progressiveUtilitiesService: ReturnType<
-    typeof createMock<ProgressiveUtilities>
+    typeof createMock<ProgressiveUtilitiesService>
   >;
 
   beforeAll(async () => {
@@ -85,8 +87,8 @@ describe("MercurianPhaseService", () => {
           useValue: createMock<PhaseCalculationService>(),
         },
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
@@ -94,18 +96,20 @@ describe("MercurianPhaseService", () => {
     service = await module.resolve(MercurianPhaseService);
     await module.resolve(LoggerService);
     phaseCalculationService = await module.resolve(PhaseCalculationService);
-    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+    progressiveUtilitiesService = await module.resolve(
+      ProgressiveUtilitiesService,
+    );
 
     configurePhaseCalculationServiceMock(phaseCalculationService);
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildMercurianPhaseEvent", () => {
@@ -121,8 +125,8 @@ describe("MercurianPhaseService", () => {
         `☿${symbolByMercurianPhase["morning rise"]} Mercury Morning Rise`,
       );
       expect(event.description).toBe("Mercury Morning Rise");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Mercurian");
       expect(event.categories).toContain("Morning Rise");
     });
@@ -150,7 +154,7 @@ describe("MercurianPhaseService", () => {
       });
 
       expect(events).toHaveLength(8);
-      expect(events.map((event) => event.description)).toEqual(
+      expect(events.map((event) => event.description)).toStrictEqual(
         expect.arrayContaining([
           "Mercury Morning Rise",
           "Mercury Western Brightest",
@@ -165,7 +169,7 @@ describe("MercurianPhaseService", () => {
     });
   });
 
-  describe("progressive visibility events", () => {
+  describe("getMercurianPhaseProgressiveEvents", () => {
     it("creates mercurian morning visibility duration events", () => {
       const morningRise: Event = {
         categories: ["Planetary Phase", "Mercurian", "Morning Rise"],
@@ -194,8 +198,8 @@ describe("MercurianPhaseService", () => {
       expect(events[0]?.description).toBe(
         MERCURY_MORNING_VISIBILITY_DESCRIPTION,
       );
-      expect(events[0]?.start).toEqual(morningRise.start);
-      expect(events[0]?.end).toEqual(morningSet.start);
+      expect(events[0]?.start).toStrictEqual(morningRise.start);
+      expect(events[0]?.end).toStrictEqual(morningSet.start);
     });
 
     it("creates mercurian evening visibility duration events", () => {
@@ -226,8 +230,8 @@ describe("MercurianPhaseService", () => {
       expect(events[0]?.description).toBe(
         MERCURY_EVENING_VISIBILITY_DESCRIPTION,
       );
-      expect(events[0]?.start).toEqual(eveningRise.start);
-      expect(events[0]?.end).toEqual(eveningSet.start);
+      expect(events[0]?.start).toStrictEqual(eveningRise.start);
+      expect(events[0]?.end).toStrictEqual(eveningSet.start);
     });
   });
 });

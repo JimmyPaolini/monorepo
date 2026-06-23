@@ -5,7 +5,7 @@ import { Form } from "@monorepo/lexico-entities";
 
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
-describe("FormsTransientWordsService", () => {
+describe(FormsTransientWordsService, () => {
   let service: FormsTransientWordsService;
 
   beforeAll(async () => {
@@ -16,14 +16,14 @@ describe("FormsTransientWordsService", () => {
     service = await module.resolve(FormsTransientWordsService);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
   it("should return empty words when none were set", () => {
     const form = new Form();
 
-    expect(service.getTransientWords(form)).toEqual([]);
+    expect(service.getTransientWords(form)).toStrictEqual([]);
   });
 
   it("should store and retrieve transient words for a form", () => {
@@ -31,6 +31,6 @@ describe("FormsTransientWordsService", () => {
 
     service.setTransientWords(form, ["amo", "amas"]);
 
-    expect(service.getTransientWords(form)).toEqual(["amo", "amas"]);
+    expect(service.getTransientWords(form)).toStrictEqual(["amo", "amas"]);
   });
 });

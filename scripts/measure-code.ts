@@ -121,10 +121,11 @@ function handleFunction(
  */
 function handleImport(node: tsCompiler.Node, stats: typeof jsts): void {
   stats.imports++;
-  const importDecl = node as tsCompiler.ImportDeclaration;
-  const specifier = (importDecl.moduleSpecifier as tsCompiler.StringLiteral)
-    .text;
-  if (!specifier.startsWith(".") && !specifier.startsWith("/")) {
+  const importDeclaration = node as tsCompiler.ImportDeclaration;
+  const specifier = (
+    importDeclaration.moduleSpecifier as tsCompiler.StringLiteral
+  ).text;
+  if (specifier && !specifier.startsWith(".") && !specifier.startsWith("/")) {
     const packageName = specifier.startsWith("@")
       ? specifier.split("/").slice(0, 2).join("/")
       : (specifier.split("/")[0] ?? specifier);

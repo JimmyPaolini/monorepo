@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { {{namePascalCase}}DataLoader } from "./{{nameKebabCase}}.dataloader";
 import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 
-describe("{{namePascalCase}}DataLoader", () => {
+describe({{namePascalCase}}DataLoader, () => {
   let dataloader: {{namePascalCase}}DataLoader;
 
   beforeAll(async () => {
@@ -21,7 +21,7 @@ describe("{{namePascalCase}}DataLoader", () => {
     dataloader = await module.resolve({{namePascalCase}}DataLoader);
   });
 
-  it("should be defined", () => {
-    expect(dataloader).toBeDefined();
+  it("is defined", () => {
+    expect(command).toBeDefined();
   });
 });

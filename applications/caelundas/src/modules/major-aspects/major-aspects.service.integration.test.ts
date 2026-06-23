@@ -3,7 +3,7 @@ import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelun
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -49,27 +49,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
 let service: MajorAspectsService;
-
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      LoggerService,
-      MajorAspectsService,
-      MajorAspectEventService,
-      MajorAspectProgressiveService,
-      AspectsUtilities,
-      EphemerisService,
-      MathService,
-      ProgressiveUtilities,
-    ],
-  }).compile();
-  service = await module.resolve(MajorAspectsService);
-});
 
 /**
  * Builds a CoordinateEphemeris record for all majorAspectBodies across three timestamps.
@@ -108,10 +92,27 @@ function createAspectEphemeris(
 }
 
 describe("major-aspects.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        MajorAspectsService,
+        MajorAspectEventService,
+        MajorAspectProgressiveService,
+        AspectsUtilities,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilitiesService,
+      ],
+    }).compile();
+    service = await module.resolve(MajorAspectsService);
+  });
+
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
-  it("should detect a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {
-    // Sun is placed at 200° (constant) so no Sun-centric pairs produce major aspects.
+  it("detects a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {
+    expect.hasAssertions(); // Sun is placed at 200° (constant) so no Sun-centric pairs produce major aspects.
+
     // Mercury stays at 0° constant; Venus passes through exactly 120° (trine, 6° orb).
     // prevDiff = getAngle(0,121) - 120 = +1, currDiff = getAngle(0,120) - 120 = 0,
     // nextDiff = getAngle(0,119) - 120 = -1 → isCrossing (sign change) → "perfective".
@@ -130,14 +131,16 @@ describe("major-aspects.events integration", () => {
         e.description.includes("Mercury") &&
         e.description.includes("Venus"),
     );
+
     expect(mercuryVenusTrine).toBeDefined();
     expect(mercuryVenusTrine?.categories).toContain("Perfective");
-    expect(mercuryVenusTrine?.start).toEqual(minute);
+    expect(mercuryVenusTrine?.start).toStrictEqual(minute);
     expect(events).toHaveLength(1);
   });
 
-  it("should detect multiple simultaneous aspect events in a single detect() call", () => {
-    // Sun at 0°; Moon approaches from 350°→352°→354° (forming conjunction with Sun):
+  it("detects multiple simultaneous aspect events in a single detect() call", () => {
+    expect.hasAssertions(); // Sun at 0°; Moon approaches from 350°→352°→354° (forming conjunction with Sun):
+
     //   prev: getAngle(0,350)=10° (outside 8° orb), curr: getAngle(0,352)=8° (enters orb, ≤8°)
     // Mercury moves from 93°→94°→97° (dissolving square with Sun):
     //   curr: getAngle(0,94)=94°, |94-90|=4≤6 (in orb), next: getAngle(0,97)=97°, |97-90|=7>6 (exits)
@@ -158,6 +161,7 @@ describe("major-aspects.events integration", () => {
         e.description.includes("Sun") &&
         e.description.includes("Moon"),
     );
+
     expect(formingConjunction).toBeDefined();
     expect(formingConjunction?.categories).toContain("Forming");
 
@@ -167,12 +171,14 @@ describe("major-aspects.events integration", () => {
         e.description.includes("Sun") &&
         e.description.includes("Mercury"),
     );
+
     expect(dissolvingSquare).toBeDefined();
     expect(dissolvingSquare?.categories).toContain("Dissolving");
   });
 
-  it("should return no events when all body longitudes are constant at 100°", () => {
-    // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
+  it("returns no events when all body longitudes are constant at 100°", () => {
+    expect.hasAssertions(); // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.
+
     // Conjunction check: isBouncing requires a strict local extremum — constant data
     // has no minimum or maximum, so zero events are produced.
     const coordinateEphemerisByBody = createAspectEphemeris(minute);

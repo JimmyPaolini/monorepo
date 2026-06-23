@@ -14,9 +14,9 @@ import { LoggerModule } from "../logger/logger.module";
 import { NumeralsModule } from "../numerals/numerals.module";
 
 import { LiteratureLibraryScanService } from "./literature-library-scan.service";
+import { LiteratureTextIngestionService } from "./literature-text-ingestion.service";
 import { LiteratureCommand } from "./literature.command";
 import { LiteratureService } from "./literature.service";
-import { LiteratureTextIngestionService } from "./literature.text-ingestion.service";
 
 /**
  * Module for literature ingestion.

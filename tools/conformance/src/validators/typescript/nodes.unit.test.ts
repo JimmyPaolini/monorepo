@@ -1,3 +1,5 @@
+/* eslint-disable vitest/require-top-level-describe */
+
 import {
   type ClassDeclaration,
   createSourceFile,
@@ -58,7 +60,7 @@ function statementsOf(code: string): Node[] {
   return getChildren(parseTypescript(code));
 }
 
-describe("getChildren", () => {
+describe(getChildren, () => {
   it("returns one child per top-level statement", () => {
     expect(statementsOf("const x = 1;\nconst y = 2;\n")).toHaveLength(2);
   });
@@ -69,6 +71,7 @@ describe("getChildren", () => {
 
   it("never includes EndOfFileToken", () => {
     const children = statementsOf("const x = 1;\n");
+
     expect(children.every((c) => c.kind !== SyntaxKind.EndOfFileToken)).toBe(
       true,
     );
@@ -81,11 +84,12 @@ describe("getChildren", () => {
     const methods = getChildren(defined(source.statements.at(0))).filter(
       (c) => c.kind === SyntaxKind.MethodDeclaration,
     );
+
     expect(methods).toHaveLength(2);
   });
 });
 
-describe("getKey", () => {
+describe(getKey, () => {
   it("returns module specifier for ImportDeclaration", () => {
     expect(
       getKey(
@@ -104,6 +108,7 @@ describe("getKey", () => {
 
   it("returns null for ExportDeclaration without module specifier", () => {
     const nodes = statementsOf("const x = 1;\nexport { x };\n");
+
     expect(getKey(defined(nodes.at(1)))).toBeNull();
   });
 
@@ -130,6 +135,7 @@ describe("getKey", () => {
     const identifier = getChildren(defined(source.statements.at(0))).find(
       (c) => c.kind === SyntaxKind.Identifier,
     );
+
     expect(getKey(defined(identifier))).toBe("Foo");
   });
 
@@ -138,6 +144,7 @@ describe("getKey", () => {
     const stringLiteral = getChildren(defined(source.statements.at(0))).find(
       (c) => c.kind === SyntaxKind.StringLiteral,
     );
+
     expect(getKey(defined(stringLiteral))).toBe("@nestjs/common");
   });
 
@@ -146,6 +153,7 @@ describe("getKey", () => {
     const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const numberLiteral = defined(decl.initializer);
+
     expect(numberLiteral.kind).toBe(SyntaxKind.NumericLiteral);
     expect(getKey(numberLiteral)).toBe("42");
   });
@@ -155,6 +163,7 @@ describe("getKey", () => {
     const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const bigIntLiteral = defined(decl.initializer);
+
     expect(bigIntLiteral.kind).toBe(SyntaxKind.BigIntLiteral);
     expect(getKey(bigIntLiteral)).not.toBeNull();
   });
@@ -164,6 +173,7 @@ describe("getKey", () => {
     const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const templateLiteral = defined(decl.initializer);
+
     expect(templateLiteral.kind).toBe(SyntaxKind.NoSubstitutionTemplateLiteral);
     expect(getKey(templateLiteral)).toBe("hello");
   });
@@ -178,6 +188,7 @@ describe("getKey", () => {
     const source = parseTypescript("class Foo { getBar(): void {} }\n");
     const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const method = defined(classDecl.members.at(0));
+
     expect(method.kind).toBe(SyntaxKind.MethodDeclaration);
     expect(getKey(method)).toBe("getBar");
   });
@@ -187,6 +198,7 @@ describe("getKey", () => {
     const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const method = defined(classDecl.members.at(0));
     const block = getChildren(method).find((c) => c.kind === SyntaxKind.Block);
+
     expect(getKey(defined(block))).toBeNull();
   });
 
@@ -194,12 +206,34 @@ describe("getKey", () => {
     const source = parseTypescript("class Foo { constructor() {} }\n");
     const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const ctor = defined(classDecl.members.at(0));
+
     expect(ctor.kind).toBe(SyntaxKind.Constructor);
     expect(getKey(ctor)).toBeNull();
   });
+
+  it("returns call-expression key with first argument for ExpressionStatement", () => {
+    const source = parseTypescript('describe("suite", () => {});\n');
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("describe:suite");
+  });
+
+  it("returns qualified call-expression key with first argument", () => {
+    const source = parseTypescript('vi.mock("node:fs", () => ({}));\n');
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("vi.mock:node:fs");
+  });
+
+  it("returns callee key including identifier first argument", () => {
+    const source = parseTypescript("describe(suiteName, () => {});\n");
+    const expressionStatement = defined(source.statements.at(0));
+
+    expect(getKey(expressionStatement)).toBe("describe:suiteName");
+  });
 });
 
-describe("filterBySameKey", () => {
+describe(filterBySameKey, () => {
   it("returns nodes whose key matches the template node's key", () => {
     const nodes = statementsOf(
       'import { A } from "@nestjs/common";\nimport { B } from "@nestjs/core";\n',
@@ -208,6 +242,7 @@ describe("filterBySameKey", () => {
       statementsOf('import { X } from "@nestjs/common";\n').at(0),
     );
     const result = filterBySameKey(nodes, templateNode);
+
     expect(result).toHaveLength(1);
     expect(getKey(defined(result.at(0)))).toBe("@nestjs/common");
   });
@@ -217,6 +252,7 @@ describe("filterBySameKey", () => {
     const templateNode = defined(
       statementsOf('import { X } from "other-module";\n').at(0),
     );
+
     expect(filterBySameKey(nodes, templateNode)).toHaveLength(0);
   });
 
@@ -227,11 +263,12 @@ describe("filterBySameKey", () => {
     const templateNode = defined(
       statementsOf('import { X } from "shared";\n').at(0),
     );
+
     expect(filterBySameKey(nodes, templateNode)).toHaveLength(2);
   });
 });
 
-describe("filterBySameKind", () => {
+describe(filterBySameKind, () => {
   it("returns only nodes of the same SyntaxKind as the template node", () => {
     const nodes = statementsOf(
       'import { A } from "a";\nconst x = 1;\nimport { B } from "b";\n',
@@ -240,6 +277,7 @@ describe("filterBySameKind", () => {
       statementsOf('import { X } from "x";\n').at(0),
     );
     const result = filterBySameKind(nodes, templateNode);
+
     expect(result).toHaveLength(2);
     expect(result.every((n) => n.kind === SyntaxKind.ImportDeclaration)).toBe(
       true,
@@ -249,6 +287,7 @@ describe("filterBySameKind", () => {
   it("returns empty array when no node shares the template kind", () => {
     const nodes = statementsOf("const x = 1;\n");
     const templateNode = defined(statementsOf("class Foo {}\n").at(0));
+
     expect(filterBySameKind(nodes, templateNode)).toHaveLength(0);
   });
 
@@ -259,6 +298,7 @@ describe("filterBySameKind", () => {
     const templateNode = defined(
       statementsOf('import { X } from "x";\n').at(0),
     );
+
     expect(filterBySameKind(nodes, templateNode)).toHaveLength(3);
   });
 });

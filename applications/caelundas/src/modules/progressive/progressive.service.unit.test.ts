@@ -11,8 +11,8 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { ProgressiveUtilitiesService } from "./progressive-utilities.service";
 import { ProgressiveService } from "./progressive.service";
-import { ProgressiveUtilities } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -26,18 +26,34 @@ function makeEvent(summary: string): Event {
   };
 }
 
-describe("ProgressiveService", () => {
+describe(ProgressiveService, () => {
   let service: ProgressiveService;
-  let utilitiesService: ProgressiveUtilities;
+  let utilitiesService: ProgressiveUtilitiesService;
 
-  const annualSolarCycleMock = { detectProgressive: vi.fn() };
-  const aspectsMock = { detectProgressive: vi.fn() };
-  const eclipsesMock = { detectProgressive: vi.fn() };
-  const ingressesMock = { detectProgressive: vi.fn() };
-  const monthlyLunarCycleMock = { detectProgressive: vi.fn() };
-  const phasesMock = { detectProgressive: vi.fn() };
-  const retrogradesMock = { detectProgressive: vi.fn() };
-  const twilightsMock = { detectProgressive: vi.fn() };
+  const annualSolarCycleMock = {
+    detectProgressive: vi.fn<AnnualSolarCycleService["detectProgressive"]>(),
+  };
+  const aspectsMock = {
+    detectProgressive: vi.fn<AspectsService["detectProgressive"]>(),
+  };
+  const eclipsesMock = {
+    detectProgressive: vi.fn<EclipsesService["detectProgressive"]>(),
+  };
+  const ingressesMock = {
+    detectProgressive: vi.fn<IngressesService["detectProgressive"]>(),
+  };
+  const monthlyLunarCycleMock = {
+    detectProgressive: vi.fn<MonthlyLunarCycleService["detectProgressive"]>(),
+  };
+  const phasesMock = {
+    detectProgressive: vi.fn<PhasesService["detectProgressive"]>(),
+  };
+  const retrogradesMock = {
+    detectProgressive: vi.fn<RetrogradesService["detectProgressive"]>(),
+  };
+  const twilightsMock = {
+    detectProgressive: vi.fn<TwilightsService["detectProgressive"]>(),
+  };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -52,24 +68,20 @@ describe("ProgressiveService", () => {
         { provide: PhasesService, useValue: phasesMock },
         { provide: RetrogradesService, useValue: retrogradesMock },
         { provide: TwilightsService, useValue: twilightsMock },
-        ProgressiveUtilities,
+        ProgressiveUtilitiesService,
       ],
     }).compile();
 
     service = await module.resolve(ProgressiveService);
-    utilitiesService = await module.resolve(ProgressiveUtilities);
+    utilitiesService = await module.resolve(ProgressiveUtilitiesService);
   });
 
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   describe("detect", () => {
-    it("should return an empty array when all sub-services return nothing", () => {
+    it("returns an empty array when all sub-services return nothing", () => {
       for (const subMock of [
         annualSolarCycleMock,
         aspectsMock,
@@ -85,10 +97,10 @@ describe("ProgressiveService", () => {
 
       const result = service.detect([]);
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
-    it("should aggregate events from all sub-services into a single flat array", () => {
+    it("aggregates events from all sub-services into a single flat array", () => {
       const aspectEvent = makeEvent("aspect");
       const retrogradeEvent = makeEvent("retrograde");
       const eclipseEvent = makeEvent("eclipse");
@@ -110,7 +122,7 @@ describe("ProgressiveService", () => {
       expect(result).toHaveLength(3);
     });
 
-    it("should forward the perfective events array to every sub-service", () => {
+    it("forwards the perfective events array to every sub-service", () => {
       const perfectiveEvents = [makeEvent("perfective")];
 
       for (const subMock of [
@@ -145,14 +157,18 @@ describe("ProgressiveService", () => {
     });
   });
 
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("pairProgressiveEvents", () => {
-    it("should return an empty array when both inputs are empty", () => {
+    it("returns an empty array when both inputs are empty", () => {
       const result = utilitiesService.pairProgressiveEvents([], [], "test");
 
-      expect(result).toEqual([]);
+      expect(result).toStrictEqual([]);
     });
 
-    it("should pair beginnings with their corresponding endings", () => {
+    it("pairs beginnings with their corresponding endings", () => {
       const beginning1 = makeEvent("beginning-1");
       const ending1 = makeEvent("ending-1");
       const beginning2 = makeEvent("beginning-2");
@@ -164,13 +180,13 @@ describe("ProgressiveService", () => {
         "test",
       );
 
-      expect(result).toEqual([
+      expect(result).toStrictEqual([
         [beginning1, ending1],
         [beginning2, ending2],
       ]);
     });
 
-    it("should truncate to the shorter list when counts differ", () => {
+    it("truncates to the shorter list when counts differ", () => {
       const beginning1 = makeEvent("beginning-1");
       const beginning2 = makeEvent("beginning-2");
       const ending1 = makeEvent("ending-1");
@@ -182,13 +198,13 @@ describe("ProgressiveService", () => {
       );
 
       expect(result).toHaveLength(1);
-      expect(result[0]).toEqual([beginning1, ending1]);
+      expect(result[0]).toStrictEqual([beginning1, ending1]);
     });
 
-    it("should emit a console warning when beginning and ending counts differ", () => {
+    it("emits a console warning when beginning and ending counts differ", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
-        .mockImplementation(() => undefined);
+        .mockReturnValue(undefined);
 
       utilitiesService.pairProgressiveEvents(
         [makeEvent("a"), makeEvent("b")],
@@ -201,10 +217,10 @@ describe("ProgressiveService", () => {
       warnSpy.mockRestore();
     });
 
-    it("should not warn when counts are equal", () => {
+    it("does not warn when counts are equal", () => {
       const warnSpy = vi
         .spyOn(LoggerService.prototype, "warn")
-        .mockImplementation(() => undefined);
+        .mockReturnValue(undefined);
 
       utilitiesService.pairProgressiveEvents(
         [makeEvent("a")],

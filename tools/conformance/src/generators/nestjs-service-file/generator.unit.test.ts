@@ -17,7 +17,7 @@ const PROJECT_ROOT = "applications/my-app";
 const MODULES_DIR = `${PROJECT_ROOT}/src/modules`;
 const TARGET_MODULE = "shared";
 
-describe("generateNestjsServiceFile", () => {
+describe(generateNestjsServiceFile, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -42,10 +42,9 @@ describe("generateNestjsServiceFile", () => {
       });
 
       const base = `${MODULES_DIR}/${TARGET_MODULE}`;
-      expect(tree.exists(`${base}/calculator.service.ts`)).toBeTruthy();
-      expect(
-        tree.exists(`${base}/calculator.service.unit.test.ts`),
-      ).toBeTruthy();
+
+      expect(tree.exists(`${base}/calculator.service.ts`)).toBe(true);
+      expect(tree.exists(`${base}/calculator.service.unit.test.ts`)).toBe(true);
     });
 
     it("should use PascalCase class names in generated service file", async () => {
@@ -59,6 +58,7 @@ describe("generateNestjsServiceFile", () => {
         `${MODULES_DIR}/${TARGET_MODULE}/calculator.service.ts`,
         "utf8",
       );
+
       expect(serviceContent).toContain("CalculatorService");
     });
 
@@ -90,7 +90,8 @@ describe("generateNestjsServiceFile", () => {
         instance: serviceContent,
         template: templateContent,
       });
-      expect(result.errors).toEqual([]);
+
+      expect(result.errors).toStrictEqual([]);
     });
   });
 

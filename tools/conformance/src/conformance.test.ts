@@ -39,14 +39,6 @@ const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
-const SERVICE_TEMPLATE_FILE_PATH = path.join(
-  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
-  "__nameKebabCase__.service.ts",
-);
-const SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH = path.join(
-  SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
-  "__nameKebabCase__.service.unit.test.ts",
-);
 
 function resolveNestjsModuleDirectories(
   applications: { rootPath: string; tags: string[] }[],
@@ -222,8 +214,9 @@ describe("generator template conformance", () => {
     (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
   );
 
-  for (const conformanceCase of conformanceCases) {
-    it(`validates "${conformanceCase.template}" generated instances`, () => {
+  it.each(conformanceCases)(
+    'validates "$template" generated instances',
+    (conformanceCase) => {
       const results =
         conformanceCase.instanceType === "single"
           ? conformanceCase.instanceDirectoryPaths.map(
@@ -242,69 +235,84 @@ describe("generator template conformance", () => {
             );
 
       expect(results.length).toBeGreaterThan(0);
+
       const errors = stringifyConformanceErrors(results);
+
       expect(errors).toBeNull();
-    });
-  }
+    },
+  );
 
   it("validates all NestJS service files and tests with nestjs-service-file templates", () => {
     const nestjsApplications = applications.filter((application) =>
       application.tags.includes(NESTJS_APPLICATION_TAG),
     );
-    const serviceFilePaths = nestjsApplications.flatMap((application) => {
-      return [
-        ...globSync(
+    const serviceImplementationFilePaths = nestjsApplications.flatMap(
+      (application) => {
+        return globSync(
           path.join(application.rootPath, "src/modules/*/*.service.ts"),
-        ),
-        ...globSync(
-          path.join(
-            application.rootPath,
-            "src/modules/*/*.service.unit.test.ts",
-          ),
-        ),
-      ];
-    });
+        );
+      },
+    );
+    const templateFilenames = fs
+      .readdirSync(SERVICE_FILES_TEMPLATES_DIRECTORY_PATH, {
+        withFileTypes: true,
+      })
+      .filter((node) => node.isFile())
+      .map((node) => node.name)
+      .toSorted();
 
-    expect(serviceFilePaths.length).toBeGreaterThan(0);
+    expect(serviceImplementationFilePaths.length).toBeGreaterThan(0);
+    expect(templateFilenames.length).toBeGreaterThan(0);
 
     const serviceFileValidationResults: InstanceDirectoryValidationResult[] =
-      serviceFilePaths.map((serviceFilePath) => {
-        const templateFilePath = serviceFilePath.endsWith(
-          ".service.unit.test.ts",
-        )
-          ? SERVICE_UNIT_TEST_TEMPLATE_FILE_PATH
-          : SERVICE_TEMPLATE_FILE_PATH;
+      serviceImplementationFilePaths.map((serviceFilePath) => {
         const serviceName = path
           .basename(serviceFilePath)
-          .replace(".service.unit.test.ts", "")
           .replace(".service.ts", "");
         const nameKebabCase =
           converterByStringCase[StringCase.KEBAB_CASE](serviceName);
-        const validationResult = validateInstanceFile({
-          data: {
-            nameCamelCase:
-              converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+        const data = {
+          nameCamelCase:
+            converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+          nameKebabCase,
+          namePascalCase:
+            converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+        };
+        const validationResults = templateFilenames.map((templateFilename) => {
+          const templateFilePath = path.join(
+            SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
+            templateFilename,
+          );
+          const instanceFilename = templateFilename.replaceAll(
+            "__nameKebabCase__",
             nameKebabCase,
-            namePascalCase:
-              converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
-          },
-          instanceFilePath: serviceFilePath,
-          templateFilePath,
+          );
+          const instanceFilePath = path.join(
+            path.dirname(serviceFilePath),
+            instanceFilename,
+          );
+          const validationResult = validateInstanceFile({
+            data,
+            instanceFilePath,
+            templateFilePath,
+          });
+
+          return {
+            ...validationResult,
+            filename: instanceFilename,
+          };
         });
+
         return {
           directoryName: path.relative(
             workspaceRoot,
             path.dirname(serviceFilePath),
           ),
-          results: [
-            {
-              ...validationResult,
-              filename: path.basename(serviceFilePath),
-            },
-          ],
+          results: validationResults,
         };
       });
     const errors = stringifyConformanceErrors(serviceFileValidationResults);
+
     expect(errors).toBeNull();
   });
 });

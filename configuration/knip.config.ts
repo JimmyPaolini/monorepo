@@ -148,6 +148,7 @@ const config: KnipConfig = {
         "src/modules/database/migrations/**/*.ts",
       ],
       ignoreDependencies: [
+        "@testcontainers/postgresql", // Used by integration helper in packages/lexico-entities/testing (outside knip project scope)
         "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
       ],
       ignore: [

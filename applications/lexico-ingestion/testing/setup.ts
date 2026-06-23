@@ -1,7 +1,6 @@
-import "reflect-metadata";
-
 import fs from "node:fs";
 
+import "reflect-metadata";
 import { beforeAll, beforeEach, vi } from "vitest";
 
 beforeAll(() => {
@@ -12,6 +11,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
+  vi.clearAllMocks();
   vi.spyOn(console, "log").mockImplementation(() => {});
   vi.spyOn(console, "error").mockImplementation(() => {});
   vi.spyOn(console, "warn").mockImplementation(() => {});

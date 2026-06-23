@@ -1,16 +1,18 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
-import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import _ from "lodash";
+import moment, { type Moment } from "moment-timezone";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("SextupleAspectsService", () => {
+describe(SextupleAspectsService, () => {
   let service: SextupleAspectsService;
+  let composerService: SextupleAspectsComposerService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -20,12 +22,17 @@ describe("SextupleAspectsService", () => {
         MathService,
       ],
     }).compile();
+    composerService = await module.resolve(SextupleAspectsComposerService);
     service = await module.resolve(SextupleAspectsService);
   });
 
-  describe("service.detect", () => {
-    describe("Hexagram composition", () => {
-      it("should not generate perfective Hexagram events (only forming/dissolving)", () => {
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  describe("detect", () => {
+    describe("hexagram composition", () => {
+      it("does not generate perfective Hexagram events (only forming/dissolving)", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Hexagram: 6 bodies forming two interlocking grand trines
@@ -61,7 +68,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should handle aspects that start and end at same time", () => {
+      it("handles aspects that start and end at same time", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Pattern doesn't exist at 11:59, exists at 12:00, doesn't exist at 12:01
@@ -96,7 +103,7 @@ describe("SextupleAspectsService", () => {
         expect(Array.isArray(events)).toBe(true);
       });
 
-      it("should return empty array when insufficient trines exist", () => {
+      it("returns empty array when insufficient trines exist", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 4 trines (need 6 for hexagram)
@@ -118,7 +125,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return empty array when insufficient sextiles exist", () => {
+      it("returns empty array when insufficient sextiles exist", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 6 trines but only 3 sextiles (need 6)
@@ -147,7 +154,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return empty array when fewer than 6 bodies involved", () => {
+      it("returns empty array when fewer than 6 bodies involved", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 5 bodies (Sun, Moon, Mars, Jupiter, Venus)
@@ -169,7 +176,44 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should return empty array for invalid aspect events", () => {
+      it("returns empty events when trine collection resolves to fewer than six unique bodies", () => {
+        const groupAspectsByTypeSpy = vi
+          .spyOn(composerService, "groupAspectsByType")
+          .mockReturnValue(
+            new Map([
+              [
+                "sextile",
+                Array.from({ length: 6 }, () => ({
+                  aspect: "sextile",
+                  bodies: ["sun", "moon"],
+                })),
+              ],
+              [
+                "trine",
+                Array.from({ length: 6 }, () => ({
+                  aspect: "trine",
+                  bodies: ["sun", "moon"],
+                })),
+              ],
+            ]) as never,
+          );
+        const collectTrineBodiesSpy = vi
+          .spyOn(composerService, "collectTrineBodies")
+          .mockReturnValue(["sun", "moon", "mars", "jupiter", "venus"]);
+
+        expect(
+          service.detect({
+            currentAspectBodies: [],
+            minute: moment.utc("2024-03-21T12:00:00.000Z"),
+            previousAspectBodies: [],
+          }),
+        ).toStrictEqual([]);
+
+        groupAspectsByTypeSpy.mockRestore();
+        collectTrineBodiesSpy.mockRestore();
+      });
+
+      it("returns empty array for invalid aspect events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         const currentAspectBodies: AspectBodies[] = [];
@@ -184,7 +228,7 @@ describe("SextupleAspectsService", () => {
         expect(events).toHaveLength(0);
       });
 
-      it("should process complete hexagram pattern without errors", () => {
+      it("processes complete hexagram pattern without errors", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Complete hexagram starting at 12:00 (not at 11:59)
@@ -220,14 +264,14 @@ describe("SextupleAspectsService", () => {
     });
   });
 
-  describe("service.detectProgressive", () => {
-    it("should return empty array for empty input", () => {
+  describe("detectProgressive", () => {
+    it("returns empty array for empty input", () => {
       const events = service.detectProgressive([]);
 
       expect(events).toHaveLength(0);
     });
 
-    it("should return empty array when no sextuple aspect events exist", () => {
+    it("returns empty array when no sextuple aspect events exist", () => {
       const events: Event[] = [
         {
           categories: ["Astronomy", "Astrology", "Simple Aspect"],
@@ -243,7 +287,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should create progressive event from forming to dissolving pair", () => {
+    it("creates progressive event from forming to dissolving pair", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -295,8 +339,8 @@ describe("SextupleAspectsService", () => {
       ]);
 
       expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.start).toEqual(formingEvent.start);
-      expect(progressiveEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(progressiveEvents[0]?.start).toStrictEqual(formingEvent.start);
+      expect(progressiveEvents[0]?.end).toStrictEqual(dissolvingEvent.start);
       // Note: The emoji regex doesn't strip properly due to multi-byte chars
       // Just verify it's attempting to strip and categories are correct
       expect(progressiveEvents[0]?.summary).toContain(
@@ -309,7 +353,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents[0]?.categories).not.toContain("Dissolving");
     });
 
-    it("should not create progressive event when only forming exists", () => {
+    it("does not create progressive event when only forming exists", () => {
       const formingEvent: Event = {
         categories: [
           "Astronomy",
@@ -337,7 +381,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should not create progressive event when only dissolving exists", () => {
+    it("does not create progressive event when only dissolving exists", () => {
       const dissolvingEvent: Event = {
         categories: [
           "Astronomy",
@@ -366,7 +410,7 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("should handle multiple forming/dissolving pairs", () => {
+    it("handles multiple forming/dissolving pairs", () => {
       const events: Event[] = [
         {
           categories: [
@@ -461,21 +505,21 @@ describe("SextupleAspectsService", () => {
       const progressiveEvents = service.detectProgressive(events);
 
       expect(progressiveEvents).toHaveLength(2);
-      expect(progressiveEvents[0]?.start).toEqual(
+      expect(progressiveEvents[0]?.start).toStrictEqual(
         moment.utc("2024-03-21T10:00:00.000Z"),
       );
-      expect(progressiveEvents[0]?.end).toEqual(
+      expect(progressiveEvents[0]?.end).toStrictEqual(
         moment.utc("2024-03-21T14:00:00.000Z"),
       );
-      expect(progressiveEvents[1]?.start).toEqual(
+      expect(progressiveEvents[1]?.start).toStrictEqual(
         moment.utc("2024-03-22T10:00:00.000Z"),
       );
-      expect(progressiveEvents[1]?.end).toEqual(
+      expect(progressiveEvents[1]?.end).toStrictEqual(
         moment.utc("2024-03-22T14:00:00.000Z"),
       );
     });
 
-    it("should handle different body combinations separately", () => {
+    it("handles different body combinations separately", () => {
       const events: Event[] = [
         // First body combination
         {
@@ -577,9 +621,408 @@ describe("SextupleAspectsService", () => {
       expect(progressiveEvents[1]?.categories).toContain("Neptune");
       expect(progressiveEvents[1]?.categories).toContain("Uranus");
     });
-  });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
+    it("continues searching when sorted progressive groups contain undefined slots", () => {
+      const formingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "forming",
+        end: moment.utc("2024-03-21T12:00:00.000Z"),
+        start: moment.utc("2024-03-21T12:00:00.000Z"),
+        summary: "forming",
+      } as Event;
+      const dissolvingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Dissolving",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "dissolving",
+        end: moment.utc("2024-03-21T13:00:00.000Z"),
+        start: moment.utc("2024-03-21T13:00:00.000Z"),
+        summary: "dissolving",
+      } as Event;
+      const sortBySpy = vi
+        .spyOn(_, "sortBy")
+        .mockReturnValue([formingEvent, undefined, dissolvingEvent]);
+
+      const progressiveEvents = service.detectProgressive([
+        formingEvent,
+        dissolvingEvent,
+      ]);
+
+      expect(progressiveEvents).toHaveLength(1);
+
+      sortBySpy.mockRestore();
+    });
+
+    it("creates progressive sextuple events when a dissolving pair is found", () => {
+      const formingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "forming",
+        end: moment.utc("2024-03-21T12:00:00.000Z"),
+        start: moment.utc("2024-03-21T12:00:00.000Z"),
+        summary: "forming",
+      } as Event;
+      const dissolvingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Dissolving",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "dissolving",
+        end: moment.utc("2024-03-21T13:00:00.000Z"),
+        start: moment.utc("2024-03-21T13:00:00.000Z"),
+        summary: "dissolving",
+      } as Event;
+      const progressiveEvent = {
+        categories: ["Sextuple Aspect", "Hexagram"],
+        description: "progressive",
+        end: moment.utc("2024-03-21T13:00:00.000Z"),
+        start: moment.utc("2024-03-21T12:00:00.000Z"),
+        summary: "progressive",
+      } as Event;
+      const groupedSpy = vi
+        .spyOn(composerService, "groupSextupleEventsByKey")
+        .mockReturnValue({ hexagram: [formingEvent, dissolvingEvent] });
+      const progressiveSpy = vi
+        .spyOn(composerService, "buildProgressiveSextupleEvent")
+        .mockReturnValue(progressiveEvent);
+
+      expect(service.detectProgressive([])).toStrictEqual([progressiveEvent]);
+
+      groupedSpy.mockRestore();
+      progressiveSpy.mockRestore();
+    });
+
+    it("ignores non-dissolving follow-up events in progressive detection", () => {
+      const formingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "forming",
+        end: moment.utc("2024-03-21T12:00:00.000Z"),
+        start: moment.utc("2024-03-21T12:00:00.000Z"),
+        summary: "forming",
+      } as Event;
+      const nonDissolvingEvent = {
+        categories: [
+          "Sextuple Aspect",
+          "Hexagram",
+          "Perfective",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Jupiter",
+          "Venus",
+          "Saturn",
+        ],
+        description: "perfective",
+        end: moment.utc("2024-03-21T13:00:00.000Z"),
+        start: moment.utc("2024-03-21T13:00:00.000Z"),
+        summary: "perfective",
+      } as Event;
+      const groupedSpy = vi
+        .spyOn(composerService, "groupSextupleEventsByKey")
+        .mockReturnValue({ hexagram: [formingEvent, nonDissolvingEvent] });
+
+      expect(service.detectProgressive([])).toStrictEqual([]);
+
+      groupedSpy.mockRestore();
+    });
+
+    describe("detect guard branches", () => {
+      it("adds and skips adjacency connections based on body membership and aspect type", () => {
+        const { sextileConnections, trineConnections } =
+          composerService.buildAspectConnectionMaps(
+            ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
+            [
+              { aspect: "trine", bodies: ["sun", "moon"] },
+              { aspect: "sextile", bodies: ["moon", "mars"] },
+              { aspect: "conjunct", bodies: ["mars", "jupiter"] },
+              {
+                aspect: "trine",
+                bodies: ["sun", "pluto"] as unknown as ["sun", "moon"],
+              },
+            ],
+          );
+
+        expect(trineConnections.get("sun")?.has("moon")).toBe(true);
+        expect(sextileConnections.get("moon")?.has("mars")).toBe(true);
+        expect(trineConnections.get("mars")?.has("jupiter")).toBe(false);
+      });
+
+      it("returns null when buildHexagramEvent receives fewer than six bodies", () => {
+        expect(
+          composerService.buildHexagramEvent(
+            ["sun", "moon", "mars", "jupiter", "venus"],
+            "forming",
+            moment.utc("2024-03-21T12:00:00.000Z"),
+          ),
+        ).toBeNull();
+      });
+
+      it("returns null when grand-trine pair extraction produces an incomplete pair", () => {
+        const findGrandTrinePairsSpy = vi
+          .spyOn(composerService, "findGrandTrinePairs")
+          .mockReturnValue([
+            undefined as never,
+            ["sun", "moon", "mars"] as never,
+          ]);
+
+        const pattern = composerService.findHexagramPattern(
+          ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
+          [],
+        );
+
+        expect(pattern).toBeNull();
+
+        findGrandTrinePairsSpy.mockRestore();
+      });
+
+      it("returns perfective phase emoji", () => {
+        expect(composerService.getPhaseEmoji("perfective")).toBe("🎯 ");
+      });
+
+      it("returns false when hexagon sextile checks receive incomplete arrangements", () => {
+        expect(
+          composerService.checkHexagonSextiles(
+            ["sun", "moon"] as never,
+            new Map() as never,
+          ),
+        ).toBe(false);
+      });
+
+      it("returns null when trine group collection cannot build two complete groups", () => {
+        const result = composerService.findGrandTrinePairs(
+          ["sun", "moon", "mars"] as never,
+          new Map<string, Set<string>>([
+            ["mars", new Set<string>()],
+            ["moon", new Set(["sun"])],
+            ["sun", new Set(["moon"])],
+          ]) as never,
+        );
+
+        expect(result).toBeNull();
+      });
+
+      it("returns null when arrangement pair contains undefined body slots", () => {
+        const result = composerService.tryArrangementForPair({
+          index: 0,
+          index_: 0,
+          index__: 2,
+          l: 1,
+          sextileConnections: new Map(),
+          trine1: ["sun", "moon", undefined] as unknown as string[],
+          trine2: ["mars", "jupiter", "venus"],
+        } as never);
+
+        expect(result).toBeNull();
+      });
+
+      it("skips addConnection when the source body does not exist in the map", () => {
+        const connections = new Map([["sun", new Set<string>()]]);
+        composerService.addConnection(connections as never, "moon", "mars");
+
+        expect(connections.get("sun")?.size).toBe(0);
+      });
+
+      it("returns false when arrangement entries are undefined in sextile verification", () => {
+        expect(
+          composerService.checkHexagonSextiles(
+            ["sun", "moon", "mars", "jupiter", "venus", undefined] as never,
+            new Map() as never,
+          ),
+        ).toBe(false);
+      });
+
+      it("returns null when trine-neighbor pair contains undefined values", () => {
+        const neighborsSpy = vi
+          .spyOn(composerService, "getGrandTrineNeighbors")
+          .mockReturnValue([undefined, "moon"] as never);
+
+        const result = composerService.findGrandTrinePairs(
+          ["sun", "moon", "mars", "jupiter", "venus", "saturn"] as never,
+          new Map() as never,
+        );
+
+        expect(result).toBeNull();
+
+        neighborsSpy.mockRestore();
+      });
+
+      it("returns null when arrangement index math cannot resolve remaining nodes", () => {
+        const result = composerService.tryArrangementForPair({
+          index: 0,
+          index_: 0,
+          index__: 1,
+          l: 1,
+          sextileConnections: new Map(),
+          trine1: ["sun", "moon", "mars"],
+          trine2: ["jupiter", "venus", "saturn"],
+        } as never);
+
+        expect(result).toBeNull();
+      });
+
+      it("adds built events when processHexagramCombinations resolves a phase transition", () => {
+        const processHexagramCombinations = (
+          service as unknown as {
+            processHexagramCombinations: (args: {
+              combinations: string[][];
+              currentAspectBodies: AspectBodies[];
+              minute: Moment;
+              previousAspectBodies: AspectBodies[];
+              unionEdges: AspectBodies[];
+            }) => Event[];
+          }
+        ).processHexagramCombinations.bind(service);
+        const findPatternSpy = vi
+          .spyOn(composerService, "findHexagramPattern")
+          .mockReturnValue([
+            "sun",
+            "moon",
+            "mars",
+            "jupiter",
+            "venus",
+            "saturn",
+          ]);
+        const phaseSpy = vi
+          .spyOn(
+            service as unknown as {
+              determineCompoundPhaseFromSnapshots: (args: unknown) => null | {
+                eventMinute: Moment;
+                phase: "dissolving" | "forming" | "perfective";
+              };
+            },
+            "determineCompoundPhaseFromSnapshots",
+          )
+          .mockReturnValue({
+            eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
+            phase: "forming",
+          });
+        const buildHexagramSpy = vi
+          .spyOn(composerService, "buildHexagramEvent")
+          .mockReturnValue({
+            categories: ["Sextuple Aspect", "Hexagram", "Forming"],
+            description: "hexagram forming",
+            end: moment.utc("2024-03-21T12:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            summary: "hexagram forming",
+          });
+
+        expect(
+          processHexagramCombinations({
+            combinations: [
+              ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
+            ],
+            currentAspectBodies: [],
+            minute: moment.utc("2024-03-21T12:00:00.000Z"),
+            previousAspectBodies: [],
+            unionEdges: [],
+          }),
+        ).toHaveLength(1);
+
+        findPatternSpy.mockRestore();
+        phaseSpy.mockRestore();
+        buildHexagramSpy.mockRestore();
+      });
+
+      it("skips event push when buildHexagramEvent returns null after phase transition", () => {
+        const processHexagramCombinations = (
+          service as unknown as {
+            processHexagramCombinations: (args: {
+              combinations: string[][];
+              currentAspectBodies: AspectBodies[];
+              minute: Moment;
+              previousAspectBodies: AspectBodies[];
+              unionEdges: AspectBodies[];
+            }) => Event[];
+          }
+        ).processHexagramCombinations.bind(service);
+        const findPatternSpy = vi
+          .spyOn(composerService, "findHexagramPattern")
+          .mockReturnValue([
+            "sun",
+            "moon",
+            "mars",
+            "jupiter",
+            "venus",
+            "saturn",
+          ]);
+        const phaseSpy = vi
+          .spyOn(
+            service as unknown as {
+              determineCompoundPhaseFromSnapshots: (args: unknown) => null | {
+                eventMinute: Moment;
+                phase: "dissolving" | "forming" | "perfective";
+              };
+            },
+            "determineCompoundPhaseFromSnapshots",
+          )
+          .mockReturnValue({
+            eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
+            phase: "forming",
+          });
+        const buildHexagramSpy = vi
+          .spyOn(composerService, "buildHexagramEvent")
+          .mockReturnValue(null);
+
+        expect(
+          processHexagramCombinations({
+            combinations: [
+              ["sun", "moon", "mars", "jupiter", "venus", "saturn"],
+            ],
+            currentAspectBodies: [],
+            minute: moment.utc("2024-03-21T12:00:00.000Z"),
+            previousAspectBodies: [],
+            unionEdges: [],
+          }),
+        ).toStrictEqual([]);
+
+        findPatternSpy.mockRestore();
+        phaseSpy.mockRestore();
+        buildHexagramSpy.mockRestore();
+      });
+    });
   });
 });

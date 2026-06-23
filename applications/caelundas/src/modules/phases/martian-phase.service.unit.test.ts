@@ -1,5 +1,5 @@
 import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -57,18 +57,20 @@ const configurePhaseCalculationServiceMock = (
 };
 
 const configureProgressiveUtilitiesMock = (
-  progressiveUtilities: ReturnType<typeof createMock<ProgressiveUtilities>>,
+  progressiveUtilities: ReturnType<
+    typeof createMock<ProgressiveUtilitiesService>
+  >,
 ): void => {
   vi.mocked(progressiveUtilities.pairProgressiveEvents).mockReturnValue([]);
 };
 
-describe("MartianPhaseService", () => {
+describe(MartianPhaseService, () => {
   let service: MartianPhaseService;
   let phaseCalculationService: ReturnType<
     typeof createMock<PhaseCalculationService>
   >;
   let progressiveUtilitiesService: ReturnType<
-    typeof createMock<ProgressiveUtilities>
+    typeof createMock<ProgressiveUtilitiesService>
   >;
 
   beforeAll(async () => {
@@ -81,8 +83,8 @@ describe("MartianPhaseService", () => {
           useValue: createMock<PhaseCalculationService>(),
         },
         {
-          provide: ProgressiveUtilities,
-          useValue: createMock<ProgressiveUtilities>(),
+          provide: ProgressiveUtilitiesService,
+          useValue: createMock<ProgressiveUtilitiesService>(),
         },
       ],
     }).compile();
@@ -90,18 +92,20 @@ describe("MartianPhaseService", () => {
     service = await module.resolve(MartianPhaseService);
     await module.resolve(LoggerService);
     phaseCalculationService = await module.resolve(PhaseCalculationService);
-    progressiveUtilitiesService = await module.resolve(ProgressiveUtilities);
+    progressiveUtilitiesService = await module.resolve(
+      ProgressiveUtilitiesService,
+    );
 
     configurePhaseCalculationServiceMock(phaseCalculationService);
     configureProgressiveUtilitiesMock(progressiveUtilitiesService);
   });
 
-  it("should be defined", () => {
-    expect(service).toBeDefined();
-  });
-
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("buildMartianPhaseEvent", () => {
@@ -117,8 +121,8 @@ describe("MartianPhaseService", () => {
         `♂️${symbolByMartianPhase["morning rise"]} Mars Morning Rise`,
       );
       expect(event.description).toBe("Mars Morning Rise");
-      expect(event.start).toEqual(timestamp);
-      expect(event.end).toEqual(timestamp);
+      expect(event.start).toStrictEqual(timestamp);
+      expect(event.end).toStrictEqual(timestamp);
       expect(event.categories).toContain("Martian");
       expect(event.categories).toContain("Morning Rise");
     });
@@ -142,7 +146,7 @@ describe("MartianPhaseService", () => {
       });
 
       expect(events).toHaveLength(4);
-      expect(events.map((event) => event.description)).toEqual(
+      expect(events.map((event) => event.description)).toStrictEqual(
         expect.arrayContaining([
           "Mars Morning Rise",
           "Mars Morning Set",
@@ -153,7 +157,7 @@ describe("MartianPhaseService", () => {
     });
   });
 
-  describe("progressive visibility events", () => {
+  describe("getMartianPhaseProgressiveEvents", () => {
     it("creates martian morning visibility duration events", () => {
       const morningRise: Event = {
         categories: ["Planetary Phase", "Martian", "Morning Rise"],
@@ -180,8 +184,8 @@ describe("MartianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(MARS_MORNING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(morningRise.start);
-      expect(events[0]?.end).toEqual(morningSet.start);
+      expect(events[0]?.start).toStrictEqual(morningRise.start);
+      expect(events[0]?.end).toStrictEqual(morningSet.start);
     });
 
     it("creates martian evening visibility duration events", () => {
@@ -210,8 +214,8 @@ describe("MartianPhaseService", () => {
 
       expect(events).toHaveLength(1);
       expect(events[0]?.description).toBe(MARS_EVENING_VISIBILITY_DESCRIPTION);
-      expect(events[0]?.start).toEqual(eveningRise.start);
-      expect(events[0]?.end).toEqual(eveningSet.start);
+      expect(events[0]?.start).toStrictEqual(eveningRise.start);
+      expect(events[0]?.end).toStrictEqual(eveningSet.start);
     });
   });
 });

@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 
-describe("{{namePascalCase}}Service", () => {
+describe({{namePascalCase}}Service, () => {
   let service: {{namePascalCase}}Service;
 
   beforeAll(async () => {
@@ -14,7 +14,7 @@ describe("{{namePascalCase}}Service", () => {
     service = await module.resolve({{namePascalCase}}Service);
   });
 
-  it("should be defined", () => {
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 });

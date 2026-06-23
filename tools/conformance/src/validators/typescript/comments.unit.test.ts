@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { validateAllComments } from "./comments";
 
-describe("validateAllComments", () => {
+describe(validateAllComments, () => {
   function runValidation(
     templateText: string,
     instanceText: string,
@@ -43,13 +43,15 @@ describe("validateAllComments", () => {
       // Second comment
       const b = 2;
     `;
-    expect(runValidation(template, instance)).toEqual([]);
+
+    expect(runValidation(template, instance)).toStrictEqual([]);
   });
 
   it("reports missing comment when a comment is absent", () => {
     const template = `// Required comment`;
     const instance = `const a = 1;`;
     const errors = runValidation(template, instance);
+
     expect(errors).toHaveLength(1);
     expect(errors[0]?.expected).toBe("// Required comment");
     expect(errors[0]?.message).toBe('Missing comment: "// Required comment"');
@@ -64,7 +66,8 @@ describe("validateAllComments", () => {
       // This is documented now!
       const a = 1;
     `;
-    expect(runValidation(template, instance)).toEqual([]);
+
+    expect(runValidation(template, instance)).toStrictEqual([]);
   });
 
   it("fails if comments are out of order", () => {
@@ -77,6 +80,7 @@ describe("validateAllComments", () => {
       // First
     `;
     const errors = runValidation(template, instance);
+
     expect(errors).toHaveLength(1);
     expect(errors[0]?.expected).toBe("// Second");
   });
@@ -84,7 +88,8 @@ describe("validateAllComments", () => {
   it("supports multi-line comments", () => {
     const template = `/* Block */`;
     const instance = `/* Block */`;
-    expect(runValidation(template, instance)).toEqual([]);
+
+    expect(runValidation(template, instance)).toStrictEqual([]);
   });
 
   it("ignores urls inside string literals", () => {
@@ -93,6 +98,7 @@ describe("validateAllComments", () => {
       const url = "https://example.com";
       // A comment
     `;
-    expect(runValidation(template, instance)).toEqual([]);
+
+    expect(runValidation(template, instance)).toStrictEqual([]);
   });
 });

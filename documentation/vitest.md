@@ -26,7 +26,7 @@ The workspace-level `vitest.config.base.ts` provides:
   - `json-summary`: Machine-readable coverage summary
   - `lcov`: Standard format for coverage tools
   - `html`: Visual HTML report in `coverage/index.html`
-- **Coverage thresholds**: All projects inherit 80% minimum thresholds for:
+- **Coverage thresholds**: All projects inherit 96% minimum thresholds for:
   - Lines
   - Functions
   - Branches
@@ -67,7 +67,7 @@ The main application with critical tests. Extends base config with:
 - **Test pattern**: `src/**/*.test.ts`
 - **Setup files**: `./testing/setup.ts` (initializes test environment with fixtures, stubs, etc.)
 - **Coverage**: Includes all `src/**/*.ts` files, excludes test files
-- **Inherits**: 80% coverage thresholds, mock clearing/restoration from base config
+- **Inherits**: 96% coverage thresholds, mock clearing/restoration from base config
 
 ### tools/code-generator
 
@@ -75,7 +75,7 @@ Utility library for Nx generators. Extends base config with:
 
 - **Test pattern**: `src/**/*.test.ts`
 - **Coverage**: Includes all `src/**/*.ts` files, excludes test files
-- **Inherits**: 80% coverage thresholds from base config
+- **Inherits**: 96% coverage thresholds from base config
 - **Note**: Uses `passWithNoTests: true` from base, so no tests are required
 
 ## Running Tests
@@ -124,21 +124,21 @@ This ensures:
 
 - Only affected projects are tested (faster feedback)
 - Coverage reports are generated for all tests
-- All projects must meet 80% coverage thresholds to pass
+- All projects must meet 96% coverage thresholds to pass
 - Coverage artifacts are uploaded for reporting
 
 ## Coverage Threshold Enforcement
 
-All projects inherit 80% thresholds from the base config. Projects must meet these minimums:
+All projects inherit 96% thresholds from the base config. Projects must meet these minimums:
 
 ```text
 ┌─────────────┬──────────┐
 │ Metric      │ Minimum  │
 ├─────────────┼──────────┤
-│ Lines       │ 80%      │
-│ Functions   │ 80%      │
-│ Branches    │ 80%      │
-│ Statements  │ 80%      │
+│ Lines       │ 96%      │
+│ Functions   │ 96%      │
+│ Branches    │ 96%      │
+│ Statements  │ 96%      │
 └─────────────┴──────────┘
 ```
 
@@ -151,7 +151,7 @@ define custom thresholds in the project's `vitest.config.ts`:
 ```typescript
 coverage: {
   thresholds: {
-    lines: 90,    // Override global 80%
+    lines: 96,    // Override global 96%
     functions: 85,
     branches: 75,
     statements: 90,
@@ -305,16 +305,6 @@ Ensure `reportOnFailure: true` is in coverage config:
 ```typescript
 coverage: {
   reportOnFailure: true,  // Makes test fail if thresholds not met
-}
-```
-
-### Globals Not Available
-
-Ensure `globals: true` is set in test config:
-
-```typescript
-test: {
-  globals: true,  // No need to import test, describe, etc.
 }
 ```
 

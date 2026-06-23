@@ -5,7 +5,7 @@ import {
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -34,24 +34,11 @@ import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephem
 
 vi.mock("fs", () => ({
   default: {
-    writeFileSync: vi.fn(),
+    writeFileSync: vi.fn<(path: string, data: string) => void>(),
   },
 }));
 
 let service: RetrogradesService;
-
-beforeAll(async () => {
-  const module = await Test.createTestingModule({
-    providers: [
-      LoggerService,
-      RetrogradesService,
-      EphemerisService,
-      MathService,
-      ProgressiveUtilities,
-    ],
-  }).compile();
-  service = await module.resolve(RetrogradesService);
-});
 
 /**
  * Builds a Record<RetrogradeBody, CoordinateEphemeris> across the 61-minute detection
@@ -111,10 +98,24 @@ function createRetrogradeEphemeris(
 }
 
 describe("retrogrades.events integration", () => {
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LoggerService,
+        RetrogradesService,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilitiesService,
+      ],
+    }).compile();
+    service = await module.resolve(RetrogradesService);
+  });
+
   const minute = moment.utc("2024-09-09T12:00:00.000Z");
 
-  it("should detect a Mercury retrograde station when longitude reaches a maximum", () => {
-    // isRetrograde: ALL normalizeForComparison(prev, curr) < curr
+  it("detects a Mercury retrograde station when longitude reaches a maximum", () => {
+    expect.hasAssertions(); // isRetrograde: ALL normalizeForComparison(prev, curr) < curr
+
     //               AND ALL normalizeForComparison(next, curr) <= curr
     // Mercury longitude peaks at 100.0 — all previous and next values are 99.5
     const coordinateEphemerisByBody = createRetrogradeEphemeris(minute, {
@@ -130,11 +131,12 @@ describe("retrogrades.events integration", () => {
     expect(events[0]?.categories).toContain("Direction");
     expect(events[0]?.categories).toContain("Retrograde");
     expect(events[0]?.description).toContain("Mercury Stationary Retrograde");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should detect a Mercury direct station when longitude reaches a minimum", () => {
-    // isDirect: ALL normalizeForComparison(prev, curr) > curr
+  it("detects a Mercury direct station when longitude reaches a minimum", () => {
+    expect.hasAssertions(); // isDirect: ALL normalizeForComparison(prev, curr) > curr
+
     //           AND ALL normalizeForComparison(next, curr) >= curr
     // Mercury longitude bottoms at 100.0 — all previous and next values are 100.5
     const coordinateEphemerisByBody = createRetrogradeEphemeris(minute, {
@@ -150,11 +152,12 @@ describe("retrogrades.events integration", () => {
     expect(events[0]?.categories).toContain("Direction");
     expect(events[0]?.categories).toContain("Direct");
     expect(events[0]?.description).toContain("Mercury Stationary Direct");
-    expect(events[0]?.start).toEqual(minute);
+    expect(events[0]?.start).toStrictEqual(minute);
   });
 
-  it("should return no events when all planetary longitudes are constant", () => {
-    // Constant longitude of 100° fails both station conditions:
+  it("returns no events when all planetary longitudes are constant", () => {
+    expect.hasAssertions(); // Constant longitude of 100° fails both station conditions:
+
     //   isRetrograde requires prev < curr; 100 < 100 is false
     //   isDirect requires prev > curr; 100 > 100 is false
     const coordinateEphemerisByBody = createRetrogradeEphemeris(minute);

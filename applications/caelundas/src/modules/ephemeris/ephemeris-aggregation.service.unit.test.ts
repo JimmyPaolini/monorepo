@@ -1,7 +1,7 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
@@ -10,7 +10,7 @@ import { EphemerisHorizonService } from "./ephemeris-horizon.service";
 import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
 import { EphemerisTimeService } from "./ephemeris-time.service";
 
-describe("EphemerisAggregationService", () => {
+describe(EphemerisAggregationService, () => {
   let service: EphemerisAggregationService;
   let constantsService: ReturnType<
     typeof createMock<EphemerisConstantsService>
@@ -52,7 +52,6 @@ describe("EphemerisAggregationService", () => {
     constantsService = await module.resolve(EphemerisConstantsService);
     coordinateService = await module.resolve(EphemerisCoordinateService);
     horizonService = await module.resolve(EphemerisHorizonService);
-    await module.resolve(EphemerisPhenomenaService);
     timeService = await module.resolve(EphemerisTimeService);
 
     vi.mocked(
@@ -92,7 +91,11 @@ describe("EphemerisAggregationService", () => {
     );
   });
 
-  it("should be defined", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
@@ -145,7 +148,11 @@ describe("EphemerisAggregationService", () => {
       });
 
       expect(allEntries.coordinateEntries).toHaveLength(1);
-      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledOnce();
+      expect(coordinateService.computeNodeBodyMinutes).toHaveBeenCalledWith({
+        body: "north lunar node",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
     });
 
     it("accumulates non-node coordinate and requested feature entries", () => {
@@ -172,6 +179,35 @@ describe("EphemerisAggregationService", () => {
       expect(allEntries.diameterEntries).toHaveLength(1);
       expect(allEntries.distanceEntries).toHaveLength(1);
       expect(allEntries.illuminationEntries).toHaveLength(1);
+    });
+
+    it("skips optional ephemeris entries when no feature sets are requested", () => {
+      const allEntries = service.buildEphemerisEntries();
+      const featureSets = service.buildEphemerisFeatureSets({
+        azimuthElevationBodies: [],
+        diameterBodies: [],
+        distanceBodies: [],
+        illuminationBodies: [],
+      });
+
+      service.accumulateBodyEphemeris({
+        allEntries,
+        body: "sun",
+        end: moment.utc("2024-03-21T00:01:00.000Z"),
+        featureSets,
+        observerLatitude: 40.7128,
+        observerLongitude: -74.006,
+        start: moment.utc("2024-03-21T00:00:00.000Z"),
+      });
+
+      expect(allEntries.coordinateEntries).toHaveLength(1);
+      expect(allEntries.azimuthEntries).toHaveLength(0);
+      expect(allEntries.diameterEntries).toHaveLength(0);
+      expect(allEntries.distanceEntries).toHaveLength(0);
+      expect(allEntries.illuminationEntries).toHaveLength(0);
+      expect(
+        horizonService.computeAzimuthElevationForMinute,
+      ).not.toHaveBeenCalled();
     });
   });
 

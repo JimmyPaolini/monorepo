@@ -11,7 +11,7 @@ vi.mock("sweph", async (importOriginal) => {
   const original = await importOriginal<typeof Sweph>();
   return {
     ...original,
-    utc_to_jd: vi.fn().mockReturnValue({
+    utc_to_jd: vi.fn<typeof utc_to_jd>().mockReturnValue({
       data: [2_460_395.5, 2_460_395.499_306],
       error: "",
       flag: 0,
@@ -19,7 +19,7 @@ vi.mock("sweph", async (importOriginal) => {
   };
 });
 
-describe("EphemerisTimeService", () => {
+describe(EphemerisTimeService, () => {
   let service: EphemerisTimeService;
 
   beforeAll(async () => {
@@ -28,10 +28,6 @@ describe("EphemerisTimeService", () => {
     }).compile();
 
     service = await module.resolve(EphemerisTimeService);
-  });
-
-  it("should be defined", () => {
-    expect(service).toBeDefined();
   });
 
   describe("dateToJulianDays", () => {
@@ -55,6 +51,10 @@ describe("EphemerisTimeService", () => {
         service.dateToJulianDays(moment.utc("2024-03-21T00:00:00.000Z")),
       ).toThrow("utc_to_jd failed");
     });
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("generateMinutes", () => {

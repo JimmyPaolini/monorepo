@@ -5,7 +5,7 @@ import { validateTextConformance } from "./validator";
 const DATA = {};
 const FILENAME = ".env.default";
 
-describe("validateTextConformance", () => {
+describe(validateTextConformance, () => {
   it("returns no errors when instance contains all template lines", () => {
     const template = "KEY=value\nOTHER=123\n";
     const instance = "KEY=value\nOTHER=123\n";
@@ -15,7 +15,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([]);
+
+    expect(result.errors).toStrictEqual([]);
   });
 
   it("returns no errors when instance has additional lines beyond the template", () => {
@@ -27,7 +28,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([]);
+
+    expect(result.errors).toStrictEqual([]);
   });
 
   it("returns an error for each template line missing from the instance", () => {
@@ -39,7 +41,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([
+
+    expect(result.errors).toStrictEqual([
       expect.objectContaining({ message: "Missing line: ALSO_REQUIRED=123" }),
     ]);
   });
@@ -53,7 +56,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([]);
+
+    expect(result.errors).toStrictEqual([]);
   });
 
   it("returns an error when a mustache-rendered line is missing from the instance", () => {
@@ -65,7 +69,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([
+
+    expect(result.errors).toStrictEqual([
       expect.objectContaining({ message: "Missing line: APP_NAME=my-app" }),
     ]);
   });
@@ -79,7 +84,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([
+
+    expect(result.errors).toStrictEqual([
       expect.objectContaining({ message: "Missing line: " }),
     ]);
   });
@@ -93,7 +99,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([]);
+
+    expect(result.errors).toStrictEqual([]);
   });
 
   it("compares lines verbatim (whitespace differences are errors)", () => {
@@ -105,7 +112,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([
+
+    expect(result.errors).toStrictEqual([
       expect.objectContaining({ message: "Missing line: KEY=value" }),
     ]);
   });
@@ -119,7 +127,8 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([
+
+    expect(result.errors).toStrictEqual([
       expect.objectContaining({ message: "Missing line: REPEATED=line" }),
     ]);
   });
@@ -133,6 +142,7 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual([]);
+
+    expect(result.errors).toStrictEqual([]);
   });
 });

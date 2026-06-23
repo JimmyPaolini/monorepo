@@ -1,5 +1,5 @@
 import { symbolByMartianPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -41,7 +41,7 @@ export class MartianPhaseService {
   constructor(
     private readonly logger: LoggerService,
     private readonly phaseCalculationService: PhaseCalculationService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilities,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.logger.setContext(MartianPhaseService.name);
   }

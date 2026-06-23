@@ -1,8 +1,12 @@
-set -euo pipefail
+set -e
 
-printf '[%s] pre-push\n' "$(date '+%Y-%m-%d %H:%M:%S %z')"
+# ⏱️ Log timestamp
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S %z')
+printf '[%s] pre-push\n' "$TIMESTAMP"
 
+# 🪾 Validate branch name
 nx run monorepo:validate-branch-name
 
+# 🔐 Check GPG git signing configuration
 REPOSITORY_ROOT="$(git rev-parse --show-toplevel)"
 "$REPOSITORY_ROOT/scripts/git/check-push-commit-signatures.sh"

@@ -16,7 +16,7 @@ const PROJECT_NAME = "my-app";
 const PROJECT_ROOT = "applications/my-app";
 const MODULES_DIR = `${PROJECT_ROOT}/src/modules`;
 
-describe("generateNestjsCommandModule", () => {
+describe(generateNestjsCommandModule, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -36,13 +36,12 @@ describe("generateNestjsCommandModule", () => {
       });
 
       const base = `${MODULES_DIR}/processor`;
-      expect(tree.exists(`${base}/processor.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/processor.command.ts`)).toBeTruthy();
-      expect(
-        tree.exists(`${base}/processor.command.unit.test.ts`),
-      ).toBeTruthy();
-      expect(tree.exists(`${base}/processor.types.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/processor.constants.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/processor.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/processor.command.ts`)).toBe(true);
+      expect(tree.exists(`${base}/processor.command.unit.test.ts`)).toBe(true);
+      expect(tree.exists(`${base}/processor.types.ts`)).toBe(true);
+      expect(tree.exists(`${base}/processor.constants.ts`)).toBe(true);
     });
 
     it("should use camelCase for directory and file names from kebab-case input", async () => {
@@ -52,8 +51,9 @@ describe("generateNestjsCommandModule", () => {
       });
 
       const base = `${MODULES_DIR}/my-command`;
-      expect(tree.exists(`${base}/my-command.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/my-command.command.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/my-command.module.ts`)).toBe(true);
+      expect(tree.exists(`${base}/my-command.command.ts`)).toBe(true);
     });
 
     it("should use PascalCase class names in generated module file", async () => {
@@ -66,6 +66,7 @@ describe("generateNestjsCommandModule", () => {
         `${MODULES_DIR}/processor/processor.module.ts`,
         "utf8",
       );
+
       expect(moduleContent).toContain("ProcessorCommand");
       expect(moduleContent).toContain("ProcessorModule");
     });
@@ -80,6 +81,7 @@ describe("generateNestjsCommandModule", () => {
         `${MODULES_DIR}/processor/processor.command.ts`,
         "utf8",
       );
+
       expect(commandContent).toContain("ProcessorCommand");
     });
 
@@ -93,6 +95,7 @@ describe("generateNestjsCommandModule", () => {
         `${MODULES_DIR}/processor/processor.module.ts`,
         "utf8",
       );
+
       expect(moduleContent).toContain("TODO: Document the processor module.");
     });
 
@@ -106,6 +109,7 @@ describe("generateNestjsCommandModule", () => {
         `${MODULES_DIR}/processor/processor.command.ts`,
         "utf8",
       );
+
       expect(commandContent).toContain("TODO: Document the processor command.");
     });
 
@@ -134,8 +138,9 @@ describe("generateNestjsCommandModule", () => {
         instance: commandContent,
         template: templateContent,
       });
-      expect(result.errors).toEqual([]);
-      expect(result.errors.length === 0).toBe(true);
+
+      expect(result.errors).toStrictEqual([]);
+      expect(result.errors).toHaveLength(0);
     });
   });
 

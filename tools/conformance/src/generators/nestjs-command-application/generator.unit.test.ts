@@ -5,7 +5,7 @@ import { generateNestjsCommandApplication } from "./generator";
 
 import type { Tree } from "@nx/devkit";
 
-describe("generateNestjsCommandApplication", () => {
+describe(generateNestjsCommandApplication, () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -19,23 +19,24 @@ describe("generateNestjsCommandApplication", () => {
       });
 
       const base = "applications/stellar-cli";
-      expect(tree.exists(`${base}/project.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/package.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/tsconfig.json`)).toBeTruthy();
-      expect(tree.exists(`${base}/eslint.config.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/vitest.config.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/repl.ts`)).toBeTruthy();
+
+      expect(tree.exists(`${base}/project.json`)).toBe(true);
+      expect(tree.exists(`${base}/package.json`)).toBe(true);
+      expect(tree.exists(`${base}/tsconfig.json`)).toBe(true);
+      expect(tree.exists(`${base}/eslint.config.ts`)).toBe(true);
+      expect(tree.exists(`${base}/vitest.config.ts`)).toBe(true);
+      expect(tree.exists(`${base}/src/main.ts`)).toBe(true);
+      expect(tree.exists(`${base}/src/repl.ts`)).toBe(true);
       expect(
         tree.exists(`${base}/src/modules/stellar-cli/stellar-cli.module.ts`),
-      ).toBeTruthy();
+      ).toBe(true);
       expect(
         tree.exists(`${base}/src/modules/stellar-cli/stellar-cli.command.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/logger/logger.service.ts`),
-      ).toBeTruthy();
-      expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
+      ).toBe(true);
+      expect(tree.exists(`${base}/src/modules/logger/logger.service.ts`)).toBe(
+        true,
+      );
+      expect(tree.exists(`${base}/testing/setup.ts`)).toBe(true);
     });
 
     it("writes expected project tags and command metadata", async () => {
@@ -47,6 +48,7 @@ describe("generateNestjsCommandApplication", () => {
         "applications/stellar-cli/project.json",
         "utf8",
       );
+
       expect(projectJson).toContain('"generator:nestjs-command-application"');
       expect(projectJson).toContain('"framework:nest-commander"');
       expect(projectJson).toContain('"framework:nestjs"');
@@ -55,6 +57,7 @@ describe("generateNestjsCommandApplication", () => {
         "applications/stellar-cli/src/modules/stellar-cli/stellar-cli.command.ts",
         "utf8",
       );
+
       expect(commandFile).toContain("name: 'stellar-cli'");
       expect(commandFile).toContain("class StellarCliCommand");
 
@@ -62,6 +65,7 @@ describe("generateNestjsCommandApplication", () => {
         "applications/stellar-cli/.env.default",
         "utf8",
       );
+
       expect(environmentDefault).toContain("🌱");
     });
   });

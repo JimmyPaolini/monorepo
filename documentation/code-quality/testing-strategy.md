@@ -134,7 +134,7 @@ describe("fetchUser", () => {
     const user = await fetchUser("123");
 
     expect(fetch).toHaveBeenCalledWith("/api/users/123");
-    expect(user).toEqual(mockUser);
+    expect(user).toStrictEqual(mockUser);
   });
 });
 ```
