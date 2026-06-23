@@ -179,9 +179,9 @@ describe(MinorAspectsComposerService, () => {
         category === "Forming" ? "Dissolving" : category,
       ),
       description: "Sun dissolving semisextile Moon",
-      summary: "⬅️ ☀️ ⚺ 🌙 Sun dissolving semisextile Moon",
-      start: minute.clone().add(1, "hour"),
       end: minute.clone().add(1, "hour"),
+      start: minute.clone().add(1, "hour"),
+      summary: "⬅️ ☀️ ⚺ 🌙 Sun dissolving semisextile Moon",
     };
 
     progressiveUtilitiesService.pairProgressiveEvents.mockReturnValue([
@@ -237,7 +237,7 @@ describe(MinorAspectsComposerService, () => {
     expect(
       service.getLongitudesWindowForBody({
         body: "sun",
-        coordinateEphemerisByBody: { sun: {} as never },
+        coordinateEphemerisByBody: { sun: {} } as never,
         minute: moment.utc("2024-03-21T12:00:00.000Z"),
         nextMinute: moment.utc("2024-03-21T12:01:00.000Z"),
         previousMinute: moment.utc("2024-03-21T11:59:00.000Z"),

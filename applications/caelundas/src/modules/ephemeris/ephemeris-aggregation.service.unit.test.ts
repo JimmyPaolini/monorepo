@@ -19,7 +19,6 @@ describe(EphemerisAggregationService, () => {
     typeof createMock<EphemerisCoordinateService>
   >;
   let horizonService: ReturnType<typeof createMock<EphemerisHorizonService>>;
-  let phenomenaService: ReturnType<typeof createMock<EphemerisPhenomenaService>>;
   let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
 
   beforeAll(async () => {
@@ -35,7 +34,7 @@ describe(EphemerisAggregationService, () => {
           useValue: createMock<EphemerisCoordinateService>(),
         },
         {
-        phenomenaService = await module.resolve(EphemerisPhenomenaService);
+          provide: EphemerisHorizonService,
           useValue: createMock<EphemerisHorizonService>(),
         },
         {
@@ -53,7 +52,6 @@ describe(EphemerisAggregationService, () => {
     constantsService = await module.resolve(EphemerisConstantsService);
     coordinateService = await module.resolve(EphemerisCoordinateService);
     horizonService = await module.resolve(EphemerisHorizonService);
-    await module.resolve(EphemerisPhenomenaService);
     timeService = await module.resolve(EphemerisTimeService);
 
     vi.mocked(
@@ -207,7 +205,9 @@ describe(EphemerisAggregationService, () => {
       expect(allEntries.diameterEntries).toHaveLength(0);
       expect(allEntries.distanceEntries).toHaveLength(0);
       expect(allEntries.illuminationEntries).toHaveLength(0);
-      expect(horizonService.computeAzimuthElevationForMinute).not.toHaveBeenCalled();
+      expect(
+        horizonService.computeAzimuthElevationForMinute,
+      ).not.toHaveBeenCalled();
     });
   });
 

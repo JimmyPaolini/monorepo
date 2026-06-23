@@ -151,12 +151,8 @@ describe(PhaseCalculationService, () => {
         currentLongitudeSun: 4,
         nextDistances: [2],
         nextIlluminations: [8],
-        nextLongitudePlanet: 11,
-        nextLongitudeSun: 4,
         previousDistances: [2],
         previousIlluminations: [8],
-        previousLongitudePlanet: 9,
-        previousLongitudeSun: 4,
       }),
     ).toBe(false);
 

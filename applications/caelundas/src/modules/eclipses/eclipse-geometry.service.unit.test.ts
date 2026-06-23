@@ -94,11 +94,7 @@ describe(EclipseGeometryService, () => {
     ephemerisService.getCoordinateFromEphemeris.mockImplementation(
       (_ephemeris, minuteIso, coordinate) => {
         const baseValue =
-          minuteIso === currentIso
-            ? 100
-            : minuteIso === previousIso
-              ? 90
-              : 110;
+          minuteIso === currentIso ? 100 : minuteIso === previousIso ? 90 : 110;
         if (coordinate === "latitude") {
           return baseValue / 10;
         }

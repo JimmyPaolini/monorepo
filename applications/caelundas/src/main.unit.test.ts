@@ -1,6 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { CaelundasModule } from "./modules/caelundas/caelundas.module";
+
+import type * as NestCommanderModule from "nest-commander";
+
 const { mockCommandFactoryRun } = vi.hoisted(() => ({
   mockCommandFactoryRun: vi
     .fn<() => Promise<void>>()
@@ -8,7 +11,7 @@ const { mockCommandFactoryRun } = vi.hoisted(() => ({
 }));
 
 vi.mock("nest-commander", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("nest-commander")>();
+  const actual = await importOriginal<typeof NestCommanderModule>();
   return {
     ...actual,
     CommandFactory: {

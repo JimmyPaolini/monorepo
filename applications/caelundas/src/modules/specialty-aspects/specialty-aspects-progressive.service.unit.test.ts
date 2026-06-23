@@ -64,7 +64,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
         end: moment.utc("2024-03-21T10:00:00.000Z"),
         start: moment.utc("2024-03-21T10:00:00.000Z"),
         summary: "Incomplete categories",
-      } as Event),
+      }),
     ).toBe("");
   });
 
@@ -83,14 +83,14 @@ describe(SpecialtyAspectsProgressiveService, () => {
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
           summary: "Invalid beginning",
-        } as Event,
+        },
         {
           categories: ["Astronomy", "Astrology", "Specialty Aspect", "Sun"],
           description: "Invalid ending",
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
           summary: "Invalid ending",
-        } as Event,
+        },
       ),
     ).toThrow("Could not extract aspect info from categories");
   });
@@ -109,7 +109,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
   it("falls back to empty body strings when sorted bodies include undefined", () => {
     const sortBySpy = vi
       .spyOn(_, "sortBy")
-      .mockReturnValue([undefined, "Moon"] as unknown as string[]);
+      .mockReturnValue([undefined, "Moon"] as unknown);
 
     expect(() =>
       specialtyAspectsProgressiveService.getSpecialtyAspectProgressiveEvent(
@@ -128,7 +128,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
           end: moment.utc("2024-03-21T10:00:00.000Z"),
           start: moment.utc("2024-03-21T10:00:00.000Z"),
           summary: "invalid beginning",
-        } as Event,
+        },
         {
           categories: [
             "Astronomy",
@@ -144,7 +144,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
           end: moment.utc("2024-03-21T11:00:00.000Z"),
           start: moment.utc("2024-03-21T11:00:00.000Z"),
           summary: "invalid ending",
-        } as Event,
+        },
       ),
     ).toThrow("Could not extract typed values from categories");
 
@@ -250,7 +250,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
         end: moment.utc("2024-03-21T10:00:00.000Z"),
         start: moment.utc("2024-03-21T10:00:00.000Z"),
         summary: "⬠ Sun quintile Moon",
-      } as Event,
+      },
       {
         categories: [
           "Astronomy",
@@ -266,7 +266,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
         end: moment.utc("2024-03-21T11:00:00.000Z"),
         start: moment.utc("2024-03-21T11:00:00.000Z"),
         summary: "⬠ Sun quintile Moon",
-      } as Event,
+      },
     ]);
 
     expect(

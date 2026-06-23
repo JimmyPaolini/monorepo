@@ -45,7 +45,11 @@ describe(ProgressiveUtilitiesService, () => {
     const beginning = createEvent("2024-03-21T10:00:00.000Z");
     const ending = createEvent("2024-03-21T12:00:00.000Z");
 
-    const pairs = service.pairProgressiveEvents([beginning], [ending], "matching");
+    const pairs = service.pairProgressiveEvents(
+      [beginning],
+      [ending],
+      "matching",
+    );
 
     expect(pairs).toStrictEqual([[beginning, ending]]);
     expect(logger.warn).not.toHaveBeenCalled();

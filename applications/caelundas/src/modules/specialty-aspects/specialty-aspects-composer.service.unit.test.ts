@@ -126,9 +126,9 @@ describe(SpecialtyAspectsComposerService, () => {
         category === "Forming" ? "Dissolving" : category,
       ),
       description: "Sun dissolving quintile Moon",
-      summary: "⬅️ ☀️⬠🌙 Sun dissolving quintile Moon",
-      start: minute.clone().add(1, "hour"),
       end: minute.clone().add(1, "hour"),
+      start: minute.clone().add(1, "hour"),
+      summary: "⬅️ ☀️⬠🌙 Sun dissolving quintile Moon",
     };
 
     expect(

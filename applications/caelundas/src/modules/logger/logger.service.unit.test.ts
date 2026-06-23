@@ -19,13 +19,13 @@ describe(LoggerService, () => {
   });
 
   it("routes log levels through the scoped child logger", () => {
-    type ChildLogger = {
+    interface ChildLogger {
       debug: (...args: unknown[]) => void;
       error: (...args: unknown[]) => void;
       info: (...args: unknown[]) => void;
       trace: (...args: unknown[]) => void;
       warn: (...args: unknown[]) => void;
-    };
+    }
 
     const childLogger = service as unknown as {
       child: ChildLogger;

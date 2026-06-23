@@ -146,7 +146,7 @@ describe(MinorAspectsProgressiveService, () => {
   it("handles undefined sorted body entries before type casting", () => {
     const sortBySpy = vi
       .spyOn(_, "sortBy")
-      .mockReturnValue([undefined, "Moon"] as unknown as string[]);
+      .mockReturnValue([undefined, "Moon"] as unknown);
     const invalidEvent: Event = {
       categories: [
         "Astronomy",
