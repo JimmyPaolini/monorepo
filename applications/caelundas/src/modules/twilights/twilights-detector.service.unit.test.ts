@@ -3,7 +3,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TwilightsBuilderService } from "./twilights-builder.service";
 import { TwilightsDetectorService } from "./twilights-detector.service";

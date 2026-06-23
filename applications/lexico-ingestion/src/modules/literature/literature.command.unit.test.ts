@@ -2,6 +2,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { setPromptsMockResponse } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { LiteratureCommand } from "./literature.command";
@@ -75,7 +76,7 @@ describe(LiteratureCommand, () => {
   beforeEach(() => {
     vi.restoreAllMocks();
     vi.clearAllMocks();
-    promptsMock.mockResolvedValue({ provider: "ALL" });
+    setPromptsMockResponse(promptsMock, { provider: "ALL" });
   });
 
   it("is defined", () => {
@@ -121,7 +122,7 @@ describe(LiteratureCommand, () => {
 
   it("should return undefined when interactive provider selects all", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ provider: "ALL" });
+    setPromptsMockResponse(promptsMock, { provider: "ALL" });
 
     const provider = await command.parseProvider(undefined);
 
@@ -131,7 +132,7 @@ describe(LiteratureCommand, () => {
 
   it("should return undefined when provider prompt returns non-string", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ provider: 123 });
+    setPromptsMockResponse(promptsMock, { provider: 123 });
 
     const provider = await command.parseProvider(undefined);
 
@@ -148,7 +149,7 @@ describe(LiteratureCommand, () => {
 
   it("should return selected author from interactive prompt", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ author: "vergil" });
+    setPromptsMockResponse(promptsMock, { author: "vergil" });
 
     const author = await command.parseAuthor(undefined, undefined);
 
@@ -157,7 +158,7 @@ describe(LiteratureCommand, () => {
 
   it("should return undefined when interactive author selects all", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ author: "ALL" });
+    setPromptsMockResponse(promptsMock, { author: "ALL" });
 
     const author = await command.parseAuthor(undefined, undefined);
 
@@ -186,7 +187,7 @@ describe(LiteratureCommand, () => {
 
   it("should return selected text from interactive prompt", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ text: "vergil/vergil/aeneid" });
+    setPromptsMockResponse(promptsMock, { text: "vergil/vergil/aeneid" });
 
     const text = await command.parseText(undefined, "perseus", "vergil");
 
@@ -195,7 +196,7 @@ describe(LiteratureCommand, () => {
 
   it("should return undefined when interactive text selects all", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ text: "ALL" });
+    setPromptsMockResponse(promptsMock, { text: "ALL" });
 
     const text = await command.parseText(undefined, "perseus", "vergil");
 
@@ -204,7 +205,7 @@ describe(LiteratureCommand, () => {
 
   it("should return undefined when text prompt returns non-string", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ text: 999 });
+    setPromptsMockResponse(promptsMock, { text: 999 });
 
     const text = await command.parseText(undefined, "perseus", "vergil");
 
@@ -213,7 +214,7 @@ describe(LiteratureCommand, () => {
 
   it("should normalize non-string provider and author arguments in parseText", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);
-    promptsMock.mockResolvedValue({ text: "ALL" });
+    setPromptsMockResponse(promptsMock, { text: "ALL" });
 
     const text = await command.parseText(
       undefined,

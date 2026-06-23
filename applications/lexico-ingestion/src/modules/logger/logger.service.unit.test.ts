@@ -1,9 +1,11 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
 describe(LoggerService, () => {
+  const originalNodeEnvironment = process.env["NODE_ENV"];
+
   interface LoggerChildMock {
     debug: ReturnType<typeof vi.fn>;
     error: ReturnType<typeof vi.fn>;
@@ -32,6 +34,45 @@ describe(LoggerService, () => {
     }).compile();
 
     service = await module.resolve(LoggerService);
+  });
+
+  describe("environment initialization", () => {
+    afterEach(() => {
+      if (originalNodeEnvironment === undefined) {
+        delete process.env["NODE_ENV"];
+      } else {
+        process.env["NODE_ENV"] = originalNodeEnvironment;
+      }
+      vi.resetModules();
+    });
+
+    it("initializes logger in production mode", async () => {
+      process.env["NODE_ENV"] = "production";
+      vi.resetModules();
+
+      const { LoggerService: LoggerServiceForEnvironment } =
+        await import("./logger.service");
+      const logger = new LoggerServiceForEnvironment();
+
+      expect(() => {
+        logger.setContext("ProductionTestContext");
+        logger.log("production message");
+      }).not.toThrow();
+    });
+
+    it("initializes logger in development mode", async () => {
+      process.env["NODE_ENV"] = "development";
+      vi.resetModules();
+
+      const { LoggerService: LoggerServiceForEnvironment } =
+        await import("./logger.service");
+      const logger = new LoggerServiceForEnvironment();
+
+      expect(() => {
+        logger.setContext("DevelopmentTestContext");
+        logger.log("development message");
+      }).not.toThrow();
+    });
   });
 
   it("is defined", () => {

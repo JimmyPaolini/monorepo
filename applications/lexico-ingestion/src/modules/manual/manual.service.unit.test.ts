@@ -1,7 +1,7 @@
 import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
@@ -9,6 +9,7 @@ import { createRepositoryMock } from "../../../testing/mocks";
 import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
+import * as manualConstants from "./manual.constants";
 import { MANUAL_LEXEMES_TO_DELETE } from "./manual.constants";
 import { ManualService } from "./manual.service";
 
@@ -75,6 +76,78 @@ describe(ManualService, () => {
     numeralsService = module.get(NumeralsService);
 
     lexemesRepository.delete.mockResolvedValue({ affected: 1, raw: [] });
+  });
+
+  describe("edge branches", () => {
+    interface ManualServiceInstance {
+      buildPraenomenLexeme: (
+        abbreviation: string,
+        praenomen: { feminine?: string; masculine?: string },
+      ) => Lexeme;
+      ingestRomanNumerals: () => Promise<void>;
+    }
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it("handles templates without principal parts and inflection in praenomen builder", () => {
+      vi.spyOn(
+        manualConstants,
+        "buildPraenomenAbbreviationTemplate",
+      ).mockImplementation(() => {
+        const lexeme = new Lexeme();
+        lexeme.partOfSpeech = "noun";
+        lexeme.principalParts = [];
+        return lexeme;
+      });
+
+      const result = (
+        service as unknown as ManualServiceInstance
+      ).buildPraenomenLexeme("abbr", {
+        masculine: "abbr-name",
+      });
+
+      expect(result.lemma).toBe("abbr");
+      expect(result.principalParts).toStrictEqual([]);
+    });
+
+    it("handles templates with inflection object that has no gender field", () => {
+      vi.spyOn(
+        manualConstants,
+        "buildPraenomenAbbreviationTemplate",
+      ).mockImplementation(() => {
+        const lexeme = new Lexeme();
+        lexeme.partOfSpeech = "noun";
+        lexeme.principalParts = [];
+        lexeme.inflection = {} as never;
+        return lexeme;
+      });
+
+      const result = (
+        service as unknown as ManualServiceInstance
+      ).buildPraenomenLexeme("abbr", {
+        feminine: "abbr-name",
+      });
+
+      expect(result.lemma).toBe("abbr");
+      expect(result.inflection).toStrictEqual({});
+    });
+
+    it("skips principal-part assignment when roman template has no primary part", async () => {
+      vi.spyOn(manualConstants, "buildRomanNumeralTemplate").mockImplementation(
+        () => {
+          const lexeme = new Lexeme();
+          lexeme.partOfSpeech = "numeral";
+          lexeme.principalParts = [];
+          return lexeme;
+        },
+      );
+
+      await expect(
+        (service as unknown as ManualServiceInstance).ingestRomanNumerals(),
+      ).resolves.toBeUndefined();
+    });
   });
 
   it("is defined", () => {

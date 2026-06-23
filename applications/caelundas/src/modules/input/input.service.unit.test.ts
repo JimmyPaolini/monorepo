@@ -2,7 +2,7 @@ import { mockDates } from "@caelundas/testing/mocks";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { environmentSchema, inputSchema } from "./input.constants";
 import { InputService } from "./input.service";

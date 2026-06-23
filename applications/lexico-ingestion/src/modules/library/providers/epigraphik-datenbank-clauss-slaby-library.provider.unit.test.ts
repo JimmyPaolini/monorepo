@@ -1,5 +1,5 @@
 import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
 

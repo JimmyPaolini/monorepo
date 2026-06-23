@@ -4,6 +4,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
+import { setPromptsMockResponse } from "../../../testing/mocks";
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
 import { ManualService } from "../manual/manual.service";
@@ -115,7 +116,7 @@ describe(DictionaryCommand, () => {
       }),
     );
 
-    promptsMock.mockResolvedValue({ startLemma: null });
+    setPromptsMockResponse(promptsMock, { startLemma: null });
 
     lexemesService.existsByLemma.mockResolvedValue(true);
     lexemesService.findLexemesByLemmaWithTranslations.mockResolvedValue([]);

@@ -1,7 +1,7 @@
 import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider } from "@lexico-ingestion/src/modules/library/providers/corpus-scriptorum-ecclesiasticorum-latinorum-library.provider";
 import * as cheerio from "cheerio";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Author, type Text } from "@monorepo/lexico-entities";
 

@@ -1,5 +1,5 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "./logger.service";
 
@@ -66,5 +66,71 @@ describe(LoggerService, () => {
       { context: "LoggerServiceTest" },
       "warn message",
     );
+  });
+
+  describe("environment initialization", () => {
+    const originalLogLevel = process.env["LOG_LEVEL"];
+    const originalNodeEnvironment = process.env["NODE_ENV"];
+
+    afterEach(() => {
+      if (originalNodeEnvironment === undefined) {
+        delete process.env["NODE_ENV"];
+      } else {
+        process.env["NODE_ENV"] = originalNodeEnvironment;
+      }
+
+      if (originalLogLevel === undefined) {
+        delete process.env["LOG_LEVEL"];
+      } else {
+        process.env["LOG_LEVEL"] = originalLogLevel;
+      }
+
+      vi.resetModules();
+    });
+
+    it("initializes logger in production mode with explicit log level", async () => {
+      process.env["NODE_ENV"] = "production";
+      process.env["LOG_LEVEL"] = "debug";
+      vi.resetModules();
+
+      const { LoggerService: RuntimeLoggerService } =
+        await import("./logger.service");
+      const logger = new RuntimeLoggerService();
+
+      expect(() => {
+        logger.setContext("ProductionLoggerContext");
+        logger.log("production message");
+      }).not.toThrow();
+    });
+
+    it("initializes logger in production mode with default log level", async () => {
+      process.env["NODE_ENV"] = "production";
+      delete process.env["LOG_LEVEL"];
+      vi.resetModules();
+
+      const { LoggerService: RuntimeLoggerService } =
+        await import("./logger.service");
+      const logger = new RuntimeLoggerService();
+
+      expect(() => {
+        logger.setContext("ProductionDefaultLoggerContext");
+        logger.log("production default message");
+      }).not.toThrow();
+    });
+
+    it("initializes logger in development mode", async () => {
+      process.env["NODE_ENV"] = "development";
+      delete process.env["LOG_LEVEL"];
+      vi.resetModules();
+
+      const { LoggerService: RuntimeLoggerService } =
+        await import("./logger.service");
+      const logger = new RuntimeLoggerService();
+
+      expect(() => {
+        logger.setContext("DevelopmentLoggerContext");
+        logger.log("development message");
+      }).not.toThrow();
+    });
   });
 });

@@ -3,7 +3,7 @@ import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 

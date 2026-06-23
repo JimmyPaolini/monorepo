@@ -2,7 +2,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { pheno_ut } from "sweph";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
 import { EphemerisPhenomenaService } from "./ephemeris-phenomena.service";
@@ -254,6 +254,27 @@ describe(EphemerisPhenomenaService, () => {
       expect(diameterEphemeris).toStrictEqual({
         "2024-03-21T00:00:00.000Z": { diameter: 0.5 },
       });
+    });
+
+    it("writes no sun outputs when neither illumination nor diameter is requested", () => {
+      const illuminationEphemeris = {};
+      const diameterEphemeris = {};
+      vi.mocked(pheno_ut).mockClear();
+
+      service.computePhenoForMinute({
+        body: "sun",
+        diameterEphemeris,
+        illuminationEphemeris,
+        julianDayUniversalTime: 2_460_395.499_306,
+        needsDiameter: false,
+        needsIllumination: false,
+        swissEphemerisConstant: 0,
+        timestamp: "2024-03-21T00:00:00.000Z",
+      });
+
+      expect(illuminationEphemeris).toStrictEqual({});
+      expect(diameterEphemeris).toStrictEqual({});
+      expect(pheno_ut).not.toHaveBeenCalled();
     });
   });
 

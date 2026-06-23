@@ -2,7 +2,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
@@ -30,6 +30,9 @@ describe(TripleAspectsDetectorService, () => {
       previousAspectBodies: AspectBodies[];
       unionEdges: AspectBodies[];
     }) => unknown;
+    getUniqueBodyTriplets: (
+      bodies: ("mars" | "moon" | "sun" | undefined)[],
+    ) => unknown;
   };
 
   beforeAll(async () => {
@@ -67,6 +70,16 @@ describe(TripleAspectsDetectorService, () => {
       expect(grouped.size).toBe(2);
       expect(grouped.get("conjunct")?.length).toBe(2);
       expect(grouped.get("trine")?.length).toBe(1);
+    });
+
+    it("skips sparse triplets when one body entry is undefined", () => {
+      const triplets = privateService.getUniqueBodyTriplets([
+        "sun",
+        undefined,
+        "moon",
+      ]);
+
+      expect(triplets).toStrictEqual([]);
     });
   });
 

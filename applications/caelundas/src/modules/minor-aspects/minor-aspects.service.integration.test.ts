@@ -8,7 +8,7 @@ import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-asp
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { MinorAspectsService } from "./minor-aspects.service";
 

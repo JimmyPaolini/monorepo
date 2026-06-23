@@ -3,7 +3,7 @@ import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintupl
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 

@@ -1,11 +1,13 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
+import * as CaelundasTypes from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 
@@ -422,6 +424,89 @@ describe(MonthlyLunarCycleService, () => {
       });
     });
 
+    it("returns null when progressive categories contain an unknown lunar phase", () => {
+      const warnSpy = vi
+        .spyOn(LoggerService.prototype, "warn")
+        .mockReturnValue(undefined);
+
+      const progressiveEvent = s.getMonthlyLunarCycleProgressiveEvent(
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Monthly Lunar Cycle",
+            "Lunar",
+            "Unknown",
+          ],
+          description: "Unknown Moon",
+          end: moment.utc("2024-03-10T09:00:00.000Z"),
+          start: moment.utc("2024-03-10T09:00:00.000Z"),
+          summary: "Unknown Moon",
+        },
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Monthly Lunar Cycle",
+            "Lunar",
+            "New",
+          ],
+          description: "New Moon",
+          end: moment.utc("2024-03-13T12:00:00.000Z"),
+          start: moment.utc("2024-03-13T12:00:00.000Z"),
+          summary: "🌙 🌑 New Moon",
+        },
+      );
+
+      expect(progressiveEvent).toBeNull();
+      expect(warnSpy).toHaveBeenCalledWith(
+        expect.stringContaining("Could not extract lunar phase"),
+      );
+
+      warnSpy.mockRestore();
+    });
+
+    it("skips progressive pairing when sorted entries are sparse", () => {
+      const orderedEventsSpy = vi.spyOn(_, "sortBy");
+
+      orderedEventsSpy.mockReturnValue([
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Monthly Lunar Cycle",
+            "Lunar",
+            "New",
+          ],
+          description: "New Moon",
+          end: moment.utc("2024-03-10T09:00:00.000Z"),
+          start: moment.utc("2024-03-10T09:00:00.000Z"),
+          summary: "🌙 🌑 New Moon",
+        },
+        undefined,
+      ] as unknown);
+
+      const progressiveEvents = service.detectProgressive([
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Monthly Lunar Cycle",
+            "Lunar",
+            "New",
+          ],
+          description: "New Moon",
+          end: moment.utc("2024-03-10T09:00:00.000Z"),
+          start: moment.utc("2024-03-10T09:00:00.000Z"),
+          summary: "🌙 🌑 New Moon",
+        },
+      ]);
+
+      expect(progressiveEvents).toStrictEqual([]);
+
+      orderedEventsSpy.mockRestore();
+    });
+
     describe("isNewMoon", () => {
       it("returns true at new moon (minimum illumination)", () => {
         const result = s.isNewMoon({
@@ -508,6 +593,28 @@ describe(MonthlyLunarCycleService, () => {
         );
 
         expect(result).toBe("new");
+      });
+
+      it("warns and returns null when type guard rejects an otherwise recognized phase", () => {
+        const warnSpy = vi
+          .spyOn(LoggerService.prototype, "warn")
+          .mockReturnValue(undefined);
+        const lunarPhaseSpy = vi
+          .spyOn(CaelundasTypes, "isLunarPhase")
+          .mockReturnValue(false);
+
+        const result = s.extractLunarPhaseFromCategories(
+          ["Astronomy", "Astrology", "Monthly Lunar Cycle", "Lunar", "Full"],
+          "Invalid typed event",
+        );
+
+        expect(result).toBeNull();
+        expect(warnSpy).toHaveBeenCalledWith(
+          expect.stringContaining("Unknown lunar phase"),
+        );
+
+        lunarPhaseSpy.mockRestore();
+        warnSpy.mockRestore();
       });
     });
 

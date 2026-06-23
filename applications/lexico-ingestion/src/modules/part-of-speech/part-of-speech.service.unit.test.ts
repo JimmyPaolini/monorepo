@@ -1,6 +1,6 @@
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import {
   AdjectiveInflection,
@@ -18,6 +18,81 @@ import type { AnyNode } from "domhandler";
 
 describe(PartOfSpeechService, () => {
   let service: PartOfSpeechService;
+
+  describe("module initialization", () => {
+    afterEach(() => {
+      vi.resetModules();
+      vi.doUnmock("./part-of-speech.constants");
+    });
+
+    it("handles non-array constant values during normalization", async () => {
+      vi.doMock("./part-of-speech.constants", async () => {
+        const actualModule = await vi.importActual(
+          "./part-of-speech.constants",
+        );
+
+        return {
+          ...actualModule,
+          adjectiveDeclensionValues: {},
+        };
+      });
+
+      const { PartOfSpeechService: PartOfSpeechServiceForBootstrap } =
+        await import("./part-of-speech.service");
+
+      const partOfSpeechService = new PartOfSpeechServiceForBootstrap();
+
+      expect(partOfSpeechService).toBeDefined();
+    });
+
+    it("handles non-array enum exports during module initialization", async () => {
+      vi.doMock("@monorepo/lexico-entities", async () => {
+        const actualModule = await vi.importActual("@monorepo/lexico-entities");
+
+        return {
+          ...actualModule,
+          adjectiveDeclensionValues: {},
+        };
+      });
+
+      const { PartOfSpeechService: PartOfSpeechServiceForNormalization } =
+        await import("./part-of-speech.service");
+      const partOfSpeechService = new PartOfSpeechServiceForNormalization();
+
+      expect(partOfSpeechService).toBeDefined();
+    });
+
+    it("filters non-string enum values during module initialization", async () => {
+      vi.doMock("@monorepo/lexico-entities", async () => {
+        const actualModule = await vi.importActual("@monorepo/lexico-entities");
+
+        return {
+          ...actualModule,
+          partOfSpeechEnumValues: ["noun", 123, "verb"],
+        };
+      });
+
+      const { PartOfSpeechService: PartOfSpeechServiceForNormalization } =
+        await import("./part-of-speech.service");
+      const partOfSpeechService = new PartOfSpeechServiceForNormalization();
+
+      const $ = cheerio.load(`
+        <div class="mw-heading"><h3>Noun[edit]</h3></div>
+        <p id="entry">word</p>
+      `);
+
+      const entryNode = $("#entry").get(0);
+
+      expect(entryNode).toBeDefined();
+
+      const partOfSpeech = partOfSpeechService.getPartOfSpeech(
+        $,
+        entryNode as AnyNode,
+      );
+
+      expect(partOfSpeech).toBe("noun");
+    });
+  });
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({

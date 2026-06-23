@@ -24,7 +24,7 @@
  * - Tests that call writeMajorAspectEvents, writePhaseEvents, etc.
  */
 
-import { afterEach, beforeEach } from "vitest";
+import { afterEach, beforeEach, vi } from "vitest";
 export const MOCK_PATTERNS = {
   databaseUtilities: `vi.mock("../../database.utilities", () => ({
   upsertEvents: vi.fn(),

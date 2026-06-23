@@ -1,7 +1,5 @@
-/* cspell:ignore amandum amare amans amatu celeriter rosae */
-
 import { Test } from "@nestjs/testing";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   AdjectivalForm,

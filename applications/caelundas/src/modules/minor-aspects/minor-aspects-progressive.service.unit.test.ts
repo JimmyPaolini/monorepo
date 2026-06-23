@@ -3,7 +3,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MinorAspectsProgressiveService } from "./minor-aspects-progressive.service";
 
@@ -147,6 +147,31 @@ describe(MinorAspectsProgressiveService, () => {
     const sortBySpy = vi
       .spyOn(_, "sortBy")
       .mockReturnValue([undefined, "Moon"] as unknown as string[]);
+    const invalidEvent: Event = {
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Minor Aspect",
+        "Semisquare",
+        "Moon",
+      ],
+      description: "invalid",
+      end: moment.utc("2024-03-21T10:00:00.000Z"),
+      start: moment.utc("2024-03-21T10:00:00.000Z"),
+      summary: "invalid",
+    };
+
+    expect(() =>
+      privateService.getMinorAspectProgressiveEvent(invalidEvent, invalidEvent),
+    ).toThrow("Could not extract typed values from categories");
+
+    sortBySpy.mockRestore();
+  });
+
+  it("handles undefined second sorted body entry before type casting", () => {
+    const sortBySpy = vi
+      .spyOn(_, "sortBy")
+      .mockReturnValue(["Moon", undefined] as unknown);
     const invalidEvent: Event = {
       categories: [
         "Astronomy",

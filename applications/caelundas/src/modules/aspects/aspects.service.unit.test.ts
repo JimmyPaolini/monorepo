@@ -15,7 +15,7 @@ import { TripleAspectsComposerService } from "@caelundas/src/modules/triple-aspe
 import { TripleAspectsDetectorService } from "@caelundas/src/modules/triple-aspects/triple-aspects-detector.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { EphemerisService } from "../ephemeris/ephemeris.service";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";

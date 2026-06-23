@@ -2,7 +2,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 
@@ -420,6 +420,186 @@ describe(TripleAspectsComposerService, () => {
       expect(
         internals.resolveProgressiveMeta(["Sun", "Moon"], "yod"),
       ).toBeNull();
+    });
+
+    it("adds focal metadata for t-square progressive summaries", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const forming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "T Square",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+          "Mars Focal",
+        ],
+        description: "Mars, Moon, Sun t-square forming (Mars focal)",
+        end: minute,
+        start: minute,
+        summary: "➡️ ⊤ ☀️-🌙-♂️ Mars, Moon, Sun t-square forming (Mars focal)",
+      } as Event;
+      const dissolving = {
+        ...forming,
+        categories: forming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Mars, Moon, Sun t-square dissolving (Mars focal)",
+        end: minute.clone().add(2, "hours"),
+        start: minute.clone().add(2, "hours"),
+        summary:
+          "⬅️ ⊤ ☀️-🌙-♂️ Mars, Moon, Sun t-square dissolving (Mars focal)",
+      };
+
+      const progressiveEvent = service.buildProgressiveEvent({
+        aspectCapitalized: "T Square",
+        dissolving,
+        forming,
+      });
+
+      expect(progressiveEvent?.description).toBe("Mars, Moon, Sun t-square");
+      expect(progressiveEvent?.summary).toContain("(focal: Mars)");
+    });
+
+    it("skips push when a progressive pair resolves to null", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const forming = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Grand Trine",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+        ],
+        description: "Sun, Moon, Mars grand trine forming",
+        end: minute,
+        start: minute,
+        summary: "➡️ ✶ Sun-Moon-Mars",
+      } as Event;
+      const dissolving = {
+        ...forming,
+        categories: forming.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "Sun, Moon, Mars grand trine dissolving",
+        end: minute.clone().add(1, "hour"),
+        start: minute.clone().add(1, "hour"),
+        summary: "⬅️ ✶ Sun-Moon-Mars",
+      };
+
+      const buildProgressiveEventSpy = vi
+        .spyOn(service, "buildProgressiveEvent")
+        .mockReturnValueOnce(null);
+
+      const results = (
+        service as unknown as {
+          pairProgressiveGroupPairs: (
+            formingEvents: Event[],
+            dissolvingEvents: Event[],
+          ) => Event[];
+        }
+      ).pairProgressiveGroupPairs([forming], [dissolving]);
+
+      expect(results).toStrictEqual([]);
+      expect(buildProgressiveEventSpy).toHaveBeenCalledTimes(1);
+
+      buildProgressiveEventSpy.mockRestore();
+    });
+
+    it("returns null when progressive body labels are fully absent", () => {
+      const internals = service as unknown as {
+        resolveProgressiveMeta: (
+          bodiesCapitalized: string[],
+          aspect: "grand trine" | "t-square" | "yod",
+        ) => null;
+      };
+
+      expect(internals.resolveProgressiveMeta([], "grand trine")).toBeNull();
+    });
+
+    it("sorts multiple forming and dissolving events before pair resolution", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const formingLater = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Compound Aspect",
+          "Triple Aspect",
+          "Grand Trine",
+          "Forming",
+          "Sun",
+          "Moon",
+          "Mars",
+        ],
+        description: "later forming",
+        end: minute.clone().add(2, "hours"),
+        start: minute.clone().add(2, "hours"),
+        summary: "later forming",
+      } as Event;
+      const formingEarlier = {
+        ...formingLater,
+        description: "earlier forming",
+        end: minute,
+        start: minute,
+        summary: "earlier forming",
+      };
+      const dissolvingLater = {
+        ...formingLater,
+        categories: formingLater.categories.map((category) =>
+          category === "Forming" ? "Dissolving" : category,
+        ),
+        description: "later dissolving",
+        end: minute.clone().add(4, "hours"),
+        start: minute.clone().add(4, "hours"),
+        summary: "later dissolving",
+      };
+      const dissolvingEarlier = {
+        ...dissolvingLater,
+        description: "earlier dissolving",
+        end: minute.clone().add(1, "hour"),
+        start: minute.clone().add(1, "hour"),
+        summary: "earlier dissolving",
+      };
+
+      const internals = service as unknown as {
+        pairProgressiveGroupPairs: (
+          formingEvents: Event[],
+          dissolvingEvents: Event[],
+        ) => Event[];
+      };
+      const pairSpy = vi
+        .spyOn(internals, "pairProgressiveGroupPairs")
+        .mockReturnValueOnce([]);
+
+      service.pairProgressiveGroup([
+        formingLater,
+        dissolvingLater,
+        formingEarlier,
+        dissolvingEarlier,
+      ]);
+
+      expect(pairSpy).toHaveBeenCalledTimes(1);
+
+      const firstCall = pairSpy.mock.calls[0] as [Event[], Event[]] | undefined;
+
+      expect(firstCall).toBeDefined();
+      expect(firstCall?.[0].map((event) => event.description)).toStrictEqual([
+        "earlier forming",
+        "later forming",
+      ]);
+      expect(firstCall?.[1].map((event) => event.description)).toStrictEqual([
+        "earlier dissolving",
+        "later dissolving",
+      ]);
+
+      pairSpy.mockRestore();
     });
   });
 });

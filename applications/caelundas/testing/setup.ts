@@ -2,7 +2,7 @@ import fs from "node:fs";
 
 import "reflect-metadata";
 import { noop } from "lodash";
-import { beforeAll, beforeEach } from "vitest";
+import { beforeAll, beforeEach, vi } from "vitest";
 
 /**
  * Global test setup - automatically imported via vitest.config.ts setupFiles.

@@ -3,7 +3,7 @@ import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -252,5 +252,45 @@ describe(MinorAspectsComposerService, () => {
         categories: ["Moon", "Sun"],
       }),
     ).toThrow("Could not extract typed values");
+  });
+
+  it("falls back to empty first body when sorted category output is sparse", () => {
+    const toSortedSpy = vi
+      .spyOn(Array.prototype, "toSorted")
+      .mockReturnValueOnce([undefined, "Sun"]);
+
+    expect(() =>
+      service.extractAspectComponents([
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Minor Aspect",
+        "Moon",
+        "Sun",
+        "Semisextile",
+      ]),
+    ).toThrow("Could not extract typed values");
+
+    toSortedSpy.mockRestore();
+  });
+
+  it("falls back to empty second body when sorted category output is sparse", () => {
+    const toSortedSpy = vi
+      .spyOn(Array.prototype, "toSorted")
+      .mockReturnValueOnce(["Moon", undefined]);
+
+    expect(() =>
+      service.extractAspectComponents([
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Minor Aspect",
+        "Moon",
+        "Sun",
+        "Semisextile",
+      ]),
+    ).toThrow("Could not extract typed values");
+
+    toSortedSpy.mockRestore();
   });
 });

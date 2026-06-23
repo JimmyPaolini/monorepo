@@ -3,7 +3,7 @@ import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { MajorAspectProgressiveService } from "./major-aspect-progressive.service";
 
@@ -298,6 +298,34 @@ describe(MajorAspectProgressiveService, () => {
       const sortBySpy = vi
         .spyOn(_, "sortBy")
         .mockReturnValue([undefined, "Moon"] as unknown);
+      const eventWithAspect: Event = {
+        categories: [
+          "Astronomy",
+          "Astrology",
+          "Major Aspect",
+          "Conjunct",
+          "Moon",
+        ],
+        description: "invalid",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "invalid",
+      };
+
+      expect(() =>
+        privateService.getMajorAspectProgressiveEvent(
+          eventWithAspect,
+          eventWithAspect,
+        ),
+      ).toThrow("Could not extract typed values from categories");
+
+      sortBySpy.mockRestore();
+    });
+
+    it("handles missing second sorted body entry before type casting", () => {
+      const sortBySpy = vi
+        .spyOn(_, "sortBy")
+        .mockReturnValue(["Moon", undefined] as unknown);
       const eventWithAspect: Event = {
         categories: [
           "Astronomy",

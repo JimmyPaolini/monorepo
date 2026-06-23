@@ -1,6 +1,6 @@
 import moment from "moment-timezone";
 import { calc, type nod_aps_ut } from "sweph";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 vi.mock("sweph", async (importOriginal) => {
   const importedModule = await importOriginal();

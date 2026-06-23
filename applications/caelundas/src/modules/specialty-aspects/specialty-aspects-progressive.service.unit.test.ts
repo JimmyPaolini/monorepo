@@ -3,7 +3,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SpecialtyAspectsProgressiveService } from "./specialty-aspects-progressive.service";
 
@@ -145,6 +145,51 @@ describe(SpecialtyAspectsProgressiveService, () => {
           start: moment.utc("2024-03-21T11:00:00.000Z"),
           summary: "invalid ending",
         } as Event,
+      ),
+    ).toThrow("Could not extract typed values from categories");
+
+    sortBySpy.mockRestore();
+  });
+
+  it("falls back when the second sorted body is undefined", () => {
+    const sortBySpy = vi
+      .spyOn(_, "sortBy")
+      .mockReturnValue(["Moon", undefined] as unknown);
+
+    expect(() =>
+      specialtyAspectsProgressiveService.getSpecialtyAspectProgressiveEvent(
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Simple Aspect",
+            "Specialty Aspect",
+            "Sun",
+            "Moon",
+            "Quintile",
+            "Forming",
+          ],
+          description: "invalid beginning",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "invalid beginning",
+        },
+        {
+          categories: [
+            "Astronomy",
+            "Astrology",
+            "Simple Aspect",
+            "Specialty Aspect",
+            "Sun",
+            "Moon",
+            "Quintile",
+            "Dissolving",
+          ],
+          description: "invalid ending",
+          end: moment.utc("2024-03-21T11:00:00.000Z"),
+          start: moment.utc("2024-03-21T11:00:00.000Z"),
+          summary: "invalid ending",
+        },
       ),
     ).toThrow("Could not extract typed values from categories");
 

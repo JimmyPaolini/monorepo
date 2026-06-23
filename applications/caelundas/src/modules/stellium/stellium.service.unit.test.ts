@@ -291,6 +291,12 @@ describe(StelliumService, () => {
           edge: AspectBodies,
           current: "mars" | "moon" | "sun",
         ) => "mars" | "moon" | "sun" | null;
+        haveAspect: (args: {
+          aspectType: "conjunct";
+          body1: "moon" | "sun";
+          body2: "moon" | "sun";
+          edges: AspectBodies[];
+        }) => boolean;
         pairStelliumGroup: (events: (Event | undefined)[]) => Event[];
         phaseEmojiFor: (
           phase: "dissolving" | "forming" | "perfective",
@@ -340,6 +346,48 @@ describe(StelliumService, () => {
             start: moment.utc("2024-03-21T12:30:00.000Z"),
             summary: "Forming without dissolving",
           },
+        ]),
+      ).toHaveLength(0);
+
+      expect(
+        internals.allPairsConjunct(
+          ["sun", undefined, "moon"],
+          [{ aspect: "conjunct", bodies: ["sun", "moon"] }],
+        ),
+      ).toBe(true);
+      expect(
+        internals.allPairsConjunct(
+          ["sun", undefined, "moon", "mars"],
+          [{ aspect: "conjunct", bodies: ["sun", "moon"] }],
+        ),
+      ).toBe(false);
+      expect(internals.phaseEmojiFor("forming")).toBe("➡️ ");
+      expect(internals.phaseEmojiFor("dissolving")).toBe("⬅️ ");
+      expect(
+        internals.haveAspect({
+          aspectType: "conjunct",
+          body1: "moon",
+          body2: "sun",
+          edges: [{ aspect: "conjunct", bodies: ["sun", "moon"] }],
+        }),
+      ).toBe(true);
+      expect(
+        internals.pairStelliumGroup([
+          {
+            categories: [
+              "Astronomy",
+              "Astrology",
+              "Compound Aspect",
+              "Stellium",
+              "4 Body",
+              "Forming",
+            ],
+            description: "Forming with sparse follower",
+            end: moment.utc("2024-03-21T12:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            summary: "Forming with sparse follower",
+          },
+          undefined,
         ]),
       ).toHaveLength(0);
     });

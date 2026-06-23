@@ -3,7 +3,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import moment, { type Moment } from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 

@@ -8,7 +8,7 @@ import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-a
 import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SpecialtyAspectsService } from "./specialty-aspects.service";
 

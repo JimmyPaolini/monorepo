@@ -308,16 +308,6 @@ coverage: {
 }
 ```
 
-### Globals Not Available
-
-Ensure `globals: true` is set in test config:
-
-```typescript
-test: {
-  globals: true,  // No need to import test, describe, etc.
-}
-```
-
 ### Test Files Not Found
 
 Verify `include` pattern matches your file structure:

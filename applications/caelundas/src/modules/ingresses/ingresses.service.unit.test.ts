@@ -9,7 +9,7 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { IngressesComposerService } from "./ingresses-composer.service";
 import { IngressesService } from "./ingresses.service";
@@ -359,6 +359,106 @@ describe(IngressesService, () => {
 
       expect(progressiveEvents).toHaveLength(0);
     });
+
+    it("aggregates sign, decan, and peak ingress detection results", () => {
+      const minute = moment.utc("2024-03-21T12:00:00.000Z");
+      const detectSignSpy = vi
+        .spyOn(service, "getSignIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sign"],
+            description: "sign ingress",
+            end: minute,
+            start: minute,
+            summary: "sign",
+          },
+        ]);
+      const detectDecanSpy = vi
+        .spyOn(service, "getDecanIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Decan"],
+            description: "decan ingress",
+            end: minute,
+            start: minute,
+            summary: "decan",
+          },
+        ]);
+      const detectPeakSpy = vi
+        .spyOn(service, "getPeakIngressEvents")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Peak"],
+            description: "peak ingress",
+            end: minute,
+            start: minute,
+            summary: "peak",
+          },
+        ]);
+
+      const events = service.detect({
+        coordinateEphemerisByBody: {} as Record<Body, CoordinateEphemeris>,
+        minute,
+      });
+
+      expect(events).toHaveLength(3);
+
+      detectSignSpy.mockRestore();
+      detectDecanSpy.mockRestore();
+      detectPeakSpy.mockRestore();
+    });
+
+    it("skips progressive processing for empty body group keys", () => {
+      const groupedByBodySpy = vi
+        .spyOn(helperService, "groupSignIngressEventsByBody")
+        .mockReturnValue({
+          "": [
+            {
+              categories: ["Astronomy", "Astrology", "Ingress", "Aries"],
+              description: "anonymous ingress",
+              end: moment.utc("2024-03-21T12:00:00.000Z"),
+              start: moment.utc("2024-03-21T12:00:00.000Z"),
+              summary: "anonymous ingress",
+            },
+          ],
+          Sun: [
+            {
+              categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+              description: "sun ingress aries",
+              end: moment.utc("2024-03-21T12:00:00.000Z"),
+              start: moment.utc("2024-03-21T12:00:00.000Z"),
+              summary: "sun ingress aries",
+            },
+          ],
+        });
+      const filterSignIngressEventsSpy = vi
+        .spyOn(helperService, "filterSignIngressEvents")
+        .mockReturnValue([]);
+      const buildProgressiveSpansForBodySpy = vi
+        .spyOn(helperService, "buildProgressiveSpansForBody")
+        .mockReturnValue([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Sun"],
+            description: "sun span",
+            end: moment.utc("2024-03-22T12:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            summary: "sun span",
+          },
+        ]);
+
+      const progressiveEvents = service.detectProgressive([]);
+
+      expect(progressiveEvents).toHaveLength(1);
+      expect(buildProgressiveSpansForBodySpy).toHaveBeenCalledTimes(1);
+      expect(buildProgressiveSpansForBodySpy).toHaveBeenCalledWith(
+        "Sun",
+        expect.any(Array),
+      );
+
+      groupedByBodySpy.mockRestore();
+      filterSignIngressEventsSpy.mockRestore();
+      buildProgressiveSpansForBodySpy.mockRestore();
+    });
   });
 
   describe("private utility methods", () => {
@@ -473,6 +573,16 @@ describe(IngressesService, () => {
     });
 
     describe("composer edge cases", () => {
+      it("throws when building sign ingress for an out-of-range longitude", () => {
+        expect(() =>
+          helperService.buildSignIngressEvent({
+            body: "sun",
+            date: moment.utc("2024-03-20T03:06:00.000Z"),
+            longitude: 360,
+          }),
+        ).toThrow(/longitude/i);
+      });
+
       it("skips progressive span creation when entering or exiting event is missing", () => {
         const sortBySpy = vi.spyOn(_, "sortBy").mockReturnValue([
           {
@@ -490,6 +600,20 @@ describe(IngressesService, () => {
         ).toStrictEqual([]);
 
         sortBySpy.mockRestore();
+      });
+
+      it("groups ingress events without a known body under an empty key", () => {
+        const groupedEvents = helperService.groupSignIngressEventsByBody([
+          {
+            categories: ["Astronomy", "Astrology", "Ingress", "Aries"],
+            description: "Anonymous ingress",
+            end: moment.utc("2024-03-20T03:06:00.000Z"),
+            start: moment.utc("2024-03-20T03:06:00.000Z"),
+            summary: "Anonymous ingress",
+          },
+        ]);
+
+        expect(groupedEvents[""]).toHaveLength(1);
       });
 
       it("throws when sign cannot be extracted from categories", () => {

@@ -16,7 +16,7 @@ const vitestConfig = defineConfig({
         statements: 96,
       },
     },
-    globals: true,
+    globals: false,
     include: ["src/**/*.test.ts", "testing/**/*.test.ts"],
     setupFiles: ["./testing/setup.ts"],
   },

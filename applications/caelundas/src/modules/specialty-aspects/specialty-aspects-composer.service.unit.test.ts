@@ -1,8 +1,9 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
+import _ from "lodash";
 import moment from "moment-timezone";
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -233,5 +234,51 @@ describe(SpecialtyAspectsComposerService, () => {
         },
       ),
     ).toThrow("Could not extract aspect info");
+  });
+
+  it("falls back to empty string when sorted body categories contain sparse values", () => {
+    const sortBySpy = vi
+      .spyOn(_, "sortBy")
+      .mockReturnValue([undefined, "Sun"] as unknown);
+
+    expect(
+      service.extractAspectBodiesFromCategories([
+        "Astronomy",
+        "Astrology",
+        "Specialty Aspect",
+        "Moon",
+        "Sun",
+        "Quintile",
+      ]),
+    ).toStrictEqual({
+      aspectCapitalized: "Quintile",
+      body1Capitalized: "",
+      body2Capitalized: "Sun",
+    });
+
+    sortBySpy.mockRestore();
+  });
+
+  it("falls back to empty string for the second body when sort output is sparse", () => {
+    const sortBySpy = vi
+      .spyOn(_, "sortBy")
+      .mockReturnValue(["Moon", undefined] as unknown);
+
+    expect(
+      service.extractAspectBodiesFromCategories([
+        "Astronomy",
+        "Astrology",
+        "Specialty Aspect",
+        "Moon",
+        "Sun",
+        "Quintile",
+      ]),
+    ).toStrictEqual({
+      aspectCapitalized: "Quintile",
+      body1Capitalized: "Moon",
+      body2Capitalized: "",
+    });
+
+    sortBySpy.mockRestore();
   });
 });

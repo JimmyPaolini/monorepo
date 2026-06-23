@@ -22,6 +22,6 @@ describe({{namePascalCase}}DataLoader, () => {
   });
 
   it("is defined", () => {
-        expect(command).toBeDefined();
+    expect(command).toBeDefined();
   });
 });

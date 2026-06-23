@@ -1,7 +1,6 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { CaelundasModule } from "./modules/caelundas/caelundas.module";
-
 const { mockCommandFactoryRun } = vi.hoisted(() => ({
   mockCommandFactoryRun: vi
     .fn<() => Promise<void>>()

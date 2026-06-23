@@ -1,5 +1,5 @@
 import { Test } from "@nestjs/testing";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";

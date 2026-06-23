@@ -6,6 +6,10 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import {
+  setPromptsMockResponse,
+  setPromptsMockResponseOnce,
+} from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { LibraryCommand } from "./library.command";
@@ -91,7 +95,7 @@ describe(LibraryCommand, () => {
     vi.clearAllMocks();
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
-    promptsMock.mockResolvedValue({ provider: "ALL" });
+    setPromptsMockResponse(promptsMock, { provider: "ALL" });
   });
 
   it("is defined", () => {
@@ -132,10 +136,10 @@ describe(LibraryCommand, () => {
   });
 
   it("should parse provider interactively and support all option", async () => {
-    promptsMock.mockResolvedValueOnce({ provider: "ALL" });
+    setPromptsMockResponseOnce(promptsMock, { provider: "ALL" });
     const providerAll = await command.parseProvider(undefined);
 
-    promptsMock.mockResolvedValueOnce({ provider: "perseus" });
+    setPromptsMockResponseOnce(promptsMock, { provider: "perseus" });
     const providerSelected = await command.parseProvider(undefined);
 
     expect(providerAll).toBeUndefined();
@@ -184,7 +188,7 @@ describe(LibraryCommand, () => {
         "getAuthorChoices",
       )
       .mockResolvedValue([{ title: "vergil", value: "vergil" }]);
-    promptsMock.mockResolvedValueOnce({ author: "vergil" });
+    setPromptsMockResponseOnce(promptsMock, { author: "vergil" });
 
     const author = await command.parseAuthor("", "perseus");
 
@@ -206,7 +210,7 @@ describe(LibraryCommand, () => {
       .mockResolvedValue([
         { title: "vergil/epic/aeneid", value: "vergil/epic/aeneid" },
       ]);
-    promptsMock.mockResolvedValueOnce({ text: "vergil/epic/aeneid" });
+    setPromptsMockResponseOnce(promptsMock, { text: "vergil/epic/aeneid" });
 
     const text = await command.parseText("", "perseus", "vergil");
 
@@ -226,7 +230,7 @@ describe(LibraryCommand, () => {
       )
       .mockResolvedValue([]);
 
-    promptsMock.mockResolvedValueOnce({ author: "ALL" });
+    setPromptsMockResponseOnce(promptsMock, { author: "ALL" });
 
     await (
       command as unknown as {
@@ -260,16 +264,16 @@ describe(LibraryCommand, () => {
       "getTextChoices",
     ).mockResolvedValue([{ title: "vergil/aeneid", value: "vergil/aeneid" }]);
 
-    promptsMock.mockResolvedValueOnce({ author: "ALL" });
+    setPromptsMockResponseOnce(promptsMock, { author: "ALL" });
     const authorAll = await command.parseAuthor(undefined, "perseus");
 
-    promptsMock.mockResolvedValueOnce({ author: "vergil" });
+    setPromptsMockResponseOnce(promptsMock, { author: "vergil" });
     const authorSelected = await command.parseAuthor(undefined, "perseus");
 
-    promptsMock.mockResolvedValueOnce({ text: "ALL" });
+    setPromptsMockResponseOnce(promptsMock, { text: "ALL" });
     const textAll = await command.parseText(undefined, "perseus", "vergil");
 
-    promptsMock.mockResolvedValueOnce({ text: "vergil/aeneid" });
+    setPromptsMockResponseOnce(promptsMock, { text: "vergil/aeneid" });
     const textSelected = await command.parseText(
       undefined,
       "perseus",
@@ -292,7 +296,7 @@ describe(LibraryCommand, () => {
       "getAuthorChoices",
     ).mockResolvedValue([{ title: "vergil", value: "vergil" }]);
 
-    promptsMock.mockResolvedValueOnce({ author: 123 });
+    setPromptsMockResponseOnce(promptsMock, { author: 123 });
 
     const parsed = await command.parseAuthor(undefined, "perseus");
 
@@ -300,7 +304,7 @@ describe(LibraryCommand, () => {
   });
 
   it("should return undefined when interactive provider response is not a string", async () => {
-    promptsMock.mockResolvedValueOnce({ provider: 123 });
+    setPromptsMockResponseOnce(promptsMock, { provider: 123 });
 
     const parsed = await command.parseProvider(undefined);
 
@@ -318,7 +322,7 @@ describe(LibraryCommand, () => {
       "getTextChoices",
     ).mockResolvedValue([{ title: "vergil/aeneid", value: "vergil/aeneid" }]);
 
-    promptsMock.mockResolvedValueOnce({ text: 123 });
+    setPromptsMockResponseOnce(promptsMock, { text: 123 });
 
     const parsed = await command.parseText(undefined, "perseus", "vergil");
 
@@ -338,7 +342,7 @@ describe(LibraryCommand, () => {
       )
       .mockResolvedValue([]);
 
-    promptsMock.mockResolvedValueOnce({ text: "ALL" });
+    setPromptsMockResponseOnce(promptsMock, { text: "ALL" });
 
     await (
       command as unknown as {

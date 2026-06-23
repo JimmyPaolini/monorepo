@@ -2,6 +2,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { setPromptsMockResponse } from "../../../testing/mocks";
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "../corpus-scriptorum-ecclesiasticorum-latinorum/corpus-scriptorum-ecclesiasticorum-latinorum.command";
 import { DictionaryCommand } from "../dictionary/dictionary.command";
 import { EpigraphikDatenbankClaussSlabyCommand } from "../epigraphik-datenbank-clauss-slaby/epigraphik-datenbank-clauss-slaby.command";
@@ -37,7 +38,7 @@ describe(LexicoIngestionCommand, () => {
   let wiktionaryCommand: DeepMocked<WiktionaryCommand>;
 
   beforeAll(async () => {
-    promptsMock.mockResolvedValue({ value: true });
+    setPromptsMockResponse(promptsMock, { value: true });
 
     const module = await Test.createTestingModule({
       providers: [
@@ -94,7 +95,7 @@ describe(LexicoIngestionCommand, () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    promptsMock.mockResolvedValue({ value: true });
+    setPromptsMockResponse(promptsMock, { value: true });
   });
 
   it("is defined", () => {
@@ -135,7 +136,7 @@ describe(LexicoIngestionCommand, () => {
   });
 
   it("should prompt when option value is missing", async () => {
-    promptsMock.mockResolvedValue({ wikipedia: false });
+    setPromptsMockResponse(promptsMock, { wikipedia: false });
 
     const result = await (
       command as unknown as {

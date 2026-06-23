@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { PerseusLibraryTextExtractionProvider } from "./perseus-library-text-extraction.provider";
 
