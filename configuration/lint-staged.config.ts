@@ -36,7 +36,10 @@ const config = {
 
   // Run full advisory fallow suite when fallow config changes
   "configuration/fallow.config.jsonc": () => [
-    "pnpm exec nx run monorepo:fallow --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-dead-code --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-duplicates --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-health --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-audit --outputStyle=dynamic-legacy",
   ],
 
   // 🔄 Config synchronization
@@ -78,6 +81,7 @@ const config = {
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [
       `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check,fallow-dead-code --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      "pnpm exec nx run monorepo:fallow-duplicates --outputStyle=dynamic-legacy",
     ];
   },
 

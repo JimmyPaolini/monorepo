@@ -19,6 +19,7 @@
             "nx run {projectName}:type-coverage",
             "nx run {projectName}:typecheck",
             "nx run {projectName}:fallow-dead-code",
+            "nx run {projectName}:fallow-duplicates",
             "nx run {projectName}:fallow-health",
             "nx run {projectName}:fallow-audit"
           ],
@@ -39,6 +40,7 @@
             "nx run {projectName}:markdown-lint:write",
             "nx run {projectName}:format:write",
             "nx run {projectName}:fallow-dead-code",
+            "nx run {projectName}:fallow-duplicates",
             "nx run {projectName}:fallow-health",
             "nx run {projectName}:fallow-audit"
           ],
@@ -180,7 +182,7 @@
     },
     "fallow-duplicates": {
       "cache": true,
-      "description": "Fallow code duplication analysis — advisory",
+      "description": "Fallow strict duplication analysis (config-driven) with threshold gating",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
@@ -188,7 +190,7 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "fallow dupes --config configuration/fallow.config.jsonc || true",
+        "command": "fallow dupes --config configuration/fallow.config.jsonc",
         "cwd": "{workspaceRoot}"
       }
     },
