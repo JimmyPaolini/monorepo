@@ -12,6 +12,7 @@ REPOSITORY_ROOT="$(git rev-parse --show-toplevel)"
 git restore --staged notepads/notepad.ts || true
 git restore --staged notepads/notepad.md || true
 git restore --staged notepads/notepad.py || true
+git restore --staged notepads/notepad.sh || true
 git restore --staged notepads/notepad.sql || true
 
 EXIT_CODE=0
