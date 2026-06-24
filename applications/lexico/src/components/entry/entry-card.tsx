@@ -18,7 +18,7 @@ import { PrincipalParts } from "./principal-parts";
 import { Translations } from "./translations";
 import { VerbFormsTable } from "./verb-forms-table";
 
-import type { PartOfSpeech } from "../../lib/types";
+import type { PartOfSpeech, Pronunciation } from "../../lib/types";
 import type { AdjectiveForm } from "./adjective-forms-table";
 import type { NounForm } from "./noun-forms-table";
 import type { Inflection, PrincipalPart } from "./principal-parts";
@@ -64,28 +64,6 @@ export type FormsData =
   | { forms: AdjectiveForm[]; type: "adjective" }
   | { forms: NounForm[]; type: "noun" }
   | { forms: VerbForm[]; type: "verb" };
-
-/**
- * Pronunciation payload keyed by supported Latin pronunciation traditions.
- */
-export interface Pronunciation {
-  /** Classical Latin pronunciation */
-  classical?: PronunciationDialect;
-  /** Ecclesiastical Latin pronunciation */
-  ecclesiastical?: PronunciationDialect;
-}
-
-/**
- * Phonetic and phonemic renderings for one pronunciation tradition.
- */
-export interface PronunciationDialect {
-  /** Phoneme representation */
-  phonemes?: string;
-  /** Phonemic transcription */
-  phonemic?: string;
-  /** Phonetic transcription */
-  phonetic?: string;
-}
 
 /**
  * Inputs for the collapsible detail area inside an entry card.

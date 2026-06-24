@@ -49,7 +49,7 @@ This plan introduces `fallow` as an additional static analysis tool across local
 
 | Task     | Description | Completed | Date |
 | -------- | ----------- | --------- | ---- |
-| TASK-005 | Add root Nx targets in `/project.json` for `fallow`, `fallow-dead-code`, `fallow-dupes`, `fallow-health`, and `fallow-audit` using `nx:run-commands` with check-style defaults. | ✅ | 2026-06-19T14:08:47Z |
+| TASK-005 | Add root Nx targets in `/project.json` for `fallow`, `fallow-dead-code`, `fallow-duplicates`, `fallow-health`, and `fallow-audit` using `nx:run-commands` with check-style defaults. | ✅ | 2026-06-19T14:08:47Z |
 | TASK-006 | Add optional write-style target(s) for controlled cleanup preview/application (`fallow-fix:check` using `--dry-run`; optional explicit `fallow-fix:write` guarded for manual-only execution). | ✅ | 2026-06-19T14:08:47Z |
 | TASK-007 | Integrate advisory fallow target(s) into root quality composition without removing `clean`/`knip` (for example, extend `analyze-code` or add a sibling composite target like `analyze-code-extended`). | ✅ | 2026-06-19T14:08:47Z |
 | TASK-008 | Ensure cache/input definitions in `/nx.json` and/or root target declarations include fallow config and relevant source glob inputs for reproducible task hashing. | ✅ | 2026-06-19T14:08:47Z |

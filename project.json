@@ -82,6 +82,7 @@
         "check": {
           "commands": [
             "nx run {projectName}:knip:check",
+            "nx run {projectName}:fallow-dead-code",
             "nx run {projectName}:vulture:check"
           ],
           "parallel": true
@@ -89,6 +90,7 @@
         "write": {
           "commands": [
             "nx run {projectName}:knip:write",
+            "nx run {projectName}:fallow-dead-code",
             "nx run {projectName}:vulture:write"
           ],
           "parallel": false
@@ -136,7 +138,7 @@
     },
     "fallow": {
       "cache": true,
-      "description": "Run all fallow static analyses (dead-code, dupes, health) in advisory mode",
+      "description": "Run all fallow static analyses (dead-code, duplicates, health) in advisory mode",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
@@ -172,11 +174,11 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "fallow dead-code --config configuration/fallow.config.jsonc || true",
+        "command": "fallow dead-code --config configuration/fallow.config.jsonc",
         "cwd": "{workspaceRoot}"
       }
     },
-    "fallow-dupes": {
+    "fallow-duplicates": {
       "cache": true,
       "description": "Fallow code duplication analysis — advisory",
       "executor": "nx:run-commands",

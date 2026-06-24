@@ -15,7 +15,7 @@ interface GenerateNestjsCommandApplicationOptions {
   name?: string;
 }
 
-export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+export const COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
@@ -50,7 +50,7 @@ export async function generateNestjsCommandApplication(
   generateFiles({
     instanceDirectoryPath: projectRoot,
     substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
     tree,
   });
 

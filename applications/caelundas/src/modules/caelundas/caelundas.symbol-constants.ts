@@ -158,18 +158,6 @@ export const symbolBySpecialtyAspect = {
   undecile: "U",
 } as const;
 
-// 📐 Double Aspects
-
-/**
- * Complete mapping of all two-body aspects to their symbols.
- * Combines major, minor, and specialty aspects.
- */
-export const symbolByAspect = {
-  ...symbolByMajorAspect,
-  ...symbolByMinorAspect,
-  ...symbolBySpecialtyAspect,
-} as const;
-
 // 🔺 Triple Aspects
 
 /**

@@ -17,9 +17,6 @@ export const MORNING_SET_CATEGORY = "Morning Set";
 export const EVENING_RISE_CATEGORY = "Evening Rise";
 export const EVENING_SET_CATEGORY = "Evening Set";
 
-export const MORNING_VISIBILITY_CATEGORY = "Morning Visibility";
-export const EVENING_VISIBILITY_CATEGORY = "Evening Visibility";
-
 export const VENUS_EVENING_VISIBILITY_DESCRIPTION =
   "Venus Evening Star (Evening Visibility)";
 export const VENUS_MORNING_VISIBILITY_DESCRIPTION =
@@ -50,5 +47,3 @@ export const MARS_EVENING_VISIBILITY_PAIR_LABEL = "Mars Evening Visibility";
 export const MARS_MORNING_VISIBILITY_PAIR_LABEL = "Mars Morning Visibility";
 
 export const PHASE_EVENT_TIMEZONE = "America/New_York";
-export const NEXT_MARGIN_DIRECTION = "next" as const;
-export const PREVIOUS_MARGIN_DIRECTION = "previous" as const;

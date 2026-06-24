@@ -1,4 +1,3 @@
-import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 // 🏷️ Types
 import type {
   CoordinateEphemeris,
@@ -30,47 +29,16 @@ export interface BrightnessesArguments {
 export interface BrightnessLongitudeArguments
   extends BrightnessesArguments, CurrentLongitudeArguments {}
 
-/** Aggregate brightness sample for extrema checks. */
-export interface BrightnessSample {
-  currentBrightness: number;
-  nextBrightnesses: number[];
-  previousBrightnesses: number[];
-}
-
 /** Arguments to emit a planet phase event. */
 export interface BuildPlanetPhaseEventArguments<TPhase extends string> {
   phase: TPhase;
   timestamp: Moment;
 }
 
-/** Current scalar ephemeris values for phase calculations. */
-export interface CurrentEphemerisSample {
-  currentDistance: number;
-  currentIllumination: number;
-  currentLongitudePlanet: number;
-  currentLongitudeSun: number;
-}
-
 /** Arguments containing current planet/sun longitudes. */
 export interface CurrentLongitudeArguments {
   currentLongitudePlanet: number;
   currentLongitudeSun: number;
-}
-
-/**
- * Per-minute ephemeris inputs required to evaluate planetary phase predicates.
- */
-export interface DetectPhaseArguments {
-  coordinateEphemerisByBody: Record<
-    CoordinateEphemerisBody,
-    CoordinateEphemeris
-  >;
-  distanceEphemerisByBody: Record<DistanceEphemerisBody, DistanceEphemeris>;
-  illuminationEphemerisByBody: Record<
-    IlluminationEphemerisBody,
-    IlluminationEphemeris
-  >;
-  minute: Moment;
 }
 
 /** Arguments used to detect per-planet events from per-minute ephemeris maps. */
@@ -96,9 +64,6 @@ export interface ElongationLongitudeArguments {
   previousLongitudePlanet: number;
   previousLongitudeSun: number;
 }
-
-/** Event pair represented by beginning and ending marker events. */
-export type EventPair = [Event, Event];
 
 /** Arguments used to sample current ephemeris values. */
 export interface GatherCurrentEphemerisArguments {

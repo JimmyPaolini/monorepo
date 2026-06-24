@@ -1,4 +1,4 @@
-#region 🐳 Docker
+# 🐳 Docker
 buildx
 distroless
 dockerfiles
@@ -7,7 +7,7 @@ nodeuser
 
 #endregion
 
-#region ☸️ Kubernetes
+# ☸️ Kubernetes
 dshm
 kubeconfig
 kubectl
@@ -18,7 +18,7 @@ tolerations
 
 #endregion
 
-#region 🗄️ Database
+# 🗄️ Database
 dbname
 dbeaver
 fkey
@@ -52,7 +52,7 @@ upserts
 
 #endregion
 
-#region 🔒 Security
+# 🔒 Security
 aquasecurity
 cves
 gitleaks
@@ -62,7 +62,7 @@ trivyignore
 
 #endregion
 
-#region ☁️ Cloud & Providers
+# ☁️ Cloud & Providers
 bitnami
 bullmq
 burstable
@@ -82,7 +82,7 @@ workos
 
 #endregion
 
-#region 🧰 Operations & CI
+# 🧰 Operations & CI
 adduser
 alertmanager
 einvalidghtoken
@@ -101,7 +101,7 @@ tfvars
 
 #endregion
 
-#region 🔑 AWS
+# 🔑 AWS
 AKIA
 
 #endregion

@@ -10,6 +10,7 @@
   },
   "entry": [
     "**/.size-limit.cjs",
+    "**/applications/**/src/modules/**/*.module.ts",
     "**/src/main.ts",
     ".devcontainer/scripts/**/*.{js,mjs,ts,sh}",
     ".pnpmfile.mjs",
@@ -27,8 +28,10 @@
     "configuration/syncpack.config.cjs",
     "configuration/vitest.config.ts",
     "packages/**/scripts/**/*.{js,mjs,ts,sh}",
+    "packages/lexico-entities/src/modules/database/migrations/**/*.ts",
     "release.config.cjs",
     "scripts/**/*.{js,mjs,ts,sh}",
+    "tools/conformance/src/generators/**/templates/**",
     "validate-branch-name.config.cjs",
   ],
   "health": {

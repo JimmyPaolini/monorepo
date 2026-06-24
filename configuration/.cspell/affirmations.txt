@@ -1,4 +1,4 @@
-#region 𐤀 Hebrew Letters
+# 𐤀 Hebrew Letters
 chet
 dalet
 nauth
@@ -8,7 +8,7 @@ tsadi
 
 #endregion
 
-#region 🌳 Kabbalah — Sephirot
+# 🌳 Kabbalah — Sephirot
 binah
 chesed
 chokmah
@@ -28,7 +28,7 @@ yesod
 
 #endregion
 
-#region 🌍 Kabbalah - Worlds
+# 🌍 Kabbalah - Worlds
 assiah
 atziluth
 briah
@@ -36,7 +36,7 @@ yetzirah
 
 #endregion
 
-#region ᚠ Norse Runes — Elder Futhark
+# ᚠ Norse Runes — Elder Futhark
 algiz
 ansuz
 berkano
@@ -64,7 +64,7 @@ wunjo
 
 #endregion
 
-#region 🪷 Chakras
+# 🪷 Chakras
 ajna
 anahata
 chakra
@@ -77,7 +77,7 @@ vishuddha
 
 #endregion
 
-#region 👅 Linguistics — Mood & Modality
+# 👅 Linguistics — Mood & Modality
 alethic
 benedictive
 commissive
@@ -99,13 +99,13 @@ volative
 
 #endregion
 
-#region 📍 Linguistics — Deixis
+# 📍 Linguistics — Deixis
 deixis
 origo
 
 #endregion
 
-#region 🔮 Divination & Spiritual Practice
+# 🔮 Divination & Spiritual Practice
 affirmation
 affirmations
 Alsea
@@ -176,7 +176,7 @@ wyrd
 
 #endregion
 
-#region 🌐 SearxNG Configuration
+# 🌐 SearxNG Configuration
 affinitynumerology
 alchemywebsite
 astrologyhub

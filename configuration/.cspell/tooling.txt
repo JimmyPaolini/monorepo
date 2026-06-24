@@ -1,4 +1,4 @@
-#region 🧩 Nx & Monorepo
+# 🧩 Nx & Monorepo
 archi
 automerge
 Biome
@@ -40,7 +40,7 @@ worktrees
 
 #endregion
 
-#region 🔍 Linting & Code Quality
+# 🔍 Linting & Code Quality
 bandit
 commitlint
 cssmodule
@@ -66,7 +66,7 @@ vulture
 
 #endregion
 
-#region 🧪 Testing & Performance
+# 🧪 Testing & Performance
 domcontentloaded
 fakerjs
 interleavings
@@ -78,7 +78,7 @@ wcag
 
 #endregion
 
-#region 🎨 UI & Frontend
+# 🎨 UI & Frontend
 bento
 cmdk
 embla
@@ -99,7 +99,7 @@ vite
 
 #endregion
 
-#region 🔧 TypeScript Utilities & Build Tools
+# 🔧 TypeScript Utilities & Build Tools
 scol
 srow
 gradlew
@@ -125,7 +125,7 @@ warshall
 
 #endregion
 
-#region 🌐 Backend & Middleware
+# 🌐 Backend & Middleware
 expressjs
 fastapi
 feathersjs
@@ -140,7 +140,7 @@ subquery
 
 #endregion
 
-#region 🐍 Python Tooling
+# 🐍 Python Tooling
 addopts
 Cython
 jupyter
@@ -156,7 +156,7 @@ pyupgrade
 
 #endregion
 
-#region 🔐 GPG & Git Signing
+# 🔐 GPG & Git Signing
 gpgsign
 keyid
 pinentry
@@ -164,7 +164,7 @@ signingkey
 
 #endregion
 
-#region 📝 Git & Documentation
+# 📝 Git & Documentation
 blockquotes
 frontmatter
 gitmodules
@@ -179,7 +179,7 @@ tootallnate
 
 #endregion
 
-#region 🤖 AI Rule Files & Agents
+# 🤖 AI Rule Files & Agents
 clinerules
 cursorrules
 reactagent
@@ -187,7 +187,7 @@ windsurfrules
 
 #endregion
 
-#region 🔧 Misc Dev Tools
+# 🔧 Misc Dev Tools
 bitfield
 Bitfield
 ctest

@@ -1,26 +1,6 @@
 // ♟️ Constants
 
-export const LITERATURE_CONSTANTS = {};
-
 export const DEFAULT_TEXT_CHUNK_SIZE = 5;
-
-export const DEFAULT_LINE_CHUNK_SIZE = 1000;
-
-export const DEFAULT_TOKEN_CHUNK_SIZE = 2000;
-
-export const LABEL_PATTERN = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i;
-
-export const ROMAN_NUMERAL_PATTERN = /^[IVXLCDM]+$/i;
-
-export const LEADING_WHITESPACE_PATTERN = /^\s+/;
-
-export const CAPITAL_LETTER_PATTERN = /[A-Z]/g;
-
-export const TOKEN_SEGMENT_PATTERN = /[\p{L}]+|[^\p{L}\s]+/gu;
-
-export const WORD_TOKEN_PATTERN = /^[\p{L}]+$/u;
-
-export const COMBINING_MARKS_PATTERN = /[\u0300-\u036F]/gu;
 
 export const authorIdToName: Record<string, string> = {
   ammianus: "ammianus marcellinus",
@@ -77,31 +57,20 @@ export const authorIdToName: Record<string, string> = {
   "vulgate-bible-old-testament": "biblia sacra vulgata testamentum vetum",
 };
 
-export const bookNameMap: Record<string, string> = {
-  "commentariorum libri iii de bello civili": "de bello civili",
-  "commentariorum libri vii de bello gallicocum a. hirti supplemento":
-    "de bello gallico",
-  "libri incertorum auctorum": "",
-};
+export const DEFAULT_LINE_CHUNK_SIZE = 1000;
 
-export const worksMap: Record<string, string> = {
-  aen: "aeneid",
-  alex: "de bello alexandrino",
-  amor: "amores",
-  artis: "ars amatoria",
-  bc: "de bello civili",
-  bellafr: "de bello africo",
-  ec: "eclogues",
-  fasti: "fasti",
-  gall: "de bello gallico",
-  geo: "georgicon",
-  her: "heroides",
-  hisp: "de bello hispaniensi",
-  ibis: "ibis",
-  met: "metamorphoses",
-  ponto: "ex ponto",
-  pontoalone: "ponto",
-  rem: "remedia amoris",
-  resgestae: "res gestae divi augusti",
-  tristia: "tristia",
-};
+export const DEFAULT_TOKEN_CHUNK_SIZE = 2000;
+
+export const LABEL_PATTERN = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i;
+
+export const ROMAN_NUMERAL_PATTERN = /^[IVXLCDM]+$/i;
+
+export const LEADING_WHITESPACE_PATTERN = /^\s+/;
+
+export const CAPITAL_LETTER_PATTERN = /[A-Z]/g;
+
+export const TOKEN_SEGMENT_PATTERN = /[\p{L}]+|[^\p{L}\s]+/gu;
+
+export const WORD_TOKEN_PATTERN = /^[\p{L}]+$/u;
+
+export const COMBINING_MARKS_PATTERN = /[\u0300-\u036F]/gu;

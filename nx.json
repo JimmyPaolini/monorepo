@@ -218,7 +218,7 @@
         "sharedGlobals"
       ]
     },
-    "fallow-dupes": {
+    "fallow-duplicates": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [

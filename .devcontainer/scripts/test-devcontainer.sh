@@ -15,7 +15,7 @@ LOCAL_DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/local/devcontainer.json
 CLOUD_DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/cloud/devcontainer.json"
 PACKAGE_JSON="${WORKSPACE_ROOT}/package.json"
 
-#region 📌 Expected pinned versions (single sources of truth: package.json & devcontainer.json)
+# 📌 Expected pinned versions (single sources of truth: package.json & devcontainer.json)
 # Version pins are read from the local config (source of truth); cloud is kept in sync by sync-devcontainer-configuration.ts
 NODE_MAJOR="$(jq -r '.features["ghcr.io/devcontainers/features/node:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 PNPM_VERSION="$(jq -r '.packageManager | split("@")[1]' "${PACKAGE_JSON}")"
@@ -32,7 +32,7 @@ EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-fea
 EXPECTED_GITLEAKS_VERSION="$(jq -r '.remoteEnv.GITLEAKS_VERSION' "${LOCAL_DEVCONTAINER_JSON}")"
 #endregion
 
-#region 🛠️ Assertion helpers
+# 🛠️ Assertion helpers
 PASS=0
 FAIL=0
 
@@ -80,7 +80,7 @@ assert_version_contains() {
 }
 #endregion
 
-#region 🟢 Version-pinned tools
+# 🟢 Version-pinned tools
 echo ""
 echo "🟢 Node.js — must be v${NODE_MAJOR}.x (matches devcontainer.json node feature)"
 assert_version_contains "node" "v${NODE_MAJOR}." "node --version"
@@ -134,7 +134,7 @@ echo "🔑 Gitleaks — must be ${EXPECTED_GITLEAKS_VERSION}"
 assert_version_contains "gitleaks" "${EXPECTED_GITLEAKS_VERSION}" "gitleaks version"
 #endregion
 
-#region 🐳 Docker
+# 🐳 Docker
 echo ""
 echo "🐳 Docker (DinD inside container / DooD on local machine)"
 if docker info > /dev/null 2>&1; then
@@ -147,7 +147,7 @@ else
 fi
 #endregion
 
-#region 🔒 Security
+# 🔒 Security
 echo ""
 echo "🔒 Container user (must be 'root')"
 CURRENT_USER="$(whoami)"
@@ -159,7 +159,7 @@ else
 fi
 #endregion
 
-#region 🌍 Environment variables
+# 🌍 Environment variables
 echo ""
 echo "🌍 Environment variables (remoteEnv)"
 for ENV_VAR in KUBECONFIG NODE_OPTIONS UV_THREADPOOL_SIZE; do
@@ -171,7 +171,7 @@ for ENV_VAR in KUBECONFIG NODE_OPTIONS UV_THREADPOOL_SIZE; do
 done
 #endregion
 
-#region 🔧 Toolchain dependencies
+# 🔧 Toolchain dependencies
 echo ""
 echo "🔧 Corepack (pnpm activation)"
 assert_available "corepack" "corepack --version"
@@ -190,7 +190,7 @@ assert_available "npm" "npm --version"
 assert_available "npx" "npx --version"
 #endregion
 
-#region 📂 Post-create artifacts
+# 📂 Post-create artifacts
 echo ""
 echo "📂 Post-create artifacts"
 if [ -d "${WORKSPACE_ROOT}/node_modules" ]; then
@@ -205,7 +205,7 @@ else
 fi
 #endregion
 
-#region 🔑 Script permissions
+# 🔑 Script permissions
 echo ""
 echo "🔑 Script permissions"
 SCRIPTS_DIR="${WORKSPACE_ROOT}/.devcontainer/scripts"
@@ -219,7 +219,7 @@ for SCRIPT in "${SCRIPTS_DIR}"/*.sh; do
 done
 #endregion
 
-#region 🗂️ Workspace structure
+# 🗂️ Workspace structure
 echo ""
 echo "🗂️  Workspace structure (mount sanity check)"
 for DIR in applications packages infrastructure tools; do
@@ -231,7 +231,7 @@ for DIR in applications packages infrastructure tools; do
 done
 #endregion
 
-#region 🧩 Extensions list consistency
+# 🧩 Extensions list consistency
 echo ""
 echo "🧩 VS Code extensions / recommendations sync"
 if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts check 2>&1); then
@@ -241,7 +241,7 @@ else
 fi
 #endregion
 
-#region ⚙️ Devcontainer configuration structure
+# ⚙️ Devcontainer configuration structure
 echo ""
 echo "⚙️  Devcontainer configuration structure (local ↔ cloud)"
 
@@ -296,7 +296,7 @@ else
 fi
 #endregion
 
-#region ⚙️ VS Code Machine settings sync
+# ⚙️ VS Code Machine settings sync
 echo ""
 echo "⚙️  VS Code Machine settings sync"
 if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts check 2>&1); then
@@ -306,7 +306,7 @@ else
 fi
 #endregion
 
-#region 🔐 GPG commit signing configuration
+# 🔐 GPG commit signing configuration
 echo ""
 echo "🔐 GPG commit signing configuration"
 
@@ -330,7 +330,7 @@ else
 fi
 #endregion
 
-#region 📊 Summary
+# 📊 Summary
 echo ""
 echo "────────────────────────────────────────"
 TOTAL=$((PASS + FAIL))

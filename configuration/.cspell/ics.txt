@@ -1,4 +1,4 @@
-#region 📦 Components
+# 📦 Components
 ical
 icalendar
 valarm
@@ -7,7 +7,7 @@ vevent
 vtimezone
 #endregion
 
-#region 🕐 Date & Time
+# 🕐 Date & Time
 byday
 bymonth
 dtend
@@ -17,7 +17,7 @@ hmmss
 yyyymmddth
 #endregion
 
-#region 🏷️ Properties
+# 🏷️ Properties
 caldesc
 calname
 calscale

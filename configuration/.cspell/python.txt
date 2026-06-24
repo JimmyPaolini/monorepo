@@ -1,11 +1,11 @@
-#region 🐍 LangChain Async
+# 🐍 LangChain Async
 abatch
 ainvoke
 astream
 
 #endregion
 
-#region 📓 Notebook Formats
+# 📓 Notebook Formats
 ipykernel
 ipynb
 ipython
@@ -17,13 +17,13 @@ pygments
 
 #endregion
 
-#region 📦 Packaging & Environment
+# 📦 Packaging & Environment
 pyproject
 venv
 
 #endregion
 
-#region 📚 Standard Library
+# 📚 Standard Library
 classmethod
 dataclasses
 Dataclass
@@ -47,7 +47,7 @@ tomllib
 
 #endregion
 
-#region 🔢 NumPy
+# 🔢 NumPy
 argsort
 dtype
 keepdims
@@ -57,7 +57,7 @@ numpy
 
 #endregion
 
-#region 🔧 Configuration Keys
+# 🔧 Configuration Keys
 testpaths
 
 #endregion

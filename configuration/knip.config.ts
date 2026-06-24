@@ -14,6 +14,9 @@ const config: KnipConfig = {
     "notepads/**",
   ],
 
+  // Blank constants/types files are conformance placeholders; keep them out of unused-file checks only.
+  ignoreFiles: ["**/src/**/*.constants.ts", "**/src/**/*.types.ts"],
+
   // Binaries invoked via project.json targets or scripts, not imported in code
   ignoreBinaries: [
     "terraform", // Terraform CLI, used for infrastructure provisioning
@@ -100,9 +103,6 @@ const config: KnipConfig = {
         "src/**/*.test.ts",
         "src/**/*.integration.test.ts",
         "src/**/*.end-to-end.test.ts",
-        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
-        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
-        "src/modules/caelundas/caelundas.body-types.ts", // Split-out type surface not yet adopted by the wider module graph
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],
@@ -153,9 +153,6 @@ const config: KnipConfig = {
         "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
       ],
       ignore: [
-        // TODO: re add these
-        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
-        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
         "src/modules/database/database.module.ts", // Conformance-generated module stub, not yet exported
         "src/modules/entities/entities.module.ts", // Conformance-generated module stub, not yet exported
       ],
@@ -168,8 +165,6 @@ const config: KnipConfig = {
         "src/**/*.test.ts",
         "src/**/*.integration.test.ts",
         "src/**/*.end-to-end.test.ts",
-        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
-        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
         "testing/**", // Test fixtures and setup
       ],
       ignoreDependencies: [

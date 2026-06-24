@@ -1,5 +1,4 @@
 import {
-  symbolByAspect,
   symbolByBody,
   symbolByLunarPhase,
   symbolByMajorAspect,
@@ -19,9 +18,16 @@ import type {
 } from "../ephemeris/ephemeris.types";
 
 /** Union of all supported aspect keys from the combined aspect symbol map. */
-type Aspect = keyof typeof symbolByAspect;
+const aspectSymbols = {
+  ...symbolByMajorAspect,
+  ...symbolByMinorAspect,
+  ...symbolBySpecialtyAspect,
+} as const;
+
+/** Union of all supported aspect keys from the merged aspect symbol maps. */
+type Aspect = keyof typeof aspectSymbols;
 // Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
-/** Union of major aspect keys derived from the major-aspect symbol map. */
+/** Union of major-aspect keys from the major-aspect symbol map. */
 type MajorAspect = keyof typeof symbolByMajorAspect;
 /** Union of minor aspect keys derived from the minor-aspect symbol map. */
 type MinorAspect = keyof typeof symbolByMinorAspect;
@@ -87,12 +93,6 @@ export const retrogradeBodies = [
   "juno",
   "vesta",
 ] as const;
-
-/**
- * Array of inferior/superior planets tracked for synodic phases.
- * Venus and Mercury have interior orbits; Mars has observable evening star phases.
- */
-export const phaseBodies = ["venus", "mercury", "mars"] as const;
 
 /**
  * Array of bodies tracked for sign/decan ingress events.
@@ -268,7 +268,7 @@ export const specialtyAspects = typedObjectKeys(symbolBySpecialtyAspect);
  * Array of all aspect names.
  * Combines major, minor, and specialty aspects.
  */
-export const aspects = typedObjectKeys(symbolByAspect);
+export const aspects = typedObjectKeys(aspectSymbols);
 // export const aspectSymbols: AspectSymbol[] = Object.values(symbolByAspect);
 
 // 🔮 Aspect Orbs

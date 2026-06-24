@@ -21,7 +21,7 @@ interface GenerateNestjsCommandModuleOptions {
 /**
  * Absolute path to the template directory used by this generator.
  */
-export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+export const COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
@@ -46,7 +46,7 @@ export async function generateNestjsCommandModule(
   generateFiles({
     instanceDirectoryPath: targetPath,
     substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
     tree,
   });
 

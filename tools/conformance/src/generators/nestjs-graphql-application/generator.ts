@@ -15,7 +15,7 @@ interface GenerateNestjsGraphqlApplicationOptions {
   name?: string;
 }
 
-export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+export const GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
@@ -50,7 +50,7 @@ export async function generateNestjsGraphqlApplication(
   generateFiles({
     instanceDirectoryPath: projectRoot,
     substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    templateDirectoryPath: GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
     tree,
   });
 

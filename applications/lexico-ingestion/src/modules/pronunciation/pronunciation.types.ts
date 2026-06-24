@@ -44,11 +44,6 @@ export interface PronunciationEcclesiasticalCharacterContext extends Pronunciati
   wordString: string;
 }
 
-/** Context for parsing pronunciation markers from Wiktionary text. */
-export interface PronunciationParsePhonicsContext {
-  pronunciations: string[];
-}
-
 /** Mixed phoneme entry used during pronunciation expansion. */
 export type PronunciationPhoneme = string | string[][];
 

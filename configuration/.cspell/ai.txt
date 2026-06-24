@@ -1,4 +1,4 @@
-#region 🦜 LangChain
+# 🦜 LangChain
 agentic
 langchain
 langflow
@@ -8,7 +8,7 @@ lcel
 
 #endregion
 
-#region 🤖 Models & Runtimes
+# 🤖 Models & Runtimes
 gemma
 nomic
 ollama
@@ -17,7 +17,7 @@ qwen
 
 #endregion
 
-#region 🔍 Search & Retrieval
+# 🔍 Search & Retrieval
 duckduckgo
 faiss
 jina
@@ -33,7 +33,7 @@ vectorstores
 
 #endregion
 
-#region 🌐 Interfaces & Hubs
+# 🌐 Interfaces & Hubs
 huggingface
 multimodality
 openwebui
@@ -41,7 +41,7 @@ webui
 
 #endregion
 
-#region 🛠️ AI Data & Search Tools
+# 🛠️ AI Data & Search Tools
 Apio
 Firecrawl
 firecrawl

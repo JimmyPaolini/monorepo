@@ -1,4 +1,4 @@
-#region ♈ Aspects
+# ♈ Aspects
 binovile
 biquintile
 biseptile
@@ -17,20 +17,20 @@ undecile
 undecuple
 #endregion
 
-#region 📐 Measurements
+# 📐 Measurements
 arcminute
 arcminutes
 arcsecond
 arcseconds
 #endregion
 
-#region 🌿 Sabbats
+# 🌿 Sabbats
 imbolc
 lughnasadh
 samhain
 #endregion
 
-#region 🔭 Celestial & Astrological
+# 🔭 Celestial & Astrological
 astrology
 coeli
 decan
@@ -47,14 +47,14 @@ yods
 zodiac
 #endregion
 
-#region ✨ Caelundas
+# ✨ Caelundas
 caelendars
 caelundae
 caelundas
 caelunday
 #endregion
 
-#region 🔭 Python Astronomy Libraries
+# 🔭 Python Astronomy Libraries
 astropy
 Astropy
 Atciq

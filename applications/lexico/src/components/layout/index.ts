@@ -1,1 +1,1 @@
-export { Logo, type LogoProperties } from "./logo";
+export { Logo } from "./logo";
