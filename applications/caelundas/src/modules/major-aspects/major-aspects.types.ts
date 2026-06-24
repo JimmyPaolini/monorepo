@@ -1,8 +1,5 @@
 // 🏷️ Types
-import type {
-  Body,
-  MajorAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
@@ -16,16 +13,4 @@ export interface DetectAspectForBodyPairArguments {
   minute: Moment;
   nextMinute: Moment;
   previousMinute: Moment;
-}
-
-/**
- * Parsed body/aspect components recovered from a major-aspect event category list.
- */
-export interface ExtractAspectPartsFromCategoriesResult {
-  aspect: MajorAspect;
-  aspectCapitalized: string;
-  body1: Body;
-  body1Capitalized: string;
-  body2: Body;
-  body2Capitalized: string;
 }
