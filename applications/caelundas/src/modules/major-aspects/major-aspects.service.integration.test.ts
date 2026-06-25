@@ -3,6 +3,7 @@ import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelun
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -102,6 +103,7 @@ describe("major-aspects.events integration", () => {
         AspectsUtilities,
         EphemerisService,
         MathService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();

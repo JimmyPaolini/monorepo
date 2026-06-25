@@ -1,8 +1,12 @@
 import { execSync } from "node:child_process";
 import * as fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-import * as tsCompiler from "typescript";
+import tsCompiler from "typescript";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const CHECK_MODE = process.argv.includes("--check");
 

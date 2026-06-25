@@ -6,6 +6,7 @@ import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
 import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -37,6 +38,8 @@ describe(MinorAspectsService, () => {
         SimpleAspectsEventService,
         EphemerisService,
         MathService,
+        SimpleAspectsEventService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();
