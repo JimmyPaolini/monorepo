@@ -5,7 +5,6 @@ dockerfiles
 nodegroup
 nodeuser
 
-#endregion
 
 # ☸️ Kubernetes
 dshm
@@ -16,7 +15,6 @@ projectcalico
 storageclasses
 tolerations
 
-#endregion
 
 # 🗄️ Database
 dbname
@@ -50,7 +48,6 @@ upserted
 upserting
 upserts
 
-#endregion
 
 # 🔒 Security
 aquasecurity
@@ -60,7 +57,6 @@ gitleaksignore
 trivy
 trivyignore
 
-#endregion
 
 # ☁️ Cloud & Providers
 bitnami
@@ -80,7 +76,6 @@ textlocal
 vonage
 workos
 
-#endregion
 
 # 🧰 Operations & CI
 adduser
@@ -99,10 +94,8 @@ sendgrid
 tfstate
 tfvars
 
-#endregion
 
 # 🔑 AWS
 AKIA
 
-#endregion
 lockfiles

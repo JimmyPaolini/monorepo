@@ -30,7 +30,6 @@ EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/
 EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_GITLEAKS_VERSION="$(jq -r '.remoteEnv.GITLEAKS_VERSION' "${LOCAL_DEVCONTAINER_JSON}")"
-#endregion
 
 # 🛠️ Assertion helpers
 PASS=0
@@ -78,7 +77,6 @@ assert_version_contains() {
     fail "$label version mismatch: expected '$expected', got '$first_line'"
   fi
 }
-#endregion
 
 # 🟢 Version-pinned tools
 echo ""
@@ -132,7 +130,6 @@ assert_version_contains "sqlite3" "${EXPECTED_SQLITE_VERSION}" "sqlite3 --versio
 echo ""
 echo "🔑 Gitleaks — must be ${EXPECTED_GITLEAKS_VERSION}"
 assert_version_contains "gitleaks" "${EXPECTED_GITLEAKS_VERSION}" "gitleaks version"
-#endregion
 
 # 🐳 Docker
 echo ""
@@ -145,7 +142,6 @@ if docker info > /dev/null 2>&1; then
 else
   echo "  ⚠️  Docker daemon not reachable — skipping Docker tests (daemon starts after container is fully up)"
 fi
-#endregion
 
 # 🔒 Security
 echo ""
@@ -157,7 +153,6 @@ if [ "${CURRENT_USER}" = "root" ]; then
 else
   fail "expected user 'root', got '${CURRENT_USER}' (uid=${CURRENT_UID})"
 fi
-#endregion
 
 # 🌍 Environment variables
 echo ""
@@ -169,7 +164,6 @@ for ENV_VAR in KUBECONFIG NODE_OPTIONS UV_THREADPOOL_SIZE; do
     fail "${ENV_VAR} is not set"
   fi
 done
-#endregion
 
 # 🔧 Toolchain dependencies
 echo ""
@@ -188,7 +182,6 @@ echo ""
 echo "📦 npm/npx"
 assert_available "npm" "npm --version"
 assert_available "npx" "npx --version"
-#endregion
 
 # 📂 Post-create artifacts
 echo ""
@@ -203,7 +196,6 @@ if [ -f "${WORKSPACE_ROOT}/.nx/graph.json" ]; then
 else
   fail ".nx/graph.json not found (nx graph may not have run)"
 fi
-#endregion
 
 # 🔑 Script permissions
 echo ""
@@ -217,7 +209,6 @@ for SCRIPT in "${SCRIPTS_DIR}"/*.sh; do
     fail "${SCRIPT_NAME} is not executable"
   fi
 done
-#endregion
 
 # 🗂️ Workspace structure
 echo ""
@@ -229,7 +220,6 @@ for DIR in applications packages infrastructure tools; do
     fail "${DIR}/ not found (workspace mount may be incorrect)"
   fi
 done
-#endregion
 
 # 🧩 Extensions list consistency
 echo ""
@@ -239,7 +229,6 @@ if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/s
 else
   fail "VS Code extensions are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts write"
 fi
-#endregion
 
 # ⚙️ Devcontainer configuration structure
 echo ""
@@ -294,7 +283,6 @@ if grep -q 'memory:' "${CLOUD_DOCKER_COMPOSE_YML}" 2>/dev/null; then
 else
   fail "cloud docker-compose.yml missing memory resource limit"
 fi
-#endregion
 
 # ⚙️ VS Code Machine settings sync
 echo ""
@@ -304,7 +292,6 @@ if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/s
 else
   fail "VS Code Machine settings are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
 fi
-#endregion
 
 # 🔐 GPG commit signing configuration
 echo ""
@@ -328,7 +315,6 @@ if [ -n "$(git config --global user.signingkey 2>/dev/null)" ]; then
 else
   echo "  ⚠️  user.signingkey not set globally — skipping (depends on host GPG forwarding)"
 fi
-#endregion
 
 # 📊 Summary
 echo ""
@@ -343,4 +329,3 @@ if [ "${FAIL}" -gt 0 ]; then
 fi
 
 echo "✅ All ${PASS} tests passed"
-#endregion

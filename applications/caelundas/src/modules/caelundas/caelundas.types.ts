@@ -246,8 +246,6 @@ export type Sign = keyof typeof symbolBySign;
 
 // ☿️ Mercurian Phases
 
-// #endregion
-
 // ♂️ Martian Phases
 
 /**
@@ -257,8 +255,6 @@ export type Sign = keyof typeof symbolBySign;
  * with ±1-2° orbs.
  */
 export type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
-
-// #endregion
 
 // 📐 Aspect Phases
 

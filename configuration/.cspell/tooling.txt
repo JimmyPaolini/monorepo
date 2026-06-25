@@ -1,23 +1,23 @@
 # 🧩 Nx & Monorepo
 archi
 automerge
-Biome
 biome
+Biome
 biomejs
-Buildability
 brightgreen
+Buildability
 bundlesize
-context7
-Cipe
 cipe
+Cipe
 cipes
+context7
 depcruise
 deps
 devdeps
 devkit
 glab
-hushy
 hotspots
+hushy
 lintstagedrc
 monorepo
 myapp
@@ -38,7 +38,6 @@ workspaces
 worktree
 worktrees
 
-#endregion
 
 # 🔍 Linting & Code Quality
 bandit
@@ -64,7 +63,6 @@ stylelintrc
 ty
 vulture
 
-#endregion
 
 # 🧪 Testing & Performance
 domcontentloaded
@@ -76,7 +74,6 @@ ttfb
 vitest
 wcag
 
-#endregion
 
 # 🎨 UI & Frontend
 bento
@@ -97,11 +94,8 @@ vaul
 vinxi
 vite
 
-#endregion
 
 # 🔧 TypeScript Utilities & Build Tools
-scol
-srow
 gradlew
 infer
 instanceof
@@ -110,8 +104,10 @@ multiset
 polymorphic
 precompiled
 readonly
+scol
 serializers
 seroval
+srow
 texttypescript
 transpiler
 transpiles
@@ -123,7 +119,6 @@ uppercased
 uppercases
 warshall
 
-#endregion
 
 # 🌐 Backend & Middleware
 expressjs
@@ -138,14 +133,13 @@ srvx
 subclassing
 subquery
 
-#endregion
 
 # 🐍 Python Tooling
 addopts
 Cython
+isort
 jupyter
 jupyterlab
-isort
 mypy
 nosec
 pipx
@@ -154,7 +148,6 @@ pycache
 pydantic
 pyupgrade
 
-#endregion
 
 # 🔐 GPG & Git Signing
 gpgsign
@@ -162,7 +155,6 @@ keyid
 pinentry
 signingkey
 
-#endregion
 
 # 📝 Git & Documentation
 blockquotes
@@ -177,7 +169,6 @@ peaceiris
 stackoverflow
 tootallnate
 
-#endregion
 
 # 🤖 AI Rule Files & Agents
 clinerules
@@ -185,7 +176,6 @@ cursorrules
 reactagent
 windsurfrules
 
-#endregion
 
 # 🔧 Misc Dev Tools
 bitfield
@@ -202,9 +192,10 @@ sarif
 timotejroiko
 
 #endregion
-smallint
-stmts
-rglob
-splitlines
 isupper
 jsts
+pnpmfile
+rglob
+smallint
+splitlines
+stmts

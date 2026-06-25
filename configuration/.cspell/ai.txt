@@ -6,7 +6,6 @@ langgraph
 langsmith
 lcel
 
-#endregion
 
 # 🤖 Models & Runtimes
 gemma
@@ -15,7 +14,6 @@ ollama
 opencode
 qwen
 
-#endregion
 
 # 🔍 Search & Retrieval
 duckduckgo
@@ -31,7 +29,6 @@ trafilatura
 vectorstore
 vectorstores
 
-#endregion
 
 # 🌐 Interfaces & Hubs
 huggingface
@@ -39,7 +36,6 @@ multimodality
 openwebui
 webui
 
-#endregion
 
 # 🛠️ AI Data & Search Tools
 Apio
@@ -49,5 +45,3 @@ Serp
 serp
 Tavily
 tavily
-
-#endregion

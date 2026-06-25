@@ -9,7 +9,6 @@ meeus
 sepl
 semo
 sweph
-#endregion
 
 # 🔬 Swiss Ephemeris API
 APOG
@@ -24,7 +23,6 @@ OSCU
 pheno
 SEFLG
 SWIEPH
-#endregion
 
 # 🌍 Orbital Mechanics
 apoapsis
@@ -33,10 +31,8 @@ multidetermines
 periapsis
 perifocus
 prograde
-#endregion
 
 # 🔭 Coordinate Systems
 astrometric
 keplerian
 topocentric
-#endregion

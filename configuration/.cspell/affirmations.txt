@@ -6,7 +6,6 @@ resh
 thuris
 tsadi
 
-#endregion
 
 # 🌳 Kabbalah — Sephirot
 binah
@@ -26,7 +25,6 @@ tiphareth
 tiphereth
 yesod
 
-#endregion
 
 # 🌍 Kabbalah - Worlds
 assiah
@@ -34,7 +32,6 @@ atziluth
 briah
 yetzirah
 
-#endregion
 
 # ᚠ Norse Runes — Elder Futhark
 algiz
@@ -62,7 +59,6 @@ tiwaz
 uruz
 wunjo
 
-#endregion
 
 # 🪷 Chakras
 ajna
@@ -75,7 +71,6 @@ sahasrara
 svadhisthana
 vishuddha
 
-#endregion
 
 # 👅 Linguistics — Mood & Modality
 alethic
@@ -97,13 +92,11 @@ superplural
 unconjugated
 volative
 
-#endregion
 
 # 📍 Linguistics — Deixis
 deixis
 origo
 
-#endregion
 
 # 🔮 Divination & Spiritual Practice
 affirmation
@@ -174,7 +167,6 @@ unromanticized
 vergil
 wyrd
 
-#endregion
 
 # 🌐 SearxNG Configuration
 affinitynumerology
@@ -251,4 +243,3 @@ yogainternational
 yogajournal
 Zohar
 
-#endregion

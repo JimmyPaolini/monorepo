@@ -3,7 +3,6 @@ abatch
 ainvoke
 astream
 
-#endregion
 
 # 📓 Notebook Formats
 ipykernel
@@ -15,13 +14,11 @@ nbformat
 pprint
 pygments
 
-#endregion
 
 # 📦 Packaging & Environment
 pyproject
 venv
 
-#endregion
 
 # 📚 Standard Library
 classmethod
@@ -45,7 +42,6 @@ setattr
 staticmethod
 tomllib
 
-#endregion
 
 # 🔢 NumPy
 argsort
@@ -55,9 +51,6 @@ linalg
 ndarray
 numpy
 
-#endregion
 
 # 🔧 Configuration Keys
 testpaths
-
-#endregion

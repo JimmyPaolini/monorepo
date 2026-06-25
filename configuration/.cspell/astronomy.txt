@@ -15,20 +15,17 @@ tredicile
 trine
 undecile
 undecuple
-#endregion
 
 # 📐 Measurements
 arcminute
 arcminutes
 arcsecond
 arcseconds
-#endregion
 
 # 🌿 Sabbats
 imbolc
 lughnasadh
 samhain
-#endregion
 
 # 🔭 Celestial & Astrological
 astrology
@@ -45,14 +42,12 @@ stellium
 stelliums
 yods
 zodiac
-#endregion
 
 # ✨ Caelundas
 caelendars
 caelundae
 caelundas
 caelunday
-#endregion
 
 # 🔭 Python Astronomy Libraries
 astropy
@@ -68,5 +63,4 @@ erfa
 liberfa
 skyfield
 Skyfield
-#endregion
 Lons
