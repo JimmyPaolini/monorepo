@@ -9,11 +9,12 @@ REPOSITORY_ROOT="$(git rev-parse --show-toplevel)"
 "$REPOSITORY_ROOT/scripts/git/check-commit-signing-configuration.sh"
 
 # 🗒️ Clear notepads
-git restore --staged notepads/notepad.ts || true
+git restore --staged notepads/notepad.jsonc || true
 git restore --staged notepads/notepad.md || true
 git restore --staged notepads/notepad.py || true
 git restore --staged notepads/notepad.sh || true
 git restore --staged notepads/notepad.sql || true
+git restore --staged notepads/notepad.ts || true
 
 EXIT_CODE=0
 
