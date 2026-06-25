@@ -697,9 +697,6 @@ importers:
       '@testcontainers/postgresql':
         specifier: ^12.0.3
         version: 12.0.3
-      lodash:
-        specifier: ^4.18.1
-        version: 4.18.1
       pg:
         specifier: ^8.21.0
         version: 8.21.0
