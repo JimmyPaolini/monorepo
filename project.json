@@ -640,7 +640,7 @@
       }
     },
     "sync-agent-skills": {
-      "cache": true,
+      "cache": false,
       "configurations": {
         "check": {
           "command": "tsx scripts/sync-agent-skills.ts check"
