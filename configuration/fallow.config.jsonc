@@ -15,7 +15,6 @@
     "skipLocal": true,
     "threshold": 6,
   },
-
   "entry": [
     "**/.size-limit.cjs",
     "**/applications/*/src/modules/**/*.module.ts",
