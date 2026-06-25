@@ -1,7 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
   "audit": {
+    "cacheMaxAgeDays": 7,
+    "deadCodeBaseline": null,
+    "dupesBaseline": null,
     "gate": "all",
+    "healthBaseline": null,
   },
   "duplicates": {
     "crossLanguage": true,
@@ -42,8 +46,32 @@
     "validate-branch-name.config.cjs",
   ],
   "health": {
+    "coverage": "coverage/coverage-final.json",
+    "coverageRoot": null,
+    "crapRefactorBand": 3,
+    "ignore": [
+      "**/__generated__/**",
+      "**/coverage/**",
+      "**/dist/**",
+      "**/src/lib/database.types.ts",
+      "**/src/routeTree.gen.ts",
+    ],
     "maxCognitive": 12,
+    "maxCrap": 16,
     "maxCyclomatic": 8,
+    "ownership": {
+      "botPatterns": [
+        "*\\[bot\\]*",
+        "*-service-account*",
+        "dependabot*",
+        "github-actions*",
+        "renovate*",
+        "svc-*",
+      ],
+      "emailMode": "handle",
+    },
+    "suggestInlineSuppression": false,
+    "thresholdOverrides": [],
   },
   "ignoreDependencies": [
     "@caelundas/src",
