@@ -43,7 +43,6 @@ bash scripts/sign-commits.sh
 
 The script performs the same workflow documented below:
 
-- validates that it is being run from the monorepo root via `scripts/utilities.sh`
 - checks for a clean working tree and a checked-out branch
 - fetches `origin/main`
 - validates Git and GPG signing configuration

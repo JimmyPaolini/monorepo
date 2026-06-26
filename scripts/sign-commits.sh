@@ -1,18 +1,11 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-if [[ $# -ne 0 ]]; then
-  echo '❌ This script does not accept arguments. Run: bash scripts/sign-commits.sh' >&2
-  exit 1
-fi
+set -e
 
 script_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repository_root="$(cd "$script_directory/.." && pwd)"
 
 cd "$repository_root"
-
-source "$repository_root/scripts/utilities.sh"
 
 current_branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
 if [[ -z "$current_branch" ]]; then
