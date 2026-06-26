@@ -16,7 +16,6 @@ import type {
   retrogradeBodies,
 } from "./caelundas.constants";
 import type {
-  symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
   symbolByLunarPhase,
@@ -38,7 +37,7 @@ import type {
 /**
  * Union of all two-body aspect types (major, minor, and specialty).
  */
-export type Aspect = keyof typeof symbolByAspect;
+export type Aspect = (typeof aspects)[number];
 
 /**
  * Phase of an aspect's lifecycle (applying, exact, or separating).
@@ -59,7 +58,7 @@ export type Aspect = keyof typeof symbolByAspect;
  */
 export type AspectPhase = (typeof aspectPhases)[number];
 
-// #region Decans 🔟
+// 🔟 Decans
 
 /**
  * Asteroids (minor planets) tracked for astrological significance.
@@ -76,15 +75,11 @@ export type Asteroid = keyof typeof symbolByAsteroid;
  */
 export type Body = keyof typeof symbolByBody;
 
-// #region Planets 🪐
+// 🪐 Planets
 
-/**
- * Unicode symbol representing a celestial body.
- */
-export type BodySymbol = (typeof symbolByBody)[Body];
 // export type PlanetSymbol = (typeof symbolByPlanet)[Planet];
 
-// #region Asteroids 💫
+// 💫 Asteroids
 
 /**
  * Decan representing a 10-degree subdivision within a zodiac sign.
@@ -92,11 +87,6 @@ export type BodySymbol = (typeof symbolByBody)[Body];
  * Each sign is divided into three decans (e.g., "aries 1", "aries 2", "aries 3").
  */
 export type Decan = keyof typeof symbolByDecan;
-
-/**
- * Unicode symbol representing a decan subdivision.
- */
-export type DecanSymbol = (typeof symbolByDecan)[Decan];
 
 /**
  * Phase of an eclipse event (partial, total, annular, or penumbral).
@@ -130,11 +120,6 @@ export type LunarPhase = keyof typeof symbolByLunarPhase;
 export type MajorAspect = keyof typeof symbolByMajorAspect;
 
 /**
- * Unicode symbol representing a major aspect.
- */
-export type MajorAspectSymbol = (typeof symbolByMajorAspect)[MajorAspect];
-
-/**
  * Mars phase representing its illumination and visibility state from Earth.
  *
  * Mars exhibits limited phase variation (never appears as a crescent) because
@@ -159,11 +144,6 @@ export type MercurianPhase = keyof typeof symbolByMercurianPhase;
 export type MinorAspect = keyof typeof symbolByMinorAspect;
 
 /**
- * Unicode symbol representing a minor aspect.
- */
-export type MinorAspectSymbol = (typeof symbolByMinorAspect)[MinorAspect];
-
-/**
  * Lunar nodes and apsides representing calculated points in the Moon's orbit.
  *
  * Includes north/south nodes (ecliptic intersections) and lunar perigee/apogee
@@ -177,12 +157,6 @@ export type Node = keyof typeof symbolByNode;
  * Values: "direct" (eastward), "retrograde" (westward), "stationary" (transition).
  */
 export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
-
-/**
- * Unicode symbol representing an orbital direction.
- */
-export type OrbitalDirectionSymbol =
-  (typeof symbolByOrbitalDirection)[OrbitalDirection];
 
 /**
  * Classical and modern planets tracked for ephemeris calculations.
@@ -241,13 +215,9 @@ export type QuintupleAspect = keyof typeof symbolByQuintupleAspect;
  */
 export type RetrogradeBody = (typeof retrogradeBodies)[number];
 
-/**
- * Unicode symbol for a body that exhibits retrograde motion.
- */
-export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 // export type LunarPhaseSymbol = (typeof symbolByLunarPhase)[LunarPhase];
 
-// #region Venusian Phases ♀️
+// ♀️ Venusian Phases
 
 /**
  * Six-body aspect patterns (extremely rare geometric configurations).
@@ -274,16 +244,9 @@ export type SextupleAspect = keyof typeof symbolBySextupleAspect;
  */
 export type Sign = keyof typeof symbolBySign;
 
-// #region Mercurian Phases ☿️
+// ☿️ Mercurian Phases
 
-/**
- * Unicode symbol representing a zodiac sign.
- */
-export type SignSymbol = (typeof symbolBySign)[Sign];
-
-// #endregion
-
-// #region Martian Phases ♂
+// ♂️ Martian Phases
 
 /**
  * Specialty aspects based on harmonic divisions of the zodiac circle.
@@ -293,9 +256,7 @@ export type SignSymbol = (typeof symbolBySign)[Sign];
  */
 export type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
 
-// #endregion
-
-// #region Aspect Phases 📐
+// 📐 Aspect Phases
 
 /**
  * Unicode symbol representing a specialty aspect.
@@ -315,7 +276,7 @@ export type SpecialtyAspectSymbol =
  */
 export type TripleAspect = keyof typeof symbolByTripleAspect;
 
-// #region Body Types 🔭
+// 🔭 Body Types
 
 /**
  * Venus phase representing its illumination and visibility state from Earth.
@@ -324,11 +285,6 @@ export type TripleAspect = keyof typeof symbolByTripleAspect;
  * Occurs in an 8-year cycle (5 synodic periods = 8 Earth years).
  */
 export type VenusianPhase = keyof typeof symbolByVenusianPhase;
-
-/**
- * Unicode symbol representing a Venus phase.
- */
-export type VenusianPhaseSymbol = (typeof symbolByVenusianPhase)[VenusianPhase];
 
 /**
  * Uppercases the first character of a string literal type.
@@ -494,19 +450,9 @@ export function typedFromEntries<K extends string, V>(
 }
 
 /**
- * Lowercases the first character of a capitalized string, recovering the
- * original union member type.
- *
- * Inverse of {@link capitalize}. Use when round-tripping display strings
- * (e.g., category labels) back to their original union values.
- *
- * @example
- * ```ts
- * const body = uncapitalize(bodyCapitalized);
- * // ^? Body
- * ```
+ * Lowercases the first character of a string literal type.
  */
-export function uncapitalize<T extends string>(str: Capitalize<T>): T {
+export function uncapitalize<T extends string>(str: T): Uncapitalize<T> {
   // type-coverage:ignore-next-line
-  return (str.charAt(0).toLowerCase() + str.slice(1)) as T;
+  return (str.charAt(0).toLowerCase() + str.slice(1)) as Uncapitalize<T>;
 }

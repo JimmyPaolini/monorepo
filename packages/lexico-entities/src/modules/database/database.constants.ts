@@ -256,49 +256,6 @@ export const prepositionCases = Object.values(
   prepositionCase,
 ) as PrepositionCase[];
 
-export const partOfSpeech = {
-  abbreviation: "abbreviation",
-  adjective: "adjective",
-  adverb: "adverb",
-  circumfix: "circumfix",
-  conjunction: "conjunction",
-  determiner: "determiner",
-  idiom: "idiom",
-  inflection: "inflection",
-  interfix: "interfix",
-  interjection: "interjection",
-  noun: "noun",
-  numeral: "numeral",
-  participle: "participle",
-  particle: "particle",
-  phrase: "phrase",
-  prefix: "prefix",
-  preposition: "preposition",
-  pronoun: "pronoun",
-  properNoun: "properNoun",
-  proverb: "proverb",
-  suffix: "suffix",
-  verb: "verb",
-} as const;
-
-/** Part-of-speech classification of a Latin lexeme. */
-export type PartOfSpeech = (typeof partOfSpeech)[keyof typeof partOfSpeech];
-export const partsOfSpeech = Object.values(partOfSpeech) as PartOfSpeech[];
-
-export const pronunciationVariant = {
-  classical: "classical",
-  ecclesiastical: "ecclesiastical",
-  vulgar: "vulgar",
-} as const;
-
-/** Pronunciation tradition used when rendering a Latin word's phonemic and phonetic transcriptions. */
-export type PronunciationVariant =
-  (typeof pronunciationVariant)[keyof typeof pronunciationVariant];
-
-export const pronunciationVariants = Object.values(
-  pronunciationVariant,
-) as PronunciationVariant[];
-
 /**
  * Custom TypeORM naming strategy that extends SnakeNamingStrategy with:
  * - Automatic pluralization of table names

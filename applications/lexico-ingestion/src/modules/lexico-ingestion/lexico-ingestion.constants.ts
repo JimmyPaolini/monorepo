@@ -10,9 +10,6 @@ export const environmentSchema = z.object({
   POSTGRES_USER: z.string().default("postgres"),
 });
 
-/** Validated environment variables inferred from `environmentSchema`. */
-export type Environment = z.infer<typeof environmentSchema>;
-
 /**
  * Sentinel UUID identifying the lexico-ingestion process as the author of
  * all records it creates or updates. Used for `createdBy` / `updatedBy`.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -e
 
 commit_gpg_sign="$(git config --bool --get commit.gpgsign || true)"
 if [[ "$commit_gpg_sign" != "true" ]]; then

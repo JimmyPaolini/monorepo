@@ -1,4 +1,4 @@
-#region 📡 Ephemeris
+# 📡 Ephemeris
 ephe
 ephem
 ephemerides
@@ -9,9 +9,8 @@ meeus
 sepl
 semo
 sweph
-#endregion
 
-#region 🔬 Swiss Ephemeris API
+# 🔬 Swiss Ephemeris API
 APOG
 apside
 arcsec
@@ -24,19 +23,16 @@ OSCU
 pheno
 SEFLG
 SWIEPH
-#endregion
 
-#region 🌍 Orbital Mechanics
+# 🌍 Orbital Mechanics
 apoapsis
 multibody
 multidetermines
 periapsis
 perifocus
 prograde
-#endregion
 
-#region 🔭 Coordinate Systems
+# 🔭 Coordinate Systems
 astrometric
 keplerian
 topocentric
-#endregion

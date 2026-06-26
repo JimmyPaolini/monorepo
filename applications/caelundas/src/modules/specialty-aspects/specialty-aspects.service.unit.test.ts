@@ -1,4 +1,5 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
 import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
@@ -33,6 +34,7 @@ describe(SpecialtyAspectsService, () => {
         SpecialtyAspectsEventService,
         SpecialtyAspectsProgressiveService,
         AspectsUtilities,
+        SimpleAspectsEventService,
         EphemerisService,
         MathService,
         ProgressiveUtilitiesService,

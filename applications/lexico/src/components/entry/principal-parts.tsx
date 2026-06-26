@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { startCase } from "lodash";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 
 import {
@@ -121,11 +120,6 @@ interface InflectionBadgeProperties {
 }
 
 /**
- * Describes behavior.
- */
-type InflectionLabelBuilder = (inflection: Inflection) => string;
-
-/**
  * Component that displays principal parts, part of speech, and inflection info.
  */
 export function PrincipalParts(
@@ -166,8 +160,8 @@ export function PrincipalParts(
       params={{ id }}
       to="/word/$id"
     >
-      <div className="flex-grow flex items-start flex-col">
-        <CardTitle className="text-2xl self-start flex-grow">
+      <div className="grow flex items-start flex-col">
+        <CardTitle className="text-2xl self-start grow">
           {principalPartsLabel}
         </CardTitle>
         <InflectionBadge
@@ -191,24 +185,23 @@ export function PrincipalParts(
   );
 }
 
+// 🗺 Inflection label builders
+
 /**
- * Gets a human-readable inflection label for display.
+ * Gets a formatted label from principal parts data.
  *
  */
-function getInflectionLabel(
-  inflection: Inflection | null | undefined,
-  partOfSpeech: PartOfSpeech,
+function getPrincipalPartsLabel(
+  principalParts: PrincipalPart[] | Record<string, string | undefined>,
 ): string {
-  if (!inflection) return startCase(partOfSpeech).toLowerCase();
-
-  const label = buildInflectionLabel(inflection, partOfSpeech);
-  return `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
-    /, ?$|^, ?/,
-    "",
-  );
+  if (Array.isArray(principalParts)) {
+    return principalParts
+      .map((principalPart) => principalPart.text.join("/"))
+      .join(", ");
+  }
+  // Handle object format from database
+  return Object.values(principalParts).filter(Boolean).join(", ");
 }
-
-// 🗺 Inflection label builders
 
 /**
  * Renders the set of inflection identifier badges for an entry.
@@ -275,100 +268,4 @@ function InflectionBadge(properties: InflectionBadgeProperties): ReactElement {
   );
 }
 
-const inflectionLabelBuilders: Partial<
-  Record<PartOfSpeech, InflectionLabelBuilder>
-> = {
-  adjective: (inflection) =>
-    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
-  adverb: (inflection) =>
-    buildAdverbInflectionLabel(inflection as AdverbInflection),
-  noun: (inflection) => buildNounInflectionLabel(inflection as NounInflection),
-  numeral: (inflection) =>
-    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
-  preposition: (inflection) =>
-    buildPrepositionInflectionLabel(inflection as PrepositionInflection),
-  properNoun: (inflection) =>
-    buildNounInflectionLabel(inflection as NounInflection),
-  suffix: (inflection) =>
-    buildAdjectiveInflectionLabel(inflection as AdjectiveInflection),
-  verb: (inflection) => buildVerbInflectionLabel(inflection as VerbInflection),
-};
-
-/**
- * Build adjective inflection label.
- */
-function buildAdjectiveInflectionLabel(
-  inflection: AdjectiveInflection,
-): string {
-  const { declension, degree } = inflection;
-  if (declension && degree) return `${declension} declension, ${degree}`;
-  if (declension) return `${declension} declension`;
-  return degree ?? "";
-}
-
-/**
- * Build adverb inflection label.
- */
-function buildAdverbInflectionLabel(inflection: AdverbInflection): string {
-  const { degree, type } = inflection;
-  if (type && degree) return `${type}, ${degree}`;
-  if (type) return type;
-  return degree ?? "";
-}
-
-/**
- * Build inflection label.
- */
-function buildInflectionLabel(
-  inflection: Inflection,
-  partOfSpeech: PartOfSpeech,
-): string {
-  const builder = inflectionLabelBuilders[partOfSpeech];
-  return builder
-    ? builder(inflection)
-    : ((inflection as Uninflected).other ?? "");
-}
-
-/**
- * Build noun inflection label.
- */
-function buildNounInflectionLabel(inflection: NounInflection): string {
-  const { declension, gender } = inflection;
-  if (declension && gender) return `${declension} declension, ${gender}`;
-  if (declension) return `${declension} declension`;
-  return gender ?? "";
-}
-
-/**
- * Build preposition inflection label.
- */
-function buildPrepositionInflectionLabel(
-  inflection: PrepositionInflection,
-): string {
-  return inflection.case ?? "";
-}
-
-/**
- * Build verb inflection label.
- */
-function buildVerbInflectionLabel(inflection: VerbInflection): string {
-  return inflection.conjugation ? `${inflection.conjugation} conjugation` : "";
-}
-
-/**
- * Gets a formatted label from principal parts data.
- *
- */
-function getPrincipalPartsLabel(
-  principalParts: PrincipalPart[] | Record<string, string | undefined>,
-): string {
-  if (Array.isArray(principalParts)) {
-    return principalParts
-      .map((principalPart) => principalPart.text.join("/"))
-      .join(", ");
-  }
-  // Handle object format from database
-  return Object.values(principalParts).filter(Boolean).join(", ");
-}
-
-export { getInflectionLabel, getPrincipalPartsLabel };
+export { getPrincipalPartsLabel };

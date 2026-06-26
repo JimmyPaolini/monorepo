@@ -1,13 +1,9 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
 import { specialtyAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import {
-  symbolByBody,
-  symbolBySpecialtyAspect,
-} from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { capitalize } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { symbolBySpecialtyAspect } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -30,52 +26,10 @@ export class SpecialtyAspectsEventService {
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
+    private readonly simpleAspectsEventService: SimpleAspectsEventService,
     private readonly ephemerisService: EphemerisService,
   ) {
     this.logger.setContext(SpecialtyAspectsEventService.name);
-  }
-
-  // 🔏 Private Methods
-
-  /**
-   * Resolves the event text and categories for a specialty aspect phase.
-   */
-  private resolvePhaseFields(args: {
-    baseCategories: string[];
-    body1Capitalized: string;
-    body2Capitalized: string;
-    phase: AspectPhase;
-    specialtyAspect: SpecialtyAspect;
-  }): { categories: string[]; description: string; phaseEmoji: string } {
-    const {
-      baseCategories,
-      body1Capitalized,
-      body2Capitalized,
-      phase,
-      specialtyAspect,
-    } = args;
-
-    if (phase === "perfective") {
-      return {
-        categories: [...baseCategories, "Perfective"],
-        description: `${body1Capitalized} perfective ${specialtyAspect} ${body2Capitalized}`,
-        phaseEmoji: "🎯",
-      };
-    }
-
-    if (phase === "forming") {
-      return {
-        categories: [...baseCategories, "Forming"],
-        description: `${body1Capitalized} forming ${specialtyAspect} ${body2Capitalized}`,
-        phaseEmoji: "➡️",
-      };
-    }
-
-    return {
-      categories: [...baseCategories, "Dissolving"],
-      description: `${body1Capitalized} dissolving ${specialtyAspect} ${body2Capitalized}`,
-      phaseEmoji: "⬅️",
-    };
   }
 
   // 🌎 Public Methods
@@ -91,34 +45,18 @@ export class SpecialtyAspectsEventService {
     timestamp: Moment;
   }): Event {
     const { body1, body2, phase, specialtyAspect, timestamp } = args;
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Specialty Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(specialtyAspect),
-    ];
-    const { categories, description, phaseEmoji } = this.resolvePhaseFields({
-      baseCategories,
-      body1Capitalized,
-      body2Capitalized,
+    return this.simpleAspectsEventService.assembleSimpleAspectEvent({
+      aspectCategory: "Specialty Aspect",
+      aspectName: specialtyAspect,
+      aspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
+      body1,
+      body2,
+      log: (message) => {
+        this.logger.log(message);
+      },
       phase,
-      specialtyAspect,
+      timestamp,
     });
-    const summary = `${phaseEmoji} ${symbolByBody[body1]} ${symbolBySpecialtyAspect[specialtyAspect]} ${symbolByBody[body2]} ${description}`;
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    return {
-      categories,
-      description,
-      end: timestamp,
-      start: timestamp,
-      summary,
-    };
   }
 
   /**
@@ -148,18 +86,14 @@ export class SpecialtyAspectsEventService {
   }): null | SpecialtyAspect {
     const { longitudeBody1, longitudeBody2 } = args;
 
-    for (const aspect of specialtyAspects) {
-      if (
+    return this.simpleAspectsEventService.findFirstMatchingAspect({
+      aspects: specialtyAspects,
+      isMatchingAspect: (aspect) =>
         this.aspectsUtilitiesService.isAspect({
           aspect,
           longitudeBody1,
           longitudeBody2,
-        })
-      ) {
-        return aspect;
-      }
-    }
-
-    return null;
+        }),
+    });
   }
 }

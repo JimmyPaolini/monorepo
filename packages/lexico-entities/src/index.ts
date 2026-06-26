@@ -1,5 +1,6 @@
 export { lexicoDataSource } from "./modules/database/data-source";
 export {
+  adjectiveDeclensionValues,
   adjectiveDegreeValues,
   adverbDegrees as adverbDegreeValues,
   adverbTypes as adverbFunctionTypeValues,
@@ -14,12 +15,15 @@ export {
   formSupineCaseValues,
   formTenseValues,
   formVoiceValues,
+  inflectionDeclensionValues,
   LexicoNamingStrategy,
+  nounDeclensionValues,
   nounGenders,
   prepositionCases,
   verbConjugationValues,
 } from "./modules/database/database.constants";
 export type {
+  AdjectiveDeclension,
   AdjectiveDegree,
   AdverbDegree,
   AdverbType as AdverbFunctionType,
@@ -34,6 +38,7 @@ export type {
   FormSupineCase,
   FormTense,
   FormVoice,
+  NounDeclension,
   NounGender,
   PrepositionCase,
   VerbConjugation,
@@ -56,15 +61,6 @@ export { SupineForm } from "./modules/entities/dictionary/form/SupineForm.entity
 export { AdjectiveInflection } from "./modules/entities/dictionary/inflection/AdjectiveInflection.entity";
 export { AdverbInflection } from "./modules/entities/dictionary/inflection/AdverbInflection.entity";
 export { Inflection } from "./modules/entities/dictionary/inflection/Inflection.entity";
-export {
-  adjectiveDeclensionValues,
-  inflectionDeclensionValues,
-  nounDeclensionValues,
-} from "./modules/entities/dictionary/inflection/InflectionDeclension";
-export type {
-  AdjectiveDeclension,
-  NounDeclension,
-} from "./modules/entities/dictionary/inflection/InflectionDeclension";
 export { NounInflection } from "./modules/entities/dictionary/inflection/NounInflection.entity";
 export { PrepositionInflection } from "./modules/entities/dictionary/inflection/PrepositionInflection.entity";
 export { UninflectedInflection } from "./modules/entities/dictionary/inflection/Uninflected.entity";
@@ -82,6 +78,7 @@ export { Translation } from "./modules/entities/dictionary/Translation.entity";
 export { Word } from "./modules/entities/dictionary/Word.entity";
 export { WordForm } from "./modules/entities/dictionary/WordForm.entity";
 export { WordLexeme } from "./modules/entities/dictionary/WordLexeme.entity";
+export { EntitiesModule } from "./modules/entities/entities.module";
 export { Author } from "./modules/entities/literature/Author.entity";
 export { Line } from "./modules/entities/literature/Line.entity";
 export { Text } from "./modules/entities/literature/Text.entity";

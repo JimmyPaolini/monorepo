@@ -1,4 +1,4 @@
-#region 🦜 LangChain
+# 🦜 LangChain
 agentic
 langchain
 langflow
@@ -6,18 +6,16 @@ langgraph
 langsmith
 lcel
 
-#endregion
 
-#region 🤖 Models & Runtimes
+# 🤖 Models & Runtimes
 gemma
 nomic
 ollama
 opencode
 qwen
 
-#endregion
 
-#region 🔍 Search & Retrieval
+# 🔍 Search & Retrieval
 duckduckgo
 faiss
 jina
@@ -31,17 +29,15 @@ trafilatura
 vectorstore
 vectorstores
 
-#endregion
 
-#region 🌐 Interfaces & Hubs
+# 🌐 Interfaces & Hubs
 huggingface
 multimodality
 openwebui
 webui
 
-#endregion
 
-#region 🛠️ AI Data & Search Tools
+# 🛠️ AI Data & Search Tools
 Apio
 Firecrawl
 firecrawl
@@ -49,5 +45,3 @@ Serp
 serp
 Tavily
 tavily
-
-#endregion

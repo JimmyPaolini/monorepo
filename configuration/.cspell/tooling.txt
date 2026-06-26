@@ -1,21 +1,22 @@
-#region 🧩 Nx & Monorepo
+# 🧩 Nx & Monorepo
 archi
 automerge
-Biome
 biome
+Biome
 biomejs
-Buildability
 brightgreen
+Buildability
 bundlesize
-context7
-Cipe
 cipe
+Cipe
 cipes
+context7
 depcruise
 deps
 devdeps
 devkit
 glab
+hotspots
 hushy
 lintstagedrc
 monorepo
@@ -37,9 +38,8 @@ workspaces
 worktree
 worktrees
 
-#endregion
 
-#region 🔍 Linting & Code Quality
+# 🔍 Linting & Code Quality
 bandit
 commitlint
 cssmodule
@@ -63,9 +63,8 @@ stylelintrc
 ty
 vulture
 
-#endregion
 
-#region 🧪 Testing & Performance
+# 🧪 Testing & Performance
 domcontentloaded
 fakerjs
 interleavings
@@ -75,9 +74,8 @@ ttfb
 vitest
 wcag
 
-#endregion
 
-#region 🎨 UI & Frontend
+# 🎨 UI & Frontend
 bento
 cmdk
 embla
@@ -96,11 +94,8 @@ vaul
 vinxi
 vite
 
-#endregion
 
-#region 🔧 TypeScript Utilities & Build Tools
-scol
-srow
+# 🔧 TypeScript Utilities & Build Tools
 gradlew
 infer
 instanceof
@@ -109,8 +104,10 @@ multiset
 polymorphic
 precompiled
 readonly
+scol
 serializers
 seroval
+srow
 texttypescript
 transpiler
 transpiles
@@ -122,9 +119,8 @@ uppercased
 uppercases
 warshall
 
-#endregion
 
-#region 🌐 Backend & Middleware
+# 🌐 Backend & Middleware
 expressjs
 fastapi
 feathersjs
@@ -137,14 +133,13 @@ srvx
 subclassing
 subquery
 
-#endregion
 
-#region 🐍 Python Tooling
+# 🐍 Python Tooling
 addopts
 Cython
+isort
 jupyter
 jupyterlab
-isort
 mypy
 nosec
 pipx
@@ -153,17 +148,15 @@ pycache
 pydantic
 pyupgrade
 
-#endregion
 
-#region 🔐 GPG & Git Signing
+# 🔐 GPG & Git Signing
 gpgsign
 keyid
 pinentry
 signingkey
 
-#endregion
 
-#region 📝 Git & Documentation
+# 📝 Git & Documentation
 blockquotes
 frontmatter
 gitmodules
@@ -176,17 +169,15 @@ peaceiris
 stackoverflow
 tootallnate
 
-#endregion
 
-#region 🤖 AI Rule Files & Agents
+# 🤖 AI Rule Files & Agents
 clinerules
 cursorrules
 reactagent
 windsurfrules
 
-#endregion
 
-#region 🔧 Misc Dev Tools
+# 🔧 Misc Dev Tools
 bitfield
 Bitfield
 ctest
@@ -201,9 +192,10 @@ sarif
 timotejroiko
 
 #endregion
-smallint
-stmts
-rglob
-splitlines
 isupper
 jsts
+pnpmfile
+rglob
+smallint
+splitlines
+stmts

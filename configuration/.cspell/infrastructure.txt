@@ -1,13 +1,12 @@
-#region 🐳 Docker
+# 🐳 Docker
 buildx
 distroless
 dockerfiles
 nodegroup
 nodeuser
 
-#endregion
 
-#region ☸️ Kubernetes
+# ☸️ Kubernetes
 dshm
 kubeconfig
 kubectl
@@ -16,9 +15,8 @@ projectcalico
 storageclasses
 tolerations
 
-#endregion
 
-#region 🗄️ Database
+# 🗄️ Database
 dbname
 dbeaver
 fkey
@@ -50,9 +48,8 @@ upserted
 upserting
 upserts
 
-#endregion
 
-#region 🔒 Security
+# 🔒 Security
 aquasecurity
 cves
 gitleaks
@@ -60,9 +57,8 @@ gitleaksignore
 trivy
 trivyignore
 
-#endregion
 
-#region ☁️ Cloud & Providers
+# ☁️ Cloud & Providers
 bitnami
 bullmq
 burstable
@@ -80,9 +76,8 @@ textlocal
 vonage
 workos
 
-#endregion
 
-#region 🧰 Operations & CI
+# 🧰 Operations & CI
 adduser
 alertmanager
 einvalidghtoken
@@ -99,10 +94,8 @@ sendgrid
 tfstate
 tfvars
 
-#endregion
 
-#region 🔑 AWS
+# 🔑 AWS
 AKIA
 
-#endregion
 lockfiles

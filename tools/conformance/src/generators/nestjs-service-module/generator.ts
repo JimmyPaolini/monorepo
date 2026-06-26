@@ -22,7 +22,7 @@ interface GenerateNestjsServiceModuleOptions {
 /**
  * Absolute path to the template directory used by this generator.
  */
-export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+export const SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
 
@@ -48,7 +48,7 @@ export async function generateNestjsServiceModule(
   generateFiles({
     instanceDirectoryPath: targetPath,
     substitutions,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
     tree,
   });
   const generatedFiles = tree

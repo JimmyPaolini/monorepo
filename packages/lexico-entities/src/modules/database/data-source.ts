@@ -66,7 +66,7 @@ export const lexicoDataSource = new DataSource({
   entities: [...LEXICO_DATABASE_ENTITIES],
   host: process.env["POSTGRES_HOST"] ?? "localhost",
   logging: false,
-  migrations: ["src/database/migrations/*.ts"],
+  migrations: ["src/modules/database/migrations/*.ts"],
   namingStrategy: new LexicoNamingStrategy(),
   password: process.env["POSTGRES_PASSWORD"] ?? "postgres",
   port: Number(process.env["POSTGRES_PORT"] ?? 5432),

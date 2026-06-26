@@ -191,6 +191,51 @@
         "command": "eslint . {args}"
       }
     },
+    "fallow": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-audit": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-dead-code": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-duplicates": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ]
+    },
+    "fallow-health": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ]
+    },
     "format": {
       "cache": true,
       "configurations": {

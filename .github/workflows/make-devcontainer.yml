@@ -65,7 +65,10 @@ jobs:
             push:
               branches:
                 - main
-          env: CI=true
+          env: |
+            CI=true
+            GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
@@ -76,6 +79,9 @@ jobs:
             type=gha,scope=devcontainer
             ghcr.io/jimmypaolini/monorepo-devcontainer
           push: never
-          env: CI=true
+          env: |
+            CI=true
+            GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           runCmd: |
             bash .devcontainer/scripts/test-devcontainer.sh

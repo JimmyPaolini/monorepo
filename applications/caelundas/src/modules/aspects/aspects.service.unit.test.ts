@@ -36,6 +36,7 @@ import {
 } from "./aspects.constants";
 import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";
+import { SimpleAspectsEventService } from "./simple-aspects-event.service";
 
 import type {
   CompositeAspectDetector,
@@ -64,6 +65,7 @@ describe(AspectsService, () => {
         MinorAspectsComposerService,
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
+        SimpleAspectsEventService,
         ProgressiveUtilitiesService,
         QuadrupleAspectsService,
         QuadrupleAspectsBaseService,

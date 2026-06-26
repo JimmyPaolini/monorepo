@@ -34,6 +34,14 @@ const config = {
     "pnpm exec nx run monorepo:clean:check --outputStyle=dynamic-legacy",
   ],
 
+  // Run full advisory fallow suite when fallow config changes
+  "configuration/fallow.config.jsonc": () => [
+    "pnpm exec nx run monorepo:fallow-dead-code --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-duplicates --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-health --outputStyle=dynamic-legacy",
+    "pnpm exec nx run monorepo:fallow-audit --outputStyle=dynamic-legacy",
+  ],
+
   // 🔄 Config synchronization
   // Keep VS Code extensions list in sync between .vscode and local devcontainer config
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
@@ -72,7 +80,8 @@ const config = {
   // nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [
-      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check,fallow-dead-code --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      "pnpm exec nx run monorepo:fallow-duplicates --outputStyle=dynamic-legacy",
     ];
   },
 

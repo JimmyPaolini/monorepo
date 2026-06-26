@@ -1,6 +1,5 @@
 // 🏷️ Types
 
-import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
   DistanceEphemeris,
@@ -14,9 +13,6 @@ export interface BuildSolarCycleEventArguments {
   description: string;
   summary: string;
 }
-
-/** Function shape used by seasonal event rules to build events. */
-export type BuildSolarCycleEventFunction = (date: Moment) => Event;
 
 /** Arguments required to detect all annual solar cycle events at a minute. */
 export interface DetectAnnualSolarCycleArguments {
@@ -43,12 +39,6 @@ export interface DetectSolarApsisEventsArguments {
 export interface SolarCycleLongitudes {
   currentLongitude: number;
   previousLongitude: number;
-}
-
-/** Arguments required to group seasonal solar cycle events from longitude crossings. */
-export interface SolarCycleSeasonalEventsArguments {
-  date: Moment;
-  longitudes: SolarCycleLongitudes;
 }
 
 /** Distances sampled for one-minute solar apsis extrema detection. */

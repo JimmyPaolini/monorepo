@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -e
 
 zero_sha='0000000000000000000000000000000000000000'
 unsigned_commits=()

@@ -1,228 +1,258 @@
 ---
 name: sign-commits
-description: "Re-sign commits on the current branch or pull request with any valid local signing key using a non-interactive, safety-first rewrite that preserves exact code content. Use when asked to sign commits, satisfy required signed-commit rules, or make a PR show verified signatures without code changes."
+description: Re-sign unsigned commits on the current branch or pull request without changing code content by rewriting only from the first unsigned commit onward on a temporary branch. Use when asked to sign commits, add GPG signatures to an existing branch, satisfy signed-commit requirements, or make a PR show verified commits. Creates a backup branch first, runs the rebase non-interactively, verifies the rewritten final tree exactly matches the original branch tip, and stops immediately if any check, conflict, drift, or GPG step fails.
+license: MIT
 ---
 
-# Sign Commits
+# Sign Existing Commits
 
-This skill rewrites branch history only to re-sign commits with a valid local signing key.
-
-Primary goal:
-
-- All commits on the branch/PR are signed with a valid key.
-- Code content at the end is exactly the same as before rewriting.
-
-Guardrails:
-
-- Never rewrite history without creating backups first.
-- Never force-push without `--force-with-lease`.
-- Never resolve content conflicts for a signing-only task.
-- If a rewrite requires content resolution, abort and report.
+Re-sign unsigned branch commits while preserving commit messages and file content.
 
 ## When to Use This Skill
 
-- User asks to sign commits on an existing branch or PR.
-- CI or branch rules require signed commits.
-- Goal is signing only, not changing code.
+- When a branch or pull request has several unsigned commits
+- When a repository or branch protection rule requires signed commits
+- When you need to re-sign history without changing the code snapshots
+- When you want a backup branch before rewriting commit history
+
+Keywords: sign commits, GPG sign branch, re-sign PR commits, verified commits, signed history.
 
 ## Prerequisites
 
-1. A clean working tree (no unstaged/staged changes).
-2. At least one usable secret signing key exists locally.
-3. The branch has a known base range (PR base branch, upstream branch, or default branch).
+- Run from the repository root
+- `git` is available and authenticated to the remote
+- The wrapper script is available at `scripts/sign-commits.sh`
+- The signing configuration check script is available at `scripts/git/check-commit-signing-configuration.sh`
+- The branch contains only commits that are safe to rewrite
 
-Use these checks:
+## Safety Model
+
+- Create a backup branch before rewriting history
+- Rewrite on a temporary branch so the original branch stays untouched until verification passes
+- Fail fast on any errors or obstacles
+- Stop immediately on any rebase conflict or GPG failure
+- Skip commit hooks during `--amend` so hooks cannot block a metadata-only rewrite
+- Preserve commit messages and the exact final tree of the original branch tip
+
+## Scripted Workflow
+
+Use the wrapper script for the normal path:
 
 ```bash
-git status --porcelain
+bash scripts/sign-commits.sh
+```
+
+The script performs the same workflow documented below:
+
+- checks for a clean working tree and a checked-out branch
+- fetches `origin/main`
+- validates Git and GPG signing configuration
+- verifies the branch already contains the latest `origin/main`
+- creates a backup branch
+- creates a temporary rewrite branch
+- finds the first unsigned branch commit and rewrites only that suffix of history
+- re-signs each rewritten commit with `--no-verify --allow-empty`
+- suppresses rebase todo and commit-message editors for non-interactive execution
+- verifies the rewritten final tree exactly matches the original branch tip before updating the real branch ref
+- verifies signatures and checks for zero content drift after switching the real branch to the verified rewrite
+- pushes with `--force-with-lease`
+
+## Step-by-Step Workflow
+
+### 1. Inspect Current Branch
+
+Run:
+
+```bash
+git branch --show-current
+git status --short
+```
+
+Stop and report to the user if:
+
+- no branch is checked out
+- the working tree is not clean
+
+### 2. Refresh Main and Run Checks
+
+Run:
+
+```bash
+git fetch origin main
 bash scripts/git/check-commit-signing-configuration.sh
+git merge-base --is-ancestor origin/main HEAD
 ```
 
-If prerequisites fail, report the failure and pause.
+Interpretation:
 
-## Fast Workflow (Preferred)
+- `git fetch origin main` must succeed
+- `bash scripts/git/check-commit-signing-configuration.sh` must succeed
+- `git merge-base --is-ancestor origin/main HEAD` must exit with code `0`
 
-Use this simplified path first. It avoids interactive prompts and minimizes human intervention.
+Stop and report to the user if:
 
-### 1. Resolve branch context and key
+- fetch fails
+- the signing configuration check fails
+- the current branch is not up to date with `origin/main`
 
-Determine current branch and base branch:
+If the branch is behind `origin/main`, stop. Rebase or merge `origin/main` first, resolve that separately, and only then return to this workflow.
 
-```bash
-current_branch="$(git branch --show-current)"
-```
+### 3. Create Backup Branch First
 
-Resolve the base branch in this order:
-
-1. PR base branch (if available):
-
-```bash
-base_branch="$(gh pr view --json baseRefName --jq .baseRefName 2>/dev/null || true)"
-```
-
-1. Upstream branch for current branch:
-
-```bash
-if [[ -z "${base_branch}" ]]; then
-  upstream_ref="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true)"
-  if [[ -n "${upstream_ref}" ]]; then
-    base_branch="${upstream_ref#origin/}"
-  fi
-fi
-```
-
-1. Remote default branch:
-
-```bash
-if [[ -z "${base_branch}" ]]; then
-  base_branch="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##' || true)"
-fi
-```
-
-Then compute a stable merge base:
-
-```bash
-git fetch origin --prune
-merge_base="$(git merge-base "origin/${base_branch}" HEAD)"
-```
-
-Pick a valid local key to use for this rewrite (any valid key is acceptable):
-
-```bash
-gpg --list-secret-keys --keyid-format=long
-```
-
-If key/base resolution fails, report and pause.
-
-### 2. Record pre-rewrite code snapshot and signatures
-
-Capture code-content fingerprint before rewriting:
-
-```bash
-tree_before="$(git rev-parse HEAD^{tree})"
-```
-
-Capture current signature statuses in range:
-
-```bash
-git log --format='%H %G? %s' "${merge_base}..HEAD"
-```
-
-### 3. Create safety backup
-
-Create local backup branches before any history rewrite.
-
-**Default first approach:** run the [backup-code](../backup-code/SKILL.md) skill before this step so backup creation and recovery commands are standardized.
-
-Inline/manual fallback: create the backup branch directly with the same naming convention:
+Run:
 
 ```bash
 iso_timestamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+current_branch="$(git branch --show-current)"
 backup_branch="backup/${current_branch}/${iso_timestamp}"
-git branch "${backup_branch}"
+
+git branch "$backup_branch"
+git branch --list "$backup_branch"
 ```
 
-If branch has an upstream, also create a remote backup:
+Stop and report to the user if:
+
+- the backup branch cannot be created
+- the backup branch cannot be verified
+
+Recovery path:
 
 ```bash
-if git rev-parse --verify '@{upstream}' >/dev/null 2>&1; then
-  git push origin "HEAD:refs/heads/${backup_branch}"
-fi
+git switch "$backup_branch"
 ```
 
-If backup creation fails, report the error and pause.
+### 4. Create a Temporary Rewrite Branch
 
-### 4. Rewrite non-interactively and sign all commits in range
-
-Use a non-interactive rebase that signs rewritten commits with the selected key:
+Run:
 
 ```bash
-GIT_EDITOR=true git rebase --rebase-merges --force-rebase --gpg-sign=<KEYID> "${merge_base}"
+temporary_branch="tmp/sign-commits/<branch-name>/<timestamp>"
+git switch -c "$temporary_branch"
 ```
 
-Why this is preferred:
+Purpose:
 
-- `--gpg-sign=<KEYID>` signs rewritten commits directly.
-- `--force-rebase` guarantees commits in range are rewritten/signed.
-- `GIT_EDITOR=true` prevents interactive commit-message editor pauses during rebase/continue.
+- keep the original branch ref unchanged during the rewrite
+- make it safe to abandon a failed rewrite without moving the user-facing branch
 
-If rebase stops with content conflicts:
+### 5. Find the First Unsigned Commit
 
-- Do not resolve conflicts for a signing-only operation.
-- Run `git rebase --abort`.
-- Report that automatic signing-only rewrite could not complete without content intervention.
-
-### 5. Verify signatures and code identity
-
-Re-check signatures after rebase:
+Run:
 
 ```bash
-git log --format='%H %G? %s' "${merge_base}..HEAD"
-unsigned_after_rewrite_count="$(git log --format='%G?' "${merge_base}..HEAD" | grep -c '^N$' || true)"
-echo "unsigned commit count after rewrite: ${unsigned_after_rewrite_count}"
+git rev-list --reverse --format='%H %G?' origin/main..HEAD | sed '/^commit /d'
 ```
 
-Verify code content is unchanged:
+Interpretation:
+
+- find the first commit whose signature status is not `G` or `U`
+- if no such commit exists, stop successfully because nothing needs rewriting
+- rewrite starts from that unsigned commit through `HEAD`
+
+### 6. Re-sign the Necessary Branch Suffix
+
+Run:
 
 ```bash
-tree_after="$(git rev-parse HEAD^{tree})"
-test "${tree_before}" = "${tree_after}"
+first_unsigned_commit='<first unsigned sha>'
+rewrite_base_commit="$(git rev-parse "${first_unsigned_commit}^")"
+
+GIT_SEQUENCE_EDITOR=: GIT_EDITOR=: \
+git rebase --exec 'git commit --amend --no-edit -S --no-verify --allow-empty' "$rewrite_base_commit"
 ```
 
-If tree hashes differ, stop and report. Do not push.
+This does the following:
 
-### 6. Push safely
+- rewrites only commits from the first unsigned commit onward
+- amends each replayed commit with a GPG signature
+- keeps the existing commit message with `--no-edit`
+- skips commit hooks with `--no-verify`
+- tolerates empty replayed commits with `--allow-empty`
+- suppresses the rebase todo editor with `GIT_SEQUENCE_EDITOR=:`
+- suppresses the commit-message editor with `GIT_EDITOR=:`
 
-Because history was rewritten, push with lease protection:
+Stop and report to the user immediately if:
+
+- the rebase stops for a conflict
+- GPG signing fails
+- the `--exec` amend step fails for any commit
+
+Do not continue automatically after a failure. Surface the exact failure and wait for the user.
+
+### 7. Verify Exact Final-Tree Equality
+
+Run:
+
+```bash
+original_head_tree="$(git rev-parse <original-branch-tip>^{tree})"
+rewritten_head_tree="$(git rev-parse HEAD^{tree})"
+```
+
+Expected result:
+
+- `rewritten_head_tree` exactly equals `original_head_tree`
+- if they differ, stop and leave the original branch unchanged
+
+Only after this check passes:
+
+```bash
+git switch <original-branch>
+git reset --hard <temporary-branch>
+```
+
+### 8. Verify the Result
+
+Run:
+
+```bash
+git log --show-signature --oneline origin/main..HEAD
+git diff --stat "$backup_branch"..HEAD
+```
+
+Expected result:
+
+- every rewritten branch commit shows a valid signature
+- `git diff --stat "$backup_branch"..HEAD` shows no file-content changes
+
+Stop and report to the user if:
+
+- any commit is still unsigned
+- the diff shows unexpected content changes
+
+### 7. Update the Remote Branch
+
+Run:
 
 ```bash
 git push --force-with-lease
 ```
 
-If push is rejected or protected-branch policies block the update, report the exact rejection and pause.
+Stop and report to the user if the push fails.
+
+## Troubleshooting
+
+| Problem | Cause | Fix |
+| --- | --- | --- |
+| Working tree is dirty | Local changes would be mixed into the rewrite | Stop and clean or stash changes first |
+| Signing configuration check fails | Git or GPG is not configured for commit signing | Run `bash scripts/git/check-commit-signing-configuration.sh`, fix the reported issue, and stop until it passes |
+| Branch is behind `origin/main` | The rewrite would also need to integrate upstream changes | Stop and rebase or merge `origin/main` first |
+| Rebase conflict occurs | A commit does not replay cleanly | Stop and let the user decide whether to resolve or abort; the original branch remains untouched because the rewrite runs on a temporary branch |
+| Final code differs after re-signing | The replay did not produce the original branch tip's exact tree | Compare the temporary branch against the original tip and stop; do not move the original branch ref |
+| VS Code opens the interactive rebase or commit-message editor | Git is using VS Code as its editor | Use `GIT_SEQUENCE_EDITOR=:` and `GIT_EDITOR=:` for this workflow |
+| GPG prompts repeatedly | GPG agent is not caching the passphrase | Prime `gpg-agent` before running the workflow |
+| Push is rejected | Remote branch changed since last fetch | Review remote changes, then retry with care |
 
 ## Completion Criteria
 
-Task is complete only when all of the following are true:
-
-1. Every commit in the target range is signed (`G` or `U`) and no `N` remains.
-2. Backup branch name(s) are provided to the user.
-3. `HEAD^{tree}` before and after rewrite is identical.
-4. Any rewritten branch is pushed with `--force-with-lease` (if push was requested).
-5. Unknown errors are surfaced verbatim and execution is paused.
-
-## Failure Handling Rules
-
-- Do not use destructive commands like `git reset --hard`.
-- Do not continue after unknown errors.
-- Do not hide command output; include the relevant failing lines in your report.
-- If rebase is interrupted by content conflict during signing-only rewrite, default to `git rebase --abort` and report.
-- If rewrite or push results are incorrect, use [restore-code](../restore-code/SKILL.md) to recover from the backup branch or stash.
-
-## Quick Command Template
-
-When the branch should be re-signed with minimum intervention, this is the canonical sequence:
-
-```bash
-git fetch origin --prune
-base_branch=<resolved-base>
-merge_base="$(git merge-base "origin/${base_branch}" HEAD)"
-tree_before="$(git rev-parse HEAD^{tree})"
-backup_branch="backup/$(git branch --show-current)/$(date -u +%Y-%m-%dT%H-%M-%SZ)"
-git branch "${backup_branch}"
-GIT_EDITOR=true git rebase --rebase-merges --force-rebase --gpg-sign=<KEYID> "${merge_base}"
-tree_after="$(git rev-parse HEAD^{tree})"
-test "${tree_before}" = "${tree_after}"
-git push --force-with-lease
-```
+- Checks passed
+- Backup branch exists
+- Temporary rewrite branch was used during the rewrite
+- Rebase completed without manual conflict resolution
+- Rewritten commits are signed
+- Final tree exactly matches the original branch tip
+- Remote branch was updated with `--force-with-lease`
 
 ## References
 
-- Git commit signing (`-S`, `commit.gpgsign`, `user.signingkey`): https://git-scm.com/docs/git-commit
-- Git rebase signing options (`--gpg-sign`, `--exec`, conflict handling): https://git-scm.com/docs/git-rebase
-- Git book, signing commits with GPG: https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
-- GitHub: signing commits: https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits
-- GitHub: commit signature verification and statuses: https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification
-- GitHub protected branch signed-commit requirements: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-signed-commits
-- [backup-code](../backup-code/SKILL.md) — Pre-rewrite safety checkpoint workflow
-- [restore-code](../restore-code/SKILL.md) — Post-failure recovery workflow
+- Create backups first with [backup-code](../backup-code/SKILL.md)
+- Run the wrapper script with `bash scripts/sign-commits.sh`

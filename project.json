@@ -17,7 +17,11 @@
             "nx run {projectName}:sync-pull-request-template:check",
             "nx run {projectName}:sync-vscode-extensions:check",
             "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck"
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:fallow-dead-code",
+            "nx run {projectName}:fallow-duplicates",
+            "nx run {projectName}:fallow-health",
+            "nx run {projectName}:fallow-audit"
           ],
           "parallel": true
         },
@@ -34,7 +38,11 @@
             "nx run {projectName}:type-coverage",
             "nx run {projectName}:lint:write",
             "nx run {projectName}:markdown-lint:write",
-            "nx run {projectName}:format:write"
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:fallow-dead-code",
+            "nx run {projectName}:fallow-duplicates",
+            "nx run {projectName}:fallow-health",
+            "nx run {projectName}:fallow-audit"
           ],
           "parallel": false
         }
@@ -76,6 +84,7 @@
         "check": {
           "commands": [
             "nx run {projectName}:knip:check",
+            "nx run {projectName}:fallow-dead-code",
             "nx run {projectName}:vulture:check"
           ],
           "parallel": true
@@ -83,6 +92,7 @@
         "write": {
           "commands": [
             "nx run {projectName}:knip:write",
+            "nx run {projectName}:fallow-dead-code",
             "nx run {projectName}:vulture:write"
           ],
           "parallel": false
@@ -126,6 +136,98 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}"
+      }
+    },
+    "fallow": {
+      "cache": true,
+      "description": "Run all fallow static analyses (dead-code, duplicates, health) in advisory mode",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-audit": {
+      "cache": false,
+      "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow audit --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-dead-code": {
+      "cache": true,
+      "description": "Fallow dead-code analysis (unused files, exports, deps, circular deps) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow dead-code --config configuration/fallow.config.jsonc",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-duplicates": {
+      "cache": true,
+      "description": "Fallow strict duplication analysis (config-driven) with threshold gating",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow dupes --config configuration/fallow.config.jsonc",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-fix": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "fallow fix --dry-run --config configuration/fallow.config.jsonc"
+        },
+        "write": {
+          "command": "fallow fix --yes --config configuration/fallow.config.jsonc"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview.",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "fallow-health": {
+      "cache": true,
+      "description": "Fallow code health analysis (complexity, hotspots, maintainability) — advisory",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/fallow.config.jsonc",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "fallow health --config configuration/fallow.config.jsonc || true",
+        "cwd": "{workspaceRoot}"
       }
     },
     "format": {
@@ -538,7 +640,7 @@
       }
     },
     "sync-agent-skills": {
-      "cache": true,
+      "cache": false,
       "configurations": {
         "check": {
           "command": "tsx scripts/sync-agent-skills.ts check"
