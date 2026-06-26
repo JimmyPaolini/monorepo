@@ -5,7 +5,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { ProgressiveAspectService } from "./progressive-aspect.service";
 
-describe("ProgressiveAspectService", () => {
+describe(ProgressiveAspectService, () => {
   let service: ProgressiveAspectService;
 
   beforeAll(async () => {
@@ -17,6 +17,10 @@ describe("ProgressiveAspectService", () => {
   });
 
   it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 

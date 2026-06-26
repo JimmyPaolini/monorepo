@@ -448,3 +448,11 @@ export function typedFromEntries<K extends string, V>(
   // type-coverage:ignore-next-line
   return Object.fromEntries(entries) as Record<K, V>;
 }
+
+/**
+ * Lowercases the first character of a string literal type.
+ */
+export function uncapitalize<T extends string>(str: T): Uncapitalize<T> {
+  // type-coverage:ignore-next-line
+  return (str.charAt(0).toLowerCase() + str.slice(1)) as Uncapitalize<T>;
+}

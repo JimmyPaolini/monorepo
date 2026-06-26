@@ -4,7 +4,6 @@ import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/ca
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
 import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
@@ -38,8 +37,6 @@ describe(SpecialtyAspectsService, () => {
         SimpleAspectsEventService,
         EphemerisService,
         MathService,
-        SimpleAspectsEventService,
-        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();

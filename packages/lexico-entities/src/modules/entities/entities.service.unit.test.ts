@@ -31,12 +31,12 @@ import {
   formVoiceValues,
   inflectionDeclensionValues,
   nounGenders,
-  partsOfSpeech,
   prepositionCases,
-  pronunciationVariants,
   verbConjugationValues,
 } from "../database/database.constants";
 
+import { partsOfSpeech } from "./dictionary/PartOfSpeech.entity";
+import { pronunciationVariants } from "./dictionary/Pronunciation.entity";
 import { EntitiesService } from "./entities.service";
 
 class MetadataDataSource extends DataSource {

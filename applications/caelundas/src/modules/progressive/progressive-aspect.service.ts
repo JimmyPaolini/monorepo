@@ -23,6 +23,10 @@ export interface TypedAspectParts<
  */
 @Injectable()
 export class ProgressiveAspectService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔏 Private Methods
 
   /**

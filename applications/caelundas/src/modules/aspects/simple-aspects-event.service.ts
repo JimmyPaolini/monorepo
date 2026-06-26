@@ -15,6 +15,10 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class SimpleAspectsEventService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   // 🔏 Private Methods
 
   /**

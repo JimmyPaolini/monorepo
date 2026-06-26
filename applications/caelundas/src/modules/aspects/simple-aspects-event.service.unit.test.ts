@@ -8,7 +8,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SimpleAspectsEventService } from "./simple-aspects-event.service";
 
-describe("SimpleAspectsEventService", () => {
+describe(SimpleAspectsEventService, () => {
   let service: SimpleAspectsEventService;
 
   beforeAll(async () => {
@@ -20,6 +20,10 @@ describe("SimpleAspectsEventService", () => {
   });
 
   it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  it("is defined", () => {
     expect(service).toBeDefined();
   });
 
@@ -43,7 +47,9 @@ describe("SimpleAspectsEventService", () => {
     expect(event.summary).toContain(symbolByBody.sun);
     expect(event.summary).toContain(symbolByBody.moon);
     expect(event.description).toContain("perfective");
-    expect(log).toHaveBeenCalled();
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining("perfective conjunct"),
+    );
   });
 
   it("should find the first matching aspect", () => {
