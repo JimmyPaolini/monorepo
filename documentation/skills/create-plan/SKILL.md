@@ -90,7 +90,7 @@ After both sub-agents return, review their research summaries before proceeding 
 
 Ask the user 2–4 focused clarifying questions before writing the plan. Batch all questions into a single interaction and provide sensible defaults or suggestions wherever possible so users can confirm quickly.
 
-- Tool option: use an interactive question tool when available.
+- Tool option: use an interactive question tool like VSCode Copilot's built in `askQuestions` when available.
 - CLI/chat option: ask a numbered list of questions directly in chat.
 
 Questions must address:
@@ -146,11 +146,13 @@ The status of a new plan is always `Planned`.
 Populate every section of this template. No section may be omitted or left as placeholder text.
 
 ```md
+---
 name: [Concise Title Describing the Package Implementation Plan's Goal]
 description: [Short description of the plan's purpose]
 created: [YYYY-MM-DDTHH:MM:SSZ]
 updated: [YYYY-MM-DDTHH:MM:SSZ]
 status: 'Completed'|'In progress'|'Planned'
+---
 
 # Introduction
 
@@ -164,10 +166,10 @@ status: 'Completed'|'In progress'|'Planned'
 
 - **REQ-001**: Requirement 1
 - **SEC-001**: Security Requirement 1
-- **[3 LETTERS]-001**: Other Requirement 1
 - **CON-001**: Constraint 1
 - **GUD-001**: Guideline 1
 - **PAT-001**: Pattern to follow 1
+- **[3 LETTERS]-001**: Other Requirement 1
 
 ## 2. Implementation Steps
 
@@ -209,15 +211,18 @@ status: 'Completed'|'In progress'|'Planned'
 
 [List the files that will be affected by the feature or refactoring task.]
 
-- **FILE-001**: Description of file 1
-- **FILE-002**: Description of file 2
+- **FILE-001**: path/to/file.ts - Description of file
+- **FILE-002**: path/to/directory - Description of directory
+- **FILE-003**: path/to/\*\*/many/\*\*/\*-files.{ts,js} - Description of files
 
-## 6. Testing
+## 6. Testing & Validation
 
 [List the tests that need to be implemented to verify the feature or refactoring task.]
 
 - **TEST-001**: Description of test 1
 - **TEST-002**: Description of test 2
+- **VAL-001**: Description of validation 1
+- **VAL-002**: Description of validation 2
 
 ## 7. Risks & Assumptions
 

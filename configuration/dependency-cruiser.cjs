@@ -21,8 +21,6 @@ const path = require("node:path");
 module.exports = {
   forbidden: [
     {
-      name: "no-circular",
-      severity: "error",
       comment: "Circular dependencies cause maintenance issues",
       from: {
         // TypeORM bidirectional entity relations (ManyToMany, OneToMany) require
@@ -30,13 +28,13 @@ module.exports = {
         // These intra-package cycles are intentional and unavoidable.
         pathNot: "^packages/lexico-entities/src/modules/entities/",
       },
+      name: "no-circular",
+      severity: "error",
       to: {
         circular: true,
       },
     },
     {
-      name: "no-orphans",
-      severity: "warn",
       comment: "Orphaned files may indicate dead code",
       from: {
         orphan: true,
@@ -55,22 +53,22 @@ module.exports = {
           String.raw`^tools/.+/project\.json$`,
         ],
       },
+      name: "no-orphans",
+      severity: "warn",
       to: {},
     },
     {
-      name: "no-test-imports-in-app",
-      severity: "error",
       comment: "Application code should not import test utilities",
       from: {
-        pathNot: String.raw`\.test\.(ts|tsx)$`,
+        pathNot: [String.raw`\.test\.(ts|tsx)$`, "(^|/)testing/"],
       },
+      name: "no-test-imports-in-app",
+      severity: "error",
       to: {
         path: "(^|/)(testing|__tests__|__mocks__)/",
       },
     },
     {
-      name: "not-to-dev-dep",
-      severity: "error",
       comment: "Production code should not depend on devDependencies",
       from: {
         path: "^applications",
@@ -85,18 +83,20 @@ module.exports = {
           String.raw`(^|/)vite\.config`,
         ],
       },
+      name: "not-to-dev-dep",
+      severity: "error",
       to: {
         dependencyTypes: ["npm-dev"],
         pathNot: ["node_modules/@types/"],
       },
     },
     {
-      name: "no-esm-in-cjs",
-      severity: "error",
       comment: "Don't import ESM in CommonJS files",
       from: {
         path: String.raw`\.cjs$`,
       },
+      name: "no-esm-in-cjs",
+      severity: "error",
       to: {
         path: String.raw`\.mjs$`,
       },
@@ -105,6 +105,10 @@ module.exports = {
   options: {
     doNotFollow: {
       path: "node_modules",
+    },
+    enhancedResolveOptions: {
+      conditionNames: ["import", "require", "node", "default"],
+      exportsFields: ["exports"],
     },
     exclude: {
       path: [
@@ -117,21 +121,17 @@ module.exports = {
         String.raw`\.gen\.(ts|tsx|js|jsx)$`,
       ],
     },
-    tsPreCompilationDeps: true,
-    tsConfig: {
-      fileName: path.join(__dirname, "tsconfig.json"),
-    },
-    enhancedResolveOptions: {
-      exportsFields: ["exports"],
-      conditionNames: ["import", "require", "node", "default"],
-    },
     reporterOptions: {
-      dot: {
-        collapsePattern: "^node_modules/[^/]+",
-      },
       archi: {
         collapsePattern: "^(applications|packages)/[^/]+",
       },
+      dot: {
+        collapsePattern: "^node_modules/[^/]+",
+      },
     },
+    tsConfig: {
+      fileName: path.join(__dirname, "tsconfig.json"),
+    },
+    tsPreCompilationDeps: true,
   },
 };

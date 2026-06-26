@@ -372,6 +372,15 @@
       },
       "outputs": ["{workspaceRoot}/README.md"]
     },
+    "orchestrate-agents": {
+      "cache": false,
+      "description": "Run the multi-agent prompt orchestration script",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx scripts/orchestrate-agents.ts",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "oxfmt": {
       "cache": true,
       "configurations": {
