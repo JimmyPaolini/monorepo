@@ -100,6 +100,7 @@ describe("minor-aspects.events integration", () => {
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
         AspectsUtilities,
+        SimpleAspectsEventService,
         EphemerisService,
         MathService,
         SimpleAspectsEventService,

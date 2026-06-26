@@ -1,4 +1,3 @@
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MajorAspectEventService } from "@caelundas/src/modules/major-aspects/major-aspect-event.service";
 import { MajorAspectProgressiveService } from "@caelundas/src/modules/major-aspects/major-aspect-progressive.service";
@@ -22,7 +21,6 @@ import { EphemerisService } from "../ephemeris/ephemeris.service";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
 import { MathService } from "../math/math.service";
 import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
-import { ProgressiveAspectService } from "../progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "../progressive/progressive-utilities.service";
 import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
 import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
@@ -38,6 +36,7 @@ import {
 } from "./aspects.constants";
 import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";
+import { SimpleAspectsEventService } from "./simple-aspects-event.service";
 
 import type {
   CompositeAspectDetector,
@@ -66,9 +65,8 @@ describe(AspectsService, () => {
         MinorAspectsComposerService,
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
-        ProgressiveAspectService,
-        ProgressiveUtilitiesService,
         SimpleAspectsEventService,
+        ProgressiveUtilitiesService,
         QuadrupleAspectsService,
         QuadrupleAspectsBaseService,
         QuadrupleAspectsComposerService,
