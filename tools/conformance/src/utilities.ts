@@ -5,8 +5,14 @@ import { getProjects } from "@nx/devkit";
 import mustache from "mustache";
 import prompts from "prompts";
 
-import { converterByStringCase, humanReadableStringCase } from "./constants";
+import {
+  APPLICATIONS_DIRECTORY,
+  converterByStringCase,
+  DESTINATION_ROOTS,
+  humanReadableStringCase,
+} from "./constants";
 
+import type { DestinationRoot } from "./constants";
 import type { StringCaseValue } from "./types";
 import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
@@ -61,6 +67,31 @@ export function getProjectsWithTag(args: {
     .map(([projectName]) => projectName);
 
   return projectsWithTag;
+}
+
+/**
+ * Resolves the destination root directory for a generated command application.
+ *
+ * If `destinationRoot` is already provided it is validated against the
+ * allowed values. If it is omitted the user is prompted to pick one
+ * interactively. Throws when an unrecognized value is supplied.
+ */
+export async function resolveDestinationRoot(args: {
+  destinationRoot?: string;
+  message: string;
+}): Promise<DestinationRoot> {
+  const { message } = args;
+
+  const destinationRoot =
+    args.destinationRoot ?? (await promptDestinationRootSelection({ message }));
+
+  if (!isDestinationRoot(destinationRoot)) {
+    throw new Error(
+      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
+    );
+  }
+
+  return destinationRoot;
 }
 
 /**
@@ -127,6 +158,13 @@ export async function resolveProject(args: {
 }
 
 /**
+ * Returns whether the given string is a valid DestinationRoot value.
+ */
+function isDestinationRoot(value: string): value is DestinationRoot {
+  return (DESTINATION_ROOTS as readonly string[]).includes(value);
+}
+
+/**
  * Process file node.
  */
 function processFileNode(args: {
@@ -149,6 +187,31 @@ function processFileNode(args: {
     const instance = mustache.render(template, substitutions);
     tree.write(instancePath, instance);
   }
+}
+
+/**
+ * Prompts the user to select a destination root from the allowed values.
+ * Throws if the user cancels without selecting.
+ */
+async function promptDestinationRootSelection(args: {
+  message: string;
+}): Promise<DestinationRoot> {
+  const { message } = args;
+  const request: PromptObject<"destinationRoot"> = {
+    choices: DESTINATION_ROOTS.map(
+      (value): Choice => ({ title: value, value }),
+    ),
+    initial: DESTINATION_ROOTS.indexOf(APPLICATIONS_DIRECTORY),
+    message,
+    name: "destinationRoot",
+    type: "select",
+  };
+  const response: { destinationRoot: DestinationRoot | undefined } =
+    await prompts(request);
+  if (!response.destinationRoot) {
+    throw new Error("No destination root selected");
+  }
+  return response.destinationRoot;
 }
 
 /**

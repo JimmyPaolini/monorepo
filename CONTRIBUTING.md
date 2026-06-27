@@ -49,7 +49,7 @@ cd monorepo
 
 This script:
 
-- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
+- Installs **nvm**, **Node.js** (24.16.0 from `.nvmrc`), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
 - Installs **Terraform**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
 - Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
 - Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
@@ -79,13 +79,15 @@ Alternatively, use the included dev container for a fully configured environment
 
 | Tool         | Version                     | Purpose                                                      |
 | ------------ | --------------------------- | ------------------------------------------------------------ |
-| Node.js      | 22.20.0                     | JavaScript runtime                                           |
+| Node.js      | 24.16.0                     | JavaScript runtime                                           |
 | pnpm         | 10.20.0                     | Package manager                                              |
 | Terraform    | latest                      | Infrastructure provisioning (Linode)                         |
 | kubectl      | latest                      | Kubernetes cluster management                                |
 | Helm         | latest                      | Kubernetes package manager                                   |
 | GitHub CLI   | latest                      | Repository operations                                        |
 | Docker       | DooD (local) / DinD (cloud) | Docker-outside-of-Docker on local; Docker-in-Docker in cloud |
+
+The repository pins Node through both `.nvmrc` and `.node-version`. Note that `.nvmrc` is declarative and only takes effect after running `nvm use` (or enabling automatic `nvm` directory switching in your shell).
 
 **Port Forwarding:**
 

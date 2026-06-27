@@ -1,0 +1,219 @@
+/**
+ * Orchestration service for the conventional-config sync workflow.
+ */
+
+import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
+
+import { LoggerService } from "../logger/logger.service";
+
+import { ConventionalConfigIoService } from "./conventional-config-io.service";
+import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
+import { ConventionalConfigConstantsService } from "./conventional-config.constants";
+
+import type {
+  ConventionalConfig,
+  ReleaseConfig,
+  SyncContext,
+  Type,
+} from "./conventional-config.types";
+
+/**
+ * Orchestrates check and write modes for conventional-config synchronization.
+ */
+@Injectable()
+export class ConventionalConfigService {
+  // 🏗 Dependency Injection
+
+  constructor(
+    private readonly conventionalConfigConstantsService: ConventionalConfigConstantsService,
+    private readonly conventionalConfigIoService: ConventionalConfigIoService,
+    private readonly loggerService: LoggerService,
+    private readonly conventionalConfigValidatorsService: ConventionalConfigValidatorsService,
+  ) {
+    this.loggerService.setContext(ConventionalConfigService.name);
+  }
+
+  // 🔐 Private Fields
+
+  private readonly requireFromCurrentModule = createRequire(import.meta.url);
+
+  // 🔏 Private Methods
+
+  /** Loads release.config.cjs as a CommonJS module. */
+  private loadReleaseConfig(): ReleaseConfig {
+    return this.requireFromCurrentModule(
+      this.conventionalConfigConstantsService.releaseConfigFile,
+    ) as ReleaseConfig;
+  }
+
+  /** Writes release config when commit types are missing in release rules or preset config. */
+  private syncReleaseConfigIfNeeded(args: {
+    sourceTypes: Type[];
+    typeNames: string[];
+  }): void {
+    const { sourceTypes, typeNames } = args;
+    const releaseConfig = this.loadReleaseConfig();
+    const releaseRulesCheckTypes = typeNames.filter(
+      (typeName) => !new Set(["revert"]).has(typeName),
+    );
+    const missingFromReleaseRules = _.difference(
+      releaseRulesCheckTypes,
+      this.conventionalConfigIoService.getReleaseRulesTypes(releaseConfig),
+    );
+    const missingFromPresetTypes = _.difference(
+      typeNames,
+      this.conventionalConfigIoService.getPresetConfigTypes(releaseConfig),
+    );
+
+    if (
+      missingFromReleaseRules.length > 0 ||
+      missingFromPresetTypes.length > 0
+    ) {
+      this.conventionalConfigIoService.writeReleaseConfigSync(sourceTypes);
+    }
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Check mode: validates all configuration files are in sync with conventional.config.cjs.
+   */
+  handleCheckMode(context: SyncContext): void {
+    const { config, scopeNames, settingsScopes, typeNames } = context;
+    const settingsOk =
+      this.conventionalConfigValidatorsService.checkSettingsSync(
+        scopeNames,
+        settingsScopes,
+      );
+    const skillsOk =
+      this.conventionalConfigValidatorsService.checkAllSkillsSync(
+        config,
+        this.conventionalConfigConstantsService.skillFiles,
+      );
+    const templatesOk =
+      this.conventionalConfigValidatorsService.checkAllTemplatesSync(
+        scopeNames,
+        this.conventionalConfigConstantsService.issueTemplateFiles,
+      );
+    const releaseConfig = this.loadReleaseConfig();
+    const releaseRulesOk =
+      this.conventionalConfigValidatorsService.checkReleaseRulesSync(
+        typeNames,
+        this.conventionalConfigIoService.getReleaseRulesTypes(releaseConfig),
+        "release.config.cjs",
+      );
+    const presetOk =
+      this.conventionalConfigValidatorsService.checkPresetConfigSync(
+        typeNames,
+        this.conventionalConfigIoService.getPresetConfigTypes(releaseConfig),
+        "release.config.cjs",
+      );
+    if (
+      !settingsOk ||
+      !skillsOk ||
+      !templatesOk ||
+      !releaseRulesOk ||
+      !presetOk
+    ) {
+      this.loggerService.log(
+        "💡 Run 'nx run synchronization:conventional-config:write' to sync",
+      );
+      process.exit(1);
+    }
+    this.loggerService.log("✅ Conventional commit config is in sync");
+  }
+
+  /**
+   * Write mode: updates all out-of-sync configuration files from conventional.config.cjs.
+   */
+  handleWriteMode(context: SyncContext): void {
+    const { config, scopeNames, settingsScopes, typeNames } = context;
+    const settingsOk =
+      this.conventionalConfigValidatorsService.checkSettingsSync(
+        scopeNames,
+        settingsScopes,
+      );
+    const outOfSyncSkills =
+      this.conventionalConfigConstantsService.skillFiles.filter(
+        (skillFile) =>
+          !this.conventionalConfigValidatorsService.checkSkillSync(
+            config,
+            skillFile,
+          ),
+      );
+    const outOfSyncTemplates =
+      this.conventionalConfigConstantsService.issueTemplateFiles.filter(
+        (templateFile) =>
+          !this.conventionalConfigValidatorsService.checkIssueTemplateSync(
+            scopeNames,
+            templateFile,
+          ),
+      );
+
+    if (
+      settingsOk &&
+      outOfSyncSkills.length === 0 &&
+      outOfSyncTemplates.length === 0
+    ) {
+      this.loggerService.log("✅ Already in sync");
+      return;
+    }
+
+    if (!settingsOk) {
+      this.conventionalConfigIoService.writeSettingsSync(config.scopes);
+    }
+    for (const skillFile of outOfSyncSkills) {
+      this.conventionalConfigIoService.writeSkillSync(config, skillFile);
+    }
+    for (const templateFile of outOfSyncTemplates) {
+      this.conventionalConfigIoService.writeIssueTemplateSync(
+        scopeNames,
+        templateFile,
+      );
+    }
+    this.syncReleaseConfigIfNeeded({ sourceTypes: config.types, typeNames });
+  }
+
+  /**
+   * Loads conventional.config.cjs using require() since it's a CommonJS module.
+   */
+  loadConventionalConfig(): ConventionalConfig {
+    return this.requireFromCurrentModule(
+      this.conventionalConfigConstantsService.conventionalConfigFile,
+    ) as ConventionalConfig;
+  }
+
+  /**
+   * Runs the workflow in check or write mode.
+   */
+  runSynchronization(mode: string): void {
+    const config = this.loadConventionalConfig();
+    const context: SyncContext = {
+      config,
+      scopeNames: config.scopes.map((scope) => scope.name),
+      settingsScopes: this.conventionalConfigIoService.parseSettingsScopes(
+        readFileSync(
+          this.conventionalConfigConstantsService.settingsFile,
+          "utf8",
+        ),
+      ),
+      typeNames: config.types.map((type) => type.name),
+    };
+
+    if (mode === "check") {
+      this.handleCheckMode(context);
+    } else if (mode === "write") {
+      this.handleWriteMode(context);
+    } else {
+      this.loggerService.error(`❌ Invalid mode: ${mode}`);
+      this.loggerService.error(
+        "💡 Usage: nx run synchronization:conventional-config [check|write]",
+      );
+      process.exit(1);
+    }
+  }
+}

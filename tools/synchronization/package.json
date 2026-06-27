@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@golevelup/ts-vitest": "^4.0.0",
+    "@nestjs/common": "^11.1.26",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.1.26",
+    "json5": "^2.2.3",
+    "lodash": "^4.18.1",
+    "nest-commander": "^3.20.1",
+    "pino": "^10.3.1",
+    "reflect-metadata": "^0.2.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^11.1.26",
+    "@nx/eslint-plugin": "^23.0.0",
+    "@swc-node/register": "^1.11.1",
+    "@swc/core": "^1.15.40",
+    "@swc/helpers": "^0.5.21",
+    "@types/lodash": "^4.17.24",
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-v8": "^4.1.7",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "name": "synchronization",
+  "type": "module",
+  "typeCoverage": {
+    "atLeast": 100,
+    "strict": true
+  },
+  "version": "0.0.1"
+}
