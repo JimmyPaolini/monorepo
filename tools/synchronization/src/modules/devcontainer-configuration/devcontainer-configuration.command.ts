@@ -8,42 +8,13 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+import {
+  DEVCONTAINER_CLOUD_ONLY_KEYS,
+  DEVCONTAINER_REMOTE_ENVIRONMENT_PRESERVED_KEYS,
+  DEVCONTAINER_SYNCED_KEYS,
+} from "./devcontainer-configuration.constants";
 
-/**
- * Minimal shape required for devcontainer synchronization and comparison.
- */
-interface DevcontainerConfig {
-  [key: string]: unknown;
-  features?: Record<string, unknown>;
-  name?: string;
-  remoteEnv?: Record<string, string>;
-  runArgs?: string[];
-}
-
-// ─── Constants ────────────────────────────────────────────────────────────────
-
-/** Fields copied verbatim from local into cloud. */
-const SYNCED_KEYS = new Set([
-  "$schema",
-  "containerUser",
-  "customizations",
-  "forwardPorts",
-  "image",
-  "portsAttributes",
-  "postAttachCommand",
-  "postCreateCommand",
-  "remoteEnv",
-  "remoteUser",
-  "runServices",
-  "waitFor",
-]);
-
-/** Fields that belong exclusively to the cloud config and are never overwritten or checked. */
-const CLOUD_ONLY_KEYS = new Set(["mounts"]);
-
-/** Keys within remoteEnv that are config-specific and preserved per-environment. */
-const REMOTE_ENV_PRESERVED_KEYS = new Set(["MONOREPO_ENVIRONMENT"]);
+import type { DevcontainerConfiguration } from "./devcontainer-configuration.types";
 
 /**
  * CLI command that syncs common fields from the local devcontainer config into the cloud config.
@@ -69,16 +40,16 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Merges local devcontainer fields into a copy of the cloud config, preserving cloud-only keys.
    */
   private applySync(
-    localConfig: DevcontainerConfig,
-    cloudConfig: DevcontainerConfig,
-  ): DevcontainerConfig {
-    const mergedConfig: DevcontainerConfig = { ...cloudConfig };
+    localConfig: DevcontainerConfiguration,
+    cloudConfig: DevcontainerConfiguration,
+  ): DevcontainerConfiguration {
+    const mergedConfig: DevcontainerConfiguration = { ...cloudConfig };
 
     this.syncVerbatimFields(localConfig, mergedConfig);
     this.preserveRemoteEnvironment(cloudConfig, mergedConfig);
     this.syncFeatures(localConfig, cloudConfig, mergedConfig);
 
-    for (const key of CLOUD_ONLY_KEYS) {
+    for (const key of DEVCONTAINER_CLOUD_ONLY_KEYS) {
       if (key in cloudConfig) mergedConfig[key] = cloudConfig[key];
       else Reflect.deleteProperty(mergedConfig, key);
     }
@@ -90,12 +61,12 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Compares the expected merged config against the current cloud config file and reports field differences.
    */
   private check(
-    expectedConfig: DevcontainerConfig,
+    expectedConfig: DevcontainerConfiguration,
     cloudConfigFile: string,
   ): boolean {
     const workspaceRoot = process.cwd();
     const relativeFilePath = path.relative(workspaceRoot, cloudConfigFile);
-    const currentConfig: DevcontainerConfig = JSON5.parse(
+    const currentConfig: DevcontainerConfiguration = JSON5.parse(
       readFileSync(cloudConfigFile, "utf8"),
     );
     const expectedConfigCopy = structuredClone(expectedConfig);
@@ -112,7 +83,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
     this.logger.log("");
     this.logger.log(
-      `  Run: nx run monorepo:sync-devcontainer-configuration:write`,
+      `  Run: nx run synchronization:sync-devcontainer-configuration:write`,
     );
     return false;
   }
@@ -131,15 +102,15 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Restores environment-specific keys from the cloud config into the merged config.
    */
   private preserveRemoteEnvironment(
-    cloudConfig: DevcontainerConfig,
-    mergedConfig: DevcontainerConfig,
+    cloudConfig: DevcontainerConfiguration,
+    mergedConfig: DevcontainerConfiguration,
   ): void {
     const cloudRemoteEnvironment = cloudConfig.remoteEnv;
     const mergedRemoteEnvironment = mergedConfig.remoteEnv;
 
     if (!cloudRemoteEnvironment || !mergedRemoteEnvironment) return;
 
-    for (const key of REMOTE_ENV_PRESERVED_KEYS) {
+    for (const key of DEVCONTAINER_REMOTE_ENVIRONMENT_PRESERVED_KEYS) {
       const value = cloudRemoteEnvironment[key];
       if (value !== undefined) {
         mergedRemoteEnvironment[key] = value;
@@ -159,7 +130,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       ...Object.keys(currentFields),
     ]);
     for (const key of allFieldKeys) {
-      if (CLOUD_ONLY_KEYS.has(key)) continue;
+      if (DEVCONTAINER_CLOUD_ONLY_KEYS.has(key)) continue;
       if (!_.isEqual(expectedFields[key], currentFields[key])) {
         this.logger.log(`  Field '${key}' differs:`);
         this.logger.log(`    Expected: ${JSON.stringify(expectedFields[key])}`);
@@ -172,9 +143,9 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Merges features from local and cloud configs, keeping Docker features from cloud.
    */
   private syncFeatures(
-    localConfig: DevcontainerConfig,
-    cloudConfig: DevcontainerConfig,
-    mergedConfig: DevcontainerConfig,
+    localConfig: DevcontainerConfiguration,
+    cloudConfig: DevcontainerConfiguration,
+    mergedConfig: DevcontainerConfiguration,
   ): void {
     const localFeatures = localConfig.features ?? {};
     const cloudFeatures = cloudConfig.features ?? {};
@@ -193,10 +164,10 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Copies SYNCED_KEYS fields from local config into the merged config.
    */
   private syncVerbatimFields(
-    localConfig: DevcontainerConfig,
-    mergedConfig: DevcontainerConfig,
+    localConfig: DevcontainerConfiguration,
+    mergedConfig: DevcontainerConfiguration,
   ): void {
-    for (const key of SYNCED_KEYS) {
+    for (const key of DEVCONTAINER_SYNCED_KEYS) {
       if (key in localConfig) mergedConfig[key] = localConfig[key];
       else Reflect.deleteProperty(mergedConfig, key);
     }
@@ -206,7 +177,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
    * Serializes the merged config to JSON and writes it to the cloud devcontainer file.
    */
   private write(
-    mergedConfig: DevcontainerConfig,
+    mergedConfig: DevcontainerConfiguration,
     cloudConfigFile: string,
   ): void {
     const workspaceRoot = process.cwd();
@@ -240,10 +211,10 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       ".devcontainer/cloud/devcontainer.json",
     );
 
-    const localConfig: DevcontainerConfig = JSON5.parse(
+    const localConfig: DevcontainerConfiguration = JSON5.parse(
       readFileSync(localConfigFile, "utf8"),
     );
-    const cloudConfig: DevcontainerConfig = JSON5.parse(
+    const cloudConfig: DevcontainerConfiguration = JSON5.parse(
       readFileSync(cloudConfigFile, "utf8"),
     );
     const mergedConfig = this.applySync(localConfig, cloudConfig);
@@ -259,7 +230,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "   Usage: tsx scripts/sync-devcontainer-configuration.ts [check|write]",
+        "💡 Usage: nx run synchronization:sync-devcontainer-configuration [check|write]",
       );
       process.exit(1);
     }

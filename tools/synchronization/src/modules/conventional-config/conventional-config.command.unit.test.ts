@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigHelpersService } from "./conventional-config-helpers.service";
+import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
 import { ConventionalConfigCommand } from "./conventional-config.command";
 
 const buildModule = async (): Promise<{
@@ -15,8 +15,8 @@ const buildModule = async (): Promise<{
     providers: [
       ConventionalConfigCommand,
       {
-        provide: ConventionalConfigHelpersService,
-        useValue: createMock<ConventionalConfigHelpersService>(),
+        provide: ConventionalConfigSynchronizationService,
+        useValue: createMock<ConventionalConfigSynchronizationService>(),
       },
       {
         provide: LoggerService,

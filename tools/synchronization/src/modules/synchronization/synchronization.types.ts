@@ -1,5 +1,8 @@
-import type { environmentSchema } from "./synchronization.constants";
-import type { z } from "zod";
+/** Supported synchronization execution modes. */
+export type SynchronizationMode = "check" | "write";
 
-/** Validated environment variables shape inferred from the Zod schema. */
-export type Environment = z.infer<typeof environmentSchema>;
+/** A single synchronization command task executed by the root orchestration command. */
+export interface SynchronizationTask {
+  commandName: string;
+  runCommand: (mode: SynchronizationMode) => Promise<void>;
+}

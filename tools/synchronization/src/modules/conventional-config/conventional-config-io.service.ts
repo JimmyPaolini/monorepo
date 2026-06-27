@@ -21,8 +21,6 @@ import type {
   Type,
 } from "./conventional-config.types";
 
-const moduleRequire = createRequire(import.meta.url);
-
 /**
  * Provides all I/O, parsing, and formatting operations for the conventional-config sync workflow.
  */
@@ -42,6 +40,8 @@ export class ConventionalConfigIoService {
     this.workspaceRoot,
     "release.config.cjs",
   );
+
+  private readonly requireFromCurrentModule = createRequire(import.meta.url);
 
   private readonly settingsFile = path.join(
     this.workspaceRoot,
@@ -260,7 +260,7 @@ export class ConventionalConfigIoService {
     );
     this.logger.log(`🔄 Syncing ${relativeFile} types...`);
 
-    const releaseConfig = moduleRequire(
+    const releaseConfig = this.requireFromCurrentModule(
       this.releaseConfigFile,
     ) as ReleaseConfig;
 

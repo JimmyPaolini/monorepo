@@ -6,12 +6,10 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-const MARKER = "pr-template";
-
-const TARGET_RELATIVE_FILES = [
-  "documentation/skills/create-pull-request/SKILL.md",
-  "documentation/skills/update-pull-request/SKILL.md",
-];
+import {
+  SYNC_PULL_REQUEST_TEMPLATE_MARKER,
+  SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES,
+} from "./pull-request-template.constants";
 
 /**
  * CLI command that syncs the PR template from .github/PULL_REQUEST_TEMPLATE.md
@@ -42,11 +40,14 @@ export class PullRequestTemplateCommand extends CommandRunner {
     const workspaceRoot = process.cwd();
     const targetName = path.relative(workspaceRoot, targetFile);
     const fileContent = readFileSync(targetFile, "utf8");
-    const markerContent = this.extractMarkerContent(fileContent, MARKER);
+    const markerContent = this.extractMarkerContent(
+      fileContent,
+      SYNC_PULL_REQUEST_TEMPLATE_MARKER,
+    );
 
     if (markerContent === undefined) {
       this.logger.log(
-        `❌ ${targetName} missing <!-- ${MARKER}-start/end --> markers\n`,
+        `❌ ${targetName} missing <!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-start/end --> markers\n`,
       );
       return false;
     }
@@ -90,7 +91,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     }
     if (!allInSync) {
       this.logger.log(
-        "💡 Run 'nx run monorepo:sync-pull-request-template:write' to sync",
+        "💡 Run 'nx run synchronization:sync-pull-request-template:write' to sync",
       );
       process.exit(1);
     }
@@ -156,7 +157,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     const codeBlock = this.wrapInCodeBlock(templateContent);
     const updatedContent = this.replaceMarkerContent(
       fileContent,
-      MARKER,
+      SYNC_PULL_REQUEST_TEMPLATE_MARKER,
       codeBlock,
     );
 
@@ -180,7 +181,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
       workspaceRoot,
       ".github/PULL_REQUEST_TEMPLATE.md",
     );
-    const targetFiles = TARGET_RELATIVE_FILES.map((f) =>
+    const targetFiles = SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES.map((f) =>
       path.join(workspaceRoot, f),
     );
 
@@ -193,7 +194,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "💡 Usage: tsx scripts/sync-pull-request-template.ts [check|write]",
+        "💡 Usage: nx run synchronization:sync-pull-request-template [check|write]",
       );
       process.exit(1);
     }

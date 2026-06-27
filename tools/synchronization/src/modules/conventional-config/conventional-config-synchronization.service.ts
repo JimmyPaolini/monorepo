@@ -1,5 +1,5 @@
 /**
- * Orchestration helpers for the conventional-config sync workflow.
+ * Orchestration service for the conventional-config sync workflow.
  */
 
 import { readFileSync } from "node:fs";
@@ -21,13 +21,11 @@ import type {
   Type,
 } from "./conventional-config.types";
 
-const moduleRequire = createRequire(import.meta.url);
-
 /**
- * Orchestrates check and write modes for the conventional-config sync workflow.
+ * Orchestrates check and write modes for conventional-config synchronization.
  */
 @Injectable()
-export class ConventionalConfigHelpersService {
+export class ConventionalConfigSynchronizationService {
   // 🏗 Dependency Injection
 
   constructor(
@@ -36,17 +34,23 @@ export class ConventionalConfigHelpersService {
     private readonly logger: LoggerService,
     private readonly validators: ConventionalConfigValidatorsService,
   ) {
-    this.logger.setContext(ConventionalConfigHelpersService.name);
+    this.logger.setContext(ConventionalConfigSynchronizationService.name);
   }
+
+  // 🔐 Private Fields
+
+  private readonly requireFromCurrentModule = createRequire(import.meta.url);
 
   // 🔏 Private Methods
 
-  /** Loads the release config via CommonJS require. */
+  /** Loads release.config.cjs as a CommonJS module. */
   private loadReleaseConfig(): ReleaseConfig {
-    return moduleRequire(this.constants.releaseConfigFile) as ReleaseConfig;
+    return this.requireFromCurrentModule(
+      this.constants.releaseConfigFile,
+    ) as ReleaseConfig;
   }
 
-  /** Writes release config if types are missing from release rules or preset config. */
+  /** Writes release config when commit types are missing in release rules or preset config. */
   private syncReleaseConfigIfNeeded(args: {
     sourceTypes: Type[];
     typeNames: string[];
@@ -76,8 +80,7 @@ export class ConventionalConfigHelpersService {
   // 🌎 Public Methods
 
   /**
-   * Check mode: Validates all configuration files are in sync with
-   * conventional.config.cjs. Exits with code 1 if any file is out of sync.
+   * Check mode: validates all configuration files are in sync with conventional.config.cjs.
    */
   handleCheckMode(context: SyncContext): void {
     const { config, scopeNames, settingsScopes, typeNames } = context;
@@ -112,7 +115,7 @@ export class ConventionalConfigHelpersService {
       !presetOk
     ) {
       this.logger.log(
-        "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
+        "💡 Run 'nx run synchronization:sync-conventional-config:write' to sync",
       );
       process.exit(1);
     }
@@ -120,8 +123,7 @@ export class ConventionalConfigHelpersService {
   }
 
   /**
-   * Write mode: Updates all out-of-sync configuration files with the latest
-   * types and scopes from conventional.config.cjs.
+   * Write mode: updates all out-of-sync configuration files from conventional.config.cjs.
    */
   handleWriteMode(context: SyncContext): void {
     const { config, scopeNames, settingsScopes, typeNames } = context;
@@ -146,11 +148,15 @@ export class ConventionalConfigHelpersService {
       return;
     }
 
-    if (!settingsOk) this.io.writeSettingsSync(config.scopes);
-    for (const skillFile of outOfSyncSkills)
+    if (!settingsOk) {
+      this.io.writeSettingsSync(config.scopes);
+    }
+    for (const skillFile of outOfSyncSkills) {
       this.io.writeSkillSync(config, skillFile);
-    for (const templateFile of outOfSyncTemplates)
+    }
+    for (const templateFile of outOfSyncTemplates) {
       this.io.writeIssueTemplateSync(scopeNames, templateFile);
+    }
     this.syncReleaseConfigIfNeeded({ sourceTypes: config.types, typeNames });
   }
 
@@ -158,15 +164,15 @@ export class ConventionalConfigHelpersService {
    * Loads conventional.config.cjs using require() since it's a CommonJS module.
    */
   loadConventionalConfig(): ConventionalConfig {
-    return moduleRequire(
+    return this.requireFromCurrentModule(
       this.constants.conventionalConfigFile,
     ) as ConventionalConfig;
   }
 
   /**
-   * Main orchestrator: determines whether to run in check or write mode.
+   * Runs the workflow in check or write mode.
    */
-  main(mode: string): void {
+  runSynchronization(mode: string): void {
     const config = this.loadConventionalConfig();
     const context: SyncContext = {
       config,
@@ -184,7 +190,7 @@ export class ConventionalConfigHelpersService {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "💡 Usage: nx run synchronization:conventional-config [check|write]",
+        "💡 Usage: nx run synchronization:sync-conventional-config [check|write]",
       );
       process.exit(1);
     }

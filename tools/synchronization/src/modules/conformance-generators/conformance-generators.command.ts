@@ -6,24 +6,10 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-/**
- * Metadata for a conformance generator rendered in the AGENTS.md table.
- */
-interface Generator {
-  aliases: string[];
-  description: string;
-  name: string;
-}
-
-/**
- * Shape of tools/conformance/generators.json consumed by this sync command.
- */
-interface GeneratorsJson {
-  generators: Record<
-    string,
-    { aliases?: string[]; description: string; factory: string; schema: string }
-  >;
-}
+import type {
+  ConformanceGeneratorMetadata,
+  ConformanceGeneratorsJson,
+} from "./conformance-generators.types";
 
 /**
  * CLI command that syncs the conformance generators table into AGENTS.md.
@@ -48,7 +34,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
   /**
    * Compares the generated generators table against the stored content in AGENTS.md and reports any differences.
    */
-  private checkSync(generators: Generator[]): boolean {
+  private checkSync(generators: ConformanceGeneratorMetadata[]): boolean {
     const generatedTable = this.generateGeneratorsTable(generators);
     const existingContent = this.readAgentsFile();
 
@@ -64,7 +50,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
       );
       this.logger.log("  Generated content doesn't match stored content");
       this.logger.log(
-        "💡 Run 'pnpm exec nx run monorepo:sync-conformance-generators:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:sync-conformance-generators:write' to sync\n",
       );
       return false;
     }
@@ -78,7 +64,9 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
   /**
    * Renders the list of generators as a markdown table for injection into AGENTS.md.
    */
-  private generateGeneratorsTable(generators: Generator[]): string {
+  private generateGeneratorsTable(
+    generators: ConformanceGeneratorMetadata[],
+  ): string {
     const header =
       "| Generator | Alias | Description |\n| --------- | ----- | ----------- |";
     const rows = generators.map((gen) => {
@@ -126,13 +114,13 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
   /**
    * Reads tools/conformance/generators.json and returns the list of generator metadata.
    */
-  private readGenerators(): Generator[] {
+  private readGenerators(): ConformanceGeneratorMetadata[] {
     const generatorsFile = path.join(
       process.cwd(),
       "tools/conformance/generators.json",
     );
     const content = readFileSync(generatorsFile, "utf8");
-    const json = JSON.parse(content) as GeneratorsJson;
+    const json = JSON.parse(content) as ConformanceGeneratorsJson;
 
     return Object.entries(json.generators).map(([name, config]) => ({
       aliases: config.aliases ?? [],
@@ -144,7 +132,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
   /**
    * Writes the generated generators table into AGENTS.md between the marker comments.
    */
-  private writeSync(generators: Generator[]): void {
+  private writeSync(generators: ConformanceGeneratorMetadata[]): void {
     const agentsFile = path.join(process.cwd(), "AGENTS.md");
     this.logger.log("🔄 Generating conformance generators table...");
     const generatedTable = this.generateGeneratorsTable(generators);

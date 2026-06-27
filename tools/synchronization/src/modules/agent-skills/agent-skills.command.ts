@@ -7,14 +7,7 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-/**
- * Parsed skill metadata used to render the AGENTS.md skills table of contents.
- */
-interface Skill {
-  description: string;
-  filePath: string;
-  name: string;
-}
+import type { AgentSkillMetadata } from "./agent-skills.types";
 
 /**
  * CLI command that syncs the agent skills table of contents into AGENTS.md.
@@ -40,7 +33,7 @@ export class AgentSkillsCommand extends CommandRunner {
   /**
    * Compares the generated skills table against the stored content in AGENTS.md and reports any differences.
    */
-  private checkSync(skills: Skill[]): boolean {
+  private checkSync(skills: AgentSkillMetadata[]): boolean {
     const generatedTable = this.generateSkillsTable(skills);
     const existingContent = this.readAgentsFile();
 
@@ -56,7 +49,7 @@ export class AgentSkillsCommand extends CommandRunner {
       );
       this.logger.log("  Generated content doesn't match stored content");
       this.logger.log(
-        "💡 Run 'pnpm exec nx run monorepo:sync-agent-skills:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:sync-agent-skills:write' to sync\n",
       );
       return false;
     }
@@ -92,7 +85,7 @@ export class AgentSkillsCommand extends CommandRunner {
   /**
    * Renders the list of skills as a markdown bullet list for injection into AGENTS.md.
    */
-  private generateSkillsTable(skills: Skill[]): string {
+  private generateSkillsTable(skills: AgentSkillMetadata[]): string {
     const rows = skills.map((skill) => {
       const link = `[${skill.name}](${skill.filePath})`;
       return `- **${link}**: ${skill.description}`;
@@ -139,9 +132,9 @@ export class AgentSkillsCommand extends CommandRunner {
   /**
    * Reads all SKILL.md files from documentation/skills/, extracts frontmatter, and returns sorted skill metadata.
    */
-  private readSkills(): Skill[] {
+  private readSkills(): AgentSkillMetadata[] {
     const skillsDirectory = path.join(process.cwd(), "documentation/skills");
-    const skills: Skill[] = [];
+    const skills: AgentSkillMetadata[] = [];
     const entries = readdirSync(skillsDirectory, { withFileTypes: true });
 
     for (const entry of entries) {
@@ -166,13 +159,13 @@ export class AgentSkillsCommand extends CommandRunner {
       }
     }
 
-    return _.sortBy(skills, (skill: Skill) => skill.name);
+    return _.sortBy(skills, (skill: AgentSkillMetadata) => skill.name);
   }
 
   /**
    * Writes the generated skills table into AGENTS.md between the marker comments.
    */
-  private writeSync(skills: Skill[]): void {
+  private writeSync(skills: AgentSkillMetadata[]): void {
     const agentsFile = path.join(process.cwd(), "AGENTS.md");
     this.logger.log("🔄 Generating skills table of contents...");
     const generatedTable = this.generateSkillsTable(skills);

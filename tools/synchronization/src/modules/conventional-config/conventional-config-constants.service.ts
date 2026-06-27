@@ -13,7 +13,7 @@ import {
  */
 @Injectable()
 export class ConventionalConfigConstantsService {
-  // 🔑 Public Fields
+  // 🏗 Dependency Injection
 
   constructor() {
     this.workspaceRoot = process.cwd();
@@ -33,13 +33,13 @@ export class ConventionalConfigConstantsService {
       (file) => path.join(this.workspaceRoot, file),
     );
   }
+
+  // 🔑 Public Fields
+
   readonly conventionalConfigFile: string;
   readonly issueTemplateFiles: string[];
   readonly releaseConfigFile: string;
   readonly settingsFile: string;
   readonly skillFiles: string[];
-
-  // 🏗 Dependency Injection
-
   readonly workspaceRoot: string;
 }

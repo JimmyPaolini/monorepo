@@ -3,12 +3,12 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigHelpersService } from "./conventional-config-helpers.service";
+import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
 
 /**
  * CLI command that runs the conventional-config sync in check or write mode.
  * Reads the mode from the first positional argument (check|write) and delegates
- * to the helpers service, exiting with code 1 on drift.
+ * to the synchronization service, exiting with code 1 on drift.
  */
 @Command({
   description: "Sync conventional commit config files (check|write)",
@@ -19,7 +19,7 @@ export class ConventionalConfigCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly helpers: ConventionalConfigHelpersService,
+    private readonly synchronizationService: ConventionalConfigSynchronizationService,
     private readonly logger: LoggerService,
   ) {
     super();
@@ -35,6 +35,6 @@ export class ConventionalConfigCommand extends CommandRunner {
   ): Promise<void> {
     await Promise.resolve();
     const mode = passedParameters[0] ?? "";
-    this.helpers.main(mode);
+    this.synchronizationService.runSynchronization(mode);
   }
 }
