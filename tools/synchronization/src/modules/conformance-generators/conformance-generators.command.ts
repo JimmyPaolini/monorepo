@@ -24,9 +24,9 @@ import type {
 export class ConformanceGeneratorsCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(private readonly loggerService: LoggerService) {
     super();
-    this.logger.setContext(ConformanceGeneratorsCommand.name);
+    this.loggerService.setContext(ConformanceGeneratorsCommand.name);
   }
 
   // 🔏 Private Methods
@@ -42,20 +42,22 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
     const existing = existingContent.generatedContent.trim();
 
     if (generated !== existing) {
-      this.logger.log(
+      this.loggerService.log(
         "❌ Conformance generators table in AGENTS.md is out of sync\n",
       );
-      this.logger.log(
+      this.loggerService.log(
         `  Found ${generators.length} generators in tools/conformance/generators.json`,
       );
-      this.logger.log("  Generated content doesn't match stored content");
-      this.logger.log(
+      this.loggerService.log(
+        "  Generated content doesn't match stored content",
+      );
+      this.loggerService.log(
         "💡 Run 'pnpm exec nx run synchronization:conformance-generators:write' to sync\n",
       );
       return false;
     }
 
-    this.logger.log(
+    this.loggerService.log(
       `✅ Conformance generators table is in sync (${generators.length} generators)`,
     );
     return true;
@@ -134,14 +136,14 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
    */
   private writeSync(generators: ConformanceGeneratorMetadata[]): void {
     const agentsFile = path.join(process.cwd(), "AGENTS.md");
-    this.logger.log("🔄 Generating conformance generators table...");
+    this.loggerService.log("🔄 Generating conformance generators table...");
     const generatedTable = this.generateGeneratorsTable(generators);
     const { afterMarker, beforeMarker } = this.readAgentsFile();
 
     const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
 
     writeFileSync(agentsFile, newContent, "utf8");
-    this.logger.log(
+    this.loggerService.log(
       `✅ Updated AGENTS.md with ${generators.length} generators`,
     );
   }
@@ -167,12 +169,12 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
       } else if (mode === "write") {
         this.writeSync(generators);
       } else {
-        this.logger.error(`❌ Unknown mode: ${mode}`);
-        this.logger.error("Expected 'check' or 'write'");
+        this.loggerService.error(`❌ Unknown mode: ${mode}`);
+        this.loggerService.error("Expected 'check' or 'write'");
         process.exit(1);
       }
     } catch (error) {
-      this.logger.error(
+      this.loggerService.error(
         `❌ Error: ${error instanceof Error ? error.message : error}`,
       );
       process.exit(1);

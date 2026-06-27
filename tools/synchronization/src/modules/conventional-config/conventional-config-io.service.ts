@@ -28,8 +28,8 @@ import type {
 export class ConventionalConfigIoService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    this.logger.setContext(ConventionalConfigIoService.name);
+  constructor(private readonly loggerService: LoggerService) {
+    this.loggerService.setContext(ConventionalConfigIoService.name);
   }
 
   // 🔐 Private Fields
@@ -230,7 +230,7 @@ export class ConventionalConfigIoService {
    */
   writeIssueTemplateSync(sourceScopes: string[], templateFile: string): void {
     const templateName = path.relative(this.workspaceRoot, templateFile);
-    this.logger.log(`🔄 Syncing ${templateName} scopes dropdown...`);
+    this.loggerService.log(`🔄 Syncing ${templateName} scopes dropdown...`);
     const templateContent = readFileSync(templateFile, "utf8");
     const scopeOptions = this.generateYamlScopeOptions(sourceScopes);
 
@@ -247,7 +247,7 @@ export class ConventionalConfigIoService {
     );
 
     writeFileSync(templateFile, updatedContent, "utf8");
-    this.logger.log(`✅ ${templateName} scopes synced`);
+    this.loggerService.log(`✅ ${templateName} scopes synced`);
   }
 
   /**
@@ -258,7 +258,7 @@ export class ConventionalConfigIoService {
       this.workspaceRoot,
       this.releaseConfigFile,
     );
-    this.logger.log(`🔄 Syncing ${relativeFile} types...`);
+    this.loggerService.log(`🔄 Syncing ${relativeFile} types...`);
 
     const releaseConfig = this.requireFromCurrentModule(
       this.releaseConfigFile,
@@ -284,14 +284,14 @@ export class ConventionalConfigIoService {
       sourceTypes,
     );
     writeFileSync(this.releaseConfigFile, content, "utf8");
-    this.logger.log(`✅ ${relativeFile} types synced`);
+    this.loggerService.log(`✅ ${relativeFile} types synced`);
   }
 
   /**
    * Rewrites VS Code settings conventional scope array from source scopes.
    */
   writeSettingsSync(scopes: Scope[]): void {
-    this.logger.log("🔄 Syncing settings.json scopes...");
+    this.loggerService.log("🔄 Syncing settings.json scopes...");
     const settingsContent = readFileSync(this.settingsFile, "utf8");
     const formattedBlock = this.formatScopesForSettings(scopes);
 
@@ -310,7 +310,7 @@ export class ConventionalConfigIoService {
     );
 
     writeFileSync(this.settingsFile, updatedContent, "utf8");
-    this.logger.log("✅ settings.json scopes synced");
+    this.loggerService.log("✅ settings.json scopes synced");
   }
 
   /**
@@ -321,7 +321,7 @@ export class ConventionalConfigIoService {
     skillFile: string,
   ): void {
     const skillName = path.relative(this.workspaceRoot, skillFile);
-    this.logger.log(`🔄 Syncing ${skillName} types and scopes...`);
+    this.loggerService.log(`🔄 Syncing ${skillName} types and scopes...`);
     let skillContent = readFileSync(skillFile, "utf8");
 
     const typesEntries: EntryWithDescription[] = config.types.map((type) => ({
@@ -352,6 +352,6 @@ export class ConventionalConfigIoService {
     );
 
     writeFileSync(skillFile, skillContent, "utf8");
-    this.logger.log(`✅ ${skillName} types and scopes synced`);
+    this.loggerService.log(`✅ ${skillName} types and scopes synced`);
   }
 }

@@ -23,9 +23,9 @@ import {
 export class PullRequestTemplateCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(private readonly loggerService: LoggerService) {
     super();
-    this.logger.setContext(PullRequestTemplateCommand.name);
+    this.loggerService.setContext(PullRequestTemplateCommand.name);
   }
 
   // 🔏 Private Methods
@@ -46,7 +46,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     );
 
     if (markerContent === undefined) {
-      this.logger.log(
+      this.loggerService.log(
         `❌ ${targetName} missing <!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-start/end --> markers\n`,
       );
       return false;
@@ -55,7 +55,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     const expectedCodeBlock = this.wrapInCodeBlock(templateContent);
 
     if (markerContent.trim() !== expectedCodeBlock.trim()) {
-      this.logger.log(`❌ ${targetName} PR template is out of sync\n`);
+      this.loggerService.log(`❌ ${targetName} PR template is out of sync\n`);
       return false;
     }
 
@@ -90,12 +90,12 @@ export class PullRequestTemplateCommand extends CommandRunner {
       }
     }
     if (!allInSync) {
-      this.logger.log(
+      this.loggerService.log(
         "💡 Run 'nx run synchronization:pull-request-template:write' to sync",
       );
       process.exit(1);
     }
-    this.logger.log("✅ PR template is in sync");
+    this.loggerService.log("✅ PR template is in sync");
   }
 
   /**
@@ -109,7 +109,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
       (targetFile) => !this.checkTargetSync(templateContent, targetFile),
     );
     if (outOfSyncTargets.length === 0) {
-      this.logger.log("✅ Already in sync");
+      this.loggerService.log("✅ Already in sync");
     } else {
       for (const targetFile of outOfSyncTargets) {
         this.writeTargetSync(templateContent, targetFile);
@@ -151,7 +151,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
   private writeTargetSync(templateContent: string, targetFile: string): void {
     const workspaceRoot = process.cwd();
     const targetName = path.relative(workspaceRoot, targetFile);
-    this.logger.log(`🔄 Syncing ${targetName} PR template...`);
+    this.loggerService.log(`🔄 Syncing ${targetName} PR template...`);
 
     const fileContent = readFileSync(targetFile, "utf8");
     const codeBlock = this.wrapInCodeBlock(templateContent);
@@ -162,7 +162,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     );
 
     writeFileSync(targetFile, updatedContent, "utf8");
-    this.logger.log(`✅ ${targetName} PR template synced`);
+    this.loggerService.log(`✅ ${targetName} PR template synced`);
   }
 
   // 🌎 Public Methods
@@ -192,8 +192,8 @@ export class PullRequestTemplateCommand extends CommandRunner {
     } else if (mode === "write") {
       this.handleWriteMode(templateContent, targetFiles);
     } else {
-      this.logger.error(`❌ Invalid mode: ${mode}`);
-      this.logger.error(
+      this.loggerService.error(`❌ Invalid mode: ${mode}`);
+      this.loggerService.error(
         "💡 Usage: nx run synchronization:pull-request-template [check|write]",
       );
       process.exit(1);

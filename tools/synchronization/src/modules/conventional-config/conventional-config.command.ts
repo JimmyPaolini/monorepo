@@ -20,10 +20,10 @@ export class ConventionalConfigCommand extends CommandRunner {
 
   constructor(
     private readonly conventionalConfigService: ConventionalConfigService,
-    private readonly logger: LoggerService,
+    private readonly loggerService: LoggerService,
   ) {
     super();
-    this.logger.setContext(ConventionalConfigCommand.name);
+    this.loggerService.setContext(ConventionalConfigCommand.name);
   }
 
   // 🌎 Public Methods

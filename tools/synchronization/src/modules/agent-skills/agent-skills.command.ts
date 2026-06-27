@@ -23,9 +23,9 @@ import type { AgentSkillMetadata } from "./agent-skills.types";
 export class AgentSkillsCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(private readonly loggerService: LoggerService) {
     super();
-    this.logger.setContext(AgentSkillsCommand.name);
+    this.loggerService.setContext(AgentSkillsCommand.name);
   }
 
   // 🔏 Private Methods
@@ -41,20 +41,22 @@ export class AgentSkillsCommand extends CommandRunner {
     const existing = existingContent.generatedContent.trim();
 
     if (generated !== existing) {
-      this.logger.log(
+      this.loggerService.log(
         "❌ Skills table of contents in AGENTS.md is out of sync\n",
       );
-      this.logger.log(
+      this.loggerService.log(
         `  Found ${skills.length} skills in documentation/skills/`,
       );
-      this.logger.log("  Generated content doesn't match stored content");
-      this.logger.log(
+      this.loggerService.log(
+        "  Generated content doesn't match stored content",
+      );
+      this.loggerService.log(
         "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
       );
       return false;
     }
 
-    this.logger.log(
+    this.loggerService.log(
       `✅ Skills table of contents is in sync (${skills.length} skills)`,
     );
     return true;
@@ -167,14 +169,14 @@ export class AgentSkillsCommand extends CommandRunner {
    */
   private writeSync(skills: AgentSkillMetadata[]): void {
     const agentsFile = path.join(process.cwd(), "AGENTS.md");
-    this.logger.log("🔄 Generating skills table of contents...");
+    this.loggerService.log("🔄 Generating skills table of contents...");
     const generatedTable = this.generateSkillsTable(skills);
     const { afterMarker, beforeMarker } = this.readAgentsFile();
 
     const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
 
     writeFileSync(agentsFile, newContent, "utf8");
-    this.logger.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
+    this.loggerService.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
   }
 
   // 🌎 Public Methods
@@ -198,12 +200,12 @@ export class AgentSkillsCommand extends CommandRunner {
       } else if (mode === "write") {
         this.writeSync(skills);
       } else {
-        this.logger.error(`❌ Unknown mode: ${mode}`);
-        this.logger.error("Expected 'check' or 'write'");
+        this.loggerService.error(`❌ Unknown mode: ${mode}`);
+        this.loggerService.error("Expected 'check' or 'write'");
         process.exit(1);
       }
     } catch (error) {
-      this.logger.error(
+      this.loggerService.error(
         `❌ Error: ${error instanceof Error ? error.message : error}`,
       );
       process.exit(1);

@@ -23,10 +23,10 @@ export class ConventionalConfigValidatorsService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly io: ConventionalConfigIoService,
-    private readonly logger: LoggerService,
+    private readonly conventionalConfigIoService: ConventionalConfigIoService,
+    private readonly loggerService: LoggerService,
   ) {
-    this.logger.setContext(ConventionalConfigValidatorsService.name);
+    this.loggerService.setContext(ConventionalConfigValidatorsService.name);
   }
 
   // 🔐 Private Fields
@@ -77,16 +77,22 @@ export class ConventionalConfigValidatorsService {
     skillName: string;
   }): undefined | { skillValues: string[] } {
     const { marker, skillContent, skillName } = args;
-    const markerContent = this.io.extractMarkerContent(skillContent, marker);
+    const markerContent = this.conventionalConfigIoService.extractMarkerContent(
+      skillContent,
+      marker,
+    );
     if (!markerContent) {
-      this.logger.log(
+      this.loggerService.log(
         `❌ ${skillName} missing <!-- ${marker}-start/end --> markers\n`,
       );
       return undefined;
     }
 
     return {
-      skillValues: this.io.parseMarkdownTableValues(markerContent),
+      skillValues:
+        this.conventionalConfigIoService.parseMarkdownTableValues(
+          markerContent,
+        ),
     };
   }
 
@@ -100,12 +106,16 @@ export class ConventionalConfigValidatorsService {
     const extra = _.difference(target, source);
 
     if (missing.length > 0) {
-      this.logger.log(`  Missing in ${targetName} (${missing.length} items):`);
-      missing.forEach((item) => this.logger.log(`    + ${item}`));
+      this.loggerService.log(
+        `  Missing in ${targetName} (${missing.length} items):`,
+      );
+      missing.forEach((item) => this.loggerService.log(`    + ${item}`));
     }
     if (extra.length > 0) {
-      this.logger.log(`  Extra in ${targetName} (${extra.length} items):`);
-      extra.forEach((item) => this.logger.log(`    - ${item}`));
+      this.loggerService.log(
+        `  Extra in ${targetName} (${extra.length} items):`,
+      );
+      extra.forEach((item) => this.loggerService.log(`    - ${item}`));
     }
   }
 
@@ -120,12 +130,14 @@ export class ConventionalConfigValidatorsService {
     const sortedSource = _.sortBy([...sourceValues]);
     const sortedSkill = _.sortBy([...skillValues]);
     if (!_.isEqual(sortedSource, sortedSkill)) {
-      this.logger.log(`❌ ${skillName} ${marker} table is out of sync\n`);
+      this.loggerService.log(
+        `❌ ${skillName} ${marker} table is out of sync\n`,
+      );
       this.showDifference(sourceValues, skillValues, skillName);
       return false;
     }
     if (!_.isEqual(sourceValues, skillValues)) {
-      this.logger.log(
+      this.loggerService.log(
         `🔀 ${skillName} ${marker} have matching values but different ordering\n`,
       );
       return false;
@@ -173,9 +185,12 @@ export class ConventionalConfigValidatorsService {
   ): boolean {
     const templateName = path.relative(this.workspaceRoot, templateFile);
     const templateContent = readFileSync(templateFile, "utf8");
-    const templateScopes = this.io.parseIssueTemplateScopes(templateContent);
+    const templateScopes =
+      this.conventionalConfigIoService.parseIssueTemplateScopes(
+        templateContent,
+      );
     if (templateScopes.length === 0) {
-      this.logger.log(
+      this.loggerService.log(
         `❌ ${templateName} missing <!-- scopes-start/end --> markers\n`,
       );
       return false;
@@ -183,12 +198,14 @@ export class ConventionalConfigValidatorsService {
     const sortedSource = _.sortBy([...sourceScopes]);
     const sortedTemplate = _.sortBy([...templateScopes]);
     if (!_.isEqual(sortedSource, sortedTemplate)) {
-      this.logger.log(`❌ ${templateName} scopes dropdown is out of sync\n`);
+      this.loggerService.log(
+        `❌ ${templateName} scopes dropdown is out of sync\n`,
+      );
       this.showDifference(sourceScopes, templateScopes, templateName);
       return false;
     }
     if (!_.isEqual(sourceScopes, templateScopes)) {
-      this.logger.log(
+      this.loggerService.log(
         `🔀 ${templateName} scopes have matching values but different ordering\n`,
       );
       return false;
@@ -206,11 +223,13 @@ export class ConventionalConfigValidatorsService {
   ): boolean {
     const missingFromPresetTypes = _.difference(sourceTypes, presetConfigTypes);
     if (missingFromPresetTypes.length > 0) {
-      this.logger.log(
+      this.loggerService.log(
         `❌ ${relativeFile} presetConfig.types is missing types:\n`,
       );
-      missingFromPresetTypes.forEach((t) => this.logger.log(`    + ${t}`));
-      this.logger.log("");
+      missingFromPresetTypes.forEach((t) =>
+        this.loggerService.log(`    + ${t}`),
+      );
+      this.loggerService.log("");
       return false;
     }
     return true;
@@ -232,9 +251,13 @@ export class ConventionalConfigValidatorsService {
       releaseRulesTypes,
     );
     if (missingFromReleaseRules.length > 0) {
-      this.logger.log(`❌ ${relativeFile} releaseRules is missing types:\n`);
-      missingFromReleaseRules.forEach((t) => this.logger.log(`    + ${t}`));
-      this.logger.log("");
+      this.loggerService.log(
+        `❌ ${relativeFile} releaseRules is missing types:\n`,
+      );
+      missingFromReleaseRules.forEach((t) =>
+        this.loggerService.log(`    + ${t}`),
+      );
+      this.loggerService.log("");
       return false;
     }
     return true;
@@ -250,14 +273,14 @@ export class ConventionalConfigValidatorsService {
     const orderMatches = _.isEqual(sourceScopes, settingsScopes);
 
     if (!valuesMatch || !orderMatches) {
-      this.logger.log("❌ settings.json scopes are out of sync\n");
+      this.loggerService.log("❌ settings.json scopes are out of sync\n");
       if (!valuesMatch) {
-        this.logger.log("📋 Differences:");
+        this.loggerService.log("📋 Differences:");
         this.showDifference(sourceScopes, settingsScopes, "settings.json");
-        this.logger.log("");
+        this.loggerService.log("");
       }
       if (valuesMatch && !orderMatches) {
-        this.logger.log(
+        this.loggerService.log(
           "🔀 Scopes have matching values but different ordering\n",
         );
       }

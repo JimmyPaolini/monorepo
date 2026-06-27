@@ -29,9 +29,9 @@ import type { DevcontainerConfiguration } from "./devcontainer-configuration.typ
 export class DevcontainerConfigurationCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(private readonly loggerService: LoggerService) {
     super();
-    this.logger.setContext(DevcontainerConfigurationCommand.name);
+    this.loggerService.setContext(DevcontainerConfigurationCommand.name);
   }
 
   // 🔏 Private Methods
@@ -75,14 +75,14 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       return true;
     }
 
-    this.logger.log(
+    this.loggerService.log(
       `❌ ${relativeFilePath} has common fields out of sync with local config\n`,
     );
 
     this.reportDifferences(expectedConfigCopy, currentConfig);
 
-    this.logger.log("");
-    this.logger.log(
+    this.loggerService.log("");
+    this.loggerService.log(
       `  Run: nx run synchronization:devcontainer-configuration:write`,
     );
     return false;
@@ -132,9 +132,13 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     for (const key of allFieldKeys) {
       if (DEVCONTAINER_CLOUD_ONLY_KEYS.has(key)) continue;
       if (!_.isEqual(expectedFields[key], currentFields[key])) {
-        this.logger.log(`  Field '${key}' differs:`);
-        this.logger.log(`    Expected: ${JSON.stringify(expectedFields[key])}`);
-        this.logger.log(`    Got:      ${JSON.stringify(currentFields[key])}`);
+        this.loggerService.log(`  Field '${key}' differs:`);
+        this.loggerService.log(
+          `    Expected: ${JSON.stringify(expectedFields[key])}`,
+        );
+        this.loggerService.log(
+          `    Got:      ${JSON.stringify(currentFields[key])}`,
+        );
       }
     }
   }
@@ -187,7 +191,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       `${JSON.stringify(mergedConfig, null, 2)}\n`,
       "utf8",
     );
-    this.logger.log(`✅ Updated: ${relativeFilePath}`);
+    this.loggerService.log(`✅ Updated: ${relativeFilePath}`);
   }
 
   // 🌎 Public Methods
@@ -221,15 +225,17 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
     if (mode === "check") {
       if (!this.check(mergedConfig, cloudConfigFile)) process.exit(1);
-      this.logger.log(
+      this.loggerService.log(
         "✅ Cloud devcontainer config is in sync with local config",
       );
     } else if (mode === "write") {
       this.write(mergedConfig, cloudConfigFile);
-      this.logger.log("✅ Cloud devcontainer config updated from local config");
+      this.loggerService.log(
+        "✅ Cloud devcontainer config updated from local config",
+      );
     } else {
-      this.logger.error(`❌ Invalid mode: ${mode}`);
-      this.logger.error(
+      this.loggerService.error(`❌ Invalid mode: ${mode}`);
+      this.loggerService.error(
         "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
       );
       process.exit(1);

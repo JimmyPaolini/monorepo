@@ -29,12 +29,12 @@ export class ConventionalConfigService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly constants: ConventionalConfigConstantsService,
-    private readonly io: ConventionalConfigIoService,
-    private readonly logger: LoggerService,
-    private readonly validators: ConventionalConfigValidatorsService,
+    private readonly conventionalConfigConstantsService: ConventionalConfigConstantsService,
+    private readonly conventionalConfigIoService: ConventionalConfigIoService,
+    private readonly loggerService: LoggerService,
+    private readonly conventionalConfigValidatorsService: ConventionalConfigValidatorsService,
   ) {
-    this.logger.setContext(ConventionalConfigService.name);
+    this.loggerService.setContext(ConventionalConfigService.name);
   }
 
   // 🔐 Private Fields
@@ -46,7 +46,7 @@ export class ConventionalConfigService {
   /** Loads release.config.cjs as a CommonJS module. */
   private loadReleaseConfig(): ReleaseConfig {
     return this.requireFromCurrentModule(
-      this.constants.releaseConfigFile,
+      this.conventionalConfigConstantsService.releaseConfigFile,
     ) as ReleaseConfig;
   }
 
@@ -62,18 +62,18 @@ export class ConventionalConfigService {
     );
     const missingFromReleaseRules = _.difference(
       releaseRulesCheckTypes,
-      this.io.getReleaseRulesTypes(releaseConfig),
+      this.conventionalConfigIoService.getReleaseRulesTypes(releaseConfig),
     );
     const missingFromPresetTypes = _.difference(
       typeNames,
-      this.io.getPresetConfigTypes(releaseConfig),
+      this.conventionalConfigIoService.getPresetConfigTypes(releaseConfig),
     );
 
     if (
       missingFromReleaseRules.length > 0 ||
       missingFromPresetTypes.length > 0
     ) {
-      this.io.writeReleaseConfigSync(sourceTypes);
+      this.conventionalConfigIoService.writeReleaseConfigSync(sourceTypes);
     }
   }
 
@@ -84,29 +84,34 @@ export class ConventionalConfigService {
    */
   handleCheckMode(context: SyncContext): void {
     const { config, scopeNames, settingsScopes, typeNames } = context;
-    const settingsOk = this.validators.checkSettingsSync(
-      scopeNames,
-      settingsScopes,
-    );
-    const skillsOk = this.validators.checkAllSkillsSync(
-      config,
-      this.constants.skillFiles,
-    );
-    const templatesOk = this.validators.checkAllTemplatesSync(
-      scopeNames,
-      this.constants.issueTemplateFiles,
-    );
+    const settingsOk =
+      this.conventionalConfigValidatorsService.checkSettingsSync(
+        scopeNames,
+        settingsScopes,
+      );
+    const skillsOk =
+      this.conventionalConfigValidatorsService.checkAllSkillsSync(
+        config,
+        this.conventionalConfigConstantsService.skillFiles,
+      );
+    const templatesOk =
+      this.conventionalConfigValidatorsService.checkAllTemplatesSync(
+        scopeNames,
+        this.conventionalConfigConstantsService.issueTemplateFiles,
+      );
     const releaseConfig = this.loadReleaseConfig();
-    const releaseRulesOk = this.validators.checkReleaseRulesSync(
-      typeNames,
-      this.io.getReleaseRulesTypes(releaseConfig),
-      "release.config.cjs",
-    );
-    const presetOk = this.validators.checkPresetConfigSync(
-      typeNames,
-      this.io.getPresetConfigTypes(releaseConfig),
-      "release.config.cjs",
-    );
+    const releaseRulesOk =
+      this.conventionalConfigValidatorsService.checkReleaseRulesSync(
+        typeNames,
+        this.conventionalConfigIoService.getReleaseRulesTypes(releaseConfig),
+        "release.config.cjs",
+      );
+    const presetOk =
+      this.conventionalConfigValidatorsService.checkPresetConfigSync(
+        typeNames,
+        this.conventionalConfigIoService.getPresetConfigTypes(releaseConfig),
+        "release.config.cjs",
+      );
     if (
       !settingsOk ||
       !skillsOk ||
@@ -114,12 +119,12 @@ export class ConventionalConfigService {
       !releaseRulesOk ||
       !presetOk
     ) {
-      this.logger.log(
+      this.loggerService.log(
         "💡 Run 'nx run synchronization:conventional-config:write' to sync",
       );
       process.exit(1);
     }
-    this.logger.log("✅ Conventional commit config is in sync");
+    this.loggerService.log("✅ Conventional commit config is in sync");
   }
 
   /**
@@ -127,35 +132,48 @@ export class ConventionalConfigService {
    */
   handleWriteMode(context: SyncContext): void {
     const { config, scopeNames, settingsScopes, typeNames } = context;
-    const settingsOk = this.validators.checkSettingsSync(
-      scopeNames,
-      settingsScopes,
-    );
-    const outOfSyncSkills = this.constants.skillFiles.filter(
-      (skillFile) => !this.validators.checkSkillSync(config, skillFile),
-    );
-    const outOfSyncTemplates = this.constants.issueTemplateFiles.filter(
-      (templateFile) =>
-        !this.validators.checkIssueTemplateSync(scopeNames, templateFile),
-    );
+    const settingsOk =
+      this.conventionalConfigValidatorsService.checkSettingsSync(
+        scopeNames,
+        settingsScopes,
+      );
+    const outOfSyncSkills =
+      this.conventionalConfigConstantsService.skillFiles.filter(
+        (skillFile) =>
+          !this.conventionalConfigValidatorsService.checkSkillSync(
+            config,
+            skillFile,
+          ),
+      );
+    const outOfSyncTemplates =
+      this.conventionalConfigConstantsService.issueTemplateFiles.filter(
+        (templateFile) =>
+          !this.conventionalConfigValidatorsService.checkIssueTemplateSync(
+            scopeNames,
+            templateFile,
+          ),
+      );
 
     if (
       settingsOk &&
       outOfSyncSkills.length === 0 &&
       outOfSyncTemplates.length === 0
     ) {
-      this.logger.log("✅ Already in sync");
+      this.loggerService.log("✅ Already in sync");
       return;
     }
 
     if (!settingsOk) {
-      this.io.writeSettingsSync(config.scopes);
+      this.conventionalConfigIoService.writeSettingsSync(config.scopes);
     }
     for (const skillFile of outOfSyncSkills) {
-      this.io.writeSkillSync(config, skillFile);
+      this.conventionalConfigIoService.writeSkillSync(config, skillFile);
     }
     for (const templateFile of outOfSyncTemplates) {
-      this.io.writeIssueTemplateSync(scopeNames, templateFile);
+      this.conventionalConfigIoService.writeIssueTemplateSync(
+        scopeNames,
+        templateFile,
+      );
     }
     this.syncReleaseConfigIfNeeded({ sourceTypes: config.types, typeNames });
   }
@@ -165,7 +183,7 @@ export class ConventionalConfigService {
    */
   loadConventionalConfig(): ConventionalConfig {
     return this.requireFromCurrentModule(
-      this.constants.conventionalConfigFile,
+      this.conventionalConfigConstantsService.conventionalConfigFile,
     ) as ConventionalConfig;
   }
 
@@ -177,8 +195,11 @@ export class ConventionalConfigService {
     const context: SyncContext = {
       config,
       scopeNames: config.scopes.map((scope) => scope.name),
-      settingsScopes: this.io.parseSettingsScopes(
-        readFileSync(this.constants.settingsFile, "utf8"),
+      settingsScopes: this.conventionalConfigIoService.parseSettingsScopes(
+        readFileSync(
+          this.conventionalConfigConstantsService.settingsFile,
+          "utf8",
+        ),
       ),
       typeNames: config.types.map((type) => type.name),
     };
@@ -188,8 +209,8 @@ export class ConventionalConfigService {
     } else if (mode === "write") {
       this.handleWriteMode(context);
     } else {
-      this.logger.error(`❌ Invalid mode: ${mode}`);
-      this.logger.error(
+      this.loggerService.error(`❌ Invalid mode: ${mode}`);
+      this.loggerService.error(
         "💡 Usage: nx run synchronization:conventional-config [check|write]",
       );
       process.exit(1);

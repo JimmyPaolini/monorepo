@@ -27,11 +27,11 @@ export class SynchronizationCommand extends CommandRunner {
     private readonly conformanceGeneratorsCommand: ConformanceGeneratorsCommand,
     private readonly conventionalConfigCommand: ConventionalConfigCommand,
     private readonly devcontainerConfigurationCommand: DevcontainerConfigurationCommand,
-    private readonly logger: LoggerService,
+    private readonly loggerService: LoggerService,
     private readonly pullRequestTemplateCommand: PullRequestTemplateCommand,
   ) {
     super();
-    this.logger.setContext(SynchronizationCommand.name);
+    this.loggerService.setContext(SynchronizationCommand.name);
   }
 
   // 🔏 Private Methods
@@ -47,8 +47,8 @@ export class SynchronizationCommand extends CommandRunner {
       return mode;
     }
 
-    this.logger.error(`❌ Invalid mode: ${mode}`);
-    this.logger.error("💡 Usage: synchronization [check|write]");
+    this.loggerService.error(`❌ Invalid mode: ${mode}`);
+    this.loggerService.error("💡 Usage: synchronization [check|write]");
     throw new TypeError(`Invalid synchronization mode: ${mode}`);
   }
 
@@ -97,15 +97,15 @@ export class SynchronizationCommand extends CommandRunner {
   ): Promise<void> {
     const mode = this.getMode(passedParameters);
     const tasks = this.getTasks();
-    this.logger.log(
+    this.loggerService.log(
       `🔄 Running ${tasks.length} synchronization commands in ${mode} mode`,
     );
 
     for (const task of tasks) {
-      this.logger.log(`➡️ Running ${task.commandName}...`);
+      this.loggerService.log(`➡️ Running ${task.commandName}...`);
       await task.runCommand(mode);
     }
 
-    this.logger.log("✅ Synchronization suite completed");
+    this.loggerService.log("✅ Synchronization suite completed");
   }
 }
