@@ -1,3 +1,4 @@
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -16,6 +17,7 @@ export class QuadrupleAspectsComposerService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly compoundPhaseService: CompoundPhaseService,
     private readonly quadrupleAspectsBaseService: QuadrupleAspectsBaseService,
   ) {}
 
@@ -269,7 +271,7 @@ export class QuadrupleAspectsComposerService {
   }): Event | null {
     const { bodyList, current, minute, opp1, opp2, previous } = args;
     const result =
-      this.quadrupleAspectsBaseService.determineCompoundPhaseFromSnapshots({
+      this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.quadrupleAspectsBaseService.checkGrandCrossPattern({
             bodyList,
@@ -322,7 +324,7 @@ export class QuadrupleAspectsComposerService {
       previous,
     } = args;
     const result =
-      this.quadrupleAspectsBaseService.determineCompoundPhaseFromSnapshots({
+      this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.quadrupleAspectsBaseService.checkKitePattern({
             baseBody,

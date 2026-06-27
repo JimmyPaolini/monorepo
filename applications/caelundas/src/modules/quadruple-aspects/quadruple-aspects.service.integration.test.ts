@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
@@ -19,10 +22,16 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * in only current or only previous, so phase detection fires exactly once.
  */
 
-const quadrupleAspectsBaseService = new QuadrupleAspectsBaseService();
+const quadrupleAspectsBaseService = new QuadrupleAspectsBaseService(
+  new AspectGraphService(),
+  new AspectPhaseEmojiService(),
+);
 const service = new QuadrupleAspectsService(
   quadrupleAspectsBaseService,
-  new QuadrupleAspectsComposerService(quadrupleAspectsBaseService),
+  new QuadrupleAspectsComposerService(
+    new CompoundPhaseService(),
+    quadrupleAspectsBaseService,
+  ),
 );
 
 describe("quadruple-aspects.events integration", () => {

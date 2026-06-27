@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -58,6 +58,17 @@ describe(PerseusCommand, () => {
     appendFileMock.mockResolvedValue(undefined);
     mkdirMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
+    (command as unknown as { errorLogFilePath: string }).errorLogFilePath =
+      "/tmp/perseus-errors.log";
   });
 
   it("is defined", () => {
@@ -336,10 +347,15 @@ describe(PerseusCommand, () => {
       process.chdir(temporaryDirectory);
 
       const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
+      logger.createTimestampedOutputLogFilePath.mockReturnValue(
+        "/tmp/perseus-errors.log",
+      );
       const newCommand = new PerseusCommand(logger);
 
       expect(newCommand).toBeDefined();
-      expect(existsSync(path.join(temporaryDirectory, "output"))).toBe(true);
+      expect(logger.createTimestampedOutputLogFilePath).toHaveBeenCalledWith(
+        "perseus",
+      );
     } finally {
       process.chdir(previousWorkingDirectory);
       rmSync(temporaryDirectory, { force: true, recursive: true });

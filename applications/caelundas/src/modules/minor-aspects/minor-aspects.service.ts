@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as minorAspectBodies,
   minorAspects,
@@ -105,13 +105,10 @@ export class MinorAspectsService {
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
-    return this.detectAspectPhase({
-      currentLongitudeBody1: body1LongitudesWindow.current,
-      currentLongitudeBody2: body2LongitudesWindow.current,
-      nextLongitudeBody1: body1LongitudesWindow.next,
-      nextLongitudeBody2: body2LongitudesWindow.next,
-      previousLongitudeBody1: body1LongitudesWindow.previous,
-      previousLongitudeBody2: body2LongitudesWindow.previous,
+    return AspectsUtilities.detectPhaseFromWindows({
+      body1LongitudesWindow,
+      body2LongitudesWindow,
+      detectAspectPhase: this.detectAspectPhase,
     });
   }
 
@@ -171,32 +168,12 @@ export class MinorAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    const { coordinateEphemerisByBody, minute } = args;
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-    const minorAspectEvents: Event[] = [];
-
-    for (const body1 of minorAspectBodies) {
-      const index = minorAspectBodies.indexOf(body1);
-      for (const body2 of minorAspectBodies.slice(index + 1)) {
-        if (body1 === body2) {
-          continue;
-        }
-        const event = this.detectBodyPairAspect({
-          body1,
-          body2,
-          coordinateEphemerisByBody,
-          minute,
-          nextMinute,
-          previousMinute,
-        });
-        if (event) {
-          minorAspectEvents.push(event);
-        }
-      }
-    }
-
-    return minorAspectEvents;
+    return AspectsUtilities.scanUniqueBodyPairsAtMinute({
+      bodies: minorAspectBodies,
+      coordinateEphemerisByBody: args.coordinateEphemerisByBody,
+      detect: (argumentsObject) => this.detectBodyPairAspect(argumentsObject),
+      minute: args.minute,
+    });
   }
 
   /**

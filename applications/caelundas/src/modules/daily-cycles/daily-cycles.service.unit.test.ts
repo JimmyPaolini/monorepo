@@ -1,8 +1,9 @@
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DailyCyclesBuilderService } from "./daily-cycles-builder.service";
@@ -29,6 +30,37 @@ describe(DailyCyclesService, () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        {
+          provide: CalendarService,
+          useValue: {
+            buildInstantEvent: (args: {
+              categories: string[];
+              date: Moment;
+              description: string;
+              logger: { log: (message: string) => void };
+              summary: string;
+              timezone: string;
+            }) => {
+              const {
+                categories,
+                date,
+                description,
+                logger,
+                summary,
+                timezone,
+              } = args;
+              const dateString = date.clone().tz(timezone).toISOString(true);
+              logger.log(`${summary} at ${dateString}`);
+              return {
+                categories,
+                description,
+                end: date,
+                start: date,
+                summary,
+              };
+            },
+          },
+        },
         DailyCyclesBuilderService,
         DailyCyclesService,
         EphemerisService,

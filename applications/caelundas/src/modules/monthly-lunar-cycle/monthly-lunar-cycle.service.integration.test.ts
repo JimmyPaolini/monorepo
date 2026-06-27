@@ -1,7 +1,9 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -65,6 +67,11 @@ describe("monthly-lunar-cycle.events integration", () => {
     const module = await Test.createTestingModule({
       providers: [
         MonthlyLunarCycleService,
+        CalendarService,
+        {
+          provide: ConfigService,
+          useValue: { get: vi.fn() },
+        },
         EphemerisService,
         LoggerService,
         MathService,

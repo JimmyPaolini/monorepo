@@ -1,4 +1,7 @@
-import mustache from "mustache";
+import {
+  prepareConformanceTexts,
+  type TemplateConformanceArguments,
+} from "../common";
 
 import type { ConformanceError } from "../types";
 
@@ -7,16 +10,14 @@ import type { ConformanceError } from "../types";
  * preserving duplicate-line counts.
  */
 export function validateTextConformance(args: {
-  data: Record<string, unknown>;
-  filename: string;
-  instance: string;
-  template: string;
+  data: TemplateConformanceArguments["data"];
+  filename: TemplateConformanceArguments["filename"];
+  instance: TemplateConformanceArguments["instance"];
+  template: TemplateConformanceArguments["template"];
 }): {
   errors: ConformanceError[];
 } {
-  const { data, instance, template } = args;
-
-  const renderedTemplate = mustache.render(template, data);
+  const { instance, renderedTemplate } = prepareConformanceTexts(args);
   const instanceLineCounts = buildLineCounts(instance);
 
   const errors: ConformanceError[] = [];

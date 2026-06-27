@@ -55,40 +55,44 @@ describe(LatinLibraryCommand, () => {
     vi.unstubAllGlobals();
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
+    (command as unknown as { errorLogFilePath: string }).errorLogFilePath =
+      "/tmp/latin-library-errors.log";
   });
 
   describe("constructor bootstrap", () => {
     afterEach(() => {
       vi.resetModules();
-      vi.doUnmock("node:fs");
     });
 
     it("creates the output directory when it does not exist", async () => {
       vi.resetModules();
-
-      const existsSync = vi.fn<() => boolean>(() => false);
-      const mkdirSync = vi.fn<() => void>();
-
-      vi.doMock("node:fs", () => ({
-        existsSync,
-        mkdirSync,
-      }));
 
       const { LatinLibraryCommand: LatinLibraryCommandForBootstrap } =
         await import("./latin-library.command");
 
       const bootstrapLogger: DeepMocked<LoggerService> =
         createMock<LoggerService>();
+      bootstrapLogger.createTimestampedOutputLogFilePath.mockReturnValue(
+        "/tmp/latin-library-errors.log",
+      );
 
       const bootstrapCommand = new LatinLibraryCommandForBootstrap(
         bootstrapLogger,
       );
 
       expect(bootstrapCommand).toBeDefined();
-      expect(existsSync).toHaveBeenCalledTimes(1);
-      expect(mkdirSync).toHaveBeenCalledWith(expect.any(String), {
-        recursive: true,
-      });
+      expect(
+        bootstrapLogger.createTimestampedOutputLogFilePath,
+      ).toHaveBeenCalledWith("latin-library");
     });
   });
 

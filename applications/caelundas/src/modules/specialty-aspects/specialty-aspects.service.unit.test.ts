@@ -1,9 +1,10 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { SpecialtyAspectsEventService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-event.service";
 import { SpecialtyAspectsProgressiveService } from "@caelundas/src/modules/specialty-aspects/specialty-aspects-progressive.service";
@@ -34,9 +35,10 @@ describe(SpecialtyAspectsService, () => {
         SpecialtyAspectsEventService,
         SpecialtyAspectsProgressiveService,
         AspectsUtilities,
-        SimpleAspectsEventService,
+        AspectEventFormattingService,
         EphemerisService,
         MathService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();

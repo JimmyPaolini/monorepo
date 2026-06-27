@@ -140,6 +140,17 @@
     },
     "fallow": {
       "cache": true,
+      "configurations": {
+        "json": {
+          "command": "fallow --config configuration/fallow.config.jsonc --format=json"
+        },
+        "markdown": {
+          "command": "fallow --config configuration/fallow.config.jsonc --format=markdown"
+        },
+        "pr-comment-github": {
+          "command": "fallow --config configuration/fallow.config.jsonc --format=pr-comment-github"
+        }
+      },
       "description": "Run all fallow static analyses (dead-code, duplicates, health) in advisory mode",
       "executor": "nx:run-commands",
       "inputs": [
@@ -148,12 +159,23 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "fallow --config configuration/fallow.config.jsonc || true",
+        "command": "fallow --config configuration/fallow.config.jsonc",
         "cwd": "{workspaceRoot}"
       }
     },
     "fallow-audit": {
       "cache": false,
+      "configurations": {
+        "json": {
+          "command": "fallow audit --config configuration/fallow.config.jsonc --format=json"
+        },
+        "markdown": {
+          "command": "fallow audit --config configuration/fallow.config.jsonc --format=markdown"
+        },
+        "pr-comment-github": {
+          "command": "fallow audit --config configuration/fallow.config.jsonc --format=pr-comment-github"
+        }
+      },
       "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
       "executor": "nx:run-commands",
       "inputs": [
@@ -168,6 +190,17 @@
     },
     "fallow-dead-code": {
       "cache": true,
+      "configurations": {
+        "json": {
+          "command": "fallow dead-code --config configuration/fallow.config.jsonc --format=json"
+        },
+        "markdown": {
+          "command": "fallow dead-code --config configuration/fallow.config.jsonc --format=markdown"
+        },
+        "pr-comment-github": {
+          "command": "fallow dead-code --config configuration/fallow.config.jsonc --format=pr-comment-github"
+        }
+      },
       "description": "Fallow dead-code analysis (unused files, exports, deps, circular deps) — advisory",
       "executor": "nx:run-commands",
       "inputs": [
@@ -182,6 +215,17 @@
     },
     "fallow-duplicates": {
       "cache": true,
+      "configurations": {
+        "json": {
+          "command": "fallow dupes --config configuration/fallow.config.jsonc --format=json"
+        },
+        "markdown": {
+          "command": "fallow dupes --config configuration/fallow.config.jsonc --format=markdown"
+        },
+        "pr-comment-github": {
+          "command": "fallow dupes --config configuration/fallow.config.jsonc --format=pr-comment-github"
+        }
+      },
       "description": "Fallow strict duplication analysis (config-driven) with threshold gating",
       "executor": "nx:run-commands",
       "inputs": [
@@ -218,6 +262,17 @@
     },
     "fallow-health": {
       "cache": true,
+      "configurations": {
+        "json": {
+          "command": "fallow health --config configuration/fallow.config.jsonc --format=json || true"
+        },
+        "markdown": {
+          "command": "fallow health --config configuration/fallow.config.jsonc --format=markdown || true"
+        },
+        "pr-comment-github": {
+          "command": "fallow health --config configuration/fallow.config.jsonc --format=pr-comment-github || true"
+        }
+      },
       "description": "Fallow code health analysis (complexity, hotspots, maintainability) — advisory",
       "executor": "nx:run-commands",
       "inputs": [

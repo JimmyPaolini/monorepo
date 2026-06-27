@@ -1,3 +1,4 @@
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -14,6 +15,7 @@ describe(DailyCyclesBuilderService, () => {
     const module = await Test.createTestingModule({
       providers: [
         DailyCyclesBuilderService,
+        { provide: CalendarService, useValue: createMock<CalendarService>() },
         { provide: LoggerService, useValue: createMock<LoggerService>() },
         { provide: EphemerisService, useValue: createMock<EphemerisService>() },
       ],

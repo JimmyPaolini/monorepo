@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -17,6 +20,9 @@ describe(TripleAspectsService, () => {
     const module = await Test.createTestingModule({
       providers: [
         LoggerService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
+        CompoundPhaseService,
         TripleAspectsComposerService,
         TripleAspectsDetectorService,
         TripleAspectsService,

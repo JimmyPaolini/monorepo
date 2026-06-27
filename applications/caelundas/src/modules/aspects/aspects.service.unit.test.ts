@@ -21,6 +21,7 @@ import { EphemerisService } from "../ephemeris/ephemeris.service";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
 import { MathService } from "../math/math.service";
 import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
+import { ProgressiveAspectService } from "../progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "../progressive/progressive-utilities.service";
 import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
 import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
@@ -29,14 +30,19 @@ import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.
 import { StelliumService } from "../stellium/stellium.service";
 import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
 
+import { AspectEphemerisService } from "./aspect-ephemeris.service";
+import { AspectEventFormattingService } from "./aspect-event-formatting.service";
+import { AspectGraphService } from "./aspect-graph.service";
+import { AspectPhaseEmojiService } from "./aspect-phase-emoji.service";
+import { AspectsUtilities } from "./aspects-utilities.service";
 import {
   COMPOSITE_ASPECT_DETECTORS_TOKEN,
   PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
   SIMPLE_ASPECT_DETECTORS_TOKEN,
 } from "./aspects.constants";
 import { AspectsService } from "./aspects.service";
-import { AspectsUtilities } from "./aspects.utilities";
-import { SimpleAspectsEventService } from "./simple-aspects-event.service";
+import { CompoundPhaseService } from "./compound-phase.service";
+import { ProgressiveCompoundEventService } from "./progressive-compound-event.service";
 
 import type {
   CompositeAspectDetector,
@@ -56,6 +62,11 @@ describe(AspectsService, () => {
         LoggerService,
         AspectsService,
         AspectsUtilities,
+        AspectEphemerisService,
+        AspectEventFormattingService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
+        CompoundPhaseService,
         EphemerisService,
         MajorAspectsService,
         MajorAspectEventService,
@@ -65,7 +76,8 @@ describe(AspectsService, () => {
         MinorAspectsComposerService,
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
-        SimpleAspectsEventService,
+        ProgressiveCompoundEventService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
         QuadrupleAspectsService,
         QuadrupleAspectsBaseService,

@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -22,13 +21,8 @@ export class PerseusCommand extends CommandRunner {
     super();
     this.logger.setContext(PerseusCommand.name);
 
-    const outputDirectory = path.join(process.cwd(), "output");
-    if (!existsSync(outputDirectory))
-      mkdirSync(outputDirectory, { recursive: true });
-    this.errorLogFilePath = path.join(
-      outputDirectory,
-      `perseus-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
+    this.errorLogFilePath =
+      this.logger.createTimestampedOutputLogFilePath("perseus");
   }
 
   // 🔐 Private Fields
@@ -49,13 +43,9 @@ export class PerseusCommand extends CommandRunner {
     xmlPath: string,
     error: unknown,
   ): Promise<void> {
-    const errorMessage =
-      error instanceof Error ? error.stack || error.message : String(error);
+    const { logLine } = this.logger.buildErrorLogEntry(xmlPath, error);
     this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
-    await fs.appendFile(
-      this.errorLogFilePath,
-      `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
-    );
+    await fs.appendFile(this.errorLogFilePath, logLine);
   }
 
   /**

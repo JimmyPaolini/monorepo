@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { majorAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,

@@ -1,3 +1,4 @@
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
@@ -14,6 +15,7 @@ export class DailyCyclesBuilderService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly calendarService: CalendarService,
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
   ) {
@@ -60,17 +62,14 @@ export class DailyCyclesBuilderService {
     const description = "Lunar Nadir";
     const summary = `🌙 ⏬ ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const lunarNadirEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.lunarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return lunarNadirEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -94,17 +93,14 @@ export class DailyCyclesBuilderService {
     const description = "Lunar Zenith";
     const summary = `🌙 ⏫ ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const lunarZenithEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.lunarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return lunarZenithEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -128,17 +124,14 @@ export class DailyCyclesBuilderService {
     const description = "Moonrise";
     const summary = `🌙 🔼 ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const moonriseEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.lunarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return moonriseEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -162,17 +155,14 @@ export class DailyCyclesBuilderService {
     const description = "Moonset";
     const summary = `🌙 🔽 ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const moonsetEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.lunarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return moonsetEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -208,17 +198,14 @@ export class DailyCyclesBuilderService {
     const description = "Solar Nadir";
     const summary = `☀️ ⏬ ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const solarNadirEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.solarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return solarNadirEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -253,17 +240,14 @@ export class DailyCyclesBuilderService {
     const description = "Solar Zenith";
     const summary = `☀️ ⏫ ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const solarZenithEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.solarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return solarZenithEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -296,17 +280,14 @@ export class DailyCyclesBuilderService {
     const description = "Sunrise";
     const summary = `☀️ 🔼 ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const sunriseEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.solarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return sunriseEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**
@@ -340,17 +321,14 @@ export class DailyCyclesBuilderService {
     const description = "Sunset";
     const summary = `☀️ 🔽 ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const sunsetEvent: Event = {
+    return this.calendarService.buildInstantEvent({
       categories: DailyCyclesBuilderService.solarCategories,
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return sunsetEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**

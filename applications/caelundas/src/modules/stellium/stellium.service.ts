@@ -1,12 +1,12 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { aspectBodies as stelliumBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
   symbolByStellium,
 } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import {
-  groupByToMap,
-  isKeyOf,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+import { isKeyOf } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -29,7 +29,11 @@ import type { Moment } from "moment-timezone";
 export class StelliumService {
   // 🏗 Dependency Injection
 
-  constructor() {}
+  constructor(
+    private readonly aspectGraphService: AspectGraphService,
+    private readonly compoundPhaseService: CompoundPhaseService,
+    private readonly progressiveCompoundEventService: ProgressiveCompoundEventService,
+  ) {}
 
   // 🔐 Private Fields
 
@@ -117,18 +121,11 @@ export class StelliumService {
     forming: Event,
     dissolving: Event,
   ): Event {
-    return {
-      categories: forming.categories.filter(
-        (c) => c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
-      ),
-      description: forming.description.replace(
-        / (forming|exact|dissolving)$/i,
-        "",
-      ),
-      end: dissolving.start,
-      start: forming.start,
-      summary: forming.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
-    };
+    return this.progressiveCompoundEventService.buildProgressiveCompoundEvent({
+      descriptionCaseInsensitive: true,
+      dissolving,
+      forming,
+    });
   }
 
   /**
@@ -165,13 +162,14 @@ export class StelliumService {
     for (const cluster of this.buildConjunctionClusters(conjunctions)) {
       const bodies = [...cluster];
       if (!this.allPairsConjunct(bodies, unionEdges)) continue;
-      const result = this.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) => this.allPairsConjunct(bodies, edges),
-        currentAspectBodies,
-        currentMinute: minute,
-        patternBodies: bodies,
-        previousAspectBodies,
-      });
+      const result =
+        this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) => this.allPairsConjunct(bodies, edges),
+          currentAspectBodies,
+          currentMinute: minute,
+          patternBodies: bodies,
+          previousAspectBodies,
+        });
       if (result)
         events.push(
           this.createStelliumEvent({
@@ -222,48 +220,6 @@ export class StelliumService {
   }
 
   /**
-   * Handles determine compound phase from snapshots.
-   */
-  private determineCompoundPhaseFromSnapshots(args: {
-    checkPatternExists: (edges: AspectBodies[]) => boolean;
-    currentAspectBodies: AspectBodies[];
-    currentMinute: Moment;
-    patternBodies: Body[];
-    previousAspectBodies: AspectBodies[];
-  }): null | { eventMinute: Moment; phase: AspectPhase } {
-    const {
-      checkPatternExists,
-      currentAspectBodies,
-      currentMinute,
-      patternBodies,
-      previousAspectBodies,
-    } = args;
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
-      );
-
-    const currentExists = checkPatternExists(
-      filterByBodies(currentAspectBodies),
-    );
-    const previousExists = checkPatternExists(
-      filterByBodies(previousAspectBodies),
-    );
-
-    if (currentExists && !previousExists) {
-      return { eventMinute: currentMinute, phase: "forming" };
-    }
-    if (!currentExists && previousExists) {
-      return {
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-        phase: "dissolving",
-      };
-    }
-    return null;
-  }
-
-  /**
    * Derives neighbor.
    */
   private getNeighbor(edge: AspectBodies, current: Body): Body | null {
@@ -278,7 +234,7 @@ export class StelliumService {
   private groupAspectsByType<T extends AspectBodies>(
     edges: T[],
   ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
+    return this.aspectGraphService.groupAspectsByType(edges);
   }
 
   /**
@@ -290,13 +246,7 @@ export class StelliumService {
     body2: Body;
     edges: AspectBodies[];
   }): boolean {
-    const { aspectType, body1, body2, edges } = args;
-    return edges.some(
-      (edge) =>
-        edge.aspect === aspectType &&
-        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-    );
+    return this.aspectGraphService.haveAspect(args);
   }
 
   /**

@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -9,21 +12,21 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(StelliumService, () => {
   let service: StelliumService;
+  let compoundPhaseService: CompoundPhaseService;
   let privateService: {
-    determineCompoundPhaseFromSnapshots: (args: {
-      checkPatternExists: (edges: AspectBodies[]) => boolean;
-      currentAspectBodies: AspectBodies[];
-      currentMinute: unknown;
-      patternBodies: ("moon" | "sun")[];
-      previousAspectBodies: AspectBodies[];
-    }) => null | { eventMinute: { toISOString: () => string }; phase: string };
     phaseEmojiFor: (phase: "dissolving" | "forming" | "perfective") => string;
   };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [StelliumService],
+      providers: [
+        AspectGraphService,
+        CompoundPhaseService,
+        ProgressiveCompoundEventService,
+        StelliumService,
+      ],
     }).compile();
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     service = await module.resolve(StelliumService);
     privateService = service as unknown as typeof privateService;
   });
@@ -772,7 +775,7 @@ describe(StelliumService, () => {
 
   it("derives dissolving phase timestamp from previous-minute pattern", () => {
     const minute = moment.utc("2024-03-21T12:00:00.000Z");
-    const result = privateService.determineCompoundPhaseFromSnapshots({
+    const result = compoundPhaseService.determineCompoundPhaseFromSnapshots({
       checkPatternExists: (edges) => edges.length > 0,
       currentAspectBodies: [],
       currentMinute: minute,

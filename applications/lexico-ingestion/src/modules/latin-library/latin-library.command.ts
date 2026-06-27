@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -24,13 +23,8 @@ export class LatinLibraryCommand extends CommandRunner {
     super();
     this.logger.setContext(LatinLibraryCommand.name);
 
-    const outputDirectory = path.join(process.cwd(), "output");
-    if (!existsSync(outputDirectory))
-      mkdirSync(outputDirectory, { recursive: true });
-    this.errorLogFilePath = path.join(
-      outputDirectory,
-      `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
+    this.errorLogFilePath =
+      this.logger.createTimestampedOutputLogFilePath("latin-library");
   }
 
   // 🔐 Private Fields
@@ -362,13 +356,9 @@ export class LatinLibraryCommand extends CommandRunner {
         this.parseHtmlForLinks(html, baseUrl, enqueue);
       }
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(urlString, error);
       this.logger.error(`❌ Error processing ${urlString}: ${String(error)}`);
-      await fs.appendFile(
-        this.errorLogFilePath,
-        `[${new Date().toISOString()}] ${urlString}: ${errorMessage}\n`,
-      );
+      await fs.appendFile(this.errorLogFilePath, logLine);
     }
   }
 

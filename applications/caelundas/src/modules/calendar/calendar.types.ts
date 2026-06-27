@@ -25,6 +25,18 @@ export interface BuildCalendarFileContentParameters {
 }
 
 /**
+ * Arguments used to build and log an instantaneous event.
+ */
+export interface BuildInstantEventArguments {
+  categories: string[];
+  date: Moment;
+  description: string;
+  logger: { log: (message: string) => void };
+  summary: string;
+  timezone: string;
+}
+
+/**
  * Represents a calendar event with timing, description, and metadata.
  *
  * Defines the structure for astronomical events converted to VEVENT components in iCalendar.

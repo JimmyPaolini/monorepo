@@ -233,13 +233,9 @@ export class DictionaryCommand extends CommandRunner {
         total,
       });
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(file, error);
       this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
-      fs.appendFileSync(
-        this.errorLogFilePath,
-        `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
-      );
+      fs.appendFileSync(this.errorLogFilePath, logLine);
     }
   }
 

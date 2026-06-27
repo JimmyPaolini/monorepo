@@ -1,3 +1,4 @@
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -6,10 +7,7 @@ import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.serv
 
 import type { ComposeHexagramsArguments } from "./sextuple-aspects.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
-import type {
-  AspectPhase,
-  Body,
-} from "@caelundas/src/modules/caelundas/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
@@ -23,6 +21,7 @@ export class SextupleAspectsService {
   constructor(
     private readonly sextupleAspectsComposerService: SextupleAspectsComposerService,
     private readonly mathService: MathService,
+    private readonly compoundPhaseService: CompoundPhaseService,
   ) {}
 
   // 🔏 Private Methods
@@ -48,47 +47,6 @@ export class SextupleAspectsService {
     });
   }
 
-  /** Determines forming or dissolving phase by comparing pattern presence across minute snapshots. */
-  private determineCompoundPhaseFromSnapshots(args: {
-    checkPatternExists: (edges: AspectBodies[]) => boolean;
-    currentAspectBodies: AspectBodies[];
-    currentMinute: Moment;
-    patternBodies: Body[];
-    previousAspectBodies: AspectBodies[];
-  }): null | { eventMinute: Moment; phase: AspectPhase } {
-    const {
-      checkPatternExists,
-      currentAspectBodies,
-      currentMinute,
-      patternBodies,
-      previousAspectBodies,
-    } = args;
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
-      );
-
-    const currentFiltered = filterByBodies(currentAspectBodies);
-    const previousFiltered = filterByBodies(previousAspectBodies);
-
-    const currentExists = checkPatternExists(currentFiltered);
-    const previousExists = checkPatternExists(previousFiltered);
-
-    if (currentExists && !previousExists) {
-      return { eventMinute: currentMinute, phase: "forming" };
-    }
-
-    if (!currentExists && previousExists) {
-      return {
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-        phase: "dissolving",
-      };
-    }
-
-    return null;
-  }
-
   /** Evaluates candidate six-body sets and emits events for valid hexagram configurations. */
   private processHexagramCombinations(args: {
     combinations: Body[][];
@@ -112,17 +70,18 @@ export class SextupleAspectsService {
           unionEdges,
         );
       if (!hexagramBodies) continue;
-      const phaseTransition = this.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) =>
-          this.sextupleAspectsComposerService.findHexagramPattern(
-            hexagramBodies,
-            edges,
-          ) !== null,
-        currentAspectBodies,
-        currentMinute: minute,
-        patternBodies: hexagramBodies,
-        previousAspectBodies,
-      });
+      const phaseTransition =
+        this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) =>
+            this.sextupleAspectsComposerService.findHexagramPattern(
+              hexagramBodies,
+              edges,
+            ) !== null,
+          currentAspectBodies,
+          currentMinute: minute,
+          patternBodies: hexagramBodies,
+          previousAspectBodies,
+        });
       if (!phaseTransition) continue;
       const event = this.sextupleAspectsComposerService.buildHexagramEvent(
         hexagramBodies,

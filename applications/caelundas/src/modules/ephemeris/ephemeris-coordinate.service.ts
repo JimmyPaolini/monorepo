@@ -1,3 +1,4 @@
+import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import { calc, constants, nod_aps_ut } from "sweph";
 
@@ -26,7 +27,7 @@ export class EphemerisCoordinateService {
   constructor(
     private readonly ephemerisConstantsService: EphemerisConstantsService,
     private readonly time: EphemerisTimeService,
-    private readonly mathService: { normalizeDegrees: (deg: number) => number },
+    private readonly mathService: MathService,
   ) {}
 
   // 🌎 Public Methods

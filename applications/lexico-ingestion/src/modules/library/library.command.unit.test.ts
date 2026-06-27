@@ -96,6 +96,15 @@ describe(LibraryCommand, () => {
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     setPromptsMockResponse(promptsMock, { provider: "ALL" });
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
   });
 
   it("is defined", () => {

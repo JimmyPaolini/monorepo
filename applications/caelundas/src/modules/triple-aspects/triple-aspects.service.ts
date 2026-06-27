@@ -1,3 +1,4 @@
+import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -32,11 +33,15 @@ export class TripleAspectsService {
     aspectType: Aspect,
     edges: AspectBodies[],
   ): Body[] {
-    return TripleAspectsComposerService.findBodiesWithAspectTo(
-      body,
-      aspectType,
-      edges,
-    );
+    return edges
+      .filter(
+        (edge) =>
+          edge.aspect === aspectType &&
+          (edge.bodies[0] === body || edge.bodies[1] === body),
+      )
+      .map((edge) =>
+        edge.bodies[0] === body ? edge.bodies[1] : edge.bodies[0],
+      );
   }
 
   /**
@@ -45,7 +50,7 @@ export class TripleAspectsService {
   static groupAspectsByType<T extends AspectBodies>(
     edges: T[],
   ): Map<Aspect, T[]> {
-    return TripleAspectsDetectorService.groupAspectsByType(edges);
+    return groupByToMap(edges, (edge) => edge.aspect);
   }
 
   /**
@@ -57,7 +62,13 @@ export class TripleAspectsService {
     body2: Body;
     edges: AspectBodies[];
   }): boolean {
-    return TripleAspectsComposerService.haveAspect(args);
+    const { aspectType, body1, body2, edges } = args;
+    return edges.some(
+      (edge) =>
+        edge.aspect === aspectType &&
+        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+    );
   }
 
   /**

@@ -1,4 +1,5 @@
-import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -20,17 +21,10 @@ export class TripleAspectsDetectorService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly aspectGraphService: AspectGraphService,
+    private readonly compoundPhaseService: CompoundPhaseService,
     private readonly tripleAspectsComposerService: TripleAspectsComposerService,
   ) {}
-
-  /**
-   * Indexes aspect edges by aspect type for efficient pattern checks.
-   */
-  static groupAspectsByType<T extends AspectBodies>(
-    edges: T[],
-  ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
-  }
 
   /**
    * Handles check grand trine triplet.
@@ -59,7 +53,7 @@ export class TripleAspectsDetectorService {
     }
 
     const result =
-      TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+      this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.isGrandTrine({ body1, body2, body3, edges }),
         currentAspectBodies,
@@ -109,7 +103,7 @@ export class TripleAspectsDetectorService {
     }
 
     const result =
-      TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+      this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.isTSquare({ body1, body2, edges, focalBody }),
         currentAspectBodies,
@@ -160,7 +154,7 @@ export class TripleAspectsDetectorService {
     }
 
     const result =
-      TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+      this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
         checkPatternExists: (edges) =>
           this.isYod({ apexBody, body1, body2, edges }),
         currentAspectBodies,
@@ -213,6 +207,15 @@ export class TripleAspectsDetectorService {
   }
 
   /**
+   * Indexes aspect edges by aspect type for efficient pattern checks.
+   */
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return this.aspectGraphService.groupAspectsByType(edges);
+  }
+
+  /**
    * Determines whether grand trine.
    */
   private isGrandTrine(args: {
@@ -223,19 +226,19 @@ export class TripleAspectsDetectorService {
   }): boolean {
     const { body1, body2, body3, edges } = args;
     return (
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "trine",
         body1,
         body2,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "trine",
         body1,
         body2: body3,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "trine",
         body1: body2,
         body2: body3,
@@ -255,19 +258,19 @@ export class TripleAspectsDetectorService {
   }): boolean {
     const { body1, body2, edges, focalBody } = args;
     return (
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "opposite",
         body1,
         body2,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "square",
         body1,
         body2: focalBody,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "square",
         body1: body2,
         body2: focalBody,
@@ -287,19 +290,19 @@ export class TripleAspectsDetectorService {
   }): boolean {
     const { apexBody, body1, body2, edges } = args;
     return (
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "sextile",
         body1,
         body2,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "quincunx",
         body1,
         body2: apexBody,
         edges,
       }) &&
-      TripleAspectsComposerService.haveAspect({
+      this.tripleAspectsComposerService.haveAspect({
         aspectType: "quincunx",
         body1: body2,
         body2: apexBody,
@@ -318,10 +321,7 @@ export class TripleAspectsDetectorService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const trines =
-      TripleAspectsDetectorService.groupAspectsByType(unionEdges).get(
-        "trine",
-      ) || [];
+    const trines = this.groupAspectsByType(unionEdges).get("trine") || [];
 
     const bodiesInTrines = new Set<Body>();
     for (const trine of trines) {
@@ -362,8 +362,7 @@ export class TripleAspectsDetectorService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType =
-      TripleAspectsDetectorService.groupAspectsByType(unionEdges);
+    const aspectsByType = this.groupAspectsByType(unionEdges);
     const oppositions = aspectsByType.get("opposite") || [];
     const squares = aspectsByType.get("square") || [];
     const events: Event[] = [];
@@ -372,13 +371,13 @@ export class TripleAspectsDetectorService {
       const body1 = opposition.bodies[0];
       const body2 = opposition.bodies[1];
       const body1SquareBodies =
-        TripleAspectsComposerService.findBodiesWithAspectTo(
+        this.tripleAspectsComposerService.findBodiesWithAspectTo(
           body1,
           "square",
           squares,
         );
       const body2SquareBodies =
-        TripleAspectsComposerService.findBodiesWithAspectTo(
+        this.tripleAspectsComposerService.findBodiesWithAspectTo(
           body2,
           "square",
           squares,
@@ -416,8 +415,7 @@ export class TripleAspectsDetectorService {
   }): Event[] {
     const { currentAspectBodies, minute, previousAspectBodies } = args;
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType =
-      TripleAspectsDetectorService.groupAspectsByType(unionEdges);
+    const aspectsByType = this.groupAspectsByType(unionEdges);
     const sextiles = aspectsByType.get("sextile") || [];
     const quincunxes = aspectsByType.get("quincunx") || [];
     const events: Event[] = [];
@@ -426,13 +424,13 @@ export class TripleAspectsDetectorService {
       const body1 = sextile.bodies[0];
       const body2 = sextile.bodies[1];
       const body1QuincunxBodies =
-        TripleAspectsComposerService.findBodiesWithAspectTo(
+        this.tripleAspectsComposerService.findBodiesWithAspectTo(
           body1,
           "quincunx",
           quincunxes,
         );
       const body2QuincunxBodies =
-        TripleAspectsComposerService.findBodiesWithAspectTo(
+        this.tripleAspectsComposerService.findBodiesWithAspectTo(
           body2,
           "quincunx",
           quincunxes,

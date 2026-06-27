@@ -1,3 +1,4 @@
+import { AspectsUtilitiesModule } from "@caelundas/src/modules/aspects/aspects.utilities.module";
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
 
@@ -12,7 +13,7 @@ import { QuintupleAspectsService } from "./quintuple-aspects.service";
 @Module({
   controllers: [],
   exports: [QuintupleAspectsService],
-  imports: [MathModule],
+  imports: [MathModule, AspectsUtilitiesModule],
   providers: [QuintupleAspectsComposerService, QuintupleAspectsService],
 })
 export class QuintupleAspectsModule {}

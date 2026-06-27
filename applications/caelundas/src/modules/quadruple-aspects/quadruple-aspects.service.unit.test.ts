@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
@@ -14,16 +17,21 @@ describe(QuadrupleAspectsService, () => {
   let service: QuadrupleAspectsService;
   let baseService: QuadrupleAspectsBaseService;
   let composerService: QuadrupleAspectsComposerService;
+  let compoundPhaseService: CompoundPhaseService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        CompoundPhaseService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
         QuadrupleAspectsBaseService,
         QuadrupleAspectsComposerService,
         QuadrupleAspectsService,
       ],
     }).compile();
     baseService = await module.resolve(QuadrupleAspectsBaseService);
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     composerService = await module.resolve(QuadrupleAspectsComposerService);
     service = await module.resolve(QuadrupleAspectsService);
   });
@@ -816,10 +824,6 @@ describe(QuadrupleAspectsService, () => {
 
   describe("detect guard branches", () => {
     const getBaseInternals = (): {
-      determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
-        eventMinute: moment.Moment;
-        phase: string;
-      };
       findGrandTrines: (
         trines: (AspectBodies | undefined)[],
         unionEdges: AspectBodies[],
@@ -841,10 +845,6 @@ describe(QuadrupleAspectsService, () => {
       ) => boolean;
     } =>
       baseService as unknown as {
-        determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
-          eventMinute: moment.Moment;
-          phase: string;
-        };
         findGrandTrines: (
           trines: (AspectBodies | undefined)[],
           unionEdges: AspectBodies[],
@@ -895,7 +895,7 @@ describe(QuadrupleAspectsService, () => {
 
     it("returns null when resolveKiteEvent cannot build a complete 4-body event", () => {
       const determinePhaseSpy = vi
-        .spyOn(baseService, "determineCompoundPhaseFromSnapshots")
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue({
           eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
           phase: "forming",

@@ -1,3 +1,6 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -15,6 +18,18 @@ describe(QuintupleAspectsComposerService, () => {
     const module = await Test.createTestingModule({
       providers: [
         QuintupleAspectsComposerService,
+        {
+          provide: CompoundPhaseService,
+          useValue: createMock<CompoundPhaseService>(),
+        },
+        {
+          provide: AspectPhaseEmojiService,
+          useValue: createMock<AspectPhaseEmojiService>(),
+        },
+        {
+          provide: ProgressiveCompoundEventService,
+          useValue: createMock<ProgressiveCompoundEventService>(),
+        },
         { provide: MathService, useValue: createMock<MathService>() },
       ],
     }).compile();

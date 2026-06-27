@@ -68,11 +68,24 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     logger.log.mockClear();
     logger.warn.mockClear();
     logger.error.mockClear();
+    logger.createTimestampedOutputLogFilePath.mockReturnValue(
+      "/tmp/csel-errors.log",
+    );
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
 
     existsSyncMock.mockReturnValue(true);
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
+    (command as unknown as { errorLogFilePath: string }).errorLogFilePath =
+      "/tmp/csel-errors.log";
   });
 
   it("is defined", () => {
@@ -98,23 +111,26 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
   });
 
   it("should create output directory when it does not exist", async () => {
-    existsSyncMock.mockReturnValue(false);
+    const bootstrapLogger = createMock<LoggerService>();
+    bootstrapLogger.createTimestampedOutputLogFilePath.mockReturnValue(
+      "/tmp/csel-errors.log",
+    );
 
     const module = await Test.createTestingModule({
       providers: [
         CorpusScriptorumEcclesiasticorumLatinorumCommand,
         {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: bootstrapLogger,
         },
       ],
     }).compile();
 
     await module.resolve(CorpusScriptorumEcclesiasticorumLatinorumCommand);
 
-    expect(mkdirSyncMock).toHaveBeenCalledWith(expect.any(String), {
-      recursive: true,
-    });
+    expect(
+      bootstrapLogger.createTimestampedOutputLogFilePath,
+    ).toHaveBeenCalledWith("csel");
   });
 
   it("should fetch tree and return null on response failure", async () => {

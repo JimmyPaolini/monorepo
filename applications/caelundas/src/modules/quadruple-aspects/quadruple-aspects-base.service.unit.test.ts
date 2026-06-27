@@ -1,3 +1,5 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -13,7 +15,11 @@ describe(QuadrupleAspectsBaseService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [QuadrupleAspectsBaseService],
+      providers: [
+        QuadrupleAspectsBaseService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
+      ],
     }).compile();
 
     service = await module.resolve(QuadrupleAspectsBaseService);

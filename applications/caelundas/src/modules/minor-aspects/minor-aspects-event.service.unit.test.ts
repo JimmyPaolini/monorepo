@@ -1,6 +1,6 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -16,16 +16,19 @@ describe(MinorAspectsEventService, () => {
     const module = await Test.createTestingModule({
       providers: [
         MinorAspectsEventService,
+        {
+          provide: AspectEphemerisService,
+          useValue: createMock<AspectEphemerisService>(),
+        },
         { provide: LoggerService, useValue: createMock<LoggerService>() },
         {
           provide: AspectsUtilities,
           useValue: createMock<AspectsUtilities>(),
         },
         {
-          provide: SimpleAspectsEventService,
-          useValue: createMock<SimpleAspectsEventService>(),
+          provide: AspectEventFormattingService,
+          useValue: createMock<AspectEventFormattingService>(),
         },
-        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
       ],
     }).compile();
 

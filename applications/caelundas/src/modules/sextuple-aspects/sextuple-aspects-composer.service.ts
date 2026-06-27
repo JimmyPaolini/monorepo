@@ -1,3 +1,5 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { aspectBodies as sextupleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
@@ -28,7 +30,10 @@ import type { Moment } from "moment-timezone";
 export class SextupleAspectsComposerService {
   // 🏗 Dependency Injection
 
-  constructor() {}
+  constructor(
+    private readonly aspectPhaseEmojiService: AspectPhaseEmojiService,
+    private readonly progressiveCompoundEventService: ProgressiveCompoundEventService,
+  ) {}
 
   // 🔏 Private Methods
 
@@ -111,18 +116,10 @@ export class SextupleAspectsComposerService {
    * Converts a forming/dissolving sextuple pair into one duration event.
    */
   buildProgressiveSextupleEvent(forming: Event, dissolving: Event): Event {
-    return {
-      categories: forming.categories.filter(
-        (c) => c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
-      ),
-      description: forming.description.replace(
-        / (forming|exact|dissolving)$/,
-        "",
-      ),
-      end: dissolving.start,
-      start: forming.start,
-      summary: forming.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
-    };
+    return this.progressiveCompoundEventService.buildProgressiveCompoundEvent({
+      dissolving,
+      forming,
+    });
   }
 
   /**
@@ -330,15 +327,7 @@ export class SextupleAspectsComposerService {
    * Maps phase to the event-summary marker prefix.
    */
   getPhaseEmoji(phase: AspectPhase): string {
-    if (phase === "forming") {
-      return "➡️ ";
-    }
-
-    if (phase === "perfective") {
-      return "🎯 ";
-    }
-
-    return "⬅️ ";
+    return this.aspectPhaseEmojiService.getPhaseEmoji(phase);
   }
 
   /**

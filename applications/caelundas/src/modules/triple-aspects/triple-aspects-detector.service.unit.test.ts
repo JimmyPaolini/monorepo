@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -8,9 +11,11 @@ import { TripleAspectsComposerService } from "./triple-aspects-composer.service"
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { Aspect } from "@caelundas/src/modules/caelundas/caelundas.types";
 
 describe(TripleAspectsDetectorService, () => {
   let service: TripleAspectsDetectorService;
+  let compoundPhaseService: CompoundPhaseService;
   let privateService: {
     checkTSquareFocalBody: (args: {
       body1: "sun";
@@ -33,6 +38,7 @@ describe(TripleAspectsDetectorService, () => {
     getUniqueBodyTriplets: (
       bodies: ("mars" | "moon" | "sun" | undefined)[],
     ) => unknown;
+    groupAspectsByType: (edges: AspectBodies[]) => Map<Aspect, AspectBodies[]>;
   };
 
   beforeAll(async () => {
@@ -40,10 +46,14 @@ describe(TripleAspectsDetectorService, () => {
       providers: [
         TripleAspectsDetectorService,
         TripleAspectsComposerService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
+        CompoundPhaseService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
       ],
     }).compile();
 
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     service = await module.resolve(TripleAspectsDetectorService);
     await module.resolve(LoggerService);
     privateService = service as unknown as typeof privateService;
@@ -65,7 +75,7 @@ describe(TripleAspectsDetectorService, () => {
         { aspect: "conjunct", bodies: ["venus", "saturn"] },
       ];
 
-      const grouped = TripleAspectsDetectorService.groupAspectsByType(edges);
+      const grouped = privateService.groupAspectsByType(edges);
 
       expect(grouped.size).toBe(2);
       expect(grouped.get("conjunct")?.length).toBe(2);
@@ -105,10 +115,7 @@ describe(TripleAspectsDetectorService, () => {
 
     it("returns no T-Square events when phase transition cannot be determined", () => {
       const determinePhaseSpy = vi
-        .spyOn(
-          TripleAspectsComposerService,
-          "determineCompoundPhaseFromSnapshots",
-        )
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue(null);
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const currentAspectBodies: AspectBodies[] = [
@@ -184,10 +191,7 @@ describe(TripleAspectsDetectorService, () => {
 
     it("returns no Yod events when phase transition cannot be determined", () => {
       const determinePhaseSpy = vi
-        .spyOn(
-          TripleAspectsComposerService,
-          "determineCompoundPhaseFromSnapshots",
-        )
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue(null);
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const currentAspectBodies: AspectBodies[] = [
@@ -247,10 +251,7 @@ describe(TripleAspectsDetectorService, () => {
 
     it("returns no Grand Trine events when phase transition cannot be determined", () => {
       const determinePhaseSpy = vi
-        .spyOn(
-          TripleAspectsComposerService,
-          "determineCompoundPhaseFromSnapshots",
-        )
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue(null);
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const currentAspectBodies: AspectBodies[] = [

@@ -1,3 +1,6 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { QuintupleAspectsComposerService } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
@@ -12,15 +15,20 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(QuintupleAspectsService, () => {
   let service: QuintupleAspectsService;
+  let compoundPhaseService: CompoundPhaseService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         QuintupleAspectsService,
         QuintupleAspectsComposerService,
+        CompoundPhaseService,
+        AspectPhaseEmojiService,
+        ProgressiveCompoundEventService,
         MathService,
       ],
     }).compile();
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     service = await module.resolve(QuintupleAspectsService);
   });
 
@@ -744,7 +752,7 @@ describe(QuintupleAspectsService, () => {
         .spyOn(getComposer(), "findPentagramPattern")
         .mockReturnValue(["sun", "moon", "mars", "jupiter", "venus"]);
       const determinePhaseSpy = vi
-        .spyOn(getComposer(), "determineCompoundPhaseFromSnapshots")
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue({
           eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
           phase: "forming",
