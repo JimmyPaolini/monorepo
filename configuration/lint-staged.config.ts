@@ -9,12 +9,10 @@
  */
 import { relative } from "node:path";
 
-import {
-  SYNC_AGENT_SKILLS_FILES,
-  SYNC_CONFORMANCE_GENERATORS_FILES,
-  SYNC_CONVENTIONAL_CONFIG_FILES,
-  SYNC_PULL_REQUEST_TEMPLATE_FILES,
-} from "../tools/synchronization/src/files.js";
+import { SYNC_AGENT_SKILLS_FILES } from "../tools/synchronization/src/modules/agent-skills/agent-skills.constants.js";
+import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../tools/synchronization/src/modules/conformance-generators/conformance-generators.constants.js";
+import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../tools/synchronization/src/modules/conventional-config/conventional-config.constants.js";
+import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../tools/synchronization/src/modules/pull-request-template/pull-request-template.constants.js";
 import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants";
 
 function getPaths(files: string[]): string {
