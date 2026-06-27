@@ -1,0 +1,189 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "synchronization",
+  "projectType": "application",
+  "sourceRoot": "tools/synchronization",
+  "tags": [
+    "framework:nest-commander",
+    "framework:nestjs",
+    "generator:nestjs-command-application",
+    "language:typescript"
+  ],
+  "targets": {
+    "analyze-code": {},
+    "clean": {},
+    "dependency-cruiser": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "repl": {
+      "description": "Start the Synchronization application in REPL mode",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/repl.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "spell-check": {},
+    "start": {
+      "description": "Start the Synchronization application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "sync-agent-skills": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/AGENTS.md",
+        "{workspaceRoot}/documentation/skills/**/*.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sync-conformance-generators": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that conformance generators table is synchronized from tools/conformance/generators.json into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/AGENTS.md",
+        "{workspaceRoot}/tools/conformance/generators.json"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sync-conventional-config": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.vscode/settings.json",
+        "{workspaceRoot}/configuration/conventional.config.cjs",
+        "{workspaceRoot}/documentation/skills/commit-code/SKILL.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sync-devcontainer-configuration": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that common fields in cloud devcontainer.json are in sync with the local config (check) or propagate them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.devcontainer/cloud/devcontainer.json",
+        "{workspaceRoot}/.devcontainer/local/devcontainer.json"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sync-pull-request-template": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that the PR template is synchronized from .github/PULL_REQUEST_TEMPLATE.md into skills and prompt files (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.github/prompts/create-pull-request.prompt.md",
+        "{workspaceRoot}/.github/prompts/update-pull-request.prompt.md",
+        "{workspaceRoot}/.github/PULL_REQUEST_TEMPLATE.md",
+        "{workspaceRoot}/documentation/skills/create-pull-request/SKILL.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "vitest run --coverage"
+        },
+        "end-to-end": {
+          "command": "vitest run end-to-end.test.ts"
+        },
+        "integration": {
+          "command": "vitest run integration.test.ts"
+        },
+        "unit": {
+          "command": "vitest run unit.test.ts"
+        },
+        "watch": {
+          "command": "vitest"
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {
+      "description": "Run TypeScript type checking",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "yaml-lint": {}
+  }
+}

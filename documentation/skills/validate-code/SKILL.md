@@ -64,7 +64,7 @@ pnpm exec nx affected --target=analyze-code --configuration=check --base=main
 - **Typecheck**: Fix type errors — see [typescript-conventions skill](../typescript-conventions/SKILL.md) for patterns.
 - **Spell-check**: Either fix the typo, or add the word to the appropriate dictionary in `configuration/.cspell/`.
 - **Knip (unused code)**: Remove the unused export/file/dependency, or add an exception in `configuration/knip.config.ts`.
-- **Sync checks**: Run the relevant `write` variant (e.g., `nx run monorepo:sync-agent-skills:write`).
+- **Sync checks**: Run the relevant `write` variant (e.g., `nx run synchronization:sync-agent-skills:write`).
 
 See [triage-submission](../triage-submission/SKILL.md) for detailed per-tool fix instructions.
 
@@ -107,8 +107,8 @@ pnpm exec nx run <project>:test --configuration=coverage
 
 ```bash
 # Sync the agent skills table of contents
-pnpm exec nx run monorepo:sync-agent-skills:write
-pnpm exec nx run monorepo:sync-agent-skills:check
+pnpm exec nx run synchronization:sync-agent-skills:write
+pnpm exec nx run synchronization:sync-agent-skills:check
 ```
 
 ### New documentation/skills entry added
@@ -118,7 +118,7 @@ New skills must live in BOTH:
 - `.github/skills/<skill-name>/SKILL.md` — loaded by GitHub Copilot
 - `documentation/skills/<skill-name>/SKILL.md` — identical copy, read by the sync script
 
-After creating both, run `nx run monorepo:sync-agent-skills:write` to update the AGENTS.md table of contents.
+After creating both, run `nx run synchronization:sync-agent-skills:write` to update the AGENTS.md table of contents.
 
 ## Resources
 

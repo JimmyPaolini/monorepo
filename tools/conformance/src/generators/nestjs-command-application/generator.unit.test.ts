@@ -15,6 +15,7 @@ describe(generateNestjsCommandApplication, () => {
   describe("file generation", () => {
     it("generates a NestJS command application scaffold in applications/<name>", async () => {
       await generateNestjsCommandApplication(tree, {
+        destinationRoot: "applications",
         name: "stellar-cli",
       });
 
@@ -39,8 +40,35 @@ describe(generateNestjsCommandApplication, () => {
       expect(tree.exists(`${base}/testing/setup.ts`)).toBe(true);
     });
 
+    it("generates a NestJS command application scaffold in tools/<name>", async () => {
+      await generateNestjsCommandApplication(tree, {
+        destinationRoot: "tools",
+        name: "stellar-cli",
+      });
+
+      const base = "tools/stellar-cli";
+
+      expect(tree.exists(`${base}/project.json`)).toBe(true);
+      expect(tree.exists(`${base}/package.json`)).toBe(true);
+      expect(tree.exists(`${base}/src/main.ts`)).toBe(true);
+    });
+
+    it("generates a NestJS command application scaffold in packages/<name>", async () => {
+      await generateNestjsCommandApplication(tree, {
+        destinationRoot: "packages",
+        name: "stellar-cli",
+      });
+
+      const base = "packages/stellar-cli";
+
+      expect(tree.exists(`${base}/project.json`)).toBe(true);
+      expect(tree.exists(`${base}/package.json`)).toBe(true);
+      expect(tree.exists(`${base}/src/main.ts`)).toBe(true);
+    });
+
     it("writes expected project tags and command metadata", async () => {
       await generateNestjsCommandApplication(tree, {
+        destinationRoot: "applications",
         name: "stellar-cli",
       });
 
@@ -52,6 +80,7 @@ describe(generateNestjsCommandApplication, () => {
       expect(projectJson).toContain('"generator:nestjs-command-application"');
       expect(projectJson).toContain('"framework:nest-commander"');
       expect(projectJson).toContain('"framework:nestjs"');
+      expect(projectJson).toContain('"sourceRoot": "applications/stellar-cli"');
 
       const commandFile = tree.read(
         "applications/stellar-cli/src/modules/stellar-cli/stellar-cli.command.ts",
@@ -82,16 +111,43 @@ describe(generateNestjsCommandApplication, () => {
     });
   });
 
+  describe("destination root validation", () => {
+    it("throws when destinationRoot is not a valid value", async () => {
+      await expect(
+        generateNestjsCommandApplication(tree, {
+          destinationRoot: "invalid-dir",
+          name: "stellar-cli",
+        }),
+      ).rejects.toThrow(
+        'Destination root "invalid-dir" is not valid. Allowed values: applications, packages, tools',
+      );
+    });
+  });
+
   describe("directory checks", () => {
-    it("throws when the destination application directory already exists", async () => {
+    it("throws when the destination directory already exists in applications", async () => {
       tree.write("applications/stellar-cli/project.json", "{}");
 
       await expect(
         generateNestjsCommandApplication(tree, {
+          destinationRoot: "applications",
           name: "stellar-cli",
         }),
       ).rejects.toThrow(
         'Directory "applications/stellar-cli" already exists. Choose a different application name.',
+      );
+    });
+
+    it("throws when the destination directory already exists in tools", async () => {
+      tree.write("tools/stellar-cli/project.json", "{}");
+
+      await expect(
+        generateNestjsCommandApplication(tree, {
+          destinationRoot: "tools",
+          name: "stellar-cli",
+        }),
+      ).rejects.toThrow(
+        'Directory "tools/stellar-cli" already exists. Choose a different application name.',
       );
     });
   });

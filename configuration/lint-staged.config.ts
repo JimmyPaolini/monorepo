@@ -9,10 +9,12 @@
  */
 import { relative } from "node:path";
 
-import { SYNC_AGENT_SKILLS_FILES } from "../scripts/sync-agent-skills";
-import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../scripts/sync-conventional-config.constants";
-import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../scripts/sync-conformance-generators";
-import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../scripts/sync-pull-request-template";
+import {
+  SYNC_AGENT_SKILLS_FILES,
+  SYNC_CONFORMANCE_GENERATORS_FILES,
+  SYNC_CONVENTIONAL_CONFIG_FILES,
+  SYNC_PULL_REQUEST_TEMPLATE_FILES,
+} from "../tools/synchronization/src/files.js";
 import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants";
 
 function getPaths(files: string[]): string {
@@ -51,27 +53,27 @@ const config = {
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
     () => [
-      "pnpm exec nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
+      "pnpm exec nx run synchronization:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
     ],
 
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:sync-conventional-config:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep PR template in sync across skills and prompt files
   [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:sync-pull-request-template:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:sync-agent-skills:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep conformance generators table in sync in AGENTS.md
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
   // 📝 TypeScript / JavaScript source files

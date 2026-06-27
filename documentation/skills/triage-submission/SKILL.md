@@ -76,10 +76,10 @@ Config: [validate-branch-name.config.cjs](../../../validate-branch-name.config.c
 | `pnpm-workspace.yaml` | `./scripts/check-lockfile.sh` |
 | `configuration/knip.config.ts` | `nx run monorepo:clean:check` |
 | `.vscode/extensions.json`, `.devcontainer/local/devcontainer.json` | `nx run monorepo:sync-vscode-extensions:check` |
-| `.devcontainer/cloud/devcontainer.json`, `.devcontainer/local/devcontainer.json` | `nx run monorepo:sync-devcontainer-configuration:check` |
-| Conventional config files (see lint-staged.config.ts) | `nx run monorepo:sync-conventional-config:check` |
-| PR template files | `nx run monorepo:sync-pull-request-template:check` |
-| `AGENTS.md`, `documentation/skills/**/*.md` | `nx run monorepo:sync-agent-skills:check` |
+| `.devcontainer/cloud/devcontainer.json`, `.devcontainer/local/devcontainer.json` | `nx run synchronization:sync-devcontainer-configuration:check` |
+| Conventional config files (see lint-staged.config.ts) | `nx run synchronization:sync-conventional-config:check` |
+| PR template files | `nx run synchronization:sync-pull-request-template:check` |
+| `AGENTS.md`, `documentation/skills/**/*.md` | `nx run synchronization:sync-agent-skills:check` |
 
 ## Triage Procedure
 
@@ -237,11 +237,11 @@ pnpm exec nx affected --target=markdown-lint --configuration=write --files=<stag
 pnpm exec nx affected --target=clean --configuration=write --files=<staged-files>
 
 # Sync checks: run the write variant to regenerate the out-of-sync file
-pnpm exec nx run monorepo:sync-agent-skills:write
-pnpm exec nx run monorepo:sync-conventional-config:write
-pnpm exec nx run monorepo:sync-pull-request-template:write
+pnpm exec nx run synchronization:sync-agent-skills:write
+pnpm exec nx run synchronization:sync-conventional-config:write
+pnpm exec nx run synchronization:sync-pull-request-template:write
 pnpm exec nx run monorepo:sync-vscode-extensions:write
-pnpm exec nx run monorepo:sync-devcontainer-configuration:write
+pnpm exec nx run synchronization:sync-devcontainer-configuration:write
 ```
 
 #### Validate Fixes Passed
@@ -262,11 +262,11 @@ pnpm exec nx affected --target=markdown-lint --configuration=check --files=<stag
 pnpm exec nx affected --target=clean --configuration=check --files=<staged-files>
 
 # Validate sync checks fixed themselves (re-run the check variant)
-pnpm exec nx run monorepo:sync-agent-skills:check
-pnpm exec nx run monorepo:sync-conventional-config:check
-pnpm exec nx run monorepo:sync-pull-request-template:check
+pnpm exec nx run synchronization:sync-agent-skills:check
+pnpm exec nx run synchronization:sync-conventional-config:check
+pnpm exec nx run synchronization:sync-pull-request-template:check
 pnpm exec nx run monorepo:sync-vscode-extensions:check
-pnpm exec nx run monorepo:sync-devcontainer-configuration:check
+pnpm exec nx run synchronization:sync-devcontainer-configuration:check
 ```
 
 **If all `--configuration=check` commands pass**, the fixes are confirmed working. Proceed to Step 5.

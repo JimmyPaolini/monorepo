@@ -1,0 +1,193 @@
+import { readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
+
+import { Injectable } from "@nestjs/common";
+import { Command, CommandRunner } from "nest-commander";
+
+import { LoggerService } from "../logger/logger.service";
+
+/**
+ * Metadata for a conformance generator rendered in the AGENTS.md table.
+ */
+interface Generator {
+  aliases: string[];
+  description: string;
+  name: string;
+}
+
+/**
+ * Shape of tools/conformance/generators.json consumed by this sync command.
+ */
+interface GeneratorsJson {
+  generators: Record<
+    string,
+    { aliases?: string[]; description: string; factory: string; schema: string }
+  >;
+}
+
+/**
+ * CLI command that syncs the conformance generators table into AGENTS.md.
+ * Reads tools/conformance/generators.json and injects a markdown table
+ * between marker comments.
+ */
+@Command({
+  description: "Sync conformance generators table into AGENTS.md (check|write)",
+  name: "conformance-generators",
+})
+@Injectable()
+export class ConformanceGeneratorsCommand extends CommandRunner {
+  // 🏗 Dependency Injection
+
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(ConformanceGeneratorsCommand.name);
+  }
+
+  // 🔏 Private Methods
+
+  /**
+   * Compares the generated generators table against the stored content in AGENTS.md and reports any differences.
+   */
+  private checkSync(generators: Generator[]): boolean {
+    const generatedTable = this.generateGeneratorsTable(generators);
+    const existingContent = this.readAgentsFile();
+
+    const generated = generatedTable.trim();
+    const existing = existingContent.generatedContent.trim();
+
+    if (generated !== existing) {
+      this.logger.log(
+        "❌ Conformance generators table in AGENTS.md is out of sync\n",
+      );
+      this.logger.log(
+        `  Found ${generators.length} generators in tools/conformance/generators.json`,
+      );
+      this.logger.log("  Generated content doesn't match stored content");
+      this.logger.log(
+        "💡 Run 'pnpm exec nx run monorepo:sync-conformance-generators:write' to sync\n",
+      );
+      return false;
+    }
+
+    this.logger.log(
+      `✅ Conformance generators table is in sync (${generators.length} generators)`,
+    );
+    return true;
+  }
+
+  /**
+   * Renders the list of generators as a markdown table for injection into AGENTS.md.
+   */
+  private generateGeneratorsTable(generators: Generator[]): string {
+    const header =
+      "| Generator | Alias | Description |\n| --------- | ----- | ----------- |";
+    const rows = generators.map((gen) => {
+      const alias = gen.aliases.map((a) => `\`${a}\``).join(", ");
+      return `| \`${gen.name}\` | ${alias} | ${gen.description} |`;
+    });
+    return [header, ...rows].join("\n");
+  }
+
+  /**
+   * Reads AGENTS.md and splits it around the conformance generators table markers.
+   */
+  private readAgentsFile(): {
+    afterMarker: string;
+    beforeMarker: string;
+    generatedContent: string;
+  } {
+    const agentsFile = path.join(process.cwd(), "AGENTS.md");
+    const content = readFileSync(agentsFile, "utf8");
+    const startMarker = "<!-- conformance-generators-table start -->";
+    const endMarker = "<!-- conformance-generators-table end -->";
+
+    const startIndex = content.indexOf(startMarker);
+    const endIndex = content.indexOf(endMarker);
+
+    if (startIndex === -1 || endIndex === -1) {
+      throw new Error(
+        `Markers not found in AGENTS.md. Expected to find "${startMarker}" and "${endMarker}"`,
+      );
+    }
+
+    const beforeMarker = content.slice(
+      0,
+      Math.max(0, startIndex + startMarker.length),
+    );
+    const afterMarker = content.slice(Math.max(0, endIndex));
+    const generatedContent = content.slice(
+      startIndex + startMarker.length,
+      endIndex,
+    );
+
+    return { afterMarker, beforeMarker, generatedContent };
+  }
+
+  /**
+   * Reads tools/conformance/generators.json and returns the list of generator metadata.
+   */
+  private readGenerators(): Generator[] {
+    const generatorsFile = path.join(
+      process.cwd(),
+      "tools/conformance/generators.json",
+    );
+    const content = readFileSync(generatorsFile, "utf8");
+    const json = JSON.parse(content) as GeneratorsJson;
+
+    return Object.entries(json.generators).map(([name, config]) => ({
+      aliases: config.aliases ?? [],
+      description: config.description,
+      name,
+    }));
+  }
+
+  /**
+   * Writes the generated generators table into AGENTS.md between the marker comments.
+   */
+  private writeSync(generators: Generator[]): void {
+    const agentsFile = path.join(process.cwd(), "AGENTS.md");
+    this.logger.log("🔄 Generating conformance generators table...");
+    const generatedTable = this.generateGeneratorsTable(generators);
+    const { afterMarker, beforeMarker } = this.readAgentsFile();
+
+    const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
+
+    writeFileSync(agentsFile, newContent, "utf8");
+    this.logger.log(
+      `✅ Updated AGENTS.md with ${generators.length} generators`,
+    );
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Runs the conformance-generators sync command in check or write mode.
+   */
+  async run(
+    passedParameters: string[],
+    _options?: Record<string, unknown>,
+  ): Promise<void> {
+    await Promise.resolve();
+    const mode = passedParameters[0] ?? "check";
+
+    try {
+      const generators = this.readGenerators();
+
+      if (mode === "check") {
+        const success = this.checkSync(generators);
+        if (!success) process.exit(1);
+      } else if (mode === "write") {
+        this.writeSync(generators);
+      } else {
+        this.logger.error(`❌ Unknown mode: ${mode}`);
+        this.logger.error("Expected 'check' or 'write'");
+        process.exit(1);
+      }
+    } catch (error) {
+      this.logger.error(
+        `❌ Error: ${error instanceof Error ? error.message : error}`,
+      );
+      process.exit(1);
+    }
+  }
+}

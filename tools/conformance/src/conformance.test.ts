@@ -4,7 +4,12 @@ import path from "node:path";
 import { workspaceRoot } from "@nx/devkit";
 import { describe, expect, it } from "vitest";
 
-import { converterByStringCase } from "./constants";
+import {
+  APPLICATIONS_DIRECTORY,
+  converterByStringCase,
+  PACKAGES_DIRECTORY,
+  TOOLS_DIRECTORY,
+} from "./constants";
 import { COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
 import { COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
 import { GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
@@ -38,7 +43,12 @@ const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
   "generator:nestjs-graphql-application";
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
-const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
+const DEFAULT_INSTANCE_DIRECTORIES = [APPLICATIONS_DIRECTORY] as const;
+const COMMAND_APPLICATION_INSTANCE_DIRECTORIES = [
+  APPLICATIONS_DIRECTORY,
+  PACKAGES_DIRECTORY,
+  TOOLS_DIRECTORY,
+] as const;
 
 function resolveNestjsModuleDirectories(
   applications: { rootPath: string; tags: string[] }[],
@@ -66,64 +76,145 @@ function resolveNestjsModuleDirectories(
     );
 }
 
-function resolveWorkspaceApplications(): {
+function resolveWorkspaceApplications(
+  instanceDirectories: readonly string[] = DEFAULT_INSTANCE_DIRECTORIES,
+): {
   rootPath: string;
   tags: string[];
 }[] {
-  return fs
-    .readdirSync(APPLICATIONS_DIRECTORY_PATH, {
-      withFileTypes: true,
-    })
-    .filter(
-      (entry) =>
-        entry.isDirectory() &&
-        fs.existsSync(
-          path.join(APPLICATIONS_DIRECTORY_PATH, entry.name, "project.json"),
-        ),
-    )
-    .map((entry) => {
-      const rootPath = path.join(APPLICATIONS_DIRECTORY_PATH, entry.name);
-      const projectConfigurationPath = path.join(rootPath, "project.json");
-      let projectConfiguration: {
-        tags?: string[];
-      };
-      try {
-        projectConfiguration = JSON.parse(
-          fs.readFileSync(projectConfigurationPath, "utf8"),
-        ) as {
+  return instanceDirectories.flatMap((instanceDirectory) => {
+    const instanceDirectoryPath = path.join(workspaceRoot, instanceDirectory);
+    if (!fs.existsSync(instanceDirectoryPath)) {
+      return [];
+    }
+
+    return fs
+      .readdirSync(instanceDirectoryPath, {
+        withFileTypes: true,
+      })
+      .filter(
+        (entry) =>
+          entry.isDirectory() &&
+          fs.existsSync(
+            path.join(instanceDirectoryPath, entry.name, "project.json"),
+          ),
+      )
+      .map((entry) => {
+        const rootPath = path.join(instanceDirectoryPath, entry.name);
+        const projectConfigurationPath = path.join(rootPath, "project.json");
+        let projectConfiguration: {
           tags?: string[];
         };
-      } catch (error) {
-        throw new Error(
-          `Unable to parse project configuration at "${projectConfigurationPath}"`,
-          {
-            cause: error,
-          },
-        );
-      }
+        try {
+          projectConfiguration = JSON.parse(
+            fs.readFileSync(projectConfigurationPath, "utf8"),
+          ) as {
+            tags?: string[];
+          };
+        } catch (error) {
+          throw new Error(
+            `Unable to parse project configuration at "${projectConfigurationPath}"`,
+            {
+              cause: error,
+            },
+          );
+        }
 
-      return {
-        rootPath,
-        tags: projectConfiguration.tags ?? [],
-      };
-    });
+        return {
+          rootPath,
+          tags: projectConfiguration.tags ?? [],
+        };
+      });
+  });
+}
+
+function validateCommandApplicationDirectories(args: {
+  instanceDirectoryPaths: string[];
+  templateDirectoryPath: string;
+}): InstanceDirectoryValidationResult[] {
+  const { instanceDirectoryPaths, templateDirectoryPath } = args;
+  const templateFilenames = fs
+    .readdirSync(templateDirectoryPath, { withFileTypes: true })
+    .filter((node) => node.isFile())
+    .map((node) => node.name)
+    .toSorted();
+
+  return instanceDirectoryPaths.map((instanceDirectoryPath) => {
+    const directoryName = path.basename(instanceDirectoryPath);
+    const relativeInstanceDirectoryPath = path.relative(
+      workspaceRoot,
+      instanceDirectoryPath,
+    );
+    const [destinationRoot] = relativeInstanceDirectoryPath.split(path.sep);
+    const nameKebabCase =
+      converterByStringCase[StringCase.KEBAB_CASE](directoryName);
+    const data = {
+      destinationRoot: destinationRoot ?? APPLICATIONS_DIRECTORY,
+      nameCamelCase:
+        converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+      nameKebabCase,
+      namePascalCase:
+        converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+      nameSnakeCase:
+        converterByStringCase[StringCase.SNAKE_CASE](nameKebabCase),
+    };
+
+    return {
+      directoryName,
+      results: templateFilenames.map((templateFilename) => {
+        const templateFilePath = path.join(
+          templateDirectoryPath,
+          templateFilename,
+        );
+        const instanceFilename = templateFilename.replaceAll(
+          "__nameKebabCase__",
+          nameKebabCase,
+        );
+        const instanceFilePath = path.join(
+          instanceDirectoryPath,
+          instanceFilename,
+        );
+        const validationResult = validateInstanceFile({
+          data,
+          instanceFilePath,
+          templateFilePath,
+        });
+
+        return {
+          ...validationResult,
+          filename: instanceFilename,
+        };
+      }),
+    };
+  });
 }
 
 describe("generator template conformance", () => {
   const applications = resolveWorkspaceApplications();
+  const commandApplicationInstances = resolveWorkspaceApplications(
+    COMMAND_APPLICATION_INSTANCE_DIRECTORIES,
+  );
   const allNestjsModules = resolveNestjsModuleDirectories(
     applications,
     NESTJS_APPLICATION_TAG,
   );
   const commandApplicationModules = resolveNestjsModuleDirectories(
-    applications,
+    commandApplicationInstances,
     NESTJS_COMMAND_APPLICATION_TAG,
   );
 
-  const commandModules = commandApplicationModules.filter((directoryPath) =>
-    fs.existsSync(
-      path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-    ),
+  // Projects whose command modules contain hand-edited implementations and
+  // should not be checked against the generated stub template.
+  const HAND_EDITED_COMMAND_APPLICATION_NAMES = new Set(["synchronization"]);
+
+  const commandModules = commandApplicationModules.filter(
+    (directoryPath) =>
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !HAND_EDITED_COMMAND_APPLICATION_NAMES.has(
+        path.basename(path.dirname(path.dirname(path.dirname(directoryPath)))),
+      ),
   );
 
   const graphqlModules = allNestjsModules.filter((directoryPath) =>
@@ -165,7 +256,7 @@ describe("generator template conformance", () => {
 
   const conformanceTemplateInstances: ConformanceTemplateInstance[] = [
     {
-      instanceDirectoryPaths: applications
+      instanceDirectoryPaths: commandApplicationInstances
         .filter((application) =>
           application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
         )
@@ -218,21 +309,28 @@ describe("generator template conformance", () => {
     'validates "$template" generated instances',
     (conformanceCase) => {
       const results =
-        conformanceCase.instanceType === "single"
-          ? conformanceCase.instanceDirectoryPaths.map(
-              (instanceDirectoryPath) =>
-                validateInstanceDirectory({
-                  instanceDirectoryPath,
-                  templateDirectoryPath: conformanceCase.templateDirectoryPath,
-                }),
-            )
-          : conformanceCase.instanceDirectoryPaths.flatMap(
-              (instancesDirectoryPath) =>
-                validateInstancesDirectory({
-                  instancesDirectoryPath,
-                  templateDirectoryPath: conformanceCase.templateDirectoryPath,
-                }),
-            );
+        conformanceCase.template === "nestjs-command-application"
+          ? validateCommandApplicationDirectories({
+              instanceDirectoryPaths: conformanceCase.instanceDirectoryPaths,
+              templateDirectoryPath: conformanceCase.templateDirectoryPath,
+            })
+          : conformanceCase.instanceType === "single"
+            ? conformanceCase.instanceDirectoryPaths.map(
+                (instanceDirectoryPath) =>
+                  validateInstanceDirectory({
+                    instanceDirectoryPath,
+                    templateDirectoryPath:
+                      conformanceCase.templateDirectoryPath,
+                  }),
+              )
+            : conformanceCase.instanceDirectoryPaths.flatMap(
+                (instancesDirectoryPath) =>
+                  validateInstancesDirectory({
+                    instancesDirectoryPath,
+                    templateDirectoryPath:
+                      conformanceCase.templateDirectoryPath,
+                  }),
+              );
 
       expect(results.length).toBeGreaterThan(0);
 
