@@ -224,7 +224,7 @@ describe(PullRequestTemplateCommand, () => {
       ),
     );
     expect(logger.log).toHaveBeenCalledWith(
-      "💡 Run 'nx run synchronization:sync-pull-request-template:write' to sync",
+      "💡 Run 'nx run synchronization:pull-request-template:write' to sync",
     );
 
     processExitSpy.mockRestore();
@@ -248,7 +248,7 @@ describe(PullRequestTemplateCommand, () => {
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:sync-pull-request-template [check|write]",
+      "💡 Usage: nx run synchronization:pull-request-template [check|write]",
     );
 
     processExitSpy.mockRestore();

@@ -83,7 +83,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
     this.logger.log("");
     this.logger.log(
-      `  Run: nx run synchronization:sync-devcontainer-configuration:write`,
+      `  Run: nx run synchronization:devcontainer-configuration:write`,
     );
     return false;
   }
@@ -230,7 +230,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "💡 Usage: nx run synchronization:sync-devcontainer-configuration [check|write]",
+        "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
       );
       process.exit(1);
     }

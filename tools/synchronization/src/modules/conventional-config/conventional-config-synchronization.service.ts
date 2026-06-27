@@ -115,7 +115,7 @@ export class ConventionalConfigSynchronizationService {
       !presetOk
     ) {
       this.logger.log(
-        "💡 Run 'nx run synchronization:sync-conventional-config:write' to sync",
+        "💡 Run 'nx run synchronization:conventional-config:write' to sync",
       );
       process.exit(1);
     }
@@ -190,7 +190,7 @@ export class ConventionalConfigSynchronizationService {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "💡 Usage: nx run synchronization:sync-conventional-config [check|write]",
+        "💡 Usage: nx run synchronization:conventional-config [check|write]",
       );
       process.exit(1);
     }

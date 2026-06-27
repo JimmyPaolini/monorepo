@@ -111,7 +111,7 @@ This plan defines a full refactor of selected `sync-*` scripts from `scripts/` i
 
 - **TEST-001**: Generator regression: run `pnpm exec nx run conformance:test` to confirm generator template conformance still passes with new destination support.
 - **TEST-002**: Project-level checks: run `pnpm exec nx run synchronization:lint:check` and `pnpm exec nx run synchronization:typecheck`.
-- **TEST-003**: Target parity: execute each `synchronization:sync-*:check` target and verify non-zero exit on intentional drift.
+- **TEST-003**: Target parity: execute each `synchronization:*:check` target and verify non-zero exit on intentional drift.
 - **TEST-004**: Lint-staged integration: run lint-staged against staged files matching synchronization constant globs and confirm `synchronization:*:check` commands trigger.
 - **TEST-005**: CI integration: run or dry-run updated workflow jobs that previously called `monorepo:sync-*` and verify green execution with new targets.
 - **TEST-006**: Full validation gate: run `pnpm exec nx affected --target=analyze-code --configuration=write --base=main` and `... --configuration=check --base=main`.

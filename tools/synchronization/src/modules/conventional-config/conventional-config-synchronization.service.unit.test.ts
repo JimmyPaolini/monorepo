@@ -190,7 +190,7 @@ describe(ConventionalConfigSynchronizationService, () => {
       }),
     ).toThrow("process.exit:1");
     expect(logger.log).toHaveBeenCalledWith(
-      "💡 Run 'nx run synchronization:sync-conventional-config:write' to sync",
+      "💡 Run 'nx run synchronization:conventional-config:write' to sync",
     );
 
     processExitSpy.mockRestore();
@@ -327,7 +327,7 @@ describe(ConventionalConfigSynchronizationService, () => {
     );
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:sync-conventional-config [check|write]",
+      "💡 Usage: nx run synchronization:conventional-config [check|write]",
     );
 
     processExitSpy.mockRestore();

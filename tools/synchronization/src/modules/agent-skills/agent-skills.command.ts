@@ -49,7 +49,7 @@ export class AgentSkillsCommand extends CommandRunner {
       );
       this.logger.log("  Generated content doesn't match stored content");
       this.logger.log(
-        "💡 Run 'pnpm exec nx run synchronization:sync-agent-skills:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
       );
       return false;
     }

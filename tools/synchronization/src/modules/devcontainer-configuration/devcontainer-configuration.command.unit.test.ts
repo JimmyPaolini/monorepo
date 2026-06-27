@@ -248,7 +248,7 @@ describe(DevcontainerConfigurationCommand, () => {
       ),
     );
     expect(logger.log).toHaveBeenCalledWith(
-      "  Run: nx run synchronization:sync-devcontainer-configuration:write",
+      "  Run: nx run synchronization:devcontainer-configuration:write",
     );
 
     processExitSpy.mockRestore();
@@ -302,7 +302,7 @@ describe(DevcontainerConfigurationCommand, () => {
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:sync-devcontainer-configuration [check|write]",
+      "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
     );
 
     processExitSpy.mockRestore();

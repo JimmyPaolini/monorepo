@@ -10,34 +10,7 @@
     "language:typescript"
   ],
   "targets": {
-    "analyze-code": {},
-    "clean": {},
-    "dependency-cruiser": {},
-    "format": {},
-    "knip": {},
-    "lint": {},
-    "markdown-lint": {},
-    "oxfmt": {},
-    "oxlint": {},
-    "prettier": {},
-    "repl": {
-      "description": "Start the Synchronization application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "spell-check": {},
-    "start": {
-      "description": "Start the Synchronization application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "sync-agent-skills": {
+    "agent-skills": {
       "cache": false,
       "configurations": {
         "check": {
@@ -59,7 +32,9 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "sync-conformance-generators": {
+    "analyze-code": {},
+    "clean": {},
+    "conformance-generators": {
       "cache": true,
       "configurations": {
         "check": {
@@ -81,7 +56,7 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "sync-conventional-config": {
+    "conventional-config": {
       "cache": true,
       "configurations": {
         "check": {
@@ -104,7 +79,8 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "sync-devcontainer-configuration": {
+    "dependency-cruiser": {},
+    "devcontainer-configuration": {
       "cache": true,
       "configurations": {
         "check": {
@@ -126,7 +102,14 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "sync-pull-request-template": {
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "pull-request-template": {
       "cache": true,
       "configurations": {
         "check": {
@@ -148,6 +131,23 @@
       "options": {
         "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template",
         "cwd": "{workspaceRoot}"
+      }
+    },
+    "repl": {
+      "description": "Start the Synchronization application in REPL mode",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/repl.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "spell-check": {},
+    "start": {
+      "description": "Start the Synchronization application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
+        "cwd": "{projectRoot}"
       }
     },
     "test": {

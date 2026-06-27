@@ -51,27 +51,27 @@ const config = {
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
     () => [
-      "pnpm exec nx run synchronization:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
+      "pnpm exec nx run synchronization:devcontainer-configuration:check --outputStyle=dynamic-legacy",
     ],
 
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run synchronization:sync-conventional-config:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:conventional-config:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep PR template in sync across skills and prompt files
   [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run synchronization:sync-pull-request-template:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:pull-request-template:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run synchronization:sync-agent-skills:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:agent-skills:check --outputStyle=dynamic-legacy",
   ],
 
   // Keep conformance generators table in sync in AGENTS.md
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: () => [
-    "pnpm exec nx run synchronization:sync-conformance-generators:check --outputStyle=dynamic-legacy",
+    "pnpm exec nx run synchronization:conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
   // 📝 TypeScript / JavaScript source files

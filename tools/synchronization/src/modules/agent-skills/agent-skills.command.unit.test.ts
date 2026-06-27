@@ -256,7 +256,7 @@ describe(AgentSkillsCommand, () => {
       "❌ Skills table of contents in AGENTS.md is out of sync\n",
     );
     expect(logger.log).toHaveBeenCalledWith(
-      "💡 Run 'pnpm exec nx run synchronization:sync-agent-skills:write' to sync\n",
+      "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
     );
 
     processExitSpy.mockRestore();

@@ -91,7 +91,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     }
     if (!allInSync) {
       this.logger.log(
-        "💡 Run 'nx run synchronization:sync-pull-request-template:write' to sync",
+        "💡 Run 'nx run synchronization:pull-request-template:write' to sync",
       );
       process.exit(1);
     }
@@ -194,7 +194,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     } else {
       this.logger.error(`❌ Invalid mode: ${mode}`);
       this.logger.error(
-        "💡 Usage: nx run synchronization:sync-pull-request-template [check|write]",
+        "💡 Usage: nx run synchronization:pull-request-template [check|write]",
       );
       process.exit(1);
     }
