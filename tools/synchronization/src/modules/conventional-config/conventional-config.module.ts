@@ -2,11 +2,11 @@ import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
 
-import { ConventionalConfigConstantsService } from "./conventional-config-constants.service";
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
-import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
 import { ConventionalConfigCommand } from "./conventional-config.command";
+import { ConventionalConfigConstantsService } from "./conventional-config.constants";
+import { ConventionalConfigService } from "./conventional-config.service";
 
 /**
  * Module for the conventional-config sync workflow.
@@ -20,7 +20,7 @@ import { ConventionalConfigCommand } from "./conventional-config.command";
     ConventionalConfigCommand,
     ConventionalConfigConstantsService,
     ConventionalConfigIoService,
-    ConventionalConfigSynchronizationService,
+    ConventionalConfigService,
     ConventionalConfigValidatorsService,
   ],
 })

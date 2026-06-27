@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { ConventionalConfigConstantsService } from "./conventional-config-constants.service";
+import { ConventionalConfigConstantsService } from "./conventional-config.constants";
 
 describe(ConventionalConfigConstantsService, () => {
   let service: ConventionalConfigConstantsService;

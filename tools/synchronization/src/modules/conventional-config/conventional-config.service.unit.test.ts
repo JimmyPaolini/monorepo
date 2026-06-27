@@ -6,10 +6,10 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigConstantsService } from "./conventional-config-constants.service";
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
-import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
+import { ConventionalConfigConstantsService } from "./conventional-config.constants";
+import { ConventionalConfigService } from "./conventional-config.service";
 
 import type {
   ConventionalConfig,
@@ -46,11 +46,11 @@ vi.mock("node:module", () => {
   };
 });
 
-describe(ConventionalConfigSynchronizationService, () => {
+describe(ConventionalConfigService, () => {
   let constants: ConventionalConfigConstantsService;
   let io: ConventionalConfigIoService;
   let logger: LoggerService;
-  let service: ConventionalConfigSynchronizationService;
+  let service: ConventionalConfigService;
   let validators: ConventionalConfigValidatorsService;
 
   const workspaceRoot = process.cwd();
@@ -93,7 +93,7 @@ describe(ConventionalConfigSynchronizationService, () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ConventionalConfigSynchronizationService,
+        ConventionalConfigService,
         {
           provide: ConventionalConfigConstantsService,
           useValue: createMock<ConventionalConfigConstantsService>(),
@@ -116,7 +116,7 @@ describe(ConventionalConfigSynchronizationService, () => {
     constants = await module.resolve(ConventionalConfigConstantsService);
     io = await module.resolve(ConventionalConfigIoService);
     logger = await module.resolve(LoggerService);
-    service = await module.resolve(ConventionalConfigSynchronizationService);
+    service = await module.resolve(ConventionalConfigService);
     validators = await module.resolve(ConventionalConfigValidatorsService);
 
     Object.assign(constants, {

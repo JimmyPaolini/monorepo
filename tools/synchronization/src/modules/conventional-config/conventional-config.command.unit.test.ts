@@ -4,22 +4,21 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
 import { ConventionalConfigCommand } from "./conventional-config.command";
+import { ConventionalConfigService } from "./conventional-config.service";
 
 const buildModule = async (): Promise<{
   command: ConventionalConfigCommand;
+  conventionalConfigService: ConventionalConfigService;
   logger: LoggerService;
-  synchronizationService: ConventionalConfigSynchronizationService;
 }> => {
-  const synchronizationService =
-    createMock<ConventionalConfigSynchronizationService>();
+  const conventionalConfigService = createMock<ConventionalConfigService>();
   const module = await Test.createTestingModule({
     providers: [
       ConventionalConfigCommand,
       {
-        provide: ConventionalConfigSynchronizationService,
-        useValue: synchronizationService,
+        provide: ConventionalConfigService,
+        useValue: conventionalConfigService,
       },
       {
         provide: LoggerService,
@@ -30,8 +29,8 @@ const buildModule = async (): Promise<{
 
   return {
     command: await module.resolve(ConventionalConfigCommand),
+    conventionalConfigService,
     logger: await module.resolve(LoggerService),
-    synchronizationService,
   };
 };
 
@@ -53,21 +52,23 @@ describe(ConventionalConfigCommand, () => {
   });
 
   it("runs synchronization in check mode by default", async () => {
-    const { command: localCommand, synchronizationService } =
+    const { command: localCommand, conventionalConfigService } =
       await buildModule();
 
     await localCommand.run([]);
 
-    expect(synchronizationService.runSynchronization).toHaveBeenCalledWith("");
+    expect(conventionalConfigService.runSynchronization).toHaveBeenCalledWith(
+      "",
+    );
   });
 
   it("runs synchronization with the provided mode", async () => {
-    const { command: localCommand, synchronizationService } =
+    const { command: localCommand, conventionalConfigService } =
       await buildModule();
 
     await localCommand.run(["write"]);
 
-    expect(synchronizationService.runSynchronization).toHaveBeenCalledWith(
+    expect(conventionalConfigService.runSynchronization).toHaveBeenCalledWith(
       "write",
     );
   });

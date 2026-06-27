@@ -10,9 +10,9 @@ import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigConstantsService } from "./conventional-config-constants.service";
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
+import { ConventionalConfigConstantsService } from "./conventional-config.constants";
 
 import type {
   ConventionalConfig,
@@ -25,7 +25,7 @@ import type {
  * Orchestrates check and write modes for conventional-config synchronization.
  */
 @Injectable()
-export class ConventionalConfigSynchronizationService {
+export class ConventionalConfigService {
   // 🏗 Dependency Injection
 
   constructor(
@@ -34,7 +34,7 @@ export class ConventionalConfigSynchronizationService {
     private readonly logger: LoggerService,
     private readonly validators: ConventionalConfigValidatorsService,
   ) {
-    this.logger.setContext(ConventionalConfigSynchronizationService.name);
+    this.logger.setContext(ConventionalConfigService.name);
   }
 
   // 🔐 Private Fields

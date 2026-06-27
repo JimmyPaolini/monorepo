@@ -3,7 +3,7 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ConventionalConfigSynchronizationService } from "./conventional-config-synchronization.service";
+import { ConventionalConfigService } from "./conventional-config.service";
 
 /**
  * CLI command that runs the conventional-config sync in check or write mode.
@@ -19,7 +19,7 @@ export class ConventionalConfigCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly synchronizationService: ConventionalConfigSynchronizationService,
+    private readonly conventionalConfigService: ConventionalConfigService,
     private readonly logger: LoggerService,
   ) {
     super();
@@ -35,6 +35,6 @@ export class ConventionalConfigCommand extends CommandRunner {
   ): Promise<void> {
     await Promise.resolve();
     const mode = passedParameters[0] ?? "";
-    this.synchronizationService.runSynchronization(mode);
+    this.conventionalConfigService.runSynchronization(mode);
   }
 }
