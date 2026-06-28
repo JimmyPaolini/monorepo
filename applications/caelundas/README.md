@@ -29,7 +29,7 @@ cp .env.example .env
 # Edit .env with your settings (dates, location, timezone)
 
 # 3. Run
-nx run caelundas:develop
+nx run caelundas:start
 
 # 4. Import output
 # Import generated .ics file into your calendar application
@@ -84,24 +84,24 @@ Deploy as a batch job with persistent output storage:
 
 ```bash
 # 1. Build and push Docker image
-nx run caelundas:docker-build
-nx run caelundas:docker-push
+docker build --platform linux/amd64 -t ghcr.io/jimmypaolini/caelundas:latest .
+docker push ghcr.io/jimmypaolini/caelundas:latest
 
 # 2. Create Kubernetes secret with environment variables
 kubectl apply -f applications/caelundas/kubernetes/secret.yaml
 
 # 3. Deploy with Helm (auto-generated release name)
-nx run caelundas:helm-upgrade
-# Outputs: Release name (e.g., caelundas-20260125-123456)
+helm upgrade --install caelundas infrastructure/helm/kubernetes-job/ \
+  --values infrastructure/helm/kubernetes-job/values/caelundas-production.yaml
 
 # 4. Monitor job completion
 kubectl get jobs -l app.kubernetes.io/name=caelundas -w
 
 # 5. Retrieve output files
-nx run caelundas:kubernetes-copy-files -- --release-name=caelundas-20260125-123456
+kubectl cp <pod-name>:/output ./applications/caelundas/output/
 
 # 6. Clean up
-nx run caelundas:helm-uninstall -- --release-name=caelundas-20260125-123456
+helm uninstall caelundas
 ```
 
 Output files are copied to `applications/caelundas/output/`.

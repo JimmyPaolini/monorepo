@@ -403,4 +403,4 @@ echo $GITHUB_TOKEN | docker login ghcr.io -u <username> --password-stdin
 - [Tool Execution Model](../development/tool-execution-model.md) - Nx vs. direct tools
 - [Deployment Models](../architecture/deployment-models.md) - K8s Job/PVC issues
 - [Docker Workflows Skill](../skills/docker-workflows/SKILL.md) - Platform targeting
-- [TypeScript Conventions](../conventions/typescript.md) - Strict mode gotchas
+- [TypeScript Conventions](../skills/typescript-conventions/SKILL.md) - Strict mode gotchas
