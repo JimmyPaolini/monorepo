@@ -54,7 +54,7 @@ Always import shared UI from `@monorepo/lexico-components` and never duplicate U
 import { Button, Card, Input } from "@monorepo/lexico-components";
 ```
 
-See [React Conventions](../../documentation/conventions/react.md) and [lexico-components AGENTS](../../packages/lexico-components/AGENTS.md).
+See [React Conventions](../../documentation/skills/react-conventions/SKILL.md) and [lexico-components AGENTS](../../packages/lexico-components/AGENTS.md).
 
 ## Testing
 

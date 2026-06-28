@@ -12,7 +12,7 @@ Generate astronomical event calendars using NASA's JPL Horizons API (Outputs: iC
 
 ```bash
 cp .env.default .env  # Fill in required environment variables
-nx run caelundas:develop
+nx run caelundas:start
 ```
 
 ## Architecture Overview
@@ -103,12 +103,7 @@ src/modules/
 
 ## Domain Knowledge
 
-See [ephemeris-pipeline skill](../../documentation/skills/ephemeris-pipeline/SKILL.md) for:
-
-- NASA JPL Horizons API details (endpoints, parameters, rate limits)
-- Astronomical concepts (aspects, retrogrades, phases explained)
-- Caching strategy (SQLite schema, temporal margins)
-- Event detection algorithms
+The domain knowledge for the ephemeris pipeline — NASA JPL Horizons API details, astronomical concepts, caching strategy, and event detection algorithms — is documented throughout this file and in [src/modules/ephemeris/](src/modules/ephemeris/).
 
 ## Development
 
@@ -137,11 +132,10 @@ Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed
 Always prefer running tasks through Nx rather than calling the underlying tools directly.
 
 ```bash
-nx run caelundas:develop        # Run CLI (tsx, watch mode)
+nx run caelundas:start          # Run CLI
 nx run caelundas:lint           # ESLint
 nx run caelundas:typecheck      # tsc --noEmit
 nx run caelundas:format         # oxfmt formatting
-nx run caelundas:build          # Compile for production
 ```
 
 ### Testing
@@ -204,20 +198,21 @@ See [Deployment Models](../../documentation/architecture/deployment-models.md) f
 
 ```bash
 # 1. Build and push image
-nx run caelundas:docker-build
+docker build --platform linux/amd64 -t ghcr.io/jimmypaolini/caelundas:latest .
 docker push ghcr.io/jimmypaolini/caelundas:latest
 
 # 2. Deploy Job (auto-generated release name)
-nx run caelundas:helm-upgrade
+helm upgrade --install caelundas ../../infrastructure/helm/kubernetes-job/ \
+  --values ../../infrastructure/helm/kubernetes-job/values/caelundas-production.yaml
 
 # 3. Monitor completion
 kubectl wait --for=condition=complete job/<job-name> --timeout=600s
 
 # 4. Retrieve output files
-nx run caelundas:kubernetes-copy-files
+kubectl cp <pod-name>:/output ./output/
 
 # 5. Clean up
-nx run caelundas:helm-uninstall
+helm uninstall caelundas
 kubectl delete pvc caelundas-output
 ```
 
@@ -242,7 +237,7 @@ kubectl apply -f applications/caelundas/kubernetes/secret.yaml
 ### Build
 
 ```bash
-nx run caelundas:docker-build  # Builds for linux/amd64
+docker build --platform linux/amd64 -t ghcr.io/jimmypaolini/caelundas:latest .
 ```
 
 **Platform targeting**: Always use `linux/amd64` for K8s deployment (Apple Silicon compatibility).
@@ -396,7 +391,7 @@ nx run conformance:test
 - **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
 - **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
 
-See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](../../documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ## Troubleshooting
 
@@ -421,7 +416,7 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 - [src/modules/caelundas/caelundas.module.ts](src/modules/caelundas/caelundas.module.ts): Root NestJS module
 - [src/modules/caelundas/caelundas.constants.ts](src/modules/caelundas/caelundas.constants.ts): `environmentSchema` (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
-- [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
+- [project.json](project.json): Nx targets (`start`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template
 
 **Project Files**:

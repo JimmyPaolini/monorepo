@@ -32,7 +32,7 @@ Then export it in [src/index.ts](src/index.ts).
 - Light/dark mode via `data-theme`
 - Tokens in [src/styles/globals.css](src/styles/globals.css)
 
-See [React Conventions](../../documentation/conventions/react.md) for theming patterns.
+See [React Conventions](../../documentation/skills/react-conventions/SKILL.md) for theming patterns.
 
 ## Usage in Apps
 

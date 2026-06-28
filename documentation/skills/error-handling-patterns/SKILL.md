@@ -72,4 +72,4 @@ for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
 ## References
 
 - [Error Handling](../../code-quality/error-handling.md)
-- [TypeScript Conventions](../../conventions/typescript.md)
+- [TypeScript Conventions](../typescript-conventions/SKILL.md)

@@ -175,7 +175,7 @@ import { formatDate } from "./utils.js";
 import { type User, type Profile } from "./types.js";
 ```
 
-See [imports.md](../../conventions/imports.md) for the full import ordering rules.
+See [imports-conventions skill](../imports-conventions/SKILL.md) for the full import ordering rules.
 
 ## Readonly Class Properties
 

@@ -11,7 +11,7 @@
 <!-- CODE_STATISTICS_START -->
 ![Lines of Code](https://img.shields.io/badge/Lines_of_Code-117775-22c55e?style=flat-square)
 ![Repo Size](https://img.shields.io/badge/Repo_Size-149.6_MiB-6b7280?style=flat-square)
-![Last Commit](https://img.shields.io/badge/Last_Commit-2026--06--27-f59e0b?style=flat-square)
+![Last Commit](https://img.shields.io/badge/Last_Commit-2026--06--28-f59e0b?style=flat-square)
 ![Folders](https://img.shields.io/badge/Folders-473-4a4a4a?style=flat-square)
 ![Source Files](https://img.shields.io/badge/Source_Files-707-3178c6?style=flat-square)
 ![Test Files](https://img.shields.io/badge/Test_Files-160-10b981?style=flat-square)
@@ -113,8 +113,8 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 
 ### Conventions & Guidelines
 
-- [TypeScript](documentation/conventions/typescript.md) / [React](documentation/conventions/react.md) / [Python](documentation/conventions/python.md) - Language standards
-- [Imports](documentation/conventions/imports.md) - Import sorting and module resolution
+- [TypeScript](documentation/skills/typescript-conventions/SKILL.md) / [React](documentation/skills/react-conventions/SKILL.md) / [Python](documentation/skills/python-conventions/SKILL.md) - Language standards
+- [Imports](documentation/skills/imports-conventions/SKILL.md) - Import sorting and module resolution
 - [Testing Strategy](documentation/code-quality/testing-strategy.md) - Unit, integration, and E2E testing approaches
 - [Error Handling](documentation/code-quality/error-handling.md) - Typed errors and boundary validations
 - [Context Engineering](documentation/development/context-engineering.md) - Building AI-friendly context
@@ -127,6 +127,6 @@ Skills are specialized instruction files used by our automated agents, but they 
 - **Workflows:** [Git Commits](documentation/skills/commit-code/SKILL.md) / [PR Management](documentation/skills/create-pull-request/SKILL.md) / [Branch Naming](documentation/skills/checkout-branch/SKILL.md)
 - **Tooling:** [Nx Workspaces](documentation/skills/nx-workspace/SKILL.md) / [Generators](documentation/skills/nx-generate/SKILL.md) / [Task Running](documentation/skills/nx-run-tasks/SKILL.md)
 - **Infrastructure:** [Docker](documentation/skills/docker-workflows/SKILL.md) / [Kubernetes](documentation/skills/kubernetes-deployment/SKILL.md) / [Terraform](documentation/skills/mcp-terraform/SKILL.md)
-- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Ephemeris Pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)
+- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Caelundas](applications/caelundas/AGENTS.md)
 
 Other important files include [CHANGELOG.md](CHANGELOG.md) and [SECURITY.md](SECURITY.md).

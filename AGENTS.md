@@ -170,7 +170,7 @@ See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for t
 
 These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `pytest`) instead of TS ones.
 
-See [Python Conventions](documentation/conventions/python.md) for the full Python tooling setup.
+See [Python Conventions](documentation/skills/python-conventions/SKILL.md) for the full Python tooling setup.
 
 ### TypeScript
 
@@ -193,13 +193,13 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **JSDoc on public APIs**: Public functions, classes, methods, interfaces, types, and enums must have JSDoc — only when it adds non-obvious context
 - **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [commenting skill](documentation/skills/commenting/SKILL.md).
 
-See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ### Import Organization
 
 Auto-sorted by ESLint: builtins → externals → `@monorepo/*` → relatives → type imports (blank lines between groups).
 
-See [Import Organization](documentation/conventions/imports.md) for rules.
+See [Import Organization](documentation/skills/imports-conventions/SKILL.md) for rules.
 
 ### Testing
 
@@ -339,15 +339,15 @@ PR description template:
 - **shadcn/ui components** via lexico-components (never duplicate UI code)
 - **Tailwind CSS** with CSS variables for theming
 
-See [React Conventions](documentation/conventions/react.md) for component structure and patterns.
+See [React Conventions](documentation/skills/react-conventions/SKILL.md) for component structure and patterns.
 
 ## Documentation
 
 ### Conventions
 
-- [TypeScript](documentation/conventions/typescript.md): Strict mode, naming, type imports
-- [Imports](documentation/conventions/imports.md): Auto-sorted order, path mappings
-- [React](documentation/conventions/react.md): Component structure, TanStack Router, styling
+- [TypeScript](documentation/skills/typescript-conventions/SKILL.md): Strict mode, naming, type imports
+- [Imports](documentation/skills/imports-conventions/SKILL.md): Auto-sorted order, path mappings
+- [React](documentation/skills/react-conventions/SKILL.md): Component structure, TanStack Router, styling
 - [Error Handling](documentation/code-quality/error-handling.md): Zod validation, typed errors
 
 ### Development
@@ -395,7 +395,7 @@ pnpm add -w <package>                  # Workspace root
 ### Running Tasks
 
 ```bash
-nx run caelundas:develop               # Single project
+nx run caelundas:start                 # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
 ```
