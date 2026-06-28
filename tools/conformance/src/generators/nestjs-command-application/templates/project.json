@@ -2,7 +2,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "{{nameKebabCase}}",
   "projectType": "application",
-  "sourceRoot": "applications/{{nameKebabCase}}",
+  "sourceRoot": "{{destinationRoot}}/{{nameKebabCase}}",
   "tags": [
     "framework:nest-commander",
     "framework:nestjs",

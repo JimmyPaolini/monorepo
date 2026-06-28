@@ -252,7 +252,7 @@ pnpm exec nx affected --target=format --configuration=check --files=<staged-file
 **`sync-conformance-generators` fires** on `AGENTS.md` and `tools/conformance/generators.json` changes. Fix stale generated output by running:
 
 ```bash
-pnpm exec nx run monorepo:sync-conformance-generators
+pnpm exec nx run synchronization:conformance-generators
 ```
 
 See [triage-submission skill](../skills/triage-submission/SKILL.md) for the full hook triage procedure.

@@ -176,6 +176,19 @@ const config: KnipConfig = {
       project: "src/**/*.ts",
     },
 
+    // synchronization: NestJS CLI tool for monorepo config synchronization commands
+    "tools/synchronization": {
+      entry: ["src/main.ts", "src/files.ts"], // Main CLI entry + public file-list constant exports
+      ignore: [
+        "src/**/*.test.ts",
+        "testing/**", // Test fixtures and setup
+      ],
+      ignoreDependencies: [
+        "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+      ],
+      project: "src/**/*.ts",
+    },
+
     // conformance: Nx generator plugin for scaffolding React components
     "tools/conformance": {
       entry: "src/generators/*/generator.ts", // Each generator's entry point

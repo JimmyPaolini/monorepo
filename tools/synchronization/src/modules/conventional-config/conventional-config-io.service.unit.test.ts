@@ -1,0 +1,404 @@
+import { writeFileSync } from "node:fs";
+import path from "node:path";
+
+import { createMock } from "@golevelup/ts-vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
+
+import { ConventionalConfigIoService } from "./conventional-config-io.service";
+
+import type { ReleaseConfig, Type } from "./conventional-config.types";
+
+const fileContents = new Map<string, string>();
+const requiredModules = new Map<string, unknown>();
+
+vi.mock("node:fs", () => {
+  return {
+    readFileSync: vi.fn((filePath: string): string => {
+      const value = fileContents.get(filePath);
+      if (value === undefined) {
+        throw new Error(`File not found: ${filePath}`);
+      }
+      return value;
+    }),
+    writeFileSync: vi.fn((filePath: string, content: string): void => {
+      fileContents.set(filePath, content);
+    }),
+  };
+});
+
+vi.mock("node:module", () => {
+  return {
+    createRequire: vi.fn(() => {
+      return (modulePath: string): unknown => {
+        const value = requiredModules.get(modulePath);
+        if (value === undefined) {
+          throw new Error(`Module not found: ${modulePath}`);
+        }
+        return value;
+      };
+    }),
+  };
+});
+
+describe(ConventionalConfigIoService, () => {
+  let logger: LoggerService;
+  let service: ConventionalConfigIoService;
+
+  const workspaceRoot = process.cwd();
+  const releaseConfigFile = path.join(workspaceRoot, "release.config.cjs");
+  const settingsFile = path.join(workspaceRoot, ".vscode/settings.json");
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        ConventionalConfigIoService,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    logger = await module.resolve(LoggerService);
+    service = await module.resolve(ConventionalConfigIoService);
+  });
+
+  beforeEach(() => {
+    fileContents.clear();
+    requiredModules.clear();
+    vi.clearAllMocks();
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
+  });
+
+  it("formats scopes and markdown tables", () => {
+    expect(
+      service.formatScopesForSettings([
+        { description: "first", name: "alpha" },
+        { description: "second", name: "beta" },
+      ]),
+    ).toBe('    "alpha", // first\n    "beta" // second');
+
+    expect(
+      service.generateMarkdownTable(
+        [
+          { description: "first", value: "alpha" },
+          { description: "second", value: "beta" },
+        ],
+        { column1: "Scope", column2: "Description" },
+      ),
+    ).toContain("| `alpha` | first |");
+  });
+
+  it("extracts and replaces marker blocks", () => {
+    const content = ["<!-- types-start -->", "old", "<!-- types-end -->"].join(
+      "\n",
+    );
+
+    expect(service.extractMarkerContent(content, "types")).toContain("old");
+    expect(service.extractMarkerContent(content, "missing")).toBeUndefined();
+    expect(service.replaceMarkerContent(content, "types", "new")).toContain(
+      "<!-- types-start -->\n\nnew\n\n<!-- types-end -->",
+    );
+  });
+
+  it("parses issue template scopes and markdown values", () => {
+    const issueTemplate = [
+      "# <!-- scopes-start -->",
+      "options:",
+      "        - alpha",
+      "        - beta",
+      "validations:",
+      "# <!-- scopes-end -->",
+    ].join("\n");
+
+    expect(service.parseIssueTemplateScopes(issueTemplate)).toStrictEqual([
+      "alpha",
+      "beta",
+    ]);
+
+    const markdownTable = ["| `alpha` | desc |", "| `beta` | desc |"].join(
+      "\n",
+    );
+
+    expect(service.parseMarkdownTableValues(markdownTable)).toStrictEqual([
+      "alpha",
+      "beta",
+    ]);
+  });
+
+  it("returns empty parsed values when issue template or markdown rows are missing", () => {
+    expect(service.parseIssueTemplateScopes("no markers")).toStrictEqual([]);
+    expect(
+      service.parseIssueTemplateScopes(
+        [
+          "# <!-- scopes-start -->",
+          "options:",
+          "        - alpha",
+          "        malformed",
+          "validations:",
+          "# <!-- scopes-end -->",
+        ].join("\n"),
+      ),
+    ).toStrictEqual(["alpha"]);
+
+    expect(service.parseMarkdownTableValues("not-a-table-row")).toStrictEqual(
+      [],
+    );
+    expect(
+      service.parseMarkdownTableValues("| alpha | missing-code-format |"),
+    ).toStrictEqual([]);
+  });
+
+  it("parses settings scopes from JSON5 content", () => {
+    const settingsContent =
+      '{ "conventionalCommits.scopes": ["alpha", "beta"] }';
+
+    expect(service.parseSettingsScopes(settingsContent)).toStrictEqual([
+      "alpha",
+      "beta",
+    ]);
+  });
+
+  it("throws when settings scopes key is missing", () => {
+    expect(() => service.parseSettingsScopes("{}")).toThrow(
+      'Could not find "conventionalCommits.scopes" array in settings.json',
+    );
+  });
+
+  it("appends missing release rules and preset types", () => {
+    const baseContent = [
+      "module.exports = {",
+      "  plugins: [",
+      "    ['@semantic-release/commit-analyzer', {",
+      "      releaseRules: [",
+      '        { type: "feat", release: "minor" },',
+      "      ],",
+      "    }],",
+      "    ['@semantic-release/release-notes-generator', {",
+      "      presetConfig: {",
+      "        types: [",
+      '          { type: "feat", section: "Features", hidden: false },',
+      "        ],",
+      "      },",
+      "    }],",
+      "  ],",
+      "};",
+    ].join("\n");
+    const sourceTypes: Type[] = [
+      { code: "feat", description: "feature", emoji: "✨", name: "feat" },
+      { code: "fix", description: "bugfix", emoji: "🐛", name: "fix" },
+    ];
+
+    const withRules = service.appendToReleaseRules(baseContent, ["fix"]);
+    const withTypes = service.appendToPresetTypes(
+      withRules,
+      ["fix"],
+      sourceTypes,
+    );
+
+    expect(withTypes).toContain('{ type: "fix", release: false }');
+    expect(withTypes).toContain(
+      '{ type: "fix", section: "⚠️ Fix", hidden: true }',
+    );
+  });
+
+  it("returns unchanged content when no release or preset types are missing", () => {
+    const content = "module.exports = { plugins: [] };";
+
+    expect(service.appendToReleaseRules(content, [])).toBe(content);
+    expect(
+      service.appendToPresetTypes(
+        content,
+        [],
+        [{ code: "feat", description: "feature", emoji: "✨", name: "feat" }],
+      ),
+    ).toBe(content);
+  });
+
+  it("adds preset type entry with fallback description when source type is missing", () => {
+    const content = ["presetConfig: {", "  types: [", "  ],", "}"].join("\n");
+
+    const updated = service.appendToPresetTypes(content, ["unknown"], []);
+
+    expect(updated).toContain("⚠️ Added by sync — add description");
+  });
+
+  it("reads release config type values", () => {
+    const releaseConfig: ReleaseConfig = {
+      plugins: [
+        [
+          "@semantic-release/commit-analyzer",
+          {
+            releaseRules: [
+              { release: "minor", type: "feat" },
+              { release: "patch", type: "fix" },
+              { release: false },
+            ],
+          },
+        ],
+        [
+          "@semantic-release/release-notes-generator",
+          {
+            presetConfig: {
+              types: [
+                { section: "Features", type: "feat" },
+                { section: "Bug Fixes", type: "fix" },
+              ],
+            },
+          },
+        ],
+      ],
+    };
+
+    expect(service.getReleaseRulesTypes(releaseConfig)).toStrictEqual([
+      "feat",
+      "fix",
+    ]);
+    expect(service.getPresetConfigTypes(releaseConfig)).toStrictEqual([
+      "feat",
+      "fix",
+    ]);
+  });
+
+  it("writes synchronized issue template and settings content", () => {
+    const issueTemplateFile = path.join(
+      workspaceRoot,
+      ".github/ISSUE_TEMPLATE/bug.yml",
+    );
+    const issueTemplate = [
+      "# <!-- scopes-start -->",
+      "options:",
+      "        - stale",
+      "validations:",
+      "# <!-- scopes-end -->",
+    ].join("\n");
+
+    fileContents.set(issueTemplateFile, issueTemplate);
+    service.writeIssueTemplateSync(["alpha", "beta"], issueTemplateFile);
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      issueTemplateFile,
+      expect.stringContaining("        - alpha\n        - beta"),
+      "utf8",
+    );
+
+    fileContents.set(
+      settingsFile,
+      '{\n  "conventionalCommits.scopes": [\n    "stale"\n  ]\n}',
+    );
+    service.writeSettingsSync([
+      { description: "first", name: "alpha" },
+      { description: "second", name: "beta" },
+    ]);
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      settingsFile,
+      expect.stringContaining('"alpha", // first'),
+      "utf8",
+    );
+  });
+
+  it("throws when issue template markers are missing", () => {
+    const issueTemplateFile = path.join(
+      workspaceRoot,
+      ".github/ISSUE_TEMPLATE/bug.yml",
+    );
+    fileContents.set(issueTemplateFile, "name: bug");
+
+    expect(() =>
+      service.writeIssueTemplateSync(["alpha"], issueTemplateFile),
+    ).toThrow("Could not find scopes markers");
+  });
+
+  it("throws when settings scope array pattern is missing", () => {
+    fileContents.set(settingsFile, '{"editor.formatOnSave": true}');
+
+    expect(() =>
+      service.writeSettingsSync([{ description: "first", name: "alpha" }]),
+    ).toThrow(
+      'Could not find "conventionalCommits.scopes" array in settings.json',
+    );
+  });
+
+  it("writes synchronized release config and skill markers", () => {
+    const releaseConfig: ReleaseConfig = {
+      plugins: [
+        [
+          "@semantic-release/commit-analyzer",
+          { releaseRules: [{ release: "minor", type: "feat" }] },
+        ],
+        [
+          "@semantic-release/release-notes-generator",
+          {
+            presetConfig: {
+              types: [{ section: "Features", type: "feat" }],
+            },
+          },
+        ],
+      ],
+    };
+    const releaseConfigSource = [
+      "module.exports = {",
+      "  plugins: [",
+      "    ['@semantic-release/commit-analyzer', { releaseRules: [",
+      '      { type: "feat", release: "minor" },',
+      "    ] }],",
+      "    ['@semantic-release/release-notes-generator', { presetConfig: { types: [",
+      '      { type: "feat", section: "Features", hidden: false },',
+      "    ] } }],",
+      "  ],",
+      "};",
+    ].join("\n");
+
+    requiredModules.set(releaseConfigFile, releaseConfig);
+    fileContents.set(releaseConfigFile, releaseConfigSource);
+    service.writeReleaseConfigSync([
+      { code: "feat", description: "feature", emoji: "✨", name: "feat" },
+      { code: "fix", description: "bugfix", emoji: "🐛", name: "fix" },
+    ]);
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      releaseConfigFile,
+      expect.stringContaining('{ type: "fix", release: false }'),
+      "utf8",
+    );
+
+    const skillFile = path.join(
+      workspaceRoot,
+      "documentation/skills/test/SKILL.md",
+    );
+    fileContents.set(
+      skillFile,
+      [
+        "<!-- types-start -->",
+        "old",
+        "<!-- types-end -->",
+        "<!-- scopes-start -->",
+        "old",
+        "<!-- scopes-end -->",
+      ].join("\n"),
+    );
+    service.writeSkillSync(
+      {
+        scopes: [{ description: "scope", name: "tools" }],
+        types: [
+          { code: "fix", description: "fixing", emoji: "🐛", name: "fix" },
+        ],
+      },
+      skillFile,
+    );
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      skillFile,
+      expect.stringContaining("| `fix` | fixing |"),
+      "utf8",
+    );
+    expect(logger.log).toHaveBeenCalledWith(expect.any(String));
+  });
+});

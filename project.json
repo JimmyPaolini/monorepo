@@ -12,9 +12,9 @@
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
             "nx run {projectName}:spell-check",
-            "nx run {projectName}:sync-agent-skills:check",
-            "nx run {projectName}:sync-conventional-config:check",
-            "nx run {projectName}:sync-pull-request-template:check",
+            "nx run synchronization:agent-skills:check",
+            "nx run synchronization:conventional-config:check",
+            "nx run synchronization:pull-request-template:check",
             "nx run {projectName}:sync-vscode-extensions:check",
             "nx run {projectName}:type-coverage",
             "nx run {projectName}:typecheck",
@@ -28,9 +28,9 @@
         "write": {
           "commands": [
             "nx run {projectName}:measure-code:write",
-            "nx run {projectName}:sync-agent-skills:write",
-            "nx run {projectName}:sync-conventional-config:write",
-            "nx run {projectName}:sync-pull-request-template:write",
+            "nx run synchronization:agent-skills:write",
+            "nx run synchronization:conventional-config:write",
+            "nx run synchronization:pull-request-template:write",
             "nx run {projectName}:sync-vscode-extensions:write",
             "nx run {projectName}:spell-check",
             "nx run {projectName}:clean:write",
@@ -701,114 +701,6 @@
       "options": {
         "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml notepads",
         "cwd": "{workspaceRoot}"
-      }
-    },
-    "sync-agent-skills": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/sync-agent-skills.ts check"
-        },
-        "write": {
-          "command": "tsx scripts/sync-agent-skills.ts write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/AGENTS.md",
-        "{projectRoot}/documentation/skills/**/*.md"
-      ],
-      "options": {
-        "command": "tsx scripts/sync-agent-skills.ts"
-      }
-    },
-    "sync-conformance-generators": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/sync-conformance-generators.ts check"
-        },
-        "write": {
-          "command": "tsx scripts/sync-conformance-generators.ts write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that conformance generators table is synchronized from tools/conformance/generators.json into AGENTS.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/AGENTS.md",
-        "{workspaceRoot}/tools/conformance/generators.json"
-      ],
-      "options": {
-        "command": "tsx scripts/sync-conformance-generators.ts"
-      }
-    },
-    "sync-conventional-config": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/sync-conventional-config.ts check"
-        },
-        "write": {
-          "command": "tsx scripts/sync-conventional-config.ts write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/.vscode/settings.json",
-        "{projectRoot}/configuration/conventional.config.cjs",
-        "{projectRoot}/documentation/skills/commit-code/SKILL.md"
-      ],
-      "options": {
-        "command": "tsx scripts/sync-conventional-config.ts"
-      }
-    },
-    "sync-devcontainer-configuration": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/sync-devcontainer-configuration.ts check"
-        },
-        "write": {
-          "command": "tsx scripts/sync-devcontainer-configuration.ts write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that common fields in cloud devcontainer.json are in sync with the local config (check) or propagate them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/.devcontainer/cloud/devcontainer.json",
-        "{projectRoot}/.devcontainer/local/devcontainer.json"
-      ],
-      "options": {
-        "command": "tsx scripts/sync-devcontainer-configuration.ts"
-      }
-    },
-    "sync-pull-request-template": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "tsx scripts/sync-pull-request-template.ts check"
-        },
-        "write": {
-          "command": "tsx scripts/sync-pull-request-template.ts write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that the PR template is synchronized from .github/PULL_REQUEST_TEMPLATE.md into skills and prompt files (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/.github/prompts/create-pull-request.prompt.md",
-        "{projectRoot}/.github/prompts/update-pull-request.prompt.md",
-        "{projectRoot}/.github/PULL_REQUEST_TEMPLATE.md",
-        "{projectRoot}/documentation/skills/create-pull-request/SKILL.md"
-      ],
-      "options": {
-        "command": "tsx scripts/sync-pull-request-template.ts"
       }
     },
     "sync-vscode-extensions": {

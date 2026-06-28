@@ -4,14 +4,18 @@ import { fileURLToPath } from "node:url";
 import { formatFiles, type Tree } from "@nx/devkit";
 import _ from "lodash";
 
-import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
-import { generateFiles, resolveName } from "../../utilities";
+import {
+  generateFiles,
+  resolveDestinationRoot,
+  resolveName,
+} from "../../utilities";
 
 /**
  * Generate nestjs command application options.
  */
 interface GenerateNestjsCommandApplicationOptions {
+  destinationRoot?: string;
   name?: string;
 }
 
@@ -33,7 +37,14 @@ export async function generateNestjsCommandApplication(
     subject: "Application name",
   });
 
-  const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
+  const destinationRoot = await resolveDestinationRoot({
+    ...(options.destinationRoot !== undefined && {
+      destinationRoot: options.destinationRoot,
+    }),
+    message: "Where should the NestJS command application be generated?",
+  });
+
+  const projectRoot = path.join(destinationRoot, nameKebabCase);
 
   if (tree.exists(projectRoot)) {
     throw new Error(
@@ -42,6 +53,7 @@ export async function generateNestjsCommandApplication(
   }
 
   const substitutions = {
+    destinationRoot,
     nameCamelCase: _.camelCase(nameKebabCase),
     nameKebabCase,
     namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
