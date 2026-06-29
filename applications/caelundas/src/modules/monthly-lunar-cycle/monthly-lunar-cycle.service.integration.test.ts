@@ -70,7 +70,7 @@ describe("monthly-lunar-cycle.events integration", () => {
         CalendarService,
         {
           provide: ConfigService,
-          useValue: { get: vi.fn() },
+          useValue: { get: vi.fn<(propertyPath: string) => unknown>() },
         },
         EphemerisService,
         LoggerService,

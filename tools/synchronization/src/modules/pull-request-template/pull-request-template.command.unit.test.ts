@@ -2,9 +2,10 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { PullRequestTemplateCommand } from "./pull-request-template.command";
@@ -45,8 +46,8 @@ describe(PullRequestTemplateCommand, () => {
     path.join(workspaceRoot, filePath),
   );
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         PullRequestTemplateCommand,
         {
@@ -55,6 +56,28 @@ describe(PullRequestTemplateCommand, () => {
         },
       ],
     }).compile();
+  };
+
+  const setSynchronizedTargets = (templateContent: string): void => {
+    const wrappedTemplate = `\`\`\`markdown\n${templateContent}\n\`\`\``;
+
+    fileContents.set(templateFile, `${templateContent}\n`);
+    for (const targetFile of targetFiles) {
+      fileContents.set(
+        targetFile,
+        [
+          "# Title",
+          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-start -->`,
+          wrappedTemplate,
+          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-end -->`,
+          "",
+        ].join("\n"),
+      );
+    }
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     command = await module.resolve(PullRequestTemplateCommand);
     logger = await module.resolve(LoggerService);
@@ -70,15 +93,7 @@ describe(PullRequestTemplateCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        PullRequestTemplateCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const resolvedLogger = await module.resolve(LoggerService);
 
@@ -88,22 +103,7 @@ describe(PullRequestTemplateCommand, () => {
   });
 
   it("passes in check mode when all targets are synchronized", async () => {
-    const templateContent = "## Summary\n\n- item";
-    const wrappedTemplate = `\`\`\`markdown\n${templateContent}\n\`\`\``;
-
-    fileContents.set(templateFile, `${templateContent}\n`);
-    for (const targetFile of targetFiles) {
-      fileContents.set(
-        targetFile,
-        [
-          "# Title",
-          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-start -->`,
-          wrappedTemplate,
-          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-end -->`,
-          "",
-        ].join("\n"),
-      );
-    }
+    setSynchronizedTargets("## Summary\n\n- item");
 
     await command.run(["check"]);
 
@@ -112,22 +112,7 @@ describe(PullRequestTemplateCommand, () => {
   });
 
   it("defaults to check mode when no mode is provided", async () => {
-    const templateContent = "## Summary\n\n- item";
-    const wrappedTemplate = `\`\`\`markdown\n${templateContent}\n\`\`\``;
-
-    fileContents.set(templateFile, `${templateContent}\n`);
-    for (const targetFile of targetFiles) {
-      fileContents.set(
-        targetFile,
-        [
-          "# Title",
-          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-start -->`,
-          wrappedTemplate,
-          `<!-- ${SYNC_PULL_REQUEST_TEMPLATE_MARKER}-end -->`,
-          "",
-        ].join("\n"),
-      );
-    }
+    setSynchronizedTargets("## Summary\n\n- item");
 
     await command.run([]);
 
@@ -212,11 +197,7 @@ describe(PullRequestTemplateCommand, () => {
       fileContents.set(targetFile, "# Missing markers");
     }
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -238,11 +219,7 @@ describe(PullRequestTemplateCommand, () => {
       fileContents.set(targetFile, "content");
     }
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["invalid-mode"])).rejects.toThrow(
       "process.exit:1",

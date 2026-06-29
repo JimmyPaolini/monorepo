@@ -13,6 +13,7 @@ import {
   Word,
 } from "@monorepo/lexico-entities";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import {
   createRepositoryMock,
   setPromptsMockResponse,
@@ -47,6 +48,10 @@ describe(ClearCommand, () => {
       providers: [
         ClearCommand,
         {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
           provide: getRepositoryToken(Lexeme),
           useValue: createRepositoryMock<Lexeme>(),
         },
@@ -73,10 +78,6 @@ describe(ClearCommand, () => {
         {
           provide: getRepositoryToken(Token),
           useValue: createRepositoryMock<Token>(),
-        },
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
@@ -92,7 +93,7 @@ describe(ClearCommand, () => {
   });
 
   beforeEach(() => {
-    vi.clearAllMocks();
+    resetCommandTestHarness({ unstubGlobals: false });
     setPromptsMockResponse(promptsMock, {
       dictionary: true,
       literature: true,
@@ -107,6 +108,10 @@ describe(ClearCommand, () => {
     const module = await Test.createTestingModule({
       providers: [
         ClearCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
         {
           provide: getRepositoryToken(Lexeme),
           useValue: createRepositoryMock<Lexeme>(),
@@ -135,29 +140,35 @@ describe(ClearCommand, () => {
           provide: getRepositoryToken(Token),
           useValue: createRepositoryMock<Token>(),
         },
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
       ],
     }).compile();
 
+    await module.resolve(ClearCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("ClearCommand");
   });
 
-  it("parses dictionary and literature boolean options", () => {
-    expect(command.parseDictionary(undefined)).toBe(true);
-    expect(command.parseDictionary("false")).toBe(false);
-    expect(command.parseDictionary("0")).toBe(false);
-    expect(command.parseDictionary("true")).toBe(true);
+  it.each([
+    ["dictionary", undefined, true],
+    ["dictionary", "false", false],
+    ["dictionary", "0", false],
+    ["dictionary", "true", true],
+    ["literature", undefined, true],
+    ["literature", "false", false],
+    ["literature", "0", false],
+    ["literature", "true", true],
+  ] as const)(
+    "parses %s option %s to %s",
+    (optionName, inputValue, expectedValue) => {
+      const result =
+        optionName === "dictionary"
+          ? command.parseDictionary(inputValue)
+          : command.parseLiterature(inputValue);
 
-    expect(command.parseLiterature(undefined)).toBe(true);
-    expect(command.parseLiterature("false")).toBe(false);
-    expect(command.parseLiterature("0")).toBe(false);
-    expect(command.parseLiterature("true")).toBe(true);
-  });
+      expect(result).toBe(expectedValue);
+    },
+  );
 
   it("prompts and clears both dictionary and literature when options are missing", async () => {
     await command.run([], {});

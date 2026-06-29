@@ -2,9 +2,10 @@ import { readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { AgentSkillsCommand } from "./agent-skills.command";
@@ -45,8 +46,8 @@ describe(AgentSkillsCommand, () => {
   const agentsFile = path.join(workspaceRoot, "AGENTS.md");
   const skillsDirectory = path.join(workspaceRoot, "documentation/skills");
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         AgentSkillsCommand,
         {
@@ -55,6 +56,10 @@ describe(AgentSkillsCommand, () => {
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     command = await module.resolve(AgentSkillsCommand);
     logger = await module.resolve(LoggerService);
@@ -71,15 +76,7 @@ describe(AgentSkillsCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        AgentSkillsCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const logger = await module.resolve(LoggerService);
 
@@ -188,11 +185,7 @@ describe(AgentSkillsCommand, () => {
     );
     directoryEntries.set(skillsDirectory, []);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["invalid-mode"])).rejects.toThrow(
       "process.exit:1",
@@ -208,11 +201,7 @@ describe(AgentSkillsCommand, () => {
     fileContents.set(agentsFile, "# Header without markers");
     directoryEntries.set(skillsDirectory, []);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -253,11 +242,7 @@ describe(AgentSkillsCommand, () => {
       "plain content without frontmatter",
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -281,11 +266,7 @@ describe(AgentSkillsCommand, () => {
       throw nonErrorLike;
     });
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 

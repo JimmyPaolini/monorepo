@@ -6,6 +6,7 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
@@ -184,11 +185,7 @@ describe(ConventionalConfigService, () => {
     vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
     vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     expect(() =>
       service.handleCheckMode({
@@ -348,11 +345,7 @@ describe(ConventionalConfigService, () => {
   it("exits runSynchronization for invalid mode", () => {
     vi.mocked(io.parseSettingsScopes).mockReturnValue(["tools"]);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     expect(() => service.runSynchronization("invalid-mode")).toThrow(
       "process.exit:1",

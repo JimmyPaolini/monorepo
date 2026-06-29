@@ -1,7 +1,7 @@
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
@@ -36,8 +36,8 @@ describe(ConventionalConfigValidatorsService, () => {
     types: [{ code: "fix", description: "fixing", emoji: "🐛", name: "fix" }],
   };
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         ConventionalConfigValidatorsService,
         {
@@ -50,6 +50,10 @@ describe(ConventionalConfigValidatorsService, () => {
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     io = await module.resolve(ConventionalConfigIoService);
     logger = await module.resolve(LoggerService);
@@ -66,19 +70,7 @@ describe(ConventionalConfigValidatorsService, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ConventionalConfigValidatorsService,
-        {
-          provide: ConventionalConfigIoService,
-          useValue: createMock<ConventionalConfigIoService>(),
-        },
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const localLogger = await module.resolve(LoggerService);
 

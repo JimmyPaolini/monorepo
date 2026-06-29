@@ -85,129 +85,113 @@ describe(SpecialtyAspectsService, () => {
       return ephemerisByBody;
     };
 
-    it("detects perfective quintile", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
+    it.each([
+      {
+        aspectDescription: "perfective quintile",
+        expectedBody: "Mercury",
+        expectedPhase: "Perfective",
+        expectedVerb: "quintile",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 72,
+            [nextMinute.toISOString()]: 73,
+            [previousMinute.toISOString()]: 71,
+          });
+          coordinateEphemerisByBody.mercury = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 359,
+            [previousMinute.toISOString()]: 1,
+          });
+        },
+      },
+      {
+        aspectDescription: "forming quintile",
+        expectedBody: "Venus",
+        expectedPhase: "Forming",
+        expectedVerb: "quintile",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 72,
+            [nextMinute.toISOString()]: 72,
+            [previousMinute.toISOString()]: 72,
+          });
+          coordinateEphemerisByBody.venus = createEphemeris({
+            [currentMinute.toISOString()]: 358.5,
+            [nextMinute.toISOString()]: 359.5,
+            [previousMinute.toISOString()]: 357,
+          });
+        },
+      },
+      {
+        aspectDescription: "dissolving novile",
+        expectedBody: "Mars",
+        expectedPhase: "Dissolving",
+        expectedVerb: "novile",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.mars = createEphemeris({
+            [currentMinute.toISOString()]: 40.8,
+            [nextMinute.toISOString()]: 41.5,
+            [previousMinute.toISOString()]: 40.5,
+          });
+        },
+      },
+    ])(
+      "detects $aspectDescription",
+      ({ expectedBody, expectedPhase, expectedVerb, setScenarioEphemeris }) => {
+        const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
+        const previousMinute = currentMinute.clone().subtract(1, "minute");
+        const nextMinute = currentMinute.clone().add(1, "minute");
+        const coordinateEphemerisByBody = createDefaultEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+        );
 
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
+        setScenarioEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+          coordinateEphemerisByBody,
+        );
 
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 72,
-        [nextMinute.toISOString()]: 73,
-        [previousMinute.toISOString()]: 71,
-      });
-      coordinateEphemerisByBody.mercury = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 359,
-        [previousMinute.toISOString()]: 1,
-      });
+        const events = service.detect({
+          coordinateEphemerisByBody,
+          minute: currentMinute,
+        });
 
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
+        expect(events.length).toBeGreaterThanOrEqual(1);
 
-      expect(events.length).toBeGreaterThanOrEqual(1);
+        const detectedEvent = events.find(
+          (event) =>
+            event.description.includes(expectedVerb) &&
+            event.description.includes("Sun") &&
+            event.description.includes(expectedBody),
+        );
 
-      const quintileEvent = events.find(
-        (e) =>
-          e.description.includes("quintile") &&
-          e.categories.includes("Perfective") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mercury"),
-      );
-
-      expect(quintileEvent).toBeDefined();
-    });
-
-    it("detects forming aspect", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
-
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
-
-      // Sun at 72°, Venus moving from 357° to 358.5° (entering 2° quintile orb)
-      // Angle from Sun: 75° (outside) → 73.5° (inside) → entering orb around 72° (within 2°)
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 72,
-        [nextMinute.toISOString()]: 72,
-        [previousMinute.toISOString()]: 72,
-      });
-      coordinateEphemerisByBody.venus = createEphemeris({
-        [currentMinute.toISOString()]: 358.5,
-        [nextMinute.toISOString()]: 359.5,
-        [previousMinute.toISOString()]: 357,
-      });
-
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
-
-      expect(events.length).toBeGreaterThanOrEqual(1);
-
-      const formingQuintile = events.find(
-        (e) =>
-          e.description.includes("quintile") &&
-          e.categories.includes("Forming") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Venus"),
-      );
-
-      expect(formingQuintile).toBeDefined();
-    });
-
-    it("detects dissolving aspect", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
-
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
-
-      // Sun at 0°, Mars moving from 40.5° to 41.5° (exiting 1° novile orb at 40°)
-      // Angle: 40.5° to 41.5° → exiting 1° orb around 40°
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.mars = createEphemeris({
-        [currentMinute.toISOString()]: 40.8,
-        [nextMinute.toISOString()]: 41.5,
-        [previousMinute.toISOString()]: 40.5,
-      });
-
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
-
-      expect(events.length).toBeGreaterThanOrEqual(1);
-
-      const dissolvingNovile = events.find(
-        (e) =>
-          e.description.includes("novile") &&
-          e.categories.includes("Dissolving") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mars"),
-      );
-
-      expect(dissolvingNovile).toBeDefined();
-    });
+        expect(detectedEvent).toBeDefined();
+        expect(detectedEvent?.categories).toContain(expectedPhase);
+      },
+    );
 
     it("detects multiple aspects between different body pairs", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");

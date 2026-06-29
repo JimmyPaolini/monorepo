@@ -2,6 +2,10 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import {
+  createCommandTestHarness,
+  resetCommandTestHarness,
+} from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { EpigraphikDatenbankClaussSlabyCommand } from "./epigraphik-datenbank-clauss-slaby.command";
@@ -50,13 +54,11 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     }).compile();
 
     command = await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
-    logger = await module.resolve(LoggerService);
+    logger = module.get(LoggerService);
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
-    vi.unstubAllGlobals();
+    resetCommandTestHarness();
     existsSyncMock.mockReturnValue(true);
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
@@ -104,17 +106,19 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
       "/tmp/edcs-errors.log",
     );
 
-    const module = await Test.createTestingModule({
-      providers: [
-        EpigraphikDatenbankClaussSlabyCommand,
+    const commandHarness = await createCommandTestHarness({
+      additionalProviders: [
         {
           provide: LoggerService,
           useValue: bootstrapLogger,
         },
       ],
-    }).compile();
+      commandType: EpigraphikDatenbankClaussSlabyCommand,
+    });
 
-    await module.resolve(EpigraphikDatenbankClaussSlabyCommand);
+    await commandHarness.testingModule.resolve(
+      EpigraphikDatenbankClaussSlabyCommand,
+    );
 
     expect(
       bootstrapLogger.createTimestampedOutputLogFilePath,

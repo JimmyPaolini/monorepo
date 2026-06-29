@@ -9,7 +9,7 @@
   },
   "duplicates": {
     "crossLanguage": true,
-    "ignore": ["*.test*", "packages/*/src/modules/database/migrations/**/*.ts"],
+    "ignore": ["packages/*/src/modules/database/migrations/**/*.ts"],
     "ignoreDefaults": true,
     "ignoreImports": true,
     "minLines": 12,

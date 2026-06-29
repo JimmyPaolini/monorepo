@@ -2,9 +2,10 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { DevcontainerConfigurationCommand } from "./devcontainer-configuration.command";
@@ -42,8 +43,8 @@ describe(DevcontainerConfigurationCommand, () => {
     ".devcontainer/cloud/devcontainer.json",
   );
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         DevcontainerConfigurationCommand,
         {
@@ -52,6 +53,10 @@ describe(DevcontainerConfigurationCommand, () => {
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     command = await module.resolve(DevcontainerConfigurationCommand);
     logger = await module.resolve(LoggerService);
@@ -67,15 +72,7 @@ describe(DevcontainerConfigurationCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        DevcontainerConfigurationCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const logger = await module.resolve(LoggerService);
 
@@ -236,11 +233,7 @@ describe(DevcontainerConfigurationCommand, () => {
       }),
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -273,11 +266,7 @@ describe(DevcontainerConfigurationCommand, () => {
       }),
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -306,11 +295,7 @@ describe(DevcontainerConfigurationCommand, () => {
       }),
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 

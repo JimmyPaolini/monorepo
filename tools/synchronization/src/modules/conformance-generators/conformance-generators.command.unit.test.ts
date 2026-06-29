@@ -2,9 +2,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { ConformanceGeneratorsCommand } from "./conformance-generators.command";
@@ -39,8 +40,8 @@ describe(ConformanceGeneratorsCommand, () => {
     "tools/conformance/generators.json",
   );
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         ConformanceGeneratorsCommand,
         {
@@ -49,6 +50,10 @@ describe(ConformanceGeneratorsCommand, () => {
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     command = await module.resolve(ConformanceGeneratorsCommand);
     logger = await module.resolve(LoggerService);
@@ -64,15 +69,7 @@ describe(ConformanceGeneratorsCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ConformanceGeneratorsCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const logger = await module.resolve(LoggerService);
 
@@ -199,11 +196,7 @@ describe(ConformanceGeneratorsCommand, () => {
       ].join("\n"),
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["invalid-mode"])).rejects.toThrow(
       "process.exit:1",
@@ -219,11 +212,7 @@ describe(ConformanceGeneratorsCommand, () => {
     fileContents.set(generatorsFile, JSON.stringify({ generators: {} }));
     fileContents.set(agentsFile, "# Header without markers");
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -260,11 +249,7 @@ describe(ConformanceGeneratorsCommand, () => {
       ].join("\n"),
     );
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
@@ -288,11 +273,7 @@ describe(ConformanceGeneratorsCommand, () => {
       throw nonErrorLike;
     });
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 

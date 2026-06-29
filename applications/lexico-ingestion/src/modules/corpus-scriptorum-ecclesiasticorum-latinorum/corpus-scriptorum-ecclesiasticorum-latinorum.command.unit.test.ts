@@ -2,6 +2,10 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import {
+  createCommandTestHarness,
+  resetCommandTestHarness,
+} from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { CorpusScriptorumEcclesiasticorumLatinorumCommand } from "./corpus-scriptorum-ecclesiasticorum-latinorum.command";
@@ -52,12 +56,11 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     command = await module.resolve(
       CorpusScriptorumEcclesiasticorumLatinorumCommand,
     );
-    logger = await module.resolve(LoggerService);
+    logger = module.get(LoggerService);
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.unstubAllGlobals();
+    resetCommandTestHarness();
 
     accessMock.mockClear();
     appendFileMock.mockClear();
@@ -116,17 +119,19 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
       "/tmp/csel-errors.log",
     );
 
-    const module = await Test.createTestingModule({
-      providers: [
-        CorpusScriptorumEcclesiasticorumLatinorumCommand,
+    const commandHarness = await createCommandTestHarness({
+      additionalProviders: [
         {
           provide: LoggerService,
           useValue: bootstrapLogger,
         },
       ],
-    }).compile();
+      commandType: CorpusScriptorumEcclesiasticorumLatinorumCommand,
+    });
 
-    await module.resolve(CorpusScriptorumEcclesiasticorumLatinorumCommand);
+    await commandHarness.testingModule.resolve(
+      CorpusScriptorumEcclesiasticorumLatinorumCommand,
+    );
 
     expect(
       bootstrapLogger.createTimestampedOutputLogFilePath,

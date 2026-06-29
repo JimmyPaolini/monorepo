@@ -1,5 +1,5 @@
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { AgentSkillsCommand } from "../agent-skills/agent-skills.command";
@@ -29,8 +29,8 @@ describe(SynchronizationCommand, () => {
   let logger: LoggerService;
   let pullRequestTemplateCommand: PullRequestTemplateCommand;
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         SynchronizationCommand,
         createCommandProvider(AgentSkillsCommand),
@@ -41,6 +41,10 @@ describe(SynchronizationCommand, () => {
         createCommandProvider(LoggerService),
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     agentSkillsCommand = await module.resolve(AgentSkillsCommand);
     command = await module.resolve(SynchronizationCommand);
@@ -66,17 +70,7 @@ describe(SynchronizationCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        SynchronizationCommand,
-        createCommandProvider(AgentSkillsCommand),
-        createCommandProvider(ConformanceGeneratorsCommand),
-        createCommandProvider(ConventionalConfigCommand),
-        createCommandProvider(DevcontainerConfigurationCommand),
-        createCommandProvider(PullRequestTemplateCommand),
-        createCommandProvider(LoggerService),
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const logger = await module.resolve(LoggerService);
 

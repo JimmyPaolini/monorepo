@@ -6,6 +6,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { PerseusCommand } from "./perseus.command";
@@ -50,10 +51,7 @@ describe(PerseusCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
-    vi.unstubAllGlobals();
-    vi.useRealTimers();
+    resetCommandTestHarness({ useRealTimers: true });
     accessMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     mkdirMock.mockResolvedValue(undefined);
@@ -86,6 +84,7 @@ describe(PerseusCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(PerseusCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("PerseusCommand");
