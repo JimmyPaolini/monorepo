@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "properties": {
+    "directory": {
+      "description": "Directory where the generator output should be created",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the generated project or component",
+      "type": "string"
+    }
+  },
+  "required": ["directory", "name"],
+  "title": "Generator Schema",
+  "type": "object"
+}

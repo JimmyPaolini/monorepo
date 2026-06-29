@@ -1,5 +1,3 @@
-import { fileURLToPath } from "node:url";
-
 import {
   APPLICATIONS_DIRECTORY,
   PACKAGES_DIRECTORY,
@@ -10,42 +8,18 @@ import type { ValidatorRuleName, ValidatorSeverity } from "./validator.types";
 
 // ♟️ Constants
 
-const COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-command-application/templates",
-    import.meta.url,
-  ),
-);
-const COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-command-module/templates",
-    import.meta.url,
-  ),
-);
-const GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-graphql-application/templates",
-    import.meta.url,
-  ),
-);
-const GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-graphql-module/templates",
-    import.meta.url,
-  ),
-);
-const SERVICE_FILES_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-service-file/templates",
-    import.meta.url,
-  ),
-);
-const SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH = fileURLToPath(
-  new URL(
-    "../../../../conformance/src/generators/nestjs-service-module/templates",
-    import.meta.url,
-  ),
-);
+const COMMAND_APPLICATION_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-command-application/templates";
+const COMMAND_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-command-module/templates";
+const GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-graphql-application/templates";
+const GRAPHQL_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-graphql-module/templates";
+const SERVICE_FILES_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-service-file/templates";
+const SERVICE_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH =
+  "tools/conformance/src/modules/nestjs-service-module/templates";
 
 export const NESTJS_APPLICATION_TAG = "framework:nestjs";
 export const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
@@ -83,16 +57,33 @@ export const VALIDATOR_RULE_SEVERITY: Record<
   "nestjs-service-module": "error",
 };
 
-const VALIDATOR_RULE_TEMPLATE_DIRECTORY: Record<ValidatorRuleName, string> = {
-  "nestjs-command-application": COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
-  "nestjs-command-module": COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
-  "nestjs-graphql-application": GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
-  "nestjs-graphql-module": GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH,
-  "nestjs-service-file": SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
-  "nestjs-service-module": SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
+const VALIDATOR_RULE_TEMPLATE_DIRECTORY_RELATIVE_PATH: Record<
+  ValidatorRuleName,
+  string
+> = {
+  "nestjs-command-application":
+    COMMAND_APPLICATION_TEMPLATES_DIRECTORY_RELATIVE_PATH,
+  "nestjs-command-module": COMMAND_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH,
+  "nestjs-graphql-application":
+    GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_RELATIVE_PATH,
+  "nestjs-graphql-module": GRAPHQL_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH,
+  "nestjs-service-file": SERVICE_FILES_TEMPLATES_DIRECTORY_RELATIVE_PATH,
+  "nestjs-service-module": SERVICE_MODULE_TEMPLATES_DIRECTORY_RELATIVE_PATH,
 };
 
-export { VALIDATOR_RULE_TEMPLATE_DIRECTORY };
+/**
+ * Returns the absolute path to a template directory for the given rule.
+ */
+export function getValidatorTemplateDirectoryPath(
+  ruleName: ValidatorRuleName,
+  workspaceRoot: string,
+): string {
+  const relativePath =
+    VALIDATOR_RULE_TEMPLATE_DIRECTORY_RELATIVE_PATH[ruleName];
+  return relativePath
+    ? `${workspaceRoot}/${relativePath}`
+    : VALIDATOR_RULE_TEMPLATE_DIRECTORY_RELATIVE_PATH[ruleName];
+}
 
 /** Type guard for validation rule names. */
 export function isValidatorRuleName(value: string): value is ValidatorRuleName {

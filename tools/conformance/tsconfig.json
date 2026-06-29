@@ -25,7 +25,8 @@
     "dist",
     "node_modules",
     "output",
-    "src/generators/**/templates/**"
+    "src/modules/*/templates/**",
+    "templates/**"
   ],
   "extends": "../../configuration/tsconfig.json",
   "include": [

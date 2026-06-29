@@ -1,13 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { workspaceRoot } from "@nx/devkit";
 
-import { stringifyConformanceErrors } from "../../validators/typescript/files";
 import { LoggerService } from "../logger/logger.service";
 
 import {
   VALIDATOR_RULE_NAMES,
   VALIDATOR_RULE_SEVERITY,
 } from "./validator.constants";
+import { stringifyConformanceErrors } from "./validator.files";
 import { runRule } from "./validator.rules";
 import {
   readWorkspaceProjects,
@@ -31,11 +31,17 @@ import type {
 export class ValidatorService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    this.logger.setContext(ValidatorService.name);
+  constructor(logger: LoggerService) {
+    const resolvedLogger = logger as LoggerService | undefined;
+    this.logger = resolvedLogger ?? new LoggerService();
+    (this.logger as LoggerService | undefined)?.setContext(
+      ValidatorService.name,
+    );
   }
 
   // 🔐 Private Fields
+
+  private readonly logger: LoggerService;
 
   // 🔑 Public Fields
 

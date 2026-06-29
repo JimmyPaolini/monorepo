@@ -1,13 +1,16 @@
 import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🙈 Ignored Files (must be first)
+  {
+    ignores: [
+      "src/modules/*/templates/**",
+      "tools/conformance/src/modules/*/templates/**",
+    ],
+  },
+
   // 🛠️ Base Config
   ...baseConfig,
-
-  // 🙈 Ignored Files
-  {
-    ignores: ["src/generators/**/templates/**"],
-  },
 
   // 📦 Dependency Checks
   {

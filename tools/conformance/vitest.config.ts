@@ -7,10 +7,14 @@ export default mergeConfig(
   defineConfig({
     test: {
       coverage: {
-        exclude: ["src/**/*.test.ts", "src/generators/**/templates/**"],
+        exclude: [
+          "src/**/*.test.ts",
+          "templates/**",
+          "src/modules/*/templates/**",
+        ],
         include: ["src/**/*.ts"],
       },
-      exclude: ["src/generators/**/templates/**"],
+      exclude: ["templates/**", "src/modules/*/templates/**"],
     },
   }),
 );

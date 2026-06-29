@@ -15,10 +15,7 @@ export const DESTINATION_ROOTS = [
   TOOLS_DIRECTORY,
 ] as const;
 
-/** Union type of valid destination root directory names. */
-export type DestinationRoot = (typeof DESTINATION_ROOTS)[number];
-
-const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
+const TEMPLATE_PATTERN = "tools/conformance/src/modules/**/templates/**";
 const CONFORMANCE_INSTANCE_DIRECTORIES = DESTINATION_ROOTS;
 const MODULES_INSTANCE_PATTERNS = CONFORMANCE_INSTANCE_DIRECTORIES.map(
   (directoryName) => `${directoryName}/**/${MODULES_DIRECTORY}/**`,

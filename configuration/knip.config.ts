@@ -190,7 +190,7 @@ const config: KnipConfig = {
 
     // conformance: Nx generator plugin for scaffolding React components
     "tools/conformance": {
-      entry: "src/generators/*/generator.ts", // Each generator's entry point
+      entry: "src/modules/*/*.command.ts", // Each command module entry point
       ignore: [
         "src/**/templates/**", // Template files (EJS syntax, not valid TS)
         "src/**/*.test.ts",

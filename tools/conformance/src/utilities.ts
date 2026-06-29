@@ -1,21 +1,40 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { getProjects } from "@nx/devkit";
+import { getProjects, workspaceRoot } from "@nx/devkit";
 import mustache from "mustache";
+import { flushChanges, FsTree } from "nx/src/generators/tree";
 import prompts from "prompts";
 
-import {
-  APPLICATIONS_DIRECTORY,
-  converterByStringCase,
-  DESTINATION_ROOTS,
-  humanReadableStringCase,
-} from "./constants";
+import { converterByStringCase, humanReadableStringCase } from "./constants";
 
-import type { DestinationRoot } from "./constants";
 import type { StringCaseValue } from "./types";
-import type { Tree } from "@nx/devkit";
+import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
+
+/**
+ * Writes queued tree changes to disk and executes an optional post-run callback.
+ */
+export async function commitWorkspaceTree(args: {
+  callback?: GeneratorCallback;
+  tree: Tree;
+}): Promise<void> {
+  const { callback, tree } = args;
+  flushChanges(workspaceRoot, tree.listChanges());
+
+  if (!callback) {
+    return;
+  }
+
+  await Promise.resolve(callback());
+}
+
+/**
+ * Creates a file-system-backed Nx tree rooted at the current workspace.
+ */
+export function createWorkspaceTree(): Tree {
+  return new FsTree(workspaceRoot, false);
+}
 
 /**
  * Renders Mustache templates from a directory into the Nx tree.
@@ -36,11 +55,13 @@ export function generateFiles(args: {
     tree,
   } = args;
 
-  const resolveTemplateName = (name: string): string =>
-    name.replaceAll(
+  const resolveTemplateName = (name: string): string => {
+    const resolved = name.replaceAll(
       /__(\w+)__/g,
       (token: string, field: string) => substitutions[field] ?? token,
     );
+    return resolved;
+  };
 
   const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
 
@@ -67,31 +88,6 @@ export function getProjectsWithTag(args: {
     .map(([projectName]) => projectName);
 
   return projectsWithTag;
-}
-
-/**
- * Resolves the destination root directory for a generated command application.
- *
- * If `destinationRoot` is already provided it is validated against the
- * allowed values. If it is omitted the user is prompted to pick one
- * interactively. Throws when an unrecognized value is supplied.
- */
-export async function resolveDestinationRoot(args: {
-  destinationRoot?: string;
-  message: string;
-}): Promise<DestinationRoot> {
-  const { message } = args;
-
-  const destinationRoot =
-    args.destinationRoot ?? (await promptDestinationRootSelection({ message }));
-
-  if (!isDestinationRoot(destinationRoot)) {
-    throw new Error(
-      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
-    );
-  }
-
-  return destinationRoot;
 }
 
 /**
@@ -158,13 +154,6 @@ export async function resolveProject(args: {
 }
 
 /**
- * Returns whether the given string is a valid DestinationRoot value.
- */
-function isDestinationRoot(value: string): value is DestinationRoot {
-  return (DESTINATION_ROOTS as readonly string[]).includes(value);
-}
-
-/**
  * Process file node.
  */
 function processFileNode(args: {
@@ -187,31 +176,6 @@ function processFileNode(args: {
     const instance = mustache.render(template, substitutions);
     tree.write(instancePath, instance);
   }
-}
-
-/**
- * Prompts the user to select a destination root from the allowed values.
- * Throws if the user cancels without selecting.
- */
-async function promptDestinationRootSelection(args: {
-  message: string;
-}): Promise<DestinationRoot> {
-  const { message } = args;
-  const request: PromptObject<"destinationRoot"> = {
-    choices: DESTINATION_ROOTS.map(
-      (value): Choice => ({ title: value, value }),
-    ),
-    initial: DESTINATION_ROOTS.indexOf(APPLICATIONS_DIRECTORY),
-    message,
-    name: "destinationRoot",
-    type: "select",
-  };
-  const response: { destinationRoot: DestinationRoot | undefined } =
-    await prompts(request);
-  if (!response.destinationRoot) {
-    throw new Error("No destination root selected");
-  }
-  return response.destinationRoot;
 }
 
 /**

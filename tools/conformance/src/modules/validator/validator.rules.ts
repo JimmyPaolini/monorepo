@@ -5,21 +5,23 @@ import { workspaceRoot } from "@nx/devkit";
 
 import { converterByStringCase } from "../../constants";
 import { StringCase } from "../../types";
-import {
-  validateInstanceDirectory,
-  validateInstanceFile,
-} from "../../validators/typescript/files";
 
 import {
+  getValidatorTemplateDirectoryPath,
   NESTJS_APPLICATION_TAG,
   NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
   NESTJS_COMMAND_APPLICATION_TAG,
   NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
-  VALIDATOR_RULE_TEMPLATE_DIRECTORY,
 } from "./validator.constants";
+import {
+  validateInstanceDirectory,
+  validateInstanceFile,
+} from "./validator.files";
 
-import type { InstanceDirectoryValidationResult } from "../../validators/typescript/types";
-import type { ValidatorRuleName } from "./validator.types";
+import type {
+  InstanceDirectoryValidationResult,
+  ValidatorRuleName,
+} from "./validator.types";
 import type { WorkspaceProject } from "./validator.workspace";
 
 /** Runs a single rule and returns grouped conformance results when applicable. */
@@ -85,8 +87,10 @@ function runNestjsCommandApplicationRule(
 
   return validateCommandApplicationDirectories({
     instanceDirectoryPaths: [workspaceProject.rootPath],
-    templateDirectoryPath:
-      VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-command-application"],
+    templateDirectoryPath: getValidatorTemplateDirectoryPath(
+      "nestjs-command-application",
+      workspaceRoot,
+    ),
   });
 }
 
@@ -113,8 +117,10 @@ function runNestjsCommandModuleRule(
   return moduleDirectoryPaths.map((moduleDirectoryPath) =>
     validateInstanceDirectory({
       instanceDirectoryPath: moduleDirectoryPath,
-      templateDirectoryPath:
-        VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-command-module"],
+      templateDirectoryPath: getValidatorTemplateDirectoryPath(
+        "nestjs-command-module",
+        workspaceRoot,
+      ),
     }),
   );
 }
@@ -132,8 +138,10 @@ function runNestjsGraphqlApplicationRule(
   return [
     validateInstanceDirectory({
       instanceDirectoryPath: workspaceProject.rootPath,
-      templateDirectoryPath:
-        VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-graphql-application"],
+      templateDirectoryPath: getValidatorTemplateDirectoryPath(
+        "nestjs-graphql-application",
+        workspaceRoot,
+      ),
     }),
   ];
 }
@@ -158,8 +166,10 @@ function runNestjsGraphqlModuleRule(
   return moduleDirectoryPaths.map((moduleDirectoryPath) =>
     validateInstanceDirectory({
       instanceDirectoryPath: moduleDirectoryPath,
-      templateDirectoryPath:
-        VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-graphql-module"],
+      templateDirectoryPath: getValidatorTemplateDirectoryPath(
+        "nestjs-graphql-module",
+        workspaceRoot,
+      ),
     }),
   );
 }
@@ -179,8 +189,10 @@ function runNestjsServiceFileRule(
     return [];
   }
 
-  const templateDirectoryPath =
-    VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-service-file"];
+  const templateDirectoryPath = getValidatorTemplateDirectoryPath(
+    "nestjs-service-file",
+    workspaceRoot,
+  );
   const templateFilenames = fs
     .readdirSync(templateDirectoryPath, { withFileTypes: true })
     .filter((directoryEntry) => directoryEntry.isFile())
@@ -225,8 +237,10 @@ function runNestjsServiceModuleRule(
   return moduleDirectoryPaths.map((moduleDirectoryPath) =>
     validateInstanceDirectory({
       instanceDirectoryPath: moduleDirectoryPath,
-      templateDirectoryPath:
-        VALIDATOR_RULE_TEMPLATE_DIRECTORY["nestjs-service-module"],
+      templateDirectoryPath: getValidatorTemplateDirectoryPath(
+        "nestjs-service-module",
+        workspaceRoot,
+      ),
     }),
   );
 }
