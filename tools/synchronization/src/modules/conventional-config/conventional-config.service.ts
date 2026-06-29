@@ -5,6 +5,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -26,23 +27,18 @@ import type {
 } from "./conventional-config.types";
 
 /**
- *
+ * Resolves the monorepo root from this file location.
  */
-function resolveWorkspaceRoot(startDirectory: string): string {
-  let currentDirectory = startDirectory;
+function resolveWorkspaceRoot(): string {
+  const currentFilePath = fileURLToPath(import.meta.url);
+  const currentFileDirectory = path.dirname(currentFilePath);
+  const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
 
-  while (true) {
-    if (existsSync(path.join(currentDirectory, "pnpm-workspace.yaml"))) {
-      return currentDirectory;
-    }
-
-    const parentDirectory = path.dirname(currentDirectory);
-    if (parentDirectory === currentDirectory) {
-      throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
-    }
-
-    currentDirectory = parentDirectory;
+  if (!existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
+    throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
   }
+
+  return workspaceRoot;
 }
 
 /**
@@ -62,7 +58,7 @@ export class ConventionalConfigService {
 
   // 🔐 Private Fields
 
-  private readonly workspaceRoot = resolveWorkspaceRoot(process.cwd());
+  private readonly workspaceRoot = resolveWorkspaceRoot();
   private readonly conventionalConfigFile = path.join(
     this.workspaceRoot,
     "configuration/conventional.config.cjs",

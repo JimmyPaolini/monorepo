@@ -1,5 +1,6 @@
-import { existsSync } from "node:fs";
+import * as filesystem from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -21,32 +22,31 @@ import type {
   SyncContext,
 } from "./conventional-config.types";
 
-function resolveWorkspaceRoot(startDirectory: string): string {
-  let currentDirectory = startDirectory;
+function resolveWorkspaceRoot(): string {
+  const currentFilePath = fileURLToPath(import.meta.url);
+  const currentFileDirectory = path.dirname(currentFilePath);
+  const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
 
-  while (true) {
-    if (existsSync(path.join(currentDirectory, "pnpm-workspace.yaml"))) {
-      return currentDirectory;
-    }
-
-    const parentDirectory = path.dirname(currentDirectory);
-    if (parentDirectory === currentDirectory) {
-      throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
-    }
-
-    currentDirectory = parentDirectory;
+  if (!filesystem.existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
+    throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
   }
+
+  return workspaceRoot;
 }
 
 const fileContents = new Map<string, string>();
 const requiredModules = new Map<string, unknown>();
 
 vi.mock("node:fs", async (importOriginal) => {
-  const module = await importOriginal<typeof import("node:fs")>();
+  const importedModule = await importOriginal();
+  const module =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
 
   return {
     ...module,
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
@@ -58,7 +58,7 @@ vi.mock("node:fs", async (importOriginal) => {
 
 vi.mock("node:module", () => {
   return {
-    createRequire: vi.fn(() => {
+    createRequire: vi.fn<() => (modulePath: string) => unknown>(() => {
       return (modulePath: string): unknown => {
         const value = requiredModules.get(modulePath);
         if (value === undefined) {
@@ -71,7 +71,7 @@ vi.mock("node:module", () => {
 });
 
 describe(ConventionalConfigService, () => {
-  const workspaceRoot = resolveWorkspaceRoot(process.cwd());
+  const workspaceRoot = resolveWorkspaceRoot();
 
   let io: ConventionalConfigIoService;
   let logger: LoggerService;
@@ -295,6 +295,23 @@ describe(ConventionalConfigService, () => {
     );
   });
 
+  it("does not write release config when no release types are missing", () => {
+    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
+    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
+    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
+    vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
+    vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
+
+    service.handleWriteMode({
+      config: conventionalConfig,
+      scopeNames: ["tools"],
+      settingsScopes: ["tools"],
+      typeNames: ["fix"],
+    });
+
+    expect(io.writeReleaseConfigSync).not.toHaveBeenCalled();
+  });
+
   it("loads conventional config from CommonJS module", () => {
     expect(service.loadConventionalConfig()).toStrictEqual(conventionalConfig);
   });
@@ -346,5 +363,33 @@ describe(ConventionalConfigService, () => {
     );
 
     processExitSpy.mockRestore();
+  });
+
+  it("throws when workspace root cannot be resolved", async () => {
+    const existsSyncSpy = vi
+      .spyOn(filesystem, "existsSync")
+      .mockReturnValue(false);
+
+    await expect(
+      Test.createTestingModule({
+        providers: [
+          ConventionalConfigService,
+          {
+            provide: ConventionalConfigIoService,
+            useValue: createMock<ConventionalConfigIoService>(),
+          },
+          {
+            provide: LoggerService,
+            useValue: createMock<LoggerService>(),
+          },
+          {
+            provide: ConventionalConfigValidatorsService,
+            useValue: createMock<ConventionalConfigValidatorsService>(),
+          },
+        ],
+      }).compile(),
+    ).rejects.toThrow("Could not find workspace root (pnpm-workspace.yaml)");
+
+    existsSyncSpy.mockRestore();
   });
 });

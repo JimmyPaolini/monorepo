@@ -17,19 +17,23 @@ const directoryEntries = new Map<
 
 vi.mock("node:fs", () => {
   return {
-    readdirSync: vi.fn((directoryPath: string) => {
+    readdirSync: vi.fn<
+      (directoryPath: string) => { isDirectory: () => boolean; name: string }[]
+    >((directoryPath: string) => {
       return directoryEntries.get(directoryPath) ?? [];
     }),
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
       }
       return value;
     }),
-    writeFileSync: vi.fn((filePath: string, content: string): void => {
-      fileContents.set(filePath, content);
-    }),
+    writeFileSync: vi.fn<(filePath: string, content: string) => void>(
+      (filePath: string, content: string) => {
+        fileContents.set(filePath, content);
+      },
+    ),
   };
 });
 
@@ -234,6 +238,7 @@ describe(AgentSkillsCommand, () => {
       { isDirectory: () => true, name: "alpha" },
       { isDirectory: () => true, name: "broken" },
       { isDirectory: () => true, name: "empty" },
+      { isDirectory: () => true, name: "plain-skill" },
     ]);
     fileContents.set(
       path.join(skillsDirectory, "alpha", "SKILL.md"),
@@ -242,6 +247,10 @@ describe(AgentSkillsCommand, () => {
     fileContents.set(
       path.join(skillsDirectory, "empty", "SKILL.md"),
       ["---", "name: empty", "invalid-line", "---"].join("\n"),
+    );
+    fileContents.set(
+      path.join(skillsDirectory, "plain-skill", "SKILL.md"),
+      "plain content without frontmatter",
     );
 
     const processExitSpy = vi

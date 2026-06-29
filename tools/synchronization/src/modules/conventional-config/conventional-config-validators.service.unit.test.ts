@@ -15,7 +15,7 @@ const fileContents = new Map<string, string>();
 
 vi.mock("node:fs", () => {
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
@@ -95,6 +95,32 @@ describe(ConventionalConfigValidatorsService, () => {
     expect(service.checkSettingsSync(["tools"], ["other"])).toBe(false);
     expect(logger.log).toHaveBeenCalledWith(
       "❌ settings.json scopes are out of sync\n",
+    );
+  });
+
+  it("reports only missing settings values when target is subset", () => {
+    expect(service.checkSettingsSync(["tools", "alpha"], ["tools"])).toBe(
+      false,
+    );
+
+    expect(logger.log).toHaveBeenCalledWith(
+      "  Missing in settings.json (1 items):",
+    );
+    expect(logger.log).not.toHaveBeenCalledWith(
+      "  Extra in settings.json (1 items):",
+    );
+  });
+
+  it("reports only extra settings values when target has additions", () => {
+    expect(service.checkSettingsSync(["tools"], ["tools", "alpha"])).toBe(
+      false,
+    );
+
+    expect(logger.log).toHaveBeenCalledWith(
+      "  Extra in settings.json (1 items):",
+    );
+    expect(logger.log).not.toHaveBeenCalledWith(
+      "  Missing in settings.json (1 items):",
     );
   });
 

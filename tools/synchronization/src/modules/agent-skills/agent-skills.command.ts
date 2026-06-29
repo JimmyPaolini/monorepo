@@ -72,7 +72,7 @@ export class AgentSkillsCommand extends CommandRunner {
     }
 
     const frontmatter: Record<string, string> = {};
-    const lines = match[1]?.split("\n") ?? [];
+    const lines = String(match[1]).split("\n");
 
     for (const line of lines) {
       const [key, ...valueParts] = line.split(":");

@@ -13,16 +13,18 @@ const fileContents = new Map<string, string>();
 
 vi.mock("node:fs", () => {
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
       }
       return value;
     }),
-    writeFileSync: vi.fn((filePath: string, content: string): void => {
-      fileContents.set(filePath, content);
-    }),
+    writeFileSync: vi.fn<(filePath: string, content: string) => void>(
+      (filePath: string, content: string) => {
+        fileContents.set(filePath, content);
+      },
+    ),
   };
 });
 
@@ -281,6 +283,42 @@ describe(DevcontainerConfigurationCommand, () => {
 
     expect(logger.log).not.toHaveBeenCalledWith(
       expect.stringContaining("mounts"),
+    );
+
+    processExitSpy.mockRestore();
+  });
+
+  it("does not report equal non-cloud fields while reporting actual drift", async () => {
+    fileContents.set(
+      localConfigFile,
+      JSON.stringify({
+        $schema: "schema",
+        customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
+        remoteEnv: { APP_ENVIRONMENT: "local" },
+      }),
+    );
+    fileContents.set(
+      cloudConfigFile,
+      JSON.stringify({
+        $schema: "different-schema",
+        customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
+        remoteEnv: { APP_ENVIRONMENT: "cloud" },
+      }),
+    );
+
+    const processExitSpy = vi
+      .spyOn(process, "exit")
+      .mockImplementation((code?: null | number | string) => {
+        throw new Error(`process.exit:${code ?? 0}`);
+      });
+
+    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
+
+    expect(logger.log).not.toHaveBeenCalledWith(
+      expect.stringContaining("Field 'customizations' differs"),
+    );
+    expect(logger.log).toHaveBeenCalledWith(
+      expect.stringContaining("Field '$schema' differs"),
     );
 
     processExitSpy.mockRestore();

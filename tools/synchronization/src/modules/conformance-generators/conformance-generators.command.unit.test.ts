@@ -13,16 +13,18 @@ const fileContents = new Map<string, string>();
 
 vi.mock("node:fs", () => {
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
       }
       return value;
     }),
-    writeFileSync: vi.fn((filePath: string, content: string): void => {
-      fileContents.set(filePath, content);
-    }),
+    writeFileSync: vi.fn<(filePath: string, content: string) => void>(
+      (filePath: string, content: string) => {
+        fileContents.set(filePath, content);
+      },
+    ),
   };
 });
 
