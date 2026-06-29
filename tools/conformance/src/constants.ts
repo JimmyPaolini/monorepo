@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { z } from "zod";
 
 import { StringCase, type StringCaseValue } from "./types";
 
@@ -50,3 +51,6 @@ export const converterByStringCase: Record<
   [StringCase.PASCAL_CASE]: (v) => _.upperFirst(_.camelCase(v)),
   [StringCase.SNAKE_CASE]: (v) => _.snakeCase(v),
 };
+
+// 🌱 Add environment schema fields here
+export const environmentSchema = z.object({});
