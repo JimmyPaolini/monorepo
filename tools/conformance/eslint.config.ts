@@ -4,10 +4,9 @@ export default [
   // 🛠️ Base Config
   ...baseConfig,
 
-  // 🚫 Project Ignores
-  // Exclude scaffold template files (these are not linted as project source)
+  // 🙈 Ignored Files
   {
-    ignores: ["**/templates/**"],
+    ignores: ["src/generators/**/templates/**"],
   },
 
   // 📦 Dependency Checks
@@ -17,16 +16,7 @@ export default [
       "@nx/dependency-checks": [
         "error",
         {
-          ignoredDependencies: [
-            "@nestjs/common",
-            "@types/mustache",
-            "lodash",
-            "react",
-          ],
-          ignoredFiles: [
-            "{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}",
-            "{projectRoot}/src/generators/**/templates/**",
-          ],
+          ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
         },
       ],
     },

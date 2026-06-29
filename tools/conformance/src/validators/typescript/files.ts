@@ -118,7 +118,7 @@ export function validateInstanceFile(args: {
     });
     return { errors, instanceFilePath, templateFilePath };
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+    if (isNodeJsErrnoException(error) && error.code === "ENOENT") {
       return buildMissingFileError(instanceFilePath, templateFilePath);
     }
     throw error;
@@ -274,6 +274,15 @@ function formatLocationLines(args: {
     return [`        ${prefix}: JSON path "${jsonPath}"`];
   }
   return [];
+}
+
+/**
+ * Type guard for NodeJS file system errors with errno metadata.
+ */
+function isNodeJsErrnoException(
+  error: unknown,
+): error is NodeJS.ErrnoException {
+  return typeof error === "object" && error !== null && "code" in error;
 }
 
 /**

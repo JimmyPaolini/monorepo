@@ -101,6 +101,7 @@ infer
 instanceof
 keyof
 multiset
+metatype
 polymorphic
 precompiled
 readonly

@@ -63,6 +63,8 @@ export default defineConfig({
     "**/dist",
     // Helm templates use Go templating syntax, not valid JS
     "**/helm/**/templates/**",
+    // Conformance generator templates use Mustache placeholders, not valid JS/TS
+    "**/src/generators/**/templates/**",
     "**/node_modules",
     // Binary/lock files
     "**/pnpm-lock.yaml",

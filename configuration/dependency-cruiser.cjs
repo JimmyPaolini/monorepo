@@ -112,6 +112,7 @@ module.exports = {
         "^dist/",
         // Generator template files are not valid TS/JS
         "/files/",
+        "/templates/",
         "__[a-zA-Z]+__",
         // Auto-generated files may have circular deps
         String.raw`\.gen\.(ts|tsx|js|jsx)$`,
