@@ -1,8 +1,8 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { minorAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolByMinorAspect } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 
 import { LoggerService } from "../logger/logger.service";
@@ -24,10 +24,10 @@ export class MinorAspectsEventService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly aspectEphemerisService: AspectEphemerisService,
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly simpleAspectsEventService: SimpleAspectsEventService,
-    private readonly ephemerisService: EphemerisService,
+    private readonly aspectEventFormattingService: AspectEventFormattingService,
   ) {
     this.logger.setContext(MinorAspectsEventService.name);
   }
@@ -45,7 +45,7 @@ export class MinorAspectsEventService {
     timestamp: Moment;
   }): Event {
     const { body1, body2, minorAspect, phase, timestamp } = args;
-    return this.simpleAspectsEventService.assembleSimpleAspectEvent({
+    return this.aspectEventFormattingService.assembleSimpleAspectEvent({
       aspectCategory: "Minor Aspect",
       aspectName: minorAspect,
       aspectSymbol: symbolByMinorAspect[minorAspect],
@@ -69,19 +69,7 @@ export class MinorAspectsEventService {
     nextMinute: Moment;
     previousMinute: Moment;
   }): { current: number; next: number; previous: number } {
-    const {
-      body,
-      coordinateEphemerisByBody,
-      minute,
-      nextMinute,
-      previousMinute,
-    } = args;
-    return this.ephemerisService.getLongitudesWindow({
-      ephemeris: coordinateEphemerisByBody[body],
-      minute,
-      next: nextMinute,
-      previous: previousMinute,
-    });
+    return this.aspectEphemerisService.getLongitudesWindowForBody(args);
   }
 
   /**
@@ -93,7 +81,7 @@ export class MinorAspectsEventService {
   }): MinorAspect | null {
     const { longitudeBody1, longitudeBody2 } = args;
 
-    return this.simpleAspectsEventService.findFirstMatchingAspect({
+    return this.aspectEventFormattingService.findFirstMatchingAspect({
       aspects: minorAspects,
       isMatchingAspect: (aspect) =>
         this.aspectsUtilitiesService.isAspect({

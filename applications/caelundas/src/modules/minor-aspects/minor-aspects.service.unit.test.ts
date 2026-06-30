@@ -1,11 +1,13 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
 import { MinorAspectsProgressiveService } from "@caelundas/src/modules/minor-aspects/minor-aspects-progressive.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -31,12 +33,14 @@ describe(MinorAspectsService, () => {
       providers: [
         LoggerService,
         MinorAspectsService,
+        AspectEphemerisService,
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
         AspectsUtilities,
-        SimpleAspectsEventService,
+        AspectEventFormattingService,
         EphemerisService,
         MathService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();
@@ -77,134 +81,144 @@ describe(MinorAspectsService, () => {
       return ephemerisByBody;
     };
 
-    it("detects perfective semisextile", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
+    it.each([
+      {
+        aspectDescription: "perfective semisextile",
+        expectedBody: "Mercury",
+        expectedPhase: "Perfective",
+        expectedVerb: "semisextile",
+        getCoordinateEphemerisByBody: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+        ): Record<Body, CoordinateEphemeris> => {
+          const coordinateEphemerisByBody = createDefaultEphemeris(
+            currentMinute,
+            previousMinute,
+            nextMinute,
+          );
 
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 30,
+            [nextMinute.toISOString()]: 31,
+            [previousMinute.toISOString()]: 29,
+          });
+          coordinateEphemerisByBody.mercury = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 359,
+            [previousMinute.toISOString()]: 1,
+          });
 
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 30,
-        [nextMinute.toISOString()]: 31,
-        [previousMinute.toISOString()]: 29,
-      });
-      coordinateEphemerisByBody.mercury = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 359,
-        [previousMinute.toISOString()]: 1,
-      });
+          return coordinateEphemerisByBody;
+        },
+      },
+      {
+        aspectDescription: "forming semisquare",
+        expectedBody: "Venus",
+        expectedPhase: "Forming",
+        expectedVerb: "semisquare",
+        getCoordinateEphemerisByBody: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+        ): Record<Body, CoordinateEphemeris> => {
+          const coordinateEphemerisByBody = createDefaultEphemeris(
+            currentMinute,
+            previousMinute,
+            nextMinute,
+          );
 
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.venus = createEphemeris({
+            [currentMinute.toISOString()]: 46.5,
+            [nextMinute.toISOString()]: 45.5,
+            [previousMinute.toISOString()]: 48,
+          });
 
-      expect(events.length).toBeGreaterThanOrEqual(1);
+          return coordinateEphemerisByBody;
+        },
+      },
+      {
+        aspectDescription: "dissolving quincunx",
+        expectedBody: "Mars",
+        expectedPhase: "Dissolving",
+        expectedVerb: "quincunx",
+        getCoordinateEphemerisByBody: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+        ): Record<Body, CoordinateEphemeris> => {
+          const safeLongitudes = [
+            200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 201, 203,
+            205, 207, 209, 211, 213, 215,
+          ];
+          const coordinateEphemerisByBody = {} as Record<
+            Body,
+            CoordinateEphemeris
+          >;
 
-      const semisextileEvent = events.find(
-        (e) =>
-          e.description.includes("semisextile") &&
-          e.categories.includes("Perfective") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mercury"),
-      );
+          minorAspectBodies.forEach((body, index) => {
+            const longitude = safeLongitudes[index] ?? 0;
+            coordinateEphemerisByBody[body] = createEphemeris({
+              [currentMinute.toISOString()]: longitude,
+              [nextMinute.toISOString()]: longitude,
+              [previousMinute.toISOString()]: longitude,
+            });
+          });
 
-      expect(semisextileEvent).toBeDefined();
-    });
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.mars = createEphemeris({
+            [currentMinute.toISOString()]: 152.5,
+            [nextMinute.toISOString()]: 154,
+            [previousMinute.toISOString()]: 151,
+          });
 
-    it("detects forming aspect", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
+          return coordinateEphemerisByBody;
+        },
+      },
+    ])(
+      "detects $aspectDescription",
+      ({
+        expectedBody,
+        expectedPhase,
+        expectedVerb,
+        getCoordinateEphemerisByBody,
+      }) => {
+        const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
+        const previousMinute = currentMinute.clone().subtract(1, "minute");
+        const nextMinute = currentMinute.clone().add(1, "minute");
+        const coordinateEphemerisByBody = getCoordinateEphemerisByBody(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+        );
 
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
-
-      // Semisquare has 2° orb, so venus needs to enter from >47° or <43°
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.venus = createEphemeris({
-        [currentMinute.toISOString()]: 46.5, // Inside 2° orb (entering)
-        [nextMinute.toISOString()]: 45.5, // Further in orb
-        [previousMinute.toISOString()]: 48, // Outside 2° orb (>47°)
-      });
-
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
-
-      const formingSemisquare = events.find(
-        (e) =>
-          e.description.includes("semisquare") &&
-          e.categories.includes("Forming") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Venus"),
-      );
-
-      expect(formingSemisquare).toBeDefined();
-    });
-
-    it("detects dissolving aspect", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
-
-      // Use clustered positions to avoid accidental aspects from default ephemeris
-      const safeLongitudes = [
-        200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 201, 203, 205,
-        207, 209, 211, 213, 215,
-      ];
-      const allBodies = minorAspectBodies;
-
-      const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
-      allBodies.forEach((body, index) => {
-        const longitude = safeLongitudes[index] ?? 0;
-        coordinateEphemerisByBody[body] = createEphemeris({
-          [currentMinute.toISOString()]: longitude,
-          [nextMinute.toISOString()]: longitude,
-          [previousMinute.toISOString()]: longitude,
+        const events = service.detect({
+          coordinateEphemerisByBody,
+          minute: currentMinute,
         });
-      });
 
-      // Quincunx has 3° orb, so mars needs to be inside at current and outside at next
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.mars = createEphemeris({
-        [currentMinute.toISOString()]: 152.5, // Still inside 3° orb (2.5° off, moving away)
-        [nextMinute.toISOString()]: 154, // Outside 3° orb (4° off, exiting)
-        [previousMinute.toISOString()]: 151, // Inside 3° orb (1° off)
-      });
+        expect(events.length).toBeGreaterThanOrEqual(1);
 
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
+        const detectedEvent = events.find(
+          (event) =>
+            event.description.includes(expectedVerb) &&
+            event.description.includes("Sun") &&
+            event.description.includes(expectedBody),
+        );
 
-      const dissolvingQuincunx = events.find(
-        (e) =>
-          e.description.includes("quincunx") &&
-          e.categories.includes("Dissolving") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mars"),
-      );
-
-      expect(dissolvingQuincunx).toBeDefined();
-    });
+        expect(detectedEvent).toBeDefined();
+        expect(detectedEvent?.categories).toContain(expectedPhase);
+      },
+    );
 
     it("detects multiple aspects between different body pairs", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");

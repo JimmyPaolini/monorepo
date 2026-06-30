@@ -120,6 +120,43 @@ export class ProgressiveAspectService {
   }
 
   /**
+   * Builds progressive events for one simple-aspect family, optionally constrained to one precomputed group key.
+   */
+  buildSimpleAspectFamilyProgressiveEvents({
+    aspectCategory,
+    categoryLabel,
+    events,
+    fixedAspectGroupKey,
+    getAspectGroupKey,
+    getProgressiveEvent,
+    pairProgressiveEvents,
+  }: {
+    aspectCategory: string;
+    categoryLabel: string;
+    events: Event[];
+    fixedAspectGroupKey?: string;
+    getAspectGroupKey: (event: Event) => string;
+    getProgressiveEvent: (beginning: Event, ending: Event) => Event;
+    pairProgressiveEvents: (
+      beginnings: Event[],
+      endings: Event[],
+      label: string,
+    ) => [Event, Event][];
+  }): Event[] {
+    return this.buildProgressiveAspectEvents({
+      aspectCategory,
+      categoryLabel,
+      events,
+      getAspectGroupKey:
+        fixedAspectGroupKey === undefined
+          ? getAspectGroupKey
+          : () => fixedAspectGroupKey,
+      getProgressiveEvent,
+      pairProgressiveEvents,
+    });
+  }
+
+  /**
    * Create a single progressive event for a simple aspect (major, minor, or specialty).
    */
   createSimpleAspectProgressiveEvent<
@@ -234,5 +271,36 @@ export class ProgressiveAspectService {
       body2: body2Lower,
       body2Capitalized,
     };
+  }
+
+  /**
+   * Typed extraction wrapper with a normalized error message for compatibility call sites.
+   */
+  extractTypedAspectPartsOrThrow<TAspect extends string, TBody extends string>({
+    aspects,
+    bodies,
+    categories,
+    errorMessage,
+    isAspect,
+    isBody,
+  }: {
+    aspects: readonly TAspect[];
+    bodies: readonly TBody[];
+    categories: string[];
+    errorMessage: string;
+    isAspect: (value: string) => value is TAspect;
+    isBody: (value: string) => value is TBody;
+  }): TypedAspectParts<TAspect, TBody> {
+    try {
+      return this.extractTypedAspectParts({
+        aspects,
+        bodies,
+        categories,
+        isAspect,
+        isBody,
+      });
+    } catch {
+      throw new Error(errorMessage);
+    }
   }
 }

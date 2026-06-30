@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -22,13 +21,8 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     super();
     this.logger.setContext(EpigraphikDatenbankClaussSlabyCommand.name);
 
-    const outputDirectory = path.join(process.cwd(), "output");
-    if (!existsSync(outputDirectory))
-      mkdirSync(outputDirectory, { recursive: true });
-    this.errorLogFilePath = path.join(
-      outputDirectory,
-      `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
+    this.errorLogFilePath =
+      this.logger.createTimestampedOutputLogFilePath("edcs");
   }
 
   // 🔐 Private Fields
@@ -60,15 +54,14 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     try {
       return await this.saveChunkData(start, chunkFile);
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(
+        `chunk-${start}`,
+        error,
+      );
       this.logger.error(
         `❌ Error fetching chunk at ${start}: ${String(error)}`,
       );
-      await fs.appendFile(
-        this.errorLogFilePath,
-        `[${new Date().toISOString()}] chunk-${start}: ${errorMessage}\n`,
-      );
+      await fs.appendFile(this.errorLogFilePath, logLine);
       return true;
     }
   }

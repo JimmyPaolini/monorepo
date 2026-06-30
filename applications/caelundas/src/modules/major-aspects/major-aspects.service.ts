@@ -1,9 +1,9 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as majorAspectBodies,
   majorAspects,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 
 import { LoggerService } from "../logger/logger.service";
@@ -34,8 +34,8 @@ export class MajorAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
+    private readonly aspectEphemerisService: AspectEphemerisService,
     aspectsUtilitiesService: AspectsUtilities,
-    private readonly ephemerisService: EphemerisService,
     private readonly majorAspectEventService: MajorAspectEventService,
     private readonly majorAspectProgressiveService: MajorAspectProgressiveService,
   ) {
@@ -97,13 +97,10 @@ export class MajorAspectsService {
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
-    return this.detectAspectPhase({
-      currentLongitudeBody1: body1LongitudesWindow.current,
-      currentLongitudeBody2: body2LongitudesWindow.current,
-      nextLongitudeBody1: body1LongitudesWindow.next,
-      nextLongitudeBody2: body2LongitudesWindow.next,
-      previousLongitudeBody1: body1LongitudesWindow.previous,
-      previousLongitudeBody2: body2LongitudesWindow.previous,
+    return AspectsUtilities.detectPhaseFromWindows({
+      body1LongitudesWindow,
+      body2LongitudesWindow,
+      detectAspectPhase: this.detectAspectPhase,
     });
   }
 
@@ -117,19 +114,7 @@ export class MajorAspectsService {
     nextMinute: Moment;
     previousMinute: Moment;
   }): { current: number; next: number; previous: number } {
-    const {
-      body,
-      coordinateEphemerisByBody,
-      minute,
-      nextMinute,
-      previousMinute,
-    } = args;
-    return this.ephemerisService.getLongitudesWindow({
-      ephemeris: coordinateEphemerisByBody[body],
-      minute,
-      next: nextMinute,
-      previous: previousMinute,
-    });
+    return this.aspectEphemerisService.getLongitudesWindowForBody(args);
   }
 
   // 🌎 Public Methods
@@ -156,25 +141,13 @@ export class MajorAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    const { coordinateEphemerisByBody, minute } = args;
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-    const majorAspectEvents: Event[] = [];
-    for (const body1 of majorAspectBodies) {
-      const index = majorAspectBodies.indexOf(body1);
-      for (const body2 of majorAspectBodies.slice(index + 1)) {
-        const event = this.detectAspectForBodyPair({
-          body1,
-          body2,
-          coordinateEphemerisByBody,
-          minute,
-          nextMinute,
-          previousMinute,
-        });
-        if (event) majorAspectEvents.push(event);
-      }
-    }
-    return majorAspectEvents;
+    return AspectsUtilities.scanUniqueBodyPairsAtMinute({
+      bodies: majorAspectBodies,
+      coordinateEphemerisByBody: args.coordinateEphemerisByBody,
+      detect: (argumentsObject) =>
+        this.detectAspectForBodyPair(argumentsObject),
+      minute: args.minute,
+    });
   }
 
   /**

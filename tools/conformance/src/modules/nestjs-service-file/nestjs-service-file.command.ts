@@ -1,9 +1,6 @@
-import { execSync } from "node:child_process";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { getProjects, workspaceRoot } from "@nx/devkit";
-import _ from "lodash";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
@@ -12,9 +9,12 @@ import { StringCase } from "../../types";
 import {
   commitWorkspaceTree,
   createWorkspaceTree,
+  buildKebabCaseNameSubstitutions,
+  createFormatFilesCallback,
   generateFiles,
   resolveName,
   resolveProject,
+  resolveProjectDirectoryPath,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
@@ -120,12 +120,7 @@ export async function generateNestjsServiceFile(
     await resolveProjectAndName(tree, options);
   const modulesDirectory = resolveValidatedModulesDirectory(tree, projectName);
   const targetPath = path.join(modulesDirectory, moduleName);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
+  const substitutions = buildKebabCaseNameSubstitutions(nameKebabCase);
   generateFiles({
     instanceDirectoryPath: targetPath,
     substitutions,
@@ -135,17 +130,7 @@ export async function generateNestjsServiceFile(
     ),
     tree,
   });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((fileName: string) => path.join(targetPath, fileName));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
+  return createFormatFilesCallback({ targetPath, tree });
 }
 
 /**
@@ -252,23 +237,9 @@ function resolveValidatedModulesDirectory(
   tree: Tree,
   projectName: string,
 ): string {
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
-
-  if (!tree.exists(modulesDirectory)) {
-    throw new Error(
-      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  return modulesDirectory;
+  return resolveProjectDirectoryPath({
+    directoryPath: MODULES_DIRECTORY,
+    projectName,
+    tree,
+  });
 }

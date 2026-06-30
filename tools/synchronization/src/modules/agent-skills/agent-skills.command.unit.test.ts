@@ -2,34 +2,41 @@ import { readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import {
+  type DirectoryEntry,
+  expectProcessExitOne,
+  mockProcessExit,
+} from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { AgentSkillsCommand } from "./agent-skills.command";
 
 const fileContents = new Map<string, string>();
-const directoryEntries = new Map<
-  string,
-  { isDirectory: () => boolean; name: string }[]
->();
+const directoryEntries = new Map<string, DirectoryEntry[]>();
 
 vi.mock("node:fs", () => {
   return {
-    readdirSync: vi.fn((directoryPath: string) => {
-      return directoryEntries.get(directoryPath) ?? [];
-    }),
-    readFileSync: vi.fn((filePath: string): string => {
+    readdirSync: vi.fn<(directoryPath: string) => DirectoryEntry[]>(
+      (directoryPath: string) => {
+        return directoryEntries.get(directoryPath) ?? [];
+      },
+    ),
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
       }
       return value;
     }),
-    writeFileSync: vi.fn((filePath: string, content: string): void => {
-      fileContents.set(filePath, content);
-    }),
+    writeFileSync: vi.fn<(filePath: string, content: string) => void>(
+      (filePath: string, content: string) => {
+        fileContents.set(filePath, content);
+      },
+    ),
   };
 });
 
@@ -41,16 +48,21 @@ describe(AgentSkillsCommand, () => {
   const agentsFile = path.join(workspaceRoot, "AGENTS.md");
   const skillsDirectory = path.join(workspaceRoot, "documentation/skills");
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         AgentSkillsCommand,
+        SynchronizationModeService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     command = await module.resolve(AgentSkillsCommand);
     logger = await module.resolve(LoggerService);
@@ -67,77 +79,88 @@ describe(AgentSkillsCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        AgentSkillsCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
+    const module = await createTestingModule();
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("AgentSkillsCommand");
   });
 
-  it("passes check mode when generated content matches AGENTS markers", async () => {
-    fileContents.set(
-      agentsFile,
-      [
+  it.each([
+    {
+      agentsContent: [
         "# Header",
         "<!-- agent-skills-table-of-contents start -->",
         "- **[alpha](documentation/skills/alpha/SKILL.md)**: first skill",
         "- **[beta](documentation/skills/beta/SKILL.md)**: second skill",
         "<!-- agent-skills-table-of-contents end -->",
       ].join("\n"),
-    );
-    directoryEntries.set(skillsDirectory, [
-      { isDirectory: () => true, name: "beta" },
-      { isDirectory: () => true, name: "alpha" },
-    ]);
-    fileContents.set(
-      path.join(skillsDirectory, "alpha", "SKILL.md"),
-      ["---", "name: alpha", "description: first skill", "---"].join("\n"),
-    );
-    fileContents.set(
-      path.join(skillsDirectory, "beta", "SKILL.md"),
-      ["---", "name: beta", "description: second skill", "---"].join("\n"),
-    );
-
-    await command.run(["check"]);
-
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ Skills table of contents is in sync (2 skills)",
-    );
-    expect(writeFileSync).not.toHaveBeenCalled();
-  });
-
-  it("defaults to check mode when no mode is provided", async () => {
-    fileContents.set(
-      agentsFile,
-      [
+      expectedLogMessage: "✅ Skills table of contents is in sync (2 skills)",
+      modeArguments: ["check"],
+      scenarioName:
+        "passes check mode when generated content matches AGENTS markers",
+      skills: [
+        {
+          description: "first skill",
+          folderName: "alpha",
+          listingEntryName: "beta",
+          name: "alpha",
+        },
+        {
+          description: "second skill",
+          folderName: "beta",
+          listingEntryName: "alpha",
+          name: "beta",
+        },
+      ],
+    },
+    {
+      agentsContent: [
         "# Header",
         "<!-- agent-skills-table-of-contents start -->",
         "- **[alpha](documentation/skills/alpha/SKILL.md)**: first skill",
         "<!-- agent-skills-table-of-contents end -->",
       ].join("\n"),
-    );
-    directoryEntries.set(skillsDirectory, [
-      { isDirectory: () => true, name: "alpha" },
-    ]);
-    fileContents.set(
-      path.join(skillsDirectory, "alpha", "SKILL.md"),
-      ["---", "name: alpha", "description: first skill", "---"].join("\n"),
-    );
+      expectedLogMessage: "✅ Skills table of contents is in sync (1 skills)",
+      modeArguments: [],
+      scenarioName: "defaults to check mode when no mode is provided",
+      skills: [
+        {
+          description: "first skill",
+          folderName: "alpha",
+          listingEntryName: "alpha",
+          name: "alpha",
+        },
+      ],
+    },
+  ])(
+    "$scenarioName",
+    async ({ agentsContent, expectedLogMessage, modeArguments, skills }) => {
+      fileContents.set(agentsFile, agentsContent);
+      directoryEntries.set(
+        skillsDirectory,
+        skills.map((skill) => {
+          return { isDirectory: () => true, name: skill.listingEntryName };
+        }),
+      );
 
-    await command.run([]);
+      for (const skill of skills) {
+        fileContents.set(
+          path.join(skillsDirectory, skill.folderName, "SKILL.md"),
+          [
+            "---",
+            `name: ${skill.name}`,
+            `description: ${skill.description}`,
+            "---",
+          ].join("\n"),
+        );
+      }
 
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ Skills table of contents is in sync (1 skills)",
-    );
-  });
+      await command.run(modeArguments);
+
+      expect(logger.log).toHaveBeenCalledWith(expectedLogMessage);
+      expect(writeFileSync).not.toHaveBeenCalled();
+    },
+  );
 
   it("writes generated content to AGENTS in write mode", async () => {
     fileContents.set(
@@ -184,103 +207,95 @@ describe(AgentSkillsCommand, () => {
     );
     directoryEntries.set(skillsDirectory, []);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
-
-    await expect(command.run(["invalid-mode"])).rejects.toThrow(
-      "process.exit:1",
-    );
+    await expectProcessExitOne(async () => command.run(["invalid-mode"]));
 
     expect(logger.error).toHaveBeenCalledWith("❌ Unknown mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith("Expected 'check' or 'write'");
-
-    processExitSpy.mockRestore();
   });
 
-  it("exits with error when required markers are missing", async () => {
-    fileContents.set(agentsFile, "# Header without markers");
-    directoryEntries.set(skillsDirectory, []);
+  it.each([
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.error).toHaveBeenCalledWith(
+          expect.stringContaining("Markers not found in AGENTS.md"),
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName: "exits with error when required markers are missing",
+      setup: (): void => {
+        fileContents.set(agentsFile, "# Header without markers");
+        directoryEntries.set(skillsDirectory, []);
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.log).toHaveBeenCalledWith(
+          "❌ Skills table of contents in AGENTS.md is out of sync\n",
+        );
+        expect(loggerService.log).toHaveBeenCalledWith(
+          "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName:
+        "reports drift when generated skills differ and skips invalid skill entries",
+      setup: (): void => {
+        fileContents.set(
+          agentsFile,
+          [
+            "# Header",
+            "<!-- agent-skills-table-of-contents start -->",
+            "- stale",
+            "<!-- agent-skills-table-of-contents end -->",
+          ].join("\n"),
+        );
+        directoryEntries.set(skillsDirectory, [
+          { isDirectory: () => false, name: "README.md" },
+          { isDirectory: () => true, name: "alpha" },
+          { isDirectory: () => true, name: "broken" },
+          { isDirectory: () => true, name: "empty" },
+          { isDirectory: () => true, name: "plain-skill" },
+        ]);
+        fileContents.set(
+          path.join(skillsDirectory, "alpha", "SKILL.md"),
+          ["---", "name: alpha", "description: first skill", "---"].join("\n"),
+        );
+        fileContents.set(
+          path.join(skillsDirectory, "empty", "SKILL.md"),
+          ["---", "name: empty", "invalid-line", "---"].join("\n"),
+        );
+        fileContents.set(
+          path.join(skillsDirectory, "plain-skill", "SKILL.md"),
+          "plain content without frontmatter",
+        );
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.error).toHaveBeenCalledWith(
+          "❌ Error: [object Object]",
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName: "handles non-Error throw values in run catch block",
+      setup: (): void => {
+        const nonErrorLike: Error = {
+          message: "boom",
+          name: "NonErrorLike",
+        };
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+        vi.mocked(readdirSync).mockImplementationOnce(() => {
+          throw nonErrorLike;
+        });
+      },
+    },
+  ])("$scenarioName", async ({ assertLogs, modeArguments, setup }) => {
+    setup();
+    const processExitSpy = mockProcessExit();
 
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
+    await expect(command.run(modeArguments)).rejects.toThrow("process.exit:1");
 
-    expect(logger.error).toHaveBeenCalledWith(
-      expect.stringContaining("Markers not found in AGENTS.md"),
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("reports drift when generated skills differ and skips invalid skill entries", async () => {
-    fileContents.set(
-      agentsFile,
-      [
-        "# Header",
-        "<!-- agent-skills-table-of-contents start -->",
-        "- stale",
-        "<!-- agent-skills-table-of-contents end -->",
-      ].join("\n"),
-    );
-    directoryEntries.set(skillsDirectory, [
-      { isDirectory: () => false, name: "README.md" },
-      { isDirectory: () => true, name: "alpha" },
-      { isDirectory: () => true, name: "broken" },
-      { isDirectory: () => true, name: "empty" },
-    ]);
-    fileContents.set(
-      path.join(skillsDirectory, "alpha", "SKILL.md"),
-      ["---", "name: alpha", "description: first skill", "---"].join("\n"),
-    );
-    fileContents.set(
-      path.join(skillsDirectory, "empty", "SKILL.md"),
-      ["---", "name: empty", "invalid-line", "---"].join("\n"),
-    );
-
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.log).toHaveBeenCalledWith(
-      "❌ Skills table of contents in AGENTS.md is out of sync\n",
-    );
-    expect(logger.log).toHaveBeenCalledWith(
-      "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("handles non-Error throw values in run catch block", async () => {
-    const nonErrorLike: Error = {
-      message: "boom",
-      name: "NonErrorLike",
-    };
-
-    vi.mocked(readdirSync).mockImplementationOnce(() => {
-      throw nonErrorLike;
-    });
-
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.error).toHaveBeenCalledWith("❌ Error: [object Object]");
+    assertLogs(logger);
 
     processExitSpy.mockRestore();
   });

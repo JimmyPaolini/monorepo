@@ -2,6 +2,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import { setPromptsMockResponse } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
@@ -59,12 +60,12 @@ describe(LiteratureCommand, () => {
       providers: [
         LiteratureCommand,
         {
-          provide: LiteratureService,
-          useValue: literatureService,
-        },
-        {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: LiteratureService,
+          useValue: literatureService,
         },
       ],
     }).compile();
@@ -74,8 +75,7 @@ describe(LiteratureCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
+    resetCommandTestHarness({ unstubGlobals: false });
     setPromptsMockResponse(promptsMock, { provider: "ALL" });
   });
 
@@ -98,27 +98,39 @@ describe(LiteratureCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(LiteratureCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("LiteratureCommand");
   });
 
-  it("should parse provider from explicit valid option", async () => {
-    literatureService.scanLibrary.mockResolvedValue(library);
+  it.each([["perseus", "perseus"]] as const)(
+    "should parse explicit provider option %s",
+    async (providerInput, expectedProvider) => {
+      literatureService.scanLibrary.mockResolvedValue(library);
 
-    const provider = await command.parseProvider("perseus");
+      await expect(command.parseProvider(providerInput)).resolves.toBe(
+        expectedProvider,
+      );
+      expect(promptsMock).not.toHaveBeenCalled();
+    },
+  );
 
-    expect(provider).toBe("perseus");
-    expect(promptsMock).not.toHaveBeenCalled();
-  });
-
-  it("should throw for explicit invalid provider option", async () => {
-    literatureService.scanLibrary.mockResolvedValue(library);
-
-    await expect(command.parseProvider("invalid-provider")).rejects.toThrow(
+  it.each([
+    [
+      "invalid-provider",
       'Provider "invalid-provider" not found in the dataset.',
-    );
-  });
+    ],
+  ] as const)(
+    "should throw for invalid explicit provider option %s",
+    async (providerInput, expectedErrorMessage) => {
+      literatureService.scanLibrary.mockResolvedValue(library);
+
+      await expect(command.parseProvider(providerInput)).rejects.toThrow(
+        expectedErrorMessage,
+      );
+    },
+  );
 
   it("should return undefined when interactive provider selects all", async () => {
     literatureService.scanLibrary.mockResolvedValue(library);

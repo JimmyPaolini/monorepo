@@ -1,5 +1,5 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { specialtyAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolBySpecialtyAspect } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
@@ -26,7 +26,7 @@ export class SpecialtyAspectsEventService {
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
-    private readonly simpleAspectsEventService: SimpleAspectsEventService,
+    private readonly aspectEventFormattingService: AspectEventFormattingService,
     private readonly ephemerisService: EphemerisService,
   ) {
     this.logger.setContext(SpecialtyAspectsEventService.name);
@@ -45,7 +45,7 @@ export class SpecialtyAspectsEventService {
     timestamp: Moment;
   }): Event {
     const { body1, body2, phase, specialtyAspect, timestamp } = args;
-    return this.simpleAspectsEventService.assembleSimpleAspectEvent({
+    return this.aspectEventFormattingService.assembleSimpleAspectEvent({
       aspectCategory: "Specialty Aspect",
       aspectName: specialtyAspect,
       aspectSymbol: symbolBySpecialtyAspect[specialtyAspect],
@@ -86,7 +86,7 @@ export class SpecialtyAspectsEventService {
   }): null | SpecialtyAspect {
     const { longitudeBody1, longitudeBody2 } = args;
 
-    return this.simpleAspectsEventService.findFirstMatchingAspect({
+    return this.aspectEventFormattingService.findFirstMatchingAspect({
       aspects: specialtyAspects,
       isMatchingAspect: (aspect) =>
         this.aspectsUtilitiesService.isAspect({

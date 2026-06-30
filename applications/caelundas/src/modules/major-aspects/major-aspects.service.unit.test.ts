@@ -1,8 +1,10 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -32,9 +34,11 @@ describe(MajorAspectsService, () => {
         MajorAspectsService,
         MajorAspectEventService,
         MajorAspectProgressiveService,
+        AspectEphemerisService,
         AspectsUtilities,
         EphemerisService,
         MathService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();
@@ -74,127 +78,113 @@ describe(MajorAspectsService, () => {
       return ephemerisByBody;
     };
 
-    it("detects perfective conjunction", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
+    it.each([
+      {
+        aspectDescription: "perfective conjunction",
+        expectedBody: "Mercury",
+        expectedPhase: "Perfective",
+        expectedVerb: "conjunct",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.mercury = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 359,
+            [previousMinute.toISOString()]: 1,
+          });
+        },
+      },
+      {
+        aspectDescription: "forming opposition",
+        expectedBody: "Venus",
+        expectedPhase: "Forming",
+        expectedVerb: "opposite",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.venus = createEphemeris({
+            [currentMinute.toISOString()]: 187,
+            [nextMinute.toISOString()]: 185,
+            [previousMinute.toISOString()]: 189,
+          });
+        },
+      },
+      {
+        aspectDescription: "dissolving trine",
+        expectedBody: "Mars",
+        expectedPhase: "Dissolving",
+        expectedVerb: "trine",
+        setScenarioEphemeris: (
+          currentMinute: Moment,
+          previousMinute: Moment,
+          nextMinute: Moment,
+          coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+        ): void => {
+          coordinateEphemerisByBody.sun = createEphemeris({
+            [currentMinute.toISOString()]: 0,
+            [nextMinute.toISOString()]: 0,
+            [previousMinute.toISOString()]: 0,
+          });
+          coordinateEphemerisByBody.mars = createEphemeris({
+            [currentMinute.toISOString()]: 125,
+            [nextMinute.toISOString()]: 127,
+            [previousMinute.toISOString()]: 122,
+          });
+        },
+      },
+    ])(
+      "detects $aspectDescription",
+      ({ expectedBody, expectedPhase, expectedVerb, setScenarioEphemeris }) => {
+        const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
+        const previousMinute = currentMinute.clone().subtract(1, "minute");
+        const nextMinute = currentMinute.clone().add(1, "minute");
+        const coordinateEphemerisByBody = createDefaultEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+        );
 
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
+        setScenarioEphemeris(
+          currentMinute,
+          previousMinute,
+          nextMinute,
+          coordinateEphemerisByBody,
+        );
 
-      // Override sun and mercury to be in conjunction
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.mercury = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 359,
-        [previousMinute.toISOString()]: 1,
-      });
+        const events = service.detect({
+          coordinateEphemerisByBody,
+          minute: currentMinute,
+        });
 
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
+        expect(events.length).toBeGreaterThanOrEqual(1);
 
-      expect(events.length).toBeGreaterThanOrEqual(1);
+        const detectedEvent = events.find(
+          (event) =>
+            event.description.includes(expectedVerb) &&
+            event.description.includes("Sun") &&
+            event.description.includes(expectedBody),
+        );
 
-      const conjunctionEvent = events.find(
-        (e) =>
-          e.description.includes("conjunct") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mercury"),
-      );
-
-      expect(conjunctionEvent).toBeDefined();
-      expect(conjunctionEvent?.categories).toContain("Perfective");
-    });
-
-    it("detects forming aspect", () => {
-      expect.hasAssertions(); // Test context provides debugging info and task metadata
-
-      // Useful for logging test names in complex scenarios
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
-
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
-
-      // Opposition has 8° orb, so venus needs to enter from >188° or <172°
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.venus = createEphemeris({
-        [currentMinute.toISOString()]: 187, // Inside 8° orb (entering)
-        [nextMinute.toISOString()]: 185, // Further in orb
-        [previousMinute.toISOString()]: 189, // Outside 8° orb (>188°)
-      });
-
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
-
-      const formingOpposition = events.find(
-        (e) =>
-          e.description.includes("opposite") &&
-          e.categories.includes("Forming") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Venus"),
-      );
-
-      expect(formingOpposition).toBeDefined();
-    });
-
-    it("detects dissolving aspect", () => {
-      const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const previousMinute = currentMinute.clone().subtract(1, "minute");
-      const nextMinute = currentMinute.clone().add(1, "minute");
-
-      const coordinateEphemerisByBody = createDefaultEphemeris(
-        currentMinute,
-        previousMinute,
-        nextMinute,
-      );
-
-      // Trine has 6° orb, so mars needs to exit beyond >126° or <114°
-      coordinateEphemerisByBody.sun = createEphemeris({
-        [currentMinute.toISOString()]: 0,
-        [nextMinute.toISOString()]: 0,
-        [previousMinute.toISOString()]: 0,
-      });
-      coordinateEphemerisByBody.mars = createEphemeris({
-        [currentMinute.toISOString()]: 125, // Still inside 6° orb (moving away)
-        [nextMinute.toISOString()]: 127, // Outside 6° orb (exiting)
-        [previousMinute.toISOString()]: 122, // Inside 6° orb
-      });
-
-      const events = service.detect({
-        coordinateEphemerisByBody,
-        minute: currentMinute,
-      });
-
-      const dissolvingTrine = events.find(
-        (e) =>
-          e.description.includes("trine") &&
-          e.categories.includes("Dissolving") &&
-          e.description.includes("Sun") &&
-          e.description.includes("Mars"),
-      );
-
-      expect(dissolvingTrine).toBeDefined();
-    });
+        expect(detectedEvent).toBeDefined();
+        expect(detectedEvent?.categories).toContain(expectedPhase);
+      },
+    );
 
     it("detects multiple aspects between different body pairs", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");

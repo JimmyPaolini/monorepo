@@ -2,8 +2,10 @@
  * Orchestration service for the conventional-config sync workflow.
  */
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -12,7 +14,10 @@ import { LoggerService } from "../logger/logger.service";
 
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
-import { ConventionalConfigConstantsService } from "./conventional-config.constants";
+import {
+  SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES,
+  SYNC_CONVENTIONAL_CONFIG_SKILL_FILES,
+} from "./conventional-config.constants";
 
 import type {
   ConventionalConfig,
@@ -22,6 +27,21 @@ import type {
 } from "./conventional-config.types";
 
 /**
+ * Resolves the monorepo root from this file location.
+ */
+function resolveWorkspaceRoot(): string {
+  const currentFilePath = fileURLToPath(import.meta.url);
+  const currentFileDirectory = path.dirname(currentFilePath);
+  const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
+
+  if (!existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
+    throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
+  }
+
+  return workspaceRoot;
+}
+
+/**
  * Orchestrates check and write modes for conventional-config synchronization.
  */
 @Injectable()
@@ -29,7 +49,6 @@ export class ConventionalConfigService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly conventionalConfigConstantsService: ConventionalConfigConstantsService,
     private readonly conventionalConfigIoService: ConventionalConfigIoService,
     private readonly loggerService: LoggerService,
     private readonly conventionalConfigValidatorsService: ConventionalConfigValidatorsService,
@@ -39,14 +58,34 @@ export class ConventionalConfigService {
 
   // 🔐 Private Fields
 
+  private readonly workspaceRoot = resolveWorkspaceRoot();
+  private readonly conventionalConfigFile = path.join(
+    this.workspaceRoot,
+    "configuration/conventional.config.cjs",
+  );
+  private readonly issueTemplateFiles =
+    SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES.map((file) =>
+      path.join(this.workspaceRoot, file),
+    );
+  private readonly releaseConfigFile = path.join(
+    this.workspaceRoot,
+    "release.config.cjs",
+  );
   private readonly requireFromCurrentModule = createRequire(import.meta.url);
+  private readonly settingsFile = path.join(
+    this.workspaceRoot,
+    ".vscode/settings.json",
+  );
+  private readonly skillFiles = SYNC_CONVENTIONAL_CONFIG_SKILL_FILES.map(
+    (file) => path.join(this.workspaceRoot, file),
+  );
 
   // 🔏 Private Methods
 
   /** Loads release.config.cjs as a CommonJS module. */
   private loadReleaseConfig(): ReleaseConfig {
     return this.requireFromCurrentModule(
-      this.conventionalConfigConstantsService.releaseConfigFile,
+      this.releaseConfigFile,
     ) as ReleaseConfig;
   }
 
@@ -92,12 +131,12 @@ export class ConventionalConfigService {
     const skillsOk =
       this.conventionalConfigValidatorsService.checkAllSkillsSync(
         config,
-        this.conventionalConfigConstantsService.skillFiles,
+        this.skillFiles,
       );
     const templatesOk =
       this.conventionalConfigValidatorsService.checkAllTemplatesSync(
         scopeNames,
-        this.conventionalConfigConstantsService.issueTemplateFiles,
+        this.issueTemplateFiles,
       );
     const releaseConfig = this.loadReleaseConfig();
     const releaseRulesOk =
@@ -137,22 +176,20 @@ export class ConventionalConfigService {
         scopeNames,
         settingsScopes,
       );
-    const outOfSyncSkills =
-      this.conventionalConfigConstantsService.skillFiles.filter(
-        (skillFile) =>
-          !this.conventionalConfigValidatorsService.checkSkillSync(
-            config,
-            skillFile,
-          ),
-      );
-    const outOfSyncTemplates =
-      this.conventionalConfigConstantsService.issueTemplateFiles.filter(
-        (templateFile) =>
-          !this.conventionalConfigValidatorsService.checkIssueTemplateSync(
-            scopeNames,
-            templateFile,
-          ),
-      );
+    const outOfSyncSkills = this.skillFiles.filter(
+      (skillFile) =>
+        !this.conventionalConfigValidatorsService.checkSkillSync(
+          config,
+          skillFile,
+        ),
+    );
+    const outOfSyncTemplates = this.issueTemplateFiles.filter(
+      (templateFile) =>
+        !this.conventionalConfigValidatorsService.checkIssueTemplateSync(
+          scopeNames,
+          templateFile,
+        ),
+    );
 
     if (
       settingsOk &&
@@ -183,7 +220,7 @@ export class ConventionalConfigService {
    */
   loadConventionalConfig(): ConventionalConfig {
     return this.requireFromCurrentModule(
-      this.conventionalConfigConstantsService.conventionalConfigFile,
+      this.conventionalConfigFile,
     ) as ConventionalConfig;
   }
 
@@ -196,24 +233,16 @@ export class ConventionalConfigService {
       config,
       scopeNames: config.scopes.map((scope) => scope.name),
       settingsScopes: this.conventionalConfigIoService.parseSettingsScopes(
-        readFileSync(
-          this.conventionalConfigConstantsService.settingsFile,
-          "utf8",
-        ),
+        readFileSync(this.settingsFile, "utf8"),
       ),
       typeNames: config.types.map((type) => type.name),
     };
 
     if (mode === "check") {
       this.handleCheckMode(context);
-    } else if (mode === "write") {
-      this.handleWriteMode(context);
-    } else {
-      this.loggerService.error(`❌ Invalid mode: ${mode}`);
-      this.loggerService.error(
-        "💡 Usage: nx run synchronization:conventional-config [check|write]",
-      );
-      process.exit(1);
+      return;
     }
+
+    this.handleWriteMode(context);
   }
 }

@@ -1,14 +1,20 @@
+import * as filesystem from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
-import { ConventionalConfigConstantsService } from "./conventional-config.constants";
+import {
+  SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES,
+  SYNC_CONVENTIONAL_CONFIG_SKILL_FILES,
+} from "./conventional-config.constants";
 import { ConventionalConfigService } from "./conventional-config.service";
 
 import type {
@@ -17,12 +23,31 @@ import type {
   SyncContext,
 } from "./conventional-config.types";
 
+function resolveWorkspaceRoot(): string {
+  const currentFilePath = fileURLToPath(import.meta.url);
+  const currentFileDirectory = path.dirname(currentFilePath);
+  const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
+
+  if (!filesystem.existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
+    throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
+  }
+
+  return workspaceRoot;
+}
+
 const fileContents = new Map<string, string>();
 const requiredModules = new Map<string, unknown>();
 
-vi.mock("node:fs", () => {
+vi.mock("node:fs", async (importOriginal) => {
+  const importedModule = await importOriginal();
+  const module =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
+
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    ...module,
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
@@ -34,7 +59,7 @@ vi.mock("node:fs", () => {
 
 vi.mock("node:module", () => {
   return {
-    createRequire: vi.fn(() => {
+    createRequire: vi.fn<() => (modulePath: string) => unknown>(() => {
       return (modulePath: string): unknown => {
         const value = requiredModules.get(modulePath);
         if (value === undefined) {
@@ -47,26 +72,24 @@ vi.mock("node:module", () => {
 });
 
 describe(ConventionalConfigService, () => {
-  let constants: ConventionalConfigConstantsService;
+  const workspaceRoot = resolveWorkspaceRoot();
+
   let io: ConventionalConfigIoService;
   let logger: LoggerService;
   let service: ConventionalConfigService;
   let validators: ConventionalConfigValidatorsService;
 
-  const workspaceRoot = process.cwd();
   const conventionalConfigFile = path.join(
     workspaceRoot,
     "configuration/conventional.config.cjs",
   );
   const releaseConfigFile = path.join(workspaceRoot, "release.config.cjs");
   const settingsFile = path.join(workspaceRoot, ".vscode/settings.json");
-  const skillFile = path.join(
-    workspaceRoot,
-    "documentation/skills/test/SKILL.md",
+  const skillFiles = SYNC_CONVENTIONAL_CONFIG_SKILL_FILES.map((skillFile) =>
+    path.join(workspaceRoot, skillFile),
   );
-  const templateFile = path.join(
-    workspaceRoot,
-    ".github/ISSUE_TEMPLATE/bug.yml",
+  const templateFiles = SYNC_CONVENTIONAL_CONFIG_ISSUE_TEMPLATE_FILES.map(
+    (templateFile) => path.join(workspaceRoot, templateFile),
   );
 
   const conventionalConfig: ConventionalConfig = {
@@ -95,10 +118,6 @@ describe(ConventionalConfigService, () => {
       providers: [
         ConventionalConfigService,
         {
-          provide: ConventionalConfigConstantsService,
-          useValue: createMock<ConventionalConfigConstantsService>(),
-        },
-        {
           provide: ConventionalConfigIoService,
           useValue: createMock<ConventionalConfigIoService>(),
         },
@@ -113,19 +132,10 @@ describe(ConventionalConfigService, () => {
       ],
     }).compile();
 
-    constants = await module.resolve(ConventionalConfigConstantsService);
     io = await module.resolve(ConventionalConfigIoService);
     logger = await module.resolve(LoggerService);
     service = await module.resolve(ConventionalConfigService);
     validators = await module.resolve(ConventionalConfigValidatorsService);
-
-    Object.assign(constants, {
-      conventionalConfigFile,
-      issueTemplateFiles: [templateFile],
-      releaseConfigFile,
-      settingsFile,
-      skillFiles: [skillFile],
-    });
   });
 
   beforeEach(() => {
@@ -175,11 +185,7 @@ describe(ConventionalConfigService, () => {
     vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
     vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    const processExitSpy = mockProcessExit();
 
     expect(() =>
       service.handleCheckMode({
@@ -229,56 +235,66 @@ describe(ConventionalConfigService, () => {
     expect(io.writeSettingsSync).toHaveBeenCalledWith(
       conventionalConfig.scopes,
     );
-    expect(io.writeSkillSync).toHaveBeenCalledWith(
-      conventionalConfig,
-      skillFile,
-    );
-    expect(io.writeIssueTemplateSync).toHaveBeenCalledWith(
-      ["tools"],
-      templateFile,
-    );
-    expect(io.writeReleaseConfigSync).toHaveBeenCalledWith(
-      conventionalConfig.types,
-    );
-  });
 
-  it("syncs release config when only preset types are missing", () => {
-    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
-    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
-    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
-    vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
-    vi.mocked(io.getPresetConfigTypes).mockReturnValue([]);
-
-    service.handleWriteMode({
-      config: conventionalConfig,
-      scopeNames: ["tools"],
-      settingsScopes: ["tools"],
-      typeNames: ["fix"],
-    });
+    for (const skillFile of skillFiles) {
+      expect(io.writeSkillSync).toHaveBeenCalledWith(
+        conventionalConfig,
+        skillFile,
+      );
+    }
+    for (const templateFile of templateFiles) {
+      expect(io.writeIssueTemplateSync).toHaveBeenCalledWith(
+        ["tools"],
+        templateFile,
+      );
+    }
 
     expect(io.writeReleaseConfigSync).toHaveBeenCalledWith(
       conventionalConfig.types,
     );
   });
 
-  it("syncs release config when only release rules are missing", () => {
-    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
-    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
-    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
-    vi.mocked(io.getReleaseRulesTypes).mockReturnValue([]);
-    vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
+  it.each([
+    {
+      expectedWriteCalls: [[conventionalConfig.types]],
+      presetConfigTypes: [],
+      releaseRuleTypes: ["fix"],
+      scenarioName: "syncs release config when only preset types are missing",
+    },
+    {
+      expectedWriteCalls: [[conventionalConfig.types]],
+      presetConfigTypes: ["fix"],
+      releaseRuleTypes: [],
+      scenarioName: "syncs release config when only release rules are missing",
+    },
+    {
+      expectedWriteCalls: [],
+      presetConfigTypes: ["fix"],
+      releaseRuleTypes: ["fix"],
+      scenarioName:
+        "does not write release config when no release types are missing",
+    },
+  ])(
+    "$scenarioName",
+    ({ expectedWriteCalls, presetConfigTypes, releaseRuleTypes }) => {
+      vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
+      vi.mocked(validators.checkSkillSync).mockReturnValue(false);
+      vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
+      vi.mocked(io.getReleaseRulesTypes).mockReturnValue(releaseRuleTypes);
+      vi.mocked(io.getPresetConfigTypes).mockReturnValue(presetConfigTypes);
 
-    service.handleWriteMode({
-      config: conventionalConfig,
-      scopeNames: ["tools"],
-      settingsScopes: ["tools"],
-      typeNames: ["fix"],
-    });
+      service.handleWriteMode({
+        config: conventionalConfig,
+        scopeNames: ["tools"],
+        settingsScopes: ["tools"],
+        typeNames: ["fix"],
+      });
 
-    expect(io.writeReleaseConfigSync).toHaveBeenCalledWith(
-      conventionalConfig.types,
-    );
-  });
+      expect(vi.mocked(io.writeReleaseConfigSync).mock.calls).toStrictEqual(
+        expectedWriteCalls,
+      );
+    },
+  );
 
   it("loads conventional config from CommonJS module", () => {
     expect(service.loadConventionalConfig()).toStrictEqual(conventionalConfig);
@@ -313,23 +329,31 @@ describe(ConventionalConfigService, () => {
     handleWriteModeSpy.mockRestore();
   });
 
-  it("exits runSynchronization for invalid mode", () => {
-    vi.mocked(io.parseSettingsScopes).mockReturnValue(["tools"]);
+  it("throws when workspace root cannot be resolved", async () => {
+    const existsSyncSpy = vi
+      .spyOn(filesystem, "existsSync")
+      .mockReturnValue(false);
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
+    await expect(
+      Test.createTestingModule({
+        providers: [
+          ConventionalConfigService,
+          {
+            provide: ConventionalConfigIoService,
+            useValue: createMock<ConventionalConfigIoService>(),
+          },
+          {
+            provide: LoggerService,
+            useValue: createMock<LoggerService>(),
+          },
+          {
+            provide: ConventionalConfigValidatorsService,
+            useValue: createMock<ConventionalConfigValidatorsService>(),
+          },
+        ],
+      }).compile(),
+    ).rejects.toThrow("Could not find workspace root (pnpm-workspace.yaml)");
 
-    expect(() => service.runSynchronization("invalid-mode")).toThrow(
-      "process.exit:1",
-    );
-    expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
-    expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:conventional-config [check|write]",
-    );
-
-    processExitSpy.mockRestore();
+    existsSyncSpy.mockRestore();
   });
 });

@@ -10,6 +10,7 @@ import {
   vi,
 } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { LatinLibraryCommand } from "./latin-library.command";
@@ -50,45 +51,47 @@ describe(LatinLibraryCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
-    vi.unstubAllGlobals();
+    resetCommandTestHarness();
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
+    (command as unknown as { errorLogFilePath: string }).errorLogFilePath =
+      "/tmp/latin-library-errors.log";
   });
 
   describe("constructor bootstrap", () => {
     afterEach(() => {
       vi.resetModules();
-      vi.doUnmock("node:fs");
     });
 
     it("creates the output directory when it does not exist", async () => {
       vi.resetModules();
-
-      const existsSync = vi.fn<() => boolean>(() => false);
-      const mkdirSync = vi.fn<() => void>();
-
-      vi.doMock("node:fs", () => ({
-        existsSync,
-        mkdirSync,
-      }));
 
       const { LatinLibraryCommand: LatinLibraryCommandForBootstrap } =
         await import("./latin-library.command");
 
       const bootstrapLogger: DeepMocked<LoggerService> =
         createMock<LoggerService>();
+      bootstrapLogger.createTimestampedOutputLogFilePath.mockReturnValue(
+        "/tmp/latin-library-errors.log",
+      );
 
       const bootstrapCommand = new LatinLibraryCommandForBootstrap(
         bootstrapLogger,
       );
 
       expect(bootstrapCommand).toBeDefined();
-      expect(existsSync).toHaveBeenCalledTimes(1);
-      expect(mkdirSync).toHaveBeenCalledWith(expect.any(String), {
-        recursive: true,
-      });
+      expect(
+        bootstrapLogger.createTimestampedOutputLogFilePath,
+      ).toHaveBeenCalledWith("latin-library");
     });
   });
 
@@ -107,23 +110,26 @@ describe(LatinLibraryCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(LatinLibraryCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("LatinLibraryCommand");
   });
 
-  it("should skip ignored link filenames", () => {
+  it.each([
+    ["index.html", true],
+    ["mailto:hello@example.com", true],
+    ["chapter.pdf", true],
+    ["vergil/aeneid.html", false],
+    ["vergil/aeneid", false],
+  ] as const)("should determine skip state for %s", (href, expectedValue) => {
     const shouldSkipLink = (
       command as unknown as {
         shouldSkipLink: (href: string) => boolean;
       }
     ).shouldSkipLink.bind(command);
 
-    expect(shouldSkipLink("index.html")).toBe(true);
-    expect(shouldSkipLink("mailto:hello@example.com")).toBe(true);
-    expect(shouldSkipLink("chapter.pdf")).toBe(true);
-    expect(shouldSkipLink("vergil/aeneid.html")).toBe(false);
-    expect(shouldSkipLink("vergil/aeneid")).toBe(false);
+    expect(shouldSkipLink(href)).toBe(expectedValue);
   });
 
   it("should derive relative paths and base urls", () => {

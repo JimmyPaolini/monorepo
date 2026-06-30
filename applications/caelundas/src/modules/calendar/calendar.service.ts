@@ -9,6 +9,7 @@ import { LoggerService } from "../logger/logger.service";
 
 import type {
   BuildCalendarFileContentParameters,
+  BuildInstantEventArguments,
   Event,
 } from "./calendar.types";
 import type {
@@ -178,6 +179,23 @@ END:VCALENDAR
 `;
 
     return vcalendar;
+  }
+
+  /**
+   * Builds a one-minute-point event where start and end are the same timestamp.
+   */
+  buildInstantEvent(args: BuildInstantEventArguments): Event {
+    const { categories, date, description, logger, summary, timezone } = args;
+    const dateString = date.clone().tz(timezone).toISOString(true);
+    logger.log(`${summary} at ${dateString}`);
+
+    return {
+      categories,
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
   }
 
   /**

@@ -2,7 +2,9 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
+import { expectProcessExitOne } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { ConventionalConfigCommand } from "./conventional-config.command";
 import { ConventionalConfigService } from "./conventional-config.service";
@@ -16,6 +18,7 @@ const buildModule = async (): Promise<{
   const module = await Test.createTestingModule({
     providers: [
       ConventionalConfigCommand,
+      SynchronizationModeService,
       {
         provide: ConventionalConfigService,
         useValue: conventionalConfigService,
@@ -51,25 +54,36 @@ describe(ConventionalConfigCommand, () => {
     expect(logger.setContext).toHaveBeenCalledWith("ConventionalConfigCommand");
   });
 
-  it("runs synchronization in check mode by default", async () => {
+  it.each([
+    {
+      expectedMode: "check",
+      modeArguments: [],
+      scenarioName: "runs synchronization in check mode by default",
+    },
+    {
+      expectedMode: "write",
+      modeArguments: ["write"],
+      scenarioName: "runs synchronization with the provided mode",
+    },
+  ])("$scenarioName", async ({ expectedMode, modeArguments }) => {
     const { command: localCommand, conventionalConfigService } =
       await buildModule();
 
-    await localCommand.run([]);
+    await localCommand.run(modeArguments);
 
     expect(conventionalConfigService.runSynchronization).toHaveBeenCalledWith(
-      "",
+      expectedMode,
     );
   });
 
-  it("runs synchronization with the provided mode", async () => {
-    const { command: localCommand, conventionalConfigService } =
-      await buildModule();
+  it("exits for invalid mode", async () => {
+    const { command: localCommand, logger } = await buildModule();
 
-    await localCommand.run(["write"]);
+    await expectProcessExitOne(async () => localCommand.run(["invalid-mode"]));
 
-    expect(conventionalConfigService.runSynchronization).toHaveBeenCalledWith(
-      "write",
+    expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
+    expect(logger.error).toHaveBeenCalledWith(
+      "💡 Usage: nx run synchronization:conventional-config [check|write]",
     );
   });
 });

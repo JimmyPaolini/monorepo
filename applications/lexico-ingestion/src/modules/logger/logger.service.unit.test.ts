@@ -1,7 +1,30 @@
+import path from "node:path";
+
 import { Test } from "@nestjs/testing";
-import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
+import {
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 
 import { LoggerService } from "./logger.service";
+
+const { existsSyncMock, mkdirSyncMock } = vi.hoisted(() => ({
+  existsSyncMock: vi.fn<(path: string) => boolean>(),
+  mkdirSyncMock:
+    vi.fn<
+      (path: string, options?: { recursive?: boolean }) => string | undefined
+    >(),
+}));
+
+vi.mock("node:fs", () => ({
+  existsSync: existsSyncMock,
+  mkdirSync: mkdirSyncMock,
+}));
 
 describe(LoggerService, () => {
   const originalNodeEnvironment = process.env["NODE_ENV"];
@@ -34,6 +57,11 @@ describe(LoggerService, () => {
     }).compile();
 
     service = await module.resolve(LoggerService);
+  });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.useRealTimers();
   });
 
   describe("environment initialization", () => {
@@ -222,6 +250,83 @@ describe(LoggerService, () => {
       expect(loggerChildMock.trace).toHaveBeenCalledWith(
         { context: "TestContext" },
         "Verbose message",
+      );
+    });
+  });
+
+  describe("buildErrorLogEntry", () => {
+    it("should prefer stack trace when error includes a stack", () => {
+      const error = new Error("fallback message");
+      error.stack = "stack trace content";
+
+      const result = service.buildErrorLogEntry("LoggerService", error);
+
+      expect(result.errorMessage).toBe("stack trace content");
+      expect(result.logLine).toContain("LoggerService: stack trace content");
+    });
+
+    it("should use message when stack trace is empty", () => {
+      const error = new Error("message content");
+      error.stack = "";
+
+      const result = service.buildErrorLogEntry("LoggerService", error);
+
+      expect(result.errorMessage).toBe("message content");
+      expect(result.logLine).toContain("LoggerService: message content");
+    });
+
+    it("should normalize non-error values", () => {
+      const result = service.buildErrorLogEntry("LoggerService", {
+        detail: "value",
+      });
+
+      expect(result.errorMessage).toBe("[object Object]");
+      expect(result.logLine).toContain("LoggerService: [object Object]");
+    });
+  });
+
+  describe("createTimestampedOutputLogFilePath", () => {
+    it("should create output directory when missing", () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2026-01-02T03:04:05.678Z"));
+
+      existsSyncMock.mockReturnValue(false);
+      mkdirSyncMock.mockReturnValue(undefined);
+
+      const filePath = service.createTimestampedOutputLogFilePath("errors");
+
+      const expectedOutputDirectory = path.join(process.cwd(), "output");
+
+      expect(existsSyncMock).toHaveBeenCalledWith(expectedOutputDirectory);
+      expect(mkdirSyncMock).toHaveBeenCalledWith(expectedOutputDirectory, {
+        recursive: true,
+      });
+      expect(filePath).toBe(
+        path.join(
+          expectedOutputDirectory,
+          "errors-2026-01-02T03-04-05-678Z.log",
+        ),
+      );
+    });
+
+    it("should skip directory creation when output directory already exists", () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2026-01-02T03:04:05.678Z"));
+
+      existsSyncMock.mockReturnValue(true);
+      mkdirSyncMock.mockReturnValue(undefined);
+
+      const filePath = service.createTimestampedOutputLogFilePath("errors");
+
+      const expectedOutputDirectory = path.join(process.cwd(), "output");
+
+      expect(existsSyncMock).toHaveBeenCalledWith(expectedOutputDirectory);
+      expect(mkdirSyncMock).not.toHaveBeenCalled();
+      expect(filePath).toBe(
+        path.join(
+          expectedOutputDirectory,
+          "errors-2026-01-02T03-04-05-678Z.log",
+        ),
       );
     });
   });

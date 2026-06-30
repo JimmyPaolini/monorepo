@@ -20,6 +20,7 @@
     "earshinov.permute-lines", // Permute Lines
     "ecmel.vscode-html-css", // HTML CSS Support
     "esbenp.prettier-vscode", // Prettier - Code formatter
+    "fallow-rs.fallow-vscode", // Fallow
     "firsttris.vscode-jest-runner", // Jest / Vitest Runner
     "GitHub.copilot-chat", // GitHub Copilot Chat
     "github.vscode-github-actions", // GitHub Actions

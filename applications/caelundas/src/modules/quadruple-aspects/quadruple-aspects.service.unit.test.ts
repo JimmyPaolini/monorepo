@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { Test } from "@nestjs/testing";
 import _ from "lodash";
 import moment from "moment-timezone";
@@ -14,16 +17,21 @@ describe(QuadrupleAspectsService, () => {
   let service: QuadrupleAspectsService;
   let baseService: QuadrupleAspectsBaseService;
   let composerService: QuadrupleAspectsComposerService;
+  let compoundPhaseService: CompoundPhaseService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        CompoundPhaseService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
         QuadrupleAspectsBaseService,
         QuadrupleAspectsComposerService,
         QuadrupleAspectsService,
       ],
     }).compile();
     baseService = await module.resolve(QuadrupleAspectsBaseService);
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     composerService = await module.resolve(QuadrupleAspectsComposerService);
     service = await module.resolve(QuadrupleAspectsService);
   });
@@ -570,91 +578,70 @@ describe(QuadrupleAspectsService, () => {
       expect(progressiveEvents).toHaveLength(0);
     });
 
-    it("removes phase emojis from summary", () => {
-      const formingEvent: Event = {
-        categories: [
-          "Quadruple Aspect",
-          "Grand Cross",
-          "Forming",
-          "Sun",
-          "Moon",
-          "Mars",
-          "Jupiter",
-        ],
-        description: "Jupiter, Mars, Moon, Sun grand cross forming",
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "➡️ Grand Cross forming",
-      };
+    it.each([
+      {
+        caseName: "removes phase emojis from summary",
+        dissolvingSummary: "⬅️ Grand Cross dissolving",
+        formingSummary: "➡️ Grand Cross forming",
+        validateProgressiveEvent: (event: Event | undefined): void => {
+          expect(event?.summary).toBe("Grand Cross forming");
+        },
+      },
+      {
+        caseName: "removes phase text from description",
+        dissolvingSummary: "Grand Cross dissolving",
+        formingSummary: "Grand Cross forming",
+        validateProgressiveEvent: (event: Event | undefined): void => {
+          expect(event?.description).not.toMatch(
+            /(forming|dissolving|perfective)/i,
+          );
+        },
+      },
+    ])(
+      "$caseName",
+      ({ dissolvingSummary, formingSummary, validateProgressiveEvent }) => {
+        const formingEvent: Event = {
+          categories: [
+            "Quadruple Aspect",
+            "Grand Cross",
+            "Forming",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Jupiter",
+          ],
+          description: "Jupiter, Mars, Moon, Sun grand cross forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: formingSummary,
+        };
 
-      const dissolvingEvent: Event = {
-        categories: [
-          "Quadruple Aspect",
-          "Grand Cross",
-          "Dissolving",
-          "Sun",
-          "Moon",
-          "Mars",
-          "Jupiter",
-        ],
-        description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "⬅️ Grand Cross dissolving",
-      };
+        const dissolvingEvent: Event = {
+          categories: [
+            "Quadruple Aspect",
+            "Grand Cross",
+            "Dissolving",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Jupiter",
+          ],
+          description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: dissolvingSummary,
+        };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
+        const progressiveEvents = service.detectProgressive([
+          formingEvent,
+          dissolvingEvent,
+        ]);
 
-      expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.summary).toBe("Grand Cross forming");
-    });
+        expect(progressiveEvents).toHaveLength(1);
 
-    it("removes phase text from description", () => {
-      const formingEvent: Event = {
-        categories: [
-          "Quadruple Aspect",
-          "Grand Cross",
-          "Forming",
-          "Sun",
-          "Moon",
-          "Mars",
-          "Jupiter",
-        ],
-        description: "Jupiter, Mars, Moon, Sun grand cross forming",
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Grand Cross forming",
-      };
-
-      const dissolvingEvent: Event = {
-        categories: [
-          "Quadruple Aspect",
-          "Grand Cross",
-          "Dissolving",
-          "Sun",
-          "Moon",
-          "Mars",
-          "Jupiter",
-        ],
-        description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "Grand Cross dissolving",
-      };
-
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-        dissolvingEvent,
-      ]);
-
-      expect(progressiveEvents).toHaveLength(1);
-      expect(progressiveEvents[0]?.description).not.toMatch(
-        /(forming|dissolving|perfective)/i,
-      );
-    });
+        validateProgressiveEvent(progressiveEvents[0]);
+      },
+    );
 
     it("preserves focal body information in description", () => {
       const formingEvent: Event = {
@@ -816,10 +803,6 @@ describe(QuadrupleAspectsService, () => {
 
   describe("detect guard branches", () => {
     const getBaseInternals = (): {
-      determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
-        eventMinute: moment.Moment;
-        phase: string;
-      };
       findGrandTrines: (
         trines: (AspectBodies | undefined)[],
         unionEdges: AspectBodies[],
@@ -841,10 +824,6 @@ describe(QuadrupleAspectsService, () => {
       ) => boolean;
     } =>
       baseService as unknown as {
-        determineCompoundPhaseFromSnapshots: (...arguments_: unknown[]) => {
-          eventMinute: moment.Moment;
-          phase: string;
-        };
         findGrandTrines: (
           trines: (AspectBodies | undefined)[],
           unionEdges: AspectBodies[],
@@ -895,7 +874,7 @@ describe(QuadrupleAspectsService, () => {
 
     it("returns null when resolveKiteEvent cannot build a complete 4-body event", () => {
       const determinePhaseSpy = vi
-        .spyOn(baseService, "determineCompoundPhaseFromSnapshots")
+        .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
         .mockReturnValue({
           eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
           phase: "forming",

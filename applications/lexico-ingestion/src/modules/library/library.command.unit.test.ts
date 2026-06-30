@@ -6,6 +6,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import {
   setPromptsMockResponse,
   setPromptsMockResponseOnce,
@@ -91,11 +92,19 @@ describe(LibraryCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
+    resetCommandTestHarness({ unstubGlobals: false });
     mkdirMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     setPromptsMockResponse(promptsMock, { provider: "ALL" });
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
   });
 
   it("is defined", () => {
@@ -117,23 +126,30 @@ describe(LibraryCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(LibraryCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("LibraryCommand");
   });
 
-  it("should parse provider from valid explicit option", async () => {
-    const providerName = await command.parseProvider("perseus");
+  it.each([["perseus", "perseus"]] as const)(
+    "should parse explicit provider option %s",
+    async (providerInput, expectedProvider) => {
+      await expect(command.parseProvider(providerInput)).resolves.toBe(
+        expectedProvider,
+      );
+      expect(promptsMock).not.toHaveBeenCalled();
+    },
+  );
 
-    expect(providerName).toBe("perseus");
-    expect(promptsMock).not.toHaveBeenCalled();
-  });
-
-  it("should throw for invalid explicit provider", async () => {
-    await expect(command.parseProvider("invalid")).rejects.toThrow(
-      'Provider "invalid" not found.',
-    );
-  });
+  it.each([["invalid", 'Provider "invalid" not found.']] as const)(
+    "should throw for invalid explicit provider option %s",
+    async (providerInput, expectedErrorMessage) => {
+      await expect(command.parseProvider(providerInput)).rejects.toThrow(
+        expectedErrorMessage,
+      );
+    },
+  );
 
   it("should parse provider interactively and support all option", async () => {
     setPromptsMockResponseOnce(promptsMock, { provider: "ALL" });

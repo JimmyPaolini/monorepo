@@ -1,7 +1,7 @@
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test } from "@nestjs/testing";
+import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
@@ -15,7 +15,7 @@ const fileContents = new Map<string, string>();
 
 vi.mock("node:fs", () => {
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
@@ -36,8 +36,8 @@ describe(ConventionalConfigValidatorsService, () => {
     types: [{ code: "fix", description: "fixing", emoji: "🐛", name: "fix" }],
   };
 
-  beforeAll(async () => {
-    const module = await Test.createTestingModule({
+  const createTestingModule = async (): Promise<TestingModule> => {
+    return Test.createTestingModule({
       providers: [
         ConventionalConfigValidatorsService,
         {
@@ -50,6 +50,10 @@ describe(ConventionalConfigValidatorsService, () => {
         },
       ],
     }).compile();
+  };
+
+  beforeAll(async () => {
+    const module = await createTestingModule();
 
     io = await module.resolve(ConventionalConfigIoService);
     logger = await module.resolve(LoggerService);
@@ -66,19 +70,7 @@ describe(ConventionalConfigValidatorsService, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ConventionalConfigValidatorsService,
-        {
-          provide: ConventionalConfigIoService,
-          useValue: createMock<ConventionalConfigIoService>(),
-        },
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
+    const module = await createTestingModule();
 
     const localLogger = await module.resolve(LoggerService);
 
@@ -91,21 +83,75 @@ describe(ConventionalConfigValidatorsService, () => {
     expect(service.checkSettingsSync(["tools"], ["tools"])).toBe(true);
   });
 
-  it("detects settings scope mismatch", () => {
-    expect(service.checkSettingsSync(["tools"], ["other"])).toBe(false);
-    expect(logger.log).toHaveBeenCalledWith(
-      "❌ settings.json scopes are out of sync\n",
-    );
-  });
+  it.each([
+    {
+      currentScopes: ["tools"],
+      expectedAbsentLogMessages: [
+        "🔀 Scopes have matching values but different ordering\n",
+      ],
+      expectedPresentLogMessages: [
+        "❌ settings.json scopes are out of sync\n",
+        "  Missing in settings.json (1 items):",
+        "  Extra in settings.json (1 items):",
+      ],
+      scenarioName: "detects settings scope mismatch",
+      targetScopes: ["other"],
+    },
+    {
+      currentScopes: ["tools", "alpha"],
+      expectedAbsentLogMessages: [
+        "  Extra in settings.json (1 items):",
+        "🔀 Scopes have matching values but different ordering\n",
+      ],
+      expectedPresentLogMessages: ["  Missing in settings.json (1 items):"],
+      scenarioName:
+        "reports only missing settings values when target is subset",
+      targetScopes: ["tools"],
+    },
+    {
+      currentScopes: ["tools"],
+      expectedAbsentLogMessages: [
+        "  Missing in settings.json (1 items):",
+        "🔀 Scopes have matching values but different ordering\n",
+      ],
+      expectedPresentLogMessages: ["  Extra in settings.json (1 items):"],
+      scenarioName:
+        "reports only extra settings values when target has additions",
+      targetScopes: ["tools", "alpha"],
+    },
+    {
+      currentScopes: ["tools", "alpha"],
+      expectedAbsentLogMessages: [
+        "  Missing in settings.json (1 items):",
+        "  Extra in settings.json (1 items):",
+      ],
+      expectedPresentLogMessages: [
+        "🔀 Scopes have matching values but different ordering\n",
+      ],
+      scenarioName: "detects settings ordering drift when values match",
+      targetScopes: ["alpha", "tools"],
+    },
+  ])(
+    "$scenarioName",
+    ({
+      currentScopes,
+      expectedAbsentLogMessages,
+      expectedPresentLogMessages,
+      targetScopes,
+    }) => {
+      expect(service.checkSettingsSync(currentScopes, targetScopes)).toBe(
+        false,
+      );
 
-  it("detects settings ordering drift when values match", () => {
-    expect(
-      service.checkSettingsSync(["tools", "alpha"], ["alpha", "tools"]),
-    ).toBe(false);
-    expect(logger.log).toHaveBeenCalledWith(
-      "🔀 Scopes have matching values but different ordering\n",
-    );
-  });
+      for (const expectedLogMessage of expectedPresentLogMessages) {
+        expect(logger.log).toHaveBeenCalledWith(expectedLogMessage);
+      }
+
+      for (const expectedLogMessage of expectedAbsentLogMessages) {
+        expect(logger.log).not.toHaveBeenCalledWith(expectedLogMessage);
+      }
+    },
+  );
 
   it("detects issue template scope drift and ordering drift", () => {
     const templateFile = path.join(
@@ -152,21 +198,50 @@ describe(ConventionalConfigValidatorsService, () => {
     );
   });
 
-  it("validates release rules and preset config drift", () => {
-    expect(
-      service.checkReleaseRulesSync(["fix"], ["fix"], "release.config.cjs"),
-    ).toBe(true);
-    expect(
-      service.checkReleaseRulesSync(["fix"], [], "release.config.cjs"),
-    ).toBe(false);
+  it.each([
+    {
+      checkerName: "checkReleaseRulesSync",
+      expectedResult: true,
+      sourceTypes: ["fix"],
+      targetTypes: ["fix"],
+    },
+    {
+      checkerName: "checkReleaseRulesSync",
+      expectedResult: false,
+      sourceTypes: ["fix"],
+      targetTypes: [],
+    },
+    {
+      checkerName: "checkPresetConfigSync",
+      expectedResult: true,
+      sourceTypes: ["fix"],
+      targetTypes: ["fix"],
+    },
+    {
+      checkerName: "checkPresetConfigSync",
+      expectedResult: false,
+      sourceTypes: ["fix"],
+      targetTypes: [],
+    },
+  ])(
+    "$checkerName returns $expectedResult for source $sourceTypes and target $targetTypes",
+    ({ checkerName, expectedResult, sourceTypes, targetTypes }) => {
+      const checkResult =
+        checkerName === "checkReleaseRulesSync"
+          ? service.checkReleaseRulesSync(
+              sourceTypes,
+              targetTypes,
+              "release.config.cjs",
+            )
+          : service.checkPresetConfigSync(
+              sourceTypes,
+              targetTypes,
+              "release.config.cjs",
+            );
 
-    expect(
-      service.checkPresetConfigSync(["fix"], ["fix"], "release.config.cjs"),
-    ).toBe(true);
-    expect(
-      service.checkPresetConfigSync(["fix"], [], "release.config.cjs"),
-    ).toBe(false);
-  });
+      expect(checkResult).toBe(expectedResult);
+    },
+  );
 
   it("validates skill marker sync and missing marker handling", () => {
     const skillFile = path.join(

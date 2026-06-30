@@ -1,4 +1,4 @@
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -13,7 +13,7 @@ import type { DeepMocked } from "@golevelup/ts-vitest";
 
 describe(MinorAspectsComposerService, () => {
   let service: MinorAspectsComposerService;
-  let ephemerisService: DeepMocked<EphemerisService>;
+  let aspectEphemerisService: DeepMocked<AspectEphemerisService>;
   let progressiveUtilitiesService: DeepMocked<ProgressiveUtilitiesService>;
 
   beforeAll(async () => {
@@ -21,7 +21,10 @@ describe(MinorAspectsComposerService, () => {
       providers: [
         MinorAspectsComposerService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
-        { provide: EphemerisService, useValue: createMock<EphemerisService>() },
+        {
+          provide: AspectEphemerisService,
+          useValue: createMock<AspectEphemerisService>(),
+        },
         {
           provide: ProgressiveUtilitiesService,
           useValue: createMock<ProgressiveUtilitiesService>(),
@@ -30,7 +33,7 @@ describe(MinorAspectsComposerService, () => {
     }).compile();
 
     service = await module.resolve(MinorAspectsComposerService);
-    ephemerisService = module.get(EphemerisService);
+    aspectEphemerisService = module.get(AspectEphemerisService);
     progressiveUtilitiesService = module.get(ProgressiveUtilitiesService);
   });
 
@@ -228,7 +231,7 @@ describe(MinorAspectsComposerService, () => {
   });
 
   it("reads longitudes from ephemerides and rejects invalid input", () => {
-    ephemerisService.getLongitudesWindow.mockReturnValue({
+    aspectEphemerisService.getLongitudesWindowForBody.mockReturnValue({
       current: 10,
       next: 11,
       previous: 9,

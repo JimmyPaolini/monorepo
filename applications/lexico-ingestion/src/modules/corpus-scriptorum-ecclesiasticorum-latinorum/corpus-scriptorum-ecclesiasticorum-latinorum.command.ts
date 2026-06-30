@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync } from "node:fs";
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
@@ -24,13 +23,8 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       CorpusScriptorumEcclesiasticorumLatinorumCommand.name,
     );
 
-    const outputDirectory = path.join(process.cwd(), "output");
-    if (!existsSync(outputDirectory))
-      mkdirSync(outputDirectory, { recursive: true });
-    this.errorLogFilePath = path.join(
-      outputDirectory,
-      `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
-    );
+    this.errorLogFilePath =
+      this.logger.createTimestampedOutputLogFilePath("csel");
   }
 
   // 🔐 Private Fields
@@ -68,13 +62,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       const fileUrl = this.sourceHost + xmlPath;
       await this.fetchAndWriteXmlFile(fileUrl, targetPath);
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(xmlPath, error);
       this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
-      await fs.appendFile(
-        this.errorLogFilePath,
-        `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
-      );
+      await fs.appendFile(this.errorLogFilePath, logLine);
     }
   }
 

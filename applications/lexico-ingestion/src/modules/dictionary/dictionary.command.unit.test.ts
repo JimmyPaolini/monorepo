@@ -4,6 +4,10 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
+import {
+  createCommandTestHarness,
+  resetCommandTestHarness,
+} from "../../../testing/command-harness";
 import { setPromptsMockResponse } from "../../../testing/mocks";
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
@@ -96,8 +100,7 @@ describe(DictionaryCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
+    resetCommandTestHarness({ unstubGlobals: false });
 
     (
       command as unknown as {
@@ -128,6 +131,15 @@ describe(DictionaryCommand, () => {
     translationsService.saveTranslations.mockResolvedValue(undefined);
 
     manualService.ingestManual.mockResolvedValue(undefined);
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
   });
 
   it("is defined", () => {
@@ -157,6 +169,7 @@ describe(DictionaryCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(DictionaryCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("DictionaryCommand");
@@ -170,13 +183,8 @@ describe(DictionaryCommand, () => {
       return true;
     });
 
-    const module = await Test.createTestingModule({
-      providers: [
-        DictionaryCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
+    const commandHarness = await createCommandTestHarness({
+      additionalProviders: [
         {
           provide: LexemesService,
           useValue: lexemesService,
@@ -190,9 +198,10 @@ describe(DictionaryCommand, () => {
           useValue: manualService,
         },
       ],
-    }).compile();
+      commandType: DictionaryCommand,
+    });
 
-    await module.resolve(DictionaryCommand);
+    await commandHarness.testingModule.resolve(DictionaryCommand);
 
     expect(mkdirSyncMock).toHaveBeenCalledWith(
       expect.stringContaining("output"),
@@ -200,20 +209,51 @@ describe(DictionaryCommand, () => {
     );
   });
 
-  it("should parse start and end lemma options", async () => {
-    readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
+  it.each([["amo", "amo"]] as const)(
+    "should parse valid start lemma option",
+    async (lemma, expectedLemma) => {
+      readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
 
-    await expect(command.parseStartLemma("amo")).resolves.toBe("amo");
-    await expect(command.parseEndLemma("cano", "amo")).resolves.toBe("cano");
+      await expect(command.parseStartLemma(lemma)).resolves.toBe(expectedLemma);
+    },
+  );
 
-    await expect(command.parseStartLemma("missing")).rejects.toThrow(
-      'Start lemma "missing" not found in the dataset.',
-    );
+  it.each([["cano", "amo", "cano"]] as const)(
+    "should parse valid end lemma option",
+    async (lemma, startLemma, expectedLemma) => {
+      readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
 
-    await expect(command.parseEndLemma("missing", "amo")).rejects.toThrow(
-      'End lemma "missing" not found in the dataset.',
-    );
-  });
+      await expect(command.parseEndLemma(lemma, startLemma)).resolves.toBe(
+        expectedLemma,
+      );
+    },
+  );
+
+  it.each([
+    ["missing", 'Start lemma "missing" not found in the dataset.'],
+  ] as const)(
+    "should throw for invalid start lemma option",
+    async (lemma, expectedMessage) => {
+      readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
+
+      await expect(command.parseStartLemma(lemma)).rejects.toThrow(
+        expectedMessage,
+      );
+    },
+  );
+
+  it.each([
+    ["missing", "amo", 'End lemma "missing" not found in the dataset.'],
+  ] as const)(
+    "should throw for invalid end lemma option",
+    async (lemma, startLemma, expectedMessage) => {
+      readdirSyncMock.mockReturnValue(["amo.json", "bellum.json", "cano.json"]);
+
+      await expect(command.parseEndLemma(lemma, startLemma)).rejects.toThrow(
+        expectedMessage,
+      );
+    },
+  );
 
   it("should return undefined for empty start and end lemma options", async () => {
     await expect(command.parseStartLemma(undefined)).resolves.toBeUndefined();

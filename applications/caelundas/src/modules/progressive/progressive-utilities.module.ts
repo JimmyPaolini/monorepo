@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 
+import { ProgressiveAspectService } from "./progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "./progressive-utilities.service";
 
 /**
@@ -8,8 +9,8 @@ import { ProgressiveUtilitiesService } from "./progressive-utilities.service";
  */
 @Module({
   controllers: [],
-  exports: [ProgressiveUtilitiesService],
+  exports: [ProgressiveAspectService, ProgressiveUtilitiesService],
   imports: [],
-  providers: [ProgressiveUtilitiesService],
+  providers: [ProgressiveAspectService, ProgressiveUtilitiesService],
 })
 export class ProgressiveUtilitiesModule {}

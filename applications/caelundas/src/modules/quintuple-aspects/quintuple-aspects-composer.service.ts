@@ -1,3 +1,6 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { aspectBodies as quintupleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
@@ -28,7 +31,12 @@ import type { Moment } from "moment-timezone";
 export class QuintupleAspectsComposerService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly mathService: MathService) {}
+  constructor(
+    private readonly mathService: MathService,
+    private readonly compoundPhaseService: CompoundPhaseService,
+    private readonly aspectPhaseEmojiService: AspectPhaseEmojiService,
+    private readonly progressiveCompoundEventService: ProgressiveCompoundEventService,
+  ) {}
 
   // 🔏 Private Methods
 
@@ -66,18 +74,10 @@ export class QuintupleAspectsComposerService {
    * Converts a forming/dissolving pentagram pair into one duration event.
    */
   buildProgressiveQuintupleEvent(forming: Event, dissolving: Event): Event {
-    return {
-      categories: forming.categories.filter(
-        (c) => c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
-      ),
-      description: forming.description.replace(
-        / (forming|exact|dissolving)$/,
-        "",
-      ),
-      end: dissolving.start,
-      start: forming.start,
-      summary: forming.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
-    };
+    return this.progressiveCompoundEventService.buildProgressiveCompoundEvent({
+      dissolving,
+      forming,
+    });
   }
 
   /**
@@ -240,49 +240,6 @@ export class QuintupleAspectsComposerService {
   }
 
   /**
-   * Determines compound phase from snapshots.
-   */
-  determineCompoundPhaseFromSnapshots(args: {
-    checkPatternExists: (edges: AspectBodies[]) => boolean;
-    currentAspectBodies: AspectBodies[];
-    currentMinute: Moment;
-    patternBodies: Body[];
-    previousAspectBodies: AspectBodies[];
-  }): null | { eventMinute: Moment; phase: AspectPhase } {
-    const {
-      checkPatternExists,
-      currentAspectBodies,
-      currentMinute,
-      patternBodies,
-      previousAspectBodies,
-    } = args;
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
-      );
-
-    const currentFiltered = filterByBodies(currentAspectBodies);
-    const previousFiltered = filterByBodies(previousAspectBodies);
-
-    const currentExists = checkPatternExists(currentFiltered);
-    const previousExists = checkPatternExists(previousFiltered);
-
-    if (currentExists && !previousExists) {
-      return { eventMinute: currentMinute, phase: "forming" };
-    }
-
-    if (!currentExists && previousExists) {
-      return {
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-        phase: "dissolving",
-      };
-    }
-
-    return null;
-  }
-
-  /**
    * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).
    *
    * A pentagram consists of 5 bodies where each body connects to exactly
@@ -314,15 +271,7 @@ export class QuintupleAspectsComposerService {
    * Maps phase to the event-summary marker prefix.
    */
   getPhaseEmoji(phase: AspectPhase): string {
-    if (phase === "forming") {
-      return "➡️ ";
-    }
-
-    if (phase === "perfective") {
-      return "🎯 ";
-    }
-
-    return "⬅️ ";
+    return this.aspectPhaseEmojiService.getPhaseEmoji(phase);
   }
 
   /** Creates one quintuple-aspect boundary event for the provided five bodies. */
@@ -406,14 +355,15 @@ export class QuintupleAspectsComposerService {
         unionEdges,
       );
       if (!pentagramBodies) continue;
-      const phaseTransition = this.determineCompoundPhaseFromSnapshots({
-        checkPatternExists: (edges) =>
-          this.findPentagramPattern(pentagramBodies, edges) !== null,
-        currentAspectBodies,
-        currentMinute: minute,
-        patternBodies: pentagramBodies,
-        previousAspectBodies,
-      });
+      const phaseTransition =
+        this.compoundPhaseService.determineCompoundPhaseFromSnapshots({
+          checkPatternExists: (edges) =>
+            this.findPentagramPattern(pentagramBodies, edges) !== null,
+          currentAspectBodies,
+          currentMinute: minute,
+          patternBodies: pentagramBodies,
+          previousAspectBodies,
+        });
       if (!phaseTransition) continue;
       const event = this.buildPentagramEvent(
         pentagramBodies,

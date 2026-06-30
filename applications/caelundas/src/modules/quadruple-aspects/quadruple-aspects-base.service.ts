@@ -1,9 +1,10 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
 import { aspectBodies as quadrupleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
   symbolByQuadrupleAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
-import { groupByToMap } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -16,14 +17,16 @@ import type {
   QuadrupleAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
-import type { Moment } from "moment-timezone";
 
 /** Primitive helper methods for quadruple-aspect pattern detection and event shaping. */
 @Injectable()
 export class QuadrupleAspectsBaseService {
   // 🏗 Dependency Injection
 
-  constructor() {}
+  constructor(
+    private readonly aspectGraphService: AspectGraphService,
+    private readonly aspectPhaseEmojiService: AspectPhaseEmojiService,
+  ) {}
 
   // 🔏 Private Methods
 
@@ -209,46 +212,6 @@ export class QuadrupleAspectsBaseService {
   }
 
   /**
-   * Determines compound phase from snapshots.
-   */
-  determineCompoundPhaseFromSnapshots(args: {
-    checkPatternExists: (edges: AspectBodies[]) => boolean;
-    currentAspectBodies: AspectBodies[];
-    currentMinute: Moment;
-    patternBodies: Body[];
-    previousAspectBodies: AspectBodies[];
-  }): null | { eventMinute: Moment; phase: AspectPhase } {
-    const {
-      checkPatternExists,
-      currentAspectBodies,
-      currentMinute,
-      patternBodies,
-      previousAspectBodies,
-    } = args;
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
-      );
-
-    const currentFiltered = filterByBodies(currentAspectBodies);
-    const previousFiltered = filterByBodies(previousAspectBodies);
-    const currentExists = checkPatternExists(currentFiltered);
-    const previousExists = checkPatternExists(previousFiltered);
-
-    if (currentExists && !previousExists) {
-      return { eventMinute: currentMinute, phase: "forming" };
-    }
-    if (!currentExists && previousExists) {
-      return {
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-        phase: "dissolving",
-      };
-    }
-    return null;
-  }
-
-  /**
    * Finds grand trines.
    */
   findGrandTrines(
@@ -297,9 +260,7 @@ export class QuadrupleAspectsBaseService {
    * Maps aspect phase to the summary prefix marker.
    */
   getPhaseEmoji(phase: AspectPhase): string {
-    if (phase === "forming") return "➡️ ";
-    if (phase === "perfective") return "🎯 ";
-    return "⬅️ ";
+    return this.aspectPhaseEmojiService.getPhaseEmoji(phase);
   }
 
   /**
@@ -358,7 +319,7 @@ export class QuadrupleAspectsBaseService {
    * Groups aspects by type.
    */
   groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
+    return this.aspectGraphService.groupAspectsByType(edges);
   }
 
   /**
@@ -370,13 +331,7 @@ export class QuadrupleAspectsBaseService {
     body2: Body;
     edges: AspectBodies[];
   }): boolean {
-    const { aspectType, body1, body2, edges } = args;
-    return edges.some(
-      (edge) =>
-        edge.aspect === aspectType &&
-        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-    );
+    return this.aspectGraphService.haveAspect(args);
   }
 
   /**

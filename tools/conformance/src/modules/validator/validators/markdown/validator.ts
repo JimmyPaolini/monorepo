@@ -1,7 +1,11 @@
 import { toString } from "mdast-util-to-string";
-import mustache from "mustache";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
+
+import {
+  prepareConformanceTexts,
+  type TemplateConformanceArguments,
+} from "../common";
 
 import {
   CONTAINER_TYPES,
@@ -41,14 +45,12 @@ import type { ConformanceError } from "../../validator.types";
  * anything).
  */
 export function validateMarkdownConformance(args: {
-  data: Record<string, unknown>;
-  filename: string;
-  instance: string;
-  template: string;
+  data: TemplateConformanceArguments["data"];
+  filename: TemplateConformanceArguments["filename"];
+  instance: TemplateConformanceArguments["instance"];
+  template: TemplateConformanceArguments["template"];
 }): { errors: ConformanceError[] } {
-  const { data, instance, template } = args;
-
-  const renderedTemplate = mustache.render(template, data);
+  const { instance, renderedTemplate } = prepareConformanceTexts(args);
 
   const processor = remark().use(remarkGfm);
   const templateAst = processor.parse(renderedTemplate);

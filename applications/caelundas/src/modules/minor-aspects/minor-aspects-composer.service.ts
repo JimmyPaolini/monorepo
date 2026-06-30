@@ -1,3 +1,4 @@
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
 import {
   aspectBodies as minorAspectBodies,
   minorAspects,
@@ -11,7 +12,6 @@ import {
   isBody,
   isMinorAspect,
 } from "@caelundas/src/modules/caelundas/caelundas.types";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -37,8 +37,8 @@ export class MinorAspectsComposerService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly aspectEphemerisService: AspectEphemerisService,
     private readonly logger: LoggerService,
-    private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.logger.setContext(MinorAspectsComposerService.name);
@@ -176,19 +176,7 @@ export class MinorAspectsComposerService {
     nextMinute: Moment;
     previousMinute: Moment;
   }): { current: number; next: number; previous: number } {
-    const {
-      body,
-      coordinateEphemerisByBody,
-      minute,
-      nextMinute,
-      previousMinute,
-    } = args;
-    return this.ephemerisService.getLongitudesWindow({
-      ephemeris: coordinateEphemerisByBody[body],
-      minute,
-      next: nextMinute,
-      previous: previousMinute,
-    });
+    return this.aspectEphemerisService.getLongitudesWindowForBody(args);
   }
 
   /**

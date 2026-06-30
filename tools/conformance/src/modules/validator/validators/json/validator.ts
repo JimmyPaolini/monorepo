@@ -1,5 +1,9 @@
 import { parse } from "jsonc-parser";
-import mustache from "mustache";
+
+import {
+  prepareConformanceTexts,
+  type TemplateConformanceArguments,
+} from "../common";
 
 import type { ConformanceError } from "../../validator.types";
 
@@ -24,16 +28,14 @@ type JsonValue =
  * errors; extra keys in the instance (`add`) are allowed (superset semantics).
  */
 export function validateJsonConformance(args: {
-  data: Record<string, unknown>;
-  filename: string;
-  instance: string;
-  template: string;
+  data: TemplateConformanceArguments["data"];
+  filename: TemplateConformanceArguments["filename"];
+  instance: TemplateConformanceArguments["instance"];
+  template: TemplateConformanceArguments["template"];
 }): {
   errors: ConformanceError[];
 } {
-  const { instance, template } = args;
-
-  const renderedTemplate = mustache.render(template, args.data);
+  const { instance, renderedTemplate } = prepareConformanceTexts(args);
 
   // Structural validation
   const templateObject = parse(renderedTemplate) as JsonValue;

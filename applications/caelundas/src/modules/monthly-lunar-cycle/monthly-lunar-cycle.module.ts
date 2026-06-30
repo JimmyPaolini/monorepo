@@ -1,3 +1,4 @@
+import { CalendarModule } from "@caelundas/src/modules/calendar/calendar.module";
 import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { Module } from "@nestjs/common";
 
@@ -10,7 +11,7 @@ import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 @Module({
   controllers: [],
   exports: [MonthlyLunarCycleService],
-  imports: [EphemerisModule],
+  imports: [CalendarModule, EphemerisModule],
   providers: [MonthlyLunarCycleService],
 })
 export class MonthlyLunarCycleModule {}

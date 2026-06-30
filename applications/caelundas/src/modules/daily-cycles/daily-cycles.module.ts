@@ -1,3 +1,4 @@
+import { CalendarModule } from "@caelundas/src/modules/calendar/calendar.module";
 import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
@@ -13,7 +14,7 @@ import { DailyCyclesService } from "./daily-cycles.service";
 @Module({
   controllers: [],
   exports: [DailyCyclesService],
-  imports: [EphemerisModule, MathModule],
+  imports: [CalendarModule, EphemerisModule, MathModule],
   providers: [DailyCyclesBuilderService, DailyCyclesService],
 })
 export class DailyCyclesModule {}

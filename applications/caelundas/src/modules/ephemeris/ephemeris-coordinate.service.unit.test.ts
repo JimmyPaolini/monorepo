@@ -1,3 +1,4 @@
+import { MathService } from "@caelundas/src/modules/math/math.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -35,11 +36,7 @@ describe(EphemerisCoordinateService, () => {
     typeof createMock<EphemerisConstantsService>
   >;
   let timeService: ReturnType<typeof createMock<EphemerisTimeService>>;
-  let mathService: ReturnType<
-    typeof createMock<{
-      normalizeDegrees: (degree: number) => number;
-    }>
-  >;
+  let mathService: ReturnType<typeof createMock<MathService>>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -54,10 +51,8 @@ describe(EphemerisCoordinateService, () => {
           useValue: createMock<EphemerisTimeService>(),
         },
         {
-          provide: Object,
-          useValue: createMock<{
-            normalizeDegrees: (degree: number) => number;
-          }>(),
+          provide: MathService,
+          useValue: createMock<MathService>(),
         },
       ],
     }).compile();
@@ -65,7 +60,7 @@ describe(EphemerisCoordinateService, () => {
     service = await module.resolve(EphemerisCoordinateService);
     constantsService = await module.resolve(EphemerisConstantsService);
     timeService = await module.resolve(EphemerisTimeService);
-    mathService = await module.resolve(Object);
+    mathService = await module.resolve(MathService);
 
     vi.mocked(
       constantsService.getSwissEphemerisConstantForBody,

@@ -1,3 +1,4 @@
+import { AspectsUtilitiesModule } from "@caelundas/src/modules/aspects/aspects.utilities.module";
 import { Module } from "@nestjs/common";
 
 import { StelliumService } from "./stellium.service";
@@ -10,7 +11,7 @@ import { StelliumService } from "./stellium.service";
 @Module({
   controllers: [],
   exports: [StelliumService],
-  imports: [],
+  imports: [AspectsUtilitiesModule],
   providers: [StelliumService],
 })
 export class StelliumModule {}

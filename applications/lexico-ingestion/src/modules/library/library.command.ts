@@ -161,16 +161,12 @@ export class LibraryCommand extends CommandRunner {
         `🏛️ Completed ingestion for provider: ${providerName}${progressString}`,
       );
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(provider.name, error);
       this.logger.error(
         `❌ Error in provider ${providerName}`,
         error instanceof Error ? error.stack : undefined,
       );
-      await fs.appendFile(
-        this.logFilePath,
-        `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
-      );
+      await fs.appendFile(this.logFilePath, logLine);
     }
   }
 

@@ -1,5 +1,5 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
-import { SimpleAspectsEventService } from "@caelundas/src/modules/aspects/simple-aspects-event.service";
+import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -22,8 +22,8 @@ describe(SpecialtyAspectsEventService, () => {
           useValue: createMock<AspectsUtilities>(),
         },
         {
-          provide: SimpleAspectsEventService,
-          useValue: createMock<SimpleAspectsEventService>(),
+          provide: AspectEventFormattingService,
+          useValue: createMock<AspectEventFormattingService>(),
         },
         { provide: EphemerisService, useValue: createMock<EphemerisService>() },
       ],
