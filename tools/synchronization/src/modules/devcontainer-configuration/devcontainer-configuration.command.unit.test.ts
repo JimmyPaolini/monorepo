@@ -5,8 +5,9 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { mockProcessExit } from "../../../testing/mocks";
+import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { DevcontainerConfigurationCommand } from "./devcontainer-configuration.command";
 
@@ -47,6 +48,7 @@ describe(DevcontainerConfigurationCommand, () => {
     return Test.createTestingModule({
       providers: [
         DevcontainerConfigurationCommand,
+        SynchronizationModeService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -73,7 +75,6 @@ describe(DevcontainerConfigurationCommand, () => {
 
   it("sets logger context", async () => {
     const module = await createTestingModule();
-
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith(
@@ -81,60 +82,55 @@ describe(DevcontainerConfigurationCommand, () => {
     );
   });
 
-  it("passes check mode when cloud config is already synchronized", async () => {
-    const localConfig = {
-      $schema: "schema",
-      features: {
-        "ghcr.io/devcontainers/features/node:1": {},
+  it.each([
+    {
+      cloudConfig: {
+        $schema: "schema",
+        features: {
+          "ghcr.io/devcontainers/features/node:1": {},
+        },
+        mounts: ["source=/cache,target=/cache,type=volume"],
+        remoteEnv: {
+          APP_ENVIRONMENT: "local",
+        },
       },
-      remoteEnv: {
-        APP_ENVIRONMENT: "local",
+      localConfig: {
+        $schema: "schema",
+        features: {
+          "ghcr.io/devcontainers/features/node:1": {},
+        },
+        remoteEnv: {
+          APP_ENVIRONMENT: "local",
+        },
       },
-    };
-    const cloudConfig = {
-      $schema: "schema",
-      features: {
-        "ghcr.io/devcontainers/features/node:1": {},
+      modeArguments: ["check"],
+      scenarioName:
+        "passes check mode when cloud config is already synchronized",
+    },
+    {
+      cloudConfig: {
+        $schema: "schema",
+        features: {},
+        mounts: ["different"],
       },
-      mounts: ["source=/cache,target=/cache,type=volume"],
-      remoteEnv: {
-        APP_ENVIRONMENT: "local",
+      localConfig: {
+        $schema: "schema",
+        features: {},
       },
-    };
-
+      modeArguments: [],
+      scenarioName:
+        "ignores cloud-only key differences in check mode by defaulting to check",
+    },
+  ])("$scenarioName", async ({ cloudConfig, localConfig, modeArguments }) => {
     fileContents.set(localConfigFile, JSON.stringify(localConfig));
     fileContents.set(cloudConfigFile, JSON.stringify(cloudConfig));
 
-    await command.run(["check"]);
+    await command.run(modeArguments);
 
     expect(logger.log).toHaveBeenCalledWith(
       "✅ Cloud devcontainer config is in sync with local config",
     );
     expect(writeFileSync).not.toHaveBeenCalled();
-  });
-
-  it("ignores cloud-only key differences in check mode by defaulting to check", async () => {
-    fileContents.set(
-      localConfigFile,
-      JSON.stringify({
-        $schema: "schema",
-        features: {},
-      }),
-    );
-    fileContents.set(
-      cloudConfigFile,
-      JSON.stringify({
-        $schema: "schema",
-        features: {},
-        mounts: ["different"],
-      }),
-    );
-
-    await command.run([]);
-
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ Cloud devcontainer config is in sync with local config",
-    );
   });
 
   it("writes synchronized cloud config in write mode", async () => {
@@ -217,94 +213,99 @@ describe(DevcontainerConfigurationCommand, () => {
     );
   });
 
-  it("reports drift and exits in check mode when configs differ", async () => {
-    fileContents.set(
-      localConfigFile,
-      JSON.stringify({
-        $schema: "schema",
-        remoteEnv: { APP_ENVIRONMENT: "local" },
-      }),
-    );
-    fileContents.set(
-      cloudConfigFile,
-      JSON.stringify({
-        $schema: "different-schema",
-        remoteEnv: { APP_ENVIRONMENT: "cloud" },
-      }),
-    );
-
+  it.each([
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.log).toHaveBeenCalledWith(
+          expect.stringContaining(
+            "has common fields out of sync with local config",
+          ),
+        );
+        expect(loggerService.log).toHaveBeenCalledWith(
+          "  Run: nx run synchronization:devcontainer-configuration:write",
+        );
+      },
+      scenarioName: "reports drift and exits in check mode when configs differ",
+      setup: (): void => {
+        fileContents.set(
+          localConfigFile,
+          JSON.stringify({
+            $schema: "schema",
+            remoteEnv: { APP_ENVIRONMENT: "local" },
+          }),
+        );
+        fileContents.set(
+          cloudConfigFile,
+          JSON.stringify({
+            $schema: "different-schema",
+            remoteEnv: { APP_ENVIRONMENT: "cloud" },
+          }),
+        );
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.log).not.toHaveBeenCalledWith(
+          expect.stringContaining("mounts"),
+        );
+      },
+      scenarioName:
+        "skips reporting cloud-only keys when other fields are out of sync",
+      setup: (): void => {
+        fileContents.set(
+          localConfigFile,
+          JSON.stringify({
+            $schema: "schema",
+            remoteEnv: { APP_ENVIRONMENT: "local" },
+          }),
+        );
+        fileContents.set(
+          cloudConfigFile,
+          JSON.stringify({
+            $schema: "different-schema",
+            mounts: ["source=/cache,target=/cache,type=volume"],
+            remoteEnv: { APP_ENVIRONMENT: "cloud" },
+          }),
+        );
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.log).not.toHaveBeenCalledWith(
+          expect.stringContaining("Field 'customizations' differs"),
+        );
+        expect(loggerService.log).toHaveBeenCalledWith(
+          expect.stringContaining("Field '$schema' differs"),
+        );
+      },
+      scenarioName:
+        "does not report equal non-cloud fields while reporting actual drift",
+      setup: (): void => {
+        fileContents.set(
+          localConfigFile,
+          JSON.stringify({
+            $schema: "schema",
+            customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
+            remoteEnv: { APP_ENVIRONMENT: "local" },
+          }),
+        );
+        fileContents.set(
+          cloudConfigFile,
+          JSON.stringify({
+            $schema: "different-schema",
+            customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
+            remoteEnv: { APP_ENVIRONMENT: "cloud" },
+          }),
+        );
+      },
+    },
+  ])("$scenarioName", async ({ assertLogs, setup }) => {
+    setup();
     const processExitSpy = mockProcessExit();
 
     await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
 
-    expect(logger.log).toHaveBeenCalledWith(
-      expect.stringContaining(
-        "has common fields out of sync with local config",
-      ),
-    );
-    expect(logger.log).toHaveBeenCalledWith(
-      "  Run: nx run synchronization:devcontainer-configuration:write",
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("skips reporting cloud-only keys when other fields are out of sync", async () => {
-    fileContents.set(
-      localConfigFile,
-      JSON.stringify({
-        $schema: "schema",
-        remoteEnv: { APP_ENVIRONMENT: "local" },
-      }),
-    );
-    fileContents.set(
-      cloudConfigFile,
-      JSON.stringify({
-        $schema: "different-schema",
-        mounts: ["source=/cache,target=/cache,type=volume"],
-        remoteEnv: { APP_ENVIRONMENT: "cloud" },
-      }),
-    );
-
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.log).not.toHaveBeenCalledWith(
-      expect.stringContaining("mounts"),
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("does not report equal non-cloud fields while reporting actual drift", async () => {
-    fileContents.set(
-      localConfigFile,
-      JSON.stringify({
-        $schema: "schema",
-        customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
-        remoteEnv: { APP_ENVIRONMENT: "local" },
-      }),
-    );
-    fileContents.set(
-      cloudConfigFile,
-      JSON.stringify({
-        $schema: "different-schema",
-        customizations: { vscode: { settings: { "editor.tabSize": 2 } } },
-        remoteEnv: { APP_ENVIRONMENT: "cloud" },
-      }),
-    );
-
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.log).not.toHaveBeenCalledWith(
-      expect.stringContaining("Field 'customizations' differs"),
-    );
-    expect(logger.log).toHaveBeenCalledWith(
-      expect.stringContaining("Field '$schema' differs"),
-    );
+    assertLogs(logger);
 
     processExitSpy.mockRestore();
   });
@@ -313,21 +314,11 @@ describe(DevcontainerConfigurationCommand, () => {
     fileContents.set(localConfigFile, JSON.stringify({}));
     fileContents.set(cloudConfigFile, JSON.stringify({}));
 
-    const processExitSpy = vi
-      .spyOn(process, "exit")
-      .mockImplementation((code?: null | number | string) => {
-        throw new Error(`process.exit:${code ?? 0}`);
-      });
-
-    await expect(command.run(["invalid-mode"])).rejects.toThrow(
-      "process.exit:1",
-    );
+    await expectProcessExitOne(async () => command.run(["invalid-mode"]));
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
       "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
     );
-
-    processExitSpy.mockRestore();
   });
 });

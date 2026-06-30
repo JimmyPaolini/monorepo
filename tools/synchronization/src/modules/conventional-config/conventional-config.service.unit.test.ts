@@ -254,60 +254,47 @@ describe(ConventionalConfigService, () => {
     );
   });
 
-  it("syncs release config when only preset types are missing", () => {
-    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
-    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
-    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
-    vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
-    vi.mocked(io.getPresetConfigTypes).mockReturnValue([]);
+  it.each([
+    {
+      expectedWriteCalls: [[conventionalConfig.types]],
+      presetConfigTypes: [],
+      releaseRuleTypes: ["fix"],
+      scenarioName: "syncs release config when only preset types are missing",
+    },
+    {
+      expectedWriteCalls: [[conventionalConfig.types]],
+      presetConfigTypes: ["fix"],
+      releaseRuleTypes: [],
+      scenarioName: "syncs release config when only release rules are missing",
+    },
+    {
+      expectedWriteCalls: [],
+      presetConfigTypes: ["fix"],
+      releaseRuleTypes: ["fix"],
+      scenarioName:
+        "does not write release config when no release types are missing",
+    },
+  ])(
+    "$scenarioName",
+    ({ expectedWriteCalls, presetConfigTypes, releaseRuleTypes }) => {
+      vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
+      vi.mocked(validators.checkSkillSync).mockReturnValue(false);
+      vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
+      vi.mocked(io.getReleaseRulesTypes).mockReturnValue(releaseRuleTypes);
+      vi.mocked(io.getPresetConfigTypes).mockReturnValue(presetConfigTypes);
 
-    service.handleWriteMode({
-      config: conventionalConfig,
-      scopeNames: ["tools"],
-      settingsScopes: ["tools"],
-      typeNames: ["fix"],
-    });
+      service.handleWriteMode({
+        config: conventionalConfig,
+        scopeNames: ["tools"],
+        settingsScopes: ["tools"],
+        typeNames: ["fix"],
+      });
 
-    expect(io.writeReleaseConfigSync).toHaveBeenCalledWith(
-      conventionalConfig.types,
-    );
-  });
-
-  it("syncs release config when only release rules are missing", () => {
-    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
-    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
-    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
-    vi.mocked(io.getReleaseRulesTypes).mockReturnValue([]);
-    vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
-
-    service.handleWriteMode({
-      config: conventionalConfig,
-      scopeNames: ["tools"],
-      settingsScopes: ["tools"],
-      typeNames: ["fix"],
-    });
-
-    expect(io.writeReleaseConfigSync).toHaveBeenCalledWith(
-      conventionalConfig.types,
-    );
-  });
-
-  it("does not write release config when no release types are missing", () => {
-    vi.mocked(validators.checkSettingsSync).mockReturnValue(true);
-    vi.mocked(validators.checkSkillSync).mockReturnValue(false);
-    vi.mocked(validators.checkIssueTemplateSync).mockReturnValue(true);
-    vi.mocked(io.getReleaseRulesTypes).mockReturnValue(["fix"]);
-    vi.mocked(io.getPresetConfigTypes).mockReturnValue(["fix"]);
-
-    service.handleWriteMode({
-      config: conventionalConfig,
-      scopeNames: ["tools"],
-      settingsScopes: ["tools"],
-      typeNames: ["fix"],
-    });
-
-    expect(io.writeReleaseConfigSync).not.toHaveBeenCalled();
-  });
+      expect(vi.mocked(io.writeReleaseConfigSync).mock.calls).toStrictEqual(
+        expectedWriteCalls,
+      );
+    },
+  );
 
   it("loads conventional config from CommonJS module", () => {
     expect(service.loadConventionalConfig()).toStrictEqual(conventionalConfig);
@@ -340,22 +327,6 @@ describe(ConventionalConfigService, () => {
 
     handleCheckModeSpy.mockRestore();
     handleWriteModeSpy.mockRestore();
-  });
-
-  it("exits runSynchronization for invalid mode", () => {
-    vi.mocked(io.parseSettingsScopes).mockReturnValue(["tools"]);
-
-    const processExitSpy = mockProcessExit();
-
-    expect(() => service.runSynchronization("invalid-mode")).toThrow(
-      "process.exit:1",
-    );
-    expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
-    expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:conventional-config [check|write]",
-    );
-
-    processExitSpy.mockRestore();
   });
 
   it("throws when workspace root cannot be resolved", async () => {

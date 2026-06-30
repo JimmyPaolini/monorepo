@@ -240,14 +240,9 @@ export class ConventionalConfigService {
 
     if (mode === "check") {
       this.handleCheckMode(context);
-    } else if (mode === "write") {
-      this.handleWriteMode(context);
-    } else {
-      this.loggerService.error(`❌ Invalid mode: ${mode}`);
-      this.loggerService.error(
-        "💡 Usage: nx run synchronization:conventional-config [check|write]",
-      );
-      process.exit(1);
+      return;
     }
+
+    this.handleWriteMode(context);
   }
 }

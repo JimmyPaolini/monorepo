@@ -16,7 +16,7 @@ CLOUD_DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/cloud/devcontainer.json
 PACKAGE_JSON="${WORKSPACE_ROOT}/package.json"
 
 # 📌 Expected pinned versions (single sources of truth: package.json & devcontainer.json)
-# Version pins are read from the local config (source of truth); cloud is kept in sync by sync-devcontainer-configuration.ts
+# Version pins are read from the local config (source of truth); cloud is kept in sync by synchronization Nx targets
 NODE_MAJOR="$(jq -r '.features["ghcr.io/devcontainers/features/node:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 PNPM_VERSION="$(jq -r '.packageManager | split("@")[1]' "${PACKAGE_JSON}")"
 EXPECTED_NX_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/nx-npm:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
@@ -224,10 +224,10 @@ done
 # 🧩 Extensions list consistency
 echo ""
 echo "🧩 VS Code extensions / recommendations sync"
-if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts check 2>&1); then
+if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec nx run monorepo:sync-vscode-extensions:check 2>&1); then
   pass "VS Code extensions are in sync"
 else
-  fail "VS Code extensions are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts write"
+  fail "VS Code extensions are out of sync — run: pnpm exec nx run monorepo:sync-vscode-extensions:write"
 fi
 
 # ⚙️ Devcontainer configuration structure
@@ -235,10 +235,10 @@ echo ""
 echo "⚙️  Devcontainer configuration structure (local ↔ cloud)"
 
 # Common fields: cloud must be in sync with local (source of truth)
-if cd "${WORKSPACE_ROOT}" && pnpm exec tsx scripts/sync-devcontainer-configuration.ts check > /dev/null 2>&1; then
+if cd "${WORKSPACE_ROOT}" && pnpm exec nx run synchronization:devcontainer-configuration:check > /dev/null 2>&1; then
   pass "cloud config common fields are in sync with local config"
 else
-  fail "cloud config is out of sync with local config — run: pnpm exec tsx scripts/sync-devcontainer-configuration.ts write"
+  fail "cloud config is out of sync with local config — run: pnpm exec nx run synchronization:devcontainer-configuration:write"
 fi
 
 # local: must have docker-outside-of-docker, must not have docker-in-docker, must not have docker-storage mount
@@ -287,10 +287,10 @@ fi
 # ⚙️ VS Code Machine settings sync
 echo ""
 echo "⚙️  VS Code Machine settings sync"
-if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts check 2>&1); then
+if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec nx run monorepo:sync-vscode-settings:check 2>&1); then
   pass "VS Code Machine settings are in sync"
 else
-  fail "VS Code Machine settings are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
+  fail "VS Code Machine settings are out of sync — run: pnpm exec nx run monorepo:sync-vscode-settings:write"
 fi
 
 # 🔐 GPG commit signing configuration

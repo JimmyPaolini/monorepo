@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { AgentSkillsCommand } from "./agent-skills.command";
 
@@ -11,6 +12,6 @@ import { AgentSkillsCommand } from "./agent-skills.command";
   controllers: [],
   exports: [AgentSkillsCommand],
   imports: [LoggerModule],
-  providers: [AgentSkillsCommand],
+  providers: [AgentSkillsCommand, SynchronizationModeService],
 })
 export class AgentSkillsModule {}

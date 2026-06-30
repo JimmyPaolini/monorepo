@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { ConventionalConfigService } from "./conventional-config.service";
 
@@ -21,6 +22,7 @@ export class ConventionalConfigCommand extends CommandRunner {
   constructor(
     private readonly conventionalConfigService: ConventionalConfigService,
     private readonly loggerService: LoggerService,
+    private readonly synchronizationModeService: SynchronizationModeService,
   ) {
     super();
     this.loggerService.setContext(ConventionalConfigCommand.name);
@@ -34,7 +36,14 @@ export class ConventionalConfigCommand extends CommandRunner {
     _options?: Record<string, unknown>,
   ): Promise<void> {
     await Promise.resolve();
-    const mode = passedParameters[0] ?? "";
+    const mode =
+      this.synchronizationModeService.resolveSynchronizationModeOrExit({
+        invalidModeLabel: "Invalid mode",
+        loggerService: this.loggerService,
+        passedParameters,
+        usageMessage:
+          "💡 Usage: nx run synchronization:conventional-config [check|write]",
+      });
     this.conventionalConfigService.runSynchronization(mode);
   }
 }

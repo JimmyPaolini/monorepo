@@ -9,6 +9,7 @@ import { DevcontainerConfigurationCommand } from "../devcontainer-configuration/
 import { LoggerService } from "../logger/logger.service";
 import { PullRequestTemplateCommand } from "../pull-request-template/pull-request-template.command";
 
+import { SynchronizationModeService } from "./synchronization-mode.service";
 import { SynchronizationCommand } from "./synchronization.command";
 
 const createCommandProvider = <T extends object>(
@@ -39,6 +40,7 @@ describe(SynchronizationCommand, () => {
         createCommandProvider(DevcontainerConfigurationCommand),
         createCommandProvider(PullRequestTemplateCommand),
         createCommandProvider(LoggerService),
+        SynchronizationModeService,
       ],
     }).compile();
   };
@@ -77,42 +79,39 @@ describe(SynchronizationCommand, () => {
     expect(logger.setContext).toHaveBeenCalledWith("SynchronizationCommand");
   });
 
-  it("runs all sync commands in order with default check mode", async () => {
-    await command.run([]);
+  it.each([
+    {
+      expectedMode: "check",
+      modeArguments: [],
+      scenarioName: "runs all sync commands in order with default check mode",
+    },
+    {
+      expectedMode: "write",
+      modeArguments: ["write"],
+      scenarioName: "runs all sync commands with write mode",
+    },
+  ])("$scenarioName", async ({ expectedMode, modeArguments }) => {
+    await command.run(modeArguments);
 
-    expect(agentSkillsCommand.run).toHaveBeenNthCalledWith(1, ["check"]);
+    expect(agentSkillsCommand.run).toHaveBeenNthCalledWith(1, [expectedMode]);
     expect(conformanceGeneratorsCommand.run).toHaveBeenNthCalledWith(1, [
-      "check",
+      expectedMode,
     ]);
-    expect(conventionalConfigCommand.run).toHaveBeenNthCalledWith(1, ["check"]);
+    expect(conventionalConfigCommand.run).toHaveBeenNthCalledWith(1, [
+      expectedMode,
+    ]);
     expect(devcontainerConfigurationCommand.run).toHaveBeenNthCalledWith(1, [
-      "check",
+      expectedMode,
     ]);
     expect(pullRequestTemplateCommand.run).toHaveBeenNthCalledWith(1, [
-      "check",
+      expectedMode,
     ]);
     expect(logger.log).toHaveBeenCalledWith(
-      "🔄 Running 5 synchronization commands in check mode",
+      `🔄 Running 5 synchronization commands in ${expectedMode} mode`,
     );
     expect(logger.log).toHaveBeenCalledWith(
       "✅ Synchronization suite completed",
     );
-  });
-
-  it("runs all sync commands with write mode", async () => {
-    await command.run(["write"]);
-
-    expect(agentSkillsCommand.run).toHaveBeenNthCalledWith(1, ["write"]);
-    expect(conformanceGeneratorsCommand.run).toHaveBeenNthCalledWith(1, [
-      "write",
-    ]);
-    expect(conventionalConfigCommand.run).toHaveBeenNthCalledWith(1, ["write"]);
-    expect(devcontainerConfigurationCommand.run).toHaveBeenNthCalledWith(1, [
-      "write",
-    ]);
-    expect(pullRequestTemplateCommand.run).toHaveBeenNthCalledWith(1, [
-      "write",
-    ]);
   });
 
   it("throws for invalid mode", async () => {

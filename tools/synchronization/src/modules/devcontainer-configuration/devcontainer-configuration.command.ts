@@ -7,6 +7,7 @@ import _ from "lodash";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import {
   DEVCONTAINER_CLOUD_ONLY_KEYS,
@@ -29,7 +30,10 @@ import type { DevcontainerConfiguration } from "./devcontainer-configuration.typ
 export class DevcontainerConfigurationCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly loggerService: LoggerService) {
+  constructor(
+    private readonly loggerService: LoggerService,
+    private readonly synchronizationModeService: SynchronizationModeService,
+  ) {
     super();
     this.loggerService.setContext(DevcontainerConfigurationCommand.name);
   }
@@ -204,7 +208,14 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     _options?: Record<string, unknown>,
   ): Promise<void> {
     await Promise.resolve();
-    const mode = passedParameters[0] ?? "check";
+    const mode =
+      this.synchronizationModeService.resolveSynchronizationModeOrExit({
+        invalidModeLabel: "Invalid mode",
+        loggerService: this.loggerService,
+        passedParameters,
+        usageMessage:
+          "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
+      });
     const workspaceRoot = process.cwd();
     const localConfigFile = path.join(
       workspaceRoot,
@@ -228,17 +239,11 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       this.loggerService.log(
         "✅ Cloud devcontainer config is in sync with local config",
       );
-    } else if (mode === "write") {
+    } else {
       this.write(mergedConfig, cloudConfigFile);
       this.loggerService.log(
         "✅ Cloud devcontainer config updated from local config",
       );
-    } else {
-      this.loggerService.error(`❌ Invalid mode: ${mode}`);
-      this.loggerService.error(
-        "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
-      );
-      process.exit(1);
     }
   }
 }

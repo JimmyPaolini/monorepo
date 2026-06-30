@@ -5,8 +5,9 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { mockProcessExit } from "../../../testing/mocks";
+import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { PullRequestTemplateCommand } from "./pull-request-template.command";
 import {
@@ -50,6 +51,7 @@ describe(PullRequestTemplateCommand, () => {
     return Test.createTestingModule({
       providers: [
         PullRequestTemplateCommand,
+        SynchronizationModeService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -94,29 +96,29 @@ describe(PullRequestTemplateCommand, () => {
 
   it("sets logger context", async () => {
     const module = await createTestingModule();
+    const logger = await module.resolve(LoggerService);
 
-    const resolvedLogger = await module.resolve(LoggerService);
-
-    expect(resolvedLogger.setContext).toHaveBeenCalledWith(
+    expect(logger.setContext).toHaveBeenCalledWith(
       "PullRequestTemplateCommand",
     );
   });
 
-  it("passes in check mode when all targets are synchronized", async () => {
+  it.each([
+    {
+      modeArguments: ["check"],
+      scenarioName: "passes in check mode when all targets are synchronized",
+    },
+    {
+      modeArguments: [],
+      scenarioName: "defaults to check mode when no mode is provided",
+    },
+  ])("$scenarioName", async ({ modeArguments }) => {
     setSynchronizedTargets("## Summary\n\n- item");
 
-    await command.run(["check"]);
+    await command.run(modeArguments);
 
     expect(logger.log).toHaveBeenCalledWith("✅ PR template is in sync");
     expect(writeFileSync).not.toHaveBeenCalled();
-  });
-
-  it("defaults to check mode when no mode is provided", async () => {
-    setSynchronizedTargets("## Summary\n\n- item");
-
-    await command.run([]);
-
-    expect(logger.log).toHaveBeenCalledWith("✅ PR template is in sync");
   });
 
   it("writes only out-of-sync target files in write mode", async () => {
@@ -219,17 +221,11 @@ describe(PullRequestTemplateCommand, () => {
       fileContents.set(targetFile, "content");
     }
 
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["invalid-mode"])).rejects.toThrow(
-      "process.exit:1",
-    );
+    await expectProcessExitOne(async () => command.run(["invalid-mode"]));
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
       "💡 Usage: nx run synchronization:pull-request-template [check|write]",
     );
-
-    processExitSpy.mockRestore();
   });
 });

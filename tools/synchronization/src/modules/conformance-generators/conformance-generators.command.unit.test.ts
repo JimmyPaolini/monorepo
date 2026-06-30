@@ -5,8 +5,9 @@ import { createMock } from "@golevelup/ts-vitest";
 import { Test, type TestingModule } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { mockProcessExit } from "../../../testing/mocks";
+import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import { ConformanceGeneratorsCommand } from "./conformance-generators.command";
 
@@ -44,6 +45,7 @@ describe(ConformanceGeneratorsCommand, () => {
     return Test.createTestingModule({
       providers: [
         ConformanceGeneratorsCommand,
+        SynchronizationModeService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -70,7 +72,6 @@ describe(ConformanceGeneratorsCommand, () => {
 
   it("sets logger context", async () => {
     const module = await createTestingModule();
-
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith(
@@ -78,29 +79,9 @@ describe(ConformanceGeneratorsCommand, () => {
     );
   });
 
-  it("passes check mode when generated table matches AGENTS markers", async () => {
-    fileContents.set(
-      generatorsFile,
-      JSON.stringify({
-        generators: {
-          alpha: {
-            aliases: ["a"],
-            description: "first",
-            factory: "",
-            schema: "",
-          },
-          beta: {
-            aliases: ["b"],
-            description: "second",
-            factory: "",
-            schema: "",
-          },
-        },
-      }),
-    );
-    fileContents.set(
-      agentsFile,
-      [
+  it.each([
+    {
+      agentsContent: [
         "# Header",
         "<!-- conformance-generators-table start -->",
         "| Generator | Alias | Description |",
@@ -109,28 +90,28 @@ describe(ConformanceGeneratorsCommand, () => {
         "| `beta` | `b` | second |",
         "<!-- conformance-generators-table end -->",
       ].join("\n"),
-    );
-
-    await command.run(["check"]);
-
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ Conformance generators table is in sync (2 generators)",
-    );
-    expect(writeFileSync).not.toHaveBeenCalled();
-  });
-
-  it("defaults to check mode when no mode is provided", async () => {
-    fileContents.set(
-      generatorsFile,
-      JSON.stringify({
-        generators: {
-          alpha: { description: "first", factory: "", schema: "" },
+      expectedLogMessage:
+        "✅ Conformance generators table is in sync (2 generators)",
+      generators: {
+        alpha: {
+          aliases: ["a"],
+          description: "first",
+          factory: "",
+          schema: "",
         },
-      }),
-    );
-    fileContents.set(
-      agentsFile,
-      [
+        beta: {
+          aliases: ["b"],
+          description: "second",
+          factory: "",
+          schema: "",
+        },
+      },
+      modeArguments: ["check"],
+      scenarioName:
+        "passes check mode when generated table matches AGENTS markers",
+    },
+    {
+      agentsContent: [
         "# Header",
         "<!-- conformance-generators-table start -->",
         "| Generator | Alias | Description |",
@@ -138,14 +119,31 @@ describe(ConformanceGeneratorsCommand, () => {
         "| `alpha` |  | first |",
         "<!-- conformance-generators-table end -->",
       ].join("\n"),
-    );
+      expectedLogMessage:
+        "✅ Conformance generators table is in sync (1 generators)",
+      generators: {
+        alpha: { description: "first", factory: "", schema: "" },
+      },
+      modeArguments: [],
+      scenarioName: "defaults to check mode when no mode is provided",
+    },
+  ])(
+    "$scenarioName",
+    async ({
+      agentsContent,
+      expectedLogMessage,
+      generators,
+      modeArguments,
+    }) => {
+      fileContents.set(generatorsFile, JSON.stringify({ generators }));
+      fileContents.set(agentsFile, agentsContent);
 
-    await command.run([]);
+      await command.run(modeArguments);
 
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ Conformance generators table is in sync (1 generators)",
-    );
-  });
+      expect(logger.log).toHaveBeenCalledWith(expectedLogMessage);
+      expect(writeFileSync).not.toHaveBeenCalled();
+    },
+  );
 
   it("writes generated table to AGENTS in write mode", async () => {
     fileContents.set(
@@ -196,88 +194,91 @@ describe(ConformanceGeneratorsCommand, () => {
       ].join("\n"),
     );
 
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["invalid-mode"])).rejects.toThrow(
-      "process.exit:1",
-    );
+    await expectProcessExitOne(async () => command.run(["invalid-mode"]));
 
     expect(logger.error).toHaveBeenCalledWith("❌ Unknown mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith("Expected 'check' or 'write'");
-
-    processExitSpy.mockRestore();
   });
 
-  it("exits when AGENTS markers are missing", async () => {
-    fileContents.set(generatorsFile, JSON.stringify({ generators: {} }));
-    fileContents.set(agentsFile, "# Header without markers");
+  it.each([
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.error).toHaveBeenCalledWith(
+          expect.stringContaining("Markers not found in AGENTS.md"),
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName: "exits when AGENTS markers are missing",
+      setup: (): void => {
+        fileContents.set(generatorsFile, JSON.stringify({ generators: {} }));
+        fileContents.set(agentsFile, "# Header without markers");
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.log).toHaveBeenCalledWith(
+          "❌ Conformance generators table in AGENTS.md is out of sync\n",
+        );
+        expect(loggerService.log).toHaveBeenCalledWith(
+          "💡 Run 'pnpm exec nx run synchronization:conformance-generators:write' to sync\n",
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName:
+        "reports drift when generated table differs from AGENTS content",
+      setup: (): void => {
+        fileContents.set(
+          generatorsFile,
+          JSON.stringify({
+            generators: {
+              alpha: {
+                aliases: ["a"],
+                description: "first",
+                factory: "",
+                schema: "",
+              },
+            },
+          }),
+        );
+        fileContents.set(
+          agentsFile,
+          [
+            "# Header",
+            "<!-- conformance-generators-table start -->",
+            "| Generator | Alias | Description |",
+            "| --------- | ----- | ----------- |",
+            "| `stale` | `x` | mismatch |",
+            "<!-- conformance-generators-table end -->",
+          ].join("\n"),
+        );
+      },
+    },
+    {
+      assertLogs: (loggerService: LoggerService): void => {
+        expect(loggerService.error).toHaveBeenCalledWith(
+          "❌ Error: [object Object]",
+        );
+      },
+      modeArguments: ["check"],
+      scenarioName: "handles non-Error throw values in run catch block",
+      setup: (): void => {
+        const nonErrorLike: Error = {
+          message: "boom",
+          name: "NonErrorLike",
+        };
 
+        vi.mocked(readFileSync).mockImplementationOnce(() => {
+          throw nonErrorLike;
+        });
+      },
+    },
+  ])("$scenarioName", async ({ assertLogs, modeArguments, setup }) => {
+    setup();
     const processExitSpy = mockProcessExit();
 
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
+    await expect(command.run(modeArguments)).rejects.toThrow("process.exit:1");
 
-    expect(logger.error).toHaveBeenCalledWith(
-      expect.stringContaining("Markers not found in AGENTS.md"),
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("reports drift when generated table differs from AGENTS content", async () => {
-    fileContents.set(
-      generatorsFile,
-      JSON.stringify({
-        generators: {
-          alpha: {
-            aliases: ["a"],
-            description: "first",
-            factory: "",
-            schema: "",
-          },
-        },
-      }),
-    );
-    fileContents.set(
-      agentsFile,
-      [
-        "# Header",
-        "<!-- conformance-generators-table start -->",
-        "| Generator | Alias | Description |",
-        "| --------- | ----- | ----------- |",
-        "| `stale` | `x` | mismatch |",
-        "<!-- conformance-generators-table end -->",
-      ].join("\n"),
-    );
-
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.log).toHaveBeenCalledWith(
-      "❌ Conformance generators table in AGENTS.md is out of sync\n",
-    );
-    expect(logger.log).toHaveBeenCalledWith(
-      "💡 Run 'pnpm exec nx run synchronization:conformance-generators:write' to sync\n",
-    );
-
-    processExitSpy.mockRestore();
-  });
-
-  it("handles non-Error throw values in run catch block", async () => {
-    const nonErrorLike: Error = {
-      message: "boom",
-      name: "NonErrorLike",
-    };
-
-    vi.mocked(readFileSync).mockImplementationOnce(() => {
-      throw nonErrorLike;
-    });
-
-    const processExitSpy = mockProcessExit();
-
-    await expect(command.run(["check"])).rejects.toThrow("process.exit:1");
-
-    expect(logger.error).toHaveBeenCalledWith("❌ Error: [object Object]");
+    assertLogs(logger);
 
     processExitSpy.mockRestore();
   });

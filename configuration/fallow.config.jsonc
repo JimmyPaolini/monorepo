@@ -3,7 +3,7 @@
   "audit": {
     "cacheMaxAgeDays": 7,
     "deadCodeBaseline": null,
-    "dupesBaseline": null,
+    "dupesBaseline": "configuration/fallow-duplicates-baseline.json",
     "gate": "all",
     "healthBaseline": null,
   },
