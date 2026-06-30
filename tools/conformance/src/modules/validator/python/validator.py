@@ -2,16 +2,15 @@
 
 import ast
 
-import chevron
-
-from src.validators.python.abstract_syntax_tree import validate_depth_first_search
-from src.validators.python.comments import validate_comments
-from src.validators.python.types import ConformanceError
+from python.abstract_syntax_tree import validate_depth_first_search
+from python.comments import validate_comments
+from python.template import render_template
+from python.types import ConformanceError
 
 
 def validate_python_conformance(*, data: dict, filename: str, instance: str, template: str) -> dict:
     """Validates that a generated Python file is a structural superset of its Mustache template."""
-    rendered = chevron.render(template, data)
+    rendered = render_template(template=template, data=data)
     try:
         template_tree = ast.parse(rendered, filename=filename)
     except SyntaxError as e:

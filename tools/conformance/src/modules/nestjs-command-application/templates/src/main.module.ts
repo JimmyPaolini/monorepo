@@ -1,10 +1,9 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { DiscoveryModule } from "@nestjs/core";
 
-import { LoggerModule } from "../logger/logger.module";
-import { SampleModule } from "../sample/sample.module";
-import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
-import { environmentSchema } from "./{{nameKebabCase}}.constants";
+import { environmentSchema } from "./constants";
+import { LoggerModule } from "./modules/logger/logger.module";
 
 /**
  * Root NestJS application module.
@@ -17,9 +16,8 @@ import { environmentSchema } from "./{{nameKebabCase}}.constants";
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
+    DiscoveryModule,
     LoggerModule,
-    SampleModule,
   ],
-  providers: [{{namePascalCase}}Command],
 })
-export class {{namePascalCase}}Module {}
+export class MainModule {}

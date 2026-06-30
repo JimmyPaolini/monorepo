@@ -2,8 +2,8 @@
 
 import re
 
-from src.validators.python.constants import TODO_LINE_REGEX
-from src.validators.python.types import ConformanceError
+from python.constants import TODO_LINE_REGEX
+from python.types import ConformanceError
 
 _TOKEN_PATTERN = re.compile(r'("(?:\\.|[^"\\])*")|(//[^\n]*|/\*[\s\S]*?\*/)')
 

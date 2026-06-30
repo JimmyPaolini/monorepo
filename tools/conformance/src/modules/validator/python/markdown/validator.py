@@ -1,11 +1,21 @@
 """🔤 Markdown file conformance validator."""
 
-import chevron
-from mistletoe.block_token import Document
-from mistletoe.html_renderer import HtmlRenderer
-from mistletoe.span_token import RawText
+from python.template import render_template
+from python.text.validator import validate_text_conformance
 
-from src.validators.python.markdown.nodes import (
+try:
+    from mistletoe.block_token import Document
+    from mistletoe.html_renderer import HtmlRenderer
+    from mistletoe.span_token import RawText
+
+    MISTLETOE_AVAILABLE = True
+except ModuleNotFoundError:
+    MISTLETOE_AVAILABLE = False
+    Document = None
+    HtmlRenderer = None
+    RawText = str
+
+from python.markdown.nodes import (
     CONTAINER_TYPES,
     build_error,
     get_node_children,
@@ -49,7 +59,14 @@ def validate_markdown_conformance(
     *, data: dict, filename: str, instance: str, template: str
 ) -> dict:
     """Validates that a generated Markdown file is a structural superset of its Mustache template."""
-    rendered = chevron.render(template, data)
+    rendered = render_template(template=template, data=data)
+    if not MISTLETOE_AVAILABLE:
+        return validate_text_conformance(
+            data=data,
+            filename=filename,
+            instance=instance,
+            template=template,
+        )
     with HtmlRenderer():
         template_doc = Document(rendered)
         instance_doc = Document(instance)

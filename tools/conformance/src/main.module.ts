@@ -43,4 +43,4 @@ import { ValidatorModule } from "./modules/validator/validator.module";
     ValidatorModule,
   ],
 })
-export class ConformanceModule {}
+export class MainModule {}

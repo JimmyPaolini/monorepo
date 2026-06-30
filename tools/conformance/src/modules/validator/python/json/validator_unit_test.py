@@ -2,8 +2,8 @@
 
 import pytest
 
-from src.validators.python.json.comments import get_comments, validate_comments
-from src.validators.python.json.validator import validate_json_conformance
+from python.json.comments import get_comments, validate_comments
+from python.json.validator import validate_json_conformance
 
 
 @pytest.mark.unit

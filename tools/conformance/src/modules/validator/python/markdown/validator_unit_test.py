@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.validators.python.markdown.validator import validate_markdown_conformance
+from python.markdown.validator import validate_markdown_conformance
 
 
 @pytest.mark.unit

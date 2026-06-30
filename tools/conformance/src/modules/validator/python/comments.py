@@ -3,8 +3,8 @@
 import io
 import tokenize
 
-from src.validators.python.constants import TODO_LINE_REGEX
-from src.validators.python.types import ConformanceError
+from python.constants import TODO_LINE_REGEX
+from python.types import ConformanceError
 
 
 def extract_comments(source: str) -> list[tuple[str, int, int]]:

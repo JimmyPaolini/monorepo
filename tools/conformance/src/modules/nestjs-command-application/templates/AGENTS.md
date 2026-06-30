@@ -27,9 +27,8 @@ nx run {{nameKebabCase}}:develop
 
 ```text
 src/main.ts
-  └─ CommandFactory.run({{namePascalCase}}Module)
-       └─ {{namePascalCase}}Command.run()   ← implement logic here
-            └─ domain service modules       ← add under src/modules/
+  └─ CommandFactory.run(MainModule)
+       └─ domain command modules            ← add under src/modules/
 ```
 
 ### Directory Layout
@@ -37,17 +36,15 @@ src/main.ts
 ```text
 src/
   main.ts                           # Bootstrap — do not modify
+  main.module.ts                    # Root NestJS module (imports ConfigModule, LoggerModule)
+  constants.ts                      # Zod environmentSchema for env validation
   modules/
-    {{nameKebabCase}}/
-      {{nameKebabCase}}.command.ts  # Root CLI entry point (CommandRunner)
-      {{nameKebabCase}}.module.ts   # Root NestJS module (imports ConfigModule, LoggerModule)
-      {{nameKebabCase}}.constants.ts# Zod environmentSchema for env validation
-      {{nameKebabCase}}.types.ts    # Module-scoped TypeScript types
     logger/
       logger.service.ts             # Transient pino LoggerService
       logger.module.ts              # LoggerModule (exports LoggerService)
     <domain>/                       # Add feature modules here
       <domain>.module.ts
+      <domain>.command.ts
       <domain>.service.ts
       <domain>.types.ts
       <domain>.constants.ts
@@ -59,10 +56,9 @@ testing/                            # Shared test utilities
 
 ### Adding Business Logic
 
-1. **Implement the root command** — add logic to `{{nameKebabCase}}.command.ts` `run()`, or delegate to injected services.
-2. **Add domain modules** — create `src/modules/<domain>/` with a NestJS module, service, types, and constants.
-3. **Register in root module** — import the new module in `{{nameKebabCase}}.module.ts`.
-4. **Validate env vars** — extend `environmentSchema` in `{{nameKebabCase}}.constants.ts` with all required environment variables.
+1. **Add domain command modules** — create `src/modules/<domain>/` with a NestJS module, command, service, types, and constants.
+2. **Register in root module** — import the new module in `main.module.ts`.
+3. **Validate env vars** — extend `environmentSchema` in `constants.ts` with all required environment variables.
 
 ### Logging
 
@@ -201,7 +197,7 @@ Do not re-export types from `index.ts` unless they are part of the public API co
 
 ### Registering in the root module
 
-After generating a module, import it in `{{nameKebabCase}}.module.ts`:
+After generating a module, import it in `main.module.ts`:
 
 ```ts
 @Module({
@@ -210,9 +206,9 @@ After generating a module, import it in `{{nameKebabCase}}.module.ts`:
     LoggerModule,
     MyDomainModule,   // ← add here
   ],
-  providers: [{{namePascalCase}}Command],
+  providers: [],
 })
-export class {{namePascalCase}}Module {}
+export class MainModule {}
 ```
 
 ### Conformance check
@@ -238,16 +234,15 @@ See [TypeScript Conventions](../../documentation/conventions/typescript.md) for 
 - **Command not found at runtime** — ensure the command class is listed in `providers` of its module and the module is imported by the root module.
 - **Dependency injection failure** — verify the service is `@Injectable()`, exported from its module, and that module is imported by the consuming module.
 - **Unrecognized CLI flag** — check that `@Option()` decorators in the command class exactly match the flag names passed.
-- **Env var validation error on startup** — add the missing variable to `environmentSchema` in `.constants.ts` and to `.env.default`.
+- **Env var validation error on startup** — add the missing variable to `environmentSchema` in `src/constants.ts` and to `.env.default`.
 
 See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspace-wide issues.
 
 ## Key Files
 
 - [src/main.ts](src/main.ts): Application bootstrap
-- [src/modules/{{nameKebabCase}}/{{nameKebabCase}}.command.ts](src/modules/{{nameKebabCase}}/{{nameKebabCase}}.command.ts): Root CLI command
-- [src/modules/{{nameKebabCase}}/{{nameKebabCase}}.module.ts](src/modules/{{nameKebabCase}}/{{nameKebabCase}}.module.ts): Root NestJS module
-- [src/modules/{{nameKebabCase}}/{{nameKebabCase}}.constants.ts](src/modules/{{nameKebabCase}}/{{nameKebabCase}}.constants.ts): `environmentSchema` (Zod)
+- [src/main.module.ts](src/main.module.ts): Root NestJS module
+- [src/constants.ts](src/constants.ts): `environmentSchema` (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
 - [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template

@@ -1,4 +1,4 @@
-# {{name}}
+# {{namePascalCase}}
 
 A Python + Jupyter notebook application scaffold in this monorepo.
 

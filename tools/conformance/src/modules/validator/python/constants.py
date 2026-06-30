@@ -1,12 +1,9 @@
 """🔧 Shared constants for Python validators."""
 
 import re
-from typing import TYPE_CHECKING
+from collections.abc import Callable
 
-from src.validators.python.types import StringCase, StringCaseValue
-
-if TYPE_CHECKING:
-    from collections.abc import Callable
+from python.types import StringCase, StringCaseValue
 
 TODO_LINE_REGEX = re.compile(r"\bTODO\b")
 

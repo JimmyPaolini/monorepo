@@ -2,10 +2,10 @@ import "reflect-metadata";
 
 import { repl } from "@nestjs/core";
 
-import { {{namePascalCase}}Module } from "./modules/{{nameKebabCase}}/{{nameKebabCase}}.module";
+import { MainModule } from "./main.module";
 
 async function bootstrap(): Promise<void> {
-  await repl({{namePascalCase}}Module);
+  await repl(MainModule);
 }
 
 void bootstrap();

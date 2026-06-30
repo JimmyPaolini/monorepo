@@ -1,12 +1,11 @@
 """🔤 Text file conformance validator."""
 
-import chevron
-
-from src.validators.python.types import ConformanceError
+from python.template import render_template
+from python.types import ConformanceError
 
 
 def validate_text_conformance(*, data: dict, filename: str, instance: str, template: str) -> dict:
-    rendered = chevron.render(template, data)
+    rendered = render_template(template=template, data=data)
     instance_line_counts: dict[str, int] = {}
     for line in instance.split("\n"):
         instance_line_counts[line] = instance_line_counts.get(line, 0) + 1

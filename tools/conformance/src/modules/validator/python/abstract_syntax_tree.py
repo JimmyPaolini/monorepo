@@ -1,17 +1,14 @@
 """🌲 Depth-first search abstract syntax tree conformance validation."""
 
-from typing import TYPE_CHECKING
+import ast
 
-from src.validators.python.nodes import (
+from python.nodes import (
     filter_by_same_key,
     filter_by_same_type,
     get_children,
     get_key,
 )
-from src.validators.python.types import ConformanceError
-
-if TYPE_CHECKING:
-    import ast
+from python.types import ConformanceError
 
 
 def _get_node_location(node: ast.AST) -> tuple[int | None, int | None]:

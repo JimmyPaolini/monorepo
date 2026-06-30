@@ -2,19 +2,18 @@
 
 import json
 
-import chevron
-
-from src.validators.python.json.validator import _strip_comments, _validate_dfs
-from src.validators.python.markdown.validator import validate_markdown_conformance
-from src.validators.python.types import ConformanceError
-from src.validators.python.validator import validate_python_conformance
+from python.json.validator import _strip_comments, _validate_dfs
+from python.markdown.validator import validate_markdown_conformance
+from python.template import render_template
+from python.types import ConformanceError
+from python.validator import validate_python_conformance
 
 
 def validate_notebook_conformance(
     *, data: dict, filename: str, instance: str, template: str
 ) -> dict:
     """Validates a Jupyter notebook (.ipynb) as JSON with cell content validation."""
-    rendered = chevron.render(template, data)
+    rendered = render_template(template=template, data=data)
     try:
         template_obj = json.loads(_strip_comments(rendered))
         instance_obj = json.loads(_strip_comments(instance))

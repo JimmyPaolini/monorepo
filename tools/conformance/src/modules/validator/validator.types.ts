@@ -56,6 +56,7 @@ export type ConformanceErrorLanguage =
   | "javascript"
   | "json"
   | "markdown"
+  | "python"
   | "text"
   | "typescript";
 
@@ -108,6 +109,7 @@ export interface ValidatorResult {
 
 /** Allowed conformance validation rule names. */
 export type ValidatorRuleName =
+  | "jupyter-notebook-application"
   | "nestjs-command-application"
   | "nestjs-command-module"
   | "nestjs-graphql-application"

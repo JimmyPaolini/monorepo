@@ -3,18 +3,13 @@ import { workspaceRoot } from "@nx/devkit";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { ValidatorFilesService } from "./validator-files.service";
+import { ValidatorRulesService } from "./validator-rules.service";
+import { ValidatorWorkspaceService } from "./validator-workspace.service";
 import {
   VALIDATOR_RULE_NAMES,
   VALIDATOR_RULE_SEVERITY,
 } from "./validator.constants";
-import { stringifyConformanceErrors } from "./validator.files";
-import { runRule } from "./validator.rules";
-import {
-  readWorkspaceProjects,
-  resolveProjectByName,
-  resolveProjectName,
-  resolveSelectedProjectNames,
-} from "./validator.workspace";
 
 import type {
   ValidatorProjectResult,
@@ -42,6 +37,9 @@ export class ValidatorService {
   // 🔐 Private Fields
 
   private readonly logger: LoggerService;
+  private readonly validatorFilesService = new ValidatorFilesService();
+  private readonly validatorRulesService = new ValidatorRulesService();
+  private readonly validatorWorkspaceService = new ValidatorWorkspaceService();
 
   // 🔑 Public Fields
 
@@ -97,7 +95,7 @@ export class ValidatorService {
     workspaceProject: { rootPath: string; tags: string[] };
   }): undefined | ValidatorRuleResult {
     const { ruleName, workspaceProject } = args;
-    const resultsByRule = runRule({
+    const resultsByRule = this.validatorRulesService.runRule({
       ruleName,
       workspaceProject,
     });
@@ -106,7 +104,8 @@ export class ValidatorService {
       return undefined;
     }
 
-    const serializedErrors = stringifyConformanceErrors(resultsByRule);
+    const serializedErrors =
+      this.validatorFilesService.stringifyConformanceErrors(resultsByRule);
     return {
       errors: serializedErrors === null ? [] : [serializedErrors],
       passed: serializedErrors === null,
@@ -119,14 +118,17 @@ export class ValidatorService {
    * Runs conformance validation for the selected projects and rules.
    */
   async validate(request: ValidatorRequest): Promise<ValidatorResult> {
-    const allWorkspaceProjects = await Promise.resolve(readWorkspaceProjects());
-    const selectedProjectNames = resolveSelectedProjectNames({
-      allWorkspaceProjects,
-      requestedProjectNames: request.projects,
-    });
+    const allWorkspaceProjects = await Promise.resolve(
+      this.validatorWorkspaceService.readWorkspaceProjects(),
+    );
+    const selectedProjectNames =
+      this.validatorWorkspaceService.resolveSelectedProjectNames({
+        allWorkspaceProjects,
+        requestedProjectNames: request.projects,
+      });
     const selectedRules = this.resolveSelectedRules(request.rules);
     const selectedProjects = selectedProjectNames.map((projectName) =>
-      resolveProjectByName({
+      this.validatorWorkspaceService.resolveProjectByName({
         allWorkspaceProjects,
         projectName,
       }),
@@ -144,7 +146,9 @@ export class ValidatorService {
         passed: validatorRuleResults.every((validatorRuleResult) => {
           return validatorRuleResult.passed;
         }),
-        projectName: resolveProjectName(workspaceProject.rootPath),
+        projectName: this.validatorWorkspaceService.resolveProjectName(
+          workspaceProject.rootPath,
+        ),
         projectRootPath: workspaceProject.rootPath.replace(
           `${workspaceRoot}/`,
           "",

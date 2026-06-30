@@ -2,7 +2,7 @@
 
 import pytest
 
-from src.validators.python.text.validator import validate_text_conformance
+from python.text.validator import validate_text_conformance
 
 
 @pytest.mark.unit

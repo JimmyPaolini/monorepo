@@ -3,13 +3,13 @@
 import os
 from pathlib import Path
 
-from src.validators.python.constants import converter_by_string_case
-from src.validators.python.json.validator import validate_json_conformance
-from src.validators.python.markdown.validator import validate_markdown_conformance
-from src.validators.python.notebook.validator import validate_notebook_conformance
-from src.validators.python.text.validator import validate_text_conformance
-from src.validators.python.types import ConformanceError, StringCase
-from src.validators.python.validator import validate_python_conformance
+from python.constants import converter_by_string_case
+from python.json.validator import validate_json_conformance
+from python.markdown.validator import validate_markdown_conformance
+from python.notebook.validator import validate_notebook_conformance
+from python.text.validator import validate_text_conformance
+from python.types import ConformanceError, StringCase
+from python.validator import validate_python_conformance
 
 # Try to use workspace root dynamically, or fallback to current dir
 try:

@@ -40,6 +40,7 @@ worktrees
 
 
 # 🔍 Linting & Code Quality
+asdict
 bandit
 commitlint
 cssmodule
@@ -54,6 +55,7 @@ oxlint
 oxlintrc
 proptypes
 pyright
+pythonpath
 ruff
 sherif
 sqlfluff

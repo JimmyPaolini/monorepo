@@ -1,6 +1,6 @@
 """🔤 Markdown AST node utilities for conformance validation."""
 
-from src.validators.python.constants import TODO_LINE_REGEX
+from python.constants import TODO_LINE_REGEX
 
 CONTAINER_TYPES = frozenset(
     [

@@ -3,10 +3,9 @@
 import json
 import re
 
-import chevron
-
-from src.validators.python.json.comments import validate_comments
-from src.validators.python.types import ConformanceError
+from python.json.comments import validate_comments
+from python.template import render_template
+from python.types import ConformanceError
 
 _TOKEN_PATTERN = re.compile(r'("(?:\\.|[^"\\])*")|(//[^\n]*|/\*[\s\S]*?\*/)')
 
@@ -105,7 +104,7 @@ def _validate_dfs(template, instance, path=None) -> list[ConformanceError]:
 
 
 def validate_json_conformance(*, data: dict, filename: str, instance: str, template: str) -> dict:
-    rendered = chevron.render(template, data)
+    rendered = render_template(template=template, data=data)
     template_obj = json.loads(_strip_comments(rendered))
     instance_obj = json.loads(_strip_comments(instance))
     structural_errors = _validate_dfs(template_obj, instance_obj)

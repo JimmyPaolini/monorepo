@@ -27,7 +27,7 @@ nx run conformance:develop
 
 ```text
 src/main.ts
-  └─ CommandFactory.run(ConformanceModule)
+  └─ CommandFactory.run(MainModule)
        └─ ConformanceCommand.run()   ← implement logic here
             └─ domain service modules       ← add under src/modules/
 ```
@@ -40,12 +40,14 @@ src/
   modules/
     conformance/
       conformance.command.ts  # Root CLI entry point (CommandRunner)
-      conformance.module.ts   # Root NestJS module (imports ConfigModule, LoggerModule)
-      conformance.constants.ts# Zod environmentSchema for env validation
-      conformance.types.ts    # Module-scoped TypeScript types
+    main.module.ts            # Root NestJS module (imports ConfigModule, LoggerModule)
+    constants.ts              # Zod environmentSchema for env validation
     logger/
       logger.service.ts             # Transient pino LoggerService
       logger.module.ts              # LoggerModule (exports LoggerService)
+    conformance/
+      conformance.command.ts        # Root CLI entry point (CommandRunner)
+      conformance.types.ts          # Module-scoped TypeScript types
     <domain>/                       # Add feature modules here
       <domain>.module.ts
       <domain>.service.ts
@@ -61,8 +63,8 @@ testing/                            # Shared test utilities
 
 1. **Implement the root command** — add logic to `conformance.command.ts` `run()`, or delegate to injected services.
 2. **Add domain modules** — create `src/modules/<domain>/` with a NestJS module, service, types, and constants.
-3. **Register in root module** — import the new module in `conformance.module.ts`.
-4. **Validate env vars** — extend `environmentSchema` in `conformance.constants.ts` with all required environment variables.
+3. **Register in root module** — import the new module in `main.module.ts`.
+4. **Validate env vars** — extend `environmentSchema` in `constants.ts` with all required environment variables.
 
 ### Logging
 
@@ -201,7 +203,7 @@ Do not re-export types from `index.ts` unless they are part of the public API co
 
 ### Registering in the root module
 
-After generating a module, import it in `conformance.module.ts`:
+After generating a module, import it in `main.module.ts`:
 
 ```ts
 @Module({
@@ -212,7 +214,7 @@ After generating a module, import it in `conformance.module.ts`:
   ],
   providers: [ConformanceCommand],
 })
-export class ConformanceModule {}
+export class MainModule {}
 ```
 
 ### Conformance check
@@ -245,9 +247,9 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 ## Key Files
 
 - [src/main.ts](src/main.ts): Application bootstrap
+- [src/main.module.ts](src/main.module.ts): Root NestJS module
+- [src/constants.ts](src/constants.ts): `environmentSchema` (Zod)
 - [src/modules/conformance/conformance.command.ts](src/modules/conformance/conformance.command.ts): Root CLI command
-- [src/modules/conformance/conformance.module.ts](src/modules/conformance/conformance.module.ts): Root NestJS module
-- [src/modules/conformance/conformance.constants.ts](src/modules/conformance/conformance.constants.ts): `environmentSchema` (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
 - [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template

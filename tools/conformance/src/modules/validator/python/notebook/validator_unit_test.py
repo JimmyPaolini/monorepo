@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from src.validators.python.notebook.validator import validate_notebook_conformance
+from python.notebook.validator import validate_notebook_conformance
 
 
 def make_notebook(cells=None, nbformat=4):
