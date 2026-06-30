@@ -4,6 +4,7 @@ import {
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { isLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -27,6 +28,7 @@ export class MonthlyLunarCycleService {
   // 🏗 Dependency Injection
 
   constructor(
+    private readonly calendarService: CalendarService,
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
   ) {
@@ -319,10 +321,7 @@ export class MonthlyLunarCycleService {
     const description = `${lunarPhaseCapitalized} Moon`;
     const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const monthlyLunarCycleEvent = {
+    return this.calendarService.buildInstantEvent({
       categories: [
         "Astronomy",
         "Astrology",
@@ -330,12 +329,12 @@ export class MonthlyLunarCycleService {
         "Lunar",
         lunarPhaseCapitalized,
       ],
+      date,
       description,
-      end: date,
-      start: date,
+      logger: this.logger,
       summary,
-    };
-    return monthlyLunarCycleEvent;
+      timezone: "America/New_York",
+    });
   }
 
   /**

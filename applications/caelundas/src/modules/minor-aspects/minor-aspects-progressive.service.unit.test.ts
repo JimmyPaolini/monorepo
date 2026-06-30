@@ -1,3 +1,4 @@
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -16,6 +17,7 @@ describe(MinorAspectsProgressiveService, () => {
     const module = await Test.createTestingModule({
       providers: [
         MinorAspectsProgressiveService,
+        ProgressiveAspectService,
         {
           provide: ProgressiveUtilitiesService,
           useValue: createMock<ProgressiveUtilitiesService>(),
@@ -31,6 +33,7 @@ describe(MinorAspectsProgressiveService, () => {
       vi.fn<ProgressiveUtilitiesService["pairProgressiveEvents"]>(),
   };
   const mockService = new MinorAspectsProgressiveService(
+    new ProgressiveAspectService(),
     progressiveUtilitiesService as never,
   );
   const privateService = mockService as unknown as {

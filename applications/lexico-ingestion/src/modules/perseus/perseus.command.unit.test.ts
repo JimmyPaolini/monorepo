@@ -1,4 +1,4 @@
-import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -6,6 +6,7 @@ import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { PerseusCommand } from "./perseus.command";
@@ -50,14 +51,22 @@ describe(PerseusCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
-    vi.unstubAllGlobals();
-    vi.useRealTimers();
+    resetCommandTestHarness({ useRealTimers: true });
     accessMock.mockResolvedValue(undefined);
     appendFileMock.mockResolvedValue(undefined);
     mkdirMock.mockResolvedValue(undefined);
     writeFileMock.mockResolvedValue(undefined);
+
+    logger.buildErrorLogEntry.mockImplementation((context, error) => {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
+      return {
+        errorMessage,
+        logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+      };
+    });
+    (command as unknown as { errorLogFilePath: string }).errorLogFilePath =
+      "/tmp/perseus-errors.log";
   });
 
   it("is defined", () => {
@@ -75,6 +84,7 @@ describe(PerseusCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(PerseusCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("PerseusCommand");
@@ -336,10 +346,15 @@ describe(PerseusCommand, () => {
       process.chdir(temporaryDirectory);
 
       const logger: DeepMocked<LoggerService> = createMock<LoggerService>();
+      logger.createTimestampedOutputLogFilePath.mockReturnValue(
+        "/tmp/perseus-errors.log",
+      );
       const newCommand = new PerseusCommand(logger);
 
       expect(newCommand).toBeDefined();
-      expect(existsSync(path.join(temporaryDirectory, "output"))).toBe(true);
+      expect(logger.createTimestampedOutputLogFilePath).toHaveBeenCalledWith(
+        "perseus",
+      );
     } finally {
       process.chdir(previousWorkingDirectory);
       rmSync(temporaryDirectory, { force: true, recursive: true });

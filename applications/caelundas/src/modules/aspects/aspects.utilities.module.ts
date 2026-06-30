@@ -1,8 +1,15 @@
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { MathModule } from "@caelundas/src/modules/math/math.module";
 import { Module } from "@nestjs/common";
 
-import { AspectsUtilities } from "./aspects.utilities";
-import { SimpleAspectsEventService } from "./simple-aspects-event.service";
+import { AspectCalculationSupportService } from "./aspect-calculation-support.service";
+import { AspectEphemerisService } from "./aspect-ephemeris.service";
+import { AspectEventFormattingService } from "./aspect-event-formatting.service";
+import { AspectGraphService } from "./aspect-graph.service";
+import { AspectPhaseEmojiService } from "./aspect-phase-emoji.service";
+import { AspectsUtilities } from "./aspects-utilities.service";
+import { CompoundPhaseService } from "./compound-phase.service";
+import { ProgressiveCompoundEventService } from "./progressive-compound-event.service";
 
 /**
  * NestJS module providing core aspect detection utilities.
@@ -10,8 +17,26 @@ import { SimpleAspectsEventService } from "./simple-aspects-event.service";
  */
 @Module({
   controllers: [],
-  exports: [AspectsUtilities, SimpleAspectsEventService],
-  imports: [MathModule],
-  providers: [AspectsUtilities, SimpleAspectsEventService],
+  exports: [
+    AspectEphemerisService,
+    AspectCalculationSupportService,
+    AspectEventFormattingService,
+    AspectPhaseEmojiService,
+    AspectGraphService,
+    AspectsUtilities,
+    CompoundPhaseService,
+    ProgressiveCompoundEventService,
+  ],
+  imports: [EphemerisModule, MathModule],
+  providers: [
+    AspectEphemerisService,
+    AspectCalculationSupportService,
+    AspectEventFormattingService,
+    AspectPhaseEmojiService,
+    AspectGraphService,
+    AspectsUtilities,
+    CompoundPhaseService,
+    ProgressiveCompoundEventService,
+  ],
 })
 export class AspectsUtilitiesModule {}

@@ -1,3 +1,6 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -16,6 +19,8 @@ describe(TripleAspectsComposerService, () => {
     const module = await Test.createTestingModule({
       providers: [
         TripleAspectsComposerService,
+        AspectGraphService,
+        AspectPhaseEmojiService,
         { provide: LoggerService, useValue: createMock<LoggerService>() },
       ],
     }).compile();
@@ -32,7 +37,7 @@ describe(TripleAspectsComposerService, () => {
     expect(service).toBeDefined();
   });
 
-  describe("static aspect helpers", () => {
+  describe("aspect helpers", () => {
     it("finds bodies with a specific aspect", () => {
       const edges: AspectBodies[] = [
         { aspect: "conjunct", bodies: ["sun", "moon"] },
@@ -40,12 +45,11 @@ describe(TripleAspectsComposerService, () => {
         { aspect: "trine", bodies: ["jupiter", "sun"] },
       ];
 
-      const bodiesWithTrine =
-        TripleAspectsComposerService.findBodiesWithAspectTo(
-          "sun",
-          "trine",
-          edges,
-        );
+      const bodiesWithTrine = service.findBodiesWithAspectTo(
+        "sun",
+        "trine",
+        edges,
+      );
 
       expect(bodiesWithTrine).toContain("mars");
       expect(bodiesWithTrine).toContain("jupiter");
@@ -57,7 +61,7 @@ describe(TripleAspectsComposerService, () => {
       ];
 
       expect(
-        TripleAspectsComposerService.haveAspect({
+        service.haveAspect({
           aspectType: "conjunct",
           body1: "sun",
           body2: "moon",
@@ -66,7 +70,7 @@ describe(TripleAspectsComposerService, () => {
       ).toBe(true);
 
       expect(
-        TripleAspectsComposerService.haveAspect({
+        service.haveAspect({
           aspectType: "trine",
           body1: "sun",
           body2: "moon",
@@ -180,9 +184,10 @@ describe(TripleAspectsComposerService, () => {
         start: minute.clone().add(1, "hour"),
         summary: "⬅️ ✶ Moon-Sun-Mars Moon, Sun, Mars grand trine dissolving",
       };
+      const compoundPhaseService = new CompoundPhaseService();
 
       expect(
-        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        compoundPhaseService.determineCompoundPhaseFromSnapshots({
           checkPatternExists: (edges) => edges.length > 0,
           currentAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
           currentMinute: minute,
@@ -192,7 +197,7 @@ describe(TripleAspectsComposerService, () => {
       ).toStrictEqual({ eventMinute: minute, phase: "forming" });
 
       expect(
-        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        compoundPhaseService.determineCompoundPhaseFromSnapshots({
           checkPatternExists: (edges) => edges.length > 0,
           currentAspectBodies: [],
           currentMinute: minute,
@@ -202,7 +207,7 @@ describe(TripleAspectsComposerService, () => {
       ).toBe("dissolving");
 
       expect(
-        TripleAspectsComposerService.determineCompoundPhaseFromSnapshots({
+        compoundPhaseService.determineCompoundPhaseFromSnapshots({
           checkPatternExists: (edges) => edges.length > 0,
           currentAspectBodies: [{ aspect: "trine", bodies: ["moon", "sun"] }],
           currentMinute: minute,

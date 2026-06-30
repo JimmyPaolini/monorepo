@@ -1,3 +1,6 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
@@ -21,8 +24,12 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 
 const service = new SextupleAspectsService(
-  new SextupleAspectsComposerService(),
+  new SextupleAspectsComposerService(
+    new AspectPhaseEmojiService(),
+    new ProgressiveCompoundEventService(),
+  ),
   new MathService(),
+  new CompoundPhaseService(),
 );
 
 describe("sextuple-aspects.events integration", () => {

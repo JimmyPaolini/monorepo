@@ -1,12 +1,16 @@
-import { execSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { getProjects, workspaceRoot } from "@nx/devkit";
-import _ from "lodash";
-
+import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
-import { generateFiles, resolveName, resolveProject } from "../../utilities";
+import {
+  buildKebabCaseNameSubstitutions,
+  createFormatFilesCallback,
+  generateFiles,
+  resolveName,
+  resolveProject,
+  resolveProjectDirectoryPath,
+} from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
@@ -34,14 +38,14 @@ export async function generateNestjsCommandModule(
   options: GenerateNestjsCommandModuleOptions,
 ): Promise<GeneratorCallback> {
   const { nameKebabCase, projectName } = await resolveInputs(tree, options);
-  const directory = resolveProjectDirectory(tree, projectName);
+  const directory = resolveProjectDirectoryPath({
+    directoryPath: MODULES_DIRECTORY,
+    projectName,
+    tree,
+  });
 
   const targetPath = path.join(directory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
+  const substitutions = buildKebabCaseNameSubstitutions(nameKebabCase);
 
   generateFiles({
     instanceDirectoryPath: targetPath,
@@ -50,15 +54,7 @@ export async function generateNestjsCommandModule(
     tree,
   });
 
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((file) => path.join(targetPath, file));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-    });
-  };
+  return createFormatFilesCallback({ targetPath, tree });
 }
 
 /**
@@ -83,30 +79,4 @@ async function resolveInputs(
   });
 
   return { nameKebabCase, projectName };
-}
-
-/**
- * Resolve project directory.
- */
-function resolveProjectDirectory(tree: Tree, projectName: string): string {
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const directory = path.join(projectRoot, "src", "modules");
-
-  // Validate directory exists in workspace
-  if (!tree.exists(directory)) {
-    throw new Error(
-      `Directory "${directory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  return directory;
 }

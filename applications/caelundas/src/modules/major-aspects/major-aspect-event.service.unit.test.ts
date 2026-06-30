@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";

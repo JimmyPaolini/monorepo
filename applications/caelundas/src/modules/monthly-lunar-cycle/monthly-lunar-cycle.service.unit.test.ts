@@ -1,6 +1,7 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolByLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import * as CaelundasTypes from "@caelundas/src/modules/caelundas/caelundas.types";
+import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
@@ -62,6 +63,37 @@ describe(MonthlyLunarCycleService, () => {
     const module = await Test.createTestingModule({
       providers: [
         MonthlyLunarCycleService,
+        {
+          provide: CalendarService,
+          useValue: {
+            buildInstantEvent: (args: {
+              categories: string[];
+              date: Moment;
+              description: string;
+              logger: { log: (message: string) => void };
+              summary: string;
+              timezone: string;
+            }): Event => {
+              const {
+                categories,
+                date,
+                description,
+                logger,
+                summary,
+                timezone,
+              } = args;
+              const dateString = date.clone().tz(timezone).toISOString(true);
+              logger.log(`${summary} at ${dateString}`);
+              return {
+                categories,
+                description,
+                end: date,
+                start: date,
+                summary,
+              };
+            },
+          },
+        },
         EphemerisService,
         LoggerService,
         MathService,

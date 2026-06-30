@@ -1,3 +1,5 @@
+import { AspectGraphService } from "@caelundas/src/modules/aspects/aspect-graph.service";
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
 import { aspectBodies as tripleAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
@@ -26,89 +28,12 @@ import type { Moment } from "moment-timezone";
 export class TripleAspectsComposerService {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(
+    private readonly aspectGraphService: AspectGraphService,
+    private readonly aspectPhaseEmojiService: AspectPhaseEmojiService,
+    private readonly logger: LoggerService,
+  ) {
     this.logger.setContext(TripleAspectsComposerService.name);
-  }
-
-  /**
-   * Derives forming/dissolving phase by comparing pattern existence across two snapshots.
-   */
-  static determineCompoundPhaseFromSnapshots(args: {
-    checkPatternExists: (edges: AspectBodies[]) => boolean;
-    currentAspectBodies: AspectBodies[];
-    currentMinute: Moment;
-    patternBodies: Body[];
-    previousAspectBodies: AspectBodies[];
-  }): null | { eventMinute: Moment; phase: AspectPhase } {
-    const {
-      checkPatternExists,
-      currentAspectBodies,
-      currentMinute,
-      patternBodies,
-      previousAspectBodies,
-    } = args;
-
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (edge) => bodySet.has(edge.bodies[0]) && bodySet.has(edge.bodies[1]),
-      );
-
-    const currentExists = checkPatternExists(
-      filterByBodies(currentAspectBodies),
-    );
-    const previousExists = checkPatternExists(
-      filterByBodies(previousAspectBodies),
-    );
-
-    if (currentExists && !previousExists) {
-      return { eventMinute: currentMinute, phase: "forming" };
-    }
-    if (!currentExists && previousExists) {
-      return {
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-        phase: "dissolving",
-      };
-    }
-
-    return null;
-  }
-
-  /**
-   * Returns neighbors of `body` connected by the requested aspect type.
-   */
-  static findBodiesWithAspectTo(
-    body: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): Body[] {
-    return edges
-      .filter(
-        (edge) =>
-          edge.aspect === aspectType &&
-          (edge.bodies[0] === body || edge.bodies[1] === body),
-      )
-      .map((edge) =>
-        edge.bodies[0] === body ? edge.bodies[1] : edge.bodies[0],
-      );
-  }
-
-  /**
-   * Returns `true` when an undirected body pair has the requested aspect in the edge set.
-   */
-  static haveAspect(args: {
-    aspectType: Aspect;
-    body1: Body;
-    body2: Body;
-    edges: AspectBodies[];
-  }): boolean {
-    const { aspectType, body1, body2, edges } = args;
-    return edges.some(
-      (edge) =>
-        edge.aspect === aspectType &&
-        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-    );
   }
 
   /**
@@ -223,13 +148,7 @@ export class TripleAspectsComposerService {
    * Derives phase emoji.
    */
   private getPhaseEmoji(phase: AspectPhase): string {
-    if (phase === "forming") {
-      return "➡️ ";
-    }
-    if (phase === "dissolving") {
-      return "⬅️ ";
-    }
-    return "🎯 ";
+    return this.aspectPhaseEmojiService.getPhaseEmoji(phase);
   }
 
   /**
@@ -441,6 +360,21 @@ export class TripleAspectsComposerService {
   }
 
   /**
+   * Returns neighbors of `body` connected by the requested aspect type.
+   */
+  findBodiesWithAspectTo(
+    body: Body,
+    aspectType: Aspect,
+    edges: AspectBodies[],
+  ): Body[] {
+    return this.aspectGraphService.findBodiesWithAspectTo(
+      body,
+      aspectType,
+      edges,
+    );
+  }
+
+  /**
    * Builds a stable progressive grouping key from sorted bodies plus aspect label.
    */
   getProgressiveGroupKey(event: Event): string {
@@ -460,6 +394,18 @@ export class TripleAspectsComposerService {
       return `${planets[0]}-${planets[1]}-${planets[2]}-${aspect}`;
     }
     return "";
+  }
+
+  /**
+   * Returns `true` when an undirected body pair has the requested aspect in the edge set.
+   */
+  haveAspect(args: {
+    aspectType: Aspect;
+    body1: Body;
+    body2: Body;
+    edges: AspectBodies[];
+  }): boolean {
+    return this.aspectGraphService.haveAspect(args);
   }
 
   /**

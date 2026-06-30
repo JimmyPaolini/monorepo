@@ -74,14 +74,6 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
-    "manual": {
-      "description": "Ingest manually curated entries into the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts manual",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},

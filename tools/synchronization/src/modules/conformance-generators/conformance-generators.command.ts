@@ -5,6 +5,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
+import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
 import type {
   ConformanceGeneratorMetadata,
@@ -24,7 +25,10 @@ import type {
 export class ConformanceGeneratorsCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly loggerService: LoggerService) {
+  constructor(
+    private readonly loggerService: LoggerService,
+    private readonly synchronizationModeService: SynchronizationModeService,
+  ) {
     super();
     this.loggerService.setContext(ConformanceGeneratorsCommand.name);
   }
@@ -158,7 +162,13 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
     _options?: Record<string, unknown>,
   ): Promise<void> {
     await Promise.resolve();
-    const mode = passedParameters[0] ?? "check";
+    const mode =
+      this.synchronizationModeService.resolveSynchronizationModeOrExit({
+        invalidModeLabel: "Unknown mode",
+        loggerService: this.loggerService,
+        passedParameters,
+        usageMessage: "Expected 'check' or 'write'",
+      });
 
     try {
       const generators = this.readGenerators();
@@ -166,12 +176,8 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
       if (mode === "check") {
         const success = this.checkSync(generators);
         if (!success) process.exit(1);
-      } else if (mode === "write") {
-        this.writeSync(generators);
       } else {
-        this.loggerService.error(`❌ Unknown mode: ${mode}`);
-        this.loggerService.error("Expected 'check' or 'write'");
-        process.exit(1);
+        this.writeSync(generators);
       }
     } catch (error) {
       this.loggerService.error(

@@ -1,12 +1,14 @@
-import { createMock, type DeepMocked } from "@golevelup/ts-vitest";
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import * as cheerio from "cheerio";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { resetCommandTestHarness } from "../../../testing/command-harness";
 import { LoggerService } from "../logger/logger.service";
 
 import { WiktionaryCommand } from "./wiktionary.command";
 
+import type { DeepMocked } from "@golevelup/ts-vitest";
 import type { AnyNode, Element } from "domhandler";
 
 const { appendFileSyncMock, existsSyncMock, mkdirSyncMock, writeFileSyncMock } =
@@ -46,9 +48,7 @@ describe(WiktionaryCommand, () => {
   });
 
   beforeEach(() => {
-    vi.restoreAllMocks();
-    vi.clearAllMocks();
-    vi.unstubAllGlobals();
+    resetCommandTestHarness();
     existsSyncMock.mockReturnValue(true);
   });
 
@@ -75,6 +75,7 @@ describe(WiktionaryCommand, () => {
       ],
     }).compile();
 
+    await module.resolve(WiktionaryCommand);
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("WiktionaryCommand");
@@ -93,8 +94,8 @@ describe(WiktionaryCommand, () => {
       ],
     }).compile();
 
-    const isolatedLogger = await module.resolve(LoggerService);
     await module.resolve(WiktionaryCommand);
+    const isolatedLogger = await module.resolve(LoggerService);
 
     expect(isolatedLogger).toBeDefined();
 

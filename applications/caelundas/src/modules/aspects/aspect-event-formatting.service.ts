@@ -11,13 +11,17 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
 /**
- * Shared helper service for simple-aspect event construction and aspect matching.
+ * Centralized formatter for aspect-phase markers and aspect calendar event payloads.
  */
 @Injectable()
-export class SimpleAspectsEventService {
+export class AspectEventFormattingService {
   // 🏗 Dependency Injection
 
   constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
 
   // 🔏 Private Methods
 
@@ -120,6 +124,33 @@ export class SimpleAspectsEventService {
   }
 
   /**
+   * Builds one progressive compound event from a forming and dissolving pair.
+   */
+  buildProgressiveCompoundEvent(args: {
+    descriptionCaseInsensitive?: boolean;
+    dissolving: Event;
+    forming: Event;
+  }): Event {
+    const { descriptionCaseInsensitive = false, dissolving, forming } = args;
+    const descriptionPattern = descriptionCaseInsensitive
+      ? / (forming|exact|dissolving)$/i
+      : / (forming|exact|dissolving)$/;
+
+    return {
+      categories: forming.categories.filter(
+        (category) =>
+          category !== "Forming" &&
+          category !== "Perfective" &&
+          category !== "Dissolving",
+      ),
+      description: forming.description.replace(descriptionPattern, ""),
+      end: dissolving.start,
+      start: forming.start,
+      summary: forming.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
+    };
+  }
+
+  /**
    * Return the first aspect whose angular condition matches the two longitudes.
    */
   findFirstMatchingAspect<TAspect extends string>(args: {
@@ -135,5 +166,20 @@ export class SimpleAspectsEventService {
     }
 
     return null;
+  }
+
+  /**
+   * Returns the summary prefix emoji for an aspect phase.
+   */
+  getPhaseEmoji(phase: AspectPhase): string {
+    if (phase === "forming") {
+      return "➡️ ";
+    }
+
+    if (phase === "perfective") {
+      return "🎯 ";
+    }
+
+    return "⬅️ ";
   }
 }

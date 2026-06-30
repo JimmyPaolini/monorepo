@@ -6,12 +6,138 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
 /**
+ * Canonical minute fixture frequently used by aspect detection tests.
+ */
+export interface AspectMinuteFixture {
+  currentMinute: Moment;
+  minute: Moment;
+  nextMinute: Moment;
+  previousMinute: Moment;
+}
+
+/**
+ * Previous/current/next longitude snapshots for one body.
+ */
+export interface BodyLongitudeFixture {
+  currentLongitude: number;
+  nextLongitude: number;
+  previousLongitude: number;
+}
+
+/**
  * One-minute time window used by aspect detection tests.
  */
 export interface MinuteWindow {
   currentMinute: Moment;
   nextMinute: Moment;
   previousMinute: Moment;
+}
+
+/**
+ * Apply body-specific previous/current/next-minute longitude overrides.
+ */
+export function applyBodyLongitudeFixtureOverrides<TBody extends string>({
+  bodies,
+  coordinateEphemerisByBody,
+  minuteWindow,
+  overrides,
+}: {
+  bodies: readonly TBody[];
+  coordinateEphemerisByBody: Record<TBody, CoordinateEphemeris>;
+  minuteWindow: MinuteWindow;
+  overrides: Partial<Record<TBody, BodyLongitudeFixture>>;
+}): Record<TBody, CoordinateEphemeris> {
+  const updatedCoordinateEphemerisByBody = { ...coordinateEphemerisByBody };
+
+  for (const body of bodies) {
+    const bodyLongitudeFixture = overrides[body];
+
+    if (bodyLongitudeFixture === undefined) {
+      continue;
+    }
+
+    updatedCoordinateEphemerisByBody[body] =
+      createBodyLongitudeFixtureEphemeris({
+        bodyLongitudeFixture,
+        minuteWindow,
+      });
+  }
+
+  return updatedCoordinateEphemerisByBody;
+}
+
+/**
+ * Create per-body ephemeris for an explicit body set with optional overrides.
+ */
+export function createAspectEphemerisFixtureByBodies<TBody extends string>({
+  bodies,
+  defaultLongitude,
+  minuteWindow,
+  overrides = {},
+}: {
+  bodies: readonly TBody[];
+  defaultLongitude: number;
+  minuteWindow: MinuteWindow;
+  overrides?: Partial<Record<TBody, BodyLongitudeFixture>>;
+}): Record<TBody, CoordinateEphemeris> {
+  const coordinateEphemerisByBody = createBodyCoordinateEphemeris({
+    bodies,
+    getLongitude: () => defaultLongitude,
+    minuteWindow,
+  }) as Record<TBody, CoordinateEphemeris>;
+
+  return applyBodyLongitudeFixtureOverrides({
+    bodies,
+    coordinateEphemerisByBody,
+    minuteWindow,
+    overrides,
+  });
+}
+
+/**
+ * Create per-body ephemeris with deterministic indexed longitudes.
+ */
+export function createAspectEphemerisFixtureFromIndexedLongitudes<
+  TBody extends string,
+>({
+  bodies,
+  longitudeStart = 0,
+  longitudeStep,
+  minuteWindow,
+}: {
+  bodies: readonly TBody[];
+  longitudeStart?: number;
+  longitudeStep: number;
+  minuteWindow: MinuteWindow;
+}): Record<TBody, CoordinateEphemeris> {
+  return createBodyCoordinateEphemeris({
+    bodies,
+    getLongitude: (_, index) => longitudeStart + index * longitudeStep,
+    minuteWindow,
+  });
+}
+
+/**
+ * Create per-body ephemeris from an ordered longitude list.
+ */
+export function createAspectEphemerisFixtureFromOrderedLongitudes<
+  TBody extends string,
+>({
+  bodies,
+  fallbackLongitude = 0,
+  longitudes,
+  minuteWindow,
+}: {
+  bodies: readonly TBody[];
+  fallbackLongitude?: number;
+  longitudes: readonly number[];
+  minuteWindow: MinuteWindow;
+}): Record<TBody, CoordinateEphemeris> {
+  return createBodyCoordinateEphemeris({
+    bodies,
+    getLongitude: (_, index) => longitudes[index] ?? fallbackLongitude,
+    minuteWindow,
+  });
 }
 
 /**
@@ -57,6 +183,22 @@ export function createAspectEphemerisForBodies({
 }
 
 /**
+ * Create minute fixture with both `minute` and `currentMinute` aliases.
+ */
+export function createAspectMinuteFixture(
+  timestamp = "2024-03-21T12:00:00.000Z",
+): AspectMinuteFixture {
+  const minuteWindow = createMinuteWindow(timestamp);
+
+  return {
+    currentMinute: minuteWindow.currentMinute,
+    minute: minuteWindow.currentMinute,
+    nextMinute: minuteWindow.nextMinute,
+    previousMinute: minuteWindow.previousMinute,
+  };
+}
+
+/**
  * Create per-body ephemeris with deterministic longitudes for a minute window.
  */
 export function createBodyCoordinateEphemeris({
@@ -78,6 +220,25 @@ export function createBodyCoordinateEphemeris({
   });
 
   return coordinateEphemerisByBody;
+}
+
+/**
+ * Create one body's previous/current/next-minute ephemeris snapshot.
+ */
+export function createBodyLongitudeFixtureEphemeris({
+  bodyLongitudeFixture,
+  minuteWindow,
+}: {
+  bodyLongitudeFixture: BodyLongitudeFixture;
+  minuteWindow: MinuteWindow;
+}): CoordinateEphemeris {
+  return createCoordinateEphemerisFromLongitudes({
+    [minuteWindow.currentMinute.toISOString()]:
+      bodyLongitudeFixture.currentLongitude,
+    [minuteWindow.nextMinute.toISOString()]: bodyLongitudeFixture.nextLongitude,
+    [minuteWindow.previousMinute.toISOString()]:
+      bodyLongitudeFixture.previousLongitude,
+  });
 }
 
 /**

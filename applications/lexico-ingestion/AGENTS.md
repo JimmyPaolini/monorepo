@@ -47,7 +47,7 @@ src/main.ts
             └─ Step 4: ManualService.ingestManual()
 ```
 
-Sub-commands: `wiktionary`, `dictionary`, `words`, `manual`, `clear`
+Sub-commands: `wiktionary`, `dictionary`, `words`, `clear`
 
 ### Directory Layout
 

@@ -8,6 +8,8 @@ import { DevcontainerConfigurationCommand } from "../devcontainer-configuration/
 import { LoggerService } from "../logger/logger.service";
 import { PullRequestTemplateCommand } from "../pull-request-template/pull-request-template.command";
 
+import { SynchronizationModeService } from "./synchronization-mode.service";
+
 import type {
   SynchronizationMode,
   SynchronizationTask,
@@ -29,6 +31,7 @@ export class SynchronizationCommand extends CommandRunner {
     private readonly devcontainerConfigurationCommand: DevcontainerConfigurationCommand,
     private readonly loggerService: LoggerService,
     private readonly pullRequestTemplateCommand: PullRequestTemplateCommand,
+    private readonly synchronizationModeService: SynchronizationModeService,
   ) {
     super();
     this.loggerService.setContext(SynchronizationCommand.name);
@@ -38,18 +41,12 @@ export class SynchronizationCommand extends CommandRunner {
 
   /** Parses and validates synchronization mode argument. */
   private getMode(passedParameters: string[]): SynchronizationMode {
-    const mode = passedParameters[0];
-    if (mode === undefined) {
-      return "check";
-    }
-
-    if (mode === "check" || mode === "write") {
-      return mode;
-    }
-
-    this.loggerService.error(`❌ Invalid mode: ${mode}`);
-    this.loggerService.error("💡 Usage: synchronization [check|write]");
-    throw new TypeError(`Invalid synchronization mode: ${mode}`);
+    return this.synchronizationModeService.resolveSynchronizationModeOrThrow({
+      invalidModeLabel: "Invalid mode",
+      loggerService: this.loggerService,
+      passedParameters,
+      usageMessage: "💡 Usage: synchronization [check|write]",
+    });
   }
 
   /** Builds the ordered task list executed by the root synchronization command. */

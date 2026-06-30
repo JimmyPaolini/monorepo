@@ -27,6 +27,7 @@ const config: KnipConfig = {
     "uv", // uv Python package manager, used in lint-staged for nbstripout
     "unset", // Shell builtin, used in project.json pre-commit command
     "squawk",
+    "gh", // GitHub CLI, used by scripts/orchestrate-agents.ts to run Copilot sessions
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
@@ -148,13 +149,13 @@ const config: KnipConfig = {
         "src/modules/database/data-source.ts",
         "src/modules/database/migrations/**/*.ts",
       ],
-      ignoreDependencies: [
-        "@testcontainers/postgresql", // Used by integration helper in packages/lexico-entities/testing (outside knip project scope)
-        "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
-      ],
       ignore: [
         "src/modules/database/database.module.ts", // Conformance-generated module stub, not yet exported
         "src/modules/entities/entities.module.ts", // Conformance-generated module stub, not yet exported
+      ],
+      ignoreDependencies: [
+        "@testcontainers/postgresql", // Used by integration helper in packages/lexico-entities/testing (outside knip project scope)
+        "pg", // TypeORM postgres driver — loaded dynamically by TypeORM, not directly imported
       ],
       project: ["src/**/*.ts", "scripts/**/*.ts"],
     },
@@ -168,6 +169,7 @@ const config: KnipConfig = {
         "testing/**", // Test fixtures and setup
       ],
       ignoreDependencies: [
+        "@nestjs/testing", // Used by command/logger unit tests; tests are excluded from knip project scope
         "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
         "tsx", // TypeScript executor CLI (not used; project uses @swc-node/register instead)
         "vitest", // Knip misses vitest usage because tests are ignored

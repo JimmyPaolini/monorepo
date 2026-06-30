@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as specialtyAspectBodies,
   specialtyAspects,
@@ -186,28 +186,12 @@ export class SpecialtyAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    const { coordinateEphemerisByBody, minute } = args;
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-    const specialtyAspectEvents: Event[] = [];
-
-    for (const body1 of specialtyAspectBodies) {
-      const index = specialtyAspectBodies.indexOf(body1);
-      for (const body2 of specialtyAspectBodies.slice(index + 1)) {
-        if (body1 === body2) continue;
-        const event = this.detectBodyPairEvent({
-          body1,
-          body2,
-          coordinateEphemerisByBody,
-          minute,
-          nextMinute,
-          previousMinute,
-        });
-        if (event) specialtyAspectEvents.push(event);
-      }
-    }
-
-    return specialtyAspectEvents;
+    return AspectsUtilities.scanUniqueBodyPairsAtMinute({
+      bodies: specialtyAspectBodies,
+      coordinateEphemerisByBody: args.coordinateEphemerisByBody,
+      detect: (argumentsObject) => this.detectBodyPairEvent(argumentsObject),
+      minute: args.minute,
+    });
   }
 
   /**

@@ -1,3 +1,4 @@
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
@@ -16,6 +17,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
     const module = await Test.createTestingModule({
       providers: [
         SpecialtyAspectsProgressiveService,
+        ProgressiveAspectService,
         {
           provide: ProgressiveUtilitiesService,
           useValue: createMock<ProgressiveUtilitiesService>(),
@@ -32,6 +34,7 @@ describe(SpecialtyAspectsProgressiveService, () => {
   };
 
   const mockService = new SpecialtyAspectsProgressiveService(
+    new ProgressiveAspectService(),
     progressiveUtilitiesService as never,
   );
   const specialtyAspectsProgressiveService = mockService as unknown as {

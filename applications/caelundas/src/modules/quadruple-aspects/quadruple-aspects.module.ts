@@ -1,3 +1,4 @@
+import { AspectsUtilitiesModule } from "@caelundas/src/modules/aspects/aspects.utilities.module";
 import { Module } from "@nestjs/common";
 
 import { QuadrupleAspectsBaseService } from "./quadruple-aspects-base.service";
@@ -12,7 +13,7 @@ import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 @Module({
   controllers: [],
   exports: [QuadrupleAspectsService],
-  imports: [],
+  imports: [AspectsUtilitiesModule],
   providers: [
     QuadrupleAspectsBaseService,
     QuadrupleAspectsComposerService,

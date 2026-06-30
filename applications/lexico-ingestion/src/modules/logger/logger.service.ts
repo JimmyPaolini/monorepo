@@ -1,3 +1,6 @@
+import { existsSync, mkdirSync } from "node:fs";
+import path from "node:path";
+
 import { ConsoleLogger, Injectable, Scope } from "@nestjs/common";
 import pino from "pino";
 
@@ -39,6 +42,33 @@ export class LoggerService extends ConsoleLogger {
   // 🔏 Private Methods
 
   // 🌎 Public Methods
+
+  /** Normalizes unknown errors into a stable message and timestamped log line. */
+  buildErrorLogEntry(
+    context: string,
+    error: unknown,
+  ): { errorMessage: string; logLine: string } {
+    const errorMessage =
+      error instanceof Error ? error.stack || error.message : String(error);
+
+    return {
+      errorMessage,
+      logLine: `[${new Date().toISOString()}] ${context}: ${errorMessage}\n`,
+    };
+  }
+
+  /** Builds a timestamped output log file path and ensures the output directory exists. */
+  createTimestampedOutputLogFilePath(filePrefix: string): string {
+    const outputDirectory = path.join(process.cwd(), "output");
+    if (!existsSync(outputDirectory)) {
+      mkdirSync(outputDirectory, { recursive: true });
+    }
+
+    return path.join(
+      outputDirectory,
+      `${filePrefix}-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+  }
 
   /** Logs a debug message at the `debug` level. */
   override debug(message: unknown, context?: string): void {

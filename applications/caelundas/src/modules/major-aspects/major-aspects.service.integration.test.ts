@@ -1,8 +1,10 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -99,9 +101,11 @@ describe("major-aspects.events integration", () => {
         MajorAspectsService,
         MajorAspectEventService,
         MajorAspectProgressiveService,
+        AspectEphemerisService,
         AspectsUtilities,
         EphemerisService,
         MathService,
+        ProgressiveAspectService,
         ProgressiveUtilitiesService,
       ],
     }).compile();
@@ -110,71 +114,87 @@ describe("major-aspects.events integration", () => {
 
   const minute = moment.utc("2024-03-21T12:00:00.000Z");
 
-  it("detects a perfective trine between non-Sun bodies (Mercury trine Venus)", () => {
-    expect.hasAssertions(); // Sun is placed at 200° (constant) so no Sun-centric pairs produce major aspects.
+  it.each([
+    {
+      caseName: "perfective trine between non-Sun bodies",
+      expectedMatches: [
+        {
+          bodyOne: "Mercury",
+          bodyTwo: "Venus",
+          expectedPhase: "Perfective",
+          verb: "trine",
+        },
+      ],
+      minimumEventCount: 1,
+      overrides: {
+        mercury: { current: 0, next: 0, previous: 0 },
+        sun: { current: 200, next: 200, previous: 200 },
+        venus: { current: 120, next: 119, previous: 121 },
+      },
+      shouldAssertExactLength: true,
+    },
+    {
+      caseName: "forming conjunction and dissolving square in one detect call",
+      expectedMatches: [
+        {
+          bodyOne: "Sun",
+          bodyTwo: "Moon",
+          expectedPhase: "Forming",
+          verb: "conjunct",
+        },
+        {
+          bodyOne: "Sun",
+          bodyTwo: "Mercury",
+          expectedPhase: "Dissolving",
+          verb: "square",
+        },
+      ],
+      minimumEventCount: 2,
+      overrides: {
+        mercury: { current: 94, next: 97, previous: 93 },
+        moon: { current: 352, next: 354, previous: 350 },
+        sun: { current: 0, next: 0, previous: 0 },
+      },
+      shouldAssertExactLength: false,
+    },
+  ])(
+    "detects $caseName",
+    ({
+      expectedMatches,
+      minimumEventCount,
+      overrides,
+      shouldAssertExactLength,
+    }) => {
+      expect.hasAssertions();
 
-    // Mercury stays at 0° constant; Venus passes through exactly 120° (trine, 6° orb).
-    // prevDiff = getAngle(0,121) - 120 = +1, currDiff = getAngle(0,120) - 120 = 0,
-    // nextDiff = getAngle(0,119) - 120 = -1 → isCrossing (sign change) → "perfective".
-    // Verifies the service scans all combinatorial pairs, not just Sun-centric ones.
-    const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      mercury: { current: 0, next: 0, previous: 0 },
-      sun: { current: 200, next: 200, previous: 200 },
-      venus: { current: 120, next: 119, previous: 121 },
-    });
+      const coordinateEphemerisByBody = createAspectEphemeris(
+        minute,
+        overrides,
+      );
+      const events = service.detect({ coordinateEphemerisByBody, minute });
 
-    const events = service.detect({ coordinateEphemerisByBody, minute });
+      expect(events.length).toBeGreaterThanOrEqual(minimumEventCount);
 
-    const mercuryVenusTrine = events.find(
-      (e) =>
-        e.description.includes("trine") &&
-        e.description.includes("Mercury") &&
-        e.description.includes("Venus"),
-    );
+      for (const expectedMatch of expectedMatches) {
+        const detectedEvent = events.find(
+          (event) =>
+            event.description.includes(expectedMatch.verb) &&
+            event.description.includes(expectedMatch.bodyOne) &&
+            event.description.includes(expectedMatch.bodyTwo),
+        );
 
-    expect(mercuryVenusTrine).toBeDefined();
-    expect(mercuryVenusTrine?.categories).toContain("Perfective");
-    expect(mercuryVenusTrine?.start).toStrictEqual(minute);
-    expect(events).toHaveLength(1);
-  });
+        expect(detectedEvent).toBeDefined();
+        expect(detectedEvent?.categories).toContain(
+          expectedMatch.expectedPhase,
+        );
+        expect(detectedEvent?.start).toStrictEqual(minute);
+      }
 
-  it("detects multiple simultaneous aspect events in a single detect() call", () => {
-    expect.hasAssertions(); // Sun at 0°; Moon approaches from 350°→352°→354° (forming conjunction with Sun):
+      const expectedLength = shouldAssertExactLength ? 1 : events.length;
 
-    //   prev: getAngle(0,350)=10° (outside 8° orb), curr: getAngle(0,352)=8° (enters orb, ≤8°)
-    // Mercury moves from 93°→94°→97° (dissolving square with Sun):
-    //   curr: getAngle(0,94)=94°, |94-90|=4≤6 (in orb), next: getAngle(0,97)=97°, |97-90|=7>6 (exits)
-    // Verifies that detect() accumulates events from independent aspect pairs.
-    const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      mercury: { current: 94, next: 97, previous: 93 },
-      moon: { current: 352, next: 354, previous: 350 },
-      sun: { current: 0, next: 0, previous: 0 },
-    });
-
-    const events = service.detect({ coordinateEphemerisByBody, minute });
-
-    expect(events.length).toBeGreaterThanOrEqual(2);
-
-    const formingConjunction = events.find(
-      (e) =>
-        e.description.includes("conjunct") &&
-        e.description.includes("Sun") &&
-        e.description.includes("Moon"),
-    );
-
-    expect(formingConjunction).toBeDefined();
-    expect(formingConjunction?.categories).toContain("Forming");
-
-    const dissolvingSquare = events.find(
-      (e) =>
-        e.description.includes("square") &&
-        e.description.includes("Sun") &&
-        e.description.includes("Mercury"),
-    );
-
-    expect(dissolvingSquare).toBeDefined();
-    expect(dissolvingSquare?.categories).toContain("Dissolving");
-  });
+      expect(events).toHaveLength(expectedLength);
+    },
+  );
 
   it("returns no events when all body longitudes are constant at 100°", () => {
     expect.hasAssertions(); // Flat ephemeris: getAngle(100,100)=0° for all pairs, constant across timestamps.

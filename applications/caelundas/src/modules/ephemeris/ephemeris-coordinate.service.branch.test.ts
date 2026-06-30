@@ -1,3 +1,4 @@
+import { createMock } from "@golevelup/ts-vitest";
 import moment from "moment-timezone";
 import { calc, type nod_aps_ut } from "sweph";
 import { describe, expect, it, vi } from "vitest";
@@ -73,11 +74,10 @@ describe("ephemerisCoordinateService branch coverage", () => {
       return values;
     }),
   };
-  const mathService = {
-    normalizeDegrees: vi.fn<MathService["normalizeDegrees"]>(
-      (degree: number) => degree,
-    ),
-  };
+  const mathService = createMock<MathService>();
+  vi.mocked(mathService.normalizeDegrees).mockImplementation(
+    (degree: number) => degree,
+  );
 
   const service = new EphemerisCoordinateService(
     constantsService as never,

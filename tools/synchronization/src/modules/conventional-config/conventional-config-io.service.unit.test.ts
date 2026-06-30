@@ -16,22 +16,24 @@ const requiredModules = new Map<string, unknown>();
 
 vi.mock("node:fs", () => {
   return {
-    readFileSync: vi.fn((filePath: string): string => {
+    readFileSync: vi.fn<(filePath: string) => string>((filePath: string) => {
       const value = fileContents.get(filePath);
       if (value === undefined) {
         throw new Error(`File not found: ${filePath}`);
       }
       return value;
     }),
-    writeFileSync: vi.fn((filePath: string, content: string): void => {
-      fileContents.set(filePath, content);
-    }),
+    writeFileSync: vi.fn<(filePath: string, content: string) => void>(
+      (filePath: string, content: string) => {
+        fileContents.set(filePath, content);
+      },
+    ),
   };
 });
 
 vi.mock("node:module", () => {
   return {
-    createRequire: vi.fn(() => {
+    createRequire: vi.fn<() => (modulePath: string) => unknown>(() => {
       return (modulePath: string): unknown => {
         const value = requiredModules.get(modulePath);
         if (value === undefined) {

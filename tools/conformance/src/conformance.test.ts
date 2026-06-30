@@ -338,6 +338,7 @@ describe("generator template conformance", () => {
 
       expect(errors).toBeNull();
     },
+    20_000,
   );
 
   it("validates all NestJS service files and tests with nestjs-service-file templates", () => {

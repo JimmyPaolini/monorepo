@@ -1,7 +1,9 @@
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-import { getProjects } from "@nx/devkit";
+import { getProjects, workspaceRoot } from "@nx/devkit";
+import _ from "lodash";
 import mustache from "mustache";
 import prompts from "prompts";
 
@@ -10,12 +12,51 @@ import {
   converterByStringCase,
   DESTINATION_ROOTS,
   humanReadableStringCase,
+  MODULES_DIRECTORY,
 } from "./constants";
+import { StringCase } from "./types";
 
 import type { DestinationRoot } from "./constants";
 import type { StringCaseValue } from "./types";
-import type { Tree } from "@nx/devkit";
+import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
+
+/**
+ * Builds standard generator substitutions from a kebab-case name.
+ */
+export function buildKebabCaseNameSubstitutions(
+  nameKebabCase: string,
+): Record<string, string> {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
+
+/**
+ * Builds a callback that formats all files generated in a target directory.
+ */
+export function createFormatFilesCallback(args: {
+  targetPath: string;
+  tree: Tree;
+}): GeneratorCallback {
+  const { targetPath, tree } = args;
+  const generatedFiles = tree
+    .children(targetPath)
+    .map((filename) => path.join(targetPath, filename));
+
+  return () => {
+    if (generatedFiles.length === 0) {
+      return;
+    }
+
+    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
+      cwd: workspaceRoot,
+      stdio: "inherit",
+    });
+  };
+}
 
 /**
  * Renders Mustache templates from a directory into the Nx tree.
@@ -50,6 +91,33 @@ export function generateFiles(args: {
     const templatePath = path.join(templateDirectoryPath, node.name);
     processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
+}
+
+/**
+ * Generates a NestJS module from templates and schedules formatting.
+ */
+export async function generateNestjsModuleFromTemplates(args: {
+  name: string;
+  project?: string;
+  templateDirectoryPath: string;
+  tree: Tree;
+}): Promise<GeneratorCallback> {
+  const { name, project, templateDirectoryPath, tree } = args;
+  const { substitutions, targetPath } =
+    await resolveNestjsModuleGenerationContext({
+      name,
+      ...(project !== undefined && { project }),
+      tree,
+    });
+
+  generateFiles({
+    instanceDirectoryPath: targetPath,
+    substitutions,
+    templateDirectoryPath,
+    tree,
+  });
+
+  return createFormatFilesCallback({ targetPath, tree });
 }
 
 /**
@@ -124,6 +192,46 @@ export async function resolveName(args: {
 }
 
 /**
+ * Resolves common generation context for NestJS module generators.
+ */
+export async function resolveNestjsModuleGenerationContext(args: {
+  name: string;
+  project?: string;
+  tree: Tree;
+}): Promise<{
+  nameKebabCase: string;
+  projectName: string;
+  substitutions: Record<string, string>;
+  targetPath: string;
+}> {
+  const { name, project, tree } = args;
+  const projectName = await resolveProject({
+    tag: "framework:nestjs",
+    tree,
+    ...(project !== undefined && { project }),
+    message: "Which project should the module be generated in?",
+  });
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
+    name,
+    subject: "Module name",
+  });
+  const modulesDirectory = resolveProjectDirectoryPath({
+    directoryPath: MODULES_DIRECTORY,
+    projectName,
+    tree,
+  });
+
+  return {
+    nameKebabCase,
+    projectName,
+    substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+    targetPath: path.join(modulesDirectory, nameKebabCase),
+  };
+}
+
+/**
  * Resolves the target project name for a generator.
  *
  * If `project` is already provided it is validated against the set of projects
@@ -155,6 +263,36 @@ export async function resolveProject(args: {
   }
 
   return projectName;
+}
+
+/**
+ * Resolves and validates a project directory relative to its configured root.
+ */
+export function resolveProjectDirectoryPath(args: {
+  directoryPath: string;
+  projectName: string;
+  tree: Tree;
+}): string {
+  const { directoryPath, projectName, tree } = args;
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+
+  if (!projectRoot) {
+    throw new Error(
+      `Project "${projectName}" has no root directory configured`,
+    );
+  }
+
+  const resolvedDirectoryPath = path.join(projectRoot, directoryPath);
+
+  if (!tree.exists(resolvedDirectoryPath)) {
+    throw new Error(
+      `Directory "${resolvedDirectoryPath}" does not exist in project "${projectName}"`,
+    );
+  }
+
+  return resolvedDirectoryPath;
 }
 
 /**

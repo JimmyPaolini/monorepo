@@ -1,3 +1,6 @@
+import { AspectPhaseEmojiService } from "@caelundas/src/modules/aspects/aspect-phase-emoji.service";
+import { CompoundPhaseService } from "@caelundas/src/modules/aspects/compound-phase.service";
+import { ProgressiveCompoundEventService } from "@caelundas/src/modules/aspects/progressive-compound-event.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { SextupleAspectsComposerService } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects-composer.service";
 import { Test } from "@nestjs/testing";
@@ -13,15 +16,20 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 describe(SextupleAspectsService, () => {
   let service: SextupleAspectsService;
   let composerService: SextupleAspectsComposerService;
+  let compoundPhaseService: CompoundPhaseService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         SextupleAspectsService,
         SextupleAspectsComposerService,
+        CompoundPhaseService,
+        AspectPhaseEmojiService,
+        ProgressiveCompoundEventService,
         MathService,
       ],
     }).compile();
+    compoundPhaseService = await module.resolve(CompoundPhaseService);
     composerService = await module.resolve(SextupleAspectsComposerService);
     service = await module.resolve(SextupleAspectsService);
   });
@@ -927,15 +935,7 @@ describe(SextupleAspectsService, () => {
             "saturn",
           ]);
         const phaseSpy = vi
-          .spyOn(
-            service as unknown as {
-              determineCompoundPhaseFromSnapshots: (args: unknown) => null | {
-                eventMinute: Moment;
-                phase: "dissolving" | "forming" | "perfective";
-              };
-            },
-            "determineCompoundPhaseFromSnapshots",
-          )
+          .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
           .mockReturnValue({
             eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
             phase: "forming",
@@ -990,15 +990,7 @@ describe(SextupleAspectsService, () => {
             "saturn",
           ]);
         const phaseSpy = vi
-          .spyOn(
-            service as unknown as {
-              determineCompoundPhaseFromSnapshots: (args: unknown) => null | {
-                eventMinute: Moment;
-                phase: "dissolving" | "forming" | "perfective";
-              };
-            },
-            "determineCompoundPhaseFromSnapshots",
-          )
+          .spyOn(compoundPhaseService, "determineCompoundPhaseFromSnapshots")
           .mockReturnValue({
             eventMinute: moment.utc("2024-03-21T12:00:00.000Z"),
             phase: "forming",

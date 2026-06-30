@@ -90,15 +90,14 @@ export class LiteratureTextIngestionService {
         title: textEntry.title,
       });
     } catch (error: unknown) {
-      const errorMessage =
-        error instanceof Error ? error.stack || error.message : String(error);
+      const { logLine } = this.logger.buildErrorLogEntry(
+        textEntry.fullPath,
+        error,
+      );
       this.logger.error(
         `❌ Failed to process ${hierarchy}${textEntry.title} (from ${textEntry.provider}): ${String(error)}`,
       );
-      await fs.appendFile(
-        logFilePath,
-        `[${new Date().toISOString()}] ${textEntry.fullPath}: ${errorMessage}\n`,
-      );
+      await fs.appendFile(logFilePath, logLine);
     }
 
     const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
