@@ -8,16 +8,24 @@ import mustache from "mustache";
 import { flushChanges, FsTree } from "nx/src/generators/tree";
 import prompts from "prompts";
 
-import {
-  converterByStringCase,
-  humanReadableStringCase,
-  MODULES_DIRECTORY,
-} from "./constants";
-import { StringCase } from "./types";
+import { converterByStringCase, humanReadableStringCase } from "./constants";
 
 import type { StringCaseValue } from "./types";
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
+
+/**
+ * Builds standard generator substitutions from a kebab-case name.
+ */
+export function buildKebabCaseNameSubstitutions(
+  nameKebabCase: string,
+): Record<string, string> {
+  return {
+    nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+  };
+}
 
 /**
  * Writes queued tree changes to disk and executes an optional post-run callback.
@@ -34,26 +42,6 @@ export async function commitWorkspaceTree(args: {
   }
 
   await Promise.resolve(callback());
-}
-
-/**
- * Creates a file-system-backed Nx tree rooted at the current workspace.
- */
-export function createWorkspaceTree(): Tree {
-  return new FsTree(workspaceRoot, false);
-}
-
-/**
- * Builds standard generator substitutions from a kebab-case name.
- */
-export function buildKebabCaseNameSubstitutions(
-  nameKebabCase: string,
-): Record<string, string> {
-  return {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
 }
 
 /**
@@ -78,6 +66,13 @@ export function createFormatFilesCallback(args: {
       stdio: "inherit",
     });
   };
+}
+
+/**
+ * Creates a file-system-backed Nx tree rooted at the current workspace.
+ */
+export function createWorkspaceTree(): Tree {
+  return new FsTree(workspaceRoot, false);
 }
 
 /**
@@ -115,33 +110,6 @@ export function generateFiles(args: {
     const templatePath = path.join(templateDirectoryPath, node.name);
     processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
-}
-
-/**
- * Generates a NestJS module from templates and schedules formatting.
- */
-export async function generateNestjsModuleFromTemplates(args: {
-  name: string;
-  project?: string;
-  templateDirectoryPath: string;
-  tree: Tree;
-}): Promise<GeneratorCallback> {
-  const { name, project, templateDirectoryPath, tree } = args;
-  const { substitutions, targetPath } =
-    await resolveNestjsModuleGenerationContext({
-      name,
-      ...(project !== undefined && { project }),
-      tree,
-    });
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath,
-    tree,
-  });
-
-  return createFormatFilesCallback({ targetPath, tree });
 }
 
 /**
@@ -188,46 +156,6 @@ export async function resolveName(args: {
   }
 
   return name;
-}
-
-/**
- * Resolves common generation context for NestJS module generators.
- */
-export async function resolveNestjsModuleGenerationContext(args: {
-  name: string;
-  project?: string;
-  tree: Tree;
-}): Promise<{
-  nameKebabCase: string;
-  projectName: string;
-  substitutions: Record<string, string>;
-  targetPath: string;
-}> {
-  const { name, project, tree } = args;
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
-    tree,
-    ...(project !== undefined && { project }),
-    message: "Which project should the module be generated in?",
-  });
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: "What is the name of the module? (kebab-case)",
-    name,
-    subject: "Module name",
-  });
-  const modulesDirectory = resolveProjectDirectoryPath({
-    directoryPath: MODULES_DIRECTORY,
-    projectName,
-    tree,
-  });
-
-  return {
-    nameKebabCase,
-    projectName,
-    substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-    targetPath: path.join(modulesDirectory, nameKebabCase),
-  };
 }
 
 /**

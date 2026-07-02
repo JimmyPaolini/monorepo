@@ -7,10 +7,10 @@ import prompts from "prompts";
 import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import {
-  commitWorkspaceTree,
-  createWorkspaceTree,
   buildKebabCaseNameSubstitutions,
+  commitWorkspaceTree,
   createFormatFilesCallback,
+  createWorkspaceTree,
   generateFiles,
   resolveName,
   resolveProject,
