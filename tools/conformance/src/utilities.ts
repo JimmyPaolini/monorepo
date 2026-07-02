@@ -5,21 +5,22 @@ import path from "node:path";
 import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 import mustache from "mustache";
+import { flushChanges, FsTree } from "nx/src/generators/tree";
 import prompts from "prompts";
 
-import {
-  APPLICATIONS_DIRECTORY,
-  converterByStringCase,
-  DESTINATION_ROOTS,
-  humanReadableStringCase,
-  MODULES_DIRECTORY,
-} from "./constants";
-import { StringCase } from "./types";
+import { converterByStringCase, humanReadableStringCase } from "./constants";
 
-import type { DestinationRoot } from "./constants";
 import type { StringCaseValue } from "./types";
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
+
+/**
+ * Normalized invocation arguments shared by generator factories and command runners.
+ */
+export interface GeneratorInvocationArguments<TOptions extends object> {
+  options: Partial<TOptions>;
+  tree: Tree;
+}
 
 /**
  * Builds standard generator substitutions from a kebab-case name.
@@ -32,6 +33,23 @@ export function buildKebabCaseNameSubstitutions(
     nameKebabCase,
     namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
   };
+}
+
+/**
+ * Writes queued tree changes to disk and executes an optional post-run callback.
+ */
+export async function commitWorkspaceTree(args: {
+  callback?: GeneratorCallback;
+  tree: Tree;
+}): Promise<void> {
+  const { callback, tree } = args;
+  flushChanges(workspaceRoot, tree.listChanges());
+
+  if (!callback) {
+    return;
+  }
+
+  await Promise.resolve(callback());
 }
 
 /**
@@ -59,6 +77,13 @@ export function createFormatFilesCallback(args: {
 }
 
 /**
+ * Creates a file-system-backed Nx tree rooted at the current workspace.
+ */
+export function createWorkspaceTree(): Tree {
+  return new FsTree(workspaceRoot, false);
+}
+
+/**
  * Renders Mustache templates from a directory into the Nx tree.
  *
  * Template filenames may include `__fieldName__` placeholders which are
@@ -77,11 +102,13 @@ export function generateFiles(args: {
     tree,
   } = args;
 
-  const resolveTemplateName = (name: string): string =>
-    name.replaceAll(
+  const resolveTemplateName = (name: string): string => {
+    const resolved = name.replaceAll(
       /__(\w+)__/g,
       (token: string, field: string) => substitutions[field] ?? token,
     );
+    return resolved;
+  };
 
   const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
 
@@ -91,33 +118,6 @@ export function generateFiles(args: {
     const templatePath = path.join(templateDirectoryPath, node.name);
     processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
-}
-
-/**
- * Generates a NestJS module from templates and schedules formatting.
- */
-export async function generateNestjsModuleFromTemplates(args: {
-  name: string;
-  project?: string;
-  templateDirectoryPath: string;
-  tree: Tree;
-}): Promise<GeneratorCallback> {
-  const { name, project, templateDirectoryPath, tree } = args;
-  const { substitutions, targetPath } =
-    await resolveNestjsModuleGenerationContext({
-      name,
-      ...(project !== undefined && { project }),
-      tree,
-    });
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath,
-    tree,
-  });
-
-  return createFormatFilesCallback({ targetPath, tree });
 }
 
 /**
@@ -138,28 +138,42 @@ export function getProjectsWithTag(args: {
 }
 
 /**
- * Resolves the destination root directory for a generated command application.
- *
- * If `destinationRoot` is already provided it is validated against the
- * allowed values. If it is omitted the user is prompted to pick one
- * interactively. Throws when an unrecognized value is supplied.
+ * Returns whether a value is a generator invocation arguments object.
  */
-export async function resolveDestinationRoot(args: {
-  destinationRoot?: string;
-  message: string;
-}): Promise<DestinationRoot> {
-  const { message } = args;
-
-  const destinationRoot =
-    args.destinationRoot ?? (await promptDestinationRootSelection({ message }));
-
-  if (!isDestinationRoot(destinationRoot)) {
-    throw new Error(
-      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
-    );
+export function isGeneratorInvocationArguments<TOptions extends object>(
+  value: unknown,
+): value is GeneratorInvocationArguments<TOptions> {
+  if (typeof value !== "object" || value === null) {
+    return false;
   }
 
-  return destinationRoot;
+  return "options" in value && "tree" in value;
+}
+
+/**
+ * Normalizes invocation arguments from command-runner style calls.
+ */
+export function normalizeGeneratorInvocationFromArguments<
+  TOptions extends object,
+>(
+  args: GeneratorInvocationArguments<TOptions>,
+): GeneratorInvocationArguments<TOptions> {
+  return args;
+}
+
+/**
+ * Normalizes invocation arguments from Nx factory style calls.
+ */
+export function normalizeGeneratorInvocationFromTree<
+  TOptions extends object,
+>(args: {
+  options?: Partial<TOptions>;
+  tree: Tree;
+}): GeneratorInvocationArguments<TOptions> {
+  return {
+    options: args.options ?? {},
+    tree: args.tree,
+  };
 }
 
 /**
@@ -189,46 +203,6 @@ export async function resolveName(args: {
   }
 
   return name;
-}
-
-/**
- * Resolves common generation context for NestJS module generators.
- */
-export async function resolveNestjsModuleGenerationContext(args: {
-  name: string;
-  project?: string;
-  tree: Tree;
-}): Promise<{
-  nameKebabCase: string;
-  projectName: string;
-  substitutions: Record<string, string>;
-  targetPath: string;
-}> {
-  const { name, project, tree } = args;
-  const projectName = await resolveProject({
-    tag: "framework:nestjs",
-    tree,
-    ...(project !== undefined && { project }),
-    message: "Which project should the module be generated in?",
-  });
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: "What is the name of the module? (kebab-case)",
-    name,
-    subject: "Module name",
-  });
-  const modulesDirectory = resolveProjectDirectoryPath({
-    directoryPath: MODULES_DIRECTORY,
-    projectName,
-    tree,
-  });
-
-  return {
-    nameKebabCase,
-    projectName,
-    substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-    targetPath: path.join(modulesDirectory, nameKebabCase),
-  };
 }
 
 /**
@@ -266,6 +240,20 @@ export async function resolveProject(args: {
 }
 
 /**
+ * Resolves and validates the components directory for a project.
+ */
+export function resolveProjectComponentsDirectoryPath(args: {
+  projectName: string;
+  tree: Tree;
+}): string {
+  return resolveProjectDirectoryPath({
+    directoryPath: "src/components",
+    projectName: args.projectName,
+    tree: args.tree,
+  });
+}
+
+/**
  * Resolves and validates a project directory relative to its configured root.
  */
 export function resolveProjectDirectoryPath(args: {
@@ -296,10 +284,17 @@ export function resolveProjectDirectoryPath(args: {
 }
 
 /**
- * Returns whether the given string is a valid DestinationRoot value.
+ * Resolves and validates the modules directory for a project.
  */
-function isDestinationRoot(value: string): value is DestinationRoot {
-  return (DESTINATION_ROOTS as readonly string[]).includes(value);
+export function resolveProjectModulesDirectoryPath(args: {
+  projectName: string;
+  tree: Tree;
+}): string {
+  return resolveProjectDirectoryPath({
+    directoryPath: "src/modules",
+    projectName: args.projectName,
+    tree: args.tree,
+  });
 }
 
 /**
@@ -325,31 +320,6 @@ function processFileNode(args: {
     const instance = mustache.render(template, substitutions);
     tree.write(instancePath, instance);
   }
-}
-
-/**
- * Prompts the user to select a destination root from the allowed values.
- * Throws if the user cancels without selecting.
- */
-async function promptDestinationRootSelection(args: {
-  message: string;
-}): Promise<DestinationRoot> {
-  const { message } = args;
-  const request: PromptObject<"destinationRoot"> = {
-    choices: DESTINATION_ROOTS.map(
-      (value): Choice => ({ title: value, value }),
-    ),
-    initial: DESTINATION_ROOTS.indexOf(APPLICATIONS_DIRECTORY),
-    message,
-    name: "destinationRoot",
-    type: "select",
-  };
-  const response: { destinationRoot: DestinationRoot | undefined } =
-    await prompts(request);
-  if (!response.destinationRoot) {
-    throw new Error("No destination root selected");
-  }
-  return response.destinationRoot;
 }
 
 /**

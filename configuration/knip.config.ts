@@ -192,8 +192,9 @@ const config: KnipConfig = {
 
     // conformance: Nx generator plugin for scaffolding React components
     "tools/conformance": {
-      entry: "src/generators/*/generator.ts", // Each generator's entry point
+      entry: "src/modules/*/*.command.ts", // Each command module entry point
       ignore: [
+        "src/modules/app.module.ts", // Transient empty file artifact in current conformance refactor branch
         "src/**/templates/**", // Template files (EJS syntax, not valid TS)
         "src/**/*.test.ts",
       ],
@@ -201,6 +202,9 @@ const config: KnipConfig = {
         "@nestjs/common", // Peer dependency — consumed by generated NestJS modules, not the generator itself
         "@nestjs/config", // Peer dependency — consumed by generated NestJS modules, not the generator itself
         "react", // Peer dependency — consumed by generated components, not the generator itself
+      ],
+      ignoreBinaries: [
+        "python3", // Used by ValidatorPythonBridgeService to execute python validator bridge
       ],
       project: "src/**/*.ts",
     },

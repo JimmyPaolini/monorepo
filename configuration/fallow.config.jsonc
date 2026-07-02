@@ -44,6 +44,7 @@
     "release.config.cjs",
     "scripts/**/*.{js,mjs,ts,sh}",
     "tools/conformance/src/generators/**/templates/**",
+    "tools/conformance/src/repl.ts",
     "validate-branch-name.config.cjs",
   ],
   "health": {

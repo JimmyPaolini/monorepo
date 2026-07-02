@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { z } from "zod";
 
 import { StringCase, type StringCaseValue } from "./types";
 
@@ -14,10 +15,7 @@ export const DESTINATION_ROOTS = [
   TOOLS_DIRECTORY,
 ] as const;
 
-/** Union type of valid destination root directory names. */
-export type DestinationRoot = (typeof DESTINATION_ROOTS)[number];
-
-const TEMPLATE_PATTERN = "tools/conformance/src/generators/**/templates/**";
+const TEMPLATE_PATTERN = "tools/conformance/src/modules/**/templates/**";
 const CONFORMANCE_INSTANCE_DIRECTORIES = DESTINATION_ROOTS;
 const MODULES_INSTANCE_PATTERNS = CONFORMANCE_INSTANCE_DIRECTORIES.map(
   (directoryName) => `${directoryName}/**/${MODULES_DIRECTORY}/**`,
@@ -50,3 +48,6 @@ export const converterByStringCase: Record<
   [StringCase.PASCAL_CASE]: (v) => _.upperFirst(_.camelCase(v)),
   [StringCase.SNAKE_CASE]: (v) => _.snakeCase(v),
 };
+
+// 🌱 Add environment schema fields here
+export const environmentSchema = z.object({});

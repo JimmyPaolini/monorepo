@@ -89,5 +89,8 @@ jobs:
       - name: 🧩 Validate Conformance Generators
         run: npx nx run synchronization:conformance-generators:check
 
+      - name: ✅ Validate Conformance of Generated Code
+        run: npx nx run conformance:validate
+
       - name: 📊 Validate Code Statistics
         run: npx nx run monorepo:measure-code:check
