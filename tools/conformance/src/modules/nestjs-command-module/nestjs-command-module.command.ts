@@ -2,18 +2,21 @@ import { execSync } from "node:child_process";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { getProjects, workspaceRoot } from "@nx/devkit";
+import { workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 import { Command, CommandRunner, Option } from "nest-commander";
 
-import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import {
   commitWorkspaceTree,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
   resolveProject,
+  resolveProjectModulesDirectoryPath,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
@@ -99,14 +102,30 @@ export class NestjsCommandModuleCommand extends CommandRunner {
  * Migrated core generator logic for creating a NestJS command module.
  */
 export async function generateNestjsCommandModule(
-  args: NestjsCommandModuleArguments,
+  argumentsOrTree: NestjsCommandModuleArguments,
+): Promise<GeneratorCallback>;
+export async function generateNestjsCommandModule(
+  argumentsOrTree: NestjsCommandModuleArguments | Tree,
+  options?: NestjsCommandModuleOptions,
 ): Promise<GeneratorCallback> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<NestjsCommandModuleOptions>(argumentsOrTree)
+      ? normalizeGeneratorInvocationFromArguments<NestjsCommandModuleOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<NestjsCommandModuleOptions>({
+          ...(options !== undefined && { options }),
+          tree: argumentsOrTree,
+        });
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const { nameKebabCase, projectName } = await resolveProjectAndName(
     tree,
-    options,
+    resolvedOptions,
   );
-  const modulesDirectory = resolveValidatedModulesDirectory(tree, projectName);
+  const modulesDirectory = resolveProjectModulesDirectoryPath({
+    projectName,
+    tree,
+  });
   const targetPath = path.join(modulesDirectory, nameKebabCase);
   const substitutions = {
     nameCamelCase: _.camelCase(nameKebabCase),
@@ -153,37 +172,9 @@ async function resolveProjectAndName(
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: NESTJS_COMMAND_MODULE_NAME_PROMPT,
-    name: options.name,
+    ...(options.name !== undefined && { name: options.name }),
     subject: "Module name",
   });
 
   return { nameKebabCase, projectName };
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-function resolveValidatedModulesDirectory(
-  tree: Tree,
-  projectName: string,
-): string {
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const modulesDirectory = path.join(projectRoot, MODULES_DIRECTORY);
-
-  if (!tree.exists(modulesDirectory)) {
-    throw new Error(
-      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  return modulesDirectory;
 }

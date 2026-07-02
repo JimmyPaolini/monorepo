@@ -1,7 +1,7 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { formatFiles, getProjects } from "@nx/devkit";
+import { formatFiles } from "@nx/devkit";
 import _ from "lodash";
 import { Command, CommandRunner, Option } from "nest-commander";
 
@@ -10,8 +10,12 @@ import {
   commitWorkspaceTree,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
   resolveProject,
+  resolveProjectComponentsDirectoryPath,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
@@ -96,24 +100,42 @@ export class ReactComponentCommand extends CommandRunner {
  * Migrated core generator logic for creating a React component.
  */
 export async function generateReactComponent(
-  args: ReactComponentArguments,
+  argumentsOrTree: ReactComponentArguments,
+): Promise<void>;
+export async function generateReactComponent(
+  argumentsOrTree: ReactComponentArguments | Tree,
+  options?: ReactComponentOptions,
 ): Promise<void> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<ReactComponentOptions>(argumentsOrTree)
+      ? normalizeGeneratorInvocationFromArguments<ReactComponentOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
+          ...(options !== undefined && { options }),
+          tree: argumentsOrTree,
+        });
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const projectName = await resolveProject({
     tag: REACT_COMPONENT_PROJECT_TAG,
     tree,
-    ...(options.project !== undefined && { project: options.project }),
+    ...(resolvedOptions.project !== undefined && {
+      project: resolvedOptions.project,
+    }),
     message: REACT_COMPONENT_PROJECT_PROMPT,
   });
 
   const name = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: REACT_COMPONENT_NAME_PROMPT,
-    name: options.name,
+    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
     subject: "Component name",
   });
 
-  const componentsDirectory = resolveComponentsDirectory(tree, projectName);
+  const componentsDirectory = resolveProjectComponentsDirectoryPath({
+    projectName,
+    tree,
+  });
   const templateDirectoryPath = path.join(
     process.cwd(),
     "tools/conformance/src/modules/react-component/templates",
@@ -128,29 +150,4 @@ export async function generateReactComponent(
   });
 
   await formatFiles(tree);
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-function resolveComponentsDirectory(tree: Tree, projectName: string): string {
-  const allProjects = getProjects(tree);
-  const projectConfig = allProjects.get(projectName);
-  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
-
-  if (!projectRoot) {
-    throw new Error(
-      `Project "${projectName}" has no root directory configured`,
-    );
-  }
-
-  const componentsDirectory = path.join(projectRoot, "src", "components");
-
-  if (!tree.exists(componentsDirectory)) {
-    throw new Error(
-      `Directory "${componentsDirectory}" does not exist in project "${projectName}"`,
-    );
-  }
-
-  return componentsDirectory;
 }

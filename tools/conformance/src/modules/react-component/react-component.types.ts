@@ -14,6 +14,6 @@ export interface ReactComponentArguments {
  * Auto-generated documentation placeholder.
  */
 export interface ReactComponentOptions {
-  name: string;
+  name?: string;
   project?: string;
 }

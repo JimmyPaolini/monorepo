@@ -14,6 +14,6 @@ export interface NestjsGraphqlModuleArguments {
  * Auto-generated documentation placeholder.
  */
 export interface NestjsGraphqlModuleOptions {
-  name: string;
+  name?: string;
   project?: string;
 }

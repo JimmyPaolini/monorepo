@@ -87,7 +87,7 @@ export default [
       "project-structure": projectStructurePlugin,
     },
     rules: {
-      "project-structure/folder-structure": "warn",
+      "project-structure/folder-structure": "error",
     },
     settings: {
       "project-structure/folder-structure-config-path":

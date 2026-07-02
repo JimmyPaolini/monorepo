@@ -4,7 +4,6 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
-import { MODULES_DIRECTORY } from "../../constants";
 import { StringCase } from "../../types";
 import {
   buildKebabCaseNameSubstitutions,
@@ -12,9 +11,12 @@ import {
   createFormatFilesCallback,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
   resolveProject,
-  resolveProjectDirectoryPath,
+  resolveProjectModulesDirectoryPath,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
@@ -113,12 +115,28 @@ export class NestjsServiceFileCommand extends CommandRunner {
  * Migrated core generator logic for creating NestJS service files.
  */
 export async function generateNestjsServiceFile(
-  args: NestjsServiceFileArguments,
+  argumentsOrTree: NestjsServiceFileArguments,
+): Promise<GeneratorCallback>;
+export async function generateNestjsServiceFile(
+  argumentsOrTree: NestjsServiceFileArguments | Tree,
+  options?: NestjsServiceFileOptions,
 ): Promise<GeneratorCallback> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<NestjsServiceFileOptions>(argumentsOrTree)
+      ? normalizeGeneratorInvocationFromArguments<NestjsServiceFileOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<NestjsServiceFileOptions>({
+          ...(options !== undefined && { options }),
+          tree: argumentsOrTree,
+        });
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const { moduleName, nameKebabCase, projectName } =
-    await resolveProjectAndName(tree, options);
-  const modulesDirectory = resolveValidatedModulesDirectory(tree, projectName);
+    await resolveProjectAndName(tree, resolvedOptions);
+  const modulesDirectory = resolveProjectModulesDirectoryPath({
+    projectName,
+    tree,
+  });
   const targetPath = path.join(modulesDirectory, moduleName);
   const substitutions = buildKebabCaseNameSubstitutions(nameKebabCase);
   generateFiles({
@@ -217,29 +235,18 @@ async function resolveProjectAndName(
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: NESTJS_SERVICE_FILE_NAME_PROMPT,
-    name: options.name,
+    ...(options.name !== undefined && { name: options.name }),
     subject: "Service name",
   });
   const moduleName = await resolveModuleName({
     message: NESTJS_SERVICE_FILE_MODULE_PROMPT,
-    modulesDirectoryPath: resolveValidatedModulesDirectory(tree, projectName),
+    modulesDirectoryPath: resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    }),
     tree,
     ...(options.module !== undefined && { module: options.module }),
   });
 
   return { moduleName, nameKebabCase, projectName };
-}
-
-/**
- * Resolves and validates the modules directory for the selected project.
- */
-function resolveValidatedModulesDirectory(
-  tree: Tree,
-  projectName: string,
-): string {
-  return resolveProjectDirectoryPath({
-    directoryPath: MODULES_DIRECTORY,
-    projectName,
-    tree,
-  });
 }

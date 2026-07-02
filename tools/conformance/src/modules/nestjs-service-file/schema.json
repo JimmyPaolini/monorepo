@@ -1,16 +1,20 @@
 {
   "$schema": "http://json-schema.org/schema",
   "properties": {
-    "directory": {
-      "description": "Directory where the generator output should be created",
+    "module": {
+      "description": "Target module name in kebab-case",
       "type": "string"
     },
     "name": {
-      "description": "Name of the generated project or component",
+      "description": "Service name in kebab-case",
+      "type": "string"
+    },
+    "project": {
+      "description": "Parent project name in kebab-case",
       "type": "string"
     }
   },
-  "required": ["directory", "name"],
+  "required": [],
   "title": "Generator Schema",
   "type": "object"
 }

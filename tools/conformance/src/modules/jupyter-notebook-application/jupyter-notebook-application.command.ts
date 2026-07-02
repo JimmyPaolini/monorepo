@@ -10,6 +10,9 @@ import {
   commitWorkspaceTree,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
@@ -20,6 +23,7 @@ import type {
   JupyterNotebookApplicationArguments,
   JupyterNotebookApplicationOptions,
 } from "./jupyter-notebook-application.types";
+import type { Tree } from "@nx/devkit";
 
 /**
  * Generates a Jupyter notebook application scaffold from templates.
@@ -90,13 +94,30 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
  * Migrated core generator logic for creating a Jupyter notebook application.
  */
 export async function generateJupyterNotebookApplication(
-  args: JupyterNotebookApplicationArguments,
+  argumentsOrTree: JupyterNotebookApplicationArguments,
+): Promise<void>;
+export async function generateJupyterNotebookApplication(
+  argumentsOrTree: JupyterNotebookApplicationArguments | Tree,
+  options?: JupyterNotebookApplicationOptions,
 ): Promise<void> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<JupyterNotebookApplicationOptions>(
+      argumentsOrTree,
+    )
+      ? normalizeGeneratorInvocationFromArguments<JupyterNotebookApplicationOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<JupyterNotebookApplicationOptions>(
+          {
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          },
+        );
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const applicationName = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
+    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
     subject: "Application name",
   });
   const targetDirectory = path.join(APPLICATIONS_DIRECTORY, applicationName);
@@ -111,7 +132,7 @@ export async function generateJupyterNotebookApplication(
     instanceDirectoryPath: targetDirectory,
     substitutions: {
       description:
-        options.description ??
+        resolvedOptions.description ??
         `A Python + Jupyter notebook application scaffold for ${applicationName}`,
       name: applicationName,
     },

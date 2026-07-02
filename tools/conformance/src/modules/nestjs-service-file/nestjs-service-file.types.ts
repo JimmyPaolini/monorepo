@@ -15,6 +15,6 @@ export interface NestjsServiceFileArguments {
  */
 export interface NestjsServiceFileOptions {
   module?: string;
-  name: string;
+  name?: string;
   project?: string;
 }

@@ -15,6 +15,14 @@ import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 
 /**
+ * Normalized invocation arguments shared by generator factories and command runners.
+ */
+export interface GeneratorInvocationArguments<TOptions extends object> {
+  options: Partial<TOptions>;
+  tree: Tree;
+}
+
+/**
  * Builds standard generator substitutions from a kebab-case name.
  */
 export function buildKebabCaseNameSubstitutions(
@@ -130,6 +138,45 @@ export function getProjectsWithTag(args: {
 }
 
 /**
+ * Returns whether a value is a generator invocation arguments object.
+ */
+export function isGeneratorInvocationArguments<TOptions extends object>(
+  value: unknown,
+): value is GeneratorInvocationArguments<TOptions> {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  return "options" in value && "tree" in value;
+}
+
+/**
+ * Normalizes invocation arguments from command-runner style calls.
+ */
+export function normalizeGeneratorInvocationFromArguments<
+  TOptions extends object,
+>(
+  args: GeneratorInvocationArguments<TOptions>,
+): GeneratorInvocationArguments<TOptions> {
+  return args;
+}
+
+/**
+ * Normalizes invocation arguments from Nx factory style calls.
+ */
+export function normalizeGeneratorInvocationFromTree<
+  TOptions extends object,
+>(args: {
+  options?: Partial<TOptions>;
+  tree: Tree;
+}): GeneratorInvocationArguments<TOptions> {
+  return {
+    options: args.options ?? {},
+    tree: args.tree,
+  };
+}
+
+/**
  * Resolves the module/resource name for a generator.
  *
  * If `name` is already provided it is validated against the expected `case`.
@@ -193,6 +240,20 @@ export async function resolveProject(args: {
 }
 
 /**
+ * Resolves and validates the components directory for a project.
+ */
+export function resolveProjectComponentsDirectoryPath(args: {
+  projectName: string;
+  tree: Tree;
+}): string {
+  return resolveProjectDirectoryPath({
+    directoryPath: "src/components",
+    projectName: args.projectName,
+    tree: args.tree,
+  });
+}
+
+/**
  * Resolves and validates a project directory relative to its configured root.
  */
 export function resolveProjectDirectoryPath(args: {
@@ -220,6 +281,20 @@ export function resolveProjectDirectoryPath(args: {
   }
 
   return resolvedDirectoryPath;
+}
+
+/**
+ * Resolves and validates the modules directory for a project.
+ */
+export function resolveProjectModulesDirectoryPath(args: {
+  projectName: string;
+  tree: Tree;
+}): string {
+  return resolveProjectDirectoryPath({
+    directoryPath: "src/modules",
+    projectName: args.projectName,
+    tree: args.tree,
+  });
 }
 
 /**

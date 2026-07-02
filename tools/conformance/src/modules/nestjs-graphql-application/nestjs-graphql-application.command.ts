@@ -11,6 +11,9 @@ import {
   commitWorkspaceTree,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
@@ -21,6 +24,7 @@ import type {
   NestjsGraphqlApplicationArguments,
   NestjsGraphqlApplicationOptions,
 } from "./nestjs-graphql-application.types";
+import type { Tree } from "@nx/devkit";
 
 /**
  * Generates a NestJS GraphQL application scaffold from templates.
@@ -80,13 +84,28 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
  * Migrated core generator logic for creating a NestJS GraphQL application.
  */
 export async function generateNestjsGraphqlApplication(
-  args: NestjsGraphqlApplicationArguments,
+  argumentsOrTree: NestjsGraphqlApplicationArguments,
+): Promise<void>;
+export async function generateNestjsGraphqlApplication(
+  argumentsOrTree: NestjsGraphqlApplicationArguments | Tree,
+  options?: NestjsGraphqlApplicationOptions,
 ): Promise<void> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<NestjsGraphqlApplicationOptions>(
+      argumentsOrTree,
+    )
+      ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlApplicationOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>({
+          ...(options !== undefined && { options }),
+          tree: argumentsOrTree,
+        });
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
+    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
     subject: "Application name",
   });
   const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);

@@ -720,7 +720,6 @@
     "*.services.ts": "brainfuck",
     "*.types.ts": "typescript-def",
     "*.utilities.ts": "gemini",
-    "*.utils.ts": "gemini",
     "auth.guard.js": "authors",
     "constants.ts": "3d",
     "conventional.config.cjs": "commitlint",
@@ -741,6 +740,7 @@
     "settings.json": "settings",
     "tsconfig*.json": "tsconfig",
     "types.ts": "typescript-def",
+    "utilities.ts": "gemini",
     "validate-branch-name.config.cjs": "commitlint",
     "vitest.config.base.ts": "vitest"
   },

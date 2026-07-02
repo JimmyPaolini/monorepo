@@ -14,6 +14,6 @@ export interface NestjsServiceModuleArguments {
  * Auto-generated documentation placeholder.
  */
 export interface NestjsServiceModuleOptions {
-  name: string;
+  name?: string;
   project?: string;
 }

@@ -14,6 +14,6 @@ export interface NestjsDataloaderModuleArguments {
  * Auto-generated documentation placeholder.
  */
 export interface NestjsDataloaderModuleOptions {
-  name: string;
+  name?: string;
   project?: string;
 }

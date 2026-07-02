@@ -12,6 +12,9 @@ import {
   commitWorkspaceTree,
   createWorkspaceTree,
   generateFiles,
+  isGeneratorInvocationArguments,
+  normalizeGeneratorInvocationFromArguments,
+  normalizeGeneratorInvocationFromTree,
   resolveName,
 } from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
@@ -25,6 +28,7 @@ import type {
   NestjsCommandApplicationArguments,
   NestjsCommandApplicationOptions,
 } from "./nestjs-command-application.types";
+import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 
 /** Valid destination roots for generated command applications. */
@@ -34,20 +38,35 @@ type DestinationRoot = (typeof DESTINATION_ROOTS)[number];
  * Migrated core generator logic for creating a NestJS command application.
  */
 export async function generateNestjsCommandApplication(
-  args: NestjsCommandApplicationArguments,
+  argumentsOrTree: NestjsCommandApplicationArguments,
+): Promise<void>;
+export async function generateNestjsCommandApplication(
+  argumentsOrTree: NestjsCommandApplicationArguments | Tree,
+  options?: NestjsCommandApplicationOptions,
 ): Promise<void> {
-  const { options, tree } = args;
+  const resolvedArguments =
+    isGeneratorInvocationArguments<NestjsCommandApplicationOptions>(
+      argumentsOrTree,
+    )
+      ? normalizeGeneratorInvocationFromArguments<NestjsCommandApplicationOptions>(
+          argumentsOrTree,
+        )
+      : normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>({
+          ...(options !== undefined && { options }),
+          tree: argumentsOrTree,
+        });
+  const { options: resolvedOptions, tree } = resolvedArguments;
   const nameKebabCase = await resolveName({
     case: StringCase.KEBAB_CASE,
     message: NESTJS_COMMAND_APPLICATION_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
+    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
     subject: "Application name",
   });
 
   const destinationRoot = await resolveDestinationRoot({
     message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
-    ...(options.destinationRoot !== undefined && {
-      destinationRoot: options.destinationRoot,
+    ...(resolvedOptions.destinationRoot !== undefined && {
+      destinationRoot: resolvedOptions.destinationRoot,
     }),
   });
 
@@ -108,6 +127,25 @@ async function promptDestinationRoot(): Promise<DestinationRoot> {
   }
 
   return response.destinationRoot;
+}
+
+/**
+ * Resolves the destination root for generated command applications.
+ */
+async function resolveDestinationRoot(args: {
+  destinationRoot?: string;
+  message: string;
+}): Promise<DestinationRoot> {
+  const destinationRoot =
+    args.destinationRoot ?? (await promptDestinationRoot());
+
+  if (!isDestinationRoot(destinationRoot)) {
+    throw new Error(
+      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
+    );
+  }
+
+  return destinationRoot;
 }
 
 /**
@@ -173,23 +211,4 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
     await commitWorkspaceTree({ tree });
     this.logger.log("Generated NestJS command application scaffold.");
   }
-}
-
-/**
- * Resolves the destination root for generated command applications.
- */
-async function resolveDestinationRoot(args: {
-  destinationRoot?: string;
-  message: string;
-}): Promise<DestinationRoot> {
-  const destinationRoot =
-    args.destinationRoot ?? (await promptDestinationRoot());
-
-  if (!isDestinationRoot(destinationRoot)) {
-    throw new Error(
-      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
-    );
-  }
-
-  return destinationRoot;
 }
