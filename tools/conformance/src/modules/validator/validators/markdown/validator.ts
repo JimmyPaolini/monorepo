@@ -7,20 +7,7 @@ import {
   type TemplateConformanceArguments,
 } from "../common";
 
-import {
-  CONTAINER_TYPES,
-  getNodeChildren,
-  isCode,
-  isHeading,
-  isHtml,
-  isImage,
-  isInlineCode,
-  isLink,
-  isList,
-  isTable,
-  isText,
-  type MdastNode,
-} from "./nodes.js";
+import { CONTAINER_TYPES, getNodeChildren, type MdastNode } from "./nodes.js";
 
 import type { ConformanceError } from "../../validator.types";
 
@@ -87,39 +74,21 @@ const ERROR_MESSAGE_BUILDERS: Partial<
   blockquote: (n) => `Expected blockquote: "${toString(n)}"`,
   break: (n) => `Expected break: "${toString(n)}"`,
   code: (n) =>
-    isCode(n)
-      ? `Expected code block (${n.lang ?? "(none)"}): "${n.value ?? ""}"`
-      : `Expected code block`,
+    `Expected code block (${n.lang ?? "(none)"}): "${n.value ?? ""}"`,
   definition: (n) => `Expected definition: "${toString(n)}"`,
   delete: (n) => `Expected strikethrough text: "${toString(n)}"`,
   emphasis: (n) => `Expected italic text: "${toString(n)}"`,
   footnoteDefinition: (n) => `Expected footnoteDefinition: "${toString(n)}"`,
   footnoteReference: (n) => `Expected footnoteReference: "${toString(n)}"`,
-  heading: (n) =>
-    isHeading(n)
-      ? `Expected heading (h${n.depth}): "${toString(n)}"`
-      : `Expected heading: "${toString(n)}"`,
-  html: (n) =>
-    isHtml(n) ? `Expected HTML block: "${n.value}"` : `Expected HTML block`,
-  image: (n) =>
-    isImage(n)
-      ? `Expected image "${n.alt ?? ""}" at "${n.url}"`
-      : `Expected image`,
+  heading: (n) => `Expected heading (h${n.depth}): "${toString(n)}"`,
+  html: (n) => `Expected HTML block: "${n.value}"`,
+  image: (n) => `Expected image "${n.alt ?? ""}" at "${n.url}"`,
   imageReference: (n) => `Expected imageReference: "${toString(n)}"`,
-  inlineCode: (n) =>
-    isInlineCode(n)
-      ? `Expected inline code: \`${n.value}\``
-      : `Expected inline code`,
+  inlineCode: (n) => `Expected inline code: \`${n.value}\``,
   inlineMath: (n) => `Expected inlineMath: "${toString(n)}"`,
-  link: (n) =>
-    isLink(n)
-      ? `Expected link to "${n.url}": "${toString(n)}"`
-      : `Expected link: "${toString(n)}"`,
+  link: (n) => `Expected link to "${n.url}": "${toString(n)}"`,
   linkReference: (n) => `Expected linkReference: "${toString(n)}"`,
-  list: (n) =>
-    isList(n)
-      ? `Expected ${n.ordered ? "ordered" : "unordered"} list`
-      : `Expected list`,
+  list: (n) => `Expected ${n.ordered ? "ordered" : "unordered"} list`,
   listItem: (n) => `Expected list item: "${toString(n)}"`,
   math: (n) => `Expected math: "${toString(n)}"`,
   paragraph: (n) => `Expected paragraph: "${toString(n)}"`,
@@ -127,7 +96,7 @@ const ERROR_MESSAGE_BUILDERS: Partial<
   table: (_n) => `Expected table`,
   tableCell: (n) => `Expected table cell: "${toString(n)}"`,
   tableRow: (n) => `Expected table row: "${toString(n)}"`,
-  text: (n) => (isText(n) ? `Expected text: "${n.value}"` : `Expected text`),
+  text: (n) => `Expected text: "${n.value}"`,
   thematicBreak: (_n) => `Expected thematic break (---)`,
   yaml: (n) => `Expected yaml: "${toString(n)}"`,
 };
@@ -205,7 +174,6 @@ function definedEntries(
 
 /** Gets the column count from a table's first row, or 0 if missing. */
 function getTableColumnCount(table: MdastNode): number {
-  if (!isTable(table)) return 0;
   const firstRow = table.children?.[0];
   return firstRow?.children?.length ?? 0;
 }
@@ -217,78 +185,54 @@ function matchByText(template: MdastNode, instance: MdastNode): boolean {
 
 /** Matches a code node by language and value. */
 function matchCode(template: MdastNode, instance: MdastNode): boolean {
-  if (isCode(template) && isCode(instance)) {
-    return (
-      template.lang === instance.lang &&
-      textsMatch(template.value, instance.value)
-    );
-  }
-  return false;
+  return (
+    template.lang === instance.lang &&
+    textsMatch(template.value, instance.value)
+  );
 }
 
 /** Matches a heading node by depth and text. */
 function matchHeading(template: MdastNode, instance: MdastNode): boolean {
-  if (isHeading(template) && isHeading(instance)) {
-    return (
-      template.depth === instance.depth &&
-      textsMatch(toString(template), toString(instance))
-    );
-  }
-  return false;
+  return (
+    template.depth === instance.depth &&
+    textsMatch(toString(template), toString(instance))
+  );
 }
 
 /** Matches an html node by value. */
 function matchHtml(template: MdastNode, instance: MdastNode): boolean {
-  if (isHtml(template) && isHtml(instance)) {
-    return textsMatch(template.value, instance.value);
-  }
-  return false;
+  return textsMatch(template.value, instance.value);
 }
 
 /** Matches an image node by url and alt text. */
 function matchImage(template: MdastNode, instance: MdastNode): boolean {
-  if (isImage(template) && isImage(instance)) {
-    return (
-      textsMatch(template.url, instance.url) &&
-      (template.alt ?? "") === (instance.alt ?? "")
-    );
-  }
-  return false;
+  return (
+    textsMatch(template.url, instance.url) &&
+    (template.alt ?? "") === (instance.alt ?? "")
+  );
 }
 
 /** Matches an inlineCode node by value. */
 function matchInlineCode(template: MdastNode, instance: MdastNode): boolean {
-  if (isInlineCode(template) && isInlineCode(instance)) {
-    return textsMatch(template.value, instance.value);
-  }
-  return false;
+  return textsMatch(template.value, instance.value);
 }
 
 /** Matches a link node by url and text content. */
 function matchLink(template: MdastNode, instance: MdastNode): boolean {
-  if (isLink(template) && isLink(instance)) {
-    return (
-      textsMatch(template.url, instance.url) &&
-      textsMatch(toString(template), toString(instance))
-    );
-  }
-  return false;
+  return (
+    textsMatch(template.url, instance.url) &&
+    textsMatch(toString(template), toString(instance))
+  );
 }
 
 /** Matches a list node by ordered flag. */
 function matchList(template: MdastNode, instance: MdastNode): boolean {
-  if (isList(template) && isList(instance)) {
-    return template.ordered === instance.ordered;
-  }
-  return false;
+  return template.ordered === instance.ordered;
 }
 
 /** Matches a table node by first-row column count. */
 function matchTable(template: MdastNode, instance: MdastNode): boolean {
-  if (isTable(template) && isTable(instance)) {
-    return getTableColumnCount(template) === getTableColumnCount(instance);
-  }
-  return false;
+  return getTableColumnCount(template) === getTableColumnCount(instance);
 }
 
 /** Matches a tableRow by child count so cell-level errors surface during recursion. */
@@ -298,10 +242,7 @@ function matchTableRow(template: MdastNode, instance: MdastNode): boolean {
 
 /** Matches a text node by value. */
 function matchText(template: MdastNode, instance: MdastNode): boolean {
-  if (isText(template) && isText(instance)) {
-    return textsMatch(template.value, instance.value);
-  }
-  return false;
+  return textsMatch(template.value, instance.value);
 }
 
 /** Compares two text strings, handling undefined values. */

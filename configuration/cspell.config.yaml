@@ -136,6 +136,7 @@ words:
   - killallnode
   - killallvscodeextensions
   - killport
+  - linesecond
   - litora
   - livius
   - LVIII
@@ -152,6 +153,7 @@ words:
   - noqa
   - nums
   - oneline
+  - onechild
   - Oratore
   - oratore
   - oris

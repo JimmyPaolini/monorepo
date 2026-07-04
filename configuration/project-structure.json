@@ -385,9 +385,6 @@
         "name": "configuration"
       },
       {
-        "name": "git_status.txt"
-      },
-      {
         "children": [
           {
             "ruleId": "kebab-case-folder"

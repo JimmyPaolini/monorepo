@@ -1,6 +1,6 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -8,21 +8,63 @@ import { ValidatorService } from "./validator.service";
 
 import * as validatorExports from "./index";
 
+import type { ValidatorFilesService } from "./validator-files.service";
+import type { ValidatorRulesService } from "./validator-rules.service";
+import type { ValidatorWorkspaceService } from "./validator-workspace.service";
+
 describe(ValidatorService, () => {
-  it("is defined", async () => {
+  let service: ValidatorService;
+  const mockLoggerService = createMock<LoggerService>();
+  const mockFilesService = createMock<ValidatorFilesService>();
+  const mockRulesService = createMock<ValidatorRulesService>();
+  const mockWorkspaceService = createMock<ValidatorWorkspaceService>();
+
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         ValidatorService,
         {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: mockLoggerService,
         },
       ],
     }).compile();
 
-    const service = await module.resolve(ValidatorService);
+    service = await module.resolve(ValidatorService);
+    (
+      service as unknown as {
+        validatorFilesService: ValidatorFilesService;
+      }
+    ).validatorFilesService = mockFilesService;
+    (
+      service as unknown as {
+        validatorRulesService: ValidatorRulesService;
+      }
+    ).validatorRulesService = mockRulesService;
+    (
+      service as unknown as {
+        validatorWorkspaceService: ValidatorWorkspaceService;
+      }
+    ).validatorWorkspaceService = mockWorkspaceService;
+  });
 
+  it("is defined", () => {
     expect(service).toBeDefined();
+  });
+
+  it("creates a fallback logger when constructor receives an undefined logger", () => {
+    const fallbackService = new ValidatorService(undefined as never);
+
+    expect(fallbackService).toBeDefined();
+  });
+
+  it("uses the injected logger and sets context", () => {
+    const logger = createMock<LoggerService>();
+
+    const validatorService = new ValidatorService(logger);
+
+    expect(validatorService).toBeDefined();
+    expect(logger.setContext).toHaveBeenCalledWith("ValidatorService");
   });
 
   it("re-exports validator module symbols", () => {
@@ -30,39 +72,144 @@ describe(ValidatorService, () => {
     expect(validatorExports.ValidatorService).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ValidatorService,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith("ValidatorService");
-  });
-
   it("throws for unknown project names", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ValidatorService,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const service = await module.resolve(ValidatorService);
+    mockWorkspaceService.readWorkspaceProjects.mockReturnValue([]);
+    mockWorkspaceService.resolveSelectedProjectNames.mockImplementation(() => {
+      throw new Error('Unknown project "project-that-does-not-exist"');
+    });
 
     await expect(
       service.validate({
         projects: ["project-that-does-not-exist"],
       }),
     ).rejects.toThrow('Unknown project "project-that-does-not-exist"');
+  });
+
+  it("throws for unknown validation rules", async () => {
+    mockWorkspaceService.readWorkspaceProjects.mockReturnValue([
+      {
+        rootPath: "/workspace/applications/example",
+        tags: ["type:application"],
+      },
+    ]);
+    mockWorkspaceService.resolveSelectedProjectNames.mockReturnValue([
+      "example",
+    ]);
+
+    await expect(
+      service.validate({
+        rules: ["unknown-rule" as never],
+      }),
+    ).rejects.toThrow("Unknown validation rules: unknown-rule");
+  });
+
+  it("uses the default rule list and computes a passing summary", async () => {
+    mockWorkspaceService.readWorkspaceProjects.mockReturnValue([
+      {
+        rootPath: "/workspace/applications/example",
+        tags: ["type:application"],
+      },
+    ]);
+    mockWorkspaceService.resolveSelectedProjectNames.mockReturnValue([
+      "example",
+    ]);
+    mockWorkspaceService.resolveProjectByName.mockReturnValue({
+      rootPath: "/workspace/applications/example",
+      tags: ["type:application"],
+    });
+    mockWorkspaceService.resolveProjectName.mockReturnValue("example");
+    mockRulesService.runRule.mockReturnValue(undefined);
+
+    const result = await service.validate({});
+
+    expect(result.requestedProjects).toStrictEqual(["example"]);
+    expect(result.selectedRules.length).toBeGreaterThan(0);
+    expect(result.results).toHaveLength(1);
+    expect(result.results[0]).toMatchObject({
+      passed: true,
+      projectName: "example",
+      projectRootPath: "/workspace/applications/example",
+      rules: [],
+    });
+    expect(result.summary).toMatchObject({
+      failedProjectCount: 0,
+      projectCount: 1,
+      violatedRuleCount: 0,
+    });
+    expect(result.passed).toBe(true);
+  });
+
+  it("wraps serialized rule errors and computes a failing summary", async () => {
+    mockWorkspaceService.readWorkspaceProjects.mockReturnValue([
+      {
+        rootPath: "/workspace/applications/example",
+        tags: ["type:application"],
+      },
+    ]);
+    mockWorkspaceService.resolveSelectedProjectNames.mockReturnValue([
+      "example",
+    ]);
+    mockWorkspaceService.resolveProjectByName.mockReturnValue({
+      rootPath: "/workspace/applications/example",
+      tags: ["type:application"],
+    });
+    mockWorkspaceService.resolveProjectName.mockReturnValue("example");
+    mockRulesService.runRule.mockReturnValue([
+      {
+        directoryName: "example",
+        results: [],
+      },
+    ]);
+    mockFilesService.stringifyConformanceErrors.mockReturnValue(
+      "serialized errors",
+    );
+
+    const result = await service.validate({ rules: ["nestjs-service-file"] });
+
+    expect(result.passed).toBe(false);
+    expect(result.results[0]?.rules[0]).toMatchObject({
+      errors: ["serialized errors"],
+      passed: false,
+      rule: "nestjs-service-file",
+      severity: "error",
+    });
+    expect(result.summary).toMatchObject({
+      failedProjectCount: 1,
+      projectCount: 1,
+      violatedRuleCount: 1,
+    });
+  });
+
+  it("marks a rule as passed when serialized errors are null", async () => {
+    mockWorkspaceService.readWorkspaceProjects.mockReturnValue([
+      {
+        rootPath: "/workspace/applications/example",
+        tags: ["type:application"],
+      },
+    ]);
+    mockWorkspaceService.resolveSelectedProjectNames.mockReturnValue([
+      "example",
+    ]);
+    mockWorkspaceService.resolveProjectByName.mockReturnValue({
+      rootPath: "/workspace/applications/example",
+      tags: ["type:application"],
+    });
+    mockWorkspaceService.resolveProjectName.mockReturnValue("example");
+    mockRulesService.runRule.mockReturnValue([
+      {
+        directoryName: "example",
+        results: [],
+      },
+    ]);
+    mockFilesService.stringifyConformanceErrors.mockReturnValue(null);
+
+    const result = await service.validate({ rules: ["nestjs-service-file"] });
+
+    expect(result.passed).toBe(true);
+    expect(result.results[0]?.rules[0]).toMatchObject({
+      errors: [],
+      passed: true,
+      rule: "nestjs-service-file",
+    });
   });
 });
