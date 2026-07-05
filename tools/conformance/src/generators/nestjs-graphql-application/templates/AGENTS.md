@@ -267,7 +267,7 @@ Key rules:
 - **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
 - **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
 
-See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](../../documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ## Troubleshooting
 

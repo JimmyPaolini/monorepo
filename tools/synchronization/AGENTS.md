@@ -6,11 +6,13 @@
 
 **Purpose**: <!-- Briefly describe the specific purpose of this CLI application -->
 
+**Purpose**: Synchronize documentation tables and configuration between source files and markdown documentation (AGENTS.md skills table, conformance generators table, conventional commit config, devcontainer config, and PR template)
+
 ### Run Locally
 
 ```bash
 cp .env.default .env  # Fill in required environment variables
-nx run synchronization:develop
+nx run synchronization:start
 ```
 
 ## Architecture Overview
@@ -82,11 +84,10 @@ Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed
 Always prefer running tasks through Nx rather than calling the underlying tools directly.
 
 ```bash
-nx run synchronization:develop        # Run CLI (tsx, watch mode)
+nx run synchronization:start          # Run CLI (tsx)
 nx run synchronization:lint           # ESLint
 nx run synchronization:typecheck      # tsc --noEmit
 nx run synchronization:format         # oxfmt formatting
-nx run synchronization:build          # Compile for production
 ```
 
 ### Testing
@@ -231,7 +232,7 @@ nx run conformance:test
 - **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
 - **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
 
-See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](../../documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ## Troubleshooting
 
@@ -249,5 +250,5 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 - [src/modules/synchronization/synchronization.module.ts](src/modules/synchronization/synchronization.module.ts): Root NestJS module
 - [src/modules/synchronization/synchronization.constants.ts](src/modules/synchronization/synchronization.constants.ts): `environmentSchema` (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
-- [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
+- [project.json](project.json): Nx targets (`start`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template

@@ -21,7 +21,7 @@ kubectl get pods
 helm upgrade --install myrelease ./chart
 ```
 
-See [Tool Execution Model](documentation/development/tool-execution-model.md) for when to use Nx vs. direct tools.
+See [Tool Execution Model](documentation/skills/tool-execution-model/SKILL.md) for when to use Nx vs. direct tools.
 
 ## Skills
 
@@ -86,11 +86,12 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
-- **lexico-ingestion**: NestJS CLI app for Latin dictionary data ingestion
+- **[lexico-ingestion](applications/lexico-ingestion/AGENTS.md)**: NestJS CLI app for Latin dictionary data ingestion
 - **lexico-entities**: Shared TypeORM entities and GraphQL types package
 - **JimmyPaolini**: Portfolio website
 - **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
 - **[conformance](tools/conformance/AGENTS.md)**: Nx generators for scaffolding code
+- **[synchronization](tools/synchronization/AGENTS.md)**: NestJS CLI that synchronizes documentation tables and configuration between source files and markdown docs
 
 ## Nx Generators
 
@@ -172,7 +173,7 @@ See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for t
 
 These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `pytest`) instead of TS ones.
 
-See [Python Conventions](documentation/conventions/python.md) for the full Python tooling setup.
+See [Python Conventions](documentation/skills/python-conventions/SKILL.md) for the full Python tooling setup.
 
 ### TypeScript
 
@@ -195,13 +196,13 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **JSDoc on public APIs**: Public functions, classes, methods, interfaces, types, and enums must have JSDoc — only when it adds non-obvious context
 - **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [commenting skill](documentation/skills/commenting/SKILL.md).
 
-See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ### Import Organization
 
 Auto-sorted by ESLint: builtins → externals → `@monorepo/*` → relatives → type imports (blank lines between groups).
 
-See [Import Organization](documentation/conventions/imports.md) for rules.
+See [Import Organization](documentation/skills/imports-conventions/SKILL.md) for rules.
 
 ### Testing
 
@@ -341,20 +342,20 @@ PR description template:
 - **shadcn/ui components** via lexico-components (never duplicate UI code)
 - **Tailwind CSS** with CSS variables for theming
 
-See [React Conventions](documentation/conventions/react.md) for component structure and patterns.
+See [React Conventions](documentation/skills/react-conventions/SKILL.md) for component structure and patterns.
 
 ## Documentation
 
 ### Conventions
 
-- [TypeScript](documentation/conventions/typescript.md): Strict mode, naming, type imports
-- [Imports](documentation/conventions/imports.md): Auto-sorted order, path mappings
-- [React](documentation/conventions/react.md): Component structure, TanStack Router, styling
+- [TypeScript](documentation/skills/typescript-conventions/SKILL.md): Strict mode, naming, type imports
+- [Imports](documentation/skills/imports-conventions/SKILL.md): Auto-sorted order, path mappings
+- [React](documentation/skills/react-conventions/SKILL.md): Component structure, TanStack Router, styling
 - [Error Handling](documentation/code-quality/error-handling.md): Zod validation, typed errors
 
 ### Development
 
-- [Tool Execution Model](documentation/development/tool-execution-model.md): When to use Nx vs. direct tools
+- [Tool Execution Model](documentation/skills/tool-execution-model/SKILL.md): When to use Nx vs. direct tools
 - [Context Engineering](documentation/development/context-engineering.md): Structuring code for better Copilot context
 - [Testing Strategy](documentation/code-quality/testing-strategy.md): Unit/integration/E2E patterns
 
@@ -397,7 +398,7 @@ pnpm add -w <package>                  # Workspace root
 ### Running Tasks
 
 ```bash
-nx run caelundas:develop               # Single project
+nx run caelundas:start                 # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
 ```

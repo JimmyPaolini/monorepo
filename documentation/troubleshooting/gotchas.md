@@ -160,7 +160,7 @@ pnpm --filter caelundas test
 nx run caelundas:test
 ```
 
-See [tool-execution-model.md](../development/tool-execution-model.md) for when to use Nx vs. direct tools.
+See [tool-execution-model skill](../skills/tool-execution-model/SKILL.md) for when to use Nx vs. direct tools.
 
 ## Git
 
@@ -400,7 +400,7 @@ echo $GITHUB_TOKEN | docker login ghcr.io -u <username> --password-stdin
 
 ## Resources
 
-- [Tool Execution Model](../development/tool-execution-model.md) - Nx vs. direct tools
+- [Tool Execution Model](../skills/tool-execution-model/SKILL.md) - Nx vs. direct tools
 - [Deployment Models](../architecture/deployment-models.md) - K8s Job/PVC issues
 - [Docker Workflows Skill](../skills/docker-workflows/SKILL.md) - Platform targeting
-- [TypeScript Conventions](../conventions/typescript.md) - Strict mode gotchas
+- [TypeScript Conventions](../skills/typescript-conventions/SKILL.md) - Strict mode gotchas

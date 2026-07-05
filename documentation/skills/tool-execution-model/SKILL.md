@@ -84,5 +84,4 @@ Does the task operate on workspace source files?
 
 ## References
 
-- [Tool Execution Model](../../development/tool-execution-model.md)
 - [Nx workspace overview](../../../AGENTS.md)

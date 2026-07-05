@@ -14,6 +14,15 @@ if [[ -z "$signing_key" ]]; then
   exit 1
 fi
 
+gpg_program="$(git config --get gpg.program || echo "gpg")"
+
+# When using an API-based signing program (e.g. gh-gpgsign), the signing key
+# is managed remotely and does not exist in the local GPG keyring. Skip the
+# local keyring check in that case.
+if [[ "$gpg_program" == *"gh-gpgsign"* ]]; then
+  exit 0
+fi
+
 if ! command -v gpg > /dev/null 2>&1; then
   echo "❌ gpg is required for commit signing but was not found in PATH." >&2
   exit 1

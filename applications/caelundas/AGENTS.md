@@ -12,7 +12,7 @@ Generate astronomical event calendars using NASA's JPL Horizons API (Outputs: iC
 
 ```bash
 cp .env.default .env  # Fill in required environment variables
-nx run caelundas:develop
+nx run caelundas:start
 ```
 
 ## Architecture Overview
@@ -103,12 +103,14 @@ src/modules/
 
 ## Domain Knowledge
 
-See [ephemeris-pipeline skill](../../documentation/skills/ephemeris-pipeline/SKILL.md) for:
+The ephemeris pipeline covers:
 
 - NASA JPL Horizons API details (endpoints, parameters, rate limits)
 - Astronomical concepts (aspects, retrogrades, phases explained)
 - Caching strategy (SQLite schema, temporal margins)
 - Event detection algorithms
+
+See source files in [src/modules/ephemeris/](src/modules/ephemeris/) and [src/modules/perfective/](src/modules/perfective/) for implementation details.
 
 ## Development
 
@@ -137,11 +139,10 @@ Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed
 Always prefer running tasks through Nx rather than calling the underlying tools directly.
 
 ```bash
-nx run caelundas:develop        # Run CLI (tsx, watch mode)
+nx run caelundas:start          # Run CLI (tsx)
 nx run caelundas:lint           # ESLint
 nx run caelundas:typecheck      # tsc --noEmit
 nx run caelundas:format         # oxfmt formatting
-nx run caelundas:build          # Compile for production
 ```
 
 ### Testing
@@ -396,7 +397,7 @@ nx run conformance:test
 - **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
 - **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
 
-See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
+See [TypeScript Conventions](../../documentation/skills/typescript-conventions/SKILL.md) for strict mode patterns.
 
 ## Troubleshooting
 
@@ -421,7 +422,7 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 - [src/modules/caelundas/caelundas.module.ts](src/modules/caelundas/caelundas.module.ts): Root NestJS module
 - [src/modules/caelundas/caelundas.constants.ts](src/modules/caelundas/caelundas.constants.ts): `environmentSchema` (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
-- [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
+- [project.json](project.json): Nx targets (`start`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template
 
 **Project Files**:
