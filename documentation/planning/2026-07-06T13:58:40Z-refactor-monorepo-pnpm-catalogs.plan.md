@@ -2,13 +2,13 @@
 name: Migrate Monorepo to PNPM Catalogs
 description: Replace explicit semver version strings across all workspace package.json files with pnpm catalog references, making pnpm-workspace.yaml the single source of truth for all external dependency versions.
 created: 2026-07-06T13:58:40Z
-updated: 2026-07-06T13:58:40Z
-status: 'Planned'
+updated: 2026-07-06T19:18:33Z
+status: 'In progress'
 ---
 
 # Introduction
 
-![Status: Planned](https://img.shields.io/badge/status-Planned-blue)
+![Status: In progress](https://img.shields.io/badge/status-In%20progress-yellow)
 
 This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs) — a feature (available since pnpm v9.5.0, fully supported in the repo's `pnpm@11.2.2`) that centralises all external dependency version strings in a `catalog:` section of `pnpm-workspace.yaml`. Individual `package.json` files then reference those entries via the `catalog:` protocol instead of hard-coding version ranges, eliminating the risk of version drift across the 8 workspace projects. A `catalogMode: strict` policy is applied post-migration so that `pnpm add` refuses new installs that are not catalogued first, keeping the workspace consistently governed.
 
@@ -38,8 +38,8 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                                                                                   | Completed | Date |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-001 | Run `pnpm exec syncpack lint --config configuration/syncpack.config.cjs` and confirm zero violations. If any versions are inconsistent across projects, fix them with `pnpm exec syncpack fix` before proceeding.                                            |           |      |
-| TASK-002 | Confirm the two generator template files exist at their expected paths and document them as codemod-exclusion targets: `tools/conformance/src/generators/nestjs-command-application/templates/package.json` and `tools/conformance/src/generators/nestjs-graphql-application/templates/package.json`. Stage their current content (e.g., via `git stash` or a manual copy) so they can be restored if the codemod touches them. |           |      |
+| TASK-001 | Run `pnpm exec syncpack lint --config configuration/syncpack.config.cjs` and confirm zero violations. If any versions are inconsistent across projects, fix them with `pnpm exec syncpack fix` before proceeding.                                            | ✅        | 2026-07-06T19:12:00Z |
+| TASK-002 | Confirm the two generator template files exist at their expected paths and document them as codemod-exclusion targets: `tools/conformance/src/generators/nestjs-command-application/templates/package.json` and `tools/conformance/src/generators/nestjs-graphql-application/templates/package.json`. Stage their current content (e.g., via `git stash` or a manual copy) so they can be restored if the codemod touches them. | ✅        | 2026-07-06T19:12:00Z |
 
 ### Phase 2 — Automated Migration via Codemod
 
@@ -47,10 +47,10 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                                                                                                                       | Completed | Date |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-003 | Run `pnpx codemod pnpm/catalog` from the workspace root (`/Users/jimmypaolini/Development/Personal/monorepo.worktrees/copilot-migrate-to-pnpm-catalogs`). The codemod reads all `package.json` files, collects dependency versions, writes a `catalog:` block to `pnpm-workspace.yaml`, and replaces version strings with `catalog:` in each `package.json`. |           |      |
-| TASK-004 | Review the diff of `pnpm-workspace.yaml` to confirm all expected external dependencies were promoted to the `catalog:` block and no `workspace:*` entries for `@monorepo/*` packages were incorrectly included.                                                                                    |           |      |
-| TASK-005 | Check whether the codemod modified either generator template file. If it did, restore them to their pre-codemod state using `git checkout -- tools/conformance/src/generators/nestjs-command-application/templates/package.json tools/conformance/src/generators/nestjs-graphql-application/templates/package.json`. |           |      |
-| TASK-006 | Verify every external dependency in each of the following `package.json` files has been replaced with `catalog:`: `package.json` (root), `applications/caelundas/package.json`, `applications/lexico-ingestion/package.json`, `applications/lexico/package.json`, `packages/lexico-components/package.json`, `packages/lexico-entities/package.json`, `tools/conformance/package.json`, `tools/synchronization/package.json`. The `applications/affirmations/package.json` has no external JS dependencies and requires no changes. |           |      |
+| TASK-003 | Run `pnpx codemod pnpm/catalog` from the workspace root (`/Users/jimmypaolini/Development/Personal/monorepo.worktrees/copilot-migrate-to-pnpm-catalogs`). The codemod reads all `package.json` files, collects dependency versions, writes a `catalog:` block to `pnpm-workspace.yaml`, and replaces version strings with `catalog:` in each `package.json`. | ✅        | 2026-07-06T19:16:24Z |
+| TASK-004 | Review the diff of `pnpm-workspace.yaml` to confirm all expected external dependencies were promoted to the `catalog:` block and no `workspace:*` entries for `@monorepo/*` packages were incorrectly included.                                                                                    | ✅        | 2026-07-06T19:16:24Z |
+| TASK-005 | Check whether the codemod modified either generator template file. If it did, restore them to their pre-codemod state using `git checkout -- tools/conformance/src/generators/nestjs-command-application/templates/package.json tools/conformance/src/generators/nestjs-graphql-application/templates/package.json`. | ✅        | 2026-07-06T19:16:24Z |
+| TASK-006 | Verify every external dependency in each of the following `package.json` files has been replaced with `catalog:`: `package.json` (root), `applications/caelundas/package.json`, `applications/lexico-ingestion/package.json`, `applications/lexico/package.json`, `packages/lexico-components/package.json`, `packages/lexico-entities/package.json`, `tools/conformance/package.json`, `tools/synchronization/package.json`. The `applications/affirmations/package.json` has no external JS dependencies and requires no changes. | ✅        | 2026-07-06T19:16:24Z |
 
 ### Phase 3 — Catalog & Workspace Config Hardening
 
@@ -58,9 +58,9 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                                                                         | Completed | Date |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-007 | Add `catalogMode: strict` to `pnpm-workspace.yaml` so that `pnpm add` refuses to install packages that are not already in the catalog.                                                                                                              |           |      |
-| TASK-008 | Add `cleanupUnusedCatalogs: true` to `pnpm-workspace.yaml` so pnpm automatically removes catalog entries that are no longer referenced in any `package.json`.                                                                                       |           |      |
-| TASK-009 | Add `pnpm-workspace.yaml` to the `sharedGlobals` `inputs` array in `nx.json` (alongside the existing `pnpm-lock.yaml` entry). Since catalog entries now control resolved versions for all projects, changes to `pnpm-workspace.yaml` must invalidate all Nx task caches. |           |      |
+| TASK-007 | Add `catalogMode: strict` to `pnpm-workspace.yaml` so that `pnpm add` refuses to install packages that are not already in the catalog.                                                                                                              | ✅        | 2026-07-06T19:18:33Z |
+| TASK-008 | Add `cleanupUnusedCatalogs: true` to `pnpm-workspace.yaml` so pnpm automatically removes catalog entries that are no longer referenced in any `package.json`.                                                                                       | ✅        | 2026-07-06T19:18:33Z |
+| TASK-009 | Add `pnpm-workspace.yaml` to the `sharedGlobals` `inputs` array in `nx.json` (alongside the existing `pnpm-lock.yaml` entry). Since catalog entries now control resolved versions for all projects, changes to `pnpm-workspace.yaml` must invalidate all Nx task caches. | ✅        | 2026-07-06T19:18:33Z |
 
 ### Phase 4 — Update Syncpack Configuration
 

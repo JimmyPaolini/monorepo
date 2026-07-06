@@ -38,7 +38,8 @@
       "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/configuration/tsconfig.json",
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/pnpm-lock.yaml"
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/pnpm-workspace.yaml"
     ],
     "typescriptFiles": [
       "{projectRoot}/**/*.{ts,tsx,mts,cts}",
