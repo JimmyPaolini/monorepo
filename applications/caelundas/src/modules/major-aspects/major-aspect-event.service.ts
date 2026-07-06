@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { majorAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   symbolByBody,
@@ -27,7 +27,7 @@ export class MajorAspectEventService {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectsUtilities,
+    private readonly aspectsUtilitiesService: AspectUtilitiesService,
   ) {
     this.logger.setContext(MajorAspectEventService.name);
   }

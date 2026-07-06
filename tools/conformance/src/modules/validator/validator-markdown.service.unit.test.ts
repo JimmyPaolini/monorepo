@@ -434,4 +434,171 @@ describe(ValidatorMarkdownService, () => {
       'Expected code block (ts): "template"',
     );
   });
+
+  it("covers uncommon markdown message and matcher handlers", () => {
+    interface MarkdownHandlerNode {
+      alt?: string;
+      depth?: number;
+      lang?: string;
+      ordered?: boolean;
+      title?: string;
+      type: string;
+      url?: string;
+      value?: string;
+    }
+
+    const privateService = service as unknown as {
+      errorMessageBuilders: Readonly<
+        Record<string, (node: MarkdownHandlerNode) => string>
+      >;
+      nodeMatchers: Readonly<
+        Record<
+          string,
+          (
+            templateNode: MarkdownHandlerNode,
+            instanceNode: MarkdownHandlerNode,
+          ) => boolean
+        >
+      >;
+    };
+
+    const builderNode: MarkdownHandlerNode = {
+      alt: "alt",
+      depth: 2,
+      lang: "ts",
+      ordered: true,
+      title: "title",
+      type: "text",
+      url: "https://example.com",
+      value: "value",
+    };
+
+    const builderKeys = [
+      "break",
+      "delete",
+      "footnoteReference",
+      "html",
+      "image",
+      "imageReference",
+      "inlineMath",
+      "link",
+      "linkReference",
+      "math",
+      "table",
+      "tableCell",
+      "tableRow",
+      "thematicBreak",
+      "text",
+      "yaml",
+    ];
+
+    for (const builderKey of builderKeys) {
+      const messageBuilder = privateService.errorMessageBuilders[builderKey];
+
+      expect(typeof messageBuilder).toBe("function");
+
+      if (typeof messageBuilder !== "function") {
+        throw new TypeError(`Missing message builder for ${builderKey}`);
+      }
+
+      expect(messageBuilder(builderNode)).toBeTypeOf("string");
+    }
+
+    const getNodeMatcher = (
+      matcherKey: keyof typeof privateService.nodeMatchers,
+    ): NonNullable<(typeof privateService.nodeMatchers)[typeof matcherKey]> => {
+      const nodeMatcher = privateService.nodeMatchers[matcherKey];
+
+      expect(typeof nodeMatcher).toBe("function");
+
+      if (typeof nodeMatcher !== "function") {
+        throw new TypeError(`Missing node matcher for ${matcherKey}`);
+      }
+
+      return nodeMatcher;
+    };
+
+    const imageMatcher = getNodeMatcher("image");
+    const inlineCodeMatcher = getNodeMatcher("inlineCode");
+    const linkMatcher = getNodeMatcher("link");
+    const textMatcher = getNodeMatcher("text");
+    const deleteMatcher = getNodeMatcher("delete");
+    const emphasisMatcher = getNodeMatcher("emphasis");
+    const inlineMathMatcher = getNodeMatcher("inlineMath");
+    const linkReferenceMatcher = getNodeMatcher("linkReference");
+    const mathMatcher = getNodeMatcher("math");
+    const strongMatcher = getNodeMatcher("strong");
+    const tableMatcher = getNodeMatcher("table");
+    const yamlMatcher = getNodeMatcher("yaml");
+
+    expect(
+      imageMatcher(
+        { ...builderNode, type: "image" },
+        { ...builderNode, type: "image" },
+      ),
+    ).toBe(true);
+    expect(
+      inlineCodeMatcher(
+        { ...builderNode, type: "inlineCode" },
+        { ...builderNode, type: "inlineCode" },
+      ),
+    ).toBe(true);
+    expect(
+      linkMatcher(
+        { ...builderNode, type: "link" },
+        { ...builderNode, type: "link" },
+      ),
+    ).toBe(true);
+    expect(
+      textMatcher(
+        { ...builderNode, type: "text" },
+        { ...builderNode, type: "text" },
+      ),
+    ).toBe(true);
+    expect(
+      deleteMatcher(
+        { ...builderNode, type: "delete" },
+        { ...builderNode, type: "delete" },
+      ),
+    ).toBe(true);
+    expect(
+      emphasisMatcher(
+        { ...builderNode, type: "emphasis" },
+        { ...builderNode, type: "emphasis" },
+      ),
+    ).toBe(true);
+    expect(
+      inlineMathMatcher(
+        { ...builderNode, type: "inlineMath" },
+        { ...builderNode, type: "inlineMath" },
+      ),
+    ).toBe(true);
+    expect(
+      linkReferenceMatcher(
+        { ...builderNode, type: "linkReference" },
+        { ...builderNode, type: "linkReference" },
+      ),
+    ).toBe(true);
+    expect(
+      mathMatcher(
+        { ...builderNode, type: "math" },
+        { ...builderNode, type: "math" },
+      ),
+    ).toBe(true);
+    expect(
+      strongMatcher(
+        { ...builderNode, type: "strong" },
+        { ...builderNode, type: "strong" },
+      ),
+    ).toBe(true);
+    expect(
+      yamlMatcher(
+        { ...builderNode, type: "yaml" },
+        { ...builderNode, type: "yaml" },
+      ),
+    ).toBe(true);
+    expect(imageMatcher({ type: "image" }, { type: "image" })).toBe(true);
+    expect(tableMatcher({ type: "table" }, { type: "table" })).toBe(true);
+    expect(textMatcher({ type: "text" }, { type: "text" })).toBe(true);
+  });
 });

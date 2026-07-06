@@ -196,6 +196,7 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Max 3 function parameters**: Group extras into an options object (constructors: 12)
 - **JSDoc on public APIs**: Public functions, classes, methods, interfaces, types, and enums must have JSDoc — only when it adds non-obvious context
 - **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [commenting skill](documentation/skills/commenting/SKILL.md).
+- **NestJS class file shape**: In `*.service.ts`, `*.command.ts`, `*.resolver.ts`, `*.dataloader.ts`, and `*.module.ts`, keep only imports and the class at top level. Move helper types/interfaces to `*.types.ts`, constants to `*.constants.ts`, and never use alias or type re-exports from class files.
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
 

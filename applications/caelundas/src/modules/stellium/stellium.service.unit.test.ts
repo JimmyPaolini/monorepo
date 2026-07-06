@@ -7,7 +7,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { StelliumService } from "./stellium.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(StelliumService, () => {

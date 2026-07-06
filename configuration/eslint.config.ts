@@ -686,6 +686,31 @@ export default [
     },
   },
 
+  // 🧭 Nest Class File Shape
+  // Command, service, resolver, and dataloader files should expose only
+  // their class at the top level.
+  // Move top-level helpers to *.constants.ts or *.types.ts, or into class members.
+  {
+    files: [
+      "**/*.command.ts",
+      "**/*.dataloader.ts",
+      "**/*.module.ts",
+      "**/*.resolver.ts",
+      "**/*.service.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Only imports and a single top-level class are allowed in NestJS class files. Move top-level symbols onto the class or out to *.constants.ts or *.types.ts.",
+          selector:
+            "Program > :not(ImportDeclaration):not(ClassDeclaration):not(ExportNamedDeclaration[declaration.type='ClassDeclaration']):not(ExportDefaultDeclaration[declaration.type='ClassDeclaration'])",
+        },
+      ],
+    },
+  },
+
   // 🔷 TypeScript Strict Type-Checked
   // Enables strict + stylistic type-checked rule sets from typescript-eslint.
   // Requires parserOptions.projectService for type-aware linting.

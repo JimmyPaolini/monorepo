@@ -10,8 +10,6 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-export type { Twilight } from "./twilights.types";
-
 /**
  * Detects solar twilight transition events based on the Sun's elevation angle.
  *

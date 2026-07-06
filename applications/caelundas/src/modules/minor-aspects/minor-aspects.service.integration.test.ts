@@ -1,6 +1,6 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
 import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
@@ -101,7 +101,7 @@ describe("minor-aspects.events integration", () => {
         MinorAspectsEventService,
         MinorAspectsProgressiveService,
         AspectEphemerisService,
-        AspectsUtilities,
+        AspectUtilitiesService,
         AspectEventFormattingService,
         EphemerisService,
         MathService,

@@ -10,7 +10,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(SextupleAspectsService, () => {

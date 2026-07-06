@@ -339,6 +339,7 @@ Key rules:
 - **Private first** — keep internal helpers in the `🔏 Private Methods` section, expose only what callers need under `🌎 Public Methods`.
 - **`readonly` everything in the constructor** — all injected deps must be `private readonly`.
 - **One service per module** — if a service grows too large, extract a sub-domain into its own module.
+- **Class-only top level** — keep NestJS class files to imports plus the class declaration only. Move helper interfaces/types to `<domain>.types.ts`, constants/init helpers to `<domain>.constants.ts` or class members, and do not re-export aliases or types from `*.service.ts`.
 
 ### Constants file
 

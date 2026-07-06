@@ -34,7 +34,7 @@ import { AspectEphemerisService } from "./aspect-ephemeris.service";
 import { AspectEventFormattingService } from "./aspect-event-formatting.service";
 import { AspectGraphService } from "./aspect-graph.service";
 import { AspectPhaseEmojiService } from "./aspect-phase-emoji.service";
-import { AspectsUtilities } from "./aspects-utilities.service";
+import { AspectUtilitiesService } from "./aspects-utilities.service";
 import {
   COMPOSITE_ASPECT_DETECTORS_TOKEN,
   PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
@@ -61,7 +61,7 @@ describe(AspectsService, () => {
       providers: [
         LoggerService,
         AspectsService,
-        AspectsUtilities,
+        AspectUtilitiesService,
         AspectEphemerisService,
         AspectEventFormattingService,
         AspectGraphService,

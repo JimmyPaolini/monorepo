@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 
 import { groupByToMap } from "../caelundas/caelundas.types";
 
-import type { AspectBodies } from "./aspects.service";
+import type { AspectBodies } from "./aspects.types";
 import type {
   Aspect,
   Body,

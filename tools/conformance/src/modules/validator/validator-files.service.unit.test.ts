@@ -331,26 +331,53 @@ describe(ValidatorFilesService, () => {
       fs.writeFileSync(instanceFilePath, "content\n");
       fs.writeFileSync(templateFilePath, "content\n");
 
-      const selectedMock =
-        validatorType === "json"
-          ? vi.spyOn(validatorJsonService, "validateJsonConformance")
-          : validatorType === "markdown"
-            ? vi.spyOn(validatorMarkdownService, "validateMarkdownConformance")
-            : validatorType === "python"
-              ? vi.spyOn(
-                  validatorPythonBridgeService,
-                  "validatePythonConformance",
-                )
-              : validatorType === "text"
-                ? vi.spyOn(validatorTextService, "validateTextConformance")
-                : vi.spyOn(
-                    validatorTypescriptService,
-                    "validateTypescriptConformance",
-                  );
+      const validatorMock = vi
+        .fn<
+          (arguments_: unknown) => {
+            errors: { errorType: string; fix: string; message: string }[];
+          }
+        >()
+        .mockReturnValue({
+          errors: [{ errorType: "code", fix: "fix", message: "message" }],
+        });
 
-      selectedMock.mockReturnValue({
-        errors: [{ errorType: "code", fix: "fix", message: "message" }],
-      });
+      switch (validatorType) {
+        case "json": {
+          Object.assign(validatorJsonService as object, {
+            validateJsonConformance: validatorMock,
+          });
+
+          break;
+        }
+        case "markdown": {
+          Object.assign(validatorMarkdownService as object, {
+            validateMarkdownConformance: validatorMock,
+          });
+
+          break;
+        }
+        case "python": {
+          Object.assign(validatorPythonBridgeService as object, {
+            validatePythonConformance: validatorMock,
+          });
+
+          break;
+        }
+        case "text": {
+          Object.assign(validatorTextService as object, {
+            validateTextConformance: validatorMock,
+          });
+
+          break;
+        }
+        case "typescript": {
+          Object.assign(validatorTypescriptService as object, {
+            validateTypescriptConformance: validatorMock,
+          });
+
+          break;
+        }
+      }
 
       const result = service.validateInstanceFile({
         data: { value: "example" },
@@ -358,7 +385,7 @@ describe(ValidatorFilesService, () => {
         templateFilePath,
       });
 
-      expect(selectedMock).toHaveBeenCalledTimes(1);
+      expect(validatorMock).toHaveBeenCalledTimes(1);
       expect(result).toMatchObject({
         errors: [{ errorType: "code", fix: "fix", message: "message" }],
         instanceFilePath,

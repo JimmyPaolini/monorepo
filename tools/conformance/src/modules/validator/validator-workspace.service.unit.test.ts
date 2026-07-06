@@ -25,8 +25,8 @@ const createMockDirent = (args: {
     isFile: () => !isDirectory,
     isSocket: () => false,
     isSymbolicLink: () => false,
-    name: Buffer.from(name),
-    parentPath: Buffer.from(parentPath),
+    name,
+    parentPath,
   });
   return readdirDirent;
 };

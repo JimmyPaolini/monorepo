@@ -1,5 +1,5 @@
 import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
@@ -34,7 +34,7 @@ describe(SpecialtyAspectsService, () => {
         SpecialtyAspectsService,
         SpecialtyAspectsEventService,
         SpecialtyAspectsProgressiveService,
-        AspectsUtilities,
+        AspectUtilitiesService,
         AspectEventFormattingService,
         EphemerisService,
         MathService,

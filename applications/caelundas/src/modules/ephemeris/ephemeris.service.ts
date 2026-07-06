@@ -32,9 +32,6 @@ import type {
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Moment } from "moment-timezone";
 
-// Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
-initializeSwissEphemeris();
-
 /**
  * Swiss Ephemeris computation orchestration service for caelundas.
  * Delegates coordinate, phenomena, and horizon computations to specialized sub-services.
@@ -62,7 +59,9 @@ export class EphemerisService {
     private readonly phenomena?: EphemerisPhenomenaService,
     @Optional()
     private readonly time?: EphemerisTimeService,
-  ) {}
+  ) {
+    initializeSwissEphemeris();
+  }
 
   // 🔏 Private Methods
 

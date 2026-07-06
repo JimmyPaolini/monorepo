@@ -1,5 +1,5 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
@@ -25,7 +25,7 @@ vi.mock("fs", () => ({
 
 describe(MajorAspectsService, () => {
   let service: MajorAspectsService;
-  let aspectsUtilitiesService: AspectsUtilities;
+  let aspectsUtilitiesService: AspectUtilitiesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -35,7 +35,7 @@ describe(MajorAspectsService, () => {
         MajorAspectEventService,
         MajorAspectProgressiveService,
         AspectEphemerisService,
-        AspectsUtilities,
+        AspectUtilitiesService,
         EphemerisService,
         MathService,
         ProgressiveAspectService,
@@ -43,7 +43,7 @@ describe(MajorAspectsService, () => {
       ],
     }).compile();
     service = await module.resolve(MajorAspectsService);
-    aspectsUtilitiesService = await module.resolve(AspectsUtilities);
+    aspectsUtilitiesService = await module.resolve(AspectUtilitiesService);
   });
 
   describe("detect", () => {
