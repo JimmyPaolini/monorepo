@@ -2,7 +2,7 @@
 name: Migrate Monorepo to PNPM Catalogs
 description: Replace explicit semver version strings across all workspace package.json files with pnpm catalog references, making pnpm-workspace.yaml the single source of truth for all external dependency versions.
 created: 2026-07-06T13:58:40Z
-updated: 2026-07-06T19:18:33Z
+updated: 2026-07-06T19:28:56Z
 status: 'In progress'
 ---
 
@@ -68,8 +68,8 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                                                                                                                                                                                                                                                  | Completed | Date |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-010 | In `configuration/syncpack.config.cjs`, add a new entry at the **top** of the `semverGroups` array (before the existing `{ range: "^", ... }` rule) that sets `isIgnored: true` for all non-`@monorepo/*` dependencies across all packages. This exempts `catalog:` protocol values from range enforcement since the catalog itself is now the version governance mechanism. The existing `workspace:*` versionGroup rule remains unchanged. The `pnpmOverrides` ignore rule remains unchanged. |           |      |
-| TASK-011 | Run `pnpm exec syncpack lint --config configuration/syncpack.config.cjs` and confirm zero violations after the config change.                                                                                                                                                                                                                                                                                                 |           |      |
+| TASK-010 | In `configuration/syncpack.config.cjs`, add a new entry at the **top** of the `semverGroups` array (before the existing `{ range: "^", ... }` rule) that sets `isIgnored: true` for all non-`@monorepo/*` dependencies across all packages. This exempts `catalog:` protocol values from range enforcement since the catalog itself is now the version governance mechanism. The existing `workspace:*` versionGroup rule remains unchanged. The `pnpmOverrides` ignore rule remains unchanged. | ✅        | 2026-07-06T19:28:11Z |
+| TASK-011 | Run `pnpm exec syncpack lint --config configuration/syncpack.config.cjs` and confirm zero violations after the config change.                                                                                                                                                                                                                                                                                                 | ✅        | 2026-07-06T19:28:11Z |
 
 ### Phase 5 — Lockfile Regeneration
 
@@ -77,8 +77,8 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                             | Completed | Date |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-012 | Run `pnpm install --fix-lockfile` from the workspace root to regenerate `pnpm-lock.yaml` with catalog-resolved dependency entries. Confirm the command exits with code 0.                              |           |      |
-| TASK-013 | Confirm `node_modules` are intact and all projects' binaries are accessible (e.g., `pnpm exec nx --version` exits 0, `pnpm exec tsc --version` exits 0).                                              |           |      |
+| TASK-012 | Run `pnpm install --fix-lockfile` from the workspace root to regenerate `pnpm-lock.yaml` with catalog-resolved dependency entries. Confirm the command exits with code 0.                              | ✅        | 2026-07-06T19:28:56Z |
+| TASK-013 | Confirm `node_modules` are intact and all projects' binaries are accessible (e.g., `pnpm exec nx --version` exits 0, `pnpm exec tsc --version` exits 0).                                              | ✅        | 2026-07-06T19:28:56Z |
 
 ### Phase 6 — Validation
 
