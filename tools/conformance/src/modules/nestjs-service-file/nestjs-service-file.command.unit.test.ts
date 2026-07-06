@@ -9,10 +9,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsServiceFile,
-  NestjsServiceFileCommand,
-} from "./nestjs-service-file.command";
+import { NestjsServiceFileCommand } from "./nestjs-service-file.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -99,7 +96,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await runWithRepositoryRoot(async () => {
-      await generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           module: "alpha",
           name: "user-profile",
@@ -124,7 +121,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await runWithRepositoryRoot(async () => {
-      await generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           module: "alpha",
           name: "audit-log",
@@ -142,9 +139,31 @@ describe(NestjsServiceFileCommand, () => {
     );
   });
 
+  it("supports tree-first overload signature", async () => {
+    tree.write(
+      `${modulesDirectory}/alpha/alpha.module.ts`,
+      "export class Alpha {}",
+    );
+
+    await runWithRepositoryRoot(async () => {
+      await NestjsServiceFileCommand.generateNestjsServiceFile(tree, {
+        module: "alpha",
+        name: "event-log",
+        project: projectName,
+      });
+    });
+
+    const modulePath = `${modulesDirectory}/alpha`;
+
+    expect(tree.exists(`${modulePath}/event-log.service.ts`)).toBe(true);
+    expect(tree.exists(`${modulePath}/event-log.service.unit.test.ts`)).toBe(
+      true,
+    );
+  });
+
   it("throws when modules directory has no module entries", async () => {
     await expect(
-      generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           module: "alpha",
           name: "user-profile",
@@ -164,7 +183,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await expect(
-      generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           module: "missing-module",
           name: "user-profile",
@@ -226,10 +245,14 @@ describe(NestjsServiceFileCommand, () => {
       `${modulesDirectory}/alpha/alpha.module.ts`,
       "export class Alpha {}",
     );
+    const formatFilesCallback = vi.fn<() => Promise<void> | void>();
+    const createFormatFilesCallbackSpy = vi
+      .spyOn(await import("../../utilities"), "createFormatFilesCallback")
+      .mockReturnValue(formatFilesCallback);
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await generateNestjsServiceFile({
+      callback = await NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           module: "alpha",
           name: "format-target",
@@ -246,6 +269,10 @@ describe(NestjsServiceFileCommand, () => {
     }
 
     await expect(Promise.resolve(callback())).resolves.toBeUndefined();
+    expect(createFormatFilesCallbackSpy).toHaveBeenCalledTimes(1);
+    expect(formatFilesCallback).toHaveBeenCalledTimes(1);
+
+    createFormatFilesCallbackSpy.mockRestore();
   });
 
   it("prompts for module when option is not provided", async () => {
@@ -262,7 +289,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await runWithRepositoryRoot(async () => {
-      await generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           name: "prompted-service",
           project: projectName,
@@ -287,7 +314,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await expect(
-      generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           name: "no-module-selection",
           project: projectName,
@@ -307,7 +334,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await expect(
-      generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFile({
         options: {
           name: "prompt-invalid-module",
           project: projectName,

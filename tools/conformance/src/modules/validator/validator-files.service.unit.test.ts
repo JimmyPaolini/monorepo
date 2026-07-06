@@ -331,36 +331,23 @@ describe(ValidatorFilesService, () => {
       fs.writeFileSync(instanceFilePath, "content\n");
       fs.writeFileSync(templateFilePath, "content\n");
 
-      const jsonValidatorSpy = vi.spyOn(
-        validatorJsonService,
-        "validateJsonConformance",
-      );
-      const markdownValidatorSpy = vi.spyOn(
-        validatorMarkdownService,
-        "validateMarkdownConformance",
-      );
-      const pythonValidatorSpy = vi.spyOn(
-        validatorPythonBridgeService,
-        "validatePythonConformance",
-      );
-      const textValidatorSpy = vi.spyOn(
-        validatorTextService,
-        "validateTextConformance",
-      );
-      const typescriptValidatorSpy = vi.spyOn(
-        validatorTypescriptService,
-        "validateTypescriptConformance",
-      );
+      const selectedMock =
+        validatorType === "json"
+          ? vi.spyOn(validatorJsonService, "validateJsonConformance")
+          : validatorType === "markdown"
+            ? vi.spyOn(validatorMarkdownService, "validateMarkdownConformance")
+            : validatorType === "python"
+              ? vi.spyOn(
+                  validatorPythonBridgeService,
+                  "validatePythonConformance",
+                )
+              : validatorType === "text"
+                ? vi.spyOn(validatorTextService, "validateTextConformance")
+                : vi.spyOn(
+                    validatorTypescriptService,
+                    "validateTypescriptConformance",
+                  );
 
-      const mockByValidatorType = {
-        json: jsonValidatorSpy,
-        markdown: markdownValidatorSpy,
-        python: pythonValidatorSpy,
-        text: textValidatorSpy,
-        typescript: typescriptValidatorSpy,
-      } as const;
-
-      const selectedMock = mockByValidatorType[validatorType];
       selectedMock.mockReturnValue({
         errors: [{ errorType: "code", fix: "fix", message: "message" }],
       });

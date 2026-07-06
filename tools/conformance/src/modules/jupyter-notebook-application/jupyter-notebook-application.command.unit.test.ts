@@ -8,10 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateJupyterNotebookApplication,
-  JupyterNotebookApplicationCommand,
-} from "./jupyter-notebook-application.command";
+import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -82,13 +79,15 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("generates notebook scaffold with explicit description", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateJupyterNotebookApplication({
-        options: {
-          description: "Custom description",
-          name: "alpha-notebook",
+      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+        {
+          options: {
+            description: "Custom description",
+            name: "alpha-notebook",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/alpha-notebook`;
@@ -110,12 +109,14 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("supports tree-first overload with fallback description", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateJupyterNotebookApplication({
-        options: {
-          name: "beta-notebook",
+      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+        {
+          options: {
+            name: "beta-notebook",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/beta-notebook`;
@@ -127,11 +128,27 @@ describe(JupyterNotebookApplicationCommand, () => {
     expect(tree.exists(`${projectRoot}/src/beta-notebook.ipynb`)).toBe(true);
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+        tree,
+        {
+          name: "gamma-notebook",
+        },
+      );
+    });
+
+    const projectRoot = `${APPLICATIONS_DIRECTORY}/gamma-notebook`;
+
+    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
+    expect(tree.exists(`${projectRoot}/src/gamma-notebook.ipynb`)).toBe(true);
+  });
+
   it("throws when target directory already exists", async () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-notebook/.gitkeep`, "");
 
     await expect(
-      generateJupyterNotebookApplication({
+      JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
         options: { name: "existing-notebook" },
         tree,
       }),
@@ -142,7 +159,7 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("rejects non-kebab-case names", async () => {
     await expect(
-      generateJupyterNotebookApplication({
+      JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
         options: { name: "ExistingNotebook" },
         tree,
       }),

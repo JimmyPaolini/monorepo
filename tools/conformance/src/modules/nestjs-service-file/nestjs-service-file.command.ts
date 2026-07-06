@@ -59,7 +59,163 @@ export class NestjsServiceFileCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Migrated core generator logic for creating NestJS service files.
+   */
+  static async generateNestjsServiceFile(
+    argumentsOrTree: NestjsServiceFileArguments,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsServiceFile(
+    tree: Tree,
+    options?: NestjsServiceFileOptions,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsServiceFile(
+    argumentsOrTree: NestjsServiceFileArguments | Tree,
+    options?: NestjsServiceFileOptions,
+  ): Promise<GeneratorCallback> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsServiceFileOptions>(argumentsOrTree)
+        ? normalizeGeneratorInvocationFromArguments<NestjsServiceFileOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsServiceFileOptions>({
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          });
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const { moduleName, nameKebabCase, projectName } =
+      await NestjsServiceFileCommand.resolveProjectAndName(
+        tree,
+        resolvedOptions,
+      );
+    const modulesDirectory = resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    });
+    const targetPath = path.join(modulesDirectory, moduleName);
+    const substitutions = buildKebabCaseNameSubstitutions(nameKebabCase);
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions,
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        NESTJS_SERVICE_FILE_TEMPLATE_DIRECTORY_PATH,
+      ),
+      tree,
+    });
+    return createFormatFilesCallback({ targetPath, tree });
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Prompts the user to select a target module when one is not provided.
+   */
+  private static async promptModuleSelection(args: {
+    message: string;
+    modules: string[];
+  }): Promise<string> {
+    const { message, modules } = args;
+    const request: PromptObject<"module"> = {
+      choices: modules.map(
+        (name: string): Choice => ({
+          title: name,
+          value: name,
+        }),
+      ),
+      message,
+      name: "module",
+      type: "select",
+    };
+    const response: { module: string | undefined } = await prompts(request);
+
+    if (!response.module) {
+      throw new Error("No module selected");
+    }
+
+    return response.module;
+  }
+  /**
+   * Resolves and validates the destination module for generated service files.
+   */
+  private static async resolveModuleName(args: {
+    message: string;
+    module?: string;
+    modulesDirectoryPath: string;
+    tree: Tree;
+  }): Promise<string> {
+    const { message, module, modulesDirectoryPath, tree } = args;
+    const availableModules = tree
+      .children(modulesDirectoryPath)
+      .filter((childNodeName: string) => {
+        return (
+          tree.children(path.join(modulesDirectoryPath, childNodeName)).length >
+          0
+        );
+      });
+
+    if (availableModules.length === 0) {
+      throw new Error(
+        `No modules found in "${modulesDirectoryPath}". Create a module first before generating service files.`,
+      );
+    }
+
+    const moduleName =
+      module ??
+      (await NestjsServiceFileCommand.promptModuleSelection({
+        message,
+        modules: availableModules.toSorted(),
+      }));
+
+    if (!availableModules.includes(moduleName)) {
+      throw new Error(
+        `Module "${moduleName}" does not exist in "${modulesDirectoryPath}". Available modules: ${availableModules.toSorted().join(", ")}`,
+      );
+    }
+
+    return moduleName;
+  }
+  /**
+   * Resolves project, service name, and module destination for generation.
+   */
+  private static async resolveProjectAndName(
+    tree: Tree,
+    options: NestjsServiceFileOptions,
+  ): Promise<{
+    moduleName: string;
+    nameKebabCase: string;
+    projectName: string;
+  }> {
+    const projectName = await resolveProject({
+      tag: NESTJS_SERVICE_FILE_PROJECT_TAG,
+      tree,
+      ...(options.project !== undefined && { project: options.project }),
+      message: NESTJS_SERVICE_FILE_PROJECT_PROMPT,
+    });
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_SERVICE_FILE_NAME_PROMPT,
+      ...(options.name !== undefined && { name: options.name }),
+      subject: "Service name",
+    });
+    const moduleName = await NestjsServiceFileCommand.resolveModuleName({
+      message: NESTJS_SERVICE_FILE_MODULE_PROMPT,
+      modulesDirectoryPath: resolveProjectModulesDirectoryPath({
+        projectName,
+        tree,
+      }),
+      tree,
+      ...(options.module !== undefined && { module: options.module }),
+    });
+
+    return { moduleName, nameKebabCase, projectName };
+  }
 
   /**
    * Parses the optional module name argument.
@@ -102,151 +258,11 @@ export class NestjsServiceFileCommand extends CommandRunner {
     options: NestjsServiceFileOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    const callback = await generateNestjsServiceFile({
+    const callback = await NestjsServiceFileCommand.generateNestjsServiceFile({
       options,
       tree,
     });
     await commitWorkspaceTree({ callback, tree });
     this.logger.log("Generated NestJS service files.");
   }
-}
-
-/**
- * Migrated core generator logic for creating NestJS service files.
- */
-export async function generateNestjsServiceFile(
-  argumentsOrTree: NestjsServiceFileArguments,
-): Promise<GeneratorCallback>;
-export async function generateNestjsServiceFile(
-  argumentsOrTree: NestjsServiceFileArguments | Tree,
-  options?: NestjsServiceFileOptions,
-): Promise<GeneratorCallback> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsServiceFileOptions>(argumentsOrTree)
-      ? normalizeGeneratorInvocationFromArguments<NestjsServiceFileOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsServiceFileOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const { moduleName, nameKebabCase, projectName } =
-    await resolveProjectAndName(tree, resolvedOptions);
-  const modulesDirectory = resolveProjectModulesDirectoryPath({
-    projectName,
-    tree,
-  });
-  const targetPath = path.join(modulesDirectory, moduleName);
-  const substitutions = buildKebabCaseNameSubstitutions(nameKebabCase);
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      NESTJS_SERVICE_FILE_TEMPLATE_DIRECTORY_PATH,
-    ),
-    tree,
-  });
-  return createFormatFilesCallback({ targetPath, tree });
-}
-
-/**
- * Prompts the user to select a target module when one is not provided.
- */
-async function promptModuleSelection(args: {
-  message: string;
-  modules: string[];
-}): Promise<string> {
-  const { message, modules } = args;
-  const request: PromptObject<"module"> = {
-    choices: modules.map(
-      (name: string): Choice => ({
-        title: name,
-        value: name,
-      }),
-    ),
-    message,
-    name: "module",
-    type: "select",
-  };
-  const response: { module: string | undefined } = await prompts(request);
-
-  if (!response.module) {
-    throw new Error("No module selected");
-  }
-
-  return response.module;
-}
-
-/**
- * Resolves and validates the destination module for generated service files.
- */
-async function resolveModuleName(args: {
-  message: string;
-  module?: string;
-  modulesDirectoryPath: string;
-  tree: Tree;
-}): Promise<string> {
-  const { message, module, modulesDirectoryPath, tree } = args;
-  const availableModules = tree
-    .children(modulesDirectoryPath)
-    .filter((childNodeName: string) => {
-      return (
-        tree.children(path.join(modulesDirectoryPath, childNodeName)).length > 0
-      );
-    });
-
-  if (availableModules.length === 0) {
-    throw new Error(
-      `No modules found in "${modulesDirectoryPath}". Create a module first before generating service files.`,
-    );
-  }
-
-  const moduleName =
-    module ??
-    (await promptModuleSelection({
-      message,
-      modules: availableModules.toSorted(),
-    }));
-
-  if (!availableModules.includes(moduleName)) {
-    throw new Error(
-      `Module "${moduleName}" does not exist in "${modulesDirectoryPath}". Available modules: ${availableModules.toSorted().join(", ")}`,
-    );
-  }
-
-  return moduleName;
-}
-
-/**
- * Resolves project, service name, and module destination for generation.
- */
-async function resolveProjectAndName(
-  tree: Tree,
-  options: NestjsServiceFileOptions,
-): Promise<{ moduleName: string; nameKebabCase: string; projectName: string }> {
-  const projectName = await resolveProject({
-    tag: NESTJS_SERVICE_FILE_PROJECT_TAG,
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: NESTJS_SERVICE_FILE_PROJECT_PROMPT,
-  });
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_SERVICE_FILE_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
-    subject: "Service name",
-  });
-  const moduleName = await resolveModuleName({
-    message: NESTJS_SERVICE_FILE_MODULE_PROMPT,
-    modulesDirectoryPath: resolveProjectModulesDirectoryPath({
-      projectName,
-      tree,
-    }),
-    tree,
-    ...(options.module !== undefined && { module: options.module }),
-  });
-
-  return { moduleName, nameKebabCase, projectName };
 }

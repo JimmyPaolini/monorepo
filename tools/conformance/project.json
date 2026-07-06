@@ -75,7 +75,7 @@
       "description": "Run workspace conformance validation",
       "executor": "nx:run-commands",
       "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts validate {args}",
+        "command": "env -u NODE_OPTIONS node --import @swc-node/register/esm-register src/main.ts validate {args}",
         "cwd": "{projectRoot}"
       }
     },

@@ -6,19 +6,8 @@ import { ValidatorNodesService } from "./validator-nodes.service";
 import type {
   ConformanceError,
   ConformanceErrorLanguage,
+  ResolvedErrorLocation,
 } from "./validator.types";
-
-/**
- * Resolved error location metadata.
- */
-interface ResolvedErrorLocation {
-  breadcrumb: string;
-  instanceCharacter: number;
-  instanceLine: number;
-  snippet: string;
-  templateCharacter: number;
-  templateLine: number;
-}
 
 /**
  * TypeScript AST structural conformance validator.

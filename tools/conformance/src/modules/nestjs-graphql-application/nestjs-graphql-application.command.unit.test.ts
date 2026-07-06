@@ -8,10 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { APPLICATIONS_DIRECTORY } from "../../constants";
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsGraphqlApplication,
-  NestjsGraphqlApplicationCommand,
-} from "./nestjs-graphql-application.command";
+import { NestjsGraphqlApplicationCommand } from "./nestjs-graphql-application.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -79,7 +76,7 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("generates graphql application scaffold from arguments", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlApplication({
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
         options: {
           name: "atlas-api",
         },
@@ -108,7 +105,7 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("supports tree-first overload invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlApplication({
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
         options: {
           name: "audit-api",
         },
@@ -124,9 +121,25 @@ describe(NestjsGraphqlApplicationCommand, () => {
     expect(tree.exists(`${projectRoot}/testing/setup.ts`)).toBe(true);
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
+        tree,
+        {
+          name: "signal-api",
+        },
+      );
+    });
+
+    const projectRoot = `${APPLICATIONS_DIRECTORY}/signal-api`;
+
+    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
+    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
+  });
+
   it("writes expected substitutions into generated files", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlApplication({
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
         options: {
           name: "user-profile-api",
         },
@@ -153,7 +166,7 @@ describe(NestjsGraphqlApplicationCommand, () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-api/.gitkeep`, "");
 
     await expect(
-      generateNestjsGraphqlApplication({
+      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
         options: {
           name: "existing-api",
         },
@@ -166,7 +179,7 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("validates application name as kebab-case", async () => {
     await expect(
-      generateNestjsGraphqlApplication({
+      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
         options: {
           name: "ExistingApi",
         },

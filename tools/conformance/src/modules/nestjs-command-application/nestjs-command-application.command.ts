@@ -31,123 +31,6 @@ import type {
 import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 
-/** Valid destination roots for generated command applications. */
-type DestinationRoot = (typeof DESTINATION_ROOTS)[number];
-
-/**
- * Migrated core generator logic for creating a NestJS command application.
- */
-export async function generateNestjsCommandApplication(
-  argumentsOrTree: NestjsCommandApplicationArguments,
-): Promise<void>;
-export async function generateNestjsCommandApplication(
-  argumentsOrTree: NestjsCommandApplicationArguments | Tree,
-  options?: NestjsCommandApplicationOptions,
-): Promise<void> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsCommandApplicationOptions>(
-      argumentsOrTree,
-    )
-      ? normalizeGeneratorInvocationFromArguments<NestjsCommandApplicationOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_COMMAND_APPLICATION_NAME_PROMPT,
-    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-    subject: "Application name",
-  });
-
-  const destinationRoot = await resolveDestinationRoot({
-    message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
-    ...(resolvedOptions.destinationRoot !== undefined && {
-      destinationRoot: resolvedOptions.destinationRoot,
-    }),
-  });
-
-  const projectRoot = path.join(destinationRoot, nameKebabCase);
-
-  if (tree.exists(projectRoot)) {
-    throw new Error(
-      `Directory "${projectRoot}" already exists. Choose a different application name.`,
-    );
-  }
-
-  const substitutions = {
-    destinationRoot,
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: projectRoot,
-    substitutions,
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/nestjs-command-application/templates",
-    ),
-    tree,
-  });
-
-  await formatFiles(tree);
-}
-
-/**
- * Returns whether the value is a valid destination root.
- */
-function isDestinationRoot(value: string): value is DestinationRoot {
-  const destinationRoots: readonly string[] = DESTINATION_ROOTS;
-  return destinationRoots.includes(value);
-}
-
-/**
- * Prompts for destination root selection.
- */
-async function promptDestinationRoot(): Promise<DestinationRoot> {
-  const request: PromptObject<"destinationRoot"> = {
-    choices: DESTINATION_ROOTS.map(
-      (value): Choice => ({ title: value, value }),
-    ),
-    initial: DESTINATION_ROOTS.indexOf(APPLICATIONS_DIRECTORY),
-    message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
-    name: "destinationRoot",
-    type: "select",
-  };
-  const response: { destinationRoot: DestinationRoot | undefined } =
-    await prompts(request);
-
-  if (!response.destinationRoot) {
-    throw new Error("No destination root selected");
-  }
-
-  return response.destinationRoot;
-}
-
-/**
- * Resolves the destination root for generated command applications.
- */
-async function resolveDestinationRoot(args: {
-  destinationRoot?: string;
-  message: string;
-}): Promise<DestinationRoot> {
-  const destinationRoot =
-    args.destinationRoot ?? (await promptDestinationRoot());
-
-  if (!isDestinationRoot(destinationRoot)) {
-    throw new Error(
-      `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
-    );
-  }
-
-  return destinationRoot;
-}
-
 /**
  * Generates a NestJS command application scaffold from templates.
  */
@@ -172,7 +55,133 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Migrated core generator logic for creating a NestJS command application.
+   */
+  static async generateNestjsCommandApplication(
+    argumentsOrTree: NestjsCommandApplicationArguments,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsCommandApplication(
+    tree: Tree,
+    options?: NestjsCommandApplicationOptions,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsCommandApplication(
+    argumentsOrTree: NestjsCommandApplicationArguments | Tree,
+    options?: NestjsCommandApplicationOptions,
+  ): Promise<void> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsCommandApplicationOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<NestjsCommandApplicationOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>(
+            {
+              ...(options !== undefined && { options }),
+              tree: argumentsOrTree,
+            },
+          );
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_COMMAND_APPLICATION_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
+      subject: "Application name",
+    });
+
+    const destinationRoot =
+      await NestjsCommandApplicationCommand.resolveDestinationRoot({
+        message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
+        ...(resolvedOptions.destinationRoot !== undefined && {
+          destinationRoot: resolvedOptions.destinationRoot,
+        }),
+      });
+
+    const projectRoot = path.join(destinationRoot, nameKebabCase);
+
+    if (tree.exists(projectRoot)) {
+      throw new Error(
+        `Directory "${projectRoot}" already exists. Choose a different application name.`,
+      );
+    }
+
+    const substitutions = {
+      destinationRoot,
+      nameCamelCase: _.camelCase(nameKebabCase),
+      nameKebabCase,
+      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+    };
+
+    generateFiles({
+      instanceDirectoryPath: projectRoot,
+      substitutions,
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/nestjs-command-application/templates",
+      ),
+      tree,
+    });
+
+    await formatFiles(tree);
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Returns whether the value is a valid destination root.
+   */
+  private static isDestinationRoot(value: string): boolean {
+    const destinationRoots: readonly string[] = DESTINATION_ROOTS;
+    return destinationRoots.includes(value);
+  }
+  /**
+   * Prompts for destination root selection.
+   */
+  private static async promptDestinationRoot(): Promise<string> {
+    const request: PromptObject<"destinationRoot"> = {
+      choices: DESTINATION_ROOTS.map(
+        (value): Choice => ({ title: value, value }),
+      ),
+      initial: DESTINATION_ROOTS.indexOf(APPLICATIONS_DIRECTORY),
+      message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
+      name: "destinationRoot",
+      type: "select",
+    };
+    const response: { destinationRoot: string | undefined } =
+      await prompts(request);
+
+    if (!response.destinationRoot) {
+      throw new Error("No destination root selected");
+    }
+
+    return response.destinationRoot;
+  }
+  /**
+   * Resolves the destination root for generated command applications.
+   */
+  private static async resolveDestinationRoot(args: {
+    destinationRoot?: string;
+    message: string;
+  }): Promise<string> {
+    const destinationRoot =
+      args.destinationRoot ??
+      (await NestjsCommandApplicationCommand.promptDestinationRoot());
+
+    if (!NestjsCommandApplicationCommand.isDestinationRoot(destinationRoot)) {
+      throw new Error(
+        `Destination root "${destinationRoot}" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
+      );
+    }
+
+    return destinationRoot;
+  }
 
   /**
    * Parses the optional destination root argument.
@@ -204,7 +213,7 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
     options: NestjsCommandApplicationOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    await generateNestjsCommandApplication({
+    await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
       options,
       tree,
     });

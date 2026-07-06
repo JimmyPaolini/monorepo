@@ -57,7 +57,102 @@ export class NestjsDataloaderModuleCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Migrated core generator logic for creating a NestJS DataLoader module.
+   */
+  static async generateNestjsDataloaderModule(
+    argumentsOrTree: NestjsDataloaderModuleArguments,
+  ): Promise<GeneratorCallback>;
   // 🌎 Public Methods
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsDataloaderModule(
+    tree: Tree,
+    options?: NestjsDataloaderModuleOptions,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsDataloaderModule(
+    argumentsOrTree: NestjsDataloaderModuleArguments | Tree,
+    options?: NestjsDataloaderModuleOptions,
+  ): Promise<GeneratorCallback> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsDataloaderModuleOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<NestjsDataloaderModuleOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsDataloaderModuleOptions>({
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          });
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const { nameKebabCase, projectName } =
+      await NestjsDataloaderModuleCommand.resolveProjectAndName(
+        tree,
+        resolvedOptions,
+      );
+    const modulesDirectory = resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    });
+    const targetPath = path.join(modulesDirectory, nameKebabCase);
+    const substitutions = {
+      nameCamelCase: _.camelCase(nameKebabCase),
+      nameKebabCase,
+      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+    };
+
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions,
+      templateDirectoryPath: path.join(
+        workspaceRoot,
+        NESTJS_DATALOADER_MODULE_TEMPLATE_DIRECTORY_PATH,
+      ),
+      tree,
+    });
+
+    const generatedFiles = tree
+      .children(targetPath)
+      .map((fileName: string) => path.join(targetPath, fileName));
+
+    return () => {
+      execSync(
+        `pnpm exec nx format:write --files=${generatedFiles.join(",")}`,
+        {
+          cwd: workspaceRoot,
+          stdio: "inherit",
+        },
+      );
+    };
+  }
+  /**
+   * Resolves project and module name for DataLoader module generation.
+   */
+  private static async resolveProjectAndName(
+    tree: Tree,
+    options: NestjsDataloaderModuleOptions,
+  ): Promise<{ nameKebabCase: string; projectName: string }> {
+    const projectName = await resolveProject({
+      tag: NESTJS_DATALOADER_MODULE_PROJECT_TAG,
+      tree,
+      ...(options.project !== undefined && { project: options.project }),
+      message: NESTJS_DATALOADER_MODULE_PROJECT_PROMPT,
+    });
+
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_DATALOADER_MODULE_NAME_PROMPT,
+      ...(options.name !== undefined && { name: options.name }),
+      subject: "Module name",
+    });
+
+    return { nameKebabCase, projectName };
+  }
 
   /**
    * Parses the optional module name argument.
@@ -89,94 +184,12 @@ export class NestjsDataloaderModuleCommand extends CommandRunner {
     options: NestjsDataloaderModuleOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    const callback = await generateNestjsDataloaderModule({
-      options,
-      tree,
-    });
+    const callback =
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
+        options,
+        tree,
+      });
     await commitWorkspaceTree({ callback, tree });
     this.logger.log("Generated NestJS DataLoader module scaffold.");
   }
-}
-
-/**
- * Migrated core generator logic for creating a NestJS DataLoader module.
- */
-export async function generateNestjsDataloaderModule(
-  argumentsOrTree: NestjsDataloaderModuleArguments,
-): Promise<GeneratorCallback>;
-export async function generateNestjsDataloaderModule(
-  argumentsOrTree: NestjsDataloaderModuleArguments | Tree,
-  options?: NestjsDataloaderModuleOptions,
-): Promise<GeneratorCallback> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsDataloaderModuleOptions>(
-      argumentsOrTree,
-    )
-      ? normalizeGeneratorInvocationFromArguments<NestjsDataloaderModuleOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsDataloaderModuleOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const { nameKebabCase, projectName } = await resolveProjectAndName(
-    tree,
-    resolvedOptions,
-  );
-  const modulesDirectory = resolveProjectModulesDirectoryPath({
-    projectName,
-    tree,
-  });
-  const targetPath = path.join(modulesDirectory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: path.join(
-      workspaceRoot,
-      NESTJS_DATALOADER_MODULE_TEMPLATE_DIRECTORY_PATH,
-    ),
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((fileName: string) => path.join(targetPath, fileName));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-async function resolveProjectAndName(
-  tree: Tree,
-  options: NestjsDataloaderModuleOptions,
-): Promise<{ nameKebabCase: string; projectName: string }> {
-  const projectName = await resolveProject({
-    tag: NESTJS_DATALOADER_MODULE_PROJECT_TAG,
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: NESTJS_DATALOADER_MODULE_PROJECT_PROMPT,
-  });
-
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_DATALOADER_MODULE_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
-    subject: "Module name",
-  });
-
-  return { nameKebabCase, projectName };
 }

@@ -17,8 +17,10 @@ import {
   NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
 } from "./validator.constants";
 
-import type { WorkspaceProject } from "./validator-workspace.service";
-import type { InstanceDirectoryValidationResult } from "./validator.types";
+import type {
+  InstanceDirectoryValidationResult,
+  WorkspaceProject,
+} from "./validator.types";
 
 /**
  * Validation rule execution service.

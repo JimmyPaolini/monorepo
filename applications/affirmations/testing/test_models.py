@@ -82,6 +82,7 @@ def test_generated_affirmations_strips_trailing_period() -> None:
 def test_validation_result_valid() -> None:
     result = ValidationResult(valid=True, reason="Matches present tense first person.")
     assert result.valid is True
+    assert result.reason is not None
     assert "present" in result.reason
 
 

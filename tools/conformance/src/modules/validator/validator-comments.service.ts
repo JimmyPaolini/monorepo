@@ -10,19 +10,10 @@ import {
 import { TODO_LINE_REGEX } from "./validator-constants";
 
 import type {
+  CommentInfo,
   ConformanceError,
   ConformanceErrorLanguage,
 } from "./validator.types";
-
-/**
- * Comment metadata.
- */
-interface CommentInfo {
-  column: number;
-  line: number;
-  pos: number;
-  text: string;
-}
 
 /**
  * TypeScript comment conformance validator.

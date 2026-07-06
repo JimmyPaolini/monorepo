@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 
+import { LoggerModule } from "../logger/logger.module";
+
 import { ValidatorAbstractSyntaxTreeService } from "./validator-abstract-syntax-tree.service";
 import { ValidatorCommentsService } from "./validator-comments.service";
 import { ValidatorFilesService } from "./validator-files.service";
@@ -34,7 +36,7 @@ import { ValidatorService } from "./validator.service";
     ValidatorTypescriptService,
     ValidatorWorkspaceService,
   ],
-  imports: [],
+  imports: [LoggerModule],
   providers: [
     ValidatorAbstractSyntaxTreeService,
     ValidatorCommentsService,

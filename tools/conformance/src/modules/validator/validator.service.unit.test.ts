@@ -46,15 +46,15 @@ describe(ValidatorService, () => {
     expect(service).toBeDefined();
   });
 
-  it("creates a fallback logger when constructor receives an undefined logger", () => {
-    const fallbackService = new ValidatorService(
-      undefined,
+  it("instantiates with injected logger service", () => {
+    const validatorService = new ValidatorService(
+      mockLoggerService,
       mockFilesService,
       mockRulesService,
       mockWorkspaceService,
     );
 
-    expect(fallbackService).toBeDefined();
+    expect(validatorService).toBeDefined();
   });
 
   it("uses the injected logger and sets context", () => {

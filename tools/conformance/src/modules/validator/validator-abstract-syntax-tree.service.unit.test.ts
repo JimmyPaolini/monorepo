@@ -143,4 +143,33 @@ describe(ValidatorAbstractSyntaxTreeService, () => {
       }),
     ).toStrictEqual([]);
   });
+
+  it("uses reduce tie branch when keyless candidates produce equal errors", () => {
+    const templateFile = createSourceFile(
+      "template.ts",
+      ["if (flag) {", "  alpha();", "  beta();", "}"].join("\n"),
+      ScriptTarget.Latest,
+      true,
+      ScriptKind.TS,
+    );
+    const instanceFile = createSourceFile(
+      "instance.ts",
+      ["if (flag) {", "  alpha();", "}", "if (flag) {", "  alpha();", "}"].join(
+        "\n",
+      ),
+      ScriptTarget.Latest,
+      true,
+      ScriptKind.TS,
+    );
+
+    const errors = service.validateDepthFirstSearch({
+      instanceFile,
+      instanceNode: instanceFile,
+      language: "typescript",
+      templateNode: templateFile,
+    });
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0]?.message).toContain("Missing ExpressionStatement");
+  });
 });

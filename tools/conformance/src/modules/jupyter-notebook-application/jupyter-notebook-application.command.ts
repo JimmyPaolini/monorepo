@@ -52,6 +52,72 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
+   * Migrated core generator logic for creating a Jupyter notebook application.
+   */
+  static async generateJupyterNotebookApplication(
+    argumentsOrTree: JupyterNotebookApplicationArguments,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateJupyterNotebookApplication(
+    tree: Tree,
+    options?: JupyterNotebookApplicationOptions,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateJupyterNotebookApplication(
+    argumentsOrTree: JupyterNotebookApplicationArguments | Tree,
+    options?: JupyterNotebookApplicationOptions,
+  ): Promise<void> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<JupyterNotebookApplicationOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<JupyterNotebookApplicationOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<JupyterNotebookApplicationOptions>(
+            {
+              ...(options !== undefined && { options }),
+              tree: argumentsOrTree,
+            },
+          );
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const applicationName = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
+      subject: "Application name",
+    });
+    const targetDirectory = path.join(APPLICATIONS_DIRECTORY, applicationName);
+
+    if (tree.exists(targetDirectory)) {
+      throw new Error(
+        `Directory "${targetDirectory}" already exists. Choose a different application name.`,
+      );
+    }
+
+    generateFiles({
+      instanceDirectoryPath: targetDirectory,
+      substitutions: {
+        description:
+          resolvedOptions.description ??
+          `A Python + Jupyter notebook application scaffold for ${applicationName}`,
+        name: applicationName,
+      },
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/jupyter-notebook-application/templates",
+      ),
+      tree,
+    });
+
+    await formatFiles(tree);
+  }
+
+  /**
    * Parses the optional project description argument.
    */
   @Option({
@@ -81,67 +147,11 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
     options: JupyterNotebookApplicationOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    await generateJupyterNotebookApplication({
+    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
       options,
       tree,
     });
     await commitWorkspaceTree({ tree });
     this.logger.log("Generated Jupyter notebook application scaffold.");
   }
-}
-
-/**
- * Migrated core generator logic for creating a Jupyter notebook application.
- */
-export async function generateJupyterNotebookApplication(
-  argumentsOrTree: JupyterNotebookApplicationArguments,
-): Promise<void>;
-export async function generateJupyterNotebookApplication(
-  argumentsOrTree: JupyterNotebookApplicationArguments | Tree,
-  options?: JupyterNotebookApplicationOptions,
-): Promise<void> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<JupyterNotebookApplicationOptions>(
-      argumentsOrTree,
-    )
-      ? normalizeGeneratorInvocationFromArguments<JupyterNotebookApplicationOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<JupyterNotebookApplicationOptions>(
-          {
-            ...(options !== undefined && { options }),
-            tree: argumentsOrTree,
-          },
-        );
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const applicationName = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT,
-    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-    subject: "Application name",
-  });
-  const targetDirectory = path.join(APPLICATIONS_DIRECTORY, applicationName);
-
-  if (tree.exists(targetDirectory)) {
-    throw new Error(
-      `Directory "${targetDirectory}" already exists. Choose a different application name.`,
-    );
-  }
-
-  generateFiles({
-    instanceDirectoryPath: targetDirectory,
-    substitutions: {
-      description:
-        resolvedOptions.description ??
-        `A Python + Jupyter notebook application scaffold for ${applicationName}`,
-      name: applicationName,
-    },
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/jupyter-notebook-application/templates",
-    ),
-    tree,
-  });
-
-  await formatFiles(tree);
 }

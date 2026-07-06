@@ -59,6 +59,84 @@ export class NestjsGraphqlModuleCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
+   * Migrated core generator logic for creating a NestJS GraphQL module.
+   */
+  static async generateNestjsGraphqlModule(
+    argumentsOrTree: NestjsGraphqlModuleArguments,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsGraphqlModule(
+    tree: Tree,
+    options?: NestjsGraphqlModuleOptions,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsGraphqlModule(
+    argumentsOrTree: NestjsGraphqlModuleArguments | Tree,
+    options?: NestjsGraphqlModuleOptions,
+  ): Promise<GeneratorCallback> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsGraphqlModuleOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlModuleOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsGraphqlModuleOptions>({
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          });
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const projectName = await resolveProject({
+      tag: NESTJS_GRAPHQL_MODULE_PROJECT_TAG,
+      tree,
+      ...(resolvedOptions.project !== undefined && {
+        project: resolvedOptions.project,
+      }),
+      message: NESTJS_GRAPHQL_MODULE_PROJECT_PROMPT,
+    });
+    const directory = resolveProjectModulesDirectoryPath({ projectName, tree });
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_GRAPHQL_MODULE_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
+      subject: "Module name",
+    });
+    const targetPath = path.join(directory, nameKebabCase);
+
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions: {
+        nameCamelCase: _.camelCase(nameKebabCase),
+        nameKebabCase,
+        namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+      },
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/nestjs-graphql-module/templates",
+      ),
+      tree,
+    });
+
+    const generatedFiles = tree
+      .children(targetPath)
+      .map((fileName: string) => path.join(targetPath, fileName));
+
+    return () => {
+      execSync(
+        `pnpm exec nx format:write --files=${generatedFiles.join(",")}`,
+        {
+          cwd: workspaceRoot,
+          stdio: "inherit",
+        },
+      );
+    };
+  }
+
+  /**
    * Parses the optional module name argument.
    */
   @Option({
@@ -88,74 +166,12 @@ export class NestjsGraphqlModuleCommand extends CommandRunner {
     options: NestjsGraphqlModuleOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    const callback = await generateNestjsGraphqlModule({
-      options,
-      tree,
-    });
+    const callback =
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
+        options,
+        tree,
+      });
     await commitWorkspaceTree({ callback, tree });
     this.logger.log("Generated NestJS GraphQL module scaffold.");
   }
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-export async function generateNestjsGraphqlModule(
-  argumentsOrTree: NestjsGraphqlModuleArguments,
-): Promise<GeneratorCallback>;
-export async function generateNestjsGraphqlModule(
-  argumentsOrTree: NestjsGraphqlModuleArguments | Tree,
-  options?: NestjsGraphqlModuleOptions,
-): Promise<GeneratorCallback> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsGraphqlModuleOptions>(argumentsOrTree)
-      ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlModuleOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsGraphqlModuleOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const projectName = await resolveProject({
-    tag: NESTJS_GRAPHQL_MODULE_PROJECT_TAG,
-    tree,
-    ...(resolvedOptions.project !== undefined && {
-      project: resolvedOptions.project,
-    }),
-    message: NESTJS_GRAPHQL_MODULE_PROJECT_PROMPT,
-  });
-  const directory = resolveProjectModulesDirectoryPath({ projectName, tree });
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_GRAPHQL_MODULE_NAME_PROMPT,
-    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-    subject: "Module name",
-  });
-  const targetPath = path.join(directory, nameKebabCase);
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions: {
-      nameCamelCase: _.camelCase(nameKebabCase),
-      nameKebabCase,
-      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-    },
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/nestjs-graphql-module/templates",
-    ),
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((fileName: string) => path.join(targetPath, fileName));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
 }

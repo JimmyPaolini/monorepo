@@ -8,10 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateReactComponent,
-  ReactComponentCommand,
-} from "./react-component.command";
+import { ReactComponentCommand } from "./react-component.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -92,7 +89,7 @@ describe(ReactComponentCommand, () => {
 
   it("generates component scaffold from arguments invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateReactComponent({
+      await ReactComponentCommand.generateReactComponent({
         options: {
           name: "user-profile-card",
           project: projectName,
@@ -126,7 +123,7 @@ describe(ReactComponentCommand, () => {
     const formatFilesSpy = vi.spyOn(await import("@nx/devkit"), "formatFiles");
 
     await runWithRepositoryRoot(async () => {
-      await generateReactComponent({
+      await ReactComponentCommand.generateReactComponent({
         options: {
           name: "alert-banner",
           project: projectName,
@@ -145,9 +142,23 @@ describe(ReactComponentCommand, () => {
     formatFilesSpy.mockRestore();
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await ReactComponentCommand.generateReactComponent(tree, {
+        name: "status-pill",
+        project: projectName,
+      });
+    });
+
+    expect(tree.exists(`${componentsDirectory}/StatusPill.tsx`)).toBe(true);
+    expect(tree.exists(`${componentsDirectory}/StatusPill.test.tsx`)).toBe(
+      true,
+    );
+  });
+
   it("validates component names as kebab-case", async () => {
     await expect(
-      generateReactComponent({
+      ReactComponentCommand.generateReactComponent({
         options: {
           name: "AlertBanner",
           project: projectName,
@@ -166,7 +177,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      generateReactComponent({
+      ReactComponentCommand.generateReactComponent({
         options: {
           name: "alert-banner",
           project: "caelundas",
@@ -186,7 +197,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      generateReactComponent({
+      ReactComponentCommand.generateReactComponent({
         options: {
           name: "alert-banner",
           project: "caelundas",
@@ -206,7 +217,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      generateReactComponent({
+      ReactComponentCommand.generateReactComponent({
         options: {
           name: "alert-banner",
           project: projectName,
@@ -223,7 +234,7 @@ describe(ReactComponentCommand, () => {
     addReactProject(treeWithoutComponentsDirectory);
 
     await expect(
-      generateReactComponent({
+      ReactComponentCommand.generateReactComponent({
         options: {
           name: "alert-banner",
           project: projectName,

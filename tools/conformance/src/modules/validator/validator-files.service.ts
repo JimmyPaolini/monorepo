@@ -18,9 +18,6 @@ import type {
   InstanceDirectoryValidationResult,
 } from "./validator.types";
 
-const TS_EXTENSIONS = new Set([".cjs", ".js", ".jsx", ".mjs", ".ts", ".tsx"]);
-const PYTHON_EXTENSIONS = new Set([".ipynb", ".py"]);
-
 /**
  * File and directory conformance validation utilities.
  */
@@ -31,6 +28,17 @@ export class ValidatorFilesService {
     private readonly validatorMarkdownService: ValidatorMarkdownService,
     private readonly validatorTextService: ValidatorTextService,
   ) {}
+
+  private static readonly PYTHON_EXTENSIONS = new Set([".ipynb", ".py"]);
+
+  private static readonly TS_EXTENSIONS = new Set([
+    ".cjs",
+    ".js",
+    ".jsx",
+    ".mjs",
+    ".ts",
+    ".tsx",
+  ]);
 
   private readonly validatorPythonBridgeService =
     new ValidatorPythonBridgeService();
@@ -264,7 +272,7 @@ export class ValidatorFilesService {
         template,
       });
     }
-    if (TS_EXTENSIONS.has(extension)) {
+    if (ValidatorFilesService.TS_EXTENSIONS.has(extension)) {
       return this.validatorTypescriptService.validateTypescriptConformance({
         data,
         filename,
@@ -272,7 +280,7 @@ export class ValidatorFilesService {
         template,
       });
     }
-    if (PYTHON_EXTENSIONS.has(extension)) {
+    if (ValidatorFilesService.PYTHON_EXTENSIONS.has(extension)) {
       return this.validatorPythonBridgeService.validatePythonConformance({
         data,
         extension,

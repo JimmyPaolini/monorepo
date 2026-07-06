@@ -13,10 +13,7 @@ vi.mock("node:child_process", () => ({
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsDataloaderModule,
-  NestjsDataloaderModuleCommand,
-} from "./nestjs-dataloader-module.command";
+import { NestjsDataloaderModuleCommand } from "./nestjs-dataloader-module.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -93,7 +90,7 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("generates module files from migrated generator logic", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsDataloaderModule({
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
         options: {
           name: "post",
           project: projectName,
@@ -115,7 +112,7 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("validates module names as kebab-case", async () => {
     await expect(
-      generateNestjsDataloaderModule({
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
         options: {
           name: "blogPost",
           project: projectName,
@@ -129,7 +126,7 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("supports tree-first invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsDataloaderModule({
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
         options: {
           name: "audit-log",
           project: projectName,
@@ -144,6 +141,20 @@ describe(NestjsDataloaderModuleCommand, () => {
     expect(tree.exists(`${modulePath}/audit-log.dataloader.ts`)).toBe(true);
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(tree, {
+        name: "gamma-log",
+        project: projectName,
+      });
+    });
+
+    const modulePath = `${modulesDirectory}/gamma-log`;
+
+    expect(tree.exists(`${modulePath}/gamma-log.module.ts`)).toBe(true);
+    expect(tree.exists(`${modulePath}/gamma-log.dataloader.ts`)).toBe(true);
+  });
+
   it("rejects project names without required framework:nestjs tag", async () => {
     addProjectConfiguration(tree, "wrong-tag-project", {
       root: "applications/wrong-tag-project",
@@ -152,7 +163,7 @@ describe(NestjsDataloaderModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      generateNestjsDataloaderModule({
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
         options: {
           name: "user-profile",
           project: "wrong-tag-project",
@@ -172,7 +183,7 @@ describe(NestjsDataloaderModuleCommand, () => {
     });
 
     await expect(
-      generateNestjsDataloaderModule({
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -229,13 +240,14 @@ describe(NestjsDataloaderModuleCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await generateNestjsDataloaderModule({
-        options: {
-          name: "format-target",
-          project: projectName,
-        },
-        tree,
-      });
+      callback =
+        await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
+          options: {
+            name: "format-target",
+            project: projectName,
+          },
+          tree,
+        });
     });
 
     if (callback === undefined) {

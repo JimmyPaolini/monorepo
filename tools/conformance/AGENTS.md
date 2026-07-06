@@ -143,6 +143,36 @@ export class MyDomainModule {}
 
 Add a JSDoc comment on the module class describing what domain it owns.
 
+### Generator Export Signature Pattern
+
+When exposing reusable generator functions from command modules, keep dual invocation support with explicit overloads:
+
+- `generateX({ tree, options })` for tests and argument-object call sites
+- `generateX(tree, options?)` for tree-first call sites
+
+Use this structure consistently:
+
+```ts
+export async function generateX(argumentsOrTree: XArguments): Promise<void>;
+export async function generateX(tree: Tree, options?: XOptions): Promise<void>;
+export async function generateX(
+  argumentsOrTree: Tree | XArguments,
+  options?: XOptions,
+): Promise<void> {
+  const resolved = isGeneratorInvocationArguments<XOptions>(argumentsOrTree)
+    ? normalizeGeneratorInvocationFromArguments<XOptions>(argumentsOrTree)
+    : normalizeGeneratorInvocationFromTree<XOptions>({
+        ...(options !== undefined && { options }),
+        tree: argumentsOrTree,
+      });
+
+  // implement generator logic using resolved.tree + resolved.options
+}
+```
+
+> ✅ **Best practice:** Declare both overload signatures explicitly before the implementation signature so tree-first tests and callers type-check without `Expected 1 argument, got 2` regressions.
+> ⚠️ **Warning:** Do not rely on only the implementation union signature; TypeScript call-site checking still uses declared overloads and will reject valid two-argument call patterns if the tree-first overload is missing.
+
 ### Service file
 
 Follow the section-comment layout from the template — it keeps large services scannable:

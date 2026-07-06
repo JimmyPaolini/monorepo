@@ -13,10 +13,7 @@ vi.mock("node:child_process", () => ({
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsCommandModule,
-  NestjsCommandModuleCommand,
-} from "./nestjs-command-module.command";
+import { NestjsCommandModuleCommand } from "./nestjs-command-module.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -93,7 +90,7 @@ describe(NestjsCommandModuleCommand, () => {
 
   it("generates command module scaffold files", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandModule({
+      await NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -115,7 +112,7 @@ describe(NestjsCommandModuleCommand, () => {
 
   it("supports tree-first generator invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandModule({
+      await NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "audit-log",
           project: projectName,
@@ -132,9 +129,25 @@ describe(NestjsCommandModuleCommand, () => {
     );
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await NestjsCommandModuleCommand.generateNestjsCommandModule(tree, {
+        name: "event-log",
+        project: projectName,
+      });
+    });
+
+    const modulePath = `${modulesDirectory}/event-log`;
+
+    expect(tree.exists(`${modulePath}/event-log.command.ts`)).toBe(true);
+    expect(tree.exists(`${modulePath}/event-log.command.unit.test.ts`)).toBe(
+      true,
+    );
+  });
+
   it("validates module names as kebab-case", async () => {
     await expect(
-      generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "userProfile",
           project: projectName,
@@ -154,7 +167,7 @@ describe(NestjsCommandModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "user-profile",
           project: "wrong-tag-project",
@@ -174,7 +187,7 @@ describe(NestjsCommandModuleCommand, () => {
     });
 
     await expect(
-      generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -231,7 +244,7 @@ describe(NestjsCommandModuleCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await generateNestjsCommandModule({
+      callback = await NestjsCommandModuleCommand.generateNestjsCommandModule({
         options: {
           name: "format-target",
           project: projectName,

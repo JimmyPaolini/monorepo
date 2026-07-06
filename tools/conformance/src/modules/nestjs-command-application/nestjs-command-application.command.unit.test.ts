@@ -13,10 +13,7 @@ import {
 } from "../../constants";
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsCommandApplication,
-  NestjsCommandApplicationCommand,
-} from "./nestjs-command-application.command";
+import { NestjsCommandApplicationCommand } from "./nestjs-command-application.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -93,7 +90,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("generates a command application under applications", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandApplication({
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: APPLICATIONS_DIRECTORY,
           name: "my-command-app",
@@ -112,7 +109,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("generates a command application under tools", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandApplication({
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: TOOLS_DIRECTORY,
           name: "my-command-tool",
@@ -130,7 +127,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("supports tree-first invocation overload", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandApplication({
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: APPLICATIONS_DIRECTORY,
           name: "tree-first-command-app",
@@ -145,13 +142,30 @@ describe(NestjsCommandApplicationCommand, () => {
     expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
+        tree,
+        {
+          destinationRoot: APPLICATIONS_DIRECTORY,
+          name: "signature-command-app",
+        },
+      );
+    });
+
+    const projectRoot = `${APPLICATIONS_DIRECTORY}/signature-command-app`;
+
+    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
+    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
+  });
+
   it("prompts for destination root when not provided", async () => {
     mockedPrompts.mockResolvedValueOnce({
       destinationRoot: TOOLS_DIRECTORY,
     });
 
     await runWithRepositoryRoot(async () => {
-      await generateNestjsCommandApplication({
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           name: "prompted-command-app",
         },
@@ -171,7 +185,7 @@ describe(NestjsCommandApplicationCommand, () => {
     });
 
     await expect(
-      generateNestjsCommandApplication({
+      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           name: "missing-destination-selection",
         },
@@ -186,7 +200,7 @@ describe(NestjsCommandApplicationCommand, () => {
     });
 
     await expect(
-      generateNestjsCommandApplication({
+      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           name: "invalid-prompted-destination",
         },
@@ -201,7 +215,7 @@ describe(NestjsCommandApplicationCommand, () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-app/.gitkeep`, "");
 
     await expect(
-      generateNestjsCommandApplication({
+      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: APPLICATIONS_DIRECTORY,
           name: "existing-app",
@@ -215,7 +229,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("throws for invalid destination roots", async () => {
     await expect(
-      generateNestjsCommandApplication({
+      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: "invalid-root",
           name: "my-command-app",
@@ -229,7 +243,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("validates application names as kebab-case", async () => {
     await expect(
-      generateNestjsCommandApplication({
+      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
         options: {
           destinationRoot: APPLICATIONS_DIRECTORY,
           name: "myCommandApp",

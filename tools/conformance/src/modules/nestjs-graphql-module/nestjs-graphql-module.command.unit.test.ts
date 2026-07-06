@@ -13,10 +13,7 @@ vi.mock("node:child_process", () => ({
 
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  generateNestjsGraphqlModule,
-  NestjsGraphqlModuleCommand,
-} from "./nestjs-graphql-module.command";
+import { NestjsGraphqlModuleCommand } from "./nestjs-graphql-module.command";
 
 import type { Tree } from "@nx/devkit";
 
@@ -93,7 +90,7 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("generates graphql module scaffold files", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlModule({
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -117,7 +114,7 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("supports tree-first invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlModule({
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "audit-log",
           project: projectName,
@@ -139,9 +136,23 @@ describe(NestjsGraphqlModuleCommand, () => {
     expect(tree.exists(`${modulePath}/audit-log.types.ts`)).toBe(true);
   });
 
+  it("supports tree-first overload signature", async () => {
+    await runWithRepositoryRoot(async () => {
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule(tree, {
+        name: "event-log",
+        project: projectName,
+      });
+    });
+
+    const modulePath = `${modulesDirectory}/event-log`;
+
+    expect(tree.exists(`${modulePath}/event-log.module.ts`)).toBe(true);
+    expect(tree.exists(`${modulePath}/event-log.resolver.ts`)).toBe(true);
+  });
+
   it("writes expected substitutions into generated files", async () => {
     await runWithRepositoryRoot(async () => {
-      await generateNestjsGraphqlModule({
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -173,7 +184,7 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("validates module names as kebab-case", async () => {
     await expect(
-      generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "userProfile",
           project: projectName,
@@ -193,7 +204,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "user-profile",
           project: "wrong-tag-project",
@@ -213,7 +224,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     });
 
     await expect(
-      generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "user-profile",
         },
@@ -232,7 +243,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     });
 
     await expect(
-      generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "user-profile",
           project: projectName,
@@ -289,7 +300,7 @@ describe(NestjsGraphqlModuleCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await generateNestjsGraphqlModule({
+      callback = await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
         options: {
           name: "format-target",
           project: projectName,

@@ -6,13 +6,13 @@ import { workspaceRoot } from "@nx/devkit";
 
 import type { ConformanceError } from "./validator.types";
 
-const PYTHON_BRIDGE_EXTENSIONS = new Set([".ipynb", ".py"]);
-
 /**
  * Bridges TypeScript validation flow to Python validators.
  */
 @Injectable()
 export class ValidatorPythonBridgeService {
+  private static readonly PYTHON_BRIDGE_EXTENSIONS = new Set([".ipynb", ".py"]);
+
   /**
    * Adds a property only when the value is defined.
    */
@@ -156,7 +156,9 @@ export class ValidatorPythonBridgeService {
     instance: string;
     template: string;
   }): { errors: ConformanceError[] } {
-    if (!PYTHON_BRIDGE_EXTENSIONS.has(args.extension)) {
+    if (
+      !ValidatorPythonBridgeService.PYTHON_BRIDGE_EXTENSIONS.has(args.extension)
+    ) {
       throw new Error(
         `Python validator bridge only supports .py and .ipynb files. Received: ${args.extension}`,
       );

@@ -1,5 +1,13 @@
 // 🏷️ Types
 
+/** Metadata for a discovered source comment. */
+export interface CommentInfo {
+  column: number;
+  line: number;
+  pos: number;
+  text: string;
+}
+
 /**
  * A structured conformance error produced by any validator.
  *
@@ -77,6 +85,25 @@ export interface InstanceFileValidationResult {
   templateFilePath: string;
 }
 
+/** Recursive JSON value used for structural JSON conformance validation. */
+export type JsonValue =
+  | boolean
+  | JsonValue[]
+  | null
+  | number
+  | string
+  | { [key: string]: JsonValue };
+
+/** Source location metadata for AST missing-node errors. */
+export interface ResolvedErrorLocation {
+  breadcrumb: string;
+  instanceCharacter: number;
+  instanceLine: number;
+  snippet: string;
+  templateCharacter: number;
+  templateLine: number;
+}
+
 /** CLI option payload parsed by nest-commander. */
 export interface ValidatorCommandOptions {
   projects?: string[];
@@ -133,4 +160,10 @@ export interface ValidatorSummary {
   failedProjectCount: number;
   projectCount: number;
   violatedRuleCount: number;
+}
+
+/** Workspace project metadata resolved from project.json. */
+export interface WorkspaceProject {
+  rootPath: string;
+  tags: string[];
 }

@@ -6,18 +6,7 @@ import {
   type TemplateConformanceArguments,
 } from "./validators/common";
 
-import type { ConformanceError } from "./validator.types";
-
-/**
- * JSON value type used for recursive structural comparison.
- */
-type JsonValue =
-  | boolean
-  | JsonValue[]
-  | null
-  | number
-  | string
-  | { [key: string]: JsonValue };
+import type { ConformanceError, JsonValue } from "./validator.types";
 
 /**
  * Validates JSON and JSONC instance files against template structure.

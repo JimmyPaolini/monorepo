@@ -28,18 +28,13 @@ export class ValidatorService {
   // 🏗 Dependency Injection
 
   constructor(
-    logger: LoggerService | undefined,
+    private readonly loggerService: LoggerService,
     private readonly validatorFilesService: ValidatorFilesService,
     private readonly validatorRulesService: ValidatorRulesService,
     private readonly validatorWorkspaceService: ValidatorWorkspaceService,
   ) {
-    this.logger = logger ?? new LoggerService();
-    this.logger.setContext(ValidatorService.name);
+    this.loggerService.setContext(ValidatorService.name);
   }
-
-  // 🔐 Private Fields
-
-  private readonly logger: LoggerService;
 
   // 🔑 Public Fields
 
@@ -71,20 +66,24 @@ export class ValidatorService {
    * Resolves validation rules from explicit input or the full default rule set.
    */
   private resolveSelectedRules(
-    requestedRules: undefined | ValidatorRuleName[],
+    requestedRules: string[] | undefined,
   ): ValidatorRuleName[] {
     if (requestedRules === undefined) {
       return VALIDATOR_RULE_NAMES;
     }
 
+    const selectedRules = requestedRules.filter(
+      (requestedRule): requestedRule is ValidatorRuleName =>
+        isValidatorRuleName(requestedRule),
+    );
     const unknownRules = requestedRules.filter(
-      (requestedRule) => !VALIDATOR_RULE_NAMES.includes(requestedRule),
+      (requestedRule) => !isValidatorRuleName(requestedRule),
     );
     if (unknownRules.length > 0) {
       throw new Error(`Unknown validation rules: ${unknownRules.join(", ")}`);
     }
 
-    return requestedRules;
+    return selectedRules;
   }
 
   /**
@@ -126,11 +125,7 @@ export class ValidatorService {
         allWorkspaceProjects,
         requestedProjectNames: request.projects,
       });
-    const requestedRules = request.rules;
-    const selectedRequestedRules = requestedRules?.filter((ruleName) =>
-      isValidatorRuleName(ruleName),
-    );
-    const selectedRules = this.resolveSelectedRules(selectedRequestedRules);
+    const selectedRules = this.resolveSelectedRules(request.rules);
     const selectedProjects = selectedProjectNames.map((projectName) =>
       this.validatorWorkspaceService.resolveProjectByName({
         allWorkspaceProjects,

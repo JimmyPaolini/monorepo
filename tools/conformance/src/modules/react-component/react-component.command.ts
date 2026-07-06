@@ -58,6 +58,72 @@ export class ReactComponentCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
+   * Migrated core generator logic for creating a React component.
+   */
+  static async generateReactComponent(
+    argumentsOrTree: ReactComponentArguments,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateReactComponent(
+    tree: Tree,
+    options?: ReactComponentOptions,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateReactComponent(
+    argumentsOrTree: ReactComponentArguments | Tree,
+    options?: ReactComponentOptions,
+  ): Promise<void> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<ReactComponentOptions>(argumentsOrTree)
+        ? normalizeGeneratorInvocationFromArguments<ReactComponentOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          });
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const projectName = await resolveProject({
+      tag: REACT_COMPONENT_PROJECT_TAG,
+      tree,
+      ...(resolvedOptions.project !== undefined && {
+        project: resolvedOptions.project,
+      }),
+      message: REACT_COMPONENT_PROJECT_PROMPT,
+    });
+
+    const name = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: REACT_COMPONENT_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
+      subject: "Component name",
+    });
+
+    const componentsDirectory = resolveProjectComponentsDirectoryPath({
+      projectName,
+      tree,
+    });
+    const templateDirectoryPath = path.join(
+      process.cwd(),
+      "tools/conformance/src/modules/react-component/templates",
+    );
+    const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
+
+    generateFiles({
+      instanceDirectoryPath: componentsDirectory,
+      substitutions,
+      templateDirectoryPath,
+      tree,
+    });
+
+    await formatFiles(tree);
+  }
+
+  /**
    * Parses the optional component name argument.
    */
   @Option({
@@ -87,67 +153,11 @@ export class ReactComponentCommand extends CommandRunner {
     options: ReactComponentOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    await generateReactComponent({
+    await ReactComponentCommand.generateReactComponent({
       options,
       tree,
     });
     await commitWorkspaceTree({ tree });
     this.logger.log("Generated React component scaffold.");
   }
-}
-
-/**
- * Migrated core generator logic for creating a React component.
- */
-export async function generateReactComponent(
-  argumentsOrTree: ReactComponentArguments,
-): Promise<void>;
-export async function generateReactComponent(
-  argumentsOrTree: ReactComponentArguments | Tree,
-  options?: ReactComponentOptions,
-): Promise<void> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<ReactComponentOptions>(argumentsOrTree)
-      ? normalizeGeneratorInvocationFromArguments<ReactComponentOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const projectName = await resolveProject({
-    tag: REACT_COMPONENT_PROJECT_TAG,
-    tree,
-    ...(resolvedOptions.project !== undefined && {
-      project: resolvedOptions.project,
-    }),
-    message: REACT_COMPONENT_PROJECT_PROMPT,
-  });
-
-  const name = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: REACT_COMPONENT_NAME_PROMPT,
-    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-    subject: "Component name",
-  });
-
-  const componentsDirectory = resolveProjectComponentsDirectoryPath({
-    projectName,
-    tree,
-  });
-  const templateDirectoryPath = path.join(
-    process.cwd(),
-    "tools/conformance/src/modules/react-component/templates",
-  );
-  const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
-
-  generateFiles({
-    instanceDirectoryPath: componentsDirectory,
-    substitutions,
-    templateDirectoryPath,
-    tree,
-  });
-
-  await formatFiles(tree);
 }

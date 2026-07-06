@@ -53,6 +53,73 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
   // 🌎 Public Methods
 
   /**
+   * Migrated core generator logic for creating a NestJS GraphQL application.
+   */
+  static async generateNestjsGraphqlApplication(
+    argumentsOrTree: NestjsGraphqlApplicationArguments,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsGraphqlApplication(
+    tree: Tree,
+    options?: NestjsGraphqlApplicationOptions,
+  ): Promise<void>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsGraphqlApplication(
+    argumentsOrTree: NestjsGraphqlApplicationArguments | Tree,
+    options?: NestjsGraphqlApplicationOptions,
+  ): Promise<void> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsGraphqlApplicationOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlApplicationOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>(
+            {
+              ...(options !== undefined && { options }),
+              tree: argumentsOrTree,
+            },
+          );
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
+      subject: "Application name",
+    });
+    const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
+
+    if (tree.exists(projectRoot)) {
+      throw new Error(
+        `Directory "${projectRoot}" already exists. Choose a different application name.`,
+      );
+    }
+
+    const substitutions = {
+      nameCamelCase: _.camelCase(nameKebabCase),
+      nameKebabCase,
+      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+    };
+
+    generateFiles({
+      instanceDirectoryPath: projectRoot,
+      substitutions,
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/nestjs-graphql-application/templates",
+      ),
+      tree,
+    });
+
+    await formatFiles(tree);
+  }
+
+  /**
    * Parses the optional application name argument.
    */
   @Option({
@@ -71,66 +138,11 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
     options: NestjsGraphqlApplicationOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    await generateNestjsGraphqlApplication({
+    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
       options,
       tree,
     });
     await commitWorkspaceTree({ tree });
     this.logger.log("Generated NestJS GraphQL application scaffold.");
   }
-}
-
-/**
- * Migrated core generator logic for creating a NestJS GraphQL application.
- */
-export async function generateNestjsGraphqlApplication(
-  argumentsOrTree: NestjsGraphqlApplicationArguments,
-): Promise<void>;
-export async function generateNestjsGraphqlApplication(
-  argumentsOrTree: NestjsGraphqlApplicationArguments | Tree,
-  options?: NestjsGraphqlApplicationOptions,
-): Promise<void> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsGraphqlApplicationOptions>(
-      argumentsOrTree,
-    )
-      ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlApplicationOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
-    ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-    subject: "Application name",
-  });
-  const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
-
-  if (tree.exists(projectRoot)) {
-    throw new Error(
-      `Directory "${projectRoot}" already exists. Choose a different application name.`,
-    );
-  }
-
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: projectRoot,
-    substitutions,
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/nestjs-graphql-application/templates",
-    ),
-    tree,
-  });
-
-  await formatFiles(tree);
 }

@@ -9,13 +9,7 @@ import {
   DEFAULT_PROJECT_TYPE_TAGS,
 } from "./validator.constants";
 
-/**
- * Workspace project metadata resolved from project.json.
- */
-export interface WorkspaceProject {
-  rootPath: string;
-  tags: string[];
-}
+import type { WorkspaceProject } from "./validator.types";
 
 /**
  * Workspace project discovery and resolution helpers.

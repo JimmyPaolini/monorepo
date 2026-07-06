@@ -48,9 +48,9 @@ describe(ValidatorCommandService, () => {
     expect(logger.setContext).toHaveBeenCalledWith("ValidatorCommandService");
   });
 
-  it("creates a fallback logger when constructor receives an undefined logger", () => {
+  it("creates an internal logger when instantiated", () => {
     const commandService = new ValidatorCommandService(
-      undefined,
+      createMock<LoggerService>(),
       createMock<ValidatorService>(),
     );
 

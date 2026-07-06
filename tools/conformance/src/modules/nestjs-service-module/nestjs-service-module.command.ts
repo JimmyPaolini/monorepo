@@ -56,7 +56,102 @@ export class NestjsServiceModuleCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
+  /**
+   * Migrated core generator logic for creating a NestJS service module.
+   */
+  static async generateNestjsServiceModule(
+    argumentsOrTree: NestjsServiceModuleArguments,
+  ): Promise<GeneratorCallback>;
   // 🌎 Public Methods
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsServiceModule(
+    tree: Tree,
+    options?: NestjsServiceModuleOptions,
+  ): Promise<GeneratorCallback>;
+  /**
+   * Overload signature for tree and options based invocation.
+   */
+  static async generateNestjsServiceModule(
+    argumentsOrTree: NestjsServiceModuleArguments | Tree,
+    options?: NestjsServiceModuleOptions,
+  ): Promise<GeneratorCallback> {
+    const resolvedArguments =
+      isGeneratorInvocationArguments<NestjsServiceModuleOptions>(
+        argumentsOrTree,
+      )
+        ? normalizeGeneratorInvocationFromArguments<NestjsServiceModuleOptions>(
+            argumentsOrTree,
+          )
+        : normalizeGeneratorInvocationFromTree<NestjsServiceModuleOptions>({
+            ...(options !== undefined && { options }),
+            tree: argumentsOrTree,
+          });
+    const { options: resolvedOptions, tree } = resolvedArguments;
+    const { nameKebabCase, projectName } =
+      await NestjsServiceModuleCommand.resolveProjectAndName(
+        tree,
+        resolvedOptions,
+      );
+    const modulesDirectory = resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    });
+    const targetPath = path.join(modulesDirectory, nameKebabCase);
+    const substitutions = {
+      nameCamelCase: _.camelCase(nameKebabCase),
+      nameKebabCase,
+      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+    };
+
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions,
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/nestjs-service-module/templates",
+      ),
+      tree,
+    });
+
+    const generatedFiles = tree
+      .children(targetPath)
+      .map((fileName: string) => path.join(targetPath, fileName));
+
+    return () => {
+      execSync(
+        `pnpm exec nx format:write --files=${generatedFiles.join(",")}`,
+        {
+          cwd: workspaceRoot,
+          stdio: "inherit",
+        },
+      );
+    };
+  }
+  /**
+   * Resolves project and module name for service module generation.
+   */
+  private static async resolveProjectAndName(
+    tree: Tree,
+    options: NestjsServiceModuleOptions,
+  ): Promise<{ nameKebabCase: string; projectName: string }> {
+    const projectName = await resolveProject({
+      tag: NESTJS_SERVICE_MODULE_PROJECT_TAG,
+      tree,
+      ...(options.project !== undefined && { project: options.project }),
+      message: NESTJS_SERVICE_MODULE_PROJECT_PROMPT,
+    });
+
+    const nameKebabCase = await resolveName({
+      case: StringCase.KEBAB_CASE,
+      message: NESTJS_SERVICE_MODULE_NAME_PROMPT,
+      ...(options.name !== undefined && { name: options.name }),
+      subject: "Module name",
+    });
+
+    return { nameKebabCase, projectName };
+  }
 
   /**
    * Parses the optional module name argument.
@@ -88,92 +183,12 @@ export class NestjsServiceModuleCommand extends CommandRunner {
     options: NestjsServiceModuleOptions,
   ): Promise<void> {
     const tree = createWorkspaceTree();
-    const callback = await generateNestjsServiceModule({
-      options,
-      tree,
-    });
+    const callback =
+      await NestjsServiceModuleCommand.generateNestjsServiceModule({
+        options,
+        tree,
+      });
     await commitWorkspaceTree({ callback, tree });
     this.logger.log("Generated NestJS service module scaffold.");
   }
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-export async function generateNestjsServiceModule(
-  argumentsOrTree: NestjsServiceModuleArguments,
-): Promise<GeneratorCallback>;
-export async function generateNestjsServiceModule(
-  argumentsOrTree: NestjsServiceModuleArguments | Tree,
-  options?: NestjsServiceModuleOptions,
-): Promise<GeneratorCallback> {
-  const resolvedArguments =
-    isGeneratorInvocationArguments<NestjsServiceModuleOptions>(argumentsOrTree)
-      ? normalizeGeneratorInvocationFromArguments<NestjsServiceModuleOptions>(
-          argumentsOrTree,
-        )
-      : normalizeGeneratorInvocationFromTree<NestjsServiceModuleOptions>({
-          ...(options !== undefined && { options }),
-          tree: argumentsOrTree,
-        });
-  const { options: resolvedOptions, tree } = resolvedArguments;
-  const { nameKebabCase, projectName } = await resolveProjectAndName(
-    tree,
-    resolvedOptions,
-  );
-  const modulesDirectory = resolveProjectModulesDirectoryPath({
-    projectName,
-    tree,
-  });
-  const targetPath = path.join(modulesDirectory, nameKebabCase);
-  const substitutions = {
-    nameCamelCase: _.camelCase(nameKebabCase),
-    nameKebabCase,
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-  };
-
-  generateFiles({
-    instanceDirectoryPath: targetPath,
-    substitutions,
-    templateDirectoryPath: path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/nestjs-service-module/templates",
-    ),
-    tree,
-  });
-
-  const generatedFiles = tree
-    .children(targetPath)
-    .map((fileName: string) => path.join(targetPath, fileName));
-
-  return () => {
-    execSync(`pnpm exec nx format:write --files=${generatedFiles.join(",")}`, {
-      cwd: workspaceRoot,
-      stdio: "inherit",
-    });
-  };
-}
-
-/**
- * Auto-generated documentation placeholder.
- */
-async function resolveProjectAndName(
-  tree: Tree,
-  options: NestjsServiceModuleOptions,
-): Promise<{ nameKebabCase: string; projectName: string }> {
-  const projectName = await resolveProject({
-    tag: NESTJS_SERVICE_MODULE_PROJECT_TAG,
-    tree,
-    ...(options.project !== undefined && { project: options.project }),
-    message: NESTJS_SERVICE_MODULE_PROJECT_PROMPT,
-  });
-
-  const nameKebabCase = await resolveName({
-    case: StringCase.KEBAB_CASE,
-    message: NESTJS_SERVICE_MODULE_NAME_PROMPT,
-    ...(options.name !== undefined && { name: options.name }),
-    subject: "Module name",
-  });
-
-  return { nameKebabCase, projectName };
 }

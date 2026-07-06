@@ -24,9 +24,12 @@ import {
   resolveProjectModulesDirectoryPath,
 } from "./utilities";
 
-const { execSyncMock, promptsMock } = vi.hoisted(() => {
+import type { flushChanges as flushChangesType } from "nx/src/generators/tree";
+
+const { execSyncMock, flushChangesMock, promptsMock } = vi.hoisted(() => {
   return {
     execSyncMock: vi.fn<(...arguments_: unknown[]) => unknown>(),
+    flushChangesMock: vi.fn<(...arguments_: unknown[]) => unknown>(),
     promptsMock: vi.fn<(...arguments_: unknown[]) => unknown>(),
   };
 });
@@ -39,10 +42,22 @@ vi.mock("prompts", () => ({
   default: promptsMock,
 }));
 
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const originalModule = await importOriginal<{
+    flushChanges: typeof flushChangesType;
+  }>();
+
+  return {
+    ...originalModule,
+    flushChanges: flushChangesMock,
+  };
+});
+
 describe("utilities", () => {
   beforeEach(() => {
     execSyncMock.mockReset();
     promptsMock.mockReset();
+    flushChangesMock.mockReset();
   });
 
   it("builds kebab-case substitutions", () => {
@@ -63,6 +78,8 @@ describe("utilities", () => {
         tree,
       }),
     ).resolves.toBeUndefined();
+
+    expect(flushChangesMock).toHaveBeenCalledTimes(1);
   });
 
   it("commits workspace tree and executes callback", async () => {
@@ -74,6 +91,7 @@ describe("utilities", () => {
       tree,
     });
 
+    expect(flushChangesMock).toHaveBeenCalledTimes(1);
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
