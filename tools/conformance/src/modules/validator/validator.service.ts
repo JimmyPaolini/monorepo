@@ -7,6 +7,7 @@ import { ValidatorFilesService } from "./validator-files.service";
 import { ValidatorRulesService } from "./validator-rules.service";
 import { ValidatorWorkspaceService } from "./validator-workspace.service";
 import {
+  isValidatorRuleName,
   VALIDATOR_RULE_NAMES,
   VALIDATOR_RULE_SEVERITY,
 } from "./validator.constants";
@@ -26,20 +27,19 @@ import type {
 export class ValidatorService {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    const resolvedLogger = logger as LoggerService | undefined;
-    this.logger = resolvedLogger ?? new LoggerService();
-    (this.logger as LoggerService | undefined)?.setContext(
-      ValidatorService.name,
-    );
+  constructor(
+    logger: LoggerService | undefined,
+    private readonly validatorFilesService: ValidatorFilesService,
+    private readonly validatorRulesService: ValidatorRulesService,
+    private readonly validatorWorkspaceService: ValidatorWorkspaceService,
+  ) {
+    this.logger = logger ?? new LoggerService();
+    this.logger.setContext(ValidatorService.name);
   }
 
   // 🔐 Private Fields
 
   private readonly logger: LoggerService;
-  private readonly validatorFilesService = new ValidatorFilesService();
-  private readonly validatorRulesService = new ValidatorRulesService();
-  private readonly validatorWorkspaceService = new ValidatorWorkspaceService();
 
   // 🔑 Public Fields
 
@@ -126,7 +126,11 @@ export class ValidatorService {
         allWorkspaceProjects,
         requestedProjectNames: request.projects,
       });
-    const selectedRules = this.resolveSelectedRules(request.rules);
+    const requestedRules = request.rules;
+    const selectedRequestedRules = requestedRules?.filter((ruleName) =>
+      isValidatorRuleName(ruleName),
+    );
+    const selectedRules = this.resolveSelectedRules(selectedRequestedRules);
     const selectedProjects = selectedProjectNames.map((projectName) =>
       this.validatorWorkspaceService.resolveProjectByName({
         allWorkspaceProjects,

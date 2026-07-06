@@ -7,11 +7,11 @@ import { workspaceRoot } from "@nx/devkit";
 import { converterByStringCase } from "../../constants";
 import { StringCase } from "../../types";
 
+import { ValidatorJsonService } from "./validator-json.service";
+import { ValidatorMarkdownService } from "./validator-markdown.service";
 import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
+import { ValidatorTextService } from "./validator-text.service";
 import { ValidatorTypescriptService } from "./validator-typescript.service";
-import { validateJsonConformance } from "./validators/json/validator";
-import { validateMarkdownConformance } from "./validators/markdown/validator";
-import { validateTextConformance } from "./validators/text/validator";
 
 import type {
   ConformanceError,
@@ -26,6 +26,12 @@ const PYTHON_EXTENSIONS = new Set([".ipynb", ".py"]);
  */
 @Injectable()
 export class ValidatorFilesService {
+  constructor(
+    private readonly validatorJsonService: ValidatorJsonService,
+    private readonly validatorMarkdownService: ValidatorMarkdownService,
+    private readonly validatorTextService: ValidatorTextService,
+  ) {}
+
   private readonly validatorPythonBridgeService =
     new ValidatorPythonBridgeService();
   private readonly validatorTypescriptService =
@@ -235,10 +241,23 @@ export class ValidatorFilesService {
   }): { errors: ConformanceError[] } {
     const { data, extension, filename, instance, template } = args;
     if (extension === ".json") {
-      return validateJsonConformance({ data, filename, instance, template });
+      return this.validatorJsonService.validateJsonConformance({
+        data,
+        filename,
+        instance,
+        template,
+      });
     }
     if (extension === ".md") {
-      return validateMarkdownConformance({
+      return this.validatorMarkdownService.validateMarkdownConformance({
+        data,
+        filename,
+        instance,
+        template,
+      });
+    }
+    if (extension === ".txt") {
+      return this.validatorTextService.validateTextConformance({
         data,
         filename,
         instance,
@@ -262,7 +281,12 @@ export class ValidatorFilesService {
         template,
       });
     }
-    return validateTextConformance({ data, filename, instance, template });
+    return this.validatorTextService.validateTextConformance({
+      data,
+      filename,
+      instance,
+      template,
+    });
   }
 
   /**

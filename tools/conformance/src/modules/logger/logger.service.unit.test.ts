@@ -141,8 +141,12 @@ describe(LoggerService, () => {
 
   it("updates child logger when context changes", () => {
     service.setContext("ContextA");
+    service.log("hello");
 
     expect(rootLogger.child).toHaveBeenCalledWith({ context: "ContextA" });
-    expect((service as unknown as { child: unknown }).child).toBe(childLogger);
+    expect(childLogger.info).toHaveBeenCalledWith(
+      { context: "ContextA" },
+      "hello",
+    );
   });
 });

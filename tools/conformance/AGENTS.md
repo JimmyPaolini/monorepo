@@ -233,6 +233,23 @@ nx run conformance:test
 - **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
 - **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
 
+### Strict Type Safety in Tests
+
+- Prefer **typed guard helpers** in tests over cast-based narrowing. If a mock call argument is `unknown`, add a local type predicate (for example `isValidateInstanceFileArgument`) and branch on that instead of using `as` assertions.
+- When mocking Node directory entries for `fs.readdirSync(..., { withFileTypes: true })`, return a **complete `Dirent` shape** (all `is*` methods, `name`, `parentPath`) with the correct generic (`Dirent<NonSharedBuffer>` when the call path expects buffers).
+- Avoid private-field mutation assertions in unit tests. Validate behavior through public APIs and emitted results to preserve type coverage and reduce brittle test maintenance.
+
+### Required Validation Gate
+
+- For validator and command module changes, run both checks explicitly before considering work complete:
+
+```bash
+nx run conformance:typecheck
+nx run conformance:type-coverage
+```
+
+- Treat `type-coverage` as a hard gate alongside `typecheck` for this project; passing compile checks alone is not sufficient.
+
 See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
 
 ## Troubleshooting

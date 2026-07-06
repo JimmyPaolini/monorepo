@@ -27,15 +27,12 @@ export class ValidatorCommandService extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    logger: LoggerService,
+    logger: LoggerService | undefined,
     private readonly validatorService: ValidatorService,
   ) {
     super();
-    const resolvedLogger = logger as LoggerService | undefined;
-    this.logger = resolvedLogger ?? new LoggerService();
-    (this.logger as LoggerService | undefined)?.setContext(
-      ValidatorCommandService.name,
-    );
+    this.logger = logger ?? new LoggerService();
+    this.logger.setContext(ValidatorCommandService.name);
   }
 
   // 🔐 Private Fields

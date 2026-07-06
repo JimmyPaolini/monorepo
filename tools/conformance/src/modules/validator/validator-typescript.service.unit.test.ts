@@ -29,6 +29,35 @@ describe(ValidatorTypescriptService, () => {
     templateNode: { fileName: string };
   }
 
+  function isValidateDepthFirstSearchArgument(
+    value: unknown,
+  ): value is ValidateDepthFirstSearchArgument {
+    if (typeof value !== "object" || value === null) {
+      return false;
+    }
+
+    return (
+      "instanceFile" in value && "language" in value && "templateNode" in value
+    );
+  }
+
+  function getFirstValidateDepthFirstSearchCallArgument():
+    | undefined
+    | ValidateDepthFirstSearchArgument {
+    const firstCall = mockValidateDepthFirstSearch.mock.calls[0];
+    const firstArgument = firstCall?.[0];
+    if (isValidateDepthFirstSearchArgument(firstArgument)) {
+      const { instanceFile, language, templateNode } = firstArgument;
+      return {
+        instanceFile,
+        language,
+        templateNode,
+      };
+    }
+
+    return undefined;
+  }
+
   let service: ValidatorTypescriptService;
 
   beforeAll(async () => {
@@ -57,8 +86,7 @@ describe(ValidatorTypescriptService, () => {
     expect(mockValidateDepthFirstSearch).toHaveBeenCalledTimes(1);
     expect(mockValidateAllComments).toHaveBeenCalledTimes(1);
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.tsx");
     expect(firstCallArgument?.language).toBe("typescript");
@@ -101,8 +129,7 @@ describe(ValidatorTypescriptService, () => {
 
     expect(mockValidateDepthFirstSearch).toHaveBeenCalledTimes(1);
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.jsx");
     expect(firstCallArgument?.language).toBe("javascript");
@@ -122,8 +149,7 @@ describe(ValidatorTypescriptService, () => {
 
     expect(mockValidateDepthFirstSearch).toHaveBeenCalledTimes(1);
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.ts");
     expect(firstCallArgument?.language).toBe("typescript");
@@ -143,8 +169,7 @@ describe(ValidatorTypescriptService, () => {
 
     expect(mockValidateDepthFirstSearch).toHaveBeenCalledTimes(1);
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.txt");
     expect(firstCallArgument?.language).toBe("typescript");
@@ -162,8 +187,7 @@ describe(ValidatorTypescriptService, () => {
       template: "module.exports = {};",
     });
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.cjs");
     expect(firstCallArgument?.language).toBe("javascript");
@@ -181,8 +205,7 @@ describe(ValidatorTypescriptService, () => {
       template: "export const value = 1;",
     });
 
-    const firstCallArgument = mockValidateDepthFirstSearch.mock
-      .calls[0]?.[0] as undefined | ValidateDepthFirstSearchArgument;
+    const firstCallArgument = getFirstValidateDepthFirstSearchCallArgument();
 
     expect(firstCallArgument?.instanceFile.fileName).toBe("example.mjs");
     expect(firstCallArgument?.language).toBe("javascript");

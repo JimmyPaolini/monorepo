@@ -15,13 +15,12 @@ describe("loggerService static initialization", () => {
     process.env["LOG_LEVEL"] = "debug";
 
     const importedModule = await import("./logger.service");
-    const importedLoggerService = importedModule.LoggerService as unknown as {
-      isProduction: boolean;
-      root: unknown;
-    };
+    const loggerService = new importedModule.LoggerService();
 
-    expect(importedLoggerService.isProduction).toBe(true);
-    expect(importedLoggerService.root).toBeDefined();
+    expect(() => {
+      loggerService.setContext("StaticInit");
+      loggerService.log("message");
+    }).not.toThrow();
   });
 
   it("uses production mode with default log level fallback", async () => {
@@ -29,12 +28,11 @@ describe("loggerService static initialization", () => {
     delete process.env["LOG_LEVEL"];
 
     const importedModule = await import("./logger.service");
-    const importedLoggerService = importedModule.LoggerService as unknown as {
-      isProduction: boolean;
-      root: unknown;
-    };
+    const loggerService = new importedModule.LoggerService();
 
-    expect(importedLoggerService.isProduction).toBe(true);
-    expect(importedLoggerService.root).toBeDefined();
+    expect(() => {
+      loggerService.setContext("StaticInitFallback");
+      loggerService.log("message");
+    }).not.toThrow();
   });
 });

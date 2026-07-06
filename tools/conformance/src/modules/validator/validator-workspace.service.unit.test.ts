@@ -7,10 +7,35 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ValidatorWorkspaceService } from "./validator-workspace.service";
 
+const createMockDirent = (args: {
+  isDirectory: boolean;
+  name: Buffer<ArrayBuffer>;
+  parentPath?: string;
+}): fs.Dirent<Buffer<ArrayBuffer>> => {
+  const { isDirectory, name, parentPath = "/workspace" } = args;
+  return {
+    isBlockDevice: () => false,
+    isCharacterDevice: () => false,
+    isDirectory: () => isDirectory,
+    isFIFO: () => false,
+    isFile: () => !isDirectory,
+    isSocket: () => false,
+    isSymbolicLink: () => false,
+    name,
+    parentPath,
+  };
+};
+
 vi.mock("node:fs", () => ({
   default: {
     existsSync: vi.fn<(path: fs.PathLike) => boolean>(),
-    readdirSync: vi.fn<(path: fs.PathLike) => string[]>(),
+    readdirSync:
+      vi.fn<
+        (
+          path: fs.PathLike,
+          options: { withFileTypes: true },
+        ) => fs.Dirent<Buffer<ArrayBuffer>>[]
+      >(),
     readFileSync: vi.fn<(path: fs.PathOrFileDescriptor) => string>(),
   },
 }));
@@ -210,15 +235,12 @@ describe(ValidatorWorkspaceService, () => {
       );
     });
     mockReaddirSync.mockReturnValue([
-      {
-        isDirectory: () => true,
-        name: "alpha",
-      },
-      {
-        isDirectory: () => false,
-        name: "ignored.txt",
-      },
-    ] as unknown as ReturnType<typeof fs.readdirSync>);
+      createMockDirent({ isDirectory: true, name: Buffer.from("alpha") }),
+      createMockDirent({
+        isDirectory: false,
+        name: Buffer.from("ignored.txt"),
+      }),
+    ]);
     mockReadFileSync.mockImplementation((filePath) => {
       if (
         typeof filePath === "string" &&
@@ -247,11 +269,8 @@ describe(ValidatorWorkspaceService, () => {
       );
     });
     mockReaddirSync.mockReturnValue([
-      {
-        isDirectory: () => true,
-        name: "alpha",
-      },
-    ] as unknown as ReturnType<typeof fs.readdirSync>);
+      createMockDirent({ isDirectory: true, name: Buffer.from("alpha") }),
+    ]);
     mockReadFileSync.mockReturnValue(JSON.stringify({}));
 
     expect(service.readWorkspaceProjects()).toStrictEqual([
@@ -271,11 +290,8 @@ describe(ValidatorWorkspaceService, () => {
       );
     });
     mockReaddirSync.mockReturnValue([
-      {
-        isDirectory: () => true,
-        name: "alpha",
-      },
-    ] as unknown as ReturnType<typeof fs.readdirSync>);
+      createMockDirent({ isDirectory: true, name: Buffer.from("alpha") }),
+    ]);
     mockReadFileSync.mockImplementation(() => {
       throw new SyntaxError("Unexpected token");
     });

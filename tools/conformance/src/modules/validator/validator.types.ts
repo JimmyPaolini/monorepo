@@ -94,7 +94,7 @@ export interface ValidatorProjectResult {
 /** Input options for a validation request. */
 export interface ValidatorRequest {
   projects?: string[];
-  rules?: ValidatorRuleName[];
+  rules?: string[];
 }
 
 /** Top-level validation response payload. */

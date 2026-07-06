@@ -2,60 +2,71 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
+import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
 import { workspaceRoot } from "@nx/devkit";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
-const {
-  mockValidateJsonConformance,
-  mockValidateMarkdownConformance,
-  mockValidatePythonConformance,
-  mockValidateTextConformance,
-  mockValidateTypescriptConformance,
-} = vi.hoisted(() => ({
-  mockValidateJsonConformance: vi.fn<(input: unknown) => unknown>(),
-  mockValidateMarkdownConformance: vi.fn<(input: unknown) => unknown>(),
-  mockValidatePythonConformance: vi.fn<(input: unknown) => unknown>(),
-  mockValidateTextConformance: vi.fn<(input: unknown) => unknown>(),
-  mockValidateTypescriptConformance: vi.fn<(input: unknown) => unknown>(),
-}));
-
-vi.mock("./validators/json/validator", () => ({
-  validateJsonConformance: mockValidateJsonConformance,
-}));
-
-vi.mock("./validators/markdown/validator", () => ({
-  validateMarkdownConformance: mockValidateMarkdownConformance,
-}));
-
-vi.mock("./validators/text/validator", () => ({
-  validateTextConformance: mockValidateTextConformance,
-}));
-
-vi.mock("./validator-python-bridge.service", () => ({
-  ValidatorPythonBridgeService: class ValidatorPythonBridgeService {
-    validatePythonConformance = mockValidatePythonConformance;
-  },
-}));
-
-vi.mock("./validator-typescript.service", () => ({
-  ValidatorTypescriptService: class ValidatorTypescriptService {
-    validateTypescriptConformance = mockValidateTypescriptConformance;
-  },
-}));
-
 import { ValidatorFilesService } from "./validator-files.service";
+import { ValidatorJsonService } from "./validator-json.service";
+import { ValidatorMarkdownService } from "./validator-markdown.service";
+import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
+import { ValidatorTextService } from "./validator-text.service";
+import { ValidatorTypescriptService } from "./validator-typescript.service";
+
+import type { DeepMocked } from "@golevelup/ts-vitest";
 
 describe(ValidatorFilesService, () => {
   let service: ValidatorFilesService;
+  let validatorJsonService: DeepMocked<ValidatorJsonService>;
+  let validatorMarkdownService: DeepMocked<ValidatorMarkdownService>;
+  let validatorPythonBridgeService: DeepMocked<ValidatorPythonBridgeService>;
+  let validatorTextService: DeepMocked<ValidatorTextService>;
+  let validatorTypescriptService: DeepMocked<ValidatorTypescriptService>;
   const temporaryDirectories: string[] = [];
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorFilesService],
+      providers: [
+        ValidatorFilesService,
+        {
+          provide: ValidatorJsonService,
+          useValue: createMock<ValidatorJsonService>(),
+        },
+        {
+          provide: ValidatorMarkdownService,
+          useValue: createMock<ValidatorMarkdownService>(),
+        },
+        {
+          provide: ValidatorPythonBridgeService,
+          useValue: createMock<ValidatorPythonBridgeService>(),
+        },
+        {
+          provide: ValidatorTextService,
+          useValue: createMock<ValidatorTextService>(),
+        },
+        {
+          provide: ValidatorTypescriptService,
+          useValue: createMock<ValidatorTypescriptService>(),
+        },
+      ],
     }).compile();
 
     service = await module.resolve(ValidatorFilesService);
+    validatorJsonService = await module.resolve(ValidatorJsonService);
+    validatorMarkdownService = await module.resolve(ValidatorMarkdownService);
+    validatorPythonBridgeService = await module.resolve(
+      ValidatorPythonBridgeService,
+    );
+    validatorTextService = await module.resolve(ValidatorTextService);
+    validatorTypescriptService = await module.resolve(
+      ValidatorTypescriptService,
+    );
+
+    Object.assign(service as object, {
+      validatorPythonBridgeService,
+      validatorTypescriptService,
+    });
   });
 
   afterEach(() => {
@@ -290,48 +301,84 @@ describe(ValidatorFilesService, () => {
   });
 
   it.each([
-    ["json", ".json", mockValidateJsonConformance],
-    ["markdown", ".md", mockValidateMarkdownConformance],
-    ["typescript", ".ts", mockValidateTypescriptConformance],
-    ["python", ".py", mockValidatePythonConformance],
-    ["text", ".txt", mockValidateTextConformance],
-  ] as const)("dispatches to the %s validator", (_, extension, mock) => {
-    const instanceDirectoryPath = fs.mkdtempSync(
-      path.join(os.tmpdir(), "conformance-validator-files-dispatch-"),
-    );
-    const templateDirectoryPath = fs.mkdtempSync(
-      path.join(os.tmpdir(), "conformance-validator-files-dispatch-template-"),
-    );
-    temporaryDirectories.push(instanceDirectoryPath, templateDirectoryPath);
+    ["json", ".json", "json"],
+    ["markdown", ".md", "markdown"],
+    ["typescript", ".ts", "typescript"],
+    ["python", ".py", "python"],
+    ["text", ".txt", "text"],
+  ] as const)(
+    "dispatches to the %s validator",
+    (_, extension, validatorType) => {
+      const instanceDirectoryPath = fs.mkdtempSync(
+        path.join(os.tmpdir(), "conformance-validator-files-dispatch-"),
+      );
+      const templateDirectoryPath = fs.mkdtempSync(
+        path.join(
+          os.tmpdir(),
+          "conformance-validator-files-dispatch-template-",
+        ),
+      );
+      temporaryDirectories.push(instanceDirectoryPath, templateDirectoryPath);
 
-    const instanceFilePath = path.join(
-      instanceDirectoryPath,
-      `value${extension}`,
-    );
-    const templateFilePath = path.join(
-      templateDirectoryPath,
-      `value${extension}`,
-    );
-    fs.writeFileSync(instanceFilePath, "content\n");
-    fs.writeFileSync(templateFilePath, "content\n");
+      const instanceFilePath = path.join(
+        instanceDirectoryPath,
+        `value${extension}`,
+      );
+      const templateFilePath = path.join(
+        templateDirectoryPath,
+        `value${extension}`,
+      );
+      fs.writeFileSync(instanceFilePath, "content\n");
+      fs.writeFileSync(templateFilePath, "content\n");
 
-    mock.mockReturnValue({
-      errors: [{ errorType: "code", fix: "fix", message: "message" }],
-    });
+      const jsonValidatorSpy = vi.spyOn(
+        validatorJsonService,
+        "validateJsonConformance",
+      );
+      const markdownValidatorSpy = vi.spyOn(
+        validatorMarkdownService,
+        "validateMarkdownConformance",
+      );
+      const pythonValidatorSpy = vi.spyOn(
+        validatorPythonBridgeService,
+        "validatePythonConformance",
+      );
+      const textValidatorSpy = vi.spyOn(
+        validatorTextService,
+        "validateTextConformance",
+      );
+      const typescriptValidatorSpy = vi.spyOn(
+        validatorTypescriptService,
+        "validateTypescriptConformance",
+      );
 
-    const result = service.validateInstanceFile({
-      data: { value: "example" },
-      instanceFilePath,
-      templateFilePath,
-    });
+      const mockByValidatorType = {
+        json: jsonValidatorSpy,
+        markdown: markdownValidatorSpy,
+        python: pythonValidatorSpy,
+        text: textValidatorSpy,
+        typescript: typescriptValidatorSpy,
+      } as const;
 
-    expect(mock).toHaveBeenCalledTimes(1);
-    expect(result).toMatchObject({
-      errors: [{ errorType: "code", fix: "fix", message: "message" }],
-      instanceFilePath,
-      templateFilePath,
-    });
-  });
+      const selectedMock = mockByValidatorType[validatorType];
+      selectedMock.mockReturnValue({
+        errors: [{ errorType: "code", fix: "fix", message: "message" }],
+      });
+
+      const result = service.validateInstanceFile({
+        data: { value: "example" },
+        instanceFilePath,
+        templateFilePath,
+      });
+
+      expect(selectedMock).toHaveBeenCalledTimes(1);
+      expect(result).toMatchObject({
+        errors: [{ errorType: "code", fix: "fix", message: "message" }],
+        instanceFilePath,
+        templateFilePath,
+      });
+    },
+  );
 
   it("uses empty description when pyproject exists without description", () => {
     const instanceDirectoryPath = fs.mkdtempSync(
@@ -472,7 +519,7 @@ describe(ValidatorFilesService, () => {
       if (filePath === templateFilePath) {
         throw new Error("Permission denied");
       }
-      return originalReadFileSync.call(fs, filePath, options as never);
+      return originalReadFileSync.call(fs, filePath, options);
     });
 
     expect(() => {

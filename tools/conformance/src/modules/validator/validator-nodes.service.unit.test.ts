@@ -1,12 +1,8 @@
 import { Test } from "@nestjs/testing";
 import {
   createSourceFile,
-  type ExportDeclaration,
-  type ExpressionStatement,
   factory,
-  type ImportDeclaration,
   isClassDeclaration,
-  type Node,
   ScriptKind,
   ScriptTarget,
   SyntaxKind,
@@ -49,9 +45,16 @@ describe(ValidatorNodesService, () => {
       ScriptKind.TS,
     );
 
-    const importDeclaration = sourceFile.statements[0] as ImportDeclaration;
-    const exportDeclaration = sourceFile.statements[1] as ExportDeclaration;
-    const expressionStatement = sourceFile.statements[2] as ExpressionStatement;
+    const importDeclaration = sourceFile.statements[0];
+    const exportDeclaration = sourceFile.statements[1];
+    const expressionStatement = sourceFile.statements[2];
+    if (
+      importDeclaration === undefined ||
+      exportDeclaration === undefined ||
+      expressionStatement === undefined
+    ) {
+      throw new Error("Expected import/export/expression statements");
+    }
     const classDeclaration = sourceFile.statements[3];
     if (classDeclaration === undefined) {
       throw new Error("Expected class declaration");
@@ -277,9 +280,24 @@ describe(ValidatorNodesService, () => {
   });
 
   it("returns null when named node key is neither identifier/private/string/numeric", () => {
-    const nodeWithUnsupportedName = {
-      name: factory.createNoSubstitutionTemplateLiteral("template-name"),
-    } as unknown as Node;
+    const sourceFile = createSourceFile(
+      "unsupported-name.ts",
+      "class Example { [`template-name`] = 1; }",
+      ScriptTarget.Latest,
+      true,
+      ScriptKind.TS,
+    );
+    const classDeclaration = sourceFile.statements[0];
+    if (
+      classDeclaration === undefined ||
+      !isClassDeclaration(classDeclaration)
+    ) {
+      throw new Error("Expected class declaration");
+    }
+    const nodeWithUnsupportedName = classDeclaration.members[0];
+    if (nodeWithUnsupportedName === undefined) {
+      throw new Error("Expected class member");
+    }
 
     expect(service.getKey(nodeWithUnsupportedName)).toBeNull();
   });
@@ -298,13 +316,19 @@ describe(ValidatorNodesService, () => {
       ScriptKind.TS,
     );
 
-    const [firstImport, secondImport, exportDeclaration, expressionStatement] =
-      sourceFile.statements as unknown as [
-        ImportDeclaration,
-        ImportDeclaration,
-        ExportDeclaration,
-        ExpressionStatement,
-      ];
+    const firstImport = sourceFile.statements[0];
+    const secondImport = sourceFile.statements[1];
+    const exportDeclaration = sourceFile.statements[2];
+    const expressionStatement = sourceFile.statements[3];
+
+    if (
+      firstImport === undefined ||
+      secondImport === undefined ||
+      exportDeclaration === undefined ||
+      expressionStatement === undefined
+    ) {
+      throw new Error("Expected test statements");
+    }
 
     expect(
       service.filterBySameKey(

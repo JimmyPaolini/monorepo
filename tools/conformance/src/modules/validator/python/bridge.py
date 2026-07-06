@@ -23,7 +23,7 @@ def main() -> None:
                 instance=instance,
                 template=template,
             )
-        else:
+        elif extension == ".py":
             from python.validator import validate_python_conformance
 
             result = validate_python_conformance(
@@ -32,6 +32,17 @@ def main() -> None:
                 instance=instance,
                 template=template,
             )
+        else:
+            result = {
+                "errors": [
+                    {
+                        "error_type": "code",
+                        "language": "python",
+                        "message": f"Unsupported extension for python bridge: {extension}",
+                        "fix": "Use .py or .ipynb templates for Python bridge validation.",
+                    }
+                ]
+            }
     except ModuleNotFoundError as error:
         result = {
             "errors": [

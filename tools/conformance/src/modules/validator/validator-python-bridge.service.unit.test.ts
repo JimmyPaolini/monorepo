@@ -55,7 +55,7 @@ describe(ValidatorPythonBridgeService, () => {
             instance_column: 2,
             instance_line: 3,
             instance_path: "instance.path",
-            language: "markdown",
+            language: "python",
             message: "message",
             template_column: 4,
             template_line: 5,
@@ -97,7 +97,7 @@ describe(ValidatorPythonBridgeService, () => {
         instanceColumn: 2,
         instanceLine: 3,
         instancePath: "instance.path",
-        language: "markdown",
+        language: "python",
         message: "message",
         templateColumn: 4,
         templateLine: 5,
@@ -109,6 +109,55 @@ describe(ValidatorPythonBridgeService, () => {
         message: "Python conformance issue found.",
       },
     ]);
+  });
+
+  it("supports notebook validation path for .ipynb", () => {
+    mockSpawnSync.mockReturnValue({
+      status: 0,
+      stderr: "",
+      stdout: JSON.stringify({
+        errors: [
+          {
+            error_type: "code",
+            fix: "fix",
+            language: "python",
+            message: "message",
+          },
+        ],
+      }),
+    });
+
+    const result = service.validatePythonConformance({
+      data: {},
+      extension: ".ipynb",
+      filename: "example.ipynb",
+      instance: "instance",
+      template: "template",
+    });
+
+    expect(result.errors).toStrictEqual([
+      {
+        errorType: "code",
+        fix: "fix",
+        language: "python",
+        message: "message",
+      },
+    ]);
+  });
+
+  it("throws before spawning python for unsupported extensions", () => {
+    expect(() =>
+      service.validatePythonConformance({
+        data: {},
+        extension: ".md",
+        filename: "example.md",
+        instance: "instance",
+        template: "template",
+      }),
+    ).toThrow(
+      "Python validator bridge only supports .py and .ipynb files. Received: .md",
+    );
+    expect(mockSpawnSync).not.toHaveBeenCalled();
   });
 
   it("throws when the python process exits unsuccessfully", () => {

@@ -4,13 +4,10 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { ValidatorFilesService } from "./validator-files.service";
+import { ValidatorRulesService } from "./validator-rules.service";
+import { ValidatorWorkspaceService } from "./validator-workspace.service";
 import { ValidatorService } from "./validator.service";
-
-import * as validatorExports from "./index";
-
-import type { ValidatorFilesService } from "./validator-files.service";
-import type { ValidatorRulesService } from "./validator-rules.service";
-import type { ValidatorWorkspaceService } from "./validator-workspace.service";
 
 describe(ValidatorService, () => {
   let service: ValidatorService;
@@ -24,6 +21,18 @@ describe(ValidatorService, () => {
       providers: [
         ValidatorService,
         {
+          provide: ValidatorFilesService,
+          useValue: mockFilesService,
+        },
+        {
+          provide: ValidatorRulesService,
+          useValue: mockRulesService,
+        },
+        {
+          provide: ValidatorWorkspaceService,
+          useValue: mockWorkspaceService,
+        },
+        {
           provide: LoggerService,
           useValue: mockLoggerService,
         },
@@ -31,21 +40,6 @@ describe(ValidatorService, () => {
     }).compile();
 
     service = await module.resolve(ValidatorService);
-    (
-      service as unknown as {
-        validatorFilesService: ValidatorFilesService;
-      }
-    ).validatorFilesService = mockFilesService;
-    (
-      service as unknown as {
-        validatorRulesService: ValidatorRulesService;
-      }
-    ).validatorRulesService = mockRulesService;
-    (
-      service as unknown as {
-        validatorWorkspaceService: ValidatorWorkspaceService;
-      }
-    ).validatorWorkspaceService = mockWorkspaceService;
   });
 
   it("is defined", () => {
@@ -53,7 +47,12 @@ describe(ValidatorService, () => {
   });
 
   it("creates a fallback logger when constructor receives an undefined logger", () => {
-    const fallbackService = new ValidatorService(undefined as never);
+    const fallbackService = new ValidatorService(
+      undefined,
+      mockFilesService,
+      mockRulesService,
+      mockWorkspaceService,
+    );
 
     expect(fallbackService).toBeDefined();
   });
@@ -61,15 +60,19 @@ describe(ValidatorService, () => {
   it("uses the injected logger and sets context", () => {
     const logger = createMock<LoggerService>();
 
-    const validatorService = new ValidatorService(logger);
+    const validatorService = new ValidatorService(
+      logger,
+      mockFilesService,
+      mockRulesService,
+      mockWorkspaceService,
+    );
 
     expect(validatorService).toBeDefined();
     expect(logger.setContext).toHaveBeenCalledWith("ValidatorService");
   });
 
-  it("re-exports validator module symbols", () => {
-    expect(validatorExports.ValidatorModule).toBeDefined();
-    expect(validatorExports.ValidatorService).toBeDefined();
+  it("exports validator service symbol", () => {
+    expect(ValidatorService).toBeDefined();
   });
 
   it("throws for unknown project names", async () => {
@@ -98,7 +101,7 @@ describe(ValidatorService, () => {
 
     await expect(
       service.validate({
-        rules: ["unknown-rule" as never],
+        rules: ["unknown-rule"],
       }),
     ).rejects.toThrow("Unknown validation rules: unknown-rule");
   });

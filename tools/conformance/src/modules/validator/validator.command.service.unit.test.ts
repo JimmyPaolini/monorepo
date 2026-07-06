@@ -50,7 +50,7 @@ describe(ValidatorCommandService, () => {
 
   it("creates a fallback logger when constructor receives an undefined logger", () => {
     const commandService = new ValidatorCommandService(
-      undefined as never,
+      undefined,
       createMock<ValidatorService>(),
     );
 

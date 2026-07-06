@@ -301,6 +301,44 @@ try {
 }
 ```
 
+## Type Narrowing in Tests
+
+Prefer local type guards over assertion casts when inspecting mocked call arguments or unknown fixture values.
+
+```typescript
+// ❌ WRONG: Cast-first narrowing hides structural mismatches
+const firstArgument = mockedFunction.mock.calls[0]?.[0];
+const typedArgument = firstArgument as { data: { destinationRoot?: string } };
+
+// ✅ CORRECT: Guard-first narrowing validates shape at runtime
+interface ValidateInstanceFileArgument {
+  data: { destinationRoot?: string };
+  instanceFilePath: string;
+  templateFilePath: string;
+}
+
+const isValidateInstanceFileArgument = (
+  value: unknown,
+): value is ValidateInstanceFileArgument => {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  return (
+    "data" in value &&
+    "instanceFilePath" in value &&
+    "templateFilePath" in value
+  );
+};
+
+const firstArgument = mockedFunction.mock.calls[0]?.[0];
+if (isValidateInstanceFileArgument(firstArgument)) {
+  expect(firstArgument.instanceFilePath).toContain("project");
+}
+```
+
+> ✅ **Best practice:** In strict TypeScript tests, prefer guard-based narrowing and behavior assertions over layered `as` casts that can bypass type-safety and create fragile tests.
+
 ## Common Gotchas (Additional)
 
 ### Index Signatures

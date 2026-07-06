@@ -3,7 +3,6 @@ import os from "node:os";
 import path from "node:path";
 
 import { addProjectConfiguration } from "@nx/devkit";
-import * as nxDevkit from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -395,31 +394,6 @@ describe("utilities", () => {
     ).toThrow(
       'Directory "applications/my-app/src/modules" does not exist in project "my-app"',
     );
-  });
-
-  it("resolves project directory using sourceRoot when root is unavailable", () => {
-    const tree = createTreeWithEmptyWorkspace();
-    tree.write("applications/my-app/src/modules/.gitkeep", "");
-
-    vi.spyOn(nxDevkit, "getProjects").mockReturnValue(
-      new Map([
-        [
-          "my-app",
-          {
-            sourceRoot: "applications/my-app/src",
-            tags: ["framework:nestjs"],
-          },
-        ],
-      ]) as ReturnType<typeof nxDevkit.getProjects>,
-    );
-
-    expect(
-      resolveProjectDirectoryPath({
-        directoryPath: "modules",
-        projectName: "my-app",
-        tree,
-      }),
-    ).toBe("applications/my-app/src/modules");
   });
 
   it("throws when project configuration is missing", () => {

@@ -18,17 +18,14 @@ import {
 } from "./validator.constants";
 
 import type { WorkspaceProject } from "./validator-workspace.service";
-import type {
-  InstanceDirectoryValidationResult,
-  ValidatorRuleName,
-} from "./validator.types";
+import type { InstanceDirectoryValidationResult } from "./validator.types";
 
 /**
  * Validation rule execution service.
  */
 @Injectable()
 export class ValidatorRulesService {
-  private readonly validatorFilesService = new ValidatorFilesService();
+  constructor(private readonly validatorFilesService: ValidatorFilesService) {}
 
   /**
    * Resolves project module directories from <projectRoot>/src/modules.
@@ -398,7 +395,7 @@ export class ValidatorRulesService {
    * Runs one conformance rule for one workspace project.
    */
   runRule(args: {
-    ruleName: ValidatorRuleName;
+    ruleName: string;
     workspaceProject: WorkspaceProject;
   }): InstanceDirectoryValidationResult[] | undefined {
     const { ruleName, workspaceProject } = args;

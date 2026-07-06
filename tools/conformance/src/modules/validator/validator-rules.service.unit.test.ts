@@ -19,6 +19,7 @@ vi.mock("./validator-files.service", () => ({
   },
 }));
 
+import { ValidatorFilesService } from "./validator-files.service";
 import { ValidatorRulesService } from "./validator-rules.service";
 import {
   JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
@@ -35,12 +36,61 @@ describe(ValidatorRulesService, () => {
     templateFilePath: string;
   }
 
+  const isValidateInstanceFileArgument = (
+    value: unknown,
+  ): value is ValidateInstanceFileArgument => {
+    if (typeof value !== "object" || value === null) {
+      return false;
+    }
+
+    if (
+      !("data" in value) ||
+      !("instanceFilePath" in value) ||
+      !("templateFilePath" in value)
+    ) {
+      return false;
+    }
+
+    if (
+      typeof value.instanceFilePath !== "string" ||
+      typeof value.templateFilePath !== "string"
+    ) {
+      return false;
+    }
+
+    if (typeof value.data !== "object" || value.data === null) {
+      return false;
+    }
+
+    return (
+      !("destinationRoot" in value.data) ||
+      typeof value.data.destinationRoot === "string" ||
+      value.data.destinationRoot === undefined
+    );
+  };
+
+  function getFirstValidateInstanceFileCallArgument():
+    | undefined
+    | ValidateInstanceFileArgument {
+    const firstCall = mockValidateInstanceFile.mock.calls[0];
+    if (firstCall === undefined) {
+      return undefined;
+    }
+
+    const firstArgument = firstCall[0];
+    if (isValidateInstanceFileArgument(firstArgument)) {
+      return firstArgument;
+    }
+
+    return undefined;
+  }
+
   let service: ValidatorRulesService;
   const temporaryDirectories: string[] = [];
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorRulesService],
+      providers: [ValidatorRulesService, ValidatorFilesService],
     }).compile();
 
     service = await module.resolve(ValidatorRulesService);
@@ -267,16 +317,14 @@ describe(ValidatorRulesService, () => {
     expect(result?.[0]?.results.length).toBeGreaterThan(0);
     expect(mockValidateInstanceFile).toHaveBeenCalledWith();
 
-    const firstCallArgument = mockValidateInstanceFile.mock.calls[0]?.[0] as
-      | undefined
-      | ValidateInstanceFileArgument;
+    const firstCallArgument = getFirstValidateInstanceFileCallArgument();
 
     expect(firstCallArgument?.data).toBeDefined();
     expect(firstCallArgument?.instanceFilePath).toBeTypeOf("string");
     expect(firstCallArgument?.templateFilePath).toBeTypeOf("string");
   });
 
-  it("falls back destinationRoot to applications when relative path has no segment", () => {
+  it("falls back destinationRoot to applications when relative path has no segment", async () => {
     const temporaryTemplateDirectory = fs.mkdtempSync(
       path.join(
         os.tmpdir(),
@@ -300,25 +348,32 @@ describe(ValidatorRulesService, () => {
       templateFilePath: "template-file",
     });
 
-    const validateCommandApplicationDirectories = (
-      service as unknown as {
-        validateCommandApplicationDirectories: (args: {
-          instanceDirectoryPaths: string[];
-          templateDirectoryPath: string;
-        }) => unknown;
-      }
-    ).validateCommandApplicationDirectories.bind(service);
+    const validatorConstantsModule = await import("./validator.constants");
+    const getValidatorTemplateDirectoryPathSpy = vi
+      .spyOn(validatorConstantsModule, "getValidatorTemplateDirectoryPath")
+      .mockReturnValue(temporaryTemplateDirectory);
 
-    validateCommandApplicationDirectories({
-      instanceDirectoryPaths: ["/workspace/applications/example"],
-      templateDirectoryPath: temporaryTemplateDirectory,
+    const projectRootPath = fs.mkdtempSync(
+      path.join(
+        os.tmpdir(),
+        "conformance-validator-rules-destination-root-fallback-project-",
+      ),
+    );
+    temporaryDirectories.push(projectRootPath);
+
+    service.runRule({
+      ruleName: "nestjs-command-application",
+      workspaceProject: {
+        rootPath: projectRootPath,
+        tags: [NESTJS_COMMAND_APPLICATION_GENERATOR_TAG],
+      },
     });
+
+    getValidatorTemplateDirectoryPathSpy.mockRestore();
 
     expect(mockValidateInstanceFile).toHaveBeenCalledWith();
 
-    const firstCallArgument = mockValidateInstanceFile.mock.calls[0]?.[0] as
-      | undefined
-      | ValidateInstanceFileArgument;
+    const firstCallArgument = getFirstValidateInstanceFileCallArgument();
 
     expect(firstCallArgument?.data.destinationRoot).toBe("applications");
 
@@ -539,7 +594,7 @@ describe(ValidatorRulesService, () => {
 
   it("returns undefined for unknown rule names through default branch", () => {
     const result = service.runRule({
-      ruleName: "unknown-rule" as never,
+      ruleName: "unknown-rule",
       workspaceProject: {
         rootPath: "/workspace/project",
         tags: [NESTJS_APPLICATION_TAG],

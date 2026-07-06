@@ -138,6 +138,8 @@ pnpm exec nx run <project>:analyze-code --configuration=check
 
 **Do not commit until both commands pass cleanly.** If they fail, use the [triage-submission skill](documentation/skills/triage-submission/SKILL.md) to diagnose and fix the errors.
 
+**TypeScript type coverage rule:** For any touched TypeScript project that defines a `type-coverage` target, run both `typecheck` and `type-coverage` before declaring implementation complete. Passing `typecheck` alone is not sufficient when `type-coverage` is available.
+
 **Never silence errors with disable comments or configuration changes.** Do not use `// eslint-disable`, `// eslint-disable-next-line`, `// @ts-ignore`, `// @ts-expect-error`, `/* eslint-disable */`, `nocheck`, or similar suppression comments to work around lint or type errors. Do not loosen TypeScript `compilerOptions` (e.g. enabling `skipLibCheck`, disabling `strict` flags) or add ESLint `ignores`/`rules` overrides to suppress specific errors. Instead, triage the root cause and fix the code. Suppression is only permitted when the user explicitly requests it.
 
 See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for the full validation workflow and per-tool fix guidance.

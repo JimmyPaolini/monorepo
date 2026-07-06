@@ -4,10 +4,7 @@ import os
 from pathlib import Path
 
 from python.constants import converter_by_string_case
-from python.json.validator import validate_json_conformance
-from python.markdown.validator import validate_markdown_conformance
 from python.notebook.validator import validate_notebook_conformance
-from python.text.validator import validate_text_conformance
 from python.types import ConformanceError, StringCase
 from python.validator import validate_python_conformance
 
@@ -49,22 +46,8 @@ def validate_instance_file(
 
     ext = template_path.suffix.lower()
 
-    if ext == ".json":
-        return validate_json_conformance(
-            data=data,
-            filename=instance_path.name,
-            instance=instance_text,
-            template=template_text,
-        )
-    elif ext == ".ipynb":
+    if ext == ".ipynb":
         return validate_notebook_conformance(
-            data=data,
-            filename=instance_path.name,
-            instance=instance_text,
-            template=template_text,
-        )
-    elif ext == ".md":
-        return validate_markdown_conformance(
             data=data,
             filename=instance_path.name,
             instance=instance_text,
@@ -77,13 +60,8 @@ def validate_instance_file(
             instance=instance_text,
             template=template_text,
         )
-    else:
-        return validate_text_conformance(
-            data=data,
-            filename=instance_path.name,
-            instance=instance_text,
-            template=template_text,
-        )
+
+    return {"errors": []}
 
 
 def _replace_path_variables(path_str: str, data: dict) -> str:
@@ -176,7 +154,8 @@ def validate_instances_directory(
         if entry.is_dir() and entry.name not in exclude:
             results.append(
                 validate_instance_directory(
-                    instance_directory_path=entry, template_directory_path=template_directory_path
+                    instance_directory_path=entry,
+                    template_directory_path=template_directory_path,
                 )
             )
 
@@ -194,7 +173,9 @@ def stringify_conformance_errors(results: list[dict]) -> str | None:
     lines = []
     dir_count = len(directories_with_errors)
     plural = "y" if dir_count == 1 else "ies"
-    lines.append(f"Conformance validation failed — {dir_count} director{plural} with errors.")
+    lines.append(
+        f"Conformance validation failed — {dir_count} director{plural} with errors."
+    )
 
     for dir_index, dir_result in enumerate(directories_with_errors):
         directory_name = dir_result.get("directoryName", "")
@@ -228,7 +209,9 @@ def stringify_conformance_errors(results: list[dict]) -> str | None:
 
                 if err.instance_line is not None:
                     col = (
-                        f", Column {err.instance_column}" if err.instance_column is not None else ""
+                        f", Column {err.instance_column}"
+                        if err.instance_column is not None
+                        else ""
                     )
                     lines.append(f"        Instance: Line {err.instance_line}{col}")
                 elif err.instance_path is not None:
@@ -236,7 +219,9 @@ def stringify_conformance_errors(results: list[dict]) -> str | None:
 
                 if err.template_line is not None:
                     col = (
-                        f", Column {err.template_column}" if err.template_column is not None else ""
+                        f", Column {err.template_column}"
+                        if err.template_column is not None
+                        else ""
                     )
                     lines.append(f"        Template: Line {err.template_line}{col}")
                 elif err.template_path is not None:
