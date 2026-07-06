@@ -24,9 +24,15 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
+      "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/**/*.stories.@(ts|tsx|js|jsx|mdx)",
+      "!{projectRoot}/**/*.md",
+      "!{projectRoot}/**/*.mdx",
+      "!{projectRoot}/**/*.{spec,test}.py",
+      "!{projectRoot}/testing/**",
       "!{projectRoot}/tsconfig.spec.json",
-      "default"
+      "!{projectRoot}/vitest.config.{ts,js,mts,mjs}"
     ],
     "pythonSource": [
       "{projectRoot}/**/*.ipynb",
@@ -34,10 +40,13 @@
       "{projectRoot}/pyproject.toml"
     ],
     "pythonTests": ["{projectRoot}/testing/**/*.py"],
-    "sharedGlobals": [
-      "{workspaceRoot}/.github/workflows/*.yml",
+    "ciConfiguration": ["{workspaceRoot}/.github/workflows/*.yml"],
+    "workspaceConfiguration": [
       "{workspaceRoot}/configuration/tsconfig.json",
-      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/nx.json"
+    ],
+    "sharedGlobals": [
+      "workspaceConfiguration",
       "{workspaceRoot}/pnpm-lock.yaml"
     ],
     "typescriptFiles": [
@@ -117,7 +126,10 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,py,ipynb,sql}",
+        "default",
+        "{workspaceRoot}/configuration/**",
+        "{workspaceRoot}/package.json",
+        "{workspaceRoot}/.prettierignore",
         "sharedGlobals"
       ],
       "options": {
@@ -509,7 +521,12 @@
     },
     "test": {
       "cache": true,
-      "inputs": ["^production", "default"]
+      "inputs": [
+        "^production",
+        "default",
+        "!{projectRoot}/**/*.md",
+        "!{projectRoot}/**/*.mdx"
+      ]
     },
     "ty": {
       "cache": true,

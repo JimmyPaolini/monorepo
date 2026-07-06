@@ -2,13 +2,13 @@
 name: Nx Local Caching Optimization Across Monorepo
 description: Optimize Nx local task caching and affected targeting for root, all projects, and generator templates without using Nx Cloud.
 created: 2026-07-06T19:50:45Z
-updated: 2026-07-06T20:12:52Z
-status: 'In progress'
+updated: 2026-07-06T23:53:39Z
+status: 'Completed'
 ---
 
 # Introduction
 
-![Status: In progress](https://img.shields.io/badge/status-In%20progress-yellow)
+![Status: Completed](https://img.shields.io/badge/status-Completed-brightgreen)
 
 This plan defines a repository-wide Nx local caching optimization to reduce redundant task execution and improve `nx affected` precision for both developer workflows and CI. The implementation explicitly excludes Nx Cloud and uses only local cache behavior, including optional `.nx/cache` persistence in GitHub Actions.
 
@@ -363,10 +363,10 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 
 | Task     | Description                                                                                                                                                                                                           | Completed | Date |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-005 | Refine `namedInputs` in `nx.json` to minimize global invalidation scope while preserving correctness (including production-focused patterns and explicit include/exclude boundaries).                                |           |      |
-| TASK-006 | Update `targetDefaults` caching strategy for common targets (`build`, `test`, `lint`, `typecheck`, `analyze-code`, etc.) with precise `inputs`, `outputs`, and `dependsOn` definitions.                          |           |      |
-| TASK-007 | Convert reclassified cache-safe root-level targets in `/project.json` from `cache: false` to deterministic cache configs, including explicit `inputs` and `outputs` where missing.                                |           |      |
-| TASK-008 | Preserve `cache: false` only for targets confirmed as non-deterministic or side-effectful; add clear inline rationale near each retained uncached target in root/project configs.                                  |           |      |
+| TASK-005 | Refine `namedInputs` in `nx.json` to minimize global invalidation scope while preserving correctness (including production-focused patterns and explicit include/exclude boundaries).                                | ✅        | 2026-07-06T23:53:39Z |
+| TASK-006 | Update `targetDefaults` caching strategy for common targets (`build`, `test`, `lint`, `typecheck`, `analyze-code`, etc.) with precise `inputs`, `outputs`, and `dependsOn` definitions.                          | ✅        | 2026-07-06T23:53:39Z |
+| TASK-007 | Convert reclassified cache-safe root-level targets in `/project.json` from `cache: false` to deterministic cache configs, including explicit `inputs` and `outputs` where missing.                                | ✅        | 2026-07-06T23:53:39Z |
+| TASK-008 | Preserve `cache: false` only for targets confirmed as non-deterministic or side-effectful; add clear inline rationale near each retained uncached target in root/project configs.                                  | ✅        | 2026-07-06T23:53:39Z |
 
 ### Implementation Phase 3
 
@@ -374,10 +374,10 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 
 | Task     | Description                                                                                                                                                                                         | Completed | Date |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-009 | Review and update project targets in `applications/*/project.json` to align with root defaults while keeping required project-specific inputs/outputs.                                            |           |      |
-| TASK-010 | Review and update project targets in `packages/*/project.json` with deterministic cache behavior and dependency-aware pipelines (`dependsOn` with dependency builds/tests where applicable).        |           |      |
-| TASK-011 | Review and update project targets in `tools/*/project.json` to cache deterministic tasks and keep side-effect tooling tasks uncached with explicit rationale.                                      |           |      |
-| TASK-012 | Verify `implicitDependencies` and affected graph behavior for cross-project paths (for example `lexico -> lexico-components`) to ensure only necessary downstream tasks are scheduled.             |           |      |
+| TASK-009 | Review and update project targets in `applications/*/project.json` to align with root defaults while keeping required project-specific inputs/outputs.                                            | ✅        | 2026-07-06T23:53:39Z |
+| TASK-010 | Review and update project targets in `packages/*/project.json` with deterministic cache behavior and dependency-aware pipelines (`dependsOn` with dependency builds/tests where applicable).        | ✅        | 2026-07-06T23:53:39Z |
+| TASK-011 | Review and update project targets in `tools/*/project.json` to cache deterministic tasks and keep side-effect tooling tasks uncached with explicit rationale.                                      | ✅        | 2026-07-06T23:53:39Z |
+| TASK-012 | Verify `implicitDependencies` and affected graph behavior for cross-project paths (for example `lexico -> lexico-components`) to ensure only necessary downstream tasks are scheduled.             | ✅        | 2026-07-06T23:53:39Z |
 
 ### Implementation Phase 4
 
@@ -385,10 +385,35 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 
 | Task     | Description                                                                                                                                                                                             | Completed | Date |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-013 | Update conformance generator templates under `tools/conformance/src/generators/*/templates/project.json` so generated projects inherit revised cache/input/output patterns.                           |           |      |
-| TASK-014 | Update conformance tests (for example `tools/conformance/src/conformance.test.ts`) to assert required caching fields and target behavior in generated project files.                                  |           |      |
-| TASK-015 | Run workspace validation targets and representative cache tests twice (cold + warm) to confirm deterministic replay and measurable runtime improvements without correctness regressions.               |           |      |
-| TASK-016 | Validate CI workflow with `.nx/cache` restore/save and `nx affected` behavior on a branch diff to ensure no Nx Cloud usage and no over-triggering of unrelated projects/tasks.                       |           |      |
+| TASK-013 | Update conformance generator templates under `tools/conformance/src/generators/*/templates/project.json` so generated projects inherit revised cache/input/output patterns.                           | ✅        | 2026-07-06T23:53:39Z |
+| TASK-014 | Update conformance tests (for example `tools/conformance/src/conformance.test.ts`) to assert required caching fields and target behavior in generated project files.                                  | ✅        | 2026-07-06T23:53:39Z |
+| TASK-015 | Run workspace validation targets and representative cache tests twice (cold + warm) to confirm deterministic replay and measurable runtime improvements without correctness regressions.               | ✅        | 2026-07-06T23:53:39Z |
+| TASK-016 | Validate CI workflow with `.nx/cache` restore/save and `nx affected` behavior on a branch diff to ensure no Nx Cloud usage and no over-triggering of unrelated projects/tasks.                       | ✅        | 2026-07-06T23:53:39Z |
+
+<!-- TASK-005-016-EXECUTION-START -->
+#### TASK-005 through TASK-016 Execution Notes (Completed 2026-07-06T23:53:39Z)
+
+- `nx.json` updates:
+  - Refined `namedInputs` by introducing `workspaceConfiguration` and `ciConfiguration`.
+  - Removed workflow files from `sharedGlobals` to avoid unnecessary global invalidation.
+  - Tightened `production` exclusions for tests/docs and adjusted `test` target inputs.
+  - Updated `analyze-code` default inputs to use `default` plus explicit workspace config inputs.
+- Root `project.json` updates:
+  - Converted `measure-code` into cached check mode.
+  - Added uncached `measure-code-write` target and routed `analyze-code:write` to it.
+  - Added explicit uncached rationale text to retained uncached root targets.
+  - Routed write synchronization to uncached `synchronization:agent-skills-write`.
+- Project-level updates:
+  - `applications/caelundas/project.json`: converted `code-analysis` to deterministic cached check wrapper.
+  - `applications/lexico-ingestion/project.json`: added deterministic cached `code-analysis` wrapper target.
+  - `tools/synchronization/project.json`: converted `agent-skills` to cached check mode and added uncached `agent-skills-write`.
+- Template/test propagation:
+  - Updated NestJS command and GraphQL application generator templates to include cached `code-analysis` wrappers.
+  - Added conformance test assertions for required `code-analysis` cache behavior in generator templates.
+- Validation outcomes:
+  - ✅ Cache/graph behavior checks executed (`nx affected`, warm cache replay, no Nx Cloud references in workflows/actions).
+  - ⚠️ Full `nx affected --target=analyze-code` write/check runs reported pre-existing failures outside this change scope (notably in `lexico-ingestion`, `conformance`, and `monorepo` baseline checks).
+<!-- TASK-005-016-EXECUTION-END -->
 
 ## 3. Alternatives
 

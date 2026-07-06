@@ -15,7 +15,14 @@
     "analyze-code": {},
     "clean": {},
     "code-analysis": {
-      "cache": false
+      "cache": true,
+      "description": "Run Caelundas code analysis checks through the aggregate analyze-code target",
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "options": {
+        "command": "nx run {projectName}:analyze-code:check",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "dependency-cruiser": {},
     "download-ephemeris": {

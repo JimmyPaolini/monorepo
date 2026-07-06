@@ -17,6 +17,16 @@
       "command": "echo 'lexico-ingestion is a development tool and does not require building'"
     },
     "clean": {},
+    "code-analysis": {
+      "cache": true,
+      "description": "Run Lexico Ingestion code analysis checks through the aggregate analyze-code target",
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "options": {
+        "command": "nx run {projectName}:analyze-code:check",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "clear": {
       "description": "Clear ingested data from the database",
       "executor": "nx:run-commands",

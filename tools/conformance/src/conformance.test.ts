@@ -37,10 +37,8 @@ interface ConformanceTemplateInstance {
   templateDirectoryPath: string;
 }
 
-const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
-  "generator:nestjs-command-application";
-const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
-  "generator:nestjs-graphql-application";
+const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG = "generator:nestjs-command-application";
+const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG = "generator:nestjs-graphql-application";
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const DEFAULT_INSTANCE_DIRECTORIES = [APPLICATIONS_DIRECTORY] as const;
@@ -68,9 +66,7 @@ function resolveNestjsModuleDirectories(
         .readdirSync(modulesPath, { withFileTypes: true })
         .filter(
           (entry) =>
-            entry.isDirectory() &&
-            entry.name !== applicationName &&
-            entry.name !== "logger",
+            entry.isDirectory() && entry.name !== applicationName && entry.name !== "logger",
         )
         .map((entry) => path.join(modulesPath, entry.name)),
     );
@@ -95,9 +91,7 @@ function resolveWorkspaceApplications(
       .filter(
         (entry) =>
           entry.isDirectory() &&
-          fs.existsSync(
-            path.join(instanceDirectoryPath, entry.name, "project.json"),
-          ),
+          fs.existsSync(path.join(instanceDirectoryPath, entry.name, "project.json")),
       )
       .map((entry) => {
         const rootPath = path.join(instanceDirectoryPath, entry.name);
@@ -106,9 +100,7 @@ function resolveWorkspaceApplications(
           tags?: string[];
         };
         try {
-          projectConfiguration = JSON.parse(
-            fs.readFileSync(projectConfigurationPath, "utf8"),
-          ) as {
+          projectConfiguration = JSON.parse(fs.readFileSync(projectConfigurationPath, "utf8")) as {
             tags?: string[];
           };
         } catch (error) {
@@ -141,39 +133,23 @@ function validateCommandApplicationDirectories(args: {
 
   return instanceDirectoryPaths.map((instanceDirectoryPath) => {
     const directoryName = path.basename(instanceDirectoryPath);
-    const relativeInstanceDirectoryPath = path.relative(
-      workspaceRoot,
-      instanceDirectoryPath,
-    );
+    const relativeInstanceDirectoryPath = path.relative(workspaceRoot, instanceDirectoryPath);
     const [destinationRoot] = relativeInstanceDirectoryPath.split(path.sep);
-    const nameKebabCase =
-      converterByStringCase[StringCase.KEBAB_CASE](directoryName);
+    const nameKebabCase = converterByStringCase[StringCase.KEBAB_CASE](directoryName);
     const data = {
       destinationRoot: destinationRoot ?? APPLICATIONS_DIRECTORY,
-      nameCamelCase:
-        converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+      nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
       nameKebabCase,
-      namePascalCase:
-        converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
-      nameSnakeCase:
-        converterByStringCase[StringCase.SNAKE_CASE](nameKebabCase),
+      namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+      nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](nameKebabCase),
     };
 
     return {
       directoryName,
       results: templateFilenames.map((templateFilename) => {
-        const templateFilePath = path.join(
-          templateDirectoryPath,
-          templateFilename,
-        );
-        const instanceFilename = templateFilename.replaceAll(
-          "__nameKebabCase__",
-          nameKebabCase,
-        );
-        const instanceFilePath = path.join(
-          instanceDirectoryPath,
-          instanceFilename,
-        );
+        const templateFilePath = path.join(templateDirectoryPath, templateFilename);
+        const instanceFilename = templateFilename.replaceAll("__nameKebabCase__", nameKebabCase);
+        const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
         const validationResult = validateInstanceFile({
           data,
           instanceFilePath,
@@ -194,10 +170,7 @@ describe("generator template conformance", () => {
   const commandApplicationInstances = resolveWorkspaceApplications(
     COMMAND_APPLICATION_INSTANCE_DIRECTORIES,
   );
-  const allNestjsModules = resolveNestjsModuleDirectories(
-    applications,
-    NESTJS_APPLICATION_TAG,
-  );
+  const allNestjsModules = resolveNestjsModuleDirectories(applications, NESTJS_APPLICATION_TAG);
   const commandApplicationModules = resolveNestjsModuleDirectories(
     commandApplicationInstances,
     NESTJS_COMMAND_APPLICATION_TAG,
@@ -209,49 +182,29 @@ describe("generator template conformance", () => {
 
   const commandModules = commandApplicationModules.filter(
     (directoryPath) =>
-      fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-      ) &&
+      fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`)) &&
       !HAND_EDITED_COMMAND_APPLICATION_NAMES.has(
         path.basename(path.dirname(path.dirname(path.dirname(directoryPath)))),
       ),
   );
 
   const graphqlModules = allNestjsModules.filter((directoryPath) =>
-    fs.existsSync(
-      path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
-    ),
+    fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`)),
   );
 
   const serviceModules = allNestjsModules.filter(
     (directoryPath) =>
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-      ) &&
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
-      ) &&
-      fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
-      ) &&
-      fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
-      ),
+      !fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`)) &&
+      !fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`)) &&
+      fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`)) &&
+      fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`)),
   );
   const serviceFileModules = allNestjsModules.filter(
     (directoryPath) =>
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
-      ) &&
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
-      ) &&
-      !fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`),
-      ) &&
-      fs.existsSync(
-        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
-      ),
+      !fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`)) &&
+      !fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`)) &&
+      !fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.module.ts`)) &&
+      fs.existsSync(path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`)),
   );
 
   const conformanceTemplateInstances: ConformanceTemplateInstance[] = [
@@ -315,21 +268,17 @@ describe("generator template conformance", () => {
               templateDirectoryPath: conformanceCase.templateDirectoryPath,
             })
           : conformanceCase.instanceType === "single"
-            ? conformanceCase.instanceDirectoryPaths.map(
-                (instanceDirectoryPath) =>
-                  validateInstanceDirectory({
-                    instanceDirectoryPath,
-                    templateDirectoryPath:
-                      conformanceCase.templateDirectoryPath,
-                  }),
+            ? conformanceCase.instanceDirectoryPaths.map((instanceDirectoryPath) =>
+                validateInstanceDirectory({
+                  instanceDirectoryPath,
+                  templateDirectoryPath: conformanceCase.templateDirectoryPath,
+                }),
               )
-            : conformanceCase.instanceDirectoryPaths.flatMap(
-                (instancesDirectoryPath) =>
-                  validateInstancesDirectory({
-                    instancesDirectoryPath,
-                    templateDirectoryPath:
-                      conformanceCase.templateDirectoryPath,
-                  }),
+            : conformanceCase.instanceDirectoryPaths.flatMap((instancesDirectoryPath) =>
+                validateInstancesDirectory({
+                  instancesDirectoryPath,
+                  templateDirectoryPath: conformanceCase.templateDirectoryPath,
+                }),
               );
 
       expect(results.length).toBeGreaterThan(0);
@@ -345,13 +294,9 @@ describe("generator template conformance", () => {
     const nestjsApplications = applications.filter((application) =>
       application.tags.includes(NESTJS_APPLICATION_TAG),
     );
-    const serviceImplementationFilePaths = nestjsApplications.flatMap(
-      (application) => {
-        return globSync(
-          path.join(application.rootPath, "src/modules/*/*.service.ts"),
-        );
-      },
-    );
+    const serviceImplementationFilePaths = nestjsApplications.flatMap((application) => {
+      return globSync(path.join(application.rootPath, "src/modules/*/*.service.ts"));
+    });
     const templateFilenames = fs
       .readdirSync(SERVICE_FILES_TEMPLATES_DIRECTORY_PATH, {
         withFileTypes: true,
@@ -365,31 +310,20 @@ describe("generator template conformance", () => {
 
     const serviceFileValidationResults: InstanceDirectoryValidationResult[] =
       serviceImplementationFilePaths.map((serviceFilePath) => {
-        const serviceName = path
-          .basename(serviceFilePath)
-          .replace(".service.ts", "");
-        const nameKebabCase =
-          converterByStringCase[StringCase.KEBAB_CASE](serviceName);
+        const serviceName = path.basename(serviceFilePath).replace(".service.ts", "");
+        const nameKebabCase = converterByStringCase[StringCase.KEBAB_CASE](serviceName);
         const data = {
-          nameCamelCase:
-            converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
+          nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
           nameKebabCase,
-          namePascalCase:
-            converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+          namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
         };
         const validationResults = templateFilenames.map((templateFilename) => {
           const templateFilePath = path.join(
             SERVICE_FILES_TEMPLATES_DIRECTORY_PATH,
             templateFilename,
           );
-          const instanceFilename = templateFilename.replaceAll(
-            "__nameKebabCase__",
-            nameKebabCase,
-          );
-          const instanceFilePath = path.join(
-            path.dirname(serviceFilePath),
-            instanceFilename,
-          );
+          const instanceFilename = templateFilename.replaceAll("__nameKebabCase__", nameKebabCase);
+          const instanceFilePath = path.join(path.dirname(serviceFilePath), instanceFilename);
           const validationResult = validateInstanceFile({
             data,
             instanceFilePath,
@@ -403,15 +337,56 @@ describe("generator template conformance", () => {
         });
 
         return {
-          directoryName: path.relative(
-            workspaceRoot,
-            path.dirname(serviceFilePath),
-          ),
+          directoryName: path.relative(workspaceRoot, path.dirname(serviceFilePath)),
           results: validationResults,
         };
       });
     const errors = stringifyConformanceErrors(serviceFileValidationResults);
 
     expect(errors).toBeNull();
+  });
+
+  it("requires code-analysis target caching defaults in NestJS application templates", () => {
+    const commandApplicationProjectTemplatePath = path.join(
+      COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+      "project.json",
+    );
+    const graphqlApplicationProjectTemplatePath = path.join(
+      GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+      "project.json",
+    );
+    const commandApplicationTemplate = JSON.parse(
+      fs.readFileSync(commandApplicationProjectTemplatePath, "utf8"),
+    ) as {
+      targets?: {
+        "code-analysis"?: {
+          cache?: boolean;
+          options?: {
+            command?: string;
+          };
+        };
+      };
+    };
+    const graphqlApplicationTemplate = JSON.parse(
+      fs.readFileSync(graphqlApplicationProjectTemplatePath, "utf8"),
+    ) as {
+      targets?: {
+        "code-analysis"?: {
+          cache?: boolean;
+          options?: {
+            command?: string;
+          };
+        };
+      };
+    };
+
+    expect(commandApplicationTemplate.targets?.["code-analysis"]?.cache).toBe(true);
+    expect(commandApplicationTemplate.targets?.["code-analysis"]?.options?.command).toBe(
+      "nx run {projectName}:analyze-code:check",
+    );
+    expect(graphqlApplicationTemplate.targets?.["code-analysis"]?.cache).toBe(true);
+    expect(graphqlApplicationTemplate.targets?.["code-analysis"]?.options?.command).toBe(
+      "nx run {projectName}:analyze-code:check",
+    );
   });
 });

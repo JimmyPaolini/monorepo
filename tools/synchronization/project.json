@@ -11,17 +11,14 @@
   ],
   "targets": {
     "agent-skills": {
-      "cache": false,
+      "cache": true,
       "configurations": {
         "check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "write",
-      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
+      "defaultConfiguration": "check",
+      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (cached check mode)",
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/AGENTS.md",
@@ -32,8 +29,31 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "agent-skills-write": {
+      "cache": false,
+      "description": "Synchronize agent skills table of contents into AGENTS.md and run formatting (intentionally uncached write mode)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/AGENTS.md",
+        "{workspaceRoot}/documentation/skills/**/*.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "analyze-code": {},
     "clean": {},
+    "code-analysis": {
+      "cache": true,
+      "description": "Run Synchronization code analysis checks through the aggregate analyze-code target",
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "options": {
+        "command": "nx run {projectName}:analyze-code:check",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "conformance-generators": {
       "cache": true,
       "configurations": {

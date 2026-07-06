@@ -27,8 +27,8 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:measure-code:write",
-            "nx run synchronization:agent-skills:write",
+            "nx run {projectName}:measure-code-write",
+            "nx run synchronization:agent-skills-write",
             "nx run synchronization:conventional-config:write",
             "nx run synchronization:pull-request-template:write",
             "nx run {projectName}:sync-vscode-extensions:write",
@@ -66,7 +66,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/audit-security.yml",
+      "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/audit-security.yml. Intentionally uncached so new CVEs/secrets are never hidden by replayed results.",
       "executor": "nx:run-commands",
       "options": {}
     },
@@ -105,7 +105,7 @@
     },
     "commit-msg": {
       "cache": false,
-      "description": "Run the commit-msg git hook script (commitlint). Pass the commit message file via --edit=<path>.",
+      "description": "Run the commit-msg git hook script (commitlint). Pass the commit message file via --edit=<path>. Intentionally uncached because each commit message file is ephemeral runtime input.",
       "executor": "nx:run-commands",
       "options": {
         "command": "sh configuration/.husky/commit-msg",
@@ -114,7 +114,7 @@
     },
     "commitlint": {
       "cache": false,
-      "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook)",
+      "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook). Intentionally uncached because each invocation validates different runtime commit content.",
       "executor": "nx:run-commands",
       "options": {
         "command": "NODE_OPTIONS='--import=tsx' commitlint --config configuration/commitlint.config.ts --edit {args.edit}",
@@ -176,7 +176,7 @@
           "command": "fallow audit --config configuration/fallow.config.jsonc --format=pr-comment-github"
         }
       },
-      "description": "Fallow audit gate (new-only regression check on changed code) — advisory",
+      "description": "Fallow audit gate (new-only regression check on changed code) — advisory. Intentionally uncached because regression checks depend on live branch/diff context.",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
@@ -249,7 +249,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview.",
+      "description": "⚠️  MANUAL-ONLY (write config): removes unused exports/deps from source files — never include in automated pipelines. Use check config for safe dry-run preview. Intentionally uncached because write mode mutates source files.",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
@@ -377,7 +377,7 @@
     },
     "lint-staged": {
       "cache": false,
-      "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
+      "description": "Run lint-staged on staged files (invoked by the pre-commit git hook). Intentionally uncached because staged file sets are runtime Git state.",
       "executor": "nx:run-commands",
       "options": {
         "command": "NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error",
@@ -410,26 +410,41 @@
       }
     },
     "measure-code": {
-      "cache": false,
+      "cache": true,
       "configurations": {
         "check": {
           "command": "tsx scripts/measure-code.ts --check"
-        },
-        "write": {
-          "command": "tsx scripts/measure-code.ts"
         }
       },
-      "defaultConfiguration": "write",
-      "description": "Analyze codebase and write README.md statistics badges",
+      "defaultConfiguration": "check",
+      "description": "Analyze codebase and verify README.md statistics badges (cached check mode)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/README.md",
+        "{workspaceRoot}/scripts/measure-code.ts",
+        "{workspaceRoot}/applications/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py,ipynb,md}",
+        "{workspaceRoot}/packages/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py,md}",
+        "{workspaceRoot}/tools/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py,md}",
+        "sharedGlobals"
+      ],
+      "options": {
+        "cwd": "{workspaceRoot}"
+      },
+      "outputs": ["{workspaceRoot}/README.md"]
+    },
+    "measure-code-write": {
+      "cache": false,
+      "description": "Analyze codebase and write README.md statistics badges (intentionally uncached write mode)",
       "executor": "nx:run-commands",
       "options": {
+        "command": "tsx scripts/measure-code.ts",
         "cwd": "{workspaceRoot}"
       },
       "outputs": ["{workspaceRoot}/README.md"]
     },
     "orchestrate-agents": {
       "cache": false,
-      "description": "Run the multi-agent prompt orchestration script",
+      "description": "Run the multi-agent prompt orchestration script. Intentionally uncached because orchestration output depends on live model responses and runtime context.",
       "executor": "nx:run-commands",
       "options": {
         "command": "tsx scripts/orchestrate-agents.ts",
@@ -483,7 +498,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Scan for fixable security vulnerabilities (check) or clean stale overrides and re-fix (write)",
+      "description": "Scan for fixable security vulnerabilities (check) or clean stale overrides and re-fix (write). Intentionally uncached because vulnerability feed results change over time.",
       "executor": "nx:run-commands",
       "options": {}
     },
@@ -559,7 +574,7 @@
     },
     "pre-commit": {
       "cache": false,
-      "description": "Run the pre-commit git hook script (unstage notepads, lint-staged).",
+      "description": "Run the pre-commit git hook script (unstage notepads, lint-staged). Intentionally uncached because staged-file state is runtime context.",
       "executor": "nx:run-commands",
       "options": {
         "command": "sh configuration/.husky/pre-commit",
@@ -568,7 +583,7 @@
     },
     "pre-push": {
       "cache": false,
-      "description": "Run the pre-push git hook script (branch name validation).",
+      "description": "Run the pre-push git hook script (branch name validation). Intentionally uncached because branch/push context is runtime state.",
       "executor": "nx:run-commands",
       "options": {
         "command": "sh configuration/.husky/pre-push",
@@ -617,7 +632,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (pnpm-audit, license-check, sherif, syncpack). Dependency upgrades are handled separately by upgrade-dependencies.",
+      "description": "Run all dependency management tools (pnpm-audit, license-check, sherif, syncpack). Dependency upgrades are handled separately by upgrade-dependencies. Intentionally uncached because it aggregates live security/package feed checks.",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}"
@@ -777,7 +792,7 @@
         }
       },
       "defaultConfiguration": "plan",
-      "description": "Run Terraform commands (plan, import)",
+      "description": "Run Terraform commands (plan, import). Intentionally uncached because results depend on live infrastructure state and environment variables.",
       "executor": "nx:run-commands",
       "options": {
         "command": "terraform plan",
@@ -796,13 +811,13 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all Trivy security scans (container images and infrastructure config)",
+      "description": "Run all Trivy security scans (container images and infrastructure config). Intentionally uncached because vulnerability databases are updated continuously.",
       "executor": "nx:run-commands",
       "options": {}
     },
     "trivy-config": {
       "cache": false,
-      "description": "Scan Terraform infrastructure code for misconfigurations using Trivy",
+      "description": "Scan Terraform infrastructure code for misconfigurations using Trivy. Intentionally uncached because rule and vulnerability data evolves over time.",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/infrastructure/terraform/**/*.tf"],
       "options": {
@@ -843,13 +858,13 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Check for dependency updates (check) or upgrade all dependencies to latest versions (write)",
+      "description": "Check for dependency updates (check) or upgrade all dependencies to latest versions (write). Intentionally uncached because network package metadata changes continuously.",
       "executor": "nx:run-commands",
       "options": {}
     },
     "validate-branch-name": {
       "cache": false,
-      "description": "Validate the current branch name against the configured naming convention (invoked by the pre-push git hook)",
+      "description": "Validate the current branch name against the configured naming convention (invoked by the pre-push git hook). Intentionally uncached because branch name is runtime Git state.",
       "executor": "nx:run-commands",
       "options": {
         "command": "validate-branch-name",
