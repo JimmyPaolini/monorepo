@@ -1,9 +1,6 @@
 import { parse } from "jsonc-parser";
 
-import {
-  prepareConformanceTexts,
-  type TemplateConformanceArguments,
-} from "../common";
+import { prepareConformanceTexts, type TemplateConformanceArguments } from "../common";
 
 import { validateComments } from "./comments";
 
@@ -12,13 +9,7 @@ import type { ConformanceError } from "../types";
 /**
  * Describes behavior.
  */
-type JsonValue =
-  | boolean
-  | JsonValue[]
-  | null
-  | number
-  | string
-  | { [key: string]: JsonValue };
+type JsonValue = boolean | JsonValue[] | null | number | string | { [key: string]: JsonValue };
 
 /**
  * Validates that a generated JSON or JSONC file is a structural superset of
@@ -48,10 +39,7 @@ export function validateJsonConformance(args: {
   const templateObject = parse(renderedTemplate) as JsonValue;
   const instanceObject = parse(instance) as JsonValue;
 
-  const structuralErrors = validateDepthFirstSearch(
-    templateObject,
-    instanceObject,
-  );
+  const structuralErrors = validateDepthFirstSearch(templateObject, instanceObject);
 
   // Comment validation
   const commentErrors = validateComments({
@@ -101,8 +89,7 @@ function buildMissingError(itemPath: string): ConformanceError {
  */
 function formatPath(path: (number | string)[]): string {
   return path.reduce<string>((accumulator, segment) => {
-    if (typeof segment === "number")
-      return `${accumulator}[${String(segment)}]`;
+    if (typeof segment === "number") return `${accumulator}[${String(segment)}]`;
     return accumulator === "" ? segment : `${accumulator}.${segment}`;
   }, "");
 }
@@ -117,9 +104,7 @@ function isJsonObject(value: JsonValue): value is Record<string, JsonValue> {
 /**
  * Is json primitive.
  */
-function isJsonPrimitive(
-  value: JsonValue,
-): value is boolean | null | number | string {
+function isJsonPrimitive(value: JsonValue): value is boolean | null | number | string {
   return value === null || typeof value !== "object";
 }
 
@@ -129,6 +114,10 @@ function isJsonPrimitive(
  * keys in the instance are silently allowed (superset semantics). Arrays use
  * membership semantics: every template item must appear in the instance, but
  * order and extra items are allowed.
+ *
+ * Special case: allow `"catalog:"` as a valid version specifier in dependency
+ * fields, since instances may have been migrated to use pnpm catalogs while
+ * templates retain explicit semver ranges.
  */
 function validateDepthFirstSearch(
   template: JsonValue,
@@ -141,6 +130,15 @@ function validateDepthFirstSearch(
 
   if (isJsonObject(template) && isJsonObject(instance)) {
     return validateJsonObjects(template, instance, path);
+  }
+
+  // Allow catalog: as a valid version specifier for dependencies/devDependencies
+  if (
+    instance === "catalog:" &&
+    path.length >= 2 &&
+    (path[0] === "dependencies" || path[0] === "devDependencies")
+  ) {
+    return [];
   }
 
   if (template !== instance) {
@@ -190,10 +188,7 @@ function validateJsonObjects(
   return Object.keys(template).flatMap((key) => {
     const p = formatPath([...path, key]);
     return key in instance
-      ? validateDepthFirstSearch(template[key] ?? null, instance[key] ?? null, [
-          ...path,
-          key,
-        ])
+      ? validateDepthFirstSearch(template[key] ?? null, instance[key] ?? null, [...path, key])
       : [buildMissingError(p)];
   });
 }
