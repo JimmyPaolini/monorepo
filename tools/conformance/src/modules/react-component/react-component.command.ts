@@ -1,22 +1,21 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { formatFiles } from "@nx/devkit";
-import _ from "lodash";
-import { Command, CommandRunner, Option } from "nest-commander";
+import { Command, Option } from "nest-commander";
 
-import { StringCase } from "../../types";
 import {
-  commitWorkspaceTree,
-  createWorkspaceTree,
-  generateFiles,
+  buildKebabCaseNameSubstitutions,
+  generateTemplateScaffold,
+  type GeneratorInvocationArguments,
   isGeneratorInvocationArguments,
   normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
-  resolveName,
+  parseStringCommandOption,
+  resolveOptionalKebabCaseName,
   resolveProject,
   resolveProjectComponentsDirectoryPath,
 } from "../../utilities";
+import { ModuleGeneratorCommandRunner } from "../generator/module-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -39,19 +38,19 @@ import type { Tree } from "@nx/devkit";
   name: "react-component",
 })
 @Injectable()
-export class ReactComponentCommand extends CommandRunner {
+export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactComponentOptions> {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    super();
-    (this.logger as LoggerService | undefined)?.setContext(
-      ReactComponentCommand.name,
-    );
+  constructor(logger: LoggerService) {
+    super(logger);
+    logger.setContext(ReactComponentCommand.name);
   }
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
+
+  protected readonly successMessage = "Generated React component scaffold.";
 
   // 🔏 Private Methods
 
@@ -86,41 +85,51 @@ export class ReactComponentCommand extends CommandRunner {
             ...(options !== undefined && { options }),
             tree: argumentsOrTree,
           });
-    const { options: resolvedOptions, tree } = resolvedArguments;
-    const projectName = await resolveProject({
-      tag: REACT_COMPONENT_PROJECT_TAG,
-      tree,
-      ...(resolvedOptions.project !== undefined && {
-        project: resolvedOptions.project,
-      }),
-      message: REACT_COMPONENT_PROJECT_PROMPT,
-    });
 
-    const name = await resolveName({
-      case: StringCase.KEBAB_CASE,
-      message: REACT_COMPONENT_NAME_PROMPT,
-      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-      subject: "Component name",
-    });
+    await generateTemplateScaffold<ReactComponentOptions>({
+      argumentsOrTree: resolvedArguments,
+      format: "tree",
+      resolveGeneration: async ({ options: resolvedOptions, tree }) => {
+        const projectName = await resolveProject({
+          tag: REACT_COMPONENT_PROJECT_TAG,
+          tree,
+          ...(resolvedOptions.project !== undefined && {
+            project: resolvedOptions.project,
+          }),
+          message: REACT_COMPONENT_PROJECT_PROMPT,
+        });
 
-    const componentsDirectory = resolveProjectComponentsDirectoryPath({
-      projectName,
-      tree,
-    });
-    const templateDirectoryPath = path.join(
-      process.cwd(),
-      "tools/conformance/src/modules/react-component/templates",
-    );
-    const substitutions = { namePascalCase: _.upperFirst(_.camelCase(name)) };
+        const name = await resolveOptionalKebabCaseName({
+          message: REACT_COMPONENT_NAME_PROMPT,
+          ...(resolvedOptions.name !== undefined && {
+            name: resolvedOptions.name,
+          }),
+          subject: "Component name",
+        });
 
-    generateFiles({
-      instanceDirectoryPath: componentsDirectory,
-      substitutions,
-      templateDirectoryPath,
-      tree,
+        return {
+          instanceDirectoryPath: resolveProjectComponentsDirectoryPath({
+            projectName,
+            tree,
+          }),
+          substitutions: buildKebabCaseNameSubstitutions(name),
+          templateDirectoryPath: path.join(
+            process.cwd(),
+            "tools/conformance/src/modules/react-component/templates",
+          ),
+        };
+      },
     });
+  }
 
-    await formatFiles(tree);
+  /**
+   * Delegates generation to the React component scaffold factory.
+   */
+  protected override async generate(
+    argumentsOrTree: GeneratorInvocationArguments<ReactComponentOptions>,
+  ): Promise<undefined> {
+    await ReactComponentCommand.generateReactComponent(argumentsOrTree);
+    return undefined;
   }
 
   /**
@@ -130,34 +139,18 @@ export class ReactComponentCommand extends CommandRunner {
     description: "Component name in kebab-case",
     flags: "-n, --name [name]",
   })
-  parseNameOption(value: string): string {
-    return value;
+  override parseNameOption(value: string): string {
+    return parseStringCommandOption(value);
   }
 
   /**
-   * Parses the optional project name argument.
+   * Parses the optional parent project argument.
    */
   @Option({
     description: "Parent project name in kebab-case",
     flags: "-p, --project [project]",
   })
-  parseProjectOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Runs generator logic using CLI options and writes generated files to disk.
-   */
-  async run(
-    _passedParameters: string[],
-    options: ReactComponentOptions,
-  ): Promise<void> {
-    const tree = createWorkspaceTree();
-    await ReactComponentCommand.generateReactComponent({
-      options,
-      tree,
-    });
-    await commitWorkspaceTree({ tree });
-    this.logger.log("Generated React component scaffold.");
+  override parseProjectOption(value: string): string {
+    return parseStringCommandOption(value);
   }
 }

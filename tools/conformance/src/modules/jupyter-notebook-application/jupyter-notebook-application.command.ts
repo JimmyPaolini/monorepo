@@ -1,20 +1,19 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { formatFiles } from "@nx/devkit";
-import { Command, CommandRunner, Option } from "nest-commander";
+import { Command, Option } from "nest-commander";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
-import { StringCase } from "../../types";
 import {
-  commitWorkspaceTree,
-  createWorkspaceTree,
-  generateFiles,
+  buildKebabCaseNameSubstitutions,
+  type GeneratorInvocationArguments,
   isGeneratorInvocationArguments,
   normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
-  resolveName,
+  parseStringCommandOption,
 } from "../../utilities";
+import { GeneratorTemplateService } from "../generator/generator-template.service";
+import { NameGeneratorCommandRunner } from "../generator/name-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT } from "./jupyter-notebook-application.constants";
@@ -33,19 +32,20 @@ import type { Tree } from "@nx/devkit";
   name: "jupyter-notebook-application",
 })
 @Injectable()
-export class JupyterNotebookApplicationCommand extends CommandRunner {
+export class JupyterNotebookApplicationCommand extends NameGeneratorCommandRunner<JupyterNotebookApplicationOptions> {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    super();
-    (this.logger as LoggerService | undefined)?.setContext(
-      JupyterNotebookApplicationCommand.name,
-    );
+  constructor(logger: LoggerService) {
+    super(logger);
+    logger.setContext(JupyterNotebookApplicationCommand.name);
   }
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
+
+  protected readonly successMessage =
+    "Generated Jupyter notebook application scaffold.";
 
   // 🔏 Private Methods
 
@@ -84,37 +84,57 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
               tree: argumentsOrTree,
             },
           );
-    const { options: resolvedOptions, tree } = resolvedArguments;
-    const applicationName = await resolveName({
-      case: StringCase.KEBAB_CASE,
-      message: JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT,
-      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-      subject: "Application name",
-    });
-    const targetDirectory = path.join(APPLICATIONS_DIRECTORY, applicationName);
 
-    if (tree.exists(targetDirectory)) {
-      throw new Error(
-        `Directory "${targetDirectory}" already exists. Choose a different application name.`,
-      );
-    }
+    await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<JupyterNotebookApplicationOptions>(
+      {
+        argumentsOrTree: resolvedArguments,
+        nameMessage: JUPYTER_NOTEBOOK_APPLICATION_NAME_PROMPT,
+        nameSubject: "Application name",
+        resolveGenerationWithName: ({
+          nameKebabCase: applicationName,
+          options: resolvedOptions,
+          tree,
+        }) => {
+          const targetDirectory = path.join(
+            APPLICATIONS_DIRECTORY,
+            applicationName,
+          );
 
-    generateFiles({
-      instanceDirectoryPath: targetDirectory,
-      substitutions: {
-        description:
-          resolvedOptions.description ??
-          `A Python + Jupyter notebook application scaffold for ${applicationName}`,
-        name: applicationName,
+          if (tree.exists(targetDirectory)) {
+            throw new Error(
+              `Directory "${targetDirectory}" already exists. Choose a different application name.`,
+            );
+          }
+
+          return {
+            instanceDirectoryPath: targetDirectory,
+            substitutions: {
+              ...buildKebabCaseNameSubstitutions(applicationName),
+              description:
+                resolvedOptions.description ??
+                `A Python + Jupyter notebook application scaffold for ${applicationName}`,
+              name: applicationName,
+            },
+            templateDirectoryPath: path.join(
+              process.cwd(),
+              "tools/conformance/src/modules/jupyter-notebook-application/templates",
+            ),
+          };
+        },
       },
-      templateDirectoryPath: path.join(
-        process.cwd(),
-        "tools/conformance/src/modules/jupyter-notebook-application/templates",
-      ),
-      tree,
-    });
+    );
+  }
 
-    await formatFiles(tree);
+  /**
+   * Delegates generation to the Jupyter notebook application scaffold factory.
+   */
+  protected override async generate(
+    argumentsOrTree: GeneratorInvocationArguments<JupyterNotebookApplicationOptions>,
+  ): Promise<undefined> {
+    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+      argumentsOrTree,
+    );
+    return undefined;
   }
 
   /**
@@ -125,33 +145,6 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
     flags: "-d, --description [description]",
   })
   parseDescriptionOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Parses the optional application name argument.
-   */
-  @Option({
-    description: "Application name in kebab-case",
-    flags: "-n, --name [name]",
-  })
-  parseNameOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Runs generator logic using CLI options and writes generated files to disk.
-   */
-  async run(
-    _passedParameters: string[],
-    options: JupyterNotebookApplicationOptions,
-  ): Promise<void> {
-    const tree = createWorkspaceTree();
-    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
-      options,
-      tree,
-    });
-    await commitWorkspaceTree({ tree });
-    this.logger.log("Generated Jupyter notebook application scaffold.");
+    return parseStringCommandOption(value);
   }
 }

@@ -12,7 +12,15 @@ import {
   partOfSpeechEnumValues,
 } from "@monorepo/lexico-entities";
 
-// ♟️ Constants
+const normalizeStringArray = (values: unknown): string[] => {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return values.filter(
+    (value): value is string => typeof value === "string" && value.length > 0,
+  );
+};
 
 export const adjectivalPartOfSpeechSet: ReadonlySet<PartOfSpeech> =
   new Set<PartOfSpeech>(["adjective", "numeral", "participle", "suffix"]);
@@ -52,14 +60,3 @@ export const formVoiceValueList = normalizeStringArray(formVoiceValues);
 export const partOfSpeechValueList = normalizeStringArray(
   partOfSpeechEnumValues,
 );
-
-/**
- * Normalizes mixed unknown arrays into a string-only list.
- */
-function normalizeStringArray(value: unknown): string[] {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value.filter((item): item is string => typeof item === "string");
-}

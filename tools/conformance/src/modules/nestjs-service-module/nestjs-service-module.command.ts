@@ -1,23 +1,18 @@
-import { execSync } from "node:child_process";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { workspaceRoot } from "@nx/devkit";
-import _ from "lodash";
-import { Command, CommandRunner, Option } from "nest-commander";
+import { Command } from "nest-commander";
 
-import { StringCase } from "../../types";
 import {
-  commitWorkspaceTree,
-  createWorkspaceTree,
-  generateFiles,
+  buildKebabCaseNameSubstitutions,
+  type GeneratorInvocationArguments,
   isGeneratorInvocationArguments,
   normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
-  resolveName,
-  resolveProject,
   resolveProjectModulesDirectoryPath,
 } from "../../utilities";
+import { GeneratorRunnerService } from "../generator/generator-runner.service";
+import { ModuleGeneratorCommandRunner } from "../generator/module-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -40,19 +35,20 @@ import type { GeneratorCallback, Tree } from "@nx/devkit";
   name: "nestjs-service-module",
 })
 @Injectable()
-export class NestjsServiceModuleCommand extends CommandRunner {
+export class NestjsServiceModuleCommand extends ModuleGeneratorCommandRunner<NestjsServiceModuleOptions> {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    super();
-    (this.logger as LoggerService | undefined)?.setContext(
-      NestjsServiceModuleCommand.name,
-    );
+  constructor(logger: LoggerService) {
+    super(logger);
+    logger.setContext(NestjsServiceModuleCommand.name);
   }
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
+
+  protected readonly successMessage =
+    "Generated NestJS service module scaffold.";
 
   // 🔏 Private Methods
 
@@ -88,107 +84,45 @@ export class NestjsServiceModuleCommand extends CommandRunner {
             ...(options !== undefined && { options }),
             tree: argumentsOrTree,
           });
-    const { options: resolvedOptions, tree } = resolvedArguments;
-    const { nameKebabCase, projectName } =
-      await NestjsServiceModuleCommand.resolveProjectAndName(
-        tree,
-        resolvedOptions,
-      );
-    const modulesDirectory = resolveProjectModulesDirectoryPath({
-      projectName,
-      tree,
-    });
-    const targetPath = path.join(modulesDirectory, nameKebabCase);
-    const substitutions = {
-      nameCamelCase: _.camelCase(nameKebabCase),
-      nameKebabCase,
-      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-    };
 
-    generateFiles({
-      instanceDirectoryPath: targetPath,
-      substitutions,
-      templateDirectoryPath: path.join(
-        process.cwd(),
-        "tools/conformance/src/modules/nestjs-service-module/templates",
-      ),
-      tree,
-    });
+    return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsServiceModuleOptions>(
+      {
+        argumentsOrTree: resolvedArguments,
+        nameMessage: NESTJS_SERVICE_MODULE_NAME_PROMPT,
+        nameSubject: "Module name",
+        projectMessage: NESTJS_SERVICE_MODULE_PROJECT_PROMPT,
+        projectTag: NESTJS_SERVICE_MODULE_PROJECT_TAG,
+        resolveGenerationWithProjectAndName: ({
+          nameKebabCase,
+          projectName,
+          tree,
+        }) => {
+          const modulesDirectory = resolveProjectModulesDirectoryPath({
+            projectName,
+            tree,
+          });
+          const targetPath = path.join(modulesDirectory, nameKebabCase);
 
-    const generatedFiles = tree
-      .children(targetPath)
-      .map((fileName: string) => path.join(targetPath, fileName));
-
-    return () => {
-      execSync(
-        `pnpm exec nx format:write --files=${generatedFiles.join(",")}`,
-        {
-          cwd: workspaceRoot,
-          stdio: "inherit",
+          return {
+            instanceDirectoryPath: targetPath,
+            substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+            templateDirectoryPath: path.join(
+              process.cwd(),
+              "tools/conformance/src/modules/nestjs-service-module/templates",
+            ),
+          };
         },
-      );
-    };
+      },
+    );
   }
   /**
-   * Resolves project and module name for service module generation.
+   * Delegates generation to the service-module scaffold factory.
    */
-  private static async resolveProjectAndName(
-    tree: Tree,
-    options: NestjsServiceModuleOptions,
-  ): Promise<{ nameKebabCase: string; projectName: string }> {
-    const projectName = await resolveProject({
-      tag: NESTJS_SERVICE_MODULE_PROJECT_TAG,
-      tree,
-      ...(options.project !== undefined && { project: options.project }),
-      message: NESTJS_SERVICE_MODULE_PROJECT_PROMPT,
-    });
-
-    const nameKebabCase = await resolveName({
-      case: StringCase.KEBAB_CASE,
-      message: NESTJS_SERVICE_MODULE_NAME_PROMPT,
-      ...(options.name !== undefined && { name: options.name }),
-      subject: "Module name",
-    });
-
-    return { nameKebabCase, projectName };
-  }
-
-  /**
-   * Parses the optional module name argument.
-   */
-  @Option({
-    description: "Module name in kebab-case",
-    flags: "-n, --name [name]",
-  })
-  parseNameOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Parses the optional project name argument.
-   */
-  @Option({
-    description: "Parent project name in kebab-case",
-    flags: "-p, --project [project]",
-  })
-  parseProjectOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Runs generator logic using CLI options and writes generated files to disk.
-   */
-  async run(
-    _passedParameters: string[],
-    options: NestjsServiceModuleOptions,
-  ): Promise<void> {
-    const tree = createWorkspaceTree();
-    const callback =
-      await NestjsServiceModuleCommand.generateNestjsServiceModule({
-        options,
-        tree,
-      });
-    await commitWorkspaceTree({ callback, tree });
-    this.logger.log("Generated NestJS service module scaffold.");
+  protected override async generate(
+    argumentsOrTree: GeneratorInvocationArguments<NestjsServiceModuleOptions>,
+  ): Promise<GeneratorCallback> {
+    return NestjsServiceModuleCommand.generateNestjsServiceModule(
+      argumentsOrTree,
+    );
   }
 }

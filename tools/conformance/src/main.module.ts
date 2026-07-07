@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { DiscoveryModule } from "@nestjs/core";
 
 import { environmentSchema } from "./constants";
+import { GeneratorModule } from "./modules/generator/generator.module";
 import { JupyterNotebookApplicationModule } from "./modules/jupyter-notebook-application/jupyter-notebook-application.module";
 import { LoggerModule } from "./modules/logger/logger.module";
 import { NestjsCommandApplicationModule } from "./modules/nestjs-command-application/nestjs-command-application.module";
@@ -31,6 +32,7 @@ import { ValidatorModule } from "./modules/validator/validator.module";
     }),
     DiscoveryModule,
     LoggerModule,
+    GeneratorModule,
     JupyterNotebookApplicationModule,
     NestjsCommandApplicationModule,
     NestjsCommandModuleModule,

@@ -1,21 +1,18 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { formatFiles } from "@nx/devkit";
-import _ from "lodash";
-import { Command, CommandRunner, Option } from "nest-commander";
+import { Command } from "nest-commander";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
-import { StringCase } from "../../types";
 import {
-  commitWorkspaceTree,
-  createWorkspaceTree,
-  generateFiles,
+  buildKebabCaseNameSubstitutions,
+  type GeneratorInvocationArguments,
   isGeneratorInvocationArguments,
   normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
-  resolveName,
 } from "../../utilities";
+import { GeneratorTemplateService } from "../generator/generator-template.service";
+import { NameGeneratorCommandRunner } from "../generator/name-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT } from "./nestjs-graphql-application.constants";
@@ -34,19 +31,20 @@ import type { Tree } from "@nx/devkit";
   name: "nestjs-graphql-application",
 })
 @Injectable()
-export class NestjsGraphqlApplicationCommand extends CommandRunner {
+export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<NestjsGraphqlApplicationOptions> {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
-    super();
-    (this.logger as LoggerService | undefined)?.setContext(
-      NestjsGraphqlApplicationCommand.name,
-    );
+  constructor(logger: LoggerService) {
+    super(logger);
+    logger.setContext(NestjsGraphqlApplicationCommand.name);
   }
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
+
+  protected readonly successMessage =
+    "Generated NestJS GraphQL application scaffold.";
 
   // 🔏 Private Methods
 
@@ -85,64 +83,43 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
               tree: argumentsOrTree,
             },
           );
-    const { options: resolvedOptions, tree } = resolvedArguments;
-    const nameKebabCase = await resolveName({
-      case: StringCase.KEBAB_CASE,
-      message: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
-      ...(resolvedOptions.name !== undefined && { name: resolvedOptions.name }),
-      subject: "Application name",
-    });
-    const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
 
-    if (tree.exists(projectRoot)) {
-      throw new Error(
-        `Directory "${projectRoot}" already exists. Choose a different application name.`,
-      );
-    }
+    await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<NestjsGraphqlApplicationOptions>(
+      {
+        argumentsOrTree: resolvedArguments,
+        nameMessage: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
+        nameSubject: "Application name",
+        resolveGenerationWithName: ({ nameKebabCase, tree }) => {
+          const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
 
-    const substitutions = {
-      nameCamelCase: _.camelCase(nameKebabCase),
-      nameKebabCase,
-      namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
-    };
+          if (tree.exists(projectRoot)) {
+            throw new Error(
+              `Directory "${projectRoot}" already exists. Choose a different application name.`,
+            );
+          }
 
-    generateFiles({
-      instanceDirectoryPath: projectRoot,
-      substitutions,
-      templateDirectoryPath: path.join(
-        process.cwd(),
-        "tools/conformance/src/modules/nestjs-graphql-application/templates",
-      ),
-      tree,
-    });
-
-    await formatFiles(tree);
+          return {
+            instanceDirectoryPath: projectRoot,
+            substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+            templateDirectoryPath: path.join(
+              process.cwd(),
+              "tools/conformance/src/modules/nestjs-graphql-application/templates",
+            ),
+          };
+        },
+      },
+    );
   }
 
   /**
-   * Parses the optional application name argument.
+   * Delegates generation to the NestJS GraphQL application scaffold factory.
    */
-  @Option({
-    description: "Application name in kebab-case",
-    flags: "-n, --name [name]",
-  })
-  parseNameOption(value: string): string {
-    return value;
-  }
-
-  /**
-   * Runs generator logic using CLI options and writes generated files to disk.
-   */
-  async run(
-    _passedParameters: string[],
-    options: NestjsGraphqlApplicationOptions,
-  ): Promise<void> {
-    const tree = createWorkspaceTree();
-    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-      options,
-      tree,
-    });
-    await commitWorkspaceTree({ tree });
-    this.logger.log("Generated NestJS GraphQL application scaffold.");
+  protected override async generate(
+    argumentsOrTree: GeneratorInvocationArguments<NestjsGraphqlApplicationOptions>,
+  ): Promise<undefined> {
+    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
+      argumentsOrTree,
+    );
+    return undefined;
   }
 }

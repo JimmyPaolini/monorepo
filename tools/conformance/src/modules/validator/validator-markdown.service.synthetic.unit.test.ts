@@ -380,15 +380,31 @@ describe("validatorMarkdownService synthetic branches", () => {
 
   it("covers pickBestCandidate empty-candidates throw branch", async () => {
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService =
-      new importedModule.ValidatorMarkdownService() as unknown as {
-        pickBestCandidate: (
-          templateGrandchildren: readonly MdastNode[],
-          candidates: readonly MdastNode[],
-        ) => { bestCandidate: MdastNode; minimumErrors: unknown[] };
-      };
+    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const pickBestCandidate: unknown = Reflect.get(
+      syntheticService,
+      "pickBestCandidate",
+    ) as unknown;
 
-    expect(() => syntheticService.pickBestCandidate([], [])).toThrow(
+    if (typeof pickBestCandidate !== "function") {
+      throw new TypeError("Expected pickBestCandidate to be a function");
+    }
+
+    type PickBestCandidate = (
+      templateGrandchildren: readonly MdastNode[],
+      candidates: readonly MdastNode[],
+    ) => { bestCandidate: MdastNode; minimumErrors: unknown[] };
+
+    const isPickBestCandidate = (value: unknown): value is PickBestCandidate =>
+      typeof value === "function";
+
+    if (!isPickBestCandidate(pickBestCandidate)) {
+      throw new TypeError(
+        "Expected pickBestCandidate to match PickBestCandidate",
+      );
+    }
+
+    expect(() => pickBestCandidate([], [])).toThrow(
       "candidates must not be empty",
     );
   });

@@ -573,14 +573,6 @@
   "githubPullRequests.pushBranch": "prompt",
   "githubPullRequests.queries": [
     {
-      "label": "🧑‍💻 Mine",
-      "query": "repo:${owner}/${repository} is:open author:${user}"
-    },
-    {
-      "label": "🤖 Agent",
-      "query": "repo:${owner}/${repository} is:open author:copilot"
-    },
-    {
       "label": "📑 Open",
       "query": "repo:${owner}/${repository} is:open"
     },

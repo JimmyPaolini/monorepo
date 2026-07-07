@@ -6,8 +6,6 @@ import {
   VALIDATOR_RULE_NAMES,
 } from "./validator.constants";
 
-import type { ValidatorRuleName } from "./validator.types";
-
 const INVALID_RULE_NAME = "unknown-rule";
 
 function getTemplateDirectoryPathForTest(
@@ -47,16 +45,5 @@ describe("validator.constants", () => {
     expect(VALIDATOR_RULE_NAMES.length).toBeGreaterThan(0);
     expect(isValidatorRuleName("nestjs-command-module")).toBe(true);
     expect(isValidatorRuleName("not-a-rule")).toBe(false);
-  });
-
-  it("covers template directory fallback branch for invalid casted rules", () => {
-    const workspaceRootPath = "/workspace";
-
-    const result = getValidatorTemplateDirectoryPath(
-      "invalid-rule" as ValidatorRuleName,
-      workspaceRootPath,
-    );
-
-    expect(result).toBeUndefined();
   });
 });

@@ -315,7 +315,7 @@ describe(ValidatorRulesService, () => {
 
     expect(result).toBeDefined();
     expect(result?.[0]?.results.length).toBeGreaterThan(0);
-    expect(mockValidateInstanceFile).toHaveBeenCalledWith();
+    expect(mockValidateInstanceFile).toHaveBeenCalledWith(expect.any(Object));
 
     const firstCallArgument = getFirstValidateInstanceFileCallArgument();
 
@@ -371,7 +371,7 @@ describe(ValidatorRulesService, () => {
 
     getValidatorTemplateDirectoryPathSpy.mockRestore();
 
-    expect(mockValidateInstanceFile).toHaveBeenCalledWith();
+    expect(mockValidateInstanceFile).toHaveBeenCalledWith(expect.any(Object));
 
     const firstCallArgument = getFirstValidateInstanceFileCallArgument();
 

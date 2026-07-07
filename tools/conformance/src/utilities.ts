@@ -2,13 +2,14 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
-import { getProjects, workspaceRoot } from "@nx/devkit";
+import { formatFiles, getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 import mustache from "mustache";
 import { flushChanges, FsTree } from "nx/src/generators/tree";
 import prompts from "prompts";
 
 import { converterByStringCase, humanReadableStringCase } from "./constants";
+import { StringCase } from "./types";
 
 import type { StringCaseValue } from "./types";
 import type { GeneratorCallback, Tree } from "@nx/devkit";
@@ -22,9 +23,23 @@ export interface GeneratorInvocationArguments<TOptions extends object> {
   tree: Tree;
 }
 
-/**
- * Builds standard generator substitutions from a kebab-case name.
- */
+/** Shared project and name resolution result. */
+export interface ResolvedProjectAndName {
+  nameKebabCase: string;
+  projectName: string;
+}
+
+/** Shared scaffold format mode. */
+export type TemplateScaffoldFormatMode = "callback" | "tree";
+
+/** Result returned by a template scaffold generator before formatting. */
+export interface TemplateScaffoldGenerationResult {
+  instanceDirectoryPath: string;
+  substitutions: Record<string, string>;
+  templateDirectoryPath: string;
+}
+
+/** Builds standard generator substitutions from a kebab-case name. */
 export function buildKebabCaseNameSubstitutions(
   nameKebabCase: string,
 ): Record<string, string> {
@@ -35,9 +50,7 @@ export function buildKebabCaseNameSubstitutions(
   };
 }
 
-/**
- * Writes queued tree changes to disk and executes an optional post-run callback.
- */
+/** Writes queued tree changes to disk and executes an optional post-run callback. */
 export async function commitWorkspaceTree(args: {
   callback?: GeneratorCallback;
   tree: Tree;
@@ -52,9 +65,7 @@ export async function commitWorkspaceTree(args: {
   await Promise.resolve(callback());
 }
 
-/**
- * Builds a callback that formats all files generated in a target directory.
- */
+/** Builds a callback that formats all files generated in a target directory. */
 export function createFormatFilesCallback(args: {
   targetPath: string;
   tree: Tree;
@@ -75,7 +86,6 @@ export function createFormatFilesCallback(args: {
     });
   };
 }
-
 /**
  * Creates a file-system-backed Nx tree rooted at the current workspace.
  */
@@ -118,6 +128,68 @@ export function generateFiles(args: {
     const templatePath = path.join(templateDirectoryPath, node.name);
     processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
+}
+/**
+ * Normalizes a generator invocation, renders templates, and returns the
+ * requested formatting strategy.
+ */
+export async function generateTemplateScaffold<TOptions extends object>(args: {
+  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
+  format: "callback";
+  resolveGeneration: (args: {
+    options: Partial<TOptions>;
+    tree: Tree;
+  }) => Promise<TemplateScaffoldGenerationResult>;
+}): Promise<GeneratorCallback>;
+/**
+ * Normalizes a generator invocation, renders templates, and formats the tree.
+ */
+export async function generateTemplateScaffold<TOptions extends object>(args: {
+  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
+  format: "tree";
+  resolveGeneration: (args: {
+    options: Partial<TOptions>;
+    tree: Tree;
+  }) => Promise<TemplateScaffoldGenerationResult>;
+}): Promise<undefined>;
+/**
+ * Normalizes a generator invocation, renders templates, and formats output.
+ */
+export async function generateTemplateScaffold<TOptions extends object>(args: {
+  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
+  format: TemplateScaffoldFormatMode;
+  resolveGeneration: (args: {
+    options: Partial<TOptions>;
+    tree: Tree;
+  }) => Promise<TemplateScaffoldGenerationResult>;
+}): Promise<GeneratorCallback | undefined> {
+  const resolvedArguments = isGeneratorInvocationArguments<TOptions>(
+    args.argumentsOrTree,
+  )
+    ? normalizeGeneratorInvocationFromArguments<TOptions>(args.argumentsOrTree)
+    : normalizeGeneratorInvocationFromTree<TOptions>({
+        tree: args.argumentsOrTree,
+      });
+
+  const { options, tree } = resolvedArguments;
+  const generation = await args.resolveGeneration({ options, tree });
+
+  generateFiles({
+    instanceDirectoryPath: generation.instanceDirectoryPath,
+    substitutions: generation.substitutions,
+    templateDirectoryPath: generation.templateDirectoryPath,
+    tree,
+  });
+
+  if (args.format === "callback") {
+    return createFormatFilesCallback({
+      targetPath: generation.instanceDirectoryPath,
+      tree,
+    });
+  }
+
+  await formatFiles(tree);
+  return undefined;
 }
 
 /**
@@ -177,6 +249,13 @@ export function normalizeGeneratorInvocationFromTree<
 }
 
 /**
+ * Returns an unchanged option string for nest-commander option parsers.
+ */
+export function parseStringCommandOption(value: string): string {
+  return value;
+}
+
+/**
  * Resolves the module/resource name for a generator.
  *
  * If `name` is already provided it is validated against the expected `case`.
@@ -203,6 +282,22 @@ export async function resolveName(args: {
   }
 
   return name;
+}
+
+/**
+ * Resolves a kebab-case name, using the provided value or prompting as needed.
+ */
+export async function resolveOptionalKebabCaseName(args: {
+  message: string;
+  name?: string;
+  subject: string;
+}): Promise<string> {
+  return resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: args.message,
+    ...(args.name !== undefined && { name: args.name }),
+    subject: args.subject,
+  });
 }
 
 /**
@@ -237,6 +332,34 @@ export async function resolveProject(args: {
   }
 
   return projectName;
+}
+
+/**
+ * Resolves a tagged project and kebab-case name for generator commands.
+ */
+export async function resolveProjectAndKebabCaseName(args: {
+  name?: string;
+  nameMessage: string;
+  nameSubject: string;
+  optionsProject?: string;
+  projectMessage: string;
+  projectTag: string;
+  tree: Tree;
+}): Promise<ResolvedProjectAndName> {
+  const projectName = await resolveProject({
+    message: args.projectMessage,
+    ...(args.optionsProject !== undefined && { project: args.optionsProject }),
+    tag: args.projectTag,
+    tree: args.tree,
+  });
+  const nameKebabCase = await resolveName({
+    case: StringCase.KEBAB_CASE,
+    message: args.nameMessage,
+    ...(args.name !== undefined && { name: args.name }),
+    subject: args.nameSubject,
+  });
+
+  return { nameKebabCase, projectName };
 }
 
 /**
@@ -295,6 +418,28 @@ export function resolveProjectModulesDirectoryPath(args: {
     projectName: args.projectName,
     tree: args.tree,
   });
+}
+
+/**
+ * Runs a callback-based generator command and commits tree changes.
+ */
+export async function runGeneratorCommandWithCallback<
+  TOptions extends object,
+>(args: {
+  generate: (
+    argumentsOrTree: GeneratorInvocationArguments<TOptions>,
+  ) => Promise<GeneratorCallback | undefined>;
+  logger: { log: (message: string) => void };
+  options: TOptions;
+  successMessage: string;
+}): Promise<void> {
+  const tree = createWorkspaceTree();
+  const callback = await args.generate({ options: args.options, tree });
+  await commitWorkspaceTree({
+    ...(callback !== undefined && { callback }),
+    tree,
+  });
+  args.logger.log(args.successMessage);
 }
 
 /**

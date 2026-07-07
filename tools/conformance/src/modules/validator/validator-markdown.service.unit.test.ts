@@ -447,20 +447,67 @@ describe(ValidatorMarkdownService, () => {
       value?: string;
     }
 
-    const privateService = service as unknown as {
-      errorMessageBuilders: Readonly<
-        Record<string, (node: MarkdownHandlerNode) => string>
-      >;
-      nodeMatchers: Readonly<
-        Record<
-          string,
-          (
-            templateNode: MarkdownHandlerNode,
-            instanceNode: MarkdownHandlerNode,
-          ) => boolean
-        >
-      >;
+    type ErrorMessageBuilder = (node: MarkdownHandlerNode) => string;
+    type NodeMatcher = (
+      templateNode: MarkdownHandlerNode,
+      instanceNode: MarkdownHandlerNode,
+    ) => boolean;
+
+    const isErrorMessageBuilderRecord = (
+      value: unknown,
+    ): value is Readonly<Record<string, ErrorMessageBuilder>> => {
+      if (typeof value !== "object" || value === null) {
+        return false;
+      }
+
+      // type-coverage:ignore-next-line
+      for (const entry of Object.values(value)) {
+        // type-coverage:ignore-next-line
+        if (typeof entry !== "function") {
+          return false;
+        }
+      }
+
+      return true;
     };
+
+    const isNodeMatcherRecord = (
+      value: unknown,
+    ): value is Readonly<Record<string, NodeMatcher>> => {
+      if (typeof value !== "object" || value === null) {
+        return false;
+      }
+
+      // type-coverage:ignore-next-line
+      for (const entry of Object.values(value)) {
+        // type-coverage:ignore-next-line
+        if (typeof entry !== "function") {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    const errorMessageBuildersValue: unknown = Reflect.get(
+      service,
+      "errorMessageBuilders",
+    ) as unknown;
+    const nodeMatchersValue: unknown = Reflect.get(
+      service,
+      "nodeMatchers",
+    ) as unknown;
+
+    if (!isErrorMessageBuilderRecord(errorMessageBuildersValue)) {
+      throw new TypeError("Expected errorMessageBuilders to be an object");
+    }
+
+    if (!isNodeMatcherRecord(nodeMatchersValue)) {
+      throw new TypeError("Expected nodeMatchers to be an object");
+    }
+
+    const errorMessageBuilders = errorMessageBuildersValue;
+    const nodeMatchers = nodeMatchersValue;
 
     const builderNode: MarkdownHandlerNode = {
       alt: "alt",
@@ -493,7 +540,7 @@ describe(ValidatorMarkdownService, () => {
     ];
 
     for (const builderKey of builderKeys) {
-      const messageBuilder = privateService.errorMessageBuilders[builderKey];
+      const messageBuilder = errorMessageBuilders[builderKey];
 
       expect(typeof messageBuilder).toBe("function");
 
@@ -505,9 +552,9 @@ describe(ValidatorMarkdownService, () => {
     }
 
     const getNodeMatcher = (
-      matcherKey: keyof typeof privateService.nodeMatchers,
-    ): NonNullable<(typeof privateService.nodeMatchers)[typeof matcherKey]> => {
-      const nodeMatcher = privateService.nodeMatchers[matcherKey];
+      matcherKey: keyof typeof nodeMatchers,
+    ): NonNullable<(typeof nodeMatchers)[typeof matcherKey]> => {
+      const nodeMatcher = nodeMatchers[matcherKey];
 
       expect(typeof nodeMatcher).toBe("function");
 
