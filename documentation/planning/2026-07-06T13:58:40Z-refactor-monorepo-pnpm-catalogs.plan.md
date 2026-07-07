@@ -2,7 +2,7 @@
 name: Migrate Monorepo to PNPM Catalogs
 description: Replace explicit semver version strings across all workspace package.json files with pnpm catalog references, making pnpm-workspace.yaml the single source of truth for all external dependency versions.
 created: 2026-07-06T13:58:40Z
-updated: 2026-07-06T20:12:29Z
+updated: 2026-07-07T02:45:17Z
 status: 'In progress'
 ---
 
@@ -10,7 +10,7 @@ status: 'In progress'
 
 ![Status: In progress](https://img.shields.io/badge/status-In%20progress-yellow)
 
-This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs) — a feature (available since pnpm v9.5.0, fully supported in the repo's `pnpm@11.2.2`) that centralises all external dependency version strings in a `catalog:` section of `pnpm-workspace.yaml`. Individual `package.json` files then reference those entries via the `catalog:` protocol instead of hard-coding version ranges, eliminating the risk of version drift across the 8 workspace projects. A `catalogMode: strict` policy is applied post-migration so that `pnpm add` refuses new installs that are not catalogued first, keeping the workspace consistently governed.
+This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs) — a feature (available since pnpm v9.5.0, fully supported in the repo's `pnpm@11.2.2`) that centralizes all external dependency version strings in a `catalog:` section of `pnpm-workspace.yaml`. Individual `package.json` files then reference those entries via the `catalog:` protocol instead of hard-coding version ranges, eliminating the risk of version drift across the 8 workspace projects. A `catalogMode: strict` policy is applied post-migration so that `pnpm add` refuses new installs that are not cataloged first, keeping the workspace consistently governed.
 
 ## 1. Requirements & Constraints
 
@@ -26,7 +26,7 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 - **CON-003**: `pnpm-lock.yaml` is listed in `nx.json` `sharedGlobals` — the migration will invalidate all Nx local/remote task caches on the first run. This is expected and one-time.
 - **CON-004**: `validate-code` skill must pass cleanly (both `write` and `check` configurations) before the migration is considered complete, including `yamllint` on the modified `pnpm-workspace.yaml`.
 - **GUD-001**: Catalog entry names must match the exact npm package names (no abbreviations or aliases).
-- **GUD-002**: The `catalog:` block in `pnpm-workspace.yaml` must be sorted alphabetically by package name for readability and to minimise merge conflicts.
+- **GUD-002**: The `catalog:` block in `pnpm-workspace.yaml` must be sorted alphabetically by package name for readability and to minimize merge conflicts.
 - **PAT-001**: The `analyze-code` CI workflow runs `syncpack lint` — the updated `syncpack` config must allow `catalog:` protocol values to pass without errors.
 - **PAT-002**: `pnpm-workspace.yaml` is YAML-linted by `yamllint` (configured in `configuration/yamllint.yaml`). The expanded catalog block must pass yamllint.
 
@@ -41,7 +41,7 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 | TASK-001 | Run `pnpm exec syncpack lint --config configuration/syncpack.config.cjs` and confirm zero violations. If any versions are inconsistent across projects, fix them with `pnpm exec syncpack fix` before proceeding.                                            | ✅        | 2026-07-06T19:12:00Z |
 | TASK-002 | Confirm the two generator template files exist at their expected paths and document them as codemod-exclusion targets: `tools/conformance/src/generators/nestjs-command-application/templates/package.json` and `tools/conformance/src/generators/nestjs-graphql-application/templates/package.json`. Stage their current content (e.g., via `git stash` or a manual copy) so they can be restored if the codemod touches them. | ✅        | 2026-07-06T19:12:00Z |
 
-### Phase 2 — Automated Migration via Codemod
+### Phase 2 — Automated Migration via Code-mod
 
 - **GOAL-002**: Use the official pnpm catalog codemod to automatically populate the `catalog:` section in `pnpm-workspace.yaml` and rewrite all workspace `package.json` files to use `catalog:` protocol references.
 
@@ -86,14 +86,14 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 
 | Task     | Description                                                                                                                                                                                                                                   | Completed | Date |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
-| TASK-014 | Run `pnpm exec nx affected --target=analyze-code --configuration=write --base=main` to auto-fix any formatting or linting issues introduced by the migration (e.g., in `pnpm-workspace.yaml` or `syncpack.config.cjs`).                       |           |      |
+| TASK-014 | Run `pnpm exec nx affected --target=analyze-code --configuration=write --base=main` to auto-fix any formatting or linting issues introduced by the migration (e.g., in `pnpm-workspace.yaml` or `syncpack.config.cjs`).                       | ✅        | 2026-07-07T02:45:17Z |
 | TASK-015 | Run `pnpm exec nx affected --target=analyze-code --configuration=check --base=main` and confirm zero violations. This runs `yamllint` on `pnpm-workspace.yaml`, ESLint on `syncpack.config.cjs`, and all other analysis checks.               |           |      |
 | TASK-016 | Run `pnpm exec nx run-many --target=build --all` and confirm all projects build successfully with the catalog-resolved dependency versions.                                                                                                    | ✅        | 2026-07-06T20:12:29Z |
-| TASK-017 | Run `pnpm exec nx run-many --target=typecheck --all` and confirm zero TypeScript errors across all projects.                                                                                                                                   |           |      |
+| TASK-017 | Run `pnpm exec nx run-many --target=typecheck --all` and confirm zero TypeScript errors across all projects.                                                                                                                                   | ✅        | 2026-07-07T02:45:17Z |
 
 ## 3. Alternatives
 
-- **ALT-001**: **Named catalogs by group** — organise entries into named catalogs (`catalog:nestjs`, `catalog:react`, `catalog:testing`). Rejected in favour of a single default catalog for simplicity; `catalog:` references are shorter and the reduced coupling between catalog name and package grouping avoids churn when packages move between logical groups.
+- **ALT-001**: **Named catalogs by group** — organize entries into named catalogs (`catalog:nestjs`, `catalog:react`, `catalog:testing`). Rejected in favour of a single default catalog for simplicity; `catalog:` references are shorter and the reduced coupling between catalog name and package grouping avoids churn when packages move between logical groups.
 - **ALT-002**: **Partial migration (shared deps only)** — only promote dependencies that appear in 2+ projects. Rejected; migrating all external deps provides the strongest version governance guarantee and eliminates the need to reason about which deps are "shared enough" for the catalog.
 - **ALT-003**: **Remove syncpack entirely** — rely solely on `catalogMode: strict` and `cleanupUnusedCatalogs` for governance. Rejected because syncpack still provides value for enforcing `workspace:*` on internal `@monorepo/*` packages and for auditing cross-package dependency consistency during future upgrades.
 - **ALT-004**: **Manual migration (no codemod)** — hand-edit every `package.json` and `pnpm-workspace.yaml`. Rejected; the `pnpx codemod pnpm/catalog` automated migration is lower-risk and faster across 8 project `package.json` files plus the root.
@@ -140,7 +140,7 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 - **RISK-001**: The `pnpx codemod pnpm/catalog` tool may modify the generator template `package.json` files if its file glob is broader than expected. Mitigated by TASK-002 (pre-stage template content) and TASK-005 (restore if modified).
 - **RISK-002**: The codemod may not handle version conflicts gracefully if the same package somehow appears at different versions across projects (unlikely given syncpack enforcement). Mitigated by TASK-001 (run syncpack lint first to confirm consistency).
 - **RISK-003**: All Nx local and remote task caches will be invalidated on the first CI run post-migration because `pnpm-lock.yaml` (a `sharedGlobals` input) changes. This is a one-time cost with no mitigation needed; builds will be slower on the first post-merge CI run.
-- **RISK-004**: `syncpack` v15 may not natively recognise `catalog:` as a valid version specifier type, causing it to error rather than lint incorrectly. If `isIgnored: true` in `semverGroups` is insufficient, the fallback is to wrap the `source` glob to exclude project `package.json` files from semver-range linting while retaining the `versionGroups` workspace:* check.
+- **RISK-004**: `syncpack` v15 may not natively recognize `catalog:` as a valid version specifier type, causing it to error rather than lint incorrectly. If `isIgnored: true` in `semverGroups` is insufficient, the fallback is to wrap the `source` glob to exclude project `package.json` files from semver-range linting while retaining the `versionGroups` workspace:* check.
 - **RISK-005**: Future use of `nx release` for version bumping may overwrite `catalog:` references in `package.json` with resolved semver strings. This risk is post-migration and requires manual verification when `nx release` is next used.
 - **ASSUMPTION-001**: All external dependency versions are already consistent across workspace `package.json` files (maintained by syncpack CI enforcement), so a single catalog entry per package is unambiguous.
 - **ASSUMPTION-002**: The CI pipeline runs `pnpm install --frozen-lockfile`; a new `pnpm-lock.yaml` must be committed as part of this migration before merging.
