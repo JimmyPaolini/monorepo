@@ -2,13 +2,13 @@
 name: Migrate Monorepo to PNPM Catalogs
 description: Replace explicit semver version strings across all workspace package.json files with pnpm catalog references, making pnpm-workspace.yaml the single source of truth for all external dependency versions.
 created: 2026-07-06T13:58:40Z
-updated: 2026-07-07T02:45:17Z
-status: 'In progress'
+updated: 2026-07-07T03:15:00Z
+status: 'Completed'
 ---
 
 # Introduction
 
-![Status: In progress](https://img.shields.io/badge/status-In%20progress-yellow)
+![Status: Completed](https://img.shields.io/badge/status-Completed-brightgreen)
 
 This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs) — a feature (available since pnpm v9.5.0, fully supported in the repo's `pnpm@11.2.2`) that centralizes all external dependency version strings in a `catalog:` section of `pnpm-workspace.yaml`. Individual `package.json` files then reference those entries via the `catalog:` protocol instead of hard-coding version ranges, eliminating the risk of version drift across the 8 workspace projects. A `catalogMode: strict` policy is applied post-migration so that `pnpm add` refuses new installs that are not cataloged first, keeping the workspace consistently governed.
 
@@ -87,7 +87,7 @@ This plan migrates the monorepo to use [PNPM Catalogs](https://pnpm.io/catalogs)
 | Task     | Description                                                                                                                                                                                                                                   | Completed | Date |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
 | TASK-014 | Run `pnpm exec nx affected --target=analyze-code --configuration=write --base=main` to auto-fix any formatting or linting issues introduced by the migration (e.g., in `pnpm-workspace.yaml` or `syncpack.config.cjs`).                       | ✅        | 2026-07-07T02:45:17Z |
-| TASK-015 | Run `pnpm exec nx affected --target=analyze-code --configuration=check --base=main` and confirm zero violations. This runs `yamllint` on `pnpm-workspace.yaml`, ESLint on `syncpack.config.cjs`, and all other analysis checks.               |           |      |
+| TASK-015 | Run `pnpm exec nx affected --target=analyze-code --configuration=check --base=main` and confirm zero violations. This runs `yamllint` on `pnpm-workspace.yaml`, ESLint on `syncpack.config.cjs`, and all other analysis checks.               | ✅        | 2026-07-07T03:15:00Z |
 | TASK-016 | Run `pnpm exec nx run-many --target=build --all` and confirm all projects build successfully with the catalog-resolved dependency versions.                                                                                                    | ✅        | 2026-07-06T20:12:29Z |
 | TASK-017 | Run `pnpm exec nx run-many --target=typecheck --all` and confirm zero TypeScript errors across all projects.                                                                                                                                   | ✅        | 2026-07-07T02:45:17Z |
 
