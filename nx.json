@@ -143,8 +143,7 @@
             "oxfmt",
             "oxlint",
             "type-coverage",
-            "typescript",
-            "yamllint"
+            "typescript"
           ]
         }
       ],
@@ -426,13 +425,7 @@
     "pyright": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource",
-        {
-          "externalDependencies": ["pyright"]
-        }
-      ],
+      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
       "options": {
         "command": "uv run pyright src/",
         "cwd": "{projectRoot}"
@@ -458,10 +451,7 @@
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
         "pythonSource",
-        "pythonTests",
-        {
-          "externalDependencies": ["pytest"]
-        }
+        "pythonTests"
       ],
       "options": {
         "command": "uv run pytest",
@@ -478,13 +468,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource",
-        {
-          "externalDependencies": ["ruff"]
-        }
-      ],
+      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
       "options": {
         "command": "uv run ruff format {args} .",
         "cwd": "{projectRoot}"
@@ -559,13 +543,7 @@
     "ty": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource",
-        {
-          "externalDependencies": ["ty"]
-        }
-      ],
+      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
       "options": {
         "command": "uv run ty check src/",
         "cwd": "{projectRoot}"

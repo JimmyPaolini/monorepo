@@ -19,7 +19,7 @@
     "clean": {},
     "code-analysis": {
       "cache": true,
-      "description": "Run Lexico Ingestion code analysis checks through the aggregate analyze-code target",
+      "description": "Run code analysis checks through the aggregate analyze-code target",
       "executor": "nx:run-commands",
       "inputs": ["default"],
       "options": {

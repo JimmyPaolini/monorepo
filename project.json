@@ -27,7 +27,7 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:measure-code-write",
+            "tsx scripts/measure-code.ts",
             "nx run synchronization:agent-skills-write",
             "nx run synchronization:conventional-config:write",
             "nx run synchronization:pull-request-template:write",
