@@ -425,7 +425,10 @@
     "pyright": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run pyright src/",
         "cwd": "{projectRoot}"
@@ -468,7 +471,10 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run ruff format {args} .",
         "cwd": "{projectRoot}"
@@ -543,7 +549,10 @@
     "ty": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run ty check src/",
         "cwd": "{projectRoot}"
