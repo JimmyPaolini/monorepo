@@ -78,6 +78,24 @@
         "cwd": "{projectRoot}"
       }
     },
+    "cache-prune": {
+      "cache": false,
+      "description": "Clear local Nx task cache artifacts to keep cache performance predictable.",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm nx reset --onlyCache",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "cache-status": {
+      "cache": false,
+      "description": "Display current local Nx cache size.",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "du -sh .nx/cache",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "clean": {
       "cache": true,
       "configurations": {
@@ -778,6 +796,15 @@
       ],
       "options": {
         "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "test-changed": {
+      "cache": false,
+      "description": "Run tests for affected projects only (works with Vitest-integrated projects and other test executors).",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm nx affected --target=test --base=main --head=HEAD --outputStyle=static",
         "cwd": "{workspaceRoot}"
       }
     },
