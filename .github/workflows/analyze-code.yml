@@ -37,7 +37,12 @@ jobs:
         env:
           NX_PARALLEL: 3
           NX_VERBOSE_LOGGING: ${{ inputs.verbose || false }}
-        run: pnpm exec nx affected --target=analyze-code
+        run: >
+          pnpm exec nx affected
+          --target=analyze-code
+          --configuration=check
+          --parallel=${NX_PARALLEL}
+          --outputStyle=static
 
       - name: 📊 Upload Type Coverage
         if: always()
