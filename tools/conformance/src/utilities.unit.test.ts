@@ -6,6 +6,18 @@ import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { MainModule } from "./main.module";
+import { JupyterNotebookApplicationModule } from "./modules/jupyter-notebook-application/jupyter-notebook-application.module";
+import { LoggerModule } from "./modules/logger/logger.module";
+import { NestjsCommandApplicationModule } from "./modules/nestjs-command-application/nestjs-command-application.module";
+import { NestjsCommandModuleModule } from "./modules/nestjs-command-module/nestjs-command-module.module";
+import { NestjsDataloaderModuleModule } from "./modules/nestjs-dataloader-module/nestjs-dataloader-module.module";
+import { NestjsGraphqlApplicationModule } from "./modules/nestjs-graphql-application/nestjs-graphql-application.module";
+import { NestjsGraphqlModuleModule } from "./modules/nestjs-graphql-module/nestjs-graphql-module.module";
+import { NestjsServiceFileModule } from "./modules/nestjs-service-file/nestjs-service-file.module";
+import { NestjsServiceModuleModule } from "./modules/nestjs-service-module/nestjs-service-module.module";
+import { ReactComponentModule } from "./modules/react-component/react-component.module";
+import { ValidatorModule } from "./modules/validator/validator.module";
 import { StringCase } from "./types";
 import {
   buildKebabCaseNameSubstitutions,
@@ -58,6 +70,21 @@ describe("utilities", () => {
     execSyncMock.mockReset();
     promptsMock.mockReset();
     flushChangesMock.mockReset();
+  });
+
+  it("instantiates all generator and validator modules", () => {
+    expect(new MainModule()).toBeDefined();
+    expect(new LoggerModule()).toBeDefined();
+    expect(new JupyterNotebookApplicationModule()).toBeDefined();
+    expect(new NestjsCommandApplicationModule()).toBeDefined();
+    expect(new NestjsCommandModuleModule()).toBeDefined();
+    expect(new NestjsDataloaderModuleModule()).toBeDefined();
+    expect(new NestjsGraphqlApplicationModule()).toBeDefined();
+    expect(new NestjsGraphqlModuleModule()).toBeDefined();
+    expect(new NestjsServiceFileModule()).toBeDefined();
+    expect(new NestjsServiceModuleModule()).toBeDefined();
+    expect(new ReactComponentModule()).toBeDefined();
+    expect(new ValidatorModule()).toBeDefined();
   });
 
   it("builds kebab-case substitutions", () => {
