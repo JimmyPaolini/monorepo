@@ -11,6 +11,7 @@ vi.mock("node:child_process", () => ({
   execSync: vi.fn<typeof execSync>(),
 }));
 
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsServiceModuleCommand } from "./nestjs-service-module.command";
@@ -200,18 +201,8 @@ describe(NestjsServiceModuleCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(generatedTree, projectName, {
-      root: projectRoot,
-      tags: ["framework:nestjs"],
-    });
-    generatedTree.write(`${modulesDirectory}/.gitkeep`, "");
-
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {
@@ -221,21 +212,17 @@ describe(NestjsServiceModuleCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(
-      generatedTree.exists(
-        `${modulesDirectory}/delta-module/delta-module.module.ts`,
-      ),
-    ).toBe(true);
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(commitWorkspaceTreeSpy.mock.calls[0]?.[0]).toStrictEqual(
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
       expect.objectContaining({
-        tree: generatedTree,
+        options: {
+          name: "delta-module",
+          project: projectName,
+        },
       }),
     );
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 
   it("builds callback command using generated files", async () => {

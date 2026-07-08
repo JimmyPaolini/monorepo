@@ -6,6 +6,7 @@ import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
@@ -169,12 +170,8 @@ describe(JupyterNotebookApplicationCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {
@@ -184,15 +181,16 @@ describe(JupyterNotebookApplicationCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(
-      generatedTree.exists("applications/delta-notebook/project.json"),
-    ).toBe(true);
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledWith({
-      tree: generatedTree,
-    });
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+      expect.objectContaining({
+        options: {
+          description: "Delta",
+          name: "delta-notebook",
+        },
+      }),
+    );
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 });

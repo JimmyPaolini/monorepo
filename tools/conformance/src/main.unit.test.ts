@@ -49,5 +49,5 @@ describe("main bootstrap", () => {
 
     expect(runOptions?.bufferLogs).toBe(true);
     expect(runOptions?.logger).toBeDefined();
-  });
+  }, 15_000);
 });

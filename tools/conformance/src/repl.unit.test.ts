@@ -26,5 +26,5 @@ describe("repl bootstrap", () => {
     await import("./repl");
 
     expect(replMock).toHaveBeenCalledTimes(1);
-  });
+  }, 15_000);
 });

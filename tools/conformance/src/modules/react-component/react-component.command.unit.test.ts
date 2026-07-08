@@ -6,11 +6,25 @@ import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { ReactComponentCommand } from "./react-component.command";
 
 import type { Tree } from "@nx/devkit";
+
+const { formatFilesMock } = vi.hoisted(() => ({
+  formatFilesMock: vi.fn<(...arguments_: unknown[]) => Promise<void>>(),
+}));
+
+vi.mock("@nx/devkit", async (importOriginal) => {
+  const originalModule = await importOriginal<Record<string, unknown>>();
+
+  return {
+    ...originalModule,
+    formatFiles: formatFilesMock,
+  };
+});
 
 describe(ReactComponentCommand, () => {
   const projectName = "lexico-components";
@@ -55,6 +69,8 @@ describe(ReactComponentCommand, () => {
   });
 
   beforeEach(() => {
+    formatFilesMock.mockReset();
+    formatFilesMock.mockResolvedValue(undefined);
     tree = createTreeWithEmptyWorkspace();
     addReactProject(tree);
     tree.write(`${componentsDirectory}/.gitkeep`, "");
@@ -120,8 +136,6 @@ describe(ReactComponentCommand, () => {
   });
 
   it("supports tree-first invocation and formats files", async () => {
-    const formatFilesSpy = vi.spyOn(await import("@nx/devkit"), "formatFiles");
-
     await runWithRepositoryRoot(async () => {
       await ReactComponentCommand.generateReactComponent({
         options: {
@@ -136,10 +150,8 @@ describe(ReactComponentCommand, () => {
     expect(tree.exists(`${componentsDirectory}/AlertBanner.test.tsx`)).toBe(
       true,
     );
-    expect(formatFilesSpy).toHaveBeenCalledTimes(1);
-    expect(formatFilesSpy).toHaveBeenCalledWith(tree);
-
-    formatFilesSpy.mockRestore();
+    expect(formatFilesMock).toHaveBeenCalledTimes(1);
+    expect(formatFilesMock).toHaveBeenCalledWith(tree);
   });
 
   it("supports tree-first overload signature", async () => {
@@ -247,17 +259,9 @@ describe(ReactComponentCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    addReactProject(generatedTree);
-    generatedTree.write(`${componentsDirectory}/.gitkeep`, "");
-
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
-    const formatFilesSpy = vi.spyOn(await import("@nx/devkit"), "formatFiles");
 
     await runWithRepositoryRoot(async () => {
       await command.run([], {
@@ -266,20 +270,16 @@ describe(ReactComponentCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(generatedTree.exists(`${componentsDirectory}/AlertBanner.tsx`)).toBe(
-      true,
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+      expect.objectContaining({
+        options: {
+          name: "alert-banner",
+          project: projectName,
+        },
+      }),
     );
-    expect(
-      generatedTree.exists(`${componentsDirectory}/AlertBanner.test.tsx`),
-    ).toBe(true);
-    expect(formatFilesSpy).toHaveBeenCalledWith(generatedTree);
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledWith({
-      tree: generatedTree,
-    });
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
-    formatFilesSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 });

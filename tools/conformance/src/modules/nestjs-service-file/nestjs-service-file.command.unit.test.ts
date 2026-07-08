@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
@@ -7,6 +8,7 @@ import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import prompts from "prompts";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsServiceFileCommand } from "./nestjs-service-file.command";
@@ -15,6 +17,10 @@ import type { Tree } from "@nx/devkit";
 
 vi.mock("prompts", () => ({
   default: vi.fn<typeof prompts>(),
+}));
+
+vi.mock("node:child_process", () => ({
+  execSync: vi.fn<typeof execSync>(),
 }));
 
 describe(NestjsServiceFileCommand, () => {
@@ -197,22 +203,8 @@ describe(NestjsServiceFileCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(generatedTree, projectName, {
-      root: projectRoot,
-      tags: ["framework:nestjs"],
-    });
-    generatedTree.write(`${modulesDirectory}/.gitkeep`, "");
-    generatedTree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {
@@ -223,21 +215,18 @@ describe(NestjsServiceFileCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(
-      generatedTree.exists(
-        `${modulesDirectory}/alpha/delta-service.service.ts`,
-      ),
-    ).toBe(true);
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(commitWorkspaceTreeSpy.mock.calls[0]?.[0]).toStrictEqual(
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
       expect.objectContaining({
-        tree: generatedTree,
+        options: {
+          module: "alpha",
+          name: "delta-service",
+          project: projectName,
+        },
       }),
     );
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 
   it("returns callback that can be invoked for generated files", async () => {
@@ -245,10 +234,8 @@ describe(NestjsServiceFileCommand, () => {
       `${modulesDirectory}/alpha/alpha.module.ts`,
       "export class Alpha {}",
     );
-    const formatFilesCallback = vi.fn<() => Promise<void> | void>();
-    const createFormatFilesCallbackSpy = vi
-      .spyOn(await import("../../utilities"), "createFormatFilesCallback")
-      .mockReturnValue(formatFilesCallback);
+    const mockedExecSync = vi.mocked(execSync);
+    mockedExecSync.mockReturnValue(Buffer.from(""));
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
@@ -269,10 +256,15 @@ describe(NestjsServiceFileCommand, () => {
     }
 
     await expect(Promise.resolve(callback())).resolves.toBeUndefined();
-    expect(createFormatFilesCallbackSpy).toHaveBeenCalledTimes(1);
-    expect(formatFilesCallback).toHaveBeenCalledTimes(1);
+    expect(mockedExecSync).toHaveBeenCalledTimes(1);
+    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
+      "pnpm exec nx format:write --files=",
+    );
+    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
+      "applications/my-app/src/modules/alpha/",
+    );
 
-    createFormatFilesCallbackSpy.mockRestore();
+    mockedExecSync.mockReset();
   });
 
   it("prompts for module when option is not provided", async () => {

@@ -11,6 +11,7 @@ import {
   DESTINATION_ROOTS,
   TOOLS_DIRECTORY,
 } from "../../constants";
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsCommandApplicationCommand } from "./nestjs-command-application.command";
@@ -256,12 +257,8 @@ describe(NestjsCommandApplicationCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {
@@ -271,15 +268,16 @@ describe(NestjsCommandApplicationCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(
-      generatedTree.exists("applications/my-command-app/project.json"),
-    ).toBe(true);
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledWith({
-      tree: generatedTree,
-    });
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+      expect.objectContaining({
+        options: {
+          destinationRoot: APPLICATIONS_DIRECTORY,
+          name: "my-command-app",
+        },
+      }),
+    );
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 });

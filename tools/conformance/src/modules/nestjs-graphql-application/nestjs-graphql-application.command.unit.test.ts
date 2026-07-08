@@ -6,6 +6,7 @@ import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
+import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsGraphqlApplicationCommand } from "./nestjs-graphql-application.command";
@@ -191,12 +192,8 @@ describe(NestjsGraphqlApplicationCommand, () => {
   });
 
   it("runs command orchestration and logs success", async () => {
-    const generatedTree = createTreeWithEmptyWorkspace();
-    const createWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "createWorkspaceTree")
-      .mockReturnValue(generatedTree);
-    const commitWorkspaceTreeSpy = vi
-      .spyOn(await import("../../utilities"), "commitWorkspaceTree")
+    const runGeneratorCommandSpy = vi
+      .spyOn(GeneratorService, "runGeneratorCommand")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {
@@ -205,15 +202,15 @@ describe(NestjsGraphqlApplicationCommand, () => {
       });
     });
 
-    expect(createWorkspaceTreeSpy).toHaveBeenCalledTimes(1);
-    expect(generatedTree.exists("applications/delta-api/project.json")).toBe(
-      true,
+    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
+    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+      expect.objectContaining({
+        options: {
+          name: "delta-api",
+        },
+      }),
     );
-    expect(commitWorkspaceTreeSpy).toHaveBeenCalledWith({
-      tree: generatedTree,
-    });
 
-    createWorkspaceTreeSpy.mockRestore();
-    commitWorkspaceTreeSpy.mockRestore();
+    runGeneratorCommandSpy.mockRestore();
   });
 });
