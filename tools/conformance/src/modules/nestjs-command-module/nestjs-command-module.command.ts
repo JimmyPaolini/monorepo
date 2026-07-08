@@ -6,8 +6,6 @@ import { Command } from "nest-commander";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   resolveProjectModulesDirectoryPath,
 } from "../../utilities";
@@ -56,35 +54,17 @@ export class NestjsCommandModuleCommand extends ModuleGeneratorCommandRunner<Nes
   /**
    * Migrated core generator logic for creating a NestJS command module.
    */
-  static async generateNestjsCommandModule(
-    argumentsOrTree: NestjsCommandModuleArguments,
-  ): Promise<GeneratorCallback>;
   // 🌎 Public Methods
-  /**
-   * Overload signature for tree and options based invocation.
-   */
+
   static async generateNestjsCommandModule(
-    tree: Tree,
-    options?: NestjsCommandModuleOptions,
-  ): Promise<GeneratorCallback>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsCommandModule(
-    argumentsOrTree: NestjsCommandModuleArguments | Tree,
-    options?: NestjsCommandModuleOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<NestjsCommandModuleOptions> = {},
   ): Promise<GeneratorCallback> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<NestjsCommandModuleOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<NestjsCommandModuleOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<NestjsCommandModuleOptions>({
-            ...(options !== undefined && { options }),
-            tree: argumentsOrTree,
-          });
+      normalizeGeneratorInvocationFromTree<NestjsCommandModuleOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsCommandModuleOptions>(
       {
@@ -116,13 +96,26 @@ export class NestjsCommandModuleCommand extends ModuleGeneratorCommandRunner<Nes
       },
     );
   }
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateNestjsCommandModuleFromArguments(
+    argumentsOrTree: NestjsCommandModuleArguments,
+  ): Promise<GeneratorCallback> {
+    const workspaceTree = argumentsOrTree.tree;
+    return NestjsCommandModuleCommand.generateNestjsCommandModule(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
   /**
    * Delegates generation to the command-module scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsCommandModuleOptions>,
   ): Promise<GeneratorCallback> {
-    return NestjsCommandModuleCommand.generateNestjsCommandModule(
+    return NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments(
       argumentsOrTree,
     );
   }

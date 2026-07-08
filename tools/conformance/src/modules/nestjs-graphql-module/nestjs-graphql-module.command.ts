@@ -6,8 +6,6 @@ import { Command } from "nest-commander";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   resolveProjectModulesDirectoryPath,
 } from "../../utilities";
@@ -58,33 +56,14 @@ export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<Nes
    * Migrated core generator logic for creating a NestJS GraphQL module.
    */
   static async generateNestjsGraphqlModule(
-    argumentsOrTree: NestjsGraphqlModuleArguments,
-  ): Promise<GeneratorCallback>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsGraphqlModule(
-    tree: Tree,
-    options?: NestjsGraphqlModuleOptions,
-  ): Promise<GeneratorCallback>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsGraphqlModule(
-    argumentsOrTree: NestjsGraphqlModuleArguments | Tree,
-    options?: NestjsGraphqlModuleOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<NestjsGraphqlModuleOptions> = {},
   ): Promise<GeneratorCallback> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<NestjsGraphqlModuleOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlModuleOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<NestjsGraphqlModuleOptions>({
-            ...(options !== undefined && { options }),
-            tree: argumentsOrTree,
-          });
+      normalizeGeneratorInvocationFromTree<NestjsGraphqlModuleOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsGraphqlModuleOptions>(
       {
@@ -117,12 +96,25 @@ export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<Nes
   }
 
   /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateNestjsGraphqlModuleFromArguments(
+    argumentsOrTree: NestjsGraphqlModuleArguments,
+  ): Promise<GeneratorCallback> {
+    const workspaceTree = argumentsOrTree.tree;
+    return NestjsGraphqlModuleCommand.generateNestjsGraphqlModule(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
+
+  /**
    * Delegates generation to the GraphQL-module scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsGraphqlModuleOptions>,
   ): Promise<GeneratorCallback> {
-    return NestjsGraphqlModuleCommand.generateNestjsGraphqlModule(
+    return NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
       argumentsOrTree,
     );
   }

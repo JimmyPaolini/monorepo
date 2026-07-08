@@ -80,7 +80,7 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("generates notebook scaffold with explicit description", async () => {
     await runWithRepositoryRoot(async () => {
-      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
         {
           options: {
             description: "Custom description",
@@ -110,7 +110,7 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("supports tree-first overload with fallback description", async () => {
     await runWithRepositoryRoot(async () => {
-      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
         {
           options: {
             name: "beta-notebook",
@@ -149,10 +149,12 @@ describe(JupyterNotebookApplicationCommand, () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-notebook/.gitkeep`, "");
 
     await expect(
-      JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
-        options: { name: "existing-notebook" },
-        tree,
-      }),
+      JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
+        {
+          options: { name: "existing-notebook" },
+          tree,
+        },
+      ),
     ).rejects.toThrow(
       `Directory "${APPLICATIONS_DIRECTORY}/existing-notebook" already exists. Choose a different application name.`,
     );
@@ -160,10 +162,12 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("rejects non-kebab-case names", async () => {
     await expect(
-      JupyterNotebookApplicationCommand.generateJupyterNotebookApplication({
-        options: { name: "ExistingNotebook" },
-        tree,
-      }),
+      JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
+        {
+          options: { name: "ExistingNotebook" },
+          tree,
+        },
+      ),
     ).rejects.toThrow(
       'Application name "ExistingNotebook" must be in kebab-case. Did you mean "existing-notebook"?',
     );

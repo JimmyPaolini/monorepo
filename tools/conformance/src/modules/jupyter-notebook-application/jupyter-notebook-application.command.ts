@@ -7,8 +7,6 @@ import { APPLICATIONS_DIRECTORY } from "../../constants";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   parseStringCommandOption,
 } from "../../utilities";
@@ -49,41 +47,18 @@ export class JupyterNotebookApplicationCommand extends NameGeneratorCommandRunne
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
-
   /**
    * Migrated core generator logic for creating a Jupyter notebook application.
    */
   static async generateJupyterNotebookApplication(
-    argumentsOrTree: JupyterNotebookApplicationArguments,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateJupyterNotebookApplication(
-    tree: Tree,
-    options?: JupyterNotebookApplicationOptions,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateJupyterNotebookApplication(
-    argumentsOrTree: JupyterNotebookApplicationArguments | Tree,
-    options?: JupyterNotebookApplicationOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<JupyterNotebookApplicationOptions> = {},
   ): Promise<void> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<JupyterNotebookApplicationOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<JupyterNotebookApplicationOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<JupyterNotebookApplicationOptions>(
-            {
-              ...(options !== undefined && { options }),
-              tree: argumentsOrTree,
-            },
-          );
+      normalizeGeneratorInvocationFromTree<JupyterNotebookApplicationOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<JupyterNotebookApplicationOptions>(
       {
@@ -125,13 +100,28 @@ export class JupyterNotebookApplicationCommand extends NameGeneratorCommandRunne
     );
   }
 
+  // 🌎 Public Methods
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateJupyterNotebookApplicationFromArguments(
+    argumentsOrTree: JupyterNotebookApplicationArguments,
+  ): Promise<void> {
+    const workspaceTree = argumentsOrTree.tree;
+    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
+
   /**
    * Delegates generation to the Jupyter notebook application scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<JupyterNotebookApplicationOptions>,
   ): Promise<undefined> {
-    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
+    await JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
       argumentsOrTree,
     );
     return undefined;

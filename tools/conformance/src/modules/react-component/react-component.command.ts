@@ -7,8 +7,6 @@ import {
   buildKebabCaseNameSubstitutions,
   generateTemplateScaffold,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   parseStringCommandOption,
   resolveOptionalKebabCaseName,
@@ -54,37 +52,18 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
-
   /**
    * Migrated core generator logic for creating a React component.
    */
   static async generateReactComponent(
-    argumentsOrTree: ReactComponentArguments,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateReactComponent(
-    tree: Tree,
-    options?: ReactComponentOptions,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateReactComponent(
-    argumentsOrTree: ReactComponentArguments | Tree,
-    options?: ReactComponentOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<ReactComponentOptions> = {},
   ): Promise<void> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<ReactComponentOptions>(argumentsOrTree)
-        ? normalizeGeneratorInvocationFromArguments<ReactComponentOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
-            ...(options !== undefined && { options }),
-            tree: argumentsOrTree,
-          });
+      normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     await generateTemplateScaffold<ReactComponentOptions>({
       argumentsOrTree: resolvedArguments,
@@ -122,13 +101,30 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
     });
   }
 
+  // 🌎 Public Methods
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateReactComponentFromArguments(
+    argumentsOrTree: ReactComponentArguments,
+  ): Promise<void> {
+    const workspaceTree = argumentsOrTree.tree;
+    await ReactComponentCommand.generateReactComponent(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
+
   /**
    * Delegates generation to the React component scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<ReactComponentOptions>,
   ): Promise<undefined> {
-    await ReactComponentCommand.generateReactComponent(argumentsOrTree);
+    await ReactComponentCommand.generateReactComponentFromArguments(
+      argumentsOrTree,
+    );
     return undefined;
   }
 

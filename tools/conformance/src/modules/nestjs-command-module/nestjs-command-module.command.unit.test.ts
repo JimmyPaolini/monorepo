@@ -91,13 +91,15 @@ describe(NestjsCommandModuleCommand, () => {
 
   it("generates command module scaffold files", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandModuleCommand.generateNestjsCommandModule({
-        options: {
-          name: "user-profile",
-          project: projectName,
+      await NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments(
+        {
+          options: {
+            name: "user-profile",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/user-profile`;
@@ -113,13 +115,15 @@ describe(NestjsCommandModuleCommand, () => {
 
   it("supports tree-first generator invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandModuleCommand.generateNestjsCommandModule({
-        options: {
-          name: "audit-log",
-          project: projectName,
+      await NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments(
+        {
+          options: {
+            name: "audit-log",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/audit-log`;
@@ -148,7 +152,7 @@ describe(NestjsCommandModuleCommand, () => {
 
   it("validates module names as kebab-case", async () => {
     await expect(
-      NestjsCommandModuleCommand.generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments({
         options: {
           name: "userProfile",
           project: projectName,
@@ -168,7 +172,7 @@ describe(NestjsCommandModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      NestjsCommandModuleCommand.generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments({
         options: {
           name: "user-profile",
           project: "wrong-tag-project",
@@ -188,7 +192,7 @@ describe(NestjsCommandModuleCommand, () => {
     });
 
     await expect(
-      NestjsCommandModuleCommand.generateNestjsCommandModule({
+      NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments({
         options: {
           name: "user-profile",
           project: projectName,
@@ -231,13 +235,16 @@ describe(NestjsCommandModuleCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await NestjsCommandModuleCommand.generateNestjsCommandModule({
-        options: {
-          name: "format-target",
-          project: projectName,
-        },
-        tree,
-      });
+      callback =
+        await NestjsCommandModuleCommand.generateNestjsCommandModuleFromArguments(
+          {
+            options: {
+              name: "format-target",
+              project: projectName,
+            },
+            tree,
+          },
+        );
     });
 
     if (callback === undefined) {

@@ -6,8 +6,6 @@ import { Command } from "nest-commander";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   resolveProjectModulesDirectoryPath,
 } from "../../utilities";
@@ -56,35 +54,17 @@ export class NestjsDataloaderModuleCommand extends ModuleGeneratorCommandRunner<
   /**
    * Migrated core generator logic for creating a NestJS DataLoader module.
    */
-  static async generateNestjsDataloaderModule(
-    argumentsOrTree: NestjsDataloaderModuleArguments,
-  ): Promise<GeneratorCallback>;
   // 🌎 Public Methods
-  /**
-   * Overload signature for tree and options based invocation.
-   */
+
   static async generateNestjsDataloaderModule(
-    tree: Tree,
-    options?: NestjsDataloaderModuleOptions,
-  ): Promise<GeneratorCallback>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsDataloaderModule(
-    argumentsOrTree: NestjsDataloaderModuleArguments | Tree,
-    options?: NestjsDataloaderModuleOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<NestjsDataloaderModuleOptions> = {},
   ): Promise<GeneratorCallback> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<NestjsDataloaderModuleOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<NestjsDataloaderModuleOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<NestjsDataloaderModuleOptions>({
-            ...(options !== undefined && { options }),
-            tree: argumentsOrTree,
-          });
+      normalizeGeneratorInvocationFromTree<NestjsDataloaderModuleOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsDataloaderModuleOptions>(
       {
@@ -116,13 +96,26 @@ export class NestjsDataloaderModuleCommand extends ModuleGeneratorCommandRunner<
       },
     );
   }
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateNestjsDataloaderModuleFromArguments(
+    argumentsOrTree: NestjsDataloaderModuleArguments,
+  ): Promise<GeneratorCallback> {
+    const workspaceTree = argumentsOrTree.tree;
+    return NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
   /**
    * Delegates generation to the dataloader-module scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsDataloaderModuleOptions>,
   ): Promise<GeneratorCallback> {
-    return NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(
+    return NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
       argumentsOrTree,
     );
   }

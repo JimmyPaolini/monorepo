@@ -8,8 +8,6 @@ import { APPLICATIONS_DIRECTORY, DESTINATION_ROOTS } from "../../constants";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   parseStringCommandOption,
 } from "../../utilities";
@@ -58,35 +56,14 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
    * Migrated core generator logic for creating a NestJS command application.
    */
   static async generateNestjsCommandApplication(
-    argumentsOrTree: NestjsCommandApplicationArguments,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsCommandApplication(
-    tree: Tree,
-    options?: NestjsCommandApplicationOptions,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsCommandApplication(
-    argumentsOrTree: NestjsCommandApplicationArguments | Tree,
-    options?: NestjsCommandApplicationOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<NestjsCommandApplicationOptions> = {},
   ): Promise<void> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<NestjsCommandApplicationOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<NestjsCommandApplicationOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>(
-            {
-              ...(options !== undefined && { options }),
-              tree: argumentsOrTree,
-            },
-          );
+      normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<NestjsCommandApplicationOptions>(
       {
@@ -127,6 +104,19 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
           };
         },
       },
+    );
+  }
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateNestjsCommandApplicationFromArguments(
+    argumentsOrTree: NestjsCommandApplicationArguments,
+  ): Promise<void> {
+    const workspaceTree = argumentsOrTree.tree;
+    await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
+      workspaceTree,
+      argumentsOrTree.options,
     );
   }
 
@@ -187,7 +177,7 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsCommandApplicationOptions>,
   ): Promise<undefined> {
-    await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
+    await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
       argumentsOrTree,
     );
     return undefined;

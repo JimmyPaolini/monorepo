@@ -91,13 +91,15 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("generates a command application under applications", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "my-command-app",
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: APPLICATIONS_DIRECTORY,
+            name: "my-command-app",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/my-command-app`;
@@ -110,13 +112,15 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("generates a command application under tools", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: TOOLS_DIRECTORY,
-          name: "my-command-tool",
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: TOOLS_DIRECTORY,
+            name: "my-command-tool",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${TOOLS_DIRECTORY}/my-command-tool`;
@@ -128,13 +132,15 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("supports tree-first invocation overload", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "tree-first-command-app",
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: APPLICATIONS_DIRECTORY,
+            name: "tree-first-command-app",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/tree-first-command-app`;
@@ -166,12 +172,14 @@ describe(NestjsCommandApplicationCommand, () => {
     });
 
     await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          name: "prompted-command-app",
+      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            name: "prompted-command-app",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${TOOLS_DIRECTORY}/prompted-command-app`;
@@ -186,12 +194,14 @@ describe(NestjsCommandApplicationCommand, () => {
     });
 
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          name: "missing-destination-selection",
+      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            name: "missing-destination-selection",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow("No destination root selected");
   });
 
@@ -201,12 +211,14 @@ describe(NestjsCommandApplicationCommand, () => {
     });
 
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          name: "invalid-prompted-destination",
+      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            name: "invalid-prompted-destination",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       `Destination root "invalid-root" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
     );
@@ -216,13 +228,15 @@ describe(NestjsCommandApplicationCommand, () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-app/.gitkeep`, "");
 
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "existing-app",
+      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: APPLICATIONS_DIRECTORY,
+            name: "existing-app",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       `Directory "${APPLICATIONS_DIRECTORY}/existing-app" already exists. Choose a different application name.`,
     );
@@ -230,13 +244,15 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("throws for invalid destination roots", async () => {
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: "invalid-root",
-          name: "my-command-app",
+      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: "invalid-root",
+            name: "my-command-app",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       `Destination root "invalid-root" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
     );
@@ -244,13 +260,15 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("validates application names as kebab-case", async () => {
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplication({
-        options: {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "myCommandApp",
+      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
+        {
+          options: {
+            destinationRoot: APPLICATIONS_DIRECTORY,
+            name: "myCommandApp",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       'Application name "myCommandApp" must be in kebab-case. Did you mean "my-command-app"?',
     );

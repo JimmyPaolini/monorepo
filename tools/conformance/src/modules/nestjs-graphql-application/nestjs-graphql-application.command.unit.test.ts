@@ -77,12 +77,14 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("generates graphql application scaffold from arguments", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-        options: {
-          name: "atlas-api",
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
+        {
+          options: {
+            name: "atlas-api",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/atlas-api`;
@@ -106,12 +108,14 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("supports tree-first overload invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-        options: {
-          name: "audit-api",
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
+        {
+          options: {
+            name: "audit-api",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/audit-api`;
@@ -140,12 +144,14 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("writes expected substitutions into generated files", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-        options: {
-          name: "user-profile-api",
+      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
+        {
+          options: {
+            name: "user-profile-api",
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const projectRoot = `${APPLICATIONS_DIRECTORY}/user-profile-api`;
@@ -167,12 +173,14 @@ describe(NestjsGraphqlApplicationCommand, () => {
     tree.write(`${APPLICATIONS_DIRECTORY}/existing-api/.gitkeep`, "");
 
     await expect(
-      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-        options: {
-          name: "existing-api",
+      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
+        {
+          options: {
+            name: "existing-api",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       'Directory "applications/existing-api" already exists. Choose a different application name.',
     );
@@ -180,12 +188,14 @@ describe(NestjsGraphqlApplicationCommand, () => {
 
   it("validates application name as kebab-case", async () => {
     await expect(
-      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication({
-        options: {
-          name: "ExistingApi",
+      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
+        {
+          options: {
+            name: "ExistingApi",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       'Application name "ExistingApi" must be in kebab-case. Did you mean "existing-api"?',
     );

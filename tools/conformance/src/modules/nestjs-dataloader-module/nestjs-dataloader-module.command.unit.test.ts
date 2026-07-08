@@ -91,13 +91,15 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("generates module files from migrated generator logic", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-        options: {
-          name: "post",
-          project: projectName,
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+        {
+          options: {
+            name: "post",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/post`;
@@ -113,13 +115,15 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("validates module names as kebab-case", async () => {
     await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-        options: {
-          name: "blogPost",
-          project: projectName,
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+        {
+          options: {
+            name: "blogPost",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       'Module name "blogPost" must be in kebab-case. Did you mean "blog-post"?',
     );
@@ -127,13 +131,15 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("supports tree-first invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-        options: {
-          name: "audit-log",
-          project: projectName,
+      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+        {
+          options: {
+            name: "audit-log",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/audit-log`;
@@ -164,13 +170,15 @@ describe(NestjsDataloaderModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-        options: {
-          name: "user-profile",
-          project: "wrong-tag-project",
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+        {
+          options: {
+            name: "user-profile",
+            project: "wrong-tag-project",
+          },
+          tree,
         },
-        tree,
-      }),
+      ),
     ).rejects.toThrow(
       'Project "wrong-tag-project" does not have the "framework:nestjs" tag. Available projects: my-app',
     );
@@ -184,13 +192,15 @@ describe(NestjsDataloaderModuleCommand, () => {
     });
 
     await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-        options: {
-          name: "user-profile",
-          project: projectName,
+      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+        {
+          options: {
+            name: "user-profile",
+            project: projectName,
+          },
+          tree: treeWithoutModulesDirectory,
         },
-        tree: treeWithoutModulesDirectory,
-      }),
+      ),
     ).rejects.toThrow(
       `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
     );
@@ -228,13 +238,15 @@ describe(NestjsDataloaderModuleCommand, () => {
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
       callback =
-        await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule({
-          options: {
-            name: "format-target",
-            project: projectName,
+        await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
+          {
+            options: {
+              name: "format-target",
+              project: projectName,
+            },
+            tree,
           },
-          tree,
-        });
+        );
     });
 
     if (callback === undefined) {

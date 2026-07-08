@@ -102,7 +102,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           module: "alpha",
           name: "user-profile",
@@ -127,7 +127,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           module: "alpha",
           name: "audit-log",
@@ -169,7 +169,7 @@ describe(NestjsServiceFileCommand, () => {
 
   it("throws when modules directory has no module entries", async () => {
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           module: "alpha",
           name: "user-profile",
@@ -189,7 +189,7 @@ describe(NestjsServiceFileCommand, () => {
     );
 
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           module: "missing-module",
           name: "user-profile",
@@ -239,14 +239,15 @@ describe(NestjsServiceFileCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await NestjsServiceFileCommand.generateNestjsServiceFile({
-        options: {
-          module: "alpha",
-          name: "format-target",
-          project: projectName,
-        },
-        tree,
-      });
+      callback =
+        await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
+          options: {
+            module: "alpha",
+            name: "format-target",
+            project: projectName,
+          },
+          tree,
+        });
     });
 
     expect(callback).toBeTypeOf("function");
@@ -281,7 +282,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFile({
+      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           name: "prompted-service",
           project: projectName,
@@ -306,7 +307,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           name: "no-module-selection",
           project: projectName,
@@ -326,7 +327,7 @@ describe(NestjsServiceFileCommand, () => {
     });
 
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFile({
+      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
         options: {
           name: "prompt-invalid-module",
           project: projectName,

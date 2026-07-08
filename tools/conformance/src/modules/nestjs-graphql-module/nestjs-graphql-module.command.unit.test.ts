@@ -91,13 +91,15 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("generates graphql module scaffold files", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
-        options: {
-          name: "user-profile",
-          project: projectName,
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
+        {
+          options: {
+            name: "user-profile",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/user-profile`;
@@ -115,13 +117,15 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("supports tree-first invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
-        options: {
-          name: "audit-log",
-          project: projectName,
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
+        {
+          options: {
+            name: "audit-log",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/audit-log`;
@@ -153,13 +157,15 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("writes expected substitutions into generated files", async () => {
     await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
-        options: {
-          name: "user-profile",
-          project: projectName,
+      await NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
+        {
+          options: {
+            name: "user-profile",
+            project: projectName,
+          },
+          tree,
         },
-        tree,
-      });
+      );
     });
 
     const modulePath = `${modulesDirectory}/user-profile`;
@@ -185,7 +191,7 @@ describe(NestjsGraphqlModuleCommand, () => {
 
   it("validates module names as kebab-case", async () => {
     await expect(
-      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments({
         options: {
           name: "userProfile",
           project: projectName,
@@ -205,7 +211,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
 
     await expect(
-      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments({
         options: {
           name: "user-profile",
           project: "wrong-tag-project",
@@ -225,7 +231,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     });
 
     await expect(
-      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments({
         options: {
           name: "user-profile",
         },
@@ -244,7 +250,7 @@ describe(NestjsGraphqlModuleCommand, () => {
     });
 
     await expect(
-      NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
+      NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments({
         options: {
           name: "user-profile",
           project: projectName,
@@ -287,13 +293,16 @@ describe(NestjsGraphqlModuleCommand, () => {
 
     let callback: (() => Promise<void> | void) | undefined;
     await runWithRepositoryRoot(async () => {
-      callback = await NestjsGraphqlModuleCommand.generateNestjsGraphqlModule({
-        options: {
-          name: "format-target",
-          project: projectName,
-        },
-        tree,
-      });
+      callback =
+        await NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
+          {
+            options: {
+              name: "format-target",
+              project: projectName,
+            },
+            tree,
+          },
+        );
     });
 
     if (callback === undefined) {

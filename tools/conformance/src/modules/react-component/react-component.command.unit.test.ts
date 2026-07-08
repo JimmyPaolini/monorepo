@@ -105,7 +105,7 @@ describe(ReactComponentCommand, () => {
 
   it("generates component scaffold from arguments invocation", async () => {
     await runWithRepositoryRoot(async () => {
-      await ReactComponentCommand.generateReactComponent({
+      await ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "user-profile-card",
           project: projectName,
@@ -137,7 +137,7 @@ describe(ReactComponentCommand, () => {
 
   it("supports tree-first invocation and formats files", async () => {
     await runWithRepositoryRoot(async () => {
-      await ReactComponentCommand.generateReactComponent({
+      await ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "alert-banner",
           project: projectName,
@@ -170,7 +170,7 @@ describe(ReactComponentCommand, () => {
 
   it("validates component names as kebab-case", async () => {
     await expect(
-      ReactComponentCommand.generateReactComponent({
+      ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "AlertBanner",
           project: projectName,
@@ -189,7 +189,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      ReactComponentCommand.generateReactComponent({
+      ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "alert-banner",
           project: "caelundas",
@@ -209,7 +209,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      ReactComponentCommand.generateReactComponent({
+      ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "alert-banner",
           project: "caelundas",
@@ -229,7 +229,7 @@ describe(ReactComponentCommand, () => {
     });
 
     await expect(
-      ReactComponentCommand.generateReactComponent({
+      ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "alert-banner",
           project: projectName,
@@ -246,7 +246,7 @@ describe(ReactComponentCommand, () => {
     addReactProject(treeWithoutComponentsDirectory);
 
     await expect(
-      ReactComponentCommand.generateReactComponent({
+      ReactComponentCommand.generateReactComponentFromArguments({
         options: {
           name: "alert-banner",
           project: projectName,

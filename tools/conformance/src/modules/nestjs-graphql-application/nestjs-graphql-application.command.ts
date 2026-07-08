@@ -7,8 +7,6 @@ import { APPLICATIONS_DIRECTORY } from "../../constants";
 import {
   buildKebabCaseNameSubstitutions,
   type GeneratorInvocationArguments,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
 } from "../../utilities";
 import { GeneratorTemplateService } from "../generator/generator-template.service";
@@ -48,41 +46,18 @@ export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
-
   /**
    * Migrated core generator logic for creating a NestJS GraphQL application.
    */
   static async generateNestjsGraphqlApplication(
-    argumentsOrTree: NestjsGraphqlApplicationArguments,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsGraphqlApplication(
-    tree: Tree,
-    options?: NestjsGraphqlApplicationOptions,
-  ): Promise<void>;
-  /**
-   * Overload signature for tree and options based invocation.
-   */
-  static async generateNestjsGraphqlApplication(
-    argumentsOrTree: NestjsGraphqlApplicationArguments | Tree,
-    options?: NestjsGraphqlApplicationOptions,
+    workspaceTree: Tree,
+    generatorOptions: Partial<NestjsGraphqlApplicationOptions> = {},
   ): Promise<void> {
     const resolvedArguments =
-      isGeneratorInvocationArguments<NestjsGraphqlApplicationOptions>(
-        argumentsOrTree,
-      )
-        ? normalizeGeneratorInvocationFromArguments<NestjsGraphqlApplicationOptions>(
-            argumentsOrTree,
-          )
-        : normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>(
-            {
-              ...(options !== undefined && { options }),
-              tree: argumentsOrTree,
-            },
-          );
+      normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>({
+        options: generatorOptions,
+        tree: workspaceTree,
+      });
 
     await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<NestjsGraphqlApplicationOptions>(
       {
@@ -111,13 +86,28 @@ export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<
     );
   }
 
+  // 🌎 Public Methods
+
+  /**
+   * Converts command-runner arguments to tree-first invocation.
+   */
+  static async generateNestjsGraphqlApplicationFromArguments(
+    argumentsOrTree: NestjsGraphqlApplicationArguments,
+  ): Promise<void> {
+    const workspaceTree = argumentsOrTree.tree;
+    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
+      workspaceTree,
+      argumentsOrTree.options,
+    );
+  }
+
   /**
    * Delegates generation to the NestJS GraphQL application scaffold factory.
    */
   protected override async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsGraphqlApplicationOptions>,
   ): Promise<undefined> {
-    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
+    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
       argumentsOrTree,
     );
     return undefined;
