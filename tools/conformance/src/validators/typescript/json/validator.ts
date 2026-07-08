@@ -1,9 +1,6 @@
 import { parse } from "jsonc-parser";
 
-import {
-  prepareConformanceTexts,
-  type TemplateConformanceArguments,
-} from "../common";
+import { prepareConformanceTexts, type TemplateConformanceArguments } from "../common";
 
 import { validateComments } from "./comments";
 
@@ -12,13 +9,7 @@ import type { ConformanceError } from "../types";
 /**
  * Describes behavior.
  */
-type JsonValue =
-  | boolean
-  | JsonValue[]
-  | null
-  | number
-  | string
-  | { [key: string]: JsonValue };
+type JsonValue = boolean | JsonValue[] | null | number | string | { [key: string]: JsonValue };
 
 /**
  * Validates that a generated JSON or JSONC file is a structural superset of
@@ -48,10 +39,7 @@ export function validateJsonConformance(args: {
   const templateObject = parse(renderedTemplate) as JsonValue;
   const instanceObject = parse(instance) as JsonValue;
 
-  const structuralErrors = validateDepthFirstSearch(
-    templateObject,
-    instanceObject,
-  );
+  const structuralErrors = validateDepthFirstSearch(templateObject, instanceObject);
 
   // Comment validation
   const commentErrors = validateComments({
@@ -101,8 +89,7 @@ function buildMissingError(itemPath: string): ConformanceError {
  */
 function formatPath(path: (number | string)[]): string {
   return path.reduce<string>((accumulator, segment) => {
-    if (typeof segment === "number")
-      return `${accumulator}[${String(segment)}]`;
+    if (typeof segment === "number") return `${accumulator}[${String(segment)}]`;
     return accumulator === "" ? segment : `${accumulator}.${segment}`;
   }, "");
 }
@@ -117,9 +104,7 @@ function isJsonObject(value: JsonValue): value is Record<string, JsonValue> {
 /**
  * Is json primitive.
  */
-function isJsonPrimitive(
-  value: JsonValue,
-): value is boolean | null | number | string {
+function isJsonPrimitive(value: JsonValue): value is boolean | null | number | string {
   return value === null || typeof value !== "object";
 }
 
@@ -203,10 +188,7 @@ function validateJsonObjects(
   return Object.keys(template).flatMap((key) => {
     const p = formatPath([...path, key]);
     return key in instance
-      ? validateDepthFirstSearch(template[key] ?? null, instance[key] ?? null, [
-          ...path,
-          key,
-        ])
+      ? validateDepthFirstSearch(template[key] ?? null, instance[key] ?? null, [...path, key])
       : [buildMissingError(p)];
   });
 }
