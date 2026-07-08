@@ -87,15 +87,6 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "cache-status": {
-      "cache": false,
-      "description": "Display current local Nx cache size.",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "du -sh .nx/cache",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "clean": {
       "cache": true,
       "configurations": {

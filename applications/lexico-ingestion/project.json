@@ -17,6 +17,14 @@
       "command": "echo 'lexico-ingestion is a development tool and does not require building'"
     },
     "clean": {},
+    "clear": {
+      "description": "Clear ingested data from the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts clear",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "code-analysis": {
       "cache": true,
       "description": "Run code analysis checks through the aggregate analyze-code target",
@@ -25,14 +33,6 @@
       "options": {
         "command": "nx run {projectName}:analyze-code:check",
         "cwd": "{workspaceRoot}"
-      }
-    },
-    "clear": {
-      "description": "Clear ingested data from the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts clear",
-        "cwd": "applications/lexico-ingestion"
       }
     },
     "corpus-scriptorum-ecclesiasticorum-latinorum": {

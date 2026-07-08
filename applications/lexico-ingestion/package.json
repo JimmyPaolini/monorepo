@@ -1,11 +1,9 @@
 {
   "dependencies": {
-    "@golevelup/ts-vitest": "^4.0.0",
     "@monorepo/lexico-entities": "workspace:*",
     "@nestjs/common": "^11.1.26",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.26",
-    "@nestjs/testing": "^11.1.26",
     "@nestjs/typeorm": "^11.0.0",
     "@types/mdast": "^4.0.4",
     "cheerio": "^1.0.0",
@@ -23,11 +21,11 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "typeorm": "^1.0.0",
-    "vitest": "^4.1.7",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@golevelup/ts-vitest": "^4.0.0",
     "@nestjs/testing": "^11.1.26",
     "@nx/eslint-plugin": "^23.0.0",
     "@swc-node/register": "^1.11.1",
