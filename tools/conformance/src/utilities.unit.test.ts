@@ -6,17 +6,32 @@ import path from "node:path";
 
 import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import prompts from "prompts";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { StringCase } from "./types";
 import {
   generateFiles,
   getProjectsWithTag,
+  resolveDestinationRoot,
   resolveName,
   resolveProject,
+  resolveProjectDirectoryPath,
 } from "./utilities";
 
 import type { Tree } from "@nx/devkit";
+
+vi.mock("prompts", () => {
+  return {
+    default: vi.fn(),
+  };
+});
+
+const mockedPrompts = vi.mocked(prompts);
+
+afterEach(() => {
+  mockedPrompts.mockReset();
+});
 
 describe(getProjectsWithTag, () => {
   let tree: Tree;
@@ -72,6 +87,48 @@ describe(getProjectsWithTag, () => {
   });
 });
 
+describe(resolveDestinationRoot, () => {
+  it("returns a provided destination root when it is valid", async () => {
+    const result = await resolveDestinationRoot({
+      destinationRoot: "packages",
+      message: "Choose a destination root",
+    });
+
+    expect(result).toBe("packages");
+  });
+
+  it("prompts for a destination root when one is not provided", async () => {
+    mockedPrompts.mockResolvedValueOnce({ destinationRoot: "tools" });
+
+    const result = await resolveDestinationRoot({
+      message: "Choose a destination root",
+    });
+
+    expect(result).toBe("tools");
+  });
+
+  it("throws when the prompt is cancelled without a destination root", async () => {
+    mockedPrompts.mockResolvedValueOnce({ destinationRoot: undefined });
+
+    await expect(
+      resolveDestinationRoot({
+        message: "Choose a destination root",
+      }),
+    ).rejects.toThrow("No destination root selected");
+  });
+
+  it("throws when destinationRoot is not valid", async () => {
+    await expect(
+      resolveDestinationRoot({
+        destinationRoot: "invalid",
+        message: "Choose a destination root",
+      }),
+    ).rejects.toThrow(
+      'Destination root "invalid" is not valid. Allowed values: applications, packages, tools',
+    );
+  });
+});
+
 describe("resolveProjectByTag", () => {
   let tree: Tree;
 
@@ -107,9 +164,7 @@ describe("resolveProjectByTag", () => {
         tag: "framework:nestjs",
         tree: emptyTree,
       }),
-    ).rejects.toThrow(
-      'No projects with tag "framework:nestjs" found in the workspace',
-    );
+    ).rejects.toThrow('No projects with tag "framework:nestjs" found in the workspace');
   });
 
   it("should throw when the specified project does not have the tag", async () => {
@@ -138,8 +193,67 @@ describe("resolveProjectByTag", () => {
         tag: "framework:nestjs",
         tree,
       }),
-    ).rejects.toThrow(
-      `Project "nonexistent-app" does not have the "framework:nestjs" tag.`,
+    ).rejects.toThrow(`Project "nonexistent-app" does not have the "framework:nestjs" tag.`);
+  });
+
+  it("prompts for a project when one is not provided", async () => {
+    mockedPrompts.mockResolvedValueOnce({ project: "nestjs-app" });
+
+    const result = await resolveProject({
+      message: "Select a project",
+      tag: "framework:nestjs",
+      tree,
+    });
+
+    expect(result).toBe("nestjs-app");
+  });
+
+  it("throws when the project prompt is cancelled", async () => {
+    mockedPrompts.mockResolvedValueOnce({ project: undefined });
+
+    await expect(
+      resolveProject({
+        message: "Select a project",
+        tag: "framework:nestjs",
+        tree,
+      }),
+    ).rejects.toThrow("No project selected");
+  });
+});
+
+describe(resolveProjectDirectoryPath, () => {
+  it("returns the resolved project directory path when it exists", () => {
+    const tree = createTreeWithEmptyWorkspace();
+
+    addProjectConfiguration(tree, "nestjs-app", {
+      root: "applications/nestjs-app",
+    });
+    tree.write("applications/nestjs-app/src/modules/example.txt", "");
+
+    const result = resolveProjectDirectoryPath({
+      directoryPath: "src/modules",
+      projectName: "nestjs-app",
+      tree,
+    });
+
+    expect(result).toBe("applications/nestjs-app/src/modules");
+  });
+
+  it("throws when the resolved project directory is missing", () => {
+    const tree = createTreeWithEmptyWorkspace();
+
+    addProjectConfiguration(tree, "nestjs-app", {
+      root: "applications/nestjs-app",
+    });
+
+    expect(() =>
+      resolveProjectDirectoryPath({
+        directoryPath: "src/modules",
+        projectName: "nestjs-app",
+        tree,
+      }),
+    ).toThrow(
+      'Directory "applications/nestjs-app/src/modules" does not exist in project "nestjs-app"',
     );
   });
 });
@@ -166,6 +280,28 @@ describe("resolveNameByCase", () => {
       expect(result).toBe("calculator");
     });
 
+    it("prompts for a camelCase name when one is not provided", async () => {
+      mockedPrompts.mockResolvedValueOnce({ name: "myService" });
+
+      const result = await resolveName({
+        case: StringCase.CAMEL_CASE,
+        message: "Enter a name",
+      });
+
+      expect(result).toBe("myService");
+    });
+
+    it("throws when the camelCase prompt is cancelled", async () => {
+      mockedPrompts.mockResolvedValueOnce({ name: undefined });
+
+      await expect(
+        resolveName({
+          case: StringCase.CAMEL_CASE,
+          message: "Enter a name",
+        }),
+      ).rejects.toThrow("No name provided");
+    });
+
     it("should throw when name is PascalCase", async () => {
       await expect(
         resolveName({
@@ -173,9 +309,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "MyService",
         }),
-      ).rejects.toThrow(
-        `Name "MyService" must be in camelCase. Did you mean "myService"?`,
-      );
+      ).rejects.toThrow(`Name "MyService" must be in camelCase. Did you mean "myService"?`);
     });
 
     it("should throw when name is kebab-case", async () => {
@@ -185,9 +319,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "my-service",
         }),
-      ).rejects.toThrow(
-        `Name "my-service" must be in camelCase. Did you mean "myService"?`,
-      );
+      ).rejects.toThrow(`Name "my-service" must be in camelCase. Did you mean "myService"?`);
     });
 
     it("should throw when name is snake_case", async () => {
@@ -197,9 +329,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "my_service",
         }),
-      ).rejects.toThrow(
-        `Name "my_service" must be in camelCase. Did you mean "myService"?`,
-      );
+      ).rejects.toThrow(`Name "my_service" must be in camelCase. Did you mean "myService"?`);
     });
   });
 
@@ -207,9 +337,7 @@ describe("resolveNameByCase", () => {
     let templateDirectoryPath: string;
 
     beforeEach(() => {
-      templateDirectoryPath = fs.mkdtempSync(
-        path.join(os.tmpdir(), "mustache-templates-"),
-      );
+      templateDirectoryPath = fs.mkdtempSync(path.join(os.tmpdir(), "mustache-templates-"));
     });
 
     afterEach(() => {
@@ -255,9 +383,7 @@ describe("resolveNameByCase", () => {
         tree,
       });
 
-      expect(tree.exists(`${targetDirectoryPath}/user-auth.module.ts`)).toBe(
-        true,
-      );
+      expect(tree.exists(`${targetDirectoryPath}/user-auth.module.ts`)).toBe(true);
     });
   });
 
@@ -279,9 +405,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "myService",
         }),
-      ).rejects.toThrow(
-        `Name "myService" must be in PascalCase. Did you mean "MyService"?`,
-      );
+      ).rejects.toThrow(`Name "myService" must be in PascalCase. Did you mean "MyService"?`);
     });
 
     it("should throw when name is kebab-case", async () => {
@@ -291,9 +415,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "my-service",
         }),
-      ).rejects.toThrow(
-        `Name "my-service" must be in PascalCase. Did you mean "MyService"?`,
-      );
+      ).rejects.toThrow(`Name "my-service" must be in PascalCase. Did you mean "MyService"?`);
     });
   });
 
@@ -325,9 +447,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "myService",
         }),
-      ).rejects.toThrow(
-        `Name "myService" must be in snake_case. Did you mean "my_service"?`,
-      );
+      ).rejects.toThrow(`Name "myService" must be in snake_case. Did you mean "my_service"?`);
     });
 
     it("should throw when name is kebab-case", async () => {
@@ -337,9 +457,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "my-service",
         }),
-      ).rejects.toThrow(
-        `Name "my-service" must be in snake_case. Did you mean "my_service"?`,
-      );
+      ).rejects.toThrow(`Name "my-service" must be in snake_case. Did you mean "my_service"?`);
     });
   });
 
@@ -371,9 +489,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "myService",
         }),
-      ).rejects.toThrow(
-        `Name "myService" must be in kebab-case. Did you mean "my-service"?`,
-      );
+      ).rejects.toThrow(`Name "myService" must be in kebab-case. Did you mean "my-service"?`);
     });
 
     it("should throw when name is PascalCase", async () => {
@@ -383,9 +499,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "MyService",
         }),
-      ).rejects.toThrow(
-        `Name "MyService" must be in kebab-case. Did you mean "my-service"?`,
-      );
+      ).rejects.toThrow(`Name "MyService" must be in kebab-case. Did you mean "my-service"?`);
     });
 
     it("should throw when name is snake_case", async () => {
@@ -395,9 +509,7 @@ describe("resolveNameByCase", () => {
           message: "Enter a name",
           name: "my_service",
         }),
-      ).rejects.toThrow(
-        `Name "my_service" must be in kebab-case. Did you mean "my-service"?`,
-      );
+      ).rejects.toThrow(`Name "my_service" must be in kebab-case. Did you mean "my-service"?`);
     });
   });
 });

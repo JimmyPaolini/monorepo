@@ -1,6 +1,8 @@
 {
+  "name": "{{nameKebabCase}}",
+  "version": "0.0.1",
+  "type": "module",
   "dependencies": {
-    "@golevelup/ts-vitest": "^4.0.0",
     "@nestjs/common": "^11.1.26",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.26",
@@ -10,21 +12,19 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@golevelup/ts-vitest": "^4.0.0",
     "@nestjs/testing": "^11.1.26",
     "@nx/eslint-plugin": "^23.0.0",
+    "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.40",
     "@swc/helpers": "^0.5.21",
-    "@swc-node/register": "^1.11.1",
     "@types/node": "^25.9.1",
     "@vitest/coverage-v8": "^4.1.7",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
-  "name": "{{nameKebabCase}}",
-  "type": "module",
   "typeCoverage": {
     "atLeast": 100,
     "strict": true
-  },
-  "version": "0.0.1"
+  }
 }

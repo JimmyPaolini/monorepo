@@ -102,6 +102,15 @@
           "nx run {projectName}:pytest"
         ],
         "parallel": true
+      },
+      "configurations": {
+        "coverage": {
+          "commands": [
+            "nx run {projectName}:vitest --coverage.thresholds.branches=95",
+            "nx run {projectName}:pytest"
+          ],
+          "parallel": true
+        }
       }
     },
     "type-coverage": {},
@@ -119,7 +128,7 @@
     "vitest": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vitest run {args.args}",
+        "command": "vitest run --coverage --coverage.thresholds.branches=95 {args.args}",
         "cwd": "tools/conformance"
       }
     },

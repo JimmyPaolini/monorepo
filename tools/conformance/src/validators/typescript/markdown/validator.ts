@@ -57,10 +57,7 @@ export function validateMarkdownConformance(args: {
   const templateAst = processor.parse(renderedTemplate);
   const instanceAst = processor.parse(instance);
 
-  const errors = validateMdastChildren(
-    templateAst.children,
-    instanceAst.children,
-  );
+  const errors = validateMdastChildren(templateAst.children, instanceAst.children);
 
   return { errors };
 }
@@ -80,9 +77,7 @@ const ERROR_MESSAGE_BUILDERS: Partial<
   blockquote: (n) => `Expected blockquote: "${toString(n)}"`,
   break: (n) => `Expected break: "${toString(n)}"`,
   code: (n) =>
-    isCode(n)
-      ? `Expected code block (${n.lang ?? "(none)"}): "${n.value}"`
-      : `Expected code block`,
+    isCode(n) ? `Expected code block (${n.lang ?? "(none)"}): "${n.value}"` : `Expected code block`,
   definition: (n) => `Expected definition: "${toString(n)}"`,
   delete: (n) => `Expected strikethrough text: "${toString(n)}"`,
   emphasis: (n) => `Expected italic text: "${toString(n)}"`,
@@ -92,27 +87,17 @@ const ERROR_MESSAGE_BUILDERS: Partial<
     isHeading(n)
       ? `Expected heading (h${n.depth}): "${toString(n)}"`
       : `Expected heading: "${toString(n)}"`,
-  html: (n) =>
-    isHtml(n) ? `Expected HTML block: "${n.value}"` : `Expected HTML block`,
-  image: (n) =>
-    isImage(n)
-      ? `Expected image "${n.alt ?? ""}" at "${n.url}"`
-      : `Expected image`,
+  html: (n) => (isHtml(n) ? `Expected HTML block: "${n.value}"` : `Expected HTML block`),
+  image: (n) => (isImage(n) ? `Expected image "${n.alt ?? ""}" at "${n.url}"` : `Expected image`),
   imageReference: (n) => `Expected imageReference: "${toString(n)}"`,
   inlineCode: (n) =>
-    isInlineCode(n)
-      ? `Expected inline code: \`${n.value}\``
-      : `Expected inline code`,
+    isInlineCode(n) ? `Expected inline code: \`${n.value}\`` : `Expected inline code`,
   inlineMath: (n) => `Expected inlineMath: "${toString(n)}"`,
   link: (n) =>
-    isLink(n)
-      ? `Expected link to "${n.url}": "${toString(n)}"`
-      : `Expected link: "${toString(n)}"`,
+    isLink(n) ? `Expected link to "${n.url}": "${toString(n)}"` : `Expected link: "${toString(n)}"`,
   linkReference: (n) => `Expected linkReference: "${toString(n)}"`,
   list: (n) =>
-    isList(n)
-      ? `Expected ${n.ordered ? "ordered" : "unordered"} list`
-      : `Expected list`,
+    isList(n) ? `Expected ${n.ordered ? "ordered" : "unordered"} list` : `Expected list`,
   listItem: (n) => `Expected list item: "${toString(n)}"`,
   math: (n) => `Expected math: "${toString(n)}"`,
   paragraph: (n) => `Expected paragraph: "${toString(n)}"`,
@@ -133,10 +118,7 @@ const ERROR_MESSAGE_BUILDERS: Partial<
  * before this missing node), its end position is used as an "insert after"
  * indicator for the instance file location.
  */
-function buildError(
-  node: MdastNode,
-  instanceHint?: MdastNode,
-): ConformanceError {
+function buildError(node: MdastNode, instanceHint?: MdastNode): ConformanceError {
   return {
     errorType: "code",
     fix: `Add the missing ${node.type} to the instance file. See the template for the expected content.`,
@@ -160,9 +142,7 @@ function buildErrorPositions(
   const templateLine = node.position?.start.line;
   const templateColumn = node.position?.start.column;
   const instanceLine =
-    instanceHint === undefined
-      ? undefined
-      : (instanceHint.position?.end.line ?? 1) + 1;
+    instanceHint === undefined ? undefined : (instanceHint.position?.end.line ?? 1) + 1;
   const instanceColumn = instanceLine === undefined ? undefined : 1;
   return definedEntries({
     instanceColumn,
@@ -173,12 +153,8 @@ function buildErrorPositions(
 }
 
 /** Filters out undefined values from a record of optional position fields. */
-function definedEntries(
-  fields: Record<string, number | undefined>,
-): Partial<ConformanceError> {
-  return Object.fromEntries(
-    Object.entries(fields).filter(([, v]) => v !== undefined),
-  );
+function definedEntries(fields: Record<string, number | undefined>): Partial<ConformanceError> {
+  return Object.fromEntries(Object.entries(fields).filter(([, v]) => v !== undefined));
 }
 
 // ---------------------------------------------------------------------------
@@ -193,10 +169,7 @@ function matchByText(template: MdastNode, instance: MdastNode): boolean {
 /** Matches a code node by language and value. */
 function matchCode(template: MdastNode, instance: MdastNode): boolean {
   if (isCode(template) && isCode(instance)) {
-    return (
-      template.lang === instance.lang &&
-      textMatches(template.value, instance.value)
-    );
+    return template.lang === instance.lang && textMatches(template.value, instance.value);
   }
   return false;
 }
@@ -204,10 +177,7 @@ function matchCode(template: MdastNode, instance: MdastNode): boolean {
 /** Matches a heading node by depth and text. */
 function matchHeading(template: MdastNode, instance: MdastNode): boolean {
   if (isHeading(template) && isHeading(instance)) {
-    return (
-      template.depth === instance.depth &&
-      textMatches(toString(template), toString(instance))
-    );
+    return template.depth === instance.depth && textMatches(toString(template), toString(instance));
   }
   return false;
 }
@@ -223,10 +193,7 @@ function matchHtml(template: MdastNode, instance: MdastNode): boolean {
 /** Matches an image node by url and alt text. */
 function matchImage(template: MdastNode, instance: MdastNode): boolean {
   if (isImage(template) && isImage(instance)) {
-    return (
-      textMatches(template.url, instance.url) &&
-      (template.alt ?? "") === (instance.alt ?? "")
-    );
+    return textMatches(template.url, instance.url) && (template.alt ?? "") === (instance.alt ?? "");
   }
   return false;
 }
@@ -242,10 +209,7 @@ function matchInlineCode(template: MdastNode, instance: MdastNode): boolean {
 /** Matches a link node by url and text content. */
 function matchLink(template: MdastNode, instance: MdastNode): boolean {
   if (isLink(template) && isLink(instance)) {
-    return (
-      textMatches(template.url, instance.url) &&
-      textMatches(toString(template), toString(instance))
-    );
+    return textMatches(template.url, instance.url) && textMatches(toString(template), toString(instance));
   }
   return false;
 }
@@ -352,10 +316,7 @@ function pickBestCandidate(
   let bestCandidate: MdastNode = first;
 
   for (const candidate of candidates) {
-    const childErrors = validateMdastChildren(
-      templateGrandchildren,
-      getNodeChildren(candidate),
-    );
+    const childErrors = validateMdastChildren(templateGrandchildren, getNodeChildren(candidate));
     if (childErrors.length < minimumErrorCount) {
       minimumErrorCount = childErrors.length;
       minimumErrors = childErrors;
@@ -379,9 +340,7 @@ function processContainerChild(
   errors: ConformanceError[];
   lastMatched: MdastNode | undefined;
 } {
-  const candidates = instanceChildren.filter((ic) =>
-    nodesMatch(templateChild, ic),
-  );
+  const candidates = instanceChildren.filter((ic) => nodesMatch(templateChild, ic));
 
   if (candidates.length === 0) {
     return {
@@ -395,10 +354,7 @@ function processContainerChild(
     return { errors: [], lastMatched: candidates.at(-1) };
   }
 
-  const { bestCandidate, minimumErrors } = pickBestCandidate(
-    templateGrandchildren,
-    candidates,
-  );
+  const { bestCandidate, minimumErrors } = pickBestCandidate(templateGrandchildren, candidates);
   return { errors: minimumErrors, lastMatched: bestCandidate };
 }
 
@@ -411,9 +367,7 @@ function processLeafChild(
   errors: ConformanceError[];
   lastMatched: MdastNode | undefined;
 } {
-  const candidates = instanceChildren.filter((ic) =>
-    nodesMatch(templateChild, ic),
-  );
+  const candidates = instanceChildren.filter((ic) => nodesMatch(templateChild, ic));
   if (candidates.length === 0) {
     return {
       errors: [buildError(templateChild, lastMatchedInstanceNode)],
@@ -449,16 +403,8 @@ function validateMdastChildren(
 
     const isContainer = CONTAINER_TYPES.has(templateChild.type);
     const result = isContainer
-      ? processContainerChild(
-          templateChild,
-          instanceChildren,
-          lastMatchedInstanceNode,
-        )
-      : processLeafChild(
-          templateChild,
-          instanceChildren,
-          lastMatchedInstanceNode,
-        );
+      ? processContainerChild(templateChild, instanceChildren, lastMatchedInstanceNode)
+      : processLeafChild(templateChild, instanceChildren, lastMatchedInstanceNode);
 
     errors.push(...result.errors);
     lastMatchedInstanceNode = result.lastMatched;

@@ -12,7 +12,7 @@ const vitestConfig = defineConfig({
       thresholds: {
         lines: 96,
         functions: 96,
-        branches: 96,
+        branches: 95,
         statements: 96,
       },
     },

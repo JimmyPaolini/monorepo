@@ -343,7 +343,7 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 | `project.json` | `upgrade-dependencies` | `must-remain-uncached` | `write` mode performs networked dependency upgrades and lockfile mutations. | Cached replay could skip actual upgrades and leave workspace stale. |
 | `project.json` | `validate-branch-name` | `must-remain-uncached` | Validation is runtime-contextual to current branch name and push flow. | Cache replay can incorrectly approve disallowed branch names. |
 | `applications/caelundas/project.json` | `code-analysis` | `conditionally-cache-safe` | Potentially cache-safe only after executor/inputs/outputs are explicitly defined and deterministic. | Target currently has no command metadata; enabling cache now risks undefined or misleading behavior. |
-| `applications/caelundas/project.json` | `download-ephemeris` | `must-remain-uncached` | Downloads external ephemeris artifacts into project data directory. | Side-effectful network/download task must execute each run to avoid stale/missing data artifacts (PAT-001). |
+| `applications/caelundas/project.json` | `download-ephemeris` | `must-remain-uncached` | Downloads external ephemeris artifacts into project data directory. | Network/download task must execute each run to avoid stale or missing data artifacts (PAT-001). |
 | `tools/synchronization/project.json` | `agent-skills` | `conditionally-cache-safe` | `check` mode is deterministic from docs + AGENTS inputs and can be cached if isolated from mutating mode. | Default `write` mode edits `AGENTS.md` and formats files; cache replay can skip required synchronization writes. |
 
 <!-- TASK-003-CLASSIFICATION-END -->
@@ -366,7 +366,7 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 | TASK-005 | Refine `namedInputs` in `nx.json` to minimize global invalidation scope while preserving correctness (including production-focused patterns and explicit include/exclude boundaries).                                | ✅        | 2026-07-06T23:53:39Z |
 | TASK-006 | Update `targetDefaults` caching strategy for common targets (`build`, `test`, `lint`, `typecheck`, `analyze-code`, etc.) with precise `inputs`, `outputs`, and `dependsOn` definitions.                          | ✅        | 2026-07-06T23:53:39Z |
 | TASK-007 | Convert reclassified cache-safe root-level targets in `/project.json` from `cache: false` to deterministic cache configs, including explicit `inputs` and `outputs` where missing.                                | ✅        | 2026-07-06T23:53:39Z |
-| TASK-008 | Preserve `cache: false` only for targets confirmed as non-deterministic or side-effectful; add clear inline rationale near each retained uncached target in root/project configs.                                  | ✅        | 2026-07-06T23:53:39Z |
+| TASK-008 | Preserve `cache: false` only for targets confirmed as non-deterministic or state-changing; add clear inline rationale near each retained uncached target in root/project configs.                                  | ✅        | 2026-07-06T23:53:39Z |
 
 ### Implementation Phase 3
 
@@ -462,7 +462,7 @@ This plan defines a repository-wide Nx local caching optimization to reduce redu
 - **RISK-005**: CI/local parity can regress if `.nx/cache` assumptions differ between developers and runners.
 - **ASSUMPTION-001**: Workspace remains on an Nx version supporting current `targetDefaults` and spread merge behavior.
 - **ASSUMPTION-002**: `.nx/cache` persistence in GitHub Actions remains acceptable as a local-cache acceleration mechanism.
-- **ASSUMPTION-003**: Existing project targets are deterministic unless explicitly identified as side-effectful during Phase 1 classification.
+- **ASSUMPTION-003**: Existing project targets are deterministic unless explicitly identified as state-changing during Phase 1 classification.
 
 ## 8. Related Specifications / Further Reading
 
