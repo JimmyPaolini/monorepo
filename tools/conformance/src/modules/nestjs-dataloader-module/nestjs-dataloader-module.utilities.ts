@@ -1,9 +1,3 @@
-import {
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
-  normalizeGeneratorInvocationFromTree,
-} from "../../utilities";
-
 import { NestjsDataloaderModuleCommand } from "./nestjs-dataloader-module.command";
 
 import type {
@@ -19,14 +13,13 @@ export async function generateNestjsDataloaderModule(
   argumentsOrTree: NestjsDataloaderModuleArguments | Tree,
   options?: NestjsDataloaderModuleOptions,
 ): Promise<GeneratorCallback> {
-  const { options: resolvedOptions, tree } = isGeneratorInvocationArguments(
-    argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments(argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree({
-        options: options === undefined ? {} : options,
-        tree: argumentsOrTree,
-      });
+  const { options: resolvedOptions, tree } =
+    "options" in argumentsOrTree && "tree" in argumentsOrTree
+      ? argumentsOrTree
+      : {
+          options: options ?? {},
+          tree: argumentsOrTree,
+        };
 
   return NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(
     tree,

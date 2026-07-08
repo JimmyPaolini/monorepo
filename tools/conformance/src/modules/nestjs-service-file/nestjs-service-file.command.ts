@@ -1,18 +1,19 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { Command, Option } from "nest-commander";
+import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
 import {
   buildKebabCaseNameSubstitutions,
+  createFormatFilesCallback,
+  generateFiles,
   type GeneratorInvocationArguments,
   normalizeGeneratorInvocationFromTree,
-  parseStringCommandOption,
+  resolveProjectAndKebabCaseName,
   resolveProjectModulesDirectoryPath,
+  runGeneratorCommandWithCallback,
 } from "../../utilities";
-import { GeneratorRunnerService } from "../generator/generator-runner.service";
-import { ModuleGeneratorCommandRunner } from "../generator/module-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -38,12 +39,12 @@ import type { Choice, PromptObject } from "prompts";
   name: "nestjs-service-file",
 })
 @Injectable()
-export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<NestjsServiceFileOptions> {
+export class NestjsServiceFileCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    super(logger);
-    logger.setContext(NestjsServiceFileCommand.name);
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(NestjsServiceFileCommand.name);
   }
 
   // 🔐 Private Fields
@@ -52,8 +53,6 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
 
   protected readonly successMessage = "Generated NestJS service files.";
 
-  // 🔏 Private Methods
-
   /**
    * Migrated core generator logic for creating NestJS service files.
    */
@@ -61,51 +60,57 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
     workspaceTree: Tree,
     generatorOptions: Partial<NestjsServiceFileOptions> = {},
   ): Promise<GeneratorCallback> {
-    const resolvedArguments =
+    const { options: resolvedOptions, tree } =
       normalizeGeneratorInvocationFromTree<NestjsServiceFileOptions>({
         options: generatorOptions,
         tree: workspaceTree,
       });
-
-    return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsServiceFileOptions>(
+    const { nameKebabCase, projectName } = await resolveProjectAndKebabCaseName(
       {
-        argumentsOrTree: resolvedArguments,
         nameMessage: NESTJS_SERVICE_FILE_NAME_PROMPT,
         nameSubject: "Service name",
         projectMessage: NESTJS_SERVICE_FILE_PROJECT_PROMPT,
         projectTag: NESTJS_SERVICE_FILE_PROJECT_TAG,
-        resolveGenerationWithProjectAndName: async ({
-          nameKebabCase,
-          options,
-          projectName,
-          tree,
-        }) => {
-          const moduleName = await NestjsServiceFileCommand.resolveModuleName({
-            message: NESTJS_SERVICE_FILE_MODULE_PROMPT,
-            modulesDirectoryPath: resolveProjectModulesDirectoryPath({
-              projectName,
-              tree,
-            }),
-            tree,
-            ...(options.module !== undefined && { module: options.module }),
-          });
-          const modulesDirectory = resolveProjectModulesDirectoryPath({
-            projectName,
-            tree,
-          });
-
-          return {
-            instanceDirectoryPath: path.join(modulesDirectory, moduleName),
-            substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-            templateDirectoryPath: path.join(
-              process.cwd(),
-              NESTJS_SERVICE_FILE_TEMPLATE_DIRECTORY_PATH,
-            ),
-          };
-        },
+        tree,
+        ...(resolvedOptions.name !== undefined && {
+          name: resolvedOptions.name,
+        }),
+        ...(resolvedOptions.project !== undefined && {
+          optionsProject: resolvedOptions.project,
+        }),
       },
     );
+    const modulesDirectory = resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    });
+    const moduleName = await NestjsServiceFileCommand.resolveModuleName({
+      message: NESTJS_SERVICE_FILE_MODULE_PROMPT,
+      modulesDirectoryPath: modulesDirectory,
+      tree,
+      ...(resolvedOptions.module !== undefined && {
+        module: resolvedOptions.module,
+      }),
+    });
+
+    const targetPath = path.join(modulesDirectory, moduleName);
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        NESTJS_SERVICE_FILE_TEMPLATE_DIRECTORY_PATH,
+      ),
+      tree,
+    });
+
+    return createFormatFilesCallback({
+      targetPath,
+      tree,
+    });
   }
+
+  // 🔏 Private Methods
 
   /**
    * Converts command-runner arguments to tree-first invocation.
@@ -118,6 +123,29 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
       workspaceTree,
       argumentsOrTree.options,
     );
+  }
+
+  /**
+   * Normalizes raw command options into the typed command option shape.
+   */
+  private static normalizeCommandOptions(
+    options: Record<string, unknown> | undefined,
+  ): NestjsServiceFileOptions {
+    const normalizedOptions: NestjsServiceFileOptions = {};
+
+    if (typeof options?.["module"] === "string") {
+      normalizedOptions.module = options["module"];
+    }
+
+    if (typeof options?.["name"] === "string") {
+      normalizedOptions.name = options["name"];
+    }
+
+    if (typeof options?.["project"] === "string") {
+      normalizedOptions.project = options["project"];
+    }
+
+    return normalizedOptions;
   }
 
   // 🌎 Public Methods
@@ -192,11 +220,12 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
   /**
    * Delegates generation to the NestJS service-file scaffold factory.
    */
-  protected override async generate(
+  protected async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsServiceFileOptions>,
   ): Promise<GeneratorCallback> {
-    return NestjsServiceFileCommand.generateNestjsServiceFileFromArguments(
-      argumentsOrTree,
+    return NestjsServiceFileCommand.generateNestjsServiceFile(
+      argumentsOrTree.tree,
+      argumentsOrTree.options,
     );
   }
 
@@ -208,7 +237,7 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
     flags: "-m, --module [module]",
   })
   parseModuleOption(value: string): string {
-    return parseStringCommandOption(value);
+    return value;
   }
 
   /**
@@ -218,7 +247,36 @@ export class NestjsServiceFileCommand extends ModuleGeneratorCommandRunner<Nestj
     description: "Service name in kebab-case",
     flags: "-n, --name [name]",
   })
-  override parseNameOption(value: string): string {
-    return parseStringCommandOption(value);
+  parseNameOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Parses the optional parent project argument.
+   */
+  @Option({
+    description: "Parent project name in kebab-case",
+    flags: "-p, --project [project]",
+  })
+  parseProjectOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Runs generator command orchestration and logs success output.
+   */
+  async run(
+    _passedParameters: string[],
+    options?: Record<string, unknown>,
+  ): Promise<void> {
+    const parsedOptions =
+      NestjsServiceFileCommand.normalizeCommandOptions(options);
+
+    await runGeneratorCommandWithCallback({
+      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
+      logger: this.logger,
+      options: parsedOptions,
+      successMessage: this.successMessage,
+    });
   }
 }

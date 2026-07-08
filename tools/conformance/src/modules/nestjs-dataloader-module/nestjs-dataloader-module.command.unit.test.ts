@@ -7,11 +7,12 @@ import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import * as utilities from "../../utilities";
+
 vi.mock("node:child_process", () => ({
   execSync: vi.fn<typeof execSync>(),
 }));
 
-import { GeneratorService } from "../generator/generator.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsDataloaderModuleCommand } from "./nestjs-dataloader-module.command";
@@ -208,7 +209,7 @@ describe(NestjsDataloaderModuleCommand, () => {
 
   it("runs command orchestration and logs success", async () => {
     const runGeneratorCommandSpy = vi
-      .spyOn(GeneratorService, "runGeneratorCommand")
+      .spyOn(utilities, "runGeneratorCommandWithCallback")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {

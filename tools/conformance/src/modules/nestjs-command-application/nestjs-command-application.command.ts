@@ -1,18 +1,18 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { Command, Option } from "nest-commander";
+import { Command, CommandRunner, Option } from "nest-commander";
 import prompts from "prompts";
 
 import { APPLICATIONS_DIRECTORY, DESTINATION_ROOTS } from "../../constants";
 import {
   buildKebabCaseNameSubstitutions,
+  formatTemplateScaffoldTree,
   type GeneratorInvocationArguments,
   normalizeGeneratorInvocationFromTree,
-  parseStringCommandOption,
+  resolveOptionalKebabCaseName,
+  runGeneratorCommandWithCallback,
 } from "../../utilities";
-import { GeneratorTemplateService } from "../generator/generator-template.service";
-import { NameGeneratorCommandRunner } from "../generator/name-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -35,12 +35,12 @@ import type { Choice, PromptObject } from "prompts";
   name: "nestjs-command-application",
 })
 @Injectable()
-export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<NestjsCommandApplicationOptions> {
+export class NestjsCommandApplicationCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    super(logger);
-    logger.setContext(NestjsCommandApplicationCommand.name);
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(NestjsCommandApplicationCommand.name);
   }
 
   // 🔐 Private Fields
@@ -59,52 +59,47 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
     workspaceTree: Tree,
     generatorOptions: Partial<NestjsCommandApplicationOptions> = {},
   ): Promise<void> {
-    const resolvedArguments =
+    const { options: resolvedOptions, tree } =
       normalizeGeneratorInvocationFromTree<NestjsCommandApplicationOptions>({
         options: generatorOptions,
         tree: workspaceTree,
       });
+    const nameKebabCase = await resolveOptionalKebabCaseName({
+      message: NESTJS_COMMAND_APPLICATION_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && {
+        name: resolvedOptions.name,
+      }),
+      subject: "Application name",
+    });
+    const destinationRoot =
+      await NestjsCommandApplicationCommand.resolveDestinationRoot({
+        message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
+        ...(resolvedOptions.destinationRoot !== undefined && {
+          destinationRoot: resolvedOptions.destinationRoot,
+        }),
+      });
+    const projectRoot = path.join(destinationRoot, nameKebabCase);
 
-    await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<NestjsCommandApplicationOptions>(
-      {
-        argumentsOrTree: resolvedArguments,
-        nameMessage: NESTJS_COMMAND_APPLICATION_NAME_PROMPT,
-        nameSubject: "Application name",
-        resolveGenerationWithName: async ({
-          nameKebabCase,
-          options: resolvedOptions,
-          tree,
-        }) => {
-          const destinationRoot =
-            await NestjsCommandApplicationCommand.resolveDestinationRoot({
-              message: NESTJS_COMMAND_APPLICATION_DESTINATION_ROOT_PROMPT,
-              ...(resolvedOptions.destinationRoot !== undefined && {
-                destinationRoot: resolvedOptions.destinationRoot,
-              }),
-            });
+    if (tree.exists(projectRoot)) {
+      throw new Error(
+        `Directory "${projectRoot}" already exists. Choose a different application name.`,
+      );
+    }
 
-          const projectRoot = path.join(destinationRoot, nameKebabCase);
-
-          if (tree.exists(projectRoot)) {
-            throw new Error(
-              `Directory "${projectRoot}" already exists. Choose a different application name.`,
-            );
-          }
-
-          return {
-            instanceDirectoryPath: projectRoot,
-            substitutions: {
-              ...buildKebabCaseNameSubstitutions(nameKebabCase),
-              destinationRoot,
-            },
-            templateDirectoryPath: path.join(
-              process.cwd(),
-              "tools/conformance/src/modules/nestjs-command-application/templates",
-            ),
-          };
+    await formatTemplateScaffoldTree({
+      generation: {
+        instanceDirectoryPath: projectRoot,
+        substitutions: {
+          ...buildKebabCaseNameSubstitutions(nameKebabCase),
+          destinationRoot,
         },
+        templateDirectoryPath: path.join(
+          process.cwd(),
+          "tools/conformance/src/modules/nestjs-command-application/templates",
+        ),
       },
-    );
+      tree,
+    });
   }
 
   /**
@@ -120,14 +115,33 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
     );
   }
 
-  // 🌎 Public Methods
-
   /**
    * Returns whether the value is a valid destination root.
    */
   private static isDestinationRoot(value: string): boolean {
     const destinationRoots: readonly string[] = DESTINATION_ROOTS;
     return destinationRoots.includes(value);
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Normalizes raw command options into the typed command option shape.
+   */
+  private static normalizeCommandOptions(
+    options: Record<string, unknown> | undefined,
+  ): NestjsCommandApplicationOptions {
+    const normalizedOptions: NestjsCommandApplicationOptions = {};
+
+    if (typeof options?.["destinationRoot"] === "string") {
+      normalizedOptions.destinationRoot = options["destinationRoot"];
+    }
+
+    if (typeof options?.["name"] === "string") {
+      normalizedOptions.name = options["name"];
+    }
+
+    return normalizedOptions;
   }
   /**
    * Prompts for destination root selection.
@@ -174,11 +188,12 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
   /**
    * Delegates generation to the NestJS command application scaffold factory.
    */
-  protected override async generate(
+  protected async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsCommandApplicationOptions>,
   ): Promise<undefined> {
-    await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-      argumentsOrTree,
+    await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
+      argumentsOrTree.tree,
+      argumentsOrTree.options,
     );
     return undefined;
   }
@@ -191,6 +206,35 @@ export class NestjsCommandApplicationCommand extends NameGeneratorCommandRunner<
     flags: "-d, --destination-root [destinationRoot]",
   })
   parseDestinationRootOption(value: string): string {
-    return parseStringCommandOption(value);
+    return value;
+  }
+
+  /**
+   * Parses the optional application name argument.
+   */
+  @Option({
+    description: "Name in kebab-case",
+    flags: "-n, --name [name]",
+  })
+  parseNameOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Runs generator command orchestration and logs success output.
+   */
+  async run(
+    _passedParameters: string[],
+    options?: Record<string, unknown>,
+  ): Promise<void> {
+    const parsedOptions =
+      NestjsCommandApplicationCommand.normalizeCommandOptions(options);
+
+    await runGeneratorCommandWithCallback({
+      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
+      logger: this.logger,
+      options: parsedOptions,
+      successMessage: this.successMessage,
+    });
   }
 }

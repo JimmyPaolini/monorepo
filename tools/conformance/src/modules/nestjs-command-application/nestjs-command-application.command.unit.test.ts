@@ -11,7 +11,7 @@ import {
   DESTINATION_ROOTS,
   TOOLS_DIRECTORY,
 } from "../../constants";
-import { GeneratorService } from "../generator/generator.service";
+import * as utilities from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsCommandApplicationCommand } from "./nestjs-command-application.command";
@@ -276,7 +276,7 @@ describe(NestjsCommandApplicationCommand, () => {
 
   it("runs command orchestration and logs success", async () => {
     const runGeneratorCommandSpy = vi
-      .spyOn(GeneratorService, "runGeneratorCommand")
+      .spyOn(utilities, "runGeneratorCommandWithCallback")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {

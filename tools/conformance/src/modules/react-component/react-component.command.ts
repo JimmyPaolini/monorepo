@@ -1,19 +1,18 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { Command, Option } from "nest-commander";
+import { Command, CommandRunner, Option } from "nest-commander";
 
 import {
   buildKebabCaseNameSubstitutions,
-  generateTemplateScaffold,
+  formatTemplateScaffoldTree,
   type GeneratorInvocationArguments,
   normalizeGeneratorInvocationFromTree,
-  parseStringCommandOption,
   resolveOptionalKebabCaseName,
   resolveProject,
   resolveProjectComponentsDirectoryPath,
+  runGeneratorCommandWithCallback,
 } from "../../utilities";
-import { ModuleGeneratorCommandRunner } from "../generator/module-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -36,12 +35,12 @@ import type { Tree } from "@nx/devkit";
   name: "react-component",
 })
 @Injectable()
-export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactComponentOptions> {
+export class ReactComponentCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    super(logger);
-    logger.setContext(ReactComponentCommand.name);
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(ReactComponentCommand.name);
   }
 
   // 🔐 Private Fields
@@ -50,8 +49,6 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
 
   protected readonly successMessage = "Generated React component scaffold.";
 
-  // 🔏 Private Methods
-
   /**
    * Migrated core generator logic for creating a React component.
    */
@@ -59,49 +56,45 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
     workspaceTree: Tree,
     generatorOptions: Partial<ReactComponentOptions> = {},
   ): Promise<void> {
-    const resolvedArguments =
+    const { options: resolvedOptions, tree } =
       normalizeGeneratorInvocationFromTree<ReactComponentOptions>({
         options: generatorOptions,
         tree: workspaceTree,
       });
+    const projectName = await resolveProject({
+      tag: REACT_COMPONENT_PROJECT_TAG,
+      tree,
+      ...(resolvedOptions.project !== undefined && {
+        project: resolvedOptions.project,
+      }),
+      message: REACT_COMPONENT_PROJECT_PROMPT,
+    });
 
-    await generateTemplateScaffold<ReactComponentOptions>({
-      argumentsOrTree: resolvedArguments,
-      format: "tree",
-      resolveGeneration: async ({ options: resolvedOptions, tree }) => {
-        const projectName = await resolveProject({
-          tag: REACT_COMPONENT_PROJECT_TAG,
+    const name = await resolveOptionalKebabCaseName({
+      message: REACT_COMPONENT_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && {
+        name: resolvedOptions.name,
+      }),
+      subject: "Component name",
+    });
+
+    await formatTemplateScaffoldTree({
+      generation: {
+        instanceDirectoryPath: resolveProjectComponentsDirectoryPath({
+          projectName,
           tree,
-          ...(resolvedOptions.project !== undefined && {
-            project: resolvedOptions.project,
-          }),
-          message: REACT_COMPONENT_PROJECT_PROMPT,
-        });
-
-        const name = await resolveOptionalKebabCaseName({
-          message: REACT_COMPONENT_NAME_PROMPT,
-          ...(resolvedOptions.name !== undefined && {
-            name: resolvedOptions.name,
-          }),
-          subject: "Component name",
-        });
-
-        return {
-          instanceDirectoryPath: resolveProjectComponentsDirectoryPath({
-            projectName,
-            tree,
-          }),
-          substitutions: buildKebabCaseNameSubstitutions(name),
-          templateDirectoryPath: path.join(
-            process.cwd(),
-            "tools/conformance/src/modules/react-component/templates",
-          ),
-        };
+        }),
+        substitutions: buildKebabCaseNameSubstitutions(name),
+        templateDirectoryPath: path.join(
+          process.cwd(),
+          "tools/conformance/src/modules/react-component/templates",
+        ),
       },
+      tree,
     });
   }
 
-  // 🌎 Public Methods
+  // 🔏 Private Methods
 
   /**
    * Converts command-runner arguments to tree-first invocation.
@@ -116,14 +109,36 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
     );
   }
 
+  // 🌎 Public Methods
+
+  /**
+   * Normalizes raw command options into the typed command option shape.
+   */
+  private static normalizeCommandOptions(
+    options: Record<string, unknown> | undefined,
+  ): ReactComponentOptions {
+    const normalizedOptions: ReactComponentOptions = {};
+
+    if (typeof options?.["name"] === "string") {
+      normalizedOptions.name = options["name"];
+    }
+
+    if (typeof options?.["project"] === "string") {
+      normalizedOptions.project = options["project"];
+    }
+
+    return normalizedOptions;
+  }
+
   /**
    * Delegates generation to the React component scaffold factory.
    */
-  protected override async generate(
+  protected async generate(
     argumentsOrTree: GeneratorInvocationArguments<ReactComponentOptions>,
   ): Promise<undefined> {
-    await ReactComponentCommand.generateReactComponentFromArguments(
-      argumentsOrTree,
+    await ReactComponentCommand.generateReactComponent(
+      argumentsOrTree.tree,
+      argumentsOrTree.options,
     );
     return undefined;
   }
@@ -135,8 +150,8 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
     description: "Component name in kebab-case",
     flags: "-n, --name [name]",
   })
-  override parseNameOption(value: string): string {
-    return parseStringCommandOption(value);
+  parseNameOption(value: string): string {
+    return value;
   }
 
   /**
@@ -146,7 +161,25 @@ export class ReactComponentCommand extends ModuleGeneratorCommandRunner<ReactCom
     description: "Parent project name in kebab-case",
     flags: "-p, --project [project]",
   })
-  override parseProjectOption(value: string): string {
-    return parseStringCommandOption(value);
+  parseProjectOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Runs generator command orchestration and logs success output.
+   */
+  async run(
+    _passedParameters: string[],
+    options?: Record<string, unknown>,
+  ): Promise<void> {
+    const parsedOptions =
+      ReactComponentCommand.normalizeCommandOptions(options);
+
+    await runGeneratorCommandWithCallback({
+      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
+      logger: this.logger,
+      options: parsedOptions,
+      successMessage: this.successMessage,
+    });
   }
 }

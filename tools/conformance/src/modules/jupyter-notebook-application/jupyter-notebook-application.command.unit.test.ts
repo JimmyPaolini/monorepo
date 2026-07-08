@@ -6,7 +6,7 @@ import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
-import { GeneratorService } from "../generator/generator.service";
+import * as utilities from "../../utilities";
 import { LoggerService } from "../logger/logger.service";
 
 import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
@@ -175,7 +175,7 @@ describe(JupyterNotebookApplicationCommand, () => {
 
   it("runs command orchestration and logs success", async () => {
     const runGeneratorCommandSpy = vi
-      .spyOn(GeneratorService, "runGeneratorCommand")
+      .spyOn(utilities, "runGeneratorCommandWithCallback")
       .mockResolvedValue(undefined);
 
     await runWithRepositoryRoot(async () => {

@@ -30,8 +30,6 @@ export interface ResolvedProjectAndName {
 }
 
 /** Shared scaffold format mode. */
-export type TemplateScaffoldFormatMode = "callback" | "tree";
-
 /** Result returned by a template scaffold generator before formatting. */
 export interface TemplateScaffoldGenerationResult {
   instanceDirectoryPath: string;
@@ -93,6 +91,20 @@ export function createFormatFilesCallback(args: {
 export function createWorkspaceTree(): Tree {
   return new FsTree(workspaceRoot, false);
 }
+/** Writes generated files and formats the Nx tree in-process. */
+export async function formatTemplateScaffoldTree(args: {
+  generation: TemplateScaffoldGenerationResult;
+  tree: Tree;
+}): Promise<void> {
+  const { generation, tree } = args;
+  generateFiles({
+    instanceDirectoryPath: generation.instanceDirectoryPath,
+    substitutions: generation.substitutions,
+    templateDirectoryPath: generation.templateDirectoryPath,
+    tree,
+  });
+  await formatFiles(tree);
+}
 
 /**
  * Renders Mustache templates from a directory into the Nx tree.
@@ -130,68 +142,6 @@ export function generateFiles(args: {
     processFileNode({ instancePath, node, substitutions, templatePath, tree });
   }
 }
-/**
- * Normalizes a generator invocation, renders templates, and returns the
- * requested formatting strategy.
- */
-export async function generateTemplateScaffold<TOptions extends object>(args: {
-  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
-  format: "callback";
-  resolveGeneration: (args: {
-    options: Partial<TOptions>;
-    tree: Tree;
-  }) => Promise<TemplateScaffoldGenerationResult>;
-}): Promise<GeneratorCallback>;
-/**
- * Normalizes a generator invocation, renders templates, and formats the tree.
- */
-export async function generateTemplateScaffold<TOptions extends object>(args: {
-  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
-  format: "tree";
-  resolveGeneration: (args: {
-    options: Partial<TOptions>;
-    tree: Tree;
-  }) => Promise<TemplateScaffoldGenerationResult>;
-}): Promise<undefined>;
-/**
- * Normalizes a generator invocation, renders templates, and formats output.
- */
-export async function generateTemplateScaffold<TOptions extends object>(args: {
-  argumentsOrTree: GeneratorInvocationArguments<TOptions> | Tree;
-  format: TemplateScaffoldFormatMode;
-  resolveGeneration: (args: {
-    options: Partial<TOptions>;
-    tree: Tree;
-  }) => Promise<TemplateScaffoldGenerationResult>;
-}): Promise<GeneratorCallback | undefined> {
-  const resolvedArguments = isGeneratorInvocationArguments<TOptions>(
-    args.argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments<TOptions>(args.argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree<TOptions>({
-        tree: args.argumentsOrTree,
-      });
-
-  const { options, tree } = resolvedArguments;
-  const generation = await args.resolveGeneration({ options, tree });
-
-  generateFiles({
-    instanceDirectoryPath: generation.instanceDirectoryPath,
-    substitutions: generation.substitutions,
-    templateDirectoryPath: generation.templateDirectoryPath,
-    tree,
-  });
-
-  if (args.format === "callback") {
-    return createFormatFilesCallback({
-      targetPath: generation.instanceDirectoryPath,
-      tree,
-    });
-  }
-
-  await formatFiles(tree);
-  return undefined;
-}
 
 /**
  * Returns the names of all workspace projects that have the given tag.
@@ -211,30 +161,6 @@ export function getProjectsWithTag(args: {
 }
 
 /**
- * Returns whether a value is a generator invocation arguments object.
- */
-export function isGeneratorInvocationArguments<TOptions extends object>(
-  value: unknown,
-): value is GeneratorInvocationArguments<TOptions> {
-  if (typeof value !== "object" || value === null) {
-    return false;
-  }
-
-  return "options" in value && "tree" in value;
-}
-
-/**
- * Normalizes invocation arguments from command-runner style calls.
- */
-export function normalizeGeneratorInvocationFromArguments<
-  TOptions extends object,
->(
-  args: GeneratorInvocationArguments<TOptions>,
-): GeneratorInvocationArguments<TOptions> {
-  return args;
-}
-
-/**
  * Normalizes invocation arguments from Nx factory style calls.
  */
 export function normalizeGeneratorInvocationFromTree<
@@ -247,13 +173,6 @@ export function normalizeGeneratorInvocationFromTree<
     options: args.options ?? {},
     tree: args.tree,
   };
-}
-
-/**
- * Returns an unchanged option string for nest-commander option parsers.
- */
-export function parseStringCommandOption(value: string): string {
-  return value;
 }
 
 /**

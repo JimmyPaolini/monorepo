@@ -1,16 +1,17 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { Command } from "nest-commander";
+import { Command, CommandRunner, Option } from "nest-commander";
 
 import { APPLICATIONS_DIRECTORY } from "../../constants";
 import {
   buildKebabCaseNameSubstitutions,
+  formatTemplateScaffoldTree,
   type GeneratorInvocationArguments,
   normalizeGeneratorInvocationFromTree,
+  resolveOptionalKebabCaseName,
+  runGeneratorCommandWithCallback,
 } from "../../utilities";
-import { GeneratorTemplateService } from "../generator/generator-template.service";
-import { NameGeneratorCommandRunner } from "../generator/name-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT } from "./nestjs-graphql-application.constants";
@@ -29,12 +30,12 @@ import type { Tree } from "@nx/devkit";
   name: "nestjs-graphql-application",
 })
 @Injectable()
-export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<NestjsGraphqlApplicationOptions> {
+export class NestjsGraphqlApplicationCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    super(logger);
-    logger.setContext(NestjsGraphqlApplicationCommand.name);
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(NestjsGraphqlApplicationCommand.name);
   }
 
   // 🔐 Private Fields
@@ -44,8 +45,6 @@ export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<
   protected readonly successMessage =
     "Generated NestJS GraphQL application scaffold.";
 
-  // 🔏 Private Methods
-
   /**
    * Migrated core generator logic for creating a NestJS GraphQL application.
    */
@@ -53,40 +52,40 @@ export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<
     workspaceTree: Tree,
     generatorOptions: Partial<NestjsGraphqlApplicationOptions> = {},
   ): Promise<void> {
-    const resolvedArguments =
+    const { options: resolvedOptions, tree } =
       normalizeGeneratorInvocationFromTree<NestjsGraphqlApplicationOptions>({
         options: generatorOptions,
         tree: workspaceTree,
       });
+    const nameKebabCase = await resolveOptionalKebabCaseName({
+      message: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
+      ...(resolvedOptions.name !== undefined && {
+        name: resolvedOptions.name,
+      }),
+      subject: "Application name",
+    });
+    const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
 
-    await GeneratorTemplateService.generateTreeTemplateScaffoldWithOptionalName<NestjsGraphqlApplicationOptions>(
-      {
-        argumentsOrTree: resolvedArguments,
-        nameMessage: NESTJS_GRAPHQL_APPLICATION_NAME_PROMPT,
-        nameSubject: "Application name",
-        resolveGenerationWithName: ({ nameKebabCase, tree }) => {
-          const projectRoot = path.join(APPLICATIONS_DIRECTORY, nameKebabCase);
+    if (tree.exists(projectRoot)) {
+      throw new Error(
+        `Directory "${projectRoot}" already exists. Choose a different application name.`,
+      );
+    }
 
-          if (tree.exists(projectRoot)) {
-            throw new Error(
-              `Directory "${projectRoot}" already exists. Choose a different application name.`,
-            );
-          }
-
-          return {
-            instanceDirectoryPath: projectRoot,
-            substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-            templateDirectoryPath: path.join(
-              process.cwd(),
-              "tools/conformance/src/modules/nestjs-graphql-application/templates",
-            ),
-          };
-        },
+    await formatTemplateScaffoldTree({
+      generation: {
+        instanceDirectoryPath: projectRoot,
+        substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+        templateDirectoryPath: path.join(
+          process.cwd(),
+          "tools/conformance/src/modules/nestjs-graphql-application/templates",
+        ),
       },
-    );
+      tree,
+    });
   }
 
-  // 🌎 Public Methods
+  // 🔏 Private Methods
 
   /**
    * Converts command-runner arguments to tree-first invocation.
@@ -101,15 +100,62 @@ export class NestjsGraphqlApplicationCommand extends NameGeneratorCommandRunner<
     );
   }
 
+  // 🌎 Public Methods
+
+  /**
+   * Normalizes raw command options into the typed command option shape.
+   */
+  private static normalizeCommandOptions(
+    options: Record<string, unknown> | undefined,
+  ): NestjsGraphqlApplicationOptions {
+    const normalizedOptions: NestjsGraphqlApplicationOptions = {};
+
+    if (typeof options?.["name"] === "string") {
+      normalizedOptions.name = options["name"];
+    }
+
+    return normalizedOptions;
+  }
+
   /**
    * Delegates generation to the NestJS GraphQL application scaffold factory.
    */
-  protected override async generate(
+  protected async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsGraphqlApplicationOptions>,
   ): Promise<undefined> {
-    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-      argumentsOrTree,
+    await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
+      argumentsOrTree.tree,
+      argumentsOrTree.options,
     );
     return undefined;
+  }
+
+  /**
+   * Parses the optional application name argument.
+   */
+  @Option({
+    description: "Name in kebab-case",
+    flags: "-n, --name [name]",
+  })
+  parseNameOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Runs generator command orchestration and logs success output.
+   */
+  async run(
+    _passedParameters: string[],
+    options?: Record<string, unknown>,
+  ): Promise<void> {
+    const parsedOptions =
+      NestjsGraphqlApplicationCommand.normalizeCommandOptions(options);
+
+    await runGeneratorCommandWithCallback({
+      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
+      logger: this.logger,
+      options: parsedOptions,
+      successMessage: this.successMessage,
+    });
   }
 }

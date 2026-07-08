@@ -1,9 +1,3 @@
-import {
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
-  normalizeGeneratorInvocationFromTree,
-} from "../../utilities";
-
 import { NestjsGraphqlModuleCommand } from "./nestjs-graphql-module.command";
 
 import type {
@@ -19,14 +13,13 @@ export async function generateNestjsGraphqlModule(
   argumentsOrTree: NestjsGraphqlModuleArguments | Tree,
   options?: NestjsGraphqlModuleOptions,
 ): Promise<GeneratorCallback> {
-  const { options: resolvedOptions, tree } = isGeneratorInvocationArguments(
-    argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments(argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree({
-        options: options === undefined ? {} : options,
-        tree: argumentsOrTree,
-      });
+  const { options: resolvedOptions, tree } =
+    "options" in argumentsOrTree && "tree" in argumentsOrTree
+      ? argumentsOrTree
+      : {
+          options: options ?? {},
+          tree: argumentsOrTree,
+        };
 
   return NestjsGraphqlModuleCommand.generateNestjsGraphqlModule(
     tree,

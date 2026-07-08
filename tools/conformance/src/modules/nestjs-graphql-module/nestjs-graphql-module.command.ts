@@ -1,16 +1,18 @@
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import { Command } from "nest-commander";
+import { Command, CommandRunner, Option } from "nest-commander";
 
 import {
   buildKebabCaseNameSubstitutions,
+  createFormatFilesCallback,
+  generateFiles,
   type GeneratorInvocationArguments,
   normalizeGeneratorInvocationFromTree,
+  resolveProjectAndKebabCaseName,
   resolveProjectModulesDirectoryPath,
+  runGeneratorCommandWithCallback,
 } from "../../utilities";
-import { GeneratorRunnerService } from "../generator/generator-runner.service";
-import { ModuleGeneratorCommandRunner } from "../generator/module-generator-command-runner.service";
 import { LoggerService } from "../logger/logger.service";
 
 import {
@@ -33,12 +35,12 @@ import type { GeneratorCallback, Tree } from "@nx/devkit";
   name: "nestjs-graphql-module",
 })
 @Injectable()
-export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<NestjsGraphqlModuleOptions> {
+export class NestjsGraphqlModuleCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(logger: LoggerService) {
-    super(logger);
-    logger.setContext(NestjsGraphqlModuleCommand.name);
+  constructor(private readonly logger: LoggerService) {
+    super();
+    this.logger.setContext(NestjsGraphqlModuleCommand.name);
   }
 
   // 🔐 Private Fields
@@ -48,10 +50,6 @@ export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<Nes
   protected readonly successMessage =
     "Generated NestJS GraphQL module scaffold.";
 
-  // 🔏 Private Methods
-
-  // 🌎 Public Methods
-
   /**
    * Migrated core generator logic for creating a NestJS GraphQL module.
    */
@@ -59,41 +57,51 @@ export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<Nes
     workspaceTree: Tree,
     generatorOptions: Partial<NestjsGraphqlModuleOptions> = {},
   ): Promise<GeneratorCallback> {
-    const resolvedArguments =
+    const { options: resolvedOptions, tree } =
       normalizeGeneratorInvocationFromTree<NestjsGraphqlModuleOptions>({
         options: generatorOptions,
         tree: workspaceTree,
       });
-
-    return GeneratorRunnerService.generateCallbackTemplateScaffoldWithProjectAndName<NestjsGraphqlModuleOptions>(
+    const { nameKebabCase, projectName } = await resolveProjectAndKebabCaseName(
       {
-        argumentsOrTree: resolvedArguments,
         nameMessage: NESTJS_GRAPHQL_MODULE_NAME_PROMPT,
         nameSubject: "Module name",
         projectMessage: NESTJS_GRAPHQL_MODULE_PROJECT_PROMPT,
         projectTag: NESTJS_GRAPHQL_MODULE_PROJECT_TAG,
-        resolveGenerationWithProjectAndName: ({
-          nameKebabCase,
-          projectName,
-          tree,
-        }) => {
-          const directory = resolveProjectModulesDirectoryPath({
-            projectName,
-            tree,
-          });
-
-          return {
-            instanceDirectoryPath: path.join(directory, nameKebabCase),
-            substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-            templateDirectoryPath: path.join(
-              process.cwd(),
-              "tools/conformance/src/modules/nestjs-graphql-module/templates",
-            ),
-          };
-        },
+        tree,
+        ...(resolvedOptions.name !== undefined && {
+          name: resolvedOptions.name,
+        }),
+        ...(resolvedOptions.project !== undefined && {
+          optionsProject: resolvedOptions.project,
+        }),
       },
     );
+    const directory = resolveProjectModulesDirectoryPath({
+      projectName,
+      tree,
+    });
+
+    const targetPath = path.join(directory, nameKebabCase);
+    generateFiles({
+      instanceDirectoryPath: targetPath,
+      substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
+      templateDirectoryPath: path.join(
+        process.cwd(),
+        "tools/conformance/src/modules/nestjs-graphql-module/templates",
+      ),
+      tree,
+    });
+
+    return createFormatFilesCallback({
+      targetPath,
+      tree,
+    });
   }
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Converts command-runner arguments to tree-first invocation.
@@ -109,13 +117,73 @@ export class NestjsGraphqlModuleCommand extends ModuleGeneratorCommandRunner<Nes
   }
 
   /**
+   * Normalizes raw command options into the typed command option shape.
+   */
+  private static normalizeCommandOptions(
+    options: Record<string, unknown> | undefined,
+  ): NestjsGraphqlModuleOptions {
+    const normalizedOptions: NestjsGraphqlModuleOptions = {};
+
+    if (typeof options?.["name"] === "string") {
+      normalizedOptions.name = options["name"];
+    }
+
+    if (typeof options?.["project"] === "string") {
+      normalizedOptions.project = options["project"];
+    }
+
+    return normalizedOptions;
+  }
+
+  /**
    * Delegates generation to the GraphQL-module scaffold factory.
    */
-  protected override async generate(
+  protected async generate(
     argumentsOrTree: GeneratorInvocationArguments<NestjsGraphqlModuleOptions>,
   ): Promise<GeneratorCallback> {
-    return NestjsGraphqlModuleCommand.generateNestjsGraphqlModuleFromArguments(
-      argumentsOrTree,
+    return NestjsGraphqlModuleCommand.generateNestjsGraphqlModule(
+      argumentsOrTree.tree,
+      argumentsOrTree.options,
     );
+  }
+
+  /**
+   * Parses the optional module name argument.
+   */
+  @Option({
+    description: "Module name in kebab-case",
+    flags: "-n, --name [name]",
+  })
+  parseNameOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Parses the optional parent project argument.
+   */
+  @Option({
+    description: "Parent project name in kebab-case",
+    flags: "-p, --project [project]",
+  })
+  parseProjectOption(value: string): string {
+    return value;
+  }
+
+  /**
+   * Runs generator command orchestration and logs success output.
+   */
+  async run(
+    _passedParameters: string[],
+    options?: Record<string, unknown>,
+  ): Promise<void> {
+    const parsedOptions =
+      NestjsGraphqlModuleCommand.normalizeCommandOptions(options);
+
+    await runGeneratorCommandWithCallback({
+      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
+      logger: this.logger,
+      options: parsedOptions,
+      successMessage: this.successMessage,
+    });
   }
 }

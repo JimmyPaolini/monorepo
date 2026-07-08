@@ -1,9 +1,3 @@
-import {
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
-  normalizeGeneratorInvocationFromTree,
-} from "../../utilities";
-
 import { NestjsCommandApplicationCommand } from "./nestjs-command-application.command";
 
 import type {
@@ -19,14 +13,13 @@ export async function generateNestjsCommandApplication(
   argumentsOrTree: NestjsCommandApplicationArguments | Tree,
   options?: NestjsCommandApplicationOptions,
 ): Promise<void> {
-  const { options: resolvedOptions, tree } = isGeneratorInvocationArguments(
-    argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments(argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree({
-        options: options === undefined ? {} : options,
-        tree: argumentsOrTree,
-      });
+  const { options: resolvedOptions, tree } =
+    "options" in argumentsOrTree && "tree" in argumentsOrTree
+      ? argumentsOrTree
+      : {
+          options: options ?? {},
+          tree: argumentsOrTree,
+        };
 
   await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
     tree,

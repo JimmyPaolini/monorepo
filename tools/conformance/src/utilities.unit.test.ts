@@ -26,8 +26,6 @@ import {
   createWorkspaceTree,
   generateFiles,
   getProjectsWithTag,
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
   normalizeGeneratorInvocationFromTree,
   resolveName,
   resolveProject,
@@ -221,34 +219,14 @@ describe("utilities", () => {
     expect(result).toStrictEqual(["my-app"]);
   });
 
-  it("detects invocation argument shapes", () => {
+  it("normalizes invocation arguments from tree", () => {
     const tree = createTreeWithEmptyWorkspace();
-
-    expect(isGeneratorInvocationArguments(null)).toBe(false);
-    expect(isGeneratorInvocationArguments("value")).toBe(false);
-    expect(
-      isGeneratorInvocationArguments({
-        options: {},
-        tree,
-      }),
-    ).toBe(true);
-  });
-
-  it("normalizes invocation arguments", () => {
-    const tree = createTreeWithEmptyWorkspace();
-    const argumentResult = normalizeGeneratorInvocationFromArguments({
-      options: {
-        name: "alpha",
-      },
-      tree,
-    });
     const treeResult = normalizeGeneratorInvocationFromTree<{
       name?: string;
     }>({
       tree,
     });
 
-    expect(argumentResult.options).toStrictEqual({ name: "alpha" });
     expect(treeResult.options).toStrictEqual({});
     expect(treeResult.tree).toBe(tree);
   });

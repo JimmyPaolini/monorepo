@@ -1,9 +1,3 @@
-import {
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
-  normalizeGeneratorInvocationFromTree,
-} from "../../utilities";
-
 import { NestjsServiceModuleCommand } from "./nestjs-service-module.command";
 
 import type {
@@ -19,14 +13,13 @@ export async function generateNestjsServiceModule(
   argumentsOrTree: NestjsServiceModuleArguments | Tree,
   options?: NestjsServiceModuleOptions,
 ): Promise<GeneratorCallback> {
-  const { options: resolvedOptions, tree } = isGeneratorInvocationArguments(
-    argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments(argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree({
-        options: options === undefined ? {} : options,
-        tree: argumentsOrTree,
-      });
+  const { options: resolvedOptions, tree } =
+    "options" in argumentsOrTree && "tree" in argumentsOrTree
+      ? argumentsOrTree
+      : {
+          options: options ?? {},
+          tree: argumentsOrTree,
+        };
 
   return NestjsServiceModuleCommand.generateNestjsServiceModule(
     tree,

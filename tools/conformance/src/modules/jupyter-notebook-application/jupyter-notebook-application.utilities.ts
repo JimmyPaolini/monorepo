@@ -1,9 +1,3 @@
-import {
-  isGeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromArguments,
-  normalizeGeneratorInvocationFromTree,
-} from "../../utilities";
-
 import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
 
 import type {
@@ -19,14 +13,13 @@ export async function generateJupyterNotebookApplication(
   argumentsOrTree: JupyterNotebookApplicationArguments | Tree,
   options?: JupyterNotebookApplicationOptions,
 ): Promise<void> {
-  const { options: resolvedOptions, tree } = isGeneratorInvocationArguments(
-    argumentsOrTree,
-  )
-    ? normalizeGeneratorInvocationFromArguments(argumentsOrTree)
-    : normalizeGeneratorInvocationFromTree({
-        options: options === undefined ? {} : options,
-        tree: argumentsOrTree,
-      });
+  const { options: resolvedOptions, tree } =
+    "options" in argumentsOrTree && "tree" in argumentsOrTree
+      ? argumentsOrTree
+      : {
+          options: options ?? {},
+          tree: argumentsOrTree,
+        };
 
   await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
     tree,
