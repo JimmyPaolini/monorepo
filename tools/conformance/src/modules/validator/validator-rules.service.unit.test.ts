@@ -109,7 +109,6 @@ describe(ValidatorRulesService, () => {
         {
           provide: JupyterNotebookApplicationCommand,
           useValue: {
-            generatorTag: JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
             templateDirectoryPath:
               "tools/conformance/src/modules/jupyter-notebook-application/templates",
           },
@@ -117,7 +116,6 @@ describe(ValidatorRulesService, () => {
         {
           provide: NestjsCommandApplicationCommand,
           useValue: {
-            generatorTag: NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
             templateDirectoryPath:
               "tools/conformance/src/modules/nestjs-command-application/templates",
           },
@@ -141,7 +139,6 @@ describe(ValidatorRulesService, () => {
         {
           provide: NestjsGraphqlApplicationCommand,
           useValue: {
-            generatorTag: NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
             templateDirectoryPath:
               "tools/conformance/src/modules/nestjs-graphql-application/templates",
           },

@@ -65,9 +65,7 @@ export class ValidatorRulesService {
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
-      !workspaceProject.tags.includes(
-        this.jupyterNotebookApplicationCommand.generatorTag,
-      )
+      !workspaceProject.tags.includes("generator:jupyter-notebook-application")
     ) {
       return undefined;
     }
@@ -105,9 +103,7 @@ export class ValidatorRulesService {
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
-      !workspaceProject.tags.includes(
-        this.nestjsCommandApplicationCommand.generatorTag,
-      )
+      !workspaceProject.tags.includes("generator:nestjs-command-application")
     ) {
       return undefined;
     }

@@ -13,8 +13,6 @@ export interface NestjsCommandApplicationOptions {
 /**
  * Template substitutions used by this module's templates.
  */
-export interface NestjsCommandApplicationSubstitutions
-  extends NameSubstitutions, Record<string, string> {
-  generatorTag: string;
+export interface NestjsCommandApplicationSubstitutions extends NameSubstitutions {
   type: string;
 }

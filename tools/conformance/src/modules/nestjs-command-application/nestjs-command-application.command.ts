@@ -51,8 +51,6 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
 
   // 🔑 Public Fields
 
-  public readonly generatorTag: string = "generator:nestjs-command-application";
-
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-command-application/templates";
 
@@ -114,7 +112,6 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
 
     const substitutions: NestjsCommandApplicationSubstitutions = {
       ...this.generatorService.buildNameSubstitutions(name),
-      generatorTag: this.generatorTag,
       type,
     };
 

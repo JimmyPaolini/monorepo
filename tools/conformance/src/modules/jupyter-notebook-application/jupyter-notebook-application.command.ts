@@ -45,8 +45,6 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
     "Jupyter notebook application output files";
   private readonly projectExistsError: string = `Directory already exists. Choose a different application name.`;
   private readonly tree: Tree = createWorkspaceTree();
-  public readonly generatorTag: string =
-    "generator:jupyter-notebook-application";
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/jupyter-notebook-application/templates";
 
@@ -93,10 +91,8 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
       );
     }
 
-    const substitutions: JupyterNotebookApplicationSubstitutions = {
-      ...this.generatorService.buildNameSubstitutions(name),
-      generatorTag: this.generatorTag,
-    };
+    const substitutions: JupyterNotebookApplicationSubstitutions =
+      this.generatorService.buildNameSubstitutions(name);
 
     const outputFiles =
       await this.generatorService.generateFiles<JupyterNotebookApplicationSubstitutions>(

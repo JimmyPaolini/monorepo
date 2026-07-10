@@ -3,30 +3,11 @@
   "projectType": "application",
   "sourceRoot": "applications/{{nameKebabCase}}/src",
   "tags": [
-    "{{generatorTag}}",
+    "generator:jupyter-notebook-application",
     "language:python",
     "type:application"
   ],
   "targets": {
-    "bandit": {},
-    "clean": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:vulture:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:vulture:write"
-          ],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
     "analyze-code": {
       "configurations": {
         "check": {
@@ -56,6 +37,25 @@
           "parallel": false
         }
       }
+    },
+    "bandit": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:vulture:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:vulture:write"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
     },
     "format": {
       "configurations": {
@@ -215,6 +215,7 @@
         ]
       }
     },
+    "ty": {},
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
@@ -225,7 +226,6 @@
         "parallel": true
       }
     },
-    "ty": {},
     "vulture": {},
     "yaml-lint": {}
   }
