@@ -251,7 +251,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         await import("./modules/major-aspects/major-aspect-progressive.service");
       const { AspectEphemerisService } =
         await import("./modules/aspects/aspect-ephemeris.service");
-      const { AspectUtilitiesService } =
+      const { AspectsUtilitiesService } =
         await import("./modules/aspects/aspects-utilities.service");
       const { EphemerisService } =
         await import("./modules/ephemeris/ephemeris.service");
@@ -261,7 +261,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const { ProgressiveAspectService } =
         await import("./modules/progressive/progressive-aspect.service");
       const mathService = new MathService();
-      const aspectsUtilitiesService = new AspectUtilitiesService(mathService);
+      const aspectsUtilitiesService = new AspectsUtilitiesService(mathService);
       const progressiveUtilitiesService = new ProgressiveUtilitiesService(
         new LoggerService(),
       );

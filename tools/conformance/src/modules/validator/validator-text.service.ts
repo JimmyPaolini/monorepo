@@ -1,10 +1,8 @@
 import { Injectable } from "@nestjs/common";
 
-import {
-  prepareConformanceTexts,
-  type TemplateConformanceArguments,
-} from "./validators/common";
+import { ValidatorTemplateService } from "./validator-template.service";
 
+import type { TemplateConformanceArguments } from "./validator-template.types";
 import type { ConformanceError } from "./validator.types";
 
 /**
@@ -14,7 +12,9 @@ import type { ConformanceError } from "./validator.types";
 export class ValidatorTextService {
   // 🏗 Dependency Injection
 
-  constructor() {}
+  constructor(
+    private readonly validatorTemplateService: ValidatorTemplateService,
+  ) {}
 
   // 🔐 Private Fields
 
@@ -45,7 +45,8 @@ export class ValidatorTextService {
     instance: TemplateConformanceArguments["instance"];
     template: TemplateConformanceArguments["template"];
   }): { errors: ConformanceError[] } {
-    const { instance, renderedTemplate } = prepareConformanceTexts(args);
+    const { instance, renderedTemplate } =
+      this.validatorTemplateService.prepareConformanceTexts(args);
     const instanceLineCounts = this.buildLineCounts(instance);
 
     const errors: ConformanceError[] = [];

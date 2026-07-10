@@ -1,11 +1,11 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "{{type}}",
+  "projectType": "application",
   "sourceRoot": "{{type}}/{{nameKebabCase}}",
   "tags": [
     "framework:nest-commander",
     "framework:nestjs",
-    "generator:nestjs-command-application",
+    "{{generatorTag}}",
     "language:typescript"
   ],
   "targets": {

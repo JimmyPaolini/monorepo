@@ -1,4 +1,4 @@
-import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
@@ -15,20 +15,20 @@ vi.mock("fs", () => ({
 
 describe(MajorAspectEventService, () => {
   let service: MajorAspectEventService;
-  let aspectsUtilitiesService: AspectUtilitiesService;
+  let aspectsUtilitiesService: AspectsUtilitiesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         LoggerService,
         MajorAspectEventService,
-        AspectUtilitiesService,
+        AspectsUtilitiesService,
         MathService,
       ],
     }).compile();
 
     service = await module.resolve(MajorAspectEventService);
-    aspectsUtilitiesService = await module.resolve(AspectUtilitiesService);
+    aspectsUtilitiesService = await module.resolve(AspectsUtilitiesService);
   });
 
   describe("buildMajorAspectEvent", () => {

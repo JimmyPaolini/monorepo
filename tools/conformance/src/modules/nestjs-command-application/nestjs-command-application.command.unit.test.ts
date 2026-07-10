@@ -58,7 +58,7 @@ describe(NestjsCommandApplicationCommand, () => {
     generatorService.buildLogMessage.mockImplementation((arguments_) => {
       return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
     });
-    generatorService.getGeneratedFilePaths.mockReturnValue([
+    generatorService.generateFiles.mockResolvedValue([
       "applications/unit-test-command-app/project.json",
       "applications/unit-test-command-app/src/main.ts",
     ]);
@@ -206,11 +206,6 @@ describe(NestjsCommandApplicationCommand, () => {
         instanceDirectoryPath: "applications/unit-test-command-app",
         templateDirectoryPath:
           "tools/conformance/src/modules/nestjs-command-application/templates",
-      }),
-    );
-    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
-      expect.objectContaining({
-        instanceDirectoryPath: "applications/unit-test-command-app",
       }),
     );
     expect(loggerService.log).toHaveBeenNthCalledWith(

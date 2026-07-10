@@ -2,17 +2,17 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { AspectUtilitiesService } from "./aspects-utilities.service";
+import { AspectsUtilitiesService } from "./aspects-utilities.service";
 
-describe(AspectUtilitiesService, () => {
-  let service: AspectUtilitiesService;
+describe(AspectsUtilitiesService, () => {
+  let service: AspectsUtilitiesService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [AspectUtilitiesService, MathService],
+      providers: [AspectsUtilitiesService, MathService],
     }).compile();
 
-    service = await module.resolve(AspectUtilitiesService);
+    service = await module.resolve(AspectsUtilitiesService);
   });
 
   it("is defined", () => {

@@ -16,12 +16,12 @@ import type { Moment } from "moment-timezone";
  * NestJS provider exposing core aspect detection utilities.
  *
  * Two entry points are provided:
- * - {@link AspectUtilitiesService#isAspect}: point-in-time orb check
- * - {@link AspectUtilitiesService#getIsAspect}: factory that returns a phase-classification
+ * - {@link AspectsUtilitiesService#isAspect}: point-in-time orb check
+ * - {@link AspectsUtilitiesService#getIsAspect}: factory that returns a phase-classification
  *   function (forming / perfective / dissolving) for a given set of aspects.
  */
 @Injectable()
-export class AspectUtilitiesService {
+export class AspectsUtilitiesService {
   // 🏗 Dependency Injection
 
   constructor(private readonly mathService: MathService) {}
@@ -106,7 +106,7 @@ export class AspectUtilitiesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    return AspectUtilitiesService.scanUniqueBodyPairs({
+    return AspectsUtilitiesService.scanUniqueBodyPairs({
       bodies,
       getValue: ({ body1, body2 }) =>
         detect({

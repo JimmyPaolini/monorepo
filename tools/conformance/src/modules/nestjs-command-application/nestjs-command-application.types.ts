@@ -15,5 +15,6 @@ export interface NestjsCommandApplicationOptions {
  */
 export interface NestjsCommandApplicationSubstitutions
   extends NameSubstitutions, Record<string, string> {
+  generatorTag: string;
   type: string;
 }

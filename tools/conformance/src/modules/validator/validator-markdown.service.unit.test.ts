@@ -2,13 +2,14 @@ import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { ValidatorMarkdownService } from "./validator-markdown.service";
+import { ValidatorTemplateService } from "./validator-template.service";
 
 describe(ValidatorMarkdownService, () => {
   let service: ValidatorMarkdownService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorMarkdownService],
+      providers: [ValidatorMarkdownService, ValidatorTemplateService],
     }).compile();
 
     service = await module.resolve(ValidatorMarkdownService);

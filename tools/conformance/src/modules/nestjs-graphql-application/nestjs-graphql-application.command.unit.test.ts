@@ -58,7 +58,7 @@ describe(NestjsGraphqlApplicationCommand, () => {
     generatorService.buildLogMessage.mockImplementation((arguments_) => {
       return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
     });
-    generatorService.getGeneratedFilePaths.mockReturnValue([
+    generatorService.generateFiles.mockResolvedValue([
       "applications/atlas-api/project.json",
       "applications/atlas-api/src/main.ts",
     ]);
@@ -128,11 +128,6 @@ describe(NestjsGraphqlApplicationCommand, () => {
         instanceDirectoryPath: "applications/atlas-api",
         templateDirectoryPath:
           "tools/conformance/src/modules/nestjs-graphql-application/templates",
-      }),
-    );
-    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
-      expect.objectContaining({
-        instanceDirectoryPath: "applications/atlas-api",
       }),
     );
     expect(loggerService.log).toHaveBeenNthCalledWith(

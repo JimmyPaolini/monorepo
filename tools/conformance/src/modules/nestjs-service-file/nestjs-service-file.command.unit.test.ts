@@ -61,7 +61,7 @@ describe(NestjsServiceFileCommand, () => {
     generatorService.buildLogMessage.mockImplementation((arguments_) => {
       return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
     });
-    generatorService.getGeneratedFilePaths.mockReturnValue([
+    generatorService.generateFiles.mockResolvedValue([
       "applications/my-app/src/modules/alpha/user-profile.service.ts",
       "applications/my-app/src/modules/alpha/user-profile.service.unit.test.ts",
     ]);
@@ -260,11 +260,6 @@ describe(NestjsServiceFileCommand, () => {
         instanceDirectoryPath: "applications/my-app/src/modules/alpha",
         templateDirectoryPath:
           "tools/conformance/src/modules/nestjs-service-file/templates",
-      }),
-    );
-    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
-      expect.objectContaining({
-        instanceDirectoryPath: "applications/my-app/src/modules/alpha",
       }),
     );
     expect(loggerService.log).toHaveBeenNthCalledWith(

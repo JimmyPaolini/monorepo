@@ -1,6 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
+import { ValidatorTemplateService } from "./validator-template.service";
 import { ValidatorTextService } from "./validator-text.service";
 
 describe(ValidatorTextService, () => {
@@ -8,7 +9,7 @@ describe(ValidatorTextService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorTextService],
+      providers: [ValidatorTextService, ValidatorTemplateService],
     }).compile();
 
     service = await module.resolve(ValidatorTextService);

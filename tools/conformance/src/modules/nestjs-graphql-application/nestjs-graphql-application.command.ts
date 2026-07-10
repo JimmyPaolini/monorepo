@@ -44,9 +44,10 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
   private readonly outputFilesLogLabel: string =
     "NestJS GraphQL application output files";
   private readonly projectExistsError: string = `Directory already exists. Choose a different application name.`;
-  private readonly templateDirectoryPath: string =
-    "tools/conformance/src/modules/nestjs-graphql-application/templates";
   private readonly tree: Tree = createWorkspaceTree();
+  public readonly generatorTag: string = "generator:nestjs-graphql-application";
+  public readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/nestjs-graphql-application/templates";
 
   /**
    * Parses the optional application name argument.
@@ -89,8 +90,9 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
       );
     }
 
-    const substitutions: NestjsGraphqlApplicationSubstitutions =
-      this.generatorService.buildNameSubstitutions(name);
+    const substitutions: NestjsGraphqlApplicationSubstitutions = {
+      ...this.generatorService.buildNameSubstitutions(name),
+    };
 
     const outputFiles =
       await this.generatorService.generateFiles<NestjsGraphqlApplicationSubstitutions>(

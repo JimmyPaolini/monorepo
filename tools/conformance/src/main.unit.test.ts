@@ -92,16 +92,11 @@ describe("main bootstrap", () => {
     vi.resetModules();
   });
 
-  it("runs command factory with buffered logger options", async () => {
+  it("does not run command factory when imported", async () => {
     await import("./main");
 
-    expect(setContextMock).toHaveBeenCalledWith("CommandFactory");
-    expect(runFactoryMock).toHaveBeenCalledTimes(1);
-
-    const runOptions = runFactoryMock.mock.calls[0]?.[1];
-
-    expect(runOptions?.bufferLogs).toBe(true);
-    expect(runOptions?.logger).toBeDefined();
+    expect(setContextMock).not.toHaveBeenCalled();
+    expect(runFactoryMock).not.toHaveBeenCalled();
   }, 15_000);
 
   const invocations: GeneratorInvocation[] = [

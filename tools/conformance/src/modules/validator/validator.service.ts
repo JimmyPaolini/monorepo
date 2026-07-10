@@ -9,7 +9,6 @@ import { ValidatorWorkspaceService } from "./validator-workspace.service";
 import {
   isValidatorRuleName,
   VALIDATOR_RULE_NAMES,
-  VALIDATOR_RULE_SEVERITY,
 } from "./validator.constants";
 
 import type {
@@ -109,7 +108,7 @@ export class ValidatorService {
       errors: serializedErrors === null ? [] : [serializedErrors],
       passed: serializedErrors === null,
       rule: ruleName,
-      severity: VALIDATOR_RULE_SEVERITY[ruleName],
+      severity: "error",
     };
   }
 

@@ -46,10 +46,10 @@ export class NestjsServiceFileCommand extends CommandRunner {
     "NestJS service file output files";
   private readonly projectMessage: string =
     "Which project should the service files be generated in?";
-  private readonly tag: string = "framework:nestjs";
-  private readonly templateDirectoryPath: string =
-    "tools/conformance/src/modules/nestjs-service-file/templates";
   private readonly tree: Tree = createWorkspaceTree();
+  public readonly tag: string = "framework:nestjs";
+  public readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/nestjs-service-file/templates";
 
   /**
    * Resolves and validates the destination module for generated service files.

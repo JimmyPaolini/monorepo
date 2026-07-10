@@ -159,7 +159,7 @@
       "description": "Manage the native Ollama service running on the host machine",
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "applications/affirmations"
+        "cwd": "{projectRoot}"
       }
     },
     "open-webui": {
@@ -178,7 +178,7 @@
       "description": "Manage the Open WebUI Docker service",
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "applications/affirmations"
+        "cwd": "{projectRoot}"
       }
     },
     "pyright": {
@@ -255,7 +255,7 @@
       "description": "Manage the SearxNG Docker service",
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "applications/affirmations"
+        "cwd": "{projectRoot}"
       }
     },
     "spell-check": {
@@ -264,11 +264,12 @@
         "{projectRoot}/*.{md,yaml,yml,json}",
         "{projectRoot}/src/**/*.{py,ipynb,md,yaml,yml,json}",
         "{projectRoot}/testing/**/*.{py,md}",
-        "{workspaceRoot}/configuration/cspell.config.yaml"
+        "{workspaceRoot}/configuration/cspell.config.yaml",
+        "sharedGlobals"
       ],
       "options": {
         "command": "cspell --config ../../configuration/cspell.config.yaml 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
-        "cwd": "applications/affirmations"
+        "cwd": "{projectRoot}"
       }
     },
     "test": {

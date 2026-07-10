@@ -1,4 +1,4 @@
-import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as specialtyAspectBodies,
   specialtyAspects,
@@ -27,7 +27,7 @@ import type { Moment } from "moment-timezone";
  * These aspects represent subtler energetic relationships and use narrower orbs.
  * Includes progressive event pairing for duration-aware tracking.
  *
- * @see {@link AspectUtilitiesService} for orb and angle configuration
+ * @see {@link AspectsUtilitiesService} for orb and angle configuration
  */
 @Injectable()
 export class SpecialtyAspectsService {
@@ -35,7 +35,7 @@ export class SpecialtyAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    aspectsUtilitiesService: AspectUtilitiesService,
+    aspectsUtilitiesService: AspectsUtilitiesService,
     private readonly specialtyAspectsEventService: SpecialtyAspectsEventService,
     private readonly specialtyAspectsProgressiveService: SpecialtyAspectsProgressiveService,
   ) {
@@ -48,7 +48,7 @@ export class SpecialtyAspectsService {
   // 🔐 Private Fields
 
   private readonly detectAspectPhase: ReturnType<
-    AspectUtilitiesService["getIsAspect"]
+    AspectsUtilitiesService["getIsAspect"]
   >;
 
   // 🔑 Public Fields
@@ -186,7 +186,7 @@ export class SpecialtyAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    return AspectUtilitiesService.scanUniqueBodyPairsAtMinute({
+    return AspectsUtilitiesService.scanUniqueBodyPairsAtMinute({
       bodies: specialtyAspectBodies,
       coordinateEphemerisByBody: args.coordinateEphemerisByBody,
       detect: (argumentsObject) => this.detectBodyPairEvent(argumentsObject),

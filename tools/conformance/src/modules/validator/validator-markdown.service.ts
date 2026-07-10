@@ -3,16 +3,18 @@ import { toString } from "mdast-util-to-string";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 
-import {
-  prepareConformanceTexts,
-  type TemplateConformanceArguments,
-} from "./validators/common";
+import { ValidatorTemplateService } from "./validator-template.service";
 
+import type { MdastNode } from "./validator-markdown.types";
+import type { TemplateConformanceArguments } from "./validator-template.types";
 import type { ConformanceError } from "./validator.types";
-import type { MdastNode } from "./validators/markdown/nodes";
 /** Validates Markdown instance files against template structure. */
 @Injectable()
 export class ValidatorMarkdownService {
+  constructor(
+    private readonly validatorTemplateService: ValidatorTemplateService,
+  ) {}
+
   private readonly containerTypes = new Set<string>([
     "blockquote",
     "document",
@@ -433,7 +435,8 @@ export class ValidatorMarkdownService {
     instance: TemplateConformanceArguments["instance"];
     template: TemplateConformanceArguments["template"];
   }): { errors: ConformanceError[] } {
-    const { instance, renderedTemplate } = prepareConformanceTexts(args);
+    const { instance, renderedTemplate } =
+      this.validatorTemplateService.prepareConformanceTexts(args);
 
     const processor = remark().use(remarkGfm);
     const templateAbstractSyntaxTree = processor.parse(renderedTemplate);

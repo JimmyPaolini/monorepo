@@ -23,7 +23,7 @@ import type {
   name: "validate",
 })
 @Injectable()
-export class ValidatorCommandService extends CommandRunner {
+export class ValidatorCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
@@ -31,7 +31,7 @@ export class ValidatorCommandService extends CommandRunner {
     private readonly validatorService: ValidatorService,
   ) {
     super();
-    this.loggerService.setContext(ValidatorCommandService.name);
+    this.loggerService.setContext(ValidatorCommand.name);
   }
 
   // 🔑 Public Fields

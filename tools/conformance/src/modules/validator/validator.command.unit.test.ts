@@ -4,14 +4,14 @@ import { describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { ValidatorCommandService } from "./validator.command.service";
+import { ValidatorCommand } from "./validator.command";
 import { ValidatorService } from "./validator.service";
 
-describe(ValidatorCommandService, () => {
+describe(ValidatorCommand, () => {
   it("is defined", async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -23,7 +23,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     expect(commandService).toBeDefined();
   });
@@ -31,7 +31,7 @@ describe(ValidatorCommandService, () => {
   it("sets logger context", async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -45,11 +45,11 @@ describe(ValidatorCommandService, () => {
 
     const logger = await module.resolve(LoggerService);
 
-    expect(logger.setContext).toHaveBeenCalledWith("ValidatorCommandService");
+    expect(logger.setContext).toHaveBeenCalledWith("ValidatorCommand");
   });
 
   it("creates an internal logger when instantiated", () => {
-    const commandService = new ValidatorCommandService(
+    const commandService = new ValidatorCommand(
       createMock<LoggerService>(),
       createMock<ValidatorService>(),
     );
@@ -60,7 +60,7 @@ describe(ValidatorCommandService, () => {
   it("parses comma-separated projects", async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -72,7 +72,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     expect(commandService.parseProjects(undefined)).toBeUndefined();
     expect(commandService.parseProjects("conformance,lexico")).toStrictEqual([
@@ -84,7 +84,7 @@ describe(ValidatorCommandService, () => {
   it("parses comma-separated rules", async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -96,7 +96,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     expect(commandService.parseRules(undefined)).toBeUndefined();
     expect(
@@ -123,7 +123,7 @@ describe(ValidatorCommandService, () => {
 
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -135,7 +135,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     await expect(commandService.run([], {})).rejects.toThrow(
       "Validation failed",
@@ -160,7 +160,7 @@ describe(ValidatorCommandService, () => {
 
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: logger,
@@ -172,7 +172,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     await expect(
       commandService.run([], {
@@ -193,7 +193,7 @@ describe(ValidatorCommandService, () => {
   it("filters empty project and invalid rule entries", async () => {
     const module = await Test.createTestingModule({
       providers: [
-        ValidatorCommandService,
+        ValidatorCommand,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -205,7 +205,7 @@ describe(ValidatorCommandService, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommandService);
+    const commandService = await module.resolve(ValidatorCommand);
 
     expect(
       commandService.parseProjects(" conformance , , lexico , "),

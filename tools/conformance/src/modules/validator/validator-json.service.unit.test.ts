@@ -2,13 +2,14 @@ import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { ValidatorJsonService } from "./validator-json.service";
+import { ValidatorTemplateService } from "./validator-template.service";
 
 describe(ValidatorJsonService, () => {
   let service: ValidatorJsonService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorJsonService],
+      providers: [ValidatorJsonService, ValidatorTemplateService],
     }).compile();
 
     service = await module.resolve(ValidatorJsonService);

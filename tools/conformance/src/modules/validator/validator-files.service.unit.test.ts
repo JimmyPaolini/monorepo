@@ -7,10 +7,12 @@ import { Test } from "@nestjs/testing";
 import { workspaceRoot } from "@nx/devkit";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
+import { GeneratorService } from "../generator/generator.service";
+
 import { ValidatorFilesService } from "./validator-files.service";
 import { ValidatorJsonService } from "./validator-json.service";
 import { ValidatorMarkdownService } from "./validator-markdown.service";
-import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
+import { ValidatorPythonService } from "./validator-python.service";
 import { ValidatorTextService } from "./validator-text.service";
 import { ValidatorTypescriptService } from "./validator-typescript.service";
 
@@ -20,7 +22,7 @@ describe(ValidatorFilesService, () => {
   let service: ValidatorFilesService;
   let validatorJsonService: DeepMocked<ValidatorJsonService>;
   let validatorMarkdownService: DeepMocked<ValidatorMarkdownService>;
-  let validatorPythonBridgeService: DeepMocked<ValidatorPythonBridgeService>;
+  let validatorPythonService: DeepMocked<ValidatorPythonService>;
   let validatorTextService: DeepMocked<ValidatorTextService>;
   let validatorTypescriptService: DeepMocked<ValidatorTypescriptService>;
   const temporaryDirectories: string[] = [];
@@ -29,6 +31,7 @@ describe(ValidatorFilesService, () => {
     const module = await Test.createTestingModule({
       providers: [
         ValidatorFilesService,
+        GeneratorService,
         {
           provide: ValidatorJsonService,
           useValue: createMock<ValidatorJsonService>(),
@@ -38,8 +41,8 @@ describe(ValidatorFilesService, () => {
           useValue: createMock<ValidatorMarkdownService>(),
         },
         {
-          provide: ValidatorPythonBridgeService,
-          useValue: createMock<ValidatorPythonBridgeService>(),
+          provide: ValidatorPythonService,
+          useValue: createMock<ValidatorPythonService>(),
         },
         {
           provide: ValidatorTextService,
@@ -55,16 +58,14 @@ describe(ValidatorFilesService, () => {
     service = await module.resolve(ValidatorFilesService);
     validatorJsonService = await module.resolve(ValidatorJsonService);
     validatorMarkdownService = await module.resolve(ValidatorMarkdownService);
-    validatorPythonBridgeService = await module.resolve(
-      ValidatorPythonBridgeService,
-    );
+    validatorPythonService = await module.resolve(ValidatorPythonService);
     validatorTextService = await module.resolve(ValidatorTextService);
     validatorTypescriptService = await module.resolve(
       ValidatorTypescriptService,
     );
 
     Object.assign(service as object, {
-      validatorPythonBridgeService,
+      validatorPythonService,
       validatorTypescriptService,
     });
   });
@@ -357,7 +358,7 @@ describe(ValidatorFilesService, () => {
           break;
         }
         case "python": {
-          Object.assign(validatorPythonBridgeService as object, {
+          Object.assign(validatorPythonService as object, {
             validatePythonConformance: validatorMock,
           });
 

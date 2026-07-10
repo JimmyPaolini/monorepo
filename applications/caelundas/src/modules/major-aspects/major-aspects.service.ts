@@ -1,5 +1,5 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
-import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as majorAspectBodies,
   majorAspects,
@@ -26,7 +26,7 @@ import type { Moment } from "moment-timezone";
  * Covers conjunction (0°), sextile (60°), square (90°), trine (120°), and opposition (180°)
  * using an 8° orb tolerance. Includes progressive event pairing for duration-aware tracking.
  *
- * @see {@link AspectUtilitiesService} for orb and angle configuration
+ * @see {@link AspectsUtilitiesService} for orb and angle configuration
  */
 @Injectable()
 export class MajorAspectsService {
@@ -35,7 +35,7 @@ export class MajorAspectsService {
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectEphemerisService: AspectEphemerisService,
-    private readonly aspectsUtilitiesService: AspectUtilitiesService,
+    private readonly aspectsUtilitiesService: AspectsUtilitiesService,
     private readonly majorAspectEventService: MajorAspectEventService,
     private readonly majorAspectProgressiveService: MajorAspectProgressiveService,
   ) {
@@ -48,7 +48,7 @@ export class MajorAspectsService {
   // 🔐 Private Fields
 
   private readonly detectAspectPhase: ReturnType<
-    AspectUtilitiesService["getIsAspect"]
+    AspectsUtilitiesService["getIsAspect"]
   >;
 
   // 🔑 Public Fields
@@ -97,7 +97,7 @@ export class MajorAspectsService {
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
-    return AspectUtilitiesService.detectPhaseFromWindows({
+    return AspectsUtilitiesService.detectPhaseFromWindows({
       body1LongitudesWindow,
       body2LongitudesWindow,
       detectAspectPhase: this.detectAspectPhase,
@@ -141,7 +141,7 @@ export class MajorAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    return AspectUtilitiesService.scanUniqueBodyPairsAtMinute({
+    return AspectsUtilitiesService.scanUniqueBodyPairsAtMinute({
       bodies: majorAspectBodies,
       coordinateEphemerisByBody: args.coordinateEphemerisByBody,
       detect: (argumentsObject) =>

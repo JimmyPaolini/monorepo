@@ -4,32 +4,42 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import { workspaceRoot } from "@nx/devkit";
 
+import { GeneratorService } from "../generator/generator.service";
+import { JupyterNotebookApplicationCommand } from "../jupyter-notebook-application/jupyter-notebook-application.command";
+import { NestjsCommandApplicationCommand } from "../nestjs-command-application/nestjs-command-application.command";
+import { NestjsCommandModuleCommand } from "../nestjs-command-module/nestjs-command-module.command";
+import { NestjsDataloaderModuleCommand } from "../nestjs-dataloader-module/nestjs-dataloader-module.command";
+import { NestjsGraphqlApplicationCommand } from "../nestjs-graphql-application/nestjs-graphql-application.command";
+import { NestjsGraphqlModuleCommand } from "../nestjs-graphql-module/nestjs-graphql-module.command";
+import { NestjsServiceFileCommand } from "../nestjs-service-file/nestjs-service-file.command";
+import { NestjsServiceModuleCommand } from "../nestjs-service-module/nestjs-service-module.command";
+import { ReactComponentCommand } from "../react-component/react-component.command";
+
 import { ValidatorFilesService } from "./validator-files.service";
-import {
-  converterByStringCase,
-  getValidatorTemplateDirectoryPath,
-  JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
-  NESTJS_APPLICATION_TAG,
-  NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
-  NESTJS_COMMAND_APPLICATION_TAG,
-  NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
-  REACT_PROJECT_TAG,
-  StringCase,
-} from "./validator.constants";
 
 import type {
   InstanceDirectoryValidationResult,
   WorkspaceProject,
 } from "./validator.types";
 
-/**
- * Validation rule execution service.
- */
+/** Executes conformance validation rules against workspace projects. */
 @Injectable()
 export class ValidatorRulesService {
-  constructor(private readonly validatorFilesService: ValidatorFilesService) {}
-
-  /** Resolves module directory paths for a project. */
+  /** Creates the validator rules service with command and file dependencies. */
+  constructor(
+    private readonly generatorService: GeneratorService,
+    private readonly jupyterNotebookApplicationCommand: JupyterNotebookApplicationCommand,
+    private readonly nestjsCommandApplicationCommand: NestjsCommandApplicationCommand,
+    private readonly nestjsCommandModuleCommand: NestjsCommandModuleCommand,
+    private readonly nestjsDataloaderModuleCommand: NestjsDataloaderModuleCommand,
+    private readonly nestjsGraphqlApplicationCommand: NestjsGraphqlApplicationCommand,
+    private readonly nestjsGraphqlModuleCommand: NestjsGraphqlModuleCommand,
+    private readonly nestjsServiceFileCommand: NestjsServiceFileCommand,
+    private readonly nestjsServiceModuleCommand: NestjsServiceModuleCommand,
+    private readonly reactComponentCommand: ReactComponentCommand,
+    private readonly validatorFilesService: ValidatorFilesService,
+  ) {}
+  /** Resolves module directory paths for a project root. */
   private resolveProjectModuleDirectoryPaths(
     projectRootPath: string,
   ): string[] {
@@ -46,22 +56,24 @@ export class ValidatorRulesService {
       )
       .map((directoryEntry) => path.join(modulesRootPath, directoryEntry.name));
   }
-
-  /** Runs validation for Jupyter notebook application projects. */
+  /** Builds an absolute template directory path from workspace root. */
+  private resolveTemplateDirectoryPath(templateDirectoryPath: string): string {
+    return path.join(workspaceRoot, templateDirectoryPath);
+  }
+  /** Runs the jupyter-notebook-application rule. */
   private runJupyterNotebookApplicationRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
       !workspaceProject.tags.includes(
-        JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
+        this.jupyterNotebookApplicationCommand.generatorTag,
       )
     ) {
       return undefined;
     }
 
-    const templateDirectoryPath = getValidatorTemplateDirectoryPath(
-      "jupyter-notebook-application",
-      workspaceRoot,
+    const templateDirectoryPath = this.resolveTemplateDirectoryPath(
+      this.jupyterNotebookApplicationCommand.templateDirectoryPath,
     );
     const projectName = path.basename(workspaceProject.rootPath);
     const pyprojectPath = path.join(
@@ -88,33 +100,32 @@ export class ValidatorRulesService {
 
     return [rootResult, sourceResult];
   }
-
-  /** Runs validation for NestJS command-application projects. */
+  /** Runs the nestjs-command-application rule. */
   private runNestjsCommandApplicationRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
-      !workspaceProject.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG)
+      !workspaceProject.tags.includes(
+        this.nestjsCommandApplicationCommand.generatorTag,
+      )
     ) {
       return undefined;
     }
 
     return this.validateCommandApplicationDirectories({
       instanceDirectoryPaths: [workspaceProject.rootPath],
-      templateDirectoryPath: getValidatorTemplateDirectoryPath(
-        "nestjs-command-application",
-        workspaceRoot,
+      templateDirectoryPath: this.resolveTemplateDirectoryPath(
+        this.nestjsCommandApplicationCommand.templateDirectoryPath,
       ),
     });
   }
-
-  /** Runs validation for NestJS command-module instances. */
+  /** Runs the nestjs-command-module rule. */
   private runNestjsCommandModuleRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
-      !workspaceProject.tags.includes(NESTJS_APPLICATION_TAG) ||
-      !workspaceProject.tags.includes(NESTJS_COMMAND_APPLICATION_TAG)
+      !workspaceProject.tags.includes(this.nestjsServiceModuleCommand.tag) ||
+      !workspaceProject.tags.includes(this.nestjsCommandModuleCommand.tag)
     ) {
       return undefined;
     }
@@ -131,19 +142,19 @@ export class ValidatorRulesService {
     return moduleDirectoryPaths.map((moduleDirectoryPath) =>
       this.validatorFilesService.validateInstanceDirectory({
         instanceDirectoryPath: moduleDirectoryPath,
-        templateDirectoryPath: getValidatorTemplateDirectoryPath(
-          "nestjs-command-module",
-          workspaceRoot,
+        templateDirectoryPath: this.resolveTemplateDirectoryPath(
+          this.nestjsCommandModuleCommand.templateDirectoryPath,
         ),
       }),
     );
   }
-
-  /** Runs validation for NestJS dataloader-module instances. */
+  /** Runs the nestjs-dataloader-module rule. */
   private runNestjsDataloaderModuleRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
-    if (!workspaceProject.tags.includes(NESTJS_APPLICATION_TAG)) {
+    if (
+      !workspaceProject.tags.includes(this.nestjsDataloaderModuleCommand.tag)
+    ) {
       return undefined;
     }
 
@@ -159,20 +170,18 @@ export class ValidatorRulesService {
     return moduleDirectoryPaths.map((moduleDirectoryPath) =>
       this.validatorFilesService.validateInstanceDirectory({
         instanceDirectoryPath: moduleDirectoryPath,
-        templateDirectoryPath: getValidatorTemplateDirectoryPath(
-          "nestjs-dataloader-module",
-          workspaceRoot,
+        templateDirectoryPath: this.resolveTemplateDirectoryPath(
+          this.nestjsDataloaderModuleCommand.templateDirectoryPath,
         ),
       }),
     );
   }
-
-  /** Runs validation for NestJS GraphQL-application projects. */
+  /** Runs the nestjs-graphql-application rule. */
   private runNestjsGraphqlApplicationRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
     if (
-      !workspaceProject.tags.includes(NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG)
+      !workspaceProject.tags.includes("generator:nestjs-graphql-application")
     ) {
       return undefined;
     }
@@ -180,19 +189,17 @@ export class ValidatorRulesService {
     return [
       this.validatorFilesService.validateInstanceDirectory({
         instanceDirectoryPath: workspaceProject.rootPath,
-        templateDirectoryPath: getValidatorTemplateDirectoryPath(
-          "nestjs-graphql-application",
-          workspaceRoot,
+        templateDirectoryPath: this.resolveTemplateDirectoryPath(
+          this.nestjsGraphqlApplicationCommand.templateDirectoryPath,
         ),
       }),
     ];
   }
-
-  /** Runs validation for NestJS GraphQL-module instances. */
+  /** Runs the nestjs-graphql-module rule. */
   private runNestjsGraphqlModuleRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
-    if (!workspaceProject.tags.includes(NESTJS_APPLICATION_TAG)) {
+    if (!workspaceProject.tags.includes(this.nestjsGraphqlModuleCommand.tag)) {
       return undefined;
     }
 
@@ -208,19 +215,17 @@ export class ValidatorRulesService {
     return moduleDirectoryPaths.map((moduleDirectoryPath) =>
       this.validatorFilesService.validateInstanceDirectory({
         instanceDirectoryPath: moduleDirectoryPath,
-        templateDirectoryPath: getValidatorTemplateDirectoryPath(
-          "nestjs-graphql-module",
-          workspaceRoot,
+        templateDirectoryPath: this.resolveTemplateDirectoryPath(
+          this.nestjsGraphqlModuleCommand.templateDirectoryPath,
         ),
       }),
     );
   }
-
-  /** Runs validation for NestJS service-file instances. */
+  /** Runs the nestjs-service-file rule. */
   private runNestjsServiceFileRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
-    if (!workspaceProject.tags.includes(NESTJS_APPLICATION_TAG)) {
+    if (!workspaceProject.tags.includes(this.nestjsServiceFileCommand.tag)) {
       return undefined;
     }
 
@@ -231,9 +236,8 @@ export class ValidatorRulesService {
       return [];
     }
 
-    const templateDirectoryPath = getValidatorTemplateDirectoryPath(
-      "nestjs-service-file",
-      workspaceRoot,
+    const templateDirectoryPath = this.resolveTemplateDirectoryPath(
+      this.nestjsServiceFileCommand.templateDirectoryPath,
     );
     const templateFilenames = fs
       .readdirSync(templateDirectoryPath, { withFileTypes: true })
@@ -249,12 +253,11 @@ export class ValidatorRulesService {
       }),
     );
   }
-
-  /** Runs validation for NestJS service-module instances. */
+  /** Runs the nestjs-service-module rule. */
   private runNestjsServiceModuleRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
-    if (!workspaceProject.tags.includes(NESTJS_APPLICATION_TAG)) {
+    if (!workspaceProject.tags.includes(this.nestjsServiceModuleCommand.tag)) {
       return undefined;
     }
 
@@ -281,19 +284,17 @@ export class ValidatorRulesService {
     return moduleDirectoryPaths.map((moduleDirectoryPath) =>
       this.validatorFilesService.validateInstanceDirectory({
         instanceDirectoryPath: moduleDirectoryPath,
-        templateDirectoryPath: getValidatorTemplateDirectoryPath(
-          "nestjs-service-module",
-          workspaceRoot,
+        templateDirectoryPath: this.resolveTemplateDirectoryPath(
+          this.nestjsServiceModuleCommand.templateDirectoryPath,
         ),
       }),
     );
   }
-
-  /** Runs validation for React component instances. */
+  /** Runs the react-component rule. */
   private runReactComponentRule(
     workspaceProject: WorkspaceProject,
   ): InstanceDirectoryValidationResult[] | undefined {
-    if (!workspaceProject.tags.includes(REACT_PROJECT_TAG)) {
+    if (!workspaceProject.tags.includes(this.reactComponentCommand.tag)) {
       return undefined;
     }
 
@@ -304,9 +305,8 @@ export class ValidatorRulesService {
       return [];
     }
 
-    const templateDirectoryPath = getValidatorTemplateDirectoryPath(
-      "react-component",
-      workspaceRoot,
+    const templateDirectoryPath = this.resolveTemplateDirectoryPath(
+      this.reactComponentCommand.templateDirectoryPath,
     );
     const templateFilenames = fs
       .readdirSync(templateDirectoryPath, { withFileTypes: true })
@@ -316,6 +316,8 @@ export class ValidatorRulesService {
 
     return componentFilePaths.map((componentFilePath) => {
       const componentName = path.basename(componentFilePath, ".tsx");
+      const substitutions =
+        this.generatorService.buildNameSubstitutions(componentName);
       const results = templateFilenames.map((templateFilename) => {
         const instanceFilename = templateFilename.replaceAll(
           "__namePascalCase__",
@@ -333,13 +335,10 @@ export class ValidatorRulesService {
         return {
           ...this.validatorFilesService.validateInstanceFile({
             data: {
-              nameCamelCase:
-                converterByStringCase[StringCase.CAMEL_CASE](componentName),
-              nameKebabCase:
-                converterByStringCase[StringCase.KEBAB_CASE](componentName),
-              namePascalCase: componentName,
-              nameSnakeCase:
-                converterByStringCase[StringCase.SNAKE_CASE](componentName),
+              nameCamelCase: substitutions.nameCamelCase,
+              nameKebabCase: substitutions.nameKebabCase,
+              namePascalCase: substitutions.namePascalCase,
+              nameSnakeCase: substitutions.nameSnakeCase,
             },
             instanceFilePath,
             templateFilePath,
@@ -357,8 +356,7 @@ export class ValidatorRulesService {
       };
     });
   }
-
-  /** Validates command-application template files in instance directories. */
+  /** Validates command-application template files for instance directories. */
   private validateCommandApplicationDirectories(args: {
     instanceDirectoryPaths: string[];
     templateDirectoryPath: string;
@@ -376,25 +374,21 @@ export class ValidatorRulesService {
         workspaceRoot,
         instanceDirectoryPath,
       );
-      const destinationRoot = relativeInstanceDirectoryPath.split(path.sep)[0];
-      const nameKebabCase =
-        converterByStringCase[StringCase.KEBAB_CASE](directoryName);
+      const type = relativeInstanceDirectoryPath.split(path.sep)[0];
+      const nameSubstitutions =
+        this.generatorService.buildNameSubstitutions(directoryName);
       const substitutions = {
-        destinationRoot:
-          destinationRoot === undefined ? "applications" : destinationRoot,
-        nameCamelCase:
-          converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
-        nameKebabCase,
-        namePascalCase:
-          converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
-        nameSnakeCase:
-          converterByStringCase[StringCase.SNAKE_CASE](nameKebabCase),
+        nameCamelCase: nameSubstitutions.nameCamelCase,
+        nameKebabCase: nameSubstitutions.nameKebabCase,
+        namePascalCase: nameSubstitutions.namePascalCase,
+        nameSnakeCase: nameSubstitutions.nameSnakeCase,
+        type: type === undefined ? "applications" : type,
       };
 
       const results = templateFilenames.map((templateFilename) => {
         const instanceFilename = templateFilename.replaceAll(
           "__nameKebabCase__",
-          nameKebabCase,
+          substitutions.nameKebabCase,
         );
         const instanceFilePath = path.join(
           instanceDirectoryPath,
@@ -417,8 +411,7 @@ export class ValidatorRulesService {
       return { directoryName, results };
     });
   }
-
-  /** Validates service-file template pairs for a discovered service file. */
+  /** Validates service-file templates for a discovered service file path. */
   private validateServiceFilesForPath(args: {
     serviceFilePath: string;
     templateDirectoryPath: string;
@@ -428,14 +421,12 @@ export class ValidatorRulesService {
     const serviceName = path
       .basename(serviceFilePath)
       .replace(".service.ts", "");
-    const nameKebabCase =
-      converterByStringCase[StringCase.KEBAB_CASE](serviceName);
+    const nameSubstitutions =
+      this.generatorService.buildNameSubstitutions(serviceName);
     const substitutions = {
-      nameCamelCase:
-        converterByStringCase[StringCase.CAMEL_CASE](nameKebabCase),
-      nameKebabCase,
-      namePascalCase:
-        converterByStringCase[StringCase.PASCAL_CASE](nameKebabCase),
+      nameCamelCase: nameSubstitutions.nameCamelCase,
+      nameKebabCase: nameSubstitutions.nameKebabCase,
+      namePascalCase: nameSubstitutions.namePascalCase,
     };
 
     const results = templateFilenames.map((templateFilename) => {
@@ -445,7 +436,7 @@ export class ValidatorRulesService {
       );
       const instanceFilename = templateFilename.replaceAll(
         "__nameKebabCase__",
-        nameKebabCase,
+        substitutions.nameKebabCase,
       );
       const instanceFilePath = path.join(
         path.dirname(serviceFilePath),
@@ -469,8 +460,7 @@ export class ValidatorRulesService {
       results,
     };
   }
-
-  /** Runs a single validator rule against a workspace project. */
+  /** Runs a selected validation rule against a workspace project. */
   runRule(args: {
     ruleName: string;
     workspaceProject: WorkspaceProject;

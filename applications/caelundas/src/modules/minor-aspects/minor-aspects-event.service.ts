@@ -1,6 +1,6 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
 import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
-import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { minorAspects } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { symbolByMinorAspect } from "@caelundas/src/modules/caelundas/caelundas.symbol-constants";
 import { Injectable } from "@nestjs/common";
@@ -26,7 +26,7 @@ export class MinorAspectsEventService {
   constructor(
     private readonly aspectEphemerisService: AspectEphemerisService,
     private readonly logger: LoggerService,
-    private readonly aspectsUtilitiesService: AspectUtilitiesService,
+    private readonly aspectsUtilitiesService: AspectsUtilitiesService,
     private readonly aspectEventFormattingService: AspectEventFormattingService,
   ) {
     this.logger.setContext(MinorAspectsEventService.name);

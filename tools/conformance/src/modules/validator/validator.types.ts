@@ -104,13 +104,6 @@ export interface ResolvedErrorLocation {
   templateLine: number;
 }
 
-/** Union type of all supported casing conventions. */
-export type StringCaseValue =
-  | "CAMEL_CASE"
-  | "KEBAB_CASE"
-  | "PASCAL_CASE"
-  | "SNAKE_CASE";
-
 /** CLI option payload parsed by nest-commander. */
 export interface ValidatorCommandOptions {
   projects?: string[];

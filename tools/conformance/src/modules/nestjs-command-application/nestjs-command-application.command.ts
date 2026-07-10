@@ -34,6 +34,8 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
     this.logger.setContext(NestjsCommandApplicationCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "🖥️";
 
   private readonly nameMessage: string =
@@ -43,11 +45,16 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
   private readonly outputFilesLogLabel: string =
     "NestJS command application output files";
   private readonly projectExistsError: string = `Directory already exists. Choose a different application name.`;
-  private readonly templateDirectoryPath: string =
-    "tools/conformance/src/modules/nestjs-command-application/templates";
   private readonly tree: Tree = createWorkspaceTree();
   private readonly typeMessage: string =
     "What type of NestJS command application should be generated?";
+
+  // 🔑 Public Fields
+
+  public readonly generatorTag: string = "generator:nestjs-command-application";
+
+  public readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/nestjs-command-application/templates";
 
   /**
    * Parses the optional application name argument.
@@ -107,6 +114,7 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
 
     const substitutions: NestjsCommandApplicationSubstitutions = {
       ...this.generatorService.buildNameSubstitutions(name),
+      generatorTag: this.generatorTag,
       type,
     };
 

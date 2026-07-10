@@ -37,16 +37,19 @@ export class NestjsCommandModuleCommand extends CommandRunner {
 
   private readonly logEmoji: string = "⌨️";
 
-  private readonly nameMessage: string = `What is the name of the module? (kebab-case)`;
+  private readonly nameMessage: string =
+    "What is the name of the module? (kebab-case)";
   private readonly optionsLogLabel: string = "NestJS command module options";
   private readonly outputFilesLogLabel: string =
     "NestJS command module output files";
 
-  private readonly projectMessage: string = `Which project should the module be generated in?`;
+  private readonly projectMessage: string =
+    "Which project should the module be generated in?";
 
-  private readonly tag: string = `framework:nest-commander`;
-  private readonly templateDirectoryPath = `tools/conformance/src/modules/nestjs-command-module/templates`;
   private readonly tree: Tree = createWorkspaceTree();
+  public readonly tag: string = "framework:nest-commander";
+  public readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/nestjs-command-module/templates";
 
   /**
    * Parses the optional module name argument.

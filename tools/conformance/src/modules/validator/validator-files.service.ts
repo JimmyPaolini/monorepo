@@ -4,12 +4,13 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import { workspaceRoot } from "@nx/devkit";
 
+import { GeneratorService } from "../generator/generator.service";
+
 import { ValidatorJsonService } from "./validator-json.service";
 import { ValidatorMarkdownService } from "./validator-markdown.service";
-import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
+import { ValidatorPythonService } from "./validator-python.service";
 import { ValidatorTextService } from "./validator-text.service";
 import { ValidatorTypescriptService } from "./validator-typescript.service";
-import { converterByStringCase, StringCase } from "./validator.constants";
 
 import type {
   ConformanceError,
@@ -22,6 +23,7 @@ import type {
 @Injectable()
 export class ValidatorFilesService {
   constructor(
+    private readonly generatorService: GeneratorService,
     private readonly validatorJsonService: ValidatorJsonService,
     private readonly validatorMarkdownService: ValidatorMarkdownService,
     private readonly validatorTextService: ValidatorTextService,
@@ -38,8 +40,7 @@ export class ValidatorFilesService {
     ".tsx",
   ]);
 
-  private readonly validatorPythonBridgeService =
-    new ValidatorPythonBridgeService();
+  private readonly validatorPythonService = new ValidatorPythonService();
   private readonly validatorTypescriptService =
     new ValidatorTypescriptService();
 
@@ -71,12 +72,14 @@ export class ValidatorFilesService {
    * Builds substitution data from the instance directory name.
    */
   private buildNameData(name: string): Record<string, string> {
+    const substitutions = this.generatorService.buildNameSubstitutions(name);
+
     return {
       name,
-      nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
-      nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
-      namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
-      nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
+      nameCamelCase: substitutions.nameCamelCase,
+      nameKebabCase: substitutions.nameKebabCase,
+      namePascalCase: substitutions.namePascalCase,
+      nameSnakeCase: substitutions.nameSnakeCase,
     };
   }
 
@@ -279,7 +282,7 @@ export class ValidatorFilesService {
       });
     }
     if (ValidatorFilesService.PYTHON_EXTENSIONS.has(extension)) {
-      return this.validatorPythonBridgeService.validatePythonConformance({
+      return this.validatorPythonService.validatePythonConformance({
         data,
         extension,
         filename,

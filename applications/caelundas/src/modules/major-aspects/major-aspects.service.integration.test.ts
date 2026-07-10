@@ -1,5 +1,5 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
-import { AspectUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
@@ -102,7 +102,7 @@ describe("major-aspects.events integration", () => {
         MajorAspectEventService,
         MajorAspectProgressiveService,
         AspectEphemerisService,
-        AspectUtilitiesService,
+        AspectsUtilitiesService,
         EphemerisService,
         MathService,
         ProgressiveAspectService,

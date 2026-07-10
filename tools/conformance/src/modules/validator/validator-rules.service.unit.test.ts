@@ -5,6 +5,17 @@ import path from "node:path";
 import { Test } from "@nestjs/testing";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
+import { GeneratorService } from "../generator/generator.service";
+import { JupyterNotebookApplicationCommand } from "../jupyter-notebook-application/jupyter-notebook-application.command";
+import { NestjsCommandApplicationCommand } from "../nestjs-command-application/nestjs-command-application.command";
+import { NestjsCommandModuleCommand } from "../nestjs-command-module/nestjs-command-module.command";
+import { NestjsDataloaderModuleCommand } from "../nestjs-dataloader-module/nestjs-dataloader-module.command";
+import { NestjsGraphqlApplicationCommand } from "../nestjs-graphql-application/nestjs-graphql-application.command";
+import { NestjsGraphqlModuleCommand } from "../nestjs-graphql-module/nestjs-graphql-module.command";
+import { NestjsServiceFileCommand } from "../nestjs-service-file/nestjs-service-file.command";
+import { NestjsServiceModuleCommand } from "../nestjs-service-module/nestjs-service-module.command";
+import { ReactComponentCommand } from "../react-component/react-component.command";
+
 const { mockValidateInstanceDirectory, mockValidateInstanceFile } = vi.hoisted(
   () => ({
     mockValidateInstanceDirectory: vi.fn<(input: unknown) => unknown>(),
@@ -21,18 +32,20 @@ vi.mock("./validator-files.service", () => ({
 
 import { ValidatorFilesService } from "./validator-files.service";
 import { ValidatorRulesService } from "./validator-rules.service";
-import {
-  JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
-  NESTJS_APPLICATION_TAG,
-  NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
-  NESTJS_COMMAND_APPLICATION_TAG,
-  NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
-  REACT_PROJECT_TAG,
-} from "./validator.constants";
+
+const JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG =
+  "generator:jupyter-notebook-application";
+const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
+  "generator:nestjs-command-application";
+const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
+  "generator:nestjs-graphql-application";
+const NESTJS_PROJECT_TAG = "framework:nestjs";
+const NESTJS_COMMAND_PROJECT_TAG = "framework:nest-commander";
+const REACT_PROJECT_TAG = "framework:react";
 
 describe(ValidatorRulesService, () => {
   interface ValidateInstanceFileArgument {
-    data: { destinationRoot?: string };
+    data: { type?: string };
     instanceFilePath: string;
     templateFilePath: string;
   }
@@ -64,9 +77,9 @@ describe(ValidatorRulesService, () => {
     }
 
     return (
-      !("destinationRoot" in value.data) ||
-      typeof value.data.destinationRoot === "string" ||
-      value.data.destinationRoot === undefined
+      !("type" in value.data) ||
+      typeof value.data.type === "string" ||
+      value.data.type === undefined
     );
   };
 
@@ -91,7 +104,83 @@ describe(ValidatorRulesService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorRulesService, ValidatorFilesService],
+      providers: [
+        GeneratorService,
+        {
+          provide: JupyterNotebookApplicationCommand,
+          useValue: {
+            generatorTag: JUPYTER_NOTEBOOK_APPLICATION_GENERATOR_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/jupyter-notebook-application/templates",
+          },
+        },
+        {
+          provide: NestjsCommandApplicationCommand,
+          useValue: {
+            generatorTag: NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-command-application/templates",
+          },
+        },
+        {
+          provide: NestjsCommandModuleCommand,
+          useValue: {
+            tag: NESTJS_COMMAND_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-command-module/templates",
+          },
+        },
+        {
+          provide: NestjsDataloaderModuleCommand,
+          useValue: {
+            tag: NESTJS_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-dataloader-module/templates",
+          },
+        },
+        {
+          provide: NestjsGraphqlApplicationCommand,
+          useValue: {
+            generatorTag: NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-graphql-application/templates",
+          },
+        },
+        {
+          provide: NestjsGraphqlModuleCommand,
+          useValue: {
+            tag: NESTJS_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-graphql-module/templates",
+          },
+        },
+        {
+          provide: NestjsServiceFileCommand,
+          useValue: {
+            tag: NESTJS_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-service-file/templates",
+          },
+        },
+        {
+          provide: NestjsServiceModuleCommand,
+          useValue: {
+            tag: NESTJS_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/nestjs-service-module/templates",
+          },
+        },
+        {
+          provide: ReactComponentCommand,
+          useValue: {
+            tag: REACT_PROJECT_TAG,
+            templateDirectoryPath:
+              "tools/conformance/src/modules/react-component/templates",
+          },
+        },
+        ValidatorFilesService,
+        ValidatorRulesService,
+      ],
     }).compile();
 
     service = await module.resolve(ValidatorRulesService);
@@ -142,7 +231,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-command-module",
       workspaceProject: {
         rootPath: "/workspace/project",
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -154,7 +243,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-service-module",
       workspaceProject: {
         rootPath: "/workspace/project",
-        tags: [NESTJS_COMMAND_APPLICATION_TAG],
+        tags: [NESTJS_COMMAND_PROJECT_TAG],
       },
     });
 
@@ -162,7 +251,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-graphql-module",
       workspaceProject: {
         rootPath: "/workspace/project",
-        tags: [NESTJS_COMMAND_APPLICATION_TAG],
+        tags: [NESTJS_COMMAND_PROJECT_TAG],
       },
     });
 
@@ -345,19 +434,7 @@ describe(ValidatorRulesService, () => {
     expect(firstCallArgument?.templateFilePath).toBeTypeOf("string");
   });
 
-  it("falls back destinationRoot to applications when relative path has no segment", async () => {
-    const temporaryTemplateDirectory = fs.mkdtempSync(
-      path.join(
-        os.tmpdir(),
-        "conformance-validator-rules-destination-root-fallback-",
-      ),
-    );
-    temporaryDirectories.push(temporaryTemplateDirectory);
-    fs.writeFileSync(
-      path.join(temporaryTemplateDirectory, "__nameKebabCase__.module.ts"),
-      "export class Placeholder {}\n",
-    );
-
+  it("falls back type to applications when relative path has no segment", () => {
     const relativeSpy = vi.spyOn(path, "relative").mockReturnValue("");
     const splitSpy = vi
       .spyOn(String.prototype, "split")
@@ -368,11 +445,6 @@ describe(ValidatorRulesService, () => {
       instanceFilePath: "instance-file",
       templateFilePath: "template-file",
     });
-
-    const validatorConstantsModule = await import("./validator.constants");
-    const getValidatorTemplateDirectoryPathSpy = vi
-      .spyOn(validatorConstantsModule, "getValidatorTemplateDirectoryPath")
-      .mockReturnValue(temporaryTemplateDirectory);
 
     const projectRootPath = fs.mkdtempSync(
       path.join(
@@ -390,13 +462,11 @@ describe(ValidatorRulesService, () => {
       },
     });
 
-    getValidatorTemplateDirectoryPathSpy.mockRestore();
-
     expect(mockValidateInstanceFile).toHaveBeenCalledWith(expect.any(Object));
 
     const firstCallArgument = getFirstValidateInstanceFileCallArgument();
 
-    expect(firstCallArgument?.data.destinationRoot).toBe("applications");
+    expect(firstCallArgument?.data.type).toBe("applications");
 
     relativeSpy.mockRestore();
     splitSpy.mockRestore();
@@ -464,7 +534,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-command-module",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG, NESTJS_COMMAND_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG, NESTJS_COMMAND_PROJECT_TAG],
       },
     });
 
@@ -505,7 +575,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-dataloader-module",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -553,7 +623,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-graphql-module",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -569,7 +639,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-service-module",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -590,7 +660,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-graphql-module",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -608,7 +678,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-service-file",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -664,7 +734,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "nestjs-service-file",
       workspaceProject: {
         rootPath: projectRootPath,
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 
@@ -724,7 +794,7 @@ describe(ValidatorRulesService, () => {
       ruleName: "unknown-rule",
       workspaceProject: {
         rootPath: "/workspace/project",
-        tags: [NESTJS_APPLICATION_TAG],
+        tags: [NESTJS_PROJECT_TAG],
       },
     });
 

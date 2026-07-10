@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { MdastNode } from "./validators/markdown/nodes";
+import { ValidatorTemplateService } from "./validator-template.service";
+
+import type { MdastNode } from "./validator-markdown.types";
 
 interface RemarkRoot {
   children: MdastNode[];
@@ -90,7 +92,9 @@ describe("validatorMarkdownService synthetic branches", () => {
     }));
 
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const syntheticService = new importedModule.ValidatorMarkdownService(
+      new ValidatorTemplateService(),
+    );
 
     const result = syntheticService.validateMarkdownConformance({
       data: {},
@@ -136,7 +140,9 @@ describe("validatorMarkdownService synthetic branches", () => {
     }));
 
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const syntheticService = new importedModule.ValidatorMarkdownService(
+      new ValidatorTemplateService(),
+    );
 
     const result = syntheticService.validateMarkdownConformance({
       data: {},
@@ -273,7 +279,9 @@ describe("validatorMarkdownService synthetic branches", () => {
     }));
 
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const syntheticService = new importedModule.ValidatorMarkdownService(
+      new ValidatorTemplateService(),
+    );
 
     const result = syntheticService.validateMarkdownConformance({
       data: {},
@@ -353,7 +361,9 @@ describe("validatorMarkdownService synthetic branches", () => {
     }));
 
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const syntheticService = new importedModule.ValidatorMarkdownService(
+      new ValidatorTemplateService(),
+    );
 
     const result = syntheticService.validateMarkdownConformance({
       data: {},
@@ -380,7 +390,9 @@ describe("validatorMarkdownService synthetic branches", () => {
 
   it("covers pickBestCandidate empty-candidates throw branch", async () => {
     const importedModule = await import("./validator-markdown.service");
-    const syntheticService = new importedModule.ValidatorMarkdownService();
+    const syntheticService = new importedModule.ValidatorMarkdownService(
+      new ValidatorTemplateService(),
+    );
     const pickBestCandidate: unknown = Reflect.get(
       syntheticService,
       "pickBestCandidate",

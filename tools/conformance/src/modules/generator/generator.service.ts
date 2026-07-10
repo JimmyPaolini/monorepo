@@ -24,6 +24,25 @@ export class GeneratorService {
 
   // 🔑 Public Fields
 
+  /** String-case enum values used by generator substitutions. */
+  public readonly stringCase = {
+    CAMEL_CASE: "CAMEL_CASE",
+    KEBAB_CASE: "KEBAB_CASE",
+    PASCAL_CASE: "PASCAL_CASE",
+    SNAKE_CASE: "SNAKE_CASE",
+  } as const;
+
+  /** Maps string-case enum values to conversion functions. */
+  public readonly converterByStringCase: Record<
+    "CAMEL_CASE" | "KEBAB_CASE" | "PASCAL_CASE" | "SNAKE_CASE",
+    (value: string) => string
+  > = {
+    [this.stringCase.CAMEL_CASE]: (value) => _.camelCase(value),
+    [this.stringCase.KEBAB_CASE]: (value) => _.kebabCase(value),
+    [this.stringCase.PASCAL_CASE]: (value) => _.upperFirst(_.camelCase(value)),
+    [this.stringCase.SNAKE_CASE]: (value) => _.snakeCase(value),
+  };
+
   // 🔏 Private Methods
 
   /**
@@ -108,10 +127,14 @@ export class GeneratorService {
    */
   buildNameSubstitutions(name: string): NameSubstitutions {
     const substitutions: NameSubstitutions = {
-      nameCamelCase: _.camelCase(name),
-      nameKebabCase: _.kebabCase(name),
-      namePascalCase: _.upperFirst(_.camelCase(name)),
-      nameSnakeCase: _.snakeCase(name),
+      nameCamelCase:
+        this.converterByStringCase[this.stringCase.CAMEL_CASE](name),
+      nameKebabCase:
+        this.converterByStringCase[this.stringCase.KEBAB_CASE](name),
+      namePascalCase:
+        this.converterByStringCase[this.stringCase.PASCAL_CASE](name),
+      nameSnakeCase:
+        this.converterByStringCase[this.stringCase.SNAKE_CASE](name),
     };
     return substitutions;
   }

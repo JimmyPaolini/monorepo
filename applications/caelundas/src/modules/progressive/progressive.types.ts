@@ -1,3 +1,5 @@
+// 🏷️ Types
+
 /**
  * Typed aspect and body labels extracted from an event.
  */

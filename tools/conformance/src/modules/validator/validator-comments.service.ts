@@ -7,7 +7,7 @@ import {
   type SourceFile,
 } from "typescript";
 
-import { TODO_LINE_REGEX } from "./validator-constants";
+import { TODO_LINE_REGEX } from "./validator.constants";
 
 import type {
   CommentInfo,

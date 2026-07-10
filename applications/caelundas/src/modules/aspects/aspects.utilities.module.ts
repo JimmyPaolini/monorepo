@@ -7,13 +7,13 @@ import { AspectEphemerisService } from "./aspect-ephemeris.service";
 import { AspectEventFormattingService } from "./aspect-event-formatting.service";
 import { AspectGraphService } from "./aspect-graph.service";
 import { AspectPhaseEmojiService } from "./aspect-phase-emoji.service";
-import { AspectUtilitiesService } from "./aspects-utilities.service";
+import { AspectsUtilitiesService } from "./aspects-utilities.service";
 import { CompoundPhaseService } from "./compound-phase.service";
 import { ProgressiveCompoundEventService } from "./progressive-compound-event.service";
 
 /**
  * NestJS module providing core aspect detection utilities.
- * Exports {@link AspectUtilitiesService} for orb checking and aspect-phase classification.
+ * Exports {@link AspectsUtilitiesService} for orb checking and aspect-phase classification.
  */
 @Module({
   controllers: [],
@@ -23,7 +23,7 @@ import { ProgressiveCompoundEventService } from "./progressive-compound-event.se
     AspectEventFormattingService,
     AspectPhaseEmojiService,
     AspectGraphService,
-    AspectUtilitiesService,
+    AspectsUtilitiesService,
     CompoundPhaseService,
     ProgressiveCompoundEventService,
   ],
@@ -34,7 +34,7 @@ import { ProgressiveCompoundEventService } from "./progressive-compound-event.se
     AspectEventFormattingService,
     AspectPhaseEmojiService,
     AspectGraphService,
-    AspectUtilitiesService,
+    AspectsUtilitiesService,
     CompoundPhaseService,
     ProgressiveCompoundEventService,
   ],

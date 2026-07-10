@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 
 import { createWorkspaceTree } from "../../utilities";
+import { COMPONENTS_DIRECTORY_PATH } from "../generator/generator.constants";
 import { GeneratorService } from "../generator/generator.service";
 import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
@@ -32,7 +33,7 @@ export class ReactComponentCommand extends CommandRunner {
     this.logger.setContext(ReactComponentCommand.name);
   }
 
-  private readonly componentsDirectoryPath: string = "src/components";
+  private readonly componentsDirectoryPath: string = COMPONENTS_DIRECTORY_PATH;
 
   private readonly logEmoji: string = "⚛️";
   private readonly nameMessage: string =
@@ -41,10 +42,10 @@ export class ReactComponentCommand extends CommandRunner {
   private readonly outputFilesLogLabel: string = "React component output files";
   private readonly projectMessage: string =
     "Which project should the component be generated in?";
-  private readonly tag: string = "framework:react";
-  private readonly templateDirectoryPath: string =
-    "tools/conformance/src/modules/react-component/templates";
   private readonly tree: Tree = createWorkspaceTree();
+  public readonly tag: string = "framework:react";
+  public readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/react-component/templates";
 
   /**
    * Parses the optional component name argument.

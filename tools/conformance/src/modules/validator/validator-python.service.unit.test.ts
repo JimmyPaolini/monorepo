@@ -24,17 +24,17 @@ vi.mock("node:child_process", () => ({
   spawnSync: mockSpawnSync,
 }));
 
-import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
+import { ValidatorPythonService } from "./validator-python.service";
 
-describe(ValidatorPythonBridgeService, () => {
-  let service: ValidatorPythonBridgeService;
+describe(ValidatorPythonService, () => {
+  let service: ValidatorPythonService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [ValidatorPythonBridgeService],
+      providers: [ValidatorPythonService],
     }).compile();
 
-    service = await module.resolve(ValidatorPythonBridgeService);
+    service = await module.resolve(ValidatorPythonService);
   });
 
   it("is defined", () => {

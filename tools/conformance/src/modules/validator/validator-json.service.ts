@@ -1,11 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { parse } from "jsonc-parser";
 
-import {
-  prepareConformanceTexts,
-  type TemplateConformanceArguments,
-} from "./validators/common";
+import { ValidatorTemplateService } from "./validator-template.service";
 
+import type { TemplateConformanceArguments } from "./validator-template.types";
 import type { ConformanceError, JsonValue } from "./validator.types";
 
 /**
@@ -13,6 +11,10 @@ import type { ConformanceError, JsonValue } from "./validator.types";
  */
 @Injectable()
 export class ValidatorJsonService {
+  constructor(
+    private readonly validatorTemplateService: ValidatorTemplateService,
+  ) {}
+
   /**
    * Build mismatch error.
    */
@@ -176,7 +178,8 @@ export class ValidatorJsonService {
     instance: TemplateConformanceArguments["instance"];
     template: TemplateConformanceArguments["template"];
   }): { errors: ConformanceError[] } {
-    const { instance, renderedTemplate } = prepareConformanceTexts(args);
+    const { instance, renderedTemplate } =
+      this.validatorTemplateService.prepareConformanceTexts(args);
 
     const templateObject = parse(renderedTemplate) as JsonValue;
     const instanceObject = parse(instance) as JsonValue;

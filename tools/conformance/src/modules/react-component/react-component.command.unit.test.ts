@@ -61,7 +61,7 @@ describe(ReactComponentCommand, () => {
     generatorService.buildLogMessage.mockImplementation((arguments_) => {
       return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
     });
-    generatorService.getGeneratedFilePaths.mockReturnValue([
+    generatorService.generateFiles.mockResolvedValue([
       "packages/lexico-components/src/components/AlertBanner.tsx",
       "packages/lexico-components/src/components/AlertBanner.test.tsx",
     ]);
@@ -194,11 +194,6 @@ describe(ReactComponentCommand, () => {
         instanceDirectoryPath: "packages/lexico-components/src/components",
         templateDirectoryPath:
           "tools/conformance/src/modules/react-component/templates",
-      }),
-    );
-    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
-      expect.objectContaining({
-        instanceDirectoryPath: "packages/lexico-components/src/components",
       }),
     );
     expect(generatorService.buildLogMessage).toHaveBeenNthCalledWith(1, {
