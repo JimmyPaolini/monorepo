@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/schema",
   "properties": {
-    "destinationRoot": {
-      "description": "Destination root (for example applications or tools)",
+    "name": {
+      "description": "Project name (kebab-case)",
       "type": "string"
     },
-    "name": {
-      "description": "Application name in kebab-case",
+    "type": {
+      "description": "Project type (application, package, or tools)",
       "type": "string"
     }
   },

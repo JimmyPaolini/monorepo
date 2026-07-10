@@ -1,14 +1,6 @@
 // 🏷️ Types
 
-import type { Tree } from "@nx/devkit";
-
-/**
- * Auto-generated documentation placeholder.
- */
-export interface NestjsCommandModuleArguments {
-  options: NestjsCommandModuleOptions;
-  tree: Tree;
-}
+import type { NameSubstitutions } from "@conformance/src/modules/generator/generator.types";
 
 /**
  * Auto-generated documentation placeholder.
@@ -17,3 +9,11 @@ export interface NestjsCommandModuleOptions {
   name?: string;
   project?: string;
 }
+
+/**
+ * Template substitutions used by this module's templates.
+ */
+export type NestjsCommandModuleSubstitutions = Exclude<
+  NameSubstitutions,
+  "nameSnakeCase"
+>;

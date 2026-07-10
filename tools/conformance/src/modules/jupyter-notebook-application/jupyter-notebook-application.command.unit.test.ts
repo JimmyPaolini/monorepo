@@ -1,200 +1,158 @@
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
-import { APPLICATIONS_DIRECTORY } from "../../constants";
-import * as utilities from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
 
-import type { Tree } from "@nx/devkit";
-
 describe(JupyterNotebookApplicationCommand, () => {
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-
   let command: JupyterNotebookApplicationCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  beforeAll(async () => {
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
+    });
+
+    generatorService.buildNameSubstitutions.mockImplementation((name) => {
+      return {
+        nameCamelCase: "unitTestJupyterNotebook",
+        nameKebabCase: name,
+        namePascalCase: "UnitTestJupyterNotebook",
+        nameSnakeCase: "unit_test_jupyter_notebook",
+      };
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-notebook");
+    });
+    generatorService.generateFiles.mockImplementation(async (arguments_) => {
+      const { instanceDirectoryPath, tree } = arguments_;
+      tree.write(
+        `${instanceDirectoryPath}/pyproject.toml`,
+        'name = "todo-replace-package-name"',
+      );
+      return await Promise.resolve([
+        `${instanceDirectoryPath}/pyproject.toml`,
+        `${instanceDirectoryPath}/README.md`,
+      ]);
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         JupyterNotebookApplicationCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(JupyterNotebookApplicationCommand);
-  });
-
-  beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    command = module.get(JupyterNotebookApplicationCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        JupyterNotebookApplicationCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith(
-      "JupyterNotebookApplicationCommand",
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      JupyterNotebookApplicationCommand.name,
     );
   });
 
-  it("returns parsed option values", () => {
-    expect(command.parseDescriptionOption("Custom description")).toBe(
-      "Custom description",
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("alpha-notebook");
+
+    await expect(command.resolveName("alpha-notebook")).resolves.toBe(
+      "alpha-notebook",
     );
-    expect(command.parseNameOption("alpha-notebook")).toBe("alpha-notebook");
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message:
+        "What is the name of the Jupyter notebook application? (kebab-case)",
+      value: "alpha-notebook",
+    });
   });
 
-  it("generates notebook scaffold with explicit description", async () => {
-    await runWithRepositoryRoot(async () => {
-      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
-        {
-          options: {
-            description: "Custom description",
-            name: "alpha-notebook",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/alpha-notebook`;
-
-    expect(tree.exists(`${projectRoot}/.gitignore`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/README.md`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/pyproject.toml`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/__init__.py`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/alpha-notebook.ipynb`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/models.py`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/testing/__init__.py`)).toBe(true);
-
-    const pyproject = tree.read(`${projectRoot}/pyproject.toml`, "utf8");
-
-    expect(pyproject).toContain('name = "alpha-notebook"');
-    expect(pyproject).toContain('description = "Custom description"');
-  });
-
-  it("supports tree-first overload with fallback description", async () => {
-    await runWithRepositoryRoot(async () => {
-      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
-        {
-          options: {
-            name: "beta-notebook",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/beta-notebook`;
-    const pyproject = tree.read(`${projectRoot}/pyproject.toml`, "utf8");
-
-    expect(pyproject).toContain(
-      'description = "A Python + Jupyter notebook application scaffold for beta-notebook"',
+  it("propagates name resolution errors", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name is required"),
     );
-    expect(tree.exists(`${projectRoot}/src/beta-notebook.ipynb`)).toBe(true);
+
+    await expect(command.resolveName(undefined)).rejects.toThrow(
+      "Name is required",
+    );
   });
 
-  it("supports tree-first overload signature", async () => {
-    await runWithRepositoryRoot(async () => {
-      await JupyterNotebookApplicationCommand.generateJupyterNotebookApplication(
-        tree,
-        {
-          name: "gamma-notebook",
-        },
-      );
+  it("runs generator orchestration", async () => {
+    const notebookName = `unit-test-jupyter-notebook-${Date.now().toString()}`;
+
+    await command.run([], {
+      name: notebookName,
     });
 
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/gamma-notebook`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/gamma-notebook.ipynb`)).toBe(true);
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: `applications/${notebookName}`,
+        templateDirectoryPath:
+          "tools/conformance/src/modules/jupyter-notebook-application/templates",
+      }),
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      `📓 Jupyter notebook application options: {"input":{"name":"${notebookName}"},"resolved":{"name":"${notebookName}"}}`,
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      `📓 Jupyter notebook application output files: ["applications/${notebookName}/pyproject.toml","applications/${notebookName}/README.md"]`,
+    );
   });
 
   it("throws when target directory already exists", async () => {
-    tree.write(`${APPLICATIONS_DIRECTORY}/existing-notebook/.gitkeep`, "");
-
     await expect(
-      JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
-        {
-          options: { name: "existing-notebook" },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      `Directory "${APPLICATIONS_DIRECTORY}/existing-notebook" already exists. Choose a different application name.`,
-    );
-  });
-
-  it("rejects non-kebab-case names", async () => {
-    await expect(
-      JupyterNotebookApplicationCommand.generateJupyterNotebookApplicationFromArguments(
-        {
-          options: { name: "ExistingNotebook" },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Application name "ExistingNotebook" must be in kebab-case. Did you mean "existing-notebook"?',
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
-        description: "Delta",
-        name: "delta-notebook",
-      });
-    });
-
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
-      expect.objectContaining({
-        options: {
-          description: "Delta",
-          name: "delta-notebook",
-        },
+      command.run([], {
+        name: "affirmations",
       }),
+    ).rejects.toThrow(
+      'Directory "applications/affirmations" already exists. Directory already exists. Choose a different application name.',
+    );
+  });
+
+  it("propagates generation errors", async () => {
+    generatorService.generateFiles.mockRejectedValueOnce(
+      new Error("generation failed"),
     );
 
-    runGeneratorCommandSpy.mockRestore();
+    await expect(
+      command.run([], {
+        name: "failing-notebook",
+      }),
+    ).rejects.toThrow("generation failed");
   });
 });

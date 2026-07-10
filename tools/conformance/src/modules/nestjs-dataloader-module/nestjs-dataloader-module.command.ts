@@ -3,30 +3,17 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 
-import {
-  buildKebabCaseNameSubstitutions,
-  createFormatFilesCallback,
-  generateFiles,
-  type GeneratorInvocationArguments,
-  normalizeGeneratorInvocationFromTree,
-  resolveProjectAndKebabCaseName,
-  resolveProjectModulesDirectoryPath,
-  runGeneratorCommandWithCallback,
-} from "../../utilities";
+import { MODULES_DIRECTORY } from "../../constants";
+import { createWorkspaceTree } from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
-import {
-  NESTJS_DATALOADER_MODULE_NAME_PROMPT,
-  NESTJS_DATALOADER_MODULE_PROJECT_PROMPT,
-  NESTJS_DATALOADER_MODULE_PROJECT_TAG,
-  NESTJS_DATALOADER_MODULE_TEMPLATE_DIRECTORY_PATH,
-} from "./nestjs-dataloader-module.constants";
-
 import type {
-  NestjsDataloaderModuleArguments,
   NestjsDataloaderModuleOptions,
+  NestjsDataloaderModuleSubstitutions,
 } from "./nestjs-dataloader-module.types";
-import type { GeneratorCallback, Tree } from "@nx/devkit";
+import type { Tree } from "@nx/devkit";
 
 /**
  * Generates NestJS DataLoader modules from the existing conformance templates.
@@ -39,137 +26,57 @@ import type { GeneratorCallback, Tree } from "@nx/devkit";
 export class NestjsDataloaderModuleCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly logger: LoggerService) {
+  constructor(
+    private readonly generatorService: GeneratorService,
+    private readonly resolverService: ResolverService,
+    private readonly logger: LoggerService,
+  ) {
     super();
     this.logger.setContext(NestjsDataloaderModuleCommand.name);
   }
 
-  // 🔐 Private Fields
+  private readonly logEmoji: string = "📥";
 
-  // 🔑 Public Fields
-
-  protected readonly successMessage =
-    "Generated NestJS DataLoader module scaffold.";
-
-  /**
-   * Generates a NestJS DataLoader module scaffold from validated command options.
-   */
-  static async generateNestjsDataloaderModule(
-    workspaceTree: Tree,
-    generatorOptions: Partial<NestjsDataloaderModuleOptions> = {},
-  ): Promise<GeneratorCallback> {
-    const { options: resolvedOptions, tree } =
-      normalizeGeneratorInvocationFromTree<NestjsDataloaderModuleOptions>({
-        options: generatorOptions,
-        tree: workspaceTree,
-      });
-    const { nameKebabCase, projectName } = await resolveProjectAndKebabCaseName(
-      {
-        nameMessage: NESTJS_DATALOADER_MODULE_NAME_PROMPT,
-        nameSubject: "Module name",
-        projectMessage: NESTJS_DATALOADER_MODULE_PROJECT_PROMPT,
-        projectTag: NESTJS_DATALOADER_MODULE_PROJECT_TAG,
-        tree,
-        ...(resolvedOptions.name !== undefined && {
-          name: resolvedOptions.name,
-        }),
-        ...(resolvedOptions.project !== undefined && {
-          optionsProject: resolvedOptions.project,
-        }),
-      },
-    );
-    const modulesDirectory = resolveProjectModulesDirectoryPath({
-      projectName,
-      tree,
-    });
-    const targetPath = path.join(modulesDirectory, nameKebabCase);
-
-    generateFiles({
-      instanceDirectoryPath: targetPath,
-      substitutions: buildKebabCaseNameSubstitutions(nameKebabCase),
-      templateDirectoryPath: path.join(
-        process.cwd(),
-        NESTJS_DATALOADER_MODULE_TEMPLATE_DIRECTORY_PATH,
-      ),
-      tree,
-    });
-
-    return createFormatFilesCallback({
-      targetPath,
-      tree,
-    });
-  }
-
-  // 🔏 Private Methods
-
-  /**
-   * Migrated core generator logic for creating a NestJS DataLoader module.
-   */
-  // 🌎 Public Methods
-
-  /**
-   * Converts command-runner arguments to tree-first invocation.
-   */
-  static async generateNestjsDataloaderModuleFromArguments(
-    argumentsOrTree: NestjsDataloaderModuleArguments,
-  ): Promise<GeneratorCallback> {
-    const workspaceTree = argumentsOrTree.tree;
-    return NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(
-      workspaceTree,
-      argumentsOrTree.options,
-    );
-  }
-
-  /**
-   * Normalizes raw command options into the typed command option shape.
-   */
-  private static normalizeCommandOptions(
-    options: Record<string, unknown> | undefined,
-  ): NestjsDataloaderModuleOptions {
-    const normalizedOptions: NestjsDataloaderModuleOptions = {};
-
-    if (typeof options?.["name"] === "string") {
-      normalizedOptions.name = options["name"];
-    }
-
-    if (typeof options?.["project"] === "string") {
-      normalizedOptions.project = options["project"];
-    }
-
-    return normalizedOptions;
-  }
-  /**
-   * Delegates generation to the dataloader-module scaffold factory.
-   */
-  protected async generate(
-    argumentsOrTree: GeneratorInvocationArguments<NestjsDataloaderModuleOptions>,
-  ): Promise<GeneratorCallback> {
-    return NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(
-      argumentsOrTree.tree,
-      argumentsOrTree.options,
-    );
-  }
+  private readonly nameMessage: string =
+    "What is the name of the module? (kebab-case)";
+  private readonly optionsLogLabel: string = "NestJS DataLoader module options";
+  private readonly outputFilesLogLabel: string =
+    "NestJS DataLoader module output files";
+  private readonly projectMessage: string =
+    "Which project should the module be generated in?";
+  private readonly tag: string = "framework:nestjs";
+  private readonly templateDirectoryPath: string =
+    "tools/conformance/src/modules/nestjs-dataloader-module/templates";
+  private readonly tree: Tree = createWorkspaceTree();
 
   /**
    * Parses the optional module name argument.
    */
   @Option({
-    description: "Module name in kebab-case",
+    description: "Module name (kebab-case)",
     flags: "-n, --name [name]",
   })
-  parseNameOption(value: string): string {
-    return value;
+  async resolveName(value: string | undefined): Promise<string> {
+    return this.resolverService.resolveName({
+      message: this.nameMessage,
+      value,
+    });
   }
 
   /**
    * Parses the optional parent project argument.
    */
   @Option({
-    description: "Parent project name in kebab-case",
+    description: "Parent project name (kebab-case)",
     flags: "-p, --project [project]",
   })
-  parseProjectOption(value: string): string {
-    return value;
+  async resolveProject(value: string | undefined): Promise<string> {
+    return this.resolverService.resolveProject({
+      message: this.projectMessage,
+      tag: this.tag,
+      tree: this.tree,
+      value,
+    });
   }
 
   /**
@@ -177,16 +84,51 @@ export class NestjsDataloaderModuleCommand extends CommandRunner {
    */
   async run(
     _passedParameters: string[],
-    options?: Record<string, unknown>,
+    options: NestjsDataloaderModuleOptions,
   ): Promise<void> {
-    const parsedOptions =
-      NestjsDataloaderModuleCommand.normalizeCommandOptions(options);
+    const name: string = await this.resolveName(options.name);
+    const project: string = await this.resolveProject(options.project);
 
-    await runGeneratorCommandWithCallback({
-      generate: async (argumentsOrTree) => this.generate(argumentsOrTree),
-      logger: this.logger,
-      options: parsedOptions,
-      successMessage: this.successMessage,
-    });
+    this.logger.log(
+      this.generatorService.buildLogMessage({
+        data: {
+          input: options,
+          resolved: { name, project },
+        },
+        emoji: this.logEmoji,
+        label: this.optionsLogLabel,
+      }),
+    );
+
+    const directory = this.resolverService.resolveProjectDirectoryPath(
+      this.tree,
+      project,
+      MODULES_DIRECTORY,
+    );
+
+    const substitutions: NestjsDataloaderModuleSubstitutions =
+      this.generatorService.buildNameSubstitutions(name);
+    const instanceDirectoryPath = path.join(
+      directory,
+      substitutions.nameKebabCase,
+    );
+
+    const outputFiles =
+      await this.generatorService.generateFiles<NestjsDataloaderModuleSubstitutions>(
+        {
+          instanceDirectoryPath,
+          substitutions,
+          templateDirectoryPath: this.templateDirectoryPath,
+          tree: this.tree,
+        },
+      );
+
+    this.logger.log(
+      this.generatorService.buildLogMessage({
+        data: outputFiles,
+        emoji: this.logEmoji,
+        label: this.outputFilesLogLabel,
+      }),
+    );
   }
 }

@@ -27,6 +27,7 @@ import {
   NESTJS_COMMAND_APPLICATION_GENERATOR_TAG,
   NESTJS_COMMAND_APPLICATION_TAG,
   NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG,
+  REACT_PROJECT_TAG,
 } from "./validator.constants";
 
 describe(ValidatorRulesService, () => {
@@ -293,6 +294,26 @@ describe(ValidatorRulesService, () => {
     expect(serviceFileResult).toBeUndefined();
   });
 
+  it("returns undefined for untagged dataloader-module and react-component rules", () => {
+    const dataloaderModuleResult = service.runRule({
+      ruleName: "nestjs-dataloader-module",
+      workspaceProject: {
+        rootPath: "/workspace/project",
+        tags: [],
+      },
+    });
+    const reactComponentResult = service.runRule({
+      ruleName: "react-component",
+      workspaceProject: {
+        rootPath: "/workspace/project",
+        tags: [],
+      },
+    });
+
+    expect(dataloaderModuleResult).toBeUndefined();
+    expect(reactComponentResult).toBeUndefined();
+  });
+
   it("runs the command application rule for tagged projects", () => {
     const projectRootPath = fs.mkdtempSync(
       path.join(os.tmpdir(), "conformance-validator-rules-command-app-"),
@@ -454,6 +475,47 @@ describe(ValidatorRulesService, () => {
     });
   });
 
+  it("filters logger modules and only validates dataloader modules", () => {
+    const projectRootPath = fs.mkdtempSync(
+      path.join(os.tmpdir(), "conformance-validator-rules-dataloader-"),
+    );
+    temporaryDirectories.push(projectRootPath);
+
+    const modulesDirectoryPath = path.join(projectRootPath, "src", "modules");
+    fs.mkdirSync(path.join(modulesDirectoryPath, "logger"), {
+      recursive: true,
+    });
+    fs.mkdirSync(path.join(modulesDirectoryPath, "alpha"), { recursive: true });
+    fs.mkdirSync(path.join(modulesDirectoryPath, "beta"), { recursive: true });
+    fs.writeFileSync(
+      path.join(modulesDirectoryPath, "alpha", "alpha.dataloader.ts"),
+      "export class AlphaDataloader {}\n",
+    );
+    fs.writeFileSync(
+      path.join(modulesDirectoryPath, "beta", "beta.service.ts"),
+      "export class BetaService {}\n",
+    );
+
+    mockValidateInstanceDirectory.mockReturnValue({
+      directoryName: "alpha",
+      results: [],
+    });
+
+    const result = service.runRule({
+      ruleName: "nestjs-dataloader-module",
+      workspaceProject: {
+        rootPath: projectRootPath,
+        tags: [NESTJS_APPLICATION_TAG],
+      },
+    });
+
+    expect(result).toHaveLength(1);
+    expect(mockValidateInstanceDirectory).toHaveBeenCalledTimes(1);
+    expect(mockValidateInstanceDirectory.mock.calls[0]?.[0]).toMatchObject({
+      instanceDirectoryPath: path.join(modulesDirectoryPath, "alpha"),
+    });
+  });
+
   it("filters GraphQL and service modules from module directories", () => {
     const projectRootPath = fs.mkdtempSync(
       path.join(os.tmpdir(), "conformance-validator-rules-modules-"),
@@ -554,6 +616,24 @@ describe(ValidatorRulesService, () => {
     expect(mockValidateInstanceDirectory).not.toHaveBeenCalled();
   });
 
+  it("returns an empty result set when no component files are found in react projects", () => {
+    const projectRootPath = fs.mkdtempSync(
+      path.join(os.tmpdir(), "conformance-validator-rules-react-empty-"),
+    );
+    temporaryDirectories.push(projectRootPath);
+
+    const result = service.runRule({
+      ruleName: "react-component",
+      workspaceProject: {
+        rootPath: projectRootPath,
+        tags: [REACT_PROJECT_TAG],
+      },
+    });
+
+    expect(result).toStrictEqual([]);
+    expect(mockValidateInstanceFile).not.toHaveBeenCalled();
+  });
+
   it("validates each discovered service file", () => {
     const projectRootPath = fs.mkdtempSync(
       path.join(os.tmpdir(), "conformance-validator-rules-service-"),
@@ -585,6 +665,53 @@ describe(ValidatorRulesService, () => {
       workspaceProject: {
         rootPath: projectRootPath,
         tags: [NESTJS_APPLICATION_TAG],
+      },
+    });
+
+    expect(result).toHaveLength(2);
+    expect(mockValidateInstanceFile).toHaveBeenCalledTimes(4);
+  });
+
+  it("validates each discovered react component file", () => {
+    const projectRootPath = fs.mkdtempSync(
+      path.join(os.tmpdir(), "conformance-validator-rules-react-components-"),
+    );
+    temporaryDirectories.push(projectRootPath);
+
+    const componentsDirectoryPath = path.join(
+      projectRootPath,
+      "src",
+      "components",
+    );
+    fs.mkdirSync(componentsDirectoryPath, { recursive: true });
+    fs.writeFileSync(
+      path.join(componentsDirectoryPath, "Alpha.tsx"),
+      "export function Alpha() { return null; }\n",
+    );
+    fs.writeFileSync(
+      path.join(componentsDirectoryPath, "Alpha.test.tsx"),
+      "describe('Alpha', () => {});\n",
+    );
+    fs.writeFileSync(
+      path.join(componentsDirectoryPath, "Beta.tsx"),
+      "export function Beta() { return null; }\n",
+    );
+    fs.writeFileSync(
+      path.join(componentsDirectoryPath, "Beta.test.tsx"),
+      "describe('Beta', () => {});\n",
+    );
+
+    mockValidateInstanceFile.mockReturnValue({
+      errors: [],
+      instanceFilePath: "instance-file",
+      templateFilePath: "template-file",
+    });
+
+    const result = service.runRule({
+      ruleName: "react-component",
+      workspaceProject: {
+        rootPath: projectRootPath,
+        tags: [REACT_PROJECT_TAG],
       },
     });
 

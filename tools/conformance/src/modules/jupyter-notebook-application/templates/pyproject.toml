@@ -1,7 +1,7 @@
 [project]
-name = "{{name}}"
+name = "{{nameKebabCase}}"
 version = "0.1.0"
-description = "{{description}}"
+description = "TODO: add project description"
 requires-python = ">=3.14"
 dependencies = [
   "pydantic>=2.0",

@@ -4,14 +4,12 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import { workspaceRoot } from "@nx/devkit";
 
-import { converterByStringCase } from "../../constants";
-import { StringCase } from "../../types";
-
 import { ValidatorJsonService } from "./validator-json.service";
 import { ValidatorMarkdownService } from "./validator-markdown.service";
 import { ValidatorPythonBridgeService } from "./validator-python-bridge.service";
 import { ValidatorTextService } from "./validator-text.service";
 import { ValidatorTypescriptService } from "./validator-typescript.service";
+import { converterByStringCase, StringCase } from "./validator.constants";
 
 import type {
   ConformanceError,

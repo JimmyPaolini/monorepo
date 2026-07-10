@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 
+import { GeneratorModule } from "../generator/generator.module";
+
 import { ReactComponentCommand } from "./react-component.command";
 
 /**
@@ -8,7 +10,7 @@ import { ReactComponentCommand } from "./react-component.command";
 @Module({
   controllers: [],
   exports: [ReactComponentCommand],
-  imports: [],
+  imports: [GeneratorModule],
   providers: [ReactComponentCommand],
 })
 export class ReactComponentModule {}

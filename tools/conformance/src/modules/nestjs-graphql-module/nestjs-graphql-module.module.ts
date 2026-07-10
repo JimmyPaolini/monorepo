@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 
+import { GeneratorModule } from "../generator/generator.module";
+
 import { NestjsGraphqlModuleCommand } from "./nestjs-graphql-module.command";
 
 /**
@@ -8,7 +10,7 @@ import { NestjsGraphqlModuleCommand } from "./nestjs-graphql-module.command";
 @Module({
   controllers: [],
   exports: [NestjsGraphqlModuleCommand],
-  imports: [],
+  imports: [GeneratorModule],
   providers: [NestjsGraphqlModuleCommand],
 })
 export class NestjsGraphqlModuleModule {}

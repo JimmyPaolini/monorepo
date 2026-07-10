@@ -1,19 +1,19 @@
 // 🏷️ Types
 
-import type { Tree } from "@nx/devkit";
-
-/**
- * Auto-generated documentation placeholder.
- */
-export interface NestjsCommandApplicationArguments {
-  options: NestjsCommandApplicationOptions;
-  tree: Tree;
-}
+import type { NameSubstitutions } from "../generator/generator.types";
 
 /**
  * Auto-generated documentation placeholder.
  */
 export interface NestjsCommandApplicationOptions {
-  destinationRoot?: string;
   name?: string;
+  type?: string;
+}
+
+/**
+ * Template substitutions used by this module's templates.
+ */
+export interface NestjsCommandApplicationSubstitutions
+  extends NameSubstitutions, Record<string, string> {
+  type: string;
 }

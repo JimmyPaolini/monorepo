@@ -1,301 +1,236 @@
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import prompts from "prompts";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  APPLICATIONS_DIRECTORY,
-  DESTINATION_ROOTS,
-  TOOLS_DIRECTORY,
-} from "../../constants";
-import * as utilities from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsCommandApplicationCommand } from "./nestjs-command-application.command";
 
-import type { Tree } from "@nx/devkit";
+const { flushChangesMock } = vi.hoisted(() => {
+  return {
+    flushChangesMock: vi.fn<() => void>(),
+  };
+});
 
-vi.mock("prompts", () => ({
-  default: vi.fn<typeof prompts>(),
-}));
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const importedModule = await importOriginal();
+
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
+
+  return {
+    ...actual,
+    flushChanges: flushChangesMock,
+  };
+});
 
 describe(NestjsCommandApplicationCommand, () => {
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-  const mockedPrompts = vi.mocked(prompts);
-
   let command: NestjsCommandApplicationCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  beforeAll(async () => {
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
+    });
+
+    generatorService.buildNameSubstitutions.mockReturnValue({
+      nameCamelCase: "myCommandApp",
+      nameKebabCase: "my-command-app",
+      namePascalCase: "MyCommandApp",
+      nameSnakeCase: "my_command_app",
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    generatorService.getGeneratedFilePaths.mockReturnValue([
+      "applications/unit-test-command-app/project.json",
+      "applications/unit-test-command-app/src/main.ts",
+    ]);
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-command-app");
+    });
+    resolverService.resolveType.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "applications");
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         NestjsCommandApplicationCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(NestjsCommandApplicationCommand);
-  });
-
-  beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
-    mockedPrompts.mockReset();
+    command = module.get(NestjsCommandApplicationCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        NestjsCommandApplicationCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith(
-      "NestjsCommandApplicationCommand",
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      NestjsCommandApplicationCommand.name,
     );
   });
 
-  it("returns parsed option values", () => {
-    expect(command.parseDestinationRootOption("applications")).toBe(
+  it("resolves valid option values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("my-command-app");
+    resolverService.resolveType.mockResolvedValueOnce("applications");
+
+    await expect(command.resolveName("my-command-app")).resolves.toBe(
+      "my-command-app",
+    );
+    await expect(command.resolveType("applications")).resolves.toBe(
       "applications",
     );
-    expect(command.parseNameOption("alpha-app")).toBe("alpha-app");
   });
 
-  it("generates a command application under applications", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: APPLICATIONS_DIRECTORY,
-            name: "my-command-app",
-          },
-          tree,
-        },
-      );
-    });
+  it("delegates type resolution to generator service", async () => {
+    resolverService.resolveType.mockResolvedValueOnce("tools");
 
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/my-command-app`;
+    await expect(command.resolveType("tools")).resolves.toBe("tools");
 
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/package.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.module.ts`)).toBe(true);
+    const firstCallArguments = resolverService.resolveType.mock.calls[0]?.[0];
+
+    expect(firstCallArguments).toBeDefined();
+
+    if (!firstCallArguments) {
+      return;
+    }
+
+    expect(firstCallArguments).not.toHaveProperty("initialChoice");
+    expect(firstCallArguments.message).toBe(
+      "What type of NestJS command application should be generated?",
+    );
+    expect(firstCallArguments.value).toBe("tools");
   });
 
-  it("generates a command application under tools", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: TOOLS_DIRECTORY,
-            name: "my-command-tool",
-          },
-          tree,
-        },
-      );
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("my-command-app");
+
+    await expect(command.resolveName("my-command-app")).resolves.toBe(
+      "my-command-app",
+    );
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message: "What is the name of the application? (kebab-case)",
+      value: "my-command-app",
     });
-
-    const projectRoot = `${TOOLS_DIRECTORY}/my-command-tool`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/package.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
   });
 
-  it("supports tree-first invocation overload", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: APPLICATIONS_DIRECTORY,
-            name: "tree-first-command-app",
-          },
-          tree,
-        },
-      );
-    });
+  it("prompts for name when option is missing", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("prompted-command-app");
 
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/tree-first-command-app`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
+    await expect(command.resolveName(undefined)).resolves.toBe(
+      "prompted-command-app",
+    );
   });
 
-  it("supports tree-first overload signature", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplication(
-        tree,
-        {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "signature-command-app",
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/signature-command-app`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
-  });
-
-  it("prompts for destination root when not provided", async () => {
-    mockedPrompts.mockResolvedValueOnce({
-      destinationRoot: TOOLS_DIRECTORY,
-    });
-
-    await runWithRepositoryRoot(async () => {
-      await NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            name: "prompted-command-app",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${TOOLS_DIRECTORY}/prompted-command-app`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(mockedPrompts).toHaveBeenCalledTimes(1);
-  });
-
-  it("throws when no destination root is selected in prompt", async () => {
-    mockedPrompts.mockResolvedValueOnce({
-      destinationRoot: undefined,
-    });
-
-    await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            name: "missing-destination-selection",
-          },
-          tree,
-        },
+  it("rejects invalid type", async () => {
+    resolverService.resolveType.mockRejectedValueOnce(
+      new Error(
+        'Type "invalid-root" is not valid. Allowed values: applications, packages, tools',
       ),
-    ).rejects.toThrow("No destination root selected");
+    );
+
+    await expect(command.resolveType("invalid-root")).rejects.toThrow(
+      'Type "invalid-root" is not valid. Allowed values: applications, packages, tools',
+    );
   });
 
-  it("throws when prompted destination root is invalid", async () => {
-    mockedPrompts.mockResolvedValueOnce({
-      destinationRoot: "invalid-root",
+  it("propagates type resolution errors", async () => {
+    resolverService.resolveType.mockRejectedValueOnce(
+      new Error("Type is required"),
+    );
+
+    await expect(command.resolveType(undefined)).rejects.toThrow(
+      "Type is required",
+    );
+  });
+
+  it("rejects invalid direct name values", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name must be in kebab-case"),
+    );
+
+    await expect(command.resolveName("PromptedCommandApp")).rejects.toThrow(
+      "Name must be in kebab-case",
+    );
+  });
+
+  it("propagates name resolution errors", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name is required"),
+    );
+
+    await expect(command.resolveName(undefined)).rejects.toThrow(
+      "Name is required",
+    );
+  });
+
+  it("runs generator orchestration", async () => {
+    await command.run([], {
+      name: "unit-test-command-app",
+      type: "applications",
     });
 
-    await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            name: "invalid-prompted-destination",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      `Destination root "invalid-root" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/unit-test-command-app",
+        templateDirectoryPath:
+          "tools/conformance/src/modules/nestjs-command-application/templates",
+      }),
+    );
+    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/unit-test-command-app",
+      }),
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      '🖥️ NestJS command application options: {"input":{"name":"unit-test-command-app","type":"applications"},"resolved":{"name":"unit-test-command-app","type":"applications"}}',
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      '🖥️ NestJS command application output files: ["applications/unit-test-command-app/project.json","applications/unit-test-command-app/src/main.ts"]',
     );
   });
 
   it("throws when target directory already exists", async () => {
-    tree.write(`${APPLICATIONS_DIRECTORY}/existing-app/.gitkeep`, "");
-
     await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: APPLICATIONS_DIRECTORY,
-            name: "existing-app",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      `Directory "${APPLICATIONS_DIRECTORY}/existing-app" already exists. Choose a different application name.`,
-    );
-  });
-
-  it("throws for invalid destination roots", async () => {
-    await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: "invalid-root",
-            name: "my-command-app",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      `Destination root "invalid-root" is not valid. Allowed values: ${DESTINATION_ROOTS.join(", ")}`,
-    );
-  });
-
-  it("validates application names as kebab-case", async () => {
-    await expect(
-      NestjsCommandApplicationCommand.generateNestjsCommandApplicationFromArguments(
-        {
-          options: {
-            destinationRoot: APPLICATIONS_DIRECTORY,
-            name: "myCommandApp",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Application name "myCommandApp" must be in kebab-case. Did you mean "my-command-app"?',
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
-        destinationRoot: APPLICATIONS_DIRECTORY,
-        name: "my-command-app",
-      });
-    });
-
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
-      expect.objectContaining({
-        options: {
-          destinationRoot: APPLICATIONS_DIRECTORY,
-          name: "my-command-app",
-        },
+      command.run([], {
+        name: "affirmations",
+        type: "applications",
       }),
+    ).rejects.toThrow(
+      'Directory "applications/affirmations" already exists. Directory already exists. Choose a different application name.',
     );
-
-    runGeneratorCommandSpy.mockRestore();
   });
 });

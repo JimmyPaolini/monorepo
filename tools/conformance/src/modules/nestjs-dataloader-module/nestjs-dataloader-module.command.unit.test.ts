@@ -1,269 +1,207 @@
-import { execSync } from "node:child_process";
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { addProjectConfiguration } from "@nx/devkit";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as utilities from "../../utilities";
-
-vi.mock("node:child_process", () => ({
-  execSync: vi.fn<typeof execSync>(),
-}));
-
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsDataloaderModuleCommand } from "./nestjs-dataloader-module.command";
 
-import type { Tree } from "@nx/devkit";
+const { flushChangesMock } = vi.hoisted(() => {
+  return {
+    flushChangesMock: vi.fn<() => void>(),
+  };
+});
+
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const importedModule = await importOriginal();
+
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
+
+  return {
+    ...actual,
+    flushChanges: flushChangesMock,
+  };
+});
 
 describe(NestjsDataloaderModuleCommand, () => {
-  const projectName = "my-app";
-  const projectRoot = "applications/my-app";
-  const modulesDirectory = `${projectRoot}/src/modules`;
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-
   let command: NestjsDataloaderModuleCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  beforeAll(async () => {
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
+    });
+
+    resolverService.resolveProjectDirectoryPath.mockReturnValue(
+      "applications/my-app/src/modules",
+    );
+    generatorService.buildNameSubstitutions.mockReturnValue({
+      nameCamelCase: "userProfile",
+      nameKebabCase: "user-profile",
+      namePascalCase: "UserProfile",
+      nameSnakeCase: "user_profile",
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    generatorService.getGeneratedFilePaths.mockReturnValue([
+      "applications/my-app/src/modules/user-profile/user-profile.dataloader.ts",
+      "applications/my-app/src/modules/user-profile/user-profile.module.ts",
+    ]);
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-dataloader");
+    });
+    resolverService.resolveProject.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "my-app");
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         NestjsDataloaderModuleCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(NestjsDataloaderModuleCommand);
-  });
-
-  beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(tree, projectName, {
-      root: projectRoot,
-      tags: ["framework:nestjs"],
-    });
-    tree.write(`${modulesDirectory}/.gitkeep`, "");
+    command = module.get(NestjsDataloaderModuleCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        NestjsDataloaderModuleCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith(
-      "NestjsDataloaderModuleCommand",
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      NestjsDataloaderModuleCommand.name,
     );
   });
 
-  it("returns parsed option values", () => {
-    expect(command.parseNameOption("alpha-module")).toBe("alpha-module");
-    expect(command.parseProjectOption("alpha-project")).toBe("alpha-project");
-  });
+  it("resolves valid option values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("alpha-module");
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
 
-  it("generates module files from migrated generator logic", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-        {
-          options: {
-            name: "post",
-            project: projectName,
-          },
-          tree,
-        },
-      );
-    });
-
-    const modulePath = `${modulesDirectory}/post`;
-
-    expect(tree.exists(`${modulePath}/post.module.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/post.dataloader.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/post.dataloader.unit.test.ts`)).toBe(
-      true,
+    await expect(command.resolveName("alpha-module")).resolves.toBe(
+      "alpha-module",
     );
-    expect(tree.exists(`${modulePath}/post.types.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/post.constants.ts`)).toBe(true);
+    await expect(command.resolveProject("my-app")).resolves.toBe("my-app");
   });
 
-  it("validates module names as kebab-case", async () => {
-    await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-        {
-          options: {
-            name: "blogPost",
-            project: projectName,
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Module name "blogPost" must be in kebab-case. Did you mean "blog-post"?',
-    );
-  });
+  it("delegates project resolution to generator service", async () => {
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
 
-  it("supports tree-first invocation", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-        {
-          options: {
-            name: "audit-log",
-            project: projectName,
-          },
-          tree,
-        },
-      );
-    });
+    await expect(command.resolveProject("my-app")).resolves.toBe("my-app");
 
-    const modulePath = `${modulesDirectory}/audit-log`;
-
-    expect(tree.exists(`${modulePath}/audit-log.module.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/audit-log.dataloader.ts`)).toBe(true);
-  });
-
-  it("supports tree-first overload signature", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsDataloaderModuleCommand.generateNestjsDataloaderModule(tree, {
-        name: "gamma-log",
-        project: projectName,
-      });
-    });
-
-    const modulePath = `${modulesDirectory}/gamma-log`;
-
-    expect(tree.exists(`${modulePath}/gamma-log.module.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/gamma-log.dataloader.ts`)).toBe(true);
-  });
-
-  it("rejects project names without required framework:nestjs tag", async () => {
-    addProjectConfiguration(tree, "wrong-tag-project", {
-      root: "applications/wrong-tag-project",
-      tags: ["framework:nest-commander"],
-    });
-    tree.write("applications/wrong-tag-project/src/modules/.gitkeep", "");
-
-    await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-        {
-          options: {
-            name: "user-profile",
-            project: "wrong-tag-project",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Project "wrong-tag-project" does not have the "framework:nestjs" tag. Available projects: my-app',
-    );
-  });
-
-  it("rejects projects missing the modules directory", async () => {
-    const treeWithoutModulesDirectory = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(treeWithoutModulesDirectory, projectName, {
-      root: projectRoot,
-      tags: ["framework:nestjs"],
-    });
-
-    await expect(
-      NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-        {
-          options: {
-            name: "user-profile",
-            project: projectName,
-          },
-          tree: treeWithoutModulesDirectory,
-        },
-      ),
-    ).rejects.toThrow(
-      `Directory "${modulesDirectory}" does not exist in project "${projectName}"`,
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
-        name: "delta-module",
-        project: projectName,
-      });
-    });
-
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+    expect(resolverService.resolveProject).toHaveBeenCalledWith(
       expect.objectContaining({
-        options: {
-          name: "delta-module",
-          project: projectName,
-        },
+        message: "Which project should the module be generated in?",
+        tag: "framework:nestjs",
+        value: "my-app",
       }),
     );
-
-    runGeneratorCommandSpy.mockRestore();
   });
 
-  it("builds callback command using generated files", async () => {
-    const mockedExecSync = vi.mocked(execSync);
-    mockedExecSync.mockReturnValue(Buffer.from(""));
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("alpha-module");
 
-    let callback: (() => Promise<void> | void) | undefined;
-    await runWithRepositoryRoot(async () => {
-      callback =
-        await NestjsDataloaderModuleCommand.generateNestjsDataloaderModuleFromArguments(
-          {
-            options: {
-              name: "format-target",
-              project: projectName,
-            },
-            tree,
-          },
-        );
+    await expect(command.resolveName("alpha-module")).resolves.toBe(
+      "alpha-module",
+    );
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message: "What is the name of the module? (kebab-case)",
+      value: "alpha-module",
+    });
+  });
+
+  it("rejects invalid project values", async () => {
+    resolverService.resolveProject.mockRejectedValueOnce(
+      new Error(
+        'Project "missing-project" does not have the "framework:nestjs" tag. Available projects: my-app',
+      ),
+    );
+
+    await expect(command.resolveProject("missing-project")).rejects.toThrow(
+      'Project "missing-project" does not have the "framework:nestjs" tag. Available projects: my-app',
+    );
+  });
+
+  it("propagates name resolution errors", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name must be in kebab-case"),
+    );
+
+    await expect(command.resolveName("AlphaModule")).rejects.toThrow(
+      "Name must be in kebab-case",
+    );
+  });
+
+  it("prompts for missing name and project values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("prompted-dataloader");
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
+
+    await expect(command.resolveName(undefined)).resolves.toBe(
+      "prompted-dataloader",
+    );
+    await expect(command.resolveProject(undefined)).resolves.toBe("my-app");
+  });
+
+  it("runs generator orchestration", async () => {
+    await command.run([], {
+      name: "user-profile",
+      project: "my-app",
     });
 
-    if (callback === undefined) {
-      throw new Error("Expected callback");
-    }
-
-    await Promise.resolve(callback());
-
-    expect(mockedExecSync).toHaveBeenCalledTimes(1);
-    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
-      "pnpm exec nx format:write --files=",
+    expect(resolverService.resolveProjectDirectoryPath).toHaveBeenCalledWith(
+      expect.anything(),
+      "my-app",
+      "src/modules",
     );
-    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
-      "applications/my-app/src/modules/format-target/",
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/my-app/src/modules/user-profile",
+        templateDirectoryPath:
+          "tools/conformance/src/modules/nestjs-dataloader-module/templates",
+      }),
     );
-
-    mockedExecSync.mockReset();
+    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/my-app/src/modules/user-profile",
+      }),
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      '📥 NestJS DataLoader module options: {"input":{"name":"user-profile","project":"my-app"},"resolved":{"name":"user-profile","project":"my-app"}}',
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      '📥 NestJS DataLoader module output files: ["applications/my-app/src/modules/user-profile/user-profile.dataloader.ts","applications/my-app/src/modules/user-profile/user-profile.module.ts"]',
+    );
   });
 });

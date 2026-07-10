@@ -1,285 +1,235 @@
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { addProjectConfiguration } from "@nx/devkit";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as utilities from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { ReactComponentCommand } from "./react-component.command";
 
-import type { Tree } from "@nx/devkit";
+const { flushChangesMock } = vi.hoisted(() => {
+  return {
+    flushChangesMock: vi.fn<() => void>(),
+  };
+});
 
-const { formatFilesMock } = vi.hoisted(() => ({
-  formatFilesMock: vi.fn<(...arguments_: unknown[]) => Promise<void>>(),
-}));
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const importedModule = await importOriginal();
 
-vi.mock("@nx/devkit", async (importOriginal) => {
-  const originalModule = await importOriginal<Record<string, unknown>>();
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
 
   return {
-    ...originalModule,
-    formatFiles: formatFilesMock,
+    ...actual,
+    flushChanges: flushChangesMock,
   };
 });
 
 describe(ReactComponentCommand, () => {
-  const projectName = "lexico-components";
-  const projectRoot = "packages/lexico-components";
-  const componentsDirectory = `${projectRoot}/src/components`;
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-
   let command: ReactComponentCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  const addReactProject = (workspaceTree: Tree): void => {
-    addProjectConfiguration(workspaceTree, projectName, {
-      root: projectRoot,
-      tags: ["framework:react"],
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
     });
-  };
 
-  beforeAll(async () => {
+    resolverService.resolveProjectDirectoryPath.mockReturnValue(
+      "packages/lexico-components/src/components",
+    );
+    generatorService.buildNameSubstitutions.mockReturnValue({
+      nameCamelCase: "alertBanner",
+      nameKebabCase: "alert-banner",
+      namePascalCase: "AlertBanner",
+      nameSnakeCase: "alert_banner",
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    generatorService.getGeneratedFilePaths.mockReturnValue([
+      "packages/lexico-components/src/components/AlertBanner.tsx",
+      "packages/lexico-components/src/components/AlertBanner.test.tsx",
+    ]);
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-banner");
+    });
+    resolverService.resolveProject.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "lexico-components");
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         ReactComponentCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(ReactComponentCommand);
-  });
-
-  beforeEach(() => {
-    formatFilesMock.mockReset();
-    formatFilesMock.mockResolvedValue(undefined);
-    tree = createTreeWithEmptyWorkspace();
-    addReactProject(tree);
-    tree.write(`${componentsDirectory}/.gitkeep`, "");
+    command = module.get(ReactComponentCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        ReactComponentCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith("ReactComponentCommand");
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      ReactComponentCommand.name,
+    );
   });
 
-  it("returns parsed option values", () => {
-    expect(command.parseNameOption("alert-banner")).toBe("alert-banner");
-    expect(command.parseProjectOption("lexico-components")).toBe(
+  it("resolves valid option values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("alert-banner");
+    resolverService.resolveProject.mockResolvedValueOnce("lexico-components");
+
+    await expect(command.resolveName("alert-banner")).resolves.toBe(
+      "alert-banner",
+    );
+    await expect(command.resolveProject("lexico-components")).resolves.toBe(
       "lexico-components",
     );
   });
 
-  it("generates component scaffold from arguments invocation", async () => {
-    await runWithRepositoryRoot(async () => {
-      await ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "user-profile-card",
-          project: projectName,
-        },
-        tree,
-      });
-    });
+  it("delegates project resolution to generator service", async () => {
+    resolverService.resolveProject.mockResolvedValueOnce("lexico-components");
 
-    const componentPath = `${componentsDirectory}/UserProfileCard.tsx`;
-    const testPath = `${componentsDirectory}/UserProfileCard.test.tsx`;
-
-    expect(tree.exists(componentPath)).toBe(true);
-    expect(tree.exists(testPath)).toBe(true);
-
-    const componentFile = tree.read(componentPath, "utf8");
-    const testFile = tree.read(testPath, "utf8");
-
-    expect(componentFile).toContain("export interface UserProfileCardProps {");
-    expect(componentFile).toContain(
-      "export const UserProfileCard = (props: UserProfileCardProps): ReactElement =>",
+    await expect(command.resolveProject("lexico-components")).resolves.toBe(
+      "lexico-components",
     );
-    expect(componentFile).toContain("UserProfileCard component");
 
-    expect(testFile).toContain(
-      "import { UserProfileCard, type UserProfileCardProps } from './UserProfileCard';",
-    );
-    expect(testFile).toContain("describe('UserProfileCard', () => {");
-  });
-
-  it("supports tree-first invocation and formats files", async () => {
-    await runWithRepositoryRoot(async () => {
-      await ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "alert-banner",
-          project: projectName,
-        },
-        tree,
-      });
-    });
-
-    expect(tree.exists(`${componentsDirectory}/AlertBanner.tsx`)).toBe(true);
-    expect(tree.exists(`${componentsDirectory}/AlertBanner.test.tsx`)).toBe(
-      true,
-    );
-    expect(formatFilesMock).toHaveBeenCalledTimes(1);
-    expect(formatFilesMock).toHaveBeenCalledWith(tree);
-  });
-
-  it("supports tree-first overload signature", async () => {
-    await runWithRepositoryRoot(async () => {
-      await ReactComponentCommand.generateReactComponent(tree, {
-        name: "status-pill",
-        project: projectName,
-      });
-    });
-
-    expect(tree.exists(`${componentsDirectory}/StatusPill.tsx`)).toBe(true);
-    expect(tree.exists(`${componentsDirectory}/StatusPill.test.tsx`)).toBe(
-      true,
-    );
-  });
-
-  it("validates component names as kebab-case", async () => {
-    await expect(
-      ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "AlertBanner",
-          project: projectName,
-        },
-        tree,
-      }),
-    ).rejects.toThrow(
-      'Component name "AlertBanner" must be in kebab-case. Did you mean "alert-banner"?',
-    );
-  });
-
-  it("rejects explicit project without framework:react tag", async () => {
-    addProjectConfiguration(tree, "caelundas", {
-      root: "applications/caelundas",
-      tags: ["language:typescript"],
-    });
-
-    await expect(
-      ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "alert-banner",
-          project: "caelundas",
-        },
-        tree,
-      }),
-    ).rejects.toThrow(
-      'Project "caelundas" does not have the "framework:react" tag. Available projects: lexico-components',
-    );
-  });
-
-  it("rejects when no framework:react project exists", async () => {
-    const treeWithoutReactProject = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(treeWithoutReactProject, "caelundas", {
-      root: "applications/caelundas",
-      tags: ["language:typescript"],
-    });
-
-    await expect(
-      ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "alert-banner",
-          project: "caelundas",
-        },
-        tree: treeWithoutReactProject,
-      }),
-    ).rejects.toThrow(
-      'No projects with tag "framework:react" found in the workspace',
-    );
-  });
-
-  it("rejects projects when resolved components directory is missing", async () => {
-    const treeWithoutProjectRoot = createTreeWithEmptyWorkspace();
-    addProjectConfiguration(treeWithoutProjectRoot, projectName, {
-      root: "",
-      tags: ["framework:react"],
-    });
-
-    await expect(
-      ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "alert-banner",
-          project: projectName,
-        },
-        tree: treeWithoutProjectRoot,
-      }),
-    ).rejects.toThrow(
-      'Directory "src/components" does not exist in project "lexico-components"',
-    );
-  });
-
-  it("rejects when src/components directory is missing", async () => {
-    const treeWithoutComponentsDirectory = createTreeWithEmptyWorkspace();
-    addReactProject(treeWithoutComponentsDirectory);
-
-    await expect(
-      ReactComponentCommand.generateReactComponentFromArguments({
-        options: {
-          name: "alert-banner",
-          project: projectName,
-        },
-        tree: treeWithoutComponentsDirectory,
-      }),
-    ).rejects.toThrow(
-      'Directory "packages/lexico-components/src/components" does not exist in project "lexico-components"',
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
-        name: "alert-banner",
-        project: projectName,
-      });
-    });
-
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+    expect(resolverService.resolveProject).toHaveBeenCalledWith(
       expect.objectContaining({
-        options: {
-          name: "alert-banner",
-          project: projectName,
-        },
+        message: "Which project should the component be generated in?",
+        tag: "framework:react",
+        value: "lexico-components",
       }),
     );
+  });
 
-    runGeneratorCommandSpy.mockRestore();
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("alert-banner");
+
+    await expect(command.resolveName("alert-banner")).resolves.toBe(
+      "alert-banner",
+    );
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message: "What is the name of the component? (kebab-case)",
+      value: "alert-banner",
+    });
+  });
+
+  it("rejects invalid project values", async () => {
+    resolverService.resolveProject.mockRejectedValueOnce(
+      new Error(
+        'Project "missing-project" does not have the "framework:react" tag. Available projects: lexico-components',
+      ),
+    );
+
+    await expect(command.resolveProject("missing-project")).rejects.toThrow(
+      'Project "missing-project" does not have the "framework:react" tag. Available projects: lexico-components',
+    );
+  });
+
+  it("propagates name resolution errors", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name must be in kebab-case"),
+    );
+
+    await expect(command.resolveName("AlertBanner")).rejects.toThrow(
+      "Name must be in kebab-case",
+    );
+  });
+
+  it("prompts for missing name and project values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("prompted-banner");
+    resolverService.resolveProject.mockResolvedValueOnce("lexico-components");
+
+    await expect(command.resolveName(undefined)).resolves.toBe(
+      "prompted-banner",
+    );
+    await expect(command.resolveProject(undefined)).resolves.toBe(
+      "lexico-components",
+    );
+  });
+
+  it("runs generator orchestration", async () => {
+    await command.run([], {
+      name: "alert-banner",
+      project: "lexico-components",
+    });
+
+    expect(resolverService.resolveProjectDirectoryPath).toHaveBeenCalledWith(
+      expect.anything(),
+      "lexico-components",
+      "src/components",
+    );
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "packages/lexico-components/src/components",
+        templateDirectoryPath:
+          "tools/conformance/src/modules/react-component/templates",
+      }),
+    );
+    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "packages/lexico-components/src/components",
+      }),
+    );
+    expect(generatorService.buildLogMessage).toHaveBeenNthCalledWith(1, {
+      data: {
+        input: {
+          name: "alert-banner",
+          project: "lexico-components",
+        },
+        resolved: {
+          name: "alert-banner",
+          project: "lexico-components",
+        },
+      },
+      emoji: "⚛️",
+      label: "React component options",
+    });
+    expect(generatorService.buildLogMessage).toHaveBeenNthCalledWith(2, {
+      data: [
+        "packages/lexico-components/src/components/AlertBanner.tsx",
+        "packages/lexico-components/src/components/AlertBanner.test.tsx",
+      ],
+      emoji: "⚛️",
+      label: "React component output files",
+    });
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      '⚛️ React component options: {"input":{"name":"alert-banner","project":"lexico-components"},"resolved":{"name":"alert-banner","project":"lexico-components"}}',
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      '⚛️ React component output files: ["packages/lexico-components/src/components/AlertBanner.tsx","packages/lexico-components/src/components/AlertBanner.test.tsx"]',
+    );
   });
 });

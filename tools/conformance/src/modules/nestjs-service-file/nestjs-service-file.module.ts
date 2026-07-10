@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 
+import { GeneratorModule } from "../generator/generator.module";
+
 import { NestjsServiceFileCommand } from "./nestjs-service-file.command";
 
 /**
@@ -8,7 +10,7 @@ import { NestjsServiceFileCommand } from "./nestjs-service-file.command";
 @Module({
   controllers: [],
   exports: [NestjsServiceFileCommand],
-  imports: [],
+  imports: [GeneratorModule],
   providers: [NestjsServiceFileCommand],
 })
 export class NestjsServiceFileModule {}

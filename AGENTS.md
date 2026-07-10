@@ -65,7 +65,6 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
 - **[restore-code](documentation/skills/restore-code/SKILL.md)**: "Restore code safely from backup artifacts created before risky changes. Use when undoing destructive operations, recovering from failed refactors or rebases, restoring deleted files, rolling back broad search-and-replace edits, or rehydrating work from backup branches and stashes. Supports preview-first recovery via backup branch, stash, or selective file restoration."
 - **[sign-commits](documentation/skills/sign-commits/SKILL.md)**: Re-sign unsigned commits on the current branch or pull request without changing code content by rewriting only from the first unsigned commit onward on a temporary branch. Use when asked to sign commits, add GPG signatures to an existing branch, satisfy signed-commit requirements, or make a PR show verified commits. Creates a backup branch first, runs the rebase non-interactively, verifies the rewritten final tree exactly matches the original branch tip, and stops immediately if any check, conflict, drift, or GPG step fails.
-- **[simplify-code](documentation/skills/simplify-code/SKILL.md)**: Workflow to identify overly complex functions using ESLint complexity rules (max-statements, max-lines, complexity, max-depth) and refactor them towards simplicity using Refactoring.Guru guidelines. Use when asked to "simplify code", "reduce complexity", "refactor large functions", or fix ESLint complexity warnings and errors.
 - **[spell-check](documentation/skills/spell-check/SKILL.md)**: Run and triage cspell in this monorepo. Use when spell-check fails in lint-staged, nx affected, or nx run-many, when cspell reports Unknown word entries, or when adding domain vocabulary to the correct dictionary under configuration/.cspell. Covers full-workspace checks, project-targeted checks, and dictionary update validation.
 - **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Includes branch-name conformance checks and automatic branch rename when needed. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
 - **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
@@ -99,11 +98,11 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 <!-- conformance-generators-table start -->
 | Generator | Alias | Description |
 | --------- | ----- | ----------- |
-| `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application scaffold |
-| `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
+| `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application |
+| `nestjs-command-application` | `nca` | Generate a NestJS command-line application using nest-commander |
 | `nestjs-command-module` | `ncm` | Generate a NestJS command module with command, module, types, constants, and unit test files |
 | `nestjs-dataloader-module` | `ndm` | Generate a NestJS DataLoader module with dataloader, types, and unit test files |
-| `nestjs-graphql-application` | `nga` | Generate a NestJS GraphQL API application scaffold with Apollo Server |
+| `nestjs-graphql-application` | `nga` | Generate a NestJS GraphQL API application |
 | `nestjs-graphql-module` | `ngm` | Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files |
 | `nestjs-service-file` | `nsf` | Generate NestJS service and unit test files |
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |

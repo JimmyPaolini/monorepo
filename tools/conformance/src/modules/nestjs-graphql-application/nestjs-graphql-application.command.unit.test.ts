@@ -1,226 +1,157 @@
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { APPLICATIONS_DIRECTORY } from "../../constants";
-import * as utilities from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsGraphqlApplicationCommand } from "./nestjs-graphql-application.command";
 
-import type { Tree } from "@nx/devkit";
+const { flushChangesMock } = vi.hoisted(() => {
+  return {
+    flushChangesMock: vi.fn<() => void>(),
+  };
+});
+
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const importedModule = await importOriginal();
+
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
+
+  return {
+    ...actual,
+    flushChanges: flushChangesMock,
+  };
+});
 
 describe(NestjsGraphqlApplicationCommand, () => {
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-
   let command: NestjsGraphqlApplicationCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  beforeAll(async () => {
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
+    });
+
+    generatorService.buildNameSubstitutions.mockReturnValue({
+      nameCamelCase: "atlasApi",
+      nameKebabCase: "atlas-api",
+      namePascalCase: "AtlasApi",
+      nameSnakeCase: "atlas_api",
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    generatorService.getGeneratedFilePaths.mockReturnValue([
+      "applications/atlas-api/project.json",
+      "applications/atlas-api/src/main.ts",
+    ]);
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-graphql-app");
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         NestjsGraphqlApplicationCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(NestjsGraphqlApplicationCommand);
-  });
-
-  beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    command = module.get(NestjsGraphqlApplicationCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        NestjsGraphqlApplicationCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith(
-      "NestjsGraphqlApplicationCommand",
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      NestjsGraphqlApplicationCommand.name,
     );
   });
 
-  it("returns parsed option values", () => {
-    expect(command.parseNameOption("atlas-api")).toBe("atlas-api");
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("atlas-api");
+
+    await expect(command.resolveName("atlas-api")).resolves.toBe("atlas-api");
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message: "What is the name of the application? (kebab-case)",
+      value: "atlas-api",
+    });
   });
 
-  it("generates graphql application scaffold from arguments", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-        {
-          options: {
-            name: "atlas-api",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/atlas-api`;
-
-    expect(tree.exists(`${projectRoot}/.env.default`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/.gitignore`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/AGENTS.md`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/README.md`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/eslint.config.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/package.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/tsconfig.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/vitest.config.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.end-to-end.test.ts`)).toBe(
-      true,
+  it("propagates name resolution errors", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name is required"),
     );
-    expect(tree.exists(`${projectRoot}/testing/mocks.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/testing/setup.ts`)).toBe(true);
-  });
 
-  it("supports tree-first overload invocation", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-        {
-          options: {
-            name: "audit-api",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/audit-api`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/package.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/testing/setup.ts`)).toBe(true);
-  });
-
-  it("supports tree-first overload signature", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplication(
-        tree,
-        {
-          name: "signal-api",
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/signal-api`;
-
-    expect(tree.exists(`${projectRoot}/project.json`)).toBe(true);
-    expect(tree.exists(`${projectRoot}/src/main.ts`)).toBe(true);
-  });
-
-  it("writes expected substitutions into generated files", async () => {
-    await runWithRepositoryRoot(async () => {
-      await NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-        {
-          options: {
-            name: "user-profile-api",
-          },
-          tree,
-        },
-      );
-    });
-
-    const projectRoot = `${APPLICATIONS_DIRECTORY}/user-profile-api`;
-    const packageJson = tree.read(`${projectRoot}/package.json`, "utf8");
-    const readme = tree.read(`${projectRoot}/README.md`, "utf8");
-    const mainFile = tree.read(`${projectRoot}/src/main.ts`, "utf8");
-    const projectJson = tree.read(`${projectRoot}/project.json`, "utf8");
-
-    expect(packageJson).toContain('"name": "user-profile-api"');
-    expect(readme).toContain("# UserProfileApi");
-    expect(mainFile).toContain(
-      "import { UserProfileApiModule } from './modules/user-profile-api/user-profile-api.module';",
-    );
-    expect(projectJson).toContain('"framework:nestjs"');
-    expect(projectJson).toContain('"generator:nestjs-graphql-application"');
-  });
-
-  it("rejects existing application directory", async () => {
-    tree.write(`${APPLICATIONS_DIRECTORY}/existing-api/.gitkeep`, "");
-
-    await expect(
-      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-        {
-          options: {
-            name: "existing-api",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Directory "applications/existing-api" already exists. Choose a different application name.',
+    await expect(command.resolveName(undefined)).rejects.toThrow(
+      "Name is required",
     );
   });
 
-  it("validates application name as kebab-case", async () => {
-    await expect(
-      NestjsGraphqlApplicationCommand.generateNestjsGraphqlApplicationFromArguments(
-        {
-          options: {
-            name: "ExistingApi",
-          },
-          tree,
-        },
-      ),
-    ).rejects.toThrow(
-      'Application name "ExistingApi" must be in kebab-case. Did you mean "existing-api"?',
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
-        name: "delta-api",
-      });
+  it("runs generator orchestration", async () => {
+    await command.run([], {
+      name: "atlas-api",
     });
 
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
       expect.objectContaining({
-        options: {
-          name: "delta-api",
-        },
+        instanceDirectoryPath: "applications/atlas-api",
+        templateDirectoryPath:
+          "tools/conformance/src/modules/nestjs-graphql-application/templates",
       }),
     );
+    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/atlas-api",
+      }),
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      '🕸️ NestJS GraphQL application options: {"input":{"name":"atlas-api"},"resolved":{"name":"atlas-api"}}',
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      '🕸️ NestJS GraphQL application output files: ["applications/atlas-api/project.json","applications/atlas-api/src/main.ts"]',
+    );
+  });
 
-    runGeneratorCommandSpy.mockRestore();
+  it("throws when target directory already exists", async () => {
+    await expect(
+      command.run([], {
+        name: "affirmations",
+      }),
+    ).rejects.toThrow(
+      'Directory "applications/affirmations" already exists. Directory already exists. Choose a different application name.',
+    );
   });
 });

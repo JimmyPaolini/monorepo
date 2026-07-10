@@ -1,5 +1,7 @@
 import { Module } from "@nestjs/common";
 
+import { GeneratorModule } from "../generator/generator.module";
+
 import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-application.command";
 
 /**
@@ -8,7 +10,7 @@ import { JupyterNotebookApplicationCommand } from "./jupyter-notebook-applicatio
 @Module({
   controllers: [],
   exports: [JupyterNotebookApplicationCommand],
-  imports: [],
+  imports: [GeneratorModule],
   providers: [JupyterNotebookApplicationCommand],
 })
 export class JupyterNotebookApplicationModule {}

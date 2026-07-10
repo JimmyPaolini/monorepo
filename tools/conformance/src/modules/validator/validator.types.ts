@@ -104,6 +104,13 @@ export interface ResolvedErrorLocation {
   templateLine: number;
 }
 
+/** Union type of all supported casing conventions. */
+export type StringCaseValue =
+  | "CAMEL_CASE"
+  | "KEBAB_CASE"
+  | "PASCAL_CASE"
+  | "SNAKE_CASE";
+
 /** CLI option payload parsed by nest-commander. */
 export interface ValidatorCommandOptions {
   projects?: string[];
@@ -139,10 +146,12 @@ export type ValidatorRuleName =
   | "jupyter-notebook-application"
   | "nestjs-command-application"
   | "nestjs-command-module"
+  | "nestjs-dataloader-module"
   | "nestjs-graphql-application"
   | "nestjs-graphql-module"
   | "nestjs-service-file"
-  | "nestjs-service-module";
+  | "nestjs-service-module"
+  | "react-component";
 
 /** Per-rule validation result for a project. */
 export interface ValidatorRuleResult {

@@ -10,21 +10,21 @@ A Python + Jupyter notebook application scaffold in this monorepo.
 ## Setup
 
 ```bash
-cd applications/{{name}}
+cd applications/{{nameKebabCase}}
 uv sync
 ```
 
 ## Run tests
 
 ```bash
-cd applications/{{name}}
+cd applications/{{nameKebabCase}}
 uv run pytest
 ```
 
 ## Lint / format / typecheck
 
 ```bash
-cd applications/{{name}}
+cd applications/{{nameKebabCase}}
 uv run ruff check .
 uv run ruff format .
 uv run pyright

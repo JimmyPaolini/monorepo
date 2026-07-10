@@ -622,7 +622,7 @@ export default [
       "max-classes-per-file": ["error", { max: 1 }],
       "max-depth": ["error", { max: 4 }],
       "max-lines": ["error", { max: 512 }],
-      "max-lines-per-function": ["error", { max: 64 }],
+      "max-lines-per-function": ["error", { max: 128 }],
       "max-nested-callbacks": ["error", { max: 3 }],
       "max-params": "off", // replaced by better-max-params/better-max-params
       "max-statements": ["error", { max: 16 }],

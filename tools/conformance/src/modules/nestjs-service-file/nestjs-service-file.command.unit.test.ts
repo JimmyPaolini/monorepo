@@ -1,341 +1,279 @@
-import { execSync } from "node:child_process";
-import path from "node:path";
-
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { addProjectConfiguration } from "@nx/devkit";
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import prompts from "prompts";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as utilities from "../../utilities";
+import { GeneratorService } from "../generator/generator.service";
+import { ResolverService } from "../generator/resolver.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { NestjsServiceFileCommand } from "./nestjs-service-file.command";
 
-import type { Tree } from "@nx/devkit";
+const { flushChangesMock } = vi.hoisted(() => {
+  return {
+    flushChangesMock: vi.fn<() => void>(),
+  };
+});
 
-vi.mock("prompts", () => ({
-  default: vi.fn<typeof prompts>(),
-}));
+vi.mock("nx/src/generators/tree", async (importOriginal) => {
+  const importedModule = await importOriginal();
 
-vi.mock("node:child_process", () => ({
-  execSync: vi.fn<typeof execSync>(),
-}));
+  const actual =
+    typeof importedModule === "object" && importedModule !== null
+      ? importedModule
+      : {};
+
+  return {
+    ...actual,
+    flushChanges: flushChangesMock,
+  };
+});
 
 describe(NestjsServiceFileCommand, () => {
-  const projectName = "my-app";
-  const projectRoot = "applications/my-app";
-  const modulesDirectory = `${projectRoot}/src/modules`;
-  const repositoryRootPath = path.resolve(__dirname, "../../../../..");
-  const mockedPrompts = vi.mocked(prompts);
-
   let command: NestjsServiceFileCommand;
-  let tree: Tree;
+  let generatorService: ReturnType<typeof createMock<GeneratorService>>;
+  let resolverService: ReturnType<typeof createMock<ResolverService>>;
+  let loggerService: ReturnType<typeof createMock<LoggerService>>;
 
-  const runWithRepositoryRoot = async (
-    callback: () => Promise<void>,
-  ): Promise<void> => {
-    const originalWorkingDirectory = process.cwd();
-    process.chdir(repositoryRootPath);
-    try {
-      await callback();
-    } finally {
-      process.chdir(originalWorkingDirectory);
-    }
-  };
+  beforeEach(async () => {
+    generatorService = createMock<GeneratorService>();
+    resolverService = createMock<ResolverService>();
+    loggerService = createMock<LoggerService>();
 
-  beforeAll(async () => {
+    Object.defineProperty(resolverService, "errorMessages", {
+      value: {
+        moduleEmpty: "Module is required",
+        nameCase: "Name must be in kebab-case",
+        nameEmpty: "Name is required",
+        projectEmpty: "Project is required",
+        typeEmpty: "Type is required",
+      },
+    });
+
+    resolverService.resolveProjectDirectoryPath.mockReturnValue(
+      "applications/my-app/src/modules",
+    );
+    generatorService.buildNameSubstitutions.mockReturnValue({
+      nameCamelCase: "userProfile",
+      nameKebabCase: "user-profile",
+      namePascalCase: "UserProfile",
+      nameSnakeCase: "user_profile",
+    });
+    generatorService.buildLogMessage.mockImplementation((arguments_) => {
+      return `${arguments_.emoji} ${arguments_.label}: ${JSON.stringify(arguments_.data)}`;
+    });
+    generatorService.getGeneratedFilePaths.mockReturnValue([
+      "applications/my-app/src/modules/alpha/user-profile.service.ts",
+      "applications/my-app/src/modules/alpha/user-profile.service.unit.test.ts",
+    ]);
+    resolverService.resolveName.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "prompted-service");
+    });
+    resolverService.resolveProject.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "my-app");
+    });
+    resolverService.resolveModule.mockImplementation(async (arguments_) => {
+      return await Promise.resolve(arguments_.value ?? "alpha");
+    });
+
     const module = await Test.createTestingModule({
       providers: [
         NestjsServiceFileCommand,
         {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
           provide: LoggerService,
-          useValue: createMock<LoggerService>(),
+          useValue: loggerService,
         },
       ],
     }).compile();
 
-    command = await module.resolve(NestjsServiceFileCommand);
-  });
-
-  beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
-    mockedPrompts.mockReset();
-    addProjectConfiguration(tree, projectName, {
-      root: projectRoot,
-      tags: ["framework:nestjs"],
-    });
-    tree.write(`${modulesDirectory}/.gitkeep`, "");
+    command = module.get(NestjsServiceFileCommand);
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", async () => {
-    const module = await Test.createTestingModule({
-      providers: [
-        NestjsServiceFileCommand,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-
-    const logger = await module.resolve(LoggerService);
-
-    expect(logger.setContext).toHaveBeenCalledWith("NestjsServiceFileCommand");
-  });
-
-  it("returns parsed option values", () => {
-    expect(command.parseModuleOption("alpha")).toBe("alpha");
-    expect(command.parseNameOption("user-profile")).toBe("user-profile");
-    expect(command.parseProjectOption("my-app")).toBe("my-app");
-  });
-
-  it("generates service files from migrated generator logic", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-
-    await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          module: "alpha",
-          name: "user-profile",
-          project: projectName,
-        },
-        tree,
-      });
-    });
-
-    const modulePath = `${modulesDirectory}/alpha`;
-
-    expect(tree.exists(`${modulePath}/user-profile.service.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/user-profile.service.unit.test.ts`)).toBe(
-      true,
+  it("sets logger context", () => {
+    expect(loggerService.setContext).toHaveBeenCalledWith(
+      NestjsServiceFileCommand.name,
     );
   });
 
-  it("supports tree-first invocation overload", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
+  it("resolves valid option values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("user-profile");
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
+    resolverService.resolveModule.mockResolvedValueOnce("alpha");
+
+    await expect(command.resolveName("user-profile")).resolves.toBe(
+      "user-profile",
     );
-
-    await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          module: "alpha",
-          name: "audit-log",
-          project: projectName,
-        },
-        tree,
-      });
-    });
-
-    const modulePath = `${modulesDirectory}/alpha`;
-
-    expect(tree.exists(`${modulePath}/audit-log.service.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/audit-log.service.unit.test.ts`)).toBe(
-      true,
-    );
-  });
-
-  it("supports tree-first overload signature", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-
-    await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFile(tree, {
-        module: "alpha",
-        name: "event-log",
-        project: projectName,
-      });
-    });
-
-    const modulePath = `${modulesDirectory}/alpha`;
-
-    expect(tree.exists(`${modulePath}/event-log.service.ts`)).toBe(true);
-    expect(tree.exists(`${modulePath}/event-log.service.unit.test.ts`)).toBe(
-      true,
-    );
-  });
-
-  it("throws when modules directory has no module entries", async () => {
+    await expect(command.resolveProject("my-app")).resolves.toBe("my-app");
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          module: "alpha",
-          name: "user-profile",
-          project: projectName,
-        },
-        tree,
+      command.resolveModule({
+        module: "alpha",
+        projectName: "my-app",
       }),
-    ).rejects.toThrow(
-      `No modules found in "${modulesDirectory}". Create a module first before generating service files.`,
-    );
+    ).resolves.toBe("alpha");
   });
 
-  it("throws when selected module does not exist", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
+  it("delegates module resolution to generator service", async () => {
+    resolverService.resolveModule.mockResolvedValueOnce("alpha");
 
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          module: "missing-module",
-          name: "user-profile",
-          project: projectName,
-        },
-        tree,
-      }),
-    ).rejects.toThrow(
-      `Module "missing-module" does not exist in "${modulesDirectory}". Available modules: alpha`,
-    );
-  });
-
-  it("runs command orchestration and logs success", async () => {
-    const runGeneratorCommandSpy = vi
-      .spyOn(utilities, "runGeneratorCommandWithCallback")
-      .mockResolvedValue(undefined);
-
-    await runWithRepositoryRoot(async () => {
-      await command.run([], {
+      command.resolveModule({
         module: "alpha",
-        name: "delta-service",
-        project: projectName,
-      });
-    });
-
-    expect(runGeneratorCommandSpy).toHaveBeenCalledTimes(1);
-    expect(runGeneratorCommandSpy.mock.calls[0]?.[0]).toStrictEqual(
-      expect.objectContaining({
-        options: {
-          module: "alpha",
-          name: "delta-service",
-          project: projectName,
-        },
+        projectName: "my-app",
       }),
-    );
+    ).resolves.toBe("alpha");
 
-    runGeneratorCommandSpy.mockRestore();
-  });
+    const firstCallArguments = resolverService.resolveModule.mock.calls[0]?.[0];
 
-  it("returns callback that can be invoked for generated files", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-    const mockedExecSync = vi.mocked(execSync);
-    mockedExecSync.mockReturnValue(Buffer.from(""));
+    expect(firstCallArguments).toBeDefined();
 
-    let callback: (() => Promise<void> | void) | undefined;
-    await runWithRepositoryRoot(async () => {
-      callback =
-        await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-          options: {
-            module: "alpha",
-            name: "format-target",
-            project: projectName,
-          },
-          tree,
-        });
-    });
-
-    expect(callback).toBeTypeOf("function");
-
-    if (callback === undefined) {
-      throw new Error("Expected callback");
+    if (!firstCallArguments) {
+      return;
     }
 
-    await expect(Promise.resolve(callback())).resolves.toBeUndefined();
-    expect(mockedExecSync).toHaveBeenCalledTimes(1);
-    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
-      "pnpm exec nx format:write --files=",
+    expect(firstCallArguments.message).toBe(
+      "Which module should the service files be generated in?",
     );
-    expect(mockedExecSync.mock.calls[0]?.[0]).toContain(
-      "applications/my-app/src/modules/alpha/",
-    );
-
-    mockedExecSync.mockReset();
+    expect(firstCallArguments.project).toBe("my-app");
+    expect(firstCallArguments.tree).toBeDefined();
+    expect(firstCallArguments.value).toBe("alpha");
   });
 
-  it("prompts for module when option is not provided", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-    tree.write(
-      `${modulesDirectory}/beta/beta.module.ts`,
-      "export class Beta {}",
-    );
-    mockedPrompts.mockResolvedValueOnce({
-      module: "beta",
-    });
+  it("delegates project resolution to generator service", async () => {
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
 
-    await runWithRepositoryRoot(async () => {
-      await NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          name: "prompted-service",
-          project: projectName,
-        },
-        tree,
-      });
-    });
+    await expect(command.resolveProject("my-app")).resolves.toBe("my-app");
 
-    expect(
-      tree.exists(`${modulesDirectory}/beta/prompted-service.service.ts`),
-    ).toBe(true);
-    expect(mockedPrompts).toHaveBeenCalledTimes(1);
-  });
-
-  it("throws when no module is selected in prompt", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
-    );
-    mockedPrompts.mockResolvedValueOnce({
-      module: undefined,
-    });
-
-    await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          name: "no-module-selection",
-          project: projectName,
-        },
-        tree,
+    expect(resolverService.resolveProject).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: "Which project should the service files be generated in?",
+        tag: "framework:nestjs",
+        value: "my-app",
       }),
-    ).rejects.toThrow("No module selected");
+    );
   });
 
-  it("throws when prompted module is not in available modules", async () => {
-    tree.write(
-      `${modulesDirectory}/alpha/alpha.module.ts`,
-      "export class Alpha {}",
+  it("delegates name resolution to generator service", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("user-profile");
+
+    await expect(command.resolveName("user-profile")).resolves.toBe(
+      "user-profile",
     );
-    mockedPrompts.mockResolvedValueOnce({
-      module: "missing-module",
+
+    expect(resolverService.resolveName).toHaveBeenCalledWith({
+      message: "What is the name of the service? (kebab-case)",
+      value: "user-profile",
     });
+  });
+
+  it("rejects invalid module selection", async () => {
+    resolverService.resolveModule.mockRejectedValueOnce(
+      new Error(
+        'Module "missing-module" does not exist in project "my-app". Available modules: alpha',
+      ),
+    );
 
     await expect(
-      NestjsServiceFileCommand.generateNestjsServiceFileFromArguments({
-        options: {
-          name: "prompt-invalid-module",
-          project: projectName,
-        },
-        tree,
+      command.resolveModule({
+        module: "missing-module",
+        projectName: "my-app",
       }),
     ).rejects.toThrow(
-      `Module "missing-module" does not exist in "${modulesDirectory}". Available modules: alpha`,
+      'Module "missing-module" does not exist in project "my-app". Available modules: alpha',
+    );
+  });
+
+  it("rejects invalid direct name and project values", async () => {
+    resolverService.resolveName.mockRejectedValueOnce(
+      new Error("Name must be in kebab-case"),
+    );
+    resolverService.resolveProject.mockRejectedValueOnce(
+      new Error(
+        'Project "missing-project" does not have the "framework:nestjs" tag. Available projects: my-app',
+      ),
+    );
+
+    await expect(command.resolveName("PromptedService")).rejects.toThrow(
+      "Name must be in kebab-case",
+    );
+    await expect(command.resolveProject("missing-project")).rejects.toThrow(
+      'Project "missing-project" does not have the "framework:nestjs" tag. Available projects: my-app',
+    );
+  });
+
+  it("prompts for missing name and project values", async () => {
+    resolverService.resolveName.mockResolvedValueOnce("prompted-service");
+    resolverService.resolveProject.mockResolvedValueOnce("my-app");
+
+    await expect(command.resolveName(undefined)).resolves.toBe(
+      "prompted-service",
+    );
+    await expect(command.resolveProject(undefined)).resolves.toBe("my-app");
+  });
+
+  it("prompts for module when module option is missing", async () => {
+    resolverService.resolveModule.mockResolvedValueOnce("alpha");
+
+    await expect(
+      command.resolveModule({
+        projectName: "my-app",
+      }),
+    ).resolves.toBe("alpha");
+  });
+
+  it("propagates module resolution errors", async () => {
+    resolverService.resolveModule.mockRejectedValueOnce(
+      new Error("Module is required"),
+    );
+
+    await expect(
+      command.resolveModule({
+        projectName: "my-app",
+      }),
+    ).rejects.toThrow("Module is required");
+  });
+
+  it("runs generator orchestration", async () => {
+    await command.run([], {
+      module: "alpha",
+      name: "user-profile",
+      project: "my-app",
+    });
+
+    expect(resolverService.resolveProjectDirectoryPath).toHaveBeenCalledWith(
+      expect.anything(),
+      "my-app",
+      "src/modules",
+    );
+    expect(generatorService.generateFiles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/my-app/src/modules/alpha",
+        templateDirectoryPath:
+          "tools/conformance/src/modules/nestjs-service-file/templates",
+      }),
+    );
+    expect(generatorService.getGeneratedFilePaths).toHaveBeenCalledWith(
+      expect.objectContaining({
+        instanceDirectoryPath: "applications/my-app/src/modules/alpha",
+      }),
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      1,
+      '🛠️ NestJS service file options: {"input":{"module":"alpha","name":"user-profile","project":"my-app"},"resolved":{"module":"alpha","name":"user-profile","project":"my-app"}}',
+    );
+    expect(loggerService.log).toHaveBeenNthCalledWith(
+      2,
+      '🛠️ NestJS service file output files: ["applications/my-app/src/modules/alpha/user-profile.service.ts","applications/my-app/src/modules/alpha/user-profile.service.unit.test.ts"]',
     );
   });
 });

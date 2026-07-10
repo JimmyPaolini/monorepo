@@ -193,8 +193,7 @@ const config: KnipConfig = {
     // conformance: Nx generator plugin for scaffolding React components
     "tools/conformance": {
       entry: [
-        "src/modules/*/*.command.ts", // Command module entry points
-        "src/modules/*/*.utilities.ts", // Nx dynamic generator utility entry points
+        "src/main.ts", // Shared Nx generator export surface + CLI bootstrap
       ],
       ignore: [
         "src/modules/app.module.ts", // Transient empty file artifact in current conformance refactor branch
