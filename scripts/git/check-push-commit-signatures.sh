@@ -2,6 +2,17 @@
 
 set -e
 
+# When running inside a GitHub Copilot coding agent, commit signing is handled
+# by the agent runtime (gh-gpgsign). Skip signature verification in that case.
+if [[ "${COPILOT_AGENT_SIGN_COMMITS}" == "false" ]]; then
+  exit 0
+fi
+
+gpg_program="$(git config --get gpg.program || true)"
+if [[ "$gpg_program" == *"gh-gpgsign"* ]]; then
+  exit 0
+fi
+
 zero_sha='0000000000000000000000000000000000000000'
 unsigned_commits=()
 
