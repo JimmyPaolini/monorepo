@@ -80,6 +80,18 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[validate-code](documentation/skills/validate-code/SKILL.md)**: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
 <!-- agent-skills-table-of-contents end -->
 
+## Custom Agents
+
+<!-- custom-agents-table-of-contents start -->
+- **[change-plan](.github/agents/change-plan.agent.md)**: Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach.
+- **[ci-monitor-subagent](.github/agents/ci-monitor-subagent.agent.md)**: CI helper for /monitor-ci. Fetches CI status, retrieves fix details, or updates self-healing fixes. Executes one MCP tool call and returns the result.
+- **[create-plan](.github/agents/create-plan.agent.md)**: Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document.
+- **[Custom Agent Foundry](.github/agents/custom-agent-foundry.agent.md)**: Expert at designing and creating VS Code custom agents with optimal configurations
+- **[execute-plan](.github/agents/execute-plan.agent.md)**: Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase.
+- **[Prompt Builder](.github/agents/prompt-builder.agent.md)**: Expert prompt engineering and validation system for creating high-quality prompts - Brought to you by microsoft/edge-ai
+- **[update-plan](.github/agents/update-plan.agent.md)**: Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status.
+<!-- custom-agents-table-of-contents end -->
+
 ## Projects
 
 - **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama gemma4:e2b, ReAct agent, SearxNG metasearch with Trafilatura research processing)

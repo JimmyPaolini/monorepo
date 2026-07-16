@@ -79,6 +79,28 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "custom-agents": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that custom agents table of contents is synchronized from .github/agents/*.agent.md into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.github/agents/*.agent.md",
+        "{workspaceRoot}/AGENTS.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "dependency-cruiser": {},
     "devcontainer-configuration": {
       "cache": true,
@@ -108,6 +130,34 @@
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
+    "plan-agents": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that plan agent files in .github/agents/ are synchronized from their documentation/skills/*/SKILL.md sources (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.github/agents/change-plan.agent.md",
+        "{workspaceRoot}/.github/agents/create-plan.agent.md",
+        "{workspaceRoot}/.github/agents/execute-plan.agent.md",
+        "{workspaceRoot}/.github/agents/update-plan.agent.md",
+        "{workspaceRoot}/documentation/skills/change-plan/SKILL.md",
+        "{workspaceRoot}/documentation/skills/create-plan/SKILL.md",
+        "{workspaceRoot}/documentation/skills/execute-plan/SKILL.md",
+        "{workspaceRoot}/documentation/skills/update-plan/SKILL.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "prettier": {},
     "pull-request-template": {
       "cache": true,

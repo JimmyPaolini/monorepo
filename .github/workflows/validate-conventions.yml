@@ -86,6 +86,12 @@ jobs:
       - name: 💡 Validate Agent Skills
         run: npx nx run synchronization:agent-skills:check
 
+      - name: 🤖 Validate Plan Agents
+        run: npx nx run synchronization:plan-agents:check
+
+      - name: 📋 Validate Custom Agents
+        run: npx nx run synchronization:custom-agents:check
+
       - name: 🧩 Validate Conformance Generators
         run: npx nx run synchronization:conformance-generators:check
 

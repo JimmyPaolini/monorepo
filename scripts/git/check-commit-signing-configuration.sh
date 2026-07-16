@@ -2,6 +2,17 @@
 
 set -e
 
+# When running inside a GitHub Copilot coding agent, commit signing is handled
+# by the agent runtime (gh-gpgsign). Skip local GPG key validation in that case.
+if [[ "${COPILOT_AGENT_SIGN_COMMITS}" == "false" ]]; then
+  exit 0
+fi
+
+gpg_program="$(git config --get gpg.program || true)"
+if [[ "$gpg_program" == *"gh-gpgsign"* ]]; then
+  exit 0
+fi
+
 commit_gpg_sign="$(git config --bool --get commit.gpgsign || true)"
 if [[ "$commit_gpg_sign" != "true" ]]; then
   echo "❌ Git commit signing is required. Set commit.gpgsign=true before committing." >&2
