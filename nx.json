@@ -4,10 +4,7 @@
   "bail": false,
   "cacheDirectory": ".nx/cache",
   "defaultBase": "main",
-  "excludedGlobs": [
-    "**/tools/conformance/src/generators/**",
-    "**/tools/conformance/src/modules/*/templates/**"
-  ],
+  "excludedGlobs": ["**/tools/conformance/src/modules/*/templates/**"],
   "generators": {
     "@nx/react": {
       "application": {

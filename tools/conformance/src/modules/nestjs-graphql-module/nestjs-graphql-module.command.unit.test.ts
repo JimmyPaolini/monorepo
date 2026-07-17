@@ -103,6 +103,14 @@ describe(NestjsGraphqlModuleCommand, () => {
       providers: [
         NestjsGraphqlModuleCommand,
         {
+          provide: GeneratorService,
+          useValue: createMock<GeneratorService>(),
+        },
+        {
+          provide: ResolverService,
+          useValue: createMock<ResolverService>(),
+        },
+        {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
         },

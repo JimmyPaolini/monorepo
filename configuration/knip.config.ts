@@ -196,7 +196,6 @@ const config: KnipConfig = {
         "src/main.ts", // Shared Nx generator export surface + CLI bootstrap
       ],
       ignore: [
-        "src/modules/app.module.ts", // Transient empty file artifact in current conformance refactor branch
         "src/**/templates/**", // Template files (EJS syntax, not valid TS)
         "src/**/*.test.ts",
       ],

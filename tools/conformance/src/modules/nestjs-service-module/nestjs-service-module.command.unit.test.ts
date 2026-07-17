@@ -103,6 +103,14 @@ describe(NestjsServiceModuleCommand, () => {
       providers: [
         NestjsServiceModuleCommand,
         {
+          provide: GeneratorService,
+          useValue: createMock<GeneratorService>(),
+        },
+        {
+          provide: ResolverService,
+          useValue: createMock<ResolverService>(),
+        },
+        {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
         },

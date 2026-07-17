@@ -5,7 +5,7 @@ export const PACKAGES_DIRECTORY = "packages";
 export const TOOLS_DIRECTORY = "tools";
 export const MODULES_DIRECTORY = "src/modules";
 
-const TEMPLATE_PATTERN = "tools/conformance/src/modules/**/templates/**";
+const TEMPLATE_PATTERN = "tools/conformance/src/modules/*/templates/**";
 const CONFORMANCE_INSTANCE_DIRECTORIES = [
   APPLICATIONS_DIRECTORY,
   PACKAGES_DIRECTORY,
