@@ -9,6 +9,7 @@ import { DevcontainerConfigurationModule } from "../devcontainer-configuration/d
 import { LoggerModule } from "../logger/logger.module";
 import { PlanAgentsModule } from "../plan-agents/plan-agents.module";
 import { PullRequestTemplateModule } from "../pull-request-template/pull-request-template.module";
+import { TriageAgentsModule } from "../triage-agents/triage-agents.module";
 
 import { SynchronizationModeService } from "./synchronization-mode.service";
 import { SynchronizationCommand } from "./synchronization.command";
@@ -33,6 +34,7 @@ import { environmentSchema } from "./synchronization.constants";
     DevcontainerConfigurationModule,
     PlanAgentsModule,
     PullRequestTemplateModule,
+    TriageAgentsModule,
   ],
   providers: [SynchronizationCommand, SynchronizationModeService],
 })

@@ -225,6 +225,30 @@
         "cwd": "{projectRoot}"
       }
     },
+    "triage-agents": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents check"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Validate that triage agent files in .github/agents/ are synchronized from their documentation/skills/*/SKILL.md sources (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.github/agents/triage-deployment.agent.md",
+        "{workspaceRoot}/.github/agents/triage-submission.agent.md",
+        "{workspaceRoot}/documentation/skills/triage-deployment/SKILL.md",
+        "{workspaceRoot}/documentation/skills/triage-submission/SKILL.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "type-coverage": {},
     "typecheck": {
       "description": "Run TypeScript type checking",

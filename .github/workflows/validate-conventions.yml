@@ -89,6 +89,9 @@ jobs:
       - name: 🤖 Validate Plan Agents
         run: npx nx run synchronization:plan-agents:check
 
+      - name: 🚨 Validate Triage Agents
+        run: npx nx run synchronization:triage-agents:check
+
       - name: 📋 Validate Custom Agents
         run: npx nx run synchronization:custom-agents:check
 
