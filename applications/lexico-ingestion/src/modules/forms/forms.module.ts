@@ -5,9 +5,9 @@ import { Form } from "@monorepo/lexico-entities";
 
 import { WordsModule } from "../words/words.module";
 
-import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
-import { FormsBuilderHelper } from "./forms-builder-other.service";
-import { FormsBuilderVerbProvider } from "./forms-builder-verb.service";
+import { FormsBuilderGuardsService } from "./forms-builder-guards.service";
+import { FormsBuilderOtherService } from "./forms-builder-other.service";
+import { FormsBuilderVerbService } from "./forms-builder-verb.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 import { FormsService } from "./forms.service";
 
@@ -24,9 +24,9 @@ import { FormsService } from "./forms.service";
   providers: [
     FormsService,
     FormsTransientWordsService,
-    FormsBuilderGuardsProvider,
-    FormsBuilderHelper,
-    FormsBuilderVerbProvider,
+    FormsBuilderGuardsService,
+    FormsBuilderOtherService,
+    FormsBuilderVerbService,
   ],
 })
 export class FormsModule {}

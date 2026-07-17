@@ -1,27 +1,11 @@
 import { Injectable } from "@nestjs/common";
 
 import type { LoggerService } from "../logger/logger.service";
-import type { SynchronizationMode } from "./synchronization.types";
-
-/** Shared options for resolving and validating synchronization command mode arguments. */
-interface SynchronizationModeResolutionOptions {
-  readonly defaultMode?: SynchronizationMode;
-  readonly invalidModeLabel: string;
-  readonly loggerService: LoggerService;
-  readonly passedParameters: string[];
-  readonly usageMessage: string;
-}
-
-/** Result of mode parsing before command-specific error handling is applied. */
-type SynchronizationModeResolutionResult =
-  | {
-      modeValue: string;
-      valid: false;
-    }
-  | {
-      modeValue: SynchronizationMode;
-      valid: true;
-    };
+import type {
+  SynchronizationMode,
+  SynchronizationModeResolutionOptions,
+  SynchronizationModeResolutionResult,
+} from "./synchronization.types";
 
 /** Shared service for resolving and validating synchronization command modes. */
 @Injectable()

@@ -3,7 +3,7 @@ import _ from "lodash";
 
 import { QuintupleAspectsComposerService } from "./quintuple-aspects-composer.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 

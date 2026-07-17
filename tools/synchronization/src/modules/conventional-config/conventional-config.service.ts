@@ -27,21 +27,6 @@ import type {
 } from "./conventional-config.types";
 
 /**
- * Resolves the monorepo root from this file location.
- */
-function resolveWorkspaceRoot(): string {
-  const currentFilePath = fileURLToPath(import.meta.url);
-  const currentFileDirectory = path.dirname(currentFilePath);
-  const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
-
-  if (!existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
-    throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
-  }
-
-  return workspaceRoot;
-}
-
-/**
  * Orchestrates check and write modes for conventional-config synchronization.
  */
 @Injectable()
@@ -58,7 +43,7 @@ export class ConventionalConfigService {
 
   // 🔐 Private Fields
 
-  private readonly workspaceRoot = resolveWorkspaceRoot();
+  private readonly workspaceRoot = this.resolveWorkspaceRoot();
   private readonly conventionalConfigFile = path.join(
     this.workspaceRoot,
     "configuration/conventional.config.cjs",
@@ -87,6 +72,19 @@ export class ConventionalConfigService {
     return this.requireFromCurrentModule(
       this.releaseConfigFile,
     ) as ReleaseConfig;
+  }
+
+  /** Resolves the monorepo root from this file location. */
+  private resolveWorkspaceRoot(): string {
+    const currentFilePath = fileURLToPath(import.meta.url);
+    const currentFileDirectory = path.dirname(currentFilePath);
+    const workspaceRoot = path.resolve(currentFileDirectory, "../../../../..");
+
+    if (!existsSync(path.join(workspaceRoot, "pnpm-workspace.yaml"))) {
+      throw new Error("Could not find workspace root (pnpm-workspace.yaml)");
+    }
+
+    return workspaceRoot;
   }
 
   /** Writes release config when commit types are missing in release rules or preset config. */

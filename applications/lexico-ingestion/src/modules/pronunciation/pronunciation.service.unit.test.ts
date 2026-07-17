@@ -9,7 +9,7 @@ import { loadCheerioWithRoot } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
 
 import { PronunciationClassicalService } from "./pronunciation-classical.service";
-import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationClassifierService } from "./pronunciation-classifier.service";
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 import { PronunciationService } from "./pronunciation.service";
@@ -37,7 +37,7 @@ describe(PronunciationService, () => {
 
   let service: PronunciationService;
   let lexemeRepository: DeepMocked<Repository<Lexeme>>;
-  let pronunciationClassifier: DeepMocked<PronunciationClassifier>;
+  let pronunciationClassifier: DeepMocked<PronunciationClassifierService>;
 
   const getPronunciationServicePrivates = (): PronunciationServicePrivates =>
     service as unknown as PronunciationServicePrivates;
@@ -69,7 +69,7 @@ describe(PronunciationService, () => {
     lexemeRepository = createMock<Repository<Lexeme>>() satisfies DeepMocked<
       Repository<Lexeme>
     >;
-    pronunciationClassifier = createMock<PronunciationClassifier>();
+    pronunciationClassifier = createMock<PronunciationClassifierService>();
 
     const module = await Test.createTestingModule({
       providers: [
@@ -94,7 +94,10 @@ describe(PronunciationService, () => {
             processEcclesiasticalCharacter: () => 0,
           }),
         },
-        { provide: PronunciationClassifier, useValue: pronunciationClassifier },
+        {
+          provide: PronunciationClassifierService,
+          useValue: pronunciationClassifier,
+        },
       ],
     }).compile();
 

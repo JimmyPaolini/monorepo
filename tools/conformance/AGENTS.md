@@ -1,248 +1,296 @@
-# Conformance: Nx Custom Generator Framework
+# Conformance: NestJS Command-Line Application
 
 ## Quick Start
 
-Generate a React component (prompts for project if `--project` omitted):
+**Type**: Node.js CLI application (NestJS + `nest-commander`)
+
+**Purpose**: <!-- Briefly describe the specific purpose of this CLI application -->
+
+### Run Locally
 
 ```bash
-nx generate conformance:react-component --name=Button
-nx generate conformance:react-component --name=Button --project=lexico-components
-```
-
-Generate a NestJS service module (prompts for project if `--project` omitted):
-
-```bash
-nx generate conformance:nestjs-service-module --name=user
-nx generate conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
-```
-
-Generate a NestJS command module (prompts for project if `--project` omitted):
-
-```bash
-nx generate conformance:nestjs-command-module --name=processor
-nx generate conformance:nestjs-command-module --name=dataSync --project=lexico-ingestion
-nx g conformance:ncm --name=processor
-```
-
-Generate a NestJS GraphQL module (prompts for project if `--project` omitted):
-
-```bash
-nx generate conformance:nestjs-graphql-module --name=post
-nx generate conformance:nestjs-graphql-module --name=post --project=my-nestjs-app
-nx g conformance:ngm --name=post
-```
-
-Short alias forms:
-
-```bash
-nx g conformance:react-component --name=Dialog
-nx g conformance:nestjs-service-module --name=auth
-nx g conformance:nestjs-graphql-module --name=post
-```
-
-Generate a NestJS GraphQL API application scaffold:
-
-```bash
-nx generate conformance:nestjs-graphql-application --name=stellar-api
-nx g conformance:nestjs-graphql-application --name=stellar-api
-```
-
-Generate a NestJS command-line application scaffold:
-
-```bash
-nx generate conformance:nestjs-command-application --name=stellar-cli
-nx g conformance:nestjs-command-application --name=stellar-cli
+cp .env.default .env  # Fill in required environment variables
+nx run conformance:develop
 ```
 
 ## Architecture Overview
 
+### Tech Stack
+
+- **Framework**: NestJS (modules, dependency injection, providers)
+- **CLI runner**: `nest-commander` (`CommandRunner` + `@Command()` decorator)
+- **Env validation**: `@nestjs/config` + `zod` (`environmentSchema` in `.constants.ts`)
+- **Logging**: `pino`-backed `LoggerService` (`Scope.TRANSIENT`)
+- **Language**: Strict TypeScript
+
+### Execution Flow
+
+```text
+src/main.ts
+  └─ CommandFactory.run(MainModule)
+       └─ domain command modules            ← add under src/modules/
+```
+
 ### Directory Layout
 
 ```text
-tools/conformance/
-├── src/
-│   ├── constants.ts
-│   ├── types.ts
-│   ├── utilities.ts
-│   ├── utilities.unit.test.ts
-│   ├── generators/
-│   │   ├── react-component/
-│   │   │   ├── generator.ts
-│   │   │   ├── generator.unit.test.ts
-│   │   │   ├── schema.json
-│   │   │   └── templates/
-│   │   │       ├── __namePascalCase__.tsx
-│   │   │       └── __namePascalCase__.test.tsx
-│   │   └── nestjs-service-module/
-│   │       ├── generator.ts
-│   │       ├── generator.unit.test.ts
-│   │       ├── schema.json
-│   │       └── templates/
-│   │           ├── __nameCamelCase__.constants.ts
-│   │           ├── __nameCamelCase__.module.ts
-│   │           ├── __nameCamelCase__.service.ts
-│   │           ├── __nameCamelCase__.service.unit.test.ts
-│   │           └── __nameCamelCase__.types.ts
-│   │   └── nestjs-graphql-module/
-│   │       ├── generator.ts
-│   │       ├── generator.unit.test.ts
-│   │       ├── schema.json
-│   │       └── templates/
-│   │           ├── __nameKebabCase__.args.ts
-│   │           ├── __nameKebabCase__.constants.ts
-│   │           ├── __nameKebabCase__.dataloader.ts
-│   │           ├── __nameKebabCase__.dataloader.unit.test.ts
-│   │           ├── __nameKebabCase__.entities.ts
-│   │           ├── __nameKebabCase__.factories.ts
-│   │           ├── __nameKebabCase__.inputs.ts
-│   │           ├── __nameKebabCase__.module.ts
-│   │           ├── __nameKebabCase__.resolver.ts
-│   │           ├── __nameKebabCase__.resolver.unit.test.ts
-│   │           ├── __nameKebabCase__.service.ts
-│   │           ├── __nameKebabCase__.service.unit.test.ts
-│   │           └── __nameKebabCase__.types.ts
-│   │   └── nestjs-command-application/
-│   │       ├── generator.ts
-│   │       ├── generator.unit.test.ts
-│   │       ├── schema.json
-│   │       └── templates/
-│   │   └── nestjs-graphql-application/
-│   │       ├── generator.ts
-│   │       ├── generator.unit.test.ts
-│   │       ├── schema.json
-│   │       └── templates/
-│   └── validators/
-├── generators.json
-└── project.json
+src/
+  main.ts                           # Bootstrap — do not modify
+  main.module.ts                    # Root NestJS module (imports ConfigModule, LoggerModule)
+  constants.ts                      # Zod environmentSchema for env validation
+  modules/
+    logger/
+      logger.service.ts             # Transient pino LoggerService
+      logger.module.ts              # LoggerModule (exports LoggerService)
+    <domain>/                       # Add feature modules here
+      <domain>.module.ts
+      <domain>.command.ts
+      <domain>.service.ts
+      <domain>.types.ts
+      <domain>.constants.ts
+      <domain>.<tier>.test.ts
+testing/                            # Shared test utilities
 ```
 
-### Generator Rules
+## Development
 
-- **React component** names are **PascalCase** (e.g., `Button`, `UserCard`); files use PascalCase (`Button.tsx`)
-- **NestJS service module** names are **camelCase** (e.g., `user`, `userProfile`); files use camelCase (`user.service.ts`)
-- Both generators auto-detect the target project by framework tag (`framework:react` / `framework:nestjs`) and prompt interactively when no `--project` flag is given
-- Templates use `__variable__` filename substitution; content uses Mustache syntax (`{{variable}}`)
-- Generated files are auto-formatted
+### Adding Business Logic
 
-See [code-generator-patterns skill](../../documentation/skills/code-generator-patterns/SKILL.md) for template syntax and case transformations.
+1. **Add domain command modules** — create `src/modules/<domain>/` with a NestJS module, command, service, types, and constants.
+2. **Register in root module** — import the new module in `main.module.ts`.
+3. **Validate env vars** — extend `environmentSchema` in `constants.ts` with all required environment variables.
 
-## Generated Output
+### Logging
 
-### react-component: `--name=Button --project=lexico-components`
+`LoggerService` is `Scope.TRANSIENT` — each injecting class gets its own instance. Always call `setContext` in the constructor:
 
-Files created in `packages/lexico-components/src/components/`:
-
-```text
-packages/lexico-components/src/components/
-├── Button.tsx
-└── Button.test.tsx
+```ts
+constructor(private readonly logger: LoggerService) {
+  super();
+  this.logger.setContext(MyService.name);
+}
 ```
 
-### nestjs-service-module: `--name=user --project=my-nestjs-app`
+Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed logs in development.
 
-Files created in `<projectRoot>/src/modules/user/`:
+### Key Commands
 
-```text
-src/modules/user/
-├── user.constants.ts
-├── user.module.ts
-├── user.service.ts
-├── user.service.unit.test.ts
-└── user.types.ts
+Always prefer running tasks through Nx rather than calling the underlying tools directly.
+
+```bash
+nx run conformance:develop        # Run CLI (tsx, watch mode)
+nx run conformance:lint           # ESLint
+nx run conformance:typecheck      # tsc --noEmit
+nx run conformance:format         # oxfmt formatting
+nx run conformance:build          # Compile for production
 ```
 
-### nestjs-graphql-module: `--name=post --project=my-nestjs-app`
+### Testing
 
-Files created in `<projectRoot>/src/modules/post/`:
+Follow the monorepo's strict three-tier testing strategy. Co-locate test files with the source they test.
 
-```text
-src/modules/post/
-├── post.args.ts
-├── post.constants.ts
-├── post.dataloader.ts
-├── post.dataloader.unit.test.ts
-├── post.entities.ts
-├── post.factories.ts
-├── post.inputs.ts
-├── post.module.ts
-├── post.resolver.ts
-├── post.resolver.unit.test.ts
-├── post.service.ts
-├── post.service.unit.test.ts
-└── post.types.ts
+```bash
+nx run conformance:test:unit          # Fast (<100ms) — pure logic, mocked DI
+nx run conformance:test:integration   # Moderate (1-2s) — real DB/API I/O
+nx run conformance:test:end-to-end    # Slow (30-60s) — full CLI execution
 ```
 
-### nestjs-graphql-application: `--name=stellar-api`
+| Tier | File pattern | What to test |
+| ---- | ------------ | ------------ |
+| Unit | `*.unit.test.ts` | Pure functions, service methods with mocked deps |
+| Integration | `*.integration.test.ts` | Database queries, external API clients |
+| End-to-end | `*.end-to-end.test.ts` | Full `CommandFactory.run()` execution |
 
-Files created in `applications/stellar-api/`:
+See [Testing Strategy](../../documentation/code-quality/testing-strategy.md) for patterns and mock conventions.
 
-```text
-applications/stellar-api/
-├── src/
-│   ├── main.ts
-│   ├── main.end-to-end.test.ts
-│   └── modules/
-│       ├── stellar-api/              ← root NestJS module
-│       │   ├── stellar-api.module.ts
-│       │   ├── stellar-api.constants.ts
-│       │   └── stellar-api.types.ts
-│       ├── logger/
-│       └── sample/                   ← example GraphQL module
-│           ├── sample.module.ts
-│           ├── sample.resolver.ts
-│           ├── sample.service.ts
-│           ├── sample.dataloader.ts
-│           ├── sample.entities.ts
-│           ├── sample.inputs.ts
-│           ├── sample.args.ts
-│           ├── sample.factories.ts
-│           └── sample.*.unit.test.ts
-├── testing/
-├── project.json
-├── package.json
-└── tsconfig.json
+## Writing Modules
+
+Use the generator to scaffold new domain modules, then implement the service:
+
+```bash
+nx g conformance:nestjs-service-module --name=<domain>
 ```
+
+This creates five files in `src/modules/<domain>/`:
+
+| File | Purpose |
+| ---- | ------- |
+| `<domain>.module.ts` | Declares providers, imports, and exports |
+| `<domain>.service.ts` | Business logic — the only place you write domain code |
+| `<domain>.constants.ts` | Regex, enums, static config — never inline magic values |
+| `<domain>.types.ts` | TypeScript types scoped to this module |
+| `<domain>.service.unit.test.ts` | Unit tests bootstrapped with `Test.createTestingModule` |
+
+### Module file
+
+Register the service in both `providers` and `exports` so consumers can inject it:
+
+```ts
+@Module({
+  controllers: [],
+  exports: [MyDomainService],
+  imports: [TypeOrmModule.forFeature([MyEntity]), LoggerModule],
+  providers: [MyDomainService],
+})
+export class MyDomainModule {}
+```
+
+Add a JSDoc comment on the module class describing what domain it owns.
+
+### Generator Export Signature Pattern
+
+When exposing reusable generator functions from command modules, keep dual invocation support with explicit overloads:
+
+- `generateX({ tree, options })` for tests and argument-object call sites
+- `generateX(tree, options?)` for tree-first call sites
+
+Use this structure consistently:
+
+```ts
+export async function generateX(argumentsOrTree: XArguments): Promise<void>;
+export async function generateX(tree: Tree, options?: XOptions): Promise<void>;
+export async function generateX(
+  argumentsOrTree: Tree | XArguments,
+  options?: XOptions,
+): Promise<void> {
+  const resolved = isGeneratorInvocationArguments<XOptions>(argumentsOrTree)
+    ? normalizeGeneratorInvocationFromArguments<XOptions>(argumentsOrTree)
+    : normalizeGeneratorInvocationFromTree<XOptions>({
+        ...(options !== undefined && { options }),
+        tree: argumentsOrTree,
+      });
+
+  // implement generator logic using resolved.tree + resolved.options
+}
+```
+
+> ✅ **Best practice:** Declare both overload signatures explicitly before the implementation signature so tree-first tests and callers type-check without `Expected 1 argument, got 2` regressions.
+> ⚠️ **Warning:** Do not rely on only the implementation union signature; TypeScript call-site checking still uses declared overloads and will reject valid two-argument call patterns if the tree-first overload is missing.
+
+### Service file
+
+Follow the section-comment layout from the template — it keeps large services scannable:
+
+```ts
+@Injectable()
+export class MyDomainService {
+  // 🏗 Dependency Injection
+  constructor(
+    @InjectRepository(MyEntity)
+    private readonly repo: Repository<MyEntity>,
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(MyDomainService.name);
+  }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+}
+```
+
+Key rules:
+
+- **Call `setContext` in every constructor** — always use `MyClass.name`, never a string literal.
+- **Inject `LoggerService` as the last constructor parameter** (after repository/domain deps).
+- **Private first** — keep internal helpers in the `🔏 Private Methods` section, expose only what callers need under `🌎 Public Methods`.
+- **`readonly` everything in the constructor** — all injected deps must be `private readonly`.
+- **One service per module** — if a service grows too large, extract a sub-domain into its own module.
+
+### Constants file
+
+Move all inline values to `.constants.ts` to keep services readable:
+
+```ts
+// ♟️ Constants
+export const MY_SKIP_REGEX = /(alternative)|(archaic)|(synonym)/i;
+export const DEFAULT_PAGE_SIZE = 100;
+```
+
+### Types file
+
+Put all module-local TypeScript types and interfaces in `.types.ts`:
+
+```ts
+// 🏷️ Types
+export interface ParsedEntry {
+  word: string;
+  partOfSpeech: string;
+}
+```
+
+Do not re-export types from `index.ts` unless they are part of the public API consumed by other modules.
+
+### Registering in the root module
+
+After generating a module, import it in main.module.ts:
+
+```ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({ ... }),
+    LoggerModule,
+    MyDomainModule,   // ← add here
+  ],
+  providers: [],
+})
+export class MainModule {}
+```
+
+### Conformance check
+
+Conformance checks are run centrally from `tools/conformance/src/conformance.test.ts`, which validates generated and existing module structures against templates across the workspace (including generated command applications).
+
+```bash
+nx run conformance:test
+```
+
+## Best Practices
+
+- **Never** put business logic in `main.ts` — it bootstraps `CommandFactory` only.
+- **One command per class** — split sub-commands into separate `CommandRunner` subclasses.
+- **Validate at the boundary** — all env vars must be declared in `environmentSchema`; access via `ConfigService`, not `process.env`.
+- **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
+- **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
+
+### Strict Type Safety in Tests
+
+- Prefer **typed guard helpers** in tests over cast-based narrowing. If a mock call argument is `unknown`, add a local type predicate (for example `isValidateInstanceFileArgument`) and branch on that instead of using `as` assertions.
+- When mocking Node directory entries for `fs.readdirSync(..., { withFileTypes: true })`, return a **complete `Dirent` shape** (all `is*` methods, `name`, `parentPath`) with the correct generic (`Dirent<NonSharedBuffer>` when the call path expects buffers).
+- Avoid private-field mutation assertions in unit tests. Validate behavior through public APIs and emitted results to preserve type coverage and reduce brittle test maintenance.
+
+### Required Validation Gate
+
+- For validator and command module changes, run both checks explicitly before considering work complete:
+
+```bash
+nx run conformance:typecheck
+nx run conformance:type-coverage
+```
+
+- Treat `type-coverage` as a hard gate alongside `typecheck` for this project; passing compile checks alone is not sufficient.
+
+See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
 
 ## Troubleshooting
 
-See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and formatting issues.
+- **Command not found at runtime** — ensure the command class is listed in `providers` of its module and the module is imported by the root module.
+- **Dependency injection failure** — verify the service is `@Injectable()`, exported from its module, and that module is imported by the consuming module.
+- **Unrecognized CLI flag** — check that `@Option()` decorators in the command class exactly match the flag names passed.
+- **Env var validation error on startup** — add the missing variable to environmentSchema in src/constants.ts and to .env.default.
+
+See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspace-wide issues.
 
 ## Key Files
 
-### react-component
-
-- [src/generators/react-component/generator.ts](src/generators/react-component/generator.ts): Generator logic
-- [src/generators/react-component/schema.json](src/generators/react-component/schema.json): CLI schema (`name`, `project`)
-- [src/generators/react-component/templates/](src/generators/react-component/templates/): Templates (`__namePascalCase__.tsx`, `__namePascalCase__.test.tsx`)
-
-### nestjs-service-module
-
-- [src/generators/nestjs-service-module/generator.ts](src/generators/nestjs-service-module/generator.ts): Generator logic
-- [src/generators/nestjs-service-module/schema.json](src/generators/nestjs-service-module/schema.json): CLI schema (`name`, `project`)
-- [src/generators/nestjs-service-module/templates/](src/generators/nestjs-service-module/templates/): Templates (`__nameCamelCase__.module.ts`, `__nameCamelCase__.service.ts`, etc.)
-
-### nestjs-graphql-module
-
-- [src/generators/nestjs-graphql-module/generator.ts](src/generators/nestjs-graphql-module/generator.ts): Generator logic
-- [src/generators/nestjs-graphql-module/schema.json](src/generators/nestjs-graphql-module/schema.json): CLI schema (`name`, `project`)
-- [src/generators/nestjs-graphql-module/templates/](src/generators/nestjs-graphql-module/templates/): Templates (`__nameKebabCase__.resolver.ts`, `__nameKebabCase__.dataloader.ts`, `__nameKebabCase__.entities.ts`, `__nameKebabCase__.inputs.ts`, `__nameKebabCase__.args.ts`, `__nameKebabCase__.factories.ts`, etc.)
-
-### nestjs-command-application
-
-- [src/generators/nestjs-command-application/generator.ts](src/generators/nestjs-command-application/generator.ts): Generator logic
-- [src/generators/nestjs-command-application/schema.json](src/generators/nestjs-command-application/schema.json): CLI schema (`name`)
-- [src/generators/nestjs-command-application/templates/](src/generators/nestjs-command-application/templates/): Application scaffold templates
-
-### nestjs-graphql-application
-
-- [src/generators/nestjs-graphql-application/generator.ts](src/generators/nestjs-graphql-application/generator.ts): Generator logic
-- [src/generators/nestjs-graphql-application/schema.json](src/generators/nestjs-graphql-application/schema.json): CLI schema (`name`)
-- [src/generators/nestjs-graphql-application/templates/](src/generators/nestjs-graphql-application/templates/): Application scaffold templates (Apollo Server, sample GraphQL module)
-
-### Shared utilities
-
-- [src/utilities.ts](src/utilities.ts): `resolveProjectByTag`, `resolveNameByCase` helpers
-- [src/constants.ts](src/constants.ts): String-case converters
-- [src/types.ts](src/types.ts): Shared type definitions
-- [src/validators/](src/validators/): Conformance validators
-- [generators.json](generators.json): Generator registry
+- [src/main.ts](src/main.ts): Application bootstrap
+- [src/main.module.ts](src/main.module.ts): Root NestJS module
+- [src/constants.ts](src/constants.ts): environmentSchema (Zod)
+- [src/modules/conformance/conformance.command.ts](src/modules/conformance/conformance.command.ts): Root CLI command
+- [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
+- [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
+- [.env.default](.env.default): Environment variable template

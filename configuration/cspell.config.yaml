@@ -57,8 +57,6 @@ dictionaryDefinitions:
     path: .cspell/astronomy.txt
   - name: ics
     path: .cspell/ics.txt
-  - name: nasa-horizons
-    path: .cspell/nasa-horizons.txt
   - name: lexico
     path: .cspell/lexico.txt
   - name: affirmations
@@ -204,7 +202,6 @@ dictionaries:
   - bash
   - astronomy
   - ics
-  - nasa-horizons
   - lexico
   - affirmations
   - ai

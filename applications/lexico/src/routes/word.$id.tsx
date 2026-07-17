@@ -9,7 +9,7 @@ import { AdjectiveFormsTable } from "../components/entry/adjective-forms-table";
 import { NounFormsTable } from "../components/entry/noun-forms-table";
 import { PrincipalParts } from "../components/entry/principal-parts";
 import { VerbFormsTable } from "../components/entry/verb-forms-table";
-import { PronunciationButton } from "../components/pronunciation-button";
+import { PronunciationButton } from "../components/PronunciationButton";
 import { isBookmarked, toggleBookmark } from "../lib/bookmarks";
 import { transformForms } from "../lib/forms";
 import { getEntry } from "../lib/search";

@@ -1,25 +1,15 @@
 # Conformance
 
-Nx generator for creating React components with corresponding test files following the monorepo conventions.
+NestJS command-line application scaffold generated with `conformance:nestjs-command-application`.
 
-## Usage
+## Start
 
 ```bash
-nx generate conformance:react-component --name=my-component
-nx generate conformance:react-component --name=my-component --directory=src/components/ui
-nx generate conformance:react-component --name=my-component --export=barrel
+nx run conformance:start
 ```
 
-## Options
+## Test
 
-- `name` (required): The name of the component (PascalCase)
-- `directory` (optional): Directory where component will be created (default: src/components)
-- `export` (optional): Export strategy - `direct` or `barrel` (default: barrel)
-
-## Generated Files
-
-For a component named `Button`:
-
-- `src/components/Button/Button.tsx` - Component file
-- `src/components/Button/Button.test.tsx` - Test file
-- `src/components/Button/index.ts` - Barrel export (if export=barrel)
+```bash
+nx run conformance:test
+```

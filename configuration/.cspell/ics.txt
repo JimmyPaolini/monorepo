@@ -1,26 +1,21 @@
-# 📦 Components
-ical
-icalendar
-valarm
-vcalendar
-vevent
-vtimezone
-
-# 🕐 Date & Time
 byday
 bymonth
+caldesc
+calname
+calscale
 dtend
 dtstamp
 dtstart
 hmmss
-yyyymmddth
-
-# 🏷️ Properties
-caldesc
-calname
-calscale
+ical
+icalendar
 prodid
 rrule
 tzname
 tzoffsetfrom
 tzoffsetto
+valarm
+vcalendar
+vevent
+vtimezone
+yyyymmddth

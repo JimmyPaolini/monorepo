@@ -8,7 +8,7 @@ import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 import { createRepositoryMock } from "../../../testing/mocks";
 import { WordsService } from "../words/words.service";
 
-import { FormsBuilderHelper } from "./forms-builder-other.service";
+import { FormsBuilderOtherService } from "./forms-builder-other.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 import { FormsService } from "./forms.service";
 
@@ -20,7 +20,7 @@ describe(FormsService, () => {
   let formRepository: DeepMocked<Repository<Form>>;
   let wordFormRepository: DeepMocked<Repository<WordForm>>;
   let wordsService: Mocked<WordsService>;
-  let formsBuilderHelper: Mocked<FormsBuilderHelper>;
+  let formsBuilderHelper: Mocked<FormsBuilderOtherService>;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -48,8 +48,8 @@ describe(FormsService, () => {
           }),
         },
         {
-          provide: FormsBuilderHelper,
-          useValue: createMock<FormsBuilderHelper>({
+          provide: FormsBuilderOtherService,
+          useValue: createMock<FormsBuilderOtherService>({
             buildFormsForPartOfSpeech:
               vi.fn<
                 (partOfSpeech: string, data: unknown, lexeme: Lexeme) => Form[]
@@ -64,7 +64,7 @@ describe(FormsService, () => {
     formRepository = module.get(getRepositoryToken(Form));
     wordFormRepository = module.get(getRepositoryToken(WordForm));
     wordsService = module.get(WordsService);
-    formsBuilderHelper = module.get(FormsBuilderHelper);
+    formsBuilderHelper = module.get(FormsBuilderOtherService);
   });
 
   it("is defined", () => {

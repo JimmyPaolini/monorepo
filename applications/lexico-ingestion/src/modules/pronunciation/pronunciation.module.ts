@@ -6,7 +6,7 @@ import { Lexeme } from "@monorepo/lexico-entities";
 import { LoggerModule } from "../logger/logger.module";
 
 import { PronunciationClassicalService } from "./pronunciation-classical.service";
-import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationClassifierService } from "./pronunciation-classifier.service";
 import { PronunciationEcclesiasticalService } from "./pronunciation-ecclesiastical.service";
 import { PronunciationPhonemesService } from "./pronunciation-phonemes.service";
 import { PronunciationService } from "./pronunciation.service";
@@ -25,7 +25,7 @@ import { PronunciationService } from "./pronunciation.service";
     PronunciationPhonemesService,
     PronunciationClassicalService,
     PronunciationEcclesiasticalService,
-    PronunciationClassifier,
+    PronunciationClassifierService,
     PronunciationService,
   ],
 })

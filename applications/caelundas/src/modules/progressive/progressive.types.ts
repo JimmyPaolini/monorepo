@@ -1,10 +1,16 @@
 // 🏷️ Types
-import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 /**
- * A tuple of two events representing the beginning and ending of a progressive
- * astronomical event (e.g. An aspect forming then separating)..
- *
- * @see {@link ProgressiveService.pairProgressiveEvents}
+ * Typed aspect and body labels extracted from an event.
  */
-export type ProgressiveEventPair = [beginning: Event, ending: Event];
+export interface TypedAspectParts<
+  TAspect extends string,
+  TBody extends string,
+> {
+  aspect: TAspect;
+  aspectCapitalized: string;
+  body1: TBody;
+  body1Capitalized: string;
+  body2: TBody;
+  body2Capitalized: string;
+}

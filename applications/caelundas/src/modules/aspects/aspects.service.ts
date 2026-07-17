@@ -22,8 +22,6 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-export type { AspectBodies } from "./aspects.types";
-
 /**
  * Orchestrates aspect detection across all aspect-type services.
  *

@@ -10,7 +10,7 @@ import {
 
 import { WordsService } from "../words/words.service";
 
-import { FormsBuilderHelper } from "./forms-builder-other.service";
+import { FormsBuilderOtherService } from "./forms-builder-other.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
 /**
@@ -31,7 +31,7 @@ export class FormsService {
     @InjectRepository(Form)
     private readonly formRepository: Repository<Form>,
     private readonly wordsService: WordsService,
-    private readonly formsEntityBuilder: FormsBuilderHelper,
+    private readonly formsEntityBuilder: FormsBuilderOtherService,
     private readonly transientWordsService: FormsTransientWordsService,
   ) {}
 

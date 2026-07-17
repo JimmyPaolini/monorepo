@@ -10,17 +10,15 @@ import {
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
 
-/**
- * Returns only non-empty string values from unknown input.
- */
-function compactStringValues(values: unknown): string[] {
+const compactStringValues = (values: unknown): string[] => {
   if (!Array.isArray(values)) {
     return [];
   }
+
   return values.filter(
     (value): value is string => typeof value === "string" && value.length > 0,
   );
-}
+};
 
 const adjectiveDeclensionValueList = compactStringValues(
   adjectiveDeclensionValues,

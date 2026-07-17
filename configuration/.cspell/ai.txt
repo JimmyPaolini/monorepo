@@ -1,47 +1,31 @@
-# 🦜 LangChain
 agentic
+Apio
+duckduckgo
+faiss
+Firecrawl
+gemma
+huggingface
+jina
 langchain
 langflow
 langgraph
 langsmith
 lcel
-
-
-# 🤖 Models & Runtimes
-gemma
+metasearch
+milvus
+multimodality
 nomic
 ollama
 opencode
-qwen
-
-
-# 🔍 Search & Retrieval
-duckduckgo
-faiss
-jina
-metasearch
-milvus
+openwebui
 qdrant
+qwen
 rerank
 searx
 searxng
+Serp
+Tavily
 trafilatura
 vectorstore
 vectorstores
-
-
-# 🌐 Interfaces & Hubs
-huggingface
-multimodality
-openwebui
 webui
-
-
-# 🛠️ AI Data & Search Tools
-Apio
-Firecrawl
-firecrawl
-Serp
-serp
-Tavily
-tavily
