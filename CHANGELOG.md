@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.0](https://github.com/JimmyPaolini/monorepo/compare/v1.12.0...v1.13.0) (2026-07-17)
+
+### ✨ Features
+
+* **scripts:** ✨ add stale local branch cleanup script ([#89](https://github.com/JimmyPaolini/monorepo/issues/89)) ([7cbb1d0](https://github.com/JimmyPaolini/monorepo/commit/7cbb1d0f98ba321e39992b80d387d0f05d7539e5))
+
 ## [1.12.0](https://github.com/JimmyPaolini/monorepo/compare/v1.11.0...v1.12.0) (2026-07-17)
 
 ### ✨ Features
