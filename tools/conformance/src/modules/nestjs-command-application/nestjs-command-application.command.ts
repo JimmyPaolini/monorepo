@@ -18,7 +18,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a NestJS command application scaffold from templates.
  */
 @Command({
-  description: "Generate a NestJS command application scaffold",
+  description: "Run the nestjs-command-application command",
   name: "nestjs-command-application",
 })
 @Injectable()
@@ -53,6 +53,10 @@ export class NestjsCommandApplicationCommand extends CommandRunner {
 
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-command-application/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional application name argument.

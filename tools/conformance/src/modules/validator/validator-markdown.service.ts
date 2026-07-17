@@ -11,6 +11,8 @@ import type { ConformanceError } from "./validator.types";
 /** Validates Markdown instance files against template structure. */
 @Injectable()
 export class ValidatorMarkdownService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly validatorTemplateService: ValidatorTemplateService,
   ) {}

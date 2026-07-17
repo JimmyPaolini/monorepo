@@ -1,34 +1,32 @@
 import { Loader2, Volume2 } from "lucide-react";
-import { useCallback, useState } from "react";
+import { type ReactElement, useCallback, useState } from "react";
 
 import { Button } from "@monorepo/lexico-components";
 
 import { getPronunciation } from "../lib/pronunciation";
 
-import type { ReactNode } from "react";
-
+// 🔖 Type
 /**
- * Properties for PronunciationButton component that plays Latin audio.
+ * Props for the PronunciationButton component.
  */
-interface PronunciationButtonProperties {
-  /** Additional class names */
+export interface PronunciationButtonProps {
   className?: string;
-  /** Pronunciation dialect (classical or ecclesiastical) */
   dialect?: "classical" | "ecclesiastical";
-  /** The Latin text to pronounce */
   text: string;
 }
 
-/**
- * Button component that plays pronunciation audio for Latin text.
- */
-export function PronunciationButton({
-  className,
-  dialect = "classical",
-  text,
-}: PronunciationButtonProperties): ReactNode {
+// 🧩 Component
+export const PronunciationButton = (
+  props: PronunciationButtonProps,
+): ReactElement => {
+  const { className, dialect = "classical", text } = props;
+
+  // 🪝 Hooks
   const [isLoading, setIsLoading] = useState(false);
 
+  // 🏗 Setup
+
+  // 💪 Handler
   const handlePlay = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -61,20 +59,27 @@ export function PronunciationButton({
     }
   }, [text, dialect]);
 
+  // 🎨 Markup
+
+  // ♻️ Lifecycle
+
+  // 🔌 Short Circuits
+
   return (
-    <Button
-      className={className}
-      disabled={isLoading}
-      onClick={() => void handlePlay()}
-      size="icon"
-      title={`Play ${dialect} pronunciation`}
-      variant="ghost"
-    >
-      {isLoading ? (
-        <Loader2 className="h-4 w-4 animate-spin" />
-      ) : (
-        <Volume2 className="h-4 w-4" />
-      )}
-    </Button>
+    <div className={className}>
+      <Button
+        disabled={isLoading}
+        onClick={() => void handlePlay()}
+        size="icon"
+        title={`Play ${dialect} pronunciation`}
+        variant="ghost"
+      >
+        {isLoading ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <Volume2 className="h-4 w-4" />
+        )}
+      </Button>
+    </div>
   );
-}
+};

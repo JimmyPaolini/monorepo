@@ -19,7 +19,7 @@ import type { Tree } from "@nx/devkit";
  * Generates NestJS service files from templates.
  */
 @Command({
-  description: "Generate NestJS service files",
+  description: "Run the nestjs-service-file command",
   name: "nestjs-service-file",
 })
 @Injectable()
@@ -35,6 +35,8 @@ export class NestjsServiceFileCommand extends CommandRunner {
     this.logger.setContext(NestjsServiceFileCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "🛠️";
 
   private readonly moduleMessage: string =
@@ -47,9 +49,16 @@ export class NestjsServiceFileCommand extends CommandRunner {
   private readonly projectMessage: string =
     "Which project should the service files be generated in?";
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly tag: string = "framework:nestjs";
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-service-file/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Resolves and validates the destination module for generated service files.

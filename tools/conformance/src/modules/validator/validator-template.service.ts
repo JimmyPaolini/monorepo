@@ -6,6 +6,10 @@ import mustache from "mustache";
  */
 @Injectable()
 export class ValidatorTemplateService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Prepares rendered template and instance text for conformance validators.
    */

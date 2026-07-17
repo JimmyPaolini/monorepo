@@ -925,6 +925,7 @@
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"
   },
+  "workbench.experimental.modernUI": true,
   "workbench.experimental.share.enabled": true,
   "workbench.externalBrowser": "safari",
   "workbench.iconTheme": "material-icon-theme",

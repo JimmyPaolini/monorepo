@@ -16,6 +16,10 @@ import type { WorkspaceProject } from "./validator.types";
  */
 @Injectable()
 export class ValidatorWorkspaceService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Parses workspace project metadata from a project root path.
    */

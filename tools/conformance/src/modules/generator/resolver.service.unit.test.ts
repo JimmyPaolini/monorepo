@@ -1,7 +1,8 @@
 import path from "node:path";
 
+import { Test } from "@nestjs/testing";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { ProjectConfiguration, Tree } from "@nx/devkit";
 
@@ -114,6 +115,14 @@ function isTypePromptRequest(value: unknown): value is TypePromptRequest {
 
 describe(ResolverService, () => {
   let service: ResolverService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [ResolverService],
+    }).compile();
+
+    service = await module.resolve(ResolverService);
+  });
 
   beforeEach(() => {
     getProjectsMock.mockClear();

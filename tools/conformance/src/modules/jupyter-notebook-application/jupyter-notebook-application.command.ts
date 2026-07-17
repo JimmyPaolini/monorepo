@@ -19,7 +19,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a Jupyter notebook application scaffold from templates.
  */
 @Command({
-  description: "Generate a Jupyter notebook application scaffold",
+  description: "Run the jupyter-notebook-application command",
   name: "jupyter-notebook-application",
 })
 @Injectable()
@@ -35,6 +35,8 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
     this.logger.setContext(JupyterNotebookApplicationCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "📓";
 
   private readonly nameMessage: string =
@@ -45,10 +47,15 @@ export class JupyterNotebookApplicationCommand extends CommandRunner {
     "Jupyter notebook application output files";
   private readonly projectExistsError: string = `Directory already exists. Choose a different application name.`;
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/jupyter-notebook-application/templates";
 
   // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional application name argument.

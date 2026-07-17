@@ -11,6 +11,8 @@ import type { ConformanceError, JsonValue } from "./validator.types";
  */
 @Injectable()
 export class ValidatorJsonService {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly validatorTemplateService: ValidatorTemplateService,
   ) {}

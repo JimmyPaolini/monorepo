@@ -1,6 +1,6 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -8,7 +8,9 @@ import { ValidatorCommand } from "./validator.command";
 import { ValidatorService } from "./validator.service";
 
 describe(ValidatorCommand, () => {
-  it("is defined", async () => {
+  let command: ValidatorCommand;
+
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
         ValidatorCommand,
@@ -23,9 +25,11 @@ describe(ValidatorCommand, () => {
       ],
     }).compile();
 
-    const commandService = await module.resolve(ValidatorCommand);
+    command = await module.resolve(ValidatorCommand);
+  });
 
-    expect(commandService).toBeDefined();
+  it("is defined", () => {
+    expect(command).toBeDefined();
   });
 
   it("sets logger context", async () => {

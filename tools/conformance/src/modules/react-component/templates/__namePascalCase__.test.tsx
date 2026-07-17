@@ -11,7 +11,7 @@ describe('{{namePascalCase}}', () => {
   // 🏗 Setup
   beforeEach(() => {
     props = {
-      className: faker.helpers.arrayElement([undefined, faker.string.alpha(10)]),
+      className: faker.string.alpha(10),
     };
   });
 

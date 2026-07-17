@@ -15,6 +15,10 @@ export function buildCommandFactoryRunOptions(): CommandFactoryRunOptions {
   const commandFactoryRunOptions: CommandFactoryRunOptions = {
     bufferLogs: true,
     logger,
+    serviceErrorHandler: (error: Error): never => {
+      process.exitCode = 1;
+      throw error;
+    },
   };
   return commandFactoryRunOptions;
 }

@@ -20,6 +20,21 @@ describe("utilities", () => {
 
     expect(options.bufferLogs).toBe(true);
     expect(options.logger).toBeDefined();
+    expect(typeof options.serviceErrorHandler).toBe("function");
     expect(typeof options.logger).toBe("object");
+  });
+
+  it("rethrows service errors and sets a failing exit code", () => {
+    const options = buildCommandFactoryRunOptions();
+    const originalExitCode = process.exitCode;
+
+    process.exitCode = 0;
+
+    expect(() => {
+      options.serviceErrorHandler?.(new Error("Validation failed"));
+    }).toThrow("Validation failed");
+    expect(process.exitCode).toBe(1);
+
+    process.exitCode = originalExitCode;
   });
 });

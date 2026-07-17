@@ -20,6 +20,10 @@ import type {
  */
 @Injectable()
 export class ValidatorCommentsService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   /**
    * Builds a missing-comment error.
    */

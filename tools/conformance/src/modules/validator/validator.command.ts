@@ -19,20 +19,22 @@ import type {
  * Executes project conformance validation and emits JSON output.
  */
 @Command({
-  description: "Run conformance validation rules",
-  name: "validate",
+  description: "Run the validator command",
+  name: "validator",
 })
 @Injectable()
 export class ValidatorCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly loggerService: LoggerService,
+    private readonly logger: LoggerService,
     private readonly validatorService: ValidatorService,
   ) {
     super();
-    this.loggerService.setContext(ValidatorCommand.name);
+    this.logger.setContext(ValidatorCommand.name);
   }
+
+  // 🔐 Private Fields
 
   // 🔑 Public Fields
 
@@ -96,7 +98,7 @@ export class ValidatorCommand extends CommandRunner {
 
     const validatorResult = await this.validatorService.validate(request);
 
-    this.loggerService.log(JSON.stringify(validatorResult, null, 2));
+    this.logger.log(JSON.stringify(validatorResult, null, 2));
 
     if (!validatorResult.passed) {
       throw new Error("Validation failed");

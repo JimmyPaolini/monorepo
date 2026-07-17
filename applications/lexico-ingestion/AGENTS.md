@@ -30,9 +30,8 @@ nx run lexico-ingestion:develop
 
 ```text
 src/main.ts
-  └─ CommandFactory.run(LexicoIngestionModule)
-       └─ LexicoIngestionCommand.run()   ← implement logic here
-            └─ domain service modules       ← add under src/modules/
+  └─ CommandFactory.run(MainModule)
+       └─ domain command modules            ← add under src/modules/
 ```
 
 **Project Implementation**:
@@ -54,17 +53,15 @@ Sub-commands: `wiktionary`, `dictionary`, `words`, `clear`
 ```text
 src/
   main.ts                           # Bootstrap — do not modify
+  main.module.ts                    # Root NestJS module (imports ConfigModule, LoggerModule)
+  constants.ts                      # Zod environmentSchema for env validation
   modules/
-    lexico-ingestion/
-      lexico-ingestion.command.ts  # Root CLI entry point (CommandRunner)
-      lexico-ingestion.module.ts   # Root NestJS module (imports ConfigModule, LoggerModule)
-      lexico-ingestion.constants.ts# Zod environmentSchema for env validation
-      lexico-ingestion.types.ts    # Module-scoped TypeScript types
     logger/
       logger.service.ts             # Transient pino LoggerService
       logger.module.ts              # LoggerModule (exports LoggerService)
     <domain>/                       # Add feature modules here
       <domain>.module.ts
+      <domain>.command.ts
       <domain>.service.ts
       <domain>.types.ts
       <domain>.constants.ts
@@ -108,9 +105,9 @@ All validated via `environmentSchema` in `lexico-ingestion.constants.ts`:
 
 1. **Implement the root command** — add logic to `lexico-ingestion.command.ts` `run()`, or delegate to injected services.
 2. **Extend the pipeline** — add new steps to `LexicoIngestionCommand.run()`, or add sub-commands.
-3. **Add domain modules** — create `src/modules/<domain>/` with a NestJS module, service, types, and constants.
-4. **Register in root module** — import the new module in `lexico-ingestion.module.ts`.
-5. **Validate env vars** — extend `environmentSchema` in `lexico-ingestion.constants.ts` with all required environment variables.
+3. **Add domain command modules** — create `src/modules/<domain>/` with a NestJS module, command, service, types, and constants.
+4. **Register in root module** — import the new module in `main.module.ts`.
+5. **Validate env vars** — extend `environmentSchema` in `constants.ts` with all required environment variables.
 
 ### Logging
 
@@ -252,7 +249,7 @@ Do not re-export types from `index.ts` unless they are part of the public API co
 
 ### Registering in the root module
 
-After generating a module, import it in `lexico-ingestion.module.ts`:
+After generating a module, import it in main.module.ts:
 
 ```ts
 @Module({
@@ -261,9 +258,9 @@ After generating a module, import it in `lexico-ingestion.module.ts`:
     LoggerModule,
     MyDomainModule,   // ← add here
   ],
-  providers: [LexicoIngestionCommand],
+  providers: [],
 })
-export class LexicoIngestionModule {}
+export class MainModule {}
 ```
 
 ### Conformance check
@@ -289,7 +286,7 @@ See [TypeScript Conventions](../../documentation/conventions/typescript.md) for 
 - **Command not found at runtime** — ensure the command class is listed in `providers` of its module and the module is imported by the root module.
 - **Dependency injection failure** — verify the service is `@Injectable()`, exported from its module, and that module is imported by the consuming module.
 - **Unrecognized CLI flag** — check that `@Option()` decorators in the command class exactly match the flag names passed.
-- **Env var validation error on startup** — add the missing variable to `environmentSchema` in `.constants.ts` and to `.env.default`.
+- **Env var validation error on startup** — add the missing variable to environmentSchema in src/constants.ts and to .env.default.
 - **TypeORM entity not found** — register the entity via `TypeOrmModule.forFeature([MyEntity])` in the module that uses it.
 
 See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspace-wide issues.
@@ -298,8 +295,8 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 
 - [src/main.ts](src/main.ts): Application bootstrap
 - [src/modules/lexico-ingestion/lexico-ingestion.command.ts](src/modules/lexico-ingestion/lexico-ingestion.command.ts): Root CLI command
-- [src/modules/lexico-ingestion/lexico-ingestion.module.ts](src/modules/lexico-ingestion/lexico-ingestion.module.ts): Root NestJS module
-- [src/modules/lexico-ingestion/lexico-ingestion.constants.ts](src/modules/lexico-ingestion/lexico-ingestion.constants.ts): `environmentSchema` (Zod)
+- [src/main.module.ts](src/main.module.ts): Root NestJS module
+- [src/constants.ts](src/constants.ts): environmentSchema (Zod)
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
 - [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template

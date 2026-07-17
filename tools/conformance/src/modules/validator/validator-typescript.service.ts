@@ -20,6 +20,10 @@ import type {
  */
 @Injectable()
 export class ValidatorTypescriptService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   private readonly validatorAbstractSyntaxTreeService =
     new ValidatorAbstractSyntaxTreeService();
   private readonly validatorCommentsService = new ValidatorCommentsService();

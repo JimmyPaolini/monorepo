@@ -14,6 +14,10 @@ import type {
  */
 @Injectable()
 export class ValidatorAbstractSyntaxTreeService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
   private readonly validatorNodesService = new ValidatorNodesService();
 
   /**

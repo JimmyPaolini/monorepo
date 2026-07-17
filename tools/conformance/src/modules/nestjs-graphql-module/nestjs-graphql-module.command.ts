@@ -19,7 +19,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a NestJS GraphQL module scaffold from templates.
  */
 @Command({
-  description: "Generate a NestJS GraphQL module scaffold",
+  description: "Run the nestjs-graphql-module command",
   name: "nestjs-graphql-module",
 })
 @Injectable()
@@ -35,6 +35,8 @@ export class NestjsGraphqlModuleCommand extends CommandRunner {
     this.logger.setContext(NestjsGraphqlModuleCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "🧬";
 
   private readonly nameMessage: string =
@@ -45,9 +47,16 @@ export class NestjsGraphqlModuleCommand extends CommandRunner {
   private readonly projectMessage: string =
     "Which project should the module be generated in?";
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly tag: string = "framework:nestjs";
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-graphql-module/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional module name argument.

@@ -17,7 +17,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a React component scaffold from templates.
  */
 @Command({
-  description: "Generate a React component scaffold",
+  description: "Run the react-component command",
   name: "react-component",
 })
 @Injectable()
@@ -33,6 +33,8 @@ export class ReactComponentCommand extends CommandRunner {
     this.logger.setContext(ReactComponentCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly componentsDirectoryPath: string = COMPONENTS_DIRECTORY_PATH;
 
   private readonly logEmoji: string = "⚛️";
@@ -43,9 +45,16 @@ export class ReactComponentCommand extends CommandRunner {
   private readonly projectMessage: string =
     "Which project should the component be generated in?";
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly tag: string = "framework:react";
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/react-component/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional component name argument.

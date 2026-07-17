@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { Test } from "@nestjs/testing";
 import { workspaceRoot } from "@nx/devkit";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ValidatorWorkspaceService } from "./validator-workspace.service";
 
@@ -52,6 +52,14 @@ describe(ValidatorWorkspaceService, () => {
   const mockReaddirSync = vi.mocked(fs.readdirSync);
 
   let service: ValidatorWorkspaceService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [ValidatorWorkspaceService],
+    }).compile();
+
+    service = await module.resolve(ValidatorWorkspaceService);
+  });
 
   beforeEach(async () => {
     vi.clearAllMocks();

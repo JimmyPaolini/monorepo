@@ -19,7 +19,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a NestJS GraphQL application scaffold from templates.
  */
 @Command({
-  description: "Generate a NestJS GraphQL application scaffold",
+  description: "Run the nestjs-graphql-application command",
   name: "nestjs-graphql-application",
 })
 @Injectable()
@@ -35,6 +35,8 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
     this.logger.setContext(NestjsGraphqlApplicationCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "🕸️";
 
   private readonly nameMessage: string =
@@ -45,8 +47,15 @@ export class NestjsGraphqlApplicationCommand extends CommandRunner {
     "NestJS GraphQL application output files";
   private readonly projectExistsError: string = `Directory already exists. Choose a different application name.`;
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-graphql-application/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional application name argument.

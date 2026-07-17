@@ -25,6 +25,8 @@ import type {
 /** Executes conformance validation rules against workspace projects. */
 @Injectable()
 export class ValidatorRulesService {
+  // 🏗 Dependency Injection
+
   /** Creates the validator rules service with command and file dependencies. */
   constructor(
     private readonly generatorService: GeneratorService,

@@ -19,7 +19,7 @@ import type { Tree } from "@nx/devkit";
  * Generates a NestJS command module scaffold from templates.
  */
 @Command({
-  description: "Generate a NestJS command module scaffold",
+  description: "Run the nestjs-command-module command",
   name: "nestjs-command-module",
 })
 @Injectable()
@@ -35,6 +35,8 @@ export class NestjsCommandModuleCommand extends CommandRunner {
     this.logger.setContext(NestjsCommandModuleCommand.name);
   }
 
+  // 🔐 Private Fields
+
   private readonly logEmoji: string = "⌨️";
 
   private readonly nameMessage: string =
@@ -47,9 +49,16 @@ export class NestjsCommandModuleCommand extends CommandRunner {
     "Which project should the module be generated in?";
 
   private readonly tree: Tree = createWorkspaceTree();
+
+  // 🔑 Public Fields
+
   public readonly tag: string = "framework:nest-commander";
   public readonly templateDirectoryPath: string =
     "tools/conformance/src/modules/nestjs-command-module/templates";
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the optional module name argument.

@@ -1,6 +1,6 @@
 import { createMock } from "@golevelup/ts-vitest";
 import { Test } from "@nestjs/testing";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { GeneratorService } from "../generator/generator.service";
 import { ResolverService } from "../generator/resolver.service";
@@ -30,11 +30,12 @@ vi.mock("nx/src/generators/tree", async (importOriginal) => {
 
 describe(NestjsServiceFileCommand, () => {
   let command: NestjsServiceFileCommand;
+
   let generatorService: ReturnType<typeof createMock<GeneratorService>>;
   let resolverService: ReturnType<typeof createMock<ResolverService>>;
-  let loggerService: ReturnType<typeof createMock<LoggerService>>;
+  let loggerService: LoggerService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     generatorService = createMock<GeneratorService>();
     resolverService = createMock<ResolverService>();
     loggerService = createMock<LoggerService>();
@@ -88,22 +89,58 @@ describe(NestjsServiceFileCommand, () => {
         },
         {
           provide: LoggerService,
-          useValue: loggerService,
+          useValue: createMock<LoggerService>(),
         },
       ],
     }).compile();
 
-    command = module.get(NestjsServiceFileCommand);
+    loggerService = await module.resolve(LoggerService);
+    command = await module.resolve(NestjsServiceFileCommand);
+  });
+
+  it("sets logger context (template conformance)", async () => {
+    // template-conformance-logger-context
+    const module = await Test.createTestingModule({
+      providers: [
+        NestjsServiceFileCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("NestjsServiceFileCommand");
   });
 
   it("is defined", () => {
     expect(command).toBeDefined();
   });
 
-  it("sets logger context", () => {
-    expect(loggerService.setContext).toHaveBeenCalledWith(
-      NestjsServiceFileCommand.name,
-    );
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        NestjsServiceFileCommand,
+        {
+          provide: GeneratorService,
+          useValue: generatorService,
+        },
+        {
+          provide: ResolverService,
+          useValue: resolverService,
+        },
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("NestjsServiceFileCommand");
   });
 
   it("resolves valid option values", async () => {

@@ -1,7 +1,8 @@
 import path from "node:path";
 
+import { Test } from "@nestjs/testing";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
   execSyncMock,
@@ -83,6 +84,14 @@ function createFileEntry(name: string): FakeDirectoryEntry {
 
 describe(GeneratorService, () => {
   let service: GeneratorService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [GeneratorService],
+    }).compile();
+
+    service = await module.resolve(GeneratorService);
+  });
 
   beforeEach(() => {
     execSyncMock.mockClear();
