@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.0](https://github.com/JimmyPaolini/monorepo/compare/v1.11.0...v1.12.0) (2026-07-17)
+
+### ✨ Features
+
+* **monorepo:** ✨ integrate fallow code-quality workflows ([#74](https://github.com/JimmyPaolini/monorepo/issues/74)) ([e219208](https://github.com/JimmyPaolini/monorepo/commit/e2192087a5c5e53162ccd574ff34798384b505f7))
+
+### 🐛 Bug Fixes
+
+* **monorepo:** 🐛 enforce gpg signing checks for copilot commits ([#75](https://github.com/JimmyPaolini/monorepo/issues/75)) ([2f5c636](https://github.com/JimmyPaolini/monorepo/commit/2f5c6361cc2963dead6ad0d51832449c63bc3223))
+
+### ♻️ Code Refactoring
+
+* **conformance:** ♻️ refactor modules and add command option routing ([#82](https://github.com/JimmyPaolini/monorepo/issues/82)) ([4a4083a](https://github.com/JimmyPaolini/monorepo/commit/4a4083acc8e47e0b4d71bfde113ff681819d6ad8))
+* **monorepo:** ♻️ migrate sync scripts to synchronization tool ([#80](https://github.com/JimmyPaolini/monorepo/issues/80)) ([3ea7081](https://github.com/JimmyPaolini/monorepo/commit/3ea7081789a3cfe19477bb6a86612cc6a4218a8c))
+* **monorepo:** ♻️ standardize orchestration and deduplicate modules ([#79](https://github.com/JimmyPaolini/monorepo/issues/79)) ([a42d349](https://github.com/JimmyPaolini/monorepo/commit/a42d34955f0a943b4071a7a43644c7f726738e37))
+
+### 📦 Build System
+
+* **dependencies:** ⬆️ upgrade nx to version 23 ([#73](https://github.com/JimmyPaolini/monorepo/issues/73)) ([94b51bb](https://github.com/JimmyPaolini/monorepo/commit/94b51bb09c2011e069df142bfb5b68f3f8295286))
+* **deps:** bump the uv group across 1 directory with 3 updates ([#76](https://github.com/JimmyPaolini/monorepo/issues/76)) ([245b3f5](https://github.com/JimmyPaolini/monorepo/commit/245b3f591a024fbfa9611e0803953c7d0fd59056))
+
 ## [1.11.0](https://github.com/JimmyPaolini/monorepo/compare/v1.10.4...v1.11.0) (2026-06-18)
 
 ### ✨ Features
