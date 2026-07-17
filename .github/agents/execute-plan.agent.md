@@ -56,12 +56,8 @@ Automatically select the **first phase that contains any pending tasks** (no che
 
 ## Phase 2 — Pre-Execution Context Gathering
 
-Before dispatching any subagent, launch **one context-gathering subagent** that reads shared context once so individual task subagents stay focused.
+Before dispatching any subagent, **launch the `explore-files` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
 
-Use this as the context subagent prompt:
-
-> You are a codebase context gatherer. Your task is to read shared context needed to execute tasks in an implementation plan. Do NOT implement anything.
->
 > Plan file: **{insert plan file path}**
 >
 > Tasks to be executed:
@@ -75,11 +71,13 @@ Use this as the context subagent prompt:
 > 1. Read the root `AGENTS.md` and any relevant project `AGENTS.md` files for affected projects
 > 2. Read the FILE- entries listed in the plan — understand the current state of each affected file
 > 3. Search for any patterns, utilities, or conventions referenced in the requirements
-> 4. Return a structured **Context Report** with:
->    - **Affected Files**: current content summary of each FILE- entry
->    - **Established Patterns**: conventions and code patterns already present that tasks must follow
->    - **Project Targets**: Nx task names (lint, typecheck, test, build) for the affected projects
->    - **Gotchas**: any constraints from AGENTS.md or code structure that subagents must respect
+>
+> Return a structured **Context Report** with:
+>
+> - **Affected Files**: current content summary of each FILE- entry
+> - **Established Patterns**: conventions and code patterns already present that tasks must follow
+> - **Project Targets**: Nx task names (lint, typecheck, test, build) for the affected projects
+> - **Gotchas**: any constraints from AGENTS.md or code structure that subagents must respect
 
 After the context subagent returns, proceed to Phase 3.
 

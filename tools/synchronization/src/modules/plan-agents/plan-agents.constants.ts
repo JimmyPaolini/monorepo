@@ -50,6 +50,22 @@ export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
     tools: ["read", "edit", "search", "execute", "agent"],
   },
   {
+    agentFile: ".github/agents/explore-files.agent.md",
+    handoffs: [],
+    infer: false,
+    model: "claude-haiku-4.5",
+    skillFile: "documentation/skills/explore-files/SKILL.md",
+    tools: ["read", "search"],
+  },
+  {
+    agentFile: ".github/agents/research-sources.agent.md",
+    handoffs: [],
+    infer: false,
+    model: "claude-haiku-4.5",
+    skillFile: "documentation/skills/research-sources/SKILL.md",
+    tools: ["read", "search", "web"],
+  },
+  {
     agentFile: ".github/agents/update-plan.agent.md",
     handoffs: [
       {

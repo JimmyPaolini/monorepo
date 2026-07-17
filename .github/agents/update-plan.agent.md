@@ -57,12 +57,8 @@ Partition all tasks into three buckets:
 
 ## Phase 2 — Codebase Investigation
 
-**Launch a `runSubagent` sub-agent** to investigate the codebase against every pending and uncertain task. This sub-agent must not modify any files — only observe and report.
+**Launch the `explore-files` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
 
-Use this as the sub-agent prompt:
-
-> You are a codebase auditor. Your task is to verify which tasks from an implementation plan have been completed in the codebase, and to describe exactly how each task was implemented — including any differences from the plan. Do NOT modify any files.
->
 > Plan: **{plan name}**
 > Plan file: **{plan file path}**
 >

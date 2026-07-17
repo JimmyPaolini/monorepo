@@ -90,29 +90,15 @@ Evaluate which sub-agents (if any) are needed based on the nature of the change.
 
 **Only launch if** the change requires understanding codebase details not already captured in the plan — e.g., new file interactions, pattern conflicts, or affected code that was not part of the original research.
 
-Use this as the sub-agent prompt:
+**Launch the `explore-files` agent** for: the proposed change `${input:ChangeDescription}` in context of {plan name} at {plan file path}.
 
-> You are a codebase researcher. Your task is to gather information needed to revise an existing implementation plan.
->
-> **Existing plan**: {plan name} ({plan file path})
-> **Proposed change**: ${input:ChangeDescription}
->
-> Do NOT implement anything. Only gather and report information.
->
-> Steps:
->
-> 1. Read the existing plan file to understand current scope, approach, and constraints
-> 2. Search for files relevant to the proposed change — focus on areas NOT already covered in the plan
-> 3. Read the most relevant source files to understand how the change would interact with existing code (max 10 files)
-> 4. Check for conflicts: would the change break any existing tasks, patterns, or completed work in the plan?
-> 5. Return a structured report with:
->
->    **Change Research Summary**
->    - **Relevant Files**: files related to the change (with brief description)
->    - **Impact on Existing Plan**: how the change interacts with current tasks, requirements, and completed work
->    - **New Patterns Needed**: any conventions or patterns the change introduces
->    - **Conflicts Detected**: any contradictions between the change and existing plan content
->    - **Open Questions**: ambiguities requiring user input
+The agent returns a **Change Research Summary** with:
+
+- **Relevant Files**: files related to the change
+- **Impact on Existing Plan**: how the change interacts with current tasks, requirements, and completed work
+- **New Patterns Needed**: any conventions or patterns the change introduces
+- **Conflicts Detected**: any contradictions between the change and existing plan content
+- **Open Questions**: ambiguities requiring user input
 
 ### Sub-Agent B: External Research (Skip Unless Needed)
 
@@ -120,29 +106,14 @@ Use this as the sub-agent prompt:
 
 If both sub-agents are needed, launch them **in parallel**.
 
-Use this as the external research sub-agent prompt:
+**Launch the `research-sources` agent** for: the new or changed dependencies in `${input:ChangeDescription}`.
 
-> You are a documentation researcher. Your task is to gather external documentation relevant to a proposed change to an implementation plan.
->
-> **Existing plan**: {plan name}
-> **Proposed change**: ${input:ChangeDescription}
->
-> Do NOT implement anything. Only gather and report information.
->
-> Steps:
->
-> 1. Identify all new or changed external libraries, frameworks, APIs, or tools referenced in the proposed change
-> 2. For each dependency, gather current documentation using either option below:
->    - Tool option: use the available Context7 documentation query tools.
->    - CLI option: fetch official docs, changelogs, and release notes with commands like `curl -L <url>` and inspect local files with `rg`.
-> 3. Gather changelogs, release notes, or GitHub issues that may affect the change.
-> 4. Return a structured report with:
->
->    **External Research Summary**
->    - **Library/API Changes**: relevant APIs, breaking changes, or new capabilities
->    - **Migration Guidance**: official upgrade paths if replacing existing dependencies
->    - **Known Issues**: bugs, gotchas, or workarounds to account for
->    - **Documentation Links**: URLs to authoritative sources consulted
+The agent returns an **External Research Summary** with:
+
+- **Library/API Changes**: relevant APIs, breaking changes, or new capabilities
+- **Migration Guidance**: official upgrade paths if replacing existing dependencies
+- **Known Issues**: bugs, gotchas, or workarounds to account for
+- **Documentation Links**: URLs to authoritative sources consulted
 
 After any launched sub-agents return, review their research summaries before proceeding. If neither sub-agent was needed, proceed directly to Phase 3.
 

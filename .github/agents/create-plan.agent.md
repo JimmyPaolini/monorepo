@@ -28,56 +28,28 @@ Execute the following four phases in strict order. Do not skip any phase.
 
 ### Sub-Agent A: Codebase Research
 
-**Launch a `runSubagent` sub-agent** to autonomously research the codebase before planning. This ensures the plan reflects actual code structure rather than assumptions.
+**Launch the `explore-files` agent** to research the codebase for: **${input:PlanPurpose}**
 
-Use this as the sub-agent prompt:
+The agent returns a **Codebase Research Summary** with:
 
-> You are a codebase researcher. Your task is to gather detailed information about this codebase to prepare for creating an implementation plan for: **${input:PlanPurpose}**
->
-> Do NOT implement anything. Only gather and report information.
->
-> Steps:
->
-> 1. Read all `AGENTS.md` files: root `AGENTS.md`, and any in `applications/`, `packages/`, `infrastructure/`, `tools/`
-> 2. Search for files relevant to: `${input:PlanPurpose}` — look for related source files, tests, configs, and scripts
-> 3. Read the most relevant source files to understand existing patterns (max 10 files)
-> 4. Check `nx.json` and affected `project.json` files for task targets, caching config, and project dependencies
-> 5. Search `documentation/planning/` for any existing plans covering related work
-> 6. Return a structured report with:
->
->    **Codebase Research Summary**
->    - **Relevant Files**: list of files most relevant to the task (with brief description of each)
->    - **Existing Patterns**: conventions and patterns already established that the plan must follow
->    - **Affected Projects**: Nx projects likely affected
->    - **Reusable Code**: existing utilities, helpers, or abstractions to leverage
->    - **Related Plans**: any existing planning documents covering adjacent work
->    - **Constraints Discovered**: hard constraints from AGENTS.md, linting, typing, or CI configuration
->    - **Open Questions**: ambiguities that need user clarification
+- **Relevant Files**: files most relevant to the task
+- **Existing Patterns**: conventions and patterns the plan must follow
+- **Affected Projects**: Nx projects likely affected
+- **Reusable Code**: existing utilities and abstractions to leverage
+- **Related Plans**: existing planning documents covering adjacent work
+- **Constraints Discovered**: hard constraints from AGENTS.md, linting, typing, or CI
+- **Open Questions**: ambiguities that need user clarification
 
 ### Sub-Agent B: External Research (Conditional)
 
-**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch a second `runSubagent` sub-agent in parallel** with the codebase researcher to gather external documentation. Skip this sub-agent for purely internal refactoring.
+**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch the `research-sources` agent in parallel** for: **${input:PlanPurpose}**. Skip for purely internal refactoring.
 
-Use this as the external research sub-agent prompt:
+The agent returns an **External Research Summary** with:
 
-> You are a documentation researcher. Your task is to gather external documentation relevant to creating an implementation plan for: **${input:PlanPurpose}**
->
-> Do NOT implement anything. Only gather and report information.
->
-> Steps:
->
-> 1. Identify all external libraries, frameworks, APIs, or tools referenced in: `${input:PlanPurpose}`
-> 2. For each dependency, gather current documentation using either option below:
->    - Tool option: use the available Context7 documentation query tools.
->    - CLI option: fetch official docs, changelogs, and release notes with commands like `curl -L <url>` and inspect local files with `rg`.
-> 3. Gather package changelogs, release notes, GitHub issues, or RFC documents that may affect implementation.
-> 4. Return a structured report with:
->
->    **External Research Summary**
->    - **Library/API Changes**: breaking changes, deprecations, new APIs relevant to the plan
->    - **Migration Guidance**: official upgrade paths or community-recommended approaches
->    - **Known Issues**: open bugs, gotchas, or workarounds to account for in the plan
->    - **Documentation Links**: URLs to authoritative sources consulted
+- **Library/API Changes**: breaking changes, deprecations, new APIs relevant to the plan
+- **Migration Guidance**: official upgrade paths or community-recommended approaches
+- **Known Issues**: open bugs, gotchas, or workarounds to account for in the plan
+- **Documentation Links**: URLs to authoritative sources consulted
 
 After both sub-agents return, review their research summaries before proceeding to Phase 2.
 
