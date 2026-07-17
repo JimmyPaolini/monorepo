@@ -51,10 +51,9 @@ Before starting the monitoring loop, verify the workspace is connected to Nx Clo
 
 ## Architecture Overview
 
-1. **This skill (orchestrator)**: spawns subagents, runs scripts, prints status, does local coding work
-2. **ci-monitor-subagent (haiku)**: calls one MCP tool (ci_information or update_self_healing_fix), returns structured result, exits
-3. **ci-poll-decide.mjs (deterministic script)**: takes ci_information result + state, returns action + status message
-4. **ci-state-update.mjs (deterministic script)**: manages budget gates, post-action state transitions, and cycle classification
+1. **This skill (orchestrator)**: calls MCP tools, runs scripts, prints status, does local coding work
+2. **ci-poll-decide.mjs (deterministic script)**: takes ci_information result + state, returns action + status message
+3. **ci-state-update.mjs (deterministic script)**: manages budget gates, post-action state transitions, and cycle classification
 
 ## Status Reporting
 
@@ -163,7 +162,7 @@ prev_failure_classification = null
 
 Repeat until done:
 
-#### 2a. Spawn subagent (FETCH_STATUS)
+#### 2a. Fetch CI Status
 
 Determine select fields based on mode:
 
