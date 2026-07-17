@@ -125,5 +125,3 @@ export class PronunciationClassifierService {
     return this.ecclesiasticalService.processEcclesiasticalCharacter(args);
   }
 }
-
-export { PronunciationClassifierService as PronunciationClassifier };

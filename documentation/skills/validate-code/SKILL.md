@@ -82,6 +82,17 @@ pnpm exec nx run <project>:test --configuration=coverage
 
 If the threshold fails by a small margin, prioritize adding targeted tests for uncovered guard branches (`if (!value)`, fallback paths, sparse/undefined handling) instead of broad test rewrites.
 
+### Step 5 — Type Coverage Gate (TypeScript projects with target)
+
+If a touched TypeScript project defines a `type-coverage` target, treat it as a required gate and run it explicitly after Step 3.
+
+```bash
+pnpm exec nx run <project>:typecheck
+pnpm exec nx run <project>:type-coverage
+```
+
+> ✅ **Best practice:** Run `typecheck` and `type-coverage` back-to-back for the same project while stabilizing changes to avoid late iteration loops.
+
 ## Common Patterns
 
 ### New TypeScript files added
@@ -101,6 +112,10 @@ pnpm exec nx run <project>:analyze-code --configuration=check
 
 # 2) Re-verify coverage gates explicitly
 pnpm exec nx run <project>:test --configuration=coverage
+
+# 3) If available, enforce type coverage gate too
+pnpm exec nx run <project>:typecheck
+pnpm exec nx run <project>:type-coverage
 ```
 
 ### New skill or AGENTS.md edited

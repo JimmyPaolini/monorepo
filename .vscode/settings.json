@@ -573,14 +573,6 @@
   "githubPullRequests.pushBranch": "prompt",
   "githubPullRequests.queries": [
     {
-      "label": "🧑‍💻 Mine",
-      "query": "repo:${owner}/${repository} is:open author:${user}"
-    },
-    {
-      "label": "🤖 Agent",
-      "query": "repo:${owner}/${repository} is:open author:copilot"
-    },
-    {
       "label": "📑 Open",
       "query": "repo:${owner}/${repository} is:open"
     },
@@ -720,7 +712,6 @@
     "*.services.ts": "brainfuck",
     "*.types.ts": "typescript-def",
     "*.utilities.ts": "gemini",
-    "*.utils.ts": "gemini",
     "auth.guard.js": "authors",
     "constants.ts": "3d",
     "conventional.config.cjs": "commitlint",
@@ -741,6 +732,7 @@
     "settings.json": "settings",
     "tsconfig*.json": "tsconfig",
     "types.ts": "typescript-def",
+    "utilities.ts": "gemini",
     "validate-branch-name.config.cjs": "commitlint",
     "vitest.config.base.ts": "vitest"
   },
@@ -933,6 +925,7 @@
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"
   },
+  "workbench.experimental.modernUI": true,
   "workbench.experimental.share.enabled": true,
   "workbench.externalBrowser": "safari",
   "workbench.iconTheme": "material-icon-theme",

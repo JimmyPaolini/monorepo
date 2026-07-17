@@ -19,7 +19,7 @@ import type { LexicoIngestionCommandOptions } from "./lexico-ingestion.types";
  * selected ingestion stages in sequence.
  */
 @Command({
-  description: "Run the lexico-ingestion command-line application",
+  description: "Run the lexico-ingestion command",
   name: "lexico-ingestion",
 })
 @Injectable()

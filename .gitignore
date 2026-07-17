@@ -47,6 +47,7 @@ applications/JimmyPaolini
 # Test Coverage 🧪
 coverage
 coverage/*
+**/coverage.xml
 **/.coverage
 
 # Type Coverage 🏷️

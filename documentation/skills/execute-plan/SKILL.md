@@ -56,7 +56,9 @@ If a blocking dependency is unresolved, report it and ask the user how to procee
 
 ### 1.3 Select Scope
 
-Automatically select the **first phase that contains any pending tasks** (no checkmark in the Completed column). Do not ask the user — proceed immediately.
+By default, execute **all remaining phases** that contain pending tasks, in plan order. Do not ask the user — proceed immediately.
+
+Only narrow scope when the user explicitly sets a boundary (for example, "stop after phase 2").
 
 ## Phase 2 — Pre-Execution Context Gathering
 
@@ -69,7 +71,7 @@ Use this as the context subagent prompt:
 > Plan file: **{insert plan file path}**
 >
 > Tasks to be executed:
-> **{insert list of pending TASK-XXX identifiers and their descriptions}**
+> **{insert list of all pending TASK-XXX identifiers and their descriptions across all selected phases}**
 >
 > Requirements to follow:
 > **{insert all REQ-, SEC-, CON-, GUD-, PAT- items from the plan}**
@@ -89,7 +91,9 @@ After the context subagent returns, proceed to Phase 3.
 
 ## Phase 3 — Task Execution
 
-Execute each pending task in the selected phase by dispatching a focused subagent. Each subagent handles **exactly one TASK-XXX identifier**.
+Execute each pending task in **all selected phases** by dispatching focused subagents. Each subagent handles **exactly one TASK-XXX identifier**.
+
+Process phases in order. Within a phase, parallelize independent tasks per the dispatch rules.
 
 ### Dispatch Rules
 
@@ -152,7 +156,7 @@ If a subagent reports a failure or partial completion, **stop execution**, repor
 
 ## Phase 4 — Verification
 
-After all tasks in the selected phase are marked complete, run verification to confirm nothing is broken.
+After all tasks in all selected phases are marked complete, run verification to confirm nothing is broken.
 
 ### 4.1 Identify Verification Commands
 
@@ -188,7 +192,7 @@ Conclude with a brief execution summary:
 ```text
 ## Execution Summary
 
-Phase executed: {phase name}
+Phases executed: {phase list}
 Tasks completed: {N of M}
 Plan status: {Planned | In progress | Completed}
 
