@@ -285,12 +285,15 @@ pnpm exec nx run synchronization:devcontainer-configuration:check
 
 **If a `--configuration=check` command still fails**, review the error output and apply additional manual fixes as needed, then re-validate that target.
 
+> ✅ **Best practice:** Re-run the exact original composite `nx affected --target=... --configuration=check --files=...` command after each fix batch. A first pass may reveal additional lint/type errors hidden behind the first failure, so continue iterating until the full original command is green.
+
 #### Manual Fix Required
 
 | Failing target | What to do |
 | --- | --- |
 | `typecheck` | Read the TypeScript/Python errors. **TS**: Use optional chaining `arr[0]?.prop` for index access, avoid `any`, require explicit function return types, and use `import { type Foo }` for type-only imports. **Python**: Note that `[tool.ty]` config must remain in the project-level `pyproject.toml` (not workspace root). |
 | `spell-check` | Either fix the typo, or if it's a valid word (false negative), add it to the most relevant dictionary in `configuration/.cspell/` (e.g. `lexico.txt`, `tooling.txt`). If a suitable category doesn't exist, create a new dictionary file in `configuration/.cspell/`, register it in `configuration/cspell.config.yaml`, and refactor existing dictionaries to move any relevant words into the new dictionary. As a fallback, add it directly to `words` in `configuration/cspell.config.yaml`. |
+| `markdown-lint` (`MD024/no-duplicate-heading`) | Check whether duplicate headings also contain duplicate content. If content is verbatim duplicated, remove only the extra block. If content differs, keep both content blocks and rename one heading to a distinct, specific title. |
 | `yaml-lint` | Fix YAML syntax errors per `configuration/yamllint.yaml` rules. |
 | `stylelint` | Fix CSS issues per `configuration/stylelint.config.cjs`. |
 | `check-lockfile` | Run `pnpm install` to regenerate `pnpm-lock.yaml`. Do NOT stage the lockfile — leave it unstaged for the user to review. **Lesson**: Any manual change to a `package.json` or workspace config often requires this. |
@@ -401,6 +404,7 @@ Report a summary to the user covering:
 | ------- | ----- | --- |
 | `Unexpected token`, `Expected whitespace` | oxfmt/prettier format check failed | `nx affected --target=format --configuration=write` |
 | `error  ...  @typescript-eslint/...` | ESLint rule violation | `nx affected --target=lint --configuration=write` or manual fix |
+| `MD024/no-duplicate-heading` | Duplicate markdown heading in same file | If duplicated content is identical, remove one block; if content differs, keep both and rename one heading |
 | `Type 'X' is not assignable to 'Y'` | TypeScript type error | Manual fix — check `tsconfig.json` strict settings |
 | `Unknown word` in cspell | Unrecognized word | Add it to the most relevant dictionary in `configuration/.cspell/` (e.g. `lexico.txt`, `tooling.txt`). If a suitable category doesn't exist, create a new dictionary file, register it in `configuration/cspell.config.yaml`, and refactor existing dictionaries to move any relevant words into the new dictionary. As a fallback, add it to `configuration/cspell.config.yaml` `words` list. |
 | `lockfile needs update` | `pnpm-lock.yaml` out of sync | `pnpm install` (leave lockfile unstaged for user to review) |
