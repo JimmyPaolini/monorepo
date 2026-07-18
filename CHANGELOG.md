@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/JimmyPaolini/monorepo/compare/v1.13.0...v1.13.1) (2026-07-18)
+
+### 📦 Build System
+
+* **deps:** bump mistune from 3.2.1 to 3.3.0 in /applications/affirmations in the uv group across 1 directory ([#88](https://github.com/JimmyPaolini/monorepo/issues/88)) ([63c86fd](https://github.com/JimmyPaolini/monorepo/commit/63c86fdbd11199303f493614f12b2e1a2059376f))
+
 ## [1.13.0](https://github.com/JimmyPaolini/monorepo/compare/v1.12.0...v1.13.0) (2026-07-17)
 
 ### ✨ Features
