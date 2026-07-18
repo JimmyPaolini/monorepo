@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
@@ -255,5 +255,62 @@ describe(TriageAgentsCommand, () => {
     assertLogs(logger);
 
     processExitSpy.mockRestore();
+  });
+
+  it("handles SKILL.md content without frontmatter delimiters in write mode", async () => {
+    for (const config of TRIAGE_AGENT_CONFIGS) {
+      fileContents.set(
+        path.join(workspaceRoot, config.skillFile),
+        "No frontmatter here — plain text only",
+      );
+    }
+
+    await command.run(["write"]);
+
+    expect(writeFileSync).toHaveBeenCalledTimes(TRIAGE_AGENT_CONFIGS.length);
+
+    for (const config of TRIAGE_AGENT_CONFIGS) {
+      expect(writeFileSync).toHaveBeenCalledWith(
+        path.join(workspaceRoot, config.agentFile),
+        expect.stringContaining("description: \nname: "),
+        "utf8",
+      );
+    }
+  });
+
+  it("handles SKILL.md frontmatter with lines missing colon separator", async () => {
+    for (const config of TRIAGE_AGENT_CONFIGS) {
+      const agentFileName = config.agentFile.split("/").at(-1) ?? "";
+      const name = agentFileName.replace(".agent.md", "");
+      fileContents.set(
+        path.join(workspaceRoot, config.skillFile),
+        [
+          "---",
+          "no-colon-line",
+          `name: ${name}`,
+          `description: desc`,
+          `argument-hint: hint`,
+          "---",
+          `body content`,
+        ].join("\n"),
+      );
+    }
+
+    await command.run(["write"]);
+
+    expect(writeFileSync).toHaveBeenCalledTimes(TRIAGE_AGENT_CONFIGS.length);
+  });
+
+  it("handles a non-Error thrown during sync", async () => {
+    vi.mocked(readFileSync).mockImplementationOnce(() => {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
+      throw "string error";
+    });
+
+    await expectProcessExitOne(async () => command.run(["write"]));
+
+    expect(logger.error).toHaveBeenCalledWith(
+      expect.stringContaining("string error"),
+    );
   });
 });

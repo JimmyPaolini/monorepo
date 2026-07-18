@@ -86,7 +86,7 @@ Do not write the plan to session memory or artifact storage paths (for example `
 - Structure all content as machine-parseable formats (tables, lists, structured data)
 - Include specific file paths, function names, and exact implementation details in every task
 - Define all variables, constants, and configuration values explicitly
-- Use standardized identifier prefixes: `REQ-`, `SEC-`, `CON-`, `GUD-`, `PAT-`, `TASK-`, `ALT-`, `DEP-`, `FILE-`, `TEST-`, `RISK-`
+- Use standardized identifier prefixes: `REQ-` (requirement), `SEC-` (security), `CON-` (constraint), `GUD-` (guideline), `PAT-` (pattern), `TASK-` (task), `ALT-` (alternative), `DEP-` (dependency), `FILE-` (file), `TEST-` (test), `RISK-` (risk)
 - Populate every template section — no placeholder text in the final output
 
 ### Output File Specifications
@@ -140,7 +140,7 @@ status: 'Completed'|'In progress'|'Planned'
 
 ## 2. Implementation Steps
 
-### Implementation Phase 1
+### Phase 1
 
 - GOAL-001: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
 
@@ -150,7 +150,7 @@ status: 'Completed'|'In progress'|'Planned'
 | TASK-002 | Description of task 2 |           |                      |
 | TASK-003 | Description of task 3 |           |                      |
 
-### Implementation Phase 2
+### Phase 2
 
 - GOAL-002: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
 
@@ -160,12 +160,13 @@ status: 'Completed'|'In progress'|'Planned'
 | TASK-005 | Description of task 5 |           |      |
 | TASK-006 | Description of task 6 |           |      |
 
-## 3. Alternatives
+## 3. Files
 
-[A bullet point list of any alternative approaches that were considered and why they were not chosen. This helps to provide context and rationale for the chosen approach.]
+[List the files that will be affected by the feature or refactoring task.]
 
-- **ALT-001**: Alternative approach 1
-- **ALT-002**: Alternative approach 2
+- **FILE-001**: path/to/file.ts - Description of file
+- **FILE-002**: path/to/directory - Description of directory
+- **FILE-003**: path/to/\*\*/many/\*\*/\*-files.{ts,js} - Description of files
 
 ## 4. Dependencies
 
@@ -174,15 +175,7 @@ status: 'Completed'|'In progress'|'Planned'
 - **DEP-001**: Dependency 1
 - **DEP-002**: Dependency 2
 
-## 5. Files
-
-[List the files that will be affected by the feature or refactoring task.]
-
-- **FILE-001**: path/to/file.ts - Description of file
-- **FILE-002**: path/to/directory - Description of directory
-- **FILE-003**: path/to/\*\*/many/\*\*/\*-files.{ts,js} - Description of files
-
-## 6. Testing & Validation
+## 5. Testing & Validation
 
 [List the tests that need to be implemented to verify the feature or refactoring task.]
 
@@ -191,12 +184,19 @@ status: 'Completed'|'In progress'|'Planned'
 - **VAL-001**: Description of validation 1
 - **VAL-002**: Description of validation 2
 
-## 7. Risks & Assumptions
+## 6. Risks & Assumptions
 
 [List any risks or assumptions related to the implementation of the plan.]
 
 - **RISK-001**: Risk 1
 - **ASSUMPTION-001**: Assumption 1
+
+## 7. Alternatives
+
+[A bullet point list of any alternative approaches that were considered and why they were not chosen. This helps to provide context and rationale for the chosen approach.]
+
+- **ALT-001**: Alternative approach 1
+- **ALT-002**: Alternative approach 2
 
 ## 8. Related Specifications / Further Reading
 
