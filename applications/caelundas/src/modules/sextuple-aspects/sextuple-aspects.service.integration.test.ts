@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
 import { SextupleAspectsComposerService } from "./sextuple-aspects-composer.service";
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 /**

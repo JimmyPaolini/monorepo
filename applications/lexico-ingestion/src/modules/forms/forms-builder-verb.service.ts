@@ -9,7 +9,7 @@ import {
   ParticipleForm,
 } from "@monorepo/lexico-entities";
 
-import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
+import { FormsBuilderGuardsService } from "./forms-builder-guards.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 
 import type {
@@ -25,7 +25,7 @@ export class FormsBuilderVerbService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly guards: FormsBuilderGuardsProvider,
+    private readonly guards: FormsBuilderGuardsService,
     private readonly transientWordsService: FormsTransientWordsService,
   ) {}
 
@@ -173,5 +173,3 @@ export class FormsBuilderVerbService {
     return forms;
   }
 }
-
-export { FormsBuilderVerbService as FormsBuilderVerbProvider };

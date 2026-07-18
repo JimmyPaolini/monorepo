@@ -130,5 +130,3 @@ export class FormsBuilderGuardsService {
     return formSupineCaseValueList.includes(value);
   }
 }
-
-export { FormsBuilderGuardsService as FormsBuilderGuardsProvider };

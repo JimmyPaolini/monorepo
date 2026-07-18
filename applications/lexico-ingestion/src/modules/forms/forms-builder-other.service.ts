@@ -15,8 +15,8 @@ import {
   SupineForm,
 } from "@monorepo/lexico-entities";
 
-import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
-import { FormsBuilderVerbProvider } from "./forms-builder-verb.service";
+import { FormsBuilderGuardsService } from "./forms-builder-guards.service";
+import { FormsBuilderVerbService } from "./forms-builder-verb.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
 import {
   adjectivalPartOfSpeechSet,
@@ -38,8 +38,8 @@ export class FormsBuilderOtherService {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly guards: FormsBuilderGuardsProvider,
-    private readonly formsBuilderVerbProvider: FormsBuilderVerbProvider,
+    private readonly guards: FormsBuilderGuardsService,
+    private readonly formsBuilderVerbProvider: FormsBuilderVerbService,
     private readonly transientWordsService: FormsTransientWordsService,
   ) {}
 
@@ -500,5 +500,3 @@ export class FormsBuilderOtherService {
     return [];
   }
 }
-
-export { FormsBuilderOtherService as FormsBuilderHelper };

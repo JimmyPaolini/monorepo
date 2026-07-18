@@ -9,14 +9,18 @@ import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
 import {
+  MANUAL_LEXEMES_TO_DELETE,
+  PRAENOMEN_ABBREVIATIONS,
+} from "./manual.constants";
+import {
   buildHicTemplate,
   buildIlleTemplate,
   buildOmnisTemplate,
   buildPraenomenAbbreviationTemplate,
   buildRomanNumeralTemplate,
-  MANUAL_LEXEMES_TO_DELETE,
-  PRAENOMEN_ABBREVIATIONS,
-} from "./manual.constants";
+} from "./manual.utilities";
+
+import type { ManualPraenomenAbbreviation } from "./manual.types";
 
 /**
  * Ingests manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals).
@@ -45,7 +49,7 @@ export class ManualService {
    */
   private buildPraenomenLexeme(
     abbreviation: string,
-    praenomen: { feminine?: string; masculine?: string },
+    praenomen: ManualPraenomenAbbreviation,
   ): Lexeme {
     const lexeme = buildPraenomenAbbreviationTemplate();
     lexeme.lemma = abbreviation;
@@ -67,7 +71,7 @@ export class ManualService {
    * Builds praenomen translations for manual lexeme ingestion.
    */
   private buildPraenomenTranslations(
-    praenomen: { feminine?: string; masculine?: string },
+    praenomen: ManualPraenomenAbbreviation,
     lexeme: Lexeme,
   ): Translation[] {
     const translations: Translation[] = [];
@@ -95,9 +99,9 @@ export class ManualService {
    */
   private async ingestPraenomenAbbreviations(): Promise<void> {
     this.logger.log("🏷️ Ingesting praenomen abbreviations");
-    for (const [abbreviation, praenomen] of Object.entries(
-      PRAENOMEN_ABBREVIATIONS,
-    )) {
+    const praenomenEntries = Object.entries(PRAENOMEN_ABBREVIATIONS);
+
+    for (const [abbreviation, praenomen] of praenomenEntries) {
       await this.createManual(
         this.buildPraenomenLexeme(abbreviation, praenomen),
       );

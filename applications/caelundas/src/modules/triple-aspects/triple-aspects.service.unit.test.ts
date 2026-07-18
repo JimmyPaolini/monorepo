@@ -10,7 +10,7 @@ import { TripleAspectsComposerService } from "./triple-aspects-composer.service"
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
 import { TripleAspectsService } from "./triple-aspects.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 describe(TripleAspectsService, () => {

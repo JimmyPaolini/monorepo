@@ -37,4 +37,36 @@ describe(CaelundasCommand, () => {
   it("is defined", () => {
     expect(command).toBeDefined();
   });
+
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        CaelundasCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: InputService,
+          useValue: createMock<InputService>(),
+        },
+        {
+          provide: PerfectiveService,
+          useValue: createMock<PerfectiveService>(),
+        },
+        {
+          provide: ProgressiveService,
+          useValue: createMock<ProgressiveService>(),
+        },
+        {
+          provide: CalendarService,
+          useValue: createMock<CalendarService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("CaelundasCommand");
+  });
 });

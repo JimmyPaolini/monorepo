@@ -1,14 +1,16 @@
 import baseConfig from "../../configuration/eslint.config.ts";
 
 export default [
+  // 🙈 Ignored Files (must be first)
+  {
+    ignores: [
+      "src/modules/*/templates/**",
+      "tools/conformance/src/modules/*/templates/**",
+    ],
+  },
+
   // 🛠️ Base Config
   ...baseConfig,
-
-  // 🚫 Project Ignores
-  // Exclude scaffold template files (these are not linted as project source)
-  {
-    ignores: ["**/templates/**"],
-  },
 
   // 📦 Dependency Checks
   {
@@ -17,16 +19,7 @@ export default [
       "@nx/dependency-checks": [
         "error",
         {
-          ignoredDependencies: [
-            "@nestjs/common",
-            "@types/mustache",
-            "lodash",
-            "react",
-          ],
-          ignoredFiles: [
-            "{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}",
-            "{projectRoot}/src/generators/**/templates/**",
-          ],
+          ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
         },
       ],
     },

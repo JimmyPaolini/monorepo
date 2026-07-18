@@ -13,7 +13,7 @@ import type {
   BuildSextupleEventParameters,
   GetSextupleAspectEventArguments,
 } from "./sextuple-aspects.types";
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type {
   Aspect,
   AspectPhase,

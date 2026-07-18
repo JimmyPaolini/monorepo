@@ -11,7 +11,7 @@ import _ from "lodash";
 import { LoggerService } from "../logger/logger.service";
 
 import type { ProgressiveBodiesMeta } from "./triple-aspects.types";
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type {
   Aspect,
   AspectPhase,

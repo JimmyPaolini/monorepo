@@ -7,7 +7,7 @@ import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
-import { PronunciationClassifier } from "./pronunciation-classifier.service";
+import { PronunciationClassifierService } from "./pronunciation-classifier.service";
 import { classicalSubstitutions } from "./pronunciation.constants";
 
 import type {
@@ -28,7 +28,7 @@ export class PronunciationService {
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
     private readonly logger: LoggerService,
-    private readonly classifier: PronunciationClassifier,
+    private readonly classifier: PronunciationClassifierService,
   ) {
     this.logger.setContext(PronunciationService.name);
   }

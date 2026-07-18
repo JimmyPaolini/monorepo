@@ -1,4 +1,4 @@
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects-utilities.service";
+import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import {
   aspectBodies as minorAspectBodies,
   minorAspects,
@@ -27,7 +27,7 @@ import type { Moment } from "moment-timezone";
  * using smaller orbs than major aspects. Includes progressive event pairing for
  * duration-aware tracking.
  *
- * @see {@link AspectsUtilities} for orb and angle configuration
+ * @see {@link AspectsUtilitiesService} for orb and angle configuration
  */
 @Injectable()
 export class MinorAspectsService {
@@ -35,7 +35,7 @@ export class MinorAspectsService {
 
   constructor(
     private readonly logger: LoggerService,
-    aspectsUtilitiesService: AspectsUtilities,
+    aspectsUtilitiesService: AspectsUtilitiesService,
     private readonly minorAspectsEventService: MinorAspectsEventService,
     private readonly minorAspectsProgressiveService: MinorAspectsProgressiveService,
   ) {
@@ -48,7 +48,7 @@ export class MinorAspectsService {
   // 🔐 Private Fields
 
   private readonly detectAspectPhase: ReturnType<
-    AspectsUtilities["getIsAspect"]
+    AspectsUtilitiesService["getIsAspect"]
   >;
 
   // 🔑 Public Fields
@@ -105,7 +105,7 @@ export class MinorAspectsService {
     body1LongitudesWindow: { current: number; next: number; previous: number },
     body2LongitudesWindow: { current: number; next: number; previous: number },
   ): AspectPhase | null {
-    return AspectsUtilities.detectPhaseFromWindows({
+    return AspectsUtilitiesService.detectPhaseFromWindows({
       body1LongitudesWindow,
       body2LongitudesWindow,
       detectAspectPhase: this.detectAspectPhase,
@@ -168,7 +168,7 @@ export class MinorAspectsService {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
   }): Event[] {
-    return AspectsUtilities.scanUniqueBodyPairsAtMinute({
+    return AspectsUtilitiesService.scanUniqueBodyPairsAtMinute({
       bodies: minorAspectBodies,
       coordinateEphemerisByBody: args.coordinateEphemerisByBody,
       detect: (argumentsObject) => this.detectBodyPairAspect(argumentsObject),
