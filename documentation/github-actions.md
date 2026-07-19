@@ -180,9 +180,14 @@ All workflows call this composite action after checkout. It provides:
 
 **Jobs:**
 
-- **copilot-setup-steps** - Runs `setup-monorepo` and authenticates the GitHub CLI (`gh auth login`) for use by Copilot agents
+- **copilot-setup-steps** - Runs `setup-monorepo`, imports the repository GPG key for signed commits, and authenticates the GitHub CLI (`gh auth login`) for use by Copilot agents
 
 **Permissions:** `contents: read`, `pull-requests: write`
+
+**Required secrets for commit signing:**
+
+- `GPG_PRIVATE_KEY` - ASCII-armored private key used to sign commits in CI/Copilot runs
+- `GPG_PASSPHRASE` - Passphrase for `GPG_PRIVATE_KEY`
 
 ---
 
