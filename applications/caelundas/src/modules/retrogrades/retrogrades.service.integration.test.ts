@@ -2,7 +2,7 @@ import {
   MARGIN_MINUTES,
   retrogradeBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
@@ -100,10 +100,10 @@ function createRetrogradeEphemeris(
 describe("retrogrades.events integration", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         RetrogradesService,
-        EphemerisService,
         MathService,
         ProgressiveUtilitiesService,
       ],

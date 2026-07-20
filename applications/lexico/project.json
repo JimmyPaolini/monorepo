@@ -12,38 +12,7 @@
     "type:application"
   ],
   "targets": {
-    "analyze-code": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run lexico:clean:check",
-            "nx run lexico:dependency-cruiser",
-            "nx run lexico:format:check",
-            "nx run lexico:lint:check",
-            "nx run lexico:markdown-lint:check",
-            "nx run lexico:spell-check",
-            "nx run lexico:type-coverage",
-            "nx run lexico:typecheck",
-            "nx run lexico:yaml-lint"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run lexico:clean:write",
-            "nx run lexico:dependency-cruiser",
-            "nx run lexico:format:write",
-            "nx run lexico:lint:write",
-            "nx run lexico:markdown-lint:write",
-            "nx run lexico:spell-check",
-            "nx run lexico:type-coverage",
-            "nx run lexico:typecheck",
-            "nx run lexico:yaml-lint"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "analyze-code": {},
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",
@@ -73,24 +42,7 @@
         "cwd": "applications/lexico"
       }
     },
-    "format": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run lexico:prettier:check",
-            "nx run lexico:oxfmt:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run lexico:prettier:write",
-            "nx run lexico:oxfmt:write"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "format": {},
     "knip": {},
     "lint": {
       "configurations": {
@@ -112,7 +64,21 @@
     },
     "markdown-lint": {},
     "oxfmt": {},
-    "oxlint": {},
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint --config configuration/oxlint.config.ts {args} {projectRoot}/src --ignore-pattern='{projectRoot}/src/routeTree.gen.ts'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "prettier": {},
     "preview": {
       "description": "Preview the production build",

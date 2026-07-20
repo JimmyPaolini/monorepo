@@ -51,10 +51,10 @@ CHANGELOG.md
 # ⚙️ Generated files
 **/routeTree.gen.ts
 projectStructure.cache.json
-**/lexico-components/src/lib/utils
-**/lexico-components/src/components/ui
-**/lexico-components/src/lib
-**/lexico-components/src/hooks
+**/packages/lexico-components/src/lib/utils
+**/packages/lexico-components/src/components/**
+**/packages/lexico-components/src/lib/**
+**/packages/lexico-components/src/hooks/**
 **/conformance/**/templates/**
 
 # 🏗 Infrastructure templates

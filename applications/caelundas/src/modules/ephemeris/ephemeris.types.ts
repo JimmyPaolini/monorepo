@@ -1,5 +1,6 @@
-// 🏷️ Types
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
+
+// 🏷️ Types
 
 /**
  * Time-indexed ephemeris of horizontal coordinates (observer frame).

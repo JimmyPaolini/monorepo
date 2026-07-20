@@ -26,6 +26,7 @@ const config: KnipConfig = {
     "trivy", // Trivy CLI, used for security scanning (container images & infrastructure)
     "uv", // uv Python package manager, used in lint-staged for nbstripout
     "unset", // Shell builtin, used in project.json pre-commit command
+    "diff", // Used by root scripts and shell checks
     "squawk",
     "gh", // GitHub CLI, used by scripts/orchestrate-agents.ts to run Copilot sessions
   ],
@@ -88,6 +89,7 @@ const config: KnipConfig = {
         "**/dist/**",
         "**/coverage/**",
         "applications/JimmyPaolini/**",
+        "pnpm-workspace.yaml", // Catalog dependencies are shared across workspace; knip would flag all as unused in root
         // Skill scripts are invoked by the skill framework, not imported in code
         "**/.agents/skills/**/scripts/**",
         "**/.claude/skills/**/scripts/**",

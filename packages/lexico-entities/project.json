@@ -59,21 +59,22 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run lexico-entities:prettier:check",
+            "# nx run lexico-entities:prettier:check",
             "nx run lexico-entities:oxfmt:check",
             "nx run lexico-entities:sqlfluff-format:check"
           ],
-          "parallel": true
+          "parallel": false
         },
         "write": {
           "commands": [
-            "nx run lexico-entities:prettier:write",
+            "# nx run lexico-entities:prettier:write",
             "nx run lexico-entities:oxfmt:write",
             "nx run lexico-entities:sqlfluff-format:write"
           ],
           "parallel": false
         }
-      }
+      },
+      "description": "Use oxfmt as the single source of truth for formatting. Prettier is excluded to avoid formatter conflicts on TypeScript union formatting."
     },
     "knip": {},
     "lint": {

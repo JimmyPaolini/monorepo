@@ -115,8 +115,8 @@
     "markdown-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint-cli2 --config ../../configuration/.markdownlint-cli2.jsonc '*.md' 'src/**/*.md' 'testing/**/*.md'",
-        "cwd": "{projectRoot}"
+        "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
+        "cwd": "{workspaceRoot}"
       }
     },
     "nbstripout": {
@@ -211,15 +211,15 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run ruff format --check src/ testing/",
+        "command": "uv run ruff format {args} src/ testing/",
         "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "command": "uv run ruff format --check src/ testing/"
+          "args": "--check"
         },
         "write": {
-          "command": "uv run ruff format src/ testing/"
+          "args": ""
         }
       }
     },
@@ -227,15 +227,15 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run ruff check src/ testing/",
+        "command": "uv run ruff check {args} src/ testing/",
         "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "command": "uv run ruff check src/ testing/"
+          "args": ""
         },
         "write": {
-          "command": "uv run ruff check --fix src/ testing/"
+          "args": "--fix"
         }
       }
     },

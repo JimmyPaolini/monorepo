@@ -6,8 +6,7 @@ import {
   illuminationBodies as allIlluminationBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { typedFromEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
-import { MathService } from "@caelundas/src/modules/math/math.service";
-import { Inject, Injectable, Optional } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 import { EphemerisConstantsService } from "./ephemeris-constants.service";
@@ -44,21 +43,12 @@ export class EphemerisService {
   // 🏗 Dependency Injection
 
   constructor(
-    @Optional()
-    @Inject(EphemerisAggregationService)
-    private readonly aggregationOrMathService?:
-      | EphemerisAggregationService
-      | MathService,
-    @Optional()
-    private readonly coordinate?: EphemerisCoordinateService,
-    @Optional()
-    private readonly constants?: EphemerisConstantsService,
-    @Optional()
-    private readonly horizon?: EphemerisHorizonService,
-    @Optional()
-    private readonly phenomena?: EphemerisPhenomenaService,
-    @Optional()
-    private readonly time?: EphemerisTimeService,
+    private readonly ephemerisAggregationService: EphemerisAggregationService,
+    private readonly ephemerisCoordinateService: EphemerisCoordinateService,
+    private readonly ephemerisConstantsService: EphemerisConstantsService,
+    private readonly ephemerisHorizonService: EphemerisHorizonService,
+    private readonly ephemerisPhenomenaService: EphemerisPhenomenaService,
+    private readonly ephemerisTimeService: EphemerisTimeService,
   ) {
     initializeSwissEphemeris();
   }
@@ -66,66 +56,45 @@ export class EphemerisService {
   // 🔏 Private Methods
 
   /**
-   * Resolves the aggregation service from optional constructor wiring.
+   * Returns the aggregation service.
    */
   private getAggregationService(): EphemerisAggregationService {
-    if (
-      this.aggregationOrMathService === undefined ||
-      !("buildEphemerisEntries" in this.aggregationOrMathService)
-    ) {
-      throw new Error("EphemerisAggregationService is not available");
-    }
-    return this.aggregationOrMathService;
+    return this.ephemerisAggregationService;
   }
 
   /**
-   * Ensures the constants service is available before use.
+   * Returns the constants service.
    */
   private getConstantsService(): EphemerisConstantsService {
-    if (this.constants === undefined) {
-      throw new Error("EphemerisConstantsService is not available");
-    }
-    return this.constants;
+    return this.ephemerisConstantsService;
   }
 
   /**
-   * Ensures the coordinate service is available before use.
+   * Returns the coordinate service.
    */
   private getCoordinateService(): EphemerisCoordinateService {
-    if (this.coordinate === undefined) {
-      throw new Error("EphemerisCoordinateService is not available");
-    }
-    return this.coordinate;
+    return this.ephemerisCoordinateService;
   }
 
   /**
-   * Ensures the horizon service is available before use.
+   * Returns the horizon service.
    */
   private getHorizonService(): EphemerisHorizonService {
-    if (this.horizon === undefined) {
-      throw new Error("EphemerisHorizonService is not available");
-    }
-    return this.horizon;
+    return this.ephemerisHorizonService;
   }
 
   /**
-   * Ensures the phenomena service is available before use.
+   * Returns the phenomena service.
    */
   private getPhenomenaService(): EphemerisPhenomenaService {
-    if (this.phenomena === undefined) {
-      throw new Error("EphemerisPhenomenaService is not available");
-    }
-    return this.phenomena;
+    return this.ephemerisPhenomenaService;
   }
 
   /**
-   * Ensures the time service is available before use.
+   * Returns the time service.
    */
   private getTimeService(): EphemerisTimeService {
-    if (this.time === undefined) {
-      throw new Error("EphemerisTimeService is not available");
-    }
-    return this.time;
+    return this.ephemerisTimeService;
   }
 
   // 🌎 Public Methods
