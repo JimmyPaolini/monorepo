@@ -7,6 +7,7 @@
       "configurations": {
         "check": {
           "commands": [
+            "nx run {projectName}:check-catalog-manifests",
             "nx run {projectName}:clean:check",
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
@@ -27,6 +28,7 @@
         },
         "write": {
           "commands": [
+            "nx run {projectName}:check-catalog-manifests",
             "nx run {projectName}:measure-code:write",
             "nx run synchronization:agent-skills:write",
             "nx run synchronization:conventional-config:write",
@@ -69,6 +71,14 @@
       "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/audit-security.yml",
       "executor": "nx:run-commands",
       "options": {}
+    },
+    "check-catalog-manifests": {
+      "description": "Enforce catalog: protocol for external dependencies in workspace package manifests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx scripts/check-workspace-catalogs.ts",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "check-lockfile": {
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files",
@@ -289,7 +299,7 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run monorepo:prettier:check",
+            "# nx run monorepo:prettier:check",
             "nx run monorepo:oxfmt:check",
             "nx run monorepo:sqlfluff-format:check"
           ],
@@ -297,13 +307,14 @@
         },
         "write": {
           "commands": [
-            "nx run monorepo:prettier:write",
+            "# nx run monorepo:prettier:write",
             "nx run monorepo:oxfmt:write",
             "nx run monorepo:sqlfluff-format:write"
           ],
           "parallel": false
         }
-      }
+      },
+      "description": "Use oxfmt as the single source of truth for formatting. Prettier is excluded to avoid formatter conflicts on TypeScript union formatting."
     },
     "gitleaks": {
       "cache": true,
@@ -440,16 +451,20 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "oxfmt -c configuration/oxfmt.config.ts {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "oxfmt -c configuration/oxfmt.config.ts {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
       "description": "Format workspace root files with oxfmt (config files, scripts, documentation, infrastructure)",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/oxfmt.config.ts", "default"],
+      "inputs": [
+        "{workspaceRoot}/configuration/.oxfmtignore",
+        "{workspaceRoot}/configuration/oxfmt.config.ts",
+        "default"
+      ],
       "options": {
         "cwd": "{projectRoot}"
       }
@@ -458,10 +473,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "oxlint --config configuration/oxlint.config.ts '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+          "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         },
         "write": {
-          "command": "oxlint --config configuration/oxlint.config.ts {args} '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+          "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore {args} '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         }
       },
       "defaultConfiguration": "check",
@@ -579,17 +594,17 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --check --ignore-unknown ."
+          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore --check --ignore-unknown ."
         },
         "write": {
-          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --write --ignore-unknown ."
+          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore --write --ignore-unknown ."
         }
       },
       "defaultConfiguration": "write",
       "description": "Format workspace root files with Prettier (excluding NX projects)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
+        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore --ignore-unknown .",
         "cwd": "{projectRoot}"
       }
     },

@@ -3,7 +3,7 @@ import {
   ingressBodies as peakIngressBodies,
   ingressBodies as signIngressBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
@@ -46,10 +46,10 @@ describe(IngressesService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         IngressesComposerService,
         IngressesService,
-        EphemerisService,
         LoggerService,
         MathService,
       ],

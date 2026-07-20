@@ -1,24 +1,24 @@
 {
   "dependencies": {
-    "@golevelup/ts-vitest": "^4.0.0",
-    "@nestjs/common": "^11.1.26",
-    "@nestjs/config": "^4.0.4",
-    "@nestjs/core": "^11.1.26",
-    "nest-commander": "^3.20.1",
-    "pino": "^10.3.1",
-    "reflect-metadata": "^0.2.2",
-    "zod": "^4.4.3"
+    "@golevelup/ts-vitest": "catalog:",
+    "@nestjs/common": "catalog:",
+    "@nestjs/config": "catalog:",
+    "@nestjs/core": "catalog:",
+    "nest-commander": "catalog:",
+    "pino": "catalog:",
+    "reflect-metadata": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@nestjs/testing": "^11.1.26",
-    "@nx/eslint-plugin": "^23.0.0",
-    "@swc/core": "^1.15.40",
-    "@swc/helpers": "^0.5.21",
-    "@swc-node/register": "^1.11.1",
-    "@types/node": "^25.9.1",
-    "@vitest/coverage-v8": "^4.1.7",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "@nestjs/testing": "catalog:",
+    "@nx/eslint-plugin": "catalog:",
+    "@swc/core": "catalog:",
+    "@swc/helpers": "catalog:",
+    "@swc-node/register": "catalog:",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "name": "{{nameKebabCase}}",
   "type": "module",

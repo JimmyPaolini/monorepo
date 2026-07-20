@@ -1,4 +1,4 @@
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
@@ -20,13 +20,13 @@ describe(TwilightsService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         TwilightsBuilderService,
         TwilightsComposerService,
         TwilightsDetectorService,
         TwilightsService,
-        EphemerisService,
         MathService,
         ProgressiveUtilitiesService,
       ],

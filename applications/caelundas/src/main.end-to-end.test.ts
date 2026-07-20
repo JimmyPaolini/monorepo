@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { createMock } from "@golevelup/ts-vitest";
 import _ from "lodash";
 import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -8,6 +9,12 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { CalendarService } from "./modules/calendar/calendar.service";
 import { LoggerService } from "./modules/logger/logger.service";
 
+import type { EphemerisAggregationService } from "./modules/ephemeris/ephemeris-aggregation.service";
+import type { EphemerisConstantsService } from "./modules/ephemeris/ephemeris-constants.service";
+import type { EphemerisCoordinateService } from "./modules/ephemeris/ephemeris-coordinate.service";
+import type { EphemerisHorizonService } from "./modules/ephemeris/ephemeris-horizon.service";
+import type { EphemerisPhenomenaService } from "./modules/ephemeris/ephemeris-phenomena.service";
+import type { EphemerisTimeService } from "./modules/ephemeris/ephemeris-time.service";
 import type { Environment } from "./modules/input/input.types";
 import type { ConfigService } from "@nestjs/config";
 
@@ -273,7 +280,14 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         new ProgressiveAspectService(),
         progressiveUtilitiesService,
       );
-      const ephemerisService = new EphemerisService(mathService);
+      const ephemerisService = new EphemerisService(
+        createMock<EphemerisAggregationService>(),
+        createMock<EphemerisCoordinateService>(),
+        createMock<EphemerisConstantsService>(),
+        createMock<EphemerisHorizonService>(),
+        createMock<EphemerisPhenomenaService>(),
+        createMock<EphemerisTimeService>(),
+      );
       const aspectEphemerisService = new AspectEphemerisService(
         ephemerisService,
       );

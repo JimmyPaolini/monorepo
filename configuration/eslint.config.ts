@@ -63,20 +63,6 @@ export default [
       "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
       "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",
       "**/library.json",
-      // Nx-generated agent skill folders
-      ".github/skills/monitor-ci/**",
-      ".github/skills/nx-generate/**",
-      ".github/skills/nx-import/**",
-      ".github/skills/nx-plugins/**",
-      ".github/skills/nx-run-tasks/**",
-      ".github/skills/nx-workspace/**",
-      "documentation/skills/monitor-ci/**",
-      "documentation/skills/nx-generate/**",
-      "documentation/skills/nx-import/**",
-      "documentation/skills/nx-plugins/**",
-      "documentation/skills/nx-run-tasks/**",
-      "documentation/skills/nx-workspace/**",
-      "documentation/skills/link-workspace-packages/**",
     ],
   },
 
@@ -222,7 +208,6 @@ export default [
             param: { parameter: true },
             pkg: { package: true },
             prod: { production: true },
-            prop: { property: true },
             px: { pixel: true },
             rel: { relative: true },
             req: { request: true },
@@ -252,6 +237,8 @@ export default [
       "unicorn/no-nested-ternary": "off",
       // Placeholder files with only a comment header are intentional
       "unicorn/no-empty-file": "off",
+      // Preserve readability for long numeric literals with separators
+      "unicorn/numeric-separators-style": "off",
     },
   },
 

@@ -4,9 +4,23 @@ import { CaelundasModule } from "./modules/caelundas/caelundas.module";
 
 import type * as NestCommanderModule from "nest-commander";
 
+interface CommandFactoryModule {
+  readonly name?: string;
+}
+
+interface CommandFactoryOptions {
+  readonly bufferLogs?: boolean;
+  readonly logger?: unknown;
+}
+
 const { mockCommandFactoryRun } = vi.hoisted(() => ({
   mockCommandFactoryRun: vi
-    .fn<() => Promise<void>>()
+    .fn<
+      (
+        rootModule: CommandFactoryModule,
+        options: CommandFactoryOptions,
+      ) => Promise<void>
+    >()
     .mockResolvedValue(undefined),
 }));
 
@@ -31,21 +45,15 @@ describe("main", () => {
 
     expect(mockCommandFactoryRun).toHaveBeenCalledTimes(1);
 
-    const firstCall = mockCommandFactoryRun.mock.calls[0] as
-      | [object, object]
-      | undefined;
-    const module = firstCall?.[0] as undefined | { name?: string };
+    const firstCall = mockCommandFactoryRun.mock.calls[0];
 
-    expect(module?.name).toBe(CaelundasModule.name);
+    if (firstCall === undefined) throw new Error("firstCall is undefined");
 
-    const options = firstCall?.[1] as
-      | undefined
-      | {
-          bufferLogs?: boolean;
-          logger?: unknown;
-        };
+    const module = firstCall[0];
 
-    if (options === undefined) throw new Error("options is undefined");
+    expect(module.name).toBe(CaelundasModule.name);
+
+    const options = firstCall[1];
 
     expect(options.bufferLogs).toBe(true);
     expect(options.logger).toBeDefined();
