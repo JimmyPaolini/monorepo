@@ -1,5 +1,13 @@
 // 🏷️ Types
+import type { EphemerisAggregationService } from "./ephemeris-aggregation.service";
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
+import type { MathService } from "@caelundas/src/modules/math/math.service";
+
+/** Union used by dependency-injected aggregation service wiring. */
+// prettier-ignore
+export type AggregationOrMathService =
+  | EphemerisAggregationService
+  | MathService;
 
 /**
  * Time-indexed ephemeris of horizontal coordinates (observer frame).

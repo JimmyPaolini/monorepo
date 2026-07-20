@@ -11,11 +11,11 @@ import {
 
 describe(PronunciationButton, () => {
   // 🎭 Mocks
-  let props: PronunciationButtonProps;
+  let properties: PronunciationButtonProps;
 
   // 🏗 Setup
   beforeEach(() => {
-    props = {
+    properties = {
       className: faker.string.alpha(10),
       dialect: faker.helpers.arrayElement(["classical", "ecclesiastical"]),
       text: faker.lorem.word(),
@@ -24,7 +24,7 @@ describe(PronunciationButton, () => {
 
   // 🧪 Tests
   it("should render successfully", () => {
-    const element = createElement(PronunciationButton, props);
+    const element = createElement(PronunciationButton, properties);
     const { container } = render(element);
 
     expect(container).toBeInTheDocument();

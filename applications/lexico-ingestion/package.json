@@ -5,6 +5,7 @@
     "@nestjs/common": "catalog:",
     "@nestjs/config": "catalog:",
     "@nestjs/core": "catalog:",
+    "@nestjs/testing": "catalog:",
     "@nestjs/typeorm": "catalog:",
     "cheerio": "catalog:",
     "cheerio-tableparser": "catalog:",

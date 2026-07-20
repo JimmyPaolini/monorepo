@@ -5,7 +5,6 @@
     "@nestjs/config": "catalog:",
     "@nestjs/core": "catalog:",
     "@nx/devkit": "catalog:",
-    "@types/mdast": "catalog:",
     "jsonc-parser": "catalog:",
     "lodash": "catalog:",
     "mdast-util-to-string": "catalog:",

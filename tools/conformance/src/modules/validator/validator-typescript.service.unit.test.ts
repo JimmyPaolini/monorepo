@@ -42,8 +42,7 @@ describe(ValidatorTypescriptService, () => {
   }
 
   function getFirstValidateDepthFirstSearchCallArgument():
-    | undefined
-    | ValidateDepthFirstSearchArgument {
+    undefined | ValidateDepthFirstSearchArgument {
     const firstCall = mockValidateDepthFirstSearch.mock.calls[0];
     const firstArgument = firstCall?.[0];
     if (isValidateDepthFirstSearchArgument(firstArgument)) {

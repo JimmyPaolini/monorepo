@@ -112,7 +112,21 @@
     },
     "markdown-lint": {},
     "oxfmt": {},
-    "oxlint": {},
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint --config configuration/oxlint.config.ts {args} {projectRoot}/src --ignore-pattern='{projectRoot}/src/routeTree.gen.ts'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "prettier": {},
     "preview": {
       "description": "Preview the production build",

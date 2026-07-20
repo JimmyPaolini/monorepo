@@ -61,12 +61,7 @@ export interface ConformanceError {
  * error. Absent for `'file'` and `'directory'` errors.
  */
 export type ConformanceErrorLanguage =
-  | "javascript"
-  | "json"
-  | "markdown"
-  | "python"
-  | "text"
-  | "typescript";
+  "javascript" | "json" | "markdown" | "python" | "text" | "typescript";
 
 /** Category of the missing element that caused the conformance failure. */
 export type ConformanceErrorType = "code" | "comment" | "directory" | "file";
@@ -87,12 +82,7 @@ export interface InstanceFileValidationResult {
 
 /** Recursive JSON value used for structural JSON conformance validation. */
 export type JsonValue =
-  | boolean
-  | JsonValue[]
-  | null
-  | number
-  | string
-  | { [key: string]: JsonValue };
+  boolean | JsonValue[] | null | number | string | { [key: string]: JsonValue };
 
 /** Source location metadata for AST missing-node errors. */
 export interface ResolvedErrorLocation {

@@ -16,6 +16,7 @@ cipe
 cipes
 clinerules
 cmdk
+codemod
 codemods
 commitlint
 context7
@@ -41,6 +42,7 @@ extensionless
 fakerjs
 fastapi
 feathersjs
+fileset
 firewalled
 fontsource
 frontmatter

@@ -72,6 +72,7 @@ export default defineConfig({
     "CHANGELOG.md",
     // TanStack Router auto-generated route tree (has eslint-disable comments)
     "**/routeTree.gen.ts",
+    "applications/lexico/src/routeTree.gen.ts",
     "**/tmp",
     // Vite/Vitest temp files created during HMR
     "**/vite.config.*.timestamp*",
@@ -493,7 +494,7 @@ export default defineConfig({
         "unicorn/no-useless-switch-case": "error",
         "unicorn/no-useless-undefined": "error",
         "unicorn/no-zero-fractions": "error",
-        "unicorn/numeric-separators-style": "error",
+        "unicorn/numeric-separators-style": "off",
         "unicorn/prefer-add-event-listener": "error",
         "unicorn/prefer-array-find": "error",
         "unicorn/prefer-array-flat": "error",

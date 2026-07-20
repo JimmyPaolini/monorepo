@@ -164,8 +164,7 @@ const ENTITY_INTEGRATION_EXPECTATIONS: Readonly<
 
 let integrationDataSource: DataSource;
 let integrationTestDatabaseResources:
-  | IntegrationTestDatabaseResources
-  | undefined;
+  IntegrationTestDatabaseResources | undefined;
 
 async function getTableIndexes(
   dataSource: DataSource,

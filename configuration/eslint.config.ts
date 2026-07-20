@@ -252,6 +252,8 @@ export default [
       "unicorn/no-nested-ternary": "off",
       // Placeholder files with only a comment header are intentional
       "unicorn/no-empty-file": "off",
+      // Preserve readability for long numeric literals with separators
+      "unicorn/numeric-separators-style": "off",
     },
   },
 

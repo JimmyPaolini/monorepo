@@ -52,7 +52,7 @@ CHANGELOG.md
 **/routeTree.gen.ts
 projectStructure.cache.json
 **/lexico-components/src/lib/utils
-**/lexico-components/src/components/ui
+**/lexico-components/src/components
 **/lexico-components/src/lib
 **/lexico-components/src/hooks
 **/conformance/**/templates/**

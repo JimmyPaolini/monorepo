@@ -7,6 +7,15 @@ import { formatLineNumber, hasValidTextContent } from "../library.utilities";
 import type { AnyNode } from "domhandler";
 
 /**
+ * Markdown file contents generated from one Perseus XML segment.
+ */
+export interface PerseusMarkdownFile {
+  content: string;
+  relativePath: string;
+  title: string;
+}
+
+/**
  * Extracts and normalizes nested text parts from Perseus XML documents.
  */
 @Injectable()
@@ -228,13 +237,4 @@ export class PerseusLibraryTextExtractionProvider {
       rawTitle,
     });
   }
-}
-
-/**
- * Markdown file contents generated from one Perseus XML segment.
- */
-export interface PerseusMarkdownFile {
-  content: string;
-  relativePath: string;
-  title: string;
 }

@@ -32,8 +32,7 @@ describe("main", () => {
     expect(mockCommandFactoryRun).toHaveBeenCalledTimes(1);
 
     const firstCall = mockCommandFactoryRun.mock.calls[0] as
-      | [object, object]
-      | undefined;
+      [object, object] | undefined;
     const module = firstCall?.[0] as undefined | { name?: string };
 
     expect(module?.name).toBe(CaelundasModule.name);

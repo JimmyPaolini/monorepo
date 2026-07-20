@@ -75,6 +75,7 @@ catalog:
   "@swc/core": ^1.15.40
   "@swc/helpers": ^0.5.21
   "@tailwindcss/vite": ^4.3.0
+  "@photostructure/tz-lookup": ^11.4.0
   "@tanstack/react-router": ^1.170.7
   "@tanstack/react-router-devtools": ^1.167.0
   "@tanstack/react-start": ^1.168.10
@@ -136,6 +137,8 @@ catalog:
   markdownlint-cli2: ^0.22.1
   mdast: ^3.0.0
   mdast-util-to-string: ^4.0.0
+  moment: ^2.30.1
+  moment-timezone: ^0.6.2
   mustache: ^4.2.0
   nest-commander: ^3.20.1
   next-themes: ^0.4.6
@@ -164,6 +167,7 @@ catalog:
   size-limit: ^12.1.0
   sonner: ^2.0.7
   squawk-cli: ^2.55.0
+  sweph: ^2.10.3-b-1
   stylelint: ^17.12.0
   stylelint-config-standard: ^40.0.0
   stylelint-config-tailwindcss: ^1.0.1
@@ -178,6 +182,7 @@ catalog:
   typeorm-naming-strategies: ^4.1.0
   typescript: ^6.0.3
   typescript-eslint: ^8.59.4
+  unplugin-swc: ^1.5.9
   validate-branch-name: ^1.3.2
   vaul: ^1.1.2
   vite: ^8.0.14

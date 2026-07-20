@@ -6,7 +6,6 @@ import {
   illuminationBodies as allIlluminationBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { typedFromEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
-import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Inject, Injectable, Optional } from "@nestjs/common";
 
 import { EphemerisAggregationService } from "./ephemeris-aggregation.service";
@@ -18,6 +17,7 @@ import { EphemerisTimeService } from "./ephemeris-time.service";
 import { initializeSwissEphemeris } from "./ephemeris.constants";
 
 import type {
+  AggregationOrMathService,
   AzimuthElevationEphemeris,
   AzimuthElevationEphemerisBody,
   CoordinateEphemeris,
@@ -46,9 +46,7 @@ export class EphemerisService {
   constructor(
     @Optional()
     @Inject(EphemerisAggregationService)
-    private readonly aggregationOrMathService?:
-      | EphemerisAggregationService
-      | MathService,
+    private readonly aggregationOrMathService?: AggregationOrMathService,
     @Optional()
     private readonly coordinate?: EphemerisCoordinateService,
     @Optional()
