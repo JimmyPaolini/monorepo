@@ -2,7 +2,7 @@ import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ep
 import { AspectEventFormattingService } from "@caelundas/src/modules/aspects/aspect-event-formatting.service";
 import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { MinorAspectsEventService } from "@caelundas/src/modules/minor-aspects/minor-aspects-event.service";
@@ -95,6 +95,7 @@ function createAspectEphemeris(
 describe("minor-aspects.events integration", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         MinorAspectsService,
@@ -103,7 +104,6 @@ describe("minor-aspects.events integration", () => {
         AspectEphemerisService,
         AspectsUtilitiesService,
         AspectEventFormattingService,
-        EphemerisService,
         MathService,
         ProgressiveAspectService,
         ProgressiveUtilitiesService,

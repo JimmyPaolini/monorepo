@@ -1,5 +1,5 @@
 import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
@@ -29,6 +29,7 @@ describe(DailyCyclesService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         {
           provide: CalendarService,
@@ -63,7 +64,6 @@ describe(DailyCyclesService, () => {
         },
         DailyCyclesBuilderService,
         DailyCyclesService,
-        EphemerisService,
         LoggerService,
         MathService,
       ],

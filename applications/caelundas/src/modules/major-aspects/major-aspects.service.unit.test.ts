@@ -1,7 +1,7 @@
 import { AspectEphemerisService } from "@caelundas/src/modules/aspects/aspect-ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/modules/aspects/aspects-utilities.service";
 import { aspectBodies as majorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveAspectService } from "@caelundas/src/modules/progressive/progressive-aspect.service";
@@ -29,6 +29,7 @@ describe(MajorAspectsService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         MajorAspectsService,
@@ -36,7 +37,6 @@ describe(MajorAspectsService, () => {
         MajorAspectProgressiveService,
         AspectEphemerisService,
         AspectsUtilitiesService,
-        EphemerisService,
         MathService,
         ProgressiveAspectService,
         ProgressiveUtilitiesService,

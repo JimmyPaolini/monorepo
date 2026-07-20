@@ -1,6 +1,6 @@
 import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { CalendarService } from "@caelundas/src/modules/calendar/calendar.service";
-import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ConfigService } from "@nestjs/config";
@@ -65,6 +65,7 @@ function createIlluminationEphemeris(
 describe("monthly-lunar-cycle.events integration", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         MonthlyLunarCycleService,
         CalendarService,
@@ -72,7 +73,6 @@ describe("monthly-lunar-cycle.events integration", () => {
           provide: ConfigService,
           useValue: { get: vi.fn<(propertyPath: string) => unknown>() },
         },
-        EphemerisService,
         LoggerService,
         MathService,
       ],
