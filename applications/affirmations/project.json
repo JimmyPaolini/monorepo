@@ -115,8 +115,8 @@
     "markdown-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint-cli2 --config ../../configuration/.markdownlint-cli2.jsonc '*.md' 'src/**/*.md' 'testing/**/*.md'",
-        "cwd": "{projectRoot}"
+        "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
+        "cwd": "{workspaceRoot}"
       }
     },
     "nbstripout": {

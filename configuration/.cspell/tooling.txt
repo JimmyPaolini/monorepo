@@ -116,7 +116,9 @@ onechild
 oneline
 operands
 oxfmt
+oxfmtignore
 oxlint
+oxlintignore
 oxlintrc
 pagehead
 paolini

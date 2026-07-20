@@ -17,9 +17,9 @@ export interface PronunciationButtonProps {
 
 // 🧩 Component
 export const PronunciationButton = (
-  properties: PronunciationButtonProps,
+  props: PronunciationButtonProps,
 ): ReactElement => {
-  const { className, dialect = "classical", text } = properties;
+  const { className, dialect = "classical", text } = props;
 
   // 🪝 Hooks
   const [isLoading, setIsLoading] = useState(false);

@@ -4,7 +4,7 @@ import {
   ingressBodies as signIngressBodies,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { MathService } from "@caelundas/src/modules/math/math.service";
+import { createMock } from "@golevelup/ts-vitest";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
@@ -15,6 +15,12 @@ import { IngressesService } from "./ingresses.service";
 
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
+import type { EphemerisAggregationService } from "@caelundas/src/modules/ephemeris/ephemeris-aggregation.service";
+import type { EphemerisConstantsService } from "@caelundas/src/modules/ephemeris/ephemeris-constants.service";
+import type { EphemerisCoordinateService } from "@caelundas/src/modules/ephemeris/ephemeris-coordinate.service";
+import type { EphemerisHorizonService } from "@caelundas/src/modules/ephemeris/ephemeris-horizon.service";
+import type { EphemerisPhenomenaService } from "@caelundas/src/modules/ephemeris/ephemeris-phenomena.service";
+import type { EphemerisTimeService } from "@caelundas/src/modules/ephemeris/ephemeris-time.service";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
 // Helper to create full ephemeris for all required bodies with default stationary values
@@ -49,8 +55,14 @@ function createFullEphemeris(
   return result;
 }
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
+const ephemerisService = new EphemerisService(
+  createMock<EphemerisAggregationService>(),
+  createMock<EphemerisCoordinateService>(),
+  createMock<EphemerisConstantsService>(),
+  createMock<EphemerisHorizonService>(),
+  createMock<EphemerisPhenomenaService>(),
+  createMock<EphemerisTimeService>(),
+);
 const logger = new LoggerService();
 const helperService = new IngressesComposerService(logger, ephemerisService);
 const service = new IngressesService(helperService);

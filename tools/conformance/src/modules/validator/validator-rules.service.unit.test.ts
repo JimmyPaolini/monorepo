@@ -84,7 +84,8 @@ describe(ValidatorRulesService, () => {
   };
 
   function getFirstValidateInstanceFileCallArgument():
-    undefined | ValidateInstanceFileArgument {
+    | undefined
+    | ValidateInstanceFileArgument {
     const firstCall = mockValidateInstanceFile.mock.calls[0];
     if (firstCall === undefined) {
       return undefined;

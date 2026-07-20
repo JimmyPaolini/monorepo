@@ -246,14 +246,14 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:prettier:check",
+            "# nx run {projectName}:prettier:check",
             "nx run {projectName}:oxfmt:check"
           ],
           "parallel": true
         },
         "write": {
           "commands": [
-            "nx run {projectName}:prettier:write",
+            "# nx run {projectName}:prettier:write",
             "nx run {projectName}:oxfmt:write"
           ],
           "parallel": false
@@ -263,7 +263,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
-        "{workspaceRoot}/.prettierignore",
+        "{workspaceRoot}/configuration/.prettierignore",
         "{workspaceRoot}/configuration/oxfmt.config.ts",
         "{workspaceRoot}/configuration/prettier.config.ts",
         "sharedGlobals"
@@ -350,11 +350,12 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+        "{workspaceRoot}/configuration/.oxfmtignore",
         "{workspaceRoot}/configuration/oxfmt.config.ts",
         "sharedGlobals"
       ],
       "options": {
-        "command": "oxfmt -c configuration/oxfmt.config.ts {args} {projectRoot}",
+        "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} {projectRoot}",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -374,7 +375,7 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "oxlint --config configuration/oxlint.config.ts {args} {projectRoot}/src",
+        "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -392,12 +393,12 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/.prettierignore",
+        "{workspaceRoot}/configuration/.prettierignore",
         "{workspaceRoot}/configuration/prettier.config.ts",
         "sharedGlobals"
       ],
       "options": {
-        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore {projectRoot}"
+        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore {projectRoot}"
       }
     },
     "pyright": {

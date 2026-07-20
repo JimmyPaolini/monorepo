@@ -2,6 +2,7 @@ import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.const
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive-utilities.service";
+import { createMock } from "@golevelup/ts-vitest";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
@@ -20,7 +21,14 @@ vi.mock("fs", () => ({
 }));
 
 const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
+const ephemerisService = new EphemerisService(
+  createMock(),
+  createMock(),
+  createMock(),
+  createMock(),
+  createMock(),
+  createMock(),
+);
 const logger = new LoggerService();
 const progressiveUtilitiesService = new ProgressiveUtilitiesService(logger);
 const phaseCalculationService = new PhaseCalculationService(
