@@ -7,6 +7,7 @@
       "configurations": {
         "check": {
           "commands": [
+            "nx run {projectName}:check-catalog-manifests",
             "nx run {projectName}:clean:check",
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
@@ -27,6 +28,7 @@
         },
         "write": {
           "commands": [
+            "nx run {projectName}:check-catalog-manifests",
             "nx run {projectName}:measure-code:write",
             "nx run synchronization:agent-skills:write",
             "nx run synchronization:conventional-config:write",
@@ -69,6 +71,14 @@
       "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/audit-security.yml",
       "executor": "nx:run-commands",
       "options": {}
+    },
+    "check-catalog-manifests": {
+      "description": "Enforce catalog: protocol for external dependencies in workspace package manifests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx scripts/check-workspace-catalogs.ts",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "check-lockfile": {
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files",

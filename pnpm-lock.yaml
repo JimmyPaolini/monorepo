@@ -73,7 +73,7 @@ catalogs:
       specifier: ^23.0.0
       version: 23.1.0
     '@photostructure/tz-lookup':
-      specifier: ^11.4.0
+      specifier: ^11.6.0
       version: 11.6.0
     '@radix-ui/react-accordion':
       specifier: ^1.2.12
