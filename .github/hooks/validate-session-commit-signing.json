@@ -4,7 +4,7 @@
       {
         "bash": "scripts/git/validate-session-commit-signing.sh",
         "cwd": ".",
-        "timeoutSec": 15,
+        "timeoutSec": 5,
         "type": "command"
       }
     ]

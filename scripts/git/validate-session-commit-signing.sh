@@ -19,6 +19,6 @@ CONTEXT="$ERROR
 
 printf '%s' "$CONTEXT" | node -e "
 const chunks = [];
-process.stdin.on('data', d => chunks.push(d));
+process.stdin.on('data', d => chunks.push(d.toString()));
 process.stdin.on('end', () => process.stdout.write(JSON.stringify({ additionalContext: chunks.join('') })));
 "
