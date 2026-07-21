@@ -141,6 +141,31 @@ describe(PerseusCommand, () => {
     expect(result).toStrictEqual(["a/file-lat.xml"]);
   });
 
+  it("should return null when tree payload parsing fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(...parameters: unknown[]) => unknown>(
+        async () =>
+          await Promise.resolve({
+            json: async () =>
+              await Promise.resolve({ tree: [{ path: 1, type: "blob" }] }),
+            ok: true,
+          }),
+      ),
+    );
+
+    const result = await (
+      command as unknown as {
+        fetchSourceXmlPaths: () => Promise<null | string[]>;
+      }
+    ).fetchSourceXmlPaths();
+
+    expect(result).toBeNull();
+    expect(logger.error).toHaveBeenCalledWith(
+      "❌ Failed to parse Perseus tree response payload",
+    );
+  });
+
   it("should append error log details", async () => {
     await (
       command as unknown as {
