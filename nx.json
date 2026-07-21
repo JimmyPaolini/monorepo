@@ -142,6 +142,53 @@
               "nx run {projectName}:lint:check",
               "nx run {projectName}:markdown-lint:check",
               "nx run {projectName}:spell-check",
+              "nx run {projectName}:squawk",
+              "nx run {projectName}:type-coverage",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "nx run {projectName}:clean:write",
+              "nx run {projectName}:dependency-cruiser",
+              "nx run {projectName}:format:write",
+              "nx run {projectName}:lint:write",
+              "nx run {projectName}:markdown-lint:write",
+              "nx run {projectName}:spell-check",
+              "nx run {projectName}:squawk",
+              "nx run {projectName}:type-coverage",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
+          "shared-globals"
+        ],
+        "options": {
+          "outputStyle": "stream"
+        }
+      },
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "nx run {projectName}:clean:check",
+              "nx run {projectName}:dependency-cruiser",
+              "nx run {projectName}:format:check",
+              "nx run {projectName}:lint:check",
+              "nx run {projectName}:markdown-lint:check",
+              "nx run {projectName}:spell-check",
               "nx run {projectName}:type-coverage",
               "nx run {projectName}:typecheck",
               "nx run {projectName}:yaml-lint"
@@ -352,6 +399,39 @@
           "check": {
             "commands": [
               "# nx run {projectName}:prettier:check",
+              "nx run {projectName}:oxfmt:check",
+              "nx run {projectName}:sqlfluff-format:check"
+            ],
+            "parallel": false
+          },
+          "write": {
+            "commands": [
+              "# nx run {projectName}:prettier:write",
+              "nx run {projectName}:oxfmt:write",
+              "nx run {projectName}:sqlfluff-format:write"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
+          "{workspaceRoot}/configuration/.prettierignore",
+          "{workspaceRoot}/configuration/oxfmt.config.ts",
+          "{workspaceRoot}/configuration/prettier.config.ts",
+          "shared-globals"
+        ]
+      },
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "# nx run {projectName}:prettier:check",
               "nx run {projectName}:oxfmt:check"
             ],
             "parallel": true
@@ -417,6 +497,38 @@
         "inputs": [
           "{workspaceRoot}/configuration/pyproject.toml",
           "python-source"
+        ]
+      },
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "nx run {projectName}:eslint:check",
+              "nx run {projectName}:oxlint:check",
+              "nx run {projectName}:sqlfluff-lint:check"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "nx run {projectName}:eslint:write",
+              "nx run {projectName}:oxlint:write",
+              "nx run {projectName}:sqlfluff-lint:write"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
+          "{workspaceRoot}/configuration/eslint.config.ts",
+          "{workspaceRoot}/configuration/oxlint.config.ts",
+          "shared-globals"
         ]
       },
       {
@@ -628,6 +740,78 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "sqlfluff-format": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "lint"
+          },
+          "write": {
+            "args": "fix"
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.sql",
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+          "cwd": "{workspaceRoot}"
+        }
+      }
+    ],
+    "sqlfluff-lint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "lint"
+          },
+          "write": {
+            "args": "fix"
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.sql",
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+          "cwd": "{workspaceRoot}"
+        }
+      }
+    ],
+    "squawk": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.sql",
+          "{workspaceRoot}/configuration/squawk.toml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "squawk --config configuration/squawk.toml --exclude prefer-robust-stmts,ban-drop-table,require-concurrent-index-deletion,require-concurrent-index-creation,ban-char-field,prefer-bigint-over-smallint,constraint-missing-not-valid,adding-foreign-key-constraint,ban-drop-column,adding-required-field '{projectRoot}/**/*.sql'",
+          "cwd": "{workspaceRoot}"
+        }
+      }
+    ],
     "stylelint": {
       "cache": true,
       "configurations": {
@@ -677,6 +861,37 @@
         ],
         "options": {
           "commands": ["nx run {projectName}:pytest"]
+        }
+      },
+      {
+        "cache": true,
+        "configurations": {
+          "coverage": {
+            "command": "vitest run --coverage"
+          },
+          "integration": {
+            "command": "vitest run integration.test.ts"
+          },
+          "unit": {
+            "command": "vitest run unit.test.ts"
+          },
+          "watch": {
+            "command": "vitest"
+          }
+        },
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:typeorm"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.test.ts",
+          "{projectRoot}/**/*.ts",
+          "{workspaceRoot}/configuration/vitest.config.ts",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "vitest run",
+          "cwd": "{projectRoot}"
         }
       },
       {
