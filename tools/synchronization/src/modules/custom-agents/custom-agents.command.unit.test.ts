@@ -225,6 +225,39 @@ describe(CustomAgentsCommand, () => {
     );
   });
 
+  it("skips unreadable agent files and ignores malformed frontmatter lines", async () => {
+    fileContents.set(
+      agentsMdPath,
+      [
+        "# Header",
+        "<!-- custom-agents-table-of-contents start -->",
+        "- **[alpha](.github/agents/alpha.agent.md)**: first agent",
+        "<!-- custom-agents-table-of-contents end -->",
+      ].join("\n"),
+    );
+    directoryEntries.set(agentsDirectory, [
+      { isDirectory: () => false, name: "broken.agent.md" },
+      { isDirectory: () => false, name: "alpha.agent.md" },
+    ]);
+    fileContents.set(
+      path.join(agentsDirectory, "alpha.agent.md"),
+      [
+        "---",
+        "name: alpha",
+        "invalid-frontmatter-line",
+        "description: first agent",
+        "---",
+        "",
+      ].join("\n"),
+    );
+
+    await command.run(["check"]);
+
+    expect(logger.log).toHaveBeenCalledWith(
+      "✅ Custom agents table of contents is in sync (1 agent)",
+    );
+  });
+
   it("writes generated content to AGENTS.md in write mode", async () => {
     fileContents.set(
       agentsMdPath,

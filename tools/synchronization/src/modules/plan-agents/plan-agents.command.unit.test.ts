@@ -394,6 +394,63 @@ describe(PlanAgentsCommand, () => {
     expect(writtenContent).not.toContain("# Old Body");
   });
 
+  it("appends missing skill frontmatter fields when syncing an existing agent file", async () => {
+    const [firstConfig] = PLAN_AGENT_CONFIGS;
+    if (!firstConfig) {
+      return;
+    }
+
+    setupAllSkillsAndAgents(workspaceRoot, true);
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.skillFile),
+      buildSkillContent(
+        "change-plan",
+        '"Appended description"',
+        '"Appended hint"',
+        "\n# Appended Body\n\nUpdated body content.\n",
+      ),
+    );
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.agentFile),
+      [
+        "---",
+        'description: "Existing description"',
+        "name: change-plan",
+        "agents:",
+        "  - explore-codebase",
+        "  - explore-internet",
+        "infer: true",
+        "model: Auto (copilot)",
+        "tools:",
+        "  - agent",
+        "  - read",
+        "handoffs:",
+        "  - label: Execute Plan",
+        "    agent: execute-plan",
+        '    prompt: "Execute the revised plan."',
+        "    send: false",
+        "user-invocable: true",
+        "---",
+        "# Old Body",
+        "",
+        "Outdated body content.",
+        "",
+      ].join("\n"),
+    );
+
+    await command.run(["write"]);
+
+    const writtenContent = fileContents.get(
+      path.join(workspaceRoot, firstConfig.agentFile),
+    );
+
+    expect(writtenContent).toContain('description: "Appended description"');
+    expect(writtenContent).toContain('argument-hint: "Appended hint"');
+    expect(writtenContent).toContain("name: change-plan");
+    expect(writtenContent).toContain("user-invocable: true");
+    expect(writtenContent).toContain("# Appended Body");
+  });
+
   it("handles a non-Error thrown during sync", async () => {
     vi.mocked(readFileSync).mockImplementationOnce(() => {
       // eslint-disable-next-line @typescript-eslint/only-throw-error

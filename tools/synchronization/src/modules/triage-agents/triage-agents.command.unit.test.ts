@@ -362,6 +362,60 @@ describe(TriageAgentsCommand, () => {
     expect(syncedContent).not.toContain("# existing-body");
   });
 
+  it("appends missing skill frontmatter fields for an existing triage agent file", async () => {
+    const [firstConfig] = TRIAGE_AGENT_CONFIGS;
+    if (!firstConfig) {
+      return;
+    }
+
+    setupAllSkillsAndAgents(workspaceRoot, true);
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.skillFile),
+      buildSkillContent(
+        "triage-deployment",
+        '"Updated description"',
+        '"Updated hint"',
+        "\n# updated\n\nUpdated skill body.\n",
+      ),
+    );
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.agentFile),
+      [
+        "---",
+        'description: "Existing description"',
+        "name: triage-deployment",
+        "infer: true",
+        "model: Auto (copilot)",
+        "tools:",
+        "  - read",
+        "  - execute",
+        "handoffs:",
+        "  - label: Existing handoff",
+        "    agent: triage-submission",
+        '    prompt: "Existing prompt"',
+        "    send: false",
+        "user-invocable: true",
+        "---",
+        "# existing-body",
+        "",
+        "Old body that should be replaced.",
+        "",
+      ].join("\n"),
+    );
+
+    await command.run(["write"]);
+
+    const syncedContent = fileContents.get(
+      path.join(workspaceRoot, firstConfig.agentFile),
+    );
+
+    expect(syncedContent).toContain('description: "Updated description"');
+    expect(syncedContent).toContain('argument-hint: "Updated hint"');
+    expect(syncedContent).toContain("name: triage-deployment");
+    expect(syncedContent).toContain("user-invocable: true");
+    expect(syncedContent).toContain("# updated");
+  });
+
   it("handles a non-Error thrown during sync", async () => {
     vi.mocked(readFileSync).mockImplementationOnce(() => {
       // eslint-disable-next-line @typescript-eslint/only-throw-error
