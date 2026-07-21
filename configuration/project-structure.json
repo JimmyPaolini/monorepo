@@ -3,6 +3,7 @@
   "ignorePatterns": [
     ".git",
     ".nx",
+    ".pnpm-store",
     ".venv",
     "__pycache__",
     "build",
@@ -29,6 +30,14 @@
     },
     "monorepo-project": {
       "children": [
+        {
+          "children": [
+            {
+              "ruleId": "any-file"
+            }
+          ],
+          "name": ".vscode"
+        },
         {
           "children": [
             {
@@ -225,6 +234,137 @@
       {
         "children": [
           {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".agents"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".devcontainer"
+      },
+      {
+        "name": ".dockerignore"
+      },
+      {
+        "name": ".editorconfig"
+      },
+      {
+        "name": ".env.default"
+      },
+      {
+        "name": ".gitattributes"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "ruleId": "any-file"
+              }
+            ],
+            "name": "ISSUE_TEMPLATE"
+          },
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".github"
+      },
+      {
+        "name": ".gitignore"
+      },
+      {
+        "name": ".gitmodules"
+      },
+      {
+        "name": ".node-version"
+      },
+      {
+        "name": ".npmrc"
+      },
+      {
+        "name": ".nvmrc"
+      },
+      {
+        "name": ".nxignore"
+      },
+      {
+        "name": ".pnpmfile.mjs"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".pnpm-store"
+      },
+      {
+        "name": ".prettierignore"
+      },
+      {
+        "name": ".sqlfluffignore"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": ".vscode"
+      },
+      {
+        "name": "AGENTS.md"
+      },
+      {
+        "name": "CHANGELOG.md"
+      },
+      {
+        "name": "CONTRIBUTING.md"
+      },
+      {
+        "name": "LICENSE"
+      },
+      {
+        "name": "Modelfile.local-coding-model"
+      },
+      {
+        "name": "README.md"
+      },
+      {
+        "name": "SECURITY.md"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "ruleId": "any-file"
+              }
+            ],
+            "name": "JimmyPaolini"
+          },
+          {
             "ruleId": "monorepo-project"
           },
           {
@@ -232,28 +372,6 @@
           }
         ],
         "name": "applications"
-      },
-      {
-        "children": [
-          {
-            "ruleId": "monorepo-project"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": "packages"
-      },
-      {
-        "children": [
-          {
-            "ruleId": "monorepo-project"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": "tools"
       },
       {
         "children": [
@@ -275,7 +393,61 @@
             "ruleId": "any-file"
           }
         ],
+        "name": "documentation"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
         "name": "infrastructure"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "kebab-case-folder"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "notepads"
+      },
+      {
+        "name": "nx.json"
+      },
+      {
+        "name": "package.json"
+      },
+      {
+        "children": [
+          {
+            "ruleId": "monorepo-project"
+          },
+          {
+            "ruleId": "any-file"
+          }
+        ],
+        "name": "packages"
+      },
+      {
+        "name": "pnpm-lock.yaml"
+      },
+      {
+        "name": "pnpm-workspace.yaml"
+      },
+      {
+        "name": "pnpm.yaml"
+      },
+      {
+        "name": "project.json"
+      },
+      {
+        "name": "release.config.cjs"
       },
       {
         "children": [
@@ -291,82 +463,22 @@
       {
         "children": [
           {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": "data"
-      },
-      {
-        "children": [
-          {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": "documentation"
-      },
-      {
-        "children": [
-          {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": "notepads"
-      },
-      {
-        "children": [
-          {
             "ruleId": "monorepo-project"
           },
           {
             "ruleId": "any-file"
           }
         ],
-        "name": "JimmyPaolini"
+        "name": "tools"
       },
       {
-        "children": [
-          {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": ".github"
+        "name": "tsconfig.json"
       },
       {
-        "children": [
-          {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": ".vscode"
+        "name": "uv.lock"
       },
       {
-        "children": [
-          {
-            "ruleId": "kebab-case-folder"
-          },
-          {
-            "ruleId": "any-file"
-          }
-        ],
-        "name": ".husky"
-      },
-      {
-        "ruleId": "any-file"
+        "name": "validate-branch-name.config.cjs"
       }
     ]
   }

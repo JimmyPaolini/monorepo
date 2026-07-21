@@ -326,11 +326,6 @@ for (const trackedFile of measuredTrackedFiles) {
 }
 const repoSizeMiB = (repoBytes / 1024 / 1024).toFixed(1);
 
-// 📅 Last commit date
-const lastCommit = execSync("git log -1 --format=%cd --date=short HEAD")
-  .toString()
-  .trim();
-
 // 📂 Folder count
 
 // Derive from git-tracked files so the count is consistent across environments
@@ -357,7 +352,6 @@ const badge = (label: string, value: number | string, color: string): string =>
 const badges = [
   badge("Lines of Code", jsts.lines + py.lines, "22c55e"),
   badge("Repo Size", `${repoSizeMiB} MiB`, "6b7280"),
-  badge("Last Commit", lastCommit, "f59e0b"),
   badge("Folders", folders, "4a4a4a"),
   badge("Source Files", jsts.tsFiles + jsts.jsFiles + py.files, "3178c6"),
   badge("Test Files", jsts.testFiles, "10b981"),

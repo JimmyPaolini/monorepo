@@ -1,135 +1,83 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "conformance",
-  "prefix": "lib",
-  "projectType": "library",
-  "sourceRoot": "tools/conformance/src",
-  "tags": ["language:python", "language:typescript", "type:tool"],
+  "projectType": "application",
+  "sourceRoot": "tools/conformance",
+  "tags": [
+    "framework:nest-commander",
+    "framework:nestjs",
+    "generator:nestjs-command-application",
+    "language:typescript",
+    "type:application"
+  ],
   "targets": {
     "analyze-code": {},
-    "build": {
-      "cache": true,
-      "description": "No-op build target for development tool",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "echo 'conformance is a development tool and does not require building'"
-      }
-    },
     "clean": {},
-    "code-analysis": {},
-    "dependency-cruiser": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "depcruise tools/conformance/src --exclude '^tools/conformance/src/generators/.*/templates/' --config configuration/dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "format": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:prettier:check",
-            "nx run {projectName}:oxfmt:check",
-            "nx run {projectName}:ruff-format:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:prettier:write",
-            "nx run {projectName}:oxfmt:write",
-            "nx run {projectName}:ruff-format:write"
-          ],
-          "parallel": false
-        }
-      },
-      "executor": "nx:run-commands"
-    },
+    "dependency-cruiser": {},
+    "format": {},
     "knip": {},
-    "lint": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:eslint:check",
-            "nx run {projectName}:oxlint:check",
-            "nx run {projectName}:ruff-lint:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:eslint:write",
-            "nx run {projectName}:oxlint:write",
-            "nx run {projectName}:ruff-lint:write"
-          ],
-          "parallel": false
-        }
-      },
-      "executor": "nx:run-commands"
-    },
+    "lint": {},
     "markdown-lint": {},
     "oxfmt": {},
-    "oxlint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "oxlint --ignore-pattern='**/templates/**' tools/conformance/src",
-        "cwd": "{workspaceRoot}"
-      }
-    },
+    "oxlint": {},
     "prettier": {},
-    "pyright": {},
-    "pytest": {},
-    "ruff-format": {
+    "repl": {
+      "description": "Start the Conformance application in REPL mode",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run ruff format {args} --config ../../configuration/pyproject.toml --exclude 'src/generators/**/templates/**' .",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "ruff-lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "uv run ruff check {args} --config ../../configuration/pyproject.toml --exclude 'src/generators/**/templates/**' .",
+        "command": "node --import @swc-node/register/esm-register src/repl.ts",
         "cwd": "{projectRoot}"
       }
     },
     "spell-check": {},
-    "test": {
+    "start": {
+      "description": "Start the Conformance application",
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx run {projectName}:vitest",
-          "nx run {projectName}:pytest"
-        ],
-        "parallel": true
-      },
+        "command": "node --import @swc-node/register/esm-register src/main.ts conformance",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
       "configurations": {
         "coverage": {
-          "commands": [
-            "nx run {projectName}:vitest --coverage.thresholds.branches=95",
-            "nx run {projectName}:pytest"
-          ],
-          "parallel": true
+          "command": "vitest run --coverage"
+        },
+        "end-to-end": {
+          "command": "vitest run end-to-end.test.ts"
+        },
+        "integration": {
+          "command": "vitest run integration.test.ts"
+        },
+        "unit": {
+          "command": "vitest run unit.test.ts"
+        },
+        "watch": {
+          "command": "vitest"
         }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "{projectRoot}"
       }
     },
     "type-coverage": {},
     "typecheck": {
+      "description": "Run TypeScript type checking",
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "tsc --noEmit -p tsconfig.json",
-          "nx run {projectName}:pyright"
-        ],
-        "cwd": "{projectRoot}",
-        "parallel": true
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
       }
     },
-    "vitest": {
+    "validate": {
+      "description": "Run workspace conformance validation",
       "executor": "nx:run-commands",
       "options": {
-        "command": "vitest run --coverage --coverage.thresholds.branches=95 {args.args}",
-        "cwd": "tools/conformance"
+        "command": "env -u NODE_OPTIONS node --import @swc-node/register/esm-register src/main.ts validator {args}",
+        "cwd": "{projectRoot}"
       }
     },
     "yaml-lint": {}

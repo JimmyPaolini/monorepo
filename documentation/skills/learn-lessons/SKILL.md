@@ -192,6 +192,21 @@ For each finding classified in Phase 4, make the change.
 - When documenting a gap or mistake, add a `> ⚠️ **Warning:** ...` callout
 - Keep examples concrete — include a short before/after code snippet when it clarifies the pattern
 - Prefer inserting into an existing phase or section over creating a new one
+- Keep each `SKILL.md` focused and under 512 lines. Treat 512 lines as a hard cap when updating any skill.
+- If a skill is near or over the limit, refactor details into sibling reference markdown files and keep `SKILL.md` as the concise entry point.
+- Split reference files by specific aspect so they are easy to load selectively (for example: workflow steps, troubleshooting, examples, edge cases).
+- Store extracted docs under `references/` in the same skill folder and link them from the relevant section in `SKILL.md`.
+- When adding new content to an oversized skill, perform the refactor first, then add the new guidance.
+
+### Skill File Size Refactor Pattern
+
+Use this pattern whenever a skill is becoming too large:
+
+1. Keep discovery-critical content in `SKILL.md` (frontmatter, when-to-use triggers, concise workflow outline).
+2. Move deep, single-topic details into `references/<aspect>.md` files.
+3. Add short links in `SKILL.md` to each reference file from the matching section.
+4. Ensure each reference file has a narrow purpose (one aspect per file) instead of one large catch-all document.
+5. Re-check the line count and keep `SKILL.md` under 512 lines after the refactor.
 
 ### For new skills
 
@@ -227,6 +242,9 @@ For any modified skill files:
 ```bash
 # Check no broken relative links in the skill
 grep -oP '\[.*?\]\(\K[^)]+' .github/skills/<name>/SKILL.md
+
+# Verify SKILL.md stays under the hard cap
+wc -l .github/skills/<name>/SKILL.md
 ```
 
 #### 6.2 Run spell check on modified files

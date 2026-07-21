@@ -23,7 +23,7 @@ nx run monorepo:measure-code:write || EXIT_CODE=$?
 git add README.md
 
 # 🧹 Check staged files
-NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error > last-lint-staged-output.log 2>&1 || EXIT_CODE=$?
+NX_PERF_LOGGING=false NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error > last-lint-staged-output.log 2>&1 || EXIT_CODE=$?
 
 # 🖨️ Log output
 LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.log \

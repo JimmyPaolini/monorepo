@@ -10,12 +10,10 @@ import {
   type PartOfSpeech,
 } from "@monorepo/lexico-entities";
 
-import { FormsBuilderGuardsProvider } from "./forms-builder-guards.service";
+import { FormsBuilderGuardsService } from "./forms-builder-guards.service";
 import { FormsBuilderOtherService } from "./forms-builder-other.service";
-import { FormsBuilderVerbProvider } from "./forms-builder-verb.service";
+import { FormsBuilderVerbService } from "./forms-builder-verb.service";
 import { FormsTransientWordsService } from "./forms-transient-words.service";
-
-import type { FormsBuilderGuardsService } from "./forms-builder-guards.service";
 
 describe(FormsBuilderOtherService, () => {
   let service: FormsBuilderOtherService;
@@ -25,8 +23,8 @@ describe(FormsBuilderOtherService, () => {
     const module = await Test.createTestingModule({
       providers: [
         FormsBuilderOtherService,
-        FormsBuilderGuardsProvider,
-        FormsBuilderVerbProvider,
+        FormsBuilderGuardsService,
+        FormsBuilderVerbService,
         FormsTransientWordsService,
       ],
     }).compile();
@@ -308,7 +306,7 @@ describe(FormsBuilderOtherService, () => {
     const delegatedParticiple = new AdjectivalForm();
     const injectedVerbProvider = (
       service as unknown as {
-        formsBuilderVerbProvider: FormsBuilderVerbProvider;
+        formsBuilderVerbProvider: FormsBuilderVerbService;
       }
     ).formsBuilderVerbProvider;
     const providerSpy = vi

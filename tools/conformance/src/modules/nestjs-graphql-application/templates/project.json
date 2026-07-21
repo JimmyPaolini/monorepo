@@ -1,0 +1,70 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "applications/{{nameKebabCase}}",
+  "tags": [
+    "framework:nestjs",
+    "framework:nestjs-graphql-api",
+    "generator:nestjs-graphql-application",
+    "language:typescript"
+  ],
+  "targets": {
+    "analyze-code": {},
+    "clean": {},
+    "code-analysis": {
+      "cache": true,
+      "description": "Run code analysis checks through the aggregate analyze-code target",
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "options": {
+        "command": "nx run {projectName}:analyze-code:check",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "dependency-cruiser": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "start": {
+      "description": "Start the {{namePascalCase}} GraphQL API",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "vitest run --coverage"
+        },
+        "end-to-end": {
+          "command": "vitest run end-to-end.test.ts"
+        },
+        "integration": {
+          "command": "vitest run integration.test.ts"
+        },
+        "unit": {
+          "command": "vitest run unit.test.ts"
+        },
+        "watch": {
+          "command": "vitest"
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
+  }
+}

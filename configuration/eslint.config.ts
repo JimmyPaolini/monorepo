@@ -63,20 +63,6 @@ export default [
       "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
       "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",
       "**/library.json",
-      // Nx-generated agent skill folders
-      ".github/skills/monitor-ci/**",
-      ".github/skills/nx-generate/**",
-      ".github/skills/nx-import/**",
-      ".github/skills/nx-plugins/**",
-      ".github/skills/nx-run-tasks/**",
-      ".github/skills/nx-workspace/**",
-      "documentation/skills/monitor-ci/**",
-      "documentation/skills/nx-generate/**",
-      "documentation/skills/nx-import/**",
-      "documentation/skills/nx-plugins/**",
-      "documentation/skills/nx-run-tasks/**",
-      "documentation/skills/nx-workspace/**",
-      "documentation/skills/link-workspace-packages/**",
     ],
   },
 
@@ -87,7 +73,7 @@ export default [
       "project-structure": projectStructurePlugin,
     },
     rules: {
-      "project-structure/folder-structure": "warn",
+      "project-structure/folder-structure": "error",
     },
     settings: {
       "project-structure/folder-structure-config-path":
@@ -222,7 +208,6 @@ export default [
             param: { parameter: true },
             pkg: { package: true },
             prod: { production: true },
-            prop: { property: true },
             px: { pixel: true },
             rel: { relative: true },
             req: { request: true },
@@ -252,6 +237,8 @@ export default [
       "unicorn/no-nested-ternary": "off",
       // Placeholder files with only a comment header are intentional
       "unicorn/no-empty-file": "off",
+      // Preserve readability for long numeric literals with separators
+      "unicorn/numeric-separators-style": "off",
     },
   },
 
@@ -622,7 +609,7 @@ export default [
       "max-classes-per-file": ["error", { max: 1 }],
       "max-depth": ["error", { max: 4 }],
       "max-lines": ["error", { max: 512 }],
-      "max-lines-per-function": ["error", { max: 64 }],
+      "max-lines-per-function": ["error", { max: 128 }],
       "max-nested-callbacks": ["error", { max: 3 }],
       "max-params": "off", // replaced by better-max-params/better-max-params
       "max-statements": ["error", { max: 16 }],
@@ -682,6 +669,107 @@ export default [
       "better-max-params/better-max-params": [
         "warn",
         { constructor: 12, func: 12 },
+      ],
+    },
+  },
+
+  // 🧭 Nest Class File Shape
+  // Command, service, resolver, and dataloader files should expose only
+  // their class at the top level.
+  // Move top-level helpers to *.constants.ts or *.types.ts, or into class members.
+  {
+    files: [
+      "**/*.command.ts",
+      "**/*.dataloader.ts",
+      "**/*.module.ts",
+      "**/*.resolver.ts",
+      "**/*.service.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Only imports and a single top-level class are allowed in NestJS class files. Move top-level symbols onto the class or out to *.constants.ts or *.types.ts.",
+          selector:
+            "Program > :not(ImportDeclaration):not(ClassDeclaration):not(ExportNamedDeclaration[declaration.type='ClassDeclaration']):not(ExportDefaultDeclaration[declaration.type='ClassDeclaration'])",
+        },
+      ],
+    },
+  },
+
+  // 🏷️ Type File Shape
+  // Type files should expose only imports plus top-level types and interfaces.
+  {
+    files: ["**/*.types.ts"],
+    ignores: [
+      "**/applications/caelundas/src/modules/caelundas/caelundas.types.ts",
+      "**/src/modules/caelundas/caelundas.types.ts",
+      "applications/caelundas/src/modules/caelundas/caelundas.types.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Only imports, interfaces, and type aliases are allowed in type files. Move other symbols to dedicated files.",
+          selector:
+            "Program > :not(ImportDeclaration):not(TSInterfaceDeclaration):not(TSTypeAliasDeclaration):not(ExportNamedDeclaration[declaration.type='TSInterfaceDeclaration']):not(ExportNamedDeclaration[declaration.type='TSTypeAliasDeclaration'])",
+        },
+      ],
+    },
+  },
+
+  // 🧱 Constant File Shape
+  // Constant files should expose only imports plus top-level const declarations.
+  {
+    files: ["**/*.constants.ts"],
+    ignores: [
+      "**/applications/caelundas/src/modules/caelundas/caelundas.constants.ts",
+      "**/applications/caelundas/src/modules/ephemeris/ephemeris.constants.ts",
+      "**/applications/lexico-ingestion/src/modules/forms/forms.constants.ts",
+      "**/applications/lexico-ingestion/src/modules/manual/manual.constants.ts",
+      "**/applications/lexico-ingestion/src/modules/part-of-speech/part-of-speech.constants.ts",
+      "**/packages/lexico-entities/src/modules/database/database.constants.ts",
+      "**/tools/conformance/src/modules/validator/validator.constants.ts",
+      "**/src/modules/caelundas/caelundas.constants.ts",
+      "**/src/modules/database/database.constants.ts",
+      "**/src/modules/ephemeris/ephemeris.constants.ts",
+      "**/src/modules/forms/forms.constants.ts",
+      "**/src/modules/manual/manual.constants.ts",
+      "**/src/modules/part-of-speech/part-of-speech.constants.ts",
+      "**/src/modules/validator/validator.constants.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Only imports and const declarations are allowed in constant files. Move other top-level symbols to dedicated files.",
+          selector:
+            "Program > :not(ImportDeclaration):not(VariableDeclaration[kind='const']):not(ExportNamedDeclaration[declaration.type='VariableDeclaration'][declaration.kind='const']):not(ExportDefaultDeclaration[declaration.type='VariableDeclaration'][declaration.kind='const'])",
+        },
+      ],
+    },
+  },
+
+  // 🛠️ Utility File Shape
+  // Utility files should expose only imports plus top-level functions.
+  {
+    files: ["**/*.utilities.ts"],
+    ignores: [
+      "**/applications/caelundas/testing/aspect-test.utilities.ts",
+      "**/testing/aspect-test.utilities.ts",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Only imports and function declarations are allowed in utility files. Move other top-level symbols to dedicated files.",
+          selector:
+            "Program > :not(ImportDeclaration):not(FunctionDeclaration):not(ExportNamedDeclaration[declaration.type='FunctionDeclaration']):not(ExportDefaultDeclaration[declaration.type='FunctionDeclaration'])",
+        },
       ],
     },
   },

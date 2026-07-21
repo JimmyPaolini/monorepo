@@ -16,7 +16,7 @@ import { ProgressiveService } from "../progressive/progressive.service";
  * the result to an `.ics` file via {@link CalendarService}.
  */
 @Command({
-  description: "Run the caelundas command-line application",
+  description: "Run the caelundas command",
   name: "caelundas",
 })
 @Injectable()

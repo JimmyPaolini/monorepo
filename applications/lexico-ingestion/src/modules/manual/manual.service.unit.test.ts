@@ -9,10 +9,11 @@ import { createRepositoryMock } from "../../../testing/mocks";
 import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
-import * as manualConstants from "./manual.constants";
 import { MANUAL_LEXEMES_TO_DELETE } from "./manual.constants";
 import { ManualService } from "./manual.service";
+import * as manualUtilities from "./manual.utilities";
 
+import type { ManualDeletionLexeme } from "./manual.types";
 import type { Repository } from "typeorm";
 import type { Mocked } from "vitest";
 
@@ -93,7 +94,7 @@ describe(ManualService, () => {
 
     it("handles templates without principal parts and inflection in praenomen builder", () => {
       vi.spyOn(
-        manualConstants,
+        manualUtilities,
         "buildPraenomenAbbreviationTemplate",
       ).mockImplementation(() => {
         const lexeme = new Lexeme();
@@ -114,7 +115,7 @@ describe(ManualService, () => {
 
     it("handles templates with inflection object that has no gender field", () => {
       vi.spyOn(
-        manualConstants,
+        manualUtilities,
         "buildPraenomenAbbreviationTemplate",
       ).mockImplementation(() => {
         const lexeme = new Lexeme();
@@ -135,7 +136,7 @@ describe(ManualService, () => {
     });
 
     it("skips principal-part assignment when roman template has no primary part", async () => {
-      vi.spyOn(manualConstants, "buildRomanNumeralTemplate").mockImplementation(
+      vi.spyOn(manualUtilities, "buildRomanNumeralTemplate").mockImplementation(
         () => {
           const lexeme = new Lexeme();
           lexeme.partOfSpeech = "numeral";
@@ -215,15 +216,16 @@ describe(ManualService, () => {
     it("should delete all stale lexemes from MANUAL_LEXEMES_TO_DELETE", async () => {
       lexemesRepository.save.mockResolvedValue(new Lexeme());
 
+      const manualLexemesToDelete: readonly ManualDeletionLexeme[] =
+        MANUAL_LEXEMES_TO_DELETE;
+
       await service.ingestManual();
 
-      for (const { disambiguator, lemma } of MANUAL_LEXEMES_TO_DELETE) {
-        expect(lexemesRepository.delete).toHaveBeenCalledWith(
-          expect.objectContaining({
-            disambiguator,
-            lemma,
-          }),
-        );
+      for (const { disambiguator, lemma } of manualLexemesToDelete) {
+        expect(lexemesRepository.delete).toHaveBeenCalledWith({
+          disambiguator,
+          lemma,
+        });
       }
     });
 

@@ -323,5 +323,3 @@ export class AspectsUtilitiesService {
     return difference <= orbByAspect[aspect];
   }
 }
-
-export { AspectsUtilitiesService as AspectsUtilities };

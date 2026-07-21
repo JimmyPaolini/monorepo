@@ -40,36 +40,6 @@ import { PartOfSpeechFormsParser } from "./part-of-speech.forms-parser";
 
 import type { AnyNode } from "domhandler";
 
-const adjectiveDeclensionValueList = normalizeStringArray(
-  adjectiveDeclensionValues,
-);
-const adjectiveDegreeValueList = normalizeStringArray(adjectiveDegreeValues);
-const nounDeclensionValueList = normalizeStringArray(nounDeclensionValues);
-const nounGenderValueList = normalizeStringArray(nounGenders);
-const partOfSpeechValueList = normalizeStringArray(partOfSpeechEnumValues);
-const prepositionCaseValueList = normalizeStringArray(prepositionCases);
-const verbConjugationValueList = normalizeStringArray(verbConjugationValues);
-
-/**
- * Declaration for part-of-speech parsing.
- */
-function findTypedValue<ValueType extends string>(
-  values: readonly ValueType[],
-  candidate: string,
-): undefined | ValueType {
-  return values.find((value) => value === candidate);
-}
-
-/**
- * Normalizes input values used by part-of-speech parsing.
- */
-function normalizeStringArray(value: unknown): string[] {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-  return value.filter((item): item is string => typeof item === "string");
-}
-
 /**
  * Resolves the part of speech from a Wiktionary HTML element, dispatches
  * inflection and forms parsing for all supported parts of speech, and provides
@@ -83,6 +53,10 @@ export class PartOfSpeechService {
 
   // 🔐 Private Fields
 
+  private static readonly adjectiveDeclensionValueList =
+    PartOfSpeechService.normalizeStringArray(adjectiveDeclensionValues);
+  private static readonly adjectiveDegreeValueList =
+    PartOfSpeechService.normalizeStringArray(adjectiveDegreeValues);
   private static readonly FORMS_GROUP: Record<
     PartOfSpeech,
     "adverb" | "generic" | "verb"
@@ -110,7 +84,6 @@ export class PartOfSpeechService {
     suffix: "generic",
     verb: "verb",
   };
-
   private static readonly INFLECTION_GROUP: Record<
     PartOfSpeech,
     | "adjective"
@@ -145,6 +118,16 @@ export class PartOfSpeechService {
     suffix: "adjective",
     verb: "verb",
   };
+  private static readonly nounDeclensionValueList =
+    PartOfSpeechService.normalizeStringArray(nounDeclensionValues);
+  private static readonly nounGenderValueList =
+    PartOfSpeechService.normalizeStringArray(nounGenders);
+  private static readonly partOfSpeechValueList =
+    PartOfSpeechService.normalizeStringArray(partOfSpeechEnumValues);
+  private static readonly prepositionCaseValueList =
+    PartOfSpeechService.normalizeStringArray(prepositionCases);
+  private static readonly verbConjugationValueList =
+    PartOfSpeechService.normalizeStringArray(verbConjugationValues);
 
   private readonly formsParser = new PartOfSpeechFormsParser();
 
@@ -152,56 +135,69 @@ export class PartOfSpeechService {
 
   // 🔏 Private Methods
 
-  /**
-   * Builds adjective inflection for part-of-speech parsing.
-   */
+  /** Returns the first matching typed value from the provided candidate list. */
+  private static findTypedValue<ValueType extends string>(
+    values: readonly ValueType[],
+    candidate: string,
+  ): undefined | ValueType {
+    return values.find((value) => value === candidate);
+  }
+
+  /** Normalizes input values used by part-of-speech parsing. */
+  private static normalizeStringArray(value: unknown): string[] {
+    if (!Array.isArray(value)) {
+      return [];
+    }
+
+    return value.filter((item): item is string => typeof item === "string");
+  }
+
+  /** Builds adjective inflection for part-of-speech parsing. */
   private buildAdjectiveInflection(declension: string): AdjectiveInflection {
     const degree = declension.match(adjectiveDegreeRegex)?.[0] ?? "positive";
     const matchedDeclension =
       declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
-    const adj = new AdjectiveInflection();
-    adj.declension =
-      (findTypedValue(adjectiveDeclensionValueList, matchedDeclension) as
-        | AdjectiveDeclension
-        | undefined) ?? "";
-    adj.degree =
-      (findTypedValue(adjectiveDegreeValueList, degree) as
-        | AdjectiveDegree
-        | undefined) ?? "positive";
-    return adj;
+    const adjectiveInflection = new AdjectiveInflection();
+    adjectiveInflection.declension =
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.adjectiveDeclensionValueList,
+        matchedDeclension,
+      ) as AdjectiveDeclension | undefined) ?? "";
+    adjectiveInflection.degree =
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.adjectiveDegreeValueList,
+        degree,
+      ) as AdjectiveDegree | undefined) ?? "positive";
+    return adjectiveInflection;
   }
 
-  /**
-   * Builds noun inflection for part-of-speech parsing.
-   */
+  /** Builds noun inflection for part-of-speech parsing. */
   private buildNounInflection(
     declension: string,
     gender: string,
   ): NounInflection {
     const matchedDeclension = declension.match(nounDeclensionRegex)?.[0] ?? "";
     const matchedGender = gender.match(genderRegex)?.[0] ?? "";
-    const noun = new NounInflection();
-    noun.declension =
-      (findTypedValue(nounDeclensionValueList, matchedDeclension) as
-        | NounDeclension
-        | undefined) ?? "";
-    noun.gender =
-      (findTypedValue(nounGenderValueList, matchedGender) as
-        | NounGender
-        | undefined) ?? "";
-    return noun;
+    const nounInflection = new NounInflection();
+    nounInflection.declension =
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.nounDeclensionValueList,
+        matchedDeclension,
+      ) as NounDeclension | undefined) ?? "";
+    nounInflection.gender =
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.nounGenderValueList,
+        matchedGender,
+      ) as NounGender | undefined) ?? "";
+    return nounInflection;
   }
 
-  /**
-   * Gets text or empty used by part-of-speech parsing.
-   */
+  /** Gets text or empty used by part-of-speech parsing. */
   private getTextOrEmpty(part: PrincipalPart | undefined): string[] {
     return part?.text ?? [];
   }
 
-  /**
-   * Ingests adjective inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests adjective inflection in the part-of-speech parsing pipeline. */
   private ingestAdjectiveInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -214,7 +210,9 @@ export class PartOfSpeechService {
       .first()
       .next();
 
-    if (inflectionHtml.length === 0) return new UninflectedInflection();
+    if (inflectionHtml.length === 0) {
+      return new UninflectedInflection();
+    }
 
     const declension = inflectionHtml
       .text()
@@ -226,28 +224,28 @@ export class PartOfSpeechService {
       .toLowerCase()
       .trim();
 
-    if (declension.length === 0) return new UninflectedInflection();
+    if (declension.length === 0) {
+      return new UninflectedInflection();
+    }
 
     return this.buildAdjectiveInflection(declension);
   }
 
-  /**
-   * Ingests adverb forms in the part-of-speech parsing pipeline.
-   */
+  /** Ingests adverb forms in the part-of-speech parsing pipeline. */
   private ingestAdverbForms(principalParts: PrincipalPart[]): unknown {
     const forms: Record<string, string[]> = {
       positive: this.getTextOrEmpty(principalParts[0]),
     };
-    if (principalParts.length >= 2)
+    if (principalParts.length >= 2) {
       forms["comparative"] = this.getTextOrEmpty(principalParts[1]);
-    if (principalParts.length >= 3)
+    }
+    if (principalParts.length >= 3) {
       forms["superlative"] = this.getTextOrEmpty(principalParts[2]);
+    }
     return forms;
   }
 
-  /**
-   * Ingests adverb inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests adverb inflection in the part-of-speech parsing pipeline. */
   private ingestAdverbInflection(principalParts: PrincipalPart[]): Inflection {
     const adverbInflection = new AdverbInflection();
     adverbInflection.adverbType =
@@ -256,16 +254,12 @@ export class PartOfSpeechService {
     return adverbInflection;
   }
 
-  /**
-   * Ingests conjunction inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests conjunction inflection in the part-of-speech parsing pipeline. */
   private ingestConjunctionInflection(): Inflection {
     return new UninflectedInflection();
   }
 
-  /**
-   * Ingests noun inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests noun inflection in the part-of-speech parsing pipeline. */
   private ingestNounInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -278,7 +272,9 @@ export class PartOfSpeechService {
       .first()
       .next();
 
-    if (inflectionHtml.length === 0) return new UninflectedInflection();
+    if (inflectionHtml.length === 0) {
+      return new UninflectedInflection();
+    }
 
     const declension = inflectionHtml
       .text()
@@ -295,22 +291,19 @@ export class PartOfSpeechService {
       .replace("sg", "singular")
       .replace("pl", "plural");
 
-    if (declension.length === 0 && gender.length === 0)
+    if (declension.length === 0 && gender.length === 0) {
       return new UninflectedInflection();
+    }
 
     return this.buildNounInflection(declension, gender);
   }
 
-  /**
-   * Ingests prefix inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests prefix inflection in the part-of-speech parsing pipeline. */
   private ingestPrefixInflection(): Inflection {
     return new UninflectedInflection();
   }
 
-  /**
-   * Ingests preposition inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests preposition inflection in the part-of-speech parsing pipeline. */
   private ingestPrepositionInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
@@ -319,29 +312,30 @@ export class PartOfSpeechService {
     const other = text.split("(+ ")[1]?.split(")")[0];
 
     if (!other?.length) {
-      const prep = new PrepositionInflection();
-      prep.case = "accusative";
-      return prep;
+      const prepositionInflection = new PrepositionInflection();
+      prepositionInflection.case = "accusative";
+      return prepositionInflection;
     }
 
     const prepositionCase = other.match(prepositionCaseRegex)?.[0] ?? "";
     const prepositionInflection = new PrepositionInflection();
     prepositionInflection.case =
-      (findTypedValue(prepositionCaseValueList, prepositionCase) as
-        | PrepositionCase
-        | undefined) ?? "";
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.prepositionCaseValueList,
+        prepositionCase,
+      ) as PrepositionCase | undefined) ?? "";
     prepositionInflection.other = other;
     return prepositionInflection;
   }
 
-  /**
-   * Ingests pronoun inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests pronoun inflection in the part-of-speech parsing pipeline. */
   private ingestPronounInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
   ): Inflection {
-    if (!$(elt).text().includes(";")) return new UninflectedInflection();
+    if (!$(elt).text().includes(";")) {
+      return new UninflectedInflection();
+    }
 
     let declension = ($(elt).text().split("; ")[1] ?? "")
       .replace("pronoun", "")
@@ -350,27 +344,30 @@ export class PartOfSpeechService {
       .replaceAll(/\s+/g, " ")
       .trim();
 
-    if (declension.length === 0) return new UninflectedInflection();
+    if (declension.length === 0) {
+      return new UninflectedInflection();
+    }
 
     declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
 
     const adjectiveInflection = new AdjectiveInflection();
     adjectiveInflection.declension =
-      (findTypedValue(adjectiveDeclensionValueList, declension) as
-        | AdjectiveDeclension
-        | undefined) ?? "";
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.adjectiveDeclensionValueList,
+        declension,
+      ) as AdjectiveDeclension | undefined) ?? "";
     adjectiveInflection.degree = "positive";
     return adjectiveInflection;
   }
 
-  /**
-   * Ingests verb inflection in the part-of-speech parsing pipeline.
-   */
+  /** Ingests verb inflection in the part-of-speech parsing pipeline. */
   private ingestVerbInflection(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
   ): Inflection {
-    if (!$(elt).text().includes(";")) return new UninflectedInflection();
+    if (!$(elt).text().includes(";")) {
+      return new UninflectedInflection();
+    }
 
     let conjugation = $(elt).text().trim().split("; ")[1] ?? "";
     conjugation = conjugation
@@ -386,9 +383,10 @@ export class PartOfSpeechService {
 
     const verbInflection = new VerbInflection();
     verbInflection.conjugation =
-      (findTypedValue(verbConjugationValueList, finalConjugation) as
-        | undefined
-        | VerbConjugation) ?? "";
+      (PartOfSpeechService.findTypedValue(
+        PartOfSpeechService.verbConjugationValueList,
+        finalConjugation,
+      ) as undefined | VerbConjugation) ?? "";
     verbInflection.other = other;
     return verbInflection;
   }
@@ -416,7 +414,7 @@ export class PartOfSpeechService {
       .replaceAll(/(\[edit])|\d+/g, "")
       .trim()
       .replace("proper noun", "properNoun");
-    return partOfSpeechValueList.includes(text)
+    return PartOfSpeechService.partOfSpeechValueList.includes(text)
       ? (text as PartOfSpeech)
       : "phrase";
   }

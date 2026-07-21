@@ -5,7 +5,7 @@ import _ from "lodash";
 import { TripleAspectsComposerService } from "./triple-aspects-composer.service";
 import { TripleAspectsDetectorService } from "./triple-aspects-detector.service";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type {
   Aspect,
   Body,

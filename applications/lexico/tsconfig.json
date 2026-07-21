@@ -28,16 +28,7 @@
       "vite/client"
     ]
   },
-  "exclude": [
-    "src/**/*.spec.js",
-    "src/**/*.spec.jsx",
-    "src/**/*.spec.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.test.js",
-    "src/**/*.test.jsx",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx"
-  ],
+  "exclude": [],
   "extends": "../../configuration/tsconfig.json",
   "include": [
     "eslint.config.ts",

@@ -12,7 +12,7 @@ import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrograd
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
 import { Injectable } from "@nestjs/common";
 
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   Coordinates,

@@ -102,6 +102,55 @@ describe(LexicoIngestionCommand, () => {
     expect(command).toBeDefined();
   });
 
+  it("sets logger context", async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        LexicoIngestionCommand,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+        {
+          provide: CorpusScriptorumEcclesiasticorumLatinorumCommand,
+          useValue:
+            createMock<CorpusScriptorumEcclesiasticorumLatinorumCommand>(),
+        },
+        {
+          provide: DictionaryCommand,
+          useValue: createMock<DictionaryCommand>(),
+        },
+        {
+          provide: EpigraphikDatenbankClaussSlabyCommand,
+          useValue: createMock<EpigraphikDatenbankClaussSlabyCommand>(),
+        },
+        {
+          provide: LatinLibraryCommand,
+          useValue: createMock<LatinLibraryCommand>(),
+        },
+        {
+          provide: LibraryCommand,
+          useValue: createMock<LibraryCommand>(),
+        },
+        {
+          provide: LiteratureCommand,
+          useValue: createMock<LiteratureCommand>(),
+        },
+        {
+          provide: PerseusCommand,
+          useValue: createMock<PerseusCommand>(),
+        },
+        {
+          provide: WiktionaryCommand,
+          useValue: createMock<WiktionaryCommand>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
+
+    expect(logger.setContext).toHaveBeenCalledWith("LexicoIngestionCommand");
+  });
+
   it("should parse all boolean options", () => {
     expect(command.parseWikipedia(undefined)).toBe(true);
     expect(command.parseWikipedia("false")).toBe(false);

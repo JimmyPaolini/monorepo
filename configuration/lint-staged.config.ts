@@ -136,12 +136,12 @@ const config = {
     ];
   },
 
-  // ✅ Conformance tests
-  // Run conformance tests when generator templates or generated instances change
+  // ✅ Conformance validation
+  // Run conformance validation when generator templates or generated instances change
   // to ensure generated code instances conform to their template definitions.
   // Patterns are derived from generator configuration files (see tools/conformance/src/constants.ts)
   [`{${CONFORMANCE_PATTERNS.join(",")}}`]: () => [
-    "pnpm exec nx run conformance:test --outputStyle=dynamic-legacy",
+    "pnpm exec nx run conformance:validate --outputStyle=dynamic-legacy",
   ],
 
   // 🗄️ SQL files

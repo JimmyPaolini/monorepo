@@ -17,7 +17,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { EphemerisService } from "../ephemeris/ephemeris.service";
+import { EphemerisModule } from "../ephemeris/ephemeris.module";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
 import { MathService } from "../math/math.service";
 import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
@@ -34,7 +34,7 @@ import { AspectEphemerisService } from "./aspect-ephemeris.service";
 import { AspectEventFormattingService } from "./aspect-event-formatting.service";
 import { AspectGraphService } from "./aspect-graph.service";
 import { AspectPhaseEmojiService } from "./aspect-phase-emoji.service";
-import { AspectsUtilities } from "./aspects-utilities.service";
+import { AspectsUtilitiesService } from "./aspects-utilities.service";
 import {
   COMPOSITE_ASPECT_DETECTORS_TOKEN,
   PROGRESSIVE_ASPECT_DETECTORS_TOKEN,
@@ -58,16 +58,16 @@ describe(AspectsService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         AspectsService,
-        AspectsUtilities,
+        AspectsUtilitiesService,
         AspectEphemerisService,
         AspectEventFormattingService,
         AspectGraphService,
         AspectPhaseEmojiService,
         CompoundPhaseService,
-        EphemerisService,
         MajorAspectsService,
         MajorAspectEventService,
         MajorAspectProgressiveService,
