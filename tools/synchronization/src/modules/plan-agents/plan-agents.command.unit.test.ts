@@ -302,6 +302,98 @@ describe(PlanAgentsCommand, () => {
     expect(writeFileSync).toHaveBeenCalledTimes(PLAN_AGENT_CONFIGS.length);
   });
 
+  it("preserves existing agent frontmatter fields while syncing skill metadata and body", async () => {
+    const [firstConfig] = PLAN_AGENT_CONFIGS;
+    if (!firstConfig) {
+      return;
+    }
+
+    const skillContent = buildSkillContent(
+      "change-plan",
+      '"New description"',
+      '"New hint"',
+      "\n# New Body\n\nUpdated body content.\n",
+    );
+
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.skillFile),
+      skillContent,
+    );
+
+    const existingAgentContent = [
+      "---",
+      'argument-hint: "Old hint"',
+      "agents:\n  - explore-codebase\n  - explore-internet",
+      'description: "Old description"',
+      "disable-model-invocation: true",
+      "handoffs:",
+      "  - label: Execute Plan",
+      "    agent: execute-plan",
+      '    prompt: "Execute the revised plan."',
+      "    send: false",
+      "model: Auto (copilot)",
+      "name: change-plan",
+      "tools:",
+      "  - agent",
+      "  - read",
+      "  - edit",
+      "  - search",
+      "user-invocable: true",
+      "---",
+      "# Old Body",
+      "",
+      "Outdated body content.",
+      "",
+    ].join("\n");
+
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.agentFile),
+      existingAgentContent,
+    );
+
+    for (const config of PLAN_AGENT_CONFIGS.slice(1)) {
+      const agentFileName = config.agentFile.split("/").at(-1) ?? "";
+      const name = agentFileName.replace(".agent.md", "");
+      const description = `"Description for ${name}"`;
+      const argumentHint = `"Hint for ${name}"`;
+      const body = `\n# ${name}\n\nSkill content.\n`;
+
+      fileContents.set(
+        path.join(workspaceRoot, config.skillFile),
+        buildSkillContent(name, description, argumentHint, body),
+      );
+
+      fileContents.set(
+        path.join(workspaceRoot, config.agentFile),
+        buildExpectedAgentContent(
+          config,
+          name,
+          description,
+          argumentHint,
+          body,
+        ),
+      );
+    }
+
+    await command.run(["write"]);
+
+    const writtenContent = fileContents.get(
+      path.join(workspaceRoot, firstConfig.agentFile),
+    );
+
+    expect(writtenContent).toContain('argument-hint: "New hint"');
+    expect(writtenContent).toContain('description: "New description"');
+    expect(writtenContent).toContain("name: change-plan");
+    expect(writtenContent).toContain("disable-model-invocation: true");
+    expect(writtenContent).toContain("model: Auto (copilot)");
+    expect(writtenContent).toContain("user-invocable: true");
+    expect(writtenContent).toContain(
+      "agents:\n  - explore-codebase\n  - explore-internet",
+    );
+    expect(writtenContent).toContain("# New Body");
+    expect(writtenContent).not.toContain("# Old Body");
+  });
+
   it("handles a non-Error thrown during sync", async () => {
     vi.mocked(readFileSync).mockImplementationOnce(() => {
       // eslint-disable-next-line @typescript-eslint/only-throw-error
