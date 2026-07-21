@@ -238,11 +238,16 @@
         }
       }
     ],
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["^production", "production"]
-    },
+    "build": [
+      {
+        "cache": true,
+        "dependsOn": ["^build"],
+        "filter": {
+          "projects": ["tag:language:python", "tag:language:typescript"]
+        },
+        "inputs": ["^production", "production"]
+      }
+    ],
     "clean": [
       {
         "cache": true,
@@ -287,94 +292,119 @@
         ]
       }
     ],
-    "code-analysis": {
-      "cache": true,
-      "description": "Run code analysis checks through the aggregate analyze-code target",
-      "executor": "nx:run-commands",
-      "inputs": ["default"],
-      "options": {
-        "command": "nx run {projectName}:analyze-code:check",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "dependency-cruiser": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/configuration/dependency-cruiser.cjs",
-        "default"
-      ],
-      "options": {
-        "command": "depcruise {projectRoot}/src --config configuration/dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "eslint": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--fix"
+    "dependency-cruiser": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "^default",
+          "{projectRoot}/**/*.ts",
+          "{projectRoot}/**/*.tsx",
+          "{workspaceRoot}/configuration/dependency-cruiser.cjs",
+          "default"
+        ],
+        "options": {
+          "command": "depcruise {projectRoot}/src --config configuration/dependency-cruiser.cjs",
+          "cwd": "{workspaceRoot}"
         }
-      },
-      "defaultConfiguration": "check",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/configuration/eslint.config.ts",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "eslint . {args}"
       }
-    },
-    "fallow": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "shared-globals"
-      ]
-    },
-    "fallow-audit": {
-      "cache": false,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "shared-globals"
-      ]
-    },
-    "fallow-dead-code": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "shared-globals"
-      ]
-    },
-    "fallow-duplicates": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "shared-globals"
-      ]
-    },
-    "fallow-health": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "shared-globals"
-      ]
-    },
+    ],
+    "eslint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {},
+          "write": {
+            "args": "--fix"
+          }
+        },
+        "defaultConfiguration": "check",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+          "{workspaceRoot}/configuration/eslint.config.ts",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "eslint . {args}"
+        }
+      }
+    ],
+    "fallow": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/fallow.config.jsonc",
+          "shared-globals"
+        ]
+      }
+    ],
+    "fallow-audit": [
+      {
+        "cache": false,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/fallow.config.jsonc",
+          "shared-globals"
+        ]
+      }
+    ],
+    "fallow-dead-code": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/fallow.config.jsonc",
+          "shared-globals"
+        ]
+      }
+    ],
+    "fallow-duplicates": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/fallow.config.jsonc",
+          "shared-globals"
+        ]
+      }
+    ],
+    "fallow-health": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/fallow.config.jsonc",
+          "shared-globals"
+        ]
+      }
+    ],
     "format": [
       {
         "cache": true,
@@ -463,24 +493,29 @@
         ]
       }
     ],
-    "knip": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}"
+    "knip": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}"
+          },
+          "write": {
+            "command": "knip --fix --config configuration/knip.config.ts --workspace {projectRoot}"
+          }
         },
-        "write": {
-          "command": "knip --fix --config configuration/knip.config.ts --workspace {projectRoot}"
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": ["{workspaceRoot}/configuration/knip.config.ts", "default"],
+        "options": {
+          "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}",
+          "cwd": "{workspaceRoot}"
         }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/knip.config.ts", "default"],
-      "options": {
-        "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}",
-        "cwd": "{workspaceRoot}"
       }
-    },
+    ],
     "lint": [
       {
         "cache": true,
@@ -567,28 +602,33 @@
         ]
       }
     ],
-    "markdown-lint": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
+    "markdown-lint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
+          },
+          "write": {
+            "command": "markdownlint-cli2 --fix --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
+          }
         },
-        "write": {
-          "command": "markdownlint-cli2 --fix --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python", "tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.md",
+          "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
+          "cwd": "{workspaceRoot}"
         }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.md",
-        "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
-        "cwd": "{workspaceRoot}"
       }
-    },
+    ],
     "nbstripout": [
       {
         "cache": true,
@@ -612,71 +652,86 @@
         }
       }
     ],
-    "oxfmt": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "--check"
+    "oxfmt": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "--check"
+          },
+          "write": {
+            "args": "--write"
+          }
         },
-        "write": {
-          "args": "--write"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/configuration/.oxfmtignore",
-        "{workspaceRoot}/configuration/oxfmt.config.ts",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} {projectRoot}",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "oxlint": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--fix"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
-        "{workspaceRoot}/configuration/oxlint.config.ts",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore {args} {projectRoot}/src",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "prettier": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "--check"
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
         },
-        "write": {
-          "args": "--write"
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+          "{workspaceRoot}/configuration/.oxfmtignore",
+          "{workspaceRoot}/configuration/oxfmt.config.ts",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} {projectRoot}",
+          "cwd": "{workspaceRoot}"
         }
-      },
-      "defaultConfiguration": "write",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
-        "{workspaceRoot}/configuration/.prettierignore",
-        "{workspaceRoot}/configuration/prettier.config.ts",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore {projectRoot}"
       }
-    },
+    ],
+    "oxlint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {},
+          "write": {
+            "args": "--fix"
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+          "{workspaceRoot}/configuration/oxlint.config.ts",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore {args} {projectRoot}/src",
+          "cwd": "{workspaceRoot}"
+        }
+      }
+    ],
+    "prettier": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "--check"
+          },
+          "write": {
+            "args": "--write"
+          }
+        },
+        "defaultConfiguration": "write",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+          "{workspaceRoot}/configuration/.prettierignore",
+          "{workspaceRoot}/configuration/prettier.config.ts",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore {projectRoot}"
+        }
+      }
+    ],
     "pyright": [
       {
         "cache": true,
@@ -788,20 +843,25 @@
         }
       }
     ],
-    "spell-check": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}",
-        "{workspaceRoot}/configuration/.cspell/**",
-        "{workspaceRoot}/configuration/cspell.config.yaml",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}' --no-progress --gitignore",
-        "cwd": "{workspaceRoot}"
+    "spell-check": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python", "tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}",
+          "{workspaceRoot}/configuration/.cspell/**",
+          "{workspaceRoot}/configuration/cspell.config.yaml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}' --no-progress --gitignore",
+          "cwd": "{workspaceRoot}"
+        }
       }
-    },
+    ],
     "sqlfluff-format": [
       {
         "cache": true,
@@ -888,27 +948,32 @@
         }
       }
     ],
-    "stylelint": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
+    "stylelint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
+          },
+          "write": {
+            "command": "stylelint --fix --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
+          }
         },
-        "write": {
-          "command": "stylelint --fix --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/src/**/*.css",
+          "{workspaceRoot}/configuration/stylelint.config.cjs"
+        ],
+        "options": {
+          "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'",
+          "cwd": "{projectRoot}"
         }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/src/**/*.css",
-        "{workspaceRoot}/configuration/stylelint.config.cjs"
-      ],
-      "options": {
-        "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'",
-        "cwd": "{projectRoot}"
       }
-    },
+    ],
     "test": [
       {
         "cache": true,
@@ -1017,21 +1082,26 @@
         }
       }
     ],
-    "type-coverage": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{projectRoot}/tsconfig.json",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
-        "cwd": "{projectRoot}"
-      },
-      "outputs": ["{projectRoot}/type-coverage-report.txt"]
-    },
+    "type-coverage": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.ts",
+          "{projectRoot}/**/*.tsx",
+          "{projectRoot}/tsconfig.json",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
+          "cwd": "{projectRoot}"
+        },
+        "outputs": ["{projectRoot}/type-coverage-report.txt"]
+      }
+    ],
     "typecheck": [
       {
         "cache": true,
@@ -1095,23 +1165,7 @@
         "cache": true,
         "executor": "nx:run-commands",
         "filter": {
-          "projects": ["tag:language:python"]
-        },
-        "inputs": [
-          "{projectRoot}/**/*.{yaml,yml}",
-          "{workspaceRoot}/configuration/yamllint.yaml",
-          "shared-globals"
-        ],
-        "options": {
-          "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",
-          "cwd": "{workspaceRoot}"
-        }
-      },
-      {
-        "cache": true,
-        "executor": "nx:run-commands",
-        "filter": {
-          "projects": ["tag:language:typescript"]
+          "projects": ["tag:language:python", "tag:language:typescript"]
         },
         "inputs": [
           "{projectRoot}/**/*.{yaml,yml}",

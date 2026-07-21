@@ -25,7 +25,6 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
-    "code-analysis": {},
     "corpus-scriptorum-ecclesiasticorum-latinorum": {
       "description": "Download CSEL XML files locally",
       "executor": "nx:run-commands",

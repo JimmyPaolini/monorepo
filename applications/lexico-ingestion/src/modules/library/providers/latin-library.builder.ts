@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
+import { type AnyNode, isTag, isText } from "domhandler";
 import _ from "lodash";
 import YAML from "yaml";
 
@@ -11,8 +12,6 @@ import {
   formatLineNumber,
   isEnglishBoilerplate,
 } from "../library.utilities";
-
-import type { AnyNode } from "domhandler";
 
 /**
  * Normalizes Latin Library HTML into `Author`/`Text` entities and markdown-ready
@@ -111,6 +110,17 @@ export class LatinLibraryBuilder {
   }
 
   /**
+   * Returns a string metadata value by key when present.
+   */
+  private getMetadataString(
+    metadata: null | Record<string, unknown> | undefined,
+    key: string,
+  ): string | undefined {
+    const value = metadata?.[key];
+    return typeof value === "string" ? value : undefined;
+  }
+
+  /**
    * Parses and normalizes inputs for Latin Library document normalization.
    */
   private parseParagraphHtml(paraHtml: string): string {
@@ -120,18 +130,14 @@ export class LatinLibraryBuilder {
     $("body")
       .contents()
       .each((_index, node) => {
-        if ((node.type as string) === "text") {
+        if (isText(node)) {
           text += $(node).text();
-        } else if (
-          (node.type as string) === "tag" &&
-          "name" in node &&
-          node.name === "b"
-        ) {
+        } else if (isTag(node) && node.name === "b") {
           const boldText = $(node).text().trim();
           if (boldText) {
             text += `**${boldText}** `;
           }
-        } else if ((node.type as string) === "tag") {
+        } else if (isTag(node)) {
           text += $(node).text();
         }
       });
@@ -218,12 +224,14 @@ export class LatinLibraryBuilder {
   ): Record<string, unknown> {
     const frontmatter: Record<string, unknown> = {
       author: author.slug,
-      text_metadata: { source_url: work.metadata?.["sourceUrl"] as string },
+      text_metadata: {
+        source_url: this.getMetadataString(work.metadata, "sourceUrl") ?? "",
+      },
       title: work.title,
       type: workBook ? "text" : "book",
     };
     if (author.metadata) {
-      const authorMeta = { ...author.metadata } as Record<string, unknown>;
+      const authorMeta: Record<string, unknown> = { ...author.metadata };
       delete authorMeta["nickname"];
       delete authorMeta["sourceUrl"];
       frontmatter["author_metadata"] = authorMeta;
@@ -310,7 +318,7 @@ export class LatinLibraryBuilder {
    * Computes the canonical storage slug for a text, including optional book hierarchy.
    */
   getTextSlug(work: Text, author: Author): string {
-    const workBook = work.metadata?.["book"] as string | undefined;
+    const workBook = this.getMetadataString(work.metadata, "book");
     const safeTitle = _.kebabCase(work.title);
     return workBook
       ? `${author.slug}/${_.kebabCase(workBook)}/${safeTitle}`

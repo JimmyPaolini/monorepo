@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { z } from "zod";
 
 import {
   formCaseValueList,
@@ -117,10 +118,7 @@ export class FormsBuilderGuardsService {
    * Guards unknown values as arrays containing only strings.
    */
   isStringArray(value: unknown): value is string[] {
-    return (
-      Array.isArray(value) &&
-      value.every((item: unknown) => typeof item === "string")
-    );
+    return z.array(z.string()).safeParse(value).success;
   }
 
   /**
