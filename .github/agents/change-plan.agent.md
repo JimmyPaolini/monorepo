@@ -1,24 +1,27 @@
 ---
-name: change-plan
-description: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
-user-invocable: true
 argument-hint: "Provide the plan file path and describe the requested scope or approach change."
-compatibility:
-	environments:
-		- vscode
-		- github-copilot
-		- copilot-cli
-context:
-	requires:
-		- documentation/planning/**/*.plan.md
-	optional:
-		- AGENTS.md
-		- nx.json
-metadata:
-	domain: planning
-	lifecycle-stage: change
-	owner: monorepo
-license: MIT
+agents:
+  - explore-codebase
+  - explore-internet
+description: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
+disable-model-invocation: true
+handoffs:
+  - label: Create Issue
+    agent: agent
+    prompt: "Convert the plan created above into a GitHub issue following the skill `create-issue`."
+    send: false
+  - label: Execute Plan
+    agent: execute-plan
+    prompt: "Execute the revised plan."
+    send: false
+model: Auto (copilot)
+name: change-plan
+tools:
+  - agent
+  - read
+  - edit
+  - search
+user-invocable: true
 ---
 
 # Change Plan

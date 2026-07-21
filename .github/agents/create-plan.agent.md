@@ -1,24 +1,28 @@
 ---
-name: create-plan
-description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
-user-invocable: true
 argument-hint: "Describe the plan purpose, scope boundaries, and key constraints."
-compatibility:
-  environments:
-    - vscode
-    - github-copilot
-    - copilot-cli
-context:
-  requires:
-    - documentation/planning/**/*.plan.md
-  optional:
-    - AGENTS.md
-    - nx.json
-metadata:
-  domain: planning
-  lifecycle-stage: create
-  owner: monorepo
-license: MIT
+agents:
+  - explore-codebase
+  - explore-internet
+description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
+disable-model-invocation: true
+handoffs:
+  - label: Execute Plan
+    agent: execute-plan
+    prompt: "Execute the plan created above."
+    send: false
+  - label: Create Issue
+    agent: agent
+    prompt: "Convert the plan created above into a GitHub issue following the skill `create-issue`."
+    send: false
+model: Auto (copilot)
+name: create-plan
+tools:
+  - agent
+  - read
+  - search
+  - web
+  - execute
+user-invocable: true
 ---
 
 # Create Plan

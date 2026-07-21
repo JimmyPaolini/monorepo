@@ -1,24 +1,28 @@
 ---
-name: update-plan
-description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
-user-invocable: true
 argument-hint: "Provide the plan file path and any focus area to audit first."
-compatibility:
-	environments:
-		- vscode
-		- github-copilot
-		- copilot-cli
-context:
-	requires:
-		- documentation/planning/**/*.plan.md
-	optional:
-		- AGENTS.md
-		- nx.json
-metadata:
-	domain: planning
-	lifecycle-stage: update
-	owner: monorepo
-license: MIT
+agents:
+  - explore-codebase
+description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
+disable-model-invocation: true
+handoffs:
+  - label: Continue Executing
+    agent: execute-plan
+    prompt: "Continue executing the remaining tasks in the updated plan."
+    send: false
+  - label: Change Plan
+    agent: change-plan
+    prompt: "Change the plan scope or approach."
+    send: false
+model: Auto (copilot)
+name: update-plan
+tools:
+  - agent
+  - read
+  - edit
+  - search
+  - execute
+  - agent
+user-invocable: true
 ---
 
 # Update Implementation Plan

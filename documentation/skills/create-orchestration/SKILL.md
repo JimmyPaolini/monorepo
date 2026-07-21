@@ -81,24 +81,27 @@ After research returns, determine execution mode:
 - Use `parallel` only when work streams are independent and can run without reading each other's outputs.
 - Use `sequence` when later work depends on earlier outputs, shared file mutations, or ordered handoffs.
 
-## Phase 2 - Alignment: Clarifying Questions
+## Phase 2 - Consideration: Option Analysis
 
-Ask 2-4 focused questions in a single batch before writing the plan file.
+Do not ask the user questions. Instead, think through the options discovered in Phase 1 and select defaults grounded in evidence.
 
-When available, use the VS Code ask-questions tool to ask this batch. If the tool is unavailable, ask the same batch directly in chat.
-
-Questions may confirm:
+During this phase, explicitly evaluate and decide:
 
 1. Scope in and scope out boundaries.
-2. Preferred execution mode (`parallel` or `sequence`) if not obvious.
-3. Model preference per agent run (single model or mixed models), with a default bias toward smaller models for tightly scoped tasks.
-4. Safety constraints (for example, no destructive git operations, test requirements, or required review checkpoints).
+2. Execution mode (`parallel` or `sequence`) based on dependency and file-overlap risk.
+3. Model strategy per agent run (single model or mixed models), with a default bias toward smaller models for tightly scoped tasks.
+4. Safety constraints (for example, no destructive git operations, test requirements, required review checkpoints).
 
-Use defaults when possible to reduce back-and-forth.
+For each meaningful decision or tradeoff, record an `ALT-` entry in the relevant `inputs[].prompt` under `## 3. Alternatives`, including:
+
+- Options considered
+- Option selected
+- Why it was selected
+- Why alternatives were not selected
 
 ## Phase 3 - Design: Generate Executable JSON Plan
 
-Synthesize research and user answers into a JSON plan file in `documentation/planning/`.
+Use finalized decisions from Phase 2 to write a JSON plan file in `documentation/planning/`.
 
 ### Output File Specifications
 
@@ -154,9 +157,10 @@ Required pattern inside each prompt:
 
 ```md
 ## File Paths
+
 1. path/to/file.ts
 2. path/to/directory
-3. path/to/**/many/**/*-files.ts
+3. path/to/**/many/**/\*-files.ts
 ```
 
 Path guidance:
@@ -253,8 +257,8 @@ status: 'Completed'|'In progress'|'Planned'
 
 [A bullet point list of any alternative approaches that were considered and why they were not chosen. This helps to provide context and rationale for the chosen approach.]
 
-- **ALT-001**: Alternative approach 1
-- **ALT-002**: Alternative approach 2
+- **ALT-001**: Decision/tradeoff summary including selected option, alternatives considered, and rationale
+- **ALT-002**: Decision/tradeoff summary including selected option, alternatives considered, and rationale
 
 ## 4. Dependencies
 
@@ -315,9 +319,10 @@ Prompt writing rules:
 When asked to update a previously generated multi-agent plan:
 
 1. Read the existing `.plan.json` file.
-2. Clarify ambiguities with at most 2 focused questions.
-3. Apply targeted edits while preserving unchanged sections.
-4. Keep the file valid JSON and still compatible with `scripts/orchestrate-agents.ts`.
-5. Confirm what changed and why.
+2. Resolve ambiguities without asking questions by selecting a sensible default based on existing plan context and repository conventions.
+3. Record each meaningful ambiguity resolution as a new `ALT-` entry in the affected `inputs[].prompt` under `## 3. Alternatives`.
+4. Apply targeted edits while preserving unchanged sections.
+5. Keep the file valid JSON and still compatible with `scripts/orchestrate-agents.ts`.
+6. Confirm what changed and why, including new `ALT-` entries.
 
 For update operations, do not rename the file unless explicitly requested.

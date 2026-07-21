@@ -548,6 +548,16 @@
   "github.copilot.nextEditSuggestions.fixes": true,
   "github.copilot.nextEditSuggestions.preferredModel": "Auto (copilot)",
   "github.copilot.selectedCompletionModel": "Auto (copilot)",
+  "githubIssues.queries": [
+    {
+      "label": "📑 Open",
+      "query": "repo:${owner}/${repository} is:open"
+    },
+    {
+      "label": "🚪 Closed",
+      "query": "repo:${owner}/${repository} -is:open"
+    }
+  ],
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,

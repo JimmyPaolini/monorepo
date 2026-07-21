@@ -1,24 +1,24 @@
 ---
-name: execute-plan
-description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
-user-invocable: true
 argument-hint: "Provide the plan file path and any execution boundaries (for example, stop after one phase)."
-compatibility:
-  environments:
-    - vscode
-    - github-copilot
-    - copilot-cli
-context:
-  requires:
-    - documentation/planning/**/*.plan.md
-  optional:
-    - AGENTS.md
-    - nx.json
-metadata:
-  domain: planning
-  lifecycle-stage: execute
-  owner: monorepo
-license: MIT
+agents:
+  - explore-codebase
+description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
+disable-model-invocation: true
+handoffs:
+  - label: Update Plan
+    agent: update-plan
+    prompt: "Update the plan to reflect what was actually implemented."
+    send: false
+model: Auto (copilot)
+name: execute-plan
+tools:
+  - agent
+  - read
+  - edit
+  - search
+  - execute
+  - agent
+user-invocable: true
 ---
 
 # Execute Plan

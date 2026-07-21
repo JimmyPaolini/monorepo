@@ -73,10 +73,10 @@ Once all conflicts are resolved and staged, **do not commit**. Provide the user 
 
 ## Troubleshooting
 
-| Issue | Solution |
-| ------- | ---------- |
-| Unclear intent | If the purpose of either branch is ambiguous, ask the user for clarification before attempting to resolve the code. |
-| Complex structural conflicts | If a file was heavily refactored on one branch and modified on the other, take time to map the modifications to the new structure before resolving. |
+| Issue                            | Solution                                                                                                                                            |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unclear intent                   | If the purpose of either branch is ambiguous, ask the user for clarification before attempting to resolve the code.                                 |
+| Complex structural conflicts     | If a file was heavily refactored on one branch and modified on the other, take time to map the modifications to the new structure before resolving. |
 | Overwhelming number of conflicts | If there are too many conflicts to handle reliably in one go, ask the user if they want to tackle them file-by-file or abort (`git merge --abort`). |
 
 If conflict resolution goes wrong after staging or committing, use [restore-code](../restore-code/SKILL.md) to recover from the backup artifact.

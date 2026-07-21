@@ -4,6 +4,7 @@
   "bail": false,
   "cacheDirectory": ".nx/cache",
   "defaultBase": "main",
+  "defaultProject": "monorepo",
   "excludedGlobs": ["**/tools/conformance/src/modules/*/templates/**"],
   "generators": {
     "@nx/react": {
@@ -49,6 +50,7 @@
       "shared-globals"
     ]
   },
+  "neverConnectToCloud": true,
   "parallel": 3,
   "plugins": [
     {
@@ -126,10 +128,7 @@
         "inputs": [
           "{projectRoot}/**/*.{py,ipynb,md,yaml,yml,json}",
           "shared-globals"
-        ],
-        "options": {
-          "outputStyle": "stream"
-        }
+        ]
       },
       {
         "cache": true,
@@ -173,10 +172,7 @@
         "inputs": [
           "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
           "shared-globals"
-        ],
-        "options": {
-          "outputStyle": "stream"
-        }
+        ]
       },
       {
         "cache": true,
@@ -218,10 +214,7 @@
         "inputs": [
           "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
           "shared-globals"
-        ],
-        "options": {
-          "outputStyle": "stream"
-        }
+        ]
       }
     ],
     "bandit": [
@@ -1181,5 +1174,9 @@
   },
   "tui": {
     "enabled": false
+  },
+  "workspaceLayout": {
+    "appsDir": "applications",
+    "libsDir": "packages"
   }
 }
