@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "sessionStart": [
+      {
+        "bash": "scripts/git/validate-session-commit-signing.sh",
+        "cwd": ".",
+        "timeoutSec": 5,
+        "type": "command"
+      }
+    ]
+  },
+  "version": 1
+}
