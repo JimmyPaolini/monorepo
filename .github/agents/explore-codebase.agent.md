@@ -2,7 +2,7 @@
 argument-hint: "Describe the topic, feature, or task to research in this codebase."
 agents: []
 description: "Explore codebase files, patterns, and structure for a given topic. USE WHEN gathering implementation context before planning or executing tasks, when asked to research the codebase, or when a planning agent needs a Sub-Agent A (Codebase Research). Returns a Codebase Research Summary with relevant files, existing patterns, affected Nx projects, reusable code, related plans, constraints, and open questions."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs: []
 
 model: Claude Haiku 4.5 (copilot)

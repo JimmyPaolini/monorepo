@@ -2,8 +2,16 @@
 argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-output.log"
 agents: []
 description: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-disable-model-invocation: true
-handoffs: []
+disable-model-invocation: false
+handoffs:
+  - label: Clarify Submission Context
+    agent: question-me
+    prompt: "Clarify the intended outcome, failing hook, or missing context before continuing submission triage."
+    send: false
+  - label: Triage Deployment
+    agent: triage-deployment
+    prompt: "Also triage any failing CI checks on the remote branch."
+    send: false
 model: Auto (copilot)
 name: triage-submission
 tools:

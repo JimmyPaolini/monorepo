@@ -12,10 +12,7 @@ import { relative } from "node:path";
 import { SYNC_AGENT_SKILLS_FILES } from "../tools/synchronization/src/modules/agent-skills/agent-skills.constants";
 import { SYNC_CONFORMANCE_GENERATORS_FILES } from "../tools/synchronization/src/modules/conformance-generators/conformance-generators.constants";
 import { SYNC_CONVENTIONAL_CONFIG_FILES } from "../tools/synchronization/src/modules/conventional-config/conventional-config.constants";
-import { SYNC_CUSTOM_AGENTS_FILES } from "../tools/synchronization/src/modules/custom-agents/custom-agents.constants";
-import { SYNC_PLAN_AGENTS_FILES } from "../tools/synchronization/src/modules/plan-agents/plan-agents.constants";
 import { SYNC_PULL_REQUEST_TEMPLATE_FILES } from "../tools/synchronization/src/modules/pull-request-template/pull-request-template.constants";
-import { SYNC_TRIAGE_AGENTS_FILES } from "../tools/synchronization/src/modules/triage-agents/triage-agents.constants";
 import { CONFORMANCE_PATTERNS } from "../tools/conformance/src/constants";
 
 function getPaths(files: string[]): string {
@@ -76,21 +73,6 @@ const config = {
   // Keep conformance generators table in sync in AGENTS.md
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: (): string[] => [
     "pnpm exec nx run synchronization:conformance-generators:check --outputStyle=static",
-  ],
-
-  // Keep custom agents table of contents in sync in AGENTS.md
-  [`{${SYNC_CUSTOM_AGENTS_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:custom-agents:check --outputStyle=static",
-  ],
-
-  // Keep plan agent files synchronized with their source SKILL.md files
-  [`{${SYNC_PLAN_AGENTS_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:plan-agents:check --outputStyle=static",
-  ],
-
-  // Keep triage agent files synchronized with their source SKILL.md files
-  [`{${SYNC_TRIAGE_AGENTS_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:triage-agents:check --outputStyle=static",
   ],
 
   // 📝 TypeScript / JavaScript source files

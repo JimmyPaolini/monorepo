@@ -3,8 +3,12 @@ argument-hint: "Provide the plan file path and any focus area to audit first."
 agents:
   - explore-codebase
 description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs:
+  - label: Clarify Update
+    agent: question-me
+    prompt: "Clarify any ambiguity in the requested plan audit or update before editing the plan."
+    send: false
   - label: Continue Executing
     agent: execute-plan
     prompt: "Continue executing the remaining tasks in the updated plan."
