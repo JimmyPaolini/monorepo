@@ -1,5 +1,13 @@
 // 🏷️ Types
 
+/** Parsed sections of an existing agent file. */
+export interface ExistingAgentParts {
+  /** Markdown content after frontmatter block. */
+  body: string;
+  /** Raw frontmatter content without --- delimiters. */
+  frontmatter: string;
+}
+
 /** Static per-agent configuration stored in constants alongside each SKILL.md source. */
 export interface TriageAgentConfig {
   /** Output agent file path relative to the workspace root. */

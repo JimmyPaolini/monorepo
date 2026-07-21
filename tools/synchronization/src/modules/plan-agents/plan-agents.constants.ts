@@ -2,6 +2,18 @@
 
 import type { PlanAgentConfig } from "./plan-agents.types";
 
+/** All files managed by the plan-agents sync workflow. */
+export const SYNC_PLAN_AGENTS_FILES: string[] = [
+  ".github/agents/change-plan.agent.md",
+  ".github/agents/create-plan.agent.md",
+  ".github/agents/execute-plan.agent.md",
+  ".github/agents/update-plan.agent.md",
+  "documentation/skills/change-plan/SKILL.md",
+  "documentation/skills/create-plan/SKILL.md",
+  "documentation/skills/execute-plan/SKILL.md",
+  "documentation/skills/update-plan/SKILL.md",
+];
+
 /** Static per-agent configurations that drive the plan-agents sync. */
 export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
   {

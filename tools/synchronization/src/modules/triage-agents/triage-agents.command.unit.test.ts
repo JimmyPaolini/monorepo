@@ -301,6 +301,67 @@ describe(TriageAgentsCommand, () => {
     expect(writeFileSync).toHaveBeenCalledTimes(TRIAGE_AGENT_CONFIGS.length);
   });
 
+  it("preserves existing non-skill frontmatter while syncing skill metadata and body", async () => {
+    const [firstConfig] = TRIAGE_AGENT_CONFIGS;
+    if (!firstConfig) {
+      return;
+    }
+
+    setupAllSkillsAndAgents(workspaceRoot, true);
+
+    const skillBody = "\n# updated\n\nUpdated skill body.\n";
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.skillFile),
+      buildSkillContent(
+        "updated-name",
+        '"Updated description"',
+        '"Updated hint"',
+        skillBody,
+      ),
+    );
+
+    fileContents.set(
+      path.join(workspaceRoot, firstConfig.agentFile),
+      [
+        "---",
+        'description: "Existing description"',
+        "name: existing-name",
+        'argument-hint: "Existing hint"',
+        "disable-model-invocation: true",
+        "user-invocable: true",
+        "model: Auto (copilot)",
+        "tools:",
+        "  - read",
+        "  - execute",
+        "handoffs:",
+        "  - label: Existing handoff",
+        "    agent: triage-submission",
+        '    prompt: "Existing prompt"',
+        "    send: false",
+        "---",
+        "# existing-body",
+        "",
+        "Old body that should be replaced.",
+        "",
+      ].join("\n"),
+    );
+
+    await command.run(["write"]);
+
+    const syncedContent = fileContents.get(
+      path.join(workspaceRoot, firstConfig.agentFile),
+    );
+
+    expect(syncedContent).toContain("name: updated-name");
+    expect(syncedContent).toContain('description: "Updated description"');
+    expect(syncedContent).toContain('argument-hint: "Updated hint"');
+    expect(syncedContent).toContain("disable-model-invocation: true");
+    expect(syncedContent).toContain("user-invocable: true");
+    expect(syncedContent).toContain("model: Auto (copilot)");
+    expect(syncedContent).toContain("# updated");
+    expect(syncedContent).not.toContain("# existing-body");
+  });
+
   it("handles a non-Error thrown during sync", async () => {
     vi.mocked(readFileSync).mockImplementationOnce(() => {
       // eslint-disable-next-line @typescript-eslint/only-throw-error

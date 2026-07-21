@@ -68,13 +68,13 @@ Process all failing runs before moving to Step 4. Each failure may require a sep
 
 Match the log header against the known workflows:
 
-| Workflow name             | Job name               | Trigger                                                |
-| ------------------------- | ---------------------- | ------------------------------------------------------ |
-| `🧑‍💻 Analyze Code`         | `analyze-code`         | push / PR / manual                                     |
-| `🧑‍🔬 Test Coverage`        | `test-coverage`        | push / PR / manual                                     |
-| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main                 |
-| `🕵️ Audit Security`       | `audit-security`       | push / PR / weekly schedule                            |
-| `🧑‍🔧 Make Devcontainer`    | `make-devcontainer`    | push to main / PR touching `.devcontainer/**` / manual |
+| Workflow name | Job name | Trigger |
+| --- | --- | --- |
+| `🧑‍💻 Analyze Code` | `analyze-code` | push / PR / manual |
+| `🧑‍🔬 Test Coverage` | `test-coverage` | push / PR / manual |
+| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main |
+| `🕵️ Audit Security` | `audit-security` | push / PR / weekly schedule |
+| `🧑‍🔧 Make Devcontainer` | `make-devcontainer` | push to main / PR touching `.devcontainer/**` / manual |
 
 Identify which **step** within the job failed (visible in the log as `##[error]` or step exit code `!= 0`).
 
@@ -84,16 +84,16 @@ Identify which **step** within the job failed (visible in the log as `##[error]`
 
 The `analyze-code` composite target fans out to per-project sub-targets. Identify which sub-target failed:
 
-| Sub-target      | Underlying tool   | Config file                                                                                                                                                                                         |
-| --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `typecheck`     | `tsc --noEmit`    | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json)                                                                                    |
-| `lint`          | ESLint            | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts)                                                                                     |
-| `format`        | prettier + oxfmt  | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
-| `spell-check`   | cspell            | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml)                                                                                                                       |
-| `knip`          | knip              | [configuration/knip.config.ts](../../../configuration/knip.config.ts)                                                                                                                               |
-| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root)                                                                                                                                                               |
-| `yaml-lint`     | yamllint          | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml)                                                                                                                                 |
-| `type-coverage` | type-coverage     | Per-project `package.json` scripts                                                                                                                                                                  |
+| Sub-target | Underlying tool | Config file |
+| --- | --- | --- |
+| `typecheck` | `tsc --noEmit` | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
+| `lint` | ESLint | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
+| `format` | prettier + oxfmt | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
+| `spell-check` | cspell | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml) |
+| `knip` | knip | [configuration/knip.config.ts](../../../configuration/knip.config.ts) |
+| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root) |
+| `yaml-lint` | yamllint | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml) |
+| `type-coverage` | type-coverage | Per-project `package.json` scripts |
 
 **Common fixes:**
 

@@ -49,7 +49,7 @@ lint-staged config: [configuration/lint-staged.config.ts](../../../configuration
 For each pattern of staged files, lint-staged runs:
 
 ```bash
-nx affected --target=<targets> --configuration=check --files=<comma-separated-staged-paths> --outputStyle=dynamic-legacy
+nx affected --target=<targets> --configuration=check --files=<comma-separated-staged-paths>
 ```
 
 ### commit-msg hook

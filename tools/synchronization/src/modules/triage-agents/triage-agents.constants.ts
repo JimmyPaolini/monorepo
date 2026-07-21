@@ -2,6 +2,14 @@
 
 import type { TriageAgentConfig } from "./triage-agents.types";
 
+/** All files managed by the triage-agents sync workflow. */
+export const SYNC_TRIAGE_AGENTS_FILES: string[] = [
+  ".github/agents/triage-deployment.agent.md",
+  ".github/agents/triage-submission.agent.md",
+  "documentation/skills/triage-deployment/SKILL.md",
+  "documentation/skills/triage-submission/SKILL.md",
+];
+
 /** Static per-agent configurations that drive the triage-agents sync. */
 export const TRIAGE_AGENT_CONFIGS: TriageAgentConfig[] = [
   {
