@@ -1,13 +1,15 @@
 import { ReactElement } from "react";
 
 // 🔖 Type
-export interface {{namePascalCase}}Props {
+export interface {{namePascalCase}}Properties {
   className?: string;
 }
 
 // 🧩 Component
-export const {{namePascalCase}} = (props: {{namePascalCase}}Props): ReactElement => {
-  const { className } = props;
+export const {{namePascalCase}} = (
+  properties: {{namePascalCase}}Properties
+): ReactElement => {
+  const { className } = properties;
 
   // 🪝 Hooks
 

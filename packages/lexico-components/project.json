@@ -67,13 +67,7 @@
         "command": "type-coverage --detail --ignore-files \"src/components/**\" \"src/hooks/**\" \"src/lib/**\" > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
       }
     },
-    "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "typecheck": {},
     "yaml-lint": {}
   }
 }

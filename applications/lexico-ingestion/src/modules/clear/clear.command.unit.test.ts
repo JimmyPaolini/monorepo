@@ -221,6 +221,64 @@ describe(ClearCommand, () => {
     expect(authorsRepository.createQueryBuilder).toHaveBeenCalledTimes(1);
   });
 
+  it("uses prompted boolean values when options are missing", async () => {
+    setPromptsMockResponse(promptsMock, {
+      dictionary: false,
+      literature: true,
+    });
+
+    await command.run([], {});
+
+    expect(promptsMock).toHaveBeenCalledTimes(1);
+    expect(wordsRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(translationsRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(lexemesRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(tokensRepository.createQueryBuilder).toHaveBeenCalledTimes(1);
+    expect(linesRepository.createQueryBuilder).toHaveBeenCalledTimes(1);
+    expect(textsRepository.createQueryBuilder).toHaveBeenCalledTimes(1);
+    expect(authorsRepository.createQueryBuilder).toHaveBeenCalledTimes(1);
+  });
+
+  it("parses prompt responses with only dictionary boolean values", () => {
+    const parsedResponse = (
+      command as unknown as {
+        parsePromptResponse: (response: unknown) => {
+          dictionary?: boolean;
+          literature?: boolean;
+        };
+      }
+    ).parsePromptResponse({ dictionary: false });
+
+    expect(parsedResponse).toStrictEqual({ dictionary: false });
+  });
+
+  it("parses prompt responses with only literature boolean values", () => {
+    const parsedResponse = (
+      command as unknown as {
+        parsePromptResponse: (response: unknown) => {
+          dictionary?: boolean;
+          literature?: boolean;
+        };
+      }
+    ).parsePromptResponse({ literature: true });
+
+    expect(parsedResponse).toStrictEqual({ literature: true });
+  });
+
+  it("ignores malformed prompt responses when options are missing", async () => {
+    promptsMock.mockResolvedValueOnce(null as never);
+
+    await command.run([], {});
+
+    expect(wordsRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(translationsRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(lexemesRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(tokensRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(linesRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(textsRepository.createQueryBuilder).not.toHaveBeenCalled();
+    expect(authorsRepository.createQueryBuilder).not.toHaveBeenCalled();
+  });
+
   it("skips all deletion when both dictionary and literature are disabled", async () => {
     await command.run([], {
       dictionary: false,

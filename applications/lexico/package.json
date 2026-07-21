@@ -10,6 +10,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "vite": "catalog:",
+    "vitest": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -26,7 +27,8 @@
     "postcss": "catalog:",
     "size-limit": "catalog:",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "name": "lexico",
   "private": true,

@@ -2,27 +2,21 @@ import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 
 import {
-  type AdjectiveDeclension,
   adjectiveDeclensionValues,
-  type AdjectiveDegree,
   adjectiveDegreeValues,
   AdjectiveInflection,
   AdverbInflection,
   type Inflection,
   type Lexeme,
-  type NounDeclension,
   nounDeclensionValues,
-  type NounGender,
   nounGenders,
   NounInflection,
   type PartOfSpeech,
   partOfSpeechEnumValues,
-  type PrepositionCase,
   prepositionCases,
   PrepositionInflection,
   type PrincipalPart,
   UninflectedInflection,
-  type VerbConjugation,
   verbConjugationValues,
   VerbInflection,
 } from "@monorepo/lexico-entities";
@@ -54,9 +48,8 @@ export class PartOfSpeechService {
   // 🔐 Private Fields
 
   private static readonly adjectiveDeclensionValueList =
-    PartOfSpeechService.normalizeStringArray(adjectiveDeclensionValues);
-  private static readonly adjectiveDegreeValueList =
-    PartOfSpeechService.normalizeStringArray(adjectiveDegreeValues);
+    adjectiveDeclensionValues;
+  private static readonly adjectiveDegreeValueList = adjectiveDegreeValues;
   private static readonly FORMS_GROUP: Record<
     PartOfSpeech,
     "adverb" | "generic" | "verb"
@@ -118,16 +111,13 @@ export class PartOfSpeechService {
     suffix: "adjective",
     verb: "verb",
   };
-  private static readonly nounDeclensionValueList =
-    PartOfSpeechService.normalizeStringArray(nounDeclensionValues);
-  private static readonly nounGenderValueList =
-    PartOfSpeechService.normalizeStringArray(nounGenders);
-  private static readonly partOfSpeechValueList =
-    PartOfSpeechService.normalizeStringArray(partOfSpeechEnumValues);
-  private static readonly prepositionCaseValueList =
-    PartOfSpeechService.normalizeStringArray(prepositionCases);
-  private static readonly verbConjugationValueList =
-    PartOfSpeechService.normalizeStringArray(verbConjugationValues);
+  private static readonly nounDeclensionValueList = nounDeclensionValues;
+  private static readonly nounGenderValueList = nounGenders;
+  private static readonly partOfSpeechValueSet: ReadonlySet<string> = new Set(
+    partOfSpeechEnumValues,
+  );
+  private static readonly prepositionCaseValueList = prepositionCases;
+  private static readonly verbConjugationValueList = verbConjugationValues;
 
   private readonly formsParser = new PartOfSpeechFormsParser();
 
@@ -140,16 +130,12 @@ export class PartOfSpeechService {
     values: readonly ValueType[],
     candidate: string,
   ): undefined | ValueType {
-    return values.find((value) => value === candidate);
+    return values.find((value): value is ValueType => value === candidate);
   }
 
-  /** Normalizes input values used by part-of-speech parsing. */
-  private static normalizeStringArray(value: unknown): string[] {
-    if (!Array.isArray(value)) {
-      return [];
-    }
-
-    return value.filter((item): item is string => typeof item === "string");
+  /** Narrows text values to supported part-of-speech labels. */
+  private static isPartOfSpeech(value: string): value is PartOfSpeech {
+    return PartOfSpeechService.partOfSpeechValueSet.has(value);
   }
 
   /** Builds adjective inflection for part-of-speech parsing. */
@@ -159,15 +145,15 @@ export class PartOfSpeechService {
       declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
     const adjectiveInflection = new AdjectiveInflection();
     adjectiveInflection.declension =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.adjectiveDeclensionValueList,
         matchedDeclension,
-      ) as AdjectiveDeclension | undefined) ?? "";
+      ) ?? "";
     adjectiveInflection.degree =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.adjectiveDegreeValueList,
         degree,
-      ) as AdjectiveDegree | undefined) ?? "positive";
+      ) ?? "positive";
     return adjectiveInflection;
   }
 
@@ -180,15 +166,15 @@ export class PartOfSpeechService {
     const matchedGender = gender.match(genderRegex)?.[0] ?? "";
     const nounInflection = new NounInflection();
     nounInflection.declension =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.nounDeclensionValueList,
         matchedDeclension,
-      ) as NounDeclension | undefined) ?? "";
+      ) ?? "";
     nounInflection.gender =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.nounGenderValueList,
         matchedGender,
-      ) as NounGender | undefined) ?? "";
+      ) ?? "";
     return nounInflection;
   }
 
@@ -320,10 +306,10 @@ export class PartOfSpeechService {
     const prepositionCase = other.match(prepositionCaseRegex)?.[0] ?? "";
     const prepositionInflection = new PrepositionInflection();
     prepositionInflection.case =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.prepositionCaseValueList,
         prepositionCase,
-      ) as PrepositionCase | undefined) ?? "";
+      ) ?? "";
     prepositionInflection.other = other;
     return prepositionInflection;
   }
@@ -352,10 +338,10 @@ export class PartOfSpeechService {
 
     const adjectiveInflection = new AdjectiveInflection();
     adjectiveInflection.declension =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.adjectiveDeclensionValueList,
         declension,
-      ) as AdjectiveDeclension | undefined) ?? "";
+      ) ?? "";
     adjectiveInflection.degree = "positive";
     return adjectiveInflection;
   }
@@ -383,10 +369,10 @@ export class PartOfSpeechService {
 
     const verbInflection = new VerbInflection();
     verbInflection.conjugation =
-      (PartOfSpeechService.findTypedValue(
+      PartOfSpeechService.findTypedValue(
         PartOfSpeechService.verbConjugationValueList,
         finalConjugation,
-      ) as undefined | VerbConjugation) ?? "";
+      ) ?? "";
     verbInflection.other = other;
     return verbInflection;
   }
@@ -414,9 +400,7 @@ export class PartOfSpeechService {
       .replaceAll(/(\[edit])|\d+/g, "")
       .trim()
       .replace("proper noun", "properNoun");
-    return PartOfSpeechService.partOfSpeechValueList.includes(text)
-      ? (text as PartOfSpeech)
-      : "phrase";
+    return PartOfSpeechService.isPartOfSpeech(text) ? text : "phrase";
   }
 
   /**

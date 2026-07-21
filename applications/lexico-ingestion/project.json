@@ -86,61 +86,10 @@
       }
     },
     "prettier": {},
-    "repl": {
-      "description": "Start the LexicoIngestion application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
-    "start": {
-      "description": "Start the LexicoIngestion application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "command": "vitest run --coverage"
-        },
-        "end-to-end": {
-          "command": "vitest run end-to-end.test.ts"
-        },
-        "integration": {
-          "command": "vitest run integration.test.ts"
-        },
-        "unit": {
-          "command": "vitest run unit.test.ts"
-        },
-        "watch": {
-          "command": "vitest"
-        }
-      },
-      "description": "Run all tests",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "vitest run",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "type-coverage": {
-      "options": {
-        "command": "type-coverage --at-least 99 --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
-      }
-    },
-    "typecheck": {
-      "description": "Run TypeScript type checking",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "test": {},
+    "type-coverage": {},
+    "typecheck": {},
     "wiktionary": {
       "description": "Ingest Wiktionary data into the database",
       "executor": "nx:run-commands",

@@ -11,17 +11,14 @@
   ],
   "targets": {
     "agent-skills": {
-      "cache": false,
+      "cache": true,
       "configurations": {
         "check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write"
         }
       },
-      "defaultConfiguration": "write",
-      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
+      "defaultConfiguration": "check",
+      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (cached check mode)",
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/AGENTS.md",
@@ -29,6 +26,19 @@
       ],
       "options": {
         "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "agent-skills-write": {
+      "cache": false,
+      "description": "Synchronize agent skills table of contents into AGENTS.md and run formatting (intentionally uncached write mode)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/AGENTS.md",
+        "{workspaceRoot}/documentation/skills/**/*.md"
+      ],
+      "options": {
+        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -133,57 +143,10 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "repl": {
-      "description": "Start the Synchronization application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
-    "start": {
-      "description": "Start the Synchronization application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "command": "vitest run --coverage"
-        },
-        "end-to-end": {
-          "command": "vitest run end-to-end.test.ts"
-        },
-        "integration": {
-          "command": "vitest run integration.test.ts"
-        },
-        "unit": {
-          "command": "vitest run unit.test.ts"
-        },
-        "watch": {
-          "command": "vitest"
-        }
-      },
-      "description": "Run all tests",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "vitest run",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "test": {},
     "type-coverage": {},
-    "typecheck": {
-      "description": "Run TypeScript type checking",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "typecheck": {},
     "yaml-lint": {}
   }
 }

@@ -6,6 +6,10 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { epigraphikDatenbankChunkResponseSchema } from "./epigraphik-datenbank-clauss-slaby.constants";
+
+import type { EpigraphikDatenbankChunkResponse } from "./epigraphik-datenbank-clauss-slaby.types";
+
 /**
  * Download raw JSON chunks from the Epigraphik-Datenbank Clauss-Slaby API.
  */
@@ -101,7 +105,15 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       return true;
     }
 
-    const data = (await response.json()) as { data: unknown[] };
+    const payload = await response.json();
+    const parsedChunkResponse =
+      epigraphikDatenbankChunkResponseSchema.safeParse(payload);
+    if (!parsedChunkResponse.success) {
+      this.logger.warn("⚠️ Received unexpected EDCS payload shape");
+      return true;
+    }
+
+    const data: EpigraphikDatenbankChunkResponse = parsedChunkResponse.data;
 
     if (Array.isArray(data.data) && data.data.length === 0) {
       this.logger.log(`🛑 No more records found after ${start}. Stopping.`);

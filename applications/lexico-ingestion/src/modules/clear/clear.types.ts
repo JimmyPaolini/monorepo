@@ -7,3 +7,11 @@ export interface ClearCommandOptions {
   dictionary?: boolean;
   literature?: boolean;
 }
+
+/**
+ * Prompt answers returned when clear options are interactively requested.
+ */
+export interface ClearPromptResponse {
+  dictionary?: boolean;
+  literature?: boolean;
+}

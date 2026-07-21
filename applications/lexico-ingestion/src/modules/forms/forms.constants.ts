@@ -14,8 +14,14 @@ import {
   partOfSpeechEnumValues,
 } from "@monorepo/lexico-entities";
 
-const normalizeStringArray = (values: unknown): string[] => {
-  if (!Array.isArray(values)) {
+const isNormalizableStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): values is readonly (number | string)[] => Array.isArray(values);
+
+const normalizeStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): string[] => {
+  if (!isNormalizableStringArray(values)) {
     return [];
   }
 
@@ -46,19 +52,24 @@ export const unsupportedPartOfSpeechSet: ReadonlySet<PartOfSpeech> =
     "proverb",
   ]);
 
-export const formCaseValueList = normalizeStringArray(formCaseValues);
-export const formGerundCaseValueList =
+export const formCaseValueList: readonly string[] =
+  normalizeStringArray(formCaseValues);
+export const formGerundCaseValueList: readonly string[] =
   normalizeStringArray(formGerundCaseValues);
-export const formMoodValueList = normalizeStringArray(formMoodValues);
-export const formNonFiniteTenseValueList = normalizeStringArray(
-  formNonFiniteTenseValues,
-);
-export const formNumberValueList = normalizeStringArray(formNumberValues);
-export const formPersonValueList = normalizeStringArray(formPersonValues);
-export const formSupineCaseValueList =
+export const formMoodValueList: readonly string[] =
+  normalizeStringArray(formMoodValues);
+export const formNonFiniteTenseValueList: readonly string[] =
+  normalizeStringArray(formNonFiniteTenseValues);
+export const formNumberValueList: readonly string[] =
+  normalizeStringArray(formNumberValues);
+export const formPersonValueList: readonly string[] =
+  normalizeStringArray(formPersonValues);
+export const formSupineCaseValueList: readonly string[] =
   normalizeStringArray(formSupineCaseValues);
-export const formTenseValueList = normalizeStringArray(formTenseValues);
-export const formVoiceValueList = normalizeStringArray(formVoiceValues);
-export const partOfSpeechValueList = normalizeStringArray(
+export const formTenseValueList: readonly string[] =
+  normalizeStringArray(formTenseValues);
+export const formVoiceValueList: readonly string[] =
+  normalizeStringArray(formVoiceValues);
+export const partOfSpeechValueList: readonly string[] = normalizeStringArray(
   partOfSpeechEnumValues,
 );

@@ -10,8 +10,14 @@ import {
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
 
-const compactStringValues = (values: unknown): string[] => {
-  if (!Array.isArray(values)) {
+const isCompactStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): values is readonly (number | string)[] => Array.isArray(values);
+
+const compactStringValues = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): string[] => {
+  if (!isCompactStringArray(values)) {
     return [];
   }
 
