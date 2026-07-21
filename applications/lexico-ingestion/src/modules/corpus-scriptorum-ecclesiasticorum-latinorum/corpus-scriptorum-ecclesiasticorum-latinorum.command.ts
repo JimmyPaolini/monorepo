@@ -6,6 +6,10 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { corpusScriptorumTreeResponseSchema } from "./corpus-scriptorum-ecclesiasticorum-latinorum.constants";
+
+import type { CorpusScriptorumTreeNode } from "./corpus-scriptorum-ecclesiasticorum-latinorum.types";
+
 /**
  * Downloads and caches Latin XML sources from the OpenGreekAndLatin CSEL repository.
  */
@@ -36,10 +40,6 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
   );
   private readonly sourceHost =
     "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/";
-
-  // 🔑 Public Fields
-
-  // 🔏 Private Methods
 
   /**
    * Downloads one XML file unless it is already present in the local source cache.
@@ -88,12 +88,16 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     }); // polite delay
   }
 
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
   /**
    * Loads the Git tree payload used to discover downloadable XML blobs.
    */
   private async fetchTree(
     treeUrl: string,
-  ): Promise<null | { path: string; type: string }[]> {
+  ): Promise<CorpusScriptorumTreeNode[] | null> {
     this.logger.log(`🌳 Fetching CSEL tree from ${treeUrl}`);
     const treeResponse = await fetch(treeUrl);
 
@@ -104,10 +108,15 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       return null;
     }
 
-    const treeData = (await treeResponse.json()) as {
-      tree: { path: string; type: string }[];
-    };
-    return treeData.tree;
+    const treeData = await treeResponse.json();
+    const parsedTreeResponse =
+      corpusScriptorumTreeResponseSchema.safeParse(treeData);
+    if (!parsedTreeResponse.success) {
+      this.logger.error("❌ Failed to parse CSEL tree response payload");
+      return null;
+    }
+
+    return parsedTreeResponse.data.tree;
   }
 
   // 🌎 Public Methods
@@ -120,7 +129,9 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
       "https://api.github.com/repos/OpenGreekAndLatin/csel-dev/git/trees/master?recursive=1";
     const tree = await this.fetchTree(treeUrl);
 
-    if (!tree) return;
+    if (!tree) {
+      return;
+    }
 
     const xmlPaths = tree
       .filter(

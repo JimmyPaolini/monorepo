@@ -16,7 +16,7 @@ import {
 
 import { LoggerService } from "../logger/logger.service";
 
-import type { ClearCommandOptions } from "./clear.types";
+import type { ClearCommandOptions, ClearPromptResponse } from "./clear.types";
 
 /**
  * Clears dictionary and literature data from the database.
@@ -56,8 +56,6 @@ export class ClearCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
-
   /** Deletes all `Word`, `Translation`, and `Lexeme` rows from the database
    * in dependency order to avoid foreign-key constraint violations. */
   private async clearDictionary(): Promise<void> {
@@ -84,6 +82,37 @@ export class ClearCommand extends CommandRunner {
     await this.authorsRepository.createQueryBuilder().delete().execute();
     this.logger.log("✨ Cleared literature");
   }
+
+  /**
+   * Parses prompt output into strongly typed clear options.
+   */
+  private parsePromptResponse(response: unknown): ClearPromptResponse {
+    if (
+      typeof response !== "object" ||
+      response === null ||
+      Array.isArray(response)
+    ) {
+      return {};
+    }
+
+    const parsedResponse: ClearPromptResponse = {};
+    const dictionaryValue =
+      "dictionary" in response ? response.dictionary : undefined;
+    const literatureValue =
+      "literature" in response ? response.literature : undefined;
+
+    if (typeof dictionaryValue === "boolean") {
+      parsedResponse.dictionary = dictionaryValue;
+    }
+
+    if (typeof literatureValue === "boolean") {
+      parsedResponse.literature = literatureValue;
+    }
+
+    return parsedResponse;
+  }
+
+  // 🌎 Public Methods
 
   /** Parses the `--dictionary` flag; returns true/false. */
   @Option({
@@ -112,7 +141,7 @@ export class ClearCommand extends CommandRunner {
     options: ClearCommandOptions,
   ): Promise<void> {
     if (options.dictionary === undefined && options.literature === undefined) {
-      const response = await prompts([
+      const response: unknown = await prompts([
         {
           initial: true,
           message: "Clear dictionary entries?",
@@ -126,8 +155,9 @@ export class ClearCommand extends CommandRunner {
           type: "confirm",
         },
       ]);
-      options.dictionary = response.dictionary as boolean;
-      options.literature = response.literature as boolean;
+      const parsedResponse = this.parsePromptResponse(response);
+      options.dictionary = parsedResponse.dictionary === true;
+      options.literature = parsedResponse.literature === true;
     }
 
     this.logger.log("Running clear command");

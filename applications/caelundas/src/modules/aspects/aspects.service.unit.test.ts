@@ -17,7 +17,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { EphemerisService } from "../ephemeris/ephemeris.service";
+import { EphemerisModule } from "../ephemeris/ephemeris.module";
 import { MajorAspectsService } from "../major-aspects/major-aspects.service";
 import { MathService } from "../math/math.service";
 import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
@@ -58,6 +58,7 @@ describe(AspectsService, () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [EphemerisModule],
       providers: [
         LoggerService,
         AspectsService,
@@ -67,7 +68,6 @@ describe(AspectsService, () => {
         AspectGraphService,
         AspectPhaseEmojiService,
         CompoundPhaseService,
-        EphemerisService,
         MajorAspectsService,
         MajorAspectEventService,
         MajorAspectProgressiveService,

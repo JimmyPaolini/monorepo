@@ -1182,17 +1182,25 @@ describe(LiteratureService, () => {
     const upsertCallArguments = textRepository.upsert.mock.calls[0] as
       | [
           {
-            metadata?: { meter?: string };
             parentText?: { id?: string };
           },
           unknown,
         ]
       | undefined;
 
+    const saveCallArguments = textRepository.save.mock.calls[0] as
+      | [
+          {
+            metadata?: { meter?: string };
+          },
+        ]
+      | undefined;
+
     expect(upsertCallArguments).toBeDefined();
-    expect(upsertCallArguments?.[0].metadata?.meter).toBe("dactylic hexameter");
     expect(upsertCallArguments?.[0].parentText?.id).toBe("parent-id");
     expect(upsertCallArguments?.[1]).toBeDefined();
+    expect(saveCallArguments).toBeDefined();
+    expect(saveCallArguments?.[0].metadata?.meter).toBe("dactylic hexameter");
   });
 
   it("should ingest text by parsing frontmatter and lines", async () => {

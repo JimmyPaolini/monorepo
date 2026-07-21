@@ -193,6 +193,31 @@ describe(EpigraphikDatenbankClaussSlabyCommand, () => {
     );
   });
 
+  it("should warn and continue when chunk payload parsing fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(...parameters: unknown[]) => unknown>(
+        async () =>
+          await Promise.resolve({
+            json: async () => await Promise.resolve({ records: [{ id: 1 }] }),
+            ok: true,
+          }),
+      ),
+    );
+
+    const shouldContinue = await (
+      command as unknown as {
+        saveChunkData: (start: number, chunkFile: string) => Promise<boolean>;
+      }
+    ).saveChunkData(3000, "/tmp/chunk-3000.json");
+
+    expect(shouldContinue).toBe(true);
+    expect(logger.warn).toHaveBeenCalledWith(
+      "⚠️ Received unexpected EDCS payload shape",
+    );
+    expect(writeFileMock).not.toHaveBeenCalled();
+  });
+
   it("should skip chunk download when chunk file already exists", async () => {
     accessMock.mockResolvedValueOnce(undefined);
 

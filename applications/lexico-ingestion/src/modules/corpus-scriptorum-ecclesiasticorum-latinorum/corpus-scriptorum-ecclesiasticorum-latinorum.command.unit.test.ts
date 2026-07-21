@@ -196,6 +196,32 @@ describe(CorpusScriptorumEcclesiasticorumLatinorumCommand, () => {
     ]);
   });
 
+  it("should return null when tree payload parsing fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(...parameters: unknown[]) => unknown>(
+        async () =>
+          await Promise.resolve({
+            json: async () => await Promise.resolve({ tree: [{ path: 1 }] }),
+            ok: true,
+          }),
+      ),
+    );
+
+    const result = await (
+      command as unknown as {
+        fetchTree: (
+          treeUrl: string,
+        ) => Promise<null | { path: string; type: string }[]>;
+      }
+    ).fetchTree("https://example.com/tree");
+
+    expect(result).toBeNull();
+    expect(logger.error).toHaveBeenCalledWith(
+      "❌ Failed to parse CSEL tree response payload",
+    );
+  });
+
   it("should fetch and write xml file on successful response", async () => {
     vi.stubGlobal(
       "fetch",

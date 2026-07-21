@@ -28,31 +28,7 @@
         "cwd": "{projectRoot}"
       }
     },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "command": "vitest run --coverage"
-        },
-        "end-to-end": {
-          "command": "vitest run end-to-end.test.ts"
-        },
-        "integration": {
-          "command": "vitest run integration.test.ts"
-        },
-        "unit": {
-          "command": "vitest run unit.test.ts"
-        },
-        "watch": {
-          "command": "vitest"
-        }
-      },
-      "description": "Run all tests",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "vitest run",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "test": {},
     "type-coverage": {},
     "typecheck": {},
     "yaml-lint": {}

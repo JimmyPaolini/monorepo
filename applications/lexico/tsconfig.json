@@ -36,6 +36,7 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "vite.config.mts"
+    "vite.config.mts",
+    "vitest.config.ts"
   ]
 }

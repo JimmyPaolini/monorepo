@@ -2,15 +2,15 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createElement } from 'react';
 import { faker } from '@faker-js/faker';
-import { {{namePascalCase}}, type {{namePascalCase}}Props } from './{{namePascalCase}}';
+import { {{namePascalCase}}, type {{namePascalCase}}Properties } from './{{namePascalCase}}';
 
 describe('{{namePascalCase}}', () => {
   // 🎭 Mocks
-  let props: {{namePascalCase}}Props;
+  let properties: {{namePascalCase}}Properties;
 
   // 🏗 Setup
   beforeEach(() => {
-    props = {
+    properties = {
       className: faker.string.alpha(10),
     };
   });
@@ -18,7 +18,7 @@ describe('{{namePascalCase}}', () => {
   // 🧪 Tests
 
   it('should render successfully', () => {
-    const element = createElement({{namePascalCase}}, props);
+    const element = createElement({{namePascalCase}}, properties);
     const { container } = render(element);
     expect(container).toBeInTheDocument();
   });

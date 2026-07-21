@@ -38,7 +38,7 @@ import type {
   ParsedLabelResult,
 } from "./literature.types";
 import type { Paragraph, PhrasingContent, Root, Strong } from "mdast";
-import type { DeepPartial, Repository } from "typeorm";
+import type { Repository } from "typeorm";
 import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 
 /** Scans provider markdown files and ingests normalized literature data. */
@@ -86,7 +86,7 @@ export class LiteratureService {
     paragraph: Paragraph,
     index: number,
     text: Text,
-  ): DeepPartial<Line> {
+  ): QueryDeepPartialEntity<Line> {
     let label = `${index + 1}`;
     let lineNodes: PhrasingContent[] = [...paragraph.children];
     const firstNode = lineNodes[0];
@@ -96,8 +96,15 @@ export class LiteratureService {
       lineNodes = parsed.lineNodes;
     }
     const lineText = toString({ children: lineNodes, type: "paragraph" });
-    return { author: text.author, data: lineText, index, label, text };
+    return {
+      author: { id: text.author.id },
+      data: lineText,
+      index,
+      label,
+      text: { id: text.id },
+    };
   }
+
   /**
    * Ensure parent texts for literature ingestion.
    */
@@ -117,12 +124,12 @@ export class LiteratureService {
         const parentText = parentTexts.get(parentSlug);
         await this.textRepository.upsert(
           {
-            author: authorEntity,
-            parentText,
+            author: { id: authorEntity.id },
+            ...(parentText ? { parentText: { id: parentText.id } } : {}),
             slug: currentPath,
             title: _.startCase(part),
             type: "book",
-          } as QueryDeepPartialEntity<Text>,
+          },
           { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
         );
         const newParent = await this.textRepository.findOneOrFail({
@@ -149,7 +156,7 @@ export class LiteratureService {
     line: Line,
     text: Text,
     wordMap: Map<string, string>,
-  ): DeepPartial<Token>[] {
+  ): QueryDeepPartialEntity<Token>[] {
     const tokenStrings = line.data.match(TOKEN_SEGMENT_PATTERN) || [];
     return tokenStrings.map((data, index) => {
       const isPunctuation = !WORD_TOKEN_PATTERN.test(data);
@@ -163,16 +170,25 @@ export class LiteratureService {
         }
       }
       return {
-        author: text.author,
+        author: { id: text.author.id },
         data,
         index,
         isPunctuation,
-        line,
-        text,
+        line: { id: line.id },
+        text: { id: text.id },
         word: wordId ? { id: wordId } : null,
       };
     });
   }
+  /**
+   * Returns metadata as a record when present and object-like.
+   */
+  private getMetadataRecord(
+    metadata: null | Record<string, unknown> | undefined,
+  ): Record<string, unknown> {
+    return metadata ?? {};
+  }
+
   /**
    * Gets words cache used by literature ingestion.
    */
@@ -223,7 +239,7 @@ export class LiteratureService {
   private async ingestLines(text: Text, ast: Root): Promise<void> {
     this.logger.log(`  📜 Parsing lines for ${text.title}`);
     const wordMap = await this.getWordsCache();
-    const tokenEntities: DeepPartial<Token>[] = [];
+    const tokenEntities: QueryDeepPartialEntity<Token>[] = [];
     const paragraphs = ast.children.filter(
       (child): child is Paragraph => child.type === "paragraph",
     );
@@ -254,8 +270,7 @@ export class LiteratureService {
     const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
     const frontmatterData = this.parseFrontmatter(ast);
     if (frontmatterData["author_metadata"]) {
-      const existingMetadata =
-        (author.metadata as null | Record<string, unknown>) || {};
+      const existingMetadata = this.getMetadataRecord(author.metadata);
       author.metadata = _.merge(
         existingMetadata,
         frontmatterData["author_metadata"],
@@ -306,6 +321,12 @@ export class LiteratureService {
     }
   }
   /**
+   * Guards unknown values as non-array records.
+   */
+  private isRecord(value: unknown): value is Record<string, unknown> {
+    return typeof value === "object" && value !== null && !Array.isArray(value);
+  }
+  /**
    * Normalizes input values used by literature ingestion.
    */
   private normalize(str: string): string {
@@ -319,16 +340,15 @@ export class LiteratureService {
    * Parses frontmatter during literature ingestion.
    */
   private parseFrontmatter(ast: Root): Record<string, unknown> {
-    const yamlNode = ast.children.find((node) => node.type === "yaml") as
-      | undefined
-      | { value: string };
+    const yamlNode = ast.children.find((node) => node.type === "yaml");
     if (!yamlNode?.value) return {};
     try {
-      const parsed = YAML.parse(yamlNode.value) as null | Record<
-        string,
-        unknown
-      >;
-      return parsed ?? {};
+      const parsed: unknown = YAML.parse(yamlNode.value);
+      if (this.isRecord(parsed)) {
+        return parsed;
+      }
+
+      return {};
     } catch {
       return {};
     }
@@ -365,8 +385,7 @@ export class LiteratureService {
     }
     const nextNode = resultNodes[0];
     if (nextNode?.type === "text" && "value" in nextNode) {
-      const textNode = nextNode as { type: "text"; value: string };
-      textNode.value = textNode.value.replace(LEADING_WHITESPACE_PATTERN, "");
+      nextNode.value = nextNode.value.replace(LEADING_WHITESPACE_PATTERN, "");
     }
     return { label, lineNodes: resultNodes };
   }
@@ -399,41 +418,42 @@ export class LiteratureService {
     title: string;
   }): Promise<Text> {
     const { author, frontmatterData, parentText, textSlug, title } = args;
-    const textSaveObject: DeepPartial<Text> = {
-      author,
+    const textSaveObject: QueryDeepPartialEntity<Text> = {
+      author: { id: author.id },
       slug: textSlug,
       title,
       type: "text",
     };
     if (parentText) {
-      textSaveObject.parentText = parentText;
+      textSaveObject.parentText = { id: parentText.id };
     }
-    if (frontmatterData["text_metadata"]) {
-      textSaveObject.metadata = frontmatterData["text_metadata"];
-    }
-    await this.textRepository.upsert(
-      textSaveObject as QueryDeepPartialEntity<Text>,
-      {
-        conflictPaths: ["slug"],
-        skipUpdateIfNoValuesChanged: true,
-      },
-    );
-    return this.textRepository.findOneOrFail({
+    await this.textRepository.upsert(textSaveObject, {
+      conflictPaths: ["slug"],
+      skipUpdateIfNoValuesChanged: true,
+    });
+    const textEntity = await this.textRepository.findOneOrFail({
       relations: { author: true },
       where: { slug: textSlug },
     });
+
+    if (this.isRecord(frontmatterData["text_metadata"])) {
+      textEntity.metadata = frontmatterData["text_metadata"];
+      await this.textRepository.save(textEntity);
+    }
+
+    return textEntity;
   }
   /**
    * Upsert and fetch lines for literature ingestion.
    */
   private async upsertAndFetchLines(
-    lineEntities: DeepPartial<Line>[],
+    lineEntities: QueryDeepPartialEntity<Line>[],
     text: Text,
   ): Promise<Line[]> {
     const lineChunks = _.chunk(lineEntities, DEFAULT_LINE_CHUNK_SIZE);
     await Promise.all(
       lineChunks.map(async (chunk) =>
-        this.lineRepository.upsert(chunk as QueryDeepPartialEntity<Line>[], {
+        this.lineRepository.upsert(chunk, {
           conflictPaths: ["text", "index"],
           skipUpdateIfNoValuesChanged: true,
         }),
@@ -450,7 +470,7 @@ export class LiteratureService {
    * Upsert tokens for literature ingestion.
    */
   private async upsertTokens(
-    tokenEntities: DeepPartial<Token>[],
+    tokenEntities: QueryDeepPartialEntity<Token>[],
     text: Text,
   ): Promise<void> {
     this.logger.log(
@@ -459,7 +479,7 @@ export class LiteratureService {
     const tokenChunks = _.chunk(tokenEntities, DEFAULT_TOKEN_CHUNK_SIZE);
     await Promise.all(
       tokenChunks.map(async (chunk) =>
-        this.tokenRepository.upsert(chunk as QueryDeepPartialEntity<Token>[], {
+        this.tokenRepository.upsert(chunk, {
           conflictPaths: ["line", "index"],
           skipUpdateIfNoValuesChanged: true,
         }),

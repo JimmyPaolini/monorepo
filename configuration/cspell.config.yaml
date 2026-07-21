@@ -24,34 +24,21 @@ ignorePaths:
   - "**/CHANGELOG.md"
   - "**/coverage"
   - "**/dist"
-  - "**/node_modules"
-  - "**/pnpm-lock.yaml"
-  - "**/routeTree.gen.ts"
-  - "**/terraform.tfstate*"
   - "**/supabase/data.sql"
-  - "**/packages/lexico-components/src/components/**"
-  - "**/packages/lexico-components/src/hooks/**"
-  - "**/packages/lexico-components/src/lib/**"
   - "**/applications/lexico-ingestion/data/**"
   - "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts"
   - "**/applications/lexico-ingestion/src/modules/library/library.constants.ts"
+  - "**/documentation/planning/**"
+  - "**/node_modules"
+  - "**/packages/lexico-components/src/components/**"
+  - "**/packages/lexico-components/src/hooks/**"
+  - "**/packages/lexico-components/src/lib/**"
+  - "**/pnpm-lock.yaml"
+  - "**/routeTree.gen.ts"
+  - "**/terraform.tfstate*"
   - coverage
   - dist
-  - documentation/planning/**
-  - .github/skills/monitor-ci/**
-  - .github/skills/nx-generate/**
-  - .github/skills/nx-import/**
-  - .github/skills/nx-plugins/**
-  - .github/skills/nx-run-tasks/**
-  - .github/skills/nx-workspace/**
   - applications/lexico-ingestion/data/**
-  - documentation/skills/monitor-ci/**
-  - documentation/skills/nx-generate/**
-  - documentation/skills/nx-import/**
-  - documentation/skills/nx-plugins/**
-  - documentation/skills/nx-run-tasks/**
-  - documentation/skills/nx-workspace/**
-  - documentation/skills/link-workspace-packages/**
 dictionaryDefinitions:
   - name: astronomy
     path: .cspell/astronomy.txt

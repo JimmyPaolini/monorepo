@@ -158,12 +158,14 @@ describe(LexicoIngestionCommand, () => {
 
     expect(command.parseDictionary(undefined)).toBe(true);
     expect(command.parseDictionary("false")).toBe(false);
+    expect(command.parseDictionary("0")).toBe(false);
 
     expect(command.parseLibrarySources(undefined)).toBe(true);
     expect(command.parseLibrarySources("0")).toBe(false);
 
     expect(command.parseLibrary(undefined)).toBe(true);
     expect(command.parseLibrary("false")).toBe(false);
+    expect(command.parseLibrary("0")).toBe(false);
 
     expect(command.parseLiterature(undefined)).toBe(true);
     expect(command.parseLiterature("0")).toBe(false);
@@ -267,6 +269,31 @@ describe(LexicoIngestionCommand, () => {
     expect(perseusCommand.run).not.toHaveBeenCalled();
     expect(libraryCommand.run).not.toHaveBeenCalled();
     expect(literatureCommand.run).not.toHaveBeenCalled();
+  });
+
+  it("should prompt for missing options and run only prompted stages", async () => {
+    vi.restoreAllMocks();
+    setPromptsMockResponse(promptsMock, {
+      dictionary: false,
+      library: false,
+      librarySources: true,
+      literature: true,
+      wikipedia: false,
+    });
+
+    await command.run([], {});
+
+    expect(promptsMock).toHaveBeenCalledTimes(5);
+    expect(wiktionaryCommand.run).not.toHaveBeenCalled();
+    expect(dictionaryCommand.ingestAll).not.toHaveBeenCalled();
+    expect(perseusCommand.run).toHaveBeenCalledTimes(1);
+    expect(latinLibraryCommand.run).toHaveBeenCalledTimes(1);
+    expect(
+      corpusScriptorumEcclesiasticorumLatinorumCommand.run,
+    ).toHaveBeenCalledTimes(1);
+    expect(epigraphikDatenbankClaussSlabyCommand.run).toHaveBeenCalledTimes(1);
+    expect(libraryCommand.run).not.toHaveBeenCalled();
+    expect(literatureCommand.run).toHaveBeenCalledWith([], {});
   });
 
   it("should run only library sources stage helper", async () => {

@@ -7,6 +7,15 @@ import { formatLineNumber, hasValidTextContent } from "../library.utilities";
 import type { AnyNode } from "domhandler";
 
 /**
+ * Markdown file contents generated from one Perseus XML segment.
+ */
+export interface PerseusMarkdownFile {
+  content: string;
+  relativePath: string;
+  title: string;
+}
+
+/**
  * Extracts and normalizes nested text parts from Perseus XML documents.
  */
 @Injectable()
@@ -20,8 +29,8 @@ export class PerseusLibraryTextExtractionProvider {
   ): string[] {
     const paragraphs: string[] = [];
 
-    elements.each((_index: number, paragraphElement: unknown) => {
-      const $clone = $(paragraphElement as string).clone();
+    elements.each((_index: number, paragraphElement: AnyNode) => {
+      const $clone = $(paragraphElement).clone();
       $clone.find("note, app, rdg, lem, sic, orig, abbr").remove();
 
       let text = $clone.text().trim();
@@ -29,7 +38,7 @@ export class PerseusLibraryTextExtractionProvider {
         return;
       }
 
-      const nAttribute = $(paragraphElement as string).attr("n");
+      const nAttribute = $(paragraphElement).attr("n");
       if (nAttribute) {
         text = `**${nAttribute}** ${text}`;
       }
@@ -54,8 +63,8 @@ export class PerseusLibraryTextExtractionProvider {
   }): void {
     const { $, children, currentPath, filesToWrite, rawTitle } = args;
 
-    children.each((_index: number, child: unknown) => {
-      const textPartDescriptor = this.getTextPartDescriptor($(child as string));
+    children.each((_index: number, child: AnyNode) => {
+      const textPartDescriptor = this.getTextPartDescriptor($(child));
       if (!textPartDescriptor) {
         return;
       }
@@ -228,13 +237,4 @@ export class PerseusLibraryTextExtractionProvider {
       rawTitle,
     });
   }
-}
-
-/**
- * Markdown file contents generated from one Perseus XML segment.
- */
-export interface PerseusMarkdownFile {
-  content: string;
-  relativePath: string;
-  title: string;
 }

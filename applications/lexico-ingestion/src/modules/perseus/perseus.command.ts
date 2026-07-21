@@ -6,6 +6,10 @@ import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 
+import { perseusTreeResponseSchema } from "./perseus.constants";
+
+import type { PerseusTreeNode } from "./perseus.types";
+
 /**
  * Downloads and caches Latin XML sources from the Perseus canonical-latinLit repository.
  */
@@ -102,10 +106,16 @@ export class PerseusCommand extends CommandRunner {
       );
       return null;
     }
-    const treeData = (await treeResponse.json()) as {
-      tree: { path: string; type: string }[];
-    };
-    return treeData.tree
+    const treeData = await treeResponse.json();
+    const parsedTreeResponse = perseusTreeResponseSchema.safeParse(treeData);
+    if (!parsedTreeResponse.success) {
+      this.logger.error("❌ Failed to parse Perseus tree response payload");
+      return null;
+    }
+
+    const treeNodes: PerseusTreeNode[] = parsedTreeResponse.data.tree;
+
+    return treeNodes
       .filter(
         (node) =>
           node.type === "blob" &&

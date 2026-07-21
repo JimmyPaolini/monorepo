@@ -27,8 +27,13 @@ module.exports = {
     },
   ],
 
-  // Semver groups: use caret (^) ranges for all external dependencies
+  // Semver groups: ignore external dependencies and enforce caret ranges where applicable
   semverGroups: [
+    {
+      isIgnored: true,
+      dependencies: ["**", "!@monorepo/*"],
+      packages: ["**"],
+    },
     {
       // pnpm.overrides use selector syntax (e.g., "package@<1.0.0": ">=1.0.0") for security patches
       // that syncpack cannot validate with standard semver ranges

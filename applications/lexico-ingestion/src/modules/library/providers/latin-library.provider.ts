@@ -34,7 +34,7 @@ export class LatinLibraryProvider {
    */
   private addFallbackText(author: Author, authorUrlObject: URL): void {
     const fallback = new Text();
-    fallback.title = author.metadata?.["nickname"] as string;
+    fallback.title = this.getMetadataString(author.metadata, "nickname") ?? "";
     fallback.slug = _.kebabCase(fallback.title);
     fallback.type = "text";
     fallback.metadata = { sourceUrl: authorUrlObject.href };
@@ -138,7 +138,11 @@ export class LatinLibraryProvider {
     ]);
     const authors: Author[] = [];
     for (const author of rootAuthors) {
-      const href = author.metadata?.["sourceUrl"] as string;
+      const href = this.getMetadataString(author.metadata, "sourceUrl");
+      if (!href) {
+        continue;
+      }
+
       if (!categoryHrefs.has(href)) {
         authors.push(author);
         continue;
@@ -160,11 +164,27 @@ export class LatinLibraryProvider {
   }
 
   /**
+   * Returns a string metadata value by key when present.
+   */
+  private getMetadataString(
+    metadata: null | Record<string, unknown> | undefined,
+    key: string,
+  ): string | undefined {
+    const value = metadata?.[key];
+    return typeof value === "string" ? value : undefined;
+  }
+
+  /**
    * Processes one workflow step for Latin Library provider ingestion.
    */
   private async processAuthorPage(author: Author, host: string): Promise<void> {
-    const nickname = author.metadata?.["nickname"] as string;
-    const authorPath = author.metadata?.["sourceUrl"] as string;
+    const nickname = this.getMetadataString(author.metadata, "nickname") ?? "";
+    const authorPath = this.getMetadataString(author.metadata, "sourceUrl");
+    if (!authorPath) {
+      this.logger.warn(`⚠️ Missing source URL for author: ${author.slug}`);
+      return;
+    }
+
     this.logger.log(`👤 Starting author metadata: ${nickname}`);
     const authorUrlObject = new URL(authorPath, host);
     const authorText = await this.readSourceCacheFile(
@@ -345,8 +365,13 @@ export class LatinLibraryProvider {
     work: Text;
   }): Promise<boolean> {
     const { author, authorPath, host, work } = args;
-    const workBook = work.metadata?.["book"] as string | undefined;
-    const workPath = work.metadata?.["sourceUrl"] as string;
+    const workBook = this.getMetadataString(work.metadata, "book");
+    const workPath = this.getMetadataString(work.metadata, "sourceUrl");
+    if (!workPath) {
+      this.logger.warn(`⚠️ Missing source URL for work: ${work.slug}`);
+      return false;
+    }
+
     const workHtml = await this.readSourceCacheFile(workPath, host);
     const $work = cheerio.load(workHtml);
     const paragraphs = this.builder.parseWorkParagraphs($work);
@@ -378,8 +403,8 @@ export class LatinLibraryProvider {
     const rootAuthors = this.buildRootAuthors(indexHtml);
     const authors = await this.expandCategoryAuthors(rootAuthors, host);
     authors.sort((a, b) =>
-      ((a.metadata?.["nickname"] as string) || "").localeCompare(
-        (b.metadata?.["nickname"] as string) || "",
+      (this.getMetadataString(a.metadata, "nickname") ?? "").localeCompare(
+        this.getMetadataString(b.metadata, "nickname") ?? "",
       ),
     );
     const authorsToProcess = options?.author
