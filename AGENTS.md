@@ -1,4 +1,3 @@
-
 ## Monorepo Quick Reference
 
 **Nx monorepo (pnpm)** with strict TypeScript, React 19, and multiple applications.
@@ -32,46 +31,41 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[change-plan](documentation/skills/change-plan/SKILL.md)**: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
 - **[checkout-branch](documentation/skills/checkout-branch/SKILL.md)**: Create and validate Git branch names following this monorepo's Conventional Commits naming convention. Use this skill when creating branches, renaming branches, or when asked about branch naming rules and validation.
 - **[code-generator-patterns](documentation/skills/code-generator-patterns/SKILL.md)**: Create and extend Nx generators using templates, prompts, and file generation. Use this skill when building new generators or modifying the generator framework.
-- **[commenting](documentation/skills/commenting/SKILL.md)**: Apply monorepo commenting conventions for TypeScript, Python, and any language. USE WHEN writing or reviewing comments, adding section comments, organizing code into logical groups, or asked about comment style. Covers when to comment, how to write good comments, section comment format (emoji + capitalized name), emoji reference table, and anti-patterns to avoid (obvious comments, redundant JSDoc, TODO lint bypasses, dash-line dividers).
 - **[commit-code](documentation/skills/commit-code/SKILL.md)**: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
+- **[create-issue](documentation/skills/create-issue/SKILL.md)**: Create GitHub issues from a plan or request using the GitHub CLI. Use when turning discussion into a tracked issue with a clear title, body, labels, and assignee.
 - **[create-orchestration](documentation/skills/create-orchestration/SKILL.md)**: "Create a multi-agent implementation plan for orchestrate-agents.ts to run in sequence or parallel. Use when asked to split implementation into multiple Copilot sessions, coordinate agent prompts by phase, or generate an executable JSON plan file in documentation/planning."
 - **[create-plan](documentation/skills/create-plan/SKILL.md)**: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
 - **[create-pull-request](documentation/skills/create-pull-request/SKILL.md)**: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
 - **[create-worktree](documentation/skills/create-worktree/SKILL.md)**: Create or attach git worktrees that follow this monorepo's branch naming conventions. Use when asked to create a worktree, derive a compliant branch name, validate a branch name before worktree creation, choose a worktree path, or avoid raw `git worktree add` commands.
 - **[docker-workflows](documentation/skills/docker-workflows/SKILL.md)**: Build and deploy Docker images in the monorepo - platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
-- **[error-handling-patterns](documentation/skills/error-handling-patterns/SKILL.md)**: Apply monorepo error handling patterns: Zod validation at boundaries, typed errors, early returns, and retry/backoff. Use when implementing error handling or input validation.
 - **[execute-plan](documentation/skills/execute-plan/SKILL.md)**: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
 - **[explore-codebase](documentation/skills/explore-codebase/SKILL.md)**: "Explore codebase files, patterns, and structure for a given topic. USE WHEN gathering implementation context before planning or executing tasks, when asked to research the codebase, or when a planning agent needs a Sub-Agent A (Codebase Research). Returns a Codebase Research Summary with relevant files, existing patterns, affected Nx projects, reusable code, related plans, constraints, and open questions."
 - **[explore-internet](documentation/skills/explore-internet/SKILL.md)**: "Gather external documentation, changelogs, and release notes for libraries, frameworks, and APIs. USE WHEN a plan involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup. Skip for purely internal refactoring. Returns an External Research Summary with breaking changes, migration guidance, known issues, and documentation links."
 - **[github-actions](documentation/skills/github-actions/SKILL.md)**: Build and test GitHub Actions workflows in this monorepo. Covers the composite action pattern and workflow templates. Use this skill when creating, modifying, or testing GitHub Actions workflows.
-- **[imports-conventions](documentation/skills/imports-conventions/SKILL.md)**: Import organization conventions for TypeScript in this monorepo. Use when writing or reviewing imports, when ESLint reports import order errors, when asked about monorepo path aliases, type-only imports, or named vs default exports. Covers auto-sorted import order, Bundler extensionless imports, relative parent import avoidance, and the monorepo namespace.
+- **[handle-errors](documentation/skills/handle-errors/SKILL.md)**: Apply monorepo error handling patterns: Zod validation at boundaries, typed errors, early returns, and retry/backoff. Use when implementing error handling or input validation.
 - **[kubernetes-deployment](documentation/skills/kubernetes-deployment/SKILL.md)**: Deploy applications to Kubernetes using Helm charts, manage PVCs, and work with K8s jobs. Use this skill when deploying caelundas or managing Kubernetes resources.
 - **[learn-lessons](documentation/skills/learn-lessons/SKILL.md)**: 'Retrospective skill that analyzes a coding agent session, a set of local changes, or a branch/pull request, then extracts reusable coding patterns, architectural decisions, and best practices — and writes them into skills and AGENTS.md so future agents apply the same patterns automatically. Primary use: capturing HOW code was written (naming, structure, TypeScript idioms, module patterns, error handling), not just what the agent did. Use when asked to "learn from this session", "capture patterns from this PR", "remember how we did this", "document this approach", "improve skills from this work", or "make sure future agents do it this way".'
-- **[mcp-chrome-devtools](documentation/skills/mcp-chrome-devtools/SKILL.md)**: Use the Chrome DevTools MCP server for browser debugging, performance profiling, and runtime inspection. Use this skill when debugging web applications or analyzing frontend performance.
-- **[mcp-figma](documentation/skills/mcp-figma/SKILL.md)**: Use the Figma MCP server to access design files, extract assets, and sync design tokens. Use this skill when working with Figma designs or implementing UI components.
-- **[mcp-shadcn](documentation/skills/mcp-shadcn/SKILL.md)**: Use the shadcn MCP server to add, update, and manage shadcn/ui components. Use this skill when working with UI components in lexico-components or adding new shadcn components.
-- **[mcp-terraform](documentation/skills/mcp-terraform/SKILL.md)**: Use the Terraform MCP server for infrastructure as code operations - plan, apply, state management. Use this skill when working with Terraform configurations or deploying infrastructure.
-- **[postgres-data](documentation/skills/postgres-data/SKILL.md)**: 'Use this skill to dump and restore local PostgreSQL databases, schemas, and tables (collections) using Nx targets and pg_dump/pg_restore. Use when asked to backup, dump, export, restore, import, or copy local database data.'
-- **[postgres-sql](documentation/skills/postgres-sql/SKILL.md)**: Toolkit for interactively querying and exploring the local PostgreSQL database schema and data using the local psql client. Use when asked to write a SQL query, explore database schemas, inspect table structures, or execute local database queries. Relies on workspace default environment variables.
-- **[python-conventions](documentation/skills/python-conventions/SKILL.md)**: Python project conventions for this monorepo. Use when creating a new Python project, configuring Python tools (ruff, pyright, ty, pytest, bandit, vulture), writing or reviewing pyproject.toml, setting up Nx targets for Python, or asked about Python tooling setup, uv, or the language:python tag. Covers the project.json pattern, pyproject.toml structure, targetDefaults, tool execution via uv run, and ty pre-1.0 configuration rules.
-- **[react-conventions](documentation/skills/react-conventions/SKILL.md)**: React coding conventions for this monorepo. Use when writing or reviewing React components, when asked about component structure, section ordering, Tailwind CSS usage, state management patterns, conditional rendering, list rendering, or React 19 conventions. Covers component section layout (🔖🧩🪝🏗💪🏁🎨), Tailwind CSS with theme tokens, TanStack Router file-based routing, lexico-components usage, and testing with Vitest + RTL.
+- **[query-sql](documentation/skills/query-sql/SKILL.md)**: Toolkit for interactively querying and exploring the local PostgreSQL database schema and data using the local psql client. Use when asked to write a SQL query, explore database schemas, inspect table structures, or execute local database queries. Relies on workspace default environment variables.
 - **[refresh-documentation](documentation/skills/refresh-documentation/SKILL.md)**: Review and update all project documentation to keep it accurate and current. Use this skill when asked to refresh, update, or audit documentation, README files, AGENTS.md files, skill descriptions, or any markdown docs across the monorepo.
 - **[rename-branch](documentation/skills/rename-branch/SKILL.md)**: "Rename a git branch. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
 - **[restore-code](documentation/skills/restore-code/SKILL.md)**: "Restore code safely from backup artifacts created before risky changes. Use when undoing destructive operations, recovering from failed refactors or rebases, restoring deleted files, rolling back broad search-and-replace edits, or rehydrating work from backup branches and stashes. Supports preview-first recovery via backup branch, stash, or selective file restoration."
+- **[seed-postgres](documentation/skills/seed-postgres/SKILL.md)**: "Use this skill to dump and restore local PostgreSQL databases, schemas, and tables (collections) using Nx targets and pg_dump/pg_restore. Use when asked to backup, dump, export, restore, import, or copy local database data."
 - **[sign-commits](documentation/skills/sign-commits/SKILL.md)**: Re-sign unsigned commits on the current branch or pull request without changing code content by rewriting only from the first unsigned commit onward on a temporary branch. Use when asked to sign commits, add GPG signatures to an existing branch, satisfy signed-commit requirements, or make a PR show verified commits. Creates a backup branch first, runs the rebase non-interactively, verifies the rewritten final tree exactly matches the original branch tip, and stops immediately if any check, conflict, drift, or GPG step fails.
 - **[spell-check](documentation/skills/spell-check/SKILL.md)**: Run and triage cspell in this monorepo. Use when spell-check fails in lint-staged, nx affected, or nx run-many, when cspell reports Unknown word entries, or when adding domain vocabulary to the correct dictionary under configuration/.cspell. Covers full-workspace checks, project-targeted checks, and dictionary update validation.
 - **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Includes branch-name conformance checks and automatic branch rename when needed. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
-- **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
 - **[testing-mocks](documentation/skills/testing-mocks/SKILL.md)**: Create and structure mocks for tests using createMock, vi.mock, and NestJS DI patterns. USE WHEN writing unit or integration tests with mocked dependencies, when asked about mocking services or repositories, or when setting up test environments with injected dependencies.
 - **[testing-strategy](documentation/skills/testing-strategy/SKILL.md)**: Use monorepo testing conventions: unit, integration, end-to-end test naming and Nx commands. Use when adding tests or recommending test coverage.
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
 - **[triage-deployment](documentation/skills/triage-deployment/SKILL.md)**: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
 - **[triage-submission](documentation/skills/triage-submission/SKILL.md)**: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-- **[typescript-conventions](documentation/skills/typescript-conventions/SKILL.md)**: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, the no-any rule, async functions, floating promises, exhaustive switches, readonly properties, non-null assertions, control-flow style, test typing patterns, or Node fs Dirent mock typing.
 - **[update-plan](documentation/skills/update-plan/SKILL.md)**: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
 - **[update-pull-request](documentation/skills/update-pull-request/SKILL.md)**: Update an existing pull request's title and description to accurately reflect the implemented changes. Use this skill when asked to update, refresh, or rewrite a PR title or description, sync a PR with the latest changes, or when the PR description no longer matches the implementation.
 - **[validate-code](documentation/skills/validate-code/SKILL.md)**: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
+- **[write-comments](documentation/skills/write-comments/SKILL.md)**: Apply monorepo commenting conventions for TypeScript, Python, and any language. USE WHEN writing or reviewing comments, adding section comments, organizing code into logical groups, or asked about comment style. Covers when to comment, how to write good comments, section comment format (emoji + capitalized name), emoji reference table, and anti-patterns to avoid (obvious comments, redundant JSDoc, TODO lint bypasses, dash-line dividers).
+- **[write-python](documentation/skills/write-python/SKILL.md)**: Python project conventions for this monorepo. Use when creating a new Python project, configuring Python tools (ruff, pyright, ty, pytest, bandit, vulture), writing or reviewing pyproject.toml, setting up Nx targets for Python, or asked about Python tooling setup, uv, or the language:python tag. Covers the project.json pattern, pyproject.toml structure, targetDefaults, tool execution via uv run, and ty pre-1.0 configuration rules.
+- **[write-react](documentation/skills/write-react/SKILL.md)**: React coding conventions for this monorepo. Use when writing or reviewing React components, when asked about component structure, section ordering, Tailwind CSS usage, state management patterns, conditional rendering, list rendering, or React 19 conventions. Covers component section layout (🔖🧩🪝🏗💪🏁🎨), Tailwind CSS with theme tokens, TanStack Router file-based routing, lexico-components usage, and testing with Vitest + RTL.
+- **[write-typescript](documentation/skills/write-typescript/SKILL.md)**: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, the no-any rule, async functions, floating promises, exhaustive switches, readonly properties, non-null assertions, control-flow style, test typing patterns, or Node fs Dirent mock typing.
 <!-- agent-skills-table-of-contents end -->
 
 ## Agents
@@ -98,6 +92,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **JimmyPaolini**: Portfolio website
 - **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
 - **[conformance](tools/conformance/AGENTS.md)**: Nx generators for scaffolding code
+- **[synchronization](tools/synchronization/AGENTS.md)**: NestJS CLI for synchronizing monorepo configuration and documentation artifacts
 
 ## Nx Generators
 
@@ -153,17 +148,17 @@ See the [validate-code skill](documentation/skills/validate-code/SKILL.md) for t
 
 ### Quality Tools at a Glance
 
-| Tool | Covers | Config |
-| ---- | ------ | ------ |
-| `oxfmt` + `prettier` | Formatting | `configuration/oxfmt.config.ts`, `configuration/prettier.config.ts` |
-| `eslint` + `oxlint` | Linting (TS/JS) | project `eslint.config.ts`, `configuration/oxlint.config.ts` |
-| `ruff` | Formatting + linting (Python) | `configuration/pyproject.toml` |
-| `tsc` / `pyright` / `ty` | Type checking | project `tsconfig.json`, `configuration/tsconfig.base.json` |
-| `knip` / `vulture` | Unused code + deps | `configuration/knip.config.ts`, `configuration/vulture_whitelist.py` |
-| `fallow` | Dead code + duplication + complexity (advisory) | `configuration/fallow.config.jsonc` |
-| `cspell` | Spell checking | `configuration/cspell.config.yaml` |
-| `markdownlint` | Markdown lint | `configuration/.markdownlint-cli2.jsonc` |
-| `yamllint` | YAML lint | `configuration/yamllint.yaml` |
+| Tool                     | Covers                                          | Config                                                               |
+| ------------------------ | ----------------------------------------------- | -------------------------------------------------------------------- |
+| `oxfmt` + `prettier`     | Formatting                                      | `configuration/oxfmt.config.ts`, `configuration/prettier.config.ts`  |
+| `eslint` + `oxlint`      | Linting (TS/JS)                                 | project `eslint.config.ts`, `configuration/oxlint.config.ts`         |
+| `ruff`                   | Formatting + linting (Python)                   | `configuration/pyproject.toml`                                       |
+| `tsc` / `pyright` / `ty` | Type checking                                   | project `tsconfig.json`, `configuration/tsconfig.base.json`          |
+| `knip` / `vulture`       | Unused code + deps                              | `configuration/knip.config.ts`, `configuration/vulture_whitelist.py` |
+| `fallow`                 | Dead code + duplication + complexity (advisory) | `configuration/fallow.config.jsonc`                                  |
+| `cspell`                 | Spell checking                                  | `configuration/cspell.config.yaml`                                   |
+| `markdownlint`           | Markdown lint                                   | `configuration/.markdownlint-cli2.jsonc`                             |
+| `yamllint`               | YAML lint                                       | `configuration/yamllint.yaml`                                        |
 
 ## Key Conventions
 
@@ -202,7 +197,7 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Template literals**: Use `` `Hello ${name}` `` instead of `"Hello " + name`
 - **Max 3 function parameters**: Group extras into an options object (constructors: 12)
 - **JSDoc on public APIs**: Public functions, classes, methods, interfaces, types, and enums must have JSDoc — only when it adds non-obvious context
-- **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [commenting skill](documentation/skills/commenting/SKILL.md).
+- **Section comments**: Use `// 🎯 Section name` (emoji + capitalized name). Never use dash lines or ASCII art dividers. See [write-comment skill](documentation/skills/write-comment/SKILL.md).
 - **NestJS class file shape**: In `*.service.ts`, `*.command.ts`, `*.resolver.ts`, `*.dataloader.ts`, and `*.module.ts`, keep only imports and the class at top level. Move helper types/interfaces to `*.types.ts`, constants to `*.constants.ts`, and never use alias or type re-exports from class files.
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
@@ -245,19 +240,19 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 
 <!-- types-start -->
 
-| Type | Description |
-| ---- | ----------- |
-| `feat` | A new feature or capability that adds value for users |
-| `fix` | A bug fix that addresses a specific issue or problem |
-| `docs` | Documentation, AGENTS.md, SKILL.md, README, and planning files |
-| `test` | Adding or correcting unit, integration, or end-to-end tests |
-| `refactor` | Code restructuring that neither fixes a bug nor adds a feature |
-| `style` | Formatting, whitespace, or code structure changes with no semantic effect |
-| `perf` | A code change that improves performance (caching, query optimization, etc.) |
-| `chore` | Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.) |
-| `ci` | GitHub Actions workflows, composite actions, and CI/CD scripts |
-| `build` | Build system, Vite/Docker/Helm config, or external dependency integration |
-| `revert` | Reverts a previous commit |
+| Type       | Description                                                                         |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `feat`     | A new feature or capability that adds value for users                               |
+| `fix`      | A bug fix that addresses a specific issue or problem                                |
+| `docs`     | Documentation, AGENTS.md, SKILL.md, README, and planning files                      |
+| `test`     | Adding or correcting unit, integration, or end-to-end tests                         |
+| `refactor` | Code restructuring that neither fixes a bug nor adds a feature                      |
+| `style`    | Formatting, whitespace, or code structure changes with no semantic effect           |
+| `perf`     | A code change that improves performance (caching, query optimization, etc.)         |
+| `chore`    | Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.) |
+| `ci`       | GitHub Actions workflows, composite actions, and CI/CD scripts                      |
+| `build`    | Build system, Vite/Docker/Helm config, or external dependency integration           |
+| `revert`   | Reverts a previous commit                                                           |
 
 <!-- types-end -->
 
@@ -265,30 +260,30 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 
 <!-- scopes-start -->
 
-| Scope | Description |
-| ----- | ----------- |
-| `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
-| `applications` | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
-| `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
-| `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
-| `conformance` | Code generator templates and conformance validation tests for generated instances |
-| `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
-| `deps` | Dependency version changes (upgrades, additions, removals via pnpm) |
-| `deployments` | GitHub Actions workflows and CI/CD pipeline configuration |
-| `documentation` | Markdown docs, skills, planning files, and AGENTS.md files |
-| `infrastructure` | Helm charts, Terraform configs, and Kubernetes resources |
-| `JimmyPaolini` | Static GitHub profile README project (markdown and assets) |
-| `lexico` | TanStack Start SSR Latin dictionary web app with Supabase backend |
-| `lexico-components` | Shared React/shadcn component library |
-| `lexico-entities` | Shared TypeORM entities and GraphQL types |
-| `lexico-ingestion` | Data ingestion scripts for Lexico |
-| `monorepo` | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
-| `no-release` | Escape hatch: suppress semantic-release for any commit type |
-| `packages` | Changes spanning multiple shared packages in packages/ |
-| `release` | Version bumps and release commits generated by semantic-release |
-| `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
-| `testing` | Vitest configuration, shared test utilities, and coverage setup |
-| `tools` | Changes spanning multiple tool projects in tools/ |
+| Scope               | Description                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| `affirmations`      | Python Jupyter notebook application for LangGraph affirmation generation               |
+| `applications`      | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
+| `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)                  |
+| `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)                  |
+| `conformance`       | Code generator templates and conformance validation tests for generated instances      |
+| `dependencies`      | Dependency version changes (upgrades, additions, removals via pnpm)                    |
+| `deps`              | Dependency version changes (upgrades, additions, removals via pnpm)                    |
+| `deployments`       | GitHub Actions workflows and CI/CD pipeline configuration                              |
+| `documentation`     | Markdown docs, skills, planning files, and AGENTS.md files                             |
+| `infrastructure`    | Helm charts, Terraform configs, and Kubernetes resources                               |
+| `JimmyPaolini`      | Static GitHub profile README project (markdown and assets)                             |
+| `lexico`            | TanStack Start SSR Latin dictionary web app with Supabase backend                      |
+| `lexico-components` | Shared React/shadcn component library                                                  |
+| `lexico-entities`   | Shared TypeORM entities and GraphQL types                                              |
+| `lexico-ingestion`  | Data ingestion scripts for Lexico                                                      |
+| `monorepo`          | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)          |
+| `no-release`        | Escape hatch: suppress semantic-release for any commit type                            |
+| `packages`          | Changes spanning multiple shared packages in packages/                                 |
+| `release`           | Version bumps and release commits generated by semantic-release                        |
+| `scripts`           | Shell and TypeScript scripts in scripts/ (sync, setup, utilities)                      |
+| `testing`           | Vitest configuration, shared test utilities, and coverage setup                        |
+| `tools`             | Changes spanning multiple tool projects in tools/                                      |
 
 <!-- scopes-end -->
 
@@ -370,7 +365,7 @@ See [React Conventions](documentation/conventions/react.md) for component struct
 
 ### Code Quality
 
-- [Commenting](documentation/skills/commenting/SKILL.md): Conventions for writing comments, section headers, and emoji section format
+- [Write Comment](documentation/skills/write-comment/SKILL.md): Conventions for writing comments, section headers, and emoji section format
 
 ### Architecture
 
@@ -443,12 +438,12 @@ nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 
 ## Common Issues
 
-| Issue                      | Solution                                      |
-| -------------------------- | --------------------------------------------- |
-| Index access error         | Use optional chaining: `arr[0]?.prop`         |
-| Docker platform mismatch   | Build with `--platform linux/amd64`           |
-| Commit rejected            | Follow format: `type(scope): gitmoji subject` |
-| Branch name rejected       | Use pattern: `type/scope-description`         |
+| Issue                    | Solution                                      |
+| ------------------------ | --------------------------------------------- |
+| Index access error       | Use optional chaining: `arr[0]?.prop`         |
+| Docker platform mismatch | Build with `--platform linux/amd64`           |
+| Commit rejected          | Follow format: `type(scope): gitmoji subject` |
+| Branch name rejected     | Use pattern: `type/scope-description`         |
 
 See [Common Gotchas](documentation/troubleshooting/gotchas.md) for detailed solutions.
 

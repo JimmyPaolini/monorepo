@@ -1,10 +1,10 @@
 ---
-name: python-conventions
+name: write-python
 description: Python project conventions for this monorepo. Use when creating a new Python project, configuring Python tools (ruff, pyright, ty, pytest, bandit, vulture), writing or reviewing pyproject.toml, setting up Nx targets for Python, or asked about Python tooling setup, uv, or the language:python tag. Covers the project.json pattern, pyproject.toml structure, targetDefaults, tool execution via uv run, and ty pre-1.0 configuration rules.
 license: MIT
 ---
 
-# Python Conventions
+# Write Python
 
 All Python projects inherit configuration from the workspace root `pyproject.toml` and Nx `targetDefaults`. Use `uv run` (never `uvx`) for reproducible tool invocations pinned in `uv.lock`.
 

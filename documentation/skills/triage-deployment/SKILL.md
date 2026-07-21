@@ -54,13 +54,13 @@ Process all failing runs before moving to Step 4. Each failure may require a sep
 
 Match the log header against the known workflows:
 
-| Workflow name | Job name | Trigger |
-| --- | --- | --- |
-| `🧑‍💻 Analyze Code` | `analyze-code` | push / PR / manual |
-| `🧑‍🔬 Test Coverage` | `test-coverage` | push / PR / manual |
-| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main |
-| `🕵️ Audit Security` | `audit-security` | push / PR / weekly schedule |
-| `🧑‍🔧 Make Devcontainer` | `make-devcontainer` | push to main / PR touching `.devcontainer/**` / manual |
+| Workflow name             | Job name               | Trigger                                                |
+| ------------------------- | ---------------------- | ------------------------------------------------------ |
+| `🧑‍💻 Analyze Code`         | `analyze-code`         | push / PR / manual                                     |
+| `🧑‍🔬 Test Coverage`        | `test-coverage`        | push / PR / manual                                     |
+| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main                 |
+| `🕵️ Audit Security`       | `audit-security`       | push / PR / weekly schedule                            |
+| `🧑‍🔧 Make Devcontainer`    | `make-devcontainer`    | push to main / PR touching `.devcontainer/**` / manual |
 
 Identify which **step** within the job failed (visible in the log as `##[error]` or step exit code `!= 0`).
 
@@ -70,16 +70,16 @@ Identify which **step** within the job failed (visible in the log as `##[error]`
 
 The `analyze-code` composite target fans out to per-project sub-targets. Identify which sub-target failed:
 
-| Sub-target | Underlying tool | Config file |
-| --- | --- | --- |
-| `typecheck` | `tsc --noEmit` | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
-| `lint` | ESLint | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
-| `format` | prettier + oxfmt | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
-| `spell-check` | cspell | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml) |
-| `knip` | knip | [configuration/knip.config.ts](../../../configuration/knip.config.ts) |
-| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root) |
-| `yaml-lint` | yamllint | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml) |
-| `type-coverage` | type-coverage | Per-project `package.json` scripts |
+| Sub-target      | Underlying tool   | Config file                                                                                                                                                                                         |
+| --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `typecheck`     | `tsc --noEmit`    | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json)                                                                                    |
+| `lint`          | ESLint            | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts)                                                                                     |
+| `format`        | prettier + oxfmt  | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
+| `spell-check`   | cspell            | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml)                                                                                                                       |
+| `knip`          | knip              | [configuration/knip.config.ts](../../../configuration/knip.config.ts)                                                                                                                               |
+| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root)                                                                                                                                                               |
+| `yaml-lint`     | yamllint          | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml)                                                                                                                                 |
+| `type-coverage` | type-coverage     | Per-project `package.json` scripts                                                                                                                                                                  |
 
 **Common fixes:**
 
@@ -290,14 +290,39 @@ pnpm exec nx affected --target=analyze-code --configuration=check --base=main
 
 Running this loop locally catches 100% of `analyze-code` CI failures — typecheck, lint, format, spell-check, unused code, and sync checks — without waiting for CI to report them.
 
-## Output
+## Step 6: Report Errors Found and Fixes Implemented
 
-Provide a concise summary after fixing:
+**The skill ends here. Do NOT do anything else.**
+
+At the end of the run, report a summary to the user covering:
+
+1. **Errors found** — for each failing workflow/job/step, state:
+   - Which workflow and job/step failed
+   - The specific error message or rule violation that was triaged
+
+2. **Fixes implemented** — for each fix, state:
+   - Whether it was an auto-fix command or a manual code/configuration edit
+   - Which files were modified
+
+3. **Validation** — for each fix, state:
+   - The command(s) run to validate the fix
+   - The pass/fail result for each command
+
+4. **Remaining actions** — list any unresolved items requiring user action, or explicitly state all failures are resolved.
+
+Use this report template:
 
 ```text
-✅ Fixed: <workflow name> — <step name>
+Errors Found
+- <workflow>: <job/step> — <error message>
 
-Root Cause: <one-line description>
-Files Changed: <list>
-Verification: <command run> ✅ passed
+Fixes Implemented
+- <auto-fix command and/or manual change>
+- Files changed: <file list>
+
+Validation
+- <check command> — ✅ PASSED
+
+Remaining Actions
+- <none | explicit follow-up actions>
 ```

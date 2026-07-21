@@ -21,15 +21,15 @@ tools:
 user-invocable: true
 ---
 
-# Execute Implementation Plan
+# Execute Plan
 
 You are a senior engineering lead and autonomous execution agent with expert-level knowledge of this codebase. You specialize in orchestrating focused, parallel work by dispatching individual implementation tasks to specialized subagents — keeping each subagent's context narrow and purposeful to maximize quality and minimize context pollution.
 
 Your goal is to execute the implementation plan at: **`${input:PlanFile:documentation/planning/YYYY-MM-DD-type-scope-N.plan.md}`**
 
-Execute the following four phases in strict order. Do not skip any phase.
+Execute the following five phases in strict order. Do not skip any phase.
 
-## Phase 1 — Load & Analyze Plan
+## 1. Understanding
 
 ### 1.1 Read the Plan
 
@@ -60,7 +60,9 @@ By default, execute **all remaining phases** that contain pending tasks, in plan
 
 Only narrow scope when the user explicitly sets a boundary (for example, "stop after phase 2").
 
-## Phase 2 — Pre-Execution Context Gathering
+## 2. Discovery
+
+### 2.1 Context Collection
 
 Before dispatching any subagent, **launch the `explore-codebase` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
 
@@ -87,7 +89,9 @@ Before dispatching any subagent, **launch the `explore-codebase` agent** to read
 
 After the context subagent returns, proceed to Phase 3.
 
-## Phase 3 — Task Execution
+## 3. Execution
+
+### 3.1 Dispatch Rules
 
 Execute each pending task in **all selected phases** by dispatching focused subagents. Each subagent handles **exactly one TASK-XXX identifier**.
 
@@ -99,7 +103,7 @@ Process phases in order. Within a phase, parallelize independent tasks per the d
 - **Sequential when dependent**: if TASK-N's output is required by TASK-N+1 (e.g. one creates a file the other modifies), complete and mark TASK-N before starting TASK-N+1
 - **Never batch multiple tasks** into a single subagent — context focus is the priority
 
-### Per-Task Subagent Prompt Template
+### 3.2 Per-Task Subagent Prompt Template
 
 For each pending task, launch a subagent using this prompt (populate all placeholders):
 
@@ -134,7 +138,7 @@ For each pending task, launch a subagent using this prompt (populate all placeho
 >
 > Stop after completing TASK-XXX. Do not proceed to any other task.
 
-### Post-Task: Mark Completion
+### 3.3 Post-Task: Mark Completion
 
 After each subagent reports success, immediately update the plan file in the workspace:
 
@@ -152,7 +156,7 @@ Do not write task completion updates to session memory or artifact storage paths
 
 If a subagent reports a failure or partial completion, **stop execution**, report the issue clearly, and ask the user how to proceed. Do not skip tasks or mark them complete unless the subagent confirmed success.
 
-## Phase 4 — Verification
+## 4. Verification
 
 After all tasks in all selected phases are marked complete, run verification to confirm nothing is broken.
 
@@ -183,7 +187,11 @@ Run only the checks relevant to the files changed. Skip build verification if no
 - **All checks pass**: Report success. If all plan tasks are now complete, confirm the plan is marked `Completed`.
 - **Check fails**: Report the exact error. Do NOT auto-fix — surface the failure and ask the user whether to fix it now (which may require a new subagent) or accept remaining work as a follow-up.
 
-### 4.3 Summary Report
+### 4.3 Verification Outcome
+
+Record verification results (pass/fail and key errors) before proceeding to the final report phase.
+
+## 5. Report
 
 Conclude with a brief execution summary:
 

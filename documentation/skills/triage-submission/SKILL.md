@@ -368,23 +368,43 @@ Read `configuration/commitlint.config.ts` for the full rule set before amending.
 
 <!-- scopes-end -->
 
-### Step 5: Report What Was Fixed
+### Step 5: Report Errors Found and Fixes Implemented
 
 **The skill ends here. Do NOT do anything else.**
 
-Report a summary to the user covering:
+At the end of the run, report a summary to the user covering:
 
 1. **Errors found** — for each failing hook/target, state:
    - Which hook failed (`pre-commit`, `commit-msg`, or `pre-push`)
    - Which Nx target or tool produced the error (e.g., `eslint`, `oxfmt`, `typecheck`)
    - The specific error messages or rule violations
 
-2. **Fixes applied** — for each fix, state:
-   - Whether it was auto-fixed (e.g., ran `format --configuration=write`) or required manual edits
+2. **Fixes implemented** — for each fix, state:
+   - Whether it was an auto-fix command (e.g., `format --configuration=write`) or a manual code/configuration edit
    - Which files were modified (all left unstaged — the user must review and `git add` them before retrying the commit)
-   - **Validation result**: "Validated with `nx affected --target=<name> --configuration=check --files=<...>` — ✅ PASSED"
 
-3. **Remaining actions** — if any issues require user action (e.g., manual typecheck fixes, commit message amend, branch rename), list them explicitly so the user knows what still needs to be done before committing. If all validations passed, state "All fixes validated. Ready to review, stage, and commit."
+3. **Validation** — for each fix, state:
+   - The command(s) run to validate the fix
+   - The pass/fail result for each command
+
+4. **Remaining actions** — if any issues require user action (e.g., manual typecheck fixes, commit message amend, branch rename), list them explicitly so the user knows what still needs to be done before committing. If all validations passed, state "All fixes validated. Ready to review, stage, and commit."
+
+Use this report template:
+
+```text
+Errors Found
+- <hook>: <target/tool> — <error message>
+
+Fixes Implemented
+- <auto-fix command and/or manual change>
+- Files changed: <file list>
+
+Validation
+- <check command> — ✅ PASSED
+
+Remaining Actions
+- <none | explicit follow-up actions>
+```
 
 ## Common Patterns
 

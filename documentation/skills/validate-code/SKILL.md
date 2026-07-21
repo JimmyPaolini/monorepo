@@ -61,7 +61,7 @@ pnpm exec nx affected --target=analyze-code --configuration=check --base=main
 **All checks must pass before proceeding.** If any fail, triage each failure:
 
 - **Format/lint**: Fix the reported violations manually, then re-run.
-- **Typecheck**: Fix type errors — see [typescript-conventions skill](../typescript-conventions/SKILL.md) for patterns.
+- **Typecheck**: Fix type errors — see [write-typescript skill](../write-typescript/SKILL.md) for patterns.
 - **Spell-check**: Either fix the typo, or add the word to the appropriate dictionary in `configuration/.cspell/`.
 - **Knip (unused code)**: Remove the unused export/file/dependency, or add an exception in `configuration/knip.config.ts`.
 - **Sync checks**: Run the relevant `write` variant (e.g., `nx run synchronization:agent-skills:write`).
@@ -139,4 +139,4 @@ After creating both, run `nx run synchronization:agent-skills:write` to update t
 
 - [triage-submission skill](../triage-submission/SKILL.md) — Detailed per-tool fix instructions for pre-commit failures
 - [triage-deployment skill](../triage-deployment/SKILL.md) — Detailed per-tool fix instructions for CI failures
-- [typescript-conventions skill](../typescript-conventions/SKILL.md) — TypeScript strict mode patterns
+- [write-typescript skill](../write-typescript/SKILL.md) — TypeScript strict mode patterns

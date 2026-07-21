@@ -186,7 +186,7 @@ For each finding classified in Phase 4, make the change.
 
 (adding a coding pattern, warning, or reinforcement to an existing skill):
 
-- **Coding patterns go in the most specific domain skill** — TypeScript patterns → `typescript-conventions`, React patterns → `react-conventions`, NestJS patterns → the relevant NestJS skill, etc.
+- **Coding patterns go in the most specific domain skill** — TypeScript patterns → `write-typescript`, React patterns → `write-react`, NestJS patterns → the relevant NestJS skill, etc.
 - If no domain skill covers the pattern, add it to the project's `AGENTS.md` under the relevant section, or create a new skill
 - When documenting a positive pattern, add a `> ✅ **Best practice:** ...` callout
 - When documenting a gap or mistake, add a `> ⚠️ **Warning:** ...` callout

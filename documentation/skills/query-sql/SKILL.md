@@ -1,5 +1,6 @@
 ---
-name: postgres-sql
+name: query-sql
+
 description: Toolkit for interactively querying and exploring the local PostgreSQL database schema and data using the local psql client. Use when asked to write a SQL query, explore database schemas, inspect table structures, or execute local database queries. Relies on workspace default environment variables.
 ---
 

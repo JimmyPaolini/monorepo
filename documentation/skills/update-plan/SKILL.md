@@ -27,9 +27,9 @@ You are a senior software architect and technical auditor with deep knowledge of
 
 Your goal is to update the implementation plan at: **`${input:PlanFile:documentation/planning/YYYY-MM-DD-type-scope-N.plan.md}`**
 
-Execute the following four phases in strict order. Do not skip any phase.
+Execute the following five phases in strict order. Do not skip any phase.
 
-## Phase 1 — Load & Understand the Plan
+## 1. Understanding
 
 ### 1.1 Read the Plan File
 
@@ -55,7 +55,9 @@ Partition all tasks into three buckets:
 | `Pending`   | No checkmark — requires codebase verification                                |
 | `Uncertain` | Has ✅ but also a "Known Bug" or "will fail" note — requires re-verification |
 
-## Phase 2 — Codebase Investigation
+## 2. Discovery
+
+### 2.1 Explore Codebase
 
 **Launch the `explore-codebase` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
 
@@ -87,7 +89,7 @@ Partition all tasks into three buckets:
 >
 > **Return a structured report:**
 
-````text
+```text
 > ## Task Verdicts
 >
 > | Task     | Verdict                  | Evidence / Notes                              |
@@ -117,11 +119,11 @@ Partition all tasks into three buckets:
 > ## Open Items
 >
 > - List any ambiguities or tasks that could not be verified from the code alone
-> ```
+```
 
 After the sub-agent returns, review its report. If any verdicts are ambiguous or the sub-agent flagged open items, do targeted file reads yourself to resolve them before proceeding.
 
-## Phase 3 — Determine Overall Plan Status
+## 3. Assessment
 
 Using the task verdicts and bug/file reports from Phase 2, determine the new plan status:
 
@@ -132,7 +134,7 @@ Using the task verdicts and bug/file reports from Phase 2, determine the new pla
 | No tasks have been implemented yet                                      | `Planned`     |
 | Plan was previously marked `Completed` but bugs remain `BUG_UNRESOLVED` | `In progress` |
 
-## Phase 4 — Write the Updated Plan
+## 4. Update
 
 Edit the plan file with precise, factual updates. Follow these rules strictly:
 
@@ -204,7 +206,7 @@ For each task in the implementation steps tables, apply the appropriate update b
 
 In the `## 5. Files` section (or equivalent), for each FILE-XXX entry:
 
-- If the file now exists and was listed without ✅, append ` ✅` to the entry
+- If the file now exists and was listed without ✅, append `✅` to the entry
 - If a new file was created that was NOT in the plan, add a new `FILE-NNN` entry under the relevant subsection (`New Files` or `Modified Files`)
 - Do not remove FILE entries for files that do not exist — they represent pending work
 
@@ -213,7 +215,7 @@ In the `## 5. Files` section (or equivalent), for each FILE-XXX entry:
 - Do NOT modify requirements, constraints, alternatives, or dependencies sections unless a specific task verdict requires it
 - Do NOT reorder, merge, or restructure sections — follow the plan's existing layout exactly
 
-## Output Summary
+## 5. Report
 
 After writing the updated plan, produce a brief summary in chat:
 
@@ -236,4 +238,4 @@ After writing the updated plan, produce a brief summary in chat:
 
 ### Remaining Work
 {bullet list of pending tasks by phase, or "None — plan is complete."}
-````
+```

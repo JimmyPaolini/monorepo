@@ -1,10 +1,10 @@
 ---
-name: typescript-conventions
+name: write-typescript
 description: TypeScript coding conventions for this monorepo. Use when writing or modifying TypeScript or TSX files, when TypeScript type errors appear, or when asked about strict mode, type imports, naming conventions, return types, the no-any rule, async functions, floating promises, exhaustive switches, readonly properties, non-null assertions, control-flow style, test typing patterns, or Node fs Dirent mock typing.
 license: MIT
 ---
 
-# TypeScript Conventions
+# Write TypeScript
 
 All TypeScript projects in this monorepo use strict settings. This skill is the entry point and links to focused reference files so guidance stays organized and maintainable.
 
@@ -32,8 +32,8 @@ Use this skill when:
 ## Related Skills
 
 - [Imports conventions](../imports-conventions/SKILL.md)
-- [Error handling patterns](../error-handling-patterns/SKILL.md)
-- [Commenting](../commenting/SKILL.md)
+- [Handle error](../handle-error/SKILL.md)
+- [Write comment](../write-comment/SKILL.md)
 - [Validate code](../validate-code/SKILL.md)
 
 ## Verification

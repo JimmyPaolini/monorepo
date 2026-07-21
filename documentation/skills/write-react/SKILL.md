@@ -1,10 +1,10 @@
 ---
-name: react-conventions
+name: write-react
 description: React coding conventions for this monorepo. Use when writing or reviewing React components, when asked about component structure, section ordering, Tailwind CSS usage, state management patterns, conditional rendering, list rendering, or React 19 conventions. Covers component section layout (🔖🧩🪝🏗💪🏁🎨), Tailwind CSS with theme tokens, TanStack Router file-based routing, lexico-components usage, and testing with Vitest + RTL.
 license: MIT
 ---
 
-# React Conventions
+# Write React
 
 All projects use **React 19** with the new JSX transform — no `React` import needed.
 
