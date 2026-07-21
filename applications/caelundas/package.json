@@ -20,8 +20,6 @@
   "devDependencies": {
     "@nestjs/testing": "catalog:",
     "@nx/eslint-plugin": "catalog:",
-    "@swc-node/register": "catalog:",
-    "@swc/core": "catalog:",
     "@swc/helpers": "catalog:",
     "@types/lodash": "catalog:",
     "@types/node": "catalog:",

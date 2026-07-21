@@ -87,29 +87,9 @@
       }
     },
     "prettier": {},
-    "repl": {
-      "description": "Start the LexicoIngestion application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
-    "start": {
-      "description": "Start the LexicoIngestion application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion",
-        "cwd": "{projectRoot}"
-      }
-    },
     "test": {},
-    "type-coverage": {
-      "options": {
-        "command": "type-coverage --at-least 99 --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)"
-      }
-    },
+    "type-coverage": {},
     "typecheck": {},
     "wiktionary": {
       "description": "Ingest Wiktionary data into the database",

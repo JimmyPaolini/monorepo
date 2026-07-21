@@ -224,15 +224,20 @@
         }
       }
     ],
-    "bandit": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": ["python-source"],
-      "options": {
-        "command": "uv run bandit -c pyproject.toml -r src/",
-        "cwd": "{projectRoot}"
+    "bandit": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": ["python-source"],
+        "options": {
+          "command": "uv run bandit -c pyproject.toml -r src/",
+          "cwd": "{projectRoot}"
+        }
       }
-    },
+    ],
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -584,6 +589,29 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "nbstripout": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "--verify"
+          },
+          "write": {
+            "args": ""
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": ["{projectRoot}/src/**/*.ipynb"],
+        "options": {
+          "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
     "oxfmt": {
       "cache": true,
       "configurations": {
@@ -649,83 +677,117 @@
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore {projectRoot}"
       }
     },
-    "pyright": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "python-source"
-      ],
-      "options": {
-        "command": "uv run pyright src/",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "pytest": {
-      "cache": true,
-      "configurations": {
-        "coverage": {
-          "command": "uv run pytest --cov=src --cov-report=xml:coverage/python.xml --cov-report=term-missing"
+    "pyright": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
         },
-        "integration": {
-          "command": "uv run pytest -m integration"
-        },
-        "unit": {
-          "command": "uv run pytest -m unit"
-        },
-        "watch": {
-          "command": "uv run pytest-watch"
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ],
+        "options": {
+          "command": "uv run pyright src/",
+          "cwd": "{projectRoot}"
         }
-      },
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "python-source",
-        "python-tests"
-      ],
-      "options": {
-        "command": "uv run pytest",
-        "cwd": "{projectRoot}"
       }
-    },
-    "ruff-format": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "--check"
+    ],
+    "pytest": [
+      {
+        "cache": true,
+        "configurations": {
+          "coverage": {
+            "command": "uv run pytest --cov=src --cov-report=xml:coverage/python.xml --cov-report=term-missing"
+          },
+          "integration": {
+            "command": "uv run pytest -m integration"
+          },
+          "unit": {
+            "command": "uv run pytest -m unit"
+          },
+          "watch": {
+            "command": "uv run pytest-watch"
+          }
         },
-        "write": {}
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "python-source"
-      ],
-      "options": {
-        "command": "uv run ruff format {args} .",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "ruff-lint": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--fix"
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source",
+          "python-tests"
+        ],
+        "options": {
+          "command": "uv run pytest",
+          "cwd": "{projectRoot}"
         }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "python-source"
-      ],
-      "options": {
-        "command": "uv run ruff check {args} .",
-        "cwd": "{projectRoot}"
       }
-    },
+    ],
+    "repl": [
+      {
+        "cache": false,
+        "description": "Start a Nest Commander application in REPL mode",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:nest-commander"]
+        },
+        "options": {
+          "command": "node --import @swc-node/register/esm-register src/repl.ts",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
+    "ruff-format": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "args": "--check"
+          },
+          "write": {}
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ],
+        "options": {
+          "command": "uv run ruff format {args} .",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
+    "ruff-lint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {},
+          "write": {
+            "args": "--fix"
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ],
+        "options": {
+          "command": "uv run ruff check {args} .",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
     "spell-check": {
       "cache": true,
       "executor": "nx:run-commands",
@@ -809,6 +871,20 @@
         "options": {
           "command": "squawk --config configuration/squawk.toml --exclude prefer-robust-stmts,ban-drop-table,require-concurrent-index-deletion,require-concurrent-index-creation,ban-char-field,prefer-bigint-over-smallint,constraint-missing-not-valid,adding-foreign-key-constraint,ban-drop-column,adding-required-field '{projectRoot}/**/*.sql'",
           "cwd": "{workspaceRoot}"
+        }
+      }
+    ],
+    "start": [
+      {
+        "cache": false,
+        "description": "Start a Nest Commander application",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:framework:nest-commander"]
+        },
+        "options": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts {projectName}",
+          "cwd": "{projectRoot}"
         }
       }
     ],
@@ -924,18 +1000,23 @@
         }
       }
     ],
-    "ty": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/configuration/pyproject.toml",
-        "python-source"
-      ],
-      "options": {
-        "command": "uv run ty check src/",
-        "cwd": "{projectRoot}"
+    "ty": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ],
+        "options": {
+          "command": "uv run ty check src/",
+          "cwd": "{projectRoot}"
+        }
       }
-    },
+    ],
     "type-coverage": {
       "cache": true,
       "executor": "nx:run-commands",
@@ -990,33 +1071,59 @@
         "outputs": []
       }
     ],
-    "vulture": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {}
+    "vulture": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {},
+          "write": {}
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": ["{projectRoot}/.vulture_whitelist.py", "python-source"],
+        "options": {
+          "command": "uv run python -m vulture src/ .vulture_whitelist.py --min-confidence 80",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
+    "yaml-lint": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{yaml,yml}",
+          "{workspaceRoot}/configuration/yamllint.yaml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",
+          "cwd": "{workspaceRoot}"
+        }
       },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{projectRoot}/.vulture_whitelist.py", "python-source"],
-      "options": {
-        "command": "uv run python -m vulture src/ .vulture_whitelist.py --min-confidence 80",
-        "cwd": "{projectRoot}"
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{yaml,yml}",
+          "{workspaceRoot}/configuration/yamllint.yaml",
+          "shared-globals"
+        ],
+        "options": {
+          "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",
+          "cwd": "{workspaceRoot}"
+        }
       }
-    },
-    "yaml-lint": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{yaml,yml}",
-        "{workspaceRoot}/configuration/yamllint.yaml",
-        "shared-globals"
-      ],
-      "options": {
-        "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",
-        "cwd": "{workspaceRoot}"
-      }
-    }
+    ]
   },
   "tui": {
     "enabled": false

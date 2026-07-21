@@ -144,23 +144,7 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "repl": {
-      "description": "Start the Synchronization application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
-    "start": {
-      "description": "Start the Synchronization application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
-        "cwd": "{projectRoot}"
-      }
-    },
     "test": {},
     "type-coverage": {},
     "typecheck": {},

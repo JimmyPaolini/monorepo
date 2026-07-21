@@ -22,23 +22,7 @@
     "oxfmt": {},
     "oxlint": {},
     "prettier": {},
-    "repl": {
-      "description": "Start the Conformance application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
-    "start": {
-      "description": "Start the Conformance application",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts conformance",
-        "cwd": "{projectRoot}"
-      }
-    },
     "test": {},
     "type-coverage": {},
     "typecheck": {},

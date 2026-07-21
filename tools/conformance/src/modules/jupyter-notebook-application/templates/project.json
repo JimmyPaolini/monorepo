@@ -14,91 +14,11 @@
     "format": {},
     "lint": {},
     "markdown-lint": {},
-    "nbstripout": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "--verify"
-        },
-        "write": {
-          "args": ""
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{projectRoot}/src/**/*.ipynb"],
-      "options": {
-        "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "ollama": {
-      "configurations": {
-        "pull-large": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e26b\"}'"
-        },
-        "pull-medium": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e4b\"}'"
-        },
-        "pull-small": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e2b\"}'"
-        },
-        "start": {
-          "command": "if [ \"$MONOREPO_ENVIRONMENT\" = \"local\" ]; then brew services start ollama; else echo 'Start Ollama on your host machine: ollama serve (or: brew services start ollama)'; fi"
-        },
-        "stop": {
-          "command": "if [ \"$MONOREPO_ENVIRONMENT\" = \"local\" ]; then brew services stop ollama; else echo 'Stop Ollama on your host machine: pkill ollama (or: brew services stop ollama)'; fi"
-        }
-      },
-      "defaultConfiguration": "start",
-      "description": "Manage the native Ollama service running on the host machine",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}"
-      }
-    },
-    "open-webui": {
-      "configurations": {
-        "open": {
-          "command": "$BROWSER http://localhost:3001"
-        },
-        "start": {
-          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml up -d open-webui"
-        },
-        "stop": {
-          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml rm -sf open-webui"
-        }
-      },
-      "defaultConfiguration": "start",
-      "description": "Manage the Open WebUI Docker service",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}"
-      }
-    },
+    "nbstripout": {},
     "pyright": {},
     "pytest": {},
     "ruff-format": {},
     "ruff-lint": {},
-    "searxng": {
-      "configurations": {
-        "open": {
-          "command": "$BROWSER http://localhost:8889"
-        },
-        "start": {
-          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml up -d searxng"
-        },
-        "stop": {
-          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml rm -sf searxng"
-        }
-      },
-      "defaultConfiguration": "start",
-      "description": "Manage the SearxNG Docker service",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}"
-      }
-    },
     "spell-check": {},
     "test": {},
     "ty": {},
