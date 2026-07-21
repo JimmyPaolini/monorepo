@@ -41,6 +41,7 @@ function buildExpectedAgentContent(
   argumentHint: string,
   body: string,
 ): string {
+  const agentsYaml = config.agents.map((agent) => `  - ${agent}`).join("\n");
   const toolsYaml = config.tools.map((tool) => `  - ${tool}`).join("\n");
   const handoffsYaml = config.handoffs
     .map((handoff) =>
@@ -57,6 +58,8 @@ function buildExpectedAgentContent(
     `description: ${description}`,
     `name: ${name}`,
     `argument-hint: ${argumentHint}`,
+    `agents:`,
+    agentsYaml,
     `infer: ${config.infer}`,
     `model: ${config.model}`,
     `tools:`,

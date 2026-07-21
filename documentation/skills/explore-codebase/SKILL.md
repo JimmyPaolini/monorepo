@@ -1,20 +1,20 @@
 ---
-name: explore-files
+name: explore-codebase
 description: "Explore codebase files, patterns, and structure for a given topic. USE WHEN gathering implementation context before planning or executing tasks, when asked to research the codebase, or when a planning agent needs a Sub-Agent A (Codebase Research). Returns a Codebase Research Summary with relevant files, existing patterns, affected Nx projects, reusable code, related plans, constraints, and open questions."
 argument-hint: "Describe the topic, feature, or task to research in this codebase."
 compatibility:
-   environments:
-      - vscode
-      - github-copilot
-      - copilot-cli
+  environments:
+    - vscode
+    - github-copilot
+    - copilot-cli
 context:
-   optional:
-      - AGENTS.md
-      - nx.json
+  optional:
+    - AGENTS.md
+    - nx.json
 metadata:
-   domain: planning
-   lifecycle-stage: research
-   owner: monorepo
+  domain: planning
+  lifecycle-stage: research
+  owner: monorepo
 license: MIT
 ---
 

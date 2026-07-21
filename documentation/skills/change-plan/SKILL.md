@@ -90,7 +90,7 @@ Evaluate which sub-agents (if any) are needed based on the nature of the change.
 
 **Only launch if** the change requires understanding codebase details not already captured in the plan — e.g., new file interactions, pattern conflicts, or affected code that was not part of the original research.
 
-**Launch the `explore-files` agent** for: the proposed change `${input:ChangeDescription}` in context of {plan name} at {plan file path}.
+**Launch the `explore-codebase` agent** for: the proposed change `${input:ChangeDescription}` in context of {plan name} at {plan file path}.
 
 The agent returns a **Change Research Summary** with:
 
@@ -106,7 +106,7 @@ The agent returns a **Change Research Summary** with:
 
 If both sub-agents are needed, launch them **in parallel**.
 
-**Launch the `research-sources` agent** for: the new or changed dependencies in `${input:ChangeDescription}`.
+**Launch the `explore-internet` agent** for: the new or changed dependencies in `${input:ChangeDescription}`.
 
 The agent returns an **External Research Summary** with:
 

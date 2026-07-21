@@ -4,20 +4,20 @@ description: "Execute an implementation plan by running pending tasks in focused
 user-invocable: true
 argument-hint: "Provide the plan file path and any execution boundaries (for example, stop after one phase)."
 compatibility:
-   environments:
-      - vscode
-      - github-copilot
-      - copilot-cli
+  environments:
+    - vscode
+    - github-copilot
+    - copilot-cli
 context:
-   requires:
-      - documentation/planning/**/*.plan.md
-   optional:
-      - AGENTS.md
-      - nx.json
+  requires:
+    - documentation/planning/**/*.plan.md
+  optional:
+    - AGENTS.md
+    - nx.json
 metadata:
-   domain: planning
-   lifecycle-stage: execute
-   owner: monorepo
+  domain: planning
+  lifecycle-stage: execute
+  owner: monorepo
 license: MIT
 ---
 
@@ -62,7 +62,7 @@ Only narrow scope when the user explicitly sets a boundary (for example, "stop a
 
 ## Phase 2 — Pre-Execution Context Gathering
 
-Before dispatching any subagent, **launch the `explore-files` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
+Before dispatching any subagent, **launch the `explore-codebase` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
 
 > Plan file: **{insert plan file path}**
 >
@@ -170,11 +170,11 @@ Then select the appropriate commands using this priority order:
    `nx affected --target=<target> --base=main`
 3. **Fall back to individual targets** only when no compound target exists:
 
-| Check | Command |
-| --- | --- |
-| Analysis | `nx run <project>:analyze-code` |
-| Unit tests | `nx run <project>:test:unit` |
-| Build | `nx run <project>:build` |
+| Check      | Command                         |
+| ---------- | ------------------------------- |
+| Analysis   | `nx run <project>:analyze-code` |
+| Unit tests | `nx run <project>:test:unit`    |
+| Build      | `nx run <project>:build`        |
 
 Run only the checks relevant to the files changed. Skip build verification if no compiled output or bundled artifact was modified.
 

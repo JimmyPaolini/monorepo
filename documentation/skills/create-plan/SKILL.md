@@ -31,11 +31,11 @@ Execute the following four phases in strict order. Do not skip any phase.
 
 ## Phase 1 — Discovery: Research
 
-### Sub-Agent A: Codebase Research
+### Sub-Agent A: Explore Codebase
 
-**Launch the `explore-files` agent** to research the codebase for: **${input:PlanPurpose}**
+**Launch the `explore-codebase` agent** to research the codebase for: **${input:PlanPurpose}**
 
-The agent returns a **Codebase Research Summary** with:
+The agent returns a **Explore Codebase Summary** with:
 
 - **Relevant Files**: files most relevant to the task
 - **Existing Patterns**: conventions and patterns the plan must follow
@@ -45,11 +45,11 @@ The agent returns a **Codebase Research Summary** with:
 - **Constraints Discovered**: hard constraints from AGENTS.md, linting, typing, or CI
 - **Open Questions**: ambiguities that need user clarification
 
-### Sub-Agent B: External Research (Conditional)
+### Sub-Agent B: Explore Internet (Conditional)
 
-**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch the `research-sources` agent in parallel** for: **${input:PlanPurpose}**. Skip for purely internal refactoring.
+**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch the `explore-internet` agent in parallel** for: **${input:PlanPurpose}**. Skip for purely internal refactoring.
 
-The agent returns an **External Research Summary** with:
+The agent returns an **Explore Internet Summary** with:
 
 - **Library/API Changes**: breaking changes, deprecations, new APIs relevant to the plan
 - **Migration Guidance**: official upgrade paths or community-recommended approaches

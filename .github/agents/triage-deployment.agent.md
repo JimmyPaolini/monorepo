@@ -1,19 +1,21 @@
 ---
-description: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
-name: triage-deployment
 argument-hint: "Optional: paste failure logs, or specify a workflow name / run URL to fetch"
-infer: false
-model: claude-sonnet-4.5
-tools:
-  - read
-  - execute
-  - search
-  - web
+agents: []
+description: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
+disable-model-invocation: true
 handoffs:
   - label: Triage Submission
     agent: triage-submission
     prompt: "Also triage any local submission failures (commit or push hooks)."
     send: false
+model: Auto (copilot)
+name: triage-deployment
+tools:
+  - read
+  - execute
+  - search
+  - web
+user-invocable: true
 ---
 
 # Triage CI Failures
@@ -66,13 +68,13 @@ Process all failing runs before moving to Step 4. Each failure may require a sep
 
 Match the log header against the known workflows:
 
-| Workflow name | Job name | Trigger |
-| --- | --- | --- |
-| `🧑‍💻 Analyze Code` | `analyze-code` | push / PR / manual |
-| `🧑‍🔬 Test Coverage` | `test-coverage` | push / PR / manual |
-| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main |
-| `🕵️ Audit Security` | `audit-security` | push / PR / weekly schedule |
-| `🧑‍🔧 Make Devcontainer` | `make-devcontainer` | push to main / PR touching `.devcontainer/**` / manual |
+| Workflow name             | Job name               | Trigger                                                |
+| ------------------------- | ---------------------- | ------------------------------------------------------ |
+| `🧑‍💻 Analyze Code`         | `analyze-code`         | push / PR / manual                                     |
+| `🧑‍🔬 Test Coverage`        | `test-coverage`        | push / PR / manual                                     |
+| `🧑‍⚖️ Validate Conventions` | `validate-conventions` | PR (opened/sync/edited) / push to main                 |
+| `🕵️ Audit Security`       | `audit-security`       | push / PR / weekly schedule                            |
+| `🧑‍🔧 Make Devcontainer`    | `make-devcontainer`    | push to main / PR touching `.devcontainer/**` / manual |
 
 Identify which **step** within the job failed (visible in the log as `##[error]` or step exit code `!= 0`).
 
@@ -82,16 +84,16 @@ Identify which **step** within the job failed (visible in the log as `##[error]`
 
 The `analyze-code` composite target fans out to per-project sub-targets. Identify which sub-target failed:
 
-| Sub-target | Underlying tool | Config file |
-| --- | --- | --- |
-| `typecheck` | `tsc --noEmit` | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
-| `lint` | ESLint | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts) |
-| `format` | prettier + oxfmt | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
-| `spell-check` | cspell | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml) |
-| `knip` | knip | [configuration/knip.config.ts](../../../configuration/knip.config.ts) |
-| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root) |
-| `yaml-lint` | yamllint | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml) |
-| `type-coverage` | type-coverage | Per-project `package.json` scripts |
+| Sub-target      | Underlying tool   | Config file                                                                                                                                                                                         |
+| --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `typecheck`     | `tsc --noEmit`    | Per-project `tsconfig.json`, base: [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json)                                                                                    |
+| `lint`          | ESLint            | Per-project `eslint.config.ts`, base: [configuration/eslint.config.ts](../../../configuration/eslint.config.ts)                                                                                     |
+| `format`        | prettier + oxfmt  | [configuration/prettier.config.ts](../../../configuration/prettier.config.ts), [configuration/oxfmt.config.ts](../../../configuration/oxfmt.config.ts), [.prettierignore](../../../.prettierignore) |
+| `spell-check`   | cspell            | [configuration/cspell.config.yaml](../../../configuration/cspell.config.yaml)                                                                                                                       |
+| `knip`          | knip              | [configuration/knip.config.ts](../../../configuration/knip.config.ts)                                                                                                                               |
+| `markdown-lint` | markdownlint-cli2 | `.markdownlint.json` (workspace root)                                                                                                                                                               |
+| `yaml-lint`     | yamllint          | [configuration/yamllint.yaml](../../../configuration/yamllint.yaml)                                                                                                                                 |
+| `type-coverage` | type-coverage     | Per-project `package.json` scripts                                                                                                                                                                  |
 
 **Common fixes:**
 

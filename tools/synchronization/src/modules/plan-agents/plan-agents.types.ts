@@ -4,6 +4,8 @@
 export interface PlanAgentConfig {
   /** Output agent file path relative to the workspace root. */
   agentFile: string;
+  /** Subagents this agent may invoke. */
+  agents: string[];
   /** Handoff buttons shown after a response completes (VS Code 1.106+ only). */
   handoffs: PlanAgentHandoff[];
   /** When false, Copilot will not auto-activate this agent based on context. */

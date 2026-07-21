@@ -1,20 +1,24 @@
 ---
-description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
-name: execute-plan
 argument-hint: "Provide the plan file path and any execution boundaries (for example, stop after one phase)."
-infer: false
-model: claude-sonnet-4.5
-tools:
-  - read
-  - edit
-  - search
-  - execute
-  - agent
+agents:
+  - explore-codebase
+description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
+disable-model-invocation: true
 handoffs:
   - label: Update Plan
     agent: update-plan
     prompt: "Update the plan to reflect what was actually implemented."
     send: false
+model: Auto (copilot)
+name: execute-plan
+tools:
+  - agent
+  - read
+  - edit
+  - search
+  - execute
+  - agent
+user-invocable: true
 ---
 
 # Execute Implementation Plan
@@ -58,7 +62,7 @@ Only narrow scope when the user explicitly sets a boundary (for example, "stop a
 
 ## Phase 2 — Pre-Execution Context Gathering
 
-Before dispatching any subagent, **launch the `explore-files` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
+Before dispatching any subagent, **launch the `explore-codebase` agent** to read shared context once so individual task subagents stay focused. Provide these specific instructions:
 
 > Plan file: **{insert plan file path}**
 >
@@ -166,11 +170,11 @@ Then select the appropriate commands using this priority order:
    `nx affected --target=<target> --base=main`
 3. **Fall back to individual targets** only when no compound target exists:
 
-| Check | Command |
-| --- | --- |
-| Analysis | `nx run <project>:analyze-code` |
-| Unit tests | `nx run <project>:test:unit` |
-| Build | `nx run <project>:build` |
+| Check      | Command                         |
+| ---------- | ------------------------------- |
+| Analysis   | `nx run <project>:analyze-code` |
+| Unit tests | `nx run <project>:test:unit`    |
+| Build      | `nx run <project>:build`        |
 
 Run only the checks relevant to the files changed. Skip build verification if no compiled output or bundled artifact was modified.
 

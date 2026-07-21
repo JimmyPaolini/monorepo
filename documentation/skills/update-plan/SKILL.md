@@ -57,7 +57,7 @@ Partition all tasks into three buckets:
 
 ## Phase 2 — Codebase Investigation
 
-**Launch the `explore-files` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
+**Launch the `explore-codebase` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
 
 > Plan: **{plan name}**
 > Plan file: **{plan file path}**
@@ -86,8 +86,8 @@ Partition all tasks into three buckets:
 >    - `BUG_FIXED` — A known bug from the plan has been resolved
 >
 > **Return a structured report:**
->
-```text
+
+````text
 > ## Task Verdicts
 >
 > | Task     | Verdict                  | Evidence / Notes                              |
@@ -236,4 +236,4 @@ After writing the updated plan, produce a brief summary in chat:
 
 ### Remaining Work
 {bullet list of pending tasks by phase, or "None — plan is complete."}
-```
+````

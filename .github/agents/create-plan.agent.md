@@ -1,19 +1,24 @@
 ---
-description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
-name: create-plan
 argument-hint: "Describe the plan purpose, scope boundaries, and key constraints."
-infer: false
-model: claude-sonnet-4.5
-tools:
-  - read
-  - search
-  - web
-  - execute
+agents:
+  - explore-codebase
+  - explore-internet
+description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
+disable-model-invocation: true
 handoffs:
   - label: Execute Plan
     agent: execute-plan
     prompt: "Execute the plan created above."
     send: false
+model: Auto (copilot)
+name: create-plan
+tools:
+  - agent
+  - read
+  - search
+  - web
+  - execute
+user-invocable: true
 ---
 
 # Create Implementation Plan
@@ -28,7 +33,7 @@ Execute the following four phases in strict order. Do not skip any phase.
 
 ### Sub-Agent A: Codebase Research
 
-**Launch the `explore-files` agent** to research the codebase for: **${input:PlanPurpose}**
+**Launch the `explore-codebase` agent** to research the codebase for: **${input:PlanPurpose}**
 
 The agent returns a **Codebase Research Summary** with:
 
@@ -42,7 +47,7 @@ The agent returns a **Codebase Research Summary** with:
 
 ### Sub-Agent B: External Research (Conditional)
 
-**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch the `research-sources` agent in parallel** for: **${input:PlanPurpose}**. Skip for purely internal refactoring.
+**If** `${input:PlanPurpose}` involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup, **launch the `explore-internet` agent in parallel** for: **${input:PlanPurpose}**. Skip for purely internal refactoring.
 
 The agent returns an **External Research Summary** with:
 

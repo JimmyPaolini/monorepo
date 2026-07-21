@@ -131,6 +131,7 @@ export class PlanAgentsCommand extends CommandRunner {
     config: PlanAgentConfig,
     skill: PlanAgentSkillMetadata,
   ): string {
+    const agentsYaml = config.agents.map((agent) => `  - ${agent}`).join("\n");
     const toolsYaml = config.tools.map((tool) => `  - ${tool}`).join("\n");
 
     const handoffsYaml = config.handoffs
@@ -148,6 +149,8 @@ export class PlanAgentsCommand extends CommandRunner {
       `description: ${skill.description}`,
       `name: ${skill.name}`,
       `argument-hint: ${skill.argumentHint}`,
+      `agents:`,
+      agentsYaml,
       `infer: ${config.infer}`,
       `model: ${config.model}`,
       `tools:`,

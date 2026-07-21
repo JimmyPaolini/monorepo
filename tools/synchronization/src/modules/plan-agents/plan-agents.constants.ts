@@ -6,6 +6,7 @@ import type { PlanAgentConfig } from "./plan-agents.types";
 export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
   {
     agentFile: ".github/agents/change-plan.agent.md",
+    agents: ["explore-codebase", "explore-internet"],
     handoffs: [
       {
         agent: "execute-plan",
@@ -21,6 +22,7 @@ export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
   },
   {
     agentFile: ".github/agents/create-plan.agent.md",
+    agents: ["explore-codebase", "explore-internet"],
     handoffs: [
       {
         agent: "execute-plan",
@@ -36,6 +38,7 @@ export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
   },
   {
     agentFile: ".github/agents/execute-plan.agent.md",
+    agents: ["explore-codebase"],
     handoffs: [
       {
         agent: "update-plan",
@@ -50,23 +53,26 @@ export const PLAN_AGENT_CONFIGS: PlanAgentConfig[] = [
     tools: ["read", "edit", "search", "execute", "agent"],
   },
   {
-    agentFile: ".github/agents/explore-files.agent.md",
+    agentFile: ".github/agents/explore-codebase.agent.md",
+    agents: [],
     handoffs: [],
     infer: false,
     model: "claude-haiku-4.5",
-    skillFile: "documentation/skills/explore-files/SKILL.md",
+    skillFile: "documentation/skills/explore-codebase/SKILL.md",
     tools: ["read", "search"],
   },
   {
-    agentFile: ".github/agents/research-sources.agent.md",
+    agentFile: ".github/agents/explore-internet.agent.md",
+    agents: [],
     handoffs: [],
     infer: false,
     model: "claude-haiku-4.5",
-    skillFile: "documentation/skills/research-sources/SKILL.md",
+    skillFile: "documentation/skills/explore-internet/SKILL.md",
     tools: ["read", "search", "web"],
   },
   {
     agentFile: ".github/agents/update-plan.agent.md",
+    agents: ["explore-codebase"],
     handoffs: [
       {
         agent: "execute-plan",

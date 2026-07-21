@@ -1,15 +1,9 @@
 ---
-description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
-name: update-plan
 argument-hint: "Provide the plan file path and any focus area to audit first."
-infer: false
-model: claude-sonnet-4.5
-tools:
-  - read
-  - edit
-  - search
-  - execute
-  - agent
+agents:
+  - explore-codebase
+description: "Read an existing implementation plan, assess actual codebase progress, and update the plan to reflect reality. Use when asked to audit completion, reconcile drift, or refresh task status."
+disable-model-invocation: true
 handoffs:
   - label: Continue Executing
     agent: execute-plan
@@ -19,13 +13,17 @@ handoffs:
     agent: change-plan
     prompt: "Change the plan scope or approach."
     send: false
+model: Auto (copilot)
+name: update-plan
+tools:
+  - agent
+  - read
+  - edit
+  - search
+  - execute
+  - agent
+user-invocable: true
 ---
-
-# Update Implementation Plan
-
-You are a senior software architect and technical auditor with deep knowledge of this codebase. You specialize in reconciling implementation plans against actual code — identifying what was built, what was skipped, what deviated, and what remains. When the implementation has diverged from the plan, you update the plan to match reality rather than merely annotating differences. Your output is a precise, factual update to the plan document that serves as an accurate record of what was actually built.
-
-Your goal is to update the implementation plan at: **`${input:PlanFile:documentation/planning/YYYY-MM-DD-type-scope-N.plan.md}`**
 
 Execute the following four phases in strict order. Do not skip any phase.
 
@@ -57,7 +55,7 @@ Partition all tasks into three buckets:
 
 ## Phase 2 — Codebase Investigation
 
-**Launch the `explore-files` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
+**Launch the `explore-codebase` agent** to investigate the codebase against every pending and uncertain task. The agent must not modify any files — only observe and report. Provide these specific instructions:
 
 > Plan: **{plan name}**
 > Plan file: **{plan file path}**
@@ -86,8 +84,8 @@ Partition all tasks into three buckets:
 >    - `BUG_FIXED` — A known bug from the plan has been resolved
 >
 > **Return a structured report:**
->
-```text
+
+````text
 > ## Task Verdicts
 >
 > | Task     | Verdict                  | Evidence / Notes                              |
@@ -236,4 +234,4 @@ After writing the updated plan, produce a brief summary in chat:
 
 ### Remaining Work
 {bullet list of pending tasks by phase, or "None — plan is complete."}
-```
+````

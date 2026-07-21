@@ -1,19 +1,19 @@
 ---
-name: research-sources
+name: explore-internet
 description: "Gather external documentation, changelogs, and release notes for libraries, frameworks, and APIs. USE WHEN a plan involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup. Skip for purely internal refactoring. Returns an External Research Summary with breaking changes, migration guidance, known issues, and documentation links."
 argument-hint: "Describe the external libraries, frameworks, technologies, or APIs to research."
 compatibility:
-   environments:
-      - vscode
-      - github-copilot
-      - copilot-cli
+  environments:
+    - vscode
+    - github-copilot
+    - copilot-cli
 context:
-   optional:
-      - AGENTS.md
+  optional:
+    - AGENTS.md
 metadata:
-   domain: planning
-   lifecycle-stage: research
-   owner: monorepo
+  domain: planning
+  lifecycle-stage: research
+  owner: monorepo
 license: MIT
 ---
 
