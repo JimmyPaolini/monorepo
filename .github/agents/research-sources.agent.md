@@ -2,14 +2,14 @@
 description: "Gather external documentation, changelogs, and release notes for libraries, frameworks, and APIs. USE WHEN a plan involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup. Skip for purely internal refactoring. Returns an External Research Summary with breaking changes, migration guidance, known issues, and documentation links."
 name: research-sources
 argument-hint: "Describe the external libraries, frameworks, technologies, or APIs to research."
-infer: false
+disable-model-invocation: true
 model: claude-haiku-4.5
 tools:
+  - context7/*
   - read
   - search
   - web
 handoffs:
-
 ---
 
 # Research Sources

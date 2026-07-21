@@ -74,7 +74,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[validate-code](documentation/skills/validate-code/SKILL.md)**: Run the full code quality validation suite for this monorepo. Use this skill when you have finished implementing code changes and want to verify they are clean before committing, when told to "validate", "check quality", or "run linting", or before invoking the submit-changes skill. Runs analyze-code (format, lint, typecheck, knip, spell-check) using the write configuration to auto-fix what it can, then checks that nothing remains.
 <!-- agent-skills-table-of-contents end -->
 
-## Custom Agents
+## Agents
 
 <!-- custom-agents-table-of-contents start -->
 - **[change-plan](.github/agents/change-plan.agent.md)**: Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach.
