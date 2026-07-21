@@ -23,30 +23,30 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": ["{projectRoot}/**/*", "shared-globals"],
     "production": [
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "default"
     ],
-    "pythonSource": [
+    "python-source": [
       "{projectRoot}/**/*.ipynb",
       "{projectRoot}/**/*.py",
       "{projectRoot}/pyproject.toml"
     ],
-    "pythonTests": ["{projectRoot}/testing/**/*.py"],
-    "sharedGlobals": [
+    "python-tests": ["{projectRoot}/testing/**/*.py"],
+    "shared-globals": [
       "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/configuration/tsconfig.json",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml",
       "{workspaceRoot}/pnpm-workspace.yaml"
     ],
-    "typescriptFiles": [
+    "typescript-files": [
       "{projectRoot}/**/*.{ts,tsx,mts,cts}",
       "{projectRoot}/**/*.json",
       "{projectRoot}/tsconfig*.json",
-      "sharedGlobals"
+      "shared-globals"
     ]
   },
   "parallel": 3,
@@ -87,52 +87,100 @@
     }
   },
   "targetDefaults": {
-    "analyze-code": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:clean:check",
-            "nx run {projectName}:dependency-cruiser",
-            "nx run {projectName}:format:check",
-            "nx run {projectName}:lint:check",
-            "nx run {projectName}:markdown-lint:check",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": true
+    "analyze-code": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "nx run {projectName}:clean:check",
+              "nx run {projectName}:format:check",
+              "nx run {projectName}:lint:check",
+              "nx run {projectName}:markdown-lint:check",
+              "nx run {projectName}:nbstripout:check",
+              "nx run {projectName}:spell-check",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "nx run {projectName}:clean:write",
+              "nx run {projectName}:format:write",
+              "nx run {projectName}:lint:write",
+              "nx run {projectName}:markdown-lint:write",
+              "nx run {projectName}:nbstripout:write",
+              "nx run {projectName}:spell-check",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": false
+          }
         },
-        "write": {
-          "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:dependency-cruiser",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint:write",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": false
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{py,ipynb,md,yaml,yml,json}",
+          "shared-globals"
+        ],
+        "options": {
+          "outputStyle": "stream"
         }
       },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,py,ipynb,sql}",
-        "sharedGlobals"
-      ],
-      "options": {
-        "outputStyle": "stream"
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "nx run {projectName}:clean:check",
+              "nx run {projectName}:dependency-cruiser",
+              "nx run {projectName}:format:check",
+              "nx run {projectName}:lint:check",
+              "nx run {projectName}:markdown-lint:check",
+              "nx run {projectName}:spell-check",
+              "nx run {projectName}:type-coverage",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "nx run {projectName}:clean:write",
+              "nx run {projectName}:dependency-cruiser",
+              "nx run {projectName}:format:write",
+              "nx run {projectName}:lint:write",
+              "nx run {projectName}:markdown-lint:write",
+              "nx run {projectName}:spell-check",
+              "nx run {projectName}:type-coverage",
+              "nx run {projectName}:typecheck",
+              "nx run {projectName}:yaml-lint"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
+          "shared-globals"
+        ],
+        "options": {
+          "outputStyle": "stream"
+        }
       }
-    },
+    ],
     "bandit": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": ["pythonSource"],
+      "inputs": ["python-source"],
       "options": {
         "command": "uv run bandit -c pyproject.toml -r src/",
         "cwd": "{projectRoot}"
@@ -143,25 +191,59 @@
       "dependsOn": ["^build"],
       "inputs": ["^production", "production"]
     },
-    "clean": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:knip:check"],
-          "parallel": true
+    "clean": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": ["nx run {projectName}:vulture:check"],
+            "parallel": true
+          },
+          "write": {
+            "commands": ["nx run {projectName}:vulture:write"],
+            "parallel": false
+          }
         },
-        "write": {
-          "commands": ["nx run {projectName}:knip:write"],
-          "parallel": false
-        }
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": ["python-source", "shared-globals"]
       },
-      "defaultConfiguration": "check",
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": ["nx run {projectName}:knip:check"],
+            "parallel": true
+          },
+          "write": {
+            "commands": ["nx run {projectName}:knip:write"],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py}",
+          "{workspaceRoot}/configuration/knip.config.ts",
+          "shared-globals"
+        ]
+      }
+    ],
+    "code-analysis": {
+      "cache": true,
+      "description": "Run code analysis checks through the aggregate analyze-code target",
       "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py}",
-        "{workspaceRoot}/configuration/knip.config.ts",
-        "sharedGlobals"
-      ]
+      "inputs": ["default"],
+      "options": {
+        "command": "nx run {projectName}:analyze-code:check",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "dependency-cruiser": {
       "cache": true,
@@ -190,7 +272,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
         "{workspaceRoot}/configuration/eslint.config.ts",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "eslint . {args}"
@@ -202,7 +284,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ]
     },
     "fallow-audit": {
@@ -211,7 +293,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ]
     },
     "fallow-dead-code": {
@@ -220,7 +302,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ]
     },
     "fallow-duplicates": {
@@ -229,7 +311,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ]
     },
     "fallow-health": {
@@ -238,37 +320,64 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ]
     },
-    "format": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "commands": [
-            "# nx run {projectName}:prettier:check",
-            "nx run {projectName}:oxfmt:check"
-          ],
-          "parallel": true
+    "format": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": ["nx run {projectName}:ruff-format:check"],
+            "parallel": true
+          },
+          "write": {
+            "commands": ["nx run {projectName}:ruff-format:write"],
+            "parallel": false
+          }
         },
-        "write": {
-          "commands": [
-            "# nx run {projectName}:prettier:write",
-            "nx run {projectName}:oxfmt:write"
-          ],
-          "parallel": false
-        }
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ]
       },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
-        "{workspaceRoot}/configuration/.prettierignore",
-        "{workspaceRoot}/configuration/oxfmt.config.ts",
-        "{workspaceRoot}/configuration/prettier.config.ts",
-        "sharedGlobals"
-      ]
-    },
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "# nx run {projectName}:prettier:check",
+              "nx run {projectName}:oxfmt:check"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "# nx run {projectName}:prettier:write",
+              "nx run {projectName}:oxfmt:write"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
+          "{workspaceRoot}/configuration/.prettierignore",
+          "{workspaceRoot}/configuration/oxfmt.config.ts",
+          "{workspaceRoot}/configuration/prettier.config.ts",
+          "shared-globals"
+        ]
+      }
+    ],
     "knip": {
       "cache": true,
       "configurations": {
@@ -287,33 +396,60 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "lint": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:eslint:check",
-            "nx run {projectName}:oxlint:check"
-          ],
-          "parallel": true
+    "lint": [
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": ["nx run {projectName}:ruff-lint:check"],
+            "parallel": true
+          },
+          "write": {
+            "commands": ["nx run {projectName}:ruff-lint:write"],
+            "parallel": false
+          }
         },
-        "write": {
-          "commands": [
-            "nx run {projectName}:eslint:write",
-            "nx run {projectName}:oxlint:write"
-          ],
-          "parallel": false
-        }
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ]
       },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
-        "{workspaceRoot}/configuration/eslint.config.ts",
-        "{workspaceRoot}/configuration/oxlint.config.ts",
-        "sharedGlobals"
-      ]
-    },
+      {
+        "cache": true,
+        "configurations": {
+          "check": {
+            "commands": [
+              "nx run {projectName}:eslint:check",
+              "nx run {projectName}:oxlint:check"
+            ],
+            "parallel": true
+          },
+          "write": {
+            "commands": [
+              "nx run {projectName}:eslint:write",
+              "nx run {projectName}:oxlint:write"
+            ],
+            "parallel": false
+          }
+        },
+        "defaultConfiguration": "check",
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
+          "{workspaceRoot}/configuration/eslint.config.ts",
+          "{workspaceRoot}/configuration/oxlint.config.ts",
+          "shared-globals"
+        ]
+      }
+    ],
     "markdown-lint": {
       "cache": true,
       "configurations": {
@@ -329,7 +465,7 @@
       "inputs": [
         "{projectRoot}/**/*.md",
         "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
@@ -352,7 +488,7 @@
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
         "{workspaceRoot}/configuration/.oxfmtignore",
         "{workspaceRoot}/configuration/oxfmt.config.ts",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "oxfmt -c configuration/oxfmt.config.ts --ignore-path configuration/.oxfmtignore {args} {projectRoot}",
@@ -372,7 +508,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/oxlint.config.ts",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "oxlint --config configuration/oxlint.config.ts --ignore-path configuration/.oxlintignore {args} {projectRoot}/src",
@@ -395,7 +531,7 @@
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
         "{workspaceRoot}/configuration/.prettierignore",
         "{workspaceRoot}/configuration/prettier.config.ts",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path configuration/.prettierignore {projectRoot}"
@@ -406,7 +542,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource"
+        "python-source"
       ],
       "options": {
         "command": "uv run pyright src/",
@@ -432,8 +568,8 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource",
-        "pythonTests"
+        "python-source",
+        "python-tests"
       ],
       "options": {
         "command": "uv run pytest",
@@ -452,7 +588,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource"
+        "python-source"
       ],
       "options": {
         "command": "uv run ruff format {args} .",
@@ -471,7 +607,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource"
+        "python-source"
       ],
       "options": {
         "command": "uv run ruff check {args} .",
@@ -485,7 +621,7 @@
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}",
         "{workspaceRoot}/configuration/.cspell/**",
         "{workspaceRoot}/configuration/cspell.config.yaml",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}' --no-progress --gitignore",
@@ -513,16 +649,72 @@
         "cwd": "{projectRoot}"
       }
     },
-    "test": {
-      "cache": true,
-      "inputs": ["^production", "default"]
-    },
+    "test": [
+      {
+        "cache": true,
+        "configurations": {
+          "coverage": {
+            "commands": ["nx run {projectName}:pytest:coverage"]
+          },
+          "integration": {
+            "commands": ["nx run {projectName}:pytest:integration"]
+          },
+          "unit": {
+            "commands": ["nx run {projectName}:pytest:unit"]
+          },
+          "watch": {
+            "commands": ["nx run {projectName}:pytest:watch"]
+          }
+        },
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source",
+          "python-tests"
+        ],
+        "options": {
+          "commands": ["nx run {projectName}:pytest"]
+        }
+      },
+      {
+        "cache": true,
+        "configurations": {
+          "coverage": {
+            "command": "vitest run --coverage"
+          },
+          "end-to-end": {
+            "command": "vitest run end-to-end.test.ts"
+          },
+          "integration": {
+            "command": "vitest run integration.test.ts"
+          },
+          "unit": {
+            "command": "vitest run unit.test.ts"
+          },
+          "watch": {
+            "command": "vitest"
+          }
+        },
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": ["^production", "default"],
+        "options": {
+          "command": "vitest run",
+          "cwd": "{projectRoot}"
+        }
+      }
+    ],
     "ty": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/configuration/pyproject.toml",
-        "pythonSource"
+        "python-source"
       ],
       "options": {
         "command": "uv run ty check src/",
@@ -536,7 +728,7 @@
         "{projectRoot}/**/*.ts",
         "{projectRoot}/**/*.tsx",
         "{projectRoot}/tsconfig.json",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
@@ -544,17 +736,45 @@
       },
       "outputs": ["{projectRoot}/type-coverage-report.txt"]
     },
-    "typecheck": {
-      "cache": true,
-      "inputs": [
-        "^production",
-        "typescriptFiles",
-        {
-          "externalDependencies": ["typescript"]
+    "typecheck": [
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:python"]
+        },
+        "inputs": [
+          "{workspaceRoot}/configuration/pyproject.toml",
+          "python-source"
+        ],
+        "options": {
+          "commands": [
+            "nx run {projectName}:pyright",
+            "nx run {projectName}:ty"
+          ],
+          "parallel": true
         }
-      ],
-      "outputs": []
-    },
+      },
+      {
+        "cache": true,
+        "executor": "nx:run-commands",
+        "filter": {
+          "projects": ["tag:language:typescript"]
+        },
+        "inputs": [
+          "^production",
+          "typescript-files",
+          {
+            "externalDependencies": ["typescript"]
+          }
+        ],
+        "options": {
+          "command": "tsc --noEmit",
+          "cwd": "{projectRoot}"
+        },
+        "outputs": []
+      }
+    ],
     "vulture": {
       "cache": true,
       "configurations": {
@@ -563,7 +783,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{projectRoot}/.vulture_whitelist.py", "pythonSource"],
+      "inputs": ["{projectRoot}/.vulture_whitelist.py", "python-source"],
       "options": {
         "command": "uv run python -m vulture src/ .vulture_whitelist.py --min-confidence 80",
         "cwd": "{projectRoot}"
@@ -575,7 +795,7 @@
       "inputs": [
         "{projectRoot}/**/*.{yaml,yml}",
         "{workspaceRoot}/configuration/yamllint.yaml",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",

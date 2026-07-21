@@ -44,24 +44,7 @@
     },
     "format": {},
     "knip": {},
-    "lint": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run lexico:eslint:check",
-            "nx run lexico:oxlint:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run lexico:eslint:write",
-            "nx run lexico:oxlint:write"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "lint": {},
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {
@@ -98,14 +81,7 @@
       }
     },
     "type-coverage": {},
-    "typecheck": {
-      "description": "Run TypeScript type checking",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "typecheck": {},
     "yaml-lint": {}
   }
 }

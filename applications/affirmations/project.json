@@ -10,51 +10,7 @@
     "type:application"
   ],
   "targets": {
-    "analyze-code": {
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "nx run {projectName}:clean:check",
-          "nx run {projectName}:format:check",
-          "nx run {projectName}:lint:check",
-          "nx run {projectName}:markdown-lint",
-          "nx run {projectName}:nbstripout:check",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:typecheck",
-          "nx run {projectName}:yaml-lint"
-        ],
-        "parallel": true
-      },
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:clean:check",
-            "nx run {projectName}:format:check",
-            "nx run {projectName}:lint:check",
-            "nx run {projectName}:markdown-lint",
-            "nx run {projectName}:nbstripout:check",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint",
-            "nx run {projectName}:nbstripout:write",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "analyze-code": {},
     "bandit": {
       "executor": "nx:run-commands",
       "options": {
@@ -62,63 +18,10 @@
         "cwd": "{projectRoot}"
       }
     },
-    "clean": {
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:vulture:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:vulture:write"],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
-    "format": {
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["nx run {projectName}:ruff-format:check"],
-        "parallel": true
-      },
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:ruff-format:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:ruff-format:write"],
-          "parallel": false
-        }
-      }
-    },
-    "lint": {
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["nx run {projectName}:ruff-lint:check"],
-        "parallel": true
-      },
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:ruff-lint:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:ruff-lint:write"],
-          "parallel": false
-        }
-      }
-    },
-    "markdown-lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
-        "cwd": "{workspaceRoot}"
-      }
-    },
+    "clean": {},
+    "format": {},
+    "lint": {},
+    "markdown-lint": {},
     "nbstripout": {
       "cache": true,
       "configurations": {
@@ -189,11 +92,6 @@
       }
     },
     "pytest": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "uv run pytest",
-        "cwd": "{projectRoot}"
-      },
       "configurations": {
         "coverage": {
           "command": "uv run pytest --cov=src --cov-report=term-missing --cov-report=xml"
@@ -205,15 +103,14 @@
           "command": "uv run pytest -m unit"
         }
       },
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run pytest",
+        "cwd": "{projectRoot}"
+      },
       "outputs": ["{projectRoot}/coverage.xml"]
     },
     "ruff-format": {
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "uv run ruff format {args} src/ testing/",
-        "cwd": "{projectRoot}"
-      },
       "configurations": {
         "check": {
           "args": "--check"
@@ -221,15 +118,15 @@
         "write": {
           "args": ""
         }
-      }
-    },
-    "ruff-lint": {
+      },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run ruff check {args} src/ testing/",
+        "command": "uv run ruff format {args} src/ testing/",
         "cwd": "{projectRoot}"
-      },
+      }
+    },
+    "ruff-lint": {
       "configurations": {
         "check": {
           "args": ""
@@ -237,6 +134,12 @@
         "write": {
           "args": "--fix"
         }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run ruff check {args} src/ testing/",
+        "cwd": "{projectRoot}"
       }
     },
     "searxng": {
@@ -258,37 +161,8 @@
         "cwd": "{projectRoot}"
       }
     },
-    "spell-check": {
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/*.{md,yaml,yml,json}",
-        "{projectRoot}/src/**/*.{py,ipynb,md,yaml,yml,json}",
-        "{projectRoot}/testing/**/*.{py,md}",
-        "{workspaceRoot}/configuration/cspell.config.yaml",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "cspell --config ../../configuration/cspell.config.yaml 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "commands": ["nx run {projectName}:pytest:coverage"]
-        },
-        "integration": {
-          "commands": ["nx run {projectName}:pytest:integration"]
-        },
-        "unit": {
-          "commands": ["nx run {projectName}:pytest:unit"]
-        }
-      },
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["nx run {projectName}:pytest"]
-      }
-    },
+    "spell-check": {},
+    "test": {},
     "ty": {
       "executor": "nx:run-commands",
       "options": {
@@ -305,12 +179,6 @@
     },
     "vulture": {
       "cache": true,
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "uv run vulture src/ testing/ --min-confidence 80",
-        "cwd": "{projectRoot}"
-      },
       "configurations": {
         "check": {
           "command": "uv run vulture src/ testing/ --min-confidence 80"
@@ -318,6 +186,12 @@
         "write": {
           "command": "uv run vulture src/ testing/ --min-confidence 80"
         }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run vulture src/ testing/ --min-confidence 80",
+        "cwd": "{projectRoot}"
       }
     },
     "yaml-lint": {

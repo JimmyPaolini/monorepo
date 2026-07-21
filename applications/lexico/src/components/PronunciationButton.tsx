@@ -9,7 +9,7 @@ import { getPronunciation } from "../lib/pronunciation";
 /**
  * Props for the PronunciationButton component.
  */
-export interface PronunciationButtonProps {
+export interface PronunciationButtonProperties {
   className?: string;
   dialect?: "classical" | "ecclesiastical";
   text: string;
@@ -17,9 +17,9 @@ export interface PronunciationButtonProps {
 
 // 🧩 Component
 export const PronunciationButton = (
-  props: PronunciationButtonProps,
+  properties: PronunciationButtonProperties,
 ): ReactElement => {
-  const { className, dialect = "classical", text } = props;
+  const { className, dialect = "classical", text } = properties;
 
   // 🪝 Hooks
   const [isLoading, setIsLoading] = useState(false);

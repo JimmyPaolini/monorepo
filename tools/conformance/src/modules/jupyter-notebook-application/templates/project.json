@@ -8,87 +8,11 @@
     "type:application"
   ],
   "targets": {
-    "analyze-code": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:clean:check",
-            "nx run {projectName}:format:check",
-            "nx run {projectName}:lint:check",
-            "nx run {projectName}:markdown-lint",
-            "nx run {projectName}:nbstripout:check",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint",
-            "nx run {projectName}:nbstripout:write",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:typecheck",
-            "nx run {projectName}:yaml-lint"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "analyze-code": {},
     "bandit": {},
-    "clean": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:vulture:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:vulture:write"
-          ],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
-    "format": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:ruff-format:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:ruff-format:write"
-          ],
-          "parallel": false
-        }
-      }
-    },
-    "lint": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:ruff-lint:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:ruff-lint:write"
-          ],
-          "parallel": false
-        }
-      }
-    },
+    "clean": {},
+    "format": {},
+    "lint": {},
     "markdown-lint": {},
     "nbstripout": {
       "cache": true,
@@ -102,9 +26,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": [
-        "{projectRoot}/src/**/*.ipynb"
-      ],
+      "inputs": ["{projectRoot}/src/**/*.ipynb"],
       "options": {
         "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
         "cwd": "{projectRoot}"
@@ -177,55 +99,10 @@
         "cwd": "{projectRoot}"
       }
     },
-    "spell-check": {
-      "inputs": [
-        "{projectRoot}/*.{md,yaml,yml,json}",
-        "{projectRoot}/src/**/*.{py,ipynb,md,yaml,yml,json}",
-        "{projectRoot}/testing/**/*.{py,md}",
-        "{workspaceRoot}/configuration/cspell.config.yaml",
-        "sharedGlobals"
-      ],
-      "options": {
-        "command": "cspell --config ../../configuration/cspell.config.yaml 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "commands": [
-            "nx run {projectName}:pytest:coverage"
-          ]
-        },
-        "integration": {
-          "commands": [
-            "nx run {projectName}:pytest:integration"
-          ]
-        },
-        "unit": {
-          "commands": [
-            "nx run {projectName}:pytest:unit"
-          ]
-        }
-      },
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "nx run {projectName}:pytest"
-        ]
-      }
-    },
+    "spell-check": {},
+    "test": {},
     "ty": {},
-    "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "nx run {projectName}:pyright",
-          "nx run {projectName}:ty"
-        ],
-        "parallel": true
-      }
-    },
+    "typecheck": {},
     "vulture": {},
     "yaml-lint": {}
   }

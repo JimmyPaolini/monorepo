@@ -166,7 +166,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "fallow --config configuration/fallow.config.jsonc",
@@ -191,7 +191,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "fallow audit --config configuration/fallow.config.jsonc || true",
@@ -216,7 +216,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "fallow dead-code --config configuration/fallow.config.jsonc",
@@ -241,7 +241,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "fallow dupes --config configuration/fallow.config.jsonc",
@@ -264,7 +264,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "cwd": "{workspaceRoot}"
@@ -288,7 +288,7 @@
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
         "{workspaceRoot}/configuration/fallow.config.jsonc",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "fallow health --config configuration/fallow.config.jsonc || true",
@@ -689,7 +689,7 @@
       "inputs": [
         "{projectRoot}/notepads/*.sql",
         "{workspaceRoot}/configuration/pyproject.toml",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml notepads",
@@ -711,7 +711,7 @@
       "inputs": [
         "{projectRoot}/notepads/*.sql",
         "{workspaceRoot}/configuration/pyproject.toml",
-        "sharedGlobals"
+        "shared-globals"
       ],
       "options": {
         "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml notepads",
