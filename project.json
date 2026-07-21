@@ -314,7 +314,9 @@
           "parallel": false
         }
       },
-      "description": "Use oxfmt as the single source of truth for formatting. Prettier is excluded to avoid formatter conflicts on TypeScript union formatting."
+      "defaultConfiguration": "check",
+      "description": "Use oxfmt as the single source of truth for formatting. Prettier is excluded to avoid formatter conflicts on TypeScript union formatting.",
+      "executor": "nx:run-commands"
     },
     "gitleaks": {
       "cache": true,
@@ -384,7 +386,9 @@
           ],
           "parallel": false
         }
-      }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
     },
     "lint-staged": {
       "cache": false,
