@@ -10,9 +10,21 @@ import {
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
 
-const compactStringValues = <ValueType extends string>(
-  values: readonly ValueType[],
-): ValueType[] => values.filter((value) => value.length > 0);
+const isCompactStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): values is readonly (number | string)[] => Array.isArray(values);
+
+const compactStringValues = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): string[] => {
+  if (!isCompactStringArray(values)) {
+    return [];
+  }
+
+  return values.filter(
+    (value): value is string => typeof value === "string" && value.length > 0,
+  );
+};
 
 const adjectiveDeclensionValueList = compactStringValues(
   adjectiveDeclensionValues,

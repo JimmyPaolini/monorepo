@@ -14,9 +14,21 @@ import {
   partOfSpeechEnumValues,
 } from "@monorepo/lexico-entities";
 
-const normalizeStringArray = <ValueType extends string>(
-  values: readonly ValueType[],
-): ValueType[] => values.filter((value) => value.length > 0);
+const isNormalizableStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): values is readonly (number | string)[] => Array.isArray(values);
+
+const normalizeStringArray = (
+  values: readonly (number | string)[] | Readonly<Record<string, never>>,
+): string[] => {
+  if (!isNormalizableStringArray(values)) {
+    return [];
+  }
+
+  return values.filter(
+    (value): value is string => typeof value === "string" && value.length > 0,
+  );
+};
 
 export const adjectivalPartOfSpeechSet: ReadonlySet<PartOfSpeech> =
   new Set<PartOfSpeech>(["adjective", "numeral", "participle", "suffix"]);
