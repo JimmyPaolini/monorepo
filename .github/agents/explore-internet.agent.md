@@ -2,7 +2,7 @@
 argument-hint: "Describe the external libraries, frameworks, technologies, or APIs to research."
 agents: []
 description: "Gather external documentation, changelogs, and release notes for libraries, frameworks, and APIs. USE WHEN a plan involves external dependencies, package upgrades, migrations, new frameworks, or technologies requiring documentation lookup. Skip for purely internal refactoring. Returns an External Research Summary with breaking changes, migration guidance, known issues, and documentation links."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs: []
 model: Claude Haiku 4.5 (copilot)
 name: explore-internet

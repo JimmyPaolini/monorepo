@@ -1,23 +1,43 @@
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
 import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
 
-import type { AgentSkillMetadata } from "./agent-skills.types";
+import {
+  generateAgentFile,
+  readAgentsSection,
+  readCustomAgentsMetadata,
+  readSkillSourceFile,
+  readSkillTableMetadata,
+  renderCustomAgentsTable,
+  renderSkillTable,
+} from "./agent-skills-sync.utilities";
+import {
+  AGENT_SKILLS_TOC_END,
+  AGENT_SKILLS_TOC_START,
+  AGENTS_MD_FILE,
+  CUSTOM_AGENTS_TOC_END,
+  CUSTOM_AGENTS_TOC_START,
+  PLAN_AGENT_CONFIGS,
+  QUESTION_ME_AGENT_CONFIG,
+  TRIAGE_AGENT_CONFIGS,
+} from "./agent-skills.constants";
+
+import type {
+  AgentFileSyncConfig,
+  WriteSkillAgentFilesOptions,
+} from "./agent-skills.types";
 
 /**
- * CLI command that syncs the agent skills table of contents into AGENTS.md.
- * Reads all SKILL.md files from documentation/skills/, extracts YAML frontmatter,
- * and injects a markdown table between marker comments.
+ * CLI command that synchronizes all agent-skill artifacts.
  */
 @Command({
   description:
-    "Sync agent skills table of contents into AGENTS.md (check|write)",
+    "Sync all agent-skill artifacts from documentation/skills/*/SKILL.md into .github/agents/*.agent.md and AGENTS.md (check|write)",
   name: "agent-skills",
 })
 @Injectable()
@@ -35,16 +55,112 @@ export class AgentSkillsCommand extends CommandRunner {
   // 🔏 Private Methods
 
   /**
-   * Compares the generated skills table against the stored content in AGENTS.md and reports any differences.
+   * Validates the generated custom-agents AGENTS.md section.
    */
-  private checkSync(skills: AgentSkillMetadata[]): boolean {
-    const generatedTable = this.generateSkillsTable(skills);
-    const existingContent = this.readAgentsFile();
+  private checkCustomAgentsTable(workspaceRoot: string): boolean {
+    const agents = readCustomAgentsMetadata(workspaceRoot);
+    const generatedList = renderCustomAgentsTable(agents);
+    const { generatedContent } = readAgentsSection(
+      workspaceRoot,
+      CUSTOM_AGENTS_TOC_START,
+      CUSTOM_AGENTS_TOC_END,
+    );
 
-    const generated = generatedTable.trim();
-    const existing = existingContent.generatedContent.trim();
+    if (generatedList.trim() !== generatedContent.trim()) {
+      this.loggerService.log(
+        "❌ Custom agents table of contents in AGENTS.md is out of sync\n",
+      );
+      this.loggerService.log(
+        `  Found ${agents.length} agents in .github/agents/`,
+      );
+      this.loggerService.log(
+        "  Generated content doesn't match stored content",
+      );
+      this.loggerService.log(
+        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+      );
+      return false;
+    }
 
-    if (generated !== existing) {
+    this.loggerService.log(
+      `✅ Custom agents table of contents is in sync (${agents.length} ${agents.length === 1 ? "agent" : "agents"})`,
+    );
+    return true;
+  }
+
+  /**
+   * Validates one agent file against its source skill file.
+   */
+  private checkSingleSkillAgentFile(
+    configuration: AgentFileSyncConfig,
+    workspaceRoot: string,
+  ): boolean {
+    const skill = readSkillSourceFile(
+      path.join(workspaceRoot, configuration.skillFile),
+    );
+    const agentPath = path.join(workspaceRoot, configuration.agentFile);
+
+    let actualContent: string;
+    try {
+      actualContent = readFileSync(agentPath, "utf8");
+    } catch {
+      this.loggerService.log(
+        `❌ Agent file not found: ${configuration.agentFile}`,
+      );
+      return false;
+    }
+
+    const expectedContent = generateAgentFile(skill, actualContent);
+    if (expectedContent !== actualContent) {
+      this.loggerService.log(
+        `❌ Agent file out of sync: ${configuration.agentFile}`,
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Validates a set of agent files against their source skill files.
+   */
+  private checkSkillAgentFiles(
+    configurations: AgentFileSyncConfig[],
+    workspaceRoot: string,
+    successMessage: string,
+  ): boolean {
+    let allInSync = true;
+
+    for (const configuration of configurations) {
+      if (!this.checkSingleSkillAgentFile(configuration, workspaceRoot)) {
+        allInSync = false;
+      }
+    }
+
+    if (!allInSync) {
+      this.loggerService.log(
+        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+      );
+      return false;
+    }
+
+    this.loggerService.log(successMessage);
+    return true;
+  }
+
+  /**
+   * Validates the generated skills AGENTS.md section.
+   */
+  private checkSkillsTable(workspaceRoot: string): boolean {
+    const skills = readSkillTableMetadata(workspaceRoot);
+    const generatedTable = renderSkillTable(skills);
+    const { generatedContent } = readAgentsSection(
+      workspaceRoot,
+      AGENT_SKILLS_TOC_START,
+      AGENT_SKILLS_TOC_END,
+    );
+
+    if (generatedTable.trim() !== generatedContent.trim()) {
       this.loggerService.log(
         "❌ Skills table of contents in AGENTS.md is out of sync\n",
       );
@@ -67,126 +183,169 @@ export class AgentSkillsCommand extends CommandRunner {
   }
 
   /**
-   * Parses YAML frontmatter from a SKILL.md file and returns it as a key-value map.
+   * Runs all check-mode validations.
    */
-  private extractFrontmatter(content: string): Record<string, string> {
-    const match = /^---\n([\s\S]*?)\n---/.exec(content);
-    if (!match) {
-      return {};
+  private runCheckMode(workspaceRoot: string): void {
+    const questionMeInSync = this.checkSkillAgentFiles(
+      [QUESTION_ME_AGENT_CONFIG],
+      workspaceRoot,
+      "✅ question-me agent file is in sync",
+    );
+    if (!questionMeInSync) {
+      process.exit(1);
     }
 
-    const frontmatter: Record<string, string> = {};
-    const lines = String(match[1]).split("\n");
-
-    for (const line of lines) {
-      const [key, ...valueParts] = line.split(":");
-      if (key && valueParts.length > 0) {
-        frontmatter[key.trim()] = valueParts.join(":").trim();
-      }
+    const planInSync = this.checkSkillAgentFiles(
+      PLAN_AGENT_CONFIGS,
+      workspaceRoot,
+      `✅ All ${PLAN_AGENT_CONFIGS.length} plan agent files are in sync`,
+    );
+    if (!planInSync) {
+      process.exit(1);
     }
 
-    return frontmatter;
+    const triageInSync = this.checkSkillAgentFiles(
+      TRIAGE_AGENT_CONFIGS,
+      workspaceRoot,
+      `✅ All ${TRIAGE_AGENT_CONFIGS.length} triage agent files are in sync`,
+    );
+    if (!triageInSync) {
+      process.exit(1);
+    }
+
+    if (!this.checkCustomAgentsTable(workspaceRoot)) {
+      process.exit(1);
+    }
+
+    if (!this.checkSkillsTable(workspaceRoot)) {
+      process.exit(1);
+    }
   }
 
   /**
-   * Renders the list of skills as a markdown bullet list for injection into AGENTS.md.
+   * Runs all write-mode synchronization operations.
    */
-  private generateSkillsTable(skills: AgentSkillMetadata[]): string {
-    const rows = skills.map((skill) => {
-      const link = `[${skill.name}](${skill.filePath})`;
-      return `- **${link}**: ${skill.description}`;
+  private runWriteMode(workspaceRoot: string): void {
+    this.writeSkillAgentFiles({
+      configurations: [QUESTION_ME_AGENT_CONFIG],
+      questionMeMode: true,
+      startMessage: "🔄 Syncing question-me agent file from SKILL.md source...",
+      workspaceRoot,
     });
 
-    return rows.join("\n");
+    this.writeSkillAgentFiles({
+      configurations: PLAN_AGENT_CONFIGS,
+      startMessage: "🔄 Syncing plan agent files from SKILL.md sources...",
+      workspaceRoot,
+    });
+
+    this.writeSkillAgentFiles({
+      configurations: TRIAGE_AGENT_CONFIGS,
+      startMessage: "🔄 Syncing triage agent files from SKILL.md sources...",
+      workspaceRoot,
+    });
+
+    this.writeCustomAgentsTable(workspaceRoot);
+    this.writeSkillsTable(workspaceRoot);
   }
 
   /**
-   * Reads AGENTS.md and splits it around the skills table-of-contents markers.
+   * Writes the generated custom-agents AGENTS.md section.
    */
-  private readAgentsFile(): {
-    afterMarker: string;
-    beforeMarker: string;
-    generatedContent: string;
-  } {
-    const agentsFile = path.join(process.cwd(), "AGENTS.md");
-    const content = readFileSync(agentsFile, "utf8");
-    const startMarker = "<!-- agent-skills-table-of-contents start -->";
-    const endMarker = "<!-- agent-skills-table-of-contents end -->";
-
-    const startIndex = content.indexOf(startMarker);
-    const endIndex = content.indexOf(endMarker);
-
-    if (startIndex === -1 || endIndex === -1) {
-      throw new Error(
-        `Markers not found in AGENTS.md. Expected to find "${startMarker}" and "${endMarker}"`,
-      );
-    }
-
-    const beforeMarker = content.slice(
-      0,
-      Math.max(0, startIndex + startMarker.length),
-    );
-    const afterMarker = content.slice(Math.max(0, endIndex));
-    const generatedContent = content.slice(
-      startIndex + startMarker.length,
-      endIndex,
+  private writeCustomAgentsTable(workspaceRoot: string): void {
+    const agents = readCustomAgentsMetadata(workspaceRoot);
+    const generatedList = renderCustomAgentsTable(agents);
+    const { afterMarker, beforeMarker } = readAgentsSection(
+      workspaceRoot,
+      CUSTOM_AGENTS_TOC_START,
+      CUSTOM_AGENTS_TOC_END,
     );
 
-    return { afterMarker, beforeMarker, generatedContent };
+    this.loggerService.log("🔄 Generating custom agents table of contents...");
+    writeFileSync(
+      path.join(workspaceRoot, AGENTS_MD_FILE),
+      `${beforeMarker}\n${generatedList}\n${afterMarker}`,
+      "utf8",
+    );
+
+    const agentWord = agents.length === 1 ? "agent" : "agents";
+    this.loggerService.log(
+      `✅ Updated AGENTS.md with ${agents.length} ${agentWord}`,
+    );
   }
 
   /**
-   * Reads all SKILL.md files from documentation/skills/, extracts frontmatter, and returns sorted skill metadata.
+   * Writes one agent file from its source skill file.
    */
-  private readSkills(): AgentSkillMetadata[] {
-    const skillsDirectory = path.join(process.cwd(), "documentation/skills");
-    const skills: AgentSkillMetadata[] = [];
-    const entries = readdirSync(skillsDirectory, { withFileTypes: true });
+  private writeSingleSkillAgentFile(
+    configuration: AgentFileSyncConfig,
+    workspaceRoot: string,
+  ): void {
+    const skill = readSkillSourceFile(
+      path.join(workspaceRoot, configuration.skillFile),
+    );
+    const agentPath = path.join(workspaceRoot, configuration.agentFile);
 
-    for (const entry of entries) {
-      if (!entry.isDirectory() || entry.name === "README.md") {
-        continue;
-      }
-
-      const skillPath = path.join(skillsDirectory, entry.name, "SKILL.md");
-      try {
-        const content = readFileSync(skillPath, "utf8");
-        const frontmatter = this.extractFrontmatter(content);
-
-        if (frontmatter["name"] && frontmatter["description"]) {
-          skills.push({
-            description: frontmatter["description"],
-            filePath: `documentation/skills/${entry.name}/SKILL.md`,
-            name: frontmatter["name"],
-          });
-        }
-      } catch {
-        continue;
-      }
+    let existingAgentContent: string | undefined;
+    try {
+      existingAgentContent = readFileSync(agentPath, "utf8");
+    } catch {
+      existingAgentContent = undefined;
     }
 
-    return _.sortBy(skills, (skill: AgentSkillMetadata) => skill.name);
+    const content = generateAgentFile(skill, existingAgentContent);
+    writeFileSync(agentPath, content, "utf8");
   }
 
   /**
-   * Writes the generated skills table into AGENTS.md between the marker comments.
+   * Writes a set of agent files from their source skill files.
    */
-  private writeSync(skills: AgentSkillMetadata[]): void {
-    const agentsFile = path.join(process.cwd(), "AGENTS.md");
+  private writeSkillAgentFiles(options: WriteSkillAgentFilesOptions): void {
+    const {
+      configurations,
+      questionMeMode = false,
+      startMessage,
+      workspaceRoot,
+    } = options;
+
+    this.loggerService.log(startMessage);
+
+    for (const configuration of configurations) {
+      this.writeSingleSkillAgentFile(configuration, workspaceRoot);
+
+      if (questionMeMode) {
+        this.loggerService.log("✅ Updated question-me.agent.md");
+      } else {
+        this.loggerService.log(`✅ Synced ${configuration.agentFile}`);
+      }
+    }
+  }
+
+  /**
+   * Writes the generated skills AGENTS.md section.
+   */
+  private writeSkillsTable(workspaceRoot: string): void {
+    const skills = readSkillTableMetadata(workspaceRoot);
+    const generatedTable = renderSkillTable(skills);
+    const { afterMarker, beforeMarker } = readAgentsSection(
+      workspaceRoot,
+      AGENT_SKILLS_TOC_START,
+      AGENT_SKILLS_TOC_END,
+    );
+
     this.loggerService.log("🔄 Generating skills table of contents...");
-    const generatedTable = this.generateSkillsTable(skills);
-    const { afterMarker, beforeMarker } = this.readAgentsFile();
-
-    const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
-
-    writeFileSync(agentsFile, newContent, "utf8");
+    writeFileSync(
+      path.join(workspaceRoot, AGENTS_MD_FILE),
+      `${beforeMarker}\n${generatedTable}\n${afterMarker}`,
+      "utf8",
+    );
     this.loggerService.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
   }
 
   // 🌎 Public Methods
 
   /**
-   * Runs the agent-skills sync command in check or write mode.
+   * Runs the consolidated agent-skills sync command in check or write mode.
    */
   async run(
     passedParameters: string[],
@@ -202,14 +361,14 @@ export class AgentSkillsCommand extends CommandRunner {
       });
 
     try {
-      const skills = this.readSkills();
+      const workspaceRoot = process.cwd();
 
       if (mode === "check") {
-        const success = this.checkSync(skills);
-        if (!success) process.exit(1);
-      } else {
-        this.writeSync(skills);
+        this.runCheckMode(workspaceRoot);
+        return;
       }
+
+      this.runWriteMode(workspaceRoot);
     } catch (error) {
       this.loggerService.error(
         `❌ Error: ${error instanceof Error ? error.message : error}`,
