@@ -81,7 +81,7 @@ const config = {
   // nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check,fallow-dead-code --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check,fallow-dead-code --configuration=check --outputStyle=static --files=${getPaths(files)}`,
       "pnpm exec nx run monorepo:fallow-duplicates --outputStyle=static",
     ];
   },
@@ -91,8 +91,8 @@ const config = {
   // clean file), then run Ruff format/lint, typecheck, dead-code analysis, and spell-check.
   "*.ipynb": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=nbstripout --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
-      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=nbstripout --configuration=check --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -100,7 +100,7 @@ const config = {
   // Runs format (Ruff), lint (Ruff), typecheck, spell-check, and clean (Vulture for Python)
   "*.py": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=clean,format,lint,spell-check,typecheck --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=clean,format,lint,spell-check,typecheck --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -108,7 +108,7 @@ const config = {
   // Runs format, lint, and spell-check
   "*.{json,jsonc,json5,html}": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=format,lint,spell-check --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=format,lint,spell-check --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -116,7 +116,7 @@ const config = {
   // Runs Stylelint, format, lint, and spell-check
   "*.css": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=stylelint,format,lint,spell-check --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=stylelint,format,lint,spell-check --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -124,7 +124,7 @@ const config = {
   // Runs format, ESLint markdown plugin, markdownlint, and spell-check
   "*.{md,mdx}": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=format,lint,markdown-lint,spell-check --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -133,7 +133,7 @@ const config = {
   // pnpm-lock.yaml is excluded: it's auto-generated and should not be linted.
   "{*.yml,!(pnpm-lock).yaml}": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=format,yaml-lint,spell-check --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=format,yaml-lint,spell-check --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 
@@ -142,15 +142,15 @@ const config = {
   // to ensure generated code instances conform to their template definitions.
   // Patterns are derived from generator configuration files (see tools/conformance/src/constants.ts)
   [`{${CONFORMANCE_PATTERNS.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run conformance:validate  --outputStyle=static",
+    "pnpm exec nx run conformance:validate --outputStyle=static",
   ],
 
   // 🗄️ SQL files
   // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)
   "*.sql": (files: string[]): string[] => {
     return [
-      `pnpm exec nx affected --target=format,lint --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
-      `pnpm exec nx affected --target=squawk --configuration=check  --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=format,lint --configuration=check --outputStyle=static --files=${getPaths(files)}`,
+      `pnpm exec nx affected --target=squawk --configuration=check --outputStyle=static --files=${getPaths(files)}`,
     ];
   },
 };
