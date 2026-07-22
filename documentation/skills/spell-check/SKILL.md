@@ -107,8 +107,8 @@ pnpm exec nx run-many --target=spell-check
 1. If skill docs changed, run:
 
 ```bash
-pnpm exec nx run synchronization:agent-skills:write
-pnpm exec nx run synchronization:agent-skills:check
+pnpm exec nx run synchronization:start:agent-skills-write
+pnpm exec nx run synchronization:start:agent-skills-check
 ```
 
 ### 4. Add Words Safely

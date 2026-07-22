@@ -95,7 +95,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
     }
     if (!allInSync) {
       this.loggerService.log(
-        "💡 Run 'nx run synchronization:pull-request-template:write' to sync",
+        "💡 Run 'nx run synchronization:start:pull-request-template-write' to sync",
       );
       process.exit(1);
     }
@@ -185,7 +185,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
         loggerService: this.loggerService,
         passedParameters,
         usageMessage:
-          "💡 Usage: nx run synchronization:pull-request-template [check|write]",
+          "💡 Usage: nx run synchronization:start:pull-request-template-check (or synchronization:start:pull-request-template-write)",
       });
     const workspaceRoot = process.cwd();
     const templateFile = path.join(

@@ -220,7 +220,7 @@ describe(ConformanceGeneratorsCommand, () => {
           "❌ Conformance generators table in AGENTS.md is out of sync\n",
         );
         expect(loggerService.log).toHaveBeenCalledWith(
-          "💡 Run 'pnpm exec nx run synchronization:conformance-generators:write' to sync\n",
+          "💡 Run 'pnpm exec nx run synchronization:start:conformance-generators-write' to sync\n",
         );
       },
       modeArguments: ["check"],

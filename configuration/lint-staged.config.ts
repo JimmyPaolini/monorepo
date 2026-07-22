@@ -52,27 +52,27 @@ const config = {
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
     (): string[] => [
-      "pnpm exec nx run synchronization:devcontainer-configuration:check --outputStyle=static",
+      "pnpm exec nx run synchronization:start:devcontainer-configuration-check --outputStyle=static",
     ],
 
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${SYNC_CONVENTIONAL_CONFIG_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:conventional-config:check --outputStyle=static",
+    "pnpm exec nx run synchronization:start:conventional-config-check --outputStyle=static",
   ],
 
   // Keep PR template in sync across skills and prompt files
   [`{${SYNC_PULL_REQUEST_TEMPLATE_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:pull-request-template:check --outputStyle=static",
+    "pnpm exec nx run synchronization:start:pull-request-template-check --outputStyle=static",
   ],
 
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${SYNC_AGENT_SKILLS_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:agent-skills:check --outputStyle=static",
+    "pnpm exec nx run synchronization:start:agent-skills-check --outputStyle=static",
   ],
 
   // Keep conformance generators table in sync in AGENTS.md
   [`{${SYNC_CONFORMANCE_GENERATORS_FILES.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run synchronization:conformance-generators:check --outputStyle=static",
+    "pnpm exec nx run synchronization:start:conformance-generators-check --outputStyle=static",
   ],
 
   // 📝 TypeScript / JavaScript source files
@@ -142,7 +142,7 @@ const config = {
   // to ensure generated code instances conform to their template definitions.
   // Patterns are derived from generator configuration files (see tools/conformance/src/constants.ts)
   [`{${CONFORMANCE_PATTERNS.join(",")}}`]: (): string[] => [
-    "pnpm exec nx run conformance:validate --outputStyle=static",
+    "pnpm exec nx run conformance:start:validator --outputStyle=static",
   ],
 
   // 🗄️ SQL files
