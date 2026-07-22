@@ -3,7 +3,7 @@ argument-hint: "Provide the plan file path and any execution boundaries (for exa
 agents:
   - explore-codebase
 description: "Execute an implementation plan by running pending tasks in focused sequence, updating task completion, and verifying outcomes. Use when asked to carry out plan tasks phase by phase."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs:
   - label: Update Plan
     agent: update-plan

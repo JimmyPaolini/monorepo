@@ -199,6 +199,7 @@ typeof
 uncapitalize
 uncapitalizes
 unknowncase
+underspecified
 unredacted
 unrs
 unstub

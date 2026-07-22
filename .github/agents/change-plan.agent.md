@@ -4,8 +4,12 @@ agents:
   - explore-codebase
   - explore-internet
 description: "Revise an existing implementation plan to incorporate scope changes, new requirements, or corrected assumptions. Use when asked to modify plan tasks, constraints, phases, or implementation approach."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs:
+  - label: Clarify Change
+    agent: question-me
+    prompt: "Clarify the requested plan changes, scope, and constraints before revising the plan."
+    send: false
   - label: Create Issue
     agent: agent
     prompt: "Convert the plan created above into a GitHub issue following the skill `create-issue`."
