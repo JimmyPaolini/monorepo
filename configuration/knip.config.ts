@@ -91,11 +91,9 @@ const config: KnipConfig = {
         "applications/JimmyPaolini/**",
         "pnpm-workspace.yaml", // Catalog dependencies are shared across workspace; knip would flag all as unused in root
         // Skill scripts are invoked by the skill framework, not imported in code
-        "**/.agents/skills/**/scripts/**",
-        "**/.claude/skills/**/scripts/**",
-        "**/.github/skills/**/scripts/**",
-        "**/.opencode/skills/**/scripts/**",
-        "**/documentation/skills/**/scripts/**",
+        "**/.agents/skills/**",
+        "**/.github/skills/**",
+        "**/documentation/skills/**",
       ],
       project: "**/*.{js,ts,mjs,cjs}",
     },
