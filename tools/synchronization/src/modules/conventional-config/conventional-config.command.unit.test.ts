@@ -83,7 +83,7 @@ describe(ConventionalConfigCommand, () => {
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:conventional-config [check|write]",
+      "💡 Usage: nx run synchronization:start:conventional-config-check (or synchronization:start:conventional-config-write)",
     );
   });
 });

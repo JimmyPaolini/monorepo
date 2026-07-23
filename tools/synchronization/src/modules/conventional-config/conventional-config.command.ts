@@ -42,7 +42,7 @@ export class ConventionalConfigCommand extends CommandRunner {
         loggerService: this.loggerService,
         passedParameters,
         usageMessage:
-          "💡 Usage: nx run synchronization:conventional-config [check|write]",
+          "💡 Usage: nx run synchronization:start:conventional-config-check (or synchronization:start:conventional-config-write)",
       });
     this.conventionalConfigService.runSynchronization(mode);
   }

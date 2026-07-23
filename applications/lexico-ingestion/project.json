@@ -17,87 +17,61 @@
       "command": "echo 'lexico-ingestion is a development tool and does not require building'"
     },
     "clean": {},
-    "clear": {
-      "description": "Clear ingested data from the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts clear",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
-    "corpus-scriptorum-ecclesiasticorum-latinorum": {
-      "description": "Download CSEL XML files locally",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts corpus-scriptorum-ecclesiasticorum-latinorum",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "dependency-cruiser": {},
-    "dictionary": {
-      "description": "Ingest dictionary entries into the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts dictionary",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
-    "epigraphik-datenbank-clauss-slaby": {
-      "description": "Download Epigraphik-Datenbank Clauss-Slaby raw JSON chunks",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts epigraphik-datenbank-clauss-slaby",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "eslint": {},
     "format": {},
     "knip": {},
-    "latin-library": {
-      "description": "Download The Latin Library HTML files locally",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts latin-library",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
-    "library": {
-      "command": "node --import @swc-node/register/esm-register src/main.ts library",
-      "options": {
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "lint": {},
-    "literature": {
-      "command": "node --import @swc-node/register/esm-register src/main.ts literature",
-      "options": {
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
-    "perseus": {
-      "description": "Download Perseus XML files locally",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts perseus",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "prettier": {},
     "spell-check": {},
+    "start": {
+      "cache": false,
+      "configurations": {
+        "clear": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts clear {args}"
+        },
+        "corpus-scriptorum-ecclesiasticorum-latinorum": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts corpus-scriptorum-ecclesiasticorum-latinorum {args}"
+        },
+        "dictionary": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts dictionary {args}"
+        },
+        "epigraphik-datenbank-clauss-slaby": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts epigraphik-datenbank-clauss-slaby {args}"
+        },
+        "latin-library": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts latin-library {args}"
+        },
+        "lexico-ingestion": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion {args}"
+        },
+        "library": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts library {args}"
+        },
+        "literature": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts literature {args}"
+        },
+        "perseus": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts perseus {args}"
+        },
+        "wiktionary": {
+          "command": "node --import @swc-node/register/esm-register src/main.ts wiktionary {args}"
+        }
+      },
+      "defaultConfiguration": "lexico-ingestion",
+      "description": "Start the Lexico ingestion application or run an ingestion command",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion {args}",
+        "cwd": "{projectRoot}"
+      }
+    },
     "test": {},
     "type-coverage": {},
     "typecheck": {},
-    "wiktionary": {
-      "description": "Ingest Wiktionary data into the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts wiktionary",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "yaml-lint": {}
   }
 }

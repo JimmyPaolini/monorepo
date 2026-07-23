@@ -77,7 +77,7 @@ export class AgentSkillsCommand extends CommandRunner {
         "  Generated content doesn't match stored content",
       );
       this.loggerService.log(
-        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }
@@ -139,7 +139,7 @@ export class AgentSkillsCommand extends CommandRunner {
 
     if (!allInSync) {
       this.loggerService.log(
-        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }
@@ -171,7 +171,7 @@ export class AgentSkillsCommand extends CommandRunner {
         "  Generated content doesn't match stored content",
       );
       this.loggerService.log(
-        "💡 Run 'pnpm exec nx run synchronization:agent-skills:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }

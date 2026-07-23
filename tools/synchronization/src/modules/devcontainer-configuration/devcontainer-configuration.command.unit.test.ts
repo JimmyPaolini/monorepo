@@ -222,7 +222,7 @@ describe(DevcontainerConfigurationCommand, () => {
           ),
         );
         expect(loggerService.log).toHaveBeenCalledWith(
-          "  Run: nx run synchronization:devcontainer-configuration:write",
+          "  Run: nx run synchronization:start:devcontainer-configuration-write",
         );
       },
       scenarioName: "reports drift and exits in check mode when configs differ",
@@ -318,7 +318,7 @@ describe(DevcontainerConfigurationCommand, () => {
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(
-      "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
+      "💡 Usage: nx run synchronization:start:devcontainer-configuration-check (or synchronization:start:devcontainer-configuration-write)",
     );
   });
 });

@@ -87,7 +87,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
     this.loggerService.log("");
     this.loggerService.log(
-      `  Run: nx run synchronization:devcontainer-configuration:write`,
+      `  Run: nx run synchronization:start:devcontainer-configuration-write`,
     );
     return false;
   }
@@ -214,7 +214,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
         loggerService: this.loggerService,
         passedParameters,
         usageMessage:
-          "💡 Usage: nx run synchronization:devcontainer-configuration [check|write]",
+          "💡 Usage: nx run synchronization:start:devcontainer-configuration-check (or synchronization:start:devcontainer-configuration-write)",
       });
     const workspaceRoot = process.cwd();
     const localConfigFile = path.join(
