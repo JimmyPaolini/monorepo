@@ -175,7 +175,7 @@
     "**/data/wikipedia/**",
     "**/data/wiktionary/**",
     "**/dist/**",
-    "**/documentation/skills/**/scripts/**",
+    "**/.agents/skills/**/scripts/**",
     "**/helm/**/templates/**",
     "**/library.json",
     "**/node_modules/**",

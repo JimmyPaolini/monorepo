@@ -93,7 +93,6 @@ const config: KnipConfig = {
         // Skill scripts are invoked by the skill framework, not imported in code
         "**/.agents/skills/**",
         "**/.github/skills/**",
-        "**/documentation/skills/**",
       ],
       project: "**/*.{js,ts,mjs,cjs}",
     },
