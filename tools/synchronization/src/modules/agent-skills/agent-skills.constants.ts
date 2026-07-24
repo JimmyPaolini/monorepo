@@ -27,26 +27,8 @@ export const AGENT_SKILLS_TOC_START =
 export const AGENT_SKILLS_TOC_END =
   "<!-- agent-skills-table-of-contents end -->";
 
-/** Skill-to-agent mapping for the question-me agent file. */
-export const QUESTION_ME_AGENT_CONFIG: AgentFileSyncConfig = {
-  agentFile: ".github/agents/question-me.agent.md",
-  skillFile: `${AGENT_SKILLS_DIRECTORY}/question-me/SKILL.md`,
-};
-
 /** Skill-to-agent mappings for plan-related agents. */
 export const PLAN_AGENT_CONFIGS: AgentFileSyncConfig[] = [
-  {
-    agentFile: ".github/agents/change-plan.agent.md",
-    skillFile: `${AGENT_SKILLS_DIRECTORY}/change-plan/SKILL.md`,
-  },
-  {
-    agentFile: ".github/agents/create-plan.agent.md",
-    skillFile: `${AGENT_SKILLS_DIRECTORY}/create-plan/SKILL.md`,
-  },
-  {
-    agentFile: ".github/agents/execute-plan.agent.md",
-    skillFile: `${AGENT_SKILLS_DIRECTORY}/execute-plan/SKILL.md`,
-  },
   {
     agentFile: ".github/agents/explore-codebase.agent.md",
     skillFile: `${AGENT_SKILLS_DIRECTORY}/explore-codebase/SKILL.md`,
@@ -54,10 +36,6 @@ export const PLAN_AGENT_CONFIGS: AgentFileSyncConfig[] = [
   {
     agentFile: ".github/agents/explore-internet.agent.md",
     skillFile: `${AGENT_SKILLS_DIRECTORY}/explore-internet/SKILL.md`,
-  },
-  {
-    agentFile: ".github/agents/update-plan.agent.md",
-    skillFile: `${AGENT_SKILLS_DIRECTORY}/update-plan/SKILL.md`,
   },
 ];
 

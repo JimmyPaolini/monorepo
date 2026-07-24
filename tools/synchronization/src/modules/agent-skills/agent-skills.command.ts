@@ -23,7 +23,6 @@ import {
   CUSTOM_AGENTS_TOC_END,
   CUSTOM_AGENTS_TOC_START,
   PLAN_AGENT_CONFIGS,
-  QUESTION_ME_AGENT_CONFIG,
   TRIAGE_AGENT_CONFIGS,
 } from "./agent-skills.constants";
 
@@ -186,15 +185,6 @@ export class AgentSkillsCommand extends CommandRunner {
    * Runs all check-mode validations.
    */
   private runCheckMode(workspaceRoot: string): void {
-    const questionMeInSync = this.checkSkillAgentFiles(
-      [QUESTION_ME_AGENT_CONFIG],
-      workspaceRoot,
-      "✅ question-me agent file is in sync",
-    );
-    if (!questionMeInSync) {
-      process.exit(1);
-    }
-
     const planInSync = this.checkSkillAgentFiles(
       PLAN_AGENT_CONFIGS,
       workspaceRoot,
@@ -226,13 +216,6 @@ export class AgentSkillsCommand extends CommandRunner {
    * Runs all write-mode synchronization operations.
    */
   private runWriteMode(workspaceRoot: string): void {
-    this.writeSkillAgentFiles({
-      configurations: [QUESTION_ME_AGENT_CONFIG],
-      questionMeMode: true,
-      startMessage: "🔄 Syncing question-me agent file from SKILL.md source...",
-      workspaceRoot,
-    });
-
     this.writeSkillAgentFiles({
       configurations: PLAN_AGENT_CONFIGS,
       startMessage: "🔄 Syncing plan agent files from SKILL.md sources...",
