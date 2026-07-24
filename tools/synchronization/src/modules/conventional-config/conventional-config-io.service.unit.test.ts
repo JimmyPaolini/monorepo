@@ -371,10 +371,7 @@ describe(ConventionalConfigIoService, () => {
       "utf8",
     );
 
-    const skillFile = path.join(
-      workspaceRoot,
-      "documentation/skills/test/SKILL.md",
-    );
+    const skillFile = path.join(workspaceRoot, ".agents/skills/test/SKILL.md");
     fileContents.set(
       skillFile,
       [

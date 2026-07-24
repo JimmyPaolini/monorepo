@@ -244,7 +244,7 @@ This plan explores four optimization paths:
 - [Node.js worker_threads](https://nodejs.org/api/worker_threads.html) — built-in parallelism for CPU-bound work
 - [Node-API (N-API)](https://nodejs.org/api/n-api.html) — ABI-stable C addon interface for Node.js
 - [Caelundas AGENTS.md](applications/caelundas/AGENTS.md) — current architecture and deployment documentation
-- [Ephemeris Pipeline Skill](documentation/skills/ephemeris-pipeline/) — domain knowledge for caelundas development
+- [Ephemeris Pipeline Skill](.agents/skills/ephemeris-pipeline/) — domain knowledge for caelundas development
 - [sweph npm package](https://www.npmjs.com/package/sweph) — Node.js Swiss Ephemeris bindings via N-API
 - [sweph GitHub](https://github.com/timotejroiko/sweph) — source code, API docs, and examples
 - [Swiss Ephemeris documentation](https://www.astro.com/swisseph/swephprg.htm) — programming reference for Swiss Ephemeris C library

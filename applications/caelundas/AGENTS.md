@@ -100,7 +100,7 @@ src/modules/
 
 ## Domain Knowledge
 
-See [ephemeris-pipeline skill](../../documentation/skills/ephemeris-pipeline/SKILL.md) for:
+See [ephemeris-pipeline skill](../../.agents/skills/ephemeris-pipeline/SKILL.md) for:
 
 - NASA JPL Horizons API details (endpoints, parameters, rate limits)
 - Astronomical concepts (aspects, retrogrades, phases explained)
@@ -224,7 +224,7 @@ Uses [infrastructure/helm/kubernetes-job](../../infrastructure/helm/kubernetes-j
 
 **Values**: [infrastructure/helm/kubernetes-job/values/caelundas-production.yaml](../../infrastructure/helm/kubernetes-job/values/caelundas-production.yaml)
 
-See [kubernetes-deployment skill](../../documentation/skills/kubernetes-deployment/SKILL.md) for Helm chart details.
+See [kubernetes-deployment skill](../../.agents/skills/kubernetes-deployment/SKILL.md) for Helm chart details.
 
 ### Environment Variables in K8s
 
@@ -244,7 +244,7 @@ nx run caelundas:docker-build  # Builds for linux/amd64
 
 **Platform targeting**: Always use `linux/amd64` for K8s deployment (Apple Silicon compatibility).
 
-See [docker-workflows skill](../../documentation/skills/docker-workflows/SKILL.md) for multi-stage builds and GHCR integration.
+See [docker-workflows skill](../../.agents/skills/docker-workflows/SKILL.md) for multi-stage builds and GHCR integration.
 
 ### Dockerfile
 
