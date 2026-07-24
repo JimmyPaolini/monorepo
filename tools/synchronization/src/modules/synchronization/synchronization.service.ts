@@ -9,7 +9,15 @@ import type {
 
 /** Shared service for resolving and validating synchronization command modes. */
 @Injectable()
-export class SynchronizationModeService {
+export class SynchronizationService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
   /** Logs invalid mode details and exits with status code 1. */
   private exitInvalidMode(options: {
     invalidModeLabel: string;
@@ -62,22 +70,7 @@ export class SynchronizationModeService {
     });
   }
 
-  /** Resolves synchronization mode or throws when the mode is invalid. */
-  resolveSynchronizationModeOrThrow(
-    options: SynchronizationModeResolutionOptions,
-  ): SynchronizationMode {
-    const modeResolution = this.resolveModeValue(options);
+  // 🔏 Private Methods
 
-    if (modeResolution.valid) {
-      return modeResolution.modeValue;
-    }
-
-    options.loggerService.error(
-      `❌ ${options.invalidModeLabel}: ${modeResolution.modeValue}`,
-    );
-    options.loggerService.error(options.usageMessage);
-    throw new TypeError(
-      `Invalid synchronization mode: ${modeResolution.modeValue}`,
-    );
-  }
+  // 🌎 Public Methods
 }

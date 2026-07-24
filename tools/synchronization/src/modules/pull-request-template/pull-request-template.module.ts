@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { PullRequestTemplateCommand } from "./pull-request-template.command";
 
@@ -12,6 +12,6 @@ import { PullRequestTemplateCommand } from "./pull-request-template.command";
   controllers: [],
   exports: [PullRequestTemplateCommand],
   imports: [LoggerModule],
-  providers: [PullRequestTemplateCommand, SynchronizationModeService],
+  providers: [PullRequestTemplateCommand, SynchronizationService],
 })
 export class PullRequestTemplateModule {}

@@ -181,7 +181,7 @@ describe(ValidatorWorkspaceService, () => {
     );
   });
 
-  it("returns default project names from tagged workspace projects", () => {
+  it("returns default project names from all workspace projects", () => {
     const allWorkspaceProjects = [
       {
         rootPath: path.join(workspaceRoot, "applications/alpha"),
@@ -207,6 +207,13 @@ describe(ValidatorWorkspaceService, () => {
 
       if (
         typeof filePath === "string" &&
+        filePath.endsWith("packages/bravo/project.json")
+      ) {
+        return JSON.stringify({ name: "bravo" });
+      }
+
+      if (
+        typeof filePath === "string" &&
         filePath.endsWith("tools/charlie/project.json")
       ) {
         return JSON.stringify({ name: "charlie" });
@@ -220,20 +227,16 @@ describe(ValidatorWorkspaceService, () => {
         allWorkspaceProjects,
         requestedProjectNames: undefined,
       }),
-    ).toStrictEqual(["alpha", "charlie"]);
+    ).toStrictEqual(["alpha", "bravo", "charlie"]);
   });
 
-  it("throws when no default projects are tagged", () => {
+  it("throws when no default projects are discovered", () => {
     expect(() => {
       service.resolveSelectedProjectNames({
-        allWorkspaceProjects: [
-          { rootPath: "/workspace/applications/alpha", tags: [] },
-        ],
+        allWorkspaceProjects: [],
         requestedProjectNames: undefined,
       });
-    }).toThrow(
-      "No default projects found. Expected tags: type:application, type:component",
-    );
+    }).toThrow("No default projects found in workspace");
   });
 
   it("parses workspace projects from standard directories", () => {

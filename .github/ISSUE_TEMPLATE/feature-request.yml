@@ -37,6 +37,8 @@ body:
         - scripts
         - testing
         - tools
+        - synchronization
+
 
     validations:
       required: true

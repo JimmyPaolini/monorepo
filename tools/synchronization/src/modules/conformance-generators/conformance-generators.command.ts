@@ -5,7 +5,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import type {
   ConformanceGeneratorMetadata,
@@ -18,7 +18,7 @@ import type {
  * between marker comments.
  */
 @Command({
-  description: "Sync conformance generators table into AGENTS.md (check|write)",
+  description: "Run the conformance-generators command",
   name: "conformance-generators",
 })
 @Injectable()
@@ -26,12 +26,16 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly loggerService: LoggerService,
-    private readonly synchronizationModeService: SynchronizationModeService,
+    private readonly logger: LoggerService,
+    private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
-    this.loggerService.setContext(ConformanceGeneratorsCommand.name);
+    this.logger.setContext(ConformanceGeneratorsCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
 
   // 🔏 Private Methods
 
@@ -46,22 +50,20 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
     const existing = existingContent.generatedContent.trim();
 
     if (generated !== existing) {
-      this.loggerService.log(
+      this.logger.log(
         "❌ Conformance generators table in AGENTS.md is out of sync\n",
       );
-      this.loggerService.log(
+      this.logger.log(
         `  Found ${generators.length} generators in tools/conformance/generators.json`,
       );
-      this.loggerService.log(
-        "  Generated content doesn't match stored content",
-      );
-      this.loggerService.log(
+      this.logger.log("  Generated content doesn't match stored content");
+      this.logger.log(
         "💡 Run 'pnpm exec nx run synchronization:start:conformance-generators-write' to sync\n",
       );
       return false;
     }
 
-    this.loggerService.log(
+    this.logger.log(
       `✅ Conformance generators table is in sync (${generators.length} generators)`,
     );
     return true;
@@ -140,14 +142,14 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
    */
   private writeSync(generators: ConformanceGeneratorMetadata[]): void {
     const agentsFile = path.join(process.cwd(), "AGENTS.md");
-    this.loggerService.log("🔄 Generating conformance generators table...");
+    this.logger.log("🔄 Generating conformance generators table...");
     const generatedTable = this.generateGeneratorsTable(generators);
     const { afterMarker, beforeMarker } = this.readAgentsFile();
 
     const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
 
     writeFileSync(agentsFile, newContent, "utf8");
-    this.loggerService.log(
+    this.logger.log(
       `✅ Updated AGENTS.md with ${generators.length} generators`,
     );
   }
@@ -165,7 +167,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
     const mode =
       this.synchronizationModeService.resolveSynchronizationModeOrExit({
         invalidModeLabel: "Unknown mode",
-        loggerService: this.loggerService,
+        loggerService: this.logger,
         passedParameters,
         usageMessage: "Expected 'check' or 'write'",
       });
@@ -180,7 +182,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
         this.writeSync(generators);
       }
     } catch (error) {
-      this.loggerService.error(
+      this.logger.error(
         `❌ Error: ${error instanceof Error ? error.message : error}`,
       );
       process.exit(1);

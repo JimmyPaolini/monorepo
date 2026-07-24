@@ -7,9 +7,8 @@ import { DevcontainerConfigurationModule } from "../devcontainer-configuration/d
 import { LoggerModule } from "../logger/logger.module";
 import { PullRequestTemplateModule } from "../pull-request-template/pull-request-template.module";
 
-import { SynchronizationModeService } from "./synchronization-mode.service";
-import { SynchronizationCommand } from "./synchronization.command";
 import { SynchronizationModule } from "./synchronization.module";
+import { SynchronizationService } from "./synchronization.service";
 
 describe(SynchronizationModule, () => {
   it("registers expected imports and providers", () => {
@@ -30,7 +29,6 @@ describe(SynchronizationModule, () => {
     expect(imports).toContain(PullRequestTemplateModule);
 
     expect(providers).toBeDefined();
-    expect(providers).toContain(SynchronizationCommand);
-    expect(providers).toContain(SynchronizationModeService);
+    expect(providers).toContain(SynchronizationService);
   });
 });

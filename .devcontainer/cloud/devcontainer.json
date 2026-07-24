@@ -178,7 +178,31 @@
       ]
     }
   },
+  "dockerComposeFile": [
+    "../../infrastructure/docker/docker-compose.yml",
+    "docker-compose.yml"
+  ],
   "features": {
+    "ghcr.io/devcontainers-extra/features/nx-npm:1": {
+      "version": "22.7.3"
+    },
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {
+      "version": "11.2.2"
+    },
+    "ghcr.io/devcontainers-extra/features/supabase-cli:1": {
+      "version": "2.76.8"
+    },
+    "ghcr.io/devcontainers-extra/features/uv:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "azureDnsAutoDetection": true,
+      "dockerDashComposeVersion": "v2",
+      "installDockerBuildx": true,
+      "installDockerComposeSwitch": true,
+      "moby": true,
+      "version": "29"
+    },
     "ghcr.io/devcontainers/features/github-cli:1": {
       "installDirectlyFromGitHubRelease": true,
       "version": "2.87.3"
@@ -206,18 +230,6 @@
       "tflint": "0.61.0",
       "version": "1.14.5"
     },
-    "ghcr.io/devcontainers-extra/features/nx-npm:1": {
-      "version": "22.7.3"
-    },
-    "ghcr.io/devcontainers-extra/features/pnpm:2": {
-      "version": "11.2.2"
-    },
-    "ghcr.io/devcontainers-extra/features/supabase-cli:1": {
-      "version": "2.76.8"
-    },
-    "ghcr.io/devcontainers-extra/features/uv:1": {
-      "version": "latest"
-    },
     "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
       "gojqVersion": "none",
       "jaqVersion": "none",
@@ -227,23 +239,15 @@
     },
     "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {
       "version": "3.40.1"
-    },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "azureDnsAutoDetection": true,
-      "dockerDashComposeVersion": "v2",
-      "installDockerBuildx": true,
-      "installDockerComposeSwitch": true,
-      "moby": true,
-      "version": "29"
     }
   },
-  "dockerComposeFile": [
-    "../../infrastructure/docker/docker-compose.yml",
-    "docker-compose.yml"
-  ],
   "forwardPorts": [3000, 3001, 8889, 11434, 54321, 54322, 54323, 54324, 54325],
   "name": "Monorepo Devcontainer (Cloud)",
   "portsAttributes": {
+    "11434": {
+      "label": "Ollama API",
+      "onAutoForward": "silent"
+    },
     "3000": {
       "label": "Lexico Development Server",
       "onAutoForward": "notify"
@@ -251,14 +255,6 @@
     "3001": {
       "label": "Open WebUI",
       "onAutoForward": "notify"
-    },
-    "8889": {
-      "label": "SearxNG",
-      "onAutoForward": "notify"
-    },
-    "11434": {
-      "label": "Ollama API",
-      "onAutoForward": "silent"
     },
     "54321": {
       "label": "Supabase API (PostgREST)",
@@ -279,6 +275,10 @@
     "54325": {
       "label": "Supabase Analytics",
       "onAutoForward": "silent"
+    },
+    "8889": {
+      "label": "SearxNG",
+      "onAutoForward": "notify"
     }
   },
   "postAttachCommand": ".devcontainer/scripts/post-attach-command.sh",

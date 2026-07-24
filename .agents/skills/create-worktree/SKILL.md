@@ -33,6 +33,7 @@ Worktree branches must use the same format enforced elsewhere in the repository:
 - Valid types:
 
 <!-- types-start -->
+
 | Type | Description |
 | ---- | ----------- |
 | `feat` | A new feature or capability that adds value for users |
@@ -52,6 +53,7 @@ Worktree branches must use the same format enforced elsewhere in the repository:
 - Valid scopes:
 
 <!-- scopes-start -->
+
 | Scope | Description |
 | ----- | ----------- |
 | `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
@@ -76,6 +78,7 @@ Worktree branches must use the same format enforced elsewhere in the repository:
 | `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
 | `testing` | Vitest configuration, shared test utilities, and coverage setup |
 | `tools` | Changes spanning multiple tool projects in tools/ |
+| `synchronization` | Synchronization application and commands for automating workflows |
 
 <!-- scopes-end -->
 

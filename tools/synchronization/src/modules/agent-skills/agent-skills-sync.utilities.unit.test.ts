@@ -315,6 +315,28 @@ describe("agent-skills-sync utilities", () => {
     ]);
   });
 
+  it("falls back to the filename stem when custom agent frontmatter has no name", () => {
+    const workspaceRoot = "/workspace";
+    const agentsDirectory = path.join(workspaceRoot, AGENTS_DIRECTORY);
+
+    directoryEntries.set(agentsDirectory, [
+      createDirectoryEntry("missing-name.agent.md", false),
+    ]);
+
+    fileContents.set(
+      path.join(agentsDirectory, "missing-name.agent.md"),
+      ["---", "description: no name provided", "---"].join("\n"),
+    );
+
+    expect(readCustomAgentsMetadata(workspaceRoot)).toStrictEqual([
+      {
+        description: "no name provided",
+        fileName: "missing-name.agent.md",
+        name: "missing-name",
+      },
+    ]);
+  });
+
   it("parses a skill source file", () => {
     const skillPath = "/workspace/.agents/skills/question-me/SKILL.md";
 
@@ -348,6 +370,22 @@ describe("agent-skills-sync utilities", () => {
       body: "",
       description: "",
       name: "question-me",
+    });
+  });
+
+  it("returns an empty name when skill frontmatter omits the name field", () => {
+    const skillPath = "/workspace/.agents/skills/question-me/SKILL.md";
+
+    fileContents.set(
+      skillPath,
+      ["---", "description: Just a description", "---"].join("\n"),
+    );
+
+    expect(readSkillSourceFile(skillPath)).toStrictEqual({
+      argumentHint: "",
+      body: "",
+      description: "Just a description",
+      name: "",
     });
   });
 

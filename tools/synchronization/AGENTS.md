@@ -32,6 +32,12 @@ src/main.ts
             └─ domain service modules       ← add under src/modules/
 ```
 
+```text
+src/main.ts
+  └─ CommandFactory.run(MainModule)
+       └─ domain command modules            ← add under src/modules/
+```
+
 ### Directory Layout
 
 ```text
@@ -55,6 +61,25 @@ src/
 testing/                            # Shared test utilities
 ```
 
+```text
+src/
+  main.ts                           # Bootstrap — do not modify
+  main.module.ts                    # Root NestJS module (imports ConfigModule, LoggerModule)
+  constants.ts                      # Zod environmentSchema for env validation
+  modules/
+    logger/
+      logger.service.ts             # Transient pino LoggerService
+      logger.module.ts              # LoggerModule (exports LoggerService)
+    <domain>/                       # Add feature modules here
+      <domain>.module.ts
+      <domain>.command.ts
+      <domain>.service.ts
+      <domain>.types.ts
+      <domain>.constants.ts
+      <domain>.<tier>.test.ts
+testing/                            # Shared test utilities
+```
+
 ## Development
 
 ### Adding Business Logic
@@ -63,6 +88,10 @@ testing/                            # Shared test utilities
 2. **Add domain modules** — create `src/modules/<domain>/` with a NestJS module, service, types, and constants.
 3. **Register in root module** — import the new module in `synchronization.module.ts`.
 4. **Validate env vars** — extend `environmentSchema` in `synchronization.constants.ts` with all required environment variables.
+
+5. **Add domain command modules** — create `src/modules/<domain>/` with a NestJS module, command, service, types, and constants.
+6. **Register in root module** — import the new module in `main.module.ts`.
+7. **Validate env vars** — extend `environmentSchema` in `constants.ts` with all required environment variables.
 
 ### Logging
 
@@ -215,6 +244,20 @@ After generating a module, import it in `synchronization.module.ts`:
 export class SynchronizationModule {}
 ```
 
+After generating a module, import it in `main.module.ts`:
+
+```ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({ ... }),
+    LoggerModule,
+    MyDomainModule,   // ← add here
+  ],
+  providers: [],
+})
+export class MainModule {}
+```
+
 ### Conformance check
 
 Conformance checks are run centrally from `tools/conformance/src/conformance.test.ts`, which validates generated and existing module structures against templates across the workspace (including generated command applications).
@@ -239,6 +282,7 @@ See [TypeScript Conventions](../../documentation/conventions/typescript.md) for 
 - **Dependency injection failure** — verify the service is `@Injectable()`, exported from its module, and that module is imported by the consuming module.
 - **Unrecognized CLI flag** — check that `@Option()` decorators in the command class exactly match the flag names passed.
 - **Env var validation error on startup** — add the missing variable to `environmentSchema` in `.constants.ts` and to `.env.default`.
+- **Env var validation error on startup** — add the missing variable to `environmentSchema` in `src/constants.ts` and to `.env.default`.
 
 See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspace-wide issues.
 
@@ -251,3 +295,5 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspa
 - [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
 - [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
 - [.env.default](.env.default): Environment variable template
+- [src/main.module.ts](src/main.module.ts): Root NestJS module
+- [src/constants.ts](src/constants.ts): `environmentSchema` (Zod)

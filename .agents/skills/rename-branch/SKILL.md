@@ -75,6 +75,7 @@ Using the repository's naming convention (`<type>/<scope>-<description>`):
 | `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
 | `testing` | Vitest configuration, shared test utilities, and coverage setup |
 | `tools` | Changes spanning multiple tool projects in tools/ |
+| `synchronization` | Synchronization application and commands for automating workflows |
 
 <!-- scopes-end -->
 
