@@ -1,5 +1,7 @@
 import type { LoggerService } from "../logger/logger.service";
 
+// 🏷️ Types
+
 /** Supported synchronization execution modes. */
 export type SynchronizationMode = "check" | "write";
 

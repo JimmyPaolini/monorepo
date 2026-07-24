@@ -9,39 +9,30 @@ import { SynchronizationService } from "../synchronization/synchronization.servi
 import { ConventionalConfigCommand } from "./conventional-config.command";
 import { ConventionalConfigService } from "./conventional-config.service";
 
-const buildModule = async (): Promise<{
-  command: ConventionalConfigCommand;
-  conventionalConfigService: ConventionalConfigService;
-  logger: LoggerService;
-}> => {
-  const conventionalConfigService = createMock<ConventionalConfigService>();
-  const module = await Test.createTestingModule({
-    providers: [
-      ConventionalConfigCommand,
-      SynchronizationService,
-      {
-        provide: ConventionalConfigService,
-        useValue: conventionalConfigService,
-      },
-      {
-        provide: LoggerService,
-        useValue: createMock<LoggerService>(),
-      },
-    ],
-  }).compile();
-
-  return {
-    command: await module.resolve(ConventionalConfigCommand),
-    conventionalConfigService,
-    logger: await module.resolve(LoggerService),
-  };
-};
-
 describe(ConventionalConfigCommand, () => {
   let command: ConventionalConfigCommand;
+  let logger: LoggerService;
+
+  const conventionalConfigService = createMock<ConventionalConfigService>();
 
   beforeAll(async () => {
-    ({ command } = await buildModule());
+    const module = await Test.createTestingModule({
+      providers: [
+        ConventionalConfigCommand,
+        SynchronizationService,
+        {
+          provide: ConventionalConfigService,
+          useValue: conventionalConfigService,
+        },
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    command = await module.resolve(ConventionalConfigCommand);
+    logger = await module.resolve(LoggerService);
   });
 
   it("is defined", () => {
@@ -49,7 +40,22 @@ describe(ConventionalConfigCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const { logger } = await buildModule();
+    const module = await Test.createTestingModule({
+      providers: [
+        ConventionalConfigCommand,
+        SynchronizationService,
+        {
+          provide: ConventionalConfigService,
+          useValue: createMock<ConventionalConfigService>(),
+        },
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
+    const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith("ConventionalConfigCommand");
   });
@@ -66,10 +72,7 @@ describe(ConventionalConfigCommand, () => {
       scenarioName: "runs synchronization with the provided mode",
     },
   ])("$scenarioName", async ({ expectedMode, modeArguments }) => {
-    const { command: localCommand, conventionalConfigService } =
-      await buildModule();
-
-    await localCommand.run(modeArguments);
+    await command.run(modeArguments);
 
     expect(conventionalConfigService.runSynchronization).toHaveBeenCalledWith(
       expectedMode,
@@ -77,9 +80,7 @@ describe(ConventionalConfigCommand, () => {
   });
 
   it("exits for invalid mode", async () => {
-    const { command: localCommand, logger } = await buildModule();
-
-    await expectProcessExitOne(async () => localCommand.run(["invalid-mode"]));
+    await expectProcessExitOne(async () => command.run(["invalid-mode"]));
 
     expect(logger.error).toHaveBeenCalledWith("❌ Invalid mode: invalid-mode");
     expect(logger.error).toHaveBeenCalledWith(

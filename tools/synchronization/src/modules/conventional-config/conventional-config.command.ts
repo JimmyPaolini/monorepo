@@ -12,7 +12,7 @@ import { ConventionalConfigService } from "./conventional-config.service";
  * to the synchronization service, exiting with code 1 on drift.
  */
 @Command({
-  description: "Sync conventional commit config files (check|write)",
+  description: "Run the conventional-config command",
   name: "conventional-config",
 })
 @Injectable()
@@ -21,12 +21,18 @@ export class ConventionalConfigCommand extends CommandRunner {
 
   constructor(
     private readonly conventionalConfigService: ConventionalConfigService,
-    private readonly loggerService: LoggerService,
+    private readonly logger: LoggerService,
     private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
-    this.loggerService.setContext(ConventionalConfigCommand.name);
+    this.logger.setContext(ConventionalConfigCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
 
   // 🌎 Public Methods
 
@@ -39,7 +45,7 @@ export class ConventionalConfigCommand extends CommandRunner {
     const mode =
       this.synchronizationModeService.resolveSynchronizationModeOrExit({
         invalidModeLabel: "Invalid mode",
-        loggerService: this.loggerService,
+        loggerService: this.logger,
         passedParameters,
         usageMessage:
           "💡 Usage: nx run synchronization:start:conventional-config-check (or synchronization:start:conventional-config-write)",

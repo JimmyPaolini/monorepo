@@ -10,6 +10,14 @@ import type {
 /** Shared service for resolving and validating synchronization command modes. */
 @Injectable()
 export class SynchronizationService {
+  // 🏗 Dependency Injection
+
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
   /** Logs invalid mode details and exits with status code 1. */
   private exitInvalidMode(options: {
     invalidModeLabel: string;
@@ -61,4 +69,8 @@ export class SynchronizationService {
       usageMessage: options.usageMessage,
     });
   }
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 }

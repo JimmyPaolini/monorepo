@@ -15,6 +15,8 @@ import { SynchronizationService } from "./synchronization.service";
  * Root NestJS application module.
  */
 @Module({
+  controllers: [],
+  exports: [SynchronizationService],
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",

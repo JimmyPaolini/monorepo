@@ -35,8 +35,7 @@ import type {
  * CLI command that synchronizes all agent-skill artifacts.
  */
 @Command({
-  description:
-    "Sync all agent-skill artifacts from .agents/skills/*/SKILL.md into .github/agents/*.agent.md and AGENTS.md (check|write)",
+  description: "Run the agent-skills command",
   name: "agent-skills",
 })
 @Injectable()
@@ -44,12 +43,16 @@ export class AgentSkillsCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly loggerService: LoggerService,
+    private readonly logger: LoggerService,
     private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
-    this.loggerService.setContext(AgentSkillsCommand.name);
+    this.logger.setContext(AgentSkillsCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
 
   // 🔏 Private Methods
 
@@ -66,22 +69,18 @@ export class AgentSkillsCommand extends CommandRunner {
     );
 
     if (generatedList.trim() !== generatedContent.trim()) {
-      this.loggerService.log(
+      this.logger.log(
         "❌ Custom agents table of contents in AGENTS.md is out of sync\n",
       );
-      this.loggerService.log(
-        `  Found ${agents.length} agents in .github/agents/`,
-      );
-      this.loggerService.log(
-        "  Generated content doesn't match stored content",
-      );
-      this.loggerService.log(
+      this.logger.log(`  Found ${agents.length} agents in .github/agents/`);
+      this.logger.log("  Generated content doesn't match stored content");
+      this.logger.log(
         "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }
 
-    this.loggerService.log(
+    this.logger.log(
       `✅ Custom agents table of contents is in sync (${agents.length} ${agents.length === 1 ? "agent" : "agents"})`,
     );
     return true;
@@ -103,17 +102,13 @@ export class AgentSkillsCommand extends CommandRunner {
     try {
       actualContent = readFileSync(agentPath, "utf8");
     } catch {
-      this.loggerService.log(
-        `❌ Agent file not found: ${configuration.agentFile}`,
-      );
+      this.logger.log(`❌ Agent file not found: ${configuration.agentFile}`);
       return false;
     }
 
     const expectedContent = generateAgentFile(skill, actualContent);
     if (expectedContent !== actualContent) {
-      this.loggerService.log(
-        `❌ Agent file out of sync: ${configuration.agentFile}`,
-      );
+      this.logger.log(`❌ Agent file out of sync: ${configuration.agentFile}`);
       return false;
     }
 
@@ -137,13 +132,13 @@ export class AgentSkillsCommand extends CommandRunner {
     }
 
     if (!allInSync) {
-      this.loggerService.log(
+      this.logger.log(
         "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }
 
-    this.loggerService.log(successMessage);
+    this.logger.log(successMessage);
     return true;
   }
 
@@ -160,22 +155,18 @@ export class AgentSkillsCommand extends CommandRunner {
     );
 
     if (generatedTable.trim() !== generatedContent.trim()) {
-      this.loggerService.log(
+      this.logger.log(
         "❌ Skills table of contents in AGENTS.md is out of sync\n",
       );
-      this.loggerService.log(
-        `  Found ${skills.length} skills in .agents/skills/`,
-      );
-      this.loggerService.log(
-        "  Generated content doesn't match stored content",
-      );
-      this.loggerService.log(
+      this.logger.log(`  Found ${skills.length} skills in .agents/skills/`);
+      this.logger.log("  Generated content doesn't match stored content");
+      this.logger.log(
         "💡 Run 'pnpm exec nx run synchronization:start:agent-skills-write' to sync\n",
       );
       return false;
     }
 
-    this.loggerService.log(
+    this.logger.log(
       `✅ Skills table of contents is in sync (${skills.length} skills)`,
     );
     return true;
@@ -244,7 +235,7 @@ export class AgentSkillsCommand extends CommandRunner {
       CUSTOM_AGENTS_TOC_END,
     );
 
-    this.loggerService.log("🔄 Generating custom agents table of contents...");
+    this.logger.log("🔄 Generating custom agents table of contents...");
     writeFileSync(
       path.join(workspaceRoot, AGENTS_MD_FILE),
       `${beforeMarker}\n${generatedList}\n${afterMarker}`,
@@ -252,9 +243,7 @@ export class AgentSkillsCommand extends CommandRunner {
     );
 
     const agentWord = agents.length === 1 ? "agent" : "agents";
-    this.loggerService.log(
-      `✅ Updated AGENTS.md with ${agents.length} ${agentWord}`,
-    );
+    this.logger.log(`✅ Updated AGENTS.md with ${agents.length} ${agentWord}`);
   }
 
   /**
@@ -291,15 +280,15 @@ export class AgentSkillsCommand extends CommandRunner {
       workspaceRoot,
     } = options;
 
-    this.loggerService.log(startMessage);
+    this.logger.log(startMessage);
 
     for (const configuration of configurations) {
       this.writeSingleSkillAgentFile(configuration, workspaceRoot);
 
       if (questionMeMode) {
-        this.loggerService.log("✅ Updated question-me.agent.md");
+        this.logger.log("✅ Updated question-me.agent.md");
       } else {
-        this.loggerService.log(`✅ Synced ${configuration.agentFile}`);
+        this.logger.log(`✅ Synced ${configuration.agentFile}`);
       }
     }
   }
@@ -316,13 +305,13 @@ export class AgentSkillsCommand extends CommandRunner {
       AGENT_SKILLS_TOC_END,
     );
 
-    this.loggerService.log("🔄 Generating skills table of contents...");
+    this.logger.log("🔄 Generating skills table of contents...");
     writeFileSync(
       path.join(workspaceRoot, AGENTS_MD_FILE),
       `${beforeMarker}\n${generatedTable}\n${afterMarker}`,
       "utf8",
     );
-    this.loggerService.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
+    this.logger.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
   }
 
   // 🌎 Public Methods
@@ -338,7 +327,7 @@ export class AgentSkillsCommand extends CommandRunner {
     const mode =
       this.synchronizationModeService.resolveSynchronizationModeOrExit({
         invalidModeLabel: "Unknown mode",
-        loggerService: this.loggerService,
+        loggerService: this.logger,
         passedParameters,
         usageMessage: "Expected 'check' or 'write'",
       });
@@ -353,7 +342,7 @@ export class AgentSkillsCommand extends CommandRunner {
 
       this.runWriteMode(workspaceRoot);
     } catch (error) {
-      this.loggerService.error(
+      this.logger.error(
         `❌ Error: ${error instanceof Error ? error.message : error}`,
       );
       process.exit(1);

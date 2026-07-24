@@ -22,8 +22,7 @@ import type { DevcontainerConfiguration } from "./devcontainer-configuration.typ
  * Runs in check (default) or write mode based on the first positional argument.
  */
 @Command({
-  description:
-    "Sync devcontainer configuration from local to cloud (check|write)",
+  description: "Run the devcontainer-configuration command",
   name: "devcontainer-configuration",
 })
 @Injectable()
@@ -31,12 +30,16 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
   constructor(
-    private readonly loggerService: LoggerService,
+    private readonly logger: LoggerService,
     private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
-    this.loggerService.setContext(DevcontainerConfigurationCommand.name);
+    this.logger.setContext(DevcontainerConfigurationCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
 
   // 🔏 Private Methods
 
@@ -79,14 +82,14 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       return true;
     }
 
-    this.loggerService.log(
+    this.logger.log(
       `❌ ${relativeFilePath} has common fields out of sync with local config\n`,
     );
 
     this.reportDifferences(expectedConfigCopy, currentConfig);
 
-    this.loggerService.log("");
-    this.loggerService.log(
+    this.logger.log("");
+    this.logger.log(
       `  Run: nx run synchronization:start:devcontainer-configuration-write`,
     );
     return false;
@@ -136,13 +139,9 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     for (const key of allFieldKeys) {
       if (DEVCONTAINER_CLOUD_ONLY_KEYS.has(key)) continue;
       if (!_.isEqual(expectedFields[key], currentFields[key])) {
-        this.loggerService.log(`  Field '${key}' differs:`);
-        this.loggerService.log(
-          `    Expected: ${JSON.stringify(expectedFields[key])}`,
-        );
-        this.loggerService.log(
-          `    Got:      ${JSON.stringify(currentFields[key])}`,
-        );
+        this.logger.log(`  Field '${key}' differs:`);
+        this.logger.log(`    Expected: ${JSON.stringify(expectedFields[key])}`);
+        this.logger.log(`    Got:      ${JSON.stringify(currentFields[key])}`);
       }
     }
   }
@@ -195,7 +194,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
       `${JSON.stringify(mergedConfig, null, 2)}\n`,
       "utf8",
     );
-    this.loggerService.log(`✅ Updated: ${relativeFilePath}`);
+    this.logger.log(`✅ Updated: ${relativeFilePath}`);
   }
 
   // 🌎 Public Methods
@@ -211,7 +210,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
     const mode =
       this.synchronizationModeService.resolveSynchronizationModeOrExit({
         invalidModeLabel: "Invalid mode",
-        loggerService: this.loggerService,
+        loggerService: this.logger,
         passedParameters,
         usageMessage:
           "💡 Usage: nx run synchronization:start:devcontainer-configuration-check (or synchronization:start:devcontainer-configuration-write)",
@@ -236,14 +235,12 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
     if (mode === "check") {
       if (!this.check(mergedConfig, cloudConfigFile)) process.exit(1);
-      this.loggerService.log(
+      this.logger.log(
         "✅ Cloud devcontainer config is in sync with local config",
       );
     } else {
       this.write(mergedConfig, cloudConfigFile);
-      this.loggerService.log(
-        "✅ Cloud devcontainer config updated from local config",
-      );
+      this.logger.log("✅ Cloud devcontainer config updated from local config");
     }
   }
 }

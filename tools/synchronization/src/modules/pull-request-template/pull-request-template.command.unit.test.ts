@@ -2,7 +2,7 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test, type TestingModule } from "@nestjs/testing";
+import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
@@ -47,19 +47,6 @@ describe(PullRequestTemplateCommand, () => {
     path.join(workspaceRoot, filePath),
   );
 
-  const createTestingModule = async (): Promise<TestingModule> => {
-    return Test.createTestingModule({
-      providers: [
-        PullRequestTemplateCommand,
-        SynchronizationService,
-        {
-          provide: LoggerService,
-          useValue: createMock<LoggerService>(),
-        },
-      ],
-    }).compile();
-  };
-
   const setSynchronizedTargets = (templateContent: string): void => {
     const wrappedTemplate = `\`\`\`markdown\n${templateContent}\n\`\`\``;
 
@@ -79,7 +66,16 @@ describe(PullRequestTemplateCommand, () => {
   };
 
   beforeAll(async () => {
-    const module = await createTestingModule();
+    const module = await Test.createTestingModule({
+      providers: [
+        PullRequestTemplateCommand,
+        SynchronizationService,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
 
     command = await module.resolve(PullRequestTemplateCommand);
     logger = await module.resolve(LoggerService);
@@ -95,7 +91,17 @@ describe(PullRequestTemplateCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await createTestingModule();
+    const module = await Test.createTestingModule({
+      providers: [
+        PullRequestTemplateCommand,
+        SynchronizationService,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith(

@@ -4,10 +4,7 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import { workspaceRoot } from "@nx/devkit";
 
-import {
-  DEFAULT_PROJECT_DIRECTORIES,
-  DEFAULT_PROJECT_TYPE_TAGS,
-} from "./validator.constants";
+import { DEFAULT_PROJECT_DIRECTORIES } from "./validator.constants";
 
 import type { WorkspaceProject } from "./validator.types";
 
@@ -96,7 +93,7 @@ export class ValidatorWorkspaceService {
   }
 
   /**
-   * Resolves requested project names or default application/component-tagged projects.
+   * Resolves requested project names or all discovered workspace projects.
    */
   resolveSelectedProjectNames(args: {
     allWorkspaceProjects: WorkspaceProject[];
@@ -108,20 +105,13 @@ export class ValidatorWorkspaceService {
     }
 
     const defaultProjectNames = allWorkspaceProjects
-      .filter((workspaceProject) =>
-        workspaceProject.tags.some((tag) =>
-          DEFAULT_PROJECT_TYPE_TAGS.includes(tag),
-        ),
-      )
       .map((workspaceProject) =>
         this.resolveProjectName(workspaceProject.rootPath),
       )
       .toSorted();
 
     if (defaultProjectNames.length === 0) {
-      throw new Error(
-        `No default projects found. Expected tags: ${DEFAULT_PROJECT_TYPE_TAGS.join(", ")}`,
-      );
+      throw new Error("No default projects found in workspace");
     }
 
     return defaultProjectNames;

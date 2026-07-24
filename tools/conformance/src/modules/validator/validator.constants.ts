@@ -9,8 +9,6 @@ import type { ValidatorRuleName } from "./validator.types";
 
 export const TODO_LINE_REGEX = /\bTODO\b/u;
 
-export const DEFAULT_PROJECT_TYPE_TAGS = ["type:application", "type:component"];
-
 export const DEFAULT_PROJECT_DIRECTORIES = [
   APPLICATIONS_DIRECTORY,
   PACKAGES_DIRECTORY,

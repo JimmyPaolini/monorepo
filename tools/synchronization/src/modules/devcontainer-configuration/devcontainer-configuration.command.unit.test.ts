@@ -2,7 +2,7 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { createMock } from "@golevelup/ts-vitest";
-import { Test, type TestingModule } from "@nestjs/testing";
+import { Test } from "@nestjs/testing";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
@@ -44,8 +44,8 @@ describe(DevcontainerConfigurationCommand, () => {
     ".devcontainer/cloud/devcontainer.json",
   );
 
-  const createTestingModule = async (): Promise<TestingModule> => {
-    return Test.createTestingModule({
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
       providers: [
         DevcontainerConfigurationCommand,
         SynchronizationService,
@@ -55,10 +55,6 @@ describe(DevcontainerConfigurationCommand, () => {
         },
       ],
     }).compile();
-  };
-
-  beforeAll(async () => {
-    const module = await createTestingModule();
 
     command = await module.resolve(DevcontainerConfigurationCommand);
     logger = await module.resolve(LoggerService);
@@ -74,7 +70,17 @@ describe(DevcontainerConfigurationCommand, () => {
   });
 
   it("sets logger context", async () => {
-    const module = await createTestingModule();
+    const module = await Test.createTestingModule({
+      providers: [
+        DevcontainerConfigurationCommand,
+        SynchronizationService,
+        {
+          provide: LoggerService,
+          useValue: createMock<LoggerService>(),
+        },
+      ],
+    }).compile();
+
     const logger = await module.resolve(LoggerService);
 
     expect(logger.setContext).toHaveBeenCalledWith(

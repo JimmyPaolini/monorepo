@@ -1,4 +1,7 @@
-import { afterAll, describe, expect, it, vi } from "vitest";
+import { Test } from "@nestjs/testing";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "./logger.service";
 
 type LoggerServiceConstructor = new () => {
   debug: (message: unknown, context?: string) => void;
@@ -43,9 +46,23 @@ const runLoggingLevelAssertions = (
   }).not.toThrow();
 };
 
-describe("loggerService", () => {
+describe(LoggerService, () => {
+  let service: LoggerService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [LoggerService],
+    }).compile();
+
+    service = await module.resolve(LoggerService);
+  });
+
   afterAll(() => {
     process.env["NODE_ENV"] = originalNodeEnvironment;
+  });
+
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   it("is defined when loaded in development mode", async () => {

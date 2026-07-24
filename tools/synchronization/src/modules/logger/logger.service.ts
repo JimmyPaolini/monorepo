@@ -9,6 +9,16 @@ import pino from "pino";
  */
 @Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService extends ConsoleLogger {
+  // 🏗 Dependency Injection
+
+  constructor() {
+    super();
+  }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
   private static readonly isProduction =
     process.env["NODE_ENV"] === "production";
 
@@ -25,6 +35,8 @@ export class LoggerService extends ConsoleLogger {
   );
 
   private child: pino.Logger = LoggerService.root;
+
+  // 🔏 Private Methods
 
   /** Logs a debug message at the `debug` level. */
   override debug(message: unknown, context?: string): void {
@@ -59,4 +71,6 @@ export class LoggerService extends ConsoleLogger {
   override warn(message: unknown, context?: string): void {
     this.child.warn({ context: context ?? this.context }, String(message));
   }
+
+  // 🌎 Public Methods
 }
