@@ -56,7 +56,7 @@ export class ConformanceGeneratorsCommand extends CommandRunner {
         "  Generated content doesn't match stored content",
       );
       this.loggerService.log(
-        "💡 Run 'pnpm exec nx run synchronization:conformance-generators:write' to sync\n",
+        "💡 Run 'pnpm exec nx run synchronization:start:conformance-generators-write' to sync\n",
       );
       return false;
     }

@@ -50,7 +50,7 @@ See [Deployment Models](../documentation/architecture/deployment-models.md) for 
 
 ## Kubernetes Deployment
 
-See [kubernetes-deployment skill](../documentation/skills/kubernetes-deployment/SKILL.md) for Helm patterns and PVC management.
+See [kubernetes-deployment skill](../.agents/skills/kubernetes-deployment/SKILL.md) for Helm patterns and PVC management.
 
 ## Troubleshooting
 

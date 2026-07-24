@@ -10,7 +10,7 @@
  * - Gitmoji required at start of subject
  *
  * Types and scopes are defined in conventional.config.cjs.
- * See: documentation/skills/commit-code/SKILL.md for full documentation.
+ * See: .agents/skills/commit-code/SKILL.md for full documentation.
  */
 import { scopes, types } from "./conventional.config.cjs";
 

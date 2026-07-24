@@ -10,179 +10,16 @@
     "language:typescript"
   ],
   "targets": {
-    "agent-skills": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/AGENTS.md",
-        "{workspaceRoot}/documentation/skills/**/*.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "analyze-code": {},
     "clean": {},
-    "conformance-generators": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that conformance generators table is synchronized from tools/conformance/generators.json into AGENTS.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/AGENTS.md",
-        "{workspaceRoot}/tools/conformance/generators.json"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "conventional-config": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.vscode/settings.json",
-        "{workspaceRoot}/configuration/conventional.config.cjs",
-        "{workspaceRoot}/documentation/skills/commit-code/SKILL.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "custom-agents": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that custom agents table of contents is synchronized from .github/agents/*.agent.md into AGENTS.md (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.github/agents/*.agent.md",
-        "{workspaceRoot}/AGENTS.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts custom-agents",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "dependency-cruiser": {},
-    "devcontainer-configuration": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that common fields in cloud devcontainer.json are in sync with the local config (check) or propagate them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.devcontainer/cloud/devcontainer.json",
-        "{workspaceRoot}/.devcontainer/local/devcontainer.json"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "format": {},
     "knip": {},
     "lint": {},
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
-    "plan-agents": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that plan agent files in .github/agents/ are synchronized from their documentation/skills/*/SKILL.md sources (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.github/agents/change-plan.agent.md",
-        "{workspaceRoot}/.github/agents/create-plan.agent.md",
-        "{workspaceRoot}/.github/agents/execute-plan.agent.md",
-        "{workspaceRoot}/.github/agents/update-plan.agent.md",
-        "{workspaceRoot}/documentation/skills/change-plan/SKILL.md",
-        "{workspaceRoot}/documentation/skills/create-plan/SKILL.md",
-        "{workspaceRoot}/documentation/skills/execute-plan/SKILL.md",
-        "{workspaceRoot}/documentation/skills/update-plan/SKILL.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts plan-agents",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "prettier": {},
-    "pull-request-template": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that the PR template is synchronized from .github/PULL_REQUEST_TEMPLATE.md into skills and prompt files (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.github/prompts/create-pull-request.prompt.md",
-        "{workspaceRoot}/.github/prompts/update-pull-request.prompt.md",
-        "{workspaceRoot}/.github/PULL_REQUEST_TEMPLATE.md",
-        "{workspaceRoot}/documentation/skills/create-pull-request/SKILL.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "repl": {
       "description": "Start the Synchronization application in REPL mode",
       "executor": "nx:run-commands",
@@ -193,11 +30,63 @@
     },
     "spell-check": {},
     "start": {
-      "description": "Start the Synchronization application",
+      "cache": false,
+      "configurations": {
+        "agent-skills": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills"
+        },
+        "agent-skills-check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
+        },
+        "agent-skills-write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write"
+        },
+        "conformance-generators": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators"
+        },
+        "conformance-generators-check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators check"
+        },
+        "conformance-generators-write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators write"
+        },
+        "conventional-config": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config"
+        },
+        "conventional-config-check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config check"
+        },
+        "conventional-config-write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config write"
+        },
+        "devcontainer-configuration": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration"
+        },
+        "devcontainer-configuration-check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration check"
+        },
+        "devcontainer-configuration-write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration write"
+        },
+        "pull-request-template": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template"
+        },
+        "pull-request-template-check": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template check"
+        },
+        "pull-request-template-write": {
+          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template write"
+        },
+        "synchronization": {
+          "command": "node --import @swc-node/register/esm-register tools/synchronization/src/main.ts synchronization {args}"
+        }
+      },
+      "defaultConfiguration": "synchronization",
+      "description": "Start the Synchronization application or run a synchronization command",
       "executor": "nx:run-commands",
       "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts synchronization",
-        "cwd": "{projectRoot}"
+        "command": "node --import @swc-node/register/esm-register tools/synchronization/src/main.ts synchronization {args}",
+        "cwd": "{workspaceRoot}"
       }
     },
     "test": {
@@ -223,30 +112,6 @@
       "options": {
         "command": "vitest run",
         "cwd": "{projectRoot}"
-      }
-    },
-    "triage-agents": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents check"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents write && nx run monorepo:format:write"
-        }
-      },
-      "defaultConfiguration": "write",
-      "description": "Validate that triage agent files in .github/agents/ are synchronized from their documentation/skills/*/SKILL.md sources (check) or sync them (write)",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/.github/agents/triage-deployment.agent.md",
-        "{workspaceRoot}/.github/agents/triage-submission.agent.md",
-        "{workspaceRoot}/documentation/skills/triage-deployment/SKILL.md",
-        "{workspaceRoot}/documentation/skills/triage-submission/SKILL.md"
-      ],
-      "options": {
-        "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts triage-agents",
-        "cwd": "{workspaceRoot}"
       }
     },
     "type-coverage": {},

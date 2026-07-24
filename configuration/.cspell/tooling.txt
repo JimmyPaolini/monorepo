@@ -112,6 +112,7 @@ nonfiction
 nonoctal
 nosec
 nums
+obra
 onechild
 oneline
 operands
@@ -199,6 +200,7 @@ typeof
 uncapitalize
 uncapitalizes
 unknowncase
+underspecified
 unredacted
 unrs
 unstub

@@ -124,9 +124,9 @@ All workflows call this composite action after checkout. It provides:
 |🎋 Branch Validation|Branch name matches `<type>/<scope>-<description>` via `validate-branch-name` (PR only)|
 |📝 PR Title Validation|PR title follows Conventional Commits format via `commitlint` (PR only)|
 |🪢 PR Body Validation|PR body contains required `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, `## 🔗 Related` sections (PR only)|
-|⚙️ Convention Config Sync|`npx nx run synchronization:conventional-config:check`|
-|📋 PR Template Sync|`npx nx run synchronization:pull-request-template:check`|
-|🤖 Agent Skills Sync|`npx nx run synchronization:agent-skills:check`|
+|⚙️ Convention Config Sync|`npx nx run synchronization:start:conventional-config-check`|
+|📋 PR Template Sync|`npx nx run synchronization:start:pull-request-template-check`|
+|🤖 Agent Skills Sync|`npx nx run synchronization:start:agent-skills-check`|
 
 **Concurrency:** Cancels in-progress runs for the same branch
 

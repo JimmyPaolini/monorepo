@@ -157,7 +157,7 @@ export class ConventionalConfigService {
       !presetOk
     ) {
       this.loggerService.log(
-        "💡 Run 'nx run synchronization:conventional-config:write' to sync",
+        "💡 Run 'nx run synchronization:start:conventional-config-write' to sync",
       );
       process.exit(1);
     }

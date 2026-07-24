@@ -15,7 +15,8 @@
 #   6. docker.sh       — Docker Desktop install + daemon start
 #   7. gpg.sh          — GPG + pinentry-mac + git signing config
 #   8. infra.sh        — terraform, supabase, jq, gh, helm, kubectl + version summary
-#   9. database.sh     — squawk
+#   9. copilot.sh      — Copilot plugin marketplace + Superpowers plugin install
+#  10. database.sh     — squawk
 
 source ./scripts/local/software/brew.sh
 source ./scripts/local/software/node.sh
@@ -25,4 +26,5 @@ source ./scripts/local/software/ollama.sh
 source ./scripts/local/software/docker.sh
 source ./scripts/local/software/gpg.sh
 source ./scripts/local/software/infra.sh
+source ./scripts/local/software/copilot.sh
 source ./scripts/local/software/database.sh

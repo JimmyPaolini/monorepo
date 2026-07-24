@@ -364,7 +364,7 @@ These files are automatically created by running `nx generate conformance:nestjs
 
 - [Lexico-Ingestion AGENTS.md](../../applications/lexico-ingestion/AGENTS.md) — Reference implementation of NestJS command application
 - [Caelundas AGENTS.md](../../applications/caelundas/AGENTS.md) — Alternative CLI command app pattern (Node.js, not NestJS)
-- [Code Generator Patterns Skill](../../documentation/skills/code-generator-patterns/SKILL.md) — Nx generator conventions used in existing conformance generators
+- [Code Generator Patterns Skill](../../.agents/skills/code-generator-patterns/SKILL.md) — Nx generator conventions used in existing conformance generators
 - [NestJS Documentation](https://docs.nestjs.com/) — Framework reference
 - [nest-commander Package](https://www.npmjs.com/package/nest-commander) — CLI command handling library
 - [Nx Generators Guide](https://nx.dev/extending-nx/intro/getting-started) — Nx generator plugin architecture

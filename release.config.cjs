@@ -71,7 +71,7 @@
  * Resources:
  *   - https://semantic-release.gitbook.io/
  *   - https://www.conventionalcommits.org/
- *   - documentation/skills/commit-code/SKILL.md
+ *   - .agents/skills/commit-code/SKILL.md
  *
  * @see https://semantic-release.gitbook.io/semantic-release/usage/configuration
  */

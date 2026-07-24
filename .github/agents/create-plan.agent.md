@@ -4,8 +4,12 @@ agents:
   - explore-codebase
   - explore-internet
 description: "Create an implementation plan file for new features, fixes, or refactors. Use when asked to plan work, design implementation phases, define requirements, or produce a machine-executable plan document."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs:
+  - label: Clarify Requirements
+    agent: question-me
+    prompt: "Clarify the request, constraints, and success criteria before creating the implementation plan."
+    send: false
   - label: Execute Plan
     agent: execute-plan
     prompt: "Execute the plan created above."

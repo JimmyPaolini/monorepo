@@ -5,8 +5,8 @@ export const SYNC_PULL_REQUEST_TEMPLATE_MARKER = "pr-template";
 
 /** Target files that embed the PR template block. */
 export const SYNC_PULL_REQUEST_TEMPLATE_TARGET_FILES: string[] = [
-  "documentation/skills/create-pull-request/SKILL.md",
-  "documentation/skills/update-pull-request/SKILL.md",
+  ".agents/skills/create-pull-request/SKILL.md",
+  ".agents/skills/update-pull-request/SKILL.md",
 ];
 
 /** All files managed by the pull-request-template sync workflow. */

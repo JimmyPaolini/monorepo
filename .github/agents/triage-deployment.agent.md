@@ -2,8 +2,12 @@
 argument-hint: "Optional: paste failure logs, or specify a workflow name / run URL to fetch"
 agents: []
 description: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
-disable-model-invocation: true
+disable-model-invocation: false
 handoffs:
+  - label: Clarify CI Context
+    agent: question-me
+    prompt: "Clarify the expected behavior, missing context, or intended outcome before continuing CI triage."
+    send: false
   - label: Triage Submission
     agent: triage-submission
     prompt: "Also triage any local submission failures (commit or push hooks)."
@@ -173,23 +177,23 @@ Fix: Edit the PR description in the GitHub UI to include all four sections.
 
 #### 🏛️ Validate Convention Configuration
 
-Failing command: `npx nx run synchronization:conventional-config:check`
+Failing command: `npx nx run synchronization:start:conventional-config-check`
 
 Config: [scripts/sync-conventional-config.ts](../../../scripts/sync-conventional-config.ts)
 
-Fix: Run `npx nx run synchronization:conventional-config` and commit the generated changes.
+Fix: Run `npx nx run synchronization:start:conventional-config-write` and commit the generated changes.
 
 #### 📋 Validate Pull Request Template
 
-Failing command: `npx nx run synchronization:pull-request-template:check`
+Failing command: `npx nx run synchronization:start:pull-request-template-check`
 
-Fix: Run `npx nx run synchronization:pull-request-template` and commit.
+Fix: Run `npx nx run synchronization:start:pull-request-template-write` and commit.
 
 #### 🎯 Validate Agent Skills
 
-Failing command: `npx nx run synchronization:agent-skills:check`
+Failing command: `npx nx run synchronization:start:agent-skills-check`
 
-Fix: Run `npx nx run synchronization:agent-skills` and commit.
+Fix: Run `npx nx run synchronization:start:agent-skills-write` and commit.
 
 ---
 
@@ -277,9 +281,9 @@ pnpm exec nx affected -t analyze-code
 pnpm exec nx affected -t test --configuration=coverage --parallel=3
 
 # Validate conventions (config sync checks only)
-npx nx run synchronization:conventional-config:check
-npx nx run synchronization:pull-request-template:check
-npx nx run synchronization:agent-skills:check
+npx nx run synchronization:start:conventional-config-check
+npx nx run synchronization:start:pull-request-template-check
+npx nx run synchronization:start:agent-skills-check
 
 # Security
 pnpm exec nx run monorepo:gitleaks

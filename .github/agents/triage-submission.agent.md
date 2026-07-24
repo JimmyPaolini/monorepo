@@ -2,8 +2,16 @@
 argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-output.log"
 agents: []
 description: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-disable-model-invocation: true
-handoffs: []
+disable-model-invocation: false
+handoffs:
+  - label: Clarify Submission Context
+    agent: question-me
+    prompt: "Clarify the intended outcome, failing hook, or missing context before continuing submission triage."
+    send: false
+  - label: Triage Deployment
+    agent: triage-deployment
+    prompt: "Also triage any failing CI checks on the remote branch."
+    send: false
 model: Auto (copilot)
 name: triage-submission
 tools:
@@ -73,23 +81,23 @@ Config: [validate-branch-name.config.cjs](../../../validate-branch-name.config.c
 
 ### lint-staged file-type → target matrix
 
-| Staged file pattern                                                              | `nx affected` targets                                                |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `*.ts, *.tsx, *.js, *.jsx, *.mts, *.cts, *.mjs, *.cjs`                           | `clean,format,lint,typecheck,spell-check`                            |
-| `*.py`                                                                           | `clean,format,lint,spell-check,typecheck`                            |
-| `*.ipynb`                                                                        | `nbstripout` (first), then `clean,format,lint,typecheck,spell-check` |
-| `*.json, *.jsonc, *.json5, *.html`                                               | `format,lint,spell-check`                                            |
-| `*.css`                                                                          | `stylelint,format,lint,spell-check`                                  |
-| `*.md, *.mdx`                                                                    | `format,lint,markdown-lint,spell-check`                              |
-| `*.yml, *.yaml` (not pnpm-lock)                                                  | `format,yaml-lint,spell-check`                                       |
-| `**/package.json`                                                                | `./scripts/check-lockfile.sh` (direct script, not Nx)                |
-| `pnpm-workspace.yaml`                                                            | `./scripts/check-lockfile.sh`                                        |
-| `configuration/knip.config.ts`                                                   | `nx run monorepo:clean:check`                                        |
-| `.vscode/extensions.json`, `.devcontainer/local/devcontainer.json`               | `nx run monorepo:sync-vscode-extensions:check`                       |
-| `.devcontainer/cloud/devcontainer.json`, `.devcontainer/local/devcontainer.json` | `nx run synchronization:devcontainer-configuration:check`            |
-| Conventional config files (see lint-staged.config.ts)                            | `nx run synchronization:conventional-config:check`                   |
-| PR template files                                                                | `nx run synchronization:pull-request-template:check`                 |
-| `AGENTS.md`, `documentation/skills/**/*.md`                                      | `nx run synchronization:agent-skills:check`                          |
+| Staged file pattern                                                              | `nx affected` targets                                                  |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------   |
+| `*.ts, *.tsx, *.js, *.jsx, *.mts, *.cts, *.mjs, *.cjs`                           | `clean,format,lint,typecheck,spell-check`                              |
+| `*.py`                                                                           | `clean,format,lint,spell-check,typecheck`                              |
+| `*.ipynb`                                                                        | `nbstripout` (first), then `clean,format,lint,typecheck,spell-check`   |
+| `*.json, *.jsonc, *.json5, *.html`                                               | `format,lint,spell-check`                                              |
+| `*.css`                                                                          | `stylelint,format,lint,spell-check`                                    |
+| `*.md, *.mdx`                                                                    | `format,lint,markdown-lint,spell-check`                                |
+| `*.yml, *.yaml` (not pnpm-lock)                                                  | `format,yaml-lint,spell-check`                                         |
+| `**/package.json`                                                                | `./scripts/check-lockfile.sh` (direct script, not Nx)                  |
+| `pnpm-workspace.yaml`                                                            | `./scripts/check-lockfile.sh`                                          |
+| `configuration/knip.config.ts`                                                   | `nx run monorepo:clean:check`                                          |
+| `.vscode/extensions.json`, `.devcontainer/local/devcontainer.json`               | `nx run monorepo:sync-vscode-extensions:check`                         |
+| `.devcontainer/cloud/devcontainer.json`, `.devcontainer/local/devcontainer.json` | `nx run synchronization:start:devcontainer-configuration-check`        |
+| Conventional config files (see lint-staged.config.ts)                            | `nx run synchronization:start:conventional-config-check`               |
+| PR template files                                                                | `nx run synchronization:start:pull-request-template-check`             |
+| `AGENTS.md`, `documentation/skills/**/*.md`                                      | `nx run synchronization:start:agent-skills-check`                      |
 
 ## Triage Procedure
 
@@ -247,11 +255,11 @@ pnpm exec nx affected --target=markdown-lint --configuration=write --files=<stag
 pnpm exec nx affected --target=clean --configuration=write --files=<staged-files>
 
 # Sync checks: run the write variant to regenerate the out-of-sync file
-pnpm exec nx run synchronization:agent-skills:write
-pnpm exec nx run synchronization:conventional-config:write
-pnpm exec nx run synchronization:pull-request-template:write
+pnpm exec nx run synchronization:start:agent-skills-write
+pnpm exec nx run synchronization:start:conventional-config-write
+pnpm exec nx run synchronization:start:pull-request-template-write
 pnpm exec nx run monorepo:sync-vscode-extensions:write
-pnpm exec nx run synchronization:devcontainer-configuration:write
+pnpm exec nx run synchronization:start:devcontainer-configuration-write
 ```
 
 #### Validate Fixes Passed
@@ -272,11 +280,11 @@ pnpm exec nx affected --target=markdown-lint --configuration=check --files=<stag
 pnpm exec nx affected --target=clean --configuration=check --files=<staged-files>
 
 # Validate sync checks fixed themselves (re-run the check variant)
-pnpm exec nx run synchronization:agent-skills:check
-pnpm exec nx run synchronization:conventional-config:check
-pnpm exec nx run synchronization:pull-request-template:check
+pnpm exec nx run synchronization:start:agent-skills-check
+pnpm exec nx run synchronization:start:conventional-config-check
+pnpm exec nx run synchronization:start:pull-request-template-check
 pnpm exec nx run monorepo:sync-vscode-extensions:check
-pnpm exec nx run synchronization:devcontainer-configuration:check
+pnpm exec nx run synchronization:start:devcontainer-configuration-check
 ```
 
 **If all `--configuration=check` commands pass**, the fixes are confirmed working. Proceed to Step 5.

@@ -6,7 +6,7 @@
  * - validate-branch-name.config.js (branch name validation)
  * - release.config.cjs (release rules and changelog sections)
  * - .vscode/settings.json (scope autocomplete)
- * - documentation/skills/commit-code/SKILL.md (reference tables)
+ * - .agents/skills/commit-code/SKILL.md (reference tables)
  *
  * When adding/removing types, scopes, or emojis, update this file only.
  * Run `nx run synchronization:conventional-config:write` to propagate changes.
