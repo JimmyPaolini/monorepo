@@ -23,3 +23,24 @@ if ! gpg --list-secret-keys --keyid-format=long "$signing_key" | grep -q '^sec';
   echo "❌ No GPG secret key found for user.signingkey=$signing_key." >&2
   exit 1
 fi
+
+tree_hash="$(git write-tree)"
+test_commit_message='commit-signing-smoke-test'
+
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  parent_commit_hash="$(git rev-parse HEAD)"
+  test_commit_hash="$(
+    printf '%s' "$test_commit_message" | \
+      git commit-tree "$tree_hash" -p "$parent_commit_hash" -S
+  )"
+else
+  test_commit_hash="$(
+    printf '%s' "$test_commit_message" | \
+      git commit-tree "$tree_hash" -S
+  )"
+fi
+
+if ! git verify-commit "$test_commit_hash" > /dev/null 2>&1; then
+  echo '❌ Git commit signing smoke test failed (git commit-tree -S / git verify-commit).' >&2
+  exit 1
+fi
