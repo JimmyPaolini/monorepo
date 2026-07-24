@@ -22,9 +22,3 @@ export type SynchronizationModeResolutionResult =
       modeValue: SynchronizationMode;
       valid: true;
     };
-
-/** A single synchronization command task executed by the root orchestration command. */
-export interface SynchronizationTask {
-  commandName: string;
-  runCommand: (mode: SynchronizationMode) => Promise<void>;
-}

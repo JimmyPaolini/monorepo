@@ -20,29 +20,16 @@
     "oxfmt": {},
     "oxlint": {},
     "prettier": {},
-    "repl": {
-      "description": "Start the Synchronization application in REPL mode",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "repl": {},
     "spell-check": {},
     "start": {
       "cache": false,
       "configurations": {
-        "agent-skills": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills"
-        },
         "agent-skills-check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills check"
         },
         "agent-skills-write": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts agent-skills write"
-        },
-        "conformance-generators": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators"
         },
         "conformance-generators-check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators check"
@@ -50,17 +37,11 @@
         "conformance-generators-write": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conformance-generators write"
         },
-        "conventional-config": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config"
-        },
         "conventional-config-check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config check"
         },
         "conventional-config-write": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts conventional-config write"
-        },
-        "devcontainer-configuration": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration"
         },
         "devcontainer-configuration-check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration check"
@@ -68,61 +49,23 @@
         "devcontainer-configuration-write": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts devcontainer-configuration write"
         },
-        "pull-request-template": {
-          "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template"
-        },
         "pull-request-template-check": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template check"
         },
         "pull-request-template-write": {
           "command": "NODE_OPTIONS='' node --import @swc-node/register/esm-register tools/synchronization/src/main.ts pull-request-template write"
-        },
-        "synchronization": {
-          "command": "node --import @swc-node/register/esm-register tools/synchronization/src/main.ts synchronization {args}"
         }
       },
-      "defaultConfiguration": "synchronization",
+      "defaultConfiguration": "agent-skills-check",
       "description": "Start the Synchronization application or run a synchronization command",
       "executor": "nx:run-commands",
       "options": {
-        "command": "node --import @swc-node/register/esm-register tools/synchronization/src/main.ts synchronization {args}",
         "cwd": "{workspaceRoot}"
       }
     },
-    "test": {
-      "configurations": {
-        "coverage": {
-          "command": "vitest run --coverage"
-        },
-        "end-to-end": {
-          "command": "vitest run end-to-end.test.ts"
-        },
-        "integration": {
-          "command": "vitest run integration.test.ts"
-        },
-        "unit": {
-          "command": "vitest run unit.test.ts"
-        },
-        "watch": {
-          "command": "vitest"
-        }
-      },
-      "description": "Run all tests",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "vitest run",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "test": {},
     "type-coverage": {},
-    "typecheck": {
-      "description": "Run TypeScript type checking",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "typecheck": {},
     "yaml-lint": {}
   }
 }

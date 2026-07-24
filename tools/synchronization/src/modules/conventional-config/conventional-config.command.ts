@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { ConventionalConfigService } from "./conventional-config.service";
 
@@ -22,7 +22,7 @@ export class ConventionalConfigCommand extends CommandRunner {
   constructor(
     private readonly conventionalConfigService: ConventionalConfigService,
     private readonly loggerService: LoggerService,
-    private readonly synchronizationModeService: SynchronizationModeService,
+    private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
     this.loggerService.setContext(ConventionalConfigCommand.name);

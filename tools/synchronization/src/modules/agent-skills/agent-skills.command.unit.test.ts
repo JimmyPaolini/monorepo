@@ -7,7 +7,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { expectProcessExitOne } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import {
   generateAgentFile,
@@ -70,7 +70,7 @@ describe(AgentSkillsCommand, () => {
     return Test.createTestingModule({
       providers: [
         AgentSkillsCommand,
-        SynchronizationModeService,
+        SynchronizationService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),
@@ -179,10 +179,7 @@ describe(AgentSkillsCommand, () => {
     await command.run(["check"]);
 
     expect(logger.log).toHaveBeenCalledWith(
-      "✅ question-me agent file is in sync",
-    );
-    expect(logger.log).toHaveBeenCalledWith(
-      "✅ All 6 plan agent files are in sync",
+      "✅ All 2 plan agent files are in sync",
     );
     expect(logger.log).toHaveBeenCalledWith(
       "✅ All 2 triage agent files are in sync",
@@ -201,7 +198,7 @@ describe(AgentSkillsCommand, () => {
         throw new TypeError("Unexpected non-string read path");
       }
 
-      if (filePath.endsWith("question-me.agent.md")) {
+      if (filePath.endsWith("explore-codebase.agent.md")) {
         return "actual-content\n";
       }
 
@@ -211,7 +208,7 @@ describe(AgentSkillsCommand, () => {
     await expectProcessExitOne(async () => command.run(["check"]));
 
     expect(logger.log).toHaveBeenCalledWith(
-      "❌ Agent file out of sync: .github/agents/question-me.agent.md",
+      "❌ Agent file out of sync: .github/agents/explore-codebase.agent.md",
     );
   });
 
@@ -221,7 +218,7 @@ describe(AgentSkillsCommand, () => {
         throw new TypeError("Unexpected non-string read path");
       }
 
-      if (filePath.endsWith("change-plan.agent.md")) {
+      if (filePath.endsWith("explore-internet.agent.md")) {
         return "actual-content\n";
       }
 
@@ -231,7 +228,7 @@ describe(AgentSkillsCommand, () => {
     await expectProcessExitOne(async () => command.run(["check"]));
 
     expect(logger.log).toHaveBeenCalledWith(
-      "❌ Agent file out of sync: .github/agents/change-plan.agent.md",
+      "❌ Agent file out of sync: .github/agents/explore-internet.agent.md",
     );
   });
 
@@ -329,15 +326,17 @@ describe(AgentSkillsCommand, () => {
 
     await command.run(["write"]);
 
-    expect(writeFileSync).toHaveBeenCalledTimes(11);
+    expect(writeFileSync).toHaveBeenCalledTimes(6);
     expect(writeFileSync).toHaveBeenCalledWith(
       expect.stringContaining(
-        path.join(".github", "agents", "question-me.agent.md"),
+        path.join(".github", "agents", "explore-codebase.agent.md"),
       ),
       "generated-content\n",
       "utf8",
     );
-    expect(logger.log).toHaveBeenCalledWith("✅ Updated question-me.agent.md");
+    expect(logger.log).toHaveBeenCalledWith(
+      "✅ Synced .github/agents/explore-codebase.agent.md",
+    );
     expect(logger.log).toHaveBeenCalledWith(
       "✅ Updated AGENTS.md with 2 agents",
     );

@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { DevcontainerConfigurationCommand } from "./devcontainer-configuration.command";
 
@@ -12,6 +12,6 @@ import { DevcontainerConfigurationCommand } from "./devcontainer-configuration.c
   controllers: [],
   exports: [DevcontainerConfigurationCommand],
   imports: [LoggerModule],
-  providers: [DevcontainerConfigurationCommand, SynchronizationModeService],
+  providers: [DevcontainerConfigurationCommand, SynchronizationService],
 })
 export class DevcontainerConfigurationModule {}

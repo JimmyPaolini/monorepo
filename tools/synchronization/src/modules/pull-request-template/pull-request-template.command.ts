@@ -5,7 +5,7 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import {
   SYNC_PULL_REQUEST_TEMPLATE_MARKER,
@@ -26,7 +26,7 @@ export class PullRequestTemplateCommand extends CommandRunner {
 
   constructor(
     private readonly loggerService: LoggerService,
-    private readonly synchronizationModeService: SynchronizationModeService,
+    private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
     this.loggerService.setContext(PullRequestTemplateCommand.name);

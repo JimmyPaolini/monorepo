@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { ConformanceGeneratorsCommand } from "./conformance-generators.command";
 
@@ -12,6 +12,6 @@ import { ConformanceGeneratorsCommand } from "./conformance-generators.command";
   controllers: [],
   exports: [ConformanceGeneratorsCommand],
   imports: [LoggerModule],
-  providers: [ConformanceGeneratorsCommand, SynchronizationModeService],
+  providers: [ConformanceGeneratorsCommand, SynchronizationService],
 })
 export class ConformanceGeneratorsModule {}

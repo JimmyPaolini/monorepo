@@ -194,6 +194,11 @@ const scopes = [
     description: "Changes spanning multiple tool projects in tools/",
     name: "tools",
   },
+  {
+    description:
+      "Synchronization application and commands for automating workflows",
+    name: "synchronization",
+  },
 ];
 
 module.exports = { scopes, types };

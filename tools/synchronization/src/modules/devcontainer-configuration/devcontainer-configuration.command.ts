@@ -7,7 +7,7 @@ import _ from "lodash";
 import { Command, CommandRunner } from "nest-commander";
 
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import {
   DEVCONTAINER_CLOUD_ONLY_KEYS,
@@ -32,7 +32,7 @@ export class DevcontainerConfigurationCommand extends CommandRunner {
 
   constructor(
     private readonly loggerService: LoggerService,
-    private readonly synchronizationModeService: SynchronizationModeService,
+    private readonly synchronizationModeService: SynchronizationService,
   ) {
     super();
     this.loggerService.setContext(DevcontainerConfigurationCommand.name);

@@ -8,9 +8,8 @@ import { DevcontainerConfigurationModule } from "../devcontainer-configuration/d
 import { LoggerModule } from "../logger/logger.module";
 import { PullRequestTemplateModule } from "../pull-request-template/pull-request-template.module";
 
-import { SynchronizationModeService } from "./synchronization-mode.service";
-import { SynchronizationCommand } from "./synchronization.command";
 import { environmentSchema } from "./synchronization.constants";
+import { SynchronizationService } from "./synchronization.service";
 
 /**
  * Root NestJS application module.
@@ -30,6 +29,6 @@ import { environmentSchema } from "./synchronization.constants";
     DevcontainerConfigurationModule,
     PullRequestTemplateModule,
   ],
-  providers: [SynchronizationCommand, SynchronizationModeService],
+  providers: [SynchronizationService],
 })
 export class SynchronizationModule {}

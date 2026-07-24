@@ -1,0 +1,53 @@
+import { createMock } from "@golevelup/ts-vitest";
+import { describe, expect, it, vi } from "vitest";
+
+import { SynchronizationService } from "./synchronization.service";
+
+import type { LoggerService } from "../logger/logger.service";
+
+describe(SynchronizationService, () => {
+  it("returns true only for supported synchronization modes", () => {
+    const service = new SynchronizationService();
+
+    expect(service.isSynchronizationMode("check")).toBe(true);
+    expect(service.isSynchronizationMode("write")).toBe(true);
+    expect(service.isSynchronizationMode("invalid")).toBe(false);
+  });
+
+  it("resolves to default check mode when no argument is passed", () => {
+    const service = new SynchronizationService();
+    const loggerService = createMock<LoggerService>();
+
+    const mode = service.resolveSynchronizationModeOrExit({
+      invalidModeLabel: "Invalid mode",
+      loggerService,
+      passedParameters: [],
+      usageMessage: "Usage",
+    });
+
+    expect(mode).toBe("check");
+  });
+
+  it("exits the process when mode is invalid", () => {
+    const service = new SynchronizationService();
+    const loggerService = createMock<LoggerService>();
+    const processExitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
+      throw new Error("process.exit:1");
+    });
+
+    expect(() => {
+      service.resolveSynchronizationModeOrExit({
+        invalidModeLabel: "Invalid mode",
+        loggerService,
+        passedParameters: ["invalid-mode"],
+        usageMessage: "Usage",
+      });
+    }).toThrow("process.exit:1");
+    expect(loggerService.error).toHaveBeenCalledWith(
+      "❌ Invalid mode: invalid-mode",
+    );
+    expect(loggerService.error).toHaveBeenCalledWith("Usage");
+
+    processExitSpy.mockRestore();
+  });
+});

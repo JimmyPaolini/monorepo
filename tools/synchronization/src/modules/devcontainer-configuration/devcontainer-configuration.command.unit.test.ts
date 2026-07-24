@@ -7,7 +7,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { expectProcessExitOne, mockProcessExit } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { DevcontainerConfigurationCommand } from "./devcontainer-configuration.command";
 
@@ -48,7 +48,7 @@ describe(DevcontainerConfigurationCommand, () => {
     return Test.createTestingModule({
       providers: [
         DevcontainerConfigurationCommand,
-        SynchronizationModeService,
+        SynchronizationService,
         {
           provide: LoggerService,
           useValue: createMock<LoggerService>(),

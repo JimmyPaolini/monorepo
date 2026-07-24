@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { expectProcessExitOne } from "../../../testing/mocks";
 import { LoggerService } from "../logger/logger.service";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { ConventionalConfigCommand } from "./conventional-config.command";
 import { ConventionalConfigService } from "./conventional-config.service";
@@ -18,7 +18,7 @@ const buildModule = async (): Promise<{
   const module = await Test.createTestingModule({
     providers: [
       ConventionalConfigCommand,
-      SynchronizationModeService,
+      SynchronizationService,
       {
         provide: ConventionalConfigService,
         useValue: conventionalConfigService,

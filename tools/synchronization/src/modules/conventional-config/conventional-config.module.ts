@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { LoggerModule } from "../logger/logger.module";
-import { SynchronizationModeService } from "../synchronization/synchronization-mode.service";
+import { SynchronizationService } from "../synchronization/synchronization.service";
 
 import { ConventionalConfigIoService } from "./conventional-config-io.service";
 import { ConventionalConfigValidatorsService } from "./conventional-config-validators.service";
@@ -21,7 +21,7 @@ import { ConventionalConfigService } from "./conventional-config.service";
     ConventionalConfigIoService,
     ConventionalConfigService,
     ConventionalConfigValidatorsService,
-    SynchronizationModeService,
+    SynchronizationService,
   ],
 })
 export class ConventionalConfigModule {}

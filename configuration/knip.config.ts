@@ -175,6 +175,8 @@ const config: KnipConfig = {
         "testing/**", // Test fixtures and setup
       ],
       ignoreDependencies: [
+        "@swc-node/register", // Used in Nx run-commands strings (`node --import @swc-node/register/esm-register`)
+        "@swc/core", // Required peer/runtime for @swc-node/register loaded via CLI string command
         "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
       ],
       project: "src/**/*.ts",
