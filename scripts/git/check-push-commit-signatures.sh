@@ -5,8 +5,12 @@ set -e
 zero_sha='0000000000000000000000000000000000000000'
 unsigned_commits=()
 
-while read -r local_ref local_sha _remote_ref remote_sha; do
+while read -r local_ref local_sha remote_ref remote_sha; do
   if [[ -z "$local_ref" || "$local_sha" == "$zero_sha" ]]; then
+    continue
+  fi
+
+  if [[ "$local_ref" == refs/notes/semantic-release-* || "$remote_ref" == refs/notes/semantic-release-* ]]; then
     continue
   fi
 
