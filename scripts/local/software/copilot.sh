@@ -10,7 +10,11 @@ superpowers_plugin="superpowers@superpowers-marketplace"
 if ! command -v copilot &> /dev/null; then
   echo "⚠️  Copilot CLI not found. Skipping Superpowers plugin setup."
   echo "   Install Copilot CLI and rerun setup to enable Superpowers automatically."
-  return 0
+  if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+    return 0
+  else
+    exit 0
+  fi
 fi
 
 echo "🔍 Configuring Copilot plugin marketplace..."
