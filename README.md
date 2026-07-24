@@ -9,23 +9,23 @@
 [![Jupyter](https://img.shields.io/badge/Jupyter-1.1-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
 
 <!-- CODE_STATISTICS_START -->
-![Lines of Code](https://img.shields.io/badge/Lines_of_Code-125001-22c55e?style=flat-square)
-![Repo Size](https://img.shields.io/badge/Repo_Size-149.7_MiB-6b7280?style=flat-square)
-![Folders](https://img.shields.io/badge/Folders-443-4a4a4a?style=flat-square)
-![Source Files](https://img.shields.io/badge/Source_Files-771-3178c6?style=flat-square)
+![Lines of Code](https://img.shields.io/badge/Lines_of_Code-126251-22c55e?style=flat-square)
+![Repo Size](https://img.shields.io/badge/Repo_Size-150.0_MiB-6b7280?style=flat-square)
+![Folders](https://img.shields.io/badge/Folders-462-4a4a4a?style=flat-square)
+![Source Files](https://img.shields.io/badge/Source_Files-775-3178c6?style=flat-square)
 ![Test Files](https://img.shields.io/badge/Test_Files-185-10b981?style=flat-square)
 ![External Packages](https://img.shields.io/badge/External_Packages-132-8b5cf6?style=flat-square)
 ![Classes](https://img.shields.io/badge/Classes-283-7c3aed?style=flat-square)
-![Functions](https://img.shields.io/badge/Functions-6476-16a34a?style=flat-square)
-![Sync Functions](https://img.shields.io/badge/Sync_Functions-5334-4ade80?style=flat-square)
+![Functions](https://img.shields.io/badge/Functions-6571-16a34a?style=flat-square)
+![Sync Functions](https://img.shields.io/badge/Sync_Functions-5429-4ade80?style=flat-square)
 ![Async Functions](https://img.shields.io/badge/Async_Functions-1022-059669?style=flat-square)
 ![Interfaces](https://img.shields.io/badge/Interfaces-262-0ea5e9?style=flat-square)
 ![Generic Declarations](https://img.shields.io/badge/Generic_Declarations-29-0369a1?style=flat-square)
 ![Enums](https://img.shields.io/badge/Enums-0-f97316?style=flat-square)
-![Constants](https://img.shields.io/badge/Constants-7930-dc2626?style=flat-square)
-![Imports](https://img.shields.io/badge/Imports-3909-0284c7?style=flat-square)
+![Constants](https://img.shields.io/badge/Constants-8074-dc2626?style=flat-square)
+![Imports](https://img.shields.io/badge/Imports-3911-0284c7?style=flat-square)
 ![Decorators](https://img.shields.io/badge/Decorators-670-db2777?style=flat-square)
-![Exported Symbols](https://img.shields.io/badge/Exported_Symbols-874-ea580c?style=flat-square)
+![Exported Symbols](https://img.shields.io/badge/Exported_Symbols-878-ea580c?style=flat-square)
 ![TODO Comments](https://img.shields.io/badge/TODO_Comments-34-ca8a04?style=flat-square)
 <!-- CODE_STATISTICS_END -->
 
@@ -123,10 +123,10 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 **🤖 Agent Skills (Domain Knowledge)**
 Skills are specialized instruction files used by our automated agents, but they also serve as excellent deep-dive documentation for human developers.
 
-- [View all Skills](documentation/skills/README.md) - Complete index of available skills
-- **Workflows:** [Git Commits](documentation/skills/commit-code/SKILL.md) / [PR Management](documentation/skills/create-pull-request/SKILL.md) / [Branch Naming](documentation/skills/checkout-branch/SKILL.md)
-- **Tooling:** [Nx Workspaces](documentation/skills/nx-workspace/SKILL.md) / [Generators](documentation/skills/nx-generate/SKILL.md) / [Task Running](documentation/skills/nx-run-tasks/SKILL.md)
-- **Infrastructure:** [Docker](documentation/skills/docker-workflows/SKILL.md) / [Kubernetes](documentation/skills/kubernetes-deployment/SKILL.md) / [Terraform](documentation/skills/mcp-terraform/SKILL.md)
-- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Ephemeris Pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)
+- [View all Skills](.agents/skills) - Complete index of available skills
+- **Workflows:** [Git Commits](.agents/skills/commit-code/SKILL.md) / [PR Management](.agents/skills/create-pull-request/SKILL.md) / [Branch Naming](.agents/skills/checkout-branch/SKILL.md)
+- **Tooling:** [Nx Workspaces](.agents/skills/nx-workspace/SKILL.md) / [Generators](.agents/skills/nx-generate/SKILL.md) / [Task Running](.agents/skills/nx-run-tasks/SKILL.md)
+- **Infrastructure:** [Docker](.agents/skills/docker-workflows/SKILL.md) / [Kubernetes](.agents/skills/kubernetes-deployment/SKILL.md) / [Terraform](.agents/skills/mcp-terraform/SKILL.md)
+- **Domains:** [TanStack Start](.agents/skills/tanstack-start-ssr/SKILL.md) / [Ephemeris Pipeline](.agents/skills/ephemeris-pipeline/SKILL.md)
 
 Other important files include [CHANGELOG.md](CHANGELOG.md) and [SECURITY.md](SECURITY.md).

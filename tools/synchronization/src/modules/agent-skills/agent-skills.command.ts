@@ -37,7 +37,7 @@ import type {
  */
 @Command({
   description:
-    "Sync all agent-skill artifacts from documentation/skills/*/SKILL.md into .github/agents/*.agent.md and AGENTS.md (check|write)",
+    "Sync all agent-skill artifacts from .agents/skills/*/SKILL.md into .github/agents/*.agent.md and AGENTS.md (check|write)",
   name: "agent-skills",
 })
 @Injectable()
@@ -165,7 +165,7 @@ export class AgentSkillsCommand extends CommandRunner {
         "❌ Skills table of contents in AGENTS.md is out of sync\n",
       );
       this.loggerService.log(
-        `  Found ${skills.length} skills in documentation/skills/`,
+        `  Found ${skills.length} skills in .agents/skills/`,
       );
       this.loggerService.log(
         "  Generated content doesn't match stored content",

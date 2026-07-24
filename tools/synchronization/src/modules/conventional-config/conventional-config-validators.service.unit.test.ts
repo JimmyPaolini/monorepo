@@ -244,10 +244,7 @@ describe(ConventionalConfigValidatorsService, () => {
   );
 
   it("validates skill marker sync and missing marker handling", () => {
-    const skillFile = path.join(
-      workspaceRoot,
-      "documentation/skills/test/SKILL.md",
-    );
+    const skillFile = path.join(workspaceRoot, ".agents/skills/test/SKILL.md");
     fileContents.set(skillFile, "skill-content");
 
     vi.mocked(io.extractMarkerContent)
@@ -268,10 +265,7 @@ describe(ConventionalConfigValidatorsService, () => {
   });
 
   it("detects skill marker value and ordering drift", () => {
-    const skillFile = path.join(
-      workspaceRoot,
-      "documentation/skills/test/SKILL.md",
-    );
+    const skillFile = path.join(workspaceRoot, ".agents/skills/test/SKILL.md");
     fileContents.set(skillFile, "skill-content");
 
     vi.mocked(io.extractMarkerContent)
@@ -305,10 +299,7 @@ describe(ConventionalConfigValidatorsService, () => {
   });
 
   it("aggregates all skills and templates validation", () => {
-    const skillFile = path.join(
-      workspaceRoot,
-      "documentation/skills/test/SKILL.md",
-    );
+    const skillFile = path.join(workspaceRoot, ".agents/skills/test/SKILL.md");
     const templateFile = path.join(
       workspaceRoot,
       ".github/ISSUE_TEMPLATE/bug.yml",

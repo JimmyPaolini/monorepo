@@ -146,6 +146,6 @@ This plan defines a full-scope refactor to eliminate all production source dupli
 
 - documentation/planning/2026-06-29T02:15:19Z-refactor-fallow-test-duplicates-triage.plan.md
 - documentation/planning/2026-06-19T13:34:23Z-feature-fallow-code-quality-integration.plan.md
-- documentation/skills/create-plan/SKILL.md
+- .agents/skills/create-plan/SKILL.md
 - configuration/fallow.config.jsonc
 - AGENTS.md

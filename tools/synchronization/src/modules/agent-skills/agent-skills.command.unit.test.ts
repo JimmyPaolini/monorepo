@@ -108,12 +108,12 @@ describe(AgentSkillsCommand, () => {
     vi.mocked(readSkillTableMetadata).mockReturnValue([
       {
         description: "Question helper",
-        filePath: "documentation/skills/question-me/SKILL.md",
+        filePath: ".agents/skills/question-me/SKILL.md",
         name: "question-me",
       },
     ]);
     vi.mocked(renderSkillTable).mockReturnValue(
-      "- **[question-me](documentation/skills/question-me/SKILL.md)**: Question helper",
+      "- **[question-me](.agents/skills/question-me/SKILL.md)**: Question helper",
     );
     vi.mocked(readAgentsSection).mockImplementation(
       (_workspaceRoot: string, startMarker: string) => {
@@ -131,7 +131,7 @@ describe(AgentSkillsCommand, () => {
             afterMarker: `${AGENT_SKILLS_TOC_END}\nfooter`,
             beforeMarker: `header\n${AGENT_SKILLS_TOC_START}`,
             generatedContent:
-              "\n- **[question-me](documentation/skills/question-me/SKILL.md)**: Question helper\n",
+              "\n- **[question-me](.agents/skills/question-me/SKILL.md)**: Question helper\n",
           };
         }
 
@@ -270,7 +270,7 @@ describe(AgentSkillsCommand, () => {
           afterMarker: `${AGENT_SKILLS_TOC_END}\nfooter`,
           beforeMarker: `header\n${AGENT_SKILLS_TOC_START}`,
           generatedContent:
-            "\n- **[question-me](documentation/skills/question-me/SKILL.md)**: Question helper\n",
+            "\n- **[question-me](.agents/skills/question-me/SKILL.md)**: Question helper\n",
         };
       },
     );

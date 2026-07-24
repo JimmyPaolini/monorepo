@@ -3,7 +3,11 @@ import path from "node:path";
 
 import _ from "lodash";
 
-import { AGENTS_DIRECTORY, AGENTS_MD_FILE } from "./agent-skills.constants";
+import {
+  AGENT_SKILLS_DIRECTORY,
+  AGENTS_DIRECTORY,
+  AGENTS_MD_FILE,
+} from "./agent-skills.constants";
 
 import type {
   AgentSkillMetadata,
@@ -189,7 +193,7 @@ export function readSkillSourceFile(skillPath: string): SkillSourceMetadata {
 export function readSkillTableMetadata(
   workspaceRoot: string,
 ): AgentSkillMetadata[] {
-  const skillsDirectory = path.join(workspaceRoot, "documentation/skills");
+  const skillsDirectory = path.join(workspaceRoot, AGENT_SKILLS_DIRECTORY);
   const skills: AgentSkillMetadata[] = [];
   const entries = readdirSync(skillsDirectory, { withFileTypes: true });
 
@@ -206,7 +210,7 @@ export function readSkillTableMetadata(
       if (frontmatter["name"] && frontmatter["description"]) {
         skills.push({
           description: frontmatter["description"],
-          filePath: `documentation/skills/${entry.name}/SKILL.md`,
+          filePath: `${AGENT_SKILLS_DIRECTORY}/${entry.name}/SKILL.md`,
           name: frontmatter["name"],
         });
       }

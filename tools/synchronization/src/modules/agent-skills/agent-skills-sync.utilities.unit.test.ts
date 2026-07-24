@@ -316,7 +316,7 @@ describe("agent-skills-sync utilities", () => {
   });
 
   it("parses a skill source file", () => {
-    const skillPath = "/workspace/documentation/skills/question-me/SKILL.md";
+    const skillPath = "/workspace/.agents/skills/question-me/SKILL.md";
 
     fileContents.set(
       skillPath,
@@ -339,7 +339,7 @@ describe("agent-skills-sync utilities", () => {
   });
 
   it("returns empty defaults for missing skill frontmatter fields", () => {
-    const skillPath = "/workspace/documentation/skills/question-me/SKILL.md";
+    const skillPath = "/workspace/.agents/skills/question-me/SKILL.md";
 
     fileContents.set(skillPath, ["---", "name: question-me", "---"].join("\n"));
 
@@ -353,7 +353,7 @@ describe("agent-skills-sync utilities", () => {
 
   it("reads and sorts skill table metadata, skipping invalid or unreadable files", () => {
     const workspaceRoot = "/workspace";
-    const skillsDirectory = path.join(workspaceRoot, "documentation/skills");
+    const skillsDirectory = path.join(workspaceRoot, ".agents/skills");
 
     directoryEntries.set(skillsDirectory, [
       createDirectoryEntry("beta", true),
@@ -382,12 +382,12 @@ describe("agent-skills-sync utilities", () => {
     expect(readSkillTableMetadata(workspaceRoot)).toStrictEqual([
       {
         description: "alpha description",
-        filePath: "documentation/skills/alpha/SKILL.md",
+        filePath: ".agents/skills/alpha/SKILL.md",
         name: "alpha",
       },
       {
         description: "beta description",
-        filePath: "documentation/skills/beta/SKILL.md",
+        filePath: ".agents/skills/beta/SKILL.md",
         name: "beta",
       },
     ]);
@@ -410,13 +410,11 @@ describe("agent-skills-sync utilities", () => {
       renderSkillTable([
         {
           description: "Desc",
-          filePath: "documentation/skills/question-me/SKILL.md",
+          filePath: ".agents/skills/question-me/SKILL.md",
           name: "question-me",
         },
       ]),
-    ).toBe(
-      "- **[question-me](documentation/skills/question-me/SKILL.md)**: Desc",
-    );
+    ).toBe("- **[question-me](.agents/skills/question-me/SKILL.md)**: Desc");
   });
 
   it("reads the skills AGENTS.md section markers", () => {
