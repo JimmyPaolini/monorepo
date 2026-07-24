@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/JimmyPaolini/monorepo/compare/v1.15.0...v1.15.1) (2026-07-24)
+
 ## [1.15.0](https://github.com/JimmyPaolini/monorepo/compare/v1.14.3...v1.15.0) (2026-07-24)
 
 ## [1.14.3](https://github.com/JimmyPaolini/monorepo/compare/v1.14.2...v1.14.3) (2026-07-23)
