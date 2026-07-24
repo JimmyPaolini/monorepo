@@ -4,8 +4,8 @@
  * Commit format: `<type>(<scope>): <gitmoji> <subject>`
  *
  * - Header max: 128 characters (aim for &lt;72 for readability)
- * - Body: forbidden unless every line is a `Co-authored-by:` trailer (added by GitHub Copilot agents)
- * - Footer: forbidden
+ * - Body: forbidden unless every line is a `Co-authored-by:` trailer
+ * - Footer: forbidden unless every line is a `Co-authored-by:` trailer
  * - Subject: lowercase, imperative mood, no trailing period
  * - Gitmoji required at start of subject
  *
@@ -30,8 +30,25 @@ const bodyCoAuthoredOnly: Rule = (parsed): RuleOutcome => {
   ];
 };
 
+/** Every non-empty footer line must be a `Co-authored-by:` trailer. */
+const footerCoAuthoredOnly: Rule = (parsed): RuleOutcome => {
+  const footer: null | string = parsed.footer;
+  if (!footer) return [true];
+  const lines = footer.split("\n").filter((line: string) => line.trim() !== "");
+  const allCoAuthored = lines.every((line: string) =>
+    /^Co-authored-by: \S+/.test(line),
+  );
+  return [
+    allCoAuthored,
+    "Footer must be empty or contain only Co-authored-by trailers",
+  ];
+};
+
 const coAuthoredPlugin: Plugin = {
-  rules: { "body-co-authored-only": bodyCoAuthoredOnly },
+  rules: {
+    "body-co-authored-only": bodyCoAuthoredOnly,
+    "footer-co-authored-only": footerCoAuthoredOnly,
+  },
 };
 
 const configuration: UserConfig = {
@@ -62,9 +79,9 @@ const configuration: UserConfig = {
     // 📏 Limit lengths
     "header-max-length": [2, "always", 128],
 
-    // 🚫 Forbid footer; body allowed only for Co-authored-by trailers (added by GitHub Copilot agents)
+    // 🚫 Forbid arbitrary body/footer content; allow only Co-authored-by trailers
     "body-co-authored-only": [2, "always"],
-    "footer-empty": [2, "always"],
+    "footer-co-authored-only": [2, "always"],
 
     // 🔡 Enforce case
     "scope-case": [2, "always", "lower-case"],
