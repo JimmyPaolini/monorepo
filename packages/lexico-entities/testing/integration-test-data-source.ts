@@ -18,10 +18,15 @@ export interface IntegrationTestDatabaseResources {
 /** Defines PostgreSQL connection details used for integration tests. */
 interface IntegrationPostgresConnectionOptions {
   readonly databaseName: string;
-  readonly image: string;
+  readonly images: readonly string[];
   readonly password: string;
   readonly username: string;
 }
+
+const DEFAULT_INTEGRATION_POSTGRES_IMAGES = [
+  "postgres:16-alpine",
+  "mirror.gcr.io/library/postgres:16-alpine",
+] as const;
 
 /** Narrows DataSourceOptions to a postgres-only option shape. */
 type PostgresDataSourceOptions = Extract<
@@ -46,11 +51,7 @@ export async function createIntegrationTestDatabaseResources(): Promise<Integrat
   assertSafeIntegrationDatabaseConfiguration(connectionOptions);
 
   const postgresContainer: StartedPostgreSqlContainer =
-    await new PostgreSqlContainer(connectionOptions.image)
-      .withDatabase(connectionOptions.databaseName)
-      .withUsername(connectionOptions.username)
-      .withPassword(connectionOptions.password)
-      .start();
+    await startPostgresContainer(connectionOptions);
 
   const dataSourceOptions: PostgresDataSourceOptions = {
     ...postgresBaseDataSourceOptions,
@@ -113,8 +114,11 @@ function assertSafeIntegrationDatabaseConfiguration(
 function getIntegrationPostgresConnectionOptions(): IntegrationPostgresConnectionOptions {
   const databaseName =
     process.env["LEXICO_ENTITIES_TEST_POSTGRES_DB"] ?? "lexico_entities_test";
-  const image =
-    process.env["LEXICO_ENTITIES_TEST_POSTGRES_IMAGE"] ?? "postgres:16-alpine";
+  const configuredImage = process.env["LEXICO_ENTITIES_TEST_POSTGRES_IMAGE"];
+  const images =
+    configuredImage === undefined
+      ? [...DEFAULT_INTEGRATION_POSTGRES_IMAGES]
+      : [configuredImage];
   const password =
     process.env["LEXICO_ENTITIES_TEST_POSTGRES_PASSWORD"] ??
     process.env["POSTGRES_PASSWORD"] ??
@@ -126,8 +130,44 @@ function getIntegrationPostgresConnectionOptions(): IntegrationPostgresConnectio
 
   return {
     databaseName,
-    image,
+    images,
     password,
     username,
   };
+}
+
+/**
+ * Starts a PostgreSQL test container by trying configured image candidates.
+ */
+async function startPostgresContainer(
+  connectionOptions: IntegrationPostgresConnectionOptions,
+): Promise<StartedPostgreSqlContainer> {
+  let latestError: unknown;
+
+  for (const image of connectionOptions.images) {
+    try {
+      return await new PostgreSqlContainer(image)
+        .withDatabase(connectionOptions.databaseName)
+        .withUsername(connectionOptions.username)
+        .withPassword(connectionOptions.password)
+        .start();
+    } catch (error) {
+      latestError = error;
+    }
+  }
+
+  throw new Error(
+    `Unable to start PostgreSQL test container. Tried images: ${connectionOptions.images.join(", ")}. Last error: ${toErrorMessage(latestError)}`,
+  );
+}
+
+/**
+ * Normalizes unknown error values into a human-readable message string.
+ */
+function toErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
 }

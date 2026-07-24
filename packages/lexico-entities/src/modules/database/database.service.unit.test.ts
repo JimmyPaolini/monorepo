@@ -11,7 +11,7 @@ describe(DatabaseService, () => {
       providers: [DatabaseService],
     }).compile();
 
-    service = module.get(DatabaseService);
+    service = await module.resolve(DatabaseService);
   });
 
   it("is defined", () => {

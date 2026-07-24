@@ -1100,21 +1100,19 @@ const ENTITY_INHERITANCE_EXPECTATIONS = {
   }),
 } satisfies Readonly<Record<string, EntityInheritanceExpectation>>;
 
-describe("entities service metadata contracts", () => {
-  describe(EntitiesService, () => {
-    let service: EntitiesService;
+describe(EntitiesService, () => {
+  let service: EntitiesService;
 
-    beforeAll(async (): Promise<void> => {
-      const module = await Test.createTestingModule({
-        providers: [EntitiesService],
-      }).compile();
+  beforeAll(async (): Promise<void> => {
+    const module = await Test.createTestingModule({
+      providers: [EntitiesService],
+    }).compile();
 
-      service = module.get(EntitiesService);
-    });
+    service = await module.resolve(EntitiesService);
+  });
 
-    it("is defined", () => {
-      expect(service).toBeDefined();
-    });
+  it("is defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("eNTITY_EXPECTATIONS", () => {

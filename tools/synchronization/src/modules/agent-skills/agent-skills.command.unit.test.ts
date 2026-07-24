@@ -30,7 +30,16 @@ import type {
   AgentSkillMetadata,
   CustomAgentMetadata,
   SkillSourceMetadata,
+  WriteSkillAgentFilesOptions,
 } from "./agent-skills.types";
+
+class TestableAgentSkillsCommand extends AgentSkillsCommand {
+  // 🧪 Test Helpers
+
+  public callWriteSkillAgentFiles(options: WriteSkillAgentFilesOptions): void {
+    this.writeSkillAgentFiles(options);
+  }
+}
 
 vi.mock("node:fs", () => ({
   readFileSync: vi.fn<(filePath: string) => string>(),
@@ -65,6 +74,7 @@ vi.mock("./agent-skills-sync.utilities", () => ({
 describe(AgentSkillsCommand, () => {
   let command: AgentSkillsCommand;
   let logger: LoggerService;
+  let synchronizationService: SynchronizationService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
@@ -80,6 +90,7 @@ describe(AgentSkillsCommand, () => {
 
     command = await module.resolve(AgentSkillsCommand);
     logger = await module.resolve(LoggerService);
+    synchronizationService = await module.resolve(SynchronizationService);
   });
 
   beforeEach(() => {
@@ -217,6 +228,26 @@ describe(AgentSkillsCommand, () => {
     );
   });
 
+  it("exits in check mode when an agent file is missing", async () => {
+    vi.mocked(readFileSync).mockImplementation((filePath: unknown) => {
+      if (typeof filePath !== "string") {
+        throw new TypeError("Unexpected non-string read path");
+      }
+
+      if (filePath.endsWith("explore-codebase.agent.md")) {
+        throw new Error("File not found");
+      }
+
+      return "generated-content\n";
+    });
+
+    await expectProcessExitOne(async () => command.run(["check"]));
+
+    expect(logger.log).toHaveBeenCalledWith(
+      "❌ Agent file not found: .github/agents/explore-codebase.agent.md",
+    );
+  });
+
   it("exits in check mode when a plan agent file is out of sync", async () => {
     vi.mocked(readFileSync).mockImplementation((filePath: unknown) => {
       if (typeof filePath !== "string") {
@@ -348,6 +379,27 @@ describe(AgentSkillsCommand, () => {
     expect(logger.log).toHaveBeenCalledWith(
       "✅ Updated AGENTS.md with 1 skills",
     );
+  });
+
+  it("logs question-me update output in question-me mode", () => {
+    const testableCommand = new TestableAgentSkillsCommand(
+      logger,
+      synchronizationService,
+    );
+
+    testableCommand.callWriteSkillAgentFiles({
+      configurations: [
+        {
+          agentFile: ".github/agents/question-me.agent.md",
+          skillFile: ".agents/skills/brainstorming/SKILL.md",
+        },
+      ],
+      questionMeMode: true,
+      startMessage: "🔄 Syncing question-me agent file...",
+      workspaceRoot: "/workspace",
+    });
+
+    expect(logger.log).toHaveBeenCalledWith("✅ Updated question-me.agent.md");
   });
 
   it("handles runtime errors by logging and exiting", async () => {

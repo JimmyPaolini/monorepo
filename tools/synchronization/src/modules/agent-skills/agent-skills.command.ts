@@ -270,30 +270,6 @@ export class AgentSkillsCommand extends CommandRunner {
   }
 
   /**
-   * Writes a set of agent files from their source skill files.
-   */
-  private writeSkillAgentFiles(options: WriteSkillAgentFilesOptions): void {
-    const {
-      configurations,
-      questionMeMode = false,
-      startMessage,
-      workspaceRoot,
-    } = options;
-
-    this.logger.log(startMessage);
-
-    for (const configuration of configurations) {
-      this.writeSingleSkillAgentFile(configuration, workspaceRoot);
-
-      if (questionMeMode) {
-        this.logger.log("✅ Updated question-me.agent.md");
-      } else {
-        this.logger.log(`✅ Synced ${configuration.agentFile}`);
-      }
-    }
-  }
-
-  /**
    * Writes the generated skills AGENTS.md section.
    */
   private writeSkillsTable(workspaceRoot: string): void {
@@ -312,6 +288,30 @@ export class AgentSkillsCommand extends CommandRunner {
       "utf8",
     );
     this.logger.log(`✅ Updated AGENTS.md with ${skills.length} skills`);
+  }
+
+  /**
+   * Writes a set of agent files from their source skill files.
+   */
+  protected writeSkillAgentFiles(options: WriteSkillAgentFilesOptions): void {
+    const {
+      configurations,
+      questionMeMode = false,
+      startMessage,
+      workspaceRoot,
+    } = options;
+
+    this.logger.log(startMessage);
+
+    for (const configuration of configurations) {
+      this.writeSingleSkillAgentFile(configuration, workspaceRoot);
+
+      if (questionMeMode) {
+        this.logger.log("✅ Updated question-me.agent.md");
+      } else {
+        this.logger.log(`✅ Synced ${configuration.agentFile}`);
+      }
+    }
   }
 
   // 🌎 Public Methods
